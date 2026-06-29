@@ -1,0 +1,216 @@
+/* Multiverse Breach Core Stylesheet */
+
+:root {
+  background-color: #04020a;
+  color: #ffffff;
+  font-family: 'Share Tech Mono', monospace;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #04020a;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  text-align: left;
+  border-inline: none;
+  box-sizing: border-box;
+}
+
+/* Titles */
+.cyber-title {
+  font-family: 'Press Start 2P', monospace;
+  color: #fff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: glitch 3s infinite alternate;
+}
+
+/* Glassmorphism panels */
+.glass-panel {
+  background: rgba(14, 10, 25, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(57, 197, 187, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(57, 197, 187, 0.05);
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* Retro buttons styling */
+.btn-retro {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 18px;
+  background: rgba(20, 20, 30, 0.7);
+  border: 1px solid #39c5bb;
+  border-radius: 4px;
+  color: #39c5bb;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(57, 197, 187, 0.25);
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.btn-retro:hover:not(:disabled) {
+  background: #39c5bb;
+  color: #0b0616;
+  box-shadow: 0 0 16px rgba(57, 197, 187, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-retro:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-disabled {
+  opacity: 0.3;
+  cursor: not-allowed !important;
+  border-color: #555 !important;
+  color: #555 !important;
+  box-shadow: none !important;
+}
+
+/* Action Dashboard Buttons */
+.btn-action {
+  font-family: 'Share Tech Mono', monospace;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #2980b9;
+  border-radius: 4px;
+  color: #3498db;
+  padding: 10px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+
+.btn-action:hover:not(:disabled) {
+  background: rgba(52, 152, 219, 0.15);
+  border-color: #3498db;
+  color: #fff;
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+.btn-action:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.btn-action.selected {
+  background: rgba(52, 152, 219, 0.35) !important;
+  border-color: #fff !important;
+  color: #fff !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.btn-special {
+  font-family: 'Share Tech Mono', monospace;
+  border-radius: 4px;
+  padding: 10px 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.btn-special:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+/* Nav Tabs */
+.btn-tab {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 22px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #888;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.btn-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-tab.active-tab {
+  background: rgba(57, 197, 187, 0.12);
+  border: 1px solid #39c5bb;
+  color: #39c5bb;
+  box-shadow: inset 0 0 6px rgba(57, 197, 187, 0.2);
+}
+
+/* CRT scanlines overlay filter */
+.crt-overlay {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.06),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.06)
+  );
+  background-size: 100% 4px, 6px 100%;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 0 0 10px rgba(57, 197, 187, 0.5), -1px -1px 0 #ff00ff, 1px 1px 0 #00ffff;
+  }
+  100% {
+    text-shadow: 0 0 12px rgba(57, 197, 187, 0.7), 1px -1px 0 #ff00ff, -1px 1px 0 #00ffff;
+  }
+}
+
+.portal-vortex {
+  box-shadow: 0 0 40px #9b59b6, inset 0 0 40px #9b59b6;
+}
+
+.reveal-card-animation {
+  animation: scaleUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Custom Scrollbar for nice styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020005;
+}
+::-webkit-scrollbar-thumb {
+  background: #221a35;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #39c5bb;
+}

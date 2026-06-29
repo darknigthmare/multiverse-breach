@@ -1,0 +1,29 @@
+# Multiverse Breach - Tasks (Expansion & Advanced Upgrades)
+
+- [x] Create translation dictionary `src/game/translation.js` (EN/FR UI, lore, skills, items, events, synergies, portals)
+- [x] Update databases:
+  - [x] `src/game/heroes.js` (Add categories, synergy multipliers, and items)
+  - [x] `src/game/enemies.js` (Add monsters, bosses, local World Bosses, and destructible obstacles)
+  - [x] Expand databases to include 13 new universes (Total: 37 crossover universes + 1 final boss)
+- [x] Integrate Translation and Settings globally in `src/App.jsx`
+- [x] Update `src/components/HubScreen.jsx`:
+  - [x] Display 37 stages (one per universe)
+  - [x] Add Language Selector
+  - [x] Add Inventory, Shop, and Equipment management panels
+  - [x] Display active team synergies in the deployed team tab
+  - [x] Add "Codex & Lore" tab for the 37 universes
+  - [x] Add "Auto-Equip Relics" button in the team deployment tab
+  - [x] Add "EXP Potion" button in the Roster tab to spend shards for levels
+- [x] Update `src/components/PortalScreen.jsx`:
+  - [x] Add banner select dropdown options
+  - [x] Weights selection based on active banner
+  - [x] Add Summon x10 feature with 10% shards discount (450 shards) and full grid results display
+- [x] Update `src/components/GameCanvas.jsx` & Engines:
+  - [x] Update engines to calculate squad category synergies
+  - [x] Integrate active status effects: Infection, Glitch, and Radiation
+  - [x] Spawn destructible obstacles (barriers, Naquadah barrels) in Tactics grid
+  - [x] Program Naquadah barrel AoE chain-reaction explosions
+  - [x] Program 13 new active event items effects
+  - [x] Add Auto-Battle and Speed-Up (2x) toggles in the combat top-bar
+- [x] Change Vite port in `vite.config.js` to 5188 to prevent conflicts
+- [x] Verify build and functionality
