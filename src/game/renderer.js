@@ -611,6 +611,27 @@ const DECOR_THEMES = {
   Matrix: { sky: ['#061706', '#000300'], floor: 'rgba(50, 255, 98, 0.12)', grid: 'rgba(50, 255, 98, 0.45)', motif: 'singularity', accent: '#32ff62' }
 };
 
+const OPENAI_BACKDROPS = {
+  RPG: {
+    'Gears of War': '/backgrounds/gears-of-war-rpg-openai.png',
+    Predator: '/backgrounds/predator-rpg-openai.png',
+    'Silent Hill': '/backgrounds/silent-hill-rpg-openai.png',
+    Stargate: '/backgrounds/stargate-rpg-openai.png',
+    Portal: '/backgrounds/portal-rpg-openai.png',
+    BlazBlue: '/backgrounds/blazblue-rpg-openai.png',
+    Hellraiser: '/backgrounds/hellraiser-rpg-openai.png',
+    Doom: '/backgrounds/doom-rpg-openai.png',
+    'Harry Potter': '/backgrounds/harry-potter-rpg-openai.png',
+    'Scary Movie': '/backgrounds/scary-movie-rpg-openai.png',
+    'Digital Circus': '/backgrounds/digital-circus-rpg-openai.png',
+    'Rosario + Vampire': '/backgrounds/rosario-vampire-rpg-openai.png',
+    'Mad Max': '/backgrounds/mad-max-rpg-openai.png',
+    Matrix: '/backgrounds/matrix-rpg-openai.png'
+  }
+};
+
+const backdropCache = new Map();
+
 const getTheme = (universe) => DECOR_THEMES[universe] || {
   sky: ['#0c071d', '#030209'],
   floor: 'rgba(57, 197, 187, 0.08)',
@@ -625,6 +646,48 @@ function withAlpha(hex, alpha) {
   const g = parseInt(value.slice(2, 4), 16);
   const b = parseInt(value.slice(4, 6), 16);
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function getOpenAiBackdrop(universe, mode) {
+  const src = OPENAI_BACKDROPS[mode]?.[universe];
+  if (!src || typeof Image === 'undefined') return null;
+
+  let img = backdropCache.get(src);
+  if (!img) {
+    img = new Image();
+    img.decoding = 'async';
+    img.src = src;
+    backdropCache.set(src, img);
+  }
+  return img.complete && img.naturalWidth > 0 ? img : null;
+}
+
+function drawOpenAiBackdrop(ctx, universe, width, height, mode) {
+  const img = getOpenAiBackdrop(universe, mode);
+  if (!img) return false;
+
+  const sourceRatio = img.naturalWidth / img.naturalHeight;
+  const targetRatio = width / height;
+  let sx = 0;
+  let sy = 0;
+  let sw = img.naturalWidth;
+  let sh = img.naturalHeight;
+
+  if (sourceRatio > targetRatio) {
+    sw = img.naturalHeight * targetRatio;
+    sx = (img.naturalWidth - sw) / 2;
+  } else if (sourceRatio < targetRatio) {
+    sh = img.naturalWidth / targetRatio;
+    sy = (img.naturalHeight - sh) / 2;
+  }
+
+  ctx.save();
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(img, sx, sy, sw, sh, 0, 0, width, height);
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+  ctx.fillRect(0, 0, width, height);
+  ctx.restore();
+  return true;
 }
 
 function drawStageFloor(ctx, width, height, mode, theme) {
@@ -936,6 +999,10 @@ function drawMotif(ctx, theme, width, height, time) {
 }
 
 export function drawUniverseBackground(ctx, universe, width, height, mode) {
+  if (drawOpenAiBackdrop(ctx, universe, width, height, mode)) {
+    return true;
+  }
+
   const theme = getTheme(universe);
   const time = Date.now() / 33;
 
@@ -956,6 +1023,7 @@ export function drawUniverseBackground(ctx, universe, width, height, mode) {
   }
 
   ctx.restore();
+  return false;
 }
 
 export function drawSynergyOverlay(ctx, activeSynergies, width, height, animTime) {

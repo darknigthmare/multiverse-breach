@@ -200,20 +200,22 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
 
     const tick = () => {
       const ctx = canvas.getContext('2d');
-      drawUniverseBackground(ctx, stage.universe, width, height, stage.mode);
+      const usingOpenAiBackdrop = drawUniverseBackground(ctx, stage.universe, width, height, stage.mode);
 
       // Cyber grid lines
-      ctx.strokeStyle = 'rgba(57, 197, 187, 0.05)';
-      ctx.lineWidth = 1;
-      for (let x = 0; x < width; x += 40) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0); ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-      for (let y = 0; y < height; y += 40) {
-        ctx.beginPath();
-        ctx.moveTo(0, y); ctx.lineTo(width, y);
-        ctx.stroke();
+      if (!usingOpenAiBackdrop) {
+        ctx.strokeStyle = 'rgba(57, 197, 187, 0.05)';
+        ctx.lineWidth = 1;
+        for (let x = 0; x < width; x += 40) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0); ctx.lineTo(x, height);
+          ctx.stroke();
+        }
+        for (let y = 0; y < height; y += 40) {
+          ctx.beginPath();
+          ctx.moveTo(0, y); ctx.lineTo(width, y);
+          ctx.stroke();
+        }
       }
 
       const engine = engineRef.current;
