@@ -627,6 +627,34 @@ const OPENAI_BACKDROPS = {
     'Rosario + Vampire': '/backgrounds/rosario-vampire-rpg-openai.png',
     'Mad Max': '/backgrounds/mad-max-rpg-openai.png',
     Matrix: '/backgrounds/matrix-rpg-openai.png'
+  },
+  Tactics: {
+    Halo: '/backgrounds/halo-tactics-openai.png',
+    'Resident Evil': '/backgrounds/resident-evil-tactics-openai.png',
+    'The Matrix': '/backgrounds/matrix-tactics-openai.png',
+    'Metal Gear': '/backgrounds/metal-gear-tactics-openai.png',
+    'Yu-Gi-Oh': '/backgrounds/yu-gi-oh-tactics-openai.png',
+    'Mass Effect': '/backgrounds/mass-effect-tactics-openai.png',
+    'Le Cinquième Element': '/backgrounds/fifth-element-tactics-openai.png',
+    'Dead Space': '/backgrounds/dead-space-tactics-openai.png',
+    Digimon: '/backgrounds/digimon-tactics-openai.png',
+    Negima: '/backgrounds/negima-tactics-openai.png'
+  },
+  Smash: {
+    Alien: '/backgrounds/alien-smash-openai.png',
+    'Dino Crisis': '/backgrounds/dino-crisis-smash-openai.png',
+    'Half-Life': '/backgrounds/half-life-smash-openai.png',
+    Payday: '/backgrounds/payday-smash-openai.png',
+    Vocaloid: '/backgrounds/vocaloid-smash-openai.png',
+    'Guilty Gear': '/backgrounds/guilty-gear-smash-openai.png',
+    'Slender Man': '/backgrounds/slender-man-smash-openai.png',
+    Chucky: '/backgrounds/chucky-smash-openai.png',
+    Fallout: '/backgrounds/fallout-smash-openai.png',
+    Unreal: '/backgrounds/unreal-smash-openai.png',
+    'Star Wars': '/backgrounds/star-wars-smash-openai.png',
+    'Rick & Morty': '/backgrounds/rick-morty-smash-openai.png',
+    Saw: '/backgrounds/saw-smash-openai.png',
+    'Ghost in the Shell': '/backgrounds/ghost-in-the-shell-smash-openai.png'
   }
 };
 
