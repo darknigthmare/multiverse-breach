@@ -64,10 +64,8 @@ function App() {
       setGold(prev => prev + activeStage.goldPrize);
       setBreachShards(prev => prev + activeStage.shardPrize);
       
-      // Boss stages award Event Tokens
-      let tokenReward = 0;
-      if (activeStage.difficulty.includes('Boss') || activeStage.difficulty.includes('World') || activeStage.id === 38) {
-        tokenReward = activeStage.id === 38 ? 20 : 5;
+      const tokenReward = activeStage.tokenPrize || 0;
+      if (tokenReward > 0) {
         setEventTokens(prev => prev + tokenReward);
       }
 

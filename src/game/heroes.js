@@ -604,7 +604,7 @@ export const EQUIP_ITEMS_DB = [
   // Stargate
   { id: 'gdo_key', universe: 'Stargate', name: { en: 'Iris GDO Transmitter', fr: 'Émetteur Iris GDO' }, boost: { def: 9 }, cost: 100 },
   { id: 'naquadah_fuel', universe: 'Stargate', name: { en: 'Naquadah Power Cell', fr: 'Générateur au Naquadah' }, boost: { atk: 8, hp: 40 }, cost: 110 },
-  { id: 'staff_weapon', universe: 'Stargate', name: { en: 'Horus Staff Tip', fr: 'Lance Jaffa Horale' }, boost: { spd: 2 }, cost: 80 },
+  { id: 'staff_weapon', universe: 'Stargate', name: { en: 'Horus Guard Staff Tip', fr: 'Embout de lance des gardes d\'Horus' }, boost: { spd: 2 }, cost: 80 },
   // Half-Life
   { id: 'hev_battery', universe: 'Half-Life', name: { en: 'HEV Suit Battery', fr: 'Batterie de Combinaison HEV' }, boost: { hp: 80, def: 5 }, cost: 90 },
   { id: 'snark_cage', universe: 'Half-Life', name: { en: 'Snark Nest Cage', fr: 'Cage de Snarks' }, boost: { atk: 9 }, cost: 100 },

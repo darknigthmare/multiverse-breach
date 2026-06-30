@@ -66,17 +66,17 @@ export default function HubScreen({
   ];
 
   const DAILY_CONTRACTS = [
-    { id: 'rpg', mode: 'RPG', reward: '+25 gold', text: { fr: 'Stabiliser une faille RPG', en: 'Stabilize one RPG breach' } },
-    { id: 'tactics', mode: 'Tactics', reward: '+10 shards', text: { fr: 'Gagner une mission tactique', en: 'Win one tactics mission' } },
-    { id: 'smash', mode: 'Smash', reward: '+2 tokens', text: { fr: 'Fermer une brèche Smash', en: 'Close one Smash breach' } },
-    { id: 'codex', mode: 'any', reward: '+1 loot rare', text: { fr: 'Décrypter un nouveau boss dans le codex', en: 'Decrypt a new boss codex entry' } }
+    { id: 'rpg', mode: 'RPG', focus: 'ATB', text: { fr: 'Stabiliser une faille RPG', en: 'Stabilize one RPG breach' } },
+    { id: 'tactics', mode: 'Tactics', focus: 'GRID', text: { fr: 'Gagner une mission tactique', en: 'Win one tactics mission' } },
+    { id: 'smash', mode: 'Smash', focus: 'BURST', text: { fr: 'Fermer une brèche Smash', en: 'Close one Smash breach' } },
+    { id: 'codex', mode: 'any', focus: 'LORE', text: { fr: 'Décrypter un nouveau boss dans le codex', en: 'Decrypt a new boss codex entry' } }
   ];
 
   const FACTION_RULES = [
-    { id: 'sci_fi', label: 'Sci-Fi Marines', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator'], bonus: '+8% HP' },
-    { id: 'horror', label: 'Horreur cosmique', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw'], bonus: '+8% ATK' },
-    { id: 'cyber', label: 'IA & Cyber', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus'], bonus: '+8% SPD' },
-    { id: 'arcane', label: 'Mages & Occulte', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue'], bonus: '+8% DEF' }
+    { id: 'sci_fi', stat: 'hp', label: 'Sci-Fi Marines', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator'], bonus: '+8% HP' },
+    { id: 'horror', stat: 'atk', label: 'Horreur cosmique', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw'], bonus: '+8% ATK' },
+    { id: 'cyber', stat: 'spd', label: 'IA & Cyber', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus'], bonus: '+8% SPD' },
+    { id: 'arcane', stat: 'def', label: 'Mages & Occulte', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue'], bonus: '+8% DEF' }
   ];
 
   const LOOT_RARITIES = [
@@ -97,7 +97,7 @@ export default function HubScreen({
     { id: 6, name: 'Toluca Lake Fog Sector', universe: 'Silent Hill', mode: 'RPG', difficulty: 'Medium', goldPrize: 60, shardPrize: 20, bossName: 'The God' },
     { id: 7, name: 'Ibis Dinosaur Facility', universe: 'Dino Crisis', mode: 'Smash', difficulty: 'Medium', goldPrize: 65, shardPrize: 25, bossName: 'Spinosaurus' },
     { id: 8, name: 'Zion Digital Pipeline', universe: 'The Matrix', mode: 'Tactics', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Deus Ex Machina' },
-    { id: 9, name: 'Abydos Pyramids Breach', universe: 'Stargate', mode: 'RPG', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Anubis Ship' },
+    { id: 9, name: 'Abydos Pyramids Breach', universe: 'Stargate', mode: 'RPG', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Anubis Flagship Nexus' },
     { id: 10, name: 'Anomalous Materials Lab', universe: 'Half-Life', mode: 'Smash', difficulty: 'Medium', goldPrize: 75, shardPrize: 25, bossName: 'Combine Strider' },
     { id: 11, name: 'Aperture Enrichment Center', universe: 'Portal', mode: 'RPG', difficulty: 'Medium', goldPrize: 80, shardPrize: 30, bossName: 'Central AI' },
     { id: 12, name: 'Shadow Moses Warehouse', universe: 'Metal Gear', mode: 'Tactics', difficulty: 'Hard', goldPrize: 90, shardPrize: 30, bossName: 'Metal Gear RAY' },
@@ -189,6 +189,15 @@ export default function HubScreen({
       if (hero.category === 'hacker') stats.spd = Math.round(stats.spd * 1.20);
       if (hero.category === 'tactical') stats.def = Math.round(stats.def * 1.20);
     }
+
+    FACTION_RULES.forEach(rule => {
+      const activeCount = activeTeam
+        .map(id => HEROES_DB.find(h => h.id === id)?.universe)
+        .filter(universe => rule.universes.includes(universe)).length;
+      if (activeCount >= 2 && rule.universes.includes(hero.universe)) {
+        stats[rule.stat] = Math.round(stats[rule.stat] * 1.08);
+      }
+    });
 
     // 3. Talent Mod boosts
     if (heroTalents && heroTalents[hero.id]) {
@@ -432,6 +441,12 @@ export default function HubScreen({
     return [...LOOT_RARITIES].reverse().find(rarity => score >= rarity.threshold) || LOOT_RARITIES[0];
   };
 
+  const getStageTokenPrize = (stage) => {
+    if (stage.id === 38) return 20;
+    if (stage.isSurvival) return 3;
+    return stage.id % 2 === 0 ? 5 : 0;
+  };
+
   const prepareStage = (stage) => {
     const modifier = getStageModifier(stage);
     const rarity = getLootRarity(stage);
@@ -441,7 +456,8 @@ export default function HubScreen({
       modifier,
       lootRarity: rarity,
       goldPrize: Math.round(stage.goldPrize * rewardFactor),
-      shardPrize: Math.round(stage.shardPrize * rewardFactor)
+      shardPrize: Math.round(stage.shardPrize * rewardFactor),
+      tokenPrize: getStageTokenPrize(stage)
     };
   };
 
@@ -451,14 +467,16 @@ export default function HubScreen({
 
   const launchSurvival = () => {
     const base = missionDeck.find(stage => isStageUnlocked(stage)) || nextUnclearedStage || STAGES[0];
+    const preparedBase = prepareStage(base);
     onLaunchStage({
-      ...prepareStage(base),
+      ...preparedBase,
       id: 9000 + base.id,
       name: lang === 'fr' ? `Survie de brèche: ${base.universe}` : `Breach Survival: ${base.universe}`,
       difficulty: 'Survival',
       isSurvival: true,
-      goldPrize: Math.round(base.goldPrize * 1.4),
-      shardPrize: Math.round(base.shardPrize * 1.35)
+      goldPrize: Math.round(preparedBase.goldPrize * 1.4),
+      shardPrize: Math.round(preparedBase.shardPrize * 1.35),
+      tokenPrize: 3
     });
   };
 
@@ -477,6 +495,24 @@ export default function HubScreen({
       .filter(universe => rule.universes.includes(universe)).length;
     return { ...rule, count, active: count >= 2 };
   });
+
+  const totalHeroLevels = unlockedHeroes.reduce((sum, heroId) => sum + (heroLevels[heroId] || 1), 0);
+  const metaRank = completedStages.length >= 24
+    ? 'Omega'
+    : completedStages.length >= 16
+      ? 'Veteran'
+      : completedStages.length >= 8
+        ? 'Strike'
+        : 'Initiate';
+  const nextProgressGoal = completedStages.length < 2
+    ? (lang === 'fr' ? 'Stabiliser 2 brèches pour ouvrir le palier Medium.' : 'Stabilize 2 breaches to open Medium tier.')
+    : completedStages.length < 6
+      ? (lang === 'fr' ? 'Atteindre 6 brèches pour débloquer le palier Hard.' : 'Reach 6 breaches to unlock Hard tier.')
+      : completedStages.length < 12
+        ? (lang === 'fr' ? 'Construire une équipe niveau 4+ avant le palier Very Hard.' : 'Build a level 4+ squad before Very Hard tier.')
+        : completedStages.length < 18
+          ? (lang === 'fr' ? 'Préparer reliques fusionnées et synergies avant le boss final.' : 'Prepare fused relics and synergies before the final boss.')
+          : (lang === 'fr' ? 'Noyau final disponible: optimiser les builds et le codex.' : 'Final core available: optimize builds and codex.');
 
   const getBossIntel = (stage) => {
     if (stage.id === 38) return getFinalGameBoss();
@@ -676,7 +712,7 @@ export default function HubScreen({
             <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.4fr', gap: '12px', marginBottom: '14px' }}>
               <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '5px' }}>
                 <div style={{ fontSize: '11px', color: '#ffeb3b', marginBottom: '8px', fontWeight: 'bold' }}>
-                  {lang === 'fr' ? 'CONTRATS JOURNALIERS' : 'DAILY CONTRACTS'}
+                  {lang === 'fr' ? 'FOCUS JOURNALIER' : 'DAILY FOCUS'}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {dailyContracts.map(contract => {
@@ -686,7 +722,7 @@ export default function HubScreen({
                     return (
                       <div key={contract.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', fontSize: '10px', color: done ? '#2ecc71' : '#ccc' }}>
                         <span>{done ? 'OK' : 'TODO'} - {contract.text[lang]}</span>
-                        <strong style={{ color: '#ffeb3b' }}>{contract.reward}</strong>
+                        <strong style={{ color: '#ffeb3b' }}>{contract.focus}</strong>
                       </div>
                     );
                   })}
@@ -743,10 +779,33 @@ export default function HubScreen({
                 </div>
               ))}
             </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+              gap: '8px',
+              marginBottom: '14px',
+              padding: '10px',
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ fontSize: '10px', color: '#aaa' }}>
+                <strong style={{ color: '#39c5bb' }}>{lang === 'fr' ? 'Rang meta' : 'Meta rank'}:</strong> {metaRank}
+              </div>
+              <div style={{ fontSize: '10px', color: '#aaa' }}>
+                <strong style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Progression' : 'Progress'}:</strong> {completedStages.length}/38
+              </div>
+              <div style={{ fontSize: '10px', color: '#aaa' }}>
+                <strong style={{ color: '#9b59b6' }}>{lang === 'fr' ? 'Niveaux équipe' : 'Roster levels'}:</strong> {totalHeroLevels}
+              </div>
+              <div style={{ fontSize: '10px', color: '#ccc' }}>
+                {nextProgressGoal}
+              </div>
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {missionDeck.map((stage) => {
                 const isCompleted = completedStages.includes(stage.id);
-                const isFinal = stage.id === 38;
                 const requiredClears = getStageRequiredClears(stage);
                 const isLocked = !isStageUnlocked(stage);
                 const isPriority = stage.id === nextUnclearedStage?.id;
@@ -812,10 +871,7 @@ export default function HubScreen({
                         {modifier.desc[lang]}
                       </div>
                       <div style={{ fontSize: '11px', color: '#ffeb3b', marginTop: '4px' }}>
-                        Reward: {preparedStage.goldPrize} gold | {preparedStage.shardPrize} shards {isFinal || stage.id % 2 === 0 ? '| +5 tokens' : ''}
-                      </div>
-                      <div style={{ display: 'none', fontSize: '11px', color: '#ffeb3b', marginTop: '3px' }}>
-                        Prize: 🪙 {stage.goldPrize} | 🌀 {stage.shardPrize} {isFinal || stage.id % 2 === 0 ? `| 🎫 +5 Tokens` : ''}
+                        Reward: {preparedStage.goldPrize} gold | {preparedStage.shardPrize} shards {preparedStage.tokenPrize ? `| +${preparedStage.tokenPrize} tokens` : ''}
                       </div>
                     </div>
 
@@ -888,7 +944,7 @@ export default function HubScreen({
                     {getStageModifier(selectedBriefingStage).name[lang]}: {getStageModifier(selectedBriefingStage).desc[lang]}
                   </div>
                   <div style={{ fontSize: '11px', color: getLootRarity(selectedBriefingStage).color, marginTop: '6px' }}>
-                    {lang === 'fr' ? 'Rarete estimee' : 'Estimated rarity'}: {getLootRarity(selectedBriefingStage).label}
+                    {lang === 'fr' ? 'Rareté estimée' : 'Estimated rarity'}: {getLootRarity(selectedBriefingStage).label}
                   </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '8px' }}>
@@ -1639,7 +1695,7 @@ export default function HubScreen({
                             lineHeight: 1.35
                           }}>
                             <strong style={{ color: isCleared ? '#e74c3c' : '#555' }}>
-                              {lang === 'fr' ? 'Boss decrypté' : 'Decrypted boss'}:
+                              {lang === 'fr' ? 'Boss décrypté' : 'Decrypted boss'}:
                             </strong> {isCleared ? bossIntel.name : encryptString(bossIntel.name)}
                             <br />
                             {isCleared ? `HP ${bossIntel.hp} | ATK ${bossIntel.atk} | ${bossIntel.special}` : encryptString('Classified boss pattern')}

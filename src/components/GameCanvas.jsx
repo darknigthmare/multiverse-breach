@@ -419,6 +419,9 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
   const activeHeroStatic = HEROES_DB.find(h => h.id === activeHeroId);
   const equippedEventId = activeHeroStatic ? equippedEventItems[activeHeroStatic.id] : null;
   const equippedEvent = activeHeroStatic ? EVENT_ITEMS_DB[activeHeroStatic.universe] : null;
+  const victoryRewardText = lang === 'fr'
+    ? `Brèche fermée ! Obtenu +${stage.goldPrize} Or & +${stage.shardPrize} Fragments${stage.tokenPrize ? ` & +${stage.tokenPrize} Jetons` : ''}.`
+    : `Rift closed! Earned +${stage.goldPrize} Gold & +${stage.shardPrize} Shards${stage.tokenPrize ? ` & +${stage.tokenPrize} Tokens` : ''}.`;
 
   return (
     <div style={{
@@ -584,7 +587,7 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
             </h1>
             <p style={{ fontSize: '15px', color: '#ccc', marginBottom: '30px' }}>
               {battleResult === 'victory'
-                ? getTranslation(lang, 'victoryMsg', { gold: stage.goldPrize, shards: stage.shardPrize, tokens: (stage.id === 38 ? 20 : 5) })
+                ? victoryRewardText
                 : getTranslation(lang, 'defeatMsg')}
             </p>
             <button
