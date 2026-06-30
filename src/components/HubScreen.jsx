@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
-import { drawPixelSprite } from '../game/renderer';
+import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { LORE_DB } from '../game/lore';
 
@@ -24,6 +24,7 @@ export default function HubScreen({
   const [activeTab, setActiveTab] = useState('missions'); // 'missions' | 'roster' | 'party' | 'inventory' | 'shop'
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga'
+  const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
 
@@ -342,19 +343,41 @@ export default function HubScreen({
     return Object.keys(EVENT_ITEMS_DB).map(key => EVENT_ITEMS_DB[key]).filter(it => inventory.includes(it.id) || ['evt_hl_snarks', 'evt_halo_warthog', 'evt_re_cure'].includes(it.id));
   };
 
-  const finalStageUnlocked = completedStages.length >= 18;
+  const getStageRequiredClears = (stage) => {
+    if (stage.id === 38) return 18;
+    if (stage.difficulty === 'Medium') return 2;
+    if (stage.difficulty === 'Hard') return 6;
+    if (stage.difficulty === 'Very Hard') return 12;
+    if (stage.difficulty === 'Expert') return 16;
+    return 0;
+  };
+  const isStageUnlocked = (stage) => completedStages.length >= getStageRequiredClears(stage);
+  const getBreachBrief = (stage) => {
+    const modeText = stage.mode === 'RPG'
+      ? (lang === 'fr' ? 'assaut en profondeur' : 'deep strike')
+      : stage.mode === 'Tactics'
+        ? (lang === 'fr' ? 'contrôle tactique du terrain' : 'tactical field control')
+        : (lang === 'fr' ? 'combat de plateforme rapide' : 'fast platform combat');
+    return lang === 'fr'
+      ? `Faille ${stage.universe}: ${modeText}. Neutralise ${stage.bossName} et stabilise les coordonnées.`
+      : `${stage.universe} breach: ${modeText}. Neutralize ${stage.bossName} and stabilize the coordinates.`;
+  };
+
+  const finalStageUnlocked = completedStages.length >= getStageRequiredClears({ id: 38 });
   const visibleStages = STAGES.filter(stage => {
     if (stage.id === 38) return true;
     return mediaFilter === 'all' || LORE_DB[stage.universe]?.mediaType === mediaFilter;
   });
   const finalStage = STAGES.find(stage => stage.id === 38);
-  const missionPool = visibleStages.filter(stage => stage.id !== 38);
-  const nextUnclearedStage = missionPool.find(stage => !completedStages.includes(stage.id)) || missionPool[0];
+  const missionPool = visibleStages.filter(stage => stage.id !== 38 && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
+  const unlockedMissionPool = missionPool.filter(isStageUnlocked);
+  const scanPool = unlockedMissionPool.length > 0 ? unlockedMissionPool : missionPool.slice(0, 1);
+  const nextUnclearedStage = scanPool.find(stage => !completedStages.includes(stage.id)) || scanPool[0];
   const seededMissionScore = (stage) => {
     const raw = Math.sin(stage.id * 9301 + missionSeed * 49297) * 10000;
     return raw - Math.floor(raw);
   };
-  const randomMissionDeck = missionPool
+  const randomMissionDeck = scanPool
     .filter(stage => stage.id !== nextUnclearedStage?.id)
     .sort((a, b) => seededMissionScore(a) - seededMissionScore(b))
     .slice(0, 4);
@@ -512,12 +535,31 @@ export default function HubScreen({
                 {lang === 'fr' ? '↻ NOUVEAU SCAN' : '↻ NEW SCAN'}
               </button>
             </div>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
+              {['all', 'RPG', 'Tactics', 'Smash'].map(mode => (
+                <button
+                  key={mode}
+                  onClick={() => { setMissionModeFilter(mode); setMissionSeed(Date.now()); sound.playSfx('click'); }}
+                  className={`btn-retro ${missionModeFilter === mode ? 'active-tab' : ''}`}
+                  style={{
+                    padding: '6px 10px',
+                    fontSize: '10px',
+                    borderColor: missionModeFilter === mode ? '#39c5bb' : '#444',
+                    color: missionModeFilter === mode ? '#39c5bb' : '#aaa'
+                  }}
+                >
+                  {mode === 'all' ? 'ALL' : mode.toUpperCase()}
+                </button>
+              ))}
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {missionDeck.map((stage) => {
                 const isCompleted = completedStages.includes(stage.id);
                 const isFinal = stage.id === 38;
-                const isLocked = isFinal && !finalStageUnlocked;
+                const requiredClears = getStageRequiredClears(stage);
+                const isLocked = !isStageUnlocked(stage);
                 const isPriority = stage.id === nextUnclearedStage?.id;
+                const backdropSrc = getOpenAiBackdropSrc(stage.universe, stage.mode);
 
                 return (
                   <div key={stage.id} style={{
@@ -530,6 +572,20 @@ export default function HubScreen({
                     borderRadius: '5px',
                     opacity: isLocked ? 0.45 : 1
                   }}>
+                    {backdropSrc && (
+                      <div style={{
+                        width: '145px',
+                        alignSelf: 'stretch',
+                        minHeight: '94px',
+                        flexShrink: 0,
+                        borderRadius: '4px',
+                        border: '1px solid rgba(255,255,255,0.12)',
+                        backgroundImage: `linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.32)), url(${backdropSrc})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        imageRendering: 'pixelated'
+                      }} />
+                    )}
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                         <span style={{ fontSize: '16px', fontWeight: 'bold' }}>
@@ -549,14 +605,22 @@ export default function HubScreen({
                       <div style={{ fontSize: '12px', color: '#bbb', marginTop: '4px' }}>
                         Universe: <strong style={{ color: '#fff' }}>{stage.universe}</strong> | World Boss: <strong style={{ color: '#e74c3c' }}>{stage.bossName}</strong>
                       </div>
-                      <div style={{ fontSize: '11px', color: '#ffeb3b', marginTop: '3px' }}>
+                      <div style={{ fontSize: '11px', color: '#8fa5aa', marginTop: '4px', maxWidth: '560px', lineHeight: 1.35 }}>
+                        {getBreachBrief(stage)}
+                      </div>
+                      <div style={{ fontSize: '11px', color: '#ffeb3b', marginTop: '4px' }}>
+                        Reward: {stage.goldPrize} gold | {stage.shardPrize} shards {isFinal || stage.id % 2 === 0 ? '| +5 tokens' : ''}
+                      </div>
+                      <div style={{ display: 'none', fontSize: '11px', color: '#ffeb3b', marginTop: '3px' }}>
                         Prize: 🪙 {stage.goldPrize} | 🌀 {stage.shardPrize} {isFinal || stage.id % 2 === 0 ? `| 🎫 +5 Tokens` : ''}
                       </div>
                     </div>
 
                     <div>
                       {isLocked ? (
-                        <span style={{ fontSize: '11px', color: '#e74c3c' }}>LOCK (Clear 18 stages)</span>
+                        <span style={{ fontSize: '11px', color: '#e74c3c' }}>
+                          {lang === 'fr' ? `VERROU (${requiredClears} breches)` : `LOCK (${requiredClears} breaches)`}
+                        </span>
                       ) : (
                         <button
                           onClick={() => onLaunchStage(stage)}

@@ -611,7 +611,7 @@ const DECOR_THEMES = {
   Matrix: { sky: ['#061706', '#000300'], floor: 'rgba(50, 255, 98, 0.12)', grid: 'rgba(50, 255, 98, 0.45)', motif: 'singularity', accent: '#32ff62' }
 };
 
-const OPENAI_BACKDROPS = {
+export const OPENAI_BACKDROPS = {
   RPG: {
     'Gears of War': '/backgrounds/gears-of-war-rpg-openai.png',
     Predator: '/backgrounds/predator-rpg-openai.png',
@@ -677,7 +677,7 @@ function withAlpha(hex, alpha) {
 }
 
 function getOpenAiBackdrop(universe, mode) {
-  const src = OPENAI_BACKDROPS[mode]?.[universe];
+  const src = getOpenAiBackdropSrc(universe, mode);
   if (!src || typeof Image === 'undefined') return null;
 
   let img = backdropCache.get(src);
@@ -688,6 +688,10 @@ function getOpenAiBackdrop(universe, mode) {
     backdropCache.set(src, img);
   }
   return img.complete && img.naturalWidth > 0 ? img : null;
+}
+
+export function getOpenAiBackdropSrc(universe, mode) {
+  return OPENAI_BACKDROPS[mode]?.[universe] || null;
 }
 
 function drawOpenAiBackdrop(ctx, universe, width, height, mode) {
