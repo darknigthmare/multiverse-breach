@@ -24,6 +24,8 @@ export default function HubScreen({
   const [activeTab, setActiveTab] = useState('missions'); // 'missions' | 'roster' | 'party' | 'inventory' | 'shop'
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga'
+  const [missionSeed, setMissionSeed] = useState(() => Date.now());
+  const [showMissionArchive, setShowMissionArchive] = useState(false);
 
   // List of 37 stages (one per universe) + 1 final boss stage
   const STAGES = [
@@ -341,6 +343,23 @@ export default function HubScreen({
   };
 
   const finalStageUnlocked = completedStages.length >= 18;
+  const visibleStages = STAGES.filter(stage => {
+    if (stage.id === 38) return true;
+    return mediaFilter === 'all' || LORE_DB[stage.universe]?.mediaType === mediaFilter;
+  });
+  const finalStage = STAGES.find(stage => stage.id === 38);
+  const missionPool = visibleStages.filter(stage => stage.id !== 38);
+  const nextUnclearedStage = missionPool.find(stage => !completedStages.includes(stage.id)) || missionPool[0];
+  const seededMissionScore = (stage) => {
+    const raw = Math.sin(stage.id * 9301 + missionSeed * 49297) * 10000;
+    return raw - Math.floor(raw);
+  };
+  const randomMissionDeck = missionPool
+    .filter(stage => stage.id !== nextUnclearedStage?.id)
+    .sort((a, b) => seededMissionScore(a) - seededMissionScore(b))
+    .slice(0, 4);
+  const missionDeck = [nextUnclearedStage, ...randomMissionDeck].filter(Boolean).slice(0, 5);
+  const clearedVisibleCount = missionPool.filter(stage => completedStages.includes(stage.id)).length;
 
   return (
     <div style={{
@@ -475,18 +494,30 @@ export default function HubScreen({
 
         {/* Tab 1: Missions */}
         {activeTab === 'missions' && (
-          <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px', maxHeight: '72vh', overflowY: 'auto' }}>
+          <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
             <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#39c5bb' }}>
-              {getTranslation(lang, 'tabMissions')} (37 UNIVERSE BREACHES)
+              {lang === 'fr' ? 'SCAN DE BRÈCHES' : 'BREACH SCAN'}
             </h3>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px', color: '#aaa', fontSize: '12px' }}>
+              <span>
+                {lang === 'fr'
+                  ? `${clearedVisibleCount}/${missionPool.length} brèches filtrées stabilisées · 5 cibles proposées`
+                  : `${clearedVisibleCount}/${missionPool.length} filtered breaches stabilized · 5 proposed targets`}
+              </span>
+              <button
+                onClick={() => { setMissionSeed(prev => prev + 1); sound.playSfx('click'); }}
+                className="btn-retro"
+                style={{ padding: '7px 12px', fontSize: '11px', borderColor: '#39c5bb' }}
+              >
+                {lang === 'fr' ? '↻ NOUVEAU SCAN' : '↻ NEW SCAN'}
+              </button>
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {STAGES.filter(stage => {
-                if (stage.id === 38) return true;
-                return mediaFilter === 'all' || LORE_DB[stage.universe]?.mediaType === mediaFilter;
-              }).map((stage) => {
+              {missionDeck.map((stage) => {
                 const isCompleted = completedStages.includes(stage.id);
-                const isFinal = stage.id === 25;
+                const isFinal = stage.id === 38;
                 const isLocked = isFinal && !finalStageUnlocked;
+                const isPriority = stage.id === nextUnclearedStage?.id;
 
                 return (
                   <div key={stage.id} style={{
@@ -494,8 +525,8 @@ export default function HubScreen({
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     padding: '14px 18px',
-                    background: isLocked ? 'rgba(0,0,0,0.4)' : isCompleted ? 'rgba(46, 204, 113, 0.08)' : 'rgba(255, 255, 255, 0.02)',
-                    border: isLocked ? '1px solid #444' : isCompleted ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.06)',
+                    background: isLocked ? 'rgba(0,0,0,0.4)' : isCompleted ? 'rgba(46, 204, 113, 0.08)' : isPriority ? 'rgba(57,197,187,0.08)' : 'rgba(255, 255, 255, 0.02)',
+                    border: isLocked ? '1px solid #444' : isCompleted ? '1px solid #2ecc71' : isPriority ? '1px solid rgba(57,197,187,0.55)' : '1px solid rgba(255,255,255,0.06)',
                     borderRadius: '5px',
                     opacity: isLocked ? 0.45 : 1
                   }}>
@@ -544,6 +575,83 @@ export default function HubScreen({
                   </div>
                 );
               })}
+            </div>
+            {finalStage && (
+              <div style={{
+                marginTop: '14px',
+                padding: '14px 18px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '12px',
+                flexWrap: 'wrap',
+                background: finalStageUnlocked ? 'rgba(255, 234, 0, 0.08)' : 'rgba(0,0,0,0.28)',
+                border: finalStageUnlocked ? '1px solid rgba(255,234,0,0.45)' : '1px solid #333',
+                borderRadius: '5px'
+              }}>
+                <div>
+                  <div style={{ fontSize: '11px', color: finalStageUnlocked ? '#ffea00' : '#888', marginBottom: '4px' }}>
+                    {lang === 'fr' ? 'ANOMALIE FINALE' : 'FINAL ANOMALY'}
+                  </div>
+                  <div style={{ fontSize: '15px', fontWeight: 'bold' }}>#{finalStage.id} {finalStage.name}</div>
+                  <div style={{ fontSize: '11px', color: '#bbb', marginTop: '4px' }}>
+                    {finalStageUnlocked
+                      ? (lang === 'fr' ? 'Noyau mondial disponible.' : 'World core available.')
+                      : (lang === 'fr' ? `${Math.max(0, 18 - completedStages.length)} brèches à stabiliser avant ouverture.` : `${Math.max(0, 18 - completedStages.length)} breaches to stabilize before opening.`)}
+                  </div>
+                </div>
+                <button
+                  onClick={() => finalStageUnlocked && onLaunchStage(finalStage)}
+                  className="btn-retro"
+                  disabled={!finalStageUnlocked}
+                  style={{
+                    padding: '8px 16px',
+                    background: finalStageUnlocked ? '#ffea00' : 'rgba(255,255,255,0.04)',
+                    color: finalStageUnlocked ? '#111' : '#777',
+                    fontSize: '12px',
+                    cursor: finalStageUnlocked ? 'pointer' : 'not-allowed'
+                  }}
+                >
+                  {finalStageUnlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'VERROUILLÉ' : 'LOCKED')}
+                </button>
+              </div>
+            )}
+            <div style={{ marginTop: '14px' }}>
+              <button
+                onClick={() => { setShowMissionArchive(prev => !prev); sound.playSfx('click'); }}
+                className="btn-retro"
+                style={{ padding: '7px 11px', fontSize: '10px', borderColor: '#555' }}
+              >
+                {showMissionArchive
+                  ? (lang === 'fr' ? 'MASQUER ARCHIVE COMPLETE' : 'HIDE FULL ARCHIVE')
+                  : (lang === 'fr' ? `ARCHIVE COMPLETE (${missionPool.length})` : `FULL ARCHIVE (${missionPool.length})`)}
+              </button>
+
+              {showMissionArchive && (
+                <div style={{ marginTop: '10px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '8px', maxHeight: '34vh', overflowY: 'auto', paddingRight: '4px' }}>
+                  {missionPool.map(stage => {
+                    const isCompleted = completedStages.includes(stage.id);
+                    return (
+                      <button
+                        key={stage.id}
+                        onClick={() => onLaunchStage(stage)}
+                        className="btn-retro"
+                        style={{
+                          textAlign: 'left',
+                          padding: '9px',
+                          fontSize: '10px',
+                          borderColor: isCompleted ? '#2ecc71' : 'rgba(255,255,255,0.12)',
+                          color: isCompleted ? '#2ecc71' : '#ddd',
+                          background: 'rgba(255,255,255,0.02)'
+                        }}
+                      >
+                        #{stage.id} {stage.universe}<br />
+                        <span style={{ color: '#888' }}>{stage.mode} · {stage.difficulty}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         )}
