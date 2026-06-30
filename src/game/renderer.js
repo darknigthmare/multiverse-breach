@@ -722,6 +722,71 @@ function drawOpenAiBackdrop(ctx, universe, width, height, mode) {
   return true;
 }
 
+function drawBackdropAnomalyOverlay(ctx, universe, width, height, mode, time) {
+  const theme = getTheme(universe);
+  const accent = theme.accent;
+
+  ctx.save();
+  ctx.globalCompositeOperation = 'screen';
+
+  if (mode === 'RPG') {
+    ctx.strokeStyle = withAlpha(accent, 0.32);
+    ctx.lineWidth = 2;
+    for (let i = 0; i < 5; i++) {
+      const y = height * 0.62 + Math.sin(time * 0.04 + i) * 6 + i * 10;
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y + width * 0.18);
+      ctx.stroke();
+    }
+  }
+
+  if (mode === 'Tactics') {
+    ctx.strokeStyle = withAlpha(accent, 0.26);
+    ctx.lineWidth = 1;
+    for (let x = 70; x < width - 70; x += 55) {
+      ctx.beginPath();
+      ctx.moveTo(x, 48);
+      ctx.lineTo(x + Math.sin(time * 0.03 + x) * 5, height - 55);
+      ctx.stroke();
+    }
+  }
+
+  if (mode === 'Smash') {
+    ctx.fillStyle = withAlpha(accent, 0.22);
+    for (let i = 0; i < 12; i++) {
+      const x = (i * 67 + time * 1.7) % width;
+      const y = 36 + ((i * 29) % Math.max(1, height - 90));
+      ctx.fillRect(x, y, 3 + (i % 3), 2);
+    }
+  }
+
+  if (universe === 'Stargate') {
+    ctx.strokeStyle = 'rgba(80, 200, 255, 0.34)';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(width * 0.5, height * 0.42, 54 + Math.sin(time * 0.05) * 3, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  if (universe === 'The Matrix' || universe === 'Matrix' || universe === 'Ghost in the Shell') {
+    ctx.fillStyle = 'rgba(80,255,120,0.22)';
+    ctx.font = '10px monospace';
+    for (let x = 16; x < width; x += 64) {
+      ctx.fillText('0101', x, (time * 2 + x * 3) % height);
+    }
+  }
+
+  if (universe === 'Silent Hill' || universe === 'Dead Space') {
+    ctx.fillStyle = 'rgba(220,220,210,0.08)';
+    for (let y = 28; y < height; y += 44) {
+      ctx.fillRect(0, y + Math.sin(time * 0.02 + y) * 8, width, 10);
+    }
+  }
+
+  ctx.restore();
+}
+
 function drawStageFloor(ctx, width, height, mode, theme) {
   if (mode === 'RPG') {
     ctx.fillStyle = theme.floor;
@@ -1032,6 +1097,7 @@ function drawMotif(ctx, theme, width, height, time) {
 
 export function drawUniverseBackground(ctx, universe, width, height, mode) {
   if (drawOpenAiBackdrop(ctx, universe, width, height, mode)) {
+    drawBackdropAnomalyOverlay(ctx, universe, width, height, mode, Date.now() / 33);
     return true;
   }
 

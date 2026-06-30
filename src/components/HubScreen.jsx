@@ -4,6 +4,7 @@ import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { LORE_DB } from '../game/lore';
+import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 
 export default function HubScreen({
   lang,
@@ -27,6 +28,64 @@ export default function HubScreen({
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
+  const [briefingStageId, setBriefingStageId] = useState(null);
+
+  const BREACH_MODIFIERS = [
+    {
+      id: 'gravity',
+      name: { fr: 'Gravité instable', en: 'Unstable Gravity' },
+      desc: { fr: 'Les ennemis frappent plus fort, mais les récompenses montent.', en: 'Enemies hit harder, but rewards are higher.' },
+      enemyAtk: 1.12,
+      reward: 1.15,
+      color: '#f39c12'
+    },
+    {
+      id: 'boss_rage',
+      name: { fr: 'Boss enragé', en: 'Enraged Boss' },
+      desc: { fr: 'Le boss gagne des PV et charge plus vite ses attaques.', en: 'The boss gains HP and pressures the squad harder.' },
+      bossHp: 1.18,
+      reward: 1.25,
+      color: '#e74c3c'
+    },
+    {
+      id: 'naquadah',
+      name: { fr: 'Résonance Naquadah', en: 'Naquadah Resonance' },
+      desc: { fr: 'Les héros gagnent un léger bonus défensif.', en: 'Heroes gain a small defensive boost.' },
+      heroDef: 1.1,
+      reward: 1,
+      color: '#39c5bb'
+    },
+    {
+      id: 'thin_rift',
+      name: { fr: 'Faille mince', en: 'Thin Rift' },
+      desc: { fr: 'Les ennemis sont plus rapides, les shards augmentent.', en: 'Enemies move faster, breach shards increase.' },
+      enemySpd: 1.12,
+      reward: 1.18,
+      color: '#9b59b6'
+    }
+  ];
+
+  const DAILY_CONTRACTS = [
+    { id: 'rpg', mode: 'RPG', reward: '+25 gold', text: { fr: 'Stabiliser une faille RPG', en: 'Stabilize one RPG breach' } },
+    { id: 'tactics', mode: 'Tactics', reward: '+10 shards', text: { fr: 'Gagner une mission tactique', en: 'Win one tactics mission' } },
+    { id: 'smash', mode: 'Smash', reward: '+2 tokens', text: { fr: 'Fermer une brèche Smash', en: 'Close one Smash breach' } },
+    { id: 'codex', mode: 'any', reward: '+1 loot rare', text: { fr: 'Décrypter un nouveau boss dans le codex', en: 'Decrypt a new boss codex entry' } }
+  ];
+
+  const FACTION_RULES = [
+    { id: 'sci_fi', label: 'Sci-Fi Marines', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator'], bonus: '+8% HP' },
+    { id: 'horror', label: 'Horreur cosmique', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw'], bonus: '+8% ATK' },
+    { id: 'cyber', label: 'IA & Cyber', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus'], bonus: '+8% SPD' },
+    { id: 'arcane', label: 'Mages & Occulte', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue'], bonus: '+8% DEF' }
+  ];
+
+  const LOOT_RARITIES = [
+    { id: 'common', label: 'Commun', color: '#9aa0a6', threshold: 0 },
+    { id: 'rare', label: 'Rare', color: '#3498db', threshold: 8 },
+    { id: 'epic', label: 'Epique', color: '#9b59b6', threshold: 14 },
+    { id: 'legendary', label: 'Legendaire', color: '#f1c40f', threshold: 18 },
+    { id: 'anomaly', label: 'Anomalie', color: '#ff4500', threshold: 24 }
+  ];
 
   // List of 37 stages (one per universe) + 1 final boss stage
   const STAGES = [
@@ -363,6 +422,67 @@ export default function HubScreen({
       : `${stage.universe} breach: ${modeText}. Neutralize ${stage.bossName} and stabilize the coordinates.`;
   };
 
+  const getStageModifier = (stage) => {
+    const index = Math.abs(Math.floor((stage.id * 17 + missionSeed) % BREACH_MODIFIERS.length));
+    return BREACH_MODIFIERS[index];
+  };
+
+  const getLootRarity = (stage) => {
+    const score = completedStages.length + getStageRequiredClears(stage) + (stage.id === 38 ? 12 : 0);
+    return [...LOOT_RARITIES].reverse().find(rarity => score >= rarity.threshold) || LOOT_RARITIES[0];
+  };
+
+  const prepareStage = (stage) => {
+    const modifier = getStageModifier(stage);
+    const rarity = getLootRarity(stage);
+    const rewardFactor = modifier.reward || 1;
+    return {
+      ...stage,
+      modifier,
+      lootRarity: rarity,
+      goldPrize: Math.round(stage.goldPrize * rewardFactor),
+      shardPrize: Math.round(stage.shardPrize * rewardFactor)
+    };
+  };
+
+  const launchStage = (stage) => {
+    onLaunchStage(prepareStage(stage));
+  };
+
+  const launchSurvival = () => {
+    const base = missionDeck.find(stage => isStageUnlocked(stage)) || nextUnclearedStage || STAGES[0];
+    onLaunchStage({
+      ...prepareStage(base),
+      id: 9000 + base.id,
+      name: lang === 'fr' ? `Survie de brèche: ${base.universe}` : `Breach Survival: ${base.universe}`,
+      difficulty: 'Survival',
+      isSurvival: true,
+      goldPrize: Math.round(base.goldPrize * 1.4),
+      shardPrize: Math.round(base.shardPrize * 1.35)
+    });
+  };
+
+  const selectedBriefingStage = briefingStageId
+    ? STAGES.find(stage => stage.id === briefingStageId)
+    : null;
+
+  const todayIndex = Math.floor(Date.now() / 86400000);
+  const dailyContracts = DAILY_CONTRACTS
+    .map((contract, idx) => DAILY_CONTRACTS[(todayIndex + idx) % DAILY_CONTRACTS.length])
+    .slice(0, 3);
+
+  const activeFactionSynergies = FACTION_RULES.map(rule => {
+    const count = activeTeam
+      .map(id => HEROES_DB.find(hero => hero.id === id)?.universe)
+      .filter(universe => rule.universes.includes(universe)).length;
+    return { ...rule, count, active: count >= 2 };
+  });
+
+  const getBossIntel = (stage) => {
+    if (stage.id === 38) return getFinalGameBoss();
+    return ENEMIES_DB[stage.universe]?.worldBoss || ENEMIES_DB[stage.universe]?.bosses?.[0];
+  };
+
   const finalStageUnlocked = completedStages.length >= getStageRequiredClears({ id: 38 });
   const visibleStages = STAGES.filter(stage => {
     if (stage.id === 38) return true;
@@ -552,6 +672,77 @@ export default function HubScreen({
                 </button>
               ))}
             </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.4fr', gap: '12px', marginBottom: '14px' }}>
+              <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '5px' }}>
+                <div style={{ fontSize: '11px', color: '#ffeb3b', marginBottom: '8px', fontWeight: 'bold' }}>
+                  {lang === 'fr' ? 'CONTRATS JOURNALIERS' : 'DAILY CONTRACTS'}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  {dailyContracts.map(contract => {
+                    const done = contract.mode === 'any'
+                      ? completedStages.length > 0
+                      : missionPool.some(stage => stage.mode === contract.mode && completedStages.includes(stage.id));
+                    return (
+                      <div key={contract.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', fontSize: '10px', color: done ? '#2ecc71' : '#ccc' }}>
+                        <span>{done ? 'OK' : 'TODO'} - {contract.text[lang]}</span>
+                        <strong style={{ color: '#ffeb3b' }}>{contract.reward}</strong>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(57,197,187,0.16)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                  <span style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold' }}>
+                    {lang === 'fr' ? 'CARTE MULTIVERS' : 'MULTIVERSE MAP'}
+                  </span>
+                  <button onClick={launchSurvival} className="btn-retro" style={{ fontSize: '10px', padding: '4px 8px', borderColor: '#ff4500', color: '#ff8c00' }}>
+                    {lang === 'fr' ? 'SURVIE' : 'SURVIVAL'}
+                  </button>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, minmax(20px, 1fr))', gap: '5px' }}>
+                  {missionPool.slice(0, 30).map(stage => {
+                    const isCompleted = completedStages.includes(stage.id);
+                    const isLocked = !isStageUnlocked(stage);
+                    return (
+                      <button
+                        key={stage.id}
+                        onClick={() => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                        title={`${stage.universe} - ${stage.mode}`}
+                        style={{
+                          height: '20px',
+                          borderRadius: '3px',
+                          border: isCompleted ? '1px solid #2ecc71' : isLocked ? '1px solid #333' : '1px solid #39c5bb',
+                          background: isCompleted ? '#2ecc7133' : isLocked ? '#111' : '#39c5bb22',
+                          color: isLocked ? '#555' : '#ddd',
+                          fontSize: '9px',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        {stage.id}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px', marginBottom: '14px' }}>
+              {activeFactionSynergies.map(rule => (
+                <div key={rule.id} style={{
+                  padding: '8px 10px',
+                  border: rule.active ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)',
+                  background: rule.active ? 'rgba(46,204,113,0.08)' : 'rgba(255,255,255,0.02)',
+                  borderRadius: '4px',
+                  fontSize: '10px',
+                  color: rule.active ? '#d9ffe5' : '#888'
+                }}>
+                  <strong>{rule.label}</strong> {rule.count}/2 - {rule.bonus}
+                </div>
+              ))}
+            </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {missionDeck.map((stage) => {
                 const isCompleted = completedStages.includes(stage.id);
@@ -560,6 +751,9 @@ export default function HubScreen({
                 const isLocked = !isStageUnlocked(stage);
                 const isPriority = stage.id === nextUnclearedStage?.id;
                 const backdropSrc = getOpenAiBackdropSrc(stage.universe, stage.mode);
+                const preparedStage = prepareStage(stage);
+                const modifier = preparedStage.modifier;
+                const rarity = preparedStage.lootRarity;
 
                 return (
                   <div key={stage.id} style={{
@@ -599,6 +793,12 @@ export default function HubScreen({
                         }}>
                           {stage.mode === 'Smash' ? getTranslation(lang, 'modeSmash') : stage.mode === 'RPG' ? getTranslation(lang, 'modeRpg') : getTranslation(lang, 'modeTactics')}
                         </span>
+                        <span style={{ color: modifier.color, border: `1px solid ${modifier.color}`, padding: '1px 5px', fontSize: '9px', borderRadius: '2px' }}>
+                          {modifier.name[lang]}
+                        </span>
+                        <span style={{ color: rarity.color, border: `1px solid ${rarity.color}`, padding: '1px 5px', fontSize: '9px', borderRadius: '2px' }}>
+                          Loot {rarity.label}
+                        </span>
                         {isCompleted && <span style={{ color: '#2ecc71', fontSize: '11px', fontWeight: 'bold' }}>✓ CLEARED</span>}
                       </div>
 
@@ -608,8 +808,11 @@ export default function HubScreen({
                       <div style={{ fontSize: '11px', color: '#8fa5aa', marginTop: '4px', maxWidth: '560px', lineHeight: 1.35 }}>
                         {getBreachBrief(stage)}
                       </div>
+                      <div style={{ fontSize: '10px', color: '#aaa', marginTop: '4px', maxWidth: '560px', lineHeight: 1.35 }}>
+                        {modifier.desc[lang]}
+                      </div>
                       <div style={{ fontSize: '11px', color: '#ffeb3b', marginTop: '4px' }}>
-                        Reward: {stage.goldPrize} gold | {stage.shardPrize} shards {isFinal || stage.id % 2 === 0 ? '| +5 tokens' : ''}
+                        Reward: {preparedStage.goldPrize} gold | {preparedStage.shardPrize} shards {isFinal || stage.id % 2 === 0 ? '| +5 tokens' : ''}
                       </div>
                       <div style={{ display: 'none', fontSize: '11px', color: '#ffeb3b', marginTop: '3px' }}>
                         Prize: 🪙 {stage.goldPrize} | 🌀 {stage.shardPrize} {isFinal || stage.id % 2 === 0 ? `| 🎫 +5 Tokens` : ''}
@@ -622,24 +825,87 @@ export default function HubScreen({
                           {lang === 'fr' ? `VERROU (${requiredClears} breches)` : `LOCK (${requiredClears} breaches)`}
                         </span>
                       ) : (
-                        <button
-                          onClick={() => onLaunchStage(stage)}
-                          className="btn-retro"
-                          style={{
-                            padding: '8px 16px',
-                            background: '#39c5bb',
-                            color: '#111',
-                            fontSize: '12px'
-                          }}
-                        >
-                          {getTranslation(lang, 'deploySquad')}
-                        </button>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                          <button
+                            onClick={() => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                            className="btn-retro"
+                            style={{ padding: '6px 12px', borderColor: '#ffeb3b', color: '#ffeb3b', fontSize: '11px' }}
+                          >
+                            BRIEFING
+                          </button>
+                          <button
+                            onClick={() => launchStage(stage)}
+                            className="btn-retro"
+                            style={{
+                              padding: '8px 16px',
+                              background: '#39c5bb',
+                              color: '#111',
+                              fontSize: '12px'
+                            }}
+                          >
+                            {getTranslation(lang, 'deploySquad')}
+                          </button>
+                        </div>
                       )}
                     </div>
                   </div>
                 );
               })}
             </div>
+            {selectedBriefingStage && (
+              <div style={{
+                marginTop: '14px',
+                padding: '16px',
+                display: 'grid',
+                gridTemplateColumns: '190px 1fr auto',
+                gap: '14px',
+                alignItems: 'stretch',
+                background: 'rgba(0,0,0,0.34)',
+                border: '1px solid rgba(255,235,59,0.28)',
+                borderRadius: '6px'
+              }}>
+                <div style={{
+                  minHeight: '120px',
+                  backgroundImage: `linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.35)), url(${getOpenAiBackdropSrc(selectedBriefingStage.universe, selectedBriefingStage.mode) || ''})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  imageRendering: 'pixelated',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  borderRadius: '4px'
+                }} />
+                <div>
+                  <div style={{ fontSize: '11px', color: '#ffeb3b', marginBottom: '5px' }}>
+                    {lang === 'fr' ? 'BRIEFING TACTIQUE' : 'TACTICAL BRIEFING'}
+                  </div>
+                  <div style={{ fontSize: '16px', fontWeight: 'bold' }}>{selectedBriefingStage.name}</div>
+                  <div style={{ fontSize: '11px', color: '#bbb', marginTop: '6px', lineHeight: 1.45 }}>
+                    {getBreachBrief(selectedBriefingStage)}
+                  </div>
+                  <div style={{ fontSize: '11px', color: '#aaa', marginTop: '8px' }}>
+                    Boss: <strong style={{ color: '#e74c3c' }}>{getBossIntel(selectedBriefingStage)?.name || selectedBriefingStage.bossName}</strong> - {getBossIntel(selectedBriefingStage)?.special || 'Unknown anomaly'}
+                  </div>
+                  <div style={{ fontSize: '11px', color: getStageModifier(selectedBriefingStage).color, marginTop: '6px' }}>
+                    {getStageModifier(selectedBriefingStage).name[lang]}: {getStageModifier(selectedBriefingStage).desc[lang]}
+                  </div>
+                  <div style={{ fontSize: '11px', color: getLootRarity(selectedBriefingStage).color, marginTop: '6px' }}>
+                    {lang === 'fr' ? 'Rarete estimee' : 'Estimated rarity'}: {getLootRarity(selectedBriefingStage).label}
+                  </div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '8px' }}>
+                  <button
+                    onClick={() => launchStage(selectedBriefingStage)}
+                    disabled={!isStageUnlocked(selectedBriefingStage)}
+                    className="btn-retro"
+                    style={{ padding: '8px 14px', background: isStageUnlocked(selectedBriefingStage) ? '#ffeb3b' : '#333', color: isStageUnlocked(selectedBriefingStage) ? '#111' : '#777' }}
+                  >
+                    {isStageUnlocked(selectedBriefingStage) ? getTranslation(lang, 'deploySquad') : 'LOCKED'}
+                  </button>
+                  <button onClick={() => setBriefingStageId(null)} className="btn-retro" style={{ padding: '6px 12px', fontSize: '10px', borderColor: '#555' }}>
+                    CLOSE
+                  </button>
+                </div>
+              </div>
+            )}
             {finalStage && (
               <div style={{
                 marginTop: '14px',
@@ -665,7 +931,7 @@ export default function HubScreen({
                   </div>
                 </div>
                 <button
-                  onClick={() => finalStageUnlocked && onLaunchStage(finalStage)}
+                  onClick={() => finalStageUnlocked && launchStage(finalStage)}
                   className="btn-retro"
                   disabled={!finalStageUnlocked}
                   style={{
@@ -698,7 +964,7 @@ export default function HubScreen({
                     return (
                       <button
                         key={stage.id}
-                        onClick={() => onLaunchStage(stage)}
+                        onClick={() => isStageUnlocked(stage) ? launchStage(stage) : setBriefingStageId(stage.id)}
                         className="btn-retro"
                         style={{
                           textAlign: 'left',
@@ -1330,6 +1596,7 @@ export default function HubScreen({
                   const universeHeroes = HEROES_DB.filter(h => h.universe === key);
                   const ustageId = UNIVERSE_TO_STAGE_ID[key];
                   const isCleared = completedStages.includes(ustageId);
+                  const bossIntel = ENEMIES_DB[key]?.worldBoss || ENEMIES_DB[key]?.bosses?.[0];
                   
                   return (
                     <div key={key} style={{
@@ -1360,6 +1627,24 @@ export default function HubScreen({
                         <div style={{ fontSize: '11px', color: isCleared ? '#ccc' : '#555', lineHeight: '1.4', marginBottom: '10px', fontFamily: isCleared ? 'inherit' : 'Courier New', wordBreak: 'break-all' }}>
                           {isCleared ? lore.desc[lang] : encryptString(lore.desc[lang])}
                         </div>
+                        {bossIntel && (
+                          <div style={{
+                            padding: '8px',
+                            marginBottom: '10px',
+                            border: isCleared ? '1px solid rgba(231,76,60,0.35)' : '1px solid #222',
+                            background: isCleared ? 'rgba(231,76,60,0.06)' : 'rgba(0,0,0,0.22)',
+                            borderRadius: '4px',
+                            color: isCleared ? '#ddd' : '#555',
+                            fontSize: '10px',
+                            lineHeight: 1.35
+                          }}>
+                            <strong style={{ color: isCleared ? '#e74c3c' : '#555' }}>
+                              {lang === 'fr' ? 'Boss decrypté' : 'Decrypted boss'}:
+                            </strong> {isCleared ? bossIntel.name : encryptString(bossIntel.name)}
+                            <br />
+                            {isCleared ? `HP ${bossIntel.hp} | ATK ${bossIntel.atk} | ${bossIntel.special}` : encryptString('Classified boss pattern')}
+                          </div>
+                        )}
                       </div>
                       <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', borderTop: '1px solid #222', paddingTop: '8px' }}>
                         {universeHeroes.map(h => (

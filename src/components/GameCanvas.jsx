@@ -12,6 +12,7 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysPressed = useRef({});
+  const lastAnomalyWaveRef = useRef(-1);
   
   const [activeHeroId, setActiveHeroId] = useState(activeTeam[0]);
   const [teamState, setTeamState] = useState([]);
@@ -22,6 +23,7 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
   const [speedMultiplier, setSpeedMultiplier] = useState(1); // 1 | 2
   const [battleCompleted, setBattleCompleted] = useState(false);
   const [battleResult, setBattleResult] = useState(null);
+  const [battleAnomaly, setBattleAnomaly] = useState(null);
   
   const [activeSynergies, setActiveSynergies] = useState([]);
   
@@ -32,6 +34,31 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
   
   // Track if active Event Item has been activated this fight
   const [eventItemUsed, setEventItemUsed] = useState(false);
+
+  const BATTLE_ANOMALIES = [
+    {
+      id: 'cache',
+      text: { fr: 'Cache instable: charge spéciale bonus.', en: 'Unstable cache: bonus special charge.' },
+      color: '#ffeb3b'
+    },
+    {
+      id: 'rift_burn',
+      text: { fr: 'Surtension de faille: le boss subit des dégâts.', en: 'Rift surge: boss takes damage.' },
+      color: '#ff4500'
+    },
+    {
+      id: 'signal',
+      text: { fr: 'Signal allié: boucliers renforcés.', en: 'Allied signal: shields reinforced.' },
+      color: '#39c5bb'
+    }
+  ];
+
+  const FACTION_RULES = [
+    { stat: 'hp', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator'] },
+    { stat: 'atk', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw'] },
+    { stat: 'spd', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus'] },
+    { stat: 'def', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue'] }
+  ];
 
   const UNIVERSE_TO_STAGE_ID = {
     'Gears of War': 1, 'Halo': 2, 'Alien': 3, 'Predator': 4, 'Resident Evil': 5,
@@ -79,6 +106,15 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
       if (hero.category === 'tactical') stats.def = Math.round(stats.def * 1.20);
     }
 
+    FACTION_RULES.forEach(rule => {
+      const activeCount = activeTeam
+        .map(id => HEROES_DB.find(h => h.id === id)?.universe)
+        .filter(universe => rule.universes.includes(universe)).length;
+      if (activeCount >= 2 && rule.universes.includes(hero.universe)) {
+        stats[rule.stat] = Math.round(stats[rule.stat] * 1.08);
+      }
+    });
+
     // 3. Talent Mod boosts
     if (heroTalents && heroTalents[hero.id]) {
       const talent = heroTalents[hero.id];
@@ -105,22 +141,36 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
         if (gear.boost.spd) stats.spd += gear.boost.spd * factor;
       }
     }
+
+    if (stage.modifier?.heroDef) {
+      stats.def = Math.round(stats.def * stage.modifier.heroDef);
+    }
     return stats;
   };
 
   const getEnemiesData = () => {
+    const scaleEnemy = (enemy, isBoss = false) => {
+      const modifier = stage.modifier || {};
+      return {
+        ...enemy,
+        hp: Math.round(enemy.hp * (isBoss ? (modifier.bossHp || 1) : 1)),
+        atk: Math.round(enemy.atk * (modifier.enemyAtk || 1)),
+        spd: Math.round(enemy.spd * (modifier.enemySpd || 1))
+      };
+    };
+
     if (stage.id === 38) {
       // Final Boss Stage
       return {
-        monsters: getMonstersForUniverse('Matrix'),
-        bosses: getBossesForUniverse('Matrix'),
-        worldBoss: getFinalGameBoss()
+        monsters: getMonstersForUniverse('Matrix').map(enemy => scaleEnemy(enemy)),
+        bosses: getBossesForUniverse('Matrix').map(enemy => scaleEnemy(enemy, true)),
+        worldBoss: scaleEnemy(getFinalGameBoss(), true)
       };
     }
     return {
-      monsters: getMonstersForUniverse(stage.universe),
-      bosses: getBossesForUniverse(stage.universe),
-      worldBoss: getWorldBossForUniverse(stage.universe)
+      monsters: getMonstersForUniverse(stage.universe).map(enemy => scaleEnemy(enemy)),
+      bosses: getBossesForUniverse(stage.universe).map(enemy => scaleEnemy(enemy, true)),
+      worldBoss: scaleEnemy(getWorldBossForUniverse(stage.universe), true)
     };
   };
 
@@ -230,6 +280,35 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
         engine.draw(ctx, animTime);
         particles.draw(ctx);
         drawSynergyOverlay(ctx, activeSynergies, width, height, animTime);
+
+        const anomalyRate = stage.isSurvival ? 420 : 720;
+        const anomalyWave = Math.floor(animTime / anomalyRate);
+        if (animTime > 180 && anomalyWave !== lastAnomalyWaveRef.current && animTime % anomalyRate < 2) {
+          lastAnomalyWaveRef.current = anomalyWave;
+          const anomaly = BATTLE_ANOMALIES[(stage.id + anomalyWave) % BATTLE_ANOMALIES.length];
+          setBattleAnomaly(anomaly);
+          window.setTimeout(() => setBattleAnomaly(null), 3600);
+
+          if (anomaly.id === 'cache') {
+            engine.heroes.forEach(hero => {
+              if (hero.currentHp > 0 && typeof hero.specialCharge === 'number') {
+                hero.specialCharge = Math.min(100, hero.specialCharge + 25);
+              }
+            });
+          } else if (anomaly.id === 'rift_burn') {
+            const boss = engine.enemies.find(enemy => enemy.isBoss && enemy.currentHp > 0) || engine.enemies.find(enemy => enemy.currentHp > 0);
+            if (boss) {
+              boss.currentHp = Math.max(1, boss.currentHp - Math.max(20, Math.round((boss.maxHp || boss.currentHp) * 0.04)));
+              particles.add(width * 0.5, height * 0.26, 0, -1, '#ff4500', 3, 55, 'text', 'RIFT BURN');
+            }
+          } else if (anomaly.id === 'signal') {
+            engine.heroes.forEach(hero => {
+              if (hero.currentHp > 0) {
+                hero.currentHp = Math.min(hero.stats.hp, hero.currentHp + Math.max(8, Math.round(hero.stats.hp * 0.05)));
+              }
+            });
+          }
+        }
 
         setTeamState([...engine.heroes]);
         if (engine.enemies.length > 0) {
@@ -370,6 +449,16 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
           <span style={{ fontSize: '11px', color: '#aaa' }}>
             Universe: {stage.universe} ({stage.mode.toUpperCase()})
           </span>
+          {stage.modifier && (
+            <div style={{ fontSize: '10px', color: stage.modifier.color || '#ffeb3b', marginTop: '4px' }}>
+              {stage.modifier.name?.[lang] || stage.modifier.id}: {stage.modifier.desc?.[lang] || ''}
+            </div>
+          )}
+          {stage.isSurvival && (
+            <div style={{ fontSize: '10px', color: '#ff8c00', marginTop: '3px' }}>
+              {lang === 'fr' ? 'Mode survie: récompenses augmentées, anomalies plus fréquentes.' : 'Survival mode: higher rewards, more unstable anomalies.'}
+            </div>
+          )}
         </div>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           {(stage.mode === 'RPG' || stage.mode === 'Tactics') && (
@@ -451,6 +540,27 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
           onClick={handleCanvasClick}
           style={{ display: 'block', cursor: stage.mode === 'Tactics' ? 'crosshair' : 'default' }}
         />
+
+        {battleAnomaly && !battleCompleted && (
+          <div style={{
+            position: 'absolute',
+            top: '12px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 6,
+            padding: '7px 14px',
+            background: 'rgba(0,0,0,0.72)',
+            border: `1px solid ${battleAnomaly.color}`,
+            color: battleAnomaly.color,
+            borderRadius: '4px',
+            fontSize: '11px',
+            fontWeight: 'bold',
+            textAlign: 'center',
+            boxShadow: `0 0 12px ${battleAnomaly.color}55`
+          }}>
+            {battleAnomaly.text[lang]}
+          </div>
+        )}
 
         {/* Victory/Defeat Overlay */}
         {battleCompleted && (

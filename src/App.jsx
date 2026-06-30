@@ -71,17 +71,27 @@ function App() {
         setEventTokens(prev => prev + tokenReward);
       }
 
-      if (!completedStages.includes(activeStage.id)) {
+      if (!activeStage.isSurvival && !completedStages.includes(activeStage.id)) {
         setCompletedStages(prev => [...prev, activeStage.id]);
       }
 
       // Check if they dropped a random relic/item from the stage's universe
       const universeGear = EQUIP_ITEMS_DB.filter(item => item.universe === activeStage.universe);
-      if (universeGear.length > 0 && Math.random() < 0.6) { // 60% drop rate
+      const rarityDropBonus = {
+        common: 0,
+        rare: 0.12,
+        epic: 0.22,
+        legendary: 0.32,
+        anomaly: 0.42
+      };
+      const rarityId = activeStage.lootRarity?.id || 'common';
+      if (universeGear.length > 0 && Math.random() < 0.6 + (rarityDropBonus[rarityId] || 0)) {
         const drop = universeGear[Math.floor(Math.random() * universeGear.length)];
-        if (!inventory.includes(drop.id)) {
-          setInventory(prev => [...prev, drop.id]);
-        }
+        const dropId = ['legendary', 'anomaly'].includes(rarityId) ? `${drop.id}_plus` : drop.id;
+        setInventory(prev => {
+          if (rarityId === 'common' && prev.includes(drop.id)) return prev;
+          return [...prev, dropId];
+        });
       }
     }
     setCurrentScreen('hub');
