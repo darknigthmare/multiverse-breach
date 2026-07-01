@@ -161,10 +161,12 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
   };
 
   const getEnemiesData = () => {
+    const sourceUniverse = stage.id === 38 ? 'Matrix' : stage.universe;
     const scaleEnemy = (enemy, isBoss = false) => {
       const modifier = stage.modifier || {};
       return {
         ...enemy,
+        universe: sourceUniverse,
         hp: Math.round(enemy.hp * (isBoss ? (modifier.bossHp || 1) : 1)),
         atk: Math.round(enemy.atk * (modifier.enemyAtk || 1)),
         spd: Math.round(enemy.spd * (modifier.enemySpd || 1))

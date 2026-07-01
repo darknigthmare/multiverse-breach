@@ -1,6 +1,52 @@
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
+import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrame, SPRITE_SHEET_META } from './spriteAssets';
+
+const spriteSheetCache = new Map();
+
+const getCachedSpriteSheet = (src) => {
+  if (!src || typeof Image === 'undefined') return null;
+  const cached = spriteSheetCache.get(src);
+  if (cached) return cached;
+
+  const image = new Image();
+  const entry = { image, failed: false };
+  image.onerror = () => { entry.failed = true; };
+  image.src = src;
+  spriteSheetCache.set(src, entry);
+  return entry;
+};
+
+const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter) => {
+  const entry = getCachedSpriteSheet(srcGetter(entity));
+  if (!entry || entry.failed || !entry.image.complete || entry.image.naturalWidth === 0) return false;
+
+  const frameWidth = entry.image.naturalWidth / SPRITE_SHEET_META.columns;
+  const frameHeight = entry.image.naturalHeight / SPRITE_SHEET_META.rows.length;
+  const frame = getSpriteFrame(entity.state, animTime);
+  const scale = targetHeight / frameHeight;
+  const drawW = frameWidth * scale;
+  const drawH = targetHeight;
+
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(facing, 1);
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(
+    entry.image,
+    frame.col * frameWidth,
+    frame.row * frameHeight,
+    frameWidth,
+    frameHeight,
+    -drawW / 2,
+    -drawH + 24 * scale,
+    drawW,
+    drawH
+  );
+  ctx.restore();
+  return true;
+};
 
 export class ParticleSystem {
   constructor() {
@@ -72,6 +118,10 @@ export class ParticleSystem {
 }
 
 export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1) => {
+  if (drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, 72, getHeroSpriteSheetSrc)) {
+    return;
+  }
+
   const { primaryColor, secondaryColor, weaponType, weaponColor, id, state } = character;
   
   ctx.save();
@@ -357,6 +407,10 @@ const drawWeapon = (ctx, x, y, type, color, animTime) => {
 };
 
 export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
+  if (drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, 68, getEnemySpriteSheetSrc)) {
+    return;
+  }
+
   const { name, color, state } = enemy;
   
   ctx.save();
@@ -461,6 +515,10 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
 };
 
 export const drawBoss = (ctx, x, y, boss, animTime) => {
+  if (drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, -1, 126, getEnemySpriteSheetSrc)) {
+    return;
+  }
+
   const { name, color, state } = boss;
   ctx.save();
   ctx.translate(x, y);
