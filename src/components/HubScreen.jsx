@@ -143,6 +143,230 @@ export default function HubScreen({
     omega: Math.max(24, Math.ceil(NORMAL_STAGE_COUNT * 0.65))
   };
 
+  const STORY_CHAPTERS = [
+    {
+      id: 'first_lock',
+      unlockClears: 0,
+      name: { fr: 'Chapitre I - Premier verrou', en: 'Chapter I - First Lock' },
+      desc: {
+        fr: 'Les premieres breches sont instables mais lisibles. Le reseau cherche des mondes-pivots pour trianguler la Singularity.',
+        en: 'The first breaches are unstable but readable. The network searches for anchor worlds to triangulate the Singularity.'
+      },
+      focus: { fr: 'Ouvrir les paliers Medium et Hard.', en: 'Open Medium and Hard tiers.' }
+    },
+    {
+      id: 'faction_war',
+      unlockClears: 6,
+      name: { fr: 'Chapitre II - Guerre des signatures', en: 'Chapter II - Signature War' },
+      desc: {
+        fr: 'Les univers ne fuient plus seuls: des familles de breches commencent a resonner entre elles.',
+        en: 'Worlds no longer leak alone: families of breaches begin resonating with each other.'
+      },
+      focus: { fr: 'Composer des equipes par faction et decrypter les boss locaux.', en: 'Build faction teams and decrypt local bosses.' }
+    },
+    {
+      id: 'deep_archive',
+      unlockClears: 12,
+      name: { fr: 'Chapitre III - Archives profondes', en: 'Chapter III - Deep Archives' },
+      desc: {
+        fr: 'Les failles anciennes revelent des variantes de films, sagas et lignes temporelles qui se contredisent.',
+        en: 'Older breaches reveal movie variants, sagas, and timelines that contradict each other.'
+      },
+      focus: { fr: 'Finir des collections de franchise pour gagner des caches.', en: 'Complete franchise collections to earn caches.' }
+    },
+    {
+      id: 'singularity_wake',
+      unlockClears: 20,
+      name: { fr: 'Chapitre IV - Eveil de la Singularity', en: 'Chapter IV - Singularity Wake' },
+      desc: {
+        fr: 'Le noyau final absorbe les patterns de chasse, d horreur, de magie et de scene musicale.',
+        en: 'The final core absorbs hunt, horror, magic, and music-stage patterns.'
+      },
+      focus: { fr: 'Stabiliser assez de breches pour forcer l ouverture finale.', en: 'Stabilize enough breaches to force the final opening.' }
+    },
+    {
+      id: 'omniverse_endgame',
+      unlockClears: FINAL_STAGE_REQUIRED_CLEARS,
+      name: { fr: 'Chapitre V - Noyau Omniverse', en: 'Chapter V - Omniverse Core' },
+      desc: {
+        fr: 'Les archives convergent: chaque monde stabilise retire une couche de defense au Breach Singularity Core.',
+        en: 'The archives converge: every stabilized world strips a defensive layer from the Breach Singularity Core.'
+      },
+      focus: { fr: 'Optimiser reliques, synergies et objets evenementiels.', en: 'Optimize relics, synergies, and event items.' }
+    }
+  ];
+
+  const NARRATIVE_ARCS = [
+    {
+      id: 'xeno_yautja_war',
+      color: '#7ee8dc',
+      title: { fr: 'Guerre Xeno-Yautja', en: 'Xeno-Yautja War' },
+      premise: {
+        fr: 'Weyland-Yutani, les ruches xenomorphes et les clans Yautja contaminent les memes coordonnees de chasse.',
+        en: 'Weyland-Yutani, xenomorph hives, and Yautja clans contaminate the same hunting coordinates.'
+      },
+      universes: ['Alien', 'Aliens', 'Alien 3', 'Alien Resurrection', 'Prometheus', 'Alien: Covenant', 'Alien: Romulus', 'Predator', 'Predator 2', 'Predators', 'The Predator', 'Prey', 'Predator: Killer of Killers', 'Predator: Badlands', 'Alien vs Predator', 'Aliens vs Predator: Requiem'],
+      reward: { fr: 'Cache acide/plasma', en: 'Acid/plasma cache' }
+    },
+    {
+      id: 'dark_gotham',
+      color: '#d63b3b',
+      title: { fr: 'Noeud Gotham noir', en: 'Dark Gotham Node' },
+      premise: {
+        fr: 'Les variantes Joker et Batman contaminent la logique morale des failles avec du metal noir et des toxines.',
+        en: 'Joker and Batman variants corrupt breach morality with dark metal and toxins.'
+      },
+      universes: ['Joker New 52', 'The Batman Who Laughs'],
+      reward: { fr: 'Intel peur/critique', en: 'Fear/crit intel' }
+    },
+    {
+      id: 'stage_resonance',
+      color: '#f1c40f',
+      title: { fr: 'Resonance de scene', en: 'Stage Resonance' },
+      premise: {
+        fr: 'Les groupes et univers musicaux transforment les failles en arene rythmique et amplifient les anomalies.',
+        en: 'Bands and music worlds turn breaches into rhythm arenas and amplify anomalies.'
+      },
+      universes: ['Vocaloid', 'Rammstein', 'System of a Down', 'Rob Zombie', 'Daft Punk', 'Oliver Tree'],
+      reward: { fr: 'Bonus tempo et vitesse', en: 'Tempo and speed bonus' }
+    },
+    {
+      id: 'arcane_paradox',
+      color: '#d9b86b',
+      title: { fr: 'Paradoxe arcane', en: 'Arcane Paradox' },
+      premise: {
+        fr: 'Magie absurde, quete du Graal, donjons et MMORPG francais se branchent sur les memes runes de stabilisation.',
+        en: 'Absurd magic, Grail quests, dungeons, and French MMORPG codes connect to the same stabilization runes.'
+      },
+      universes: ['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob', 'Harry Potter', 'Negima', 'Rosario + Vampire'],
+      reward: { fr: 'Cache rune et defense', en: 'Rune and defense cache' }
+    },
+    {
+      id: 'hell_circus',
+      color: '#ff5b6e',
+      title: { fr: 'Cabaret infernal', en: 'Infernal Cabaret' },
+      premise: {
+        fr: 'Hazbin Hotel, Digital Circus et les univers d horreur transforment la redemption en spectacle de breche.',
+        en: 'Hazbin Hotel, Digital Circus, and horror worlds turn redemption into breach theater.'
+      },
+      universes: ['Hazbin Hotel', 'Digital Circus', 'Hellraiser', 'Saw', 'Chucky', 'Silent Hill', 'Scary Movie'],
+      reward: { fr: 'Cache controle et peur', en: 'Control and fear cache' }
+    }
+  ];
+
+  const COLLECTION_REWARDS = [
+    {
+      id: 'alien_saga',
+      title: { fr: 'Saga Alien complete', en: 'Complete Alien Saga' },
+      universes: ['Alien', 'Aliens', 'Alien 3', 'Alien Resurrection', 'Prometheus', 'Alien: Covenant', 'Alien: Romulus'],
+      reward: { gold: 650, shards: 120, tokens: 4 },
+      bonus: { fr: 'Cache Weyland-Yutani: ressources, shards et tokens.', en: 'Weyland-Yutani cache: resources, shards, and tokens.' }
+    },
+    {
+      id: 'predator_hunts',
+      title: { fr: 'Chasses Predator completees', en: 'Completed Predator Hunts' },
+      universes: ['Predator', 'Predator 2', 'Predators', 'The Predator', 'Prey', 'Predator: Killer of Killers', 'Predator: Badlands'],
+      reward: { gold: 620, shards: 105, tokens: 4 },
+      bonus: { fr: 'Cache Yautja: prime de chasse et trophees.', en: 'Yautja cache: hunt bounty and trophies.' }
+    },
+    {
+      id: 'avp_crossfire',
+      title: { fr: 'Croisement AVP verrouille', en: 'AVP Crossfire Locked' },
+      universes: ['Alien vs Predator', 'Aliens vs Predator: Requiem'],
+      reward: { gold: 280, shards: 60, tokens: 3 },
+      bonus: { fr: 'Cache pyramide: bonus court mais intense.', en: 'Pyramid cache: short but intense bonus.' }
+    },
+    {
+      id: 'music_wave',
+      title: { fr: 'Onde musicale stabilisee', en: 'Stabilized Music Wave' },
+      universes: ['Rammstein', 'System of a Down', 'Rob Zombie', 'Daft Punk', 'Oliver Tree', 'Vocaloid'],
+      reward: { gold: 520, shards: 90, tokens: 3 },
+      bonus: { fr: 'Cache backstage: tempo, shards et tokens.', en: 'Backstage cache: tempo, shards, and tokens.' }
+    },
+    {
+      id: 'arcane_table',
+      title: { fr: 'Table arcane reunie', en: 'Arcane Table Reunited' },
+      universes: ['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob'],
+      reward: { gold: 420, shards: 85, tokens: 3 },
+      bonus: { fr: 'Cache grimoire: stabilisation magique durable.', en: 'Grimoire cache: durable magical stabilization.' }
+    },
+    {
+      id: 'dark_stage',
+      title: { fr: 'Scene sombre controlee', en: 'Dark Stage Controlled' },
+      universes: ['Joker New 52', 'The Batman Who Laughs', 'Hazbin Hotel', 'Digital Circus'],
+      reward: { gold: 430, shards: 80, tokens: 3 },
+      bonus: { fr: 'Cache theatre noir: controle, peur et anomalie.', en: 'Dark theater cache: control, fear, and anomaly.' }
+    }
+  ];
+
+  const BREACH_TIMELINE = [
+    {
+      id: 't0',
+      unlockClears: 0,
+      title: { fr: 'T0 - Detection initiale', en: 'T0 - Initial Detection' },
+      text: {
+        fr: 'Les premiers mondes servent de balises. Chaque victoire transforme une faille sauvage en coordonnee stable.',
+        en: 'The first worlds act as beacons. Each win turns a wild breach into a stable coordinate.'
+      }
+    },
+    {
+      id: 't1',
+      unlockClears: 6,
+      title: { fr: 'T1 - Regroupement par signatures', en: 'T1 - Signature Grouping' },
+      text: {
+        fr: 'Les univers commencent a se regrouper: science-fiction militaire, horreur, cyber-realite et magie.',
+        en: 'Universes begin clustering: military sci-fi, horror, cyber-reality, and magic.'
+      }
+    },
+    {
+      id: 't2',
+      unlockClears: 12,
+      title: { fr: 'T2 - Multiplication des variantes', en: 'T2 - Variant Multiplication' },
+      text: {
+        fr: 'Les films d une meme franchise ne sont plus des doublons: ce sont des timelines independantes avec leurs propres boss.',
+        en: 'Films from the same franchise are no longer duplicates: they are independent timelines with their own bosses.'
+      }
+    },
+    {
+      id: 't3',
+      unlockClears: 20,
+      title: { fr: 'T3 - Resonance culturelle', en: 'T3 - Cultural Resonance' },
+      text: {
+        fr: 'Les mondes musicaux et comiques prouvent que la Singularity absorbe aussi les codes de scene, de ton et de mythe.',
+        en: 'Music and comedy worlds prove the Singularity also absorbs stage, tone, and myth codes.'
+      }
+    },
+    {
+      id: 't4',
+      unlockClears: FINAL_STAGE_REQUIRED_CLEARS,
+      title: { fr: 'T4 - Ouverture du noyau', en: 'T4 - Core Opening' },
+      text: {
+        fr: 'Assez de coordonnees sont stabilisees pour attaquer le Breach Singularity Core sans perdre le reseau.',
+        en: 'Enough coordinates are stabilized to strike the Breach Singularity Core without losing the network.'
+      }
+    }
+  ];
+
+  const UNIVERSE_MODIFIERS = {
+    Alien: { id: 'acid_blood', name: { fr: 'Sang acide', en: 'Acid Blood' }, desc: { fr: 'Les ennemis laissent des residus acides: recompenses +20%, boss plus agressif.', en: 'Enemies leave acidic residue: rewards +20%, boss more aggressive.' }, bossHp: 1.08, reward: 1.2, color: '#8adbe6' },
+    Aliens: { id: 'sentry_corridor', name: { fr: 'Couloir sentinelle', en: 'Sentry Corridor' }, desc: { fr: 'La ruche attaque en vagues: shards +22%, ennemis plus rapides.', en: 'The hive attacks in waves: shards +22%, enemies faster.' }, enemySpd: 1.1, reward: 1.22, color: '#78e3e6' },
+    Prometheus: { id: 'black_pathogen', name: { fr: 'Pathogene noir', en: 'Black Pathogen' }, desc: { fr: 'Le pathogene instabilise les deux camps: boss +12% PV, loot +25%.', en: 'The pathogen destabilizes both sides: boss +12% HP, loot +25%.' }, bossHp: 1.12, reward: 1.25, color: '#78dcd7' },
+    Predator: { id: 'honor_hunt', name: { fr: 'Chasse honorable', en: 'Honor Hunt' }, desc: { fr: 'Le duel Yautja valorise les victoires propres: tokens possibles sur stage pair.', en: 'The Yautja duel values clean victories: possible tokens on even stages.' }, reward: 1.16, color: '#9bff62' },
+    Prey: { id: 'mud_camouflage', name: { fr: 'Camouflage de boue', en: 'Mud Camouflage' }, desc: { fr: 'Les embuscades protegent l escouade: defense +10%, recompense +10%.', en: 'Ambushes protect the squad: defense +10%, reward +10%.' }, heroDef: 1.1, reward: 1.1, color: '#e6af53' },
+    'Joker New 52': { id: 'joker_toxin', name: { fr: 'Toxine Joker', en: 'Joker Toxin' }, desc: { fr: 'La panique augmente les degats ennemis et la rarete du loot.', en: 'Panic raises enemy damage and loot rarity.' }, enemyAtk: 1.14, reward: 1.24, color: '#4cdc5e' },
+    'The Batman Who Laughs': { id: 'dark_metal', name: { fr: 'Metal noir', en: 'Dark Metal' }, desc: { fr: 'Le Multivers Noir durcit le boss: PV +18%, cache +30%.', en: 'The Dark Multiverse hardens the boss: HP +18%, cache +30%.' }, bossHp: 1.18, reward: 1.3, color: '#d62121' },
+    Discworld: { id: 'octarine_leak', name: { fr: 'Fuite octarine', en: 'Octarine Leak' }, desc: { fr: 'La magie absurde plie les regles: shards +18%, defense +5%.', en: 'Absurd magic bends rules: shards +18%, defense +5%.' }, heroDef: 1.05, reward: 1.18, color: '#e7d476' },
+    Kaamelott: { id: 'table_dispute', name: { fr: 'Conseil dispute', en: 'Council Dispute' }, desc: { fr: 'Les ordres contradictoires ralentissent le rythme mais augmentent l or.', en: 'Contradictory orders slow the rhythm but increase gold.' }, reward: 1.17, color: '#d6b465' },
+    'Dungeon Meshi': { id: 'monster_cuisine', name: { fr: 'Cuisine de monstre', en: 'Monster Cuisine' }, desc: { fr: 'Chaque combat nourrit l escouade: defense +8%, loot +12%.', en: 'Every fight feeds the squad: defense +8%, loot +12%.' }, heroDef: 1.08, reward: 1.12, color: '#e2c36a' },
+    Noob: { id: 'bugged_respawn', name: { fr: 'Respawn bugge', en: 'Bugged Respawn' }, desc: { fr: 'Le code d Olydri deraille: recompenses +20%, ennemis plus rapides.', en: 'Olydri code glitches: rewards +20%, enemies faster.' }, enemySpd: 1.08, reward: 1.2, color: '#6ad5ff' },
+    Rammstein: { id: 'feuerzone', name: { fr: 'Feuerzone', en: 'Feuerzone' }, desc: { fr: 'La scene industrielle brule fort: attaque ennemie +10%, tokens plus rentables.', en: 'The industrial stage burns hard: enemy attack +10%, richer tokens.' }, enemyAtk: 1.1, reward: 1.2, color: '#ff692d' },
+    'System of a Down': { id: 'tempo_break', name: { fr: 'Cassure tempo', en: 'Tempo Break' }, desc: { fr: 'Les ruptures rythmiques accelerent le combat: vitesse ennemie +12%, shards +20%.', en: 'Rhythm breaks accelerate combat: enemy speed +12%, shards +20%.' }, enemySpd: 1.12, reward: 1.2, color: '#f1c40f' },
+    'Rob Zombie': { id: 'grindhouse_cut', name: { fr: 'Montage grindhouse', en: 'Grindhouse Cut' }, desc: { fr: 'Les plans horrifiques amplifient le chaos: loot +22%.', en: 'Horror cuts amplify chaos: loot +22%.' }, reward: 1.22, color: '#ffa943' },
+    'Daft Punk': { id: 'alive_sync', name: { fr: 'Synchronisation Alive', en: 'Alive Sync' }, desc: { fr: 'La grille lumineuse cadence l equipe: defense +6%, vitesse ennemie +6%, recompense +18%.', en: 'The light grid paces the squad: defense +6%, enemy speed +6%, reward +18%.' }, heroDef: 1.06, enemySpd: 1.06, reward: 1.18, color: '#ffc740' },
+    'Oliver Tree': { id: 'viral_stunt', name: { fr: 'Cascade virale', en: 'Viral Stunt' }, desc: { fr: 'La faille devient imprevisible: recompense +15%.', en: 'The breach becomes unpredictable: reward +15%.' }, reward: 1.15, color: '#ff6f3c' },
+    'Hazbin Hotel': { id: 'redemption_song', name: { fr: 'Refrain redemption', en: 'Redemption Refrain' }, desc: { fr: 'Le cabaret infernal renforce les controles: defense +8%, loot +15%.', en: 'The infernal cabaret reinforces control: defense +8%, loot +15%.' }, heroDef: 1.08, reward: 1.15, color: '#ffd35c' }
+  };
+
   // List of high-tier items in the Event Shop
   const EVENT_SHOP_ITEMS = [
     { id: 'millennium_puzzle', name: { en: 'Millennium Puzzle', fr: 'Puzzle du Millénium' }, boost: { hp: 100, atk: 10, def: 5 }, tokenCost: 3 },
@@ -358,6 +582,27 @@ export default function HubScreen({
     sound.playSfx('levelup');
   };
 
+  const getCompletedUniversesCount = (universes) => {
+    return universes.filter(universe => {
+      const stageId = UNIVERSE_TO_STAGE_ID[universe];
+      return stageId && completedStages.includes(stageId);
+    }).length;
+  };
+
+  const isCollectionComplete = (collection) => getCompletedUniversesCount(collection.universes) === collection.universes.length;
+  const getCollectionMarkerId = (collection) => `collection_reward_${collection.id}`;
+
+  const claimCollectionReward = (collection) => {
+    const markerId = getCollectionMarkerId(collection);
+    if (!isCollectionComplete(collection) || inventory.includes(markerId)) return;
+
+    setGold(prev => prev + collection.reward.gold);
+    setBreachShards(prev => prev + collection.reward.shards);
+    setEventTokens(prev => prev + collection.reward.tokens);
+    setInventory(prev => [...prev, markerId]);
+    sound.playSfx('levelup');
+  };
+
   const handleFuseRelic = (baseItemId) => {
     if (gold < 150) return;
 
@@ -445,9 +690,12 @@ export default function HubScreen({
   };
 
   const getStageModifier = (stage) => {
+    if (UNIVERSE_MODIFIERS[stage.universe]) return UNIVERSE_MODIFIERS[stage.universe];
     const index = Math.abs(Math.floor((stage.id * 17 + missionSeed) % BREACH_MODIFIERS.length));
     return BREACH_MODIFIERS[index];
   };
+
+  const getStageArc = (stage) => NARRATIVE_ARCS.find(arc => arc.universes.includes(stage.universe));
 
   const getLootRarity = (stage) => {
     const score = completedStages.length + getStageRequiredClears(stage) + (stage.id === 38 ? 12 : 0);
@@ -508,6 +756,27 @@ export default function HubScreen({
       .filter(universe => rule.universes.includes(universe)).length;
     return { ...rule, count, active: count >= 2 };
   });
+
+  const currentChapter = [...STORY_CHAPTERS]
+    .reverse()
+    .find(chapter => completedStages.length >= chapter.unlockClears) || STORY_CHAPTERS[0];
+  const nextChapter = STORY_CHAPTERS.find(chapter => completedStages.length < chapter.unlockClears);
+  const arcProgress = NARRATIVE_ARCS.map(arc => ({
+    ...arc,
+    completed: getCompletedUniversesCount(arc.universes),
+    total: arc.universes.length
+  }));
+  const collectionProgress = COLLECTION_REWARDS.map(collection => ({
+    ...collection,
+    completed: getCompletedUniversesCount(collection.universes),
+    total: collection.universes.length,
+    complete: isCollectionComplete(collection),
+    claimed: inventory.includes(getCollectionMarkerId(collection))
+  }));
+  const timelineProgress = BREACH_TIMELINE.map(entry => ({
+    ...entry,
+    active: completedStages.length >= entry.unlockClears
+  }));
 
   const totalHeroLevels = unlockedHeroes.reduce((sum, heroId) => sum + (heroLevels[heroId] || 1), 0);
   const metaRank = completedStages.length >= META_RANK_THRESHOLDS.omega
@@ -787,6 +1056,129 @@ export default function HubScreen({
               </div>
             </div>
 
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1.1fr 1.4fr',
+              gap: '12px',
+              marginBottom: '14px'
+            }}>
+              <div style={{
+                padding: '14px',
+                background: 'rgba(57,197,187,0.06)',
+                border: '1px solid rgba(57,197,187,0.22)',
+                borderRadius: '5px'
+              }}>
+                <div style={{ fontSize: '10px', color: '#39c5bb', textTransform: 'uppercase', marginBottom: '5px' }}>
+                  {lang === 'fr' ? 'Chapitre actif' : 'Active chapter'}
+                </div>
+                <div style={{ fontSize: '15px', fontWeight: 'bold', color: '#fff', marginBottom: '6px' }}>
+                  {currentChapter.name[lang]}
+                </div>
+                <div style={{ fontSize: '11px', color: '#c8d6d6', lineHeight: 1.45, marginBottom: '8px' }}>
+                  {currentChapter.desc[lang]}
+                </div>
+                <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
+                  {currentChapter.focus[lang]}
+                </div>
+                {nextChapter && (
+                  <div style={{ marginTop: '8px', fontSize: '10px', color: '#8fa5aa' }}>
+                    {lang === 'fr'
+                      ? `Prochain chapitre a ${nextChapter.unlockClears} breches stabilisees.`
+                      : `Next chapter at ${nextChapter.unlockClears} stabilized breaches.`}
+                  </div>
+                )}
+              </div>
+
+              <div style={{
+                padding: '14px',
+                background: 'rgba(255,255,255,0.02)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '5px'
+              }}>
+                <div style={{ fontSize: '10px', color: '#ffeb3b', textTransform: 'uppercase', marginBottom: '8px' }}>
+                  {lang === 'fr' ? 'Arcs narratifs de faction' : 'Faction narrative arcs'}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px' }}>
+                  {arcProgress.map(arc => {
+                    const ratio = arc.total ? arc.completed / arc.total : 0;
+                    return (
+                      <div key={arc.id} style={{
+                        padding: '9px',
+                        border: `1px solid ${ratio === 1 ? arc.color : 'rgba(255,255,255,0.08)'}`,
+                        background: ratio === 1 ? `${arc.color}18` : 'rgba(0,0,0,0.16)',
+                        borderRadius: '4px'
+                      }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '4px' }}>
+                          <strong style={{ fontSize: '11px', color: arc.color }}>{arc.title[lang]}</strong>
+                          <span style={{ fontSize: '10px', color: '#ddd' }}>{arc.completed}/{arc.total}</span>
+                        </div>
+                        <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', marginBottom: '6px' }}>
+                          <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: arc.color }} />
+                        </div>
+                        <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{arc.premise[lang]}</div>
+                        <div style={{ fontSize: '9px', color: '#888', marginTop: '5px' }}>{arc.reward[lang]}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <div style={{
+              padding: '14px',
+              marginBottom: '14px',
+              background: 'rgba(0,0,0,0.22)',
+              border: '1px solid rgba(255,235,59,0.16)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ fontSize: '10px', color: '#ffeb3b', textTransform: 'uppercase', marginBottom: '8px' }}>
+                {lang === 'fr' ? 'Collections de franchise' : 'Franchise collections'}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
+                {collectionProgress.map(collection => {
+                  const ratio = collection.total ? collection.completed / collection.total : 0;
+                  return (
+                    <div key={collection.id} style={{
+                      padding: '10px',
+                      border: collection.complete ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)',
+                      background: collection.complete ? 'rgba(46,204,113,0.07)' : 'rgba(255,255,255,0.02)',
+                      borderRadius: '4px'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
+                        <strong style={{ fontSize: '11px', color: collection.complete ? '#2ecc71' : '#ddd' }}>{collection.title[lang]}</strong>
+                        <span style={{ fontSize: '10px', color: '#ffeb3b' }}>{collection.completed}/{collection.total}</span>
+                      </div>
+                      <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', margin: '7px 0' }}>
+                        <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: collection.complete ? '#2ecc71' : '#ffeb3b' }} />
+                      </div>
+                      <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{collection.bonus[lang]}</div>
+                      <div style={{ fontSize: '10px', color: '#d9d9d9', marginTop: '6px' }}>
+                        +{collection.reward.gold} gold | +{collection.reward.shards} shards | +{collection.reward.tokens} tokens
+                      </div>
+                      <button
+                        onClick={() => claimCollectionReward(collection)}
+                        disabled={!collection.complete || collection.claimed}
+                        className="btn-retro"
+                        style={{
+                          marginTop: '8px',
+                          padding: '5px 9px',
+                          fontSize: '10px',
+                          borderColor: collection.claimed ? '#2ecc71' : collection.complete ? '#ffeb3b' : '#444',
+                          color: collection.claimed ? '#2ecc71' : collection.complete ? '#ffeb3b' : '#666'
+                        }}
+                      >
+                        {collection.claimed
+                          ? (lang === 'fr' ? 'RECLAME' : 'CLAIMED')
+                          : collection.complete
+                            ? (lang === 'fr' ? 'RECLAMER CACHE' : 'CLAIM CACHE')
+                            : (lang === 'fr' ? 'INCOMPLET' : 'INCOMPLETE')}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '8px', marginBottom: '14px' }}>
               {activeFactionSynergies.map(rule => (
                 <div key={rule.id} style={{
@@ -835,6 +1227,7 @@ export default function HubScreen({
                 const preparedStage = prepareStage(stage);
                 const modifier = preparedStage.modifier;
                 const rarity = preparedStage.lootRarity;
+                const stageArc = getStageArc(stage);
 
                 return (
                   <div key={stage.id} style={{
@@ -880,6 +1273,11 @@ export default function HubScreen({
                         <span style={{ color: rarity.color, border: `1px solid ${rarity.color}`, padding: '1px 5px', fontSize: '9px', borderRadius: '2px' }}>
                           Loot {rarity.label}
                         </span>
+                        {stageArc && (
+                          <span style={{ color: stageArc.color, border: `1px solid ${stageArc.color}`, padding: '1px 5px', fontSize: '9px', borderRadius: '2px' }}>
+                            {stageArc.title[lang]}
+                          </span>
+                        )}
                         {isCompleted && <span style={{ color: '#2ecc71', fontSize: '11px', fontWeight: 'bold' }}>✓ CLEARED</span>}
                       </div>
 
@@ -965,6 +1363,11 @@ export default function HubScreen({
                   <div style={{ fontSize: '11px', color: getStageModifier(selectedBriefingStage).color, marginTop: '6px' }}>
                     {getStageModifier(selectedBriefingStage).name[lang]}: {getStageModifier(selectedBriefingStage).desc[lang]}
                   </div>
+                  {getStageArc(selectedBriefingStage) && (
+                    <div style={{ fontSize: '11px', color: getStageArc(selectedBriefingStage).color, marginTop: '6px' }}>
+                      {getStageArc(selectedBriefingStage).title[lang]}: {getStageArc(selectedBriefingStage).premise[lang]}
+                    </div>
+                  )}
                   <div style={{ fontSize: '11px', color: getLootRarity(selectedBriefingStage).color, marginTop: '6px' }}>
                     {lang === 'fr' ? 'Rareté estimée' : 'Estimated rarity'}: {getLootRarity(selectedBriefingStage).label}
                   </div>
@@ -1662,6 +2065,25 @@ export default function HubScreen({
                 ? `Consultez les enregistrements historiques des anomalies détectées sur les ${TOTAL_UNIVERSE_COUNT} univers connus du Multivers.`
                 : `Browse the historical logs of the spacetime anomalies detected across the ${TOTAL_UNIVERSE_COUNT} known universes of the Multiverse.`}
             </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px', marginBottom: '16px' }}>
+              {timelineProgress.map(entry => (
+                <div key={entry.id} style={{
+                  padding: '10px',
+                  border: entry.active ? '1px solid rgba(57,197,187,0.45)' : '1px dashed #333',
+                  background: entry.active ? 'rgba(57,197,187,0.06)' : 'rgba(0,0,0,0.2)',
+                  borderRadius: '4px',
+                  opacity: entry.active ? 1 : 0.55
+                }}>
+                  <div style={{ fontSize: '10px', color: entry.active ? '#39c5bb' : '#777', fontWeight: 'bold', marginBottom: '5px' }}>
+                    {entry.title[lang]} {entry.active ? '' : `(${entry.unlockClears})`}
+                  </div>
+                  <div style={{ fontSize: '10px', color: entry.active ? '#ccc' : '#666', lineHeight: 1.35 }}>
+                    {entry.text[lang]}
+                  </div>
+                </div>
+              ))}
+            </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '15px', maxHeight: '450px', overflowY: 'auto', paddingRight: '5px' }}>
               {(() => {
