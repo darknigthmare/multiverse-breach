@@ -1,5 +1,7 @@
 // Heroes Database with Crossover Gear, Event Items, and Synergies (37 Universes)
 
+import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from './expandedUniverses';
+
 export const HEROES_DB = [
   {
     id: 'marcus',
@@ -721,6 +723,8 @@ export const EQUIP_ITEMS_DB = [
   { id: 'v8_engine', universe: 'Mad Max', name: { en: 'Interceptor V8 Supercharger', fr: 'Compresseur V8 Interceptor' }, boost: { spd: 3 }, cost: 120 }
 ];
 
+EQUIP_ITEMS_DB.push(...EXPANDED_GEAR);
+
 export const EVENT_ITEMS_DB = {
   'Gears of War': {
     id: 'evt_gears_hammer',
@@ -948,6 +952,8 @@ export const EVENT_ITEMS_DB = {
   }
 };
 
+Object.assign(EVENT_ITEMS_DB, EXPANDED_EVENT_ITEMS);
+
 const extraHeroData = {
   'Gears of War': [
     { id: 'dom', name: 'Dom Santiago', cat: 'marine', color: '#3498db' },
@@ -1098,6 +1104,8 @@ const extraHeroData = {
     { id: 'nux', name: 'Nux', cat: 'marine', color: '#ffeaa7' }
   ]
 };
+
+Object.assign(extraHeroData, EXPANDED_EXTRA_HERO_DATA);
 
 Object.keys(extraHeroData).forEach(universe => {
   extraHeroData[universe].forEach(item => {

@@ -1,3 +1,5 @@
+import { EXPANDED_LORE_DB } from './expandedUniverses';
+
 export const LORE_DB = {
   'Gears of War': {
     mediaType: 'game',
@@ -296,3 +298,5 @@ export const LORE_DB = {
     }
   }
 };
+
+Object.assign(LORE_DB, EXPANDED_LORE_DB);

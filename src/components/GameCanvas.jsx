@@ -7,6 +7,7 @@ import sound from '../game/soundEngine';
 import { HEROES_DB, EVENT_ITEMS_DB, EQUIP_ITEMS_DB } from '../game/heroes';
 import { getMonstersForUniverse, getBossesForUniverse, getWorldBossForUniverse, getFinalGameBoss } from '../game/enemies';
 import { getTranslation } from '../game/translation';
+import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../game/expandedUniverses';
 
 export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, completedStages, onBattleEnd }) {
   const canvasRef = useRef(null);
@@ -54,10 +55,10 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
   ];
 
   const FACTION_RULES = [
-    { stat: 'hp', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator'] },
-    { stat: 'atk', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw'] },
-    { stat: 'spd', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus'] },
-    { stat: 'def', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue'] }
+    { stat: 'hp', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator', ...EXPANDED_FACTION_UNIVERSES.sciFi] },
+    { stat: 'atk', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw', ...EXPANDED_FACTION_UNIVERSES.horror] },
+    { stat: 'spd', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus', ...EXPANDED_FACTION_UNIVERSES.cyber] },
+    { stat: 'def', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue', ...EXPANDED_FACTION_UNIVERSES.arcane] }
   ];
 
   const UNIVERSE_TO_STAGE_ID = {
@@ -70,6 +71,8 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
     'Rick & Morty': 30, 'Digital Circus': 31, 'Digimon': 32, 'Saw': 33, 'Rosario + Vampire': 34,
     'Negima': 35, 'Ghost in the Shell': 36, 'Mad Max': 37
   };
+
+  Object.assign(UNIVERSE_TO_STAGE_ID, EXPANDED_STAGE_ID_BY_UNIVERSE);
 
   // Map hero stats
   const getHeroStats = (hero) => {

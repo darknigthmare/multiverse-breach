@@ -5,6 +5,7 @@ import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
+import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages } from '../game/expandedUniverses';
 
 export default function HubScreen({
   lang,
@@ -24,7 +25,7 @@ export default function HubScreen({
 }) {
   const [activeTab, setActiveTab] = useState('missions'); // 'missions' | 'roster' | 'party' | 'inventory' | 'shop'
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
-  const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga'
+  const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
@@ -73,10 +74,10 @@ export default function HubScreen({
   ];
 
   const FACTION_RULES = [
-    { id: 'sci_fi', stat: 'hp', label: 'Sci-Fi Marines', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator'], bonus: '+8% HP' },
-    { id: 'horror', stat: 'atk', label: 'Horreur cosmique', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw'], bonus: '+8% ATK' },
-    { id: 'cyber', stat: 'spd', label: 'IA & Cyber', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus'], bonus: '+8% SPD' },
-    { id: 'arcane', stat: 'def', label: 'Mages & Occulte', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue'], bonus: '+8% DEF' }
+    { id: 'sci_fi', stat: 'hp', label: 'Sci-Fi Marines', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator', ...EXPANDED_FACTION_UNIVERSES.sciFi], bonus: '+8% HP' },
+    { id: 'horror', stat: 'atk', label: 'Horreur cosmique', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw', ...EXPANDED_FACTION_UNIVERSES.horror], bonus: '+8% ATK' },
+    { id: 'cyber', stat: 'spd', label: 'IA & Cyber', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus', ...EXPANDED_FACTION_UNIVERSES.cyber], bonus: '+8% SPD' },
+    { id: 'arcane', stat: 'def', label: 'Mages & Occulte', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue', ...EXPANDED_FACTION_UNIVERSES.arcane], bonus: '+8% DEF' }
   ];
 
   const LOOT_RARITIES = [
@@ -132,6 +133,7 @@ export default function HubScreen({
     // 38th final stage
     { id: 38, name: 'Final Omniverse Singularity', universe: 'Matrix', mode: 'RPG', difficulty: 'Final World Boss', goldPrize: 500, shardPrize: 150, bossName: 'Breach Singularity Core' }
   ];
+  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
 
   // List of high-tier items in the Event Shop
   const EVENT_SHOP_ITEMS = [
@@ -142,7 +144,8 @@ export default function HubScreen({
     // Event Items (usable in combat)
     { id: 'evt_fo_nuke', name: { en: 'Fat Man Nuke Launcher', fr: 'Fat Man Lance-Nuke' }, isCombatEvent: true, universe: 'Fallout', tokenCost: 5 },
     { id: 'evt_doom_quad', name: { en: 'Quad Damage Powerup', fr: 'Multiplicateur Quad Damage' }, isCombatEvent: true, universe: 'Doom', tokenCost: 6 },
-    { id: 'evt_ut_redeemer', name: { en: 'Redeemer Missile Targeter', fr: 'Viseur de Missile Rédempteur' }, isCombatEvent: true, universe: 'Unreal', tokenCost: 8 }
+    { id: 'evt_ut_redeemer', name: { en: 'Redeemer Missile Targeter', fr: 'Viseur de Missile Rédempteur' }, isCombatEvent: true, universe: 'Unreal', tokenCost: 8 },
+    ...EXPANDED_EVENT_SHOP_ITEMS
   ];
 
   const UNIVERSE_TO_STAGE_ID = {
@@ -155,6 +158,8 @@ export default function HubScreen({
     'Rick & Morty': 30, 'Digital Circus': 31, 'Digimon': 32, 'Saw': 33, 'Rosario + Vampire': 34,
     'Negima': 35, 'Ghost in the Shell': 36, 'Mad Max': 37
   };
+
+  Object.assign(UNIVERSE_TO_STAGE_ID, EXPANDED_STAGE_ID_BY_UNIVERSE);
 
   const getHeroStats = (hero) => {
     const lvl = heroLevels[hero.id] || 1;
@@ -665,6 +670,13 @@ export default function HubScreen({
           >
             📚 {lang === 'fr' ? 'MANGA & WEB' : 'MANGA & WEB'}
           </button>
+          <button
+            onClick={() => { setMediaFilter('music'); sound.playSfx('click'); }}
+            className={`btn-retro ${mediaFilter === 'music' ? 'active-tab' : ''}`}
+            style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'music' ? '#f1c40f' : '#444' }}
+          >
+            MUSIC
+          </button>
         </div>
       )}
 
@@ -794,7 +806,7 @@ export default function HubScreen({
                 <strong style={{ color: '#39c5bb' }}>{lang === 'fr' ? 'Rang meta' : 'Meta rank'}:</strong> {metaRank}
               </div>
               <div style={{ fontSize: '10px', color: '#aaa' }}>
-                <strong style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Progression' : 'Progress'}:</strong> {completedStages.length}/38
+                <strong style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Progression' : 'Progress'}:</strong> {completedStages.length}/{STAGES.length}
               </div>
               <div style={{ fontSize: '10px', color: '#aaa' }}>
                 <strong style={{ color: '#9b59b6' }}>{lang === 'fr' ? 'Niveaux équipe' : 'Roster levels'}:</strong> {totalHeroLevels}
@@ -1670,7 +1682,7 @@ export default function HubScreen({
                             {lore.title[lang]}
                           </span>
                           <span style={{ fontSize: '9px', padding: '2px 6px', background: 'rgba(255,255,255,0.06)', borderRadius: '3px', color: '#aaa', textTransform: 'uppercase' }}>
-                            {lore.mediaType === 'game' ? '🕹️ Game' : lore.mediaType === 'movie' ? '🎬 Movie' : '📚 Web / Manga'}
+                            {lore.mediaType === 'game' ? '🕹️ Game' : lore.mediaType === 'movie' ? '🎬 Movie' : lore.mediaType === 'music' ? 'Music' : '📚 Web / Manga'}
                           </span>
                         </div>
                         <div style={{ marginBottom: '8px' }}>

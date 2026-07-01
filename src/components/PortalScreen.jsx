@@ -32,16 +32,12 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
       let pool = HEROES_DB;
       const isBannerWeighted = activeBanner !== 'multi';
       
-      let bannerCategory = '';
-      if (activeBanner === 'scifi') bannerCategory = 'marine';
-      if (activeBanner === 'horror') bannerCategory = 'horror';
-      if (activeBanner === 'arcade') bannerCategory = 'slayer'; // slayer or hacker
-
       const bannerPool = HEROES_DB.filter(h => {
         if (activeBanner === 'scifi') return h.category === 'marine' || h.id === 'chell' || h.id === 'freeman';
         if (activeBanner === 'horror') return h.category === 'horror' || h.id === 'pyramidhead';
         if (activeBanner === 'arcade') return h.category === 'slayer' || h.category === 'tactical' || h.id === 'miku';
         if (activeBanner === 'manga') return LORE_DB[h.universe]?.mediaType === 'manga';
+        if (activeBanner === 'music') return LORE_DB[h.universe]?.mediaType === 'music';
         return true;
       });
 
@@ -100,6 +96,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
         if (activeBanner === 'horror') return h.category === 'horror' || h.id === 'pyramidhead';
         if (activeBanner === 'arcade') return h.category === 'slayer' || h.category === 'tactical' || h.id === 'miku';
         if (activeBanner === 'manga') return LORE_DB[h.universe]?.mediaType === 'manga';
+        if (activeBanner === 'music') return LORE_DB[h.universe]?.mediaType === 'music';
         return true;
       });
       const otherPool = HEROES_DB.filter(h => !bannerPool.includes(h));
@@ -222,6 +219,13 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
             style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'manga' ? '#9b59b6' : '#444' }}
           >
             📚 {getTranslation(lang, 'portal_manga')}
+          </button>
+          <button
+            onClick={() => { setActiveBanner('music'); sound.playSfx('click'); }}
+            className={`btn-retro ${activeBanner === 'music' ? 'active-tab' : ''}`}
+            style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'music' ? '#f1c40f' : '#444' }}
+          >
+            MUSIC
           </button>
         </div>
       </div>

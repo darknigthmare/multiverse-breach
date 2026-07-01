@@ -1,6 +1,8 @@
 // Expanded Enemies Database for 37 universes
 // Includes 3 monsters, 2 bosses, and 1 local World Boss per universe, plus 1 Final Game Boss & obstacles
 
+import { EXPANDED_ENEMIES_DB } from './expandedUniverses';
+
 export const ENEMIES_DB = {
   'Gears of War': {
     monsters: [
@@ -449,6 +451,8 @@ export const ENEMIES_DB = {
     worldBoss: { name: 'The Gigahorse Interceptor Rig', hp: 1350, atk: 32, spd: 4, color: '#2c3e50', weapon: 'harpoon', special: 'Muzzle-Flash Flame Spewer' }
   }
 };
+
+Object.assign(ENEMIES_DB, EXPANDED_ENEMIES_DB);
 
 // Final game boss (The final breach singularity core)
 export const FINAL_GAME_BOSS = {

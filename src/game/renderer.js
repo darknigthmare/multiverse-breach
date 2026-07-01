@@ -1,5 +1,7 @@
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
+import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
+
 export class ParticleSystem {
   constructor() {
     this.particles = [];
@@ -610,6 +612,8 @@ const DECOR_THEMES = {
   'Mad Max': { sky: ['#412409', '#0c0501'], floor: 'rgba(221, 116, 36, 0.2)', grid: 'rgba(255, 150, 58, 0.28)', motif: 'desert', accent: '#ff963a' },
   Matrix: { sky: ['#061706', '#000300'], floor: 'rgba(50, 255, 98, 0.12)', grid: 'rgba(50, 255, 98, 0.45)', motif: 'singularity', accent: '#32ff62' }
 };
+
+Object.assign(DECOR_THEMES, EXPANDED_DECOR_THEMES);
 
 export const OPENAI_BACKDROPS = {
   RPG: {
