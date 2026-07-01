@@ -30,6 +30,7 @@ export default function HubScreen({
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
   const [briefingStageId, setBriefingStageId] = useState(null);
+  const collectionBonusCount = inventory.filter(itemId => itemId.startsWith('collection_reward_')).length;
 
   const BREACH_MODIFIERS = [
     {
@@ -600,6 +601,14 @@ export default function HubScreen({
       if (talent === 'hyper_velocity') stats.spd = Math.round(stats.spd * 1.15);
       if (talent === 'atb_overdrive') stats.spd = Math.round(stats.spd * 1.20);
       if (talent === 'guardian_plates') stats.hp = Math.round(stats.hp * 1.20);
+    }
+
+    if (collectionBonusCount > 0) {
+      const collectionFactor = 1 + Math.min(0.3, collectionBonusCount * 0.02);
+      stats.hp = Math.round(stats.hp * collectionFactor);
+      stats.atk = Math.round(stats.atk * collectionFactor);
+      stats.def = Math.round(stats.def * collectionFactor);
+      stats.spd = Math.round(stats.spd * collectionFactor);
     }
 
     // 4. Add equipped gear boosts
@@ -1322,6 +1331,9 @@ export default function HubScreen({
                       <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{collection.bonus[lang]}</div>
                       <div style={{ fontSize: '10px', color: '#d9d9d9', marginTop: '6px' }}>
                         +{collection.reward.gold} gold | +{collection.reward.shards} shards | +{collection.reward.tokens} tokens
+                      </div>
+                      <div style={{ fontSize: '9px', color: '#2ecc71', marginTop: '4px' }}>
+                        {lang === 'fr' ? 'Passif permanent: +2% toutes stats.' : 'Permanent passive: +2% all stats.'}
                       </div>
                       <button
                         onClick={() => claimCollectionReward(collection)}

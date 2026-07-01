@@ -72,7 +72,7 @@ export class ParticleSystem {
 }
 
 export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1) => {
-  const { primaryColor, secondaryColor, weaponType, weaponColor, id, state, defense } = character;
+  const { primaryColor, secondaryColor, weaponType, weaponColor, id, state } = character;
   
   ctx.save();
   ctx.translate(x, y);
@@ -357,7 +357,7 @@ const drawWeapon = (ctx, x, y, type, color, animTime) => {
 };
 
 export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
-  const { name, color, weapon, state } = enemy;
+  const { name, color, state } = enemy;
   
   ctx.save();
   ctx.translate(x, y);
@@ -627,9 +627,18 @@ export const OPENAI_BACKDROPS = {
     Doom: '/backgrounds/doom-rpg-openai.png',
     'Harry Potter': '/backgrounds/harry-potter-rpg-openai.png',
     'Scary Movie': '/backgrounds/scary-movie-rpg-openai.png',
+    Vocaloid: '/backgrounds/vocaloid-smash-openai.png',
     'Digital Circus': '/backgrounds/digital-circus-rpg-openai.png',
     'Rosario + Vampire': '/backgrounds/rosario-vampire-rpg-openai.png',
     'Mad Max': '/backgrounds/mad-max-rpg-openai.png',
+    Discworld: '/backgrounds/harry-potter-rpg-openai.png',
+    Kaamelott: '/backgrounds/harry-potter-rpg-openai.png',
+    'Alien 3': '/backgrounds/alien-smash-openai.png',
+    'Alien: Covenant': '/backgrounds/alien-smash-openai.png',
+    'The Predator': '/backgrounds/predator-rpg-openai.png',
+    'Predator: Badlands': '/backgrounds/predator-rpg-openai.png',
+    'Dungeon Meshi': '/backgrounds/rosario-vampire-rpg-openai.png',
+    'Hazbin Hotel': '/backgrounds/digital-circus-rpg-openai.png',
     Matrix: '/backgrounds/matrix-rpg-openai.png'
   },
   Tactics: {
@@ -642,7 +651,18 @@ export const OPENAI_BACKDROPS = {
     'Le Cinquième Element': '/backgrounds/fifth-element-tactics-openai.png',
     'Dead Space': '/backgrounds/dead-space-tactics-openai.png',
     Digimon: '/backgrounds/digimon-tactics-openai.png',
-    Negima: '/backgrounds/negima-tactics-openai.png'
+    Negima: '/backgrounds/negima-tactics-openai.png',
+    'Slender Man': '/backgrounds/slender-man-smash-openai.png',
+    Unreal: '/backgrounds/unreal-smash-openai.png',
+    'The Batman Who Laughs': '/backgrounds/metal-gear-tactics-openai.png',
+    Prometheus: '/backgrounds/dead-space-tactics-openai.png',
+    'Alien Resurrection': '/backgrounds/dead-space-tactics-openai.png',
+    Predators: '/backgrounds/halo-tactics-openai.png',
+    'Predator: Killer of Killers': '/backgrounds/yu-gi-oh-tactics-openai.png',
+    'Alien vs Predator': '/backgrounds/resident-evil-tactics-openai.png',
+    Noob: '/backgrounds/digimon-tactics-openai.png',
+    'System of a Down': '/backgrounds/yu-gi-oh-tactics-openai.png',
+    'Daft Punk': '/backgrounds/matrix-tactics-openai.png'
   },
   Smash: {
     Alien: '/backgrounds/alien-smash-openai.png',
@@ -658,7 +678,16 @@ export const OPENAI_BACKDROPS = {
     'Star Wars': '/backgrounds/star-wars-smash-openai.png',
     'Rick & Morty': '/backgrounds/rick-morty-smash-openai.png',
     Saw: '/backgrounds/saw-smash-openai.png',
-    'Ghost in the Shell': '/backgrounds/ghost-in-the-shell-smash-openai.png'
+    'Ghost in the Shell': '/backgrounds/ghost-in-the-shell-smash-openai.png',
+    'Joker New 52': '/backgrounds/chucky-smash-openai.png',
+    Aliens: '/backgrounds/alien-smash-openai.png',
+    'Alien: Romulus': '/backgrounds/alien-smash-openai.png',
+    'Predator 2': '/backgrounds/predator-rpg-openai.png',
+    Prey: '/backgrounds/predator-rpg-openai.png',
+    'Aliens vs Predator: Requiem': '/backgrounds/alien-smash-openai.png',
+    Rammstein: '/backgrounds/doom-rpg-openai.png',
+    'Rob Zombie': '/backgrounds/chucky-smash-openai.png',
+    'Oliver Tree': '/backgrounds/rick-morty-smash-openai.png'
   }
 };
 

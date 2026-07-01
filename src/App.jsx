@@ -8,6 +8,101 @@ import { getTranslation } from './game/translation';
 import { EQUIP_ITEMS_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
 
+const SAVE_KEY = 'multiverse_breach_save_v2';
+
+const DEFAULT_SAVE = {
+  lang: 'fr',
+  gold: 200,
+  breachShards: 150,
+  eventTokens: 10,
+  unlockedHeroes: ['freeman', 'masterchief', 'leon'],
+  heroLevels: { freeman: 1, masterchief: 1, leon: 1 },
+  activeTeam: ['freeman', 'masterchief', 'leon'],
+  completedStages: [],
+  heroTalents: {},
+  inventory: ['cog_armor', 'green_herb', 'hev_battery'],
+  equippedGear: {
+    freeman: 'hev_battery',
+    masterchief: null,
+    leon: 'green_herb'
+  },
+  equippedEventItems: {
+    freeman: 'evt_hl_snarks',
+    masterchief: 'evt_halo_warthog',
+    leon: 'evt_re_cure'
+  }
+};
+
+const loadSave = () => {
+  if (typeof window === 'undefined') return DEFAULT_SAVE;
+  try {
+    const raw = window.localStorage.getItem(SAVE_KEY);
+    if (!raw) return DEFAULT_SAVE;
+    const parsed = JSON.parse(raw);
+    return {
+      ...DEFAULT_SAVE,
+      ...parsed,
+      heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(parsed.heroLevels || {}) },
+      heroTalents: parsed.heroTalents || {},
+      equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(parsed.equippedGear || {}) },
+      equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(parsed.equippedEventItems || {}) }
+    };
+  } catch {
+    return DEFAULT_SAVE;
+  }
+};
+
+const saveGame = (payload) => {
+  if (typeof window === 'undefined') return;
+  window.localStorage.setItem(SAVE_KEY, JSON.stringify(payload));
+};
+
+const getMissionNarrative = (stage, lang, isOutro, victory) => {
+  const lines = {
+    'Alien': {
+      intro: { fr: 'Le signal MU/TH/UR grince dans les couloirs. Chaque porte ouverte peut nourrir la ruche.', en: 'The MU/TH/UR signal grinds through the corridors. Every opened door can feed the hive.' },
+      victory: { fr: 'La ruche recule, mais l acide grave encore les murs du Nexus.', en: 'The hive falls back, but acid still etches the Nexus walls.' }
+    },
+    'Predator': {
+      intro: { fr: 'Les capteurs thermiques balayent la zone. Le clan attend une chasse digne du trophée.', en: 'Thermal sensors sweep the zone. The clan waits for a trophy-worthy hunt.' },
+      victory: { fr: 'Le trophée est refusé à la breche: l honneur reste du cote de l escouade.', en: 'The breach is denied its trophy: honor stays with the squad.' }
+    },
+    'Stargate': {
+      intro: { fr: 'Le vortex verrouille sept chevrons et projette le Nexus dans une coordonnee ancienne.', en: 'The vortex locks seven chevrons and throws the Nexus into ancient coordinates.' },
+      victory: { fr: 'L iris se referme sur le signal hostile. La porte est stable.', en: 'The iris closes over the hostile signal. The gate is stable.' }
+    },
+    'Kaamelott': {
+      intro: { fr: 'La Table Ronde tente un plan simple. Le Nexus detecte aussitot douze interpretations contradictoires.', en: 'The Round Table attempts a simple plan. The Nexus instantly detects twelve contradictory readings.' },
+      victory: { fr: 'La breche capitule avant le prochain debat strategique.', en: 'The breach yields before the next strategic debate.' }
+    },
+    'Discworld': {
+      intro: { fr: 'La magie octarine fuit entre deux regles de realite. Meme le Nexus hesite a classer le phenomene.', en: 'Octarine magic leaks between two rules of reality. Even the Nexus hesitates to classify it.' },
+      victory: { fr: 'La realite est remise a peu pres droite, ce qui suffit pour aujourd hui.', en: 'Reality is set approximately straight, which is enough for today.' }
+    },
+    'Doom': {
+      intro: { fr: 'Les sceaux infernaux cèdent. La seule diplomatie possible tient dans le canon.', en: 'Infernal seals fail. The only possible diplomacy fits inside a barrel.' },
+      victory: { fr: 'Le front infernal est brise. Le Nexus archive la violence comme methode de stabilisation.', en: 'The infernal front breaks. The Nexus archives violence as a stabilization method.' }
+    },
+    'Hazbin Hotel': {
+      intro: { fr: 'Le cabaret infernal transforme la breche en numero de redemption impossible.', en: 'The infernal cabaret turns the breach into an impossible redemption number.' },
+      victory: { fr: 'Le rideau tombe, et meme la Singularity manque son rappel.', en: 'The curtain falls, and even the Singularity misses its encore.' }
+    }
+  };
+  const profile = lines[stage.universe];
+  if (profile) {
+    if (!isOutro) return profile.intro[lang];
+    return victory ? profile.victory[lang] : (lang === 'fr' ? `${stage.universe} reste instable, mais son pattern narratif est maintenant isole.` : `${stage.universe} remains unstable, but its narrative pattern is now isolated.`);
+  }
+  if (!isOutro) {
+    return lang === 'fr'
+      ? `Le Nexus isole une signature propre a ${stage.universe}. La scene se charge de symboles locaux avant l impact.`
+      : `The Nexus isolates a signature unique to ${stage.universe}. The scene fills with local symbols before impact.`;
+  }
+  return victory
+    ? (lang === 'fr' ? `${stage.universe} rejoint les archives actives du Nexus avec une signature stabilisee.` : `${stage.universe} joins the active Nexus archives with a stabilized signature.`)
+    : (lang === 'fr' ? `${stage.universe} resiste encore, mais la prochaine ouverture sera plus lisible.` : `${stage.universe} still resists, but the next opening will be easier to read.`);
+};
+
 function MissionNarrativeScreen({ lang, stage, result, onContinue }) {
   const isOutro = Boolean(result);
   const victory = result === 'victory';
@@ -25,16 +120,17 @@ function MissionNarrativeScreen({ lang, stage, result, onContinue }) {
     : stage.mode === 'Tactics'
       ? (lang === 'fr' ? 'Le champ se decoupe en lignes tactiques: chaque case devient une decision de survie.' : 'The field splits into tactical lanes: every tile becomes a survival decision.')
       : (lang === 'fr' ? 'La breche explose en arene rapide, proche d un combat crossover de super-heros.' : 'The breach bursts into a fast arena, close to a superhero crossover battle.');
+  const narrativeLine = getMissionNarrative(stage, lang, isOutro, victory);
   const introText = lang === 'fr'
-    ? `La faille ${stage.universe} s ouvre sur ${stage.name}. Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que la Singularity absorbe ce lore.`
-    : `The ${stage.universe} breach opens over ${stage.name}. Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Singularity absorbs this lore.`;
+    ? `${narrativeLine} Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que la Singularity absorbe ce lore.`
+    : `${narrativeLine} Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Singularity absorbs this lore.`;
   const outroText = victory
     ? (lang === 'fr'
-      ? `${stage.universe} est stabilise. Les donnees de ${stage.bossName} rejoignent le codex, la rarete ${rarity} est indexee et les recompenses sont transferees au hub.`
-      : `${stage.universe} is stabilized. ${stage.bossName} data enters the codex, ${rarity} rarity is indexed, and rewards are transferred to the hub.`)
+      ? `${narrativeLine} Les donnees de ${stage.bossName} rejoignent le codex, la rarete ${rarity} est indexee et les recompenses sont transferees au hub.`
+      : `${narrativeLine} ${stage.bossName} data enters the codex, ${rarity} rarity is indexed, and rewards are transferred to the hub.`)
     : (lang === 'fr'
-      ? `La breche ${stage.universe} reste active. L escouade conserve les donnees de contact, mais ${stage.bossName} garde le controle local du signal.`
-      : `The ${stage.universe} breach remains active. The squad keeps contact data, but ${stage.bossName} still controls the local signal.`);
+      ? `${narrativeLine} L escouade conserve les donnees de contact, mais ${stage.bossName} garde le controle local du signal.`
+      : `${narrativeLine} The squad keeps contact data, but ${stage.bossName} still controls the local signal.`);
 
   return (
     <div className="narrative-screen">
@@ -64,34 +160,43 @@ function MissionNarrativeScreen({ lang, stage, result, onContinue }) {
 }
 
 function App() {
-  const [lang, setLang] = useState('fr'); // FR default as requested, EN toggle
+  const initialSave = loadSave();
+  const [lang, setLang] = useState(initialSave.lang); // FR default as requested, EN toggle
   const [currentScreen, setCurrentScreen] = useState('intro');
-  const [gold, setGold] = useState(200);
-  const [breachShards, setBreachShards] = useState(150); // enough for 3 portal pulls
-  const [eventTokens, setEventTokens] = useState(10); // starting tokens for event shop
-  const [unlockedHeroes, setUnlockedHeroes] = useState(['freeman', 'masterchief', 'leon']);
-  const [heroLevels, setHeroLevels] = useState({ freeman: 1, masterchief: 1, leon: 1 });
-  const [activeTeam, setActiveTeam] = useState(['freeman', 'masterchief', 'leon']);
-  const [completedStages, setCompletedStages] = useState([]);
+  const [gold, setGold] = useState(initialSave.gold);
+  const [breachShards, setBreachShards] = useState(initialSave.breachShards);
+  const [eventTokens, setEventTokens] = useState(initialSave.eventTokens);
+  const [unlockedHeroes, setUnlockedHeroes] = useState(initialSave.unlockedHeroes);
+  const [heroLevels, setHeroLevels] = useState(initialSave.heroLevels);
+  const [activeTeam, setActiveTeam] = useState(initialSave.activeTeam);
+  const [completedStages, setCompletedStages] = useState(initialSave.completedStages);
   const [activeStage, setActiveStage] = useState(null);
   const [lastBattleResult, setLastBattleResult] = useState(null);
-  const [heroTalents, setHeroTalents] = useState({}); // heroId -> talentId
+  const [heroTalents, setHeroTalents] = useState(initialSave.heroTalents); // heroId -> talentId
 
   // Inventory & Equipment
-  const [inventory, setInventory] = useState([
-    'cog_armor', 'green_herb', 'hev_battery' // starting gear
-  ]);
-  const [equippedGear, setEquippedGear] = useState({
-    freeman: 'hev_battery',
-    masterchief: null,
-    leon: 'green_herb'
-  });
+  const [inventory, setInventory] = useState(initialSave.inventory);
+  const [equippedGear, setEquippedGear] = useState(initialSave.equippedGear);
   // Equipped Event Items (1 slot per hero)
-  const [equippedEventItems, setEquippedEventItems] = useState({
-    freeman: 'evt_hl_snarks', // starting events unlocked automatically for starting characters
-    masterchief: 'evt_halo_warthog',
-    leon: 'evt_re_cure'
-  });
+  const [equippedEventItems, setEquippedEventItems] = useState(initialSave.equippedEventItems);
+  const collectionBonusCount = inventory.filter(itemId => itemId.startsWith('collection_reward_')).length;
+
+  useEffect(() => {
+    saveGame({
+      lang,
+      gold,
+      breachShards,
+      eventTokens,
+      unlockedHeroes,
+      heroLevels,
+      activeTeam,
+      completedStages,
+      heroTalents,
+      inventory,
+      equippedGear,
+      equippedEventItems
+    });
+  }, [lang, gold, breachShards, eventTokens, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, inventory, equippedGear, equippedEventItems]);
 
   // Play ambient music
   useEffect(() => {
@@ -166,6 +271,68 @@ function App() {
     sound.playSfx('coin');
   };
 
+  const applySave = (save) => {
+    const merged = { ...DEFAULT_SAVE, ...save };
+    setLang(merged.lang);
+    setGold(merged.gold);
+    setBreachShards(merged.breachShards);
+    setEventTokens(merged.eventTokens);
+    setUnlockedHeroes(merged.unlockedHeroes);
+    setHeroLevels(merged.heroLevels);
+    setActiveTeam(merged.activeTeam);
+    setCompletedStages(merged.completedStages);
+    setHeroTalents(merged.heroTalents);
+    setInventory(merged.inventory);
+    setEquippedGear(merged.equippedGear);
+    setEquippedEventItems(merged.equippedEventItems);
+    setActiveStage(null);
+    setLastBattleResult(null);
+    setCurrentScreen('hub');
+  };
+
+  const getCurrentSave = () => ({
+    lang,
+    gold,
+    breachShards,
+    eventTokens,
+    unlockedHeroes,
+    heroLevels,
+    activeTeam,
+    completedStages,
+    heroTalents,
+    inventory,
+    equippedGear,
+    equippedEventItems
+  });
+
+  const exportSave = async () => {
+    const raw = JSON.stringify(getCurrentSave());
+    try {
+      await navigator.clipboard.writeText(raw);
+      window.alert(lang === 'fr' ? 'Sauvegarde copiee dans le presse-papiers.' : 'Save copied to clipboard.');
+    } catch {
+      window.prompt(lang === 'fr' ? 'Copie ta sauvegarde :' : 'Copy your save:', raw);
+    }
+  };
+
+  const importSave = () => {
+    const raw = window.prompt(lang === 'fr' ? 'Colle ta sauvegarde exportee :' : 'Paste exported save:');
+    if (!raw) return;
+    try {
+      applySave(JSON.parse(raw));
+      sound.playSfx('levelup');
+    } catch {
+      window.alert(lang === 'fr' ? 'Sauvegarde invalide.' : 'Invalid save.');
+    }
+  };
+
+  const resetSave = () => {
+    if (!window.confirm(lang === 'fr' ? 'Reset complet de la progression ?' : 'Fully reset progression?')) return;
+    window.localStorage.removeItem(SAVE_KEY);
+    applySave(DEFAULT_SAVE);
+    sound.playSfx('click');
+  };
+
   return (
     <>
       {/* Global Mute/Audio Button */}
@@ -193,6 +360,26 @@ function App() {
       >
         🌐 {lang.toUpperCase()}
       </button>
+
+      <div style={{
+        position: 'fixed',
+        bottom: '15px',
+        left: '15px',
+        zIndex: 100,
+        display: 'flex',
+        gap: '6px',
+        flexWrap: 'wrap'
+      }}>
+        <button onClick={exportSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#39c5bb' }}>
+          EXPORT SAVE
+        </button>
+        <button onClick={importSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#ffeb3b', color: '#ffeb3b' }}>
+          IMPORT
+        </button>
+        <button onClick={resetSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#e74c3c', color: '#e74c3c' }}>
+          RESET
+        </button>
+      </div>
 
       {/* Screen Router */}
       {currentScreen === 'intro' && (
@@ -320,6 +507,7 @@ function App() {
           equippedEventItems={equippedEventItems}
           heroTalents={heroTalents}
           completedStages={completedStages}
+          collectionBonusCount={collectionBonusCount}
           onBattleEnd={handleBattleEnd}
         />
       )}

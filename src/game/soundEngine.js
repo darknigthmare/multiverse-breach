@@ -262,9 +262,9 @@ class SoundEngine {
 
     this.stopBgm();
 
-    const C4 = 261.63, D4 = 293.66, E4 = 329.63, F4 = 349.23, G4 = 392.00, A4 = 440.00, B4 = 493.88;
-    const C3 = 130.81, D3 = 146.83, E3 = 164.81, F3 = 174.61, FS3 = 185.00, G3 = 196.00, A3 = 220.00, B3 = 246.94;
-    const C5 = 523.25, D5 = 587.33, E5 = 659.25, G5 = 783.99, A5 = 880.00;
+    const D4 = 293.66, E4 = 329.63, G4 = 392.00, A4 = 440.00, B4 = 493.88;
+    const D3 = 146.83, E3 = 164.81, FS3 = 185.00, G3 = 196.00, A3 = 220.00, B3 = 246.94;
+    const C5 = 523.25, D5 = 587.33;
 
     let melody = [];
     let bass = [];
@@ -338,7 +338,7 @@ class SoundEngine {
     this.activeSources.forEach(src => {
       try {
         src.stop();
-      } catch (e) {}
+      } catch {}
     });
     this.activeSources = [];
   }

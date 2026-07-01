@@ -9,7 +9,7 @@ import { getMonstersForUniverse, getBossesForUniverse, getWorldBossForUniverse, 
 import { getTranslation } from '../game/translation';
 import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../game/expandedUniverses';
 
-export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, completedStages, onBattleEnd }) {
+export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, completedStages, collectionBonusCount = 0, onBattleEnd }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysPressed = useRef({});
@@ -18,7 +18,6 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
   const [activeHeroId, setActiveHeroId] = useState(activeTeam[0]);
   const [teamState, setTeamState] = useState([]);
   const [bossState, setBossState] = useState(null);
-  const [activePhase, setActivePhase] = useState('move'); // tactics
   const [selectedAction, setSelectedAction] = useState('simple'); // tactics
   const [autoBattle, setAutoBattle] = useState(false);
   const [speedMultiplier, setSpeedMultiplier] = useState(1); // 1 | 2
@@ -150,6 +149,13 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
     }
     if (stage.modifier?.heroAtk) {
       stats.atk = Math.round(stats.atk * stage.modifier.heroAtk);
+    }
+    if (collectionBonusCount > 0) {
+      const collectionFactor = 1 + Math.min(0.3, collectionBonusCount * 0.02);
+      stats.hp = Math.round(stats.hp * collectionFactor);
+      stats.atk = Math.round(stats.atk * collectionFactor);
+      stats.def = Math.round(stats.def * collectionFactor);
+      stats.spd = Math.round(stats.spd * collectionFactor);
     }
     return stats;
   };
@@ -329,7 +335,6 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
           setActiveHeroId(engine.selectedHeroId);
         } else if (stage.mode === 'Tactics') {
           setActiveHeroId(engine.activeUnit?.id || '');
-          setActivePhase(engine.actionPhase);
           setSelectedAction(engine.selectedAction);
         }
       }
@@ -346,6 +351,7 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
       cancelAnimationFrame(frameId);
       sound.stopBgm();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stage, activeTeam]);
 
   const handleCanvasClick = (e) => {
@@ -466,6 +472,13 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
           {stage.isSurvival && (
             <div style={{ fontSize: '10px', color: '#ff8c00', marginTop: '3px' }}>
               {lang === 'fr' ? 'Mode survie: récompenses augmentées, anomalies plus fréquentes.' : 'Survival mode: higher rewards, more unstable anomalies.'}
+            </div>
+          )}
+          {collectionBonusCount > 0 && (
+            <div style={{ fontSize: '10px', color: '#2ecc71', marginTop: '3px' }}>
+              {lang === 'fr'
+                ? `Matrice de collections: +${Math.min(30, collectionBonusCount * 2)}% toutes stats.`
+                : `Collection matrix: +${Math.min(30, collectionBonusCount * 2)}% all stats.`}
             </div>
           )}
         </div>
