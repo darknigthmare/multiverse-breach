@@ -1122,6 +1122,20 @@ export default function HubScreen({
             <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#39c5bb' }}>
               {lang === 'fr' ? 'SCAN DE BRÈCHES' : 'BREACH SCAN'}
             </h3>
+            <div style={{
+              marginBottom: '12px',
+              padding: '10px 12px',
+              border: '1px solid rgba(57,197,187,0.24)',
+              background: 'rgba(57,197,187,0.06)',
+              color: '#c8f7f4',
+              fontSize: '11px',
+              lineHeight: 1.45,
+              borderRadius: '4px'
+            }}>
+              {lang === 'fr'
+                ? 'Liste courte et aleatoire: le hub propose 5 breches utiles seulement. Nouveau scan remanie les cibles; la carte et les archives gardent l acces complet.'
+                : 'Short randomized list: the hub proposes only 5 useful breaches. New Scan rerolls targets; the map and archive keep full access.'}
+            </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px', color: '#aaa', fontSize: '12px' }}>
               <span>
                 {lang === 'fr'

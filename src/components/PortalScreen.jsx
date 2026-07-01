@@ -9,12 +9,44 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
   const [summoning, setSummoning] = useState(false);
   const [summonedHero, setSummonedHero] = useState(null);
   const [summonedBatch, setSummonedBatch] = useState(null);
+  const [summonResult, setSummonResult] = useState(null);
   const [showCard, setShowCard] = useState(false);
   
   // New Banner selection state
-  const [activeBanner, setActiveBanner] = useState('multi'); // 'multi' | 'scifi' | 'horror' | 'arcade'
+  const [activeBanner, setActiveBanner] = useState('multi');
 
   const cost = 50;
+  const portalBanners = [
+    { id: 'multi', color: '#9b59b6', label: { fr: 'Portail Multivers', en: 'Multiverse Portal' }, desc: { fr: 'Tous les heros, taux standards.', en: 'All heroes, standard rates.' }, match: () => true },
+    { id: 'scifi', color: '#3498db', label: { fr: 'Faille Sci-Fi', en: 'Sci-Fi Rift' }, desc: { fr: 'Halo, Mass Effect, Portal, Stargate, Gears.', en: 'Halo, Mass Effect, Portal, Stargate, Gears.' }, match: h => ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Portal', 'Half-Life', 'Star Wars', 'Le Cinquième Element'].includes(h.universe) },
+    { id: 'xeno_yautja', color: '#8adbe6', label: { fr: 'Faille Xeno-Yautja', en: 'Xeno-Yautja Rift' }, desc: { fr: 'Alien, Predator, Prometheus, AVP.', en: 'Alien, Predator, Prometheus, AVP.' }, match: h => /Alien|Predator|Prometheus|Prey/.test(h.universe) },
+    { id: 'horror', color: '#e74c3c', label: { fr: 'Faille Horreur', en: 'Horror Rift' }, desc: { fr: 'Resident Evil, Silent Hill, Chucky, Saw, Hellraiser.', en: 'Resident Evil, Silent Hill, Chucky, Saw, Hellraiser.' }, match: h => h.category === 'horror' || ['Resident Evil', 'Silent Hill', 'Chucky', 'Hellraiser', 'Saw', 'Slender Man', 'Scary Movie', 'Dead Space', 'Hazbin Hotel', 'Rob Zombie'].includes(h.universe) },
+    { id: 'cyber', color: '#39ffcc', label: { fr: 'Faille Cyber', en: 'Cyber Rift' }, desc: { fr: 'Matrix, Ghost in the Shell, Digital Circus, Digimon.', en: 'Matrix, Ghost in the Shell, Digital Circus, Digimon.' }, match: h => ['The Matrix', 'Ghost in the Shell', 'Digital Circus', 'Digimon', 'Daft Punk', 'Oliver Tree'].includes(h.universe) },
+    { id: 'arena', color: '#e67e22', label: { fr: 'Faille Duel & Arene', en: 'Duel & Arena Rift' }, desc: { fr: 'Metal Gear, Payday, Yu-Gi-Oh, Guilty Gear, BlazBlue, Unreal.', en: 'Metal Gear, Payday, Yu-Gi-Oh, Guilty Gear, BlazBlue, Unreal.' }, match: h => ['Metal Gear', 'Payday', 'Yu-Gi-Oh', 'Guilty Gear', 'BlazBlue', 'Unreal'].includes(h.universe) },
+    { id: 'arcade', color: '#e67e22', label: { fr: 'Faille Arcade', en: 'Arcade Rift' }, desc: { fr: 'Combattants, tacticiens et arènes.', en: 'Fighters, tacticians, and arenas.' }, match: h => h.category === 'slayer' || h.category === 'tactical' || ['Vocaloid', 'Unreal'].includes(h.universe) },
+    { id: 'arcane', color: '#d9b86b', label: { fr: 'Faille Arcane', en: 'Arcane Rift' }, desc: { fr: 'Discworld, Kaamelott, Dungeon Meshi, Noob, magie.', en: 'Discworld, Kaamelott, Dungeon Meshi, Noob, magic.' }, match: h => ['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob', 'Harry Potter', 'Negima', 'Rosario + Vampire'].includes(h.universe) },
+    { id: 'manga', color: '#9b59b6', label: { fr: 'Faille Manga & Web', en: 'Manga & Web Rift' }, desc: { fr: 'Univers manga, web et animation.', en: 'Manga, web, and animation worlds.' }, match: h => LORE_DB[h.universe]?.mediaType === 'manga' },
+    { id: 'music', color: '#f1c40f', label: { fr: 'Faille Musique', en: 'Music Rift' }, desc: { fr: 'Rammstein, SOAD, Rob Zombie, Daft Punk, Oliver Tree, Vocaloid.', en: 'Rammstein, SOAD, Rob Zombie, Daft Punk, Oliver Tree, Vocaloid.' }, match: h => LORE_DB[h.universe]?.mediaType === 'music' || h.universe === 'Vocaloid' },
+    { id: 'movie', color: '#ff5b6e', label: { fr: 'Faille Films & Series', en: 'Movies & TV Rift' }, desc: { fr: 'Cinema/series hors focus specialise.', en: 'Movie and TV worlds outside specialized focus.' }, match: h => LORE_DB[h.universe]?.mediaType === 'movie' }
+  ];
+
+  const pickHero = (ownedIds) => {
+    const banner = portalBanners.find(item => item.id === activeBanner) || portalBanners[0];
+    const bannerPool = HEROES_DB.filter(hero => banner.match(hero));
+    const otherPool = HEROES_DB.filter(hero => !banner.match(hero));
+    let targetPool = HEROES_DB;
+
+    if (activeBanner !== 'multi' && Math.random() < 0.7) {
+      targetPool = bannerPool.length > 0 ? bannerPool : HEROES_DB;
+    } else if (activeBanner !== 'multi') {
+      targetPool = otherPool.length > 0 ? otherPool : HEROES_DB;
+    }
+
+    const lockedInPool = targetPool.filter(hero => !ownedIds.includes(hero.id));
+    return lockedInPool.length > 0
+      ? lockedInPool[Math.floor(Math.random() * lockedInPool.length)]
+      : targetPool[Math.floor(Math.random() * targetPool.length)];
+  };
 
   const handleSummon = () => {
     if (breachShards < cost || summoning) return;
@@ -23,48 +55,22 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
     setSummoning(true);
     setSummonedHero(null);
     setSummonedBatch(null);
+    setSummonResult(null);
     setShowCard(false);
     
     sound.playSfx('portal');
 
     setTimeout(() => {
-      // Pick a hero based on active banner weights (60% chance for banner categories, 40% for others)
-      let pool = HEROES_DB;
-      const isBannerWeighted = activeBanner !== 'multi';
-      
-      const bannerPool = HEROES_DB.filter(h => {
-        if (activeBanner === 'scifi') return h.category === 'marine' || h.id === 'chell' || h.id === 'freeman';
-        if (activeBanner === 'horror') return h.category === 'horror' || h.id === 'pyramidhead';
-        if (activeBanner === 'arcade') return h.category === 'slayer' || h.category === 'tactical' || h.id === 'miku';
-        if (activeBanner === 'manga') return LORE_DB[h.universe]?.mediaType === 'manga';
-        if (activeBanner === 'music') return LORE_DB[h.universe]?.mediaType === 'music';
-        return true;
-      });
-
-      const otherPool = HEROES_DB.filter(h => !bannerPool.includes(h));
-
-      let targetPool = pool;
-      if (isBannerWeighted && Math.random() < 0.6) {
-        targetPool = bannerPool.length > 0 ? bannerPool : pool;
-      } else if (isBannerWeighted) {
-        targetPool = otherPool.length > 0 ? otherPool : pool;
-      }
-
-      // Try to get a locked hero from target pool, otherwise any hero from target pool
-      const lockedInPool = targetPool.filter(h => !unlockedHeroes.includes(h.id));
-      let hero;
-      if (lockedInPool.length > 0) {
-        hero = lockedInPool[Math.floor(Math.random() * lockedInPool.length)];
-      } else {
-        hero = targetPool[Math.floor(Math.random() * targetPool.length)];
-      }
+      const hero = pickHero(unlockedHeroes);
+      const wasDuplicate = unlockedHeroes.includes(hero.id);
 
       setSummonedHero(hero);
+      setSummonResult({ wasDuplicate, shardsReturned: wasDuplicate ? 25 : 0 });
       setSummoning(false);
       setShowCard(true);
 
       // Add to unlocked roster
-      if (!unlockedHeroes.includes(hero.id)) {
+      if (!wasDuplicate) {
         setUnlockedHeroes(prev => [...prev, hero.id]);
         sound.playSfx('levelup');
       } else {
@@ -83,47 +89,22 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
     setSummoning(true);
     setSummonedHero(null);
     setSummonedBatch(null);
+    setSummonResult(null);
     setShowCard(false);
 
     sound.playSfx('portal');
 
     setTimeout(() => {
-      let pool = HEROES_DB;
-      const isBannerWeighted = activeBanner !== 'multi';
-      
-      let bannerPool = HEROES_DB.filter(h => {
-        if (activeBanner === 'scifi') return h.category === 'marine' || h.id === 'chell' || h.id === 'freeman';
-        if (activeBanner === 'horror') return h.category === 'horror' || h.id === 'pyramidhead';
-        if (activeBanner === 'arcade') return h.category === 'slayer' || h.category === 'tactical' || h.id === 'miku';
-        if (activeBanner === 'manga') return LORE_DB[h.universe]?.mediaType === 'manga';
-        if (activeBanner === 'music') return LORE_DB[h.universe]?.mediaType === 'music';
-        return true;
-      });
-      const otherPool = HEROES_DB.filter(h => !bannerPool.includes(h));
-
       const batch = [];
       const newUnlocked = [...unlockedHeroes];
       let shardsReturned = 0;
 
       for (let i = 0; i < 10; i++) {
-        let targetPool = pool;
-        if (isBannerWeighted && Math.random() < 0.6) {
-          targetPool = bannerPool.length > 0 ? bannerPool : pool;
-        } else if (isBannerWeighted) {
-          targetPool = otherPool.length > 0 ? otherPool : pool;
-        }
+        const hero = pickHero(newUnlocked);
+        const wasDuplicate = newUnlocked.includes(hero.id);
+        batch.push({ hero, wasDuplicate });
 
-        const lockedInPool = targetPool.filter(h => !newUnlocked.includes(h.id));
-        let hero;
-        if (lockedInPool.length > 0) {
-          hero = lockedInPool[Math.floor(Math.random() * lockedInPool.length)];
-        } else {
-          hero = targetPool[Math.floor(Math.random() * targetPool.length)];
-        }
-
-        batch.push(hero);
-
-        if (!newUnlocked.includes(hero.id)) {
+        if (!wasDuplicate) {
           newUnlocked.push(hero.id);
         } else {
           shardsReturned += 25;
@@ -131,6 +112,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
       }
 
       setUnlockedHeroes(newUnlocked);
+      setSummonResult({ shardsReturned });
       if (shardsReturned > 0) {
         setBreachShards(prev => prev + shardsReturned);
       }
@@ -142,7 +124,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
     }, 2500);
   };
 
-  const isDuplicate = summonedHero && unlockedHeroes.includes(summonedHero.id);
+  const isDuplicate = Boolean(summonResult?.wasDuplicate);
 
   return (
     <div className="portal-container" style={{
@@ -185,6 +167,29 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
           {getTranslation(lang, 'bannerSelect')}
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '8px' }}>
+          {portalBanners.map(banner => {
+            const bannerHeroes = HEROES_DB.filter(hero => banner.match(hero));
+            const owned = bannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
+            return (
+              <button
+                key={banner.id}
+                onClick={() => { setActiveBanner(banner.id); sound.playSfx('click'); }}
+                className={`btn-retro ${activeBanner === banner.id ? 'active-tab' : ''}`}
+                style={{
+                  fontSize: '10px',
+                  padding: '7px',
+                  borderColor: activeBanner === banner.id ? banner.color : '#444',
+                  color: activeBanner === banner.id ? banner.color : '#aaa',
+                  textAlign: 'left'
+                }}
+              >
+                <span style={{ display: 'block', color: activeBanner === banner.id ? banner.color : '#fff' }}>{banner.label[lang]}</span>
+                <span style={{ display: 'block', color: '#888', fontSize: '8px', marginTop: '3px', lineHeight: 1.25 }}>{banner.desc[lang]}</span>
+                <span style={{ display: 'block', color: '#ffeb3b', fontSize: '8px', marginTop: '3px' }}>{owned}/{bannerHeroes.length}</span>
+              </button>
+            );
+          })}
+          {activeBanner === '__legacy__' && <>
           <button
             onClick={() => { setActiveBanner('multi'); sound.playSfx('click'); }}
             className={`btn-retro ${activeBanner === 'multi' ? 'active-tab' : ''}`}
@@ -227,6 +232,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
           >
             {lang === 'fr' ? 'MUSIQUE' : 'MUSIC'}
           </button>
+          </>}
         </div>
       </div>
 
@@ -350,7 +356,8 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
               {lang === 'fr' ? 'RÉSULTATS DE L\'INVOCATION x10' : 'SUMMON x10 BATCH RESULTS'}
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px' }}>
-              {summonedBatch.map((hero, idx) => {
+              {summonedBatch.map((entry, idx) => {
+                const hero = entry.hero || entry;
                 return (
                   <div key={idx} style={{
                     background: 'rgba(255,255,255,0.02)',
@@ -365,6 +372,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
                     </div>
                     <div style={{ fontSize: '8px', color: '#888', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {hero.universe}
+                    </div>
+                    <div style={{ fontSize: '8px', color: entry.wasDuplicate ? '#ffeb3b' : '#2ecc71', marginTop: '2px' }}>
+                      {entry.wasDuplicate ? (lang === 'fr' ? 'DOUBLE +25' : 'DUPLICATE +25') : (lang === 'fr' ? 'NOUVEAU' : 'NEW')}
                     </div>
                     <div style={{
                       margin: '6px auto 0 auto',

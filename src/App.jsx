@@ -6,6 +6,62 @@ import GameCanvas from './components/GameCanvas';
 import AudioControl from './components/AudioControl';
 import { getTranslation } from './game/translation';
 import { EQUIP_ITEMS_DB } from './game/heroes';
+import { getOpenAiBackdropSrc } from './game/renderer';
+
+function MissionNarrativeScreen({ lang, stage, result, onContinue }) {
+  const isOutro = Boolean(result);
+  const victory = result === 'victory';
+  const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode);
+  const modifierName = stage.modifier?.name?.[lang] || stage.modifier?.id || (lang === 'fr' ? 'Anomalie inconnue' : 'Unknown anomaly');
+  const modifierDesc = stage.modifier?.desc?.[lang] || '';
+  const rarity = stage.lootRarity?.label || 'Common';
+  const title = isOutro
+    ? victory
+      ? (lang === 'fr' ? 'BRECHE STABILISEE' : 'BREACH STABILIZED')
+      : (lang === 'fr' ? 'REPLI TACTIQUE' : 'TACTICAL RETREAT')
+    : (lang === 'fr' ? 'SEQUENCE NARRATIVE' : 'NARRATIVE SEQUENCE');
+  const modeLine = stage.mode === 'RPG'
+    ? (lang === 'fr' ? 'L escouade avance en formation RPG, comme une confrontation de boss cinematique.' : 'The squad advances in RPG formation, like a cinematic boss confrontation.')
+    : stage.mode === 'Tactics'
+      ? (lang === 'fr' ? 'Le champ se decoupe en lignes tactiques: chaque case devient une decision de survie.' : 'The field splits into tactical lanes: every tile becomes a survival decision.')
+      : (lang === 'fr' ? 'La breche explose en arene rapide, proche d un combat crossover de super-heros.' : 'The breach bursts into a fast arena, close to a superhero crossover battle.');
+  const introText = lang === 'fr'
+    ? `La faille ${stage.universe} s ouvre sur ${stage.name}. Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que la Singularity absorbe ce lore.`
+    : `The ${stage.universe} breach opens over ${stage.name}. Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Singularity absorbs this lore.`;
+  const outroText = victory
+    ? (lang === 'fr'
+      ? `${stage.universe} est stabilise. Les donnees de ${stage.bossName} rejoignent le codex, la rarete ${rarity} est indexee et les recompenses sont transferees au hub.`
+      : `${stage.universe} is stabilized. ${stage.bossName} data enters the codex, ${rarity} rarity is indexed, and rewards are transferred to the hub.`)
+    : (lang === 'fr'
+      ? `La breche ${stage.universe} reste active. L escouade conserve les donnees de contact, mais ${stage.bossName} garde le controle local du signal.`
+      : `The ${stage.universe} breach remains active. The squad keeps contact data, but ${stage.bossName} still controls the local signal.`);
+
+  return (
+    <div className="narrative-screen">
+      <div className="narrative-backdrop" style={{ backgroundImage: `linear-gradient(90deg, rgba(2,1,8,0.35), rgba(2,1,8,0.82)), url(${backdrop || ''})` }}>
+        <div className="narrative-rift" />
+        <div className="narrative-scanline" />
+        <div className="narrative-copy">
+          <div className="narrative-kicker">{title}</div>
+          <h1>{stage.universe}</h1>
+          <h2>{stage.name}</h2>
+          <p>{isOutro ? outroText : introText}</p>
+          <div className="narrative-tags">
+            <span>{stage.mode}</span>
+            <span>{modifierName}</span>
+            <span>{stage.bossName}</span>
+          </div>
+          {modifierDesc && <div className="narrative-intel">{modifierDesc}</div>}
+          <button onClick={onContinue} className="btn-retro narrative-button">
+            {isOutro
+              ? (lang === 'fr' ? 'RETOUR AU HUB' : 'RETURN TO HUB')
+              : (lang === 'fr' ? 'LANCER LA MISSION' : 'LAUNCH MISSION')}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const [lang, setLang] = useState('fr'); // FR default as requested, EN toggle
@@ -18,6 +74,7 @@ function App() {
   const [activeTeam, setActiveTeam] = useState(['freeman', 'masterchief', 'leon']);
   const [completedStages, setCompletedStages] = useState([]);
   const [activeStage, setActiveStage] = useState(null);
+  const [lastBattleResult, setLastBattleResult] = useState(null);
   const [heroTalents, setHeroTalents] = useState({}); // heroId -> talentId
 
   // Inventory & Equipment
@@ -55,7 +112,8 @@ function App() {
   const handleLaunchStage = (stage) => {
     sound.playSfx('special');
     setActiveStage(stage);
-    setCurrentScreen('battle');
+    setLastBattleResult(null);
+    setCurrentScreen('missionIntro');
   };
 
   const handleBattleEnd = (result) => {
@@ -92,8 +150,14 @@ function App() {
         });
       }
     }
+    setLastBattleResult(result);
+    setCurrentScreen('missionOutro');
+  };
+
+  const closeMissionOutro = () => {
     setCurrentScreen('hub');
     setActiveStage(null);
+    setLastBattleResult(null);
   };
 
   const toggleLanguage = () => {
@@ -235,6 +299,17 @@ function App() {
         />
       )}
 
+      {currentScreen === 'missionIntro' && activeStage && (
+        <MissionNarrativeScreen
+          lang={lang}
+          stage={activeStage}
+          onContinue={() => {
+            sound.playSfx('special');
+            setCurrentScreen('battle');
+          }}
+        />
+      )}
+
       {currentScreen === 'battle' && activeStage && (
         <GameCanvas
           lang={lang}
@@ -249,8 +324,18 @@ function App() {
         />
       )}
 
+      {currentScreen === 'missionOutro' && activeStage && (
+        <MissionNarrativeScreen
+          lang={lang}
+          stage={activeStage}
+          result={lastBattleResult}
+          onContinue={closeMissionOutro}
+        />
+      )}
+
       {currentScreen === 'portal' && (
         <PortalScreen
+          lang={lang}
           breachShards={breachShards}
           setBreachShards={setBreachShards}
           unlockedHeroes={unlockedHeroes}
