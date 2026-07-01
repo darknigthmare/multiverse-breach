@@ -251,6 +251,72 @@ export default function HubScreen({
       },
       universes: ['Hazbin Hotel', 'Digital Circus', 'Hellraiser', 'Saw', 'Chucky', 'Silent Hill', 'Scary Movie'],
       reward: { fr: 'Cache controle et peur', en: 'Control and fear cache' }
+    },
+    {
+      id: 'frontline_sci_fi',
+      color: '#63d7ff',
+      title: { fr: 'Front militaire sci-fi', en: 'Sci-Fi Military Front' },
+      premise: {
+        fr: 'Les soldats, pilotes, commandants et explorateurs spatiaux forment la ligne de defense principale contre le noyau.',
+        en: 'Soldiers, pilots, commanders, and space explorers form the main defensive line against the core.'
+      },
+      universes: ['Gears of War', 'Halo', 'Stargate', 'Mass Effect', 'Star Wars', 'Le Cinquième Element'],
+      reward: { fr: 'Cache tactique et blindage', en: 'Tactical and armor cache' }
+    },
+    {
+      id: 'containment_labs',
+      color: '#65d7de',
+      title: { fr: 'Protocoles de confinement', en: 'Containment Protocols' },
+      premise: {
+        fr: 'Laboratoires, stations et incidents biologiques imposent une logique de survie, d isolement et de purge.',
+        en: 'Labs, stations, and biological incidents force survival, isolation, and purge logic.'
+      },
+      universes: ['Resident Evil', 'Dino Crisis', 'Dead Space', 'Half-Life', 'Portal'],
+      reward: { fr: 'Cache laboratoire et purge', en: 'Laboratory and purge cache' }
+    },
+    {
+      id: 'cyber_reality',
+      color: '#41ffac',
+      title: { fr: 'Realites codees', en: 'Coded Realities' },
+      premise: {
+        fr: 'IA, realites virtuelles, cybercerveaux et mondes digitaux prouvent que la breche peut aussi corrompre le code.',
+        en: 'AI, virtual realities, cyberbrains, and digital worlds prove the breach can also corrupt code.'
+      },
+      universes: ['The Matrix', 'Ghost in the Shell', 'Rick & Morty', 'Digimon'],
+      reward: { fr: 'Cache cyber et vitesse', en: 'Cyber and speed cache' }
+    },
+    {
+      id: 'duel_and_arena',
+      color: '#e67e22',
+      title: { fr: 'Duel, tournoi et braquage', en: 'Duel, Tournament, and Heist' },
+      premise: {
+        fr: 'Infiltration, cartes, arènes et braquages transforment les breches en defis de precision.',
+        en: 'Infiltration, cards, arenas, and heists turn breaches into precision challenges.'
+      },
+      universes: ['Metal Gear', 'Payday', 'Yu-Gi-Oh', 'Guilty Gear', 'BlazBlue', 'Unreal'],
+      reward: { fr: 'Cache technique et critique', en: 'Technique and critical cache' }
+    },
+    {
+      id: 'wasteland_hellfront',
+      color: '#ff4f2b',
+      title: { fr: 'Front enfer et wasteland', en: 'Hell and Wasteland Front' },
+      premise: {
+        fr: 'Les mondes ruines, infernaux et motorises testent la capacite du reseau a survivre sans structure.',
+        en: 'Ruined, hellish, and motorized worlds test whether the network can survive without structure.'
+      },
+      universes: ['Fallout', 'Doom', 'Mad Max'],
+      reward: { fr: 'Cache apocalypse', en: 'Apocalypse cache' }
+    },
+    {
+      id: 'urban_legends',
+      color: '#cbd8c8',
+      title: { fr: 'Legendes et icones d horreur', en: 'Horror Icons and Legends' },
+      premise: {
+        fr: 'Entites, tueurs, jeux pieges et cauchemars donnent au Multivers ses signatures de peur les plus lisibles.',
+        en: 'Entities, killers, traps, and nightmares give the Multiverse its clearest fear signatures.'
+      },
+      universes: ['Slender Man', 'Resident Evil', 'Silent Hill', 'Chucky', 'Hellraiser', 'Saw', 'Scary Movie'],
+      reward: { fr: 'Cache peur et controle', en: 'Fear and control cache' }
     }
   ];
 
@@ -286,7 +352,7 @@ export default function HubScreen({
     {
       id: 'arcane_table',
       title: { fr: 'Table arcane reunie', en: 'Arcane Table Reunited' },
-      universes: ['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob'],
+      universes: ['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob', 'Harry Potter', 'Negima', 'Rosario + Vampire'],
       reward: { gold: 420, shards: 85, tokens: 3 },
       bonus: { fr: 'Cache grimoire: stabilisation magique durable.', en: 'Grimoire cache: durable magical stabilization.' }
     },
@@ -296,6 +362,48 @@ export default function HubScreen({
       universes: ['Joker New 52', 'The Batman Who Laughs', 'Hazbin Hotel', 'Digital Circus'],
       reward: { gold: 430, shards: 80, tokens: 3 },
       bonus: { fr: 'Cache theatre noir: controle, peur et anomalie.', en: 'Dark theater cache: control, fear, and anomaly.' }
+    },
+    {
+      id: 'sci_fi_command',
+      title: { fr: 'Commandement sci-fi', en: 'Sci-Fi Command' },
+      universes: ['Gears of War', 'Halo', 'Stargate', 'Mass Effect', 'Star Wars', 'Le Cinquième Element'],
+      reward: { gold: 600, shards: 110, tokens: 4 },
+      bonus: { fr: 'Cache commandement: ressources lourdes et fragments.', en: 'Command cache: heavy resources and fragments.' }
+    },
+    {
+      id: 'containment_protocol',
+      title: { fr: 'Confinement biologique', en: 'Biological Containment' },
+      universes: ['Resident Evil', 'Dino Crisis', 'Dead Space', 'Half-Life', 'Portal'],
+      reward: { gold: 520, shards: 95, tokens: 3 },
+      bonus: { fr: 'Cache confinement: bonus de survie et purge.', en: 'Containment cache: survival and purge bonus.' }
+    },
+    {
+      id: 'coded_realities',
+      title: { fr: 'Realites codees', en: 'Coded Realities' },
+      universes: ['The Matrix', 'Ghost in the Shell', 'Rick & Morty', 'Digimon'],
+      reward: { gold: 460, shards: 85, tokens: 3 },
+      bonus: { fr: 'Cache code: vitesse, hack et stabilisation digitale.', en: 'Code cache: speed, hacking, and digital stabilization.' }
+    },
+    {
+      id: 'arena_specialists',
+      title: { fr: 'Specialistes d arene', en: 'Arena Specialists' },
+      universes: ['Metal Gear', 'Payday', 'Yu-Gi-Oh', 'Guilty Gear', 'BlazBlue', 'Unreal'],
+      reward: { gold: 560, shards: 95, tokens: 4 },
+      bonus: { fr: 'Cache precision: critique, duel et tactique.', en: 'Precision cache: critical, duel, and tactics.' }
+    },
+    {
+      id: 'apocalypse_front',
+      title: { fr: 'Front apocalypse', en: 'Apocalypse Front' },
+      universes: ['Fallout', 'Doom', 'Mad Max'],
+      reward: { gold: 380, shards: 75, tokens: 3 },
+      bonus: { fr: 'Cache apocalypse: violence brute et endurance.', en: 'Apocalypse cache: raw violence and endurance.' }
+    },
+    {
+      id: 'horror_roster',
+      title: { fr: 'Registre des icones horrifiques', en: 'Horror Icon Registry' },
+      universes: ['Slender Man', 'Silent Hill', 'Chucky', 'Hellraiser', 'Saw', 'Scary Movie'],
+      reward: { gold: 500, shards: 90, tokens: 3 },
+      bonus: { fr: 'Cache horreur: peur, controle et anomalies classees.', en: 'Horror cache: fear, control, and classified anomalies.' }
     }
   ];
 
@@ -364,7 +472,53 @@ export default function HubScreen({
     'Rob Zombie': { id: 'grindhouse_cut', name: { fr: 'Montage grindhouse', en: 'Grindhouse Cut' }, desc: { fr: 'Les plans horrifiques amplifient le chaos: loot +22%.', en: 'Horror cuts amplify chaos: loot +22%.' }, reward: 1.22, color: '#ffa943' },
     'Daft Punk': { id: 'alive_sync', name: { fr: 'Synchronisation Alive', en: 'Alive Sync' }, desc: { fr: 'La grille lumineuse cadence l equipe: defense +6%, vitesse ennemie +6%, recompense +18%.', en: 'The light grid paces the squad: defense +6%, enemy speed +6%, reward +18%.' }, heroDef: 1.06, enemySpd: 1.06, reward: 1.18, color: '#ffc740' },
     'Oliver Tree': { id: 'viral_stunt', name: { fr: 'Cascade virale', en: 'Viral Stunt' }, desc: { fr: 'La faille devient imprevisible: recompense +15%.', en: 'The breach becomes unpredictable: reward +15%.' }, reward: 1.15, color: '#ff6f3c' },
-    'Hazbin Hotel': { id: 'redemption_song', name: { fr: 'Refrain redemption', en: 'Redemption Refrain' }, desc: { fr: 'Le cabaret infernal renforce les controles: defense +8%, loot +15%.', en: 'The infernal cabaret reinforces control: defense +8%, loot +15%.' }, heroDef: 1.08, reward: 1.15, color: '#ffd35c' }
+    'Hazbin Hotel': { id: 'redemption_song', name: { fr: 'Refrain redemption', en: 'Redemption Refrain' }, desc: { fr: 'Le cabaret infernal renforce les controles: defense +8%, loot +15%.', en: 'The infernal cabaret reinforces control: defense +8%, loot +15%.' }, heroDef: 1.08, reward: 1.15, color: '#ffd35c' },
+    'Alien 3': { id: 'penal_hive', name: { fr: 'Ruche penitentiaire', en: 'Penal Hive' }, desc: { fr: 'Le couloir ferme durcit chaque rencontre: boss +14% PV, loot +20%.', en: 'The sealed corridor hardens every fight: boss +14% HP, loot +20%.' }, bossHp: 1.14, reward: 1.2, color: '#b66a3c' },
+    'Alien Resurrection': { id: 'clone_lab', name: { fr: 'Laboratoire clone', en: 'Clone Lab' }, desc: { fr: 'Les specimens hybrides accelerent les vagues: vitesse ennemie +9%, loot +22%.', en: 'Hybrid specimens accelerate waves: enemy speed +9%, loot +22%.' }, enemySpd: 1.09, reward: 1.22, color: '#7bd9c6' },
+    'Alien: Covenant': { id: 'covenant_spores', name: { fr: 'Spores Covenant', en: 'Covenant Spores' }, desc: { fr: 'Les spores contaminent la zone: attaque ennemie +10%, cache +24%.', en: 'Spores contaminate the zone: enemy attack +10%, cache +24%.' }, enemyAtk: 1.1, reward: 1.24, color: '#c7d79a' },
+    'Alien: Romulus': { id: 'romulus_salvage', name: { fr: 'Sauvetage Romulus', en: 'Romulus Salvage' }, desc: { fr: 'La station abandonnee augmente les prises de risque: boss +10% PV, loot +26%.', en: 'The abandoned station raises risk: boss +10% HP, loot +26%.' }, bossHp: 1.1, reward: 1.26, color: '#7fd7ff' },
+    'Predator 2': { id: 'city_hunt', name: { fr: 'Chasse urbaine', en: 'City Hunt' }, desc: { fr: 'La jungle devient verticale: ennemis +8% vitesse, recompense +18%.', en: 'The jungle goes vertical: enemies +8% speed, reward +18%.' }, enemySpd: 1.08, reward: 1.18, color: '#f0a14a' },
+    Predators: { id: 'game_preserve', name: { fr: 'Reserve de chasse', en: 'Game Preserve' }, desc: { fr: 'Le terrain est choisi par les chasseurs: boss +15% PV, loot +25%.', en: 'The hunters choose the ground: boss +15% HP, loot +25%.' }, bossHp: 1.15, reward: 1.25, color: '#8fbf55' },
+    'The Predator': { id: 'upgrade_hunt', name: { fr: 'Chasseur upgrade', en: 'Upgrade Hunter' }, desc: { fr: 'L hybridation booste les menaces: attaque +12%, recompense +24%.', en: 'Hybridization boosts threats: attack +12%, reward +24%.' }, enemyAtk: 1.12, reward: 1.24, color: '#d36b44' },
+    'Predator: Killer of Killers': { id: 'legendary_trophies', name: { fr: 'Trophees legendaires', en: 'Legendary Trophies' }, desc: { fr: 'Chaque epoque apporte un champion: boss +16% PV, loot +28%.', en: 'Each era brings a champion: boss +16% HP, loot +28%.' }, bossHp: 1.16, reward: 1.28, color: '#e1c15b' },
+    'Predator: Badlands': { id: 'badlands_trial', name: { fr: 'Epreuve Badlands', en: 'Badlands Trial' }, desc: { fr: 'Les terres hostiles favorisent la survie: defense +9%, loot +16%.', en: 'Hostile lands favor survival: defense +9%, loot +16%.' }, heroDef: 1.09, reward: 1.16, color: '#d88a45' },
+    'Alien vs Predator': { id: 'temple_crossfire', name: { fr: 'Temple croise', en: 'Temple Crossfire' }, desc: { fr: 'Le temple oppose ruche et clan: boss +12% PV, attaque +8%, loot +30%.', en: 'The temple pits hive against clan: boss +12% HP, attack +8%, loot +30%.' }, bossHp: 1.12, enemyAtk: 1.08, reward: 1.3, color: '#92f56d' },
+    'Aliens vs Predator: Requiem': { id: 'requiem_outbreak', name: { fr: 'Epidemie Requiem', en: 'Requiem Outbreak' }, desc: { fr: 'La ville contaminee deborde: ennemis +10% vitesse, loot +27%.', en: 'The infected town overflows: enemies +10% speed, loot +27%.' }, enemySpd: 1.1, reward: 1.27, color: '#b6d86d' },
+    'Gears of War': { id: 'cover_grind', name: { fr: 'Ligne de couverture', en: 'Cover Line' }, desc: { fr: 'Les positions lourdes renforcent l escouade: defense +12%, loot +12%.', en: 'Heavy positions reinforce the squad: defense +12%, loot +12%.' }, heroDef: 1.12, reward: 1.12, color: '#c44f3f' },
+    Halo: { id: 'spartan_drop', name: { fr: 'Drop Spartan', en: 'Spartan Drop' }, desc: { fr: 'Le deploiement orbital booste l assaut: attaque heros +8%, loot +15%.', en: 'Orbital deployment boosts assault: hero attack +8%, loot +15%.' }, heroAtk: 1.08, reward: 1.15, color: '#78c95b' },
+    'Resident Evil': { id: 'biohazard_lockdown', name: { fr: 'Confinement biohazard', en: 'Biohazard Lockdown' }, desc: { fr: 'Les infectes frappent plus fort: attaque +9%, cache +18%.', en: 'The infected hit harder: attack +9%, cache +18%.' }, enemyAtk: 1.09, reward: 1.18, color: '#65c76b' },
+    'Silent Hill': { id: 'fog_shift', name: { fr: 'Brouillard changeant', en: 'Shifting Fog' }, desc: { fr: 'Le brouillard ralentit la lecture du terrain: boss +10% PV, loot +19%.', en: 'The fog obscures the field: boss +10% HP, loot +19%.' }, bossHp: 1.1, reward: 1.19, color: '#c4c0ad' },
+    'Dino Crisis': { id: 'raptor_alarm', name: { fr: 'Alerte raptor', en: 'Raptor Alarm' }, desc: { fr: 'Les predateurs foncent sur les failles: vitesse +11%, loot +18%.', en: 'Predators rush breaches: speed +11%, loot +18%.' }, enemySpd: 1.11, reward: 1.18, color: '#7bc96f' },
+    'The Matrix': { id: 'bullet_time', name: { fr: 'Bullet time', en: 'Bullet Time' }, desc: { fr: 'Le code ralentit la menace: defense +10%, loot +14%.', en: 'Code slows the threat: defense +10%, loot +14%.' }, heroDef: 1.1, reward: 1.14, color: '#39ff8a' },
+    Stargate: { id: 'iris_protocol', name: { fr: 'Protocole iris', en: 'Iris Protocol' }, desc: { fr: 'Les equipes SG verrouillent la breche: defense +12%, recompense +15%.', en: 'SG teams lock the breach: defense +12%, reward +15%.' }, heroDef: 1.12, reward: 1.15, color: '#6ed0ff' },
+    'Half-Life': { id: 'resonance_cascade', name: { fr: 'Cascade de resonance', en: 'Resonance Cascade' }, desc: { fr: 'Les portails Xen destabilisent le combat: boss +12% PV, loot +22%.', en: 'Xen portals destabilize combat: boss +12% HP, loot +22%.' }, bossHp: 1.12, reward: 1.22, color: '#f58d38' },
+    Portal: { id: 'test_chamber', name: { fr: 'Salle de test', en: 'Test Chamber' }, desc: { fr: 'La logique Aperture optimise les routes: defense +6%, loot +16%.', en: 'Aperture logic optimizes routes: defense +6%, loot +16%.' }, heroDef: 1.06, reward: 1.16, color: '#5cc7ff' },
+    'Metal Gear': { id: 'stealth_ops', name: { fr: 'Operation furtive', en: 'Stealth Ops' }, desc: { fr: 'L infiltration reduit les pertes: defense +9%, loot +15%.', en: 'Infiltration reduces losses: defense +9%, loot +15%.' }, heroDef: 1.09, reward: 1.15, color: '#8aa178' },
+    Payday: { id: 'heist_timer', name: { fr: 'Chrono braquage', en: 'Heist Timer' }, desc: { fr: 'Plus le risque monte, plus le butin suit: attaque ennemie +8%, loot +21%.', en: 'The higher the risk, the richer the take: enemy attack +8%, loot +21%.' }, enemyAtk: 1.08, reward: 1.21, color: '#3f8fd2' },
+    Vocaloid: { id: 'synth_chorus', name: { fr: 'Choeur synthetique', en: 'Synthetic Chorus' }, desc: { fr: 'Le tempo numerique stabilise l equipe: defense +6%, loot +14%.', en: 'Digital tempo stabilizes the team: defense +6%, loot +14%.' }, heroDef: 1.06, reward: 1.14, color: '#43d6df' },
+    'Yu-Gi-Oh': { id: 'duel_phase', name: { fr: 'Phase de duel', en: 'Duel Phase' }, desc: { fr: 'Chaque victoire charge le deck: attaque heros +9%, loot +16%.', en: 'Each win charges the deck: hero attack +9%, loot +16%.' }, heroAtk: 1.09, reward: 1.16, color: '#f1c24d' },
+    'Guilty Gear': { id: 'tension_meter', name: { fr: 'Jauge tension', en: 'Tension Meter' }, desc: { fr: 'Les duels explosent en puissance: attaque +10%, loot +17%.', en: 'Duels explode in power: attack +10%, loot +17%.' }, heroAtk: 1.1, reward: 1.17, color: '#ef5646' },
+    BlazBlue: { id: 'azure_drive', name: { fr: 'Drive azur', en: 'Azure Drive' }, desc: { fr: 'L anomalie azur durcit le boss: PV +11%, loot +20%.', en: 'The azure anomaly hardens the boss: HP +11%, loot +20%.' }, bossHp: 1.11, reward: 1.2, color: '#4da6ff' },
+    'Slender Man': { id: 'page_hunt', name: { fr: 'Chasse aux pages', en: 'Page Hunt' }, desc: { fr: 'La peur brouille les reperes: ennemis +8% vitesse, loot +18%.', en: 'Fear scrambles bearings: enemies +8% speed, loot +18%.' }, enemySpd: 1.08, reward: 1.18, color: '#d9d9d9' },
+    Chucky: { id: 'killer_doll', name: { fr: 'Poupee tueuse', en: 'Killer Doll' }, desc: { fr: 'Les attaques surprises augmentent la pression: attaque +10%, loot +18%.', en: 'Surprise attacks raise pressure: attack +10%, loot +18%.' }, enemyAtk: 1.1, reward: 1.18, color: '#e65b42' },
+    Hellraiser: { id: 'lament_config', name: { fr: 'Configuration du Lament', en: 'Lament Configuration' }, desc: { fr: 'La douleur devient ressource: boss +15% PV, loot +25%.', en: 'Pain becomes resource: boss +15% HP, loot +25%.' }, bossHp: 1.15, reward: 1.25, color: '#d6b36a' },
+    'Mass Effect': { id: 'spectre_authority', name: { fr: 'Autorite Spectre', en: 'Spectre Authority' }, desc: { fr: 'Le commandement galactique coordonne mieux l equipe: defense +8%, loot +17%.', en: 'Galactic command coordinates the team better: defense +8%, loot +17%.' }, heroDef: 1.08, reward: 1.17, color: '#4cb4ff' },
+    Fallout: { id: 'wasteland_scavenge', name: { fr: 'Recup wasteland', en: 'Wasteland Scavenge' }, desc: { fr: 'Chaque ruine cache des ressources: loot +20%, ennemis +6% attaque.', en: 'Every ruin hides resources: loot +20%, enemies +6% attack.' }, enemyAtk: 1.06, reward: 1.2, color: '#d7c15a' },
+    Doom: { id: 'rip_and_tear', name: { fr: 'Rip and tear', en: 'Rip and Tear' }, desc: { fr: 'L enfer recompense l agression: attaque heros +12%, boss +10% PV.', en: 'Hell rewards aggression: hero attack +12%, boss +10% HP.' }, heroAtk: 1.12, bossHp: 1.1, reward: 1.18, color: '#ff4c32' },
+    Unreal: { id: 'u_damage', name: { fr: 'U-Damage', en: 'U-Damage' }, desc: { fr: 'Les arenes amplifient les pics de degats: attaque +11%, loot +15%.', en: 'Arenas amplify damage spikes: attack +11%, loot +15%.' }, heroAtk: 1.11, reward: 1.15, color: '#ff8b32' },
+    'Harry Potter': { id: 'protective_charm', name: { fr: 'Charme protecteur', en: 'Protective Charm' }, desc: { fr: 'La magie defensive stabilise la breche: defense +11%, loot +14%.', en: 'Defensive magic stabilizes the breach: defense +11%, loot +14%.' }, heroDef: 1.11, reward: 1.14, color: '#b68cff' },
+    'Star Wars': { id: 'force_balance', name: { fr: 'Equilibre de la Force', en: 'Force Balance' }, desc: { fr: 'La Force renforce les actions decisives: attaque +8%, defense +6%, loot +15%.', en: 'The Force reinforces decisive actions: attack +8%, defense +6%, loot +15%.' }, heroAtk: 1.08, heroDef: 1.06, reward: 1.15, color: '#ffe066' },
+    'Le Cinquième Element': { id: 'divine_language', name: { fr: 'Langage divin', en: 'Divine Language' }, desc: { fr: 'Les quatre elements alignent l escouade: defense +8%, loot +16%.', en: 'The four elements align the squad: defense +8%, loot +16%.' }, heroDef: 1.08, reward: 1.16, color: '#ffb563' },
+    'Scary Movie': { id: 'parody_logic', name: { fr: 'Logique parodique', en: 'Parody Logic' }, desc: { fr: 'L absurde casse la menace: defense +7%, loot +15%.', en: 'Absurdity breaks the threat: defense +7%, loot +15%.' }, heroDef: 1.07, reward: 1.15, color: '#f2f2a0' },
+    'Dead Space': { id: 'necromorph_pressure', name: { fr: 'Pression necromorphe', en: 'Necromorph Pressure' }, desc: { fr: 'La station isolee augmente la violence: attaque +12%, loot +24%.', en: 'The isolated station increases violence: attack +12%, loot +24%.' }, enemyAtk: 1.12, reward: 1.24, color: '#d17a42' },
+    'Rick & Morty': { id: 'portal_gun', name: { fr: 'Pistolet portail', en: 'Portal Gun' }, desc: { fr: 'Les detours dimensionnels boostent le rendement: loot +19%, boss +7% PV.', en: 'Dimensional detours boost yield: loot +19%, boss +7% HP.' }, bossHp: 1.07, reward: 1.19, color: '#67e86b' },
+    'Digital Circus': { id: 'abstract_glitch', name: { fr: 'Glitch abstrait', en: 'Abstract Glitch' }, desc: { fr: 'La scene digitale instabilise les ennemis: vitesse +7%, loot +17%.', en: 'The digital stage destabilizes enemies: speed +7%, loot +17%.' }, enemySpd: 1.07, reward: 1.17, color: '#ff6edb' },
+    Digimon: { id: 'digivolution_chain', name: { fr: 'Chaine digivolution', en: 'Digivolution Chain' }, desc: { fr: 'Chaque combat charge la forme suivante: attaque +9%, loot +16%.', en: 'Each fight charges the next form: attack +9%, loot +16%.' }, heroAtk: 1.09, reward: 1.16, color: '#ffb43d' },
+    Saw: { id: 'trap_room', name: { fr: 'Salle de piege', en: 'Trap Room' }, desc: { fr: 'Les choix difficiles augmentent les gains: boss +9% PV, loot +22%.', en: 'Hard choices increase gains: boss +9% HP, loot +22%.' }, bossHp: 1.09, reward: 1.22, color: '#b54335' },
+    'Rosario + Vampire': { id: 'monster_class', name: { fr: 'Classe monstre', en: 'Monster Class' }, desc: { fr: 'Les clans surnaturels protegent l equipe: defense +9%, loot +15%.', en: 'Supernatural clans protect the team: defense +9%, loot +15%.' }, heroDef: 1.09, reward: 1.15, color: '#f07ab7' },
+    Negima: { id: 'magister_pactio', name: { fr: 'Pactio Magister', en: 'Magister Pactio' }, desc: { fr: 'Les pactes magiques renforcent les combos: attaque +8%, loot +15%.', en: 'Magic pacts strengthen combos: attack +8%, loot +15%.' }, heroAtk: 1.08, reward: 1.15, color: '#b59cff' },
+    'Ghost in the Shell': { id: 'cyberbrain_sync', name: { fr: 'Synchro cybercerveau', en: 'Cyberbrain Sync' }, desc: { fr: 'La coordination cybernetique anticipe les vagues: defense +8%, loot +18%.', en: 'Cybernetic coordination anticipates waves: defense +8%, loot +18%.' }, heroDef: 1.08, reward: 1.18, color: '#7fe7d7' },
+    'Mad Max': { id: 'war_rig_run', name: { fr: 'Convoi War Rig', en: 'War Rig Run' }, desc: { fr: 'La route impose la vitesse et la survie: ennemis +8% vitesse, loot +19%.', en: 'The road demands speed and survival: enemies +8% speed, loot +19%.' }, enemySpd: 1.08, reward: 1.19, color: '#d98a3d' }
   };
 
   // List of high-tier items in the Event Shop

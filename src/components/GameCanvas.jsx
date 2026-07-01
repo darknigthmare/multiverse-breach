@@ -148,6 +148,9 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
     if (stage.modifier?.heroDef) {
       stats.def = Math.round(stats.def * stage.modifier.heroDef);
     }
+    if (stage.modifier?.heroAtk) {
+      stats.atk = Math.round(stats.atk * stage.modifier.heroAtk);
+    }
     return stats;
   };
 
