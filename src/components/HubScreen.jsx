@@ -30,6 +30,7 @@ export default function HubScreen({
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
   const [briefingStageId, setBriefingStageId] = useState(null);
+  const [nexusMessage, setNexusMessage] = useState(null);
   const collectionBonusCount = inventory.filter(itemId => itemId.startsWith('collection_reward_')).length;
 
   const BREACH_MODIFIERS = [
@@ -60,7 +61,7 @@ export default function HubScreen({
     {
       id: 'thin_rift',
       name: { fr: 'Faille mince', en: 'Thin Rift' },
-      desc: { fr: 'Les ennemis sont plus rapides, les shards augmentent.', en: 'Enemies move faster, breach shards increase.' },
+      desc: { fr: 'Les ennemis sont plus rapides, les Fragments augmentent.', en: 'Enemies move faster, breach Shards increase.' },
       enemySpd: 1.12,
       reward: 1.18,
       color: '#9b59b6'
@@ -327,7 +328,7 @@ export default function HubScreen({
       title: { fr: 'Saga Alien complete', en: 'Complete Alien Saga' },
       universes: ['Alien', 'Aliens', 'Alien 3', 'Alien Resurrection', 'Prometheus', 'Alien: Covenant', 'Alien: Romulus'],
       reward: { gold: 650, shards: 120, tokens: 4 },
-      bonus: { fr: 'Cache Weyland-Yutani: ressources, shards et tokens.', en: 'Weyland-Yutani cache: resources, shards, and tokens.' }
+      bonus: { fr: 'Cache Weyland-Yutani: ressources, Fragments et Jetons.', en: 'Weyland-Yutani cache: resources, Shards, and Tokens.' }
     },
     {
       id: 'predator_hunts',
@@ -348,7 +349,7 @@ export default function HubScreen({
       title: { fr: 'Onde musicale stabilisee', en: 'Stabilized Music Wave' },
       universes: ['Rammstein', 'System of a Down', 'Rob Zombie', 'Daft Punk', 'Oliver Tree', 'Vocaloid'],
       reward: { gold: 520, shards: 90, tokens: 3 },
-      bonus: { fr: 'Cache backstage: tempo, shards et tokens.', en: 'Backstage cache: tempo, shards, and tokens.' }
+      bonus: { fr: 'Cache backstage: tempo, Fragments et Jetons.', en: 'Backstage cache: tempo, Shards, and Tokens.' }
     },
     {
       id: 'arcane_table',
@@ -458,18 +459,18 @@ export default function HubScreen({
 
   const UNIVERSE_MODIFIERS = {
     Alien: { id: 'acid_blood', name: { fr: 'Sang acide', en: 'Acid Blood' }, desc: { fr: 'Les ennemis laissent des residus acides: recompenses +20%, boss plus agressif.', en: 'Enemies leave acidic residue: rewards +20%, boss more aggressive.' }, bossHp: 1.08, reward: 1.2, color: '#8adbe6' },
-    Aliens: { id: 'sentry_corridor', name: { fr: 'Couloir sentinelle', en: 'Sentry Corridor' }, desc: { fr: 'La ruche attaque en vagues: shards +22%, ennemis plus rapides.', en: 'The hive attacks in waves: shards +22%, enemies faster.' }, enemySpd: 1.1, reward: 1.22, color: '#78e3e6' },
+    Aliens: { id: 'sentry_corridor', name: { fr: 'Couloir sentinelle', en: 'Sentry Corridor' }, desc: { fr: 'La ruche attaque en vagues: Fragments +22%, ennemis plus rapides.', en: 'The hive attacks in waves: Shards +22%, enemies faster.' }, enemySpd: 1.1, reward: 1.22, color: '#78e3e6' },
     Prometheus: { id: 'black_pathogen', name: { fr: 'Pathogene noir', en: 'Black Pathogen' }, desc: { fr: 'Le pathogene instabilise les deux camps: boss +12% PV, loot +25%.', en: 'The pathogen destabilizes both sides: boss +12% HP, loot +25%.' }, bossHp: 1.12, reward: 1.25, color: '#78dcd7' },
-    Predator: { id: 'honor_hunt', name: { fr: 'Chasse honorable', en: 'Honor Hunt' }, desc: { fr: 'Le duel Yautja valorise les victoires propres: tokens possibles sur stage pair.', en: 'The Yautja duel values clean victories: possible tokens on even stages.' }, reward: 1.16, color: '#9bff62' },
+    Predator: { id: 'honor_hunt', name: { fr: 'Chasse honorable', en: 'Honor Hunt' }, desc: { fr: 'Le duel Yautja valorise les victoires propres: Jetons possibles sur stage pair.', en: 'The Yautja duel values clean victories: possible Tokens on even stages.' }, reward: 1.16, color: '#9bff62' },
     Prey: { id: 'mud_camouflage', name: { fr: 'Camouflage de boue', en: 'Mud Camouflage' }, desc: { fr: 'Les embuscades protegent l escouade: defense +10%, recompense +10%.', en: 'Ambushes protect the squad: defense +10%, reward +10%.' }, heroDef: 1.1, reward: 1.1, color: '#e6af53' },
     'Joker New 52': { id: 'joker_toxin', name: { fr: 'Toxine Joker', en: 'Joker Toxin' }, desc: { fr: 'La panique augmente les degats ennemis et la rarete du loot.', en: 'Panic raises enemy damage and loot rarity.' }, enemyAtk: 1.14, reward: 1.24, color: '#4cdc5e' },
     'The Batman Who Laughs': { id: 'dark_metal', name: { fr: 'Metal noir', en: 'Dark Metal' }, desc: { fr: 'Le Multivers Noir durcit le boss: PV +18%, cache +30%.', en: 'The Dark Multiverse hardens the boss: HP +18%, cache +30%.' }, bossHp: 1.18, reward: 1.3, color: '#d62121' },
-    Discworld: { id: 'octarine_leak', name: { fr: 'Fuite octarine', en: 'Octarine Leak' }, desc: { fr: 'La magie absurde plie les regles: shards +18%, defense +5%.', en: 'Absurd magic bends rules: shards +18%, defense +5%.' }, heroDef: 1.05, reward: 1.18, color: '#e7d476' },
-    Kaamelott: { id: 'table_dispute', name: { fr: 'Conseil dispute', en: 'Council Dispute' }, desc: { fr: 'Les ordres contradictoires ralentissent le rythme mais augmentent l or.', en: 'Contradictory orders slow the rhythm but increase gold.' }, reward: 1.17, color: '#d6b465' },
+    Discworld: { id: 'octarine_leak', name: { fr: 'Fuite octarine', en: 'Octarine Leak' }, desc: { fr: 'La magie absurde plie les regles: Fragments +18%, defense +5%.', en: 'Absurd magic bends rules: Shards +18%, defense +5%.' }, heroDef: 1.05, reward: 1.18, color: '#e7d476' },
+    Kaamelott: { id: 'table_dispute', name: { fr: 'Conseil dispute', en: 'Council Dispute' }, desc: { fr: 'Les ordres contradictoires ralentissent le rythme mais augmentent l or.', en: 'Contradictory orders slow the rhythm but increase Gold.' }, reward: 1.17, color: '#d6b465' },
     'Dungeon Meshi': { id: 'monster_cuisine', name: { fr: 'Cuisine de monstre', en: 'Monster Cuisine' }, desc: { fr: 'Chaque combat nourrit l escouade: defense +8%, loot +12%.', en: 'Every fight feeds the squad: defense +8%, loot +12%.' }, heroDef: 1.08, reward: 1.12, color: '#e2c36a' },
     Noob: { id: 'bugged_respawn', name: { fr: 'Respawn bugge', en: 'Bugged Respawn' }, desc: { fr: 'Le code d Olydri deraille: recompenses +20%, ennemis plus rapides.', en: 'Olydri code glitches: rewards +20%, enemies faster.' }, enemySpd: 1.08, reward: 1.2, color: '#6ad5ff' },
-    Rammstein: { id: 'feuerzone', name: { fr: 'Feuerzone', en: 'Feuerzone' }, desc: { fr: 'La scene industrielle brule fort: attaque ennemie +10%, tokens plus rentables.', en: 'The industrial stage burns hard: enemy attack +10%, richer tokens.' }, enemyAtk: 1.1, reward: 1.2, color: '#ff692d' },
-    'System of a Down': { id: 'tempo_break', name: { fr: 'Cassure tempo', en: 'Tempo Break' }, desc: { fr: 'Les ruptures rythmiques accelerent le combat: vitesse ennemie +12%, shards +20%.', en: 'Rhythm breaks accelerate combat: enemy speed +12%, shards +20%.' }, enemySpd: 1.12, reward: 1.2, color: '#f1c40f' },
+    Rammstein: { id: 'feuerzone', name: { fr: 'Feuerzone', en: 'Feuerzone' }, desc: { fr: 'La scene industrielle brule fort: attaque ennemie +10%, Jetons plus rentables.', en: 'The industrial stage burns hard: enemy attack +10%, richer Tokens.' }, enemyAtk: 1.1, reward: 1.2, color: '#ff692d' },
+    'System of a Down': { id: 'tempo_break', name: { fr: 'Cassure tempo', en: 'Tempo Break' }, desc: { fr: 'Les ruptures rythmiques accelerent le combat: vitesse ennemie +12%, Fragments +20%.', en: 'Rhythm breaks accelerate combat: enemy speed +12%, Shards +20%.' }, enemySpd: 1.12, reward: 1.2, color: '#f1c40f' },
     'Rob Zombie': { id: 'grindhouse_cut', name: { fr: 'Montage grindhouse', en: 'Grindhouse Cut' }, desc: { fr: 'Les plans horrifiques amplifient le chaos: loot +22%.', en: 'Horror cuts amplify chaos: loot +22%.' }, reward: 1.22, color: '#ffa943' },
     'Daft Punk': { id: 'alive_sync', name: { fr: 'Synchronisation Alive', en: 'Alive Sync' }, desc: { fr: 'La grille lumineuse cadence l equipe: defense +6%, vitesse ennemie +6%, recompense +18%.', en: 'The light grid paces the squad: defense +6%, enemy speed +6%, reward +18%.' }, heroDef: 1.06, enemySpd: 1.06, reward: 1.18, color: '#ffc740' },
     'Oliver Tree': { id: 'viral_stunt', name: { fr: 'Cascade virale', en: 'Viral Stunt' }, desc: { fr: 'La faille devient imprevisible: recompense +15%.', en: 'The breach becomes unpredictable: reward +15%.' }, reward: 1.15, color: '#ff6f3c' },
@@ -633,33 +634,60 @@ export default function HubScreen({
     return currentLvl * 60;
   };
 
+  const notifyNexus = (message, tone = 'info') => {
+    setNexusMessage({ message, tone, stamp: Date.now() });
+    window.clearTimeout(notifyNexus.timeoutId);
+    notifyNexus.timeoutId = window.setTimeout(() => setNexusMessage(null), 3200);
+  };
+
+  const getLockedReason = (stage) => {
+    const required = getStageRequiredClears(stage);
+    const missing = Math.max(0, required - completedStages.length);
+    return lang === 'fr'
+      ? `Coordonnees verrouillees: stabilise encore ${missing} breche${missing > 1 ? 's' : ''} pour ouvrir ${stage.universe}.`
+      : `Coordinates locked: stabilize ${missing} more breach${missing > 1 ? 'es' : ''} to open ${stage.universe}.`;
+  };
+
   const handleLevelUp = (heroId) => {
     const cost = getUpgradeCost(heroId);
-    if (gold < cost) return;
+    if (gold < cost) {
+      notifyNexus(lang === 'fr' ? `Or insuffisant: ${cost} requis pour renforcer cette signature.` : `Not enough Gold: ${cost} required to reinforce this signature.`, 'warn');
+      return;
+    }
 
     setGold(prev => prev - cost);
     setHeroLevels(prev => ({
       ...prev,
       [heroId]: (prev[heroId] || 1) + 1
     }));
+    notifyNexus(lang === 'fr' ? 'Signature heroique renforcee dans le Nexus.' : 'Heroic signature reinforced in the Nexus.', 'success');
     sound.playSfx('levelup');
   };
 
   const handleLevelUpPotion = (heroId) => {
     const cost = 20;
-    if (breachShards < cost) return;
+    if (breachShards < cost) {
+      notifyNexus(lang === 'fr' ? 'Fragments insuffisants pour condenser une potion EXP.' : 'Not enough Shards to condense an EXP potion.', 'warn');
+      return;
+    }
 
     setBreachShards(prev => prev - cost);
     setHeroLevels(prev => ({
       ...prev,
       [heroId]: (prev[heroId] || 1) + 1
     }));
+    notifyNexus(lang === 'fr' ? 'Potion convertie: niveau de signature augmente.' : 'Potion converted: signature level increased.', 'success');
     sound.playSfx('levelup');
   };
 
   const autoEquipRelics = () => {
-    sound.playSfx('confirm');
     const availableRelics = EQUIP_ITEMS_DB.filter(r => inventory.includes(r.id));
+    if (availableRelics.length === 0) {
+      notifyNexus(lang === 'fr' ? 'Aucune relique standard disponible pour l auto-equipement.' : 'No standard relic available for auto-equip.', 'warn');
+      sound.playSfx('click');
+      return;
+    }
+    sound.playSfx('confirm');
     availableRelics.sort((a, b) => {
       const scoreA = (a.boost.atk || 0) * 1.5 + (a.boost.spd || 0) * 1.2 + (a.boost.def || 0) + (a.boost.hp || 0) * 0.1;
       const scoreB = (b.boost.atk || 0) * 1.5 + (b.boost.spd || 0) * 1.2 + (b.boost.def || 0) + (b.boost.hp || 0) * 0.1;
@@ -686,6 +714,7 @@ export default function HubScreen({
     });
 
     setEquippedGear(newEquipped);
+    notifyNexus(lang === 'fr' ? 'Le Nexus a assigne les meilleures reliques a l escouade active.' : 'Nexus assigned the best relics to the active squad.', 'success');
   };
 
   const toggleActiveHero = (heroId) => {
@@ -693,10 +722,16 @@ export default function HubScreen({
       if (activeTeam.length > 1) {
         setActiveTeam(prev => prev.filter(id => id !== heroId));
         sound.playSfx('click');
+      } else {
+        notifyNexus(lang === 'fr' ? 'Impossible: le Nexus exige au moins une unite active.' : 'Impossible: Nexus requires at least one active unit.', 'warn');
+        sound.playSfx('click');
       }
     } else {
       if (activeTeam.length < 3) {
         setActiveTeam(prev => [...prev, heroId]);
+        sound.playSfx('click');
+      } else {
+        notifyNexus(lang === 'fr' ? 'Escouade complete: retire une unite avant d en deployer une autre.' : 'Squad full: bench one unit before deploying another.', 'warn');
         sound.playSfx('click');
       }
     }
@@ -708,6 +743,7 @@ export default function HubScreen({
       ...prev,
       [heroId]: itemId
     }));
+    notifyNexus(lang === 'fr' ? 'Relique synchronisee avec la signature du heros.' : 'Relic synchronized with the hero signature.', 'success');
     sound.playSfx('levelup');
   };
 
@@ -721,10 +757,18 @@ export default function HubScreen({
 
   // Equip combat Event Item
   const equipEventItem = (heroId, itemId) => {
+    const hero = HEROES_DB.find(h => h.id === heroId);
+    const expectedEvent = hero ? EVENT_ITEMS_DB[hero.universe]?.id : null;
+    if (expectedEvent !== itemId) {
+      notifyNexus(lang === 'fr' ? 'Objet refuse: cette anomalie ne correspond pas au lore du heros.' : 'Item rejected: this anomaly does not match the hero lore.', 'warn');
+      sound.playSfx('click');
+      return;
+    }
     setEquippedEventItems(prev => ({
       ...prev,
       [heroId]: itemId
     }));
+    notifyNexus(lang === 'fr' ? 'Objet evenementiel arme pour la prochaine breche.' : 'Event item armed for the next breach.', 'success');
     sound.playSfx('levelup');
   };
 
@@ -738,10 +782,18 @@ export default function HubScreen({
 
   // Event shop purchase
   const buyShopItem = (item) => {
-    if (eventTokens < item.tokenCost || inventory.includes(item.id)) return;
+    if (inventory.includes(item.id)) {
+      notifyNexus(lang === 'fr' ? 'Prototype deja indexe dans l inventaire.' : 'Prototype already indexed in inventory.', 'warn');
+      return;
+    }
+    if (eventTokens < item.tokenCost) {
+      notifyNexus(lang === 'fr' ? `Jetons insuffisants: ${item.tokenCost} requis pour ce prototype.` : `Not enough Event Tokens: ${item.tokenCost} required for this prototype.`, 'warn');
+      return;
+    }
 
     setEventTokens(prev => prev - item.tokenCost);
     setInventory(prev => [...prev, item.id]);
+    notifyNexus(lang === 'fr' ? 'Prototype transfere dans l inventaire Nexus.' : 'Prototype transferred into Nexus inventory.', 'success');
     sound.playSfx('levelup');
   };
 
@@ -757,17 +809,28 @@ export default function HubScreen({
 
   const claimCollectionReward = (collection) => {
     const markerId = getCollectionMarkerId(collection);
-    if (!isCollectionComplete(collection) || inventory.includes(markerId)) return;
+    if (inventory.includes(markerId)) {
+      notifyNexus(lang === 'fr' ? 'Cache deja reclamee: le bonus passif reste actif.' : 'Cache already claimed: passive bonus remains active.', 'warn');
+      return;
+    }
+    if (!isCollectionComplete(collection)) {
+      notifyNexus(lang === 'fr' ? 'Collection incomplete: stabilise tous les mondes lies a cette franchise.' : 'Collection incomplete: stabilize every linked franchise world.', 'warn');
+      return;
+    }
 
     setGold(prev => prev + collection.reward.gold);
     setBreachShards(prev => prev + collection.reward.shards);
     setEventTokens(prev => prev + collection.reward.tokens);
     setInventory(prev => [...prev, markerId]);
+    notifyNexus(lang === 'fr' ? 'Cache de franchise ouverte: bonus passif permanent ajoute.' : 'Franchise cache opened: permanent passive bonus added.', 'success');
     sound.playSfx('levelup');
   };
 
   const handleFuseRelic = (baseItemId) => {
-    if (gold < 150) return;
+    if (gold < 150) {
+      notifyNexus(lang === 'fr' ? 'Fusion refusee: 150 Or requis pour stabiliser la relique +.' : 'Fusion refused: 150 Gold required to stabilize the relic +.', 'warn');
+      return;
+    }
 
     const instancesIndices = [];
     inventory.forEach((invId, idx) => {
@@ -776,7 +839,10 @@ export default function HubScreen({
       }
     });
 
-    if (instancesIndices.length < 3) return;
+    if (instancesIndices.length < 3) {
+      notifyNexus(lang === 'fr' ? 'Fusion impossible: trois exemplaires identiques sont requis.' : 'Fusion impossible: three matching copies required.', 'warn');
+      return;
+    }
 
     setGold(prev => prev - 150);
 
@@ -791,6 +857,7 @@ export default function HubScreen({
     });
 
     sound.playSfx('levelup');
+    notifyNexus(lang === 'fr' ? 'Relique fusionnee: version + ajoutee a l inventaire.' : 'Relic fused: + version added to inventory.', 'success');
   };
 
   const selectedHero = HEROES_DB.find(h => h.id === selectedHeroId) || HEROES_DB[0];
@@ -886,6 +953,11 @@ export default function HubScreen({
   };
 
   const launchStage = (stage) => {
+    if (!isStageUnlocked(stage)) {
+      notifyNexus(getLockedReason(stage), 'warn');
+      sound.playSfx('click');
+      return;
+    }
     onLaunchStage(prepareStage(stage));
   };
 
@@ -1031,6 +1103,23 @@ export default function HubScreen({
         </div>
       </div>
 
+      {nexusMessage && (
+        <div style={{
+          width: '100%',
+          maxWidth: '1000px',
+          marginBottom: '14px',
+          padding: '10px 12px',
+          border: `1px solid ${nexusMessage.tone === 'success' ? '#2ecc71' : nexusMessage.tone === 'warn' ? '#f1c40f' : '#39c5bb'}`,
+          background: nexusMessage.tone === 'success' ? 'rgba(46,204,113,0.08)' : nexusMessage.tone === 'warn' ? 'rgba(241,196,15,0.08)' : 'rgba(57,197,187,0.08)',
+          color: nexusMessage.tone === 'success' ? '#d8ffe4' : nexusMessage.tone === 'warn' ? '#fff3b0' : '#c8f7f4',
+          borderRadius: '4px',
+          fontSize: '12px',
+          lineHeight: 1.4
+        }}>
+          <strong>{lang === 'fr' ? 'Journal Nexus' : 'Nexus Log'}:</strong> {nexusMessage.message}
+        </div>
+      )}
+
       {/* Navigation tabs */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '25px', width: '100%', maxWidth: '1000px' }}>
         <button
@@ -1082,35 +1171,35 @@ export default function HubScreen({
       {['missions', 'roster', 'codex'].includes(activeTab) && (
         <div style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: '1000px', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '11px', color: '#888', textTransform: 'uppercase', marginRight: '5px' }}>
-            {lang === 'fr' ? 'Filtrer par Média :' : 'Filter by Media :'}
+            {lang === 'fr' ? 'Filtre d archives :' : 'Archive filter:'}
           </span>
           <button
             onClick={() => { setMediaFilter('all'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'all' ? 'active-tab' : ''}`}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'all' ? '#ffea00' : '#444' }}
           >
-            🌍 {lang === 'fr' ? 'TOUT' : 'ALL'}
+            {lang === 'fr' ? 'TOUT' : 'ALL'}
           </button>
           <button
             onClick={() => { setMediaFilter('game'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'game' ? 'active-tab' : ''}`}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'game' ? '#3498db' : '#444' }}
           >
-            🕹️ {lang === 'fr' ? 'JEUX VIDÉO' : 'VIDEO GAMES'}
+            {lang === 'fr' ? 'JEUX VIDEO' : 'VIDEO GAMES'}
           </button>
           <button
             onClick={() => { setMediaFilter('movie'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'movie' ? 'active-tab' : ''}`}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'movie' ? '#e74c3c' : '#444' }}
           >
-            🎬 {lang === 'fr' ? 'FILMS & SÉRIES' : 'MOVIES & TV'}
+            {lang === 'fr' ? 'FILMS & SERIES' : 'MOVIES & TV'}
           </button>
           <button
             onClick={() => { setMediaFilter('manga'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'manga' ? 'active-tab' : ''}`}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'manga' ? '#9b59b6' : '#444' }}
           >
-            📚 {lang === 'fr' ? 'MANGA & WEB' : 'MANGA & WEB'}
+            {lang === 'fr' ? 'MANGA & WEB' : 'MANGA & WEB'}
           </button>
           <button
             onClick={() => { setMediaFilter('music'); sound.playSfx('click'); }}
@@ -1129,7 +1218,7 @@ export default function HubScreen({
         {activeTab === 'missions' && (
           <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
             <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#39c5bb' }}>
-              {lang === 'fr' ? 'SCAN DE BRÈCHES' : 'BREACH SCAN'}
+              {lang === 'fr' ? 'SCAN DE BRECHES' : 'BREACH SCAN'}
             </h3>
             <div style={{
               marginBottom: '12px',
@@ -1148,7 +1237,7 @@ export default function HubScreen({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px', color: '#aaa', fontSize: '12px' }}>
               <span>
                 {lang === 'fr'
-                  ? `${clearedVisibleCount}/${missionPool.length} brèches filtrées stabilisées · 5 cibles proposées`
+                  ? `${clearedVisibleCount}/${missionPool.length} breches filtrees stabilisees - 5 cibles proposees`
                   : `${clearedVisibleCount}/${missionPool.length} filtered breaches stabilized · 5 proposed targets`}
               </span>
               <button
@@ -1330,7 +1419,7 @@ export default function HubScreen({
                       </div>
                       <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{collection.bonus[lang]}</div>
                       <div style={{ fontSize: '10px', color: '#d9d9d9', marginTop: '6px' }}>
-                        +{collection.reward.gold} gold | +{collection.reward.shards} shards | +{collection.reward.tokens} tokens
+                        +{collection.reward.gold} Or | +{collection.reward.shards} Fragments | +{collection.reward.tokens} Jetons
                       </div>
                       <div style={{ fontSize: '9px', color: '#2ecc71', marginTop: '4px' }}>
                         {lang === 'fr' ? 'Passif permanent: +2% toutes stats.' : 'Permanent passive: +2% all stats.'}
@@ -1458,11 +1547,11 @@ export default function HubScreen({
                             {stageArc.title[lang]}
                           </span>
                         )}
-                        {isCompleted && <span style={{ color: '#2ecc71', fontSize: '11px', fontWeight: 'bold' }}>✓ CLEARED</span>}
+                        {isCompleted && <span style={{ color: '#2ecc71', fontSize: '11px', fontWeight: 'bold' }}>✓ STABILISE</span>}
                       </div>
 
                       <div style={{ fontSize: '12px', color: '#bbb', marginTop: '4px' }}>
-                        Universe: <strong style={{ color: '#fff' }}>{stage.universe}</strong> | World Boss: <strong style={{ color: '#e74c3c' }}>{stage.bossName}</strong>
+                        Univers: <strong style={{ color: '#fff' }}>{stage.universe}</strong> | Boss: <strong style={{ color: '#e74c3c' }}>{stage.bossName}</strong>
                       </div>
                       <div style={{ fontSize: '11px', color: '#8fa5aa', marginTop: '4px', maxWidth: '560px', lineHeight: 1.35 }}>
                         {getBreachBrief(stage)}
@@ -1471,7 +1560,7 @@ export default function HubScreen({
                         {modifier.desc[lang]}
                       </div>
                       <div style={{ fontSize: '11px', color: '#ffeb3b', marginTop: '4px' }}>
-                        Reward: {preparedStage.goldPrize} gold | {preparedStage.shardPrize} shards {preparedStage.tokenPrize ? `| +${preparedStage.tokenPrize} tokens` : ''}
+                        Recompense: {preparedStage.goldPrize} Or | {preparedStage.shardPrize} Fragments {preparedStage.tokenPrize ? `| +${preparedStage.tokenPrize} Jetons` : ''}
                       </div>
                     </div>
 
@@ -1559,10 +1648,10 @@ export default function HubScreen({
                     className="btn-retro"
                     style={{ padding: '8px 14px', background: isStageUnlocked(selectedBriefingStage) ? '#ffeb3b' : '#333', color: isStageUnlocked(selectedBriefingStage) ? '#111' : '#777' }}
                   >
-                    {isStageUnlocked(selectedBriefingStage) ? getTranslation(lang, 'deploySquad') : 'LOCKED'}
+                    {isStageUnlocked(selectedBriefingStage) ? getTranslation(lang, 'deploySquad') : 'VERROU'}
                   </button>
                   <button onClick={() => setBriefingStageId(null)} className="btn-retro" style={{ padding: '6px 12px', fontSize: '10px', borderColor: '#555' }}>
-                    CLOSE
+                    FERMER
                   </button>
                 </div>
               </div>
@@ -1603,7 +1692,7 @@ export default function HubScreen({
                     cursor: finalStageUnlocked ? 'pointer' : 'not-allowed'
                   }}
                 >
-                  {finalStageUnlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'VERROUILLÉ' : 'LOCKED')}
+                  {finalStageUnlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'VERROUILLÉ' : 'VERROU')}
                 </button>
               </div>
             )}
@@ -2005,7 +2094,7 @@ export default function HubScreen({
                           </button>
                         </div>
                       ) : (
-                        <div style={{ color: '#555', fontSize: '12px', marginTop: '4px' }}>EMPTY WEAPON SLOT</div>
+                        <div style={{ color: '#555', fontSize: '12px', marginTop: '4px' }}>AUCUNE RELIQUE</div>
                       )}
                     </div>
 
@@ -2022,7 +2111,7 @@ export default function HubScreen({
                           </button>
                         </div>
                       ) : (
-                        <div style={{ color: '#555', fontSize: '12px', marginTop: '4px' }}>EMPTY EVENT SLOT</div>
+                        <div style={{ color: '#555', fontSize: '12px', marginTop: '4px' }}>AUCUN OBJET EVENEMENT</div>
                       )}
                     </div>
                   </div>
@@ -2052,7 +2141,7 @@ export default function HubScreen({
                             <div>
                               <div style={{ fontWeight: 'bold', fontSize: '12px' }}>{item.name[lang]}</div>
                               <span style={{ fontSize: '10px', color: '#888' }}>
-                                Universe: {item.universe} | Boost: +
+                                Univers: {item.universe} | Boost: +
                                 {Object.keys(item.boost).map(k => `${k.toUpperCase()} ${item.boost[k]}`).join(', ')}
                               </span>
                             </div>
@@ -2064,7 +2153,7 @@ export default function HubScreen({
                                 className="btn-retro"
                                 style={{ fontSize: '11px', padding: '4px 10px' }}
                               >
-                                {isEquippedElsewhere ? 'EQUIPPED ON OTHER' : getTranslation(lang, 'equipBtn')}
+                                {isEquippedElsewhere ? 'ASSIGNEE' : getTranslation(lang, 'equipBtn')}
                               </button>
                             )}
                           </div>
@@ -2101,7 +2190,7 @@ export default function HubScreen({
                                 className="btn-retro"
                                 style={{ fontSize: '11px', padding: '4px 10px', borderColor: matchesUniverse ? '#ff4500' : '#444', color: matchesUniverse ? '#ff4500' : '#444' }}
                               >
-                                {matchesUniverse ? getTranslation(lang, 'equipBtn') : 'WRONG UNIVERSE'}
+                                {matchesUniverse ? getTranslation(lang, 'equipBtn') : 'LORE INCOMPATIBLE'}
                               </button>
                             )}
                           </div>
@@ -2149,10 +2238,10 @@ export default function HubScreen({
                               }}>
                                 <div>
                                   <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ff9900' }}>
-                                    {item.name[lang]} ({copies} owned)
+                                    {item.name[lang]} ({copies} possedes)
                                   </div>
                                   <span style={{ fontSize: '10px', color: '#aaa' }}>
-                                    Target: {item.name[lang]} + (Double stats bonus)
+                                    Cible: {item.name[lang]} + (bonus double)
                                   </span>
                                 </div>
                                 <button
@@ -2189,7 +2278,7 @@ export default function HubScreen({
               {getTranslation(lang, 'tabShop')}
             </h3>
             <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '20px' }}>
-              Spend your 🎫 **Event Tokens** (dropped from world bosses) to acquire high-tier gear and special combat event triggers!
+              {lang === 'fr' ? 'Depense tes jetons evenement pour acheter des prototypes, reliques rares et declencheurs de combat synchronises au Nexus.' : 'Spend Event Tokens on prototypes, rare relics, and combat triggers synchronized by the Nexus.'}
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
@@ -2213,7 +2302,9 @@ export default function HubScreen({
                         <span style={{ fontSize: '12px', color: '#e74c3c' }}>🎫 {item.tokenCost}</span>
                       </div>
                       <div style={{ fontSize: '11px', color: '#aaa', marginTop: '6px' }}>
-                        {item.isCombatEvent ? `Active combat spell trigger.` : `Relic Gear | Boosts stats.`}
+                        {item.isCombatEvent
+                          ? (lang === 'fr' ? 'Declencheur de combat lie a un univers.' : 'Universe-linked combat trigger.')
+                          : (lang === 'fr' ? 'Relique prototype - augmente les stats.' : 'Prototype relic - boosts stats.')}
                       </div>
                     </div>
 
@@ -2224,7 +2315,7 @@ export default function HubScreen({
                         className="btn-retro"
                         style={{ fontSize: '12px', padding: '5px 12px', borderColor: owned ? '#2ecc71' : '#e74c3c', color: owned ? '#2ecc71' : '#e74c3c' }}
                       >
-                        {owned ? 'OWNED' : `BUY`}
+                        {owned ? 'INDEXE' : (lang === 'fr' ? 'ACHETER' : 'BUY')}
                       </button>
                     </div>
                   </div>

@@ -158,7 +158,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
         {getTranslation(lang, 'btnPortal')}
       </h1>
       <p style={{ color: '#ccc', textAlign: 'center', fontSize: '13px', margin: '0 0 25px 0', maxWidth: '600px' }}>
-        Tear open the dimensional fabric using 50 Shards to pull a hero from another universe!
+        {lang === 'fr'
+          ? 'Injecte 50 Fragments dans une faille pour stabiliser une signature heroique compatible avec le Nexus.'
+          : 'Inject 50 Shards into a rift to stabilize a heroic signature compatible with the Nexus.'}
       </p>
 
       {/* Banner Selectors */}
@@ -189,50 +191,6 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
               </button>
             );
           })}
-          {activeBanner === '__legacy__' && <>
-          <button
-            onClick={() => { setActiveBanner('multi'); sound.playSfx('click'); }}
-            className={`btn-retro ${activeBanner === 'multi' ? 'active-tab' : ''}`}
-            style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'multi' ? '#9b59b6' : '#444' }}
-          >
-            {getTranslation(lang, 'portal_multi')}
-          </button>
-          <button
-            onClick={() => { setActiveBanner('scifi'); sound.playSfx('click'); }}
-            className={`btn-retro ${activeBanner === 'scifi' ? 'active-tab' : ''}`}
-            style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'scifi' ? '#3498db' : '#444' }}
-          >
-            🚀 {getTranslation(lang, 'portal_scifi')}
-          </button>
-          <button
-            onClick={() => { setActiveBanner('horror'); sound.playSfx('click'); }}
-            className={`btn-retro ${activeBanner === 'horror' ? 'active-tab' : ''}`}
-            style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'horror' ? '#e74c3c' : '#444' }}
-          >
-            💀 {getTranslation(lang, 'portal_horror')}
-          </button>
-          <button
-            onClick={() => { setActiveBanner('arcade'); sound.playSfx('click'); }}
-            className={`btn-retro ${activeBanner === 'arcade' ? 'active-tab' : ''}`}
-            style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'arcade' ? '#e67e22' : '#444' }}
-          >
-            👾 {getTranslation(lang, 'portal_arcade')}
-          </button>
-          <button
-            onClick={() => { setActiveBanner('manga'); sound.playSfx('click'); }}
-            className={`btn-retro ${activeBanner === 'manga' ? 'active-tab' : ''}`}
-            style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'manga' ? '#9b59b6' : '#444' }}
-          >
-            📚 {getTranslation(lang, 'portal_manga')}
-          </button>
-          <button
-            onClick={() => { setActiveBanner('music'); sound.playSfx('click'); }}
-            className={`btn-retro ${activeBanner === 'music' ? 'active-tab' : ''}`}
-            style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'music' ? '#f1c40f' : '#444' }}
-          >
-            {lang === 'fr' ? 'MUSIQUE' : 'MUSIC'}
-          </button>
-          </>}
         </div>
       </div>
 
