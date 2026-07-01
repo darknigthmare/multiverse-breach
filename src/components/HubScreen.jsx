@@ -134,6 +134,14 @@ export default function HubScreen({
     { id: 38, name: 'Final Omniverse Singularity', universe: 'Matrix', mode: 'RPG', difficulty: 'Final World Boss', goldPrize: 500, shardPrize: 150, bossName: 'Breach Singularity Core' }
   ];
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
+  const NORMAL_STAGE_COUNT = STAGES.filter(stage => stage.id !== 38).length;
+  const TOTAL_UNIVERSE_COUNT = Object.keys(LORE_DB).length;
+  const FINAL_STAGE_REQUIRED_CLEARS = Math.max(18, Math.ceil(NORMAL_STAGE_COUNT * 0.45));
+  const META_RANK_THRESHOLDS = {
+    strike: Math.max(8, Math.ceil(NORMAL_STAGE_COUNT * 0.15)),
+    veteran: Math.max(16, Math.ceil(NORMAL_STAGE_COUNT * 0.4)),
+    omega: Math.max(24, Math.ceil(NORMAL_STAGE_COUNT * 0.65))
+  };
 
   // List of high-tier items in the Event Shop
   const EVENT_SHOP_ITEMS = [
@@ -417,7 +425,7 @@ export default function HubScreen({
   };
 
   const getStageRequiredClears = (stage) => {
-    if (stage.id === 38) return 18;
+    if (stage.id === 38) return FINAL_STAGE_REQUIRED_CLEARS;
     if (stage.difficulty === 'Medium') return 2;
     if (stage.difficulty === 'Hard') return 6;
     if (stage.difficulty === 'Very Hard') return 12;
@@ -502,11 +510,11 @@ export default function HubScreen({
   });
 
   const totalHeroLevels = unlockedHeroes.reduce((sum, heroId) => sum + (heroLevels[heroId] || 1), 0);
-  const metaRank = completedStages.length >= 24
+  const metaRank = completedStages.length >= META_RANK_THRESHOLDS.omega
     ? 'Omega'
-    : completedStages.length >= 16
+    : completedStages.length >= META_RANK_THRESHOLDS.veteran
       ? 'Veteran'
-      : completedStages.length >= 8
+      : completedStages.length >= META_RANK_THRESHOLDS.strike
         ? 'Strike'
         : 'Initiate';
   const nextProgressGoal = completedStages.length < 2
@@ -515,9 +523,11 @@ export default function HubScreen({
       ? (lang === 'fr' ? 'Atteindre 6 brèches pour débloquer le palier Hard.' : 'Reach 6 breaches to unlock Hard tier.')
       : completedStages.length < 12
         ? (lang === 'fr' ? 'Construire une équipe niveau 4+ avant le palier Very Hard.' : 'Build a level 4+ squad before Very Hard tier.')
-        : completedStages.length < 18
-          ? (lang === 'fr' ? 'Préparer reliques fusionnées et synergies avant le boss final.' : 'Prepare fused relics and synergies before the final boss.')
-          : (lang === 'fr' ? 'Noyau final disponible: optimiser les builds et le codex.' : 'Final core available: optimize builds and codex.');
+        : completedStages.length < 16
+          ? (lang === 'fr' ? 'Ouvrir le palier Expert et renforcer les reliques.' : 'Open the Expert tier and reinforce relics.')
+          : completedStages.length < FINAL_STAGE_REQUIRED_CLEARS
+            ? (lang === 'fr' ? `Stabiliser ${FINAL_STAGE_REQUIRED_CLEARS} brèches pour ouvrir le noyau final.` : `Stabilize ${FINAL_STAGE_REQUIRED_CLEARS} breaches to open the final core.`)
+            : (lang === 'fr' ? 'Noyau final disponible: optimiser les builds et le codex.' : 'Final core available: optimize builds and codex.');
 
   const getBossIntel = (stage) => {
     if (stage.id === 38) return getFinalGameBoss();
@@ -675,7 +685,7 @@ export default function HubScreen({
             className={`btn-retro ${mediaFilter === 'music' ? 'active-tab' : ''}`}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'music' ? '#f1c40f' : '#444' }}
           >
-            MUSIC
+            {lang === 'fr' ? 'MUSIQUE' : 'MUSIC'}
           </button>
         </div>
       )}
@@ -751,7 +761,7 @@ export default function HubScreen({
                   </button>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(10, minmax(20px, 1fr))', gap: '5px' }}>
-                  {missionPool.slice(0, 30).map(stage => {
+                  {missionPool.map(stage => {
                     const isCompleted = completedStages.includes(stage.id);
                     const isLocked = !isStageUnlocked(stage);
                     return (
@@ -995,7 +1005,7 @@ export default function HubScreen({
                   <div style={{ fontSize: '11px', color: '#bbb', marginTop: '4px' }}>
                     {finalStageUnlocked
                       ? (lang === 'fr' ? 'Noyau mondial disponible.' : 'World core available.')
-                      : (lang === 'fr' ? `${Math.max(0, 18 - completedStages.length)} brèches à stabiliser avant ouverture.` : `${Math.max(0, 18 - completedStages.length)} breaches to stabilize before opening.`)}
+                      : (lang === 'fr' ? `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedStages.length)} brèches à stabiliser avant ouverture.` : `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedStages.length)} breaches to stabilize before opening.`)}
                   </div>
                 </div>
                 <button
@@ -1649,8 +1659,8 @@ export default function HubScreen({
             </h3>
             <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '20px' }}>
               {lang === 'fr' 
-                ? 'Consultez les enregistrements historiques des anomalies détectées sur les 37 univers connus du Multivers.' 
-                : 'Browse the historical logs of the spacetime anomalies detected across the 37 known universes of the Multiverse.'}
+                ? `Consultez les enregistrements historiques des anomalies détectées sur les ${TOTAL_UNIVERSE_COUNT} univers connus du Multivers.`
+                : `Browse the historical logs of the spacetime anomalies detected across the ${TOTAL_UNIVERSE_COUNT} known universes of the Multiverse.`}
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '15px', maxHeight: '450px', overflowY: 'auto', paddingRight: '5px' }}>
@@ -1682,7 +1692,7 @@ export default function HubScreen({
                             {lore.title[lang]}
                           </span>
                           <span style={{ fontSize: '9px', padding: '2px 6px', background: 'rgba(255,255,255,0.06)', borderRadius: '3px', color: '#aaa', textTransform: 'uppercase' }}>
-                            {lore.mediaType === 'game' ? '🕹️ Game' : lore.mediaType === 'movie' ? '🎬 Movie' : lore.mediaType === 'music' ? 'Music' : '📚 Web / Manga'}
+                            {lore.mediaType === 'game' ? '🕹️ Game' : lore.mediaType === 'movie' ? '🎬 Movie' : lore.mediaType === 'music' ? (lang === 'fr' ? 'Musique' : 'Music') : '📚 Web / Manga'}
                           </span>
                         </div>
                         <div style={{ marginBottom: '8px' }}>

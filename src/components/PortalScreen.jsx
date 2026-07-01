@@ -225,7 +225,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
             className={`btn-retro ${activeBanner === 'music' ? 'active-tab' : ''}`}
             style={{ fontSize: '11px', padding: '6px', borderColor: activeBanner === 'music' ? '#f1c40f' : '#444' }}
           >
-            MUSIC
+            {lang === 'fr' ? 'MUSIQUE' : 'MUSIC'}
           </button>
         </div>
       </div>
