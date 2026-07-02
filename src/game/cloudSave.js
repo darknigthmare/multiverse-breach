@@ -1,5 +1,6 @@
 const SUPABASE_SESSION_KEY = 'multiverse_breach_supabase_session_v1';
 const CLOUD_GAME_KEY = 'multiverse_breach';
+const CLOUD_SAVE_TABLE = 'multiverse_save_states';
 
 let cachedConfig = null;
 
@@ -119,7 +120,7 @@ export const loadCloudSave = async (session) => {
   if (!session?.user?.id || !session?.access_token) return null;
   const userId = encodeURIComponent(session.user.id);
   const gameKey = encodeURIComponent(CLOUD_GAME_KEY);
-  const rows = await supabaseFetch(`/rest/v1/save_states?select=payload,updated_at&user_id=eq.${userId}&game_key=eq.${gameKey}&limit=1`, {
+  const rows = await supabaseFetch(`/rest/v1/${CLOUD_SAVE_TABLE}?select=payload,updated_at&user_id=eq.${userId}&game_key=eq.${gameKey}&limit=1`, {
     method: 'GET'
   }, session.access_token);
   return rows?.[0] || null;
@@ -127,7 +128,7 @@ export const loadCloudSave = async (session) => {
 
 export const saveCloudSave = async (session, payload) => {
   if (!session?.user?.id || !session?.access_token) return;
-  await supabaseFetch('/rest/v1/save_states', {
+  await supabaseFetch(`/rest/v1/${CLOUD_SAVE_TABLE}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
