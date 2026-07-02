@@ -8,7 +8,7 @@ import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages } from '../game/expandedUniverses';
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
-import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
+import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 
 export default function HubScreen({
   lang,
@@ -24,6 +24,7 @@ export default function HubScreen({
   equippedGear, setEquippedGear,
   equippedEventItems, setEquippedEventItems,
   heroTalents, setHeroTalents,
+  heroSkins, setHeroSkins,
   onLaunchStage,
   onGoToPortal
 }) {
@@ -43,7 +44,11 @@ export default function HubScreen({
     || itemId.startsWith('fusion_')
   )).length;
   const playerHero = createPlayerHero(playerProfile);
-  const HEROES_DB = [playerHero, ...BASE_HEROES_DB];
+  const applySkin = (hero) => {
+    const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
+    return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
+  };
+  const HEROES_DB = [playerHero, ...BASE_HEROES_DB].map(applySkin);
 
   const BREACH_MODIFIERS = [
     {
@@ -164,8 +169,24 @@ export default function HubScreen({
     rewardItemName: mission.item,
     fusionMission: mission
   }));
+  const CHARACTER_STAGES = CHARACTER_NARRATIVE_ARCS.map(arc => ({
+    id: arc.stageId,
+    name: arc.title.en,
+    displayName: arc.title,
+    universe: arc.heroId === 'player_anchor' ? 'Nexus de Convergence' : (BASE_HEROES_DB.find(hero => hero.id === arc.heroId)?.universe || 'Nexus de Convergence'),
+    mode: arc.mode,
+    difficulty: arc.difficulty,
+    goldPrize: 150,
+    shardPrize: 60,
+    tokenPrize: 2,
+    bossName: arc.bossName,
+    rewardItemId: arc.rewardItemId,
+    rewardItemName: arc.reward,
+    characterArc: arc
+  }));
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...FUSION_STAGES);
+  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...CHARACTER_STAGES);
   const NORMAL_STAGE_COUNT = STAGES.filter(stage => stage.id !== 38).length;
   const TOTAL_UNIVERSE_COUNT = Object.keys(LORE_DB).length;
   const FINAL_STAGE_REQUIRED_CLEARS = Math.max(18, Math.ceil(NORMAL_STAGE_COUNT * 0.45));
@@ -1096,6 +1117,20 @@ export default function HubScreen({
   const selectedBreachLore = lang === 'fr'
     ? `${selectedHero.name} n a pas ete arrache a sa Trame par hasard. Sa signature a resiste a la Premiere Breche assez longtemps pour qu A.R.C.A. la classe comme operateur ${selectedHero.category}. Dans notre lore, "${selectedHero.special?.name || selectedPlaque.role.fr}" n est pas seulement une competence: c est la maniere dont ce heros impose les lois de son monde d origine dans une breche que le Sans-Auteur tente de rendre muette. ${breachRoleLore[selectedHero.category]?.fr || breachRoleLore.tactical.fr}${mediaPersonaLore}`
     : `${selectedHero.name} was not pulled from the origin Thread by chance. The signature resisted the First Breach long enough for A.R.C.A. to classify it as a ${selectedHero.category} operator. In our lore, "${selectedHero.special?.name || selectedPlaque.role.en}" is not just a skill: it is how this hero forces origin-world laws into a breach the Authorless wants to silence. ${breachRoleLore[selectedHero.category]?.en || breachRoleLore.tactical.en}${mediaPersonaLore}`;
+  const getAvailableSkinsForHero = (hero) => {
+    const ownedSkinIds = ['default', ...inventory.filter(itemId => SKIN_CATALOG[itemId])];
+    return ownedSkinIds
+      .map(itemId => SKIN_CATALOG[itemId])
+      .filter(Boolean)
+      .filter((skin, index, list) => list.findIndex(item => item.id === skin.id) === index)
+      .filter(skin => {
+        if (skin.id === 'default') return true;
+        if (skin.id === 'char_player_anchor_prime') return hero.id === 'player_anchor';
+        if (skin.id === 'char_freeman_hev_nexus') return hero.id === 'freeman';
+        return true;
+      });
+  };
+  const selectedHeroSkins = getAvailableSkinsForHero(selectedHero);
 
   const formatBoostText = (boost) => Object.keys(boost || {})
     .map(key => `+${boost[key]} ${key.toUpperCase()}`)
@@ -1192,13 +1227,25 @@ export default function HubScreen({
           en: `${reward.name.en} unlocked by arc ${arcId}. Counts as a Nexus passive and future skin/craft content.`
         }
       }
-    ]))
+    ])),
+    ...CHARACTER_NARRATIVE_ARCS.map(arc => [
+      arc.rewardItemId,
+      {
+        id: arc.rewardItemId,
+        name: arc.reward,
+        desc: {
+          fr: `${arc.reward.fr} obtenu via ${arc.title.fr}. Peut etre utilise comme skin/titre personnel.`,
+          en: `${arc.reward.en} obtained through ${arc.title.en}. Can be used as a personal skin/title.`
+        }
+      }
+    ])
   ]);
   const getSpecialNexusItemsInInventory = () => inventory
     .map(itemId => SPECIAL_NEXUS_ITEMS[itemId])
     .filter(Boolean);
 
   const getStageRequiredClears = (stage) => {
+    if (stage.characterArc) return stage.characterArc.unlock?.type === 'clears' ? stage.characterArc.unlock.value : 0;
     if (stage.fusionMission) return stage.unlockClears || 8;
     if (stage.id === 38) return FINAL_STAGE_REQUIRED_CLEARS;
     if (stage.difficulty === 'Medium') return 2;
@@ -1214,10 +1261,22 @@ export default function HubScreen({
   const isStageUnlocked = (stage) => {
     const baseUnlocked = completedStages.length >= getStageRequiredClears(stage);
     if (!baseUnlocked) return false;
+    if (stage.characterArc) {
+      const arc = stage.characterArc;
+      const hero = HEROES_DB.find(item => item.id === arc.heroId);
+      if (!hero || !unlockedHeroes.includes(hero.id)) return false;
+      if (arc.unlock?.type === 'level') return (heroLevels[hero.id] || 1) >= arc.unlock.value;
+      return true;
+    }
     if (stage.fusionMission) return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
     return true;
   };
   const getBreachBrief = (stage) => {
+    if (stage.characterArc) {
+      return lang === 'fr'
+        ? `${stage.displayName.fr}: ${stage.characterArc.intro.fr} Recompense personnelle: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.characterArc.intro.en} Personal reward: ${stage.rewardItemName.en}.`;
+    }
     if (stage.fusionMission) {
       return lang === 'fr'
         ? `${stage.displayName.fr}: ${stage.fusionMission.decor.fr} Sources stabilisees ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Recompense speciale: ${stage.rewardItemName.fr}.`
@@ -2437,6 +2496,71 @@ export default function HubScreen({
                     ) : (
                       <p>{lang === 'fr' ? 'Aucun objet evenementiel synchronise pour cette fiche.' : 'No event item synchronized for this profile.'}</p>
                     )}
+                  </div>
+                </div>
+
+                <div style={{ marginTop: '12px', padding: '12px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '10px' }}>
+                    <div>
+                      <div style={{ fontSize: '10px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                        {lang === 'fr' ? 'Apparence Nexus' : 'Nexus appearance'}
+                      </div>
+                      <div style={{ marginTop: '4px', fontSize: '11px', color: '#aeb8c2', lineHeight: 1.35 }}>
+                        {lang === 'fr'
+                          ? 'Les skins viennent des recompenses d arcs et stabilisent la signature visuelle du heros.'
+                          : 'Skins come from arc rewards and stabilize the hero visual signature.'}
+                      </div>
+                    </div>
+                    <div style={{ flexShrink: 0, fontSize: '10px', color: selectedHero.primaryColor, textTransform: 'uppercase' }}>
+                      {selectedHero.activeSkin?.name?.[lang] || SKIN_CATALOG.default.name[lang]}
+                    </div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
+                    {selectedHeroSkins.map(skin => {
+                      const activeSkinId = heroSkins?.[selectedHero.id] || 'default';
+                      const isActive = activeSkinId === skin.id;
+                      return (
+                        <button
+                          key={skin.id}
+                          type="button"
+                          onClick={() => setHeroSkins(prev => ({
+                            ...prev,
+                            [selectedHero.id]: skin.id === 'default' ? null : skin.id
+                          }))}
+                          style={{
+                            minHeight: '42px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            padding: '8px',
+                            border: `1px solid ${isActive ? skin.colors.primaryColor : 'rgba(255,255,255,0.12)'}`,
+                            borderRadius: '4px',
+                            background: isActive ? `${skin.colors.primaryColor}22` : 'rgba(0,0,0,0.25)',
+                            color: '#f5f5f5',
+                            cursor: 'pointer',
+                            textAlign: 'left'
+                          }}
+                        >
+                          <span style={{
+                            width: '28px',
+                            height: '28px',
+                            flexShrink: 0,
+                            borderRadius: '3px',
+                            border: '1px solid rgba(255,255,255,0.18)',
+                            background: `linear-gradient(135deg, ${skin.colors.primaryColor} 0 50%, ${skin.colors.secondaryColor} 50% 100%)`,
+                            boxShadow: isActive ? `0 0 10px ${skin.colors.primaryColor}66` : 'none'
+                          }} />
+                          <span style={{ minWidth: 0 }}>
+                            <span style={{ display: 'block', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', overflowWrap: 'anywhere' }}>
+                              {skin.name[lang]}
+                            </span>
+                            <span style={{ display: 'block', marginTop: '2px', fontSize: '9px', color: isActive ? '#ffffff' : '#8f98a3', textTransform: 'uppercase' }}>
+                              {isActive ? (lang === 'fr' ? 'Equipe' : 'Equipped') : (lang === 'fr' ? 'Disponible' : 'Available')}
+                            </span>
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 

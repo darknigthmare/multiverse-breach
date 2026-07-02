@@ -24,6 +24,7 @@ const DEFAULT_SAVE = {
   activeTeam: [PLAYER_HERO_ID, 'freeman', 'masterchief'],
   completedStages: [],
   heroTalents: {},
+  heroSkins: {},
   inventory: ['cog_armor', 'green_herb', 'hev_battery'],
   equippedGear: {
     [PLAYER_HERO_ID]: null,
@@ -71,6 +72,7 @@ const normalizeSavePayload = (save = {}) => {
     activeTeam,
     heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(merged.heroLevels || {}) },
     heroTalents: merged.heroTalents || {},
+    heroSkins: merged.heroSkins || {},
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
     equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
   };
@@ -86,6 +88,16 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
       : (lang === 'fr'
         ? `${stage.displayName.fr} reste dangereuse: les univers sources continuent de se contaminer.`
         : `${stage.displayName.en} remains dangerous: source universes keep contaminating each other.`);
+  }
+  if (stage.characterArc) {
+    if (!isOutro) return stage.characterArc.intro[lang];
+    return victory
+      ? (lang === 'fr'
+        ? `${stage.characterArc.outro.fr} ${stage.rewardItemName.fr} rejoint les archives personnelles comme apparence Nexus.`
+        : `${stage.characterArc.outro.en} ${stage.rewardItemName.en} joins the personal archive as a Nexus appearance.`)
+      : (lang === 'fr'
+        ? `${stage.displayName.fr} reste inachevee: la signature personnelle du heros n est pas encore assez stable.`
+        : `${stage.displayName.en} remains unfinished: the hero personal signature is not stable enough yet.`);
   }
   const lines = {
     'Alien': {
@@ -205,6 +217,7 @@ function App() {
   const [activeStage, setActiveStage] = useState(null);
   const [lastBattleResult, setLastBattleResult] = useState(null);
   const [heroTalents, setHeroTalents] = useState(initialSave.heroTalents); // heroId -> talentId
+  const [heroSkins, setHeroSkins] = useState(initialSave.heroSkins);
 
   // Inventory & Equipment
   const [inventory, setInventory] = useState(initialSave.inventory);
@@ -235,6 +248,7 @@ function App() {
     activeTeam,
     completedStages,
     heroTalents,
+    heroSkins,
     inventory,
     equippedGear,
     equippedEventItems
@@ -261,7 +275,7 @@ function App() {
     }, 1200);
 
     return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, inventory, equippedGear, equippedEventItems, account]);
+  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, inventory, equippedGear, equippedEventItems, account]);
 
   // Play ambient music
   useEffect(() => {
@@ -355,6 +369,7 @@ function App() {
     setActiveTeam(merged.activeTeam);
     setCompletedStages(merged.completedStages);
     setHeroTalents(merged.heroTalents);
+    setHeroSkins(merged.heroSkins || {});
     setInventory(merged.inventory);
     setEquippedGear(merged.equippedGear);
     setEquippedEventItems(merged.equippedEventItems);
@@ -694,6 +709,8 @@ function App() {
           setEquippedEventItems={setEquippedEventItems}
           heroTalents={heroTalents}
           setHeroTalents={setHeroTalents}
+          heroSkins={heroSkins}
+          setHeroSkins={setHeroSkins}
           onLaunchStage={handleLaunchStage}
           onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
         />
@@ -720,6 +737,7 @@ function App() {
           equippedGear={equippedGear}
           equippedEventItems={equippedEventItems}
           heroTalents={heroTalents}
+          heroSkins={heroSkins}
           completedStages={completedStages}
           collectionBonusCount={collectionBonusCount}
           onBattleEnd={handleBattleEnd}

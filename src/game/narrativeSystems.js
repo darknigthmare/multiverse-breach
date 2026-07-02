@@ -103,8 +103,13 @@ export const UNIVERSE_NARRATIVE_ARCS = [
 export const CHARACTER_NARRATIVE_ARCS = [
   {
     id: 'player_anchor',
+    stageId: 9201,
     heroId: 'player_anchor',
     title: { fr: 'Arc Personnage - L Ancre', en: 'Character Arc - The Anchor' },
+    mode: 'RPG',
+    difficulty: 'Personal',
+    bossName: 'Ombre du Sans-Auteur',
+    unlock: { type: 'clears', value: 1 },
     intro: { fr: 'Le joueur n est pas recrute: il est le point fixe autour duquel les autres signatures tiennent.', en: 'The player is not recruited: they are the fixed point holding other signatures together.' },
     missions: [
       { fr: 'Choisir son nom et stabiliser la premiere escouade.', en: 'Choose a name and stabilize the first squad.' },
@@ -112,12 +117,18 @@ export const CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Resister a une tentative de suppression du Sans-Auteur.', en: 'Resist an Authorless deletion attempt.' }
     ],
     outro: { fr: 'L Ancre devient commandant, archive vivante et cle du futur multijoueur.', en: 'The Anchor becomes commander, living archive, and key to future multiplayer.' },
-    reward: { fr: 'Titre Profil: Ancre Prime', en: 'Profile Title: Prime Anchor' }
+    reward: { fr: 'Titre Profil: Ancre Prime', en: 'Profile Title: Prime Anchor' },
+    rewardItemId: 'char_player_anchor_prime'
   },
   {
     id: 'freeman_silent_key',
+    stageId: 9202,
     heroId: 'freeman',
     title: { fr: 'Arc Personnage - La cle silencieuse', en: 'Character Arc - The Silent Key' },
+    mode: 'Smash',
+    difficulty: 'Personal',
+    bossName: 'Strider de Resonance',
+    unlock: { type: 'level', value: 3 },
     intro: { fr: 'Gordon Freeman attire les ruptures parce qu il a deja survecu a une cascade de resonance.', en: 'Gordon Freeman attracts ruptures because he already survived a resonance cascade.' },
     missions: [
       { fr: 'Analyser la compatibilite HEV avec les Eclats d Origine.', en: 'Analyze HEV compatibility with Origin Shards.' },
@@ -125,9 +136,53 @@ export const CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Faire taire un Strider avant qu il ne marque le Nexus.', en: 'Silence a Strider before it marks the Nexus.' }
     ],
     outro: { fr: 'Le silence de Freeman devient un langage que le Nexus comprend.', en: 'Freeman silence becomes a language the Nexus understands.' },
-    reward: { fr: 'Skin HEV Nexus + Module Long Jump instable', en: 'Nexus HEV Skin + Unstable Long Jump Module' }
+    reward: { fr: 'Skin HEV Nexus + Module Long Jump instable', en: 'Nexus HEV Skin + Unstable Long Jump Module' },
+    rewardItemId: 'char_freeman_hev_nexus'
   }
 ];
+
+export const SKIN_CATALOG = {
+  default: {
+    id: 'default',
+    name: { fr: 'Apparence origine', en: 'Origin look' },
+    colors: {}
+  },
+  char_player_anchor_prime: {
+    id: 'char_player_anchor_prime',
+    name: { fr: 'Ancre Prime', en: 'Prime Anchor' },
+    colors: { primaryColor: '#ffffff', secondaryColor: '#39c5bb' }
+  },
+  char_freeman_hev_nexus: {
+    id: 'char_freeman_hev_nexus',
+    name: { fr: 'HEV Nexus', en: 'Nexus HEV' },
+    colors: { primaryColor: '#ff8c00', secondaryColor: '#39c5bb' }
+  },
+  arc_scifi_skin_atrium_bulwark: {
+    id: 'arc_scifi_skin_atrium_bulwark',
+    name: { fr: 'Rempart Atrium', en: 'Atrium Bulwark' },
+    colors: { primaryColor: '#63d7ff', secondaryColor: '#ffeb3b' }
+  },
+  arc_cyber_skin_zone_404: {
+    id: 'arc_cyber_skin_zone_404',
+    name: { fr: 'Zone 404', en: 'Zone 404' },
+    colors: { primaryColor: '#41ffac', secondaryColor: '#9b59b6' }
+  },
+  arc_fear_skin_black_archive: {
+    id: 'arc_fear_skin_black_archive',
+    name: { fr: 'Archive Noire', en: 'Black Archive' },
+    colors: { primaryColor: '#cbd8c8', secondaryColor: '#e74c3c' }
+  },
+  arc_stage_skin_neon_persona: {
+    id: 'arc_stage_skin_neon_persona',
+    name: { fr: 'Neon Persona', en: 'Neon Persona' },
+    colors: { primaryColor: '#f1c40f', secondaryColor: '#39c5bb' }
+  },
+  arc_xeno_skin_acid_armor: {
+    id: 'arc_xeno_skin_acid_armor',
+    name: { fr: 'Armure Acide', en: 'Acid Armor' },
+    colors: { primaryColor: '#7ee8dc', secondaryColor: '#8cff5a' }
+  }
+};
 
 export const FUSION_MISSIONS = [
   {

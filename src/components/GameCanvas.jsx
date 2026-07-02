@@ -9,8 +9,9 @@ import { getMonstersForUniverse, getBossesForUniverse, getWorldBossForUniverse, 
 import { getTranslation } from '../game/translation';
 import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../game/expandedUniverses';
 import { createPlayerHero } from '../game/playerHero';
+import { SKIN_CATALOG } from '../game/narrativeSystems';
 
-export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, completedStages, collectionBonusCount = 0, onBattleEnd }) {
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, onBattleEnd }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysPressed = useRef({});
@@ -27,7 +28,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [battleAnomaly, setBattleAnomaly] = useState(null);
   
   const [activeSynergies, setActiveSynergies] = useState([]);
-  const HEROES_DB = [createPlayerHero(playerProfile), ...BASE_HEROES_DB];
+  const applySkin = (hero) => {
+    const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
+    return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
+  };
+  const HEROES_DB = [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(applySkin);
   
   const autoBattleRef = useRef(autoBattle);
   autoBattleRef.current = autoBattle;
@@ -206,7 +211,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     return {
       monsters: getMonstersForUniverse(stage.universe).map(enemy => scaleEnemy(enemy)),
       bosses: getBossesForUniverse(stage.universe).map(enemy => scaleEnemy(enemy, true)),
-      worldBoss: scaleEnemy(getWorldBossForUniverse(stage.universe), true)
+      worldBoss: scaleEnemy({
+        ...getWorldBossForUniverse(stage.universe),
+        name: stage.bossName || getWorldBossForUniverse(stage.universe).name
+      }, true)
     };
   };
 
