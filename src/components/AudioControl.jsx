@@ -13,11 +13,8 @@ export default function AudioControl() {
   return (
     <button
       onClick={toggleMute}
+      className="global-audio-control"
       style={{
-        position: 'fixed',
-        top: '15px',
-        right: '15px',
-        zIndex: 100,
         background: 'rgba(20, 20, 30, 0.75)',
         border: '1px solid #39c5bb',
         borderRadius: '4px',

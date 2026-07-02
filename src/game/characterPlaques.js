@@ -274,16 +274,32 @@ export const CHARACTER_PLAQUES = {
   }
 };
 
-export const getCharacterPlaque = (hero) => CHARACTER_PLAQUES[hero.id] || {
-  clearance: `${hero.universe.slice(0, 3).toUpperCase()}-${hero.id.slice(0, 3).toUpperCase()}`,
-  rank: { fr: hero.category.toUpperCase(), en: hero.category.toUpperCase() },
-  role: { fr: `${hero.category} de breche`, en: `${hero.category} breach operator` },
-  callSign: hero.name,
-  origin: { fr: `Univers source - ${hero.universe}`, en: `Source universe - ${hero.universe}` },
-  dossier: {
-    fr: `Combattant indexe par le Nexus pour les operations ${hero.universe}. Profil synthetique pret pour une plaquette complete.`,
-    en: `Nexus-indexed fighter for ${hero.universe} operations. Synthetic profile ready for a full plaque.`
-  },
-  doctrine: { fr: hero.special?.name || 'Signature de combat non classee', en: hero.special?.name || 'Unclassified combat signature' },
-  tags: [hero.universe, hero.category, hero.weaponType || 'combat']
+const roleByCategory = {
+  marine: { fr: 'Ancrage de front', en: 'Frontline anchor' },
+  slayer: { fr: 'Rupture offensive', en: 'Offensive rupture' },
+  horror: { fr: 'Survie contre-anomalie', en: 'Counter-anomaly survival' },
+  hacker: { fr: 'Lecture du code-realite', en: 'Code-reality reader' },
+  tactical: { fr: 'Commandement de terrain', en: 'Field command' }
+};
+
+export const getCharacterPlaque = (hero) => {
+  if (CHARACTER_PLAQUES[hero.id]) return CHARACTER_PLAQUES[hero.id];
+  const role = roleByCategory[hero.category] || roleByCategory.tactical;
+  const doctrine = hero.special?.name || hero.weaponType || 'signature inconnue';
+  return {
+    clearance: `${hero.universe.slice(0, 3).toUpperCase()}-${hero.id.slice(0, 3).toUpperCase()}`,
+    rank: { fr: hero.category.toUpperCase(), en: hero.category.toUpperCase() },
+    role,
+    callSign: hero.name,
+    origin: { fr: `Univers source - ${hero.universe}`, en: `Source universe - ${hero.universe}` },
+    dossier: {
+      fr: `${hero.name} a ete archive comme signature stable de ${hero.universe}. Le Nexus conserve son histoire d origine, mais lui ajoute une seconde fonction: servir de cle vivante contre les breches ou son monde est copie, tordu ou utilise comme arme par la Singularity.`,
+      en: `${hero.name} has been archived as a stable ${hero.universe} signature. The Nexus preserves the origin story, but adds a second function: acting as a living key against breaches where that world is copied, twisted, or weaponized by the Singularity.`
+    },
+    doctrine: {
+      fr: `${doctrine}. Stabilisation de scene, rupture de pattern et protection des archives locales.`,
+      en: `${doctrine}. Scene stabilization, pattern rupture, and protection of local archives.`
+    },
+    tags: [hero.universe, hero.category, hero.weaponType || 'combat']
+  };
 };

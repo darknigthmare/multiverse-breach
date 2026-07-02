@@ -4,8 +4,8 @@ export const translations = {
   en: {
     title: 'MULTIVERSE BREACH',
     subtitle: 'CROSSOVER DEFENSE SYSTEM',
-    introText1: 'Commander, the Nexus has detected a multiversal wound. Portals are opening across unstable coordinates, pulling in hostile factions, anomaly bosses, and corrupted lore echoes.',
-    introText2: 'Recruit displaced heroes, build a three-unit strike team, and deploy through Smash, ATB RPG, or grid Tactics operations. Every stabilized breach weakens the Singularity Core.',
+    introText1: 'Commander, the Nexus has detected a multiversal wound: a living archive collapse where worlds are not erased, but rewritten into hostile breach coordinates.',
+    introText2: 'Recruit displaced heroes, preserve their origin lore, then recode them into three-unit strike teams. Every mission stabilizes a world-fragment and removes one layer of protection from the Singularity Core.',
     initButton: 'OPEN NEXUS CONTROL',
 
     hubTitle: 'NEXUS BREACH CONTROL',
@@ -104,8 +104,8 @@ export const translations = {
   fr: {
     title: 'BRECHE MULTIVERSELLE',
     subtitle: 'SYSTEME DE DEFENSE CROSSOVER',
-    introText1: 'Commandant, le Nexus a detecte une blessure multiverselle. Des portails s ouvrent sur des coordonnees instables et aspirent factions hostiles, boss d anomalie et fragments de lore corrompus.',
-    introText2: 'Recrute les heros deplaces, monte une escouade de trois unites et lance des operations Smash, RPG ATB ou Tactiques sur grille. Chaque breche stabilisee affaiblit le noyau Singularity.',
+    introText1: 'Commandant, le Nexus a detecte une blessure multiverselle: un effondrement d archives vivant ou les mondes ne sont pas effaces, mais reecrits en coordonnees de breche hostiles.',
+    introText2: 'Recrute les heros deplaces, preserve leur lore d origine, puis recode-les en escouades de trois unites. Chaque mission stabilise un fragment de monde et retire une couche de protection au noyau Singularity.',
     initButton: 'OUVRIR LE CONTROLE NEXUS',
 
     hubTitle: 'CONTROLE DES BRECHES NEXUS',

@@ -439,6 +439,7 @@ function App() {
       {/* Floating Language Switcher in bottom right */}
       <button
         onClick={toggleLanguage}
+        className="global-lang-control"
         style={{
           position: 'fixed',
           bottom: '15px',
@@ -459,7 +460,7 @@ function App() {
         🌐 {lang.toUpperCase()}
       </button>
 
-      <div style={{
+      <div className="global-save-controls" style={{
         position: 'fixed',
         bottom: '15px',
         left: '15px',
@@ -504,7 +505,7 @@ function App() {
             animation: 'spin 10s linear infinite'
           }} />
 
-          <div style={{ zIndex: 1, maxWidth: '650px', padding: '30px' }}>
+          <div className="intro-card" style={{ zIndex: 1, maxWidth: '780px', padding: '30px' }}>
             <h1 className="cyber-title" style={{
               fontSize: '40px',
               marginBottom: '10px',
@@ -517,7 +518,7 @@ function App() {
               {getTranslation(lang, 'subtitle')}
             </h3>
 
-            <div style={{
+            <div className="intro-lore-panel" style={{
               background: 'rgba(255, 255, 255, 0.03)',
               border: '1px solid rgba(57, 197, 187, 0.2)',
               borderRadius: '6px',
@@ -526,15 +527,51 @@ function App() {
               lineHeight: '22px',
               fontSize: '14px',
               color: '#ccc',
-              marginBottom: '40px',
+              marginBottom: '24px',
               boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
             }}>
+              <div className="intro-lore-kicker">
+                {lang === 'fr' ? 'Creation de profil Nexus' : 'Nexus profile creation'}
+              </div>
               <p style={{ marginTop: 0 }}>
                 {getTranslation(lang, 'introText1')}
               </p>
-              <p style={{ marginBottom: 0 }}>
+              <p>
                 {getTranslation(lang, 'introText2')}
               </p>
+              <p style={{ marginBottom: 0 }}>
+                {lang === 'fr'
+                  ? 'Ton profil n est pas un simple compte: c est une signature de commandement. Le Nexus l utilise pour retenir tes victoires, tes equipes, tes reliques et les mondes deja stabilises. Plus tard, cette meme signature pourra ouvrir la voie au multijoueur sans casser ta progression.'
+                  : 'Your profile is not just an account: it is a command signature. The Nexus uses it to retain your victories, teams, relics, and stabilized worlds. Later, that same signature can open multiplayer without breaking your progress.'}
+              </p>
+            </div>
+
+            <div className="intro-profile-grid">
+              {[
+                {
+                  title: lang === 'fr' ? '1. La blessure' : '1. The wound',
+                  text: lang === 'fr'
+                    ? 'La Singularity ne detruit pas les univers: elle vole leurs regles, leurs boss et leurs symboles pour les recomposer en breches jouables.'
+                    : 'The Singularity does not destroy universes: it steals their rules, bosses, and symbols to rebuild them as playable breaches.'
+                },
+                {
+                  title: lang === 'fr' ? '2. Les heros' : '2. The heroes',
+                  text: lang === 'fr'
+                    ? 'Chaque heros arrive avec deux couches de lore: son monde d origine, puis la facon dont le Nexus le recode pour Multiverse Breach.'
+                    : 'Each hero carries two lore layers: the origin world, then the way the Nexus recodes them for Multiverse Breach.'
+                },
+                {
+                  title: lang === 'fr' ? '3. Le commandant' : '3. The commander',
+                  text: lang === 'fr'
+                    ? 'Ton role est de choisir les equipes, stabiliser les mondes, assembler les reliques et empecher le noyau final d avaler les archives.'
+                    : 'Your role is to pick teams, stabilize worlds, assemble relics, and stop the final core from swallowing the archives.'
+                }
+              ].map(entry => (
+                <div className="intro-profile-step" key={entry.title}>
+                  <strong>{entry.title}</strong>
+                  <span>{entry.text}</span>
+                </div>
+              ))}
             </div>
 
             <button

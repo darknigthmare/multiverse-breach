@@ -870,9 +870,31 @@ export default function HubScreen({
       ? `Monde source indexe par le Nexus: ${selectedHero.universe}. Les archives locales restent partielles, mais la signature de ce personnage confirme une origine stable dans cette realite.`
       : `Source world indexed by the Nexus: ${selectedHero.universe}. Local archives remain partial, but this character signature confirms a stable origin in that reality.`
   );
+  const breachRoleLore = {
+    marine: {
+      fr: 'Le Nexus l emploie comme point d ancrage: encaisser le premier choc, tenir la ligne et permettre aux signatures plus fragiles de charger leurs pouvoirs.',
+      en: 'The Nexus uses this hero as an anchor: absorb the first impact, hold the line, and let more fragile signatures charge their powers.'
+    },
+    slayer: {
+      fr: 'Son recodage favorise les ruptures courtes et violentes: entrer dans la breche, casser le champion local, puis repartir avant que le decor ne se referme.',
+      en: 'The recode favors short violent ruptures: enter the breach, break the local champion, then leave before the scenery closes back in.'
+    },
+    horror: {
+      fr: 'Sa valeur vient de la survie narrative: quand une breche tente d imposer peur, infection ou fatalite, cette signature sait rester debout assez longtemps pour inverser la scene.',
+      en: 'The value comes from narrative survival: when a breach tries to impose fear, infection, or fate, this signature stays standing long enough to invert the scene.'
+    },
+    hacker: {
+      fr: 'Le Nexus le branche aux couches instables du code-realite: analyser les regles locales, ralentir les anomalies et transformer une incoherence de lore en avantage tactique.',
+      en: 'The Nexus plugs this hero into unstable code-reality layers: read local rules, slow anomalies, and turn lore inconsistency into tactical advantage.'
+    },
+    tactical: {
+      fr: 'Son profil sert de chef de coupe: lire le terrain, prioriser les cibles et faire fonctionner ensemble des heros qui ne devraient jamais partager le meme champ de bataille.',
+      en: 'The profile works as field command: read terrain, prioritize targets, and make heroes cooperate when they should never share the same battlefield.'
+    }
+  };
   const selectedBreachLore = lang === 'fr'
-    ? `${selectedHero.name} a ete extrait pendant une rupture de realite et recode comme operateur ${selectedHero.category}. Dans Multiverse Breach, sa specialite "${selectedHero.special?.name || selectedPlaque.role.fr}" sert a stabiliser les failles ${selectedHero.universe} et a convertir son mythe d origine en role jouable du Nexus.`
-    : `${selectedHero.name} was extracted during a reality rupture and recoded as a ${selectedHero.category} operator. In Multiverse Breach, the specialty "${selectedHero.special?.name || selectedPlaque.role.en}" stabilizes ${selectedHero.universe} breaches and turns the original myth into a playable Nexus role.`;
+    ? `${selectedHero.name} n a pas ete arrache a ${selectedHero.universe} par hasard. Sa signature a resiste assez longtemps a la Singularity pour que le Nexus en fasse un operateur ${selectedHero.category}. Dans notre lore, "${selectedHero.special?.name || selectedPlaque.role.fr}" n est pas seulement une competence: c est la maniere dont ce heros impose les lois de son monde d origine dans une breche qui tente de les corrompre. ${breachRoleLore[selectedHero.category]?.fr || breachRoleLore.tactical.fr}`
+    : `${selectedHero.name} was not pulled from ${selectedHero.universe} by chance. The signature resisted the Singularity long enough for the Nexus to rebuild it as a ${selectedHero.category} operator. In our lore, "${selectedHero.special?.name || selectedPlaque.role.en}" is not just a skill: it is the way this hero forces origin-world laws into a breach trying to corrupt them. ${breachRoleLore[selectedHero.category]?.en || breachRoleLore.tactical.en}`;
 
   const formatBoostText = (boost) => Object.keys(boost || {})
     .map(key => `+${boost[key]} ${key.toUpperCase()}`)
@@ -1162,7 +1184,7 @@ export default function HubScreen({
   const clearedVisibleCount = missionPool.filter(stage => completedStages.includes(stage.id)).length;
 
   return (
-    <div style={{
+    <div className="hub-screen" style={{
       minHeight: '100vh',
       background: 'radial-gradient(circle, #0e0722 0%, #03010b 100%)',
       color: '#fff',

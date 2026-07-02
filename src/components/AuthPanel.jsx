@@ -43,11 +43,7 @@ export default function AuthPanel({
   };
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: '15px',
-      right: '15px',
-      zIndex: 120,
+    <div className="auth-panel-shell" style={{
       width: open ? '280px' : 'auto',
       fontFamily: '"Share Tech Mono", monospace'
     }}>
