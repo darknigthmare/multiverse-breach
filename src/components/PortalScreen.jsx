@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HEROES_DB } from '../game/heroes';
 import sound from '../game/soundEngine';
-import { drawPixelSprite } from '../game/renderer';
+import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import { getTranslation } from '../game/translation';
 import { LORE_DB } from '../game/lore';
 import { getCharacterPlaque } from '../game/characterPlaques';
@@ -31,13 +31,36 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
     { id: 'movie', color: '#ff5b6e', label: { fr: 'Faille Films & Series', en: 'Movies & TV Rift' }, desc: { fr: 'Cinema/series hors focus specialise.', en: 'Movie and TV worlds outside specialized focus.' }, match: h => LORE_DB[h.universe]?.mediaType === 'movie' }
   ];
 
-  const pickHero = (ownedIds) => {
-    const banner = portalBanners.find(item => item.id === activeBanner) || portalBanners[0];
+  const bannerVisuals = {
+    multi: { universe: 'Matrix', mode: 'RPG', shape: 'omniverse', focusRate: 1, meta: { fr: 'Pool complet - ideal pour remplir la collection.', en: 'Full pool - best for filling the collection.' } },
+    scifi: { universe: 'Stargate', mode: 'RPG', shape: 'iris', focusRate: 0.7, meta: { fr: 'Marines sci-fi: PV, defense et reliques de front.', en: 'Sci-fi Marines: HP, defense, and frontline relics.' } },
+    xeno_yautja: { universe: 'Alien', mode: 'Smash', shape: 'hive', focusRate: 0.7, meta: { fr: 'Traque, acide et plasma pour equipes agressives.', en: 'Hunt, acid, and plasma for aggressive teams.' } },
+    horror: { universe: 'Silent Hill', mode: 'RPG', shape: 'sigil', focusRate: 0.7, meta: { fr: 'Controle, survie et pression de boss.', en: 'Control, survival, and boss pressure.' } },
+    cyber: { universe: 'The Matrix', mode: 'Tactics', shape: 'code', focusRate: 0.7, meta: { fr: 'Vitesse, glitches et tempo ATB.', en: 'Speed, glitches, and ATB tempo.' } },
+    arena: { universe: 'Yu-Gi-Oh', mode: 'Tactics', shape: 'duel', focusRate: 0.7, meta: { fr: 'Tactique, burst et reliques de precision.', en: 'Tactics, burst, and precision relics.' } },
+    arcade: { universe: 'Unreal', mode: 'Smash', shape: 'arena', focusRate: 0.7, meta: { fr: 'Complete les synergies Slayer/Tactique.', en: 'Completes Slayer/Tactical synergies.' } },
+    arcane: { universe: 'Harry Potter', mode: 'RPG', shape: 'rune', focusRate: 0.7, meta: { fr: 'Defense, magie et anomalies de controle.', en: 'Defense, magic, and control anomalies.' } },
+    manga: { universe: 'Yu-Gi-Oh', mode: 'Tactics', shape: 'card', focusRate: 0.7, meta: { fr: 'Pool large pour archetypes hybrides.', en: 'Wide pool for hybrid archetypes.' } },
+    music: { universe: 'Vocaloid', mode: 'Smash', shape: 'speaker', focusRate: 0.7, meta: { fr: 'Tempo, vitesse et buffs d equipe.', en: 'Tempo, speed, and squad buffs.' } },
+    movie: { universe: 'Star Wars', mode: 'Smash', shape: 'cinema', focusRate: 0.7, meta: { fr: 'Signature flexible pour collections de films.', en: 'Flexible signature for movie collections.' } }
+  };
+
+  const baseActiveBanner = portalBanners.find(item => item.id === activeBanner) || portalBanners[0];
+  const activeBannerData = { ...baseActiveBanner, ...(bannerVisuals[baseActiveBanner.id] || bannerVisuals.multi) };
+  const activeBannerHeroes = HEROES_DB.filter(hero => activeBannerData.match(hero));
+  const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
+  const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
+  const activeBackdrop = getOpenAiBackdropSrc(activeBannerData.universe, activeBannerData.mode);
+
+  const pickHero = (ownedIds, options = {}) => {
+    const banner = activeBannerData;
     const bannerPool = HEROES_DB.filter(hero => banner.match(hero));
     const otherPool = HEROES_DB.filter(hero => !banner.match(hero));
     let targetPool = HEROES_DB;
 
-    if (activeBanner !== 'multi' && Math.random() < 0.7) {
+    if (options.forceBanner && activeBanner !== 'multi' && bannerPool.length > 0) {
+      targetPool = bannerPool;
+    } else if (activeBanner !== 'multi' && Math.random() < banner.focusRate) {
       targetPool = bannerPool.length > 0 ? bannerPool : HEROES_DB;
     } else if (activeBanner !== 'multi') {
       targetPool = otherPool.length > 0 ? otherPool : HEROES_DB;
@@ -101,7 +124,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
       let shardsReturned = 0;
 
       for (let i = 0; i < 10; i++) {
-        const hero = pickHero(newUnlocked);
+        const hero = pickHero(newUnlocked, { forceBanner: i === 0 });
         const wasDuplicate = newUnlocked.includes(hero.id);
         batch.push({ hero, wasDuplicate });
 
@@ -127,6 +150,13 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
 
   const isDuplicate = Boolean(summonResult?.wasDuplicate);
   const summonedPlaque = summonedHero ? getCharacterPlaque(summonedHero) : null;
+  const focusPercent = Math.round((activeBannerData.focusRate || 1) * 100);
+  const bannerRateLine = activeBannerData.id === 'multi'
+    ? (lang === 'fr' ? 'Tous les heros ont le meme poids de faille.' : 'All heroes share the same rift weight.')
+    : (lang === 'fr' ? `${focusPercent}% de chance de viser ce booster. Invocation x10: premiere carte focus garantie.` : `${focusPercent}% chance to target this booster. x10 summon: first card guaranteed focus.`);
+  const portalBackground = activeBackdrop
+    ? `linear-gradient(180deg, rgba(4,2,10,0.55), rgba(4,2,10,0.92)), url(${activeBackdrop})`
+    : `radial-gradient(circle, ${activeBannerData.color}22 0%, #050209 72%)`;
 
   return (
     <div className="portal-container" style={{
@@ -136,7 +166,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
       flexDirection: 'column',
       alignItems: 'center',
       minHeight: '100vh',
-      background: 'radial-gradient(circle, #1a0f30 0%, #050209 100%)',
+      backgroundImage: portalBackground,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
       fontFamily: '"Share Tech Mono", monospace',
       width: '100%',
       boxSizing: 'border-box'
@@ -166,70 +198,82 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
       </p>
 
       {/* Banner Selectors */}
-      <div style={{ width: '100%', maxWidth: '800px', marginBottom: '25px', padding: '15px', background: 'rgba(255,255,255,0.02)', border: '1px solid #222' }}>
+      <div style={{ width: '100%', maxWidth: '1060px', marginBottom: '25px', padding: '15px', background: 'rgba(5,4,12,0.72)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', backdropFilter: 'blur(6px)' }}>
         <div style={{ fontSize: '11px', color: '#ffea00', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>
           {getTranslation(lang, 'bannerSelect')}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '8px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '10px' }}>
           {portalBanners.map(banner => {
+            const visual = bannerVisuals[banner.id] || bannerVisuals.multi;
+            const pack = { ...banner, ...visual };
             const bannerHeroes = HEROES_DB.filter(hero => banner.match(hero));
             const owned = bannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
+            const isActive = activeBanner === banner.id;
+            const packImage = getOpenAiBackdropSrc(pack.universe, pack.mode);
             return (
               <button
                 key={banner.id}
                 onClick={() => { setActiveBanner(banner.id); sound.playSfx('click'); }}
-                className={`btn-retro ${activeBanner === banner.id ? 'active-tab' : ''}`}
+                className={`portal-booster ${isActive ? 'selected' : ''}`}
                 style={{
-                  fontSize: '10px',
-                  padding: '7px',
-                  borderColor: activeBanner === banner.id ? banner.color : '#444',
-                  color: activeBanner === banner.id ? banner.color : '#aaa',
-                  textAlign: 'left'
+                  '--pack-color': banner.color,
+                  backgroundImage: packImage ? `linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.86)), url(${packImage})` : undefined
                 }}
               >
-                <span style={{ display: 'block', color: activeBanner === banner.id ? banner.color : '#fff' }}>{banner.label[lang]}</span>
-                <span style={{ display: 'block', color: '#888', fontSize: '8px', marginTop: '3px', lineHeight: 1.25 }}>{banner.desc[lang]}</span>
-                <span style={{ display: 'block', color: '#ffeb3b', fontSize: '8px', marginTop: '3px' }}>{owned}/{bannerHeroes.length}</span>
+                <span className="portal-booster-kicker">{pack.mode}</span>
+                <span className="portal-booster-title">{banner.label[lang]}</span>
+                <span className="portal-booster-desc">{banner.desc[lang]}</span>
+                <span className="portal-booster-meta">
+                  {owned}/{bannerHeroes.length} - {banner.id === 'multi' ? 'ALL' : `${Math.round(pack.focusRate * 100)}%`}
+                </span>
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* Portal Swirl Animation / Card Reveal */}
-      <div style={{
-        position: 'relative',
-        width: '240px',
-        height: '240px',
-        margin: '10px 0',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}>
+      <div className="portal-focus-panel" style={{ '--portal-color': activeBannerData.color }}>
+        <div className="portal-focus-info">
+          <div className="portal-focus-kicker">{activeBannerData.mode} / {activeBannerData.universe}</div>
+          <h2>{activeBannerData.label[lang]}</h2>
+          <p>{activeBannerData.meta[lang]}</p>
+          <div className="portal-focus-stats">
+            <span>{activeOwnedCount}/{activeBannerHeroes.length}</span>
+            <span>{activeMissingCount} {lang === 'fr' ? 'manquants' : 'missing'}</span>
+            <span>{activeBannerData.id === 'multi' ? 'FULL POOL' : `${focusPercent}% FOCUS`}</span>
+          </div>
+          <div className="portal-focus-rate">{bannerRateLine}</div>
+        </div>
+
+        {/* Portal Swirl Animation / Card Reveal */}
+        <div className="portal-core-stage">
         {summoning && (
-          <div className="portal-vortex" style={{
-            width: '100%',
-            height: '100%',
-            borderRadius: '50%',
-            border: '4px dashed #9b59b6',
-            boxShadow: '0 0 35px #9b59b6, inset 0 0 35px #9b59b6',
-            animation: 'spin 1.2s linear infinite'
-          }} />
+          <div
+            className={`portal-vortex portal-shape-${activeBannerData.shape}`}
+            style={{
+              '--portal-image': activeBackdrop ? `url(${activeBackdrop})` : 'none',
+              '--portal-color': activeBannerData.color
+            }}
+          />
         )}
 
         {!summoning && !showCard && (
-          <div style={{
-            width: '180px',
-            height: '180px',
+          <div className="portal-vortex idle" data-label={activeBannerData.label[lang]} style={{
+            width: '245px',
+            height: '245px',
             borderRadius: '50%',
-            background: 'rgba(155, 89, 182, 0.12)',
-            border: '2px dashed #9b59b6',
+            backgroundImage: activeBackdrop ? `linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.55)), url(${activeBackdrop})` : undefined,
+            backgroundColor: `${activeBannerData.color}22`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            border: `3px dashed ${activeBannerData.color}`,
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             cursor: breachShards >= cost ? 'pointer' : 'default',
-            boxShadow: breachShards >= cost ? '0 0 25px rgba(155, 89, 182, 0.4)' : 'none',
-            transition: 'all 0.3s ease'
+            boxShadow: breachShards >= cost ? `0 0 32px ${activeBannerData.color}99, inset 0 0 34px rgba(0,0,0,0.62)` : 'none',
+            transition: 'all 0.3s ease',
+            animation: 'portalBreath 2.8s ease-in-out infinite alternate'
           }}
           onClick={handleSummon}
           >
@@ -378,6 +422,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
             </div>
           </div>
         )}
+        </div>
       </div>
 
       <div style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
@@ -387,7 +432,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
               onClick={handleSummon}
               disabled={breachShards < cost}
               className={`btn-retro ${breachShards < cost ? 'btn-disabled' : ''}`}
-              style={{ fontSize: '13px', padding: '10px 20px', borderColor: '#9b59b6', color: '#fff', background: 'rgba(155, 89, 182, 0.15)' }}
+              style={{ fontSize: '13px', padding: '10px 20px', borderColor: activeBannerData.color, color: '#fff', background: `${activeBannerData.color}26` }}
             >
               {getTranslation(lang, 'costLabel')}
             </button>
@@ -397,7 +442,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
               className={`btn-retro ${breachShards < 450 ? 'btn-disabled' : ''}`}
               style={{ fontSize: '13px', padding: '10px 20px', borderColor: '#ffea00', color: '#fff', background: 'rgba(255, 234, 0, 0.15)' }}
             >
-              {getTranslation(lang, 'btnSummonTen')}
+              {getTranslation(lang, 'btnSummonTen')} {activeBannerData.id !== 'multi' ? (lang === 'fr' ? '+ FOCUS' : '+ FOCUS') : ''}
             </button>
           </>
         )}
