@@ -249,35 +249,35 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
         <div className="portal-core-stage">
         {summoning && (
           <div
-            className={`portal-vortex portal-shape-${activeBannerData.shape}`}
+            className={`portal-vortex summoning portal-shape-${activeBannerData.shape}`}
             style={{
               '--portal-image': activeBackdrop ? `url(${activeBackdrop})` : 'none',
               '--portal-color': activeBannerData.color
             }}
-          />
+          >
+            <span className="portal-energy portal-energy-back" />
+            <span className="portal-energy portal-energy-front" />
+            <span className="portal-fracture" />
+            <span className="portal-core" />
+          </div>
         )}
 
         {!summoning && !showCard && (
-          <div className="portal-vortex idle" data-label={activeBannerData.label[lang]} style={{
-            width: '245px',
-            height: '245px',
-            borderRadius: '50%',
-            backgroundImage: activeBackdrop ? `linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.55)), url(${activeBackdrop})` : undefined,
-            backgroundColor: `${activeBannerData.color}22`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            border: `3px dashed ${activeBannerData.color}`,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            cursor: breachShards >= cost ? 'pointer' : 'default',
-            boxShadow: breachShards >= cost ? `0 0 32px ${activeBannerData.color}99, inset 0 0 34px rgba(0,0,0,0.62)` : 'none',
-            transition: 'all 0.3s ease',
-            animation: 'portalBreath 2.8s ease-in-out infinite alternate'
-          }}
-          onClick={handleSummon}
+          <div
+            className={`portal-vortex idle portal-shape-${activeBannerData.shape}`}
+            data-label={activeBannerData.label[lang]}
+            style={{
+              '--portal-image': activeBackdrop ? `url(${activeBackdrop})` : 'none',
+              '--portal-color': activeBannerData.color,
+              cursor: breachShards >= cost ? 'pointer' : 'default',
+              opacity: breachShards >= cost ? 1 : 0.58
+            }}
+            onClick={handleSummon}
           >
-            <span style={{ fontSize: '48px', animation: 'bounce 2s infinite' }}>🌀</span>
+            <span className="portal-energy portal-energy-back" />
+            <span className="portal-energy portal-energy-front" />
+            <span className="portal-fracture" />
+            <span className="portal-core" />
           </div>
         )}
 
