@@ -117,16 +117,17 @@ export class ParticleSystem {
   }
 }
 
-export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1) => {
-  if (drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, 72, getHeroSpriteSheetSrc)) {
+export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72) => {
+  if (drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSrc)) {
     return;
   }
 
   const { primaryColor, secondaryColor, weaponType, weaponColor, id, state } = character;
+  const scaleFactor = targetHeight / 72;
   
   ctx.save();
   ctx.translate(x, y);
-  ctx.scale(facing, 1);
+  ctx.scale(facing * scaleFactor, scaleFactor);
 
   // Apply visual effect based on state
   let isDead = state === 'dead';

@@ -1807,12 +1807,20 @@ export default function HubScreen({
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '20px', marginTop: '15px' }}>
-                  <div style={{ background: '#04020a', height: '120px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <canvas id="detailCanvas" width="100" height="100" ref={(el) => {
+                  <div style={{
+                    background: '#04020a',
+                    minHeight: '170px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    border: `1px solid ${selectedHero.primaryColor}33`,
+                    overflow: 'hidden'
+                  }}>
+                    <canvas id="detailCanvas" width="210" height="160" style={{ width: '100%', maxWidth: '260px', height: '160px' }} ref={(el) => {
                       if (!el) return;
                       const ctx = el.getContext('2d');
-                      ctx.clearRect(0, 0, 100, 100);
-                      drawPixelSprite(ctx, 50, 70, selectedHero, 0, 1);
+                      ctx.clearRect(0, 0, 210, 160);
+                      drawPixelSprite(ctx, 105, 112, selectedHero, 0, 1, 132);
                     }} />
                   </div>
 
