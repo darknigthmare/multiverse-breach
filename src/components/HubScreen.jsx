@@ -187,7 +187,7 @@ export default function HubScreen({
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...FUSION_STAGES);
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...CHARACTER_STAGES);
-  const NORMAL_STAGE_COUNT = STAGES.filter(stage => stage.id !== 38).length;
+  const NORMAL_STAGE_COUNT = STAGES.filter(stage => stage.id !== 38 && !stage.characterArc).length;
   const TOTAL_UNIVERSE_COUNT = Object.keys(LORE_DB).length;
   const FINAL_STAGE_REQUIRED_CLEARS = Math.max(18, Math.ceil(NORMAL_STAGE_COUNT * 0.45));
   const META_RANK_THRESHOLDS = {

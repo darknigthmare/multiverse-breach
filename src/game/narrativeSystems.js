@@ -1,3 +1,5 @@
+import { HEROES_DB } from './heroes';
+
 export const ARC_CAMPAIGN_DETAILS = {
   xeno_yautja_war: {
     intro: { fr: 'A.R.C.A. detecte une coordonnee ou la chasse et la reproduction utilisent la meme faille.', en: 'A.R.C.A. detects coordinates where hunting and breeding use the same breach.' },
@@ -100,7 +102,7 @@ export const UNIVERSE_NARRATIVE_ARCS = [
   }
 ];
 
-export const CHARACTER_NARRATIVE_ARCS = [
+const CURATED_CHARACTER_NARRATIVE_ARCS = [
   {
     id: 'player_anchor',
     stageId: 9201,
@@ -331,6 +333,143 @@ export const CHARACTER_NARRATIVE_ARCS = [
   }
 ];
 
+const CATEGORY_ARC_PROFILE = {
+  marine: {
+    mode: 'Tactics',
+    boss: { fr: 'Champion de Frontiere', en: 'Frontier Champion' },
+    reward: { fr: 'Armure Nexus', en: 'Nexus Armor' },
+    color: '#63d7ff',
+    role: {
+      fr: 'tenir la ligne, encaisser la premiere vague et transformer une guerre locale en victoire d escouade',
+      en: 'hold the line, absorb the first wave, and turn a local war into a squad victory'
+    }
+  },
+  tactical: {
+    mode: 'Tactics',
+    boss: { fr: 'Strategie Miroir', en: 'Mirror Strategy' },
+    reward: { fr: 'Dossier Tactique Nexus', en: 'Nexus Tactical File' },
+    color: '#f6f1d1',
+    role: {
+      fr: 'lire le terrain, choisir la bonne cible et faire tenir ensemble des allies impossibles',
+      en: 'read the field, choose the right target, and make impossible allies hold together'
+    }
+  },
+  hacker: {
+    mode: 'RPG',
+    boss: { fr: 'Noyau de Code Fantome', en: 'Ghost Code Core' },
+    reward: { fr: 'Interface Nexus', en: 'Nexus Interface' },
+    color: '#41ffac',
+    role: {
+      fr: 'comprendre les regles cachees de la Trame et retourner une anomalie contre elle-meme',
+      en: 'understand hidden Thread rules and turn an anomaly against itself'
+    }
+  },
+  slayer: {
+    mode: 'Smash',
+    boss: { fr: 'Duelliste Sans-Auteur', en: 'Authorless Duelist' },
+    reward: { fr: 'Marque de Chasseur Nexus', en: 'Nexus Hunter Mark' },
+    color: '#e74c3c',
+    role: {
+      fr: 'rompre la ligne ennemie, provoquer le champion local et finir la scene avant qu elle ne se referme',
+      en: 'break the enemy line, provoke the local champion, and finish the scene before it closes'
+    }
+  },
+  horror: {
+    mode: 'RPG',
+    boss: { fr: 'Peur d Origine', en: 'Origin Fear' },
+    reward: { fr: 'Talisman de Survie Nexus', en: 'Nexus Survival Talisman' },
+    color: '#cbd8c8',
+    role: {
+      fr: 'survivre au script de peur, proteger les derniers temoins et donner un nom au cauchemar',
+      en: 'survive the fear script, protect the last witnesses, and give the nightmare a name'
+    }
+  }
+};
+
+const slugifyArcId = (value) => String(value)
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '_')
+  .replace(/^_+|_+$/g, '');
+
+const getCharacterArcProfile = (hero) => CATEGORY_ARC_PROFILE[hero.category] || CATEGORY_ARC_PROFILE.tactical;
+
+const CURATED_CHARACTER_HERO_IDS = new Set(CURATED_CHARACTER_NARRATIVE_ARCS.map(arc => arc.heroId));
+
+const GENERATED_CHARACTER_NARRATIVE_ARCS = HEROES_DB
+  .filter(hero => !CURATED_CHARACTER_HERO_IDS.has(hero.id))
+  .map((hero, index) => {
+    const profile = getCharacterArcProfile(hero);
+    const slug = slugifyArcId(hero.id);
+    const specialName = hero.special?.name || hero.secondary?.name || hero.simple?.name || hero.weaponType || hero.category;
+    const levelUnlock = index % 2 === 0;
+    return {
+      id: `${slug}_personal_thread`,
+      stageId: 9300 + index,
+      heroId: hero.id,
+      title: { fr: `Arc Personnage - ${hero.name}`, en: `Character Arc - ${hero.name}` },
+      mode: profile.mode,
+      difficulty: 'Personal',
+      bossName: `${profile.boss.fr} - ${hero.universe}`,
+      unlock: levelUnlock
+        ? { type: 'level', value: 2 + (index % 4) }
+        : { type: 'clears', value: 2 + (index % 10) },
+      intro: {
+        fr: `${hero.name} arrive depuis ${hero.universe} avec une signature que le Nexus ne peut pas copier sans la comprendre. Son arc personnel sert a ${profile.role.fr}.`,
+        en: `${hero.name} arrives from ${hero.universe} with a signature the Nexus cannot copy without understanding it. This personal arc is about how they ${profile.role.en}.`
+      },
+      missions: [
+        {
+          fr: `Stabiliser la signature ${hero.universe} de ${hero.name} avant qu elle ne devienne une simple donnee d archive.`,
+          en: `Stabilize ${hero.name}'s ${hero.universe} signature before it becomes a simple archive record.`
+        },
+        {
+          fr: `Transformer "${specialName}" en protocole anti-breche compatible avec une escouade multivers.`,
+          en: `Turn "${specialName}" into an anti-breach protocol compatible with a multiverse squad.`
+        },
+        {
+          fr: `Vaincre ${profile.boss.fr} pour prouver que ${hero.name} reste fidele a son lore meme dans la Compression de Resonance.`,
+          en: `Defeat the ${profile.boss.en} to prove ${hero.name} stays true to their lore even inside Resonance Compression.`
+        }
+      ],
+      outro: {
+        fr: `${hero.name} garde sa memoire de ${hero.universe}, mais gagne une fonction claire dans Breach Multiverse.`,
+        en: `${hero.name} keeps their ${hero.universe} memory, but gains a clear function inside Breach Multiverse.`
+      },
+      reward: {
+        fr: `Skin ${hero.name} Nexus + ${profile.reward.fr}`,
+        en: `${hero.name} Nexus Skin + ${profile.reward.en}`
+      },
+      rewardItemId: `char_auto_${slug}_nexus`
+    };
+  });
+
+export const CHARACTER_NARRATIVE_ARCS = [
+  ...CURATED_CHARACTER_NARRATIVE_ARCS,
+  ...GENERATED_CHARACTER_NARRATIVE_ARCS
+];
+
+const GENERATED_CHARACTER_SKINS = Object.fromEntries(
+  GENERATED_CHARACTER_NARRATIVE_ARCS.map(arc => {
+    const hero = HEROES_DB.find(item => item.id === arc.heroId);
+    const profile = getCharacterArcProfile(hero || {});
+    return [
+      arc.rewardItemId,
+      {
+        id: arc.rewardItemId,
+        heroId: arc.heroId,
+        name: {
+          fr: `${hero?.name || arc.heroId} Nexus`,
+          en: `${hero?.name || arc.heroId} Nexus`
+        },
+        colors: {
+          primaryColor: hero?.primaryColor || profile.color,
+          secondaryColor: hero?.secondaryColor || profile.color
+        }
+      }
+    ];
+  })
+);
+
 export const SKIN_CATALOG = {
   default: {
     id: 'default',
@@ -409,6 +548,7 @@ export const SKIN_CATALOG = {
     name: { fr: 'Brigade Nexus', en: 'Nexus Squad' },
     colors: { primaryColor: '#2f75b5', secondaryColor: '#f6f1d1' }
   },
+  ...GENERATED_CHARACTER_SKINS,
   arc_scifi_skin_atrium_bulwark: {
     id: 'arc_scifi_skin_atrium_bulwark',
     name: { fr: 'Rempart Atrium', en: 'Atrium Bulwark' },
