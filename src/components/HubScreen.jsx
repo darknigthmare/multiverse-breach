@@ -6,6 +6,7 @@ import sound from '../game/soundEngine';
 import { LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages } from '../game/expandedUniverses';
+import { getCharacterPlaque } from '../game/characterPlaques';
 
 export default function HubScreen({
   lang,
@@ -862,6 +863,7 @@ export default function HubScreen({
 
   const selectedHero = HEROES_DB.find(h => h.id === selectedHeroId) || HEROES_DB[0];
   const selectedHeroStats = getHeroStats(selectedHero);
+  const selectedPlaque = getCharacterPlaque(selectedHero);
 
   // Filter items in inventory
   const getGearInInventory = () => {
@@ -1747,6 +1749,7 @@ export default function HubScreen({
                   const isSelected = hero.id === selectedHeroId;
                   const isActive = activeTeam.includes(hero.id);
                   const lvl = heroLevels[hero.id] || 1;
+                  const plaque = getCharacterPlaque(hero);
                   return (
                     <div
                       key={hero.id}
@@ -1759,14 +1762,18 @@ export default function HubScreen({
                         cursor: 'pointer',
                         display: 'flex',
                         justifyContent: 'space-between',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        gap: '10px'
                       }}
                     >
-                      <div>
-                        <div style={{ fontWeight: 'bold', fontSize: '13px' }}>{hero.name}</div>
-                        <span style={{ fontSize: '10px', color: '#888' }}>{hero.universe}</span>
+                      <div style={{ minWidth: 0 }}>
+                        <div style={{ fontSize: '9px', color: hero.primaryColor, fontWeight: 'bold', letterSpacing: '0.08em' }}>
+                          {plaque.clearance} / {hero.universe}
+                        </div>
+                        <div style={{ fontWeight: 'bold', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{hero.name}</div>
+                        <span style={{ fontSize: '10px', color: '#888' }}>{plaque.role[lang]}</span>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
+                      <div style={{ textAlign: 'right', flexShrink: 0 }}>
                         <div style={{ fontSize: '11px', color: '#39c5bb' }}>LVL {lvl}</div>
                         {isActive && <span style={{ fontSize: '8px', color: '#2ecc71' }}>● {getTranslation(lang, 'activeLabel')}</span>}
                       </div>
@@ -1779,12 +1786,20 @@ export default function HubScreen({
             {/* Details */}
             {selectedHero && (
               <div className="glass-panel" style={{ padding: '20px', border: `2px solid ${selectedHero.primaryColor}` }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'flex-start' }}>
                   <div>
-                    <h2 style={{ margin: 0, fontSize: '22px' }}>{selectedHero.name}</h2>
-                    <span style={{ fontSize: '11px', padding: '2px 8px', background: selectedHero.primaryColor, borderRadius: '3px', marginTop: '4px', display: 'inline-block' }}>
-                      {selectedHero.universe}
-                    </span>
+                    <div style={{ fontSize: '10px', color: selectedHero.primaryColor, fontWeight: 'bold', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+                      {selectedPlaque.clearance} / {selectedPlaque.rank[lang]}
+                    </div>
+                    <h2 style={{ margin: '2px 0 0 0', fontSize: '22px' }}>{selectedHero.name}</h2>
+                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '6px' }}>
+                      <span style={{ fontSize: '11px', padding: '2px 8px', background: selectedHero.primaryColor, borderRadius: '3px', display: 'inline-block' }}>
+                        {selectedHero.universe}
+                      </span>
+                      <span style={{ fontSize: '11px', padding: '2px 8px', border: '1px solid rgba(255,255,255,0.16)', borderRadius: '3px', color: '#bbb' }}>
+                        {selectedPlaque.role[lang]}
+                      </span>
+                    </div>
                   </div>
                   <div style={{ fontSize: '18px', color: '#39c5bb', fontWeight: 'bold' }}>
                     {getTranslation(lang, 'levelLabel')} {heroLevels[selectedHero.id] || 1}
@@ -1802,6 +1817,14 @@ export default function HubScreen({
                   </div>
 
                   <div>
+                    <div style={{ marginBottom: '10px', padding: '10px', border: `1px solid ${selectedHero.primaryColor}55`, background: `${selectedHero.primaryColor}10`, borderRadius: '4px' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '4px 10px', fontSize: '11px', lineHeight: 1.35 }}>
+                        <span style={{ color: '#777', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Indicatif' : 'Callsign'}</span>
+                        <strong style={{ color: '#fff' }}>{selectedPlaque.callSign}</strong>
+                        <span style={{ color: '#777', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Origine' : 'Origin'}</span>
+                        <span style={{ color: '#bbb' }}>{selectedPlaque.origin[lang]}</span>
+                      </div>
+                    </div>
                     <h4 style={{ margin: '0 0 8px 0', borderBottom: '1px solid #333', paddingBottom: '3px' }}>{getTranslation(lang, 'attributes')}</h4>
                     <div style={{ fontSize: '13px', lineHeight: '22px' }}>
                       <div>MAX HP: <strong style={{ color: '#2ecc71', float: 'right' }}>{selectedHeroStats.hp}</strong></div>
@@ -1833,6 +1856,32 @@ export default function HubScreen({
                     >
                       {getTranslation(lang, 'btnUsePotion')} (🌀 20)
                     </button>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: '15px', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '12px' }}>
+                  <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
+                    <div style={{ fontSize: '10px', color: selectedHero.primaryColor, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
+                      {lang === 'fr' ? 'Plaquette de personnage' : 'Character plaque'}
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#d8d8d8', lineHeight: 1.45 }}>
+                      {selectedPlaque.dossier[lang]}
+                    </div>
+                  </div>
+                  <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
+                    <div style={{ fontSize: '10px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
+                      {lang === 'fr' ? 'Doctrine BP' : 'BP Doctrine'}
+                    </div>
+                    <div style={{ fontSize: '11px', color: '#bbb', lineHeight: 1.4, marginBottom: '8px' }}>
+                      {selectedPlaque.doctrine[lang]}
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
+                      {selectedPlaque.tags.map(tag => (
+                        <span key={tag} style={{ fontSize: '9px', padding: '2px 6px', border: `1px solid ${selectedHero.primaryColor}66`, color: '#ddd', borderRadius: '3px', background: `${selectedHero.primaryColor}12` }}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
 

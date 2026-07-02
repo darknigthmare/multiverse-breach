@@ -4,6 +4,7 @@ import sound from '../game/soundEngine';
 import { drawPixelSprite } from '../game/renderer';
 import { getTranslation } from '../game/translation';
 import { LORE_DB } from '../game/lore';
+import { getCharacterPlaque } from '../game/characterPlaques';
 
 export default function PortalScreen({ lang, breachShards, setBreachShards, unlockedHeroes, setUnlockedHeroes, onBack }) {
   const [summoning, setSummoning] = useState(false);
@@ -125,6 +126,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
   };
 
   const isDuplicate = Boolean(summonResult?.wasDuplicate);
+  const summonedPlaque = summonedHero ? getCharacterPlaque(summonedHero) : null;
 
   return (
     <div className="portal-container" style={{
@@ -263,6 +265,14 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
             }}>
               {summonedHero.universe}
             </div>
+            {summonedPlaque && (
+              <div style={{ margin: '0 0 10px 0', fontSize: '10px', lineHeight: 1.35, color: '#bbb' }}>
+                <div style={{ color: summonedHero.primaryColor, fontWeight: 'bold', letterSpacing: '0.08em' }}>
+                  {summonedPlaque.clearance} / {summonedPlaque.rank[lang]}
+                </div>
+                <div>{summonedPlaque.role[lang]}</div>
+              </div>
+            )}
 
             {/* Micro canvas previewing character sprite */}
             <div style={{
@@ -289,6 +299,11 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
               <div>DEFENSE: <span style={{ color: '#3498db', float: 'right' }}>{summonedHero.stats.def}</span></div>
               <div>SPEED: <span style={{ color: '#f1c40f', float: 'right' }}>{summonedHero.stats.spd}</span></div>
             </div>
+            {summonedPlaque && (
+              <div style={{ textAlign: 'left', fontSize: '10px', color: '#aaa', lineHeight: 1.35, borderTop: '1px solid #222', paddingTop: '8px' }}>
+                {summonedPlaque.doctrine[lang]}
+              </div>
+            )}
 
             {isDuplicate && (
               <div style={{ color: '#ffeb3b', fontSize: '10px', marginTop: '6px' }}>
@@ -316,6 +331,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px' }}>
               {summonedBatch.map((entry, idx) => {
                 const hero = entry.hero || entry;
+                const plaque = getCharacterPlaque(hero);
                 return (
                   <div key={idx} style={{
                     background: 'rgba(255,255,255,0.02)',
@@ -329,7 +345,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
                       {hero.name}
                     </div>
                     <div style={{ fontSize: '8px', color: '#888', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {hero.universe}
+                      {plaque.clearance}
                     </div>
                     <div style={{ fontSize: '8px', color: entry.wasDuplicate ? '#ffeb3b' : '#2ecc71', marginTop: '2px' }}>
                       {entry.wasDuplicate ? (lang === 'fr' ? 'DOUBLE +25' : 'DUPLICATE +25') : (lang === 'fr' ? 'NOUVEAU' : 'NEW')}
