@@ -767,6 +767,470 @@ export const EXPANDED_UNIVERSES = [
     ],
     event: ['evt_hazbin_redemption', 'Redemption Refrain', 'Refrain de redemption', 'A cabaret burst heals allies and fears demonic enemies.', 'Un numero de cabaret soigne les allies et effraie les demons.'],
     decor: { sky: ['#34111b', '#070204'], floor: 'rgba(206, 45, 83, 0.18)', grid: 'rgba(255, 211, 92, 0.28)', motif: 'circus', accent: '#ffd35c' }
+  },
+  {
+    universe: 'Splice',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    stageName: 'Nucleic Exchange Lab',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    bossName: 'Dren Chimera',
+    title: { en: 'Splice', fr: 'Splice' },
+    desc: {
+      en: 'A genetic engineering breach where ambition, biotech patents, and hybrid lifeforms mutate beyond control.',
+      fr: 'Une breche de genie genetique ou ambition, brevets biotech et hybrides echappent au controle.'
+    },
+    hero: { id: 'elsa_splice', name: 'Elsa Kast', cat: 'hacker', color: '#8ed6d3' },
+    allies: [
+      { id: 'clive_splice', name: 'Clive Nicoli', cat: 'tactical', color: '#4d7f8c' },
+      { id: 'dren_splice', name: 'Dren', cat: 'slayer', color: '#b8d9c0' }
+    ],
+    monsters: ['Specimen Pod', 'Nucleic Larva', 'Lab Security Drone'],
+    bosses: ['Ginger Mutation', 'Hybrid Containment Breach'],
+    worldBoss: 'Dren Chimera',
+    gear: [
+      ['splice_gene_vial', 'Hybrid Gene Vial', 'Fiole gene hybride', { atk: 9, spd: 1 }],
+      ['splice_lab_badge', 'Nucleic Lab Badge', 'Badge labo Nucleic', { def: 6, hp: 55 }],
+      ['splice_sample_case', 'Cryo Sample Case', 'Mallette cryo', { hp: 80 }]
+    ],
+    event: ['evt_splice_chimera', 'Chimera Growth Shock', 'Choc de croissance chimere', 'A hybrid pulse mutates enemies, slowing them and cutting defense.', 'Une onde hybride ralentit les ennemis et brise leur defense.'],
+    decor: { sky: ['#172d32', '#03080a'], floor: 'rgba(105, 190, 184, 0.17)', grid: 'rgba(142, 214, 211, 0.3)', motif: 'facility', accent: '#8ed6d3' }
+  },
+  {
+    universe: 'Police Squad',
+    mediaType: 'movie',
+    faction: 'cyber',
+    stageName: 'Police Squad Evidence Room',
+    mode: 'Tactics',
+    difficulty: 'Medium',
+    bossName: 'Frame-Up Commissioner',
+    title: { en: 'Police Squad!', fr: 'Police Squad!' },
+    desc: {
+      en: 'A deadpan police procedural breach where Frank Drebin turns absurd evidence into tactical chaos.',
+      fr: 'Une breche de procedural policier absurde ou Frank Drebin transforme les preuves en chaos tactique.'
+    },
+    hero: { id: 'frank_drebin', name: 'Frank Drebin', cat: 'tactical', color: '#2f75b5' },
+    allies: [
+      { id: 'ed_hocken', name: 'Ed Hocken', cat: 'marine', color: '#5d6d7e' },
+      { id: 'nordberg', name: 'Nordberg', cat: 'hacker', color: '#f1c40f' }
+    ],
+    monsters: ['Confused Henchman', 'Evidence Clerk Drone', 'Misdirected Sniper'],
+    bosses: ['Hypnotized Umpire', 'Frame-Up Commissioner'],
+    worldBoss: 'Deadpan Crime Nexus',
+    gear: [
+      ['drebin_badge', 'Drebin Badge', 'Plaque Drebin', { def: 7, spd: 1 }],
+      ['squad_micro_recorder', 'Hidden Wire Recorder', 'Micro cache', { atk: 7, def: 4 }],
+      ['squad_coffee_cup', 'Stakeout Coffee', 'Cafe de planque', { hp: 70 }]
+    ],
+    event: ['evt_drebin_misfire', 'Accidental Perfect Arrest', 'Arrestation accidentelle parfaite', 'A chain of mistakes stuns enemies and buffs squad evasion.', 'Une chaine de maladresses etourdit les ennemis et booste l esquive.'],
+    decor: { sky: ['#1c2b3a', '#04070b'], floor: 'rgba(47, 117, 181, 0.16)', grid: 'rgba(241, 196, 15, 0.28)', motif: 'facility', accent: '#2f75b5' }
+  },
+  {
+    universe: 'Breaking Bad',
+    mediaType: 'movie',
+    faction: 'cyber',
+    stageName: 'Albuquerque Lab Breach',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    bossName: 'Heisenberg Empire',
+    title: { en: 'Breaking Bad', fr: 'Breaking Bad' },
+    desc: {
+      en: 'A criminal chemistry breach of desert strategy, blue product, cartel pressure, and collapsing identities.',
+      fr: 'Une breche de chimie criminelle, strategie desertique, produit bleu et identites qui s effondrent.'
+    },
+    hero: { id: 'walter_white', name: 'Walter White', cat: 'hacker', color: '#5c8a43' },
+    allies: [
+      { id: 'jesse_pinkman', name: 'Jesse Pinkman', cat: 'slayer', color: '#f1c40f' },
+      { id: 'mike_ehrmantraut', name: 'Mike Ehrmantraut', cat: 'tactical', color: '#7f8c8d' }
+    ],
+    monsters: ['Cartel Runner', 'Lab Guard', 'Desert Informant'],
+    bosses: ['Tuco Salamanca', 'Gus Fring Operation'],
+    worldBoss: 'Heisenberg Empire',
+    gear: [
+      ['bb_blue_sample', 'Blue Crystal Sample', 'Echantillon bleu', { atk: 10 }],
+      ['bb_hazmat_suit', 'Yellow Hazmat Suit', 'Combinaison jaune', { def: 7, hp: 45 }],
+      ['bb_rv_keys', 'Desert RV Keys', 'Cles du camping-car', { spd: 2, hp: 35 }]
+    ],
+    event: ['evt_bb_say_my_name', 'Say My Name', 'Say My Name', 'Heisenberg pressure fears enemies and boosts tactical damage.', 'La pression Heisenberg effraie les ennemis et booste les degats tactiques.'],
+    decor: { sky: ['#463a20', '#090603'], floor: 'rgba(210, 175, 80, 0.17)', grid: 'rgba(92, 138, 67, 0.32)', motif: 'portalgarage', accent: '#d2af50' }
+  },
+  {
+    universe: 'Stargate Atlantis',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    stageName: 'Atlantis City Shield',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    bossName: 'Wraith Hive Ship',
+    title: { en: 'Stargate Atlantis', fr: 'Stargate Atlantis' },
+    desc: {
+      en: 'The Pegasus expedition defends an Ancient city against Wraith hives, Replicators, and unstable ZPM power.',
+      fr: 'L expedition Pegasus defend une cite Ancienne contre ruches Wraith, Replicateurs et ZPM instables.'
+    },
+    hero: { id: 'sheppard_sga', name: 'John Sheppard', cat: 'marine', color: '#4e89b8' },
+    allies: [
+      { id: 'mckay_sga', name: 'Rodney McKay', cat: 'hacker', color: '#f1c40f' },
+      { id: 'teyla_sga', name: 'Teyla Emmagan', cat: 'tactical', color: '#7d6b4f' }
+    ],
+    monsters: ['Wraith Drone', 'Genii Saboteur', 'Replicator Probe'],
+    bosses: ['Michael Hybrid', 'Wraith Queen'],
+    worldBoss: 'Wraith Hive Ship',
+    gear: [
+      ['sga_zpm', 'ZPM Charge', 'Charge ZPM', { atk: 9, hp: 60 }],
+      ['sga_lantean_tablet', 'Lantean Tablet', 'Tablette lanteenne', { def: 6, spd: 1 }],
+      ['sga_puddle_jumper', 'Puddle Jumper Beacon', 'Balise jumper', { spd: 2, atk: 5 }]
+    ],
+    event: ['evt_sga_city_shield', 'Atlantis City Shield', 'Bouclier de la cite Atlantis', 'The city shield absorbs damage and fires drone weapons.', 'Le bouclier de la cite absorbe les degats et tire des drones.'],
+    decor: { sky: ['#12324a', '#02070c'], floor: 'rgba(80, 176, 220, 0.18)', grid: 'rgba(110, 208, 255, 0.34)', motif: 'stargate', accent: '#6ed0ff' }
+  },
+  {
+    universe: 'Stargate Universe',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    stageName: 'Destiny FTL Corridor',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    bossName: 'Destiny Control Lockout',
+    title: { en: 'Stargate Universe', fr: 'Stargate Universe' },
+    desc: {
+      en: 'A stranded crew aboard Destiny, rationing power, air, trust, and Ancient systems at the edge of galaxies.',
+      fr: 'Un equipage piege sur Destiny, economisant energie, air, confiance et systemes Anciens.'
+    },
+    hero: { id: 'rush_sgu', name: 'Nicholas Rush', cat: 'hacker', color: '#8d6e63' },
+    allies: [
+      { id: 'young_sgu', name: 'Everett Young', cat: 'tactical', color: '#536d7a' },
+      { id: 'greer_sgu', name: 'Ronald Greer', cat: 'marine', color: '#2f4f4f' }
+    ],
+    monsters: ['Lucian Raider', 'Drone Command Ship', 'Destiny System Fault'],
+    bosses: ['Blue Alien Boarding Team', 'Ancient Chair Lockout'],
+    worldBoss: 'Destiny Control Lockout',
+    gear: [
+      ['sgu_communication_stone', 'Communication Stone', 'Pierre de communication', { def: 5, spd: 2 }],
+      ['sgu_destiny_console', 'Destiny Console Core', 'Console de Destiny', { atk: 8, def: 5 }],
+      ['sgu_air_filter', 'Emergency Air Filter', 'Filtre a air urgence', { hp: 95 }]
+    ],
+    event: ['evt_sgu_ftl_jump', 'Emergency FTL Jump', 'Saut FTL urgence', 'Destiny jumps through the battlefield, scrambling enemy targeting.', 'Destiny saute en FTL et brouille le ciblage ennemi.'],
+    decor: { sky: ['#2a2118', '#060403'], floor: 'rgba(168, 115, 59, 0.18)', grid: 'rgba(255, 173, 79, 0.28)', motif: 'shipdeck', accent: '#ffad4f' }
+  },
+  {
+    universe: 'Stargate Infinity',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    stageName: 'Infinity Training Gate',
+    mode: 'Smash',
+    difficulty: 'Medium',
+    bossName: 'TlakKahn Pursuit Fleet',
+    title: { en: 'Stargate Infinity', fr: 'Stargate Infinity' },
+    desc: {
+      en: 'Animated Stargate cadets chased through alien worlds by TlakKahn hunters and unstable gate routes.',
+      fr: 'Des cadets Stargate animes poursuivis par les TlakKahn a travers des routes de portes instables.'
+    },
+    hero: { id: 'gus_bonner', name: 'Gus Bonner', cat: 'tactical', color: '#3b7ddd' },
+    allies: [
+      { id: 'stacey_bonner', name: 'Stacey Bonner', cat: 'hacker', color: '#9b59b6' },
+      { id: 'ecgab_infinity', name: 'Ecgab', cat: 'marine', color: '#27ae60' }
+    ],
+    monsters: ['TlakKahn Trooper', 'Training Drone', 'Gate Route Parasite'],
+    bosses: ['DaKyll Hunter', 'Infinity Gate Storm'],
+    worldBoss: 'TlakKahn Pursuit Fleet',
+    gear: [
+      ['sgi_cadet_gdo', 'Cadet GDO', 'GDO cadet', { def: 6, hp: 40 }],
+      ['sgi_training_blaster', 'Training Blaster', 'Blaster entrainement', { atk: 8 }],
+      ['sgi_gate_map', 'Animated Gate Map', 'Carte de portes animee', { spd: 2, def: 3 }]
+    ],
+    event: ['evt_sgi_gate_dash', 'Infinity Gate Dash', 'Dash porte Infinity', 'A rapid gate hop dodges attacks and strikes every lane.', 'Un saut de porte rapide esquive et frappe chaque ligne.'],
+    decor: { sky: ['#1b315c', '#040710'], floor: 'rgba(68, 130, 220, 0.17)', grid: 'rgba(120, 240, 190, 0.28)', motif: 'stargate', accent: '#78f0be' }
+  },
+  {
+    universe: 'The Brave Little Toaster',
+    mediaType: 'movie',
+    faction: 'cyber',
+    stageName: 'Appliance Junkyard Run',
+    mode: 'Smash',
+    difficulty: 'Medium',
+    bossName: 'Junkyard Magnet',
+    title: { en: 'The Brave Little Toaster', fr: 'Le Petit Grille-Pain courageux' },
+    desc: {
+      en: 'A bittersweet appliance odyssey where loyal machines cross hostile roads, repair shops, and junkyards.',
+      fr: 'Une odyssee douce-amere d appareils fideles traversant routes, ateliers et decharges hostiles.'
+    },
+    hero: { id: 'toaster_brave', name: 'Toaster', cat: 'slayer', color: '#dfe6e9' },
+    allies: [
+      { id: 'lampy_brave', name: 'Lampy', cat: 'hacker', color: '#f1c40f' },
+      { id: 'kirby_brave', name: 'Kirby', cat: 'marine', color: '#8e5b3a' }
+    ],
+    monsters: ['Repair Shop Clamp', 'Junkyard Crusher', 'Storm Drain Spark'],
+    bosses: ['Air Conditioner Rage', 'Giant Magnet Arm'],
+    worldBoss: 'Junkyard Magnet',
+    gear: [
+      ['toaster_chrome_slot', 'Chrome Toast Slot', 'Fente chrome', { def: 7 }],
+      ['lampy_bulb', 'Lampy Bulb', 'Ampoule Lampy', { atk: 7, spd: 1 }],
+      ['kirby_vacuum_bag', 'Kirby Vacuum Bag', 'Sac aspirateur Kirby', { hp: 85 }]
+    ],
+    event: ['evt_toaster_spark', 'Appliance Loyalty Surge', 'Surtension de loyauté', 'The appliance squad sparks the field and shields allies.', 'Les appareils creent une surtension et protegent les allies.'],
+    decor: { sky: ['#27313a', '#050608'], floor: 'rgba(190, 160, 105, 0.17)', grid: 'rgba(241, 196, 15, 0.28)', motif: 'toyfactory', accent: '#f1c40f' }
+  },
+  {
+    universe: 'Evolution',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    stageName: 'Arizona Meteor Lab',
+    mode: 'RPG',
+    difficulty: 'Medium',
+    bossName: 'Rapid Evolution Colony',
+    title: { en: 'Evolution', fr: 'Evolution' },
+    desc: {
+      en: 'A meteor-borne alien ecosystem evolves at impossible speed, turning science, shampoo, and panic into weapons.',
+      fr: 'Un ecosysteme alien venu d une meteorite evolue a vitesse impossible entre science, shampooing et panique.'
+    },
+    hero: { id: 'ira_kane', name: 'Ira Kane', cat: 'hacker', color: '#6ab04c' },
+    allies: [
+      { id: 'harry_block', name: 'Harry Block', cat: 'tactical', color: '#3498db' },
+      { id: 'wayne_green', name: 'Wayne Grey', cat: 'marine', color: '#e67e22' }
+    ],
+    monsters: ['Flatworm Specimen', 'Flying Alien Drake', 'Cave Primate Mutant'],
+    bosses: ['Selenium Burst Nest', 'Giant Amoeba Growth'],
+    worldBoss: 'Rapid Evolution Colony',
+    gear: [
+      ['evo_selenium_shampoo', 'Selenium Shampoo', 'Shampooing selenium', { atk: 10 }],
+      ['evo_meteor_chip', 'Meteorite Core Chip', 'Fragment meteorite', { hp: 65, def: 4 }],
+      ['evo_lab_spray', 'Lab Decon Sprayer', 'Pulverisateur decontamination', { def: 6, spd: 1 }]
+    ],
+    event: ['evt_evo_selenium', 'Selenium Cascade', 'Cascade de selenium', 'A selenium burst burns alien cells and cleanses the squad.', 'Une vague de selenium brule les cellules aliens et purifie l escouade.'],
+    decor: { sky: ['#2b4631', '#050904'], floor: 'rgba(116, 170, 76, 0.16)', grid: 'rgba(106, 176, 76, 0.32)', motif: 'facility', accent: '#6ab04c' }
+  },
+  {
+    universe: 'Evolution: The Animated Series',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    stageName: 'Genus Command Field',
+    mode: 'Tactics',
+    difficulty: 'Medium',
+    bossName: 'Genus Swarm Queen',
+    title: { en: 'Evolution: The Animated Series', fr: 'Evolution : la serie animee' },
+    desc: {
+      en: 'The Genus threat spreads into animated monster-of-the-week mutations and field-response science missions.',
+      fr: 'La menace Genus devient une suite de mutations animees et de missions scientifiques de terrain.'
+    },
+    hero: { id: 'ira_evo_anim', name: 'Ira Kane Animated', cat: 'hacker', color: '#2ecc71' },
+    allies: [
+      { id: 'harry_evo_anim', name: 'Harry Block Animated', cat: 'tactical', color: '#3498db' },
+      { id: 'gassie_evo_anim', name: 'Gassie', cat: 'slayer', color: '#d35400' }
+    ],
+    monsters: ['Genus Runner', 'Mutant Flyer', 'Cell Splitter'],
+    bosses: ['Genus Brute', 'Animated Hive Node'],
+    worldBoss: 'Genus Swarm Queen',
+    gear: [
+      ['evoa_genus_scanner', 'Genus Scanner', 'Scanner Genus', { spd: 2, def: 4 }],
+      ['evoa_field_pack', 'Field Science Pack', 'Sac scientifique terrain', { hp: 75 }],
+      ['evoa_cell_sample', 'Animated Cell Sample', 'Cellule animee', { atk: 8, def: 3 }]
+    ],
+    event: ['evt_evoa_counteragent', 'Genus Counteragent', 'Contre-agent Genus', 'A counteragent weakens mutation waves and grants speed.', 'Un contre-agent affaiblit les mutations et donne de la vitesse.'],
+    decor: { sky: ['#1d3b4a', '#03080b'], floor: 'rgba(58, 180, 145, 0.16)', grid: 'rgba(90, 230, 178, 0.28)', motif: 'facility', accent: '#5ae6b2' }
+  },
+  {
+    universe: 'Early Edition',
+    mediaType: 'movie',
+    faction: 'arcane',
+    stageName: 'Tomorrow Newspaper Loop',
+    mode: 'RPG',
+    difficulty: 'Medium',
+    bossName: 'Deadline Paradox',
+    title: { en: 'Early Edition', fr: 'Demain a la une' },
+    desc: {
+      en: 'A mysterious newspaper delivers tomorrow s disasters today, turning small choices into time-loop missions.',
+      fr: 'Un journal mysterieux livre les catastrophes de demain et transforme les choix en missions temporelles.'
+    },
+    hero: { id: 'gary_hobson', name: 'Gary Hobson', cat: 'tactical', color: '#c49a5a' },
+    allies: [
+      { id: 'marissa_clark', name: 'Marissa Clark', cat: 'hacker', color: '#8e7cc3' },
+      { id: 'chuck_fishman', name: 'Chuck Fishman', cat: 'slayer', color: '#e67e22' }
+    ],
+    monsters: ['Deadline Echo', 'Tomorrow Accident', 'Time Misprint'],
+    bosses: ['Paradox Courier', 'Front Page Disaster'],
+    worldBoss: 'Deadline Paradox',
+    gear: [
+      ['ee_tomorrow_paper', 'Tomorrow Paper', 'Journal de demain', { spd: 2, def: 5 }],
+      ['ee_cat_bell', 'Orange Cat Bell', 'Clochette du chat', { hp: 60, spd: 1 }],
+      ['ee_press_pass', 'Press Pass', 'Badge presse', { atk: 6, def: 5 }]
+    ],
+    event: ['evt_ee_front_page', 'Front Page Rewrite', 'Reecriture de une', 'Tomorrow s headline rewinds damage and reveals enemy intent.', 'La une de demain annule des degats et revele les intentions ennemies.'],
+    decor: { sky: ['#2d2a20', '#070604'], floor: 'rgba(196, 154, 90, 0.18)', grid: 'rgba(245, 218, 135, 0.26)', motif: 'arcanecity', accent: '#f5da87' }
+  },
+  {
+    universe: 'Charmed',
+    mediaType: 'movie',
+    faction: 'arcane',
+    stageName: 'Halliwells Manor Nexus',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    bossName: 'Source of All Evil',
+    title: { en: 'Charmed', fr: 'Charmed' },
+    desc: {
+      en: 'The Power of Three holds back demons, warlocks, time loops, and Book of Shadows corruption.',
+      fr: 'Le Pouvoir des Trois retient demons, sorciers, boucles temporelles et corruption du Livre des Ombres.'
+    },
+    hero: { id: 'prue_halliwell', name: 'Prue Halliwell', cat: 'hacker', color: '#8e44ad' },
+    allies: [
+      { id: 'piper_halliwell', name: 'Piper Halliwell', cat: 'tactical', color: '#3498db' },
+      { id: 'phoebe_halliwell', name: 'Phoebe Halliwell', cat: 'slayer', color: '#e67e22' }
+    ],
+    monsters: ['Lower Demon', 'Warlock Thief', 'Shadow Familiar'],
+    bosses: ['Balthazor', 'The Seer'],
+    worldBoss: 'Source of All Evil',
+    gear: [
+      ['charmed_bos_page', 'Book of Shadows Page', 'Page du Livre des Ombres', { atk: 9, def: 4 }],
+      ['charmed_potion_vial', 'Vanquishing Potion', 'Potion de destruction', { atk: 8, spd: 1 }],
+      ['charmed_triquetra', 'Triquetra Charm', 'Charme triquetra', { hp: 70, def: 5 }]
+    ],
+    event: ['evt_charmed_power_three', 'Power of Three', 'Pouvoir des Trois', 'A triple spell blasts demons and shields the squad.', 'Un sort triple frappe les demons et protege l escouade.'],
+    decor: { sky: ['#2d173d', '#06030a'], floor: 'rgba(142, 68, 173, 0.18)', grid: 'rgba(214, 180, 255, 0.28)', motif: 'arcanecity', accent: '#d6b4ff' }
+  },
+  {
+    universe: 'Buffy the Vampire Slayer',
+    mediaType: 'movie',
+    faction: 'arcane',
+    stageName: 'Sunnydale Hellmouth',
+    mode: 'Smash',
+    difficulty: 'Hard',
+    bossName: 'The First Evil',
+    title: { en: 'Buffy the Vampire Slayer', fr: 'Buffy contre les vampires' },
+    desc: {
+      en: 'A Hellmouth town where a Slayer, Watchers, witches, and friends fight vampires and apocalyptic demons.',
+      fr: 'Une ville sur la Bouche de l Enfer ou Tueuse, Observateurs, sorcieres et amis combattent vampires et demons.'
+    },
+    hero: { id: 'buffy_summers', name: 'Buffy Summers', cat: 'slayer', color: '#f6c15b' },
+    allies: [
+      { id: 'willow_rosenberg', name: 'Willow Rosenberg', cat: 'hacker', color: '#c0392b' },
+      { id: 'giles_buffy', name: 'Rupert Giles', cat: 'tactical', color: '#7f8c8d' }
+    ],
+    monsters: ['Vampire Minion', 'Hellmouth Imp', 'Bringer Scout'],
+    bosses: ['Spike Duel', 'Glory Godling'],
+    worldBoss: 'The First Evil',
+    gear: [
+      ['buffy_stake', 'Mr Pointy Stake', 'Pieu Mr Pointy', { atk: 10 }],
+      ['buffy_watcher_book', 'Watcher Field Book', 'Carnet d Observateur', { def: 6, spd: 1 }],
+      ['buffy_witch_charm', 'Willow Witch Charm', 'Charme de Willow', { hp: 60, atk: 5 }]
+    ],
+    event: ['evt_buffy_slayer', 'Slayer Scythe Rally', 'Ralliement de la faux', 'The Slayer cuts through demons and rallies every ally.', 'La Tueuse traverse les demons et rallie tous les allies.'],
+    decor: { sky: ['#2b1822', '#060205'], floor: 'rgba(198, 57, 78, 0.18)', grid: 'rgba(246, 193, 91, 0.28)', motif: 'hauntedset', accent: '#f6c15b' }
+  },
+  {
+    universe: 'Attack on Titan',
+    mediaType: 'manga',
+    faction: 'horror',
+    stageName: 'Shiganshina Wall Breach',
+    mode: 'Smash',
+    difficulty: 'Very Hard',
+    bossName: 'Colossal Titan',
+    title: { en: 'Attack on Titan', fr: 'L Attaque des Titans' },
+    desc: {
+      en: 'Humanity fights towering Titans with ODM gear, wall warfare, political secrets, and brutal sacrifice.',
+      fr: 'L humanite affronte les Titans avec equipement tridimensionnel, murs, secrets politiques et sacrifices.'
+    },
+    hero: { id: 'eren_yeager', name: 'Eren Yeager', cat: 'slayer', color: '#2f7d55' },
+    allies: [
+      { id: 'mikasa_ackerman', name: 'Mikasa Ackerman', cat: 'slayer', color: '#8b1e2d' },
+      { id: 'armin_arlert', name: 'Armin Arlert', cat: 'tactical', color: '#f1c40f' }
+    ],
+    monsters: ['Pure Titan', 'Crawler Titan', 'Wall Cult Fanatic'],
+    bosses: ['Armored Titan', 'Female Titan'],
+    worldBoss: 'Colossal Titan',
+    gear: [
+      ['aot_odm_gear', 'ODM Gear', 'Equipement tridimensionnel', { spd: 3, atk: 6 }],
+      ['aot_blade_pair', 'Titan Blade Pair', 'Lames anti-Titan', { atk: 10 }],
+      ['aot_survey_cloak', 'Survey Corps Cloak', 'Cape du bataillon', { def: 6, hp: 45 }]
+    ],
+    event: ['evt_aot_wall_breach', 'Wall Breach Counterattack', 'Contre-attaque du mur', 'ODM strikes slash every huge enemy and grant speed.', 'Les frappes tridimensionnelles taillent les grands ennemis et donnent vitesse.'],
+    decor: { sky: ['#3a3324', '#080604'], floor: 'rgba(117, 91, 48, 0.2)', grid: 'rgba(205, 166, 82, 0.26)', motif: 'castle', accent: '#cda652' }
+  },
+  {
+    universe: 'Death Note',
+    mediaType: 'manga',
+    faction: 'horror',
+    stageName: 'Kira Investigation Board',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    bossName: 'Kira Judgment Loop',
+    title: { en: 'Death Note', fr: 'Death Note' },
+    desc: {
+      en: 'A supernatural investigation breach where names, rules, shinigami, and deduction become lethal weapons.',
+      fr: 'Une enquete surnaturelle ou noms, regles, shinigami et deduction deviennent des armes mortelles.'
+    },
+    hero: { id: 'light_yagami', name: 'Light Yagami', cat: 'hacker', color: '#2d3436' },
+    allies: [
+      { id: 'l_lawliet', name: 'L Lawliet', cat: 'tactical', color: '#dfe6e9' },
+      { id: 'misa_amane', name: 'Misa Amane', cat: 'horror', color: '#f5c2d1' }
+    ],
+    monsters: ['Task Force Tail', 'Kira Copycat', 'Shinigami Whisper'],
+    bosses: ['Rem Contract', 'Near Deduction Trap'],
+    worldBoss: 'Kira Judgment Loop',
+    gear: [
+      ['dn_black_notebook', 'Black Notebook Page', 'Page du carnet noir', { atk: 10, def: 2 }],
+      ['dn_sugar_cube', 'L Sugar Cube', 'Sucre de L', { spd: 2, hp: 35 }],
+      ['dn_shinigami_apple', 'Shinigami Apple', 'Pomme shinigami', { hp: 60, atk: 5 }]
+    ],
+    event: ['evt_dn_name_rule', 'Name Written Rule', 'Regle du nom ecrit', 'A rule trap marks the strongest enemy and lowers its attack.', 'Une regle piege marque l ennemi le plus fort et baisse son attaque.'],
+    decor: { sky: ['#151515', '#030303'], floor: 'rgba(80, 80, 80, 0.18)', grid: 'rgba(220, 220, 220, 0.22)', motif: 'hauntedset', accent: '#dfe6e9' }
+  },
+  {
+    universe: 'Cells at Work!',
+    mediaType: 'manga',
+    faction: 'sciFi',
+    stageName: 'Body System Infection',
+    mode: 'RPG',
+    difficulty: 'Medium',
+    bossName: 'Sepsis Breach',
+    title: { en: 'Cells at Work!', fr: 'Les Brigades immunitaires' },
+    desc: {
+      en: 'Inside the body, red cells deliver oxygen while white cells battle bacteria, viruses, and systemic collapse.',
+      fr: 'Dans le corps, les globules rouges livrent l oxygene pendant que les blancs combattent microbes et virus.'
+    },
+    hero: { id: 'red_blood_cell', name: 'Red Blood Cell AE3803', cat: 'marine', color: '#e74c3c' },
+    allies: [
+      { id: 'white_blood_cell', name: 'White Blood Cell U-1146', cat: 'slayer', color: '#ecf0f1' },
+      { id: 'platelet_cells', name: 'Platelet Squad', cat: 'tactical', color: '#f6d365' }
+    ],
+    monsters: ['Pneumococcus Germ', 'Cedar Pollen Allergen', 'Cancer Cell Scout'],
+    bosses: ['Influenza Virus Swarm', 'Killer T Cell Drill'],
+    worldBoss: 'Sepsis Breach',
+    gear: [
+      ['caw_oxygen_box', 'Oxygen Delivery Box', 'Caisse oxygene', { hp: 80 }],
+      ['caw_white_knife', 'Neutrophil Knife', 'Couteau neutrophile', { atk: 9 }],
+      ['caw_platelet_net', 'Platelet Repair Net', 'Filet plaquette', { def: 7, spd: 1 }]
+    ],
+    event: ['evt_caw_immunity', 'Immune Response Surge', 'Poussee immunitaire', 'Immune cells purge poison and damage biological enemies.', 'Les cellules immunitaires purgent le poison et frappent les ennemis biologiques.'],
+    decor: { sky: ['#4b1720', '#080204'], floor: 'rgba(231, 76, 60, 0.16)', grid: 'rgba(236, 240, 241, 0.28)', motif: 'facility', accent: '#ecf0f1' }
+  },
+  {
+    universe: 'Inuyashiki',
+    mediaType: 'manga',
+    faction: 'cyber',
+    stageName: 'Cyber Body Tokyo Incident',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    bossName: 'Hiro Shishigami Rampage',
+    title: { en: 'Inuyashiki', fr: 'Inuyashiki' },
+    desc: {
+      en: 'Two rebuilt human weapons choose opposite paths: protection, massacre, family, and machine morality.',
+      fr: 'Deux humains reconstruits en armes choisissent des voies opposees entre protection, massacre et morale machine.'
+    },
+    hero: { id: 'ichiro_inuyashiki', name: 'Ichiro Inuyashiki', cat: 'hacker', color: '#bdc3c7' },
+    allies: [
+      { id: 'hiro_shishigami', name: 'Hiro Shishigami', cat: 'slayer', color: '#2d3436' },
+      { id: 'mari_inuyashiki', name: 'Mari Inuyashiki', cat: 'tactical', color: '#fd79a8' }
+    ],
+    monsters: ['Cyber Weapon Trace', 'Media Panic Mob', 'Drone Police Unit'],
+    bosses: ['Airport Missile Lock', 'Hiro Remote Kill Pattern'],
+    worldBoss: 'Hiro Shishigami Rampage',
+    gear: [
+      ['inu_cyber_core', 'Cyber Body Core', 'Noyau corps cyber', { atk: 9, def: 5 }],
+      ['inu_healing_beam', 'Healing Beam Lens', 'Lentille de soin', { hp: 95 }],
+      ['inu_flight_thruster', 'Hidden Flight Thruster', 'Propulseur cache', { spd: 3 }]
+    ],
+    event: ['evt_inu_machine_heart', 'Machine Heart Override', 'Override coeur machine', 'A cyber-heart burst heals allies and locks enemy weapons.', 'Un coeur cyber soigne les allies et verrouille les armes ennemies.'],
+    decor: { sky: ['#101923', '#020305'], floor: 'rgba(92, 120, 145, 0.17)', grid: 'rgba(189, 195, 199, 0.3)', motif: 'code', accent: '#bdc3c7' }
   }
 ];
 
