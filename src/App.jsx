@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import sound from './game/soundEngine';
 import HubScreen from './components/HubScreen';
 import PortalScreen from './components/PortalScreen';
 import GameCanvas from './components/GameCanvas';
 import AudioControl from './components/AudioControl';
+import AuthPanel from './components/AuthPanel';
 import { getTranslation } from './game/translation';
 import { EQUIP_ITEMS_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
+import { getStoredSession, loadCloudSave, saveCloudSave, signInAccount, signOutAccount, signUpAccount, storeSession } from './game/cloudSave';
 
 const SAVE_KEY = 'multiverse_breach_save_v2';
 
@@ -161,6 +163,8 @@ function MissionNarrativeScreen({ lang, stage, result, onContinue }) {
 
 function App() {
   const initialSave = loadSave();
+  const cloudSaveTimerRef = useRef(null);
+  const skipNextCloudSaveRef = useRef(false);
   const [lang, setLang] = useState(initialSave.lang); // FR default as requested, EN toggle
   const [currentScreen, setCurrentScreen] = useState('intro');
   const [gold, setGold] = useState(initialSave.gold);
@@ -179,24 +183,51 @@ function App() {
   const [equippedGear, setEquippedGear] = useState(initialSave.equippedGear);
   // Equipped Event Items (1 slot per hero)
   const [equippedEventItems, setEquippedEventItems] = useState(initialSave.equippedEventItems);
+  const [account, setAccount] = useState(() => getStoredSession());
+  const [cloudStatus, setCloudStatus] = useState(() => (
+    getStoredSession()
+      ? 'Compte detecte. La progression locale reste active, cloud disponible.'
+      : 'Progression locale. Connecte un compte pour synchroniser.'
+  ));
   const collectionBonusCount = inventory.filter(itemId => itemId.startsWith('collection_reward_')).length;
 
+  const getCurrentSave = () => ({
+    lang,
+    gold,
+    breachShards,
+    eventTokens,
+    unlockedHeroes,
+    heroLevels,
+    activeTeam,
+    completedStages,
+    heroTalents,
+    inventory,
+    equippedGear,
+    equippedEventItems
+  });
+
   useEffect(() => {
-    saveGame({
-      lang,
-      gold,
-      breachShards,
-      eventTokens,
-      unlockedHeroes,
-      heroLevels,
-      activeTeam,
-      completedStages,
-      heroTalents,
-      inventory,
-      equippedGear,
-      equippedEventItems
-    });
-  }, [lang, gold, breachShards, eventTokens, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, inventory, equippedGear, equippedEventItems]);
+    const payload = getCurrentSave();
+    saveGame(payload);
+
+    if (!account?.access_token) return;
+    if (skipNextCloudSaveRef.current) {
+      skipNextCloudSaveRef.current = false;
+      return;
+    }
+
+    window.clearTimeout(cloudSaveTimerRef.current);
+    cloudSaveTimerRef.current = window.setTimeout(async () => {
+      try {
+        await saveCloudSave(account, payload);
+        setCloudStatus(lang === 'fr' ? 'Progression synchronisee dans le cloud.' : 'Progress synced to cloud.');
+      } catch (err) {
+        setCloudStatus(`${lang === 'fr' ? 'Sync cloud impossible' : 'Cloud sync failed'}: ${err.message}`);
+      }
+    }, 1200);
+
+    return () => window.clearTimeout(cloudSaveTimerRef.current);
+  }, [lang, gold, breachShards, eventTokens, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, inventory, equippedGear, equippedEventItems, account]);
 
   // Play ambient music
   useEffect(() => {
@@ -290,21 +321,6 @@ function App() {
     setCurrentScreen('hub');
   };
 
-  const getCurrentSave = () => ({
-    lang,
-    gold,
-    breachShards,
-    eventTokens,
-    unlockedHeroes,
-    heroLevels,
-    activeTeam,
-    completedStages,
-    heroTalents,
-    inventory,
-    equippedGear,
-    equippedEventItems
-  });
-
   const exportSave = async () => {
     const raw = JSON.stringify(getCurrentSave());
     try {
@@ -333,10 +349,92 @@ function App() {
     sound.playSfx('click');
   };
 
+  const applyCloudSession = async (session, shouldLoadCloud = true) => {
+    storeSession(session);
+    setAccount(session);
+    setCloudStatus(lang === 'fr' ? 'Compte connecte. Verification de la sauvegarde cloud...' : 'Account connected. Checking cloud save...');
+
+    if (!shouldLoadCloud) return;
+
+    const row = await loadCloudSave(session);
+    if (row?.payload) {
+      skipNextCloudSaveRef.current = true;
+      applySave(row.payload);
+      setCloudStatus(lang === 'fr' ? 'Sauvegarde cloud chargee.' : 'Cloud save loaded.');
+    } else {
+      await saveCloudSave(session, getCurrentSave());
+      setCloudStatus(lang === 'fr' ? 'Nouvelle sauvegarde cloud creee depuis cette progression.' : 'New cloud save created from this progression.');
+    }
+  };
+
+  const handleSignIn = async (email, password) => {
+    const session = await signInAccount(email, password);
+    await applyCloudSession(session, true);
+    sound.playSfx('levelup');
+  };
+
+  const handleSignUp = async (email, password) => {
+    const session = await signUpAccount(email, password);
+    if (!session?.access_token) {
+      setCloudStatus(lang === 'fr' ? 'Compte cree. Confirme ton email puis connecte-toi.' : 'Account created. Confirm your email, then sign in.');
+      sound.playSfx('levelup');
+      return;
+    }
+    await applyCloudSession(session, false);
+    await saveCloudSave(session, getCurrentSave());
+    setCloudStatus(lang === 'fr' ? 'Compte cree et progression envoyee dans le cloud.' : 'Account created and progress uploaded to cloud.');
+    sound.playSfx('levelup');
+  };
+
+  const handleSignOut = async () => {
+    const current = account;
+    storeSession(null);
+    setAccount(null);
+    setCloudStatus(lang === 'fr' ? 'Deconnecte. Progression locale active.' : 'Signed out. Local progress active.');
+    if (current?.access_token) {
+      try {
+        await signOutAccount(current);
+      } catch {
+        // Local sign-out should still complete if the remote token already expired.
+      }
+    }
+    sound.playSfx('click');
+  };
+
+  const handleLoadCloud = async () => {
+    if (!account) return;
+    const row = await loadCloudSave(account);
+    if (!row?.payload) {
+      setCloudStatus(lang === 'fr' ? 'Aucune sauvegarde cloud trouvee.' : 'No cloud save found.');
+      return;
+    }
+    skipNextCloudSaveRef.current = true;
+    applySave(row.payload);
+    setCloudStatus(lang === 'fr' ? 'Sauvegarde cloud chargee.' : 'Cloud save loaded.');
+    sound.playSfx('coin');
+  };
+
+  const handleSaveCloud = async () => {
+    if (!account) return;
+    await saveCloudSave(account, getCurrentSave());
+    setCloudStatus(lang === 'fr' ? 'Progression envoyee dans le cloud.' : 'Progress uploaded to cloud.');
+    sound.playSfx('coin');
+  };
+
   return (
     <>
       {/* Global Mute/Audio Button */}
       <AudioControl />
+      <AuthPanel
+        lang={lang}
+        account={account}
+        cloudStatus={cloudStatus}
+        onSignIn={handleSignIn}
+        onSignUp={handleSignUp}
+        onSignOut={handleSignOut}
+        onLoadCloud={handleLoadCloud}
+        onSaveCloud={handleSaveCloud}
+      />
 
       {/* Floating Language Switcher in bottom right */}
       <button
