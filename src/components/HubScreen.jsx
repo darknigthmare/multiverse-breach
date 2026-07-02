@@ -1125,8 +1125,7 @@ export default function HubScreen({
       .filter((skin, index, list) => list.findIndex(item => item.id === skin.id) === index)
       .filter(skin => {
         if (skin.id === 'default') return true;
-        if (skin.id === 'char_player_anchor_prime') return hero.id === 'player_anchor';
-        if (skin.id === 'char_freeman_hev_nexus') return hero.id === 'freeman';
+        if (skin.heroId) return skin.heroId === hero.id;
         return true;
       });
   };
@@ -2519,6 +2518,8 @@ export default function HubScreen({
                     {selectedHeroSkins.map(skin => {
                       const activeSkinId = heroSkins?.[selectedHero.id] || 'default';
                       const isActive = activeSkinId === skin.id;
+                      const skinPrimary = skin.colors.primaryColor || selectedHero.primaryColor || '#39c5bb';
+                      const skinSecondary = skin.colors.secondaryColor || selectedHero.secondaryColor || '#ffffff';
                       return (
                         <button
                           key={skin.id}
@@ -2533,9 +2534,9 @@ export default function HubScreen({
                             alignItems: 'center',
                             gap: '8px',
                             padding: '8px',
-                            border: `1px solid ${isActive ? skin.colors.primaryColor : 'rgba(255,255,255,0.12)'}`,
+                            border: `1px solid ${isActive ? skinPrimary : 'rgba(255,255,255,0.12)'}`,
                             borderRadius: '4px',
-                            background: isActive ? `${skin.colors.primaryColor}22` : 'rgba(0,0,0,0.25)',
+                            background: isActive ? `${skinPrimary}22` : 'rgba(0,0,0,0.25)',
                             color: '#f5f5f5',
                             cursor: 'pointer',
                             textAlign: 'left'
@@ -2547,8 +2548,8 @@ export default function HubScreen({
                             flexShrink: 0,
                             borderRadius: '3px',
                             border: '1px solid rgba(255,255,255,0.18)',
-                            background: `linear-gradient(135deg, ${skin.colors.primaryColor} 0 50%, ${skin.colors.secondaryColor} 50% 100%)`,
-                            boxShadow: isActive ? `0 0 10px ${skin.colors.primaryColor}66` : 'none'
+                            background: `linear-gradient(135deg, ${skinPrimary} 0 50%, ${skinSecondary} 50% 100%)`,
+                            boxShadow: isActive ? `0 0 10px ${skinPrimary}66` : 'none'
                           }} />
                           <span style={{ minWidth: 0 }}>
                             <span style={{ display: 'block', fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', overflowWrap: 'anywhere' }}>

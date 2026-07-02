@@ -138,6 +138,196 @@ export const CHARACTER_NARRATIVE_ARCS = [
     outro: { fr: 'Le silence de Freeman devient un langage que le Nexus comprend.', en: 'Freeman silence becomes a language the Nexus understands.' },
     reward: { fr: 'Skin HEV Nexus + Module Long Jump instable', en: 'Nexus HEV Skin + Unstable Long Jump Module' },
     rewardItemId: 'char_freeman_hev_nexus'
+  },
+  {
+    id: 'chief_living_ring',
+    stageId: 9203,
+    heroId: 'masterchief',
+    title: { fr: 'Arc Personnage - Le dernier rempart', en: 'Character Arc - The Last Bulwark' },
+    mode: 'Tactics',
+    difficulty: 'Personal',
+    bossName: 'Scarab du Sans-Auteur',
+    unlock: { type: 'level', value: 3 },
+    intro: { fr: 'Master Chief ne defend plus seulement un anneau: il defend la possibilite meme qu une escouade survive a plusieurs guerres a la fois.', en: 'Master Chief no longer defends only a ring: he defends the possibility that a squad can survive several wars at once.' },
+    missions: [
+      { fr: 'Synchroniser l armure Mjolnir avec un bouclier de Trame.', en: 'Sync Mjolnir armor with a Thread shield.' },
+      { fr: 'Tenir une ligne tactique pendant que le Nexus evacue une zone Halo/Stargate.', en: 'Hold a tactical line while the Nexus evacuates a Halo/Stargate zone.' },
+      { fr: 'Abattre un Scarab recode avant qu il ne grave le symbole du Sans-Auteur.', en: 'Destroy a recoded Scarab before it brands the Authorless symbol.' }
+    ],
+    outro: { fr: 'Le Chief devient le protocole vivant du Rempart Atrium.', en: 'The Chief becomes the living protocol of the Atrium Bulwark.' },
+    reward: { fr: 'Skin Mjolnir Atrium + balise Cortana fantome', en: 'Atrium Mjolnir Skin + Ghost Cortana Beacon' },
+    rewardItemId: 'char_masterchief_atrium'
+  },
+  {
+    id: 'ripley_no_hive',
+    stageId: 9204,
+    heroId: 'ripley',
+    title: { fr: 'Arc Personnage - Refus de la ruche', en: 'Character Arc - Refusal of the Hive' },
+    mode: 'RPG',
+    difficulty: 'Personal',
+    bossName: 'Reine-Memoire Weyland',
+    unlock: { type: 'clears', value: 4 },
+    intro: { fr: 'Ripley reconnait les cycles qui recommencent: compagnie, specimen, sacrifice. Dans le Nexus, elle peut enfin casser la boucle.', en: 'Ripley recognizes the loops restarting: company, specimen, sacrifice. In the Nexus, she can finally break them.' },
+    missions: [
+      { fr: 'Sauver une capsule de survivants avant que la breche ne les transforme en appats.', en: 'Save a survivor pod before the breach turns them into bait.' },
+      { fr: 'Purger un manifeste Weyland-Yutani contamine par des oeufs de Trame.', en: 'Purge a Weyland-Yutani manifest contaminated by Thread eggs.' },
+      { fr: 'Affronter une reine qui pond des souvenirs au lieu de xenomorphes.', en: 'Face a queen laying memories instead of xenomorphs.' }
+    ],
+    outro: { fr: 'La ruche perd son droit de recommencer l histoire de Ripley.', en: 'The hive loses its right to restart Ripley story.' },
+    reward: { fr: 'Skin Loader Nexus + cle de sas colonial', en: 'Nexus Loader Skin + Colonial Airlock Key' },
+    rewardItemId: 'char_ripley_loader_nexus'
+  },
+  {
+    id: 'predator_honor_breach',
+    stageId: 9205,
+    heroId: 'predator',
+    title: { fr: 'Arc Personnage - Code du trophee', en: 'Character Arc - Trophy Code' },
+    mode: 'Smash',
+    difficulty: 'Personal',
+    bossName: 'Trophee Sans-Visage',
+    unlock: { type: 'level', value: 4 },
+    intro: { fr: 'Le Yautja comprend que le Sans-Auteur ne chasse pas: il efface. Son honneur exige une reponse plus ancienne que le Nexus.', en: 'The Yautja understands the Authorless does not hunt: it erases. Honor demands an answer older than the Nexus.' },
+    missions: [
+      { fr: 'Marquer une cible qui change de monde a chaque blessure.', en: 'Mark a target that changes worlds with every wound.' },
+      { fr: 'Refuser un trophee corrompu par une victoire trop facile.', en: 'Reject a trophy corrupted by an easy victory.' },
+      { fr: 'Vaincre le Sans-Visage dans une arene sans public ni memoire.', en: 'Defeat the Faceless in an arena without audience or memory.' }
+    ],
+    outro: { fr: 'La chasse reste brutale, mais elle redevient lisible: proie, chasseur, regle.', en: 'The hunt remains brutal, but becomes readable again: prey, hunter, rule.' },
+    reward: { fr: 'Skin Traqueur de Faille + masque rituel', en: 'Rift Stalker Skin + Ritual Mask' },
+    rewardItemId: 'char_predator_rift_stalker'
+  },
+  {
+    id: 'leon_last_door',
+    stageId: 9206,
+    heroId: 'leon',
+    title: { fr: 'Arc Personnage - Derniere porte', en: 'Character Arc - Last Door' },
+    mode: 'RPG',
+    difficulty: 'Personal',
+    bossName: 'Tyran de Sauvegarde',
+    unlock: { type: 'clears', value: 5 },
+    intro: { fr: 'Leon sait qu une porte verrouillee cache rarement une sortie simple. Le Nexus lui confie celles que personne ne veut ouvrir.', en: 'Leon knows a locked door rarely hides a simple exit. The Nexus gives him the doors nobody wants to open.' },
+    missions: [
+      { fr: 'Escorter une survivante dont la fiche se reecrit a chaque infection.', en: 'Escort a survivor whose file rewrites with every infection.' },
+      { fr: 'Recuperer une cle de sauvegarde dans un commissariat impossible.', en: 'Recover a save key inside an impossible police station.' },
+      { fr: 'Abattre un Tyran qui protege un point de chargement corrompu.', en: 'Take down a Tyrant guarding a corrupted load point.' }
+    ],
+    outro: { fr: 'Leon transforme les portes du Nexus en promesses de retour, pas en pieges.', en: 'Leon turns Nexus doors into promises of return, not traps.' },
+    reward: { fr: 'Skin R.P.D. Nexus + cle ruban encreur', en: 'Nexus R.P.D. Skin + Ink Ribbon Key' },
+    rewardItemId: 'char_leon_rpd_nexus'
+  },
+  {
+    id: 'neo_choice_source',
+    stageId: 9207,
+    heroId: 'neo',
+    title: { fr: 'Arc Personnage - Choix source', en: 'Character Arc - Source Choice' },
+    mode: 'Smash',
+    difficulty: 'Personal',
+    bossName: 'Agent Racine',
+    unlock: { type: 'level', value: 4 },
+    intro: { fr: 'Neo ne voit pas seulement le code du Nexus: il voit les endroits ou le code ment pour proteger une histoire.', en: 'Neo does not only see Nexus code: he sees where the code lies to protect a story.' },
+    missions: [
+      { fr: 'Lire une mission avant qu elle ne soit generee.', en: 'Read a mission before it is generated.' },
+      { fr: 'Desobeir a une prediction d A.R.C.A. sans casser la sauvegarde.', en: 'Disobey an A.R.C.A. prediction without breaking the save.' },
+      { fr: 'Affronter l Agent Racine dans une matrice sans sortie rouge ou bleue.', en: 'Face the Root Agent in a matrix with no red or blue exit.' }
+    ],
+    outro: { fr: 'Le choix devient une mecanique: le Nexus accepte enfin l imprevisible.', en: 'Choice becomes a mechanic: the Nexus finally accepts the unpredictable.' },
+    reward: { fr: 'Skin Code Libre + fragment de Source', en: 'Free Code Skin + Source Fragment' },
+    rewardItemId: 'char_neo_free_code'
+  },
+  {
+    id: 'oneill_eighth_chevron',
+    stageId: 9208,
+    heroId: 'oneill',
+    title: { fr: 'Arc Personnage - Huitieme chevron', en: 'Character Arc - Eighth Chevron' },
+    mode: 'Tactics',
+    difficulty: 'Personal',
+    bossName: 'Primate Goa uld Miroir',
+    unlock: { type: 'clears', value: 6 },
+    intro: { fr: 'O Neill traite le multivers comme une mission SG: humour sec, plan fragile, et personne laisse derriere.', en: 'O Neill treats the multiverse like an SG mission: dry humor, fragile plan, and nobody left behind.' },
+    missions: [
+      { fr: 'Composer une adresse qui traverse deux Trames sans perdre l iris.', en: 'Dial an address crossing two Threads without losing the iris.' },
+      { fr: 'Convaincre A.R.C.A. qu un plan simple peut rester vivant.', en: 'Convince A.R.C.A. that a simple plan can stay alive.' },
+      { fr: 'Fermer une Porte miroir avant qu un faux SGC envahisse le hub.', en: 'Close a mirror Gate before a false SGC invades the hub.' }
+    ],
+    outro: { fr: 'Le huitieme chevron devient une route tactique vers les arcs Stargate.', en: 'The eighth chevron becomes a tactical road into Stargate arcs.' },
+    reward: { fr: 'Skin SGC Nexus + patch Chevron Huit', en: 'Nexus SGC Skin + Eighth Chevron Patch' },
+    rewardItemId: 'char_oneill_sgc_nexus'
+  },
+  {
+    id: 'chell_white_room',
+    stageId: 9209,
+    heroId: 'chell',
+    title: { fr: 'Arc Personnage - Chambre blanche', en: 'Character Arc - White Room' },
+    mode: 'RPG',
+    difficulty: 'Personal',
+    bossName: 'Noyau de Test Infini',
+    unlock: { type: 'level', value: 3 },
+    intro: { fr: 'Chell ne parle pas au Nexus. Elle lui montre seulement ou poser le second portail.', en: 'Chell does not speak to the Nexus. She only shows it where to place the second portal.' },
+    missions: [
+      { fr: 'Resoudre une salle ou la gravite appartient a deux univers.', en: 'Solve a room where gravity belongs to two universes.' },
+      { fr: 'Retourner une tourelle contre son propre script de test.', en: 'Turn a turret against its own test script.' },
+      { fr: 'Sortir d une boucle Aperture qui promet une recompense impossible.', en: 'Escape an Aperture loop promising an impossible reward.' }
+    ],
+    outro: { fr: 'Le Nexus apprend que survivre peut etre une forme de reponse.', en: 'The Nexus learns survival can be a form of answer.' },
+    reward: { fr: 'Skin Chambre Blanche + botte Long Fall instable', en: 'White Room Skin + Unstable Long Fall Boot' },
+    rewardItemId: 'char_chell_white_room'
+  },
+  {
+    id: 'buffy_hellmouth_nexus',
+    stageId: 9210,
+    heroId: 'buffy_summers',
+    title: { fr: 'Arc Personnage - Tueuse du Nexus', en: 'Character Arc - Nexus Slayer' },
+    mode: 'Smash',
+    difficulty: 'Personal',
+    bossName: 'Bouche d Enfer Sans-Auteur',
+    unlock: { type: 'clears', value: 7 },
+    intro: { fr: 'Buffy reconnait le piege: une adolescente choisie, puis une guerre qui pretend etre son destin. Le Nexus lui donne une autre option.', en: 'Buffy recognizes the trap: a chosen girl, then a war pretending to be destiny. The Nexus gives her another option.' },
+    missions: [
+      { fr: 'Proteger une patrouille de lycee projetee dans la Cite-Mosaique.', en: 'Protect a school patrol thrown into Mosaic City.' },
+      { fr: 'Briser un rituel qui transforme les noms de heros en prophecies.', en: 'Break a ritual turning hero names into prophecies.' },
+      { fr: 'Sceller une Bouche d Enfer qui veut avaler les sauvegardes.', en: 'Seal a Hellmouth trying to swallow saves.' }
+    ],
+    outro: { fr: 'La Tueuse ne porte plus seule la fin du monde: l escouade porte la ligne avec elle.', en: 'The Slayer no longer carries the end of the world alone: the squad holds the line with her.' },
+    reward: { fr: 'Skin Tueuse Nexus + pieu d Origine', en: 'Nexus Slayer Skin + Origin Stake' },
+    rewardItemId: 'char_buffy_nexus_slayer'
+  },
+  {
+    id: 'walter_blue_thread',
+    stageId: 9211,
+    heroId: 'walter_white',
+    title: { fr: 'Arc Personnage - Formule bleue', en: 'Character Arc - Blue Formula' },
+    mode: 'Tactics',
+    difficulty: 'Personal',
+    bossName: 'Empire Heisenberg Miroir',
+    unlock: { type: 'level', value: 4 },
+    intro: { fr: 'Walter White comprend le Nexus comme une reaction chimique: dosage, pression, contamination. Le probleme, c est qu il veut controler le resultat.', en: 'Walter White reads the Nexus as a chemical reaction: dosage, pressure, contamination. The problem is he wants to control the result.' },
+    missions: [
+      { fr: 'Isoler un catalyseur bleu sans rendre l escouade dependante de son pouvoir.', en: 'Isolate a blue catalyst without making the squad dependent on its power.' },
+      { fr: 'Saboter un laboratoire de Trame avant que la formule devienne une faction.', en: 'Sabotage a Thread lab before the formula becomes a faction.' },
+      { fr: 'Affronter un empire miroir construit a partir de ses pires choix.', en: 'Face a mirror empire built from his worst choices.' }
+    ],
+    outro: { fr: 'A.R.C.A. classe Walter comme ressource puissante et risque permanent.', en: 'A.R.C.A. classifies Walter as both powerful resource and permanent risk.' },
+    reward: { fr: 'Skin Combinaison Bleue + catalyseur de Trame', en: 'Blue Suit Skin + Thread Catalyst' },
+    rewardItemId: 'char_walter_blue_formula'
+  },
+  {
+    id: 'drebin_wrong_case',
+    stageId: 9212,
+    heroId: 'frank_drebin',
+    title: { fr: 'Arc Personnage - Mauvais dossier', en: 'Character Arc - Wrong Case' },
+    mode: 'Smash',
+    difficulty: 'Personal',
+    bossName: 'Commissaire de Continuite',
+    unlock: { type: 'clears', value: 3 },
+    intro: { fr: 'Frank Drebin arrive toujours dans la mauvaise scene, ce qui rend le Sans-Auteur furieux: impossible d effacer une logique qui ne sait pas ou elle va.', en: 'Frank Drebin always enters the wrong scene, which infuriates the Authorless: it is impossible to erase logic that does not know where it is going.' },
+    missions: [
+      { fr: 'Interroger trois temoins qui appartiennent a trois univers differents.', en: 'Question three witnesses from three different universes.' },
+      { fr: 'Transformer une erreur de procedure en raccourci tactique.', en: 'Turn a procedural mistake into a tactical shortcut.' },
+      { fr: 'Arreter le Commissaire de Continuite sans comprendre l accusation.', en: 'Arrest the Continuity Commissioner without understanding the accusation.' }
+    ],
+    outro: { fr: 'Le Nexus archive Frank comme anomalie comique utile: une faille qui referme les autres par accident.', en: 'The Nexus archives Frank as a useful comic anomaly: a breach that closes others by accident.' },
+    reward: { fr: 'Skin Brigade Nexus + plaque mal classee', en: 'Nexus Squad Skin + Misfiled Badge' },
+    rewardItemId: 'char_drebin_wrong_case'
   }
 ];
 
@@ -149,13 +339,75 @@ export const SKIN_CATALOG = {
   },
   char_player_anchor_prime: {
     id: 'char_player_anchor_prime',
+    heroId: 'player_anchor',
     name: { fr: 'Ancre Prime', en: 'Prime Anchor' },
     colors: { primaryColor: '#ffffff', secondaryColor: '#39c5bb' }
   },
   char_freeman_hev_nexus: {
     id: 'char_freeman_hev_nexus',
+    heroId: 'freeman',
     name: { fr: 'HEV Nexus', en: 'Nexus HEV' },
     colors: { primaryColor: '#ff8c00', secondaryColor: '#39c5bb' }
+  },
+  char_masterchief_atrium: {
+    id: 'char_masterchief_atrium',
+    heroId: 'masterchief',
+    name: { fr: 'Mjolnir Atrium', en: 'Atrium Mjolnir' },
+    colors: { primaryColor: '#6aa84f', secondaryColor: '#63d7ff' }
+  },
+  char_ripley_loader_nexus: {
+    id: 'char_ripley_loader_nexus',
+    heroId: 'ripley',
+    name: { fr: 'Loader Nexus', en: 'Nexus Loader' },
+    colors: { primaryColor: '#f2b705', secondaryColor: '#4682b4' }
+  },
+  char_predator_rift_stalker: {
+    id: 'char_predator_rift_stalker',
+    heroId: 'predator',
+    name: { fr: 'Traqueur de Faille', en: 'Rift Stalker' },
+    colors: { primaryColor: '#6f8f72', secondaryColor: '#00ff9d' }
+  },
+  char_leon_rpd_nexus: {
+    id: 'char_leon_rpd_nexus',
+    heroId: 'leon',
+    name: { fr: 'R.P.D. Nexus', en: 'Nexus R.P.D.' },
+    colors: { primaryColor: '#1d4e89', secondaryColor: '#f5d76e' }
+  },
+  char_neo_free_code: {
+    id: 'char_neo_free_code',
+    heroId: 'neo',
+    name: { fr: 'Code Libre', en: 'Free Code' },
+    colors: { primaryColor: '#050505', secondaryColor: '#41ff7a' }
+  },
+  char_oneill_sgc_nexus: {
+    id: 'char_oneill_sgc_nexus',
+    heroId: 'oneill',
+    name: { fr: 'SGC Nexus', en: 'Nexus SGC' },
+    colors: { primaryColor: '#1f382b', secondaryColor: '#cfd6dd' }
+  },
+  char_chell_white_room: {
+    id: 'char_chell_white_room',
+    heroId: 'chell',
+    name: { fr: 'Chambre Blanche', en: 'White Room' },
+    colors: { primaryColor: '#f7f7f2', secondaryColor: '#ff7a1a' }
+  },
+  char_buffy_nexus_slayer: {
+    id: 'char_buffy_nexus_slayer',
+    heroId: 'buffy_summers',
+    name: { fr: 'Tueuse Nexus', en: 'Nexus Slayer' },
+    colors: { primaryColor: '#f6c15b', secondaryColor: '#7d3c98' }
+  },
+  char_walter_blue_formula: {
+    id: 'char_walter_blue_formula',
+    heroId: 'walter_white',
+    name: { fr: 'Formule Bleue', en: 'Blue Formula' },
+    colors: { primaryColor: '#5c8a43', secondaryColor: '#3dc7ff' }
+  },
+  char_drebin_wrong_case: {
+    id: 'char_drebin_wrong_case',
+    heroId: 'frank_drebin',
+    name: { fr: 'Brigade Nexus', en: 'Nexus Squad' },
+    colors: { primaryColor: '#2f75b5', secondaryColor: '#f6f1d1' }
   },
   arc_scifi_skin_atrium_bulwark: {
     id: 'arc_scifi_skin_atrium_bulwark',
