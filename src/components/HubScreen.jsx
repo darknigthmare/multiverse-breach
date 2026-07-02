@@ -2137,23 +2137,6 @@ export default function HubScreen({
                   </div>
                 </div>
 
-                {/* Equipped items details */}
-                <div style={{ marginTop: '15px', borderTop: '1px solid #333', paddingTop: '10px' }}>
-                  <div style={{ display: 'flex', gap: '15px' }}>
-                    <div style={{ flex: 1, padding: '8px', background: 'rgba(255,255,255,0.01)', border: '1px solid #222' }}>
-                      <span style={{ fontSize: '10px', color: '#aaa' }}>{getTranslation(lang, 'weaponRelic')}</span>
-                      <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#39c5bb', marginTop: '3px' }}>
-                        {equippedGear[selectedHero.id] ? getEquippedGearName(equippedGear[selectedHero.id]) : 'NONE'}
-                      </div>
-                    </div>
-                    <div style={{ flex: 1, padding: '8px', background: 'rgba(255,255,255,0.01)', border: '1px solid #222' }}>
-                      <span style={{ fontSize: '10px', color: '#aaa' }}>{getTranslation(lang, 'eventItem')}</span>
-                      <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ff4500', marginTop: '3px' }}>
-                        {equippedEventItems[selectedHero.id] ? EVENT_ITEMS_DB[selectedHero.universe]?.name[lang] : 'NONE'}
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             )}
           </div>
