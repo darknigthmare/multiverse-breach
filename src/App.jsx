@@ -77,6 +77,16 @@ const normalizeSavePayload = (save = {}) => {
 };
 
 const getMissionNarrative = (stage, lang, isOutro, victory) => {
+  if (stage.fusionMission) {
+    if (!isOutro) return stage.fusionMission.decor[lang];
+    return victory
+      ? (lang === 'fr'
+        ? `${stage.displayName.fr} est stabilisee. ${stage.rewardItemName.fr} rejoint l inventaire Nexus comme cle de craft et de skin.`
+        : `${stage.displayName.en} is stabilized. ${stage.rewardItemName.en} enters the Nexus inventory as a craft and skin key.`)
+      : (lang === 'fr'
+        ? `${stage.displayName.fr} reste dangereuse: les univers sources continuent de se contaminer.`
+        : `${stage.displayName.en} remains dangerous: source universes keep contaminating each other.`);
+  }
   const lines = {
     'Alien': {
       intro: { fr: 'Le signal MU/TH/UR grince dans les couloirs. Chaque porte ouverte peut nourrir la ruche.', en: 'The MU/TH/UR signal grinds through the corridors. Every opened door can feed the hive.' },
@@ -158,8 +168,8 @@ function MissionNarrativeScreen({ lang, stage, result, onContinue }) {
         <div className="narrative-scanline" />
         <div className="narrative-copy">
           <div className="narrative-kicker">{title}</div>
-          <h1>{stage.universe}</h1>
-          <h2>{stage.name}</h2>
+          <h1>{stage.displayName?.[lang] || stage.universe}</h1>
+          <h2>{stage.sourceUniverses ? stage.sourceUniverses.join(' / ') : stage.name}</h2>
           <p>{isOutro ? outroText : introText}</p>
           <div className="narrative-tags">
             <span>{stage.mode}</span>
@@ -287,6 +297,10 @@ function App() {
 
       if (!activeStage.isSurvival && !completedStages.includes(activeStage.id)) {
         setCompletedStages(prev => [...prev, activeStage.id]);
+      }
+
+      if (activeStage.rewardItemId) {
+        setInventory(prev => prev.includes(activeStage.rewardItemId) ? prev : [...prev, activeStage.rewardItemId]);
       }
 
       // Check if they dropped a random relic/item from the stage's universe

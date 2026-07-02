@@ -127,27 +127,57 @@ export const CHARACTER_NARRATIVE_ARCS = [
 export const FUSION_MISSIONS = [
   {
     id: 'stargate_x_halo',
+    stageId: 9001,
     title: { fr: 'Fusion - Anneau et Porte', en: 'Fusion - Ring and Gate' },
     universes: ['Halo', 'Stargate'],
+    primaryUniverse: 'Halo',
+    mode: 'Tactics',
+    difficulty: 'Fusion',
+    bossName: 'Scarab a Chevrons',
+    goldPrize: 180,
+    shardPrize: 70,
+    tokenPrize: 3,
+    unlockClears: 6,
     decor: { fr: 'Une installation Halo percee par une Porte des Etoiles active.', en: 'A Halo installation pierced by an active Stargate.' },
     enemies: { fr: 'Elites contamines par symbiotes, drones Anciens, sentinelles Forerunner.', en: 'Symbiote-corrupted Elites, Ancient drones, Forerunner sentinels.' },
-    item: { fr: 'Chevron Forerunner', en: 'Forerunner Chevron' }
+    item: { fr: 'Chevron Forerunner', en: 'Forerunner Chevron' },
+    itemId: 'fusion_chevron_forerunner'
   },
   {
     id: 'matrix_portal_ghost',
+    stageId: 9002,
     title: { fr: 'Fusion - Chambre 404', en: 'Fusion - Chamber 404' },
     universes: ['The Matrix', 'Portal', 'Ghost in the Shell'],
+    primaryUniverse: 'The Matrix',
+    mode: 'RPG',
+    difficulty: 'Fusion',
+    bossName: 'Administrateur Aperture-Section 9',
+    goldPrize: 190,
+    shardPrize: 75,
+    tokenPrize: 3,
+    unlockClears: 8,
     decor: { fr: 'Salle de test Aperture compilee dans un cybercerveau vert Matrix.', en: 'An Aperture test chamber compiled inside a green Matrix cyberbrain.' },
     enemies: { fr: 'Tourelles conscientes, agents copies, pare-feu Tachikoma hostile.', en: 'Self-aware turrets, copied agents, hostile Tachikoma firewall.' },
-    item: { fr: 'Cube de Simulation', en: 'Simulation Cube' }
+    item: { fr: 'Cube de Simulation', en: 'Simulation Cube' },
+    itemId: 'fusion_simulation_cube'
   },
   {
     id: 'silent_resident_saw',
+    stageId: 9003,
     title: { fr: 'Fusion - Hopital du Jugement', en: 'Fusion - Judgment Hospital' },
     universes: ['Silent Hill', 'Resident Evil', 'Saw'],
+    primaryUniverse: 'Silent Hill',
+    mode: 'Smash',
+    difficulty: 'Fusion',
+    bossName: 'Infirmiere Jigsaw-T',
+    goldPrize: 200,
+    shardPrize: 80,
+    tokenPrize: 4,
+    unlockClears: 10,
     decor: { fr: 'Hopital brumeux ou chaque soin exige un choix moral.', en: 'A foggy hospital where every heal demands a moral choice.' },
     enemies: { fr: 'Infectes a pieges, infirmieres corrompues, marionnette de brume.', en: 'Trap-infected, corrupted nurses, fog puppet.' },
-    item: { fr: 'Seringue du Verdict', en: 'Verdict Syringe' }
+    item: { fr: 'Seringue du Verdict', en: 'Verdict Syringe' },
+    itemId: 'fusion_verdict_syringe'
   }
 ];
 

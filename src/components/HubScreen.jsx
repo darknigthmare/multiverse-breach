@@ -142,7 +142,25 @@ export default function HubScreen({
     // 38th final stage
     { id: 38, name: 'Final Omniverse Singularity', universe: 'Matrix', mode: 'RPG', difficulty: 'Final World Boss', goldPrize: 500, shardPrize: 150, bossName: 'Breach Singularity Core' }
   ];
+  const FUSION_STAGES = FUSION_MISSIONS.map(mission => ({
+    id: mission.stageId,
+    name: mission.title.en,
+    displayName: mission.title,
+    universe: mission.primaryUniverse,
+    sourceUniverses: mission.universes,
+    mode: mission.mode,
+    difficulty: mission.difficulty,
+    goldPrize: mission.goldPrize,
+    shardPrize: mission.shardPrize,
+    tokenPrize: mission.tokenPrize,
+    bossName: mission.bossName,
+    unlockClears: mission.unlockClears,
+    rewardItemId: mission.itemId,
+    rewardItemName: mission.item,
+    fusionMission: mission
+  }));
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
+  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...FUSION_STAGES);
   const NORMAL_STAGE_COUNT = STAGES.filter(stage => stage.id !== 38).length;
   const TOTAL_UNIVERSE_COUNT = Object.keys(LORE_DB).length;
   const FINAL_STAGE_REQUIRED_CLEARS = Math.max(18, Math.ceil(NORMAL_STAGE_COUNT * 0.45));
@@ -1118,8 +1136,23 @@ export default function HubScreen({
     // Filter out standard keys that match active Event Items
     return Object.keys(EVENT_ITEMS_DB).map(key => EVENT_ITEMS_DB[key]).filter(it => inventory.includes(it.id) || ['evt_hl_snarks', 'evt_halo_warthog', 'evt_re_cure'].includes(it.id));
   };
+  const SPECIAL_NEXUS_ITEMS = Object.fromEntries(FUSION_MISSIONS.map(mission => [
+    mission.itemId,
+    {
+      id: mission.itemId,
+      name: mission.item,
+      desc: {
+        fr: `${mission.item.fr} recupere dans ${mission.title.fr}. Item special non equipable pour l instant: il servira aux skins, passifs et craft d arcs.`,
+        en: `${mission.item.en} recovered from ${mission.title.en}. Special item not equipable yet: it will feed skins, passives, and arc crafting.`
+      }
+    }
+  ]));
+  const getSpecialNexusItemsInInventory = () => inventory
+    .map(itemId => SPECIAL_NEXUS_ITEMS[itemId])
+    .filter(Boolean);
 
   const getStageRequiredClears = (stage) => {
+    if (stage.fusionMission) return stage.unlockClears || 8;
     if (stage.id === 38) return FINAL_STAGE_REQUIRED_CLEARS;
     if (stage.difficulty === 'Medium') return 2;
     if (stage.difficulty === 'Hard') return 6;
@@ -1127,8 +1160,22 @@ export default function HubScreen({
     if (stage.difficulty === 'Expert') return 16;
     return 0;
   };
-  const isStageUnlocked = (stage) => completedStages.length >= getStageRequiredClears(stage);
+  const getFusionSourceClears = (stage) => (stage.sourceUniverses || [])
+    .map(universe => UNIVERSE_TO_STAGE_ID[universe])
+    .filter(Boolean)
+    .filter(stageId => completedStages.includes(stageId)).length;
+  const isStageUnlocked = (stage) => {
+    const baseUnlocked = completedStages.length >= getStageRequiredClears(stage);
+    if (!baseUnlocked) return false;
+    if (stage.fusionMission) return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
+    return true;
+  };
   const getBreachBrief = (stage) => {
+    if (stage.fusionMission) {
+      return lang === 'fr'
+        ? `${stage.displayName.fr}: ${stage.fusionMission.decor.fr} Sources stabilisees ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Recompense speciale: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.fusionMission.decor.en} Stabilized sources ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Special reward: ${stage.rewardItemName.en}.`;
+    }
     const modeText = stage.mode === 'RPG'
       ? (lang === 'fr' ? 'assaut en profondeur' : 'deep strike')
       : stage.mode === 'Tactics'
@@ -1316,6 +1363,7 @@ export default function HubScreen({
   const finalStageUnlocked = completedStages.length >= getStageRequiredClears({ id: 38 });
   const visibleStages = STAGES.filter(stage => {
     if (stage.id === 38) return true;
+    if (stage.fusionMission && mediaFilter === 'all') return true;
     return mediaFilter === 'all' || LORE_DB[stage.universe]?.mediaType === mediaFilter;
   });
   const finalStage = STAGES.find(stage => stage.id === 38);
@@ -1909,7 +1957,7 @@ export default function HubScreen({
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                         <span style={{ fontSize: '16px', fontWeight: 'bold' }}>
-                          #{stage.id} {stage.name}
+                          #{stage.id} {stage.displayName?.[lang] || stage.name}
                         </span>
                         <span style={{
                           fontSize: '9px',
@@ -1934,7 +1982,7 @@ export default function HubScreen({
                       </div>
 
                       <div style={{ fontSize: '12px', color: '#bbb', marginTop: '4px' }}>
-                        Univers: <strong style={{ color: '#fff' }}>{stage.universe}</strong> | Boss: <strong style={{ color: '#e74c3c' }}>{stage.bossName}</strong>
+                        Univers: <strong style={{ color: '#fff' }}>{stage.sourceUniverses?.join(' / ') || stage.universe}</strong> | Boss: <strong style={{ color: '#e74c3c' }}>{stage.bossName}</strong>
                       </div>
                       <div style={{ fontSize: '11px', color: '#8fa5aa', marginTop: '4px', maxWidth: '560px', lineHeight: 1.35 }}>
                         {getBreachBrief(stage)}
@@ -1944,6 +1992,7 @@ export default function HubScreen({
                       </div>
                       <div style={{ fontSize: '11px', color: '#ffeb3b', marginTop: '4px' }}>
                         Recompense: {preparedStage.goldPrize} Or | {preparedStage.shardPrize} Fragments {preparedStage.tokenPrize ? `| +${preparedStage.tokenPrize} Jetons` : ''}
+                        {stage.rewardItemName ? ` | ${stage.rewardItemName[lang]}` : ''}
                       </div>
                     </div>
 
@@ -2575,8 +2624,8 @@ export default function HubScreen({
                     ))}
                     {deployedFactionSynergies.map(rule => (
                       <div key={rule.id}>
-                        <strong>{rule.name[lang]}</strong>
-                        <span>{rule.desc[lang]}</span>
+                        <strong>{rule.label}</strong>
+                        <span>{rule.bonus}</span>
                       </div>
                     ))}
                   </div>
@@ -2847,7 +2896,7 @@ export default function HubScreen({
                   <h4 style={{ margin: '0 0 10px 0', borderTop: '1px solid #222', paddingTop: '10px', fontSize: '13px' }}>
                     {getTranslation(lang, 'inventoryTitle')}
                   </h4>
-                  {getGearInInventory().length === 0 && getEventItemsInInventory().length === 0 ? (
+                  {getGearInInventory().length === 0 && getEventItemsInInventory().length === 0 && getSpecialNexusItemsInInventory().length === 0 ? (
                     <div style={{ color: '#555', fontSize: '12px' }}>{getTranslation(lang, 'noItems')}</div>
                   ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '35vh', overflowY: 'auto' }}>
@@ -2927,6 +2976,30 @@ export default function HubScreen({
                           </div>
                         );
                       })}
+
+                      {getSpecialNexusItemsInInventory().map(item => (
+                        <div key={item.id} style={{
+                          padding: '8px 12px',
+                          background: 'rgba(255,235,59,0.04)',
+                          border: '1px solid rgba(255,235,59,0.25)',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          gap: '12px'
+                        }}>
+                          <div>
+                            <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ffeb3b' }}>
+                              {item.name[lang]}
+                            </div>
+                            <span style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, display: 'block', maxWidth: '560px' }}>
+                              {item.desc[lang]}
+                            </span>
+                          </div>
+                          <span style={{ fontSize: '9px', color: '#ffeb3b', border: '1px solid rgba(255,235,59,0.35)', padding: '3px 6px', borderRadius: '3px' }}>
+                            NEXUS
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   )}
 

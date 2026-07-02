@@ -175,6 +175,26 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       };
     };
 
+    if (stage.sourceUniverses?.length) {
+      const fusedMonsters = stage.sourceUniverses.flatMap(universe =>
+        getMonstersForUniverse(universe).slice(0, 2).map(enemy => scaleEnemy({ ...enemy, universe }))
+      );
+      const fusedBosses = stage.sourceUniverses.flatMap(universe =>
+        getBossesForUniverse(universe).slice(0, 1).map(enemy => scaleEnemy({ ...enemy, universe }, true))
+      );
+      const primaryBoss = getWorldBossForUniverse(stage.universe);
+      return {
+        monsters: fusedMonsters.length ? fusedMonsters : getMonstersForUniverse(stage.universe).map(enemy => scaleEnemy(enemy)),
+        bosses: fusedBosses.length ? fusedBosses : getBossesForUniverse(stage.universe).map(enemy => scaleEnemy(enemy, true)),
+        worldBoss: scaleEnemy({
+          ...primaryBoss,
+          name: stage.bossName || primaryBoss.name,
+          hp: Math.round((primaryBoss.hp || 1000) * 1.18),
+          atk: Math.round((primaryBoss.atk || 20) * 1.12)
+        }, true)
+      };
+    }
+
     if (stage.id === 38) {
       // Final Boss Stage
       return {
@@ -466,7 +486,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             BREACH ZONE: {stage.name}
           </h2>
           <span style={{ fontSize: '11px', color: '#aaa' }}>
-            Universe: {stage.universe} ({stage.mode.toUpperCase()})
+            Universe: {stage.sourceUniverses?.join(' / ') || stage.universe} ({stage.mode.toUpperCase()})
           </span>
           {stage.modifier && (
             <div style={{ fontSize: '10px', color: stage.modifier.color || '#ffeb3b', marginTop: '4px' }}>
