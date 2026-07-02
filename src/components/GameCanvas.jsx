@@ -501,8 +501,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           {collectionBonusCount > 0 && (
             <div style={{ fontSize: '10px', color: '#2ecc71', marginTop: '3px' }}>
               {lang === 'fr'
-                ? `Matrice de collections: +${Math.min(30, collectionBonusCount * 2)}% toutes stats.`
-                : `Collection matrix: +${Math.min(30, collectionBonusCount * 2)}% all stats.`}
+                ? `Matrice Nexus: +${Math.min(30, collectionBonusCount * 2)}% toutes stats.`
+                : `Nexus matrix: +${Math.min(30, collectionBonusCount * 2)}% all stats.`}
             </div>
           )}
         </div>

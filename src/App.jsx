@@ -217,7 +217,12 @@ function App() {
       ? 'Compte detecte. La progression locale reste active, cloud disponible.'
       : 'Progression locale. Connecte un compte pour synchroniser.'
   ));
-  const collectionBonusCount = inventory.filter(itemId => itemId.startsWith('collection_reward_')).length;
+  const collectionBonusCount = inventory.filter(itemId => (
+    itemId.startsWith('collection_reward_')
+    || itemId.startsWith('arc_reward_')
+    || itemId.startsWith('arc_')
+    || itemId.startsWith('fusion_')
+  )).length;
 
   const getCurrentSave = () => ({
     lang,

@@ -8,9 +8,10 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'La chasse reste ouverte, mais le Voile n est plus un nid.', en: 'The hunt remains open, but the Veil is no longer a nest.' },
     rewards: [
-      { type: 'skin', name: { fr: 'Skin Armure Acide', en: 'Acid Armor Skin' } },
-      { type: 'item', name: { fr: 'Lame Plasma Corrodee', en: 'Corroded Plasma Blade' } }
-    ]
+      { id: 'arc_xeno_skin_acid_armor', type: 'skin', name: { fr: 'Skin Armure Acide', en: 'Acid Armor Skin' } },
+      { id: 'arc_xeno_item_corroded_plasma', type: 'item', name: { fr: 'Lame Plasma Corrodee', en: 'Corroded Plasma Blade' } }
+    ],
+    claimReward: { gold: 500, shards: 90, tokens: 4 }
   },
   stage_resonance: {
     intro: { fr: 'La Scene Fantome pulse comme un coeur: les Personas de Resonance maintiennent les souvenirs collectifs en vie.', en: 'The Ghost Stage pulses like a heart: Resonance Personas keep collective memory alive.' },
@@ -21,9 +22,10 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'Le Nexus retrouve une frequence: chaque victoire a maintenant un battement.', en: 'The Nexus finds a frequency again: every victory now has a beat.' },
     rewards: [
-      { type: 'skin', name: { fr: 'Skin Neon Persona', en: 'Neon Persona Skin' } },
-      { type: 'item', name: { fr: 'Micro d Ancrage', en: 'Anchor Microphone' } }
-    ]
+      { id: 'arc_stage_skin_neon_persona', type: 'skin', name: { fr: 'Skin Neon Persona', en: 'Neon Persona Skin' } },
+      { id: 'arc_stage_item_anchor_microphone', type: 'item', name: { fr: 'Micro d Ancrage', en: 'Anchor Microphone' } }
+    ],
+    claimReward: { gold: 420, shards: 80, tokens: 5 }
   },
   frontline_sci_fi: {
     intro: { fr: 'L Alliance du Nexus forme le Rempart Atrium avec les soldats, explorateurs et commandants des Trames sci-fi.', en: 'The Nexus Alliance forms the Atrium Bulwark with soldiers, explorers, and commanders from sci-fi Threads.' },
@@ -34,9 +36,10 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'Le Nexus possede enfin une armee, mais pas encore une paix.', en: 'The Nexus finally has an army, but not yet peace.' },
     rewards: [
-      { type: 'skin', name: { fr: 'Skin Rempart Atrium', en: 'Atrium Bulwark Skin' } },
-      { type: 'item', name: { fr: 'Plaque de Commandement SGC/N7', en: 'SGC/N7 Command Plate' } }
-    ]
+      { id: 'arc_scifi_skin_atrium_bulwark', type: 'skin', name: { fr: 'Skin Rempart Atrium', en: 'Atrium Bulwark Skin' } },
+      { id: 'arc_scifi_item_sgc_n7_plate', type: 'item', name: { fr: 'Plaque de Commandement SGC/N7', en: 'SGC/N7 Command Plate' } }
+    ],
+    claimReward: { gold: 460, shards: 85, tokens: 4 }
   },
   cyber_reality: {
     intro: { fr: 'La Zone 404 prouve que certaines breches sont des permissions volees, pas des lieux.', en: 'Zone 404 proves some breaches are stolen permissions, not places.' },
@@ -47,9 +50,10 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'Les sauvegardes ont maintenant une memoire de secours.', en: 'Saves now have a backup memory.' },
     rewards: [
-      { type: 'skin', name: { fr: 'Skin Zone 404', en: 'Zone 404 Skin' } },
-      { type: 'item', name: { fr: 'Fragment de Pare-feu Narratif', en: 'Narrative Firewall Fragment' } }
-    ]
+      { id: 'arc_cyber_skin_zone_404', type: 'skin', name: { fr: 'Skin Zone 404', en: 'Zone 404 Skin' } },
+      { id: 'arc_cyber_item_firewall_fragment', type: 'item', name: { fr: 'Fragment de Pare-feu Narratif', en: 'Narrative Firewall Fragment' } }
+    ],
+    claimReward: { gold: 440, shards: 85, tokens: 4 }
   },
   urban_legends: {
     intro: { fr: 'Les Effaces utilisent la peur pour retirer les noms, puis les visages, puis les mondes.', en: 'The Erased use fear to remove names, then faces, then worlds.' },
@@ -60,9 +64,10 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'Une peur nommee reste dangereuse, mais elle cesse d etre infinie.', en: 'A named fear remains dangerous, but stops being infinite.' },
     rewards: [
-      { type: 'skin', name: { fr: 'Skin Archive Noire', en: 'Black Archive Skin' } },
-      { type: 'item', name: { fr: 'Lampe d Origine', en: 'Origin Lamp' } }
-    ]
+      { id: 'arc_fear_skin_black_archive', type: 'skin', name: { fr: 'Skin Archive Noire', en: 'Black Archive Skin' } },
+      { id: 'arc_fear_item_origin_lamp', type: 'item', name: { fr: 'Lampe d Origine', en: 'Origin Lamp' } }
+    ],
+    claimReward: { gold: 430, shards: 80, tokens: 4 }
   }
 };
 

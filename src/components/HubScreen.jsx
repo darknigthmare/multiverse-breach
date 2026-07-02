@@ -36,7 +36,12 @@ export default function HubScreen({
   const [briefingStageId, setBriefingStageId] = useState(null);
   const [nexusMessage, setNexusMessage] = useState(null);
   const [codexView, setCodexView] = useState('canon');
-  const collectionBonusCount = inventory.filter(itemId => itemId.startsWith('collection_reward_')).length;
+  const collectionBonusCount = inventory.filter(itemId => (
+    itemId.startsWith('collection_reward_')
+    || itemId.startsWith('arc_reward_')
+    || itemId.startsWith('arc_')
+    || itemId.startsWith('fusion_')
+  )).length;
   const playerHero = createPlayerHero(playerProfile);
   const HEROES_DB = [playerHero, ...BASE_HEROES_DB];
 
@@ -966,6 +971,7 @@ export default function HubScreen({
 
   const isCollectionComplete = (collection) => getCompletedUniversesCount(collection.universes) === collection.universes.length;
   const getCollectionMarkerId = (collection) => `collection_reward_${collection.id}`;
+  const getArcMarkerId = (arc) => `arc_reward_${arc.id}`;
 
   const claimCollectionReward = (collection) => {
     const markerId = getCollectionMarkerId(collection);
@@ -983,6 +989,34 @@ export default function HubScreen({
     setEventTokens(prev => prev + collection.reward.tokens);
     setInventory(prev => [...prev, markerId]);
     notifyNexus(lang === 'fr' ? 'Cache de franchise ouverte: bonus passif permanent ajoute.' : 'Franchise cache opened: permanent passive bonus added.', 'success');
+    sound.playSfx('levelup');
+  };
+
+  const claimArcReward = (arc) => {
+    const markerId = getArcMarkerId(arc);
+    const complete = arc.total > 0 && arc.completed >= arc.total;
+    if (inventory.includes(markerId)) {
+      notifyNexus(lang === 'fr' ? 'Arc deja recompense: les bonus restent actifs.' : 'Arc already rewarded: bonuses remain active.', 'warn');
+      return;
+    }
+    if (!complete) {
+      notifyNexus(lang === 'fr' ? 'Arc incomplet: stabilise toutes ses Trames avant de reclamer la cache.' : 'Arc incomplete: stabilize every Thread before claiming the cache.', 'warn');
+      return;
+    }
+
+    const reward = arc.claimReward || { gold: 300, shards: 60, tokens: 2 };
+    const rewardIds = (arc.rewards || []).map(item => item.id).filter(Boolean);
+    setGold(prev => prev + reward.gold);
+    setBreachShards(prev => prev + reward.shards);
+    setEventTokens(prev => prev + reward.tokens);
+    setInventory(prev => {
+      const next = [...prev, markerId];
+      rewardIds.forEach(itemId => {
+        if (!next.includes(itemId)) next.push(itemId);
+      });
+      return next;
+    });
+    notifyNexus(lang === 'fr' ? 'Cache d arc ouverte: skins, item special et passif Nexus ajoutes.' : 'Arc cache opened: skins, special item, and Nexus passive added.', 'success');
     sound.playSfx('levelup');
   };
 
@@ -1136,17 +1170,30 @@ export default function HubScreen({
     // Filter out standard keys that match active Event Items
     return Object.keys(EVENT_ITEMS_DB).map(key => EVENT_ITEMS_DB[key]).filter(it => inventory.includes(it.id) || ['evt_hl_snarks', 'evt_halo_warthog', 'evt_re_cure'].includes(it.id));
   };
-  const SPECIAL_NEXUS_ITEMS = Object.fromEntries(FUSION_MISSIONS.map(mission => [
-    mission.itemId,
-    {
-      id: mission.itemId,
-      name: mission.item,
-      desc: {
-        fr: `${mission.item.fr} recupere dans ${mission.title.fr}. Item special non equipable pour l instant: il servira aux skins, passifs et craft d arcs.`,
-        en: `${mission.item.en} recovered from ${mission.title.en}. Special item not equipable yet: it will feed skins, passives, and arc crafting.`
+  const SPECIAL_NEXUS_ITEMS = Object.fromEntries([
+    ...FUSION_MISSIONS.map(mission => [
+      mission.itemId,
+      {
+        id: mission.itemId,
+        name: mission.item,
+        desc: {
+          fr: `${mission.item.fr} recupere dans ${mission.title.fr}. Item special non equipable pour l instant: il servira aux skins, passifs et craft d arcs.`,
+          en: `${mission.item.en} recovered from ${mission.title.en}. Special item not equipable yet: it will feed skins, passives, and arc crafting.`
+        }
       }
-    }
-  ]));
+    ]),
+    ...Object.entries(ARC_CAMPAIGN_DETAILS).flatMap(([arcId, arc]) => (arc.rewards || []).map(reward => [
+      reward.id,
+      {
+        id: reward.id,
+        name: reward.name,
+        desc: {
+          fr: `${reward.name.fr} debloque par l arc ${arcId}. Compte comme passif Nexus et futur contenu de skin/craft.`,
+          en: `${reward.name.en} unlocked by arc ${arcId}. Counts as a Nexus passive and future skin/craft content.`
+        }
+      }
+    ]))
+  ]);
   const getSpecialNexusItemsInInventory = () => inventory
     .map(itemId => SPECIAL_NEXUS_ITEMS[itemId])
     .filter(Boolean);
@@ -1322,6 +1369,10 @@ export default function HubScreen({
     ...(ARC_CAMPAIGN_DETAILS[arc.id] || {}),
     completed: getCompletedUniversesCount(arc.universes),
     total: arc.universes.length
+  })).map(arc => ({
+    ...arc,
+    complete: arc.total > 0 && arc.completed >= arc.total,
+    claimed: inventory.includes(getArcMarkerId(arc))
   }));
   const collectionProgress = COLLECTION_REWARDS.map(collection => ({
     ...collection,
@@ -1663,8 +1714,8 @@ export default function HubScreen({
                 </div>
                 <div style={{ fontSize: '10px', color: '#39c5bb' }}>
                   {lang === 'fr'
-                    ? `${completedStages.length} breches stabilisees / rang ${metaRank}`
-                    : `${completedStages.length} breaches stabilized / ${metaRank} rank`}
+                    ? `${completedStages.length} breches stabilisees / rang ${metaRank} / ${collectionBonusCount} passifs Nexus`
+                    : `${completedStages.length} breaches stabilized / ${metaRank} rank / ${collectionBonusCount} Nexus passives`}
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
@@ -1813,6 +1864,26 @@ export default function HubScreen({
                               </span>
                             ))}
                           </div>
+                        )}
+                        {arc.claimReward && (
+                          <button
+                            onClick={() => claimArcReward(arc)}
+                            disabled={!arc.complete || arc.claimed}
+                            className="btn-retro"
+                            style={{
+                              marginTop: '7px',
+                              padding: '4px 7px',
+                              fontSize: '9px',
+                              borderColor: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#444',
+                              color: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#666'
+                            }}
+                          >
+                            {arc.claimed
+                              ? (lang === 'fr' ? 'ARC RECLAME' : 'ARC CLAIMED')
+                              : arc.complete
+                                ? (lang === 'fr' ? 'RECLAMER ARC' : 'CLAIM ARC')
+                                : (lang === 'fr' ? 'ARC INCOMPLET' : 'ARC INCOMPLETE')}
+                          </button>
                         )}
                       </div>
                     );
@@ -3259,9 +3330,19 @@ export default function HubScreen({
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
                 {CHARACTER_NARRATIVE_ARCS.map(arc => {
                   const hero = HEROES_DB.find(item => item.id === arc.heroId);
+                  const heroUnlocked = Boolean(hero && unlockedHeroes.includes(hero.id));
+                  const heroLevel = hero ? (heroLevels[hero.id] || 1) : 0;
+                  const characterArcReady = heroUnlocked && (arc.heroId === 'player_anchor' ? completedStages.length >= 1 : heroLevel >= 3);
                   return (
-                    <div key={arc.id} style={{ padding: '13px', border: '1px solid rgba(57,197,187,0.28)', background: 'rgba(57,197,187,0.06)', borderRadius: '5px' }}>
+                    <div key={arc.id} style={{ padding: '13px', border: characterArcReady ? '1px solid #2ecc71' : '1px solid rgba(57,197,187,0.28)', background: characterArcReady ? 'rgba(46,204,113,0.06)' : 'rgba(57,197,187,0.06)', borderRadius: '5px' }}>
                       <strong style={{ color: '#39c5bb', fontSize: '12px' }}>{arc.title[lang]}{hero ? ` / ${hero.name}` : ''}</strong>
+                      <div style={{ color: characterArcReady ? '#2ecc71' : '#888', fontSize: '9px', marginTop: '5px' }}>
+                        {characterArcReady
+                          ? (lang === 'fr' ? 'Arc pret pour une mission personnelle.' : 'Arc ready for a personal mission.')
+                          : heroUnlocked
+                            ? (lang === 'fr' ? `Progression requise: niveau ${arc.heroId === 'player_anchor' ? '1 breche stabilisee' : '3'}.` : `Required progress: ${arc.heroId === 'player_anchor' ? '1 stabilized breach' : 'level 3'}.`)
+                            : (lang === 'fr' ? 'Heros non recrute.' : 'Hero not recruited.')}
+                      </div>
                       <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{arc.intro[lang]}</p>
                       <div style={{ display: 'grid', gap: '4px' }}>
                         {arc.missions.map((mission, idx) => (
