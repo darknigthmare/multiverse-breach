@@ -37,7 +37,8 @@ const DEFAULT_SAVE = {
     freeman: 'evt_hl_snarks',
     masterchief: 'evt_halo_warthog',
     leon: 'evt_re_cure'
-  }
+  },
+  hiddenUniverses: []
 };
 
 const loadSave = () => {
@@ -73,6 +74,7 @@ const normalizeSavePayload = (save = {}) => {
     heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(merged.heroLevels || {}) },
     heroTalents: merged.heroTalents || {},
     heroSkins: merged.heroSkins || {},
+    hiddenUniverses: Array.isArray(merged.hiddenUniverses) ? merged.hiddenUniverses : [],
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
     equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
   };
@@ -218,6 +220,7 @@ function App() {
   const [lastBattleResult, setLastBattleResult] = useState(null);
   const [heroTalents, setHeroTalents] = useState(initialSave.heroTalents); // heroId -> talentId
   const [heroSkins, setHeroSkins] = useState(initialSave.heroSkins);
+  const [hiddenUniverses, setHiddenUniverses] = useState(initialSave.hiddenUniverses);
 
   // Inventory & Equipment
   const [inventory, setInventory] = useState(initialSave.inventory);
@@ -249,6 +252,7 @@ function App() {
     completedStages,
     heroTalents,
     heroSkins,
+    hiddenUniverses,
     inventory,
     equippedGear,
     equippedEventItems
@@ -275,7 +279,7 @@ function App() {
     }, 1200);
 
     return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, inventory, equippedGear, equippedEventItems, account]);
+  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, inventory, equippedGear, equippedEventItems, account]);
 
   // Play ambient music
   useEffect(() => {
@@ -370,6 +374,7 @@ function App() {
     setCompletedStages(merged.completedStages);
     setHeroTalents(merged.heroTalents);
     setHeroSkins(merged.heroSkins || {});
+    setHiddenUniverses(merged.hiddenUniverses || []);
     setInventory(merged.inventory);
     setEquippedGear(merged.equippedGear);
     setEquippedEventItems(merged.equippedEventItems);
@@ -711,6 +716,8 @@ function App() {
           setHeroTalents={setHeroTalents}
           heroSkins={heroSkins}
           setHeroSkins={setHeroSkins}
+          hiddenUniverses={hiddenUniverses}
+          setHiddenUniverses={setHiddenUniverses}
           onLaunchStage={handleLaunchStage}
           onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
         />
@@ -761,6 +768,7 @@ function App() {
           setBreachShards={setBreachShards}
           unlockedHeroes={unlockedHeroes}
           setUnlockedHeroes={setUnlockedHeroes}
+          hiddenUniverses={hiddenUniverses}
           onBack={() => { sound.playSfx('click'); setCurrentScreen('hub'); }}
         />
       )}

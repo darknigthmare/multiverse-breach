@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
@@ -25,6 +25,8 @@ export default function HubScreen({
   equippedEventItems, setEquippedEventItems,
   heroTalents, setHeroTalents,
   heroSkins, setHeroSkins,
+  hiddenUniverses = [],
+  setHiddenUniverses,
   onLaunchStage,
   onGoToPortal
 }) {
@@ -37,6 +39,12 @@ export default function HubScreen({
   const [briefingStageId, setBriefingStageId] = useState(null);
   const [nexusMessage, setNexusMessage] = useState(null);
   const [codexView, setCodexView] = useState('canon');
+  const [adminUniverseSearch, setAdminUniverseSearch] = useState('');
+  const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
+  const isUniverseVisible = useCallback(
+    (universe) => !universe || universe === 'Nexus de Convergence' || !hiddenUniverseSet.has(universe),
+    [hiddenUniverseSet]
+  );
   const collectionBonusCount = inventory.filter(itemId => (
     itemId.startsWith('collection_reward_')
     || itemId.startsWith('arc_reward_')
@@ -44,11 +52,28 @@ export default function HubScreen({
     || itemId.startsWith('fusion_')
   )).length;
   const playerHero = createPlayerHero(playerProfile);
-  const applySkin = (hero) => {
+  const applySkin = useCallback((hero) => {
     const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
     return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
-  };
-  const HEROES_DB = [playerHero, ...BASE_HEROES_DB].map(applySkin);
+  }, [heroSkins]);
+  const ALL_HEROES_DB = useMemo(() => [playerHero, ...BASE_HEROES_DB].map(applySkin), [applySkin, playerHero]);
+  const HEROES_DB = useMemo(
+    () => ALL_HEROES_DB.filter(hero => hero.id === playerHero.id || isUniverseVisible(hero.universe)),
+    [ALL_HEROES_DB, isUniverseVisible, playerHero.id]
+  );
+  const ALL_UNIVERSE_KEYS = Object.keys(LORE_DB).filter(key => key !== 'Nexus de Convergence');
+
+  useEffect(() => {
+    if (!setActiveTeam) return;
+    setActiveTeam(prev => {
+      const filtered = prev.filter(heroId => {
+        const hero = ALL_HEROES_DB.find(item => item.id === heroId);
+        return !hero || hero.id === playerHero.id || isUniverseVisible(hero.universe);
+      });
+      if (filtered.length === prev.length) return prev;
+      return filtered.length > 0 ? filtered : [playerHero.id];
+    });
+  }, [ALL_HEROES_DB, hiddenUniverses, isUniverseVisible, playerHero.id, setActiveTeam]);
 
   const BREACH_MODIFIERS = [
     {
@@ -187,8 +212,14 @@ export default function HubScreen({
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...FUSION_STAGES);
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...CHARACTER_STAGES);
-  const NORMAL_STAGE_COUNT = STAGES.filter(stage => stage.id !== 38 && !stage.characterArc).length;
-  const TOTAL_UNIVERSE_COUNT = Object.keys(LORE_DB).length;
+  const isStageVisibleByAdmin = (stage) => {
+    if (stage.id === 38) return true;
+    if (stage.sourceUniverses) return stage.sourceUniverses.every(isUniverseVisible);
+    return isUniverseVisible(stage.universe);
+  };
+  const ADMIN_VISIBLE_STAGES = STAGES.filter(isStageVisibleByAdmin);
+  const NORMAL_STAGE_COUNT = ADMIN_VISIBLE_STAGES.filter(stage => stage.id !== 38 && !stage.characterArc).length;
+  const TOTAL_UNIVERSE_COUNT = ALL_UNIVERSE_KEYS.filter(isUniverseVisible).length + 1;
   const FINAL_STAGE_REQUIRED_CLEARS = Math.max(18, Math.ceil(NORMAL_STAGE_COUNT * 0.45));
   const META_RANK_THRESHOLDS = {
     strike: Math.max(8, Math.ceil(NORMAL_STAGE_COUNT * 0.15)),
@@ -721,6 +752,7 @@ export default function HubScreen({
     { id: 'evt_ut_redeemer', name: { en: 'Redeemer Missile Targeter', fr: 'Viseur de Missile Rédempteur' }, isCombatEvent: true, universe: 'Unreal', tokenCost: 8 },
     ...EXPANDED_EVENT_SHOP_ITEMS
   ];
+  const visibleEventShopItems = EVENT_SHOP_ITEMS.filter(item => !item.universe || isUniverseVisible(item.universe));
 
   const UNIVERSE_TO_STAGE_ID = {
     'Gears of War': 1, 'Halo': 2, 'Alien': 3, 'Predator': 4, 'Resident Evil': 5,
@@ -1482,11 +1514,66 @@ export default function HubScreen({
   };
 
   const finalStageUnlocked = completedStages.length >= getStageRequiredClears({ id: 38 });
-  const visibleStages = STAGES.filter(stage => {
+  const visibleStages = ADMIN_VISIBLE_STAGES.filter(stage => {
     if (stage.id === 38) return true;
     if (stage.fusionMission && mediaFilter === 'all') return true;
     return matchesMediaFilter(LORE_DB[stage.universe]?.mediaType);
   });
+  const adminUniverseRows = ALL_UNIVERSE_KEYS
+    .map(universe => {
+      const lore = LORE_DB[universe];
+      const heroes = ALL_HEROES_DB.filter(hero => hero.universe === universe);
+      const stageCount = STAGES.filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe)).length;
+      return {
+        universe,
+        lore,
+        hidden: hiddenUniverseSet.has(universe),
+        heroes,
+        stageCount,
+        enemyCount: (ENEMIES_DB[universe]?.monsters?.length || 0) + (ENEMIES_DB[universe]?.bosses?.length || 0) + (ENEMIES_DB[universe]?.worldBoss ? 1 : 0),
+        gearCount: EQUIP_ITEMS_DB.filter(item => item.universe === universe).length
+      };
+    })
+    .filter(row => {
+      const query = adminUniverseSearch.trim().toLowerCase();
+      if (!query) return true;
+      return [
+        row.universe,
+        row.lore?.title?.fr,
+        row.lore?.title?.en,
+        row.lore?.mediaType
+      ].filter(Boolean).some(value => String(value).toLowerCase().includes(query));
+    })
+    .sort((a, b) => a.universe.localeCompare(b.universe));
+  const hiddenUniverseCount = ALL_UNIVERSE_KEYS.filter(universe => hiddenUniverseSet.has(universe)).length;
+  const visibleUniverseCount = ALL_UNIVERSE_KEYS.length - hiddenUniverseCount;
+  const setUniverseHidden = (universe, hidden) => {
+    if (!setHiddenUniverses || universe === 'Nexus de Convergence') return;
+    setHiddenUniverses(prev => {
+      const next = new Set(prev);
+      if (hidden) next.add(universe);
+      else next.delete(universe);
+      return Array.from(next).sort();
+    });
+    sound.playSfx(hidden ? 'click' : 'coin');
+  };
+  const showAllUniverses = () => {
+    setHiddenUniverses?.([]);
+    notifyNexus(lang === 'fr' ? 'Tous les univers sont visibles.' : 'All universes are visible.', 'success');
+    sound.playSfx('levelup');
+  };
+  const hideUniversesByMediaType = (mediaType) => {
+    if (!setHiddenUniverses) return;
+    const targets = ALL_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType);
+    setHiddenUniverses(prev => Array.from(new Set([...prev, ...targets])).sort());
+    notifyNexus(
+      lang === 'fr'
+        ? `Univers ${getMediaTypeLabel(mediaType).toLowerCase()} masques.`
+        : `${getMediaTypeLabel(mediaType)} universes hidden.`,
+      'warn'
+    );
+    sound.playSfx('click');
+  };
   const finalStage = STAGES.find(stage => stage.id === 38);
   const missionPool = visibleStages.filter(stage => stage.id !== 38 && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
   const unlockedMissionPool = missionPool.filter(isStageUnlocked);
@@ -1601,6 +1688,13 @@ export default function HubScreen({
           className={`btn-tab ${activeTab === 'codex' ? 'active-tab' : ''}`}
         >
           {getTranslation(lang, 'tabCodex')}
+        </button>
+        <button
+          onClick={() => { setActiveTab('admin'); sound.playSfx('coin'); }}
+          className={`btn-tab ${activeTab === 'admin' ? 'active-tab' : ''}`}
+          style={{ borderColor: activeTab === 'admin' ? '#ff4500' : '#555', color: activeTab === 'admin' ? '#ff4500' : undefined }}
+        >
+          ADMIN
         </button>
         <button
           onClick={onGoToPortal}
@@ -3294,7 +3388,7 @@ export default function HubScreen({
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
-              {EVENT_SHOP_ITEMS.map(item => {
+              {visibleEventShopItems.map(item => {
                 const owned = inventory.includes(item.id);
                 return (
                   <div key={item.id} style={{
@@ -3333,6 +3427,110 @@ export default function HubScreen({
                   </div>
                 );
               })}
+            </div>
+          </div>
+        )}
+
+        {/* Admin: Universe visibility controls */}
+        {activeTab === 'admin' && (
+          <div className="glass-panel" style={{ padding: '20px' }}>
+            <h3 style={{ margin: '0 0 5px 0', fontSize: '18px', color: '#ff4500' }}>
+              {lang === 'fr' ? 'PANNEAU ADMIN - VISIBILITE DES UNIVERS' : 'ADMIN PANEL - UNIVERSE VISIBILITY'}
+            </h3>
+            <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '16px', lineHeight: 1.45 }}>
+              {lang === 'fr'
+                ? 'Masque un univers pour le retirer des missions, portails, roster, codex et boutiques sans supprimer ses donnees. Utile pour DLC, rotation saisonniere ou retrait temporaire.'
+                : 'Hide a universe to remove it from missions, portals, roster, codex, and shops without deleting its data. Useful for DLC, seasonal rotation, or temporary removal.'}
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px', marginBottom: '16px' }}>
+              <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Visibles' : 'Visible'}</div>
+                <strong style={{ color: '#2ecc71', fontSize: '20px' }}>{visibleUniverseCount}</strong>
+              </div>
+              <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Masques' : 'Hidden'}</div>
+                <strong style={{ color: '#e74c3c', fontSize: '20px' }}>{hiddenUniverseCount}</strong>
+              </div>
+              <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Missions actives' : 'Active missions'}</div>
+                <strong style={{ color: '#39c5bb', fontSize: '20px' }}>{ADMIN_VISIBLE_STAGES.filter(stage => stage.id !== 38).length}</strong>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center', marginBottom: '16px' }}>
+              <input
+                value={adminUniverseSearch}
+                onChange={(event) => setAdminUniverseSearch(event.target.value)}
+                placeholder={lang === 'fr' ? 'Rechercher un univers...' : 'Search universe...'}
+                style={{
+                  flex: '1 1 220px',
+                  minWidth: 0,
+                  background: 'rgba(0,0,0,0.35)',
+                  border: '1px solid #444',
+                  color: '#fff',
+                  padding: '9px 10px',
+                  borderRadius: '4px',
+                  fontFamily: '"Share Tech Mono", monospace'
+                }}
+              />
+              <button onClick={showAllUniverses} className="btn-retro" style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
+                {lang === 'fr' ? 'TOUT AFFICHER' : 'SHOW ALL'}
+              </button>
+              {['game', 'movie', 'series', 'manga', 'music'].map(mediaType => (
+                <button
+                  key={mediaType}
+                  onClick={() => hideUniversesByMediaType(mediaType)}
+                  className="btn-retro"
+                  style={{ fontSize: '10px', padding: '8px 10px', borderColor: '#555', color: '#bbb' }}
+                >
+                  {lang === 'fr' ? 'MASQUER ' : 'HIDE '}{getMediaTypeLabel(mediaType).toUpperCase()}
+                </button>
+              ))}
+            </div>
+
+            <div style={{ maxHeight: '58vh', overflowY: 'auto', paddingRight: '4px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {adminUniverseRows.map(row => (
+                <div
+                  key={row.universe}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'minmax(180px, 1.2fr) minmax(150px, 1fr) auto',
+                    gap: '10px',
+                    alignItems: 'center',
+                    padding: '10px 12px',
+                    borderRadius: '4px',
+                    border: `1px solid ${row.hidden ? 'rgba(231,76,60,0.45)' : 'rgba(57,197,187,0.28)'}`,
+                    background: row.hidden ? 'rgba(231,76,60,0.07)' : 'rgba(57,197,187,0.04)'
+                  }}
+                >
+                  <div>
+                    <div style={{ fontSize: '13px', fontWeight: 'bold', color: row.hidden ? '#ffb3aa' : '#d8fffb' }}>{row.lore?.title?.[lang] || row.universe}</div>
+                    <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{row.universe} - {getMediaTypeLabel(row.lore?.mediaType)}</div>
+                  </div>
+                  <div style={{ fontSize: '10px', color: '#aaa', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    <span>{row.heroes.length} {lang === 'fr' ? 'heros' : 'heroes'}</span>
+                    <span>{row.enemyCount} {lang === 'fr' ? 'ennemis' : 'enemies'}</span>
+                    <span>{row.gearCount} gear</span>
+                    <span>{row.stageCount} stages</span>
+                  </div>
+                  <button
+                    onClick={() => setUniverseHidden(row.universe, !row.hidden)}
+                    className="btn-retro"
+                    style={{
+                      fontSize: '10px',
+                      padding: '7px 10px',
+                      minWidth: '110px',
+                      borderColor: row.hidden ? '#2ecc71' : '#e74c3c',
+                      color: row.hidden ? '#2ecc71' : '#e74c3c'
+                    }}
+                  >
+                    {row.hidden
+                      ? (lang === 'fr' ? 'AFFICHER' : 'SHOW')
+                      : (lang === 'fr' ? 'MASQUER' : 'HIDE')}
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -3516,7 +3714,7 @@ export default function HubScreen({
                   return str.replace(/[a-zA-Z0-9àâäéèêëîïôöùûüûœçÀÆ]/g, '█');
                 };
 
-                return Object.keys(LORE_DB).filter(key => matchesMediaFilter(LORE_DB[key]?.mediaType)).map(key => {
+                return Object.keys(LORE_DB).filter(key => isUniverseVisible(key) && matchesMediaFilter(LORE_DB[key]?.mediaType)).map(key => {
                   const lore = LORE_DB[key];
                   const universeHeroes = HEROES_DB.filter(h => h.universe === key);
                   const ustageId = UNIVERSE_TO_STAGE_ID[key];

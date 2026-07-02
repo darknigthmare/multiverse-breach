@@ -7,7 +7,7 @@ import { LORE_DB } from '../game/lore';
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { EXPANDED_FACTION_UNIVERSES } from '../game/expandedUniverses';
 
-export default function PortalScreen({ lang, breachShards, setBreachShards, unlockedHeroes, setUnlockedHeroes, onBack }) {
+export default function PortalScreen({ lang, breachShards, setBreachShards, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], onBack }) {
   const [summoning, setSummoning] = useState(false);
   const [summonedHero, setSummonedHero] = useState(null);
   const [summonedBatch, setSummonedBatch] = useState(null);
@@ -48,23 +48,26 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
 
   const baseActiveBanner = portalBanners.find(item => item.id === activeBanner) || portalBanners[0];
   const activeBannerData = { ...baseActiveBanner, ...(bannerVisuals[baseActiveBanner.id] || bannerVisuals.multi) };
-  const activeBannerHeroes = HEROES_DB.filter(hero => activeBannerData.match(hero));
+  const hiddenUniverseSet = new Set(hiddenUniverses);
+  const visibleHeroes = HEROES_DB.filter(hero => !hiddenUniverseSet.has(hero.universe));
+  const summonableHeroes = visibleHeroes.length > 0 ? visibleHeroes : HEROES_DB;
+  const activeBannerHeroes = summonableHeroes.filter(hero => activeBannerData.match(hero));
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
   const activeBackdrop = getOpenAiBackdropSrc(activeBannerData.universe, activeBannerData.mode);
 
   const pickHero = (ownedIds, options = {}) => {
     const banner = activeBannerData;
-    const bannerPool = HEROES_DB.filter(hero => banner.match(hero));
-    const otherPool = HEROES_DB.filter(hero => !banner.match(hero));
-    let targetPool = HEROES_DB;
+    const bannerPool = summonableHeroes.filter(hero => banner.match(hero));
+    const otherPool = summonableHeroes.filter(hero => !banner.match(hero));
+    let targetPool = summonableHeroes;
 
     if (options.forceBanner && activeBanner !== 'multi' && bannerPool.length > 0) {
       targetPool = bannerPool;
     } else if (activeBanner !== 'multi' && Math.random() < banner.focusRate) {
-      targetPool = bannerPool.length > 0 ? bannerPool : HEROES_DB;
+      targetPool = bannerPool.length > 0 ? bannerPool : summonableHeroes;
     } else if (activeBanner !== 'multi') {
-      targetPool = otherPool.length > 0 ? otherPool : HEROES_DB;
+      targetPool = otherPool.length > 0 ? otherPool : summonableHeroes;
     }
 
     const lockedInPool = targetPool.filter(hero => !ownedIds.includes(hero.id));
@@ -207,7 +210,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
           {portalBanners.map(banner => {
             const visual = bannerVisuals[banner.id] || bannerVisuals.multi;
             const pack = { ...banner, ...visual };
-            const bannerHeroes = HEROES_DB.filter(hero => banner.match(hero));
+            const bannerHeroes = summonableHeroes.filter(hero => banner.match(hero));
             const owned = bannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
             const isActive = activeBanner === banner.id;
             const packImage = getOpenAiBackdropSrc(pack.universe, pack.mode);
