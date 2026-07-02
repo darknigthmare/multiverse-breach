@@ -864,6 +864,57 @@ export default function HubScreen({
   const selectedHero = HEROES_DB.find(h => h.id === selectedHeroId) || HEROES_DB[0];
   const selectedHeroStats = getHeroStats(selectedHero);
   const selectedPlaque = getCharacterPlaque(selectedHero);
+  const selectedLore = LORE_DB[selectedHero.universe];
+  const selectedOriginLore = selectedLore?.desc?.[lang] || (
+    lang === 'fr'
+      ? `Monde source indexe par le Nexus: ${selectedHero.universe}. Les archives locales restent partielles, mais la signature de ce personnage confirme une origine stable dans cette realite.`
+      : `Source world indexed by the Nexus: ${selectedHero.universe}. Local archives remain partial, but this character signature confirms a stable origin in that reality.`
+  );
+  const selectedBreachLore = lang === 'fr'
+    ? `${selectedHero.name} a ete extrait pendant une rupture de realite et recode comme operateur ${selectedHero.category}. Dans Multiverse Breach, sa specialite "${selectedHero.special?.name || selectedPlaque.role.fr}" sert a stabiliser les failles ${selectedHero.universe} et a convertir son mythe d origine en role jouable du Nexus.`
+    : `${selectedHero.name} was extracted during a reality rupture and recoded as a ${selectedHero.category} operator. In Multiverse Breach, the specialty "${selectedHero.special?.name || selectedPlaque.role.en}" stabilizes ${selectedHero.universe} breaches and turns the original myth into a playable Nexus role.`;
+
+  const formatBoostText = (boost) => Object.keys(boost || {})
+    .map(key => `+${boost[key]} ${key.toUpperCase()}`)
+    .join(' / ');
+
+  const getGearDisplay = (gearId) => {
+    if (!gearId) return null;
+    const isUpgraded = gearId.endsWith('_plus');
+    const baseId = isUpgraded ? gearId.replace('_plus', '') : gearId;
+    const item = EQUIP_ITEMS_DB.find(it => it.id === baseId);
+    if (!item) return null;
+    const factor = isUpgraded ? 2 : 1;
+    const boost = Object.fromEntries(Object.entries(item.boost || {}).map(([key, value]) => [key, value * factor]));
+    return {
+      ...item,
+      id: gearId,
+      isUpgraded,
+      boost,
+      name: isUpgraded ? { en: `${item.name.en} +`, fr: `${item.name.fr} +` } : item.name
+    };
+  };
+
+  const getGearLore = (item) => {
+    if (!item) return '';
+    const boostText = formatBoostText(item.boost);
+    return lang === 'fr'
+      ? `Relique synchronisee ${item.universe}. Bonus actif: ${boostText}. Le Nexus l utilise comme amplificateur d arme pour renforcer la signature de combat du heros.`
+      : `${item.universe} synchronized relic. Active boost: ${boostText}. The Nexus uses it as a weapon amplifier to reinforce the hero combat signature.`;
+  };
+
+  const getEventLore = (item) => {
+    if (!item) return '';
+    const baseDesc = item.desc?.[lang] || '';
+    return lang === 'fr'
+      ? `${baseDesc} Declencheur evenementiel lie au monde ${selectedHero.universe}: il respecte le lore du heros et charge une action de breche unique.`
+      : `${baseDesc} Event trigger tied to ${selectedHero.universe}: it respects the hero lore and charges a unique breach action.`;
+  };
+
+  const selectedEquippedGear = getGearDisplay(equippedGear[selectedHero.id]);
+  const selectedEquippedEvent = equippedEventItems[selectedHero.id]
+    ? Object.values(EVENT_ITEMS_DB).find(item => item.id === equippedEventItems[selectedHero.id])
+    : null;
 
   // Filter items in inventory
   const getGearInInventory = () => {
@@ -888,12 +939,8 @@ export default function HubScreen({
   };
 
   const getEquippedGearName = (gearId) => {
-    if (!gearId) return '';
-    const isUpgraded = gearId.endsWith('_plus');
-    const baseId = isUpgraded ? gearId.replace('_plus', '') : gearId;
-    const item = EQUIP_ITEMS_DB.find(it => it.id === baseId);
-    if (!item) return '';
-    return isUpgraded ? `${item.name[lang]} +` : item.name[lang];
+    const item = getGearDisplay(gearId);
+    return item ? item.name[lang] : '';
   };
 
   const getEventItemsInInventory = () => {
@@ -1806,21 +1853,21 @@ export default function HubScreen({
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '20px', marginTop: '15px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1.1fr', gap: '20px', marginTop: '15px' }}>
                   <div style={{
                     background: '#04020a',
-                    minHeight: '170px',
+                    minHeight: '260px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     border: `1px solid ${selectedHero.primaryColor}33`,
                     overflow: 'hidden'
                   }}>
-                    <canvas id="detailCanvas" width="210" height="160" style={{ width: '100%', maxWidth: '260px', height: '160px' }} ref={(el) => {
+                    <canvas id="detailCanvas" width="300" height="250" style={{ width: '100%', maxWidth: '340px', height: '250px' }} ref={(el) => {
                       if (!el) return;
                       const ctx = el.getContext('2d');
-                      ctx.clearRect(0, 0, 210, 160);
-                      drawPixelSprite(ctx, 105, 112, selectedHero, 0, 1, 132);
+                      ctx.clearRect(0, 0, 300, 250);
+                      drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178);
                     }} />
                   </div>
 
@@ -1870,10 +1917,10 @@ export default function HubScreen({
                 <div style={{ marginTop: '15px', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '12px' }}>
                   <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
                     <div style={{ fontSize: '10px', color: selectedHero.primaryColor, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
-                      {lang === 'fr' ? 'Plaquette de personnage' : 'Character plaque'}
+                      {lang === 'fr' ? 'Lore Breach Multiverse' : 'Breach Multiverse lore'}
                     </div>
                     <div style={{ fontSize: '12px', color: '#d8d8d8', lineHeight: 1.45 }}>
-                      {selectedPlaque.dossier[lang]}
+                      {selectedBreachLore}
                     </div>
                   </div>
                   <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
@@ -1890,6 +1937,52 @@ export default function HubScreen({
                         </span>
                       ))}
                     </div>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: '12px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div style={{ padding: '12px', border: `1px solid ${selectedHero.primaryColor}44`, background: `${selectedHero.primaryColor}0f`, borderRadius: '4px' }}>
+                    <div style={{ fontSize: '10px', color: selectedHero.primaryColor, fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
+                      {lang === 'fr' ? 'Monde d origine' : 'Origin world'}
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#d8d8d8', lineHeight: 1.45 }}>
+                      {selectedOriginLore}
+                    </div>
+                  </div>
+                  <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.24)', borderRadius: '4px' }}>
+                    <div style={{ fontSize: '10px', color: '#ff8c00', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '6px' }}>
+                      {lang === 'fr' ? 'Dossier personnage' : 'Character dossier'}
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#d8d8d8', lineHeight: 1.45 }}>
+                      {selectedPlaque.dossier[lang]}
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: '12px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="equip-lore-card">
+                    <div className="equip-lore-label">{getTranslation(lang, 'weaponRelic')}</div>
+                    {selectedEquippedGear ? (
+                      <>
+                        <strong>{selectedEquippedGear.name[lang]}</strong>
+                        <span>{formatBoostText(selectedEquippedGear.boost)}</span>
+                        <p>{getGearLore(selectedEquippedGear)}</p>
+                      </>
+                    ) : (
+                      <p>{lang === 'fr' ? 'Aucune relique armee: le heros combat avec sa signature de base.' : 'No armed relic: the hero fights with the base signature.'}</p>
+                    )}
+                  </div>
+                  <div className="equip-lore-card event">
+                    <div className="equip-lore-label">{getTranslation(lang, 'eventItem')}</div>
+                    {selectedEquippedEvent ? (
+                      <>
+                        <strong>{selectedEquippedEvent.name[lang]}</strong>
+                        <span>{selectedHero.universe}</span>
+                        <p>{getEventLore(selectedEquippedEvent)}</p>
+                      </>
+                    ) : (
+                      <p>{lang === 'fr' ? 'Aucun objet evenementiel synchronise pour cette fiche.' : 'No event item synchronized for this profile.'}</p>
+                    )}
                   </div>
                 </div>
 
@@ -2146,6 +2239,12 @@ export default function HubScreen({
                           <div style={{ fontWeight: 'bold', color: '#fff', fontSize: '13px', margin: '4px 0' }}>
                             {getEquippedGearName(equippedGear[selectedHero.id])}
                           </div>
+                          {selectedEquippedGear && (
+                            <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, marginBottom: '6px' }}>
+                              {formatBoostText(selectedEquippedGear.boost)}<br />
+                              {getGearLore(selectedEquippedGear)}
+                            </div>
+                          )}
                           <button onClick={() => unequipItem(selectedHero.id)} className="btn-retro" style={{ fontSize: '10px', padding: '3px 8px', borderColor: '#e74c3c', color: '#e74c3c' }}>
                             {getTranslation(lang, 'unequipBtn')}
                           </button>
@@ -2161,8 +2260,13 @@ export default function HubScreen({
                       {equippedEventItems[selectedHero.id] ? (
                         <div>
                           <div style={{ fontWeight: 'bold', color: '#fff', fontSize: '13px', margin: '4px 0' }}>
-                            {EVENT_ITEMS_DB[selectedHero.universe]?.name[lang]}
+                            {selectedEquippedEvent?.name[lang]}
                           </div>
+                          {selectedEquippedEvent && (
+                            <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, marginBottom: '6px' }}>
+                              {getEventLore(selectedEquippedEvent)}
+                            </div>
+                          )}
                           <button onClick={() => unequipEventItem(selectedHero.id)} className="btn-retro" style={{ fontSize: '10px', padding: '3px 8px', borderColor: '#e74c3c', color: '#e74c3c' }}>
                             {getTranslation(lang, 'unequipBtn')}
                           </button>
@@ -2198,9 +2302,11 @@ export default function HubScreen({
                             <div>
                               <div style={{ fontWeight: 'bold', fontSize: '12px' }}>{item.name[lang]}</div>
                               <span style={{ fontSize: '10px', color: '#888' }}>
-                                Univers: {item.universe} | Boost: +
-                                {Object.keys(item.boost).map(k => `${k.toUpperCase()} ${item.boost[k]}`).join(', ')}
+                                Univers: {item.universe} | Boost: {formatBoostText(item.boost)}
                               </span>
+                              <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, marginTop: '3px', maxWidth: '520px' }}>
+                                {getGearLore(item)}
+                              </div>
                             </div>
 
                             {!isEquippedOnSelf && (
@@ -2237,7 +2343,9 @@ export default function HubScreen({
                               <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ff4500' }}>
                                 🌟 {item.name[lang]}
                               </div>
-                              <span style={{ fontSize: '10px', color: '#aaa' }}>{item.desc[lang]}</span>
+                              <span style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, display: 'block', maxWidth: '520px' }}>
+                                {getEventLore(item)}
+                              </span>
                             </div>
 
                             {!isEquippedOnSelf && (
