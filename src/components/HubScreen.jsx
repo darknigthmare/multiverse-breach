@@ -1468,12 +1468,24 @@ export default function HubScreen({
     if (stage.id === 38) return getFinalGameBoss();
     return ENEMIES_DB[stage.universe]?.worldBoss || ENEMIES_DB[stage.universe]?.bosses?.[0];
   };
+  const matchesMediaFilter = (mediaType) => (
+    mediaFilter === 'all'
+    || mediaType === mediaFilter
+    || (mediaFilter === 'movie' && mediaType === 'series')
+  );
+  const getMediaTypeLabel = (mediaType) => {
+    if (mediaType === 'game') return 'Game';
+    if (mediaType === 'movie') return 'Movie';
+    if (mediaType === 'series') return lang === 'fr' ? 'Serie' : 'Series';
+    if (mediaType === 'music') return lang === 'fr' ? 'Musique' : 'Music';
+    return 'Web / Manga';
+  };
 
   const finalStageUnlocked = completedStages.length >= getStageRequiredClears({ id: 38 });
   const visibleStages = STAGES.filter(stage => {
     if (stage.id === 38) return true;
     if (stage.fusionMission && mediaFilter === 'all') return true;
-    return mediaFilter === 'all' || LORE_DB[stage.universe]?.mediaType === mediaFilter;
+    return matchesMediaFilter(LORE_DB[stage.universe]?.mediaType);
   });
   const finalStage = STAGES.find(stage => stage.id === 38);
   const missionPool = visibleStages.filter(stage => stage.id !== 38 && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
@@ -2304,7 +2316,7 @@ export default function HubScreen({
             <div className="glass-panel" style={{ padding: '16px', maxHeight: '70vh', overflowY: 'auto' }}>
               <h3 style={{ margin: '0 0 10px 0', fontSize: '15px', color: '#39c5bb' }}>{getTranslation(lang, 'recountedHeroes')}</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {HEROES_DB.filter(h => unlockedHeroes.includes(h.id) && (mediaFilter === 'all' || LORE_DB[h.universe]?.mediaType === mediaFilter)).map((hero) => {
+                {HEROES_DB.filter(h => unlockedHeroes.includes(h.id) && matchesMediaFilter(LORE_DB[h.universe]?.mediaType)).map((hero) => {
                   const isSelected = hero.id === selectedHeroId;
                   const isActive = activeTeam.includes(hero.id);
                   const lvl = heroLevels[hero.id] || 1;
@@ -3504,7 +3516,7 @@ export default function HubScreen({
                   return str.replace(/[a-zA-Z0-9àâäéèêëîïôöùûüûœçÀÆ]/g, '█');
                 };
 
-                return Object.keys(LORE_DB).filter(key => mediaFilter === 'all' || LORE_DB[key]?.mediaType === mediaFilter).map(key => {
+                return Object.keys(LORE_DB).filter(key => matchesMediaFilter(LORE_DB[key]?.mediaType)).map(key => {
                   const lore = LORE_DB[key];
                   const universeHeroes = HEROES_DB.filter(h => h.universe === key);
                   const ustageId = UNIVERSE_TO_STAGE_ID[key];
@@ -3527,7 +3539,7 @@ export default function HubScreen({
                             {lore.title[lang]}
                           </span>
                           <span style={{ fontSize: '9px', padding: '2px 6px', background: 'rgba(255,255,255,0.06)', borderRadius: '3px', color: '#aaa', textTransform: 'uppercase' }}>
-                            {lore.mediaType === 'game' ? '🕹️ Game' : lore.mediaType === 'movie' ? '🎬 Movie' : lore.mediaType === 'music' ? (lang === 'fr' ? 'Musique' : 'Music') : '📚 Web / Manga'}
+                            {getMediaTypeLabel(lore.mediaType)}
                           </span>
                         </div>
                         <div style={{ marginBottom: '8px' }}>
