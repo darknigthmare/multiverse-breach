@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
+import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
@@ -7,9 +7,12 @@ import { CORE_CODEX_ENTRIES, LORE_DB, NARRATIVE_ACTS } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages } from '../game/expandedUniverses';
 import { getCharacterPlaque } from '../game/characterPlaques';
+import { createPlayerHero } from '../game/playerHero';
+import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 
 export default function HubScreen({
   lang,
+  playerProfile,
   gold, setGold,
   breachShards, setBreachShards,
   eventTokens, setEventTokens,
@@ -32,7 +35,10 @@ export default function HubScreen({
   const [showMissionArchive, setShowMissionArchive] = useState(false);
   const [briefingStageId, setBriefingStageId] = useState(null);
   const [nexusMessage, setNexusMessage] = useState(null);
+  const [codexView, setCodexView] = useState('canon');
   const collectionBonusCount = inventory.filter(itemId => itemId.startsWith('collection_reward_')).length;
+  const playerHero = createPlayerHero(playerProfile);
+  const HEROES_DB = [playerHero, ...BASE_HEROES_DB];
 
   const BREACH_MODIFIERS = [
     {
@@ -1266,6 +1272,7 @@ export default function HubScreen({
   const arcProgress = NARRATIVE_ARCS.map(arc => ({
     ...arc,
     ...(ARC_DETAIL_BY_ID[arc.id] || {}),
+    ...(ARC_CAMPAIGN_DETAILS[arc.id] || {}),
     completed: getCompletedUniversesCount(arc.universes),
     total: arc.universes.length
   }));
@@ -1591,6 +1598,78 @@ export default function HubScreen({
             </div>
 
             <div style={{
+              padding: '14px',
+              marginBottom: '14px',
+              background: 'rgba(0,0,0,0.28)',
+              border: '1px solid rgba(255,235,59,0.18)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#ffeb3b', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Rapport Meta Nexus' : 'Nexus Meta Report'}
+                  </div>
+                  <div style={{ fontSize: '10px', color: '#9fb6bb', marginTop: '3px' }}>
+                    {lang === 'fr' ? 'Objectifs conseilles, reputation, evenements et missions fusionnees.' : 'Recommended goals, reputation, events, and fused missions.'}
+                  </div>
+                </div>
+                <div style={{ fontSize: '10px', color: '#39c5bb' }}>
+                  {lang === 'fr'
+                    ? `${completedStages.length} breches stabilisees / rang ${metaRank}`
+                    : `${completedStages.length} breaches stabilized / ${metaRank} rank`}
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
+                <div style={{ padding: '10px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px' }}>
+                  <strong style={{ color: '#39c5bb', fontSize: '10px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Prochaines decisions' : 'Next decisions'}
+                  </strong>
+                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
+                    {META_NEXUS_RECOMMENDATIONS.map(entry => (
+                      <span key={entry.id} style={{ color: '#dceff0', fontSize: '10px', lineHeight: 1.35 }}>{entry.text[lang]}</span>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: '10px', border: '1px solid rgba(155,89,182,0.22)', background: 'rgba(155,89,182,0.05)', borderRadius: '4px' }}>
+                  <strong style={{ color: '#d9b6ff', fontSize: '10px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Reputation future' : 'Future reputation'}
+                  </strong>
+                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
+                    {REPUTATION_TRACKS.slice(0, 5).map(track => (
+                      <span key={track.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
+                        <b>{track.label[lang]}</b>: {track.gameplay[lang]}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: '10px', border: '1px solid rgba(255,140,0,0.22)', background: 'rgba(255,140,0,0.05)', borderRadius: '4px' }}>
+                  <strong style={{ color: '#ffb15c', fontSize: '10px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Missions fusionnees' : 'Fused missions'}
+                  </strong>
+                  <div style={{ display: 'grid', gap: '6px', marginTop: '7px' }}>
+                    {FUSION_MISSIONS.map(mission => (
+                      <span key={mission.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
+                        <b>{mission.title[lang]}</b>: {mission.decor[lang]} {lang === 'fr' ? 'Item' : 'Item'}: {mission.item[lang]}.
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ padding: '10px', border: '1px solid rgba(46,204,113,0.22)', background: 'rgba(46,204,113,0.05)', borderRadius: '4px' }}>
+                  <strong style={{ color: '#8dffb1', fontSize: '10px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Evenements saisonniers' : 'Seasonal events'}
+                  </strong>
+                  <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
+                    {SPECIAL_EVENTS.map(event => (
+                      <span key={event.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
+                        <b>{event.title[lang]}</b>: {event.reward[lang]}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style={{
               display: 'grid',
               gridTemplateColumns: '1.1fr 1.4fr',
               gap: '12px',
@@ -1661,9 +1740,32 @@ export default function HubScreen({
                           <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: arc.color }} />
                         </div>
                         <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{arc.premise[lang]}</div>
+                        {arc.intro && (
+                          <div style={{ fontSize: '9px', color: '#ffeb3b', lineHeight: 1.35, marginTop: '6px' }}>
+                            {lang === 'fr' ? 'Intro: ' : 'Intro: '}{arc.intro[lang]}
+                          </div>
+                        )}
                         <div style={{ fontSize: '10px', color: '#d0d0d0', lineHeight: 1.35, marginTop: '7px' }}>{arc.stakes?.[lang]}</div>
                         <div style={{ fontSize: '9px', color: '#9adbd6', lineHeight: 1.35, marginTop: '6px' }}>{arc.gameplay?.[lang]}</div>
+                        {arc.missions && (
+                          <div style={{ display: 'grid', gap: '3px', marginTop: '7px' }}>
+                            {arc.missions.slice(0, 3).map((mission, idx) => (
+                              <span key={`${arc.id}-mission-${idx}`} style={{ fontSize: '9px', color: '#cfcfcf', lineHeight: 1.25 }}>
+                                {idx + 1}. {mission[lang]}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                         <div style={{ fontSize: '9px', color: '#888', marginTop: '5px' }}>{arc.reward[lang]} - {arc.finale?.[lang]}</div>
+                        {arc.rewards && (
+                          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '6px' }}>
+                            {arc.rewards.map(reward => (
+                              <span key={reward.name[lang]} style={{ fontSize: '8px', color: '#fff', border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px' }}>
+                                {reward.name[lang]}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     );
                   })}
@@ -2966,7 +3068,31 @@ export default function HubScreen({
                 : `Browse the historical logs of the spacetime anomalies detected across the ${TOTAL_UNIVERSE_COUNT} known universes of the Multiverse.`}
             </p>
 
-            <div style={{ marginBottom: '16px' }}>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '16px' }}>
+              {[
+                { id: 'canon', label: { fr: 'Canon', en: 'Canon' } },
+                { id: 'universes', label: { fr: 'Univers', en: 'Universes' } },
+                { id: 'groups', label: { fr: 'Groupes', en: 'Groups' } },
+                { id: 'characters', label: { fr: 'Personnages', en: 'Characters' } },
+                { id: 'fusions', label: { fr: 'Fusions', en: 'Fusions' } }
+              ].map(view => (
+                <button
+                  key={view.id}
+                  onClick={() => { setCodexView(view.id); sound.playSfx('click'); }}
+                  className={`btn-retro ${codexView === view.id ? 'active-tab' : ''}`}
+                  style={{
+                    fontSize: '10px',
+                    padding: '6px 10px',
+                    borderColor: codexView === view.id ? '#ffeb3b' : '#444',
+                    color: codexView === view.id ? '#ffeb3b' : '#aaa'
+                  }}
+                >
+                  {view.label[lang]}
+                </button>
+              ))}
+            </div>
+
+            <div style={{ display: codexView === 'canon' ? 'block' : 'none', marginBottom: '16px' }}>
               <div style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '8px' }}>
                 {lang === 'fr' ? 'Canon du Nexus' : 'Nexus canon'}
               </div>
@@ -2993,7 +3119,7 @@ export default function HubScreen({
               </div>
             </div>
 
-            <div style={{ marginBottom: '16px' }}>
+            <div style={{ display: codexView === 'canon' ? 'block' : 'none', marginBottom: '16px' }}>
               <div style={{ fontSize: '11px', color: '#ff8c00', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '8px' }}>
                 {lang === 'fr' ? 'Arc narratif principal' : 'Main story arc'}
               </div>
@@ -3020,7 +3146,7 @@ export default function HubScreen({
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px', marginBottom: '16px' }}>
+            <div style={{ display: codexView === 'canon' ? 'grid' : 'none', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px', marginBottom: '16px' }}>
               {timelineProgress.map(entry => (
                 <div key={entry.id} style={{
                   padding: '10px',
@@ -3039,7 +3165,61 @@ export default function HubScreen({
               ))}
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '15px', maxHeight: '450px', overflowY: 'auto', paddingRight: '5px' }}>
+            {codexView === 'groups' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+                {arcProgress.map(arc => (
+                  <div key={arc.id} style={{ padding: '13px', border: `1px solid ${arc.color}55`, background: `${arc.color}10`, borderRadius: '5px' }}>
+                    <strong style={{ color: arc.color, fontSize: '12px' }}>{arc.title[lang]}</strong>
+                    <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{arc.intro?.[lang] || arc.premise[lang]}</p>
+                    <div style={{ display: 'grid', gap: '4px' }}>
+                      {(arc.missions || []).slice(0, 3).map((mission, idx) => (
+                        <span key={`${arc.id}-codex-${idx}`} style={{ color: '#d8d8d8', fontSize: '9px' }}>{idx + 1}. {mission[lang]}</span>
+                      ))}
+                    </div>
+                    <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px' }}>{arc.outro?.[lang]}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {codexView === 'characters' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+                {CHARACTER_NARRATIVE_ARCS.map(arc => {
+                  const hero = HEROES_DB.find(item => item.id === arc.heroId);
+                  return (
+                    <div key={arc.id} style={{ padding: '13px', border: '1px solid rgba(57,197,187,0.28)', background: 'rgba(57,197,187,0.06)', borderRadius: '5px' }}>
+                      <strong style={{ color: '#39c5bb', fontSize: '12px' }}>{arc.title[lang]}{hero ? ` / ${hero.name}` : ''}</strong>
+                      <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{arc.intro[lang]}</p>
+                      <div style={{ display: 'grid', gap: '4px' }}>
+                        {arc.missions.map((mission, idx) => (
+                          <span key={`${arc.id}-mission-${idx}`} style={{ color: '#d8d8d8', fontSize: '9px' }}>{idx + 1}. {mission[lang]}</span>
+                        ))}
+                      </div>
+                      <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px' }}>{arc.reward[lang]}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {codexView === 'fusions' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+                {[...FUSION_MISSIONS, ...UNIVERSE_NARRATIVE_ARCS].map(entry => (
+                  <div key={entry.id} style={{ padding: '13px', border: '1px solid rgba(255,140,0,0.3)', background: 'rgba(255,140,0,0.06)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#ff8c00', fontSize: '12px' }}>{entry.title[lang]}</strong>
+                    <div style={{ color: '#aaa', fontSize: '9px', margin: '5px 0' }}>{entry.universes.join(' / ')}</div>
+                    <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{entry.intro?.[lang] || entry.decor?.[lang]}</p>
+                    {entry.missions && entry.missions.map((mission, idx) => (
+                      <div key={`${entry.id}-mission-${idx}`} style={{ color: '#d8d8d8', fontSize: '9px', marginTop: '3px' }}>{idx + 1}. {mission[lang]}</div>
+                    ))}
+                    {entry.enemies && <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '6px' }}>{entry.enemies[lang]}</div>}
+                    <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px' }}>{entry.reward?.[lang] || entry.item?.[lang]}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div style={{ display: codexView === 'universes' ? 'grid' : 'none', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '15px', maxHeight: '450px', overflowY: 'auto', paddingRight: '5px' }}>
               {(() => {
                 const encryptString = (str) => {
                   return str.replace(/[a-zA-Z0-9àâäéèêëîïôöùûüûœçÀÆ]/g, '█');
@@ -3049,7 +3229,7 @@ export default function HubScreen({
                   const lore = LORE_DB[key];
                   const universeHeroes = HEROES_DB.filter(h => h.universe === key);
                   const ustageId = UNIVERSE_TO_STAGE_ID[key];
-                  const isCleared = completedStages.includes(ustageId);
+                  const isCleared = !ustageId || completedStages.includes(ustageId);
                   const bossIntel = ENEMIES_DB[key]?.worldBoss || ENEMIES_DB[key]?.bosses?.[0];
                   
                   return (

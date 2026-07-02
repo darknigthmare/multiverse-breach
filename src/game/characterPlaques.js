@@ -1,4 +1,20 @@
 export const CHARACTER_PLAQUES = {
+  player_anchor: {
+    clearance: 'ARC-00',
+    rank: { fr: 'Ancre vivante', en: 'Living Anchor' },
+    role: { fr: 'Commandant joueur', en: 'Player commander' },
+    callSign: 'Ancre',
+    origin: { fr: 'Nexus de Convergence', en: 'Nexus of Convergence' },
+    dossier: {
+      fr: 'Le premier heros n est pas invoque par portail: c est le joueur lui-meme, une signature assez stable pour rester entiere quand plusieurs Trames se superposent. A.R.C.A. le classe comme Ancre vivante, capable de retenir la progression, commander les escouades et servir de cle au futur multijoueur.',
+      en: 'The first hero is not summoned through a portal: it is the player, a signature stable enough to remain whole when several Threads overlap. A.R.C.A. classifies this profile as a living Anchor, able to retain progression, command squads, and serve as the key to future multiplayer.'
+    },
+    doctrine: {
+      fr: 'Commandement d Ancrage: stabilisation de l equipe, lecture des failles et resistance aux suppressions du Sans-Auteur.',
+      en: 'Anchor Command: squad stabilization, breach reading, and resistance against Authorless deletion.'
+    },
+    tags: ['Nexus', 'Ancre', 'A.R.C.A.', 'Player']
+  },
   marcus: {
     clearance: 'COG-01',
     rank: { fr: 'Sergent veteran', en: 'Veteran Sergeant' },

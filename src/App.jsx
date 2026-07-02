@@ -9,6 +9,7 @@ import { getTranslation } from './game/translation';
 import { EQUIP_ITEMS_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
 import { getStoredSession, loadCloudSave, saveCloudSave, signInAccount, signOutAccount, signUpAccount, storeSession } from './game/cloudSave';
+import { PLAYER_HERO_ID } from './game/playerHero';
 
 const SAVE_KEY = 'multiverse_breach_save_v2';
 
@@ -17,18 +18,21 @@ const DEFAULT_SAVE = {
   gold: 200,
   breachShards: 150,
   eventTokens: 10,
-  unlockedHeroes: ['freeman', 'masterchief', 'leon'],
-  heroLevels: { freeman: 1, masterchief: 1, leon: 1 },
-  activeTeam: ['freeman', 'masterchief', 'leon'],
+  playerProfile: { name: 'Ancre' },
+  unlockedHeroes: [PLAYER_HERO_ID, 'freeman', 'masterchief'],
+  heroLevels: { [PLAYER_HERO_ID]: 1, freeman: 1, masterchief: 1, leon: 1 },
+  activeTeam: [PLAYER_HERO_ID, 'freeman', 'masterchief'],
   completedStages: [],
   heroTalents: {},
   inventory: ['cog_armor', 'green_herb', 'hev_battery'],
   equippedGear: {
+    [PLAYER_HERO_ID]: null,
     freeman: 'hev_battery',
     masterchief: null,
     leon: 'green_herb'
   },
   equippedEventItems: {
+    [PLAYER_HERO_ID]: null,
     freeman: 'evt_hl_snarks',
     masterchief: 'evt_halo_warthog',
     leon: 'evt_re_cure'
@@ -41,14 +45,7 @@ const loadSave = () => {
     const raw = window.localStorage.getItem(SAVE_KEY);
     if (!raw) return DEFAULT_SAVE;
     const parsed = JSON.parse(raw);
-    return {
-      ...DEFAULT_SAVE,
-      ...parsed,
-      heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(parsed.heroLevels || {}) },
-      heroTalents: parsed.heroTalents || {},
-      equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(parsed.equippedGear || {}) },
-      equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(parsed.equippedEventItems || {}) }
-    };
+    return normalizeSavePayload(parsed);
   } catch {
     return DEFAULT_SAVE;
   }
@@ -57,6 +54,26 @@ const loadSave = () => {
 const saveGame = (payload) => {
   if (typeof window === 'undefined') return;
   window.localStorage.setItem(SAVE_KEY, JSON.stringify(payload));
+};
+
+const normalizeSavePayload = (save = {}) => {
+  const merged = { ...DEFAULT_SAVE, ...save };
+  const unlockedHeroes = merged.unlockedHeroes.includes(PLAYER_HERO_ID)
+    ? merged.unlockedHeroes
+    : [PLAYER_HERO_ID, ...merged.unlockedHeroes];
+  const activeTeam = merged.activeTeam.includes(PLAYER_HERO_ID)
+    ? merged.activeTeam
+    : [PLAYER_HERO_ID, ...merged.activeTeam.filter(id => id !== PLAYER_HERO_ID)].slice(0, 3);
+  return {
+    ...merged,
+    playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
+    unlockedHeroes,
+    activeTeam,
+    heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(merged.heroLevels || {}) },
+    heroTalents: merged.heroTalents || {},
+    equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
+    equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
+  };
 };
 
 const getMissionNarrative = (stage, lang, isOutro, victory) => {
@@ -170,6 +187,7 @@ function App() {
   const [gold, setGold] = useState(initialSave.gold);
   const [breachShards, setBreachShards] = useState(initialSave.breachShards);
   const [eventTokens, setEventTokens] = useState(initialSave.eventTokens);
+  const [playerProfile, setPlayerProfile] = useState(initialSave.playerProfile);
   const [unlockedHeroes, setUnlockedHeroes] = useState(initialSave.unlockedHeroes);
   const [heroLevels, setHeroLevels] = useState(initialSave.heroLevels);
   const [activeTeam, setActiveTeam] = useState(initialSave.activeTeam);
@@ -196,6 +214,7 @@ function App() {
     gold,
     breachShards,
     eventTokens,
+    playerProfile,
     unlockedHeroes,
     heroLevels,
     activeTeam,
@@ -227,7 +246,7 @@ function App() {
     }, 1200);
 
     return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [lang, gold, breachShards, eventTokens, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, inventory, equippedGear, equippedEventItems, account]);
+  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, inventory, equippedGear, equippedEventItems, account]);
 
   // Play ambient music
   useEffect(() => {
@@ -242,6 +261,9 @@ function App() {
 
   const startOperation = () => {
     sound.playSfx('levelup');
+    setPlayerProfile(prev => ({ ...prev, name: String(prev?.name || '').trim() || 'Ancre' }));
+    setUnlockedHeroes(prev => prev.includes(PLAYER_HERO_ID) ? prev : [PLAYER_HERO_ID, ...prev]);
+    setActiveTeam(prev => prev.includes(PLAYER_HERO_ID) ? prev : [PLAYER_HERO_ID, ...prev].slice(0, 3));
     setCurrentScreen('hub');
   };
 
@@ -303,11 +325,12 @@ function App() {
   };
 
   const applySave = (save) => {
-    const merged = { ...DEFAULT_SAVE, ...save };
+    const merged = normalizeSavePayload(save);
     setLang(merged.lang);
     setGold(merged.gold);
     setBreachShards(merged.breachShards);
     setEventTokens(merged.eventTokens);
+    setPlayerProfile(merged.playerProfile || DEFAULT_SAVE.playerProfile);
     setUnlockedHeroes(merged.unlockedHeroes);
     setHeroLevels(merged.heroLevels);
     setActiveTeam(merged.activeTeam);
@@ -591,6 +614,24 @@ function App() {
               ))}
             </div>
 
+            <div className="intro-player-identity">
+              <label htmlFor="player-name-input">
+                {lang === 'fr' ? 'Nom du heros Ancre' : 'Anchored hero name'}
+              </label>
+              <input
+                id="player-name-input"
+                value={playerProfile.name}
+                maxLength={22}
+                onChange={(event) => setPlayerProfile(prev => ({ ...prev, name: event.target.value }))}
+                placeholder={lang === 'fr' ? 'Ton pseudo' : 'Your nickname'}
+              />
+              <span>
+                {lang === 'fr'
+                  ? 'Ce pseudo devient ton premier heros jouable et ta signature de sauvegarde.'
+                  : 'This nickname becomes your first playable hero and save signature.'}
+              </span>
+            </div>
+
             <button
               onClick={startOperation}
               className="btn-retro"
@@ -613,6 +654,7 @@ function App() {
       {currentScreen === 'hub' && (
         <HubScreen
           lang={lang}
+          playerProfile={playerProfile}
           gold={gold}
           setGold={setGold}
           breachShards={breachShards}
@@ -652,6 +694,7 @@ function App() {
       {currentScreen === 'battle' && activeStage && (
         <GameCanvas
           lang={lang}
+          playerProfile={playerProfile}
           activeTeam={activeTeam}
           stage={activeStage}
           heroLevels={heroLevels}
@@ -676,6 +719,7 @@ function App() {
       {currentScreen === 'portal' && (
         <PortalScreen
           lang={lang}
+          playerProfile={playerProfile}
           breachShards={breachShards}
           setBreachShards={setBreachShards}
           unlockedHeroes={unlockedHeroes}

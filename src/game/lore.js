@@ -154,6 +154,14 @@ export const NARRATIVE_ACTS = [
 ];
 
 export const LORE_DB = {
+  'Nexus de Convergence': {
+    mediaType: 'game',
+    title: { en: 'Nexus of Convergence', fr: 'Nexus de Convergence' },
+    desc: {
+      en: 'Stable hub formed after the First Breach. It is not a normal universe, but the Atrium where Anchored Ones, A.R.C.A., displaced heroes, and recovered Origin Shards can coexist without immediate collapse.',
+      fr: 'Hub stable forme apres la Premiere Breche. Ce n est pas un univers normal, mais l Atrium ou les Ancres, A.R.C.A., les heros deplaces et les Eclats d Origine recuperes peuvent coexister sans effondrement immediat.'
+    }
+  },
   'Gears of War': {
     mediaType: 'game',
     title: { en: 'Gears of War', fr: 'Gears of War' },

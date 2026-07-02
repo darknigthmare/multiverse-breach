@@ -4,12 +4,13 @@ import { EngineRpg } from '../game/engineRpg';
 import { EngineTactics } from '../game/engineTactics';
 import { ParticleSystem, drawUniverseBackground, drawSynergyOverlay } from '../game/renderer';
 import sound from '../game/soundEngine';
-import { HEROES_DB, EVENT_ITEMS_DB, EQUIP_ITEMS_DB } from '../game/heroes';
+import { HEROES_DB as BASE_HEROES_DB, EVENT_ITEMS_DB, EQUIP_ITEMS_DB } from '../game/heroes';
 import { getMonstersForUniverse, getBossesForUniverse, getWorldBossForUniverse, getFinalGameBoss } from '../game/enemies';
 import { getTranslation } from '../game/translation';
 import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../game/expandedUniverses';
+import { createPlayerHero } from '../game/playerHero';
 
-export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, completedStages, collectionBonusCount = 0, onBattleEnd }) {
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, completedStages, collectionBonusCount = 0, onBattleEnd }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysPressed = useRef({});
@@ -26,6 +27,7 @@ export default function GameCanvas({ lang, activeTeam, stage, heroLevels, equipp
   const [battleAnomaly, setBattleAnomaly] = useState(null);
   
   const [activeSynergies, setActiveSynergies] = useState([]);
+  const HEROES_DB = [createPlayerHero(playerProfile), ...BASE_HEROES_DB];
   
   const autoBattleRef = useRef(autoBattle);
   autoBattleRef.current = autoBattle;
