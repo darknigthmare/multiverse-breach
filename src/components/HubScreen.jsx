@@ -2147,6 +2147,75 @@ export default function HubScreen({
               </button>
             </div>
 
+            <div className="squad-zone-title">
+              <span>{lang === 'fr' ? 'Equipe active' : 'Active team'}</span>
+              <small>{lang === 'fr' ? 'Les trois cartes qui partiront en mission.' : 'The three cards that will enter missions.'}</small>
+            </div>
+            <div className="squad-slot-grid">
+              {[0, 1, 2].map((idx) => {
+                const id = activeTeam[idx];
+                const hero = HEROES_DB.find(h => h.id === id);
+                const stats = hero ? getHeroStats(hero) : null;
+                const gear = hero ? getGearDisplay(equippedGear[hero.id]) : null;
+                const eventItem = hero && equippedEventItems[hero.id]
+                  ? Object.values(EVENT_ITEMS_DB).find(item => item.id === equippedEventItems[hero.id])
+                  : null;
+                return (
+                  <div key={idx} className={`squad-slot ${hero ? 'filled' : 'empty'}`} style={{ '--slot-color': hero?.primaryColor || '#444' }}>
+                    {hero ? (
+                      <>
+                        <div className="squad-slot-top">
+                          <span>Slot {idx + 1}</span>
+                          <button onClick={() => toggleActiveHero(hero.id)} title={lang === 'fr' ? 'Retirer' : 'Remove'}>X</button>
+                        </div>
+                        <div className="squad-hero-row">
+                          <div className="squad-hero-frame">
+                            <canvas width="112" height="118" ref={(el) => {
+                              if (!el) return;
+                              const ctx = el.getContext('2d');
+                              ctx.clearRect(0, 0, 112, 118);
+                              drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88);
+                            }} />
+                          </div>
+                          <div className="squad-hero-info">
+                            <strong>{hero.name}</strong>
+                            <small>{hero.universe}</small>
+                            <em>{categoryLabels[hero.category]?.[lang] || hero.category}</em>
+                          </div>
+                        </div>
+                        <div className="squad-mini-stats">
+                          <span>HP {stats.hp}</span>
+                          <span>ATK {stats.atk}</span>
+                          <span>DEF {stats.def}</span>
+                          <span>SPD {stats.spd}</span>
+                        </div>
+                        <div className="squad-loadout-line">
+                          <span>{gear ? gear.name[lang] : (lang === 'fr' ? 'Relique vide' : 'No relic')}</span>
+                          <span>{eventItem ? eventItem.name[lang] : (lang === 'fr' ? 'Event vide' : 'No event')}</span>
+                        </div>
+                        <button
+                          onClick={() => { setSelectedHeroId(hero.id); setActiveTab('inventory'); sound.playSfx('click'); }}
+                          className="btn-retro"
+                          style={{ fontSize: '10px', padding: '4px 8px', width: '100%', marginTop: '8px' }}
+                        >
+                          {lang === 'fr' ? 'GERER EQUIPEMENT' : 'MANAGE GEAR'}
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <span>{getTranslation(lang, 'emptySlot')}</span>
+                        <small>{lang === 'fr' ? 'Choisis une reserve ci-dessous.' : 'Pick a reserve below.'}</small>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="squad-zone-title">
+              <span>{lang === 'fr' ? 'Synthese tactique' : 'Tactical summary'}</span>
+              <small>{lang === 'fr' ? 'Lisibilite meta, synergies et points faibles.' : 'Meta readability, synergies, and weak points.'}</small>
+            </div>
             <div className="squad-command-grid">
               <div className="squad-readiness-card">
                 <div className="squad-kicker">{lang === 'fr' ? 'Lecture meta' : 'Meta read'}</div>
@@ -2179,7 +2248,7 @@ export default function HubScreen({
               </div>
             </div>
 
-            <div className="squad-slot-grid">
+            <div className="squad-slot-grid squad-legacy-hidden">
               {[0, 1, 2].map((idx) => {
                 const id = activeTeam[idx];
                 const hero = HEROES_DB.find(h => h.id === id);
@@ -2281,7 +2350,20 @@ export default function HubScreen({
                       <strong>{hero.name}</strong>
                       <span>{isActive ? getTranslation(lang, 'deployed') : getTranslation(lang, 'standby')}</span>
                     </div>
-                    <small>{hero.universe} - {categoryLabels[hero.category]?.[lang] || hero.category}</small>
+                    <div className="squad-reserve-body">
+                      <div className="squad-reserve-frame">
+                        <canvas width="76" height="82" ref={(el) => {
+                          if (!el) return;
+                          const ctx = el.getContext('2d');
+                          ctx.clearRect(0, 0, 76, 82);
+                          drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62);
+                        }} />
+                      </div>
+                      <div>
+                        <small>{hero.universe}</small>
+                        <em>{categoryLabels[hero.category]?.[lang] || hero.category}</em>
+                      </div>
+                    </div>
                     <div className="squad-reserve-stats">
                       <span>ATK {stats.atk}</span>
                       <span>DEF {stats.def}</span>
