@@ -291,14 +291,14 @@ export const getCharacterPlaque = (hero) => {
     rank: { fr: hero.category.toUpperCase(), en: hero.category.toUpperCase() },
     role,
     callSign: hero.name,
-    origin: { fr: `Univers source - ${hero.universe}`, en: `Source universe - ${hero.universe}` },
+    origin: { fr: `Trame d origine - ${hero.universe}`, en: `Origin Thread - ${hero.universe}` },
     dossier: {
-      fr: `${hero.name} a ete archive comme signature stable de ${hero.universe}. Le Nexus conserve son histoire d origine, mais lui ajoute une seconde fonction: servir de cle vivante contre les breches ou son monde est copie, tordu ou utilise comme arme par la Singularity.`,
-      en: `${hero.name} has been archived as a stable ${hero.universe} signature. The Nexus preserves the origin story, but adds a second function: acting as a living key against breaches where that world is copied, twisted, or weaponized by the Singularity.`
+      fr: `${hero.name} a ete archive par A.R.C.A. comme signature stable de la Trame ${hero.universe}. Le Nexus conserve son histoire d origine, puis applique une Compression de Resonance pour lui donner une seconde fonction: servir de cle vivante contre les breches ou son monde est copie, tordu ou rendu muet par le Sans-Auteur.`,
+      en: `${hero.name} has been archived by A.R.C.A. as a stable signature from the ${hero.universe} Thread. The Nexus preserves the origin story, then applies Resonance Compression to give the hero a second function: acting as a living key against breaches where that world is copied, twisted, or silenced by the Authorless.`
     },
     doctrine: {
-      fr: `${doctrine}. Stabilisation de scene, rupture de pattern et protection des archives locales.`,
-      en: `${doctrine}. Scene stabilization, pattern rupture, and protection of local archives.`
+      fr: `${doctrine}. Stabilisation de scene, rupture de pattern, recuperation d Eclats d Origine et protection des archives locales.`,
+      en: `${doctrine}. Scene stabilization, pattern rupture, recovery of Origin Shards, and protection of local archives.`
     },
     tags: [hero.universe, hero.category, hero.weaponType || 'combat']
   };

@@ -531,7 +531,7 @@ function App() {
               boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
             }}>
               <div className="intro-lore-kicker">
-                {lang === 'fr' ? 'Creation de profil Nexus' : 'Nexus profile creation'}
+                {lang === 'fr' ? 'Signal A.R.C.A. - Creation de profil Ancre' : 'A.R.C.A. signal - Anchored profile creation'}
               </div>
               <p style={{ marginTop: 0 }}>
                 {getTranslation(lang, 'introText1')}
@@ -539,32 +539,49 @@ function App() {
               <p>
                 {getTranslation(lang, 'introText2')}
               </p>
+              <div className="intro-arca-transmission">
+                <span>
+                  {lang === 'fr'
+                    ? 'Signal vital detecte. Identite instable, mais intacte.'
+                    : 'Life signal detected. Identity unstable, but intact.'}
+                </span>
+                <span>
+                  {lang === 'fr'
+                    ? 'Tu n es pas quelque part. Tu es entre plusieurs realites a la fois.'
+                    : 'You are not somewhere. You are between several realities at once.'}
+                </span>
+                <span>
+                  {lang === 'fr'
+                    ? 'Parce que tu es encore entier, le Nexus peut t ancrer.'
+                    : 'Because you are still whole, the Nexus can anchor you.'}
+                </span>
+              </div>
               <p style={{ marginBottom: 0 }}>
                 {lang === 'fr'
-                  ? 'Ton profil n est pas un simple compte: c est une signature de commandement. Le Nexus l utilise pour retenir tes victoires, tes equipes, tes reliques et les mondes deja stabilises. Plus tard, cette meme signature pourra ouvrir la voie au multijoueur sans casser ta progression.'
-                  : 'Your profile is not just an account: it is a command signature. The Nexus uses it to retain your victories, teams, relics, and stabilized worlds. Later, that same signature can open multiplayer without breaking your progress.'}
+                  ? 'Ton profil n est pas un simple compte: c est une signature d Ancre. Le Nexus l utilise pour retenir tes victoires, tes equipes, tes reliques, les Trames deja stabilisees et les choix qui pourront plus tard soutenir le multijoueur sans casser ta progression.'
+                  : 'Your profile is not just an account: it is an Anchored signature. The Nexus uses it to retain victories, teams, relics, stabilized Threads, and choices that can later support multiplayer without breaking progression.'}
               </p>
             </div>
 
             <div className="intro-profile-grid">
               {[
                 {
-                  title: lang === 'fr' ? '1. La blessure' : '1. The wound',
+                  title: lang === 'fr' ? '1. Le Voile cede' : '1. The Veil breaks',
                   text: lang === 'fr'
-                    ? 'La Singularity ne detruit pas les univers: elle vole leurs regles, leurs boss et leurs symboles pour les recomposer en breches jouables.'
-                    : 'The Singularity does not destroy universes: it steals their rules, bosses, and symbols to rebuild them as playable breaches.'
+                    ? 'La Premiere Breche ne melange pas les univers au hasard: elle tord leurs lois, leurs boss et leurs symboles en zones jouables mais instables.'
+                    : 'The First Breach does not mix universes at random: it bends their laws, bosses, and symbols into playable but unstable zones.'
                 },
                 {
-                  title: lang === 'fr' ? '2. Les heros' : '2. The heroes',
+                  title: lang === 'fr' ? '2. Les signatures' : '2. The signatures',
                   text: lang === 'fr'
-                    ? 'Chaque heros arrive avec deux couches de lore: son monde d origine, puis la facon dont le Nexus le recode pour Multiverse Breach.'
-                    : 'Each hero carries two lore layers: the origin world, then the way the Nexus recodes them for Multiverse Breach.'
+                    ? 'Chaque heros garde sa Trame d origine, puis subit une Compression de Resonance qui rend son pouvoir jouable sans effacer son identite.'
+                    : 'Each hero keeps an origin Thread, then undergoes Resonance Compression so their power becomes playable without erasing identity.'
                 },
                 {
-                  title: lang === 'fr' ? '3. Le commandant' : '3. The commander',
+                  title: lang === 'fr' ? '3. L Ancre' : '3. The Anchor',
                   text: lang === 'fr'
-                    ? 'Ton role est de choisir les equipes, stabiliser les mondes, assembler les reliques et empecher le noyau final d avaler les archives.'
-                    : 'Your role is to pick teams, stabilize worlds, assemble relics, and stop the final core from swallowing the archives.'
+                    ? 'Ton role est de rassembler les Eclats d Origine, stabiliser les Trames et empecher le Sans-Auteur de transformer le multivers en page blanche.'
+                    : 'Your role is to gather Origin Shards, stabilize Threads, and stop the Authorless from turning the multiverse into a blank page.'
                 }
               ].map(entry => (
                 <div className="intro-profile-step" key={entry.title}>

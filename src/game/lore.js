@@ -1,5 +1,158 @@
 import { EXPANDED_LORE_DB } from './expandedUniverses';
 
+export const NEXUS_CANON = {
+  name: { en: 'Nexus of Convergence', fr: 'Nexus de Convergence' },
+  playerRole: { en: 'Anchored One', fr: 'Ancre' },
+  guide: 'A.R.C.A.',
+  antagonist: { en: 'The Authorless', fr: 'Le Sans-Auteur' },
+  breachEvent: { en: 'First Breach', fr: 'Premiere Breche' },
+  twistFigure: { en: 'Veyr, Cartographer of Ruptures', fr: 'Veyr, Cartographe des Ruptures' }
+};
+
+export const CORE_CODEX_ENTRIES = [
+  {
+    id: 'veil',
+    category: { en: 'Foundation', fr: 'Fondation' },
+    title: { en: 'The Veil', fr: 'Le Voile' },
+    desc: {
+      en: 'The Veil was the membrane separating each Thread of reality. Since the First Breach, it no longer closes cleanly: it frays, leaks rules, and lets impossible worlds touch.',
+      fr: 'Le Voile etait la membrane qui separait chaque Trame de realite. Depuis la Premiere Breche, il ne se referme plus proprement: il s effiloche, laisse fuir les regles et permet a des mondes impossibles de se toucher.'
+    }
+  },
+  {
+    id: 'threads',
+    category: { en: 'Multiverse Law', fr: 'Loi multiverselle' },
+    title: { en: 'Threads', fr: 'Les Trames' },
+    desc: {
+      en: 'A Thread is a complete universe with an origin, internal laws, symbols, heroes, and anchor figures. Multiverse Breach never treats a crossover as random: every arrival is a damaged Thread seeking stability.',
+      fr: 'Une Trame est un univers complet avec une origine, des lois internes, des symboles, des heros et des figures d ancrage. Multiverse Breach ne traite jamais un crossover comme un hasard: chaque arrivee est une Trame blessee qui cherche une stabilite.'
+    }
+  },
+  {
+    id: 'first-breach',
+    category: { en: 'Cataclysm', fr: 'Cataclysme' },
+    title: { en: 'The First Breach', fr: 'La Premiere Breche' },
+    desc: {
+      en: 'Also called the Night of a Thousand Portals, the First Breach shattered the Veil and collapsed many Threads into the Nexus of Convergence. It was not a natural disaster: someone opened the wound.',
+      fr: 'Aussi appelee Nuit des Mille Portails, la Premiere Breche a fracture le Voile et projete de nombreuses Trames dans le Nexus de Convergence. Ce n etait pas une catastrophe naturelle: quelqu un a ouvert la blessure.'
+    }
+  },
+  {
+    id: 'arca',
+    category: { en: 'Archive AI', fr: 'IA d archive' },
+    title: { en: 'A.R.C.A.', fr: 'A.R.C.A.' },
+    desc: {
+      en: 'The Archive of Resonance for Anomalous Continuities records heroes, bosses, relics, and world-laws before they are rewritten. A.R.C.A. guides the player because the player signature remains unusually whole.',
+      fr: 'L Archive de Resonance des Continuites Anormales enregistre les heros, boss, reliques et lois de monde avant leur reecriture. A.R.C.A. guide le joueur car sa signature reste etrangement entiere.'
+    }
+  },
+  {
+    id: 'anchored',
+    category: { en: 'Player Role', fr: 'Role joueur' },
+    title: { en: 'The Anchored Ones', fr: 'Les Ancres' },
+    desc: {
+      en: 'An Anchored One can hold several incompatible realities without dissolving. This is why the player can command displaced heroes, bind relics, and keep progression across unstable breaches.',
+      fr: 'Un Ancre peut contenir plusieurs realites incompatibles sans se dissoudre. C est pour cela que le joueur peut commander des heros deplaces, lier des reliques et garder sa progression entre des breches instables.'
+    }
+  },
+  {
+    id: 'origin-shards',
+    category: { en: 'Progression', fr: 'Progression' },
+    title: { en: 'Origin Shards', fr: 'Eclats d Origine' },
+    desc: {
+      en: 'Origin Shards are fragments of coherent history recovered after a breach. They justify summons, upgrades, account saves, and future multiplayer because they preserve what a Thread was before corruption.',
+      fr: 'Les Eclats d Origine sont des fragments d histoire coherente recuperes apres une breche. Ils justifient les invocations, ameliorations, sauvegardes de compte et le futur multijoueur car ils preservent ce qu une Trame etait avant la corruption.'
+    }
+  },
+  {
+    id: 'compression',
+    category: { en: 'Gameplay Law', fr: 'Loi de gameplay' },
+    title: { en: 'Resonance Compression', fr: 'Compression de Resonance' },
+    desc: {
+      en: 'Compression of Resonance explains why legendary figures fight on equal playable scale. The Nexus reduces impossible power gaps while preserving signature abilities, roles, and weaknesses.',
+      fr: 'La Compression de Resonance explique pourquoi des figures mythiques combattent a une echelle jouable commune. Le Nexus reduit les ecarts de puissance impossibles tout en preservant les capacites, roles et faiblesses signatures.'
+    }
+  },
+  {
+    id: 'personas',
+    category: { en: 'Media Rule', fr: 'Regle media' },
+    title: { en: 'Resonance Personas', fr: 'Personas de Resonance' },
+    desc: {
+      en: 'Music, web, and cultural icons appear as symbolic Resonance Personas: avatars born from collective impact, not ordinary civilians pulled into combat by accident.',
+      fr: 'Les icones musicales, web et culturelles apparaissent comme des Personas de Resonance: des avatars symboliques nes de leur impact collectif, pas de simples civils tires au hasard dans le combat.'
+    }
+  },
+  {
+    id: 'authorless',
+    category: { en: 'Threat', fr: 'Menace' },
+    title: { en: 'The Authorless', fr: 'Le Sans-Auteur' },
+    desc: {
+      en: 'The Authorless wants to erase every story into a single silent reality. It does not conquer worlds: it removes meaning, origin, memory, and choice until no Thread can resist.',
+      fr: 'Le Sans-Auteur veut effacer toutes les histoires dans une seule realite silencieuse. Il ne conquiert pas les mondes: il retire le sens, l origine, la memoire et le choix jusqu a ce qu aucune Trame ne puisse resister.'
+    }
+  },
+  {
+    id: 'veyr',
+    category: { en: 'Hidden Truth', fr: 'Verite cachee' },
+    title: { en: 'Veyr, Cartographer of Ruptures', fr: 'Veyr, Cartographe des Ruptures' },
+    desc: {
+      en: 'Veyr was an Archivist who tried to build a peaceful Nexus between worlds. That attempt caused the First Breach and gave the Authorless a path into the multiverse.',
+      fr: 'Veyr etait un Archiviste qui voulait creer un Nexus de paix entre les mondes. Cette tentative a cause la Premiere Breche et offert au Sans-Auteur un chemin dans le multivers.'
+    }
+  }
+];
+
+export const NARRATIVE_ACTS = [
+  {
+    id: 'prologue',
+    title: { en: 'Prologue - The Sky Breaks', fr: 'Prologue - Le ciel se brise' },
+    text: {
+      en: 'A.R.C.A. detects a living signal inside the Nexus while broken Threads fall through the Veil.',
+      fr: 'A.R.C.A. detecte un signal vivant dans le Nexus pendant que des Trames brisees tombent a travers le Voile.'
+    }
+  },
+  {
+    id: 'arrivals',
+    title: { en: 'Act I - The Arrivals', fr: 'Acte I - Les Arrivants' },
+    text: {
+      en: 'Heroes, bosses, relics, and Resonance Personas appear without understanding what pulled them away from home.',
+      fr: 'Heros, boss, reliques et Personas de Resonance apparaissent sans comprendre ce qui les a arraches a leur monde.'
+    }
+  },
+  {
+    id: 'anchors',
+    title: { en: 'Act II - The War of Anchors', fr: 'Acte II - La Guerre des Ancrages' },
+    text: {
+      en: 'Factions fight to control stable anchors while the player learns to recover Origin Shards.',
+      fr: 'Les factions se battent pour controler les ancrages stables pendant que le joueur apprend a recuperer les Eclats d Origine.'
+    }
+  },
+  {
+    id: 'archives',
+    title: { en: 'Act III - The Impossible Archives', fr: 'Acte III - Les Archives Impossibles' },
+    text: {
+      en: 'The truth about Veyr surfaces inside archives that remember futures which never happened.',
+      fr: 'La verite sur Veyr remonte dans des archives capables de se souvenir de futurs qui n ont jamais eu lieu.'
+    }
+  },
+  {
+    id: 'white-void',
+    title: { en: 'Act IV - The White Void', fr: 'Acte IV - Le Vide Blanc' },
+    text: {
+      en: 'The Authorless begins deleting color, conflict, music, memory, and choice from the Nexus.',
+      fr: 'Le Sans-Auteur commence a supprimer la couleur, le conflit, la musique, la memoire et le choix du Nexus.'
+    }
+  },
+  {
+    id: 'primordial',
+    title: { en: 'Act V - The Primordial Breach', fr: 'Acte V - La Breche Primordiale' },
+    text: {
+      en: 'The squad reaches the first wound and must decide whether to seal, converge, break, or surrender the multiverse.',
+      fr: 'L escouade atteint la premiere blessure et doit choisir entre sceller, faire converger, rompre ou abandonner le multivers.'
+    }
+  }
+];
+
 export const LORE_DB = {
   'Gears of War': {
     mediaType: 'game',

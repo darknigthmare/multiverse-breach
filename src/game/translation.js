@@ -4,8 +4,8 @@ export const translations = {
   en: {
     title: 'MULTIVERSE BREACH',
     subtitle: 'CROSSOVER DEFENSE SYSTEM',
-    introText1: 'Commander, the Nexus has detected a multiversal wound: a living archive collapse where worlds are not erased, but rewritten into hostile breach coordinates.',
-    introText2: 'Recruit displaced heroes, preserve their origin lore, then recode them into three-unit strike teams. Every mission stabilizes a world-fragment and removes one layer of protection from the Singularity Core.',
+    introText1: 'In the beginning, every world was a separate Thread, protected by the Veil. Then the First Breach tore that membrane open and the Nexus of Convergence began pulling impossible realities together.',
+    introText2: 'A.R.C.A. marks you as an Anchored One: a stable signature able to command displaced heroes, recover Origin Shards, and resist the Authorless before it rewrites every story into silence.',
     initButton: 'OPEN NEXUS CONTROL',
 
     hubTitle: 'NEXUS BREACH CONTROL',
@@ -104,8 +104,8 @@ export const translations = {
   fr: {
     title: 'BRECHE MULTIVERSELLE',
     subtitle: 'SYSTEME DE DEFENSE CROSSOVER',
-    introText1: 'Commandant, le Nexus a detecte une blessure multiverselle: un effondrement d archives vivant ou les mondes ne sont pas effaces, mais reecrits en coordonnees de breche hostiles.',
-    introText2: 'Recrute les heros deplaces, preserve leur lore d origine, puis recode-les en escouades de trois unites. Chaque mission stabilise un fragment de monde et retire une couche de protection au noyau Singularity.',
+    introText1: 'Au commencement, chaque monde etait une Trame separee, protegee par le Voile. Puis la Premiere Breche a dechire cette membrane et le Nexus de Convergence a commence a attirer des realites impossibles.',
+    introText2: 'A.R.C.A. te classe comme un Ancre: une signature stable capable de commander des heros deplaces, recuperer les Eclats d Origine et resister au Sans-Auteur avant qu il ne reecrive chaque histoire en silence.',
     initButton: 'OUVRIR LE CONTROLE NEXUS',
 
     hubTitle: 'CONTROLE DES BRECHES NEXUS',

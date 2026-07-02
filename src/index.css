@@ -212,6 +212,25 @@ body {
   text-transform: uppercase;
 }
 
+.intro-arca-transmission {
+  display: grid;
+  gap: 6px;
+  margin: 14px 0;
+  padding: 10px 12px;
+  border-left: 2px solid #39c5bb;
+  background: rgba(57, 197, 187, 0.07);
+  color: #dff;
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.intro-arca-transmission span::before {
+  content: 'A.R.C.A. // ';
+  color: #39c5bb;
+  font-weight: 700;
+}
+
 .intro-profile-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

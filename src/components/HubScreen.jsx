@@ -3,7 +3,7 @@ import { HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game
 import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
-import { LORE_DB } from '../game/lore';
+import { CORE_CODEX_ENTRIES, LORE_DB, NARRATIVE_ACTS } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages } from '../game/expandedUniverses';
 import { getCharacterPlaque } from '../game/characterPlaques';
@@ -865,11 +865,14 @@ export default function HubScreen({
   const selectedHeroStats = getHeroStats(selectedHero);
   const selectedPlaque = getCharacterPlaque(selectedHero);
   const selectedLore = LORE_DB[selectedHero.universe];
-  const selectedOriginLore = selectedLore?.desc?.[lang] || (
+  const selectedOriginBase = selectedLore?.desc?.[lang] || (
     lang === 'fr'
       ? `Monde source indexe par le Nexus: ${selectedHero.universe}. Les archives locales restent partielles, mais la signature de ce personnage confirme une origine stable dans cette realite.`
       : `Source world indexed by the Nexus: ${selectedHero.universe}. Local archives remain partial, but this character signature confirms a stable origin in that reality.`
   );
+  const selectedOriginLore = lang === 'fr'
+    ? `Trame d origine: ${selectedHero.universe}. ${selectedOriginBase} A.R.C.A. conserve cette memoire pour que le heros ne devienne pas une copie vide pendant la Compression de Resonance.`
+    : `Origin Thread: ${selectedHero.universe}. ${selectedOriginBase} A.R.C.A. preserves this memory so the hero does not become an empty copy during Resonance Compression.`;
   const breachRoleLore = {
     marine: {
       fr: 'Le Nexus l emploie comme point d ancrage: encaisser le premier choc, tenir la ligne et permettre aux signatures plus fragiles de charger leurs pouvoirs.',
@@ -892,9 +895,14 @@ export default function HubScreen({
       en: 'The profile works as field command: read terrain, prioritize targets, and make heroes cooperate when they should never share the same battlefield.'
     }
   };
+  const mediaPersonaLore = selectedLore?.mediaType === 'music'
+    ? (lang === 'fr'
+      ? ' Comme Persona de Resonance, sa presence vient de l impact culturel collectif: le Nexus stabilise un symbole vivant plutot qu un civil tire au hasard.'
+      : ' As a Resonance Persona, the presence comes from collective cultural impact: the Nexus stabilizes a living symbol rather than a civilian pulled at random.')
+    : '';
   const selectedBreachLore = lang === 'fr'
-    ? `${selectedHero.name} n a pas ete arrache a ${selectedHero.universe} par hasard. Sa signature a resiste assez longtemps a la Singularity pour que le Nexus en fasse un operateur ${selectedHero.category}. Dans notre lore, "${selectedHero.special?.name || selectedPlaque.role.fr}" n est pas seulement une competence: c est la maniere dont ce heros impose les lois de son monde d origine dans une breche qui tente de les corrompre. ${breachRoleLore[selectedHero.category]?.fr || breachRoleLore.tactical.fr}`
-    : `${selectedHero.name} was not pulled from ${selectedHero.universe} by chance. The signature resisted the Singularity long enough for the Nexus to rebuild it as a ${selectedHero.category} operator. In our lore, "${selectedHero.special?.name || selectedPlaque.role.en}" is not just a skill: it is the way this hero forces origin-world laws into a breach trying to corrupt them. ${breachRoleLore[selectedHero.category]?.en || breachRoleLore.tactical.en}`;
+    ? `${selectedHero.name} n a pas ete arrache a sa Trame par hasard. Sa signature a resiste a la Premiere Breche assez longtemps pour qu A.R.C.A. la classe comme operateur ${selectedHero.category}. Dans notre lore, "${selectedHero.special?.name || selectedPlaque.role.fr}" n est pas seulement une competence: c est la maniere dont ce heros impose les lois de son monde d origine dans une breche que le Sans-Auteur tente de rendre muette. ${breachRoleLore[selectedHero.category]?.fr || breachRoleLore.tactical.fr}${mediaPersonaLore}`
+    : `${selectedHero.name} was not pulled from the origin Thread by chance. The signature resisted the First Breach long enough for A.R.C.A. to classify it as a ${selectedHero.category} operator. In our lore, "${selectedHero.special?.name || selectedPlaque.role.en}" is not just a skill: it is how this hero forces origin-world laws into a breach the Authorless wants to silence. ${breachRoleLore[selectedHero.category]?.en || breachRoleLore.tactical.en}${mediaPersonaLore}`;
 
   const formatBoostText = (boost) => Object.keys(boost || {})
     .map(key => `+${boost[key]} ${key.toUpperCase()}`)
@@ -2825,6 +2833,60 @@ export default function HubScreen({
                 ? `Consultez les enregistrements historiques des anomalies détectées sur les ${TOTAL_UNIVERSE_COUNT} univers connus du Multivers.`
                 : `Browse the historical logs of the spacetime anomalies detected across the ${TOTAL_UNIVERSE_COUNT} known universes of the Multiverse.`}
             </p>
+
+            <div style={{ marginBottom: '16px' }}>
+              <div style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '8px' }}>
+                {lang === 'fr' ? 'Canon du Nexus' : 'Nexus canon'}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '10px' }}>
+                {CORE_CODEX_ENTRIES.map(entry => (
+                  <div key={entry.id} style={{
+                    padding: '12px',
+                    border: '1px solid rgba(57,197,187,0.25)',
+                    background: 'linear-gradient(135deg, rgba(57,197,187,0.08), rgba(155,89,182,0.05))',
+                    borderRadius: '6px',
+                    minHeight: '118px'
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'flex-start', marginBottom: '6px' }}>
+                      <strong style={{ color: '#ffeb3b', fontSize: '12px' }}>{entry.title[lang]}</strong>
+                      <span style={{ color: '#39c5bb', fontSize: '8px', textTransform: 'uppercase', border: '1px solid rgba(57,197,187,0.35)', padding: '2px 5px', borderRadius: '3px' }}>
+                        {entry.category[lang]}
+                      </span>
+                    </div>
+                    <div style={{ color: '#d8d8d8', fontSize: '10px', lineHeight: 1.45 }}>
+                      {entry.desc[lang]}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ marginBottom: '16px' }}>
+              <div style={{ fontSize: '11px', color: '#ff8c00', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '8px' }}>
+                {lang === 'fr' ? 'Arc narratif principal' : 'Main story arc'}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '8px' }}>
+                {NARRATIVE_ACTS.map((act, index) => {
+                  const visible = completedStages.length >= Math.max(0, index * 3);
+                  return (
+                    <div key={act.id} style={{
+                      padding: '10px',
+                      border: visible ? '1px solid rgba(255,140,0,0.35)' : '1px dashed #333',
+                      background: visible ? 'rgba(255,140,0,0.05)' : 'rgba(0,0,0,0.2)',
+                      borderRadius: '4px',
+                      opacity: visible ? 1 : 0.45
+                    }}>
+                      <div style={{ color: visible ? '#ff8c00' : '#666', fontSize: '10px', fontWeight: 'bold', marginBottom: '5px' }}>
+                        {visible ? act.title[lang] : (lang === 'fr' ? 'Archive verrouillee' : 'Locked archive')}
+                      </div>
+                      <div style={{ color: visible ? '#ccc' : '#555', fontSize: '10px', lineHeight: 1.35 }}>
+                        {visible ? act.text[lang] : (lang === 'fr' ? 'Stabilise plus de breches pour restaurer cette memoire.' : 'Stabilize more breaches to restore this memory.')}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px', marginBottom: '16px' }}>
               {timelineProgress.map(entry => (
