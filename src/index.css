@@ -372,6 +372,298 @@ body {
   line-height: 1.45;
 }
 
+.squad-panel {
+  padding: 20px;
+}
+
+.squad-header,
+.squad-reserve-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.squad-header h3,
+.squad-reserve-title h4 {
+  margin: 0 0 4px 0;
+  color: #39c5bb;
+  font-size: 16px;
+}
+
+.squad-header p,
+.squad-reserve-title span {
+  margin: 0;
+  color: #aaa;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.squad-command-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr 1.2fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.squad-readiness-card,
+.squad-plan-card,
+.squad-section-card {
+  padding: 12px;
+  border: 1px solid rgba(57, 197, 187, 0.22);
+  border-radius: 4px;
+  background: rgba(57, 197, 187, 0.045);
+}
+
+.squad-kicker,
+.squad-section-title {
+  color: #ffeb3b;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.squad-grade-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.squad-grade {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #39c5bb;
+  border-radius: 4px;
+  color: #39c5bb;
+  background: rgba(0,0,0,0.3);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.squad-grade-row strong {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+}
+
+.squad-grade-row small,
+.squad-plan-card span {
+  color: #aaa;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.squad-meter {
+  height: 8px;
+  margin: 10px 0 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 999px;
+  background: rgba(0,0,0,0.34);
+  overflow: hidden;
+}
+
+.squad-meter span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #e74c3c, #f1c40f, #39c5bb);
+}
+
+.squad-readiness-card p,
+.squad-plan-card p,
+.squad-muted {
+  margin: 0;
+  color: #d8d8d8;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.squad-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.squad-stat-grid div {
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  background: rgba(0,0,0,0.24);
+}
+
+.squad-stat-grid span {
+  display: block;
+  color: #888;
+  font-size: 10px;
+}
+
+.squad-stat-grid strong {
+  display: block;
+  margin-top: 4px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.squad-slot-grid,
+.squad-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.squad-meta-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.squad-slot {
+  min-height: 180px;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--slot-color) 62%, rgba(255,255,255,0.08));
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--slot-color) 10%, rgba(0,0,0,0.34));
+  box-sizing: border-box;
+}
+
+.squad-slot.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: dashed;
+  color: #777;
+  text-align: center;
+}
+
+.squad-slot-top,
+.squad-reserve-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.squad-slot-top span {
+  color: var(--slot-color);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.squad-slot-top button {
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(231,76,60,0.7);
+  background: rgba(231,76,60,0.08);
+  color: #ff7777;
+  cursor: pointer;
+}
+
+.squad-slot strong,
+.squad-reserve-card strong {
+  display: block;
+  margin-top: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.squad-slot small,
+.squad-reserve-card small {
+  display: block;
+  margin-top: 3px;
+  color: #aaa;
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.squad-mini-stats,
+.squad-loadout-line,
+.squad-reserve-stats,
+.squad-reserve-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 9px;
+}
+
+.squad-mini-stats span,
+.squad-loadout-line span,
+.squad-reserve-stats span,
+.squad-reserve-tags span {
+  padding: 3px 5px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 3px;
+  background: rgba(0,0,0,0.24);
+  color: #cfcfcf;
+  font-size: 9px;
+}
+
+.squad-bonus-list,
+.squad-warning-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.squad-bonus-list div,
+.squad-warning-list p {
+  margin: 0;
+  padding: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  background: rgba(0,0,0,0.18);
+}
+
+.squad-bonus-list strong {
+  display: block;
+  color: #2ecc71;
+  font-size: 12px;
+}
+
+.squad-bonus-list span,
+.squad-warning-list p {
+  color: #bbb;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.squad-section-card.warning {
+  border-color: rgba(255, 140, 0, 0.28);
+  background: rgba(255, 140, 0, 0.045);
+}
+
+.squad-reserve-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 10px;
+}
+
+.squad-reserve-card {
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 3px solid var(--slot-color);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.018);
+  cursor: pointer;
+}
+
+.squad-reserve-card.active {
+  border-color: #2ecc71;
+  border-left-color: #2ecc71;
+  background: rgba(46,204,113,0.08);
+}
+
+.squad-reserve-head span {
+  padding: 2px 5px;
+  border-radius: 3px;
+  background: rgba(57,197,187,0.12);
+  color: #39c5bb;
+  font-size: 9px;
+}
+
 .portal-core-stage {
   position: relative;
   min-height: 340px;
@@ -565,6 +857,12 @@ body {
   }
 
   .portal-focus-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .squad-command-grid,
+  .squad-slot-grid,
+  .squad-meta-grid {
     grid-template-columns: 1fr;
   }
 

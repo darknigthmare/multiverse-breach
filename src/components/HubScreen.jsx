@@ -1041,6 +1041,59 @@ export default function HubScreen({
     return { ...rule, count, active: count >= 2 };
   });
 
+  const deployedHeroes = activeTeam
+    .map(id => HEROES_DB.find(hero => hero.id === id))
+    .filter(Boolean);
+  const deployedStats = deployedHeroes.reduce((acc, hero) => {
+    const stats = getHeroStats(hero);
+    acc.hp += stats.hp;
+    acc.atk += stats.atk;
+    acc.def += stats.def;
+    acc.spd += stats.spd;
+    return acc;
+  }, { hp: 0, atk: 0, def: 0, spd: 0 });
+  const deployedCategories = deployedHeroes.reduce((acc, hero) => {
+    acc[hero.category] = (acc[hero.category] || 0) + 1;
+    return acc;
+  }, {});
+  const deployedSynergies = SYNERGIES_DB.filter(syn => (deployedCategories[syn.category] || 0) >= 2);
+  const deployedFactionSynergies = activeFactionSynergies.filter(rule => rule.active);
+  const equippedRelicCount = deployedHeroes.filter(hero => equippedGear[hero.id]).length;
+  const equippedEventCount = deployedHeroes.filter(hero => equippedEventItems[hero.id]).length;
+  const averageTeamLevel = deployedHeroes.length
+    ? deployedHeroes.reduce((sum, hero) => sum + (heroLevels[hero.id] || 1), 0) / deployedHeroes.length
+    : 0;
+  const squadReadiness = Math.min(100, Math.round(
+    (deployedHeroes.length / 3) * 38
+    + Math.min(22, averageTeamLevel * 4)
+    + deployedSynergies.length * 12
+    + deployedFactionSynergies.length * 8
+    + equippedRelicCount * 5
+    + equippedEventCount * 3
+  ));
+  const squadGrade = squadReadiness >= 85 ? 'S'
+    : squadReadiness >= 70 ? 'A'
+      : squadReadiness >= 50 ? 'B'
+        : 'C';
+  const squadFocus = deployedStats.atk >= deployedStats.def && deployedStats.atk >= deployedStats.spd
+    ? (lang === 'fr' ? 'Assaut direct' : 'Direct assault')
+    : deployedStats.def >= deployedStats.spd
+      ? (lang === 'fr' ? 'Ligne defensive' : 'Defensive line')
+      : (lang === 'fr' ? 'Tempo rapide' : 'Fast tempo');
+  const squadWarnings = [
+    deployedHeroes.length < 3 && (lang === 'fr' ? 'Slot libre: ajoute un troisieme heros pour securiser les modes longs.' : 'Open slot: add a third hero to secure longer modes.'),
+    deployedSynergies.length === 0 && (lang === 'fr' ? 'Aucune synergie archetype: double une categorie pour activer un bonus fort.' : 'No archetype synergy: double a category to activate a strong bonus.'),
+    equippedRelicCount < deployedHeroes.length && (lang === 'fr' ? 'Relique manquante: auto-equipe pour convertir l inventaire en puissance directe.' : 'Missing relic: auto-equip to turn inventory into direct power.'),
+    equippedEventCount === 0 && (lang === 'fr' ? 'Aucun objet evenementiel arme: les combats boss seront moins explosifs.' : 'No event item armed: boss fights will be less explosive.')
+  ].filter(Boolean);
+  const categoryLabels = {
+    marine: { fr: 'Tank / front', en: 'Tank / front' },
+    slayer: { fr: 'Burst degats', en: 'Burst damage' },
+    horror: { fr: 'Survie / esquive', en: 'Survival / dodge' },
+    hacker: { fr: 'Controle ATB', en: 'ATB control' },
+    tactical: { fr: 'Defense / soutien', en: 'Defense / support' }
+  };
+
   const currentChapter = [...STORY_CHAPTERS]
     .reverse()
     .find(chapter => completedStages.length >= chapter.unlockClears) || STORY_CHAPTERS[0];
@@ -2078,7 +2131,173 @@ export default function HubScreen({
 
         {/* Tab 3: Party Setup */}
         {activeTab === 'party' && (
-          <div className="glass-panel" style={{ padding: '20px' }}>
+          <>
+          <div className="glass-panel squad-panel">
+            <div className="squad-header">
+              <div>
+                <h3>{getTranslation(lang, 'teamDeployTitle')}</h3>
+                <p>{getTranslation(lang, 'teamDeploySub')}</p>
+              </div>
+              <button
+                onClick={autoEquipRelics}
+                className="btn-retro"
+                style={{ fontSize: '11px', padding: '7px 12px', background: 'rgba(57, 197, 187, 0.1)', borderColor: '#39c5bb', color: '#39c5bb' }}
+              >
+                {getTranslation(lang, 'btnAutoEquip')}
+              </button>
+            </div>
+
+            <div className="squad-command-grid">
+              <div className="squad-readiness-card">
+                <div className="squad-kicker">{lang === 'fr' ? 'Lecture meta' : 'Meta read'}</div>
+                <div className="squad-grade-row">
+                  <span className="squad-grade">{squadGrade}</span>
+                  <div>
+                    <strong>{squadReadiness}%</strong>
+                    <small>{lang === 'fr' ? 'Preparation escouade' : 'Squad readiness'}</small>
+                  </div>
+                </div>
+                <div className="squad-meter"><span style={{ width: `${squadReadiness}%` }} /></div>
+                <p>{squadFocus}</p>
+              </div>
+
+              <div className="squad-stat-grid">
+                <div><span>HP</span><strong>{deployedStats.hp}</strong></div>
+                <div><span>ATK</span><strong>{deployedStats.atk}</strong></div>
+                <div><span>DEF</span><strong>{deployedStats.def}</strong></div>
+                <div><span>SPD</span><strong>{deployedStats.spd}</strong></div>
+              </div>
+
+              <div className="squad-plan-card">
+                <div className="squad-kicker">{lang === 'fr' ? 'Plan Nexus' : 'Nexus plan'}</div>
+                <p>
+                  {lang === 'fr'
+                    ? `${deployedHeroes.length}/3 heros deployes, ${deployedSynergies.length + deployedFactionSynergies.length} bonus actifs, ${equippedRelicCount}/${deployedHeroes.length || 3} reliques armees.`
+                    : `${deployedHeroes.length}/3 heroes deployed, ${deployedSynergies.length + deployedFactionSynergies.length} active bonuses, ${equippedRelicCount}/${deployedHeroes.length || 3} relics armed.`}
+                </p>
+                <span>{nextProgressGoal}</span>
+              </div>
+            </div>
+
+            <div className="squad-slot-grid">
+              {[0, 1, 2].map((idx) => {
+                const id = activeTeam[idx];
+                const hero = HEROES_DB.find(h => h.id === id);
+                const stats = hero ? getHeroStats(hero) : null;
+                const gear = hero ? getGearDisplay(equippedGear[hero.id]) : null;
+                const eventItem = hero && equippedEventItems[hero.id]
+                  ? Object.values(EVENT_ITEMS_DB).find(item => item.id === equippedEventItems[hero.id])
+                  : null;
+                return (
+                  <div key={idx} className={`squad-slot ${hero ? 'filled' : 'empty'}`} style={{ '--slot-color': hero?.primaryColor || '#444' }}>
+                    {hero ? (
+                      <>
+                        <div className="squad-slot-top">
+                          <span>Slot {idx + 1}</span>
+                          <button onClick={() => toggleActiveHero(hero.id)} title={lang === 'fr' ? 'Retirer' : 'Remove'}>X</button>
+                        </div>
+                        <strong>{hero.name}</strong>
+                        <small>{hero.universe} - {categoryLabels[hero.category]?.[lang] || hero.category}</small>
+                        <div className="squad-mini-stats">
+                          <span>HP {stats.hp}</span>
+                          <span>ATK {stats.atk}</span>
+                          <span>DEF {stats.def}</span>
+                          <span>SPD {stats.spd}</span>
+                        </div>
+                        <div className="squad-loadout-line">
+                          <span>{gear ? gear.name[lang] : (lang === 'fr' ? 'Relique vide' : 'No relic')}</span>
+                          <span>{eventItem ? eventItem.name[lang] : (lang === 'fr' ? 'Event vide' : 'No event')}</span>
+                        </div>
+                        <button
+                          onClick={() => { setSelectedHeroId(hero.id); setActiveTab('inventory'); sound.playSfx('click'); }}
+                          className="btn-retro"
+                          style={{ fontSize: '10px', padding: '4px 8px', width: '100%', marginTop: '8px' }}
+                        >
+                          {lang === 'fr' ? 'GERER EQUIPEMENT' : 'MANAGE GEAR'}
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <span>{getTranslation(lang, 'emptySlot')}</span>
+                        <small>{lang === 'fr' ? 'Choisis une reserve ci-dessous.' : 'Pick a reserve below.'}</small>
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="squad-meta-grid">
+              <div className="squad-section-card">
+                <div className="squad-section-title">{getTranslation(lang, 'synergiesTitle')}</div>
+                {deployedSynergies.length === 0 && deployedFactionSynergies.length === 0 ? (
+                  <p className="squad-muted">{getTranslation(lang, 'noSynergies')}</p>
+                ) : (
+                  <div className="squad-bonus-list">
+                    {deployedSynergies.map(syn => (
+                      <div key={syn.id}>
+                        <strong>{getTranslation(lang, syn.key)}</strong>
+                        <span>{getTranslation(lang, syn.descKey)}</span>
+                      </div>
+                    ))}
+                    {deployedFactionSynergies.map(rule => (
+                      <div key={rule.id}>
+                        <strong>{rule.name[lang]}</strong>
+                        <span>{rule.desc[lang]}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="squad-section-card warning">
+                <div className="squad-section-title">{lang === 'fr' ? 'Priorites meta' : 'Meta priorities'}</div>
+                <div className="squad-warning-list">
+                  {(squadWarnings.length ? squadWarnings : [lang === 'fr' ? 'Escouade stable: pousse les niveaux et vise les caches de collection.' : 'Stable squad: push levels and chase collection caches.']).map(item => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="squad-reserve-title">
+              <h4>{getTranslation(lang, 'reserves')}</h4>
+              <span>{lang === 'fr' ? 'Clique pour deployer ou retirer. Les cartes montrent la valeur actuelle avec bonus.' : 'Click to deploy or bench. Cards show current value with bonuses.'}</span>
+            </div>
+            <div className="squad-reserve-grid">
+              {HEROES_DB.filter(h => unlockedHeroes.includes(h.id)).map((hero) => {
+                const isActive = activeTeam.includes(hero.id);
+                const stats = getHeroStats(hero);
+                const gear = getGearDisplay(equippedGear[hero.id]);
+                const wouldPair = !isActive && deployedCategories[hero.category] === 1;
+                return (
+                  <div
+                    key={hero.id}
+                    onClick={() => toggleActiveHero(hero.id)}
+                    className={`squad-reserve-card ${isActive ? 'active' : ''}`}
+                    style={{ '--slot-color': hero.primaryColor }}
+                  >
+                    <div className="squad-reserve-head">
+                      <strong>{hero.name}</strong>
+                      <span>{isActive ? getTranslation(lang, 'deployed') : getTranslation(lang, 'standby')}</span>
+                    </div>
+                    <small>{hero.universe} - {categoryLabels[hero.category]?.[lang] || hero.category}</small>
+                    <div className="squad-reserve-stats">
+                      <span>ATK {stats.atk}</span>
+                      <span>DEF {stats.def}</span>
+                      <span>SPD {stats.spd}</span>
+                    </div>
+                    <div className="squad-reserve-tags">
+                      <span>LVL {heroLevels[hero.id] || 1}</span>
+                      {gear && <span>{gear.name[lang]}</span>}
+                      {wouldPair && <span>{lang === 'fr' ? 'Synergie +' : 'Synergy +'}</span>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="glass-panel" style={{ display: 'none' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px', flexWrap: 'wrap', gap: '10px' }}>
               <div>
                 <h3 style={{ margin: '0 0 4px 0', fontSize: '16px', color: '#39c5bb' }}>{getTranslation(lang, 'teamDeployTitle')}</h3>
@@ -2190,6 +2409,7 @@ export default function HubScreen({
               })}
             </div>
           </div>
+          </>
         )}
 
         {/* Tab 4: Inventory & Equipment */}
