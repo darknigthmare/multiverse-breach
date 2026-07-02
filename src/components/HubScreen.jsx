@@ -323,6 +323,141 @@ export default function HubScreen({
     }
   ];
 
+  const ARC_DETAIL_BY_ID = {
+    xeno_yautja_war: {
+      faction: { fr: 'Alliance du Nexus vs Libres-Fractures de chasse', en: 'Nexus Alliance vs Hunting Free-Fractures' },
+      stakes: {
+        fr: 'Si cette ligne tombe, les ruches apprennent a utiliser le Voile comme nid et les Yautja transforment le Nexus en reserve de chasse infinie.',
+        en: 'If this line falls, hives learn to use the Veil as a nest and Yautja clans turn the Nexus into an endless hunting preserve.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: tanks sci-fi, anti-boss, reliques acide/plasma, controle des adds rapides.',
+        en: 'Meta priority: sci-fi tanks, anti-boss damage, acid/plasma relics, control against fast adds.'
+      },
+      finale: { fr: 'Sceller le Nid-Trophee avant qu il ne ponde dans plusieurs Trames a la fois.', en: 'Seal the Trophy-Hive before it breeds across several Threads at once.' }
+    },
+    dark_gotham: {
+      faction: { fr: 'Effaces et Trone Brise', en: 'Erased and Broken Throne' },
+      stakes: {
+        fr: 'Gotham devient une experience morale: chaque victoire nourrit soit l ordre brutal, soit le chaos contagieux.',
+        en: 'Gotham becomes a moral experiment: every victory feeds either brutal order or contagious chaos.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: burst critique, resistance peur, equipes capables de finir vite avant l escalade.',
+        en: 'Meta priority: critical burst, fear resistance, teams able to finish fast before escalation.'
+      },
+      finale: { fr: 'Briser le rire noir sans donner au Sans-Auteur une preuve que toute histoire finit en nihilisme.', en: 'Break the black laugh without proving to the Authorless that every story ends in nihilism.' }
+    },
+    stage_resonance: {
+      faction: { fr: 'Personas de Resonance et Archivistes', en: 'Resonance Personas and Archivists' },
+      stakes: {
+        fr: 'La musique maintient des Trames entieres en vie; si le rythme se corrompt, les souvenirs collectifs deviennent des armes.',
+        en: 'Music keeps entire Threads alive; if rhythm corrupts, collective memory becomes a weapon.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: vitesse, tempo ATB, objets evenementiels, equipes capables de cycler les speciales.',
+        en: 'Meta priority: speed, ATB tempo, event items, teams able to cycle specials.'
+      },
+      finale: { fr: 'Transformer la Scene Fantome en balise qui repousse le silence du Sans-Auteur.', en: 'Turn the Ghost Stage into a beacon that pushes back the Authorless silence.' }
+    },
+    arcane_paradox: {
+      faction: { fr: 'Archivistes, Mages et Occulte', en: 'Archivists, Mages, and Occult' },
+      stakes: {
+        fr: 'Les runes de plusieurs mondes se contredisent et menacent de redefinir les lois internes du Nexus.',
+        en: 'Runes from several worlds contradict each other and threaten to redefine the Nexus internal laws.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: defense, controle, heros tactiques, reliques qui stabilisent plutot que simplement frapper.',
+        en: 'Meta priority: defense, control, tactical heroes, relics that stabilize rather than only hit.'
+      },
+      finale: { fr: 'Recomposer un Grimoire d Equilibre sans laisser Veyr reecrire la carte des ruptures.', en: 'Rebuild a Grimoire of Balance without letting Veyr rewrite the rupture map.' }
+    },
+    hell_circus: {
+      faction: { fr: 'Citadelle Blanche vs Cabaret infernal', en: 'White Citadel vs Infernal Cabaret' },
+      stakes: {
+        fr: 'Redemption, punition et spectacle fusionnent; les heros risquent de devenir des roles joues pour toujours.',
+        en: 'Redemption, punishment, and spectacle fuse; heroes risk becoming roles performed forever.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: controle, survie, cleanse narratif, mitigation des boss a phases.',
+        en: 'Meta priority: control, survival, narrative cleanse, mitigation against phase bosses.'
+      },
+      finale: { fr: 'Fermer le rideau sans effacer ceux qui cherchent encore une sortie.', en: 'Close the curtain without erasing those still looking for an exit.' }
+    },
+    frontline_sci_fi: {
+      faction: { fr: 'Alliance du Nexus', en: 'Nexus Alliance' },
+      stakes: {
+        fr: 'C est la ligne militaire officielle du Nexus: si elle casse, aucune zone stable ne protege les civils de la Cite-Mosaique.',
+        en: 'This is the official military line of the Nexus: if it breaks, no stable zone protects Mosaic City civilians.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: HP, DEF, escouades 2+ sci-fi pour activer +8% HP, reliques de blindage.',
+        en: 'Meta priority: HP, DEF, 2+ sci-fi squads to activate +8% HP, armor relics.'
+      },
+      finale: { fr: 'Construire le Rempart Atrium, premiere vraie defense contre le Noyau final.', en: 'Build the Atrium Bulwark, the first real defense against the final Core.' }
+    },
+    containment_labs: {
+      faction: { fr: 'Protocoles de confinement A.R.C.A.', en: 'A.R.C.A. Containment Protocols' },
+      stakes: {
+        fr: 'Les incidents scientifiques prouvent que la Premiere Breche peut contaminer la biologie, le temps, la matiere et les IA.',
+        en: 'Scientific incidents prove the First Breach can contaminate biology, time, matter, and AI.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: survie, debuffs, anti-infection, alternance RPG/Tactics pour tenir les combats longs.',
+        en: 'Meta priority: survival, debuffs, anti-infection, RPG/Tactics alternation for long fights.'
+      },
+      finale: { fr: 'Isoler le Laboratoire Zero avant qu il ne fabrique des copies infectees d autres heros.', en: 'Isolate Laboratory Zero before it manufactures infected copies of other heroes.' }
+    },
+    cyber_reality: {
+      faction: { fr: 'IA & Cyber', en: 'AI & Cyber' },
+      stakes: {
+        fr: 'La Zone 404 revele que certaines breches ne sont pas des lieux, mais des permissions systeme volees.',
+        en: 'Zone 404 reveals that some breaches are not places, but stolen system permissions.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: vitesse, hackers, interruptions, bonus +8% SPD avec 2+ univers cyber.',
+        en: 'Meta priority: speed, hackers, interrupts, +8% SPD bonus with 2+ cyber universes.'
+      },
+      finale: { fr: 'Installer un pare-feu narratif pour empecher le Sans-Auteur de supprimer les sauvegardes.', en: 'Install a narrative firewall to stop the Authorless from deleting saves.' }
+    },
+    duel_and_arena: {
+      faction: { fr: 'Libres-Fractures', en: 'Free-Fractures' },
+      stakes: {
+        fr: 'Ces mondes refusent la guerre frontale: ils imposent contrat, duel, tournoi, braquage et regles locales.',
+        en: 'These worlds reject frontal war: they impose contracts, duels, tournaments, heists, and local rules.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: precision, critique, tactique, composition selon mode de mission.',
+        en: 'Meta priority: precision, critical damage, tactics, mission-mode composition.'
+      },
+      finale: { fr: 'Gagner le Tournoi des Regles et forcer le Nexus a respecter les lois de chaque Trame.', en: 'Win the Tournament of Rules and force the Nexus to respect each Thread law.' }
+    },
+    wasteland_hellfront: {
+      faction: { fr: 'Trone Brise', en: 'Broken Throne' },
+      stakes: {
+        fr: 'La fin du monde attire les mondes qui connaissent deja la ruine; ils veulent survivre, pas etre sauves.',
+        en: 'The end of the world attracts worlds that already know ruin; they want to survive, not be saved.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: degats bruts, endurance, gestion de boss lourds, reliques apocalypse.',
+        en: 'Meta priority: raw damage, endurance, heavy boss management, apocalypse relics.'
+      },
+      finale: { fr: 'Transformer le Wasteland en avant-poste au lieu de le laisser devenir le futur par defaut.', en: 'Turn the Wasteland into an outpost instead of letting it become the default future.' }
+    },
+    urban_legends: {
+      faction: { fr: 'Effaces', en: 'Erased' },
+      stakes: {
+        fr: 'La peur est la nourriture la plus facile du Sans-Auteur: elle efface les details et laisse seulement une silhouette.',
+        en: 'Fear is the Authorless easiest food: it erases detail and leaves only a silhouette.'
+      },
+      gameplay: {
+        fr: 'Priorite meta: esquive, controle, cleanse, burst contre entites et pieges.',
+        en: 'Meta priority: dodge, control, cleanse, burst against entities and traps.'
+      },
+      finale: { fr: 'Nommer les monstres pour les empecher de devenir des blancs dans les archives.', en: 'Name the monsters to stop them from becoming blanks in the archives.' }
+    }
+  };
+
   const COLLECTION_REWARDS = [
     {
       id: 'alien_saga',
@@ -1130,6 +1265,7 @@ export default function HubScreen({
   const nextChapter = STORY_CHAPTERS.find(chapter => completedStages.length < chapter.unlockClears);
   const arcProgress = NARRATIVE_ARCS.map(arc => ({
     ...arc,
+    ...(ARC_DETAIL_BY_ID[arc.id] || {}),
     completed: getCompletedUniversesCount(arc.universes),
     total: arc.universes.length
   }));
@@ -1499,6 +1635,13 @@ export default function HubScreen({
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px' }}>
                   {arcProgress.map(arc => {
                     const ratio = arc.total ? arc.completed / arc.total : 0;
+                    const phase = ratio === 1
+                      ? (lang === 'fr' ? 'Arc stabilise' : 'Arc stabilized')
+                      : ratio >= 0.66
+                        ? (lang === 'fr' ? 'Finale approche' : 'Finale incoming')
+                        : ratio >= 0.33
+                          ? (lang === 'fr' ? 'Conflit ouvert' : 'Open conflict')
+                          : (lang === 'fr' ? 'Signal faible' : 'Weak signal');
                     return (
                       <div key={arc.id} style={{
                         padding: '9px',
@@ -1510,11 +1653,17 @@ export default function HubScreen({
                           <strong style={{ fontSize: '11px', color: arc.color }}>{arc.title[lang]}</strong>
                           <span style={{ fontSize: '10px', color: '#ddd' }}>{arc.completed}/{arc.total}</span>
                         </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '6px', alignItems: 'center' }}>
+                          <span style={{ fontSize: '9px', color: '#cfd8dc' }}>{arc.faction?.[lang]}</span>
+                          <span style={{ fontSize: '8px', color: arc.color, border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px', textTransform: 'uppercase' }}>{phase}</span>
+                        </div>
                         <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', marginBottom: '6px' }}>
                           <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: arc.color }} />
                         </div>
                         <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{arc.premise[lang]}</div>
-                        <div style={{ fontSize: '9px', color: '#888', marginTop: '5px' }}>{arc.reward[lang]}</div>
+                        <div style={{ fontSize: '10px', color: '#d0d0d0', lineHeight: 1.35, marginTop: '7px' }}>{arc.stakes?.[lang]}</div>
+                        <div style={{ fontSize: '9px', color: '#9adbd6', lineHeight: 1.35, marginTop: '6px' }}>{arc.gameplay?.[lang]}</div>
+                        <div style={{ fontSize: '9px', color: '#888', marginTop: '5px' }}>{arc.reward[lang]} - {arc.finale?.[lang]}</div>
                       </div>
                     );
                   })}
