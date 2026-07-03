@@ -198,8 +198,8 @@ export const LORE_DB = {
     mediaType: 'game',
     title: { en: 'Resident Evil', fr: 'Resident Evil' },
     desc: {
-      en: 'Umbrella Corporation biological outbreak producing zombies and terrifying tyrants.',
-      fr: 'Épidémie biologique d\'Umbrella Corporation créant des zombies et des tyrans terrifiants.'
+      en: 'A survival-horror universe shaped by Umbrella Corporation experiments, Raccoon City outbreak, T-Virus and G-Virus contamination, scarce resources, locked routes, and bio-organic weapons such as Lickers, Tyrants, Nemesis, and William Birkin mutations.',
+      fr: 'Un univers survival-horror faconne par les experiences d Umbrella Corporation, l epidemie de Raccoon City, les contaminations T-Virus et G-Virus, les ressources rares, les routes verrouillees et les armes bio-organiques comme les Lickers, les Tyrants, Nemesis et les mutations de William Birkin.'
     }
   },
   'Silent Hill': {

@@ -618,9 +618,39 @@ export const EQUIP_ITEMS_DB = [
   { id: 'bio_helmet', universe: 'Predator', name: { en: 'Thermal Bio-Helmet', fr: 'Bio-Casque Thermique' }, boost: { atk: 8, def: 4 }, cost: 110 },
   { id: 'gauntlet_pad', universe: 'Predator', name: { en: 'Computer Gauntlet', fr: 'Gantelet Ordinateur' }, boost: { spd: 2 }, cost: 80 },
   // Resident Evil
-  { id: 'green_herb', universe: 'Resident Evil', name: { en: 'Green Herb Extract', fr: 'Herbe Verte' }, boost: { hp: 100 }, cost: 80 },
-  { id: 'stars_badge', universe: 'Resident Evil', name: { en: 'S.T.A.R.S. Badge', fr: 'Insigne S.T.A.R.S.' }, boost: { def: 8 }, cost: 100 },
-  { id: 'laser_sight', universe: 'Resident Evil', name: { en: 'Custom Laser Sight', fr: 'Viseur Laser RPD' }, boost: { atk: 9 }, cost: 110 },
+  {
+    id: 'green_herb',
+    universe: 'Resident Evil',
+    name: { en: 'Green Herb First-Aid Mix', fr: 'Melange de premiers soins herbe verte' },
+    desc: {
+      fr: 'Plante medicale iconique des zones de survie Resident Evil. A.R.C.A. la traite comme une ancre de soin: elle rappelle la logique des ressources rares, du soin manuel et de la survie entre deux couloirs infectes.',
+      en: 'Iconic medical plant from Resident Evil survival zones. A.R.C.A. treats it as a healing anchor: it restores the logic of scarce resources, manual recovery, and survival between infected corridors.'
+    },
+    boost: { hp: 100 },
+    cost: 80
+  },
+  {
+    id: 'stars_badge',
+    universe: 'Resident Evil',
+    name: { en: 'S.T.A.R.S. Field Badge', fr: 'Insigne de terrain S.T.A.R.S.' },
+    desc: {
+      fr: 'Insigne lie aux equipes Special Tactics And Rescue Service de Raccoon City. Dans la Breche, il renforce les protocoles de fouille, de couverture et de protection des survivants face aux B.O.W.',
+      en: 'Badge tied to Raccoon City Special Tactics And Rescue Service teams. In the Breach, it reinforces search, cover, and survivor-protection protocols against B.O.W. threats.'
+    },
+    boost: { def: 8 },
+    cost: 100
+  },
+  {
+    id: 'laser_sight',
+    universe: 'Resident Evil',
+    name: { en: 'R.P.D. Custom Laser Sight', fr: 'Viseur laser custom R.P.D.' },
+    desc: {
+      fr: 'Module de precision adapte aux armes de poing de crise. Il transforme chaque munition en decision: viser le point faible, economiser les chargeurs et stopper une mutation avant qu elle ne franchisse la porte.',
+      en: 'Precision module adapted for crisis sidearms. It turns every bullet into a decision: aim for the weak point, conserve magazines, and stop a mutation before it crosses the door.'
+    },
+    boost: { atk: 9 },
+    cost: 110
+  },
   // Silent Hill
   { id: 'steel_pipe', universe: 'Silent Hill', name: { en: 'Rusty Steel Pipe', fr: 'Tuyau de Fer Rouillé' }, boost: { atk: 12 }, cost: 90 },
   { id: 'pocket_radio', universe: 'Silent Hill', name: { en: 'Static Pocket Radio', fr: 'Radio Grésillante' }, boost: { def: 6, spd: 1 }, cost: 90 },
@@ -785,8 +815,11 @@ export const EVENT_ITEMS_DB = {
   },
   'Resident Evil': {
     id: 'evt_re_cure',
-    name: { en: 'T-Vaccine Spray', fr: 'Aérosol de Vaccin T' },
-    desc: { en: 'Cures infection: restores 150 HP to all active squad members instantly.', fr: 'Soigne l\'infection : redonne instantanément 150 PV à tous les héros de l\'escouade.' },
+    name: { en: 'Anti-Viral Vaccine Case', fr: 'Mallette vaccin antiviral' },
+    desc: {
+      en: 'Deploys an emergency anti-viral kit derived from Raccoon City crisis protocols. It stabilizes the squad, slows infection logic, and denies Umbrella-style specimen conversion for a short window.',
+      fr: 'Deploie un kit antiviral d urgence derive des protocoles de crise de Raccoon City. Il stabilise l escouade, ralentit la logique d infection et refuse la conversion des allies en specimens Umbrella pendant une courte fenetre.'
+    },
     effect: 'heal_squad'
   },
   'Silent Hill': {
@@ -1164,6 +1197,30 @@ Object.keys(extraHeroData).forEach(universe => {
       special: { name: `${item.name} Singularity force`, dmg: 4.5 }
     });
   });
+});
+
+const heroOverrides = {
+  jill: {
+    weaponType: 'gun',
+    weaponColor: '#1b1f2a',
+    simple: { name: 'S.T.A.R.S. Pistol', type: 'bullet', dmg: 1.0 },
+    secondary: { name: 'Lockpick Counterroute', type: 'tactical', cd: 7, dmg: 1.5 },
+    defense: { name: 'Last Escape Dodge', type: 'dodge', dur: 2.0, reduce: 0.82 },
+    special: { name: 'Anti-Nemesis Mine Line', type: 'trap_aoe', dmg: 4.4, color: '#79d0ff' }
+  },
+  wesker: {
+    weaponType: 'gun',
+    weaponColor: '#050505',
+    simple: { name: 'Samurai Edge Precision', type: 'bullet', dmg: 1.15 },
+    secondary: { name: 'Uroboros Dash', type: 'melee', cd: 6, dmg: 2.0 },
+    defense: { name: 'Viral Reflex Step', type: 'dodge', dur: 1.8, reduce: 0.88 },
+    special: { name: 'Uroboros Selection Burst', type: 'dark_aoe', dmg: 4.9, color: '#d7f26b' }
+  }
+};
+
+Object.entries(heroOverrides).forEach(([id, override]) => {
+  const hero = HEROES_DB.find(item => item.id === id);
+  if (hero) Object.assign(hero, override);
 });
 
 export const getHeroById = (id) => HEROES_DB.find(h => h.id === id);

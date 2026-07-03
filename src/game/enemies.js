@@ -59,13 +59,16 @@ export const ENEMIES_DB = {
     monsters: [
       { name: 'T-Virus Zombie', hp: 70, atk: 8, spd: 3, color: '#7d6608', weapon: 'bite' },
       { name: 'Zombie Dog (Cerberus)', hp: 60, atk: 10, spd: 6, color: '#4a3f35', weapon: 'bite' },
-      { name: 'Ceiling-Clinging Licker', hp: 90, atk: 12, spd: 6, color: '#900c3f', weapon: 'tongue' }
+      { name: 'Ceiling-Clinging Licker', hp: 90, atk: 12, spd: 6, color: '#900c3f', weapon: 'tongue' },
+      { name: 'Hunter Beta', hp: 115, atk: 14, spd: 6, color: '#315c31', weapon: 'claws' },
+      { name: 'G-Embryo Mutant', hp: 105, atk: 13, spd: 4, color: '#a04a2b', weapon: 'mutation_burst' }
     ],
     bosses: [
       { name: 'Nemesis T-Type', hp: 600, atk: 24, spd: 4, color: '#2c3539', weapon: 'rocket_launcher', special: 'Tentacle Bind Slam' },
-      { name: 'Albert Wesker', hp: 520, atk: 21, spd: 8, color: '#1a1a1a', weapon: 'gun', special: 'Uroboros Dash Strike' }
+      { name: 'Albert Wesker', hp: 520, atk: 21, spd: 8, color: '#1a1a1a', weapon: 'gun', special: 'Uroboros Dash Strike' },
+      { name: 'Mr. X T-00 Tyrant', hp: 560, atk: 22, spd: 3, color: '#30333a', weapon: 'crushing_fist', special: 'Stalker Door Breach' }
     ],
-    worldBoss: { name: 'William Birkin G-Stage 4', hp: 1400, atk: 33, spd: 4, color: '#5c2018', weapon: 'claws', special: 'Scythe Arm Multi-Slash' }
+    worldBoss: { name: 'William Birkin G-Stage 4', hp: 1400, atk: 33, spd: 4, color: '#5c2018', weapon: 'claws', special: 'G-Virus Mutation Cascade' }
   },
   'Silent Hill': {
     monsters: [

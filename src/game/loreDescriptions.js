@@ -86,9 +86,10 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   'Resident Evil': {
     faction: 'horror',
-    theme: 'confinement Umbrella, virus, commissariat, tyrans, ressources rares et survie biohazard',
-    stageName: 'Zone Biohazard',
-    bossName: 'Tyran Umbrella'
+    theme: 'Raccoon City, Umbrella, T-Virus, G-Virus, B.O.W., commissariat R.P.D., ressources rares et extraction de survivants',
+    stageName: 'Raccoon City Police Department',
+    bossName: 'Tyrant T-00',
+    worldBoss: 'William Birkin G-Stage 4'
   },
   'Silent Hill': {
     faction: 'horror',
