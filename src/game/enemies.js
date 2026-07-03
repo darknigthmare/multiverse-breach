@@ -87,15 +87,18 @@ export const ENEMIES_DB = {
   },
   'Dino Crisis': {
     monsters: [
-      { name: 'Swift Velociraptor', hp: 80, atk: 10, spd: 7, color: '#3d5c3d', weapon: 'bite' },
-      { name: 'Pteranodon Flyer', hp: 60, atk: 8, spd: 8, color: '#7d6608', weapon: 'dive' },
-      { name: 'Oviraptor Poisoner', hp: 75, atk: 9, spd: 6, color: '#884ea0', weapon: 'spit' }
+      { name: 'Ibis Island Velociraptor', hp: 85, atk: 11, spd: 7, color: '#3d5c3d', weapon: 'pack_bite' },
+      { name: 'Pteranodon Facility Diver', hp: 65, atk: 9, spd: 8, color: '#7d6608', weapon: 'dive' },
+      { name: 'Oviraptor Poison Spitter', hp: 75, atk: 9, spd: 6, color: '#884ea0', weapon: 'poison_spit' },
+      { name: 'Compsognathus Swarm', hp: 55, atk: 7, spd: 8, color: '#6f8f45', weapon: 'swarm_bite' },
+      { name: 'Third Energy Raptor Alpha', hp: 120, atk: 14, spd: 7, color: '#1f5f43', weapon: 'temporal_claw' }
     ],
     bosses: [
-      { name: 'Giganotosaurus Behemoth', hp: 620, atk: 23, spd: 4, color: '#273746', weapon: 'bite', special: 'Earth-Shaking Trample' },
-      { name: 'Therizinosaurus Slasher', hp: 480, atk: 18, spd: 5, color: '#7f5a58', weapon: 'claws', special: 'Frenzy Claw Shred' }
+      { name: 'Tyrannosaurus Pursuer', hp: 640, atk: 24, spd: 4, color: '#3a1a18', weapon: 'jaw_crush', special: 'Facility Wall Breach' },
+      { name: 'Giganotosaurus Edward City', hp: 680, atk: 25, spd: 4, color: '#273746', weapon: 'bite', special: 'Earth-Shaking Trample' },
+      { name: 'Therizinosaurus Slasher', hp: 500, atk: 19, spd: 5, color: '#7f5a58', weapon: 'claws', special: 'Frenzy Claw Shred' }
     ],
-    worldBoss: { name: 'Mutated Tyrannosaurus Rex', hp: 1380, atk: 32, spd: 4, color: '#3a1a18', weapon: 'bite', special: 'Roar Shield & Crushing Bite' }
+    worldBoss: { name: 'Third Energy Tyrant Rex', hp: 1450, atk: 34, spd: 4, color: '#3a1a18', weapon: 'temporal_bite', special: 'Chronal Roar and Crushing Bite' }
   },
   'The Matrix': {
     monsters: [

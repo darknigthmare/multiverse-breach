@@ -72,6 +72,15 @@ const BATTLE_ITEM_OVERRIDES = {
     summon: ['Echo de Harry Mason', 'Harry Mason Echo', 'Invocation temporaire: une trace de Harry traverse le brouillard, guide Heather/James vers une sortie et repousse les monstres symboliques sans briser le ton survival.'],
     ultimate: ['Sirene Otherworld', 'Otherworld Siren', 'Attaque ultime: la sirene retentit, les murs deviennent rouille et la ville juge les ennemis; les cibles sont ralenties, marquees et frappees par leurs propres symboles.']
   },
+  'Dino Crisis': {
+    pickups: [
+      ['Patch hemostatique SORT', 'SORT Hemostatic Patch', 'Soin de terrain pour morsures et griffures: en melee il stabilise vite le heros, en tactique il devient une case de repli sous poursuite de raptor.'],
+      ['Key plug Third Energy', 'Third Energy Key Plug', 'Cle de laboratoire: ouvre une route, verrouille une porte derriere l escouade ou coupe une ligne de charge ennemie.'],
+      ['Dart tranquillisant', 'Tranquilizer Dart', 'Munition non letale SORT: ralentit un specimen rapide, casse une charge de raptor et donne le temps de repositionner l equipe.']
+    ],
+    summon: ['Equipe TRAT de couverture', 'TRAT Cover Team', 'Invocation temporaire: Dylan et une unite TRAT traversent la breche, posent un tir de couverture et escortent les signatures civiles hors de la zone Third Energy.'],
+    ultimate: ['Rugissement T-Rex canalise', 'Channeled T-Rex Roar', 'Attaque ultime: A.R.C.A. redirige la poursuite du T-Rex vers la ligne ennemie, provoque une charge massive, puis referme la frequence Third Energy avant retour de chasse.']
+  },
   Stargate: {
     pickups: [
       ['Cellule au naquadah', 'Naquadah Cell', 'Source energetique instable: en melee elle charge une frappe, en tactique elle alimente une Porte ou surcharge un bouclier Goa uld.'],

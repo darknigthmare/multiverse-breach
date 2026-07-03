@@ -100,9 +100,10 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   'Dino Crisis': {
     faction: 'horror',
-    theme: 'Troisieme Energie, couloirs de laboratoire, predateurs prehistoriques et alarmes de confinement',
-    stageName: 'Complexe Third Energy',
-    bossName: 'Raptor Alpha'
+    theme: 'Ibis Island, Third Energy, SORT, TRAT, Edward City, key cards, laboratoires militaires, raptors, T-Rex et derives temporelles',
+    stageName: 'Ibis Island Third Energy Lab',
+    bossName: 'Tyrannosaurus Pursuer',
+    worldBoss: 'Third Energy Tyrant Rex'
   },
   'The Matrix': {
     faction: 'cyber',
