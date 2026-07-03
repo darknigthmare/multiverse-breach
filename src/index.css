@@ -548,6 +548,72 @@ body {
   box-shadow: inset 0 0 30px rgba(255,69,0,0.09), 0 12px 28px rgba(0,0,0,0.34);
 }
 
+.mosaic-rpg-panel {
+  grid-template-columns: minmax(280px, 0.48fr) minmax(560px, 1.52fr);
+}
+
+.mosaic-rpg-stage {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.mosaic-rpg-canvas {
+  min-height: 430px;
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+  border-color: rgba(57, 197, 187, 0.3);
+}
+
+.mosaic-rpg-log {
+  display: grid;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid rgba(57, 197, 187, 0.25);
+  border-radius: 4px;
+  background: rgba(57, 197, 187, 0.055);
+  color: #d8f7ff;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.mosaic-rpg-log strong {
+  color: #39c5bb;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.mosaic-rpg-controls {
+  display: grid;
+  gap: 9px;
+  color: #aaa;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.mosaic-mobile-pad {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(56px, 1fr));
+  gap: 8px;
+}
+
+.mosaic-mobile-pad button {
+  min-height: 38px;
+  border: 1px solid rgba(57, 197, 187, 0.42);
+  border-radius: 4px;
+  background: rgba(0,0,0,0.44);
+  color: #d8f7ff;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mosaic-mobile-pad button:active {
+  border-color: #ffea00;
+  color: #ffea00;
+  transform: translateY(1px);
+}
+
 .mosaic-city-map {
   display: grid;
   grid-template-columns: repeat(4, minmax(130px, 1fr));
@@ -1455,6 +1521,14 @@ body {
   .nexus-hub-canvas,
   .fps-royale-canvas {
     min-height: 260px;
+  }
+
+  .mosaic-rpg-canvas {
+    min-height: 300px;
+  }
+
+  .mosaic-mobile-pad {
+    grid-template-columns: repeat(3, minmax(68px, 1fr));
   }
 
   .mosaic-city-map {

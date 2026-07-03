@@ -14,69 +14,375 @@ import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 
-function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages }) {
+function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerProfile }) {
+  const canvasRef = useRef(null);
+  const stateRef = useRef({
+    t: 0,
+    player: { x: 480, y: 292, speed: 2.35, facing: 1 },
+    destination: null,
+    keys: {},
+    npcs: []
+  });
+  const nearHeroRef = useRef(null);
+  const [nearHeroId, setNearHeroId] = useState(null);
+  const [selectedHeroId, setSelectedHeroId] = useState(null);
+  const [currentZone, setCurrentZone] = useState('atrium');
+  const nearHeroIdRef = useRef(null);
+  const currentZoneRef = useRef('atrium');
+  const [hubLog, setHubLog] = useState(lang === 'fr'
+    ? 'A.R.C.A. maintient la Cite-Mosaique stable. Deplace ton Ancre et synchronise les signatures proches.'
+    : 'A.R.C.A. keeps Mosaic City stable. Move your Anchor and synchronize nearby signatures.');
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
-  const ownedHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 18), [safeHeroes, unlockedSet]);
-  const unlockedUniverses = useMemo(() => Array.from(new Set(ownedHeroes.map(hero => hero.universe))).slice(0, 8), [ownedHeroes]);
-  const rooms = useMemo(() => {
-    const fallback = ['Nexus de Convergence', 'Halo', 'Half-Life', 'Resident Evil'];
+  const ownedHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 24), [safeHeroes, unlockedSet]);
+  const unlockedUniverses = useMemo(() => Array.from(new Set(ownedHeroes.map(hero => hero.universe))).slice(0, 10), [ownedHeroes]);
+  const zones = useMemo(() => {
+    const fallback = ['Nexus de Convergence', 'Halo', 'Half-Life', 'Resident Evil', 'Stargate'];
     const source = unlockedUniverses.length ? unlockedUniverses : fallback;
-    return source.slice(0, 8).map((universe, index) => {
-      const col = index % 4;
-      const row = Math.floor(index / 4);
+    const threadRooms = source.slice(0, 8).map((universe, index) => {
+      const leftSide = index % 2 === 0;
+      const slot = Math.floor(index / 2);
       const hue = [...universe].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 360;
       return {
+        id: `thread-${index}`,
         universe,
-        x: 40 + col * 200,
-        y: 40 + row * 190,
-        w: 172,
-        h: 152,
-        color: `hsl(${hue} 70% 52%)`
+        label: universe,
+        x: leftSide ? 42 : 722,
+        y: 42 + slot * 112,
+        w: 196,
+        h: 84,
+        color: `hsl(${hue} 70% 52%)`,
+        role: lang === 'fr' ? 'Salle de Trame' : 'Thread room'
       };
     });
+    return [
+      { id: 'atrium', universe: 'Nexus', label: lang === 'fr' ? 'Atrium des Ancres' : 'Anchor Atrium', x: 304, y: 160, w: 352, h: 230, color: '#39c5bb', role: lang === 'fr' ? 'zone stable' : 'stable zone' },
+      { id: 'codex', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Archives A.R.C.A.' : 'A.R.C.A. Archives', x: 326, y: 42, w: 308, h: 82, color: '#ffea00', role: lang === 'fr' ? 'memoire des arcs' : 'arc memory' },
+      { id: 'forge', universe: 'Nexus', label: lang === 'fr' ? 'Atelier d Ancrage' : 'Anchor Workshop', x: 326, y: 424, w: 308, h: 82, color: '#ff4500', role: lang === 'fr' ? 'equipement et soins' : 'gear and recovery' },
+      ...threadRooms
+    ];
   }, [unlockedUniverses]);
-  const leadHero = ownedHeroes[0];
+
+  const selectedHero = ownedHeroes.find(hero => hero.id === selectedHeroId) || null;
+  const nearHero = ownedHeroes.find(hero => hero.id === nearHeroId) || null;
+  const leadHero = selectedHero || nearHero || ownedHeroes[0];
+  const playerName = playerProfile?.pseudo || playerProfile?.name || playerProfile?.username || (lang === 'fr' ? 'Ancre Joueur' : 'Player Anchor');
+  const currentZoneData = zones.find(zone => zone.id === currentZone) || zones[0];
+
+  useEffect(() => {
+    stateRef.current.npcs = ownedHeroes.slice(0, 18).map((hero, index) => {
+      const zone = zones[3 + (index % Math.max(1, zones.length - 3))] || zones[0];
+      return {
+        hero,
+        x: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
+        y: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54)),
+        baseX: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
+        baseY: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54)),
+        phase: index * 0.73,
+        facing: index % 2 ? -1 : 1
+      };
+    });
+  }, [ownedHeroes, zones]);
+
+  const interactWithNearby = useCallback(() => {
+    const state = stateRef.current;
+    const target = nearHeroRef.current || state.npcs
+      .map(npc => ({ npc, dist: Math.hypot(npc.x - state.player.x, npc.y - state.player.y) }))
+      .filter(entry => entry.dist < 58)
+      .sort((a, b) => a.dist - b.dist)[0]?.npc?.hero;
+    if (!target) {
+      setHubLog(lang === 'fr'
+        ? 'Aucune signature assez proche. Approche un heros ou une salle de Trame.'
+        : 'No signature is close enough. Move near a hero or a Thread room.');
+      sound.playSfx('click');
+      return;
+    }
+    setSelectedHeroId(target.id);
+    setHubLog(lang === 'fr'
+      ? `${target.name} synchronise sa Trame avec ${playerName}. Indice: ${target.universe} reagit a tes breches scellees.`
+      : `${target.name} synchronizes their Thread with ${playerName}. Intel: ${target.universe} reacts to your sealed breaches.`);
+    sound.playSfx('confirm');
+  }, [lang, playerName]);
+
+  useEffect(() => {
+    const onKeyDown = event => {
+      const key = event.key.toLowerCase();
+      if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd'].includes(key)) {
+        stateRef.current.keys[key] = true;
+        stateRef.current.destination = null;
+        event.preventDefault();
+      }
+      if (key === 'e') {
+        interactWithNearby();
+      }
+    };
+    const onKeyUp = event => {
+      stateRef.current.keys[event.key.toLowerCase()] = false;
+    };
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+    };
+  }, [interactWithNearby]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+    const ctx = canvas.getContext('2d');
+    let rafId = 0;
+    const drawPixelPerson = (x, y, color, accent, facing = 1, label = '', isPlayer = false) => {
+      const bob = Math.sin(stateRef.current.t * 0.12 + x * 0.01) * 1.6;
+      ctx.fillStyle = 'rgba(0,0,0,0.42)';
+      ctx.fillRect(x - 13, y + 17, 26, 6);
+      ctx.fillStyle = accent || '#ffffff';
+      ctx.fillRect(x - 7, y - 21 + bob, 14, 10);
+      ctx.fillStyle = color || '#39c5bb';
+      ctx.fillRect(x - 9, y - 10 + bob, 18, 24);
+      ctx.fillRect(x - 15 * facing, y - 6 + bob, 8, 15);
+      ctx.fillStyle = '#151515';
+      ctx.fillRect(x - 8, y + 14 + bob, 6, 12);
+      ctx.fillRect(x + 2, y + 14 + bob, 6, 12);
+      ctx.fillStyle = isPlayer ? '#ffea00' : '#e8ffff';
+      ctx.font = '10px "Share Tech Mono"';
+      ctx.textAlign = 'center';
+      ctx.fillText(label, x, y - 28 + bob);
+      ctx.textAlign = 'left';
+    };
+
+    const loop = () => {
+      const state = stateRef.current;
+      state.t += 1;
+      const keys = state.keys;
+      let dx = 0;
+      let dy = 0;
+      if (keys.arrowleft || keys.a) dx -= 1;
+      if (keys.arrowright || keys.d) dx += 1;
+      if (keys.arrowup || keys.w) dy -= 1;
+      if (keys.arrowdown || keys.s) dy += 1;
+
+      if (state.destination && !dx && !dy) {
+        const toX = state.destination.x - state.player.x;
+        const toY = state.destination.y - state.player.y;
+        const dist = Math.hypot(toX, toY);
+        if (dist > 4) {
+          dx = toX / dist;
+          dy = toY / dist;
+        } else {
+          state.destination = null;
+        }
+      }
+
+      if (dx || dy) {
+        const len = Math.hypot(dx, dy) || 1;
+        state.player.x = Math.max(34, Math.min(canvas.width - 34, state.player.x + (dx / len) * state.player.speed));
+        state.player.y = Math.max(42, Math.min(canvas.height - 36, state.player.y + (dy / len) * state.player.speed));
+        state.player.facing = dx < 0 ? -1 : dx > 0 ? 1 : state.player.facing;
+      }
+
+      let activeZone = zones[0];
+      zones.forEach(zone => {
+        if (state.player.x >= zone.x && state.player.x <= zone.x + zone.w && state.player.y >= zone.y && state.player.y <= zone.y + zone.h) {
+          activeZone = zone;
+        }
+      });
+      if (activeZone.id !== currentZoneRef.current) {
+        currentZoneRef.current = activeZone.id;
+        setCurrentZone(activeZone.id);
+      }
+
+      state.npcs.forEach(npc => {
+        npc.x = npc.baseX + Math.sin(state.t * 0.018 + npc.phase) * 14;
+        npc.y = npc.baseY + Math.cos(state.t * 0.014 + npc.phase) * 8;
+        npc.facing = Math.sin(state.t * 0.018 + npc.phase) > 0 ? 1 : -1;
+      });
+
+      const nearest = state.npcs
+        .map(npc => ({ npc, dist: Math.hypot(npc.x - state.player.x, npc.y - state.player.y) }))
+        .filter(entry => entry.dist < 58)
+        .sort((a, b) => a.dist - b.dist)[0]?.npc || null;
+      const nearestId = nearest?.hero?.id || null;
+      nearHeroRef.current = nearest?.hero || null;
+      if (nearestId !== nearHeroIdRef.current) {
+        nearHeroIdRef.current = nearestId;
+        setNearHeroId(nearestId);
+      }
+
+      const sky = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      sky.addColorStop(0, '#120821');
+      sky.addColorStop(0.52, '#05030b');
+      sky.addColorStop(1, '#10151f');
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = 'rgba(57,197,187,0.07)';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < canvas.width; x += 24) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += 24) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+
+      zones.forEach(zone => {
+        const pulse = 0.08 + Math.sin(state.t * 0.035 + zone.x) * 0.025;
+        ctx.save();
+        ctx.globalAlpha = zone.id === activeZone.id ? 0.22 : 0.11;
+        ctx.fillStyle = zone.color;
+        ctx.fillRect(zone.x, zone.y, zone.w, zone.h);
+        ctx.restore();
+        ctx.save();
+        ctx.globalAlpha = zone.id === activeZone.id ? 1 : 0.55;
+        ctx.strokeStyle = zone.color;
+        ctx.lineWidth = zone.id === activeZone.id ? 3 : 1;
+        ctx.strokeRect(zone.x, zone.y, zone.w, zone.h);
+        ctx.restore();
+        ctx.save();
+        ctx.globalAlpha = zone.id === activeZone.id ? 0.34 : 0.16;
+        ctx.fillStyle = zone.color;
+        ctx.fillRect(zone.x + 8, zone.y + zone.h - 18, zone.w - 16, 6 + pulse * 20);
+        ctx.restore();
+        ctx.fillStyle = '#f6ffff';
+        ctx.font = '12px "Share Tech Mono"';
+        ctx.fillText(zone.label.toUpperCase().slice(0, 26), zone.x + 12, zone.y + 20);
+        ctx.fillStyle = zone.color;
+        ctx.font = '10px "Share Tech Mono"';
+        ctx.fillText(zone.role.toUpperCase().slice(0, 24), zone.x + 12, zone.y + 36);
+      });
+
+      ctx.strokeStyle = 'rgba(255,234,0,0.2)';
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+      ctx.moveTo(238, 84);
+      ctx.lineTo(326, 84);
+      ctx.moveTo(634, 84);
+      ctx.lineTo(722, 84);
+      ctx.moveTo(480, 124);
+      ctx.lineTo(480, 424);
+      ctx.moveTo(238, 300);
+      ctx.lineTo(722, 300);
+      ctx.stroke();
+
+      state.npcs
+        .slice()
+        .sort((a, b) => a.y - b.y)
+        .forEach(npc => {
+          const hero = npc.hero;
+          drawPixelPerson(npc.x, npc.y, hero.primaryColor, hero.secondaryColor, npc.facing, String(hero.name || '?').slice(0, 8));
+          if (nearest?.hero?.id === hero.id) {
+            ctx.strokeStyle = '#ffea00';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(npc.x - 18, npc.y - 32, 36, 62);
+            ctx.fillStyle = '#ffea00';
+            ctx.font = '10px "Share Tech Mono"';
+            ctx.fillText(lang === 'fr' ? 'E: synchro' : 'E: sync', npc.x - 26, npc.y - 39);
+          }
+        });
+
+      drawPixelPerson(state.player.x, state.player.y, '#39c5bb', '#ffea00', state.player.facing, playerName.slice(0, 10), true);
+
+      ctx.fillStyle = 'rgba(0,0,0,0.68)';
+      ctx.fillRect(12, 12, 290, 64);
+      ctx.strokeStyle = '#39c5bb';
+      ctx.strokeRect(12, 12, 290, 64);
+      ctx.fillStyle = '#39c5bb';
+      ctx.font = '11px "Press Start 2P"';
+      ctx.fillText(lang === 'fr' ? 'CITE-MOSAIQUE' : 'MOSAIC CITY', 24, 34);
+      ctx.fillStyle = '#fff';
+      ctx.font = '11px "Share Tech Mono"';
+      ctx.fillText(`${lang === 'fr' ? 'Zone' : 'Zone'}: ${activeZone.label}`, 24, 57);
+
+      ctx.fillStyle = 'rgba(0,0,0,0.58)';
+      ctx.fillRect(canvas.width - 292, 12, 280, 64);
+      ctx.strokeStyle = '#ffea00';
+      ctx.strokeRect(canvas.width - 292, 12, 280, 64);
+      ctx.fillStyle = '#ffea00';
+      ctx.font = '10px "Share Tech Mono"';
+      ctx.fillText(`${ownedHeroes.length} signatures / ${unlockedUniverses.length} trames`, canvas.width - 276, 34);
+      ctx.fillStyle = '#d8f7ff';
+      ctx.fillText(`${completedStages.length} ${lang === 'fr' ? 'breches scellees' : 'sealed breaches'}`, canvas.width - 276, 56);
+
+      rafId = window.requestAnimationFrame(loop);
+    };
+    loop();
+    return () => window.cancelAnimationFrame(rafId);
+  }, [completedStages.length, lang, ownedHeroes.length, playerName, unlockedUniverses.length, zones]);
+
+  const moveToPointer = event => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    const x = (event.clientX - rect.left) * scaleX;
+    const y = (event.clientY - rect.top) * scaleY;
+    const closeNpc = stateRef.current.npcs.find(npc => Math.hypot(npc.x - x, npc.y - y) < 34);
+    if (closeNpc) {
+      nearHeroRef.current = closeNpc.hero;
+      nearHeroIdRef.current = closeNpc.hero.id;
+      setNearHeroId(closeNpc.hero.id);
+      interactWithNearby();
+      return;
+    }
+    stateRef.current.destination = { x, y };
+    sound.playSfx('click');
+  };
+
+  const setVirtualKey = (key, active) => {
+    stateRef.current.keys[key] = active;
+    if (active) stateRef.current.destination = null;
+  };
+
   return (
-    <div className="glass-panel nexus-play-panel">
+    <div className="glass-panel nexus-play-panel mosaic-rpg-panel">
       <div className="nexus-play-copy">
-        <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / HUB VIVANT' : 'MOSAIC CITY / LIVING HUB'}</div>
+        <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / RPG VIVANT' : 'MOSAIC CITY / LIVING RPG'}</div>
         <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
         <p>
           {lang === 'fr'
-            ? 'Un quartier stable du Nexus ou les signatures possedees vivent entre deux breches. Chaque salle reprend une Trame debloquee; les heros presents restent en patrouille idle en attendant les futures interactions RPG.'
-            : 'A stable Nexus district where owned signatures live between breaches. Each room inherits an unlocked Thread; present heroes idle on patrol while future RPG interactions are added.'}
+            ? 'Un hub RPG jouable: ton Ancre se deplace dans une zone stable du Nexus, croise les signatures possedees, synchronise leurs Trames et revele les salles liees aux univers debloques.'
+            : 'A playable RPG hub: your Anchor moves through a stable Nexus zone, meets owned signatures, syncs their Threads, and reveals rooms tied to unlocked universes.'}
         </p>
         <div className="nexus-play-stats">
           <span>{ownedHeroes.length} {lang === 'fr' ? 'signatures' : 'signatures'}</span>
           <span>{unlockedUniverses.length} {lang === 'fr' ? 'Trames visibles' : 'visible Threads'}</span>
           <span>{completedStages.length} {lang === 'fr' ? 'breches scellees' : 'sealed breaches'}</span>
+          <span>{currentZoneData?.label || 'Nexus'}</span>
         </div>
         {leadHero && (
           <div className="nexus-play-intel">
             <strong>{leadHero.name || 'Ancre'}</strong>
             <span>{leadHero.universe} / {leadHero.category}</span>
+            <small>{lang === 'fr' ? 'Synchronisation proche disponible dans la Cite.' : 'Nearby synchronization available in the City.'}</small>
           </div>
         )}
+        <div className="mosaic-rpg-log">
+          <strong>{lang === 'fr' ? 'Journal de Trame' : 'Thread Log'}</strong>
+          <span>{hubLog}</span>
+        </div>
+        <div className="mosaic-rpg-controls">
+          <span>{lang === 'fr' ? 'Clavier: WASD/fleches, E pour interagir. Tap/clic: destination.' : 'Keyboard: WASD/arrows, E to interact. Tap/click: destination.'}</span>
+          <button className="btn-retro" onClick={interactWithNearby}>
+            {lang === 'fr' ? 'SYNCHRONISER' : 'SYNCHRONIZE'}
+          </button>
+        </div>
       </div>
-      <div className="mosaic-city-map">
-        {rooms.map((room, roomIndex) => {
-          const roomHeroes = ownedHeroes.filter((_, heroIndex) => heroIndex % Math.max(1, rooms.length) === roomIndex).slice(0, 5);
-          return (
-            <div key={`${room.universe}-${roomIndex}`} className="mosaic-room" style={{ '--room-color': room.color }}>
-              <strong>{room.universe}</strong>
-              <span>{lang === 'fr' ? 'Salle de Trame' : 'Thread room'}</span>
-              <div className="mosaic-room-floor">
-                {roomHeroes.map((hero, index) => (
-                  <div key={hero.id} className="mosaic-hero-token" style={{ '--hero-color': hero.primaryColor || '#39c5bb', '--hero-accent': hero.secondaryColor || '#ffea00', left: `${16 + index * 17}%`, top: `${38 + (index % 2) * 24}%` }}>
-                    <i />
-                    <em>{String(hero.name || '?').slice(0, 2).toUpperCase()}</em>
-                  </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+      <div className="mosaic-rpg-stage">
+        <canvas ref={canvasRef} width="960" height="540" className="nexus-hub-canvas mosaic-rpg-canvas" onPointerDown={moveToPointer} />
+        <div className="mosaic-mobile-pad">
+          <button onPointerDown={() => setVirtualKey('arrowup', true)} onPointerUp={() => setVirtualKey('arrowup', false)} onPointerLeave={() => setVirtualKey('arrowup', false)}>UP</button>
+          <button onPointerDown={() => setVirtualKey('arrowleft', true)} onPointerUp={() => setVirtualKey('arrowleft', false)} onPointerLeave={() => setVirtualKey('arrowleft', false)}>LEFT</button>
+          <button onClick={interactWithNearby}>{lang === 'fr' ? 'SYNC' : 'SYNC'}</button>
+          <button onPointerDown={() => setVirtualKey('arrowright', true)} onPointerUp={() => setVirtualKey('arrowright', false)} onPointerLeave={() => setVirtualKey('arrowright', false)}>RIGHT</button>
+          <button onPointerDown={() => setVirtualKey('arrowdown', true)} onPointerUp={() => setVirtualKey('arrowdown', false)} onPointerLeave={() => setVirtualKey('arrowdown', false)}>DOWN</button>
+        </div>
       </div>
     </div>
   );
@@ -2547,6 +2853,7 @@ export default function HubScreen({
             heroes={HEROES_DB}
             unlockedHeroes={unlockedHeroes}
             completedStages={completedStages}
+            playerProfile={playerProfile}
           />
         )}
 
