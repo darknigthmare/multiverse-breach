@@ -11,7 +11,7 @@ import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
-import { getBattleItemLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
+import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 
 export default function HubScreen({
@@ -4705,6 +4705,15 @@ export default function HubScreen({
                             HP {enemy.hp || '?'} / ATK {enemy.atk || '?'} / SPD {enemy.spd || '?'}
                           </div>
                           {enemy.special && <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '3px' }}>{enemy.special}</div>}
+                          <div style={{ color: '#d0b7b7', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
+                            {getEnemyLoreDescription({
+                              enemy,
+                              universe: selectedUniverseArchive.universe,
+                              lang,
+                              lore: selectedUniverseArchive.lore,
+                              type: index === selectedUniverseArchive.allEnemies.length - 1 ? 'worldBoss' : 'menace'
+                            })}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -5110,6 +5119,17 @@ export default function HubScreen({
                             </strong> {isCleared ? bossIntel.name : encryptString(bossIntel.name)}
                             <br />
                             {isCleared ? `HP ${bossIntel.hp} | ATK ${bossIntel.atk} | ${bossIntel.special}` : encryptString(lang === 'fr' ? 'Pattern hostile scelle' : 'Sealed hostile pattern')}
+                            {isCleared && (
+                              <div style={{ color: '#d0b7b7', marginTop: '5px' }}>
+                                {getEnemyLoreDescription({
+                                  enemy: bossIntel,
+                                  universe: key,
+                                  lang,
+                                  lore,
+                                  type: 'worldBoss'
+                                })}
+                              </div>
+                            )}
                           </div>
                         )}
                         <div style={{

@@ -1,3 +1,6 @@
+import { LORE_DB } from './lore';
+import { getUniverseSignature } from './loreDescriptions';
+
 export const CHARACTER_PLAQUES = {
   player_anchor: {
     clearance: 'ARC-00',
@@ -442,7 +445,7 @@ const enrichPlaque = (hero, plaque) => {
       en: `${category.protocol.en} ${universeLine.en}`
     },
     threat: plaque.threat || {
-      fr: `Risque A.R.C.A.: si ${hero.name} perd son ancrage, la Trame ${hero.universe} peut reduire sa signature a une simple reference sans memoire.`,
+      fr: `Risque A.R.C.A.: si ${hero.name} perd son ancrage, la Trame ${hero.universe} peut vider sa signature de toute memoire stable.`,
       en: `A.R.C.A. risk: if ${hero.name} loses anchoring, the ${hero.universe} Thread can reduce the signature to a hollow reference without memory.`
     },
     resonance: plaque.resonance || {
@@ -457,6 +460,7 @@ export const getCharacterPlaque = (hero) => {
   if (CHARACTER_PLAQUES[hero.id]) return enrichPlaque(hero, CHARACTER_PLAQUES[hero.id]);
   const category = roleByCategory[hero.category] || roleByCategory.tactical;
   const doctrine = hero.special?.name || hero.weaponType || 'signature inconnue';
+  const signature = getUniverseSignature(hero.universe, LORE_DB[hero.universe]);
   return enrichPlaque(hero, {
     clearance: buildClearance(hero),
     rank: category.rank,
@@ -464,12 +468,12 @@ export const getCharacterPlaque = (hero) => {
     callSign: hero.name,
     origin: { fr: `Trame d origine - ${hero.universe}`, en: `Origin Thread - ${hero.universe}` },
     dossier: {
-      fr: `${hero.name} est classe comme signature ${hero.category} de la Trame ${hero.universe}. A.R.C.A. ne le traite pas comme un simple cameo: le dossier conserve silhouette, arme, posture et regle locale pour que son univers reste reconnaissable pendant la Compression de Resonance.`,
-      en: `${hero.name} is classified as a ${hero.category} signature from the ${hero.universe} Thread. A.R.C.A. does not treat this as a simple cameo: the dossier preserves silhouette, weapon, posture, and local rule so the universe remains recognizable during Resonance Compression.`
+      fr: `${hero.name} est classe comme signature ${hero.category} de la Trame ${hero.universe}. Signature source: ${signature.theme}. A.R.C.A. relie son arme, sa posture et sa doctrine a ${signature.stageName}, afin que le personnage reste reconnaissable meme face au noyau ${signature.worldBoss || signature.bossName}.`,
+      en: `${hero.name} is classified as a ${hero.category} signature from the ${hero.universe} Thread. Source signature: ${signature.theme}. A.R.C.A. ties weapon, posture, and doctrine to ${signature.stageName}, so the character remains recognizable even against the ${signature.worldBoss || signature.bossName} core.`
     },
     doctrine: {
-      fr: `${doctrine}. Stabilisation de scene, rupture de pattern, recuperation d Eclats d Origine et protection des archives locales.`,
-      en: `${doctrine}. Scene stabilization, pattern rupture, recovery of Origin Shards, and protection of local archives.`
+      fr: `${doctrine}. Stabilisation de ${signature.stageName}, rupture de pattern, recuperation d Eclats d Origine et protection des archives ${hero.universe}.`,
+      en: `${doctrine}. Stabilization of ${signature.stageName}, pattern rupture, recovery of Origin Shards, and protection of ${hero.universe} archives.`
     },
     tags: [hero.universe, hero.category, hero.weaponType || 'combat']
   });

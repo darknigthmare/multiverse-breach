@@ -2186,6 +2186,23 @@ export const EXPANDED_STAGE_ID_BY_UNIVERSE = Object.fromEntries(
   EXPANDED_UNIVERSES.map((universe, index) => [universe.universe, stageIdFor(index)])
 );
 
+export const EXPANDED_UNIVERSE_SIGNATURES = Object.fromEntries(
+  EXPANDED_UNIVERSES.map(universe => [universe.universe, {
+    universe: universe.universe,
+    mediaType: universe.mediaType,
+    faction: universe.faction,
+    theme: universe.theme || universe.desc?.en || universe.universe,
+    stageName: universe.stageName,
+    bossName: universe.bossName,
+    worldBoss: universe.worldBoss,
+    monsters: universe.monsters,
+    bosses: universe.bosses,
+    gearNames: universe.gear.map(([, enName, frName]) => ({ en: enName, fr: frName })),
+    eventName: { en: universe.event[1], fr: universe.event[2] },
+    eventDesc: { en: universe.event[3], fr: universe.event[4] }
+  }])
+);
+
 export const EXPANDED_FACTION_UNIVERSES = {
   sciFi: EXPANDED_UNIVERSES.filter(universe => universe.faction === 'sciFi').map(universe => universe.universe),
   horror: EXPANDED_UNIVERSES.filter(universe => universe.faction === 'horror').map(universe => universe.universe),
@@ -2196,6 +2213,11 @@ export const EXPANDED_FACTION_UNIVERSES = {
 export const EXPANDED_LORE_DB = Object.fromEntries(
   EXPANDED_UNIVERSES.map(universe => [universe.universe, {
     mediaType: universe.mediaType,
+    faction: universe.faction,
+    theme: universe.theme,
+    stageName: universe.stageName,
+    bossName: universe.bossName,
+    worldBoss: universe.worldBoss,
     title: universe.title,
     desc: universe.desc
   }])

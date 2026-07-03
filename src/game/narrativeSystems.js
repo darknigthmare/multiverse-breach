@@ -441,7 +441,7 @@ const GENERATED_CHARACTER_NARRATIVE_ARCS = HEROES_DB
         : { type: 'clears', value: 2 + (index % 10) },
       intro: {
         fr: `${hero.name} arrive depuis ${hero.universe} avec une signature que le Nexus ne peut pas copier sans la comprendre. Son arc personnel sert a ${profile.role.fr}.`,
-        en: `${hero.name} arrives from ${hero.universe} with a signature the Nexus cannot copy without understanding it. This personal arc is about how they ${profile.role.en}.`
+        en: `${hero.name} arrives from ${hero.universe} with a signature the Nexus can only stabilize by respecting its Thread laws. This personal arc is about how they ${profile.role.en}.`
       },
       missions: [
         {

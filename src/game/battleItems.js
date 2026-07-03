@@ -140,7 +140,7 @@ const makeGenericItem = (universe, index, color) => {
       role: 'offense',
       name: { fr: `Relique d impact ${title.fr}`, en: `${title.en} Impact Relic` },
       desc: {
-        fr: `${title.fr}: ${flavor.offense.fr}. Le Nexus l autorise en melee comme declencheur lisible, pas comme simple bonus abstrait.`,
+        fr: `${title.fr}: ${flavor.offense.fr}. Le Nexus l autorise en melee comme declencheur lisible, avec une signature de Trame identifiable.`,
         en: `${title.en}: ${flavor.offense.en}. The Nexus allows it in melee as a readable trigger, not an abstract bonus.`
       },
       effect: { damage: 26, charge: 8 }
