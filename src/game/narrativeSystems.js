@@ -719,6 +719,101 @@ export const SPECIAL_EVENTS = [
   { id: 'yautja_hunt', title: { fr: 'Chasse Yautja', en: 'Yautja Hunt' }, reward: { fr: 'Trophees, plasma et apparence traqueur', en: 'Trophies, plasma, and hunter appearance' } }
 ];
 
+export const TRIO_NARRATIVE_ARCS = [
+  {
+    id: 'atrium_first_cell',
+    stageId: 9601,
+    heroIds: ['player_anchor', 'freeman', 'masterchief'],
+    title: { fr: 'Arc Trio - Premiere cellule Atrium', en: 'Trio Arc - First Atrium Cell' },
+    universes: ['Nexus de Convergence', 'Half-Life', 'Halo'],
+    mode: 'Tactics',
+    difficulty: 'Trio',
+    bossName: 'Commandant de Frontiere Sans-Auteur',
+    unlock: { type: 'clears', value: 2 },
+    intro: {
+      fr: 'L Ancre tient la memoire, Freeman ouvre la faille scientifique et le Chief transforme le chaos en ligne de front. A.R.C.A. teste ici la premiere cellule de trois signatures.',
+      en: 'The Anchor holds memory, Freeman opens the scientific breach, and the Chief turns chaos into a battle line. A.R.C.A. tests the first three-signature cell here.'
+    },
+    missions: [
+      { fr: 'Synchroniser HEV, Mjolnir et balise d Ancre sur une meme carte tactique.', en: 'Synchronize HEV, Mjolnir, and Anchor beacon on one tactical map.' },
+      { fr: 'Defendre une porte de fuite pendant que la cascade de resonance traverse un anneau Halo.', en: 'Defend an escape gate while a resonance cascade crosses a Halo ring.' },
+      { fr: 'Abattre le Commandant de Frontiere avant qu il ne transforme les soldats en variables sans nom.', en: 'Defeat the Frontier Commander before it turns soldiers into nameless variables.' }
+    ],
+    outro: { fr: 'La cellule Atrium devient le modele des futures equipes de trois.', en: 'The Atrium Cell becomes the model for future three-hero teams.' },
+    reward: { fr: 'Relique Cellule Atrium + titre Trio Prime', en: 'Atrium Cell Relic + Prime Trio Title' },
+    rewardItemId: 'trio_atrium_first_cell'
+  },
+  {
+    id: 'survivors_last_door',
+    stageId: 9602,
+    heroIds: ['ripley', 'leon', 'chell'],
+    title: { fr: 'Arc Trio - Derniere porte de survie', en: 'Trio Arc - Last Survival Door' },
+    universes: ['Alien', 'Resident Evil', 'Portal'],
+    mode: 'RPG',
+    difficulty: 'Trio',
+    bossName: 'Sas Infection-Test',
+    unlock: { type: 'clears', value: 6 },
+    intro: {
+      fr: 'Ripley refuse la ruche, Leon refuse l infection et Chell refuse la chambre fermee. Ensemble, ils prouvent qu une sortie peut rester humaine.',
+      en: 'Ripley refuses the hive, Leon refuses infection, and Chell refuses the sealed chamber. Together, they prove an exit can remain human.'
+    },
+    missions: [
+      { fr: 'Escorter des survivants dans un complexe ou les tests Aperture distribuent des spores.', en: 'Escort survivors through a facility where Aperture tests distribute spores.' },
+      { fr: 'Ouvrir une route de portails sans laisser Umbrella classer les civils comme specimens.', en: 'Open a portal route without letting Umbrella classify civilians as specimens.' },
+      { fr: 'Sceller le Sas Infection-Test avec une evacuation complete.', en: 'Seal the Infection-Test Airlock with a full evacuation.' }
+    ],
+    outro: { fr: 'Le Nexus grave une regle de survie: personne ne devient ressource sans consentement.', en: 'The Nexus engraves a survival rule: no one becomes a resource without consent.' },
+    reward: { fr: 'Cle de Sas Blanche + passif Evacuation', en: 'White Airlock Key + Evacuation Passive' },
+    rewardItemId: 'trio_survivors_last_door'
+  },
+  {
+    id: 'occult_wrong_prophecy',
+    stageId: 9603,
+    heroIds: ['predator', 'pyramidhead', 'kirsty'],
+    title: { fr: 'Arc Trio - Tribunal des chasseurs', en: 'Trio Arc - Hunters Tribunal' },
+    universes: ['Predator', 'Silent Hill', 'Hellraiser'],
+    mode: 'Smash',
+    difficulty: 'Trio',
+    bossName: 'Juge du Trophee Interdit',
+    unlock: { type: 'clears', value: 8 },
+    intro: {
+      fr: 'Le Yautja cherche une proie digne, Pyramid Head incarne la punition et Kirsty sait qu une boite peut transformer un desir en enfer. A.R.C.A. les enferme dans un tribunal ou la chasse doit redevenir une regle, pas une torture.',
+      en: 'The Yautja seeks worthy prey, Pyramid Head embodies punishment, and Kirsty knows a box can turn desire into hell. A.R.C.A. locks them in a tribunal where the hunt must become a rule again, not torture.'
+    },
+    missions: [
+      { fr: 'Separarer une chasse Yautja d une sentence Silent Hill avant que les deux lois fusionnent.', en: 'Separate a Yautja hunt from a Silent Hill sentence before the two laws merge.' },
+      { fr: 'Utiliser la boite comme preuve, pas comme portail de punition permanente.', en: 'Use the box as evidence, not as a permanent punishment portal.' },
+      { fr: 'Vaincre le Juge du Trophee Interdit sans laisser le Nexus confondre justice et plaisir de tuer.', en: 'Defeat the Forbidden Trophy Judge without letting the Nexus confuse justice with the joy of killing.' }
+    ],
+    outro: { fr: 'Le tribunal reste monstrueux, mais il obtient une limite: la proie doit encore avoir un nom.', en: 'The tribunal remains monstrous, but gains a limit: the prey must still have a name.' },
+    reward: { fr: 'Masque du Tribunal + relique Boite-temoin', en: 'Tribunal Mask + Witness Box Relic' },
+    rewardItemId: 'trio_occult_wrong_prophecy'
+  },
+  {
+    id: 'control_formula_matrix',
+    stageId: 9604,
+    heroIds: ['neo', 'oneill', 'snake'],
+    title: { fr: 'Arc Trio - Operation Source noire', en: 'Trio Arc - Black Source Operation' },
+    universes: ['The Matrix', 'Stargate', 'Metal Gear'],
+    mode: 'Tactics',
+    difficulty: 'Trio',
+    bossName: 'Architecte FoxDie Goa uld',
+    unlock: { type: 'clears', value: 10 },
+    intro: {
+      fr: 'Neo lit le code, O Neill garde l equipe humaine et Snake infiltre le mensonge avant qu il devienne doctrine. Leur trio sert a detruire les systemes qui appellent le controle une liberation.',
+      en: 'Neo reads code, O Neill keeps the team human, and Snake infiltrates the lie before it becomes doctrine. Their trio exists to destroy systems that call control liberation.'
+    },
+    missions: [
+      { fr: 'Infiltrer une matrice SGC ou chaque Porte demande une authentification militaire.', en: 'Infiltrate an SGC matrix where every Gate demands military authentication.' },
+      { fr: 'Neutraliser un virus FoxDie reecrit par un symbiote Goa uld.', en: 'Neutralize a FoxDie virus rewritten by a Goa uld symbiote.' },
+      { fr: 'Demonter l Architecte FoxDie Goa uld avant qu il ne transforme le libre arbitre en protocole.', en: 'Dismantle the FoxDie Goa uld Architect before it turns free will into protocol.' }
+    ],
+    outro: { fr: 'La Source noire perd son masque: une mission peut etre discrete sans devenir inhumaine.', en: 'The Black Source loses its mask: a mission can be discreet without becoming inhuman.' },
+    reward: { fr: 'Codec Chevron Noir + passif Libre Choix', en: 'Black Chevron Codec + Free Choice Passive' },
+    rewardItemId: 'trio_control_formula_matrix'
+  }
+];
+
 export const REPUTATION_TRACKS = [
   { id: 'nexus_alliance', label: { fr: 'Alliance du Nexus', en: 'Nexus Alliance' }, gameplay: { fr: 'Directive d Ancre: tenir les lignes, escorter les civils et graver les armures de garnison.', en: 'Anchor directive: hold lines, escort civilians, and engrave garrison armor.' } },
   { id: 'archivists', label: { fr: 'Archivistes', en: 'Archivists' }, gameplay: { fr: 'Directive d Archive: clarifier les traces, ouvrir les caches de savoir et decrypter les noyaux.', en: 'Archive directive: clarify traces, open knowledge caches, and decrypt cores.' } },

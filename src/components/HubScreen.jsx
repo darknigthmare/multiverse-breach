@@ -8,7 +8,7 @@ import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages } from '../game/expandedUniverses';
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
-import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
+import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
@@ -283,6 +283,7 @@ export default function HubScreen({
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
+  const [missionScreen, setMissionScreen] = useState('index'); // 'index' | 'story' | 'universeArcs' | 'personalArcs' | 'trioArcs'
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
   const [briefingStageId, setBriefingStageId] = useState(null);
@@ -522,9 +523,44 @@ export default function HubScreen({
     rewardItemName: arc.reward,
     characterArc: arc
   }));
+  const UNIVERSE_ARC_STAGES = UNIVERSE_NARRATIVE_ARCS.map((arc, index) => ({
+    id: 9500 + index,
+    name: arc.title.en,
+    displayName: arc.title,
+    universe: arc.universes[0],
+    sourceUniverses: arc.universes,
+    mode: ['RPG', 'Tactics', 'Smash'][index % 3],
+    difficulty: 'Universe Arc',
+    goldPrize: 180 + index * 20,
+    shardPrize: 75 + index * 10,
+    tokenPrize: 3,
+    bossName: arc.bossName || `${arc.title.fr} Core`,
+    rewardItemId: `universe_arc_${arc.id}`,
+    rewardItemName: arc.reward,
+    universeArc: arc,
+    unlockClears: 4 + index * 2
+  }));
+  const TRIO_STAGES = TRIO_NARRATIVE_ARCS.map(arc => ({
+    id: arc.stageId,
+    name: arc.title.en,
+    displayName: arc.title,
+    universe: arc.universes[0],
+    sourceUniverses: arc.universes,
+    mode: arc.mode,
+    difficulty: arc.difficulty,
+    goldPrize: 220,
+    shardPrize: 95,
+    tokenPrize: 4,
+    bossName: arc.bossName,
+    rewardItemId: arc.rewardItemId,
+    rewardItemName: arc.reward,
+    trioArc: arc
+  }));
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...FUSION_STAGES);
+  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...UNIVERSE_ARC_STAGES);
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...CHARACTER_STAGES);
+  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...TRIO_STAGES);
   const isStageVisibleByAdmin = (stage) => {
     if (stage.id === 38) return true;
     if (stage.sourceUniverses) return stage.sourceUniverses.every(isUniverseVisible);
@@ -1688,6 +1724,8 @@ export default function HubScreen({
 
   const getStageRequiredClears = (stage) => {
     if (stage.characterArc) return stage.characterArc.unlock?.type === 'clears' ? stage.characterArc.unlock.value : 0;
+    if (stage.trioArc) return stage.trioArc.unlock?.type === 'clears' ? stage.trioArc.unlock.value : 0;
+    if (stage.universeArc) return stage.unlockClears || 4;
     if (stage.fusionMission) return stage.unlockClears || 8;
     if (stage.id === 38) return FINAL_STAGE_REQUIRED_CLEARS;
     if (stage.difficulty === 'Medium') return 2;
@@ -1710,10 +1748,28 @@ export default function HubScreen({
       if (arc.unlock?.type === 'level') return (heroLevels[hero.id] || 1) >= arc.unlock.value;
       return true;
     }
+    if (stage.trioArc) {
+      const trioReady = stage.trioArc.heroIds.every(heroId => unlockedHeroes.includes(heroId));
+      if (!trioReady) return false;
+      return true;
+    }
+    if (stage.universeArc) {
+      return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
+    }
     if (stage.fusionMission) return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
     return true;
   };
   const getBreachBrief = (stage) => {
+    if (stage.trioArc) {
+      return lang === 'fr'
+        ? `${stage.displayName.fr}: ${stage.trioArc.intro.fr} Cellule requise: ${stage.trioArc.heroIds.join(' / ')}. Trace trio: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.trioArc.intro.en} Required cell: ${stage.trioArc.heroIds.join(' / ')}. Trio trace: ${stage.rewardItemName.en}.`;
+    }
+    if (stage.universeArc) {
+      return lang === 'fr'
+        ? `${stage.displayName.fr}: ${stage.universeArc.intro.fr} Sources stabilisees ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Recompense: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.universeArc.intro.en} Stabilized sources ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Reward: ${stage.rewardItemName.en}.`;
+    }
     if (stage.characterArc) {
       return lang === 'fr'
         ? `${stage.displayName.fr}: ${stage.characterArc.intro.fr} Trace personnelle: ${stage.rewardItemName.fr}.`
@@ -1740,15 +1796,18 @@ export default function HubScreen({
     return BREACH_MODIFIERS[index];
   };
 
-  const getRichBreachBrief = (stage) => getStageLoreDescription({
-    stage,
-    lang,
-    lore: LORE_DB[stage.universe],
-    modifier: getStageModifier(stage),
-    sourceClears: getFusionSourceClears(stage),
-    sourceTotal: stage.sourceUniverses?.length || 0,
-    bossIntel: getBossIntel(stage)
-  });
+  const getRichBreachBrief = (stage) => {
+    if (stage.trioArc || stage.universeArc) return getBreachBrief(stage);
+    return getStageLoreDescription({
+      stage,
+      lang,
+      lore: LORE_DB[stage.universe],
+      modifier: getStageModifier(stage),
+      sourceClears: getFusionSourceClears(stage),
+      sourceTotal: stage.sourceUniverses?.length || 0,
+      bossIntel: getBossIntel(stage)
+    });
+  };
 
   const getStageArc = (stage) => NARRATIVE_ARCS.find(arc => arc.universes.includes(stage.universe));
 
@@ -2225,7 +2284,44 @@ export default function HubScreen({
     sound.playSfx('click');
   };
   const finalStage = STAGES.find(stage => stage.id === 38);
-  const missionPool = visibleStages.filter(stage => stage.id !== 38 && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
+  const missionCategoryFilter = (stage) => {
+    if (missionScreen === 'universeArcs') return Boolean(stage.universeArc);
+    if (missionScreen === 'personalArcs') return Boolean(stage.characterArc);
+    if (missionScreen === 'trioArcs') return Boolean(stage.trioArc);
+    return !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission;
+  };
+  const storyMissionCount = visibleStages.filter(stage => stage.id !== 38 && !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission).length;
+  const universeArcMissionCount = visibleStages.filter(stage => stage.universeArc).length;
+  const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc).length;
+  const trioArcMissionCount = visibleStages.filter(stage => stage.trioArc).length;
+  const missionScreenMeta = {
+    story: {
+      label: { fr: 'Mode histoire', en: 'Story mode' },
+      desc: { fr: 'Breches principales par univers, progression de chapitres et ouverture du noyau final.', en: 'Main universe breaches, chapter progression, and final core opening.' },
+      count: storyMissionCount,
+      color: '#39c5bb'
+    },
+    universeArcs: {
+      label: { fr: 'Arcs narratifs par univers', en: 'Universe narrative arcs' },
+      desc: { fr: 'Suites d univers lies par franchise, theme ou consequence de Trame.', en: 'Universe chains linked by franchise, theme, or Thread consequence.' },
+      count: universeArcMissionCount,
+      color: '#ffb15c'
+    },
+    personalArcs: {
+      label: { fr: 'Arcs narratifs personnels', en: 'Personal narrative arcs' },
+      desc: { fr: 'Missions centrees sur le dilemme propre de chaque heros possede.', en: 'Missions centered on each owned hero personal dilemma.' },
+      count: personalArcMissionCount,
+      color: '#9b59b6'
+    },
+    trioArcs: {
+      label: { fr: 'Arcs narratifs trio', en: 'Trio narrative arcs' },
+      desc: { fr: 'Cellules de trois personnages avec liens croises et histoire commune.', en: 'Three-character cells with crossed bonds and a shared story.' },
+      count: trioArcMissionCount,
+      color: '#2ecc71'
+    }
+  };
+  const selectedMissionMeta = missionScreenMeta[missionScreen] || missionScreenMeta.story;
+  const missionPool = visibleStages.filter(stage => stage.id !== 38 && missionCategoryFilter(stage) && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
   const unlockedMissionPool = missionPool.filter(isStageUnlocked);
   const scanPool = unlockedMissionPool.length > 0 ? unlockedMissionPool : missionPool.slice(0, 1);
   const nextUnclearedStage = scanPool.find(stage => !completedStages.includes(stage.id)) || scanPool[0];
@@ -2463,8 +2559,63 @@ export default function HubScreen({
         {activeTab === 'missions' && (
           <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
             <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#39c5bb' }}>
-              {lang === 'fr' ? 'LECTURE DES FAILLES' : 'RIFT READING'}
+              {missionScreen === 'index'
+                ? (lang === 'fr' ? 'ECRAN DES MISSIONS' : 'MISSION SCREEN')
+                : selectedMissionMeta.label[lang].toUpperCase()}
             </h3>
+            {missionScreen === 'index' ? (
+              <div style={{ display: 'grid', gap: '14px' }}>
+                <div style={{
+                  padding: '12px',
+                  border: '1px solid rgba(57,197,187,0.24)',
+                  background: 'rgba(57,197,187,0.06)',
+                  color: '#c8f7f4',
+                  fontSize: '11px',
+                  lineHeight: 1.45,
+                  borderRadius: '4px'
+                }}>
+                  {lang === 'fr'
+                    ? 'A.R.C.A. compartimente la carte des missions pour eviter la surcharge de Trame. Choisis un ecran: campagne principale, arcs univers, arcs personnels ou cellules trio.'
+                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, universe arcs, personal arcs, or trio cells.'}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
+                  {Object.entries(missionScreenMeta).map(([key, entry]) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => { setMissionScreen(key); setMissionSeed(Date.now()); sound.playSfx('coin'); }}
+                      className="btn-retro"
+                      style={{
+                        minHeight: '154px',
+                        padding: '14px',
+                        textAlign: 'left',
+                        borderColor: entry.color,
+                        background: `${entry.color}10`,
+                        color: '#fff',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        gap: '12px'
+                      }}
+                    >
+                      <span>
+                        <span style={{ display: 'block', color: entry.color, fontSize: '11px', marginBottom: '8px', textTransform: 'uppercase' }}>
+                          {entry.label[lang]}
+                        </span>
+                        <span style={{ display: 'block', color: '#cfd8dc', fontSize: '10px', lineHeight: 1.4 }}>
+                          {entry.desc[lang]}
+                        </span>
+                      </span>
+                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#ffeb3b', fontSize: '10px' }}>
+                        <b>{entry.count} {lang === 'fr' ? 'missions' : 'missions'}</b>
+                        <span>{lang === 'fr' ? 'OUVRIR' : 'OPEN'}</span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <>
             <div style={{
               marginBottom: '12px',
               padding: '10px 12px',
@@ -2475,9 +2626,17 @@ export default function HubScreen({
               lineHeight: 1.45,
               borderRadius: '4px'
             }}>
-              {lang === 'fr'
-                ? 'A.R.C.A. isole cinq failles exploitables pour eviter la surcharge de Trame. Une nouvelle lecture change les coordonnees proposees; la carte et les archives restent consultables.'
-                : 'A.R.C.A. isolates five usable rifts to avoid Thread overload. A new reading changes proposed coordinates; the map and archives remain available.'}
+              {selectedMissionMeta.desc[lang]}
+            </div>
+            <div style={{ marginBottom: '12px' }}>
+              <button
+                type="button"
+                onClick={() => { setMissionScreen('index'); setBriefingStageId(null); sound.playSfx('click'); }}
+                className="btn-retro"
+                style={{ padding: '6px 10px', fontSize: '10px', borderColor: '#555', color: '#aaa' }}
+              >
+                {lang === 'fr' ? 'RETOUR AUX ECRANS' : 'BACK TO SCREENS'}
+              </button>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px', color: '#aaa', fontSize: '12px' }}>
               <span>
@@ -3251,6 +3410,8 @@ export default function HubScreen({
                 </div>
               )}
             </div>
+              </>
+            )}
           </div>
         )}
 

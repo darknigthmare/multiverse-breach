@@ -152,6 +152,26 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
         ? `${stage.displayName.fr} reste inachevee: la signature personnelle du heros n est pas encore assez stable.`
         : `${stage.displayName.en} remains unfinished: the hero personal signature is not stable enough yet.`);
   }
+  if (stage.trioArc) {
+    if (!isOutro) return stage.trioArc.intro[lang];
+    return victory
+      ? (lang === 'fr'
+        ? `${stage.trioArc.outro.fr} ${stage.rewardItemName.fr} est gravee comme trace de cellule trio.`
+        : `${stage.trioArc.outro.en} ${stage.rewardItemName.en} is engraved as a trio-cell trace.`)
+      : (lang === 'fr'
+        ? `${stage.displayName.fr} reste instable: la cellule trio n a pas encore trouve son rythme commun.`
+        : `${stage.displayName.en} remains unstable: the trio cell has not found its shared rhythm yet.`);
+  }
+  if (stage.universeArc) {
+    if (!isOutro) return stage.universeArc.intro[lang];
+    return victory
+      ? (lang === 'fr'
+        ? `${stage.universeArc.outro.fr} ${stage.rewardItemName.fr} rejoint les archives d arcs univers.`
+        : `${stage.universeArc.outro.en} ${stage.rewardItemName.en} joins the universe-arc archives.`)
+      : (lang === 'fr'
+        ? `${stage.displayName.fr} resiste encore: les univers sources ne resonneront pas ensemble sans nouvelle intervention.`
+        : `${stage.displayName.en} still resists: its source universes will not resonate together without another intervention.`);
+  }
   const lines = {
     'Alien': {
       intro: { fr: 'Le signal MU/TH/UR grince dans les couloirs. Chaque porte ouverte peut nourrir la ruche.', en: 'The MU/TH/UR signal grinds through the corridors. Every opened door can feed the hive.' },
