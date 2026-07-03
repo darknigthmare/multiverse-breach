@@ -1024,7 +1024,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 : getTranslation(lang, 'defeatMsg')}
             </p>
             <button
-              onClick={() => onBattleEnd(battleResult)}
+              onClick={() => onBattleEnd(battleResult, {
+                battleItemsUsed: battlePickupsRef.current.filter(item => item.used).length,
+                battleItemsTotal: battlePickupsRef.current.length
+              })}
               className="btn-retro"
               style={{
                 fontSize: '16px',

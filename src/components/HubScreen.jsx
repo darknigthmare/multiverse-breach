@@ -170,6 +170,7 @@ export default function HubScreen({
   ];
 
   const DAILY_CONTRACTS = [
+    { id: 'artifacts', mode: 'items', focus: 'ITEMS', text: { fr: 'Activer 3 artefacts de terrain', en: 'Activate 3 field artifacts' } },
     { id: 'rpg', mode: 'RPG', focus: 'ATB', text: { fr: 'Stabiliser une faille RPG', en: 'Stabilize one RPG breach' } },
     { id: 'tactics', mode: 'Tactics', focus: 'GRID', text: { fr: 'Gagner une mission tactique', en: 'Win one tactics mission' } },
     { id: 'smash', mode: 'Smash', focus: 'BURST', text: { fr: 'Fermer une brèche Smash', en: 'Close one Smash breach' } },
@@ -1548,9 +1549,12 @@ export default function HubScreen({
   const dailyContracts = DAILY_CONTRACTS
     .map((contract, idx) => DAILY_CONTRACTS[(todayIndex + idx) % DAILY_CONTRACTS.length])
     .slice(0, 3);
-  const isDailyContractDone = (contract) => contract.mode === 'any'
-    ? completedStages.length > 0
-    : missionPool.some(stage => stage.mode === contract.mode && completedStages.includes(stage.id));
+  const todayItemActivations = activityProgress.dayKey === todayKey ? (activityProgress.itemActivations || 0) : 0;
+  const isDailyContractDone = (contract) => {
+    if (contract.mode === 'items') return todayItemActivations >= 3;
+    if (contract.mode === 'any') return completedStages.length > 0;
+    return missionPool.some(stage => stage.mode === contract.mode && completedStages.includes(stage.id));
+  };
   const claimDailyContract = (contract) => {
     if (!setActivityProgress || !isDailyContractDone(contract) || claimedDaily.includes(contract.id)) return;
     setGold(prev => prev + 35);
@@ -1730,6 +1734,12 @@ export default function HubScreen({
       title: { fr: 'Operation hebdo: escouade rang A', en: 'Weekly op: A-rank squad' },
       done: squadReadiness >= 70,
       reward: { gold: 150, shards: 55, tokens: 3 }
+    },
+    {
+      id: 'artifact_mastery',
+      title: { fr: 'Operation hebdo: maitrise des artefacts', en: 'Weekly op: artifact mastery' },
+      done: (activityProgress.weekKey === currentWeekKey ? (activityProgress.weeklyItemActivations || 0) : 0) >= 12,
+      reward: { gold: 120, shards: 50, tokens: 4 }
     }
   ];
   const claimWeeklyOperation = (operation) => {

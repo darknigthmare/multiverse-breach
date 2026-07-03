@@ -70,13 +70,12 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
       at: new Date().toISOString()
     }));
     const lastEntry = normalized[normalized.length - 1];
-    const finalDuplicateStreak = normalized.reduce(
-      (streak, entry) => entry.duplicate ? streak + 1 : 0,
-      duplicateStreak
-    );
     setPortalStats(prev => ({
       pulls: (prev?.pulls || 0) + normalized.length,
-      duplicateStreak: finalDuplicateStreak,
+      duplicateStreak: normalized.reduce(
+        (streak, entry) => entry.duplicate ? streak + 1 : 0,
+        prev?.duplicateStreak || 0
+      ),
       lastPull: lastEntry,
       history: [...normalized.reverse(), ...(prev?.history || [])].slice(0, 20)
     }));

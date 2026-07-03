@@ -27,7 +27,7 @@ const DEFAULT_SAVE = {
   heroSkins: {},
   portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
   publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
-  activityProgress: { dayKey: '', weekKey: '', claimedDaily: [], claimedWeekly: [], modeWins: {}, itemActivations: 0 },
+  activityProgress: { dayKey: '', weekKey: '', claimedDaily: [], claimedWeekly: [], modeWins: {}, itemActivations: 0, weeklyItemActivations: 0 },
   inventory: ['cog_armor', 'green_herb', 'hev_battery'],
   equippedGear: {
     [PLAYER_HERO_ID]: null,
@@ -164,7 +164,7 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
     : (lang === 'fr' ? `${stage.universe} resiste encore, mais la prochaine ouverture sera plus lisible.` : `${stage.universe} still resists, but the next opening will be easier to read.`);
 };
 
-function MissionNarrativeScreen({ lang, stage, result, onContinue }) {
+function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue }) {
   const isOutro = Boolean(result);
   const victory = result === 'victory';
   const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode);
@@ -203,6 +203,35 @@ function MissionNarrativeScreen({ lang, stage, result, onContinue }) {
           <h1>{stage.displayName?.[lang] || stage.universe}</h1>
           <h2>{stage.sourceUniverses ? stage.sourceUniverses.join(' / ') : stage.name}</h2>
           <p>{isOutro ? outroText : introText}</p>
+          {isOutro && rewardSummary && (
+            <div className="narrative-intel" style={{ display: 'grid', gap: '6px' }}>
+              <strong style={{ color: rewardSummary.result === 'victory' ? '#2ecc71' : '#ffeb3b' }}>
+                {lang === 'fr' ? 'Rapport gameplay A.R.C.A.' : 'A.R.C.A. gameplay report'}
+              </strong>
+              <span>
+                {lang === 'fr'
+                  ? `Ressources: +${rewardSummary.gold} or / +${rewardSummary.shards} fragments${rewardSummary.tokens ? ` / +${rewardSummary.tokens} jetons` : ''}.`
+                  : `Resources: +${rewardSummary.gold} gold / +${rewardSummary.shards} shards${rewardSummary.tokens ? ` / +${rewardSummary.tokens} tokens` : ''}.`}
+              </span>
+              <span>
+                {lang === 'fr'
+                  ? `Artefacts de terrain actives: ${rewardSummary.battleItemsUsed}.`
+                  : `Field artifacts activated: ${rewardSummary.battleItemsUsed}.`}
+              </span>
+              {rewardSummary.firstClear && (
+                <span>{lang === 'fr' ? 'Bonus premiere stabilisation applique.' : 'First stabilization bonus applied.'}</span>
+              )}
+              {rewardSummary.consolation && (
+                <span>{lang === 'fr' ? 'Cache de repli attribuee: la tentative progresse meme sans victoire.' : 'Retreat cache granted: the attempt still progresses without victory.'}</span>
+              )}
+              {rewardSummary.rewardItemName && (
+                <span>{lang === 'fr' ? `Recompense speciale: ${rewardSummary.rewardItemName}.` : `Special reward: ${rewardSummary.rewardItemName}.`}</span>
+              )}
+              {rewardSummary.droppedItemName && (
+                <span>{lang === 'fr' ? `Relique recuperee: ${rewardSummary.droppedItemName}.` : `Relic recovered: ${rewardSummary.droppedItemName}.`}</span>
+              )}
+            </div>
+          )}
           <div className="narrative-tags">
             <span>{stage.mode}</span>
             <span>{modifierName}</span>
@@ -236,6 +265,7 @@ function App() {
   const [completedStages, setCompletedStages] = useState(initialSave.completedStages);
   const [activeStage, setActiveStage] = useState(null);
   const [lastBattleResult, setLastBattleResult] = useState(null);
+  const [lastBattleSummary, setLastBattleSummary] = useState(null);
   const [heroTalents, setHeroTalents] = useState(initialSave.heroTalents); // heroId -> talentId
   const [heroSkins, setHeroSkins] = useState(initialSave.heroSkins);
   const [hiddenUniverses, setHiddenUniverses] = useState(initialSave.hiddenUniverses);
@@ -330,26 +360,50 @@ function App() {
     sound.playSfx('special');
     setActiveStage(stage);
     setLastBattleResult(null);
+    setLastBattleSummary(null);
     setCurrentScreen('missionIntro');
   };
 
-  const handleBattleEnd = (result) => {
+  const handleBattleEnd = (result, report = {}) => {
+    const battleItemsUsed = report.battleItemsUsed || 0;
+    const firstClear = result === 'victory'
+      && activeStage
+      && !activeStage.isSurvival
+      && !completedStages.includes(activeStage.id);
+    const summary = {
+      result,
+      gold: 0,
+      shards: 0,
+      tokens: 0,
+      battleItemsUsed,
+      firstClear,
+      droppedItemName: null,
+      rewardItemName: null,
+      consolation: false
+    };
+
     if (result === 'victory' && activeStage) {
       // Award rewards
-      setGold(prev => prev + activeStage.goldPrize);
-      setBreachShards(prev => prev + activeStage.shardPrize);
+      const firstClearGold = firstClear ? 25 : 0;
+      const firstClearShards = firstClear ? 10 : 0;
+      const itemMasteryTokens = battleItemsUsed >= 3 ? 1 : 0;
+      summary.gold = activeStage.goldPrize + firstClearGold;
+      summary.shards = activeStage.shardPrize + firstClearShards;
+      summary.tokens = (activeStage.tokenPrize || 0) + itemMasteryTokens;
+      setGold(prev => prev + summary.gold);
+      setBreachShards(prev => prev + summary.shards);
       
-      const tokenReward = activeStage.tokenPrize || 0;
-      if (tokenReward > 0) {
-        setEventTokens(prev => prev + tokenReward);
+      if (summary.tokens > 0) {
+        setEventTokens(prev => prev + summary.tokens);
       }
 
-      if (!activeStage.isSurvival && !completedStages.includes(activeStage.id)) {
+      if (firstClear) {
         setCompletedStages(prev => [...prev, activeStage.id]);
       }
 
       if (activeStage.rewardItemId) {
         setInventory(prev => prev.includes(activeStage.rewardItemId) ? prev : [...prev, activeStage.rewardItemId]);
+        summary.rewardItemName = activeStage.rewardItemName?.[lang] || activeStage.rewardItemName?.en || activeStage.rewardItemId;
       }
 
       const now = new Date();
@@ -361,6 +415,8 @@ function App() {
         ...prev,
         dayKey,
         weekKey,
+        itemActivations: (prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0) + battleItemsUsed,
+        weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed,
         modeWins: {
           ...(prev.modeWins || {}),
           [activeStage.mode]: (prev.modeWins?.[activeStage.mode] || 0) + 1,
@@ -382,12 +438,36 @@ function App() {
       if (universeGear.length > 0 && Math.random() < 0.6 + (rarityDropBonus[rarityId] || 0)) {
         const drop = universeGear[Math.floor(Math.random() * universeGear.length)];
         const dropId = ['legendary', 'anomaly'].includes(rarityId) ? `${drop.id}_plus` : drop.id;
+        const alreadyOwnedCommon = rarityId === 'common' && inventory.includes(drop.id);
+        if (!alreadyOwnedCommon) {
+          summary.droppedItemName = `${drop.name?.[lang] || drop.name?.en || drop.id}${dropId.endsWith('_plus') ? ' +' : ''}`;
+        }
         setInventory(prev => {
           if (rarityId === 'common' && prev.includes(drop.id)) return prev;
           return [...prev, dropId];
         });
       }
+    } else if (result === 'defeat' && activeStage) {
+      summary.consolation = true;
+      summary.gold = Math.max(8, Math.round(activeStage.goldPrize * 0.18));
+      summary.shards = Math.max(4, Math.round(activeStage.shardPrize * 0.22));
+      setGold(prev => prev + summary.gold);
+      setBreachShards(prev => prev + summary.shards);
+
+      const now = new Date();
+      const dayKey = now.toISOString().slice(0, 10);
+      const startOfYear = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
+      const weekNumber = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getUTCDay() + 1) / 7);
+      const weekKey = `${now.getUTCFullYear()}-W${weekNumber}`;
+      setActivityProgress(prev => ({
+        ...prev,
+        dayKey,
+        weekKey,
+        itemActivations: (prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0) + battleItemsUsed,
+        weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed
+      }));
     }
+    setLastBattleSummary(result === 'quit' ? null : summary);
     setLastBattleResult(result);
     setCurrentScreen('missionOutro');
   };
@@ -396,6 +476,7 @@ function App() {
     setCurrentScreen('hub');
     setActiveStage(null);
     setLastBattleResult(null);
+    setLastBattleSummary(null);
   };
 
   const toggleLanguage = () => {
@@ -816,6 +897,7 @@ function App() {
           lang={lang}
           stage={activeStage}
           result={lastBattleResult}
+          rewardSummary={lastBattleSummary}
           onContinue={closeMissionOutro}
         />
       )}
