@@ -39,7 +39,7 @@ export default function HubScreen({
   onLaunchStage,
   onGoToPortal
 }) {
-  const [activeTab, setActiveTab] = useState('missions'); // 'missions' | 'roster' | 'party' | 'inventory' | 'shop'
+  const [activeTab, setActiveTab] = useState('missions'); // 'missions' | 'roster' | 'party' | 'inventory' | 'collection' | 'shop' | 'codex' | 'admin'
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
@@ -51,6 +51,7 @@ export default function HubScreen({
   const [adminUniverseSearch, setAdminUniverseSearch] = useState('');
   const [expandedAdminUniverses, setExpandedAdminUniverses] = useState({});
   const [selectedCollectionUniverse, setSelectedCollectionUniverse] = useState(null);
+  const hubContentMax = 'min(1500px, calc(100vw - 32px))';
   const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
   const disabledAssetSets = useMemo(() => ({
@@ -1729,6 +1730,8 @@ export default function HubScreen({
     || mediaType === mediaFilter
     || (mediaFilter === 'movie' && mediaType === 'series')
   );
+  const visibleCollectionUniverses = Object.keys(LORE_DB)
+    .filter(key => key !== 'Nexus de Convergence' && isUniverseVisible(key) && matchesMediaFilter(LORE_DB[key]?.mediaType));
   const getMediaTypeLabel = (mediaType) => {
     if (mediaType === 'game') return 'Game';
     if (mediaType === 'movie') return 'Movie';
@@ -1889,7 +1892,7 @@ export default function HubScreen({
       {/* HUD Header */}
       <div style={{
         width: '100%',
-        maxWidth: '1000px',
+        maxWidth: hubContentMax,
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -1904,7 +1907,7 @@ export default function HubScreen({
           <span style={{ fontSize: '11px', color: '#ff4500' }}>{getTranslation(lang, 'sysStatus')}</span>
         </div>
 
-        <div style={{ display: 'flex', gap: '15px' }}>
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
           <div style={{ padding: '6px 12px', background: 'rgba(241, 196, 15, 0.1)', border: '1px solid #f1c40f', borderRadius: '4px', fontSize: '12px' }}>
             🪙 {getTranslation(lang, 'gold')}: <span style={{ color: '#f1c40f', fontWeight: 'bold' }}>{gold}</span>
           </div>
@@ -1920,7 +1923,7 @@ export default function HubScreen({
       {nexusMessage && (
         <div style={{
           width: '100%',
-          maxWidth: '1000px',
+          maxWidth: hubContentMax,
           marginBottom: '14px',
           padding: '10px 12px',
           border: `1px solid ${nexusMessage.tone === 'success' ? '#2ecc71' : nexusMessage.tone === 'warn' ? '#f1c40f' : '#39c5bb'}`,
@@ -1935,7 +1938,7 @@ export default function HubScreen({
       )}
 
       {/* Navigation tabs */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '25px', width: '100%', maxWidth: '1000px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '25px', width: '100%', maxWidth: hubContentMax }}>
         <button
           onClick={() => { setActiveTab('missions'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'missions' ? 'active-tab' : ''}`}
@@ -1996,7 +1999,7 @@ export default function HubScreen({
 
       {/* Media Category Filter Bar */}
       {['missions', 'roster', 'codex', 'collection'].includes(activeTab) && (
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: '1000px', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: hubContentMax, boxSizing: 'border-box', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '11px', color: '#888', textTransform: 'uppercase', marginRight: '5px' }}>
             {lang === 'fr' ? 'Filtre d archives :' : 'Archive filter:'}
           </span>
@@ -2039,7 +2042,7 @@ export default function HubScreen({
       )}
 
       {/* Tab bodies */}
-      <div style={{ width: '100%', maxWidth: '1000px', flex: 1 }}>
+      <div style={{ width: '100%', maxWidth: hubContentMax, flex: 1 }}>
 
         {/* Tab 1: Missions */}
         {activeTab === 'missions' && (
@@ -3579,7 +3582,14 @@ export default function HubScreen({
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '10px', maxHeight: '520px', overflowY: 'auto', paddingRight: '4px' }}>
-              {Object.keys(LORE_DB).filter(key => key !== 'Nexus de Convergence' && isUniverseVisible(key) && matchesMediaFilter(LORE_DB[key]?.mediaType)).map(universe => {
+              {visibleCollectionUniverses.length === 0 && (
+                <div style={{ gridColumn: '1 / -1', padding: '18px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.18)', borderRadius: '5px', color: '#aaa', fontSize: '11px', lineHeight: 1.45 }}>
+                  {lang === 'fr'
+                    ? 'Aucun univers visible avec ce filtre. Change le filtre media ou reactive des univers dans ADMIN.'
+                    : 'No universe visible with this filter. Change the media filter or reactivate worlds in ADMIN.'}
+                </div>
+              )}
+              {visibleCollectionUniverses.map(universe => {
                 const lore = LORE_DB[universe];
                 const stageId = UNIVERSE_TO_STAGE_ID[universe];
                 const cleared = !stageId || completedStages.includes(stageId);
@@ -3931,6 +3941,13 @@ export default function HubScreen({
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '15px' }}>
+              {visibleEventShopItems.length === 0 && (
+                <div style={{ gridColumn: '1 / -1', padding: '18px', border: '1px solid rgba(231,76,60,0.22)', background: 'rgba(231,76,60,0.045)', borderRadius: '5px', color: '#ffb1a8', fontSize: '11px', lineHeight: 1.45 }}>
+                  {lang === 'fr'
+                    ? 'Aucun prototype disponible dans cette rotation. Verifie les univers masques dans ADMIN pour reouvrir le stock Nexus.'
+                    : 'No prototype available in this rotation. Check hidden worlds in ADMIN to reopen Nexus stock.'}
+                </div>
+              )}
               {visibleEventShopItems.map(item => {
                 const owned = inventory.includes(item.id);
                 const visualUniverse = getShopItemUniverse(item);
@@ -4049,7 +4066,6 @@ export default function HubScreen({
                         <span style={{ fontWeight: 'bold', fontSize: '13px', color: accent, lineHeight: 1.25 }}>
                           {item.name[lang]}
                         </span>
-                        <span style={{ fontSize: '12px', color: '#e74c3c' }}>🎫 {item.tokenCost}</span>
                       </div>
                       <div style={{ fontSize: '10px', color: '#aaa', marginTop: '6px', lineHeight: 1.35 }}>
                         {getShopItemSummary(item)}
