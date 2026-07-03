@@ -19,7 +19,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
 
   const cost = 50;
   const portalBanners = [
-    { id: 'multi', color: '#9b59b6', label: { fr: 'Portail Multivers', en: 'Multiverse Portal' }, desc: { fr: 'Tous les heros, taux standards.', en: 'All heroes, standard rates.' }, match: () => true },
+    { id: 'multi', color: '#9b59b6', label: { fr: 'Portail Multivers', en: 'Multiverse Portal' }, desc: { fr: 'Toutes les signatures heroiques detectables.', en: 'All detectable heroic signatures.' }, match: () => true },
     { id: 'scifi', color: '#3498db', label: { fr: 'Faille Sci-Fi', en: 'Sci-Fi Rift' }, desc: { fr: 'Halo, Mass Effect, Portal, Stargate, Gears.', en: 'Halo, Mass Effect, Portal, Stargate, Gears.' }, match: h => ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Portal', 'Half-Life', 'Star Wars', 'Le Cinquième Element', ...EXPANDED_FACTION_UNIVERSES.sciFi].includes(h.universe) },
     { id: 'xeno_yautja', color: '#8adbe6', label: { fr: 'Faille Xeno-Yautja', en: 'Xeno-Yautja Rift' }, desc: { fr: 'Alien, Predator, Prometheus, AVP.', en: 'Alien, Predator, Prometheus, AVP.' }, match: h => /Alien|Predator|Prometheus|Prey/.test(h.universe) },
     { id: 'horror', color: '#e74c3c', label: { fr: 'Faille Horreur', en: 'Horror Rift' }, desc: { fr: 'Resident Evil, Silent Hill, Chucky, Saw, Hellraiser.', en: 'Resident Evil, Silent Hill, Chucky, Saw, Hellraiser.' }, match: h => h.category === 'horror' || ['Resident Evil', 'Silent Hill', 'Chucky', 'Hellraiser', 'Saw', 'Slender Man', 'Scary Movie', 'Dead Space', 'Hazbin Hotel', 'Rob Zombie', ...EXPANDED_FACTION_UNIVERSES.horror].includes(h.universe) },
@@ -29,21 +29,21 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
     { id: 'arcane', color: '#d9b86b', label: { fr: 'Faille Arcane', en: 'Arcane Rift' }, desc: { fr: 'Discworld, Kaamelott, Dungeon Meshi, Noob, magie.', en: 'Discworld, Kaamelott, Dungeon Meshi, Noob, magic.' }, match: h => ['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob', 'Harry Potter', 'Negima', 'Rosario + Vampire', ...EXPANDED_FACTION_UNIVERSES.arcane].includes(h.universe) },
     { id: 'manga', color: '#9b59b6', label: { fr: 'Faille Manga & Web', en: 'Manga & Web Rift' }, desc: { fr: 'Univers manga, web et animation.', en: 'Manga, web, and animation worlds.' }, match: h => LORE_DB[h.universe]?.mediaType === 'manga' },
     { id: 'music', color: '#f1c40f', label: { fr: 'Faille Musique', en: 'Music Rift' }, desc: { fr: 'Rammstein, SOAD, Rob Zombie, Daft Punk, Oliver Tree, Vocaloid.', en: 'Rammstein, SOAD, Rob Zombie, Daft Punk, Oliver Tree, Vocaloid.' }, match: h => LORE_DB[h.universe]?.mediaType === 'music' || h.universe === 'Vocaloid' },
-    { id: 'movie', color: '#ff5b6e', label: { fr: 'Faille Films & Series', en: 'Movies & TV Rift' }, desc: { fr: 'Cinema/series hors focus specialise.', en: 'Movie and TV worlds outside specialized focus.' }, match: h => ['movie', 'series'].includes(LORE_DB[h.universe]?.mediaType) }
+    { id: 'movie', color: '#ff5b6e', label: { fr: 'Faille Films & Series', en: 'Movies & TV Rift' }, desc: { fr: 'Archives ecran hors cercle specialise.', en: 'Screen archives outside specialized circles.' }, match: h => ['movie', 'series'].includes(LORE_DB[h.universe]?.mediaType) }
   ];
 
   const bannerVisuals = {
-    multi: { universe: 'Matrix', mode: 'RPG', shape: 'omniverse', focusRate: 1, meta: { fr: 'Pool complet - ideal pour remplir la collection.', en: 'Full pool - best for filling the collection.' } },
-    scifi: { universe: 'Stargate', mode: 'RPG', shape: 'iris', focusRate: 0.7, meta: { fr: 'Marines sci-fi: PV, defense et reliques de front.', en: 'Sci-fi Marines: HP, defense, and frontline relics.' } },
-    xeno_yautja: { universe: 'Alien', mode: 'Smash', shape: 'hive', focusRate: 0.7, meta: { fr: 'Traque, acide et plasma pour equipes agressives.', en: 'Hunt, acid, and plasma for aggressive teams.' } },
-    horror: { universe: 'Silent Hill', mode: 'RPG', shape: 'sigil', focusRate: 0.7, meta: { fr: 'Controle, survie et pression de boss.', en: 'Control, survival, and boss pressure.' } },
-    cyber: { universe: 'The Matrix', mode: 'Tactics', shape: 'code', focusRate: 0.7, meta: { fr: 'Vitesse, glitches et tempo ATB.', en: 'Speed, glitches, and ATB tempo.' } },
-    arena: { universe: 'Yu-Gi-Oh', mode: 'Tactics', shape: 'duel', focusRate: 0.7, meta: { fr: 'Tactique, burst et reliques de precision.', en: 'Tactics, burst, and precision relics.' } },
-    arcade: { universe: 'Unreal', mode: 'Smash', shape: 'arena', focusRate: 0.7, meta: { fr: 'Complete les synergies Slayer/Tactique.', en: 'Completes Slayer/Tactical synergies.' } },
-    arcane: { universe: 'Harry Potter', mode: 'RPG', shape: 'rune', focusRate: 0.7, meta: { fr: 'Defense, magie et anomalies de controle.', en: 'Defense, magic, and control anomalies.' } },
-    manga: { universe: 'Yu-Gi-Oh', mode: 'Tactics', shape: 'card', focusRate: 0.7, meta: { fr: 'Pool large pour archetypes hybrides.', en: 'Wide pool for hybrid archetypes.' } },
-    music: { universe: 'Vocaloid', mode: 'Smash', shape: 'speaker', focusRate: 0.7, meta: { fr: 'Tempo, vitesse et buffs d equipe.', en: 'Tempo, speed, and squad buffs.' } },
-    movie: { universe: 'Star Wars', mode: 'Smash', shape: 'cinema', focusRate: 0.7, meta: { fr: 'Signature flexible pour collections de films.', en: 'Flexible signature for movie collections.' } }
+    multi: { universe: 'Matrix', mode: 'RPG', shape: 'omniverse', focusRate: 1, meta: { fr: 'Spectre complet: A.R.C.A. ouvre toutes les familles de Trames detectables.', en: 'Complete spectrum: A.R.C.A. opens every detectable Thread family.' } },
+    scifi: { universe: 'Stargate', mode: 'RPG', shape: 'iris', focusRate: 0.7, meta: { fr: 'Signatures de front: blindage, commandement et lignes de defense.', en: 'Frontline signatures: armor, command, and defensive lines.' } },
+    xeno_yautja: { universe: 'Alien', mode: 'Smash', shape: 'hive', focusRate: 0.7, meta: { fr: 'Traques primitives: acide, plasma et rites de chasse.', en: 'Primal hunts: acid, plasma, and hunting rites.' } },
+    horror: { universe: 'Silent Hill', mode: 'RPG', shape: 'sigil', focusRate: 0.7, meta: { fr: 'Signaux de peur: survie, controle et resistance aux noyaux hostiles.', en: 'Fear signals: survival, control, and resistance against hostile cores.' } },
+    cyber: { universe: 'The Matrix', mode: 'Tactics', shape: 'code', focusRate: 0.7, meta: { fr: 'Trames codees: initiative, interruptions et permissions volees.', en: 'Coded Threads: initiative, interrupts, and stolen permissions.' } },
+    arena: { universe: 'Yu-Gi-Oh', mode: 'Tactics', shape: 'duel', focusRate: 0.7, meta: { fr: 'Lois de duel: precision, contrat et frappe ritualisee.', en: 'Duel laws: precision, contract, and ritualized strikes.' } },
+    arcade: { universe: 'Unreal', mode: 'Smash', shape: 'arena', focusRate: 0.7, meta: { fr: 'Arenes rapides: signatures de choc et cellules tactiques.', en: 'Fast arenas: impact signatures and tactical cells.' } },
+    arcane: { universe: 'Harry Potter', mode: 'RPG', shape: 'rune', focusRate: 0.7, meta: { fr: 'Runes convergentes: defense, magie et controle des anomalies.', en: 'Converging runes: defense, magic, and anomaly control.' } },
+    manga: { universe: 'Yu-Gi-Oh', mode: 'Tactics', shape: 'card', focusRate: 0.7, meta: { fr: 'Trames hybrides: transformations, rivalites et lois d arc.', en: 'Hybrid Threads: transformations, rivalries, and arc laws.' } },
+    music: { universe: 'Vocaloid', mode: 'Smash', shape: 'speaker', focusRate: 0.7, meta: { fr: 'Resonances de scene: tempo, vitesse et choeurs d escouade.', en: 'Stage resonances: tempo, speed, and squad choruses.' } },
+    movie: { universe: 'Star Wars', mode: 'Smash', shape: 'cinema', focusRate: 0.7, meta: { fr: 'Trames ecran: signatures souples pour archives cinema et series.', en: 'Screen Threads: flexible signatures for film and series archives.' } }
   };
 
   const baseActiveBanner = portalBanners.find(item => item.id === activeBanner) || portalBanners[0];
@@ -187,10 +187,10 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
   const focusPercent = Math.round((activeBannerData.focusRate || 1) * 100);
   const bannerRateLine = activeBannerData.id === 'multi'
     ? (lang === 'fr' ? 'Tous les heros ont le meme poids de faille.' : 'All heroes share the same rift weight.')
-    : (lang === 'fr' ? `${focusPercent}% de chance de viser ce booster. Invocation x10: premiere carte focus garantie.` : `${focusPercent}% chance to target this booster. x10 summon: first card guaranteed focus.`);
+    : (lang === 'fr' ? `Poids de faille ${focusPercent}: le booster attire cette famille de Trames. Appel x10: premiere carte harmonisee.` : `Rift weight ${focusPercent}: the booster attracts this Thread family. x10 call: first card harmonized.`);
   const pityLine = pityReady
-    ? (lang === 'fr' ? 'Garantie Nexus active: le prochain tirage vise un heros manquant.' : 'Nexus guarantee active: next pull targets a missing hero.')
-    : (lang === 'fr' ? `Garantie Nexus dans ${pityLimit - duplicateStreak} doublons.` : `Nexus guarantee in ${pityLimit - duplicateStreak} duplicates.`);
+    ? (lang === 'fr' ? 'Compas Nexus actif: le prochain appel cherche une signature absente.' : 'Nexus compass active: next call seeks a missing signature.')
+    : (lang === 'fr' ? `Compas Nexus dans ${pityLimit - duplicateStreak} echoes deja scelles.` : `Nexus compass in ${pityLimit - duplicateStreak} already-sealed echoes.`);
   const portalBackground = activeBackdrop
     ? `linear-gradient(180deg, rgba(4,2,10,0.55), rgba(4,2,10,0.92)), url(${activeBackdrop})`
     : `radial-gradient(circle, ${activeBannerData.color}22 0%, #050209 72%)`;
@@ -261,7 +261,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
                 <span className="portal-booster-title">{banner.label[lang]}</span>
                 <span className="portal-booster-desc">{banner.desc[lang]}</span>
                 <span className="portal-booster-meta">
-                  {owned}/{bannerHeroes.length} - {banner.id === 'multi' ? 'ALL' : `${Math.round(pack.focusRate * 100)}%`}
+                  {owned}/{bannerHeroes.length} - {banner.id === 'multi' ? (lang === 'fr' ? 'SPECTRE' : 'SPECTRUM') : `${Math.round(pack.focusRate * 100)} POIDS`}
                 </span>
               </button>
             );
@@ -276,8 +276,8 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
           <p>{activeBannerData.meta[lang]}</p>
           <div className="portal-focus-stats">
             <span>{activeOwnedCount}/{activeBannerHeroes.length}</span>
-            <span>{activeMissingCount} {lang === 'fr' ? 'manquants' : 'missing'}</span>
-            <span>{activeBannerData.id === 'multi' ? 'FULL POOL' : `${focusPercent}% FOCUS`}</span>
+            <span>{activeMissingCount} {lang === 'fr' ? 'signatures absentes' : 'absent signatures'}</span>
+            <span>{activeBannerData.id === 'multi' ? (lang === 'fr' ? 'SPECTRE COMPLET' : 'FULL SPECTRUM') : `${focusPercent} POIDS DE FAILLE`}</span>
           </div>
           <div className="portal-focus-rate">{bannerRateLine}</div>
           <div className="portal-focus-rate" style={{ marginTop: '6px', color: pityReady ? '#2ecc71' : '#ffea00' }}>
@@ -437,7 +437,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
                       {plaque.clearance}
                     </div>
                     <div style={{ fontSize: '8px', color: entry.wasDuplicate ? '#ffeb3b' : '#2ecc71', marginTop: '2px' }}>
-                      {entry.wasDuplicate ? (lang === 'fr' ? 'DOUBLE +25' : 'DUPLICATE +25') : (lang === 'fr' ? 'NOUVEAU' : 'NEW')}
+                      {entry.wasDuplicate ? (lang === 'fr' ? 'ECHO +25' : 'ECHO +25') : (lang === 'fr' ? 'NOUVEAU' : 'NEW')}
                     </div>
                     <div style={{
                       margin: '6px auto 0 auto',
@@ -461,9 +461,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
               })}
             </div>
             <div style={{ color: '#ffea00', fontSize: '11px', marginTop: '15px' }}>
-              {lang === 'fr' 
-                ? 'Les héros doublons ont été convertis en +25 Fragments chacun !' 
-                : 'Any duplicate heroes pulled automatically returned +25 Shards rebate!'}
+              {lang === 'fr'
+                ? 'Les echos deja scelles ont ete convertis en +25 Fragments chacun.'
+                : 'Already sealed echoes returned +25 Shards each.'}
             </div>
           </div>
         )}
@@ -487,7 +487,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
               className={`btn-retro ${breachShards < 450 || activeBannerHeroes.length === 0 ? 'btn-disabled' : ''}`}
               style={{ fontSize: '13px', padding: '10px 20px', borderColor: '#ffea00', color: '#fff', background: 'rgba(255, 234, 0, 0.15)' }}
             >
-              {getTranslation(lang, 'btnSummonTen')} {activeBannerData.id !== 'multi' ? (lang === 'fr' ? '+ FOCUS' : '+ FOCUS') : ''}
+              {getTranslation(lang, 'btnSummonTen')} {activeBannerData.id !== 'multi' ? (lang === 'fr' ? '+ HARMONIE' : '+ HARMONY') : ''}
             </button>
           </>
         )}
@@ -497,7 +497,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
         <div className="portal-focus-panel" style={{ '--portal-color': activeBannerData.color, marginTop: '18px', maxWidth: '1060px', width: '100%', gridTemplateColumns: '1fr' }}>
           <div className="portal-focus-info">
             <div className="portal-focus-kicker">
-              {lang === 'fr' ? 'Historique de faille' : 'Rift history'} / {portalStats?.pulls || 0} {lang === 'fr' ? 'tirages' : 'pulls'}
+              {lang === 'fr' ? 'Historique de faille' : 'Rift history'} / {portalStats?.pulls || 0} {lang === 'fr' ? 'appels' : 'calls'}
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '8px', marginTop: '10px' }}>
               {(portalStats?.history || []).slice(0, 8).map((entry, idx) => (
@@ -510,7 +510,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
                   <strong style={{ display: 'block', color: '#fff', fontSize: '11px' }}>{entry.name}</strong>
                   <span style={{ display: 'block', color: '#aaa', fontSize: '9px', marginTop: '3px' }}>{entry.universe} / {entry.banner}</span>
                   <span style={{ display: 'block', color: entry.duplicate ? '#ffea00' : '#2ecc71', fontSize: '9px', marginTop: '3px' }}>
-                    {entry.duplicate ? (lang === 'fr' ? 'Doublon converti' : 'Duplicate converted') : (lang === 'fr' ? 'Nouvelle recrue' : 'New recruit')}
+                    {entry.duplicate ? (lang === 'fr' ? 'Echo scelle converti' : 'Sealed echo converted') : (lang === 'fr' ? 'Nouvelle signature' : 'New signature')}
                   </span>
                 </div>
               ))}

@@ -136,8 +136,8 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
     if (!isOutro) return stage.fusionMission.decor[lang];
     return victory
       ? (lang === 'fr'
-        ? `${stage.displayName.fr} est stabilisee. ${stage.rewardItemName.fr} rejoint l inventaire Nexus comme cle de craft et de skin.`
-        : `${stage.displayName.en} is stabilized. ${stage.rewardItemName.en} enters the Nexus inventory as a craft and skin key.`)
+        ? `${stage.displayName.fr} est stabilisee. ${stage.rewardItemName.fr} rejoint l armurerie Nexus comme trace de recomposition.`
+        : `${stage.displayName.en} is stabilized. ${stage.rewardItemName.en} enters the Nexus armory as a recomposition trace.`)
       : (lang === 'fr'
         ? `${stage.displayName.fr} reste dangereuse: les univers sources continuent de se contaminer.`
         : `${stage.displayName.en} remains dangerous: source universes keep contaminating each other.`);
@@ -146,8 +146,8 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
     if (!isOutro) return stage.characterArc.intro[lang];
     return victory
       ? (lang === 'fr'
-        ? `${stage.characterArc.outro.fr} ${stage.rewardItemName.fr} rejoint les archives personnelles comme apparence Nexus.`
-        : `${stage.characterArc.outro.en} ${stage.rewardItemName.en} joins the personal archive as a Nexus appearance.`)
+        ? `${stage.characterArc.outro.fr} ${stage.rewardItemName.fr} rejoint les archives personnelles comme signature stabilisee.`
+        : `${stage.characterArc.outro.en} ${stage.rewardItemName.en} joins the personal archive as a stabilized signature.`)
       : (lang === 'fr'
         ? `${stage.displayName.fr} reste inachevee: la signature personnelle du heros n est pas encore assez stable.`
         : `${stage.displayName.en} remains unfinished: the hero personal signature is not stable enough yet.`);
@@ -210,18 +210,18 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
       : (lang === 'fr' ? 'REPLI TACTIQUE' : 'TACTICAL RETREAT')
     : (lang === 'fr' ? 'SEQUENCE NARRATIVE' : 'NARRATIVE SEQUENCE');
   const modeLine = stage.mode === 'RPG'
-    ? (lang === 'fr' ? 'L escouade avance en formation RPG, comme une confrontation de boss cinematique.' : 'The squad advances in RPG formation, like a cinematic boss confrontation.')
+    ? (lang === 'fr' ? 'L escouade avance selon le protocole Resonance: initiative, charges et rupture du noyau.' : 'The squad advances under the Resonance protocol: initiative, charges, and core rupture.')
     : stage.mode === 'Tactics'
-      ? (lang === 'fr' ? 'Le champ se decoupe en lignes tactiques: chaque case devient une decision de survie.' : 'The field splits into tactical lanes: every tile becomes a survival decision.')
-      : (lang === 'fr' ? 'La breche explose en arene rapide, proche d un combat crossover de super-heros.' : 'The breach bursts into a fast arena, close to a superhero crossover battle.');
+      ? (lang === 'fr' ? 'Le champ se decoupe en lignes d ancrage: chaque zone devient une decision de survie.' : 'The field splits into anchor lanes: every zone becomes a survival decision.')
+      : (lang === 'fr' ? 'La breche explose en arene d impact ou les signatures frappent avant dissolution.' : 'The breach bursts into an impact arena where signatures strike before dissolution.');
   const narrativeLine = getMissionNarrative(stage, lang, isOutro, victory);
   const introText = lang === 'fr'
     ? `${narrativeLine} Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que la Singularity absorbe ce lore.`
     : `${narrativeLine} Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Singularity absorbs this lore.`;
   const outroText = victory
     ? (lang === 'fr'
-      ? `${narrativeLine} Les donnees de ${stage.bossName} rejoignent le codex, la rarete ${rarity} est indexee et les recompenses sont transferees au hub.`
-      : `${narrativeLine} ${stage.bossName} data enters the codex, ${rarity} rarity is indexed, and rewards are transferred to the hub.`)
+      ? `${narrativeLine} Les donnees de ${stage.bossName} rejoignent le codex, la signature ${rarity} est indexee et les caches sont transferees a l armurerie.`
+      : `${narrativeLine} ${stage.bossName} data enters the codex, ${rarity} signature is indexed, and caches are transferred to the armory.`)
     : (lang === 'fr'
       ? `${narrativeLine} L escouade conserve les donnees de contact, mais ${stage.bossName} garde le controle local du signal.`
       : `${narrativeLine} The squad keeps contact data, but ${stage.bossName} still controls the local signal.`);
@@ -239,7 +239,7 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
           {isOutro && rewardSummary && (
             <div className="narrative-intel" style={{ display: 'grid', gap: '6px' }}>
               <strong style={{ color: rewardSummary.result === 'victory' ? '#2ecc71' : '#ffeb3b' }}>
-                {lang === 'fr' ? 'Rapport gameplay A.R.C.A.' : 'A.R.C.A. gameplay report'}
+                {lang === 'fr' ? 'Transmission de stabilisation A.R.C.A.' : 'A.R.C.A. stabilization transmission'}
               </strong>
               <span>
                 {lang === 'fr'
@@ -252,13 +252,13 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
                   : `Field artifacts activated: ${rewardSummary.battleItemsUsed}.`}
               </span>
               {rewardSummary.firstClear && (
-                <span>{lang === 'fr' ? 'Bonus premiere stabilisation applique.' : 'First stabilization bonus applied.'}</span>
+                <span>{lang === 'fr' ? 'Prime de premiere stabilisation gravee dans la Trame.' : 'First-stabilization prime engraved into the Thread.'}</span>
               )}
               {rewardSummary.consolation && (
                 <span>{lang === 'fr' ? 'Cache de repli attribuee: la tentative progresse meme sans victoire.' : 'Retreat cache granted: the attempt still progresses without victory.'}</span>
               )}
               {rewardSummary.rewardItemName && (
-                <span>{lang === 'fr' ? `Recompense speciale: ${rewardSummary.rewardItemName}.` : `Special reward: ${rewardSummary.rewardItemName}.`}</span>
+                <span>{lang === 'fr' ? `Trace speciale archivee: ${rewardSummary.rewardItemName}.` : `Special trace archived: ${rewardSummary.rewardItemName}.`}</span>
               )}
               {rewardSummary.droppedItemName && (
                 <span>{lang === 'fr' ? `Relique recuperee: ${rewardSummary.droppedItemName}.` : `Relic recovered: ${rewardSummary.droppedItemName}.`}</span>
@@ -315,8 +315,8 @@ function App() {
   const [account, setAccount] = useState(() => getStoredSession());
   const [cloudStatus, setCloudStatus] = useState(() => (
     getStoredSession()
-      ? 'Compte detecte. La progression locale reste active, cloud disponible.'
-      : 'Progression locale. Connecte un compte pour synchroniser.'
+      ? 'Signature detectee. La trace locale reste active, cloud disponible.'
+      : 'Trace locale active. Ancre une signature pour synchroniser.'
   ));
   const collectionBonusCount = inventory.filter(itemId => (
     itemId.startsWith('collection_reward_')
@@ -361,9 +361,9 @@ function App() {
     cloudSaveTimerRef.current = window.setTimeout(async () => {
       try {
         await saveCloudSave(account, payload);
-        setCloudStatus(lang === 'fr' ? 'Progression synchronisee dans le cloud.' : 'Progress synced to cloud.');
+        setCloudStatus(lang === 'fr' ? 'Trace Nexus synchronisee dans le cloud.' : 'Nexus trace synced to cloud.');
       } catch (err) {
-        setCloudStatus(`${lang === 'fr' ? 'Sync cloud impossible' : 'Cloud sync failed'}: ${err.message}`);
+        setCloudStatus(`${lang === 'fr' ? 'Synchronisation Nexus impossible' : 'Nexus sync failed'}: ${err.message}`);
       }
     }, 1200);
 
@@ -585,25 +585,25 @@ function App() {
     const raw = JSON.stringify(getCurrentSave());
     try {
       await navigator.clipboard.writeText(raw);
-      window.alert(lang === 'fr' ? 'Sauvegarde copiee dans le presse-papiers.' : 'Save copied to clipboard.');
+      window.alert(lang === 'fr' ? 'Trace Nexus copiee dans le presse-papiers.' : 'Nexus trace copied to clipboard.');
     } catch {
-      window.prompt(lang === 'fr' ? 'Copie ta sauvegarde :' : 'Copy your save:', raw);
+      window.prompt(lang === 'fr' ? 'Copie ta trace Nexus :' : 'Copy your Nexus trace:', raw);
     }
   };
 
   const importSave = () => {
-    const raw = window.prompt(lang === 'fr' ? 'Colle ta sauvegarde exportee :' : 'Paste exported save:');
+    const raw = window.prompt(lang === 'fr' ? 'Colle ta trace Nexus exportee :' : 'Paste exported Nexus trace:');
     if (!raw) return;
     try {
       applySave(JSON.parse(raw));
       sound.playSfx('levelup');
     } catch {
-      window.alert(lang === 'fr' ? 'Sauvegarde invalide.' : 'Invalid save.');
+      window.alert(lang === 'fr' ? 'Trace Nexus invalide.' : 'Invalid Nexus trace.');
     }
   };
 
   const resetSave = () => {
-    if (!window.confirm(lang === 'fr' ? 'Reset complet de la progression ?' : 'Fully reset progression?')) return;
+    if (!window.confirm(lang === 'fr' ? 'Purger completement la trace Nexus ?' : 'Fully purge Nexus trace?')) return;
     window.localStorage.removeItem(SAVE_KEY);
     applySave(DEFAULT_SAVE);
     sound.playSfx('click');
@@ -612,7 +612,7 @@ function App() {
   const applyCloudSession = async (session, shouldLoadCloud = true) => {
     storeSession(session);
     setAccount(session);
-    setCloudStatus(lang === 'fr' ? 'Compte connecte. Verification de la sauvegarde cloud...' : 'Account connected. Checking cloud save...');
+    setCloudStatus(lang === 'fr' ? 'Signature ancree. Verification de l archive Nexus...' : 'Signature anchored. Checking Nexus archive...');
 
     if (!shouldLoadCloud) return;
 
@@ -620,10 +620,10 @@ function App() {
     if (row?.payload) {
       skipNextCloudSaveRef.current = true;
       applySave(row.payload);
-      setCloudStatus(lang === 'fr' ? 'Sauvegarde cloud chargee.' : 'Cloud save loaded.');
+      setCloudStatus(lang === 'fr' ? 'Archive Nexus chargee.' : 'Nexus archive loaded.');
     } else {
       await saveCloudSave(session, getCurrentSave());
-      setCloudStatus(lang === 'fr' ? 'Nouvelle sauvegarde cloud creee depuis cette progression.' : 'New cloud save created from this progression.');
+      setCloudStatus(lang === 'fr' ? 'Nouvelle archive Nexus gravee depuis cette trace.' : 'New Nexus archive engraved from this trace.');
     }
   };
 
@@ -636,13 +636,13 @@ function App() {
   const handleSignUp = async (email, password) => {
     const session = await signUpAccount(email, password);
     if (!session?.access_token) {
-      setCloudStatus(lang === 'fr' ? 'Compte cree. Confirme ton email puis connecte-toi.' : 'Account created. Confirm your email, then sign in.');
+      setCloudStatus(lang === 'fr' ? 'Signature creee. Confirme ton email puis ancre-la.' : 'Signature created. Confirm your email, then anchor it.');
       sound.playSfx('levelup');
       return;
     }
     await applyCloudSession(session, false);
     await saveCloudSave(session, getCurrentSave());
-    setCloudStatus(lang === 'fr' ? 'Compte cree et progression envoyee dans le cloud.' : 'Account created and progress uploaded to cloud.');
+    setCloudStatus(lang === 'fr' ? 'Signature creee et trace gravee dans le Nexus.' : 'Signature created and trace engraved into the Nexus.');
     sound.playSfx('levelup');
   };
 
@@ -650,7 +650,7 @@ function App() {
     const current = account;
     storeSession(null);
     setAccount(null);
-    setCloudStatus(lang === 'fr' ? 'Deconnecte. Progression locale active.' : 'Signed out. Local progress active.');
+    setCloudStatus(lang === 'fr' ? 'Signature detachee. Trace locale active.' : 'Signature detached. Local trace active.');
     if (current?.access_token) {
       try {
         await signOutAccount(current);
@@ -665,19 +665,19 @@ function App() {
     if (!account) return;
     const row = await loadCloudSave(account);
     if (!row?.payload) {
-      setCloudStatus(lang === 'fr' ? 'Aucune sauvegarde cloud trouvee.' : 'No cloud save found.');
+      setCloudStatus(lang === 'fr' ? 'Aucune archive Nexus trouvee.' : 'No Nexus archive found.');
       return;
     }
     skipNextCloudSaveRef.current = true;
     applySave(row.payload);
-    setCloudStatus(lang === 'fr' ? 'Sauvegarde cloud chargee.' : 'Cloud save loaded.');
+    setCloudStatus(lang === 'fr' ? 'Archive Nexus chargee.' : 'Nexus archive loaded.');
     sound.playSfx('coin');
   };
 
   const handleSaveCloud = async () => {
     if (!account) return;
     await saveCloudSave(account, getCurrentSave());
-    setCloudStatus(lang === 'fr' ? 'Progression envoyee dans le cloud.' : 'Progress uploaded to cloud.');
+    setCloudStatus(lang === 'fr' ? 'Trace envoyee dans le cloud.' : 'Trace uploaded to cloud.');
     sound.playSfx('coin');
   };
 
@@ -730,13 +730,13 @@ function App() {
         flexWrap: 'wrap'
       }}>
         <button onClick={exportSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#39c5bb' }}>
-          EXPORT SAVE
+          EXPORT TRACE
         </button>
         <button onClick={importSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#ffeb3b', color: '#ffeb3b' }}>
-          IMPORT
+          IMPORT TRACE
         </button>
         <button onClick={resetSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#e74c3c', color: '#e74c3c' }}>
-          RESET
+          PURGE
         </button>
       </div>
 
@@ -818,8 +818,8 @@ function App() {
               </div>
               <p style={{ marginBottom: 0 }}>
                 {lang === 'fr'
-                  ? 'Ton profil n est pas un simple compte: c est une signature d Ancre. Le Nexus l utilise pour retenir tes victoires, tes equipes, tes reliques, les Trames deja stabilisees et les choix qui pourront plus tard soutenir le multijoueur sans casser ta progression.'
-                  : 'Your profile is not just an account: it is an Anchored signature. The Nexus uses it to retain victories, teams, relics, stabilized Threads, and choices that can later support multiplayer without breaking progression.'}
+                  ? 'Ton profil n est pas un formulaire externe: c est une signature d Ancre. Le Nexus l utilise pour retenir tes stabilisations, tes cellules, tes reliques, les Trames deja scellees et les choix qui pourront plus tard soutenir d autres Ancres sans casser la memoire.'
+                  : 'Your profile is not an external form: it is an Anchored signature. The Nexus uses it to retain stabilizations, cells, relics, sealed Threads, and choices that can later support other Anchors without breaking memory.'}
               </p>
             </div>
 
@@ -846,8 +846,8 @@ function App() {
                 {
                   title: lang === 'fr' ? '4. Premiere route' : '4. First route',
                   text: lang === 'fr'
-                    ? 'Commence par une breche facile, equipe une relique, teste un item de terrain, puis consulte Collection pour voir ce que chaque victoire ouvre.'
-                    : 'Start with an easy breach, equip a relic, test a field item, then check Collection to see what each victory opens.'
+                  ? 'Commence par une breche stable, assigne une relique, declenche un artefact de terrain, puis consulte Collection pour voir quelles traces chaque stabilisation revele.'
+                    : 'Start with a stable breach, assign a relic, trigger a field artifact, then check Collection to see which traces each stabilization reveals.'
                 }
               ].map(entry => (
                 <div className="intro-profile-step" key={entry.title}>
@@ -870,8 +870,8 @@ function App() {
               />
               <span>
                 {lang === 'fr'
-                  ? 'Ce pseudo devient ton premier heros jouable et ta signature de sauvegarde.'
-                  : 'This nickname becomes your first playable hero and save signature.'}
+                  ? 'Ce nom devient ta premiere signature d Ancre et le heros central de la cellule.'
+                  : 'This name becomes your first Anchor signature and the central hero of the cell.'}
               </span>
             </div>
 

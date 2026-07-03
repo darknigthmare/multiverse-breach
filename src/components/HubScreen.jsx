@@ -472,8 +472,8 @@ export default function HubScreen({
         en: 'If this line falls, hives learn to use the Veil as a nest and Yautja clans turn the Nexus into an endless hunting preserve.'
       },
       gameplay: {
-        fr: 'Priorite meta: tanks sci-fi, anti-boss, reliques acide/plasma, controle des adds rapides.',
-        en: 'Meta priority: sci-fi tanks, anti-boss damage, acid/plasma relics, control against fast adds.'
+        fr: 'Directive A.R.C.A.: tenir la ligne blindee, isoler le noyau dominant, employer les traces acide/plasma et contenir les essaims rapides.',
+        en: 'A.R.C.A. directive: hold the armored line, isolate the dominant core, use acid/plasma traces, and contain fast swarms.'
       },
       finale: { fr: 'Sceller le Nid-Trophee avant qu il ne ponde dans plusieurs Trames a la fois.', en: 'Seal the Trophy-Hive before it breeds across several Threads at once.' }
     },
@@ -484,8 +484,8 @@ export default function HubScreen({
         en: 'Gotham becomes a moral experiment: every victory feeds either brutal order or contagious chaos.'
       },
       gameplay: {
-        fr: 'Priorite meta: burst critique, resistance peur, equipes capables de finir vite avant l escalade.',
-        en: 'Meta priority: critical burst, fear resistance, teams able to finish fast before escalation.'
+        fr: 'Directive A.R.C.A.: frapper vite, verrouiller la peur et finir la scene avant que le rire noir ne gagne en masse.',
+        en: 'A.R.C.A. directive: strike fast, lock fear, and finish the scene before the black laugh gains mass.'
       },
       finale: { fr: 'Briser le rire noir sans donner au Sans-Auteur une preuve que toute histoire finit en nihilisme.', en: 'Break the black laugh without proving to the Authorless that every story ends in nihilism.' }
     },
@@ -496,8 +496,8 @@ export default function HubScreen({
         en: 'Music keeps entire Threads alive; if rhythm corrupts, collective memory becomes a weapon.'
       },
       gameplay: {
-        fr: 'Priorite meta: vitesse, tempo ATB, objets evenementiels, equipes capables de cycler les speciales.',
-        en: 'Meta priority: speed, ATB tempo, event items, teams able to cycle specials.'
+        fr: 'Directive A.R.C.A.: synchroniser le tempo, armer les artefacts de scene et relancer les signatures avant extinction du rythme.',
+        en: 'A.R.C.A. directive: synchronize tempo, arm stage artifacts, and cycle signatures before rhythm collapse.'
       },
       finale: { fr: 'Transformer la Scene Fantome en balise qui repousse le silence du Sans-Auteur.', en: 'Turn the Ghost Stage into a beacon that pushes back the Authorless silence.' }
     },
@@ -508,8 +508,8 @@ export default function HubScreen({
         en: 'Runes from several worlds contradict each other and threaten to redefine the Nexus internal laws.'
       },
       gameplay: {
-        fr: 'Priorite meta: defense, controle, heros tactiques, reliques qui stabilisent plutot que simplement frapper.',
-        en: 'Meta priority: defense, control, tactical heroes, relics that stabilize rather than only hit.'
+        fr: 'Directive A.R.C.A.: privilegier les sceaux defensifs, le controle et les reliques qui reforment la loi locale au lieu de simplement blesser.',
+        en: 'A.R.C.A. directive: favor defensive seals, control, and relics that rebuild local law instead of merely wounding.'
       },
       finale: { fr: 'Recomposer un Grimoire d Equilibre sans laisser Veyr reecrire la carte des ruptures.', en: 'Rebuild a Grimoire of Balance without letting Veyr rewrite the rupture map.' }
     },
@@ -520,8 +520,8 @@ export default function HubScreen({
         en: 'Redemption, punishment, and spectacle fuse; heroes risk becoming roles performed forever.'
       },
       gameplay: {
-        fr: 'Priorite meta: controle, survie, cleanse narratif, mitigation des boss a phases.',
-        en: 'Meta priority: control, survival, narrative cleanse, mitigation against phase bosses.'
+        fr: 'Directive A.R.C.A.: garder le controle, purifier les roles imposes et amortir les mutations de phase.',
+        en: 'A.R.C.A. directive: keep control, cleanse imposed roles, and blunt phase mutations.'
       },
       finale: { fr: 'Fermer le rideau sans effacer ceux qui cherchent encore une sortie.', en: 'Close the curtain without erasing those still looking for an exit.' }
     },
@@ -532,8 +532,8 @@ export default function HubScreen({
         en: 'This is the official military line of the Nexus: if it breaks, no stable zone protects Mosaic City civilians.'
       },
       gameplay: {
-        fr: 'Priorite meta: HP, DEF, escouades 2+ sci-fi pour activer +8% HP, reliques de blindage.',
-        en: 'Meta priority: HP, DEF, 2+ sci-fi squads to activate +8% HP, armor relics.'
+        fr: 'Directive A.R.C.A.: renforcer les lignes de vie, croiser deux signatures sci-fi ou plus et confier les reliques de blindage aux porteurs de front.',
+        en: 'A.R.C.A. directive: reinforce lifelines, cross two or more sci-fi signatures, and assign armor relics to front holders.'
       },
       finale: { fr: 'Construire le Rempart Atrium, premiere vraie defense contre le Noyau final.', en: 'Build the Atrium Bulwark, the first real defense against the final Core.' }
     },
@@ -544,8 +544,8 @@ export default function HubScreen({
         en: 'Scientific incidents prove the First Breach can contaminate biology, time, matter, and AI.'
       },
       gameplay: {
-        fr: 'Priorite meta: survie, debuffs, anti-infection, alternance RPG/Tactics pour tenir les combats longs.',
-        en: 'Meta priority: survival, debuffs, anti-infection, RPG/Tactics alternation for long fights.'
+        fr: 'Directive A.R.C.A.: survivre aux contaminations, affaiblir les mutations et alterner Resonance/Grille pour tenir les engagements longs.',
+        en: 'A.R.C.A. directive: survive contamination, weaken mutations, and alternate Resonance/Grid protocols for long engagements.'
       },
       finale: { fr: 'Isoler le Laboratoire Zero avant qu il ne fabrique des copies infectees d autres heros.', en: 'Isolate Laboratory Zero before it manufactures infected copies of other heroes.' }
     },
@@ -556,10 +556,10 @@ export default function HubScreen({
         en: 'Zone 404 reveals that some breaches are not places, but stolen system permissions.'
       },
       gameplay: {
-        fr: 'Priorite meta: vitesse, hackers, interruptions, bonus +8% SPD avec 2+ univers cyber.',
-        en: 'Meta priority: speed, hackers, interrupts, +8% SPD bonus with 2+ cyber universes.'
+        fr: 'Directive A.R.C.A.: gagner l initiative, interrompre les permissions volees et croiser deux signatures cyber ou plus pour accelerer le reseau.',
+        en: 'A.R.C.A. directive: seize initiative, interrupt stolen permissions, and cross two or more cyber signatures to accelerate the network.'
       },
-      finale: { fr: 'Installer un pare-feu narratif pour empecher le Sans-Auteur de supprimer les sauvegardes.', en: 'Install a narrative firewall to stop the Authorless from deleting saves.' }
+      finale: { fr: 'Installer un pare-feu narratif pour empecher le Sans-Auteur d effacer les traces memoire.', en: 'Install a narrative firewall to stop the Authorless from erasing memory traces.' }
     },
     duel_and_arena: {
       faction: { fr: 'Libres-Fractures', en: 'Free-Fractures' },
@@ -568,8 +568,8 @@ export default function HubScreen({
         en: 'These worlds reject frontal war: they impose contracts, duels, tournaments, heists, and local rules.'
       },
       gameplay: {
-        fr: 'Priorite meta: precision, critique, tactique, composition selon mode de mission.',
-        en: 'Meta priority: precision, critical damage, tactics, mission-mode composition.'
+        fr: 'Directive A.R.C.A.: respecter les regles locales, viser les failles de contrat et adapter la cellule au protocole de rupture.',
+        en: 'A.R.C.A. directive: respect local rules, target contract faults, and adapt the cell to the rupture protocol.'
       },
       finale: { fr: 'Gagner le Tournoi des Regles et forcer le Nexus a respecter les lois de chaque Trame.', en: 'Win the Tournament of Rules and force the Nexus to respect each Thread law.' }
     },
@@ -580,8 +580,8 @@ export default function HubScreen({
         en: 'The end of the world attracts worlds that already know ruin; they want to survive, not be saved.'
       },
       gameplay: {
-        fr: 'Priorite meta: degats bruts, endurance, gestion de boss lourds, reliques apocalypse.',
-        en: 'Meta priority: raw damage, endurance, heavy boss management, apocalypse relics.'
+        fr: 'Directive A.R.C.A.: encaisser la ruine, employer les reliques apocalypse et renverser les noyaux lourds avant epuisement.',
+        en: 'A.R.C.A. directive: endure ruin, use apocalypse relics, and overturn heavy cores before exhaustion.'
       },
       finale: { fr: 'Transformer le Wasteland en avant-poste au lieu de le laisser devenir le futur par defaut.', en: 'Turn the Wasteland into an outpost instead of letting it become the default future.' }
     },
@@ -592,8 +592,8 @@ export default function HubScreen({
         en: 'Fear is the Authorless easiest food: it erases detail and leaves only a silhouette.'
       },
       gameplay: {
-        fr: 'Priorite meta: esquive, controle, cleanse, burst contre entites et pieges.',
-        en: 'Meta priority: dodge, control, cleanse, burst against entities and traps.'
+        fr: 'Directive A.R.C.A.: refuser la peur, purifier les pieges et frapper les silhouettes avant qu elles ne deviennent des blancs d archive.',
+        en: 'A.R.C.A. directive: refuse fear, cleanse traps, and strike silhouettes before they become archive blanks.'
       },
       finale: { fr: 'Nommer les monstres pour les empecher de devenir des blancs dans les archives.', en: 'Name the monsters to stop them from becoming blanks in the archives.' }
     }
@@ -710,8 +710,8 @@ export default function HubScreen({
       unlockClears: 12,
       title: { fr: 'T2 - Multiplication des variantes', en: 'T2 - Variant Multiplication' },
       text: {
-        fr: 'Les films d une meme franchise ne sont plus des doublons: ce sont des timelines independantes avec leurs propres boss.',
-        en: 'Films from the same franchise are no longer duplicates: they are independent timelines with their own bosses.'
+        fr: 'Les films d une meme franchise forment des timelines independantes, chacune avec son noyau et son boss.',
+        en: 'Films from the same franchise form independent timelines, each with its own core and boss.'
       }
     },
     {
@@ -737,67 +737,67 @@ export default function HubScreen({
   const UNIVERSE_MODIFIERS = {
     Alien: { id: 'acid_blood', name: { fr: 'Sang acide', en: 'Acid Blood' }, desc: { fr: 'Les ennemis laissent des residus acides: recompenses +20%, boss plus agressif.', en: 'Enemies leave acidic residue: rewards +20%, boss more aggressive.' }, bossHp: 1.08, reward: 1.2, color: '#8adbe6' },
     Aliens: { id: 'sentry_corridor', name: { fr: 'Couloir sentinelle', en: 'Sentry Corridor' }, desc: { fr: 'La ruche attaque en vagues: Fragments +22%, ennemis plus rapides.', en: 'The hive attacks in waves: Shards +22%, enemies faster.' }, enemySpd: 1.1, reward: 1.22, color: '#78e3e6' },
-    Prometheus: { id: 'black_pathogen', name: { fr: 'Pathogene noir', en: 'Black Pathogen' }, desc: { fr: 'Le pathogene instabilise les deux camps: boss +12% PV, loot +25%.', en: 'The pathogen destabilizes both sides: boss +12% HP, loot +25%.' }, bossHp: 1.12, reward: 1.25, color: '#78dcd7' },
+    Prometheus: { id: 'black_pathogen', name: { fr: 'Pathogene noir', en: 'Black Pathogen' }, desc: { fr: 'Le pathogene instabilise les deux camps: boss +12% PV, cache +25%.', en: 'The pathogen destabilizes both sides: boss +12% HP, cache +25%.' }, bossHp: 1.12, reward: 1.25, color: '#78dcd7' },
     Predator: { id: 'honor_hunt', name: { fr: 'Chasse honorable', en: 'Honor Hunt' }, desc: { fr: 'Le duel Yautja valorise les victoires propres: Jetons possibles sur stage pair.', en: 'The Yautja duel values clean victories: possible Tokens on even stages.' }, reward: 1.16, color: '#9bff62' },
     Prey: { id: 'mud_camouflage', name: { fr: 'Camouflage de boue', en: 'Mud Camouflage' }, desc: { fr: 'Les embuscades protegent l escouade: defense +10%, recompense +10%.', en: 'Ambushes protect the squad: defense +10%, reward +10%.' }, heroDef: 1.1, reward: 1.1, color: '#e6af53' },
-    'Joker New 52': { id: 'joker_toxin', name: { fr: 'Toxine Joker', en: 'Joker Toxin' }, desc: { fr: 'La panique augmente les degats ennemis et la rarete du loot.', en: 'Panic raises enemy damage and loot rarity.' }, enemyAtk: 1.14, reward: 1.24, color: '#4cdc5e' },
+    'Joker New 52': { id: 'joker_toxin', name: { fr: 'Toxine Joker', en: 'Joker Toxin' }, desc: { fr: 'La panique augmente les degats ennemis et la signature de cache.', en: 'Panic raises enemy damage and cache signature.' }, enemyAtk: 1.14, reward: 1.24, color: '#4cdc5e' },
     'The Batman Who Laughs': { id: 'dark_metal', name: { fr: 'Metal noir', en: 'Dark Metal' }, desc: { fr: 'Le Multivers Noir durcit le boss: PV +18%, cache +30%.', en: 'The Dark Multiverse hardens the boss: HP +18%, cache +30%.' }, bossHp: 1.18, reward: 1.3, color: '#d62121' },
     Discworld: { id: 'octarine_leak', name: { fr: 'Fuite octarine', en: 'Octarine Leak' }, desc: { fr: 'La magie absurde plie les regles: Fragments +18%, defense +5%.', en: 'Absurd magic bends rules: Shards +18%, defense +5%.' }, heroDef: 1.05, reward: 1.18, color: '#e7d476' },
     Kaamelott: { id: 'table_dispute', name: { fr: 'Conseil dispute', en: 'Council Dispute' }, desc: { fr: 'Les ordres contradictoires ralentissent le rythme mais augmentent l or.', en: 'Contradictory orders slow the rhythm but increase Gold.' }, reward: 1.17, color: '#d6b465' },
-    'Dungeon Meshi': { id: 'monster_cuisine', name: { fr: 'Cuisine de monstre', en: 'Monster Cuisine' }, desc: { fr: 'Chaque combat nourrit l escouade: defense +8%, loot +12%.', en: 'Every fight feeds the squad: defense +8%, loot +12%.' }, heroDef: 1.08, reward: 1.12, color: '#e2c36a' },
+    'Dungeon Meshi': { id: 'monster_cuisine', name: { fr: 'Cuisine de monstre', en: 'Monster Cuisine' }, desc: { fr: 'Chaque combat nourrit l escouade: defense +8%, cache +12%.', en: 'Every fight feeds the squad: defense +8%, cache +12%.' }, heroDef: 1.08, reward: 1.12, color: '#e2c36a' },
     Noob: { id: 'bugged_respawn', name: { fr: 'Respawn bugge', en: 'Bugged Respawn' }, desc: { fr: 'Le code d Olydri deraille: recompenses +20%, ennemis plus rapides.', en: 'Olydri code glitches: rewards +20%, enemies faster.' }, enemySpd: 1.08, reward: 1.2, color: '#6ad5ff' },
     Rammstein: { id: 'feuerzone', name: { fr: 'Feuerzone', en: 'Feuerzone' }, desc: { fr: 'La scene industrielle brule fort: attaque ennemie +10%, Jetons plus rentables.', en: 'The industrial stage burns hard: enemy attack +10%, richer Tokens.' }, enemyAtk: 1.1, reward: 1.2, color: '#ff692d' },
     'System of a Down': { id: 'tempo_break', name: { fr: 'Cassure tempo', en: 'Tempo Break' }, desc: { fr: 'Les ruptures rythmiques accelerent le combat: vitesse ennemie +12%, Fragments +20%.', en: 'Rhythm breaks accelerate combat: enemy speed +12%, Shards +20%.' }, enemySpd: 1.12, reward: 1.2, color: '#f1c40f' },
-    'Rob Zombie': { id: 'grindhouse_cut', name: { fr: 'Montage grindhouse', en: 'Grindhouse Cut' }, desc: { fr: 'Les plans horrifiques amplifient le chaos: loot +22%.', en: 'Horror cuts amplify chaos: loot +22%.' }, reward: 1.22, color: '#ffa943' },
+    'Rob Zombie': { id: 'grindhouse_cut', name: { fr: 'Montage grindhouse', en: 'Grindhouse Cut' }, desc: { fr: 'Les plans horrifiques amplifient le chaos: cache +22%.', en: 'Horror cuts amplify chaos: cache +22%.' }, reward: 1.22, color: '#ffa943' },
     'Daft Punk': { id: 'alive_sync', name: { fr: 'Synchronisation Alive', en: 'Alive Sync' }, desc: { fr: 'La grille lumineuse cadence l equipe: defense +6%, vitesse ennemie +6%, recompense +18%.', en: 'The light grid paces the squad: defense +6%, enemy speed +6%, reward +18%.' }, heroDef: 1.06, enemySpd: 1.06, reward: 1.18, color: '#ffc740' },
     'Oliver Tree': { id: 'viral_stunt', name: { fr: 'Cascade virale', en: 'Viral Stunt' }, desc: { fr: 'La faille devient imprevisible: recompense +15%.', en: 'The breach becomes unpredictable: reward +15%.' }, reward: 1.15, color: '#ff6f3c' },
-    'Hazbin Hotel': { id: 'redemption_song', name: { fr: 'Refrain redemption', en: 'Redemption Refrain' }, desc: { fr: 'Le cabaret infernal renforce les controles: defense +8%, loot +15%.', en: 'The infernal cabaret reinforces control: defense +8%, loot +15%.' }, heroDef: 1.08, reward: 1.15, color: '#ffd35c' },
-    'Alien 3': { id: 'penal_hive', name: { fr: 'Ruche penitentiaire', en: 'Penal Hive' }, desc: { fr: 'Le couloir ferme durcit chaque rencontre: boss +14% PV, loot +20%.', en: 'The sealed corridor hardens every fight: boss +14% HP, loot +20%.' }, bossHp: 1.14, reward: 1.2, color: '#b66a3c' },
-    'Alien Resurrection': { id: 'clone_lab', name: { fr: 'Laboratoire clone', en: 'Clone Lab' }, desc: { fr: 'Les specimens hybrides accelerent les vagues: vitesse ennemie +9%, loot +22%.', en: 'Hybrid specimens accelerate waves: enemy speed +9%, loot +22%.' }, enemySpd: 1.09, reward: 1.22, color: '#7bd9c6' },
+    'Hazbin Hotel': { id: 'redemption_song', name: { fr: 'Refrain redemption', en: 'Redemption Refrain' }, desc: { fr: 'Le cabaret infernal renforce les controles: defense +8%, cache +15%.', en: 'The infernal cabaret reinforces control: defense +8%, cache +15%.' }, heroDef: 1.08, reward: 1.15, color: '#ffd35c' },
+    'Alien 3': { id: 'penal_hive', name: { fr: 'Ruche penitentiaire', en: 'Penal Hive' }, desc: { fr: 'Le couloir ferme durcit chaque rencontre: boss +14% PV, cache +20%.', en: 'The sealed corridor hardens every fight: boss +14% HP, cache +20%.' }, bossHp: 1.14, reward: 1.2, color: '#b66a3c' },
+    'Alien Resurrection': { id: 'clone_lab', name: { fr: 'Laboratoire clone', en: 'Clone Lab' }, desc: { fr: 'Les specimens hybrides accelerent les vagues: vitesse ennemie +9%, cache +22%.', en: 'Hybrid specimens accelerate waves: enemy speed +9%, cache +22%.' }, enemySpd: 1.09, reward: 1.22, color: '#7bd9c6' },
     'Alien: Covenant': { id: 'covenant_spores', name: { fr: 'Spores Covenant', en: 'Covenant Spores' }, desc: { fr: 'Les spores contaminent la zone: attaque ennemie +10%, cache +24%.', en: 'Spores contaminate the zone: enemy attack +10%, cache +24%.' }, enemyAtk: 1.1, reward: 1.24, color: '#c7d79a' },
-    'Alien: Romulus': { id: 'romulus_salvage', name: { fr: 'Sauvetage Romulus', en: 'Romulus Salvage' }, desc: { fr: 'La station abandonnee augmente les prises de risque: boss +10% PV, loot +26%.', en: 'The abandoned station raises risk: boss +10% HP, loot +26%.' }, bossHp: 1.1, reward: 1.26, color: '#7fd7ff' },
+    'Alien: Romulus': { id: 'romulus_salvage', name: { fr: 'Sauvetage Romulus', en: 'Romulus Salvage' }, desc: { fr: 'La station abandonnee augmente les prises de risque: boss +10% PV, cache +26%.', en: 'The abandoned station raises risk: boss +10% HP, cache +26%.' }, bossHp: 1.1, reward: 1.26, color: '#7fd7ff' },
     'Predator 2': { id: 'city_hunt', name: { fr: 'Chasse urbaine', en: 'City Hunt' }, desc: { fr: 'La jungle devient verticale: ennemis +8% vitesse, recompense +18%.', en: 'The jungle goes vertical: enemies +8% speed, reward +18%.' }, enemySpd: 1.08, reward: 1.18, color: '#f0a14a' },
-    Predators: { id: 'game_preserve', name: { fr: 'Reserve de chasse', en: 'Game Preserve' }, desc: { fr: 'Le terrain est choisi par les chasseurs: boss +15% PV, loot +25%.', en: 'The hunters choose the ground: boss +15% HP, loot +25%.' }, bossHp: 1.15, reward: 1.25, color: '#8fbf55' },
+    Predators: { id: 'game_preserve', name: { fr: 'Reserve de chasse', en: 'Game Preserve' }, desc: { fr: 'Le terrain est choisi par les chasseurs: boss +15% PV, cache +25%.', en: 'The hunters choose the ground: boss +15% HP, cache +25%.' }, bossHp: 1.15, reward: 1.25, color: '#8fbf55' },
     'The Predator': { id: 'upgrade_hunt', name: { fr: 'Chasseur upgrade', en: 'Upgrade Hunter' }, desc: { fr: 'L hybridation booste les menaces: attaque +12%, recompense +24%.', en: 'Hybridization boosts threats: attack +12%, reward +24%.' }, enemyAtk: 1.12, reward: 1.24, color: '#d36b44' },
-    'Predator: Killer of Killers': { id: 'legendary_trophies', name: { fr: 'Trophees legendaires', en: 'Legendary Trophies' }, desc: { fr: 'Chaque epoque apporte un champion: boss +16% PV, loot +28%.', en: 'Each era brings a champion: boss +16% HP, loot +28%.' }, bossHp: 1.16, reward: 1.28, color: '#e1c15b' },
-    'Predator: Badlands': { id: 'badlands_trial', name: { fr: 'Epreuve Badlands', en: 'Badlands Trial' }, desc: { fr: 'Les terres hostiles favorisent la survie: defense +9%, loot +16%.', en: 'Hostile lands favor survival: defense +9%, loot +16%.' }, heroDef: 1.09, reward: 1.16, color: '#d88a45' },
-    'Alien vs Predator': { id: 'temple_crossfire', name: { fr: 'Temple croise', en: 'Temple Crossfire' }, desc: { fr: 'Le temple oppose ruche et clan: boss +12% PV, attaque +8%, loot +30%.', en: 'The temple pits hive against clan: boss +12% HP, attack +8%, loot +30%.' }, bossHp: 1.12, enemyAtk: 1.08, reward: 1.3, color: '#92f56d' },
-    'Aliens vs Predator: Requiem': { id: 'requiem_outbreak', name: { fr: 'Epidemie Requiem', en: 'Requiem Outbreak' }, desc: { fr: 'La ville contaminee deborde: ennemis +10% vitesse, loot +27%.', en: 'The infected town overflows: enemies +10% speed, loot +27%.' }, enemySpd: 1.1, reward: 1.27, color: '#b6d86d' },
-    'Gears of War': { id: 'cover_grind', name: { fr: 'Ligne de couverture', en: 'Cover Line' }, desc: { fr: 'Les positions lourdes renforcent l escouade: defense +12%, loot +12%.', en: 'Heavy positions reinforce the squad: defense +12%, loot +12%.' }, heroDef: 1.12, reward: 1.12, color: '#c44f3f' },
-    Halo: { id: 'spartan_drop', name: { fr: 'Drop Spartan', en: 'Spartan Drop' }, desc: { fr: 'Le deploiement orbital booste l assaut: attaque heros +8%, loot +15%.', en: 'Orbital deployment boosts assault: hero attack +8%, loot +15%.' }, heroAtk: 1.08, reward: 1.15, color: '#78c95b' },
+    'Predator: Killer of Killers': { id: 'legendary_trophies', name: { fr: 'Trophees legendaires', en: 'Legendary Trophies' }, desc: { fr: 'Chaque epoque apporte un champion: boss +16% PV, cache +28%.', en: 'Each era brings a champion: boss +16% HP, cache +28%.' }, bossHp: 1.16, reward: 1.28, color: '#e1c15b' },
+    'Predator: Badlands': { id: 'badlands_trial', name: { fr: 'Epreuve Badlands', en: 'Badlands Trial' }, desc: { fr: 'Les terres hostiles favorisent la survie: defense +9%, cache +16%.', en: 'Hostile lands favor survival: defense +9%, cache +16%.' }, heroDef: 1.09, reward: 1.16, color: '#d88a45' },
+    'Alien vs Predator': { id: 'temple_crossfire', name: { fr: 'Temple croise', en: 'Temple Crossfire' }, desc: { fr: 'Le temple oppose ruche et clan: boss +12% PV, attaque +8%, cache +30%.', en: 'The temple pits hive against clan: boss +12% HP, attack +8%, cache +30%.' }, bossHp: 1.12, enemyAtk: 1.08, reward: 1.3, color: '#92f56d' },
+    'Aliens vs Predator: Requiem': { id: 'requiem_outbreak', name: { fr: 'Epidemie Requiem', en: 'Requiem Outbreak' }, desc: { fr: 'La ville contaminee deborde: ennemis +10% vitesse, cache +27%.', en: 'The infected town overflows: enemies +10% speed, cache +27%.' }, enemySpd: 1.1, reward: 1.27, color: '#b6d86d' },
+    'Gears of War': { id: 'cover_grind', name: { fr: 'Ligne de couverture', en: 'Cover Line' }, desc: { fr: 'Les positions lourdes renforcent l escouade: defense +12%, cache +12%.', en: 'Heavy positions reinforce the squad: defense +12%, cache +12%.' }, heroDef: 1.12, reward: 1.12, color: '#c44f3f' },
+    Halo: { id: 'spartan_drop', name: { fr: 'Drop Spartan', en: 'Spartan Drop' }, desc: { fr: 'Le deploiement orbital booste l assaut: attaque heros +8%, cache +15%.', en: 'Orbital deployment boosts assault: hero attack +8%, cache +15%.' }, heroAtk: 1.08, reward: 1.15, color: '#78c95b' },
     'Resident Evil': { id: 'biohazard_lockdown', name: { fr: 'Confinement biohazard', en: 'Biohazard Lockdown' }, desc: { fr: 'Les infectes frappent plus fort: attaque +9%, cache +18%.', en: 'The infected hit harder: attack +9%, cache +18%.' }, enemyAtk: 1.09, reward: 1.18, color: '#65c76b' },
-    'Silent Hill': { id: 'fog_shift', name: { fr: 'Brouillard changeant', en: 'Shifting Fog' }, desc: { fr: 'Le brouillard ralentit la lecture du terrain: boss +10% PV, loot +19%.', en: 'The fog obscures the field: boss +10% HP, loot +19%.' }, bossHp: 1.1, reward: 1.19, color: '#c4c0ad' },
-    'Dino Crisis': { id: 'raptor_alarm', name: { fr: 'Alerte raptor', en: 'Raptor Alarm' }, desc: { fr: 'Les predateurs foncent sur les failles: vitesse +11%, loot +18%.', en: 'Predators rush breaches: speed +11%, loot +18%.' }, enemySpd: 1.11, reward: 1.18, color: '#7bc96f' },
-    'The Matrix': { id: 'bullet_time', name: { fr: 'Bullet time', en: 'Bullet Time' }, desc: { fr: 'Le code ralentit la menace: defense +10%, loot +14%.', en: 'Code slows the threat: defense +10%, loot +14%.' }, heroDef: 1.1, reward: 1.14, color: '#39ff8a' },
+    'Silent Hill': { id: 'fog_shift', name: { fr: 'Brouillard changeant', en: 'Shifting Fog' }, desc: { fr: 'Le brouillard ralentit la lecture du terrain: boss +10% PV, cache +19%.', en: 'The fog obscures the field: boss +10% HP, cache +19%.' }, bossHp: 1.1, reward: 1.19, color: '#c4c0ad' },
+    'Dino Crisis': { id: 'raptor_alarm', name: { fr: 'Alerte raptor', en: 'Raptor Alarm' }, desc: { fr: 'Les predateurs foncent sur les failles: vitesse +11%, cache +18%.', en: 'Predators rush breaches: speed +11%, cache +18%.' }, enemySpd: 1.11, reward: 1.18, color: '#7bc96f' },
+    'The Matrix': { id: 'bullet_time', name: { fr: 'Bullet time', en: 'Bullet Time' }, desc: { fr: 'Le code ralentit la menace: defense +10%, cache +14%.', en: 'Code slows the threat: defense +10%, cache +14%.' }, heroDef: 1.1, reward: 1.14, color: '#39ff8a' },
     Stargate: { id: 'iris_protocol', name: { fr: 'Protocole iris', en: 'Iris Protocol' }, desc: { fr: 'Les equipes SG verrouillent la breche: defense +12%, recompense +15%.', en: 'SG teams lock the breach: defense +12%, reward +15%.' }, heroDef: 1.12, reward: 1.15, color: '#6ed0ff' },
-    'Half-Life': { id: 'resonance_cascade', name: { fr: 'Cascade de resonance', en: 'Resonance Cascade' }, desc: { fr: 'Les portails Xen destabilisent le combat: boss +12% PV, loot +22%.', en: 'Xen portals destabilize combat: boss +12% HP, loot +22%.' }, bossHp: 1.12, reward: 1.22, color: '#f58d38' },
-    Portal: { id: 'test_chamber', name: { fr: 'Salle de test', en: 'Test Chamber' }, desc: { fr: 'La logique Aperture optimise les routes: defense +6%, loot +16%.', en: 'Aperture logic optimizes routes: defense +6%, loot +16%.' }, heroDef: 1.06, reward: 1.16, color: '#5cc7ff' },
-    'Metal Gear': { id: 'stealth_ops', name: { fr: 'Operation furtive', en: 'Stealth Ops' }, desc: { fr: 'L infiltration reduit les pertes: defense +9%, loot +15%.', en: 'Infiltration reduces losses: defense +9%, loot +15%.' }, heroDef: 1.09, reward: 1.15, color: '#8aa178' },
-    Payday: { id: 'heist_timer', name: { fr: 'Chrono braquage', en: 'Heist Timer' }, desc: { fr: 'Plus le risque monte, plus le butin suit: attaque ennemie +8%, loot +21%.', en: 'The higher the risk, the richer the take: enemy attack +8%, loot +21%.' }, enemyAtk: 1.08, reward: 1.21, color: '#3f8fd2' },
-    Vocaloid: { id: 'synth_chorus', name: { fr: 'Choeur synthetique', en: 'Synthetic Chorus' }, desc: { fr: 'Le tempo numerique stabilise l equipe: defense +6%, loot +14%.', en: 'Digital tempo stabilizes the team: defense +6%, loot +14%.' }, heroDef: 1.06, reward: 1.14, color: '#43d6df' },
-    'Yu-Gi-Oh': { id: 'duel_phase', name: { fr: 'Phase de duel', en: 'Duel Phase' }, desc: { fr: 'Chaque victoire charge le deck: attaque heros +9%, loot +16%.', en: 'Each win charges the deck: hero attack +9%, loot +16%.' }, heroAtk: 1.09, reward: 1.16, color: '#f1c24d' },
-    'Guilty Gear': { id: 'tension_meter', name: { fr: 'Jauge tension', en: 'Tension Meter' }, desc: { fr: 'Les duels explosent en puissance: attaque +10%, loot +17%.', en: 'Duels explode in power: attack +10%, loot +17%.' }, heroAtk: 1.1, reward: 1.17, color: '#ef5646' },
-    BlazBlue: { id: 'azure_drive', name: { fr: 'Drive azur', en: 'Azure Drive' }, desc: { fr: 'L anomalie azur durcit le boss: PV +11%, loot +20%.', en: 'The azure anomaly hardens the boss: HP +11%, loot +20%.' }, bossHp: 1.11, reward: 1.2, color: '#4da6ff' },
-    'Slender Man': { id: 'page_hunt', name: { fr: 'Chasse aux pages', en: 'Page Hunt' }, desc: { fr: 'La peur brouille les reperes: ennemis +8% vitesse, loot +18%.', en: 'Fear scrambles bearings: enemies +8% speed, loot +18%.' }, enemySpd: 1.08, reward: 1.18, color: '#d9d9d9' },
-    Chucky: { id: 'killer_doll', name: { fr: 'Poupee tueuse', en: 'Killer Doll' }, desc: { fr: 'Les attaques surprises augmentent la pression: attaque +10%, loot +18%.', en: 'Surprise attacks raise pressure: attack +10%, loot +18%.' }, enemyAtk: 1.1, reward: 1.18, color: '#e65b42' },
-    Hellraiser: { id: 'lament_config', name: { fr: 'Configuration du Lament', en: 'Lament Configuration' }, desc: { fr: 'La douleur devient ressource: boss +15% PV, loot +25%.', en: 'Pain becomes resource: boss +15% HP, loot +25%.' }, bossHp: 1.15, reward: 1.25, color: '#d6b36a' },
-    'Mass Effect': { id: 'spectre_authority', name: { fr: 'Autorite Spectre', en: 'Spectre Authority' }, desc: { fr: 'Le commandement galactique coordonne mieux l equipe: defense +8%, loot +17%.', en: 'Galactic command coordinates the team better: defense +8%, loot +17%.' }, heroDef: 1.08, reward: 1.17, color: '#4cb4ff' },
-    Fallout: { id: 'wasteland_scavenge', name: { fr: 'Recup wasteland', en: 'Wasteland Scavenge' }, desc: { fr: 'Chaque ruine cache des ressources: loot +20%, ennemis +6% attaque.', en: 'Every ruin hides resources: loot +20%, enemies +6% attack.' }, enemyAtk: 1.06, reward: 1.2, color: '#d7c15a' },
+    'Half-Life': { id: 'resonance_cascade', name: { fr: 'Cascade de resonance', en: 'Resonance Cascade' }, desc: { fr: 'Les portails Xen destabilisent le combat: boss +12% PV, cache +22%.', en: 'Xen portals destabilize combat: boss +12% HP, cache +22%.' }, bossHp: 1.12, reward: 1.22, color: '#f58d38' },
+    Portal: { id: 'test_chamber', name: { fr: 'Salle de test', en: 'Test Chamber' }, desc: { fr: 'La logique Aperture optimise les routes: defense +6%, cache +16%.', en: 'Aperture logic optimizes routes: defense +6%, cache +16%.' }, heroDef: 1.06, reward: 1.16, color: '#5cc7ff' },
+    'Metal Gear': { id: 'stealth_ops', name: { fr: 'Operation furtive', en: 'Stealth Ops' }, desc: { fr: 'L infiltration reduit les pertes: defense +9%, cache +15%.', en: 'Infiltration reduces losses: defense +9%, cache +15%.' }, heroDef: 1.09, reward: 1.15, color: '#8aa178' },
+    Payday: { id: 'heist_timer', name: { fr: 'Chrono braquage', en: 'Heist Timer' }, desc: { fr: 'Plus le risque monte, plus le butin suit: attaque ennemie +8%, cache +21%.', en: 'The higher the risk, the richer the take: enemy attack +8%, cache +21%.' }, enemyAtk: 1.08, reward: 1.21, color: '#3f8fd2' },
+    Vocaloid: { id: 'synth_chorus', name: { fr: 'Choeur synthetique', en: 'Synthetic Chorus' }, desc: { fr: 'Le tempo numerique stabilise l equipe: defense +6%, cache +14%.', en: 'Digital tempo stabilizes the team: defense +6%, cache +14%.' }, heroDef: 1.06, reward: 1.14, color: '#43d6df' },
+    'Yu-Gi-Oh': { id: 'duel_phase', name: { fr: 'Phase de duel', en: 'Duel Phase' }, desc: { fr: 'Chaque victoire charge le deck: attaque heros +9%, cache +16%.', en: 'Each win charges the deck: hero attack +9%, cache +16%.' }, heroAtk: 1.09, reward: 1.16, color: '#f1c24d' },
+    'Guilty Gear': { id: 'tension_meter', name: { fr: 'Jauge tension', en: 'Tension Meter' }, desc: { fr: 'Les duels explosent en puissance: attaque +10%, cache +17%.', en: 'Duels explode in power: attack +10%, cache +17%.' }, heroAtk: 1.1, reward: 1.17, color: '#ef5646' },
+    BlazBlue: { id: 'azure_drive', name: { fr: 'Drive azur', en: 'Azure Drive' }, desc: { fr: 'L anomalie azur durcit le boss: PV +11%, cache +20%.', en: 'The azure anomaly hardens the boss: HP +11%, cache +20%.' }, bossHp: 1.11, reward: 1.2, color: '#4da6ff' },
+    'Slender Man': { id: 'page_hunt', name: { fr: 'Chasse aux pages', en: 'Page Hunt' }, desc: { fr: 'La peur brouille les reperes: ennemis +8% vitesse, cache +18%.', en: 'Fear scrambles bearings: enemies +8% speed, cache +18%.' }, enemySpd: 1.08, reward: 1.18, color: '#d9d9d9' },
+    Chucky: { id: 'killer_doll', name: { fr: 'Poupee tueuse', en: 'Killer Doll' }, desc: { fr: 'Les attaques surprises augmentent la pression: attaque +10%, cache +18%.', en: 'Surprise attacks raise pressure: attack +10%, cache +18%.' }, enemyAtk: 1.1, reward: 1.18, color: '#e65b42' },
+    Hellraiser: { id: 'lament_config', name: { fr: 'Configuration du Lament', en: 'Lament Configuration' }, desc: { fr: 'La douleur devient ressource: boss +15% PV, cache +25%.', en: 'Pain becomes resource: boss +15% HP, cache +25%.' }, bossHp: 1.15, reward: 1.25, color: '#d6b36a' },
+    'Mass Effect': { id: 'spectre_authority', name: { fr: 'Autorite Spectre', en: 'Spectre Authority' }, desc: { fr: 'Le commandement galactique coordonne mieux l equipe: defense +8%, cache +17%.', en: 'Galactic command coordinates the team better: defense +8%, cache +17%.' }, heroDef: 1.08, reward: 1.17, color: '#4cb4ff' },
+    Fallout: { id: 'wasteland_scavenge', name: { fr: 'Recup wasteland', en: 'Wasteland Scavenge' }, desc: { fr: 'Chaque ruine cache des ressources: cache +20%, ennemis +6% attaque.', en: 'Every ruin hides resources: cache +20%, enemies +6% attack.' }, enemyAtk: 1.06, reward: 1.2, color: '#d7c15a' },
     Doom: { id: 'rip_and_tear', name: { fr: 'Rip and tear', en: 'Rip and Tear' }, desc: { fr: 'L enfer recompense l agression: attaque heros +12%, boss +10% PV.', en: 'Hell rewards aggression: hero attack +12%, boss +10% HP.' }, heroAtk: 1.12, bossHp: 1.1, reward: 1.18, color: '#ff4c32' },
-    Unreal: { id: 'u_damage', name: { fr: 'U-Damage', en: 'U-Damage' }, desc: { fr: 'Les arenes amplifient les pics de degats: attaque +11%, loot +15%.', en: 'Arenas amplify damage spikes: attack +11%, loot +15%.' }, heroAtk: 1.11, reward: 1.15, color: '#ff8b32' },
-    'Harry Potter': { id: 'protective_charm', name: { fr: 'Charme protecteur', en: 'Protective Charm' }, desc: { fr: 'La magie defensive stabilise la breche: defense +11%, loot +14%.', en: 'Defensive magic stabilizes the breach: defense +11%, loot +14%.' }, heroDef: 1.11, reward: 1.14, color: '#b68cff' },
-    'Star Wars': { id: 'force_balance', name: { fr: 'Equilibre de la Force', en: 'Force Balance' }, desc: { fr: 'La Force renforce les actions decisives: attaque +8%, defense +6%, loot +15%.', en: 'The Force reinforces decisive actions: attack +8%, defense +6%, loot +15%.' }, heroAtk: 1.08, heroDef: 1.06, reward: 1.15, color: '#ffe066' },
-    'Le Cinquième Element': { id: 'divine_language', name: { fr: 'Langage divin', en: 'Divine Language' }, desc: { fr: 'Les quatre elements alignent l escouade: defense +8%, loot +16%.', en: 'The four elements align the squad: defense +8%, loot +16%.' }, heroDef: 1.08, reward: 1.16, color: '#ffb563' },
-    'Scary Movie': { id: 'parody_logic', name: { fr: 'Logique parodique', en: 'Parody Logic' }, desc: { fr: 'L absurde casse la menace: defense +7%, loot +15%.', en: 'Absurdity breaks the threat: defense +7%, loot +15%.' }, heroDef: 1.07, reward: 1.15, color: '#f2f2a0' },
-    'Dead Space': { id: 'necromorph_pressure', name: { fr: 'Pression necromorphe', en: 'Necromorph Pressure' }, desc: { fr: 'La station isolee augmente la violence: attaque +12%, loot +24%.', en: 'The isolated station increases violence: attack +12%, loot +24%.' }, enemyAtk: 1.12, reward: 1.24, color: '#d17a42' },
-    'Rick & Morty': { id: 'portal_gun', name: { fr: 'Pistolet portail', en: 'Portal Gun' }, desc: { fr: 'Les detours dimensionnels boostent le rendement: loot +19%, boss +7% PV.', en: 'Dimensional detours boost yield: loot +19%, boss +7% HP.' }, bossHp: 1.07, reward: 1.19, color: '#67e86b' },
-    'Digital Circus': { id: 'abstract_glitch', name: { fr: 'Glitch abstrait', en: 'Abstract Glitch' }, desc: { fr: 'La scene digitale instabilise les ennemis: vitesse +7%, loot +17%.', en: 'The digital stage destabilizes enemies: speed +7%, loot +17%.' }, enemySpd: 1.07, reward: 1.17, color: '#ff6edb' },
-    Digimon: { id: 'digivolution_chain', name: { fr: 'Chaine digivolution', en: 'Digivolution Chain' }, desc: { fr: 'Chaque combat charge la forme suivante: attaque +9%, loot +16%.', en: 'Each fight charges the next form: attack +9%, loot +16%.' }, heroAtk: 1.09, reward: 1.16, color: '#ffb43d' },
-    Saw: { id: 'trap_room', name: { fr: 'Salle de piege', en: 'Trap Room' }, desc: { fr: 'Les choix difficiles augmentent les gains: boss +9% PV, loot +22%.', en: 'Hard choices increase gains: boss +9% HP, loot +22%.' }, bossHp: 1.09, reward: 1.22, color: '#b54335' },
-    'Rosario + Vampire': { id: 'monster_class', name: { fr: 'Classe monstre', en: 'Monster Class' }, desc: { fr: 'Les clans surnaturels protegent l equipe: defense +9%, loot +15%.', en: 'Supernatural clans protect the team: defense +9%, loot +15%.' }, heroDef: 1.09, reward: 1.15, color: '#f07ab7' },
-    Negima: { id: 'magister_pactio', name: { fr: 'Pactio Magister', en: 'Magister Pactio' }, desc: { fr: 'Les pactes magiques renforcent les combos: attaque +8%, loot +15%.', en: 'Magic pacts strengthen combos: attack +8%, loot +15%.' }, heroAtk: 1.08, reward: 1.15, color: '#b59cff' },
-    'Ghost in the Shell': { id: 'cyberbrain_sync', name: { fr: 'Synchro cybercerveau', en: 'Cyberbrain Sync' }, desc: { fr: 'La coordination cybernetique anticipe les vagues: defense +8%, loot +18%.', en: 'Cybernetic coordination anticipates waves: defense +8%, loot +18%.' }, heroDef: 1.08, reward: 1.18, color: '#7fe7d7' },
-    'Mad Max': { id: 'war_rig_run', name: { fr: 'Convoi War Rig', en: 'War Rig Run' }, desc: { fr: 'La route impose la vitesse et la survie: ennemis +8% vitesse, loot +19%.', en: 'The road demands speed and survival: enemies +8% speed, loot +19%.' }, enemySpd: 1.08, reward: 1.19, color: '#d98a3d' }
+    Unreal: { id: 'u_damage', name: { fr: 'U-Damage', en: 'U-Damage' }, desc: { fr: 'Les arenes amplifient les pics de degats: attaque +11%, cache +15%.', en: 'Arenas amplify damage spikes: attack +11%, cache +15%.' }, heroAtk: 1.11, reward: 1.15, color: '#ff8b32' },
+    'Harry Potter': { id: 'protective_charm', name: { fr: 'Charme protecteur', en: 'Protective Charm' }, desc: { fr: 'La magie defensive stabilise la breche: defense +11%, cache +14%.', en: 'Defensive magic stabilizes the breach: defense +11%, cache +14%.' }, heroDef: 1.11, reward: 1.14, color: '#b68cff' },
+    'Star Wars': { id: 'force_balance', name: { fr: 'Equilibre de la Force', en: 'Force Balance' }, desc: { fr: 'La Force renforce les actions decisives: attaque +8%, defense +6%, cache +15%.', en: 'The Force reinforces decisive actions: attack +8%, defense +6%, cache +15%.' }, heroAtk: 1.08, heroDef: 1.06, reward: 1.15, color: '#ffe066' },
+    'Le Cinquième Element': { id: 'divine_language', name: { fr: 'Langage divin', en: 'Divine Language' }, desc: { fr: 'Les quatre elements alignent l escouade: defense +8%, cache +16%.', en: 'The four elements align the squad: defense +8%, cache +16%.' }, heroDef: 1.08, reward: 1.16, color: '#ffb563' },
+    'Scary Movie': { id: 'parody_logic', name: { fr: 'Logique parodique', en: 'Parody Logic' }, desc: { fr: 'L absurde casse la menace: defense +7%, cache +15%.', en: 'Absurdity breaks the threat: defense +7%, cache +15%.' }, heroDef: 1.07, reward: 1.15, color: '#f2f2a0' },
+    'Dead Space': { id: 'necromorph_pressure', name: { fr: 'Pression necromorphe', en: 'Necromorph Pressure' }, desc: { fr: 'La station isolee augmente la violence: attaque +12%, cache +24%.', en: 'The isolated station increases violence: attack +12%, cache +24%.' }, enemyAtk: 1.12, reward: 1.24, color: '#d17a42' },
+    'Rick & Morty': { id: 'portal_gun', name: { fr: 'Pistolet portail', en: 'Portal Gun' }, desc: { fr: 'Les detours dimensionnels boostent le rendement: cache +19%, boss +7% PV.', en: 'Dimensional detours boost yield: cache +19%, boss +7% HP.' }, bossHp: 1.07, reward: 1.19, color: '#67e86b' },
+    'Digital Circus': { id: 'abstract_glitch', name: { fr: 'Glitch abstrait', en: 'Abstract Glitch' }, desc: { fr: 'La scene digitale instabilise les ennemis: vitesse +7%, cache +17%.', en: 'The digital stage destabilizes enemies: speed +7%, cache +17%.' }, enemySpd: 1.07, reward: 1.17, color: '#ff6edb' },
+    Digimon: { id: 'digivolution_chain', name: { fr: 'Chaine digivolution', en: 'Digivolution Chain' }, desc: { fr: 'Chaque combat charge la forme suivante: attaque +9%, cache +16%.', en: 'Each fight charges the next form: attack +9%, cache +16%.' }, heroAtk: 1.09, reward: 1.16, color: '#ffb43d' },
+    Saw: { id: 'trap_room', name: { fr: 'Salle de piege', en: 'Trap Room' }, desc: { fr: 'Les choix difficiles augmentent les gains: boss +9% PV, cache +22%.', en: 'Hard choices increase gains: boss +9% HP, cache +22%.' }, bossHp: 1.09, reward: 1.22, color: '#b54335' },
+    'Rosario + Vampire': { id: 'monster_class', name: { fr: 'Classe monstre', en: 'Monster Class' }, desc: { fr: 'Les clans surnaturels protegent l equipe: defense +9%, cache +15%.', en: 'Supernatural clans protect the team: defense +9%, cache +15%.' }, heroDef: 1.09, reward: 1.15, color: '#f07ab7' },
+    Negima: { id: 'magister_pactio', name: { fr: 'Pactio Magister', en: 'Magister Pactio' }, desc: { fr: 'Les pactes magiques renforcent les combos: attaque +8%, cache +15%.', en: 'Magic pacts strengthen combos: attack +8%, cache +15%.' }, heroAtk: 1.08, reward: 1.15, color: '#b59cff' },
+    'Ghost in the Shell': { id: 'cyberbrain_sync', name: { fr: 'Synchro cybercerveau', en: 'Cyberbrain Sync' }, desc: { fr: 'La coordination cybernetique anticipe les vagues: defense +8%, cache +18%.', en: 'Cybernetic coordination anticipates waves: defense +8%, cache +18%.' }, heroDef: 1.08, reward: 1.18, color: '#7fe7d7' },
+    'Mad Max': { id: 'war_rig_run', name: { fr: 'Convoi War Rig', en: 'War Rig Run' }, desc: { fr: 'La route impose la vitesse et la survie: ennemis +8% vitesse, cache +19%.', en: 'The road demands speed and survival: enemies +8% speed, cache +19%.' }, enemySpd: 1.08, reward: 1.19, color: '#d98a3d' }
   };
 
   // List of high-tier items in the Event Shop
@@ -1376,8 +1376,8 @@ export default function HubScreen({
         id: reward.id,
         name: reward.name,
         desc: {
-          fr: `${reward.name.fr} est une recompense de l arc ${arc.title?.fr || arcId}. Dans le meta-lore, ce n est pas un trophée neutre: c est un marqueur de faction qui prouve que l Ancre a stabilise une portion durable du conflit Nexus.`,
-          en: `${reward.name.en} is a reward from the ${arc.title?.en || arcId} arc. In meta-lore, it is not a neutral trophy: it is a faction marker proving the Anchor stabilized a lasting part of the Nexus conflict.`
+          fr: `${reward.name.fr} est une trace de l arc ${arc.title?.fr || arcId}. Ce n est pas un trophee neutre: c est un marqueur de faction qui prouve que l Ancre a stabilise une portion durable du conflit Nexus.`,
+          en: `${reward.name.en} is a trace from the ${arc.title?.en || arcId} arc. It is not a neutral trophy: it is a faction marker proving the Anchor stabilized a lasting part of the Nexus conflict.`
         }
       }
     ])),
@@ -1450,13 +1450,13 @@ export default function HubScreen({
   const getBreachBrief = (stage) => {
     if (stage.characterArc) {
       return lang === 'fr'
-        ? `${stage.displayName.fr}: ${stage.characterArc.intro.fr} Recompense personnelle: ${stage.rewardItemName.fr}.`
-        : `${stage.displayName.en}: ${stage.characterArc.intro.en} Personal reward: ${stage.rewardItemName.en}.`;
+        ? `${stage.displayName.fr}: ${stage.characterArc.intro.fr} Trace personnelle: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.characterArc.intro.en} Personal trace: ${stage.rewardItemName.en}.`;
     }
     if (stage.fusionMission) {
       return lang === 'fr'
-        ? `${stage.displayName.fr}: ${stage.fusionMission.decor.fr} Sources stabilisees ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Recompense speciale: ${stage.rewardItemName.fr}.`
-        : `${stage.displayName.en}: ${stage.fusionMission.decor.en} Stabilized sources ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Special reward: ${stage.rewardItemName.en}.`;
+        ? `${stage.displayName.fr}: ${stage.fusionMission.decor.fr} Sources stabilisees ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Trace speciale: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.fusionMission.decor.en} Stabilized sources ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Special trace: ${stage.rewardItemName.en}.`;
     }
     const modeText = stage.mode === 'RPG'
       ? (lang === 'fr' ? 'assaut en profondeur' : 'deep strike')
@@ -1723,7 +1723,7 @@ export default function HubScreen({
   const weeklyOperations = [
     {
       id: 'stabilize_5',
-      title: { fr: 'Operation hebdo: 5 breches', en: 'Weekly op: 5 breaches' },
+      title: { fr: 'Cycle hebdomadaire: 5 breches', en: 'Weekly cycle: 5 breaches' },
       done: weeklyWins >= 5,
       progress: weeklyWins,
       target: 5,
@@ -1731,7 +1731,7 @@ export default function HubScreen({
     },
     {
       id: 'collection_1',
-      title: { fr: 'Operation hebdo: cache de collection', en: 'Weekly op: collection cache' },
+      title: { fr: 'Cycle hebdomadaire: cache de collection', en: 'Weekly cycle: collection cache' },
       done: collectionProgress.some(collection => collection.claimed),
       progress: collectionProgress.filter(collection => collection.claimed).length,
       target: 1,
@@ -1739,7 +1739,7 @@ export default function HubScreen({
     },
     {
       id: 'squad_grade_a',
-      title: { fr: 'Operation hebdo: escouade rang A', en: 'Weekly op: A-rank squad' },
+      title: { fr: 'Cycle hebdomadaire: cellule rang A', en: 'Weekly cycle: A-rank cell' },
       done: squadReadiness >= 70,
       progress: squadReadiness,
       target: 70,
@@ -1747,7 +1747,7 @@ export default function HubScreen({
     },
     {
       id: 'artifact_mastery',
-      title: { fr: 'Operation hebdo: maitrise des artefacts', en: 'Weekly op: artifact mastery' },
+      title: { fr: 'Cycle hebdomadaire: maitrise des artefacts', en: 'Weekly cycle: artifact mastery' },
       done: weeklyItemActivations >= 12,
       progress: weeklyItemActivations,
       target: 12,
@@ -1764,7 +1764,7 @@ export default function HubScreen({
       weekKey: currentWeekKey,
       claimedWeekly: [...(prev.weekKey === currentWeekKey ? (prev.claimedWeekly || []) : []), operation.id]
     }));
-    notifyNexus(lang === 'fr' ? 'Operation hebdomadaire synchronisee.' : 'Weekly operation synchronized.', 'success');
+    notifyNexus(lang === 'fr' ? 'Cycle hebdomadaire synchronise dans les archives.' : 'Weekly cycle synchronized into the archives.', 'success');
     sound.playSfx('levelup');
   };
   const seasonXp = activityProgress.seasonXp || 0;
@@ -1822,7 +1822,7 @@ export default function HubScreen({
       ...prev,
       claimedMilestones: [...(prev.claimedMilestones || []), milestone.id]
     }));
-    notifyNexus(lang === 'fr' ? 'Jalon long terme archive: recompenses transferees.' : 'Long-term milestone archived: rewards transferred.', 'success');
+    notifyNexus(lang === 'fr' ? 'Jalon de Trame archive: caches transferees.' : 'Thread milestone archived: caches transferred.', 'success');
     sound.playSfx('levelup');
   };
 
@@ -2153,7 +2153,7 @@ export default function HubScreen({
         {activeTab === 'missions' && (
           <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
             <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#39c5bb' }}>
-              {lang === 'fr' ? 'SCAN DE BRECHES' : 'BREACH SCAN'}
+              {lang === 'fr' ? 'LECTURE DES FAILLES' : 'RIFT READING'}
             </h3>
             <div style={{
               marginBottom: '12px',
@@ -2166,8 +2166,8 @@ export default function HubScreen({
               borderRadius: '4px'
             }}>
               {lang === 'fr'
-                ? 'Liste courte et aleatoire: le hub propose 5 breches utiles seulement. Nouveau scan remanie les cibles; la carte et les archives gardent l acces complet.'
-                : 'Short randomized list: the hub proposes only 5 useful breaches. New Scan rerolls targets; the map and archive keep full access.'}
+                ? 'A.R.C.A. isole cinq failles exploitables pour eviter la surcharge de Trame. Une nouvelle lecture change les coordonnees proposees; la carte et les archives restent consultables.'
+                : 'A.R.C.A. isolates five usable rifts to avoid Thread overload. A new reading changes proposed coordinates; the map and archives remain available.'}
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px', color: '#aaa', fontSize: '12px' }}>
               <span>
@@ -2180,7 +2180,7 @@ export default function HubScreen({
                 className="btn-retro"
                 style={{ padding: '7px 12px', fontSize: '11px', borderColor: '#39c5bb' }}
               >
-                {lang === 'fr' ? '↻ NOUVEAU SCAN' : '↻ NEW SCAN'}
+                {lang === 'fr' ? '↻ RELIRE LES SIGNAUX' : '↻ REREAD SIGNALS'}
               </button>
             </div>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
@@ -2204,20 +2204,20 @@ export default function HubScreen({
             <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.4fr', gap: '12px', marginBottom: '14px' }}>
               <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '5px' }}>
                 <div style={{ fontSize: '11px', color: '#ffeb3b', marginBottom: '8px', fontWeight: 'bold' }}>
-                  {lang === 'fr' ? 'FOCUS JOURNALIER' : 'DAILY FOCUS'}
+                  {lang === 'fr' ? 'SIGNAL DU JOUR' : 'DAILY SIGNAL'}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   <div style={{ fontSize: '9px', color: '#8fa5aa', lineHeight: 1.35, marginBottom: '2px' }}>
                     {lang === 'fr'
-                      ? `Aujourd hui: ${activityProgress.dayKey === todayKey ? (activityProgress.dailyWins || 0) : 0} victoire(s), ${todayItemActivations} artefact(s).`
-                      : `Today: ${activityProgress.dayKey === todayKey ? (activityProgress.dailyWins || 0) : 0} win(s), ${todayItemActivations} artifact(s).`}
+                    ? `Aujourd hui: ${activityProgress.dayKey === todayKey ? (activityProgress.dailyWins || 0) : 0} stabilisation(s), ${todayItemActivations} artefact(s).`
+                      : `Today: ${activityProgress.dayKey === todayKey ? (activityProgress.dailyWins || 0) : 0} stabilization(s), ${todayItemActivations} artifact(s).`}
                   </div>
                   {dailyContracts.map(contract => {
                     const done = isDailyContractDone(contract);
                     const claimed = claimedDaily.includes(contract.id);
                     return (
                       <div key={contract.id} style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: '8px', fontSize: '10px', color: done ? '#2ecc71' : '#ccc' }}>
-                        <span>{claimed ? 'CLAIM' : done ? 'OK' : 'TODO'} - {contract.text[lang]} <strong style={{ color: '#ffeb3b' }}>{contract.focus}</strong></span>
+                        <span>{claimed ? (lang === 'fr' ? 'ARCHIVE' : 'ARCHIVED') : done ? (lang === 'fr' ? 'STABLE' : 'STABLE') : (lang === 'fr' ? 'SIGNAL' : 'SIGNAL')} - {contract.text[lang]} <strong style={{ color: '#ffeb3b' }}>{contract.focus}</strong></span>
                         <button
                           type="button"
                           onClick={() => claimDailyContract(contract)}
@@ -2225,7 +2225,7 @@ export default function HubScreen({
                           className="btn-retro"
                           style={{ fontSize: '8px', padding: '3px 6px', borderColor: claimed ? '#2ecc71' : done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : done ? '#ffeb3b' : '#555' }}
                         >
-                          {claimed ? (lang === 'fr' ? 'PRIS' : 'DONE') : (lang === 'fr' ? '+35/+12' : '+35/+12')}
+                          {claimed ? (lang === 'fr' ? 'SCELLE' : 'SEALED') : (lang === 'fr' ? '+CACHE' : '+CACHE')}
                         </button>
                       </div>
                     );
@@ -2279,27 +2279,27 @@ export default function HubScreen({
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
                 <div>
                   <div style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Campagne longue A.R.C.A.' : 'A.R.C.A. Long Campaign'}
+                    {lang === 'fr' ? 'Campagne de Trame A.R.C.A.' : 'A.R.C.A. Thread Campaign'}
                   </div>
                   <div style={{ fontSize: '10px', color: '#9fb6bb', marginTop: '3px' }}>
                     {lang === 'fr'
-                      ? 'Progression durable: presence, victoires, saison, artefacts et jalons permanents.'
-                      : 'Durable progression: presence, wins, season, artifacts, and permanent milestones.'}
+                      ? 'Memoire durable: presence, stabilisations, cycle actif, artefacts et jalons d Ancre.'
+                      : 'Durable memory: presence, stabilizations, active cycle, artifacts, and Anchor milestones.'}
                   </div>
                 </div>
                 <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
                   {lang === 'fr'
-                    ? `Bonus saison: +${seasonRewardBonus}% ressources`
-                    : `Season bonus: +${seasonRewardBonus}% resources`}
+                    ? `Prime de cycle: +${seasonRewardBonus}% ressources`
+                    : `Cycle prime: +${seasonRewardBonus}% resources`}
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '8px', marginBottom: '10px' }}>
                 {[
-                  { label: lang === 'fr' ? 'Niveau saison' : 'Season level', value: seasonLevel, color: '#ffeb3b', sub: `${seasonXpIntoLevel}/250 XP` },
+                  { label: lang === 'fr' ? 'Grade de cycle' : 'Cycle grade', value: seasonLevel, color: '#ffeb3b', sub: `${seasonXpIntoLevel}/250 resonance` },
                   { label: lang === 'fr' ? 'Signal continu' : 'Continuous signal', value: `${activityProgress.loginStreak || 0}j`, color: '#39c5bb', sub: activityProgress.lastSeenDay || todayKey },
-                  { label: lang === 'fr' ? 'Semaine active' : 'Active week', value: `${weeklyWins}/5`, color: '#2ecc71', sub: lang === 'fr' ? 'victoires hebdo' : 'weekly wins' },
+                  { label: lang === 'fr' ? 'Cycle actif' : 'Active cycle', value: `${weeklyWins}/5`, color: '#2ecc71', sub: lang === 'fr' ? 'stabilisations' : 'stabilizations' },
                   { label: lang === 'fr' ? 'Artefacts semaine' : 'Weekly artifacts', value: `${weeklyItemActivations}/12`, color: '#ff8c00', sub: lang === 'fr' ? 'economie terrain' : 'field economy' },
-                  { label: lang === 'fr' ? 'Victoires totales' : 'Lifetime wins', value: activityProgress.lifetimeWins || 0, color: '#d9b6ff', sub: `${activityProgress.lifetimeAttempts || 0} ${lang === 'fr' ? 'tentatives' : 'attempts'}` }
+                  { label: lang === 'fr' ? 'Trames stabilisees' : 'Threads stabilized', value: activityProgress.lifetimeWins || 0, color: '#d9b6ff', sub: `${activityProgress.lifetimeAttempts || 0} ${lang === 'fr' ? 'contacts' : 'contacts'}` }
                 ].map(metric => (
                   <div key={metric.label} style={{ padding: '9px', border: `1px solid ${metric.color}44`, background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
                     <div style={{ color: metric.color, fontSize: '9px', textTransform: 'uppercase' }}>{metric.label}</div>
@@ -2322,7 +2322,7 @@ export default function HubScreen({
                     }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
                         <strong style={{ color: ready ? '#ffeb3b' : '#ddd', fontSize: '10px' }}>{milestone.title[lang]}</strong>
-                        <span style={{ color: claimed ? '#2ecc71' : '#aaa', fontSize: '9px' }}>{claimed ? (lang === 'fr' ? 'ARCHIVE' : 'ARCHIVED') : `${Math.min(milestone.progress, milestone.target)}/${milestone.target}`}</span>
+                        <span style={{ color: claimed ? '#2ecc71' : '#aaa', fontSize: '9px' }}>{claimed ? (lang === 'fr' ? 'SCELLE' : 'SEALED') : `${Math.min(milestone.progress, milestone.target)}/${milestone.target}`}</span>
                       </div>
                       <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', margin: '7px 0', borderRadius: '3px', overflow: 'hidden' }}>
                         <div style={{ width: `${ratio * 100}%`, height: '100%', background: claimed ? '#2ecc71' : '#ffeb3b' }} />
@@ -2344,7 +2344,7 @@ export default function HubScreen({
                           color: claimed ? '#2ecc71' : ready ? '#ffeb3b' : '#666'
                         }}
                       >
-                        {claimed ? (lang === 'fr' ? 'RECU' : 'CLAIMED') : ready ? (lang === 'fr' ? 'RECLAMER' : 'CLAIM') : (lang === 'fr' ? 'EN COURS' : 'IN PROGRESS')}
+                        {claimed ? (lang === 'fr' ? 'ARCHIVE' : 'ARCHIVED') : ready ? (lang === 'fr' ? 'SCELLER' : 'SEAL') : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
                       </button>
                     </div>
                   );
@@ -2362,16 +2362,16 @@ export default function HubScreen({
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
                 <div>
                   <div style={{ fontSize: '11px', color: '#ffeb3b', fontWeight: 'bold', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Rapport Meta Nexus' : 'Nexus Meta Report'}
+                    {lang === 'fr' ? 'Lecture strategique Nexus' : 'Nexus Strategic Reading'}
                   </div>
                   <div style={{ fontSize: '10px', color: '#9fb6bb', marginTop: '3px' }}>
-                    {lang === 'fr' ? 'Objectifs conseilles, reputation, evenements et missions fusionnees.' : 'Recommended goals, reputation, events, and fused missions.'}
+                    {lang === 'fr' ? 'Directives d Ancre, reputations, signaux actifs et failles fusionnees.' : 'Anchor directives, reputations, active signals, and fused rifts.'}
                   </div>
                 </div>
                 <div style={{ fontSize: '10px', color: '#39c5bb' }}>
                   {lang === 'fr'
-                    ? `${completedStages.length} breches stabilisees / rang ${metaRank} / ${collectionBonusCount} passifs Nexus`
-                    : `${completedStages.length} breaches stabilized / ${metaRank} rank / ${collectionBonusCount} Nexus passives`}
+                    ? `${completedStages.length} breches stabilisees / statut ${metaRank} / ${collectionBonusCount} traces Nexus`
+                    : `${completedStages.length} breaches stabilized / ${metaRank} status / ${collectionBonusCount} Nexus traces`}
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
@@ -2535,10 +2535,10 @@ export default function HubScreen({
                             }}
                           >
                             {arc.claimed
-                              ? (lang === 'fr' ? 'ARC RECLAME' : 'ARC CLAIMED')
+                              ? (lang === 'fr' ? 'ARC SCELLE' : 'ARC SEALED')
                               : arc.complete
-                                ? (lang === 'fr' ? 'RECLAMER ARC' : 'CLAIM ARC')
-                                : (lang === 'fr' ? 'ARC INCOMPLET' : 'ARC INCOMPLETE')}
+                                ? (lang === 'fr' ? 'SCELLER ARC' : 'SEAL ARC')
+                                : (lang === 'fr' ? 'ARC INSTABLE' : 'ARC UNSTABLE')}
                           </button>
                         )}
                       </div>
@@ -2557,7 +2557,7 @@ export default function HubScreen({
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>
                 <strong style={{ color: '#d7b5ff', fontSize: '11px', textTransform: 'uppercase' }}>
-                  {lang === 'fr' ? 'Operations hebdomadaires' : 'Weekly operations'}
+                  {lang === 'fr' ? 'Cycles hebdomadaires' : 'Weekly cycles'}
                 </strong>
                 <span style={{ color: '#aaa', fontSize: '10px' }}>{currentWeekKey}</span>
               </div>
@@ -2569,7 +2569,7 @@ export default function HubScreen({
                     <div key={operation.id} style={{ padding: '9px', border: operation.done ? '1px solid rgba(46,204,113,0.45)' : '1px solid rgba(255,255,255,0.08)', background: operation.done ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.16)', borderRadius: '4px' }}>
                       <div style={{ fontSize: '10px', color: operation.done ? '#8dffb1' : '#ddd', fontWeight: 'bold', marginBottom: '5px' }}>{operation.title[lang]}</div>
                       <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', color: '#8fa5aa', fontSize: '9px', marginBottom: '5px' }}>
-                        <span>{lang === 'fr' ? 'Progression' : 'Progress'}</span>
+                        <span>{lang === 'fr' ? 'Ancrage' : 'Anchoring'}</span>
                         <span>{Math.min(operation.progress || 0, operation.target)}/{operation.target}</span>
                       </div>
                       <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '7px', borderRadius: '3px', overflow: 'hidden' }}>
@@ -2586,10 +2586,10 @@ export default function HubScreen({
                         style={{ fontSize: '9px', padding: '5px 8px', borderColor: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#666' }}
                       >
                         {claimed
-                          ? (lang === 'fr' ? 'RECLAME' : 'CLAIMED')
+                          ? (lang === 'fr' ? 'SCELLE' : 'SEALED')
                           : operation.done
-                            ? (lang === 'fr' ? 'RECLAMER' : 'CLAIM')
-                            : (lang === 'fr' ? 'EN COURS' : 'IN PROGRESS')}
+                            ? (lang === 'fr' ? 'SCELLER' : 'SEAL')
+                            : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
                       </button>
                     </div>
                   );
@@ -2644,10 +2644,10 @@ export default function HubScreen({
                         }}
                       >
                         {collection.claimed
-                          ? (lang === 'fr' ? 'RECLAME' : 'CLAIMED')
+                          ? (lang === 'fr' ? 'SCELLE' : 'SEALED')
                           : collection.complete
-                            ? (lang === 'fr' ? 'RECLAMER CACHE' : 'CLAIM CACHE')
-                            : (lang === 'fr' ? 'INCOMPLET' : 'INCOMPLETE')}
+                            ? (lang === 'fr' ? 'OUVRIR CACHE' : 'OPEN CACHE')
+                            : (lang === 'fr' ? 'INSTABLE' : 'UNSTABLE')}
                       </button>
                     </div>
                   );
@@ -2681,10 +2681,10 @@ export default function HubScreen({
               borderRadius: '5px'
             }}>
               <div style={{ fontSize: '10px', color: '#aaa' }}>
-                <strong style={{ color: '#39c5bb' }}>{lang === 'fr' ? 'Rang meta' : 'Meta rank'}:</strong> {metaRank}
+                <strong style={{ color: '#39c5bb' }}>{lang === 'fr' ? 'Statut d Ancre' : 'Anchor status'}:</strong> {metaRank}
               </div>
               <div style={{ fontSize: '10px', color: '#aaa' }}>
-                <strong style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Progression' : 'Progress'}:</strong> {completedStages.length}/{STAGES.length}
+                <strong style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Trames scellees' : 'Sealed Threads'}:</strong> {completedStages.length}/{STAGES.length}
               </div>
               <div style={{ fontSize: '10px', color: '#aaa' }}>
                 <strong style={{ color: '#9b59b6' }}>{lang === 'fr' ? 'Niveaux équipe' : 'Roster levels'}:</strong> {totalHeroLevels}
@@ -2747,7 +2747,7 @@ export default function HubScreen({
                           {modifier.name[lang]}
                         </span>
                         <span style={{ color: rarity.color, border: `1px solid ${rarity.color}`, padding: '1px 5px', fontSize: '9px', borderRadius: '2px' }}>
-                          Loot {rarity.label}
+                          Signature {rarity.label}
                         </span>
                         {stageArc && (
                           <span style={{ color: stageArc.color, border: `1px solid ${stageArc.color}`, padding: '1px 5px', fontSize: '9px', borderRadius: '2px' }}>
@@ -2767,7 +2767,7 @@ export default function HubScreen({
                         {modifier.desc[lang]}
                       </div>
                       <div style={{ fontSize: '11px', color: '#ffeb3b', marginTop: '4px' }}>
-                        Recompense: {preparedStage.goldPrize} Or | {preparedStage.shardPrize} Fragments {preparedStage.tokenPrize ? `| +${preparedStage.tokenPrize} Jetons` : ''}
+                        Cache prevue: {preparedStage.goldPrize} Or | {preparedStage.shardPrize} Fragments {preparedStage.tokenPrize ? `| +${preparedStage.tokenPrize} Jetons` : ''}
                         {stage.rewardItemName ? ` | ${stage.rewardItemName[lang]}` : ''}
                       </div>
                     </div>
@@ -2775,7 +2775,7 @@ export default function HubScreen({
                     <div>
                       {isLocked ? (
                         <span style={{ fontSize: '11px', color: '#e74c3c' }}>
-                          {lang === 'fr' ? `VERROU (${requiredClears} breches)` : `LOCK (${requiredClears} breaches)`}
+                          {lang === 'fr' ? `SCELLE (${requiredClears} breches)` : `SEALED (${requiredClears} breaches)`}
                         </span>
                       ) : (
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -2846,7 +2846,7 @@ export default function HubScreen({
                     </div>
                   )}
                   <div style={{ fontSize: '11px', color: getLootRarity(selectedBriefingStage).color, marginTop: '6px' }}>
-                    {lang === 'fr' ? 'Rareté estimée' : 'Estimated rarity'}: {getLootRarity(selectedBriefingStage).label}
+                    {lang === 'fr' ? 'Signature estimee' : 'Estimated signature'}: {getLootRarity(selectedBriefingStage).label}
                   </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '8px' }}>
@@ -2856,7 +2856,7 @@ export default function HubScreen({
                     className="btn-retro"
                     style={{ padding: '8px 14px', background: isStageUnlocked(selectedBriefingStage) ? '#ffeb3b' : '#333', color: isStageUnlocked(selectedBriefingStage) ? '#111' : '#777' }}
                   >
-                    {isStageUnlocked(selectedBriefingStage) ? getTranslation(lang, 'deploySquad') : 'VERROU'}
+                    {isStageUnlocked(selectedBriefingStage) ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
                   </button>
                   <button onClick={() => setBriefingStageId(null)} className="btn-retro" style={{ padding: '6px 12px', fontSize: '10px', borderColor: '#555' }}>
                     FERMER
@@ -2884,7 +2884,7 @@ export default function HubScreen({
                   <div style={{ fontSize: '15px', fontWeight: 'bold' }}>#{finalStage.id} {finalStage.name}</div>
                   <div style={{ fontSize: '11px', color: '#bbb', marginTop: '4px' }}>
                     {finalStageUnlocked
-                      ? (lang === 'fr' ? 'Noyau mondial disponible.' : 'World core available.')
+                      ? (lang === 'fr' ? 'Noyau Omniverse expose.' : 'Omniverse core exposed.')
                       : (lang === 'fr' ? `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedStages.length)} brèches à stabiliser avant ouverture.` : `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedStages.length)} breaches to stabilize before opening.`)}
                   </div>
                 </div>
@@ -2900,7 +2900,7 @@ export default function HubScreen({
                     cursor: finalStageUnlocked ? 'pointer' : 'not-allowed'
                   }}
                 >
-                  {finalStageUnlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'VERROUILLÉ' : 'VERROU')}
+                  {finalStageUnlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
                 </button>
               </div>
             )}
@@ -2911,8 +2911,8 @@ export default function HubScreen({
                 style={{ padding: '7px 11px', fontSize: '10px', borderColor: '#555' }}
               >
                 {showMissionArchive
-                  ? (lang === 'fr' ? 'MASQUER ARCHIVE COMPLETE' : 'HIDE FULL ARCHIVE')
-                  : (lang === 'fr' ? `ARCHIVE COMPLETE (${missionPool.length})` : `FULL ARCHIVE (${missionPool.length})`)}
+                  ? (lang === 'fr' ? 'REFERMER LES ARCHIVES' : 'CLOSE ARCHIVES')
+                  : (lang === 'fr' ? `OUVRIR LES ARCHIVES (${missionPool.length})` : `OPEN ARCHIVES (${missionPool.length})`)}
               </button>
 
               {showMissionArchive && (
@@ -3432,11 +3432,11 @@ export default function HubScreen({
 
             <div className="squad-zone-title">
               <span>{lang === 'fr' ? 'Synthese tactique' : 'Tactical summary'}</span>
-              <small>{lang === 'fr' ? 'Lisibilite meta, synergies et points faibles.' : 'Meta readability, synergies, and weak points.'}</small>
+              <small>{lang === 'fr' ? 'Lecture A.R.C.A., resonances et failles tactiques.' : 'A.R.C.A. reading, resonances, and tactical faults.'}</small>
             </div>
             <div className="squad-command-grid">
               <div className="squad-readiness-card">
-                <div className="squad-kicker">{lang === 'fr' ? 'Lecture meta' : 'Meta read'}</div>
+                <div className="squad-kicker">{lang === 'fr' ? 'Lecture A.R.C.A.' : 'A.R.C.A. read'}</div>
                 <div className="squad-grade-row">
                   <span className="squad-grade">{squadGrade}</span>
                   <div>
@@ -3538,7 +3538,7 @@ export default function HubScreen({
               </div>
 
               <div className="squad-section-card warning">
-                <div className="squad-section-title">{lang === 'fr' ? 'Priorites meta' : 'Meta priorities'}</div>
+                <div className="squad-section-title">{lang === 'fr' ? 'Directives A.R.C.A.' : 'A.R.C.A. directives'}</div>
                 <div className="squad-warning-list">
                   {(squadWarnings.length ? squadWarnings : [lang === 'fr' ? 'Escouade stable: pousse les niveaux et vise les caches de collection.' : 'Stable squad: push levels and chase collection caches.']).map(item => (
                     <p key={item}>{item}</p>
@@ -3764,14 +3764,14 @@ export default function HubScreen({
 
               <div style={{ padding: '14px', border: '1px solid rgba(57,197,187,0.2)', background: 'rgba(57,197,187,0.04)', borderRadius: '5px' }}>
                 <strong style={{ color: '#39c5bb', fontSize: '11px', textTransform: 'uppercase' }}>
-                  {lang === 'fr' ? 'Progression unifiee' : 'Unified progression'}
+                  {lang === 'fr' ? 'Memoire unifiee' : 'Unified memory'}
                 </strong>
                 <div style={{ display: 'grid', gap: '8px', marginTop: '10px' }}>
                   {[
                     { label: lang === 'fr' ? 'Objectif suivant' : 'Next goal', value: nextProgressGoal, color: '#ffeb3b' },
                     { label: lang === 'fr' ? 'Niveaux heros total' : 'Total hero levels', value: totalHeroLevels, color: '#9b59b6' },
-                    { label: lang === 'fr' ? 'Readiness escouade' : 'Squad readiness', value: `${squadReadiness}% / ${squadGrade}`, color: '#2ecc71' },
-                    { label: lang === 'fr' ? 'Focus escouade' : 'Squad focus', value: squadFocus, color: '#39c5bb' }
+                    { label: lang === 'fr' ? 'Ancrage escouade' : 'Squad anchor', value: `${squadReadiness}% / ${squadGrade}`, color: '#2ecc71' },
+                    { label: lang === 'fr' ? 'Resonance escouade' : 'Squad resonance', value: squadFocus, color: '#39c5bb' }
                   ].map(entry => (
                     <div key={entry.label} style={{ padding: '9px', background: `${entry.color}10`, border: `1px solid ${entry.color}44`, borderRadius: '4px' }}>
                       <div style={{ fontSize: '9px', color: '#aaa', textTransform: 'uppercase' }}>{entry.label}</div>
@@ -4098,10 +4098,10 @@ export default function HubScreen({
                               }}>
                                 <div>
                                   <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ff9900' }}>
-                                    {item.name[lang]} ({copies} possedes)
+                                    {item.name[lang]} ({copies} indexes)
                                   </div>
                                   <span style={{ fontSize: '10px', color: '#aaa' }}>
-                                    Cible: {item.name[lang]} + (bonus double)
+                                    Cible: {item.name[lang]} + (echo renforce)
                                   </span>
                                 </div>
                                 <button
@@ -4257,7 +4257,7 @@ export default function HubScreen({
                           {visualUniverse || 'Nexus Prototype'}
                         </span>
                         <span style={{ color: owned ? '#2ecc71' : '#aaa', fontSize: '9px', border: '1px solid rgba(255,255,255,0.16)', padding: '2px 5px', borderRadius: '3px' }}>
-                          {owned ? 'INDEXE' : (canBuy ? (lang === 'fr' ? 'DISPO' : 'READY') : (lang === 'fr' ? 'VERROU' : 'LOCK'))}
+                          {owned ? 'INDEXE' : (canBuy ? (lang === 'fr' ? 'OUVERT' : 'OPEN') : (lang === 'fr' ? 'SCELLE' : 'SEALED'))}
                         </span>
                       </div>
                     </div>
@@ -4935,7 +4935,7 @@ export default function HubScreen({
                         {characterArcReady
                           ? (lang === 'fr' ? 'Arc pret pour une mission personnelle.' : 'Arc ready for a personal mission.')
                           : heroUnlocked
-                            ? (lang === 'fr' ? `Progression requise: niveau ${arc.heroId === 'player_anchor' ? '1 breche stabilisee' : '3'}.` : `Required progress: ${arc.heroId === 'player_anchor' ? '1 stabilized breach' : 'level 3'}.`)
+                            ? (lang === 'fr' ? `Resonance requise: ${arc.heroId === 'player_anchor' ? '1 breche stabilisee' : 'grade 3'}.` : `Required resonance: ${arc.heroId === 'player_anchor' ? '1 stabilized breach' : 'grade 3'}.`)
                             : (lang === 'fr' ? 'Heros non recrute.' : 'Hero not recruited.')}
                       </div>
                       <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{arc.intro[lang]}</p>
@@ -4968,7 +4968,7 @@ export default function HubScreen({
                         </span>
                         {rewardId && (
                           <span style={{ color: rewardOwned ? '#2ecc71' : '#aaa', fontSize: '9px', border: '1px solid rgba(255,255,255,0.12)', padding: '2px 5px' }}>
-                            {rewardOwned ? (lang === 'fr' ? 'Recompense obtenue' : 'Reward owned') : (lang === 'fr' ? 'Recompense a gagner' : 'Reward pending')}
+                            {rewardOwned ? (lang === 'fr' ? 'Trace obtenue' : 'Trace sealed') : (lang === 'fr' ? 'Trace a sceller' : 'Trace unsealed')}
                           </span>
                         )}
                       </div>
@@ -5088,3 +5088,4 @@ export default function HubScreen({
     </div>
   );
 }
+

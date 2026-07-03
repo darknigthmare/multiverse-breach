@@ -17,16 +17,16 @@ export default function AuthPanel({
   const [error, setError] = useState('');
 
   const t = {
-    account: lang === 'fr' ? 'COMPTE' : 'ACCOUNT',
-    connected: lang === 'fr' ? 'CONNECTE' : 'CONNECTED',
-    guest: lang === 'fr' ? 'LOCAL' : 'LOCAL',
+    account: lang === 'fr' ? 'SIGNATURE' : 'SIGNATURE',
+    connected: lang === 'fr' ? 'ANCREE' : 'ANCHORED',
+    guest: lang === 'fr' ? 'LOCALE' : 'LOCAL',
     email: lang === 'fr' ? 'Email' : 'Email',
     password: lang === 'fr' ? 'Mot de passe' : 'Password',
-    signIn: lang === 'fr' ? 'Connexion' : 'Sign in',
-    signUp: lang === 'fr' ? 'Creer compte' : 'Create account',
-    signOut: lang === 'fr' ? 'Deconnexion' : 'Sign out',
-    load: lang === 'fr' ? 'Charger cloud' : 'Load cloud',
-    save: lang === 'fr' ? 'Sauver cloud' : 'Save cloud'
+    signIn: lang === 'fr' ? 'Ancrer' : 'Anchor',
+    signUp: lang === 'fr' ? 'Creer signature' : 'Create signature',
+    signOut: lang === 'fr' ? 'Detacher' : 'Detach',
+    load: lang === 'fr' ? 'Lire Nexus' : 'Read Nexus',
+    save: lang === 'fr' ? 'Graver Nexus' : 'Engrave Nexus'
   };
 
   const run = async (fn) => {

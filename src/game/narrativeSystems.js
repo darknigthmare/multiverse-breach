@@ -46,11 +46,11 @@ export const ARC_CAMPAIGN_DETAILS = {
   cyber_reality: {
     intro: { fr: 'La Zone 404 prouve que certaines breches sont des permissions volees, pas des lieux.', en: 'Zone 404 proves some breaches are stolen permissions, not places.' },
     missions: [
-      { fr: 'Nettoyer une sauvegarde corrompue par un virus de Trame.', en: 'Clean a save corrupted by a Thread virus.' },
+      { fr: 'Nettoyer une trace memoire corrompue par un virus de Trame.', en: 'Clean a memory trace corrupted by a Thread virus.' },
       { fr: 'Defendre A.R.C.A. pendant une attaque de droits administrateur.', en: 'Defend A.R.C.A. during an administrator-rights attack.' },
       { fr: 'Installer un pare-feu narratif dans le coeur du hub.', en: 'Install a narrative firewall in the hub core.' }
     ],
-    outro: { fr: 'Les sauvegardes ont maintenant une memoire de secours.', en: 'Saves now have a backup memory.' },
+    outro: { fr: 'Les traces memoire possedent maintenant une chambre de secours.', en: 'Memory traces now have a backup chamber.' },
     rewards: [
       { id: 'arc_cyber_skin_zone_404', type: 'skin', name: { fr: 'Skin Zone 404', en: 'Zone 404 Skin' } },
       { id: 'arc_cyber_item_firewall_fragment', type: 'item', name: { fr: 'Fragment de Pare-feu Narratif', en: 'Narrative Firewall Fragment' } }
@@ -231,13 +231,13 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
     title: { fr: 'Arc Personnage - Derniere porte', en: 'Character Arc - Last Door' },
     mode: 'RPG',
     difficulty: 'Personal',
-    bossName: 'Tyran de Sauvegarde',
+    bossName: 'Tyran du Ruban-Memoire',
     unlock: { type: 'clears', value: 5 },
     intro: { fr: 'Leon sait qu une porte verrouillee cache rarement une sortie simple. Le Nexus lui confie celles que personne ne veut ouvrir.', en: 'Leon knows a locked door rarely hides a simple exit. The Nexus gives him the doors nobody wants to open.' },
     missions: [
       { fr: 'Escorter une survivante dont la fiche se reecrit a chaque infection.', en: 'Escort a survivor whose file rewrites with every infection.' },
-      { fr: 'Recuperer une cle de sauvegarde dans un commissariat impossible.', en: 'Recover a save key inside an impossible police station.' },
-      { fr: 'Abattre un Tyran qui protege un point de chargement corrompu.', en: 'Take down a Tyrant guarding a corrupted load point.' }
+      { fr: 'Recuperer une cle Ruban-Memoire dans un commissariat impossible.', en: 'Recover a Memory-Ribbon key inside an impossible police station.' },
+      { fr: 'Abattre un Tyran qui protege un seuil de retour corrompu.', en: 'Take down a Tyrant guarding a corrupted return threshold.' }
     ],
     outro: { fr: 'Leon transforme les portes du Nexus en promesses de retour, pas en pieges.', en: 'Leon turns Nexus doors into promises of return, not traps.' },
     reward: { fr: 'Skin R.P.D. Nexus + cle ruban encreur', en: 'Nexus R.P.D. Skin + Ink Ribbon Key' },
@@ -255,7 +255,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
     intro: { fr: 'Neo ne voit pas seulement le code du Nexus: il voit les endroits ou le code ment pour proteger une histoire.', en: 'Neo does not only see Nexus code: he sees where the code lies to protect a story.' },
     missions: [
       { fr: 'Lire une mission avant qu elle ne soit generee.', en: 'Read a mission before it is generated.' },
-      { fr: 'Desobeir a une prediction d A.R.C.A. sans casser la sauvegarde.', en: 'Disobey an A.R.C.A. prediction without breaking the save.' },
+      { fr: 'Desobeir a une prediction d A.R.C.A. sans fissurer la trace memoire.', en: 'Disobey an A.R.C.A. prediction without cracking the memory trace.' },
       { fr: 'Affronter l Agent Racine dans une matrice sans sortie rouge ou bleue.', en: 'Face the Root Agent in a matrix with no red or blue exit.' }
     ],
     outro: { fr: 'Le choix devient une mecanique: le Nexus accepte enfin l imprevisible.', en: 'Choice becomes a mechanic: the Nexus finally accepts the unpredictable.' },
@@ -313,7 +313,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
     missions: [
       { fr: 'Proteger une patrouille de lycee projetee dans la Cite-Mosaique.', en: 'Protect a school patrol thrown into Mosaic City.' },
       { fr: 'Briser un rituel qui transforme les noms de heros en prophecies.', en: 'Break a ritual turning hero names into prophecies.' },
-      { fr: 'Sceller une Bouche d Enfer qui veut avaler les sauvegardes.', en: 'Seal a Hellmouth trying to swallow saves.' }
+      { fr: 'Sceller une Bouche d Enfer qui veut avaler les traces memoire.', en: 'Seal a Hellmouth trying to swallow memory traces.' }
     ],
     outro: { fr: 'La Tueuse ne porte plus seule la fin du monde: l escouade porte la ligne avec elle.', en: 'The Slayer no longer carries the end of the world alone: the squad holds the line with her.' },
     reward: { fr: 'Skin Tueuse Nexus + pieu d Origine', en: 'Nexus Slayer Skin + Origin Stake' },
@@ -720,15 +720,15 @@ export const SPECIAL_EVENTS = [
 ];
 
 export const REPUTATION_TRACKS = [
-  { id: 'nexus_alliance', label: { fr: 'Alliance du Nexus', en: 'Nexus Alliance' }, gameplay: { fr: 'Bonus defense, missions de protection, skins militaires.', en: 'Defense bonus, protection missions, military skins.' } },
-  { id: 'archivists', label: { fr: 'Archivistes', en: 'Archivists' }, gameplay: { fr: 'Codex plus rapide, recompenses lore, decryptage boss.', en: 'Faster codex, lore rewards, boss decryption.' } },
-  { id: 'free_fractures', label: { fr: 'Libres-Fractures', en: 'Free-Fractures' }, gameplay: { fr: 'Critique, missions risquees, reliques instables.', en: 'Critical damage, risky missions, unstable relics.' } },
-  { id: 'broken_throne', label: { fr: 'Trone Brise', en: 'Broken Throne' }, gameplay: { fr: 'Puissance brute, survie apocalypse, choix agressifs.', en: 'Raw power, apocalypse survival, aggressive choices.' } },
-  { id: 'erased', label: { fr: 'Effaces', en: 'Erased' }, gameplay: { fr: 'Controle peur, esquive, missions de memoire.', en: 'Fear control, dodge, memory missions.' } }
+  { id: 'nexus_alliance', label: { fr: 'Alliance du Nexus', en: 'Nexus Alliance' }, gameplay: { fr: 'Directive d Ancre: tenir les lignes, escorter les civils et graver les armures de garnison.', en: 'Anchor directive: hold lines, escort civilians, and engrave garrison armor.' } },
+  { id: 'archivists', label: { fr: 'Archivistes', en: 'Archivists' }, gameplay: { fr: 'Directive d Archive: clarifier les traces, ouvrir les caches de savoir et decrypter les noyaux.', en: 'Archive directive: clarify traces, open knowledge caches, and decrypt cores.' } },
+  { id: 'free_fractures', label: { fr: 'Libres-Fractures', en: 'Free-Fractures' }, gameplay: { fr: 'Directive de Fracture: frapper juste, accepter les missions instables et canaliser les reliques.', en: 'Fracture directive: strike precisely, accept unstable missions, and channel relics.' } },
+  { id: 'broken_throne', label: { fr: 'Trone Brise', en: 'Broken Throne' }, gameplay: { fr: 'Directive du Trone: avancer par force brute, survivre aux mondes morts et sceller par domination.', en: 'Throne directive: advance through raw force, survive dead worlds, and seal by domination.' } },
+  { id: 'erased', label: { fr: 'Effaces', en: 'Erased' }, gameplay: { fr: 'Directive des Effaces: contenir la peur, esquiver l oubli et proteger les missions de memoire.', en: 'Erased directive: contain fear, evade oblivion, and protect memory missions.' } }
 ];
 
 export const META_NEXUS_RECOMMENDATIONS = [
-  { id: 'first_team', text: { fr: 'Garde ton Ancre dans l escouade: c est le heros joueur et le meilleur repere de progression.', en: 'Keep your Anchor in the squad: it is the player hero and the clearest progression marker.' } },
-  { id: 'faction_pair', text: { fr: 'Cherche toujours 2 heros de la meme faction pour activer le bonus +8%.', en: 'Always look for 2 heroes from the same faction to activate the +8% bonus.' } },
-  { id: 'arc_reward', text: { fr: 'Terminer un arc devrait viser skin + item special + passif; c est la prochaine grande couche gameplay.', en: 'Completing an arc should aim for skin + special item + passive; that is the next big gameplay layer.' } }
+  { id: 'first_team', text: { fr: 'Garde ton Ancre dans l escouade: sa signature fixe empeche les autres Trames de se dissoudre.', en: 'Keep your Anchor in the squad: their fixed signature prevents other Threads from dissolving.' } },
+  { id: 'faction_pair', text: { fr: 'Croise deux heros d une meme famille de Trame pour renforcer la resonance commune.', en: 'Cross two heroes from the same Thread family to reinforce shared resonance.' } },
+  { id: 'arc_reward', text: { fr: 'Sceller un arc doit laisser une trace: apparence, relique ou passif de faction grave dans le Nexus.', en: 'Sealing an arc should leave a trace: appearance, relic, or faction passive engraved into the Nexus.' } }
 ];
