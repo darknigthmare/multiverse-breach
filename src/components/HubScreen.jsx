@@ -974,7 +974,7 @@ export default function HubScreen({
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
-  const [missionScreen, setMissionScreen] = useState('index'); // 'index' | 'story' | 'universeArcs' | 'personalArcs' | 'trioArcs'
+  const [missionScreen, setMissionScreen] = useState('index'); // 'index' | 'story' | 'universeArcs' | 'personalArcs' | 'trioArcs' | 'fusionMissions'
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
   const [briefingStageId, setBriefingStageId] = useState(null);
@@ -2982,12 +2982,14 @@ export default function HubScreen({
     if (missionScreen === 'universeArcs') return Boolean(stage.universeArc);
     if (missionScreen === 'personalArcs') return Boolean(stage.characterArc);
     if (missionScreen === 'trioArcs') return Boolean(stage.trioArc);
+    if (missionScreen === 'fusionMissions') return Boolean(stage.fusionMission);
     return !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission;
   };
   const storyMissionCount = visibleStages.filter(stage => stage.id !== 38 && !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission).length;
   const universeArcMissionCount = visibleStages.filter(stage => stage.universeArc).length;
   const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc).length;
   const trioArcMissionCount = visibleStages.filter(stage => stage.trioArc).length;
+  const fusionMissionCount = visibleStages.filter(stage => stage.fusionMission).length;
   const missionScreenMeta = {
     story: {
       label: { fr: 'Mode histoire', en: 'Story mode' },
@@ -3012,6 +3014,12 @@ export default function HubScreen({
       desc: { fr: 'Cellules de trois personnages avec liens croises et histoire commune.', en: 'Three-character cells with crossed bonds and a shared story.' },
       count: trioArcMissionCount,
       color: '#2ecc71'
+    },
+    fusionMissions: {
+      label: { fr: 'Failles fusionnees', en: 'Fused rifts' },
+      desc: { fr: 'Missions hybrides ou plusieurs univers imposent leurs decors, ennemis et objets dans une meme breche.', en: 'Hybrid missions where several universes force their stages, enemies, and items into one breach.' },
+      count: fusionMissionCount,
+      color: '#ff5f7e'
     }
   };
   const selectedMissionMeta = missionScreenMeta[missionScreen] || missionScreenMeta.story;
@@ -3278,7 +3286,7 @@ export default function HubScreen({
                     <button
                       key={key}
                       type="button"
-                      onClick={() => { setMissionScreen(key); setMissionSeed(Date.now()); sound.playSfx('coin'); }}
+                      onClick={() => { setMissionScreen(key); setMissionSeed(Date.now()); setBriefingStageId(null); setShowMissionArchive(false); sound.playSfx('coin'); }}
                       className="btn-retro"
                       style={{
                         minHeight: '154px',
@@ -3798,6 +3806,54 @@ export default function HubScreen({
               </div>
             )}
 
+            {missionScreen === 'fusionMissions' && (
+              <div style={{
+                padding: '14px',
+                marginBottom: '14px',
+                background: 'rgba(255,95,126,0.06)',
+                border: '1px solid rgba(255,95,126,0.24)',
+                borderRadius: '5px'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
+                  <div>
+                    <div style={{ fontSize: '11px', color: '#ff8fa3', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Failles fusionnees' : 'Fused rifts'}
+                    </div>
+                    <div style={{ fontSize: '10px', color: '#d9b6bf', marginTop: '3px' }}>
+                      {lang === 'fr'
+                        ? 'Ces breches melangent plusieurs univers: decor hybride, objet special, ennemi composite et regles locales instables.'
+                        : 'These breaches mix several universes: hybrid stage, special item, composite enemy, and unstable local rules.'}
+                    </div>
+                  </div>
+                  <div style={{ color: '#ffeb3b', fontSize: '10px' }}>
+                    {FUSION_MISSIONS.length} {lang === 'fr' ? 'protocoles hybrides' : 'hybrid protocols'}
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
+                  {FUSION_MISSIONS.map(mission => (
+                    <div key={mission.id} style={{ padding: '11px', border: '1px solid rgba(255,95,126,0.22)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
+                      <strong style={{ color: '#ff8fa3', fontSize: '11px' }}>{mission.title[lang]}</strong>
+                      <div style={{ color: '#cfcfcf', fontSize: '9px', lineHeight: 1.35, marginTop: '6px' }}>
+                        {mission.decor[lang]}
+                      </div>
+                      <div style={{ color: '#ffeb3b', fontSize: '9px', lineHeight: 1.35, marginTop: '6px' }}>
+                        {lang === 'fr' ? 'Objet' : 'Item'}: {mission.item[lang]}
+                      </div>
+                      <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '8px' }}>
+                        {mission.universes.map(universe => (
+                          <span key={`${mission.id}-${universe}`} style={{ border: '1px solid rgba(255,95,126,0.35)', color: '#ffd1da', fontSize: '8px', padding: '2px 5px', borderRadius: '3px' }}>
+                            {universe}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {missionScreen === 'story' && (
+            <>
             <div style={{
               padding: '12px',
               marginBottom: '14px',
@@ -3943,6 +3999,8 @@ export default function HubScreen({
                 {nextProgressGoal}
               </div>
             </div>
+            </>
+            )}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {missionDeck.map((stage) => {
                 const isCompleted = completedStages.includes(stage.id);
@@ -4114,7 +4172,7 @@ export default function HubScreen({
                 </div>
               </div>
             )}
-            {finalStage && (
+            {missionScreen === 'story' && finalStage && (
               <div style={{
                 marginTop: '14px',
                 padding: '14px 18px',
