@@ -110,13 +110,16 @@ export const ENEMIES_DB = {
     monsters: [
       { name: 'Jaffa Serpent Guard', hp: 95, atk: 9, spd: 4, color: '#f1c40f', weapon: 'staff' },
       { name: 'Replicator Insect Drone', hp: 60, atk: 12, spd: 7, color: '#95a5a6', weapon: 'bite' },
-      { name: 'Anubis Jaffa Guard', hp: 100, atk: 10, spd: 4, color: '#2c3e50', weapon: 'laser' }
+      { name: 'Anubis Jaffa Guard', hp: 100, atk: 10, spd: 4, color: '#2c3e50', weapon: 'staff_cannon' },
+      { name: 'Kull Warrior Prototype', hp: 135, atk: 14, spd: 4, color: '#1f1f24', weapon: 'kull_blaster' },
+      { name: 'Ashrak Assassin', hp: 85, atk: 15, spd: 7, color: '#6d4c41', weapon: 'stealth_blade' }
     ],
     bosses: [
       { name: 'Lord Apophis Goa\'uld', hp: 500, atk: 18, spd: 5, color: '#d4af37', weapon: 'hand_ribbon', special: 'Shield Barrier Blast' },
-      { name: 'Ba\'al Clone Commander', hp: 470, atk: 17, spd: 6, color: '#a04000', weapon: 'gun', special: 'Orbital Ship Bombardment' }
+      { name: 'Ba\'al Clone Commander', hp: 470, atk: 17, spd: 6, color: '#a04000', weapon: 'goauld_device', special: 'Clone Command Loop' },
+      { name: 'Replicator Queen Node', hp: 540, atk: 20, spd: 5, color: '#b8c0c8', weapon: 'nanite_swarm', special: 'Self-Assembly Flood' }
     ],
-    worldBoss: { name: 'Anubis Flagship Nexus', hp: 1290, atk: 30, spd: 3, color: '#0b162a', weapon: 'beam', special: 'Hyperspace Weapon Array' }
+    worldBoss: { name: 'Anubis Flagship Nexus', hp: 1290, atk: 30, spd: 3, color: '#0b162a', weapon: 'ancient_beam', special: 'Ascended Hyperspace Weapon Array' }
   },
   'Half-Life': {
     monsters: [

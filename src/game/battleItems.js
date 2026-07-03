@@ -65,12 +65,12 @@ const BATTLE_ITEM_OVERRIDES = {
   },
   Stargate: {
     pickups: [
-      ['Cellule au naquadah', 'Naquadah Cell', 'Charge speciale et degats energetiques.'],
-      ['Balise GDO', 'GDO Beacon', 'Securise une case ou une zone de melee.'],
-      ['Drone Ancien', 'Ancient Drone', 'Projectile guidant qui cherche la cible la plus dangereuse.']
+      ['Cellule au naquadah', 'Naquadah Cell', 'Source energetique instable: en melee elle charge une frappe, en tactique elle alimente une Porte ou surcharge un bouclier Goa uld.'],
+      ['Balise GDO SGC', 'SGC GDO Beacon', 'Identification de retour Terre: securise une zone, valide les allies et bloque les signatures hostiles avant ouverture iris.'],
+      ['Drone Ancien', 'Ancient Drone', 'Technologie des Anciens: projectile guidant qui traverse les defenses ordinaires et cherche le noyau de menace le plus dangereux.']
     ],
-    summon: ['Equipe SG temporaire', 'Temporary SG Team', 'Une equipe de reconnaissance arrive par fenetre de porte.'],
-    ultimate: ['Surcharge de Porte', 'Gate Overload', 'Un vortex instable aspire et blesse toutes les signatures hostiles.']
+    summon: ['Equipe SG temporaire', 'Temporary SG Team', 'Invocation temporaire: une equipe SG franchit la Porte, pose un tir de couverture et marque les coordonnees de repli.'],
+    ultimate: ['Surcharge de Porte', 'Gate Overload', 'Attaque ultime: les chevrons se verrouillent de force, un vortex instable arrache les signatures hostiles et l iris se referme avant contre-invasion.']
   },
   'Half-Life': {
     pickups: [

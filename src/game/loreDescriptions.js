@@ -111,9 +111,10 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   Stargate: {
     faction: 'sciFi',
-    theme: 'reseau de Portes, SGC, chevrons, Goa uld, Anciens et exploration militaire sous iris',
-    stageName: 'Salle de Porte',
-    bossName: 'Seigneur Goa uld'
+    theme: 'SGC, Cheyenne Mountain, reseau de Portes, Abydos, Goa uld, Jaffa libres, naquadah, Anciens, Replicateurs et iris',
+    stageName: 'Salle de Porte SGC',
+    bossName: 'Seigneur Goa uld',
+    worldBoss: 'Anubis Flagship Nexus'
   },
   'Half-Life': {
     faction: 'cyber',
