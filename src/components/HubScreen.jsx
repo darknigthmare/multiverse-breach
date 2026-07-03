@@ -559,6 +559,86 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   );
 }
 
+function MultiverseRiftMap({ lang, stages, completedStages, isStageUnlocked, onSelectStage }) {
+  const modeMeta = {
+    RPG: { color: '#3498db', label: 'RPG', ring: 'ATB' },
+    Tactics: { color: '#9b59b6', label: lang === 'fr' ? 'TACTIQUE' : 'TACTICS', ring: 'GRID' },
+    Smash: { color: '#e74c3c', label: 'SMASH', ring: 'BURST' }
+  };
+
+  const portalNodes = useMemo(() => stages.slice(0, 42).map((stage, index) => {
+    const modeIndex = ['RPG', 'Tactics', 'Smash'].indexOf(stage.mode);
+    const angle = ((index * 137.508) % 360) * Math.PI / 180;
+    const ring = 22 + (index % 4) * 9 + modeIndex * 4;
+    const x = 50 + Math.cos(angle) * ring;
+    const y = 50 + Math.sin(angle) * (ring * 0.64);
+    return {
+      stage,
+      x: Math.max(8, Math.min(92, x)),
+      y: Math.max(12, Math.min(88, y)),
+      size: stage.difficulty?.includes('Final') ? 78 : stage.difficulty === 'Expert' ? 62 : stage.difficulty === 'Very Hard' ? 56 : 48,
+      delay: `${-(index % 9) * 0.24}s`,
+      meta: modeMeta[stage.mode] || modeMeta.RPG
+    };
+  }), [stages, lang]);
+
+  const counts = portalNodes.reduce((acc, node) => {
+    acc[node.stage.mode] = (acc[node.stage.mode] || 0) + 1;
+    return acc;
+  }, {});
+
+  return (
+    <div className="rift-universe-map">
+      <div className="rift-map-copy">
+        <div className="portal-focus-kicker">{lang === 'fr' ? 'CARTE DES FAILLES / VUE UNIVERS' : 'RIFT MAP / UNIVERSE VIEW'}</div>
+        <h4>{lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals'}</h4>
+        <p>
+          {lang === 'fr'
+            ? 'Les breches ne sont plus seulement une grille: A.R.C.A. les projette comme des portails physiques. Choisis un mode, lis les menaces, puis verrouille une coordonnee.'
+            : 'Breaches are no longer only a grid: A.R.C.A. projects them as physical portals. Pick a mode, read the threats, then lock a coordinate.'}
+        </p>
+        <div className="rift-map-legend">
+          {Object.entries(modeMeta).map(([mode, meta]) => (
+            <span key={mode} style={{ '--rift-color': meta.color }}>
+              {meta.label}: {counts[mode] || 0}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="rift-map-stage" aria-label={lang === 'fr' ? 'Carte visuelle des failles' : 'Visual rift map'}>
+        <div className="rift-map-core">
+          <strong>NEXUS</strong>
+          <span>{lang === 'fr' ? 'Ancre centrale' : 'Central Anchor'}</span>
+        </div>
+        {portalNodes.map(node => {
+          const completed = completedStages.includes(node.stage.id);
+          const locked = !isStageUnlocked(node.stage);
+          return (
+            <button
+              key={node.stage.id}
+              type="button"
+              className={`rift-portal-node ${completed ? 'sealed' : ''} ${locked ? 'locked' : ''}`}
+              style={{
+                '--rift-x': `${node.x}%`,
+                '--rift-y': `${node.y}%`,
+                '--rift-size': `${node.size}px`,
+                '--rift-color': node.meta.color,
+                '--rift-delay': node.delay
+              }}
+              onClick={() => onSelectStage(node.stage)}
+              title={`${node.stage.universe} - ${node.stage.name} - ${node.stage.mode}`}
+            >
+              <i />
+              <b>{node.stage.id}</b>
+              <span>{node.meta.ring}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function HubScreen({
   lang,
   playerProfile,
@@ -2979,6 +3059,14 @@ export default function HubScreen({
                 </button>
               ))}
             </div>
+
+            <MultiverseRiftMap
+              lang={lang}
+              stages={missionPool}
+              completedStages={completedStages}
+              isStageUnlocked={isStageUnlocked}
+              onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+            />
 
             <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.4fr', gap: '12px', marginBottom: '14px' }}>
               <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '5px' }}>
