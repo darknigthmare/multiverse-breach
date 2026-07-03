@@ -668,9 +668,39 @@ export const EQUIP_ITEMS_DB = [
   { id: 'naquadah_fuel', universe: 'Stargate', name: { en: 'Naquadah Power Cell', fr: 'Générateur au Naquadah' }, boost: { atk: 8, hp: 40 }, cost: 110 },
   { id: 'staff_weapon', universe: 'Stargate', name: { en: 'Horus Guard Staff Tip', fr: 'Embout de lance des gardes d\'Horus' }, boost: { spd: 2 }, cost: 80 },
   // Half-Life
-  { id: 'hev_battery', universe: 'Half-Life', name: { en: 'HEV Suit Battery', fr: 'Batterie de Combinaison HEV' }, boost: { hp: 80, def: 5 }, cost: 90 },
-  { id: 'snark_cage', universe: 'Half-Life', name: { en: 'Snark Nest Cage', fr: 'Cage de Snarks' }, boost: { atk: 9 }, cost: 100 },
-  { id: 'longjump_mod', universe: 'Half-Life', name: { en: 'Long Jump Module', fr: 'Module de Long Saut' }, boost: { spd: 3 }, cost: 120 },
+  {
+    id: 'hev_battery',
+    universe: 'Half-Life',
+    name: { en: 'HEV Auxiliary Battery', fr: 'Batterie auxiliaire HEV' },
+    desc: {
+      fr: 'Module energetique de combinaison Hazardous Environment. Dans une Breche, il restaure la logique Half-Life du bouclier numerique, des alertes vocales et de la survie scientifique sous incident dimensionnel.',
+      en: 'Hazardous Environment suit power module. In a Breach, it restores Half-Life logic: digital armor, suit warnings, and scientific survival during a dimensional incident.'
+    },
+    boost: { hp: 80, def: 5 },
+    cost: 90
+  },
+  {
+    id: 'snark_cage',
+    universe: 'Half-Life',
+    name: { en: 'Xen Snark Containment Cage', fr: 'Cage de confinement snark Xen' },
+    desc: {
+      fr: 'Cage de laboratoire contenant des snarks de Xen. A.R.C.A. l emploie comme ancre offensive instable: courte fenetre de chaos biologique, morsures rapides et pression sur les lignes Combine.',
+      en: 'Laboratory cage containing Xen snarks. A.R.C.A. uses it as an unstable offensive anchor: short biological chaos window, fast bites, and pressure against Combine lines.'
+    },
+    boost: { atk: 9 },
+    cost: 100
+  },
+  {
+    id: 'longjump_mod',
+    universe: 'Half-Life',
+    name: { en: 'HEV Long Jump Module', fr: 'Module de saut long HEV' },
+    desc: {
+      fr: 'Module de mobilite Black Mesa concu pour traverser les espaces hostiles de Xen. Dans Multiverse Breach, il sert a franchir une rupture, quitter une case menacee ou transformer une fuite en repositionnement tactique.',
+      en: 'Black Mesa mobility module designed to cross hostile Xen spaces. In Multiverse Breach, it crosses ruptures, exits threatened tiles, or turns retreat into tactical repositioning.'
+    },
+    boost: { spd: 3 },
+    cost: 120
+  },
   // Portal
   { id: 'longfall_boot', universe: 'Portal', name: { en: 'Long Fall Boots', fr: 'Bottes de Longue Chute' }, boost: { def: 8, spd: 2 }, cost: 110 },
   { id: 'potatos_battery', universe: 'Portal', name: { en: 'PotatOS AI Core', fr: 'PatatOS de Batterie' }, boost: { atk: 8 }, cost: 90 },
@@ -848,8 +878,11 @@ export const EVENT_ITEMS_DB = {
   },
   'Half-Life': {
     id: 'evt_hl_snarks',
-    name: { en: 'Snark Canister', fr: 'Boîte de Snarks' },
-    desc: { en: 'Releases 5 aggressive Snarks that chase and bite enemies rapidly for small continuous damage.', fr: 'Libère 5 Snarks agressifs qui mordent continuellement les ennemis pendant 6 secondes.' },
+    name: { en: 'Xen Snark Release Case', fr: 'Boite de liberation snark Xen' },
+    desc: {
+      en: 'Opens a controlled Xen containment case. Snarks flood the breach for a short window, harassing Combine or alien targets while the HEV signal marks a safe fallback route.',
+      fr: 'Ouvre une caisse de confinement Xen sous controle. Des snarks envahissent brievement la breche, harcelent les cibles Combine ou aliennes pendant que le signal HEV marque une route de repli sure.'
+    },
     effect: 'spawn_snarks'
   },
   'Portal': {
@@ -1059,7 +1092,8 @@ const extraHeroData = {
   ],
   'Half-Life': [
     { id: 'barney', name: 'Barney Calhoun', cat: 'tactical', color: '#3498db' },
-    { id: 'shephard', name: 'Adrian Shephard', cat: 'marine', color: '#7f8c8d' }
+    { id: 'shephard', name: 'Adrian Shephard', cat: 'marine', color: '#7f8c8d' },
+    { id: 'alyx_vance', name: 'Alyx Vance', cat: 'hacker', color: '#8e6f4e' }
   ],
   'Portal': [
     { id: 'atlas', name: 'Atlas', cat: 'tactical', color: '#2980b9' },
@@ -1200,6 +1234,36 @@ Object.keys(extraHeroData).forEach(universe => {
 });
 
 const heroOverrides = {
+  freeman: {
+    simple: { name: 'Crowbar Vector', type: 'melee', dmg: 1.1 },
+    secondary: { name: 'Gravity Gun Punt', type: 'gravity', cd: 6, dmg: 1.8 },
+    defense: { name: 'HEV Aux Power', type: 'shield', dur: 2.5, reduce: 0.85 },
+    special: { name: 'Gluon Gun Cascade', type: 'beam', dmg: 4.8, color: '#33ccff' }
+  },
+  barney: {
+    weaponType: 'gun',
+    weaponColor: '#1f2d36',
+    simple: { name: 'Black Mesa 9mm Cover', type: 'bullet', dmg: 1.0 },
+    secondary: { name: 'Resistance Crossfire', type: 'bullet', cd: 7, dmg: 1.7 },
+    defense: { name: 'Security Door Hold', type: 'shield', dur: 2.0, reduce: 0.8 },
+    special: { name: 'City 17 Evac Route', type: 'support_aoe', dmg: 4.1, color: '#3498db' }
+  },
+  shephard: {
+    weaponType: 'gun',
+    weaponColor: '#2f3b32',
+    simple: { name: 'HECU Rifle Burst', type: 'bullet', dmg: 1.05 },
+    secondary: { name: 'Pipe Wrench Breach', type: 'melee', cd: 6, dmg: 1.8 },
+    defense: { name: 'Marine Cover Order', type: 'shield', dur: 2.1, reduce: 0.78 },
+    special: { name: 'Race X Suppression', type: 'explosive_aoe', dmg: 4.6, color: '#7f8c8d' }
+  },
+  alyx_vance: {
+    weaponType: 'gun',
+    weaponColor: '#3a2c25',
+    simple: { name: 'Resistance Pistol', type: 'bullet', dmg: 1.0 },
+    secondary: { name: 'Combine Lock Hack', type: 'hack', cd: 6, dmg: 1.55 },
+    defense: { name: 'Gravity Glove Pull', type: 'dodge', dur: 1.9, reduce: 0.8 },
+    special: { name: 'Dog Breach Assist', type: 'summon_aoe', dmg: 4.5, color: '#8e6f4e' }
+  },
   jill: {
     weaponType: 'gun',
     weaponColor: '#1b1f2a',

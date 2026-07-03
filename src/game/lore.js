@@ -238,8 +238,8 @@ export const LORE_DB = {
     mediaType: 'game',
     title: { en: 'Half-Life', fr: 'Half-Life' },
     desc: {
-      en: 'A research disaster at Black Mesa triggering a dimensional alien Combine invasion.',
-      fr: 'Une catastrophe scientifique à Black Mesa déclenchant l\'invasion extraterrestre du Cartel.'
+      en: 'A science-fiction disaster universe born from Black Mesa resonance cascade: Xen creatures, HEV survival, HECU cleanup, G-Man manipulation, Resistance cells, and Combine occupation turn one experiment into a planetary rupture.',
+      fr: 'Un univers de catastrophe science-fiction ne de la cascade de resonance de Black Mesa: creatures de Xen, survie HEV, intervention HECU, manipulation du G-Man, cellules de Resistance et occupation Combine transforment une experience en rupture planetaire.'
     }
   },
   'Portal': {

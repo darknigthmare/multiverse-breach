@@ -117,9 +117,10 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   'Half-Life': {
     faction: 'cyber',
-    theme: 'cascade de resonance, Black Mesa, Xen, HEV, silence scientifique et invasion dimensionnelle',
-    stageName: 'Black Mesa rupture',
-    bossName: 'Strider de Resonance'
+    theme: 'Black Mesa, cascade de resonance, combinaison HEV, Xen, Race X, G-Man, Resistance et occupation Combine',
+    stageName: 'Anomalous Materials Lab',
+    bossName: 'Combine Strider',
+    worldBoss: 'Combine Strider Heavy'
   },
   Portal: {
     faction: 'cyber',

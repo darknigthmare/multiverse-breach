@@ -74,12 +74,12 @@ const BATTLE_ITEM_OVERRIDES = {
   },
   'Half-Life': {
     pickups: [
-      ['Batterie HEV', 'HEV Battery', 'Renforce le bouclier du porteur.'],
-      ['Caisse lambda', 'Lambda Crate', 'Degats et recharge aleatoire stabilisee.'],
-      ['Nid de snarks', 'Snark Nest', 'Petites morsures de harcelement sur la ligne ennemie.']
+      ['Batterie auxiliaire HEV', 'HEV Auxiliary Battery', 'Module de combinaison Black Mesa: en melee il restaure l armure du porteur, en tactique il devient une case de recharge HEV sous feu Combine.'],
+      ['Caisse Lambda', 'Lambda Crate', 'Cache de resistance Half-Life: munitions, medkit ou charge experimentale; elle transforme la rarete des ressources en decision de terrain.'],
+      ['Nid de snarks Xen', 'Xen Snark Nest', 'Containment Xen instable: libere de petites creatures agressives qui harcelent les ennemis et cassent les lignes de tir.']
     ],
-    summon: ['Resistance lambda', 'Lambda Resistance', 'Un duo de resistance pose un tir de couverture.'],
-    ultimate: ['Cascade de resonance', 'Resonance Cascade', 'La salle se plie et inflige des degats massifs.']
+    summon: ['Cellule Resistance Lambda', 'Lambda Resistance Cell', 'Invocation temporaire: Barney et une cellule de resistance ouvrent une couverture courte, posent des munitions et guident les survivants vers la sortie.'],
+    ultimate: ['Cascade de resonance controlee', 'Controlled Resonance Cascade', 'Attaque ultime: A.R.C.A. force une mini-cascade Black Mesa, aspire les cibles dans une rupture Xen puis referme la frequence avant invasion totale.']
   },
   Portal: {
     pickups: [
