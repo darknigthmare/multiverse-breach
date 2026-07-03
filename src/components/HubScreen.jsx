@@ -3744,11 +3744,13 @@ export default function HubScreen({
   };
 
   const getEventItemsInInventory = () => {
-    // Filter out standard keys that match active Event Items
+    const previewEventIds = new Set(['evt_hl_snarks', 'evt_halo_warthog', 'evt_re_cure']);
+    // Keep preview event items bound to active universes only; hidden DLC must not leak into base OC inventory.
     return Object.keys(EVENT_ITEMS_DB)
-      .map(key => EVENT_ITEMS_DB[key])
+      .filter(key => isUniverseVisible(key))
+      .map(key => ({ ...EVENT_ITEMS_DB[key], universe: key }))
       .filter(it => !isAssetDisabled('gear', it.id))
-      .filter(it => inventory.includes(it.id) || ['evt_hl_snarks', 'evt_halo_warthog', 'evt_re_cure'].includes(it.id));
+      .filter(it => inventory.includes(it.id) || previewEventIds.has(it.id));
   };
   const SPECIAL_NEXUS_ITEMS = Object.fromEntries([
     ...FUSION_MISSIONS.map(mission => [
@@ -4152,6 +4154,9 @@ export default function HubScreen({
     complete: isCollectionComplete(collection),
     claimed: inventory.includes(getCollectionMarkerId(collection))
   }));
+  const visibleCollectionProgress = collectionProgress.filter(collection => (
+    collection.universes.some(isUniverseVisible)
+  ));
   const selectedUniverseArchive = selectedCollectionUniverse ? (() => {
     const universe = selectedCollectionUniverse;
     const lore = LORE_DB[universe];
@@ -4347,7 +4352,7 @@ export default function HubScreen({
     || (mediaFilter === 'movie' && mediaType === 'series')
   );
   const visibleCollectionUniverses = Object.keys(LORE_DB)
-    .filter(key => key !== 'Nexus de Convergence' && isUniverseVisible(key) && matchesMediaFilter(LORE_DB[key]?.mediaType));
+    .filter(key => isUniverseVisible(key) && matchesMediaFilter(LORE_DB[key]?.mediaType));
   const getMediaTypeLabel = (mediaType) => {
     if (mediaType === 'game') return 'Game';
     if (mediaType === 'movie') return 'Movie';
@@ -5615,7 +5620,14 @@ export default function HubScreen({
                 {lang === 'fr' ? 'Collections de franchise' : 'Franchise collections'}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '8px' }}>
-                {collectionProgress.map(collection => {
+                {visibleCollectionProgress.length === 0 && (
+                  <div style={{ padding: '10px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px', color: '#9fc', fontSize: '11px', lineHeight: 1.35 }}>
+                    {lang === 'fr'
+                      ? 'Aucune collection DLC active. Le jeu de base affiche seulement les archives OC du Nexus tant qu aucun DLC n est active depuis l admin.'
+                      : 'No active DLC collection. The base game only shows OC Nexus archives until a DLC is enabled from admin.'}
+                  </div>
+                )}
+                {visibleCollectionProgress.map(collection => {
                   const ratio = collection.total ? collection.completed / collection.total : 0;
                   return (
                     <div key={collection.id} style={{
@@ -6724,7 +6736,14 @@ export default function HubScreen({
                   {lang === 'fr' ? 'Collections de franchise' : 'Franchise collections'}
                 </strong>
                 <div style={{ display: 'grid', gap: '8px', marginTop: '10px' }}>
-                  {collectionProgress.map(collection => {
+                  {visibleCollectionProgress.length === 0 && (
+                    <div style={{ padding: '9px', background: 'rgba(57,197,187,0.08)', border: '1px solid rgba(57,197,187,0.25)', borderRadius: '4px', color: '#9fc', fontSize: '10px', lineHeight: 1.35 }}>
+                      {lang === 'fr'
+                        ? 'Collections DLC masquees en mode base OC.'
+                        : 'DLC collections are hidden in OC base mode.'}
+                    </div>
+                  )}
+                  {visibleCollectionProgress.map(collection => {
                     const ratio = collection.total ? collection.completed / collection.total : 0;
                     return (
                       <div key={collection.id} style={{ padding: '9px', border: collection.complete ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)', background: collection.complete ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.16)', borderRadius: '4px' }}>

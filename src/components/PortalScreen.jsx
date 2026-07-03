@@ -107,12 +107,20 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
     movie: { universe: 'Star Wars', mode: 'Smash', shape: 'cinema', focusRate: 0.7, meta: { fr: 'Trames ecran: signatures souples pour archives cinema et series.', en: 'Screen Threads: flexible signatures for film and series archives.' } }
   };
 
-  const baseActiveBanner = portalBanners.find(item => item.id === activeBanner) || portalBanners[0];
-  const activeBannerData = { ...baseActiveBanner, ...(bannerVisuals[baseActiveBanner.id] || bannerVisuals.multi) };
   const hiddenUniverseSet = new Set(hiddenUniverses);
   const disabledHeroSet = new Set(disabledAssets.heroes || []);
   const visibleHeroes = HEROES_DB.filter(hero => !hiddenUniverseSet.has(hero.universe) && !disabledHeroSet.has(hero.id));
   const summonableHeroes = visibleHeroes;
+  const visiblePortalBanners = portalBanners.filter(banner => (
+    banner.id === 'nexus'
+    || banner.id === 'multi'
+    || summonableHeroes.some(hero => banner.match(hero) && hero.universe !== 'Nexus de Convergence')
+  ));
+  const baseActiveBanner = visiblePortalBanners.find(item => item.id === activeBanner)
+    || visiblePortalBanners.find(item => item.id === 'nexus')
+    || visiblePortalBanners[0]
+    || portalBanners[0];
+  const activeBannerData = { ...baseActiveBanner, ...(bannerVisuals[baseActiveBanner.id] || bannerVisuals.multi) };
   const activeBannerHeroes = summonableHeroes.filter(hero => activeBannerData.match(hero));
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
@@ -310,7 +318,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
           {getTranslation(lang, 'bannerSelect')}
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '10px' }}>
-          {portalBanners.map(banner => {
+          {visiblePortalBanners.map(banner => {
             const visual = bannerVisuals[banner.id] || bannerVisuals.multi;
             const pack = { ...banner, ...visual };
             const bannerHeroes = summonableHeroes.filter(hero => banner.match(hero));
