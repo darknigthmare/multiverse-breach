@@ -850,6 +850,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             <button
               onClick={toggleAuto}
               className="btn-retro"
+              title={lang === 'fr' ? 'Active ou desactive les actions automatiques en combat.' : 'Toggle automatic combat actions.'}
               style={{
                 borderColor: autoBattle ? '#2ecc71' : '#444',
                 color: autoBattle ? '#2ecc71' : '#aaa',
@@ -868,6 +869,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               setSpeedMultiplier(prev => (prev === 1 ? 2 : 1));
             }}
             className="btn-retro"
+            title={lang === 'fr' ? 'Passe la vitesse du combat entre normal et x2.' : 'Switch combat speed between normal and x2.'}
             style={{
               borderColor: speedMultiplier === 2 ? '#ffeb3b' : '#444',
               color: speedMultiplier === 2 ? '#ffeb3b' : '#aaa',
@@ -879,7 +881,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             {getTranslation(lang, 'btnSpeedUp')}
           </button>
 
-          <button onClick={() => onBattleEnd('quit')} className="btn-retro" style={{ borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '6px 12px' }}>
+          <button onClick={() => onBattleEnd('quit')} className="btn-retro" title={lang === 'fr' ? 'Quitte le combat et retourne au hub. La mission compte comme abandon.' : 'Leave combat and return to the hub. The mission counts as a retreat.'} style={{ borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '6px 12px' }}>
             {getTranslation(lang, 'retreat')}
           </button>
         </div>
@@ -990,6 +992,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 <button
                   onClick={() => onBattleEnd('quit')}
                   className="btn-retro"
+                  title={lang === 'fr' ? 'Retourne au hub apres une erreur de chargement du combat.' : 'Return to the hub after a combat loading error.'}
                   style={{ marginTop: '12px', borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '7px 14px' }}
                 >
                   {lang === 'fr' ? 'RETOUR HUB' : 'RETURN HUB'}
@@ -1073,6 +1076,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 battleItemsTotal: battlePickupsRef.current.length
               })}
               className="btn-retro"
+              title={lang === 'fr' ? 'Valide le resultat du combat, applique les recompenses ou la defaite, puis retourne au hub.' : 'Confirm the combat result, apply rewards or defeat, then return to the hub.'}
               style={{
                 fontSize: '16px',
                 padding: '10px 26px',
@@ -1138,6 +1142,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             <button
               onClick={toggleAuto}
               className="btn-retro"
+              title={lang === 'fr' ? 'Active ou desactive les actions automatiques en RPG.' : 'Toggle automatic RPG actions.'}
               style={{
                 marginTop: '12px',
                 width: '100%',
@@ -1157,6 +1162,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               onClick={handleActivateEventItem}
               disabled={eventItemUsed || battleCompleted}
               className="btn-retro"
+              title={eventItemUsed
+                ? (lang === 'fr' ? 'Objet evenementiel deja utilise pendant ce combat.' : 'Event item already used in this combat.')
+                : (lang === 'fr' ? 'Active l objet evenementiel equipe une seule fois pendant ce combat.' : 'Activate the equipped event item once during this combat.')}
               style={{
                 marginTop: '10px',
                 width: '100%',
@@ -1259,6 +1267,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   onClick={() => handleActiveHeroAbility('simple')}
                   disabled={activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
+                  title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
                 >
                   ⚔️ {activeHeroObj.simple.name}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>Basic Action</div>
@@ -1268,6 +1277,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   onClick={() => handleActiveHeroAbility('secondary')}
                   disabled={activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
+                  title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
                   ⚡ {activeHeroObj.secondary.name}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>
@@ -1279,6 +1289,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   onClick={() => handleActiveHeroAbility('defense')}
                   disabled={activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
+                  title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
                 >
                   🛡️ {activeHeroObj.defense.name}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>Shield Defense</div>
@@ -1288,6 +1299,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   onClick={() => handleActiveHeroAbility('special')}
                   disabled={activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className="btn-special"
+                  title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
                   style={{
                     boxShadow: activeHeroObj.specialCharge >= 100 ? `0 0 15px ${activeHeroObj.primaryColor}` : 'none',
                     borderColor: activeHeroObj.specialCharge >= 100 ? '#fff' : '#444',
@@ -1310,6 +1322,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                       }
                     }}
                     className="btn-retro"
+                    title={lang === 'fr' ? 'Termine le tour du heros actif sans autre action.' : 'End the active hero turn without another action.'}
                     style={{
                       gridColumn: 'span 2',
                       padding: '8px 12px',

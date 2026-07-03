@@ -775,6 +775,7 @@ function App() {
       <button
         onClick={toggleLanguage}
         className="global-lang-control"
+        title={lang === 'fr' ? 'Change la langue de l interface entre francais et anglais.' : 'Switch the interface language between English and French.'}
         style={{
           position: 'fixed',
           bottom: '15px',
@@ -804,13 +805,13 @@ function App() {
         gap: '6px',
         flexWrap: 'wrap'
       }}>
-        <button onClick={exportSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#39c5bb' }}>
+        <button onClick={exportSave} className="btn-retro" title={lang === 'fr' ? 'Telecharge un fichier JSON contenant ta sauvegarde locale.' : 'Download a JSON file containing your local save.'} style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#39c5bb' }}>
           EXPORT TRACE
         </button>
-        <button onClick={importSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#ffeb3b', color: '#ffeb3b' }}>
+        <button onClick={importSave} className="btn-retro" title={lang === 'fr' ? 'Importe un fichier de sauvegarde JSON et remplace la progression locale.' : 'Import a JSON save file and replace local progress.'} style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#ffeb3b', color: '#ffeb3b' }}>
           IMPORT TRACE
         </button>
-        <button onClick={resetSave} className="btn-retro" style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#e74c3c', color: '#e74c3c' }}>
+        <button onClick={resetSave} className="btn-retro" title={lang === 'fr' ? 'Remet a zero la progression locale apres confirmation.' : 'Reset local progress after confirmation.'} style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#e74c3c', color: '#e74c3c' }}>
           PURGE
         </button>
       </div>
@@ -953,6 +954,7 @@ function App() {
             <button
               onClick={startOperation}
               className="btn-retro"
+              title={lang === 'fr' ? 'Cree ton profil joueur et ouvre le hub principal.' : 'Create your player profile and open the main hub.'}
               style={{
                 fontSize: '18px',
                 padding: '12px 36px',

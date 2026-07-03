@@ -280,7 +280,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
     }}>
       {/* Top Header Controls */}
       <div style={{ width: '100%', maxWidth: '800px', display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-        <button onClick={onBack} className="btn-retro">{getTranslation(lang, 'backToHub')}</button>
+        <button onClick={onBack} className="btn-retro" title={lang === 'fr' ? 'Retourne au hub sans depenser de fragments.' : 'Return to the hub without spending shards.'}>{getTranslation(lang, 'backToHub')}</button>
         <div style={{
           padding: '8px 16px',
           background: 'rgba(155, 89, 182, 0.15)',
@@ -320,6 +320,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
                 key={banner.id}
                 onClick={() => { setActiveBanner(banner.id); sound.playSfx('click'); }}
                 className={`portal-booster ${isActive ? 'selected' : ''}`}
+                title={lang === 'fr'
+                  ? `Selectionne cette banniere. Elle change les heros possibles et les chances de focus: ${owned}/${bannerHeroes.length} deja obtenus.`
+                  : `Select this banner. It changes possible heroes and focus odds: ${owned}/${bannerHeroes.length} already owned.`}
                 style={{
                   '--pack-color': banner.color,
                   backgroundImage: packImage ? `linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.86)), url(${packImage})` : undefined
@@ -563,6 +566,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
               onClick={handleSummon}
               disabled={breachShards < cost || activeBannerHeroes.length === 0}
               className={`btn-retro ${breachShards < cost || activeBannerHeroes.length === 0 ? 'btn-disabled' : ''}`}
+              title={lang === 'fr'
+                ? `Depense ${cost} Fragments pour obtenir 1 heros de la banniere active. Les doublons rendent des fragments.`
+                : `Spend ${cost} Shards to obtain 1 hero from the active banner. Duplicates refund shards.`}
               style={{ fontSize: '13px', padding: '10px 20px', borderColor: activeBannerData.color, color: '#fff', background: `${activeBannerData.color}26` }}
             >
               {getTranslation(lang, 'costLabel')}
@@ -571,6 +577,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
               onClick={handleSummonTen}
               disabled={breachShards < 450 || activeBannerHeroes.length === 0}
               className={`btn-retro ${breachShards < 450 || activeBannerHeroes.length === 0 ? 'btn-disabled' : ''}`}
+              title={lang === 'fr'
+                ? 'Depense 450 Fragments pour 10 tirages. Utile pour completer plus vite une banniere.'
+                : 'Spend 450 Shards for 10 pulls. Useful to complete a banner faster.'}
               style={{ fontSize: '13px', padding: '10px 20px', borderColor: '#ffea00', color: '#fff', background: 'rgba(255, 234, 0, 0.15)' }}
             >
               {getTranslation(lang, 'btnSummonTen')} {activeBannerData.id !== 'multi' ? (lang === 'fr' ? '+ HARMONIE' : '+ HARMONY') : ''}

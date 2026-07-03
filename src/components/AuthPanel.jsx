@@ -50,6 +50,7 @@ export default function AuthPanel({
       <button
         onClick={() => setOpen(prev => !prev)}
         className="btn-retro"
+        title={lang === 'fr' ? 'Ouvre ou ferme le panneau de connexion et sauvegarde cloud.' : 'Open or close the account and cloud save panel.'}
         style={{
           width: open ? '100%' : 'auto',
           fontSize: '11px',
@@ -77,10 +78,10 @@ export default function AuthPanel({
                 {cloudStatus}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px' }}>
-                <button disabled={busy} onClick={() => run(onLoadCloud)} className="btn-retro" style={{ fontSize: '10px', padding: '6px' }}>
+                <button disabled={busy} onClick={() => run(onLoadCloud)} className="btn-retro" title={lang === 'fr' ? 'Charge ta progression depuis Supabase et remplace la sauvegarde locale.' : 'Load your progress from Supabase and replace the local save.'} style={{ fontSize: '10px', padding: '6px' }}>
                   {t.load}
                 </button>
-                <button disabled={busy} onClick={() => run(onSaveCloud)} className="btn-retro" style={{ fontSize: '10px', padding: '6px' }}>
+                <button disabled={busy} onClick={() => run(onSaveCloud)} className="btn-retro" title={lang === 'fr' ? 'Envoie ta progression locale vers Supabase.' : 'Upload your local progress to Supabase.'} style={{ fontSize: '10px', padding: '6px' }}>
                   {t.save}
                 </button>
               </div>
@@ -88,6 +89,7 @@ export default function AuthPanel({
                 disabled={busy}
                 onClick={() => run(onSignOut)}
                 className="btn-retro"
+                title={lang === 'fr' ? 'Deconnecte le compte Supabase sur cet appareil.' : 'Sign out of the Supabase account on this device.'}
                 style={{ width: '100%', marginTop: '6px', fontSize: '10px', padding: '6px', borderColor: '#e74c3c', color: '#e74c3c' }}
               >
                 {t.signOut}
@@ -110,10 +112,10 @@ export default function AuthPanel({
                 style={inputStyle}
               />
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', marginTop: '8px' }}>
-                <button disabled={busy || !email || !password} onClick={() => run(onSignIn)} className="btn-retro" style={{ fontSize: '10px', padding: '6px' }}>
+                <button disabled={busy || !email || !password} onClick={() => run(onSignIn)} className="btn-retro" title={lang === 'fr' ? 'Connecte un compte existant avec email et mot de passe.' : 'Sign in to an existing account with email and password.'} style={{ fontSize: '10px', padding: '6px' }}>
                   {t.signIn}
                 </button>
-                <button disabled={busy || !email || !password} onClick={() => run(onSignUp)} className="btn-retro" style={{ fontSize: '10px', padding: '6px' }}>
+                <button disabled={busy || !email || !password} onClick={() => run(onSignUp)} className="btn-retro" title={lang === 'fr' ? 'Cree un nouveau compte Supabase pour sauvegarder ta progression.' : 'Create a new Supabase account to save your progress.'} style={{ fontSize: '10px', padding: '6px' }}>
                   {t.signUp}
                 </button>
               </div>

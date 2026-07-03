@@ -14,6 +14,7 @@ export default function AudioControl() {
     <button
       onClick={toggleMute}
       className="global-audio-control"
+      title={muted ? 'Reactive la musique et les effets sonores.' : 'Coupe la musique et les effets sonores.'}
       style={{
         background: 'rgba(20, 20, 30, 0.75)',
         border: '1px solid #39c5bb',

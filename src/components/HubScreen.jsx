@@ -863,7 +863,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         </div>
         <div className="mosaic-rpg-controls">
           <span>{lang === 'fr' ? 'WASD/fleches: explorer. E: parler ou entrer dans un portail. Tap/clic: destination ou portail.' : 'WASD/arrows: explore. E: talk or enter a portal. Tap/click: destination or portal.'}</span>
-          <button className="btn-retro" onClick={interactWithNearby}>
+          <button className="btn-retro" onClick={interactWithNearby} title={lang === 'fr' ? 'Interagit avec le heros ou le portail le plus proche.' : 'Interact with the nearest hero or portal.'}>
             {lang === 'fr' ? 'SYNCHRONISER' : 'SYNCHRONIZE'}
           </button>
         </div>
@@ -871,11 +871,11 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       <div className="mosaic-rpg-stage">
         <canvas ref={canvasRef} width="960" height="540" className="nexus-hub-canvas mosaic-rpg-canvas" onPointerDown={moveToPointer} />
         <div className="mosaic-mobile-pad">
-          <button onPointerDown={() => setVirtualKey('arrowup', true)} onPointerUp={() => setVirtualKey('arrowup', false)} onPointerLeave={() => setVirtualKey('arrowup', false)}>UP</button>
-          <button onPointerDown={() => setVirtualKey('arrowleft', true)} onPointerUp={() => setVirtualKey('arrowleft', false)} onPointerLeave={() => setVirtualKey('arrowleft', false)}>LEFT</button>
-          <button onClick={interactWithNearby}>{lang === 'fr' ? 'SYNC' : 'SYNC'}</button>
-          <button onPointerDown={() => setVirtualKey('arrowright', true)} onPointerUp={() => setVirtualKey('arrowright', false)} onPointerLeave={() => setVirtualKey('arrowright', false)}>RIGHT</button>
-          <button onPointerDown={() => setVirtualKey('arrowdown', true)} onPointerUp={() => setVirtualKey('arrowdown', false)} onPointerLeave={() => setVirtualKey('arrowdown', false)}>DOWN</button>
+          <button title={lang === 'fr' ? 'Deplace le heros vers le haut.' : 'Move the hero upward.'} onPointerDown={() => setVirtualKey('arrowup', true)} onPointerUp={() => setVirtualKey('arrowup', false)} onPointerLeave={() => setVirtualKey('arrowup', false)}>UP</button>
+          <button title={lang === 'fr' ? 'Deplace le heros vers la gauche.' : 'Move the hero left.'} onPointerDown={() => setVirtualKey('arrowleft', true)} onPointerUp={() => setVirtualKey('arrowleft', false)} onPointerLeave={() => setVirtualKey('arrowleft', false)}>LEFT</button>
+          <button title={lang === 'fr' ? 'Interagit avec le heros ou portail proche.' : 'Interact with the nearby hero or portal.'} onClick={interactWithNearby}>{lang === 'fr' ? 'SYNC' : 'SYNC'}</button>
+          <button title={lang === 'fr' ? 'Deplace le heros vers la droite.' : 'Move the hero right.'} onPointerDown={() => setVirtualKey('arrowright', true)} onPointerUp={() => setVirtualKey('arrowright', false)} onPointerLeave={() => setVirtualKey('arrowright', false)}>RIGHT</button>
+          <button title={lang === 'fr' ? 'Deplace le heros vers le bas.' : 'Move the hero downward.'} onPointerDown={() => setVirtualKey('arrowdown', true)} onPointerUp={() => setVirtualKey('arrowdown', false)} onPointerLeave={() => setVirtualKey('arrowdown', false)}>DOWN</button>
         </div>
       </div>
     </div>
@@ -1465,17 +1465,17 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           </div>
         )}
         <div className="nexus-play-actions">
-          <button className="btn-retro" onClick={startRun}>{runSnapshot.phase === 'running' ? (lang === 'fr' ? 'RESTART' : 'RESTART') : (lang === 'fr' ? 'DEMARRER RUN' : 'START RUN')}</button>
-          <button className="btn-retro" onClick={fire}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
-          <button className="btn-retro" onClick={reload}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
-          <button className="btn-retro" onClick={useRoleSkill}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
-          <button className="btn-retro" onClick={collectLoot}>{lang === 'fr' ? 'LOOT' : 'LOOT'}</button>
-          <button className="btn-retro" onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
-          <button className="btn-retro" onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
-          <button className="btn-retro" onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
-          <button className="btn-retro" onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
-          <button className="btn-retro" onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
-          <button className="btn-retro" onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
+          <button className="btn-retro" onClick={startRun} title={lang === 'fr' ? 'Lance ou recommence une run Zone d Extinction.' : 'Start or restart an Extinction Zone run.'}>{runSnapshot.phase === 'running' ? (lang === 'fr' ? 'RESTART' : 'RESTART') : (lang === 'fr' ? 'DEMARRER RUN' : 'START RUN')}</button>
+          <button className="btn-retro" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
+          <button className="btn-retro" onClick={reload} title={lang === 'fr' ? 'Recharge les munitions au maximum.' : 'Refill ammunition to maximum.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+          <button className="btn-retro" onClick={useRoleSkill} title={lang === 'fr' ? 'Active la capacite speciale liee au role du heros.' : 'Activate the selected hero role ability.'}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
+          <button className="btn-retro" onClick={collectLoot} title={lang === 'fr' ? 'Ramasse l objet proche si tu es assez pres.' : 'Pick up the nearby item if you are close enough.'}>{lang === 'fr' ? 'LOOT' : 'LOOT'}</button>
+          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
+          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
+          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se deplacer lateralement a gauche.' : 'Hold to strafe left.'} onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
+          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se deplacer lateralement a droite.' : 'Hold to strafe right.'} onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
+          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la camera vers la gauche.' : 'Hold to turn the camera left.'} onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
+          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la camera vers la droite.' : 'Hold to turn the camera right.'} onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
         </div>
       </div>
       <canvas ref={canvasRef} width="840" height="430" className="fps-royale-canvas" onClick={fire} />
@@ -3795,60 +3795,70 @@ export default function HubScreen({
         <button
           onClick={() => { setActiveTab('missions'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'missions' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Ouvre la carte des missions et arcs narratifs.' : 'Open the mission map and narrative arcs.'}
         >
           {getTranslation(lang, 'tabMissions')}
         </button>
         <button
           onClick={() => { setActiveTab('mosaicHub'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'mosaicHub' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Ouvre le hub RPG exploratoire avec tes heros et portails.' : 'Open the explorable RPG hub with your heroes and portals.'}
         >
           {lang === 'fr' ? 'CITE-MOSAIQUE' : 'MOSAIC CITY'}
         </button>
         <button
           onClick={() => { setActiveTab('battleRoyale'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'battleRoyale' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Ouvre le mode FPS de survie Zone d Extinction.' : 'Open the Extinction Zone FPS survival mode.'}
         >
           {lang === 'fr' ? 'ZONE D EXTINCTION' : 'EXTINCTION ZONE'}
         </button>
         <button
           onClick={() => { setActiveTab('roster'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'roster' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Consulte les heros debloques et leurs niveaux.' : 'View unlocked heroes and their levels.'}
         >
           {getTranslation(lang, 'tabRoster')}
         </button>
         <button
           onClick={() => { setActiveTab('party'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'party' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Compose ton equipe active pour les combats.' : 'Set your active combat team.'}
         >
           {getTranslation(lang, 'tabParty')}
         </button>
         <button
           onClick={() => { setActiveTab('inventory'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'inventory' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Equipe ou retire des reliques et objets evenementiels.' : 'Equip or remove relics and event items.'}
         >
           {getTranslation(lang, 'tabInventory')}
         </button>
         <button
           onClick={() => { setActiveTab('collection'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'collection' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Consulte les univers, ennemis, objets et traces collectionnes.' : 'View collected universes, enemies, items, and traces.'}
         >
           {lang === 'fr' ? 'COLLECTION' : 'COLLECTION'}
         </button>
         <button
           onClick={() => { setActiveTab('shop'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'shop' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Achete des objets avec tes ressources.' : 'Buy items with your resources.'}
         >
           {getTranslation(lang, 'tabShop')}
         </button>
         <button
           onClick={() => { setActiveTab('codex'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'codex' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Lis le lore, les arcs et les archives du jeu.' : 'Read lore, arcs, and game archives.'}
         >
           {getTranslation(lang, 'tabCodex')}
         </button>
         <button
           onClick={() => { setActiveTab('admin'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'admin' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Ouvre les outils pour masquer/afficher univers, stages et assets.' : 'Open tools to hide/show universes, stages, and assets.'}
           style={{ borderColor: activeTab === 'admin' ? '#ff4500' : '#555', color: activeTab === 'admin' ? '#ff4500' : undefined }}
         >
           ADMIN
@@ -3856,6 +3866,7 @@ export default function HubScreen({
         <button
           onClick={onGoToPortal}
           className="btn-retro"
+          title={lang === 'fr' ? 'Ouvre le portail de breche pour obtenir de nouveaux heros.' : 'Open the breach portal to obtain new heroes.'}
           style={{ marginLeft: 'auto', border: '1px solid #9b59b6', background: 'rgba(155, 89, 182, 0.1)', color: '#9b59b6', fontSize: '13px' }}
         >
           {getTranslation(lang, 'btnPortal')}
@@ -3871,6 +3882,7 @@ export default function HubScreen({
           <button
             onClick={() => { setMediaFilter('all'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'all' ? 'active-tab' : ''}`}
+            title={lang === 'fr' ? 'Affiche tous les types d univers.' : 'Show every universe type.'}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'all' ? '#ffea00' : '#444' }}
           >
             {lang === 'fr' ? 'TOUT' : 'ALL'}
@@ -3878,6 +3890,7 @@ export default function HubScreen({
           <button
             onClick={() => { setMediaFilter('game'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'game' ? 'active-tab' : ''}`}
+            title={lang === 'fr' ? 'Filtre sur les univers de jeux video.' : 'Filter to video game universes.'}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'game' ? '#3498db' : '#444' }}
           >
             {lang === 'fr' ? 'JEUX VIDEO' : 'VIDEO GAMES'}
@@ -3885,6 +3898,7 @@ export default function HubScreen({
           <button
             onClick={() => { setMediaFilter('movie'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'movie' ? 'active-tab' : ''}`}
+            title={lang === 'fr' ? 'Filtre sur les univers films et series.' : 'Filter to movie and TV universes.'}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'movie' ? '#e74c3c' : '#444' }}
           >
             {lang === 'fr' ? 'FILMS & SERIES' : 'MOVIES & TV'}
@@ -3892,6 +3906,7 @@ export default function HubScreen({
           <button
             onClick={() => { setMediaFilter('manga'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'manga' ? 'active-tab' : ''}`}
+            title={lang === 'fr' ? 'Filtre sur les univers manga, anime et web.' : 'Filter to manga, anime, and web universes.'}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'manga' ? '#9b59b6' : '#444' }}
           >
             {lang === 'fr' ? 'MANGA & WEB' : 'MANGA & WEB'}
@@ -3899,6 +3914,7 @@ export default function HubScreen({
           <button
             onClick={() => { setMediaFilter('music'); sound.playSfx('click'); }}
             className={`btn-retro ${mediaFilter === 'music' ? 'active-tab' : ''}`}
+            title={lang === 'fr' ? 'Filtre sur les personas et univers musicaux.' : 'Filter to music personas and music universes.'}
             style={{ fontSize: '11px', padding: '5px 12px', borderColor: mediaFilter === 'music' ? '#f1c40f' : '#444' }}
           >
             {lang === 'fr' ? 'MUSIQUE' : 'MUSIC'}
@@ -3957,6 +3973,7 @@ export default function HubScreen({
                       type="button"
                       onClick={() => { setMissionScreen(key); setMissionSeed(Date.now()); setBriefingStageId(null); setShowMissionArchive(false); sound.playSfx('coin'); }}
                       className="btn-retro"
+                      title={lang === 'fr' ? `Ouvre cet ecran de missions: ${entry.label.fr}.` : `Open this mission screen: ${entry.label.en}.`}
                       style={{
                         minHeight: '154px',
                         padding: '14px',
@@ -4005,6 +4022,7 @@ export default function HubScreen({
                 type="button"
                 onClick={() => { setMissionScreen('index'); setBriefingStageId(null); sound.playSfx('click'); }}
                 className="btn-retro"
+                title={lang === 'fr' ? 'Retourne au choix des categories de missions.' : 'Return to mission category selection.'}
                 style={{ padding: '6px 10px', fontSize: '10px', borderColor: '#555', color: '#aaa' }}
               >
                 {lang === 'fr' ? 'RETOUR AUX ECRANS' : 'BACK TO SCREENS'}
@@ -4019,6 +4037,7 @@ export default function HubScreen({
               <button
                 onClick={() => { setMissionSeed(prev => prev + 1); sound.playSfx('click'); }}
                 className="btn-retro"
+                title={lang === 'fr' ? 'Regenere les missions proposees dans cette categorie.' : 'Refresh the proposed missions in this category.'}
                 style={{ padding: '7px 12px', fontSize: '11px', borderColor: '#39c5bb' }}
               >
                 {lang === 'fr' ? '↻ RELIRE LES SIGNAUX' : '↻ REREAD SIGNALS'}
@@ -4030,6 +4049,9 @@ export default function HubScreen({
                   key={mode}
                   onClick={() => { setMissionModeFilter(mode); setMissionSeed(Date.now()); sound.playSfx('click'); }}
                   className={`btn-retro ${missionModeFilter === mode ? 'active-tab' : ''}`}
+                  title={mode === 'all'
+                    ? (lang === 'fr' ? 'Affiche tous les modes de jeu.' : 'Show every game mode.')
+                    : (lang === 'fr' ? `Affiche seulement les missions ${mode}.` : `Show only ${mode} missions.`)}
                   style={{
                     padding: '6px 10px',
                     fontSize: '10px',
@@ -4084,6 +4106,7 @@ export default function HubScreen({
                           onClick={() => claimDailyContract(contract)}
                           disabled={!done || claimed}
                           className="btn-retro"
+                          title={lang === 'fr' ? 'Recupere la recompense si ce contrat quotidien est termine.' : 'Claim the reward if this daily contract is complete.'}
                           style={{ fontSize: '8px', padding: '3px 6px', borderColor: claimed ? '#2ecc71' : done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : done ? '#ffeb3b' : '#555' }}
                         >
                           {claimed ? (lang === 'fr' ? 'SCELLE' : 'SEALED') : (lang === 'fr' ? '+CACHE' : '+CACHE')}
@@ -4099,7 +4122,7 @@ export default function HubScreen({
                   <span style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold' }}>
                     {lang === 'fr' ? 'CARTE MULTIVERS' : 'MULTIVERSE MAP'}
                   </span>
-                  <button onClick={launchSurvival} className="btn-retro" style={{ fontSize: '10px', padding: '4px 8px', borderColor: '#ff4500', color: '#ff8c00' }}>
+                  <button onClick={launchSurvival} className="btn-retro" title={lang === 'fr' ? 'Lance une mission de survie rapide.' : 'Launch a quick survival mission.'} style={{ fontSize: '10px', padding: '4px 8px', borderColor: '#ff4500', color: '#ff8c00' }}>
                     {lang === 'fr' ? 'SURVIE' : 'SURVIVAL'}
                   </button>
                 </div>
@@ -4198,6 +4221,7 @@ export default function HubScreen({
                         onClick={() => claimLongTermMilestone(milestone)}
                         disabled={!ready || claimed}
                         className="btn-retro"
+                        title={lang === 'fr' ? 'Recupere la recompense de ce jalon si l objectif est atteint.' : 'Claim this milestone reward if the objective is complete.'}
                         style={{
                           marginTop: '7px',
                           padding: '5px 8px',
@@ -4392,6 +4416,7 @@ export default function HubScreen({
                             onClick={() => claimArcReward(arc)}
                             disabled={!arc.complete || arc.claimed}
                             className="btn-retro"
+                            title={lang === 'fr' ? 'Recupere la recompense finale de cet arc si toutes ses missions sont terminees.' : 'Claim this arc final reward if all its missions are complete.'}
                             style={{
                               marginTop: '7px',
                               padding: '4px 7px',
@@ -4584,6 +4609,7 @@ export default function HubScreen({
                         onClick={() => claimWeeklyOperation(operation)}
                         disabled={!operation.done || claimed}
                         className="btn-retro"
+                        title={lang === 'fr' ? 'Recupere la recompense hebdomadaire si l objectif est termine.' : 'Claim the weekly reward if the objective is complete.'}
                         style={{ fontSize: '9px', padding: '5px 8px', borderColor: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#666' }}
                       >
                         {claimed
@@ -4636,6 +4662,7 @@ export default function HubScreen({
                         onClick={() => claimCollectionReward(collection)}
                         disabled={!collection.complete || collection.claimed}
                         className="btn-retro"
+                        title={lang === 'fr' ? 'Recupere la cache de collection si tous les elements requis sont obtenus.' : 'Claim the collection cache if every required element is obtained.'}
                         style={{
                           marginTop: '8px',
                           padding: '5px 9px',
@@ -4785,6 +4812,7 @@ export default function HubScreen({
                           <button
                             onClick={() => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
                             className="btn-retro"
+                            title={lang === 'fr' ? 'Ouvre les details de cette mission sans la lancer.' : 'Open this mission details without starting it.'}
                             style={{ padding: '6px 12px', borderColor: '#ffeb3b', color: '#ffeb3b', fontSize: '11px' }}
                           >
                             BRIEFING
@@ -4792,6 +4820,7 @@ export default function HubScreen({
                           <button
                             onClick={() => launchStage(stage)}
                             className="btn-retro"
+                            title={lang === 'fr' ? 'Lance cette mission avec ton equipe active.' : 'Start this mission with your active team.'}
                             style={{
                               padding: '8px 16px',
                               background: '#39c5bb',
@@ -4857,11 +4886,14 @@ export default function HubScreen({
                     onClick={() => launchStage(selectedBriefingStage)}
                     disabled={!isStageUnlocked(selectedBriefingStage)}
                     className="btn-retro"
+                    title={isStageUnlocked(selectedBriefingStage)
+                      ? (lang === 'fr' ? 'Lance la mission affichee dans le briefing.' : 'Start the mission shown in this briefing.')
+                      : (lang === 'fr' ? 'Mission verrouillee: stabilise plus de breches pour la debloquer.' : 'Mission locked: stabilize more breaches to unlock it.')}
                     style={{ padding: '8px 14px', background: isStageUnlocked(selectedBriefingStage) ? '#ffeb3b' : '#333', color: isStageUnlocked(selectedBriefingStage) ? '#111' : '#777' }}
                   >
                     {isStageUnlocked(selectedBriefingStage) ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
                   </button>
-                  <button onClick={() => setBriefingStageId(null)} className="btn-retro" style={{ padding: '6px 12px', fontSize: '10px', borderColor: '#555' }}>
+                  <button onClick={() => setBriefingStageId(null)} className="btn-retro" title={lang === 'fr' ? 'Ferme le briefing sans lancer de mission.' : 'Close the briefing without starting a mission.'} style={{ padding: '6px 12px', fontSize: '10px', borderColor: '#555' }}>
                     FERMER
                   </button>
                 </div>
@@ -4895,6 +4927,9 @@ export default function HubScreen({
                   onClick={() => finalStageUnlocked && launchStage(finalStage)}
                   className="btn-retro"
                   disabled={!finalStageUnlocked}
+                  title={finalStageUnlocked
+                    ? (lang === 'fr' ? 'Lance le boss final de la campagne.' : 'Start the final campaign boss.')
+                    : (lang === 'fr' ? 'Boss final verrouille: stabilise plus de breches.' : 'Final boss locked: stabilize more breaches.')}
                   style={{
                     padding: '8px 16px',
                     background: finalStageUnlocked ? '#ffea00' : 'rgba(255,255,255,0.04)',
@@ -4911,6 +4946,7 @@ export default function HubScreen({
               <button
                 onClick={() => { setShowMissionArchive(prev => !prev); sound.playSfx('click'); }}
                 className="btn-retro"
+                title={lang === 'fr' ? 'Affiche ou masque la liste complete des missions filtrees.' : 'Show or hide the complete filtered mission list.'}
                 style={{ padding: '7px 11px', fontSize: '10px', borderColor: '#555' }}
               >
                 {showMissionArchive
@@ -4927,6 +4963,9 @@ export default function HubScreen({
                         key={stage.id}
                         onClick={() => isStageUnlocked(stage) ? launchStage(stage) : setBriefingStageId(stage.id)}
                         className="btn-retro"
+                        title={isStageUnlocked(stage)
+                          ? (lang === 'fr' ? 'Lance cette mission archivee.' : 'Start this archived mission.')
+                          : (lang === 'fr' ? 'Mission verrouillee: ouvre le briefing pour voir les conditions.' : 'Mission locked: open the briefing to see requirements.')}
                         style={{
                           textAlign: 'left',
                           padding: '9px',
@@ -5055,6 +5094,9 @@ export default function HubScreen({
                       onClick={() => handleLevelUp(selectedHero.id)}
                       disabled={gold < getUpgradeCost(selectedHero.id)}
                       className={`btn-retro ${gold < getUpgradeCost(selectedHero.id) ? 'btn-disabled' : ''}`}
+                      title={lang === 'fr'
+                        ? `Depense ${getUpgradeCost(selectedHero.id)} Or pour augmenter ce heros d un niveau.`
+                        : `Spend ${getUpgradeCost(selectedHero.id)} Gold to increase this hero by one level.`}
                       style={{ width: '100%', fontSize: '12px', padding: '8px', marginTop: '12px' }}
                     >
                       {getTranslation(lang, 'levelUpBtn')} (🪙 {getUpgradeCost(selectedHero.id)})
@@ -5063,6 +5105,9 @@ export default function HubScreen({
                       onClick={() => handleLevelUpPotion(selectedHero.id)}
                       disabled={breachShards < 20}
                       className={`btn-retro ${breachShards < 20 ? 'btn-disabled' : ''}`}
+                      title={lang === 'fr'
+                        ? 'Depense 20 Fragments pour augmenter ce heros d un niveau.'
+                        : 'Spend 20 Shards to increase this hero by one level.'}
                       style={{ 
                         width: '100%', 
                         fontSize: '11px', 
@@ -5321,6 +5366,7 @@ export default function HubScreen({
               <button
                 className="btn-retro"
                 onClick={() => setPublicProfile(prev => ({ ...prev, shareCode: prev?.shareCode || generateShareCode(), visibility: prev?.visibility === 'public' ? 'private' : 'public' }))}
+                title={lang === 'fr' ? 'Active ou desactive la visibilite publique du profil et genere un code ami si besoin.' : 'Toggle public profile visibility and generate a friend code if needed.'}
                 style={{ fontSize: '10px', borderColor: publicProfile?.visibility === 'public' ? '#2ecc71' : '#ffea00', color: publicProfile?.visibility === 'public' ? '#2ecc71' : '#ffea00' }}
               >
                 {publicProfile?.visibility === 'public'
@@ -5364,6 +5410,7 @@ export default function HubScreen({
               <button
                 onClick={autoEquipRelics}
                 className="btn-retro"
+                title={lang === 'fr' ? 'Equipe automatiquement les meilleures reliques disponibles sur l equipe active.' : 'Automatically equip the best available relics on the active team.'}
                 style={{ fontSize: '11px', padding: '7px 12px', background: 'rgba(57, 197, 187, 0.1)', borderColor: '#39c5bb', color: '#39c5bb' }}
               >
                 {getTranslation(lang, 'btnAutoEquip')}
@@ -5419,6 +5466,7 @@ export default function HubScreen({
                         <button
                           onClick={() => { setSelectedHeroId(hero.id); setActiveTab('inventory'); sound.playSfx('click'); }}
                           className="btn-retro"
+                          title={lang === 'fr' ? 'Ouvre l inventaire pour changer les reliques et objets de ce heros.' : 'Open inventory to change this hero relics and event items.'}
                           style={{ fontSize: '10px', padding: '4px 8px', width: '100%', marginTop: '8px' }}
                         >
                           {lang === 'fr' ? 'GERER EQUIPEMENT' : 'MANAGE GEAR'}
@@ -5567,6 +5615,9 @@ export default function HubScreen({
                     key={hero.id}
                     onClick={() => toggleActiveHero(hero.id)}
                     className={`squad-reserve-card ${isActive ? 'active' : ''}`}
+                    title={isActive
+                      ? (lang === 'fr' ? 'Clique pour retirer ce heros de l equipe active.' : 'Click to remove this hero from the active team.')
+                      : (lang === 'fr' ? 'Clique pour ajouter ce heros a l equipe active si une place est libre.' : 'Click to add this hero to the active team if a slot is free.')}
                     style={{ '--slot-color': hero.primaryColor }}
                   >
                     <div className="squad-reserve-head">
@@ -5611,6 +5662,7 @@ export default function HubScreen({
               <button
                 onClick={autoEquipRelics}
                 className="btn-retro"
+                title={lang === 'fr' ? 'Equipe automatiquement les meilleures reliques disponibles sur l equipe active.' : 'Automatically equip the best available relics on the active team.'}
                 style={{ fontSize: '11px', padding: '6px 12px', background: 'rgba(57, 197, 187, 0.1)', borderColor: '#39c5bb', color: '#39c5bb' }}
               >
                 {getTranslation(lang, 'btnAutoEquip')}
@@ -5807,6 +5859,7 @@ export default function HubScreen({
                     key={universe}
                     type="button"
                     onClick={() => { setSelectedCollectionUniverse(universe); sound.playSfx('coin'); }}
+                    title={lang === 'fr' ? `Ouvre le dossier detaille de l univers ${universe}.` : `Open the detailed file for ${universe}.`}
                     style={{
                       padding: '12px',
                       border: cleared ? '1px solid rgba(46,204,113,0.35)' : '1px solid rgba(255,255,255,0.08)',
@@ -5903,7 +5956,7 @@ export default function HubScreen({
                               {getGearLore(selectedEquippedGear)}
                             </div>
                           )}
-                          <button onClick={() => unequipItem(selectedHero.id)} className="btn-retro" style={{ fontSize: '10px', padding: '3px 8px', borderColor: '#e74c3c', color: '#e74c3c' }}>
+                          <button onClick={() => unequipItem(selectedHero.id)} className="btn-retro" title={lang === 'fr' ? 'Retire cette relique du heros et la remet dans l inventaire.' : 'Remove this relic from the hero and return it to inventory.'} style={{ fontSize: '10px', padding: '3px 8px', borderColor: '#e74c3c', color: '#e74c3c' }}>
                             {getTranslation(lang, 'unequipBtn')}
                           </button>
                         </div>
@@ -5925,7 +5978,7 @@ export default function HubScreen({
                               {getEventLore(selectedEquippedEvent)}
                             </div>
                           )}
-                          <button onClick={() => unequipEventItem(selectedHero.id)} className="btn-retro" style={{ fontSize: '10px', padding: '3px 8px', borderColor: '#e74c3c', color: '#e74c3c' }}>
+                          <button onClick={() => unequipEventItem(selectedHero.id)} className="btn-retro" title={lang === 'fr' ? 'Retire cet objet evenementiel du heros.' : 'Remove this event item from the hero.'} style={{ fontSize: '10px', padding: '3px 8px', borderColor: '#e74c3c', color: '#e74c3c' }}>
                             {getTranslation(lang, 'unequipBtn')}
                           </button>
                         </div>
@@ -5946,6 +5999,7 @@ export default function HubScreen({
                         type="button"
                         onClick={() => setInventoryFilter(group.id)}
                         className="btn-retro"
+                        title={lang === 'fr' ? `Filtre l inventaire sur: ${group.label.fr}.` : `Filter inventory to: ${group.label.en}.`}
                         style={{
                           fontSize: '9px',
                           padding: '5px 7px',
@@ -5990,6 +6044,9 @@ export default function HubScreen({
                                 onClick={() => equipItem(selectedHero.id, item.id)}
                                 disabled={isEquippedElsewhere}
                                 className="btn-retro"
+                                title={isEquippedElsewhere
+                                  ? (lang === 'fr' ? 'Cette relique est deja equipee par un autre heros.' : 'This relic is already equipped by another hero.')
+                                  : (lang === 'fr' ? 'Equipe cette relique sur le heros selectionne.' : 'Equip this relic on the selected hero.')}
                                 style={{ fontSize: '11px', padding: '4px 10px' }}
                               >
                                 {isEquippedElsewhere ? 'ASSIGNEE' : getTranslation(lang, 'equipBtn')}
@@ -6029,6 +6086,9 @@ export default function HubScreen({
                                 onClick={() => equipEventItem(selectedHero.id, item.id)}
                                 disabled={!matchesUniverse}
                                 className="btn-retro"
+                                title={matchesUniverse
+                                  ? (lang === 'fr' ? 'Equipe cet objet evenementiel compatible sur le heros selectionne.' : 'Equip this compatible event item on the selected hero.')
+                                  : (lang === 'fr' ? 'Objet incompatible: il ne correspond pas a l univers de ce heros.' : 'Incompatible item: it does not match this hero universe.')}
                                 style={{ fontSize: '11px', padding: '4px 10px', borderColor: matchesUniverse ? '#ff4500' : '#444', color: matchesUniverse ? '#ff4500' : '#444' }}
                               >
                                 {matchesUniverse ? getTranslation(lang, 'equipBtn') : 'LORE INCOMPATIBLE'}
@@ -6113,6 +6173,9 @@ export default function HubScreen({
                                   onClick={() => handleFuseRelic(item.id)}
                                   disabled={!canAfford}
                                   className={`btn-retro ${!canAfford ? 'btn-disabled' : ''}`}
+                                  title={lang === 'fr'
+                                    ? 'Consomme 3 exemplaires de cette relique et 150 Or pour creer une version amelioree.'
+                                    : 'Consume 3 copies of this relic and 150 Gold to create an upgraded version.'}
                                   style={{
                                     fontSize: '11px',
                                     padding: '5px 12px',
@@ -6291,6 +6354,11 @@ export default function HubScreen({
                         onClick={() => buyShopItem(item)}
                         disabled={!canBuy}
                         className="btn-retro"
+                        title={owned
+                          ? (lang === 'fr' ? 'Objet deja possede.' : 'Item already owned.')
+                          : canBuy
+                            ? (lang === 'fr' ? `Achete cet objet pour ${item.tokenCost} tickets evenement.` : `Buy this item for ${item.tokenCost} event tickets.`)
+                            : (lang === 'fr' ? `Tickets insuffisants: il faut ${item.tokenCost} tickets evenement.` : `Not enough tickets: requires ${item.tokenCost} event tickets.`)}
                         style={{
                           width: '100%',
                           fontSize: '11px',
@@ -6357,7 +6425,7 @@ export default function HubScreen({
                   fontFamily: '"Share Tech Mono", monospace'
                 }}
               />
-              <button onClick={showAllUniverses} className="btn-retro" style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
+              <button onClick={showAllUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive tous les univers masques.' : 'Reactivate every hidden universe.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
                 {lang === 'fr' ? 'TOUT AFFICHER' : 'SHOW ALL'}
               </button>
               {['game', 'movie', 'series', 'manga', 'music'].map(mediaType => {
@@ -6369,6 +6437,9 @@ export default function HubScreen({
                     key={mediaType}
                     onClick={() => allHidden ? showUniversesByMediaType(mediaType) : hideUniversesByMediaType(mediaType)}
                     className="btn-retro"
+                    title={allHidden
+                      ? (lang === 'fr' ? `Reactive tous les univers ${getMediaTypeLabel(mediaType)}.` : `Reactivate all ${getMediaTypeLabel(mediaType)} universes.`)
+                      : (lang === 'fr' ? `Masque tous les univers ${getMediaTypeLabel(mediaType)}.` : `Hide all ${getMediaTypeLabel(mediaType)} universes.`)}
                     style={{
                       fontSize: '10px',
                       padding: '8px 10px',
@@ -6401,7 +6472,7 @@ export default function HubScreen({
                       <div style={{ fontSize: '11px', color: hidden ? '#ffb3aa' : '#ddd', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title}</div>
                       <div style={{ fontSize: '9px', color: '#777', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{subtitle}</div>
                     </div>
-                    <button onClick={onToggle} className="btn-retro" style={assetToggleStyle(hidden)}>
+                    <button onClick={onToggle} className="btn-retro" title={hidden ? (lang === 'fr' ? 'Reactive cet element dans l application.' : 'Reactivate this element in the app.') : (lang === 'fr' ? 'Masque cet element sans supprimer ses donnees.' : 'Hide this element without deleting its data.')} style={assetToggleStyle(hidden)}>
                       {hidden ? (lang === 'fr' ? 'ACTIVER' : 'ENABLE') : (lang === 'fr' ? 'MASQUER' : 'DISABLE')}
                     </button>
                     {spriteInfo ? (
@@ -6442,6 +6513,7 @@ export default function HubScreen({
                       <button
                         onClick={() => toggleAdminUniverseOpen(row.universe)}
                         className="btn-retro"
+                        title={isOpen ? (lang === 'fr' ? 'Referme les details de cet univers.' : 'Collapse this universe details.') : (lang === 'fr' ? 'Ouvre les details admin de cet univers.' : 'Expand this universe admin details.')}
                         style={{ fontSize: '11px', padding: '5px 8px', minWidth: '34px', borderColor: isOpen ? '#39c5bb' : '#444', color: isOpen ? '#39c5bb' : '#aaa' }}
                       >
                         {isOpen ? 'v' : '>'}
@@ -6460,6 +6532,9 @@ export default function HubScreen({
                       <button
                         onClick={() => setUniverseHidden(row.universe, !row.hidden)}
                         className="btn-retro"
+                        title={row.hidden
+                          ? (lang === 'fr' ? 'Reactive cet univers dans les missions, collections, portails et boutiques.' : 'Reactivate this universe in missions, collections, portals, and shops.')
+                          : (lang === 'fr' ? 'Masque cet univers dans les missions, collections, portails et boutiques.' : 'Hide this universe from missions, collections, portals, and shops.')}
                         style={{
                           fontSize: '10px',
                           padding: '7px 10px',
@@ -6596,6 +6671,7 @@ export default function HubScreen({
                   <button
                     onClick={() => setSelectedCollectionUniverse(null)}
                     className="btn-retro"
+                    title={lang === 'fr' ? 'Ferme le dossier de collection de cet univers.' : 'Close this universe collection file.'}
                     style={{ fontSize: '10px', padding: '7px 11px' }}
                   >
                     {lang === 'fr' ? 'FERMER' : 'CLOSE'}
@@ -6792,7 +6868,7 @@ export default function HubScreen({
                   <div style={{ color: '#39c5bb', fontSize: '14px', fontWeight: 'bold', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{spritePreview.title}</div>
                   <div style={{ color: '#888', fontSize: '10px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{spritePreview.subtitle}</div>
                 </div>
-                <button onClick={() => setSpritePreview(null)} className="btn-retro" style={{ fontSize: '10px', padding: '6px 10px' }}>
+                <button onClick={() => setSpritePreview(null)} className="btn-retro" title={lang === 'fr' ? 'Ferme la previsualisation du sprite.' : 'Close the sprite preview.'} style={{ fontSize: '10px', padding: '6px 10px' }}>
                   {lang === 'fr' ? 'FERMER' : 'CLOSE'}
                 </button>
               </div>
@@ -6831,6 +6907,7 @@ export default function HubScreen({
                   key={view.id}
                   onClick={() => { setCodexView(view.id); sound.playSfx('click'); }}
                   className={`btn-retro ${codexView === view.id ? 'active-tab' : ''}`}
+                  title={lang === 'fr' ? `Affiche la section Codex: ${view.label.fr}.` : `Show Codex section: ${view.label.en}.`}
                   style={{
                     fontSize: '10px',
                     padding: '6px 10px',
