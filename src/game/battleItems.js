@@ -16,6 +16,34 @@ const paletteByMedia = {
 
 const defaultColorFor = (universe) => paletteByMedia[LORE_DB[universe]?.mediaType] || '#39c5bb';
 
+const mediaItemFlavor = {
+  game: {
+    offense: { fr: 'module offensif extrait des regles jouables du monde', en: 'offensive module extracted from the playable rules of the world' },
+    defense: { fr: 'cache de survie convertie en protection Nexus', en: 'survival cache converted into Nexus protection' },
+    tempo: { fr: 'routine de tempo qui recharge les actions du porteur', en: 'tempo routine that recharges the carrier actions' }
+  },
+  movie: {
+    offense: { fr: 'plan d impact cinematographique condense en artefact', en: 'cinematic impact beat condensed into an artifact' },
+    defense: { fr: 'accessoire de scene transforme en garde-fou narratif', en: 'screen prop turned into a narrative safeguard' },
+    tempo: { fr: 'coupe de montage qui accelere une action decisive', en: 'editing cut that accelerates a decisive action' }
+  },
+  series: {
+    offense: { fr: 'ressort d episode transforme en pression de combat', en: 'episode beat turned into combat pressure' },
+    defense: { fr: 'ressource recurrente qui garde l escouade en vie', en: 'recurring resource that keeps the squad alive' },
+    tempo: { fr: 'cliffhanger stabilise qui relance le tour suivant', en: 'stabilized cliffhanger that restarts the next turn' }
+  },
+  manga: {
+    offense: { fr: 'technique d arc compressee en frappe ramassable', en: 'arc technique compressed into a pickup strike' },
+    defense: { fr: 'talisman de progression qui retient la transformation', en: 'progression talisman that restrains transformation' },
+    tempo: { fr: 'signal de power-up qui pousse le rythme du duel', en: 'power-up signal that pushes duel tempo' }
+  },
+  music: {
+    offense: { fr: 'riff de resonance converti en onde offensive', en: 'resonance riff converted into an offensive wave' },
+    defense: { fr: 'boucle harmonique qui amortit la pression ennemie', en: 'harmonic loop that absorbs enemy pressure' },
+    tempo: { fr: 'pulse de scene qui synchronise le heros actif', en: 'stage pulse that synchronizes the active hero' }
+  }
+};
+
 const BATTLE_ITEM_OVERRIDES = {
   'Resident Evil': {
     pickups: [
@@ -102,26 +130,39 @@ const BATTLE_ITEM_OVERRIDES = {
 
 const makeGenericItem = (universe, index, color) => {
   const slug = slugify(universe);
+  const lore = LORE_DB[universe];
+  const mediaType = lore?.mediaType || 'game';
+  const flavor = mediaItemFlavor[mediaType] || mediaItemFlavor.game;
+  const title = lore?.title || { fr: universe, en: universe };
   const templates = [
     {
       id: `${slug}_field_relic`,
       role: 'offense',
-      name: { fr: `Relique de ${universe}`, en: `${universe} Field Relic` },
-      desc: { fr: `Fragment offensif issu de ${universe}.`, en: `Offensive fragment from ${universe}.` },
+      name: { fr: `Relique d impact ${title.fr}`, en: `${title.en} Impact Relic` },
+      desc: {
+        fr: `${title.fr}: ${flavor.offense.fr}. Le Nexus l autorise en melee comme declencheur lisible, pas comme simple bonus abstrait.`,
+        en: `${title.en}: ${flavor.offense.en}. The Nexus allows it in melee as a readable trigger, not a generic stat bonus.`
+      },
       effect: { damage: 26, charge: 8 }
     },
     {
       id: `${slug}_survival_cache`,
       role: 'defense',
-      name: { fr: `Cache de survie ${universe}`, en: `${universe} Survival Cache` },
-      desc: { fr: `Reserve defensive stabilisee par le Nexus.`, en: `Defensive reserve stabilized by the Nexus.` },
+      name: { fr: `Cache d ancrage ${title.fr}`, en: `${title.en} Anchor Cache` },
+      desc: {
+        fr: `${title.fr}: ${flavor.defense.fr}. En tactique, A.R.C.A. peut la poser comme zone de repli coherente avec le lore local.`,
+        en: `${title.en}: ${flavor.defense.en}. In tactics, A.R.C.A. can place it as a fallback zone coherent with local lore.`
+      },
       effect: { heal: 42, shield: 12 }
     },
     {
       id: `${slug}_tempo_core`,
       role: 'tempo',
-      name: { fr: `Noyau tempo ${universe}`, en: `${universe} Tempo Core` },
-      desc: { fr: `Pulse la signature du heros actif.`, en: `Pulses the active hero signature.` },
+      name: { fr: `Noyau de cadence ${title.fr}`, en: `${title.en} Cadence Core` },
+      desc: {
+        fr: `${title.fr}: ${flavor.tempo.fr}. Il sert a garder le rythme de la Trame sans transformer le combat en effet hors-sujet.`,
+        en: `${title.en}: ${flavor.tempo.en}. It keeps the Thread rhythm without turning combat into an off-theme effect.`
+      },
       effect: { charge: 28, heal: 18 }
     }
   ];

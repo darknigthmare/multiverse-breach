@@ -11,6 +11,7 @@ import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
+import { getBattleItemLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 
 export default function HubScreen({
@@ -846,8 +847,26 @@ export default function HubScreen({
           : `${item.universe} synchronized combat trigger.`);
     }
     return lang === 'fr'
-      ? `Relique prototype: ${formatBoostText(item.boost || {})}.`
-      : `Prototype relic: ${formatBoostText(item.boost || {})}.`;
+      ? getGearLoreDescription({
+        item: {
+          ...item,
+          universe: getShopItemUniverse(item) || 'Nexus de Convergence',
+          name: item.name,
+          boost: item.boost || {}
+        },
+        lang,
+        lore: LORE_DB[getShopItemUniverse(item)]
+      })
+      : getGearLoreDescription({
+        item: {
+          ...item,
+          universe: getShopItemUniverse(item) || 'Nexus de Convergence',
+          name: item.name,
+          boost: item.boost || {}
+        },
+        lang,
+        lore: LORE_DB[getShopItemUniverse(item)]
+      });
   };
 
   const UNIVERSE_TO_STAGE_ID = {
@@ -1287,19 +1306,15 @@ export default function HubScreen({
 
   const getGearLore = (item) => {
     if (!item) return '';
-    const boostText = formatBoostText(item.boost);
-    return lang === 'fr'
-      ? `Relique synchronisee ${item.universe}. Bonus actif: ${boostText}. Le Nexus l utilise comme amplificateur d arme pour renforcer la signature de combat du heros.`
-      : `${item.universe} synchronized relic. Active boost: ${boostText}. The Nexus uses it as a weapon amplifier to reinforce the hero combat signature.`;
+    return getGearLoreDescription({ item, lang, lore: LORE_DB[item.universe] });
   };
 
   const getEventLore = (item) => {
     if (!item) return '';
-    const baseDesc = item.desc?.[lang] || '';
-    const sourceUniverse = item.universe || selectedHero.universe;
-    return lang === 'fr'
-      ? `${baseDesc} Declencheur evenementiel lie au monde ${sourceUniverse}: il respecte le lore du heros et charge une action de breche unique.`
-      : `${baseDesc} Event trigger tied to ${sourceUniverse}: it respects the hero lore and charges a unique breach action.`;
+    const sourceUniverse = item.universe
+      || Object.entries(EVENT_ITEMS_DB).find(([, eventItem]) => eventItem.id === item.id)?.[0]
+      || selectedHero.universe;
+    return getEventLoreDescription({ item, lang, universe: sourceUniverse, lore: LORE_DB[sourceUniverse] });
   };
 
   const selectedEquippedGear = getGearDisplay(equippedGear[selectedHero.id]);
@@ -1349,8 +1364,8 @@ export default function HubScreen({
         id: mission.itemId,
         name: mission.item,
         desc: {
-          fr: `${mission.item.fr} recupere dans ${mission.title.fr}. Item special non equipable pour l instant: il servira aux skins, passifs et craft d arcs.`,
-          en: `${mission.item.en} recovered from ${mission.title.en}. Special item not equipable yet: it will feed skins, passives, and arc crafting.`
+          fr: `${mission.item.fr} est une preuve de fusion extraite de ${mission.title.fr}. Elle garde la memoire croisee de ${mission.sourceUniverses?.join(' / ') || 'plusieurs Trames'} et sert de matrice pour skins, passifs, craft d arcs et futures missions hybrides.`,
+          en: `${mission.item.en} is fusion proof extracted from ${mission.title.en}. It preserves crossed memory from ${mission.sourceUniverses?.join(' / ') || 'multiple Threads'} and acts as a matrix for skins, passives, arc crafting, and future hybrid missions.`
         }
       }
     ]),
@@ -1360,8 +1375,8 @@ export default function HubScreen({
         id: reward.id,
         name: reward.name,
         desc: {
-          fr: `${reward.name.fr} debloque par l arc ${arcId}. Compte comme passif Nexus et futur contenu de skin/craft.`,
-          en: `${reward.name.en} unlocked by arc ${arcId}. Counts as a Nexus passive and future skin/craft content.`
+          fr: `${reward.name.fr} est une recompense de l arc ${arc.title?.fr || arcId}. Dans le meta-lore, ce n est pas un trophée neutre: c est un marqueur de faction qui prouve que l Ancre a stabilise une portion durable du conflit Nexus.`,
+          en: `${reward.name.en} is a reward from the ${arc.title?.en || arcId} arc. In meta-lore, it is not a neutral trophy: it is a faction marker proving the Anchor stabilized a lasting part of the Nexus conflict.`
         }
       }
     ])),
@@ -1371,8 +1386,8 @@ export default function HubScreen({
         id: arc.rewardItemId,
         name: arc.reward,
         desc: {
-          fr: `${arc.reward.fr} obtenu via ${arc.title.fr}. Peut etre utilise comme skin/titre personnel.`,
-          en: `${arc.reward.en} obtained through ${arc.title.en}. Can be used as a personal skin/title.`
+          fr: `${arc.reward.fr} vient de ${arc.title.fr}. Cette trace personnelle garde le dilemme propre au personnage et autorise le Nexus a debloquer une apparence, un titre ou un futur passif sans casser son lore.`,
+          en: `${arc.reward.en} comes from ${arc.title.en}. This personal trace preserves the character-specific dilemma and lets the Nexus unlock an appearance, title, or future passive without breaking their lore.`
         }
       }
     ])
@@ -1457,6 +1472,16 @@ export default function HubScreen({
     const index = Math.abs(Math.floor((stage.id * 17 + missionSeed) % BREACH_MODIFIERS.length));
     return BREACH_MODIFIERS[index];
   };
+
+  const getRichBreachBrief = (stage) => getStageLoreDescription({
+    stage,
+    lang,
+    lore: LORE_DB[stage.universe],
+    modifier: getStageModifier(stage),
+    sourceClears: getFusionSourceClears(stage),
+    sourceTotal: stage.sourceUniverses?.length || 0,
+    bossIntel: getBossIntel(stage)
+  });
 
   const getStageArc = (stage) => NARRATIVE_ARCS.find(arc => arc.universes.includes(stage.universe));
 
@@ -2560,7 +2585,7 @@ export default function HubScreen({
                         Univers: <strong style={{ color: '#fff' }}>{stage.sourceUniverses?.join(' / ') || stage.universe}</strong> | Boss: <strong style={{ color: '#e74c3c' }}>{stage.bossName}</strong>
                       </div>
                       <div style={{ fontSize: '11px', color: '#8fa5aa', marginTop: '4px', maxWidth: '560px', lineHeight: 1.35 }}>
-                        {getBreachBrief(stage)}
+                        {getRichBreachBrief(stage)}
                       </div>
                       <div style={{ fontSize: '10px', color: '#aaa', marginTop: '4px', maxWidth: '560px', lineHeight: 1.35 }}>
                         {modifier.desc[lang]}
@@ -2631,7 +2656,7 @@ export default function HubScreen({
                   </div>
                   <div style={{ fontSize: '16px', fontWeight: 'bold' }}>{selectedBriefingStage.name}</div>
                   <div style={{ fontSize: '11px', color: '#bbb', marginTop: '6px', lineHeight: 1.45 }}>
-                    {getBreachBrief(selectedBriefingStage)}
+                    {getRichBreachBrief(selectedBriefingStage)}
                   </div>
                   <div style={{ fontSize: '11px', color: '#aaa', marginTop: '8px' }}>
                     Boss: <strong style={{ color: '#e74c3c' }}>{getBossIntel(selectedBriefingStage)?.name || selectedBriefingStage.bossName}</strong> - {getBossIntel(selectedBriefingStage)?.special || 'Unknown anomaly'}
@@ -4477,8 +4502,9 @@ export default function HubScreen({
                     </strong>
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.relics.map(item => (
-                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35 }}>
+                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, paddingBottom: '5px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
                           <b style={{ color: '#d7b5ff' }}>{item.name[lang]}</b> / {formatBoostText(item.boost || {})}
+                          <div style={{ color: '#bdb3cf', marginTop: '3px' }}>{getGearLore(item)}</div>
                         </div>
                       ))}
                       {selectedUniverseArchive.eventItem && (
@@ -4498,7 +4524,7 @@ export default function HubScreen({
                         <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35 }}>
                           <b style={{ color: item.color }}>{item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.toUpperCase()}</b>
                           {' '}
-                          {item.name[lang]} / {item.melee[lang]}
+                          {getBattleItemLoreDescription({ item, lang, lore: selectedUniverseArchive.lore })}
                         </div>
                       ))}
                     </div>
@@ -4518,6 +4544,7 @@ export default function HubScreen({
                           </b>
                           {' '}
                           / {stage.mode} / {stage.bossName}
+                          <div style={{ color: '#9fb0ad', marginTop: '3px' }}>{getRichBreachBrief(stage)}</div>
                         </div>
                       ))}
                     </div>
