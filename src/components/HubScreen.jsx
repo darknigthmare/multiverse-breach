@@ -4737,17 +4737,29 @@ export default function HubScreen({
             ) : (
             <>
             {narrativeArcScreenType ? (
-              <NarrativeArcGroupBrowser
-                lang={lang}
-                groups={narrativeArcGroups}
-                selectedGroupId={selectedNarrativeGroupId}
-                onSelectGroup={(groupId) => { setSelectedNarrativeGroupId(groupId); setBriefingStageId(null); sound.playSfx('coin'); }}
-                onBackToGroups={() => { setSelectedNarrativeGroupId(null); setBriefingStageId(null); sound.playSfx('click'); }}
-                onOpenArc={openNarrativeArc}
-                stages={visibleStages}
-                completedStages={completedStages}
-                categoryColor={selectedMissionMeta.color}
-              />
+              <>
+                <MultiverseRiftMap
+                  lang={lang}
+                  stages={missionPool}
+                  allStages={visibleStages}
+                  completedStages={completedStages}
+                  isStageUnlocked={isStageUnlocked}
+                  onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                  onSelectArc={openNarrativeArc}
+                  narrativeArcs={activeNarrativeArcs}
+                />
+                <NarrativeArcGroupBrowser
+                  lang={lang}
+                  groups={narrativeArcGroups}
+                  selectedGroupId={selectedNarrativeGroupId}
+                  onSelectGroup={(groupId) => { setSelectedNarrativeGroupId(groupId); setBriefingStageId(null); sound.playSfx('coin'); }}
+                  onBackToGroups={() => { setSelectedNarrativeGroupId(null); setBriefingStageId(null); sound.playSfx('click'); }}
+                  onOpenArc={openNarrativeArc}
+                  stages={visibleStages}
+                  completedStages={completedStages}
+                  categoryColor={selectedMissionMeta.color}
+                />
+              </>
             ) : (
               <MultiverseRiftMap
                 lang={lang}
