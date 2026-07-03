@@ -206,8 +206,8 @@ export const LORE_DB = {
     mediaType: 'game',
     title: { en: 'Silent Hill', fr: 'Silent Hill' },
     desc: {
-      en: 'A fog-shrouded psychological purgatory representing guilt and inner demons.',
-      fr: 'Un purgatoire brumeux matérialisant la culpabilité et les démons intérieurs.'
+      en: 'A psychological survival-horror universe where the town of Silent Hill reshapes guilt, grief, trauma, cult ritual, and buried truth into fog streets, rust Otherworld cycles, symbolic monsters, sirens, radios, and personal trials that cannot be solved by violence alone.',
+      fr: 'Un univers survival-horror psychologique ou la ville de Silent Hill transforme culpabilite, deuil, trauma, rituel de culte et verite enfouie en rues de brouillard, cycles Otherworld rouilles, monstres symboliques, sirenes, radios parasites et proces personnels qui ne se resolvent pas seulement par la violence.'
     }
   },
   'Dino Crisis': {

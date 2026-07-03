@@ -652,9 +652,39 @@ export const EQUIP_ITEMS_DB = [
     cost: 110
   },
   // Silent Hill
-  { id: 'steel_pipe', universe: 'Silent Hill', name: { en: 'Rusty Steel Pipe', fr: 'Tuyau de Fer Rouillé' }, boost: { atk: 12 }, cost: 90 },
-  { id: 'pocket_radio', universe: 'Silent Hill', name: { en: 'Static Pocket Radio', fr: 'Radio Grésillante' }, boost: { def: 6, spd: 1 }, cost: 90 },
-  { id: 'flauros', universe: 'Silent Hill', name: { en: 'The Flauros Artifact', fr: 'L\'Artefact Flauros' }, boost: { hp: 60, def: 6 }, cost: 120 },
+  {
+    id: 'steel_pipe',
+    universe: 'Silent Hill',
+    name: { en: 'South Vale Steel Pipe', fr: 'Tuyau de fer South Vale' },
+    desc: {
+      fr: 'Arme improvisee typique de Silent Hill: lourde, simple, presque honteuse. Elle rappelle que survivre dans le brouillard commence souvent par tenir a distance une peur trop proche.',
+      en: 'Typical Silent Hill improvised weapon: heavy, simple, almost shameful. It recalls that surviving the fog often starts by keeping a too-close fear at distance.'
+    },
+    boost: { atk: 12 },
+    cost: 90
+  },
+  {
+    id: 'pocket_radio',
+    universe: 'Silent Hill',
+    name: { en: 'Static Pocket Radio', fr: 'Radio parasite de poche' },
+    desc: {
+      fr: 'Radio qui gronde quand un monstre approche. Dans le Nexus, son bruit blanc sert d alarme de Trame: elle ne dit pas quoi fuir, seulement que quelque chose a deja entendu le joueur.',
+      en: 'Radio that growls when a monster nears. In the Nexus, its white noise acts as a Thread alarm: it does not say what to flee, only that something has already heard the player.'
+    },
+    boost: { def: 6, spd: 1 },
+    cost: 90
+  },
+  {
+    id: 'flauros',
+    universe: 'Silent Hill',
+    name: { en: 'Flauros Seal Fragment', fr: 'Fragment du sceau de Flauros' },
+    desc: {
+      fr: 'Artefact lie a l Ordre et aux forces enfermees de Silent Hill. A.R.C.A. l utilise comme verrou rituel: pas pour purifier la ville, mais pour empecher son dieu de traverser la Breche.',
+      en: 'Artifact tied to the Order and Silent Hill bound forces. A.R.C.A. uses it as a ritual lock: not to purify the town, but to prevent its god from crossing the Breach.'
+    },
+    boost: { hp: 60, def: 6 },
+    cost: 120
+  },
   // Dino Crisis
   { id: 'plug_tool', universe: 'Dino Crisis', name: { en: 'Key Card Plug', fr: 'Prise de Sécurité' }, boost: { def: 6, spd: 2 }, cost: 90 },
   { id: 'hemo_pack', universe: 'Dino Crisis', name: { en: 'Hemostatic Patch', fr: 'Pansement Hémostatique' }, boost: { hp: 80 }, cost: 80 },
@@ -884,8 +914,11 @@ export const EVENT_ITEMS_DB = {
   },
   'Silent Hill': {
     id: 'evt_sh_fog',
-    name: { en: 'Flauros Seal', fr: 'Sceau de Flauros' },
-    desc: { en: 'Summons thick fog: blinds all enemies, reducing their accuracy and attack rate by 50% for 8 seconds.', fr: 'Invoque un brouillard épais : aveugle les ennemis, réduisant leur attaque de 50% pendant 8 secondes.' },
+    name: { en: 'Flauros Otherworld Seal', fr: 'Sceau Otherworld de Flauros' },
+    desc: {
+      en: 'Forces a Silent Hill siren cycle over the breach. Fog blinds hostile signatures, rust slows their attacks, and the Flauros mark prevents a false god from fully manifesting for a short window.',
+      fr: 'Force un cycle de sirene Silent Hill sur la breche. Le brouillard aveugle les signatures hostiles, la rouille ralentit leurs attaques et la marque de Flauros empeche un faux dieu de se manifester completement pendant une courte fenetre.'
+    },
     effect: 'blind_fog'
   },
   'Dino Crisis': {
@@ -1327,6 +1360,28 @@ const heroOverrides = {
     secondary: { name: 'Combine Lock Hack', type: 'hack', cd: 6, dmg: 1.55 },
     defense: { name: 'Gravity Glove Pull', type: 'dodge', dur: 1.9, reduce: 0.8 },
     special: { name: 'Dog Breach Assist', type: 'summon_aoe', dmg: 4.5, color: '#8e6f4e' }
+  },
+  pyramidhead: {
+    simple: { name: 'Great Knife Sentence', type: 'melee', dmg: 1.55 },
+    secondary: { name: 'Spear of Judgment', type: 'projectile', cd: 9, dmg: 2.05 },
+    defense: { name: 'Rust Otherworld Ward', type: 'shield', dur: 2.5, reduce: 0.72 },
+    special: { name: 'Execution Fog Trial', type: 'darkness', dmg: 4.7, color: '#7c0a02' }
+  },
+  james_s: {
+    weaponType: 'pipe',
+    weaponColor: '#7f8c8d',
+    simple: { name: 'Steel Pipe Swing', type: 'melee', dmg: 0.95 },
+    secondary: { name: 'Static Radio Warning', type: 'fear', cd: 6, dmg: 1.35 },
+    defense: { name: 'Health Drink Breath', type: 'heal', dur: 1.6, reduce: 0.58 },
+    special: { name: 'Lakeview Truth Break', type: 'dark_aoe', dmg: 4.1, color: '#cbd8c8' }
+  },
+  heather: {
+    weaponType: 'gun',
+    weaponColor: '#2b1d16',
+    simple: { name: 'Handgun in the Fog', type: 'bullet', dmg: 1.0 },
+    secondary: { name: 'Aglaophotis Rejection', type: 'magic', cd: 7, dmg: 1.55 },
+    defense: { name: 'Pendant Refusal', type: 'shield', dur: 2.0, reduce: 0.8 },
+    special: { name: 'No God Birth', type: 'ritual_aoe', dmg: 4.5, color: '#e67e22' }
   },
   jill: {
     weaponType: 'gun',

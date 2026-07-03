@@ -72,15 +72,18 @@ export const ENEMIES_DB = {
   },
   'Silent Hill': {
     monsters: [
-      { name: 'Lying Figure Spitter', hp: 75, atk: 9, spd: 4, color: '#bb8f8f', weapon: 'acid' },
-      { name: 'Fleshy Puppet Nurse', hp: 80, atk: 10, spd: 5, color: '#f3e5ab', weapon: 'pipe' },
-      { name: 'Creeping Grey Child', hp: 60, atk: 8, spd: 6, color: '#5a5d64', weapon: 'knives' }
+      { name: 'Lying Figure Spitter', hp: 75, atk: 9, spd: 4, color: '#bb8f8f', weapon: 'acid_breath' },
+      { name: 'Bubble Head Nurse', hp: 90, atk: 11, spd: 5, color: '#e0d3bf', weapon: 'rust_pipe' },
+      { name: 'Grey Child Memory', hp: 65, atk: 8, spd: 6, color: '#5a5d64', weapon: 'knife_swarm' },
+      { name: 'Mannequin Twitcher', hp: 85, atk: 10, spd: 5, color: '#b48a78', weapon: 'leg_snap' },
+      { name: 'Otherworld Crawler', hp: 105, atk: 13, spd: 4, color: '#6b2d24', weapon: 'rust_claws' }
     ],
     bosses: [
-      { name: 'Pyramid Head Executioner', hp: 650, atk: 22, spd: 2, color: '#5c1e18', weapon: 'greatsword', special: 'Great Knife Sweep' },
-      { name: 'Abstract Daddy Demon', hp: 480, atk: 17, spd: 3, color: '#7a6860', weapon: 'slam', special: 'Flesh Wall Crushing' }
+      { name: 'Pyramid Head Executioner', hp: 650, atk: 22, spd: 2, color: '#5c1e18', weapon: 'great_knife', special: 'Great Knife Sentence' },
+      { name: 'Abstract Daddy Demon', hp: 520, atk: 18, spd: 3, color: '#7a6860', weapon: 'flesh_wall', special: 'Memory Room Crush' },
+      { name: 'Claudia Order Prophet', hp: 500, atk: 17, spd: 4, color: '#8d7b60', weapon: 'ritual_word', special: 'God-Birth Invocation' }
     ],
-    worldBoss: { name: 'The God (Silent Hill Core)', hp: 1350, atk: 31, spd: 3, color: '#3b0000', weapon: 'fire', special: 'Apocalyptic Hellfire Wave' }
+    worldBoss: { name: 'God of the Otherworld Core', hp: 1400, atk: 32, spd: 3, color: '#3b0000', weapon: 'rust_fire', special: 'Siren Apocalypse Birth' }
   },
   'Dino Crisis': {
     monsters: [

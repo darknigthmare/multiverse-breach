@@ -93,9 +93,10 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   'Silent Hill': {
     faction: 'horror',
-    theme: 'brouillard, culpabilite, rouille, symboles personnels et cauchemars qui jugent les survivants',
-    stageName: 'Rue de brouillard',
-    bossName: 'Juge de rouille'
+    theme: 'South Vale, Brookhaven, Lakeview, brouillard, radio parasite, sirenes, Otherworld rouille, l Ordre, culpabilite et monstres symboliques',
+    stageName: 'South Vale Fog Street',
+    bossName: 'Pyramid Head Executioner',
+    worldBoss: 'God of the Otherworld Core'
   },
   'Dino Crisis': {
     faction: 'horror',

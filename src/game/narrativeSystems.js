@@ -75,6 +75,81 @@ export const ARC_CAMPAIGN_DETAILS = {
 
 export const UNIVERSE_NARRATIVE_ARCS = [
   {
+    id: 'halo_installation_04_containment',
+    title: { fr: 'Arc Univers - Halo: confinement Installation 04', en: 'Universe Arc - Halo: Installation 04 Containment' },
+    universes: ['Halo'],
+    intro: { fr: 'Une section de l Installation 04 reapparait dans le Nexus avec son vrai danger: Covenant en poursuite, protocoles Forerunner actifs et spores Parasite qui cherchent une sortie.', en: 'A section of Installation 04 reappears inside the Nexus with its real danger: Covenant pursuit, active Forerunner protocols, and Flood spores looking for an exit.' },
+    missions: [
+      { fr: 'Intro - Signal Cortana: identifier pourquoi l anneau ne repond plus aux protocoles UNSC.', en: 'Intro - Cortana Signal: identify why the ring no longer answers UNSC protocols.' },
+      { fr: 'Mission - Cartographe silencieux: securiser une carte Forerunner pendant que les Elites et Sentinelles se disputent le controle.', en: 'Mission - Silent Cartographer: secure a Forerunner map while Elites and Sentinels fight for control.' },
+      { fr: 'Interlude - Infection detectee: A.R.C.A. confirme que le Parasite ne doit jamais atteindre la Cite-Mosaique.', en: 'Interlude - Infection Detected: A.R.C.A. confirms the Flood must never reach Mosaic City.' },
+      { fr: 'Mission - Couloirs de confinement: bruler les formes de combat avant qu elles contaminent une autre Trame.', en: 'Mission - Containment Corridors: burn combat forms before they infect another Thread.' },
+      { fr: 'Boss - Scarab recode: abattre une machine Covenant marquee par le Sans-Auteur avant activation de l anneau.', en: 'Boss - Recoded Scarab: destroy an Authorless-marked Covenant machine before ring activation.' }
+    ],
+    outro: { fr: 'L anneau reste une arme, pas un miracle. A.R.C.A. archive Halo comme protocole de guerre, de sacrifice et de confinement absolu.', en: 'The ring remains a weapon, not a miracle. A.R.C.A. archives Halo as a protocol of war, sacrifice, and absolute containment.' },
+    reward: { fr: 'Relique Cartographe silencieux + skin Installation 04', en: 'Silent Cartographer Relic + Installation 04 skin' }
+  },
+  {
+    id: 'resident_evil_raccoon_lockdown',
+    title: { fr: 'Arc Univers - Resident Evil: quarantaine Raccoon City', en: 'Universe Arc - Resident Evil: Raccoon City Quarantine' },
+    universes: ['Resident Evil'],
+    intro: { fr: 'Raccoon City se reconstruit dans une poche de Breche: le R.P.D., les egouts, le laboratoire NEST et les sirenes Umbrella cherchent a redevenir une experience.', en: 'Raccoon City rebuilds inside a Breach pocket: the R.P.D., sewers, NEST laboratory, and Umbrella sirens try to become an experiment again.' },
+    missions: [
+      { fr: 'Intro - Premier jour: entrer dans le R.P.D. et comprendre quelle souche virale a traverse le Nexus.', en: 'Intro - First Day: enter the R.P.D. and identify which viral strain crossed the Nexus.' },
+      { fr: 'Mission - Clefs et rubans: recuperer les preuves Umbrella sans gaspiller les munitions de crise.', en: 'Mission - Keys and Ribbons: recover Umbrella evidence without wasting crisis ammunition.' },
+      { fr: 'Interlude - NEST respire: le laboratoire classe les survivants comme specimens de Trame.', en: 'Interlude - NEST Breathes: the lab classifies survivors as Thread specimens.' },
+      { fr: 'Mission - Mutation G: couper les incubateurs avant que Birkin ne contamine la sortie.', en: 'Mission - G Mutation: cut incubators before Birkin contaminates the exit.' },
+      { fr: 'Boss - Tyrant de quarantaine: vaincre l arme B.O.W. chargee d empecher toute extraction A.R.C.A.', en: 'Boss - Quarantine Tyrant: defeat the B.O.W. weapon ordered to prevent any A.R.C.A. extraction.' }
+    ],
+    outro: { fr: 'La ville ne disparait pas comme un simple decor zombie: elle laisse un dossier. Umbrella a voulu cacher l incident; A.R.C.A. le rend lisible.', en: 'The city does not vanish as a simple zombie backdrop: it leaves a file. Umbrella wanted the incident hidden; A.R.C.A. makes it readable.' },
+    reward: { fr: 'Dossier NEST scelle + cache R.P.D.', en: 'Sealed NEST File + R.P.D. cache' }
+  },
+  {
+    id: 'half_life_resonance_cascade',
+    title: { fr: 'Arc Univers - Half-Life: cascade de resonance', en: 'Universe Arc - Half-Life: Resonance Cascade' },
+    universes: ['Half-Life'],
+    intro: { fr: 'Black Mesa se rouvre au moment exact ou la science cesse d etre controlee: Xen traverse les murs, le HECU descend, puis le Combine ecoute depuis l avenir.', en: 'Black Mesa reopens at the exact moment science stops being controlled: Xen crosses the walls, HECU descends, then the Combine listens from the future.' },
+    missions: [
+      { fr: 'Intro - Materiaux anormaux: stabiliser le cristal Xen avant qu il ne synchronise d autres univers.', en: 'Intro - Anomalous Materials: stabilize the Xen crystal before it synchronizes other universes.' },
+      { fr: 'Mission - Complexe Lambda: ouvrir une route entre scientifiques, securite et Resistance naissante.', en: 'Mission - Lambda Complex: open a route between scientists, security, and the future Resistance.' },
+      { fr: 'Interlude - Observation G-Man: une offre apparait dans les marges du rapport A.R.C.A.', en: 'Interlude - G-Man Observation: an offer appears in the margins of the A.R.C.A. report.' },
+      { fr: 'Mission - Xen instable: fermer les nids aliennes sans tuer les Vortigaunts liberables.', en: 'Mission - Unstable Xen: close alien nests without killing Vortigaunts who can be freed.' },
+      { fr: 'Boss - Relais Strider: detruire le signal Combine avant qu il ne convertisse la Breche en occupation.', en: 'Boss - Strider Relay: destroy the Combine signal before it turns the Breach into an occupation.' }
+    ],
+    outro: { fr: 'La cascade se calme, mais Black Mesa reste une blessure scientifique. A.R.C.A. note que comprendre une anomalie ne signifie pas la posseder.', en: 'The cascade quiets, but Black Mesa remains a scientific wound. A.R.C.A. notes that understanding an anomaly does not mean owning it.' },
+    reward: { fr: 'Module Lambda stabilise + combinaison HEV archive', en: 'Stabilized Lambda Module + archived HEV suit' }
+  },
+  {
+    id: 'stargate_sgc_first_contact',
+    title: { fr: 'Arc Univers - Stargate: protocole premier contact', en: 'Universe Arc - Stargate: First Contact Protocol' },
+    universes: ['Stargate'],
+    intro: { fr: 'Le SGC detecte une adresse inconnue: la Porte ne mene pas a une planete, mais a une Trame ou les Goa uld, les Jaffa libres, les Anciens et A.R.C.A. se disputent le sens du passage.', en: 'The SGC detects an unknown address: the Gate does not lead to a planet, but to a Thread where Goa uld, free Jaffa, Ancients, and A.R.C.A. fight over the meaning of passage.' },
+    missions: [
+      { fr: 'Intro - Chevron inconnu: composer l adresse avec GDO actif et iris pret a se fermer.', en: 'Intro - Unknown Chevron: dial the address with GDO active and iris ready to close.' },
+      { fr: 'Mission - Abydos miroir: sauver des civils pendant qu un faux dieu reutilise leurs mythes.', en: 'Mission - Mirror Abydos: save civilians while a false god reuses their myths.' },
+      { fr: 'Interlude - Carte des Anciens: Daniel et Carter prouvent que la Porte est un texte autant qu une machine.', en: 'Interlude - Ancient Map: Daniel and Carter prove the Gate is as much text as machine.' },
+      { fr: 'Mission - Soulagement Jaffa: couper les anneaux de transport sans condamner les soldats qui peuvent encore se liberer.', en: 'Mission - Jaffa Relief: cut transport rings without condemning soldiers who can still be freed.' },
+      { fr: 'Boss - Primate d Anubis: vaincre le commandant qui veut transformer le reseau de Portes en arme de Breche.', en: 'Boss - Anubis First Prime: defeat the commander trying to turn the Gate network into a Breach weapon.' }
+    ],
+    outro: { fr: 'L iris se referme sur une adresse propre. Stargate reste une histoire d exploration prudente, de faux dieux demasques et d allies gagnes par choix.', en: 'The iris closes on a clean address. Stargate remains a story of cautious exploration, exposed false gods, and allies won by choice.' },
+    reward: { fr: 'Patch SG-1 Nexus + coordonnee Abydos stable', en: 'SG-1 Nexus Patch + stable Abydos coordinate' }
+  },
+  {
+    id: 'silent_hill_otherworld_trial',
+    title: { fr: 'Arc Univers - Silent Hill: proces de l Otherworld', en: 'Universe Arc - Silent Hill: Otherworld Trial' },
+    universes: ['Silent Hill'],
+    intro: { fr: 'Le brouillard entre dans la Cite-Mosaique sans ouvrir de porte. Il apporte une regle simple et terrible: chaque peur non dite peut devenir une rue.', en: 'Fog enters Mosaic City without opening a door. It brings a simple and terrible rule: every unspoken fear can become a street.' },
+    missions: [
+      { fr: 'Intro - Radio parasite: suivre le bruit blanc jusqu a South Vale sans tirer sur les ombres qui ne sont que souvenirs.', en: 'Intro - Static Radio: follow the white noise into South Vale without shooting shadows that are only memories.' },
+      { fr: 'Mission - Brookhaven: distinguer malade, symbole et monstre avant que l hopital ne change de version.', en: 'Mission - Brookhaven: distinguish patient, symbol, and monster before the hospital changes version.' },
+      { fr: 'Interlude - Sirene: la rouille recouvre la carte et A.R.C.A. perd le nom des pieces.', en: 'Interlude - Siren: rust covers the map and A.R.C.A. loses the room names.' },
+      { fr: 'Mission - Lakeview efface: recuperer une verite personnelle avant que le Sans-Auteur la transforme en punition commune.', en: 'Mission - Erased Lakeview: recover a personal truth before the Authorless turns it into common punishment.' },
+      { fr: 'Boss - Dieu sans culte: empecher l Otherworld de donner naissance a un juge universel.', en: 'Boss - God Without Cult: prevent the Otherworld from birthing a universal judge.' }
+    ],
+    outro: { fr: 'Le brouillard recule sans etre vaincu. A.R.C.A. apprend que Silent Hill ne se nettoie pas: on y survit en refusant de mentir a la Trame.', en: 'The fog retreats without being defeated. A.R.C.A. learns Silent Hill is not cleaned: one survives it by refusing to lie to the Thread.' },
+    reward: { fr: 'Radio parasite scellee + relique Lakeview', en: 'Sealed Static Radio + Lakeview relic' }
+  },
+  {
     id: 'stargate_chain',
     title: { fr: 'Arc Univers - Reseau des Portes', en: 'Universe Arc - Gate Network' },
     universes: ['Stargate', 'Stargate Atlantis', 'Stargate Universe', 'Stargate Infinity'],
@@ -512,6 +587,63 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
     rewardItemId: 'char_daniel_abydos'
   },
   {
+    id: 'pyramidhead_red_limit',
+    stageId: 9221,
+    heroId: 'pyramidhead',
+    title: { fr: 'Arc Personnage - Pyramid Head: limite rouge', en: 'Character Arc - Pyramid Head: Red Limit' },
+    mode: 'Smash',
+    difficulty: 'Personal',
+    bossName: 'Juge Sans-Auteur',
+    unlock: { type: 'clears', value: 8 },
+    intro: { fr: 'Le Sans-Auteur tente de voler Pyramid Head a Silent Hill pour en faire un bourreau universel. A.R.C.A. doit prouver qu une punition hors contexte devient un mensonge.', en: 'The Authorless tries to steal Pyramid Head from Silent Hill and turn him into a universal executioner. A.R.C.A. must prove punishment without context becomes a lie.' },
+    missions: [
+      { fr: 'Mission 1 - Casque rouge: isoler la signature de jugement sans la laisser condamner une escouade innocente.', en: 'Mission 1 - Red Helmet: isolate the judgment signature without letting it condemn an innocent squad.' },
+      { fr: 'Mission 2 - Couloir de rouille: traverser un Otherworld qui veut appliquer la culpabilite de James a tous les heros.', en: 'Mission 2 - Rust Corridor: cross an Otherworld trying to apply James guilt to every hero.' },
+      { fr: 'Mission 3 - Faux tribunal: abattre le Juge Sans-Auteur avant qu il ne transforme Pyramid Head en outil de suppression.', en: 'Mission 3 - False Tribunal: defeat the Authorless Judge before it turns Pyramid Head into a deletion tool.' }
+    ],
+    outro: { fr: 'Pyramid Head reste une limite, pas une excuse. A.R.C.A. archive la regle: Silent Hill juge une verite intime, pas le multivers entier.', en: 'Pyramid Head remains a boundary, not an excuse. A.R.C.A. archives the rule: Silent Hill judges an intimate truth, not the entire multiverse.' },
+    reward: { fr: 'Apparence Pyramid Head Rouille Rouge + marque de limite', en: 'Red Rust Pyramid Head Skin + boundary mark' },
+    rewardItemId: 'char_pyramidhead_red_rust'
+  },
+  {
+    id: 'james_lakeview_letter',
+    stageId: 9222,
+    heroId: 'james_s',
+    title: { fr: 'Arc Personnage - James: lettre de Lakeview', en: 'Character Arc - James: Lakeview Letter' },
+    mode: 'RPG',
+    difficulty: 'Personal',
+    bossName: 'Memoire Mary effacee',
+    unlock: { type: 'level', value: 3 },
+    intro: { fr: 'Une lettre arrive dans les Archives A.R.C.A. avec une ecriture qui ne devrait plus exister. James comprend que Silent Hill ne l appelle pas pour gagner: elle l appelle pour dire vrai.', en: 'A letter arrives in the A.R.C.A. Archives with handwriting that should no longer exist. James understands Silent Hill is not calling him to win: it is calling him to tell the truth.' },
+    missions: [
+      { fr: 'Mission 1 - South Vale: suivre la radio parasite jusqu a une carte qui retire les mensonges au lieu d ajouter des routes.', en: 'Mission 1 - South Vale: follow the static radio to a map that removes lies instead of adding routes.' },
+      { fr: 'Mission 2 - Brookhaven: survivre aux Nurses et Lying Figures sans confondre symbole et ennemi ordinaire.', en: 'Mission 2 - Brookhaven: survive Nurses and Lying Figures without mistaking symbol for ordinary enemy.' },
+      { fr: 'Mission 3 - Lakeview: affronter la memoire de Mary avant que le Sans-Auteur ne transforme la lettre en piege commun.', en: 'Mission 3 - Lakeview: face Mary memory before the Authorless turns the letter into a common trap.' }
+    ],
+    outro: { fr: 'James ne sort pas indemne, mais il sort avec la lettre entiere. A.R.C.A. classe son arc comme preuve qu une verite douloureuse stabilise mieux qu un mensonge confortable.', en: 'James does not leave unharmed, but he leaves with the whole letter. A.R.C.A. classifies his arc as proof that painful truth stabilizes better than comfortable lies.' },
+    reward: { fr: 'Apparence James Lakeview + lettre scellee', en: 'Lakeview James Skin + sealed letter' },
+    rewardItemId: 'char_james_lakeview'
+  },
+  {
+    id: 'heather_no_god_birth',
+    stageId: 9223,
+    heroId: 'heather',
+    title: { fr: 'Arc Personnage - Heather: pas de naissance divine', en: 'Character Arc - Heather: No God Birth' },
+    mode: 'RPG',
+    difficulty: 'Personal',
+    bossName: 'Claudia Prophetesse de Trame',
+    unlock: { type: 'clears', value: 6 },
+    intro: { fr: 'L Ordre trouve dans la Breche une prophetie neuve: faire naitre un dieu capable de juger toutes les Trames. Heather refuse que son origine devienne une cage.', en: 'The Order finds a new prophecy inside the Breach: birth a god able to judge every Thread. Heather refuses to let her origin become a cage.' },
+    missions: [
+      { fr: 'Mission 1 - Centre commercial: briser les premiers signes du rituel avant que l Otherworld ne verrouille les sorties.', en: 'Mission 1 - Mall: break the first ritual signs before the Otherworld locks the exits.' },
+      { fr: 'Mission 2 - Brookhaven rouge: recuperer l Aglaophotis et separer Alessa, Heather et la Breche.', en: 'Mission 2 - Red Brookhaven: recover Aglaophotis and separate Alessa, Heather, and the Breach.' },
+      { fr: 'Mission 3 - Parc d attractions: vaincre Claudia de Trame avant la naissance d un dieu sans monde.', en: 'Mission 3 - Amusement Park: defeat Thread Claudia before the birth of a god without a world.' }
+    ],
+    outro: { fr: 'Heather quitte le rituel en gardant son nom. A.R.C.A. archive son protocole comme refus de destin impose.', en: 'Heather leaves the ritual while keeping her name. A.R.C.A. archives her protocol as refusal of imposed destiny.' },
+    reward: { fr: 'Apparence Heather Aglaophotis + pendentif scelle', en: 'Aglaophotis Heather Skin + sealed pendant' },
+    rewardItemId: 'char_heather_aglaophotis'
+  },
+  {
     id: 'chell_white_room',
     stageId: 9209,
     heroId: 'chell',
@@ -791,6 +923,24 @@ export const SKIN_CATALOG = {
     heroId: 'daniel_jackson',
     name: { fr: 'Daniel Abydos', en: 'Abydos Daniel' },
     colors: { primaryColor: '#d9b36c', secondaryColor: '#6ed0ff' }
+  },
+  char_pyramidhead_red_rust: {
+    id: 'char_pyramidhead_red_rust',
+    heroId: 'pyramidhead',
+    name: { fr: 'Pyramid Head Rouille Rouge', en: 'Red Rust Pyramid Head' },
+    colors: { primaryColor: '#7c0a02', secondaryColor: '#3b0000' }
+  },
+  char_james_lakeview: {
+    id: 'char_james_lakeview',
+    heroId: 'james_s',
+    name: { fr: 'James Lakeview', en: 'Lakeview James' },
+    colors: { primaryColor: '#7f8c8d', secondaryColor: '#cbd8c8' }
+  },
+  char_heather_aglaophotis: {
+    id: 'char_heather_aglaophotis',
+    heroId: 'heather',
+    name: { fr: 'Heather Aglaophotis', en: 'Aglaophotis Heather' },
+    colors: { primaryColor: '#e67e22', secondaryColor: '#f1c27d' }
   },
   char_ripley_loader_nexus: {
     id: 'char_ripley_loader_nexus',

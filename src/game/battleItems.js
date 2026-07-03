@@ -63,6 +63,15 @@ const BATTLE_ITEM_OVERRIDES = {
     summon: ['Pelican Echo 419', 'Echo 419 Pelican', 'Invocation temporaire UNSC: Foehammer ouvre une passe de soutien, depose des munitions et mitraille les signatures Covenant les plus proches.'],
     ultimate: ['Tir MAC orbital', 'Orbital MAC Strike', 'Attaque ultime UNSC: une solution de tir Magnetic Accelerator Cannon traverse la breche et frappe la ligne ennemie comme une frappe anti-capital ship miniaturisee.']
   },
+  'Silent Hill': {
+    pickups: [
+      ['Radio parasite', 'Static Radio', 'Alerte de survie Silent Hill: en melee elle gronde quand une menace approche, en tactique elle revele une case ennemie cachee par le brouillard.'],
+      ['Ampoule de soin', 'Health Drink', 'Ressource fragile de survie: soigne peu mais vite, utile quand l Otherworld force a avancer sans station sure.'],
+      ['Carte griffonnee de South Vale', 'Marked South Vale Map', 'Carte qui se corrige pendant la mission: indique une sortie, marque les portes condamnees et reduit le risque de tourner en boucle dans la ville.']
+    ],
+    summon: ['Echo de Harry Mason', 'Harry Mason Echo', 'Invocation temporaire: une trace de Harry traverse le brouillard, guide Heather/James vers une sortie et repousse les monstres symboliques sans briser le ton survival.'],
+    ultimate: ['Sirene Otherworld', 'Otherworld Siren', 'Attaque ultime: la sirene retentit, les murs deviennent rouille et la ville juge les ennemis; les cibles sont ralenties, marquees et frappees par leurs propres symboles.']
+  },
   Stargate: {
     pickups: [
       ['Cellule au naquadah', 'Naquadah Cell', 'Source energetique instable: en melee elle charge une frappe, en tactique elle alimente une Porte ou surcharge un bouclier Goa uld.'],
