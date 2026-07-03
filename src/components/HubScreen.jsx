@@ -34,6 +34,8 @@ export default function HubScreen({
   setHiddenUniverses,
   disabledAssets = {},
   setDisabledAssets,
+  activityProgress = {},
+  setActivityProgress,
   onLaunchStage,
   onGoToPortal
 }) {
@@ -1474,9 +1476,30 @@ export default function HubScreen({
     : null;
 
   const todayIndex = Math.floor(Date.now() / 86400000);
+  const todayKey = new Date().toISOString().slice(0, 10);
+  const startOfYear = new Date(Date.UTC(new Date().getUTCFullYear(), 0, 1));
+  const currentWeekNumber = Math.ceil((((new Date() - startOfYear) / 86400000) + startOfYear.getUTCDay() + 1) / 7);
+  const currentWeekKey = `${new Date().getUTCFullYear()}-W${currentWeekNumber}`;
+  const claimedDaily = activityProgress.dayKey === todayKey ? (activityProgress.claimedDaily || []) : [];
+  const claimedWeekly = activityProgress.weekKey === currentWeekKey ? (activityProgress.claimedWeekly || []) : [];
   const dailyContracts = DAILY_CONTRACTS
     .map((contract, idx) => DAILY_CONTRACTS[(todayIndex + idx) % DAILY_CONTRACTS.length])
     .slice(0, 3);
+  const isDailyContractDone = (contract) => contract.mode === 'any'
+    ? completedStages.length > 0
+    : missionPool.some(stage => stage.mode === contract.mode && completedStages.includes(stage.id));
+  const claimDailyContract = (contract) => {
+    if (!setActivityProgress || !isDailyContractDone(contract) || claimedDaily.includes(contract.id)) return;
+    setGold(prev => prev + 35);
+    setBreachShards(prev => prev + 12);
+    setActivityProgress(prev => ({
+      ...prev,
+      dayKey: todayKey,
+      claimedDaily: [...(prev.dayKey === todayKey ? (prev.claimedDaily || []) : []), contract.id]
+    }));
+    notifyNexus(lang === 'fr' ? 'Contrat quotidien reclame: cache de terrain ajoutee.' : 'Daily contract claimed: field cache added.', 'success');
+    sound.playSfx('levelup');
+  };
 
   const activeFactionSynergies = FACTION_RULES.map(rule => {
     const count = activeTeam
@@ -1586,6 +1609,40 @@ export default function HubScreen({
           : completedStages.length < FINAL_STAGE_REQUIRED_CLEARS
             ? (lang === 'fr' ? `Stabiliser ${FINAL_STAGE_REQUIRED_CLEARS} brèches pour ouvrir le noyau final.` : `Stabilize ${FINAL_STAGE_REQUIRED_CLEARS} breaches to open the final core.`)
             : (lang === 'fr' ? 'Noyau final disponible: optimiser les builds et le codex.' : 'Final core available: optimize builds and codex.');
+
+  const weeklyOperations = [
+    {
+      id: 'stabilize_5',
+      title: { fr: 'Operation hebdo: 5 breches', en: 'Weekly op: 5 breaches' },
+      done: completedStages.length >= 5,
+      reward: { gold: 180, shards: 70, tokens: 4 }
+    },
+    {
+      id: 'collection_1',
+      title: { fr: 'Operation hebdo: cache de collection', en: 'Weekly op: collection cache' },
+      done: collectionProgress.some(collection => collection.claimed),
+      reward: { gold: 120, shards: 45, tokens: 3 }
+    },
+    {
+      id: 'squad_grade_a',
+      title: { fr: 'Operation hebdo: escouade rang A', en: 'Weekly op: A-rank squad' },
+      done: squadReadiness >= 70,
+      reward: { gold: 150, shards: 55, tokens: 3 }
+    }
+  ];
+  const claimWeeklyOperation = (operation) => {
+    if (!setActivityProgress || !operation.done || claimedWeekly.includes(operation.id)) return;
+    setGold(prev => prev + operation.reward.gold);
+    setBreachShards(prev => prev + operation.reward.shards);
+    setEventTokens(prev => prev + operation.reward.tokens);
+    setActivityProgress(prev => ({
+      ...prev,
+      weekKey: currentWeekKey,
+      claimedWeekly: [...(prev.weekKey === currentWeekKey ? (prev.claimedWeekly || []) : []), operation.id]
+    }));
+    notifyNexus(lang === 'fr' ? 'Operation hebdomadaire synchronisee.' : 'Weekly operation synchronized.', 'success');
+    sound.playSfx('levelup');
+  };
 
   const getBossIntel = (stage) => {
     if (stage.id === 38) return getFinalGameBoss();
@@ -1828,6 +1885,12 @@ export default function HubScreen({
           {getTranslation(lang, 'tabInventory')}
         </button>
         <button
+          onClick={() => { setActiveTab('collection'); sound.playSfx('coin'); }}
+          className={`btn-tab ${activeTab === 'collection' ? 'active-tab' : ''}`}
+        >
+          {lang === 'fr' ? 'COLLECTION' : 'COLLECTION'}
+        </button>
+        <button
           onClick={() => { setActiveTab('shop'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'shop' ? 'active-tab' : ''}`}
         >
@@ -1856,7 +1919,7 @@ export default function HubScreen({
       </div>
 
       {/* Media Category Filter Bar */}
-      {['missions', 'roster', 'codex'].includes(activeTab) && (
+      {['missions', 'roster', 'codex', 'collection'].includes(activeTab) && (
         <div style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: '1000px', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '11px', color: '#888', textTransform: 'uppercase', marginRight: '5px' }}>
             {lang === 'fr' ? 'Filtre d archives :' : 'Archive filter:'}
@@ -1961,13 +2024,20 @@ export default function HubScreen({
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {dailyContracts.map(contract => {
-                    const done = contract.mode === 'any'
-                      ? completedStages.length > 0
-                      : missionPool.some(stage => stage.mode === contract.mode && completedStages.includes(stage.id));
+                    const done = isDailyContractDone(contract);
+                    const claimed = claimedDaily.includes(contract.id);
                     return (
-                      <div key={contract.id} style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', fontSize: '10px', color: done ? '#2ecc71' : '#ccc' }}>
-                        <span>{done ? 'OK' : 'TODO'} - {contract.text[lang]}</span>
-                        <strong style={{ color: '#ffeb3b' }}>{contract.focus}</strong>
+                      <div key={contract.id} style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: '8px', fontSize: '10px', color: done ? '#2ecc71' : '#ccc' }}>
+                        <span>{claimed ? 'CLAIM' : done ? 'OK' : 'TODO'} - {contract.text[lang]} <strong style={{ color: '#ffeb3b' }}>{contract.focus}</strong></span>
+                        <button
+                          type="button"
+                          onClick={() => claimDailyContract(contract)}
+                          disabled={!done || claimed}
+                          className="btn-retro"
+                          style={{ fontSize: '8px', padding: '3px 6px', borderColor: claimed ? '#2ecc71' : done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : done ? '#ffeb3b' : '#555' }}
+                        >
+                          {claimed ? (lang === 'fr' ? 'PRIS' : 'DONE') : (lang === 'fr' ? '+35/+12' : '+35/+12')}
+                        </button>
                       </div>
                     );
                   })}
@@ -2203,6 +2273,47 @@ export default function HubScreen({
                     );
                   })}
                 </div>
+              </div>
+            </div>
+
+            <div style={{
+              padding: '12px',
+              marginBottom: '14px',
+              background: 'rgba(155,89,182,0.07)',
+              border: '1px solid rgba(155,89,182,0.28)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '8px', flexWrap: 'wrap' }}>
+                <strong style={{ color: '#d7b5ff', fontSize: '11px', textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Operations hebdomadaires' : 'Weekly operations'}
+                </strong>
+                <span style={{ color: '#aaa', fontSize: '10px' }}>{currentWeekKey}</span>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '8px' }}>
+                {weeklyOperations.map(operation => {
+                  const claimed = claimedWeekly.includes(operation.id);
+                  return (
+                    <div key={operation.id} style={{ padding: '9px', border: operation.done ? '1px solid rgba(46,204,113,0.45)' : '1px solid rgba(255,255,255,0.08)', background: operation.done ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.16)', borderRadius: '4px' }}>
+                      <div style={{ fontSize: '10px', color: operation.done ? '#8dffb1' : '#ddd', fontWeight: 'bold', marginBottom: '5px' }}>{operation.title[lang]}</div>
+                      <div style={{ fontSize: '9px', color: '#aaa', marginBottom: '7px' }}>
+                        +{operation.reward.gold} Or | +{operation.reward.shards} Fragments | +{operation.reward.tokens} Jetons
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => claimWeeklyOperation(operation)}
+                        disabled={!operation.done || claimed}
+                        className="btn-retro"
+                        style={{ fontSize: '9px', padding: '5px 8px', borderColor: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : operation.done ? '#ffeb3b' : '#666' }}
+                      >
+                        {claimed
+                          ? (lang === 'fr' ? 'RECLAME' : 'CLAIMED')
+                          : operation.done
+                            ? (lang === 'fr' ? 'RECLAMER' : 'CLAIM')
+                            : (lang === 'fr' ? 'EN COURS' : 'IN PROGRESS')}
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -3319,6 +3430,115 @@ export default function HubScreen({
             </div>
           </div>
           </>
+        )}
+
+        {activeTab === 'collection' && (
+          <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap' }}>
+              <div>
+                <h3 style={{ margin: '0 0 4px 0', fontSize: '18px', color: '#ffeb3b' }}>
+                  {lang === 'fr' ? 'COLLECTION / ENCYCLOPEDIE' : 'COLLECTION / ENCYCLOPEDIA'}
+                </h3>
+                <div style={{ fontSize: '11px', color: '#aaa' }}>
+                  {lang === 'fr' ? 'Vue claire de ce qui est debloque, stabilise et exploitable en combat.' : 'Clear view of what is unlocked, stabilized, and usable in battle.'}
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {[
+                  { label: lang === 'fr' ? 'Heros' : 'Heroes', value: `${collectionSummary.heroes}/${collectionSummary.totalHeroes}`, color: '#39c5bb' },
+                  { label: lang === 'fr' ? 'Mondes' : 'Worlds', value: completedStages.length, color: '#2ecc71' },
+                  { label: 'Passifs', value: collectionBonusCount, color: '#ffeb3b' },
+                  { label: 'Rang', value: metaRank, color: '#ff8c00' }
+                ].map(card => (
+                  <div key={card.label} style={{ minWidth: '92px', padding: '8px 10px', background: `${card.color}12`, border: `1px solid ${card.color}55`, borderRadius: '4px' }}>
+                    <div style={{ fontSize: '9px', color: '#aaa', textTransform: 'uppercase' }}>{card.label}</div>
+                    <strong style={{ color: card.color, fontSize: '14px' }}>{card.value}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '14px' }}>
+              <div style={{ padding: '14px', border: '1px solid rgba(255,235,59,0.18)', background: 'rgba(255,235,59,0.04)', borderRadius: '5px' }}>
+                <strong style={{ color: '#ffeb3b', fontSize: '11px', textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Collections de franchise' : 'Franchise collections'}
+                </strong>
+                <div style={{ display: 'grid', gap: '8px', marginTop: '10px' }}>
+                  {collectionProgress.map(collection => {
+                    const ratio = collection.total ? collection.completed / collection.total : 0;
+                    return (
+                      <div key={collection.id} style={{ padding: '9px', border: collection.complete ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)', background: collection.complete ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.16)', borderRadius: '4px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
+                          <span style={{ color: collection.complete ? '#2ecc71' : '#ddd', fontSize: '11px', fontWeight: 'bold' }}>{collection.title[lang]}</span>
+                          <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{collection.completed}/{collection.total}</span>
+                        </div>
+                        <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', margin: '6px 0' }}>
+                          <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: collection.complete ? '#2ecc71' : '#ffeb3b' }} />
+                        </div>
+                        <div style={{ fontSize: '9px', color: '#aaa', lineHeight: 1.35 }}>{collection.bonus[lang]}</div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div style={{ padding: '14px', border: '1px solid rgba(57,197,187,0.2)', background: 'rgba(57,197,187,0.04)', borderRadius: '5px' }}>
+                <strong style={{ color: '#39c5bb', fontSize: '11px', textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Progression unifiee' : 'Unified progression'}
+                </strong>
+                <div style={{ display: 'grid', gap: '8px', marginTop: '10px' }}>
+                  {[
+                    { label: lang === 'fr' ? 'Objectif suivant' : 'Next goal', value: nextProgressGoal, color: '#ffeb3b' },
+                    { label: lang === 'fr' ? 'Niveaux heros total' : 'Total hero levels', value: totalHeroLevels, color: '#9b59b6' },
+                    { label: lang === 'fr' ? 'Readiness escouade' : 'Squad readiness', value: `${squadReadiness}% / ${squadGrade}`, color: '#2ecc71' },
+                    { label: lang === 'fr' ? 'Focus escouade' : 'Squad focus', value: squadFocus, color: '#39c5bb' }
+                  ].map(entry => (
+                    <div key={entry.label} style={{ padding: '9px', background: `${entry.color}10`, border: `1px solid ${entry.color}44`, borderRadius: '4px' }}>
+                      <div style={{ fontSize: '9px', color: '#aaa', textTransform: 'uppercase' }}>{entry.label}</div>
+                      <div style={{ fontSize: '11px', color: '#fff', lineHeight: 1.35 }}>{entry.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '10px', maxHeight: '520px', overflowY: 'auto', paddingRight: '4px' }}>
+              {Object.keys(LORE_DB).filter(key => key !== 'Nexus de Convergence' && isUniverseVisible(key) && matchesMediaFilter(LORE_DB[key]?.mediaType)).map(universe => {
+                const lore = LORE_DB[universe];
+                const stageId = UNIVERSE_TO_STAGE_ID[universe];
+                const cleared = !stageId || completedStages.includes(stageId);
+                const heroes = HEROES_DB.filter(hero => hero.universe === universe);
+                const boss = ENEMIES_DB[universe]?.worldBoss || ENEMIES_DB[universe]?.bosses?.[0];
+                const battleItems = getBattleItemsForUniverse(universe);
+                return (
+                  <div key={universe} style={{ padding: '12px', border: cleared ? '1px solid rgba(46,204,113,0.35)' : '1px solid rgba(255,255,255,0.08)', background: cleared ? 'rgba(46,204,113,0.05)' : 'rgba(0,0,0,0.18)', borderRadius: '5px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center', marginBottom: '7px' }}>
+                      <strong style={{ color: cleared ? '#2ecc71' : '#ddd', fontSize: '12px' }}>{lore.title[lang]}</strong>
+                      <span style={{ fontSize: '8px', color: '#aaa', border: '1px solid #333', padding: '1px 5px', borderRadius: '3px' }}>{getMediaTypeLabel(lore.mediaType)}</span>
+                    </div>
+                    <div style={{ fontSize: '9px', color: cleared ? '#9dffba' : '#777', marginBottom: '8px' }}>
+                      {cleared ? (lang === 'fr' ? 'STABILISE' : 'STABILIZED') : (lang === 'fr' ? 'A STABILISER' : 'TO STABILIZE')}
+                    </div>
+                    <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, marginBottom: '8px' }}>
+                      {heroes.length} {lang === 'fr' ? 'heros indexes' : 'indexed heroes'} | {boss ? boss.name : 'Boss ?'}
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px', marginBottom: '8px' }}>
+                      {heroes.slice(0, 4).map(hero => (
+                        <span key={hero.id} style={{ fontSize: '8px', color: '#fff', border: `1px solid ${hero.primaryColor}66`, background: `${hero.primaryColor}1a`, padding: '1px 5px', borderRadius: '3px' }}>{hero.name}</span>
+                      ))}
+                    </div>
+                    <div style={{ display: 'grid', gap: '3px' }}>
+                      {battleItems.map(item => (
+                        <div key={item.id} style={{ fontSize: '8px', color: '#cfcfcf', lineHeight: 1.25 }}>
+                          <span style={{ color: item.color, fontWeight: 'bold' }}>{item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : 'ITEM'}</span> {item.name[lang]}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         )}
 
         {/* Tab 4: Inventory & Equipment */}

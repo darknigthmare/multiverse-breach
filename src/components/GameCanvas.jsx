@@ -16,6 +16,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const battlePickupsRef = useRef([]);
+  const battleItemPoolRef = useRef([]);
+  const nextBattleItemDropRef = useRef(520);
   const keysPressed = useRef({});
   const lastAnomalyWaveRef = useRef(-1);
   
@@ -50,19 +52,47 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const createStagePickups = (currentStage) => {
     const pool = getBattleItemPoolForStage(currentStage);
     const tiers = ['pickup', 'pickup', 'pickup', 'summon', 'ultimate'];
-    const positions = [
-      { x: 170, y: 218 },
-      { x: 305, y: 146 },
-      { x: 442, y: 218 },
-      { x: 560, y: 178 },
-      { x: 350, y: 248 }
-    ];
+    const positions = currentStage.mode === 'Tactics'
+      ? [
+        { gridX: 2, gridY: 1, x: 210, y: 128 },
+        { gridX: 3, gridY: 3, x: 270, y: 218 },
+        { gridX: 4, gridY: 0, x: 330, y: 83 },
+        { gridX: 4, gridY: 4, x: 330, y: 263 },
+        { gridX: 5, gridY: 2, x: 390, y: 173 }
+      ]
+      : [
+        { x: 170, y: 218 },
+        { x: 305, y: 146 },
+        { x: 442, y: 218 },
+        { x: 640, y: 178 },
+        { x: 520, y: 300 }
+      ];
 
     return tiers.map((tier, index) => {
       const tierPool = pool.filter(item => item.tier === tier);
       const item = tierPool[(currentStage.id + index) % Math.max(1, tierPool.length)] || pool[index % Math.max(1, pool.length)];
       return item ? { ...item, ...positions[index], pickupId: `${item.id}_${index}`, used: false } : null;
     }).filter(Boolean);
+  };
+
+  const spawnBattleItemDrop = (engine, animTime) => {
+    if (!engine || battlePickupsRef.current.filter(item => !item.used).length >= 8) return;
+    const pool = battleItemPoolRef.current.length ? battleItemPoolRef.current : getBattleItemPoolForStage(stage);
+    const tierRoll = animTime % 10;
+    const tier = tierRoll === 0 ? 'ultimate' : tierRoll <= 2 ? 'summon' : 'pickup';
+    const tierPool = pool.filter(item => item.tier === tier);
+    const item = tierPool[(animTime + stage.id) % Math.max(1, tierPool.length)] || pool[(animTime + stage.id) % Math.max(1, pool.length)];
+    if (!item) return;
+    const drop = {
+      ...item,
+      pickupId: `${item.id}_drop_${animTime}`,
+      x: 90 + ((animTime * 37) % Math.max(180, engine.width - 180)),
+      y: stage.mode === 'RPG' ? 150 + ((animTime * 17) % 120) : 130 + ((animTime * 19) % 190),
+      used: false,
+      drop: true
+    };
+    syncBattlePickups([...battlePickupsRef.current, drop]);
+    engine.particles?.add(drop.x, drop.y, 0, -1, drop.color, 5, 36, 'text', 'DROP');
   };
   
   const autoBattleRef = useRef(autoBattle);
@@ -435,6 +465,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       engineRef.current.isFinalBoss = (stage.id === 38);
     }
 
+    battleItemPoolRef.current = getBattleItemPoolForStage(stage);
+    nextBattleItemDropRef.current = stage.mode === 'Tactics' ? 999999 : 520;
     syncBattlePickups(createStagePickups(stage));
     setBattleItemLog(null);
 
@@ -496,6 +528,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         engine.draw(ctx, animTime);
         battlePickupsRef.current.forEach(item => drawBattleItemPickup(ctx, item, animTime));
         checkBattleItemPickupCollision(engine);
+        if (stage.mode !== 'Tactics' && animTime > nextBattleItemDropRef.current) {
+          spawnBattleItemDrop(engine, animTime);
+          nextBattleItemDropRef.current = animTime + (stage.mode === 'Smash' ? 540 : 780);
+        }
         particles.draw(ctx);
         drawSynergyOverlay(ctx, activeSynergies, width, height, animTime);
 
@@ -564,14 +600,34 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (stage.mode !== 'Tactics' || !engineRef.current) return;
 
     const rect = canvasRef.current.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const clickY = e.clientY - rect.top;
+    const scaleX = canvasRef.current.width / rect.width;
+    const scaleY = canvasRef.current.height / rect.height;
+    const clickX = (e.clientX - rect.left) * scaleX;
+    const clickY = (e.clientY - rect.top) * scaleY;
 
     const engine = engineRef.current;
     const gridC = Math.floor((clickX - engine.gridStartX) / engine.cellW);
     const gridR = Math.floor((clickY - engine.gridStartY) / engine.cellH);
 
     if (gridC >= 0 && gridC < engine.cols && gridR >= 0 && gridR < engine.rows) {
+      const tacticalItem = battlePickupsRef.current.find(item => !item.used && item.gridX === gridC && item.gridY === gridR);
+      if (tacticalItem) {
+        const activeHero = engine.activeUnitType === 'hero' ? engine.activeUnit : engine.heroes.find(hero => hero.currentHp > 0);
+        const distance = activeHero ? Math.abs((activeHero.gridX || 0) - gridC) + Math.abs((activeHero.gridY || 0) - gridR) : 99;
+        if (distance <= 3) {
+          activateBattleItem(tacticalItem, 'tactics-tile');
+          return;
+        }
+        setBattleItemLog({
+          id: tacticalItem.pickupId,
+          color: tacticalItem.color,
+          text: lang === 'fr'
+            ? 'Case trop eloignee: rapproche un heros tactique pour securiser la ressource.'
+            : 'Tile too far: move a tactical hero closer to secure the resource.'
+        });
+        window.setTimeout(() => setBattleItemLog(null), 2600);
+        return;
+      }
       engine.handleCellClick(gridC, gridR);
     }
   };
@@ -641,8 +697,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     ? `Brèche fermée ! Obtenu +${stage.goldPrize} Or & +${stage.shardPrize} Fragments${stage.tokenPrize ? ` & +${stage.tokenPrize} Jetons` : ''}.`
     : `Rift closed! Earned +${stage.goldPrize} Gold & +${stage.shardPrize} Shards${stage.tokenPrize ? ` & +${stage.tokenPrize} Tokens` : ''}.`;
 
+  const usedBattleItems = battlePickups.filter(item => item.used).length;
+  const totalBattleItems = battlePickups.length;
+  const battleObjective = stage.mode === 'Tactics'
+    ? (lang === 'fr' ? 'Objectif: capturer les cases ressources, puis neutraliser le boss local.' : 'Objective: capture resource tiles, then neutralize the local boss.')
+    : stage.mode === 'Smash'
+      ? (lang === 'fr' ? 'Objectif: survivre aux vagues, ramasser les drops et casser le champion.' : 'Objective: survive waves, collect drops, and break the champion.')
+      : (lang === 'fr' ? 'Objectif: gerer ATB, declencher items et finir la breche.' : 'Objective: manage ATB, trigger items, and close the breach.');
+
   return (
-    <div style={{
+    <div className="battle-screen" style={{
       minHeight: '100vh',
       background: '#04020a',
       display: 'flex',
@@ -657,7 +721,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       {/* Top Bar */}
       <div style={{
         width: '100%',
-        maxWidth: '720px',
+        maxWidth: '1120px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -730,7 +794,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
       {/* Boss Health Bar Display */}
       {bossState && bossState.currentHp > 0 && (
-        <div style={{ width: '100%', maxWidth: '720px', marginBottom: '15px', textAlign: 'center' }}>
+        <div style={{ width: '100%', maxWidth: '1120px', marginBottom: '15px', textAlign: 'center' }}>
           <div style={{ fontSize: '11px', fontWeight: 'bold', color: '#e74c3c', marginBottom: '4px', textTransform: 'uppercase' }}>
             {getTranslation(lang, 'bossWarning', { name: bossState.name })}
           </div>
@@ -749,6 +813,27 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         </div>
       )}
 
+      <div style={{
+        width: '100%',
+        maxWidth: '1120px',
+        display: 'grid',
+        gridTemplateColumns: '1fr auto auto',
+        gap: '10px',
+        alignItems: 'center',
+        marginBottom: '10px',
+        padding: '10px 12px',
+        background: 'rgba(0,0,0,0.28)',
+        border: '1px solid rgba(57,197,187,0.22)',
+        borderRadius: '5px',
+        boxSizing: 'border-box'
+      }}>
+        <div style={{ fontSize: '11px', color: '#d9f7f5', lineHeight: 1.35 }}>{battleObjective}</div>
+        <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
+          {lang === 'fr' ? 'Items' : 'Items'} {usedBattleItems}/{totalBattleItems}
+        </div>
+        <div style={{ fontSize: '10px', color: '#39c5bb' }}>{stage.mode}</div>
+      </div>
+
       {/* Canvas */}
       <div style={{
         position: 'relative',
@@ -763,10 +848,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
         <canvas
           ref={canvasRef}
-          width="700"
-          height="320"
+          width="1040"
+          height="460"
           onClick={handleCanvasClick}
-          style={{ display: 'block', cursor: stage.mode === 'Tactics' ? 'crosshair' : 'default' }}
+          style={{ display: 'block', width: '100%', height: 'auto', cursor: stage.mode === 'Tactics' ? 'crosshair' : 'default' }}
         />
 
         {battleAnomaly && !battleCompleted && (
@@ -857,7 +942,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       {/* Control Panel / Actions Dashboard */}
       <div style={{
         width: '100%',
-        maxWidth: '720px',
+        maxWidth: '1120px',
         display: 'grid',
         gridTemplateColumns: '1.2fr 2fr',
         gap: '20px',

@@ -27,6 +27,7 @@ const DEFAULT_SAVE = {
   heroSkins: {},
   portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
   publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
+  activityProgress: { dayKey: '', weekKey: '', claimedDaily: [], claimedWeekly: [], modeWins: {}, itemActivations: 0 },
   inventory: ['cog_armor', 'green_herb', 'hev_battery'],
   equippedGear: {
     [PLAYER_HERO_ID]: null,
@@ -91,6 +92,7 @@ const normalizeSavePayload = (save = {}) => {
     },
     portalStats: { ...DEFAULT_SAVE.portalStats, ...(merged.portalStats || {}), history: (merged.portalStats?.history || []).slice(0, 20) },
     publicProfile: { ...DEFAULT_SAVE.publicProfile, ...(merged.publicProfile || {}) },
+    activityProgress: { ...DEFAULT_SAVE.activityProgress, ...(merged.activityProgress || {}) },
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
     equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
   };
@@ -240,6 +242,7 @@ function App() {
   const [disabledAssets, setDisabledAssets] = useState(initialSave.disabledAssets);
   const [portalStats, setPortalStats] = useState(initialSave.portalStats);
   const [publicProfile, setPublicProfile] = useState(initialSave.publicProfile);
+  const [activityProgress, setActivityProgress] = useState(initialSave.activityProgress);
 
   // Inventory & Equipment
   const [inventory, setInventory] = useState(initialSave.inventory);
@@ -275,6 +278,7 @@ function App() {
     disabledAssets,
     portalStats,
     publicProfile,
+    activityProgress,
     inventory,
     equippedGear,
     equippedEventItems
@@ -301,7 +305,7 @@ function App() {
     }, 1200);
 
     return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, inventory, equippedGear, equippedEventItems, account]);
+  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, activityProgress, inventory, equippedGear, equippedEventItems, account]);
 
   // Play ambient music
   useEffect(() => {
@@ -347,6 +351,22 @@ function App() {
       if (activeStage.rewardItemId) {
         setInventory(prev => prev.includes(activeStage.rewardItemId) ? prev : [...prev, activeStage.rewardItemId]);
       }
+
+      const now = new Date();
+      const startOfYear = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
+      const weekNumber = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getUTCDay() + 1) / 7);
+      const dayKey = now.toISOString().slice(0, 10);
+      const weekKey = `${now.getUTCFullYear()}-W${weekNumber}`;
+      setActivityProgress(prev => ({
+        ...prev,
+        dayKey,
+        weekKey,
+        modeWins: {
+          ...(prev.modeWins || {}),
+          [activeStage.mode]: (prev.modeWins?.[activeStage.mode] || 0) + 1,
+          any: (prev.modeWins?.any || 0) + 1
+        }
+      }));
 
       // Check if they dropped a random relic/item from the stage's universe
       const disabledGear = new Set(disabledAssets.gear || []);
@@ -401,6 +421,7 @@ function App() {
     setDisabledAssets(merged.disabledAssets || DEFAULT_SAVE.disabledAssets);
     setPortalStats(merged.portalStats || DEFAULT_SAVE.portalStats);
     setPublicProfile(merged.publicProfile || DEFAULT_SAVE.publicProfile);
+    setActivityProgress(merged.activityProgress || DEFAULT_SAVE.activityProgress);
     setInventory(merged.inventory);
     setEquippedGear(merged.equippedGear);
     setEquippedEventItems(merged.equippedEventItems);
@@ -670,6 +691,12 @@ function App() {
                   text: lang === 'fr'
                     ? 'Ton role est de rassembler les Eclats d Origine, stabiliser les Trames et empecher le Sans-Auteur de transformer le multivers en page blanche.'
                     : 'Your role is to gather Origin Shards, stabilize Threads, and stop the Authorless from turning the multiverse into a blank page.'
+                },
+                {
+                  title: lang === 'fr' ? '4. Premiere route' : '4. First route',
+                  text: lang === 'fr'
+                    ? 'Commence par une breche facile, equipe une relique, teste un item de terrain, puis consulte Collection pour voir ce que chaque victoire ouvre.'
+                    : 'Start with an easy breach, equip a relic, test a field item, then check Collection to see what each victory opens.'
                 }
               ].map(entry => (
                 <div className="intro-profile-step" key={entry.title}>
@@ -748,6 +775,8 @@ function App() {
           setHiddenUniverses={setHiddenUniverses}
           disabledAssets={disabledAssets}
           setDisabledAssets={setDisabledAssets}
+          activityProgress={activityProgress}
+          setActivityProgress={setActivityProgress}
           onLaunchStage={handleLaunchStage}
           onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
         />
