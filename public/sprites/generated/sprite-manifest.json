@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T19:53:33.573Z",
+  "generatedAt": "2026-07-03T22:29:51.421Z",
   "sheet": {
     "width": 1024,
     "height": 1024,
@@ -14,20 +14,140 @@
     ]
   },
   "counts": {
-    "heroes": 795,
-    "enemies": 804,
-    "bosses": 799,
-    "items": 27,
-    "total": 2425
+    "heroes": 801,
+    "enemies": 809,
+    "bosses": 803,
+    "items": 30,
+    "total": 2443
   },
   "availableCounts": {
-    "heroes": 292,
-    "enemies": 18,
-    "bosses": 61,
-    "items": 27,
-    "total": 398
+    "heroes": 298,
+    "enemies": 23,
+    "bosses": 65,
+    "items": 30,
+    "total": 416
   },
   "entries": [
+    {
+      "kind": "hero",
+      "id": "arca_mirelle",
+      "name": "Mirelle Suture",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/heroes/nexus-de-convergence/arca-mirelle.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "hero",
+      "id": "arca_bastion",
+      "name": "Bastion Korr",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/heroes/nexus-de-convergence/arca-bastion.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "hero",
+      "id": "arca_nova",
+      "name": "Nova Vey",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/heroes/nexus-de-convergence/arca-nova.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "hero",
+      "id": "arca_marrow",
+      "name": "Marrow Kade",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/heroes/nexus-de-convergence/arca-marrow.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "hero",
+      "id": "arca_sable",
+      "name": "Sable Orison",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/heroes/nexus-de-convergence/arca-sable.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "hero",
+      "id": "arca_loom",
+      "name": "Loom Ivara",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/heroes/nexus-de-convergence/arca-loom.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
     {
       "kind": "hero",
       "id": "marcus",
@@ -15927,6 +16047,186 @@
       },
       "available": false,
       "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "nexus-de-convergence-echo-sans-auteur",
+      "name": "Echo Sans-Auteur",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/echo-sans-auteur.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "enemy",
+      "id": "nexus-de-convergence-archiviste-rompu",
+      "name": "Archiviste Rompu",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/archiviste-rompu.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "enemy",
+      "id": "nexus-de-convergence-noeud-de-paradoxe",
+      "name": "Noeud de Paradoxe",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/noeud-de-paradoxe.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "enemy",
+      "id": "nexus-de-convergence-fragment-vagabond",
+      "name": "Fragment Vagabond",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/fragment-vagabond.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "enemy",
+      "id": "nexus-de-convergence-drone-a-r-c-a-corrompu",
+      "name": "Drone A.R.C.A. Corrompu",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/drone-a-r-c-a-corrompu.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "boss",
+      "id": "nexus-de-convergence-greffier-du-voile",
+      "name": "Greffier du Voile",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/greffier-du-voile.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "boss",
+      "id": "nexus-de-convergence-juge-des-trames",
+      "name": "Juge des Trames",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/juge-des-trames.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "boss",
+      "id": "nexus-de-convergence-avatar-du-sans-auteur",
+      "name": "Avatar du Sans-Auteur",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/avatar-du-sans-auteur.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "boss",
+      "id": "nexus-de-convergence-moteur-de-convergence-instable",
+      "name": "Moteur de Convergence Instable",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/moteur-de-convergence-instable.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -47987,6 +48287,57 @@
       },
       "available": false,
       "source": null
+    },
+    {
+      "kind": "item",
+      "id": "nexus_anchor_coil",
+      "name": "Anchor Coil",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/items/nexus-de-convergence/nexus-anchor-coil.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "arca_signal_lens",
+      "name": "Signal Lens",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/items/nexus-de-convergence/arca-signal-lens.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "origin_shard_guard",
+      "name": "Origin Shard Guard",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/items/nexus-de-convergence/origin-shard-guard.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "item",

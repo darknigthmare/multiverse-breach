@@ -74,10 +74,11 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
   const [showCard, setShowCard] = useState(false);
   
   // New Banner selection state
-  const [activeBanner, setActiveBanner] = useState('multi');
+  const [activeBanner, setActiveBanner] = useState('nexus');
 
   const cost = 50;
   const portalBanners = [
+    { id: 'nexus', color: '#39c5bb', label: { fr: 'Portail Nexus OC', en: 'OC Nexus Portal' }, desc: { fr: 'Personnages originaux du jeu de base.', en: 'Original base-game characters.' }, match: h => h.universe === 'Nexus de Convergence' },
     { id: 'multi', color: '#9b59b6', label: { fr: 'Portail Multivers', en: 'Multiverse Portal' }, desc: { fr: 'Toutes les signatures heroiques detectables.', en: 'All detectable heroic signatures.' }, match: () => true },
     { id: 'scifi', color: '#3498db', label: { fr: 'Faille Sci-Fi', en: 'Sci-Fi Rift' }, desc: { fr: 'Halo, Mass Effect, Portal, Stargate, Gears.', en: 'Halo, Mass Effect, Portal, Stargate, Gears.' }, match: h => ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Portal', 'Half-Life', 'Star Wars', 'Le Cinquième Element', ...EXPANDED_FACTION_UNIVERSES.sciFi].includes(h.universe) },
     { id: 'xeno_yautja', color: '#8adbe6', label: { fr: 'Faille Xeno-Yautja', en: 'Xeno-Yautja Rift' }, desc: { fr: 'Alien, Predator, Prometheus, AVP.', en: 'Alien, Predator, Prometheus, AVP.' }, match: h => /Alien|Predator|Prometheus|Prey/.test(h.universe) },
@@ -92,6 +93,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
   ];
 
   const bannerVisuals = {
+    nexus: { universe: 'Nexus de Convergence', mode: 'RPG', shape: 'omniverse', focusRate: 1, meta: { fr: 'Bassin OC: A.R.C.A. recrute des Ancres et agents natifs du Nexus.', en: 'OC pool: A.R.C.A. recruits Anchors and native Nexus agents.' } },
     multi: { universe: 'Matrix', mode: 'RPG', shape: 'omniverse', focusRate: 1, meta: { fr: 'Spectre complet: A.R.C.A. ouvre toutes les familles de Trames detectables.', en: 'Complete spectrum: A.R.C.A. opens every detectable Thread family.' } },
     scifi: { universe: 'Stargate', mode: 'RPG', shape: 'iris', focusRate: 0.7, meta: { fr: 'Signatures de front: blindage, commandement et lignes de defense.', en: 'Frontline signatures: armor, command, and defensive lines.' } },
     xeno_yautja: { universe: 'Alien', mode: 'Smash', shape: 'hive', focusRate: 0.7, meta: { fr: 'Traques primitives: acide, plasma et rites de chasse.', en: 'Primal hunts: acid, plasma, and hunting rites.' } },

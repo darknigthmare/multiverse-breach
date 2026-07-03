@@ -13,6 +13,14 @@ import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from 
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
+import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
+
+const ARC_UNLOCK_RULES = {
+  personalMinLevel: 3,
+  universeMinHeroes: 3,
+  universeMinLevel: 4,
+  trioMinLevel: 5
+};
 
 const getLocalizedText = (entry, lang, fallback = '') => {
   if (!entry) return fallback;
@@ -230,7 +238,8 @@ function NarrativeArcGroupBrowser({
   onOpenArc,
   stages,
   completedStages,
-  categoryColor = '#ffb15c'
+  categoryColor = '#ffb15c',
+  getStageUnlockRequirementText
 }) {
   const [groupQuery, setGroupQuery] = useState('');
   const normalizedGroupQuery = groupQuery.trim().toLowerCase();
@@ -241,6 +250,10 @@ function NarrativeArcGroupBrowser({
     : groups;
   const visibleGroups = filteredGroups.slice(0, 120);
   const selectedGroup = groups.find(group => group.id === selectedGroupId) || null;
+  const getPrimaryArcStage = (arc) => (
+    stages.find(stage => stage.universeArc?.id === arc?.id || stage.characterArc?.id === arc?.id || stage.trioArc?.id === arc?.id)
+    || getLinkedStagesForArc(arc, stages, BASE_HEROES_DB)[0]
+  );
 
   if (!selectedGroup) {
     return (
@@ -271,6 +284,12 @@ function NarrativeArcGroupBrowser({
         </div>
         <div className="arc-group-grid">
           {visibleGroups.map(group => {
+            const firstArcStage = group.arcs
+              .map(getPrimaryArcStage)
+              .find(Boolean);
+            const requirementText = firstArcStage && getStageUnlockRequirementText
+              ? getStageUnlockRequirementText(firstArcStage)
+              : '';
             const doneCount = group.arcs.reduce((sum, arc) => {
               const timeline = buildArcTimeline(arc, getLinkedStagesForArc(arc, stages, BASE_HEROES_DB), completedStages, lang);
               return sum + timeline.filter(node => node.status === 'done').length;
@@ -298,6 +317,9 @@ function NarrativeArcGroupBrowser({
                 <span className="arc-group-kicker">{group.kicker}</span>
                 <strong>{group.label}</strong>
                 <span className="arc-group-desc">{group.desc}</span>
+                {requirementText && (
+                  <span className="arc-chapter-requirement">{requirementText}</span>
+                )}
                 <span className="arc-group-progress">
                   <span>{group.arcs.length} {lang === 'fr' ? 'arc(s)' : 'arc(s)'}</span>
                   <b>{doneCount}/{totalCount}</b>
@@ -329,6 +351,10 @@ function NarrativeArcGroupBrowser({
       <div className="arc-chapter-grid">
         {selectedGroup.arcs.map(arc => {
           const linkedStages = getLinkedStagesForArc(arc, stages, BASE_HEROES_DB);
+          const primaryStage = getPrimaryArcStage(arc);
+          const requirementText = primaryStage && getStageUnlockRequirementText
+            ? getStageUnlockRequirementText(primaryStage)
+            : '';
           const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
           const doneCount = timeline.filter(node => node.status === 'done').length;
           const ratio = timeline.length ? Math.min(1, doneCount / timeline.length) : 0;
@@ -347,6 +373,9 @@ function NarrativeArcGroupBrowser({
               </span>
               <strong>{getLocalizedText(arc.title, lang, arc.id)}</strong>
               <span className="arc-chapter-intro">{getLocalizedText(arc.intro, lang)}</span>
+              {requirementText && (
+                <span className="arc-chapter-requirement">{requirementText}</span>
+              )}
               <span className="arc-group-bar">
                 <i style={{ width: `${Math.round(ratio * 100)}%` }} />
               </span>
@@ -2006,7 +2035,19 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   );
 }
 
-function MultiverseRiftMap({ lang, stages, allStages = stages, completedStages, isStageUnlocked, onSelectStage, onSelectArc, narrativeArcs = [] }) {
+function MultiverseRiftMap({
+  lang,
+  stages,
+  allStages = stages,
+  completedStages,
+  isStageUnlocked,
+  onSelectStage,
+  onSelectArc,
+  narrativeArcs = [],
+  mapKicker,
+  mapTitle,
+  mapDescription
+}) {
   const modeMeta = {
     RPG: { color: '#3498db', label: 'RPG', ring: 'ATB' },
     Tactics: { color: '#9b59b6', label: lang === 'fr' ? 'TACTIQUE' : 'TACTICS', ring: 'GRID' },
@@ -2052,12 +2093,12 @@ function MultiverseRiftMap({ lang, stages, allStages = stages, completedStages, 
   return (
     <div className="rift-universe-map">
       <div className="rift-map-copy">
-        <div className="portal-focus-kicker">{lang === 'fr' ? 'CARTE DES FAILLES / VUE UNIVERS' : 'RIFT MAP / UNIVERSE VIEW'}</div>
-        <h4>{lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals'}</h4>
+        <div className="portal-focus-kicker">{mapKicker || (lang === 'fr' ? 'CARTE DES FAILLES / CAMPAGNE' : 'RIFT MAP / CAMPAIGN')}</div>
+        <h4>{mapTitle || (lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals')}</h4>
         <p>
-          {lang === 'fr'
+          {mapDescription || (lang === 'fr'
             ? 'Les breches ne sont plus seulement une grille: A.R.C.A. les projette comme des portails physiques. En ecran d arc, les routes relient intro, missions, interludes et boss.'
-            : 'Breaches are no longer only a grid: A.R.C.A. projects them as physical portals. In arc screens, routes link intro, missions, interludes, and boss.'}
+            : 'Breaches are no longer only a grid: A.R.C.A. projects them as physical portals. In arc screens, routes link intro, missions, interludes, and boss.')}
         </p>
         <div className="rift-map-legend">
           {Object.entries(modeMeta).map(([mode, meta]) => (
@@ -2125,6 +2166,87 @@ function MultiverseRiftMap({ lang, stages, allStages = stages, completedStages, 
             </button>
           );
         })}
+      </div>
+    </div>
+  );
+}
+
+function RiftBriefingPanel({
+  lang,
+  stage,
+  isUnlocked,
+  onLaunch,
+  onClose,
+  getStageModifier,
+  getStageArc,
+  getLootRarity,
+  getBossIntel,
+  getRichBreachBrief
+}) {
+  if (!stage) return null;
+  const modifier = getStageModifier(stage);
+  const stageArc = getStageArc(stage);
+  const rarity = getLootRarity(stage);
+  const bossIntel = getBossIntel(stage);
+  const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode);
+
+  return (
+    <div className="rift-briefing-panel">
+      <div
+        className="rift-briefing-art"
+        style={{
+          backgroundImage: backdrop
+            ? `linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.35)), url(${backdrop})`
+            : 'linear-gradient(135deg, rgba(57,197,187,0.18), rgba(155,89,182,0.14))'
+        }}
+      />
+      <div>
+        <div className="portal-focus-kicker">
+          {lang === 'fr' ? 'INSPECTEUR DE FAILLE' : 'RIFT INSPECTOR'}
+        </div>
+        <div className="rift-briefing-title">
+          #{stage.id} {stage.displayName?.[lang] || stage.name}
+        </div>
+        <div className="rift-briefing-copy">
+          {getRichBreachBrief(stage)}
+        </div>
+        <div className="rift-briefing-row">
+          <span>{lang === 'fr' ? 'Univers' : 'Universe'}: <strong>{stage.sourceUniverses?.join(' / ') || stage.universe}</strong></span>
+          <span>Boss: <strong>{bossIntel?.name || stage.bossName}</strong></span>
+        </div>
+        <div className="rift-briefing-row">
+          <span style={{ color: modifier.color }}>{modifier.name[lang]}: {modifier.desc[lang]}</span>
+        </div>
+        {stageArc && (
+          <div className="rift-briefing-row">
+            <span style={{ color: stageArc.color }}>{stageArc.title[lang]}: {stageArc.premise[lang]}</span>
+          </div>
+        )}
+        <div className="rift-briefing-row">
+          <span style={{ color: rarity.color }}>
+            {lang === 'fr' ? 'Signature estimee' : 'Estimated signature'}: {rarity.label}
+          </span>
+          <span>{bossIntel?.special || (lang === 'fr' ? 'Anomalie non cataloguée' : 'Uncatalogued anomaly')}</span>
+        </div>
+      </div>
+      <div className="rift-briefing-actions">
+        <button
+          onClick={() => onLaunch(stage)}
+          disabled={!isUnlocked(stage)}
+          className="btn-retro"
+          title={isUnlocked(stage)
+            ? (lang === 'fr' ? 'Lance la mission affichee dans l inspecteur.' : 'Start the mission shown in this inspector.')
+            : (lang === 'fr' ? 'Mission verrouillee: stabilise plus de breches pour la debloquer.' : 'Mission locked: stabilize more breaches to unlock it.')}
+        >
+          {isUnlocked(stage) ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
+        </button>
+        <button
+          onClick={onClose}
+          className="btn-retro"
+          title={lang === 'fr' ? 'Ferme l inspecteur de faille.' : 'Close the rift inspector.'}
+        >
+          {lang === 'fr' ? 'FERMER' : 'CLOSE'}
+        </button>
       </div>
     </div>
   );
@@ -2262,7 +2384,8 @@ export default function HubScreen({
     )),
     [ALL_HEROES_DB, isUniverseVisible, isAssetDisabled, playerHero.id]
   );
-  const ALL_UNIVERSE_KEYS = Object.keys(LORE_DB).filter(key => key !== 'Nexus de Convergence');
+  const ALL_UNIVERSE_KEYS = Object.keys(LORE_DB);
+  const DLC_UNIVERSE_KEYS = ALL_UNIVERSE_KEYS.filter(universe => !isBaseGameUniverse(universe));
 
   useEffect(() => {
     if (!setActiveTeam) return;
@@ -2334,7 +2457,84 @@ export default function HubScreen({
     { id: 'anomaly', label: 'Anomalie', color: '#ff4500', threshold: 24 }
   ];
 
-  // List of 37 stages (one per universe) + 1 final boss stage
+  const BASE_OC_STAGES = [
+    {
+      id: 8801,
+      name: 'Atrium Primer Lock',
+      displayName: { fr: 'Atrium - Premier verrou', en: 'Atrium - Primer Lock' },
+      universe: 'Nexus de Convergence',
+      mode: 'RPG',
+      difficulty: 'Easy',
+      goldPrize: 45,
+      shardPrize: 20,
+      bossName: 'Greffier du Voile',
+      baseGameStage: true
+    },
+    {
+      id: 8802,
+      name: 'Archive Static Corridor',
+      displayName: { fr: 'Archive - Couloir statique', en: 'Archive - Static Corridor' },
+      universe: 'Nexus de Convergence',
+      mode: 'Tactics',
+      difficulty: 'Easy',
+      goldPrize: 55,
+      shardPrize: 22,
+      bossName: 'Juge des Trames',
+      baseGameStage: true
+    },
+    {
+      id: 8803,
+      name: 'Origin Shard Foundry',
+      displayName: { fr: 'Fonderie des Eclats d Origine', en: 'Origin Shard Foundry' },
+      universe: 'Nexus de Convergence',
+      mode: 'Smash',
+      difficulty: 'Medium',
+      goldPrize: 70,
+      shardPrize: 28,
+      bossName: 'Avatar du Sans-Auteur',
+      baseGameStage: true
+    },
+    {
+      id: 8804,
+      name: 'A.R.C.A. Black Ledger',
+      displayName: { fr: 'Grand registre noir A.R.C.A.', en: 'A.R.C.A. Black Ledger' },
+      universe: 'Nexus de Convergence',
+      mode: 'RPG',
+      difficulty: 'Medium',
+      goldPrize: 85,
+      shardPrize: 32,
+      bossName: 'Moteur de Convergence Instable',
+      baseGameStage: true
+    },
+    {
+      id: 8805,
+      name: 'Broken Portal Yard',
+      displayName: { fr: 'Cour des portails brises', en: 'Broken Portal Yard' },
+      universe: 'Nexus de Convergence',
+      mode: 'Tactics',
+      difficulty: 'Hard',
+      goldPrize: 105,
+      shardPrize: 40,
+      tokenPrize: 1,
+      bossName: 'Juge des Trames',
+      baseGameStage: true
+    },
+    {
+      id: 8806,
+      name: 'Sans-Auteur Threshold',
+      displayName: { fr: 'Seuil du Sans-Auteur', en: 'Sans-Auteur Threshold' },
+      universe: 'Nexus de Convergence',
+      mode: 'Smash',
+      difficulty: 'Hard',
+      goldPrize: 125,
+      shardPrize: 50,
+      tokenPrize: 1,
+      bossName: 'Avatar du Sans-Auteur',
+      baseGameStage: true
+    }
+  ];
+
+  // Franchise stages are DLC; base OC stages above remain playable with every DLC hidden.
   const STAGES = [
     { id: 1, name: 'Asphix Locust Outpost', universe: 'Gears of War', mode: 'RPG', difficulty: 'Easy', goldPrize: 40, shardPrize: 15, bossName: 'Brumak' },
     { id: 2, name: 'Installation 04 Ring', universe: 'Halo', mode: 'Tactics', difficulty: 'Easy', goldPrize: 40, shardPrize: 15, bossName: 'Scarab Mech' },
@@ -2444,6 +2644,7 @@ export default function HubScreen({
     rewardItemName: arc.reward,
     trioArc: arc
   }));
+  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...BASE_OC_STAGES);
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...FUSION_STAGES);
   STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...UNIVERSE_ARC_STAGES);
@@ -2456,7 +2657,7 @@ export default function HubScreen({
   };
   const ADMIN_VISIBLE_STAGES = STAGES.filter(stage => isStageVisibleByAdmin(stage) && !isAssetDisabled('stages', getStageAdminKey(stage)));
   const NORMAL_STAGE_COUNT = ADMIN_VISIBLE_STAGES.filter(stage => stage.id !== 38 && !stage.characterArc).length;
-  const TOTAL_UNIVERSE_COUNT = ALL_UNIVERSE_KEYS.filter(isUniverseVisible).length + 1;
+  const TOTAL_UNIVERSE_COUNT = ALL_UNIVERSE_KEYS.filter(isUniverseVisible).length;
   const FINAL_STAGE_REQUIRED_CLEARS = Math.max(18, Math.ceil(NORMAL_STAGE_COUNT * 0.45));
   const META_RANK_THRESHOLDS = {
     strike: Math.max(8, Math.ceil(NORMAL_STAGE_COUNT * 0.15)),
@@ -3625,8 +3826,86 @@ export default function HubScreen({
   };
   const getFusionSourceClears = (stage) => (stage.sourceUniverses || [])
     .map(universe => UNIVERSE_TO_STAGE_ID[universe])
-    .filter(Boolean)
-    .filter(stageId => completedStages.includes(stageId)).length;
+      .filter(Boolean)
+      .filter(stageId => completedStages.includes(stageId)).length;
+  const getHeroLevelValue = (heroId) => heroLevels[heroId] || 1;
+  const getPersonalArcLevelRequirement = (arc) => Math.max(
+    ARC_UNLOCK_RULES.personalMinLevel,
+    arc?.unlock?.type === 'level' ? arc.unlock.value : 0
+  );
+  const getUniverseArcRosterStatus = (stage) => {
+    const universes = stage.sourceUniverses?.length ? stage.sourceUniverses : [stage.universe];
+    const candidates = universes.map(universe => {
+      const universeHeroes = HEROES_DB.filter(hero => hero.universe === universe);
+      const requiredCount = Math.min(ARC_UNLOCK_RULES.universeMinHeroes, Math.max(1, universeHeroes.length));
+      const readyHeroes = universeHeroes.filter(hero => unlockedHeroes.includes(hero.id) && getHeroLevelValue(hero.id) >= ARC_UNLOCK_RULES.universeMinLevel);
+      return {
+        universe,
+        requiredCount,
+        readyCount: readyHeroes.length,
+        totalCount: universeHeroes.length,
+        ready: readyHeroes.length >= requiredCount
+      };
+    });
+    const readyCandidate = candidates.find(candidate => candidate.ready);
+    return readyCandidate || candidates.sort((a, b) => b.readyCount - a.readyCount)[0] || {
+      universe: stage.universe,
+      requiredCount: ARC_UNLOCK_RULES.universeMinHeroes,
+      readyCount: 0,
+      totalCount: 0,
+      ready: false
+    };
+  };
+  const getTrioArcRosterStatus = (stage) => {
+    const heroIds = stage.trioArc?.heroIds || [];
+    const readyHeroIds = heroIds.filter(heroId => unlockedHeroes.includes(heroId) && getHeroLevelValue(heroId) >= ARC_UNLOCK_RULES.trioMinLevel);
+    return {
+      requiredCount: heroIds.length,
+      readyCount: readyHeroIds.length,
+      ready: heroIds.length > 0 && readyHeroIds.length === heroIds.length
+    };
+  };
+  const getArcUnlockRequirementText = (stage) => {
+    const clearRequirement = getStageRequiredClears(stage);
+    const clearText = clearRequirement > 0
+      ? (lang === 'fr'
+        ? `Progression Nexus: ${Math.min(completedStages.length, clearRequirement)}/${clearRequirement} breches stabilisees.`
+        : `Nexus progress: ${Math.min(completedStages.length, clearRequirement)}/${clearRequirement} breaches stabilized.`)
+      : null;
+
+    if (stage.characterArc) {
+      const hero = HEROES_DB.find(item => item.id === stage.characterArc.heroId);
+      const requiredLevel = getPersonalArcLevelRequirement(stage.characterArc);
+      const owned = hero ? unlockedHeroes.includes(hero.id) : false;
+      const currentLevel = hero ? getHeroLevelValue(hero.id) : 0;
+      const rosterText = lang === 'fr'
+        ? `Condition personnelle: ${hero?.name || stage.characterArc.heroId} ${owned ? 'possede' : 'manquant'}, niveau ${currentLevel}/${requiredLevel}.`
+        : `Personal condition: ${hero?.name || stage.characterArc.heroId} ${owned ? 'owned' : 'missing'}, level ${currentLevel}/${requiredLevel}.`;
+      return [rosterText, clearText].filter(Boolean).join(' ');
+    }
+
+    if (stage.universeArc) {
+      const roster = getUniverseArcRosterStatus(stage);
+      const sourceNeed = Math.min(2, stage.sourceUniverses?.length || 1);
+      const sourceText = lang === 'fr'
+        ? `Sources stabilisees: ${getFusionSourceClears(stage)}/${sourceNeed}.`
+        : `Stabilized sources: ${getFusionSourceClears(stage)}/${sourceNeed}.`;
+      const rosterText = lang === 'fr'
+        ? `Condition univers: ${roster.readyCount}/${roster.requiredCount} heros ${roster.universe} niveau ${ARC_UNLOCK_RULES.universeMinLevel}+ possedes.`
+        : `Universe condition: ${roster.readyCount}/${roster.requiredCount} ${roster.universe} heroes level ${ARC_UNLOCK_RULES.universeMinLevel}+ owned.`;
+      return [rosterText, sourceText, clearText].filter(Boolean).join(' ');
+    }
+
+    if (stage.trioArc) {
+      const roster = getTrioArcRosterStatus(stage);
+      const rosterText = lang === 'fr'
+        ? `Condition trio: ${roster.readyCount}/${roster.requiredCount} membres possedes niveau ${ARC_UNLOCK_RULES.trioMinLevel}+.`
+        : `Trio condition: ${roster.readyCount}/${roster.requiredCount} members owned at level ${ARC_UNLOCK_RULES.trioMinLevel}+.`;
+      return [rosterText, clearText].filter(Boolean).join(' ');
+    }
+
+    return clearText || '';
+  };
   const isStageUnlocked = (stage) => {
     const baseUnlocked = completedStages.length >= getStageRequiredClears(stage);
     if (!baseUnlocked) return false;
@@ -3634,35 +3913,35 @@ export default function HubScreen({
       const arc = stage.characterArc;
       const hero = HEROES_DB.find(item => item.id === arc.heroId);
       if (!hero || !unlockedHeroes.includes(hero.id)) return false;
-      if (arc.unlock?.type === 'level') return (heroLevels[hero.id] || 1) >= arc.unlock.value;
-      return true;
+      return getHeroLevelValue(hero.id) >= getPersonalArcLevelRequirement(arc);
     }
     if (stage.trioArc) {
-      const trioReady = stage.trioArc.heroIds.every(heroId => unlockedHeroes.includes(heroId));
-      if (!trioReady) return false;
-      return true;
+      return getTrioArcRosterStatus(stage).ready;
     }
     if (stage.universeArc) {
-      return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
+      return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1) && getUniverseArcRosterStatus(stage).ready;
     }
     if (stage.fusionMission) return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
     return true;
   };
   const getBreachBrief = (stage) => {
     if (stage.trioArc) {
+      const requirementText = getArcUnlockRequirementText(stage);
       return lang === 'fr'
-        ? `${stage.displayName.fr}: ${stage.trioArc.intro.fr} Cellule requise: ${stage.trioArc.heroIds.join(' / ')}. Trace trio: ${stage.rewardItemName.fr}.`
-        : `${stage.displayName.en}: ${stage.trioArc.intro.en} Required cell: ${stage.trioArc.heroIds.join(' / ')}. Trio trace: ${stage.rewardItemName.en}.`;
+        ? `${stage.displayName.fr}: ${stage.trioArc.intro.fr} Cellule requise: ${stage.trioArc.heroIds.join(' / ')}. ${requirementText} Trace trio: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.trioArc.intro.en} Required cell: ${stage.trioArc.heroIds.join(' / ')}. ${requirementText} Trio trace: ${stage.rewardItemName.en}.`;
     }
     if (stage.universeArc) {
+      const requirementText = getArcUnlockRequirementText(stage);
       return lang === 'fr'
-        ? `${stage.displayName.fr}: ${stage.universeArc.intro.fr} Sources stabilisees ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Recompense: ${stage.rewardItemName.fr}.`
-        : `${stage.displayName.en}: ${stage.universeArc.intro.en} Stabilized sources ${getFusionSourceClears(stage)}/${stage.sourceUniverses.length}. Reward: ${stage.rewardItemName.en}.`;
+        ? `${stage.displayName.fr}: ${stage.universeArc.intro.fr} ${requirementText} Recompense: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.universeArc.intro.en} ${requirementText} Reward: ${stage.rewardItemName.en}.`;
     }
     if (stage.characterArc) {
+      const requirementText = getArcUnlockRequirementText(stage);
       return lang === 'fr'
-        ? `${stage.displayName.fr}: ${stage.characterArc.intro.fr} Trace personnelle: ${stage.rewardItemName.fr}.`
-        : `${stage.displayName.en}: ${stage.characterArc.intro.en} Personal trace: ${stage.rewardItemName.en}.`;
+        ? `${stage.displayName.fr}: ${stage.characterArc.intro.fr} ${requirementText} Trace personnelle: ${stage.rewardItemName.fr}.`
+        : `${stage.displayName.en}: ${stage.characterArc.intro.en} ${requirementText} Personal trace: ${stage.rewardItemName.en}.`;
     }
     if (stage.fusionMission) {
       return lang === 'fr'
@@ -3753,7 +4032,7 @@ export default function HubScreen({
   };
 
   const selectedBriefingStage = briefingStageId
-    ? STAGES.find(stage => stage.id === briefingStageId)
+    ? ADMIN_VISIBLE_STAGES.find(stage => stage.id === briefingStageId)
     : null;
 
   const todayIndex = Math.floor(Date.now() / 86400000);
@@ -4108,6 +4387,7 @@ export default function HubScreen({
       return {
         universe,
         lore,
+        baseGame: isBaseGameUniverse(universe),
         hidden: hiddenUniverseSet.has(universe),
         heroes,
         enemies,
@@ -4129,11 +4409,14 @@ export default function HubScreen({
         row.lore?.mediaType
       ].filter(Boolean).some(value => String(value).toLowerCase().includes(query));
     })
-    .sort((a, b) => a.universe.localeCompare(b.universe));
-  const hiddenUniverseCount = ALL_UNIVERSE_KEYS.filter(universe => hiddenUniverseSet.has(universe)).length;
-  const visibleUniverseCount = ALL_UNIVERSE_KEYS.length - hiddenUniverseCount;
+    .sort((a, b) => {
+      if (a.baseGame !== b.baseGame) return a.baseGame ? -1 : 1;
+      return a.universe.localeCompare(b.universe);
+    });
+  const hiddenUniverseCount = DLC_UNIVERSE_KEYS.filter(universe => hiddenUniverseSet.has(universe)).length;
+  const visibleUniverseCount = DLC_UNIVERSE_KEYS.length - hiddenUniverseCount;
   const setUniverseHidden = (universe, hidden) => {
-    if (!setHiddenUniverses || universe === 'Nexus de Convergence') return;
+    if (!setHiddenUniverses || isBaseGameUniverse(universe)) return;
     setHiddenUniverses(prev => {
       const next = new Set(prev);
       if (hidden) next.add(universe);
@@ -4147,9 +4430,26 @@ export default function HubScreen({
     notifyNexus(lang === 'fr' ? 'Tous les univers sont visibles.' : 'All universes are visible.', 'success');
     sound.playSfx('levelup');
   };
+  const hideAllDlcUniverses = () => {
+    if (!setHiddenUniverses) return;
+    setHiddenUniverses(DEFAULT_HIDDEN_UNIVERSES);
+    notifyNexus(
+      lang === 'fr'
+        ? 'Mode jeu de base restaure: seuls les contenus OC du Nexus restent actifs.'
+        : 'Base game mode restored: only OC Nexus content remains active.',
+      'success'
+    );
+    sound.playSfx('click');
+  };
+  const showAllDlcUniverses = () => {
+    if (!setHiddenUniverses) return;
+    setHiddenUniverses(prev => prev.filter(universe => !DLC_UNIVERSE_KEYS.includes(universe)));
+    notifyNexus(lang === 'fr' ? 'Tous les DLC franchise sont actifs.' : 'All franchise DLC universes are active.', 'success');
+    sound.playSfx('levelup');
+  };
   const hideUniversesByMediaType = (mediaType) => {
     if (!setHiddenUniverses) return;
-    const targets = ALL_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType);
+    const targets = DLC_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType);
     setHiddenUniverses(prev => Array.from(new Set([...prev, ...targets])).sort());
     notifyNexus(
       lang === 'fr'
@@ -4161,7 +4461,7 @@ export default function HubScreen({
   };
   const showUniversesByMediaType = (mediaType) => {
     if (!setHiddenUniverses) return;
-    const targets = new Set(ALL_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType));
+    const targets = new Set(DLC_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType));
     setHiddenUniverses(prev => prev.filter(universe => !targets.has(universe)));
     notifyNexus(
       lang === 'fr'
@@ -4171,23 +4471,27 @@ export default function HubScreen({
     );
     sound.playSfx('coin');
   };
-  const getMediaTypeTargets = (mediaType) => ALL_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType);
+  const getMediaTypeTargets = (mediaType) => DLC_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType);
   const getMediaTypeHiddenCount = (mediaType) => getMediaTypeTargets(mediaType).filter(universe => hiddenUniverseSet.has(universe)).length;
   const toggleAdminUniverseOpen = (universe) => {
     setExpandedAdminUniverses(prev => ({ ...prev, [universe]: !prev[universe] }));
     sound.playSfx('click');
   };
   const finalStage = STAGES.find(stage => stage.id === 38);
+  const isPersonalArcVisibleForRoster = (stage) => {
+    const heroId = stage.characterArc?.heroId;
+    return heroId === 'player_anchor' || unlockedHeroes.includes(heroId);
+  };
   const missionCategoryFilter = (stage) => {
     if (missionScreen === 'universeArcs') return Boolean(stage.universeArc);
-    if (missionScreen === 'personalArcs') return Boolean(stage.characterArc);
+    if (missionScreen === 'personalArcs') return Boolean(stage.characterArc) && isPersonalArcVisibleForRoster(stage);
     if (missionScreen === 'trioArcs') return Boolean(stage.trioArc);
     if (missionScreen === 'fusionMissions') return Boolean(stage.fusionMission);
     return !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission;
   };
   const storyMissionCount = visibleStages.filter(stage => stage.id !== 38 && !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission).length;
   const universeArcMissionCount = visibleStages.filter(stage => stage.universeArc).length;
-  const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc).length;
+  const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc && isPersonalArcVisibleForRoster(stage)).length;
   const trioArcMissionCount = visibleStages.filter(stage => stage.trioArc).length;
   const fusionMissionCount = visibleStages.filter(stage => stage.fusionMission).length;
   const missionScreenMeta = {
@@ -4227,7 +4531,7 @@ export default function HubScreen({
   const activeNarrativeArcs = missionScreen === 'universeArcs'
     ? UNIVERSE_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.universeArc?.id === arc.id))
     : missionScreen === 'personalArcs'
-      ? CHARACTER_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.characterArc?.id === arc.id))
+      ? CHARACTER_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.characterArc?.id === arc.id) && (arc.heroId === 'player_anchor' || unlockedHeroes.includes(arc.heroId)))
       : missionScreen === 'trioArcs'
         ? TRIO_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.trioArc?.id === arc.id))
         : [];
@@ -4352,6 +4656,40 @@ export default function HubScreen({
     .slice(0, 4);
   const missionDeck = [nextUnclearedStage, ...randomMissionDeck].filter(Boolean).slice(0, 5);
   const clearedVisibleCount = missionPool.filter(stage => completedStages.includes(stage.id)).length;
+  const isArcMissionScreen = Boolean(narrativeArcScreenType);
+  const showModeFilters = missionScreen === 'story' || missionScreen === 'fusionMissions';
+  const showStoryMissionTools = missionScreen === 'story';
+  const riftMapCopy = narrativeArcScreenType === 'universe'
+    ? {
+      kicker: lang === 'fr' ? 'CARTE DES FAILLES / ATLAS DES UNIVERS' : 'RIFT MAP / UNIVERSE ATLAS',
+      title: lang === 'fr' ? 'Univers instables detectes' : 'Unstable universes detected',
+      desc: lang === 'fr'
+        ? 'Clique une faille ou une route pour ouvrir l arc narratif lie a cet univers. Les chapitres restent dans cette vue, sans seconde carte concurrente.'
+        : 'Select a rift or route to open the narrative arc tied to that universe. Chapters stay in this view without a competing second map.'
+    }
+    : narrativeArcScreenType === 'personal'
+      ? {
+        kicker: lang === 'fr' ? 'CARTE DES FAILLES / ARCS PERSONNELS' : 'RIFT MAP / PERSONAL ARCS',
+        title: lang === 'fr' ? 'Trajectoires de personnages' : 'Character trajectories',
+        desc: lang === 'fr'
+          ? 'A.R.C.A. regroupe les failles par heros pour eviter l archive brute. Choisis un personnage, puis ouvre ses chapitres personnels.'
+          : 'A.R.C.A. groups rifts by hero to avoid a raw archive. Choose a character, then open personal chapters.'
+      }
+      : narrativeArcScreenType === 'trio'
+        ? {
+          kicker: lang === 'fr' ? 'CARTE DES FAILLES / ARCS TRIO' : 'RIFT MAP / TRIO ARCS',
+          title: lang === 'fr' ? 'Synergies de trio' : 'Trio synergies',
+          desc: lang === 'fr'
+            ? 'Les routes marquent les cellules ou trois signatures doivent agir ensemble. Chaque arc ouvre ses chapitres de synergie.'
+            : 'Routes mark cells where three signatures must act together. Each arc opens its synergy chapters.'
+        }
+        : {
+          kicker: lang === 'fr' ? 'CARTE DES FAILLES / CAMPAGNE' : 'RIFT MAP / CAMPAIGN',
+          title: lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals',
+          desc: lang === 'fr'
+            ? 'Clique une faille pour afficher son briefing juste sous la carte, ou lance une cible proposee dans la campagne.'
+            : 'Select a rift to show its briefing directly under the map, or launch a proposed campaign target.'
+        };
   const assetToggleStyle = (hidden) => ({
     fontSize: '9px',
     padding: '4px 7px',
@@ -4689,18 +5027,21 @@ export default function HubScreen({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px', color: '#aaa', fontSize: '12px' }}>
               <span>
                 {lang === 'fr'
-                  ? `${clearedVisibleCount}/${missionPool.length} breches filtrees stabilisees - 5 cibles proposees`
-                  : `${clearedVisibleCount}/${missionPool.length} filtered breaches stabilized · 5 proposed targets`}
+                  ? `${clearedVisibleCount}/${missionPool.length} breches stabilisees dans cette vue${isArcMissionScreen ? '' : ` - ${missionDeck.length} cibles proposees`}`
+                  : `${clearedVisibleCount}/${missionPool.length} breaches stabilized in this view${isArcMissionScreen ? '' : ` - ${missionDeck.length} proposed targets`}`}
               </span>
-              <button
-                onClick={() => { setMissionSeed(prev => prev + 1); sound.playSfx('click'); }}
-                className="btn-retro"
-                title={lang === 'fr' ? 'Regenere les missions proposees dans cette categorie.' : 'Refresh the proposed missions in this category.'}
-                style={{ padding: '7px 12px', fontSize: '11px', borderColor: '#39c5bb' }}
-              >
-                {lang === 'fr' ? '↻ RELIRE LES SIGNAUX' : '↻ REREAD SIGNALS'}
-              </button>
+              {!isArcMissionScreen && (
+                <button
+                  onClick={() => { setMissionSeed(prev => prev + 1); sound.playSfx('click'); }}
+                  className="btn-retro"
+                  title={lang === 'fr' ? 'Regenere les missions proposees dans cette categorie.' : 'Refresh the proposed missions in this category.'}
+                  style={{ padding: '7px 12px', fontSize: '11px', borderColor: '#39c5bb' }}
+                >
+                  {lang === 'fr' ? 'RELIRE LES SIGNAUX' : 'REREAD SIGNALS'}
+                </button>
+              )}
             </div>
+            {showModeFilters && (
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
               {['all', 'RPG', 'Tactics', 'Smash'].map(mode => (
                 <button
@@ -4721,6 +5062,7 @@ export default function HubScreen({
                 </button>
               ))}
             </div>
+            )}
 
             {selectedNarrativeArc ? (
               <NarrativeArcDetailPage
@@ -4747,6 +5089,21 @@ export default function HubScreen({
                   onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
                   onSelectArc={openNarrativeArc}
                   narrativeArcs={activeNarrativeArcs}
+                  mapKicker={riftMapCopy.kicker}
+                  mapTitle={riftMapCopy.title}
+                  mapDescription={riftMapCopy.desc}
+                />
+                <RiftBriefingPanel
+                  lang={lang}
+                  stage={selectedBriefingStage}
+                  isUnlocked={isStageUnlocked}
+                  onLaunch={launchStage}
+                  onClose={() => setBriefingStageId(null)}
+                  getStageModifier={getStageModifier}
+                  getStageArc={getStageArc}
+                  getLootRarity={getLootRarity}
+                  getBossIntel={getBossIntel}
+                  getRichBreachBrief={getRichBreachBrief}
                 />
                 <NarrativeArcGroupBrowser
                   lang={lang}
@@ -4758,6 +5115,7 @@ export default function HubScreen({
                   stages={visibleStages}
                   completedStages={completedStages}
                   categoryColor={selectedMissionMeta.color}
+                  getStageUnlockRequirementText={getArcUnlockRequirementText}
                 />
               </>
             ) : (
@@ -4770,9 +5128,27 @@ export default function HubScreen({
                 onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
                 onSelectArc={openNarrativeArc}
                 narrativeArcs={activeNarrativeArcs}
+                mapKicker={riftMapCopy.kicker}
+                mapTitle={riftMapCopy.title}
+                mapDescription={riftMapCopy.desc}
+              />
+            )}
+            {!narrativeArcScreenType && (
+              <RiftBriefingPanel
+                lang={lang}
+                stage={selectedBriefingStage}
+                isUnlocked={isStageUnlocked}
+                onLaunch={launchStage}
+                onClose={() => setBriefingStageId(null)}
+                getStageModifier={getStageModifier}
+                getStageArc={getStageArc}
+                getLootRarity={getLootRarity}
+                getBossIntel={getBossIntel}
+                getRichBreachBrief={getRichBreachBrief}
               />
             )}
 
+            {showStoryMissionTools && (
             <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.4fr', gap: '12px', marginBottom: '14px' }}>
               <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '5px' }}>
                 <div style={{ fontSize: '11px', color: '#ffeb3b', marginBottom: '8px', fontWeight: 'bold' }}>
@@ -4841,6 +5217,7 @@ export default function HubScreen({
                 </div>
               </div>
             </div>
+            )}
 
             {missionScreen === 'story' && (
             <div style={{
@@ -5326,6 +5703,7 @@ export default function HubScreen({
             </div>
             </>
             )}
+            {!isArcMissionScreen && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {missionDeck.map((stage) => {
                 const isCompleted = completedStages.includes(stage.id);
@@ -5440,67 +5818,6 @@ export default function HubScreen({
                 );
               })}
             </div>
-            {selectedBriefingStage && (
-              <div style={{
-                marginTop: '14px',
-                padding: '16px',
-                display: 'grid',
-                gridTemplateColumns: '190px 1fr auto',
-                gap: '14px',
-                alignItems: 'stretch',
-                background: 'rgba(0,0,0,0.34)',
-                border: '1px solid rgba(255,235,59,0.28)',
-                borderRadius: '6px'
-              }}>
-                <div style={{
-                  minHeight: '120px',
-                  backgroundImage: `linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.35)), url(${getOpenAiBackdropSrc(selectedBriefingStage.universe, selectedBriefingStage.mode) || ''})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  imageRendering: 'pixelated',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  borderRadius: '4px'
-                }} />
-                <div>
-                  <div style={{ fontSize: '11px', color: '#ffeb3b', marginBottom: '5px' }}>
-                    {lang === 'fr' ? 'BRIEFING TACTIQUE' : 'TACTICAL BRIEFING'}
-                  </div>
-                  <div style={{ fontSize: '16px', fontWeight: 'bold' }}>{selectedBriefingStage.name}</div>
-                  <div style={{ fontSize: '11px', color: '#bbb', marginTop: '6px', lineHeight: 1.45 }}>
-                    {getRichBreachBrief(selectedBriefingStage)}
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#aaa', marginTop: '8px' }}>
-                    Boss: <strong style={{ color: '#e74c3c' }}>{getBossIntel(selectedBriefingStage)?.name || selectedBriefingStage.bossName}</strong> - {getBossIntel(selectedBriefingStage)?.special || 'Unknown anomaly'}
-                  </div>
-                  <div style={{ fontSize: '11px', color: getStageModifier(selectedBriefingStage).color, marginTop: '6px' }}>
-                    {getStageModifier(selectedBriefingStage).name[lang]}: {getStageModifier(selectedBriefingStage).desc[lang]}
-                  </div>
-                  {getStageArc(selectedBriefingStage) && (
-                    <div style={{ fontSize: '11px', color: getStageArc(selectedBriefingStage).color, marginTop: '6px' }}>
-                      {getStageArc(selectedBriefingStage).title[lang]}: {getStageArc(selectedBriefingStage).premise[lang]}
-                    </div>
-                  )}
-                  <div style={{ fontSize: '11px', color: getLootRarity(selectedBriefingStage).color, marginTop: '6px' }}>
-                    {lang === 'fr' ? 'Signature estimee' : 'Estimated signature'}: {getLootRarity(selectedBriefingStage).label}
-                  </div>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '8px' }}>
-                  <button
-                    onClick={() => launchStage(selectedBriefingStage)}
-                    disabled={!isStageUnlocked(selectedBriefingStage)}
-                    className="btn-retro"
-                    title={isStageUnlocked(selectedBriefingStage)
-                      ? (lang === 'fr' ? 'Lance la mission affichee dans le briefing.' : 'Start the mission shown in this briefing.')
-                      : (lang === 'fr' ? 'Mission verrouillee: stabilise plus de breches pour la debloquer.' : 'Mission locked: stabilize more breaches to unlock it.')}
-                    style={{ padding: '8px 14px', background: isStageUnlocked(selectedBriefingStage) ? '#ffeb3b' : '#333', color: isStageUnlocked(selectedBriefingStage) ? '#111' : '#777' }}
-                  >
-                    {isStageUnlocked(selectedBriefingStage) ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
-                  </button>
-                  <button onClick={() => setBriefingStageId(null)} className="btn-retro" title={lang === 'fr' ? 'Ferme le briefing sans lancer de mission.' : 'Close the briefing without starting a mission.'} style={{ padding: '6px 12px', fontSize: '10px', borderColor: '#555' }}>
-                    FERMER
-                  </button>
-                </div>
-              </div>
             )}
             {missionScreen === 'story' && finalStage && (
               <div style={{
@@ -5545,6 +5862,7 @@ export default function HubScreen({
                 </button>
               </div>
             )}
+            {!isArcMissionScreen && (
             <div style={{ marginTop: '14px' }}>
               <button
                 onClick={() => { setShowMissionArchive(prev => !prev); sound.playSfx('click'); }}
@@ -5586,6 +5904,7 @@ export default function HubScreen({
                 </div>
               )}
             </div>
+            )}
             </>)}
               </>
             )}
@@ -7006,11 +7325,11 @@ export default function HubScreen({
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px', marginBottom: '16px' }}>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
-                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Visibles' : 'Visible'}</div>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'DLC visibles' : 'Visible DLC'}</div>
                 <strong style={{ color: '#2ecc71', fontSize: '20px' }}>{visibleUniverseCount}</strong>
               </div>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
-                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Masques' : 'Hidden'}</div>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'DLC masques' : 'Hidden DLC'}</div>
                 <strong style={{ color: '#e74c3c', fontSize: '20px' }}>{hiddenUniverseCount}</strong>
               </div>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
@@ -7035,7 +7354,13 @@ export default function HubScreen({
                   fontFamily: '"Share Tech Mono", monospace'
                 }}
               />
-              <button onClick={showAllUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive tous les univers masques.' : 'Reactivate every hidden universe.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
+              <button onClick={hideAllDlcUniverses} className="btn-retro" title={lang === 'fr' ? 'Masque tous les univers franchise et garde seulement le jeu de base OC.' : 'Hide every franchise universe and keep only base OC content.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#39c5bb', color: '#39c5bb' }}>
+                {lang === 'fr' ? 'BASE OC' : 'OC BASE'}
+              </button>
+              <button onClick={showAllDlcUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive tous les DLC franchise.' : 'Reactivate every franchise DLC.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
+                {lang === 'fr' ? 'ACTIVER DLC' : 'ENABLE DLC'}
+              </button>
+              <button onClick={showAllUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive absolument tous les univers masques.' : 'Reactivate every hidden universe.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#777', color: '#ddd' }}>
                 {lang === 'fr' ? 'TOUT AFFICHER' : 'SHOW ALL'}
               </button>
               {['game', 'movie', 'series', 'manga', 'music'].map(mediaType => {
@@ -7130,7 +7455,9 @@ export default function HubScreen({
                       </button>
                       <div>
                         <div style={{ fontSize: '13px', fontWeight: 'bold', color: row.hidden ? '#ffb3aa' : '#d8fffb' }}>{row.lore?.title?.[lang] || row.universe}</div>
-                        <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{row.universe} - {getMediaTypeLabel(row.lore?.mediaType)}</div>
+                        <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>
+                          {row.universe} - {row.baseGame ? (lang === 'fr' ? 'JEU DE BASE OC' : 'OC BASE GAME') : `DLC - ${getMediaTypeLabel(row.lore?.mediaType)}`}
+                        </div>
                       </div>
                       <div style={{ fontSize: '10px', color: '#aaa', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                         <span>{row.heroes.length} {lang === 'fr' ? 'heros' : 'heroes'}</span>
@@ -7139,24 +7466,33 @@ export default function HubScreen({
                         <span>{row.stageCount} stages</span>
                         {row.disabledCount > 0 && <span style={{ color: '#e74c3c' }}>{row.disabledCount} off</span>}
                       </div>
-                      <button
-                        onClick={() => setUniverseHidden(row.universe, !row.hidden)}
-                        className="btn-retro"
-                        title={row.hidden
-                          ? (lang === 'fr' ? 'Reactive cet univers dans les missions, collections, portails et boutiques.' : 'Reactivate this universe in missions, collections, portals, and shops.')
-                          : (lang === 'fr' ? 'Masque cet univers dans les missions, collections, portails et boutiques.' : 'Hide this universe from missions, collections, portals, and shops.')}
-                        style={{
-                          fontSize: '10px',
-                          padding: '7px 10px',
-                          minWidth: '110px',
-                          borderColor: row.hidden ? '#2ecc71' : '#e74c3c',
-                          color: row.hidden ? '#2ecc71' : '#e74c3c'
-                        }}
-                      >
-                        {row.hidden
-                          ? (lang === 'fr' ? 'AFFICHER' : 'SHOW')
-                          : (lang === 'fr' ? 'MASQUER' : 'HIDE')}
-                      </button>
+                      {row.baseGame ? (
+                        <span
+                          title={lang === 'fr' ? 'Le Nexus est le contenu OC de base: il reste actif, seuls ses assets peuvent etre controles.' : 'The Nexus is base OC content: it remains active, only its assets can be controlled.'}
+                          style={{ fontSize: '10px', padding: '7px 10px', minWidth: '110px', textAlign: 'center', border: '1px solid #39c5bb', color: '#39c5bb', borderRadius: '4px' }}
+                        >
+                          {lang === 'fr' ? 'SOCLE OC' : 'OC CORE'}
+                        </span>
+                      ) : (
+                        <button
+                          onClick={() => setUniverseHidden(row.universe, !row.hidden)}
+                          className="btn-retro"
+                          title={row.hidden
+                            ? (lang === 'fr' ? 'Reactive ce DLC dans les missions, collections, portails et boutiques.' : 'Reactivate this DLC in missions, collections, portals, and shops.')
+                            : (lang === 'fr' ? 'Masque ce DLC dans les missions, collections, portails et boutiques.' : 'Hide this DLC from missions, collections, portals, and shops.')}
+                          style={{
+                            fontSize: '10px',
+                            padding: '7px 10px',
+                            minWidth: '110px',
+                            borderColor: row.hidden ? '#2ecc71' : '#e74c3c',
+                            color: row.hidden ? '#2ecc71' : '#e74c3c'
+                          }}
+                        >
+                          {row.hidden
+                            ? (lang === 'fr' ? 'ACTIVER DLC' : 'ENABLE DLC')
+                            : (lang === 'fr' ? 'MASQUER DLC' : 'HIDE DLC')}
+                        </button>
+                      )}
                     </div>
 
                     {isOpen && (
@@ -7640,7 +7976,9 @@ export default function HubScreen({
                   const hero = HEROES_DB.find(item => item.id === arc.heroId);
                   const heroUnlocked = Boolean(hero && unlockedHeroes.includes(hero.id));
                   const heroLevel = hero ? (heroLevels[hero.id] || 1) : 0;
-                  const characterArcReady = heroUnlocked && (arc.heroId === 'player_anchor' ? completedStages.length >= 1 : heroLevel >= 3);
+                  const requiredLevel = getPersonalArcLevelRequirement(arc);
+                  const requiredClears = arc.unlock?.type === 'clears' ? arc.unlock.value : 0;
+                  const characterArcReady = heroUnlocked && heroLevel >= requiredLevel && completedStages.length >= requiredClears;
                   return (
                     <div key={arc.id} style={{ padding: '13px', border: characterArcReady ? '1px solid #2ecc71' : '1px solid rgba(57,197,187,0.28)', background: characterArcReady ? 'rgba(46,204,113,0.06)' : 'rgba(57,197,187,0.06)', borderRadius: '5px' }}>
                       <strong style={{ color: '#39c5bb', fontSize: '12px' }}>{arc.title[lang]}{hero ? ` / ${hero.name}` : ''}</strong>
@@ -7648,7 +7986,9 @@ export default function HubScreen({
                         {characterArcReady
                           ? (lang === 'fr' ? 'Arc pret pour une mission personnelle.' : 'Arc ready for a personal mission.')
                           : heroUnlocked
-                            ? (lang === 'fr' ? `Resonance requise: ${arc.heroId === 'player_anchor' ? '1 breche stabilisee' : 'grade 3'}.` : `Required resonance: ${arc.heroId === 'player_anchor' ? '1 stabilized breach' : 'grade 3'}.`)
+                            ? (lang === 'fr'
+                              ? `Resonance requise: niveau ${heroLevel}/${requiredLevel}${requiredClears ? `, ${Math.min(completedStages.length, requiredClears)}/${requiredClears} breches` : ''}.`
+                              : `Required resonance: level ${heroLevel}/${requiredLevel}${requiredClears ? `, ${Math.min(completedStages.length, requiredClears)}/${requiredClears} breaches` : ''}.`)
                             : (lang === 'fr' ? 'Heros non recrute.' : 'Hero not recruited.')}
                       </div>
                       <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{arc.intro[lang]}</p>

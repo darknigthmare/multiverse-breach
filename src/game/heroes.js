@@ -4,6 +4,96 @@ import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from '.
 
 export const HEROES_DB = [
   {
+    id: 'arca_mirelle',
+    name: 'Mirelle Suture',
+    universe: 'Nexus de Convergence',
+    category: 'hacker',
+    primaryColor: '#39c5bb',
+    secondaryColor: '#ffeb3b',
+    weaponType: 'cards',
+    weaponColor: '#d8f7ff',
+    stats: { hp: 118, atk: 11, def: 7, spd: 8 },
+    simple: { name: 'Fil de Resonance', type: 'bullet', dmg: 0.85 },
+    secondary: { name: 'Patch de Trame', type: 'heal', cd: 6, dmg: 1.2 },
+    defense: { name: 'Boucle de Sauvegarde', type: 'shield', dur: 2.0, reduce: 0.72 },
+    special: { name: 'Suture du Voile', type: 'nexus_aoe', dmg: 3.4, color: '#39c5bb' }
+  },
+  {
+    id: 'arca_bastion',
+    name: 'Bastion Korr',
+    universe: 'Nexus de Convergence',
+    category: 'tactical',
+    primaryColor: '#2f3f46',
+    secondaryColor: '#ff8c00',
+    weaponType: 'gun',
+    weaponColor: '#1a1a1a',
+    stats: { hp: 150, atk: 13, def: 11, spd: 4 },
+    simple: { name: 'Rafale Atrium', type: 'bullet', dmg: 0.95 },
+    secondary: { name: 'Balise Barricade', type: 'summon', cd: 7, dmg: 1.4 },
+    defense: { name: 'Rempart d Ancre', type: 'shield', dur: 2.6, reduce: 0.82 },
+    special: { name: 'Verrou de Convergence', type: 'beam_aoe', dmg: 3.8, color: '#ff8c00' }
+  },
+  {
+    id: 'arca_nova',
+    name: 'Nova Vey',
+    universe: 'Nexus de Convergence',
+    category: 'hacker',
+    primaryColor: '#153b55',
+    secondaryColor: '#7df9ff',
+    weaponType: 'staff',
+    weaponColor: '#7df9ff',
+    stats: { hp: 110, atk: 12, def: 6, spd: 9 },
+    simple: { name: 'Ping de Trame', type: 'bullet', dmg: 0.9 },
+    secondary: { name: 'Surcadence A.R.C.A.', type: 'buff', cd: 7, dmg: 1.0 },
+    defense: { name: 'Reflexe d Ancre', type: 'dash', dur: 1.4, reduce: 0.65 },
+    special: { name: 'Reboot de Faille', type: 'nexus_aoe', dmg: 3.6, color: '#7df9ff' }
+  },
+  {
+    id: 'arca_marrow',
+    name: 'Marrow Kade',
+    universe: 'Nexus de Convergence',
+    category: 'slayer',
+    primaryColor: '#2b1c32',
+    secondaryColor: '#ff5b6e',
+    weaponType: 'blade',
+    weaponColor: '#ff5b6e',
+    stats: { hp: 132, atk: 15, def: 7, spd: 6 },
+    simple: { name: 'Coupe-Sceau', type: 'melee', dmg: 1.1 },
+    secondary: { name: 'Entaille de Breche', type: 'melee', cd: 6, dmg: 2.0 },
+    defense: { name: 'Pas Entre Deux', type: 'dash', dur: 1.6, reduce: 0.7 },
+    special: { name: 'Execution de Paradoxe', type: 'beam', dmg: 4.3, color: '#ff5b6e' }
+  },
+  {
+    id: 'arca_sable',
+    name: 'Sable Orison',
+    universe: 'Nexus de Convergence',
+    category: 'tactical',
+    primaryColor: '#3d3430',
+    secondaryColor: '#d9b86b',
+    weaponType: 'gun',
+    weaponColor: '#d9b86b',
+    stats: { hp: 124, atk: 13, def: 9, spd: 5 },
+    simple: { name: 'Tir de Balise', type: 'bullet', dmg: 1.0 },
+    secondary: { name: 'Mine de Lecture', type: 'projectile', cd: 7, dmg: 1.8 },
+    defense: { name: 'Couverture Archivee', type: 'shield', dur: 2.2, reduce: 0.76 },
+    special: { name: 'Barrage du Cartographe', type: 'rocket', dmg: 4.0, color: '#d9b86b' }
+  },
+  {
+    id: 'arca_loom',
+    name: 'Loom Ivara',
+    universe: 'Nexus de Convergence',
+    category: 'marine',
+    primaryColor: '#24364a',
+    secondaryColor: '#39c5bb',
+    weaponType: 'gun',
+    weaponColor: '#d8f7ff',
+    stats: { hp: 142, atk: 12, def: 10, spd: 5 },
+    simple: { name: 'Rafale d Origine', type: 'bullet', dmg: 1.0 },
+    secondary: { name: 'Drone de Suture', type: 'summon', cd: 8, dmg: 1.5 },
+    defense: { name: 'Plaque Resonante', type: 'shield', dur: 2.4, reduce: 0.8 },
+    special: { name: 'Ligne de Vie Nexus', type: 'heal', dmg: 3.2, color: '#39c5bb' }
+  },
+  {
     id: 'marcus',
     name: 'Marcus Fenix',
     universe: 'Gears of War',
@@ -571,6 +661,40 @@ export const SYNERGIES_DB = [
 ];
 
 export const EQUIP_ITEMS_DB = [
+  // Nexus de Convergence - base game original content
+  {
+    id: 'nexus_anchor_coil',
+    universe: 'Nexus de Convergence',
+    name: { en: 'Anchor Coil', fr: 'Bobine d Ancre' },
+    desc: {
+      en: 'A.R.C.A. stabilizer issued to new Anchored Ones. It keeps a hero readable when a breach tries to rewrite their origin.',
+      fr: 'Stabilisateur A.R.C.A. remis aux nouvelles Ancres. Il garde le heros lisible quand une breche tente de reecrire son origine.'
+    },
+    boost: { hp: 45, def: 4 },
+    cost: 60
+  },
+  {
+    id: 'arca_signal_lens',
+    universe: 'Nexus de Convergence',
+    name: { en: 'Signal Lens', fr: 'Lentille de Signal' },
+    desc: {
+      en: 'Focuses a damaged Thread into a targetable line instead of letting it scatter through the Atrium.',
+      fr: 'Concentre une Trame abimee en ligne ciblable au lieu de la laisser se disperser dans l Atrium.'
+    },
+    boost: { atk: 7, spd: 1 },
+    cost: 85
+  },
+  {
+    id: 'origin_shard_guard',
+    universe: 'Nexus de Convergence',
+    name: { en: 'Origin Shard Guard', fr: 'Garde-Eclat d Origine' },
+    desc: {
+      en: 'A dull shard casing that absorbs failed rewrites before they reach the squad core.',
+      fr: 'Gaine d eclat terne qui absorbe les reecritures ratees avant qu elles touchent le noyau d escouade.'
+    },
+    boost: { hp: 70, def: 5 },
+    cost: 100
+  },
   // Gears of War
   { id: 'cog_armor', universe: 'Gears of War', name: { en: 'COG Combat Plate', fr: 'Plastron CGU' }, boost: { hp: 60, def: 6 }, cost: 100 },
   { id: 'frag_grenade', universe: 'Gears of War', name: { en: 'Frag Grenade Mod', fr: 'Grenade à Fragmentation' }, boost: { atk: 8 }, cost: 100 },

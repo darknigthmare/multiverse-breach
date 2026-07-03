@@ -10,8 +10,10 @@ import { EQUIP_ITEMS_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
 import { getStoredSession, loadCloudSave, saveCloudSave, signInAccount, signOutAccount, signUpAccount, storeSession } from './game/cloudSave';
 import { PLAYER_HERO_ID } from './game/playerHero';
+import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from './game/dlcConfig';
 
 const SAVE_KEY = 'multiverse_breach_save_v2';
+const TUTORIAL_COMPANION_IDS = ['arca_mirelle', 'arca_bastion'];
 
 const DEFAULT_SAVE = {
   lang: 'fr',
@@ -19,9 +21,9 @@ const DEFAULT_SAVE = {
   breachShards: 150,
   eventTokens: 10,
   playerProfile: { name: 'Ancre' },
-  unlockedHeroes: [PLAYER_HERO_ID, 'freeman', 'masterchief'],
-  heroLevels: { [PLAYER_HERO_ID]: 1, freeman: 1, masterchief: 1, leon: 1 },
-  activeTeam: [PLAYER_HERO_ID, 'freeman', 'masterchief'],
+  unlockedHeroes: [PLAYER_HERO_ID],
+  heroLevels: { [PLAYER_HERO_ID]: 1 },
+  activeTeam: [PLAYER_HERO_ID],
   completedStages: [],
   heroTalents: {},
   heroSkins: {},
@@ -46,22 +48,17 @@ const DEFAULT_SAVE = {
     loginStreak: 0,
     lastSeenDay: '',
     defeatIntel: {},
-    heroInstability: {}
+    heroInstability: {},
+    tutorialCompanionsUnlocked: false
   },
-  inventory: ['cog_armor', 'green_herb', 'hev_battery'],
+  inventory: ['nexus_anchor_coil'],
   equippedGear: {
-    [PLAYER_HERO_ID]: null,
-    freeman: 'hev_battery',
-    masterchief: null,
-    leon: 'green_herb'
+    [PLAYER_HERO_ID]: null
   },
   equippedEventItems: {
-    [PLAYER_HERO_ID]: null,
-    freeman: 'evt_hl_snarks',
-    masterchief: 'evt_halo_warthog',
-    leon: 'evt_re_cure'
+    [PLAYER_HERO_ID]: null
   },
-  hiddenUniverses: [],
+  hiddenUniverses: DEFAULT_HIDDEN_UNIVERSES,
   disabledAssets: {
     heroes: [],
     enemies: [],
@@ -87,14 +84,43 @@ const saveGame = (payload) => {
   window.localStorage.setItem(SAVE_KEY, JSON.stringify(payload));
 };
 
+const appendUnique = (items = [], additions = []) => {
+  const next = [...items];
+  additions.forEach(item => {
+    if (!next.includes(item)) next.push(item);
+  });
+  return next;
+};
+
 const normalizeSavePayload = (save = {}) => {
   const merged = { ...DEFAULT_SAVE, ...save };
-  const unlockedHeroes = merged.unlockedHeroes.includes(PLAYER_HERO_ID)
-    ? merged.unlockedHeroes
-    : [PLAYER_HERO_ID, ...merged.unlockedHeroes];
-  const activeTeam = merged.activeTeam.includes(PLAYER_HERO_ID)
-    ? merged.activeTeam
-    : [PLAYER_HERO_ID, ...merged.activeTeam.filter(id => id !== PLAYER_HERO_ID)].slice(0, 3);
+  const legacyStarterIds = ['freeman', 'masterchief'];
+  const hasOnlyLegacyStarterProgress = (
+    (merged.portalStats?.pulls || 0) === 0
+    && (merged.completedStages || []).length === 0
+    && (merged.activityProgress?.lifetimeWins || 0) === 0
+  );
+  const hadHiddenUniverseData = Object.prototype.hasOwnProperty.call(save, 'hiddenUniverses');
+  const mergedUnlockedHeroes = Array.isArray(merged.unlockedHeroes) ? merged.unlockedHeroes : [];
+  const normalizedUnlockedHeroes = hasOnlyLegacyStarterProgress
+    ? mergedUnlockedHeroes.filter(heroId => !legacyStarterIds.includes(heroId))
+    : mergedUnlockedHeroes;
+  const unlockedHeroes = normalizedUnlockedHeroes.includes(PLAYER_HERO_ID)
+    ? normalizedUnlockedHeroes
+    : [PLAYER_HERO_ID, ...normalizedUnlockedHeroes];
+  const mergedActiveTeam = Array.isArray(merged.activeTeam) ? merged.activeTeam : [];
+  const normalizedActiveTeam = hasOnlyLegacyStarterProgress
+    ? mergedActiveTeam.filter(heroId => !legacyStarterIds.includes(heroId))
+    : mergedActiveTeam;
+  const activeTeam = normalizedActiveTeam.includes(PLAYER_HERO_ID)
+    ? normalizedActiveTeam.slice(0, 3)
+    : [PLAYER_HERO_ID, ...normalizedActiveTeam.filter(id => id !== PLAYER_HERO_ID)].slice(0, 3);
+  const shouldUseStoredHiddenUniverses = hadHiddenUniverseData
+    && Array.isArray(merged.hiddenUniverses)
+    && !(hasOnlyLegacyStarterProgress && merged.hiddenUniverses.length === 0);
+  const hiddenUniverses = shouldUseStoredHiddenUniverses
+    ? merged.hiddenUniverses
+    : DEFAULT_HIDDEN_UNIVERSES;
   return {
     ...merged,
     playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
@@ -103,7 +129,7 @@ const normalizeSavePayload = (save = {}) => {
     heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(merged.heroLevels || {}) },
     heroTalents: merged.heroTalents || {},
     heroSkins: merged.heroSkins || {},
-    hiddenUniverses: Array.isArray(merged.hiddenUniverses) ? merged.hiddenUniverses : [],
+    hiddenUniverses: hiddenUniverses.filter(universe => !isBaseGameUniverse(universe)),
     disabledAssets: {
       heroes: Array.isArray(merged.disabledAssets?.heroes) ? merged.disabledAssets.heroes : [],
       enemies: Array.isArray(merged.disabledAssets?.enemies) ? merged.disabledAssets.enemies : [],
@@ -445,8 +471,20 @@ function App() {
   const startOperation = () => {
     sound.playSfx('levelup');
     setPlayerProfile(prev => ({ ...prev, name: String(prev?.name || '').trim() || 'Ancre' }));
-    setUnlockedHeroes(prev => prev.includes(PLAYER_HERO_ID) ? prev : [PLAYER_HERO_ID, ...prev]);
-    setActiveTeam(prev => prev.includes(PLAYER_HERO_ID) ? prev : [PLAYER_HERO_ID, ...prev].slice(0, 3));
+    setUnlockedHeroes(prev => appendUnique(prev.includes(PLAYER_HERO_ID) ? prev : [PLAYER_HERO_ID, ...prev], TUTORIAL_COMPANION_IDS));
+    setHeroLevels(prev => ({
+      ...prev,
+      [PLAYER_HERO_ID]: prev[PLAYER_HERO_ID] || 1,
+      ...Object.fromEntries(TUTORIAL_COMPANION_IDS.map(heroId => [heroId, prev[heroId] || 1]))
+    }));
+    setActiveTeam(prev => {
+      const withPlayer = prev.includes(PLAYER_HERO_ID) ? prev : [PLAYER_HERO_ID, ...prev];
+      return appendUnique(withPlayer, TUTORIAL_COMPANION_IDS).slice(0, 3);
+    });
+    setActivityProgress(prev => ({
+      ...prev,
+      tutorialCompanionsUnlocked: true
+    }));
     setCurrentScreen('hub');
   };
 
@@ -922,8 +960,8 @@ function App() {
                 {
                   title: lang === 'fr' ? '4. Premiere route' : '4. First route',
                   text: lang === 'fr'
-                  ? 'Commence par une breche stable, assigne une relique, declenche un artefact de terrain, puis consulte Collection pour voir quelles traces chaque stabilisation revele.'
-                    : 'Start with a stable breach, assign a relic, trigger a field artifact, then check Collection to see which traces each stabilization reveals.'
+                  ? 'A.R.C.A. ne t envoie plus seul: le tutoriel forme une cellule de depart avec deux signatures originales du Nexus avant la premiere vraie breche.'
+                    : 'A.R.C.A. no longer sends you alone: the tutorial forms a starter cell with two original Nexus signatures before the first true breach.'
                 }
               ].map(entry => (
                 <div className="intro-profile-step" key={entry.title}>
@@ -949,6 +987,27 @@ function App() {
                   ? 'Ce nom devient ta premiere signature d Ancre et le heros central de la cellule.'
                   : 'This name becomes your first Anchor signature and the central hero of the cell.'}
               </span>
+            </div>
+
+            <div style={{
+              margin: '0 auto 20px',
+              maxWidth: '620px',
+              padding: '12px 14px',
+              border: '1px solid rgba(255,235,59,0.28)',
+              borderRadius: '6px',
+              background: 'linear-gradient(90deg, rgba(255,235,59,0.08), rgba(57,197,187,0.06))',
+              color: '#dffcff',
+              fontSize: '12px',
+              lineHeight: 1.45,
+              textAlign: 'left'
+            }}>
+              <strong style={{ color: '#ffeb3b' }}>
+                {lang === 'fr' ? 'Deblocage tutoriel A.R.C.A.' : 'A.R.C.A. tutorial unlock'}
+              </strong>
+              <br />
+              {lang === 'fr'
+                ? 'Mirelle Suture stabilise les blessures de Trame. Bastion Korr tient la ligne quand une faille force l ouverture. Ils rejoignent ta cellule de depart apres validation du profil.'
+                : 'Mirelle Suture stabilizes Thread wounds. Bastion Korr holds the line when a rift forces itself open. They join your starter cell after profile validation.'}
             </div>
 
             <button

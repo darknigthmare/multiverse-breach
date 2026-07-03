@@ -764,7 +764,7 @@ body {
   position: absolute;
   left: var(--rift-x);
   top: var(--rift-y);
-  z-index: 4;
+  z-index: 6;
   width: var(--rift-size);
   height: var(--rift-size);
   transform: translate(-50%, -50%);
@@ -832,7 +832,7 @@ body {
   position: absolute;
   left: var(--rift-x);
   top: var(--rift-y);
-  z-index: 5;
+  z-index: 4;
   width: 86px;
   min-height: 46px;
   transform: translate(-50%, -50%);
@@ -907,6 +907,78 @@ body {
 .rift-arc-route.sealed {
   border-color: #2ecc71;
   box-shadow: 0 0 18px rgba(46,204,113,0.34);
+}
+
+.rift-briefing-panel {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: stretch;
+  margin: -4px 0 14px;
+  padding: 14px;
+  border: 1px solid rgba(255, 235, 59, 0.32);
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, rgba(255,235,59,0.08), rgba(57,197,187,0.04)),
+    rgba(0,0,0,0.38);
+}
+
+.rift-briefing-art {
+  min-height: 124px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+}
+
+.rift-briefing-title {
+  margin-top: 4px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rift-briefing-copy {
+  max-width: 780px;
+  margin-top: 7px;
+  color: #cfd8dc;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.rift-briefing-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 7px;
+  color: #9fb6bb;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.rift-briefing-row strong {
+  color: #fff;
+}
+
+.rift-briefing-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  min-width: 128px;
+}
+
+.rift-briefing-actions .btn-retro:first-child {
+  border-color: #ffeb3b;
+  background: #ffeb3b;
+  color: #111;
+}
+
+.rift-briefing-actions .btn-retro:first-child:disabled {
+  border-color: #444;
+  background: #222;
+  color: #777;
 }
 
 .arc-browser-shell {
@@ -1030,6 +1102,16 @@ body {
 .arc-chapter-reward {
   color: #cfd8dc;
   font-size: 10px;
+  line-height: 1.35;
+}
+
+.arc-chapter-requirement {
+  padding: 6px 7px;
+  border: 1px solid rgba(255, 235, 59, 0.24);
+  border-radius: 4px;
+  background: rgba(255, 235, 59, 0.055);
+  color: #ffe88a;
+  font-size: 9px;
   line-height: 1.35;
 }
 
@@ -2230,6 +2312,16 @@ body {
   .rift-universe-map {
     grid-template-columns: 1fr;
     padding: 10px;
+  }
+
+  .rift-briefing-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .rift-briefing-actions {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .rift-map-stage {

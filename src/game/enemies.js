@@ -4,6 +4,21 @@
 import { EXPANDED_ENEMIES_DB } from './expandedUniverses';
 
 export const ENEMIES_DB = {
+  'Nexus de Convergence': {
+    monsters: [
+      { name: 'Echo Sans-Auteur', hp: 65, atk: 7, spd: 5, color: '#39c5bb', weapon: 'static_claws' },
+      { name: 'Archiviste Rompu', hp: 82, atk: 8, spd: 4, color: '#d9b86b', weapon: 'index_blade' },
+      { name: 'Noeud de Paradoxe', hp: 95, atk: 10, spd: 3, color: '#9b59b6', weapon: 'rift_burst' },
+      { name: 'Fragment Vagabond', hp: 58, atk: 11, spd: 7, color: '#ff5b6e', weapon: 'shard_dash' },
+      { name: 'Drone A.R.C.A. Corrompu', hp: 105, atk: 12, spd: 4, color: '#7df9ff', weapon: 'signal_beam' }
+    ],
+    bosses: [
+      { name: 'Greffier du Voile', hp: 360, atk: 16, spd: 4, color: '#39c5bb', weapon: 'seal_staff', special: 'Tampon de Reecriture' },
+      { name: 'Juge des Trames', hp: 420, atk: 18, spd: 3, color: '#d9b86b', weapon: 'verdict_halberd', special: 'Sentence de Continuite' },
+      { name: 'Avatar du Sans-Auteur', hp: 470, atk: 19, spd: 5, color: '#ff5b6e', weapon: 'meta_claw', special: 'Rature de Destin' }
+    ],
+    worldBoss: { name: 'Moteur de Convergence Instable', hp: 1150, atk: 27, spd: 3, color: '#7df9ff', weapon: 'nexus_lance', special: 'Compression des Mille Portails' }
+  },
   'Gears of War': {
     monsters: [
       { name: 'Locust Drone', hp: 90, atk: 9, spd: 4, color: '#6e7a68', weapon: 'gun' },
