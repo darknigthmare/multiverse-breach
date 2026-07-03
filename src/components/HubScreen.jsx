@@ -18,17 +18,21 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
   const canvasRef = useRef(null);
   const stateRef = useRef({
     t: 0,
-    player: { x: 480, y: 292, speed: 2.35, facing: 1 },
+    player: { x: 780, y: 520, speed: 2.35, facing: 1 },
+    camera: { x: 0, y: 0 },
     destination: null,
     keys: {},
     npcs: []
   });
   const nearHeroRef = useRef(null);
+  const nearPortalRef = useRef(null);
   const [nearHeroId, setNearHeroId] = useState(null);
   const [selectedHeroId, setSelectedHeroId] = useState(null);
   const [currentZone, setCurrentZone] = useState('atrium');
+  const [currentDistrict, setCurrentDistrict] = useState('atrium');
   const nearHeroIdRef = useRef(null);
   const currentZoneRef = useRef('atrium');
+  const currentDistrictRef = useRef('atrium');
   const [hubLog, setHubLog] = useState(lang === 'fr'
     ? 'A.R.C.A. maintient la Cite-Mosaique stable. Deplace ton Ancre et synchronise les signatures proches.'
     : 'A.R.C.A. keeps Mosaic City stable. Move your Anchor and synchronize nearby signatures.');
@@ -36,42 +40,124 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
   const ownedHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 24), [safeHeroes, unlockedSet]);
   const unlockedUniverses = useMemo(() => Array.from(new Set(ownedHeroes.map(hero => hero.universe))).slice(0, 10), [ownedHeroes]);
+  const districts = useMemo(() => ({
+    atrium: {
+      id: 'atrium',
+      label: lang === 'fr' ? 'Atrium des Ancres' : 'Anchor Atrium',
+      role: lang === 'fr' ? 'carrefour central' : 'central crossroads',
+      color: '#39c5bb',
+      worldW: 1680,
+      worldH: 1080,
+      spawn: { x: 780, y: 520 },
+      portals: [
+        { id: 'to-threads', target: 'threads', x: 1420, y: 520, label: lang === 'fr' ? 'Portails de Trame' : 'Thread Portals', color: '#9b59b6', spawn: { x: 220, y: 700 } },
+        { id: 'to-archives', target: 'archives', x: 780, y: 155, label: lang === 'fr' ? 'Archives A.R.C.A.' : 'A.R.C.A. Archives', color: '#ffea00', spawn: { x: 820, y: 760 } },
+        { id: 'to-forge', target: 'forge', x: 780, y: 915, label: lang === 'fr' ? 'Atelier d Ancrage' : 'Anchor Workshop', color: '#ff4500', spawn: { x: 820, y: 260 } }
+      ]
+    },
+    threads: {
+      id: 'threads',
+      label: lang === 'fr' ? 'Galerie des Trames' : 'Thread Gallery',
+      role: lang === 'fr' ? 'salles des univers debloques' : 'unlocked universe rooms',
+      color: '#9b59b6',
+      worldW: 2200,
+      worldH: 1260,
+      spawn: { x: 220, y: 700 },
+      portals: [
+        { id: 'to-atrium', target: 'atrium', x: 105, y: 700, label: lang === 'fr' ? 'Retour Atrium' : 'Back to Atrium', color: '#39c5bb', spawn: { x: 1340, y: 520 } }
+      ]
+    },
+    archives: {
+      id: 'archives',
+      label: lang === 'fr' ? 'Archives A.R.C.A.' : 'A.R.C.A. Archives',
+      role: lang === 'fr' ? 'memoire, codex et arcs' : 'memory, codex, and arcs',
+      color: '#ffea00',
+      worldW: 1640,
+      worldH: 980,
+      spawn: { x: 820, y: 760 },
+      portals: [
+        { id: 'to-atrium', target: 'atrium', x: 820, y: 880, label: lang === 'fr' ? 'Retour Atrium' : 'Back to Atrium', color: '#39c5bb', spawn: { x: 780, y: 245 } }
+      ]
+    },
+    forge: {
+      id: 'forge',
+      label: lang === 'fr' ? 'Atelier d Ancrage' : 'Anchor Workshop',
+      role: lang === 'fr' ? 'equipement, soins et preparation' : 'gear, recovery, and prep',
+      color: '#ff4500',
+      worldW: 1640,
+      worldH: 980,
+      spawn: { x: 820, y: 260 },
+      portals: [
+        { id: 'to-atrium', target: 'atrium', x: 820, y: 105, label: lang === 'fr' ? 'Retour Atrium' : 'Back to Atrium', color: '#39c5bb', spawn: { x: 780, y: 820 } }
+      ]
+    }
+  }), [lang]);
+  const district = districts[currentDistrict] || districts.atrium;
   const zones = useMemo(() => {
     const fallback = ['Nexus de Convergence', 'Halo', 'Half-Life', 'Resident Evil', 'Stargate'];
     const source = unlockedUniverses.length ? unlockedUniverses : fallback;
-    const threadRooms = source.slice(0, 8).map((universe, index) => {
-      const leftSide = index % 2 === 0;
-      const slot = Math.floor(index / 2);
+    if (currentDistrict === 'threads') {
+      return source.slice(0, 10).map((universe, index) => {
+        const col = index % 3;
+        const row = Math.floor(index / 3);
+        const hue = [...universe].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 360;
+        return {
+          id: `thread-${index}`,
+          universe,
+          label: universe,
+          x: 360 + col * 560,
+          y: 165 + row * 255,
+          w: 420,
+          h: 168,
+          color: `hsl(${hue} 70% 52%)`,
+          role: lang === 'fr' ? 'Salle de Trame' : 'Thread room'
+        };
+      });
+    }
+    if (currentDistrict === 'archives') {
+      return [
+        { id: 'codex', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Codex vivant' : 'Living Codex', x: 270, y: 165, w: 460, h: 210, color: '#ffea00', role: lang === 'fr' ? 'archives des mondes' : 'world archives' },
+        { id: 'arcs', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Chambre des arcs' : 'Arc Chamber', x: 900, y: 165, w: 460, h: 210, color: '#d9b6ff', role: lang === 'fr' ? 'memoire narrative' : 'narrative memory' },
+        { id: 'replay', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Salle des relectures' : 'Signal Replay', x: 585, y: 520, w: 470, h: 170, color: '#39c5bb', role: lang === 'fr' ? 'signaux et briefings' : 'signals and briefings' }
+      ];
+    }
+    if (currentDistrict === 'forge') {
+      return [
+        { id: 'recovery', universe: 'Nexus', label: lang === 'fr' ? 'Baies de repli' : 'Retreat Bays', x: 245, y: 500, w: 420, h: 190, color: '#2ecc71', role: lang === 'fr' ? 'fatigue et soins' : 'fatigue and recovery' },
+        { id: 'gear', universe: 'Nexus', label: lang === 'fr' ? 'Etablis reliques' : 'Relic Benches', x: 975, y: 500, w: 420, h: 190, color: '#ff4500', role: lang === 'fr' ? 'equipement futur' : 'future gear' },
+        { id: 'training', universe: 'Nexus', label: lang === 'fr' ? 'Simulateur court' : 'Short Simulator', x: 610, y: 230, w: 420, h: 160, color: '#3498db', role: lang === 'fr' ? 'tests de role' : 'role tests' }
+      ];
+    }
+    const threadRooms = source.slice(0, 3).map((universe, index) => {
       const hue = [...universe].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 360;
       return {
-        id: `thread-${index}`,
+        id: `atrium-thread-${index}`,
         universe,
         label: universe,
-        x: leftSide ? 42 : 722,
-        y: 42 + slot * 112,
-        w: 196,
-        h: 84,
+        x: 190 + index * 470,
+        y: 675,
+        w: 300,
+        h: 138,
         color: `hsl(${hue} 70% 52%)`,
-        role: lang === 'fr' ? 'Salle de Trame' : 'Thread room'
+        role: lang === 'fr' ? 'Apercu de Trame' : 'Thread preview'
       };
     });
     return [
-      { id: 'atrium', universe: 'Nexus', label: lang === 'fr' ? 'Atrium des Ancres' : 'Anchor Atrium', x: 304, y: 160, w: 352, h: 230, color: '#39c5bb', role: lang === 'fr' ? 'zone stable' : 'stable zone' },
-      { id: 'codex', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Archives A.R.C.A.' : 'A.R.C.A. Archives', x: 326, y: 42, w: 308, h: 82, color: '#ffea00', role: lang === 'fr' ? 'memoire des arcs' : 'arc memory' },
-      { id: 'forge', universe: 'Nexus', label: lang === 'fr' ? 'Atelier d Ancrage' : 'Anchor Workshop', x: 326, y: 424, w: 308, h: 82, color: '#ff4500', role: lang === 'fr' ? 'equipement et soins' : 'gear and recovery' },
+      { id: 'atrium', universe: 'Nexus', label: lang === 'fr' ? 'Atrium central' : 'Central Atrium', x: 550, y: 360, w: 470, h: 260, color: '#39c5bb', role: lang === 'fr' ? 'zone stable' : 'stable zone' },
+      { id: 'gate-hall', universe: 'Nexus', label: lang === 'fr' ? 'Hall des portails' : 'Portal Hall', x: 1180, y: 360, w: 330, h: 260, color: '#9b59b6', role: lang === 'fr' ? 'depart vers quartiers' : 'district departures' },
       ...threadRooms
     ];
-  }, [unlockedUniverses]);
+  }, [currentDistrict, lang, unlockedUniverses]);
 
   const selectedHero = ownedHeroes.find(hero => hero.id === selectedHeroId) || null;
   const nearHero = ownedHeroes.find(hero => hero.id === nearHeroId) || null;
   const leadHero = selectedHero || nearHero || ownedHeroes[0];
   const playerName = playerProfile?.pseudo || playerProfile?.name || playerProfile?.username || (lang === 'fr' ? 'Ancre Joueur' : 'Player Anchor');
-  const currentZoneData = zones.find(zone => zone.id === currentZone) || zones[0];
+  const currentZoneData = zones.find(zone => zone.id === currentZone) || district;
 
   useEffect(() => {
     stateRef.current.npcs = ownedHeroes.slice(0, 18).map((hero, index) => {
-      const zone = zones[3 + (index % Math.max(1, zones.length - 3))] || zones[0];
+      const zone = zones[index % Math.max(1, zones.length)] || district;
       return {
         hero,
         x: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
@@ -82,10 +168,38 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         facing: index % 2 ? -1 : 1
       };
     });
-  }, [ownedHeroes, zones]);
+  }, [district, ownedHeroes, zones]);
+
+  const switchDistrict = useCallback((portal) => {
+    const target = districts[portal.target] || districts.atrium;
+    const spawn = portal.spawn || target.spawn;
+    currentDistrictRef.current = target.id;
+    currentZoneRef.current = target.id;
+    nearHeroRef.current = null;
+    nearHeroIdRef.current = null;
+    nearPortalRef.current = null;
+    stateRef.current.player.x = spawn.x;
+    stateRef.current.player.y = spawn.y;
+    stateRef.current.destination = null;
+    stateRef.current.camera = {
+      x: Math.max(0, Math.min(target.worldW - 960, spawn.x - 480)),
+      y: Math.max(0, Math.min(target.worldH - 540, spawn.y - 270))
+    };
+    setNearHeroId(null);
+    setCurrentDistrict(target.id);
+    setCurrentZone(target.id);
+    setHubLog(lang === 'fr'
+      ? `Transition de portail: ${target.label}. La camera suit ton Ancre dans une zone plus large.`
+      : `Portal transition: ${target.label}. The camera now follows your Anchor through a larger zone.`);
+    sound.playSfx('special');
+  }, [districts, lang]);
 
   const interactWithNearby = useCallback(() => {
     const state = stateRef.current;
+    if (nearPortalRef.current) {
+      switchDistrict(nearPortalRef.current);
+      return;
+    }
     const target = nearHeroRef.current || state.npcs
       .map(npc => ({ npc, dist: Math.hypot(npc.x - state.player.x, npc.y - state.player.y) }))
       .filter(entry => entry.dist < 58)
@@ -102,7 +216,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       ? `${target.name} synchronise sa Trame avec ${playerName}. Indice: ${target.universe} reagit a tes breches scellees.`
       : `${target.name} synchronizes their Thread with ${playerName}. Intel: ${target.universe} reacts to your sealed breaches.`);
     sound.playSfx('confirm');
-  }, [lang, playerName]);
+  }, [lang, playerName, switchDistrict]);
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -176,12 +290,15 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
 
       if (dx || dy) {
         const len = Math.hypot(dx, dy) || 1;
-        state.player.x = Math.max(34, Math.min(canvas.width - 34, state.player.x + (dx / len) * state.player.speed));
-        state.player.y = Math.max(42, Math.min(canvas.height - 36, state.player.y + (dy / len) * state.player.speed));
+        state.player.x = Math.max(34, Math.min(district.worldW - 34, state.player.x + (dx / len) * state.player.speed));
+        state.player.y = Math.max(42, Math.min(district.worldH - 36, state.player.y + (dy / len) * state.player.speed));
         state.player.facing = dx < 0 ? -1 : dx > 0 ? 1 : state.player.facing;
       }
 
-      let activeZone = zones[0];
+      state.camera.x += (Math.max(0, Math.min(district.worldW - canvas.width, state.player.x - canvas.width / 2)) - state.camera.x) * 0.12;
+      state.camera.y += (Math.max(0, Math.min(district.worldH - canvas.height, state.player.y - canvas.height / 2)) - state.camera.y) * 0.12;
+
+      let activeZone = district;
       zones.forEach(zone => {
         if (state.player.x >= zone.x && state.player.x <= zone.x + zone.w && state.player.y >= zone.y && state.player.y <= zone.y + zone.h) {
           activeZone = zone;
@@ -208,6 +325,11 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         nearHeroIdRef.current = nearestId;
         setNearHeroId(nearestId);
       }
+      const nearestPortal = (district.portals || [])
+        .map(portal => ({ portal, dist: Math.hypot(portal.x - state.player.x, portal.y - state.player.y) }))
+        .filter(entry => entry.dist < 72)
+        .sort((a, b) => a.dist - b.dist)[0]?.portal || null;
+      nearPortalRef.current = nearestPortal;
 
       const sky = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
       sky.addColorStop(0, '#120821');
@@ -218,18 +340,28 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
 
       ctx.strokeStyle = 'rgba(57,197,187,0.07)';
       ctx.lineWidth = 1;
-      for (let x = 0; x < canvas.width; x += 24) {
+      for (let x = -(state.camera.x % 24); x < canvas.width; x += 24) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, canvas.height);
         ctx.stroke();
       }
-      for (let y = 0; y < canvas.height; y += 24) {
+      for (let y = -(state.camera.y % 24); y < canvas.height; y += 24) {
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(canvas.width, y);
         ctx.stroke();
       }
+
+      ctx.save();
+      ctx.translate(-state.camera.x, -state.camera.y);
+
+      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+      ctx.strokeRect(10, 10, district.worldW - 20, district.worldH - 20);
+      ctx.fillStyle = district.color;
+      ctx.globalAlpha = 0.08;
+      ctx.fillRect(18, 18, district.worldW - 36, district.worldH - 36);
+      ctx.globalAlpha = 1;
 
       zones.forEach(zone => {
         const pulse = 0.08 + Math.sin(state.t * 0.035 + zone.x) * 0.025;
@@ -257,17 +389,50 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         ctx.fillText(zone.role.toUpperCase().slice(0, 24), zone.x + 12, zone.y + 36);
       });
 
+      (district.portals || []).forEach(portal => {
+        const pulse = 1 + Math.sin(state.t * 0.08 + portal.x) * 0.08;
+        ctx.save();
+        ctx.translate(portal.x, portal.y);
+        ctx.scale(pulse, pulse);
+        ctx.strokeStyle = portal.color;
+        ctx.lineWidth = nearestPortal?.id === portal.id ? 5 : 3;
+        ctx.beginPath();
+        ctx.arc(0, 0, 34, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(0, 0, 18, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(0,0,0,0.45)';
+        ctx.fillRect(-62, 42, 124, 24);
+        ctx.fillStyle = nearestPortal?.id === portal.id ? '#ffea00' : portal.color;
+        ctx.font = '10px "Share Tech Mono"';
+        ctx.textAlign = 'center';
+        ctx.fillText(portal.label.toUpperCase().slice(0, 20), 0, 58);
+        ctx.restore();
+        ctx.textAlign = 'left';
+      });
+
       ctx.strokeStyle = 'rgba(255,234,0,0.2)';
       ctx.lineWidth = 5;
       ctx.beginPath();
-      ctx.moveTo(238, 84);
-      ctx.lineTo(326, 84);
-      ctx.moveTo(634, 84);
-      ctx.lineTo(722, 84);
-      ctx.moveTo(480, 124);
-      ctx.lineTo(480, 424);
-      ctx.moveTo(238, 300);
-      ctx.lineTo(722, 300);
+      if (currentDistrict === 'atrium') {
+        ctx.moveTo(780, 285);
+        ctx.lineTo(780, 915);
+        ctx.moveTo(520, 520);
+        ctx.lineTo(1420, 520);
+      } else if (currentDistrict === 'threads') {
+        ctx.moveTo(105, 700);
+        ctx.lineTo(1980, 700);
+        ctx.moveTo(320, 300);
+        ctx.lineTo(1900, 300);
+        ctx.moveTo(320, 965);
+        ctx.lineTo(1900, 965);
+      } else {
+        ctx.moveTo(220, 760);
+        ctx.lineTo(1420, 760);
+        ctx.moveTo(820, 120);
+        ctx.lineTo(820, 880);
+      }
       ctx.stroke();
 
       state.npcs
@@ -288,6 +453,8 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
 
       drawPixelPerson(state.player.x, state.player.y, '#39c5bb', '#ffea00', state.player.facing, playerName.slice(0, 10), true);
 
+      ctx.restore();
+
       ctx.fillStyle = 'rgba(0,0,0,0.68)';
       ctx.fillRect(12, 12, 290, 64);
       ctx.strokeStyle = '#39c5bb';
@@ -298,6 +465,11 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       ctx.fillStyle = '#fff';
       ctx.font = '11px "Share Tech Mono"';
       ctx.fillText(`${lang === 'fr' ? 'Zone' : 'Zone'}: ${activeZone.label}`, 24, 57);
+      if (nearestPortal) {
+        ctx.fillStyle = '#ffea00';
+        ctx.font = '10px "Share Tech Mono"';
+        ctx.fillText(lang === 'fr' ? `E: ${nearestPortal.label}` : `E: ${nearestPortal.label}`, 24, 72);
+      }
 
       ctx.fillStyle = 'rgba(0,0,0,0.58)';
       ctx.fillRect(canvas.width - 292, 12, 280, 64);
@@ -309,11 +481,32 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       ctx.fillStyle = '#d8f7ff';
       ctx.fillText(`${completedStages.length} ${lang === 'fr' ? 'breches scellees' : 'sealed breaches'}`, canvas.width - 276, 56);
 
+      const miniW = 154;
+      const miniH = 92;
+      const miniX = canvas.width - miniW - 14;
+      const miniY = canvas.height - miniH - 14;
+      ctx.fillStyle = 'rgba(0,0,0,0.62)';
+      ctx.fillRect(miniX, miniY, miniW, miniH);
+      ctx.strokeStyle = district.color;
+      ctx.strokeRect(miniX, miniY, miniW, miniH);
+      const sx = miniW / district.worldW;
+      const sy = miniH / district.worldH;
+      ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+      ctx.strokeRect(miniX + state.camera.x * sx, miniY + state.camera.y * sy, canvas.width * sx, canvas.height * sy);
+      (district.portals || []).forEach(portal => {
+        ctx.fillStyle = portal.color;
+        ctx.beginPath();
+        ctx.arc(miniX + portal.x * sx, miniY + portal.y * sy, 3, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.fillStyle = '#ffea00';
+      ctx.fillRect(miniX + state.player.x * sx - 2, miniY + state.player.y * sy - 2, 4, 4);
+
       rafId = window.requestAnimationFrame(loop);
     };
     loop();
     return () => window.cancelAnimationFrame(rafId);
-  }, [completedStages.length, lang, ownedHeroes.length, playerName, unlockedUniverses.length, zones]);
+  }, [completedStages.length, currentDistrict, district, lang, ownedHeroes.length, playerName, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
     const canvas = canvasRef.current;
@@ -321,8 +514,13 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
     const rect = canvas.getBoundingClientRect();
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
-    const x = (event.clientX - rect.left) * scaleX;
-    const y = (event.clientY - rect.top) * scaleY;
+    const x = (event.clientX - rect.left) * scaleX + stateRef.current.camera.x;
+    const y = (event.clientY - rect.top) * scaleY + stateRef.current.camera.y;
+    const closePortal = (district.portals || []).find(portal => Math.hypot(portal.x - x, portal.y - y) < 46);
+    if (closePortal) {
+      switchDistrict(closePortal);
+      return;
+    }
     const closeNpc = stateRef.current.npcs.find(npc => Math.hypot(npc.x - x, npc.y - y) < 34);
     if (closeNpc) {
       nearHeroRef.current = closeNpc.hero;
@@ -347,13 +545,14 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
         <p>
           {lang === 'fr'
-            ? 'Un hub RPG jouable: ton Ancre se deplace dans une zone stable du Nexus, croise les signatures possedees, synchronise leurs Trames et revele les salles liees aux univers debloques.'
-            : 'A playable RPG hub: your Anchor moves through a stable Nexus zone, meets owned signatures, syncs their Threads, and reveals rooms tied to unlocked universes.'}
+            ? 'Un hub RPG navigable: ton Ancre explore des quartiers plus grands que l ecran, la camera suit les bords, et de petits portails ouvrent Archives, Atelier ou Galerie des Trames.'
+            : 'A navigable RPG hub: your Anchor explores districts larger than the screen, the camera follows near edges, and small portals open Archives, Workshop, or Thread Gallery.'}
         </p>
         <div className="nexus-play-stats">
           <span>{ownedHeroes.length} {lang === 'fr' ? 'signatures' : 'signatures'}</span>
           <span>{unlockedUniverses.length} {lang === 'fr' ? 'Trames visibles' : 'visible Threads'}</span>
           <span>{completedStages.length} {lang === 'fr' ? 'breches scellees' : 'sealed breaches'}</span>
+          <span>{district.label}</span>
           <span>{currentZoneData?.label || 'Nexus'}</span>
         </div>
         {leadHero && (
@@ -368,7 +567,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
           <span>{hubLog}</span>
         </div>
         <div className="mosaic-rpg-controls">
-          <span>{lang === 'fr' ? 'Clavier: WASD/fleches, E pour interagir. Tap/clic: destination.' : 'Keyboard: WASD/arrows, E to interact. Tap/click: destination.'}</span>
+          <span>{lang === 'fr' ? 'WASD/fleches: explorer. E: parler ou entrer dans un portail. Tap/clic: destination ou portail.' : 'WASD/arrows: explore. E: talk or enter a portal. Tap/click: destination or portal.'}</span>
           <button className="btn-retro" onClick={interactWithNearby}>
             {lang === 'fr' ? 'SYNCHRONISER' : 'SYNCHRONIZE'}
           </button>
