@@ -596,7 +596,34 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   const [runMode, setRunMode] = useState('extraction');
   const [runSnapshot, setRunSnapshot] = useState({ phase: 'ready', hp: 100, ammo: 24, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
   const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || safeHeroes[0] || null;
-  const stateRef = useRef({ phase: 'ready', hp: 100, armor: 0, ammo: 24, maxAmmo: 24, kills: 0, wave: 1, enemies: [], loot: [], t: 0, zone: 1, muzzle: 0, lane: 0, dash: 0, scan: 0, turret: 0, fragments: [], objective: null, result: null, rewards: null });
+  const stateRef = useRef({
+    phase: 'ready',
+    hp: 100,
+    armor: 0,
+    ammo: 24,
+    maxAmmo: 24,
+    kills: 0,
+    wave: 1,
+    enemies: [],
+    loot: [],
+    t: 0,
+    zone: 1,
+    muzzle: 0,
+    px: 0,
+    py: 0,
+    angle: 0,
+    vx: 0,
+    vy: 0,
+    turnVel: 0,
+    moveKeys: {},
+    dash: 0,
+    scan: 0,
+    turret: 0,
+    fragments: [],
+    objective: null,
+    result: null,
+    rewards: null
+  });
 
   const roleProfile = useMemo(() => ({
     marine: { hp: 1.18, armor: 28, ammo: 1.35, dmg: 1.05, perk: lang === 'fr' ? 'Armure et munitions renforces' : 'Extra armor and ammunition' },
@@ -643,8 +670,8 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       return {
         ...base,
         id: `${base.kind}-${wave}-${index}-${Date.now()}`,
-        x: (index - count / 2) * 0.34 + Math.sin(index) * 0.2,
-        z: 2.25 + (index % 5) * 0.72,
+        wx: (index - count / 2) * 1.25 + Math.sin(index * 1.7) * 0.65,
+        wy: 4.2 + (index % 5) * 2.15 + wave * 0.35,
         maxHp: base.hp + wave * 5,
         hp: base.hp + wave * 5,
         fragment: universeFragments[index % universeFragments.length],
@@ -654,11 +681,21 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   }, [universeFragments]);
 
   const buildLoot = useCallback((wave = 1) => ([
-    { id: `heal-${wave}`, type: 'normal', label: lang === 'fr' ? 'Cache soin' : 'Heal cache', x: -0.58, z: 2.4, color: '#2ecc71' },
-    { id: `ammo-${wave}`, type: 'normal', label: lang === 'fr' ? 'Munitions' : 'Ammo', x: 0.54, z: 2.8, color: '#ffea00' },
-    { id: `summon-${wave}`, type: 'summon', label: lang === 'fr' ? 'PNJ temporaire' : 'Temporary NPC', x: -0.12, z: 3.25, color: '#39c5bb' },
-    { id: `ultimate-${wave}`, type: 'ultimate', label: lang === 'fr' ? 'Ultime univers' : 'Universe ultimate', x: 0.16, z: 3.75, color: '#e74c3c' }
+    { id: `heal-${wave}`, type: 'normal', label: lang === 'fr' ? 'Cache soin' : 'Heal cache', wx: -2.8, wy: 3.8 + wave * 0.6, color: '#2ecc71' },
+    { id: `ammo-${wave}`, type: 'normal', label: lang === 'fr' ? 'Munitions' : 'Ammo', wx: 2.6, wy: 4.8 + wave * 0.55, color: '#ffea00' },
+    { id: `summon-${wave}`, type: 'summon', label: lang === 'fr' ? 'PNJ temporaire' : 'Temporary NPC', wx: -0.9, wy: 6.4 + wave * 0.7, color: '#39c5bb' },
+    { id: `ultimate-${wave}`, type: 'ultimate', label: lang === 'fr' ? 'Ultime univers' : 'Universe ultimate', wx: 1.25, wy: 8.1 + wave * 0.8, color: '#e74c3c' }
   ]), [lang]);
+
+  const projectWorld = useCallback((entity, state) => {
+    const dx = (entity.wx || 0) - (state.px || 0);
+    const dy = (entity.wy || 0) - (state.py || 0);
+    const sin = Math.sin(state.angle || 0);
+    const cos = Math.cos(state.angle || 0);
+    const camX = dx * cos - dy * sin;
+    const camZ = dx * sin + dy * cos;
+    return { camX, camZ, aim: camZ > 0 ? camX / camZ : 99, dist: Math.hypot(dx, dy) };
+  }, []);
 
   const startRun = useCallback(() => {
     if (!selectedHero) return;
@@ -679,7 +716,13 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       t: 0,
       zone: 1,
       muzzle: 0,
-      lane: 0,
+      px: 0,
+      py: 0,
+      angle: 0,
+      vx: 0,
+      vy: 0,
+      turnVel: 0,
+      moveKeys: {},
       dash: 0,
       scan: selectedHero.category === 'hacker' ? 240 : 0,
       turret: selectedHero.category === 'tactical' ? 420 : 0,
@@ -729,16 +772,41 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       state.turret = Math.max(0, state.turret - 1);
 
       if (state.phase === 'running') {
+        const keys = state.moveKeys || {};
+        const turnInput = (keys.turnRight ? 1 : 0) - (keys.turnLeft ? 1 : 0);
+        const forwardInput = (keys.forward ? 1 : 0) - (keys.back ? 1 : 0);
+        const strafeInput = (keys.strafeRight ? 1 : 0) - (keys.strafeLeft ? 1 : 0);
+        const speedStat = Math.max(4, Math.min(12, selectedHero.stats?.spd || 6));
+        const moveSpeed = 0.034 + speedStat * 0.0028 + (selectedHero.category === 'slayer' ? 0.006 : 0);
+        state.turnVel = state.turnVel * 0.72 + turnInput * 0.035;
+        state.angle += state.turnVel;
+        const sin = Math.sin(state.angle);
+        const cos = Math.cos(state.angle);
+        const inputScale = forwardInput && strafeInput ? 0.72 : 1;
+        const ax = (sin * forwardInput + cos * strafeInput) * moveSpeed * inputScale;
+        const ay = (cos * forwardInput - sin * strafeInput) * moveSpeed * inputScale;
+        state.vx = state.vx * 0.78 + ax;
+        state.vy = state.vy * 0.78 + ay;
+        state.px = Math.max(-7.5, Math.min(7.5, state.px + state.vx));
+        state.py = Math.max(-1.4, Math.min(28, state.py + state.vy));
+
         state.enemies = state.enemies.map((enemy, index) => {
           const slow = state.scan > 0 ? 0.55 : 1;
+          const dx = state.px - enemy.wx;
+          const dy = state.py - enemy.wy;
+          const distance = Math.max(0.2, Math.hypot(dx, dy));
+          const pressure = enemy.kind === 'Sniper' ? 0.003 : enemy.speed * 10.5 * slow * (1.05 - state.zone * 0.24);
+          const orbit = enemy.kind === 'Sniper' ? Math.sin(state.t * 0.02 + index) * 0.025 : Math.sin(state.t * 0.014 + index) * 0.01;
           return {
             ...enemy,
-            x: enemy.x + Math.sin(state.t * 0.015 + index) * 0.003 + (enemy.kind === 'Sniper' ? Math.sin(state.t * 0.025 + index) * 0.002 : 0),
-            z: Math.max(0.56, enemy.z - enemy.speed * slow * (1.05 - state.zone * 0.28))
+            wx: enemy.wx + (dx / distance) * pressure + orbit,
+            wy: enemy.wy + (dy / distance) * pressure
           };
         });
         if (state.t % 70 === 0) {
-          const pressure = state.enemies.filter(enemy => enemy.hp > 0 && enemy.z < 1.12).reduce((sum, enemy) => sum + enemy.dmg, 0);
+          const pressure = state.enemies
+            .filter(enemy => enemy.hp > 0 && Math.hypot(enemy.wx - state.px, enemy.wy - state.py) < 1.25)
+            .reduce((sum, enemy) => sum + enemy.dmg, 0);
           if (pressure > 0) {
             const absorbed = Math.min(state.armor, Math.ceil(pressure * 0.5));
             state.armor -= absorbed;
@@ -749,7 +817,9 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           state.hp = Math.max(0, state.hp - Math.ceil((0.58 - state.zone) * 12));
         }
         if (state.turret > 0 && state.t % 34 === 0) {
-          const target = state.enemies.filter(enemy => enemy.hp > 0).sort((a, b) => a.z - b.z)[0];
+          const target = state.enemies
+            .filter(enemy => enemy.hp > 0)
+            .sort((a, b) => projectWorld(a, state).dist - projectWorld(b, state).dist)[0];
           if (target) {
             target.hp -= 14;
             if (target.hp <= 0) state.kills += 1;
@@ -798,13 +868,14 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       });
       ctx.strokeStyle = 'rgba(255,234,0,0.22)';
       for (let i = -8; i <= 8; i++) {
-        const x = canvas.width / 2 + i * 48 + state.lane * 34;
+        const x = canvas.width / 2 + i * 48 + Math.sin(state.angle) * 58 - state.px * 18;
         ctx.beginPath();
         ctx.moveTo(x, canvas.height * 0.54);
-        ctx.lineTo(canvas.width / 2 + i * 170, canvas.height);
+        ctx.lineTo(canvas.width / 2 + i * 170 + Math.sin(state.angle) * 220 - state.px * 28, canvas.height);
         ctx.stroke();
       }
-      for (let y = canvas.height * 0.58; y < canvas.height; y += 28) {
+      const floorOffset = ((state.py * 18) % 28 + 28) % 28;
+      for (let y = canvas.height * 0.58 + floorOffset; y < canvas.height; y += 28) {
         ctx.beginPath();
         ctx.moveTo(0, y);
         ctx.lineTo(canvas.width, y);
@@ -823,9 +894,12 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
 
       state.loot
         .filter(item => !item.used)
-        .forEach(item => {
-          const scale = 1 / item.z;
-          const x = canvas.width / 2 + (item.x - state.lane * 0.12) * canvas.width * scale;
+        .map(item => ({ item, projection: projectWorld(item, state) }))
+        .filter(({ projection }) => projection.camZ > 0.25 && Math.abs(projection.aim) < 1.3)
+        .sort((a, b) => b.projection.camZ - a.projection.camZ)
+        .forEach(({ item, projection }) => {
+          const scale = Math.min(1.4, 1 / projection.camZ);
+          const x = canvas.width / 2 + projection.aim * canvas.width * 0.78;
           const y = canvas.height * 0.67 + 46 * scale;
           ctx.fillStyle = item.color;
           ctx.fillRect(x - 12 * scale, y - 12 * scale, 24 * scale, 24 * scale);
@@ -836,10 +910,12 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
 
       state.enemies
         .filter(enemy => enemy.hp > 0)
-        .sort((a, b) => b.z - a.z)
-        .forEach(enemy => {
-          const scale = 1 / enemy.z;
-          const x = canvas.width / 2 + (enemy.x - state.lane * 0.16) * canvas.width * scale;
+        .map(enemy => ({ enemy, projection: projectWorld(enemy, state) }))
+        .filter(({ projection }) => projection.camZ > 0.24 && Math.abs(projection.aim) < 1.45)
+        .sort((a, b) => b.projection.camZ - a.projection.camZ)
+        .forEach(({ enemy, projection }) => {
+          const scale = Math.min(1.8, 1 / projection.camZ);
+          const x = canvas.width / 2 + projection.aim * canvas.width * 0.78;
           const y = canvas.height * 0.58 - 28 * scale;
           const w = 52 * scale * enemy.size;
           const h = 94 * scale * enemy.size;
@@ -881,10 +957,22 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       ctx.lineTo(canvas.width / 2, canvas.height / 2 + 12);
       ctx.stroke();
 
+      ctx.fillStyle = 'rgba(0,0,0,0.52)';
+      ctx.fillRect(canvas.width - 116, 58, 92, 92);
+      ctx.strokeStyle = '#39c5bb';
+      ctx.strokeRect(canvas.width - 116, 58, 92, 92);
+      ctx.fillStyle = '#ffea00';
+      ctx.fillRect(canvas.width - 72 + state.px * 3.2, 103 - state.py * 1.4, 4, 4);
+      ctx.strokeStyle = '#ffea00';
+      ctx.beginPath();
+      ctx.moveTo(canvas.width - 70 + state.px * 3.2, 105 - state.py * 1.4);
+      ctx.lineTo(canvas.width - 70 + state.px * 3.2 + Math.sin(state.angle) * 16, 105 - state.py * 1.4 - Math.cos(state.angle) * 16);
+      ctx.stroke();
+
       ctx.fillStyle = selectedHero.primaryColor || '#444';
-      ctx.fillRect(canvas.width / 2 - 80 + state.lane * 15, canvas.height - 116, 160, 96);
+      ctx.fillRect(canvas.width / 2 - 80 - state.turnVel * 430 + state.vx * 85, canvas.height - 116, 160, 96);
       ctx.fillStyle = weaponProfile.color;
-      ctx.fillRect(canvas.width / 2 - 34 + state.lane * 15, canvas.height - 100, 68, 28);
+      ctx.fillRect(canvas.width / 2 - 34 - state.turnVel * 430 + state.vx * 85, canvas.height - 100, 68, 28);
       if (state.muzzle) {
         ctx.fillStyle = '#ffea00';
         ctx.fillRect(canvas.width / 2 - 14, canvas.height - 126, 28, 28);
@@ -908,7 +996,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     };
     loop();
     return () => window.cancelAnimationFrame(rafId);
-  }, [buildEnemies, buildLoot, finishRun, lang, objectives, runMode, selectedHero, universeFragments, weaponProfile.color]);
+  }, [buildEnemies, buildLoot, finishRun, lang, objectives, projectWorld, runMode, selectedHero, universeFragments, weaponProfile.color]);
 
   const fire = () => {
     const state = stateRef.current;
@@ -922,9 +1010,11 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     const role = roleProfile[selectedHero?.category] || roleProfile.marine;
     const target = state.enemies
       .filter(enemy => enemy.hp > 0)
-      .sort((a, b) => (Math.abs(a.x - state.lane * 0.16) + a.z * 0.18) - (Math.abs(b.x - state.lane * 0.16) + b.z * 0.18))[0];
+      .map(enemy => ({ enemy, projection: projectWorld(enemy, state) }))
+      .filter(({ projection }) => projection.camZ > 0.24 && Math.abs(projection.aim) < 0.2 + weaponProfile.spread)
+      .sort((a, b) => (Math.abs(a.projection.aim) + a.projection.camZ * 0.035) - (Math.abs(b.projection.aim) + b.projection.camZ * 0.035))[0]?.enemy;
     if (target) {
-      const closeBonus = selectedHero?.category === 'slayer' && target.z < 1.6 ? 1.45 : 1;
+      const closeBonus = selectedHero?.category === 'slayer' && projectWorld(target, state).dist < 2.2 ? 1.45 : 1;
       target.hp -= Math.round(34 * role.dmg * closeBonus);
       if (target.hp <= 0) {
         state.kills += 1;
@@ -939,17 +1029,17 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     sound.playSfx('coin');
   };
 
-  const moveLane = (dir) => {
+  const setMoveKey = (key, active) => {
     const state = stateRef.current;
-    state.lane = Math.max(-2, Math.min(2, state.lane + dir));
-    sound.playSfx('click');
+    state.moveKeys = { ...(state.moveKeys || {}), [key]: active };
   };
 
   const useRoleSkill = () => {
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     if (selectedHero?.category === 'slayer' && state.dash <= 0) {
-      state.lane = Math.max(-2, Math.min(2, state.lane + (state.lane <= 0 ? 2 : -2)));
+      state.px = Math.max(-7.5, Math.min(7.5, state.px + Math.sin(state.angle) * 2.4));
+      state.py = Math.max(-1.4, Math.min(28, state.py + Math.cos(state.angle) * 2.4));
       state.dash = 220;
     } else if (selectedHero?.category === 'hacker') {
       state.scan = 360;
@@ -966,7 +1056,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   const collectLoot = () => {
     const state = stateRef.current;
     if (state.phase !== 'running') return;
-    const item = state.loot.find(candidate => !candidate.used && Math.abs(candidate.x - state.lane * 0.12) < 0.22 && candidate.z < 3.3);
+    const item = state.loot.find(candidate => !candidate.used && Math.hypot(candidate.wx - state.px, candidate.wy - state.py) < 1.25);
     if (!item) return;
     item.used = true;
     if (item.type === 'normal') {
@@ -984,13 +1074,24 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
 
   useEffect(() => {
     const onKeyDown = (event) => {
-      if (event.repeat) return;
       const key = event.key.toLowerCase();
-      if (key === 'a' || key === 'arrowleft') {
-        moveLane(-1);
+      if (key === 'w' || key === 'z' || key === 'arrowup') {
+        setMoveKey('forward', true);
         event.preventDefault();
-      } else if (key === 'd' || key === 'arrowright') {
-        moveLane(1);
+      } else if (key === 's' || key === 'arrowdown') {
+        setMoveKey('back', true);
+        event.preventDefault();
+      } else if (key === 'a' || key === 'q') {
+        setMoveKey('strafeLeft', true);
+        event.preventDefault();
+      } else if (key === 'd') {
+        setMoveKey('strafeRight', true);
+        event.preventDefault();
+      } else if (key === 'arrowleft') {
+        setMoveKey('turnLeft', true);
+        event.preventDefault();
+      } else if (key === 'arrowright') {
+        setMoveKey('turnRight', true);
         event.preventDefault();
       } else if (key === ' ' || key === 'enter') {
         fire();
@@ -1006,8 +1107,28 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         event.preventDefault();
       }
     };
+    const onKeyUp = (event) => {
+      const key = event.key.toLowerCase();
+      if (key === 'w' || key === 'z' || key === 'arrowup') {
+        setMoveKey('forward', false);
+      } else if (key === 's' || key === 'arrowdown') {
+        setMoveKey('back', false);
+      } else if (key === 'a' || key === 'q') {
+        setMoveKey('strafeLeft', false);
+      } else if (key === 'd') {
+        setMoveKey('strafeRight', false);
+      } else if (key === 'arrowleft') {
+        setMoveKey('turnLeft', false);
+      } else if (key === 'arrowright') {
+        setMoveKey('turnRight', false);
+      }
+    };
     window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    window.addEventListener('keyup', onKeyUp);
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('keyup', onKeyUp);
+    };
   });
 
   return (
@@ -1034,7 +1155,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         <div className="nexus-play-intel">
           <strong>{weaponProfile.name}</strong>
           <span>{selectedHero?.category || 'marine'} - {(roleProfile[selectedHero?.category] || roleProfile.marine).perk}</span>
-          <small>{universeFragments.join(' / ')}</small>
+          <small>{universeFragments.join(' / ')} - {lang === 'fr' ? 'Z/W avancer, S reculer, A/Q-D strafes, fleches gauche/droite tourner' : 'W/Z forward, S back, A/Q-D strafe, left/right arrows turn'}</small>
         </div>
         <div className="nexus-play-stats">
           <span>{runSnapshot.phase === 'running' ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
@@ -1054,8 +1175,12 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           <button className="btn-retro" onClick={reload}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
           <button className="btn-retro" onClick={useRoleSkill}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
           <button className="btn-retro" onClick={collectLoot}>{lang === 'fr' ? 'LOOT' : 'LOOT'}</button>
-          <button className="btn-retro" onClick={() => moveLane(-1)}>LEFT</button>
-          <button className="btn-retro" onClick={() => moveLane(1)}>RIGHT</button>
+          <button className="btn-retro" onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
+          <button className="btn-retro" onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
+          <button className="btn-retro" onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
+          <button className="btn-retro" onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
+          <button className="btn-retro" onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
+          <button className="btn-retro" onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
         </div>
       </div>
       <canvas ref={canvasRef} width="840" height="430" className="fps-royale-canvas" onClick={fire} />
