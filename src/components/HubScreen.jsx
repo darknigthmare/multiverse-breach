@@ -221,6 +221,153 @@ function NarrativeArcSequencePanel({ lang, arcs, stages, completedStages, onSele
   );
 }
 
+function NarrativeArcGroupBrowser({
+  lang,
+  groups,
+  selectedGroupId,
+  onSelectGroup,
+  onBackToGroups,
+  onOpenArc,
+  stages,
+  completedStages,
+  categoryColor = '#ffb15c'
+}) {
+  const [groupQuery, setGroupQuery] = useState('');
+  const normalizedGroupQuery = groupQuery.trim().toLowerCase();
+  const filteredGroups = normalizedGroupQuery
+    ? groups.filter(group => [group.label, group.desc, group.kicker, group.primaryUniverse]
+      .filter(Boolean)
+      .some(value => String(value).toLowerCase().includes(normalizedGroupQuery)))
+    : groups;
+  const visibleGroups = filteredGroups.slice(0, 120);
+  const selectedGroup = groups.find(group => group.id === selectedGroupId) || null;
+
+  if (!selectedGroup) {
+    return (
+      <div className="arc-browser-shell" style={{ '--arc-browser-color': categoryColor }}>
+        <div className="arc-browser-head">
+          <div>
+            <div className="portal-focus-kicker">
+              {lang === 'fr' ? 'CARTE DE LECTURE A.R.C.A.' : 'A.R.C.A. READING MAP'}
+            </div>
+            <h4>{lang === 'fr' ? 'Choisir une vue narrative' : 'Choose a narrative view'}</h4>
+          </div>
+          <span>{filteredGroups.length}/{groups.length} {lang === 'fr' ? 'cartes' : 'cards'}</span>
+        </div>
+        <div className="arc-browser-tools">
+          <input
+            value={groupQuery}
+            onChange={(event) => setGroupQuery(event.target.value)}
+            placeholder={lang === 'fr' ? 'Filtrer par univers, heros ou trio...' : 'Filter by universe, hero, or trio...'}
+            aria-label={lang === 'fr' ? 'Filtrer les cartes narratives' : 'Filter narrative cards'}
+          />
+          {filteredGroups.length > visibleGroups.length && (
+            <span>
+              {lang === 'fr'
+                ? `${visibleGroups.length} cartes affichees - affine le filtre pour trouver une signature precise.`
+                : `${visibleGroups.length} cards shown - refine the filter to find a precise signature.`}
+            </span>
+          )}
+        </div>
+        <div className="arc-group-grid">
+          {visibleGroups.map(group => {
+            const doneCount = group.arcs.reduce((sum, arc) => {
+              const timeline = buildArcTimeline(arc, getLinkedStagesForArc(arc, stages, BASE_HEROES_DB), completedStages, lang);
+              return sum + timeline.filter(node => node.status === 'done').length;
+            }, 0);
+            const totalCount = group.arcs.reduce((sum, arc) => {
+              const timeline = buildArcTimeline(arc, getLinkedStagesForArc(arc, stages, BASE_HEROES_DB), completedStages, lang);
+              return sum + timeline.length;
+            }, 0);
+            const ratio = totalCount ? Math.min(1, doneCount / totalCount) : 0;
+            const backdrop = group.backdrop || getOpenAiBackdropSrc(group.primaryUniverse || group.label, 'RPG');
+            return (
+              <button
+                key={group.id}
+                type="button"
+                className="arc-group-card"
+                onClick={() => onSelectGroup(group.id)}
+                title={lang === 'fr' ? `Ouvre la vue narrative ${group.label}.` : `Open ${group.label} narrative view.`}
+                style={{
+                  '--arc-group-color': group.color || categoryColor,
+                  backgroundImage: backdrop
+                    ? `linear-gradient(90deg, rgba(5,4,12,0.96), rgba(5,4,12,0.72), rgba(5,4,12,0.38)), url(${backdrop})`
+                    : `linear-gradient(90deg, rgba(5,4,12,0.98), ${group.color || categoryColor}22)`
+                }}
+              >
+                <span className="arc-group-kicker">{group.kicker}</span>
+                <strong>{group.label}</strong>
+                <span className="arc-group-desc">{group.desc}</span>
+                <span className="arc-group-progress">
+                  <span>{group.arcs.length} {lang === 'fr' ? 'arc(s)' : 'arc(s)'}</span>
+                  <b>{doneCount}/{totalCount}</b>
+                </span>
+                <span className="arc-group-bar">
+                  <i style={{ width: `${Math.round(ratio * 100)}%` }} />
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="arc-browser-shell" style={{ '--arc-browser-color': selectedGroup.color || categoryColor }}>
+      <div className="arc-browser-head">
+        <button type="button" className="btn-retro" onClick={onBackToGroups}>
+          {lang === 'fr' ? 'RETOUR AUX CARTES' : 'BACK TO CARDS'}
+        </button>
+        <div>
+          <div className="portal-focus-kicker">{selectedGroup.kicker}</div>
+          <h4>{selectedGroup.label}</h4>
+          <p>{selectedGroup.desc}</p>
+        </div>
+        <span>{selectedGroup.arcs.length} {lang === 'fr' ? 'arc(s)' : 'arc(s)'}</span>
+      </div>
+      <div className="arc-chapter-grid">
+        {selectedGroup.arcs.map(arc => {
+          const linkedStages = getLinkedStagesForArc(arc, stages, BASE_HEROES_DB);
+          const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
+          const doneCount = timeline.filter(node => node.status === 'done').length;
+          const ratio = timeline.length ? Math.min(1, doneCount / timeline.length) : 0;
+          return (
+            <button
+              key={arc.id}
+              type="button"
+              className="arc-chapter-card"
+              onClick={() => onOpenArc(arc)}
+              title={lang === 'fr' ? 'Ouvre le chapitre complet de cet arc.' : 'Open this arc full chapter.'}
+              style={{ '--arc-chapter-color': selectedGroup.color || categoryColor }}
+            >
+              <span className="arc-chapter-topline">
+                <b>{doneCount}/{timeline.length}</b>
+                <i>{lang === 'fr' ? 'OUVRIR CHAPITRE' : 'OPEN CHAPTER'}</i>
+              </span>
+              <strong>{getLocalizedText(arc.title, lang, arc.id)}</strong>
+              <span className="arc-chapter-intro">{getLocalizedText(arc.intro, lang)}</span>
+              <span className="arc-group-bar">
+                <i style={{ width: `${Math.round(ratio * 100)}%` }} />
+              </span>
+              <span className="arc-chapter-nodes">
+                {timeline.map((node, index) => (
+                  <em key={`${arc.id}-node-${index}`} className={node.status === 'done' ? 'done' : node.type.includes('boss') ? 'boss' : ''}>
+                    {node.label}{node.stage ? ` #${node.stage.id}` : ''}
+                  </em>
+                ))}
+              </span>
+              <span className="arc-chapter-reward">
+                {lang === 'fr' ? 'Recompense' : 'Reward'}: {getLocalizedText(arc.reward, lang)}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone, onCompleteIntro, onSelectStage, onBack, isStageUnlocked }) {
   if (!arc) return null;
   const linkedStages = getLinkedStagesForArc(arc, stages, BASE_HEROES_DB);
@@ -2018,6 +2165,7 @@ export default function HubScreen({
   const [showMissionArchive, setShowMissionArchive] = useState(false);
   const [briefingStageId, setBriefingStageId] = useState(null);
   const [selectedNarrativeArcId, setSelectedNarrativeArcId] = useState(null);
+  const [selectedNarrativeGroupId, setSelectedNarrativeGroupId] = useState(null);
   const [completedArcIntros, setCompletedArcIntros] = useState(() => activityProgress?.arcIntros || {});
   const [nexusMessage, setNexusMessage] = useState(null);
   const [codexView, setCodexView] = useState('canon');
@@ -4083,7 +4231,88 @@ export default function HubScreen({
       : missionScreen === 'trioArcs'
         ? TRIO_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.trioArc?.id === arc.id))
         : [];
+  const narrativeArcScreenType = missionScreen === 'universeArcs'
+    ? 'universe'
+    : missionScreen === 'personalArcs'
+      ? 'personal'
+      : missionScreen === 'trioArcs'
+        ? 'trio'
+        : null;
+  const narrativeArcGroups = (() => {
+    const groupMap = new Map();
+    const addToGroup = (id, seed, arc) => {
+      const existing = groupMap.get(id) || { ...seed, arcs: [] };
+      existing.arcs.push(arc);
+      groupMap.set(id, existing);
+    };
+
+    if (narrativeArcScreenType === 'universe') {
+      activeNarrativeArcs.forEach(arc => {
+        getArcUniverses(arc, BASE_HEROES_DB).forEach(universe => {
+          const color = getUniverseHubColor(universe);
+          const place = getUniverseHubPlace(universe, lang);
+          addToGroup(`universe-${universe}`, {
+            id: `universe-${universe}`,
+            label: universe,
+            kicker: lang === 'fr' ? 'VUE UNIVERS' : 'UNIVERSE VIEW',
+            desc: `${place.name} - ${place.mood}`,
+            primaryUniverse: universe,
+            color,
+            backdrop: getOpenAiBackdropSrc(universe, 'RPG')
+          }, arc);
+        });
+      });
+    }
+
+    if (narrativeArcScreenType === 'personal') {
+      activeNarrativeArcs.forEach(arc => {
+        const hero = BASE_HEROES_DB.find(item => item.id === arc.heroId);
+        const label = hero?.name || getLocalizedText(arc.title, lang, arc.id);
+        const universe = hero?.universe || getArcUniverses(arc, BASE_HEROES_DB)[0];
+        addToGroup(`hero-${arc.heroId || arc.id}`, {
+          id: `hero-${arc.heroId || arc.id}`,
+          label,
+          kicker: lang === 'fr' ? 'VUE PERSONNAGE' : 'CHARACTER VIEW',
+          desc: hero
+            ? `${hero.universe} - ${getLocalizedText(hero.role, lang, hero.category)}`
+            : getLocalizedText(arc.intro, lang),
+          primaryUniverse: universe,
+          color: getUniverseHubColor(universe),
+          backdrop: getOpenAiBackdropSrc(universe, 'RPG')
+        }, arc);
+      });
+    }
+
+    if (narrativeArcScreenType === 'trio') {
+      activeNarrativeArcs.forEach(arc => {
+        const heroes = (arc.heroIds || [])
+          .map(heroId => BASE_HEROES_DB.find(item => item.id === heroId)?.name || heroId)
+          .join(' / ');
+        const universe = getArcUniverses(arc, BASE_HEROES_DB)[0];
+        addToGroup(`trio-${arc.id}`, {
+          id: `trio-${arc.id}`,
+          label: heroes || getLocalizedText(arc.title, lang, arc.id),
+          kicker: lang === 'fr' ? 'VUE TRIO' : 'TRIO VIEW',
+          desc: getLocalizedText(arc.intro, lang),
+          primaryUniverse: universe,
+          color: getUniverseHubColor(universe),
+          backdrop: getOpenAiBackdropSrc(universe, 'Tactics')
+        }, arc);
+      });
+    }
+
+    return Array.from(groupMap.values()).sort((a, b) => a.label.localeCompare(b.label));
+  })();
   const selectedNarrativeArc = activeNarrativeArcs.find(arc => arc.id === selectedNarrativeArcId) || null;
+  useEffect(() => {
+    setSelectedNarrativeArcId(null);
+    setSelectedNarrativeGroupId(null);
+  }, [missionScreen]);
+  useEffect(() => {
+    if (selectedNarrativeGroupId && !narrativeArcGroups.some(group => group.id === selectedNarrativeGroupId)) {
+      setSelectedNarrativeGroupId(null);
+    }
+  }, [narrativeArcGroups, selectedNarrativeGroupId]);
   const openNarrativeArc = (arc) => {
     setSelectedNarrativeArcId(arc.id);
     setBriefingStageId(null);
@@ -4400,7 +4629,7 @@ export default function HubScreen({
                     <button
                       key={key}
                       type="button"
-                      onClick={() => { setMissionScreen(key); setMissionSeed(Date.now()); setBriefingStageId(null); setSelectedNarrativeArcId(null); setShowMissionArchive(false); sound.playSfx('coin'); }}
+                      onClick={() => { setMissionScreen(key); setMissionSeed(Date.now()); setBriefingStageId(null); setSelectedNarrativeArcId(null); setSelectedNarrativeGroupId(null); setShowMissionArchive(false); sound.playSfx('coin'); }}
                       className="btn-retro"
                       title={lang === 'fr' ? `Ouvre cet ecran de missions: ${entry.label.fr}.` : `Open this mission screen: ${entry.label.en}.`}
                       style={{
@@ -4449,7 +4678,7 @@ export default function HubScreen({
             <div style={{ marginBottom: '12px' }}>
               <button
                 type="button"
-                onClick={() => { setMissionScreen('index'); setBriefingStageId(null); setSelectedNarrativeArcId(null); sound.playSfx('click'); }}
+                onClick={() => { setMissionScreen('index'); setBriefingStageId(null); setSelectedNarrativeArcId(null); setSelectedNarrativeGroupId(null); sound.playSfx('click'); }}
                 className="btn-retro"
                 title={lang === 'fr' ? 'Retourne au choix des categories de missions.' : 'Return to mission category selection.'}
                 style={{ padding: '6px 10px', fontSize: '10px', borderColor: '#555', color: '#aaa' }}
@@ -4507,16 +4736,30 @@ export default function HubScreen({
               />
             ) : (
             <>
-            <MultiverseRiftMap
-              lang={lang}
-              stages={missionPool}
-              allStages={visibleStages}
-              completedStages={completedStages}
-              isStageUnlocked={isStageUnlocked}
-              onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
-              onSelectArc={openNarrativeArc}
-              narrativeArcs={activeNarrativeArcs}
-            />
+            {narrativeArcScreenType ? (
+              <NarrativeArcGroupBrowser
+                lang={lang}
+                groups={narrativeArcGroups}
+                selectedGroupId={selectedNarrativeGroupId}
+                onSelectGroup={(groupId) => { setSelectedNarrativeGroupId(groupId); setBriefingStageId(null); sound.playSfx('coin'); }}
+                onBackToGroups={() => { setSelectedNarrativeGroupId(null); setBriefingStageId(null); sound.playSfx('click'); }}
+                onOpenArc={openNarrativeArc}
+                stages={visibleStages}
+                completedStages={completedStages}
+                categoryColor={selectedMissionMeta.color}
+              />
+            ) : (
+              <MultiverseRiftMap
+                lang={lang}
+                stages={missionPool}
+                allStages={visibleStages}
+                completedStages={completedStages}
+                isStageUnlocked={isStageUnlocked}
+                onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                onSelectArc={openNarrativeArc}
+                narrativeArcs={activeNarrativeArcs}
+              />
+            )}
 
             <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.4fr', gap: '12px', marginBottom: '14px' }}>
               <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '5px' }}>
@@ -4872,92 +5115,6 @@ export default function HubScreen({
                 </div>
               </div>
             </div>
-            )}
-
-            {missionScreen === 'universeArcs' && (
-              <div style={{
-                padding: '14px',
-                marginBottom: '14px',
-                background: 'rgba(255,177,92,0.06)',
-                border: '1px solid rgba(255,177,92,0.24)',
-                borderRadius: '5px'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
-                  <div>
-                    <div style={{ fontSize: '11px', color: '#ffb15c', fontWeight: 'bold', textTransform: 'uppercase' }}>
-                      {lang === 'fr' ? 'Arcs narratifs par univers' : 'Universe narrative arcs'}
-                    </div>
-                    <div style={{ fontSize: '10px', color: '#c9b49f', marginTop: '3px' }}>
-                      {lang === 'fr'
-                        ? 'Chaque bloc suit une route complete: intro, mission, interlude, nouvelle mission, intro boss, boss, outro et recompense.'
-                        : 'Each block follows a full route: intro, mission, interlude, next mission, boss intro, boss, outro, and reward.'}
-                    </div>
-                  </div>
-                  <div style={{ color: '#ffeb3b', fontSize: '10px' }}>
-                    {UNIVERSE_NARRATIVE_ARCS.length} {lang === 'fr' ? 'arcs archives' : 'archived arcs'}
-                  </div>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
-                  {UNIVERSE_NARRATIVE_ARCS.map(arc => {
-                    const linkedStages = getLinkedStagesForArc(arc, visibleStages, BASE_HEROES_DB);
-                    const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
-                    const clearedLinkedCount = timeline.filter(node => node.status === 'done').length;
-                    const ratio = timeline.length ? Math.min(1, clearedLinkedCount / timeline.length) : 0;
-                    return (
-                      <div key={arc.id} style={{
-                        padding: '11px',
-                        border: ratio >= 1 ? '1px solid #2ecc71' : '1px solid rgba(255,177,92,0.22)',
-                        background: ratio >= 1 ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.18)',
-                        borderRadius: '4px'
-                      }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center', marginBottom: '6px' }}>
-                          <strong style={{ color: ratio >= 1 ? '#2ecc71' : '#ffb15c', fontSize: '11px' }}>{arc.title[lang]}</strong>
-                          <span style={{ color: '#ffeb3b', fontSize: '9px' }}>{clearedLinkedCount}/{timeline.length}</span>
-                        </div>
-                        <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '8px', borderRadius: '3px', overflow: 'hidden' }}>
-                          <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: ratio >= 1 ? '#2ecc71' : '#ffb15c' }} />
-                        </div>
-                        <div style={{ display: 'grid', gap: '4px', marginBottom: '7px' }}>
-                          {timeline.map((node, index) => (
-                            <button
-                              key={`${arc.id}-summary-${index}`}
-                              type="button"
-                              disabled={!node.stage}
-                              onClick={() => node.stage && setBriefingStageId(node.stage.id)}
-                              className="btn-retro"
-                              style={{
-                                color: node.status === 'done' ? '#2ecc71' : node.status === 'locked' ? '#777' : node.type.includes('boss') ? '#e74c3c' : '#cfcfcf',
-                                borderColor: node.status === 'done' ? '#2ecc71' : node.status === 'locked' ? '#333' : node.type.includes('boss') ? '#e74c3c' : 'rgba(255,255,255,0.16)',
-                                background: 'rgba(0,0,0,0.14)',
-                                fontSize: '9px',
-                                lineHeight: 1.3,
-                                padding: '5px 6px',
-                                textAlign: 'left',
-                                cursor: node.stage ? 'pointer' : 'default'
-                              }}
-                            >
-                              <b>{node.label}</b>{node.stage ? ` #${node.stage.id}` : ''} - {node.text}
-                            </button>
-                          ))}
-                        </div>
-                        <div style={{ color: '#9adbd6', fontSize: '9px', lineHeight: 1.35, marginBottom: '6px' }}>
-                          <b>{lang === 'fr' ? 'Route carte' : 'Map route'}:</b> {linkedStages.map(stage => `#${stage.id}`).join(' -> ') || (lang === 'fr' ? 'coordonnees a decouvrir' : 'coordinates to discover')}
-                        </div>
-                        <div style={{ color: '#ffeb3b', fontSize: '9px', lineHeight: 1.35 }}>
-                          <b>{lang === 'fr' ? 'Recompense' : 'Reward'}:</b> {arc.reward[lang]}
-                        </div>
-                        <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '8px' }}>
-                          {arc.universes.map(universe => (
-                            <span key={`${arc.id}-${universe}`} style={{ border: '1px solid rgba(255,177,92,0.35)', color: '#ffd6ad', fontSize: '8px', padding: '2px 5px', borderRadius: '3px' }}>
-                              {universe}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
             )}
 
             {missionScreen === 'fusionMissions' && (
