@@ -86,6 +86,27 @@ const main = async () => {
 
   const bossEntries = [];
   Object.entries(ENEMIES_DB).forEach(([universe, data]) => {
+    (data.monsters || []).filter(Boolean).forEach((enemy) => {
+      const universeSlug = slugify(universe);
+      const file = `bosses/${universeSlug}/${slugify(enemy.name)}.png`;
+      bossEntries.push({
+        kind: 'enemy',
+        id: slugify(`${universe}-${enemy.name}`),
+        name: enemy.name,
+        universe,
+        output: `/sprites/generated/${file}`,
+        frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
+        prompt: buildPrompt({
+          kind: 'enemy',
+          name: enemy.name,
+          universe,
+          role: 'standard enemy',
+          weapon: enemy.weapon,
+          color: enemy.color,
+          special: enemy.special
+        })
+      });
+    });
     [...(data.bosses || []), data.worldBoss].filter(Boolean).forEach((boss) => {
       const universeSlug = slugify(universe);
       const file = `bosses/${universeSlug}/${slugify(boss.name)}.png`;
@@ -141,16 +162,24 @@ const main = async () => {
   await fs.writeFile(outManifest, JSON.stringify({
     generatedAt: new Date().toISOString(),
     sheet: { width: 1024, height: 1024, frameWidth: 256, frameHeight: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
-    counts: { heroes: heroEntries.length, bosses: bossEntries.length, total: all.length },
+    counts: {
+      heroes: heroEntries.length,
+      enemies: bossEntries.filter(entry => entry.kind === 'enemy').length,
+      bosses: bossEntries.filter(entry => entry.kind === 'boss').length,
+      total: all.length
+    },
     availableCounts: {
       heroes: manifestEntries.filter(entry => entry.kind === 'hero' && entry.available).length,
+      enemies: manifestEntries.filter(entry => entry.kind === 'enemy' && entry.available).length,
       bosses: manifestEntries.filter(entry => entry.kind === 'boss' && entry.available).length,
       total: manifestEntries.filter(entry => entry.available).length
     },
     entries: manifestEntries
   }, null, 2), 'utf8');
   await fs.rm(tmpDir, { recursive: true, force: true });
-  console.log(`Wrote ${all.length} sprite prompts (${heroEntries.length} heroes, ${bossEntries.length} bosses).`);
+  const enemyCount = bossEntries.filter(entry => entry.kind === 'enemy').length;
+  const bossCount = bossEntries.filter(entry => entry.kind === 'boss').length;
+  console.log(`Wrote ${all.length} sprite prompts (${heroEntries.length} heroes, ${enemyCount} enemies, ${bossCount} bosses).`);
   console.log(outJsonl);
   console.log(outManifest);
 };
