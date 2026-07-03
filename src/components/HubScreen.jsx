@@ -1705,7 +1705,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     state.moveKeys = { ...(state.moveKeys || {}), [key]: active };
   };
 
-  const useRoleSkill = () => {
+  const activateRoleSkill = () => {
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     if (selectedHero?.category === 'slayer' && state.dash <= 0) {
@@ -1774,7 +1774,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         collectLoot();
         event.preventDefault();
       } else if (key === 'shift') {
-        useRoleSkill();
+        activateRoleSkill();
         event.preventDefault();
       }
     };
@@ -1844,7 +1844,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           <button className="btn-retro" onClick={startRun} title={lang === 'fr' ? 'Lance ou recommence une run Zone d Extinction.' : 'Start or restart an Extinction Zone run.'}>{runSnapshot.phase === 'running' ? (lang === 'fr' ? 'RESTART' : 'RESTART') : (lang === 'fr' ? 'DEMARRER RUN' : 'START RUN')}</button>
           <button className="btn-retro" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
           <button className="btn-retro" onClick={reload} title={lang === 'fr' ? 'Recharge les munitions au maximum.' : 'Refill ammunition to maximum.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
-          <button className="btn-retro" onClick={useRoleSkill} title={lang === 'fr' ? 'Active la capacite speciale liee au role du heros.' : 'Activate the selected hero role ability.'}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
+          <button className="btn-retro" onClick={activateRoleSkill} title={lang === 'fr' ? 'Active la capacite speciale liee au role du heros.' : 'Activate the selected hero role ability.'}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
           <button className="btn-retro" onClick={collectLoot} title={lang === 'fr' ? 'Ramasse l objet proche si tu es assez pres.' : 'Pick up the nearby item if you are close enough.'}>{lang === 'fr' ? 'LOOT' : 'LOOT'}</button>
           <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
           <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
