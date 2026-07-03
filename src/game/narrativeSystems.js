@@ -99,6 +99,32 @@ export const UNIVERSE_NARRATIVE_ARCS = [
     ],
     outro: { fr: 'A.R.C.A. cree les Protocoles de confinement permanents.', en: 'A.R.C.A. creates permanent containment protocols.' },
     reward: { fr: 'Item Chambre Blanche + skin Combinaison Nexus', en: 'White Chamber Item + Nexus Suit Skin' }
+  },
+  {
+    id: 'watcher_hellmouth',
+    title: { fr: 'Arc Univers - Ligne de la Bouche d Enfer', en: 'Universe Arc - Hellmouth Line' },
+    universes: ['Buffy the Vampire Slayer', 'Charmed', 'Hellraiser', 'Hazbin Hotel'],
+    intro: { fr: 'Magie, demons et prophecies entrent dans le Nexus par les memes fissures rituelles.', en: 'Magic, demons, and prophecies enter the Nexus through the same ritual cracks.' },
+    missions: [
+      { fr: 'Proteger une archive d Observateur pendant une attaque de demons croises.', en: 'Protect a Watcher archive during a cross-demon attack.' },
+      { fr: 'Recomposer un cercle Halliwell sans donner de nom au Sans-Auteur.', en: 'Rebuild a Halliwell circle without giving the Authorless a name.' },
+      { fr: 'Sceller une boite infernale avant qu elle ne devienne portail permanent.', en: 'Seal an infernal box before it becomes a permanent portal.' }
+    ],
+    outro: { fr: 'La magie devient une discipline de stabilisation, pas seulement une exception.', en: 'Magic becomes a stabilization discipline, not only an exception.' },
+    reward: { fr: 'Relique Pieu d Origine + skin Cercle Nexus', en: 'Origin Stake Relic + Nexus Circle Skin' }
+  },
+  {
+    id: 'anime_judgment_cell',
+    title: { fr: 'Arc Univers - Corps, carnets et titans', en: 'Universe Arc - Cells, Notes, and Titans' },
+    universes: ['Attack on Titan', 'Death Note', 'Cells at Work', 'Inuyashiki'],
+    intro: { fr: 'Ces Trames posent la meme question au Nexus: qui decide qu une vie vaut moins qu une histoire?', en: 'These Threads ask the Nexus one question: who decides a life is worth less than a story?' },
+    missions: [
+      { fr: 'Evacuer une ville miniature attaquee par des geants et des cellules infectees.', en: 'Evacuate a miniature city attacked by giants and infected cells.' },
+      { fr: 'Bruler une page de jugement avant qu elle ne classe les heros comme variables.', en: 'Burn a judgment page before it classifies heroes as variables.' },
+      { fr: 'Forcer un corps cybernetique a choisir le sauvetage plutot que l effacement.', en: 'Force a cybernetic body to choose rescue over erasure.' }
+    ],
+    outro: { fr: 'Le Nexus inscrit une regle: aucune optimisation ne remplace le choix de proteger.', en: 'The Nexus writes one rule: no optimization replaces the choice to protect.' },
+    reward: { fr: 'Serum de Trame + skin Cellule Blindee', en: 'Thread Serum + Armored Cell Skin' }
   }
 ];
 
@@ -630,6 +656,60 @@ export const FUSION_MISSIONS = [
     enemies: { fr: 'Infectes a pieges, infirmieres corrompues, marionnette de brume.', en: 'Trap-infected, corrupted nurses, fog puppet.' },
     item: { fr: 'Seringue du Verdict', en: 'Verdict Syringe' },
     itemId: 'fusion_verdict_syringe'
+  },
+  {
+    id: 'buffycharmed_hellraiser',
+    stageId: 9004,
+    title: { fr: 'Fusion - Cercle et Configuration', en: 'Fusion - Circle and Configuration' },
+    universes: ['Buffy the Vampire Slayer', 'Charmed', 'Hellraiser'],
+    primaryUniverse: 'Buffy the Vampire Slayer',
+    mode: 'RPG',
+    difficulty: 'Fusion',
+    bossName: 'Oracle Cenobite de Sunnydale',
+    goldPrize: 210,
+    shardPrize: 85,
+    tokenPrize: 4,
+    unlockClears: 12,
+    decor: { fr: 'Un lycee de Sunnydale grave de runes Halliwell autour d une boite de lamentation.', en: 'A Sunnydale school carved with Halliwell runes around a lament configuration.' },
+    enemies: { fr: 'Vampires ensorceles, demons a chaines, familiers corrompus.', en: 'Hexed vampires, chained demons, corrupted familiars.' },
+    item: { fr: 'Pieu de Configuration', en: 'Configuration Stake' },
+    itemId: 'fusion_configuration_stake'
+  },
+  {
+    id: 'breakingbad_splice_evolution',
+    stageId: 9005,
+    title: { fr: 'Fusion - Laboratoire Bleu Chimere', en: 'Fusion - Blue Chimera Lab' },
+    universes: ['Breaking Bad', 'Splice', 'Evolution'],
+    primaryUniverse: 'Breaking Bad',
+    mode: 'Tactics',
+    difficulty: 'Fusion',
+    bossName: 'Heisenberg Chimere',
+    goldPrize: 220,
+    shardPrize: 90,
+    tokenPrize: 4,
+    unlockClears: 14,
+    decor: { fr: 'Un labo mobile ou catalyseurs bleus, ADN hybride et evolution alien reagissent ensemble.', en: 'A mobile lab where blue catalysts, hybrid DNA, and alien evolution react together.' },
+    enemies: { fr: 'Gardes cartel mutes, larves chimere, drones de confinement.', en: 'Mutated cartel guards, chimera larvae, containment drones.' },
+    item: { fr: 'Catalyseur Chimere Bleu', en: 'Blue Chimera Catalyst' },
+    itemId: 'fusion_blue_chimera_catalyst'
+  },
+  {
+    id: 'aot_deathnote_inuyashiki',
+    stageId: 9006,
+    title: { fr: 'Fusion - Jugement du Titan Cyber', en: 'Fusion - Cyber Titan Judgment' },
+    universes: ['Attack on Titan', 'Death Note', 'Inuyashiki'],
+    primaryUniverse: 'Attack on Titan',
+    mode: 'Smash',
+    difficulty: 'Fusion',
+    bossName: 'Titan Kira Mecanise',
+    goldPrize: 230,
+    shardPrize: 95,
+    tokenPrize: 5,
+    unlockClears: 16,
+    decor: { fr: 'Une ville muree ou les noms ecrits deviennent trajectoires de missiles.', en: 'A walled city where written names become missile trajectories.' },
+    enemies: { fr: 'Titans purs marques, drones civils, copies de jugement.', en: 'Marked pure titans, civilian drones, judgment copies.' },
+    item: { fr: 'Page de Titan Cyber', en: 'Cyber Titan Page' },
+    itemId: 'fusion_cyber_titan_page'
   }
 ];
 

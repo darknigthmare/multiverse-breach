@@ -15,6 +15,8 @@ import spriteManifest from '../../public/sprites/generated/sprite-manifest.json'
 export default function HubScreen({
   lang,
   playerProfile,
+  publicProfile,
+  setPublicProfile,
   gold, setGold,
   breachShards, setBreachShards,
   eventTokens, setEventTokens,
@@ -92,6 +94,7 @@ export default function HubScreen({
     (universe) => !universe || universe === 'Nexus de Convergence' || !hiddenUniverseSet.has(universe),
     [hiddenUniverseSet]
   );
+  const [inventoryFilter, setInventoryFilter] = useState('all');
   const collectionBonusCount = inventory.filter(itemId => (
     itemId.startsWith('collection_reward_')
     || itemId.startsWith('arc_reward_')
@@ -1336,6 +1339,29 @@ export default function HubScreen({
   const getSpecialNexusItemsInInventory = () => inventory
     .map(itemId => SPECIAL_NEXUS_ITEMS[itemId])
     .filter(Boolean);
+  const inventoryGroups = [
+    { id: 'all', label: { fr: 'Tout', en: 'All' }, count: getGearInInventory().length + getEventItemsInInventory().length + getSpecialNexusItemsInInventory().length },
+    { id: 'gear', label: { fr: 'Reliques', en: 'Relics' }, count: getGearInInventory().length },
+    { id: 'event', label: { fr: 'Evenements', en: 'Events' }, count: getEventItemsInInventory().length },
+    { id: 'nexus', label: { fr: 'Nexus/skins', en: 'Nexus/skins' }, count: getSpecialNexusItemsInInventory().length }
+  ];
+  const visibleGearItems = inventoryFilter === 'all' || inventoryFilter === 'gear' ? getGearInInventory() : [];
+  const visibleEventItems = inventoryFilter === 'all' || inventoryFilter === 'event' ? getEventItemsInInventory() : [];
+  const visibleNexusItems = inventoryFilter === 'all' || inventoryFilter === 'nexus' ? getSpecialNexusItemsInInventory() : [];
+  const generateShareCode = () => {
+    const seed = `${playerProfile?.name || 'ANCHOR'}-${unlockedHeroes.length}-${completedStages.length}-${Date.now()}`
+      .toUpperCase()
+      .replace(/[^A-Z0-9]+/g, '')
+      .slice(0, 8);
+    return `MB-${seed.padEnd(8, 'X')}-${String(unlockedHeroes.length).padStart(3, '0')}`;
+  };
+  const collectionSummary = {
+    heroes: unlockedHeroes.length,
+    totalHeroes: HEROES_DB.length,
+    worlds: new Set(HEROES_DB.filter(hero => unlockedHeroes.includes(hero.id)).map(hero => hero.universe)).size,
+    arcs: CHARACTER_NARRATIVE_ARCS.filter(arc => inventory.includes(arc.rewardItemId)).length,
+    skins: Object.keys(heroSkins || {}).filter(heroId => heroSkins[heroId]).length
+  };
 
   const getStageRequiredClears = (stage) => {
     if (stage.characterArc) return stage.characterArc.unlock?.type === 'clears' ? stage.characterArc.unlock.value : 0;
@@ -2885,6 +2911,53 @@ export default function HubScreen({
         {/* Tab 3: Party Setup */}
         {activeTab === 'party' && (
           <>
+          <div className="glass-panel squad-panel" style={{ marginBottom: '14px' }}>
+            <div className="squad-header">
+              <div>
+                <h3>{lang === 'fr' ? 'Profil public / futur multijoueur' : 'Public profile / future multiplayer'}</h3>
+                <p>
+                  {lang === 'fr'
+                    ? 'Prepare une carte de commandant partageable: progression, collection et escouade active.'
+                    : 'Prepare a shareable commander card: progress, collection, and active squad.'}
+                </p>
+              </div>
+              <button
+                className="btn-retro"
+                onClick={() => setPublicProfile(prev => ({ ...prev, shareCode: prev?.shareCode || generateShareCode(), visibility: prev?.visibility === 'public' ? 'private' : 'public' }))}
+                style={{ fontSize: '10px', borderColor: publicProfile?.visibility === 'public' ? '#2ecc71' : '#ffea00', color: publicProfile?.visibility === 'public' ? '#2ecc71' : '#ffea00' }}
+              >
+                {publicProfile?.visibility === 'public'
+                  ? (lang === 'fr' ? 'Profil public' : 'Public profile')
+                  : (lang === 'fr' ? 'Activer partage' : 'Enable share')}
+              </button>
+            </div>
+            <div className="squad-command-grid" style={{ marginTop: '14px', marginBottom: 0 }}>
+              <div className="squad-readiness-card">
+                <div className="squad-kicker">{lang === 'fr' ? 'Commandant' : 'Commander'}</div>
+                <div className="squad-grade-row">
+                  <div className="squad-grade">{String(playerProfile?.name || 'A').slice(0, 2).toUpperCase()}</div>
+                  <div>
+                    <strong>{playerProfile?.name || 'Ancre'}</strong>
+                    <small>{publicProfile?.title || 'Prime Anchor'}</small>
+                  </div>
+                </div>
+              </div>
+              <div className="squad-plan-card">
+                <div className="squad-kicker">{lang === 'fr' ? 'Code ami' : 'Friend code'}</div>
+                <p style={{ color: '#fff', fontSize: '15px', letterSpacing: '0.08em' }}>{publicProfile?.shareCode || (lang === 'fr' ? 'Non genere' : 'Not generated')}</p>
+                <span>{lang === 'fr' ? 'Pret pour profil public, code ami et matchmaking plus tard.' : 'Ready for public profile, friend code, and later matchmaking.'}</span>
+              </div>
+              <div className="squad-section-card">
+                <div className="squad-section-title">{lang === 'fr' ? 'Collection' : 'Collection'}</div>
+                <div className="squad-stat-grid">
+                  <div><span>{lang === 'fr' ? 'Heros' : 'Heroes'}</span><strong>{collectionSummary.heroes}/{collectionSummary.totalHeroes}</strong></div>
+                  <div><span>{lang === 'fr' ? 'Mondes' : 'Worlds'}</span><strong>{collectionSummary.worlds}</strong></div>
+                  <div><span>{lang === 'fr' ? 'Arcs' : 'Arcs'}</span><strong>{collectionSummary.arcs}</strong></div>
+                  <div><span>{lang === 'fr' ? 'Skins' : 'Skins'}</span><strong>{collectionSummary.skins}</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="glass-panel squad-panel">
             <div className="squad-header">
               <div>
@@ -3336,12 +3409,30 @@ export default function HubScreen({
                   <h4 style={{ margin: '0 0 10px 0', borderTop: '1px solid #222', paddingTop: '10px', fontSize: '13px' }}>
                     {getTranslation(lang, 'inventoryTitle')}
                   </h4>
-                  {getGearInInventory().length === 0 && getEventItemsInInventory().length === 0 && getSpecialNexusItemsInInventory().length === 0 ? (
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
+                    {inventoryGroups.map(group => (
+                      <button
+                        key={group.id}
+                        type="button"
+                        onClick={() => setInventoryFilter(group.id)}
+                        className="btn-retro"
+                        style={{
+                          fontSize: '9px',
+                          padding: '5px 7px',
+                          borderColor: inventoryFilter === group.id ? '#ffea00' : '#444',
+                          color: inventoryFilter === group.id ? '#ffea00' : '#aaa'
+                        }}
+                      >
+                        {group.label[lang]} ({group.count})
+                      </button>
+                    ))}
+                  </div>
+                  {visibleGearItems.length === 0 && visibleEventItems.length === 0 && visibleNexusItems.length === 0 ? (
                     <div style={{ color: '#555', fontSize: '12px' }}>{getTranslation(lang, 'noItems')}</div>
                   ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '35vh', overflowY: 'auto' }}>
                       {/* Weapon Gear */}
-                      {getGearInInventory().map(item => {
+                      {visibleGearItems.map(item => {
                         const isEquippedElsewhere = Object.keys(equippedGear).some(id => equippedGear[id] === item.id);
                         const isEquippedOnSelf = equippedGear[selectedHero.id] === item.id;
                         
@@ -3379,7 +3470,7 @@ export default function HubScreen({
                       })}
 
                       {/* Event Items */}
-                      {getEventItemsInInventory().map(item => {
+                      {visibleEventItems.map(item => {
                         // Event items match hero universe to be equipped
                         const matchesUniverse = item.id === EVENT_ITEMS_DB[selectedHero.universe]?.id;
                         const isEquippedOnSelf = equippedEventItems[selectedHero.id] === item.id;
@@ -3417,7 +3508,7 @@ export default function HubScreen({
                         );
                       })}
 
-                      {getSpecialNexusItemsInInventory().map(item => (
+                      {visibleNexusItems.map(item => (
                         <div key={item.id} style={{
                           padding: '8px 12px',
                           background: 'rgba(255,235,59,0.04)',
@@ -4006,18 +4097,35 @@ export default function HubScreen({
 
             {codexView === 'fusions' && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
-                {[...FUSION_MISSIONS, ...UNIVERSE_NARRATIVE_ARCS].map(entry => (
-                  <div key={entry.id} style={{ padding: '13px', border: '1px solid rgba(255,140,0,0.3)', background: 'rgba(255,140,0,0.06)', borderRadius: '5px' }}>
-                    <strong style={{ color: '#ff8c00', fontSize: '12px' }}>{entry.title[lang]}</strong>
-                    <div style={{ color: '#aaa', fontSize: '9px', margin: '5px 0' }}>{entry.universes.join(' / ')}</div>
-                    <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{entry.intro?.[lang] || entry.decor?.[lang]}</p>
-                    {entry.missions && entry.missions.map((mission, idx) => (
-                      <div key={`${entry.id}-mission-${idx}`} style={{ color: '#d8d8d8', fontSize: '9px', marginTop: '3px' }}>{idx + 1}. {mission[lang]}</div>
-                    ))}
-                    {entry.enemies && <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '6px' }}>{entry.enemies[lang]}</div>}
-                    <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px' }}>{entry.reward?.[lang] || entry.item?.[lang]}</div>
-                  </div>
-                ))}
+                {[...FUSION_MISSIONS, ...UNIVERSE_NARRATIVE_ARCS].map(entry => {
+                  const rewardId = entry.itemId;
+                  const rewardOwned = rewardId ? inventory.includes(rewardId) : false;
+                  const unlockClears = entry.unlockClears || 0;
+                  const unlocked = completedStages.length >= unlockClears;
+                  return (
+                    <div key={entry.id} style={{ padding: '13px', border: '1px solid rgba(255,140,0,0.3)', background: 'rgba(255,140,0,0.06)', borderRadius: '5px' }}>
+                      <strong style={{ color: '#ff8c00', fontSize: '12px' }}>{entry.title[lang]}</strong>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', margin: '6px 0' }}>
+                        <span style={{ color: '#fff', fontSize: '9px', border: '1px solid rgba(255,255,255,0.12)', padding: '2px 5px' }}>{entry.mode || (lang === 'fr' ? 'Arc univers' : 'Universe arc')}</span>
+                        <span style={{ color: unlocked ? '#2ecc71' : '#ffea00', fontSize: '9px', border: '1px solid rgba(255,255,255,0.12)', padding: '2px 5px' }}>
+                          {unlocked ? (lang === 'fr' ? 'Disponible' : 'Available') : `${completedStages.length}/${unlockClears}`}
+                        </span>
+                        {rewardId && (
+                          <span style={{ color: rewardOwned ? '#2ecc71' : '#aaa', fontSize: '9px', border: '1px solid rgba(255,255,255,0.12)', padding: '2px 5px' }}>
+                            {rewardOwned ? (lang === 'fr' ? 'Recompense obtenue' : 'Reward owned') : (lang === 'fr' ? 'Recompense a gagner' : 'Reward pending')}
+                          </span>
+                        )}
+                      </div>
+                      <div style={{ color: '#aaa', fontSize: '9px', margin: '5px 0' }}>{entry.universes.join(' / ')}</div>
+                      <p style={{ color: '#ccc', fontSize: '10px', lineHeight: 1.4 }}>{entry.intro?.[lang] || entry.decor?.[lang]}</p>
+                      {entry.missions && entry.missions.map((mission, idx) => (
+                        <div key={`${entry.id}-mission-${idx}`} style={{ color: '#d8d8d8', fontSize: '9px', marginTop: '3px' }}>{idx + 1}. {mission[lang]}</div>
+                      ))}
+                      {entry.enemies && <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '6px' }}>{entry.enemies[lang]}</div>}
+                      <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px' }}>{entry.reward?.[lang] || entry.item?.[lang]}</div>
+                    </div>
+                  );
+                })}
               </div>
             )}
 

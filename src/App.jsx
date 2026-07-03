@@ -25,6 +25,8 @@ const DEFAULT_SAVE = {
   completedStages: [],
   heroTalents: {},
   heroSkins: {},
+  portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
+  publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
   inventory: ['cog_armor', 'green_herb', 'hev_battery'],
   equippedGear: {
     [PLAYER_HERO_ID]: null,
@@ -87,6 +89,8 @@ const normalizeSavePayload = (save = {}) => {
       gear: Array.isArray(merged.disabledAssets?.gear) ? merged.disabledAssets.gear : [],
       stages: Array.isArray(merged.disabledAssets?.stages) ? merged.disabledAssets.stages : []
     },
+    portalStats: { ...DEFAULT_SAVE.portalStats, ...(merged.portalStats || {}), history: (merged.portalStats?.history || []).slice(0, 20) },
+    publicProfile: { ...DEFAULT_SAVE.publicProfile, ...(merged.publicProfile || {}) },
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
     equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
   };
@@ -234,6 +238,8 @@ function App() {
   const [heroSkins, setHeroSkins] = useState(initialSave.heroSkins);
   const [hiddenUniverses, setHiddenUniverses] = useState(initialSave.hiddenUniverses);
   const [disabledAssets, setDisabledAssets] = useState(initialSave.disabledAssets);
+  const [portalStats, setPortalStats] = useState(initialSave.portalStats);
+  const [publicProfile, setPublicProfile] = useState(initialSave.publicProfile);
 
   // Inventory & Equipment
   const [inventory, setInventory] = useState(initialSave.inventory);
@@ -267,6 +273,8 @@ function App() {
     heroSkins,
     hiddenUniverses,
     disabledAssets,
+    portalStats,
+    publicProfile,
     inventory,
     equippedGear,
     equippedEventItems
@@ -293,7 +301,7 @@ function App() {
     }, 1200);
 
     return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, inventory, equippedGear, equippedEventItems, account]);
+  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, inventory, equippedGear, equippedEventItems, account]);
 
   // Play ambient music
   useEffect(() => {
@@ -391,6 +399,8 @@ function App() {
     setHeroSkins(merged.heroSkins || {});
     setHiddenUniverses(merged.hiddenUniverses || []);
     setDisabledAssets(merged.disabledAssets || DEFAULT_SAVE.disabledAssets);
+    setPortalStats(merged.portalStats || DEFAULT_SAVE.portalStats);
+    setPublicProfile(merged.publicProfile || DEFAULT_SAVE.publicProfile);
     setInventory(merged.inventory);
     setEquippedGear(merged.equippedGear);
     setEquippedEventItems(merged.equippedEventItems);
@@ -710,6 +720,8 @@ function App() {
         <HubScreen
           lang={lang}
           playerProfile={playerProfile}
+          publicProfile={publicProfile}
+          setPublicProfile={setPublicProfile}
           gold={gold}
           setGold={setGold}
           breachShards={breachShards}
@@ -785,6 +797,8 @@ function App() {
           playerProfile={playerProfile}
           breachShards={breachShards}
           setBreachShards={setBreachShards}
+          portalStats={portalStats}
+          setPortalStats={setPortalStats}
           unlockedHeroes={unlockedHeroes}
           setUnlockedHeroes={setUnlockedHeroes}
           hiddenUniverses={hiddenUniverses}

@@ -7,7 +7,7 @@ import { LORE_DB } from '../game/lore';
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { EXPANDED_FACTION_UNIVERSES } from '../game/expandedUniverses';
 
-export default function PortalScreen({ lang, breachShards, setBreachShards, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], disabledAssets = {}, onBack }) {
+export default function PortalScreen({ lang, breachShards, setBreachShards, portalStats, setPortalStats, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], disabledAssets = {}, onBack }) {
   const [summoning, setSummoning] = useState(false);
   const [summonedHero, setSummonedHero] = useState(null);
   const [summonedBatch, setSummonedBatch] = useState(null);
@@ -56,6 +56,31 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
   const activeBackdrop = getOpenAiBackdropSrc(activeBannerData.universe, activeBannerData.mode);
+  const pityLimit = 6;
+  const duplicateStreak = portalStats?.duplicateStreak || 0;
+  const pityReady = duplicateStreak >= pityLimit;
+
+  const pushPortalHistory = (entries) => {
+    const normalized = entries.map(entry => ({
+      heroId: entry.hero.id,
+      name: entry.hero.name,
+      universe: entry.hero.universe,
+      banner: activeBannerData.id,
+      duplicate: entry.wasDuplicate,
+      at: new Date().toISOString()
+    }));
+    const lastEntry = normalized[normalized.length - 1];
+    const finalDuplicateStreak = normalized.reduce(
+      (streak, entry) => entry.duplicate ? streak + 1 : 0,
+      duplicateStreak
+    );
+    setPortalStats(prev => ({
+      pulls: (prev?.pulls || 0) + normalized.length,
+      duplicateStreak: finalDuplicateStreak,
+      lastPull: lastEntry,
+      history: [...normalized.reverse(), ...(prev?.history || [])].slice(0, 20)
+    }));
+  };
 
   const pickHero = (ownedIds, options = {}) => {
     const banner = activeBannerData;
@@ -72,6 +97,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
     }
 
     const lockedInPool = targetPool.filter(hero => !ownedIds.includes(hero.id));
+    if (options.forceNew && lockedInPool.length > 0) {
+      return lockedInPool[Math.floor(Math.random() * lockedInPool.length)];
+    }
     return lockedInPool.length > 0
       ? lockedInPool[Math.floor(Math.random() * lockedInPool.length)]
       : targetPool[Math.floor(Math.random() * targetPool.length)];
@@ -90,7 +118,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
     sound.playSfx('portal');
 
     setTimeout(() => {
-      const hero = pickHero(unlockedHeroes);
+      const hero = pickHero(unlockedHeroes, { forceNew: pityReady });
       const wasDuplicate = unlockedHeroes.includes(hero.id);
 
       setSummonedHero(hero);
@@ -107,6 +135,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
         setBreachShards(prev => prev + 25);
         sound.playSfx('coin');
       }
+      pushPortalHistory([{ hero, wasDuplicate }]);
     }, 2500);
   };
 
@@ -129,7 +158,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
       let shardsReturned = 0;
 
       for (let i = 0; i < 10; i++) {
-        const hero = pickHero(newUnlocked, { forceBanner: i === 0 });
+        const hero = pickHero(newUnlocked, { forceBanner: i === 0, forceNew: pityReady && i === 0 });
         const wasDuplicate = newUnlocked.includes(hero.id);
         batch.push({ hero, wasDuplicate });
 
@@ -147,6 +176,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
       }
 
       setSummonedBatch(batch);
+      pushPortalHistory(batch);
       setSummoning(false);
       setShowCard(true);
       sound.playSfx('levelup');
@@ -159,6 +189,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
   const bannerRateLine = activeBannerData.id === 'multi'
     ? (lang === 'fr' ? 'Tous les heros ont le meme poids de faille.' : 'All heroes share the same rift weight.')
     : (lang === 'fr' ? `${focusPercent}% de chance de viser ce booster. Invocation x10: premiere carte focus garantie.` : `${focusPercent}% chance to target this booster. x10 summon: first card guaranteed focus.`);
+  const pityLine = pityReady
+    ? (lang === 'fr' ? 'Garantie Nexus active: le prochain tirage vise un heros manquant.' : 'Nexus guarantee active: next pull targets a missing hero.')
+    : (lang === 'fr' ? `Garantie Nexus dans ${pityLimit - duplicateStreak} doublons.` : `Nexus guarantee in ${pityLimit - duplicateStreak} duplicates.`);
   const portalBackground = activeBackdrop
     ? `linear-gradient(180deg, rgba(4,2,10,0.55), rgba(4,2,10,0.92)), url(${activeBackdrop})`
     : `radial-gradient(circle, ${activeBannerData.color}22 0%, #050209 72%)`;
@@ -248,6 +281,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
             <span>{activeBannerData.id === 'multi' ? 'FULL POOL' : `${focusPercent}% FOCUS`}</span>
           </div>
           <div className="portal-focus-rate">{bannerRateLine}</div>
+          <div className="portal-focus-rate" style={{ marginTop: '6px', color: pityReady ? '#2ecc71' : '#ffea00' }}>
+            {pityLine}
+          </div>
         </div>
 
         {/* Portal Swirl Animation / Card Reveal */}
@@ -457,6 +493,32 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
           </>
         )}
       </div>
+
+      {(portalStats?.history || []).length > 0 && (
+        <div className="portal-focus-panel" style={{ '--portal-color': activeBannerData.color, marginTop: '18px', maxWidth: '1060px', width: '100%', gridTemplateColumns: '1fr' }}>
+          <div className="portal-focus-info">
+            <div className="portal-focus-kicker">
+              {lang === 'fr' ? 'Historique de faille' : 'Rift history'} / {portalStats?.pulls || 0} {lang === 'fr' ? 'tirages' : 'pulls'}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '8px', marginTop: '10px' }}>
+              {(portalStats?.history || []).slice(0, 8).map((entry, idx) => (
+                <div key={`${entry.heroId}-${entry.at}-${idx}`} style={{
+                  padding: '8px',
+                  border: `1px solid ${entry.duplicate ? 'rgba(255,234,0,0.35)' : 'rgba(46,204,113,0.35)'}`,
+                  background: entry.duplicate ? 'rgba(255,234,0,0.06)' : 'rgba(46,204,113,0.06)',
+                  borderRadius: '4px'
+                }}>
+                  <strong style={{ display: 'block', color: '#fff', fontSize: '11px' }}>{entry.name}</strong>
+                  <span style={{ display: 'block', color: '#aaa', fontSize: '9px', marginTop: '3px' }}>{entry.universe} / {entry.banner}</span>
+                  <span style={{ display: 'block', color: entry.duplicate ? '#ffea00' : '#2ecc71', fontSize: '9px', marginTop: '3px' }}>
+                    {entry.duplicate ? (lang === 'fr' ? 'Doublon converti' : 'Duplicate converted') : (lang === 'fr' ? 'Nouvelle recrue' : 'New recruit')}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
