@@ -20,6 +20,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const nextBattleItemDropRef = useRef(520);
   const keysPressed = useRef({});
   const lastAnomalyWaveRef = useRef(-1);
+  const bootClearedRef = useRef(false);
   
   const [activeHeroId, setActiveHeroId] = useState(activeTeam[0]);
   const [teamState, setTeamState] = useState([]);
@@ -32,6 +33,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [battleAnomaly, setBattleAnomaly] = useState(null);
   const [battlePickups, setBattlePickups] = useState([]);
   const [battleItemLog, setBattleItemLog] = useState(null);
+  const [combatBooting, setCombatBooting] = useState(true);
+  const [combatRuntimeError, setCombatRuntimeError] = useState(null);
   
   const [activeSynergies, setActiveSynergies] = useState([]);
   const applySkin = (hero) => {
@@ -412,6 +415,17 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   useEffect(() => {
+    setCombatBooting(true);
+    setCombatRuntimeError(null);
+    setBattleCompleted(false);
+    setBattleResult(null);
+    setBattleAnomaly(null);
+    setBossState(null);
+    setTeamState([]);
+    setEventItemUsed(false);
+    keysPressed.current = {};
+    lastAnomalyWaveRef.current = -1;
+    bootClearedRef.current = false;
     sound.playBgm('battle');
 
     const enemies = getEnemiesData();
@@ -440,6 +454,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
     const particles = new ParticleSystem();
     const canvas = canvasRef.current;
+    if (!canvas) {
+      setCombatRuntimeError(lang === 'fr'
+        ? 'Canvas de combat indisponible. Retourne au hub puis relance la breche.'
+        : 'Combat canvas unavailable. Return to the hub and launch the breach again.');
+      return undefined;
+    }
     const width = canvas.width;
     const height = canvas.height;
 
@@ -464,11 +484,19 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       engineRef.current = new EngineTactics(width, height, squadHeroes, enemies, particles, (type) => sound.playSfx(type), handleBattleComplete);
       engineRef.current.isFinalBoss = (stage.id === 38);
     }
+    if (!engineRef.current) {
+      setCombatRuntimeError(lang === 'fr'
+        ? `Mode de combat non reconnu: ${stage.mode}.`
+        : `Unknown combat mode: ${stage.mode}.`);
+      sound.stopBgm();
+      return undefined;
+    }
 
     battleItemPoolRef.current = getBattleItemPoolForStage(stage);
     nextBattleItemDropRef.current = stage.mode === 'Tactics' ? 999999 : 520;
     syncBattlePickups(createStagePickups(stage));
     setBattleItemLog(null);
+    sound.playSfx('portal');
 
     const handleKeyDown = (e) => {
       keysPressed.current[e.key] = true;
@@ -497,92 +525,108 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     let frameId;
 
     const tick = () => {
-      const ctx = canvas.getContext('2d');
-      const usingOpenAiBackdrop = drawUniverseBackground(ctx, stage.universe, width, height, stage.mode);
-
-      // Cyber grid lines
-      if (!usingOpenAiBackdrop) {
-        ctx.strokeStyle = 'rgba(57, 197, 187, 0.05)';
-        ctx.lineWidth = 1;
-        for (let x = 0; x < width; x += 40) {
-          ctx.beginPath();
-          ctx.moveTo(x, 0); ctx.lineTo(x, height);
-          ctx.stroke();
+      try {
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          throw new Error('2D context unavailable');
         }
-        for (let y = 0; y < height; y += 40) {
-          ctx.beginPath();
-          ctx.moveTo(0, y); ctx.lineTo(width, y);
-          ctx.stroke();
+        const usingOpenAiBackdrop = drawUniverseBackground(ctx, stage.universe, width, height, stage.mode);
+        if (!bootClearedRef.current) {
+          bootClearedRef.current = true;
+          setCombatBooting(false);
         }
-      }
 
-      const engine = engineRef.current;
-      if (engine) {
-        engine.autoBattle = autoBattleRef.current;
-        const loops = speedMultiplierRef.current;
-        for (let l = 0; l < loops; l++) {
-          engine.update(keysPressed.current);
-        }
-        particles.update();
-
-        engine.draw(ctx, animTime);
-        battlePickupsRef.current.forEach(item => drawBattleItemPickup(ctx, item, animTime));
-        checkBattleItemPickupCollision(engine);
-        if (stage.mode !== 'Tactics' && animTime > nextBattleItemDropRef.current) {
-          spawnBattleItemDrop(engine, animTime);
-          nextBattleItemDropRef.current = animTime + (stage.mode === 'Smash' ? 540 : 780);
-        }
-        particles.draw(ctx);
-        drawSynergyOverlay(ctx, activeSynergies, width, height, animTime);
-
-        const anomalyRate = stage.isSurvival ? 420 : 720;
-        const anomalyWave = Math.floor(animTime / anomalyRate);
-        if (animTime > 180 && anomalyWave !== lastAnomalyWaveRef.current && animTime % anomalyRate < 2) {
-          lastAnomalyWaveRef.current = anomalyWave;
-          const anomaly = BATTLE_ANOMALIES[(stage.id + anomalyWave) % BATTLE_ANOMALIES.length];
-          setBattleAnomaly(anomaly);
-          window.setTimeout(() => setBattleAnomaly(null), 3600);
-
-          if (anomaly.id === 'cache') {
-            engine.heroes.forEach(hero => {
-              if (hero.currentHp > 0 && typeof hero.specialCharge === 'number') {
-                hero.specialCharge = Math.min(100, hero.specialCharge + 25);
-              }
-            });
-          } else if (anomaly.id === 'rift_burn') {
-            const boss = engine.enemies.find(enemy => enemy.isBoss && enemy.currentHp > 0) || engine.enemies.find(enemy => enemy.currentHp > 0);
-            if (boss) {
-              boss.currentHp = Math.max(1, boss.currentHp - Math.max(20, Math.round((boss.maxHp || boss.currentHp) * 0.04)));
-              particles.add(width * 0.5, height * 0.26, 0, -1, '#ff4500', 3, 55, 'text', 'RIFT BURN');
-            }
-          } else if (anomaly.id === 'signal') {
-            engine.heroes.forEach(hero => {
-              if (hero.currentHp > 0) {
-                hero.currentHp = Math.min(hero.stats.hp, hero.currentHp + Math.max(8, Math.round(hero.stats.hp * 0.05)));
-              }
-            });
+        // Cyber grid lines
+        if (!usingOpenAiBackdrop) {
+          ctx.strokeStyle = 'rgba(57, 197, 187, 0.05)';
+          ctx.lineWidth = 1;
+          for (let x = 0; x < width; x += 40) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0); ctx.lineTo(x, height);
+            ctx.stroke();
+          }
+          for (let y = 0; y < height; y += 40) {
+            ctx.beginPath();
+            ctx.moveTo(0, y); ctx.lineTo(width, y);
+            ctx.stroke();
           }
         }
 
-        setTeamState([...engine.heroes]);
-        if (engine.enemies.length > 0) {
-          // Find active boss/worldBoss
-          const boss = engine.enemies.find(e => e.isBoss && e.currentHp > 0);
-          if (boss) setBossState({ ...boss });
+        const engine = engineRef.current;
+        if (engine) {
+          engine.autoBattle = autoBattleRef.current;
+          const loops = speedMultiplierRef.current;
+          for (let l = 0; l < loops; l++) {
+            engine.update(keysPressed.current);
+          }
+          particles.update();
+
+          engine.draw(ctx, animTime);
+          battlePickupsRef.current.forEach(item => drawBattleItemPickup(ctx, item, animTime));
+          checkBattleItemPickupCollision(engine);
+          if (stage.mode !== 'Tactics' && animTime > nextBattleItemDropRef.current) {
+            spawnBattleItemDrop(engine, animTime);
+            nextBattleItemDropRef.current = animTime + (stage.mode === 'Smash' ? 540 : 780);
+          }
+          particles.draw(ctx);
+          drawSynergyOverlay(ctx, activeSynergies, width, height, animTime);
+
+          const anomalyRate = stage.isSurvival ? 420 : 720;
+          const anomalyWave = Math.floor(animTime / anomalyRate);
+          if (animTime > 180 && anomalyWave !== lastAnomalyWaveRef.current && animTime % anomalyRate < 2) {
+            lastAnomalyWaveRef.current = anomalyWave;
+            const anomaly = BATTLE_ANOMALIES[(stage.id + anomalyWave) % BATTLE_ANOMALIES.length];
+            setBattleAnomaly(anomaly);
+            window.setTimeout(() => setBattleAnomaly(null), 3600);
+
+            if (anomaly.id === 'cache') {
+              engine.heroes.forEach(hero => {
+                if (hero.currentHp > 0 && typeof hero.specialCharge === 'number') {
+                  hero.specialCharge = Math.min(100, hero.specialCharge + 25);
+                }
+              });
+            } else if (anomaly.id === 'rift_burn') {
+              const boss = engine.enemies.find(enemy => enemy.isBoss && enemy.currentHp > 0) || engine.enemies.find(enemy => enemy.currentHp > 0);
+              if (boss) {
+                boss.currentHp = Math.max(1, boss.currentHp - Math.max(20, Math.round((boss.maxHp || boss.currentHp) * 0.04)));
+                particles.add(width * 0.5, height * 0.26, 0, -1, '#ff4500', 3, 55, 'text', 'RIFT BURN');
+              }
+            } else if (anomaly.id === 'signal') {
+              engine.heroes.forEach(hero => {
+                if (hero.currentHp > 0) {
+                  hero.currentHp = Math.min(hero.stats.hp, hero.currentHp + Math.max(8, Math.round(hero.stats.hp * 0.05)));
+                }
+              });
+            }
+          }
+
+          setTeamState([...engine.heroes]);
+          if (engine.enemies.length > 0) {
+            // Find active boss/worldBoss
+            const boss = engine.enemies.find(e => e.isBoss && e.currentHp > 0);
+            if (boss) setBossState({ ...boss });
+          }
+
+          if (stage.mode === 'Smash') {
+            setActiveHeroId(engine.activeHeroId);
+          } else if (stage.mode === 'RPG') {
+            setActiveHeroId(engine.selectedHeroId);
+          } else if (stage.mode === 'Tactics') {
+            setActiveHeroId(engine.activeUnit?.id || '');
+            setSelectedAction(engine.selectedAction);
+          }
         }
 
-        if (stage.mode === 'Smash') {
-          setActiveHeroId(engine.activeHeroId);
-        } else if (stage.mode === 'RPG') {
-          setActiveHeroId(engine.selectedHeroId);
-        } else if (stage.mode === 'Tactics') {
-          setActiveHeroId(engine.activeUnit?.id || '');
-          setSelectedAction(engine.selectedAction);
-        }
+        animTime++;
+        frameId = requestAnimationFrame(tick);
+      } catch (error) {
+        console.error('Combat render loop failed', error);
+        setCombatBooting(false);
+        setCombatRuntimeError(lang === 'fr'
+          ? 'La simulation de breche a ete interrompue. Retourne au hub puis relance le combat.'
+          : 'The breach simulation was interrupted. Return to the hub and launch combat again.');
+        sound.stopBgm();
       }
-
-      animTime++;
-      frameId = requestAnimationFrame(tick);
     };
 
     tick();
@@ -700,10 +744,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const usedBattleItems = battlePickups.filter(item => item.used).length;
   const totalBattleItems = battlePickups.length;
   const battleObjective = stage.mode === 'Tactics'
-    ? (lang === 'fr' ? 'Objectif: capturer les cases ressources, puis neutraliser le boss local.' : 'Objective: capture resource tiles, then neutralize the local boss.')
+    ? (lang === 'fr' ? 'Directive A.R.C.A.: securiser les cases ressources, puis neutraliser le champion local.' : 'A.R.C.A. directive: secure resource tiles, then neutralize the local champion.')
     : stage.mode === 'Smash'
-      ? (lang === 'fr' ? 'Objectif: survivre aux vagues, ramasser les drops et casser le champion.' : 'Objective: survive waves, collect drops, and break the champion.')
-      : (lang === 'fr' ? 'Objectif: gerer ATB, declencher items et finir la breche.' : 'Objective: manage ATB, trigger items, and close the breach.');
+      ? (lang === 'fr' ? 'Directive A.R.C.A.: tenir les vagues, recuperer les artefacts et briser le champion.' : 'A.R.C.A. directive: hold the waves, recover artifacts, and break the champion.')
+      : (lang === 'fr' ? 'Directive A.R.C.A.: synchroniser l ATB, declencher les reliques et fermer la breche.' : 'A.R.C.A. directive: sync ATB, trigger relics, and close the breach.');
+  const modeSignal = stage.mode === 'Tactics'
+    ? (lang === 'fr' ? 'Tactique: les items deviennent des ressources de carte.' : 'Tactics: items behave as map resources.')
+    : stage.mode === 'Smash'
+      ? (lang === 'fr' ? 'Melee: les drops se ramassent dans l arene ou via le panneau.' : 'Melee: drops can be collected in-arena or from the panel.')
+      : (lang === 'fr' ? 'RPG: les reliques soutiennent le tempo ATB.' : 'RPG: relics support ATB tempo.');
 
   return (
     <div className="battle-screen" style={{
@@ -732,7 +781,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             BREACH ZONE: {stage.name}
           </h2>
           <span style={{ fontSize: '11px', color: '#aaa' }}>
-            Universe: {stage.sourceUniverses?.join(' / ') || stage.universe} ({stage.mode.toUpperCase()})
+            {lang === 'fr' ? 'Univers' : 'Universe'}: {stage.sourceUniverses?.join(' / ') || stage.universe} ({stage.mode.toUpperCase()})
           </span>
           {stage.modifier && (
             <div style={{ fontSize: '10px', color: stage.modifier.color || '#ffeb3b', marginTop: '4px' }}>
@@ -827,11 +876,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         borderRadius: '5px',
         boxSizing: 'border-box'
       }}>
-        <div style={{ fontSize: '11px', color: '#d9f7f5', lineHeight: 1.35 }}>{battleObjective}</div>
-        <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
-          {lang === 'fr' ? 'Items' : 'Items'} {usedBattleItems}/{totalBattleItems}
+        <div style={{ fontSize: '11px', color: '#d9f7f5', lineHeight: 1.35 }}>
+          <strong style={{ color: '#39c5bb' }}>{stage.bossName || stage.universe}</strong>
+          {' - '}
+          {battleObjective}
+          <div style={{ marginTop: '3px', color: '#9fb9bd', fontSize: '10px' }}>{modeSignal}</div>
         </div>
-        <div style={{ fontSize: '10px', color: '#39c5bb' }}>{stage.mode}</div>
+        <div style={{ fontSize: '10px', color: '#ffeb3b', textAlign: 'center' }}>
+          {lang === 'fr' ? 'Artefacts' : 'Artifacts'} {usedBattleItems}/{totalBattleItems}
+        </div>
+        <div style={{ fontSize: '10px', color: '#39c5bb', textAlign: 'center' }}>
+          SFX {sound.muted ? 'OFF' : 'ON'} / {stage.mode}
+        </div>
       </div>
 
       {/* Canvas */}
@@ -842,7 +898,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         borderRadius: '8px',
         overflow: 'hidden',
         background: '#020005',
-        marginBottom: '15px'
+        marginBottom: '15px',
+        width: '100%',
+        maxWidth: '1280px'
       }}>
         <div className="crt-overlay" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none', zIndex: 5 }} />
 
@@ -853,6 +911,49 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           onClick={handleCanvasClick}
           style={{ display: 'block', width: '100%', height: 'auto', cursor: stage.mode === 'Tactics' ? 'crosshair' : 'default' }}
         />
+
+        {(combatBooting || combatRuntimeError) && !battleCompleted && (
+          <div style={{
+            position: 'absolute',
+            top: 0, left: 0, right: 0, bottom: 0,
+            zIndex: 9,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: combatRuntimeError ? 'rgba(2,0,5,0.92)' : 'rgba(2,0,5,0.62)',
+            padding: '18px',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              maxWidth: '520px',
+              padding: '14px 18px',
+              border: `1px solid ${combatRuntimeError ? '#e74c3c' : '#39c5bb'}`,
+              background: 'rgba(0,0,0,0.72)',
+              borderRadius: '6px',
+              boxShadow: combatRuntimeError ? '0 0 18px rgba(231,76,60,0.25)' : '0 0 18px rgba(57,197,187,0.25)'
+            }}>
+              <div style={{ color: combatRuntimeError ? '#e74c3c' : '#39c5bb', fontWeight: 'bold', fontSize: '13px', marginBottom: '8px' }}>
+                {combatRuntimeError
+                  ? (lang === 'fr' ? 'SIGNAL DE BRECHE INSTABLE' : 'UNSTABLE BREACH SIGNAL')
+                  : (lang === 'fr' ? 'SYNCHRONISATION DU COMBAT' : 'SYNCING COMBAT')}
+              </div>
+              <div style={{ color: '#ddd', fontSize: '11px', lineHeight: 1.45 }}>
+                {combatRuntimeError || (lang === 'fr'
+                  ? 'A.R.C.A. charge le decor, les signatures d escouade et les artefacts de terrain.'
+                  : 'A.R.C.A. is loading the scene, squad signatures, and field artifacts.')}
+              </div>
+              {combatRuntimeError && (
+                <button
+                  onClick={() => onBattleEnd('quit')}
+                  className="btn-retro"
+                  style={{ marginTop: '12px', borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '7px 14px' }}
+                >
+                  {lang === 'fr' ? 'RETOUR HUB' : 'RETURN HUB'}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
 
         {battleAnomaly && !battleCompleted && (
           <div style={{
@@ -1135,7 +1236,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                     onClick={() => {
                       if (engineRef.current) {
                         engineRef.current.endActiveTurn();
-                        sound.play('confirm');
+                        sound.playSfx('confirm');
                       }
                     }}
                     className="btn-retro"
@@ -1158,12 +1259,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
               {stage.mode === 'Smash' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
-                  Move with <strong>W/A/S/D</strong>. Press <strong>J/K/L/I</strong>, collect diamonds, or press <strong>O</strong> for the next stage item. Swap heroes with <strong>1/2/3</strong>.
+                  {lang === 'fr'
+                    ? <>Deplacement <strong>W/A/S/D</strong>. Capacites <strong>J/K/L/I</strong>. Artefact suivant <strong>O</strong>. Heros <strong>1/2/3</strong>.</>
+                    : <>Move with <strong>W/A/S/D</strong>. Abilities <strong>J/K/L/I</strong>. Next artifact <strong>O</strong>. Heroes <strong>1/2/3</strong>.</>}
                 </div>
               )}
               {stage.mode === 'Tactics' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
-                  Click highighted <span style={{ color: '#2ecc71' }}>green</span> cells to Move, select skill, then click target in <span style={{ color: '#e74c3c' }}>red</span> cells. Stage items act like one-use map resources.
+                  {lang === 'fr'
+                    ? <>Cases <span style={{ color: '#2ecc71' }}>vertes</span>: mouvement. Cases <span style={{ color: '#e74c3c' }}>rouges</span>: cible. Les artefacts sont des ressources a usage unique.</>
+                    : <>Click <span style={{ color: '#2ecc71' }}>green</span> cells to move, then <span style={{ color: '#e74c3c' }}>red</span> cells to strike. Artifacts are one-use map resources.</>}
                 </div>
               )}
             </>
