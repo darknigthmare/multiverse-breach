@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T18:56:12.668Z",
+  "generatedAt": "2026-07-03T19:53:33.573Z",
   "sheet": {
     "width": 1024,
     "height": 1024,
@@ -17,15 +17,15 @@
     "heroes": 795,
     "enemies": 804,
     "bosses": 799,
-    "items": 18,
-    "total": 2416
+    "items": 27,
+    "total": 2425
   },
   "availableCounts": {
     "heroes": 292,
-    "enemies": 13,
-    "bosses": 59,
-    "items": 18,
-    "total": 382
+    "enemies": 18,
+    "bosses": 61,
+    "items": 27,
+    "total": 398
   },
   "entries": [
     {
@@ -16665,8 +16665,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -16685,8 +16685,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -16705,8 +16705,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -16725,8 +16725,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -16745,8 +16745,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -16805,8 +16805,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -16825,8 +16825,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -48092,6 +48092,57 @@
     },
     {
       "kind": "item",
+      "id": "steel_pipe",
+      "name": "South Vale Steel Pipe",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/steel-pipe.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "pocket_radio",
+      "name": "Static Pocket Radio",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/pocket-radio.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "flauros",
+      "name": "Flauros Seal Fragment",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/flauros.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
       "id": "evt_halo_warthog",
       "name": "M12 Warthog LZ Beacon",
       "universe": "Halo",
@@ -48113,6 +48164,23 @@
       "name": "Anti-Viral Vaccine Case",
       "universe": "Resident Evil",
       "output": "/sprites/generated/items/resident-evil/evt-re-cure.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "evt_sh_fog",
+      "name": "Flauros Otherworld Seal",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/evt-sh-fog.png",
       "frame": {
         "width": 512,
         "height": 512,
@@ -48283,6 +48351,91 @@
       "name": "Raccoon City Lockdown",
       "universe": "Resident Evil",
       "output": "/sprites/generated/items/resident-evil/resident-evil-ultimate.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "silent_hill_pickup_1",
+      "name": "Static Radio",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/silent-hill-pickup-1.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "silent_hill_pickup_2",
+      "name": "Health Drink",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/silent-hill-pickup-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "silent_hill_pickup_3",
+      "name": "Marked South Vale Map",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/silent-hill-pickup-3.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "silent_hill_summon",
+      "name": "Harry Mason Echo",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/silent-hill-summon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "silent_hill_ultimate",
+      "name": "Otherworld Siren",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/items/silent-hill/silent-hill-ultimate.png",
       "frame": {
         "width": 512,
         "height": 512,
