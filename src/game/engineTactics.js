@@ -186,9 +186,13 @@ export class EngineTactics {
     const unit = this.activeUnit;
     // Glitched status halves movement range to 1 cell
     const range = unit.statusEffects?.glitched > 0 ? 1 : 2;
+    this.movementRange = this.getReachableCells(unit, range);
+  }
+
+  getReachableCells(unit, range) {
     const visited = new Set([`${unit.gridX},${unit.gridY}`]);
     const queue = [{ x: unit.gridX, y: unit.gridY, dist: 0 }];
-    this.movementRange = [{ x: unit.gridX, y: unit.gridY }];
+    const cells = [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
 
     while (queue.length > 0) {
       const cell = queue.shift();
@@ -206,10 +210,12 @@ export class EngineTactics {
 
         visited.add(key);
         const reachable = { x: next.x, y: next.y, dist: cell.dist + 1 };
-        this.movementRange.push({ x: reachable.x, y: reachable.y });
+        cells.push({ x: reachable.x, y: reachable.y, cost: reachable.dist });
         queue.push(reachable);
       });
     }
+
+    return cells;
   }
 
   calculateAttackRange() {
@@ -228,11 +234,107 @@ export class EngineTactics {
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const dist = Math.abs(unit.gridX - c) + Math.abs(unit.gridY - r);
-        if (dist <= range) {
+        if (dist <= range && this.hasLineOfSight(unit, { gridX: c, gridY: r }, this.selectedAction)) {
           this.attackRange.push({ x: c, y: r });
         }
       }
     }
+  }
+
+  getActionRange(actionType, unit = this.activeUnit) {
+    if (!unit || actionType === 'defense') return 0;
+    if (actionType === 'secondary') return 3;
+    if (actionType === 'special') return 5;
+    return unit.isBoss ? 2 : 1;
+  }
+
+  getActionBaseDamage(attacker, actionType) {
+    if (!attacker) return 0;
+    if (actionType === 'secondary') return attacker.stats?.atk * attacker.secondary?.dmg;
+    if (actionType === 'special') return attacker.stats?.atk * attacker.special?.dmg;
+    return attacker.stats?.atk * (attacker.simple?.dmg || 1) || attacker.atk || 0;
+  }
+
+  hasLineOfSight(from, to, actionType = 'simple') {
+    if (!from || !to) return false;
+    const sx = from.gridX;
+    const sy = from.gridY;
+    const tx = to.gridX;
+    const ty = to.gridY;
+    if (sx === tx && sy === ty) return true;
+
+    const dist = Math.abs(sx - tx) + Math.abs(sy - ty);
+    if (dist <= 1) return true;
+
+    const steps = Math.max(Math.abs(tx - sx), Math.abs(ty - sy)) * 2;
+    const checked = new Set();
+
+    for (let i = 1; i < steps; i++) {
+      const t = i / steps;
+      const cx = Math.round(sx + (tx - sx) * t);
+      const cy = Math.round(sy + (ty - sy) * t);
+      const key = `${cx},${cy}`;
+      if (checked.has(key)) continue;
+      checked.add(key);
+      if ((cx === sx && cy === sy) || (cx === tx && cy === ty)) continue;
+
+      const blockingObstacle = this.obstacles.some(o => o.hp > 0 && o.gridX === cx && o.gridY === cy);
+      if (blockingObstacle) return false;
+    }
+
+    return true;
+  }
+
+  getCoverReduction(attacker, defender, actionType = 'simple') {
+    if (!attacker || !defender || defender.type === 'barrier' || defender.type === 'barrel') return 0;
+    if (attacker.gridX === undefined || defender.gridX === undefined) return 0;
+    if (actionType === 'special') return 0.15;
+
+    const dist = Math.abs(attacker.gridX - defender.gridX) + Math.abs(attacker.gridY - defender.gridY);
+    if (dist <= 1) return 0;
+
+    const adjacentBarriers = this.obstacles.filter(o => {
+      if (o.hp <= 0 || o.type !== 'barrier') return false;
+      const barrierDist = Math.abs(o.gridX - defender.gridX) + Math.abs(o.gridY - defender.gridY);
+      if (barrierDist !== 1) return false;
+      const attackerToBarrier = Math.abs(attacker.gridX - o.gridX) + Math.abs(attacker.gridY - o.gridY);
+      return attackerToBarrier < dist || o.gridX === defender.gridX || o.gridY === defender.gridY;
+    });
+
+    return adjacentBarriers.length > 0 ? 0.35 : 0;
+  }
+
+  getDamagePreview(attacker, defender, actionType = 'simple') {
+    let damage = this.getActionBaseDamage(attacker, actionType);
+    if (!damage) return { damage: 0, cover: 0, defense: 0 };
+    if (defender?.state === 'defense' && defender.defense) {
+      damage *= (1 - defender.defense.reduce);
+    }
+    const cover = this.getCoverReduction(attacker, defender, actionType);
+    damage *= (1 - cover);
+    const defense = defender?.stats?.def ? Math.min(0.3, defender.stats.def / 100) : 0;
+    damage *= (1 - defense);
+    return { damage: Math.max(1, Math.round(damage)), cover, defense };
+  }
+
+  getEnemyThreatMap() {
+    const threatMap = new Map();
+    this.enemies.forEach(enemy => {
+      if (enemy.currentHp <= 0) return;
+      const range = this.getActionRange('enemy', enemy);
+      for (let r = 0; r < this.rows; r++) {
+        for (let c = 0; c < this.cols; c++) {
+          const dist = Math.abs(enemy.gridX - c) + Math.abs(enemy.gridY - r);
+          if (dist <= range && this.hasLineOfSight(enemy, { gridX: c, gridY: r }, 'enemy')) {
+            const key = `${c},${r}`;
+            const current = threatMap.get(key) || { x: c, y: r, count: 0 };
+            current.count += 1;
+            threatMap.set(key, current);
+          }
+        }
+      }
+    });
+    return threatMap;
   }
 
   isInsideGrid(c, r) {
@@ -304,7 +406,7 @@ export class EngineTactics {
             if (hero.id === 'leon') status = 'infected';
             if (hero.id === 'neo') status = 'glitched';
 
-            this.applyDamage(hero, defender, hero.stats.atk * hero.simple.dmg, status);
+            this.applyDamage(hero, defender, hero.stats.atk * hero.simple.dmg, status, { actionType: 'simple' });
             hero.specialCharge = Math.min(100, hero.specialCharge + 15);
             this.endActiveTurn();
             return { handled: true, type: 'action', action: 'simple', target };
@@ -316,7 +418,7 @@ export class EngineTactics {
             hero.cooldown = hero.secondary.cd * 60;
             this.playSfx('shoot');
             
-            this.applyDamage(hero, defender, hero.stats.atk * hero.secondary.dmg);
+            this.applyDamage(hero, defender, hero.stats.atk * hero.secondary.dmg, null, { actionType: 'secondary' });
             hero.specialCharge = Math.min(100, hero.specialCharge + 25);
             this.endActiveTurn();
             return { handled: true, type: 'action', action: 'secondary', target };
@@ -334,7 +436,7 @@ export class EngineTactics {
               0, 0, hero.primaryColor, 120, 30, 'glitch'
             );
 
-            this.applyDamage(hero, defender, hero.stats.atk * hero.special.dmg);
+            this.applyDamage(hero, defender, hero.stats.atk * hero.special.dmg, null, { actionType: 'special' });
             this.endActiveTurn();
             return { handled: true, type: 'action', action: 'special', target };
           }
@@ -385,19 +487,16 @@ export class EngineTactics {
     // Movement speed halved if glitched
     const maxMoveRange = enemy.statusEffects?.glitched > 0 ? 1 : 2;
 
-    for (let r = 0; r < this.rows; r++) {
-      for (let c = 0; c < this.cols; c++) {
-        const moveDist = Math.abs(enemy.gridX - c) + Math.abs(enemy.gridY - r);
-        if (moveDist <= maxMoveRange && !this.isCellOccupied(c, r, enemy)) {
-          const targetDist = Math.abs(closestHero.gridX - c) + Math.abs(closestHero.gridY - r);
-          if (targetDist < bestDist) {
-            bestDist = targetDist;
-            bestX = c;
-            bestY = r;
-          }
-        }
+    this.getReachableCells(enemy, maxMoveRange).forEach(cell => {
+      const targetDist = Math.abs(closestHero.gridX - cell.x) + Math.abs(closestHero.gridY - cell.y);
+      const hasShot = targetDist <= (enemy.isBoss ? 2 : 1) && this.hasLineOfSight({ ...enemy, gridX: cell.x, gridY: cell.y }, closestHero, 'enemy');
+      const score = targetDist - (hasShot ? 3 : 0);
+      if (score < bestDist) {
+        bestDist = score;
+        bestX = cell.x;
+        bestY = cell.y;
       }
-    }
+    });
 
     enemy.gridX = bestX;
     enemy.gridY = bestY;
@@ -407,7 +506,7 @@ export class EngineTactics {
     const rangeLimit = enemy.isBoss ? 2 : 1;
 
     setTimeout(() => {
-      if (attackDist <= rangeLimit && closestHero.currentHp > 0) {
+      if (attackDist <= rangeLimit && closestHero.currentHp > 0 && this.hasLineOfSight(enemy, closestHero, 'enemy')) {
         enemy.state = 'attack';
         enemy.stateTimer = 20;
         this.playSfx(enemy.weapon === 'gun' || enemy.weapon === 'laser' ? 'shoot' : 'slash');
@@ -418,7 +517,7 @@ export class EngineTactics {
         if (enemy.name.includes('Smith')) status = 'glitched';
         if (enemy.name.includes('Deathclaw') || enemy.name.includes('Cyberdemon')) status = 'radiated';
 
-        this.applyDamage(enemy, closestHero, enemy.atk, status);
+        this.applyDamage(enemy, closestHero, enemy.atk, status, { actionType: 'enemy' });
       }
       this.endActiveTurn();
     }, 400);
@@ -518,24 +617,24 @@ export class EngineTactics {
 
         if (chosenAction === 'simple') {
           this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
-          this.applyDamage(hero, target, hero.stats.atk * hero.simple.dmg, status);
+          this.applyDamage(hero, target, hero.stats.atk * hero.simple.dmg, status, { actionType: 'simple' });
           hero.specialCharge = Math.min(100, hero.specialCharge + 15);
         } else if (chosenAction === 'secondary') {
           hero.cooldown = hero.secondary.cd * 60;
           this.playSfx('shoot');
-          this.applyDamage(hero, target, hero.stats.atk * hero.secondary.dmg, status);
+          this.applyDamage(hero, target, hero.stats.atk * hero.secondary.dmg, status, { actionType: 'secondary' });
           hero.specialCharge = Math.min(100, hero.specialCharge + 25);
         } else if (chosenAction === 'special') {
           hero.specialCharge = 0;
           this.playSfx('special');
-          this.applyDamage(hero, target, hero.stats.atk * hero.special.dmg, status);
+          this.applyDamage(hero, target, hero.stats.atk * hero.special.dmg, status, { actionType: 'special' });
         }
       }
       this.endActiveTurn();
     }, 500);
   }
 
-  applyDamage(attacker, defender, baseDmg, statusEffect = null) {
+  applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
     if (defender.type === 'barrier' || defender.type === 'barrel') {
       // Destructible obstacle damage
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
@@ -555,9 +654,22 @@ export class EngineTactics {
       return;
     }
 
-    if (defender.state === 'defense') {
+    if (defender.state === 'defense' && defender.defense) {
       // Tech shield absorbs damage
       baseDmg *= (1 - defender.defense.reduce);
+    }
+
+    const coverReduction = options.ignoreCover ? 0 : this.getCoverReduction(attacker, defender, options.actionType || 'simple');
+    if (coverReduction > 0) {
+      baseDmg *= (1 - coverReduction);
+      const coverPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
+      const coverPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+      this.particles.add(coverPxX, coverPxY - 48, 0, -1, '#4fc3f7', 10, 42, 'text', `COVER -${Math.round(coverReduction * 100)}%`);
+    }
+
+    const defenseReduction = defender.stats?.def ? Math.min(0.3, defender.stats.def / 100) : 0;
+    if (defenseReduction > 0) {
+      baseDmg *= (1 - defenseReduction);
     }
 
     // Apply attacker talent modifications
@@ -639,7 +751,7 @@ export class EngineTactics {
     adjacent.forEach(unit => {
       const dist = Math.abs(unit.gridX - bgX) + Math.abs(unit.gridY - bgY);
       if (dist <= 1.5) { // orthog and diagonal
-        this.applyDamage({ gridX: bgX, gridY: bgY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#00ff00' }, unit, 100);
+        this.applyDamage({ gridX: bgX, gridY: bgY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#00ff00' }, unit, 100, null, { ignoreCover: true });
       }
     });
 
@@ -692,7 +804,7 @@ export class EngineTactics {
           if (e.currentHp > 0) {
             let status = null;
             if (effect === 'orbital_laser') status = 'glitched';
-            this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#f1c40f' }, e, dmg, status);
+            this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#f1c40f' }, e, dmg, status, { ignoreCover: true });
           }
         });
         break;
@@ -707,7 +819,7 @@ export class EngineTactics {
             e.state = 'hit';
             e.stateTimer = 180;
             e.gridX = Math.min(7, e.gridX + 2);
-            this.applyDamage({ gridX: 0, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#3498db' }, e, dmg);
+            this.applyDamage({ gridX: 0, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#3498db' }, e, dmg, null, { ignoreCover: true });
           }
         });
         break;
@@ -732,7 +844,7 @@ export class EngineTactics {
           const enemyDmg = effect === 'vampire_fury' ? 200 : 150;
           this.enemies.forEach(e => {
             if (e.currentHp > 0) {
-              this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#2ecc71' }, e, enemyDmg);
+              this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#2ecc71' }, e, enemyDmg, null, { ignoreCover: true });
             }
           });
         }
@@ -754,7 +866,7 @@ export class EngineTactics {
             const targetPxY = this.gridStartY + e.gridY * this.cellH + 10;
             this.particles.add(targetPxX, targetPxY - 15, 0, 0, '#00ff00', 8, 15, 'spark');
             if (effect === 'marker_insanity') {
-              this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#8e44ad' }, e, 120);
+              this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#8e44ad' }, e, 120, null, { ignoreCover: true });
             }
           }
         });
@@ -776,7 +888,7 @@ export class EngineTactics {
         this.enemies.forEach(e => {
           if (e.currentHp > 0 && e.statusEffects) {
             e.statusEffects.glitched = 360;
-            this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#00ff00' }, e, 100);
+            this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#00ff00' }, e, 100, null, { ignoreCover: true });
           }
         });
         break;
@@ -795,14 +907,14 @@ export class EngineTactics {
           strongest.state = 'hit';
           strongest.stateTimer = 300;
           const dmg = effect === 'trap_snap' ? 250 : 50;
-          this.applyDamage({ gridX: strongest.gridX - 1, gridY: strongest.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#00ff00' }, strongest, dmg);
+          this.applyDamage({ gridX: strongest.gridX - 1, gridY: strongest.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#00ff00' }, strongest, dmg, null, { ignoreCover: true });
         }
         break;
       }
       default: {
         this.enemies.forEach(e => {
           if (e.currentHp > 0) {
-            this.applyDamage({ gridX: e.gridX - 1, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#ffeb3b' }, e, 120);
+            this.applyDamage({ gridX: e.gridX - 1, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#ffeb3b' }, e, 120, null, { ignoreCover: true });
           }
         });
       }
@@ -928,6 +1040,17 @@ export class EngineTactics {
       }
     }
 
+    const threatMap = this.getEnemyThreatMap();
+    threatMap.forEach(cell => {
+      const tx = this.gridStartX + cell.x * this.cellW;
+      const ty = this.gridStartY + cell.y * this.cellH;
+      ctx.fillStyle = cell.count > 1 ? 'rgba(255, 92, 47, 0.24)' : 'rgba(255, 92, 47, 0.14)';
+      ctx.fillRect(tx + 2, ty + 2, this.cellW - 4, this.cellH - 4);
+      ctx.fillStyle = '#ff8a50';
+      ctx.font = '8px "Press Start 2P"';
+      ctx.fillText(cell.count > 1 ? `x${cell.count}` : '!', tx + this.cellW - 18, ty + 13);
+    });
+
     // 2. Draw Obstacles
     this.obstacles.forEach(o => {
       if (o.hp <= 0) return;
@@ -945,6 +1068,10 @@ export class EngineTactics {
         // draw a toxic nuclear symbol or band
         ctx.fillStyle = '#111';
         ctx.fillRect(ox + 6, oy + 18, this.cellW - 12, 8);
+      } else {
+        ctx.fillStyle = '#4fc3f7';
+        ctx.font = '8px "Press Start 2P"';
+        ctx.fillText('COV', ox + 14, oy + 27);
       }
 
       // Draw obstacle HP bar
@@ -964,6 +1091,11 @@ export class EngineTactics {
         const cy = this.gridStartY + cell.y * this.cellH;
         ctx.fillRect(cx, cy, this.cellW, this.cellH);
         ctx.strokeRect(cx, cy, this.cellW, this.cellH);
+        if (cell.cost > 0) {
+          ctx.fillStyle = '#b8ffd2';
+          ctx.font = '9px "Press Start 2P"';
+          ctx.fillText(`${cell.cost} AP`, cx + 12, cy + this.cellH - 10);
+        }
       });
     }
 
@@ -976,6 +1108,19 @@ export class EngineTactics {
         const cy = this.gridStartY + cell.y * this.cellH;
         ctx.fillRect(cx, cy, this.cellW, this.cellH);
         ctx.strokeRect(cx, cy, this.cellW, this.cellH);
+
+        const target = this.getUnitAtCell(cell.x, cell.y);
+        if (target && (target.type === 'enemy' || target.type === 'obstacle')) {
+          const preview = this.getDamagePreview(this.activeUnit, target.unit, this.selectedAction);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = '9px "Press Start 2P"';
+          ctx.fillText(`-${preview.damage}`, cx + 8, cy + this.cellH - 11);
+          if (preview.cover > 0) {
+            ctx.fillStyle = '#4fc3f7';
+            ctx.font = '7px "Press Start 2P"';
+            ctx.fillText('COVER', cx + 8, cy + 24);
+          }
+        }
       });
     }
 
@@ -992,6 +1137,18 @@ export class EngineTactics {
         const hpPct = e.currentHp / e.maxHp;
         ctx.fillStyle = '#e74c3c';
         ctx.fillRect(e.x - 15, e.y - 32, 30 * hpPct, 3);
+
+        const enemyRange = this.getActionRange('enemy', e);
+        const threatensHero = this.heroes.some(h => {
+          if (h.currentHp <= 0) return false;
+          const dist = Math.abs(e.gridX - h.gridX) + Math.abs(e.gridY - h.gridY);
+          return dist <= enemyRange && this.hasLineOfSight(e, h, 'enemy');
+        });
+        if (threatensHero) {
+          ctx.fillStyle = '#ff8a50';
+          ctx.font = '12px "Press Start 2P"';
+          ctx.fillText('!', e.x - 4, e.y - 42);
+        }
       }
     });
 
@@ -1017,17 +1174,24 @@ export class EngineTactics {
       }
     });
 
-    ctx.fillStyle = 'rgba(0,0,0,0.6)';
-    ctx.fillRect(this.width - 220, 10, 210, 35);
+    ctx.fillStyle = 'rgba(0,0,0,0.68)';
+    ctx.fillRect(this.width - 245, 10, 235, 55);
     ctx.strokeStyle = '#2980b9';
-    ctx.strokeRect(this.width - 220, 10, 210, 35);
+    ctx.strokeRect(this.width - 245, 10, 235, 55);
     
     ctx.fillStyle = '#fff';
     ctx.font = '8px "Press Start 2P"';
-    ctx.fillText('TURN ORDER:', this.width - 210, 22);
+    ctx.fillText('ACTIVE:', this.width - 235, 22);
 
-    let qStr = this.turnQueue.slice(0, 3).map(q => q.unit.name.split(' ')[0]).join(' > ');
+    const activeLabel = this.activeUnit ? this.activeUnit.name.split(' ')[0] : 'NONE';
+    ctx.fillStyle = this.activeUnitType === 'hero' ? '#2ecc71' : '#ff8a50';
+    ctx.fillText(activeLabel.toUpperCase().slice(0, 14), this.width - 170, 22);
+
+    ctx.fillStyle = '#fff';
+    ctx.fillText('NEXT:', this.width - 235, 40);
+
+    let qStr = this.turnQueue.slice(0, 4).map(q => `${q.type === 'hero' ? 'H' : 'E'}:${q.unit.name.split(' ')[0]}`).join(' > ');
     ctx.fillStyle = '#00ffff';
-    ctx.fillText(qStr || 'END', this.width - 210, 37);
+    ctx.fillText((qStr || 'END').slice(0, 32), this.width - 235, 56);
   }
 }

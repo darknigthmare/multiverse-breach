@@ -1332,8 +1332,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               {stage.mode === 'Tactics' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
                   {lang === 'fr'
-                    ? <>Cases <span style={{ color: '#2ecc71' }}>vertes</span>: mouvement. Cases <span style={{ color: '#e74c3c' }}>rouges</span>: cible. Les artefacts se declenchent en entrant sur leur case.</>
-                    : <>Click <span style={{ color: '#2ecc71' }}>green</span> cells to move, then <span style={{ color: '#e74c3c' }}>red</span> cells to strike. Artifacts trigger when a hero steps onto their tile.</>}
+                    ? <>Cases <span style={{ color: '#2ecc71' }}>vertes</span>: mouvement + cout AP. Cases <span style={{ color: '#e74c3c' }}>rouges</span>: ligne de vue et degats prevus. <span style={{ color: '#4fc3f7' }}>COVER</span> reduit les tirs.</>
+                    : <>Click <span style={{ color: '#2ecc71' }}>green</span> cells for AP movement, then <span style={{ color: '#e74c3c' }}>red</span> cells for line-of-sight strikes and damage preview. <span style={{ color: '#4fc3f7' }}>COVER</span> reduces shots.</>}
                 </div>
               )}
             </>
