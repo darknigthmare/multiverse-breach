@@ -711,7 +711,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const activeH = engine.getSelectedHero();
       engine.triggerAbility(activeH, type);
     } else if (stage.mode === 'Tactics') {
+      if (engine.activeUnitType !== 'hero' || engine.actionPhase === 'enemy_ai' || engine.actionPhase === 'end') return;
       engine.selectedAction = type;
+      if (engine.actionPhase === 'move') {
+        engine.actionPhase = 'action';
+        engine.movementRange = [];
+      }
       engine.calculateAttackRange();
       setSelectedAction(type);
     }
@@ -1332,8 +1337,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               {stage.mode === 'Tactics' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
                   {lang === 'fr'
-                    ? <>Cases <span style={{ color: '#2ecc71' }}>vertes</span>: mouvement + cout AP. Cases <span style={{ color: '#e74c3c' }}>rouges</span>: ligne de vue et degats prevus. <span style={{ color: '#4fc3f7' }}>COVER</span> reduit les tirs.</>
-                    : <>Click <span style={{ color: '#2ecc71' }}>green</span> cells for AP movement, then <span style={{ color: '#e74c3c' }}>red</span> cells for line-of-sight strikes and damage preview. <span style={{ color: '#4fc3f7' }}>COVER</span> reduces shots.</>}
+                    ? <>Bouge sur une case <span style={{ color: '#2ecc71' }}>verte</span> ou choisis directement une attaque pour rester en place. Cases <span style={{ color: '#e74c3c' }}>rouges</span>: ligne de vue et degats prevus. <span style={{ color: '#4fc3f7' }}>COVER</span> reduit les tirs.</>
+                    : <>Move on a <span style={{ color: '#2ecc71' }}>green</span> cell or pick an attack to hold position. <span style={{ color: '#e74c3c' }}>Red</span> cells show line-of-sight strikes and damage preview. <span style={{ color: '#4fc3f7' }}>COVER</span> reduces shots.</>}
                 </div>
               )}
             </>
