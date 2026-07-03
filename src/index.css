@@ -466,6 +466,185 @@ body {
   text-transform: uppercase;
 }
 
+.nexus-play-panel {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(420px, 1.28fr);
+  gap: 18px;
+  align-items: stretch;
+  padding: 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(57, 197, 187, 0.22);
+  background: rgba(3, 3, 10, 0.72);
+}
+
+.nexus-play-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.nexus-play-copy h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 22px;
+}
+
+.nexus-play-copy p {
+  margin: 0;
+  color: #cfcfcf;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.nexus-play-stats,
+.nexus-play-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.nexus-play-stats span,
+.nexus-play-intel {
+  border: 1px solid rgba(255, 234, 0, 0.24);
+  background: rgba(255, 234, 0, 0.055);
+  color: #ffea00;
+  font-size: 10px;
+  padding: 6px 8px;
+}
+
+.nexus-play-intel {
+  display: grid;
+  gap: 5px;
+  color: #d8f7ff;
+}
+
+.nexus-select {
+  width: 100%;
+  border: 1px solid rgba(57, 197, 187, 0.45);
+  background: rgba(0,0,0,0.42);
+  color: #e8ffff;
+  border-radius: 4px;
+  padding: 9px 10px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 12px;
+}
+
+.nexus-hub-canvas,
+.fps-royale-canvas {
+  width: 100%;
+  min-height: 320px;
+  aspect-ratio: 84 / 43;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  background: #05030a;
+  image-rendering: pixelated;
+  box-shadow: inset 0 0 28px rgba(57,197,187,0.08), 0 12px 28px rgba(0,0,0,0.32);
+}
+
+.fps-royale-canvas {
+  cursor: crosshair;
+  border-color: rgba(255, 69, 0, 0.26);
+  box-shadow: inset 0 0 30px rgba(255,69,0,0.09), 0 12px 28px rgba(0,0,0,0.34);
+}
+
+.mosaic-city-map {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(130px, 1fr));
+  gap: 10px;
+  min-height: 430px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  background:
+    linear-gradient(rgba(57,197,187,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57,197,187,0.08) 1px, transparent 1px),
+    #05030a;
+  background-size: 24px 24px;
+  box-shadow: inset 0 0 28px rgba(57,197,187,0.08), 0 12px 28px rgba(0,0,0,0.32);
+}
+
+.mosaic-room {
+  position: relative;
+  min-height: 164px;
+  padding: 9px;
+  border: 2px solid var(--room-color);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--room-color) 10%, rgba(0,0,0,0.58));
+  overflow: hidden;
+}
+
+.mosaic-room strong,
+.mosaic-room span {
+  position: relative;
+  z-index: 2;
+  display: block;
+}
+
+.mosaic-room strong {
+  color: #fff;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+.mosaic-room span {
+  margin-top: 3px;
+  color: color-mix(in srgb, var(--room-color) 72%, white 28%);
+  font-size: 8px;
+}
+
+.mosaic-room-floor {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  height: 92px;
+  border: 1px solid color-mix(in srgb, var(--room-color) 40%, rgba(255,255,255,0.08));
+  background:
+    linear-gradient(90deg, transparent 48%, color-mix(in srgb, var(--room-color) 28%, transparent) 49% 51%, transparent 52%),
+    linear-gradient(transparent 48%, color-mix(in srgb, var(--room-color) 22%, transparent) 49% 51%, transparent 52%),
+    rgba(0,0,0,0.28);
+}
+
+.mosaic-hero-token {
+  position: absolute;
+  width: 28px;
+  height: 34px;
+  transform: translate(-50%, -50%);
+  animation: mosaicIdle 1.8s ease-in-out infinite alternate;
+}
+
+.mosaic-hero-token i {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 12px;
+  height: 18px;
+  background: var(--hero-color);
+  box-shadow:
+    0 -7px 0 -1px var(--hero-accent),
+    -5px 5px 0 -2px var(--hero-color),
+    5px 5px 0 -2px var(--hero-color),
+    -3px 18px 0 -2px #111,
+    3px 18px 0 -2px #111;
+}
+
+.mosaic-hero-token em {
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%);
+  color: #fff;
+  font-style: normal;
+  font-size: 7px;
+  text-shadow: 0 1px 2px #000;
+}
+
+@keyframes mosaicIdle {
+  from { transform: translate(-50%, -51%); }
+  to { transform: translate(-50%, -46%); }
+}
+
 .equip-lore-card {
   min-height: 118px;
   padding: 12px;
@@ -1266,6 +1445,21 @@ body {
 
   .portal-focus-panel {
     padding: 12px !important;
+  }
+
+  .nexus-play-panel {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .nexus-hub-canvas,
+  .fps-royale-canvas {
+    min-height: 260px;
+  }
+
+  .mosaic-city-map {
+    grid-template-columns: 1fr;
+    min-height: 0;
   }
 
   .portal-core-stage {

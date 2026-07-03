@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
@@ -13,6 +13,245 @@ import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../game/spriteAss
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
+
+function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages }) {
+  const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
+  const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
+  const ownedHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 18), [safeHeroes, unlockedSet]);
+  const unlockedUniverses = useMemo(() => Array.from(new Set(ownedHeroes.map(hero => hero.universe))).slice(0, 8), [ownedHeroes]);
+  const rooms = useMemo(() => {
+    const fallback = ['Nexus de Convergence', 'Halo', 'Half-Life', 'Resident Evil'];
+    const source = unlockedUniverses.length ? unlockedUniverses : fallback;
+    return source.slice(0, 8).map((universe, index) => {
+      const col = index % 4;
+      const row = Math.floor(index / 4);
+      const hue = [...universe].reduce((sum, char) => sum + char.charCodeAt(0), 0) % 360;
+      return {
+        universe,
+        x: 40 + col * 200,
+        y: 40 + row * 190,
+        w: 172,
+        h: 152,
+        color: `hsl(${hue} 70% 52%)`
+      };
+    });
+  }, [unlockedUniverses]);
+  const leadHero = ownedHeroes[0];
+  return (
+    <div className="glass-panel nexus-play-panel">
+      <div className="nexus-play-copy">
+        <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / HUB VIVANT' : 'MOSAIC CITY / LIVING HUB'}</div>
+        <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
+        <p>
+          {lang === 'fr'
+            ? 'Un quartier stable du Nexus ou les signatures possedees vivent entre deux breches. Chaque salle reprend une Trame debloquee; les heros presents restent en patrouille idle en attendant les futures interactions RPG.'
+            : 'A stable Nexus district where owned signatures live between breaches. Each room inherits an unlocked Thread; present heroes idle on patrol while future RPG interactions are added.'}
+        </p>
+        <div className="nexus-play-stats">
+          <span>{ownedHeroes.length} {lang === 'fr' ? 'signatures' : 'signatures'}</span>
+          <span>{unlockedUniverses.length} {lang === 'fr' ? 'Trames visibles' : 'visible Threads'}</span>
+          <span>{completedStages.length} {lang === 'fr' ? 'breches scellees' : 'sealed breaches'}</span>
+        </div>
+        {leadHero && (
+          <div className="nexus-play-intel">
+            <strong>{leadHero.name || 'Ancre'}</strong>
+            <span>{leadHero.universe} / {leadHero.category}</span>
+          </div>
+        )}
+      </div>
+      <div className="mosaic-city-map">
+        {rooms.map((room, roomIndex) => {
+          const roomHeroes = ownedHeroes.filter((_, heroIndex) => heroIndex % Math.max(1, rooms.length) === roomIndex).slice(0, 5);
+          return (
+            <div key={`${room.universe}-${roomIndex}`} className="mosaic-room" style={{ '--room-color': room.color }}>
+              <strong>{room.universe}</strong>
+              <span>{lang === 'fr' ? 'Salle de Trame' : 'Thread room'}</span>
+              <div className="mosaic-room-floor">
+                {roomHeroes.map((hero, index) => (
+                  <div key={hero.id} className="mosaic-hero-token" style={{ '--hero-color': hero.primaryColor || '#39c5bb', '--hero-accent': hero.secondaryColor || '#ffea00', left: `${16 + index * 17}%`, top: `${38 + (index % 2) * 24}%` }}>
+                    <i />
+                    <em>{String(hero.name || '?').slice(0, 2).toUpperCase()}</em>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
+  const canvasRef = useRef(null);
+  const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
+  const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
+  const playableHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 40), [safeHeroes, unlockedSet]);
+  const [selectedHeroId, setSelectedHeroId] = useState(() => playableHeroes[0]?.id || safeHeroes[0]?.id || '');
+  const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || safeHeroes[0] || null;
+  const stateRef = useRef({ hp: 100, ammo: 24, kills: 0, enemies: [], t: 0, zone: 1, muzzle: 0 });
+
+  useEffect(() => {
+    if (selectedHero) {
+      const stats = selectedHero.stats || { hp: 120, atk: 12, def: 6, spd: 5 };
+      stateRef.current = {
+        hp: Math.min(220, Math.max(80, Math.round(stats.hp * 0.75))),
+        ammo: 24,
+        kills: 0,
+        enemies: Array.from({ length: 9 }, (_, index) => ({
+          x: (index - 4) * 0.42,
+          z: 2.2 + (index % 4) * 0.8,
+          hp: 24 + index * 4,
+          color: ['#e74c3c', '#9b59b6', '#39c5bb', '#ffb000'][index % 4]
+        })),
+        t: 0,
+        zone: 1,
+        muzzle: 0
+      };
+    }
+  }, [selectedHero]);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas || !selectedHero) return undefined;
+    const ctx = canvas.getContext('2d');
+    let rafId = 0;
+    const loop = () => {
+      const state = stateRef.current;
+      state.t += 1;
+      state.zone = Math.max(0.22, 1 - state.t / 7200);
+      state.muzzle = Math.max(0, state.muzzle - 1);
+      state.enemies = state.enemies.map((enemy, index) => ({
+        ...enemy,
+        x: enemy.x + Math.sin(state.t * 0.015 + index) * 0.003,
+        z: Math.max(0.62, enemy.z - 0.0018 * state.zone)
+      }));
+      if (state.t % 90 === 0 && state.enemies.some(enemy => enemy.z < 1.05)) {
+        state.hp = Math.max(0, state.hp - 3);
+      }
+
+      const sky = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.54);
+      sky.addColorStop(0, '#201235');
+      sky.addColorStop(1, '#050209');
+      ctx.fillStyle = sky;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#150d12';
+      ctx.fillRect(0, canvas.height * 0.54, canvas.width, canvas.height * 0.46);
+      ctx.strokeStyle = 'rgba(255,234,0,0.22)';
+      for (let i = -8; i <= 8; i++) {
+        const x = canvas.width / 2 + i * 48;
+        ctx.beginPath();
+        ctx.moveTo(x, canvas.height * 0.54);
+        ctx.lineTo(canvas.width / 2 + i * 170, canvas.height);
+        ctx.stroke();
+      }
+      for (let y = canvas.height * 0.58; y < canvas.height; y += 28) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+
+      ctx.strokeStyle = 'rgba(231,76,60,0.72)';
+      ctx.lineWidth = 6;
+      ctx.strokeRect((1 - state.zone) * 140, (1 - state.zone) * 70, canvas.width - (1 - state.zone) * 280, canvas.height - (1 - state.zone) * 140);
+
+      state.enemies
+        .filter(enemy => enemy.hp > 0)
+        .sort((a, b) => b.z - a.z)
+        .forEach(enemy => {
+          const scale = 1 / enemy.z;
+          const x = canvas.width / 2 + enemy.x * canvas.width * scale;
+          const y = canvas.height * 0.58 - 28 * scale;
+          const w = 52 * scale;
+          const h = 94 * scale;
+          ctx.fillStyle = 'rgba(0,0,0,0.42)';
+          ctx.fillRect(x - w * 0.5, y + h * 0.86, w, 8 * scale);
+          ctx.fillStyle = enemy.color;
+          ctx.fillRect(x - w * 0.35, y, w * 0.7, h);
+          ctx.fillStyle = '#fff';
+          ctx.fillRect(x - w * 0.18, y + h * 0.16, w * 0.12, h * 0.08);
+          ctx.fillRect(x + w * 0.06, y + h * 0.16, w * 0.12, h * 0.08);
+        });
+
+      ctx.fillStyle = 'rgba(0,0,0,0.66)';
+      ctx.fillRect(0, 0, canvas.width, 48);
+      ctx.fillStyle = '#2ecc71';
+      ctx.fillRect(18, 17, Math.max(0, state.hp) * 1.4, 10);
+      ctx.strokeStyle = '#2ecc71';
+      ctx.strokeRect(18, 17, 308, 10);
+      ctx.fillStyle = '#fff';
+      ctx.font = '12px "Share Tech Mono"';
+      ctx.fillText(`${selectedHero.name} / HP ${state.hp} / AMMO ${state.ammo} / KILLS ${state.kills}`, 18, 41);
+      ctx.fillStyle = '#ffea00';
+      ctx.fillText(lang === 'fr' ? 'Objectif: dernier signal vivant' : 'Objective: last living signal', canvas.width - 265, 31);
+
+      ctx.strokeStyle = state.muzzle ? '#ffea00' : 'rgba(255,255,255,0.72)';
+      ctx.beginPath();
+      ctx.moveTo(canvas.width / 2 - 12, canvas.height / 2);
+      ctx.lineTo(canvas.width / 2 + 12, canvas.height / 2);
+      ctx.moveTo(canvas.width / 2, canvas.height / 2 - 12);
+      ctx.lineTo(canvas.width / 2, canvas.height / 2 + 12);
+      ctx.stroke();
+
+      ctx.fillStyle = selectedHero.primaryColor || '#444';
+      ctx.fillRect(canvas.width / 2 - 76, canvas.height - 112, 152, 92);
+      ctx.fillStyle = selectedHero.secondaryColor || '#ddd';
+      ctx.fillRect(canvas.width / 2 - 30, canvas.height - 96, 60, 24);
+      if (state.muzzle) {
+        ctx.fillStyle = '#ffea00';
+        ctx.fillRect(canvas.width / 2 - 14, canvas.height - 126, 28, 28);
+      }
+      rafId = window.requestAnimationFrame(loop);
+    };
+    loop();
+    return () => window.cancelAnimationFrame(rafId);
+  }, [lang, selectedHero]);
+
+  const fire = () => {
+    const state = stateRef.current;
+    if (!state.ammo) return;
+    state.ammo -= 1;
+    state.muzzle = 5;
+    const target = state.enemies
+      .filter(enemy => enemy.hp > 0)
+      .sort((a, b) => (Math.abs(a.x) + a.z * 0.18) - (Math.abs(b.x) + b.z * 0.18))[0];
+    if (target) {
+      target.hp -= 36;
+      if (target.hp <= 0) state.kills += 1;
+    }
+    sound.playSfx('confirm');
+  };
+
+  const reload = () => {
+    stateRef.current.ammo = 24;
+    sound.playSfx('coin');
+  };
+
+  return (
+    <div className="glass-panel nexus-play-panel extinction-panel">
+      <div className="nexus-play-copy">
+        <div className="portal-focus-kicker">{lang === 'fr' ? 'ZONE D EXTINCTION / FPS ROYALE' : 'EXTINCTION ZONE / FPS ROYALE'}</div>
+        <h3>{lang === 'fr' ? 'Zone d Extinction' : 'Extinction Zone'}</h3>
+        <p>
+          {lang === 'fr'
+            ? 'Prototype Doom + Battle Royale: tu incarnes une signature possedee, arme FPS visible, ennemis billboards et cercle de breche qui se referme. La vraie passe suivante pourra ajouter loot, rooms 3D et multijoueur.'
+            : 'Doom + Battle Royale prototype: play an owned signature, visible FPS weapon, billboard enemies, and a closing breach circle. The next pass can add loot, 3D rooms, and multiplayer.'}
+        </p>
+        <select value={selectedHero?.id || ''} onChange={event => setSelectedHeroId(event.target.value)} className="nexus-select">
+          {playableHeroes.map(hero => (
+            <option key={hero.id} value={hero.id}>{hero.name} / {hero.universe}</option>
+          ))}
+        </select>
+        <div className="nexus-play-actions">
+          <button className="btn-retro" onClick={fire}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
+          <button className="btn-retro" onClick={reload}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+        </div>
+      </div>
+      <canvas ref={canvasRef} width="840" height="430" className="fps-royale-canvas" onClick={fire} />
+    </div>
+  );
+}
 
 export default function HubScreen({
   lang,
@@ -40,7 +279,7 @@ export default function HubScreen({
   onLaunchStage,
   onGoToPortal
 }) {
-  const [activeTab, setActiveTab] = useState('missions'); // 'missions' | 'roster' | 'party' | 'inventory' | 'collection' | 'shop' | 'codex' | 'admin'
+  const [activeTab, setActiveTab] = useState('missions');
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
@@ -2093,6 +2332,18 @@ export default function HubScreen({
           {getTranslation(lang, 'tabMissions')}
         </button>
         <button
+          onClick={() => { setActiveTab('mosaicHub'); sound.playSfx('coin'); }}
+          className={`btn-tab ${activeTab === 'mosaicHub' ? 'active-tab' : ''}`}
+        >
+          {lang === 'fr' ? 'CITE-MOSAIQUE' : 'MOSAIC CITY'}
+        </button>
+        <button
+          onClick={() => { setActiveTab('battleRoyale'); sound.playSfx('coin'); }}
+          className={`btn-tab ${activeTab === 'battleRoyale' ? 'active-tab' : ''}`}
+        >
+          {lang === 'fr' ? 'ZONE D EXTINCTION' : 'EXTINCTION ZONE'}
+        </button>
+        <button
           onClick={() => { setActiveTab('roster'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'roster' ? 'active-tab' : ''}`}
         >
@@ -2190,6 +2441,23 @@ export default function HubScreen({
 
       {/* Tab bodies */}
       <div style={{ width: '100%', maxWidth: hubContentMax, flex: 1 }}>
+
+        {activeTab === 'mosaicHub' && (
+          <MosaicCityHub
+            lang={lang}
+            heroes={HEROES_DB}
+            unlockedHeroes={unlockedHeroes}
+            completedStages={completedStages}
+          />
+        )}
+
+        {activeTab === 'battleRoyale' && (
+          <ExtinctionRoyale
+            lang={lang}
+            heroes={HEROES_DB}
+            unlockedHeroes={unlockedHeroes}
+          />
+        )}
 
         {/* Tab 1: Missions */}
         {activeTab === 'missions' && (
