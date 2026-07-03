@@ -50,6 +50,7 @@ export default function HubScreen({
   const [codexView, setCodexView] = useState('canon');
   const [adminUniverseSearch, setAdminUniverseSearch] = useState('');
   const [expandedAdminUniverses, setExpandedAdminUniverses] = useState({});
+  const [selectedCollectionUniverse, setSelectedCollectionUniverse] = useState(null);
   const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
   const disabledAssetSets = useMemo(() => ({
@@ -1585,6 +1586,45 @@ export default function HubScreen({
     complete: isCollectionComplete(collection),
     claimed: inventory.includes(getCollectionMarkerId(collection))
   }));
+  const selectedUniverseArchive = selectedCollectionUniverse ? (() => {
+    const universe = selectedCollectionUniverse;
+    const lore = LORE_DB[universe];
+    const stageId = UNIVERSE_TO_STAGE_ID[universe];
+    const stages = STAGES.filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe));
+    const heroes = HEROES_DB.filter(hero => hero.universe === universe);
+    const allEnemies = ENEMIES_DB[universe]
+      ? [
+        ...(ENEMIES_DB[universe].monsters || []),
+        ...(ENEMIES_DB[universe].bosses || []),
+        ENEMIES_DB[universe].worldBoss
+      ].filter(Boolean)
+      : [];
+    const relics = EQUIP_ITEMS_DB.filter(item => item.universe === universe);
+    const eventItem = EVENT_ITEMS_DB[universe];
+    const battleItems = getBattleItemsForUniverse(universe);
+    const universeArcs = UNIVERSE_NARRATIVE_ARCS.filter(arc => arc.universes.includes(universe));
+    const characterArcs = CHARACTER_NARRATIVE_ARCS.filter(arc => {
+      const hero = ALL_HEROES_DB.find(item => item.id === arc.heroId);
+      return hero?.universe === universe;
+    });
+    const franchiseCollections = collectionProgress.filter(collection => collection.universes.includes(universe));
+    return {
+      universe,
+      lore,
+      stageId,
+      cleared: !stageId || completedStages.includes(stageId),
+      hidden: hiddenUniverseSet.has(universe),
+      heroes,
+      allEnemies,
+      relics,
+      eventItem,
+      battleItems,
+      stages,
+      universeArcs,
+      characterArcs,
+      franchiseCollections
+    };
+  })() : null;
   const timelineProgress = BREACH_TIMELINE.map(entry => ({
     ...entry,
     active: completedStages.length >= entry.unlockClears
@@ -3511,7 +3551,21 @@ export default function HubScreen({
                 const boss = ENEMIES_DB[universe]?.worldBoss || ENEMIES_DB[universe]?.bosses?.[0];
                 const battleItems = getBattleItemsForUniverse(universe);
                 return (
-                  <div key={universe} style={{ padding: '12px', border: cleared ? '1px solid rgba(46,204,113,0.35)' : '1px solid rgba(255,255,255,0.08)', background: cleared ? 'rgba(46,204,113,0.05)' : 'rgba(0,0,0,0.18)', borderRadius: '5px' }}>
+                  <button
+                    key={universe}
+                    type="button"
+                    onClick={() => { setSelectedCollectionUniverse(universe); sound.playSfx('coin'); }}
+                    style={{
+                      padding: '12px',
+                      border: cleared ? '1px solid rgba(46,204,113,0.35)' : '1px solid rgba(255,255,255,0.08)',
+                      background: cleared ? 'rgba(46,204,113,0.05)' : 'rgba(0,0,0,0.18)',
+                      borderRadius: '5px',
+                      color: 'inherit',
+                      textAlign: 'left',
+                      fontFamily: 'inherit',
+                      cursor: 'pointer'
+                    }}
+                  >
                     <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center', marginBottom: '7px' }}>
                       <strong style={{ color: cleared ? '#2ecc71' : '#ddd', fontSize: '12px' }}>{lore.title[lang]}</strong>
                       <span style={{ fontSize: '8px', color: '#aaa', border: '1px solid #333', padding: '1px 5px', borderRadius: '3px' }}>{getMediaTypeLabel(lore.mediaType)}</span>
@@ -3534,7 +3588,10 @@ export default function HubScreen({
                         </div>
                       ))}
                     </div>
-                  </div>
+                    <div style={{ marginTop: '8px', fontSize: '8px', color: '#39c5bb', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Ouvrir dossier univers' : 'Open universe file'}
+                    </div>
+                  </button>
                 );
               })}
             </div>
@@ -4110,6 +4167,211 @@ export default function HubScreen({
                   </div>
                 );
               })}
+            </div>
+          </div>
+        )}
+
+        {selectedUniverseArchive && (
+          <div
+            onClick={() => setSelectedCollectionUniverse(null)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 215,
+              background: 'rgba(0,0,0,0.84)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '18px'
+            }}
+          >
+            <div
+              onClick={(event) => event.stopPropagation()}
+              style={{
+                width: 'min(96vw, 1120px)',
+                maxHeight: '92vh',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                background: 'rgba(7,6,14,0.98)',
+                border: `1px solid ${selectedUniverseArchive.cleared ? 'rgba(46,204,113,0.55)' : 'rgba(255,235,59,0.42)'}`,
+                borderRadius: '7px',
+                boxShadow: '0 0 34px rgba(57,197,187,0.18)'
+              }}
+            >
+              <div style={{
+                padding: '15px',
+                borderBottom: '1px solid rgba(255,255,255,0.08)',
+                background: selectedUniverseArchive.cleared ? 'rgba(46,204,113,0.07)' : 'rgba(255,235,59,0.05)'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'flex-start' }}>
+                  <div>
+                    <div style={{ color: '#ffeb3b', fontSize: '9px', textTransform: 'uppercase', marginBottom: '4px' }}>
+                      {lang === 'fr' ? 'Dossier univers / collection' : 'Universe collection file'}
+                    </div>
+                    <h2 style={{ margin: 0, color: selectedUniverseArchive.cleared ? '#2ecc71' : '#fff', fontSize: '22px' }}>
+                      {selectedUniverseArchive.lore?.title?.[lang] || selectedUniverseArchive.universe}
+                    </h2>
+                    <div style={{ marginTop: '5px', color: '#aaa', fontSize: '11px' }}>
+                      {getMediaTypeLabel(selectedUniverseArchive.lore?.mediaType)} / {selectedUniverseArchive.cleared ? (lang === 'fr' ? 'Stabilise' : 'Stabilized') : (lang === 'fr' ? 'A stabiliser' : 'To stabilize')}
+                      {selectedUniverseArchive.hidden ? ` / ${lang === 'fr' ? 'Masque admin' : 'Admin hidden'}` : ''}
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setSelectedCollectionUniverse(null)}
+                    className="btn-retro"
+                    style={{ fontSize: '10px', padding: '7px 11px' }}
+                  >
+                    {lang === 'fr' ? 'FERMER' : 'CLOSE'}
+                  </button>
+                </div>
+                <p style={{ color: '#d8d8d8', fontSize: '11px', lineHeight: 1.45, margin: '12px 0 0' }}>
+                  {selectedUniverseArchive.lore?.desc?.[lang] || (lang === 'fr'
+                    ? 'Archive partielle: le Nexus possede les donnees de combat mais attend une stabilisation complete.'
+                    : 'Partial archive: the Nexus has combat data but awaits full stabilization.')}
+                </p>
+              </div>
+
+              <div style={{ overflowY: 'auto', padding: '15px', display: 'grid', gap: '12px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '8px' }}>
+                  {[
+                    { label: lang === 'fr' ? 'Heros' : 'Heroes', value: selectedUniverseArchive.heroes.length, color: '#39c5bb' },
+                    { label: lang === 'fr' ? 'Ennemis' : 'Enemies', value: selectedUniverseArchive.allEnemies.length, color: '#e74c3c' },
+                    { label: lang === 'fr' ? 'Reliques' : 'Relics', value: selectedUniverseArchive.relics.length, color: '#9b59b6' },
+                    { label: lang === 'fr' ? 'Artefacts melee' : 'Melee artifacts', value: selectedUniverseArchive.battleItems.length, color: '#ffeb3b' },
+                    { label: lang === 'fr' ? 'Missions' : 'Missions', value: selectedUniverseArchive.stages.length, color: '#2ecc71' }
+                  ].map(entry => (
+                    <div key={entry.label} style={{ padding: '9px', border: `1px solid ${entry.color}44`, background: `${entry.color}10`, borderRadius: '4px' }}>
+                      <div style={{ color: '#aaa', fontSize: '9px', textTransform: 'uppercase' }}>{entry.label}</div>
+                      <strong style={{ color: entry.color, fontSize: '16px' }}>{entry.value}</strong>
+                    </div>
+                  ))}
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+                  <div style={{ padding: '12px', border: '1px solid rgba(57,197,187,0.24)', background: 'rgba(57,197,187,0.05)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#39c5bb', fontSize: '11px', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Personnages indexes' : 'Indexed characters'}
+                    </strong>
+                    <div style={{ display: 'grid', gap: '7px', marginTop: '9px' }}>
+                      {(selectedUniverseArchive.heroes.length ? selectedUniverseArchive.heroes : []).map(hero => {
+                        const unlocked = unlockedHeroes.includes(hero.id);
+                        const stats = getHeroStats(hero);
+                        return (
+                          <div key={hero.id} style={{ padding: '8px', border: `1px solid ${hero.primaryColor}55`, background: `${hero.primaryColor}12`, borderRadius: '4px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
+                              <b style={{ color: hero.primaryColor, fontSize: '11px' }}>{hero.name}</b>
+                              <span style={{ color: unlocked ? '#2ecc71' : '#777', fontSize: '9px' }}>
+                                {unlocked ? (lang === 'fr' ? 'Recrute' : 'Recruited') : (lang === 'fr' ? 'Archive' : 'Archive')}
+                              </span>
+                            </div>
+                            <div style={{ color: '#aaa', fontSize: '9px', marginTop: '4px' }}>
+                              {hero.category} / Lv {heroLevels[hero.id] || 1} / HP {stats.hp} ATK {stats.atk} DEF {stats.def}
+                            </div>
+                            <div style={{ color: '#d0d0d0', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
+                              {getCharacterPlaque(hero, lang).breachLore}
+                            </div>
+                          </div>
+                        );
+                      })}
+                      {selectedUniverseArchive.heroes.length === 0 && (
+                        <div style={{ color: '#777', fontSize: '10px' }}>
+                          {lang === 'fr' ? 'Aucun heros jouable indexe pour cet univers.' : 'No playable hero indexed for this universe.'}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div style={{ padding: '12px', border: '1px solid rgba(231,76,60,0.24)', background: 'rgba(231,76,60,0.05)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#e74c3c', fontSize: '11px', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Menaces locales' : 'Local threats'}
+                    </strong>
+                    <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
+                      {selectedUniverseArchive.allEnemies.map((enemy, index) => (
+                        <div key={`${enemy.name}-${index}`} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
+                          <div style={{ color: enemy.color || '#e74c3c', fontSize: '10px', fontWeight: 'bold' }}>{enemy.name}</div>
+                          <div style={{ color: '#aaa', fontSize: '9px', marginTop: '3px' }}>
+                            HP {enemy.hp || '?'} / ATK {enemy.atk || '?'} / SPD {enemy.spd || '?'}
+                          </div>
+                          {enemy.special && <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '3px' }}>{enemy.special}</div>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
+                  <div style={{ padding: '12px', border: '1px solid rgba(155,89,182,0.26)', background: 'rgba(155,89,182,0.05)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#d7b5ff', fontSize: '11px', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Reliques et objet evenement' : 'Relics and event item'}
+                    </strong>
+                    <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
+                      {selectedUniverseArchive.relics.map(item => (
+                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35 }}>
+                          <b style={{ color: '#d7b5ff' }}>{item.name[lang]}</b> / {formatBoostText(item.boost || {})}
+                        </div>
+                      ))}
+                      {selectedUniverseArchive.eventItem && (
+                        <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, paddingTop: '6px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                          <b style={{ color: '#ff8c00' }}>{selectedUniverseArchive.eventItem.name[lang]}</b>: {getEventLore(selectedUniverseArchive.eventItem)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div style={{ padding: '12px', border: '1px solid rgba(255,235,59,0.26)', background: 'rgba(255,235,59,0.05)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#ffeb3b', fontSize: '11px', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Items melee / tactique' : 'Melee / tactics items'}
+                    </strong>
+                    <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
+                      {selectedUniverseArchive.battleItems.map(item => (
+                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35 }}>
+                          <b style={{ color: item.color }}>{item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.toUpperCase()}</b>
+                          {' '}
+                          {item.name[lang]} / {item.melee[lang]}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
+                  <div style={{ padding: '12px', border: '1px solid rgba(46,204,113,0.24)', background: 'rgba(46,204,113,0.05)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#8dffb1', fontSize: '11px', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Missions liees' : 'Linked missions'}
+                    </strong>
+                    <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
+                      {selectedUniverseArchive.stages.map(stage => (
+                        <div key={stage.id} style={{ color: completedStages.includes(stage.id) ? '#dfffe8' : '#aaa', fontSize: '9px', lineHeight: 1.35 }}>
+                          <b style={{ color: completedStages.includes(stage.id) ? '#2ecc71' : '#ffeb3b' }}>
+                            #{stage.id} {stage.displayName?.[lang] || stage.name}
+                          </b>
+                          {' '}
+                          / {stage.mode} / {stage.bossName}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ padding: '12px', border: '1px solid rgba(255,140,0,0.25)', background: 'rgba(255,140,0,0.05)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#ffb15c', fontSize: '11px', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Arcs et collections' : 'Arcs and collections'}
+                    </strong>
+                    <div style={{ display: 'grid', gap: '7px', marginTop: '9px' }}>
+                      {[...selectedUniverseArchive.universeArcs, ...selectedUniverseArchive.characterArcs].map(arc => (
+                        <div key={arc.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35 }}>
+                          <b style={{ color: '#ffb15c' }}>{arc.title[lang]}</b>: {arc.intro?.[lang] || arc.reward?.[lang]}
+                        </div>
+                      ))}
+                      {selectedUniverseArchive.franchiseCollections.map(collection => (
+                        <div key={collection.id} style={{ color: collection.complete ? '#2ecc71' : '#aaa', fontSize: '9px', lineHeight: 1.35 }}>
+                          <b>{collection.title[lang]}</b>: {collection.completed}/{collection.total} / {collection.bonus[lang]}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         )}
