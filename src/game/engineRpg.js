@@ -60,6 +60,8 @@ export class EngineRpg {
     this.gameOver = false;
     this.victoryTimer = 0;
     this.autoBattle = false;
+    this.enemyActionLock = false;
+    this.enemyGlobalRecovery = 70;
   }
 
   spawnWave() {
@@ -466,6 +468,8 @@ export class EngineRpg {
       // Wave cleared
       if (this.wave < this.maxWaves) {
         this.wave++;
+        this.enemyActionLock = false;
+        this.enemyGlobalRecovery = 90;
         this.spawnWave();
       } else {
         this.gameOver = true;
@@ -533,6 +537,7 @@ export class EngineRpg {
     }
 
     // Update enemies
+    if (this.enemyGlobalRecovery > 0) this.enemyGlobalRecovery--;
     this.enemies.forEach(e => {
       if (e.currentHp <= 0) return;
       if (e.stateTimer > 0) {
@@ -554,7 +559,7 @@ export class EngineRpg {
       }
 
       // Glitched (ATB charge rate halved)
-      let atbRate = e.atk * 0.03 + 0.12;
+      let atbRate = (e.spd || e.atk || 8) * 0.035 + 0.08;
       if (e.statusEffects?.glitched > 0) {
         e.statusEffects.glitched--;
         atbRate *= 0.5;
@@ -567,13 +572,14 @@ export class EngineRpg {
         e.statusEffects.radiated--;
       }
 
-      if (e.state === 'idle' && e.atb < 100) {
+      if (!this.enemyActionLock && this.enemyGlobalRecovery <= 0 && e.state === 'idle' && e.atb < 100) {
         e.atb = Math.min(100, e.atb + atbRate);
       }
 
-      if (e.atb >= 100 && e.state === 'idle') {
+      if (!this.enemyActionLock && this.enemyGlobalRecovery <= 0 && e.atb >= 100 && e.state === 'idle') {
         const target = this.getRandomAliveHero();
         if (target) {
+          this.enemyActionLock = true;
           e.atb = 0;
           e.state = 'attack';
           e.stateTimer = 40;
@@ -592,6 +598,8 @@ export class EngineRpg {
 
               this.applyDamage(e, target, e.atk, status);
             }
+            this.enemyActionLock = false;
+            this.enemyGlobalRecovery = e.isBoss ? 85 : 110;
           }, 200);
         }
       }

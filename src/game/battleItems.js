@@ -175,6 +175,10 @@ const makeGenericItem = (universe, index, color) => {
       fr: 'Ramassable en melee: effet immediat sur le porteur et la ligne ennemie proche.',
       en: 'Melee pickup: immediate effect on the carrier and nearby enemy line.'
     },
+    rpg: {
+      fr: 'Commande RPG: consomme l ATB du heros actif pour declencher une relique de Trame.',
+      en: 'RPG command: consumes the active hero ATB to trigger a Thread relic.'
+    },
     tactics: {
       fr: 'En tactique: devient une case de ressource a poser ou a capturer.',
       en: 'In tactics: becomes a resource tile to place or capture.'
@@ -195,6 +199,7 @@ const makeItemsForUniverse = (universe) => {
       name: { fr, en },
       desc: { fr: effectText, en: effectText },
       melee: { fr: 'Ramassable en melee: declenche son effet des que le heros le securise.', en: 'Melee pickup: triggers as soon as the hero secures it.' },
+      rpg: { fr: 'Commande RPG: utilise la jauge ATB du heros actif pour convertir cet artefact en action de soutien.', en: 'RPG command: spends the active hero ATB to convert this artifact into a support action.' },
       tactics: { fr: 'En tactique: peut devenir une case bonus ou une ressource posee sur la carte.', en: 'In tactics: can become a bonus tile or placed map resource.' },
       effect: [
         { damage: 34, charge: 10 },
@@ -219,6 +224,7 @@ const makeItemsForUniverse = (universe) => {
       en: override?.summon?.[2] || `Temporary NPC assist: an allied ${universe} signature intervenes without joining the permanent squad.`
     },
     melee: { fr: 'En melee: PNJ de soutien pendant une courte fenetre, degats directs au front.', en: 'In melee: short assist window with direct frontline damage.' },
+    rpg: { fr: 'Commande RPG: depense une ATB pleine pour appeler un renfort temporaire entre deux tours ennemis.', en: 'RPG command: spends a full ATB to call a temporary assist between enemy turns.' },
     tactics: { fr: 'En tactique: pose un marqueur allie qui frappe la case ennemie prioritaire.', en: 'In tactics: places an allied marker that strikes the priority enemy tile.' },
     effect: { summonDamage: 76, charge: 12 },
     color
@@ -238,6 +244,7 @@ const makeItemsForUniverse = (universe) => {
       en: override?.ultimate?.[2] || `Stage ultimate: A.R.C.A. opens a massive ${universe} breach and strikes the whole screen.`
     },
     melee: { fr: 'En melee: attaque spectaculaire plein ecran, rare et decisive.', en: 'In melee: rare, decisive full-screen attack.' },
+    rpg: { fr: 'Commande RPG: limite break d artefact, declenchee par le heros actif quand son ATB est prete.', en: 'RPG command: artifact limit break, triggered by the active hero when ATB is ready.' },
     tactics: { fr: 'En tactique: equivalent a une carte operationnelle a usage unique sur plusieurs cases.', en: 'In tactics: acts like a one-use operational card across several tiles.' },
     effect: { ultimateDamage: 145, charge: 18 },
     color

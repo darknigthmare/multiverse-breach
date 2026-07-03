@@ -376,6 +376,27 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const engine = engineRef.current;
     const effect = pickup.effect || {};
     const color = pickup.color || '#39c5bb';
+
+    if (stage.mode === 'RPG') {
+      const activeHero = engine.getSelectedHero?.();
+      if (!activeHero || activeHero.currentHp <= 0 || activeHero.atb < 100) {
+        setBattleItemLog({
+          id: pickup.pickupId,
+          color,
+          text: lang === 'fr'
+            ? 'Commande RPG indisponible: attends qu un heros ait son ATB pleine.'
+            : 'RPG command unavailable: wait until a hero has full ATB.'
+        });
+        window.setTimeout(() => setBattleItemLog(null), 2600);
+        sound.playSfx('click');
+        return;
+      }
+      activeHero.atb = 0;
+      activeHero.state = pickup.tier === 'ultimate' ? 'attack' : 'defense';
+      activeHero.stateTimer = pickup.tier === 'ultimate' ? 34 : 22;
+      activeHero.specialCharge = Math.min(100, (activeHero.specialCharge || 0) + 6);
+    }
+
     const nextPickups = battlePickupsRef.current.map(item =>
       item.pickupId === pickup.pickupId ? { ...item, used: true, source } : item
     );
@@ -390,8 +411,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       id: pickup.pickupId,
       color,
       text: lang === 'fr'
-        ? `${pickup.name.fr}: ${pickup.tactics.fr}`
-        : `${pickup.name.en}: ${pickup.tactics.en}`
+        ? `${pickup.name.fr}: ${(stage.mode === 'RPG' ? pickup.rpg : stage.mode === 'Tactics' ? pickup.tactics : pickup.melee)?.fr || pickup.desc?.fr || ''}`
+        : `${pickup.name.en}: ${(stage.mode === 'RPG' ? pickup.rpg : stage.mode === 'Tactics' ? pickup.tactics : pickup.melee)?.en || pickup.desc?.en || ''}`
     });
     window.setTimeout(() => setBattleItemLog(null), 4200);
     sound.playSfx(pickup.tier === 'ultimate' ? 'levelup' : pickup.tier === 'summon' ? 'portal' : 'confirm');
@@ -571,7 +592,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           particles.update();
 
           engine.draw(ctx, animTime);
-          battlePickupsRef.current.forEach(item => drawBattleItemPickup(ctx, item, animTime));
+          if (stage.mode !== 'RPG') {
+            battlePickupsRef.current.forEach(item => drawBattleItemPickup(ctx, item, animTime));
+          }
           checkBattleItemPickupCollision(engine);
           if (stage.mode !== 'Tactics' && animTime > nextBattleItemDropRef.current) {
             spawnBattleItemDrop(engine, animTime);
@@ -1131,14 +1154,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               borderRadius: '4px'
             }}>
               <div style={{ fontSize: '10px', color: '#39c5bb', fontWeight: 'bold', marginBottom: '7px', textTransform: 'uppercase' }}>
-                {lang === 'fr' ? 'Artefacts de terrain' : 'Field artifacts'}
+                {stage.mode === 'RPG'
+                  ? (lang === 'fr' ? 'Commandes de relique' : 'Relic commands')
+                  : (lang === 'fr' ? 'Artefacts de terrain' : 'Field artifacts')}
               </div>
               <div style={{ display: 'grid', gap: '6px' }}>
                 {battlePickups.map(item => (
                   <button
                     key={item.pickupId}
                     onClick={() => stage.mode !== 'Tactics' && activateBattleItem(item, 'panel')}
-                    disabled={item.used || battleCompleted || stage.mode === 'Tactics'}
+                    disabled={item.used || battleCompleted || stage.mode === 'Tactics' || (stage.mode === 'RPG' && (!activeHeroObj || activeHeroObj.atb < 100))}
                     className="btn-retro"
                     style={{
                       width: '100%',
@@ -1148,14 +1173,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                       borderColor: item.used ? '#333' : item.color,
                       color: item.used ? '#555' : '#fff',
                       background: item.used ? 'rgba(0,0,0,0.18)' : `${item.color}14`,
-                      opacity: item.used ? 0.55 : stage.mode === 'Tactics' ? 0.78 : 1,
+                      opacity: item.used ? 0.55 : stage.mode === 'Tactics' ? 0.78 : stage.mode === 'RPG' && (!activeHeroObj || activeHeroObj.atb < 100) ? 0.52 : 1,
                       cursor: stage.mode === 'Tactics' ? 'default' : undefined
                     }}
                     title={stage.mode === 'Tactics'
                       ? (lang === 'fr'
                         ? 'En tactique, deplace un heros sur la case de cet artefact pour le declencher.'
                         : 'In tactics, move a hero onto this artifact tile to trigger it.')
-                      : item.melee?.[lang]}
+                      : stage.mode === 'RPG'
+                        ? item.rpg?.[lang]
+                        : item.melee?.[lang]}
                   >
                     <span style={{ color: item.color, fontWeight: 'bold' }}>
                       {item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.toUpperCase()}
@@ -1170,6 +1197,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   {lang === 'fr'
                     ? 'Declenchement par entree sur case uniquement.'
                     : 'Triggered only by stepping onto the tile.'}
+                </div>
+              )}
+              {stage.mode === 'RPG' && (
+                <div style={{ fontSize: '8px', color: '#aaa', marginTop: '7px', lineHeight: 1.4 }}>
+                  {lang === 'fr'
+                    ? 'Commande de relique: utilisable seulement quand le heros actif a son ATB pleine.'
+                    : 'Relic command: usable only when the active hero has full ATB.'}
                 </div>
               )}
             </div>
