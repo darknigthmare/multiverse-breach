@@ -7,6 +7,65 @@ import { LORE_DB } from '../game/lore';
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { EXPANDED_FACTION_UNIVERSES } from '../game/expandedUniverses';
 
+const PORTAL_RARITIES = {
+  common: { id: 'common', label: { fr: 'Stable', en: 'Stable' }, color: '#9fb6bb', weight: 58, duplicateRefund: 18 },
+  rare: { id: 'rare', label: { fr: 'Rare', en: 'Rare' }, color: '#3498db', weight: 28, duplicateRefund: 25 },
+  epic: { id: 'epic', label: { fr: 'Epique', en: 'Epic' }, color: '#9b59b6', weight: 11, duplicateRefund: 35 },
+  anomaly: { id: 'anomaly', label: { fr: 'Anomalie', en: 'Anomaly' }, color: '#ffb000', weight: 3, duplicateRefund: 55 }
+};
+
+const CORE_ANOMALY_IDS = new Set(['masterchief', 'predator', 'pyramidhead', 'neo', 'doomslayer', 'vader', 'rick', 'jigsaw', 'yugi']);
+const CORE_EPIC_IDS = new Set(['marcus', 'ripley', 'freeman', 'snake', 'solbadguy', 'ragna', 'shepard', 'luke', 'isaac', 'taichi', 'motoko']);
+
+const getHeroRarity = (hero) => {
+  if (!hero) return PORTAL_RARITIES.common;
+  if (CORE_ANOMALY_IDS.has(hero.id)) return PORTAL_RARITIES.anomaly;
+  if (CORE_EPIC_IDS.has(hero.id)) return PORTAL_RARITIES.epic;
+  const stats = hero.stats || {};
+  const powerScore = (stats.hp || 0) * 0.08
+    + (stats.atk || 0) * 3.5
+    + (stats.def || 0) * 3
+    + (stats.spd || 0) * 4
+    + (hero.special?.dmg || 0) * 7;
+  if (powerScore >= 158) return PORTAL_RARITIES.anomaly;
+  if (powerScore >= 142) return PORTAL_RARITIES.epic;
+  if (powerScore >= 124) return PORTAL_RARITIES.rare;
+  return PORTAL_RARITIES.common;
+};
+
+const getWeightedHero = (pool) => {
+  if (!pool.length) return null;
+  const weighted = pool.map(hero => ({ hero, weight: getHeroRarity(hero).weight }));
+  const total = weighted.reduce((sum, entry) => sum + entry.weight, 0);
+  let roll = Math.random() * total;
+  for (const entry of weighted) {
+    roll -= entry.weight;
+    if (roll <= 0) return entry.hero;
+  }
+  return weighted[weighted.length - 1].hero;
+};
+
+const getPoolRateSummary = (pool, lang) => {
+  if (!pool.length) return [];
+  const weightByRarity = Object.values(PORTAL_RARITIES).reduce((acc, rarity) => ({ ...acc, [rarity.id]: 0 }), {});
+  pool.forEach(hero => {
+    const rarity = getHeroRarity(hero);
+    weightByRarity[rarity.id] += rarity.weight;
+  });
+  const total = Object.values(weightByRarity).reduce((sum, value) => sum + value, 0) || 1;
+  return Object.values(PORTAL_RARITIES)
+    .filter(rarity => weightByRarity[rarity.id] > 0)
+    .map(rarity => {
+      const percent = (weightByRarity[rarity.id] / total) * 100;
+      const displayPercent = percent < 1 ? percent.toFixed(1) : Math.round(percent);
+      return {
+        ...rarity,
+        percent,
+        text: `${rarity.label[lang]} ${displayPercent}%`
+      };
+    });
+};
+
 export default function PortalScreen({ lang, breachShards, setBreachShards, portalStats, setPortalStats, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], disabledAssets = {}, onBack }) {
   const [summoning, setSummoning] = useState(false);
   const [summonedHero, setSummonedHero] = useState(null);
@@ -55,6 +114,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
   const activeBannerHeroes = summonableHeroes.filter(hero => activeBannerData.match(hero));
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
+  const activeRateSummary = getPoolRateSummary(activeBannerHeroes, lang);
   const activeBackdrop = getOpenAiBackdropSrc(activeBannerData.universe, activeBannerData.mode);
   const pityLimit = 6;
   const duplicateStreak = portalStats?.duplicateStreak || 0;
@@ -65,8 +125,12 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
       heroId: entry.hero.id,
       name: entry.hero.name,
       universe: entry.hero.universe,
+      rarity: entry.rarity.id,
+      rarityLabel: entry.rarity.label[lang],
+      rarityColor: entry.rarity.color,
       banner: activeBannerData.id,
       duplicate: entry.wasDuplicate,
+      shardsReturned: entry.shardsReturned || 0,
       at: new Date().toISOString()
     }));
     const lastEntry = normalized[normalized.length - 1];
@@ -97,11 +161,11 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
 
     const lockedInPool = targetPool.filter(hero => !ownedIds.includes(hero.id));
     if (options.forceNew && lockedInPool.length > 0) {
-      return lockedInPool[Math.floor(Math.random() * lockedInPool.length)];
+      return getWeightedHero(lockedInPool);
     }
     return lockedInPool.length > 0
-      ? lockedInPool[Math.floor(Math.random() * lockedInPool.length)]
-      : targetPool[Math.floor(Math.random() * targetPool.length)];
+      ? getWeightedHero(lockedInPool)
+      : getWeightedHero(targetPool);
   };
 
   const handleSummon = () => {
@@ -118,10 +182,12 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
 
     setTimeout(() => {
       const hero = pickHero(unlockedHeroes, { forceNew: pityReady });
+      const rarity = getHeroRarity(hero);
       const wasDuplicate = unlockedHeroes.includes(hero.id);
+      const shardsReturned = wasDuplicate ? rarity.duplicateRefund : 0;
 
       setSummonedHero(hero);
-      setSummonResult({ wasDuplicate, shardsReturned: wasDuplicate ? 25 : 0 });
+      setSummonResult({ wasDuplicate, rarity, shardsReturned });
       setSummoning(false);
       setShowCard(true);
 
@@ -130,11 +196,10 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
         setUnlockedHeroes(prev => [...prev, hero.id]);
         sound.playSfx('levelup');
       } else {
-        // compensate duplicate with +25 shards rebate
-        setBreachShards(prev => prev + 25);
+        setBreachShards(prev => prev + shardsReturned);
         sound.playSfx('coin');
       }
-      pushPortalHistory([{ hero, wasDuplicate }]);
+      pushPortalHistory([{ hero, rarity, wasDuplicate, shardsReturned }]);
     }, 2500);
   };
 
@@ -158,13 +223,15 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
 
       for (let i = 0; i < 10; i++) {
         const hero = pickHero(newUnlocked, { forceBanner: i === 0, forceNew: pityReady && i === 0 });
+        const rarity = getHeroRarity(hero);
         const wasDuplicate = newUnlocked.includes(hero.id);
-        batch.push({ hero, wasDuplicate });
+        const refund = wasDuplicate ? rarity.duplicateRefund : 0;
+        batch.push({ hero, rarity, wasDuplicate, shardsReturned: refund });
 
         if (!wasDuplicate) {
           newUnlocked.push(hero.id);
         } else {
-          shardsReturned += 25;
+          shardsReturned += refund;
         }
       }
 
@@ -184,13 +251,14 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
 
   const isDuplicate = Boolean(summonResult?.wasDuplicate);
   const summonedPlaque = summonedHero ? getCharacterPlaque(summonedHero) : null;
+  const summonedRarity = summonedHero ? (summonResult?.rarity || getHeroRarity(summonedHero)) : null;
   const focusPercent = Math.round((activeBannerData.focusRate || 1) * 100);
   const bannerRateLine = activeBannerData.id === 'multi'
     ? (lang === 'fr' ? 'Tous les heros ont le meme poids de faille.' : 'All heroes share the same rift weight.')
     : (lang === 'fr' ? `Poids de faille ${focusPercent}: le booster attire cette famille de Trames. Appel x10: premiere carte harmonisee.` : `Rift weight ${focusPercent}: the booster attracts this Thread family. x10 call: first card harmonized.`);
   const pityLine = pityReady
     ? (lang === 'fr' ? 'Compas Nexus actif: le prochain appel cherche une signature absente.' : 'Nexus compass active: next call seeks a missing signature.')
-    : (lang === 'fr' ? `Compas Nexus dans ${pityLimit - duplicateStreak} echoes deja scelles.` : `Nexus compass in ${pityLimit - duplicateStreak} already-sealed echoes.`);
+    : (lang === 'fr' ? `Compas Nexus dans ${pityLimit - duplicateStreak} echo(s) deja scelle(s).` : `Nexus compass in ${pityLimit - duplicateStreak} already-sealed echo(es).`);
   const portalBackground = activeBackdrop
     ? `linear-gradient(180deg, rgba(4,2,10,0.55), rgba(4,2,10,0.92)), url(${activeBackdrop})`
     : `radial-gradient(circle, ${activeBannerData.color}22 0%, #050209 72%)`;
@@ -279,6 +347,13 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
             <span>{activeMissingCount} {lang === 'fr' ? 'signatures absentes' : 'absent signatures'}</span>
             <span>{activeBannerData.id === 'multi' ? (lang === 'fr' ? 'SPECTRE COMPLET' : 'FULL SPECTRUM') : `${focusPercent} POIDS DE FAILLE`}</span>
           </div>
+          <div className="portal-rate-grid">
+            {activeRateSummary.map(rarity => (
+              <span key={rarity.id} style={{ '--rarity-color': rarity.color }}>
+                {rarity.text}
+              </span>
+            ))}
+          </div>
           <div className="portal-focus-rate">{bannerRateLine}</div>
           <div className="portal-focus-rate" style={{ marginTop: '6px', color: pityReady ? '#2ecc71' : '#ffea00' }}>
             {pityLine}
@@ -336,6 +411,11 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
             <div style={{ fontSize: '10px', color: '#ffeb3b', textTransform: 'uppercase', letterSpacing: '1px' }}>
               {isDuplicate ? getTranslation(lang, 'duplicateCard') : getTranslation(lang, 'newHeroRecruited')}
             </div>
+            {summonedRarity && (
+              <div className="portal-rarity-badge" style={{ '--rarity-color': summonedRarity.color }}>
+                {summonedRarity.label[lang]} / +{summonedRarity.duplicateRefund}
+              </div>
+            )}
             
             <h2 style={{ margin: '8px 0 3px 0', fontSize: '20px', color: '#fff' }}>{summonedHero.name}</h2>
             <div style={{
@@ -396,7 +476,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
 
             {isDuplicate && (
               <div style={{ color: '#ffeb3b', fontSize: '10px', marginTop: '6px' }}>
-                {getTranslation(lang, 'duplicateRebate')}
+                {lang === 'fr'
+                  ? `Echo deja scelle: ${summonResult?.shardsReturned || 0} Fragments rendus.`
+                  : `Already sealed echo: ${summonResult?.shardsReturned || 0} Shards returned.`}
               </div>
             )}
           </div>
@@ -415,16 +497,17 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
             zIndex: 10
           }}>
             <h3 style={{ margin: '0 0 15px 0', color: '#ffeb3b', letterSpacing: '2px', textShadow: '0 0 8px #ffeb3b' }}>
-              {lang === 'fr' ? 'RÉSULTATS DE L\'INVOCATION x10' : 'SUMMON x10 BATCH RESULTS'}
+              {lang === 'fr' ? 'RESULTATS DE L INVOCATION x10' : 'SUMMON x10 BATCH RESULTS'}
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '10px' }}>
               {summonedBatch.map((entry, idx) => {
                 const hero = entry.hero || entry;
                 const plaque = getCharacterPlaque(hero);
+                const rarity = entry.rarity || getHeroRarity(hero);
                 return (
                   <div key={idx} style={{
                     background: 'rgba(255,255,255,0.02)',
-                    border: `1px solid ${hero.primaryColor}`,
+                    border: `1px solid ${rarity.color}`,
                     borderRadius: '4px',
                     padding: '8px',
                     textAlign: 'center',
@@ -436,8 +519,11 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
                     <div style={{ fontSize: '8px', color: '#888', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                       {plaque.clearance}
                     </div>
+                    <div style={{ fontSize: '8px', color: rarity.color, marginTop: '2px', fontWeight: 'bold' }}>
+                      {rarity.label[lang]}
+                    </div>
                     <div style={{ fontSize: '8px', color: entry.wasDuplicate ? '#ffeb3b' : '#2ecc71', marginTop: '2px' }}>
-                      {entry.wasDuplicate ? (lang === 'fr' ? 'ECHO +25' : 'ECHO +25') : (lang === 'fr' ? 'NOUVEAU' : 'NEW')}
+                      {entry.wasDuplicate ? `ECHO +${entry.shardsReturned || rarity.duplicateRefund}` : (lang === 'fr' ? 'NOUVEAU' : 'NEW')}
                     </div>
                     <div style={{
                       margin: '6px auto 0 auto',
@@ -462,8 +548,8 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
             </div>
             <div style={{ color: '#ffea00', fontSize: '11px', marginTop: '15px' }}>
               {lang === 'fr'
-                ? 'Les echos deja scelles ont ete convertis en +25 Fragments chacun.'
-                : 'Already sealed echoes returned +25 Shards each.'}
+                ? `Les echos deja scelles ont ete convertis selon leur rarete: +${summonResult?.shardsReturned || 0} Fragments rendus.`
+                : `Already sealed echoes converted by rarity: +${summonResult?.shardsReturned || 0} Shards returned.`}
             </div>
           </div>
         )}
@@ -508,9 +594,11 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
                   borderRadius: '4px'
                 }}>
                   <strong style={{ display: 'block', color: '#fff', fontSize: '11px' }}>{entry.name}</strong>
-                  <span style={{ display: 'block', color: '#aaa', fontSize: '9px', marginTop: '3px' }}>{entry.universe} / {entry.banner}</span>
+                  <span style={{ display: 'block', color: entry.rarityColor || '#aaa', fontSize: '9px', marginTop: '3px' }}>
+                    {entry.rarityLabel || entry.rarity || 'Stable'} / {entry.universe} / {entry.banner}
+                  </span>
                   <span style={{ display: 'block', color: entry.duplicate ? '#ffea00' : '#2ecc71', fontSize: '9px', marginTop: '3px' }}>
-                    {entry.duplicate ? (lang === 'fr' ? 'Echo scelle converti' : 'Sealed echo converted') : (lang === 'fr' ? 'Nouvelle signature' : 'New signature')}
+                    {entry.duplicate ? (lang === 'fr' ? `Echo scelle converti +${entry.shardsReturned || 0}` : `Sealed echo converted +${entry.shardsReturned || 0}`) : (lang === 'fr' ? 'Nouvelle signature' : 'New signature')}
                   </span>
                 </div>
               ))}
