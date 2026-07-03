@@ -9,6 +9,8 @@ import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_I
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
+import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../game/spriteAssets';
+import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 
 export default function HubScreen({
   lang,
@@ -27,6 +29,8 @@ export default function HubScreen({
   heroSkins, setHeroSkins,
   hiddenUniverses = [],
   setHiddenUniverses,
+  disabledAssets = {},
+  setDisabledAssets,
   onLaunchStage,
   onGoToPortal
 }) {
@@ -40,7 +44,48 @@ export default function HubScreen({
   const [nexusMessage, setNexusMessage] = useState(null);
   const [codexView, setCodexView] = useState('canon');
   const [adminUniverseSearch, setAdminUniverseSearch] = useState('');
+  const [expandedAdminUniverses, setExpandedAdminUniverses] = useState({});
+  const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
+  const disabledAssetSets = useMemo(() => ({
+    heroes: new Set(disabledAssets.heroes || []),
+    enemies: new Set(disabledAssets.enemies || []),
+    gear: new Set(disabledAssets.gear || []),
+    stages: new Set(disabledAssets.stages || [])
+  }), [disabledAssets]);
+  const isAssetDisabled = useCallback((type, id) => disabledAssetSets[type]?.has(String(id)), [disabledAssetSets]);
+  const getEnemyAdminKey = useCallback((universe, enemy) => `${universe}::${enemy?.name || 'unknown'}`, []);
+  const getStageAdminKey = useCallback((stage) => String(stage?.id), []);
+  const setAssetDisabled = useCallback((type, id, hidden) => {
+    if (!setDisabledAssets) return;
+    const key = String(id);
+    setDisabledAssets(prev => {
+      const next = {
+        heroes: Array.isArray(prev?.heroes) ? [...prev.heroes] : [],
+        enemies: Array.isArray(prev?.enemies) ? [...prev.enemies] : [],
+        gear: Array.isArray(prev?.gear) ? [...prev.gear] : [],
+        stages: Array.isArray(prev?.stages) ? [...prev.stages] : []
+      };
+      const bucket = new Set(next[type] || []);
+      if (hidden) bucket.add(key);
+      else bucket.delete(key);
+      next[type] = Array.from(bucket).sort();
+      return next;
+    });
+    sound.playSfx(hidden ? 'click' : 'coin');
+  }, [setDisabledAssets]);
+  const spriteOutputSet = useMemo(
+    () => new Set((spriteManifest.entries || []).filter(entry => entry.available).map(entry => entry.output)),
+    []
+  );
+  const getHeroSpriteInfo = useCallback((hero) => {
+    const src = getHeroSpriteSheetSrc(hero);
+    return { src, ready: spriteOutputSet.has(src) };
+  }, [spriteOutputSet]);
+  const getEnemySpriteInfo = useCallback((enemy, universe) => {
+    const src = getEnemySpriteSheetSrc({ ...enemy, universe });
+    return { src, ready: spriteOutputSet.has(src) };
+  }, [spriteOutputSet]);
   const isUniverseVisible = useCallback(
     (universe) => !universe || universe === 'Nexus de Convergence' || !hiddenUniverseSet.has(universe),
     [hiddenUniverseSet]
@@ -58,8 +103,11 @@ export default function HubScreen({
   }, [heroSkins]);
   const ALL_HEROES_DB = useMemo(() => [playerHero, ...BASE_HEROES_DB].map(applySkin), [applySkin, playerHero]);
   const HEROES_DB = useMemo(
-    () => ALL_HEROES_DB.filter(hero => hero.id === playerHero.id || isUniverseVisible(hero.universe)),
-    [ALL_HEROES_DB, isUniverseVisible, playerHero.id]
+    () => ALL_HEROES_DB.filter(hero => (
+      hero.id === playerHero.id
+      || (isUniverseVisible(hero.universe) && !isAssetDisabled('heroes', hero.id))
+    )),
+    [ALL_HEROES_DB, isUniverseVisible, isAssetDisabled, playerHero.id]
   );
   const ALL_UNIVERSE_KEYS = Object.keys(LORE_DB).filter(key => key !== 'Nexus de Convergence');
 
@@ -68,12 +116,12 @@ export default function HubScreen({
     setActiveTeam(prev => {
       const filtered = prev.filter(heroId => {
         const hero = ALL_HEROES_DB.find(item => item.id === heroId);
-        return !hero || hero.id === playerHero.id || isUniverseVisible(hero.universe);
+        return !hero || hero.id === playerHero.id || (isUniverseVisible(hero.universe) && !isAssetDisabled('heroes', hero.id));
       });
       if (filtered.length === prev.length) return prev;
       return filtered.length > 0 ? filtered : [playerHero.id];
     });
-  }, [ALL_HEROES_DB, hiddenUniverses, isUniverseVisible, playerHero.id, setActiveTeam]);
+  }, [ALL_HEROES_DB, hiddenUniverses, isUniverseVisible, isAssetDisabled, playerHero.id, setActiveTeam]);
 
   const BREACH_MODIFIERS = [
     {
@@ -217,7 +265,7 @@ export default function HubScreen({
     if (stage.sourceUniverses) return stage.sourceUniverses.every(isUniverseVisible);
     return isUniverseVisible(stage.universe);
   };
-  const ADMIN_VISIBLE_STAGES = STAGES.filter(isStageVisibleByAdmin);
+  const ADMIN_VISIBLE_STAGES = STAGES.filter(stage => isStageVisibleByAdmin(stage) && !isAssetDisabled('stages', getStageAdminKey(stage)));
   const NORMAL_STAGE_COUNT = ADMIN_VISIBLE_STAGES.filter(stage => stage.id !== 38 && !stage.characterArc).length;
   const TOTAL_UNIVERSE_COUNT = ALL_UNIVERSE_KEYS.filter(isUniverseVisible).length + 1;
   const FINAL_STAGE_REQUIRED_CLEARS = Math.max(18, Math.ceil(NORMAL_STAGE_COUNT * 0.45));
@@ -752,7 +800,10 @@ export default function HubScreen({
     { id: 'evt_ut_redeemer', name: { en: 'Redeemer Missile Targeter', fr: 'Viseur de Missile Rédempteur' }, isCombatEvent: true, universe: 'Unreal', tokenCost: 8 },
     ...EXPANDED_EVENT_SHOP_ITEMS
   ];
-  const visibleEventShopItems = EVENT_SHOP_ITEMS.filter(item => !item.universe || isUniverseVisible(item.universe));
+  const visibleEventShopItems = EVENT_SHOP_ITEMS.filter(item => (
+    (!item.universe || isUniverseVisible(item.universe))
+    && !isAssetDisabled('gear', item.id)
+  ));
 
   const UNIVERSE_TO_STAGE_ID = {
     'Gears of War': 1, 'Halo': 2, 'Alien': 3, 'Predator': 4, 'Resident Evil': 5,
@@ -1000,6 +1051,10 @@ export default function HubScreen({
 
   // Event shop purchase
   const buyShopItem = (item) => {
+    if (isAssetDisabled('gear', item.id)) {
+      notifyNexus(lang === 'fr' ? 'Prototype desactive par le panneau admin.' : 'Prototype disabled by the admin panel.', 'warn');
+      return;
+    }
     if (inventory.includes(item.id)) {
       notifyNexus(lang === 'fr' ? 'Prototype deja indexe dans l inventaire.' : 'Prototype already indexed in inventory.', 'warn');
       return;
@@ -1171,6 +1226,7 @@ export default function HubScreen({
     if (!gearId) return null;
     const isUpgraded = gearId.endsWith('_plus');
     const baseId = isUpgraded ? gearId.replace('_plus', '') : gearId;
+    if (isAssetDisabled('gear', baseId)) return null;
     const item = EQUIP_ITEMS_DB.find(it => it.id === baseId);
     if (!item) return null;
     const factor = isUpgraded ? 2 : 1;
@@ -1202,7 +1258,7 @@ export default function HubScreen({
 
   const selectedEquippedGear = getGearDisplay(equippedGear[selectedHero.id]);
   const selectedEquippedEvent = equippedEventItems[selectedHero.id]
-    ? Object.values(EVENT_ITEMS_DB).find(item => item.id === equippedEventItems[selectedHero.id])
+    ? Object.values(EVENT_ITEMS_DB).find(item => item.id === equippedEventItems[selectedHero.id] && !isAssetDisabled('gear', item.id))
     : null;
 
   // Filter items in inventory
@@ -1211,6 +1267,7 @@ export default function HubScreen({
     inventory.forEach(invId => {
       const isUpgraded = invId.endsWith('_plus');
       const baseId = isUpgraded ? invId.replace('_plus', '') : invId;
+      if (isAssetDisabled('gear', baseId)) return;
       const baseItem = EQUIP_ITEMS_DB.find(it => it.id === baseId);
       if (baseItem) {
         list.push({
@@ -1234,7 +1291,10 @@ export default function HubScreen({
 
   const getEventItemsInInventory = () => {
     // Filter out standard keys that match active Event Items
-    return Object.keys(EVENT_ITEMS_DB).map(key => EVENT_ITEMS_DB[key]).filter(it => inventory.includes(it.id) || ['evt_hl_snarks', 'evt_halo_warthog', 'evt_re_cure'].includes(it.id));
+    return Object.keys(EVENT_ITEMS_DB)
+      .map(key => EVENT_ITEMS_DB[key])
+      .filter(it => !isAssetDisabled('gear', it.id))
+      .filter(it => inventory.includes(it.id) || ['evt_hl_snarks', 'evt_halo_warthog', 'evt_re_cure'].includes(it.id));
   };
   const SPECIAL_NEXUS_ITEMS = Object.fromEntries([
     ...FUSION_MISSIONS.map(mission => [
@@ -1523,15 +1583,34 @@ export default function HubScreen({
     .map(universe => {
       const lore = LORE_DB[universe];
       const heroes = ALL_HEROES_DB.filter(hero => hero.universe === universe);
-      const stageCount = STAGES.filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe)).length;
+      const enemies = [
+        ...(ENEMIES_DB[universe]?.monsters || []).map(enemy => ({ ...enemy, adminType: lang === 'fr' ? 'Monstre' : 'Monster' })),
+        ...(ENEMIES_DB[universe]?.bosses || []).map(enemy => ({ ...enemy, adminType: 'Boss' })),
+        ...(ENEMIES_DB[universe]?.worldBoss ? [{ ...ENEMIES_DB[universe].worldBoss, adminType: 'World Boss' }] : [])
+      ];
+      const gear = [
+        ...EQUIP_ITEMS_DB.filter(item => item.universe === universe),
+        ...EVENT_SHOP_ITEMS.filter(item => item.universe === universe)
+      ].filter((item, index, list) => list.findIndex(candidate => candidate.id === item.id) === index);
+      const stages = STAGES.filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe));
+      const disabledCount = (
+        heroes.filter(hero => isAssetDisabled('heroes', hero.id)).length
+        + enemies.filter(enemy => isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy))).length
+        + gear.filter(item => isAssetDisabled('gear', item.id)).length
+        + stages.filter(stage => isAssetDisabled('stages', getStageAdminKey(stage))).length
+      );
       return {
         universe,
         lore,
         hidden: hiddenUniverseSet.has(universe),
         heroes,
-        stageCount,
-        enemyCount: (ENEMIES_DB[universe]?.monsters?.length || 0) + (ENEMIES_DB[universe]?.bosses?.length || 0) + (ENEMIES_DB[universe]?.worldBoss ? 1 : 0),
-        gearCount: EQUIP_ITEMS_DB.filter(item => item.universe === universe).length
+        enemies,
+        gear,
+        stages,
+        disabledCount,
+        stageCount: stages.length,
+        enemyCount: enemies.length,
+        gearCount: gear.length
       };
     })
     .filter(row => {
@@ -1574,6 +1653,24 @@ export default function HubScreen({
     );
     sound.playSfx('click');
   };
+  const showUniversesByMediaType = (mediaType) => {
+    if (!setHiddenUniverses) return;
+    const targets = new Set(ALL_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType));
+    setHiddenUniverses(prev => prev.filter(universe => !targets.has(universe)));
+    notifyNexus(
+      lang === 'fr'
+        ? `Univers ${getMediaTypeLabel(mediaType).toLowerCase()} reaffiches.`
+        : `${getMediaTypeLabel(mediaType)} universes restored.`,
+      'success'
+    );
+    sound.playSfx('coin');
+  };
+  const getMediaTypeTargets = (mediaType) => ALL_UNIVERSE_KEYS.filter(universe => LORE_DB[universe]?.mediaType === mediaType);
+  const getMediaTypeHiddenCount = (mediaType) => getMediaTypeTargets(mediaType).filter(universe => hiddenUniverseSet.has(universe)).length;
+  const toggleAdminUniverseOpen = (universe) => {
+    setExpandedAdminUniverses(prev => ({ ...prev, [universe]: !prev[universe] }));
+    sound.playSfx('click');
+  };
   const finalStage = STAGES.find(stage => stage.id === 38);
   const missionPool = visibleStages.filter(stage => stage.id !== 38 && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
   const unlockedMissionPool = missionPool.filter(isStageUnlocked);
@@ -1589,6 +1686,28 @@ export default function HubScreen({
     .slice(0, 4);
   const missionDeck = [nextUnclearedStage, ...randomMissionDeck].filter(Boolean).slice(0, 5);
   const clearedVisibleCount = missionPool.filter(stage => completedStages.includes(stage.id)).length;
+  const assetToggleStyle = (hidden) => ({
+    fontSize: '9px',
+    padding: '4px 7px',
+    borderColor: hidden ? '#2ecc71' : '#e74c3c',
+    color: hidden ? '#2ecc71' : '#e74c3c',
+    minWidth: '76px'
+  });
+  const spriteButtonStyle = (ready) => ({
+    border: `1px solid ${ready ? '#39c5bb' : '#444'}`,
+    color: ready ? '#39c5bb' : '#666',
+    background: ready ? 'rgba(57,197,187,0.08)' : 'rgba(255,255,255,0.02)',
+    borderRadius: '3px',
+    padding: '2px 5px',
+    fontSize: '10px',
+    cursor: ready ? 'pointer' : 'default',
+    lineHeight: 1
+  });
+  const openSpritePreview = (info, title, subtitle) => {
+    if (!info.ready) return;
+    setSpritePreview({ src: info.src, title, subtitle });
+    sound.playSfx('coin');
+  };
 
   return (
     <div className="hub-screen" style={{
@@ -3317,7 +3436,7 @@ export default function HubScreen({
                           counts[invId] = (counts[invId] || 0) + 1;
                         }
                       });
-                      const fusables = EQUIP_ITEMS_DB.filter(it => (counts[it.id] || 0) >= 3);
+                      const fusables = EQUIP_ITEMS_DB.filter(it => !isAssetDisabled('gear', it.id) && (counts[it.id] || 0) >= 3);
 
                       if (fusables.length === 0) {
                         return (
@@ -3477,60 +3596,235 @@ export default function HubScreen({
               <button onClick={showAllUniverses} className="btn-retro" style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
                 {lang === 'fr' ? 'TOUT AFFICHER' : 'SHOW ALL'}
               </button>
-              {['game', 'movie', 'series', 'manga', 'music'].map(mediaType => (
-                <button
-                  key={mediaType}
-                  onClick={() => hideUniversesByMediaType(mediaType)}
-                  className="btn-retro"
-                  style={{ fontSize: '10px', padding: '8px 10px', borderColor: '#555', color: '#bbb' }}
-                >
-                  {lang === 'fr' ? 'MASQUER ' : 'HIDE '}{getMediaTypeLabel(mediaType).toUpperCase()}
-                </button>
-              ))}
-            </div>
-
-            <div style={{ maxHeight: '58vh', overflowY: 'auto', paddingRight: '4px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {adminUniverseRows.map(row => (
-                <div
-                  key={row.universe}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'minmax(180px, 1.2fr) minmax(150px, 1fr) auto',
-                    gap: '10px',
-                    alignItems: 'center',
-                    padding: '10px 12px',
-                    borderRadius: '4px',
-                    border: `1px solid ${row.hidden ? 'rgba(231,76,60,0.45)' : 'rgba(57,197,187,0.28)'}`,
-                    background: row.hidden ? 'rgba(231,76,60,0.07)' : 'rgba(57,197,187,0.04)'
-                  }}
-                >
-                  <div>
-                    <div style={{ fontSize: '13px', fontWeight: 'bold', color: row.hidden ? '#ffb3aa' : '#d8fffb' }}>{row.lore?.title?.[lang] || row.universe}</div>
-                    <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{row.universe} - {getMediaTypeLabel(row.lore?.mediaType)}</div>
-                  </div>
-                  <div style={{ fontSize: '10px', color: '#aaa', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                    <span>{row.heroes.length} {lang === 'fr' ? 'heros' : 'heroes'}</span>
-                    <span>{row.enemyCount} {lang === 'fr' ? 'ennemis' : 'enemies'}</span>
-                    <span>{row.gearCount} gear</span>
-                    <span>{row.stageCount} stages</span>
-                  </div>
+              {['game', 'movie', 'series', 'manga', 'music'].map(mediaType => {
+                const targets = getMediaTypeTargets(mediaType);
+                const hiddenCount = getMediaTypeHiddenCount(mediaType);
+                const allHidden = targets.length > 0 && hiddenCount === targets.length;
+                return (
                   <button
-                    onClick={() => setUniverseHidden(row.universe, !row.hidden)}
+                    key={mediaType}
+                    onClick={() => allHidden ? showUniversesByMediaType(mediaType) : hideUniversesByMediaType(mediaType)}
                     className="btn-retro"
                     style={{
                       fontSize: '10px',
-                      padding: '7px 10px',
-                      minWidth: '110px',
-                      borderColor: row.hidden ? '#2ecc71' : '#e74c3c',
-                      color: row.hidden ? '#2ecc71' : '#e74c3c'
+                      padding: '8px 10px',
+                      borderColor: allHidden ? '#2ecc71' : '#555',
+                      color: allHidden ? '#2ecc71' : '#bbb'
                     }}
                   >
-                    {row.hidden
-                      ? (lang === 'fr' ? 'AFFICHER' : 'SHOW')
-                      : (lang === 'fr' ? 'MASQUER' : 'HIDE')}
+                    {allHidden ? (lang === 'fr' ? 'AFFICHER ' : 'SHOW ') : (lang === 'fr' ? 'MASQUER ' : 'HIDE ')}
+                    {getMediaTypeLabel(mediaType).toUpperCase()} ({hiddenCount}/{targets.length})
                   </button>
+                );
+              })}
+            </div>
+
+            <div style={{ maxHeight: '58vh', overflowY: 'auto', paddingRight: '4px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {adminUniverseRows.map(row => {
+                const isOpen = Boolean(expandedAdminUniverses[row.universe]);
+                const renderAssetRow = ({ key, title, subtitle, hidden, onToggle, spriteInfo }) => (
+                  <div key={key} style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'minmax(160px, 1fr) minmax(110px, auto) auto',
+                    gap: '8px',
+                    alignItems: 'center',
+                    padding: '7px 8px',
+                    border: '1px solid rgba(255,255,255,0.07)',
+                    borderRadius: '4px',
+                    background: hidden ? 'rgba(231,76,60,0.08)' : 'rgba(255,255,255,0.025)'
+                  }}>
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ fontSize: '11px', color: hidden ? '#ffb3aa' : '#ddd', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title}</div>
+                      <div style={{ fontSize: '9px', color: '#777', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{subtitle}</div>
+                    </div>
+                    <button onClick={onToggle} className="btn-retro" style={assetToggleStyle(hidden)}>
+                      {hidden ? (lang === 'fr' ? 'ACTIVER' : 'ENABLE') : (lang === 'fr' ? 'MASQUER' : 'DISABLE')}
+                    </button>
+                    {spriteInfo ? (
+                      <button
+                        type="button"
+                        title={spriteInfo.ready ? (lang === 'fr' ? 'Sprite OpenAI disponible' : 'OpenAI sprite available') : (lang === 'fr' ? 'Pas encore de sprite OpenAI' : 'No OpenAI sprite yet')}
+                        onClick={() => openSpritePreview(spriteInfo, title, subtitle)}
+                        disabled={!spriteInfo.ready}
+                        style={spriteButtonStyle(spriteInfo.ready)}
+                      >
+                        IA
+                      </button>
+                    ) : <span style={{ width: '24px' }} />}
+                  </div>
+                );
+                const sectionStyle = {
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
+                  gap: '8px',
+                  marginTop: '8px'
+                };
+                return (
+                  <div
+                    key={row.universe}
+                    style={{
+                      padding: '10px 12px',
+                      borderRadius: '4px',
+                      border: `1px solid ${row.hidden ? 'rgba(231,76,60,0.45)' : 'rgba(57,197,187,0.28)'}`,
+                      background: row.hidden ? 'rgba(231,76,60,0.07)' : 'rgba(57,197,187,0.04)'
+                    }}
+                  >
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'auto minmax(180px, 1.2fr) minmax(170px, 1fr) auto',
+                      gap: '10px',
+                      alignItems: 'center'
+                    }}>
+                      <button
+                        onClick={() => toggleAdminUniverseOpen(row.universe)}
+                        className="btn-retro"
+                        style={{ fontSize: '11px', padding: '5px 8px', minWidth: '34px', borderColor: isOpen ? '#39c5bb' : '#444', color: isOpen ? '#39c5bb' : '#aaa' }}
+                      >
+                        {isOpen ? 'v' : '>'}
+                      </button>
+                      <div>
+                        <div style={{ fontSize: '13px', fontWeight: 'bold', color: row.hidden ? '#ffb3aa' : '#d8fffb' }}>{row.lore?.title?.[lang] || row.universe}</div>
+                        <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{row.universe} - {getMediaTypeLabel(row.lore?.mediaType)}</div>
+                      </div>
+                      <div style={{ fontSize: '10px', color: '#aaa', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                        <span>{row.heroes.length} {lang === 'fr' ? 'heros' : 'heroes'}</span>
+                        <span>{row.enemyCount} {lang === 'fr' ? 'ennemis' : 'enemies'}</span>
+                        <span>{row.gearCount} gear</span>
+                        <span>{row.stageCount} stages</span>
+                        {row.disabledCount > 0 && <span style={{ color: '#e74c3c' }}>{row.disabledCount} off</span>}
+                      </div>
+                      <button
+                        onClick={() => setUniverseHidden(row.universe, !row.hidden)}
+                        className="btn-retro"
+                        style={{
+                          fontSize: '10px',
+                          padding: '7px 10px',
+                          minWidth: '110px',
+                          borderColor: row.hidden ? '#2ecc71' : '#e74c3c',
+                          color: row.hidden ? '#2ecc71' : '#e74c3c'
+                        }}
+                      >
+                        {row.hidden
+                          ? (lang === 'fr' ? 'AFFICHER' : 'SHOW')
+                          : (lang === 'fr' ? 'MASQUER' : 'HIDE')}
+                      </button>
+                    </div>
+
+                    {isOpen && (
+                      <div style={{ marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
+                        <details open>
+                          <summary style={{ color: '#39c5bb', fontSize: '11px', cursor: 'pointer' }}>{lang === 'fr' ? 'Heros' : 'Heroes'} ({row.heroes.length})</summary>
+                          <div style={sectionStyle}>
+                            {row.heroes.map(hero => {
+                              const spriteInfo = getHeroSpriteInfo(hero);
+                              return renderAssetRow({
+                                key: hero.id,
+                                title: hero.name,
+                                subtitle: `${hero.id} - ${hero.category}`,
+                                hidden: isAssetDisabled('heroes', hero.id),
+                                onToggle: () => setAssetDisabled('heroes', hero.id, !isAssetDisabled('heroes', hero.id)),
+                                spriteInfo
+                              });
+                            })}
+                          </div>
+                        </details>
+                        <details>
+                          <summary style={{ color: '#e74c3c', fontSize: '11px', cursor: 'pointer', marginTop: '10px' }}>{lang === 'fr' ? 'Ennemis et boss' : 'Enemies and bosses'} ({row.enemies.length})</summary>
+                          <div style={sectionStyle}>
+                            {row.enemies.map(enemy => {
+                              const key = getEnemyAdminKey(row.universe, enemy);
+                              const spriteInfo = getEnemySpriteInfo(enemy, row.universe);
+                              return renderAssetRow({
+                                key,
+                                title: enemy.name,
+                                subtitle: `${enemy.adminType} - HP ${enemy.hp || '?'}`,
+                                hidden: isAssetDisabled('enemies', key),
+                                onToggle: () => setAssetDisabled('enemies', key, !isAssetDisabled('enemies', key)),
+                                spriteInfo
+                              });
+                            })}
+                          </div>
+                        </details>
+                        <details>
+                          <summary style={{ color: '#ffeb3b', fontSize: '11px', cursor: 'pointer', marginTop: '10px' }}>Gear / shop ({row.gear.length})</summary>
+                          <div style={sectionStyle}>
+                            {row.gear.map(item => renderAssetRow({
+                              key: item.id,
+                              title: item.name?.[lang] || item.id,
+                              subtitle: item.isCombatEvent ? 'event item' : formatBoostText(item.boost || {}),
+                              hidden: isAssetDisabled('gear', item.id),
+                              onToggle: () => setAssetDisabled('gear', item.id, !isAssetDisabled('gear', item.id)),
+                              spriteInfo: { ready: false, src: '' }
+                            }))}
+                          </div>
+                        </details>
+                        <details>
+                          <summary style={{ color: '#9b59b6', fontSize: '11px', cursor: 'pointer', marginTop: '10px' }}>Stages ({row.stages.length})</summary>
+                          <div style={sectionStyle}>
+                            {row.stages.map(stage => {
+                              const key = getStageAdminKey(stage);
+                              return renderAssetRow({
+                                key,
+                                title: stage.displayName?.[lang] || stage.name,
+                                subtitle: `#${stage.id} - ${stage.mode} - ${stage.bossName}`,
+                                hidden: isAssetDisabled('stages', key),
+                                onToggle: () => setAssetDisabled('stages', key, !isAssetDisabled('stages', key)),
+                                spriteInfo: { ready: false, src: '' }
+                              });
+                            })}
+                          </div>
+                        </details>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {spritePreview && (
+          <div
+            onClick={() => setSpritePreview(null)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 220,
+              background: 'rgba(0,0,0,0.82)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '24px'
+            }}
+          >
+            <div
+              onClick={(event) => event.stopPropagation()}
+              style={{
+                width: 'min(92vw, 980px)',
+                maxHeight: '92vh',
+                background: 'rgba(8,7,14,0.98)',
+                border: '1px solid rgba(57,197,187,0.55)',
+                borderRadius: '6px',
+                padding: '14px',
+                boxShadow: '0 0 30px rgba(57,197,187,0.22)'
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '10px' }}>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ color: '#39c5bb', fontSize: '14px', fontWeight: 'bold', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{spritePreview.title}</div>
+                  <div style={{ color: '#888', fontSize: '10px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{spritePreview.subtitle}</div>
                 </div>
-              ))}
+                <button onClick={() => setSpritePreview(null)} className="btn-retro" style={{ fontSize: '10px', padding: '6px 10px' }}>
+                  {lang === 'fr' ? 'FERMER' : 'CLOSE'}
+                </button>
+              </div>
+              <div style={{ background: '#020204', border: '1px solid #222', maxHeight: '78vh', overflow: 'auto', textAlign: 'center' }}>
+                <img
+                  src={spritePreview.src}
+                  alt={spritePreview.title}
+                  style={{ width: 'min(100%, 820px)', height: 'auto', imageRendering: 'pixelated', display: 'block', margin: '0 auto' }}
+                />
+              </div>
             </div>
           </div>
         )}

@@ -7,7 +7,7 @@ import { LORE_DB } from '../game/lore';
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { EXPANDED_FACTION_UNIVERSES } from '../game/expandedUniverses';
 
-export default function PortalScreen({ lang, breachShards, setBreachShards, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], onBack }) {
+export default function PortalScreen({ lang, breachShards, setBreachShards, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], disabledAssets = {}, onBack }) {
   const [summoning, setSummoning] = useState(false);
   const [summonedHero, setSummonedHero] = useState(null);
   const [summonedBatch, setSummonedBatch] = useState(null);
@@ -49,8 +49,9 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
   const baseActiveBanner = portalBanners.find(item => item.id === activeBanner) || portalBanners[0];
   const activeBannerData = { ...baseActiveBanner, ...(bannerVisuals[baseActiveBanner.id] || bannerVisuals.multi) };
   const hiddenUniverseSet = new Set(hiddenUniverses);
-  const visibleHeroes = HEROES_DB.filter(hero => !hiddenUniverseSet.has(hero.universe));
-  const summonableHeroes = visibleHeroes.length > 0 ? visibleHeroes : HEROES_DB;
+  const disabledHeroSet = new Set(disabledAssets.heroes || []);
+  const visibleHeroes = HEROES_DB.filter(hero => !hiddenUniverseSet.has(hero.universe) && !disabledHeroSet.has(hero.id));
+  const summonableHeroes = visibleHeroes;
   const activeBannerHeroes = summonableHeroes.filter(hero => activeBannerData.match(hero));
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
@@ -77,7 +78,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
   };
 
   const handleSummon = () => {
-    if (breachShards < cost || summoning) return;
+    if (breachShards < cost || summoning || activeBannerHeroes.length === 0) return;
 
     setBreachShards(prev => prev - cost);
     setSummoning(true);
@@ -111,7 +112,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
 
   const handleSummonTen = () => {
     const tenCost = 450;
-    if (breachShards < tenCost || summoning) return;
+    if (breachShards < tenCost || summoning || activeBannerHeroes.length === 0) return;
 
     setBreachShards(prev => prev - tenCost);
     setSummoning(true);
@@ -273,8 +274,8 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
             style={{
               '--portal-image': activeBackdrop ? `url(${activeBackdrop})` : 'none',
               '--portal-color': activeBannerData.color,
-              cursor: breachShards >= cost ? 'pointer' : 'default',
-              opacity: breachShards >= cost ? 1 : 0.58
+              cursor: breachShards >= cost && activeBannerHeroes.length > 0 ? 'pointer' : 'default',
+              opacity: breachShards >= cost && activeBannerHeroes.length > 0 ? 1 : 0.58
             }}
             onClick={handleSummon}
           >
@@ -434,16 +435,16 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
           <>
             <button
               onClick={handleSummon}
-              disabled={breachShards < cost}
-              className={`btn-retro ${breachShards < cost ? 'btn-disabled' : ''}`}
+              disabled={breachShards < cost || activeBannerHeroes.length === 0}
+              className={`btn-retro ${breachShards < cost || activeBannerHeroes.length === 0 ? 'btn-disabled' : ''}`}
               style={{ fontSize: '13px', padding: '10px 20px', borderColor: activeBannerData.color, color: '#fff', background: `${activeBannerData.color}26` }}
             >
               {getTranslation(lang, 'costLabel')}
             </button>
             <button
               onClick={handleSummonTen}
-              disabled={breachShards < 450}
-              className={`btn-retro ${breachShards < 450 ? 'btn-disabled' : ''}`}
+              disabled={breachShards < 450 || activeBannerHeroes.length === 0}
+              className={`btn-retro ${breachShards < 450 || activeBannerHeroes.length === 0 ? 'btn-disabled' : ''}`}
               style={{ fontSize: '13px', padding: '10px 20px', borderColor: '#ffea00', color: '#fff', background: 'rgba(255, 234, 0, 0.15)' }}
             >
               {getTranslation(lang, 'btnSummonTen')} {activeBannerData.id !== 'multi' ? (lang === 'fr' ? '+ FOCUS' : '+ FOCUS') : ''}

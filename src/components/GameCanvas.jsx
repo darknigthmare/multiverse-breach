@@ -11,7 +11,7 @@ import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../ga
 import { createPlayerHero } from '../game/playerHero';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 
-export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, onBattleEnd }) {
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, disabledAssets = {}, onBattleEnd }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysPressed = useRef({});
@@ -33,6 +33,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
   };
   const HEROES_DB = [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(applySkin);
+  const disabledHeroSet = new Set(disabledAssets.heroes || []);
+  const disabledEnemySet = new Set(disabledAssets.enemies || []);
+  const disabledGearSet = new Set(disabledAssets.gear || []);
+  const getEnemyAdminKey = (universe, enemy) => `${universe}::${enemy?.name || 'unknown'}`;
   
   const autoBattleRef = useRef(autoBattle);
   autoBattleRef.current = autoBattle;
@@ -141,6 +145,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (gearId) {
       const isUpgraded = gearId.endsWith('_plus');
       const baseGearId = isUpgraded ? gearId.replace('_plus', '') : gearId;
+      if (disabledGearSet.has(baseGearId)) return stats;
       const gear = EQUIP_ITEMS_DB.find(it => it.id === baseGearId);
       if (gear && gear.boost) {
         const factor = isUpgraded ? 2 : 1;
@@ -169,6 +174,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
   const getEnemiesData = () => {
     const sourceUniverse = stage.id === 38 ? 'Matrix' : stage.universe;
+    const filterEnemyList = (universe, list) => list.filter(enemy => !disabledEnemySet.has(getEnemyAdminKey(universe, enemy)));
     const scaleEnemy = (enemy, isBoss = false) => {
       const modifier = stage.modifier || {};
       return {
@@ -179,19 +185,33 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         spd: Math.round(enemy.spd * (modifier.enemySpd || 1))
       };
     };
+    const fallbackEnemy = (universe, isBoss = false) => ({
+      name: isBoss ? 'Nexus Residue Sentinel' : 'Nexus Residue',
+      universe,
+      hp: isBoss ? 420 : 80,
+      atk: isBoss ? 22 : 10,
+      def: isBoss ? 12 : 5,
+      spd: isBoss ? 6 : 8,
+      color: '#39c5bb'
+    });
+    const ensureList = (universe, list, isBoss = false) => (
+      list.length ? list : [fallbackEnemy(universe, isBoss)]
+    );
 
     if (stage.sourceUniverses?.length) {
       const fusedMonsters = stage.sourceUniverses.flatMap(universe =>
-        getMonstersForUniverse(universe).slice(0, 2).map(enemy => scaleEnemy({ ...enemy, universe }))
+        filterEnemyList(universe, getMonstersForUniverse(universe)).slice(0, 2).map(enemy => scaleEnemy({ ...enemy, universe }))
       );
       const fusedBosses = stage.sourceUniverses.flatMap(universe =>
-        getBossesForUniverse(universe).slice(0, 1).map(enemy => scaleEnemy({ ...enemy, universe }, true))
+        filterEnemyList(universe, getBossesForUniverse(universe)).slice(0, 1).map(enemy => scaleEnemy({ ...enemy, universe }, true))
       );
       const primaryBoss = getWorldBossForUniverse(stage.universe);
+      const baseMonsters = ensureList(stage.universe, filterEnemyList(stage.universe, getMonstersForUniverse(stage.universe)));
+      const baseBosses = ensureList(stage.universe, filterEnemyList(stage.universe, getBossesForUniverse(stage.universe)), true);
       return {
-        monsters: fusedMonsters.length ? fusedMonsters : getMonstersForUniverse(stage.universe).map(enemy => scaleEnemy(enemy)),
-        bosses: fusedBosses.length ? fusedBosses : getBossesForUniverse(stage.universe).map(enemy => scaleEnemy(enemy, true)),
-        worldBoss: scaleEnemy({
+        monsters: fusedMonsters.length ? fusedMonsters : baseMonsters.map(enemy => scaleEnemy(enemy)),
+        bosses: fusedBosses.length ? fusedBosses : baseBosses.map(enemy => scaleEnemy(enemy, true)),
+        worldBoss: disabledEnemySet.has(getEnemyAdminKey(stage.universe, primaryBoss)) ? scaleEnemy(fallbackEnemy(stage.universe, true), true) : scaleEnemy({
           ...primaryBoss,
           name: stage.bossName || primaryBoss.name,
           hp: Math.round((primaryBoss.hp || 1000) * 1.18),
@@ -203,17 +223,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (stage.id === 38) {
       // Final Boss Stage
       return {
-        monsters: getMonstersForUniverse('Matrix').map(enemy => scaleEnemy(enemy)),
-        bosses: getBossesForUniverse('Matrix').map(enemy => scaleEnemy(enemy, true)),
+        monsters: ensureList('Matrix', filterEnemyList('Matrix', getMonstersForUniverse('Matrix'))).map(enemy => scaleEnemy(enemy)),
+        bosses: ensureList('Matrix', filterEnemyList('Matrix', getBossesForUniverse('Matrix')), true).map(enemy => scaleEnemy(enemy, true)),
         worldBoss: scaleEnemy(getFinalGameBoss(), true)
       };
     }
+    const monsters = ensureList(stage.universe, filterEnemyList(stage.universe, getMonstersForUniverse(stage.universe)));
+    const bosses = ensureList(stage.universe, filterEnemyList(stage.universe, getBossesForUniverse(stage.universe)), true);
+    const worldBoss = getWorldBossForUniverse(stage.universe);
     return {
-      monsters: getMonstersForUniverse(stage.universe).map(enemy => scaleEnemy(enemy)),
-      bosses: getBossesForUniverse(stage.universe).map(enemy => scaleEnemy(enemy, true)),
-      worldBoss: scaleEnemy({
-        ...getWorldBossForUniverse(stage.universe),
-        name: stage.bossName || getWorldBossForUniverse(stage.universe).name
+      monsters: monsters.map(enemy => scaleEnemy(enemy)),
+      bosses: bosses.map(enemy => scaleEnemy(enemy, true)),
+      worldBoss: disabledEnemySet.has(getEnemyAdminKey(stage.universe, worldBoss)) ? scaleEnemy(fallbackEnemy(stage.universe, true), true) : scaleEnemy({
+        ...worldBoss,
+        name: stage.bossName || worldBoss.name
       }, true)
     };
   };
@@ -222,15 +245,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     sound.playBgm('battle');
 
     const enemies = getEnemiesData();
-    const squadHeroes = activeTeam.map(id => {
+    let squadHeroes = activeTeam.map(id => {
       const base = HEROES_DB.find(h => h.id === id);
+      if (!base || disabledHeroSet.has(base.id)) return null;
       const scaledStats = getHeroStats(base);
       return {
         ...base,
         stats: scaledStats,
         talent: heroTalents[id] || null
       };
-    });
+    }).filter(Boolean);
+    if (squadHeroes.length === 0) {
+      const anchor = HEROES_DB[0];
+      squadHeroes = [{ ...anchor, stats: getHeroStats(anchor), talent: null }];
+    }
     const activeCategoriesCount = squadHeroes.reduce((acc, h) => {
       acc[h.category] = (acc[h.category] || 0) + 1;
       return acc;

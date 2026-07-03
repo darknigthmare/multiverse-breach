@@ -38,7 +38,13 @@ const DEFAULT_SAVE = {
     masterchief: 'evt_halo_warthog',
     leon: 'evt_re_cure'
   },
-  hiddenUniverses: []
+  hiddenUniverses: [],
+  disabledAssets: {
+    heroes: [],
+    enemies: [],
+    gear: [],
+    stages: []
+  }
 };
 
 const loadSave = () => {
@@ -75,6 +81,12 @@ const normalizeSavePayload = (save = {}) => {
     heroTalents: merged.heroTalents || {},
     heroSkins: merged.heroSkins || {},
     hiddenUniverses: Array.isArray(merged.hiddenUniverses) ? merged.hiddenUniverses : [],
+    disabledAssets: {
+      heroes: Array.isArray(merged.disabledAssets?.heroes) ? merged.disabledAssets.heroes : [],
+      enemies: Array.isArray(merged.disabledAssets?.enemies) ? merged.disabledAssets.enemies : [],
+      gear: Array.isArray(merged.disabledAssets?.gear) ? merged.disabledAssets.gear : [],
+      stages: Array.isArray(merged.disabledAssets?.stages) ? merged.disabledAssets.stages : []
+    },
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
     equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
   };
@@ -221,6 +233,7 @@ function App() {
   const [heroTalents, setHeroTalents] = useState(initialSave.heroTalents); // heroId -> talentId
   const [heroSkins, setHeroSkins] = useState(initialSave.heroSkins);
   const [hiddenUniverses, setHiddenUniverses] = useState(initialSave.hiddenUniverses);
+  const [disabledAssets, setDisabledAssets] = useState(initialSave.disabledAssets);
 
   // Inventory & Equipment
   const [inventory, setInventory] = useState(initialSave.inventory);
@@ -253,6 +266,7 @@ function App() {
     heroTalents,
     heroSkins,
     hiddenUniverses,
+    disabledAssets,
     inventory,
     equippedGear,
     equippedEventItems
@@ -279,7 +293,7 @@ function App() {
     }, 1200);
 
     return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, inventory, equippedGear, equippedEventItems, account]);
+  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, inventory, equippedGear, equippedEventItems, account]);
 
   // Play ambient music
   useEffect(() => {
@@ -327,7 +341,8 @@ function App() {
       }
 
       // Check if they dropped a random relic/item from the stage's universe
-      const universeGear = EQUIP_ITEMS_DB.filter(item => item.universe === activeStage.universe);
+      const disabledGear = new Set(disabledAssets.gear || []);
+      const universeGear = EQUIP_ITEMS_DB.filter(item => item.universe === activeStage.universe && !disabledGear.has(item.id));
       const rarityDropBonus = {
         common: 0,
         rare: 0.12,
@@ -375,6 +390,7 @@ function App() {
     setHeroTalents(merged.heroTalents);
     setHeroSkins(merged.heroSkins || {});
     setHiddenUniverses(merged.hiddenUniverses || []);
+    setDisabledAssets(merged.disabledAssets || DEFAULT_SAVE.disabledAssets);
     setInventory(merged.inventory);
     setEquippedGear(merged.equippedGear);
     setEquippedEventItems(merged.equippedEventItems);
@@ -718,6 +734,8 @@ function App() {
           setHeroSkins={setHeroSkins}
           hiddenUniverses={hiddenUniverses}
           setHiddenUniverses={setHiddenUniverses}
+          disabledAssets={disabledAssets}
+          setDisabledAssets={setDisabledAssets}
           onLaunchStage={handleLaunchStage}
           onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
         />
@@ -747,6 +765,7 @@ function App() {
           heroSkins={heroSkins}
           completedStages={completedStages}
           collectionBonusCount={collectionBonusCount}
+          disabledAssets={disabledAssets}
           onBattleEnd={handleBattleEnd}
         />
       )}
@@ -769,6 +788,7 @@ function App() {
           unlockedHeroes={unlockedHeroes}
           setUnlockedHeroes={setUnlockedHeroes}
           hiddenUniverses={hiddenUniverses}
+          disabledAssets={disabledAssets}
           onBack={() => { sound.playSfx('click'); setCurrentScreen('hub'); }}
         />
       )}

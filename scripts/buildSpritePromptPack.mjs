@@ -45,6 +45,16 @@ const buildPrompt = ({ kind, name, universe, role, weapon, color, special }) => 
   'Constraints: one character only, no extra characters, no UI labels, no cropped body, consistent proportions across all 16 frames.'
 ].join('\n');
 
+const fileExists = async (relativeOutput) => {
+  const localPath = path.join(outDir, relativeOutput.replace(/^\/sprites\/generated\//, ''));
+  try {
+    const stat = await fs.stat(localPath);
+    return stat.isFile() && stat.size > 0;
+  } catch {
+    return false;
+  }
+};
+
 const main = async () => {
   await copyRuntimeModules();
   const [{ HEROES_DB }, { ENEMIES_DB, FINAL_GAME_BOSS }] = await Promise.all([
@@ -120,15 +130,23 @@ const main = async () => {
   const all = [...heroEntries, ...bossEntries];
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(outJsonl, all.map(entry => JSON.stringify(entry)).join('\n') + '\n', 'utf8');
+  const manifestEntries = await Promise.all(all.map(async (item) => {
+    const entry = { ...item };
+    delete entry.prompt;
+    entry.available = await fileExists(entry.output);
+    return entry;
+  }));
+
   await fs.writeFile(outManifest, JSON.stringify({
     generatedAt: new Date().toISOString(),
     sheet: { width: 1024, height: 1024, frameWidth: 256, frameHeight: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
     counts: { heroes: heroEntries.length, bosses: bossEntries.length, total: all.length },
-    entries: all.map((item) => {
-      const entry = { ...item };
-      delete entry.prompt;
-      return entry;
-    })
+    availableCounts: {
+      heroes: manifestEntries.filter(entry => entry.kind === 'hero' && entry.available).length,
+      bosses: manifestEntries.filter(entry => entry.kind === 'boss' && entry.available).length,
+      total: manifestEntries.filter(entry => entry.available).length
+    },
+    entries: manifestEntries
   }, null, 2), 'utf8');
   await fs.rm(tmpDir, { recursive: true, force: true });
   console.log(`Wrote ${all.length} sprite prompts (${heroEntries.length} heroes, ${bossEntries.length} bosses).`);
