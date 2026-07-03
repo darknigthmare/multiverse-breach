@@ -34,7 +34,7 @@ const mediaItemFlavor = {
   },
   manga: {
     offense: { fr: 'technique d arc compressee en frappe ramassable', en: 'arc technique compressed into a pickup strike' },
-    defense: { fr: 'talisman de progression qui retient la transformation', en: 'progression talisman that restrains transformation' },
+    defense: { fr: 'talisman d arc qui retient la transformation', en: 'arc talisman that restrains transformation' },
     tempo: { fr: 'signal de power-up qui pousse le rythme du duel', en: 'power-up signal that pushes duel tempo' }
   },
   music: {
@@ -141,7 +141,7 @@ const makeGenericItem = (universe, index, color) => {
       name: { fr: `Relique d impact ${title.fr}`, en: `${title.en} Impact Relic` },
       desc: {
         fr: `${title.fr}: ${flavor.offense.fr}. Le Nexus l autorise en melee comme declencheur lisible, pas comme simple bonus abstrait.`,
-        en: `${title.en}: ${flavor.offense.en}. The Nexus allows it in melee as a readable trigger, not a generic stat bonus.`
+        en: `${title.en}: ${flavor.offense.en}. The Nexus allows it in melee as a readable trigger, not an abstract bonus.`
       },
       effect: { damage: 26, charge: 8 }
     },

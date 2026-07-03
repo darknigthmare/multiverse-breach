@@ -11,7 +11,7 @@ import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
-import { getBattleItemLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription } from '../game/loreDescriptions';
+import { getBattleItemLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 
 export default function HubScreen({
@@ -64,6 +64,20 @@ export default function HubScreen({
   const isAssetDisabled = useCallback((type, id) => disabledAssetSets[type]?.has(String(id)), [disabledAssetSets]);
   const getEnemyAdminKey = useCallback((universe, enemy) => `${universe}::${enemy?.name || 'unknown'}`, []);
   const getStageAdminKey = useCallback((stage) => String(stage?.id), []);
+  const getUniverseFaction = useCallback((universe) => {
+    const direct = Object.entries(EXPANDED_FACTION_UNIVERSES)
+      .find(([, universes]) => universes.includes(universe));
+    if (direct) return direct[0];
+    const mediaType = LORE_DB[universe]?.mediaType;
+    if (mediaType === 'music') return 'stage';
+    if (mediaType === 'manga') return 'arcane';
+    if (['Alien', 'Predator', 'Prometheus', 'Stargate', 'Halo', 'Mass Effect', 'Gears of War', 'Star Wars', 'The Fifth Element'].includes(universe)) return 'sciFi';
+    if (['Resident Evil', 'Silent Hill', 'Saw', 'Hellraiser', 'Dead Space', 'Chucky', 'Slender Man'].includes(universe)) return 'horror';
+    if (['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus', 'Digimon'].includes(universe)) return 'cyber';
+    if (['Metal Gear', 'Payday', 'Yu-Gi-Oh', 'Guilty Gear', 'BlazBlue', 'Unreal'].includes(universe)) return 'tactical';
+    if (['Mad Max', 'Fallout'].includes(universe)) return 'apocalypse';
+    return 'unknown';
+  }, []);
   const setAssetDisabled = useCallback((type, id, hidden) => {
     if (!setDisabledAssets) return;
     const key = String(id);
@@ -1189,7 +1203,7 @@ export default function HubScreen({
       });
       return next;
     });
-    notifyNexus(lang === 'fr' ? 'Cache d arc ouverte: skins, item special et passif Nexus ajoutes.' : 'Arc cache opened: skins, special item, and Nexus passive added.', 'success');
+    notifyNexus(lang === 'fr' ? 'Cache d arc ouverte: apparences, trace speciale et passif Nexus graves.' : 'Arc cache opened: appearances, special trace, and Nexus passive engraved.', 'success');
     sound.playSfx('levelup');
   };
 
@@ -1231,11 +1245,24 @@ export default function HubScreen({
   const selectedHeroStats = getHeroStats(selectedHero);
   const selectedPlaque = getCharacterPlaque(selectedHero);
   const selectedLore = LORE_DB[selectedHero.universe];
-  const selectedOriginBase = selectedLore?.desc?.[lang] || (
-    lang === 'fr'
-      ? `Monde source indexe par le Nexus: ${selectedHero.universe}. Les archives locales restent partielles, mais la signature de ce personnage confirme une origine stable dans cette realite.`
-      : `Source world indexed by the Nexus: ${selectedHero.universe}. Local archives remain partial, but this character signature confirms a stable origin in that reality.`
-  );
+  const selectedOriginBase = getUniverseLoreDescription({
+    universe: selectedHero.universe,
+    lang,
+    lore: selectedLore,
+    faction: getUniverseFaction(selectedHero.universe),
+    cleared: completedStages.includes(UNIVERSE_TO_STAGE_ID[selectedHero.universe]),
+    heroCount: HEROES_DB.filter(hero => hero.universe === selectedHero.universe).length,
+    enemyCount: ENEMIES_DB[selectedHero.universe]
+      ? [
+        ...(ENEMIES_DB[selectedHero.universe].monsters || []),
+        ...(ENEMIES_DB[selectedHero.universe].bosses || []),
+        ENEMIES_DB[selectedHero.universe].worldBoss
+      ].filter(Boolean).length
+      : 0,
+    relicCount: EQUIP_ITEMS_DB.filter(item => item.universe === selectedHero.universe).length,
+    stageCount: 1,
+    arcCount: CHARACTER_NARRATIVE_ARCS.filter(arc => arc.heroId === selectedHero.id).length
+  });
   const selectedOriginLore = lang === 'fr'
     ? `Trame d origine: ${selectedHero.universe}. ${selectedOriginBase} A.R.C.A. conserve cette memoire pour que le heros ne devienne pas une copie vide pendant la Compression de Resonance.`
     : `Origin Thread: ${selectedHero.universe}. ${selectedOriginBase} A.R.C.A. preserves this memory so the hero does not become an empty copy during Resonance Compression.`;
@@ -1365,8 +1392,8 @@ export default function HubScreen({
         id: mission.itemId,
         name: mission.item,
         desc: {
-          fr: `${mission.item.fr} est une preuve de fusion extraite de ${mission.title.fr}. Elle garde la memoire croisee de ${mission.sourceUniverses?.join(' / ') || 'plusieurs Trames'} et sert de matrice pour skins, passifs, craft d arcs et futures missions hybrides.`,
-          en: `${mission.item.en} is fusion proof extracted from ${mission.title.en}. It preserves crossed memory from ${mission.sourceUniverses?.join(' / ') || 'multiple Threads'} and acts as a matrix for skins, passives, arc crafting, and future hybrid missions.`
+          fr: `${mission.item.fr} est une preuve de fusion extraite de ${mission.title.fr}. Elle garde la memoire croisee de ${mission.sourceUniverses?.join(' / ') || 'plusieurs Trames'} et sert de matrice pour apparences, passifs de faction, arcs scelles et futures missions hybrides.`,
+          en: `${mission.item.en} is fusion proof extracted from ${mission.title.en}. It preserves crossed memory from ${mission.sourceUniverses?.join(' / ') || 'multiple Threads'} and acts as a matrix for appearances, faction passives, sealed arcs, and future hybrid missions.`
         }
       }
     ]),
@@ -1400,7 +1427,7 @@ export default function HubScreen({
     { id: 'all', label: { fr: 'Tout', en: 'All' }, count: getGearInInventory().length + getEventItemsInInventory().length + getSpecialNexusItemsInInventory().length },
     { id: 'gear', label: { fr: 'Reliques', en: 'Relics' }, count: getGearInInventory().length },
     { id: 'event', label: { fr: 'Evenements', en: 'Events' }, count: getEventItemsInInventory().length },
-    { id: 'nexus', label: { fr: 'Nexus/skins', en: 'Nexus/skins' }, count: getSpecialNexusItemsInInventory().length }
+    { id: 'nexus', label: { fr: 'Nexus/apparences', en: 'Nexus/appearances' }, count: getSpecialNexusItemsInInventory().length }
   ];
   const visibleGearItems = inventoryFilter === 'all' || inventoryFilter === 'gear' ? getGearInInventory() : [];
   const visibleEventItems = inventoryFilter === 'all' || inventoryFilter === 'event' ? getEventItemsInInventory() : [];
@@ -1678,9 +1705,24 @@ export default function HubScreen({
       return hero?.universe === universe;
     });
     const franchiseCollections = collectionProgress.filter(collection => collection.universes.includes(universe));
+    const faction = getUniverseFaction(universe);
+    const arcCount = universeArcs.length + characterArcs.length + franchiseCollections.length;
     return {
       universe,
       lore,
+      faction,
+      loreBrief: getUniverseLoreDescription({
+        universe,
+        lang,
+        lore,
+        faction,
+        cleared: !stageId || completedStages.includes(stageId),
+        heroCount: heroes.length,
+        enemyCount: allEnemies.length,
+        relicCount: relics.length + (eventItem ? 1 : 0) + battleItems.length,
+        stageCount: stages.length,
+        arcCount
+      }),
       stageId,
       cleared: !stageId || completedStages.includes(stageId),
       hidden: hiddenUniverseSet.has(universe),
@@ -3168,8 +3210,8 @@ export default function HubScreen({
                       </div>
                       <div style={{ marginTop: '4px', fontSize: '11px', color: '#aeb8c2', lineHeight: 1.35 }}>
                         {lang === 'fr'
-                          ? 'Les skins viennent des recompenses d arcs et stabilisent la signature visuelle du heros.'
-                          : 'Skins come from arc rewards and stabilize the hero visual signature.'}
+                          ? 'Les apparences viennent des traces d arcs et stabilisent la signature visuelle du heros.'
+                          : 'Appearances come from arc traces and stabilize the hero visual signature.'}
                       </div>
                     </div>
                     <div style={{ flexShrink: 0, fontSize: '10px', color: selectedHero.primaryColor, textTransform: 'uppercase' }}>
@@ -3306,11 +3348,11 @@ export default function HubScreen({
           <div className="glass-panel squad-panel" style={{ marginBottom: '14px' }}>
             <div className="squad-header">
               <div>
-                <h3>{lang === 'fr' ? 'Profil public / futur multijoueur' : 'Public profile / future multiplayer'}</h3>
+                <h3>{lang === 'fr' ? 'Carte d Ancre / futures cellules' : 'Anchor card / future cells'}</h3>
                 <p>
                   {lang === 'fr'
-                    ? 'Prepare une carte de commandant partageable: progression, collection et escouade active.'
-                    : 'Prepare a shareable commander card: progress, collection, and active squad.'}
+                    ? 'Prepare une carte de commandant partageable: trace Nexus, collection et cellule active.'
+                    : 'Prepare a shareable commander card: Nexus trace, collection, and active cell.'}
                 </p>
               </div>
               <button
@@ -3345,7 +3387,7 @@ export default function HubScreen({
                   <div><span>{lang === 'fr' ? 'Heros' : 'Heroes'}</span><strong>{collectionSummary.heroes}/{collectionSummary.totalHeroes}</strong></div>
                   <div><span>{lang === 'fr' ? 'Mondes' : 'Worlds'}</span><strong>{collectionSummary.worlds}</strong></div>
                   <div><span>{lang === 'fr' ? 'Arcs' : 'Arcs'}</span><strong>{collectionSummary.arcs}</strong></div>
-                  <div><span>{lang === 'fr' ? 'Skins' : 'Skins'}</span><strong>{collectionSummary.skins}</strong></div>
+                  <div><span>{lang === 'fr' ? 'Apparences' : 'Appearances'}</span><strong>{collectionSummary.skins}</strong></div>
                 </div>
               </div>
             </div>
@@ -4597,9 +4639,7 @@ export default function HubScreen({
                   </button>
                 </div>
                 <p style={{ color: '#d8d8d8', fontSize: '11px', lineHeight: 1.45, margin: '12px 0 0' }}>
-                  {selectedUniverseArchive.lore?.desc?.[lang] || (lang === 'fr'
-                    ? 'Archive partielle: le Nexus possede les donnees de combat mais attend une stabilisation complete.'
-                    : 'Partial archive: the Nexus has combat data but awaits full stabilization.')}
+                  {selectedUniverseArchive.loreBrief}
                 </p>
               </div>
 
@@ -4693,7 +4733,7 @@ export default function HubScreen({
 
                   <div style={{ padding: '12px', border: '1px solid rgba(255,235,59,0.26)', background: 'rgba(255,235,59,0.05)', borderRadius: '5px' }}>
                     <strong style={{ color: '#ffeb3b', fontSize: '11px', textTransform: 'uppercase' }}>
-                      {lang === 'fr' ? 'Items melee / tactique' : 'Melee / tactics items'}
+                      {lang === 'fr' ? 'Artefacts melee / tactique' : 'Melee / tactics artifacts'}
                     </strong>
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.battleItems.map(item => (
@@ -4997,7 +5037,33 @@ export default function HubScreen({
                   const ustageId = UNIVERSE_TO_STAGE_ID[key];
                   const isCleared = !ustageId || completedStages.includes(ustageId);
                   const bossIntel = ENEMIES_DB[key]?.worldBoss || ENEMIES_DB[key]?.bosses?.[0];
+                  const enemyCount = ENEMIES_DB[key]
+                    ? [
+                      ...(ENEMIES_DB[key].monsters || []),
+                      ...(ENEMIES_DB[key].bosses || []),
+                      ENEMIES_DB[key].worldBoss
+                    ].filter(Boolean).length
+                    : 0;
+                  const relicCount = EQUIP_ITEMS_DB.filter(item => item.universe === key).length + (EVENT_ITEMS_DB[key] ? 1 : 0);
+                  const stageCount = STAGES.filter(stage => stage.universe === key || stage.sourceUniverses?.includes(key)).length;
+                  const linkedArcCount = UNIVERSE_NARRATIVE_ARCS.filter(arc => arc.universes.includes(key)).length
+                    + CHARACTER_NARRATIVE_ARCS.filter(arc => {
+                      const hero = ALL_HEROES_DB.find(item => item.id === arc.heroId);
+                      return hero?.universe === key;
+                    }).length;
                   const battleItems = getBattleItemsForUniverse(key);
+                  const universeBrief = getUniverseLoreDescription({
+                    universe: key,
+                    lang,
+                    lore,
+                    faction: getUniverseFaction(key),
+                    cleared: isCleared,
+                    heroCount: universeHeroes.length,
+                    enemyCount,
+                    relicCount: relicCount + battleItems.length,
+                    stageCount,
+                    arcCount: linkedArcCount
+                  });
                   
                   return (
                     <div key={key} style={{
@@ -5020,13 +5086,13 @@ export default function HubScreen({
                         </div>
                         <div style={{ marginBottom: '8px' }}>
                           <span style={{ fontSize: '9px', fontWeight: 'bold', color: isCleared ? '#2ecc71' : '#e74c3c' }}>
-                            {isCleared 
-                              ? (lang === 'fr' ? '✔ DÉCRYPTÉ (+5% Stats)' : '✔ DECRYPTED (+5% Stats)') 
-                              : (lang === 'fr' ? `🔒 CLASSIFIÉ (Niveau ${ustageId})` : `🔒 CLASSIFIED (Stage ${ustageId})`)}
+                            {isCleared
+                              ? (lang === 'fr' ? 'TRACE A.R.C.A. STABILISEE' : 'A.R.C.A. TRACE STABILIZED')
+                              : (lang === 'fr' ? `COORDONNEES SCELLEES: faille ${ustageId}` : `SEALED COORDINATES: breach ${ustageId}`)}
                           </span>
                         </div>
                         <div style={{ fontSize: '11px', color: isCleared ? '#ccc' : '#555', lineHeight: '1.4', marginBottom: '10px', fontFamily: isCleared ? 'inherit' : 'Courier New', wordBreak: 'break-all' }}>
-                          {isCleared ? lore.desc[lang] : encryptString(lore.desc[lang])}
+                          {isCleared ? universeBrief : encryptString(universeBrief)}
                         </div>
                         {bossIntel && (
                           <div style={{
@@ -5040,10 +5106,10 @@ export default function HubScreen({
                             lineHeight: 1.35
                           }}>
                             <strong style={{ color: isCleared ? '#e74c3c' : '#555' }}>
-                              {lang === 'fr' ? 'Boss décrypté' : 'Decrypted boss'}:
+                              {lang === 'fr' ? 'Noyau hostile indexe' : 'Indexed hostile core'}:
                             </strong> {isCleared ? bossIntel.name : encryptString(bossIntel.name)}
                             <br />
-                            {isCleared ? `HP ${bossIntel.hp} | ATK ${bossIntel.atk} | ${bossIntel.special}` : encryptString('Classified boss pattern')}
+                            {isCleared ? `HP ${bossIntel.hp} | ATK ${bossIntel.atk} | ${bossIntel.special}` : encryptString(lang === 'fr' ? 'Pattern hostile scelle' : 'Sealed hostile pattern')}
                           </div>
                         )}
                         <div style={{
@@ -5054,7 +5120,7 @@ export default function HubScreen({
                           borderRadius: '4px'
                         }}>
                           <div style={{ fontSize: '9px', color: isCleared ? '#ffeb3b' : '#555', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase' }}>
-                            {lang === 'fr' ? 'Items melee / tactique' : 'Melee / tactics items'}
+                            {lang === 'fr' ? 'Artefacts melee / tactique' : 'Melee / tactics artifacts'}
                           </div>
                           <div style={{ display: 'grid', gap: '4px' }}>
                             {battleItems.map(item => (

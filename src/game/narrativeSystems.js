@@ -10,7 +10,7 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'La chasse reste ouverte, mais le Voile n est plus un nid.', en: 'The hunt remains open, but the Veil is no longer a nest.' },
     rewards: [
-      { id: 'arc_xeno_skin_acid_armor', type: 'skin', name: { fr: 'Skin Armure Acide', en: 'Acid Armor Skin' } },
+      { id: 'arc_xeno_skin_acid_armor', type: 'skin', name: { fr: 'Apparence Armure Acide', en: 'Acid Armor Appearance' } },
       { id: 'arc_xeno_item_corroded_plasma', type: 'item', name: { fr: 'Lame Plasma Corrodee', en: 'Corroded Plasma Blade' } }
     ],
     claimReward: { gold: 500, shards: 90, tokens: 4 }
@@ -24,7 +24,7 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'Le Nexus retrouve une frequence: chaque victoire a maintenant un battement.', en: 'The Nexus finds a frequency again: every victory now has a beat.' },
     rewards: [
-      { id: 'arc_stage_skin_neon_persona', type: 'skin', name: { fr: 'Skin Neon Persona', en: 'Neon Persona Skin' } },
+      { id: 'arc_stage_skin_neon_persona', type: 'skin', name: { fr: 'Apparence Neon Persona', en: 'Neon Persona Appearance' } },
       { id: 'arc_stage_item_anchor_microphone', type: 'item', name: { fr: 'Micro d Ancrage', en: 'Anchor Microphone' } }
     ],
     claimReward: { gold: 420, shards: 80, tokens: 5 }
@@ -38,7 +38,7 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'Le Nexus possede enfin une armee, mais pas encore une paix.', en: 'The Nexus finally has an army, but not yet peace.' },
     rewards: [
-      { id: 'arc_scifi_skin_atrium_bulwark', type: 'skin', name: { fr: 'Skin Rempart Atrium', en: 'Atrium Bulwark Skin' } },
+      { id: 'arc_scifi_skin_atrium_bulwark', type: 'skin', name: { fr: 'Apparence Rempart Atrium', en: 'Atrium Bulwark Appearance' } },
       { id: 'arc_scifi_item_sgc_n7_plate', type: 'item', name: { fr: 'Plaque de Commandement SGC/N7', en: 'SGC/N7 Command Plate' } }
     ],
     claimReward: { gold: 460, shards: 85, tokens: 4 }
@@ -52,7 +52,7 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'Les traces memoire possedent maintenant une chambre de secours.', en: 'Memory traces now have a backup chamber.' },
     rewards: [
-      { id: 'arc_cyber_skin_zone_404', type: 'skin', name: { fr: 'Skin Zone 404', en: 'Zone 404 Skin' } },
+      { id: 'arc_cyber_skin_zone_404', type: 'skin', name: { fr: 'Apparence Zone 404', en: 'Zone 404 Appearance' } },
       { id: 'arc_cyber_item_firewall_fragment', type: 'item', name: { fr: 'Fragment de Pare-feu Narratif', en: 'Narrative Firewall Fragment' } }
     ],
     claimReward: { gold: 440, shards: 85, tokens: 4 }
@@ -66,7 +66,7 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     outro: { fr: 'Une peur nommee reste dangereuse, mais elle cesse d etre infinie.', en: 'A named fear remains dangerous, but stops being infinite.' },
     rewards: [
-      { id: 'arc_fear_skin_black_archive', type: 'skin', name: { fr: 'Skin Archive Noire', en: 'Black Archive Skin' } },
+      { id: 'arc_fear_skin_black_archive', type: 'skin', name: { fr: 'Apparence Archive Noire', en: 'Black Archive Appearance' } },
       { id: 'arc_fear_item_origin_lamp', type: 'item', name: { fr: 'Lampe d Origine', en: 'Origin Lamp' } }
     ],
     claimReward: { gold: 430, shards: 80, tokens: 4 }
@@ -84,8 +84,8 @@ export const UNIVERSE_NARRATIVE_ARCS = [
       { fr: 'Recuperer une carte ancienne dans Atlantis avant la derive.', en: 'Recover an Ancient map in Atlantis before drift.' },
       { fr: 'Forcer le Destiny a transmettre un Eclat d Origine.', en: 'Force Destiny to transmit an Origin Shard.' }
     ],
-    outro: { fr: 'Le reseau devient une colonne vertebrale de voyage pour les futures missions multijoueur.', en: 'The network becomes a travel backbone for future multiplayer missions.' },
-    reward: { fr: 'Skin Iris Nexus + Relique Chevron Huit', en: 'Nexus Iris Skin + Eighth Chevron Relic' }
+    outro: { fr: 'Le reseau devient une colonne vertebrale de voyage pour les futures cellules partagees.', en: 'The network becomes a travel backbone for future shared cells.' },
+    reward: { fr: 'Apparence Iris Nexus + Relique Chevron Huit', en: 'Nexus Iris Appearance + Eighth Chevron Relic' }
   },
   {
     id: 'lab_disasters',
@@ -98,7 +98,7 @@ export const UNIVERSE_NARRATIVE_ARCS = [
       { fr: 'Fermer le Laboratoire Zero.', en: 'Close Laboratory Zero.' }
     ],
     outro: { fr: 'A.R.C.A. cree les Protocoles de confinement permanents.', en: 'A.R.C.A. creates permanent containment protocols.' },
-    reward: { fr: 'Item Chambre Blanche + skin Combinaison Nexus', en: 'White Chamber Item + Nexus Suit Skin' }
+    reward: { fr: 'Trace Chambre Blanche + Apparence Combinaison Nexus', en: 'White Chamber Trace + Nexus Suit Appearance' }
   },
   {
     id: 'watcher_hellmouth',
@@ -111,7 +111,7 @@ export const UNIVERSE_NARRATIVE_ARCS = [
       { fr: 'Sceller une boite infernale avant qu elle ne devienne portail permanent.', en: 'Seal an infernal box before it becomes a permanent portal.' }
     ],
     outro: { fr: 'La magie devient une discipline de stabilisation, pas seulement une exception.', en: 'Magic becomes a stabilization discipline, not only an exception.' },
-    reward: { fr: 'Relique Pieu d Origine + skin Cercle Nexus', en: 'Origin Stake Relic + Nexus Circle Skin' }
+    reward: { fr: 'Relique Pieu d Origine + Apparence Cercle Nexus', en: 'Origin Stake Relic + Nexus Circle Appearance' }
   },
   {
     id: 'anime_judgment_cell',
@@ -124,7 +124,7 @@ export const UNIVERSE_NARRATIVE_ARCS = [
       { fr: 'Forcer un corps cybernetique a choisir le sauvetage plutot que l effacement.', en: 'Force a cybernetic body to choose rescue over erasure.' }
     ],
     outro: { fr: 'Le Nexus inscrit une regle: aucune optimisation ne remplace le choix de proteger.', en: 'The Nexus writes one rule: no optimization replaces the choice to protect.' },
-    reward: { fr: 'Serum de Trame + skin Cellule Blindee', en: 'Thread Serum + Armored Cell Skin' }
+    reward: { fr: 'Serum de Trame + Apparence Cellule Blindee', en: 'Thread Serum + Armored Cell Appearance' }
   }
 ];
 
@@ -144,7 +144,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Porter une relique de Trame sans perdre son identite.', en: 'Carry a Thread relic without losing identity.' },
       { fr: 'Resister a une tentative de suppression du Sans-Auteur.', en: 'Resist an Authorless deletion attempt.' }
     ],
-    outro: { fr: 'L Ancre devient commandant, archive vivante et cle du futur multijoueur.', en: 'The Anchor becomes commander, living archive, and key to future multiplayer.' },
+    outro: { fr: 'L Ancre devient commandant, archive vivante et cle des futures cellules partagees.', en: 'The Anchor becomes commander, living archive, and key to future shared cells.' },
     reward: { fr: 'Titre Profil: Ancre Prime', en: 'Profile Title: Prime Anchor' },
     rewardItemId: 'char_player_anchor_prime'
   },
@@ -164,7 +164,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Faire taire un Strider avant qu il ne marque le Nexus.', en: 'Silence a Strider before it marks the Nexus.' }
     ],
     outro: { fr: 'Le silence de Freeman devient un langage que le Nexus comprend.', en: 'Freeman silence becomes a language the Nexus understands.' },
-    reward: { fr: 'Skin HEV Nexus + Module Long Jump instable', en: 'Nexus HEV Skin + Unstable Long Jump Module' },
+    reward: { fr: 'Apparence HEV Nexus + Module Long Jump instable', en: 'Nexus HEV Appearance + Unstable Long Jump Module' },
     rewardItemId: 'char_freeman_hev_nexus'
   },
   {
@@ -183,7 +183,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Abattre un Scarab recode avant qu il ne grave le symbole du Sans-Auteur.', en: 'Destroy a recoded Scarab before it brands the Authorless symbol.' }
     ],
     outro: { fr: 'Le Chief devient le protocole vivant du Rempart Atrium.', en: 'The Chief becomes the living protocol of the Atrium Bulwark.' },
-    reward: { fr: 'Skin Mjolnir Atrium + balise Cortana fantome', en: 'Atrium Mjolnir Skin + Ghost Cortana Beacon' },
+    reward: { fr: 'Apparence Mjolnir Atrium + balise Cortana fantome', en: 'Atrium Mjolnir Appearance + Ghost Cortana Beacon' },
     rewardItemId: 'char_masterchief_atrium'
   },
   {
@@ -202,7 +202,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Affronter une reine qui pond des souvenirs au lieu de xenomorphes.', en: 'Face a queen laying memories instead of xenomorphs.' }
     ],
     outro: { fr: 'La ruche perd son droit de recommencer l histoire de Ripley.', en: 'The hive loses its right to restart Ripley story.' },
-    reward: { fr: 'Skin Loader Nexus + cle de sas colonial', en: 'Nexus Loader Skin + Colonial Airlock Key' },
+    reward: { fr: 'Apparence Loader Nexus + cle de sas colonial', en: 'Nexus Loader Appearance + Colonial Airlock Key' },
     rewardItemId: 'char_ripley_loader_nexus'
   },
   {
@@ -221,7 +221,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Vaincre le Sans-Visage dans une arene sans public ni memoire.', en: 'Defeat the Faceless in an arena without audience or memory.' }
     ],
     outro: { fr: 'La chasse reste brutale, mais elle redevient lisible: proie, chasseur, regle.', en: 'The hunt remains brutal, but becomes readable again: prey, hunter, rule.' },
-    reward: { fr: 'Skin Traqueur de Faille + masque rituel', en: 'Rift Stalker Skin + Ritual Mask' },
+    reward: { fr: 'Apparence Traqueur de Faille + masque rituel', en: 'Rift Stalker Appearance + Ritual Mask' },
     rewardItemId: 'char_predator_rift_stalker'
   },
   {
@@ -240,7 +240,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Abattre un Tyran qui protege un seuil de retour corrompu.', en: 'Take down a Tyrant guarding a corrupted return threshold.' }
     ],
     outro: { fr: 'Leon transforme les portes du Nexus en promesses de retour, pas en pieges.', en: 'Leon turns Nexus doors into promises of return, not traps.' },
-    reward: { fr: 'Skin R.P.D. Nexus + cle ruban encreur', en: 'Nexus R.P.D. Skin + Ink Ribbon Key' },
+    reward: { fr: 'Apparence R.P.D. Nexus + cle ruban encreur', en: 'Nexus R.P.D. Appearance + Ink Ribbon Key' },
     rewardItemId: 'char_leon_rpd_nexus'
   },
   {
@@ -259,7 +259,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Affronter l Agent Racine dans une matrice sans sortie rouge ou bleue.', en: 'Face the Root Agent in a matrix with no red or blue exit.' }
     ],
     outro: { fr: 'Le choix devient une mecanique: le Nexus accepte enfin l imprevisible.', en: 'Choice becomes a mechanic: the Nexus finally accepts the unpredictable.' },
-    reward: { fr: 'Skin Code Libre + fragment de Source', en: 'Free Code Skin + Source Fragment' },
+    reward: { fr: 'Apparence Code Libre + fragment de Source', en: 'Free Code Appearance + Source Fragment' },
     rewardItemId: 'char_neo_free_code'
   },
   {
@@ -278,7 +278,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Fermer une Porte miroir avant qu un faux SGC envahisse le hub.', en: 'Close a mirror Gate before a false SGC invades the hub.' }
     ],
     outro: { fr: 'Le huitieme chevron devient une route tactique vers les arcs Stargate.', en: 'The eighth chevron becomes a tactical road into Stargate arcs.' },
-    reward: { fr: 'Skin SGC Nexus + patch Chevron Huit', en: 'Nexus SGC Skin + Eighth Chevron Patch' },
+    reward: { fr: 'Apparence SGC Nexus + patch Chevron Huit', en: 'Nexus SGC Appearance + Eighth Chevron Patch' },
     rewardItemId: 'char_oneill_sgc_nexus'
   },
   {
@@ -297,7 +297,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Sortir d une boucle Aperture qui promet une recompense impossible.', en: 'Escape an Aperture loop promising an impossible reward.' }
     ],
     outro: { fr: 'Le Nexus apprend que survivre peut etre une forme de reponse.', en: 'The Nexus learns survival can be a form of answer.' },
-    reward: { fr: 'Skin Chambre Blanche + botte Long Fall instable', en: 'White Room Skin + Unstable Long Fall Boot' },
+    reward: { fr: 'Apparence Chambre Blanche + botte Long Fall instable', en: 'White Room Appearance + Unstable Long Fall Boot' },
     rewardItemId: 'char_chell_white_room'
   },
   {
@@ -316,7 +316,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Sceller une Bouche d Enfer qui veut avaler les traces memoire.', en: 'Seal a Hellmouth trying to swallow memory traces.' }
     ],
     outro: { fr: 'La Tueuse ne porte plus seule la fin du monde: l escouade porte la ligne avec elle.', en: 'The Slayer no longer carries the end of the world alone: the squad holds the line with her.' },
-    reward: { fr: 'Skin Tueuse Nexus + pieu d Origine', en: 'Nexus Slayer Skin + Origin Stake' },
+    reward: { fr: 'Apparence Tueuse Nexus + pieu d Origine', en: 'Nexus Slayer Appearance + Origin Stake' },
     rewardItemId: 'char_buffy_nexus_slayer'
   },
   {
@@ -335,7 +335,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Affronter un empire miroir construit a partir de ses pires choix.', en: 'Face a mirror empire built from his worst choices.' }
     ],
     outro: { fr: 'A.R.C.A. classe Walter comme ressource puissante et risque permanent.', en: 'A.R.C.A. classifies Walter as both powerful resource and permanent risk.' },
-    reward: { fr: 'Skin Combinaison Bleue + catalyseur de Trame', en: 'Blue Suit Skin + Thread Catalyst' },
+    reward: { fr: 'Apparence Combinaison Bleue + catalyseur de Trame', en: 'Blue Suit Appearance + Thread Catalyst' },
     rewardItemId: 'char_walter_blue_formula'
   },
   {
@@ -354,7 +354,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
       { fr: 'Arreter le Commissaire de Continuite sans comprendre l accusation.', en: 'Arrest the Continuity Commissioner without understanding the accusation.' }
     ],
     outro: { fr: 'Le Nexus archive Frank comme anomalie comique utile: une faille qui referme les autres par accident.', en: 'The Nexus archives Frank as a useful comic anomaly: a breach that closes others by accident.' },
-    reward: { fr: 'Skin Brigade Nexus + plaque mal classee', en: 'Nexus Squad Skin + Misfiled Badge' },
+    reward: { fr: 'Apparence Brigade Nexus + plaque mal classee', en: 'Nexus Squad Appearance + Misfiled Badge' },
     rewardItemId: 'char_drebin_wrong_case'
   }
 ];
@@ -462,8 +462,8 @@ const GENERATED_CHARACTER_NARRATIVE_ARCS = HEROES_DB
         en: `${hero.name} keeps their ${hero.universe} memory, but gains a clear function inside Breach Multiverse.`
       },
       reward: {
-        fr: `Skin ${hero.name} Nexus + ${profile.reward.fr}`,
-        en: `${hero.name} Nexus Skin + ${profile.reward.en}`
+        fr: `Apparence ${hero.name} Nexus + ${profile.reward.fr}`,
+        en: `${hero.name} Nexus Appearance + ${profile.reward.en}`
       },
       rewardItemId: `char_auto_${slug}_nexus`
     };
@@ -714,9 +714,9 @@ export const FUSION_MISSIONS = [
 ];
 
 export const SPECIAL_EVENTS = [
-  { id: 'thousand_portals', title: { fr: 'Nuit des Mille Portails', en: 'Night of a Thousand Portals' }, reward: { fr: 'Jetons evenement + skin Voile Fissure', en: 'Event tokens + Fractured Veil skin' } },
+  { id: 'thousand_portals', title: { fr: 'Nuit des Mille Portails', en: 'Night of a Thousand Portals' }, reward: { fr: 'Jetons evenement + apparence Voile Fissure', en: 'Event tokens + Fractured Veil appearance' } },
   { id: 'zone_404_week', title: { fr: 'Semaine Zone 404', en: 'Zone 404 Week' }, reward: { fr: 'Relique Pare-feu et bonus vitesse cyber', en: 'Firewall relic and cyber speed bonus' } },
-  { id: 'yautja_hunt', title: { fr: 'Chasse Yautja', en: 'Yautja Hunt' }, reward: { fr: 'Trophees, plasma et skin traqueur', en: 'Trophies, plasma, and hunter skin' } }
+  { id: 'yautja_hunt', title: { fr: 'Chasse Yautja', en: 'Yautja Hunt' }, reward: { fr: 'Trophees, plasma et apparence traqueur', en: 'Trophies, plasma, and hunter appearance' } }
 ];
 
 export const REPUTATION_TRACKS = [

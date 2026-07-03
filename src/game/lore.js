@@ -51,22 +51,22 @@ export const CORE_CODEX_ENTRIES = [
     category: { en: 'Player Role', fr: 'Role joueur' },
     title: { en: 'The Anchored Ones', fr: 'Les Ancres' },
     desc: {
-      en: 'An Anchored One can hold several incompatible realities without dissolving. This is why the player can command displaced heroes, bind relics, and keep progression across unstable breaches.',
-      fr: 'Un Ancre peut contenir plusieurs realites incompatibles sans se dissoudre. C est pour cela que le joueur peut commander des heros deplaces, lier des reliques et garder sa progression entre des breches instables.'
+      en: 'An Anchored One can hold several incompatible realities without dissolving. This is why the player can command displaced heroes, bind relics, and keep a coherent Nexus trace across unstable breaches.',
+      fr: 'Un Ancre peut contenir plusieurs realites incompatibles sans se dissoudre. C est pour cela que le joueur peut commander des heros deplaces, lier des reliques et garder une trace Nexus coherente entre des breches instables.'
     }
   },
   {
     id: 'origin-shards',
-    category: { en: 'Progression', fr: 'Progression' },
+    category: { en: 'Nexus Matter', fr: 'Matiere Nexus' },
     title: { en: 'Origin Shards', fr: 'Eclats d Origine' },
     desc: {
-      en: 'Origin Shards are fragments of coherent history recovered after a breach. They justify summons, upgrades, account saves, and future multiplayer because they preserve what a Thread was before corruption.',
-      fr: 'Les Eclats d Origine sont des fragments d histoire coherente recuperes apres une breche. Ils justifient les invocations, ameliorations, sauvegardes de compte et le futur multijoueur car ils preservent ce qu une Trame etait avant la corruption.'
+      en: 'Origin Shards are fragments of coherent history recovered after a breach. A.R.C.A. uses them to anchor signatures, infuse relics, engrave Nexus traces, and one day let several Anchored Ones share the same stabilized memory.',
+      fr: 'Les Eclats d Origine sont des fragments d histoire coherente recuperes apres une breche. A.R.C.A. les utilise pour ancrer les signatures, infuser les reliques, graver les traces Nexus et, plus tard, permettre a plusieurs Ancres de partager une meme memoire stabilisee.'
     }
   },
   {
     id: 'compression',
-    category: { en: 'Gameplay Law', fr: 'Loi de gameplay' },
+    category: { en: 'Nexus Law', fr: 'Loi Nexus' },
     title: { en: 'Resonance Compression', fr: 'Compression de Resonance' },
     desc: {
       en: 'Compression of Resonance explains why legendary figures fight on equal playable scale. The Nexus reduces impossible power gaps while preserving signature abilities, roles, and weaknesses.',

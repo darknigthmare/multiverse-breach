@@ -1139,7 +1139,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               borderRadius: '4px'
             }}>
               <div style={{ fontSize: '10px', color: '#39c5bb', fontWeight: 'bold', marginBottom: '7px', textTransform: 'uppercase' }}>
-                {lang === 'fr' ? 'Items de terrain' : 'Stage items'}
+                {lang === 'fr' ? 'Artefacts de terrain' : 'Field artifacts'}
               </div>
               <div style={{ display: 'grid', gap: '6px' }}>
                 {battlePickups.map(item => (
