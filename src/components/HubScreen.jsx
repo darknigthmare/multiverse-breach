@@ -394,28 +394,124 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
   const playableHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 40), [safeHeroes, unlockedSet]);
   const [selectedHeroId, setSelectedHeroId] = useState(() => playableHeroes[0]?.id || safeHeroes[0]?.id || '');
+  const [runMode, setRunMode] = useState('extraction');
+  const [runSnapshot, setRunSnapshot] = useState({ phase: 'ready', hp: 100, ammo: 24, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
   const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || safeHeroes[0] || null;
-  const stateRef = useRef({ hp: 100, ammo: 24, kills: 0, enemies: [], t: 0, zone: 1, muzzle: 0 });
+  const stateRef = useRef({ phase: 'ready', hp: 100, armor: 0, ammo: 24, maxAmmo: 24, kills: 0, wave: 1, enemies: [], loot: [], t: 0, zone: 1, muzzle: 0, lane: 0, dash: 0, scan: 0, turret: 0, fragments: [], objective: null, result: null, rewards: null });
 
-  useEffect(() => {
-    if (selectedHero) {
-      const stats = selectedHero.stats || { hp: 120, atk: 12, def: 6, spd: 5 };
-      stateRef.current = {
-        hp: Math.min(220, Math.max(80, Math.round(stats.hp * 0.75))),
-        ammo: 24,
-        kills: 0,
-        enemies: Array.from({ length: 9 }, (_, index) => ({
-          x: (index - 4) * 0.42,
-          z: 2.2 + (index % 4) * 0.8,
-          hp: 24 + index * 4,
-          color: ['#e74c3c', '#9b59b6', '#39c5bb', '#ffb000'][index % 4]
-        })),
-        t: 0,
-        zone: 1,
-        muzzle: 0
+  const roleProfile = useMemo(() => ({
+    marine: { hp: 1.18, armor: 28, ammo: 1.35, dmg: 1.05, perk: lang === 'fr' ? 'Armure et munitions renforces' : 'Extra armor and ammunition' },
+    slayer: { hp: 1.03, armor: 8, ammo: 1, dmg: 1.25, perk: lang === 'fr' ? 'Degats proches et dash agressif' : 'Close damage and aggressive dash' },
+    hacker: { hp: 0.92, armor: 6, ammo: 1.05, dmg: 0.95, perk: lang === 'fr' ? 'Scan, ralentissement et pieges' : 'Scan, slow, and traps' },
+    horror: { hp: 1.08, armor: 10, ammo: 0.95, dmg: 1.08, perk: lang === 'fr' ? 'Vol de vie sur executions' : 'Lifedrain on executions' },
+    tactical: { hp: 1.04, armor: 18, ammo: 1.12, dmg: 1, perk: lang === 'fr' ? 'Radar, couverture et tourelle courte' : 'Radar, cover, and short turret' }
+  }), [lang]);
+
+  const weaponProfile = useMemo(() => {
+    const category = selectedHero?.category || 'marine';
+    if (selectedHero?.weaponType === 'melee' || category === 'slayer') return { name: lang === 'fr' ? 'Plaquette FPS: lame/shotgun de rupture' : 'FPS plaque: rupture blade/shotgun', color: '#ff5a36', fireRate: 1, spread: 0.18 };
+    if (category === 'hacker') return { name: lang === 'fr' ? 'Plaquette FPS: outil de scan anormal' : 'FPS plaque: anomaly scan tool', color: '#39c5bb', fireRate: 0.85, spread: 0.08 };
+    if (category === 'tactical') return { name: lang === 'fr' ? 'Plaquette FPS: carabine A.R.C.A.' : 'FPS plaque: A.R.C.A. carbine', color: '#9b59b6', fireRate: 1, spread: 0.1 };
+    if (category === 'horror') return { name: lang === 'fr' ? 'Plaquette FPS: relique sombre' : 'FPS plaque: dark relic', color: '#8e44ad', fireRate: 0.9, spread: 0.16 };
+    return { name: lang === 'fr' ? 'Plaquette FPS: fusil d Ancre' : 'FPS plaque: Anchor rifle', color: '#ffea00', fireRate: 1, spread: 0.12 };
+  }, [lang, selectedHero]);
+
+  const universeFragments = useMemo(() => {
+    const pool = Array.from(new Set(safeHeroes.map(hero => hero.universe).filter(Boolean)));
+    const seed = selectedHeroId.length + runMode.length;
+    return [0, 1, 2].map(index => pool[(seed + index * 7) % Math.max(1, pool.length)] || ['Raccoon City', 'Halo', 'Silent Hill'][index]);
+  }, [runMode, safeHeroes, selectedHeroId]);
+
+  const objectives = useMemo(() => ({
+    extraction: lang === 'fr' ? 'Stabiliser 3 balises puis survivre au Champion de Trame.' : 'Stabilize 3 beacons, then survive the Thread Champion.',
+    last_signal: lang === 'fr' ? 'Dernier Signal: eliminer toutes les signatures hostiles avant dissolution.' : 'Last Signal: eliminate every hostile signature before dissolution.',
+    infestation: lang === 'fr' ? 'Infestation: tenir le plus longtemps possible face aux essaims.' : 'Infestation: hold as long as possible against swarms.',
+    hunt: lang === 'fr' ? 'Chasse au Champion: faire apparaitre et abattre le noyau local.' : 'Champion Hunt: expose and kill the local core.'
+  }), [lang]);
+
+  const buildEnemies = useCallback((wave = 1, champion = false) => {
+    const archetypes = [
+      { kind: 'Traqueur', color: '#e74c3c', hp: 28, speed: 0.0025, dmg: 4, size: 1 },
+      { kind: 'Sniper', color: '#f1c40f', hp: 22, speed: 0.0015, dmg: 7, size: 0.86 },
+      { kind: 'Briseur', color: '#9b59b6', hp: 48, speed: 0.0018, dmg: 6, size: 1.18 },
+      { kind: 'Essaim', color: '#2ecc71', hp: 16, speed: 0.0032, dmg: 2, size: 0.72 }
+    ];
+    const count = champion ? 1 : 6 + wave * 2;
+    return Array.from({ length: count }, (_, index) => {
+      const base = champion
+        ? { kind: 'Champion de Trame', color: '#ffffff', hp: 180 + wave * 35, speed: 0.0014, dmg: 10, size: 1.55 }
+        : archetypes[(index + wave) % archetypes.length];
+      return {
+        ...base,
+        id: `${base.kind}-${wave}-${index}-${Date.now()}`,
+        x: (index - count / 2) * 0.34 + Math.sin(index) * 0.2,
+        z: 2.25 + (index % 5) * 0.72,
+        maxHp: base.hp + wave * 5,
+        hp: base.hp + wave * 5,
+        fragment: universeFragments[index % universeFragments.length],
+        shotTimer: 0
       };
-    }
-  }, [selectedHero]);
+    });
+  }, [universeFragments]);
+
+  const buildLoot = useCallback((wave = 1) => ([
+    { id: `heal-${wave}`, type: 'normal', label: lang === 'fr' ? 'Cache soin' : 'Heal cache', x: -0.58, z: 2.4, color: '#2ecc71' },
+    { id: `ammo-${wave}`, type: 'normal', label: lang === 'fr' ? 'Munitions' : 'Ammo', x: 0.54, z: 2.8, color: '#ffea00' },
+    { id: `summon-${wave}`, type: 'summon', label: lang === 'fr' ? 'PNJ temporaire' : 'Temporary NPC', x: -0.12, z: 3.25, color: '#39c5bb' },
+    { id: `ultimate-${wave}`, type: 'ultimate', label: lang === 'fr' ? 'Ultime univers' : 'Universe ultimate', x: 0.16, z: 3.75, color: '#e74c3c' }
+  ]), [lang]);
+
+  const startRun = useCallback(() => {
+    if (!selectedHero) return;
+    const stats = selectedHero.stats || { hp: 120, atk: 12, def: 6, spd: 5 };
+    const role = roleProfile[selectedHero.category] || roleProfile.marine;
+    const maxAmmo = Math.round(24 * role.ammo);
+    const next = {
+      phase: 'running',
+      hp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
+      maxHp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
+      armor: role.armor,
+      ammo: maxAmmo,
+      maxAmmo,
+      kills: 0,
+      wave: 1,
+      enemies: buildEnemies(1),
+      loot: buildLoot(1),
+      t: 0,
+      zone: 1,
+      muzzle: 0,
+      lane: 0,
+      dash: 0,
+      scan: selectedHero.category === 'hacker' ? 240 : 0,
+      turret: selectedHero.category === 'tactical' ? 420 : 0,
+      fragments: universeFragments,
+      objective: objectives[runMode],
+      result: null,
+      rewards: null
+    };
+    stateRef.current = next;
+    setRunSnapshot({ phase: next.phase, hp: next.hp, ammo: next.ammo, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
+    sound.playSfx('levelup');
+  }, [buildEnemies, buildLoot, objectives, roleProfile, runMode, selectedHero, universeFragments]);
+
+  const finishRun = useCallback((result) => {
+    const state = stateRef.current;
+    if (state.phase === 'ended') return;
+    const victory = result === 'victory';
+    const rewards = {
+      gold: victory ? 70 + state.wave * 22 + state.kills * 3 : 18 + state.kills,
+      shards: victory ? 24 + state.wave * 7 : 7 + Math.floor(state.kills / 2),
+      modeXp: victory ? 120 + state.wave * 30 : 35 + state.kills * 4,
+      title: victory
+        ? (lang === 'fr' ? 'Extraction A.R.C.A. reussie' : 'A.R.C.A. extraction successful')
+        : (lang === 'fr' ? 'Repli d Ancre: donnees conservees' : 'Anchor retreat: contact data preserved')
+    };
+    state.phase = 'ended';
+    state.result = result;
+    state.rewards = rewards;
+    setRunSnapshot({ phase: 'ended', hp: state.hp, ammo: state.ammo, kills: state.kills, wave: state.wave, loot: state.loot.filter(item => item.used).length, result, rewards });
+    sound.playSfx(victory ? 'victory' : 'defeat');
+  }, [lang]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -424,28 +520,86 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     let rafId = 0;
     const loop = () => {
       const state = stateRef.current;
-      state.t += 1;
-      state.zone = Math.max(0.22, 1 - state.t / 7200);
+      if (state.phase === 'running') {
+        state.t += 1;
+      }
+      state.zone = state.phase === 'running' ? Math.max(0.22, 1 - state.t / (runMode === 'infestation' ? 9000 : 6200)) : state.zone;
       state.muzzle = Math.max(0, state.muzzle - 1);
-      state.enemies = state.enemies.map((enemy, index) => ({
-        ...enemy,
-        x: enemy.x + Math.sin(state.t * 0.015 + index) * 0.003,
-        z: Math.max(0.62, enemy.z - 0.0018 * state.zone)
-      }));
-      if (state.t % 90 === 0 && state.enemies.some(enemy => enemy.z < 1.05)) {
-        state.hp = Math.max(0, state.hp - 3);
+      state.dash = Math.max(0, state.dash - 1);
+      state.scan = Math.max(0, state.scan - 1);
+      state.turret = Math.max(0, state.turret - 1);
+
+      if (state.phase === 'running') {
+        state.enemies = state.enemies.map((enemy, index) => {
+          const slow = state.scan > 0 ? 0.55 : 1;
+          return {
+            ...enemy,
+            x: enemy.x + Math.sin(state.t * 0.015 + index) * 0.003 + (enemy.kind === 'Sniper' ? Math.sin(state.t * 0.025 + index) * 0.002 : 0),
+            z: Math.max(0.56, enemy.z - enemy.speed * slow * (1.05 - state.zone * 0.28))
+          };
+        });
+        if (state.t % 70 === 0) {
+          const pressure = state.enemies.filter(enemy => enemy.hp > 0 && enemy.z < 1.12).reduce((sum, enemy) => sum + enemy.dmg, 0);
+          if (pressure > 0) {
+            const absorbed = Math.min(state.armor, Math.ceil(pressure * 0.5));
+            state.armor -= absorbed;
+            state.hp = Math.max(0, state.hp - Math.max(1, pressure - absorbed));
+          }
+        }
+        if (state.t % 110 === 0 && state.zone < 0.55) {
+          state.hp = Math.max(0, state.hp - Math.ceil((0.58 - state.zone) * 12));
+        }
+        if (state.turret > 0 && state.t % 34 === 0) {
+          const target = state.enemies.filter(enemy => enemy.hp > 0).sort((a, b) => a.z - b.z)[0];
+          if (target) {
+            target.hp -= 14;
+            if (target.hp <= 0) state.kills += 1;
+          }
+        }
+        if (state.enemies.every(enemy => enemy.hp <= 0)) {
+          const nextWave = state.wave + 1;
+          if (state.enemies.some(enemy => enemy.kind === 'Champion de Trame')) {
+            finishRun('victory');
+          } else if ((runMode === 'extraction' && nextWave >= 4) || (runMode === 'hunt' && state.wave >= 2) || (runMode === 'last_signal' && nextWave >= 5)) {
+            state.enemies = buildEnemies(nextWave, true);
+            state.wave = nextWave;
+          } else {
+            state.wave = nextWave;
+            state.enemies = buildEnemies(nextWave, runMode === 'hunt' && nextWave >= 3);
+            state.loot = [...state.loot.filter(item => !item.used), ...buildLoot(nextWave)];
+          }
+        }
+        if (state.hp <= 0) finishRun('defeat');
+        if (state.t % 18 === 0) {
+          setRunSnapshot({
+            phase: state.phase,
+            hp: state.hp,
+            ammo: state.ammo,
+            kills: state.kills,
+            wave: state.wave,
+            loot: state.loot.filter(item => item.used).length,
+            result: state.result,
+            rewards: state.rewards
+          });
+        }
       }
 
       const sky = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.54);
-      sky.addColorStop(0, '#201235');
+      sky.addColorStop(0, state.fragments?.[0] ? '#201235' : '#151515');
       sky.addColorStop(1, '#050209');
       ctx.fillStyle = sky;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#150d12';
-      ctx.fillRect(0, canvas.height * 0.54, canvas.width, canvas.height * 0.46);
+      const bandColors = ['#162845', '#231339', '#381515'];
+      (state.fragments || universeFragments).forEach((fragment, index) => {
+        ctx.fillStyle = bandColors[index % bandColors.length];
+        ctx.fillRect(index * canvas.width / 3, canvas.height * 0.54, canvas.width / 3 + 2, canvas.height * 0.46);
+        ctx.fillStyle = 'rgba(255,255,255,0.12)';
+        ctx.font = '11px "Share Tech Mono"';
+        ctx.fillText(String(fragment).toUpperCase().slice(0, 16), index * canvas.width / 3 + 16, canvas.height * 0.6);
+      });
       ctx.strokeStyle = 'rgba(255,234,0,0.22)';
       for (let i = -8; i <= 8; i++) {
-        const x = canvas.width / 2 + i * 48;
+        const x = canvas.width / 2 + i * 48 + state.lane * 34;
         ctx.beginPath();
         ctx.moveTo(x, canvas.height * 0.54);
         ctx.lineTo(canvas.width / 2 + i * 170, canvas.height);
@@ -461,16 +615,35 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       ctx.strokeStyle = 'rgba(231,76,60,0.72)';
       ctx.lineWidth = 6;
       ctx.strokeRect((1 - state.zone) * 140, (1 - state.zone) * 70, canvas.width - (1 - state.zone) * 280, canvas.height - (1 - state.zone) * 140);
+      if (state.zone < 0.62) {
+        ctx.fillStyle = `rgba(255,255,255,${Math.min(0.22, (0.64 - state.zone) * 0.5)})`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = 'rgba(255,255,255,0.08)';
+        for (let y = 0; y < canvas.height; y += 9) ctx.fillRect(0, y, canvas.width, 2);
+      }
+
+      state.loot
+        .filter(item => !item.used)
+        .forEach(item => {
+          const scale = 1 / item.z;
+          const x = canvas.width / 2 + (item.x - state.lane * 0.12) * canvas.width * scale;
+          const y = canvas.height * 0.67 + 46 * scale;
+          ctx.fillStyle = item.color;
+          ctx.fillRect(x - 12 * scale, y - 12 * scale, 24 * scale, 24 * scale);
+          ctx.fillStyle = '#fff';
+          ctx.font = `${Math.max(8, 12 * scale)}px "Share Tech Mono"`;
+          ctx.fillText(item.type.toUpperCase().slice(0, 3), x - 12 * scale, y - 17 * scale);
+        });
 
       state.enemies
         .filter(enemy => enemy.hp > 0)
         .sort((a, b) => b.z - a.z)
         .forEach(enemy => {
           const scale = 1 / enemy.z;
-          const x = canvas.width / 2 + enemy.x * canvas.width * scale;
+          const x = canvas.width / 2 + (enemy.x - state.lane * 0.16) * canvas.width * scale;
           const y = canvas.height * 0.58 - 28 * scale;
-          const w = 52 * scale;
-          const h = 94 * scale;
+          const w = 52 * scale * enemy.size;
+          const h = 94 * scale * enemy.size;
           ctx.fillStyle = 'rgba(0,0,0,0.42)';
           ctx.fillRect(x - w * 0.5, y + h * 0.86, w, 8 * scale);
           ctx.fillStyle = enemy.color;
@@ -478,19 +651,28 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           ctx.fillStyle = '#fff';
           ctx.fillRect(x - w * 0.18, y + h * 0.16, w * 0.12, h * 0.08);
           ctx.fillRect(x + w * 0.06, y + h * 0.16, w * 0.12, h * 0.08);
+          ctx.fillStyle = '#111';
+          ctx.fillRect(x - w * 0.4, y - 8, w * 0.8, 4);
+          ctx.fillStyle = enemy.kind === 'Champion de Trame' ? '#ffea00' : '#e74c3c';
+          ctx.fillRect(x - w * 0.4, y - 8, w * 0.8 * Math.max(0, enemy.hp / enemy.maxHp), 4);
+          ctx.fillStyle = '#fff';
+          ctx.font = `${Math.max(7, 10 * scale)}px "Share Tech Mono"`;
+          ctx.fillText(enemy.kind.toUpperCase().slice(0, 12), x - w * 0.42, y - 13);
         });
 
       ctx.fillStyle = 'rgba(0,0,0,0.66)';
       ctx.fillRect(0, 0, canvas.width, 48);
-      ctx.fillStyle = '#2ecc71';
-      ctx.fillRect(18, 17, Math.max(0, state.hp) * 1.4, 10);
+      ctx.fillStyle = state.hp < 35 ? '#e74c3c' : '#2ecc71';
+      ctx.fillRect(18, 17, Math.max(0, state.hp) * 1.2, 10);
       ctx.strokeStyle = '#2ecc71';
       ctx.strokeRect(18, 17, 308, 10);
+      ctx.fillStyle = '#3498db';
+      ctx.fillRect(18, 30, Math.max(0, state.armor) * 2.2, 5);
       ctx.fillStyle = '#fff';
       ctx.font = '12px "Share Tech Mono"';
-      ctx.fillText(`${selectedHero.name} / HP ${state.hp} / AMMO ${state.ammo} / KILLS ${state.kills}`, 18, 41);
+      ctx.fillText(`${selectedHero.name} / HP ${Math.round(state.hp)} / ARM ${Math.round(state.armor)} / AMMO ${state.ammo} / W${state.wave} / K${state.kills}`, 18, 45);
       ctx.fillStyle = '#ffea00';
-      ctx.fillText(lang === 'fr' ? 'Objectif: dernier signal vivant' : 'Objective: last living signal', canvas.width - 265, 31);
+      ctx.fillText(state.objective || objectives[runMode], canvas.width - 390, 31);
 
       ctx.strokeStyle = state.muzzle ? '#ffea00' : 'rgba(255,255,255,0.72)';
       ctx.beginPath();
@@ -501,38 +683,133 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       ctx.stroke();
 
       ctx.fillStyle = selectedHero.primaryColor || '#444';
-      ctx.fillRect(canvas.width / 2 - 76, canvas.height - 112, 152, 92);
-      ctx.fillStyle = selectedHero.secondaryColor || '#ddd';
-      ctx.fillRect(canvas.width / 2 - 30, canvas.height - 96, 60, 24);
+      ctx.fillRect(canvas.width / 2 - 80 + state.lane * 15, canvas.height - 116, 160, 96);
+      ctx.fillStyle = weaponProfile.color;
+      ctx.fillRect(canvas.width / 2 - 34 + state.lane * 15, canvas.height - 100, 68, 28);
       if (state.muzzle) {
         ctx.fillStyle = '#ffea00';
         ctx.fillRect(canvas.width / 2 - 14, canvas.height - 126, 28, 28);
+      }
+      if (state.phase !== 'running') {
+        ctx.fillStyle = 'rgba(0,0,0,0.72)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#ffea00';
+        ctx.font = '18px "Press Start 2P"';
+        ctx.fillText(state.phase === 'ended' ? (state.rewards?.title || 'RUN END') : 'ZONE D EXTINCTION', 46, canvas.height / 2 - 16);
+        ctx.fillStyle = '#d8f7ff';
+        ctx.font = '13px "Share Tech Mono"';
+        ctx.fillText(state.phase === 'ended'
+          ? `Kills ${state.kills} / Wave ${state.wave} / XP ${state.rewards?.modeXp || 0}`
+          : (lang === 'fr' ? 'Choisis un heros puis demarre une compression de Trame.' : 'Choose a hero, then start a Thread compression run.'),
+          48,
+          canvas.height / 2 + 18
+        );
       }
       rafId = window.requestAnimationFrame(loop);
     };
     loop();
     return () => window.cancelAnimationFrame(rafId);
-  }, [lang, selectedHero]);
+  }, [buildEnemies, buildLoot, finishRun, lang, objectives, runMode, selectedHero, universeFragments, weaponProfile.color]);
 
   const fire = () => {
     const state = stateRef.current;
+    if (state.phase !== 'running') {
+      startRun();
+      return;
+    }
     if (!state.ammo) return;
     state.ammo -= 1;
     state.muzzle = 5;
+    const role = roleProfile[selectedHero?.category] || roleProfile.marine;
     const target = state.enemies
       .filter(enemy => enemy.hp > 0)
-      .sort((a, b) => (Math.abs(a.x) + a.z * 0.18) - (Math.abs(b.x) + b.z * 0.18))[0];
+      .sort((a, b) => (Math.abs(a.x - state.lane * 0.16) + a.z * 0.18) - (Math.abs(b.x - state.lane * 0.16) + b.z * 0.18))[0];
     if (target) {
-      target.hp -= 36;
-      if (target.hp <= 0) state.kills += 1;
+      const closeBonus = selectedHero?.category === 'slayer' && target.z < 1.6 ? 1.45 : 1;
+      target.hp -= Math.round(34 * role.dmg * closeBonus);
+      if (target.hp <= 0) {
+        state.kills += 1;
+        if (selectedHero?.category === 'horror') state.hp = Math.min(state.maxHp, state.hp + 8);
+      }
     }
     sound.playSfx('confirm');
   };
 
   const reload = () => {
-    stateRef.current.ammo = 24;
+    stateRef.current.ammo = stateRef.current.maxAmmo || 24;
     sound.playSfx('coin');
   };
+
+  const moveLane = (dir) => {
+    const state = stateRef.current;
+    state.lane = Math.max(-2, Math.min(2, state.lane + dir));
+    sound.playSfx('click');
+  };
+
+  const useRoleSkill = () => {
+    const state = stateRef.current;
+    if (state.phase !== 'running') return;
+    if (selectedHero?.category === 'slayer' && state.dash <= 0) {
+      state.lane = Math.max(-2, Math.min(2, state.lane + (state.lane <= 0 ? 2 : -2)));
+      state.dash = 220;
+    } else if (selectedHero?.category === 'hacker') {
+      state.scan = 360;
+    } else if (selectedHero?.category === 'tactical') {
+      state.turret = 520;
+    } else if (selectedHero?.category === 'marine') {
+      state.armor += 18;
+    } else if (selectedHero?.category === 'horror') {
+      state.hp = Math.min(state.maxHp, state.hp + 20);
+    }
+    sound.playSfx('special');
+  };
+
+  const collectLoot = () => {
+    const state = stateRef.current;
+    if (state.phase !== 'running') return;
+    const item = state.loot.find(candidate => !candidate.used && Math.abs(candidate.x - state.lane * 0.12) < 0.22 && candidate.z < 3.3);
+    if (!item) return;
+    item.used = true;
+    if (item.type === 'normal') {
+      state.hp = Math.min(state.maxHp, state.hp + 24);
+      state.ammo = state.maxAmmo;
+    } else if (item.type === 'summon') {
+      state.turret = Math.max(state.turret, 500);
+    } else if (item.type === 'ultimate') {
+      state.enemies.forEach(enemy => { enemy.hp -= 95; });
+      state.kills += state.enemies.filter(enemy => enemy.hp <= 0 && !enemy.counted).length;
+      state.enemies.forEach(enemy => { if (enemy.hp <= 0) enemy.counted = true; });
+    }
+    sound.playSfx(item.type === 'ultimate' ? 'special' : 'coin');
+  };
+
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.repeat) return;
+      const key = event.key.toLowerCase();
+      if (key === 'a' || key === 'arrowleft') {
+        moveLane(-1);
+        event.preventDefault();
+      } else if (key === 'd' || key === 'arrowright') {
+        moveLane(1);
+        event.preventDefault();
+      } else if (key === ' ' || key === 'enter') {
+        fire();
+        event.preventDefault();
+      } else if (key === 'r') {
+        reload();
+        event.preventDefault();
+      } else if (key === 'e') {
+        collectLoot();
+        event.preventDefault();
+      } else if (key === 'shift') {
+        useRoleSkill();
+        event.preventDefault();
+      }
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  });
 
   return (
     <div className="glass-panel nexus-play-panel extinction-panel">
@@ -541,17 +818,45 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         <h3>{lang === 'fr' ? 'Zone d Extinction' : 'Extinction Zone'}</h3>
         <p>
           {lang === 'fr'
-            ? 'Prototype Doom + Battle Royale: tu incarnes une signature possedee, arme FPS visible, ennemis billboards et cercle de breche qui se referme. La vraie passe suivante pourra ajouter loot, rooms 3D et multijoueur.'
-            : 'Doom + Battle Royale prototype: play an owned signature, visible FPS weapon, billboard enemies, and a closing breach circle. The next pass can add loot, 3D rooms, and multiplayer.'}
+            ? 'Simulation dangereuse A.R.C.A.: les Trames trop instables sont compressees avant d envahir la Cite-Mosaique. Choisis une signature, loot, survis aux vagues, evite la Marge Blanche et force une extraction.'
+            : 'Dangerous A.R.C.A. simulation: unstable Threads are compressed before they invade Mosaic City. Pick a signature, loot, survive waves, avoid the White Margin, and force extraction.'}
         </p>
+        <select value={runMode} onChange={event => setRunMode(event.target.value)} className="nexus-select">
+          <option value="extraction">{lang === 'fr' ? 'Solo Extraction' : 'Solo Extraction'}</option>
+          <option value="last_signal">{lang === 'fr' ? 'Dernier Signal' : 'Last Signal'}</option>
+          <option value="infestation">{lang === 'fr' ? 'Infestation' : 'Infestation'}</option>
+          <option value="hunt">{lang === 'fr' ? 'Chasse au Champion' : 'Champion Hunt'}</option>
+        </select>
         <select value={selectedHero?.id || ''} onChange={event => setSelectedHeroId(event.target.value)} className="nexus-select">
           {playableHeroes.map(hero => (
             <option key={hero.id} value={hero.id}>{hero.name} / {hero.universe}</option>
           ))}
         </select>
+        <div className="nexus-play-intel">
+          <strong>{weaponProfile.name}</strong>
+          <span>{selectedHero?.category || 'marine'} - {(roleProfile[selectedHero?.category] || roleProfile.marine).perk}</span>
+          <small>{universeFragments.join(' / ')}</small>
+        </div>
+        <div className="nexus-play-stats">
+          <span>{runSnapshot.phase === 'running' ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
+          <span>HP {Math.round(runSnapshot.hp || 0)}</span>
+          <span>WAVE {runSnapshot.wave}</span>
+          <span>KILLS {runSnapshot.kills}</span>
+        </div>
+        {runSnapshot.rewards && (
+          <div className="nexus-play-intel">
+            <strong>{runSnapshot.rewards.title}</strong>
+            <span>+{runSnapshot.rewards.gold} Or / +{runSnapshot.rewards.shards} Fragments / +{runSnapshot.rewards.modeXp} XP</span>
+          </div>
+        )}
         <div className="nexus-play-actions">
+          <button className="btn-retro" onClick={startRun}>{runSnapshot.phase === 'running' ? (lang === 'fr' ? 'RESTART' : 'RESTART') : (lang === 'fr' ? 'DEMARRER RUN' : 'START RUN')}</button>
           <button className="btn-retro" onClick={fire}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
           <button className="btn-retro" onClick={reload}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+          <button className="btn-retro" onClick={useRoleSkill}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
+          <button className="btn-retro" onClick={collectLoot}>{lang === 'fr' ? 'LOOT' : 'LOOT'}</button>
+          <button className="btn-retro" onClick={() => moveLane(-1)}>LEFT</button>
+          <button className="btn-retro" onClick={() => moveLane(1)}>RIGHT</button>
         </div>
       </div>
       <canvas ref={canvasRef} width="840" height="430" className="fps-royale-canvas" onClick={fire} />
