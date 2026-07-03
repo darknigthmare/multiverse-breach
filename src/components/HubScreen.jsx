@@ -950,7 +950,7 @@ export default function HubScreen({
   };
 
   const autoEquipRelics = () => {
-    const availableRelics = EQUIP_ITEMS_DB.filter(r => inventory.includes(r.id));
+    const availableRelics = EQUIP_ITEMS_DB.filter(r => inventory.includes(r.id) && !isAssetDisabled('gear', r.id));
     if (availableRelics.length === 0) {
       notifyNexus(lang === 'fr' ? 'Aucune relique standard disponible pour l auto-equipement.' : 'No standard relic available for auto-equip.', 'warn');
       sound.playSfx('click');
@@ -1451,7 +1451,9 @@ export default function HubScreen({
 
   const activeFactionSynergies = FACTION_RULES.map(rule => {
     const count = activeTeam
-      .map(id => HEROES_DB.find(hero => hero.id === id)?.universe)
+      .map(id => HEROES_DB.find(hero => hero.id === id))
+      .filter(hero => hero && !isAssetDisabled('heroes', hero.id))
+      .map(hero => hero.universe)
       .filter(universe => rule.universes.includes(universe)).length;
     return { ...rule, count, active: count >= 2 };
   });

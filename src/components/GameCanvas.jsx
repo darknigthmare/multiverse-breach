@@ -105,7 +105,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
 
     // 2. Deployed Synergy multipliers
-    const squadCats = activeTeam.map(id => HEROES_DB.find(h => h.id === id)?.category || '');
+    const squadCats = activeTeam
+      .map(id => HEROES_DB.find(h => h.id === id))
+      .filter(h => h && !disabledHeroSet.has(h.id))
+      .map(h => h.category || '');
     const activeCatsCount = squadCats.reduce((acc, c) => {
       acc[c] = (acc[c] || 0) + 1;
       return acc;
@@ -121,7 +124,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     FACTION_RULES.forEach(rule => {
       const activeCount = activeTeam
-        .map(id => HEROES_DB.find(h => h.id === id)?.universe)
+        .map(id => HEROES_DB.find(h => h.id === id))
+        .filter(h => h && !disabledHeroSet.has(h.id))
+        .map(h => h.universe)
         .filter(universe => rule.universes.includes(universe)).length;
       if (activeCount >= 2 && rule.universes.includes(hero.universe)) {
         stats[rule.stat] = Math.round(stats[rule.stat] * 1.08);
