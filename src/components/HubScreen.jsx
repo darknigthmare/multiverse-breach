@@ -3136,6 +3136,7 @@ export default function HubScreen({
               </div>
             </div>
 
+            {missionScreen === 'story' && (
             <div style={{
               padding: '14px',
               marginBottom: '14px',
@@ -3218,7 +3219,9 @@ export default function HubScreen({
                 })}
               </div>
             </div>
+            )}
 
+            {missionScreen === 'story' && (
             <div style={{
               padding: '14px',
               marginBottom: '14px',
@@ -3290,7 +3293,9 @@ export default function HubScreen({
                 </div>
               </div>
             </div>
+            )}
 
+            {missionScreen === 'story' && (
             <div style={{
               display: 'grid',
               gridTemplateColumns: '1.1fr 1.4fr',
@@ -3414,6 +3419,79 @@ export default function HubScreen({
                 </div>
               </div>
             </div>
+            )}
+
+            {missionScreen === 'universeArcs' && (
+              <div style={{
+                padding: '14px',
+                marginBottom: '14px',
+                background: 'rgba(255,177,92,0.06)',
+                border: '1px solid rgba(255,177,92,0.24)',
+                borderRadius: '5px'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
+                  <div>
+                    <div style={{ fontSize: '11px', color: '#ffb15c', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Arcs narratifs par univers' : 'Universe narrative arcs'}
+                    </div>
+                    <div style={{ fontSize: '10px', color: '#c9b49f', marginTop: '3px' }}>
+                      {lang === 'fr'
+                        ? 'Chaque bloc raconte une chaine de Trames liees: intro, missions, sortie et recompense d arc.'
+                        : 'Each block tells a linked Thread chain: intro, missions, outro, and arc reward.'}
+                    </div>
+                  </div>
+                  <div style={{ color: '#ffeb3b', fontSize: '10px' }}>
+                    {UNIVERSE_NARRATIVE_ARCS.length} {lang === 'fr' ? 'arcs archives' : 'archived arcs'}
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
+                  {UNIVERSE_NARRATIVE_ARCS.map(arc => {
+                    const linkedStageCount = STAGES.filter(stage => arc.universes.includes(stage.universe) || stage.sourceUniverses?.some(source => arc.universes.includes(source))).length;
+                    const clearedLinkedCount = STAGES.filter(stage => completedStages.includes(stage.id) && (arc.universes.includes(stage.universe) || stage.sourceUniverses?.some(source => arc.universes.includes(source)))).length;
+                    const ratio = linkedStageCount ? Math.min(1, clearedLinkedCount / linkedStageCount) : 0;
+                    return (
+                      <div key={arc.id} style={{
+                        padding: '11px',
+                        border: ratio >= 1 ? '1px solid #2ecc71' : '1px solid rgba(255,177,92,0.22)',
+                        background: ratio >= 1 ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.18)',
+                        borderRadius: '4px'
+                      }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center', marginBottom: '6px' }}>
+                          <strong style={{ color: ratio >= 1 ? '#2ecc71' : '#ffb15c', fontSize: '11px' }}>{arc.title[lang]}</strong>
+                          <span style={{ color: '#ffeb3b', fontSize: '9px' }}>{clearedLinkedCount}/{linkedStageCount || arc.universes.length}</span>
+                        </div>
+                        <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '8px', borderRadius: '3px', overflow: 'hidden' }}>
+                          <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: ratio >= 1 ? '#2ecc71' : '#ffb15c' }} />
+                        </div>
+                        <div style={{ color: '#d9d9d9', fontSize: '10px', lineHeight: 1.35, marginBottom: '7px' }}>
+                          <b style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Intro' : 'Intro'}:</b> {arc.intro[lang]}
+                        </div>
+                        <div style={{ display: 'grid', gap: '4px', marginBottom: '7px' }}>
+                          {arc.missions.map((mission, index) => (
+                            <span key={`${arc.id}-${index}`} style={{ color: '#cfcfcf', fontSize: '9px', lineHeight: 1.3 }}>
+                              {index + 1}. {mission[lang]}
+                            </span>
+                          ))}
+                        </div>
+                        <div style={{ color: '#9adbd6', fontSize: '9px', lineHeight: 1.35, marginBottom: '6px' }}>
+                          <b>{lang === 'fr' ? 'Sortie' : 'Outro'}:</b> {arc.outro[lang]}
+                        </div>
+                        <div style={{ color: '#ffeb3b', fontSize: '9px', lineHeight: 1.35 }}>
+                          <b>{lang === 'fr' ? 'Recompense' : 'Reward'}:</b> {arc.reward[lang]}
+                        </div>
+                        <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '8px' }}>
+                          {arc.universes.map(universe => (
+                            <span key={`${arc.id}-${universe}`} style={{ border: '1px solid rgba(255,177,92,0.35)', color: '#ffd6ad', fontSize: '8px', padding: '2px 5px', borderRadius: '3px' }}>
+                              {universe}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             <div style={{
               padding: '12px',
