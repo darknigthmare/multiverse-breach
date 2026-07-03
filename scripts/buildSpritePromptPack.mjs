@@ -18,13 +18,14 @@ const slugify = (value) => String(value || 'unknown')
 
 const rewriteImports = (source) => source
   .replaceAll("from './expandedUniverses'", "from './expandedUniverses.js'")
+  .replaceAll("from './lore'", "from './lore.js'")
   .replaceAll("from './heroes'", "from './heroes.js'")
   .replaceAll("from './enemies'", "from './enemies.js'");
 
 const copyRuntimeModules = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['expandedUniverses.js', 'heroes.js', 'enemies.js', 'spriteAssets.js'];
+  const files = ['expandedUniverses.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
   await Promise.all(files.map(async (file) => {
     const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
     await fs.writeFile(path.join(tmpDir, file), rewriteImports(raw), 'utf8');
@@ -57,9 +58,10 @@ const fileExists = async (relativeOutput) => {
 
 const main = async () => {
   await copyRuntimeModules();
-  const [{ HEROES_DB }, { ENEMIES_DB, FINAL_GAME_BOSS }] = await Promise.all([
+  const [{ HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB }, { ENEMIES_DB, FINAL_GAME_BOSS }, { BATTLE_ITEM_CATALOG }] = await Promise.all([
     import(pathToFileURL(path.join(tmpDir, 'heroes.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'enemies.js')).href)
+    import(pathToFileURL(path.join(tmpDir, 'enemies.js')).href),
+    import(pathToFileURL(path.join(tmpDir, 'battleItems.js')).href)
   ]);
 
   const heroEntries = HEROES_DB.map(hero => {
@@ -148,7 +150,44 @@ const main = async () => {
     })
   });
 
-  const all = [...heroEntries, ...bossEntries];
+  const itemSource = [
+    ...EQUIP_ITEMS_DB,
+    ...Object.entries(EVENT_ITEMS_DB).map(([universe, item]) => ({ ...item, universe: item.universe || universe })),
+    ...BATTLE_ITEM_CATALOG
+  ];
+  const seenItemOutputs = new Set();
+  const itemEntryCandidates = itemSource.flatMap((item) => {
+    if (!item?.id) return [];
+    const universe = item.universe || 'unknown';
+    const universeSlug = slugify(universe);
+    const file = `items/${universeSlug}/${slugify(item.id)}.png`;
+    const output = `/sprites/generated/${file}`;
+    if (seenItemOutputs.has(output)) return [];
+    seenItemOutputs.add(output);
+    return [{
+      kind: 'item',
+      id: item.id,
+      name: item.name?.en || item.name?.fr || item.id,
+      universe,
+      output,
+      frame: { width: 512, height: 512, columns: 1, rows: ['icon'] },
+      prompt: [
+        'Use case: stylized-concept',
+        'Asset type: transparent game item icon for a 2D canvas battle game',
+        `Primary request: create a detailed pixel-art item icon for ${item.name?.en || item.id} from ${universe}.`,
+        'Style/medium: highly detailed dark fantasy pixel art, ornate pixel texture, crisp outline, readable at small UI size.',
+        'Composition/framing: centered single item icon, generous padding, three-quarter top angle, no character.',
+        'Background: perfectly flat solid #00ff00 chroma key, no floor, no cast shadow, no text, no watermark.',
+        'Constraints: one item only, no UI labels, no readable logos unless explicitly part of the item lore, consistent icon scale.'
+      ].join('\n')
+    }];
+  });
+
+  const itemEntries = (await Promise.all(itemEntryCandidates.map(async (entry) => (
+    await fileExists(entry.output) ? entry : null
+  )))).filter(Boolean);
+
+  const all = [...heroEntries, ...bossEntries, ...itemEntries];
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(outJsonl, all.map(entry => JSON.stringify(entry)).join('\n') + '\n', 'utf8');
   const manifestEntries = await Promise.all(all.map(async (item) => {
@@ -166,12 +205,14 @@ const main = async () => {
       heroes: heroEntries.length,
       enemies: bossEntries.filter(entry => entry.kind === 'enemy').length,
       bosses: bossEntries.filter(entry => entry.kind === 'boss').length,
+      items: itemEntries.length,
       total: all.length
     },
     availableCounts: {
       heroes: manifestEntries.filter(entry => entry.kind === 'hero' && entry.available).length,
       enemies: manifestEntries.filter(entry => entry.kind === 'enemy' && entry.available).length,
       bosses: manifestEntries.filter(entry => entry.kind === 'boss' && entry.available).length,
+      items: manifestEntries.filter(entry => entry.kind === 'item' && entry.available).length,
       total: manifestEntries.filter(entry => entry.available).length
     },
     entries: manifestEntries
@@ -179,7 +220,7 @@ const main = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   const enemyCount = bossEntries.filter(entry => entry.kind === 'enemy').length;
   const bossCount = bossEntries.filter(entry => entry.kind === 'boss').length;
-  console.log(`Wrote ${all.length} sprite prompts (${heroEntries.length} heroes, ${enemyCount} enemies, ${bossCount} bosses).`);
+  console.log(`Wrote ${all.length} sprite prompts (${heroEntries.length} heroes, ${enemyCount} enemies, ${bossCount} bosses, ${itemEntries.length} items).`);
   console.log(outJsonl);
   console.log(outManifest);
 };

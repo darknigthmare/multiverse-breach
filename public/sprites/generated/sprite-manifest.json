@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-03T17:18:10.706Z",
+  "generatedAt": "2026-07-03T18:12:25.061Z",
   "sheet": {
     "width": 1024,
     "height": 1024,
@@ -17,13 +17,15 @@
     "heroes": 795,
     "enemies": 804,
     "bosses": 799,
-    "total": 2398
+    "items": 9,
+    "total": 2407
   },
   "availableCounts": {
     "heroes": 292,
-    "enemies": 3,
-    "bosses": 57,
-    "total": 352
+    "enemies": 8,
+    "bosses": 58,
+    "items": 9,
+    "total": 367
   },
   "entries": [
     {
@@ -16483,8 +16485,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -16503,8 +16505,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -16523,8 +16525,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -16543,8 +16545,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -16563,8 +16565,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -16623,8 +16625,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -47985,6 +47987,159 @@
       },
       "available": false,
       "source": null
+    },
+    {
+      "kind": "item",
+      "id": "green_herb",
+      "name": "Green Herb First-Aid Mix",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/green-herb.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "stars_badge",
+      "name": "S.T.A.R.S. Field Badge",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/stars-badge.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "laser_sight",
+      "name": "R.P.D. Custom Laser Sight",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/laser-sight.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "evt_re_cure",
+      "name": "Anti-Viral Vaccine Case",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/evt-re-cure.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "resident_evil_pickup_1",
+      "name": "Compact Green Herb",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/resident-evil-pickup-1.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "resident_evil_pickup_2",
+      "name": "R.P.D. Flash Grenade",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/resident-evil-pickup-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "resident_evil_pickup_3",
+      "name": "Umbrella Incendiary Rounds",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/resident-evil-pickup-3.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "resident_evil_summon",
+      "name": "S.T.A.R.S. Backup",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/resident-evil-summon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "resident_evil_ultimate",
+      "name": "Raccoon City Lockdown",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/items/resident-evil/resident-evil-ultimate.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": true,
+      "source": "openai"
     }
   ]
 }

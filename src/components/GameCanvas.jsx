@@ -11,6 +11,7 @@ import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../ga
 import { createPlayerHero } from '../game/playerHero';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { getBattleItemPoolForStage } from '../game/battleItems';
+import { getItemSpriteSrc } from '../game/spriteAssets';
 
 export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, disabledAssets = {}, onBattleEnd }) {
   const canvasRef = useRef(null);
@@ -1221,6 +1222,19 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                         ? item.rpg?.[lang]
                         : item.melee?.[lang]}
                   >
+                    <img
+                      src={getItemSpriteSrc(item)}
+                      alt=""
+                      onError={(event) => { event.currentTarget.style.display = 'none'; }}
+                      style={{
+                        width: '24px',
+                        height: '24px',
+                        objectFit: 'contain',
+                        imageRendering: 'pixelated',
+                        verticalAlign: 'middle',
+                        marginRight: '6px'
+                      }}
+                    />
                     <span style={{ color: item.color, fontWeight: 'bold' }}>
                       {item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.toUpperCase()}
                     </span>

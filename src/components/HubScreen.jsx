@@ -9,7 +9,7 @@ import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_I
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
-import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../game/spriteAssets';
+import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
@@ -2085,6 +2085,11 @@ export default function HubScreen({
     const entry = spriteOutputMap.get(src);
     return { src, ready: Boolean(entry), source: entry?.source || null };
   }, [spriteOutputMap]);
+  const getItemSpriteInfo = useCallback((item) => {
+    const src = getItemSpriteSrc(item);
+    const entry = spriteOutputMap.get(src);
+    return { src, ready: Boolean(entry), source: entry?.source || null, kind: 'item' };
+  }, [spriteOutputMap]);
   const isUniverseVisible = useCallback(
     (universe) => !universe || universe === 'Nexus de Convergence' || !hiddenUniverseSet.has(universe),
     [hiddenUniverseSet]
@@ -3941,7 +3946,9 @@ export default function HubScreen({
       ];
       const gear = [
         ...EQUIP_ITEMS_DB.filter(item => item.universe === universe),
-        ...EVENT_SHOP_ITEMS.filter(item => item.universe === universe)
+        ...(EVENT_ITEMS_DB[universe] ? [{ ...EVENT_ITEMS_DB[universe], universe, isCombatEvent: true }] : []),
+        ...EVENT_SHOP_ITEMS.filter(item => item.universe === universe),
+        ...getBattleItemsForUniverse(universe).map(item => ({ ...item, isBattleItem: true }))
       ].filter((item, index, list) => list.findIndex(candidate => candidate.id === item.id) === index);
       const stages = STAGES.filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe));
       const disabledCount = (
@@ -4135,7 +4142,7 @@ export default function HubScreen({
   });
   const openSpritePreview = (info, title, subtitle) => {
     if (!info.ready) return;
-    setSpritePreview({ src: info.src, title, subtitle });
+    setSpritePreview({ src: info.src, title, subtitle, kind: info.kind });
     sound.playSfx('coin');
   };
 
@@ -6316,7 +6323,13 @@ export default function HubScreen({
                     </div>
                     <div style={{ display: 'grid', gap: '3px' }}>
                       {battleItems.map(item => (
-                        <div key={item.id} style={{ fontSize: '8px', color: '#cfcfcf', lineHeight: 1.25 }}>
+                        <div key={item.id} style={{ fontSize: '8px', color: '#cfcfcf', lineHeight: 1.25, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                          <img
+                            src={getItemSpriteSrc(item)}
+                            alt=""
+                            onError={(event) => { event.currentTarget.style.display = 'none'; }}
+                            style={{ width: '16px', height: '16px', objectFit: 'contain', imageRendering: 'pixelated' }}
+                          />
                           <span style={{ color: item.color, fontWeight: 'bold' }}>{item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : 'ITEM'}</span> {item.name[lang]}
                         </div>
                       ))}
@@ -7018,10 +7031,10 @@ export default function HubScreen({
                             {row.gear.map(item => renderAssetRow({
                               key: item.id,
                               title: item.name?.[lang] || item.id,
-                              subtitle: item.isCombatEvent ? 'event item' : formatBoostText(item.boost || {}),
+                              subtitle: item.isBattleItem ? `${item.tier} - ${item.role}` : item.isCombatEvent ? 'event item' : formatBoostText(item.boost || {}),
                               hidden: isAssetDisabled('gear', item.id),
                               onToggle: () => setAssetDisabled('gear', item.id, !isAssetDisabled('gear', item.id)),
-                              spriteInfo: { ready: false, src: '' }
+                              spriteInfo: getItemSpriteInfo(item)
                             }))}
                           </div>
                         </details>
@@ -7213,10 +7226,18 @@ export default function HubScreen({
                     </strong>
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.battleItems.map(item => (
-                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35 }}>
+                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, display: 'grid', gridTemplateColumns: '28px 1fr', gap: '7px', alignItems: 'center' }}>
+                          <img
+                            src={getItemSpriteSrc(item)}
+                            alt=""
+                            onError={(event) => { event.currentTarget.style.display = 'none'; }}
+                            style={{ width: '28px', height: '28px', objectFit: 'contain', imageRendering: 'pixelated' }}
+                          />
+                          <div>
                           <b style={{ color: item.color }}>{item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.toUpperCase()}</b>
                           {' '}
                           {getBattleItemLoreDescription({ item, lang, lore: selectedUniverseArchive.lore })}
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -7304,7 +7325,13 @@ export default function HubScreen({
                 <img
                   src={spritePreview.src}
                   alt={spritePreview.title}
-                  style={{ width: 'min(100%, 820px)', height: 'auto', imageRendering: 'pixelated', display: 'block', margin: '0 auto' }}
+                  style={{
+                    width: spritePreview.kind === 'item' ? 'min(72vw, 420px)' : 'min(100%, 820px)',
+                    height: 'auto',
+                    imageRendering: 'pixelated',
+                    display: 'block',
+                    margin: '0 auto'
+                  }}
                 />
               </div>
             </div>
@@ -7612,7 +7639,15 @@ export default function HubScreen({
                           </div>
                           <div style={{ display: 'grid', gap: '4px' }}>
                             {battleItems.map(item => (
-                              <div key={item.id} style={{ fontSize: '9px', color: isCleared ? '#ccc' : '#555', lineHeight: 1.3 }}>
+                              <div key={item.id} style={{ fontSize: '9px', color: isCleared ? '#ccc' : '#555', lineHeight: 1.3, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                                {isCleared && (
+                                  <img
+                                    src={getItemSpriteSrc(item)}
+                                    alt=""
+                                    onError={(event) => { event.currentTarget.style.display = 'none'; }}
+                                    style={{ width: '20px', height: '20px', objectFit: 'contain', imageRendering: 'pixelated' }}
+                                  />
+                                )}
                                 <span style={{ color: isCleared ? item.color : '#555', fontWeight: 'bold' }}>
                                   {item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : 'ITEM'}
                                 </span>

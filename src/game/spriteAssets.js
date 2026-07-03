@@ -23,6 +23,12 @@ export const getEnemySpriteSheetSrc = (enemy) => {
   return `/sprites/generated/bosses/${slugifyAsset(universe)}/${slugifyAsset(enemy.name)}.png`;
 };
 
+export const getItemSpriteSrc = (item) => {
+  if (!item?.id) return '';
+  const universe = item.universe || item.sourceUniverse || 'unknown';
+  return `/sprites/generated/items/${slugifyAsset(universe)}/${slugifyAsset(item.id)}.png`;
+};
+
 const animationRowForState = (state) => {
   if (state === 'run') return 1;
   if (state === 'attack') return 2;
