@@ -813,6 +813,41 @@ export default function HubScreen({
     (!item.universe || isUniverseVisible(item.universe))
     && !isAssetDisabled('gear', item.id)
   ));
+  const SHOP_ITEM_UNIVERSE_HINTS = {
+    millennium_puzzle: 'Yu-Gi-Oh',
+    bandana_infinite: 'Metal Gear',
+    crucible_guard: 'Doom',
+    udamage_power: 'Unreal'
+  };
+  const getShopItemUniverse = (item) => item.universe || SHOP_ITEM_UNIVERSE_HINTS[item.id] || null;
+  const getShopItemAccent = (item) => {
+    const universe = getShopItemUniverse(item);
+    return UNIVERSE_MODIFIERS[universe]?.color
+      || LORE_DB[universe]?.accent
+      || (item.isCombatEvent ? '#ff4500' : '#39c5bb');
+  };
+  const getShopItemGlyph = (item) => {
+    if (item.id.includes('nuke')) return 'NUKE';
+    if (item.id.includes('quad') || item.id.includes('udamage')) return 'X4';
+    if (item.id.includes('redeemer')) return 'MISSILE';
+    if (item.id.includes('puzzle')) return 'SIGIL';
+    if (item.id.includes('bandana')) return 'INF';
+    if (item.id.includes('crucible')) return 'BLADE';
+    return item.isCombatEvent ? 'TRIGGER' : 'RELIC';
+  };
+  const getShopItemSummary = (item) => {
+    if (item.isCombatEvent) {
+      const eventDetails = EVENT_ITEMS_DB[item.universe];
+      return eventDetails
+        ? getEventLore(eventDetails)
+        : (lang === 'fr'
+          ? `Declencheur de combat synchronise ${item.universe}.`
+          : `${item.universe} synchronized combat trigger.`);
+    }
+    return lang === 'fr'
+      ? `Relique prototype: ${formatBoostText(item.boost || {})}.`
+      : `Prototype relic: ${formatBoostText(item.boost || {})}.`;
+  };
 
   const UNIVERSE_TO_STAGE_ID = {
     'Gears of War': 1, 'Halo': 2, 'Alien': 3, 'Predator': 4, 'Resident Evil': 5,
@@ -3894,41 +3929,159 @@ export default function HubScreen({
               {lang === 'fr' ? 'Depense tes jetons evenement pour acheter des prototypes, reliques rares et declencheurs de combat synchronises au Nexus.' : 'Spend Event Tokens on prototypes, rare relics, and combat triggers synchronized by the Nexus.'}
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '15px' }}>
               {visibleEventShopItems.map(item => {
                 const owned = inventory.includes(item.id);
+                const visualUniverse = getShopItemUniverse(item);
+                const accent = getShopItemAccent(item);
+                const backdropSrc = visualUniverse ? getOpenAiBackdropSrc(visualUniverse, 'Smash') || getOpenAiBackdropSrc(visualUniverse, 'RPG') || getOpenAiBackdropSrc(visualUniverse, 'Tactics') : null;
+                const canBuy = eventTokens >= item.tokenCost && !owned;
                 return (
                   <div key={item.id} style={{
-                    padding: '14px',
-                    background: 'rgba(255,255,255,0.01)',
-                    border: '1px solid #333',
-                    borderRadius: '4px',
+                    padding: 0,
+                    background: owned ? 'rgba(46,204,113,0.045)' : 'rgba(255,255,255,0.018)',
+                    border: `1px solid ${owned ? '#2ecc71' : `${accent}55`}`,
+                    borderRadius: '6px',
+                    overflow: 'hidden',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    minHeight: '322px',
+                    boxShadow: owned ? '0 0 18px rgba(46,204,113,0.12)' : `0 0 18px ${accent}18`
                   }}>
-                    <div>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                        <span style={{ fontWeight: 'bold', fontSize: '14px', color: item.isCombatEvent ? '#ff4500' : '#39c5bb' }}>
+                    <div style={{
+                      position: 'relative',
+                      minHeight: '142px',
+                      backgroundImage: backdropSrc
+                        ? `linear-gradient(rgba(0,0,0,0.18), rgba(0,0,0,0.76)), url(${backdropSrc})`
+                        : `radial-gradient(circle at 50% 34%, ${accent}66, rgba(0,0,0,0.1) 34%, rgba(0,0,0,0.85) 72%), linear-gradient(135deg, ${accent}28, #06050d)`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      borderBottom: `1px solid ${accent}55`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      overflow: 'hidden'
+                    }}>
+                      <div style={{
+                        position: 'absolute',
+                        inset: 0,
+                        backgroundImage: 'linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px)',
+                        backgroundSize: '18px 18px',
+                        opacity: 0.55
+                      }} />
+                      <div style={{
+                        position: 'relative',
+                        width: '84px',
+                        height: '84px',
+                        border: `2px solid ${accent}`,
+                        background: 'rgba(0,0,0,0.68)',
+                        boxShadow: `0 0 18px ${accent}77, inset 0 0 18px ${accent}22`,
+                        transform: 'rotate(45deg)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}>
+                        <span style={{
+                          transform: 'rotate(-45deg)',
+                          color: '#fff',
+                          fontSize: getShopItemGlyph(item).length > 5 ? '10px' : '14px',
+                          fontWeight: 'bold',
+                          textAlign: 'center',
+                          textShadow: `0 0 8px ${accent}`,
+                          maxWidth: '68px',
+                          lineHeight: 1.05
+                        }}>
+                          {getShopItemGlyph(item)}
+                        </span>
+                      </div>
+                      <div style={{
+                        position: 'absolute',
+                        top: '9px',
+                        left: '9px',
+                        padding: '3px 7px',
+                        border: `1px solid ${accent}88`,
+                        background: 'rgba(0,0,0,0.7)',
+                        color: accent,
+                        borderRadius: '3px',
+                        fontSize: '9px',
+                        fontWeight: 'bold',
+                        textTransform: 'uppercase'
+                      }}>
+                        {item.isCombatEvent ? (lang === 'fr' ? 'Evenement' : 'Event') : (lang === 'fr' ? 'Relique' : 'Relic')}
+                      </div>
+                      <div style={{
+                        position: 'absolute',
+                        top: '9px',
+                        right: '9px',
+                        padding: '4px 8px',
+                        border: '1px solid rgba(231,76,60,0.8)',
+                        background: 'rgba(0,0,0,0.74)',
+                        color: '#ffb1a8',
+                        borderRadius: '3px',
+                        fontSize: '11px',
+                        fontWeight: 'bold'
+                      }}>
+                        TICKETS {item.tokenCost}
+                      </div>
+                      <div style={{
+                        position: 'absolute',
+                        bottom: '8px',
+                        left: '9px',
+                        right: '9px',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        gap: '8px',
+                        alignItems: 'center'
+                      }}>
+                        <span style={{ color: '#ddd', fontSize: '9px', textTransform: 'uppercase' }}>
+                          {visualUniverse || 'Nexus Prototype'}
+                        </span>
+                        <span style={{ color: owned ? '#2ecc71' : '#aaa', fontSize: '9px', border: '1px solid rgba(255,255,255,0.16)', padding: '2px 5px', borderRadius: '3px' }}>
+                          {owned ? 'INDEXE' : (canBuy ? (lang === 'fr' ? 'DISPO' : 'READY') : (lang === 'fr' ? 'VERROU' : 'LOCK'))}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div style={{ padding: '12px', display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px' }}>
+                        <span style={{ fontWeight: 'bold', fontSize: '13px', color: accent, lineHeight: 1.25 }}>
                           {item.name[lang]}
                         </span>
                         <span style={{ fontSize: '12px', color: '#e74c3c' }}>🎫 {item.tokenCost}</span>
                       </div>
-                      <div style={{ fontSize: '11px', color: '#aaa', marginTop: '6px' }}>
-                        {item.isCombatEvent
-                          ? (lang === 'fr' ? 'Declencheur de combat lie a un univers.' : 'Universe-linked combat trigger.')
-                          : (lang === 'fr' ? 'Relique prototype - augmente les stats.' : 'Prototype relic - boosts stats.')}
+                      <div style={{ fontSize: '10px', color: '#aaa', marginTop: '6px', lineHeight: 1.35 }}>
+                        {getShopItemSummary(item)}
+                      </div>
+                      <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '10px' }}>
+                        <span style={{ color: '#ddd', fontSize: '9px', border: '1px solid rgba(255,255,255,0.12)', padding: '2px 6px', borderRadius: '3px' }}>
+                          {item.isCombatEvent ? 'Combat' : formatBoostText(item.boost || {})}
+                        </span>
+                        <span style={{ color: accent, fontSize: '9px', border: `1px solid ${accent}66`, padding: '2px 6px', borderRadius: '3px' }}>
+                          {visualUniverse ? getMediaTypeLabel(LORE_DB[visualUniverse]?.mediaType) : 'Nexus'}
+                        </span>
                       </div>
                     </div>
 
-                    <div style={{ marginTop: '15px', textAlign: 'right' }}>
+                    <div style={{ padding: '0 12px 12px' }}>
                       <button
                         onClick={() => buyShopItem(item)}
-                        disabled={eventTokens < item.tokenCost || owned}
+                        disabled={!canBuy}
                         className="btn-retro"
-                        style={{ fontSize: '12px', padding: '5px 12px', borderColor: owned ? '#2ecc71' : '#e74c3c', color: owned ? '#2ecc71' : '#e74c3c' }}
+                        style={{
+                          width: '100%',
+                          fontSize: '11px',
+                          padding: '8px 12px',
+                          borderColor: owned ? '#2ecc71' : canBuy ? accent : '#444',
+                          color: owned ? '#2ecc71' : canBuy ? accent : '#666',
+                          background: canBuy ? `${accent}14` : 'rgba(0,0,0,0.22)'
+                        }}
                       >
-                        {owned ? 'INDEXE' : (lang === 'fr' ? 'ACHETER' : 'BUY')}
+                        {owned
+                          ? 'INDEXE'
+                          : canBuy
+                            ? (lang === 'fr' ? 'ACHETER' : 'BUY')
+                            : (lang === 'fr' ? 'JETONS INSUFFISANTS' : 'NEED TOKENS')}
                       </button>
                     </div>
                   </div>
