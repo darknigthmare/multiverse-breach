@@ -27,6 +27,35 @@ const getUniverseHubColor = universe => {
   return `hsl(${hue} 70% 52%)`;
 };
 
+const UNIVERSE_HUB_PLACES = {
+  'Resident Evil': { fr: 'Raccoon City', en: 'Raccoon City', mood: 'rues contaminees, barricades R.P.D., pharmacies pillees', type: 'city' },
+  Halo: { fr: 'Avant-poste UNSC', en: 'UNSC Outpost', mood: 'hangars blindes, balises Forerunner, silhouettes de dropship', type: 'military' },
+  'Half-Life': { fr: 'Secteur Black Mesa', en: 'Black Mesa Sector', mood: 'labos coupes, conduits HEV, resonances oranges', type: 'lab' },
+  Stargate: { fr: 'Salle de Porte SGC', en: 'SGC Gate Room', mood: 'rampe metallique, chevrons actifs, consoles A.R.C.A.', type: 'gate' },
+  'Silent Hill': { fr: 'Quartier Brumeux', en: 'Fog District', mood: 'asphalte humide, sirenes lointaines, enseignes eteintes', type: 'fog' },
+  Doom: { fr: 'Bastion UAC', en: 'UAC Bastion', mood: 'acier rouge, runes chaudes, sas de confinement', type: 'industrial' },
+  'Metal Gear': { fr: 'Plateforme Shadow Moses', en: 'Shadow Moses Platform', mood: 'neige tactique, caisses militaires, radars brouilles', type: 'military' },
+  'Final Fantasy VII': { fr: 'Secteur Mako', en: 'Mako Sector', mood: 'reacteurs verts, rails suspendus, fumee industrielle', type: 'reactor' },
+  'Tomb Raider': { fr: 'Crypte de la Relique', en: 'Relic Crypt', mood: 'pierres anciennes, torches basses, pieges scelles', type: 'ruins' },
+  'Spider-Man PS1': { fr: 'Toits de Manhattan', en: 'Manhattan Rooftops', mood: 'toits plats, antennes, panneaux lumineux', type: 'rooftop' },
+  'The Simpsons': { fr: 'Rue de Springfield', en: 'Springfield Street', mood: 'maisons colorees, centrale au loin, enseignes absurdes', type: 'suburb' },
+  Futurama: { fr: 'New New York', en: 'New New York', mood: 'tubes de transport, neons, livraisons orbitales', type: 'futureCity' }
+};
+
+const getUniverseHubPlace = (universe, lang = 'fr') => {
+  const direct = UNIVERSE_HUB_PLACES[universe];
+  if (direct) return { ...direct, name: direct[lang] || direct.fr || direct.en };
+  const lower = String(universe || '').toLowerCase();
+  if (lower.includes('stargate')) return { ...UNIVERSE_HUB_PLACES.Stargate, name: lang === 'fr' ? `Salle de Porte ${universe}` : `${universe} Gate Room` };
+  if (lower.includes('final fantasy')) return { ...UNIVERSE_HUB_PLACES['Final Fantasy VII'], name: lang === 'fr' ? `District Cristal ${universe}` : `${universe} Crystal District` };
+  if (lower.includes('resident')) return { ...UNIVERSE_HUB_PLACES['Resident Evil'], name: 'Raccoon City' };
+  return {
+    name: lang === 'fr' ? `Quartier ${universe || 'Nexus'}` : `${universe || 'Nexus'} District`,
+    mood: lang === 'fr' ? 'decor reconstruit par la Trame, balises A.R.C.A. et fragments locaux' : 'Thread-built scenery, A.R.C.A. beacons, and local fragments',
+    type: 'generic'
+  };
+};
+
 const getArcUniverses = (arc, allHeroes = []) => {
   if (Array.isArray(arc?.universes) && arc.universes.length) return arc.universes;
   const hero = allHeroes.find(item => item.id === arc?.heroId);
@@ -323,7 +352,7 @@ function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone,
   );
 }
 
-function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerProfile }) {
+function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages = [], playerProfile, onOpenMissions, onOpenCodex }) {
   const canvasRef = useRef(null);
   const stateRef = useRef({
     t: 0,
@@ -335,7 +364,9 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
   });
   const nearHeroRef = useRef(null);
   const nearPortalRef = useRef(null);
+  const nearZoneRef = useRef(null);
   const [nearHeroId, setNearHeroId] = useState(null);
+  const [nearZoneId, setNearZoneId] = useState(null);
   const [selectedHeroId, setSelectedHeroId] = useState(null);
   const [currentZone, setCurrentZone] = useState('atrium');
   const [currentDistrict, setCurrentDistrict] = useState('atrium');
@@ -353,6 +384,18 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
     const fallback = ['Nexus de Convergence', 'Halo', 'Half-Life', 'Resident Evil', 'Stargate'];
     return (unlockedUniverses.length ? unlockedUniverses : fallback).slice(0, 10);
   }, [unlockedUniverses]);
+  const universeStageStats = useMemo(() => {
+    const stats = {};
+    stages.forEach(stage => {
+      const keys = [stage.universe, ...(stage.sourceUniverses || [])].filter(Boolean);
+      keys.forEach(universe => {
+        if (!stats[universe]) stats[universe] = { total: 0, cleared: 0 };
+        stats[universe].total += 1;
+        if (completedStages.includes(stage.id)) stats[universe].cleared += 1;
+      });
+    });
+    return stats;
+  }, [completedStages, stages]);
   const districts = useMemo(() => {
     const threadUniversePortals = visibleThreadUniverses.map((universe, index) => {
       const col = index % 3;
@@ -372,12 +415,13 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       portal.target,
       {
         id: portal.target,
-        label: portal.universe,
+        label: getUniverseHubPlace(portal.universe, lang).name,
         universe: portal.universe,
-        role: lang === 'fr' ? `zone dediee a ${portal.universe}` : `${portal.universe} dedicated zone`,
+        place: getUniverseHubPlace(portal.universe, lang),
+        role: lang === 'fr' ? `lieu reconstruit depuis ${portal.universe}` : `${portal.universe} reconstructed place`,
         color: portal.color,
-        worldW: 1640,
-        worldH: 1040,
+        worldW: 1920,
+        worldH: 1180,
         spawn: { x: 820, y: 760 },
         portals: [
           {
@@ -453,39 +497,59 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
     if (district.universe) {
       const universe = district.universe;
       const lore = LORE_DB[universe] || {};
+      const place = district.place || getUniverseHubPlace(universe, lang);
+      const stats = universeStageStats[universe] || { total: 0, cleared: 0 };
+      const progressLabel = stats.total
+        ? `${stats.cleared}/${stats.total} ${lang === 'fr' ? 'failles' : 'rifts'}`
+        : (lang === 'fr' ? 'aucune faille indexee' : 'no indexed rift');
       return [
         {
           id: `${district.id}-anchor`,
           universe,
-          label: lang === 'fr' ? `Ancre ${universe}` : `${universe} Anchor`,
-          x: 530,
-          y: 300,
-          w: 580,
-          h: 255,
+          action: 'talk',
+          label: lang === 'fr' ? `Place ${place.name}` : `${place.name} Plaza`,
+          x: 610,
+          y: 280,
+          w: 640,
+          h: 280,
           color: district.color,
-          role: lang === 'fr' ? 'signature principale' : 'primary signature'
+          role: lang === 'fr' ? 'heros compatibles et dialogues' : 'compatible heroes and dialogue'
         },
         {
           id: `${district.id}-memory`,
           universe,
-          label: lang === 'fr' ? 'Memoire locale' : 'Local Memory',
-          x: 180,
-          y: 640,
-          w: 420,
-          h: 190,
+          action: 'codex',
+          label: lang === 'fr' ? 'Codex local' : 'Local Codex',
+          x: 190,
+          y: 710,
+          w: 430,
+          h: 205,
           color: '#ffea00',
-          role: lore.mediaType ? `${lore.mediaType} / codex` : (lang === 'fr' ? 'archives codex' : 'codex archives')
+          role: lore.mediaType ? `${lore.mediaType} / ${progressLabel}` : progressLabel
         },
         {
           id: `${district.id}-breach`,
           universe,
-          label: lang === 'fr' ? 'Balise de faille' : 'Breach Beacon',
-          x: 1040,
-          y: 640,
-          w: 420,
-          h: 190,
+          action: 'mission',
+          label: lang === 'fr' ? 'Balise mission' : 'Mission Beacon',
+          x: 1245,
+          y: 710,
+          w: 430,
+          h: 205,
           color: '#e74c3c',
-          role: lang === 'fr' ? `${completedStages.length} traces scellees` : `${completedStages.length} sealed traces`
+          role: lang === 'fr' ? `lancer une faille de ${universe}` : `launch a ${universe} rift`
+        },
+        {
+          id: `${district.id}-core`,
+          universe,
+          action: 'anchor',
+          label: lang === 'fr' ? 'Ancre de stabilite' : 'Stability Anchor',
+          x: 760,
+          y: 875,
+          w: 400,
+          h: 150,
+          color: '#39c5bb',
+          role: place.mood
         }
       ];
     }
@@ -538,13 +602,23 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       { id: 'gate-hall', universe: 'Nexus', label: lang === 'fr' ? 'Hall des portails' : 'Portal Hall', x: 1180, y: 360, w: 330, h: 260, color: '#9b59b6', role: lang === 'fr' ? 'depart vers quartiers' : 'district departures' },
       ...threadRooms
     ];
-  }, [completedStages.length, currentDistrict, district, lang, visibleThreadUniverses]);
+  }, [completedStages.length, currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
 
   const selectedHero = ownedHeroes.find(hero => hero.id === selectedHeroId) || null;
   const nearHero = ownedHeroes.find(hero => hero.id === nearHeroId) || null;
   const leadHero = selectedHero || nearHero || ownedHeroes[0];
   const playerName = playerProfile?.pseudo || playerProfile?.name || playerProfile?.username || (lang === 'fr' ? 'Ancre Joueur' : 'Player Anchor');
   const currentZoneData = zones.find(zone => zone.id === currentZone) || district;
+  const nearZoneData = zones.find(zone => zone.id === nearZoneId) || null;
+  const districtStats = district.universe ? (universeStageStats[district.universe] || { total: 0, cleared: 0 }) : null;
+  const districtProgress = districtStats?.total ? districtStats.cleared / districtStats.total : 0;
+  const districtStateLabel = !district.universe
+    ? (lang === 'fr' ? 'nexus stable' : 'stable nexus')
+    : districtProgress >= 0.6
+      ? (lang === 'fr' ? 'salle lumineuse' : 'bright room')
+      : districtProgress > 0
+        ? (lang === 'fr' ? 'salle en stabilisation' : 'stabilizing room')
+        : (lang === 'fr' ? 'salle brumeuse' : 'fogged room');
 
   useEffect(() => {
     const districtHeroes = district.universe
@@ -555,17 +629,22 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       : ownedHeroes;
     stateRef.current.npcs = districtHeroes.slice(0, 18).map((hero, index) => {
       const zone = zones[index % Math.max(1, zones.length)] || district;
+      const compatibleCount = districtHeroes.filter(other => other.id !== hero.id && (other.universe === hero.universe || other.category === hero.category)).length;
+      const routine = compatibleCount && index % 4 === 1 ? 'talk' : index % 3 === 0 ? 'walk' : 'idle';
       return {
         hero,
         x: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
         y: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54)),
         baseX: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
         baseY: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54)),
+        zoneId: zone.id,
+        routine,
+        reaction: completedStages.length > 0 && index % 5 === 0,
         phase: index * 0.73,
         facing: index % 2 ? -1 : 1
       };
     });
-  }, [district, ownedHeroes, zones]);
+  }, [completedStages.length, district, ownedHeroes, zones]);
 
   const switchDistrict = useCallback((portal) => {
     const target = districts[portal.target] || districts.atrium;
@@ -575,6 +654,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
     nearHeroRef.current = null;
     nearHeroIdRef.current = null;
     nearPortalRef.current = null;
+    nearZoneRef.current = null;
     stateRef.current.player.x = spawn.x;
     stateRef.current.player.y = spawn.y;
     stateRef.current.destination = null;
@@ -583,6 +663,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       y: Math.max(0, Math.min(target.worldH - 540, spawn.y - 270))
     };
     setNearHeroId(null);
+    setNearZoneId(null);
     setCurrentDistrict(target.id);
     setCurrentZone(target.id);
     setHubLog(lang === 'fr'
@@ -597,6 +678,30 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       switchDistrict(nearPortalRef.current);
       return;
     }
+    if (nearZoneRef.current?.action === 'mission') {
+      setHubLog(lang === 'fr'
+        ? `Balise de ${nearZoneRef.current.universe} activee. A.R.C.A. ouvre la carte des failles sur les arcs et missions liees.`
+        : `${nearZoneRef.current.universe} beacon activated. A.R.C.A. opens the rift map for linked arcs and missions.`);
+      sound.playSfx('special');
+      onOpenMissions?.(nearZoneRef.current.universe);
+      return;
+    }
+    if (nearZoneRef.current?.action === 'codex') {
+      setHubLog(lang === 'fr'
+        ? `Codex local ouvert: ${nearZoneRef.current.universe}. Les archives restent in-lore sous forme de dossier A.R.C.A.`
+        : `Local Codex opened: ${nearZoneRef.current.universe}. Archives stay in-lore as an A.R.C.A. file.`);
+      sound.playSfx('confirm');
+      onOpenCodex?.(nearZoneRef.current.universe);
+      return;
+    }
+    if (nearZoneRef.current?.action === 'anchor') {
+      const stats = universeStageStats[nearZoneRef.current.universe] || { total: 0, cleared: 0 };
+      setHubLog(lang === 'fr'
+        ? `Ancre locale: ${nearZoneRef.current.universe}. Stabilite ${stats.cleared}/${stats.total || '?'}; la salle gagne en lumiere quand ses failles sont scellees.`
+        : `Local anchor: ${nearZoneRef.current.universe}. Stability ${stats.cleared}/${stats.total || '?'}; the room brightens as its rifts are sealed.`);
+      sound.playSfx('click');
+      return;
+    }
     const target = nearHeroRef.current || state.npcs
       .map(npc => ({ npc, dist: Math.hypot(npc.x - state.player.x, npc.y - state.player.y) }))
       .filter(entry => entry.dist < 58)
@@ -609,11 +714,17 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       return;
     }
     setSelectedHeroId(target.id);
+    const compatible = state.npcs
+      .map(npc => npc.hero)
+      .filter(hero => hero.id !== target.id && (hero.universe === target.universe || hero.category === target.category))
+      .slice(0, 2)
+      .map(hero => hero.name);
+    const stats = universeStageStats[target.universe] || { total: 0, cleared: 0 };
     setHubLog(lang === 'fr'
-      ? `${target.name} synchronise sa Trame avec ${playerName}. Indice: ${target.universe} reagit a tes breches scellees.`
-      : `${target.name} synchronizes their Thread with ${playerName}. Intel: ${target.universe} reacts to your sealed breaches.`);
+      ? `${target.name} synchronise sa Trame avec ${playerName}. ${compatible.length ? `Discussion compatible avec ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} faille(s) stabilisee(s).`
+      : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`);
     sound.playSfx('confirm');
-  }, [lang, playerName, switchDistrict]);
+  }, [lang, onOpenCodex, onOpenMissions, playerName, switchDistrict, universeStageStats]);
 
   useEffect(() => {
     const onKeyDown = event => {
@@ -661,6 +772,66 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       ctx.fillText(label, x, y - 28 + bob);
       ctx.textAlign = 'left';
     };
+    const drawUniverseScenery = (activeDistrict, progress) => {
+      if (!activeDistrict.universe) return;
+      const place = activeDistrict.place || getUniverseHubPlace(activeDistrict.universe, lang);
+      const bright = Math.min(0.34, 0.08 + progress * 0.28);
+      ctx.save();
+      ctx.globalAlpha = 0.32 + progress * 0.28;
+      ctx.fillStyle = activeDistrict.color;
+      if (place.type === 'city') {
+        ctx.fillRect(0, 585, activeDistrict.worldW, 180);
+        ctx.fillStyle = 'rgba(0,0,0,0.54)';
+        for (let i = 0; i < 9; i += 1) ctx.fillRect(120 + i * 185, 250 + (i % 3) * 28, 105, 250 - (i % 2) * 44);
+        ctx.fillStyle = '#ffea00';
+        ctx.fillRect(720, 360, 170, 28);
+        ctx.fillStyle = '#e74c3c';
+        ctx.fillText('R.P.D.', 762, 379);
+        ctx.strokeStyle = '#d8f7ff';
+        for (let x = 80; x < activeDistrict.worldW; x += 190) {
+          ctx.beginPath();
+          ctx.moveTo(x, 674);
+          ctx.lineTo(x + 74, 674);
+          ctx.stroke();
+        }
+      } else if (['military', 'industrial', 'reactor'].includes(place.type)) {
+        for (let i = 0; i < 8; i += 1) {
+          ctx.strokeStyle = i % 2 ? activeDistrict.color : '#777';
+          ctx.strokeRect(170 + i * 190, 260 + (i % 3) * 95, 120, 72);
+        }
+        ctx.fillStyle = activeDistrict.color;
+        ctx.globalAlpha = 0.18 + progress * 0.22;
+        ctx.fillRect(240, 600, activeDistrict.worldW - 480, 74);
+      } else if (place.type === 'gate') {
+        ctx.strokeStyle = activeDistrict.color;
+        ctx.lineWidth = 12;
+        ctx.beginPath();
+        ctx.arc(930, 410, 130, Math.PI * 0.08, Math.PI * 1.92);
+        ctx.stroke();
+        for (let i = 0; i < 9; i += 1) {
+          ctx.fillStyle = i % 2 ? '#ffea00' : activeDistrict.color;
+          ctx.fillRect(820 + Math.cos(i) * 120, 400 + Math.sin(i) * 120, 18, 18);
+        }
+      } else if (place.type === 'fog') {
+        ctx.fillStyle = '#d8f7ff';
+        for (let i = 0; i < 12; i += 1) ctx.fillRect(80 + i * 160, 350 + Math.sin(stateRef.current.t * 0.02 + i) * 70, 120, 16);
+      } else {
+        for (let i = 0; i < 12; i += 1) {
+          ctx.strokeStyle = activeDistrict.color;
+          ctx.strokeRect(160 + i * 135, 270 + (i % 4) * 105, 82, 58);
+        }
+      }
+      if (progress < 0.35) {
+        ctx.globalAlpha = 0.42;
+        ctx.fillStyle = '#d8f7ff';
+        for (let i = 0; i < 14; i += 1) ctx.fillRect(40 + i * 150, 170 + Math.sin(stateRef.current.t * 0.018 + i) * 160, 180, 22);
+      } else {
+        ctx.globalAlpha = bright;
+        ctx.fillStyle = activeDistrict.color;
+        ctx.fillRect(30, 30, activeDistrict.worldW - 60, activeDistrict.worldH - 60);
+      }
+      ctx.restore();
+    };
 
     const loop = () => {
       const state = stateRef.current;
@@ -705,10 +876,30 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         currentZoneRef.current = activeZone.id;
         setCurrentZone(activeZone.id);
       }
+      const nearestZone = zones
+        .map(zone => ({
+          zone,
+          dist: Math.hypot(zone.x + zone.w / 2 - state.player.x, zone.y + zone.h / 2 - state.player.y)
+        }))
+        .filter(entry => entry.dist < Math.max(entry.zone.w, entry.zone.h) * 0.58)
+        .sort((a, b) => a.dist - b.dist)[0]?.zone || null;
+      nearZoneRef.current = nearestZone?.action ? nearestZone : null;
+      if ((nearestZone?.id || null) !== nearZoneRef.current?.lastId) {
+        nearZoneRef.current = nearestZone?.action ? { ...nearestZone, lastId: nearestZone.id } : null;
+        setNearZoneId(nearestZone?.action ? nearestZone.id : null);
+      }
 
       state.npcs.forEach(npc => {
-        npc.x = npc.baseX + Math.sin(state.t * 0.018 + npc.phase) * 14;
-        npc.y = npc.baseY + Math.cos(state.t * 0.014 + npc.phase) * 8;
+        if (npc.routine === 'walk') {
+          npc.x = npc.baseX + Math.sin(state.t * 0.014 + npc.phase) * 46;
+          npc.y = npc.baseY + Math.cos(state.t * 0.011 + npc.phase) * 22;
+        } else if (npc.routine === 'talk') {
+          npc.x = npc.baseX + Math.sin(state.t * 0.01 + npc.phase) * 8;
+          npc.y = npc.baseY + Math.cos(state.t * 0.012 + npc.phase) * 5;
+        } else {
+          npc.x = npc.baseX + Math.sin(state.t * 0.018 + npc.phase) * 14;
+          npc.y = npc.baseY + Math.cos(state.t * 0.014 + npc.phase) * 8;
+        }
         npc.facing = Math.sin(state.t * 0.018 + npc.phase) > 0 ? 1 : -1;
       });
 
@@ -759,8 +950,10 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       ctx.globalAlpha = 0.08;
       ctx.fillRect(18, 18, district.worldW - 36, district.worldH - 36);
       ctx.globalAlpha = 1;
+      drawUniverseScenery(district, districtProgress);
       if (district.universe) {
         const lore = LORE_DB[district.universe];
+        const place = district.place || getUniverseHubPlace(district.universe, lang);
         ctx.save();
         ctx.globalAlpha = 0.16;
         ctx.fillStyle = district.color;
@@ -776,27 +969,29 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         ctx.strokeRect(92, 78, 580, 88);
         ctx.fillStyle = district.color;
         ctx.font = '18px "Press Start 2P"';
-        ctx.fillText(String(district.universe).toUpperCase().slice(0, 22), 112, 112);
+        ctx.fillText(String(place.name).toUpperCase().slice(0, 22), 112, 112);
         ctx.fillStyle = '#d8f7ff';
         ctx.font = '11px "Share Tech Mono"';
-        ctx.fillText(String(lore?.desc?.[lang] || district.role).slice(0, 88), 112, 140);
+        ctx.fillText(String(place.mood || lore?.desc?.[lang] || district.role).slice(0, 88), 112, 140);
       }
 
       zones.forEach(zone => {
         const pulse = 0.08 + Math.sin(state.t * 0.035 + zone.x) * 0.025;
+        const zoneDimmed = district.universe && districtProgress < 0.15 && zone.action !== 'mission';
+        const zoneActive = zone.id === activeZone.id || zone.id === nearZoneRef.current?.id;
         ctx.save();
-        ctx.globalAlpha = zone.id === activeZone.id ? 0.22 : 0.11;
+        ctx.globalAlpha = zoneDimmed ? 0.06 : zoneActive ? 0.25 : 0.11;
         ctx.fillStyle = zone.color;
         ctx.fillRect(zone.x, zone.y, zone.w, zone.h);
         ctx.restore();
         ctx.save();
-        ctx.globalAlpha = zone.id === activeZone.id ? 1 : 0.55;
+        ctx.globalAlpha = zoneDimmed ? 0.34 : zoneActive ? 1 : 0.55;
         ctx.strokeStyle = zone.color;
-        ctx.lineWidth = zone.id === activeZone.id ? 3 : 1;
+        ctx.lineWidth = zoneActive ? 3 : 1;
         ctx.strokeRect(zone.x, zone.y, zone.w, zone.h);
         ctx.restore();
         ctx.save();
-        ctx.globalAlpha = zone.id === activeZone.id ? 0.34 : 0.16;
+        ctx.globalAlpha = zoneActive ? 0.34 : 0.16;
         ctx.fillStyle = zone.color;
         ctx.fillRect(zone.x + 8, zone.y + zone.h - 18, zone.w - 16, 6 + pulse * 20);
         ctx.restore();
@@ -806,6 +1001,10 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         ctx.fillStyle = zone.color;
         ctx.font = '10px "Share Tech Mono"';
         ctx.fillText(zone.role.toUpperCase().slice(0, 24), zone.x + 12, zone.y + 36);
+        if (zone.action && zoneActive) {
+          ctx.fillStyle = '#ffea00';
+          ctx.fillText((lang === 'fr' ? 'E: INTERAGIR' : 'E: INTERACT'), zone.x + 12, zone.y + zone.h - 28);
+        }
       });
 
       (district.portals || []).forEach(portal => {
@@ -867,6 +1066,11 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
         .forEach(npc => {
           const hero = npc.hero;
           drawPixelPerson(npc.x, npc.y, hero.primaryColor, hero.secondaryColor, npc.facing, String(hero.name || '?').slice(0, 8));
+          if (npc.routine === 'talk' || npc.reaction) {
+            ctx.fillStyle = npc.reaction ? '#ffea00' : '#d8f7ff';
+            ctx.font = '9px "Share Tech Mono"';
+            ctx.fillText(npc.reaction ? (lang === 'fr' ? 'arc scelle?' : 'arc sealed?') : (lang === 'fr' ? 'discussion' : 'talk'), npc.x - 22, npc.y - 52);
+          }
           if (nearest?.hero?.id === hero.id) {
             ctx.strokeStyle = '#ffea00';
             ctx.lineWidth = 2;
@@ -891,10 +1095,19 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       ctx.fillStyle = '#fff';
       ctx.font = '11px "Share Tech Mono"';
       ctx.fillText(`${lang === 'fr' ? 'Zone' : 'Zone'}: ${activeZone.label}`, 24, 57);
+      if (district.universe) {
+        ctx.fillStyle = districtProgress >= 0.6 ? '#2ecc71' : districtProgress > 0 ? '#ffeb3b' : '#aaa';
+        ctx.font = '10px "Share Tech Mono"';
+        ctx.fillText(districtStateLabel.toUpperCase().slice(0, 30), 24, 72);
+      }
       if (nearestPortal) {
         ctx.fillStyle = '#ffea00';
         ctx.font = '10px "Share Tech Mono"';
-        ctx.fillText(lang === 'fr' ? `E: ${nearestPortal.label}` : `E: ${nearestPortal.label}`, 24, 72);
+        ctx.fillText(lang === 'fr' ? `E: ${nearestPortal.label}` : `E: ${nearestPortal.label}`, 24, district.universe ? 88 : 72);
+      } else if (nearZoneRef.current?.action) {
+        ctx.fillStyle = '#ffea00';
+        ctx.font = '10px "Share Tech Mono"';
+        ctx.fillText(lang === 'fr' ? `E: ${nearZoneRef.current.label}` : `E: ${nearZoneRef.current.label}`, 24, district.universe ? 88 : 72);
       }
 
       ctx.fillStyle = 'rgba(0,0,0,0.58)';
@@ -932,7 +1145,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
     };
     loop();
     return () => window.cancelAnimationFrame(rafId);
-  }, [completedStages.length, currentDistrict, district, lang, ownedHeroes.length, playerName, unlockedUniverses.length, zones]);
+  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, lang, ownedHeroes.length, playerName, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
     const canvas = canvasRef.current;
@@ -953,6 +1166,18 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
       nearHeroIdRef.current = closeNpc.hero.id;
       setNearHeroId(closeNpc.hero.id);
       interactWithNearby();
+      return;
+    }
+    const closeZone = zones.find(zone => zone.action && x >= zone.x && x <= zone.x + zone.w && y >= zone.y && y <= zone.y + zone.h);
+    if (closeZone) {
+      nearZoneRef.current = { ...closeZone, lastId: closeZone.id };
+      setNearZoneId(closeZone.id);
+      stateRef.current.destination = { x: closeZone.x + closeZone.w / 2, y: closeZone.y + closeZone.h / 2 };
+      if (Math.hypot(stateRef.current.player.x - (closeZone.x + closeZone.w / 2), stateRef.current.player.y - (closeZone.y + closeZone.h / 2)) < Math.max(closeZone.w, closeZone.h) * 0.48) {
+        interactWithNearby();
+      } else {
+        sound.playSfx('click');
+      }
       return;
     }
     stateRef.current.destination = { x, y };
@@ -981,11 +1206,31 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerPr
           <span>{district.label}</span>
           <span>{currentZoneData?.label || 'Nexus'}</span>
         </div>
+        {district.universe && (
+          <div className="mosaic-room-intel">
+            <strong>{district.label}</strong>
+            <span>{district.universe} / {districtStateLabel}</span>
+            <small>{district.place?.mood || getUniverseHubPlace(district.universe, lang).mood}</small>
+            <em>{districtStats?.cleared || 0}/{districtStats?.total || 0} {lang === 'fr' ? 'failles locales stabilisees' : 'local rifts stabilized'}</em>
+          </div>
+        )}
         {leadHero && (
           <div className="nexus-play-intel">
             <strong>{leadHero.name || 'Ancre'}</strong>
             <span>{leadHero.universe} / {leadHero.category}</span>
             <small>{lang === 'fr' ? 'Synchronisation proche disponible dans la Cite.' : 'Nearby synchronization available in the City.'}</small>
+          </div>
+        )}
+        {nearZoneData?.action && (
+          <div className="mosaic-room-actions">
+            <button className="btn-retro" onClick={interactWithNearby} title={lang === 'fr' ? 'Execute l action de la zone proche.' : 'Run the nearby zone action.'}>
+              {nearZoneData.action === 'mission'
+                ? (lang === 'fr' ? 'OUVRIR MISSIONS' : 'OPEN MISSIONS')
+                : nearZoneData.action === 'codex'
+                  ? (lang === 'fr' ? 'OUVRIR CODEX' : 'OPEN CODEX')
+                  : (lang === 'fr' ? 'INTERAGIR' : 'INTERACT')}
+            </button>
+            <span>{nearZoneData.label}</span>
           </div>
         )}
         <div className="mosaic-rpg-log">
@@ -4095,7 +4340,19 @@ export default function HubScreen({
             heroes={HEROES_DB}
             unlockedHeroes={unlockedHeroes}
             completedStages={completedStages}
+            stages={visibleStages}
             playerProfile={playerProfile}
+            onOpenMissions={() => {
+              setActiveTab('missions');
+              setMissionScreen('universeArcs');
+              setSelectedNarrativeArcId(null);
+              sound.playSfx('coin');
+            }}
+            onOpenCodex={() => {
+              setActiveTab('codex');
+              setCodexView('universes');
+              sound.playSfx('coin');
+            }}
           />
         )}
 

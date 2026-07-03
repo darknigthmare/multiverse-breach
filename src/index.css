@@ -583,6 +583,42 @@ body {
   text-transform: uppercase;
 }
 
+.mosaic-room-intel,
+.mosaic-room-actions {
+  display: grid;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid rgba(255, 234, 0, 0.22);
+  border-radius: 4px;
+  background: rgba(255, 234, 0, 0.045);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.mosaic-room-intel strong {
+  color: #ffeb3b;
+  font-size: 12px;
+}
+
+.mosaic-room-intel span {
+  color: #d8f7ff;
+}
+
+.mosaic-room-intel small,
+.mosaic-room-actions span {
+  color: #aaa;
+}
+
+.mosaic-room-intel em {
+  color: #2ecc71;
+  font-style: normal;
+}
+
+.mosaic-room-actions {
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
 .mosaic-rpg-controls {
   display: grid;
   gap: 9px;
