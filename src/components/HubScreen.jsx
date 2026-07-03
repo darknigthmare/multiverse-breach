@@ -74,18 +74,20 @@ export default function HubScreen({
     });
     sound.playSfx(hidden ? 'click' : 'coin');
   }, [setDisabledAssets]);
-  const spriteOutputSet = useMemo(
-    () => new Set((spriteManifest.entries || []).filter(entry => entry.available).map(entry => entry.output)),
+  const spriteOutputMap = useMemo(
+    () => new Map((spriteManifest.entries || []).filter(entry => entry.available).map(entry => [entry.output, entry])),
     []
   );
   const getHeroSpriteInfo = useCallback((hero) => {
     const src = getHeroSpriteSheetSrc(hero);
-    return { src, ready: spriteOutputSet.has(src) };
-  }, [spriteOutputSet]);
+    const entry = spriteOutputMap.get(src);
+    return { src, ready: Boolean(entry), source: entry?.source || null };
+  }, [spriteOutputMap]);
   const getEnemySpriteInfo = useCallback((enemy, universe) => {
     const src = getEnemySpriteSheetSrc({ ...enemy, universe });
-    return { src, ready: spriteOutputSet.has(src) };
-  }, [spriteOutputSet]);
+    const entry = spriteOutputMap.get(src);
+    return { src, ready: Boolean(entry), source: entry?.source || null };
+  }, [spriteOutputMap]);
   const isUniverseVisible = useCallback(
     (universe) => !universe || universe === 'Nexus de Convergence' || !hiddenUniverseSet.has(universe),
     [hiddenUniverseSet]

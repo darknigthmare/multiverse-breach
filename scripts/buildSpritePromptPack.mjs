@@ -134,6 +134,7 @@ const main = async () => {
     const entry = { ...item };
     delete entry.prompt;
     entry.available = await fileExists(entry.output);
+    entry.source = entry.available ? 'openai' : null;
     return entry;
   }));
 
