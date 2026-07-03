@@ -3273,9 +3273,10 @@ export default function HubScreen({
     stageCount: 1,
     arcCount: CHARACTER_NARRATIVE_ARCS.filter(arc => arc.heroId === selectedHero.id).length
   });
+  const selectedOriginCharacterLore = selectedPlaque.dossier?.[lang] || '';
   const selectedOriginLore = lang === 'fr'
-    ? `Trame d origine: ${selectedHero.universe}. ${selectedOriginBase} A.R.C.A. conserve cette memoire pour que le heros ne devienne pas une copie vide pendant la Compression de Resonance.`
-    : `Origin Thread: ${selectedHero.universe}. ${selectedOriginBase} A.R.C.A. preserves this memory so the hero does not become an empty copy during Resonance Compression.`;
+    ? `Trame d origine: ${selectedHero.universe}. ${selectedOriginCharacterLore ? `${selectedOriginCharacterLore} ` : ''}${selectedOriginBase} A.R.C.A. conserve cette memoire pour que le heros ne devienne pas une copie vide pendant la Compression de Resonance.`
+    : `Origin Thread: ${selectedHero.universe}. ${selectedOriginCharacterLore ? `${selectedOriginCharacterLore} ` : ''}${selectedOriginBase} A.R.C.A. preserves this memory so the hero does not become an empty copy during Resonance Compression.`;
   const breachRoleLore = {
     marine: {
       fr: 'Le Nexus l emploie comme point d ancrage: encaisser le premier choc, tenir la ligne et permettre aux signatures plus fragiles de charger leurs pouvoirs.',
@@ -3303,9 +3304,9 @@ export default function HubScreen({
       ? ' Comme Persona de Resonance, sa presence vient de l impact culturel collectif: le Nexus stabilise un symbole vivant plutot qu un civil tire au hasard.'
       : ' As a Resonance Persona, the presence comes from collective cultural impact: the Nexus stabilizes a living symbol rather than a civilian pulled at random.')
     : '';
-  const selectedBreachLore = lang === 'fr'
+  const selectedBreachLore = selectedPlaque.breachLore?.[lang] || (lang === 'fr'
     ? `${selectedHero.name} n a pas ete arrache a sa Trame par hasard. Sa signature a resiste a la Premiere Breche assez longtemps pour qu A.R.C.A. la classe comme operateur ${selectedHero.category}. Dans notre lore, "${selectedHero.special?.name || selectedPlaque.role.fr}" n est pas seulement une competence: c est la maniere dont ce heros impose les lois de son monde d origine dans une breche que le Sans-Auteur tente de rendre muette. ${breachRoleLore[selectedHero.category]?.fr || breachRoleLore.tactical.fr}${mediaPersonaLore}`
-    : `${selectedHero.name} was not pulled from the origin Thread by chance. The signature resisted the First Breach long enough for A.R.C.A. to classify it as a ${selectedHero.category} operator. In our lore, "${selectedHero.special?.name || selectedPlaque.role.en}" is not just a skill: it is how this hero forces origin-world laws into a breach the Authorless wants to silence. ${breachRoleLore[selectedHero.category]?.en || breachRoleLore.tactical.en}${mediaPersonaLore}`;
+    : `${selectedHero.name} was not pulled from the origin Thread by chance. The signature resisted the First Breach long enough for A.R.C.A. to classify it as a ${selectedHero.category} operator. In our lore, "${selectedHero.special?.name || selectedPlaque.role.en}" is not just a skill: it is how this hero forces origin-world laws into a breach the Authorless wants to silence. ${breachRoleLore[selectedHero.category]?.en || breachRoleLore.tactical.en}${mediaPersonaLore}`);
   const getAvailableSkinsForHero = (hero) => {
     const ownedSkinIds = ['default', ...inventory.filter(itemId => SKIN_CATALOG[itemId])];
     return ownedSkinIds
@@ -7146,7 +7147,7 @@ export default function HubScreen({
                               {hero.category} / Lv {heroLevels[hero.id] || 1} / HP {stats.hp} ATK {stats.atk} DEF {stats.def}
                             </div>
                             <div style={{ color: '#d0d0d0', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
-                              {getCharacterPlaque(hero, lang).breachLore}
+                              {getLocalizedText(getCharacterPlaque(hero).breachLore, lang, getCharacterPlaque(hero).dossier?.[lang])}
                             </div>
                           </div>
                         );

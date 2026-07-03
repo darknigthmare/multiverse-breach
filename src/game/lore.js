@@ -174,8 +174,8 @@ export const LORE_DB = {
     mediaType: 'game',
     title: { en: 'Halo', fr: 'Halo' },
     desc: {
-      en: 'A space conflict between humanity and the alien Covenant on ancient ringworlds.',
-      fr: 'Un conflit galactique opposant l\'humanité à l\'Alliance Convenant sur d\'anciens mondes-anneaux.'
+      en: 'A military science-fiction universe where the UNSC fights the Covenant across ancient Forerunner ringworlds, while the Flood and the true purpose of the Halo array threaten every living civilization.',
+      fr: 'Un univers de science-fiction militaire ou l UNSC affronte le Covenant sur d anciens anneaux Forerunner, tandis que le Parasite et la vraie fonction du reseau Halo menacent toute civilisation vivante.'
     }
   },
   'Alien': {

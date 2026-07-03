@@ -576,9 +576,39 @@ export const EQUIP_ITEMS_DB = [
   { id: 'frag_grenade', universe: 'Gears of War', name: { en: 'Frag Grenade Mod', fr: 'Grenade à Fragmentation' }, boost: { atk: 8 }, cost: 100 },
   { id: 'snub_pistol', universe: 'Gears of War', name: { en: 'Snub Pistol Holster', fr: 'Pistolet Snub' }, boost: { spd: 1 }, cost: 80 },
   // Halo
-  { id: 'mjolnir_shield', universe: 'Halo', name: { en: 'MJOLNIR Shield Booster', fr: 'Bouclier MJOLNIR' }, boost: { hp: 50, def: 8 }, cost: 100 },
-  { id: 'cortana_chip', universe: 'Halo', name: { en: 'AI AI-Cortana Chip', fr: 'Puce de Cortana' }, boost: { atk: 10 }, cost: 120 },
-  { id: 'magnum_ammo', universe: 'Halo', name: { en: 'M6D Magnum Ammo', fr: 'Munitions Magnum' }, boost: { spd: 2 }, cost: 90 },
+  {
+    id: 'mjolnir_shield',
+    universe: 'Halo',
+    name: { en: 'MJOLNIR Mk VI Shield Lattice', fr: 'Maille de bouclier MJOLNIR Mk VI' },
+    desc: {
+      fr: 'Fragment de sous-systeme energetique inspire de l armure MJOLNIR du Spartan-II: il ne rend pas invincible, il restaure la logique Halo du bouclier rechargeable et de l avancee sous feu controle.',
+      en: 'Energy subsystem fragment inspired by Spartan-II MJOLNIR armor: it does not make the wearer invincible, it restores Halo logic of rechargeable shielding and controlled advance under fire.'
+    },
+    boost: { hp: 50, def: 8 },
+    cost: 100
+  },
+  {
+    id: 'cortana_chip',
+    universe: 'Halo',
+    name: { en: 'Cortana Matrix Shard', fr: 'Eclat de matrice Cortana' },
+    desc: {
+      fr: 'Eclat de donnees tactiques sauve d une interface UNSC/Forerunner. A.R.C.A. l utilise comme aide de ciblage: prediction de trajectoire, lecture Covenant et verrouillage de noyau de faille.',
+      en: 'Tactical data shard saved from a UNSC/Forerunner interface. A.R.C.A. uses it as targeting support: trajectory prediction, Covenant pattern reading, and rift-core lock.'
+    },
+    boost: { atk: 10 },
+    cost: 120
+  },
+  {
+    id: 'magnum_ammo',
+    universe: 'Halo',
+    name: { en: 'M6D AP Magazine', fr: 'Chargeur perforant M6D' },
+    desc: {
+      fr: 'Chargeur calibre 12.7mm associe au magnum M6D de l ere Installation 04. Dans une faille, chaque tir sert de repere UNSC: court, net, fiable quand la Trame brouille les armes lourdes.',
+      en: '12.7mm magazine tied to the M6D magnum from the Installation 04 era. In a rift, each shot acts as a UNSC anchor: short, clean, reliable when the Thread scrambles heavy weapons.'
+    },
+    boost: { spd: 2 },
+    cost: 90
+  },
   // Alien
   { id: 'motion_tracker', universe: 'Alien', name: { en: 'M314 Motion Tracker', fr: 'Détecteur de Mouvements' }, boost: { def: 5, spd: 2 }, cost: 100 },
   { id: 'welding_torch', universe: 'Alien', name: { en: 'Industrial Welder', fr: 'Chalumeau de Soudure' }, boost: { atk: 6, hp: 30 }, cost: 90 },
@@ -734,8 +764,11 @@ export const EVENT_ITEMS_DB = {
   },
   'Halo': {
     id: 'evt_halo_warthog',
-    name: { en: 'Warthog Remote', fr: 'Balise de Warthog' },
-    desc: { en: 'Calls a M12 Warthog to run over the battlefield, knocking back and stunning all minions.', fr: 'Appelle un Warthog M12 qui charge sur le terrain, repoussant et étourdissant tous les monstres.' },
+    name: { en: 'M12 Warthog LZ Beacon', fr: 'Balise LZ Warthog M12' },
+    desc: {
+      en: 'Marks a temporary UNSC landing lane. A remote M12 Warthog crosses the breach, suppresses Covenant infantry, knocks back light targets, and briefly opens an extraction corridor.',
+      fr: 'Marque une ligne d atterrissage UNSC temporaire. Un Warthog M12 traverse la breche, cloue l infanterie Covenant, repousse les cibles legeres et ouvre brievement un couloir d extraction.'
+    },
     effect: 'warthog_run'
   },
   'Alien': {

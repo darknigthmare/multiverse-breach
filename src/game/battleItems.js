@@ -56,12 +56,12 @@ const BATTLE_ITEM_OVERRIDES = {
   },
   Halo: {
     pickups: [
-      ['Bulle de bouclier', 'Bubble Shield', 'Bouclier instantane pour l escouade.'],
-      ['Grenade plasma', 'Plasma Grenade', 'Degats concentres sur la ligne ennemie.'],
-      ['Suractivation Mjolnir', 'Mjolnir Overdrive', 'Charge speciale et tempo de combat.']
+      ['Bulle de bouclier deployable', 'Deployable Bubble Shield', 'Generateur UNSC de campagne: en melee il cree une fenetre de survie courte, en tactique il securise une case contre le tir Covenant.'],
+      ['Grenade plasma Covenant', 'Covenant Plasma Grenade', 'Explosif adhesif de technologie Covenant: colle une cible prioritaire, punit les groupes serres et rappelle le danger des lignes Elites/Grunts.'],
+      ['Batterie de bouclier MJOLNIR', 'MJOLNIR Shield Cell', 'Cellule energetique compatible Spartan: recharge une partie du bouclier, accelere la reprise d assaut et stabilise le porteur sous feu nourri.']
     ],
-    summon: ['Pelican de soutien', 'Pelican Support', 'Un passage aerien tire sur les menaces prioritaires.'],
-    ultimate: ['MAC orbital', 'Orbital MAC Strike', 'Un tir lourd traverse la breche et frappe tout le front.']
+    summon: ['Pelican Echo 419', 'Echo 419 Pelican', 'Invocation temporaire UNSC: Foehammer ouvre une passe de soutien, depose des munitions et mitraille les signatures Covenant les plus proches.'],
+    ultimate: ['Tir MAC orbital', 'Orbital MAC Strike', 'Attaque ultime UNSC: une solution de tir Magnetic Accelerator Cannon traverse la breche et frappe la ligne ennemie comme une frappe anti-capital ship miniaturisee.']
   },
   Stargate: {
     pickups: [

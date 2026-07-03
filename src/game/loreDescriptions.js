@@ -67,9 +67,10 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   Halo: {
     faction: 'sciFi',
-    theme: 'anneaux Forerunner, doctrine UNSC, Covenant, boucliers Spartan et guerre cosmique ancienne',
-    stageName: 'Anneau Forerunner',
-    bossName: 'Scarab Covenant'
+    theme: 'UNSC, programme Spartan-II, Covenant, anneaux Forerunner, Sentinelles, Parasite et boucliers MJOLNIR',
+    stageName: 'Installation 04',
+    bossName: 'Scarab Covenant',
+    worldBoss: 'Covenant Scarab Mech'
   },
   Alien: {
     faction: 'sciFi',
@@ -398,14 +399,15 @@ export const getGearLoreDescription = ({ item, lang = 'fr', lore }) => {
   const signature = getUniverseSignature(item.universe, lore);
   const stats = listStats(item.boost, lang);
   const media = MEDIA_LINES[lore?.mediaType] || MEDIA_LINES.game;
+  const itemNote = item.desc?.[lang] ? `${item.desc[lang]} ` : '';
   const upgradeLine = item.isUpgraded
     ? (lang === 'fr'
       ? ' Version +: la relique a absorbe un echo deja scelle; son signal frappe plus fort, mais A.R.C.A. surveille sa derive.'
       : ' Plus version: the relic absorbed an already-sealed echo; its signal strikes harder, but A.R.C.A. watches its drift.')
     : '';
   return lang === 'fr'
-    ? `${item.name.fr} vient de ${item.universe}. ${universeLexicon(signature, 'fr')} A.R.C.A. l utilise comme ancre materielle: elle rappelle au porteur les lois de ${signature.stageName} quand une zone tente de les effacer. Resonance mesuree: ${stats}. ${media.fr}${upgradeLine}`
-    : `${item.name.en} comes from ${item.universe}. ${universeLexicon(signature, 'en')} A.R.C.A. uses it as a material anchor: it reminds the carrier of ${signature.stageName} laws when a zone tries to erase them. Measured resonance: ${stats}. ${media.en}${upgradeLine}`;
+    ? `${item.name.fr} vient de ${item.universe}. ${itemNote}${universeLexicon(signature, 'fr')} A.R.C.A. l utilise comme ancre materielle: elle rappelle au porteur les lois de ${signature.stageName} quand une zone tente de les effacer. Resonance mesuree: ${stats}. ${media.fr}${upgradeLine}`
+    : `${item.name.en} comes from ${item.universe}. ${itemNote}${universeLexicon(signature, 'en')} A.R.C.A. uses it as a material anchor: it reminds the carrier of ${signature.stageName} laws when a zone tries to erase them. Measured resonance: ${stats}. ${media.en}${upgradeLine}`;
 };
 
 export const getEventLoreDescription = ({ item, lang = 'fr', universe, lore }) => {

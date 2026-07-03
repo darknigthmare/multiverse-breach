@@ -171,19 +171,34 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
     id: 'chief_living_ring',
     stageId: 9203,
     heroId: 'masterchief',
-    title: { fr: 'Arc Personnage - Le dernier rempart', en: 'Character Arc - The Last Bulwark' },
+    title: { fr: 'Arc Personnage - Sierra 117: anneau vivant', en: 'Character Arc - Sierra 117: Living Ring' },
     mode: 'Tactics',
     difficulty: 'Personal',
-    bossName: 'Scarab du Sans-Auteur',
+    bossName: 'Scarab Covenant recode',
     unlock: { type: 'level', value: 3 },
-    intro: { fr: 'Master Chief ne defend plus seulement un anneau: il defend la possibilite meme qu une escouade survive a plusieurs guerres a la fois.', en: 'Master Chief no longer defends only a ring: he defends the possibility that a squad can survive several wars at once.' },
+    intro: {
+      fr: 'La Breche a ouvert une cicatrice dans une section de l Installation 04. Des signatures Covenant, des Sentinelles Forerunner et un echo du Parasite se melangent autour d un fragment Cortana. Pour John-117, l objectif reste simple: securiser l anneau, empecher la contamination de sortir et ramener l escouade vivante.',
+      en: 'The Breach has opened a scar through a section of Installation 04. Covenant signatures, Forerunner Sentinels, and a Flood echo mix around a Cortana fragment. For John-117, the objective remains simple: secure the ring, prevent the contamination from escaping, and bring the squad back alive.'
+    },
     missions: [
-      { fr: 'Synchroniser l armure Mjolnir avec un bouclier de Trame.', en: 'Sync Mjolnir armor with a Thread shield.' },
-      { fr: 'Tenir une ligne tactique pendant que le Nexus evacue une zone Halo/Stargate.', en: 'Hold a tactical line while the Nexus evacuates a Halo/Stargate zone.' },
-      { fr: 'Abattre un Scarab recode avant qu il ne grave le symbole du Sans-Auteur.', en: 'Destroy a recoded Scarab before it brands the Authorless symbol.' }
+      {
+        fr: 'Mission 1 - Zone d atterrissage Alpha: recuperer une balise Warthog M12, repousser Grunts et Jackals, puis installer une bulle de bouclier UNSC pour stabiliser le premier couloir de l anneau.',
+        en: 'Mission 1 - Landing Zone Alpha: recover an M12 Warthog beacon, push back Grunts and Jackals, then deploy a UNSC bubble shield to stabilize the ring first corridor.'
+      },
+      {
+        fr: 'Mission 2 - Cartographe silencieux: escorter l eclat de matrice Cortana vers une console Forerunner pendant que des Elites Minor et des Sentinelles recodees tentent d isoler le Chief.',
+        en: 'Mission 2 - Silent Cartographer: escort the Cortana matrix shard to a Forerunner console while Elite Minors and recoded Sentinels try to isolate the Chief.'
+      },
+      {
+        fr: 'Mission 3 - Couloir du Parasite: purger les spores de Trame avant qu elles ne copient la logique du Flood; utiliser grenade plasma et chargeur M6D pour couper les formes infectees de leur noyau.',
+        en: 'Mission 3 - Flood Corridor: purge Thread spores before they copy Flood logic; use plasma grenades and the M6D magazine to sever infected forms from their core.'
+      }
     ],
-    outro: { fr: 'Le Chief devient le protocole vivant du Rempart Atrium.', en: 'The Chief becomes the living protocol of the Atrium Bulwark.' },
-    reward: { fr: 'Apparence Mjolnir Atrium + balise Cortana fantome', en: 'Atrium Mjolnir Appearance + Ghost Cortana Beacon' },
+    outro: {
+      fr: 'Le Scarab recode tombe avant de graver le Sans-Auteur sur l anneau. Cortana conserve une coordonnee propre, A.R.C.A. classe John-117 comme protocole de rempart Halo, et la Trame Halo reste lisible: UNSC, Covenant, Forerunner, Parasite, sans dilution multivers gratuite.',
+      en: 'The recoded Scarab falls before branding the Authorless onto the ring. Cortana keeps a clean coordinate, A.R.C.A. classifies John-117 as a Halo bulwark protocol, and the Halo Thread remains readable: UNSC, Covenant, Forerunner, Flood, without random multiverse dilution.'
+    },
+    reward: { fr: 'Apparence MJOLNIR Installation 04 + Balise Echo 419', en: 'Installation 04 MJOLNIR Skin + Echo 419 Beacon' },
     rewardItemId: 'char_masterchief_atrium'
   },
   {
@@ -517,7 +532,7 @@ export const SKIN_CATALOG = {
   char_masterchief_atrium: {
     id: 'char_masterchief_atrium',
     heroId: 'masterchief',
-    name: { fr: 'Mjolnir Atrium', en: 'Atrium Mjolnir' },
+    name: { fr: 'MJOLNIR Installation 04', en: 'Installation 04 MJOLNIR' },
     colors: { primaryColor: '#6aa84f', secondaryColor: '#63d7ff' }
   },
   char_ripley_loader_nexus: {
