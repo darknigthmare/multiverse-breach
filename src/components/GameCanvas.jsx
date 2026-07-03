@@ -10,10 +10,12 @@ import { getTranslation } from '../game/translation';
 import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../game/expandedUniverses';
 import { createPlayerHero } from '../game/playerHero';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
+import { getBattleItemPoolForStage } from '../game/battleItems';
 
 export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, disabledAssets = {}, onBattleEnd }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
+  const battlePickupsRef = useRef([]);
   const keysPressed = useRef({});
   const lastAnomalyWaveRef = useRef(-1);
   
@@ -26,6 +28,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [battleCompleted, setBattleCompleted] = useState(false);
   const [battleResult, setBattleResult] = useState(null);
   const [battleAnomaly, setBattleAnomaly] = useState(null);
+  const [battlePickups, setBattlePickups] = useState([]);
+  const [battleItemLog, setBattleItemLog] = useState(null);
   
   const [activeSynergies, setActiveSynergies] = useState([]);
   const applySkin = (hero) => {
@@ -37,6 +41,29 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
   const getEnemyAdminKey = (universe, enemy) => `${universe}::${enemy?.name || 'unknown'}`;
+
+  const syncBattlePickups = (nextPickups) => {
+    battlePickupsRef.current = nextPickups;
+    setBattlePickups(nextPickups);
+  };
+
+  const createStagePickups = (currentStage) => {
+    const pool = getBattleItemPoolForStage(currentStage);
+    const tiers = ['pickup', 'pickup', 'pickup', 'summon', 'ultimate'];
+    const positions = [
+      { x: 170, y: 218 },
+      { x: 305, y: 146 },
+      { x: 442, y: 218 },
+      { x: 560, y: 178 },
+      { x: 350, y: 248 }
+    ];
+
+    return tiers.map((tier, index) => {
+      const tierPool = pool.filter(item => item.tier === tier);
+      const item = tierPool[(currentStage.id + index) % Math.max(1, tierPool.length)] || pool[index % Math.max(1, pool.length)];
+      return item ? { ...item, ...positions[index], pickupId: `${item.id}_${index}`, used: false } : null;
+    }).filter(Boolean);
+  };
   
   const autoBattleRef = useRef(autoBattle);
   autoBattleRef.current = autoBattle;
@@ -246,6 +273,114 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     };
   };
 
+  const drawBattleItemPickup = (ctx, item, animTime) => {
+    if (item.used) return;
+    const pulse = 1 + Math.sin(animTime * 0.08 + item.x) * 0.12;
+    const size = item.tier === 'ultimate' ? 18 : item.tier === 'summon' ? 15 : 12;
+    const label = item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.slice(0, 3).toUpperCase();
+
+    ctx.save();
+    ctx.translate(item.x, item.y);
+    ctx.rotate(animTime * 0.025);
+    ctx.fillStyle = 'rgba(0,0,0,0.72)';
+    ctx.strokeStyle = item.color;
+    ctx.lineWidth = 2;
+    ctx.shadowColor = item.color;
+    ctx.shadowBlur = 12;
+    ctx.beginPath();
+    ctx.moveTo(0, -size * pulse);
+    ctx.lineTo(size * pulse, 0);
+    ctx.lineTo(0, size * pulse);
+    ctx.lineTo(-size * pulse, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.rotate(-animTime * 0.025);
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 8px Share Tech Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(label, 0, 3);
+    ctx.restore();
+  };
+
+  const damageEnemiesByBattleItem = (engine, amount, color, label) => {
+    if (!engine?.enemies) return;
+    engine.enemies.forEach(enemy => {
+      if (enemy.currentHp > 0) {
+        const bossFactor = enemy.isBoss ? 1.25 : 1;
+        enemy.currentHp = Math.max(0, enemy.currentHp - Math.round(amount * bossFactor));
+        engine.particles?.add(enemy.x || 360, (enemy.y || 160) - 14, 0, -1, color, 6, 32, 'spark');
+      }
+    });
+    engine.particles?.add(engine.width * 0.5, engine.height * 0.28, 0, -1, color, 4, 52, 'text', label);
+  };
+
+  const supportHeroesByBattleItem = (engine, effect, color) => {
+    if (!engine?.heroes) return;
+    const activeHero = stage.mode === 'Smash'
+      ? engine.getActiveHero?.()
+      : stage.mode === 'RPG'
+        ? engine.getSelectedHero?.()
+        : engine.activeUnitType === 'hero'
+          ? engine.activeUnit
+          : engine.heroes.find(hero => hero.currentHp > 0);
+
+    engine.heroes.forEach(hero => {
+      if (hero.currentHp <= 0) return;
+      if (effect.heal) hero.currentHp = Math.min(hero.maxHp || hero.stats.hp, hero.currentHp + effect.heal);
+      if (effect.shield) hero.currentHp = Math.min(hero.maxHp || hero.stats.hp, hero.currentHp + effect.shield);
+      if (effect.charge && typeof hero.specialCharge === 'number') {
+        const charge = hero === activeHero ? effect.charge : Math.ceil(effect.charge * 0.45);
+        hero.specialCharge = Math.min(100, hero.specialCharge + charge);
+      }
+      engine.particles?.add(hero.x || 120, (hero.y || 180) - 18, 0, -1, color, 4, 26, 'spark');
+    });
+  };
+
+  const activateBattleItem = (pickup, source = 'manual') => {
+    if (!pickup || pickup.used || !engineRef.current || battleCompleted) return;
+    const engine = engineRef.current;
+    const effect = pickup.effect || {};
+    const color = pickup.color || '#39c5bb';
+    const nextPickups = battlePickupsRef.current.map(item =>
+      item.pickupId === pickup.pickupId ? { ...item, used: true, source } : item
+    );
+    syncBattlePickups(nextPickups);
+
+    if (effect.damage) damageEnemiesByBattleItem(engine, effect.damage, color, 'ITEM HIT');
+    if (effect.summonDamage) damageEnemiesByBattleItem(engine, effect.summonDamage, color, 'ASSIST');
+    if (effect.ultimateDamage) damageEnemiesByBattleItem(engine, effect.ultimateDamage, color, 'ULTIMATE');
+    supportHeroesByBattleItem(engine, effect, color);
+
+    setBattleItemLog({
+      id: pickup.pickupId,
+      color,
+      text: lang === 'fr'
+        ? `${pickup.name.fr}: ${pickup.tactics.fr}`
+        : `${pickup.name.en}: ${pickup.tactics.en}`
+    });
+    window.setTimeout(() => setBattleItemLog(null), 4200);
+    sound.playSfx(pickup.tier === 'ultimate' ? 'levelup' : pickup.tier === 'summon' ? 'portal' : 'confirm');
+  };
+
+  const activateFirstBattleItem = () => {
+    const next = battlePickupsRef.current.find(item => !item.used);
+    activateBattleItem(next, 'shortcut');
+  };
+
+  const checkBattleItemPickupCollision = (engine) => {
+    if (stage.mode !== 'Smash' || !engine?.getActiveHero) return;
+    const activeHero = engine.getActiveHero();
+    if (!activeHero || activeHero.currentHp <= 0) return;
+    battlePickupsRef.current.forEach(item => {
+      if (item.used) return;
+      const dx = (activeHero.x || 0) - item.x;
+      const dy = (activeHero.y || 0) - item.y;
+      if (Math.hypot(dx, dy) < 34) activateBattleItem(item, 'pickup');
+    });
+  };
+
   useEffect(() => {
     sound.playBgm('battle');
 
@@ -300,8 +435,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       engineRef.current.isFinalBoss = (stage.id === 38);
     }
 
+    syncBattlePickups(createStagePickups(stage));
+    setBattleItemLog(null);
+
     const handleKeyDown = (e) => {
       keysPressed.current[e.key] = true;
+      if (e.key === 'o' || e.key === 'O') activateFirstBattleItem();
       if (stage.mode === 'Smash' && engineRef.current) {
         const activeH = engineRef.current.getActiveHero();
         if (e.key === 'j' || e.key === 'J') engineRef.current.triggerAbility(activeH, 'simple');
@@ -355,6 +494,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         particles.update();
 
         engine.draw(ctx, animTime);
+        battlePickupsRef.current.forEach(item => drawBattleItemPickup(ctx, item, animTime));
+        checkBattleItemPickupCollision(engine);
         particles.draw(ctx);
         drawSynergyOverlay(ctx, activeSynergies, width, height, animTime);
 
@@ -649,6 +790,28 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           </div>
         )}
 
+        {battleItemLog && !battleCompleted && (
+          <div style={{
+            position: 'absolute',
+            bottom: '12px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 6,
+            maxWidth: '86%',
+            padding: '7px 12px',
+            background: 'rgba(0,0,0,0.78)',
+            border: `1px solid ${battleItemLog.color}`,
+            color: '#fff',
+            borderRadius: '4px',
+            fontSize: '10px',
+            lineHeight: 1.35,
+            textAlign: 'center',
+            boxShadow: `0 0 14px ${battleItemLog.color}44`
+          }}>
+            {battleItemLog.text}
+          </div>
+        )}
+
         {/* Victory/Defeat Overlay */}
         {battleCompleted && (
           <div style={{
@@ -777,6 +940,47 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               🌟 {eventItemUsed ? getTranslation(lang, 'eventUsed') : equippedEvent.name[lang].toUpperCase()}
             </button>
           )}
+
+          {battlePickups.length > 0 && (
+            <div style={{
+              marginTop: '12px',
+              padding: '10px',
+              border: '1px solid rgba(57,197,187,0.28)',
+              background: 'rgba(57,197,187,0.05)',
+              borderRadius: '4px'
+            }}>
+              <div style={{ fontSize: '10px', color: '#39c5bb', fontWeight: 'bold', marginBottom: '7px', textTransform: 'uppercase' }}>
+                {lang === 'fr' ? 'Items de terrain' : 'Stage items'}
+              </div>
+              <div style={{ display: 'grid', gap: '6px' }}>
+                {battlePickups.map(item => (
+                  <button
+                    key={item.pickupId}
+                    onClick={() => activateBattleItem(item, 'panel')}
+                    disabled={item.used || battleCompleted}
+                    className="btn-retro"
+                    style={{
+                      width: '100%',
+                      textAlign: 'left',
+                      fontSize: '9px',
+                      padding: '6px',
+                      borderColor: item.used ? '#333' : item.color,
+                      color: item.used ? '#555' : '#fff',
+                      background: item.used ? 'rgba(0,0,0,0.18)' : `${item.color}14`,
+                      opacity: item.used ? 0.55 : 1
+                    }}
+                    title={item[stage.mode === 'Tactics' ? 'tactics' : 'melee']?.[lang]}
+                  >
+                    <span style={{ color: item.color, fontWeight: 'bold' }}>
+                      {item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.toUpperCase()}
+                    </span>
+                    {' - '}
+                    {item.name[lang]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Action Panel */}
@@ -869,12 +1073,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
               {stage.mode === 'Smash' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
-                  Move with <strong>W/A/S/D</strong>. Press <strong>J/K/L/I</strong> or click buttons. Swap heroes with <strong>1/2/3</strong>.
+                  Move with <strong>W/A/S/D</strong>. Press <strong>J/K/L/I</strong>, collect diamonds, or press <strong>O</strong> for the next stage item. Swap heroes with <strong>1/2/3</strong>.
                 </div>
               )}
               {stage.mode === 'Tactics' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
-                  Click highighted <span style={{ color: '#2ecc71' }}>green</span> cells to Move, select skill, then click target in <span style={{ color: '#e74c3c' }}>red</span> cells to target.
+                  Click highighted <span style={{ color: '#2ecc71' }}>green</span> cells to Move, select skill, then click target in <span style={{ color: '#e74c3c' }}>red</span> cells. Stage items act like one-use map resources.
                 </div>
               )}
             </>

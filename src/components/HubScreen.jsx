@@ -10,6 +10,7 @@ import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../game/spriteAssets';
+import { getBattleItemsForUniverse } from '../game/battleItems';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 
 export default function HubScreen({
@@ -4141,6 +4142,7 @@ export default function HubScreen({
                   const ustageId = UNIVERSE_TO_STAGE_ID[key];
                   const isCleared = !ustageId || completedStages.includes(ustageId);
                   const bossIntel = ENEMIES_DB[key]?.worldBoss || ENEMIES_DB[key]?.bosses?.[0];
+                  const battleItems = getBattleItemsForUniverse(key);
                   
                   return (
                     <div key={key} style={{
@@ -4189,6 +4191,28 @@ export default function HubScreen({
                             {isCleared ? `HP ${bossIntel.hp} | ATK ${bossIntel.atk} | ${bossIntel.special}` : encryptString('Classified boss pattern')}
                           </div>
                         )}
+                        <div style={{
+                          padding: '8px',
+                          marginBottom: '10px',
+                          border: isCleared ? '1px solid rgba(255,235,59,0.25)' : '1px solid #222',
+                          background: isCleared ? 'rgba(255,235,59,0.05)' : 'rgba(0,0,0,0.22)',
+                          borderRadius: '4px'
+                        }}>
+                          <div style={{ fontSize: '9px', color: isCleared ? '#ffeb3b' : '#555', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase' }}>
+                            {lang === 'fr' ? 'Items melee / tactique' : 'Melee / tactics items'}
+                          </div>
+                          <div style={{ display: 'grid', gap: '4px' }}>
+                            {battleItems.map(item => (
+                              <div key={item.id} style={{ fontSize: '9px', color: isCleared ? '#ccc' : '#555', lineHeight: 1.3 }}>
+                                <span style={{ color: isCleared ? item.color : '#555', fontWeight: 'bold' }}>
+                                  {item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : 'ITEM'}
+                                </span>
+                                {' '}
+                                {isCleared ? item.name[lang] : encryptString(item.name[lang])}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                       <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', borderTop: '1px solid #222', paddingTop: '8px' }}>
                         {universeHeroes.map(h => (
