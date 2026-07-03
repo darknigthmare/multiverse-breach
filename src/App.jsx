@@ -27,7 +27,25 @@ const DEFAULT_SAVE = {
   heroSkins: {},
   portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
   publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
-  activityProgress: { dayKey: '', weekKey: '', claimedDaily: [], claimedWeekly: [], modeWins: {}, itemActivations: 0, weeklyItemActivations: 0 },
+  activityProgress: {
+    dayKey: '',
+    weekKey: '',
+    claimedDaily: [],
+    claimedWeekly: [],
+    claimedMilestones: [],
+    modeWins: {},
+    itemActivations: 0,
+    weeklyItemActivations: 0,
+    dailyWins: 0,
+    weeklyWins: 0,
+    dailyModeWins: {},
+    weeklyModeWins: {},
+    lifetimeWins: 0,
+    lifetimeAttempts: 0,
+    seasonXp: 0,
+    loginStreak: 0,
+    lastSeenDay: ''
+  },
   inventory: ['cog_armor', 'green_herb', 'hev_battery'],
   equippedGear: {
     [PLAYER_HERO_ID]: null,
@@ -96,6 +114,21 @@ const normalizeSavePayload = (save = {}) => {
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
     equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
   };
+};
+
+const getProgressKeys = (date = new Date()) => {
+  const dayKey = date.toISOString().slice(0, 10);
+  const startOfYear = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+  const weekNumber = Math.ceil((((date - startOfYear) / 86400000) + startOfYear.getUTCDay() + 1) / 7);
+  return { dayKey, weekKey: `${date.getUTCFullYear()}-W${weekNumber}` };
+};
+
+const getNextLoginStreak = (lastSeenDay, dayKey, currentStreak = 0) => {
+  if (!lastSeenDay) return 1;
+  if (lastSeenDay === dayKey) return currentStreak || 1;
+  const last = new Date(`${lastSeenDay}T00:00:00Z`).getTime();
+  const today = new Date(`${dayKey}T00:00:00Z`).getTime();
+  return today - last === 86400000 ? (currentStreak || 0) + 1 : 1;
 };
 
 const getMissionNarrative = (stage, lang, isOutro, victory) => {
@@ -337,6 +370,28 @@ function App() {
     return () => window.clearTimeout(cloudSaveTimerRef.current);
   }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, activityProgress, inventory, equippedGear, equippedEventItems, account]);
 
+  useEffect(() => {
+    const { dayKey, weekKey } = getProgressKeys();
+    setActivityProgress(prev => {
+      if (prev.lastSeenDay === dayKey && prev.dayKey === dayKey && prev.weekKey === weekKey) return prev;
+      return {
+        ...prev,
+        dayKey,
+        weekKey,
+        claimedDaily: prev.dayKey === dayKey ? (prev.claimedDaily || []) : [],
+        claimedWeekly: prev.weekKey === weekKey ? (prev.claimedWeekly || []) : [],
+        itemActivations: prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0,
+        weeklyItemActivations: prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0,
+        dailyWins: prev.dayKey === dayKey ? (prev.dailyWins || 0) : 0,
+        weeklyWins: prev.weekKey === weekKey ? (prev.weeklyWins || 0) : 0,
+        dailyModeWins: prev.dayKey === dayKey ? (prev.dailyModeWins || {}) : {},
+        weeklyModeWins: prev.weekKey === weekKey ? (prev.weeklyModeWins || {}) : {},
+        loginStreak: getNextLoginStreak(prev.lastSeenDay, dayKey, prev.loginStreak),
+        lastSeenDay: dayKey
+      };
+    });
+  }, []);
+
   // Play ambient music
   useEffect(() => {
     sound.init();
@@ -387,8 +442,9 @@ function App() {
       const firstClearGold = firstClear ? 25 : 0;
       const firstClearShards = firstClear ? 10 : 0;
       const itemMasteryTokens = battleItemsUsed >= 3 ? 1 : 0;
-      summary.gold = activeStage.goldPrize + firstClearGold;
-      summary.shards = activeStage.shardPrize + firstClearShards;
+      const seasonRewardBonus = Math.min(0.18, Math.floor((activityProgress.seasonXp || 0) / 500) * 0.02);
+      summary.gold = Math.round(activeStage.goldPrize * (1 + seasonRewardBonus)) + firstClearGold;
+      summary.shards = Math.round(activeStage.shardPrize * (1 + seasonRewardBonus)) + firstClearShards;
       summary.tokens = (activeStage.tokenPrize || 0) + itemMasteryTokens;
       setGold(prev => prev + summary.gold);
       setBreachShards(prev => prev + summary.shards);
@@ -406,17 +462,33 @@ function App() {
         summary.rewardItemName = activeStage.rewardItemName?.[lang] || activeStage.rewardItemName?.en || activeStage.rewardItemId;
       }
 
-      const now = new Date();
-      const startOfYear = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
-      const weekNumber = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getUTCDay() + 1) / 7);
-      const dayKey = now.toISOString().slice(0, 10);
-      const weekKey = `${now.getUTCFullYear()}-W${weekNumber}`;
+      const { dayKey, weekKey } = getProgressKeys();
+      const seasonGain = 35
+        + (firstClear ? 20 : 0)
+        + (battleItemsUsed * 4)
+        + (activeStage.isSurvival ? 15 : 0)
+        + (activeStage.id === 38 ? 100 : 0);
       setActivityProgress(prev => ({
         ...prev,
         dayKey,
         weekKey,
         itemActivations: (prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0) + battleItemsUsed,
         weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed,
+        dailyWins: (prev.dayKey === dayKey ? (prev.dailyWins || 0) : 0) + 1,
+        weeklyWins: (prev.weekKey === weekKey ? (prev.weeklyWins || 0) : 0) + 1,
+        dailyModeWins: {
+          ...(prev.dayKey === dayKey ? (prev.dailyModeWins || {}) : {}),
+          [activeStage.mode]: ((prev.dayKey === dayKey ? prev.dailyModeWins?.[activeStage.mode] : 0) || 0) + 1,
+          any: ((prev.dayKey === dayKey ? prev.dailyModeWins?.any : 0) || 0) + 1
+        },
+        weeklyModeWins: {
+          ...(prev.weekKey === weekKey ? (prev.weeklyModeWins || {}) : {}),
+          [activeStage.mode]: ((prev.weekKey === weekKey ? prev.weeklyModeWins?.[activeStage.mode] : 0) || 0) + 1,
+          any: ((prev.weekKey === weekKey ? prev.weeklyModeWins?.any : 0) || 0) + 1
+        },
+        lifetimeWins: (prev.lifetimeWins || 0) + 1,
+        lifetimeAttempts: (prev.lifetimeAttempts || 0) + 1,
+        seasonXp: (prev.seasonXp || 0) + seasonGain,
         modeWins: {
           ...(prev.modeWins || {}),
           [activeStage.mode]: (prev.modeWins?.[activeStage.mode] || 0) + 1,
@@ -454,17 +526,15 @@ function App() {
       setGold(prev => prev + summary.gold);
       setBreachShards(prev => prev + summary.shards);
 
-      const now = new Date();
-      const dayKey = now.toISOString().slice(0, 10);
-      const startOfYear = new Date(Date.UTC(now.getUTCFullYear(), 0, 1));
-      const weekNumber = Math.ceil((((now - startOfYear) / 86400000) + startOfYear.getUTCDay() + 1) / 7);
-      const weekKey = `${now.getUTCFullYear()}-W${weekNumber}`;
+      const { dayKey, weekKey } = getProgressKeys();
       setActivityProgress(prev => ({
         ...prev,
         dayKey,
         weekKey,
         itemActivations: (prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0) + battleItemsUsed,
-        weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed
+        weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed,
+        lifetimeAttempts: (prev.lifetimeAttempts || 0) + 1,
+        seasonXp: (prev.seasonXp || 0) + 12 + (battleItemsUsed * 2)
       }));
     }
     setLastBattleSummary(result === 'quit' ? null : summary);

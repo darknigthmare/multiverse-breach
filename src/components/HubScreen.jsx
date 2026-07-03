@@ -1546,14 +1546,18 @@ export default function HubScreen({
   const currentWeekKey = `${new Date().getUTCFullYear()}-W${currentWeekNumber}`;
   const claimedDaily = activityProgress.dayKey === todayKey ? (activityProgress.claimedDaily || []) : [];
   const claimedWeekly = activityProgress.weekKey === currentWeekKey ? (activityProgress.claimedWeekly || []) : [];
+  const claimedMilestones = activityProgress.claimedMilestones || [];
   const dailyContracts = DAILY_CONTRACTS
     .map((contract, idx) => DAILY_CONTRACTS[(todayIndex + idx) % DAILY_CONTRACTS.length])
     .slice(0, 3);
   const todayItemActivations = activityProgress.dayKey === todayKey ? (activityProgress.itemActivations || 0) : 0;
+  const dailyModeWins = activityProgress.dayKey === todayKey ? (activityProgress.dailyModeWins || {}) : {};
+  const weeklyWins = activityProgress.weekKey === currentWeekKey ? (activityProgress.weeklyWins || 0) : 0;
+  const weeklyItemActivations = activityProgress.weekKey === currentWeekKey ? (activityProgress.weeklyItemActivations || 0) : 0;
   const isDailyContractDone = (contract) => {
     if (contract.mode === 'items') return todayItemActivations >= 3;
-    if (contract.mode === 'any') return completedStages.length > 0;
-    return missionPool.some(stage => stage.mode === contract.mode && completedStages.includes(stage.id));
+    if (contract.mode === 'any') return (dailyModeWins.any || 0) > 0;
+    return (dailyModeWins[contract.mode] || 0) > 0;
   };
   const claimDailyContract = (contract) => {
     if (!setActivityProgress || !isDailyContractDone(contract) || claimedDaily.includes(contract.id)) return;
@@ -1720,25 +1724,33 @@ export default function HubScreen({
     {
       id: 'stabilize_5',
       title: { fr: 'Operation hebdo: 5 breches', en: 'Weekly op: 5 breaches' },
-      done: completedStages.length >= 5,
+      done: weeklyWins >= 5,
+      progress: weeklyWins,
+      target: 5,
       reward: { gold: 180, shards: 70, tokens: 4 }
     },
     {
       id: 'collection_1',
       title: { fr: 'Operation hebdo: cache de collection', en: 'Weekly op: collection cache' },
       done: collectionProgress.some(collection => collection.claimed),
+      progress: collectionProgress.filter(collection => collection.claimed).length,
+      target: 1,
       reward: { gold: 120, shards: 45, tokens: 3 }
     },
     {
       id: 'squad_grade_a',
       title: { fr: 'Operation hebdo: escouade rang A', en: 'Weekly op: A-rank squad' },
       done: squadReadiness >= 70,
+      progress: squadReadiness,
+      target: 70,
       reward: { gold: 150, shards: 55, tokens: 3 }
     },
     {
       id: 'artifact_mastery',
       title: { fr: 'Operation hebdo: maitrise des artefacts', en: 'Weekly op: artifact mastery' },
-      done: (activityProgress.weekKey === currentWeekKey ? (activityProgress.weeklyItemActivations || 0) : 0) >= 12,
+      done: weeklyItemActivations >= 12,
+      progress: weeklyItemActivations,
+      target: 12,
       reward: { gold: 120, shards: 50, tokens: 4 }
     }
   ];
@@ -1753,6 +1765,64 @@ export default function HubScreen({
       claimedWeekly: [...(prev.weekKey === currentWeekKey ? (prev.claimedWeekly || []) : []), operation.id]
     }));
     notifyNexus(lang === 'fr' ? 'Operation hebdomadaire synchronisee.' : 'Weekly operation synchronized.', 'success');
+    sound.playSfx('levelup');
+  };
+  const seasonXp = activityProgress.seasonXp || 0;
+  const seasonLevel = Math.max(1, Math.floor(seasonXp / 250) + 1);
+  const seasonXpIntoLevel = seasonXp % 250;
+  const seasonRewardBonus = Math.min(18, Math.floor(seasonXp / 500) * 2);
+  const longTermMilestones = [
+    {
+      id: 'anchor_5_wins',
+      title: { fr: 'Jalon: Ancre operationnelle', en: 'Milestone: Operational Anchor' },
+      progress: activityProgress.lifetimeWins || 0,
+      target: 5,
+      reward: { gold: 120, shards: 35, tokens: 1 },
+      lore: { fr: 'A.R.C.A. confirme que ton profil peut tenir une boucle de combat reguliere.', en: 'A.R.C.A. confirms your profile can hold a regular combat loop.' }
+    },
+    {
+      id: 'anchor_20_wins',
+      title: { fr: 'Jalon: Stabilisateur veteran', en: 'Milestone: Veteran Stabilizer' },
+      progress: activityProgress.lifetimeWins || 0,
+      target: 20,
+      reward: { gold: 260, shards: 85, tokens: 3 },
+      lore: { fr: 'Les archives cessent de te traiter comme un survivant et commencent a te traiter comme un commandant.', en: 'The archives stop treating you as a survivor and start treating you as a commander.' }
+    },
+    {
+      id: 'anchor_50_wins',
+      title: { fr: 'Jalon: Gardien du Voile', en: 'Milestone: Veil Guardian' },
+      progress: activityProgress.lifetimeWins || 0,
+      target: 50,
+      reward: { gold: 600, shards: 180, tokens: 6 },
+      lore: { fr: 'La defense du Nexus devient une campagne longue, pas une suite de failles isolees.', en: 'Nexus defense becomes a long campaign, not a chain of isolated rifts.' }
+    },
+    {
+      id: 'anchor_12_week_items',
+      title: { fr: 'Jalon: Logisticien de terrain', en: 'Milestone: Field Logistician' },
+      progress: weeklyItemActivations,
+      target: 12,
+      reward: { gold: 160, shards: 60, tokens: 3 },
+      lore: { fr: 'Les artefacts ramasses deviennent une vraie economie de combat.', en: 'Field artifacts become a real combat economy.' }
+    },
+    {
+      id: 'anchor_7_streak',
+      title: { fr: 'Jalon: Signal continu 7 jours', en: 'Milestone: 7-day Continuous Signal' },
+      progress: activityProgress.loginStreak || 0,
+      target: 7,
+      reward: { gold: 300, shards: 120, tokens: 5 },
+      lore: { fr: 'Le Nexus reconnait ta presence comme une ancre stable sur la duree.', en: 'The Nexus recognizes your presence as a stable long-term anchor.' }
+    }
+  ];
+  const claimLongTermMilestone = (milestone) => {
+    if (!setActivityProgress || milestone.progress < milestone.target || claimedMilestones.includes(milestone.id)) return;
+    setGold(prev => prev + milestone.reward.gold);
+    setBreachShards(prev => prev + milestone.reward.shards);
+    setEventTokens(prev => prev + milestone.reward.tokens);
+    setActivityProgress(prev => ({
+      ...prev,
+      claimedMilestones: [...(prev.claimedMilestones || []), milestone.id]
+    }));
+    notifyNexus(lang === 'fr' ? 'Jalon long terme archive: recompenses transferees.' : 'Long-term milestone archived: rewards transferred.', 'success');
     sound.playSfx('levelup');
   };
 
@@ -2137,6 +2207,11 @@ export default function HubScreen({
                   {lang === 'fr' ? 'FOCUS JOURNALIER' : 'DAILY FOCUS'}
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <div style={{ fontSize: '9px', color: '#8fa5aa', lineHeight: 1.35, marginBottom: '2px' }}>
+                    {lang === 'fr'
+                      ? `Aujourd hui: ${activityProgress.dayKey === todayKey ? (activityProgress.dailyWins || 0) : 0} victoire(s), ${todayItemActivations} artefact(s).`
+                      : `Today: ${activityProgress.dayKey === todayKey ? (activityProgress.dailyWins || 0) : 0} win(s), ${todayItemActivations} artifact(s).`}
+                  </div>
                   {dailyContracts.map(contract => {
                     const done = isDailyContractDone(contract);
                     const claimed = claimedDaily.includes(contract.id);
@@ -2191,6 +2266,89 @@ export default function HubScreen({
                     );
                   })}
                 </div>
+              </div>
+            </div>
+
+            <div style={{
+              padding: '14px',
+              marginBottom: '14px',
+              background: 'rgba(57,197,187,0.05)',
+              border: '1px solid rgba(57,197,187,0.22)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
+                <div>
+                  <div style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Campagne longue A.R.C.A.' : 'A.R.C.A. Long Campaign'}
+                  </div>
+                  <div style={{ fontSize: '10px', color: '#9fb6bb', marginTop: '3px' }}>
+                    {lang === 'fr'
+                      ? 'Progression durable: presence, victoires, saison, artefacts et jalons permanents.'
+                      : 'Durable progression: presence, wins, season, artifacts, and permanent milestones.'}
+                  </div>
+                </div>
+                <div style={{ fontSize: '10px', color: '#ffeb3b' }}>
+                  {lang === 'fr'
+                    ? `Bonus saison: +${seasonRewardBonus}% ressources`
+                    : `Season bonus: +${seasonRewardBonus}% resources`}
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '8px', marginBottom: '10px' }}>
+                {[
+                  { label: lang === 'fr' ? 'Niveau saison' : 'Season level', value: seasonLevel, color: '#ffeb3b', sub: `${seasonXpIntoLevel}/250 XP` },
+                  { label: lang === 'fr' ? 'Signal continu' : 'Continuous signal', value: `${activityProgress.loginStreak || 0}j`, color: '#39c5bb', sub: activityProgress.lastSeenDay || todayKey },
+                  { label: lang === 'fr' ? 'Semaine active' : 'Active week', value: `${weeklyWins}/5`, color: '#2ecc71', sub: lang === 'fr' ? 'victoires hebdo' : 'weekly wins' },
+                  { label: lang === 'fr' ? 'Artefacts semaine' : 'Weekly artifacts', value: `${weeklyItemActivations}/12`, color: '#ff8c00', sub: lang === 'fr' ? 'economie terrain' : 'field economy' },
+                  { label: lang === 'fr' ? 'Victoires totales' : 'Lifetime wins', value: activityProgress.lifetimeWins || 0, color: '#d9b6ff', sub: `${activityProgress.lifetimeAttempts || 0} ${lang === 'fr' ? 'tentatives' : 'attempts'}` }
+                ].map(metric => (
+                  <div key={metric.label} style={{ padding: '9px', border: `1px solid ${metric.color}44`, background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
+                    <div style={{ color: metric.color, fontSize: '9px', textTransform: 'uppercase' }}>{metric.label}</div>
+                    <div style={{ color: '#fff', fontSize: '16px', fontWeight: 'bold', marginTop: '3px' }}>{metric.value}</div>
+                    <div style={{ color: '#8fa5aa', fontSize: '9px', marginTop: '2px' }}>{metric.sub}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '8px' }}>
+                {longTermMilestones.map(milestone => {
+                  const ready = milestone.progress >= milestone.target;
+                  const claimed = claimedMilestones.includes(milestone.id);
+                  const ratio = Math.min(1, milestone.progress / milestone.target);
+                  return (
+                    <div key={milestone.id} style={{
+                      padding: '10px',
+                      border: claimed ? '1px solid #2ecc71' : ready ? '1px solid #ffeb3b' : '1px solid rgba(255,255,255,0.1)',
+                      background: claimed ? 'rgba(46,204,113,0.06)' : ready ? 'rgba(255,235,59,0.06)' : 'rgba(0,0,0,0.18)',
+                      borderRadius: '4px'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center' }}>
+                        <strong style={{ color: ready ? '#ffeb3b' : '#ddd', fontSize: '10px' }}>{milestone.title[lang]}</strong>
+                        <span style={{ color: claimed ? '#2ecc71' : '#aaa', fontSize: '9px' }}>{claimed ? (lang === 'fr' ? 'ARCHIVE' : 'ARCHIVED') : `${Math.min(milestone.progress, milestone.target)}/${milestone.target}`}</span>
+                      </div>
+                      <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', margin: '7px 0', borderRadius: '3px', overflow: 'hidden' }}>
+                        <div style={{ width: `${ratio * 100}%`, height: '100%', background: claimed ? '#2ecc71' : '#ffeb3b' }} />
+                      </div>
+                      <div style={{ color: '#aaa', fontSize: '9px', lineHeight: 1.35 }}>{milestone.lore[lang]}</div>
+                      <div style={{ color: '#d9d9d9', fontSize: '9px', marginTop: '6px' }}>
+                        +{milestone.reward.gold} Or | +{milestone.reward.shards} Fragments | +{milestone.reward.tokens} Jetons
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => claimLongTermMilestone(milestone)}
+                        disabled={!ready || claimed}
+                        className="btn-retro"
+                        style={{
+                          marginTop: '7px',
+                          padding: '5px 8px',
+                          fontSize: '9px',
+                          borderColor: claimed ? '#2ecc71' : ready ? '#ffeb3b' : '#444',
+                          color: claimed ? '#2ecc71' : ready ? '#ffeb3b' : '#666'
+                        }}
+                      >
+                        {claimed ? (lang === 'fr' ? 'RECU' : 'CLAIMED') : ready ? (lang === 'fr' ? 'RECLAMER' : 'CLAIM') : (lang === 'fr' ? 'EN COURS' : 'IN PROGRESS')}
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -2406,9 +2564,17 @@ export default function HubScreen({
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '8px' }}>
                 {weeklyOperations.map(operation => {
                   const claimed = claimedWeekly.includes(operation.id);
+                  const ratio = Math.min(1, (operation.progress || 0) / operation.target);
                   return (
                     <div key={operation.id} style={{ padding: '9px', border: operation.done ? '1px solid rgba(46,204,113,0.45)' : '1px solid rgba(255,255,255,0.08)', background: operation.done ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.16)', borderRadius: '4px' }}>
                       <div style={{ fontSize: '10px', color: operation.done ? '#8dffb1' : '#ddd', fontWeight: 'bold', marginBottom: '5px' }}>{operation.title[lang]}</div>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', color: '#8fa5aa', fontSize: '9px', marginBottom: '5px' }}>
+                        <span>{lang === 'fr' ? 'Progression' : 'Progress'}</span>
+                        <span>{Math.min(operation.progress || 0, operation.target)}/{operation.target}</span>
+                      </div>
+                      <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '7px', borderRadius: '3px', overflow: 'hidden' }}>
+                        <div style={{ width: `${ratio * 100}%`, height: '100%', background: operation.done ? '#2ecc71' : '#9b59b6' }} />
+                      </div>
                       <div style={{ fontSize: '9px', color: '#aaa', marginBottom: '7px' }}>
                         +{operation.reward.gold} Or | +{operation.reward.shards} Fragments | +{operation.reward.tokens} Jetons
                       </div>
