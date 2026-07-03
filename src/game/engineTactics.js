@@ -186,17 +186,30 @@ export class EngineTactics {
     const unit = this.activeUnit;
     // Glitched status halves movement range to 1 cell
     const range = unit.statusEffects?.glitched > 0 ? 1 : 2;
-    this.movementRange = [];
-    
-    for (let r = 0; r < this.rows; r++) {
-      for (let c = 0; c < this.cols; c++) {
-        const dist = Math.abs(unit.gridX - c) + Math.abs(unit.gridY - r);
-        if (dist <= range && !this.isCellOccupied(c, r, unit)) {
-          this.movementRange.push({ x: c, y: r });
-        }
-      }
+    const visited = new Set([`${unit.gridX},${unit.gridY}`]);
+    const queue = [{ x: unit.gridX, y: unit.gridY, dist: 0 }];
+    this.movementRange = [{ x: unit.gridX, y: unit.gridY }];
+
+    while (queue.length > 0) {
+      const cell = queue.shift();
+      if (cell.dist >= range) continue;
+
+      [
+        { x: cell.x + 1, y: cell.y },
+        { x: cell.x - 1, y: cell.y },
+        { x: cell.x, y: cell.y + 1 },
+        { x: cell.x, y: cell.y - 1 }
+      ].forEach(next => {
+        const key = `${next.x},${next.y}`;
+        if (visited.has(key) || !this.isInsideGrid(next.x, next.y)) return;
+        if (this.isCellOccupied(next.x, next.y, unit)) return;
+
+        visited.add(key);
+        const reachable = { x: next.x, y: next.y, dist: cell.dist + 1 };
+        this.movementRange.push({ x: reachable.x, y: reachable.y });
+        queue.push(reachable);
+      });
     }
-    this.movementRange.push({ x: unit.gridX, y: unit.gridY });
   }
 
   calculateAttackRange() {
@@ -222,6 +235,10 @@ export class EngineTactics {
     }
   }
 
+  isInsideGrid(c, r) {
+    return c >= 0 && c < this.cols && r >= 0 && r < this.rows;
+  }
+
   isCellOccupied(c, r, ignoreUnit) {
     const heroOccupies = this.heroes.some(h => h.currentHp > 0 && h !== ignoreUnit && h.gridX === c && h.gridY === r);
     const enemyOccupies = this.enemies.some(e => e.currentHp > 0 && e !== ignoreUnit && e.gridX === c && e.gridY === r);
@@ -240,22 +257,26 @@ export class EngineTactics {
   }
 
   handleCellClick(c, r) {
-    if (this.gameOver || this.activeUnitType !== 'hero') return;
+    if (this.gameOver || this.activeUnitType !== 'hero') return { handled: false, reason: 'inactive' };
 
     if (this.actionPhase === 'move') {
       const inRange = this.movementRange.some(cell => cell.x === c && cell.y === r);
-      if (inRange) {
-        this.activeUnit.gridX = c;
-        this.activeUnit.gridY = r;
-        this.playSfx('jump');
-        
-        this.actionPhase = 'action';
-        this.selectedAction = 'simple';
-        this.calculateAttackRange();
+      const sameCell = this.activeUnit.gridX === c && this.activeUnit.gridY === r;
+      if (!inRange || (!sameCell && this.isCellOccupied(c, r, this.activeUnit))) {
+        return { handled: false, reason: 'blocked' };
       }
+
+      this.activeUnit.gridX = c;
+      this.activeUnit.gridY = r;
+      this.playSfx('jump');
+      
+      this.actionPhase = 'action';
+      this.selectedAction = 'simple';
+      this.calculateAttackRange();
+      return { handled: true, type: 'move', unit: this.activeUnit, x: c, y: r };
     } else if (this.actionPhase === 'action') {
       const inRange = this.attackRange.some(cell => cell.x === c && cell.y === r);
-      if (!inRange) return;
+      if (!inRange) return { handled: false, reason: 'out-of-range' };
 
       const target = this.getUnitAtCell(c, r);
 
@@ -264,7 +285,7 @@ export class EngineTactics {
         this.activeUnit.stateTimer = this.activeUnit.defense.dur * 60;
         this.playSfx('shield');
         this.endActiveTurn();
-        return;
+        return { handled: true, type: 'defense', unit: this.activeUnit };
       }
 
       if (target) {
@@ -286,9 +307,10 @@ export class EngineTactics {
             this.applyDamage(hero, defender, hero.stats.atk * hero.simple.dmg, status);
             hero.specialCharge = Math.min(100, hero.specialCharge + 15);
             this.endActiveTurn();
+            return { handled: true, type: 'action', action: 'simple', target };
 
           } else if (this.selectedAction === 'secondary') {
-            if (hero.cooldown > 0) return;
+            if (hero.cooldown > 0) return { handled: false, reason: 'cooldown' };
             hero.state = 'attack';
             hero.stateTimer = 25;
             hero.cooldown = hero.secondary.cd * 60;
@@ -297,9 +319,10 @@ export class EngineTactics {
             this.applyDamage(hero, defender, hero.stats.atk * hero.secondary.dmg);
             hero.specialCharge = Math.min(100, hero.specialCharge + 25);
             this.endActiveTurn();
+            return { handled: true, type: 'action', action: 'secondary', target };
 
           } else if (this.selectedAction === 'special') {
-            if (hero.specialCharge < 100) return;
+            if (hero.specialCharge < 100) return { handled: false, reason: 'charge' };
             hero.specialCharge = 0;
             hero.state = 'attack';
             hero.stateTimer = 35;
@@ -313,10 +336,13 @@ export class EngineTactics {
 
             this.applyDamage(hero, defender, hero.stats.atk * hero.special.dmg);
             this.endActiveTurn();
+            return { handled: true, type: 'action', action: 'special', target };
           }
         }
       }
     }
+
+    return { handled: false, reason: 'empty-action' };
   }
 
   endActiveTurn() {

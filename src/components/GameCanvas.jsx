@@ -58,10 +58,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const positions = currentStage.mode === 'Tactics'
       ? [
         { gridX: 2, gridY: 1, x: 210, y: 128 },
-        { gridX: 3, gridY: 3, x: 270, y: 218 },
-        { gridX: 4, gridY: 0, x: 330, y: 83 },
-        { gridX: 4, gridY: 4, x: 330, y: 263 },
-        { gridX: 5, gridY: 2, x: 390, y: 173 }
+        { gridX: 1, gridY: 2, x: 150, y: 173 },
+        { gridX: 2, gridY: 3, x: 210, y: 218 },
+        { gridX: 3, gridY: 0, x: 270, y: 83 },
+        { gridX: 3, gridY: 4, x: 270, y: 263 }
       ]
       : [
         { x: 170, y: 218 },
@@ -402,6 +402,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     activateBattleItem(next, 'shortcut');
   };
 
+  const activateTacticalPickupAtCell = (gridX, gridY) => {
+    const pickup = battlePickupsRef.current.find(item =>
+      !item.used && item.gridX === gridX && item.gridY === gridY
+    );
+    if (!pickup) return false;
+    activateBattleItem(pickup, 'tactics-step');
+    return true;
+  };
+
   const checkBattleItemPickupCollision = (engine) => {
     if (stage.mode !== 'Smash' || !engine?.getActiveHero) return;
     const activeHero = engine.getActiveHero();
@@ -500,7 +509,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     const handleKeyDown = (e) => {
       keysPressed.current[e.key] = true;
-      if (e.key === 'o' || e.key === 'O') activateFirstBattleItem();
+      if ((e.key === 'o' || e.key === 'O') && stage.mode !== 'Tactics') activateFirstBattleItem();
       if (stage.mode === 'Smash' && engineRef.current) {
         const activeH = engineRef.current.getActiveHero();
         if (e.key === 'j' || e.key === 'J') engineRef.current.triggerAbility(activeH, 'simple');
@@ -654,25 +663,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const gridR = Math.floor((clickY - engine.gridStartY) / engine.cellH);
 
     if (gridC >= 0 && gridC < engine.cols && gridR >= 0 && gridR < engine.rows) {
-      const tacticalItem = battlePickupsRef.current.find(item => !item.used && item.gridX === gridC && item.gridY === gridR);
-      if (tacticalItem) {
-        const activeHero = engine.activeUnitType === 'hero' ? engine.activeUnit : engine.heroes.find(hero => hero.currentHp > 0);
-        const distance = activeHero ? Math.abs((activeHero.gridX || 0) - gridC) + Math.abs((activeHero.gridY || 0) - gridR) : 99;
-        if (distance <= 3) {
-          activateBattleItem(tacticalItem, 'tactics-tile');
-          return;
-        }
-        setBattleItemLog({
-          id: tacticalItem.pickupId,
-          color: tacticalItem.color,
-          text: lang === 'fr'
-            ? 'Case trop eloignee: rapproche un heros tactique pour securiser la ressource.'
-            : 'Tile too far: move a tactical hero closer to secure the resource.'
-        });
-        window.setTimeout(() => setBattleItemLog(null), 2600);
-        return;
-      }
-      engine.handleCellClick(gridC, gridR);
+      const result = engine.handleCellClick(gridC, gridR);
+      if (result?.type === 'move') activateTacticalPickupAtCell(gridC, gridR);
     }
   };
 
@@ -1145,8 +1137,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 {battlePickups.map(item => (
                   <button
                     key={item.pickupId}
-                    onClick={() => activateBattleItem(item, 'panel')}
-                    disabled={item.used || battleCompleted}
+                    onClick={() => stage.mode !== 'Tactics' && activateBattleItem(item, 'panel')}
+                    disabled={item.used || battleCompleted || stage.mode === 'Tactics'}
                     className="btn-retro"
                     style={{
                       width: '100%',
@@ -1156,9 +1148,14 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                       borderColor: item.used ? '#333' : item.color,
                       color: item.used ? '#555' : '#fff',
                       background: item.used ? 'rgba(0,0,0,0.18)' : `${item.color}14`,
-                      opacity: item.used ? 0.55 : 1
+                      opacity: item.used ? 0.55 : stage.mode === 'Tactics' ? 0.78 : 1,
+                      cursor: stage.mode === 'Tactics' ? 'default' : undefined
                     }}
-                    title={item[stage.mode === 'Tactics' ? 'tactics' : 'melee']?.[lang]}
+                    title={stage.mode === 'Tactics'
+                      ? (lang === 'fr'
+                        ? 'En tactique, deplace un heros sur la case de cet artefact pour le declencher.'
+                        : 'In tactics, move a hero onto this artifact tile to trigger it.')
+                      : item.melee?.[lang]}
                   >
                     <span style={{ color: item.color, fontWeight: 'bold' }}>
                       {item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.toUpperCase()}
@@ -1168,6 +1165,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   </button>
                 ))}
               </div>
+              {stage.mode === 'Tactics' && (
+                <div style={{ fontSize: '8px', color: '#aaa', marginTop: '7px', lineHeight: 1.4 }}>
+                  {lang === 'fr'
+                    ? 'Declenchement par entree sur case uniquement.'
+                    : 'Triggered only by stepping onto the tile.'}
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -1270,8 +1274,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               {stage.mode === 'Tactics' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
                   {lang === 'fr'
-                    ? <>Cases <span style={{ color: '#2ecc71' }}>vertes</span>: mouvement. Cases <span style={{ color: '#e74c3c' }}>rouges</span>: cible. Les artefacts sont des ressources a usage unique.</>
-                    : <>Click <span style={{ color: '#2ecc71' }}>green</span> cells to move, then <span style={{ color: '#e74c3c' }}>red</span> cells to strike. Artifacts are one-use map resources.</>}
+                    ? <>Cases <span style={{ color: '#2ecc71' }}>vertes</span>: mouvement. Cases <span style={{ color: '#e74c3c' }}>rouges</span>: cible. Les artefacts se declenchent en entrant sur leur case.</>
+                    : <>Click <span style={{ color: '#2ecc71' }}>green</span> cells to move, then <span style={{ color: '#e74c3c' }}>red</span> cells to strike. Artifacts trigger when a hero steps onto their tile.</>}
                 </div>
               )}
             </>
