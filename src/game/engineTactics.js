@@ -146,7 +146,8 @@ export class EngineTactics {
       ...this.heroes.filter(h => h.currentHp > 0).map(h => ({ unit: h, type: 'hero' })),
       ...this.enemies.filter(e => e.currentHp > 0).map(e => ({ unit: e, type: 'enemy' }))
     ];
-    units.sort((a, b) => b.unit.stats ? b.unit.stats.spd - a.unit.stats.spd : b.unit.atk - a.unit.atk);
+    const getSpeed = (entry) => entry.unit.stats?.spd ?? entry.unit.spd ?? 1;
+    units.sort((a, b) => getSpeed(b) - getSpeed(a));
     this.turnQueue = units;
   }
 

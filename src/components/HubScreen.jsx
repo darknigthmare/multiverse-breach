@@ -1295,9 +1295,10 @@ export default function HubScreen({
   const getEventLore = (item) => {
     if (!item) return '';
     const baseDesc = item.desc?.[lang] || '';
+    const sourceUniverse = item.universe || selectedHero.universe;
     return lang === 'fr'
-      ? `${baseDesc} Declencheur evenementiel lie au monde ${selectedHero.universe}: il respecte le lore du heros et charge une action de breche unique.`
-      : `${baseDesc} Event trigger tied to ${selectedHero.universe}: it respects the hero lore and charges a unique breach action.`;
+      ? `${baseDesc} Declencheur evenementiel lie au monde ${sourceUniverse}: il respecte le lore du heros et charge une action de breche unique.`
+      : `${baseDesc} Event trigger tied to ${sourceUniverse}: it respects the hero lore and charges a unique breach action.`;
   };
 
   const selectedEquippedGear = getGearDisplay(equippedGear[selectedHero.id]);
