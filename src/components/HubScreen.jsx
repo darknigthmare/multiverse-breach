@@ -192,6 +192,137 @@ function NarrativeArcSequencePanel({ lang, arcs, stages, completedStages, onSele
   );
 }
 
+function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone, onCompleteIntro, onSelectStage, onBack, isStageUnlocked }) {
+  if (!arc) return null;
+  const linkedStages = getLinkedStagesForArc(arc, stages, BASE_HEROES_DB);
+  const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
+  const universes = getArcUniverses(arc, BASE_HEROES_DB);
+  const cinematicFrames = universes.slice(0, 3).map((universe, index) => ({
+    universe,
+    src: getOpenAiBackdropSrc(universe, ['RPG', 'Tactics', 'Smash'][index % 3]),
+    color: getUniverseHubColor(universe)
+  }));
+  while (cinematicFrames.length < 3) {
+    const universe = universes[0] || 'Nexus de Convergence';
+    cinematicFrames.push({ universe, src: getOpenAiBackdropSrc(universe, 'RPG'), color: getUniverseHubColor(universe) });
+  }
+
+  let previousPlayableDone = introDone;
+  const detailedTimeline = timeline.map(node => {
+    const isPlayable = Boolean(node.stage) && ['mission', 'boss'].includes(node.type);
+    const hardLocked = node.type !== 'intro' && !introDone;
+    const sequenceLocked = isPlayable && !previousPlayableDone;
+    const stageLocked = node.stage && isStageUnlocked && !isStageUnlocked(node.stage);
+    const unlocked = node.type === 'intro' || (!hardLocked && !sequenceLocked && !stageLocked);
+    const done = node.type === 'intro' ? introDone : node.stage ? completedStages.includes(node.stage.id) : node.status === 'done';
+    if (isPlayable) previousPlayableDone = done;
+    return { ...node, unlocked, done, stageLocked };
+  });
+
+  const doneCount = detailedTimeline.filter(node => node.done).length;
+  const ratio = detailedTimeline.length ? Math.round((doneCount / detailedTimeline.length) * 100) : 0;
+  const rewardText = getLocalizedText(arc.reward, lang, getLocalizedText(arc.rewardItemName, lang, 'Trace Nexus'));
+
+  return (
+    <div className="arc-detail-page">
+      <div className="arc-detail-header">
+        <button type="button" className="btn-retro" onClick={onBack} title={lang === 'fr' ? 'Retourne a la carte des arcs.' : 'Return to the arc map.'}>
+          {lang === 'fr' ? 'RETOUR CARTE' : 'BACK TO MAP'}
+        </button>
+        <div>
+          <div className="portal-focus-kicker">{lang === 'fr' ? 'ROUTE NARRATIVE / ARC DEDIE' : 'NARRATIVE ROUTE / DEDICATED ARC'}</div>
+          <h3>{getLocalizedText(arc.title, lang, arc.id)}</h3>
+          <p>{getLocalizedText(arc.intro, lang)}</p>
+        </div>
+        <div className="arc-progress-badge">
+          <strong>{ratio}%</strong>
+          <span>{doneCount}/{detailedTimeline.length}</span>
+        </div>
+      </div>
+
+      <div className="arc-cinematic-card">
+        <div className="arc-cinematic-strip">
+          {cinematicFrames.map((frame, index) => (
+            <div
+              key={`${arc.id}-frame-${index}`}
+              className="arc-cinematic-frame"
+              style={{
+                '--arc-color': frame.color,
+                backgroundImage: frame.src
+                  ? `linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.82)), url(${frame.src})`
+                  : `radial-gradient(circle, ${frame.color}44, #050209 72%)`,
+                animationDelay: `${index * 0.18}s`
+              }}
+            >
+              <span>{frame.universe}</span>
+            </div>
+          ))}
+        </div>
+        <div className="arc-cinematic-copy">
+          <strong>{introDone ? (lang === 'fr' ? 'Intro stabilisee' : 'Intro stabilized') : (lang === 'fr' ? 'Intro verrou initial' : 'Intro initial lock')}</strong>
+          <p>
+            {lang === 'fr'
+              ? 'La scenette fixe le contexte de l arc avant toute mission. Une fois l intro lue, A.R.C.A. ouvre la premiere coordonnee jouable.'
+              : 'The scene sets the arc context before any mission. Once the intro is read, A.R.C.A. opens the first playable coordinate.'}
+          </p>
+          <button
+            type="button"
+            className="btn-retro"
+            onClick={onCompleteIntro}
+            disabled={introDone}
+            title={lang === 'fr' ? 'Marque l intro comme lue et debloque la premiere mission de cet arc.' : 'Mark the intro as read and unlock this arc first mission.'}
+            style={{ borderColor: introDone ? '#2ecc71' : '#ffeb3b', color: introDone ? '#2ecc71' : '#ffeb3b' }}
+          >
+            {introDone ? (lang === 'fr' ? 'INTRO LUE' : 'INTRO READ') : (lang === 'fr' ? 'LIRE INTRO' : 'READ INTRO')}
+          </button>
+        </div>
+      </div>
+
+      <div className="arc-detail-timeline">
+        {detailedTimeline.map((node, index) => {
+          const color = node.done ? '#2ecc71' : !node.unlocked ? '#666' : node.type.includes('boss') ? '#e74c3c' : node.type === 'interlude' ? '#ffb15c' : '#39c5bb';
+          const canLaunch = node.stage && node.unlocked && !node.done;
+          return (
+            <div key={`${arc.id}-detail-${node.type}-${index}`} className="arc-detail-node" style={{ '--arc-color': color }}>
+              <div className="arc-detail-node-head">
+                <span>{node.label}</span>
+                <b>{node.done ? (lang === 'fr' ? 'STABLE' : 'STABLE') : node.unlocked ? (lang === 'fr' ? 'OUVERT' : 'OPEN') : (lang === 'fr' ? 'VERROUILLE' : 'LOCKED')}</b>
+              </div>
+              <p>{node.text}</p>
+              {node.stage && (
+                <div className="arc-detail-stage">
+                  <span>#{node.stage.id} / {node.stage.mode} / {node.stage.bossName}</span>
+                  <button
+                    type="button"
+                    className="btn-retro"
+                    disabled={!canLaunch}
+                    onClick={() => onSelectStage(node.stage)}
+                    title={canLaunch
+                      ? (lang === 'fr' ? 'Lance cette mission de l arc.' : 'Start this arc mission.')
+                      : node.done
+                        ? (lang === 'fr' ? 'Mission deja terminee.' : 'Mission already completed.')
+                        : node.stageLocked
+                          ? (lang === 'fr' ? 'Mission verrouillee par progression globale.' : 'Mission locked by global progress.')
+                          : (lang === 'fr' ? 'Termine l etape precedente pour debloquer cette mission.' : 'Complete the previous step to unlock this mission.')}
+                    style={{ borderColor: color, color }}
+                  >
+                    {node.done ? (lang === 'fr' ? 'TERMINE' : 'DONE') : canLaunch ? (lang === 'fr' ? 'LANCER' : 'START') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="arc-detail-reward">
+        <strong>{lang === 'fr' ? 'Recompense finale' : 'Final reward'}</strong>
+        <span>{rewardText}</span>
+      </div>
+    </div>
+  );
+}
+
 function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerProfile }) {
   const canvasRef = useRef(null);
   const stateRef = useRef({
@@ -1483,7 +1614,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   );
 }
 
-function MultiverseRiftMap({ lang, stages, allStages = stages, completedStages, isStageUnlocked, onSelectStage, narrativeArcs = [] }) {
+function MultiverseRiftMap({ lang, stages, allStages = stages, completedStages, isStageUnlocked, onSelectStage, onSelectArc, narrativeArcs = [] }) {
   const modeMeta = {
     RPG: { color: '#3498db', label: 'RPG', ring: 'ATB' },
     Tactics: { color: '#9b59b6', label: lang === 'fr' ? 'TACTIQUE' : 'TACTICS', ring: 'GRID' },
@@ -1557,7 +1688,6 @@ function MultiverseRiftMap({ lang, stages, allStages = stages, completedStages, 
         {arcRoutes.map(route => {
           const doneCount = route.timeline.filter(node => node.status === 'done').length;
           const ratio = route.timeline.length ? doneCount / route.timeline.length : 0;
-          const targetStage = route.linkedStages.find(stage => !completedStages.includes(stage.id)) || route.linkedStages[route.linkedStages.length - 1];
           return (
             <button
               key={`arc-route-${route.arc.id}`}
@@ -1568,8 +1698,10 @@ function MultiverseRiftMap({ lang, stages, allStages = stages, completedStages, 
                 '--rift-y': `${route.y}%`,
                 '--rift-color': route.color
               }}
-              onClick={() => targetStage && onSelectStage(targetStage)}
-              title={`${getLocalizedText(route.arc.title, lang, route.arc.id)} - ${doneCount}/${route.timeline.length}`}
+              onClick={() => onSelectArc ? onSelectArc(route.arc) : undefined}
+              title={lang === 'fr'
+                ? `Ouvre la page dediee de cet arc: ${getLocalizedText(route.arc.title, lang, route.arc.id)}.`
+                : `Open this arc dedicated page: ${getLocalizedText(route.arc.title, lang, route.arc.id)}.`}
             >
               <i />
               <b>{Math.round(ratio * 100)}%</b>
@@ -1640,6 +1772,8 @@ export default function HubScreen({
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
   const [briefingStageId, setBriefingStageId] = useState(null);
+  const [selectedNarrativeArcId, setSelectedNarrativeArcId] = useState(null);
+  const [completedArcIntros, setCompletedArcIntros] = useState(() => activityProgress?.arcIntros || {});
   const [nexusMessage, setNexusMessage] = useState(null);
   const [codexView, setCodexView] = useState('canon');
   const [adminUniverseSearch, setAdminUniverseSearch] = useState('');
@@ -1654,6 +1788,9 @@ export default function HubScreen({
     gear: new Set(disabledAssets.gear || []),
     stages: new Set(disabledAssets.stages || [])
   }), [disabledAssets]);
+  useEffect(() => {
+    setCompletedArcIntros(activityProgress?.arcIntros || {});
+  }, [activityProgress?.arcIntros]);
   const isAssetDisabled = useCallback((type, id) => disabledAssetSets[type]?.has(String(id)), [disabledAssetSets]);
   const getEnemyAdminKey = useCallback((universe, enemy) => `${universe}::${enemy?.name || 'unknown'}`, []);
   const getStageAdminKey = useCallback((stage) => String(stage?.id), []);
@@ -3693,6 +3830,33 @@ export default function HubScreen({
       : missionScreen === 'trioArcs'
         ? TRIO_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.trioArc?.id === arc.id))
         : [];
+  const selectedNarrativeArc = activeNarrativeArcs.find(arc => arc.id === selectedNarrativeArcId) || null;
+  const openNarrativeArc = (arc) => {
+    setSelectedNarrativeArcId(arc.id);
+    setBriefingStageId(null);
+    setShowMissionArchive(false);
+    sound.playSfx('coin');
+  };
+  const closeNarrativeArc = () => {
+    setSelectedNarrativeArcId(null);
+    sound.playSfx('click');
+  };
+  const completeNarrativeIntro = (arc) => {
+    setCompletedArcIntros(prev => ({ ...prev, [arc.id]: true }));
+    setActivityProgress(prev => ({
+      ...prev,
+      arcIntros: {
+        ...(prev?.arcIntros || {}),
+        [arc.id]: true
+      }
+    }));
+    notifyNexus(lang === 'fr'
+      ? `Intro d arc stabilisee: ${getLocalizedText(arc.title, lang, arc.id)}. Premiere mission debloquee.`
+      : `Arc intro stabilized: ${getLocalizedText(arc.title, lang, arc.id)}. First mission unlocked.`,
+      'success'
+    );
+    sound.playSfx('levelup');
+  };
   const unlockedMissionPool = missionPool.filter(isStageUnlocked);
   const scanPool = unlockedMissionPool.length > 0 ? unlockedMissionPool : missionPool.slice(0, 1);
   const nextUnclearedStage = scanPool.find(stage => !completedStages.includes(stage.id)) || scanPool[0];
@@ -3971,7 +4135,7 @@ export default function HubScreen({
                     <button
                       key={key}
                       type="button"
-                      onClick={() => { setMissionScreen(key); setMissionSeed(Date.now()); setBriefingStageId(null); setShowMissionArchive(false); sound.playSfx('coin'); }}
+                      onClick={() => { setMissionScreen(key); setMissionSeed(Date.now()); setBriefingStageId(null); setSelectedNarrativeArcId(null); setShowMissionArchive(false); sound.playSfx('coin'); }}
                       className="btn-retro"
                       title={lang === 'fr' ? `Ouvre cet ecran de missions: ${entry.label.fr}.` : `Open this mission screen: ${entry.label.en}.`}
                       style={{
@@ -4020,7 +4184,7 @@ export default function HubScreen({
             <div style={{ marginBottom: '12px' }}>
               <button
                 type="button"
-                onClick={() => { setMissionScreen('index'); setBriefingStageId(null); sound.playSfx('click'); }}
+                onClick={() => { setMissionScreen('index'); setBriefingStageId(null); setSelectedNarrativeArcId(null); sound.playSfx('click'); }}
                 className="btn-retro"
                 title={lang === 'fr' ? 'Retourne au choix des categories de missions.' : 'Return to mission category selection.'}
                 style={{ padding: '6px 10px', fontSize: '10px', borderColor: '#555', color: '#aaa' }}
@@ -4064,16 +4228,20 @@ export default function HubScreen({
               ))}
             </div>
 
-            {activeNarrativeArcs.length > 0 && (
-              <NarrativeArcSequencePanel
+            {selectedNarrativeArc ? (
+              <NarrativeArcDetailPage
                 lang={lang}
-                arcs={activeNarrativeArcs.slice(0, missionScreen === 'personalArcs' ? 10 : activeNarrativeArcs.length)}
+                arc={selectedNarrativeArc}
                 stages={visibleStages}
                 completedStages={completedStages}
-                onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                introDone={Boolean(completedArcIntros[selectedNarrativeArc.id])}
+                onCompleteIntro={() => completeNarrativeIntro(selectedNarrativeArc)}
+                onSelectStage={(stage) => launchStage(stage)}
+                onBack={closeNarrativeArc}
+                isStageUnlocked={isStageUnlocked}
               />
-            )}
-
+            ) : (
+            <>
             <MultiverseRiftMap
               lang={lang}
               stages={missionPool}
@@ -4081,6 +4249,7 @@ export default function HubScreen({
               completedStages={completedStages}
               isStageUnlocked={isStageUnlocked}
               onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+              onSelectArc={openNarrativeArc}
               narrativeArcs={activeNarrativeArcs}
             />
 
@@ -4983,6 +5152,7 @@ export default function HubScreen({
                 </div>
               )}
             </div>
+            </>)}
               </>
             )}
           </div>

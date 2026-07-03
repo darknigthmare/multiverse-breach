@@ -873,6 +873,200 @@ body {
   box-shadow: 0 0 18px rgba(46,204,113,0.34);
 }
 
+.arc-detail-page {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.arc-detail-header,
+.arc-cinematic-card,
+.arc-detail-reward {
+  border: 1px solid rgba(255, 177, 92, 0.24);
+  border-radius: 6px;
+  background: rgba(0,0,0,0.24);
+}
+
+.arc-detail-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 14px;
+}
+
+.arc-detail-header h3 {
+  margin: 3px 0 5px;
+  color: #ffb15c;
+  font-size: 18px;
+}
+
+.arc-detail-header p {
+  margin: 0;
+  color: #d7c7b6;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.arc-progress-badge {
+  min-width: 74px;
+  padding: 9px;
+  border: 1px solid rgba(255,235,59,0.42);
+  border-radius: 5px;
+  text-align: center;
+  background: rgba(255,235,59,0.06);
+}
+
+.arc-progress-badge strong {
+  display: block;
+  color: #ffeb3b;
+  font-size: 18px;
+}
+
+.arc-progress-badge span {
+  color: #aaa;
+  font-size: 10px;
+}
+
+.arc-cinematic-card {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 14px;
+  padding: 14px;
+}
+
+.arc-cinematic-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.arc-cinematic-frame {
+  position: relative;
+  min-height: 158px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--arc-color) 66%, transparent);
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+  animation: arcFramePulse 3.4s ease-in-out infinite alternate;
+}
+
+.arc-cinematic-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 100% 7px;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.arc-cinematic-frame span {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-shadow: 0 1px 5px #000;
+  text-transform: uppercase;
+}
+
+.arc-cinematic-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.arc-cinematic-copy strong {
+  color: #ffeb3b;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.arc-cinematic-copy p {
+  margin: 0;
+  color: #cfcfcf;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.arc-detail-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.arc-detail-node {
+  padding: 11px;
+  border: 1px solid color-mix(in srgb, var(--arc-color) 50%, transparent);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--arc-color) 8%, rgba(0,0,0,0.28));
+}
+
+.arc-detail-node-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.arc-detail-node-head span {
+  color: var(--arc-color);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.arc-detail-node-head b {
+  color: #aaa;
+  font-size: 9px;
+}
+
+.arc-detail-node p {
+  min-height: 44px;
+  margin: 0 0 9px;
+  color: #d8d8d8;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.arc-detail-stage {
+  display: grid;
+  gap: 7px;
+}
+
+.arc-detail-stage span {
+  color: #aaa;
+  font-size: 9px;
+}
+
+.arc-detail-reward {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+}
+
+.arc-detail-reward strong {
+  color: #ffeb3b;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.arc-detail-reward span {
+  color: #ddd;
+  font-size: 11px;
+}
+
+@keyframes arcFramePulse {
+  from { transform: translateY(0) scale(1); filter: brightness(0.9); }
+  to { transform: translateY(-4px) scale(1.018); filter: brightness(1.14); }
+}
+
 @keyframes riftSpin {
   to { transform: rotate(360deg); }
 }
