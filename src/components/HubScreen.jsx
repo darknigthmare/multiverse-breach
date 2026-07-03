@@ -14,6 +14,177 @@ import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 
+const getLocalizedText = (entry, lang, fallback = '') => {
+  if (!entry) return fallback;
+  if (typeof entry === 'string') return entry;
+  return entry[lang] || entry.fr || entry.en || fallback;
+};
+
+const getArcUniverses = (arc, allHeroes = []) => {
+  if (Array.isArray(arc?.universes) && arc.universes.length) return arc.universes;
+  const hero = allHeroes.find(item => item.id === arc?.heroId);
+  return hero?.universe ? [hero.universe] : ['Nexus de Convergence'];
+};
+
+const getLinkedStagesForArc = (arc, allStages = [], allHeroes = []) => {
+  const arcStage = allStages.find(stage => stage.id === arc?.stageId || stage.universeArc?.id === arc?.id || stage.characterArc?.id === arc?.id || stage.trioArc?.id === arc?.id);
+  const universes = new Set(getArcUniverses(arc, allHeroes));
+  const worldStages = allStages
+    .filter(stage => stage.id !== 38)
+    .filter(stage => !stage.universeArc && !stage.characterArc && !stage.trioArc && !stage.fusionMission)
+    .filter(stage => universes.has(stage.universe) || stage.sourceUniverses?.some(source => universes.has(source)))
+    .sort((a, b) => a.id - b.id);
+  const ordered = [...worldStages.slice(0, Math.max(3, arc?.missions?.length || 3))];
+  if (arcStage && !ordered.some(stage => stage.id === arcStage.id)) ordered.push(arcStage);
+  return ordered;
+};
+
+const buildArcTimeline = (arc, linkedStages = [], completedStages = [], lang = 'fr') => {
+  const missions = Array.isArray(arc?.missions) && arc.missions.length ? arc.missions : [];
+  const bossStage = linkedStages.find(stage => stage.id === arc?.stageId) || linkedStages[linkedStages.length - 1];
+  const bossName = arc?.bossName || bossStage?.bossName;
+  const bossCompleted = bossStage ? completedStages.includes(bossStage.id) : false;
+  const nodes = [
+    {
+      type: 'intro',
+      label: lang === 'fr' ? 'INTRO' : 'INTRO',
+      text: getLocalizedText(arc?.intro, lang),
+      status: completedStages.some(stageId => linkedStages.some(stage => stage.id === stageId)) ? 'done' : 'active'
+    }
+  ];
+
+  missions.forEach((mission, index) => {
+    const stage = linkedStages[index] || bossStage;
+    const missionDone = stage ? completedStages.includes(stage.id) : false;
+    nodes.push({
+      type: 'mission',
+      label: `${lang === 'fr' ? 'MISSION' : 'MISSION'} ${index + 1}`,
+      text: getLocalizedText(mission, lang),
+      stage,
+      status: missionDone ? 'done' : 'active'
+    });
+    if (index < missions.length - 1) {
+      nodes.push({
+        type: 'interlude',
+        label: lang === 'fr' ? 'INTERLUDE' : 'INTERLUDE',
+        text: lang === 'fr'
+          ? `A.R.C.A. recale les coordonnees de ${stage?.universe || getArcUniverses(arc)[0]} avant l ouverture suivante.`
+          : `A.R.C.A. recalibrates ${stage?.universe || getArcUniverses(arc)[0]} coordinates before the next opening.`,
+        status: missionDone ? 'done' : 'locked'
+      });
+    }
+  });
+
+  if (bossName) {
+    nodes.push({
+      type: 'bossIntro',
+      label: lang === 'fr' ? 'INTRO BOSS' : 'BOSS INTRO',
+      text: lang === 'fr'
+        ? `Le noyau de l arc se manifeste: ${bossName}. La Trame cesse de fuir et choisit un champion.`
+        : `The arc core manifests: ${bossName}. The Thread stops leaking and chooses a champion.`,
+      stage: bossStage,
+      status: missions.every((_, index) => {
+        const stage = linkedStages[index];
+        return !stage || completedStages.includes(stage.id);
+      }) ? 'active' : 'locked'
+    });
+    nodes.push({
+      type: 'boss',
+      label: lang === 'fr' ? 'BOSS' : 'BOSS',
+      text: lang === 'fr'
+        ? `Affronter ${bossName} pour sceller la consequence majeure de l arc.`
+        : `Face ${bossName} to seal the arc major consequence.`,
+      stage: bossStage,
+      status: bossCompleted ? 'done' : 'active'
+    });
+  }
+
+  nodes.push({
+    type: 'outro',
+    label: lang === 'fr' ? 'OUTRO' : 'OUTRO',
+    text: getLocalizedText(arc?.outro, lang, getLocalizedText(arc?.reward, lang)),
+    status: bossName ? (bossCompleted ? 'done' : 'locked') : (nodes.some(node => node.type === 'mission' && node.status !== 'done') ? 'locked' : 'done')
+  });
+
+  return nodes;
+};
+
+function NarrativeArcSequencePanel({ lang, arcs, stages, completedStages, onSelectStage }) {
+  if (!arcs?.length) return null;
+  return (
+    <div style={{
+      padding: '14px',
+      marginBottom: '14px',
+      border: '1px solid rgba(255,177,92,0.24)',
+      background: 'rgba(255,177,92,0.055)',
+      borderRadius: '5px'
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
+        <div>
+          <div style={{ fontSize: '11px', color: '#ffb15c', textTransform: 'uppercase', fontWeight: 'bold' }}>
+            {lang === 'fr' ? 'Routes narratives liees a la carte' : 'Map-linked narrative routes'}
+          </div>
+          <div style={{ fontSize: '10px', color: '#d8c5af', lineHeight: 1.35, marginTop: '3px' }}>
+            {lang === 'fr'
+              ? 'Un arc n est plus une mission isolee: intro, missions, interludes, intro boss, boss puis sortie. Les noeuds mission/boss ouvrent leur faille associee.'
+              : 'An arc is no longer a single mission: intro, missions, interludes, boss intro, boss, then outro. Mission/boss nodes open their linked rift.'}
+          </div>
+        </div>
+        <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{arcs.length} {lang === 'fr' ? 'arcs visibles' : 'visible arcs'}</span>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: '10px' }}>
+        {arcs.map(arc => {
+          const linkedStages = getLinkedStagesForArc(arc, stages, BASE_HEROES_DB);
+          const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
+          const doneCount = timeline.filter(node => node.status === 'done').length;
+          const ratio = timeline.length ? doneCount / timeline.length : 0;
+          return (
+            <div key={arc.id} style={{ padding: '11px', border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '7px' }}>
+                <strong style={{ color: ratio >= 1 ? '#2ecc71' : '#ffb15c', fontSize: '11px' }}>{getLocalizedText(arc.title, lang, arc.id)}</strong>
+                <span style={{ color: '#ffeb3b', fontSize: '9px' }}>{doneCount}/{timeline.length}</span>
+              </div>
+              <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '4px', overflow: 'hidden', marginBottom: '8px' }}>
+                <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: ratio >= 1 ? '#2ecc71' : '#ffb15c' }} />
+              </div>
+              <div style={{ display: 'grid', gap: '5px' }}>
+                {timeline.map((node, index) => {
+                  const clickable = node.stage && onSelectStage;
+                  const color = node.status === 'done' ? '#2ecc71' : node.status === 'locked' ? '#666' : node.type.includes('boss') ? '#e74c3c' : '#39c5bb';
+                  return (
+                    <button
+                      key={`${arc.id}-${node.type}-${index}`}
+                      type="button"
+                      disabled={!clickable}
+                      onClick={() => clickable && onSelectStage(node.stage)}
+                      className="btn-retro"
+                      style={{
+                        textAlign: 'left',
+                        borderColor: color,
+                        color,
+                        background: node.status === 'done' ? 'rgba(46,204,113,0.07)' : node.status === 'locked' ? 'rgba(255,255,255,0.015)' : 'rgba(57,197,187,0.05)',
+                        padding: '7px',
+                        fontSize: '9px',
+                        lineHeight: 1.3,
+                        cursor: clickable ? 'pointer' : 'default'
+                      }}
+                    >
+                      <b>{node.label}</b>{node.stage ? ` #${node.stage.id}` : ''} - {node.text}
+                    </button>
+                  );
+                })}
+              </div>
+              <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px', lineHeight: 1.3 }}>
+                {lang === 'fr' ? 'Recompense' : 'Reward'}: {getLocalizedText(arc.reward, lang, getLocalizedText(arc.rewardItemName, lang, 'Trace Nexus'))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, playerProfile }) {
   const canvasRef = useRef(null);
   const stateRef = useRef({
@@ -1188,7 +1359,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   );
 }
 
-function MultiverseRiftMap({ lang, stages, completedStages, isStageUnlocked, onSelectStage }) {
+function MultiverseRiftMap({ lang, stages, allStages = stages, completedStages, isStageUnlocked, onSelectStage, narrativeArcs = [] }) {
   const modeMeta = {
     RPG: { color: '#3498db', label: 'RPG', ring: 'ATB' },
     Tactics: { color: '#9b59b6', label: lang === 'fr' ? 'TACTIQUE' : 'TACTICS', ring: 'GRID' },
@@ -1216,6 +1387,21 @@ function MultiverseRiftMap({ lang, stages, completedStages, isStageUnlocked, onS
     return acc;
   }, {});
 
+  const arcRoutes = narrativeArcs.slice(0, 12).map((arc, index) => {
+    const linkedStages = getLinkedStagesForArc(arc, allStages, BASE_HEROES_DB);
+    const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
+    const angle = ((index * 47) % 360) * Math.PI / 180;
+    const radius = 31 + (index % 3) * 8;
+    return {
+      arc,
+      timeline,
+      linkedStages,
+      x: Math.max(10, Math.min(90, 50 + Math.cos(angle) * radius)),
+      y: Math.max(16, Math.min(84, 50 + Math.sin(angle) * radius * 0.58)),
+      color: index % 3 === 0 ? '#ffb15c' : index % 3 === 1 ? '#9b59b6' : '#39c5bb'
+    };
+  });
+
   return (
     <div className="rift-universe-map">
       <div className="rift-map-copy">
@@ -1223,8 +1409,8 @@ function MultiverseRiftMap({ lang, stages, completedStages, isStageUnlocked, onS
         <h4>{lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals'}</h4>
         <p>
           {lang === 'fr'
-            ? 'Les breches ne sont plus seulement une grille: A.R.C.A. les projette comme des portails physiques. Choisis un mode, lis les menaces, puis verrouille une coordonnee.'
-            : 'Breaches are no longer only a grid: A.R.C.A. projects them as physical portals. Pick a mode, read the threats, then lock a coordinate.'}
+            ? 'Les breches ne sont plus seulement une grille: A.R.C.A. les projette comme des portails physiques. En ecran d arc, les routes relient intro, missions, interludes et boss.'
+            : 'Breaches are no longer only a grid: A.R.C.A. projects them as physical portals. In arc screens, routes link intro, missions, interludes, and boss.'}
         </p>
         <div className="rift-map-legend">
           {Object.entries(modeMeta).map(([mode, meta]) => (
@@ -1232,6 +1418,11 @@ function MultiverseRiftMap({ lang, stages, completedStages, isStageUnlocked, onS
               {meta.label}: {counts[mode] || 0}
             </span>
           ))}
+          {arcRoutes.length > 0 && (
+            <span style={{ '--rift-color': '#ffb15c' }}>
+              {lang === 'fr' ? 'ROUTES ARC' : 'ARC ROUTES'}: {arcRoutes.length}
+            </span>
+          )}
         </div>
       </div>
       <div className="rift-map-stage" aria-label={lang === 'fr' ? 'Carte visuelle des failles' : 'Visual rift map'}>
@@ -1239,6 +1430,29 @@ function MultiverseRiftMap({ lang, stages, completedStages, isStageUnlocked, onS
           <strong>NEXUS</strong>
           <span>{lang === 'fr' ? 'Ancre centrale' : 'Central Anchor'}</span>
         </div>
+        {arcRoutes.map(route => {
+          const doneCount = route.timeline.filter(node => node.status === 'done').length;
+          const ratio = route.timeline.length ? doneCount / route.timeline.length : 0;
+          const targetStage = route.linkedStages.find(stage => !completedStages.includes(stage.id)) || route.linkedStages[route.linkedStages.length - 1];
+          return (
+            <button
+              key={`arc-route-${route.arc.id}`}
+              type="button"
+              className={`rift-arc-route ${ratio >= 1 ? 'sealed' : ''}`}
+              style={{
+                '--rift-x': `${route.x}%`,
+                '--rift-y': `${route.y}%`,
+                '--rift-color': route.color
+              }}
+              onClick={() => targetStage && onSelectStage(targetStage)}
+              title={`${getLocalizedText(route.arc.title, lang, route.arc.id)} - ${doneCount}/${route.timeline.length}`}
+            >
+              <i />
+              <b>{Math.round(ratio * 100)}%</b>
+              <span>{route.timeline.find(node => node.status !== 'done')?.label || (lang === 'fr' ? 'OUTRO' : 'OUTRO')}</span>
+            </button>
+          );
+        })}
         {portalNodes.map(node => {
           const completed = completedStages.includes(node.stage.id);
           const locked = !isStageUnlocked(node.stage);
@@ -3348,6 +3562,13 @@ export default function HubScreen({
   };
   const selectedMissionMeta = missionScreenMeta[missionScreen] || missionScreenMeta.story;
   const missionPool = visibleStages.filter(stage => stage.id !== 38 && missionCategoryFilter(stage) && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
+  const activeNarrativeArcs = missionScreen === 'universeArcs'
+    ? UNIVERSE_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.universeArc?.id === arc.id))
+    : missionScreen === 'personalArcs'
+      ? CHARACTER_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.characterArc?.id === arc.id))
+      : missionScreen === 'trioArcs'
+        ? TRIO_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.trioArc?.id === arc.id))
+        : [];
   const unlockedMissionPool = missionPool.filter(isStageUnlocked);
   const scanPool = unlockedMissionPool.length > 0 ? unlockedMissionPool : missionPool.slice(0, 1);
   const nextUnclearedStage = scanPool.find(stage => !completedStages.includes(stage.id)) || scanPool[0];
@@ -3697,12 +3918,24 @@ export default function HubScreen({
               ))}
             </div>
 
+            {activeNarrativeArcs.length > 0 && (
+              <NarrativeArcSequencePanel
+                lang={lang}
+                arcs={activeNarrativeArcs.slice(0, missionScreen === 'personalArcs' ? 10 : activeNarrativeArcs.length)}
+                stages={visibleStages}
+                completedStages={completedStages}
+                onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+              />
+            )}
+
             <MultiverseRiftMap
               lang={lang}
               stages={missionPool}
+              allStages={visibleStages}
               completedStages={completedStages}
               isStageUnlocked={isStageUnlocked}
               onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+              narrativeArcs={activeNarrativeArcs}
             />
 
             <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.4fr', gap: '12px', marginBottom: '14px' }}>
@@ -4073,8 +4306,8 @@ export default function HubScreen({
                     </div>
                     <div style={{ fontSize: '10px', color: '#c9b49f', marginTop: '3px' }}>
                       {lang === 'fr'
-                        ? 'Chaque bloc raconte une chaine de Trames liees: intro, missions, sortie et recompense d arc.'
-                        : 'Each block tells a linked Thread chain: intro, missions, outro, and arc reward.'}
+                        ? 'Chaque bloc suit une route complete: intro, mission, interlude, nouvelle mission, intro boss, boss, outro et recompense.'
+                        : 'Each block follows a full route: intro, mission, interlude, next mission, boss intro, boss, outro, and reward.'}
                     </div>
                   </div>
                   <div style={{ color: '#ffeb3b', fontSize: '10px' }}>
@@ -4083,9 +4316,10 @@ export default function HubScreen({
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
                   {UNIVERSE_NARRATIVE_ARCS.map(arc => {
-                    const linkedStageCount = STAGES.filter(stage => arc.universes.includes(stage.universe) || stage.sourceUniverses?.some(source => arc.universes.includes(source))).length;
-                    const clearedLinkedCount = STAGES.filter(stage => completedStages.includes(stage.id) && (arc.universes.includes(stage.universe) || stage.sourceUniverses?.some(source => arc.universes.includes(source)))).length;
-                    const ratio = linkedStageCount ? Math.min(1, clearedLinkedCount / linkedStageCount) : 0;
+                    const linkedStages = getLinkedStagesForArc(arc, visibleStages, BASE_HEROES_DB);
+                    const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
+                    const clearedLinkedCount = timeline.filter(node => node.status === 'done').length;
+                    const ratio = timeline.length ? Math.min(1, clearedLinkedCount / timeline.length) : 0;
                     return (
                       <div key={arc.id} style={{
                         padding: '11px',
@@ -4095,23 +4329,36 @@ export default function HubScreen({
                       }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', alignItems: 'center', marginBottom: '6px' }}>
                           <strong style={{ color: ratio >= 1 ? '#2ecc71' : '#ffb15c', fontSize: '11px' }}>{arc.title[lang]}</strong>
-                          <span style={{ color: '#ffeb3b', fontSize: '9px' }}>{clearedLinkedCount}/{linkedStageCount || arc.universes.length}</span>
+                          <span style={{ color: '#ffeb3b', fontSize: '9px' }}>{clearedLinkedCount}/{timeline.length}</span>
                         </div>
                         <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '8px', borderRadius: '3px', overflow: 'hidden' }}>
                           <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: ratio >= 1 ? '#2ecc71' : '#ffb15c' }} />
                         </div>
-                        <div style={{ color: '#d9d9d9', fontSize: '10px', lineHeight: 1.35, marginBottom: '7px' }}>
-                          <b style={{ color: '#ffeb3b' }}>{lang === 'fr' ? 'Intro' : 'Intro'}:</b> {arc.intro[lang]}
-                        </div>
                         <div style={{ display: 'grid', gap: '4px', marginBottom: '7px' }}>
-                          {arc.missions.map((mission, index) => (
-                            <span key={`${arc.id}-${index}`} style={{ color: '#cfcfcf', fontSize: '9px', lineHeight: 1.3 }}>
-                              {index + 1}. {mission[lang]}
-                            </span>
+                          {timeline.map((node, index) => (
+                            <button
+                              key={`${arc.id}-summary-${index}`}
+                              type="button"
+                              disabled={!node.stage}
+                              onClick={() => node.stage && setBriefingStageId(node.stage.id)}
+                              className="btn-retro"
+                              style={{
+                                color: node.status === 'done' ? '#2ecc71' : node.status === 'locked' ? '#777' : node.type.includes('boss') ? '#e74c3c' : '#cfcfcf',
+                                borderColor: node.status === 'done' ? '#2ecc71' : node.status === 'locked' ? '#333' : node.type.includes('boss') ? '#e74c3c' : 'rgba(255,255,255,0.16)',
+                                background: 'rgba(0,0,0,0.14)',
+                                fontSize: '9px',
+                                lineHeight: 1.3,
+                                padding: '5px 6px',
+                                textAlign: 'left',
+                                cursor: node.stage ? 'pointer' : 'default'
+                              }}
+                            >
+                              <b>{node.label}</b>{node.stage ? ` #${node.stage.id}` : ''} - {node.text}
+                            </button>
                           ))}
                         </div>
                         <div style={{ color: '#9adbd6', fontSize: '9px', lineHeight: 1.35, marginBottom: '6px' }}>
-                          <b>{lang === 'fr' ? 'Sortie' : 'Outro'}:</b> {arc.outro[lang]}
+                          <b>{lang === 'fr' ? 'Route carte' : 'Map route'}:</b> {linkedStages.map(stage => `#${stage.id}`).join(' -> ') || (lang === 'fr' ? 'coordonnees a decouvrir' : 'coordinates to discover')}
                         </div>
                         <div style={{ color: '#ffeb3b', fontSize: '9px', lineHeight: 1.35 }}>
                           <b>{lang === 'fr' ? 'Recompense' : 'Reward'}:</b> {arc.reward[lang]}
