@@ -291,31 +291,186 @@ export const CHARACTER_PLAQUES = {
 };
 
 const roleByCategory = {
-  marine: { fr: 'Ancrage de front', en: 'Frontline anchor' },
-  slayer: { fr: 'Rupture offensive', en: 'Offensive rupture' },
-  horror: { fr: 'Survie contre-anomalie', en: 'Counter-anomaly survival' },
-  hacker: { fr: 'Lecture du code-realite', en: 'Code-reality reader' },
-  tactical: { fr: 'Commandement de terrain', en: 'Field command' }
+  marine: {
+    rank: { fr: 'Operateur de front', en: 'Frontline Operator' },
+    role: { fr: 'Ancrage de front', en: 'Frontline anchor' },
+    protocol: {
+      fr: 'Tenir la ligne, absorber la premiere vague et transformer la pression ennemie en couloir de tir.',
+      en: 'Hold the line, absorb the first wave, and turn enemy pressure into a firing corridor.'
+    }
+  },
+  slayer: {
+    rank: { fr: 'Executeur de breche', en: 'Breach Executioner' },
+    role: { fr: 'Rupture offensive', en: 'Offensive rupture' },
+    protocol: {
+      fr: 'Casser le tempo adverse, isoler la cible dominante et fermer la sequence par une frappe decisive.',
+      en: 'Break enemy tempo, isolate the dominant target, and close the sequence with a decisive strike.'
+    }
+  },
+  horror: {
+    rank: { fr: 'Survivant anomalie', en: 'Anomaly Survivor' },
+    role: { fr: 'Survie contre-anomalie', en: 'Counter-anomaly survival' },
+    protocol: {
+      fr: 'Lire les signaux faibles, survivre a la peur locale et retourner la regle du monstre contre lui.',
+      en: 'Read weak signals, survive local fear pressure, and turn the monster rule back against it.'
+    }
+  },
+  hacker: {
+    rank: { fr: 'Lecteur de trame', en: 'Thread Reader' },
+    role: { fr: 'Lecture du code-realite', en: 'Code-reality reader' },
+    protocol: {
+      fr: 'Scanner les lois cachees de la scene, ouvrir une faille courte et forcer le Nexus a garder la memoire.',
+      en: 'Scan the hidden laws of the scene, open a short breach, and force the Nexus to keep memory.'
+    }
+  },
+  tactical: {
+    rank: { fr: 'Coordinateur terrain', en: 'Field Coordinator' },
+    role: { fr: 'Commandement de terrain', en: 'Field command' },
+    protocol: {
+      fr: 'Organiser l escouade, proteger les signatures fragiles et choisir le moment exact de l engagement.',
+      en: 'Organize the squad, protect fragile signatures, and choose the exact moment of engagement.'
+    }
+  }
+};
+
+const mediaProfiles = {
+  game: {
+    fr: 'A.R.C.A. traduit cette signature de jeu en boucle lisible: entree, pattern, contre-pattern, recompense.',
+    en: 'A.R.C.A. translates this game signature into a readable loop: entry, pattern, counter-pattern, reward.'
+  },
+  movie: {
+    fr: 'Le Nexus conserve le montage d origine comme une sequence de mission: exposition, menace, scene cle, resolution.',
+    en: 'The Nexus preserves the original edit as a mission sequence: setup, threat, key scene, resolution.'
+  },
+  series: {
+    fr: 'La signature vient d une trame longue: le risque principal est la contamination par arcs, retours et variations de ton.',
+    en: 'The signature comes from a long-form Thread: the main risk is contamination by arcs, callbacks, and tone shifts.'
+  },
+  manga: {
+    fr: 'La compression respecte la logique de panels: silhouette forte, technique nommee, evolution visible et impact net.',
+    en: 'Compression respects panel logic: strong silhouette, named technique, visible escalation, clean impact.'
+  },
+  music: {
+    fr: 'La signature est rythmique: le Nexus l ancre par tempo, motif visuel, rupture sonore et presence de scene.',
+    en: 'The signature is rhythmic: the Nexus anchors it through tempo, visual motif, sonic rupture, and stage presence.'
+  },
+  web: {
+    fr: 'La trame est instable par nature: A.R.C.A. priorise les symboles reconnaissables et les regles de scene.',
+    en: 'The Thread is unstable by nature: A.R.C.A. prioritizes recognizable symbols and scene rules.'
+  }
+};
+
+const universeProtocols = {
+  'Attack on Titan': { fr: 'Mobilite verticale, pression titanesque et sacrifice tactique.', en: 'Vertical mobility, titan pressure, and tactical sacrifice.' },
+  Another: { fr: 'Identification de l Extra, silence de classe et rupture de calamite.', en: 'Extra identification, class silence, and calamity rupture.' },
+  'Cells at Work!': { fr: 'Flux vital, reparation cellulaire et defense immunitaire.', en: 'Vital flow, cellular repair, and immune defense.' },
+  Dandadan: { fr: 'Collision yokai-alien, impulsion psychique et poursuite turbo.', en: 'Yokai-alien collision, psychic impulse, and turbo pursuit.' },
+  'Death Note': { fr: 'Guerre d identite, deduction froide et trace ecrite interdite.', en: 'Identity war, cold deduction, and forbidden written trace.' },
+  Discworld: { fr: 'Magie octarine, logique satirique et realite approximative mais tenace.', en: 'Octarine magic, satirical logic, and approximate but stubborn reality.' },
+  'Ghost in the Shell': { fr: 'Cybercerveau, infiltration reseau et doute sur l identite.', en: 'Cyberbrain, network infiltration, and doubt over identity.' },
+  Gunnm: { fr: 'Corps cyborg, arene motorball et fracture sociale de Zalem.', en: 'Cyborg body, motorball arena, and Zalem class fracture.' },
+  Inuyashiki: { fr: 'Corps reconstruit, humanite fragile et puissance mecanique disproportionnee.', en: 'Rebuilt body, fragile humanity, and disproportionate mechanical power.' },
+  Negima: { fr: 'Pactio, academie magique et surcharge de sorts coordonnes.', en: 'Pactio, magic academy, and coordinated spell overload.' },
+  'Kung Pow': { fr: 'Parodie martiale, timing absurde et coup impossible assume.', en: 'Martial parody, absurd timing, and proudly impossible strike.' },
+  'La Cite de la Peur': { fr: 'Festival de Cannes, slasher comique et meta-cinema instable.', en: 'Cannes festival, comedy slasher, and unstable meta-cinema.' },
+  'Le Cinquieme Element': { fr: 'Langage elementaire, opera cosmique et protection de la vie.', en: 'Elemental language, cosmic opera, and protection of life.' },
+  M3GAN: { fr: 'Robotique domestique, attachement toxique et protocole de controle.', en: 'Domestic robotics, toxic attachment, and control protocol.' },
+  'Mars Attacks': { fr: 'Invasion pulp, rayon martien et inversion sonore ridicule mais efficace.', en: 'Pulp invasion, Martian ray, and ridiculous but effective sonic reversal.' },
+  'Meet the Feebles': { fr: 'Marionnettes corrompues, backstage sale et satire de spectacle.', en: 'Corrupted puppets, dirty backstage, and showbiz satire.' },
+  Onechanbara: { fr: 'Katana, brouillard de sang et chasse zombie stylisee.', en: 'Katana, blood mist, and stylized zombie hunting.' },
+  Pingu: { fr: 'Chaos arctique, economie du poisson et logique noot-noot.', en: 'Arctic chaos, fish economy, and noot-noot logic.' }
+};
+
+const normalizeKey = (value) => String(value || '')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9]+/gi, ' ')
+  .trim()
+  .toLowerCase();
+
+const getUniverseProtocol = (universe) => {
+  const direct = universeProtocols[universe];
+  if (direct) return direct;
+  const normalizedUniverse = normalizeKey(universe);
+  const match = Object.entries(universeProtocols).find(([key]) => normalizeKey(key) === normalizedUniverse);
+  return match?.[1] || {
+    fr: `Regles locales de ${universe}: symboles, posture, arme signature et menace principale.`,
+    en: `${universe} local laws: symbols, posture, signature weapon, and primary threat.`
+  };
+};
+
+const getMediaTypeFromUniverse = (universe) => {
+  if (/vocaloid|rammstein|system of a down|rob zombie|daft punk|oliver tree|linkin park|michael jackson|die antwoord/i.test(universe)) return 'music';
+  if (/anime|manga|gunnm|dandadan|death note|negima|another|tanya|overlord|spy x family|rosario|uzumaki|cells at work|attack on titan/i.test(universe)) return 'manga';
+  if (/series|hotel|circus|pingu|noob|camera cafe|malcolm|defiance|scp/i.test(universe)) return 'series';
+  if (/gear|halo|portal|payday|unreal|digimon|saw|onechanbara|house of the dead/i.test(universe)) return 'game';
+  return 'movie';
+};
+
+const buildClearance = (hero) => {
+  const universeCode = String(hero.universe || 'ARC')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .split(/[^A-Za-z0-9]+/)
+    .filter(Boolean)
+    .map(part => part[0])
+    .join('')
+    .slice(0, 4)
+    .toUpperCase() || 'ARC';
+  const heroCode = String(hero.id || hero.name || 'unit')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^A-Za-z0-9]/g, '')
+    .slice(0, 4)
+    .toUpperCase() || 'UNIT';
+  return `${universeCode}-${heroCode}`;
+};
+
+const enrichPlaque = (hero, plaque) => {
+  const category = roleByCategory[hero.category] || roleByCategory.tactical;
+  const mediaType = getMediaTypeFromUniverse(hero.universe);
+  const mediaLine = mediaProfiles[mediaType] || mediaProfiles.web;
+  const universeLine = getUniverseProtocol(hero.universe);
+  const weapon = hero.weaponType || hero.simple?.name || 'signature';
+  const special = hero.special?.name || hero.secondary?.name || weapon;
+  return {
+    ...plaque,
+    rank: plaque.rank || category.rank,
+    role: plaque.role || category.role,
+    protocol: plaque.protocol || {
+      fr: `${category.protocol.fr} ${universeLine.fr}`,
+      en: `${category.protocol.en} ${universeLine.en}`
+    },
+    threat: plaque.threat || {
+      fr: `Risque A.R.C.A.: si ${hero.name} perd son ancrage, la Trame ${hero.universe} peut reduire sa signature a une simple reference sans memoire.`,
+      en: `A.R.C.A. risk: if ${hero.name} loses anchoring, the ${hero.universe} Thread can reduce the signature to a hollow reference without memory.`
+    },
+    resonance: plaque.resonance || {
+      fr: `Resonance: ${weapon} / ${special}. ${mediaLine.fr}`,
+      en: `Resonance: ${weapon} / ${special}. ${mediaLine.en}`
+    },
+    tags: Array.from(new Set([...(plaque.tags || []), hero.universe, hero.category, weapon].filter(Boolean))).slice(0, 6)
+  };
 };
 
 export const getCharacterPlaque = (hero) => {
-  if (CHARACTER_PLAQUES[hero.id]) return CHARACTER_PLAQUES[hero.id];
-  const role = roleByCategory[hero.category] || roleByCategory.tactical;
+  if (CHARACTER_PLAQUES[hero.id]) return enrichPlaque(hero, CHARACTER_PLAQUES[hero.id]);
+  const category = roleByCategory[hero.category] || roleByCategory.tactical;
   const doctrine = hero.special?.name || hero.weaponType || 'signature inconnue';
-  return {
-    clearance: `${hero.universe.slice(0, 3).toUpperCase()}-${hero.id.slice(0, 3).toUpperCase()}`,
-    rank: { fr: hero.category.toUpperCase(), en: hero.category.toUpperCase() },
-    role,
+  return enrichPlaque(hero, {
+    clearance: buildClearance(hero),
+    rank: category.rank,
+    role: category.role,
     callSign: hero.name,
     origin: { fr: `Trame d origine - ${hero.universe}`, en: `Origin Thread - ${hero.universe}` },
     dossier: {
-      fr: `${hero.name} a ete archive par A.R.C.A. comme signature stable de la Trame ${hero.universe}. Le Nexus conserve son histoire d origine, puis applique une Compression de Resonance pour lui donner une seconde fonction: servir de cle vivante contre les breches ou son monde est copie, tordu ou rendu muet par le Sans-Auteur.`,
-      en: `${hero.name} has been archived by A.R.C.A. as a stable signature from the ${hero.universe} Thread. The Nexus preserves the origin story, then applies Resonance Compression to give the hero a second function: acting as a living key against breaches where that world is copied, twisted, or silenced by the Authorless.`
+      fr: `${hero.name} est classe comme signature ${hero.category} de la Trame ${hero.universe}. A.R.C.A. ne le traite pas comme un simple cameo: le dossier conserve silhouette, arme, posture et regle locale pour que son univers reste reconnaissable pendant la Compression de Resonance.`,
+      en: `${hero.name} is classified as a ${hero.category} signature from the ${hero.universe} Thread. A.R.C.A. does not treat this as a simple cameo: the dossier preserves silhouette, weapon, posture, and local rule so the universe remains recognizable during Resonance Compression.`
     },
     doctrine: {
       fr: `${doctrine}. Stabilisation de scene, rupture de pattern, recuperation d Eclats d Origine et protection des archives locales.`,
       en: `${doctrine}. Scene stabilization, pattern rupture, recovery of Origin Shards, and protection of local archives.`
     },
     tags: [hero.universe, hero.category, hero.weaponType || 'combat']
-  };
+  });
 };

@@ -2669,6 +2669,11 @@ export default function HubScreen({
                     <div style={{ fontSize: '11px', color: '#bbb', lineHeight: 1.4, marginBottom: '8px' }}>
                       {selectedPlaque.doctrine[lang]}
                     </div>
+                    {selectedPlaque.protocol && (
+                      <div style={{ fontSize: '10px', color: '#9fd8ff', lineHeight: 1.35, marginBottom: '8px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '7px' }}>
+                        <strong style={{ color: '#39c5bb' }}>{lang === 'fr' ? 'Protocole' : 'Protocol'}:</strong> {selectedPlaque.protocol[lang]}
+                      </div>
+                    )}
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px' }}>
                       {selectedPlaque.tags.map(tag => (
                         <span key={tag} style={{ fontSize: '9px', padding: '2px 6px', border: `1px solid ${selectedHero.primaryColor}66`, color: '#ddd', borderRadius: '3px', background: `${selectedHero.primaryColor}12` }}>
@@ -2695,6 +2700,16 @@ export default function HubScreen({
                     <div style={{ fontSize: '12px', color: '#d8d8d8', lineHeight: 1.45 }}>
                       {selectedPlaque.dossier[lang]}
                     </div>
+                    {selectedPlaque.resonance && (
+                      <div style={{ marginTop: '9px', fontSize: '11px', color: '#cfc3ff', lineHeight: 1.4 }}>
+                        <strong style={{ color: '#9b59b6' }}>{lang === 'fr' ? 'Resonance' : 'Resonance'}:</strong> {selectedPlaque.resonance[lang]}
+                      </div>
+                    )}
+                    {selectedPlaque.threat && (
+                      <div style={{ marginTop: '8px', fontSize: '11px', color: '#ffb3aa', lineHeight: 1.4 }}>
+                        <strong style={{ color: '#e74c3c' }}>{lang === 'fr' ? 'Risque' : 'Risk'}:</strong> {selectedPlaque.threat[lang]}
+                      </div>
+                    )}
                   </div>
                 </div>
 

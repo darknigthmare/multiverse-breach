@@ -351,6 +351,11 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, unlo
             {summonedPlaque && (
               <div style={{ textAlign: 'left', fontSize: '10px', color: '#aaa', lineHeight: 1.35, borderTop: '1px solid #222', paddingTop: '8px' }}>
                 {summonedPlaque.doctrine[lang]}
+                {summonedPlaque.protocol && (
+                  <div style={{ marginTop: '6px', color: '#9fd8ff' }}>
+                    {summonedPlaque.protocol[lang]}
+                  </div>
+                )}
               </div>
             )}
 
