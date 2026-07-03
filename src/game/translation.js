@@ -37,9 +37,9 @@ export const translations = {
     backToHub: 'BACK TO NEXUS',
     retreat: 'RETREAT',
     victory: 'STABILIZED',
-    defeat: 'SIGNAL LOST',
+    defeat: 'ANCHOR RETREAT',
     victoryMsg: 'Rift sealed. Cache recovered: +{gold} Gold, +{shards} Shards, +{tokens} Tokens.',
-    defeatMsg: 'Cell signal broken. Retreat, reinforce the archive, and reopen the breach.',
+    defeatMsg: 'Cell signal broken. A.R.C.A. keeps contact data; the next opening will be clearer.',
     returnToHub: 'RETURN TO HUB',
 
     recountedHeroes: 'STABILIZED HEROES',
@@ -137,9 +137,9 @@ export const translations = {
     backToHub: 'RETOUR AU NEXUS',
     retreat: 'REPLI',
     victory: 'STABILISEE',
-    defeat: 'SIGNAL PERDU',
+    defeat: 'REPLI D ANCRE',
     victoryMsg: 'Breche scellee. Cache recuperee: +{gold} Or, +{shards} Fragments, +{tokens} Jetons.',
-    defeatMsg: 'Signal de cellule rompu. Repli, renforcement, puis nouvelle ouverture.',
+    defeatMsg: 'Signal de cellule rompu. A.R.C.A. conserve les donnees de contact; la prochaine ouverture sera plus lisible.',
     returnToHub: 'RETOUR AU HUB',
 
     recountedHeroes: 'HEROS STABILISES',

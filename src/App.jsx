@@ -44,7 +44,9 @@ const DEFAULT_SAVE = {
     lifetimeAttempts: 0,
     seasonXp: 0,
     loginStreak: 0,
-    lastSeenDay: ''
+    lastSeenDay: '',
+    defeatIntel: {},
+    heroInstability: {}
   },
   inventory: ['cog_armor', 'green_herb', 'hev_battery'],
   equippedGear: {
@@ -129,6 +131,14 @@ const getNextLoginStreak = (lastSeenDay, dayKey, currentStreak = 0) => {
   const last = new Date(`${lastSeenDay}T00:00:00Z`).getTime();
   const today = new Date(`${dayKey}T00:00:00Z`).getTime();
   return today - last === 86400000 ? (currentStreak || 0) + 1 : 1;
+};
+
+const getContactIntel = (stage, lang) => {
+  const modifierName = stage?.modifier?.name?.[lang] || stage?.modifier?.id || (lang === 'fr' ? 'anomalie non classee' : 'unclassified anomaly');
+  const source = stage?.sourceUniverses?.join(' / ') || stage?.universe || (lang === 'fr' ? 'Trame inconnue' : 'Unknown Thread');
+  return lang === 'fr'
+    ? `Donnees de contact: ${stage?.bossName || 'noyau hostile'} / ${source} / modificateur ${modifierName}. A.R.C.A. annonce une adaptation +5% HP sur la prochaine tentative.`
+    : `Contact data: ${stage?.bossName || 'hostile core'} / ${source} / ${modifierName} modifier. A.R.C.A. grants +5% HP adaptation on the next attempt.`;
 };
 
 const getMissionNarrative = (stage, lang, isOutro, victory) => {
@@ -227,7 +237,7 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
   const title = isOutro
     ? victory
       ? (lang === 'fr' ? 'BRECHE STABILISEE' : 'BREACH STABILIZED')
-      : (lang === 'fr' ? 'REPLI TACTIQUE' : 'TACTICAL RETREAT')
+      : (lang === 'fr' ? 'REPLI D ANCRE' : 'ANCHOR RETREAT')
     : (lang === 'fr' ? 'SEQUENCE NARRATIVE' : 'NARRATIVE SEQUENCE');
   const modeLine = stage.mode === 'RPG'
     ? (lang === 'fr' ? 'L escouade avance selon le protocole Resonance: initiative, charges et rupture du noyau.' : 'The squad advances under the Resonance protocol: initiative, charges, and core rupture.')
@@ -276,6 +286,15 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
               )}
               {rewardSummary.consolation && (
                 <span>{lang === 'fr' ? 'Cache de repli attribuee: la tentative progresse meme sans victoire.' : 'Retreat cache granted: the attempt still progresses without victory.'}</span>
+              )}
+              {rewardSummary.contactIntel && (
+                <span>{rewardSummary.contactIntel}</span>
+              )}
+              {rewardSummary.adaptation && (
+                <span>{lang === 'fr' ? 'Adaptation A.R.C.A.: prochaine tentative sur cette faille, +5% HP equipe.' : 'A.R.C.A. adaptation: next attempt on this rift, +5% team HP.'}</span>
+              )}
+              {rewardSummary.instability && (
+                <span>{lang === 'fr' ? 'Instabilite douce: heros deployes a -5% stats pendant 1 mission.' : 'Soft instability: deployed heroes suffer -5% stats for 1 mission.'}</span>
               )}
               {rewardSummary.rewardItemName && (
                 <span>{lang === 'fr' ? `Trace speciale archivee: ${rewardSummary.rewardItemName}.` : `Special trace archived: ${rewardSummary.rewardItemName}.`}</span>
@@ -454,7 +473,10 @@ function App() {
       firstClear,
       droppedItemName: null,
       rewardItemName: null,
-      consolation: false
+      consolation: false,
+      contactIntel: null,
+      adaptation: false,
+      instability: false
     };
 
     if (result === 'victory' && activeStage) {
@@ -509,6 +531,14 @@ function App() {
         lifetimeWins: (prev.lifetimeWins || 0) + 1,
         lifetimeAttempts: (prev.lifetimeAttempts || 0) + 1,
         seasonXp: (prev.seasonXp || 0) + seasonGain,
+        defeatIntel: Object.fromEntries(
+          Object.entries(prev.defeatIntel || {}).filter(([stageId]) => String(stageId) !== String(activeStage.id))
+        ),
+        heroInstability: Object.fromEntries(
+          Object.entries(prev.heroInstability || {})
+            .map(([heroId, value]) => [heroId, activeTeam.includes(heroId) ? Math.max(0, (Number(value) || 0) - 1) : Number(value) || 0])
+            .filter(([, value]) => value > 0)
+        ),
         modeWins: {
           ...(prev.modeWins || {}),
           [activeStage.mode]: (prev.modeWins?.[activeStage.mode] || 0) + 1,
@@ -541,6 +571,9 @@ function App() {
       }
     } else if (result === 'defeat' && activeStage) {
       summary.consolation = true;
+      summary.contactIntel = getContactIntel(activeStage, lang);
+      summary.adaptation = true;
+      summary.instability = true;
       summary.gold = Math.max(8, Math.round(activeStage.goldPrize * 0.18));
       summary.shards = Math.max(4, Math.round(activeStage.shardPrize * 0.22));
       setGold(prev => prev + summary.gold);
@@ -551,6 +584,28 @@ function App() {
         ...prev,
         dayKey,
         weekKey,
+        defeatIntel: {
+          ...(prev.defeatIntel || {}),
+          [activeStage.id]: {
+            stageId: activeStage.id,
+            universe: activeStage.universe,
+            sourceUniverses: activeStage.sourceUniverses || null,
+            bossName: activeStage.bossName,
+            modifierId: activeStage.modifier?.id || null,
+            modifierName: activeStage.modifier?.name || null,
+            attempts: ((prev.defeatIntel || {})[activeStage.id]?.attempts || 0) + 1,
+            scannedAt: new Date().toISOString()
+          }
+        },
+        heroInstability: {
+          ...Object.fromEntries(
+            Object.entries(prev.heroInstability || {})
+              .filter(([heroId]) => !activeTeam.includes(heroId))
+              .map(([heroId, value]) => [heroId, Math.max(0, Number(value) || 0)])
+              .filter(([, value]) => value > 0)
+          ),
+          ...Object.fromEntries(activeTeam.map(heroId => [heroId, 1]))
+        },
         itemActivations: (prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0) + battleItemsUsed,
         weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed,
         lifetimeAttempts: (prev.lifetimeAttempts || 0) + 1,

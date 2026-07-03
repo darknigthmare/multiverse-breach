@@ -234,6 +234,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       stats.def = Math.round(stats.def * collectionFactor);
       stats.spd = Math.round(stats.spd * collectionFactor);
     }
+    if (stage.arcaAdaptation) {
+      stats.hp = Math.round(stats.hp * 1.05);
+    }
+    if ((stage.heroInstability?.[hero.id] || 0) > 0) {
+      stats.hp = Math.max(1, Math.round(stats.hp * 0.95));
+      stats.atk = Math.max(1, Math.round(stats.atk * 0.95));
+      stats.def = Math.max(1, Math.round(stats.def * 0.95));
+      stats.spd = Math.max(1, Math.round(stats.spd * 0.95));
+    }
     return stats;
   };
 
@@ -758,6 +767,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
   const usedBattleItems = battlePickups.filter(item => item.used).length;
   const totalBattleItems = battlePickups.length;
+  const unstableTeamCount = activeTeam.filter(heroId => (stage.heroInstability?.[heroId] || 0) > 0).length;
   const battleObjective = stage.mode === 'Tactics'
     ? (lang === 'fr' ? 'Directive A.R.C.A.: securiser les cases ressources, puis neutraliser le champion local.' : 'A.R.C.A. directive: secure resource tiles, then neutralize the local champion.')
     : stage.mode === 'Smash'
@@ -806,6 +816,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           {stage.isSurvival && (
             <div style={{ fontSize: '10px', color: '#ff8c00', marginTop: '3px' }}>
               {lang === 'fr' ? 'Mode survie: récompenses augmentées, anomalies plus fréquentes.' : 'Survival mode: higher rewards, more unstable anomalies.'}
+            </div>
+          )}
+          {stage.arcaAdaptation && (
+            <div style={{ fontSize: '10px', color: '#2ecc71', marginTop: '3px' }}>
+              {lang === 'fr'
+                ? `Adaptation A.R.C.A.: ${stage.bossName} scanne, +5% HP equipe.`
+                : `A.R.C.A. adaptation: ${stage.bossName} scanned, +5% team HP.`}
+            </div>
+          )}
+          {unstableTeamCount > 0 && (
+            <div style={{ fontSize: '10px', color: '#ffeb3b', marginTop: '3px' }}>
+              {lang === 'fr'
+                ? `Instabilite de repli: ${unstableTeamCount} heros a -5% stats pendant cette mission.`
+                : `Retreat instability: ${unstableTeamCount} hero(es) at -5% stats for this mission.`}
             </div>
           )}
           {collectionBonusCount > 0 && (

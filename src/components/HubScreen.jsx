@@ -1826,10 +1826,13 @@ export default function HubScreen({
     const modifier = getStageModifier(stage);
     const rarity = getLootRarity(stage);
     const rewardFactor = modifier.reward || 1;
+    const arcaAdaptation = activityProgress.defeatIntel?.[stage.id] || null;
     return {
       ...stage,
       modifier,
       lootRarity: rarity,
+      arcaAdaptation,
+      heroInstability: activityProgress.heroInstability || {},
       goldPrize: Math.round(stage.goldPrize * rewardFactor),
       shardPrize: Math.round(stage.shardPrize * rewardFactor),
       tokenPrize: getStageTokenPrize(stage)
