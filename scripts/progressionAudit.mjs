@@ -80,7 +80,9 @@ assert(hubSource.includes("setActiveTab('race')") && hubSource.includes('<RaceMo
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
 assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('arca-mirelle-kart-directions.png'), 'Race engine must use the Mirelle kart sprite sheet assets.');
+assert(raceEngineSource.includes('arca-mirelle-hud-avatar.png') && raceModeSource.includes('race-mode-pilot-icon'), 'Race pilot HUD must use a cropped Mirelle icon instead of a full sprite plaque.');
 assert(raceEngineSource.includes('drawRaceCameraBackdrop') && raceEngineSource.includes('drawRearRoad') && raceEngineSource.includes('drawRearPlayerKart'), 'Race mode must render from a rear kart camera, not only a top-down circuit.');
+assert(raceEngineSource.includes('const sprite = this.images.kartDirections') && raceEngineSource.includes('const row = 1'), 'Rear kart camera must crop Mirelle from the rear-facing direction row.');
 assert(raceEngineSource.includes('projectToRearCamera') && raceEngineSource.includes('drawProjectedRaceObjects'), 'Race objects and rivals must be projected into the rear camera view.');
 assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.includes('vue de dessus reste limitee a la mini-map'), 'Race top-down view must stay limited to the minimap.');
 [
@@ -90,6 +92,7 @@ assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.include
   'arca-mirelle-melee-combat.png',
   'arca-mirelle-nexus-collection.png',
   'arca-mirelle-hud-icons.png',
+  'arca-mirelle-hud-avatar.png',
   'arca-mirelle-items-vfx.png',
   'arca-mirelle-fps-hands.png',
   'arca-mirelle-fps-effects.png',
@@ -102,11 +105,12 @@ assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.include
   assert(spriteAssetsSource.includes(file), `Mirelle complete sprite pack missing ${file}.`);
 });
 assert(rendererSource.includes("context = 'auto'") && rendererSource.includes('srcGetter(entity, context)'), 'Renderer must route hero sprites by mode context.');
-assert(spriteAssetsSource.includes('SPRITE_SHEET_LAYOUTS') && spriteAssetsSource.includes('rows: 9') && spriteAssetsSource.includes('rows: 6'), 'Mirelle complete sheets must declare non-4x4 crop layouts.');
+assert(spriteAssetsSource.includes('SPRITE_SHEET_LAYOUTS') && spriteAssetsSource.includes('rows: 12') && spriteAssetsSource.includes('rows: 10') && spriteAssetsSource.includes('rows: 6'), 'Mirelle complete sheets must declare real per-sheet crop layouts.');
 assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.includes('getSpriteFrameForLayout'), 'Renderer must crop generated sprites through per-sheet layouts.');
-assert(hubSource.includes('sheet.naturalHeight / 6') && hubSource.includes('effectSheet.naturalHeight / 6'), 'FPS Mirelle sheets must be cropped as 4x6, not 4x4.');
+assert(hubSource.includes('sheet.naturalHeight / 10') && hubSource.includes('effectSheet.naturalHeight / 10'), 'FPS Mirelle sheets must be cropped as 4x10 non-square action bands.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');
+assert(hubSource.includes("drawPixelSprite(ctx, x, y + 24") && hubSource.includes('false, hero)'), 'Mosaic City Nexus NPCs must render real hero sprites instead of color fallback blocks.');
 assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');
 assert(hubSource.includes("spritePreview.kind === 'pack'"), 'Admin sprite preview must render complete hero sprite packs.');
 [
@@ -301,7 +305,7 @@ console.log(JSON.stringify({
   raceMode: 'playable-hub-tab',
   raceGameplay: ['laps', 'checkpoints', 'drift', 'boost', 'items', 'hazards', 'ai-rivals'],
   racePilotSprite: 'mirelle-kart-openai-sheet',
-  mirelleCompleteSpritePack: 14,
+  mirelleCompleteSpritePack: 15,
   mirelleSpriteRouting: ['rpg', 'tactics', 'melee', 'nexus', 'hud', 'fps', 'kart', 'admin-preview'],
   meleeArenaLayouts: 17,
   meleeTerrainSystem: 'dynamic',

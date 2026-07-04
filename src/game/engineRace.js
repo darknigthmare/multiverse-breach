@@ -4,6 +4,8 @@ export const RACE_ASSETS = {
   kartDirections: `${MIRELLE_KART_BASE}/arca-mirelle-kart-directions.png`,
   kartActions: `${MIRELLE_KART_BASE}/arca-mirelle-kart-actions.png`,
   kartItems: `${MIRELLE_KART_BASE}/arca-mirelle-kart-items.png`,
+  hudIcons: `${MIRELLE_KART_BASE}/arca-mirelle-hud-icons.png`,
+  hudAvatar: `${MIRELLE_KART_BASE}/arca-mirelle-hud-avatar.png`,
   hudGarage: `${MIRELLE_KART_BASE}/arca-mirelle-kart-hud-garage.png`,
   trackNexus: `${MIRELLE_KART_BASE}/arca-mirelle-kart-track-nexus.png`
 };
@@ -732,9 +734,7 @@ export class EngineRace {
 
   drawRearPlayerKart(ctx) {
     const isDrifting = this.player.drift > 0.12;
-    const sprite = this.images.kartActions?.complete && this.images.kartActions.naturalWidth
-      ? this.images.kartActions
-      : this.images.kartDirections;
+    const sprite = this.images.kartDirections;
     const centerX = this.width / 2 + clamp(this.player.drift * Math.sign(this.getPlayerInput().turn || 0) * 34, -34, 34);
     const baseY = this.height - 74;
     if (sprite?.complete && sprite.naturalWidth) {
@@ -742,8 +742,15 @@ export class EngineRace {
       const rows = 4;
       const frameW = sprite.naturalWidth / cols;
       const frameH = sprite.naturalHeight / rows;
-      const row = this.player.spin > 0 ? 3 : this.player.boost > 0 ? 2 : isDrifting ? 1 : 0;
-      const col = Math.floor(this.time * (this.player.boost > 0 ? 12 : 7)) % cols;
+      const turn = this.getPlayerInput().turn || 0;
+      const row = 1;
+      const col = this.player.spin > 0
+        ? 3
+        : turn < -0.25 || (isDrifting && turn < 0)
+          ? 0
+          : turn > 0.25 || (isDrifting && turn > 0)
+            ? 3
+            : Math.floor(this.time * (this.player.boost > 0 ? 10 : 5)) % 2 + 1;
       ctx.save();
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(sprite, col * frameW, row * frameH, frameW, frameH, centerX - 136, baseY - 126, 272, 178);

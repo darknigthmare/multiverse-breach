@@ -1061,7 +1061,20 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
     if (!canvas) return undefined;
     const ctx = canvas.getContext('2d');
     let rafId = 0;
-    const drawPixelPerson = (x, y, color, accent, facing = 1, label = '', isPlayer = false) => {
+    const drawPixelPerson = (x, y, color, accent, facing = 1, label = '', isPlayer = false, hero = null) => {
+      if (hero?.id) {
+        const bob = Math.sin(stateRef.current.t * 0.12 + x * 0.01) * 1.4;
+        const spriteState = hero.state || (Math.abs(Math.sin(stateRef.current.t * 0.018 + x * 0.01)) > 0.62 ? 'run' : 'idle');
+        ctx.fillStyle = 'rgba(0,0,0,0.42)';
+        ctx.fillRect(x - 18, y + 21, 36, 7);
+        drawPixelSprite(ctx, x, y + 24 + bob, { ...hero, state: spriteState }, stateRef.current.t, facing, isPlayer ? 78 : 68, 'nexus');
+        ctx.fillStyle = isPlayer ? '#ffea00' : '#e8ffff';
+        ctx.font = '10px "Share Tech Mono"';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, x, y - 42 + bob);
+        ctx.textAlign = 'left';
+        return;
+      }
       const bob = Math.sin(stateRef.current.t * 0.12 + x * 0.01) * 1.6;
       ctx.fillStyle = 'rgba(0,0,0,0.42)';
       ctx.fillRect(x - 13, y + 17, 26, 6);
@@ -1372,7 +1385,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
         .sort((a, b) => a.y - b.y)
         .forEach(npc => {
           const hero = npc.hero;
-          drawPixelPerson(npc.x, npc.y, hero.primaryColor, hero.secondaryColor, npc.facing, String(hero.name || '?').slice(0, 8));
+          drawPixelPerson(npc.x, npc.y, hero.primaryColor, hero.secondaryColor, npc.facing, String(hero.name || '?').slice(0, 8), false, hero);
           if (npc.routine === 'talk' || npc.reaction) {
             ctx.fillStyle = npc.reaction ? '#ffea00' : '#d8f7ff';
             ctx.font = '9px "Share Tech Mono"';
@@ -1966,8 +1979,8 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       if (selectedHero?.id === 'arca_mirelle' && fpsHandsRef.current?.complete && fpsHandsRef.current.naturalWidth) {
         const sheet = fpsHandsRef.current;
         const frameW = sheet.naturalWidth / 4;
-        const frameH = sheet.naturalHeight / 6;
-        const row = state.muzzle ? 2 : state.ammo < state.maxAmmo ? 1 : 0;
+        const frameH = sheet.naturalHeight / 10;
+        const row = state.muzzle ? 3 : state.ammo < state.maxAmmo ? 6 : 0;
         const col = Math.floor(state.t / 12) % 4;
         const handW = 300;
         const handH = 188;
@@ -1985,9 +1998,9 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         if (state.muzzle && fpsEffectsRef.current?.complete && fpsEffectsRef.current.naturalWidth) {
           const effectSheet = fpsEffectsRef.current;
           const effectW = effectSheet.naturalWidth / 4;
-          const effectH = effectSheet.naturalHeight / 6;
+          const effectH = effectSheet.naturalHeight / 10;
           ctx.globalAlpha = 0.88;
-          ctx.drawImage(effectSheet, (Math.floor(state.t / 3) % 4) * effectW, 0, effectW, effectH, canvas.width / 2 - 90, canvas.height / 2 - 166, 180, 180);
+          ctx.drawImage(effectSheet, (Math.floor(state.t / 3) % 4) * effectW, 2 * effectH, effectW, effectH, canvas.width / 2 - 90, canvas.height / 2 - 166, 180, 180);
           ctx.globalAlpha = 1;
         }
       } else {

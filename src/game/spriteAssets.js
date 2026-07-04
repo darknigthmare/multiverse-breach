@@ -21,6 +21,7 @@ export const MIRELLE_COMPLETE_SPRITES = {
   meleeCombat: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-melee-combat.png`,
   nexusCollection: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-nexus-collection.png`,
   hudIcons: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-hud-icons.png`,
+  hudAvatar: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-hud-avatar.png`,
   itemsVfx: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-items-vfx.png`,
   fpsHands: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-fps-hands.png`,
   fpsEffects: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-fps-effects.png`,
@@ -38,6 +39,7 @@ export const MIRELLE_COMPLETE_SPRITE_PACK = [
   { id: 'meleeCombat', label: 'Melee combat', src: MIRELLE_COMPLETE_SPRITES.meleeCombat },
   { id: 'nexusCollection', label: 'Nexus / collection', src: MIRELLE_COMPLETE_SPRITES.nexusCollection },
   { id: 'hudIcons', label: 'HUD / icones', src: MIRELLE_COMPLETE_SPRITES.hudIcons },
+  { id: 'hudAvatar', label: 'HUD avatar', src: MIRELLE_COMPLETE_SPRITES.hudAvatar },
   { id: 'itemsVfx', label: 'Objets / VFX', src: MIRELLE_COMPLETE_SPRITES.itemsVfx },
   { id: 'fpsHands', label: 'FPS mains', src: MIRELLE_COMPLETE_SPRITES.fpsHands },
   { id: 'fpsEffects', label: 'FPS profondeur / projectiles', src: MIRELLE_COMPLETE_SPRITES.fpsEffects },
@@ -51,8 +53,8 @@ export const MIRELLE_COMPLETE_SPRITE_PACK = [
 export const SPRITE_SHEET_LAYOUTS = {
   [MIRELLE_COMPLETE_SPRITES.rpg]: {
     columns: 4,
-    rows: 9,
-    rowByState: { idle: 0, run: 0, attack: 2, defense: 4, hit: 7, dead: 8 }
+    rows: 12,
+    rowByState: { idle: 0, run: 1, attack: 3, defense: 5, hit: 10, dead: 11 }
   },
   [MIRELLE_COMPLETE_SPRITES.tactics]: {
     columns: 4,
@@ -71,18 +73,18 @@ export const SPRITE_SHEET_LAYOUTS = {
   },
   [MIRELLE_COMPLETE_SPRITES.nexusCollection]: {
     columns: 4,
-    rows: 9,
-    rowByState: { idle: 0, run: 1, attack: 2, defense: 4, hit: 7, dead: 8 }
+    rows: 10,
+    rowByState: { idle: 0, run: 1, attack: 4, defense: 5, hit: 8, dead: 9 }
   },
   [MIRELLE_COMPLETE_SPRITES.fpsHands]: {
     columns: 4,
-    rows: 6,
-    rowByState: { idle: 0, run: 1, attack: 2, defense: 3, hit: 4, dead: 5 }
+    rows: 10,
+    rowByState: { idle: 0, run: 1, attack: 3, defense: 8, hit: 9, dead: 9 }
   },
   [MIRELLE_COMPLETE_SPRITES.fpsEffects]: {
     columns: 4,
-    rows: 6,
-    rowByState: { idle: 0, attack: 0, hit: 3, dead: 5 }
+    rows: 10,
+    rowByState: { idle: 0, attack: 2, hit: 7, dead: 9 }
   },
   [MIRELLE_COMPLETE_SPRITES.kartDirections]: {
     columns: 4,

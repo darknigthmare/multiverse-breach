@@ -161,7 +161,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
           </p>
         </div>
         <div className="race-mode-pilot">
-          <img src={RACE_ASSETS.hudGarage} alt="Mirelle kart HUD" />
+          <img className="race-mode-pilot-icon" src={RACE_ASSETS.hudAvatar} alt="Mirelle kart HUD" />
           <div>
             <strong>Mirelle Suture</strong>
             <span>{track.name[lang] || track.name.fr}</span>
