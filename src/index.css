@@ -548,6 +548,206 @@ body {
   box-shadow: inset 0 0 30px rgba(255,69,0,0.09), 0 12px 28px rgba(0,0,0,0.34);
 }
 
+.race-mode-shell {
+  width: 100%;
+  display: grid;
+  gap: 14px;
+}
+
+.race-mode-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid rgba(57, 197, 187, 0.24);
+  border-radius: 6px;
+  background: rgba(10, 9, 18, 0.74);
+}
+
+.race-mode-header h3 {
+  margin: 3px 0 6px;
+  color: #39c5bb;
+  font-size: 20px;
+}
+
+.race-mode-header p {
+  margin: 0;
+  max-width: 740px;
+  color: #b8c9d0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.race-mode-pilot {
+  min-width: 260px;
+  display: grid;
+  grid-template-columns: 78px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid rgba(255, 235, 59, 0.2);
+  border-radius: 5px;
+  background: rgba(255, 235, 59, 0.045);
+}
+
+.race-mode-pilot img {
+  width: 78px;
+  height: 62px;
+  object-fit: cover;
+  object-position: center;
+  image-rendering: pixelated;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  background: #020204;
+}
+
+.race-mode-pilot strong,
+.race-cache-card strong {
+  color: #ffeb3b;
+  display: block;
+  font-size: 12px;
+}
+
+.race-mode-pilot span {
+  display: block;
+  margin-top: 4px;
+  color: #a8f7ef;
+  font-size: 10px;
+}
+
+.race-mode-grid {
+  display: grid;
+  grid-template-columns: minmax(520px, 1fr) 300px;
+  gap: 14px;
+  align-items: start;
+}
+
+.race-canvas-panel {
+  position: relative;
+  min-width: 0;
+}
+
+.race-mode-canvas {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 390px;
+  border: 1px solid rgba(57, 197, 187, 0.32);
+  border-radius: 6px;
+  background: #020106;
+  image-rendering: pixelated;
+  box-shadow: inset 0 0 34px rgba(57,197,187,0.1), 0 12px 28px rgba(0,0,0,0.32);
+}
+
+.race-result-banner {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid rgba(255, 235, 59, 0.36);
+  border-radius: 5px;
+  background: rgba(2, 1, 8, 0.88);
+  color: #e8ffff;
+}
+
+.race-result-banner strong {
+  color: #ffeb3b;
+  font-size: 12px;
+}
+
+.race-result-banner span {
+  color: #d8fffb;
+  font-size: 11px;
+}
+
+.race-side-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.race-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.race-stat-grid div,
+.race-cache-card,
+.race-control-list,
+.race-touch-controls {
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 5px;
+  background: rgba(0,0,0,0.24);
+}
+
+.race-stat-grid div,
+.race-cache-card {
+  padding: 10px;
+}
+
+.race-stat-grid span,
+.race-cache-card span,
+.race-control-list span {
+  display: block;
+  color: #8aa5a5;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.race-stat-grid strong {
+  display: block;
+  margin-top: 4px;
+  color: #39c5bb;
+  font-size: 16px;
+}
+
+.race-cache-card {
+  display: grid;
+  gap: 8px;
+}
+
+.race-control-list {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+}
+
+.race-control-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.race-control-list div:last-child {
+  border-bottom: 0;
+}
+
+.race-control-list strong {
+  color: #d8fffb;
+  font-size: 10px;
+  text-align: right;
+}
+
+.race-touch-controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 10px;
+}
+
+.race-touch-controls .btn-retro,
+.race-cache-card .btn-retro {
+  font-size: 10px;
+  padding: 7px 8px;
+}
+
 .mosaic-rpg-panel {
   grid-template-columns: minmax(280px, 0.48fr) minmax(560px, 1.52fr);
 }
@@ -2683,6 +2883,30 @@ body {
   .nexus-hub-canvas,
   .fps-royale-canvas {
     min-height: 260px;
+  }
+
+  .race-mode-header,
+  .race-result-banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .race-mode-pilot {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .race-mode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .race-mode-canvas {
+    min-height: 260px;
+  }
+
+  .race-side-panel {
+    grid-template-columns: 1fr;
   }
 
   .mosaic-rpg-canvas {

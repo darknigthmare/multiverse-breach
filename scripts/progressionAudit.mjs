@@ -15,7 +15,9 @@ const dlcSource = read('../src/game/dlcConfig.js');
 const appSource = read('../src/App.jsx');
 const hubSource = read('../src/components/HubScreen.jsx');
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
+const raceModeSource = read('../src/components/RaceMode.jsx');
 const smashEngineSource = read('../src/game/engineSmash.js');
+const raceEngineSource = read('../src/game/engineRace.js');
 const smashArenasSource = read('../src/game/smashArenas.js');
 const tacticsEngineSource = read('../src/game/engineTactics.js');
 const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
@@ -72,6 +74,22 @@ assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must
 assert(hubSource.includes('isCurrentStoryChapterStage'), 'Story mode must filter portals by the active chapter.');
 assert(hubSource.includes('storyChapterStages'), 'Story mode count must be based on the active chapter pool.');
 assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen must receive progression to hide future chapter banners.');
+assert(hubSource.includes("setActiveTab('race')") && hubSource.includes('<RaceMode'), 'Hub must expose the playable Race/Kart tab.');
+assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
+assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
+assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('arca-mirelle-kart-directions.png'), 'Race engine must use the Mirelle kart sprite sheet assets.');
+[
+  'checkpoints',
+  'boostPads',
+  'itemBoxes',
+  'hazards',
+  'updateAiKart',
+  'useItem',
+  'getRaceSummary',
+  'drawHud'
+].forEach(marker => {
+  assert(raceEngineSource.includes(marker), `Race gameplay missing ${marker}.`);
+});
 [
   'absurd_b_movie_front',
   'kaiju_disaster_protocol',
@@ -249,6 +267,9 @@ console.log(JSON.stringify({
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',
   factionArcCompletion: 'expanded',
+  raceMode: 'playable-hub-tab',
+  raceGameplay: ['laps', 'checkpoints', 'drift', 'boost', 'items', 'hazards', 'ai-rivals'],
+  racePilotSprite: 'mirelle-kart-openai-sheet',
   meleeArenaLayouts: 17,
   meleeTerrainSystem: 'dynamic',
   meleeObjectiveSystem: 'active',

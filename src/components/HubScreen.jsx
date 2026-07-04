@@ -14,6 +14,7 @@ import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
+import RaceMode from './RaceMode';
 
 const ARC_UNLOCK_RULES = {
   personalMinLevel: 3,
@@ -5526,6 +5527,13 @@ export default function HubScreen({
           {lang === 'fr' ? 'ZONE D EXTINCTION' : 'EXTINCTION ZONE'}
         </button>
         <button
+          onClick={() => { setActiveTab('race'); sound.playSfx('coin'); }}
+          className={`btn-tab ${activeTab === 'race' ? 'active-tab' : ''}`}
+          title={lang === 'fr' ? 'Ouvre le prototype jouable de karting A.R.C.A.' : 'Open the playable A.R.C.A. karting prototype.'}
+        >
+          {lang === 'fr' ? 'COURSE' : 'RACE'}
+        </button>
+        <button
           onClick={() => { setActiveTab('roster'); sound.playSfx('coin'); }}
           className={`btn-tab ${activeTab === 'roster' ? 'active-tab' : ''}`}
           title={lang === 'fr' ? 'Consulte les heros debloques et leurs niveaux.' : 'View unlocked heroes and their levels.'}
@@ -5664,6 +5672,13 @@ export default function HubScreen({
             lang={lang}
             heroes={HEROES_DB}
             unlockedHeroes={unlockedHeroes}
+          />
+        )}
+
+        {activeTab === 'race' && (
+          <RaceMode
+            lang={lang}
+            playerProfile={playerProfile}
           />
         )}
 

@@ -1,0 +1,718 @@
+const MIRELLE_KART_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete';
+
+export const RACE_ASSETS = {
+  kartDirections: `${MIRELLE_KART_BASE}/arca-mirelle-kart-directions.png`,
+  kartActions: `${MIRELLE_KART_BASE}/arca-mirelle-kart-actions.png`,
+  kartItems: `${MIRELLE_KART_BASE}/arca-mirelle-kart-items.png`,
+  hudGarage: `${MIRELLE_KART_BASE}/arca-mirelle-kart-hud-garage.png`,
+  trackNexus: `${MIRELLE_KART_BASE}/arca-mirelle-kart-track-nexus.png`
+};
+
+const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+const lerp = (a, b, t) => a + (b - a) * t;
+const TAU = Math.PI * 2;
+
+const angleDelta = (from, to) => {
+  let delta = (to - from + Math.PI) % TAU - Math.PI;
+  if (delta < -Math.PI) delta += TAU;
+  return delta;
+};
+
+const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+
+export const RACE_TRACKS = {
+  nexus_archive_loop: {
+    id: 'nexus_archive_loop',
+    name: { fr: 'Boucle Archive A.R.C.A.', en: 'A.R.C.A. Archive Loop' },
+    laps: 3,
+    roadWidth: 118,
+    offroadDrag: 0.91,
+    checkpoints: [
+      { x: 480, y: 466, r: 90 },
+      { x: 205, y: 300, r: 86 },
+      { x: 480, y: 104, r: 92 },
+      { x: 758, y: 300, r: 86 }
+    ],
+    waypoints: [
+      { x: 480, y: 456 },
+      { x: 322, y: 430 },
+      { x: 178, y: 308 },
+      { x: 235, y: 174 },
+      { x: 480, y: 100 },
+      { x: 722, y: 176 },
+      { x: 785, y: 310 },
+      { x: 640, y: 432 }
+    ],
+    boostPads: [
+      { x: 336, y: 420, angle: -0.1 },
+      { x: 626, y: 178, angle: 2.7 },
+      { x: 750, y: 320, angle: 1.72 }
+    ],
+    itemBoxes: [
+      { x: 254, y: 244, respawn: 0 },
+      { x: 480, y: 122, respawn: 0 },
+      { x: 704, y: 246, respawn: 0 },
+      { x: 526, y: 438, respawn: 0 }
+    ],
+    hazards: [
+      { x: 480, y: 300, r: 46, phase: 0 },
+      { x: 178, y: 332, r: 28, phase: 1.3 },
+      { x: 776, y: 284, r: 28, phase: 2.1 }
+    ]
+  }
+};
+
+export class EngineRace {
+  constructor(width, height, onFinish = () => {}) {
+    this.width = width;
+    this.height = height;
+    this.onFinish = onFinish;
+    this.track = RACE_TRACKS.nexus_archive_loop;
+    this.images = {};
+    Object.entries(RACE_ASSETS).forEach(([key, src]) => {
+      const image = new Image();
+      image.src = src;
+      this.images[key] = image;
+    });
+    this.keys = {};
+    this.reset();
+  }
+
+  reset() {
+    const start = { x: 480, y: 474, angle: -Math.PI / 2 };
+    this.time = 0;
+    this.countdown = 2.6;
+    this.finished = false;
+    this.finishReported = false;
+    this.message = 'Synchronisation de depart';
+    this.messageTimer = 2;
+    this.particles = [];
+    this.projectiles = [];
+    this.track.itemBoxes.forEach(box => { box.respawn = 0; });
+    this.player = this.createKart({
+      id: 'mirelle',
+      name: 'Mirelle Suture',
+      color: '#39c5bb',
+      x: start.x,
+      y: start.y,
+      angle: start.angle,
+      ai: false,
+      laneOffset: 0
+    });
+    this.opponents = [
+      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', x: 440, y: 502, angle: start.angle, ai: true, laneOffset: -26, maxSpeed: 244 }),
+      this.createKart({ id: 'loom', name: 'Loom-07', color: '#d9b6ff', x: 522, y: 504, angle: start.angle, ai: true, laneOffset: 22, maxSpeed: 252 }),
+      this.createKart({ id: 'sable', name: 'Sable Vey', color: '#e74c3c', x: 480, y: 532, angle: start.angle, ai: true, laneOffset: 8, maxSpeed: 238 })
+    ];
+  }
+
+  createKart({ id, name, color, x, y, angle, ai, laneOffset, maxSpeed = 266 }) {
+    return {
+      id,
+      name,
+      color,
+      x,
+      y,
+      angle,
+      speed: 0,
+      ai,
+      laneOffset,
+      maxSpeed,
+      accel: 320,
+      turnRate: 3.2,
+      drift: 0,
+      boost: 0,
+      spin: 0,
+      shield: 0,
+      item: null,
+      lap: 0,
+      checkpoint: 0,
+      progress: 0,
+      waypoint: 1,
+      rank: 1,
+      finished: false,
+      finishTime: null,
+      hitCooldown: 0
+    };
+  }
+
+  setInput(keys = {}) {
+    this.keys = keys;
+  }
+
+  useItem() {
+    if (!this.player.item || this.finished || this.countdown > 0) return;
+    const item = this.player.item;
+    this.player.item = null;
+    if (item === 'boost') {
+      this.player.boost = Math.max(this.player.boost, 1.45);
+      this.showMessage('Suture de vitesse: boost instable');
+      this.spawnParticles(this.player.x, this.player.y, '#39c5bb', 18);
+      return;
+    }
+    if (item === 'shield') {
+      this.player.shield = 4;
+      this.showMessage('Voile de garde actif');
+      return;
+    }
+    if (item === 'trap') {
+      const back = {
+        x: this.player.x - Math.cos(this.player.angle) * 34,
+        y: this.player.y - Math.sin(this.player.angle) * 34
+      };
+      this.track.hazards.push({ ...back, r: 24, phase: this.time, temporary: 8 });
+      this.showMessage('Noeud de trame largue');
+      return;
+    }
+    this.projectiles.push({
+      x: this.player.x + Math.cos(this.player.angle) * 28,
+      y: this.player.y + Math.sin(this.player.angle) * 28,
+      vx: Math.cos(this.player.angle) * 420,
+      vy: Math.sin(this.player.angle) * 420,
+      life: 1.4,
+      color: '#ffeb3b'
+    });
+    this.showMessage('Aiguille de resonance lancee');
+  }
+
+  update(dt) {
+    dt = clamp(dt, 0, 1 / 30);
+    this.time += dt;
+    this.countdown = Math.max(0, this.countdown - dt);
+    this.messageTimer = Math.max(0, this.messageTimer - dt);
+    if (this.finished) {
+      this.updateParticles(dt);
+      return;
+    }
+    this.track.hazards = this.track.hazards
+      .map(hazard => hazard.temporary ? { ...hazard, temporary: hazard.temporary - dt } : hazard)
+      .filter(hazard => !hazard.temporary || hazard.temporary > 0);
+    this.track.itemBoxes.forEach(box => { box.respawn = Math.max(0, box.respawn - dt); });
+    this.updateKart(this.player, dt);
+    this.opponents.forEach(kart => this.updateAiKart(kart, dt));
+    this.updateProjectiles(dt);
+    this.resolveKartCollisions();
+    this.updateProgressAndRanks();
+    this.updateParticles(dt);
+    if (this.player.finished && !this.finishReported) {
+      this.finishReported = true;
+      this.finished = true;
+      this.onFinish(this.getRaceSummary());
+    }
+  }
+
+  updateKart(kart, dt) {
+    kart.hitCooldown = Math.max(0, kart.hitCooldown - dt);
+    kart.shield = Math.max(0, kart.shield - dt);
+    kart.spin = Math.max(0, kart.spin - dt);
+    kart.boost = Math.max(0, kart.boost - dt);
+    if (kart.finished) {
+      kart.speed *= 0.985;
+      kart.x += Math.cos(kart.angle) * kart.speed * dt;
+      kart.y += Math.sin(kart.angle) * kart.speed * dt;
+      return;
+    }
+    if (this.countdown > 0) {
+      kart.speed *= 0.94;
+      return;
+    }
+    const input = kart.ai ? kart.aiInput : this.getPlayerInput();
+    const onTrack = this.getTrackFactor(kart.x, kart.y) > 0.52;
+    const accel = input.accel ? kart.accel : input.brake ? -kart.accel * 0.62 : 0;
+    kart.speed += accel * dt;
+    const maxSpeed = kart.maxSpeed + (kart.boost > 0 ? 118 : 0);
+    kart.speed = clamp(kart.speed, -88, maxSpeed);
+    const drag = onTrack ? 0.988 : this.track.offroadDrag;
+    kart.speed *= Math.pow(drag, dt * 60);
+    if (kart.spin > 0) kart.speed *= 0.965;
+    const driftHeld = input.drift && Math.abs(kart.speed) > 80;
+    kart.drift = clamp(kart.drift + (driftHeld ? dt * 1.6 : -dt * 2.3), 0, 1);
+    const turnPower = (0.55 + clamp(Math.abs(kart.speed) / 220, 0, 1) * 0.85) * (kart.drift ? 1.35 : 1);
+    kart.angle += input.turn * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
+    if (!driftHeld && kart.drift > 0.72) {
+      kart.boost = Math.max(kart.boost, 0.55);
+      this.spawnParticles(kart.x, kart.y, kart.color, 10);
+    }
+    kart.x += Math.cos(kart.angle) * kart.speed * dt;
+    kart.y += Math.sin(kart.angle) * kart.speed * dt;
+    this.applyTrackBounds(kart);
+    this.applyBoostPads(kart);
+    this.applyHazards(kart);
+    this.collectItem(kart);
+    this.updateCheckpoints(kart);
+  }
+
+  updateAiKart(kart, dt) {
+    const target = this.track.waypoints[kart.waypoint];
+    const previous = this.track.waypoints[(kart.waypoint + this.track.waypoints.length - 1) % this.track.waypoints.length];
+    const laneAngle = Math.atan2(target.y - previous.y, target.x - previous.x) + Math.PI / 2;
+    const targetWithLane = {
+      x: target.x + Math.cos(laneAngle) * kart.laneOffset,
+      y: target.y + Math.sin(laneAngle) * kart.laneOffset
+    };
+    if (distance(kart, targetWithLane) < 72) {
+      kart.waypoint = (kart.waypoint + 1) % this.track.waypoints.length;
+    }
+    const desired = Math.atan2(targetWithLane.y - kart.y, targetWithLane.x - kart.x);
+    const delta = angleDelta(kart.angle, desired);
+    const difficultyWave = Math.sin(this.time * 0.9 + kart.laneOffset) * 0.16;
+    kart.aiInput = {
+      accel: true,
+      brake: Math.abs(delta) > 1.25 && kart.speed > 185,
+      turn: clamp(delta * 1.35 + difficultyWave, -1, 1),
+      drift: Math.abs(delta) > 0.62 && kart.speed > 145
+    };
+    this.updateKart(kart, dt);
+  }
+
+  getPlayerInput() {
+    return {
+      accel: Boolean(this.keys.up || this.keys.w),
+      brake: Boolean(this.keys.down || this.keys.s),
+      turn: (this.keys.left || this.keys.a ? -1 : 0) + (this.keys.right || this.keys.d ? 1 : 0),
+      drift: Boolean(this.keys.space)
+    };
+  }
+
+  applyTrackBounds(kart) {
+    kart.x = clamp(kart.x, 34, this.width - 34);
+    kart.y = clamp(kart.y, 34, this.height - 34);
+    const factor = this.getTrackFactor(kart.x, kart.y);
+    if (factor < 0.23) {
+      const center = { x: this.width / 2, y: this.height / 2 + 2 };
+      const dx = kart.x - center.x;
+      const dy = kart.y - center.y;
+      const angle = Math.atan2(dy / 0.72, dx);
+      const target = this.getPointOnRoad(angle);
+      kart.x = lerp(kart.x, target.x, 0.08);
+      kart.y = lerp(kart.y, target.y, 0.08);
+      kart.speed *= 0.955;
+    }
+  }
+
+  getPointOnRoad(angle) {
+    return {
+      x: this.width / 2 + Math.cos(angle) * 285,
+      y: this.height / 2 + 4 + Math.sin(angle) * 188
+    };
+  }
+
+  getTrackFactor(x, y) {
+    const center = { x: this.width / 2, y: this.height / 2 + 4 };
+    const dx = (x - center.x) / 286;
+    const dy = (y - center.y) / 188;
+    const ring = Math.sqrt(dx * dx + dy * dy);
+    const road = 1 - Math.abs(ring - 1) / 0.24;
+    return clamp(road, 0, 1);
+  }
+
+  applyBoostPads(kart) {
+    this.track.boostPads.forEach(pad => {
+      if (distance(kart, pad) < 34) {
+        kart.boost = Math.max(kart.boost, 0.65);
+        kart.speed = Math.max(kart.speed, 205);
+      }
+    });
+  }
+
+  applyHazards(kart) {
+    this.track.hazards.forEach(hazard => {
+      const activeRadius = hazard.r + Math.sin(this.time * 3.2 + hazard.phase) * 6;
+      if (distance(kart, hazard) < activeRadius && kart.hitCooldown <= 0) {
+        if (kart.shield > 0) {
+          kart.shield = 0;
+          this.spawnParticles(kart.x, kart.y, '#d9b6ff', 14);
+        } else {
+          kart.speed *= -0.25;
+          kart.spin = 0.72;
+          kart.hitCooldown = 1.15;
+          this.spawnParticles(kart.x, kart.y, '#e74c3c', 18);
+        }
+      }
+    });
+  }
+
+  collectItem(kart) {
+    this.track.itemBoxes.forEach(box => {
+      if (box.respawn <= 0 && distance(kart, box) < 32) {
+        box.respawn = 5.5;
+        kart.item = this.rollItem(kart);
+        this.spawnParticles(box.x, box.y, '#ffeb3b', 12);
+        if (!kart.ai) this.showMessage(`Cache recuperee: ${this.getItemName(kart.item)}`);
+      }
+    });
+  }
+
+  rollItem(kart) {
+    const pool = kart.rank >= 3 ? ['boost', 'boost', 'projectile', 'shield', 'trap'] : ['projectile', 'shield', 'trap', 'boost'];
+    return pool[Math.floor((this.time * 997 + kart.x + kart.y) % pool.length)];
+  }
+
+  getItemName(item) {
+    return {
+      boost: 'Suture de vitesse',
+      shield: 'Voile de garde',
+      trap: 'Noeud de trame',
+      projectile: 'Aiguille de resonance'
+    }[item] || 'Cache';
+  }
+
+  updateCheckpoints(kart) {
+    const current = this.track.checkpoints[kart.checkpoint];
+    if (current && distance(kart, current) < current.r) {
+      kart.checkpoint += 1;
+      if (kart.checkpoint >= this.track.checkpoints.length) {
+        kart.checkpoint = 0;
+        kart.lap += 1;
+        if (!kart.ai) this.showMessage(kart.lap >= this.track.laps ? 'Dernier verrou scelle' : `Tour ${kart.lap + 1}/${this.track.laps}`);
+        if (kart.lap >= this.track.laps) {
+          kart.finished = true;
+          kart.finishTime = this.time;
+        }
+      }
+    }
+  }
+
+  updateProgressAndRanks() {
+    const racers = [this.player, ...this.opponents];
+    racers.forEach(kart => {
+      const nextCheckpoint = kart.checkpoint / this.track.checkpoints.length;
+      kart.progress = kart.lap + nextCheckpoint;
+    });
+    racers
+      .slice()
+      .sort((a, b) => b.progress - a.progress || b.speed - a.speed)
+      .forEach((kart, index) => { kart.rank = index + 1; });
+  }
+
+  updateProjectiles(dt) {
+    this.projectiles.forEach(projectile => {
+      projectile.x += projectile.vx * dt;
+      projectile.y += projectile.vy * dt;
+      projectile.life -= dt;
+      this.opponents.forEach(kart => {
+        if (projectile.life > 0 && distance(projectile, kart) < 28 && kart.hitCooldown <= 0) {
+          kart.speed *= 0.22;
+          kart.spin = 0.8;
+          kart.hitCooldown = 1.2;
+          projectile.life = 0;
+          this.spawnParticles(kart.x, kart.y, '#ffeb3b', 16);
+        }
+      });
+    });
+    this.projectiles = this.projectiles.filter(projectile => projectile.life > 0);
+  }
+
+  resolveKartCollisions() {
+    const racers = [this.player, ...this.opponents];
+    for (let i = 0; i < racers.length; i += 1) {
+      for (let j = i + 1; j < racers.length; j += 1) {
+        const a = racers[i];
+        const b = racers[j];
+        const d = distance(a, b);
+        if (d > 0 && d < 34) {
+          const nx = (a.x - b.x) / d;
+          const ny = (a.y - b.y) / d;
+          const push = (34 - d) * 0.5;
+          a.x += nx * push;
+          a.y += ny * push;
+          b.x -= nx * push;
+          b.y -= ny * push;
+          const transfer = (a.speed - b.speed) * 0.12;
+          a.speed -= transfer;
+          b.speed += transfer;
+        }
+      }
+    }
+  }
+
+  spawnParticles(x, y, color, count) {
+    for (let i = 0; i < count; i += 1) {
+      const angle = (i / count) * TAU + this.time;
+      const speed = 35 + (i % 5) * 17;
+      this.particles.push({
+        x,
+        y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 0.35 + (i % 4) * 0.08,
+        color
+      });
+    }
+  }
+
+  updateParticles(dt) {
+    this.particles.forEach(particle => {
+      particle.x += particle.vx * dt;
+      particle.y += particle.vy * dt;
+      particle.life -= dt;
+    });
+    this.particles = this.particles.filter(particle => particle.life > 0);
+  }
+
+  showMessage(message) {
+    this.message = message;
+    this.messageTimer = 2;
+  }
+
+  getRaceSummary() {
+    const time = this.player.finishTime || this.time;
+    const rank = this.player.rank;
+    const grade = rank === 1 && time < 88 ? 'S' : rank === 1 ? 'A' : rank === 2 ? 'B' : 'C';
+    return {
+      mode: 'Race',
+      trackId: this.track.id,
+      pilot: this.player.name,
+      time,
+      rank,
+      grade,
+      laps: this.track.laps
+    };
+  }
+
+  draw(ctx) {
+    ctx.clearRect(0, 0, this.width, this.height);
+    this.drawBackdrop(ctx);
+    this.drawTrack(ctx);
+    this.drawObjects(ctx);
+    const racers = [this.player, ...this.opponents].sort((a, b) => a.y - b.y);
+    racers.forEach(kart => this.drawKart(ctx, kart));
+    this.drawParticles(ctx);
+    this.drawHud(ctx);
+  }
+
+  drawBackdrop(ctx) {
+    const gradient = ctx.createRadialGradient(this.width / 2, this.height / 2, 80, this.width / 2, this.height / 2, 620);
+    gradient.addColorStop(0, '#13242c');
+    gradient.addColorStop(0.45, '#070b16');
+    gradient.addColorStop(1, '#020106');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, this.width, this.height);
+    const trackImage = this.images.trackNexus;
+    if (trackImage?.complete && trackImage.naturalWidth) {
+      ctx.globalAlpha = 0.16;
+      ctx.drawImage(trackImage, 0, 0, this.width, this.height);
+      ctx.globalAlpha = 1;
+    }
+    ctx.strokeStyle = 'rgba(57,197,187,0.08)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < this.width; x += 48) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x + Math.sin(this.time + x) * 8, this.height);
+      ctx.stroke();
+    }
+  }
+
+  drawTrack(ctx) {
+    ctx.save();
+    ctx.translate(this.width / 2, this.height / 2 + 4);
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#1f2230';
+    ctx.lineWidth = 154;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 286, 188, 0, 0, TAU);
+    ctx.stroke();
+    ctx.strokeStyle = '#303443';
+    ctx.lineWidth = 118;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 286, 188, 0, 0, TAU);
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,235,59,0.32)';
+    ctx.setLineDash([18, 18]);
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 286, 188, 0, 0, TAU);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.strokeStyle = 'rgba(57,197,187,0.58)';
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 364, 266, 0, 0, TAU);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 208, 110, 0, 0, TAU);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.fillRect(442, 452, 76, 6);
+    ctx.fillStyle = 'rgba(0,0,0,0.55)';
+    for (let i = 0; i < 8; i += 1) {
+      ctx.fillRect(442 + i * 10, 452, 5, 6);
+    }
+  }
+
+  drawObjects(ctx) {
+    this.track.boostPads.forEach(pad => {
+      ctx.save();
+      ctx.translate(pad.x, pad.y);
+      ctx.rotate(pad.angle);
+      ctx.fillStyle = 'rgba(57,197,187,0.35)';
+      ctx.strokeStyle = '#39c5bb';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(-32, -12, 64, 24, 5);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#d8fffb';
+      ctx.fillRect(-18, -3, 36, 6);
+      ctx.restore();
+    });
+    this.track.itemBoxes.forEach(box => {
+      if (box.respawn > 0) return;
+      const pulse = 1 + Math.sin(this.time * 5) * 0.08;
+      ctx.save();
+      ctx.translate(box.x, box.y);
+      ctx.scale(pulse, pulse);
+      ctx.rotate(this.time * 1.6);
+      ctx.fillStyle = 'rgba(255,235,59,0.18)';
+      ctx.strokeStyle = '#ffeb3b';
+      ctx.lineWidth = 2;
+      ctx.fillRect(-14, -14, 28, 28);
+      ctx.strokeRect(-14, -14, 28, 28);
+      ctx.fillStyle = '#ffeb3b';
+      ctx.font = 'bold 17px Share Tech Mono, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('?', 0, 6);
+      ctx.restore();
+    });
+    this.track.hazards.forEach(hazard => {
+      const activeRadius = hazard.r + Math.sin(this.time * 3.2 + hazard.phase) * 6;
+      ctx.fillStyle = 'rgba(231,76,60,0.14)';
+      ctx.strokeStyle = hazard.temporary ? '#ffeb3b' : '#e74c3c';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(hazard.x, hazard.y, activeRadius, 0, TAU);
+      ctx.fill();
+      ctx.stroke();
+    });
+    this.projectiles.forEach(projectile => {
+      ctx.fillStyle = projectile.color;
+      ctx.beginPath();
+      ctx.arc(projectile.x, projectile.y, 5, 0, TAU);
+      ctx.fill();
+    });
+  }
+
+  drawKart(ctx, kart) {
+    ctx.save();
+    ctx.translate(kart.x, kart.y);
+    ctx.rotate(kart.angle + Math.PI / 2 + (kart.spin > 0 ? Math.sin(this.time * 26) * kart.spin : 0));
+    const isPlayer = kart.id === 'mirelle';
+    const sprite = isPlayer ? this.images.kartDirections : null;
+    if (isPlayer && sprite?.complete && sprite.naturalWidth) {
+      const cols = 4;
+      const rows = 4;
+      const frameW = sprite.naturalWidth / cols;
+      const frameH = sprite.naturalHeight / rows;
+      const directionIndex = Math.round((((kart.angle % TAU) + TAU) % TAU) / (TAU / rows)) % rows;
+      const motionFrame = Math.floor(this.time * (kart.boost > 0 ? 12 : 7)) % cols;
+      ctx.drawImage(sprite, motionFrame * frameW, directionIndex * frameH, frameW, frameH, -29, -34, 58, 68);
+    } else {
+      ctx.fillStyle = kart.color;
+      ctx.strokeStyle = '#050307';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.roundRect(-18, -28, 36, 56, 8);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#10131c';
+      ctx.fillRect(-12, -14, 24, 18);
+      ctx.fillStyle = '#ffeb3b';
+      ctx.fillRect(-10, -30, 20, 6);
+    }
+    if (kart.boost > 0) {
+      ctx.fillStyle = kart.color;
+      ctx.globalAlpha = 0.65;
+      ctx.beginPath();
+      ctx.moveTo(-16, 28);
+      ctx.lineTo(0, 58 + Math.sin(this.time * 30) * 8);
+      ctx.lineTo(16, 28);
+      ctx.closePath();
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    if (kart.shield > 0) {
+      ctx.strokeStyle = 'rgba(217,182,255,0.86)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(0, 0, 34, 0, TAU);
+      ctx.stroke();
+    }
+    ctx.restore();
+    ctx.fillStyle = kart.ai ? '#aaa' : '#d8fffb';
+    ctx.font = 'bold 10px Share Tech Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(kart.name, kart.x, kart.y - 34);
+  }
+
+  drawParticles(ctx) {
+    this.particles.forEach(particle => {
+      ctx.globalAlpha = clamp(particle.life * 2.4, 0, 1);
+      ctx.fillStyle = particle.color;
+      ctx.fillRect(particle.x - 2, particle.y - 2, 4, 4);
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  drawHud(ctx) {
+    const player = this.player;
+    ctx.fillStyle = 'rgba(2,1,8,0.78)';
+    ctx.fillRect(14, 14, 250, 106);
+    ctx.strokeStyle = 'rgba(57,197,187,0.45)';
+    ctx.strokeRect(14, 14, 250, 106);
+    ctx.font = 'bold 15px Share Tech Mono, monospace';
+    ctx.fillStyle = '#39c5bb';
+    ctx.fillText(`A.R.C.A. RACE // ${player.rank}/4`, 28, 38);
+    ctx.font = '12px Share Tech Mono, monospace';
+    ctx.fillStyle = '#d8fffb';
+    ctx.fillText(`Tour ${Math.min(player.lap + 1, this.track.laps)}/${this.track.laps}`, 28, 60);
+    ctx.fillText(`Vitesse ${Math.round(Math.abs(player.speed))}`, 28, 80);
+    ctx.fillText(`Cache ${player.item ? this.getItemName(player.item) : 'vide'}`, 28, 100);
+
+    ctx.fillStyle = 'rgba(2,1,8,0.78)';
+    ctx.fillRect(this.width - 172, 16, 150, 94);
+    ctx.strokeStyle = 'rgba(255,235,59,0.45)';
+    ctx.strokeRect(this.width - 172, 16, 150, 94);
+    ctx.save();
+    ctx.translate(this.width - 97, 63);
+    ctx.scale(0.18, 0.18);
+    ctx.strokeStyle = '#ffeb3b';
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 286, 188, 0, 0, TAU);
+    ctx.stroke();
+    [this.player, ...this.opponents].forEach(kart => {
+      ctx.fillStyle = kart.color;
+      ctx.beginPath();
+      ctx.arc(kart.x - this.width / 2, kart.y - this.height / 2 - 4, kart.id === 'mirelle' ? 16 : 11, 0, TAU);
+      ctx.fill();
+    });
+    ctx.restore();
+
+    if (this.countdown > 0) {
+      ctx.fillStyle = 'rgba(0,0,0,0.42)';
+      ctx.fillRect(0, 0, this.width, this.height);
+      ctx.fillStyle = '#ffeb3b';
+      ctx.font = 'bold 54px Share Tech Mono, monospace';
+      ctx.textAlign = 'center';
+      const label = this.countdown > 1 ? Math.ceil(this.countdown).toString() : 'ANCRE';
+      ctx.fillText(label, this.width / 2, this.height / 2);
+      ctx.textAlign = 'left';
+    }
+    if (this.messageTimer > 0) {
+      ctx.fillStyle = 'rgba(2,1,8,0.82)';
+      ctx.strokeStyle = '#39c5bb';
+      ctx.lineWidth = 1;
+      ctx.fillRect(300, 26, 360, 42);
+      ctx.strokeRect(300, 26, 360, 42);
+      ctx.fillStyle = '#d8fffb';
+      ctx.font = 'bold 13px Share Tech Mono, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(this.message, 480, 52);
+      ctx.textAlign = 'left';
+    }
+  }
+}
