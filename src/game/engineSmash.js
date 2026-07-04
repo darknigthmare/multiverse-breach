@@ -684,8 +684,19 @@ export class EngineSmash {
   isOnGround(char) {
     for (let p of this.platforms) {
       if (char.x >= p.x1 && char.x <= p.x2) {
-        if (char.y + char.vy >= p.y - 1 && char.y <= p.y + 3) return p;
+        if (char.y >= p.y - 3 && char.y <= p.y + 5 && char.vy >= -0.2) return p;
       }
+    }
+    return null;
+  }
+
+  getLandingPlatform(char, previousY) {
+    if (char.vy < 0) return null;
+    for (let p of this.platforms) {
+      if (char.x < p.x1 || char.x > p.x2) continue;
+      const crossedTop = previousY <= p.y + 3 && char.y >= p.y - 2;
+      const alreadyStanding = previousY >= p.y - 3 && previousY <= p.y + 5 && char.y >= p.y - 2;
+      if (crossedTop || alreadyStanding) return p;
     }
     return null;
   }
@@ -698,8 +709,8 @@ export class EngineSmash {
 
     if (char.state === 'hit') char.vx *= 0.85;
 
-    const plat = this.isOnGround(char);
-    if (plat && char.vy >= 0 && !(plat.passThrough && previousY > plat.y - 8)) {
+    const plat = this.getLandingPlatform(char, previousY);
+    if (plat) {
       char.y = plat.y;
       char.vy = 0;
       char.airJumps = char.isBoss ? 0 : 1;

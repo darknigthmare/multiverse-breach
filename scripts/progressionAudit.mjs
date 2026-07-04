@@ -114,6 +114,7 @@ assert(smashEngineSource.includes('drawObjectiveHud'), 'Melee engine must render
 assert(smashEngineSource.includes('isTouchingActiveHazard'), 'Melee objectives must react to active terrain hazards.');
 assert(smashEngineSource.includes('recoverFromArenaFall'), 'Melee engine must provide fall recovery for platform arenas.');
 assert(smashEngineSource.includes('updateStuckTracker'), 'Melee engine must include anti-stuck movement recovery.');
+assert(smashEngineSource.includes('getLandingPlatform') && smashEngineSource.includes('alreadyStanding'), 'Melee platform collision must keep actors standing on soft levels.');
 assert(smashEngineSource.includes('getEnemyBehavior'), 'Melee enemies must use behavior profiles.');
 assert(smashEngineSource.includes('airJumps'), 'Melee actors must keep limited air recovery jumps.');
 assert(smashEngineSource.includes('getCombatSummary'), 'Melee engine must expose a combat summary for progression feedback.');
@@ -186,6 +187,9 @@ assert(tacticsEngineSource.includes('completeBattle'), 'Tactics engine must comp
 assert(tacticsEngineSource.includes('drawTacticsObjectiveHud'), 'Tactics engine must render objective HUD feedback.');
 assert(tacticsEngineSource.includes('drawTacticsObjectiveZones'), 'Tactics engine must render objective and extraction zones.');
 assert(tacticsEngineSource.includes('getCombatSummary') && tacticsEngineSource.includes("mode: 'Tactics'"), 'Tactics engine must expose a combat summary.');
+assert(tacticsEngineSource.includes('getObjectiveFocusCells'), 'Tactics AI must resolve objective focus cells.');
+assert(tacticsEngineSource.includes('scoreObjectiveMove'), 'Tactics AI must score movement against objectives and terrain.');
+assert(tacticsEngineSource.includes('preferredEnemies'), 'Tactics hero AI must prioritize commander targets without ignoring fallback enemies.');
 assert(gameCanvasSource.includes('getTacticsPickupPositions'), 'GameCanvas must place Tactics pickups through battlefield-safe positions.');
 assert(gameCanvasSource.includes('new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage)'), 'GameCanvas must pass resolved stage metadata into tactics mode.');
 assert(gameCanvasSource.includes("['Smash', 'Tactics'].includes(stage.mode)") && gameCanvasSource.includes('dlcSuppressedArena'), 'GameCanvas must suppress DLC-specific tactics fields when universes are hidden.');
@@ -206,6 +210,7 @@ console.log(JSON.stringify({
   meleeObjectiveSystem: 'active',
   meleeObjectiveVariants: ['protect', 'collect', 'portals', 'overload'],
   meleeCombatFeel: 'recovery-and-ai',
+  meleePlatformAccess: 'soft-level-stable',
   meleeDlcMapping: 'metadata-aware',
   meleeResultSummary: 'score-grade-objective',
   meleeRewardLoop: 'grade-bonus',
@@ -213,6 +218,7 @@ console.log(JSON.stringify({
   tacticsTerrainSystem: 'dynamic',
   tacticsTerrainTypes: ['high', 'lightCover', 'heavyCover', 'hazard', 'heal', 'blocked', 'objective'],
   tacticsObjectives: ['rout', 'extract', 'disable', 'control', 'commander', 'survive'],
+  tacticsAi: 'objective-aware',
   tacticsDlcMapping: 'metadata-aware',
   tacticsRewardLoop: 'grade-bonus'
 }, null, 2));

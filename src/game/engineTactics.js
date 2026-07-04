@@ -568,6 +568,45 @@ export class EngineTactics {
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
   }
 
+  getObjectiveFocusCells(unitType = 'hero') {
+    if (this.objective === 'extract') return this.battlefield.extractionZone || [];
+    if (this.objective === 'control') return this.tiles.filter(tile => tile.type === 'objective').map(tile => ({ x: tile.x, y: tile.y }));
+    if (this.objective === 'disable') {
+      return this.obstacles.filter(item => item.type === 'objective' && item.hp > 0).map(item => ({ x: item.gridX, y: item.gridY, unit: item }));
+    }
+    if (this.objective === 'commander') {
+      return this.enemies.filter(enemy => enemy.isBoss && enemy.currentHp > 0).map(enemy => ({ x: enemy.gridX, y: enemy.gridY, unit: enemy }));
+    }
+    if (this.objective === 'survive' && unitType === 'hero') {
+      return this.tiles.filter(tile => ['heal', 'heavyCover', 'lightCover', 'high'].includes(tile.type)).map(tile => ({ x: tile.x, y: tile.y }));
+    }
+    return [];
+  }
+
+  getClosestObjectiveCell(unit, unitType = 'hero') {
+    const cells = this.getObjectiveFocusCells(unitType);
+    if (!cells.length) return null;
+    return cells.reduce((best, cell) => {
+      const dist = Math.abs(unit.gridX - cell.x) + Math.abs(unit.gridY - cell.y);
+      return !best || dist < best.dist ? { ...cell, dist } : best;
+    }, null);
+  }
+
+  scoreObjectiveMove(unit, cell, objectiveCell, threatMap, unitType = 'hero') {
+    const tile = this.getTileAt(cell.x, cell.y);
+    const threat = threatMap.get(`${cell.x},${cell.y}`)?.count || 0;
+    const objectiveDist = objectiveCell ? Math.abs(objectiveCell.x - cell.x) + Math.abs(objectiveCell.y - cell.y) : 0;
+    let score = -objectiveDist * 6 - threat * (unitType === 'hero' ? 5 : 2);
+    if (tile?.type === 'high') score += unitType === 'hero' ? 4 : 2;
+    if (tile?.type === 'heavyCover') score += unitType === 'hero' ? 5 : 1;
+    if (tile?.type === 'lightCover') score += unitType === 'hero' ? 3 : 1;
+    if (tile?.type === 'heal' && unitType === 'hero' && unit.currentHp < unit.maxHp) score += 7;
+    if (tile?.type === 'hazard') score -= unitType === 'hero' ? 8 : 3;
+    if (this.objective === 'control' && tile?.type === 'objective') score += unitType === 'hero' ? 10 : 8;
+    if (this.objective === 'extract' && (this.battlefield.extractionZone || []).some(zone => zone.x === cell.x && zone.y === cell.y)) score += unitType === 'hero' ? 12 : 7;
+    return score;
+  }
+
   runEnemyAI() {
     if (this.gameOver || this.activeUnit.currentHp <= 0) {
       this.startTurn();
@@ -593,19 +632,25 @@ export class EngineTactics {
       return;
     }
 
+    const objectiveCell = ['control', 'extract'].includes(this.objective)
+      ? this.getClosestObjectiveCell(enemy, 'enemy')
+      : null;
+    const pressureTarget = objectiveCell || closestHero;
     let bestX = enemy.gridX;
     let bestY = enemy.gridY;
-    let bestDist = minDist;
+    let bestScore = -999;
 
     // Movement speed halved if glitched
     const maxMoveRange = enemy.statusEffects?.glitched > 0 ? 1 : 2;
+    const emptyThreatMap = new Map();
 
     this.getReachableCells(enemy, maxMoveRange).forEach(cell => {
-      const targetDist = Math.abs(closestHero.gridX - cell.x) + Math.abs(closestHero.gridY - cell.y);
+      const targetDist = Math.abs(pressureTarget.x - cell.x) + Math.abs(pressureTarget.y - cell.y);
       const hasShot = targetDist <= (enemy.isBoss ? 2 : 1) && this.hasLineOfSight({ ...enemy, gridX: cell.x, gridY: cell.y }, closestHero, 'enemy');
-      const score = targetDist - (hasShot ? 3 : 0);
-      if (score < bestDist) {
-        bestDist = score;
+      const objectiveScore = objectiveCell ? this.scoreObjectiveMove(enemy, cell, objectiveCell, emptyThreatMap, 'enemy') : -targetDist * 4;
+      const score = objectiveScore + (hasShot ? 12 : 0);
+      if (score > bestScore) {
+        bestScore = score;
         bestX = cell.x;
         bestY = cell.y;
       }
@@ -661,12 +706,17 @@ export class EngineTactics {
 
     // 2. Choose best movement cell
     let bestMoveCell = { x: hero.gridX, y: hero.gridY };
-    let bestMoveDist = minDist;
+    let bestMoveScore = -999;
+    const objectiveCell = this.getClosestObjectiveCell(hero, 'hero');
+    const threatMap = this.getEnemyThreatMap();
 
     this.movementRange.forEach(cell => {
       const d = Math.abs(closestEnemy.gridX - cell.x) + Math.abs(closestEnemy.gridY - cell.y);
-      if (d < bestMoveDist) {
-        bestMoveDist = d;
+      const hasShot = d <= this.getActionRange('secondary', hero) && this.hasLineOfSight({ ...hero, gridX: cell.x, gridY: cell.y }, closestEnemy, 'secondary');
+      const objectiveScore = objectiveCell ? this.scoreObjectiveMove(hero, cell, objectiveCell, threatMap, 'hero') : -d * 4;
+      const score = objectiveScore + (hasShot ? 10 : 0);
+      if (score > bestMoveScore) {
+        bestMoveScore = score;
         bestMoveCell = cell;
       }
     });
@@ -693,7 +743,7 @@ export class EngineTactics {
     let target = null;
     let targetDist = 999;
 
-    this.enemies.forEach(e => {
+    const findTargetIn = (candidates) => candidates.forEach(e => {
       if (e.currentHp > 0) {
         const inRange = this.attackRange.some(cell => cell.x === e.gridX && cell.y === e.gridY);
         if (inRange) {
@@ -705,11 +755,16 @@ export class EngineTactics {
         }
       }
     });
+    const preferredEnemies = this.objective === 'commander'
+      ? this.enemies.filter(e => e.isBoss)
+      : this.enemies;
+    findTargetIn(preferredEnemies);
+    if (!target && preferredEnemies !== this.enemies) findTargetIn(this.enemies);
 
     // Check obstacles if no enemies in range
     if (!target) {
       this.obstacles.forEach(o => {
-        if (o.hp > 0 && o.type === 'barrel') {
+        if (o.hp > 0 && (o.type === 'barrel' || o.type === 'objective')) {
           const inRange = this.attackRange.some(cell => cell.x === o.gridX && cell.y === o.gridY);
           if (inRange) {
             target = o;
