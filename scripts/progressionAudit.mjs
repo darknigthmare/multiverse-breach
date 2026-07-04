@@ -63,6 +63,9 @@ assert(enemiesSource.includes("'Nexus de Convergence'"), 'Base OC enemy table is
 assert(hubSource.includes('ARC_UNLOCK_RULES.personalMinLevel'), 'Narrative arc level gates must stay wired.');
 assert(hubSource.includes('getUniverseArcRosterStatus'), 'Universe arc roster gates must stay wired.');
 assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must stay wired.');
+assert(hubSource.includes('isCurrentStoryChapterStage'), 'Story mode must filter portals by the active chapter.');
+assert(hubSource.includes('storyChapterStages'), 'Story mode count must be based on the active chapter pool.');
+assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen must receive progression to hide future chapter banners.');
 
 console.log(JSON.stringify({
   baseUniverse: 'Nexus de Convergence',
@@ -70,5 +73,6 @@ console.log(JSON.stringify({
   ocThreatSprites: expectedOcEnemyNames.length,
   ocItemSprites: expectedOcItemIds.length,
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
-  dlcDefault: 'hidden'
+  dlcDefault: 'hidden',
+  storyChapterPortals: 'active-chapter-only'
 }, null, 2));

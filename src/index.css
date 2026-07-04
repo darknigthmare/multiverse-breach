@@ -1217,6 +1217,85 @@ body {
   line-height: 1.35;
 }
 
+.story-chapter-rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.story-chapter-node {
+  display: grid;
+  gap: 4px;
+  min-height: 96px;
+  padding: 9px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 5px;
+  background: rgba(0,0,0,0.22);
+}
+
+.story-chapter-node span {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: #777;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.story-chapter-node strong {
+  color: #aaa;
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.story-chapter-node em,
+.story-chapter-node b {
+  color: #777;
+  font-size: 9px;
+  font-style: normal;
+  line-height: 1.25;
+}
+
+.story-chapter-node.open {
+  border-color: rgba(46,204,113,0.28);
+  background: rgba(46,204,113,0.045);
+}
+
+.story-chapter-node.open span,
+.story-chapter-node.open strong {
+  color: #8dffb1;
+}
+
+.story-chapter-node.active {
+  border-color: rgba(57,197,187,0.55);
+  background: rgba(57,197,187,0.08);
+  box-shadow: inset 0 0 18px rgba(57,197,187,0.08);
+}
+
+.story-chapter-node.active span,
+.story-chapter-node.active strong,
+.story-chapter-node.active em {
+  color: #39c5bb;
+}
+
+.story-chapter-node.active b {
+  color: #ffeb3b;
+}
+
+.story-chapter-rule {
+  margin-top: 10px;
+  padding: 9px;
+  border-left: 2px solid #39c5bb;
+  background: rgba(0,0,0,0.22);
+  color: #c8f7f4;
+  font-size: 10px;
+  line-height: 1.4;
+}
+
 .rift-journal-list {
   display: grid;
   gap: 8px;

@@ -4529,6 +4529,28 @@ export default function HubScreen({
     .reverse()
     .find(chapter => completedStages.length >= chapter.unlockClears) || STORY_CHAPTERS[0];
   const nextChapter = STORY_CHAPTERS.find(chapter => completedStages.length < chapter.unlockClears);
+  const getStoryChapterForStage = (stage) => {
+    if (stage.id === 38) return STORY_CHAPTERS[STORY_CHAPTERS.length - 1];
+    const requiredClears = getStageRequiredClears(stage);
+    return [...STORY_CHAPTERS]
+      .reverse()
+      .find(chapter => requiredClears >= chapter.unlockClears) || STORY_CHAPTERS[0];
+  };
+  const isMainStoryStage = (stage) => (
+    stage.id !== 38
+    && !stage.characterArc
+    && !stage.trioArc
+    && !stage.universeArc
+    && !stage.fusionMission
+  );
+  const isCurrentStoryChapterStage = (stage) => (
+    isMainStoryStage(stage)
+    && getStoryChapterForStage(stage).id === currentChapter.id
+  );
+  const getChapterStageCount = (chapter) => visibleStages.filter(stage => (
+    isMainStoryStage(stage)
+    && getStoryChapterForStage(stage).id === chapter.id
+  )).length;
   const matchesMediaFilter = (mediaType) => (
     mediaFilter === 'all'
     || mediaType === mediaFilter
@@ -4945,9 +4967,10 @@ export default function HubScreen({
     if (missionScreen === 'trioArcs') return isTrioArcVisibleForRoster(stage);
     if (missionScreen === 'fusionMissions') return Boolean(stage.fusionMission);
     if (missionScreen === 'factionArcs') return false;
-    return !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission;
+    return isCurrentStoryChapterStage(stage);
   };
-  const storyMissionCount = visibleStages.filter(stage => stage.id !== 38 && !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission).length;
+  const storyChapterStages = visibleStages.filter(isCurrentStoryChapterStage);
+  const storyMissionCount = storyChapterStages.length;
   const universeArcMissionCount = visibleStages.filter(isUniverseArcVisibleForRoster).length;
   const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc && isPersonalArcVisibleForRoster(stage)).length;
   const trioArcMissionCount = visibleStages.filter(isTrioArcVisibleForRoster).length;
@@ -6029,6 +6052,35 @@ export default function HubScreen({
                       : `Next chapter at ${nextChapter.unlockClears} stabilized breaches.`}
                   </div>
                 )}
+                <div className="story-chapter-rail">
+                  {STORY_CHAPTERS.map((chapter, index) => {
+                    const active = chapter.id === currentChapter.id;
+                    const open = completedStages.length >= chapter.unlockClears;
+                    const chapterStageCount = getChapterStageCount(chapter);
+                    return (
+                      <div
+                        key={chapter.id}
+                        className={`story-chapter-node ${active ? 'active' : ''} ${open ? 'open' : 'locked'}`}
+                      >
+                        <span>{index + 1}</span>
+                        <strong>{chapter.name[lang]}</strong>
+                        <em>
+                          {open
+                            ? (active
+                              ? (lang === 'fr' ? 'Chapitre projete dans les portails' : 'Chapter projected in portals')
+                              : (lang === 'fr' ? 'Archive scellee' : 'Sealed archive'))
+                            : (lang === 'fr' ? `${chapter.unlockClears} breches requises` : `${chapter.unlockClears} breaches required`)}
+                        </em>
+                        <b>{chapterStageCount} {lang === 'fr' ? 'failles' : 'rifts'}</b>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="story-chapter-rule">
+                  {lang === 'fr'
+                    ? 'Regle A.R.C.A.: les portails de campagne ne projettent que le chapitre actif. Les chapitres futurs restent hors champ pour eviter les spoilers de Trame et les sauts de progression.'
+                    : 'A.R.C.A. rule: campaign portals only project the active chapter. Future chapters stay out of range to avoid Thread spoilers and progression skips.'}
+                </div>
               </div>
 
               <div style={{
@@ -6457,7 +6509,7 @@ export default function HubScreen({
               })}
             </div>
             )}
-            {missionScreen === 'story' && finalStage && (
+            {missionScreen === 'story' && finalStage && currentChapter.id === 'omniverse_endgame' && (
               <div style={{
                 marginTop: '14px',
                 padding: '14px 18px',

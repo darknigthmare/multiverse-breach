@@ -1260,6 +1260,7 @@ function App() {
             setUnlockedHeroes={setUnlockedHeroes}
             hiddenUniverses={hiddenUniverses}
             disabledAssets={disabledAssets}
+            completedStages={completedStages}
             onBack={() => { sound.playSfx('click'); setCurrentScreen('hub'); }}
           />
         </Suspense>

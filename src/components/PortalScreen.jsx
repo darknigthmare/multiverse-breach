@@ -66,7 +66,7 @@ const getPoolRateSummary = (pool, lang) => {
     });
 };
 
-export default function PortalScreen({ lang, breachShards, setBreachShards, portalStats, setPortalStats, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], disabledAssets = {}, onBack }) {
+export default function PortalScreen({ lang, breachShards, setBreachShards, portalStats, setPortalStats, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], disabledAssets = {}, completedStages = [], onBack }) {
   const [summoning, setSummoning] = useState(false);
   const [summonedHero, setSummonedHero] = useState(null);
   const [summonedBatch, setSummonedBatch] = useState(null);
@@ -77,9 +77,10 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
   const [activeBanner, setActiveBanner] = useState('nexus');
 
   const cost = 50;
+  const stabilizedCount = completedStages.length;
   const portalBanners = [
-    { id: 'nexus', color: '#39c5bb', label: { fr: 'Portail Nexus OC', en: 'OC Nexus Portal' }, desc: { fr: 'Personnages originaux du jeu de base.', en: 'Original base-game characters.' }, match: h => h.universe === 'Nexus de Convergence' },
-    { id: 'multi', color: '#9b59b6', label: { fr: 'Portail Multivers', en: 'Multiverse Portal' }, desc: { fr: 'Toutes les signatures heroiques detectables.', en: 'All detectable heroic signatures.' }, match: () => true },
+    { id: 'nexus', minClears: 0, color: '#39c5bb', label: { fr: 'Portail Nexus OC', en: 'OC Nexus Portal' }, desc: { fr: 'Personnages originaux du jeu de base.', en: 'Original base-game characters.' }, match: h => h.universe === 'Nexus de Convergence' },
+    { id: 'multi', minClears: 6, color: '#9b59b6', label: { fr: 'Portail Multivers', en: 'Multiverse Portal' }, desc: { fr: 'Toutes les signatures heroiques detectables.', en: 'All detectable heroic signatures.' }, match: () => true },
     { id: 'scifi', color: '#3498db', label: { fr: 'Faille Sci-Fi', en: 'Sci-Fi Rift' }, desc: { fr: 'Halo, Mass Effect, Portal, Stargate, Gears.', en: 'Halo, Mass Effect, Portal, Stargate, Gears.' }, match: h => ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Portal', 'Half-Life', 'Star Wars', 'Le Cinquième Element', ...EXPANDED_FACTION_UNIVERSES.sciFi].includes(h.universe) },
     { id: 'xeno_yautja', color: '#8adbe6', label: { fr: 'Faille Xeno-Yautja', en: 'Xeno-Yautja Rift' }, desc: { fr: 'Alien, Predator, Prometheus, AVP.', en: 'Alien, Predator, Prometheus, AVP.' }, match: h => /Alien|Predator|Prometheus|Prey/.test(h.universe) },
     { id: 'horror', color: '#e74c3c', label: { fr: 'Faille Horreur', en: 'Horror Rift' }, desc: { fr: 'Resident Evil, Silent Hill, Chucky, Saw, Hellraiser.', en: 'Resident Evil, Silent Hill, Chucky, Saw, Hellraiser.' }, match: h => h.category === 'horror' || ['Resident Evil', 'Silent Hill', 'Chucky', 'Hellraiser', 'Saw', 'Slender Man', 'Scary Movie', 'Dead Space', 'Hazbin Hotel', 'Rob Zombie', ...EXPANDED_FACTION_UNIVERSES.horror].includes(h.universe) },
@@ -91,6 +92,20 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
     { id: 'music', color: '#f1c40f', label: { fr: 'Faille Musique', en: 'Music Rift' }, desc: { fr: 'Rammstein, SOAD, Rob Zombie, Daft Punk, Oliver Tree, Vocaloid.', en: 'Rammstein, SOAD, Rob Zombie, Daft Punk, Oliver Tree, Vocaloid.' }, match: h => LORE_DB[h.universe]?.mediaType === 'music' || h.universe === 'Vocaloid' },
     { id: 'movie', color: '#ff5b6e', label: { fr: 'Faille Films & Series', en: 'Movies & TV Rift' }, desc: { fr: 'Archives ecran hors cercle specialise.', en: 'Screen archives outside specialized circles.' }, match: h => ['movie', 'series'].includes(LORE_DB[h.universe]?.mediaType) }
   ];
+  const PORTAL_CHAPTER_UNLOCKS = {
+    nexus: 0,
+    multi: 6,
+    scifi: 6,
+    horror: 6,
+    cyber: 6,
+    arena: 6,
+    xeno_yautja: 12,
+    arcade: 12,
+    arcane: 12,
+    movie: 12,
+    manga: 20,
+    music: 20
+  };
 
   const bannerVisuals = {
     nexus: { universe: 'Nexus de Convergence', mode: 'RPG', shape: 'omniverse', focusRate: 1, meta: { fr: 'Bassin OC: A.R.C.A. recrute des Ancres et agents natifs du Nexus.', en: 'OC pool: A.R.C.A. recruits Anchors and native Nexus agents.' } },
@@ -113,8 +128,10 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
   const summonableHeroes = visibleHeroes;
   const visiblePortalBanners = portalBanners.filter(banner => (
     banner.id === 'nexus'
-    || banner.id === 'multi'
-    || summonableHeroes.some(hero => banner.match(hero) && hero.universe !== 'Nexus de Convergence')
+    || (
+      stabilizedCount >= (PORTAL_CHAPTER_UNLOCKS[banner.id] || 0)
+      && (banner.id === 'multi' || summonableHeroes.some(hero => banner.match(hero) && hero.universe !== 'Nexus de Convergence'))
+    )
   ));
   const baseActiveBanner = visiblePortalBanners.find(item => item.id === activeBanner)
     || visiblePortalBanners.find(item => item.id === 'nexus')
