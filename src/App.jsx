@@ -350,6 +350,11 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
                   ? `Maitrise melee: rang ${rewardSummary.battleSummary.grade}, +${rewardSummary.smashMasteryBonus} fragments de stabilisation.`
                   : `Melee mastery: grade ${rewardSummary.battleSummary.grade}, +${rewardSummary.smashMasteryBonus} stabilization shards.`}</span>
               )}
+              {rewardSummary.tacticsMasteryBonus > 0 && rewardSummary.battleSummary && (
+                <span>{lang === 'fr'
+                  ? `Maitrise tactique: rang ${rewardSummary.battleSummary.grade}, +${rewardSummary.tacticsMasteryBonus} fragments de stabilisation.`
+                  : `Tactics mastery: grade ${rewardSummary.battleSummary.grade}, +${rewardSummary.tacticsMasteryBonus} stabilization shards.`}</span>
+              )}
             </div>
           )}
           <div className="narrative-tags">
@@ -644,9 +649,13 @@ function App() {
       const smashGradeBonus = activeStage.mode === 'Smash' && battleSummary?.mode === 'Smash'
         ? ({ S: 18, A: 12, B: 7, C: 3 }[battleSummary.grade] || 0)
         : 0;
+      const tacticsGradeBonus = activeStage.mode === 'Tactics' && battleSummary?.mode === 'Tactics'
+        ? ({ S: 16, A: 10, B: 6, C: 2 }[battleSummary.grade] || 0)
+        : 0;
       summary.smashMasteryBonus = smashGradeBonus;
+      summary.tacticsMasteryBonus = tacticsGradeBonus;
       summary.gold = Math.round(activeStage.goldPrize * (1 + seasonRewardBonus)) + firstClearGold;
-      summary.shards = Math.round(activeStage.shardPrize * (1 + seasonRewardBonus)) + firstClearShards + smashGradeBonus;
+      summary.shards = Math.round(activeStage.shardPrize * (1 + seasonRewardBonus)) + firstClearShards + smashGradeBonus + tacticsGradeBonus;
       summary.tokens = (activeStage.tokenPrize || 0) + itemMasteryTokens;
       setGold(prev => prev + summary.gold);
       setBreachShards(prev => prev + summary.shards);
@@ -669,6 +678,7 @@ function App() {
         + (firstClear ? 20 : 0)
         + (battleItemsUsed * 4)
         + (smashGradeBonus > 0 ? 8 : 0)
+        + (tacticsGradeBonus > 0 ? 8 : 0)
         + (activeStage.isSurvival ? 15 : 0)
         + (activeStage.id === 38 ? 100 : 0);
       setActivityProgress(prev => ({
@@ -711,6 +721,7 @@ function App() {
             rewardItemName: summary.rewardItemName,
             battleSummary,
             smashMasteryBonus: summary.smashMasteryBonus,
+            tacticsMasteryBonus: summary.tacticsMasteryBonus,
             rewards: { gold: summary.gold, shards: summary.shards, tokens: summary.tokens }
           }),
           ...(prev.riftJournal || [])

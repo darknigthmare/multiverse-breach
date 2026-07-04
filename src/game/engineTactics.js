@@ -12,6 +12,14 @@ export class EngineTactics {
     this.onComplete = onComplete;
     this.stage = stage;
     this.battlefield = getTacticsBattlefield(stage);
+    this.objective = this.battlefield.objective || 'rout';
+    this.objectiveTarget = this.battlefield.objectiveTarget || 1;
+    this.objectiveProgress = 0;
+    this.objectiveEvents = 0;
+    this.extractedHeroIds = new Set();
+    this.turnsElapsed = 0;
+    this.damageDealt = 0;
+    this.damageTaken = 0;
 
     this.rows = this.battlefield.rows || 5;
     this.cols = this.battlefield.cols || 8;
@@ -72,6 +80,8 @@ export class EngineTactics {
     this.attackRange = [];
 
     this.gameOver = false;
+    this.battleResult = null;
+    this.completionReported = false;
     this.victoryTimer = 0;
     this.autoBattle = false;
     this.isFinalBoss = false;
@@ -481,11 +491,81 @@ export class EngineTactics {
   }
 
   endActiveTurn() {
+    this.turnsElapsed++;
+    this.updateTacticsObjective();
     this.actionPhase = 'end';
     this.selectedAction = null;
     this.movementRange = [];
     this.attackRange = [];
+    if (this.gameOver) return;
     setTimeout(() => this.startTurn(), 600);
+  }
+
+  updateTacticsObjective() {
+    if (this.gameOver) return;
+    const aliveHeroes = this.heroes.filter(h => h.currentHp > 0);
+    if (aliveHeroes.length === 0) {
+      this.completeBattle('defeat');
+      return;
+    }
+
+    if (this.objective === 'control') {
+      const objectiveTiles = this.tiles.filter(tile => tile.type === 'objective');
+      const heldTiles = objectiveTiles.filter(tile => {
+        const heroOnTile = aliveHeroes.some(hero => hero.gridX === tile.x && hero.gridY === tile.y);
+        const enemyOnTile = this.enemies.some(enemy => enemy.currentHp > 0 && enemy.gridX === tile.x && enemy.gridY === tile.y);
+        return heroOnTile && !enemyOnTile;
+      });
+      if (heldTiles.length > 0) {
+        this.objectiveProgress = Math.min(this.objectiveTarget, this.objectiveProgress + heldTiles.length);
+        this.objectiveEvents++;
+        this.particles.add(this.width / 2, 42, 0, -1, '#ffeb3b', 11, 38, 'text', 'ANCRAGE');
+      }
+      if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'extract') {
+      const extractionZone = this.battlefield.extractionZone || [];
+      aliveHeroes.forEach(hero => {
+        const inZone = extractionZone.some(cell => cell.x === hero.gridX && cell.y === hero.gridY);
+        if (inZone && !this.extractedHeroIds.has(hero.id)) {
+          this.extractedHeroIds.add(hero.id);
+          this.objectiveEvents++;
+          this.particles.add(hero.x, hero.y - 34, 0, -1, '#39c5bb', 11, 40, 'text', 'EXTRACTION');
+        }
+      });
+      this.objectiveProgress = this.extractedHeroIds.size;
+      if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'disable') {
+      const disabled = this.obstacles.filter(item => item.type === 'objective' && item.hp <= 0).length;
+      this.objectiveProgress = disabled;
+      if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'commander') {
+      const defeatedBosses = this.enemies.filter(enemy => enemy.isBoss && enemy.currentHp <= 0).length;
+      this.objectiveProgress = defeatedBosses;
+      if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'survive') {
+      this.objectiveProgress = Math.min(this.objectiveTarget, this.turnsElapsed);
+      if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+    }
+  }
+
+  completeBattle(result) {
+    if (this.gameOver) return;
+    this.gameOver = true;
+    this.battleResult = result;
+    this.victoryTimer = 0;
+    this.playSfx(result === 'victory' ? 'victory' : 'defeat');
   }
 
   runEnemyAI() {
@@ -668,8 +748,9 @@ export class EngineTactics {
   }
 
   applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
-    if (defender.type === 'barrier' || defender.type === 'barrel') {
+    if (defender.type === 'barrier' || defender.type === 'barrel' || defender.type === 'objective') {
       // Destructible obstacle damage
+      const wasAlive = defender.hp > 0;
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
       this.playSfx('hit');
 
@@ -677,8 +758,9 @@ export class EngineTactics {
       const targetPxY = this.gridStartY + defender.gridY * this.cellH + 10;
       this.particles.add(targetPxX, targetPxY - 20, 0, -1.5, '#7f8c8d', 12, 35, 'text', `${Math.round(baseDmg)}`);
 
-      if (defender.hp <= 0) {
+      if (wasAlive && defender.hp <= 0) {
         this.playSfx('defeat');
+        this.updateTacticsObjective();
         // Trigger Naquadah barrel explosion
         if (defender.type === 'barrel') {
           this.triggerBarrelExplosion(defender.gridX, defender.gridY);
@@ -724,7 +806,10 @@ export class EngineTactics {
     const variance = (Math.random() * 0.2) + 0.9;
     const finalDmg = Math.round(baseDmg * variance);
 
+    const defenderWasAlive = defender.currentHp > 0;
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
+    if (this.heroes.includes(attacker) && this.enemies.includes(defender)) this.damageDealt += finalDmg;
+    if (this.enemies.includes(attacker) && this.heroes.includes(defender)) this.damageTaken += finalDmg;
 
     // Nanite lifesteal
     if (attacker && attacker.talent === 'lifedrain' && attacker.currentHp > 0 && attacker.gridX !== undefined) {
@@ -762,7 +847,10 @@ export class EngineTactics {
     if (defender.currentHp <= 0) {
       defender.state = 'dead';
       defender.stateTimer = 999;
-      this.playSfx('defeat');
+      if (defenderWasAlive) {
+        this.playSfx('defeat');
+        this.updateTacticsObjective();
+      }
     } else {
       this.playSfx('hit');
     }
@@ -956,9 +1044,9 @@ export class EngineTactics {
   update() {
     if (this.gameOver) {
       this.victoryTimer++;
-      if (this.victoryTimer > 120) {
-        const alive = this.heroes.some(h => h.currentHp > 0);
-        this.onComplete(alive ? 'victory' : 'defeat');
+      if (this.victoryTimer > 120 && !this.completionReported) {
+        this.completionReported = true;
+        this.onComplete(this.battleResult || 'defeat', this.getCombatSummary());
       }
       return;
     }
@@ -967,15 +1055,12 @@ export class EngineTactics {
     const enemiesAlive = this.enemies.some(e => e.currentHp > 0);
 
     if (!heroesAlive) {
-      this.gameOver = true;
-      this.victoryTimer = 0;
-      this.playSfx('defeat');
+      this.completeBattle('defeat');
       return;
     }
     if (!enemiesAlive) {
-      this.gameOver = true;
-      this.victoryTimer = 0;
-      this.playSfx('victory');
+      this.objectiveProgress = this.objectiveTarget;
+      this.completeBattle('victory');
       return;
     }
 
@@ -1079,6 +1164,8 @@ export class EngineTactics {
       }
     }
 
+    this.drawTacticsObjectiveZones(ctx, animTime);
+
     const threatMap = this.getEnemyThreatMap();
     threatMap.forEach(cell => {
       const tx = this.gridStartX + cell.x * this.cellW;
@@ -1107,6 +1194,10 @@ export class EngineTactics {
         // draw a toxic nuclear symbol or band
         ctx.fillStyle = '#111';
         ctx.fillRect(ox + 6, oy + 18, this.cellW - 12, 8);
+      } else if (o.type === 'objective') {
+        ctx.fillStyle = '#ffeb3b';
+        ctx.font = '8px "Press Start 2P"';
+        ctx.fillText('LOCK', ox + 10, oy + 27);
       } else {
         ctx.fillStyle = '#4fc3f7';
         ctx.font = '8px "Press Start 2P"';
@@ -1236,6 +1327,112 @@ export class EngineTactics {
     ctx.fillStyle = this.getBattlefieldAccent();
     ctx.font = '8px "Press Start 2P"';
     ctx.fillText((this.battlefield.label?.fr || this.battlefield.id).toUpperCase().slice(0, 32), 20, 22);
+
+    this.drawTacticsObjectiveHud(ctx);
+  }
+
+  drawTacticsObjectiveZones(ctx, animTime) {
+    const pulse = 0.18 + Math.sin(animTime * 0.08) * 0.06;
+    const drawCellMarker = (cell, color, label) => {
+      const x = this.gridStartX + cell.x * this.cellW;
+      const y = this.gridStartY + cell.y * this.cellH;
+      ctx.fillStyle = color.replace('ALPHA', pulse.toFixed(2));
+      ctx.fillRect(x + 3, y + 3, this.cellW - 6, this.cellH - 6);
+      ctx.strokeStyle = color.replace('ALPHA', '0.7');
+      ctx.strokeRect(x + 5, y + 5, this.cellW - 10, this.cellH - 10);
+      ctx.fillStyle = '#fff';
+      ctx.font = '7px "Press Start 2P"';
+      ctx.fillText(label, x + 10, y + 24);
+    };
+
+    if (this.objective === 'extract') {
+      (this.battlefield.extractionZone || []).forEach(cell => drawCellMarker(cell, 'rgba(57,197,187,ALPHA)', 'EXT'));
+    }
+    if (this.objective === 'control') {
+      this.tiles.filter(tile => tile.type === 'objective').forEach(cell => drawCellMarker(cell, 'rgba(255,235,59,ALPHA)', 'HOLD'));
+    }
+  }
+
+  drawTacticsObjectiveHud(ctx) {
+    const pct = Math.min(1, this.objectiveProgress / Math.max(1, this.objectiveTarget));
+    ctx.fillStyle = 'rgba(0,0,0,0.72)';
+    ctx.fillRect(18, 32, 315, 46);
+    ctx.strokeStyle = this.getBattlefieldAccent();
+    ctx.strokeRect(18, 32, 315, 46);
+    ctx.fillStyle = '#dff';
+    ctx.font = '8px "Press Start 2P"';
+    ctx.fillText(this.getObjectiveText('fr').toUpperCase().slice(0, 44), 28, 48);
+    ctx.fillStyle = 'rgba(255,255,255,0.16)';
+    ctx.fillRect(28, 60, 248, 8);
+    ctx.fillStyle = this.getBattlefieldAccent();
+    ctx.fillRect(28, 60, 248 * pct, 8);
+    ctx.fillStyle = '#fff';
+    ctx.fillText(`${this.objectiveProgress}/${this.objectiveTarget}`, 284, 68);
+  }
+
+  getObjectiveText(lang = 'fr') {
+    const lines = {
+      rout: {
+        fr: 'Directive: neutraliser la cellule hostile',
+        en: 'Directive: neutralize the hostile cell'
+      },
+      control: {
+        fr: 'Directive: tenir les points d ancrage',
+        en: 'Directive: hold the anchor points'
+      },
+      extract: {
+        fr: 'Directive: extraire deux agents lisibles',
+        en: 'Directive: extract two readable agents'
+      },
+      disable: {
+        fr: 'Directive: desactiver les verrous de faille',
+        en: 'Directive: disable the breach locks'
+      },
+      commander: {
+        fr: 'Directive: abattre le commandement local',
+        en: 'Directive: break local command'
+      },
+      survive: {
+        fr: 'Directive: survivre a la fenetre de stabilisation',
+        en: 'Directive: survive the stabilization window'
+      }
+    };
+    return (lines[this.objective] || lines.rout)[lang] || (lines[this.objective] || lines.rout).fr;
+  }
+
+  getCombatSummary() {
+    const objectivePct = Math.round(Math.min(1, this.objectiveProgress / Math.max(1, this.objectiveTarget)) * 100);
+    const defeatedEnemies = this.enemies.filter(enemy => enemy.currentHp <= 0).length;
+    const survivingHeroes = this.heroes.filter(hero => hero.currentHp > 0).length;
+    const score = Math.max(0, Math.round(
+      objectivePct * 8
+      + defeatedEnemies * 45
+      + survivingHeroes * 70
+      + this.damageDealt * 0.2
+      - this.damageTaken * 0.12
+      - this.turnsElapsed * 3
+    ));
+    const grade = score >= 900 ? 'S' : score >= 700 ? 'A' : score >= 500 ? 'B' : score >= 300 ? 'C' : 'D';
+    return {
+      mode: 'Tactics',
+      battlefieldId: this.battlefield.id,
+      battlefieldLabel: this.battlefield.label,
+      objective: this.objective,
+      objectiveText: {
+        fr: this.getObjectiveText('fr'),
+        en: this.getObjectiveText('en')
+      },
+      objectivePct,
+      objectiveProgress: this.objectiveProgress,
+      objectiveTarget: this.objectiveTarget,
+      turnsElapsed: this.turnsElapsed,
+      defeatedEnemies,
+      survivingHeroes,
+      damageDealt: Math.round(this.damageDealt),
+      damageTaken: Math.round(this.damageTaken),
+      grade,
+      score
+    };
   }
 
   getTileFill(tile) {

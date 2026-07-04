@@ -842,13 +842,21 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       `${lang === 'fr' ? 'Menaces neutralisees' : 'Threats neutralized'}: ${battleSummary.defeatedEnemies} | ${lang === 'fr' ? 'Artefacts' : 'Artifacts'}: ${battleSummary.itemTriggers} | ${lang === 'fr' ? 'Risques terrain' : 'Terrain hits'}: ${battleSummary.hazardHits}`
     ]
     : [];
+  const tacticsResultLines = battleSummary?.mode === 'Tactics'
+    ? [
+      `${lang === 'fr' ? 'Terrain' : 'Battlefield'}: ${battleSummary.battlefieldLabel?.[lang] || battleSummary.battlefieldId}`,
+      `${lang === 'fr' ? 'Rang' : 'Grade'} ${battleSummary.grade} | Score ${battleSummary.score} | Objectif ${battleSummary.objectivePct}%`,
+      `${battleSummary.objectiveText?.[lang] || battleSummary.objective} | ${lang === 'fr' ? 'Tours' : 'Turns'}: ${battleSummary.turnsElapsed}`,
+      `${lang === 'fr' ? 'Menaces neutralisees' : 'Threats neutralized'}: ${battleSummary.defeatedEnemies} | ${lang === 'fr' ? 'Agents debout' : 'Standing agents'}: ${battleSummary.survivingHeroes}`
+    ]
+    : [];
   const totalBattleItems = battlePickups.length;
   const unstableTeamCount = activeTeam.filter(heroId => (stage.heroInstability?.[heroId] || 0) > 0).length;
   const smashObjective = stage.mode === 'Smash'
     ? engineRef.current?.getObjectiveText?.(lang)
     : null;
   const battleObjective = stage.mode === 'Tactics'
-    ? (lang === 'fr' ? 'Directive A.R.C.A.: securiser les cases ressources, puis neutraliser le champion local.' : 'A.R.C.A. directive: secure resource tiles, then neutralize the local champion.')
+    ? `${lang === 'fr' ? 'Directive A.R.C.A. tactique' : 'A.R.C.A. tactics directive'}: ${engineRef.current?.getObjectiveText?.(lang) || (lang === 'fr' ? 'securiser la grille et garder l escouade lisible.' : 'secure the grid and keep the squad readable.')}`
     : stage.mode === 'Smash'
       ? `${lang === 'fr' ? 'Directive A.R.C.A. melee' : 'A.R.C.A. melee directive'}: ${smashObjective || (lang === 'fr' ? 'tenir les vagues, recuperer les artefacts et briser le champion.' : 'hold the waves, recover artifacts, and break the champion.')}`
       : (lang === 'fr' ? 'Directive A.R.C.A.: synchroniser l ATB, declencher les reliques et fermer la breche.' : 'A.R.C.A. directive: sync ATB, trigger relics, and close the breach.');
@@ -1149,7 +1157,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 ? victoryRewardText
                 : getTranslation(lang, 'defeatMsg')}
             </p>
-            {smashResultLines.length > 0 && (
+            {[...smashResultLines, ...tacticsResultLines].length > 0 && (
               <div style={{
                 width: 'min(520px, 92%)',
                 margin: '0 0 24px 0',
@@ -1161,7 +1169,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 fontSize: '11px',
                 lineHeight: 1.7
               }}>
-                {smashResultLines.map(line => <div key={line}>{line}</div>)}
+                {[...smashResultLines, ...tacticsResultLines].map(line => <div key={line}>{line}</div>)}
               </div>
             )}
             <button

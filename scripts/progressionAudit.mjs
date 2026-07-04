@@ -171,9 +171,26 @@ assert(tacticsEngineSource.includes('isBlockedTile'), 'Tactics engine must block
 assert(tacticsEngineSource.includes('applyStartTileEffect'), 'Tactics engine must apply terrain start-of-turn effects.');
 assert(tacticsEngineSource.includes('getTileFill'), 'Tactics engine must render terrain types distinctly.');
 assert(tacticsEngineSource.includes('getCoverReduction') && tacticsEngineSource.includes('heavyCover'), 'Tactics engine must apply cover from terrain tiles.');
+[
+  "objective: 'rout'",
+  "objective: 'extract'",
+  "objective: 'disable'",
+  "objective: 'control'",
+  "objective: 'commander'",
+  "objective: 'survive'"
+].forEach(marker => {
+  assert(tacticsBattlefieldsSource.includes(marker), `Tactics battlefield objectives missing ${marker}.`);
+});
+assert(tacticsEngineSource.includes('updateTacticsObjective'), 'Tactics engine must update objective progress.');
+assert(tacticsEngineSource.includes('completeBattle'), 'Tactics engine must complete objective-based battles.');
+assert(tacticsEngineSource.includes('drawTacticsObjectiveHud'), 'Tactics engine must render objective HUD feedback.');
+assert(tacticsEngineSource.includes('drawTacticsObjectiveZones'), 'Tactics engine must render objective and extraction zones.');
+assert(tacticsEngineSource.includes('getCombatSummary') && tacticsEngineSource.includes("mode: 'Tactics'"), 'Tactics engine must expose a combat summary.');
 assert(gameCanvasSource.includes('getTacticsPickupPositions'), 'GameCanvas must place Tactics pickups through battlefield-safe positions.');
 assert(gameCanvasSource.includes('new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage)'), 'GameCanvas must pass resolved stage metadata into tactics mode.');
 assert(gameCanvasSource.includes("['Smash', 'Tactics'].includes(stage.mode)") && gameCanvasSource.includes('dlcSuppressedArena'), 'GameCanvas must suppress DLC-specific tactics fields when universes are hidden.');
+assert(gameCanvasSource.includes('tacticsResultLines'), 'GameCanvas must render Tactics result summary feedback.');
+assert(appSource.includes('tacticsMasteryBonus'), 'App rewards must include capped Tactics mastery bonuses.');
 
 console.log(JSON.stringify({
   baseUniverse: 'Nexus de Convergence',
@@ -195,5 +212,7 @@ console.log(JSON.stringify({
   tacticsBattlefieldLayouts: 8,
   tacticsTerrainSystem: 'dynamic',
   tacticsTerrainTypes: ['high', 'lightCover', 'heavyCover', 'hazard', 'heal', 'blocked', 'objective'],
-  tacticsDlcMapping: 'metadata-aware'
+  tacticsObjectives: ['rout', 'extract', 'disable', 'control', 'commander', 'survive'],
+  tacticsDlcMapping: 'metadata-aware',
+  tacticsRewardLoop: 'grade-bonus'
 }, null, 2));

@@ -16,6 +16,8 @@ export const TACTICS_BATTLEFIELDS = {
   training_grid: {
     id: 'training_grid',
     label: { fr: 'Grille d instruction Nexus', en: 'Nexus Drill Grid' },
+    objective: 'rout',
+    objectiveTarget: 1,
     rows: 5,
     cols: 8,
     tags: ['starter', 'balanced'],
@@ -34,6 +36,9 @@ export const TACTICS_BATTLEFIELDS = {
   urban_crossfire: {
     id: 'urban_crossfire',
     label: { fr: 'Carrefour sous tirs croises', en: 'Urban Crossfire' },
+    objective: 'extract',
+    objectiveTarget: 2,
+    extractionZone: [{ x: 7, y: 2 }, { x: 7, y: 3 }, { x: 7, y: 4 }],
     rows: 6,
     cols: 8,
     tags: ['coverHeavy', 'lineOfSight'],
@@ -55,6 +60,8 @@ export const TACTICS_BATTLEFIELDS = {
   facility_lockdown: {
     id: 'facility_lockdown',
     label: { fr: 'Confinement de complexe', en: 'Facility Lockdown' },
+    objective: 'disable',
+    objectiveTarget: 2,
     rows: 5,
     cols: 9,
     tags: ['hazard', 'lineOfSight'],
@@ -68,14 +75,16 @@ export const TACTICS_BATTLEFIELDS = {
     bossSpawns: [{ x: 8, y: 1 }, { x: 8, y: 3 }],
     worldBossSpawn: { x: 8, y: 2 },
     obstacles: [
-      obstacle('lab_door_a', 'Blast Door', 4, 1, 'barrier', 110, '#c8d3d8'),
-      obstacle('lab_door_b', 'Blast Door', 4, 3, 'barrier', 110, '#c8d3d8'),
+      obstacle('lab_door_a', 'Blast Door', 4, 1, 'objective', 110, '#c8d3d8'),
+      obstacle('lab_door_b', 'Blast Door', 4, 3, 'objective', 110, '#c8d3d8'),
       obstacle('lab_tank', 'Volatile Tank', 5, 1, 'barrel', 40, '#61ff59')
     ]
   },
   ruined_highground: {
     id: 'ruined_highground',
     label: { fr: 'Ruines a hauteur dominante', en: 'Ruined High Ground' },
+    objective: 'control',
+    objectiveTarget: 3,
     rows: 6,
     cols: 7,
     tags: ['vertical', 'highGround'],
@@ -95,6 +104,8 @@ export const TACTICS_BATTLEFIELDS = {
   war_frontline: {
     id: 'war_frontline',
     label: { fr: 'Ligne de front tactique', en: 'Tactical Frontline' },
+    objective: 'commander',
+    objectiveTarget: 2,
     rows: 6,
     cols: 9,
     tags: ['wide', 'coverHeavy', 'war'],
@@ -115,6 +126,8 @@ export const TACTICS_BATTLEFIELDS = {
   horror_chokepoint: {
     id: 'horror_chokepoint',
     label: { fr: 'Goulet de cauchemar', en: 'Nightmare Chokepoint' },
+    objective: 'survive',
+    objectiveTarget: 14,
     rows: 5,
     cols: 7,
     tags: ['horror', 'chokepoint', 'hazard'],
@@ -133,6 +146,9 @@ export const TACTICS_BATTLEFIELDS = {
   cyber_vertical_node: {
     id: 'cyber_vertical_node',
     label: { fr: 'Noeud vertical cyber', en: 'Cyber Vertical Node' },
+    objective: 'extract',
+    objectiveTarget: 2,
+    extractionZone: [{ x: 7, y: 1 }, { x: 7, y: 2 }, { x: 7, y: 3 }],
     rows: 6,
     cols: 8,
     tags: ['vertical', 'lineOfSight', 'cyber'],
@@ -152,6 +168,8 @@ export const TACTICS_BATTLEFIELDS = {
   boss_command_zone: {
     id: 'boss_command_zone',
     label: { fr: 'Zone de commandement boss', en: 'Boss Command Zone' },
+    objective: 'control',
+    objectiveTarget: 4,
     rows: 6,
     cols: 9,
     tags: ['bossArena', 'objective'],
