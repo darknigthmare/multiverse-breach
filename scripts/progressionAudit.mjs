@@ -17,6 +17,8 @@ const hubSource = read('../src/components/HubScreen.jsx');
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const smashEngineSource = read('../src/game/engineSmash.js');
 const smashArenasSource = read('../src/game/smashArenas.js');
+const tacticsEngineSource = read('../src/game/engineTactics.js');
+const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
 const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.json'));
 const manifestOutputs = new Set((manifest.entries || []).filter(entry => entry.available).map(entry => entry.output));
 
@@ -133,6 +135,46 @@ assert(gameCanvasSource.includes('hiddenUniverses') && gameCanvasSource.includes
 assert(appSource.includes('smashMasteryBonus'), 'App rewards must include capped melee mastery bonuses.');
 assert(appSource.includes("activeStage.mode === 'Smash'") && appSource.includes('battleSummary?.mode === \'Smash\''), 'Melee mastery rewards must be limited to Smash results.');
 
+[
+  'training_grid',
+  'urban_crossfire',
+  'facility_lockdown',
+  'ruined_highground',
+  'war_frontline',
+  'horror_chokepoint',
+  'cyber_vertical_node',
+  'boss_command_zone'
+].forEach(battlefieldId => {
+  assert(tacticsBattlefieldsSource.includes(`${battlefieldId}: {`), `Missing tactics battlefield layout ${battlefieldId}.`);
+});
+[
+  'heroSpawns',
+  'monsterSpawns',
+  'bossSpawns',
+  'worldBossSpawn',
+  'lightCover',
+  'heavyCover',
+  'hazard',
+  'heal',
+  'blocked',
+  'objective'
+].forEach(marker => {
+  assert(tacticsBattlefieldsSource.includes(marker), `Tactics battlefield system missing ${marker}.`);
+});
+assert(tacticsBattlefieldsSource.includes('EXPANDED_UNIVERSE_SIGNATURES'), 'Tactics battlefield selection must use expanded universe metadata.');
+assert(tacticsBattlefieldsSource.includes('forceBaseArena') && tacticsBattlefieldsSource.includes('dlcSuppressedArena'), 'Tactics battlefield selection must support admin/DLC fallback to Nexus terrain.');
+assert(tacticsBattlefieldsSource.includes('getTacticsPickupPositions'), 'Tactics battlefields must expose terrain-safe pickup positions.');
+assert(tacticsEngineSource.includes('getTacticsBattlefield'), 'Tactics engine must load battlefield layouts from stage metadata.');
+assert(tacticsEngineSource.includes('this.battlefield'), 'Tactics engine must keep the active battlefield profile.');
+assert(tacticsEngineSource.includes('getTileAt'), 'Tactics engine must inspect terrain tiles.');
+assert(tacticsEngineSource.includes('isBlockedTile'), 'Tactics engine must block movement through blocked terrain.');
+assert(tacticsEngineSource.includes('applyStartTileEffect'), 'Tactics engine must apply terrain start-of-turn effects.');
+assert(tacticsEngineSource.includes('getTileFill'), 'Tactics engine must render terrain types distinctly.');
+assert(tacticsEngineSource.includes('getCoverReduction') && tacticsEngineSource.includes('heavyCover'), 'Tactics engine must apply cover from terrain tiles.');
+assert(gameCanvasSource.includes('getTacticsPickupPositions'), 'GameCanvas must place Tactics pickups through battlefield-safe positions.');
+assert(gameCanvasSource.includes('new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage)'), 'GameCanvas must pass resolved stage metadata into tactics mode.');
+assert(gameCanvasSource.includes("['Smash', 'Tactics'].includes(stage.mode)") && gameCanvasSource.includes('dlcSuppressedArena'), 'GameCanvas must suppress DLC-specific tactics fields when universes are hidden.');
+
 console.log(JSON.stringify({
   baseUniverse: 'Nexus de Convergence',
   ocHeroes: expectedOcHeroIds.length,
@@ -149,5 +191,9 @@ console.log(JSON.stringify({
   meleeCombatFeel: 'recovery-and-ai',
   meleeDlcMapping: 'metadata-aware',
   meleeResultSummary: 'score-grade-objective',
-  meleeRewardLoop: 'grade-bonus'
+  meleeRewardLoop: 'grade-bonus',
+  tacticsBattlefieldLayouts: 8,
+  tacticsTerrainSystem: 'dynamic',
+  tacticsTerrainTypes: ['high', 'lightCover', 'heavyCover', 'hazard', 'heal', 'blocked', 'objective'],
+  tacticsDlcMapping: 'metadata-aware'
 }, null, 2));

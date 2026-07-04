@@ -1,27 +1,31 @@
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
+import { getTacticsBattlefield } from './tacticsBattlefields';
 
 export class EngineTactics {
-  constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete) {
+  constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
     this.width = width;
     this.height = height;
     this.particles = particles;
     this.playSfx = playSfx;
     this.onComplete = onComplete;
+    this.stage = stage;
+    this.battlefield = getTacticsBattlefield(stage);
 
-    this.rows = 5;
-    this.cols = 8;
-    this.cellW = 60;
-    this.cellH = 45;
-    this.gridStartX = 60;
+    this.rows = this.battlefield.rows || 5;
+    this.cols = this.battlefield.cols || 8;
+    this.cellW = Math.min(66, Math.floor((this.width - 140) / this.cols));
+    this.cellH = Math.min(48, Math.floor((this.height - 170) / this.rows));
+    this.gridStartX = Math.round((this.width - this.cols * this.cellW) / 2);
     this.gridStartY = 60;
+    this.tiles = this.battlefield.tiles || [];
 
     // Convert heroes
     this.heroes = heroes.map((h, idx) => ({
       ...h,
-      gridX: 0,
-      gridY: idx + 1,
+      gridX: this.battlefield.heroSpawns?.[idx]?.x ?? 0,
+      gridY: this.battlefield.heroSpawns?.[idx]?.y ?? idx + 1,
       x: 0, y: 0,
       state: 'idle',
       stateTimer: 0,
@@ -58,12 +62,7 @@ export class EngineTactics {
     this.initBoard();
 
     // Spawning Destructible Obstacles
-    this.obstacles = [
-      { id: 'b1', name: 'COG Cover', hp: 80, maxHp: 80, gridX: 4, gridY: 1, type: 'barrier', color: '#4a4e52' },
-      { id: 'b2', name: 'COG Cover', hp: 80, maxHp: 80, gridX: 4, gridY: 3, type: 'barrier', color: '#4a4e52' },
-      { id: 'bar1', name: 'Naquadah Barrel', hp: 30, maxHp: 30, gridX: 3, gridY: 2, type: 'barrel', color: '#00ff00' },
-      { id: 'bar2', name: 'Naquadah Barrel', hp: 30, maxHp: 30, gridX: 4, gridY: 2, type: 'barrel', color: '#00ff00' }
-    ];
+    this.obstacles = (this.battlefield.obstacles || []).map(item => ({ ...item }));
 
     this.turnQueue = [];
     this.activeUnit = null;
@@ -87,13 +86,18 @@ export class EngineTactics {
     const bossesList = this.enemiesData.bosses;
     const worldBoss = this.enemiesData.worldBoss;
 
-    // 1. Spawning 3 monsters on grid column 5
+    const monsterSpawns = this.battlefield.monsterSpawns || [{ x: 5, y: 1 }, { x: 5, y: 2 }, { x: 5, y: 3 }];
+    const bossSpawns = this.battlefield.bossSpawns || [{ x: 6, y: 1 }, { x: 6, y: 3 }];
+    const worldBossSpawn = this.battlefield.worldBossSpawn || { x: this.cols - 1, y: Math.floor(this.rows / 2) };
+
+    // 1. Spawning monsters from the active battlefield profile
     for (let i = 0; i < 3; i++) {
       const template = monstersList[i] || monstersList[0];
+      const spawn = monsterSpawns[i] || monsterSpawns[monsterSpawns.length - 1] || { x: this.cols - 3, y: i + 1 };
       this.enemies.push({
         ...template,
-        gridX: 5,
-        gridY: i + 1,
+        gridX: spawn.x,
+        gridY: spawn.y,
         x: 0, y: 0,
         state: 'idle',
         stateTimer: 0,
@@ -105,13 +109,14 @@ export class EngineTactics {
       });
     }
 
-    // 2. Spawning 2 bosses on grid column 6
+    // 2. Spawning bosses from the active battlefield profile
     for (let i = 0; i < 2; i++) {
       const template = bossesList[i] || bossesList[0];
+      const spawn = bossSpawns[i] || bossSpawns[bossSpawns.length - 1] || { x: this.cols - 2, y: i * 2 + 1 };
       this.enemies.push({
         ...template,
-        gridX: 6,
-        gridY: i * 2 + 1,
+        gridX: spawn.x,
+        gridY: spawn.y,
         x: 0, y: 0,
         state: 'idle',
         stateTimer: 0,
@@ -123,12 +128,12 @@ export class EngineTactics {
       });
     }
 
-    // 3. Spawning 1 World Boss at (7, 2)
+    // 3. Spawning 1 World Boss at the battlefield command point
     if (worldBoss) {
       this.enemies.push({
         ...worldBoss,
-        gridX: 7,
-        gridY: 2,
+        gridX: worldBossSpawn.x,
+        gridY: worldBossSpawn.y,
         x: 0, y: 0,
         state: 'idle',
         stateTimer: 0,
@@ -168,6 +173,7 @@ export class EngineTactics {
     const next = this.turnQueue.shift();
     this.activeUnit = next.unit;
     this.activeUnitType = next.type;
+    this.applyStartTileEffect(this.activeUnit);
 
     if (this.activeUnitType === 'hero') {
       this.actionPhase = 'move';
@@ -279,7 +285,7 @@ export class EngineTactics {
       if ((cx === sx && cy === sy) || (cx === tx && cy === ty)) continue;
 
       const blockingObstacle = this.obstacles.some(o => o.hp > 0 && o.gridX === cx && o.gridY === cy);
-      if (blockingObstacle) return false;
+      if (blockingObstacle || this.isBlockedTile(cx, cy)) return false;
     }
 
     return true;
@@ -301,7 +307,26 @@ export class EngineTactics {
       return attackerToBarrier < dist || o.gridX === defender.gridX || o.gridY === defender.gridY;
     });
 
-    return adjacentBarriers.length > 0 ? 0.35 : 0;
+    const defenderTile = this.getTileAt(defender.gridX, defender.gridY);
+    const tileCover = defenderTile?.type === 'heavyCover' ? 0.35 : defenderTile?.type === 'lightCover' ? 0.2 : 0;
+    const heightCover = defenderTile?.type === 'high' && attacker.gridY > defender.gridY ? 0.12 : 0;
+    return Math.max(adjacentBarriers.length > 0 ? 0.35 : 0, tileCover, heightCover);
+  }
+
+  applyStartTileEffect(unit) {
+    if (!unit || unit.currentHp <= 0) return;
+    const tile = this.getTileAt(unit.gridX, unit.gridY);
+    if (!tile) return;
+    const px = this.gridStartX + unit.gridX * this.cellW + this.cellW / 2;
+    const py = this.gridStartY + unit.gridY * this.cellH + 12;
+    if (tile.type === 'hazard') {
+      unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
+      this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 40, 'text', 'DANGER');
+    }
+    if (tile.type === 'heal' && this.heroes.includes(unit)) {
+      unit.currentHp = Math.min(unit.maxHp, unit.currentHp + 8);
+      this.particles.add(px, py - 18, 0, -1, '#2ecc71', 10, 40, 'text', '+HP');
+    }
   }
 
   getDamagePreview(attacker, defender, actionType = 'simple') {
@@ -341,11 +366,19 @@ export class EngineTactics {
     return c >= 0 && c < this.cols && r >= 0 && r < this.rows;
   }
 
+  getTileAt(c, r) {
+    return this.tiles.find(tile => tile.x === c && tile.y === r) || null;
+  }
+
+  isBlockedTile(c, r) {
+    return this.getTileAt(c, r)?.type === 'blocked';
+  }
+
   isCellOccupied(c, r, ignoreUnit) {
     const heroOccupies = this.heroes.some(h => h.currentHp > 0 && h !== ignoreUnit && h.gridX === c && h.gridY === r);
     const enemyOccupies = this.enemies.some(e => e.currentHp > 0 && e !== ignoreUnit && e.gridX === c && e.gridY === r);
     const obstacleOccupies = this.obstacles.some(o => o.hp > 0 && o.gridX === c && o.gridY === r);
-    return heroOccupies || enemyOccupies || obstacleOccupies;
+    return heroOccupies || enemyOccupies || obstacleOccupies || this.isBlockedTile(c, r);
   }
 
   getUnitAtCell(c, r) {
@@ -1030,13 +1063,19 @@ export class EngineTactics {
         const cellX = this.gridStartX + c * this.cellW;
         const cellY = this.gridStartY + r * this.cellH;
         
-        ctx.fillStyle = 'rgba(10, 20, 40, 0.4)';
+        const tile = this.getTileAt(c, r);
+        ctx.fillStyle = this.getTileFill(tile);
         ctx.fillRect(cellX, cellY, this.cellW, this.cellH);
         ctx.strokeRect(cellX, cellY, this.cellW, this.cellH);
 
         ctx.fillStyle = 'rgba(255,255,255,0.15)';
         ctx.font = '8px monospace';
         ctx.fillText(`${String.fromCharCode(65 + c)}${r + 1}`, cellX + 4, cellY + 12);
+        if (tile?.type && tile.type !== 'normal') {
+          ctx.fillStyle = this.getTileLabelColor(tile);
+          ctx.font = '7px "Press Start 2P"';
+          ctx.fillText(this.getTileLabel(tile), cellX + 8, cellY + this.cellH - 10);
+        }
       }
     }
 
@@ -1193,5 +1232,48 @@ export class EngineTactics {
     let qStr = this.turnQueue.slice(0, 4).map(q => `${q.type === 'hero' ? 'H' : 'E'}:${q.unit.name.split(' ')[0]}`).join(' > ');
     ctx.fillStyle = '#00ffff';
     ctx.fillText((qStr || 'END').slice(0, 32), this.width - 235, 56);
+
+    ctx.fillStyle = this.getBattlefieldAccent();
+    ctx.font = '8px "Press Start 2P"';
+    ctx.fillText((this.battlefield.label?.fr || this.battlefield.id).toUpperCase().slice(0, 32), 20, 22);
+  }
+
+  getTileFill(tile) {
+    if (!tile) return 'rgba(10, 20, 40, 0.4)';
+    if (tile.type === 'blocked') return 'rgba(12, 12, 16, 0.86)';
+    if (tile.type === 'high') return 'rgba(74, 144, 226, 0.28)';
+    if (tile.type === 'lightCover') return 'rgba(79, 195, 247, 0.16)';
+    if (tile.type === 'heavyCover') return 'rgba(79, 195, 247, 0.28)';
+    if (tile.type === 'hazard') return 'rgba(255, 91, 91, 0.24)';
+    if (tile.type === 'heal') return 'rgba(46, 204, 113, 0.2)';
+    if (tile.type === 'objective') return 'rgba(255, 235, 59, 0.20)';
+    return 'rgba(10, 20, 40, 0.4)';
+  }
+
+  getTileLabel(tile) {
+    if (tile.type === 'blocked') return 'BLOC';
+    if (tile.type === 'high') return 'HIGH';
+    if (tile.type === 'lightCover') return 'COV';
+    if (tile.type === 'heavyCover') return 'COV+';
+    if (tile.type === 'hazard') return 'RISK';
+    if (tile.type === 'heal') return 'MED';
+    if (tile.type === 'objective') return 'OBJ';
+    return '';
+  }
+
+  getTileLabelColor(tile) {
+    if (tile.type === 'hazard') return '#ff8a50';
+    if (tile.type === 'heal') return '#2ecc71';
+    if (tile.type === 'objective') return '#ffeb3b';
+    if (tile.type === 'high') return '#8fb3ff';
+    return '#4fc3f7';
+  }
+
+  getBattlefieldAccent() {
+    if (this.battlefield.tags?.includes('horror')) return '#d72f2f';
+    if (this.battlefield.tags?.includes('cyber')) return '#39c5bb';
+    if (this.battlefield.tags?.includes('war')) return '#ff9f43';
+    if (this.battlefield.tags?.includes('bossArena')) return '#f1c40f';
+    return '#4fc3f7';
   }
 }

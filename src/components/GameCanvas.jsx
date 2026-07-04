@@ -13,6 +13,7 @@ import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { getBattleItemPoolForStage } from '../game/battleItems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
 import { getSmashPickupPositions } from '../game/smashArenas';
+import { getTacticsPickupPositions } from '../game/tacticsBattlefields';
 
 export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, onBattleEnd }) {
   const canvasRef = useRef(null);
@@ -50,7 +51,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
   const hiddenUniverseSet = new Set(hiddenUniverses || []);
-  const arenaStage = stage.mode === 'Smash' && hiddenUniverseSet.has(stage.universe)
+  const arenaStage = ['Smash', 'Tactics'].includes(stage.mode) && hiddenUniverseSet.has(stage.universe)
     ? { ...stage, forceBaseArena: true, dlcSuppressedArena: true }
     : stage;
   const getEnemyAdminKey = (universe, enemy) => `${universe}::${enemy?.name || 'unknown'}`;
@@ -66,14 +67,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const smashPositions = currentStage.mode === 'Smash'
       ? getSmashPickupPositions(arenaStage, canvasRef.current?.width || 760, canvasRef.current?.height || 360)
       : null;
+    const tacticsPositions = currentStage.mode === 'Tactics'
+      ? getTacticsPickupPositions(arenaStage)
+      : null;
     const positions = currentStage.mode === 'Tactics'
-      ? [
-        { gridX: 2, gridY: 1, x: 210, y: 128 },
-        { gridX: 1, gridY: 2, x: 150, y: 173 },
-        { gridX: 2, gridY: 3, x: 210, y: 218 },
-        { gridX: 3, gridY: 0, x: 270, y: 83 },
-        { gridX: 3, gridY: 4, x: 270, y: 263 }
-      ]
+      ? tacticsPositions
       : smashPositions || [
         { x: 170, y: 218 },
         { x: 305, y: 146 },
@@ -81,11 +79,21 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         { x: 640, y: 178 },
         { x: 520, y: 300 }
       ];
+    const resolvedPositions = currentStage.mode === 'Tactics' && engineRef.current
+      ? positions.map(pos => ({
+        ...pos,
+        x: engineRef.current.gridStartX + pos.gridX * engineRef.current.cellW + engineRef.current.cellW / 2,
+        y: engineRef.current.gridStartY + pos.gridY * engineRef.current.cellH + engineRef.current.cellH / 2
+      }))
+      : positions;
 
     return tiers.map((tier, index) => {
       const tierPool = pool.filter(item => item.tier === tier);
       const item = tierPool[(currentStage.id + index) % Math.max(1, tierPool.length)] || pool[index % Math.max(1, pool.length)];
-      return item ? { ...item, ...positions[index], pickupId: `${item.id}_${index}`, used: false } : null;
+      const fallbackPosition = resolvedPositions[index]
+        || resolvedPositions[resolvedPositions.length - 1]
+        || { x: 170 + index * 70, y: currentStage.mode === 'Tactics' ? 250 : 218 };
+      return item ? { ...item, ...fallbackPosition, pickupId: `${item.id}_${index}`, used: false } : null;
     }).filter(Boolean);
   };
 
@@ -98,9 +106,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const item = tierPool[(animTime + stage.id) % Math.max(1, tierPool.length)] || pool[(animTime + stage.id) % Math.max(1, pool.length)];
     if (!item) return;
     const arenaPickups = stage.mode === 'Smash' && engine.arena?.pickups?.length ? engine.arena.pickups : null;
+    const tacticsPickups = stage.mode === 'Tactics'
+      ? getTacticsPickupPositions(arenaStage).map(pos => ({
+        x: engine.gridStartX + pos.gridX * engine.cellW + engine.cellW / 2,
+        y: engine.gridStartY + pos.gridY * engine.cellH + engine.cellH / 2
+      }))
+      : null;
     const dropPos = arenaPickups
       ? arenaPickups[(animTime + battlePickupsRef.current.length) % arenaPickups.length]
-      : null;
+      : tacticsPickups?.[(animTime + battlePickupsRef.current.length) % tacticsPickups.length] || null;
     const drop = {
       ...item,
       pickupId: `${item.id}_drop_${animTime}`,
@@ -570,7 +584,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
       engineRef.current.isFinalBoss = (stage.id === 38);
     } else if (stage.mode === 'Tactics') {
-      engineRef.current = new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
+      engineRef.current = new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
       engineRef.current.isFinalBoss = (stage.id === 38);
     }
     if (!engineRef.current) {
