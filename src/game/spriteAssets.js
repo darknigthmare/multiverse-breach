@@ -25,6 +25,7 @@ export const MIRELLE_COMPLETE_SPRITES = {
   itemsVfx: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-items-vfx.png`,
   fpsHands: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-fps-hands.png`,
   fpsEffects: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-fps-effects.png`,
+  fpsProjectile: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-fps-projectile.png`,
   kartDirections: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-kart-directions.png`,
   kartActions: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-kart-actions.png`,
   kartItems: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-kart-items.png`,
@@ -43,6 +44,7 @@ export const MIRELLE_COMPLETE_SPRITE_PACK = [
   { id: 'itemsVfx', label: 'Objets / VFX', src: MIRELLE_COMPLETE_SPRITES.itemsVfx },
   { id: 'fpsHands', label: 'FPS mains', src: MIRELLE_COMPLETE_SPRITES.fpsHands },
   { id: 'fpsEffects', label: 'FPS profondeur / projectiles', src: MIRELLE_COMPLETE_SPRITES.fpsEffects },
+  { id: 'fpsProjectile', label: 'FPS projectile recadre', src: MIRELLE_COMPLETE_SPRITES.fpsProjectile },
   { id: 'kartDirections', label: 'Kart directions', src: MIRELLE_COMPLETE_SPRITES.kartDirections },
   { id: 'kartActions', label: 'Kart actions', src: MIRELLE_COMPLETE_SPRITES.kartActions },
   { id: 'kartItems', label: 'Kart objets', src: MIRELLE_COMPLETE_SPRITES.kartItems },
@@ -90,6 +92,11 @@ export const SPRITE_SHEET_LAYOUTS = {
     columns: 4,
     rows: 4,
     rowByState: { idle: 0, run: 1, attack: 2, hit: 3, dead: 3 }
+  },
+  [MIRELLE_COMPLETE_SPRITES.hudAvatar]: {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, hit: 0, dead: 0 }
   }
 };
 
@@ -107,7 +114,7 @@ const getMirelleSpriteForContext = (hero, context = 'auto') => {
       : MIRELLE_COMPLETE_SPRITES.meleeCombat;
   }
   if (context === 'nexus' || context === 'collection') return MIRELLE_COMPLETE_SPRITES.nexusCollection;
-  if (context === 'hud') return MIRELLE_COMPLETE_SPRITES.hudIcons;
+  if (context === 'hud') return MIRELLE_COMPLETE_SPRITES.hudAvatar;
   if (context === 'fps') return MIRELLE_COMPLETE_SPRITES.fpsHands;
   return MIRELLE_COMPLETE_SPRITES.rpg;
 };
@@ -138,7 +145,19 @@ const animationRowForState = (state) => {
   return 0;
 };
 
-export const getSpriteSheetLayout = (src) => SPRITE_SHEET_LAYOUTS[src] || {
+const normalizeSpriteSrc = (src) => {
+  const value = String(src || '');
+  if (!value) return '';
+  if (value.startsWith('/')) return value;
+  try {
+    return new URL(value).pathname;
+  } catch {
+    const spriteIndex = value.indexOf('/sprites/');
+    return spriteIndex >= 0 ? value.slice(spriteIndex) : value;
+  }
+};
+
+export const getSpriteSheetLayout = (src) => SPRITE_SHEET_LAYOUTS[normalizeSpriteSrc(src)] || {
   columns: SPRITE_SHEET_META.columns,
   rows: SPRITE_SHEET_META.rows.length,
   rowByState: null

@@ -1582,6 +1582,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   const canvasRef = useRef(null);
   const fpsHandsRef = useRef(null);
   const fpsEffectsRef = useRef(null);
+  const fpsProjectileRef = useRef(null);
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
   const playableHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 40), [safeHeroes, unlockedSet]);
@@ -1602,6 +1603,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     t: 0,
     zone: 1,
     muzzle: 0,
+    reloadPulse: 0,
     px: 0,
     py: 0,
     angle: 0,
@@ -1652,13 +1654,17 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     if (typeof Image === 'undefined') return undefined;
     const hands = new Image();
     const effects = new Image();
+    const projectile = new Image();
     hands.src = MIRELLE_COMPLETE_SPRITES.fpsHands;
     effects.src = MIRELLE_COMPLETE_SPRITES.fpsEffects;
+    projectile.src = MIRELLE_COMPLETE_SPRITES.fpsProjectile;
     fpsHandsRef.current = hands;
     fpsEffectsRef.current = effects;
+    fpsProjectileRef.current = projectile;
     return () => {
       fpsHandsRef.current = null;
       fpsEffectsRef.current = null;
+      fpsProjectileRef.current = null;
     };
   }, []);
 
@@ -1723,6 +1729,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       t: 0,
       zone: 1,
       muzzle: 0,
+      reloadPulse: 0,
       px: 0,
       py: 0,
       angle: 0,
@@ -1774,6 +1781,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       }
       state.zone = state.phase === 'running' ? Math.max(0.22, 1 - state.t / (runMode === 'infestation' ? 9000 : 6200)) : state.zone;
       state.muzzle = Math.max(0, state.muzzle - 1);
+      state.reloadPulse = Math.max(0, (state.reloadPulse || 0) - 1);
       state.dash = Math.max(0, state.dash - 1);
       state.scan = Math.max(0, state.scan - 1);
       state.turret = Math.max(0, state.turret - 1);
@@ -1980,7 +1988,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         const sheet = fpsHandsRef.current;
         const frameW = sheet.naturalWidth / 4;
         const frameH = sheet.naturalHeight / 10;
-        const row = state.muzzle ? 3 : state.ammo < state.maxAmmo ? 6 : 0;
+        const row = state.reloadPulse > 0 && !state.muzzle ? 6 : 0;
         const col = Math.floor(state.t / 12) % 4;
         const handW = 300;
         const handH = 188;
@@ -1995,12 +2003,10 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           handW,
           handH
         );
-        if (state.muzzle && fpsEffectsRef.current?.complete && fpsEffectsRef.current.naturalWidth) {
-          const effectSheet = fpsEffectsRef.current;
-          const effectW = effectSheet.naturalWidth / 4;
-          const effectH = effectSheet.naturalHeight / 10;
+        if (state.muzzle && fpsProjectileRef.current?.complete && fpsProjectileRef.current.naturalWidth) {
+          const projectileSheet = fpsProjectileRef.current;
           ctx.globalAlpha = 0.88;
-          ctx.drawImage(effectSheet, (Math.floor(state.t / 3) % 4) * effectW, 2 * effectH, effectW, effectH, canvas.width / 2 - 90, canvas.height / 2 - 166, 180, 180);
+          ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight, canvas.width / 2 - 205, canvas.height / 2 - 94, 410, 146);
           ctx.globalAlpha = 1;
         }
       } else {
@@ -2042,7 +2048,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     }
     if (!state.ammo) return;
     state.ammo -= 1;
-    state.muzzle = 5;
+    state.muzzle = 36;
     const role = roleProfile[selectedHero?.category] || roleProfile.marine;
     const target = state.enemies
       .filter(enemy => enemy.hp > 0)
@@ -2062,6 +2068,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
 
   const reload = () => {
     stateRef.current.ammo = stateRef.current.maxAmmo || 24;
+    stateRef.current.reloadPulse = 12;
     sound.playSfx('coin');
   };
 
@@ -2098,6 +2105,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     if (item.type === 'normal') {
       state.hp = Math.min(state.maxHp, state.hp + 24);
       state.ammo = state.maxAmmo;
+      state.reloadPulse = 10;
     } else if (item.type === 'summon') {
       state.turret = Math.max(state.turret, 500);
     } else if (item.type === 'ultimate') {
@@ -7325,7 +7333,7 @@ export default function HubScreen({
                               if (!el) return;
                               const ctx = el.getContext('2d');
                               ctx.clearRect(0, 0, 112, 118);
-                              drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'nexus');
+                      drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud');
                             }} />
                           </div>
                           <div className="squad-hero-info">
@@ -7511,7 +7519,7 @@ export default function HubScreen({
                           if (!el) return;
                           const ctx = el.getContext('2d');
                           ctx.clearRect(0, 0, 76, 82);
-                          drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'nexus');
+                          drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud');
                         }} />
                       </div>
                       <div>

@@ -96,6 +96,7 @@ assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.include
   'arca-mirelle-items-vfx.png',
   'arca-mirelle-fps-hands.png',
   'arca-mirelle-fps-effects.png',
+  'arca-mirelle-fps-projectile.png',
   'arca-mirelle-kart-directions.png',
   'arca-mirelle-kart-actions.png',
   'arca-mirelle-kart-items.png',
@@ -106,11 +107,14 @@ assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.include
 });
 assert(rendererSource.includes("context = 'auto'") && rendererSource.includes('srcGetter(entity, context)'), 'Renderer must route hero sprites by mode context.');
 assert(spriteAssetsSource.includes('SPRITE_SHEET_LAYOUTS') && spriteAssetsSource.includes('rows: 12') && spriteAssetsSource.includes('rows: 10') && spriteAssetsSource.includes('rows: 6'), 'Mirelle complete sheets must declare real per-sheet crop layouts.');
+assert(spriteAssetsSource.includes('normalizeSpriteSrc') && spriteAssetsSource.includes('new URL(value).pathname'), 'Sprite layout lookup must normalize absolute browser URLs before matching generated sheet paths.');
 assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.includes('getSpriteFrameForLayout'), 'Renderer must crop generated sprites through per-sheet layouts.');
-assert(hubSource.includes('sheet.naturalHeight / 10') && hubSource.includes('effectSheet.naturalHeight / 10'), 'FPS Mirelle sheets must be cropped as 4x10 non-square action bands.');
+assert(hubSource.includes('sheet.naturalHeight / 10') && hubSource.includes('fpsProjectileRef'), 'FPS Mirelle hands must be cropped as 4x10 and use a dedicated projectile overlay.');
+assert(hubSource.includes('reloadPulse') && hubSource.includes('state.reloadPulse > 0 && !state.muzzle ? 6 : 0') && hubSource.includes('state.muzzle = 36') && hubSource.includes('fpsProjectileRef.current') && hubSource.includes('410, 146'), 'FPS firing must keep idle hands framed and draw projectile frames as a separate overlay.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');
 assert(hubSource.includes("drawPixelSprite(ctx, x, y + 24") && hubSource.includes('false, hero)'), 'Mosaic City Nexus NPCs must render real hero sprites instead of color fallback blocks.');
+assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
 assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');
 assert(hubSource.includes("spritePreview.kind === 'pack'"), 'Admin sprite preview must render complete hero sprite packs.');
 [
@@ -305,7 +309,7 @@ console.log(JSON.stringify({
   raceMode: 'playable-hub-tab',
   raceGameplay: ['laps', 'checkpoints', 'drift', 'boost', 'items', 'hazards', 'ai-rivals'],
   racePilotSprite: 'mirelle-kart-openai-sheet',
-  mirelleCompleteSpritePack: 15,
+  mirelleCompleteSpritePack: 16,
   mirelleSpriteRouting: ['rpg', 'tactics', 'melee', 'nexus', 'hud', 'fps', 'kart', 'admin-preview'],
   meleeArenaLayouts: 17,
   meleeTerrainSystem: 'dynamic',
