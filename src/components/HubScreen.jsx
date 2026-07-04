@@ -2209,6 +2209,11 @@ function MultiverseRiftMap({
     acc[node.stage.mode] = (acc[node.stage.mode] || 0) + 1;
     return acc;
   }, {});
+  const sealedCount = portalNodes.filter(node => completedStages.includes(node.stage.id)).length;
+  const unlockedCount = portalNodes.filter(node => isStageUnlocked(node.stage)).length;
+  const lockedCount = Math.max(0, portalNodes.length - unlockedCount);
+  const nextOpenNode = portalNodes.find(node => !completedStages.includes(node.stage.id) && isStageUnlocked(node.stage));
+  const hiddenNodeCount = Math.max(0, stages.length - portalNodes.length);
 
   const arcRoutes = narrativeArcs.slice(0, 12).map((arc, index) => {
     const linkedStages = getLinkedStagesForArc(arc, allStages, BASE_HEROES_DB);
@@ -2258,12 +2263,56 @@ function MultiverseRiftMap({
             </span>
           )}
         </div>
+        <div className="rift-map-status-grid">
+          <span>
+            <b>{sealedCount}</b>
+            {lang === 'fr' ? 'scellees' : 'sealed'}
+          </span>
+          <span>
+            <b>{unlockedCount}</b>
+            {lang === 'fr' ? 'ouvertes' : 'open'}
+          </span>
+          <span>
+            <b>{lockedCount}</b>
+            {lang === 'fr' ? 'verrouillees' : 'locked'}
+          </span>
+        </div>
+        {nextOpenNode && (
+          <button
+            type="button"
+            className="rift-next-action"
+            onClick={() => onSelectStage(nextOpenNode.stage)}
+            title={lang === 'fr'
+              ? 'Selectionne la prochaine faille jouable non stabilisee.'
+              : 'Select the next playable unstabilized rift.'}
+          >
+            <strong>{lang === 'fr' ? 'Prochaine coordonnee' : 'Next coordinate'}</strong>
+            <span>#{nextOpenNode.stage.id} {nextOpenNode.stage.displayName?.[lang] || nextOpenNode.stage.name}</span>
+          </button>
+        )}
+        {hiddenNodeCount > 0 && (
+          <div className="rift-map-overflow-note">
+            {lang === 'fr'
+              ? `${hiddenNodeCount} breche(s) supplementaire(s) archivees pour garder la carte lisible. Affine les filtres pour les inspecter.`
+              : `${hiddenNodeCount} additional breach(es) archived to keep the map readable. Refine filters to inspect them.`}
+          </div>
+        )}
       </div>
       <div className="rift-map-stage" aria-label={lang === 'fr' ? 'Carte visuelle des failles' : 'Visual rift map'}>
         <div className="rift-map-core">
           <strong>NEXUS</strong>
           <span>{lang === 'fr' ? 'Ancre centrale' : 'Central Anchor'}</span>
         </div>
+        {portalNodes.length === 0 && arcRoutes.length === 0 && (
+          <div className="rift-map-empty-state">
+            <strong>{lang === 'fr' ? 'Aucune coordonnee visible' : 'No visible coordinate'}</strong>
+            <span>
+              {lang === 'fr'
+                ? 'Cette vue ne contient aucune faille disponible avec les filtres, les DLC actifs et les prerequis actuels.'
+                : 'This view has no visible rift with the current filters, active DLC, and requirements.'}
+            </span>
+          </div>
+        )}
         {arcRoutes.map(route => {
           const doneCount = route.timeline.filter(node => node.status === 'done').length;
           const ratio = route.timeline.length ? doneCount / route.timeline.length : 0;
@@ -5025,6 +5074,19 @@ export default function HubScreen({
     return Array.from(groupMap.values()).sort((a, b) => a.label.localeCompare(b.label));
   })();
   const selectedNarrativeArc = activeNarrativeArcs.find(arc => arc.id === selectedNarrativeArcId) || null;
+  const selectedNarrativeGroup = narrativeArcGroups.find(group => group.id === selectedNarrativeGroupId) || null;
+  const focusedNarrativeArcIds = selectedNarrativeGroup
+    ? new Set(selectedNarrativeGroup.arcs.map(arc => arc.id))
+    : null;
+  const focusedNarrativeArcs = focusedNarrativeArcIds
+    ? activeNarrativeArcs.filter(arc => focusedNarrativeArcIds.has(arc.id))
+    : activeNarrativeArcs;
+  const focusedMissionPool = focusedNarrativeArcIds
+    ? missionPool.filter(stage => {
+      const arcId = stage.universeArc?.id || stage.characterArc?.id || stage.trioArc?.id;
+      return focusedNarrativeArcIds.has(arcId);
+    })
+    : missionPool;
   useEffect(() => {
     setSelectedNarrativeArcId(null);
     setSelectedNarrativeGroupId(null);
@@ -5551,16 +5613,47 @@ export default function HubScreen({
               />
             ) : narrativeArcScreenType ? (
               <>
+                <NarrativeArcGroupBrowser
+                  lang={lang}
+                  groups={narrativeArcGroups}
+                  selectedGroupId={selectedNarrativeGroupId}
+                  onSelectGroup={(groupId) => { setSelectedNarrativeGroupId(groupId); setBriefingStageId(null); sound.playSfx('coin'); }}
+                  onBackToGroups={() => { setSelectedNarrativeGroupId(null); setBriefingStageId(null); sound.playSfx('click'); }}
+                  onOpenArc={openNarrativeArc}
+                  stages={visibleStages}
+                  completedStages={completedStages}
+                  categoryColor={selectedMissionMeta.color}
+                  getStageUnlockRequirementText={getArcUnlockRequirementText}
+                />
+                {selectedNarrativeGroup && (
+                  <div className="rift-focus-strip" style={{ '--rift-view-color': selectedNarrativeGroup.color || selectedMissionMeta.color }}>
+                    <div>
+                      <div className="portal-focus-kicker">
+                        {lang === 'fr' ? 'FOCUS DE CARTE' : 'MAP FOCUS'}
+                      </div>
+                      <strong>{selectedNarrativeGroup.label}</strong>
+                      <span>{selectedNarrativeGroup.desc}</span>
+                    </div>
+                    <button
+                      type="button"
+                      className="btn-retro"
+                      onClick={() => { setSelectedNarrativeGroupId(null); setBriefingStageId(null); sound.playSfx('click'); }}
+                      title={lang === 'fr' ? 'Reaffiche toutes les vues narratives disponibles.' : 'Show every available narrative view again.'}
+                    >
+                      {lang === 'fr' ? 'TOUTES LES VUES' : 'ALL VIEWS'}
+                    </button>
+                  </div>
+                )}
                 <div className="rift-command-layout">
                   <MultiverseRiftMap
                     lang={lang}
-                    stages={missionPool}
+                    stages={focusedMissionPool}
                     allStages={visibleStages}
                     completedStages={completedStages}
                     isStageUnlocked={isStageUnlocked}
                     onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
                     onSelectArc={openNarrativeArc}
-                    narrativeArcs={activeNarrativeArcs}
+                    narrativeArcs={focusedNarrativeArcs}
                     mapKicker={riftMapCopy.kicker}
                     mapTitle={riftMapCopy.title}
                     mapDescription={riftMapCopy.desc}
@@ -5589,22 +5682,10 @@ export default function HubScreen({
                 </div>
                 <NarrativeArcSequencePanel
                   lang={lang}
-                  arcs={activeNarrativeArcs}
+                  arcs={focusedNarrativeArcs}
                   stages={visibleStages}
                   completedStages={completedStages}
                   onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
-                />
-                <NarrativeArcGroupBrowser
-                  lang={lang}
-                  groups={narrativeArcGroups}
-                  selectedGroupId={selectedNarrativeGroupId}
-                  onSelectGroup={(groupId) => { setSelectedNarrativeGroupId(groupId); setBriefingStageId(null); sound.playSfx('coin'); }}
-                  onBackToGroups={() => { setSelectedNarrativeGroupId(null); setBriefingStageId(null); sound.playSfx('click'); }}
-                  onOpenArc={openNarrativeArc}
-                  stages={visibleStages}
-                  completedStages={completedStages}
-                  categoryColor={selectedMissionMeta.color}
-                  getStageUnlockRequirementText={getArcUnlockRequirementText}
                 />
               </>
             ) : (
