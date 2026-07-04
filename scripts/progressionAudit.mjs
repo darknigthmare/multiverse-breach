@@ -118,6 +118,9 @@ assert(raceModeSource.includes('race-garage-card') && raceModeSource.includes('R
 assert(raceEngineSource.includes('KART_TRACK_LAYOUTS') && raceEngineSource.includes('nexus_suture_eight') && raceEngineSource.includes('portal_hairpin_ritual') && raceEngineSource.includes('surfaceZones'), 'Race mode must provide varied Super-Kart-style Nexus track layouts.');
 assert(raceEngineSource.includes('getClosestRoadPoint') && raceEngineSource.includes('this.track.roadWidth') && raceEngineSource.includes('this.track.shortcuts'), 'Race physics and minimap must follow the active track path instead of one fixed oval.');
 assert(raceModeSource.includes('race-track-selector') && raceModeSource.includes('setTrackId') && raceModeSource.includes('trackList.map'), 'Race tab must let the player switch between available kart tracks.');
+assert(raceEngineSource.includes('startBoostWindow') && raceEngineSource.includes('driftCharge') && raceEngineSource.includes('Mini-turbo violet'), 'Race mode must include start boost and charged mini-turbo handling.');
+assert(raceEngineSource.includes("zone.type === 'jump'") && raceEngineSource.includes("zone.type === 'portal'") && raceEngineSource.includes("zone.type === 'slow'"), 'Race mode must include jump, portal, and slow interactive surfaces.');
+assert(raceEngineSource.includes('drawProjectedSurfaceZone') && raceEngineSource.includes('TRICK BOOST') && raceEngineSource.includes('CHARGE MINI-TURBO'), 'Race mode must render readable surface and driving feedback.');
 assert(rendererSource.includes('drawMirelleItemVfx') && rendererSource.includes('MIRELLE_COMPLETE_SPRITES.itemsVfx'), 'Combat renderer must use Mirelle item/VFX sheet during gameplay states.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');

@@ -70,6 +70,11 @@ export const KART_TRACK_LAYOUTS = {
       { x: 626, y: 178, angle: 2.7 },
       { x: 750, y: 320, angle: 1.72 }
     ],
+    surfaceZones: [
+      { type: 'jump', x: 336, y: 420, r: 34, angle: -0.1 },
+      { type: 'slow', x: 206, y: 300, r: 46 },
+      { type: 'portal', x: 626, y: 178, r: 32, exit: { x: 704, y: 246, angle: 1.72 }, cooldown: 0 }
+    ],
     itemBoxes: [
       { x: 254, y: 244, respawn: 0 },
       { x: 480, y: 122, respawn: 0 },
@@ -121,6 +126,11 @@ export const KART_TRACK_LAYOUTS = {
       { x: 640, y: 392, angle: -2.4 },
       { x: 330, y: 160, angle: 0.1 }
     ],
+    surfaceZones: [
+      { type: 'slow', x: 480, y: 276, r: 46 },
+      { type: 'jump', x: 640, y: 392, r: 34, angle: -2.4 },
+      { type: 'portal', x: 330, y: 160, r: 30, exit: { x: 690, y: 310, angle: 2.5 }, cooldown: 0 }
+    ],
     itemBoxes: [
       { x: 270, y: 312, respawn: 0 },
       { x: 480, y: 124, respawn: 0 },
@@ -166,6 +176,11 @@ export const KART_TRACK_LAYOUTS = {
     shortcuts: [
       { from: { x: 276, y: 392 }, to: { x: 604, y: 208 }, risk: 'hazard' }
     ],
+    surfaceZones: [
+      { type: 'slow', x: 410, y: 300, r: 54 },
+      { type: 'jump', x: 604, y: 210, r: 34, angle: -0.9 },
+      { type: 'portal', x: 276, y: 392, r: 30, exit: { x: 604, y: 208, angle: -0.35 }, cooldown: 0 }
+    ],
     boostPads: [
       { x: 278, y: 456, angle: -0.8 },
       { x: 760, y: 306, angle: 1.95 },
@@ -196,7 +211,9 @@ export const KART_TRACK_LAYOUTS = {
     offroadDrag: 0.83,
     surfaceZones: [
       { type: 'ice', x: 236, y: 236, r: 92 },
-      { type: 'ice', x: 726, y: 350, r: 86 }
+      { type: 'ice', x: 726, y: 350, r: 86 },
+      { type: 'jump', x: 576, y: 96, r: 34, angle: 0.3 },
+      { type: 'slow', x: 186, y: 354, r: 42 }
     ],
     checkpoints: [
       { x: 520, y: 462, r: 82 },
@@ -273,6 +290,12 @@ export const KART_TRACK_LAYOUTS = {
       { x: 520, y: 88, angle: 0.02 },
       { x: 688, y: 344, angle: -1.9 }
     ],
+    surfaceZones: [
+      { type: 'portal', x: 150, y: 128, r: 34, exit: { x: 806, y: 164, angle: 0.45 }, cooldown: 0 },
+      { type: 'portal', x: 688, y: 346, r: 34, exit: { x: 456, y: 468, angle: -Math.PI / 2 }, cooldown: 0 },
+      { type: 'slow', x: 236, y: 398, r: 42 },
+      { type: 'jump', x: 520, y: 88, r: 32, angle: 0.02 }
+    ],
     itemBoxes: [
       { x: 190, y: 132, respawn: 0 },
       { x: 474, y: 86, respawn: 0 },
@@ -316,6 +339,12 @@ export const KART_TRACK_LAYOUTS = {
       { x: 284, y: 430, angle: -0.25 },
       { x: 480, y: 86, angle: 0.2 },
       { x: 676, y: 430, angle: -2.9 }
+    ],
+    surfaceZones: [
+      { type: 'slow', x: 480, y: 300, r: 92 },
+      { type: 'jump', x: 284, y: 430, r: 38, angle: -0.25 },
+      { type: 'jump', x: 676, y: 430, r: 38, angle: -2.9 },
+      { type: 'portal', x: 480, y: 86, r: 34, exit: { x: 480, y: 462, angle: -Math.PI / 2 }, cooldown: 0 }
     ],
     itemBoxes: [
       { x: 178, y: 300, respawn: 0 },
@@ -379,6 +408,7 @@ export class EngineRace {
     const start = this.track.start || { x: 480, y: 474, angle: -Math.PI / 2 };
     this.time = 0;
     this.countdown = 2.6;
+    this.startBoostWindow = false;
     this.finished = false;
     this.finishReported = false;
     this.message = 'Synchronisation de depart';
@@ -417,7 +447,10 @@ export class EngineRace {
       accel: 320,
       turnRate: 3.2,
       drift: 0,
+      driftCharge: 0,
       boost: 0,
+      air: 0,
+      portalCooldown: 0,
       spin: 0,
       shield: 0,
       item: null,
@@ -474,7 +507,14 @@ export class EngineRace {
   update(dt) {
     dt = clamp(dt, 0, 1 / 30);
     this.time += dt;
+    const previousCountdown = this.countdown;
     this.countdown = Math.max(0, this.countdown - dt);
+    if (previousCountdown > 0 && this.countdown === 0 && this.startBoostWindow) {
+      this.player.boost = Math.max(this.player.boost, 0.95);
+      this.player.speed = Math.max(this.player.speed, 176);
+      this.spawnParticles(this.player.x, this.player.y, '#ffeb3b', 20);
+      this.showMessage('Depart ancre: impulsion parfaite');
+    }
     this.messageTimer = Math.max(0, this.messageTimer - dt);
     if (this.finished) {
       this.updateParticles(dt);
@@ -502,6 +542,8 @@ export class EngineRace {
     kart.shield = Math.max(0, kart.shield - dt);
     kart.spin = Math.max(0, kart.spin - dt);
     kart.boost = Math.max(0, kart.boost - dt);
+    kart.air = Math.max(0, kart.air - dt);
+    kart.portalCooldown = Math.max(0, kart.portalCooldown - dt);
     if (kart.finished) {
       kart.speed *= 0.985;
       kart.x += Math.cos(kart.angle) * kart.speed * dt;
@@ -510,6 +552,9 @@ export class EngineRace {
     }
     if (this.countdown > 0) {
       kart.speed *= 0.94;
+      if (!kart.ai && this.countdown < 0.72 && this.countdown > 0.18 && this.getPlayerInput().accel) {
+        this.startBoostWindow = true;
+      }
       return;
     }
     const input = kart.ai ? kart.aiInput : this.getPlayerInput();
@@ -520,22 +565,29 @@ export class EngineRace {
     kart.speed += accel * dt;
     const maxSpeed = kart.maxSpeed + (kart.boost > 0 ? 118 : 0);
     kart.speed = clamp(kart.speed, -88, maxSpeed);
-    const drag = surface === 'ice' ? 0.994 : onTrack ? 0.988 : this.track.offroadDrag;
+    const drag = surface === 'ice' ? 0.994 : surface === 'slow' ? 0.945 : onTrack ? 0.988 : this.track.offroadDrag;
     kart.speed *= Math.pow(drag, dt * 60);
     if (kart.spin > 0) kart.speed *= 0.965;
     const driftHeld = input.drift && Math.abs(kart.speed) > 80;
     kart.drift = clamp(kart.drift + (driftHeld ? dt * 1.6 : -dt * 2.3), 0, 1);
+    kart.driftCharge = driftHeld ? clamp(kart.driftCharge + dt, 0, 2.4) : kart.driftCharge;
     const grip = surface === 'ice' ? 0.68 : 1;
     const turnPower = (0.55 + clamp(Math.abs(kart.speed) / 220, 0, 1) * 0.85) * (kart.drift ? 1.35 : 1) * grip;
     kart.angle += input.turn * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
     if (!driftHeld && kart.drift > 0.72) {
-      kart.boost = Math.max(kart.boost, 0.55);
+      const turbo = kart.driftCharge > 1.75 ? 1.05 : kart.driftCharge > 1.1 ? 0.78 : 0.55;
+      kart.boost = Math.max(kart.boost, turbo);
       this.spawnParticles(kart.x, kart.y, kart.color, 10);
+      if (!kart.ai) this.showMessage(turbo > 1 ? 'Mini-turbo violet' : turbo > 0.65 ? 'Mini-turbo orange' : 'Mini-turbo bleu');
+      kart.driftCharge = 0;
+    } else if (!driftHeld && kart.drift <= 0.08) {
+      kart.driftCharge = 0;
     }
     kart.x += Math.cos(kart.angle) * kart.speed * dt;
     kart.y += Math.sin(kart.angle) * kart.speed * dt;
     this.applyTrackBounds(kart);
     this.applyBoostPads(kart);
+    this.applySurfaceZones(kart);
     this.applyHazards(kart);
     this.collectItem(kart);
     this.updateCheckpoints(kart);
@@ -618,6 +670,28 @@ export class EngineRace {
   getSurfaceAt(x, y) {
     const zone = (this.track.surfaceZones || []).find(surface => distance({ x, y }, surface) < surface.r);
     return zone?.type || 'road';
+  }
+
+  applySurfaceZones(kart) {
+    (this.track.surfaceZones || []).forEach(zone => {
+      if (distance(kart, zone) > zone.r) return;
+      if (zone.type === 'jump' && kart.air <= 0) {
+        kart.air = 0.56;
+        kart.boost = Math.max(kart.boost, 0.42);
+        kart.speed = Math.max(kart.speed, 188);
+        this.spawnParticles(kart.x, kart.y, '#d8fffb', 10);
+        if (!kart.ai) this.showMessage('Tremplin de faille: trick boost');
+      }
+      if (zone.type === 'portal' && kart.portalCooldown <= 0 && zone.exit) {
+        kart.x = zone.exit.x;
+        kart.y = zone.exit.y;
+        kart.angle = zone.exit.angle ?? kart.angle;
+        kart.portalCooldown = 1.8;
+        kart.boost = Math.max(kart.boost, 0.38);
+        this.spawnParticles(kart.x, kart.y, '#39c5bb', 18);
+        if (!kart.ai) this.showMessage('Portail court traverse');
+      }
+    });
   }
 
   applyBoostPads(kart) {
@@ -922,6 +996,10 @@ export class EngineRace {
 
   drawProjectedRaceObjects(ctx) {
     const projected = [];
+    (this.track.surfaceZones || []).forEach(zone => {
+      const p = this.projectToRearCamera(zone);
+      if (p) projected.push({ type: 'surface', p, source: zone });
+    });
     this.track.boostPads.forEach(pad => {
       const p = this.projectToRearCamera(pad);
       if (p) projected.push({ type: 'boost', p, source: pad });
@@ -947,6 +1025,7 @@ export class EngineRace {
       .sort((a, b) => a.p.forward - b.p.forward)
       .forEach(entry => {
         if (entry.type === 'opponent') this.drawProjectedOpponent(ctx, entry.source, entry.p);
+        if (entry.type === 'surface') this.drawProjectedSurfaceZone(ctx, entry.source, entry.p);
         if (entry.type === 'boost') this.drawProjectedBoostPad(ctx, entry.p);
         if (entry.type === 'item') this.drawProjectedItemBox(ctx, entry.p);
         if (entry.type === 'hazard') this.drawProjectedHazard(ctx, entry.source, entry.p);
@@ -968,6 +1047,36 @@ export class EngineRace {
     ctx.stroke();
     ctx.fillStyle = '#d8fffb';
     ctx.fillRect(-24, -4, 48, 8);
+    ctx.restore();
+  }
+
+  drawProjectedSurfaceZone(ctx, zone, p) {
+    const colors = {
+      ice: ['rgba(168,247,239,0.16)', '#a8f7ef'],
+      slow: ['rgba(160,70,255,0.14)', '#9b59b6'],
+      jump: ['rgba(255,235,59,0.14)', '#ffeb3b'],
+      portal: ['rgba(57,197,187,0.14)', '#39c5bb']
+    };
+    const [fill, stroke] = colors[zone.type] || ['rgba(255,255,255,0.1)', '#d8fffb'];
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.scale(p.scale, p.scale * 0.42);
+    ctx.fillStyle = fill;
+    ctx.strokeStyle = stroke;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, Math.max(18, zone.r * 0.86), Math.max(8, zone.r * 0.34), 0, 0, TAU);
+    ctx.fill();
+    ctx.stroke();
+    if (zone.type === 'jump') {
+      ctx.fillStyle = stroke;
+      ctx.fillRect(-18, -3, 36, 6);
+    }
+    if (zone.type === 'portal') {
+      ctx.beginPath();
+      ctx.ellipse(0, 0, Math.max(12, zone.r * 0.42), Math.max(5, zone.r * 0.2), 0, 0, TAU);
+      ctx.stroke();
+    }
     ctx.restore();
   }
 
@@ -1098,6 +1207,13 @@ export class EngineRace {
       ctx.closePath();
       ctx.fill();
     }
+    if (this.player.air > 0) {
+      ctx.strokeStyle = 'rgba(255,235,59,0.78)';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.ellipse(centerX, baseY - 72, 128, 62, 0, 0, TAU);
+      ctx.stroke();
+    }
     if (this.player.shield > 0) {
       ctx.strokeStyle = 'rgba(217,182,255,0.82)';
       ctx.lineWidth = 3;
@@ -1162,6 +1278,18 @@ export class EngineRace {
         ctx.stroke();
       });
     }
+    (this.track.surfaceZones || []).forEach(zone => {
+      ctx.fillStyle = zone.type === 'ice'
+        ? 'rgba(168,247,239,0.62)'
+        : zone.type === 'slow'
+          ? 'rgba(155,89,182,0.62)'
+          : zone.type === 'portal'
+            ? 'rgba(57,197,187,0.62)'
+            : 'rgba(255,235,59,0.62)';
+      ctx.beginPath();
+      ctx.arc(zone.x, zone.y, Math.max(12, zone.r * 0.34), 0, TAU);
+      ctx.fill();
+    });
     [this.player, ...this.opponents].forEach(kart => {
       ctx.fillStyle = kart.color;
       ctx.beginPath();
@@ -1235,6 +1363,30 @@ export class EngineRace {
   }
 
   drawObjects(ctx) {
+    (this.track.surfaceZones || []).forEach(zone => {
+      ctx.save();
+      ctx.translate(zone.x, zone.y);
+      ctx.fillStyle = zone.type === 'ice'
+        ? 'rgba(168,247,239,0.16)'
+        : zone.type === 'slow'
+          ? 'rgba(155,89,182,0.15)'
+          : zone.type === 'portal'
+            ? 'rgba(57,197,187,0.16)'
+            : 'rgba(255,235,59,0.14)';
+      ctx.strokeStyle = zone.type === 'ice'
+        ? '#a8f7ef'
+        : zone.type === 'slow'
+          ? '#9b59b6'
+          : zone.type === 'portal'
+            ? '#39c5bb'
+            : '#ffeb3b';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(0, 0, zone.r, 0, TAU);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+    });
     this.track.boostPads.forEach(pad => {
       ctx.save();
       ctx.translate(pad.x, pad.y);
@@ -1333,6 +1485,13 @@ export class EngineRace {
       ctx.fill();
       ctx.globalAlpha = 1;
     }
+    if (kart.air > 0) {
+      ctx.strokeStyle = 'rgba(255,235,59,0.74)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 38, 24, 0, 0, TAU);
+      ctx.stroke();
+    }
     if (kart.shield > 0) {
       ctx.strokeStyle = 'rgba(217,182,255,0.86)';
       ctx.lineWidth = 2;
@@ -1359,9 +1518,9 @@ export class EngineRace {
   drawHud(ctx) {
     const player = this.player;
     ctx.fillStyle = 'rgba(2,1,8,0.78)';
-    ctx.fillRect(14, 14, 250, 106);
+    ctx.fillRect(14, 14, 250, 136);
     ctx.strokeStyle = 'rgba(57,197,187,0.45)';
-    ctx.strokeRect(14, 14, 250, 106);
+    ctx.strokeRect(14, 14, 250, 136);
     drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 0, 0, 22, 24, 34, 34);
     ctx.font = 'bold 15px Share Tech Mono, monospace';
     ctx.fillStyle = '#39c5bb';
@@ -1380,6 +1539,14 @@ export class EngineRace {
     } else {
       drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 1, 6, 218, 76, 34, 34);
     }
+    const turboRatio = clamp(player.driftCharge / 2.4, 0, 1);
+    ctx.fillStyle = 'rgba(255,255,255,0.12)';
+    ctx.fillRect(28, 124, 224, 5);
+    ctx.fillStyle = turboRatio > 0.72 ? '#d9b6ff' : turboRatio > 0.45 ? '#ffb15c' : '#39c5bb';
+    ctx.fillRect(28, 124, 224 * turboRatio, 5);
+    ctx.fillStyle = '#8aa5a5';
+    ctx.font = '9px Share Tech Mono, monospace';
+    ctx.fillText(player.air > 0 ? 'TRICK BOOST' : this.startBoostWindow && this.countdown > 0 ? 'FENETRE DEPART PARFAIT' : 'CHARGE MINI-TURBO', 28, 140);
 
     this.drawTopDownMinimap(ctx);
 
