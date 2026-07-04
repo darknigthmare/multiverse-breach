@@ -18,6 +18,10 @@ export class EngineTactics {
     this.objectiveProgress = 0;
     this.objectiveEvents = 0;
     this.extractedHeroIds = new Set();
+    this.sealedPortalKeys = new Set();
+    this.collectedArtifactKeys = new Set();
+    this.protectedArtifact = null;
+    this.escortUnit = null;
     this.turnsElapsed = 0;
     this.damageDealt = 0;
     this.damageTaken = 0;
@@ -33,6 +37,28 @@ export class EngineTactics {
     this.gridStartX = Math.round((this.width - this.cols * this.cellW) / 2);
     this.gridStartY = 60;
     this.tiles = this.battlefield.tiles || [];
+    const artifactTile = this.tiles.find(tile => tile.type === 'artifact');
+    if (artifactTile) {
+      this.protectedArtifact = {
+        name: artifactTile.label || 'Origin Shard',
+        gridX: artifactTile.x,
+        gridY: artifactTile.y,
+        hp: 140,
+        maxHp: 140
+      };
+    }
+    if (this.battlefield.escortSpawn) {
+      this.escortUnit = {
+        name: 'A.R.C.A. Witness',
+        gridX: this.battlefield.escortSpawn.x,
+        gridY: this.battlefield.escortSpawn.y,
+        x: 0,
+        y: 0,
+        currentHp: 120,
+        maxHp: 120,
+        facing: 1
+      };
+    }
 
     // Convert heroes
     this.heroes = heroes.map((h, idx) => ({
@@ -249,6 +275,7 @@ export class EngineTactics {
     if (tile.type === 'high') return 2;
     if (tile.type === 'heavyCover') return 2;
     if (tile.type === 'hazard') return unit && this.enemies.includes(unit) ? 1 : 2;
+    if (tile.type === 'portalSpawn') return unit && this.enemies.includes(unit) ? 1 : 2;
     return 1;
   }
 
@@ -391,6 +418,24 @@ export class EngineTactics {
       unit.currentHp = Math.min(unit.maxHp, unit.currentHp + 8);
       this.particles.add(px, py - 18, 0, -1, '#2ecc71', 10, 40, 'text', '+HP');
     }
+    if (tile.type === 'portalSpawn' && this.heroes.includes(unit)) {
+      const key = `${tile.x},${tile.y}`;
+      if (!this.sealedPortalKeys.has(key)) {
+        this.sealedPortalKeys.add(key);
+        this.objectiveEvents++;
+        this.particles.add(px, py - 18, 0, -1, '#b56dff', 10, 45, 'text', 'PORTAIL SCELLE');
+        this.updateTacticsObjective();
+      }
+    }
+    if (tile.type === 'artifact' && this.heroes.includes(unit) && this.objective === 'artifact') {
+      const key = `${tile.x},${tile.y}`;
+      if (!this.collectedArtifactKeys.has(key)) {
+        this.collectedArtifactKeys.add(key);
+        this.objectiveEvents++;
+        this.particles.add(px, py - 18, 0, -1, '#ffeb3b', 10, 45, 'text', 'ARTEFACT');
+        this.updateTacticsObjective();
+      }
+    }
   }
 
   getDamagePreview(attacker, defender, actionType = 'simple') {
@@ -446,7 +491,9 @@ export class EngineTactics {
     const heroOccupies = this.heroes.some(h => h.currentHp > 0 && h !== ignoreUnit && h.gridX === c && h.gridY === r);
     const enemyOccupies = this.enemies.some(e => e.currentHp > 0 && e !== ignoreUnit && e.gridX === c && e.gridY === r);
     const obstacleOccupies = this.obstacles.some(o => o.hp > 0 && o.gridX === c && o.gridY === r);
-    return heroOccupies || enemyOccupies || obstacleOccupies || this.isBlockedTile(c, r);
+    const escortOccupies = this.escortUnit?.currentHp > 0 && this.escortUnit !== ignoreUnit && this.escortUnit.gridX === c && this.escortUnit.gridY === r;
+    const artifactOccupies = this.objective === 'protect' && this.protectedArtifact?.hp > 0 && this.protectedArtifact.gridX === c && this.protectedArtifact.gridY === r;
+    return heroOccupies || enemyOccupies || obstacleOccupies || escortOccupies || artifactOccupies || this.isBlockedTile(c, r);
   }
 
   getUnitAtCell(c, r) {
@@ -456,6 +503,12 @@ export class EngineTactics {
     if (enemy) return { unit: enemy, type: 'enemy' };
     const obstacle = this.obstacles.find(o => o.hp > 0 && o.gridX === c && o.gridY === r);
     if (obstacle) return { unit: obstacle, type: 'obstacle' };
+    if (this.objective === 'protect' && this.protectedArtifact?.hp > 0 && this.protectedArtifact.gridX === c && this.protectedArtifact.gridY === r) {
+      return { unit: this.protectedArtifact, type: 'artifact' };
+    }
+    if (this.escortUnit?.currentHp > 0 && this.escortUnit.gridX === c && this.escortUnit.gridY === r) {
+      return { unit: this.escortUnit, type: 'escort' };
+    }
     return null;
   }
 
@@ -473,6 +526,7 @@ export class EngineTactics {
       this.activeUnit.gridX = c;
       this.activeUnit.gridY = r;
       if (c !== previousGridX) this.activeUnit.facing = c > previousGridX ? 1 : -1;
+      this.applyStartTileEffect(this.activeUnit);
       this.playSfx('jump');
       
       this.actionPhase = 'action';
@@ -570,6 +624,48 @@ export class EngineTactics {
       return;
     }
 
+    if (this.objective === 'protect') {
+      if (!this.protectedArtifact || this.protectedArtifact.hp <= 0) {
+        this.completeBattle('defeat');
+        return;
+      }
+      this.objectiveProgress = Math.min(this.objectiveTarget, this.turnsElapsed);
+      if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'portals') {
+      this.objectiveProgress = this.sealedPortalKeys.size;
+      if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'artifact') {
+      this.objectiveProgress = this.collectedArtifactKeys.size;
+      if (this.objectiveProgress >= this.objectiveTarget) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'escort') {
+      if (!this.escortUnit || this.escortUnit.currentHp <= 0) {
+        this.completeBattle('defeat');
+        return;
+      }
+      const extractionZone = this.battlefield.extractionZone || [];
+      const inZone = extractionZone.some(cell => cell.x === this.escortUnit.gridX && cell.y === this.escortUnit.gridY);
+      this.objectiveProgress = inZone ? 1 : 0;
+      if (inZone) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'overload') {
+      const defeatedBosses = this.enemies.filter(enemy => enemy.isBoss && enemy.currentHp <= 0).length;
+      this.objectiveProgress = defeatedBosses;
+      if (defeatedBosses > 0) this.completeBattle('victory');
+      if (this.turnsElapsed >= this.objectiveTarget && defeatedBosses === 0) this.completeBattle('defeat');
+      return;
+    }
+
     if (this.objective === 'control') {
       const objectiveTiles = this.tiles.filter(tile => tile.type === 'objective');
       const heldTiles = objectiveTiles.filter(tile => {
@@ -629,9 +725,42 @@ export class EngineTactics {
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
   }
 
+  advanceEscortUnit() {
+    if (this.objective !== 'escort' || !this.escortUnit || this.escortUnit.currentHp <= 0) return;
+    const aliveHeroes = this.heroes.filter(hero => hero.currentHp > 0);
+    const hasEscort = aliveHeroes.some(hero => Math.abs(hero.gridX - this.escortUnit.gridX) + Math.abs(hero.gridY - this.escortUnit.gridY) <= 1);
+    if (!hasEscort) return;
+    const extractionZone = this.battlefield.extractionZone || [];
+    if (!extractionZone.length) return;
+    const target = extractionZone.reduce((best, cell) => {
+      const dist = Math.abs(cell.x - this.escortUnit.gridX) + Math.abs(cell.y - this.escortUnit.gridY);
+      return !best || dist < best.dist ? { ...cell, dist } : best;
+    }, null);
+    const candidates = [
+      { x: this.escortUnit.gridX + Math.sign(target.x - this.escortUnit.gridX), y: this.escortUnit.gridY },
+      { x: this.escortUnit.gridX, y: this.escortUnit.gridY + Math.sign(target.y - this.escortUnit.gridY) },
+      { x: this.escortUnit.gridX + 1, y: this.escortUnit.gridY },
+      { x: this.escortUnit.gridX, y: this.escortUnit.gridY + 1 },
+      { x: this.escortUnit.gridX, y: this.escortUnit.gridY - 1 }
+    ].filter(cell => this.isInsideGrid(cell.x, cell.y) && !this.isCellOccupied(cell.x, cell.y, this.escortUnit));
+    const next = candidates.sort((a, b) => (
+      Math.abs(a.x - target.x) + Math.abs(a.y - target.y)
+    ) - (
+      Math.abs(b.x - target.x) + Math.abs(b.y - target.y)
+    ))[0];
+    if (!next) return;
+    const previousX = this.escortUnit.gridX;
+    this.escortUnit.gridX = next.x;
+    this.escortUnit.gridY = next.y;
+    if (next.x !== previousX) this.escortUnit.facing = next.x > previousX ? 1 : -1;
+    this.particles.add(this.gridStartX + next.x * this.cellW + this.cellW / 2, this.gridStartY + next.y * this.cellH, 0, -1, '#39c5bb', 9, 34, 'text', 'ESCORTE');
+    this.updateTacticsObjective();
+  }
+
   applyTacticsMissionPressure() {
     if (this.gameOver || this.turnsElapsed <= 0) return;
     const { reinforcementEvery, hazardPulseEvery } = this.missionProfile;
+    this.advanceEscortUnit();
     if (reinforcementEvery > 0 && this.turnsElapsed % reinforcementEvery === 0) {
       this.spawnTacticsReinforcement();
     }
@@ -641,7 +770,10 @@ export class EngineTactics {
   }
 
   findOpenTacticsSpawn(spawns = []) {
-    return spawns.find(spawn => this.isInsideGrid(spawn.x, spawn.y) && !this.isCellOccupied(spawn.x, spawn.y, null));
+    const portalSpawns = this.tiles
+      .filter(tile => tile.type === 'portalSpawn' && !this.sealedPortalKeys.has(`${tile.x},${tile.y}`))
+      .map(tile => ({ x: tile.x, y: tile.y }));
+    return [...portalSpawns, ...spawns].find(spawn => this.isInsideGrid(spawn.x, spawn.y) && !this.isCellOccupied(spawn.x, spawn.y, null));
   }
 
   spawnTacticsReinforcement() {
@@ -764,6 +896,26 @@ export class EngineTactics {
   getObjectiveFocusCells(unitType = 'hero') {
     if (this.objective === 'extract') return this.battlefield.extractionZone || [];
     if (this.objective === 'control') return this.tiles.filter(tile => tile.type === 'objective').map(tile => ({ x: tile.x, y: tile.y }));
+    if (this.objective === 'protect') {
+      return this.protectedArtifact ? [{ x: this.protectedArtifact.gridX, y: this.protectedArtifact.gridY, unit: this.protectedArtifact }] : [];
+    }
+    if (this.objective === 'portals') {
+      return this.tiles
+        .filter(tile => tile.type === 'portalSpawn' && !this.sealedPortalKeys.has(`${tile.x},${tile.y}`))
+        .map(tile => ({ x: tile.x, y: tile.y }));
+    }
+    if (this.objective === 'artifact') {
+      return this.tiles
+        .filter(tile => tile.type === 'artifact' && !this.collectedArtifactKeys.has(`${tile.x},${tile.y}`))
+        .map(tile => ({ x: tile.x, y: tile.y }));
+    }
+    if (this.objective === 'escort') {
+      if (unitType === 'enemy' && this.escortUnit?.currentHp > 0) return [{ x: this.escortUnit.gridX, y: this.escortUnit.gridY, unit: this.escortUnit }];
+      if (this.escortUnit?.currentHp > 0) return [{ x: this.escortUnit.gridX, y: this.escortUnit.gridY, unit: this.escortUnit }, ...(this.battlefield.extractionZone || [])];
+    }
+    if (this.objective === 'overload') {
+      return this.enemies.filter(enemy => enemy.isBoss && enemy.currentHp > 0).map(enemy => ({ x: enemy.gridX, y: enemy.gridY, unit: enemy }));
+    }
     if (this.objective === 'disable') {
       return this.obstacles.filter(item => item.type === 'objective' && item.hp > 0).map(item => ({ x: item.gridX, y: item.gridY, unit: item }));
     }
@@ -795,9 +947,46 @@ export class EngineTactics {
     if (tile?.type === 'lightCover') score += unitType === 'hero' ? 3 : 1;
     if (tile?.type === 'heal' && unitType === 'hero' && unit.currentHp < unit.maxHp) score += 7;
     if (tile?.type === 'hazard') score -= unitType === 'hero' ? 8 : 3;
+    if (tile?.type === 'portalSpawn') score += this.objective === 'portals' && unitType === 'hero' ? 14 : unitType === 'enemy' ? 6 : -2;
+    if (tile?.type === 'artifact') score += ['artifact', 'protect', 'escort'].includes(this.objective) && unitType === 'hero' ? 10 : unitType === 'enemy' ? 7 : 0;
     if (this.objective === 'control' && tile?.type === 'objective') score += unitType === 'hero' ? 10 : 8;
     if (this.objective === 'extract' && (this.battlefield.extractionZone || []).some(zone => zone.x === cell.x && zone.y === cell.y)) score += unitType === 'hero' ? 12 : 7;
+    if (this.objective === 'escort' && this.escortUnit) {
+      const escortDist = Math.abs(this.escortUnit.gridX - cell.x) + Math.abs(this.escortUnit.gridY - cell.y);
+      score += unitType === 'hero' ? Math.max(0, 8 - escortDist * 2) : Math.max(0, 7 - escortDist * 2);
+    }
     return score;
+  }
+
+  getEnemyTacticsRole(enemy) {
+    const text = `${enemy.name || ''} ${enemy.weapon || ''} ${enemy.type || ''}`.toLowerCase();
+    if (enemy.isBoss) return enemy.spd >= 9 ? 'bossController' : 'tank';
+    if (/sniper|rifle|gun|laser|drone|turret|archer|caster/.test(text)) return 'shooter';
+    if (/assassin|stalker|hunter|runner|predator|ninja/.test(text) || enemy.spd >= 11) return 'assassin';
+    if (/medic|support|priest|engineer|buffer|healer/.test(text)) return 'support';
+    if (/brute|tank|heavy|bunker|sentinel|juggernaut/.test(text) || enemy.def >= 10) return 'tank';
+    return 'monster';
+  }
+
+  getEnemyRoleRange(role, enemy) {
+    if (role === 'shooter' || role === 'support' || role === 'bossController') return enemy.isBoss ? 3 : 2;
+    if (role === 'assassin') return 1;
+    return enemy.isBoss ? 2 : 1;
+  }
+
+  getEnemyPreferredTarget(enemy, role, closestHero) {
+    if (this.objective === 'protect' && this.protectedArtifact?.hp > 0) return this.protectedArtifact;
+    if (this.objective === 'escort' && this.escortUnit?.currentHp > 0) return this.escortUnit;
+    if (role === 'assassin') {
+      return this.heroes
+        .filter(hero => hero.currentHp > 0)
+        .sort((a, b) => (a.currentHp / a.maxHp) - (b.currentHp / b.maxHp))[0] || closestHero;
+    }
+    if (role === 'tank' || role === 'bossController') {
+      const objectiveCell = this.getClosestObjectiveCell(enemy, 'enemy');
+      if (objectiveCell?.unit) return objectiveCell.unit;
+    }
+    return closestHero;
   }
 
   runEnemyAI() {
@@ -807,6 +996,7 @@ export class EngineTactics {
     }
 
     const enemy = this.activeUnit;
+    const role = this.getEnemyTacticsRole(enemy);
 
     let closestHero = null;
     let minDist = 999;
@@ -825,10 +1015,11 @@ export class EngineTactics {
       return;
     }
 
-    const objectiveCell = ['control', 'extract'].includes(this.objective)
+    const tacticalTarget = this.getEnemyPreferredTarget(enemy, role, closestHero);
+    const objectiveCell = ['control', 'extract', 'protect', 'escort', 'portals'].includes(this.objective)
       ? this.getClosestObjectiveCell(enemy, 'enemy')
       : null;
-    const pressureTarget = objectiveCell || closestHero;
+    const pressureTarget = objectiveCell || tacticalTarget || closestHero;
     let bestX = enemy.gridX;
     let bestY = enemy.gridY;
     let bestScore = -999;
@@ -838,10 +1029,17 @@ export class EngineTactics {
     const emptyThreatMap = new Map();
 
     this.getReachableCells(enemy, maxMoveRange).forEach(cell => {
-      const targetDist = Math.abs(pressureTarget.x - cell.x) + Math.abs(pressureTarget.y - cell.y);
-      const hasShot = targetDist <= (enemy.isBoss ? 2 : 1) && this.hasLineOfSight({ ...enemy, gridX: cell.x, gridY: cell.y }, closestHero, 'enemy');
+      const targetDist = Math.abs((pressureTarget.gridX ?? pressureTarget.x) - cell.x) + Math.abs((pressureTarget.gridY ?? pressureTarget.y) - cell.y);
+      const hasShot = targetDist <= this.getEnemyRoleRange(role, enemy) && this.hasLineOfSight({ ...enemy, gridX: cell.x, gridY: cell.y }, tacticalTarget, 'enemy');
       const objectiveScore = objectiveCell ? this.scoreObjectiveMove(enemy, cell, objectiveCell, emptyThreatMap, 'enemy') : -targetDist * 4;
-      const score = objectiveScore + (hasShot ? 12 : 0);
+      const tile = this.getTileAt(cell.x, cell.y);
+      const roleScore =
+        (role === 'shooter' && tile?.type === 'high' ? 10 : 0) +
+        (role === 'tank' && tile?.type === 'heavyCover' ? 8 : 0) +
+        (role === 'assassin' ? Math.max(0, 8 - targetDist * 2) : 0) +
+        (role === 'support' && tile?.type === 'portalSpawn' ? 8 : 0) +
+        (role === 'bossController' && tile?.type === 'objective' ? 9 : 0);
+      const score = objectiveScore + roleScore + (hasShot ? 12 : 0);
       if (score > bestScore) {
         bestScore = score;
         bestX = cell.x;
@@ -855,11 +1053,13 @@ export class EngineTactics {
     if (bestX !== previousEnemyX) enemy.facing = bestX > previousEnemyX ? 1 : -1;
     this.playSfx('jump');
 
-    const attackDist = Math.abs(closestHero.gridX - enemy.gridX) + Math.abs(closestHero.gridY - enemy.gridY);
-    const rangeLimit = enemy.isBoss ? 2 : 1;
+    const attackTarget = this.getEnemyPreferredTarget(enemy, role, closestHero);
+    const attackDist = Math.abs((attackTarget.gridX ?? attackTarget.x) - enemy.gridX) + Math.abs((attackTarget.gridY ?? attackTarget.y) - enemy.gridY);
+    const rangeLimit = this.getEnemyRoleRange(role, enemy);
 
     setTimeout(() => {
-      if (attackDist <= rangeLimit && closestHero.currentHp > 0 && this.hasLineOfSight(enemy, closestHero, 'enemy')) {
+      const targetHp = attackTarget.hp ?? attackTarget.currentHp;
+      if (attackDist <= rangeLimit && targetHp > 0 && this.hasLineOfSight(enemy, attackTarget, 'enemy')) {
         enemy.state = 'attack';
         enemy.stateTimer = 20;
         this.playSfx(enemy.weapon === 'gun' || enemy.weapon === 'laser' ? 'shoot' : 'slash');
@@ -870,7 +1070,21 @@ export class EngineTactics {
         if (enemy.name.includes('Smith')) status = 'glitched';
         if (enemy.name.includes('Deathclaw') || enemy.name.includes('Cyberdemon')) status = 'radiated';
 
-        this.applyDamage(enemy, closestHero, enemy.atk, status, { actionType: 'enemy' });
+        const roleDamage = role === 'tank' ? enemy.atk * 0.9 : role === 'assassin' ? enemy.atk * 1.15 : enemy.atk;
+        this.applyDamage(enemy, attackTarget, roleDamage, status, { actionType: 'enemy' });
+      } else if (['tank', 'bossController'].includes(role)) {
+        const obstacle = this.obstacles.find(item => item.hp > 0 && Math.abs(item.gridX - enemy.gridX) + Math.abs(item.gridY - enemy.gridY) <= 1);
+        if (obstacle) {
+          enemy.state = 'attack';
+          enemy.stateTimer = 20;
+          this.applyDamage(enemy, obstacle, enemy.isBoss ? enemy.atk * 1.6 : enemy.atk * 1.1, null, { ignoreCover: true });
+        }
+      } else if (role === 'support') {
+        const ally = this.enemies.filter(e => e.currentHp > 0 && e.currentHp < e.maxHp).sort((a, b) => a.currentHp - b.currentHp)[0];
+        if (ally) {
+          ally.currentHp = Math.min(ally.maxHp, ally.currentHp + 18);
+          this.particles.add(ally.x, ally.y - 28, 0, -1, '#2ecc71', 10, 38, 'text', 'BUFF');
+        }
       }
       this.endActiveTurn();
     }, 400);
@@ -921,6 +1135,7 @@ export class EngineTactics {
     hero.gridX = bestMoveCell.x;
     hero.gridY = bestMoveCell.y;
     if (bestMoveCell.x !== previousHeroX) hero.facing = bestMoveCell.x > previousHeroX ? 1 : -1;
+    this.applyStartTileEffect(hero);
     this.playSfx('jump');
 
     this.actionPhase = 'action';
@@ -1000,6 +1215,16 @@ export class EngineTactics {
   }
 
   applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
+    if (defender === this.protectedArtifact) {
+      const wasAlive = defender.hp > 0;
+      defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
+      const targetPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
+      const targetPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+      this.particles.add(targetPxX, targetPxY - 24, 0, -1, '#ffeb3b', 12, 42, 'text', `ARTEFACT -${Math.round(baseDmg)}`);
+      if (wasAlive && defender.hp <= 0) this.updateTacticsObjective();
+      return;
+    }
+
     if (defender.type === 'barrier' || defender.type === 'barrel' || defender.type === 'objective') {
       // Destructible obstacle damage
       const wasAlive = defender.hp > 0;
@@ -1404,6 +1629,13 @@ export class EngineTactics {
         e.statusEffects.radiated--;
       }
     });
+
+    if (this.escortUnit) {
+      const targetX = this.gridStartX + this.escortUnit.gridX * this.cellW + this.cellW / 2;
+      const targetY = this.gridStartY + this.escortUnit.gridY * this.cellH + 18;
+      this.escortUnit.x += (targetX - this.escortUnit.x) * 0.2;
+      this.escortUnit.y += (targetY - this.escortUnit.y) * 0.2;
+    }
   }
 
   draw(ctx, animTime) {
@@ -1635,8 +1867,59 @@ export class EngineTactics {
     if (this.objective === 'extract') {
       (this.battlefield.extractionZone || []).forEach(cell => drawCellMarker(cell, 'rgba(57,197,187,ALPHA)', 'EXT'));
     }
+    if (this.objective === 'escort') {
+      (this.battlefield.extractionZone || []).forEach(cell => drawCellMarker(cell, 'rgba(57,197,187,ALPHA)', 'SAFE'));
+    }
     if (this.objective === 'control') {
       this.tiles.filter(tile => tile.type === 'objective').forEach(cell => drawCellMarker(cell, 'rgba(255,235,59,ALPHA)', 'HOLD'));
+    }
+    if (this.objective === 'protect' && this.protectedArtifact) {
+      drawCellMarker(this.protectedArtifact, 'rgba(255,235,59,ALPHA)', 'CORE');
+    }
+    if (this.objective === 'portals') {
+      this.tiles
+        .filter(tile => tile.type === 'portalSpawn' && !this.sealedPortalKeys.has(`${tile.x},${tile.y}`))
+        .forEach(cell => drawCellMarker(cell, 'rgba(181,109,255,ALPHA)', 'PORT'));
+    }
+    if (this.objective === 'artifact') {
+      this.tiles
+        .filter(tile => tile.type === 'artifact' && !this.collectedArtifactKeys.has(`${tile.x},${tile.y}`))
+        .forEach(cell => drawCellMarker(cell, 'rgba(255,235,59,ALPHA)', 'REL'));
+    }
+    if (this.objective === 'overload') {
+      const remaining = Math.max(0, this.objectiveTarget - this.turnsElapsed);
+      ctx.fillStyle = remaining <= 2 ? '#ff5b5b' : '#ffeb3b';
+      ctx.font = '8px "Press Start 2P"';
+      ctx.fillText(`SURCHARGE T-${remaining}`, this.gridStartX + this.cols * this.cellW - 136, this.gridStartY - 10);
+    }
+    if (this.escortUnit?.currentHp > 0) {
+      const ex = this.gridStartX + this.escortUnit.gridX * this.cellW + this.cellW / 2;
+      const ey = this.gridStartY + this.escortUnit.gridY * this.cellH + 18;
+      ctx.fillStyle = '#39c5bb';
+      ctx.fillRect(ex - 10, ey - 25, 20, 24);
+      ctx.fillStyle = '#020005';
+      ctx.font = '8px "Press Start 2P"';
+      ctx.fillText('N', ex - 4, ey - 10);
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(ex - 15, ey - 32, 30, 3);
+      ctx.fillStyle = '#39c5bb';
+      ctx.fillRect(ex - 15, ey - 32, 30 * Math.max(0, this.escortUnit.currentHp / this.escortUnit.maxHp), 3);
+    }
+    if (this.objective === 'protect' && this.protectedArtifact?.hp > 0) {
+      const ax = this.gridStartX + this.protectedArtifact.gridX * this.cellW + this.cellW / 2;
+      const ay = this.gridStartY + this.protectedArtifact.gridY * this.cellH + 18;
+      ctx.fillStyle = '#ffeb3b';
+      ctx.beginPath();
+      ctx.moveTo(ax, ay - 28);
+      ctx.lineTo(ax + 13, ay - 10);
+      ctx.lineTo(ax, ay + 8);
+      ctx.lineTo(ax - 13, ay - 10);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(ax - 18, ay - 35, 36, 3);
+      ctx.fillStyle = '#ffeb3b';
+      ctx.fillRect(ax - 18, ay - 35, 36 * Math.max(0, this.protectedArtifact.hp / this.protectedArtifact.maxHp), 3);
     }
   }
 
@@ -1732,6 +2015,26 @@ export class EngineTactics {
       survive: {
         fr: 'Directive: survivre a la fenetre de stabilisation',
         en: 'Directive: survive the stabilization window'
+      },
+      protect: {
+        fr: 'Directive: proteger l artefact d origine',
+        en: 'Directive: protect the origin artifact'
+      },
+      portals: {
+        fr: 'Directive: sceller les portails de renfort',
+        en: 'Directive: seal reinforcement portals'
+      },
+      artifact: {
+        fr: 'Directive: recuperer les reliques Nexus',
+        en: 'Directive: recover Nexus relics'
+      },
+      escort: {
+        fr: 'Directive: escorter le temoin A.R.C.A.',
+        en: 'Directive: escort the A.R.C.A. witness'
+      },
+      overload: {
+        fr: 'Directive: abattre le boss avant surcharge',
+        en: 'Directive: defeat the boss before overload'
       }
     };
     return (lines[this.objective] || lines.rout)[lang] || (lines[this.objective] || lines.rout).fr;
@@ -1767,6 +2070,10 @@ export class EngineTactics {
       hazardPulses: this.hazardPulses,
       tacticalItemsUsed: this.tacticalItemsUsed,
       tacticalItemImpact: Math.round(this.tacticalItemImpact),
+      sealedPortals: this.sealedPortalKeys.size,
+      collectedArtifacts: this.collectedArtifactKeys.size,
+      artifactHp: this.protectedArtifact ? Math.max(0, this.protectedArtifact.hp) : null,
+      escortHp: this.escortUnit ? Math.max(0, this.escortUnit.currentHp) : null,
       turnsElapsed: this.turnsElapsed,
       defeatedEnemies,
       survivingHeroes,
@@ -1786,6 +2093,8 @@ export class EngineTactics {
     if (tile.type === 'hazard') return 'rgba(255, 91, 91, 0.24)';
     if (tile.type === 'heal') return 'rgba(46, 204, 113, 0.2)';
     if (tile.type === 'objective') return 'rgba(255, 235, 59, 0.20)';
+    if (tile.type === 'portalSpawn') return 'rgba(181, 109, 255, 0.22)';
+    if (tile.type === 'artifact') return 'rgba(255, 235, 59, 0.28)';
     return 'rgba(10, 20, 40, 0.4)';
   }
 
@@ -1797,13 +2106,16 @@ export class EngineTactics {
     if (tile.type === 'hazard') return 'RISK';
     if (tile.type === 'heal') return 'MED';
     if (tile.type === 'objective') return 'OBJ';
+    if (tile.type === 'portalSpawn') return 'PORT';
+    if (tile.type === 'artifact') return 'REL';
     return '';
   }
 
   getTileLabelColor(tile) {
     if (tile.type === 'hazard') return '#ff8a50';
     if (tile.type === 'heal') return '#2ecc71';
-    if (tile.type === 'objective') return '#ffeb3b';
+    if (tile.type === 'objective' || tile.type === 'artifact') return '#ffeb3b';
+    if (tile.type === 'portalSpawn') return '#b56dff';
     if (tile.type === 'high') return '#8fb3ff';
     return '#4fc3f7';
   }

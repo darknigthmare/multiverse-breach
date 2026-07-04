@@ -144,7 +144,11 @@ assert(appSource.includes("activeStage.mode === 'Smash'") && appSource.includes(
   'war_frontline',
   'horror_chokepoint',
   'cyber_vertical_node',
-  'boss_command_zone'
+  'boss_command_zone',
+  'artifact_bastion',
+  'portal_lockdown',
+  'nexus_escort_route',
+  'boss_overload_zone'
 ].forEach(battlefieldId => {
   assert(tacticsBattlefieldsSource.includes(`${battlefieldId}: {`), `Missing tactics battlefield layout ${battlefieldId}.`);
 });
@@ -158,7 +162,9 @@ assert(appSource.includes("activeStage.mode === 'Smash'") && appSource.includes(
   'hazard',
   'heal',
   'blocked',
-  'objective'
+  'objective',
+  'portalSpawn',
+  'artifact'
 ].forEach(marker => {
   assert(tacticsBattlefieldsSource.includes(marker), `Tactics battlefield system missing ${marker}.`);
 });
@@ -182,9 +188,29 @@ assert(tacticsEngineSource.includes('getTerrainDamageModifier') && tacticsEngine
   "objective: 'disable'",
   "objective: 'control'",
   "objective: 'commander'",
-  "objective: 'survive'"
+  "objective: 'survive'",
+  "objective: 'protect'",
+  "objective: 'portals'",
+  "objective: 'escort'",
+  "objective: 'overload'"
 ].forEach(marker => {
   assert(tacticsBattlefieldsSource.includes(marker), `Tactics battlefield objectives missing ${marker}.`);
+});
+[
+  'wide',
+  'vertical',
+  'coverHeavy',
+  'lineOfSight',
+  'hazard',
+  'escort',
+  'defense',
+  'bossArena',
+  'portalSpawn',
+  'loreArena',
+  'survival',
+  'artifact'
+].forEach(tag => {
+  assert(tacticsBattlefieldsSource.includes(`'${tag}'`), `Tactics tag missing ${tag}.`);
 });
 assert(tacticsEngineSource.includes('updateTacticsObjective'), 'Tactics engine must update objective progress.');
 assert(tacticsEngineSource.includes('completeBattle'), 'Tactics engine must complete objective-based battles.');
@@ -192,10 +218,16 @@ assert(tacticsEngineSource.includes('drawTacticsObjectiveHud'), 'Tactics engine 
 assert(tacticsEngineSource.includes('drawTacticsObjectiveZones'), 'Tactics engine must render objective and extraction zones.');
 assert(tacticsEngineSource.includes('getTacticsDrawOrder') && tacticsEngineSource.includes('gridY * 100'), 'Tactics units must render by grid depth so lower rows appear in front.');
 assert(tacticsEngineSource.includes('getTurnTimeline') && tacticsEngineSource.includes('drawTurnTimeline'), 'Tactics UI must render initiative order feedback.');
+assert(tacticsEngineSource.includes('sealedPortalKeys') && tacticsEngineSource.includes('PORTAIL SCELLE'), 'Tactics portals must be sealable objective tiles.');
+assert(tacticsEngineSource.includes('protectedArtifact') && tacticsEngineSource.includes('ARTEFACT'), 'Tactics artifact objectives must track protected or collected artifacts.');
+assert(tacticsEngineSource.includes('escortUnit') && tacticsEngineSource.includes('advanceEscortUnit'), 'Tactics escort objectives must move a protected Nexus unit.');
+assert(tacticsEngineSource.includes("this.objective === 'overload'"), 'Tactics overload objectives must enforce a boss timer.');
 assert(tacticsEngineSource.includes('getCombatSummary') && tacticsEngineSource.includes("mode: 'Tactics'"), 'Tactics engine must expose a combat summary.');
 assert(tacticsEngineSource.includes('getObjectiveFocusCells'), 'Tactics AI must resolve objective focus cells.');
 assert(tacticsEngineSource.includes('scoreObjectiveMove'), 'Tactics AI must score movement against objectives and terrain.');
 assert(tacticsEngineSource.includes('preferredEnemies'), 'Tactics hero AI must prioritize commander targets without ignoring fallback enemies.');
+assert(tacticsEngineSource.includes('getEnemyTacticsRole') && tacticsEngineSource.includes("'shooter'") && tacticsEngineSource.includes("'assassin'") && tacticsEngineSource.includes("'support'"), 'Tactics enemies must use role-based AI profiles.');
+assert(tacticsEngineSource.includes("['tank', 'bossController'].includes(role)") && tacticsEngineSource.includes('obstacle'), 'Tactics heavy enemies must be able to break destructible cover.');
 assert(tacticsEngineSource.includes('applyTacticsMissionPressure'), 'Tactics engine must apply long-term mission pressure.');
 assert(tacticsEngineSource.includes('spawnTacticsReinforcement'), 'Tactics engine must spawn difficulty-gated reinforcements.');
 assert(tacticsEngineSource.includes('applyHazardPulse'), 'Tactics engine must pulse hazardous terrain on advanced profiles.');
@@ -226,14 +258,15 @@ console.log(JSON.stringify({
   meleeDlcMapping: 'metadata-aware',
   meleeResultSummary: 'score-grade-objective',
   meleeRewardLoop: 'grade-bonus',
-  tacticsBattlefieldLayouts: 8,
+  tacticsBattlefieldLayouts: 12,
   tacticsTerrainSystem: 'dynamic',
-  tacticsTerrainTypes: ['high', 'lightCover', 'heavyCover', 'hazard', 'heal', 'blocked', 'objective'],
+  tacticsTerrainTypes: ['high', 'lightCover', 'heavyCover', 'hazard', 'heal', 'blocked', 'objective', 'portalSpawn', 'artifact'],
   tacticsPlacementRules: ['move-costs', 'height-advantage', 'flank-back'],
   tacticsVisualCoherence: ['grid-depth-order', 'initiative-timeline'],
-  tacticsObjectives: ['rout', 'extract', 'disable', 'control', 'commander', 'survive'],
-  tacticsAi: 'objective-aware',
+  tacticsObjectives: ['rout', 'extract', 'disable', 'control', 'commander', 'survive', 'protect', 'portals', 'escort', 'overload'],
+  tacticsAi: 'objective-and-role-aware',
   tacticsMissionPressure: ['reinforcements', 'hazard-pulses', 'difficulty-profiles'],
+  tacticsTags: ['wide', 'vertical', 'coverHeavy', 'lineOfSight', 'hazard', 'escort', 'defense', 'bossArena', 'portalSpawn', 'loreArena', 'survival', 'artifact'],
   tacticsArtifacts: 'engine-resolved-grid-effects',
   tacticsDlcMapping: 'metadata-aware',
   tacticsRewardLoop: 'grade-bonus'
