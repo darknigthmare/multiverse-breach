@@ -3750,7 +3750,10 @@ export default function HubScreen({
     }).length;
   };
 
-  const isCollectionComplete = (collection) => getCompletedUniversesCount(collection.universes) === collection.universes.length;
+  const isCollectionComplete = (collection) => {
+    if (Object.prototype.hasOwnProperty.call(collection, 'complete')) return Boolean(collection.complete);
+    return getCompletedUniversesCount(collection.universes) === collection.universes.length;
+  };
   const getCollectionMarkerId = (collection) => `collection_reward_${collection.id}`;
   const getArcMarkerId = (arc) => `arc_reward_${arc.id}`;
 
@@ -4020,6 +4023,7 @@ export default function HubScreen({
   const getSpecialNexusItemsInInventory = () => inventory
     .map(itemId => SPECIAL_NEXUS_ITEMS[itemId])
     .filter(Boolean);
+  const visibleUnlockedHeroes = HEROES_DB.filter(hero => unlockedHeroes.includes(hero.id));
   const inventoryGroups = [
     { id: 'all', label: { fr: 'Tout', en: 'All' }, count: getGearInInventory().length + getEventItemsInInventory().length + getSpecialNexusItemsInInventory().length },
     { id: 'gear', label: { fr: 'Reliques', en: 'Relics' }, count: getGearInInventory().length },
@@ -4037,10 +4041,13 @@ export default function HubScreen({
     return `MB-${seed.padEnd(8, 'X')}-${String(unlockedHeroes.length).padStart(3, '0')}`;
   };
   const collectionSummary = {
-    heroes: unlockedHeroes.length,
+    heroes: visibleUnlockedHeroes.length,
     totalHeroes: HEROES_DB.length,
-    worlds: new Set(HEROES_DB.filter(hero => unlockedHeroes.includes(hero.id)).map(hero => hero.universe)).size,
-    arcs: CHARACTER_NARRATIVE_ARCS.filter(arc => inventory.includes(arc.rewardItemId)).length,
+    worlds: new Set(visibleUnlockedHeroes.map(hero => hero.universe)).size,
+    arcs: CHARACTER_NARRATIVE_ARCS.filter(arc => {
+      const hero = ALL_HEROES_DB.find(item => item.id === arc.heroId);
+      return hero && isUniverseVisible(hero.universe) && inventory.includes(arc.rewardItemId);
+    }).length,
     skins: Object.keys(heroSkins || {}).filter(heroId => heroSkins[heroId]).length
   };
 
@@ -4473,6 +4480,11 @@ export default function HubScreen({
     .reverse()
     .find(chapter => completedStages.length >= chapter.unlockClears) || STORY_CHAPTERS[0];
   const nextChapter = STORY_CHAPTERS.find(chapter => completedStages.length < chapter.unlockClears);
+  const matchesMediaFilter = (mediaType) => (
+    mediaFilter === 'all'
+    || mediaType === mediaFilter
+    || (mediaFilter === 'movie' && mediaType === 'series')
+  );
   const arcProgress = NARRATIVE_ARCS.map(arc => ({
     ...arc,
     ...(ARC_DETAIL_BY_ID[arc.id] || {}),
@@ -4484,16 +4496,36 @@ export default function HubScreen({
     complete: arc.total > 0 && arc.completed >= arc.total,
     claimed: inventory.includes(getArcMarkerId(arc))
   }));
-  const collectionProgress = COLLECTION_REWARDS.map(collection => ({
-    ...collection,
-    completed: getCompletedUniversesCount(collection.universes),
-    total: collection.universes.length,
-    complete: isCollectionComplete(collection),
-    claimed: inventory.includes(getCollectionMarkerId(collection))
-  }));
-  const visibleCollectionProgress = collectionProgress.filter(collection => (
-    collection.universes.some(isUniverseVisible)
-  ));
+  const collectionProgress = COLLECTION_REWARDS.map(collection => {
+    const activeUniverses = collection.universes.filter(universe => (
+      LORE_DB[universe]
+      && isUniverseVisible(universe)
+      && matchesMediaFilter(LORE_DB[universe]?.mediaType)
+    ));
+    const enabledUniverses = collection.universes.filter(universe => LORE_DB[universe] && isUniverseVisible(universe));
+    const activeCompleted = getCompletedUniversesCount(activeUniverses);
+    const enabledCompleted = getCompletedUniversesCount(enabledUniverses);
+    const hiddenCount = collection.universes.length - enabledUniverses.length;
+    const missingLore = collection.universes.filter(universe => !LORE_DB[universe]);
+    const allCollectionUniversesVisible = hiddenCount === 0 && missingLore.length === 0;
+    const complete = allCollectionUniversesVisible
+      && enabledUniverses.length > 0
+      && enabledCompleted >= enabledUniverses.length;
+    return {
+      ...collection,
+      activeUniverses,
+      enabledUniverses,
+      hiddenCount,
+      missingLore,
+      completed: activeCompleted,
+      total: activeUniverses.length,
+      fullCompleted: enabledCompleted,
+      fullTotal: enabledUniverses.length,
+      complete,
+      claimed: inventory.includes(getCollectionMarkerId(collection))
+    };
+  });
+  const visibleCollectionProgress = collectionProgress.filter(collection => collection.total > 0);
   const selectedUniverseArchive = selectedCollectionUniverse ? (() => {
     const universe = selectedCollectionUniverse;
     const lore = LORE_DB[universe];
@@ -4509,10 +4541,13 @@ export default function HubScreen({
         ...(ENEMIES_DB[universe].bosses || []),
         ENEMIES_DB[universe].worldBoss
       ].filter(Boolean)
+        .filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy)))
       : [];
-    const relics = EQUIP_ITEMS_DB.filter(item => item.universe === universe);
-    const eventItem = EVENT_ITEMS_DB[universe];
-    const battleItems = getBattleItemsForUniverse(universe);
+    const relics = EQUIP_ITEMS_DB.filter(item => item.universe === universe && !isAssetDisabled('gear', item.id));
+    const eventItem = EVENT_ITEMS_DB[universe] && !isAssetDisabled('gear', EVENT_ITEMS_DB[universe].id)
+      ? EVENT_ITEMS_DB[universe]
+      : null;
+    const battleItems = getBattleItemsForUniverse(universe).filter(item => !isAssetDisabled('gear', item.id));
     const universeArcs = UNIVERSE_NARRATIVE_ARCS
       .filter(arc => arc.universes.includes(universe))
       .filter(isNarrativeArcAvailable);
@@ -4520,7 +4555,7 @@ export default function HubScreen({
       const hero = ALL_HEROES_DB.find(item => item.id === arc.heroId);
       return hero?.universe === universe && isNarrativeArcAvailable(arc);
     });
-    const franchiseCollections = collectionProgress.filter(collection => collection.universes.includes(universe) && collection.complete);
+    const franchiseCollections = visibleCollectionProgress.filter(collection => collection.enabledUniverses.includes(universe));
     const faction = getUniverseFaction(universe);
     const arcCount = universeArcs.length + characterArcs.length + franchiseCollections.length;
     return {
@@ -4590,8 +4625,8 @@ export default function HubScreen({
     {
       id: 'collection_1',
       title: { fr: 'Cycle hebdomadaire: cache de collection', en: 'Weekly cycle: collection cache' },
-      done: collectionProgress.some(collection => collection.claimed),
-      progress: collectionProgress.filter(collection => collection.claimed).length,
+      done: visibleCollectionProgress.some(collection => collection.claimed),
+      progress: visibleCollectionProgress.filter(collection => collection.claimed).length,
       target: 1,
       reward: { gold: 120, shards: 45, tokens: 3 }
     },
@@ -4688,11 +4723,6 @@ export default function HubScreen({
     if (stage.id === 38) return getFinalGameBoss();
     return ENEMIES_DB[stage.universe]?.worldBoss || ENEMIES_DB[stage.universe]?.bosses?.[0];
   };
-  const matchesMediaFilter = (mediaType) => (
-    mediaFilter === 'all'
-    || mediaType === mediaFilter
-    || (mediaFilter === 'movie' && mediaType === 'series')
-  );
   const visibleCollectionUniverses = Object.keys(LORE_DB)
     .filter(isUniverseArchiveAvailable);
   const getMediaTypeLabel = (mediaType) => {
@@ -6099,6 +6129,11 @@ export default function HubScreen({
                 )}
                 {visibleCollectionProgress.map(collection => {
                   const ratio = collection.total ? collection.completed / collection.total : 0;
+                  const partialText = collection.hiddenCount > 0
+                    ? (lang === 'fr' ? `${collection.hiddenCount} DLC masque(s)` : `${collection.hiddenCount} hidden DLC`)
+                    : mediaFilter !== 'all'
+                      ? (lang === 'fr' ? `${collection.fullCompleted}/${collection.fullTotal} actifs hors filtre` : `${collection.fullCompleted}/${collection.fullTotal} active outside filter`)
+                      : '';
                   return (
                     <div key={collection.id} style={{
                       padding: '10px',
@@ -6110,6 +6145,11 @@ export default function HubScreen({
                         <strong style={{ fontSize: '11px', color: collection.complete ? '#2ecc71' : '#ddd' }}>{collection.title[lang]}</strong>
                         <span style={{ fontSize: '10px', color: '#ffeb3b' }}>{collection.completed}/{collection.total}</span>
                       </div>
+                      {partialText && (
+                        <div style={{ fontSize: '9px', color: '#ff8c00', marginTop: '4px' }}>
+                          {partialText}
+                        </div>
+                      )}
                       <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', margin: '7px 0' }}>
                         <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: collection.complete ? '#2ecc71' : '#ffeb3b' }} />
                       </div>
@@ -6124,7 +6164,9 @@ export default function HubScreen({
                         onClick={() => claimCollectionReward(collection)}
                         disabled={!collection.complete || collection.claimed}
                         className="btn-retro"
-                        title={lang === 'fr' ? 'Recupere la cache de collection si tous les elements requis sont obtenus.' : 'Claim the collection cache if every required element is obtained.'}
+                        title={collection.complete
+                          ? (lang === 'fr' ? 'Recupere la cache de collection si tous les elements requis sont obtenus.' : 'Claim the collection cache if every required element is obtained.')
+                          : (lang === 'fr' ? 'Cache verrouillee: tous les univers de cette collection doivent etre actifs et stabilises.' : 'Cache locked: every universe in this collection must be active and stabilized.')}
                         style={{
                           marginTop: '8px',
                           padding: '5px 9px',
@@ -7215,12 +7257,22 @@ export default function HubScreen({
                   )}
                   {visibleCollectionProgress.map(collection => {
                     const ratio = collection.total ? collection.completed / collection.total : 0;
+                    const partialText = collection.hiddenCount > 0
+                      ? (lang === 'fr' ? `${collection.hiddenCount} DLC masque(s)` : `${collection.hiddenCount} hidden DLC`)
+                      : mediaFilter !== 'all'
+                        ? (lang === 'fr' ? `${collection.fullCompleted}/${collection.fullTotal} actifs hors filtre` : `${collection.fullCompleted}/${collection.fullTotal} active outside filter`)
+                        : '';
                     return (
                       <div key={collection.id} style={{ padding: '9px', border: collection.complete ? '1px solid #2ecc71' : '1px solid rgba(255,255,255,0.08)', background: collection.complete ? 'rgba(46,204,113,0.06)' : 'rgba(0,0,0,0.16)', borderRadius: '4px' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
                           <span style={{ color: collection.complete ? '#2ecc71' : '#ddd', fontSize: '11px', fontWeight: 'bold' }}>{collection.title[lang]}</span>
                           <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{collection.completed}/{collection.total}</span>
                         </div>
+                        {partialText && (
+                          <div style={{ fontSize: '9px', color: '#ff8c00', marginTop: '4px' }}>
+                            {partialText}
+                          </div>
+                        )}
                         <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', margin: '6px 0' }}>
                           <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: collection.complete ? '#2ecc71' : '#ffeb3b' }} />
                         </div>
@@ -7264,8 +7316,12 @@ export default function HubScreen({
                 const stageId = UNIVERSE_TO_STAGE_ID[universe];
                 const cleared = !stageId || completedStages.includes(stageId);
                 const heroes = HEROES_DB.filter(hero => hero.universe === universe);
-                const boss = ENEMIES_DB[universe]?.worldBoss || ENEMIES_DB[universe]?.bosses?.[0];
-                const battleItems = getBattleItemsForUniverse(universe);
+                const activeBosses = [
+                  ...(ENEMIES_DB[universe]?.bosses || []),
+                  ENEMIES_DB[universe]?.worldBoss
+                ].filter(Boolean).filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy)));
+                const boss = activeBosses[activeBosses.length - 1] || activeBosses[0];
+                const battleItems = getBattleItemsForUniverse(universe).filter(item => !isAssetDisabled('gear', item.id));
                 return (
                   <button
                     key={universe}
