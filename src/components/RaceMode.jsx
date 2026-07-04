@@ -77,6 +77,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysRef = useRef({});
+  const keyPulseRef = useRef({});
   const [trackId, setTrackId] = useState('nexus_archive_loop');
   const [career, setCareer] = useState(loadKartCareer);
   const [summary, setSummary] = useState(null);
@@ -136,11 +137,14 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
     const loop = (now) => {
       const dt = (now - last) / 1000;
       last = now;
+      const pulseKeys = Object.fromEntries(
+        Object.entries(keyPulseRef.current).filter(([, expiresAt]) => expiresAt > now).map(([key]) => [key, true])
+      );
       if (keysRef.current.shift) {
         engine.player.boost = Math.max(engine.player.boost, 0.22);
         keysRef.current.shift = false;
       }
-      engine.setInput(keysRef.current);
+      engine.setInput({ ...keysRef.current, ...pulseKeys });
       engine.update(dt);
       const ctx = canvas.getContext('2d');
       engine.draw(ctx);
@@ -165,6 +169,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
       const key = normalizeKey(event.key);
+      keyPulseRef.current[key] = performance.now() + 180;
       if (key === 'e') {
         engine.useItem();
         return;
@@ -199,6 +204,11 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
 
   const activateVirtualKey = (key, active) => {
     keysRef.current[key] = active;
+    if (active) keyPulseRef.current[key] = performance.now() + 260;
+  };
+
+  const pulseVirtualKey = (key) => {
+    keyPulseRef.current[key] = performance.now() + 320;
   };
 
   const triggerItem = () => {
@@ -357,10 +367,10 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
             ))}
           </div>
           <div className="race-touch-controls">
-            <button type="button" className="btn-retro" onPointerDown={() => activateVirtualKey('up', true)} onPointerUp={() => activateVirtualKey('up', false)} onPointerLeave={() => activateVirtualKey('up', false)}>ACC</button>
-            <button type="button" className="btn-retro" onPointerDown={() => activateVirtualKey('left', true)} onPointerUp={() => activateVirtualKey('left', false)} onPointerLeave={() => activateVirtualKey('left', false)}>GAUCHE</button>
-            <button type="button" className="btn-retro" onPointerDown={() => activateVirtualKey('right', true)} onPointerUp={() => activateVirtualKey('right', false)} onPointerLeave={() => activateVirtualKey('right', false)}>DROITE</button>
-            <button type="button" className="btn-retro" onPointerDown={() => activateVirtualKey('space', true)} onPointerUp={() => activateVirtualKey('space', false)} onPointerLeave={() => activateVirtualKey('space', false)}>DRIFT</button>
+            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('up')} onPointerDown={() => activateVirtualKey('up', true)} onPointerUp={() => activateVirtualKey('up', false)} onPointerLeave={() => activateVirtualKey('up', false)}>ACC</button>
+            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('left')} onPointerDown={() => activateVirtualKey('left', true)} onPointerUp={() => activateVirtualKey('left', false)} onPointerLeave={() => activateVirtualKey('left', false)}>GAUCHE</button>
+            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('right')} onPointerDown={() => activateVirtualKey('right', true)} onPointerUp={() => activateVirtualKey('right', false)} onPointerLeave={() => activateVirtualKey('right', false)}>DROITE</button>
+            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('space')} onPointerDown={() => activateVirtualKey('space', true)} onPointerUp={() => activateVirtualKey('space', false)} onPointerLeave={() => activateVirtualKey('space', false)}>DRIFT</button>
             <button type="button" className="btn-retro" onClick={triggerBoost}>BOOST</button>
             <button type="button" className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RESET' : 'RESET'}</button>
           </div>

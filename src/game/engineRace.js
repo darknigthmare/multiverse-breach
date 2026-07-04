@@ -76,6 +76,26 @@ const angleDelta = (from, to) => {
 
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
+const closestPointOnPath = (points = [], x, y, roadWidth = 100) => {
+  if (points.length < 2) return { x, y, distance: 0, factor: 1 };
+  let best = { x: points[0].x, y: points[0].y, distance: Infinity, factor: 0, segment: 0 };
+  for (let i = 0; i < points.length; i += 1) {
+    const a = points[i];
+    const b = points[(i + 1) % points.length];
+    const vx = b.x - a.x;
+    const vy = b.y - a.y;
+    const lengthSq = vx * vx + vy * vy || 1;
+    const t = clamp(((x - a.x) * vx + (y - a.y) * vy) / lengthSq, 0, 1);
+    const px = a.x + vx * t;
+    const py = a.y + vy * t;
+    const d = Math.hypot(x - px, y - py);
+    if (d < best.distance) {
+      best = { x: px, y: py, distance: d, factor: clamp(1 - d / (roadWidth * 0.55), 0, 1), segment: i };
+    }
+  }
+  return best;
+};
+
 export const KART_TRACK_LAYOUTS = {
   nexus_archive_loop: {
     id: 'nexus_archive_loop',
@@ -463,7 +483,7 @@ export class EngineRace {
 
   createTrackState(trackId = this.trackId) {
     const baseTrack = RACE_TRACKS[trackId] || RACE_TRACKS.nexus_archive_loop;
-    return {
+    const track = {
       ...baseTrack,
       checkpoints: baseTrack.checkpoints.map(point => ({ ...point })),
       waypoints: baseTrack.waypoints.map(point => ({ ...point })),
@@ -479,6 +499,29 @@ export class EngineRace {
       objective: baseTrack.objective ? {
         ...baseTrack.objective,
         markers: (baseTrack.objective.markers || []).map(marker => ({ ...marker, collected: false }))
+      } : null
+    };
+    return this.normalizeTrackObjects(track);
+  }
+
+  normalizeTrackObjects(track) {
+    const snapToRoad = (point, threshold = 0.52) => {
+      const road = closestPointOnPath(track.waypoints, point.x, point.y, track.roadWidth);
+      if (road.distance <= track.roadWidth * threshold) return { ...point, roadAnchor: road.segment };
+      return { ...point, x: road.x, y: road.y, roadAnchor: road.segment };
+    };
+    return {
+      ...track,
+      boostPads: track.boostPads.map(pad => snapToRoad(pad, 0.45)),
+      itemBoxes: track.itemBoxes.map(box => snapToRoad(box, 0.5)),
+      hazards: track.hazards.map(hazard => hazard.temporary ? hazard : snapToRoad(hazard, 0.5)),
+      surfaceZones: (track.surfaceZones || []).map(zone => {
+        const anchored = snapToRoad(zone, zone.type === 'portal' ? 0.65 : 0.55);
+        return zone.exit ? { ...anchored, exit: { ...zone.exit } } : anchored;
+      }),
+      objective: track.objective ? {
+        ...track.objective,
+        markers: (track.objective.markers || []).map(marker => snapToRoad(marker, 0.55))
       } : null
     };
   }
@@ -826,24 +869,7 @@ export class EngineRace {
   }
 
   getClosestRoadPoint(x, y) {
-    const points = this.track.waypoints || [];
-    if (points.length < 2) return { x: this.width / 2, y: this.height / 2, distance: 0, factor: 1 };
-    let best = { x: points[0].x, y: points[0].y, distance: Infinity, factor: 0 };
-    for (let i = 0; i < points.length; i += 1) {
-      const a = points[i];
-      const b = points[(i + 1) % points.length];
-      const vx = b.x - a.x;
-      const vy = b.y - a.y;
-      const lengthSq = vx * vx + vy * vy || 1;
-      const t = clamp(((x - a.x) * vx + (y - a.y) * vy) / lengthSq, 0, 1);
-      const px = a.x + vx * t;
-      const py = a.y + vy * t;
-      const d = Math.hypot(x - px, y - py);
-      if (d < best.distance) {
-        best = { x: px, y: py, distance: d, factor: clamp(1 - d / (this.track.roadWidth * 0.55), 0, 1) };
-      }
-    }
-    return best;
+    return closestPointOnPath(this.track.waypoints || [], x, y, this.track.roadWidth);
   }
 
   getSurfaceAt(x, y) {
@@ -1182,6 +1208,126 @@ export class EngineRace {
   }
 
   drawRearRoad(ctx) {
+    const segments = this.getProjectedTrackSegments();
+    if (segments.length < 2) {
+      this.drawFallbackRearRoad(ctx);
+      return;
+    }
+
+    ctx.save();
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    segments
+      .slice()
+      .sort((a, b) => b.depth - a.depth)
+      .forEach(segment => {
+        const width = Math.max(24, segment.width);
+        ctx.strokeStyle = 'rgba(2,4,10,0.82)';
+        ctx.lineWidth = width + 16;
+        ctx.beginPath();
+        ctx.moveTo(segment.a.x, segment.a.y);
+        ctx.lineTo(segment.b.x, segment.b.y);
+        ctx.stroke();
+
+        const grade = ctx.createLinearGradient(segment.a.x, segment.a.y, segment.b.x, segment.b.y);
+        grade.addColorStop(0, segment.index % 2 === 0 ? '#303443' : '#272b39');
+        grade.addColorStop(1, segment.index % 2 === 0 ? '#34394a' : '#252937');
+        ctx.strokeStyle = grade;
+        ctx.lineWidth = width;
+        ctx.beginPath();
+        ctx.moveTo(segment.a.x, segment.a.y);
+        ctx.lineTo(segment.b.x, segment.b.y);
+        ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(57,197,187,0.74)';
+        ctx.lineWidth = Math.max(2, width * 0.045);
+        const normalX = segment.normalX;
+        const normalY = segment.normalY;
+        [-1, 1].forEach(side => {
+          ctx.beginPath();
+          ctx.moveTo(segment.a.x + normalX * width * 0.48 * side, segment.a.y + normalY * width * 0.48 * side);
+          ctx.lineTo(segment.b.x + normalX * width * 0.48 * side, segment.b.y + normalY * width * 0.48 * side);
+          ctx.stroke();
+        });
+
+        if (segment.index % 2 === 0) {
+          ctx.strokeStyle = 'rgba(255,235,59,0.46)';
+          ctx.lineWidth = Math.max(2, width * 0.035);
+          ctx.beginPath();
+          ctx.moveTo(segment.a.x, segment.a.y);
+          ctx.lineTo(segment.b.x, segment.b.y);
+          ctx.stroke();
+        }
+      });
+
+    const startProjection = this.projectToRearCamera(this.track.start || this.track.waypoints[0]);
+    if (startProjection) this.drawProjectedFinishLine(ctx, startProjection);
+    ctx.restore();
+  }
+
+  getProjectedTrackSegments() {
+    const points = this.track.waypoints || [];
+    if (points.length < 2) return [];
+    const samples = [];
+    points.forEach((point, index) => {
+      const next = points[(index + 1) % points.length];
+      const length = Math.max(1, distance(point, next));
+      const steps = Math.max(3, Math.ceil(length / 38));
+      for (let step = 0; step < steps; step += 1) {
+        const t = step / steps;
+        samples.push({
+          x: lerp(point.x, next.x, t),
+          y: lerp(point.y, next.y, t),
+          segmentIndex: index
+        });
+      }
+    });
+
+    const projected = samples.map(sample => ({
+      source: sample,
+      p: this.projectToRearCamera(sample)
+    }));
+    const segments = [];
+    for (let i = 0; i < projected.length; i += 1) {
+      const current = projected[i];
+      const next = projected[(i + 1) % projected.length];
+      if (!current.p || !next.p) continue;
+      if (Math.abs(current.p.forward - next.p.forward) > 130) continue;
+      const dx = next.p.x - current.p.x;
+      const dy = next.p.y - current.p.y;
+      const len = Math.hypot(dx, dy) || 1;
+      const scale = (current.p.scale + next.p.scale) * 0.5;
+      segments.push({
+        a: current.p,
+        b: next.p,
+        width: this.track.roadWidth * scale * 0.54,
+        depth: (current.p.forward + next.p.forward) * 0.5,
+        index: current.source.segmentIndex,
+        normalX: -dy / len,
+        normalY: dx / len
+      });
+    }
+    return segments;
+  }
+
+  drawProjectedFinishLine(ctx, p) {
+    const width = Math.max(56, this.track.roadWidth * p.scale * 0.48);
+    const height = Math.max(6, 7 * p.scale);
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(-0.04 + Math.sin(this.time * 2) * 0.01);
+    ctx.fillStyle = 'rgba(255,255,255,0.84)';
+    ctx.fillRect(-width / 2, -height / 2, width, height);
+    ctx.fillStyle = 'rgba(0,0,0,0.6)';
+    const cells = 12;
+    for (let i = 0; i < cells; i += 1) {
+      if (i % 2 === 0) ctx.fillRect(-width / 2 + (i * width) / cells, -height / 2, width / cells, height);
+    }
+    ctx.restore();
+  }
+
+  drawFallbackRearRoad(ctx) {
     const horizon = this.getRaceCameraHorizon();
     const centerX = this.width / 2;
     const roadBottom = this.height + 32;
