@@ -544,6 +544,120 @@ function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone,
   );
 }
 
+function FactionArcBrowser({ lang, arcProgress, onClaimArcReward }) {
+  return (
+    <div style={{
+      display: 'grid',
+      gap: '12px',
+      marginBottom: '14px'
+    }}>
+      <div style={{
+        padding: '14px',
+        border: '1px solid rgba(255,235,59,0.22)',
+        background: 'rgba(255,235,59,0.06)',
+        borderRadius: '5px'
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+          <div>
+            <div style={{ fontSize: '11px', color: '#ffeb3b', fontWeight: 'bold', textTransform: 'uppercase' }}>
+              {lang === 'fr' ? 'THEATRE DES FACTIONS' : 'FACTION THEATER'}
+            </div>
+            <div style={{ fontSize: '10px', color: '#d8d1a3', marginTop: '4px', lineHeight: 1.4 }}>
+              {lang === 'fr'
+                ? 'Ces arcs sont des conflits transversaux: ils ne remplacent pas la campagne principale et ne polluent plus le mode histoire.'
+                : 'These arcs are cross-faction conflicts: they no longer replace or clutter the main story mode.'}
+            </div>
+          </div>
+          <span style={{ fontSize: '10px', color: '#fff', border: '1px solid rgba(255,235,59,0.34)', padding: '4px 8px', borderRadius: '3px' }}>
+            {arcProgress.length} {lang === 'fr' ? 'arcs indexes' : 'indexed arcs'}
+          </span>
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
+        {arcProgress.map(arc => {
+          const ratio = arc.total ? arc.completed / arc.total : 0;
+          const phase = ratio === 1
+            ? (lang === 'fr' ? 'Arc stabilise' : 'Arc stabilized')
+            : ratio >= 0.66
+              ? (lang === 'fr' ? 'Finale approche' : 'Finale incoming')
+              : ratio >= 0.33
+                ? (lang === 'fr' ? 'Conflit ouvert' : 'Open conflict')
+                : (lang === 'fr' ? 'Signal faible' : 'Weak signal');
+          return (
+            <div key={arc.id} style={{
+              padding: '11px',
+              border: `1px solid ${ratio === 1 ? arc.color : 'rgba(255,255,255,0.08)'}`,
+              background: ratio === 1 ? `${arc.color}18` : 'rgba(0,0,0,0.18)',
+              borderRadius: '5px'
+            }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '5px' }}>
+                <strong style={{ fontSize: '12px', color: arc.color }}>{arc.title[lang]}</strong>
+                <span style={{ fontSize: '10px', color: '#ddd' }}>{arc.completed}/{arc.total}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '7px', alignItems: 'center' }}>
+                <span style={{ fontSize: '9px', color: '#cfd8dc' }}>{arc.faction?.[lang]}</span>
+                <span style={{ fontSize: '8px', color: arc.color, border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px', textTransform: 'uppercase' }}>{phase}</span>
+              </div>
+              <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', marginBottom: '7px' }}>
+                <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: arc.color }} />
+              </div>
+              <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{arc.premise[lang]}</div>
+              {arc.intro && (
+                <div style={{ fontSize: '9px', color: '#ffeb3b', lineHeight: 1.35, marginTop: '6px' }}>
+                  Intro: {arc.intro[lang]}
+                </div>
+              )}
+              <div style={{ fontSize: '10px', color: '#d0d0d0', lineHeight: 1.35, marginTop: '7px' }}>{arc.stakes?.[lang]}</div>
+              <div style={{ fontSize: '9px', color: '#9adbd6', lineHeight: 1.35, marginTop: '6px' }}>{arc.gameplay?.[lang]}</div>
+              {arc.missions && (
+                <div style={{ display: 'grid', gap: '3px', marginTop: '7px' }}>
+                  {arc.missions.slice(0, 3).map((mission, idx) => (
+                    <span key={`${arc.id}-mission-${idx}`} style={{ fontSize: '9px', color: '#cfcfcf', lineHeight: 1.25 }}>
+                      {idx + 1}. {mission[lang]}
+                    </span>
+                  ))}
+                </div>
+              )}
+              <div style={{ fontSize: '9px', color: '#888', marginTop: '5px' }}>{arc.reward[lang]} - {arc.finale?.[lang]}</div>
+              {arc.rewards && (
+                <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '6px' }}>
+                  {arc.rewards.map(reward => (
+                    <span key={reward.name[lang]} style={{ fontSize: '8px', color: '#fff', border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px' }}>
+                      {reward.name[lang]}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {arc.claimReward && (
+                <button
+                  onClick={() => onClaimArcReward(arc)}
+                  disabled={!arc.complete || arc.claimed}
+                  className="btn-retro"
+                  title={lang === 'fr' ? 'Recupere la recompense finale de cet arc si toutes ses missions sont terminees.' : 'Claim this arc final reward if all its missions are complete.'}
+                  style={{
+                    marginTop: '8px',
+                    padding: '5px 8px',
+                    fontSize: '9px',
+                    borderColor: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#444',
+                    color: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#666'
+                  }}
+                >
+                  {arc.claimed
+                    ? (lang === 'fr' ? 'ARC SCELLE' : 'ARC SEALED')
+                    : arc.complete
+                      ? (lang === 'fr' ? 'SCELLER ARC' : 'SEAL ARC')
+                      : (lang === 'fr' ? 'ARC INSTABLE' : 'ARC UNSTABLE')}
+                </button>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages = [], playerProfile, onOpenMissions, onOpenCodex }) {
   const canvasRef = useRef(null);
   const stateRef = useRef({
@@ -4532,6 +4646,7 @@ export default function HubScreen({
     if (missionScreen === 'personalArcs') return Boolean(stage.characterArc) && isPersonalArcVisibleForRoster(stage);
     if (missionScreen === 'trioArcs') return isTrioArcVisibleForRoster(stage);
     if (missionScreen === 'fusionMissions') return Boolean(stage.fusionMission);
+    if (missionScreen === 'factionArcs') return false;
     return !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission;
   };
   const storyMissionCount = visibleStages.filter(stage => stage.id !== 38 && !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission).length;
@@ -4539,12 +4654,19 @@ export default function HubScreen({
   const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc && isPersonalArcVisibleForRoster(stage)).length;
   const trioArcMissionCount = visibleStages.filter(isTrioArcVisibleForRoster).length;
   const fusionMissionCount = visibleStages.filter(stage => stage.fusionMission).length;
+  const factionArcCount = arcProgress.length;
   const missionScreenMeta = {
     story: {
       label: { fr: 'Mode histoire', en: 'Story mode' },
-      desc: { fr: 'Breches principales par univers, progression de chapitres et ouverture du noyau final.', en: 'Main universe breaches, chapter progression, and final core opening.' },
+      desc: { fr: 'Campagne principale: chapitre actif, carte des failles jouables, missions prioritaires et noyau final.', en: 'Main campaign: active chapter, playable rift map, priority missions, and final core.' },
       count: storyMissionCount,
       color: '#39c5bb'
+    },
+    factionArcs: {
+      label: { fr: 'Arcs narratifs de faction', en: 'Faction narrative arcs' },
+      desc: { fr: 'Conflits transversaux entre factions du Nexus, avec progression, traces et recompenses dediees.', en: 'Cross-faction Nexus conflicts with dedicated progress, traces, and rewards.' },
+      count: factionArcCount,
+      color: '#ffeb3b'
     },
     universeArcs: {
       label: { fr: 'Arcs narratifs par univers', en: 'Universe narrative arcs' },
@@ -4573,6 +4695,7 @@ export default function HubScreen({
   };
   const selectedMissionMeta = missionScreenMeta[missionScreen] || missionScreenMeta.story;
   const missionPool = visibleStages.filter(stage => stage.id !== 38 && missionCategoryFilter(stage) && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
+  const isFactionArcScreen = missionScreen === 'factionArcs';
   const activeNarrativeArcs = missionScreen === 'universeArcs'
     ? UNIVERSE_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.universeArc?.id === arc.id) && isNarrativeArcAvailable(arc))
     : missionScreen === 'personalArcs'
@@ -4717,7 +4840,7 @@ export default function HubScreen({
   const clearedVisibleCount = missionPool.filter(stage => completedStages.includes(stage.id)).length;
   const isArcMissionScreen = Boolean(narrativeArcScreenType);
   const showModeFilters = missionScreen === 'story' || missionScreen === 'fusionMissions';
-  const showStoryMissionTools = missionScreen === 'story';
+  const showStoryMissionTools = false;
   const riftMapCopy = narrativeArcScreenType === 'universe'
     ? {
       kicker: lang === 'fr' ? 'CARTE DES FAILLES / ATLAS DES UNIVERS' : 'RIFT MAP / UNIVERSE ATLAS',
@@ -5018,8 +5141,8 @@ export default function HubScreen({
                   borderRadius: '4px'
                 }}>
                   {lang === 'fr'
-                    ? 'A.R.C.A. compartimente la carte des missions pour eviter la surcharge de Trame. Choisis un ecran: campagne principale, arcs univers, arcs personnels ou cellules trio.'
-                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, universe arcs, personal arcs, or trio cells.'}
+                    ? 'A.R.C.A. compartimente la carte des missions pour eviter la surcharge de Trame. Choisis un ecran: campagne principale, arcs de faction, arcs univers, arcs personnels ou cellules trio.'
+                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, faction arcs, universe arcs, personal arcs, or trio cells.'}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
                   {Object.entries(missionScreenMeta).map(([key, entry]) => (
@@ -5051,7 +5174,7 @@ export default function HubScreen({
                         </span>
                       </span>
                       <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#ffeb3b', fontSize: '10px' }}>
-                        <b>{entry.count} {lang === 'fr' ? 'missions' : 'missions'}</b>
+                        <b>{entry.count} {key === 'factionArcs' ? (lang === 'fr' ? 'arcs' : 'arcs') : (lang === 'fr' ? 'missions' : 'missions')}</b>
                         <span>{lang === 'fr' ? 'OUVRIR' : 'OPEN'}</span>
                       </span>
                     </button>
@@ -5085,11 +5208,15 @@ export default function HubScreen({
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px', color: '#aaa', fontSize: '12px' }}>
               <span>
-                {lang === 'fr'
-                  ? `${clearedVisibleCount}/${missionPool.length} breches stabilisees dans cette vue${isArcMissionScreen ? '' : ` - ${missionDeck.length} cibles proposees`}`
-                  : `${clearedVisibleCount}/${missionPool.length} breaches stabilized in this view${isArcMissionScreen ? '' : ` - ${missionDeck.length} proposed targets`}`}
+                {isFactionArcScreen
+                  ? (lang === 'fr'
+                    ? `${arcProgress.length} arcs de faction indexes dans le theatre Nexus`
+                    : `${arcProgress.length} faction arcs indexed in the Nexus theater`)
+                  : (lang === 'fr'
+                    ? `${clearedVisibleCount}/${missionPool.length} breches stabilisees dans cette vue${isArcMissionScreen ? '' : ` - ${missionDeck.length} cibles proposees`}`
+                    : `${clearedVisibleCount}/${missionPool.length} breaches stabilized in this view${isArcMissionScreen ? '' : ` - ${missionDeck.length} proposed targets`}`)}
               </span>
-              {!isArcMissionScreen && (
+              {!isArcMissionScreen && !isFactionArcScreen && (
                 <button
                   onClick={() => { setMissionSeed(prev => prev + 1); sound.playSfx('click'); }}
                   className="btn-retro"
@@ -5137,7 +5264,13 @@ export default function HubScreen({
               />
             ) : (
             <>
-            {narrativeArcScreenType ? (
+            {isFactionArcScreen ? (
+              <FactionArcBrowser
+                lang={lang}
+                arcProgress={arcProgress}
+                onClaimArcReward={claimArcReward}
+              />
+            ) : narrativeArcScreenType ? (
               <>
                 <MultiverseRiftMap
                   lang={lang}
@@ -5192,7 +5325,7 @@ export default function HubScreen({
                 mapDescription={riftMapCopy.desc}
               />
             )}
-            {!narrativeArcScreenType && (
+            {!narrativeArcScreenType && !isFactionArcScreen && (
               <RiftBriefingPanel
                 lang={lang}
                 stage={selectedBriefingStage}
@@ -5278,7 +5411,7 @@ export default function HubScreen({
             </div>
             )}
 
-            {missionScreen === 'story' && (
+            {missionScreen === 'legacyStoryMeta' && (
             <div style={{
               padding: '14px',
               marginBottom: '14px',
@@ -5441,7 +5574,7 @@ export default function HubScreen({
             {missionScreen === 'story' && (
             <div style={{
               display: 'grid',
-              gridTemplateColumns: '1.1fr 1.4fr',
+              gridTemplateColumns: '1fr',
               gap: '12px',
               marginBottom: '14px'
             }}>
@@ -5473,6 +5606,7 @@ export default function HubScreen({
               </div>
 
               <div style={{
+                display: 'none',
                 padding: '14px',
                 background: 'rgba(255,255,255,0.02)',
                 border: '1px solid rgba(255,255,255,0.08)',
@@ -5611,7 +5745,7 @@ export default function HubScreen({
               </div>
             )}
 
-            {missionScreen === 'story' && (
+            {missionScreen === 'legacyStoryMeta' && (
             <>
             <div style={{
               padding: '12px',
@@ -5769,7 +5903,7 @@ export default function HubScreen({
             </div>
             </>
             )}
-            {!isArcMissionScreen && (
+            {!isArcMissionScreen && !isFactionArcScreen && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {missionDeck.map((stage) => {
                 const isCompleted = completedStages.includes(stage.id);
@@ -5928,7 +6062,7 @@ export default function HubScreen({
                 </button>
               </div>
             )}
-            {!isArcMissionScreen && (
+            {!isArcMissionScreen && !isFactionArcScreen && (
             <div style={{ marginTop: '14px' }}>
               <button
                 onClick={() => { setShowMissionArchive(prev => !prev); sound.playSfx('click'); }}
