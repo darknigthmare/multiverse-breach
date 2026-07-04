@@ -55,7 +55,8 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
     speed: 0,
     item: null,
     time: 0,
-    grade: null
+    grade: null,
+    objective: ''
   });
 
   const trackList = useMemo(() => Object.values(RACE_TRACKS).sort((a, b) => a.difficulty - b.difficulty || a.id.localeCompare(b.id)), []);
@@ -101,7 +102,8 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
           speed: Math.round(Math.abs(engine.player.speed)),
           item: engine.player.item,
           time: engine.player.finishTime || engine.time,
-          grade: engine.player.finished ? engine.getRaceSummary().grade : null
+          grade: engine.player.finished ? engine.getRaceSummary().grade : null,
+          objective: engine.getObjectiveStatus()
         });
       }
       animationId = requestAnimationFrame(loop);
@@ -191,8 +193,8 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
               <strong>{lang === 'fr' ? 'COURSE STABILISEE' : 'RACE STABILIZED'} // {summary.grade}</strong>
               <span>
                 {lang === 'fr'
-                  ? `Position ${summary.rank}/4 - Temps ${formatRaceTime(summary.time)}`
-                  : `Position ${summary.rank}/4 - Time ${formatRaceTime(summary.time)}`}
+                  ? `Position ${summary.rank}/4 - Temps ${formatRaceTime(summary.time)} - Objectif ${summary.objectiveComplete ? 'OK' : 'rate'}`
+                  : `Position ${summary.rank}/4 - Time ${formatRaceTime(summary.time)} - Objective ${summary.objectiveComplete ? 'OK' : 'failed'}`}
               </span>
               <button type="button" className="btn-retro" onClick={resetRace}>
                 {lang === 'fr' ? 'RELANCER' : 'RESTART'}
@@ -207,6 +209,10 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
             <div><span>{lang === 'fr' ? 'Tour' : 'Lap'}</span><strong>{snapshot.lap}/{track.laps}</strong></div>
             <div><span>{lang === 'fr' ? 'Vitesse' : 'Speed'}</span><strong>{snapshot.speed}</strong></div>
             <div><span>{lang === 'fr' ? 'Temps' : 'Time'}</span><strong>{formatRaceTime(snapshot.time)}</strong></div>
+          </div>
+          <div className="race-objective-card">
+            <span>{lang === 'fr' ? 'Objectif A.R.C.A.' : 'A.R.C.A. objective'}</span>
+            <strong>{snapshot.objective || (track.objective?.type || 'podium')}</strong>
           </div>
           <div className="race-cache-card">
             <span>{lang === 'fr' ? 'Cache active' : 'Active cache'}</span>

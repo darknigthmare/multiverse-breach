@@ -19,7 +19,18 @@ const KART_ITEM_FRAMES = {
   projectile: { col: 6, row: 1 },
   shield: { col: 3, row: 0 },
   trap: { col: 4, row: 2 },
+  anchor: { col: 5, row: 0 },
+  mirror: { col: 0, row: 4 },
+  pulse: { col: 5, row: 2 },
   cache: { col: 0, row: 0 }
+};
+
+const OBJECTIVE_LABELS = {
+  podium: 'Finir dans le podium',
+  beatRival: 'Battre le rival cible',
+  collectFragments: 'Recuperer les fragments',
+  closePortals: 'Fermer les portails',
+  timeLimit: 'Sceller avant surcharge'
 };
 
 const drawSheetFrame = (ctx, image, columns, rows, col, row, dx, dy, dw, dh) => {
@@ -45,6 +56,7 @@ export const KART_TRACK_LAYOUTS = {
     family: 'nexus',
     difficulty: 1,
     tags: ['starter', 'wide', 'classic'],
+    objective: { type: 'podium', targetRank: 3 },
     start: { x: 480, y: 474, angle: -Math.PI / 2 },
     laps: 3,
     roadWidth: 118,
@@ -93,6 +105,7 @@ export const KART_TRACK_LAYOUTS = {
     family: 'nexus',
     difficulty: 2,
     tags: ['figureEight', 'technical', 'crossing'],
+    objective: { type: 'beatRival', rivalId: 'loom', rivalName: 'Loom-07' },
     start: { x: 480, y: 474, angle: -Math.PI / 2 },
     laps: 3,
     roadWidth: 104,
@@ -149,6 +162,16 @@ export const KART_TRACK_LAYOUTS = {
     family: 'nexus',
     difficulty: 2,
     tags: ['shortcut', 'urban', 'items'],
+    objective: {
+      type: 'collectFragments',
+      required: 3,
+      markers: [
+        { x: 214, y: 254, r: 28 },
+        { x: 604, y: 210, r: 28 },
+        { x: 742, y: 188, r: 28 },
+        { x: 400, y: 448, r: 28 }
+      ]
+    },
     start: { x: 440, y: 488, angle: -Math.PI / 2 },
     laps: 4,
     roadWidth: 96,
@@ -205,6 +228,7 @@ export const KART_TRACK_LAYOUTS = {
     family: 'nexus',
     difficulty: 3,
     tags: ['slippery', 'wide', 'survival'],
+    objective: { type: 'timeLimit', seconds: 92 },
     start: { x: 520, y: 486, angle: -Math.PI / 2 },
     laps: 3,
     roadWidth: 126,
@@ -257,6 +281,14 @@ export const KART_TRACK_LAYOUTS = {
     family: 'nexus',
     difficulty: 3,
     tags: ['hairpin', 'hazard', 'technical'],
+    objective: {
+      type: 'closePortals',
+      required: 2,
+      markers: [
+        { x: 150, y: 128, r: 34 },
+        { x: 688, y: 346, r: 34 }
+      ]
+    },
     start: { x: 456, y: 492, angle: -Math.PI / 2 },
     laps: 3,
     roadWidth: 92,
@@ -315,6 +347,7 @@ export const KART_TRACK_LAYOUTS = {
     family: 'nexus',
     difficulty: 4,
     tags: ['bossArena', 'hazard', 'wide'],
+    objective: { type: 'timeLimit', seconds: 78 },
     start: { x: 480, y: 482, angle: -Math.PI / 2 },
     laps: 2,
     roadWidth: 140,
@@ -393,7 +426,22 @@ export class EngineRace {
         ...shortcut,
         from: { ...shortcut.from },
         to: { ...shortcut.to }
-      }))
+      })),
+      objective: baseTrack.objective ? {
+        ...baseTrack.objective,
+        markers: (baseTrack.objective.markers || []).map(marker => ({ ...marker, collected: false }))
+      } : null
+    };
+  }
+
+  createObjectiveState() {
+    const objective = this.track.objective || { type: 'podium', targetRank: 3 };
+    return {
+      ...objective,
+      complete: false,
+      failed: false,
+      collected: 0,
+      label: OBJECTIVE_LABELS[objective.type] || 'Objectif de course'
     };
   }
 
@@ -415,6 +463,7 @@ export class EngineRace {
     this.messageTimer = 2;
     this.particles = [];
     this.projectiles = [];
+    this.objective = this.createObjectiveState();
     this.player = this.createKart({
       id: 'mirelle',
       name: 'Mirelle Suture',
@@ -461,7 +510,8 @@ export class EngineRace {
       rank: 1,
       finished: false,
       finishTime: null,
-      hitCooldown: 0
+      hitCooldown: 0,
+      itemCooldown: 0
     };
   }
 
@@ -470,38 +520,99 @@ export class EngineRace {
   }
 
   useItem() {
-    if (!this.player.item || this.finished || this.countdown > 0) return;
-    const item = this.player.item;
-    this.player.item = null;
+    this.useKartItem(this.player);
+  }
+
+  useKartItem(kart) {
+    if (!kart?.item || this.finished || this.countdown > 0 || kart.itemCooldown > 0) return false;
+    const item = kart.item;
+    kart.item = null;
+    kart.itemCooldown = 1.1;
     if (item === 'boost') {
-      this.player.boost = Math.max(this.player.boost, 1.45);
-      this.showMessage('Suture de vitesse: boost instable');
-      this.spawnParticles(this.player.x, this.player.y, '#39c5bb', 18);
-      return;
+      kart.boost = Math.max(kart.boost, 1.45);
+      kart.speed = Math.max(kart.speed, 215);
+      if (!kart.ai) this.showMessage('Suture de vitesse: boost instable');
+      this.spawnParticles(kart.x, kart.y, '#39c5bb', 18);
+      return true;
     }
     if (item === 'shield') {
-      this.player.shield = 4;
-      this.showMessage('Voile de garde actif');
-      return;
+      kart.shield = 4;
+      if (!kart.ai) this.showMessage('Voile de garde actif');
+      return true;
     }
     if (item === 'trap') {
       const back = {
-        x: this.player.x - Math.cos(this.player.angle) * 34,
-        y: this.player.y - Math.sin(this.player.angle) * 34
+        x: kart.x - Math.cos(kart.angle) * 34,
+        y: kart.y - Math.sin(kart.angle) * 34
       };
-      this.track.hazards.push({ ...back, r: 24, phase: this.time, temporary: 8 });
-      this.showMessage('Noeud de trame largue');
-      return;
+      this.track.hazards.push({ ...back, r: 24, phase: this.time, temporary: 8, ownerId: kart.id });
+      if (!kart.ai) this.showMessage('Noeud de trame largue');
+      return true;
+    }
+    if (item === 'anchor') {
+      kart.spin = 0;
+      kart.hitCooldown = Math.max(kart.hitCooldown, 0.65);
+      kart.shield = Math.max(kart.shield, 1.6);
+      kart.speed = Math.max(kart.speed, 155);
+      this.spawnParticles(kart.x, kart.y, '#d8fffb', 16);
+      if (!kart.ai) this.showMessage('Balise d ancrage: trajectoire stabilisee');
+      return true;
+    }
+    if (item === 'mirror') {
+      const target = this.findMirrorSwapTarget(kart);
+      if (target) {
+        const swap = { x: kart.x, y: kart.y, angle: kart.angle, speed: kart.speed };
+        kart.x = target.x;
+        kart.y = target.y;
+        kart.angle = target.angle;
+        kart.speed = Math.max(target.speed * 0.9, 120);
+        target.x = swap.x;
+        target.y = swap.y;
+        target.angle = swap.angle;
+        target.speed = Math.max(swap.speed * 0.72, 90);
+        kart.portalCooldown = 1.2;
+        target.portalCooldown = 1.2;
+        this.spawnParticles(kart.x, kart.y, '#39c5bb', 20);
+        this.spawnParticles(target.x, target.y, '#39c5bb', 20);
+        if (!kart.ai) this.showMessage('Faille miroir: permutation de trajectoire');
+      }
+      return true;
+    }
+    if (item === 'pulse') {
+      const victims = [this.player, ...this.opponents].filter(other => other.id !== kart.id && distance(kart, other) < 150);
+      victims.forEach(other => {
+        if (other.shield > 0) {
+          other.shield = 0;
+        } else {
+          other.spin = Math.max(other.spin, 0.65);
+          other.speed *= 0.62;
+          other.hitCooldown = Math.max(other.hitCooldown, 0.8);
+        }
+        this.spawnParticles(other.x, other.y, '#9b59b6', 12);
+      });
+      if (!kart.ai) this.showMessage('Onde de freinage: zone perturbee');
+      return true;
     }
     this.projectiles.push({
-      x: this.player.x + Math.cos(this.player.angle) * 28,
-      y: this.player.y + Math.sin(this.player.angle) * 28,
-      vx: Math.cos(this.player.angle) * 420,
-      vy: Math.sin(this.player.angle) * 420,
+      x: kart.x + Math.cos(kart.angle) * 28,
+      y: kart.y + Math.sin(kart.angle) * 28,
+      vx: Math.cos(kart.angle) * 420,
+      vy: Math.sin(kart.angle) * 420,
       life: 1.4,
-      color: '#ffeb3b'
+      color: '#ffeb3b',
+      ownerId: kart.id
     });
-    this.showMessage('Aiguille de resonance lancee');
+    if (!kart.ai) this.showMessage('Aiguille de resonance lancee');
+    return true;
+  }
+
+  findMirrorSwapTarget(kart) {
+    const racers = [this.player, ...this.opponents].filter(other => other.id !== kart.id && !other.finished);
+    if (!racers.length) return null;
+    const ahead = racers
+      .filter(other => other.progress >= kart.progress)
+      .sort((a, b) => a.progress - b.progress || distance(kart, a) - distance(kart, b))[0];
+    return ahead || racers.sort((a, b) => distance(kart, a) - distance(kart, b))[0];
   }
 
   update(dt) {
@@ -529,6 +640,7 @@ export class EngineRace {
     this.updateProjectiles(dt);
     this.resolveKartCollisions();
     this.updateProgressAndRanks();
+    this.updateObjectiveState();
     this.updateParticles(dt);
     if (this.player.finished && !this.finishReported) {
       this.finishReported = true;
@@ -544,6 +656,7 @@ export class EngineRace {
     kart.boost = Math.max(0, kart.boost - dt);
     kart.air = Math.max(0, kart.air - dt);
     kart.portalCooldown = Math.max(0, kart.portalCooldown - dt);
+    kart.itemCooldown = Math.max(0, kart.itemCooldown - dt);
     if (kart.finished) {
       kart.speed *= 0.985;
       kart.x += Math.cos(kart.angle) * kart.speed * dt;
@@ -613,7 +726,21 @@ export class EngineRace {
       turn: clamp(delta * 1.35 + difficultyWave, -1, 1),
       drift: Math.abs(delta) > 0.62 && kart.speed > 145
     };
+    if (this.shouldAiUseItem(kart, delta)) {
+      this.useKartItem(kart);
+    }
     this.updateKart(kart, dt);
+  }
+
+  shouldAiUseItem(kart, turnDelta) {
+    if (!kart.item || kart.itemCooldown > 0 || this.countdown > 0) return false;
+    const nearPlayer = distance(kart, this.player) < 175;
+    if (kart.item === 'boost') return kart.rank >= 2 && Math.abs(turnDelta) < 0.7;
+    if (kart.item === 'shield' || kart.item === 'anchor') return kart.rank === 1 || kart.hitCooldown > 0;
+    if (kart.item === 'trap') return this.player.progress <= kart.progress && nearPlayer;
+    if (kart.item === 'pulse') return nearPlayer;
+    if (kart.item === 'mirror') return kart.rank >= 3 || this.player.progress > kart.progress + 0.15;
+    return this.player.progress >= kart.progress - 0.08;
   }
 
   getPlayerInput() {
@@ -732,7 +859,9 @@ export class EngineRace {
   }
 
   rollItem(kart) {
-    const pool = kart.rank >= 3 ? ['boost', 'boost', 'projectile', 'shield', 'trap'] : ['projectile', 'shield', 'trap', 'boost'];
+    const pool = kart.rank >= 3
+      ? ['boost', 'boost', 'projectile', 'shield', 'trap', 'anchor', 'mirror', 'pulse']
+      : ['projectile', 'shield', 'trap', 'boost', 'anchor', 'pulse'];
     return pool[Math.floor((this.time * 997 + kart.x + kart.y) % pool.length)];
   }
 
@@ -741,7 +870,10 @@ export class EngineRace {
       boost: 'Suture de vitesse',
       shield: 'Voile de garde',
       trap: 'Noeud de trame',
-      projectile: 'Aiguille de resonance'
+      projectile: 'Aiguille de resonance',
+      anchor: 'Balise d ancrage',
+      mirror: 'Faille miroir',
+      pulse: 'Onde de freinage'
     }[item] || 'Cache';
   }
 
@@ -773,16 +905,80 @@ export class EngineRace {
       .forEach((kart, index) => { kart.rank = index + 1; });
   }
 
+  updateObjectiveState() {
+    if (!this.objective || this.objective.complete || this.objective.failed) return;
+    if (this.objective.type === 'collectFragments') {
+      (this.objective.markers || []).forEach(marker => {
+        if (!marker.collected && distance(this.player, marker) < marker.r) {
+          marker.collected = true;
+          this.objective.collected += 1;
+          this.spawnParticles(marker.x, marker.y, '#ffeb3b', 18);
+          this.showMessage(`Fragment recupere ${this.objective.collected}/${this.objective.required}`);
+        }
+      });
+      this.objective.complete = this.objective.collected >= this.objective.required;
+      return;
+    }
+    if (this.objective.type === 'closePortals') {
+      (this.objective.markers || []).forEach(marker => {
+        if (!marker.collected && distance(this.player, marker) < marker.r) {
+          marker.collected = true;
+          this.objective.collected += 1;
+          this.spawnParticles(marker.x, marker.y, '#39c5bb', 18);
+          this.showMessage(`Portail ferme ${this.objective.collected}/${this.objective.required}`);
+        }
+      });
+      this.objective.complete = this.objective.collected >= this.objective.required;
+      return;
+    }
+    if (this.objective.type === 'timeLimit') {
+      this.objective.failed = this.time > this.objective.seconds && !this.player.finished;
+      this.objective.complete = this.player.finished && this.time <= this.objective.seconds;
+      if (this.objective.failed) this.showMessage('Surcharge atteinte: objectif secondaire perdu');
+      return;
+    }
+    if (this.objective.type === 'beatRival') {
+      const rival = this.opponents.find(kart => kart.id === this.objective.rivalId);
+      this.objective.complete = this.player.finished && (!rival || this.player.rank < rival.rank);
+      this.objective.failed = this.player.finished && !this.objective.complete;
+      return;
+    }
+    if (this.objective.type === 'podium') {
+      this.objective.complete = this.player.finished && this.player.rank <= (this.objective.targetRank || 3);
+      this.objective.failed = this.player.finished && !this.objective.complete;
+    }
+  }
+
+  getObjectiveStatus() {
+    if (!this.objective) return 'Objectif libre';
+    if (this.objective.type === 'collectFragments' || this.objective.type === 'closePortals') {
+      return `${this.objective.label}: ${this.objective.collected}/${this.objective.required}`;
+    }
+    if (this.objective.type === 'timeLimit') {
+      return `${this.objective.label}: ${Math.max(0, this.objective.seconds - this.time).toFixed(0)}s`;
+    }
+    if (this.objective.type === 'beatRival') {
+      return `${this.objective.label}: ${this.objective.rivalName || this.objective.rivalId}`;
+    }
+    return this.objective.label;
+  }
+
   updateProjectiles(dt) {
     this.projectiles.forEach(projectile => {
       projectile.x += projectile.vx * dt;
       projectile.y += projectile.vy * dt;
       projectile.life -= dt;
-      this.opponents.forEach(kart => {
+      [this.player, ...this.opponents].forEach(kart => {
+        if (kart.id === projectile.ownerId) return;
         if (projectile.life > 0 && distance(projectile, kart) < 28 && kart.hitCooldown <= 0) {
-          kart.speed *= 0.22;
-          kart.spin = 0.8;
-          kart.hitCooldown = 1.2;
+          if (kart.shield > 0) {
+            kart.shield = 0;
+            kart.hitCooldown = 0.45;
+          } else {
+            kart.speed *= 0.22;
+            kart.spin = 0.8;
+            kart.hitCooldown = 1.2;
+          }
           projectile.life = 0;
           this.spawnParticles(kart.x, kart.y, '#ffeb3b', 16);
         }
@@ -846,7 +1042,8 @@ export class EngineRace {
   getRaceSummary() {
     const time = this.player.finishTime || this.time;
     const rank = this.player.rank;
-    const grade = rank === 1 && time < 88 ? 'S' : rank === 1 ? 'A' : rank === 2 ? 'B' : 'C';
+    const objectiveComplete = Boolean(this.objective?.complete);
+    const grade = rank === 1 && objectiveComplete && time < 88 ? 'S' : rank === 1 && objectiveComplete ? 'A' : rank <= 2 ? 'B' : 'C';
     return {
       mode: 'Race',
       trackId: this.track.id,
@@ -854,7 +1051,9 @@ export class EngineRace {
       time,
       rank,
       grade,
-      laps: this.track.laps
+      laps: this.track.laps,
+      objective: this.getObjectiveStatus(),
+      objectiveComplete
     };
   }
 
@@ -1000,6 +1199,11 @@ export class EngineRace {
       const p = this.projectToRearCamera(zone);
       if (p) projected.push({ type: 'surface', p, source: zone });
     });
+    (this.objective?.markers || []).forEach(marker => {
+      if (marker.collected) return;
+      const p = this.projectToRearCamera(marker);
+      if (p) projected.push({ type: 'objective', p, source: marker });
+    });
     this.track.boostPads.forEach(pad => {
       const p = this.projectToRearCamera(pad);
       if (p) projected.push({ type: 'boost', p, source: pad });
@@ -1026,6 +1230,7 @@ export class EngineRace {
       .forEach(entry => {
         if (entry.type === 'opponent') this.drawProjectedOpponent(ctx, entry.source, entry.p);
         if (entry.type === 'surface') this.drawProjectedSurfaceZone(ctx, entry.source, entry.p);
+        if (entry.type === 'objective') this.drawProjectedObjectiveMarker(ctx, entry.source, entry.p);
         if (entry.type === 'boost') this.drawProjectedBoostPad(ctx, entry.p);
         if (entry.type === 'item') this.drawProjectedItemBox(ctx, entry.p);
         if (entry.type === 'hazard') this.drawProjectedHazard(ctx, entry.source, entry.p);
@@ -1098,6 +1303,26 @@ export class EngineRace {
       ctx.textAlign = 'center';
       ctx.fillText('?', 0, 8);
     }
+    ctx.restore();
+  }
+
+  drawProjectedObjectiveMarker(ctx, marker, p) {
+    const isPortal = this.objective?.type === 'closePortals';
+    ctx.save();
+    ctx.translate(p.x, p.y - 24 * p.scale);
+    ctx.scale(p.scale, p.scale);
+    ctx.globalAlpha = 0.85 + Math.sin(this.time * 8) * 0.1;
+    ctx.strokeStyle = isPortal ? '#39c5bb' : '#ffeb3b';
+    ctx.fillStyle = isPortal ? 'rgba(57,197,187,0.2)' : 'rgba(255,235,59,0.2)';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.arc(0, 0, 18, 0, TAU);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = isPortal ? '#a8f7ef' : '#ffeb3b';
+    ctx.font = 'bold 18px Share Tech Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(isPortal ? 'P' : 'F', 0, 7);
     ctx.restore();
   }
 
@@ -1288,6 +1513,13 @@ export class EngineRace {
             : 'rgba(255,235,59,0.62)';
       ctx.beginPath();
       ctx.arc(zone.x, zone.y, Math.max(12, zone.r * 0.34), 0, TAU);
+      ctx.fill();
+    });
+    (this.objective?.markers || []).forEach(marker => {
+      if (marker.collected) return;
+      ctx.fillStyle = this.objective.type === 'closePortals' ? '#39c5bb' : '#ffeb3b';
+      ctx.beginPath();
+      ctx.arc(marker.x, marker.y, 18, 0, TAU);
       ctx.fill();
     });
     [this.player, ...this.opponents].forEach(kart => {
@@ -1547,6 +1779,9 @@ export class EngineRace {
     ctx.fillStyle = '#8aa5a5';
     ctx.font = '9px Share Tech Mono, monospace';
     ctx.fillText(player.air > 0 ? 'TRICK BOOST' : this.startBoostWindow && this.countdown > 0 ? 'FENETRE DEPART PARFAIT' : 'CHARGE MINI-TURBO', 28, 140);
+    ctx.fillStyle = this.objective?.complete ? '#39c5bb' : this.objective?.failed ? '#e74c3c' : '#d8fffb';
+    ctx.font = '10px Share Tech Mono, monospace';
+    ctx.fillText(this.getObjectiveStatus().slice(0, 34), 28, 148);
 
     this.drawTopDownMinimap(ctx);
 

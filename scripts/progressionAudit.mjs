@@ -121,6 +121,9 @@ assert(raceModeSource.includes('race-track-selector') && raceModeSource.includes
 assert(raceEngineSource.includes('startBoostWindow') && raceEngineSource.includes('driftCharge') && raceEngineSource.includes('Mini-turbo violet'), 'Race mode must include start boost and charged mini-turbo handling.');
 assert(raceEngineSource.includes("zone.type === 'jump'") && raceEngineSource.includes("zone.type === 'portal'") && raceEngineSource.includes("zone.type === 'slow'"), 'Race mode must include jump, portal, and slow interactive surfaces.');
 assert(raceEngineSource.includes('drawProjectedSurfaceZone') && raceEngineSource.includes('TRICK BOOST') && raceEngineSource.includes('CHARGE MINI-TURBO'), 'Race mode must render readable surface and driving feedback.');
+assert(raceEngineSource.includes('useKartItem') && raceEngineSource.includes('shouldAiUseItem') && raceEngineSource.includes('findMirrorSwapTarget'), 'Race mode must support shared player/AI item usage and advanced A.R.C.A. cache effects.');
+assert(raceEngineSource.includes("'anchor'") && raceEngineSource.includes("'mirror'") && raceEngineSource.includes("'pulse'"), 'Race item pool must include anchor, mirror, and pulse cache types.');
+assert(raceEngineSource.includes('updateObjectiveState') && raceEngineSource.includes('getObjectiveStatus') && raceModeSource.includes('race-objective-card'), 'Race mode must expose active objectives in engine and UI.');
 assert(rendererSource.includes('drawMirelleItemVfx') && rendererSource.includes('MIRELLE_COMPLETE_SPRITES.itemsVfx'), 'Combat renderer must use Mirelle item/VFX sheet during gameplay states.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');

@@ -680,6 +680,7 @@ body {
 .race-stat-grid div,
 .race-cache-card,
 .race-garage-card,
+.race-objective-card,
 .race-track-selector,
 .race-control-list,
 .race-touch-controls {
@@ -691,6 +692,7 @@ body {
 .race-stat-grid div,
 .race-cache-card,
 .race-garage-card,
+.race-objective-card,
 .race-track-selector {
   padding: 10px;
 }
@@ -698,6 +700,7 @@ body {
 .race-stat-grid span,
 .race-cache-card span,
 .race-garage-card span,
+.race-objective-card span,
 .race-track-selector > span,
 .race-control-list span {
   display: block;
@@ -711,6 +714,14 @@ body {
   margin-top: 4px;
   color: #39c5bb;
   font-size: 16px;
+}
+
+.race-objective-card strong {
+  display: block;
+  margin-top: 5px;
+  color: #d8fffb;
+  font-size: 11px;
+  line-height: 1.25;
 }
 
 .race-cache-card {
