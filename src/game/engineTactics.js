@@ -1532,55 +1532,7 @@ export class EngineTactics {
       });
     }
 
-    this.enemies.forEach(e => {
-      if (e.isBoss) {
-        drawBoss(ctx, e.x, e.y, e, animTime);
-      } else {
-        drawPixelEnemy(ctx, e.x, e.y, e, animTime, -1);
-      }
-
-      if (e.currentHp > 0) {
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.fillRect(e.x - 15, e.y - 32, 30, 3);
-        const hpPct = e.currentHp / e.maxHp;
-        ctx.fillStyle = '#e74c3c';
-        ctx.fillRect(e.x - 15, e.y - 32, 30 * hpPct, 3);
-
-        const enemyRange = this.getActionRange('enemy', e);
-        const threatensHero = this.heroes.some(h => {
-          if (h.currentHp <= 0) return false;
-          const dist = Math.abs(e.gridX - h.gridX) + Math.abs(e.gridY - h.gridY);
-          return dist <= enemyRange && this.hasLineOfSight(e, h, 'enemy');
-        });
-        if (threatensHero) {
-          ctx.fillStyle = '#ff8a50';
-          ctx.font = '12px "Press Start 2P"';
-          ctx.fillText('!', e.x - 4, e.y - 42);
-        }
-      }
-    });
-
-    this.heroes.forEach(h => {
-      drawPixelSprite(ctx, h.x, h.y, h, animTime, 1);
-
-      if (h === this.activeUnit && h.currentHp > 0) {
-        ctx.fillStyle = '#f1c40f';
-        ctx.beginPath();
-        const pt = Math.sin(animTime * 0.1) * 3;
-        ctx.moveTo(h.x, h.y - 36 + pt);
-        ctx.lineTo(h.x - 5, h.y - 44 + pt);
-        ctx.lineTo(h.x + 5, h.y - 44 + pt);
-        ctx.fill();
-      }
-
-      if (h.currentHp > 0) {
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.fillRect(h.x - 15, h.y - 32, 30, 3);
-        const hpPct = h.currentHp / h.maxHp;
-        ctx.fillStyle = '#2ecc71';
-        ctx.fillRect(h.x - 15, h.y - 32, 30 * hpPct, 3);
-      }
-    });
+    this.getTacticsDrawOrder().forEach(entry => this.drawTacticsUnit(ctx, entry, animTime));
 
     ctx.fillStyle = 'rgba(0,0,0,0.68)';
     ctx.fillRect(this.width - 245, 10, 235, 55);
@@ -1601,12 +1553,69 @@ export class EngineTactics {
     let qStr = this.turnQueue.slice(0, 4).map(q => `${q.type === 'hero' ? 'H' : 'E'}:${q.unit.name.split(' ')[0]}`).join(' > ');
     ctx.fillStyle = '#00ffff';
     ctx.fillText((qStr || 'END').slice(0, 32), this.width - 235, 56);
+    this.drawTurnTimeline(ctx);
 
     ctx.fillStyle = this.getBattlefieldAccent();
     ctx.font = '8px "Press Start 2P"';
     ctx.fillText((this.battlefield.label?.fr || this.battlefield.id).toUpperCase().slice(0, 32), 20, 22);
 
     this.drawTacticsObjectiveHud(ctx);
+  }
+
+  getTacticsDrawOrder() {
+    return [
+      ...this.enemies.map(unit => ({ unit, type: 'enemy' })),
+      ...this.heroes.map(unit => ({ unit, type: 'hero' }))
+    ].sort((a, b) => {
+      const depthA = a.unit.gridY * 100 + a.unit.gridX + (a.type === 'hero' ? 0.1 : 0);
+      const depthB = b.unit.gridY * 100 + b.unit.gridX + (b.type === 'hero' ? 0.1 : 0);
+      return depthA - depthB;
+    });
+  }
+
+  drawTacticsUnit(ctx, entry, animTime) {
+    const unit = entry.unit;
+    if (entry.type === 'enemy') {
+      if (unit.isBoss) {
+        drawBoss(ctx, unit.x, unit.y, unit, animTime);
+      } else {
+        drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, -1);
+      }
+    } else {
+      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, 1);
+    }
+
+    if (unit === this.activeUnit && unit.currentHp > 0) {
+      ctx.fillStyle = '#f1c40f';
+      ctx.beginPath();
+      const pt = Math.sin(animTime * 0.1) * 3;
+      ctx.moveTo(unit.x, unit.y - 36 + pt);
+      ctx.lineTo(unit.x - 5, unit.y - 44 + pt);
+      ctx.lineTo(unit.x + 5, unit.y - 44 + pt);
+      ctx.fill();
+    }
+
+    if (unit.currentHp > 0) {
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(unit.x - 15, unit.y - 32, 30, 3);
+      const hpPct = unit.currentHp / unit.maxHp;
+      ctx.fillStyle = entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
+      ctx.fillRect(unit.x - 15, unit.y - 32, 30 * hpPct, 3);
+    }
+
+    if (entry.type === 'enemy' && unit.currentHp > 0) {
+      const enemyRange = this.getActionRange('enemy', unit);
+      const threatensHero = this.heroes.some(hero => {
+        if (hero.currentHp <= 0) return false;
+        const dist = Math.abs(unit.gridX - hero.gridX) + Math.abs(unit.gridY - hero.gridY);
+        return dist <= enemyRange && this.hasLineOfSight(unit, hero, 'enemy');
+      });
+      if (threatensHero) {
+        ctx.fillStyle = '#ff8a50';
+        ctx.font = '12px "Press Start 2P"';
+        ctx.fillText('!', unit.x - 4, unit.y - 42);
+      }
+    }
   }
 
   drawTacticsObjectiveZones(ctx, animTime) {
@@ -1649,6 +1658,53 @@ export class EngineTactics {
     ctx.fillStyle = this.getBattlefieldAccent();
     ctx.font = '7px "Press Start 2P"';
     ctx.fillText((this.missionProfile.label?.fr || this.missionProfile.tier).toUpperCase().slice(0, 38), 28, 86);
+  }
+
+  getTurnTimeline(limit = 6) {
+    const active = this.activeUnit
+      ? [{ unit: this.activeUnit, type: this.activeUnitType || (this.heroes.includes(this.activeUnit) ? 'hero' : 'enemy'), active: true }]
+      : [];
+    return [
+      ...active,
+      ...this.turnQueue.slice(0, limit - active.length)
+    ].map((entry, index) => ({
+      index,
+      type: entry.type,
+      active: !!entry.active,
+      name: entry.unit?.name || 'Unknown',
+      hp: entry.unit?.currentHp || 0,
+      maxHp: entry.unit?.maxHp || entry.unit?.stats?.hp || 1
+    }));
+  }
+
+  drawTurnTimeline(ctx) {
+    const timeline = this.getTurnTimeline(6);
+    const x = this.width - 245;
+    const y = 70;
+    ctx.fillStyle = 'rgba(0,0,0,0.64)';
+    ctx.fillRect(x, y, 235, 72);
+    ctx.strokeStyle = '#2980b9';
+    ctx.strokeRect(x, y, 235, 72);
+    ctx.fillStyle = '#dff';
+    ctx.font = '7px "Press Start 2P"';
+    ctx.fillText('INITIATIVE', x + 10, y + 13);
+    timeline.forEach((entry, index) => {
+      const bx = x + 10 + index * 36;
+      const by = y + 25;
+      ctx.fillStyle = entry.active ? '#f1c40f' : entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
+      ctx.fillRect(bx, by, 28, 24);
+      ctx.fillStyle = '#020005';
+      ctx.font = '8px "Press Start 2P"';
+      ctx.fillText(entry.type === 'hero' ? 'H' : 'E', bx + 9, by + 15);
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
+      ctx.fillRect(bx, by + 27, 28, 3);
+      ctx.fillStyle = entry.type === 'hero' ? '#2ecc71' : '#ff8a50';
+      ctx.fillRect(bx, by + 27, 28 * Math.max(0, Math.min(1, entry.hp / entry.maxHp)), 3);
+    });
+    const currentName = timeline[0]?.name || 'NONE';
+    ctx.fillStyle = '#fff';
+    ctx.font = '7px "Press Start 2P"';
+    ctx.fillText(currentName.toUpperCase().slice(0, 25), x + 10, y + 66);
   }
 
   getObjectiveText(lang = 'fr') {

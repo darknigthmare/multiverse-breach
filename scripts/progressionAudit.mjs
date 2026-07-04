@@ -190,6 +190,8 @@ assert(tacticsEngineSource.includes('updateTacticsObjective'), 'Tactics engine m
 assert(tacticsEngineSource.includes('completeBattle'), 'Tactics engine must complete objective-based battles.');
 assert(tacticsEngineSource.includes('drawTacticsObjectiveHud'), 'Tactics engine must render objective HUD feedback.');
 assert(tacticsEngineSource.includes('drawTacticsObjectiveZones'), 'Tactics engine must render objective and extraction zones.');
+assert(tacticsEngineSource.includes('getTacticsDrawOrder') && tacticsEngineSource.includes('gridY * 100'), 'Tactics units must render by grid depth so lower rows appear in front.');
+assert(tacticsEngineSource.includes('getTurnTimeline') && tacticsEngineSource.includes('drawTurnTimeline'), 'Tactics UI must render initiative order feedback.');
 assert(tacticsEngineSource.includes('getCombatSummary') && tacticsEngineSource.includes("mode: 'Tactics'"), 'Tactics engine must expose a combat summary.');
 assert(tacticsEngineSource.includes('getObjectiveFocusCells'), 'Tactics AI must resolve objective focus cells.');
 assert(tacticsEngineSource.includes('scoreObjectiveMove'), 'Tactics AI must score movement against objectives and terrain.');
@@ -228,6 +230,7 @@ console.log(JSON.stringify({
   tacticsTerrainSystem: 'dynamic',
   tacticsTerrainTypes: ['high', 'lightCover', 'heavyCover', 'hazard', 'heal', 'blocked', 'objective'],
   tacticsPlacementRules: ['move-costs', 'height-advantage', 'flank-back'],
+  tacticsVisualCoherence: ['grid-depth-order', 'initiative-timeline'],
   tacticsObjectives: ['rout', 'extract', 'disable', 'control', 'commander', 'survive'],
   tacticsAi: 'objective-aware',
   tacticsMissionPressure: ['reinforcements', 'hazard-pulses', 'difficulty-profiles'],
