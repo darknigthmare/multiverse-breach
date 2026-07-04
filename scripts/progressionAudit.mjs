@@ -95,6 +95,11 @@ assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen m
 assert(smashEngineSource.includes('createSmashArena(stage, width, height)'), 'Melee engine must build arena layouts from the active stage.');
 assert(smashEngineSource.includes('applyArenaHazards'), 'Melee engine must keep terrain hazards wired.');
 assert(smashEngineSource.includes('getObjectiveText'), 'Melee engine must expose arena objective text.');
+assert(smashEngineSource.includes('updateArenaObjective'), 'Melee engine must update active arena objectives.');
+assert(smashEngineSource.includes('drawObjectiveHud'), 'Melee engine must render objective progress feedback.');
+assert(smashEngineSource.includes('isTouchingActiveHazard'), 'Melee objectives must react to active terrain hazards.');
+assert(smashArenasSource.includes('objectiveTarget'), 'Melee arenas must declare objective targets.');
+assert(smashArenasSource.includes('getSmashObjectiveLabel'), 'Melee arenas must expose objective labels.');
 assert(gameCanvasSource.includes('getSmashPickupPositions'), 'Melee pickups must use arena-safe positions.');
 assert(gameCanvasSource.includes('new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, stage)'), 'GameCanvas must pass stage metadata into melee mode.');
 
@@ -108,5 +113,6 @@ console.log(JSON.stringify({
   storyChapterPortals: 'active-chapter-only',
   factionArcCompletion: 'expanded',
   meleeArenaLayouts: 9,
-  meleeTerrainSystem: 'dynamic'
+  meleeTerrainSystem: 'dynamic',
+  meleeObjectiveSystem: 'active'
 }, null, 2));

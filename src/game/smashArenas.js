@@ -22,6 +22,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Plateforme d ancrage', en: 'Anchor Platform' },
     tags: ['wide', 'starter'],
     objective: 'waves',
+    objectiveTarget: 4,
     gravity: 0.24,
     jump: -7.7,
     dropDelay: 520,
@@ -55,6 +56,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Arena duel a trois etages', en: 'Three-Tier Duel Arena' },
     tags: ['duel', 'platformHeavy'],
     objective: 'waves',
+    objectiveTarget: 4,
     platforms: (width, height) => [
       scaledPlatform(width, height, 0.07, 0.93, 0.76, 'main', false),
       scaledPlatform(width, height, 0.14, 0.34, 0.52, 'soft'),
@@ -87,6 +89,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Tour de projection', en: 'Projection Tower' },
     tags: ['vertical', 'platformHeavy'],
     objective: 'capture',
+    objectiveTarget: 100,
     gravity: 0.23,
     jump: -8.2,
     platforms: (width, height) => [
@@ -123,6 +126,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Faille a fosse centrale', en: 'Central Pit Rift' },
     tags: ['hazard', 'pit', 'chaotic'],
     objective: 'survival',
+    objectiveTarget: 900,
     dropDelay: 460,
     platforms: (width, height) => [
       scaledPlatform(width, height, 0.06, 0.42, 0.76, 'main', false),
@@ -160,6 +164,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Terrain de chasse asymetrique', en: 'Asymmetric Hunt Ground' },
     tags: ['asymmetric', 'loreArena'],
     objective: 'hunt',
+    objectiveTarget: 3,
     platforms: (width, height) => [
       scaledPlatform(width, height, 0.05, 0.95, 0.78, 'main', false),
       scaledPlatform(width, height, 0.13, 0.45, 0.58, 'soft'),
@@ -192,6 +197,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Colisee de champion', en: 'Champion Coliseum' },
     tags: ['bossArena', 'wide'],
     objective: 'boss',
+    objectiveTarget: 3,
     gravity: 0.25,
     jump: -7.4,
     maxWaves: 3,
@@ -226,6 +232,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Scene de resonance', en: 'Resonance Stage' },
     tags: ['duel', 'hazard', 'loreArena'],
     objective: 'tempo',
+    objectiveTarget: 100,
     platforms: (width, height) => [
       scaledPlatform(width, height, 0.05, 0.95, 0.77, 'main', false),
       scaledPlatform(width, height, 0.1, 0.32, 0.55, 'speaker'),
@@ -262,6 +269,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Laboratoire de confinement', en: 'Containment Lab' },
     tags: ['hazard', 'loreArena'],
     objective: 'cleanse',
+    objectiveTarget: 100,
     platforms: (width, height) => [
       scaledPlatform(width, height, 0.06, 0.94, 0.77, 'main', false),
       scaledPlatform(width, height, 0.12, 0.38, 0.55, 'soft'),
@@ -297,6 +305,7 @@ export const SMASH_ARENA_LAYOUTS = {
     label: { fr: 'Couloir de ruche acide', en: 'Acid Hive Corridor' },
     tags: ['hazard', 'loreArena', 'asymmetric'],
     objective: 'survival',
+    objectiveTarget: 900,
     gravity: 0.24,
     jump: -7.6,
     platforms: (width, height) => [
@@ -410,4 +419,17 @@ export function getSmashObjectiveText(arena, lang = 'fr') {
     capture: { fr: 'Controler les etages pour empecher les renforts de dominer la hauteur.', en: 'Control levels to keep reinforcements from owning high ground.' }
   };
   return (objectives[arena?.objective] || objectives.waves)[lang];
+}
+
+export function getSmashObjectiveLabel(arena, lang = 'fr') {
+  const labels = {
+    waves: { fr: 'Vagues', en: 'Waves' },
+    survival: { fr: 'Survie', en: 'Survival' },
+    hunt: { fr: 'Traque', en: 'Hunt' },
+    boss: { fr: 'Boss', en: 'Boss' },
+    tempo: { fr: 'Tempo', en: 'Tempo' },
+    cleanse: { fr: 'Cordon', en: 'Cordon' },
+    capture: { fr: 'Controle', en: 'Control' }
+  };
+  return (labels[arena?.objective] || labels.waves)[lang];
 }

@@ -1,7 +1,7 @@
 // Super Smash Bros Mêlée Mode Engine with Synergies & Status Effects
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
-import { createSmashArena, getSmashObjectiveText } from './smashArenas';
+import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
 
 export class EngineSmash {
   constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
@@ -15,6 +15,11 @@ export class EngineSmash {
     this.gravity = this.arena.gravity || 0.25;
     this.jumpVelocity = this.arena.jump || -7.8;
     this.hazardTick = 0;
+    this.objectiveTick = 0;
+    this.objectiveProgress = 0;
+    this.objectiveTarget = this.arena.objectiveTarget || 1;
+    this.objectivePulse = '';
+    this.defeatedEnemies = 0;
     
     // Map base heroes
     this.heroes = heroes.map((h, index) => ({
@@ -59,6 +64,7 @@ export class EngineSmash {
     this.enemies = [];
     this.wave = 1;
     this.maxWaves = this.arena.maxWaves || (stage.isSurvival ? 5 : 4);
+    this.objectiveTarget = this.arena.objectiveTarget || this.maxWaves;
     this.gameOver = false;
     this.victoryTimer = 0;
     this.activeHeroId = this.heroes[0].id;
@@ -361,6 +367,10 @@ export class EngineSmash {
     if (defender.currentHp <= 0) {
       defender.state = 'dead';
       defender.stateTimer = 60;
+      if (!defender.wasCountedDefeated) {
+        defender.wasCountedDefeated = true;
+        this.defeatedEnemies++;
+      }
       this.playSfx('defeat');
     } else {
       this.playSfx('hit');
@@ -379,6 +389,7 @@ export class EngineSmash {
 
     const heroesAlive = this.heroes.some(h => h.currentHp > 0);
     const enemiesAlive = this.enemies.some(e => e.currentHp > 0 || e.stateTimer > 0);
+    this.updateArenaObjective();
 
     if (!heroesAlive && !this.gameOver) {
       this.gameOver = true;
@@ -525,7 +536,15 @@ export class EngineSmash {
       const target = this.getClosestHero(e);
       if (target && e.state !== 'hit' && !this.gameOver) {
         const dx = target.x - e.x;
+        const dy = target.y - e.y;
         e.facing = dx > 0 ? 1 : -1;
+
+        const ground = this.isOnGround(e);
+        if (ground && dy < -34 && Math.abs(dx) < 170) {
+          e.vy = this.jumpVelocity * 0.78;
+        } else if (ground && dy > 48 && Math.abs(dx) < 130) {
+          e.vy = 1.5;
+        }
 
         if (Math.abs(dx) > 55) {
           let speed = e.isBoss ? 1.5 : 2.0;
@@ -619,6 +638,113 @@ export class EngineSmash {
     });
   }
 
+  updateArenaObjective() {
+    if (this.gameOver) return;
+    this.objectiveTick++;
+    const objective = this.arena.objective || 'waves';
+    const aliveHeroes = this.heroes.filter(hero => hero.currentHp > 0);
+    const aliveEnemies = this.enemies.filter(enemy => enemy.currentHp > 0);
+
+    if (objective === 'waves') {
+      this.objectiveProgress = Math.min(this.objectiveTarget, this.wave);
+      return;
+    }
+
+    if (objective === 'survival') {
+      this.objectiveProgress = Math.min(this.objectiveTarget, this.objectiveTick);
+      if (this.objectiveTick % 180 === 0) {
+        aliveHeroes.forEach(hero => {
+          hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + 8);
+        });
+        this.objectivePulse = 'SURVIE +';
+      }
+      return;
+    }
+
+    if (objective === 'capture') {
+      const zone = this.getObjectiveZone();
+      const heroesInZone = aliveHeroes.filter(hero => this.isInZone(hero, zone)).length;
+      const enemiesInZone = aliveEnemies.filter(enemy => this.isInZone(enemy, zone)).length;
+      const delta = heroesInZone * 0.18 - enemiesInZone * 0.12;
+      this.objectiveProgress = Math.max(0, Math.min(this.objectiveTarget, this.objectiveProgress + delta));
+      if (this.objectiveProgress >= this.objectiveTarget && this.objectiveTick % 90 === 0) {
+        aliveHeroes.forEach(hero => {
+          hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + 12);
+        });
+        this.objectivePulse = 'CONTROLE +';
+      }
+      return;
+    }
+
+    if (objective === 'tempo') {
+      const noHeroInHazard = !aliveHeroes.some(hero => this.isTouchingActiveHazard(hero));
+      this.objectiveProgress = Math.max(0, Math.min(this.objectiveTarget, this.objectiveProgress + (noHeroInHazard ? 0.09 : -0.22)));
+      if (this.objectiveProgress >= this.objectiveTarget && this.objectiveTick % 75 === 0) {
+        aliveHeroes.forEach(hero => {
+          hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + 18);
+        });
+        this.objectivePulse = 'TEMPO +';
+      }
+      return;
+    }
+
+    if (objective === 'cleanse') {
+      const hazardPressure = aliveHeroes.filter(hero => this.isTouchingActiveHazard(hero)).length;
+      this.objectiveProgress = Math.max(0, Math.min(this.objectiveTarget, (this.defeatedEnemies * 18) - hazardPressure * 0.4));
+      if (this.objectiveProgress >= this.objectiveTarget && this.objectiveTick % 90 === 0) {
+        aliveEnemies.forEach(enemy => {
+          enemy.statusEffects.infected = Math.max(enemy.statusEffects.infected || 0, 90);
+        });
+        this.objectivePulse = 'PURGE +';
+      }
+      return;
+    }
+
+    if (objective === 'hunt') {
+      const marked = aliveEnemies.find(enemy => enemy.isBoss) || aliveEnemies.reduce((best, enemy) => (!best || enemy.currentHp > best.currentHp ? enemy : best), null);
+      this.objectiveProgress = Math.min(this.objectiveTarget, this.defeatedEnemies);
+      if (marked && this.objectiveTick % 180 === 0) {
+        marked.state = 'hit';
+        marked.stateTimer = Math.max(marked.stateTimer || 0, 40);
+        marked.vx *= 0.2;
+        this.particles.add(marked.x, marked.y - 44, 0, -1, this.arena.theme.accent, 5, 44, 'text', 'MARQUE');
+        this.objectivePulse = 'TRAQUE';
+      }
+      return;
+    }
+
+    if (objective === 'boss') {
+      const boss = aliveEnemies.find(enemy => enemy.isBoss);
+      this.objectiveProgress = boss
+        ? Math.max(0, this.objectiveTarget - Math.ceil((boss.currentHp / Math.max(1, boss.maxHp)) * this.objectiveTarget))
+        : this.wave;
+      if (boss && this.objectiveTick % 210 === 0) {
+        boss.vx *= 0.5;
+        this.objectivePulse = 'FENETRE BOSS';
+      }
+    }
+  }
+
+  getObjectiveZone() {
+    return {
+      x1: this.width * 0.39,
+      x2: this.width * 0.61,
+      y1: this.height * 0.32,
+      y2: this.height * 0.58
+    };
+  }
+
+  isInZone(actor, zone) {
+    return actor.x >= zone.x1 && actor.x <= zone.x2 && actor.y >= zone.y1 && actor.y <= zone.y2;
+  }
+
+  isTouchingActiveHazard(actor) {
+    return (this.arena.hazards || []).some(hazard => {
+      const active = this.hazardTick % (hazard.cadence || 120) < 48;
+      return active && actor.x >= hazard.x1 && actor.x <= hazard.x2 && Math.abs(actor.y - hazard.y) < 20;
+    });
+  }
+
   getClosestHero(enemy) {
     let closest = null;
     let minDist = 99999;
@@ -709,6 +835,33 @@ export class EngineSmash {
     ctx.fillStyle = this.arena.theme.accent;
     ctx.font = '9px "Share Tech Mono", monospace';
     ctx.fillText(this.arena.label.fr || this.arena.id, 20, 48);
+    this.drawObjectiveHud(ctx);
+  }
+
+  drawObjectiveHud(ctx) {
+    const target = Math.max(1, this.objectiveTarget || this.maxWaves);
+    const pct = Math.max(0, Math.min(1, this.objectiveProgress / target));
+    const x = this.width - 214;
+    const y = 20;
+    ctx.save();
+    ctx.fillStyle = 'rgba(0,0,0,0.62)';
+    ctx.strokeStyle = this.arena.theme.accent;
+    ctx.lineWidth = 1.5;
+    ctx.fillRect(x, y, 190, 34);
+    ctx.strokeRect(x, y, 190, 34);
+    ctx.fillStyle = this.arena.theme.accent;
+    ctx.font = '8px "Press Start 2P"';
+    ctx.fillText(getSmashObjectiveLabel(this.arena, 'fr').toUpperCase(), x + 8, y + 13);
+    ctx.fillStyle = 'rgba(255,255,255,0.14)';
+    ctx.fillRect(x + 8, y + 20, 174, 6);
+    ctx.fillStyle = this.arena.theme.secondary;
+    ctx.fillRect(x + 8, y + 20, 174 * pct, 6);
+    if (this.objectivePulse && this.objectiveTick % 120 < 50) {
+      ctx.fillStyle = this.arena.theme.secondary;
+      ctx.font = '8px "Share Tech Mono", monospace';
+      ctx.fillText(this.objectivePulse, x + 112, y + 13);
+    }
+    ctx.restore();
   }
 
   drawArena(ctx, animTime) {
