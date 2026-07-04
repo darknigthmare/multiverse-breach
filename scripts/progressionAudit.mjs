@@ -93,7 +93,11 @@ assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen m
   'city_rooftops',
   'absurd_party',
   'arcane_ruins',
-  'war_front'
+  'war_front',
+  'artifact_bastion',
+  'artifact_sweep',
+  'portal_lockdown',
+  'boss_overload'
 ].forEach(arenaId => {
   assert(smashArenasSource.includes(`${arenaId}: {`), `Missing melee arena layout ${arenaId}.`);
 });
@@ -113,12 +117,19 @@ assert(smashEngineSource.includes('airJumps'), 'Melee actors must keep limited a
 assert(smashEngineSource.includes('getCombatSummary'), 'Melee engine must expose a combat summary for progression feedback.');
 assert(smashEngineSource.includes('completionReported'), 'Melee engine must report battle completion only once.');
 assert(smashEngineSource.includes('damageDealt') && smashEngineSource.includes('hazardHits') && smashEngineSource.includes('itemTriggers'), 'Melee summary must track damage, terrain risk, and item usage.');
+assert(smashEngineSource.includes("objective === 'protect'"), 'Melee engine must support protect-the-artifact objectives.');
+assert(smashEngineSource.includes("objective === 'collect'"), 'Melee engine must support collect-artifacts objectives.');
+assert(smashEngineSource.includes("objective === 'portals'"), 'Melee engine must support portal cleanup objectives.');
+assert(smashEngineSource.includes("objective === 'overload'"), 'Melee engine must support boss overload objectives.');
+assert(smashEngineSource.includes('drawObjectiveNodes'), 'Melee engine must render active objective nodes.');
 assert(smashArenasSource.includes('objectiveTarget'), 'Melee arenas must declare objective targets.');
 assert(smashArenasSource.includes('getSmashObjectiveLabel'), 'Melee arenas must expose objective labels.');
+assert(smashArenasSource.includes('forceBaseArena') && smashArenasSource.includes('dlcSuppressedArena'), 'Melee arena selection must support admin/DLC fallback to Nexus terrain.');
 assert(gameCanvasSource.includes('getSmashPickupPositions'), 'Melee pickups must use arena-safe positions.');
-assert(gameCanvasSource.includes('new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, stage)'), 'GameCanvas must pass stage metadata into melee mode.');
+assert(gameCanvasSource.includes('new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage)'), 'GameCanvas must pass resolved stage metadata into melee mode.');
 assert(gameCanvasSource.includes('battleSummary'), 'GameCanvas must preserve melee combat summary data.');
 assert(gameCanvasSource.includes('smashResultLines'), 'GameCanvas must render melee summary feedback on battle end.');
+assert(gameCanvasSource.includes('hiddenUniverses') && gameCanvasSource.includes('dlcSuppressedArena'), 'GameCanvas must suppress DLC-specific melee arenas when universes are hidden.');
 assert(appSource.includes('smashMasteryBonus'), 'App rewards must include capped melee mastery bonuses.');
 assert(appSource.includes("activeStage.mode === 'Smash'") && appSource.includes('battleSummary?.mode === \'Smash\''), 'Melee mastery rewards must be limited to Smash results.');
 
@@ -131,9 +142,10 @@ console.log(JSON.stringify({
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',
   factionArcCompletion: 'expanded',
-  meleeArenaLayouts: 13,
+  meleeArenaLayouts: 17,
   meleeTerrainSystem: 'dynamic',
   meleeObjectiveSystem: 'active',
+  meleeObjectiveVariants: ['protect', 'collect', 'portals', 'overload'],
   meleeCombatFeel: 'recovery-and-ai',
   meleeDlcMapping: 'metadata-aware',
   meleeResultSummary: 'score-grade-objective',

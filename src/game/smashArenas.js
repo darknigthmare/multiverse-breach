@@ -18,6 +18,17 @@ const scaledPlatform = (width, height, left, right, y, kind, passThrough) => pla
   passThrough
 );
 
+const objectiveNode = (width, height, x, y, type, id) => ({
+  id,
+  type,
+  x: Math.round(width * x),
+  y: Math.round(height * y),
+  radius: type === 'portal' ? 42 : 34,
+  progress: 0,
+  collected: false,
+  sealed: false
+});
+
 export const SMASH_ARENA_LAYOUTS = {
   training_flat: {
     id: 'training_flat',
@@ -500,6 +511,161 @@ export const SMASH_ARENA_LAYOUTS = {
       { x: width * 0.53, y: height * 0.26 },
       { x: width * 0.62, y: height * 0.71 }
     ]
+  },
+  artifact_bastion: {
+    id: 'artifact_bastion',
+    label: { fr: 'Bastion d artefact A.R.C.A.', en: 'A.R.C.A. Artifact Bastion' },
+    tags: ['defense', 'loreArena', 'platformHeavy'],
+    objective: 'protect',
+    objectiveTarget: 720,
+    platforms: (width, height) => [
+      scaledPlatform(width, height, 0.06, 0.94, 0.78, 'main', false),
+      scaledPlatform(width, height, 0.18, 0.38, 0.57, 'soft'),
+      scaledPlatform(width, height, 0.62, 0.82, 0.57, 'soft'),
+      scaledPlatform(width, height, 0.40, 0.60, 0.42, 'anchor')
+    ],
+    objectiveNodes: (width, height) => [
+      objectiveNode(width, height, 0.50, 0.42, 'artifact', 'anchor_artifact')
+    ],
+    spawns: (width, height) => ({
+      heroes: [
+        { x: width * 0.24, y: height * 0.78 },
+        { x: width * 0.44, y: height * 0.42 },
+        { x: width * 0.32, y: height * 0.57 }
+      ],
+      enemies: [
+        { x: width * 0.84, y: height * 0.78 },
+        { x: width * 0.76, y: height * 0.57 },
+        { x: width * 0.16, y: height * 0.78 }
+      ],
+      boss: { x: width * 0.78, y: height * 0.78 }
+    }),
+    pickups: (width, height) => [
+      { x: width * 0.30, y: height * 0.71 },
+      { x: width * 0.46, y: height * 0.36 },
+      { x: width * 0.70, y: height * 0.51 },
+      { x: width * 0.82, y: height * 0.71 },
+      { x: width * 0.20, y: height * 0.51 }
+    ]
+  },
+  artifact_sweep: {
+    id: 'artifact_sweep',
+    label: { fr: 'Chasse aux fragments Nexus', en: 'Nexus Fragment Sweep' },
+    tags: ['mobile', 'loreArena', 'chaotic'],
+    objective: 'collect',
+    objectiveTarget: 3,
+    platforms: (width, height) => [
+      scaledPlatform(width, height, 0.06, 0.94, 0.78, 'main', false),
+      scaledPlatform(width, height, 0.12, 0.34, 0.58, 'soft'),
+      scaledPlatform(width, height, 0.42, 0.58, 0.42, 'soft'),
+      scaledPlatform(width, height, 0.66, 0.88, 0.58, 'soft'),
+      scaledPlatform(width, height, 0.22, 0.40, 0.28, 'soft'),
+      scaledPlatform(width, height, 0.60, 0.78, 0.28, 'soft')
+    ],
+    objectiveNodes: (width, height) => [
+      objectiveNode(width, height, 0.24, 0.52, 'shard', 'shard_a'),
+      objectiveNode(width, height, 0.50, 0.36, 'shard', 'shard_b'),
+      objectiveNode(width, height, 0.76, 0.52, 'shard', 'shard_c')
+    ],
+    spawns: (width, height) => ({
+      heroes: [
+        { x: width * 0.16, y: height * 0.78 },
+        { x: width * 0.24, y: height * 0.58 },
+        { x: width * 0.34, y: height * 0.78 }
+      ],
+      enemies: [
+        { x: width * 0.84, y: height * 0.78 },
+        { x: width * 0.72, y: height * 0.58 },
+        { x: width * 0.64, y: height * 0.28 }
+      ],
+      boss: { x: width * 0.80, y: height * 0.78 }
+    }),
+    pickups: (width, height) => [
+      { x: width * 0.22, y: height * 0.52 },
+      { x: width * 0.50, y: height * 0.36 },
+      { x: width * 0.78, y: height * 0.52 },
+      { x: width * 0.31, y: height * 0.22 },
+      { x: width * 0.69, y: height * 0.22 }
+    ]
+  },
+  portal_lockdown: {
+    id: 'portal_lockdown',
+    label: { fr: 'Verrouillage de portails hostiles', en: 'Hostile Portal Lockdown' },
+    tags: ['portalSpawn', 'hazard', 'loreArena'],
+    objective: 'portals',
+    objectiveTarget: 3,
+    platforms: (width, height) => [
+      scaledPlatform(width, height, 0.05, 0.95, 0.78, 'main', false),
+      scaledPlatform(width, height, 0.14, 0.36, 0.57, 'soft'),
+      scaledPlatform(width, height, 0.64, 0.86, 0.57, 'soft'),
+      scaledPlatform(width, height, 0.40, 0.60, 0.37, 'soft')
+    ],
+    objectiveNodes: (width, height) => [
+      objectiveNode(width, height, 0.18, 0.78, 'portal', 'portal_left'),
+      objectiveNode(width, height, 0.50, 0.37, 'portal', 'portal_top'),
+      objectiveNode(width, height, 0.82, 0.78, 'portal', 'portal_right')
+    ],
+    hazards: (width, height) => [
+      { id: 'portal_surge', type: 'rift', x1: width * 0.45, x2: width * 0.55, y: height * 0.77, damage: 2, status: 'glitched', cadence: 125 }
+    ],
+    spawns: (width, height) => ({
+      heroes: [
+        { x: width * 0.28, y: height * 0.78 },
+        { x: width * 0.36, y: height * 0.57 },
+        { x: width * 0.44, y: height * 0.78 }
+      ],
+      enemies: [
+        { x: width * 0.82, y: height * 0.78 },
+        { x: width * 0.50, y: height * 0.37 },
+        { x: width * 0.18, y: height * 0.78 }
+      ],
+      boss: { x: width * 0.82, y: height * 0.78 }
+    }),
+    pickups: (width, height) => [
+      { x: width * 0.31, y: height * 0.51 },
+      { x: width * 0.50, y: height * 0.31 },
+      { x: width * 0.69, y: height * 0.51 },
+      { x: width * 0.24, y: height * 0.71 },
+      { x: width * 0.76, y: height * 0.71 }
+    ]
+  },
+  boss_overload: {
+    id: 'boss_overload',
+    label: { fr: 'Surcharge de champion', en: 'Champion Overload' },
+    tags: ['bossArena', 'survival', 'loreArena'],
+    objective: 'overload',
+    objectiveTarget: 960,
+    maxWaves: 4,
+    platforms: (width, height) => [
+      scaledPlatform(width, height, 0.04, 0.96, 0.78, 'main', false),
+      scaledPlatform(width, height, 0.18, 0.34, 0.56, 'soft'),
+      scaledPlatform(width, height, 0.66, 0.82, 0.56, 'soft'),
+      scaledPlatform(width, height, 0.43, 0.57, 0.38, 'soft')
+    ],
+    hazards: (width, height) => [
+      { id: 'overload_left', type: 'blast', x1: width * 0.14, x2: width * 0.24, y: height * 0.77, damage: 2, knockX: 5, knockY: -5, cadence: 150 },
+      { id: 'overload_right', type: 'blast', x1: width * 0.76, x2: width * 0.86, y: height * 0.77, damage: 2, knockX: 5, knockY: -5, cadence: 170 }
+    ],
+    spawns: (width, height) => ({
+      heroes: [
+        { x: width * 0.18, y: height * 0.78 },
+        { x: width * 0.26, y: height * 0.78 },
+        { x: width * 0.34, y: height * 0.78 }
+      ],
+      enemies: [
+        { x: width * 0.82, y: height * 0.78 },
+        { x: width * 0.73, y: height * 0.56 },
+        { x: width * 0.50, y: height * 0.38 }
+      ],
+      boss: { x: width * 0.74, y: height * 0.78 }
+    }),
+    pickups: (width, height) => [
+      { x: width * 0.23, y: height * 0.71 },
+      { x: width * 0.30, y: height * 0.50 },
+      { x: width * 0.70, y: height * 0.50 },
+      { x: width * 0.50, y: height * 0.32 },
+      { x: width * 0.78, y: height * 0.71 }
+    ]
   }
 };
 
@@ -540,7 +706,12 @@ function getArenaIdForStage(stage = {}) {
   const universe = stage.universe || '';
   const signature = getUniverseSignature(universe);
   const searchText = getStageSearchText(stage, signature);
+  if (stage.forceBaseArena || stage.dlcSuppressedArena) return 'training_flat';
   if (stage.isSurvival) return 'split_pit';
+  if (textMatches(searchText, [/artifact/, /artefact/, /anchor/, /ancrage/, /relic defense/, /protect/])) return 'artifact_bastion';
+  if (textMatches(searchText, [/fragment/, /collect/, /recuper/, /sweep/, /cache/])) return 'artifact_sweep';
+  if (textMatches(searchText, [/portal/, /portail/, /spawn gate/, /lockdown/])) return 'portal_lockdown';
+  if (textMatches(searchText, [/overload/, /surcharge/, /reactor/, /core meltdown/])) return 'boss_overload';
   if (ALIEN_UNIVERSES.includes(universe)) return 'hive_corridor';
   if (BOSS_UNIVERSES.includes(universe) || textMatches(searchText, [/kaiju/, /titan/, /colossal/, /behemoth/, /tripod/, /scarab/, /godzilla/, /cloverfield/])) return 'boss_coliseum';
   if (MUSIC_UNIVERSES.includes(universe)) return 'concert_stage';
@@ -570,9 +741,15 @@ export function createSmashArena(stage, width, height) {
     x: Math.round(clamp(pos.x, 36, width - 36)),
     y: Math.round(clamp(pos.y, 46, height - 38))
   }));
+  const objectiveNodes = base.objectiveNodes ? base.objectiveNodes(width, height).map(node => ({
+    ...node,
+    x: Math.round(clamp(node.x, 36, width - 36)),
+    y: Math.round(clamp(node.y, 46, height - 38))
+  })) : [];
   return {
     ...base,
     platforms,
+    objectiveNodes,
     hazards: base.hazards ? base.hazards(width, height) : [],
     spawns: spawnData,
     pickups: safePickups,
@@ -608,9 +785,13 @@ export function getSmashObjectiveText(arena, lang = 'fr') {
     survival: { fr: 'Survivre a la pression de terrain sans perdre l escouade.', en: 'Survive field pressure without losing the squad.' },
     hunt: { fr: 'Lire les hauteurs, couper la traque et forcer le predateur a sortir.', en: 'Read the high ground, cut the hunt, and force the predator out.' },
     boss: { fr: 'Ouvrir l arene, gerer les renforts, puis isoler le boss.', en: 'Open the arena, manage reinforcements, then isolate the boss.' },
+    overload: { fr: 'Abattre le champion avant que la zone de projection ne surcharge.', en: 'Break the champion before the projection zone overloads.' },
     tempo: { fr: 'Garder le tempo, eviter la pyrotechnie et charger les specials.', en: 'Keep tempo, avoid pyrotechnics, and charge specials.' },
     cleanse: { fr: 'Nettoyer les vagues avant que le cordon ne contamine la zone.', en: 'Clean waves before the cordon contaminates the zone.' },
-    capture: { fr: 'Controler les etages pour empecher les renforts de dominer la hauteur.', en: 'Control levels to keep reinforcements from owning high ground.' }
+    capture: { fr: 'Controler les etages pour empecher les renforts de dominer la hauteur.', en: 'Control levels to keep reinforcements from owning high ground.' },
+    protect: { fr: 'Proteger l artefact d ancrage jusqu a stabilisation A.R.C.A.', en: 'Protect the anchor artifact until A.R.C.A. stabilization.' },
+    collect: { fr: 'Recuperer trois fragments Nexus avant que les renforts ne verrouillent la zone.', en: 'Recover three Nexus fragments before reinforcements lock the zone.' },
+    portals: { fr: 'Nettoyer les portails de renfort hostile au contact direct.', en: 'Clean hostile reinforcement portals by direct contact.' }
   };
   return (objectives[arena?.objective] || objectives.waves)[lang];
 }
@@ -621,9 +802,13 @@ export function getSmashObjectiveLabel(arena, lang = 'fr') {
     survival: { fr: 'Survie', en: 'Survival' },
     hunt: { fr: 'Traque', en: 'Hunt' },
     boss: { fr: 'Boss', en: 'Boss' },
+    overload: { fr: 'Surcharge', en: 'Overload' },
     tempo: { fr: 'Tempo', en: 'Tempo' },
     cleanse: { fr: 'Cordon', en: 'Cordon' },
-    capture: { fr: 'Controle', en: 'Control' }
+    capture: { fr: 'Controle', en: 'Control' },
+    protect: { fr: 'Artefact', en: 'Artifact' },
+    collect: { fr: 'Fragments', en: 'Fragments' },
+    portals: { fr: 'Portails', en: 'Portals' }
   };
   return (labels[arena?.objective] || labels.waves)[lang];
 }

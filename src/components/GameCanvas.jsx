@@ -14,7 +14,7 @@ import { getBattleItemPoolForStage } from '../game/battleItems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
 import { getSmashPickupPositions } from '../game/smashArenas';
 
-export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, disabledAssets = {}, onBattleEnd }) {
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, onBattleEnd }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const battlePickupsRef = useRef([]);
@@ -49,6 +49,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const disabledHeroSet = new Set(disabledAssets.heroes || []);
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
+  const hiddenUniverseSet = new Set(hiddenUniverses || []);
+  const arenaStage = stage.mode === 'Smash' && hiddenUniverseSet.has(stage.universe)
+    ? { ...stage, forceBaseArena: true, dlcSuppressedArena: true }
+    : stage;
   const getEnemyAdminKey = (universe, enemy) => `${universe}::${enemy?.name || 'unknown'}`;
 
   const syncBattlePickups = (nextPickups) => {
@@ -60,7 +64,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const pool = getBattleItemPoolForStage(currentStage);
     const tiers = ['pickup', 'pickup', 'pickup', 'summon', 'ultimate'];
     const smashPositions = currentStage.mode === 'Smash'
-      ? getSmashPickupPositions(currentStage, canvasRef.current?.width || 760, canvasRef.current?.height || 360)
+      ? getSmashPickupPositions(arenaStage, canvasRef.current?.width || 760, canvasRef.current?.height || 360)
       : null;
     const positions = currentStage.mode === 'Tactics'
       ? [
@@ -561,7 +565,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     // Load correct mode engine
     if (stage.mode === 'Smash') {
-      engineRef.current = new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, stage);
+      engineRef.current = new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
     } else if (stage.mode === 'RPG') {
       engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
       engineRef.current.isFinalBoss = (stage.id === 38);

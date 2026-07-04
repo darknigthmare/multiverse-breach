@@ -24,6 +24,9 @@ export class EngineSmash {
     this.damageTaken = 0;
     this.hazardHits = 0;
     this.itemTriggers = 0;
+    this.objectiveNodes = (this.arena.objectiveNodes || []).map(node => ({ ...node }));
+    this.artifactHp = this.arena.objective === 'protect' ? 100 : null;
+    this.portalSpawnTick = 0;
     
     // Map base heroes
     this.heroes = heroes.map((h, index) => ({
@@ -137,9 +140,12 @@ export class EngineSmash {
     }
 
     const spawnList = this.arena.spawns.enemies || [];
+    const activePortals = this.objectiveNodes.filter(node => node.type === 'portal' && !node.sealed);
     const spawn = isBoss
       ? this.arena.spawns.boss
-      : spawnList[(this.wave + this.enemies.length) % Math.max(1, spawnList.length)];
+      : activePortals.length
+        ? activePortals[(this.wave + this.enemies.length) % activePortals.length]
+        : spawnList[(this.wave + this.enemies.length) % Math.max(1, spawnList.length)];
     const spawnX = spawn?.x || (this.width - 70 - Math.random() * 50);
     const spawnY = spawn?.y || 100;
 
@@ -442,6 +448,7 @@ export class EngineSmash {
     const heroesAlive = this.heroes.some(h => h.currentHp > 0);
     const enemiesAlive = this.enemies.some(e => e.currentHp > 0 || e.stateTimer > 0);
     this.updateArenaObjective();
+    this.updateObjectiveBattleState();
 
     if (!heroesAlive && !this.gameOver) {
       this.gameOver = true;
@@ -651,6 +658,29 @@ export class EngineSmash {
     this.applyArenaHazards();
   }
 
+  updateObjectiveBattleState() {
+    if (this.gameOver) return;
+    const objective = this.arena.objective || 'waves';
+    const objectiveComplete = this.objectiveProgress >= this.objectiveTarget;
+    if (['collect', 'portals', 'protect'].includes(objective) && objectiveComplete) {
+      this.gameOver = true;
+      this.victoryTimer = 0;
+      this.playSfx('victory');
+      return;
+    }
+    if (objective === 'protect' && this.artifactHp <= 0) {
+      this.gameOver = true;
+      this.victoryTimer = 0;
+      this.playSfx('defeat');
+      return;
+    }
+    if (objective === 'overload' && this.objectiveProgress >= this.objectiveTarget && this.enemies.some(enemy => enemy.isBoss && enemy.currentHp > 0)) {
+      this.gameOver = true;
+      this.victoryTimer = 0;
+      this.playSfx('defeat');
+    }
+  }
+
   isOnGround(char) {
     for (let p of this.platforms) {
       if (char.x >= p.x1 && char.x <= p.x2) {
@@ -803,6 +833,57 @@ export class EngineSmash {
       return;
     }
 
+    if (objective === 'protect') {
+      const artifact = this.objectiveNodes.find(node => node.type === 'artifact');
+      if (!artifact) return;
+      const enemiesOnArtifact = aliveEnemies.filter(enemy => Math.hypot(enemy.x - artifact.x, enemy.y - artifact.y) < artifact.radius + 12).length;
+      const heroesOnArtifact = aliveHeroes.filter(hero => Math.hypot(hero.x - artifact.x, hero.y - artifact.y) < artifact.radius + 18).length;
+      if (enemiesOnArtifact && this.objectiveTick % 28 === 0) {
+        this.artifactHp = Math.max(0, this.artifactHp - enemiesOnArtifact * 5);
+        this.objectivePulse = 'ARTEFACT -';
+      } else if (heroesOnArtifact && this.objectiveTick % 90 === 0) {
+        this.artifactHp = Math.min(100, this.artifactHp + heroesOnArtifact * 3);
+        this.objectivePulse = 'ANCRAGE +';
+      }
+      this.objectiveProgress = Math.min(this.objectiveTarget, this.objectiveTick);
+      return;
+    }
+
+    if (objective === 'collect') {
+      this.objectiveNodes.forEach(node => {
+        if (node.collected) return;
+        const collector = aliveHeroes.find(hero => Math.hypot(hero.x - node.x, hero.y - node.y) < node.radius);
+        if (!collector) return;
+        node.collected = true;
+        collector.specialCharge = Math.min(100, (collector.specialCharge || 0) + 20);
+        this.objectivePulse = 'FRAGMENT +';
+        this.particles.add(node.x, node.y - 18, 0, -1, this.arena.theme.secondary, 8, 55, 'text', 'TRACE');
+      });
+      this.objectiveProgress = this.objectiveNodes.filter(node => node.collected).length;
+      return;
+    }
+
+    if (objective === 'portals') {
+      this.objectiveNodes.forEach(node => {
+        if (node.sealed) return;
+        const heroesOnPortal = aliveHeroes.filter(hero => Math.hypot(hero.x - node.x, hero.y - node.y) < node.radius).length;
+        const enemiesOnPortal = aliveEnemies.filter(enemy => Math.hypot(enemy.x - node.x, enemy.y - node.y) < node.radius + 8).length;
+        node.progress = Math.max(0, Math.min(100, (node.progress || 0) + heroesOnPortal * 0.7 - enemiesOnPortal * 0.35));
+        if (node.progress >= 100) {
+          node.sealed = true;
+          this.objectivePulse = 'PORTAIL SCELLE';
+          this.particles.add(node.x, node.y - 20, 0, -1, this.arena.theme.secondary, 10, 60, 'text', 'SCELLE');
+        }
+      });
+      this.portalSpawnTick++;
+      if (this.portalSpawnTick > 240 && this.enemies.filter(enemy => enemy.currentHp > 0).length < 4 && this.objectiveNodes.some(node => !node.sealed)) {
+        this.portalSpawnTick = 0;
+        this.spawnEnemy();
+      }
+      this.objectiveProgress = this.objectiveNodes.filter(node => node.sealed).length;
+      return;
+    }
+
     if (objective === 'tempo') {
       const noHeroInHazard = !aliveHeroes.some(hero => this.isTouchingActiveHazard(hero));
       this.objectiveProgress = Math.max(0, Math.min(this.objectiveTarget, this.objectiveProgress + (noHeroInHazard ? 0.09 : -0.22)));
@@ -848,6 +929,16 @@ export class EngineSmash {
       if (boss && this.objectiveTick % 210 === 0) {
         boss.vx *= 0.5;
         this.objectivePulse = 'FENETRE BOSS';
+      }
+    }
+
+    if (objective === 'overload') {
+      const boss = aliveEnemies.find(enemy => enemy.isBoss);
+      this.objectiveProgress = Math.min(this.objectiveTarget, this.objectiveTick);
+      if (boss && this.objectiveTick % 180 === 0) {
+        boss.vx *= 0.45;
+        boss.statusEffects.glitched = Math.max(boss.statusEffects.glitched || 0, 90);
+        this.objectivePulse = 'SURCHARGE';
       }
     }
   }
@@ -910,6 +1001,7 @@ export class EngineSmash {
     });
 
     this.drawHazards(ctx, animTime);
+    this.drawObjectiveNodes(ctx, animTime);
 
     this.enemies.forEach(e => {
       if (e.isBoss) {
@@ -1013,7 +1105,50 @@ export class EngineSmash {
       ctx.strokeStyle = theme.danger;
       ctx.lineWidth = 3;
       ctx.strokeRect(this.width * 0.43, this.height * 0.55, this.width * 0.14, this.height * 0.22);
+    } else if (this.arena.objective === 'protect') {
+      ctx.beginPath();
+      ctx.arc(this.width * 0.5, this.height * 0.42, 48 + pulse, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (this.arena.objective === 'portals') {
+      this.objectiveNodes.forEach(node => {
+        if (node.sealed) return;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y - 12, node.radius + pulse, 0, Math.PI * 2);
+        ctx.stroke();
+      });
+    } else if (this.arena.objective === 'overload') {
+      ctx.fillStyle = theme.danger;
+      ctx.fillRect(this.width * 0.08, this.height * 0.15, this.width * 0.84, 5 + Math.max(0, pulse));
     }
+    ctx.restore();
+  }
+
+  drawObjectiveNodes(ctx, animTime) {
+    if (!this.objectiveNodes.length) return;
+    const theme = this.arena.theme;
+    ctx.save();
+    this.objectiveNodes.forEach(node => {
+      if (node.collected || node.sealed) return;
+      const pulse = Math.sin(animTime * 0.1 + node.x) * 3;
+      ctx.globalAlpha = 0.9;
+      ctx.strokeStyle = node.type === 'portal' ? theme.danger : theme.accent;
+      ctx.fillStyle = node.type === 'portal' ? 'rgba(255,69,0,0.2)' : 'rgba(57,197,187,0.22)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y - 14, node.radius * 0.45 + pulse, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = node.type === 'portal' ? theme.danger : theme.secondary;
+      ctx.font = '8px "Press Start 2P"';
+      const label = node.type === 'portal' ? 'PORTAIL' : node.type === 'artifact' ? `ANCRE ${Math.max(0, Math.round(this.artifactHp || 0))}%` : 'TRACE';
+      ctx.fillText(label, node.x - 34, node.y - 30);
+      if (node.type === 'portal') {
+        ctx.fillStyle = 'rgba(255,255,255,0.14)';
+        ctx.fillRect(node.x - 28, node.y + 6, 56, 4);
+        ctx.fillStyle = theme.secondary;
+        ctx.fillRect(node.x - 28, node.y + 6, 56 * Math.max(0, Math.min(1, (node.progress || 0) / 100)), 4);
+      }
+    });
     ctx.restore();
   }
 
@@ -1123,6 +1258,8 @@ export class EngineSmash {
       damageTaken: this.damageTaken,
       hazardHits: this.hazardHits,
       itemTriggers: this.itemTriggers,
+      artifactHp: this.artifactHp,
+      objectiveNodes: this.objectiveNodes.map(node => ({ id: node.id, type: node.type, progress: node.progress || 0, collected: !!node.collected, sealed: !!node.sealed })),
       aliveHeroes: aliveHeroes.length,
       averageHpPct: hpPct
     };

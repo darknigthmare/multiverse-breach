@@ -1245,6 +1245,7 @@ function App() {
               heroSkins={heroSkins}
               completedStages={completedStages}
               collectionBonusCount={collectionBonusCount}
+              hiddenUniverses={hiddenUniverses}
               disabledAssets={disabledAssets}
               onBattleEnd={handleBattleEnd}
             />
