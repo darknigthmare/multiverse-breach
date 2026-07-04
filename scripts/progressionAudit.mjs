@@ -98,6 +98,10 @@ assert(smashEngineSource.includes('getObjectiveText'), 'Melee engine must expose
 assert(smashEngineSource.includes('updateArenaObjective'), 'Melee engine must update active arena objectives.');
 assert(smashEngineSource.includes('drawObjectiveHud'), 'Melee engine must render objective progress feedback.');
 assert(smashEngineSource.includes('isTouchingActiveHazard'), 'Melee objectives must react to active terrain hazards.');
+assert(smashEngineSource.includes('recoverFromArenaFall'), 'Melee engine must provide fall recovery for platform arenas.');
+assert(smashEngineSource.includes('updateStuckTracker'), 'Melee engine must include anti-stuck movement recovery.');
+assert(smashEngineSource.includes('getEnemyBehavior'), 'Melee enemies must use behavior profiles.');
+assert(smashEngineSource.includes('airJumps'), 'Melee actors must keep limited air recovery jumps.');
 assert(smashArenasSource.includes('objectiveTarget'), 'Melee arenas must declare objective targets.');
 assert(smashArenasSource.includes('getSmashObjectiveLabel'), 'Melee arenas must expose objective labels.');
 assert(gameCanvasSource.includes('getSmashPickupPositions'), 'Melee pickups must use arena-safe positions.');
@@ -114,5 +118,6 @@ console.log(JSON.stringify({
   factionArcCompletion: 'expanded',
   meleeArenaLayouts: 9,
   meleeTerrainSystem: 'dynamic',
-  meleeObjectiveSystem: 'active'
+  meleeObjectiveSystem: 'active',
+  meleeCombatFeel: 'recovery-and-ai'
 }, null, 2));

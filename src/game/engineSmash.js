@@ -34,6 +34,11 @@ export class EngineSmash {
       specialCharge: 0,
       maxHp: h.stats.hp,
       currentHp: h.stats.hp,
+      airJumps: 1,
+      jumpHeld: false,
+      recoveryLock: 0,
+      stuckTimer: 0,
+      lastX: 100 + index * 30,
       isLeader: index === 0,
       facing: 1,
       targetY: 200,
@@ -86,6 +91,28 @@ export class EngineSmash {
     }
   }
 
+  getEnemyBehavior(template = {}, isBoss = false) {
+    const name = `${template.name || ''} ${template.universe || this.stage.universe || ''}`.toLowerCase();
+    const base = {
+      role: isBoss ? 'boss' : 'bruiser',
+      speed: isBoss ? 1.45 : 2,
+      attackRange: isBoss ? 84 : 64,
+      verticalAggro: isBoss ? 120 : 86,
+      cooldown: isBoss ? 105 : 78 + Math.random() * 34,
+      jumpBias: 1
+    };
+    if (/xenomorph|alien|predalien|skibidi|zombie|licker|nurse|hound|dog|beast|raptor/i.test(name)) {
+      return { ...base, role: 'pursuer', speed: base.speed + 0.35, attackRange: base.attackRange - 6, cooldown: base.cooldown - 10, jumpBias: 1.18 };
+    }
+    if (/agent|sniper|turret|sentinel|covenant|grunt|smith|laser|gun|martian/i.test(name)) {
+      return { ...base, role: 'ranged', speed: base.speed - 0.25, attackRange: base.attackRange + 46, verticalAggro: base.verticalAggro + 22, cooldown: base.cooldown + 8, jumpBias: 0.85 };
+    }
+    if (/boss|queen|nemesis|tyrant|god|kaiju|titan|scarab|tripod|colossus|behemoth|demon/i.test(name)) {
+      return { ...base, role: 'anchor', speed: base.speed - 0.15, attackRange: base.attackRange + 18, verticalAggro: base.verticalAggro + 18, cooldown: base.cooldown + 14, jumpBias: 0.72 };
+    }
+    return base;
+  }
+
   spawnEnemy() {
     if (this.gameOver) return;
     const waveType = this.wave;
@@ -111,6 +138,8 @@ export class EngineSmash {
     const spawnX = spawn?.x || (this.width - 70 - Math.random() * 50);
     const spawnY = spawn?.y || 100;
 
+    const behavior = this.getEnemyBehavior(template, isBoss);
+
     this.enemies.push({
       ...template,
       x: spawnX,
@@ -121,8 +150,14 @@ export class EngineSmash {
       maxHp: template.hp || 90,
       currentHp: template.hp || 90,
       isBoss: isBoss,
+      airJumps: isBoss ? 0 : 1,
+      jumpHeld: false,
+      recoveryLock: 0,
+      stuckTimer: 0,
+      lastX: spawnX,
+      behavior,
       facing: -1,
-      cooldown: isBoss ? 110 : 80 + Math.random() * 40,
+      cooldown: behavior.cooldown,
       statusEffects: { infected: 0, glitched: 0, radiated: 0 }
     });
 
@@ -339,17 +374,22 @@ export class EngineSmash {
       baseDmg *= (1 - defender.defense.reduce);
     }
     const variance = (Math.random() * 0.2) + 0.9;
-    const finalDmg = Math.round(baseDmg * variance);
+    const defenseFactor = defender.def ? Math.max(0.72, 1 - defender.def * 0.01) : 1;
+    const finalDmg = Math.round(baseDmg * variance * defenseFactor);
     
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
     
     const dir = attacker.x < defender.x ? 1 : -1;
-    defender.vx = dir * knockbackForce;
-    defender.vy = -3;
+    const bossWeight = defender.isBoss ? 0.55 : 1;
+    const terrainWeight = this.arena.tags?.includes('wide') ? 1.12 : this.arena.tags?.includes('pit') ? 0.88 : 1;
+    const knockback = knockbackForce * bossWeight * terrainWeight;
+    defender.vx = dir * knockback;
+    defender.vy = Math.min(defender.vy, -2.5 - Math.min(5, knockbackForce * 0.08));
+    defender.recoveryLock = defender.isBoss ? 28 : 18;
     
     if (defender.state !== 'defense') {
       defender.state = 'hit';
-      defender.stateTimer = 15;
+      defender.stateTimer = Math.max(12, Math.min(34, Math.round(10 + knockbackForce * 0.55)));
     }
 
     if (statusEffect && defender.currentHp > 0 && defender.statusEffects) {
@@ -430,22 +470,30 @@ export class EngineSmash {
         activeHero.state = 'idle';
       }
 
-      if ((keysPressed['ArrowUp'] || keysPressed['Space'] || keysPressed['w'] || keysPressed['W']) && this.isOnGround(activeHero)) {
-        activeHero.vy = this.jumpVelocity;
-        this.playSfx('jump');
+      const jumpPressed = keysPressed['ArrowUp'] || keysPressed['Space'] || keysPressed['w'] || keysPressed['W'];
+      if (jumpPressed && !activeHero.jumpHeld) {
+        const grounded = this.isOnGround(activeHero);
+        if (grounded || activeHero.airJumps > 0) {
+          activeHero.vy = grounded ? this.jumpVelocity : this.jumpVelocity * 0.82;
+          if (!grounded) activeHero.airJumps--;
+          activeHero.recoveryLock = 12;
+          this.playSfx('jump');
+        }
       }
+      activeHero.jumpHeld = !!jumpPressed;
     }
 
     this.heroes.forEach(h => {
       if (h.currentHp <= 0) {
         h.state = 'dead';
         h.vx = 0;
-        h.vy += 0.25;
+        h.vy += this.gravity;
         this.applyPhysics(h);
         return;
       }
 
       if (h.cooldown > 0) h.cooldown--;
+      if (h.recoveryLock > 0) h.recoveryLock--;
       if (h.stateTimer > 0) {
         h.stateTimer--;
         if (h.stateTimer === 0) h.state = 'idle';
@@ -487,8 +535,11 @@ export class EngineSmash {
           h.state = 'idle';
         }
 
-        if (Math.abs(distToLeader) > 50 && this.isOnGround(h) && Math.random() < 0.02) {
-          h.vy = this.jumpVelocity * 0.8;
+        const leaderDeltaY = activeHero.y - h.y;
+        if (Math.abs(distToLeader) > 50 && this.isOnGround(h) && (leaderDeltaY < -28 || Math.random() < 0.02)) {
+          h.vy = this.jumpVelocity * 0.85;
+        } else if (this.isOnGround(h) && leaderDeltaY > 48 && Math.abs(distToLeader) < 120) {
+          h.vy = 1.5;
         }
 
         const nearestEnemy = this.getNearestEnemy(h);
@@ -515,6 +566,7 @@ export class EngineSmash {
         e.stateTimer--;
         if (e.stateTimer === 0) e.state = 'idle';
       }
+      if (e.recoveryLock > 0) e.recoveryLock--;
 
       // Infection DoT
       if (e.statusEffects?.infected > 0) {
@@ -540,14 +592,15 @@ export class EngineSmash {
         e.facing = dx > 0 ? 1 : -1;
 
         const ground = this.isOnGround(e);
-        if (ground && dy < -34 && Math.abs(dx) < 170) {
-          e.vy = this.jumpVelocity * 0.78;
+        const behavior = e.behavior || this.getEnemyBehavior(e, e.isBoss);
+        if (ground && dy < -34 && Math.abs(dx) < behavior.verticalAggro) {
+          e.vy = this.jumpVelocity * 0.78 * behavior.jumpBias;
         } else if (ground && dy > 48 && Math.abs(dx) < 130) {
           e.vy = 1.5;
         }
 
-        if (Math.abs(dx) > 55) {
-          let speed = e.isBoss ? 1.5 : 2.0;
+        if (Math.abs(dx) > Math.max(48, behavior.attackRange - 18)) {
+          let speed = behavior.speed;
           if (e.statusEffects?.glitched > 0) speed *= 0.5; // slow down if glitched
 
           e.vx = Math.sign(dx) * speed;
@@ -560,11 +613,11 @@ export class EngineSmash {
           if (e.cooldown <= 0) {
             e.state = 'attack';
             e.stateTimer = 20;
-            e.cooldown = e.isBoss ? 100 : 80;
+            e.cooldown = behavior.cooldown;
 
             this.playSfx(e.weapon === 'gun' || e.weapon === 'laser' ? 'shoot' : 'slash');
 
-            if (Math.abs(target.x - e.x) < 70 && Math.abs(target.y - e.y) < 30) {
+            if (Math.abs(target.x - e.x) < behavior.attackRange && Math.abs(target.y - e.y) < 36) {
               // Boss special status effects
               let status = null;
               if (e.name.includes('Nemesis')) status = 'infected';
@@ -597,6 +650,7 @@ export class EngineSmash {
 
   applyPhysics(char) {
     const previousY = char.y;
+    const previousX = char.x;
     char.x += char.vx;
     char.y += char.vy;
 
@@ -606,17 +660,77 @@ export class EngineSmash {
     if (plat && char.vy >= 0 && !(plat.passThrough && previousY > plat.y - 8)) {
       char.y = plat.y;
       char.vy = 0;
+      char.airJumps = char.isBoss ? 0 : 1;
     }
 
-    if (char.x < 20) char.x = 20;
-    if (char.x > this.width - 20) char.x = this.width - 20;
+    if (char.x < 20) {
+      char.x = 20;
+      char.vx = Math.abs(char.vx) * 0.35;
+    }
+    if (char.x > this.width - 20) {
+      char.x = this.width - 20;
+      char.vx = -Math.abs(char.vx) * 0.35;
+    }
+
+    this.recoverFromArenaFall(char, previousY);
+    this.updateStuckTracker(char, previousX);
     
-    if (char.y > this.height) {
+    if (char.y > this.height + 72) {
       char.currentHp = 0;
       char.state = 'dead';
       char.stateTimer = 0;
       this.playSfx('defeat');
     }
+  }
+
+  recoverFromArenaFall(char, previousY) {
+    if (char.currentHp <= 0 || char.recoveryLock > 0 || char.airJumps <= 0) return;
+    const fallingNearBottom = char.y > this.height - 58 && previousY <= char.y;
+    const insideHorizontalBounds = char.x > 32 && char.x < this.width - 32;
+    if (!fallingNearBottom || !insideHorizontalBounds) return;
+
+    const nearestPlatform = this.getNearestPlatform(char.x, char.y);
+    if (!nearestPlatform) return;
+    const platformCenter = (nearestPlatform.x1 + nearestPlatform.x2) / 2;
+    char.vx += Math.sign(platformCenter - char.x) * 2.2;
+    char.vy = this.jumpVelocity * 0.92;
+    char.airJumps--;
+    char.recoveryLock = 48;
+    this.particles.add(char.x, char.y - 18, 0, -1, this.arena.theme.accent, 4, 32, 'spark');
+  }
+
+  updateStuckTracker(char, previousX) {
+    if (char.currentHp <= 0) return;
+    const movingIntent = Math.abs(char.vx) > 0.4;
+    const moved = Math.abs(char.x - previousX) > 0.25;
+    if (movingIntent && !moved && this.isOnGround(char)) {
+      char.stuckTimer = (char.stuckTimer || 0) + 1;
+    } else {
+      char.stuckTimer = Math.max(0, (char.stuckTimer || 0) - 1);
+    }
+    if (char.stuckTimer > 38) {
+      char.vy = this.jumpVelocity * 0.72;
+      char.vx += char.facing * 2.4;
+      char.stuckTimer = 0;
+      char.recoveryLock = 20;
+    }
+    char.lastX = char.x;
+  }
+
+  getNearestPlatform(x, y) {
+    let best = null;
+    let bestScore = Infinity;
+    this.platforms.forEach(platformData => {
+      const centerX = (platformData.x1 + platformData.x2) / 2;
+      const dx = Math.abs(centerX - x);
+      const dy = Math.abs(platformData.y - y);
+      const score = dx + dy * 0.75;
+      if (score < bestScore) {
+        bestScore = score;
+        best = platformData;
+      }
+    });
+    return best;
   }
 
   applyArenaHazards() {
@@ -750,7 +864,7 @@ export class EngineSmash {
     let minDist = 99999;
     this.heroes.forEach(h => {
       if (h.currentHp > 0) {
-        const dist = Math.abs(h.x - enemy.x);
+        const dist = Math.abs(h.x - enemy.x) + Math.abs(h.y - enemy.y) * 0.55;
         if (dist < minDist) {
           minDist = dist;
           closest = h;
@@ -765,7 +879,7 @@ export class EngineSmash {
     let minDist = 99999;
     this.enemies.forEach(e => {
       if (e.currentHp > 0) {
-        const dist = Math.abs(e.x - hero.x);
+        const dist = Math.abs(e.x - hero.x) + Math.abs(e.y - hero.y) * 0.55 - (e.isBoss ? 18 : 0);
         if (dist < minDist) {
           minDist = dist;
           closest = e;
