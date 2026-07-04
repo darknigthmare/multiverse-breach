@@ -1814,7 +1814,7 @@ export class EngineTactics {
         drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, -1);
       }
     } else {
-      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, 1);
+      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, 1, 72, 'tactics');
     }
 
     if (unit === this.activeUnit && unit.currentHp > 0) {

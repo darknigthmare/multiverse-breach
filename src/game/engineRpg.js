@@ -608,7 +608,7 @@ export class EngineRpg {
 
   draw(ctx, animTime) {
     this.heroes.forEach(h => {
-      drawPixelSprite(ctx, h.x, h.y, h, animTime, 1);
+      drawPixelSprite(ctx, h.x, h.y, h, animTime, 1, 72, 'rpg');
 
       if (h.id === this.selectedHeroId && h.currentHp > 0) {
         ctx.strokeStyle = '#00ffff';

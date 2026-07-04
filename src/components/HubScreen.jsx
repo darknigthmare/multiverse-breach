@@ -9,7 +9,7 @@ import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_I
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
-import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
+import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
@@ -1567,6 +1567,8 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
 
 function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   const canvasRef = useRef(null);
+  const fpsHandsRef = useRef(null);
+  const fpsEffectsRef = useRef(null);
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
   const playableHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 40), [safeHeroes, unlockedSet]);
@@ -1632,6 +1634,20 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     infestation: lang === 'fr' ? 'Infestation: tenir le plus longtemps possible face aux essaims.' : 'Infestation: hold as long as possible against swarms.',
     hunt: lang === 'fr' ? 'Chasse au Champion: faire apparaitre et abattre le noyau local.' : 'Champion Hunt: expose and kill the local core.'
   }), [lang]);
+
+  useEffect(() => {
+    if (typeof Image === 'undefined') return undefined;
+    const hands = new Image();
+    const effects = new Image();
+    hands.src = MIRELLE_COMPLETE_SPRITES.fpsHands;
+    effects.src = MIRELLE_COMPLETE_SPRITES.fpsEffects;
+    fpsHandsRef.current = hands;
+    fpsEffectsRef.current = effects;
+    return () => {
+      fpsHandsRef.current = null;
+      fpsEffectsRef.current = null;
+    };
+  }, []);
 
   const buildEnemies = useCallback((wave = 1, champion = false) => {
     const archetypes = [
@@ -1947,13 +1963,42 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       ctx.lineTo(canvas.width - 70 + state.px * 3.2 + Math.sin(state.angle) * 16, 105 - state.py * 1.4 - Math.cos(state.angle) * 16);
       ctx.stroke();
 
-      ctx.fillStyle = selectedHero.primaryColor || '#444';
-      ctx.fillRect(canvas.width / 2 - 80 - state.turnVel * 430 + state.vx * 85, canvas.height - 116, 160, 96);
-      ctx.fillStyle = weaponProfile.color;
-      ctx.fillRect(canvas.width / 2 - 34 - state.turnVel * 430 + state.vx * 85, canvas.height - 100, 68, 28);
-      if (state.muzzle) {
-        ctx.fillStyle = '#ffea00';
-        ctx.fillRect(canvas.width / 2 - 14, canvas.height - 126, 28, 28);
+      if (selectedHero?.id === 'arca_mirelle' && fpsHandsRef.current?.complete && fpsHandsRef.current.naturalWidth) {
+        const sheet = fpsHandsRef.current;
+        const frameW = sheet.naturalWidth / 4;
+        const frameH = sheet.naturalHeight / 4;
+        const row = state.muzzle ? 2 : state.ammo < state.maxAmmo ? 1 : 0;
+        const col = Math.floor(state.t / 12) % 4;
+        const handW = 300;
+        const handH = 188;
+        ctx.drawImage(
+          sheet,
+          col * frameW,
+          row * frameH,
+          frameW,
+          frameH,
+          canvas.width / 2 - handW / 2 - state.turnVel * 430 + state.vx * 85,
+          canvas.height - handH - 4,
+          handW,
+          handH
+        );
+        if (state.muzzle && fpsEffectsRef.current?.complete && fpsEffectsRef.current.naturalWidth) {
+          const effectSheet = fpsEffectsRef.current;
+          const effectW = effectSheet.naturalWidth / 4;
+          const effectH = effectSheet.naturalHeight / 4;
+          ctx.globalAlpha = 0.88;
+          ctx.drawImage(effectSheet, (Math.floor(state.t / 3) % 4) * effectW, 0, effectW, effectH, canvas.width / 2 - 90, canvas.height / 2 - 166, 180, 180);
+          ctx.globalAlpha = 1;
+        }
+      } else {
+        ctx.fillStyle = selectedHero.primaryColor || '#444';
+        ctx.fillRect(canvas.width / 2 - 80 - state.turnVel * 430 + state.vx * 85, canvas.height - 116, 160, 96);
+        ctx.fillStyle = weaponProfile.color;
+        ctx.fillRect(canvas.width / 2 - 34 - state.turnVel * 430 + state.vx * 85, canvas.height - 100, 68, 28);
+        if (state.muzzle) {
+          ctx.fillStyle = '#ffea00';
+          ctx.fillRect(canvas.width / 2 - 14, canvas.height - 126, 28, 28);
+        }
       }
       if (state.phase !== 'running') {
         ctx.fillStyle = 'rgba(0,0,0,0.72)';
@@ -2596,13 +2641,26 @@ export default function HubScreen({
     sound.playSfx(hidden ? 'click' : 'coin');
   }, [setDisabledAssets]);
   const spriteOutputMap = useMemo(
-    () => new Map((spriteManifest.entries || []).filter(entry => entry.available).map(entry => [entry.output, entry])),
+    () => {
+      const map = new Map((spriteManifest.entries || []).filter(entry => entry.available).map(entry => [entry.output, entry]));
+      Object.values(MIRELLE_COMPLETE_SPRITES).forEach(output => {
+        map.set(output, { output, available: true, source: 'openai-complete-pack' });
+      });
+      return map;
+    },
     []
   );
   const getHeroSpriteInfo = useCallback((hero) => {
-    const src = getHeroSpriteSheetSrc(hero);
+    const completePack = getHeroCompleteSpritePack(hero);
+    const src = completePack?.[0]?.src || getHeroSpriteSheetSrc(hero, 'nexus');
     const entry = spriteOutputMap.get(src);
-    return { src, ready: Boolean(entry), source: entry?.source || null };
+    return {
+      src,
+      ready: Boolean(entry) || Boolean(completePack?.length),
+      source: entry?.source || (completePack ? 'openai-complete-pack' : null),
+      kind: completePack ? 'pack' : 'hero',
+      sheets: completePack || null
+    };
   }, [spriteOutputMap]);
   const getEnemySpriteInfo = useCallback((enemy, universe) => {
     const src = getEnemySpriteSheetSrc({ ...enemy, universe });
@@ -6880,7 +6938,7 @@ export default function HubScreen({
                       if (!el) return;
                       const ctx = el.getContext('2d');
                       ctx.clearRect(0, 0, 300, 250);
-                      drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178);
+                      drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus');
                     }} />
                   </div>
 
@@ -7254,7 +7312,7 @@ export default function HubScreen({
                               if (!el) return;
                               const ctx = el.getContext('2d');
                               ctx.clearRect(0, 0, 112, 118);
-                              drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88);
+                              drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'nexus');
                             }} />
                           </div>
                           <div className="squad-hero-info">
@@ -7440,7 +7498,7 @@ export default function HubScreen({
                           if (!el) return;
                           const ctx = el.getContext('2d');
                           ctx.clearRect(0, 0, 76, 82);
-                          drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62);
+                          drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'nexus');
                         }} />
                       </div>
                       <div>
@@ -8772,17 +8830,38 @@ export default function HubScreen({
                 </button>
               </div>
               <div style={{ background: '#020204', border: '1px solid #222', maxHeight: '78vh', overflow: 'auto', textAlign: 'center' }}>
-                <img
-                  src={spritePreview.src}
-                  alt={spritePreview.title}
-                  style={{
-                    width: spritePreview.kind === 'item' ? 'min(72vw, 420px)' : 'min(100%, 820px)',
-                    height: 'auto',
-                    imageRendering: 'pixelated',
-                    display: 'block',
-                    margin: '0 auto'
-                  }}
-                />
+                {spritePreview.kind === 'pack' && Array.isArray(spritePreview.sheets) ? (
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px', padding: '10px' }}>
+                    {spritePreview.sheets.map(sheet => (
+                      <div key={sheet.id} style={{ border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.025)', padding: '8px', textAlign: 'left' }}>
+                        <div style={{ color: '#39c5bb', fontSize: '10px', fontWeight: 'bold', marginBottom: '6px', textTransform: 'uppercase' }}>{sheet.label}</div>
+                        <img
+                          src={sheet.src}
+                          alt={`${spritePreview.title} - ${sheet.label}`}
+                          style={{
+                            width: '100%',
+                            height: 'auto',
+                            imageRendering: 'pixelated',
+                            display: 'block',
+                            background: '#020204'
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <img
+                    src={spritePreview.src}
+                    alt={spritePreview.title}
+                    style={{
+                      width: spritePreview.kind === 'item' ? 'min(72vw, 420px)' : 'min(100%, 820px)',
+                      height: 'auto',
+                      imageRendering: 'pixelated',
+                      display: 'block',
+                      margin: '0 auto'
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>

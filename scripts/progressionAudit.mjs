@@ -18,6 +18,8 @@ const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const raceModeSource = read('../src/components/RaceMode.jsx');
 const smashEngineSource = read('../src/game/engineSmash.js');
 const raceEngineSource = read('../src/game/engineRace.js');
+const spriteAssetsSource = read('../src/game/spriteAssets.js');
+const rendererSource = read('../src/game/renderer.js');
 const smashArenasSource = read('../src/game/smashArenas.js');
 const tacticsEngineSource = read('../src/game/engineTactics.js');
 const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
@@ -78,6 +80,29 @@ assert(hubSource.includes("setActiveTab('race')") && hubSource.includes('<RaceMo
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
 assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('arca-mirelle-kart-directions.png'), 'Race engine must use the Mirelle kart sprite sheet assets.');
+[
+  'arca-mirelle-rpg.png',
+  'arca-mirelle-tactics.png',
+  'arca-mirelle-melee-movement.png',
+  'arca-mirelle-melee-combat.png',
+  'arca-mirelle-nexus-collection.png',
+  'arca-mirelle-hud-icons.png',
+  'arca-mirelle-items-vfx.png',
+  'arca-mirelle-fps-hands.png',
+  'arca-mirelle-fps-effects.png',
+  'arca-mirelle-kart-directions.png',
+  'arca-mirelle-kart-actions.png',
+  'arca-mirelle-kart-items.png',
+  'arca-mirelle-kart-hud-garage.png',
+  'arca-mirelle-kart-track-nexus.png'
+].forEach(file => {
+  assert(spriteAssetsSource.includes(file), `Mirelle complete sprite pack missing ${file}.`);
+});
+assert(rendererSource.includes("context = 'auto'") && rendererSource.includes('srcGetter(entity, context)'), 'Renderer must route hero sprites by mode context.');
+assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
+assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');
+assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');
+assert(hubSource.includes("spritePreview.kind === 'pack'"), 'Admin sprite preview must render complete hero sprite packs.');
 [
   'checkpoints',
   'boostPads',
@@ -270,6 +295,8 @@ console.log(JSON.stringify({
   raceMode: 'playable-hub-tab',
   raceGameplay: ['laps', 'checkpoints', 'drift', 'boost', 'items', 'hazards', 'ai-rivals'],
   racePilotSprite: 'mirelle-kart-openai-sheet',
+  mirelleCompleteSpritePack: 14,
+  mirelleSpriteRouting: ['rpg', 'tactics', 'melee', 'nexus', 'hud', 'fps', 'kart', 'admin-preview'],
   meleeArenaLayouts: 17,
   meleeTerrainSystem: 'dynamic',
   meleeObjectiveSystem: 'active',

@@ -1037,7 +1037,7 @@ export class EngineSmash {
     });
 
     this.heroes.forEach(h => {
-      drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing);
+      drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing, 72, 'melee');
 
       if (h.id === this.activeHeroId && h.currentHp > 0) {
         ctx.fillStyle = '#39c5bb';

@@ -537,8 +537,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       return undefined;
     }
     const battleItemPool = getBattleItemPoolForStage(stage);
+    const heroSpriteContext = stage.mode === 'Tactics' ? 'tactics' : stage.mode === 'Smash' ? 'melee' : 'rpg';
     const spriteSources = [
-      ...squadHeroes.map(getHeroSpriteSheetSrc),
+      ...squadHeroes.map(hero => getHeroSpriteSheetSrc(hero, heroSpriteContext)),
       ...enemyList.map(getEnemySpriteSheetSrc),
       ...battleItemPool.map(getItemSpriteSrc)
     ].filter(Boolean);

@@ -53,8 +53,8 @@ export const preloadSpriteSheetSrcs = (srcs = []) => {
   srcs.forEach(src => getCachedSpriteSheet(src));
 };
 
-const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter, redrawWhenResolved) => {
-  const entry = getCachedSpriteSheet(srcGetter(entity));
+const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter, redrawWhenResolved, context = 'auto') => {
+  const entry = getCachedSpriteSheet(srcGetter(entity, context));
   if (!entry || entry.status === 'error') return 'missing';
   if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
     queueSpriteSheetRedraw(entry, ctx, () => {
@@ -158,10 +158,10 @@ export class ParticleSystem {
   }
 }
 
-export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72) => {
+export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72, context = 'auto') => {
   const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSrc, () => {
-    drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight);
-  });
+    drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
+  }, context);
   if (generatedStatus !== 'missing') {
     return;
   }
