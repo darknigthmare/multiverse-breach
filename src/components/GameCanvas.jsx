@@ -32,6 +32,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [speedMultiplier, setSpeedMultiplier] = useState(1); // 1 | 2
   const [battleCompleted, setBattleCompleted] = useState(false);
   const [battleResult, setBattleResult] = useState(null);
+  const [battleSummary, setBattleSummary] = useState(null);
   const [battleAnomaly, setBattleAnomaly] = useState(null);
   const [battlePickups, setBattlePickups] = useState([]);
   const [battleItemLog, setBattleItemLog] = useState(null);
@@ -434,6 +435,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (effect.damage) damageEnemiesByBattleItem(engine, effect.damage, color, 'ITEM HIT');
     if (effect.summonDamage) damageEnemiesByBattleItem(engine, effect.summonDamage, color, 'ASSIST');
     if (effect.ultimateDamage) damageEnemiesByBattleItem(engine, effect.ultimateDamage, color, 'ULTIMATE');
+    if (stage.mode === 'Smash' && typeof engine.itemTriggers === 'number') {
+      engine.itemTriggers++;
+    }
     supportHeroesByBattleItem(engine, effect, color);
 
     setBattleItemLog({
@@ -479,6 +483,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setSpriteBootStatus(null);
     setBattleCompleted(false);
     setBattleResult(null);
+    setBattleSummary(null);
     setBattleAnomaly(null);
     setBossState(null);
     setTeamState([]);
@@ -542,9 +547,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const width = canvas.width;
     const height = canvas.height;
 
-    const handleBattleComplete = (result) => {
+    const handleBattleComplete = (result, summary = null) => {
       setBattleCompleted(true);
       setBattleResult(result);
+      setBattleSummary(summary);
       sound.stopBgm();
       if (result === 'victory') {
         sound.playSfx('victory');
@@ -811,6 +817,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     : `Rift closed! Earned +${stage.goldPrize} Gold & +${stage.shardPrize} Shards${stage.tokenPrize ? ` & +${stage.tokenPrize} Tokens` : ''}.`;
 
   const usedBattleItems = battlePickups.filter(item => item.used).length;
+  const smashResultLines = battleSummary?.mode === 'Smash'
+    ? [
+      `${lang === 'fr' ? 'Arene' : 'Arena'}: ${battleSummary.arenaLabel?.[lang] || battleSummary.arenaId}`,
+      `${lang === 'fr' ? 'Rang' : 'Grade'} ${battleSummary.grade} | Score ${battleSummary.score} | Objectif ${battleSummary.objectivePct}%`,
+      `${lang === 'fr' ? 'Menaces neutralisees' : 'Threats neutralized'}: ${battleSummary.defeatedEnemies} | ${lang === 'fr' ? 'Artefacts' : 'Artifacts'}: ${battleSummary.itemTriggers} | ${lang === 'fr' ? 'Risques terrain' : 'Terrain hits'}: ${battleSummary.hazardHits}`
+    ]
+    : [];
   const totalBattleItems = battlePickups.length;
   const unstableTeamCount = activeTeam.filter(heroId => (stage.heroInstability?.[heroId] || 0) > 0).length;
   const smashObjective = stage.mode === 'Smash'
@@ -1118,10 +1131,26 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 ? victoryRewardText
                 : getTranslation(lang, 'defeatMsg')}
             </p>
+            {smashResultLines.length > 0 && (
+              <div style={{
+                width: 'min(520px, 92%)',
+                margin: '0 0 24px 0',
+                padding: '12px 14px',
+                border: '1px solid rgba(57,197,187,0.45)',
+                background: 'rgba(4,18,28,0.72)',
+                textAlign: 'left',
+                color: '#dff',
+                fontSize: '11px',
+                lineHeight: 1.7
+              }}>
+                {smashResultLines.map(line => <div key={line}>{line}</div>)}
+              </div>
+            )}
             <button
               onClick={() => onBattleEnd(battleResult, {
                 battleItemsUsed: battlePickupsRef.current.filter(item => item.used).length,
-                battleItemsTotal: battlePickupsRef.current.length
+                battleItemsTotal: battlePickupsRef.current.length,
+                battleSummary
               })}
               className="btn-retro"
               title={lang === 'fr' ? 'Valide le resultat du combat, applique les recompenses ou la defaite, puis retourne au hub.' : 'Confirm the combat result, apply rewards or defeat, then return to the hub.'}

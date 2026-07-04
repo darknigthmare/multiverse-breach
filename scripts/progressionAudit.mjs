@@ -12,6 +12,7 @@ const heroesSource = read('../src/game/heroes.js');
 const enemiesSource = read('../src/game/enemies.js');
 const battleItemsSource = read('../src/game/battleItems.js');
 const dlcSource = read('../src/game/dlcConfig.js');
+const appSource = read('../src/App.jsx');
 const hubSource = read('../src/components/HubScreen.jsx');
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const smashEngineSource = read('../src/game/engineSmash.js');
@@ -109,10 +110,17 @@ assert(smashEngineSource.includes('recoverFromArenaFall'), 'Melee engine must pr
 assert(smashEngineSource.includes('updateStuckTracker'), 'Melee engine must include anti-stuck movement recovery.');
 assert(smashEngineSource.includes('getEnemyBehavior'), 'Melee enemies must use behavior profiles.');
 assert(smashEngineSource.includes('airJumps'), 'Melee actors must keep limited air recovery jumps.');
+assert(smashEngineSource.includes('getCombatSummary'), 'Melee engine must expose a combat summary for progression feedback.');
+assert(smashEngineSource.includes('completionReported'), 'Melee engine must report battle completion only once.');
+assert(smashEngineSource.includes('damageDealt') && smashEngineSource.includes('hazardHits') && smashEngineSource.includes('itemTriggers'), 'Melee summary must track damage, terrain risk, and item usage.');
 assert(smashArenasSource.includes('objectiveTarget'), 'Melee arenas must declare objective targets.');
 assert(smashArenasSource.includes('getSmashObjectiveLabel'), 'Melee arenas must expose objective labels.');
 assert(gameCanvasSource.includes('getSmashPickupPositions'), 'Melee pickups must use arena-safe positions.');
 assert(gameCanvasSource.includes('new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, stage)'), 'GameCanvas must pass stage metadata into melee mode.');
+assert(gameCanvasSource.includes('battleSummary'), 'GameCanvas must preserve melee combat summary data.');
+assert(gameCanvasSource.includes('smashResultLines'), 'GameCanvas must render melee summary feedback on battle end.');
+assert(appSource.includes('smashMasteryBonus'), 'App rewards must include capped melee mastery bonuses.');
+assert(appSource.includes("activeStage.mode === 'Smash'") && appSource.includes('battleSummary?.mode === \'Smash\''), 'Melee mastery rewards must be limited to Smash results.');
 
 console.log(JSON.stringify({
   baseUniverse: 'Nexus de Convergence',
@@ -127,5 +135,7 @@ console.log(JSON.stringify({
   meleeTerrainSystem: 'dynamic',
   meleeObjectiveSystem: 'active',
   meleeCombatFeel: 'recovery-and-ai',
-  meleeDlcMapping: 'metadata-aware'
+  meleeDlcMapping: 'metadata-aware',
+  meleeResultSummary: 'score-grade-objective',
+  meleeRewardLoop: 'grade-bonus'
 }, null, 2));

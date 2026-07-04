@@ -20,6 +20,10 @@ export class EngineSmash {
     this.objectiveTarget = this.arena.objectiveTarget || 1;
     this.objectivePulse = '';
     this.defeatedEnemies = 0;
+    this.damageDealt = 0;
+    this.damageTaken = 0;
+    this.hazardHits = 0;
+    this.itemTriggers = 0;
     
     // Map base heroes
     this.heroes = heroes.map((h, index) => ({
@@ -71,6 +75,7 @@ export class EngineSmash {
     this.maxWaves = this.arena.maxWaves || (stage.isSurvival ? 5 : 4);
     this.objectiveTarget = this.arena.objectiveTarget || this.maxWaves;
     this.gameOver = false;
+    this.completionReported = false;
     this.victoryTimer = 0;
     this.activeHeroId = this.heroes[0].id;
     this.groundY = this.arena.groundY;
@@ -238,6 +243,7 @@ export class EngineSmash {
 
   triggerCombatEvent(effect) {
     if (this.gameOver) return;
+    this.itemTriggers++;
     this.playSfx('special');
     this.particles.add(this.width/2, this.height/2, 0, 0, '#ffffff', 300, 35, 'glitch');
 
@@ -376,6 +382,11 @@ export class EngineSmash {
     const variance = (Math.random() * 0.2) + 0.9;
     const defenseFactor = defender.def ? Math.max(0.72, 1 - defender.def * 0.01) : 1;
     const finalDmg = Math.round(baseDmg * variance * defenseFactor);
+    if (this.heroes.includes(attacker) && this.enemies.includes(defender)) {
+      this.damageDealt += finalDmg;
+    } else if (this.enemies.includes(attacker) && this.heroes.includes(defender)) {
+      this.damageTaken += finalDmg;
+    }
     
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
     
@@ -420,9 +431,10 @@ export class EngineSmash {
   update(keysPressed) {
     if (this.gameOver) {
       this.victoryTimer++;
-      if (this.victoryTimer > 120) {
+      if (this.victoryTimer > 120 && !this.completionReported) {
+        this.completionReported = true;
         const alive = this.heroes.some(h => h.currentHp > 0);
-        this.onComplete(alive ? 'victory' : 'defeat');
+        this.onComplete(alive ? 'victory' : 'defeat', this.getCombatSummary(alive ? 'victory' : 'defeat'));
       }
       return;
     }
@@ -744,6 +756,7 @@ export class EngineSmash {
         const onHazard = actor.x >= hazard.x1 && actor.x <= hazard.x2 && Math.abs(actor.y - hazard.y) < 20;
         if (!onHazard || this.hazardTick % 30 !== 0) return;
         actor.currentHp = Math.max(actor.isBoss ? 1 : 0, actor.currentHp - hazard.damage);
+        if (this.heroes.includes(actor)) this.hazardHits++;
         actor.vx += hazard.knockX ? (actor.x < (hazard.x1 + hazard.x2) / 2 ? -hazard.knockX : hazard.knockX) : 0;
         actor.vy = hazard.knockY || Math.min(actor.vy, -3);
         if (hazard.status && actor.statusEffects) actor.statusEffects[hazard.status] = Math.max(actor.statusEffects[hazard.status] || 0, 180);
@@ -1079,5 +1092,39 @@ export class EngineSmash {
 
   getObjectiveText(lang = 'fr') {
     return getSmashObjectiveText(this.arena, lang);
+  }
+
+  getCombatSummary(result = null) {
+    const objectivePct = Math.round(Math.max(0, Math.min(1, this.objectiveProgress / Math.max(1, this.objectiveTarget))) * 100);
+    const aliveHeroes = this.heroes.filter(hero => hero.currentHp > 0);
+    const hpPct = aliveHeroes.length
+      ? Math.round(aliveHeroes.reduce((total, hero) => total + (hero.currentHp / Math.max(1, hero.maxHp)), 0) / aliveHeroes.length * 100)
+      : 0;
+    const score = Math.max(0,
+      this.defeatedEnemies * 140
+      + objectivePct * 9
+      + hpPct * 5
+      + this.itemTriggers * 55
+      - this.hazardHits * 35
+      - Math.round(this.damageTaken * 0.35)
+    );
+    const grade = score >= 1500 ? 'S' : score >= 1150 ? 'A' : score >= 820 ? 'B' : score >= 520 ? 'C' : 'D';
+    return {
+      mode: 'Smash',
+      result,
+      arenaId: this.arena.id,
+      arenaLabel: this.arena.label,
+      objective: this.arena.objective,
+      objectivePct,
+      score,
+      grade,
+      defeatedEnemies: this.defeatedEnemies,
+      damageDealt: this.damageDealt,
+      damageTaken: this.damageTaken,
+      hazardHits: this.hazardHits,
+      itemTriggers: this.itemTriggers,
+      aliveHeroes: aliveHeroes.length,
+      averageHpPct: hpPct
+    };
   }
 }

@@ -345,6 +345,11 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
               {rewardSummary.droppedItemName && (
                 <span>{lang === 'fr' ? `Relique recuperee: ${rewardSummary.droppedItemName}.` : `Relic recovered: ${rewardSummary.droppedItemName}.`}</span>
               )}
+              {rewardSummary.smashMasteryBonus > 0 && rewardSummary.battleSummary && (
+                <span>{lang === 'fr'
+                  ? `Maitrise melee: rang ${rewardSummary.battleSummary.grade}, +${rewardSummary.smashMasteryBonus} fragments de stabilisation.`
+                  : `Melee mastery: grade ${rewardSummary.battleSummary.grade}, +${rewardSummary.smashMasteryBonus} stabilization shards.`}</span>
+              )}
             </div>
           )}
           <div className="narrative-tags">
@@ -587,6 +592,7 @@ function App() {
 
   const handleBattleEnd = (result, report = {}) => {
     const battleItemsUsed = report.battleItemsUsed || 0;
+    const battleSummary = report.battleSummary || null;
     const firstClear = result === 'victory'
       && activeStage
       && !activeStage.isSurvival
@@ -603,7 +609,9 @@ function App() {
       consolation: false,
       contactIntel: null,
       adaptation: false,
-      instability: false
+      instability: false,
+      battleSummary,
+      smashMasteryBonus: 0
     };
     const createRiftJournalEntry = (entryResult, extra = {}) => {
       const source = activeStage.sourceUniverses?.join(' / ') || activeStage.universe;
@@ -633,8 +641,12 @@ function App() {
       const firstClearShards = firstClear ? 10 : 0;
       const itemMasteryTokens = battleItemsUsed >= 3 ? 1 : 0;
       const seasonRewardBonus = Math.min(0.18, Math.floor((activityProgress.seasonXp || 0) / 500) * 0.02);
+      const smashGradeBonus = activeStage.mode === 'Smash' && battleSummary?.mode === 'Smash'
+        ? ({ S: 18, A: 12, B: 7, C: 3 }[battleSummary.grade] || 0)
+        : 0;
+      summary.smashMasteryBonus = smashGradeBonus;
       summary.gold = Math.round(activeStage.goldPrize * (1 + seasonRewardBonus)) + firstClearGold;
-      summary.shards = Math.round(activeStage.shardPrize * (1 + seasonRewardBonus)) + firstClearShards;
+      summary.shards = Math.round(activeStage.shardPrize * (1 + seasonRewardBonus)) + firstClearShards + smashGradeBonus;
       summary.tokens = (activeStage.tokenPrize || 0) + itemMasteryTokens;
       setGold(prev => prev + summary.gold);
       setBreachShards(prev => prev + summary.shards);
@@ -656,6 +668,7 @@ function App() {
       const seasonGain = 35
         + (firstClear ? 20 : 0)
         + (battleItemsUsed * 4)
+        + (smashGradeBonus > 0 ? 8 : 0)
         + (activeStage.isSurvival ? 15 : 0)
         + (activeStage.id === 38 ? 100 : 0);
       setActivityProgress(prev => ({
@@ -696,6 +709,8 @@ function App() {
           createRiftJournalEntry('victory', {
             firstClear,
             rewardItemName: summary.rewardItemName,
+            battleSummary,
+            smashMasteryBonus: summary.smashMasteryBonus,
             rewards: { gold: summary.gold, shards: summary.shards, tokens: summary.tokens }
           }),
           ...(prev.riftJournal || [])
