@@ -47,6 +47,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysRef = useRef({});
+  const [trackId, setTrackId] = useState('nexus_archive_loop');
   const [summary, setSummary] = useState(null);
   const [snapshot, setSnapshot] = useState({
     rank: 1,
@@ -57,7 +58,8 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
     grade: null
   });
 
-  const track = RACE_TRACKS.nexus_archive_loop;
+  const trackList = useMemo(() => Object.values(RACE_TRACKS).sort((a, b) => a.difficulty - b.difficulty || a.id.localeCompare(b.id)), []);
+  const track = RACE_TRACKS[trackId] || RACE_TRACKS.nexus_archive_loop;
   const pilotName = playerProfile?.name?.trim() || (lang === 'fr' ? 'Ancre' : 'Anchor');
   const controlRows = useMemo(() => [
     { label: lang === 'fr' ? 'Accel.' : 'Accel.', value: 'Z/W ou fleche haut' },
@@ -73,7 +75,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
     const engine = new EngineRace(960, 540, raceSummary => {
       setSummary(raceSummary);
       setSnapshot(prev => ({ ...prev, grade: raceSummary.grade, rank: raceSummary.rank, time: raceSummary.time }));
-    });
+    }, trackId);
     engineRef.current = engine;
     let animationId = 0;
     let last = performance.now();
@@ -128,12 +130,18 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
     };
-  }, []);
+  }, [trackId]);
 
   const resetRace = () => {
     keysRef.current = {};
     setSummary(null);
     engineRef.current?.reset();
+  };
+
+  const selectTrack = (nextTrackId) => {
+    keysRef.current = {};
+    setSummary(null);
+    setTrackId(nextTrackId);
   };
 
   const activateVirtualKey = (key, active) => {
@@ -212,6 +220,20 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
             <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
             <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
             <strong>{lang === 'fr' ? 'Chassis Suture / cache A.R.C.A.' : 'Suture chassis / A.R.C.A. cache'}</strong>
+          </div>
+          <div className="race-track-selector">
+            <span>{lang === 'fr' ? 'Circuits disponibles' : 'Available tracks'}</span>
+            {trackList.map(trackOption => (
+              <button
+                key={trackOption.id}
+                type="button"
+                className={`race-track-option ${trackOption.id === trackId ? 'active' : ''}`}
+                onClick={() => selectTrack(trackOption.id)}
+              >
+                <strong>{trackOption.name[lang] || trackOption.name.fr}</strong>
+                <small>{trackOption.tags.join(' / ')} · D{trackOption.difficulty}</small>
+              </button>
+            ))}
           </div>
           <div className="race-control-list">
             {controlRows.map(row => (

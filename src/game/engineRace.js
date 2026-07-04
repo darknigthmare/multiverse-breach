@@ -38,10 +38,14 @@ const angleDelta = (from, to) => {
 
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
-export const RACE_TRACKS = {
+export const KART_TRACK_LAYOUTS = {
   nexus_archive_loop: {
     id: 'nexus_archive_loop',
     name: { fr: 'Boucle Archive A.R.C.A.', en: 'A.R.C.A. Archive Loop' },
+    family: 'nexus',
+    difficulty: 1,
+    tags: ['starter', 'wide', 'classic'],
+    start: { x: 480, y: 474, angle: -Math.PI / 2 },
     laps: 3,
     roadWidth: 118,
     offroadDrag: 0.91,
@@ -77,15 +81,265 @@ export const RACE_TRACKS = {
       { x: 178, y: 332, r: 28, phase: 1.3 },
       { x: 776, y: 284, r: 28, phase: 2.1 }
     ]
+  },
+  nexus_suture_eight: {
+    id: 'nexus_suture_eight',
+    name: { fr: 'Huit de Suture Nexus', en: 'Nexus Suture Eight' },
+    family: 'nexus',
+    difficulty: 2,
+    tags: ['figureEight', 'technical', 'crossing'],
+    start: { x: 480, y: 474, angle: -Math.PI / 2 },
+    laps: 3,
+    roadWidth: 104,
+    offroadDrag: 0.88,
+    checkpoints: [
+      { x: 480, y: 458, r: 78 },
+      { x: 236, y: 308, r: 76 },
+      { x: 480, y: 276, r: 82 },
+      { x: 724, y: 180, r: 76 },
+      { x: 480, y: 112, r: 80 },
+      { x: 236, y: 180, r: 76 },
+      { x: 480, y: 276, r: 82 },
+      { x: 724, y: 308, r: 76 }
+    ],
+    waypoints: [
+      { x: 480, y: 458 },
+      { x: 316, y: 424 },
+      { x: 210, y: 318 },
+      { x: 290, y: 214 },
+      { x: 480, y: 276 },
+      { x: 670, y: 180 },
+      { x: 752, y: 278 },
+      { x: 642, y: 396 },
+      { x: 480, y: 276 },
+      { x: 316, y: 162 },
+      { x: 480, y: 92 },
+      { x: 642, y: 164 }
+    ],
+    boostPads: [
+      { x: 490, y: 286, angle: -0.2 },
+      { x: 640, y: 392, angle: -2.4 },
+      { x: 330, y: 160, angle: 0.1 }
+    ],
+    itemBoxes: [
+      { x: 270, y: 312, respawn: 0 },
+      { x: 480, y: 124, respawn: 0 },
+      { x: 690, y: 310, respawn: 0 },
+      { x: 480, y: 284, respawn: 0 }
+    ],
+    hazards: [
+      { x: 480, y: 276, r: 34, phase: 0.4 },
+      { x: 236, y: 202, r: 24, phase: 1.8 },
+      { x: 724, y: 250, r: 24, phase: 2.7 }
+    ]
+  },
+  anchor_market_dash: {
+    id: 'anchor_market_dash',
+    name: { fr: 'Marche des Ancres', en: 'Anchor Market Dash' },
+    family: 'nexus',
+    difficulty: 2,
+    tags: ['shortcut', 'urban', 'items'],
+    start: { x: 440, y: 488, angle: -Math.PI / 2 },
+    laps: 4,
+    roadWidth: 96,
+    offroadDrag: 0.86,
+    checkpoints: [
+      { x: 440, y: 468, r: 72 },
+      { x: 210, y: 422, r: 70 },
+      { x: 196, y: 178, r: 70 },
+      { x: 486, y: 116, r: 78 },
+      { x: 760, y: 184, r: 72 },
+      { x: 706, y: 408, r: 72 }
+    ],
+    waypoints: [
+      { x: 440, y: 468 },
+      { x: 270, y: 462 },
+      { x: 180, y: 382 },
+      { x: 206, y: 198 },
+      { x: 340, y: 126 },
+      { x: 520, y: 102 },
+      { x: 736, y: 164 },
+      { x: 792, y: 300 },
+      { x: 710, y: 420 },
+      { x: 540, y: 454 }
+    ],
+    shortcuts: [
+      { from: { x: 276, y: 392 }, to: { x: 604, y: 208 }, risk: 'hazard' }
+    ],
+    boostPads: [
+      { x: 278, y: 456, angle: -0.8 },
+      { x: 760, y: 306, angle: 1.95 },
+      { x: 590, y: 438, angle: 3.05 }
+    ],
+    itemBoxes: [
+      { x: 214, y: 254, respawn: 0 },
+      { x: 494, y: 116, respawn: 0 },
+      { x: 742, y: 188, respawn: 0 },
+      { x: 604, y: 210, respawn: 0 },
+      { x: 400, y: 448, respawn: 0 }
+    ],
+    hazards: [
+      { x: 410, y: 300, r: 26, phase: 0.2 },
+      { x: 586, y: 222, r: 25, phase: 1.4 },
+      { x: 760, y: 364, r: 22, phase: 2.6 }
+    ]
+  },
+  fragment_frostway: {
+    id: 'fragment_frostway',
+    name: { fr: 'Glissade des Fragments', en: 'Fragment Frostway' },
+    family: 'nexus',
+    difficulty: 3,
+    tags: ['slippery', 'wide', 'survival'],
+    start: { x: 520, y: 486, angle: -Math.PI / 2 },
+    laps: 3,
+    roadWidth: 126,
+    offroadDrag: 0.83,
+    surfaceZones: [
+      { type: 'ice', x: 236, y: 236, r: 92 },
+      { type: 'ice', x: 726, y: 350, r: 86 }
+    ],
+    checkpoints: [
+      { x: 520, y: 462, r: 82 },
+      { x: 230, y: 384, r: 84 },
+      { x: 238, y: 178, r: 82 },
+      { x: 526, y: 94, r: 84 },
+      { x: 772, y: 240, r: 82 },
+      { x: 716, y: 430, r: 82 }
+    ],
+    waypoints: [
+      { x: 520, y: 462 },
+      { x: 320, y: 450 },
+      { x: 184, y: 354 },
+      { x: 230, y: 190 },
+      { x: 394, y: 108 },
+      { x: 566, y: 92 },
+      { x: 758, y: 196 },
+      { x: 800, y: 348 },
+      { x: 704, y: 450 }
+    ],
+    boostPads: [
+      { x: 286, y: 438, angle: -0.65 },
+      { x: 576, y: 96, angle: 0.3 },
+      { x: 718, y: 430, angle: -2.7 }
+    ],
+    itemBoxes: [
+      { x: 230, y: 230, respawn: 0 },
+      { x: 518, y: 96, respawn: 0 },
+      { x: 736, y: 348, respawn: 0 },
+      { x: 440, y: 456, respawn: 0 }
+    ],
+    hazards: [
+      { x: 186, y: 354, r: 30, phase: 0.8 },
+      { x: 764, y: 226, r: 32, phase: 2.2 },
+      { x: 760, y: 394, r: 24, phase: 3.1 }
+    ]
+  },
+  portal_hairpin_ritual: {
+    id: 'portal_hairpin_ritual',
+    name: { fr: 'Rituel des Virages-Portails', en: 'Portal Hairpin Ritual' },
+    family: 'nexus',
+    difficulty: 3,
+    tags: ['hairpin', 'hazard', 'technical'],
+    start: { x: 456, y: 492, angle: -Math.PI / 2 },
+    laps: 3,
+    roadWidth: 92,
+    offroadDrag: 0.84,
+    checkpoints: [
+      { x: 456, y: 468, r: 70 },
+      { x: 202, y: 430, r: 68 },
+      { x: 254, y: 220, r: 68 },
+      { x: 154, y: 122, r: 64 },
+      { x: 522, y: 86, r: 74 },
+      { x: 806, y: 164, r: 68 },
+      { x: 692, y: 344, r: 70 },
+      { x: 806, y: 438, r: 66 }
+    ],
+    waypoints: [
+      { x: 456, y: 468 },
+      { x: 252, y: 468 },
+      { x: 178, y: 402 },
+      { x: 254, y: 222 },
+      { x: 146, y: 128 },
+      { x: 314, y: 92 },
+      { x: 520, y: 84 },
+      { x: 748, y: 116 },
+      { x: 820, y: 174 },
+      { x: 686, y: 344 },
+      { x: 816, y: 440 },
+      { x: 612, y: 466 }
+    ],
+    boostPads: [
+      { x: 252, y: 220, angle: -1.2 },
+      { x: 520, y: 88, angle: 0.02 },
+      { x: 688, y: 344, angle: -1.9 }
+    ],
+    itemBoxes: [
+      { x: 190, y: 132, respawn: 0 },
+      { x: 474, y: 86, respawn: 0 },
+      { x: 806, y: 164, respawn: 0 },
+      { x: 806, y: 438, respawn: 0 }
+    ],
+    hazards: [
+      { x: 236, y: 398, r: 24, phase: 0 },
+      { x: 150, y: 128, r: 26, phase: 1.2 },
+      { x: 820, y: 172, r: 28, phase: 2.1 },
+      { x: 688, y: 346, r: 26, phase: 2.8 }
+    ]
+  },
+  overload_bossway: {
+    id: 'overload_bossway',
+    name: { fr: 'Anneau de Surcharge', en: 'Overload Bossway' },
+    family: 'nexus',
+    difficulty: 4,
+    tags: ['bossArena', 'hazard', 'wide'],
+    start: { x: 480, y: 482, angle: -Math.PI / 2 },
+    laps: 2,
+    roadWidth: 140,
+    offroadDrag: 0.87,
+    checkpoints: [
+      { x: 480, y: 462, r: 94 },
+      { x: 174, y: 300, r: 92 },
+      { x: 480, y: 88, r: 96 },
+      { x: 786, y: 300, r: 92 }
+    ],
+    waypoints: [
+      { x: 480, y: 462 },
+      { x: 286, y: 430 },
+      { x: 154, y: 304 },
+      { x: 286, y: 148 },
+      { x: 480, y: 84 },
+      { x: 674, y: 148 },
+      { x: 806, y: 304 },
+      { x: 674, y: 430 }
+    ],
+    boostPads: [
+      { x: 284, y: 430, angle: -0.25 },
+      { x: 480, y: 86, angle: 0.2 },
+      { x: 676, y: 430, angle: -2.9 }
+    ],
+    itemBoxes: [
+      { x: 178, y: 300, respawn: 0 },
+      { x: 480, y: 92, respawn: 0 },
+      { x: 784, y: 300, respawn: 0 },
+      { x: 480, y: 300, respawn: 0 }
+    ],
+    hazards: [
+      { x: 480, y: 300, r: 64, phase: 0 },
+      { x: 300, y: 152, r: 30, phase: 1.1 },
+      { x: 660, y: 448, r: 30, phase: 2.3 }
+    ]
   }
 };
 
+export const RACE_TRACKS = KART_TRACK_LAYOUTS;
+
 export class EngineRace {
-  constructor(width, height, onFinish = () => {}) {
+  constructor(width, height, onFinish = () => {}, trackId = 'nexus_archive_loop') {
     this.width = width;
     this.height = height;
     this.onFinish = onFinish;
-    this.track = RACE_TRACKS.nexus_archive_loop;
+    this.trackId = trackId;
+    this.track = this.createTrackState(trackId);
     this.images = {};
     Object.entries(RACE_ASSETS).forEach(([key, src]) => {
       const image = new Image();
@@ -96,8 +350,33 @@ export class EngineRace {
     this.reset();
   }
 
+  createTrackState(trackId = this.trackId) {
+    const baseTrack = RACE_TRACKS[trackId] || RACE_TRACKS.nexus_archive_loop;
+    return {
+      ...baseTrack,
+      checkpoints: baseTrack.checkpoints.map(point => ({ ...point })),
+      waypoints: baseTrack.waypoints.map(point => ({ ...point })),
+      boostPads: baseTrack.boostPads.map(pad => ({ ...pad })),
+      itemBoxes: baseTrack.itemBoxes.map(box => ({ ...box, respawn: 0 })),
+      hazards: baseTrack.hazards.map(hazard => ({ ...hazard })),
+      surfaceZones: (baseTrack.surfaceZones || []).map(zone => ({ ...zone })),
+      shortcuts: (baseTrack.shortcuts || []).map(shortcut => ({
+        ...shortcut,
+        from: { ...shortcut.from },
+        to: { ...shortcut.to }
+      }))
+    };
+  }
+
+  setTrack(trackId) {
+    if (!RACE_TRACKS[trackId] || trackId === this.trackId) return;
+    this.trackId = trackId;
+    this.reset();
+  }
+
   reset() {
-    const start = { x: 480, y: 474, angle: -Math.PI / 2 };
+    this.track = this.createTrackState();
+    const start = this.track.start || { x: 480, y: 474, angle: -Math.PI / 2 };
     this.time = 0;
     this.countdown = 2.6;
     this.finished = false;
@@ -106,7 +385,6 @@ export class EngineRace {
     this.messageTimer = 2;
     this.particles = [];
     this.projectiles = [];
-    this.track.itemBoxes.forEach(box => { box.respawn = 0; });
     this.player = this.createKart({
       id: 'mirelle',
       name: 'Mirelle Suture',
@@ -118,9 +396,9 @@ export class EngineRace {
       laneOffset: 0
     });
     this.opponents = [
-      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', x: 440, y: 502, angle: start.angle, ai: true, laneOffset: -26, maxSpeed: 244 }),
-      this.createKart({ id: 'loom', name: 'Loom-07', color: '#d9b6ff', x: 522, y: 504, angle: start.angle, ai: true, laneOffset: 22, maxSpeed: 252 }),
-      this.createKart({ id: 'sable', name: 'Sable Vey', color: '#e74c3c', x: 480, y: 532, angle: start.angle, ai: true, laneOffset: 8, maxSpeed: 238 })
+      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', x: start.x - 40, y: start.y + 28, angle: start.angle, ai: true, laneOffset: -26, maxSpeed: 244 }),
+      this.createKart({ id: 'loom', name: 'Loom-07', color: '#d9b6ff', x: start.x + 42, y: start.y + 30, angle: start.angle, ai: true, laneOffset: 22, maxSpeed: 252 }),
+      this.createKart({ id: 'sable', name: 'Sable Vey', color: '#e74c3c', x: start.x, y: start.y + 58, angle: start.angle, ai: true, laneOffset: 8, maxSpeed: 238 })
     ];
   }
 
@@ -235,17 +513,20 @@ export class EngineRace {
       return;
     }
     const input = kart.ai ? kart.aiInput : this.getPlayerInput();
-    const onTrack = this.getTrackFactor(kart.x, kart.y) > 0.52;
+    const trackFactor = this.getTrackFactor(kart.x, kart.y);
+    const onTrack = trackFactor > 0.52;
+    const surface = this.getSurfaceAt(kart.x, kart.y);
     const accel = input.accel ? kart.accel : input.brake ? -kart.accel * 0.62 : 0;
     kart.speed += accel * dt;
     const maxSpeed = kart.maxSpeed + (kart.boost > 0 ? 118 : 0);
     kart.speed = clamp(kart.speed, -88, maxSpeed);
-    const drag = onTrack ? 0.988 : this.track.offroadDrag;
+    const drag = surface === 'ice' ? 0.994 : onTrack ? 0.988 : this.track.offroadDrag;
     kart.speed *= Math.pow(drag, dt * 60);
     if (kart.spin > 0) kart.speed *= 0.965;
     const driftHeld = input.drift && Math.abs(kart.speed) > 80;
     kart.drift = clamp(kart.drift + (driftHeld ? dt * 1.6 : -dt * 2.3), 0, 1);
-    const turnPower = (0.55 + clamp(Math.abs(kart.speed) / 220, 0, 1) * 0.85) * (kart.drift ? 1.35 : 1);
+    const grip = surface === 'ice' ? 0.68 : 1;
+    const turnPower = (0.55 + clamp(Math.abs(kart.speed) / 220, 0, 1) * 0.85) * (kart.drift ? 1.35 : 1) * grip;
     kart.angle += input.turn * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
     if (!driftHeld && kart.drift > 0.72) {
       kart.boost = Math.max(kart.boost, 0.55);
@@ -295,33 +576,48 @@ export class EngineRace {
   applyTrackBounds(kart) {
     kart.x = clamp(kart.x, 34, this.width - 34);
     kart.y = clamp(kart.y, 34, this.height - 34);
-    const factor = this.getTrackFactor(kart.x, kart.y);
-    if (factor < 0.23) {
-      const center = { x: this.width / 2, y: this.height / 2 + 2 };
-      const dx = kart.x - center.x;
-      const dy = kart.y - center.y;
-      const angle = Math.atan2(dy / 0.72, dx);
-      const target = this.getPointOnRoad(angle);
-      kart.x = lerp(kart.x, target.x, 0.08);
-      kart.y = lerp(kart.y, target.y, 0.08);
+    const road = this.getClosestRoadPoint(kart.x, kart.y);
+    if (road.factor < 0.23) {
+      kart.x = lerp(kart.x, road.x, 0.08);
+      kart.y = lerp(kart.y, road.y, 0.08);
       kart.speed *= 0.955;
     }
   }
 
   getPointOnRoad(angle) {
-    return {
-      x: this.width / 2 + Math.cos(angle) * 285,
-      y: this.height / 2 + 4 + Math.sin(angle) * 188
-    };
+    const waypoints = this.track.waypoints;
+    const index = Math.floor((((angle + TAU) % TAU) / TAU) * waypoints.length) % waypoints.length;
+    return waypoints[index] || { x: this.width / 2, y: this.height / 2 };
   }
 
   getTrackFactor(x, y) {
-    const center = { x: this.width / 2, y: this.height / 2 + 4 };
-    const dx = (x - center.x) / 286;
-    const dy = (y - center.y) / 188;
-    const ring = Math.sqrt(dx * dx + dy * dy);
-    const road = 1 - Math.abs(ring - 1) / 0.24;
-    return clamp(road, 0, 1);
+    return this.getClosestRoadPoint(x, y).factor;
+  }
+
+  getClosestRoadPoint(x, y) {
+    const points = this.track.waypoints || [];
+    if (points.length < 2) return { x: this.width / 2, y: this.height / 2, distance: 0, factor: 1 };
+    let best = { x: points[0].x, y: points[0].y, distance: Infinity, factor: 0 };
+    for (let i = 0; i < points.length; i += 1) {
+      const a = points[i];
+      const b = points[(i + 1) % points.length];
+      const vx = b.x - a.x;
+      const vy = b.y - a.y;
+      const lengthSq = vx * vx + vy * vy || 1;
+      const t = clamp(((x - a.x) * vx + (y - a.y) * vy) / lengthSq, 0, 1);
+      const px = a.x + vx * t;
+      const py = a.y + vy * t;
+      const d = Math.hypot(x - px, y - py);
+      if (d < best.distance) {
+        best = { x: px, y: py, distance: d, factor: clamp(1 - d / (this.track.roadWidth * 0.55), 0, 1) };
+      }
+    }
+    return best;
+  }
+
+  getSurfaceAt(x, y) {
+    const zone = (this.track.surfaceZones || []).find(surface => distance({ x, y }, surface) < surface.r);
+    return zone?.type || 'road';
   }
 
   applyBoostPads(kart) {
@@ -840,17 +1136,36 @@ export class EngineRace {
     ctx.strokeStyle = 'rgba(255,235,59,0.45)';
     ctx.strokeRect(this.width - 172, 16, 150, 94);
     ctx.save();
-    ctx.translate(this.width - 97, 63);
-    ctx.scale(0.18, 0.18);
-    ctx.strokeStyle = '#ffeb3b';
-    ctx.lineWidth = 10;
     ctx.beginPath();
-    ctx.ellipse(0, 0, 286, 188, 0, 0, TAU);
+    ctx.rect(this.width - 172, 16, 150, 94);
+    ctx.clip();
+    ctx.translate(this.width - 172, 16);
+    ctx.scale(150 / this.width, 94 / this.height);
+    ctx.strokeStyle = '#ffeb3b';
+    ctx.lineWidth = 24;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    this.track.waypoints.forEach((point, index) => {
+      if (index === 0) ctx.moveTo(point.x, point.y);
+      else ctx.lineTo(point.x, point.y);
+    });
+    ctx.closePath();
     ctx.stroke();
+    if (this.track.shortcuts?.length) {
+      ctx.strokeStyle = 'rgba(57,197,187,0.55)';
+      ctx.lineWidth = 10;
+      this.track.shortcuts.forEach(shortcut => {
+        ctx.beginPath();
+        ctx.moveTo(shortcut.from.x, shortcut.from.y);
+        ctx.lineTo(shortcut.to.x, shortcut.to.y);
+        ctx.stroke();
+      });
+    }
     [this.player, ...this.opponents].forEach(kart => {
       ctx.fillStyle = kart.color;
       ctx.beginPath();
-      ctx.arc(kart.x - this.width / 2, kart.y - this.height / 2 - 4, kart.id === 'mirelle' ? 16 : 11, 0, TAU);
+      ctx.arc(kart.x, kart.y, kart.id === 'mirelle' ? 18 : 12, 0, TAU);
       ctx.fill();
     });
     ctx.restore();
@@ -1056,6 +1371,9 @@ export class EngineRace {
     ctx.fillText(`Tour ${Math.min(player.lap + 1, this.track.laps)}/${this.track.laps}`, 64, 60);
     ctx.fillText(`Vitesse ${Math.round(Math.abs(player.speed))}`, 64, 80);
     ctx.fillText(`Cache ${player.item ? this.getItemName(player.item) : 'vide'}`, 64, 100);
+    ctx.fillStyle = '#8aa5a5';
+    ctx.font = '10px Share Tech Mono, monospace';
+    ctx.fillText(this.track.name.fr.toUpperCase().slice(0, 28), 28, 116);
     if (player.item) {
       const itemFrame = KART_ITEM_FRAMES[player.item] || KART_ITEM_FRAMES.cache;
       drawSheetFrame(ctx, this.images.kartItems, 7, 6, itemFrame.col, itemFrame.row, 218, 76, 34, 34);

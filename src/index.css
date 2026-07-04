@@ -680,6 +680,7 @@ body {
 .race-stat-grid div,
 .race-cache-card,
 .race-garage-card,
+.race-track-selector,
 .race-control-list,
 .race-touch-controls {
   border: 1px solid rgba(255,255,255,0.1);
@@ -689,13 +690,15 @@ body {
 
 .race-stat-grid div,
 .race-cache-card,
-.race-garage-card {
+.race-garage-card,
+.race-track-selector {
   padding: 10px;
 }
 
 .race-stat-grid span,
 .race-cache-card span,
 .race-garage-card span,
+.race-track-selector > span,
 .race-control-list span {
   display: block;
   color: #8aa5a5;
@@ -740,6 +743,43 @@ body {
   border: 1px solid rgba(57, 197, 187, 0.18);
   border-radius: 4px;
   background: #03040a;
+}
+
+.race-track-selector {
+  display: grid;
+  gap: 7px;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.race-track-option {
+  width: 100%;
+  display: grid;
+  gap: 3px;
+  padding: 8px;
+  border: 1px solid rgba(57, 197, 187, 0.18);
+  border-radius: 4px;
+  background: rgba(57, 197, 187, 0.045);
+  color: #d8fffb;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.race-track-option.active {
+  border-color: rgba(255, 235, 59, 0.58);
+  background: rgba(255, 235, 59, 0.08);
+}
+
+.race-track-option strong {
+  color: #ffeb3b;
+  font-size: 10px;
+}
+
+.race-track-option small {
+  color: #8aa5a5;
+  font-size: 9px;
+  text-transform: uppercase;
 }
 
 .race-control-list {
