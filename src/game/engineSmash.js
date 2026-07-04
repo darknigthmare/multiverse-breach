@@ -1,20 +1,26 @@
 // Super Smash Bros Mêlée Mode Engine with Synergies & Status Effects
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
+import { createSmashArena, getSmashObjectiveText } from './smashArenas';
 
 export class EngineSmash {
-  constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete) {
+  constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
     this.width = width;
     this.height = height;
     this.particles = particles;
     this.playSfx = playSfx;
     this.onComplete = onComplete;
+    this.stage = stage;
+    this.arena = createSmashArena(stage, width, height);
+    this.gravity = this.arena.gravity || 0.25;
+    this.jumpVelocity = this.arena.jump || -7.8;
+    this.hazardTick = 0;
     
     // Map base heroes
     this.heroes = heroes.map((h, index) => ({
       ...h,
-      x: 100 + index * 30,
-      y: 200,
+      x: this.arena.spawns.heroes[index]?.x || (100 + index * 30),
+      y: this.arena.spawns.heroes[index]?.y || this.arena.groundY,
       vx: 0,
       vy: 0,
       state: 'idle',
@@ -52,16 +58,12 @@ export class EngineSmash {
     this.enemiesData = enemiesData;
     this.enemies = [];
     this.wave = 1;
-    this.maxWaves = 4;
+    this.maxWaves = this.arena.maxWaves || (stage.isSurvival ? 5 : 4);
     this.gameOver = false;
     this.victoryTimer = 0;
     this.activeHeroId = this.heroes[0].id;
-    this.groundY = 240;
-    this.platforms = [
-      { x1: 50, x2: width - 50, y: this.groundY },
-      { x1: 200, x2: 400, y: 150 },
-      { x1: width - 400, x2: width - 200, y: 150 }
-    ];
+    this.groundY = this.arena.groundY;
+    this.platforms = this.arena.platforms;
   }
 
   getActiveHero() {
@@ -96,10 +98,17 @@ export class EngineSmash {
       template = this.enemiesData.worldBoss || this.enemiesData.bosses[0];
     }
 
+    const spawnList = this.arena.spawns.enemies || [];
+    const spawn = isBoss
+      ? this.arena.spawns.boss
+      : spawnList[(this.wave + this.enemies.length) % Math.max(1, spawnList.length)];
+    const spawnX = spawn?.x || (this.width - 70 - Math.random() * 50);
+    const spawnY = spawn?.y || 100;
+
     this.enemies.push({
       ...template,
-      x: this.width - 70 - Math.random() * 50,
-      y: 100,
+      x: spawnX,
+      y: spawnY,
       vx: 0, vy: 0,
       state: 'idle',
       stateTimer: 0,
@@ -112,7 +121,7 @@ export class EngineSmash {
     });
 
     this.playSfx('portal');
-    this.particles.add(this.width - 100, this.groundY - 10, 0, 0, '#9b59b6', 15, 45, 'portal');
+    this.particles.add(spawnX, spawnY - 10, 0, 0, '#9b59b6', 15, 45, 'portal');
   }
 
   triggerAbility(hero, abilityType) {
@@ -411,7 +420,7 @@ export class EngineSmash {
       }
 
       if ((keysPressed['ArrowUp'] || keysPressed['Space'] || keysPressed['w'] || keysPressed['W']) && this.isOnGround(activeHero)) {
-        activeHero.vy = -7.5;
+        activeHero.vy = this.jumpVelocity;
         this.playSfx('jump');
       }
     }
@@ -468,7 +477,7 @@ export class EngineSmash {
         }
 
         if (Math.abs(distToLeader) > 50 && this.isOnGround(h) && Math.random() < 0.02) {
-          h.vy = -6;
+          h.vy = this.jumpVelocity * 0.8;
         }
 
         const nearestEnemy = this.getNearestEnemy(h);
@@ -478,7 +487,7 @@ export class EngineSmash {
         }
       }
 
-      h.vy += 0.25;
+      h.vy += this.gravity;
       this.applyPhysics(h);
     });
 
@@ -486,7 +495,7 @@ export class EngineSmash {
       if (e.currentHp <= 0) {
         if (e.stateTimer > 0) e.stateTimer--;
         e.vx = 0;
-        e.vy += 0.25;
+        e.vy += this.gravity;
         this.applyPhysics(e);
         return;
       }
@@ -551,9 +560,11 @@ export class EngineSmash {
         e.vx = 0;
       }
 
-      e.vy += 0.25;
+      e.vy += this.gravity;
       this.applyPhysics(e);
     });
+
+    this.applyArenaHazards();
   }
 
   isOnGround(char) {
@@ -566,13 +577,14 @@ export class EngineSmash {
   }
 
   applyPhysics(char) {
+    const previousY = char.y;
     char.x += char.vx;
     char.y += char.vy;
 
     if (char.state === 'hit') char.vx *= 0.85;
 
     const plat = this.isOnGround(char);
-    if (plat && char.vy >= 0) {
+    if (plat && char.vy >= 0 && !(plat.passThrough && previousY > plat.y - 8)) {
       char.y = plat.y;
       char.vy = 0;
     }
@@ -586,6 +598,25 @@ export class EngineSmash {
       char.stateTimer = 0;
       this.playSfx('defeat');
     }
+  }
+
+  applyArenaHazards() {
+    if (!this.arena.hazards?.length || this.gameOver) return;
+    this.hazardTick++;
+    const actors = [...this.heroes, ...this.enemies].filter(actor => actor.currentHp > 0);
+    this.arena.hazards.forEach(hazard => {
+      const active = this.hazardTick % (hazard.cadence || 120) < 48;
+      if (!active) return;
+      actors.forEach(actor => {
+        const onHazard = actor.x >= hazard.x1 && actor.x <= hazard.x2 && Math.abs(actor.y - hazard.y) < 20;
+        if (!onHazard || this.hazardTick % 30 !== 0) return;
+        actor.currentHp = Math.max(actor.isBoss ? 1 : 0, actor.currentHp - hazard.damage);
+        actor.vx += hazard.knockX ? (actor.x < (hazard.x1 + hazard.x2) / 2 ? -hazard.knockX : hazard.knockX) : 0;
+        actor.vy = hazard.knockY || Math.min(actor.vy, -3);
+        if (hazard.status && actor.statusEffects) actor.statusEffects[hazard.status] = Math.max(actor.statusEffects[hazard.status] || 0, 180);
+        this.particles.add(actor.x, actor.y - 16, 0, -1, this.arena.theme.danger, 4, 28, 'spark');
+      });
+    });
   }
 
   getClosestHero(enemy) {
@@ -619,18 +650,13 @@ export class EngineSmash {
   }
 
   draw(ctx, animTime) {
-    ctx.strokeStyle = '#39c5bb';
-    ctx.lineWidth = 4;
-    ctx.shadowColor = '#39c5bb';
-    ctx.shadowBlur = 6;
-    
+    this.drawArena(ctx, animTime);
+
     this.platforms.forEach(p => {
-      ctx.beginPath();
-      ctx.moveTo(p.x1, p.y);
-      ctx.lineTo(p.x2, p.y);
-      ctx.stroke();
+      this.drawPlatform(ctx, p, animTime);
     });
-    ctx.shadowBlur = 0;
+
+    this.drawHazards(ctx, animTime);
 
     this.enemies.forEach(e => {
       if (e.isBoss) {
@@ -680,5 +706,90 @@ export class EngineSmash {
     ctx.fillStyle = '#ffffff';
     ctx.font = '12px "Press Start 2P"';
     ctx.fillText(`WAVE: ${this.wave}/${this.maxWaves}`, 20, 30);
+    ctx.fillStyle = this.arena.theme.accent;
+    ctx.font = '9px "Share Tech Mono", monospace';
+    ctx.fillText(this.arena.label.fr || this.arena.id, 20, 48);
+  }
+
+  drawArena(ctx, animTime) {
+    const theme = this.arena.theme;
+    ctx.save();
+    ctx.globalAlpha = 0.16;
+    ctx.fillStyle = theme.accent;
+    const pulse = Math.sin(animTime * 0.05) * 4;
+    if (this.arena.objective === 'capture') {
+      ctx.strokeStyle = theme.accent;
+      ctx.lineWidth = 2;
+      ctx.strokeRect(this.width * 0.39, this.height * 0.34 + pulse, this.width * 0.22, this.height * 0.2);
+    } else if (this.arena.objective === 'boss') {
+      ctx.beginPath();
+      ctx.arc(this.width * 0.5, this.height * 0.56, 92 + pulse, 0, Math.PI * 2);
+      ctx.fill();
+    } else if (this.arena.objective === 'tempo') {
+      for (let x = 80; x < this.width; x += 120) {
+        ctx.fillRect(x, this.height * 0.16, 34, this.height * 0.58);
+      }
+    } else if (this.arena.objective === 'cleanse') {
+      ctx.strokeStyle = theme.danger;
+      ctx.lineWidth = 3;
+      ctx.strokeRect(this.width * 0.43, this.height * 0.55, this.width * 0.14, this.height * 0.22);
+    }
+    ctx.restore();
+  }
+
+  drawPlatform(ctx, platformData, animTime) {
+    const theme = this.arena.theme;
+    const width = platformData.x2 - platformData.x1;
+    const height = platformData.kind === 'main' ? 14 : 9;
+    const y = platformData.y;
+    ctx.save();
+    ctx.shadowColor = theme.accent;
+    ctx.shadowBlur = platformData.kind === 'main' ? 10 : 6;
+    ctx.fillStyle = platformData.kind === 'main' ? 'rgba(0,0,0,0.84)' : 'rgba(0,0,0,0.68)';
+    ctx.strokeStyle = theme.accent;
+    ctx.lineWidth = platformData.kind === 'main' ? 3 : 2;
+    ctx.fillRect(platformData.x1, y - height / 2, width, height);
+    ctx.strokeRect(platformData.x1, y - height / 2, width, height);
+
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = theme.secondary;
+    if (theme.material === 'concert' || platformData.kind === 'speaker') {
+      for (let x = platformData.x1 + 10; x < platformData.x2 - 6; x += 22) {
+        ctx.fillRect(x, y - 3, 10, 2 + Math.sin(animTime * 0.08 + x) * 1);
+      }
+    } else if (theme.material === 'lab') {
+      for (let x = platformData.x1 + 8; x < platformData.x2 - 8; x += 34) ctx.fillRect(x, y - 4, 18, 2);
+    } else if (theme.material === 'jungle' || theme.material === 'hive') {
+      for (let x = platformData.x1 + 6; x < platformData.x2; x += 26) {
+        ctx.fillRect(x, y - 9, 5, 5);
+      }
+    } else if (theme.material === 'horror') {
+      for (let x = platformData.x1 + 12; x < platformData.x2 - 12; x += 42) {
+        ctx.fillRect(x, y + 3, 26, 2);
+      }
+    } else {
+      for (let x = platformData.x1 + 6; x < platformData.x2 - 4; x += 28) ctx.fillRect(x, y - 2, 14, 2);
+    }
+    ctx.restore();
+  }
+
+  drawHazards(ctx, animTime) {
+    if (!this.arena.hazards?.length) return;
+    ctx.save();
+    this.arena.hazards.forEach(hazard => {
+      const warning = this.hazardTick % (hazard.cadence || 120);
+      const active = warning < 48;
+      ctx.globalAlpha = active ? 0.82 : 0.26 + Math.sin(animTime * 0.12) * 0.1;
+      ctx.fillStyle = this.arena.theme.danger;
+      ctx.strokeStyle = this.arena.theme.danger;
+      const h = active ? 18 : 8;
+      ctx.fillRect(hazard.x1, hazard.y - h, hazard.x2 - hazard.x1, h);
+      ctx.strokeRect(hazard.x1, hazard.y - 20, hazard.x2 - hazard.x1, 20);
+    });
+    ctx.restore();
+  }
+
+  getObjectiveText(lang = 'fr') {
+    return getSmashObjectiveText(this.arena, lang);
   }
 }

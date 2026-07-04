@@ -13,6 +13,9 @@ const enemiesSource = read('../src/game/enemies.js');
 const battleItemsSource = read('../src/game/battleItems.js');
 const dlcSource = read('../src/game/dlcConfig.js');
 const hubSource = read('../src/components/HubScreen.jsx');
+const gameCanvasSource = read('../src/components/GameCanvas.jsx');
+const smashEngineSource = read('../src/game/engineSmash.js');
+const smashArenasSource = read('../src/game/smashArenas.js');
 const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.json'));
 const manifestOutputs = new Set((manifest.entries || []).filter(entry => entry.available).map(entry => entry.output));
 
@@ -76,6 +79,25 @@ assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen m
   assert(hubSource.includes(`id: '${arcId}'`) && hubSource.includes(`${arcId}: {`), `Missing completed faction arc ${arcId}.`);
 });
 
+[
+  'training_flat',
+  'triplat_duel',
+  'vertical_tower',
+  'split_pit',
+  'asym_hunt',
+  'boss_coliseum',
+  'concert_stage',
+  'containment_lab',
+  'hive_corridor'
+].forEach(arenaId => {
+  assert(smashArenasSource.includes(`${arenaId}: {`), `Missing melee arena layout ${arenaId}.`);
+});
+assert(smashEngineSource.includes('createSmashArena(stage, width, height)'), 'Melee engine must build arena layouts from the active stage.');
+assert(smashEngineSource.includes('applyArenaHazards'), 'Melee engine must keep terrain hazards wired.');
+assert(smashEngineSource.includes('getObjectiveText'), 'Melee engine must expose arena objective text.');
+assert(gameCanvasSource.includes('getSmashPickupPositions'), 'Melee pickups must use arena-safe positions.');
+assert(gameCanvasSource.includes('new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, stage)'), 'GameCanvas must pass stage metadata into melee mode.');
+
 console.log(JSON.stringify({
   baseUniverse: 'Nexus de Convergence',
   ocHeroes: expectedOcHeroIds.length,
@@ -84,5 +106,7 @@ console.log(JSON.stringify({
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',
-  factionArcCompletion: 'expanded'
+  factionArcCompletion: 'expanded',
+  meleeArenaLayouts: 9,
+  meleeTerrainSystem: 'dynamic'
 }, null, 2));

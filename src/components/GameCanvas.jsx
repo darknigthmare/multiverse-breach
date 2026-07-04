@@ -12,6 +12,7 @@ import { createPlayerHero } from '../game/playerHero';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { getBattleItemPoolForStage } from '../game/battleItems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
+import { getSmashPickupPositions } from '../game/smashArenas';
 
 export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, disabledAssets = {}, onBattleEnd }) {
   const canvasRef = useRef(null);
@@ -57,6 +58,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const createStagePickups = (currentStage) => {
     const pool = getBattleItemPoolForStage(currentStage);
     const tiers = ['pickup', 'pickup', 'pickup', 'summon', 'ultimate'];
+    const smashPositions = currentStage.mode === 'Smash'
+      ? getSmashPickupPositions(currentStage, canvasRef.current?.width || 760, canvasRef.current?.height || 360)
+      : null;
     const positions = currentStage.mode === 'Tactics'
       ? [
         { gridX: 2, gridY: 1, x: 210, y: 128 },
@@ -65,7 +69,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         { gridX: 3, gridY: 0, x: 270, y: 83 },
         { gridX: 3, gridY: 4, x: 270, y: 263 }
       ]
-      : [
+      : smashPositions || [
         { x: 170, y: 218 },
         { x: 305, y: 146 },
         { x: 442, y: 218 },
@@ -88,11 +92,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const tierPool = pool.filter(item => item.tier === tier);
     const item = tierPool[(animTime + stage.id) % Math.max(1, tierPool.length)] || pool[(animTime + stage.id) % Math.max(1, pool.length)];
     if (!item) return;
+    const arenaPickups = stage.mode === 'Smash' && engine.arena?.pickups?.length ? engine.arena.pickups : null;
+    const dropPos = arenaPickups
+      ? arenaPickups[(animTime + battlePickupsRef.current.length) % arenaPickups.length]
+      : null;
     const drop = {
       ...item,
       pickupId: `${item.id}_drop_${animTime}`,
-      x: 90 + ((animTime * 37) % Math.max(180, engine.width - 180)),
-      y: stage.mode === 'RPG' ? 150 + ((animTime * 17) % 120) : 130 + ((animTime * 19) % 190),
+      x: dropPos?.x || 90 + ((animTime * 37) % Math.max(180, engine.width - 180)),
+      y: dropPos?.y || (stage.mode === 'RPG' ? 150 + ((animTime * 17) % 120) : 130 + ((animTime * 19) % 190)),
       used: false,
       drop: true
     };
@@ -547,7 +555,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     // Load correct mode engine
     if (stage.mode === 'Smash') {
-      engineRef.current = new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
+      engineRef.current = new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, stage);
     } else if (stage.mode === 'RPG') {
       engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
       engineRef.current.isFinalBoss = (stage.id === 38);
@@ -805,10 +813,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const usedBattleItems = battlePickups.filter(item => item.used).length;
   const totalBattleItems = battlePickups.length;
   const unstableTeamCount = activeTeam.filter(heroId => (stage.heroInstability?.[heroId] || 0) > 0).length;
+  const smashObjective = stage.mode === 'Smash'
+    ? engineRef.current?.getObjectiveText?.(lang)
+    : null;
   const battleObjective = stage.mode === 'Tactics'
     ? (lang === 'fr' ? 'Directive A.R.C.A.: securiser les cases ressources, puis neutraliser le champion local.' : 'A.R.C.A. directive: secure resource tiles, then neutralize the local champion.')
     : stage.mode === 'Smash'
-      ? (lang === 'fr' ? 'Directive A.R.C.A.: tenir les vagues, recuperer les artefacts et briser le champion.' : 'A.R.C.A. directive: hold the waves, recover artifacts, and break the champion.')
+      ? `${lang === 'fr' ? 'Directive A.R.C.A. melee' : 'A.R.C.A. melee directive'}: ${smashObjective || (lang === 'fr' ? 'tenir les vagues, recuperer les artefacts et briser le champion.' : 'hold the waves, recover artifacts, and break the champion.')}`
       : (lang === 'fr' ? 'Directive A.R.C.A.: synchroniser l ATB, declencher les reliques et fermer la breche.' : 'A.R.C.A. directive: sync ATB, trigger relics, and close the breach.');
   const modeSignal = stage.mode === 'Tactics'
     ? (lang === 'fr' ? 'Tactique: les items deviennent des ressources de carte.' : 'Tactics: items behave as map resources.')
