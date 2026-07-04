@@ -596,6 +596,282 @@ Objet ou gear seul:
 - 2 plaquettes si l objet a aussi projectile, VFX ou animation pickup.
 
 
+MODE KART / VEHICULES - STYLE NES / 16-BIT
+------------------------------------------
+Objectif:
+Prevoir un mode course arcade type "kart multivers", inspire par les sensations
+d un Mario Kart retro/NES/16-bit, mais avec les personnages, univers, items et
+vehicules du jeu. Le but n est pas de copier une franchise precise, mais de garder
+une lecture simple: petit vehicule lisible, personnage reconnaissable, angles de
+direction clairs, items fun, collisions et boosts visibles.
+
+Style visuel:
+- Pixel art retro, plus compact que les sprites RPG.
+- Lecture top-down legerement inclinee ou pseudo-3D front/back selon le moteur.
+- Personnage assis ou accroche au vehicule, silhouette reconnaissable.
+- Vehicule adapte au lore: kart, moto, hovercraft, chaise volante, vaisseau mini,
+  creature montee, fauteuil, camionnette, mecha, traineau, toilette, balai, etc.
+- Pas de vehicule generique si le lore permet mieux.
+- Palette coherente avec le personnage et son univers.
+- Ombre simple sous le vehicule.
+- Fond transparent, aucun chroma vert.
+
+
+PLAQUETTES KART A PRODUIRE
+--------------------------
+Version minimum:
+Total a ajouter: 3 plaquettes par personnage si le mode kart existe.
+
+1. Plaquette vehicule directionnelle
+   - 8 directions ou 12 directions selon le moteur.
+   - avant, arriere, gauche, droite, diagonales.
+   - variante idle/roulage leger possible sur 2 frames par direction.
+
+2. Plaquette conduite/action
+   - acceleration, freinage, drift gauche, drift droite, boost, saut, atterrissage,
+     collision, spin out, crash, victoire.
+
+3. Plaquette item/effects kart
+   - projectile, piege, boost trail, bouclier, explosion, hit spark, poussiere,
+     skid marks, pickup item box, icone special kart.
+
+Version complete:
+Total a ajouter: 5 plaquettes par personnage.
+
+1. Plaquette vehicule 8 directions
+   - 8 directions propres, 2 a 4 frames par direction.
+
+2. Plaquette drift/boost/collision
+   - drift gauche/droite, boost start, boost loop, boost end, bump, spin, crash,
+     recover.
+
+3. Plaquette item signature
+   - item offensif, item defensif, item boost, item piege, item ultimate.
+
+4. Plaquette HUD kart
+   - portrait pilote, mini map icon, position icon, lap icon, item slot icon,
+     low HP/damage icon si le mode a des degats.
+
+5. Plaquette vehicule garage/Nexus
+   - presentation vehicule, unlock, upgrade, skin, locked silhouette, admin/DLC
+     disabled, rarete vehicule.
+
+Version tres complete:
+Total a ajouter: 7 a 8 plaquettes par personnage.
+
+1. Vehicule 8 directions normal.
+2. Vehicule 8 directions drift/tilt.
+3. Vehicule damage states.
+4. Vehicule boost/jump/crash.
+5. Items et projectiles signature.
+6. Effets de terrain et traces.
+7. HUD/garage/collection.
+8. Skins ou vehicules alternatifs.
+
+
+ANIMATIONS KART DETAILLEES
+--------------------------
+Direction et conduite:
+- idle vehicule
+- drive forward
+- drive back ou reverse
+- turn left
+- turn right
+- diagonal front left
+- diagonal front right
+- diagonal back left
+- diagonal back right
+- drift left
+- drift right
+- boost charge
+- boost loop
+- boost release
+- brake
+- jump
+- land
+- bump wall
+- bump rival
+- spin out
+- crash
+- recover
+- victory drive
+- defeat/last place reaction
+
+Personnage/pilote:
+- steering neutral
+- lean left
+- lean right
+- use item
+- hit reaction
+- angry/shout reaction
+- victory pose in vehicle
+- damaged vehicle pose
+
+Vehicule:
+- normal state
+- boosted state
+- damaged light
+- damaged heavy
+- shielded
+- invincible/star equivalent
+- corrupted/Nexus glitch variant
+- DLC locked silhouette
+
+
+TYPES DE VEHICULES POSSIBLES
+----------------------------
+Choisir selon le lore du personnage:
+- kart classique
+- moto
+- quad
+- hover bike
+- hovercraft
+- mini vaisseau
+- jeep
+- camionnette
+- tank miniature
+- mecha compact
+- creature montee
+- balai volant
+- fauteuil/chaise motorisee
+- skateboard/scooter
+- capsule sci-fi
+- cercueil roulant
+- toilette roulante
+- chariot de cuisine
+- van de groupe de musique
+- vehicule absurde propre a l univers
+
+Regle importante:
+- Le vehicule doit renforcer le personnage, pas le rendre meconnaissable.
+- Si le personnage a deja un vehicule iconique, l utiliser en priorite.
+- Si aucun vehicule iconique n existe, creer un vehicule inspire de ses couleurs,
+  armes, metier, magie, faction ou monde.
+
+
+ITEMS KART A PREVOIR
+--------------------
+Items generiques:
+- boost court
+- projectile droit
+- projectile chercheur
+- mine/piege
+- bouclier
+- inversion controles
+- teleport court
+- flaque/glissade
+- ralentissement de zone
+- item de rattrapage pour dernier joueur
+
+Items lore/personnage:
+- mini attaque signature
+- gadget du personnage
+- sort ou aura
+- invocation courte
+- piege univers
+- projectile d arme signature
+- anomalie Nexus
+- portail de raccourci
+- clone/leurre
+
+Sprites item kart:
+- icone item slot 64 x 64
+- projectile 4 frames
+- impact 4 frames
+- pickup box 4 frames
+- effet boost 4 frames
+- effet shield 4 frames
+- piege au sol 4 frames
+- warning icon
+
+
+CIRCUITS / DECORS KART
+----------------------
+Pour chaque univers important, prevoir:
+- tuile route principale
+- bord de route
+- obstacle destructible
+- obstacle indestructible
+- decor de fond
+- item box
+- boost pad
+- jump pad
+- hazard
+- raccourci
+- ligne depart/arrivee
+- checkpoint invisible avec icone debug optionnelle
+
+Types de circuits:
+- Nexus training track
+- ville/toits
+- labo/couloirs
+- ruines/magie
+- guerre/front
+- horreur/couloir sombre
+- cyber/neon
+- arene boss
+- circuit absurde/loufoque
+- circuit musical/concert
+- circuit spatial/scifi
+
+
+PROMPTS CODEX / OPENAI POUR MODE KART
+-------------------------------------
+Pour un personnage avec mode kart complet, ajouter 5 prompts separes:
+
+Prompt Kart 1 - vehicule directions:
+- generer le personnage dans son vehicule lore-accurate, 8 directions, style
+  retro NES/16-bit kart, transparent background.
+
+Prompt Kart 2 - conduite et drift:
+- generer acceleration, drift left/right, boost, brake, jump, land, crash, spin.
+
+Prompt Kart 3 - items signature:
+- generer item offensif, item defensif, boost, piege, ultimate kart, projectiles
+  et impacts.
+
+Prompt Kart 4 - HUD/garage:
+- generer portrait pilote, icone minimap, item slot, vehicule collection, locked,
+  upgrade, rarete.
+
+Prompt Kart 5 - circuit univers:
+- generer tuiles de piste et objets de decor pour l univers du personnage.
+
+Template prompt kart:
+Create a retro pixel-art kart racing sprite sheet for [CHARACTER_NAME] from
+[UNIVERSE]. The character drives a lore-accurate vehicle inspired by their costume,
+weapon, faction and personality. NES/16-bit arcade kart style, transparent
+background, readable at small size, consistent vehicle shape and character identity.
+
+Sheet layout:
+8 directional vehicle sprites, plus drift, boost, crash, spin out, item use and
+victory pose. Keep the same character, same vehicle, same palette, no chroma green.
+Make the vehicle unique to the character and not generic.
+
+
+ESTIMATION AVEC MODE KART INCLUS
+--------------------------------
+Personnage jouable secondaire avec kart:
+- 7 plaquettes minimum total.
+- 4 plaquettes personnage standard + 3 plaquettes kart.
+
+Personnage jouable principal avec kart:
+- 12 plaquettes recommandees total.
+- 7 plaquettes personnage complet + 5 plaquettes kart.
+
+Personnage majeur avec kart tres complet:
+- 17 a 20 plaquettes total.
+- 10 a 12 plaquettes personnage majeur + 7 a 8 plaquettes kart.
+
+Boss jouable ou boss vehicule:
+- 10 a 14 plaquettes total.
+- 6 a 9 plaquettes boss + 4 a 5 plaquettes vehicule/boss kart.
+
+Ennemi de course standard:
+- 5 a 7 plaquettes total.
+- 3 plaquettes ennemi + 2 a 4 plaquettes vehicule/item.
+
+
 PROMPT OPENAI IMAGE - TEMPLATE GENERAL
 --------------------------------------
 Create a detailed pixel-art animation sprite sheet for [CHARACTER_NAME] from
@@ -639,3 +915,4 @@ Pour chaque personnage, produire au minimum:
 8. Icone univers/synergie si specifique.
 9. Objet/arme signature.
 10. Miniature initiative Tactics.
+11. Si mode kart prevu: 3 plaquettes minimum, 5 recommandees.
