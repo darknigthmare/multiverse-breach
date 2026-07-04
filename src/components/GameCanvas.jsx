@@ -36,6 +36,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [battleItemLog, setBattleItemLog] = useState(null);
   const [combatBooting, setCombatBooting] = useState(true);
   const [combatRuntimeError, setCombatRuntimeError] = useState(null);
+  const [spriteBootStatus, setSpriteBootStatus] = useState(null);
   
   const [activeSynergies, setActiveSynergies] = useState([]);
   const applySkin = (hero) => {
@@ -467,6 +468,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   useEffect(() => {
     setCombatBooting(true);
     setCombatRuntimeError(null);
+    setSpriteBootStatus(null);
     setBattleCompleted(false);
     setBattleResult(null);
     setBattleAnomaly(null);
@@ -503,11 +505,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       return undefined;
     }
     const battleItemPool = getBattleItemPoolForStage(stage);
-    preloadSpriteSheetSrcs([
+    const spriteSources = [
       ...squadHeroes.map(getHeroSpriteSheetSrc),
       ...enemyList.map(getEnemySpriteSheetSrc),
       ...battleItemPool.map(getItemSpriteSrc)
-    ]);
+    ].filter(Boolean);
+    setSpriteBootStatus(lang === 'fr'
+      ? `Plaquettes OpenAI: ${spriteSources.length} sprites indexes avant rendu final.`
+      : `OpenAI sheets: ${spriteSources.length} sprites indexed before final render.`);
+    preloadSpriteSheetSrcs(spriteSources);
     const activeCategoriesCount = squadHeroes.reduce((acc, h) => {
       acc[h.category] = (acc[h.category] || 0) + 1;
       return acc;
@@ -1014,6 +1020,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   ? 'A.R.C.A. charge le decor, les signatures d escouade et les artefacts de terrain.'
                   : 'A.R.C.A. is loading the scene, squad signatures, and field artifacts.')}
               </div>
+              {!combatRuntimeError && spriteBootStatus && (
+                <div style={{ color: '#ffeb3b', fontSize: '10px', lineHeight: 1.35, marginTop: '7px' }}>
+                  {spriteBootStatus}
+                </div>
+              )}
               {combatRuntimeError && (
                 <button
                   onClick={() => onBattleEnd('quit')}

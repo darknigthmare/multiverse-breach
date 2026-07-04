@@ -908,7 +908,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
       { id: 'gate-hall', universe: 'Nexus', label: lang === 'fr' ? 'Hall des portails' : 'Portal Hall', x: 1180, y: 360, w: 330, h: 260, color: '#9b59b6', role: lang === 'fr' ? 'depart vers quartiers' : 'district departures' },
       ...threadRooms
     ];
-  }, [completedStages.length, currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
+  }, [currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
 
   const selectedHero = ownedHeroes.find(hero => hero.id === selectedHeroId) || null;
   const nearHero = ownedHeroes.find(hero => hero.id === nearHeroId) || null;
@@ -2183,11 +2183,11 @@ function MultiverseRiftMap({
   selectedStageId,
   viewType = 'story'
 }) {
-  const modeMeta = {
+  const modeMeta = useMemo(() => ({
     RPG: { color: '#3498db', label: 'RPG', ring: 'ATB' },
     Tactics: { color: '#9b59b6', label: lang === 'fr' ? 'TACTIQUE' : 'TACTICS', ring: 'GRID' },
     Smash: { color: '#e74c3c', label: 'SMASH', ring: 'BURST' }
-  };
+  }), [lang]);
 
   const portalNodes = useMemo(() => stages.slice(0, 42).map((stage, index) => {
     const modeIndex = ['RPG', 'Tactics', 'Smash'].indexOf(stage.mode);
@@ -2203,7 +2203,7 @@ function MultiverseRiftMap({
       delay: `${-(index % 9) * 0.24}s`,
       meta: modeMeta[stage.mode] || modeMeta.RPG
     };
-  }), [stages, lang]);
+  }), [stages, modeMeta]);
 
   const counts = portalNodes.reduce((acc, node) => {
     acc[node.stage.mode] = (acc[node.stage.mode] || 0) + 1;
@@ -4739,6 +4739,32 @@ export default function HubScreen({
     if (stage.fusionMission && mediaFilter === 'all') return true;
     return matchesMediaFilter(LORE_DB[stage.universe]?.mediaType);
   });
+  const unlockedVisibleStages = visibleStages.filter(stage => stage.id !== 38 && isStageUnlocked(stage));
+  const adminDiagnostics = {
+    ocHeroes: HEROES_DB.filter(hero => hero.universe === 'Nexus de Convergence').length,
+    ocEnemies: [
+      ...(ENEMIES_DB['Nexus de Convergence']?.monsters || []),
+      ...(ENEMIES_DB['Nexus de Convergence']?.bosses || []),
+      ENEMIES_DB['Nexus de Convergence']?.worldBoss
+    ].filter(Boolean).filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey('Nexus de Convergence', enemy))).length,
+    ocItems: getBattleItemsForUniverse('Nexus de Convergence').filter(item => !isAssetDisabled('gear', item.id)).length,
+    visibleStages: visibleStages.filter(stage => stage.id !== 38).length,
+    unlockedStages: unlockedVisibleStages.length,
+    lockedStages: visibleStages.filter(stage => stage.id !== 38 && !isStageUnlocked(stage)).length,
+    disabledAssets: (disabledAssets.heroes?.length || 0) + (disabledAssets.enemies?.length || 0) + (disabledAssets.gear?.length || 0) + (disabledAssets.stages?.length || 0),
+    modes: ['RPG', 'Tactics', 'Smash'].map(mode => ({
+      mode,
+      visible: visibleStages.filter(stage => stage.mode === mode && stage.id !== 38).length,
+      unlocked: unlockedVisibleStages.filter(stage => stage.mode === mode).length
+    })),
+    dlcVisible: DLC_UNIVERSE_KEYS.filter(universe => !hiddenUniverseSet.has(universe)).length,
+    dlcHidden: DLC_UNIVERSE_KEYS.filter(universe => hiddenUniverseSet.has(universe)).length
+  };
+  useEffect(() => {
+    if (selectedCollectionUniverse && !visibleCollectionUniverses.includes(selectedCollectionUniverse)) {
+      setSelectedCollectionUniverse(null);
+    }
+  }, [selectedCollectionUniverse, visibleCollectionUniverses]);
   const adminUniverseRows = ALL_UNIVERSE_KEYS
     .map(universe => {
       const lore = LORE_DB[universe];
@@ -5544,9 +5570,9 @@ export default function HubScreen({
                     selectedStageId={briefingStageId}
                     viewType={narrativeArcScreenType}
                   />
-                  <RiftBriefingPanel
-                    lang={lang}
-                    stage={selectedBriefingStage}
+                <RiftBriefingPanel
+                  lang={lang}
+                  stage={selectedBriefingStage}
                     isUnlocked={isStageUnlocked}
                     onLaunch={launchStage}
                     onClose={() => setBriefingStageId(null)}
@@ -5561,6 +5587,13 @@ export default function HubScreen({
                     getMissionOutcomePreview={getMissionOutcomePreview}
                   />
                 </div>
+                <NarrativeArcSequencePanel
+                  lang={lang}
+                  arcs={activeNarrativeArcs}
+                  stages={visibleStages}
+                  completedStages={completedStages}
+                  onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                />
                 <NarrativeArcGroupBrowser
                   lang={lang}
                   groups={narrativeArcGroups}
@@ -7880,6 +7913,43 @@ export default function HubScreen({
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
                 <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Missions actives' : 'Active missions'}</div>
                 <strong style={{ color: '#39c5bb', fontSize: '20px' }}>{ADMIN_VISIBLE_STAGES.filter(stage => stage.id !== 38).length}</strong>
+              </div>
+            </div>
+
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(260px, 1fr) minmax(260px, 1fr)',
+              gap: '12px',
+              marginBottom: '16px'
+            }}>
+              <div style={{ padding: '12px', border: '1px solid rgba(57,197,187,0.24)', background: 'rgba(57,197,187,0.055)', borderRadius: '5px' }}>
+                <div style={{ color: '#39c5bb', fontSize: '11px', textTransform: 'uppercase', fontWeight: 'bold', marginBottom: '8px' }}>
+                  {lang === 'fr' ? 'Diagnostic acces jeu' : 'Game Access Diagnostic'}
+                </div>
+                <div style={{ display: 'grid', gap: '6px', fontSize: '10px', color: '#d8fffb', lineHeight: 1.35 }}>
+                  <span>{lang === 'fr' ? 'Base OC' : 'OC base'}: {adminDiagnostics.ocHeroes} {lang === 'fr' ? 'heros' : 'heroes'} / {adminDiagnostics.ocEnemies} {lang === 'fr' ? 'menaces' : 'threats'} / {adminDiagnostics.ocItems} items.</span>
+                  <span>{lang === 'fr' ? 'Missions visibles' : 'Visible missions'}: {adminDiagnostics.unlockedStages}/{adminDiagnostics.visibleStages} {lang === 'fr' ? 'jouables maintenant' : 'playable now'}.</span>
+                  <span>{lang === 'fr' ? 'Verrous actifs' : 'Active locks'}: {adminDiagnostics.lockedStages} {lang === 'fr' ? 'missions demandent progression/roster' : 'missions need progress/roster'}.</span>
+                  <span>{lang === 'fr' ? 'Assets desactives' : 'Disabled assets'}: {adminDiagnostics.disabledAssets}.</span>
+                </div>
+              </div>
+              <div style={{ padding: '12px', border: '1px solid rgba(255,235,59,0.2)', background: 'rgba(255,235,59,0.04)', borderRadius: '5px' }}>
+                <div style={{ color: '#ffeb3b', fontSize: '11px', textTransform: 'uppercase', fontWeight: 'bold', marginBottom: '8px' }}>
+                  {lang === 'fr' ? 'Modes et DLC' : 'Modes and DLC'}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '6px', marginBottom: '8px' }}>
+                  {adminDiagnostics.modes.map(entry => (
+                    <div key={entry.mode} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
+                      <div style={{ color: '#fff', fontSize: '10px', fontWeight: 'bold' }}>{entry.mode}</div>
+                      <div style={{ color: entry.unlocked > 0 ? '#2ecc71' : '#ff8c00', fontSize: '9px' }}>{entry.unlocked}/{entry.visible} {lang === 'fr' ? 'jouables' : 'playable'}</div>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ color: '#aaa', fontSize: '10px', lineHeight: 1.35 }}>
+                  {lang === 'fr'
+                    ? `DLC actifs ${adminDiagnostics.dlcVisible}, DLC masques ${adminDiagnostics.dlcHidden}. Les collections et arcs n affichent que les univers visibles et debloques.`
+                    : `Active DLC ${adminDiagnostics.dlcVisible}, hidden DLC ${adminDiagnostics.dlcHidden}. Collections and arcs only show visible, unlocked universes.`}
+                </div>
               </div>
             </div>
 

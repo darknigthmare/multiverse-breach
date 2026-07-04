@@ -1,8 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react';
 import sound from './game/soundEngine';
-import HubScreen from './components/HubScreen';
-import PortalScreen from './components/PortalScreen';
-import GameCanvas from './components/GameCanvas';
 import AudioControl from './components/AudioControl';
 import AuthPanel from './components/AuthPanel';
 import { getTranslation } from './game/translation';
@@ -14,6 +11,9 @@ import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from './game/dlcConfig';
 
 const SAVE_KEY = 'multiverse_breach_save_v2';
 const TUTORIAL_COMPANION_IDS = ['arca_mirelle', 'arca_bastion'];
+const HubScreen = React.lazy(() => import('./components/HubScreen'));
+const PortalScreen = React.lazy(() => import('./components/PortalScreen'));
+const GameCanvas = React.lazy(() => import('./components/GameCanvas'));
 
 const DEFAULT_SAVE = {
   lang: 'fr',
@@ -302,8 +302,22 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
               </strong>
               <span>
                 {lang === 'fr'
+                  ? `Rapport de mission: ${stage.mode} / ${stage.universe} / cible ${stage.bossName}.`
+                  : `Mission report: ${stage.mode} / ${stage.universe} / target ${stage.bossName}.`}
+              </span>
+              <span>
+                {lang === 'fr'
                   ? `Ressources: +${rewardSummary.gold} or / +${rewardSummary.shards} fragments${rewardSummary.tokens ? ` / +${rewardSummary.tokens} jetons` : ''}.`
                   : `Resources: +${rewardSummary.gold} gold / +${rewardSummary.shards} shards${rewardSummary.tokens ? ` / +${rewardSummary.tokens} tokens` : ''}.`}
+              </span>
+              <span>
+                {victory
+                  ? (lang === 'fr'
+                    ? 'Impact durable: la coordonnee est scellee, ses archives alimentent les arcs, collections et bonus Nexus.'
+                    : 'Long-term impact: the coordinate is sealed, feeding arcs, collections, and Nexus bonuses.')
+                  : (lang === 'fr'
+                    ? 'Impact durable: la coordonnee reste ouverte, mais les donnees de contact ameliorent la prochaine tentative.'
+                    : 'Long-term impact: the coordinate stays open, but contact data improves the next attempt.')}
               </span>
               <span>
                 {lang === 'fr'
@@ -344,6 +358,37 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
               ? (lang === 'fr' ? 'RETOUR AU HUB' : 'RETURN TO HUB')
               : (lang === 'fr' ? 'LANCER LA MISSION' : 'LAUNCH MISSION')}
           </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NexusLoadingScreen({ lang, label }) {
+  return (
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'radial-gradient(circle, #0e0722 0%, #03010b 100%)',
+      color: '#39c5bb',
+      fontFamily: '"Share Tech Mono", monospace',
+      textAlign: 'center',
+      padding: '24px'
+    }}>
+      <div style={{
+        padding: '18px 22px',
+        border: '1px solid rgba(57,197,187,0.35)',
+        background: 'rgba(0,0,0,0.42)',
+        borderRadius: '6px',
+        boxShadow: '0 0 22px rgba(57,197,187,0.18)'
+      }}>
+        <div style={{ fontSize: '12px', color: '#ffeb3b', marginBottom: '8px', textTransform: 'uppercase' }}>
+          {lang === 'fr' ? 'Synchronisation A.R.C.A.' : 'A.R.C.A. Sync'}
+        </div>
+        <div style={{ fontSize: '15px' }}>
+          {label || (lang === 'fr' ? 'Chargement de la Trame...' : 'Loading Thread...')}
         </div>
       </div>
     </div>
@@ -434,7 +479,7 @@ function App() {
     || itemId.startsWith('fusion_')
   )).length;
 
-  const getCurrentSave = () => ({
+  const getCurrentSave = useCallback(() => ({
     lang,
     gold,
     breachShards,
@@ -454,7 +499,7 @@ function App() {
     inventory,
     equippedGear,
     equippedEventItems
-  });
+  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, activityProgress, inventory, equippedGear, equippedEventItems]);
 
   useEffect(() => {
     const payload = getCurrentSave();
@@ -477,7 +522,7 @@ function App() {
     }, 1200);
 
     return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, activityProgress, inventory, equippedGear, equippedEventItems, account]);
+  }, [getCurrentSave, account, lang]);
 
   useEffect(() => {
     const { dayKey, weekKey } = getProgressKeys();
@@ -1111,42 +1156,44 @@ function App() {
       )}
 
       {currentScreen === 'hub' && (
-        <HubScreen
-          lang={lang}
-          playerProfile={playerProfile}
-          publicProfile={publicProfile}
-          setPublicProfile={setPublicProfile}
-          gold={gold}
-          setGold={setGold}
-          breachShards={breachShards}
-          setBreachShards={setBreachShards}
-          eventTokens={eventTokens}
-          setEventTokens={setEventTokens}
-          unlockedHeroes={unlockedHeroes}
-          heroLevels={heroLevels}
-          setHeroLevels={setHeroLevels}
-          activeTeam={activeTeam}
-          setActiveTeam={setActiveTeam}
-          completedStages={completedStages}
-          inventory={inventory}
-          setInventory={setInventory}
-          equippedGear={equippedGear}
-          setEquippedGear={setEquippedGear}
-          equippedEventItems={equippedEventItems}
-          setEquippedEventItems={setEquippedEventItems}
-          heroTalents={heroTalents}
-          setHeroTalents={setHeroTalents}
-          heroSkins={heroSkins}
-          setHeroSkins={setHeroSkins}
-          hiddenUniverses={hiddenUniverses}
-          setHiddenUniverses={setHiddenUniverses}
-          disabledAssets={disabledAssets}
-          setDisabledAssets={setDisabledAssets}
-          activityProgress={activityProgress}
-          setActivityProgress={setActivityProgress}
-          onLaunchStage={handleLaunchStage}
-          onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
-        />
+        <Suspense fallback={<NexusLoadingScreen lang={lang} label={lang === 'fr' ? 'Ouverture du controle Nexus...' : 'Opening Nexus control...'} />}>
+          <HubScreen
+            lang={lang}
+            playerProfile={playerProfile}
+            publicProfile={publicProfile}
+            setPublicProfile={setPublicProfile}
+            gold={gold}
+            setGold={setGold}
+            breachShards={breachShards}
+            setBreachShards={setBreachShards}
+            eventTokens={eventTokens}
+            setEventTokens={setEventTokens}
+            unlockedHeroes={unlockedHeroes}
+            heroLevels={heroLevels}
+            setHeroLevels={setHeroLevels}
+            activeTeam={activeTeam}
+            setActiveTeam={setActiveTeam}
+            completedStages={completedStages}
+            inventory={inventory}
+            setInventory={setInventory}
+            equippedGear={equippedGear}
+            setEquippedGear={setEquippedGear}
+            equippedEventItems={equippedEventItems}
+            setEquippedEventItems={setEquippedEventItems}
+            heroTalents={heroTalents}
+            setHeroTalents={setHeroTalents}
+            heroSkins={heroSkins}
+            setHeroSkins={setHeroSkins}
+            hiddenUniverses={hiddenUniverses}
+            setHiddenUniverses={setHiddenUniverses}
+            disabledAssets={disabledAssets}
+            setDisabledAssets={setDisabledAssets}
+            activityProgress={activityProgress}
+            setActivityProgress={setActivityProgress}
+            onLaunchStage={handleLaunchStage}
+            onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
+          />
+        </Suspense>
       )}
 
       {currentScreen === 'missionIntro' && activeStage && (
@@ -1170,21 +1217,23 @@ function App() {
             setActiveStage(null);
           }}
         >
-          <GameCanvas
-            lang={lang}
-            playerProfile={playerProfile}
-            activeTeam={activeTeam}
-            stage={activeStage}
-            heroLevels={heroLevels}
-            equippedGear={equippedGear}
-            equippedEventItems={equippedEventItems}
-            heroTalents={heroTalents}
-            heroSkins={heroSkins}
-            completedStages={completedStages}
-            collectionBonusCount={collectionBonusCount}
-            disabledAssets={disabledAssets}
-            onBattleEnd={handleBattleEnd}
-          />
+          <Suspense fallback={<NexusLoadingScreen lang={lang} label={lang === 'fr' ? 'Chargement du moteur de combat...' : 'Loading combat engine...'} />}>
+            <GameCanvas
+              lang={lang}
+              playerProfile={playerProfile}
+              activeTeam={activeTeam}
+              stage={activeStage}
+              heroLevels={heroLevels}
+              equippedGear={equippedGear}
+              equippedEventItems={equippedEventItems}
+              heroTalents={heroTalents}
+              heroSkins={heroSkins}
+              completedStages={completedStages}
+              collectionBonusCount={collectionBonusCount}
+              disabledAssets={disabledAssets}
+              onBattleEnd={handleBattleEnd}
+            />
+          </Suspense>
         </CombatErrorBoundary>
       )}
 
@@ -1199,19 +1248,21 @@ function App() {
       )}
 
       {currentScreen === 'portal' && (
-        <PortalScreen
-          lang={lang}
-          playerProfile={playerProfile}
-          breachShards={breachShards}
-          setBreachShards={setBreachShards}
-          portalStats={portalStats}
-          setPortalStats={setPortalStats}
-          unlockedHeroes={unlockedHeroes}
-          setUnlockedHeroes={setUnlockedHeroes}
-          hiddenUniverses={hiddenUniverses}
-          disabledAssets={disabledAssets}
-          onBack={() => { sound.playSfx('click'); setCurrentScreen('hub'); }}
-        />
+        <Suspense fallback={<NexusLoadingScreen lang={lang} label={lang === 'fr' ? 'Ouverture du portail...' : 'Opening portal...'} />}>
+          <PortalScreen
+            lang={lang}
+            playerProfile={playerProfile}
+            breachShards={breachShards}
+            setBreachShards={setBreachShards}
+            portalStats={portalStats}
+            setPortalStats={setPortalStats}
+            unlockedHeroes={unlockedHeroes}
+            setUnlockedHeroes={setUnlockedHeroes}
+            hiddenUniverses={hiddenUniverses}
+            disabledAssets={disabledAssets}
+            onBack={() => { sound.playSfx('click'); setCurrentScreen('hub'); }}
+          />
+        </Suspense>
       )}
     </>
   );

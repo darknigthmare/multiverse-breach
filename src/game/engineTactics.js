@@ -255,7 +255,7 @@ export class EngineTactics {
     return attacker.stats?.atk * (attacker.simple?.dmg || 1) || attacker.atk || 0;
   }
 
-  hasLineOfSight(from, to, actionType = 'simple') {
+  hasLineOfSight(from, to, _actionType = 'simple') {
     if (!from || !to) return false;
     const sx = from.gridX;
     const sy = from.gridY;
