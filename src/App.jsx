@@ -350,6 +350,47 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
   );
 }
 
+class CombatErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { error };
+  }
+
+  componentDidCatch(error) {
+    console.error('Combat screen failed', error);
+  }
+
+  render() {
+    const { error } = this.state;
+    const { lang, onBack, children } = this.props;
+    if (!error) return children;
+    return (
+      <div className="narrative-screen">
+        <div className="narrative-backdrop" style={{ backgroundImage: 'linear-gradient(90deg, rgba(2,1,8,0.82), rgba(2,1,8,0.94))' }}>
+          <div className="narrative-rift" />
+          <div className="narrative-copy">
+            <div className="narrative-kicker">{lang === 'fr' ? 'DIAGNOSTIC COMBAT' : 'COMBAT DIAGNOSTIC'}</div>
+            <h1>{lang === 'fr' ? 'Simulation interrompue' : 'Simulation interrupted'}</h1>
+            <p>
+              {lang === 'fr'
+                ? 'A.R.C.A. a coupe la breche avant un ecran noir complet. Retourne au hub puis relance la mission.'
+                : 'A.R.C.A. cut the breach before a full black screen. Return to the hub and launch the mission again.'}
+            </p>
+            <div className="narrative-intel">{error.message}</div>
+            <button onClick={onBack} className="btn-retro narrative-button">
+              {lang === 'fr' ? 'RETOUR AU HUB' : 'RETURN TO HUB'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
 function App() {
   const initialSave = loadSave();
   const cloudSaveTimerRef = useRef(null);
@@ -1120,21 +1161,31 @@ function App() {
       )}
 
       {currentScreen === 'battle' && activeStage && (
-        <GameCanvas
+        <CombatErrorBoundary
+          key={activeStage.id}
           lang={lang}
-          playerProfile={playerProfile}
-          activeTeam={activeTeam}
-          stage={activeStage}
-          heroLevels={heroLevels}
-          equippedGear={equippedGear}
-          equippedEventItems={equippedEventItems}
-          heroTalents={heroTalents}
-          heroSkins={heroSkins}
-          completedStages={completedStages}
-          collectionBonusCount={collectionBonusCount}
-          disabledAssets={disabledAssets}
-          onBattleEnd={handleBattleEnd}
-        />
+          onBack={() => {
+            sound.stopBgm();
+            setCurrentScreen('hub');
+            setActiveStage(null);
+          }}
+        >
+          <GameCanvas
+            lang={lang}
+            playerProfile={playerProfile}
+            activeTeam={activeTeam}
+            stage={activeStage}
+            heroLevels={heroLevels}
+            equippedGear={equippedGear}
+            equippedEventItems={equippedEventItems}
+            heroTalents={heroTalents}
+            heroSkins={heroSkins}
+            completedStages={completedStages}
+            collectionBonusCount={collectionBonusCount}
+            disabledAssets={disabledAssets}
+            onBattleEnd={handleBattleEnd}
+          />
+        </CombatErrorBoundary>
       )}
 
       {currentScreen === 'missionOutro' && activeStage && (

@@ -316,6 +316,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     };
   };
 
+  const flattenEnemiesData = (enemyData) => {
+    if (Array.isArray(enemyData)) return enemyData;
+    if (!enemyData || typeof enemyData !== 'object') return [];
+    return [
+      ...(Array.isArray(enemyData.monsters) ? enemyData.monsters : []),
+      ...(Array.isArray(enemyData.bosses) ? enemyData.bosses : []).map(enemy => ({ ...enemy, isBoss: true })),
+      ...(enemyData.worldBoss ? [{ ...enemyData.worldBoss, isBoss: true, isWorldBoss: true }] : [])
+    ];
+  };
+
   const drawBattleItemPickup = (ctx, item, animTime) => {
     if (item.used) return;
     const pulse = 1 + Math.sin(animTime * 0.08 + item.x) * 0.12;
@@ -468,7 +478,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     bootClearedRef.current = false;
     sound.playBgm('battle');
 
-    const enemies = getEnemiesData();
+    const enemyData = getEnemiesData();
+    const enemyList = flattenEnemiesData(enemyData);
     let squadHeroes = activeTeam.map(id => {
       const base = HEROES_DB.find(h => h.id === id);
       if (!base || disabledHeroSet.has(base.id)) return null;
@@ -483,10 +494,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const anchor = HEROES_DB[0];
       squadHeroes = [{ ...anchor, stats: getHeroStats(anchor), talent: null }];
     }
+    if (enemyList.length === 0) {
+      setCombatRuntimeError(lang === 'fr'
+        ? 'Aucune menace valide dans cette breche. Verifie les assets ennemis actifs dans ADMIN.'
+        : 'No valid threat in this breach. Check active enemy assets in ADMIN.');
+      setCombatBooting(false);
+      sound.stopBgm();
+      return undefined;
+    }
     const battleItemPool = getBattleItemPoolForStage(stage);
     preloadSpriteSheetSrcs([
       ...squadHeroes.map(getHeroSpriteSheetSrc),
-      ...enemies.map(getEnemySpriteSheetSrc),
+      ...enemyList.map(getEnemySpriteSheetSrc),
       ...battleItemPool.map(getItemSpriteSrc)
     ]);
     const activeCategoriesCount = squadHeroes.reduce((acc, h) => {
@@ -522,12 +541,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     // Load correct mode engine
     if (stage.mode === 'Smash') {
-      engineRef.current = new EngineSmash(width, height, squadHeroes, enemies, particles, (type) => sound.playSfx(type), handleBattleComplete);
+      engineRef.current = new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
     } else if (stage.mode === 'RPG') {
-      engineRef.current = new EngineRpg(width, height, squadHeroes, enemies, particles, (type) => sound.playSfx(type), handleBattleComplete);
+      engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
       engineRef.current.isFinalBoss = (stage.id === 38);
     } else if (stage.mode === 'Tactics') {
-      engineRef.current = new EngineTactics(width, height, squadHeroes, enemies, particles, (type) => sound.playSfx(type), handleBattleComplete);
+      engineRef.current = new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
       engineRef.current.isFinalBoss = (stage.id === 38);
     }
     if (!engineRef.current) {
