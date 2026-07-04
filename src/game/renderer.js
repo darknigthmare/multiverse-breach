@@ -1,7 +1,7 @@
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
-import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrameForLayout, getSpriteSheetLayout } from './spriteAssets';
+import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrameForLayout, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from './spriteAssets';
 
 const spriteSheetCache = new Map();
 
@@ -53,6 +53,36 @@ export const preloadSpriteSheetSrcs = (srcs = []) => {
   srcs.forEach(src => getCachedSpriteSheet(src));
 };
 
+const drawMirelleItemVfx = (ctx, x, y, entity, animTime, facing, targetHeight, context, redrawWhenResolved) => {
+  if (entity?.id !== 'arca_mirelle' || !['attack', 'defense', 'hit'].includes(entity.state)) return;
+  const entry = getCachedSpriteSheet(MIRELLE_COMPLETE_SPRITES.itemsVfx);
+  if (!entry || entry.status === 'error') return;
+  if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
+    queueSpriteSheetRedraw(entry, ctx, () => redrawWhenResolved?.());
+    return;
+  }
+  const frameMap = {
+    attack: { row: 1, colBase: 0, width: 0.82, alpha: 0.72 },
+    defense: { row: 3, colBase: 0, width: 0.7, alpha: 0.64 },
+    hit: { row: 4, colBase: 0, width: 0.76, alpha: 0.78 }
+  };
+  const spec = frameMap[entity.state];
+  const columns = 4;
+  const rows = 7;
+  const frameW = entry.image.naturalWidth / columns;
+  const frameH = entry.image.naturalHeight / rows;
+  const col = (spec.colBase + Math.floor(animTime / 8)) % columns;
+  const drawH = targetHeight * (context === 'nexus' ? 0.64 : 0.54);
+  const drawW = drawH * spec.width;
+  ctx.save();
+  ctx.globalAlpha = spec.alpha;
+  ctx.imageSmoothingEnabled = false;
+  ctx.translate(x + facing * targetHeight * 0.22, y - targetHeight * 0.52);
+  ctx.scale(facing, 1);
+  ctx.drawImage(entry.image, col * frameW, spec.row * frameH, frameW, frameH, -drawW / 2, -drawH / 2, drawW, drawH);
+  ctx.restore();
+};
+
 const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter, redrawWhenResolved, context = 'auto') => {
   const entry = getCachedSpriteSheet(srcGetter(entity, context));
   if (!entry || entry.status === 'error') return 'missing';
@@ -92,6 +122,7 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
     drawH
   );
   ctx.restore();
+  drawMirelleItemVfx(ctx, x, y, entity, animTime, facing, targetHeight, context, redrawWhenResolved);
   return 'drawn';
 };
 

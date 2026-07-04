@@ -14,6 +14,22 @@ const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const lerp = (a, b, t) => a + (b - a) * t;
 const TAU = Math.PI * 2;
 
+const KART_ITEM_FRAMES = {
+  boost: { col: 0, row: 0 },
+  projectile: { col: 6, row: 1 },
+  shield: { col: 3, row: 0 },
+  trap: { col: 4, row: 2 },
+  cache: { col: 0, row: 0 }
+};
+
+const drawSheetFrame = (ctx, image, columns, rows, col, row, dx, dy, dw, dh) => {
+  if (!image?.complete || !image.naturalWidth) return false;
+  const frameW = image.naturalWidth / columns;
+  const frameH = image.naturalHeight / rows;
+  ctx.drawImage(image, col * frameW, row * frameH, frameW, frameH, dx, dy, dw, dh);
+  return true;
+};
+
 const angleDelta = (from, to) => {
   let delta = (to - from + Math.PI) % TAU - Math.PI;
   if (delta < -Math.PI) delta += TAU;
@@ -664,16 +680,19 @@ export class EngineRace {
     ctx.save();
     ctx.translate(p.x, p.y - 20 * p.scale);
     ctx.scale(p.scale * pulse, p.scale * pulse);
-    ctx.rotate(this.time * 1.3);
-    ctx.fillStyle = 'rgba(255,235,59,0.22)';
-    ctx.strokeStyle = '#ffeb3b';
-    ctx.lineWidth = 3;
-    ctx.fillRect(-18, -18, 36, 36);
-    ctx.strokeRect(-18, -18, 36, 36);
-    ctx.fillStyle = '#ffeb3b';
-    ctx.font = 'bold 22px Share Tech Mono, monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText('?', 0, 8);
+    const frame = Math.floor(this.time * 6) % 4;
+    if (!drawSheetFrame(ctx, this.images.kartItems, 7, 6, frame, 0, -24, -24, 48, 48)) {
+      ctx.rotate(this.time * 1.3);
+      ctx.fillStyle = 'rgba(255,235,59,0.22)';
+      ctx.strokeStyle = '#ffeb3b';
+      ctx.lineWidth = 3;
+      ctx.fillRect(-18, -18, 36, 36);
+      ctx.strokeRect(-18, -18, 36, 36);
+      ctx.fillStyle = '#ffeb3b';
+      ctx.font = 'bold 22px Share Tech Mono, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('?', 0, 8);
+    }
     ctx.restore();
   }
 
@@ -689,10 +708,17 @@ export class EngineRace {
   }
 
   drawProjectedProjectile(ctx, projectile, p) {
-    ctx.fillStyle = projectile.color;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y - 18 * p.scale, 6 * p.scale, 0, TAU);
-    ctx.fill();
+    ctx.save();
+    ctx.translate(p.x, p.y - 18 * p.scale);
+    ctx.scale(p.scale, p.scale);
+    ctx.rotate(Math.atan2(projectile.vy, projectile.vx));
+    if (!drawSheetFrame(ctx, this.images.kartItems, 7, 6, 6, 1, -30, -12, 60, 24)) {
+      ctx.fillStyle = projectile.color;
+      ctx.beginPath();
+      ctx.arc(0, 0, 6, 0, TAU);
+      ctx.fill();
+    }
+    ctx.restore();
   }
 
   drawProjectedOpponent(ctx, kart, p) {
@@ -754,6 +780,7 @@ export class EngineRace {
       ctx.save();
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(sprite, col * frameW, row * frameH, frameW, frameH, centerX - 136, baseY - 126, 272, 178);
+      this.drawRearKartActionOverlay(ctx, centerX, baseY);
       ctx.restore();
     } else {
       ctx.fillStyle = '#39c5bb';
@@ -782,6 +809,29 @@ export class EngineRace {
       ctx.ellipse(centerX, baseY - 50, 150, 92, 0, 0, TAU);
       ctx.stroke();
     }
+  }
+
+  drawRearKartActionOverlay(ctx, centerX, baseY) {
+    const actions = this.images.kartActions;
+    if (!actions?.complete || !actions.naturalWidth) return;
+    const turn = this.getPlayerInput().turn || 0;
+    let row = -1;
+    if (this.player.spin > 0) row = 4;
+    else if (this.player.boost > 0) row = 1;
+    else if (this.player.drift > 0.18) row = 2;
+    if (row < 0) return;
+    const col = this.player.spin > 0
+      ? Math.floor(this.time * 12) % 4
+      : turn < -0.2
+        ? 0
+        : turn > 0.2
+          ? 3
+          : Math.floor(this.time * 8) % 4;
+    ctx.save();
+    ctx.globalAlpha = this.player.spin > 0 ? 0.9 : 0.76;
+    ctx.imageSmoothingEnabled = false;
+    drawSheetFrame(ctx, actions, 4, 6, col, row, centerX - 142, baseY - 132, 284, 188);
+    ctx.restore();
   }
 
   drawTopDownMinimap(ctx) {
@@ -891,16 +941,19 @@ export class EngineRace {
       ctx.save();
       ctx.translate(box.x, box.y);
       ctx.scale(pulse, pulse);
-      ctx.rotate(this.time * 1.6);
-      ctx.fillStyle = 'rgba(255,235,59,0.18)';
-      ctx.strokeStyle = '#ffeb3b';
-      ctx.lineWidth = 2;
-      ctx.fillRect(-14, -14, 28, 28);
-      ctx.strokeRect(-14, -14, 28, 28);
-      ctx.fillStyle = '#ffeb3b';
-      ctx.font = 'bold 17px Share Tech Mono, monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('?', 0, 6);
+      const frame = Math.floor(this.time * 6) % 4;
+      if (!drawSheetFrame(ctx, this.images.kartItems, 7, 6, frame, 0, -18, -18, 36, 36)) {
+        ctx.rotate(this.time * 1.6);
+        ctx.fillStyle = 'rgba(255,235,59,0.18)';
+        ctx.strokeStyle = '#ffeb3b';
+        ctx.lineWidth = 2;
+        ctx.fillRect(-14, -14, 28, 28);
+        ctx.strokeRect(-14, -14, 28, 28);
+        ctx.fillStyle = '#ffeb3b';
+        ctx.font = 'bold 17px Share Tech Mono, monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('?', 0, 6);
+      }
       ctx.restore();
     });
     this.track.hazards.forEach(hazard => {
@@ -914,10 +967,16 @@ export class EngineRace {
       ctx.stroke();
     });
     this.projectiles.forEach(projectile => {
-      ctx.fillStyle = projectile.color;
-      ctx.beginPath();
-      ctx.arc(projectile.x, projectile.y, 5, 0, TAU);
-      ctx.fill();
+      ctx.save();
+      ctx.translate(projectile.x, projectile.y);
+      ctx.rotate(Math.atan2(projectile.vy, projectile.vx));
+      if (!drawSheetFrame(ctx, this.images.kartItems, 7, 6, 6, 1, -22, -9, 44, 18)) {
+        ctx.fillStyle = projectile.color;
+        ctx.beginPath();
+        ctx.arc(0, 0, 5, 0, TAU);
+        ctx.fill();
+      }
+      ctx.restore();
     });
   }
 
@@ -988,14 +1047,21 @@ export class EngineRace {
     ctx.fillRect(14, 14, 250, 106);
     ctx.strokeStyle = 'rgba(57,197,187,0.45)';
     ctx.strokeRect(14, 14, 250, 106);
+    drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 0, 0, 22, 24, 34, 34);
     ctx.font = 'bold 15px Share Tech Mono, monospace';
     ctx.fillStyle = '#39c5bb';
-    ctx.fillText(`A.R.C.A. RACE // ${player.rank}/4`, 28, 38);
+    ctx.fillText(`A.R.C.A. RACE // ${player.rank}/4`, 64, 38);
     ctx.font = '12px Share Tech Mono, monospace';
     ctx.fillStyle = '#d8fffb';
-    ctx.fillText(`Tour ${Math.min(player.lap + 1, this.track.laps)}/${this.track.laps}`, 28, 60);
-    ctx.fillText(`Vitesse ${Math.round(Math.abs(player.speed))}`, 28, 80);
-    ctx.fillText(`Cache ${player.item ? this.getItemName(player.item) : 'vide'}`, 28, 100);
+    ctx.fillText(`Tour ${Math.min(player.lap + 1, this.track.laps)}/${this.track.laps}`, 64, 60);
+    ctx.fillText(`Vitesse ${Math.round(Math.abs(player.speed))}`, 64, 80);
+    ctx.fillText(`Cache ${player.item ? this.getItemName(player.item) : 'vide'}`, 64, 100);
+    if (player.item) {
+      const itemFrame = KART_ITEM_FRAMES[player.item] || KART_ITEM_FRAMES.cache;
+      drawSheetFrame(ctx, this.images.kartItems, 7, 6, itemFrame.col, itemFrame.row, 218, 76, 34, 34);
+    } else {
+      drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 1, 6, 218, 76, 34, 34);
+    }
 
     this.drawTopDownMinimap(ctx);
 

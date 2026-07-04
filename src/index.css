@@ -603,7 +603,8 @@ body {
 }
 
 .race-mode-pilot strong,
-.race-cache-card strong {
+.race-cache-card strong,
+.race-garage-card strong {
   color: #ffeb3b;
   display: block;
   font-size: 12px;
@@ -678,6 +679,7 @@ body {
 
 .race-stat-grid div,
 .race-cache-card,
+.race-garage-card,
 .race-control-list,
 .race-touch-controls {
   border: 1px solid rgba(255,255,255,0.1);
@@ -686,12 +688,14 @@ body {
 }
 
 .race-stat-grid div,
-.race-cache-card {
+.race-cache-card,
+.race-garage-card {
   padding: 10px;
 }
 
 .race-stat-grid span,
 .race-cache-card span,
+.race-garage-card span,
 .race-control-list span {
   display: block;
   color: #8aa5a5;
@@ -709,6 +713,33 @@ body {
 .race-cache-card {
   display: grid;
   gap: 8px;
+}
+
+.race-cache-strip {
+  width: 100%;
+  height: 44px;
+  object-fit: cover;
+  object-position: top left;
+  image-rendering: pixelated;
+  border: 1px solid rgba(57, 197, 187, 0.18);
+  border-radius: 4px;
+  background: #03040a;
+}
+
+.race-garage-card {
+  display: grid;
+  gap: 8px;
+}
+
+.race-garage-card img {
+  width: 100%;
+  height: 116px;
+  object-fit: cover;
+  object-position: top center;
+  image-rendering: pixelated;
+  border: 1px solid rgba(57, 197, 187, 0.18);
+  border-radius: 4px;
+  background: #03040a;
 }
 
 .race-control-list {

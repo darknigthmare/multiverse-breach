@@ -203,9 +203,15 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
           <div className="race-cache-card">
             <span>{lang === 'fr' ? 'Cache active' : 'Active cache'}</span>
             <strong>{snapshot.item || (lang === 'fr' ? 'vide' : 'empty')}</strong>
+            <img className="race-cache-strip" src={RACE_ASSETS.kartItems} alt={lang === 'fr' ? 'Plaquette objets kart de Mirelle' : 'Mirelle kart item sheet'} />
             <button type="button" className="btn-retro" onClick={triggerItem}>
               {lang === 'fr' ? 'UTILISER' : 'USE'}
             </button>
+          </div>
+          <div className="race-garage-card">
+            <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
+            <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
+            <strong>{lang === 'fr' ? 'Chassis Suture / cache A.R.C.A.' : 'Suture chassis / A.R.C.A. cache'}</strong>
           </div>
           <div className="race-control-list">
             {controlRows.map(row => (
