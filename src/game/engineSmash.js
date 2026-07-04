@@ -1034,6 +1034,27 @@ export class EngineSmash {
       for (let x = platformData.x1 + 12; x < platformData.x2 - 12; x += 42) {
         ctx.fillRect(x, y + 3, 26, 2);
       }
+    } else if (theme.material === 'city') {
+      for (let x = platformData.x1 + 10; x < platformData.x2 - 10; x += 30) {
+        ctx.fillRect(x, y - 4, 9, 3);
+        ctx.fillRect(x + 13, y + 2, 9, 3);
+      }
+    } else if (theme.material === 'absurd') {
+      for (let x = platformData.x1 + 8; x < platformData.x2 - 6; x += 24) {
+        const wobble = Math.sin(animTime * 0.11 + x) * 2;
+        ctx.fillRect(x, y - 3 + wobble, 12, 3);
+      }
+    } else if (theme.material === 'arcane') {
+      for (let x = platformData.x1 + 14; x < platformData.x2 - 10; x += 36) {
+        ctx.strokeStyle = theme.secondary;
+        ctx.strokeRect(x, y - 5, 9, 9);
+        ctx.fillRect(x + 13, y - 1, 14, 2);
+      }
+    } else if (theme.material === 'war') {
+      for (let x = platformData.x1 + 8; x < platformData.x2 - 8; x += 26) {
+        ctx.fillRect(x, y - 5, 3, 3);
+        ctx.fillRect(x + 10, y + 2, 14, 2);
+      }
     } else {
       for (let x = platformData.x1 + 6; x < platformData.x2 - 4; x += 28) ctx.fillRect(x, y - 2, 14, 2);
     }

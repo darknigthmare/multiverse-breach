@@ -88,10 +88,17 @@ assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen m
   'boss_coliseum',
   'concert_stage',
   'containment_lab',
-  'hive_corridor'
+  'hive_corridor',
+  'city_rooftops',
+  'absurd_party',
+  'arcane_ruins',
+  'war_front'
 ].forEach(arenaId => {
   assert(smashArenasSource.includes(`${arenaId}: {`), `Missing melee arena layout ${arenaId}.`);
 });
+assert(smashArenasSource.includes('EXPANDED_UNIVERSE_SIGNATURES'), 'Melee arena selection must use expanded universe metadata.');
+assert(smashArenasSource.includes('getUniverseSignature'), 'Melee arena selection must keep a signature lookup helper.');
+assert(smashArenasSource.includes('stageName') && smashArenasSource.includes('mediaType') && smashArenasSource.includes('faction'), 'Melee arena selection must inspect expanded universe stage metadata.');
 assert(smashEngineSource.includes('createSmashArena(stage, width, height)'), 'Melee engine must build arena layouts from the active stage.');
 assert(smashEngineSource.includes('applyArenaHazards'), 'Melee engine must keep terrain hazards wired.');
 assert(smashEngineSource.includes('getObjectiveText'), 'Melee engine must expose arena objective text.');
@@ -116,8 +123,9 @@ console.log(JSON.stringify({
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',
   factionArcCompletion: 'expanded',
-  meleeArenaLayouts: 9,
+  meleeArenaLayouts: 13,
   meleeTerrainSystem: 'dynamic',
   meleeObjectiveSystem: 'active',
-  meleeCombatFeel: 'recovery-and-ai'
+  meleeCombatFeel: 'recovery-and-ai',
+  meleeDlcMapping: 'metadata-aware'
 }, null, 2));
