@@ -191,6 +191,61 @@ export const TACTICS_BATTLEFIELDS = {
 
 const getSignature = (universe) => EXPANDED_UNIVERSE_SIGNATURES[universe] || null;
 const textIncludes = (text, terms) => terms.some(term => text.includes(term));
+const difficultyRank = (difficulty = 'Medium') => ({
+  Personal: 0,
+  Easy: 0,
+  Medium: 1,
+  Hard: 2,
+  Fusion: 2,
+  Trio: 2,
+  'Very Hard': 3,
+  Expert: 3
+}[difficulty] ?? 1);
+
+export function getTacticsMissionProfile(stage = {}, battlefield = null) {
+  const rank = difficultyRank(stage.difficulty);
+  const tags = battlefield?.tags || [];
+  const hasHazards = tags.includes('hazard') || (battlefield?.tiles || []).some(cell => cell.type === 'hazard');
+  const bossPressure = tags.includes('bossArena') || stage.worldBoss || stage.id === 38;
+  if (stage.forceBaseArena || stage.dlcSuppressedArena || rank <= 0) {
+    return {
+      tier: 'initiation',
+      label: { fr: 'Protocole lisible', en: 'Readable Protocol' },
+      reinforcementEvery: 0,
+      hazardPulseEvery: 0,
+      hazardRadius: 0,
+      pressure: 0
+    };
+  }
+  if (rank === 1) {
+    return {
+      tier: 'field',
+      label: { fr: 'Pression de terrain', en: 'Field Pressure' },
+      reinforcementEvery: 0,
+      hazardPulseEvery: hasHazards ? 8 : 0,
+      hazardRadius: 0,
+      pressure: 1
+    };
+  }
+  if (rank === 2) {
+    return {
+      tier: 'escalation',
+      label: { fr: 'Escalade A.R.C.A.', en: 'A.R.C.A. Escalation' },
+      reinforcementEvery: bossPressure ? 5 : 7,
+      hazardPulseEvery: hasHazards ? 6 : 0,
+      hazardRadius: 0,
+      pressure: 2
+    };
+  }
+  return {
+    tier: 'collapse',
+    label: { fr: 'Effondrement tactique', en: 'Tactical Collapse' },
+    reinforcementEvery: bossPressure ? 4 : 6,
+    hazardPulseEvery: hasHazards ? 5 : 0,
+    hazardRadius: 1,
+    pressure: 3
+  };
+}
 
 export function getTacticsBattlefield(stage = {}) {
   const universe = stage.universe || '';

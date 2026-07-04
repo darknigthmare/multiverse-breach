@@ -1,7 +1,7 @@
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
-import { getTacticsBattlefield } from './tacticsBattlefields';
+import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
 
 export class EngineTactics {
   constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
@@ -12,6 +12,7 @@ export class EngineTactics {
     this.onComplete = onComplete;
     this.stage = stage;
     this.battlefield = getTacticsBattlefield(stage);
+    this.missionProfile = getTacticsMissionProfile(stage, this.battlefield);
     this.objective = this.battlefield.objective || 'rout';
     this.objectiveTarget = this.battlefield.objectiveTarget || 1;
     this.objectiveProgress = 0;
@@ -20,6 +21,8 @@ export class EngineTactics {
     this.turnsElapsed = 0;
     this.damageDealt = 0;
     this.damageTaken = 0;
+    this.reinforcementsCalled = 0;
+    this.hazardPulses = 0;
 
     this.rows = this.battlefield.rows || 5;
     this.cols = this.battlefield.cols || 8;
@@ -493,6 +496,7 @@ export class EngineTactics {
   endActiveTurn() {
     this.turnsElapsed++;
     this.updateTacticsObjective();
+    this.applyTacticsMissionPressure();
     this.actionPhase = 'end';
     this.selectedAction = null;
     this.movementRange = [];
@@ -566,6 +570,78 @@ export class EngineTactics {
     this.battleResult = result;
     this.victoryTimer = 0;
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
+  }
+
+  applyTacticsMissionPressure() {
+    if (this.gameOver || this.turnsElapsed <= 0) return;
+    const { reinforcementEvery, hazardPulseEvery } = this.missionProfile;
+    if (reinforcementEvery > 0 && this.turnsElapsed % reinforcementEvery === 0) {
+      this.spawnTacticsReinforcement();
+    }
+    if (hazardPulseEvery > 0 && this.turnsElapsed % hazardPulseEvery === 0) {
+      this.applyHazardPulse();
+    }
+  }
+
+  findOpenTacticsSpawn(spawns = []) {
+    return spawns.find(spawn => this.isInsideGrid(spawn.x, spawn.y) && !this.isCellOccupied(spawn.x, spawn.y, null));
+  }
+
+  spawnTacticsReinforcement() {
+    const monstersList = this.enemiesData.monsters || [];
+    const template = monstersList[this.reinforcementsCalled % Math.max(1, monstersList.length)] || monstersList[0];
+    if (!template) return;
+    const spawn = this.findOpenTacticsSpawn([
+      ...(this.battlefield.monsterSpawns || []),
+      ...(this.battlefield.bossSpawns || [])
+    ]);
+    if (!spawn) return;
+    const pressureScale = 0.68 + this.missionProfile.pressure * 0.08;
+    const reinforcement = {
+      ...template,
+      name: `${template.name} Echo ${this.reinforcementsCalled + 1}`,
+      gridX: spawn.x,
+      gridY: spawn.y,
+      x: this.gridStartX + spawn.x * this.cellW + this.cellW / 2,
+      y: this.gridStartY + spawn.y * this.cellH + 18,
+      state: 'idle',
+      stateTimer: 0,
+      maxHp: Math.round((template.hp || 90) * pressureScale),
+      currentHp: Math.round((template.hp || 90) * pressureScale),
+      facing: -1,
+      isBoss: false,
+      statusEffects: { infected: 0, glitched: 0, radiated: 0 },
+      reinforcement: true
+    };
+    this.enemies.push(reinforcement);
+    this.turnQueue.push({ unit: reinforcement, type: 'enemy' });
+    this.reinforcementsCalled++;
+    this.particles.add(reinforcement.x, reinforcement.y - 34, 0, -1, '#ff8a50', 11, 45, 'text', 'RENFORT');
+  }
+
+  applyHazardPulse() {
+    const hazardTiles = this.tiles.filter(tile => tile.type === 'hazard');
+    if (!hazardTiles.length) return;
+    const radius = this.missionProfile.hazardRadius || 0;
+    const units = [
+      ...this.heroes.filter(unit => unit.currentHp > 0),
+      ...this.enemies.filter(unit => unit.currentHp > 0)
+    ];
+    hazardTiles.forEach(tile => {
+      const px = this.gridStartX + tile.x * this.cellW + this.cellW / 2;
+      const py = this.gridStartY + tile.y * this.cellH + this.cellH / 2;
+      this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 42, 'text', 'SURTENSION');
+      units.forEach(unit => {
+        const dist = Math.abs(unit.gridX - tile.x) + Math.abs(unit.gridY - tile.y);
+        if (dist <= radius) {
+          unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - (8 + this.missionProfile.pressure * 2));
+          const ux = this.gridStartX + unit.gridX * this.cellW + this.cellW / 2;
+          const uy = this.gridStartY + unit.gridY * this.cellH + 18;
+          this.particles.add(ux, uy - 28, 0, -1, '#ff5b5b', 10, 38, 'text', 'PULSE');
+        }
+      });
+    });
+    this.hazardPulses++;
   }
 
   getObjectiveFocusCells(unitType = 'hero') {
@@ -1411,9 +1487,9 @@ export class EngineTactics {
   drawTacticsObjectiveHud(ctx) {
     const pct = Math.min(1, this.objectiveProgress / Math.max(1, this.objectiveTarget));
     ctx.fillStyle = 'rgba(0,0,0,0.72)';
-    ctx.fillRect(18, 32, 315, 46);
+    ctx.fillRect(18, 32, 315, 62);
     ctx.strokeStyle = this.getBattlefieldAccent();
-    ctx.strokeRect(18, 32, 315, 46);
+    ctx.strokeRect(18, 32, 315, 62);
     ctx.fillStyle = '#dff';
     ctx.font = '8px "Press Start 2P"';
     ctx.fillText(this.getObjectiveText('fr').toUpperCase().slice(0, 44), 28, 48);
@@ -1423,6 +1499,9 @@ export class EngineTactics {
     ctx.fillRect(28, 60, 248 * pct, 8);
     ctx.fillStyle = '#fff';
     ctx.fillText(`${this.objectiveProgress}/${this.objectiveTarget}`, 284, 68);
+    ctx.fillStyle = this.getBattlefieldAccent();
+    ctx.font = '7px "Press Start 2P"';
+    ctx.fillText((this.missionProfile.label?.fr || this.missionProfile.tier).toUpperCase().slice(0, 38), 28, 86);
   }
 
   getObjectiveText(lang = 'fr') {
@@ -1480,6 +1559,9 @@ export class EngineTactics {
       objectivePct,
       objectiveProgress: this.objectiveProgress,
       objectiveTarget: this.objectiveTarget,
+      missionProfile: this.missionProfile,
+      reinforcementsCalled: this.reinforcementsCalled,
+      hazardPulses: this.hazardPulses,
       turnsElapsed: this.turnsElapsed,
       defeatedEnemies,
       survivingHeroes,

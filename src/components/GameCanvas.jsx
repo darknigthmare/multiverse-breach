@@ -847,7 +847,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       `${lang === 'fr' ? 'Terrain' : 'Battlefield'}: ${battleSummary.battlefieldLabel?.[lang] || battleSummary.battlefieldId}`,
       `${lang === 'fr' ? 'Rang' : 'Grade'} ${battleSummary.grade} | Score ${battleSummary.score} | Objectif ${battleSummary.objectivePct}%`,
       `${battleSummary.objectiveText?.[lang] || battleSummary.objective} | ${lang === 'fr' ? 'Tours' : 'Turns'}: ${battleSummary.turnsElapsed}`,
-      `${lang === 'fr' ? 'Menaces neutralisees' : 'Threats neutralized'}: ${battleSummary.defeatedEnemies} | ${lang === 'fr' ? 'Agents debout' : 'Standing agents'}: ${battleSummary.survivingHeroes}`
+      `${lang === 'fr' ? 'Menaces neutralisees' : 'Threats neutralized'}: ${battleSummary.defeatedEnemies} | ${lang === 'fr' ? 'Agents debout' : 'Standing agents'}: ${battleSummary.survivingHeroes}`,
+      `${battleSummary.missionProfile?.label?.[lang] || battleSummary.missionProfile?.tier || 'Profile'} | ${lang === 'fr' ? 'Renforts' : 'Reinforcements'}: ${battleSummary.reinforcementsCalled || 0} | ${lang === 'fr' ? 'Surtensions' : 'Surges'}: ${battleSummary.hazardPulses || 0}`
     ]
     : [];
   const totalBattleItems = battlePickups.length;

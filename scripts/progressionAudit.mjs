@@ -165,6 +165,7 @@ assert(appSource.includes("activeStage.mode === 'Smash'") && appSource.includes(
 assert(tacticsBattlefieldsSource.includes('EXPANDED_UNIVERSE_SIGNATURES'), 'Tactics battlefield selection must use expanded universe metadata.');
 assert(tacticsBattlefieldsSource.includes('forceBaseArena') && tacticsBattlefieldsSource.includes('dlcSuppressedArena'), 'Tactics battlefield selection must support admin/DLC fallback to Nexus terrain.');
 assert(tacticsBattlefieldsSource.includes('getTacticsPickupPositions'), 'Tactics battlefields must expose terrain-safe pickup positions.');
+assert(tacticsBattlefieldsSource.includes('getTacticsMissionProfile') && tacticsBattlefieldsSource.includes('reinforcementEvery') && tacticsBattlefieldsSource.includes('hazardPulseEvery'), 'Tactics battlefields must expose difficulty-based mission pressure profiles.');
 assert(tacticsEngineSource.includes('getTacticsBattlefield'), 'Tactics engine must load battlefield layouts from stage metadata.');
 assert(tacticsEngineSource.includes('this.battlefield'), 'Tactics engine must keep the active battlefield profile.');
 assert(tacticsEngineSource.includes('getTileAt'), 'Tactics engine must inspect terrain tiles.');
@@ -190,10 +191,14 @@ assert(tacticsEngineSource.includes('getCombatSummary') && tacticsEngineSource.i
 assert(tacticsEngineSource.includes('getObjectiveFocusCells'), 'Tactics AI must resolve objective focus cells.');
 assert(tacticsEngineSource.includes('scoreObjectiveMove'), 'Tactics AI must score movement against objectives and terrain.');
 assert(tacticsEngineSource.includes('preferredEnemies'), 'Tactics hero AI must prioritize commander targets without ignoring fallback enemies.');
+assert(tacticsEngineSource.includes('applyTacticsMissionPressure'), 'Tactics engine must apply long-term mission pressure.');
+assert(tacticsEngineSource.includes('spawnTacticsReinforcement'), 'Tactics engine must spawn difficulty-gated reinforcements.');
+assert(tacticsEngineSource.includes('applyHazardPulse'), 'Tactics engine must pulse hazardous terrain on advanced profiles.');
 assert(gameCanvasSource.includes('getTacticsPickupPositions'), 'GameCanvas must place Tactics pickups through battlefield-safe positions.');
 assert(gameCanvasSource.includes('new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage)'), 'GameCanvas must pass resolved stage metadata into tactics mode.');
 assert(gameCanvasSource.includes("['Smash', 'Tactics'].includes(stage.mode)") && gameCanvasSource.includes('dlcSuppressedArena'), 'GameCanvas must suppress DLC-specific tactics fields when universes are hidden.');
 assert(gameCanvasSource.includes('tacticsResultLines'), 'GameCanvas must render Tactics result summary feedback.');
+assert(gameCanvasSource.includes('reinforcementsCalled') && gameCanvasSource.includes('hazardPulses'), 'GameCanvas must display Tactics pressure results.');
 assert(appSource.includes('tacticsMasteryBonus'), 'App rewards must include capped Tactics mastery bonuses.');
 
 console.log(JSON.stringify({
@@ -219,6 +224,7 @@ console.log(JSON.stringify({
   tacticsTerrainTypes: ['high', 'lightCover', 'heavyCover', 'hazard', 'heal', 'blocked', 'objective'],
   tacticsObjectives: ['rout', 'extract', 'disable', 'control', 'commander', 'survive'],
   tacticsAi: 'objective-aware',
+  tacticsMissionPressure: ['reinforcements', 'hazard-pulses', 'difficulty-profiles'],
   tacticsDlcMapping: 'metadata-aware',
   tacticsRewardLoop: 'grade-bonus'
 }, null, 2));
