@@ -1215,7 +1215,7 @@ export class EngineRace {
     }
 
     ctx.save();
-    ctx.lineCap = 'round';
+    ctx.lineCap = 'butt';
     ctx.lineJoin = 'round';
 
     segments
@@ -1223,8 +1223,8 @@ export class EngineRace {
       .sort((a, b) => b.depth - a.depth)
       .forEach(segment => {
         const width = Math.max(24, segment.width);
-        ctx.strokeStyle = 'rgba(2,4,10,0.82)';
-        ctx.lineWidth = width + 16;
+        ctx.strokeStyle = 'rgba(2,4,10,0.42)';
+        ctx.lineWidth = width + 8;
         ctx.beginPath();
         ctx.moveTo(segment.a.x, segment.a.y);
         ctx.lineTo(segment.b.x, segment.b.y);
@@ -1298,10 +1298,11 @@ export class EngineRace {
       const dy = next.p.y - current.p.y;
       const len = Math.hypot(dx, dy) || 1;
       const scale = (current.p.scale + next.p.scale) * 0.5;
+      const perspectiveT = (current.p.t + next.p.t) * 0.5;
       segments.push({
         a: current.p,
         b: next.p,
-        width: this.track.roadWidth * scale * 0.54,
+        width: this.getRearRoadVisualWidth(scale, perspectiveT),
         depth: (current.p.forward + next.p.forward) * 0.5,
         index: current.source.segmentIndex,
         normalX: -dy / len,
@@ -1311,8 +1312,13 @@ export class EngineRace {
     return segments;
   }
 
+  getRearRoadVisualWidth(scale, perspectiveT) {
+    const cameraWidthBoost = lerp(1.35, 3.35, perspectiveT ** 0.85);
+    return clamp(this.track.roadWidth * scale * cameraWidthBoost, 42, this.width * 0.92);
+  }
+
   drawProjectedFinishLine(ctx, p) {
-    const width = Math.max(56, this.track.roadWidth * p.scale * 0.48);
+    const width = Math.max(64, this.getRearRoadVisualWidth(p.scale, p.t) * 0.82);
     const height = Math.max(6, 7 * p.scale);
     ctx.save();
     ctx.translate(p.x, p.y);
@@ -1604,7 +1610,9 @@ export class EngineRace {
     const isDrifting = this.player.drift > 0.12;
     const sprite = this.images.kartDirections;
     const centerX = this.width / 2 + clamp(this.player.drift * Math.sign(this.getPlayerInput().turn || 0) * 34, -34, 34);
-    const baseY = this.height - 74;
+    const baseY = this.height - 64;
+    const kartW = 218;
+    const kartH = 142;
     if (sprite?.complete && sprite.naturalWidth) {
       const cols = 4;
       const rows = 4;
@@ -1621,26 +1629,26 @@ export class EngineRace {
             : Math.floor(this.time * (this.player.boost > 0 ? 10 : 5)) % 2 + 1;
       ctx.save();
       ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(sprite, col * frameW, row * frameH, frameW, frameH, centerX - 136, baseY - 126, 272, 178);
-      this.drawRearKartActionOverlay(ctx, centerX, baseY);
+      ctx.drawImage(sprite, col * frameW, row * frameH, frameW, frameH, centerX - kartW / 2, baseY - kartH + 8, kartW, kartH);
+      this.drawRearKartActionOverlay(ctx, centerX, baseY, kartW, kartH);
       ctx.restore();
     } else {
       ctx.fillStyle = '#39c5bb';
       ctx.strokeStyle = '#050307';
       ctx.lineWidth = 5;
       ctx.beginPath();
-      ctx.roundRect(centerX - 74, baseY - 106, 148, 126, 20);
+      ctx.roundRect(centerX - 58, baseY - 88, 116, 98, 16);
       ctx.fill();
       ctx.stroke();
       ctx.fillStyle = '#10131c';
-      ctx.fillRect(centerX - 46, baseY - 78, 92, 46);
+      ctx.fillRect(centerX - 36, baseY - 64, 72, 36);
     }
     if (this.player.boost > 0) {
       ctx.fillStyle = 'rgba(57,197,187,0.5)';
       ctx.beginPath();
-      ctx.moveTo(centerX - 58, baseY + 14);
+      ctx.moveTo(centerX - 46, baseY + 10);
       ctx.lineTo(centerX, this.height + 42);
-      ctx.lineTo(centerX + 58, baseY + 14);
+      ctx.lineTo(centerX + 46, baseY + 10);
       ctx.closePath();
       ctx.fill();
     }
@@ -1648,19 +1656,19 @@ export class EngineRace {
       ctx.strokeStyle = 'rgba(255,235,59,0.78)';
       ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.ellipse(centerX, baseY - 72, 128, 62, 0, 0, TAU);
+      ctx.ellipse(centerX, baseY - 58, 102, 50, 0, 0, TAU);
       ctx.stroke();
     }
     if (this.player.shield > 0) {
       ctx.strokeStyle = 'rgba(217,182,255,0.82)';
       ctx.lineWidth = 3;
       ctx.beginPath();
-      ctx.ellipse(centerX, baseY - 50, 150, 92, 0, 0, TAU);
+      ctx.ellipse(centerX, baseY - 42, 118, 72, 0, 0, TAU);
       ctx.stroke();
     }
   }
 
-  drawRearKartActionOverlay(ctx, centerX, baseY) {
+  drawRearKartActionOverlay(ctx, centerX, baseY, kartW = 218, kartH = 142) {
     const actions = this.images.kartActions;
     if (!actions?.complete || !actions.naturalWidth) return;
     const turn = this.getPlayerInput().turn || 0;
@@ -1679,7 +1687,7 @@ export class EngineRace {
     ctx.save();
     ctx.globalAlpha = this.player.spin > 0 ? 0.9 : 0.76;
     ctx.imageSmoothingEnabled = false;
-    drawSheetFrame(ctx, actions, 4, 6, col, row, centerX - 142, baseY - 132, 284, 188);
+    drawSheetFrame(ctx, actions, 4, 6, col, row, centerX - kartW * 0.53, baseY - kartH + 3, kartW * 1.06, kartH * 1.06);
     ctx.restore();
   }
 
