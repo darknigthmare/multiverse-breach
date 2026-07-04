@@ -2701,6 +2701,13 @@ export default function HubScreen({
     { id: 'cyber', stat: 'spd', label: 'IA & Cyber', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus', ...EXPANDED_FACTION_UNIVERSES.cyber], bonus: '+8% SPD' },
     { id: 'arcane', stat: 'def', label: 'Mages & Occulte', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue', ...EXPANDED_FACTION_UNIVERSES.arcane], bonus: '+8% DEF' }
   ];
+  const UNIQUE = (items) => Array.from(new Set(items.filter(Boolean)));
+  const MUSIC_ARC_UNIVERSES = UNIQUE(['Vocaloid', 'Rammstein', 'System of a Down', 'Rob Zombie', 'Daft Punk', 'Oliver Tree', 'Linkin Park', 'Michael Jackson', 'Moonwalker', 'Die Antwoord', ...Object.keys(LORE_DB).filter(universe => LORE_DB[universe]?.mediaType === 'music')]);
+  const ABSURD_ARC_UNIVERSES = UNIQUE(['Velocipastor', 'Rubber', 'Killer Tomatoes from Outer Space', 'Sharknado', 'Sausage Party', 'Spermageddon', 'Kung Pow', 'Pingu', 'Pee-wee', 'Kazaam', 'Spoof Movie', 'Grrrrrrrrrrrrrrrrr', 'Les Feebles', 'Roger Rabbit', 'Les Tuche', 'Camera Cafe', 'Samantha Oups', 'Les Chevaliers du Fiel', 'Les Inconnus', 'La Cite de la Peur', 'Les Visiteurs']);
+  const KAIJU_DISASTER_ARC_UNIVERSES = UNIQUE(['Godzilla The Animated Series', 'Cloverfield', 'Tremors', 'The War of the Worlds', 'War of the Worlds - Steven Spielberg', 'Mars Attacks', 'Skyline', 'Iron Sky', ...EXPANDED_FACTION_UNIVERSES.sciFi.filter(universe => /Godzilla|Cloverfield|Sharknado|Tremor|Mars|War of the World|Skyline|Iron Sky|Starship/.test(universe))]);
+  const MANGA_WAR_ARC_UNIVERSES = UNIQUE(['Attack on Titan', 'Tanya the Evil', 'Death Note', 'Dandadan', 'Another', 'Gunnm', 'Battle Royale', 'Overlord', 'Dungeon Meshi', 'Spy x Family', 'Uzumaki', 'Inuyashiki', 'Negima', 'Rosario + Vampire', 'Les Brigades immunitaires', ...Object.keys(LORE_DB).filter(universe => LORE_DB[universe]?.mediaType === 'manga')]);
+  const INFECTION_CONTAINMENT_ARC_UNIVERSES = UNIQUE(['Resident Evil', 'Silent Hill', 'The Thing', 'Virus', 'Rec', 'Sinister', 'House of the Dead', 'Evil Dead', 'Puppet Master', 'The Collector', 'Terrifier', 'M3GAN', 'Toxic Avenger', 'SCP', ...EXPANDED_FACTION_UNIVERSES.horror.filter(universe => /Resident|Silent|Thing|Virus|Rec|Dead|Evil|Puppet|Collector|Terrifier|Sinister|SCP|Re-Animator|Cthulhu|Necronomicon/.test(universe))]);
+  const SCREEN_ARCHIVE_ARC_UNIVERSES = UNIQUE(['Kaamelott', 'Noob', 'Le Visiteur du Futur', 'Malcolm in the Middle', 'Defiance', 'Starship Troopers', 'Banlieue 13', 'Le Cinquieme Element', 'Ghostbusters', 'The Ring', 'The Grudge', 'From', ...Object.keys(LORE_DB).filter(universe => ['movie', 'series'].includes(LORE_DB[universe]?.mediaType))]);
 
   const LOOT_RARITIES = [
     { id: 'common', label: 'Commun', color: '#9aa0a6', threshold: 0 },
@@ -3002,7 +3009,7 @@ export default function HubScreen({
         fr: 'Les groupes et univers musicaux transforment les failles en arene rythmique et amplifient les anomalies.',
         en: 'Bands and music worlds turn breaches into rhythm arenas and amplify anomalies.'
       },
-      universes: ['Vocaloid', 'Rammstein', 'System of a Down', 'Rob Zombie', 'Daft Punk', 'Oliver Tree'],
+      universes: MUSIC_ARC_UNIVERSES,
       reward: { fr: 'Bonus tempo et vitesse', en: 'Tempo and speed bonus' }
     },
     {
@@ -3013,7 +3020,7 @@ export default function HubScreen({
         fr: 'Magie absurde, quete du Graal, donjons et MMORPG francais se branchent sur les memes runes de stabilisation.',
         en: 'Absurd magic, Grail quests, dungeons, and French MMORPG codes connect to the same stabilization runes.'
       },
-      universes: ['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob', 'Harry Potter', 'Negima', 'Rosario + Vampire'],
+      universes: UNIQUE(['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob', 'Harry Potter', 'Negima', 'Rosario + Vampire', ...EXPANDED_FACTION_UNIVERSES.arcane]),
       reward: { fr: 'Cache rune et defense', en: 'Rune and defense cache' }
     },
     {
@@ -3024,7 +3031,7 @@ export default function HubScreen({
         fr: 'Hazbin Hotel, Digital Circus et les univers d horreur transforment la redemption en spectacle de breche.',
         en: 'Hazbin Hotel, Digital Circus, and horror worlds turn redemption into breach theater.'
       },
-      universes: ['Hazbin Hotel', 'Digital Circus', 'Hellraiser', 'Saw', 'Chucky', 'Silent Hill', 'Scary Movie'],
+      universes: UNIQUE(['Hazbin Hotel', 'Digital Circus', 'Hellraiser', 'Saw', 'Chucky', 'Silent Hill', 'Scary Movie', ...EXPANDED_FACTION_UNIVERSES.horror.filter(universe => /Hotel|Circus|Hell|Saw|Chucky|Silent|Scary|Rocky|Elvira|Rob Zombie|House of 1000/.test(universe))]),
       reward: { fr: 'Cache controle et peur', en: 'Control and fear cache' }
     },
     {
@@ -3035,7 +3042,7 @@ export default function HubScreen({
         fr: 'Les soldats, pilotes, commandants et explorateurs spatiaux forment la ligne de defense principale contre le noyau.',
         en: 'Soldiers, pilots, commanders, and space explorers form the main defensive line against the core.'
       },
-      universes: ['Gears of War', 'Halo', 'Stargate', 'Mass Effect', 'Star Wars', 'Le Cinquième Element'],
+      universes: UNIQUE(['Gears of War', 'Halo', 'Stargate', 'Mass Effect', 'Star Wars', 'Le Cinquième Element', ...EXPANDED_FACTION_UNIVERSES.sciFi]),
       reward: { fr: 'Cache tactique et blindage', en: 'Tactical and armor cache' }
     },
     {
@@ -3046,7 +3053,7 @@ export default function HubScreen({
         fr: 'Laboratoires, stations et incidents biologiques imposent une logique de survie, d isolement et de purge.',
         en: 'Labs, stations, and biological incidents force survival, isolation, and purge logic.'
       },
-      universes: ['Resident Evil', 'Dino Crisis', 'Dead Space', 'Half-Life', 'Portal'],
+      universes: UNIQUE(['Resident Evil', 'Dino Crisis', 'Dead Space', 'Half-Life', 'Portal', ...INFECTION_CONTAINMENT_ARC_UNIVERSES]),
       reward: { fr: 'Cache laboratoire et purge', en: 'Laboratory and purge cache' }
     },
     {
@@ -3057,7 +3064,7 @@ export default function HubScreen({
         fr: 'IA, realites virtuelles, cybercerveaux et mondes digitaux prouvent que la breche peut aussi corrompre le code.',
         en: 'AI, virtual realities, cyberbrains, and digital worlds prove the breach can also corrupt code.'
       },
-      universes: ['The Matrix', 'Ghost in the Shell', 'Rick & Morty', 'Digimon'],
+      universes: UNIQUE(['The Matrix', 'Ghost in the Shell', 'Rick & Morty', 'Digimon', ...EXPANDED_FACTION_UNIVERSES.cyber]),
       reward: { fr: 'Cache cyber et vitesse', en: 'Cyber and speed cache' }
     },
     {
@@ -3090,8 +3097,63 @@ export default function HubScreen({
         fr: 'Entites, tueurs, jeux pieges et cauchemars donnent au Multivers ses signatures de peur les plus lisibles.',
         en: 'Entities, killers, traps, and nightmares give the Multiverse its clearest fear signatures.'
       },
-      universes: ['Slender Man', 'Resident Evil', 'Silent Hill', 'Chucky', 'Hellraiser', 'Saw', 'Scary Movie'],
+      universes: UNIQUE(['Slender Man', 'Resident Evil', 'Silent Hill', 'Chucky', 'Hellraiser', 'Saw', 'Scary Movie', ...EXPANDED_FACTION_UNIVERSES.horror]),
       reward: { fr: 'Cache peur et controle', en: 'Fear and control cache' }
+    },
+    {
+      id: 'absurd_b_movie_front',
+      color: '#ff9f43',
+      title: { fr: 'Front B-movie et absurdites', en: 'B-Movie and Absurdity Front' },
+      premise: {
+        fr: 'Les univers volontairement idiots, parodiques ou impossibles prouvent que le Sans-Auteur peut aussi attaquer par le non-sens.',
+        en: 'Deliberately silly, parodic, or impossible worlds prove the Authorless can also attack through nonsense.'
+      },
+      universes: ABSURD_ARC_UNIVERSES,
+      reward: { fr: 'Cache parodie et chaos controle', en: 'Parody and controlled chaos cache' }
+    },
+    {
+      id: 'kaiju_disaster_protocol',
+      color: '#4fd7ff',
+      title: { fr: 'Protocole kaiju et catastrophe', en: 'Kaiju and Disaster Protocol' },
+      premise: {
+        fr: 'Monstres geants, invasions et catastrophes de masse forcent A.R.C.A. a penser en evacuation plutot qu en duel.',
+        en: 'Giant monsters, invasions, and mass disasters force A.R.C.A. to think in evacuations rather than duels.'
+      },
+      universes: KAIJU_DISASTER_ARC_UNIVERSES,
+      reward: { fr: 'Cache evacuation et frappe lourde', en: 'Evacuation and heavy strike cache' }
+    },
+    {
+      id: 'manga_war_council',
+      color: '#b56dff',
+      title: { fr: 'Conseil manga des guerres de destin', en: 'Manga Council of Fate Wars' },
+      premise: {
+        fr: 'Les mondes manga et anime imposent des lois d arc: rivalites, fronts militaires, maledictions, carnets et transformations.',
+        en: 'Manga and anime worlds impose arc laws: rivalries, war fronts, curses, notebooks, and transformations.'
+      },
+      universes: MANGA_WAR_ARC_UNIVERSES,
+      reward: { fr: 'Cache transformation et rivalite', en: 'Transformation and rivalry cache' }
+    },
+    {
+      id: 'screen_archive_fracture',
+      color: '#ff5b6e',
+      title: { fr: 'Fracture des archives ecran', en: 'Screen Archive Fracture' },
+      premise: {
+        fr: 'Films, series, sitcoms et comedies francaises deviennent des archives instables ou le ton change plus vite que les regles.',
+        en: 'Films, series, sitcoms, and French comedies become unstable archives where tone shifts faster than rules.'
+      },
+      universes: SCREEN_ARCHIVE_ARC_UNIVERSES,
+      reward: { fr: 'Cache archive ecran', en: 'Screen archive cache' }
+    },
+    {
+      id: 'infection_mutation_cordon',
+      color: '#61ff59',
+      title: { fr: 'Cordon infection et mutation', en: 'Infection and Mutation Cordon' },
+      premise: {
+        fr: 'Virus, parasites, morts releves, jouets hostiles et toxines imposent un cordon sanitaire autour de la Cite-Mosaique.',
+        en: 'Viruses, parasites, raised dead, hostile toys, and toxins impose a quarantine cordon around Mosaic City.'
+      },
+      universes: INFECTION_CONTAINMENT_ARC_UNIVERSES,
+      reward: { fr: 'Cache vaccin et purge', en: 'Vaccine and purge cache' }
     }
   ];
 
@@ -3227,6 +3289,126 @@ export default function HubScreen({
         en: 'A.R.C.A. directive: refuse fear, cleanse traps, and strike silhouettes before they become archive blanks.'
       },
       finale: { fr: 'Nommer les monstres pour les empecher de devenir des blancs dans les archives.', en: 'Name the monsters to stop them from becoming blanks in the archives.' }
+    },
+    absurd_b_movie_front: {
+      faction: { fr: 'Libres-Fractures absurdes', en: 'Absurd Free-Fractures' },
+      intro: { fr: 'A.R.C.A. confirme que le non-sens peut stabiliser une Trame aussi fort qu une prophetie.', en: 'A.R.C.A. confirms nonsense can stabilize a Thread as strongly as prophecy.' },
+      stakes: {
+        fr: 'Les mondes loufoques cassent les protocoles: si A.R.C.A. les ignore, ils deviennent des failles imprevisibles impossibles a classer.',
+        en: 'Absurd worlds break protocols: if A.R.C.A. ignores them, they become unpredictable rifts impossible to classify.'
+      },
+      gameplay: {
+        fr: 'Directive A.R.C.A.: utiliser les modes courts, accepter les modificateurs absurdes et convertir le chaos en bonus de relance.',
+        en: 'A.R.C.A. directive: use short modes, accept absurd modifiers, and convert chaos into reroll bonuses.'
+      },
+      missions: [
+        { fr: 'Classer trois anomalies parodiques sans les forcer dans une faction serieuse.', en: 'Classify three parody anomalies without forcing them into a serious faction.' },
+        { fr: 'Transformer une breche gag en zone de diversion pour proteger les civils.', en: 'Turn a gag breach into a diversion zone to protect civilians.' },
+        { fr: 'Sceller le Tribunal du Non-Sens avant qu il ne reecrive les recompenses.', en: 'Seal the Nonsense Tribunal before it rewrites rewards.' }
+      ],
+      outro: { fr: 'Le rire reste dangereux, mais il appartient maintenant a une archive lisible.', en: 'Laughter remains dangerous, but it now belongs to a readable archive.' },
+      finale: { fr: 'Faire du ridicule une arme controlee contre le Sans-Auteur.', en: 'Turn ridicule into a controlled weapon against the Authorless.' },
+      rewards: [
+        { id: 'arc_absurd_skin_glitch_jester', type: 'skin', name: { fr: 'Apparence Bouffon Glitch', en: 'Glitch Jester Appearance' } },
+        { id: 'arc_absurd_item_parody_stamp', type: 'item', name: { fr: 'Tampon de Parodie A.R.C.A.', en: 'A.R.C.A. Parody Stamp' } }
+      ],
+      claimReward: { gold: 360, shards: 75, tokens: 5 }
+    },
+    kaiju_disaster_protocol: {
+      faction: { fr: 'Alliance du Nexus - Cellule evacuation', en: 'Nexus Alliance - Evacuation Cell' },
+      intro: { fr: 'Les capteurs ne parlent plus de boss: ils parlent de masse, de panique et de villes entieres a deplacer.', en: 'Sensors no longer speak of bosses: they speak of mass, panic, and entire cities to move.' },
+      stakes: {
+        fr: 'Quand un kaiju ou une invasion franchit le Voile, gagner le duel ne suffit pas: il faut sauver la carte autour du combat.',
+        en: 'When a kaiju or invasion crosses the Veil, winning the duel is not enough: the map around the fight must survive.'
+      },
+      gameplay: {
+        fr: 'Directive A.R.C.A.: prioriser les tanks, les soutiens tactiques et les reliques de zone pour tenir les combats longs.',
+        en: 'A.R.C.A. directive: prioritize tanks, tactical supports, and zone relics to hold long fights.'
+      },
+      missions: [
+        { fr: 'Baliser une route d evacuation pendant qu un monstre geant traverse la breche.', en: 'Mark an evacuation route while a giant monster crosses the breach.' },
+        { fr: 'Detourner une invasion martienne vers une zone sans civils.', en: 'Redirect a Martian invasion toward a civilian-free zone.' },
+        { fr: 'Stabiliser une carcasse de kaiju avant contamination de la Cite-Mosaique.', en: 'Stabilize a kaiju carcass before Mosaic City contamination.' }
+      ],
+      outro: { fr: 'Les grosses menaces ne disparaissent pas; elles ont maintenant des couloirs de crise.', en: 'Huge threats do not vanish; they now have crisis corridors.' },
+      finale: { fr: 'Transformer la catastrophe en protocole d evacuation reproductible.', en: 'Turn disaster into a repeatable evacuation protocol.' },
+      rewards: [
+        { id: 'arc_kaiju_skin_response_armor', type: 'skin', name: { fr: 'Apparence Cellule H.E.A.T.', en: 'H.E.A.T. Cell Appearance' } },
+        { id: 'arc_kaiju_item_evac_beacon', type: 'item', name: { fr: 'Balise Evacuation Kaiju', en: 'Kaiju Evac Beacon' } }
+      ],
+      claimReward: { gold: 520, shards: 95, tokens: 4 }
+    },
+    manga_war_council: {
+      faction: { fr: 'Archivistes des arcs de destin', en: 'Fate Arc Archivists' },
+      intro: { fr: 'Les Trames manga n ouvrent pas seulement des mondes: elles imposent des arcs, des rivalites et des transformations.', en: 'Manga Threads do not only open worlds: they impose arcs, rivalries, and transformations.' },
+      stakes: {
+        fr: 'Si ces lois d arc se melangent sans cadre, chaque mission peut devenir une guerre finale avant que le joueur soit pret.',
+        en: 'If these arc laws mix without structure, every mission can become a final war before the player is ready.'
+      },
+      gameplay: {
+        fr: 'Directive A.R.C.A.: monter les niveaux, respecter les prerequis de personnages et reserver les trios aux conflits de synergie.',
+        en: 'A.R.C.A. directive: raise levels, respect character prerequisites, and reserve trios for synergy conflicts.'
+      },
+      missions: [
+        { fr: 'Isoler un carnet, une malediction ou un front militaire avant contamination d un autre arc.', en: 'Isolate a notebook, curse, or military front before it contaminates another arc.' },
+        { fr: 'Forcer une transformation a rester un choix tactique et pas une reecriture permanente.', en: 'Force a transformation to remain a tactical choice, not a permanent rewrite.' },
+        { fr: 'Sceller le Conseil des Rivaux sans effacer leurs histoires d origine.', en: 'Seal the Council of Rivals without erasing their origin stories.' }
+      ],
+      outro: { fr: 'Les arcs manga restent intenses, mais ils ne sautent plus les etapes de progression.', en: 'Manga arcs remain intense, but no longer skip progression steps.' },
+      finale: { fr: 'Transformer les tropes de destin en routes jouables et coherentes.', en: 'Turn fate tropes into playable, coherent routes.' },
+      rewards: [
+        { id: 'arc_manga_skin_rival_mark', type: 'skin', name: { fr: 'Marque de Rivalite', en: 'Rival Mark' } },
+        { id: 'arc_manga_item_arc_seal', type: 'item', name: { fr: 'Sceau de Chapitre Manga', en: 'Manga Chapter Seal' } }
+      ],
+      claimReward: { gold: 500, shards: 105, tokens: 5 }
+    },
+    screen_archive_fracture: {
+      faction: { fr: 'Archivistes ecran et Cite-Mosaique', en: 'Screen Archivists and Mosaic City' },
+      intro: { fr: 'Les archives ecran changent de ton brutalement: sitcom, comedie, SF, drame et horreur partagent parfois la meme adresse.', en: 'Screen archives shift tone brutally: sitcom, comedy, sci-fi, drama, and horror sometimes share the same address.' },
+      stakes: {
+        fr: 'Sans tri, les portails de films et series deviennent un bruit de fond qui casse l immersion et dilue le lore central.',
+        en: 'Without sorting, film and series portals become background noise that breaks immersion and dilutes core lore.'
+      },
+      gameplay: {
+        fr: 'Directive A.R.C.A.: classer par ton, masquer les DLC inactifs et ouvrir seulement les archives utiles au chapitre courant.',
+        en: 'A.R.C.A. directive: classify by tone, hide inactive DLC, and open only archives useful to the current chapter.'
+      },
+      missions: [
+        { fr: 'Recoller une archive comique sans lui retirer son absurdité.', en: 'Repair a comedy archive without removing its absurdity.' },
+        { fr: 'Separer une menace de serie d un portail de campagne principale.', en: 'Separate a series threat from a main campaign portal.' },
+        { fr: 'Graver un index ecran pour empecher les doublons de Trame.', en: 'Engrave a screen index to prevent Thread duplicates.' }
+      ],
+      outro: { fr: 'Chaque archive ecran garde son ton sans envahir les autres pages.', en: 'Every screen archive keeps its tone without invading other pages.' },
+      finale: { fr: 'Faire des films et series une bibliotheque, pas un tas de portails.', en: 'Make films and series a library, not a pile of portals.' },
+      rewards: [
+        { id: 'arc_screen_skin_archive_projectionist', type: 'skin', name: { fr: 'Apparence Projectionniste', en: 'Projectionist Appearance' } },
+        { id: 'arc_screen_item_tone_index', type: 'item', name: { fr: 'Index de Tonalite', en: 'Tone Index' } }
+      ],
+      claimReward: { gold: 430, shards: 90, tokens: 4 }
+    },
+    infection_mutation_cordon: {
+      faction: { fr: 'Confinement A.R.C.A. - Biohazard', en: 'A.R.C.A. Containment - Biohazard' },
+      intro: { fr: 'Certaines menaces ne veulent pas gagner: elles veulent se propager.', en: 'Some threats do not want to win: they want to spread.' },
+      stakes: {
+        fr: 'Infections, parasites et mutations peuvent transformer les heros debloques en vecteurs narratifs si le cordon tombe.',
+        en: 'Infections, parasites, and mutations can turn unlocked heroes into narrative vectors if the cordon falls.'
+      },
+      gameplay: {
+        fr: 'Directive A.R.C.A.: nettoyer les vagues, reduire les duplications hostiles et favoriser les artefacts de purge.',
+        en: 'A.R.C.A. directive: clean waves, reduce hostile duplications, and favor purge artifacts.'
+      },
+      missions: [
+        { fr: 'Fermer une zone infectee avant que ses ennemis entrent dans le pool commun.', en: 'Close an infected zone before its enemies enter the shared pool.' },
+        { fr: 'Extraire un vaccin de Trame sous pression de boss evolutif.', en: 'Extract a Thread vaccine under evolving boss pressure.' },
+        { fr: 'Sceller le Cordon Vert autour de la Cite-Mosaique.', en: 'Seal the Green Cordon around Mosaic City.' }
+      ],
+      outro: { fr: 'Le Nexus sait maintenant distinguer menace, porteur et remede.', en: 'The Nexus now knows how to distinguish threat, carrier, and cure.' },
+      finale: { fr: 'Garder les infections jouables sans les laisser devenir le jeu entier.', en: 'Keep infections playable without letting them become the whole game.' },
+      rewards: [
+        { id: 'arc_infection_skin_green_cordon', type: 'skin', name: { fr: 'Apparence Cordon Vert', en: 'Green Cordon Appearance' } },
+        { id: 'arc_infection_item_thread_vaccine', type: 'item', name: { fr: 'Vaccin de Trame', en: 'Thread Vaccine' } }
+      ],
+      claimReward: { gold: 470, shards: 100, tokens: 5 }
     }
   };
 

@@ -66,6 +66,15 @@ assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must
 assert(hubSource.includes('isCurrentStoryChapterStage'), 'Story mode must filter portals by the active chapter.');
 assert(hubSource.includes('storyChapterStages'), 'Story mode count must be based on the active chapter pool.');
 assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen must receive progression to hide future chapter banners.');
+[
+  'absurd_b_movie_front',
+  'kaiju_disaster_protocol',
+  'manga_war_council',
+  'screen_archive_fracture',
+  'infection_mutation_cordon'
+].forEach(arcId => {
+  assert(hubSource.includes(`id: '${arcId}'`) && hubSource.includes(`${arcId}: {`), `Missing completed faction arc ${arcId}.`);
+});
 
 console.log(JSON.stringify({
   baseUniverse: 'Nexus de Convergence',
@@ -74,5 +83,6 @@ console.log(JSON.stringify({
   ocItemSprites: expectedOcItemIds.length,
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',
-  storyChapterPortals: 'active-chapter-only'
+  storyChapterPortals: 'active-chapter-only',
+  factionArcCompletion: 'expanded'
 }, null, 2));
