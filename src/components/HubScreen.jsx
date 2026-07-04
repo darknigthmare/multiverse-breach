@@ -283,6 +283,22 @@ function NarrativeArcGroupBrowser({
           )}
         </div>
         <div className="arc-group-grid">
+          {visibleGroups.length === 0 && (
+            <div style={{
+              gridColumn: '1 / -1',
+              padding: '18px',
+              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'rgba(0,0,0,0.2)',
+              borderRadius: '6px',
+              color: '#aaa',
+              fontSize: '11px',
+              lineHeight: 1.45
+            }}>
+              {lang === 'fr'
+                ? 'Aucune trame narrative disponible pour ton compte dans cette vue. Recrute les personnages requis, monte leurs niveaux, ou stabilise plus de breches.'
+                : 'No narrative Thread is available for your account in this view. Recruit the required characters, raise their levels, or stabilize more breaches.'}
+            </div>
+          )}
           {visibleGroups.map(group => {
             const firstArcStage = group.arcs
               .map(getPrimaryArcStage)
@@ -3867,6 +3883,9 @@ export default function HubScreen({
       ready: heroIds.length > 0 && readyHeroIds.length === heroIds.length
     };
   };
+  const getStageForNarrativeArc = (arc) => (
+    ADMIN_VISIBLE_STAGES.find(stage => stage.universeArc?.id === arc?.id || stage.characterArc?.id === arc?.id || stage.trioArc?.id === arc?.id)
+  );
   const getArcUnlockRequirementText = (stage) => {
     const clearRequirement = getStageRequiredClears(stage);
     const clearText = clearRequirement > 0
@@ -3925,6 +3944,17 @@ export default function HubScreen({
     }
     if (stage.fusionMission) return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
     return true;
+  };
+  const isNarrativeArcAvailable = (arc) => {
+    const stage = getStageForNarrativeArc(arc);
+    return Boolean(stage && isStageUnlocked(stage));
+  };
+  const isUniverseArchiveAvailable = (universe) => {
+    if (!isUniverseVisible(universe) || !matchesMediaFilter(LORE_DB[universe]?.mediaType)) return false;
+    const stageId = UNIVERSE_TO_STAGE_ID[universe];
+    if (!stageId) return true;
+    const stage = ADMIN_VISIBLE_STAGES.find(entry => entry.id === stageId);
+    return Boolean(stage && isStageUnlocked(stage));
   };
   const getBreachBrief = (stage) => {
     if (stage.trioArc) {
@@ -4161,7 +4191,10 @@ export default function HubScreen({
     const universe = selectedCollectionUniverse;
     const lore = LORE_DB[universe];
     const stageId = UNIVERSE_TO_STAGE_ID[universe];
-    const stages = STAGES.filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe));
+    const stages = ADMIN_VISIBLE_STAGES
+      .filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe))
+      .filter(stage => !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission)
+      .filter(isStageUnlocked);
     const heroes = HEROES_DB.filter(hero => hero.universe === universe);
     const allEnemies = ENEMIES_DB[universe]
       ? [
@@ -4173,12 +4206,14 @@ export default function HubScreen({
     const relics = EQUIP_ITEMS_DB.filter(item => item.universe === universe);
     const eventItem = EVENT_ITEMS_DB[universe];
     const battleItems = getBattleItemsForUniverse(universe);
-    const universeArcs = UNIVERSE_NARRATIVE_ARCS.filter(arc => arc.universes.includes(universe));
+    const universeArcs = UNIVERSE_NARRATIVE_ARCS
+      .filter(arc => arc.universes.includes(universe))
+      .filter(isNarrativeArcAvailable);
     const characterArcs = CHARACTER_NARRATIVE_ARCS.filter(arc => {
       const hero = ALL_HEROES_DB.find(item => item.id === arc.heroId);
-      return hero?.universe === universe;
+      return hero?.universe === universe && isNarrativeArcAvailable(arc);
     });
-    const franchiseCollections = collectionProgress.filter(collection => collection.universes.includes(universe));
+    const franchiseCollections = collectionProgress.filter(collection => collection.universes.includes(universe) && collection.complete);
     const faction = getUniverseFaction(universe);
     const arcCount = universeArcs.length + characterArcs.length + franchiseCollections.length;
     return {
@@ -4352,7 +4387,7 @@ export default function HubScreen({
     || (mediaFilter === 'movie' && mediaType === 'series')
   );
   const visibleCollectionUniverses = Object.keys(LORE_DB)
-    .filter(key => isUniverseVisible(key) && matchesMediaFilter(LORE_DB[key]?.mediaType));
+    .filter(isUniverseArchiveAvailable);
   const getMediaTypeLabel = (mediaType) => {
     if (mediaType === 'game') return 'Game';
     if (mediaType === 'movie') return 'Movie';
@@ -4484,20 +4519,25 @@ export default function HubScreen({
   };
   const finalStage = STAGES.find(stage => stage.id === 38);
   const isPersonalArcVisibleForRoster = (stage) => {
-    const heroId = stage.characterArc?.heroId;
-    return heroId === 'player_anchor' || unlockedHeroes.includes(heroId);
+    return Boolean(stage.characterArc && isStageUnlocked(stage));
+  };
+  const isUniverseArcVisibleForRoster = (stage) => {
+    return Boolean(stage.universeArc && isStageUnlocked(stage));
+  };
+  const isTrioArcVisibleForRoster = (stage) => {
+    return Boolean(stage.trioArc && isStageUnlocked(stage));
   };
   const missionCategoryFilter = (stage) => {
-    if (missionScreen === 'universeArcs') return Boolean(stage.universeArc);
+    if (missionScreen === 'universeArcs') return isUniverseArcVisibleForRoster(stage);
     if (missionScreen === 'personalArcs') return Boolean(stage.characterArc) && isPersonalArcVisibleForRoster(stage);
-    if (missionScreen === 'trioArcs') return Boolean(stage.trioArc);
+    if (missionScreen === 'trioArcs') return isTrioArcVisibleForRoster(stage);
     if (missionScreen === 'fusionMissions') return Boolean(stage.fusionMission);
     return !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission;
   };
   const storyMissionCount = visibleStages.filter(stage => stage.id !== 38 && !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission).length;
-  const universeArcMissionCount = visibleStages.filter(stage => stage.universeArc).length;
+  const universeArcMissionCount = visibleStages.filter(isUniverseArcVisibleForRoster).length;
   const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc && isPersonalArcVisibleForRoster(stage)).length;
-  const trioArcMissionCount = visibleStages.filter(stage => stage.trioArc).length;
+  const trioArcMissionCount = visibleStages.filter(isTrioArcVisibleForRoster).length;
   const fusionMissionCount = visibleStages.filter(stage => stage.fusionMission).length;
   const missionScreenMeta = {
     story: {
@@ -4534,11 +4574,11 @@ export default function HubScreen({
   const selectedMissionMeta = missionScreenMeta[missionScreen] || missionScreenMeta.story;
   const missionPool = visibleStages.filter(stage => stage.id !== 38 && missionCategoryFilter(stage) && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
   const activeNarrativeArcs = missionScreen === 'universeArcs'
-    ? UNIVERSE_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.universeArc?.id === arc.id))
+    ? UNIVERSE_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.universeArc?.id === arc.id) && isNarrativeArcAvailable(arc))
     : missionScreen === 'personalArcs'
-      ? CHARACTER_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.characterArc?.id === arc.id) && (arc.heroId === 'player_anchor' || unlockedHeroes.includes(arc.heroId)))
+      ? CHARACTER_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.characterArc?.id === arc.id) && isNarrativeArcAvailable(arc))
       : missionScreen === 'trioArcs'
-        ? TRIO_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.trioArc?.id === arc.id))
+        ? TRIO_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.trioArc?.id === arc.id) && isNarrativeArcAvailable(arc))
         : [];
   const narrativeArcScreenType = missionScreen === 'universeArcs'
     ? 'universe'
@@ -4622,7 +4662,21 @@ export default function HubScreen({
       setSelectedNarrativeGroupId(null);
     }
   }, [narrativeArcGroups, selectedNarrativeGroupId]);
+  const getNarrativeGroupIdForArc = (arc) => {
+    if (narrativeArcScreenType === 'universe') {
+      const universe = getArcUniverses(arc, BASE_HEROES_DB)
+        .find(candidate => narrativeArcGroups.some(group => group.id === `universe-${candidate}`));
+      return universe ? `universe-${universe}` : null;
+    }
+    if (narrativeArcScreenType === 'personal') return `hero-${arc.heroId || arc.id}`;
+    if (narrativeArcScreenType === 'trio') return `trio-${arc.id}`;
+    return null;
+  };
   const openNarrativeArc = (arc) => {
+    const groupId = getNarrativeGroupIdForArc(arc);
+    if (groupId && narrativeArcGroups.some(group => group.id === groupId)) {
+      setSelectedNarrativeGroupId(groupId);
+    }
     setSelectedNarrativeArcId(arc.id);
     setBriefingStageId(null);
     setShowMissionArchive(false);
@@ -7991,7 +8045,7 @@ export default function HubScreen({
 
             {codexView === 'characters' && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
-                {CHARACTER_NARRATIVE_ARCS.map(arc => {
+                {CHARACTER_NARRATIVE_ARCS.filter(isNarrativeArcAvailable).map(arc => {
                   const hero = HEROES_DB.find(item => item.id === arc.heroId);
                   const heroUnlocked = Boolean(hero && unlockedHeroes.includes(hero.id));
                   const heroLevel = hero ? (heroLevels[hero.id] || 1) : 0;
@@ -8025,7 +8079,13 @@ export default function HubScreen({
 
             {codexView === 'fusions' && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
-                {[...FUSION_MISSIONS, ...UNIVERSE_NARRATIVE_ARCS].map(entry => {
+                {[
+                  ...FUSION_MISSIONS.filter(entry => {
+                    const stage = ADMIN_VISIBLE_STAGES.find(item => item.fusionMission?.id === entry.id);
+                    return stage ? isStageUnlocked(stage) : false;
+                  }),
+                  ...UNIVERSE_NARRATIVE_ARCS.filter(isNarrativeArcAvailable)
+                ].map(entry => {
                   const rewardId = entry.itemId;
                   const rewardOwned = rewardId ? inventory.includes(rewardId) : false;
                   const unlockClears = entry.unlockClears || 0;
