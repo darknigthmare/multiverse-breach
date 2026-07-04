@@ -156,8 +156,8 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
           <h3>{lang === 'fr' ? 'Circuit A.R.C.A. Kart' : 'A.R.C.A. Kart Circuit'}</h3>
           <p>
             {lang === 'fr'
-              ? `Pilote ${pilotName}, Mirelle ouvre la premiere plaquette jouable: conduite, drift, objets, checkpoints et adversaires IA.`
-              : `Pilot ${pilotName}, Mirelle opens the first playable sheet: driving, drift, items, checkpoints, and AI rivals.`}
+              ? `Pilote ${pilotName}, Mirelle ouvre la premiere plaquette jouable en camera arriere: conduite, drift, objets, checkpoints et adversaires IA. La vue de dessus reste limitee a la mini-map.`
+              : `Pilot ${pilotName}, Mirelle opens the first playable rear-camera sheet: driving, drift, items, checkpoints, and AI rivals. Top-down view stays limited to the minimap.`}
           </p>
         </div>
         <div className="race-mode-pilot">

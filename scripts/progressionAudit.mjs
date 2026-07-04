@@ -80,6 +80,9 @@ assert(hubSource.includes("setActiveTab('race')") && hubSource.includes('<RaceMo
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
 assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('arca-mirelle-kart-directions.png'), 'Race engine must use the Mirelle kart sprite sheet assets.');
+assert(raceEngineSource.includes('drawRaceCameraBackdrop') && raceEngineSource.includes('drawRearRoad') && raceEngineSource.includes('drawRearPlayerKart'), 'Race mode must render from a rear kart camera, not only a top-down circuit.');
+assert(raceEngineSource.includes('projectToRearCamera') && raceEngineSource.includes('drawProjectedRaceObjects'), 'Race objects and rivals must be projected into the rear camera view.');
+assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.includes('vue de dessus reste limitee a la mini-map'), 'Race top-down view must stay limited to the minimap.');
 [
   'arca-mirelle-rpg.png',
   'arca-mirelle-tactics.png',

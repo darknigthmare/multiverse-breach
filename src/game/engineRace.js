@@ -472,13 +472,331 @@ export class EngineRace {
 
   draw(ctx) {
     ctx.clearRect(0, 0, this.width, this.height);
-    this.drawBackdrop(ctx);
-    this.drawTrack(ctx);
-    this.drawObjects(ctx);
-    const racers = [this.player, ...this.opponents].sort((a, b) => a.y - b.y);
-    racers.forEach(kart => this.drawKart(ctx, kart));
-    this.drawParticles(ctx);
+    this.drawRaceCameraBackdrop(ctx);
+    this.drawRearRoad(ctx);
+    this.drawProjectedRaceObjects(ctx);
+    this.drawRearPlayerKart(ctx);
     this.drawHud(ctx);
+  }
+
+  drawRaceCameraBackdrop(ctx) {
+    const sky = ctx.createLinearGradient(0, 0, 0, this.height);
+    sky.addColorStop(0, '#020106');
+    sky.addColorStop(0.34, '#081527');
+    sky.addColorStop(0.58, '#13242c');
+    sky.addColorStop(1, '#05030a');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, this.width, this.height);
+
+    const horizon = this.getRaceCameraHorizon();
+    const trackImage = this.images.trackNexus;
+    if (trackImage?.complete && trackImage.naturalWidth) {
+      ctx.globalAlpha = 0.12;
+      ctx.drawImage(trackImage, 0, -this.height * 0.42, this.width, this.height * 1.7);
+      ctx.globalAlpha = 1;
+    }
+    ctx.fillStyle = 'rgba(57,197,187,0.1)';
+    for (let i = 0; i < 9; i += 1) {
+      const x = (i / 8) * this.width;
+      ctx.beginPath();
+      ctx.moveTo(this.width / 2, horizon + 8);
+      ctx.lineTo(x, this.height);
+      ctx.lineTo(x + 1, this.height);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.strokeStyle = 'rgba(255,235,59,0.1)';
+    ctx.lineWidth = 1;
+    for (let y = horizon + 24; y < this.height; y += 34) {
+      const width = (y - horizon) * 1.9;
+      ctx.beginPath();
+      ctx.moveTo(this.width / 2 - width, y);
+      ctx.lineTo(this.width / 2 + width, y);
+      ctx.stroke();
+    }
+  }
+
+  getRaceCameraHorizon() {
+    return this.height * 0.34;
+  }
+
+  getRoadCurveOffset(depthT) {
+    const upcoming = this.track.waypoints[this.player.waypoint] || this.track.waypoints[0];
+    const desired = Math.atan2(upcoming.y - this.player.y, upcoming.x - this.player.x);
+    const delta = angleDelta(this.player.angle, desired);
+    const driftPull = this.player.drift * Math.sign(delta || 1) * 0.18;
+    return (delta * 0.72 + driftPull) * depthT * depthT * 190;
+  }
+
+  drawRearRoad(ctx) {
+    const horizon = this.getRaceCameraHorizon();
+    const centerX = this.width / 2;
+    const roadBottom = this.height + 32;
+    const segments = 18;
+    for (let i = segments; i > 0; i -= 1) {
+      const t0 = (i - 1) / segments;
+      const t1 = i / segments;
+      const y0 = lerp(horizon, roadBottom, t0 ** 1.65);
+      const y1 = lerp(horizon, roadBottom, t1 ** 1.65);
+      const w0 = lerp(42, 470, t0 ** 1.08);
+      const w1 = lerp(42, 470, t1 ** 1.08);
+      const c0 = centerX + this.getRoadCurveOffset(t0);
+      const c1 = centerX + this.getRoadCurveOffset(t1);
+      ctx.fillStyle = i % 2 === 0 ? '#303443' : '#272b39';
+      ctx.beginPath();
+      ctx.moveTo(c0 - w0, y0);
+      ctx.lineTo(c0 + w0, y0);
+      ctx.lineTo(c1 + w1, y1);
+      ctx.lineTo(c1 - w1, y1);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    ctx.strokeStyle = 'rgba(57,197,187,0.72)';
+    ctx.lineWidth = 4;
+    [-1, 1].forEach(side => {
+      ctx.beginPath();
+      for (let i = 0; i <= segments; i += 1) {
+        const t = i / segments;
+        const y = lerp(horizon, roadBottom, t ** 1.65);
+        const w = lerp(42, 470, t ** 1.08);
+        const c = centerX + this.getRoadCurveOffset(t);
+        if (i === 0) ctx.moveTo(c + side * w, y);
+        else ctx.lineTo(c + side * w, y);
+      }
+      ctx.stroke();
+    });
+
+    ctx.strokeStyle = 'rgba(255,235,59,0.5)';
+    ctx.lineWidth = 3;
+    ctx.setLineDash([24, 26]);
+    ctx.beginPath();
+    for (let i = 0; i <= segments; i += 1) {
+      const t = i / segments;
+      const y = lerp(horizon, roadBottom, t ** 1.65);
+      const c = centerX + this.getRoadCurveOffset(t);
+      if (i === 0) ctx.moveTo(c, y);
+      else ctx.lineTo(c, y);
+    }
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.fillStyle = 'rgba(255,255,255,0.82)';
+    ctx.fillRect(centerX - 76, roadBottom - 110, 152, 8);
+    ctx.fillStyle = 'rgba(0,0,0,0.58)';
+    for (let i = 0; i < 12; i += 1) {
+      ctx.fillRect(centerX - 76 + i * 13, roadBottom - 110, 6, 8);
+    }
+  }
+
+  projectToRearCamera(point) {
+    const dx = point.x - this.player.x;
+    const dy = point.y - this.player.y;
+    const forward = Math.cos(this.player.angle) * dx + Math.sin(this.player.angle) * dy;
+    const lateral = -Math.sin(this.player.angle) * dx + Math.cos(this.player.angle) * dy;
+    if (forward < 18 || forward > 690) return null;
+    const t = 1 - clamp(forward / 690, 0, 1);
+    const horizon = this.getRaceCameraHorizon();
+    const y = lerp(horizon + 4, this.height - 86, t ** 1.58);
+    const roadHalf = lerp(42, 390, t ** 1.08);
+    const curve = this.getRoadCurveOffset(t);
+    const x = this.width / 2 + curve + lateral * (roadHalf / 125);
+    const scale = lerp(0.22, 1.42, t ** 1.12);
+    if (x < -120 || x > this.width + 120) return null;
+    return { x, y, scale, t, forward, lateral };
+  }
+
+  drawProjectedRaceObjects(ctx) {
+    const projected = [];
+    this.track.boostPads.forEach(pad => {
+      const p = this.projectToRearCamera(pad);
+      if (p) projected.push({ type: 'boost', p, source: pad });
+    });
+    this.track.itemBoxes.forEach(box => {
+      if (box.respawn > 0) return;
+      const p = this.projectToRearCamera(box);
+      if (p) projected.push({ type: 'item', p, source: box });
+    });
+    this.track.hazards.forEach(hazard => {
+      const p = this.projectToRearCamera(hazard);
+      if (p) projected.push({ type: 'hazard', p, source: hazard });
+    });
+    this.projectiles.forEach(projectile => {
+      const p = this.projectToRearCamera(projectile);
+      if (p) projected.push({ type: 'projectile', p, source: projectile });
+    });
+    this.opponents.forEach(kart => {
+      const p = this.projectToRearCamera(kart);
+      if (p) projected.push({ type: 'opponent', p, source: kart });
+    });
+    projected
+      .sort((a, b) => a.p.forward - b.p.forward)
+      .forEach(entry => {
+        if (entry.type === 'opponent') this.drawProjectedOpponent(ctx, entry.source, entry.p);
+        if (entry.type === 'boost') this.drawProjectedBoostPad(ctx, entry.p);
+        if (entry.type === 'item') this.drawProjectedItemBox(ctx, entry.p);
+        if (entry.type === 'hazard') this.drawProjectedHazard(ctx, entry.source, entry.p);
+        if (entry.type === 'projectile') this.drawProjectedProjectile(ctx, entry.source, entry.p);
+      });
+    this.drawParticles(ctx);
+  }
+
+  drawProjectedBoostPad(ctx, p) {
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.scale(p.scale, p.scale * 0.42);
+    ctx.fillStyle = 'rgba(57,197,187,0.34)';
+    ctx.strokeStyle = '#39c5bb';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.roundRect(-38, -16, 76, 32, 6);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = '#d8fffb';
+    ctx.fillRect(-24, -4, 48, 8);
+    ctx.restore();
+  }
+
+  drawProjectedItemBox(ctx, p) {
+    const pulse = 1 + Math.sin(this.time * 5) * 0.08;
+    ctx.save();
+    ctx.translate(p.x, p.y - 20 * p.scale);
+    ctx.scale(p.scale * pulse, p.scale * pulse);
+    ctx.rotate(this.time * 1.3);
+    ctx.fillStyle = 'rgba(255,235,59,0.22)';
+    ctx.strokeStyle = '#ffeb3b';
+    ctx.lineWidth = 3;
+    ctx.fillRect(-18, -18, 36, 36);
+    ctx.strokeRect(-18, -18, 36, 36);
+    ctx.fillStyle = '#ffeb3b';
+    ctx.font = 'bold 22px Share Tech Mono, monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('?', 0, 8);
+    ctx.restore();
+  }
+
+  drawProjectedHazard(ctx, hazard, p) {
+    const activeRadius = (hazard.r + Math.sin(this.time * 3.2 + hazard.phase) * 6) * p.scale;
+    ctx.fillStyle = 'rgba(231,76,60,0.2)';
+    ctx.strokeStyle = hazard.temporary ? '#ffeb3b' : '#e74c3c';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.ellipse(p.x, p.y, activeRadius * 1.35, activeRadius * 0.48, 0, 0, TAU);
+    ctx.fill();
+    ctx.stroke();
+  }
+
+  drawProjectedProjectile(ctx, projectile, p) {
+    ctx.fillStyle = projectile.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y - 18 * p.scale, 6 * p.scale, 0, TAU);
+    ctx.fill();
+  }
+
+  drawProjectedOpponent(ctx, kart, p) {
+    ctx.save();
+    ctx.translate(p.x, p.y - 20 * p.scale);
+    ctx.scale(p.scale, p.scale);
+    ctx.fillStyle = 'rgba(0,0,0,0.26)';
+    ctx.beginPath();
+    ctx.ellipse(0, 30, 28, 8, 0, 0, TAU);
+    ctx.fill();
+    ctx.fillStyle = kart.color;
+    ctx.strokeStyle = '#050307';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.roundRect(-22, -22, 44, 56, 9);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = '#111723';
+    ctx.fillRect(-14, -12, 28, 20);
+    ctx.fillStyle = '#ffeb3b';
+    ctx.fillRect(-16, 24, 32, 6);
+    if (kart.boost > 0) {
+      ctx.fillStyle = kart.color;
+      ctx.globalAlpha = 0.55;
+      ctx.beginPath();
+      ctx.moveTo(-16, 34);
+      ctx.lineTo(0, 66);
+      ctx.lineTo(16, 34);
+      ctx.closePath();
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    ctx.restore();
+    ctx.fillStyle = '#d8fffb';
+    ctx.font = `${Math.max(8, 10 * p.scale)}px Share Tech Mono, monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillText(kart.name, p.x, p.y - 62 * p.scale);
+  }
+
+  drawRearPlayerKart(ctx) {
+    const isDrifting = this.player.drift > 0.12;
+    const sprite = this.images.kartActions?.complete && this.images.kartActions.naturalWidth
+      ? this.images.kartActions
+      : this.images.kartDirections;
+    const centerX = this.width / 2 + clamp(this.player.drift * Math.sign(this.getPlayerInput().turn || 0) * 34, -34, 34);
+    const baseY = this.height - 74;
+    if (sprite?.complete && sprite.naturalWidth) {
+      const cols = 4;
+      const rows = 4;
+      const frameW = sprite.naturalWidth / cols;
+      const frameH = sprite.naturalHeight / rows;
+      const row = this.player.spin > 0 ? 3 : this.player.boost > 0 ? 2 : isDrifting ? 1 : 0;
+      const col = Math.floor(this.time * (this.player.boost > 0 ? 12 : 7)) % cols;
+      ctx.save();
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(sprite, col * frameW, row * frameH, frameW, frameH, centerX - 136, baseY - 126, 272, 178);
+      ctx.restore();
+    } else {
+      ctx.fillStyle = '#39c5bb';
+      ctx.strokeStyle = '#050307';
+      ctx.lineWidth = 5;
+      ctx.beginPath();
+      ctx.roundRect(centerX - 74, baseY - 106, 148, 126, 20);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#10131c';
+      ctx.fillRect(centerX - 46, baseY - 78, 92, 46);
+    }
+    if (this.player.boost > 0) {
+      ctx.fillStyle = 'rgba(57,197,187,0.5)';
+      ctx.beginPath();
+      ctx.moveTo(centerX - 58, baseY + 14);
+      ctx.lineTo(centerX, this.height + 42);
+      ctx.lineTo(centerX + 58, baseY + 14);
+      ctx.closePath();
+      ctx.fill();
+    }
+    if (this.player.shield > 0) {
+      ctx.strokeStyle = 'rgba(217,182,255,0.82)';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.ellipse(centerX, baseY - 50, 150, 92, 0, 0, TAU);
+      ctx.stroke();
+    }
+  }
+
+  drawTopDownMinimap(ctx) {
+    ctx.fillStyle = 'rgba(2,1,8,0.78)';
+    ctx.fillRect(this.width - 172, 16, 150, 94);
+    ctx.strokeStyle = 'rgba(255,235,59,0.45)';
+    ctx.strokeRect(this.width - 172, 16, 150, 94);
+    ctx.save();
+    ctx.translate(this.width - 97, 63);
+    ctx.scale(0.18, 0.18);
+    ctx.strokeStyle = '#ffeb3b';
+    ctx.lineWidth = 10;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 286, 188, 0, 0, TAU);
+    ctx.stroke();
+    [this.player, ...this.opponents].forEach(kart => {
+      ctx.fillStyle = kart.color;
+      ctx.beginPath();
+      ctx.arc(kart.x - this.width / 2, kart.y - this.height / 2 - 4, kart.id === 'mirelle' ? 16 : 11, 0, TAU);
+      ctx.fill();
+    });
+    ctx.restore();
   }
 
   drawBackdrop(ctx) {
@@ -672,25 +990,7 @@ export class EngineRace {
     ctx.fillText(`Vitesse ${Math.round(Math.abs(player.speed))}`, 28, 80);
     ctx.fillText(`Cache ${player.item ? this.getItemName(player.item) : 'vide'}`, 28, 100);
 
-    ctx.fillStyle = 'rgba(2,1,8,0.78)';
-    ctx.fillRect(this.width - 172, 16, 150, 94);
-    ctx.strokeStyle = 'rgba(255,235,59,0.45)';
-    ctx.strokeRect(this.width - 172, 16, 150, 94);
-    ctx.save();
-    ctx.translate(this.width - 97, 63);
-    ctx.scale(0.18, 0.18);
-    ctx.strokeStyle = '#ffeb3b';
-    ctx.lineWidth = 10;
-    ctx.beginPath();
-    ctx.ellipse(0, 0, 286, 188, 0, 0, TAU);
-    ctx.stroke();
-    [this.player, ...this.opponents].forEach(kart => {
-      ctx.fillStyle = kart.color;
-      ctx.beginPath();
-      ctx.arc(kart.x - this.width / 2, kart.y - this.height / 2 - 4, kart.id === 'mirelle' ? 16 : 11, 0, TAU);
-      ctx.fill();
-    });
-    ctx.restore();
+    this.drawTopDownMinimap(ctx);
 
     if (this.countdown > 0) {
       ctx.fillStyle = 'rgba(0,0,0,0.42)';
