@@ -109,7 +109,9 @@ assert(rendererSource.includes("context = 'auto'") && rendererSource.includes('s
 assert(spriteAssetsSource.includes('SPRITE_SHEET_LAYOUTS') && spriteAssetsSource.includes('rows: 12') && spriteAssetsSource.includes('rows: 10') && spriteAssetsSource.includes('rows: 6'), 'Mirelle complete sheets must declare real per-sheet crop layouts.');
 assert(spriteAssetsSource.includes('normalizeSpriteSrc') && spriteAssetsSource.includes('new URL(value).pathname'), 'Sprite layout lookup must normalize absolute browser URLs before matching generated sheet paths.');
 assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.includes('getSpriteFrameForLayout'), 'Renderer must crop generated sprites through per-sheet layouts.');
+assert(rendererSource.includes('sourceY') && rendererSource.includes('sourceH') && spriteAssetsSource.includes('trimByState'), 'Renderer must support per-sheet trim data to avoid adjacent OpenAI sprite bleed.');
 assert(hubSource.includes('sheet.naturalHeight / 10') && hubSource.includes('fpsProjectileRef'), 'FPS Mirelle hands must be cropped as 4x10 and use a dedicated projectile overlay.');
+assert(hubSource.includes('reloadTrimTop') && hubSource.includes('reloadTrimBottom'), 'FPS reload frames must crop away adjacent row bleed.');
 assert(hubSource.includes('reloadPulse') && hubSource.includes('state.reloadPulse > 0 && !state.muzzle ? 6 : 0') && hubSource.includes('state.muzzle = 36') && hubSource.includes('fpsProjectileRef.current') && hubSource.includes('410, 146'), 'FPS firing must keep idle hands framed and draw projectile frames as a separate overlay.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');

@@ -1581,7 +1581,6 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
 function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   const canvasRef = useRef(null);
   const fpsHandsRef = useRef(null);
-  const fpsEffectsRef = useRef(null);
   const fpsProjectileRef = useRef(null);
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
@@ -1653,17 +1652,13 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   useEffect(() => {
     if (typeof Image === 'undefined') return undefined;
     const hands = new Image();
-    const effects = new Image();
     const projectile = new Image();
     hands.src = MIRELLE_COMPLETE_SPRITES.fpsHands;
-    effects.src = MIRELLE_COMPLETE_SPRITES.fpsEffects;
     projectile.src = MIRELLE_COMPLETE_SPRITES.fpsProjectile;
     fpsHandsRef.current = hands;
-    fpsEffectsRef.current = effects;
     fpsProjectileRef.current = projectile;
     return () => {
       fpsHandsRef.current = null;
-      fpsEffectsRef.current = null;
       fpsProjectileRef.current = null;
     };
   }, []);
@@ -1989,15 +1984,18 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         const frameW = sheet.naturalWidth / 4;
         const frameH = sheet.naturalHeight / 10;
         const row = state.reloadPulse > 0 && !state.muzzle ? 6 : 0;
+        const reloadTrimTop = row === 6 ? 40 : 0;
+        const reloadTrimBottom = row === 6 ? 6 : 0;
+        const sourceH = frameH - reloadTrimTop - reloadTrimBottom;
         const col = Math.floor(state.t / 12) % 4;
         const handW = 300;
         const handH = 188;
         ctx.drawImage(
           sheet,
           col * frameW,
-          row * frameH,
+          row * frameH + reloadTrimTop,
           frameW,
-          frameH,
+          sourceH,
           canvas.width / 2 - handW / 2 - state.turnVel * 430 + state.vx * 85,
           canvas.height - handH - 4,
           handW,

@@ -60,8 +60,16 @@ export const SPRITE_SHEET_LAYOUTS = {
   },
   [MIRELLE_COMPLETE_SPRITES.tactics]: {
     columns: 4,
-    rows: 9,
-    rowByState: { idle: 0, run: 1, attack: 3, defense: 4, hit: 7, dead: 8 }
+    rows: 12,
+    rowByState: { idle: 0, run: 1, attack: 3, defense: 9, hit: 7, dead: 8 },
+    trimByState: {
+      idle: { bottom: 6 },
+      run: { top: 6, bottom: 6 },
+      attack: { top: 6, bottom: 6 },
+      defense: { top: 6, bottom: 6 },
+      hit: { top: 6, bottom: 6 },
+      dead: { top: 6, bottom: 6 }
+    }
   },
   [MIRELLE_COMPLETE_SPRITES.meleeMovement]: {
     columns: 4,
@@ -70,18 +78,35 @@ export const SPRITE_SHEET_LAYOUTS = {
   },
   [MIRELLE_COMPLETE_SPRITES.meleeCombat]: {
     columns: 4,
-    rows: 9,
-    rowByState: { idle: 0, run: 0, attack: 2, defense: 4, hit: 7, dead: 8 }
+    rows: 12,
+    rowByState: { idle: 0, run: 0, attack: 2, defense: 6, hit: 7, dead: 8 },
+    trimByState: {
+      idle: { bottom: 6 },
+      attack: { top: 6, bottom: 6 },
+      defense: { top: 6, bottom: 6 },
+      hit: { top: 6, bottom: 6 },
+      dead: { top: 6, bottom: 6 }
+    }
   },
   [MIRELLE_COMPLETE_SPRITES.nexusCollection]: {
     columns: 4,
     rows: 10,
-    rowByState: { idle: 0, run: 1, attack: 4, defense: 5, hit: 8, dead: 9 }
+    rowByState: { idle: 0, run: 1, attack: 4, defense: 5, hit: 8, dead: 9 },
+    trimByState: {
+      run: { top: 38 },
+      attack: { top: 18, bottom: 8 },
+      defense: { top: 16, bottom: 10 },
+      hit: { top: 20, bottom: 10 },
+      dead: { top: 18 }
+    }
   },
   [MIRELLE_COMPLETE_SPRITES.fpsHands]: {
     columns: 4,
     rows: 10,
-    rowByState: { idle: 0, run: 1, attack: 3, defense: 8, hit: 9, dead: 9 }
+    rowByState: { idle: 0, run: 1, attack: 3, defense: 8, hit: 9, dead: 9 },
+    trimByState: {
+      reload: { top: 40, bottom: 6 }
+    }
   },
   [MIRELLE_COMPLETE_SPRITES.fpsEffects]: {
     columns: 4,
@@ -173,10 +198,14 @@ const animationRowForLayout = (state, layout) => {
   return animationRowForState(state);
 };
 
-export const getSpriteFrameForLayout = (state, animTime, layout) => ({
-  row: Math.max(0, Math.min((layout?.rows || SPRITE_SHEET_META.rows.length) - 1, animationRowForLayout(state, layout))),
-  col: Math.floor(animTime / 10) % (layout?.columns || SPRITE_SHEET_META.columns)
-});
+export const getSpriteFrameForLayout = (state, animTime, layout) => {
+  const row = Math.max(0, Math.min((layout?.rows || SPRITE_SHEET_META.rows.length) - 1, animationRowForLayout(state, layout)));
+  return {
+    row,
+    col: Math.floor(animTime / 10) % (layout?.columns || SPRITE_SHEET_META.columns),
+    trim: layout?.trimByState?.[state] || layout?.trimByRow?.[row] || layout?.trim || null
+  };
+};
 
 export const getSpriteFrame = (state, animTime) => ({
   row: animationRowForState(state),

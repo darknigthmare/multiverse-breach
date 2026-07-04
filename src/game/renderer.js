@@ -67,8 +67,13 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
   const frameWidth = entry.image.naturalWidth / layout.columns;
   const frameHeight = entry.image.naturalHeight / layout.rows;
   const frame = getSpriteFrameForLayout(entity.state, animTime, layout);
-  const scale = targetHeight / frameHeight;
-  const drawW = frameWidth * scale;
+  const trim = frame.trim || {};
+  const sourceX = frame.col * frameWidth + (trim.left || 0);
+  const sourceY = frame.row * frameHeight + (trim.top || 0);
+  const sourceW = Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
+  const sourceH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
+  const scale = targetHeight / sourceH;
+  const drawW = sourceW * scale;
   const drawH = targetHeight;
 
   ctx.save();
@@ -77,10 +82,10 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
   ctx.imageSmoothingEnabled = false;
   ctx.drawImage(
     entry.image,
-    frame.col * frameWidth,
-    frame.row * frameHeight,
-    frameWidth,
-    frameHeight,
+    sourceX,
+    sourceY,
+    sourceW,
+    sourceH,
     -drawW / 2,
     -drawH + 24 * scale,
     drawW,
