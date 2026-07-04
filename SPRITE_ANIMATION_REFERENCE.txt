@@ -1,0 +1,437 @@
+FICHE DE REFERENCE GENERALE - SPRITES PERSONNAGE MULTI-MODES
+============================================================
+
+But de cette fiche
+------------------
+Cette fiche sert de reference unique pour definir tout ce qu il faut produire pour
+un personnage jouable, un ennemi ou un boss afin qu il soit utilisable partout dans
+l application : Melee, RPG, Tactics, Nexus/hub, FPS, HUD, collection, admin, mission,
+dialogue narratif et recompenses.
+
+Le personnage de reference peut etre n importe quel heros du jeu. Chaque personnage
+doit respecter son lore, sa silhouette, son arme principale, son attitude, ses couleurs
+dominantes et son niveau de danger ou d heroicite. Le style global reste pixel art
+detaille, lisible, sans fond ou fond transparent, avec une coherence stricte entre
+toutes les animations.
+
+
+FORMAT GLOBAL RECOMMANDE
+------------------------
+Style:
+- Pixel art detaille, semi-realiste, lisible en petit et en grand.
+- Meme angle que les sprites existants: vue 3/4 legerement de face.
+- Silhouette reconnaissable meme reduite.
+- Couleurs fideles au personnage, pas de palette aleatoire.
+- Arme, accessoire ou posture toujours coherent avec le lore.
+- Pas de chroma vert visible, fond transparent propre.
+- Pas de changement de genre, visage, costume ou morphologie entre les lignes.
+- Taille, proportions et orientation stables sur toute la planche.
+
+Resolution de reference:
+- Frame personnage standard: 256 x 256 px.
+- Planche standard: 4 colonnes x 8 a 12 lignes selon besoin.
+- Boss massif: 384 x 384 px par frame si necessaire.
+- Icone HUD/avatar: 128 x 128 px et variante 64 x 64 px.
+- Item ou objet recuperable: 512 x 512 px pour master, export possible en 128 x 128.
+
+Regles de coherence:
+- Chaque ligne doit representer une animation claire.
+- Chaque colonne doit etre une etape du mouvement, pas une variation de design.
+- La position des pieds doit rester stable pour idle, hurt, cast, aim.
+- Les attaques doivent garder l arme ou le pouvoir attendu par le lore.
+- Les sprites bas sur la grille doivent pouvoir passer visuellement devant ceux du haut.
+- Les boss peuvent deborder plus large, mais la planche doit prevoir une marge suffisante.
+
+
+PLAN DE SPRITE PRINCIPAL - PERSONNAGE JOUEUR / HERO
+---------------------------------------------------
+Nom du fichier conseille:
+heroes/[univers-slug]/[character-id].png
+
+Planche minimale obligatoire:
+1. IDLE
+   - 4 frames.
+   - Respiration, leger mouvement de vetement, arme tenue naturellement.
+   - Doit etre la pose de base dans RPG, Tactics, hub et collection.
+
+2. WALK / RUN
+   - 4 frames.
+   - Deplacement lateral ou 3/4 selon l angle du jeu.
+   - Pieds lisibles, pas de glissement trop fort.
+   - Pour Melee, cette ligne sert aussi de course horizontale.
+
+3. BASIC ATTACK
+   - 4 frames.
+   - Attaque simple: coup de melee, tir, sort, morsure, outil, selon le personnage.
+   - Arme strictement lore: ne pas remplacer par une arme generique.
+
+4. SECONDARY ATTACK / SKILL
+   - 4 frames.
+   - Competence signature secondaire.
+   - Peut etre un tir special, gadget, posture tactique, sort, dash ou projectile.
+
+5. SPECIAL / ULTIMATE
+   - 4 frames.
+   - Mouvement le plus spectaculaire.
+   - Effet visuel plus fort, mais toujours lisible.
+   - Peut inclure aura, energie, explosion, invocation ou transformation courte.
+
+6. HURT / HIT
+   - 4 frames.
+   - Recul, impact, posture blessee.
+   - Doit garder le meme personnage.
+   - Pas de changement de sexe, visage ou costume.
+
+7. KO / DOWN
+   - 4 frames.
+   - Chute, genou au sol, silhouette vaincue.
+   - Version non gore sauf si le lore du jeu exige une variante horror.
+
+8. DEFENSE / GUARD
+   - 4 frames.
+   - Posture de protection.
+   - Bouclier, garde, couverture, concentration, blocage, selon le personnage.
+
+Planche etendue recommandee:
+9. JUMP / AIR
+   - 4 frames.
+   - Necessaire pour Melee/platform fighter.
+
+10. LAND / RECOVERY
+   - 4 frames.
+   - Atterrissage, reprise d equilibre.
+
+11. DODGE / DASH
+   - 4 frames.
+   - Esquive, roulade, teleport court ou dash selon le lore.
+
+12. TAUNT / PERSONALITY
+   - 4 frames.
+   - Petite animation de caractere pour collection, victoire, hub.
+
+
+MODE MELEE
+----------
+Objectif:
+Le personnage doit etre utilisable comme combattant dynamique sur terrain type
+platform fighter.
+
+Animations a produire:
+- idle combat
+- run gauche/droite
+- jump start
+- jump loop
+- fall
+- land
+- dash / dodge
+- basic combo 1
+- basic combo 2
+- air attack
+- charged attack
+- secondary skill
+- special attack
+- guard / parry
+- hurt light
+- hurt heavy
+- knockback
+- ledge recovery / air recovery
+- KO / ring out
+- victory pose
+
+Sprites additionnels Melee:
+- effet de coup simple
+- effet de projectile si besoin
+- impact hit spark couleur personnage
+- trail de dash
+- icone objectif melee si le personnage est lie a un artefact ou portail
+
+
+MODE RPG
+--------
+Objectif:
+Le personnage doit etre lisible en combat semi-statique avec actions, ATB, attaques
+et narration.
+
+Animations a produire:
+- idle RPG
+- ready stance
+- basic attack
+- ranged attack ou melee attack selon lore
+- secondary skill
+- defense
+- special / ultimate
+- cast / prepare
+- receive buff
+- receive heal
+- hurt
+- critical hurt
+- KO
+- revive / stand up si applicable
+- victory
+- dialogue idle pour intro/outro narrative
+
+Sprites additionnels RPG:
+- portrait dialogue 512 x 512
+- portrait emotion neutre
+- portrait emotion colere/concentration
+- portrait emotion blesse
+- portrait emotion victoire
+- petite vignette de mission narrative
+- effet ultimate plein ecran optionnel
+
+
+MODE TACTICS
+------------
+Objectif:
+Le personnage doit fonctionner sur une grille avec lecture claire de position,
+orientation, couverture, hauteur et actions au tour par tour.
+
+Animations a produire:
+- idle tactical stance
+- move step court
+- aim / target
+- melee strike ou ranged fire
+- secondary tactical action
+- special tactical action
+- overwatch / guard
+- take cover
+- hurt
+- KO
+- interact objective
+- capture / seal portal
+- collect artifact
+- escort stance / protect stance
+
+Sprites additionnels Tactics:
+- petite base au sol ou ombre directionnelle
+- marqueur actif au-dessus du personnage
+- silhouette selectionnee
+- silhouette menacee
+- mini portrait initiative
+- icone role tactique: shooter, tank, assassin, support, boss controller, monster
+
+
+MODE NEXUS / HUB / COLLECTION
+-----------------------------
+Objectif:
+Le personnage doit exister comme asset de collection et de menu, pas seulement en combat.
+
+Sprites a produire:
+- full body collection 512 x 768 ou 768 x 1024
+- idle hub 4 frames
+- selection hover 4 frames
+- unlock reveal 4 frames
+- duplicate / shard conversion 4 frames
+- level up pose 4 frames
+- affinity / lore pose 4 frames
+- locked silhouette
+- corrupted / disabled admin silhouette
+- DLC hidden placeholder silhouette
+
+Plaquette personnage:
+- full body principal
+- nom lisible
+- univers
+- role
+- rarete
+- arme ou pouvoir signature
+- 4 a 8 poses d animation visibles
+- fond transparent ou fond sobre non chroma
+
+
+MODE FPS / VUE PREMIERE PERSONNE
+--------------------------------
+Objectif:
+Si le personnage ou son arme est utilise en vue FPS, il faut produire des sprites
+specifiques qui ne sont pas les memes que les sprites full body.
+
+Sprites a produire:
+- bras/arme idle
+- marche weapon sway
+- sprint weapon sway
+- tir simple
+- tir secondaire
+- reload / recharge
+- melee bash
+- equip / draw weapon
+- holster
+- inspect weapon
+- special use / gadget
+- hit reaction overlay
+- low HP hand shake
+
+Variantes FPS:
+- main gauche/main droite si l arme le demande
+- muzzle flash
+- projectile
+- impact mur
+- impact ennemi
+- viseur HUD si arme specifique
+- icone munition ou charge
+
+
+HUD / AVATAR / UI
+-----------------
+Objectif:
+Le personnage doit etre identifiable dans toutes les interfaces, meme tres petit.
+
+Icones a produire:
+- avatar carre 128 x 128
+- avatar petit 64 x 64
+- avatar rond/cadre HUD
+- portrait battle HUD
+- portrait collection
+- portrait dialogue
+- portrait KO
+- portrait blesse
+- portrait rarete
+- icone role
+- icone univers
+- icone synergie
+- icone talent
+- icone ultimate
+- miniature initiative Tactics
+- miniature equipe active
+- miniature recompense pack
+- miniature admin asset
+
+Regles HUD:
+- Visage ou casque tres lisible.
+- Contraste fort.
+- Pas de detail inutile qui disparait en 64 px.
+- Meme couleur dominante que le sprite principal.
+- Cadre separe du sprite si possible pour pouvoir changer la rarete.
+
+
+BOSS / ENNEMI SPECIAL
+---------------------
+Pour un boss ou ennemi massif, reprendre la meme logique mais adapter les proportions.
+
+Animations obligatoires:
+- idle menace
+- move lourd ou flottement
+- basic attack
+- ranged attack ou area attack
+- special attack
+- charge / enrage
+- summon / portal call si applicable
+- hurt
+- stagger
+- phase change
+- death / collapse
+
+Sprites additionnels boss:
+- full body boss inspectable
+- portrait boss HUD
+- icone alerte boss
+- icone weak point
+- icone phase 2
+- vignette intro boss
+- effet d arene ou aura
+
+Regle boss:
+- Si une attaque deborde du cadre, prevoir une ligne avec frames plus larges ou une
+  planche boss separee en 384 x 384 par frame.
+
+
+OBJETS / GEAR / PICKUPS LIES AU PERSONNAGE
+------------------------------------------
+Sprites a produire si le personnage a des objets signature:
+- arme principale
+- arme secondaire
+- objet de soin
+- objet de buff
+- relique univers
+- artefact Nexus
+- item ultimate
+- projectile
+- mine / piege / gadget
+- consommable
+- fragment de personnage
+
+Formats:
+- icone item master 512 x 512
+- icone inventaire 128 x 128
+- icone drop terrain 64 x 64
+- version pickup animee 4 frames si utilisee en combat
+
+
+CHECKLIST QUALITE AVANT INTEGRATION
+-----------------------------------
+- Le personnage est reconnaissable sans lire son nom.
+- Le lore est respecte.
+- Les armes et pouvoirs ne sont pas generiques.
+- Toutes les lignes gardent la meme morphologie.
+- Les frames ont le meme angle.
+- Aucun chroma vert ou fond parasite.
+- Les pieds et l ancrage sol sont coherents.
+- Les attaques ne sortent pas du cadre, ou ont une planche speciale plus grande.
+- Les icones restent lisibles en 64 x 64.
+- Les couleurs restent compatibles avec l UI sombre du jeu.
+- Le sprite fonctionne en Melee, RPG, Tactics et menus.
+- Le boss ou personnage massif a assez de marge.
+- Les fichiers sont nommes avec slug stable.
+- Le manifest peut pointer vers chaque asset sans fallback.
+
+
+STRUCTURE DE FICHIERS CONSEILLEE
+--------------------------------
+public/sprites/generated/heroes/[univers]/[id].png
+public/sprites/generated/heroes/[univers]/[id]-extended.png
+public/sprites/generated/heroes/[univers]/[id]-portrait.png
+public/sprites/generated/heroes/[univers]/[id]-hud.png
+public/sprites/generated/heroes/[univers]/[id]-fps.png
+
+public/sprites/generated/bosses/[univers]/[id].png
+public/sprites/generated/bosses/[univers]/[id]-large.png
+public/sprites/generated/bosses/[univers]/[id]-portrait.png
+public/sprites/generated/bosses/[univers]/[id]-hud.png
+
+public/sprites/generated/items/[univers]/[item-id].png
+public/sprites/generated/items/[univers]/[item-id]-pickup.png
+
+
+PROMPT OPENAI IMAGE - TEMPLATE GENERAL
+--------------------------------------
+Create a detailed pixel-art animation sprite sheet for [CHARACTER_NAME] from
+[UNIVERSE], faithful to the character lore, costume, silhouette, weapon and color
+palette. Transparent background, no chroma green. 3/4 front RPG angle, high detail,
+consistent body proportions across all frames, readable at small size.
+
+Sheet layout:
+4 columns per animation row, 256x256 px per frame.
+Rows:
+1 idle
+2 run
+3 basic attack
+4 secondary skill
+5 special ultimate
+6 hurt
+7 KO
+8 defense
+Optional rows:
+9 jump
+10 land
+11 dodge dash
+12 victory personality
+
+Important:
+Keep the same character identity in every frame. Do not change gender, face,
+costume, body type or weapon. Make attacks lore-accurate. Leave enough margin for
+large weapons and special attacks.
+
+
+REFERENCE COURTE A COPIER POUR CHAQUE PERSONNAGE
+------------------------------------------------
+Pour chaque personnage, produire au minimum:
+1. Sprite sheet combat 4 colonnes x 8 lignes.
+2. Sprite sheet etendue 4 colonnes x 12 lignes si Melee/FPS important.
+3. Portrait dialogue 512 x 512.
+4. Avatar HUD 128 x 128 et 64 x 64.
+5. Full body collection.
+6. Icone ultimate.
+7. Icone role.
+8. Icone univers/synergie si specifique.
+9. Objet/arme signature.
+10. Miniature initiative Tactics.
+
