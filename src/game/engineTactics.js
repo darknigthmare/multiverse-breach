@@ -216,6 +216,7 @@ export class EngineTactics {
     const cells = [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
 
     while (queue.length > 0) {
+      queue.sort((a, b) => a.dist - b.dist);
       const cell = queue.shift();
       if (cell.dist >= range) continue;
 
@@ -229,14 +230,26 @@ export class EngineTactics {
         if (visited.has(key) || !this.isInsideGrid(next.x, next.y)) return;
         if (this.isCellOccupied(next.x, next.y, unit)) return;
 
+        const moveCost = this.getTileMoveCost(next.x, next.y, unit);
+        const nextDist = cell.dist + moveCost;
+        if (nextDist > range) return;
         visited.add(key);
-        const reachable = { x: next.x, y: next.y, dist: cell.dist + 1 };
+        const reachable = { x: next.x, y: next.y, dist: nextDist };
         cells.push({ x: reachable.x, y: reachable.y, cost: reachable.dist });
         queue.push(reachable);
       });
     }
 
     return cells;
+  }
+
+  getTileMoveCost(c, r, unit = null) {
+    const tile = this.getTileAt(c, r);
+    if (!tile) return 1;
+    if (tile.type === 'high') return 2;
+    if (tile.type === 'heavyCover') return 2;
+    if (tile.type === 'hazard') return unit && this.enemies.includes(unit) ? 1 : 2;
+    return 1;
   }
 
   calculateAttackRange() {
@@ -274,6 +287,42 @@ export class EngineTactics {
     if (actionType === 'secondary') return attacker.stats?.atk * attacker.secondary?.dmg;
     if (actionType === 'special') return attacker.stats?.atk * attacker.special?.dmg;
     return attacker.stats?.atk * (attacker.simple?.dmg || 1) || attacker.atk || 0;
+  }
+
+  getFacingVector(unit) {
+    if (!unit) return { x: unit?.facing || 1, y: 0 };
+    return { x: unit.facing || 1, y: 0 };
+  }
+
+  getFacingBonus(attacker, defender) {
+    if (!attacker || !defender || defender.gridX === undefined) return { bonus: 0, label: null };
+    const facing = this.getFacingVector(defender);
+    const attackVector = {
+      x: Math.sign(attacker.gridX - defender.gridX),
+      y: Math.sign(attacker.gridY - defender.gridY)
+    };
+    const dot = attackVector.x * facing.x + attackVector.y * facing.y;
+    if (dot > 0) return { bonus: 0.25, label: 'BACK' };
+    if (dot === 0 && Math.abs(attacker.gridX - defender.gridX) + Math.abs(attacker.gridY - defender.gridY) <= 2) {
+      return { bonus: 0.12, label: 'FLANK' };
+    }
+    return { bonus: 0, label: null };
+  }
+
+  getTerrainDamageModifier(attacker, defender) {
+    const attackerTile = this.getTileAt(attacker?.gridX, attacker?.gridY);
+    const defenderTile = this.getTileAt(defender?.gridX, defender?.gridY);
+    let multiplier = 1;
+    const labels = [];
+    if (attackerTile?.type === 'high' && defenderTile?.type !== 'high') {
+      multiplier += 0.15;
+      labels.push('HIGH');
+    }
+    if (attackerTile?.type === 'hazard') {
+      multiplier -= 0.12;
+      labels.push('RISK');
+    }
+    return { multiplier: Math.max(0.65, multiplier), labels };
   }
 
   hasLineOfSight(from, to, _actionType = 'simple') {
@@ -352,9 +401,13 @@ export class EngineTactics {
     }
     const cover = this.getCoverReduction(attacker, defender, actionType);
     damage *= (1 - cover);
+    const facing = this.getFacingBonus(attacker, defender);
+    if (facing.bonus > 0 && actionType !== 'special') damage *= (1 + facing.bonus);
+    const terrain = this.getTerrainDamageModifier(attacker, defender);
+    damage *= terrain.multiplier;
     const defense = defender?.stats?.def ? Math.min(0.3, defender.stats.def / 100) : 0;
     damage *= (1 - defense);
-    return { damage: Math.max(1, Math.round(damage)), cover, defense };
+    return { damage: Math.max(1, Math.round(damage)), cover, defense, facing, terrain };
   }
 
   getEnemyThreatMap() {
@@ -416,8 +469,10 @@ export class EngineTactics {
         return { handled: false, reason: 'blocked' };
       }
 
+      const previousGridX = this.activeUnit.gridX;
       this.activeUnit.gridX = c;
       this.activeUnit.gridY = r;
+      if (c !== previousGridX) this.activeUnit.facing = c > previousGridX ? 1 : -1;
       this.playSfx('jump');
       
       this.actionPhase = 'action';
@@ -794,8 +849,10 @@ export class EngineTactics {
       }
     });
 
+    const previousEnemyX = enemy.gridX;
     enemy.gridX = bestX;
     enemy.gridY = bestY;
+    if (bestX !== previousEnemyX) enemy.facing = bestX > previousEnemyX ? 1 : -1;
     this.playSfx('jump');
 
     const attackDist = Math.abs(closestHero.gridX - enemy.gridX) + Math.abs(closestHero.gridY - enemy.gridY);
@@ -860,8 +917,10 @@ export class EngineTactics {
     });
 
     // Move there
+    const previousHeroX = hero.gridX;
     hero.gridX = bestMoveCell.x;
     hero.gridY = bestMoveCell.y;
+    if (bestMoveCell.x !== previousHeroX) hero.facing = bestMoveCell.x > previousHeroX ? 1 : -1;
     this.playSfx('jump');
 
     this.actionPhase = 'action';
@@ -973,6 +1032,22 @@ export class EngineTactics {
       const coverPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
       const coverPxY = this.gridStartY + defender.gridY * this.cellH + 10;
       this.particles.add(coverPxX, coverPxY - 48, 0, -1, '#4fc3f7', 10, 42, 'text', `COVER -${Math.round(coverReduction * 100)}%`);
+    }
+
+    const facing = this.getFacingBonus(attacker, defender);
+    if (!options.ignoreCover && facing.bonus > 0 && options.actionType !== 'special') {
+      baseDmg *= (1 + facing.bonus);
+      const flankPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
+      const flankPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+      this.particles.add(flankPxX, flankPxY - 58, 0, -1, '#ffeb3b', 10, 42, 'text', facing.label);
+    }
+
+    const terrain = this.getTerrainDamageModifier(attacker, defender);
+    if (!options.ignoreCover && terrain.multiplier !== 1) {
+      baseDmg *= terrain.multiplier;
+      const terrainPxX = this.gridStartX + attacker.gridX * this.cellW + this.cellW / 2;
+      const terrainPxY = this.gridStartY + attacker.gridY * this.cellH + 10;
+      this.particles.add(terrainPxX, terrainPxY - 44, 0, -1, terrain.multiplier > 1 ? '#8fb3ff' : '#ff8a50', 9, 40, 'text', terrain.labels.join('+'));
     }
 
     const defenseReduction = defender.stats?.def ? Math.min(0.3, defender.stats.def / 100) : 0;
@@ -1442,6 +1517,16 @@ export class EngineTactics {
             ctx.fillStyle = '#4fc3f7';
             ctx.font = '7px "Press Start 2P"';
             ctx.fillText('COVER', cx + 8, cy + 24);
+          }
+          if (preview.facing?.label) {
+            ctx.fillStyle = '#ffeb3b';
+            ctx.font = '7px "Press Start 2P"';
+            ctx.fillText(preview.facing.label, cx + 8, cy + 34);
+          }
+          if (preview.terrain?.labels?.length) {
+            ctx.fillStyle = preview.terrain.multiplier > 1 ? '#8fb3ff' : '#ff8a50';
+            ctx.font = '7px "Press Start 2P"';
+            ctx.fillText(preview.terrain.labels.join('+'), cx + 8, cy + 43);
           }
         }
       });

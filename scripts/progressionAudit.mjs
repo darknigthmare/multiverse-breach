@@ -171,8 +171,11 @@ assert(tacticsEngineSource.includes('this.battlefield'), 'Tactics engine must ke
 assert(tacticsEngineSource.includes('getTileAt'), 'Tactics engine must inspect terrain tiles.');
 assert(tacticsEngineSource.includes('isBlockedTile'), 'Tactics engine must block movement through blocked terrain.');
 assert(tacticsEngineSource.includes('applyStartTileEffect'), 'Tactics engine must apply terrain start-of-turn effects.');
+assert(tacticsEngineSource.includes('getTileMoveCost'), 'Tactics movement must support terrain movement costs.');
 assert(tacticsEngineSource.includes('getTileFill'), 'Tactics engine must render terrain types distinctly.');
 assert(tacticsEngineSource.includes('getCoverReduction') && tacticsEngineSource.includes('heavyCover'), 'Tactics engine must apply cover from terrain tiles.');
+assert(tacticsEngineSource.includes('getFacingBonus') && tacticsEngineSource.includes('FLANK') && tacticsEngineSource.includes('BACK'), 'Tactics damage must support flank and back attacks.');
+assert(tacticsEngineSource.includes('getTerrainDamageModifier') && tacticsEngineSource.includes('HIGH') && tacticsEngineSource.includes('RISK'), 'Tactics damage must support height advantage and hazard penalties.');
 [
   "objective: 'rout'",
   "objective: 'extract'",
@@ -224,6 +227,7 @@ console.log(JSON.stringify({
   tacticsBattlefieldLayouts: 8,
   tacticsTerrainSystem: 'dynamic',
   tacticsTerrainTypes: ['high', 'lightCover', 'heavyCover', 'hazard', 'heal', 'blocked', 'objective'],
+  tacticsPlacementRules: ['move-costs', 'height-advantage', 'flank-back'],
   tacticsObjectives: ['rout', 'extract', 'disable', 'control', 'commander', 'survive'],
   tacticsAi: 'objective-aware',
   tacticsMissionPressure: ['reinforcements', 'hazard-pulses', 'difficulty-profiles'],
