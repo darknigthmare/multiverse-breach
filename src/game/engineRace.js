@@ -33,6 +33,33 @@ const OBJECTIVE_LABELS = {
   timeLimit: 'Sceller avant surcharge'
 };
 
+export const KART_GARAGE_UPGRADES = {
+  engine: {
+    label: { fr: 'Noyau moteur', en: 'Engine core' },
+    maxLevel: 5,
+    cost: level => 18 + level * 14,
+    stat: 'maxSpeed'
+  },
+  grip: {
+    label: { fr: 'Tissage grip', en: 'Grip weave' },
+    maxLevel: 5,
+    cost: level => 16 + level * 12,
+    stat: 'turnRate'
+  },
+  capacitor: {
+    label: { fr: 'Capaciteur turbo', en: 'Turbo capacitor' },
+    maxLevel: 5,
+    cost: level => 20 + level * 15,
+    stat: 'boost'
+  },
+  stabilizer: {
+    label: { fr: 'Stabilisateur', en: 'Stabilizer' },
+    maxLevel: 5,
+    cost: level => 14 + level * 10,
+    stat: 'hazardResist'
+  }
+};
+
 const drawSheetFrame = (ctx, image, columns, rows, col, row, dx, dy, dw, dh) => {
   if (!image?.complete || !image.naturalWidth) return false;
   const frameW = image.naturalWidth / columns;
@@ -396,11 +423,13 @@ export const KART_TRACK_LAYOUTS = {
 export const RACE_TRACKS = KART_TRACK_LAYOUTS;
 
 export class EngineRace {
-  constructor(width, height, onFinish = () => {}, trackId = 'nexus_archive_loop') {
+  constructor(width, height, onFinish = () => {}, trackId = 'nexus_archive_loop', garageUpgrades = {}) {
     this.width = width;
     this.height = height;
     this.onFinish = onFinish;
     this.trackId = trackId;
+    this.garageUpgrades = garageUpgrades || {};
+    this.garageStats = this.computeGarageStats(this.garageUpgrades);
     this.track = this.createTrackState(trackId);
     this.images = {};
     Object.entries(RACE_ASSETS).forEach(([key, src]) => {
@@ -410,6 +439,26 @@ export class EngineRace {
     });
     this.keys = {};
     this.reset();
+  }
+
+  computeGarageStats(upgrades = {}) {
+    const engine = upgrades.engine || 0;
+    const grip = upgrades.grip || 0;
+    const capacitor = upgrades.capacitor || 0;
+    const stabilizer = upgrades.stabilizer || 0;
+    return {
+      maxSpeedBonus: engine * 8,
+      accelBonus: engine * 7,
+      turnBonus: grip * 0.11,
+      gripBonus: grip * 0.04,
+      boostBonus: capacitor * 0.1,
+      hazardResist: clamp(stabilizer * 0.08, 0, 0.38)
+    };
+  }
+
+  updateGarage(upgrades = {}) {
+    this.garageUpgrades = upgrades || {};
+    this.garageStats = this.computeGarageStats(this.garageUpgrades);
   }
 
   createTrackState(trackId = this.trackId) {
@@ -472,7 +521,10 @@ export class EngineRace {
       y: start.y,
       angle: start.angle,
       ai: false,
-      laneOffset: 0
+      laneOffset: 0,
+      maxSpeed: 266 + this.garageStats.maxSpeedBonus,
+      accel: 320 + this.garageStats.accelBonus,
+      turnRate: 3.2 + this.garageStats.turnBonus
     });
     this.opponents = [
       this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', x: start.x - 40, y: start.y + 28, angle: start.angle, ai: true, laneOffset: -26, maxSpeed: 244 }),
@@ -481,7 +533,7 @@ export class EngineRace {
     ];
   }
 
-  createKart({ id, name, color, x, y, angle, ai, laneOffset, maxSpeed = 266 }) {
+  createKart({ id, name, color, x, y, angle, ai, laneOffset, maxSpeed = 266, accel = 320, turnRate = 3.2 }) {
     return {
       id,
       name,
@@ -493,8 +545,8 @@ export class EngineRace {
       ai,
       laneOffset,
       maxSpeed,
-      accel: 320,
-      turnRate: 3.2,
+      accel,
+      turnRate,
       drift: 0,
       driftCharge: 0,
       boost: 0,
@@ -529,7 +581,7 @@ export class EngineRace {
     kart.item = null;
     kart.itemCooldown = 1.1;
     if (item === 'boost') {
-      kart.boost = Math.max(kart.boost, 1.45);
+      kart.boost = Math.max(kart.boost, 1.45 + (kart.ai ? 0 : this.garageStats.boostBonus));
       kart.speed = Math.max(kart.speed, 215);
       if (!kart.ai) this.showMessage('Suture de vitesse: boost instable');
       this.spawnParticles(kart.x, kart.y, '#39c5bb', 18);
@@ -684,12 +736,12 @@ export class EngineRace {
     const driftHeld = input.drift && Math.abs(kart.speed) > 80;
     kart.drift = clamp(kart.drift + (driftHeld ? dt * 1.6 : -dt * 2.3), 0, 1);
     kart.driftCharge = driftHeld ? clamp(kart.driftCharge + dt, 0, 2.4) : kart.driftCharge;
-    const grip = surface === 'ice' ? 0.68 : 1;
+    const grip = clamp((surface === 'ice' ? 0.68 : 1) + (kart.ai ? 0 : this.garageStats.gripBonus), 0.62, 1.22);
     const turnPower = (0.55 + clamp(Math.abs(kart.speed) / 220, 0, 1) * 0.85) * (kart.drift ? 1.35 : 1) * grip;
     kart.angle += input.turn * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
     if (!driftHeld && kart.drift > 0.72) {
       const turbo = kart.driftCharge > 1.75 ? 1.05 : kart.driftCharge > 1.1 ? 0.78 : 0.55;
-      kart.boost = Math.max(kart.boost, turbo);
+      kart.boost = Math.max(kart.boost, turbo + (kart.ai ? 0 : this.garageStats.boostBonus));
       this.spawnParticles(kart.x, kart.y, kart.color, 10);
       if (!kart.ai) this.showMessage(turbo > 1 ? 'Mini-turbo violet' : turbo > 0.65 ? 'Mini-turbo orange' : 'Mini-turbo bleu');
       kart.driftCharge = 0;
@@ -804,7 +856,7 @@ export class EngineRace {
       if (distance(kart, zone) > zone.r) return;
       if (zone.type === 'jump' && kart.air <= 0) {
         kart.air = 0.56;
-        kart.boost = Math.max(kart.boost, 0.42);
+        kart.boost = Math.max(kart.boost, 0.42 + (kart.ai ? 0 : this.garageStats.boostBonus * 0.55));
         kart.speed = Math.max(kart.speed, 188);
         this.spawnParticles(kart.x, kart.y, '#d8fffb', 10);
         if (!kart.ai) this.showMessage('Tremplin de faille: trick boost');
@@ -814,7 +866,7 @@ export class EngineRace {
         kart.y = zone.exit.y;
         kart.angle = zone.exit.angle ?? kart.angle;
         kart.portalCooldown = 1.8;
-        kart.boost = Math.max(kart.boost, 0.38);
+        kart.boost = Math.max(kart.boost, 0.38 + (kart.ai ? 0 : this.garageStats.boostBonus * 0.45));
         this.spawnParticles(kart.x, kart.y, '#39c5bb', 18);
         if (!kart.ai) this.showMessage('Portail court traverse');
       }
@@ -824,7 +876,7 @@ export class EngineRace {
   applyBoostPads(kart) {
     this.track.boostPads.forEach(pad => {
       if (distance(kart, pad) < 34) {
-        kart.boost = Math.max(kart.boost, 0.65);
+        kart.boost = Math.max(kart.boost, 0.65 + (kart.ai ? 0 : this.garageStats.boostBonus * 0.5));
         kart.speed = Math.max(kart.speed, 205);
       }
     });
@@ -838,9 +890,10 @@ export class EngineRace {
           kart.shield = 0;
           this.spawnParticles(kart.x, kart.y, '#d9b6ff', 14);
         } else {
-          kart.speed *= -0.25;
-          kart.spin = 0.72;
-          kart.hitCooldown = 1.15;
+          const resist = kart.ai ? 0 : this.garageStats.hazardResist;
+          kart.speed *= -0.25 + resist * 0.18;
+          kart.spin = Math.max(0.28, 0.72 - resist);
+          kart.hitCooldown = Math.max(0.55, 1.15 - resist);
           this.spawnParticles(kart.x, kart.y, '#e74c3c', 18);
         }
       }
@@ -1044,16 +1097,29 @@ export class EngineRace {
     const rank = this.player.rank;
     const objectiveComplete = Boolean(this.objective?.complete);
     const grade = rank === 1 && objectiveComplete && time < 88 ? 'S' : rank === 1 && objectiveComplete ? 'A' : rank <= 2 ? 'B' : 'C';
+    const gradeMultiplier = { S: 1.9, A: 1.45, B: 1.08, C: 0.78 }[grade] || 0.7;
+    const objectiveMultiplier = objectiveComplete ? 1.22 : 0.82;
+    const trackFactor = 1 + (this.track.difficulty || 1) * 0.22;
+    const fragments = Math.max(6, Math.round(12 * gradeMultiplier * objectiveMultiplier * trackFactor));
+    const xp = Math.max(18, Math.round(42 * gradeMultiplier * objectiveMultiplier * trackFactor));
+    const garageParts = Math.max(4, Math.round(8 * gradeMultiplier * objectiveMultiplier + (rank === 1 ? 5 : 0)));
     return {
       mode: 'Race',
       trackId: this.track.id,
+      trackName: this.track.name.fr,
       pilot: this.player.name,
       time,
       rank,
       grade,
       laps: this.track.laps,
       objective: this.getObjectiveStatus(),
-      objectiveComplete
+      objectiveComplete,
+      rewards: {
+        fragments,
+        xp,
+        garageParts,
+        unlockHint: objectiveComplete && grade !== 'C' ? 'Progression garage stabilisee' : 'Objectif incomplet: recompense reduite'
+      }
     };
   }
 

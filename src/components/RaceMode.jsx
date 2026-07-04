@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { EngineRace, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
+import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
 
 const CONTROL_KEYS = new Set([
   'ArrowUp',
@@ -43,11 +43,42 @@ const formatRaceTime = seconds => {
   return `${minutes}:${remaining.toFixed(2).padStart(5, '0')}`;
 };
 
+const DEFAULT_KART_CAREER = {
+  xp: 0,
+  fragments: 0,
+  garageParts: 0,
+  upgrades: { engine: 0, grip: 0, capacitor: 0, stabilizer: 0 },
+  bestTimes: {},
+  completedObjectives: {}
+};
+
+const loadKartCareer = () => {
+  if (typeof localStorage === 'undefined') return DEFAULT_KART_CAREER;
+  try {
+    const parsed = JSON.parse(localStorage.getItem('multiverse-breach-kart-career') || 'null');
+    return {
+      ...DEFAULT_KART_CAREER,
+      ...(parsed || {}),
+      upgrades: { ...DEFAULT_KART_CAREER.upgrades, ...(parsed?.upgrades || {}) },
+      bestTimes: parsed?.bestTimes || {},
+      completedObjectives: parsed?.completedObjectives || {}
+    };
+  } catch {
+    return DEFAULT_KART_CAREER;
+  }
+};
+
+const saveKartCareer = career => {
+  if (typeof localStorage === 'undefined') return;
+  localStorage.setItem('multiverse-breach-kart-career', JSON.stringify(career));
+};
+
 export default function RaceMode({ lang = 'fr', playerProfile }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysRef = useRef({});
   const [trackId, setTrackId] = useState('nexus_archive_loop');
+  const [career, setCareer] = useState(loadKartCareer);
   const [summary, setSummary] = useState(null);
   const [snapshot, setSnapshot] = useState({
     rank: 1,
@@ -74,9 +105,29 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     const engine = new EngineRace(960, 540, raceSummary => {
+      setCareer(prev => {
+        const rewards = raceSummary.rewards || { fragments: 0, xp: 0, garageParts: 0 };
+        const previousBest = prev.bestTimes?.[raceSummary.trackId];
+        const nextCareer = {
+          ...prev,
+          xp: prev.xp + rewards.xp,
+          fragments: prev.fragments + rewards.fragments,
+          garageParts: prev.garageParts + rewards.garageParts,
+          bestTimes: {
+            ...prev.bestTimes,
+            [raceSummary.trackId]: previousBest ? Math.min(previousBest, raceSummary.time) : raceSummary.time
+          },
+          completedObjectives: {
+            ...prev.completedObjectives,
+            [raceSummary.trackId]: Boolean(prev.completedObjectives?.[raceSummary.trackId] || raceSummary.objectiveComplete)
+          }
+        };
+        saveKartCareer(nextCareer);
+        return nextCareer;
+      });
       setSummary(raceSummary);
       setSnapshot(prev => ({ ...prev, grade: raceSummary.grade, rank: raceSummary.rank, time: raceSummary.time }));
-    }, trackId);
+    }, trackId, career.upgrades);
     engineRef.current = engine;
     let animationId = 0;
     let last = performance.now();
@@ -132,7 +183,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
     };
-  }, [trackId]);
+  }, [career.upgrades, trackId]);
 
   const resetRace = () => {
     keysRef.current = {};
@@ -157,6 +208,30 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
   const triggerBoost = () => {
     if (engineRef.current) engineRef.current.player.boost = Math.max(engineRef.current.player.boost, 0.28);
   };
+
+  const buyUpgrade = (upgradeId) => {
+    const config = KART_GARAGE_UPGRADES[upgradeId];
+    if (!config) return;
+    setCareer(prev => {
+      const currentLevel = prev.upgrades[upgradeId] || 0;
+      if (currentLevel >= config.maxLevel) return prev;
+      const cost = config.cost(currentLevel);
+      if (prev.garageParts < cost) return prev;
+      const nextCareer = {
+        ...prev,
+        garageParts: prev.garageParts - cost,
+        upgrades: {
+          ...prev.upgrades,
+          [upgradeId]: currentLevel + 1
+        }
+      };
+      saveKartCareer(nextCareer);
+      engineRef.current?.updateGarage(nextCareer.upgrades);
+      return nextCareer;
+    });
+  };
+
+  const selectedBestTime = career.bestTimes?.[trackId];
 
   return (
     <div className="race-mode-shell">
@@ -196,6 +271,9 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
                   ? `Position ${summary.rank}/4 - Temps ${formatRaceTime(summary.time)} - Objectif ${summary.objectiveComplete ? 'OK' : 'rate'}`
                   : `Position ${summary.rank}/4 - Time ${formatRaceTime(summary.time)} - Objective ${summary.objectiveComplete ? 'OK' : 'failed'}`}
               </span>
+              <span>
+                +{summary.rewards?.garageParts || 0} parts / +{summary.rewards?.fragments || 0} fragments / +{summary.rewards?.xp || 0} XP
+              </span>
               <button type="button" className="btn-retro" onClick={resetRace}>
                 {lang === 'fr' ? 'RELANCER' : 'RESTART'}
               </button>
@@ -209,6 +287,15 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
             <div><span>{lang === 'fr' ? 'Tour' : 'Lap'}</span><strong>{snapshot.lap}/{track.laps}</strong></div>
             <div><span>{lang === 'fr' ? 'Vitesse' : 'Speed'}</span><strong>{snapshot.speed}</strong></div>
             <div><span>{lang === 'fr' ? 'Temps' : 'Time'}</span><strong>{formatRaceTime(snapshot.time)}</strong></div>
+          </div>
+          <div className="race-career-card">
+            <span>{lang === 'fr' ? 'Carriere kart' : 'Kart career'}</span>
+            <div className="race-career-grid">
+              <strong>{career.garageParts}</strong><small>parts</small>
+              <strong>{career.fragments}</strong><small>fragments</small>
+              <strong>{career.xp}</strong><small>XP</small>
+              <strong>{selectedBestTime ? formatRaceTime(selectedBestTime) : '--'}</strong><small>{lang === 'fr' ? 'record' : 'best'}</small>
+            </div>
           </div>
           <div className="race-objective-card">
             <span>{lang === 'fr' ? 'Objectif A.R.C.A.' : 'A.R.C.A. objective'}</span>
@@ -226,6 +313,26 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
             <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
             <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
             <strong>{lang === 'fr' ? 'Chassis Suture / cache A.R.C.A.' : 'Suture chassis / A.R.C.A. cache'}</strong>
+            <div className="race-upgrade-list">
+              {Object.entries(KART_GARAGE_UPGRADES).map(([upgradeId, upgrade]) => {
+                const level = career.upgrades[upgradeId] || 0;
+                const cost = upgrade.cost(level);
+                const capped = level >= upgrade.maxLevel;
+                return (
+                  <button
+                    key={upgradeId}
+                    type="button"
+                    className="race-upgrade-row"
+                    disabled={capped || career.garageParts < cost}
+                    onClick={() => buyUpgrade(upgradeId)}
+                  >
+                    <span>{upgrade.label[lang] || upgrade.label.fr}</span>
+                    <strong>{level}/{upgrade.maxLevel}</strong>
+                    <small>{capped ? 'MAX' : `${cost} parts`}</small>
+                  </button>
+                );
+              })}
+            </div>
           </div>
           <div className="race-track-selector">
             <span>{lang === 'fr' ? 'Circuits disponibles' : 'Available tracks'}</span>

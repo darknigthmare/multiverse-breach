@@ -124,6 +124,9 @@ assert(raceEngineSource.includes('drawProjectedSurfaceZone') && raceEngineSource
 assert(raceEngineSource.includes('useKartItem') && raceEngineSource.includes('shouldAiUseItem') && raceEngineSource.includes('findMirrorSwapTarget'), 'Race mode must support shared player/AI item usage and advanced A.R.C.A. cache effects.');
 assert(raceEngineSource.includes("'anchor'") && raceEngineSource.includes("'mirror'") && raceEngineSource.includes("'pulse'"), 'Race item pool must include anchor, mirror, and pulse cache types.');
 assert(raceEngineSource.includes('updateObjectiveState') && raceEngineSource.includes('getObjectiveStatus') && raceModeSource.includes('race-objective-card'), 'Race mode must expose active objectives in engine and UI.');
+assert(raceEngineSource.includes('KART_GARAGE_UPGRADES') && raceEngineSource.includes('computeGarageStats') && raceEngineSource.includes('garageParts'), 'Race mode must expose garage upgrades and race rewards.');
+assert(raceModeSource.includes('multiverse-breach-kart-career') && raceModeSource.includes('buyUpgrade') && raceModeSource.includes('race-career-card'), 'Race tab must persist kart career and expose upgrade purchases.');
+assert(raceModeSource.includes('bestTimes') && raceModeSource.includes('completedObjectives') && raceModeSource.includes('race-upgrade-list'), 'Race career must track records, objective clears, and garage upgrade UI.');
 assert(rendererSource.includes('drawMirelleItemVfx') && rendererSource.includes('MIRELLE_COMPLETE_SPRITES.itemsVfx'), 'Combat renderer must use Mirelle item/VFX sheet during gameplay states.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');
