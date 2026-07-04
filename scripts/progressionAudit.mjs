@@ -194,11 +194,13 @@ assert(tacticsEngineSource.includes('preferredEnemies'), 'Tactics hero AI must p
 assert(tacticsEngineSource.includes('applyTacticsMissionPressure'), 'Tactics engine must apply long-term mission pressure.');
 assert(tacticsEngineSource.includes('spawnTacticsReinforcement'), 'Tactics engine must spawn difficulty-gated reinforcements.');
 assert(tacticsEngineSource.includes('applyHazardPulse'), 'Tactics engine must pulse hazardous terrain on advanced profiles.');
+assert(tacticsEngineSource.includes('applyTacticalBattleItem') && tacticsEngineSource.includes('tacticalItemsUsed') && tacticsEngineSource.includes('tacticalItemImpact'), 'Tactics engine must resolve tactical artifact effects and summarize impact.');
 assert(gameCanvasSource.includes('getTacticsPickupPositions'), 'GameCanvas must place Tactics pickups through battlefield-safe positions.');
 assert(gameCanvasSource.includes('new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage)'), 'GameCanvas must pass resolved stage metadata into tactics mode.');
 assert(gameCanvasSource.includes("['Smash', 'Tactics'].includes(stage.mode)") && gameCanvasSource.includes('dlcSuppressedArena'), 'GameCanvas must suppress DLC-specific tactics fields when universes are hidden.');
 assert(gameCanvasSource.includes('tacticsResultLines'), 'GameCanvas must render Tactics result summary feedback.');
 assert(gameCanvasSource.includes('reinforcementsCalled') && gameCanvasSource.includes('hazardPulses'), 'GameCanvas must display Tactics pressure results.');
+assert(gameCanvasSource.includes('applyTacticalBattleItem') && gameCanvasSource.includes('Tactical artifacts'), 'GameCanvas must route Tactics artifacts through the Tactics engine and display them.');
 assert(appSource.includes('tacticsMasteryBonus'), 'App rewards must include capped Tactics mastery bonuses.');
 
 console.log(JSON.stringify({
@@ -225,6 +227,7 @@ console.log(JSON.stringify({
   tacticsObjectives: ['rout', 'extract', 'disable', 'control', 'commander', 'survive'],
   tacticsAi: 'objective-aware',
   tacticsMissionPressure: ['reinforcements', 'hazard-pulses', 'difficulty-profiles'],
+  tacticsArtifacts: 'engine-resolved-grid-effects',
   tacticsDlcMapping: 'metadata-aware',
   tacticsRewardLoop: 'grade-bonus'
 }, null, 2));

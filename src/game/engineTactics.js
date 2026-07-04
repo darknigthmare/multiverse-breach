@@ -23,6 +23,8 @@ export class EngineTactics {
     this.damageTaken = 0;
     this.reinforcementsCalled = 0;
     this.hazardPulses = 0;
+    this.tacticalItemsUsed = 0;
+    this.tacticalItemImpact = 0;
 
     this.rows = this.battlefield.rows || 5;
     this.cols = this.battlefield.cols || 8;
@@ -642,6 +644,66 @@ export class EngineTactics {
       });
     });
     this.hazardPulses++;
+  }
+
+  applyTacticalBattleItem(pickup) {
+    if (!pickup || this.gameOver) return false;
+    const tier = pickup.tier || 'pickup';
+    const effect = pickup.effect || {};
+    const color = pickup.color || '#39c5bb';
+    const triggerX = pickup.gridX ?? this.activeUnit?.gridX ?? 0;
+    const triggerY = pickup.gridY ?? this.activeUnit?.gridY ?? 0;
+    this.tacticalItemsUsed++;
+
+    if (tier === 'ultimate') {
+      const damage = Math.max(effect.ultimateDamage || 180, 160);
+      this.enemies.forEach(enemy => {
+        if (enemy.currentHp > 0) {
+          this.applyDamage({ gridX: triggerX, gridY: triggerY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: color }, enemy, damage, null, { ignoreCover: true });
+          this.tacticalItemImpact += damage;
+        }
+      });
+      this.particles.add(this.width / 2, this.gridStartY - 14, 0, -1, color, 14, 52, 'text', 'CARTE ULTIME');
+      return true;
+    }
+
+    if (tier === 'summon') {
+      const target = this.enemies
+        .filter(enemy => enemy.currentHp > 0)
+        .sort((a, b) => b.currentHp - a.currentHp)[0];
+      if (target) {
+        const damage = Math.max(effect.summonDamage || 120, 90);
+        this.applyDamage({ gridX: triggerX, gridY: triggerY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: color }, target, damage, 'glitched', { ignoreCover: true });
+        this.tacticalItemImpact += damage;
+        this.particles.add(target.x, target.y - 44, 0, -1, color, 12, 44, 'text', 'ASSIST');
+      }
+      const reinforcementBudget = this.missionProfile.reinforcementEvery > 0 ? -1 : 0;
+      this.reinforcementsCalled = Math.max(0, this.reinforcementsCalled + reinforcementBudget);
+      return true;
+    }
+
+    const heal = Math.max(effect.heal || effect.shield || 45, 35);
+    const damage = Math.max(effect.damage || 55, 45);
+    this.heroes.forEach(hero => {
+      if (hero.currentHp <= 0) return;
+      const dist = Math.abs(hero.gridX - triggerX) + Math.abs(hero.gridY - triggerY);
+      if (dist <= 2) {
+        hero.currentHp = Math.min(hero.maxHp, hero.currentHp + heal);
+        hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + 12);
+        this.tacticalItemImpact += heal;
+        this.particles.add(hero.x, hero.y - 28, 0, -1, color, 10, 38, 'text', '+TACT');
+      }
+    });
+    this.enemies.forEach(enemy => {
+      if (enemy.currentHp <= 0) return;
+      const dist = Math.abs(enemy.gridX - triggerX) + Math.abs(enemy.gridY - triggerY);
+      if (dist <= 1) {
+        this.applyDamage({ gridX: triggerX, gridY: triggerY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: color }, enemy, damage, null, { ignoreCover: true });
+        this.tacticalItemImpact += damage;
+      }
+    });
+    this.particles.add(this.gridStartX + triggerX * this.cellW + this.cellW / 2, this.gridStartY + triggerY * this.cellH, 0, -1, color, 10, 42, 'text', 'RESSOURCE');
+    return true;
   }
 
   getObjectiveFocusCells(unitType = 'hero') {
@@ -1562,6 +1624,8 @@ export class EngineTactics {
       missionProfile: this.missionProfile,
       reinforcementsCalled: this.reinforcementsCalled,
       hazardPulses: this.hazardPulses,
+      tacticalItemsUsed: this.tacticalItemsUsed,
+      tacticalItemImpact: Math.round(this.tacticalItemImpact),
       turnsElapsed: this.turnsElapsed,
       defeatedEnemies,
       survivingHeroes,

@@ -444,19 +444,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       activeHero.stateTimer = pickup.tier === 'ultimate' ? 34 : 22;
       activeHero.specialCharge = Math.min(100, (activeHero.specialCharge || 0) + 6);
     }
+    if (stage.mode === 'Tactics' && !engine.applyTacticalBattleItem?.(pickup, source)) return;
 
     const nextPickups = battlePickupsRef.current.map(item =>
       item.pickupId === pickup.pickupId ? { ...item, used: true, source } : item
     );
     syncBattlePickups(nextPickups);
 
-    if (effect.damage) damageEnemiesByBattleItem(engine, effect.damage, color, 'ITEM HIT');
-    if (effect.summonDamage) damageEnemiesByBattleItem(engine, effect.summonDamage, color, 'ASSIST');
-    if (effect.ultimateDamage) damageEnemiesByBattleItem(engine, effect.ultimateDamage, color, 'ULTIMATE');
+    if (stage.mode !== 'Tactics' && effect.damage) damageEnemiesByBattleItem(engine, effect.damage, color, 'ITEM HIT');
+    if (stage.mode !== 'Tactics' && effect.summonDamage) damageEnemiesByBattleItem(engine, effect.summonDamage, color, 'ASSIST');
+    if (stage.mode !== 'Tactics' && effect.ultimateDamage) damageEnemiesByBattleItem(engine, effect.ultimateDamage, color, 'ULTIMATE');
     if (stage.mode === 'Smash' && typeof engine.itemTriggers === 'number') {
       engine.itemTriggers++;
     }
-    supportHeroesByBattleItem(engine, effect, color);
+    if (stage.mode !== 'Tactics') supportHeroesByBattleItem(engine, effect, color);
 
     setBattleItemLog({
       id: pickup.pickupId,
@@ -848,7 +849,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       `${lang === 'fr' ? 'Rang' : 'Grade'} ${battleSummary.grade} | Score ${battleSummary.score} | Objectif ${battleSummary.objectivePct}%`,
       `${battleSummary.objectiveText?.[lang] || battleSummary.objective} | ${lang === 'fr' ? 'Tours' : 'Turns'}: ${battleSummary.turnsElapsed}`,
       `${lang === 'fr' ? 'Menaces neutralisees' : 'Threats neutralized'}: ${battleSummary.defeatedEnemies} | ${lang === 'fr' ? 'Agents debout' : 'Standing agents'}: ${battleSummary.survivingHeroes}`,
-      `${battleSummary.missionProfile?.label?.[lang] || battleSummary.missionProfile?.tier || 'Profile'} | ${lang === 'fr' ? 'Renforts' : 'Reinforcements'}: ${battleSummary.reinforcementsCalled || 0} | ${lang === 'fr' ? 'Surtensions' : 'Surges'}: ${battleSummary.hazardPulses || 0}`
+      `${battleSummary.missionProfile?.label?.[lang] || battleSummary.missionProfile?.tier || 'Profile'} | ${lang === 'fr' ? 'Renforts' : 'Reinforcements'}: ${battleSummary.reinforcementsCalled || 0} | ${lang === 'fr' ? 'Surtensions' : 'Surges'}: ${battleSummary.hazardPulses || 0}`,
+      `${lang === 'fr' ? 'Artefacts tactiques' : 'Tactical artifacts'}: ${battleSummary.tacticalItemsUsed || 0} | ${lang === 'fr' ? 'Impact' : 'Impact'}: ${battleSummary.tacticalItemImpact || 0}`
     ]
     : [];
   const totalBattleItems = battlePickups.length;
