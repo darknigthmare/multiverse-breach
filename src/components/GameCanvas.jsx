@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
 import { EngineTactics } from '../game/engineTactics';
-import { ParticleSystem, drawUniverseBackground, drawSynergyOverlay } from '../game/renderer';
+import { ParticleSystem, drawUniverseBackground, drawSynergyOverlay, preloadSpriteSheetSrcs } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { HEROES_DB as BASE_HEROES_DB, EVENT_ITEMS_DB, EQUIP_ITEMS_DB } from '../game/heroes';
 import { getMonstersForUniverse, getBossesForUniverse, getWorldBossForUniverse, getFinalGameBoss } from '../game/enemies';
@@ -11,7 +11,7 @@ import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../ga
 import { createPlayerHero } from '../game/playerHero';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { getBattleItemPoolForStage } from '../game/battleItems';
-import { getItemSpriteSrc } from '../game/spriteAssets';
+import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
 
 export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, disabledAssets = {}, onBattleEnd }) {
   const canvasRef = useRef(null);
@@ -483,6 +483,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const anchor = HEROES_DB[0];
       squadHeroes = [{ ...anchor, stats: getHeroStats(anchor), talent: null }];
     }
+    const battleItemPool = getBattleItemPoolForStage(stage);
+    preloadSpriteSheetSrcs([
+      ...squadHeroes.map(getHeroSpriteSheetSrc),
+      ...enemies.map(getEnemySpriteSheetSrc),
+      ...battleItemPool.map(getItemSpriteSrc)
+    ]);
     const activeCategoriesCount = squadHeroes.reduce((acc, h) => {
       acc[h.category] = (acc[h.category] || 0) + 1;
       return acc;
@@ -532,7 +538,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       return undefined;
     }
 
-    battleItemPoolRef.current = getBattleItemPoolForStage(stage);
+    battleItemPoolRef.current = battleItemPool;
     nextBattleItemDropRef.current = stage.mode === 'Tactics' ? 999999 : 520;
     syncBattlePickups(createStagePickups(stage));
     setBattleItemLog(null);

@@ -11,16 +11,57 @@ const getCachedSpriteSheet = (src) => {
   if (cached) return cached;
 
   const image = new Image();
-  const entry = { image, failed: false };
-  image.onerror = () => { entry.failed = true; };
+  const entry = {
+    image,
+    status: 'loading',
+    pendingDraws: new Map()
+  };
+  image.onload = () => {
+    entry.status = 'ready';
+    const callbacks = Array.from(entry.pendingDraws.values());
+    entry.pendingDraws.clear();
+    const runCallbacks = () => callbacks.forEach(redraw => redraw());
+    if (typeof requestAnimationFrame === 'function') {
+      requestAnimationFrame(runCallbacks);
+    } else {
+      runCallbacks();
+    }
+  };
+  image.onerror = () => {
+    entry.status = 'error';
+    const callbacks = Array.from(entry.pendingDraws.values());
+    entry.pendingDraws.clear();
+    callbacks.forEach(redraw => redraw());
+  };
   image.src = src;
+  if (image.complete && image.naturalWidth > 0) {
+    entry.status = 'ready';
+  }
   spriteSheetCache.set(src, entry);
   return entry;
 };
 
-const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter) => {
+const queueSpriteSheetRedraw = (entry, ctx, draw) => {
+  if (!entry?.pendingDraws || !ctx?.canvas) return;
+  entry.pendingDraws.set(ctx.canvas, () => {
+    if (typeof document !== 'undefined' && ctx.canvas && !ctx.canvas.isConnected) return;
+    draw();
+  });
+};
+
+export const preloadSpriteSheetSrcs = (srcs = []) => {
+  srcs.forEach(src => getCachedSpriteSheet(src));
+};
+
+const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter, redrawWhenResolved) => {
   const entry = getCachedSpriteSheet(srcGetter(entity));
-  if (!entry || entry.failed || !entry.image.complete || entry.image.naturalWidth === 0) return false;
+  if (!entry || entry.status === 'error') return 'missing';
+  if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
+    queueSpriteSheetRedraw(entry, ctx, () => {
+      redrawWhenResolved?.();
+    });
+    return 'loading';
+  }
 
   const frameWidth = entry.image.naturalWidth / SPRITE_SHEET_META.columns;
   const frameHeight = entry.image.naturalHeight / SPRITE_SHEET_META.rows.length;
@@ -45,7 +86,7 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
     drawH
   );
   ctx.restore();
-  return true;
+  return 'drawn';
 };
 
 export class ParticleSystem {
@@ -118,7 +159,10 @@ export class ParticleSystem {
 }
 
 export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72) => {
-  if (drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSrc)) {
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSrc, () => {
+    drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight);
+  });
+  if (generatedStatus !== 'missing') {
     return;
   }
 
@@ -408,7 +452,10 @@ const drawWeapon = (ctx, x, y, type, color, animTime) => {
 };
 
 export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
-  if (drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, 68, getEnemySpriteSheetSrc)) {
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, 68, getEnemySpriteSheetSrc, () => {
+    drawPixelEnemy(ctx, x, y, enemy, animTime, facing);
+  });
+  if (generatedStatus !== 'missing') {
     return;
   }
 
@@ -516,7 +563,10 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
 };
 
 export const drawBoss = (ctx, x, y, boss, animTime) => {
-  if (drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, -1, 126, getEnemySpriteSheetSrc)) {
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, -1, 126, getEnemySpriteSheetSrc, () => {
+    drawBoss(ctx, x, y, boss, animTime);
+  });
+  if (generatedStatus !== 'missing') {
     return;
   }
 
