@@ -2,6 +2,7 @@
 // Includes 3 monsters, 2 bosses, and 1 local World Boss per universe, plus 1 Final Game Boss & obstacles
 
 import { EXPANDED_ENEMIES_DB } from './expandedUniverses';
+import { LORE_ACCURATE_ENEMY_EXPANSIONS } from './loreAccuratePacks';
 
 export const ENEMIES_DB = {
   'Nexus de Convergence': {
@@ -486,6 +487,339 @@ export const ENEMIES_DB = {
 };
 
 Object.assign(ENEMIES_DB, EXPANDED_ENEMIES_DB);
+
+const CANON_ENEMY_EXPANSION = {
+  'Gears of War': {
+    monsters: [
+      { name: 'Theron Guard', hp: 112, atk: 13, spd: 5, color: '#7b6a52', weapon: 'torque_bow' },
+      { name: 'Boomer Locust', hp: 145, atk: 16, spd: 3, color: '#5d4a3b', weapon: 'boomshot' },
+      { name: 'Kantus Priest', hp: 100, atk: 12, spd: 5, color: '#8d6b45', weapon: 'gorgon_pistol' },
+      { name: 'Corpser Hatchling', hp: 130, atk: 14, spd: 4, color: '#3b2d28', weapon: 'burrow_claws' }
+    ],
+    bosses: [
+      { name: 'Berserker Matriarch', hp: 620, atk: 24, spd: 4, color: '#6b2d2d', weapon: 'charge', special: 'Blind Rage Charge' },
+      { name: 'Karn Locust General', hp: 570, atk: 22, spd: 5, color: '#2f3a30', weapon: 'sniper', special: 'Siege Beast Command' }
+    ]
+  },
+  Halo: {
+    monsters: [
+      { name: 'Hunter Bond Pair', hp: 165, atk: 16, spd: 3, color: '#34495e', weapon: 'fuel_rod' },
+      { name: 'Brute Captain', hp: 125, atk: 14, spd: 5, color: '#5c5146', weapon: 'spiker' },
+      { name: 'Yanme Drone Swarm', hp: 70, atk: 10, spd: 8, color: '#8fbc8f', weapon: 'needle_swarm' },
+      { name: 'Flood Carrier Form', hp: 90, atk: 17, spd: 3, color: '#9a8b55', weapon: 'infection_burst' },
+      { name: 'Promethean Knight', hp: 135, atk: 15, spd: 5, color: '#f0f7ff', weapon: 'hardlight_blade' }
+    ],
+    bosses: [
+      { name: 'Gravemind Tendril', hp: 720, atk: 24, spd: 2, color: '#6b5a38', weapon: 'flood_mind', special: 'Logic Plague Whisper' },
+      { name: 'Ur-Didact Echo', hp: 640, atk: 23, spd: 5, color: '#dfefff', weapon: 'constraint_field', special: 'Composer Pulse' }
+    ]
+  },
+  Alien: {
+    monsters: [
+      { name: 'Chestburster Echo', hp: 45, atk: 13, spd: 8, color: '#d0b08a', weapon: 'inner_jaw' },
+      { name: 'Warrior Xenomorph', hp: 105, atk: 14, spd: 6, color: '#0b0d12', weapon: 'acid_claws' },
+      { name: 'Egg Chamber Sac', hp: 95, atk: 8, spd: 2, color: '#3e342b', weapon: 'facehugger_spawn' },
+      { name: 'Synthetic Ash Protocol', hp: 115, atk: 12, spd: 5, color: '#e8e8df', weapon: 'corporate_override' }
+    ],
+    bosses: [
+      { name: 'Big Chap Stalker', hp: 560, atk: 22, spd: 7, color: '#05070a', weapon: 'tail', special: 'Vent Shaft Ambush' },
+      { name: 'Weyland-Yutani Retrieval Team', hp: 510, atk: 19, spd: 5, color: '#2f3f46', weapon: 'containment_rifles', special: 'Specimen Recovery Order' }
+    ]
+  },
+  Predator: {
+    monsters: [
+      { name: 'Thermal Decoy Hunter', hp: 92, atk: 12, spd: 7, color: '#6b6f59', weapon: 'cloak_blade' },
+      { name: 'Tracker Predator Hound', hp: 85, atk: 13, spd: 8, color: '#4d3d33', weapon: 'jaw' },
+      { name: 'Falconer Drone', hp: 75, atk: 11, spd: 8, color: '#667067', weapon: 'aerial_scan' },
+      { name: 'Mercenary Trophy Guard', hp: 100, atk: 11, spd: 5, color: '#34495e', weapon: 'rifle' }
+    ],
+    bosses: [
+      { name: 'Elder Predator Trialmaster', hp: 610, atk: 23, spd: 5, color: '#7b6a4d', weapon: 'ceremonial_spear', special: 'Blooded Honor Trial' },
+      { name: 'Predalien Trophy Spawn', hp: 650, atk: 25, spd: 5, color: '#2c2a20', weapon: 'acid_wristblades', special: 'Hybrid Hunt Frenzy' }
+    ]
+  },
+  'Resident Evil': {
+    monsters: [
+      { name: 'Crimson Head Prototype', hp: 95, atk: 14, spd: 7, color: '#8b1e16', weapon: 'claws' },
+      { name: 'Ganado Plaga Host', hp: 85, atk: 12, spd: 5, color: '#5d4037', weapon: 'axe' },
+      { name: 'Regenerator Lab Specimen', hp: 145, atk: 15, spd: 4, color: '#c9c7b8', weapon: 'stretch_claws' },
+      { name: 'Ivy Plant B.O.W.', hp: 120, atk: 13, spd: 3, color: '#2e7d32', weapon: 'acid_vines' }
+    ],
+    bosses: [
+      { name: 'Lisa Trevor Memory', hp: 620, atk: 21, spd: 4, color: '#6b4b40', weapon: 'chains', special: 'Undying Pursuit' },
+      { name: 'Jack Baker Molded Patriarch', hp: 650, atk: 24, spd: 5, color: '#3d2d28', weapon: 'chainsaw_shear', special: 'Welcome to the Family' }
+    ]
+  },
+  'Silent Hill': {
+    monsters: [
+      { name: 'Closer Hallway Giant', hp: 130, atk: 14, spd: 3, color: '#9c7a6a', weapon: 'arm_slam' },
+      { name: 'Mandarin Undergrate', hp: 95, atk: 12, spd: 4, color: '#7d544a', weapon: 'floor_grab' },
+      { name: 'Needler Street Horror', hp: 110, atk: 13, spd: 5, color: '#69423d', weapon: 'bone_lance' },
+      { name: 'Schism Split-Face', hp: 120, atk: 15, spd: 4, color: '#7a5b55', weapon: 'head_blade' }
+    ],
+    bosses: [
+      { name: 'Memory of Alessa', hp: 590, atk: 20, spd: 5, color: '#6c3483', weapon: 'psychic_fire', special: 'Incubator Trial' },
+      { name: 'Mary Maria Echo', hp: 540, atk: 18, spd: 5, color: '#c27a7a', weapon: 'grief_chain', special: 'Letter From the Dead' }
+    ]
+  },
+  'Dino Crisis': {
+    monsters: [
+      { name: 'Allosaurus Corridor Hunter', hp: 130, atk: 16, spd: 5, color: '#5c3d2e', weapon: 'bite' },
+      { name: 'Mosasaurus Pool Shadow', hp: 145, atk: 15, spd: 4, color: '#1f4d5a', weapon: 'water_drag' },
+      { name: 'Third Energy Compsognathus Pack', hp: 70, atk: 9, spd: 8, color: '#6f8f45', weapon: 'swarm' }
+    ],
+    bosses: [
+      { name: 'Dr. Kirk Security Override', hp: 480, atk: 17, spd: 5, color: '#7f8c8d', weapon: 'lab_lockdown', special: 'Third Energy Lockout' },
+      { name: 'Plesiosaur Facility Breach', hp: 600, atk: 22, spd: 4, color: '#24546a', weapon: 'water_maw', special: 'Flooded Lab Ambush' }
+    ]
+  },
+  'The Matrix': {
+    monsters: [
+      { name: 'Agent Brown Program', hp: 120, atk: 14, spd: 8, color: '#1f1f1f', weapon: 'pistol' },
+      { name: 'Agent Thompson Program', hp: 125, atk: 15, spd: 8, color: '#202820', weapon: 'desert_eagle' },
+      { name: 'Twin Exile Ghost', hp: 100, atk: 13, spd: 7, color: '#d7d7d7', weapon: 'phase_blade' },
+      { name: 'Machine Sentinel Swarm', hp: 110, atk: 14, spd: 6, color: '#7f8c8d', weapon: 'cutters' }
+    ],
+    bosses: [
+      { name: 'Merovingian Exile Lord', hp: 540, atk: 18, spd: 6, color: '#8e6e53', weapon: 'causality_code', special: 'Cause and Effect Trap' },
+      { name: 'Architect White Room', hp: 620, atk: 20, spd: 4, color: '#ecf0f1', weapon: 'choice_matrix', special: 'Reload the Equation' }
+    ]
+  },
+  Stargate: {
+    monsters: [
+      { name: 'Horus Guard Phalanx', hp: 105, atk: 10, spd: 4, color: '#d4af37', weapon: 'staff_weapon' },
+      { name: 'Unas Host Warrior', hp: 125, atk: 13, spd: 5, color: '#6d4c41', weapon: 'claws' },
+      { name: 'Ori Prior Convert', hp: 115, atk: 14, spd: 4, color: '#f5e6a1', weapon: 'prior_staff' }
+    ],
+    bosses: [
+      { name: 'Ra Sun-God System Lord', hp: 560, atk: 20, spd: 5, color: '#f1c40f', weapon: 'ribbon_device', special: 'Pyramid Ship Command' },
+      { name: 'Replicator Carter Echo', hp: 590, atk: 21, spd: 6, color: '#b8c0c8', weapon: 'nanite_blade', special: 'Human-Form Replication' }
+    ]
+  },
+  'Half-Life': {
+    monsters: [
+      { name: 'Houndeye Pack', hp: 75, atk: 11, spd: 6, color: '#7d6f3f', weapon: 'sonic_blast' },
+      { name: 'Barnacle Ceiling Trap', hp: 65, atk: 10, spd: 2, color: '#a36b6b', weapon: 'tongue_grab' },
+      { name: 'Antlion Guard Larva', hp: 130, atk: 15, spd: 6, color: '#8e6f2e', weapon: 'charge' }
+    ],
+    bosses: [
+      { name: 'HECU Black Ops Squad', hp: 500, atk: 18, spd: 7, color: '#111317', weapon: 'suppressed_fire', special: 'Black Mesa Cleanup' },
+      { name: 'Advisor Pod Core', hp: 650, atk: 22, spd: 4, color: '#5d4a73', weapon: 'psychic_lift', special: 'Neural Harvest' }
+    ]
+  },
+  Portal: {
+    monsters: [
+      { name: 'Frankenturret Cube', hp: 90, atk: 10, spd: 4, color: '#dfe6e9', weapon: 'hop_crush' },
+      { name: 'Rocket Turret Mount', hp: 100, atk: 15, spd: 3, color: '#bdc3c7', weapon: 'rocket' },
+      { name: 'Excursion Funnel Hazard', hp: 80, atk: 9, spd: 5, color: '#85c1e9', weapon: 'tractor_beam' }
+    ],
+    bosses: [
+      { name: 'Fact Core Logic Snare', hp: 420, atk: 15, spd: 5, color: '#f1c40f', weapon: 'false_fact', special: 'Contradiction Cascade' },
+      { name: 'Space Core Vacuum Loop', hp: 450, atk: 16, spd: 8, color: '#2980b9', weapon: 'orbit_loop', special: 'SPAAACE Pull' }
+    ]
+  },
+  'Metal Gear': {
+    monsters: [
+      { name: 'FROG Haven Trooper', hp: 100, atk: 12, spd: 7, color: '#5d6d7e', weapon: 'p90' },
+      { name: 'Dwarf Gekko Swarm', hp: 70, atk: 10, spd: 8, color: '#bdc3c7', weapon: 'grapple' },
+      { name: 'Gekko Walker', hp: 130, atk: 15, spd: 5, color: '#7f8c8d', weapon: 'leg_stomp' }
+    ],
+    bosses: [
+      { name: 'Psycho Mantis Memory', hp: 520, atk: 18, spd: 7, color: '#6c3483', weapon: 'psychic_control', special: 'Controller Port Read' },
+      { name: 'Metal Gear REX Shadow', hp: 720, atk: 26, spd: 3, color: '#455a64', weapon: 'railgun', special: 'Nuclear Launch Threat' }
+    ]
+  },
+  'Mass Effect': {
+    monsters: [
+      { name: 'Husks Swarm', hp: 75, atk: 10, spd: 6, color: '#6c7a89', weapon: 'shock_grab' },
+      { name: 'Geth Rocket Trooper', hp: 100, atk: 13, spd: 5, color: '#2e4053', weapon: 'rocket' },
+      { name: 'Cerberus Phantom', hp: 110, atk: 15, spd: 7, color: '#f1c40f', weapon: 'monomolecular_sword' },
+      { name: 'Collector Drone', hp: 105, atk: 14, spd: 5, color: '#b7950b', weapon: 'particle_beam' }
+    ],
+    bosses: [
+      { name: 'Saren Arterius', hp: 620, atk: 23, spd: 7, color: '#34495e', weapon: 'sovereign_augments', special: 'Indoctrinated Charge' },
+      { name: 'Harbinger Avatar', hp: 680, atk: 25, spd: 5, color: '#d35400', weapon: 'collector_beam', special: 'Assuming Direct Control' }
+    ]
+  },
+  Doom: {
+    monsters: [
+      { name: 'Imp Fireballer', hp: 75, atk: 11, spd: 6, color: '#a04000', weapon: 'fireball' },
+      { name: 'Cacodemon Orb', hp: 115, atk: 13, spd: 4, color: '#c0392b', weapon: 'bite' },
+      { name: 'Revenant Jetpack', hp: 120, atk: 15, spd: 6, color: '#d7dbdd', weapon: 'missiles' },
+      { name: 'Mancubus Flame Tank', hp: 150, atk: 17, spd: 3, color: '#8b4513', weapon: 'flame_cannons' }
+    ],
+    bosses: [
+      { name: 'Marauder Sentinel-Fallen', hp: 620, atk: 25, spd: 7, color: '#7b241c', weapon: 'argent_axe', special: 'Wolf and Axe Counter' },
+      { name: 'Spider Mastermind Core', hp: 720, atk: 27, spd: 3, color: '#2c3e50', weapon: 'plasma_brain', special: 'Hell Network Overload' }
+    ]
+  },
+  'Dead Space': {
+    monsters: [
+      { name: 'Slasher Necromorph', hp: 90, atk: 13, spd: 5, color: '#9a6b44', weapon: 'bone_blades' },
+      { name: 'Pregnant Necromorph', hp: 135, atk: 12, spd: 3, color: '#7a5b45', weapon: 'swarm_burst' },
+      { name: 'Exploder Necromorph', hp: 70, atk: 17, spd: 5, color: '#d4ac0d', weapon: 'acid_sac' },
+      { name: 'Divider Necromorph', hp: 120, atk: 14, spd: 4, color: '#6e4f39', weapon: 'split_attack' }
+    ],
+    bosses: [
+      { name: 'Hunter Regenerator', hp: 650, atk: 21, spd: 5, color: '#4d342f', weapon: 'regrowth_claws', special: 'Impossible Regeneration' },
+      { name: 'Hive Mind Aegis VII', hp: 760, atk: 28, spd: 3, color: '#5c2018', weapon: 'tentacles', special: 'Marker Hive Crush' }
+    ]
+  },
+  'Star Wars': {
+    monsters: [
+      { name: 'Stormtrooper Squad', hp: 85, atk: 10, spd: 5, color: '#ecf0f1', weapon: 'blaster' },
+      { name: 'Droideka Shield Droid', hp: 120, atk: 13, spd: 4, color: '#bd8d46', weapon: 'twin_blaster' },
+      { name: 'Inquisitor Hunter', hp: 125, atk: 15, spd: 7, color: '#1c1c1c', weapon: 'red_lightsaber' }
+    ],
+    bosses: [
+      { name: 'Darth Vader Sith Lord', hp: 720, atk: 28, spd: 5, color: '#0a0a0a', weapon: 'force_choke', special: 'Dark Side Corridor Advance' },
+      { name: 'Emperor Palpatine', hp: 650, atk: 26, spd: 5, color: '#4a235a', weapon: 'force_lightning', special: 'Unlimited Power' }
+    ]
+  },
+  'Harry Potter': {
+    monsters: [
+      { name: 'Dementor Patrol', hp: 100, atk: 13, spd: 5, color: '#1c1c1c', weapon: 'soul_chill' },
+      { name: 'Acromantula Brood', hp: 90, atk: 12, spd: 7, color: '#4b352a', weapon: 'fangs' },
+      { name: 'Death Eater Duelist', hp: 110, atk: 14, spd: 6, color: '#2c2c2c', weapon: 'dark_wand' }
+    ],
+    bosses: [
+      { name: 'Basilisk of Secrets', hp: 690, atk: 25, spd: 4, color: '#1f5f3f', weapon: 'venom_fang', special: 'Petrifying Gaze' },
+      { name: 'Voldemort Horcrux Echo', hp: 720, atk: 27, spd: 6, color: '#d5dbdb', weapon: 'elder_wand', special: 'Avada Kedavra Lock' }
+    ]
+  },
+  'Yu-Gi-Oh': {
+    monsters: [
+      { name: 'Summoned Skull', hp: 125, atk: 15, spd: 5, color: '#d7dbdd', weapon: 'lightning' },
+      { name: 'Harpie Lady Trio', hp: 95, atk: 13, spd: 8, color: '#f5b7b1', weapon: 'claws' },
+      { name: 'Toon World Mimic', hp: 105, atk: 12, spd: 6, color: '#f4d03f', weapon: 'toon_trap' }
+    ],
+    bosses: [
+      { name: 'Red-Eyes Black Dragon', hp: 600, atk: 24, spd: 6, color: '#111317', weapon: 'inferno_fire', special: 'Inferno Fire Blast' },
+      { name: 'Exodia Forbidden One', hp: 800, atk: 30, spd: 3, color: '#d4af37', weapon: 'obliteration', special: 'Obliterate the Field' }
+    ]
+  },
+  Discworld: {
+    monsters: [
+      { name: 'Nac Mac Feegle Raid', hp: 70, atk: 13, spd: 8, color: '#3498db', weapon: 'tiny_brawl' },
+      { name: 'Unseen University Spell Leak', hp: 95, atk: 12, spd: 5, color: '#8e44ad', weapon: 'octarine_bolt' },
+      { name: 'Ankh-Morpork Assassin', hp: 90, atk: 14, spd: 7, color: '#1c2833', weapon: 'licensed_blade' }
+    ],
+    bosses: [
+      { name: 'Auditor of Reality', hp: 560, atk: 19, spd: 5, color: '#d5dbdb', weapon: 'anti_narrative', special: 'Eliminate Irregularity' },
+      { name: 'Death on Binky', hp: 680, atk: 24, spd: 6, color: '#ecf0f1', weapon: 'scythe', special: 'Final Appointment' }
+    ]
+  },
+  Kaamelott: {
+    monsters: [
+      { name: 'Pict Raider', hp: 85, atk: 10, spd: 6, color: '#6e4f39', weapon: 'axe' },
+      { name: 'Roman Tax Patrol', hp: 95, atk: 11, spd: 5, color: '#7f8c8d', weapon: 'gladius' },
+      { name: 'Quest Bureaucrat', hp: 80, atk: 8, spd: 4, color: '#d6b465', weapon: 'paperwork' }
+    ],
+    bosses: [
+      { name: 'Meleagant Shadow', hp: 540, atk: 19, spd: 5, color: '#1c1c1c', weapon: 'despair_word', special: 'Kingdom Doubt' },
+      { name: 'Lancelot War Camp', hp: 600, atk: 22, spd: 5, color: '#d7dbdd', weapon: 'white_blade', special: 'Betrayal Formation' }
+    ]
+  },
+  'Dungeon Meshi': {
+    monsters: [
+      { name: 'Walking Mushroom Circle', hp: 75, atk: 9, spd: 5, color: '#d6b465', weapon: 'spores' },
+      { name: 'Undine Water Mass', hp: 110, atk: 13, spd: 5, color: '#5dade2', weapon: 'water_blast' },
+      { name: 'Treasure Insect Swarm', hp: 70, atk: 10, spd: 7, color: '#f4d03f', weapon: 'mimic_bite' }
+    ],
+    bosses: [
+      { name: 'Chimera Falin', hp: 660, atk: 24, spd: 5, color: '#f5d6a1', weapon: 'dragon_magic', special: 'Dragon Soul Wail' },
+      { name: 'Mad Mage Thistle', hp: 610, atk: 22, spd: 6, color: '#8e44ad', weapon: 'dungeon_magic', special: 'Dungeon Master Rewrite' }
+    ]
+  },
+  'Final Fantasy VII': {
+    monsters: [
+      { name: 'Shinra Guard', hp: 85, atk: 10, spd: 5, color: '#34495e', weapon: 'rifle' },
+      { name: 'Sweeper Machine', hp: 120, atk: 13, spd: 4, color: '#7f8c8d', weapon: 'machine_gun' },
+      { name: 'Tonberry Stalker', hp: 130, atk: 18, spd: 2, color: '#2e7d32', weapon: 'knife' }
+    ],
+    bosses: [
+      { name: 'Sephiroth One-Winged', hp: 760, atk: 30, spd: 7, color: '#d7dbdd', weapon: 'masamune', special: 'Supernova Memory' },
+      { name: 'Jenova Synthesis Core', hp: 720, atk: 26, spd: 5, color: '#7d3c98', weapon: 'alien_cells', special: 'Jenova Reunion' }
+    ]
+  },
+  Ghostbusters: {
+    monsters: [
+      { name: 'Class V Full Roaming Vapor', hp: 85, atk: 10, spd: 7, color: '#2ecc71', weapon: 'slime' },
+      { name: 'Terror Dog', hp: 120, atk: 14, spd: 6, color: '#5d4037', weapon: 'claws' },
+      { name: 'Library Ghost', hp: 80, atk: 9, spd: 5, color: '#d5dbdb', weapon: 'fear_scream' }
+    ],
+    bosses: [
+      { name: 'Gozer the Gozerian', hp: 650, atk: 24, spd: 6, color: '#d7bde2', weapon: 'dimension_bolt', special: 'Choose and Perish' },
+      { name: 'Stay Puft Marshmallow Man', hp: 740, atk: 27, spd: 3, color: '#ecf0f1', weapon: 'marshmallow_stomp', special: 'Cross the Streams' }
+    ]
+  },
+  'The Simpsons': {
+    monsters: [
+      { name: 'Itchy and Scratchy Bot', hp: 75, atk: 11, spd: 7, color: '#f4d03f', weapon: 'cartoon_saw' },
+      { name: 'Springfield Power Mutant', hp: 105, atk: 12, spd: 5, color: '#2ecc71', weapon: 'radioactive_touch' },
+      { name: 'Kang and Kodos Probe', hp: 95, atk: 13, spd: 6, color: '#8e44ad', weapon: 'tractor_ray' }
+    ],
+    bosses: [
+      { name: 'Mr Burns Nuclear Scheme', hp: 520, atk: 18, spd: 4, color: '#f1c40f', weapon: 'hounds', special: 'Release the Hounds' },
+      { name: 'Sideshow Bob Revenge Plot', hp: 500, atk: 19, spd: 6, color: '#e67e22', weapon: 'rake_trap', special: 'Cape Feare Ambush' }
+    ]
+  },
+  Futurama: {
+    monsters: [
+      { name: 'Robot Mafia Enforcer', hp: 95, atk: 12, spd: 5, color: '#7f8c8d', weapon: 'tommy_gun' },
+      { name: 'Brain Slug Host', hp: 70, atk: 8, spd: 6, color: '#2ecc71', weapon: 'mind_control' },
+      { name: 'Momcorp Killbot', hp: 115, atk: 14, spd: 5, color: '#bdc3c7', weapon: 'laser' }
+    ],
+    bosses: [
+      { name: 'Roberto Knife Bot', hp: 530, atk: 21, spd: 7, color: '#95a5a6', weapon: 'knife', special: 'Crazy Stab Routine' },
+      { name: 'Hypnotoad Broadcast', hp: 560, atk: 20, spd: 4, color: '#2ecc71', weapon: 'hypnosis', special: 'All Glory Protocol' }
+    ]
+  },
+  'Team Fortress 2': {
+    monsters: [
+      { name: 'RED Scout Rush', hp: 75, atk: 11, spd: 9, color: '#c0392b', weapon: 'scattergun' },
+      { name: 'BLU Sentry Level 3', hp: 135, atk: 15, spd: 2, color: '#3498db', weapon: 'sentry_rockets' },
+      { name: 'Pyro Ambush', hp: 105, atk: 14, spd: 6, color: '#e67e22', weapon: 'flamethrower' }
+    ],
+    bosses: [
+      { name: 'Saxton Hale Arena Boss', hp: 720, atk: 28, spd: 7, color: '#d35400', weapon: 'fists', special: 'Mann Co. Punch' },
+      { name: 'Merasmus Spellfield', hp: 600, atk: 23, spd: 5, color: '#8e44ad', weapon: 'bombinomicon', special: 'Halloween Spell Chaos' }
+    ]
+  },
+  'Left 4 Dead': {
+    monsters: [
+      { name: 'Boomer Bile Host', hp: 70, atk: 9, spd: 4, color: '#7f8c8d', weapon: 'bile_explosion' },
+      { name: 'Hunter Pounce', hp: 80, atk: 14, spd: 8, color: '#566573', weapon: 'pounce' },
+      { name: 'Spitter Acid Pool', hp: 75, atk: 13, spd: 5, color: '#2ecc71', weapon: 'acid_spit' }
+    ],
+    bosses: [
+      { name: 'Witch Crying Corner', hp: 560, atk: 24, spd: 5, color: '#d5b895', weapon: 'claw_frenzy', special: 'Startled Scream' },
+      { name: 'Tank Horde Breaker', hp: 720, atk: 28, spd: 4, color: '#5d4037', weapon: 'concrete_throw', special: 'Safe Room Breach' }
+    ]
+  }
+};
+
+const mergeEnemyExpansion = (target, additions = {}) => {
+  Object.entries(additions).forEach(([universe, data]) => {
+    if (!target[universe]) {
+      target[universe] = { monsters: [], bosses: [], worldBoss: data.worldBoss || null };
+    }
+    ['monsters', 'bosses'].forEach(kind => {
+      const incoming = Array.isArray(data?.[kind]) ? data[kind] : [];
+      if (!Array.isArray(target[universe][kind])) target[universe][kind] = [];
+      const knownNames = new Set(target[universe][kind].map(item => item.name));
+      incoming.forEach(item => {
+        if (!item?.name || knownNames.has(item.name)) return;
+        target[universe][kind].push(item);
+        knownNames.add(item.name);
+      });
+    });
+    if (!target[universe].worldBoss && data.worldBoss) target[universe].worldBoss = data.worldBoss;
+  });
+};
+
+mergeEnemyExpansion(ENEMIES_DB, CANON_ENEMY_EXPANSION);
+mergeEnemyExpansion(ENEMIES_DB, LORE_ACCURATE_ENEMY_EXPANSIONS);
 
 // Final game boss (The final breach singularity core)
 export const FINAL_GAME_BOSS = {

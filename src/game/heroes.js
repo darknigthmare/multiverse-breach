@@ -1,6 +1,7 @@
 // Heroes Database with Crossover Gear, Event Items, and Synergies (37 Universes)
 
 import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from './expandedUniverses';
+import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './loreAccuratePacks';
 
 export const HEROES_DB = [
   {
@@ -1429,10 +1430,443 @@ const extraHeroData = {
   ]
 };
 
-Object.assign(extraHeroData, EXPANDED_EXTRA_HERO_DATA);
+
+const CANON_ROSTER_EXPANSION = {
+  'Gears of War': [
+    { id: 'baird', name: 'Damon Baird', cat: 'hacker', color: '#95a5a6' },
+    { id: 'anya_stroud', name: 'Anya Stroud', cat: 'tactical', color: '#d8d3c0' },
+    { id: 'hoffman_cog', name: 'Colonel Hoffman', cat: 'marine', color: '#4d5656' },
+    { id: 'carmine_cog', name: 'Carmine', cat: 'marine', color: '#6c7a89' },
+    { id: 'kait_diaz', name: 'Kait Diaz', cat: 'slayer', color: '#7b241c' }
+  ],
+  Halo: [
+    { id: 'cortana', name: 'Cortana', cat: 'hacker', color: '#4dd2ff' },
+    { id: 'noble_six', name: 'Noble Six', cat: 'marine', color: '#566573' },
+    { id: 'buck_odst', name: 'Edward Buck', cat: 'tactical', color: '#34495e' },
+    { id: 'kelly_087', name: 'Kelly-087', cat: 'slayer', color: '#1f7a3f' },
+    { id: 'linda_058', name: 'Linda-058', cat: 'tactical', color: '#255f3f' }
+  ],
+  Alien: [
+    { id: 'dallas_alien', name: 'Captain Dallas', cat: 'tactical', color: '#8e8c7f' },
+    { id: 'parker_alien', name: 'Parker', cat: 'marine', color: '#7d6d5f' },
+    { id: 'lambert_alien', name: 'Lambert', cat: 'horror', color: '#c6b6a3' },
+    { id: 'newt_aliens', name: 'Newt', cat: 'hacker', color: '#e0c18c' },
+    { id: 'ash_alien', name: 'Ash', cat: 'hacker', color: '#d8d8d8' }
+  ],
+  Predator: [
+    { id: 'anna_predator', name: 'Anna Gonsalves', cat: 'tactical', color: '#8f6f45' },
+    { id: 'billy_predator', name: 'Billy Sole', cat: 'slayer', color: '#3d5c3d' },
+    { id: 'mac_predator', name: 'Mac Eliot', cat: 'marine', color: '#4b6043' },
+    { id: 'harrigan_predator', name: 'Mike Harrigan', cat: 'tactical', color: '#6c5f54' },
+    { id: 'greyback_yautja', name: 'Greyback Elder', cat: 'marine', color: '#6b604c' }
+  ],
+  'Resident Evil': [
+    { id: 'chris_redfield', name: 'Chris Redfield', cat: 'marine', color: '#2e4053' },
+    { id: 'claire_redfield', name: 'Claire Redfield', cat: 'tactical', color: '#b03a2e' },
+    { id: 'ada_wong', name: 'Ada Wong', cat: 'hacker', color: '#c0392b' },
+    { id: 'rebecca_chambers', name: 'Rebecca Chambers', cat: 'hacker', color: '#27ae60' },
+    { id: 'barry_burton', name: 'Barry Burton', cat: 'marine', color: '#7f8c8d' },
+    { id: 'carlos_oliveira', name: 'Carlos Oliveira', cat: 'marine', color: '#34495e' }
+  ],
+  'Silent Hill': [
+    { id: 'harry_mason', name: 'Harry Mason', cat: 'horror', color: '#59656f' },
+    { id: 'alessa_gillespie', name: 'Alessa Gillespie', cat: 'hacker', color: '#6c3483' },
+    { id: 'maria_sh2', name: 'Maria', cat: 'horror', color: '#c27a7a' },
+    { id: 'cybil_bennett', name: 'Cybil Bennett', cat: 'tactical', color: '#2e5f8a' },
+    { id: 'claudia_wolf', name: 'Claudia Wolf', cat: 'hacker', color: '#8d7b60' }
+  ],
+  'Dino Crisis': [
+    { id: 'gail_dc', name: 'Gail', cat: 'marine', color: '#34495e' },
+    { id: 'paula_dc2', name: 'Paula', cat: 'slayer', color: '#d35400' },
+    { id: 'dr_kirk', name: 'Dr. Kirk', cat: 'hacker', color: '#7f8c8d' },
+    { id: 'david_dc2', name: 'David Fork', cat: 'tactical', color: '#3d7a4b' }
+  ],
+  'The Matrix': [
+    { id: 'agent_smith', name: 'Agent Smith', cat: 'hacker', color: '#1a1d24' },
+    { id: 'niobe_matrix', name: 'Niobe', cat: 'tactical', color: '#2c3e50' },
+    { id: 'tank_matrix', name: 'Tank', cat: 'hacker', color: '#27ae60' },
+    { id: 'oracle_matrix', name: 'The Oracle', cat: 'hacker', color: '#d9b36c' }
+  ],
+  Stargate: [
+    { id: 'hammond_sgc', name: 'General Hammond', cat: 'tactical', color: '#7f8c8d' },
+    { id: 'vala_mal_doran', name: 'Vala Mal Doran', cat: 'slayer', color: '#9b59b6' },
+    { id: 'cam_mitchell', name: 'Cameron Mitchell', cat: 'marine', color: '#34495e' }
+  ],
+  'Half-Life': [
+    { id: 'eli_vance', name: 'Eli Vance', cat: 'hacker', color: '#6e4f39' },
+    { id: 'kleiner', name: 'Dr. Kleiner', cat: 'hacker', color: '#bdc3c7' },
+    { id: 'vortigaunt_ally', name: 'Vortigaunt Ally', cat: 'hacker', color: '#6f8f4f' },
+    { id: 'dog_hl2', name: 'Dog', cat: 'marine', color: '#95a5a6' }
+  ],
+  Portal: [
+    { id: 'glados', name: 'GLaDOS', cat: 'hacker', color: '#dfe6e9' },
+    { id: 'wheatley', name: 'Wheatley', cat: 'hacker', color: '#2980b9' },
+    { id: 'cave_johnson', name: 'Cave Johnson', cat: 'tactical', color: '#f39c12' },
+    { id: 'caroline_portal', name: 'Caroline', cat: 'hacker', color: '#e8d2a6' }
+  ],
+  'Metal Gear': [
+    { id: 'meryl_mgs', name: 'Meryl Silverburgh', cat: 'tactical', color: '#a93226' },
+    { id: 'liquid_snake', name: 'Liquid Snake', cat: 'slayer', color: '#7f5c38' },
+    { id: 'the_boss_mgs', name: 'The Boss', cat: 'marine', color: '#d7d7c5' },
+    { id: 'ocelot_mgs', name: 'Revolver Ocelot', cat: 'tactical', color: '#8e6e53' }
+  ],
+  Payday: [
+    { id: 'chains_pd', name: 'Chains', cat: 'marine', color: '#2c3e50' },
+    { id: 'houston_pd', name: 'Houston', cat: 'tactical', color: '#34495e' },
+    { id: 'clover_pd', name: 'Clover', cat: 'slayer', color: '#27ae60' },
+    { id: 'bain_pd', name: 'Bain', cat: 'hacker', color: '#95a5a6' }
+  ],
+  Vocaloid: [
+    { id: 'len', name: 'Kagamine Len', cat: 'slayer', color: '#f5d742' },
+    { id: 'meiko', name: 'MEIKO', cat: 'marine', color: '#c0392b' },
+    { id: 'kaito', name: 'KAITO', cat: 'tactical', color: '#2980b9' },
+    { id: 'gumi', name: 'GUMI', cat: 'hacker', color: '#2ecc71' }
+  ],
+  'Yu-Gi-Oh': [
+    { id: 'tea_ygo', name: 'Tea Gardner', cat: 'hacker', color: '#f8c471' },
+    { id: 'bakura_ygo', name: 'Ryo Bakura', cat: 'horror', color: '#d5dbdb' },
+    { id: 'mai_ygo', name: 'Mai Valentine', cat: 'tactical', color: '#f4d03f' },
+    { id: 'pegasus_ygo', name: 'Maximillion Pegasus', cat: 'hacker', color: '#d7bde2' }
+  ],
+  'Guilty Gear': [
+    { id: 'dizzy_gg', name: 'Dizzy', cat: 'hacker', color: '#76d7c4' },
+    { id: 'millia_gg', name: 'Millia Rage', cat: 'slayer', color: '#f7dc6f' },
+    { id: 'axl_gg', name: 'Axl Low', cat: 'tactical', color: '#f4d03f' },
+    { id: 'baiken_gg', name: 'Baiken', cat: 'slayer', color: '#e74c3c' }
+  ],
+  BlazBlue: [
+    { id: 'rachel_bb', name: 'Rachel Alucard', cat: 'hacker', color: '#d7bde2' },
+    { id: 'hazama_bb', name: 'Hazama', cat: 'horror', color: '#27ae60' },
+    { id: 'tsubaki_bb', name: 'Tsubaki Yayoi', cat: 'tactical', color: '#f8c471' },
+    { id: 'hakumen_bb', name: 'Hakumen', cat: 'slayer', color: '#ecf0f1' }
+  ],
+  'Slender Man': [
+    { id: 'kate_slender', name: 'Kate', cat: 'horror', color: '#bdc3c7' },
+    { id: 'lauren_slender', name: 'Lauren', cat: 'tactical', color: '#7f8c8d' },
+    { id: 'charlie_slender', name: 'Charlie Matheson', cat: 'horror', color: '#2c3e50' }
+  ],
+  Chucky: [
+    { id: 'kyle_chucky', name: 'Kyle', cat: 'tactical', color: '#5dade2' },
+    { id: 'nica_chucky', name: 'Nica Pierce', cat: 'horror', color: '#6c3483' },
+    { id: 'jake_chucky', name: 'Jake Wheeler', cat: 'hacker', color: '#3498db' }
+  ],
+  Hellraiser: [
+    { id: 'pinhead', name: 'Pinhead', cat: 'horror', color: '#d5dbdb' },
+    { id: 'chatterer', name: 'Chatterer', cat: 'slayer', color: '#c0b6a0' },
+    { id: 'julia_cotton', name: 'Julia Cotton', cat: 'horror', color: '#8b0000' }
+  ],
+  'Mass Effect': [
+    { id: 'tali', name: 'Tali Zorah', cat: 'hacker', color: '#8e44ad' },
+    { id: 'wrex', name: 'Urdnot Wrex', cat: 'marine', color: '#7b241c' },
+    { id: 'ashley_williams', name: 'Ashley Williams', cat: 'marine', color: '#34495e' },
+    { id: 'mordin', name: 'Mordin Solus', cat: 'hacker', color: '#95a5a6' }
+  ],
+  Fallout: [
+    { id: 'dogmeat', name: 'Dogmeat', cat: 'slayer', color: '#8b6f47' },
+    { id: 'piper_wright', name: 'Piper Wright', cat: 'tactical', color: '#c0392b' },
+    { id: 'preston_garvey', name: 'Preston Garvey', cat: 'marine', color: '#2c3e50' },
+    { id: 'boone_fnv', name: 'Craig Boone', cat: 'tactical', color: '#566573' }
+  ],
+  Doom: [
+    { id: 'vega_doom', name: 'VEGA', cat: 'hacker', color: '#85c1e9' },
+    { id: 'night_sentinel', name: 'Night Sentinel', cat: 'slayer', color: '#d4ac0d' },
+    { id: 'doom_marine_classic', name: 'Classic Doom Marine', cat: 'marine', color: '#27ae60' }
+  ],
+  Unreal: [
+    { id: 'lauren_unreal', name: 'Lauren', cat: 'slayer', color: '#e74c3c' },
+    { id: 'xan_krigor', name: 'Xan Kriegor', cat: 'hacker', color: '#f1c40f' },
+    { id: 'prism_unreal', name: 'Prism', cat: 'tactical', color: '#9b59b6' }
+  ],
+  'Harry Potter': [
+    { id: 'dumbledore', name: 'Albus Dumbledore', cat: 'hacker', color: '#9b59b6' },
+    { id: 'sirius_black', name: 'Sirius Black', cat: 'slayer', color: '#2c3e50' },
+    { id: 'snape', name: 'Severus Snape', cat: 'hacker', color: '#1c1c1c' },
+    { id: 'voldemort', name: 'Lord Voldemort', cat: 'horror', color: '#d5dbdb' }
+  ],
+  'Star Wars': [
+    { id: 'leia_organa', name: 'Leia Organa', cat: 'tactical', color: '#ecf0f1' },
+    { id: 'obi_wan', name: 'Obi-Wan Kenobi', cat: 'slayer', color: '#5dade2' },
+    { id: 'yoda', name: 'Yoda', cat: 'hacker', color: '#58d68d' },
+    { id: 'darth_maul', name: 'Darth Maul', cat: 'slayer', color: '#a93226' }
+  ],
+  'Le Cinquième Element': [
+    { id: 'zorg', name: 'Jean-Baptiste Emanuel Zorg', cat: 'hacker', color: '#6e2c00' },
+    { id: 'cornelius', name: 'Vito Cornelius', cat: 'hacker', color: '#d5b895' },
+    { id: 'munro_fifth', name: 'General Munro', cat: 'marine', color: '#34495e' }
+  ],
+  'Scary Movie': [
+    { id: 'brenda_meeks', name: 'Brenda Meeks', cat: 'tactical', color: '#f4d03f' },
+    { id: 'ray_wilkins', name: 'Ray Wilkins', cat: 'hacker', color: '#5dade2' },
+    { id: 'doofy', name: 'Doofy Gilmore', cat: 'horror', color: '#ecf0f1' }
+  ],
+  'Dead Space': [
+    { id: 'nicole_brennan', name: 'Nicole Brennan', cat: 'hacker', color: '#85c1e9' },
+    { id: 'zach_hammond', name: 'Zach Hammond', cat: 'marine', color: '#566573' },
+    { id: 'kendra_daniels', name: 'Kendra Daniels', cat: 'tactical', color: '#c0c0c0' }
+  ],
+  'Rick & Morty': [
+    { id: 'birdperson', name: 'Birdperson', cat: 'marine', color: '#34495e' },
+    { id: 'beth_smith', name: 'Beth Smith', cat: 'tactical', color: '#f5cba7' },
+    { id: 'mr_meeseeks', name: 'Mr. Meeseeks', cat: 'slayer', color: '#5dade2' }
+  ],
+  'Digital Circus': [
+    { id: 'ragatha', name: 'Ragatha', cat: 'tactical', color: '#c0392b' },
+    { id: 'kinger', name: 'Kinger', cat: 'hacker', color: '#f7dc6f' },
+    { id: 'gangle', name: 'Gangle', cat: 'horror', color: '#e74c3c' },
+    { id: 'zooble', name: 'Zooble', cat: 'slayer', color: '#9b59b6' }
+  ],
+  Digimon: [
+    { id: 'sora_biyomon', name: 'Sora & Biyomon', cat: 'tactical', color: '#e74c3c' },
+    { id: 'mimi_palmon', name: 'Mimi & Palmon', cat: 'hacker', color: '#2ecc71' },
+    { id: 'joe_gomamon', name: 'Joe & Gomamon', cat: 'marine', color: '#5dade2' },
+    { id: 'kari_gatomon', name: 'Kari & Gatomon', cat: 'hacker', color: '#f8c471' },
+    { id: 'tk_patamon', name: 'T.K. & Patamon', cat: 'tactical', color: '#f4d03f' }
+  ],
+  Saw: [
+    { id: 'lawrence_gordon', name: 'Lawrence Gordon', cat: 'tactical', color: '#d5dbdb' },
+    { id: 'lynn_denlon', name: 'Lynn Denlon', cat: 'hacker', color: '#c0392b' },
+    { id: 'adam_saw', name: 'Adam Stanheight', cat: 'horror', color: '#7f8c8d' }
+  ],
+  'Rosario + Vampire': [
+    { id: 'tsukune_aono', name: 'Tsukune Aono', cat: 'tactical', color: '#ffeaa7' },
+    { id: 'yukari_rv', name: 'Yukari Sendo', cat: 'hacker', color: '#9b59b6' },
+    { id: 'mizore_rv', name: 'Mizore Shirayuki', cat: 'horror', color: '#85c1e9' },
+    { id: 'gin_rv', name: 'Gin Morioka', cat: 'slayer', color: '#95a5a6' }
+  ],
+  Negima: [
+    { id: 'konoka_negima', name: 'Konoka Konoe', cat: 'hacker', color: '#f5b7b1' },
+    { id: 'setsuna_negima', name: 'Setsuna Sakurazaki', cat: 'slayer', color: '#34495e' },
+    { id: 'nodoka_negima', name: 'Nodoka Miyazaki', cat: 'hacker', color: '#d7bde2' }
+  ],
+  'Ghost in the Shell': [
+    { id: 'aramaki', name: 'Daisuke Aramaki', cat: 'tactical', color: '#bdc3c7' },
+    { id: 'saito_gits', name: 'Saito', cat: 'tactical', color: '#566573' },
+    { id: 'ishikawa_gits', name: 'Ishikawa', cat: 'hacker', color: '#7f8c8d' },
+    { id: 'tachikoma', name: 'Tachikoma', cat: 'hacker', color: '#3498db' }
+  ],
+  'Mad Max': [
+    { id: 'toast_mm', name: 'Toast the Knowing', cat: 'tactical', color: '#d7b98e' },
+    { id: 'capable_mm', name: 'Capable', cat: 'hacker', color: '#d98880' },
+    { id: 'chumbucket_mm', name: 'Chumbucket', cat: 'hacker', color: '#b7950b' }
+  ],
+  Discworld: [
+    { id: 'twoflower_dw', name: 'Twoflower', cat: 'hacker', color: '#f4d03f' },
+    { id: 'death_dw', name: 'Death', cat: 'horror', color: '#d5dbdb' },
+    { id: 'vetinari_dw', name: 'Lord Vetinari', cat: 'tactical', color: '#1c2833' },
+    { id: 'nanny_ogg_dw', name: 'Nanny Ogg', cat: 'hacker', color: '#9b59b6' }
+  ],
+  Kaamelott: [
+    { id: 'leodagan_kaamelott', name: 'Leodagan', cat: 'marine', color: '#5d4037' },
+    { id: 'guenievre_kaamelott', name: 'Guenièvre', cat: 'hacker', color: '#f5cba7' },
+    { id: 'lancelot_kaamelott', name: 'Lancelot', cat: 'slayer', color: '#d7dbdd' },
+    { id: 'merlin_kaamelott', name: 'Merlin', cat: 'hacker', color: '#7d3c98' },
+    { id: 'bohort_kaamelott', name: 'Bohort', cat: 'tactical', color: '#f9e79f' }
+  ],
+  Aliens: [
+    { id: 'ripley_aliens', name: 'Ellen Ripley Aliens', cat: 'marine', color: '#8b8589' },
+    { id: 'newt_hadley', name: 'Newt', cat: 'hacker', color: '#e0c18c' },
+    { id: 'hudson_aliens', name: 'Hudson', cat: 'marine', color: '#6b7767' },
+    { id: 'apone_aliens', name: 'Apone', cat: 'tactical', color: '#566573' }
+  ],
+  'Dungeon Meshi': [
+    { id: 'chilchuck_meshi', name: 'Chilchuck', cat: 'tactical', color: '#a67c52' },
+    { id: 'falin_meshi', name: 'Falin', cat: 'hacker', color: '#f5d6a1' },
+    { id: 'izutsumi_meshi', name: 'Izutsumi', cat: 'slayer', color: '#5d6d7e' }
+  ],
+  'Hazbin Hotel': [
+    { id: 'angel_dust_hazbin', name: 'Angel Dust', cat: 'slayer', color: '#f5b7b1' },
+    { id: 'husk_hazbin', name: 'Husk', cat: 'tactical', color: '#7b241c' },
+    { id: 'niffty_hazbin', name: 'Niffty', cat: 'horror', color: '#c0392b' },
+    { id: 'sir_pentious_hazbin', name: 'Sir Pentious', cat: 'hacker', color: '#2e4053' }
+  ],
+  'Breaking Bad': [
+    { id: 'jesse_pinkman', name: 'Jesse Pinkman', cat: 'slayer', color: '#f1c40f' },
+    { id: 'saul_goodman', name: 'Saul Goodman', cat: 'hacker', color: '#f4d03f' },
+    { id: 'mike_ehrmantraut', name: 'Mike Ehrmantraut', cat: 'tactical', color: '#566573' }
+  ],
+  Ghostbusters: [
+    { id: 'venkman_gb', name: 'Peter Venkman', cat: 'hacker', color: '#7f8c8d' },
+    { id: 'stantz_gb', name: 'Ray Stantz', cat: 'tactical', color: '#f4d03f' },
+    { id: 'spengler_gb', name: 'Egon Spengler', cat: 'hacker', color: '#85c1e9' },
+    { id: 'zeddemore_gb', name: 'Winston Zeddemore', cat: 'marine', color: '#34495e' }
+  ],
+  'Final Fantasy VII': [
+    { id: 'barret_ff7', name: 'Barret Wallace', cat: 'marine', color: '#566573' },
+    { id: 'redxiii_ff7', name: 'Red XIII', cat: 'slayer', color: '#c0392b' },
+    { id: 'yuffie_ff7', name: 'Yuffie Kisaragi', cat: 'tactical', color: '#27ae60' },
+    { id: 'vincent_ff7', name: 'Vincent Valentine', cat: 'horror', color: '#7b241c' }
+  ],
+  'Final Fantasy VIII': [
+    { id: 'quistis_ff8', name: 'Quistis Trepe', cat: 'hacker', color: '#f4d03f' },
+    { id: 'seifer_ff8', name: 'Seifer Almasy', cat: 'slayer', color: '#d7dbdd' },
+    { id: 'laguna_ff8', name: 'Laguna Loire', cat: 'tactical', color: '#5dade2' }
+  ],
+  'Final Fantasy XIII': [
+    { id: 'snow_ff13', name: 'Snow Villiers', cat: 'marine', color: '#d7dbdd' },
+    { id: 'sazh_ff13', name: 'Sazh Katzroy', cat: 'tactical', color: '#34495e' },
+    { id: 'fang_ff13', name: 'Fang', cat: 'slayer', color: '#7d3c98' }
+  ],
+  'Final Fantasy XV': [
+    { id: 'ignis_ff15', name: 'Ignis Scientia', cat: 'tactical', color: '#566573' },
+    { id: 'gladiolus_ff15', name: 'Gladiolus Amicitia', cat: 'marine', color: '#7b241c' },
+    { id: 'lunafreya_ff15', name: 'Lunafreya', cat: 'hacker', color: '#f8c471' }
+  ],
+  'The Simpsons': [
+    { id: 'marge_simpsons', name: 'Marge Simpson', cat: 'hacker', color: '#3498db' },
+    { id: 'lisa_simpsons', name: 'Lisa Simpson', cat: 'hacker', color: '#f4d03f' },
+    { id: 'maggie_simpsons', name: 'Maggie Simpson', cat: 'horror', color: '#5dade2' },
+    { id: 'ned_flanders', name: 'Ned Flanders', cat: 'tactical', color: '#27ae60' }
+  ],
+  Futurama: [
+    { id: 'amy_futurama', name: 'Amy Wong', cat: 'tactical', color: '#f5b7b1' },
+    { id: 'hermes_futurama', name: 'Hermes Conrad', cat: 'hacker', color: '#27ae60' },
+    { id: 'zoidberg_futurama', name: 'Zoidberg', cat: 'horror', color: '#e74c3c' }
+  ],
+  'Attack on Titan': [
+    { id: 'levi_aot', name: 'Levi Ackerman', cat: 'slayer', color: '#566573' },
+    { id: 'hange_aot', name: 'Hange Zoe', cat: 'hacker', color: '#8e6e53' },
+    { id: 'erwin_aot', name: 'Erwin Smith', cat: 'tactical', color: '#d6b465' }
+  ],
+  'Death Note': [
+    { id: 'misa_dn', name: 'Misa Amane', cat: 'hacker', color: '#f5b7b1' },
+    { id: 'ryuk_dn', name: 'Ryuk', cat: 'horror', color: '#1c1c1c' },
+    { id: 'near_dn', name: 'Near', cat: 'hacker', color: '#d5dbdb' }
+  ],
+  'Spy x Family': [
+    { id: 'bond_spy', name: 'Bond Forger', cat: 'hacker', color: '#d7d3c8' },
+    { id: 'fiona_spy', name: 'Fiona Frost', cat: 'tactical', color: '#d7dbdd' },
+    { id: 'yuri_spy', name: 'Yuri Briar', cat: 'slayer', color: '#34495e' }
+  ],
+  Charmed: [
+    { id: 'prue_charmed', name: 'Prue Halliwell', cat: 'hacker', color: '#8e44ad' },
+    { id: 'paige_charmed', name: 'Paige Matthews', cat: 'hacker', color: '#d7bde2' },
+    { id: 'leo_charmed', name: 'Leo Wyatt', cat: 'marine', color: '#85c1e9' }
+  ],
+  'Buffy the Vampire Slayer': [
+    { id: 'xander_buffy', name: 'Xander Harris', cat: 'tactical', color: '#f8c471' },
+    { id: 'giles_buffy', name: 'Rupert Giles', cat: 'hacker', color: '#7f8c8d' },
+    { id: 'angel_buffy', name: 'Angel', cat: 'horror', color: '#1c2833' }
+  ],
+  'Team Fortress 2': [
+    { id: 'demoman_tf2', name: 'Demoman', cat: 'slayer', color: '#7d3c98' },
+    { id: 'heavy_tf2', name: 'Heavy', cat: 'marine', color: '#c0392b' },
+    { id: 'engineer_tf2', name: 'Engineer', cat: 'hacker', color: '#f4d03f' },
+    { id: 'medic_tf2', name: 'Medic', cat: 'hacker', color: '#ecf0f1' },
+    { id: 'spy_tf2', name: 'Spy', cat: 'tactical', color: '#34495e' }
+  ],
+  'Left 4 Dead': [
+    { id: 'coach_l4d', name: 'Coach', cat: 'marine', color: '#34495e' },
+    { id: 'ellis_l4d', name: 'Ellis', cat: 'tactical', color: '#f8c471' },
+    { id: 'rochelle_l4d', name: 'Rochelle', cat: 'hacker', color: '#d7dbdd' },
+    { id: 'nick_l4d', name: 'Nick', cat: 'tactical', color: '#d6d6d6' }
+  ],
+  Yakuza: [
+    { id: 'ichiban_yakuza', name: 'Ichiban Kasuga', cat: 'slayer', color: '#c0392b' },
+    { id: 'saejima_yakuza', name: 'Taiga Saejima', cat: 'marine', color: '#7f8c8d' },
+    { id: 'akiyama_yakuza', name: 'Shun Akiyama', cat: 'tactical', color: '#f4d03f' }
+  ]
+};
+
+const mergeExtraHeroData = (target, additions = {}) => {
+  Object.entries(additions).forEach(([universe, entries]) => {
+    if (!Array.isArray(entries) || entries.length === 0) return;
+    if (!target[universe]) target[universe] = [];
+    const knownIds = new Set(target[universe].map(item => item.id));
+    entries.forEach(item => {
+      if (!item?.id || knownIds.has(item.id)) return;
+      target[universe].push(item);
+      knownIds.add(item.id);
+    });
+  });
+};
+
+
+
+const CANON_ROSTER_EXTRA_PATCH = {
+  'Scary Movie': [
+    { id: 'gail_hailstorm', name: 'Gail Hailstorm', cat: 'tactical', color: '#d7dbdd', simpleName: 'News Van Microphone Hit', secondaryName: 'Live Broadcast Distraction', defenseName: 'Camera Crew Cover', specialName: 'Parody News Meltdown' }
+  ],
+  Unreal: [
+    { id: 'krieg_unreal', name: 'Kragoth', cat: 'slayer', color: '#7f8c8d', simpleName: 'Shock Rifle Combo', secondaryName: 'Ripper Disc Return', defenseName: 'Dodge Jump Guard', specialName: 'Godlike Streak' }
+  ],
+  Ghostbusters: [
+    { id: 'janine_gb', name: 'Janine Melnitz', cat: 'hacker', color: '#e67e22', simpleName: 'Phone Desk Dispatch', secondaryName: 'Containment Unit Call', defenseName: 'Reception Glass Cover', specialName: 'Firehouse Coordination' },
+    { id: 'dana_barrett_gb', name: 'Dana Barrett', cat: 'horror', color: '#c0392b', simpleName: 'Zuul Warning', secondaryName: 'Gatekeeper Possession Pulse', defenseName: 'Apartment Door Brace', specialName: 'Rooftop Temple Seal' },
+    { id: 'louis_tully_gb', name: 'Louis Tully', cat: 'tactical', color: '#a67c52', simpleName: 'Accountant Panic Swing', secondaryName: 'Keymaster Charge', defenseName: 'Party Guest Evasion', specialName: 'Tax Season Gozer Audit' }
+  ],
+  'Buffy the Vampire Slayer': [
+    { id: 'willow_buffy', name: 'Willow Rosenberg', cat: 'hacker', color: '#c0392b', weapon: 'magic', simpleName: 'Wicca Spark', secondaryName: 'Barrier Spell', defenseName: 'Resolve Face Ward', specialName: 'Dark Willow Surge' },
+    { id: 'spike_buffy', name: 'Spike', cat: 'horror', color: '#d7dbdd', simpleName: 'Vampire Hook', secondaryName: 'Cigarette-Lit Dash', defenseName: 'Leather Coat Guard', specialName: 'Champion Amulet Blaze' }
+  ],
+  'Final Fantasy VIII': [
+    { id: 'zell_ff8', name: 'Zell Dincht', cat: 'slayer', color: '#f4d03f', simpleName: 'Duel Punch Rush', secondaryName: 'Burning Rave', defenseName: 'SeeD Guard', specialName: 'My Final Heaven' },
+    { id: 'selphie_ff8', name: 'Selphie Tilmitt', cat: 'hacker', color: '#f8c471', simpleName: 'Nunchaku Tap', secondaryName: 'Slot Magic Roll', defenseName: 'Festival Cheer', specialName: 'The End Limit' },
+    { id: 'irvine_ff8', name: 'Irvine Kinneas', cat: 'tactical', color: '#7f5c38', simpleName: 'Galbadian Rifle Shot', secondaryName: 'Shot Limit Break', defenseName: 'Sharpshooter Cover', specialName: 'Fast Ammo Barrage' }
+  ],
+  'Final Fantasy XIII': [
+    { id: 'snow_ff13', name: 'Snow Villiers', cat: 'marine', color: '#d7dbdd', simpleName: 'NORA Fist', secondaryName: 'Sentinel Taunt', defenseName: 'Guardian Corps Block', specialName: 'Sovereign Fist' },
+    { id: 'sazh_ff13', name: 'Sazh Katzroy', cat: 'tactical', color: '#34495e', simpleName: 'Dual Pistol Burst', secondaryName: 'Chocobo Chick Feint', defenseName: 'Pilot Cover', specialName: 'Cold Blood Barrage' },
+    { id: 'hope_ff13', name: 'Hope Estheim', cat: 'hacker', color: '#d5dbdb', weapon: 'boomerang', simpleName: 'Boomerang Throw', secondaryName: 'Synergist Boost', defenseName: 'Protect Shell', specialName: 'Alexander Summon Trace' }
+  ],
+  'Final Fantasy XV': [
+    { id: 'prompto_ff15', name: 'Prompto Argentum', cat: 'tactical', color: '#f4d03f', simpleName: 'Pistol Snapshot', secondaryName: 'Piercer Shot', defenseName: 'Photo Roll Dodge', specialName: 'Trigger Happy Barrage' },
+    { id: 'ardyn_ff15', name: 'Ardyn Izunia', cat: 'horror', color: '#7b241c', simpleName: 'Starscourge Cut', secondaryName: 'Royal Parry Theft', defenseName: 'Immortal Feint', specialName: 'Usurper Throne Collapse' },
+    { id: 'cor_ff15', name: 'Cor Leonis', cat: 'slayer', color: '#566573', simpleName: 'Katana Draw', secondaryName: 'Immortal Counter', defenseName: 'Crownsguard Stance', specialName: 'Lucian Veteran Rush' }
+  ],
+  BioShock: [
+    { id: 'jack_bioshock', name: 'Jack', cat: 'hacker', color: '#d9b36c', weapon: 'plasmid', simpleName: 'Electro Bolt', secondaryName: 'Plasmid Chain Shock', defenseName: 'Vita-Chamber Reboot', specialName: 'Would You Kindly Override' },
+    { id: 'little_sister_bioshock', name: 'Little Sister', cat: 'horror', color: '#f5cba7', simpleName: 'ADAM Needle Tap', secondaryName: 'Gatherer Call', defenseName: 'Big Daddy Hide', specialName: 'Rapture Harvest Echo' },
+    { id: 'andrew_ryan', name: 'Andrew Ryan', cat: 'tactical', color: '#7f5c38', simpleName: 'Golf Club Strike', secondaryName: 'Rapture Speech Command', defenseName: 'Private Office Lock', specialName: 'No Gods or Kings Edict' },
+    { id: 'booker_dewitt_bioshock', name: 'Booker DeWitt', cat: 'tactical', color: '#5d6d7e', simpleName: 'Sky-Hook Strike', secondaryName: 'Vigor Shock Jockey', defenseName: 'Tear Cover', specialName: 'Columbia Skyline Rush' }
+  ],
+  Borderlands: [
+    { id: 'roland_bl', name: 'Roland', cat: 'marine', color: '#34495e', simpleName: 'Crimson Lance Rifle', secondaryName: 'Scorpio Turret', defenseName: 'Soldier Shield', specialName: 'Crimson Raiders Rally' },
+    { id: 'mordecai_bl', name: 'Mordecai', cat: 'tactical', color: '#8e6e53', simpleName: 'Sniper Shot', secondaryName: 'Bloodwing Dive', defenseName: 'Hunter Roll', specialName: 'Bird of Prey Barrage' },
+    { id: 'brick_bl', name: 'Brick', cat: 'slayer', color: '#c0392b', simpleName: 'Berserk Punch', secondaryName: 'Explosive Uppercut', defenseName: 'Bandit Hide Guard', specialName: 'Slab King Rampage' },
+    { id: 'tiny_tina_bl', name: 'Tiny Tina', cat: 'hacker', color: '#9b59b6', simpleName: 'Tea Party Toss', secondaryName: 'Bunny Bomb', defenseName: 'Bunker Blanket', specialName: 'Badonkadonk Chain' }
+  ],
+  'Evil Dead': [
+    { id: 'pablo_evil_dead', name: 'Pablo Bolivar', cat: 'hacker', color: '#8e6e53', simpleName: 'Brujo Talisman Hit', secondaryName: 'Necronomicon Patch', defenseName: 'Trailer Door Brace', specialName: 'El Brujo Ritual Seal' },
+    { id: 'kelly_evil_dead', name: 'Kelly Maxwell', cat: 'slayer', color: '#5d6d7e', simpleName: 'Meat Hammer Swing', secondaryName: 'Deadite Shotgun Blast', defenseName: 'Cabin Counter', specialName: 'Possession Breakout' },
+    { id: 'ruby_evil_dead', name: 'Ruby Knowby', cat: 'horror', color: '#7b241c', weapon: 'dagger', simpleName: 'Kandarian Dagger', secondaryName: 'Book Page Curse', defenseName: 'Immortal Bargain', specialName: 'Dark One Contract' }
+  ],
+  'The Last of Us': [
+    { id: 'tess_tlou', name: 'Tess', cat: 'tactical', color: '#6d5f4f', simpleName: 'Smuggler Pistol', secondaryName: 'Capitol Last Stand', defenseName: 'Quarantine Cover', specialName: 'Infected Delay Sacrifice' },
+    { id: 'tommy_tlou', name: 'Tommy Miller', cat: 'marine', color: '#566573', simpleName: 'Rifle Patrol Shot', secondaryName: 'Jackson Ambush', defenseName: 'Settlement Guard', specialName: 'Sniper Overwatch' },
+    { id: 'dina_tlou2', name: 'Dina', cat: 'tactical', color: '#8d6e63', simpleName: 'Switchblade Feint', secondaryName: 'Horseback Escape', defenseName: 'Theater Hideout', specialName: 'Seattle Support Route' },
+    { id: 'abby_tlou2', name: 'Abby Anderson', cat: 'marine', color: '#5d6d7e', simpleName: 'WLF Rifle Burst', secondaryName: 'Hammer Counter', defenseName: 'Aquarium Route Guard', specialName: 'Seraphite Island Breakout' }
+  ],
+  'Metal Gear Rising': [
+    { id: 'armstrong_mgr', name: 'Senator Armstrong', cat: 'marine', color: '#c0392b', simpleName: 'Nanomachine Punch', secondaryName: 'Football Charge', defenseName: 'Hardened Skin', specialName: 'Making the Mother of All Omelettes' },
+    { id: 'blade_wolf_mgr', name: 'Blade Wolf', cat: 'slayer', color: '#95a5a6', simpleName: 'HF Chainsaw Bite', secondaryName: 'Stealth Pounce', defenseName: 'AI Evasion', specialName: 'LQ-84i Freedom Run' },
+    { id: 'mistral_mgr', name: 'Mistral', cat: 'horror', color: '#8e44ad', simpleName: 'Dwarf Gekko Polearm', secondaryName: 'Tripod Arm Sweep', defenseName: 'Magnetic Guard', specialName: 'Winds of Destruction Spiral' },
+    { id: 'monsoon_mgr', name: 'Monsoon', cat: 'hacker', color: '#9b59b6', simpleName: 'Magnetic Sai Cut', secondaryName: 'Dystopia Pincer Sweep', defenseName: 'Segmented Body Dodge', specialName: 'Memes of Destruction' }
+  ],
+  'Stargate Atlantis': [
+    { id: 'ronon_dex', name: 'Ronon Dex', cat: 'slayer', color: '#5d4037', simpleName: 'Particle Magnum Shot', secondaryName: 'Satedan Rush', defenseName: 'Runner Instinct', specialName: 'Wraith Hunter Rampage' },
+    { id: 'elizabeth_weir', name: 'Elizabeth Weir', cat: 'tactical', color: '#d7dbdd', simpleName: 'Atlantis Command Call', secondaryName: 'Diplomatic Lock', defenseName: 'Control Room Guard', specialName: 'Expedition Mandate' },
+    { id: 'carson_beckett', name: 'Carson Beckett', cat: 'hacker', color: '#85c1e9', simpleName: 'Ancient Gene Scan', secondaryName: 'Medical Nanite Purge', defenseName: 'Infirmary Shield', specialName: 'Retrovirus Stabilizer' }
+  ],
+  'Stargate Universe': [
+    { id: 'chloe_sgu', name: 'Chloe Armstrong', cat: 'hacker', color: '#d7bde2', simpleName: 'Ancient Interface Touch', secondaryName: 'Alien Signal Echo', defenseName: 'Destiny Corridor Hide', specialName: 'Transformation Data Burst' },
+    { id: 'greer_sgu', name: 'Ronald Greer', cat: 'marine', color: '#34495e', simpleName: 'Destiny Rifle Burst', secondaryName: 'Military Breach Clear', defenseName: 'Hold the Line', specialName: 'Stargate Room Lockdown' },
+    { id: 'matt_scott_sgu', name: 'Matthew Scott', cat: 'tactical', color: '#566573', simpleName: 'Lt. Sidearm Shot', secondaryName: 'Kino Recon Route', defenseName: 'Away Team Cover', specialName: 'Destiny Jump Gate Plan' },
+    { id: 'eli_wallace_sgu', name: 'Eli Wallace', cat: 'hacker', color: '#85c1e9', simpleName: 'Kino Tablet Ping', secondaryName: 'Ancient Math Shortcut', defenseName: 'Destiny Console Cover', specialName: 'Gate Address Simulation' }
+  ]
+};
+
+mergeExtraHeroData(extraHeroData, EXPANDED_EXTRA_HERO_DATA);
+mergeExtraHeroData(extraHeroData, CANON_ROSTER_EXPANSION);
+mergeExtraHeroData(extraHeroData, CANON_ROSTER_EXTRA_PATCH);
+mergeExtraHeroData(extraHeroData, LORE_ACCURATE_HERO_EXPANSIONS);
+
+const knownHeroIds = new Set(HEROES_DB.map(hero => hero.id));
 
 Object.keys(extraHeroData).forEach(universe => {
   extraHeroData[universe].forEach(item => {
+    if (!item?.id || knownHeroIds.has(item.id)) return;
+    knownHeroIds.add(item.id);
+
     let weapon = 'slash';
     let stats = { hp: 110, atk: 12, def: 6, spd: 5 };
     if (item.cat === 'marine') { stats = { hp: 130, atk: 10, def: 8, spd: 4 }; weapon = 'gun'; }
@@ -1441,18 +1875,24 @@ Object.keys(extraHeroData).forEach(universe => {
     if (item.cat === 'hacker') { stats = { hp: 100, atk: 12, def: 6, spd: 6 }; weapon = 'laser'; }
     if (item.cat === 'tactical') { stats = { hp: 120, atk: 11, def: 7, spd: 4 }; weapon = 'gun'; }
 
+    const resolvedWeapon = item.weaponType || item.weapon || weapon;
+    const resolvedStats = item.stats || stats;
+    const defaultSimpleType = resolvedWeapon === 'gun' ? 'bullet' : resolvedWeapon === 'laser' ? 'energy' : resolvedWeapon === 'wand' ? 'magic' : 'melee';
+
     HEROES_DB.push({
       id: item.id,
       name: item.name,
       universe: universe,
       category: item.cat,
       primaryColor: item.color,
-      weaponType: weapon,
-      stats: stats,
-      simple: { name: `${item.name} Light Strike`, dmg: 1.0 },
-      secondary: { name: `${item.name} Heavy Strike`, cd: 8, dmg: 2.2 },
-      defense: { name: `${item.name} Dodge`, dur: 2.0 },
-      special: { name: `${item.name} Singularity force`, dmg: 4.5 }
+      secondaryColor: item.secondaryColor || item.accent || item.color,
+      weaponType: resolvedWeapon,
+      weaponColor: item.weaponColor || item.color,
+      stats: resolvedStats,
+      simple: item.simple || { name: item.simpleName || `${item.name} Signature Strike`, type: defaultSimpleType, dmg: 1.0 },
+      secondary: item.secondary || { name: item.secondaryName || `${item.name} Breach Technique`, type: resolvedWeapon === 'gun' ? 'projectile' : 'signature', cd: item.cd || 8, dmg: item.secondaryDmg || 2.2 },
+      defense: item.defense || { name: item.defenseName || `${item.name} Guard`, type: 'shield', dur: item.dur || 2.0, reduce: item.reduce || 0.75 },
+      special: item.special || { name: item.specialName || `${item.name} Origin Burst`, type: 'origin_aoe', dmg: item.specialDmg || 4.5, color: item.specialColor || item.color }
     });
   });
 });
@@ -1581,6 +2021,8 @@ const heroOverrides = {
     special: { name: 'Uroboros Selection Burst', type: 'dark_aoe', dmg: 4.9, color: '#d7f26b' }
   }
 };
+
+Object.assign(heroOverrides, LORE_ACCURATE_HERO_OVERRIDES);
 
 Object.entries(heroOverrides).forEach(([id, override]) => {
   const hero = HEROES_DB.find(item => item.id === id);
