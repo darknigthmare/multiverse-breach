@@ -1966,7 +1966,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       if (selectedHero?.id === 'arca_mirelle' && fpsHandsRef.current?.complete && fpsHandsRef.current.naturalWidth) {
         const sheet = fpsHandsRef.current;
         const frameW = sheet.naturalWidth / 4;
-        const frameH = sheet.naturalHeight / 4;
+        const frameH = sheet.naturalHeight / 6;
         const row = state.muzzle ? 2 : state.ammo < state.maxAmmo ? 1 : 0;
         const col = Math.floor(state.t / 12) % 4;
         const handW = 300;
@@ -1985,7 +1985,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         if (state.muzzle && fpsEffectsRef.current?.complete && fpsEffectsRef.current.naturalWidth) {
           const effectSheet = fpsEffectsRef.current;
           const effectW = effectSheet.naturalWidth / 4;
-          const effectH = effectSheet.naturalHeight / 4;
+          const effectH = effectSheet.naturalHeight / 6;
           ctx.globalAlpha = 0.88;
           ctx.drawImage(effectSheet, (Math.floor(state.t / 3) % 4) * effectW, 0, effectW, effectH, canvas.width / 2 - 90, canvas.height / 2 - 166, 180, 180);
           ctx.globalAlpha = 1;

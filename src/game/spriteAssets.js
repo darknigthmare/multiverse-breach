@@ -48,6 +48,49 @@ export const MIRELLE_COMPLETE_SPRITE_PACK = [
   { id: 'kartTrackNexus', label: 'Kart circuit Nexus', src: MIRELLE_COMPLETE_SPRITES.kartTrackNexus }
 ];
 
+export const SPRITE_SHEET_LAYOUTS = {
+  [MIRELLE_COMPLETE_SPRITES.rpg]: {
+    columns: 4,
+    rows: 9,
+    rowByState: { idle: 0, run: 0, attack: 2, defense: 4, hit: 7, dead: 8 }
+  },
+  [MIRELLE_COMPLETE_SPRITES.tactics]: {
+    columns: 4,
+    rows: 9,
+    rowByState: { idle: 0, run: 1, attack: 3, defense: 4, hit: 7, dead: 8 }
+  },
+  [MIRELLE_COMPLETE_SPRITES.meleeMovement]: {
+    columns: 4,
+    rows: 6,
+    rowByState: { idle: 0, run: 1, jump: 2, fall: 3, hit: 4, dead: 5 }
+  },
+  [MIRELLE_COMPLETE_SPRITES.meleeCombat]: {
+    columns: 4,
+    rows: 9,
+    rowByState: { idle: 0, run: 0, attack: 2, defense: 4, hit: 7, dead: 8 }
+  },
+  [MIRELLE_COMPLETE_SPRITES.nexusCollection]: {
+    columns: 4,
+    rows: 9,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 4, hit: 7, dead: 8 }
+  },
+  [MIRELLE_COMPLETE_SPRITES.fpsHands]: {
+    columns: 4,
+    rows: 6,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 3, hit: 4, dead: 5 }
+  },
+  [MIRELLE_COMPLETE_SPRITES.fpsEffects]: {
+    columns: 4,
+    rows: 6,
+    rowByState: { idle: 0, attack: 0, hit: 3, dead: 5 }
+  },
+  [MIRELLE_COMPLETE_SPRITES.kartDirections]: {
+    columns: 4,
+    rows: 4,
+    rowByState: { idle: 0, run: 1, attack: 2, hit: 3, dead: 3 }
+  }
+};
+
 export const getHeroCompleteSpritePack = (hero) => {
   if (hero?.id !== 'arca_mirelle') return null;
   return MIRELLE_COMPLETE_SPRITE_PACK;
@@ -92,6 +135,27 @@ const animationRowForState = (state) => {
   if (state === 'hit' || state === 'dead') return 3;
   return 0;
 };
+
+export const getSpriteSheetLayout = (src) => SPRITE_SHEET_LAYOUTS[src] || {
+  columns: SPRITE_SHEET_META.columns,
+  rows: SPRITE_SHEET_META.rows.length,
+  rowByState: null
+};
+
+const animationRowForLayout = (state, layout) => {
+  if (layout?.rowByState && Object.prototype.hasOwnProperty.call(layout.rowByState, state)) {
+    return layout.rowByState[state];
+  }
+  if (layout?.rowByState && state === 'dead' && Object.prototype.hasOwnProperty.call(layout.rowByState, 'hit')) {
+    return layout.rowByState.hit;
+  }
+  return animationRowForState(state);
+};
+
+export const getSpriteFrameForLayout = (state, animTime, layout) => ({
+  row: Math.max(0, Math.min((layout?.rows || SPRITE_SHEET_META.rows.length) - 1, animationRowForLayout(state, layout))),
+  col: Math.floor(animTime / 10) % (layout?.columns || SPRITE_SHEET_META.columns)
+});
 
 export const getSpriteFrame = (state, animTime) => ({
   row: animationRowForState(state),

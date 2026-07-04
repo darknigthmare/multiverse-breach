@@ -99,6 +99,9 @@ assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('ar
   assert(spriteAssetsSource.includes(file), `Mirelle complete sprite pack missing ${file}.`);
 });
 assert(rendererSource.includes("context = 'auto'") && rendererSource.includes('srcGetter(entity, context)'), 'Renderer must route hero sprites by mode context.');
+assert(spriteAssetsSource.includes('SPRITE_SHEET_LAYOUTS') && spriteAssetsSource.includes('rows: 9') && spriteAssetsSource.includes('rows: 6'), 'Mirelle complete sheets must declare non-4x4 crop layouts.');
+assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.includes('getSpriteFrameForLayout'), 'Renderer must crop generated sprites through per-sheet layouts.');
+assert(hubSource.includes('sheet.naturalHeight / 6') && hubSource.includes('effectSheet.naturalHeight / 6'), 'FPS Mirelle sheets must be cropped as 4x6, not 4x4.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');
 assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');

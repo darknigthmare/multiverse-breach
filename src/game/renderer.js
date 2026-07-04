@@ -1,7 +1,7 @@
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
-import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrame, SPRITE_SHEET_META } from './spriteAssets';
+import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrameForLayout, getSpriteSheetLayout } from './spriteAssets';
 
 const spriteSheetCache = new Map();
 
@@ -63,9 +63,10 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
     return 'loading';
   }
 
-  const frameWidth = entry.image.naturalWidth / SPRITE_SHEET_META.columns;
-  const frameHeight = entry.image.naturalHeight / SPRITE_SHEET_META.rows.length;
-  const frame = getSpriteFrame(entity.state, animTime);
+  const layout = getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
+  const frameWidth = entry.image.naturalWidth / layout.columns;
+  const frameHeight = entry.image.naturalHeight / layout.rows;
+  const frame = getSpriteFrameForLayout(entity.state, animTime, layout);
   const scale = targetHeight / frameHeight;
   const drawW = frameWidth * scale;
   const drawH = targetHeight;
