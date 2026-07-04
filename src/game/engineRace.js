@@ -90,7 +90,7 @@ const closestPointOnPath = (points = [], x, y, roadWidth = 100) => {
     const py = a.y + vy * t;
     const d = Math.hypot(x - px, y - py);
     if (d < best.distance) {
-      best = { x: px, y: py, distance: d, factor: clamp(1 - d / (roadWidth * 0.55), 0, 1), segment: i };
+      best = { x: px, y: py, distance: d, factor: clamp(1 - d / (roadWidth * 0.9), 0, 1), segment: i };
     }
   }
   return best;
@@ -773,7 +773,7 @@ export class EngineRace {
     kart.speed += accel * dt;
     const maxSpeed = kart.maxSpeed + (kart.boost > 0 ? 118 : 0);
     kart.speed = clamp(kart.speed, -88, maxSpeed);
-    const drag = surface === 'ice' ? 0.994 : surface === 'slow' ? 0.945 : onTrack ? 0.988 : this.track.offroadDrag;
+    const drag = surface === 'ice' ? 0.994 : surface === 'slow' ? 0.952 : onTrack ? 0.99 : Math.max(this.track.offroadDrag, 0.965);
     kart.speed *= Math.pow(drag, dt * 60);
     if (kart.spin > 0) kart.speed *= 0.965;
     const driftHeld = input.drift && Math.abs(kart.speed) > 80;
@@ -851,10 +851,10 @@ export class EngineRace {
     kart.x = clamp(kart.x, 34, this.width - 34);
     kart.y = clamp(kart.y, 34, this.height - 34);
     const road = this.getClosestRoadPoint(kart.x, kart.y);
-    if (road.factor < 0.23) {
+    if (road.factor < 0.16) {
       kart.x = lerp(kart.x, road.x, 0.08);
       kart.y = lerp(kart.y, road.y, 0.08);
-      kart.speed *= 0.955;
+      kart.speed *= 0.975;
     }
   }
 
@@ -1209,10 +1209,8 @@ export class EngineRace {
 
   drawRearRoad(ctx) {
     const segments = this.getProjectedTrackSegments();
-    if (segments.length < 2) {
-      this.drawFallbackRearRoad(ctx);
-      return;
-    }
+    this.drawFallbackRearRoad(ctx);
+    if (segments.length < 2) return;
 
     ctx.save();
     ctx.lineCap = 'butt';
@@ -1223,25 +1221,8 @@ export class EngineRace {
       .sort((a, b) => b.depth - a.depth)
       .forEach(segment => {
         const width = Math.max(24, segment.width);
-        ctx.strokeStyle = 'rgba(2,4,10,0.42)';
-        ctx.lineWidth = width + 8;
-        ctx.beginPath();
-        ctx.moveTo(segment.a.x, segment.a.y);
-        ctx.lineTo(segment.b.x, segment.b.y);
-        ctx.stroke();
-
-        const grade = ctx.createLinearGradient(segment.a.x, segment.a.y, segment.b.x, segment.b.y);
-        grade.addColorStop(0, segment.index % 2 === 0 ? '#303443' : '#272b39');
-        grade.addColorStop(1, segment.index % 2 === 0 ? '#34394a' : '#252937');
-        ctx.strokeStyle = grade;
-        ctx.lineWidth = width;
-        ctx.beginPath();
-        ctx.moveTo(segment.a.x, segment.a.y);
-        ctx.lineTo(segment.b.x, segment.b.y);
-        ctx.stroke();
-
-        ctx.strokeStyle = 'rgba(57,197,187,0.74)';
-        ctx.lineWidth = Math.max(2, width * 0.045);
+        ctx.strokeStyle = 'rgba(57,197,187,0.34)';
+        ctx.lineWidth = Math.max(2, width * 0.018);
         const normalX = segment.normalX;
         const normalY = segment.normalY;
         [-1, 1].forEach(side => {
@@ -1252,8 +1233,8 @@ export class EngineRace {
         });
 
         if (segment.index % 2 === 0) {
-          ctx.strokeStyle = 'rgba(255,235,59,0.46)';
-          ctx.lineWidth = Math.max(2, width * 0.035);
+          ctx.strokeStyle = 'rgba(255,235,59,0.22)';
+          ctx.lineWidth = Math.max(1, width * 0.012);
           ctx.beginPath();
           ctx.moveTo(segment.a.x, segment.a.y);
           ctx.lineTo(segment.b.x, segment.b.y);
@@ -1610,7 +1591,7 @@ export class EngineRace {
     const isDrifting = this.player.drift > 0.12;
     const sprite = this.images.kartDirections;
     const centerX = this.width / 2 + clamp(this.player.drift * Math.sign(this.getPlayerInput().turn || 0) * 34, -34, 34);
-    const baseY = this.height - 64;
+    const baseY = this.height - 92;
     const kartW = 218;
     const kartH = 142;
     if (sprite?.complete && sprite.naturalWidth) {
@@ -1969,39 +1950,41 @@ export class EngineRace {
 
   drawHud(ctx) {
     const player = this.player;
+    const hudX = 14;
+    const hudY = 78;
     ctx.fillStyle = 'rgba(2,1,8,0.78)';
-    ctx.fillRect(14, 14, 250, 136);
+    ctx.fillRect(hudX, hudY, 250, 136);
     ctx.strokeStyle = 'rgba(57,197,187,0.45)';
-    ctx.strokeRect(14, 14, 250, 136);
-    drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 0, 0, 22, 24, 34, 34);
+    ctx.strokeRect(hudX, hudY, 250, 136);
+    drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 0, 0, hudX + 8, hudY + 10, 34, 34);
     ctx.font = 'bold 15px Share Tech Mono, monospace';
     ctx.fillStyle = '#39c5bb';
-    ctx.fillText(`A.R.C.A. RACE // ${player.rank}/4`, 64, 38);
+    ctx.fillText(`A.R.C.A. RACE // ${player.rank}/4`, hudX + 50, hudY + 24);
     ctx.font = '12px Share Tech Mono, monospace';
     ctx.fillStyle = '#d8fffb';
-    ctx.fillText(`Tour ${Math.min(player.lap + 1, this.track.laps)}/${this.track.laps}`, 64, 60);
-    ctx.fillText(`Vitesse ${Math.round(Math.abs(player.speed))}`, 64, 80);
-    ctx.fillText(`Cache ${player.item ? this.getItemName(player.item) : 'vide'}`, 64, 100);
+    ctx.fillText(`Tour ${Math.min(player.lap + 1, this.track.laps)}/${this.track.laps}`, hudX + 50, hudY + 46);
+    ctx.fillText(`Vitesse ${Math.round(Math.abs(player.speed))}`, hudX + 50, hudY + 66);
+    ctx.fillText(`Cache ${player.item ? this.getItemName(player.item) : 'vide'}`, hudX + 50, hudY + 86);
     ctx.fillStyle = '#8aa5a5';
     ctx.font = '10px Share Tech Mono, monospace';
-    ctx.fillText(this.track.name.fr.toUpperCase().slice(0, 28), 28, 116);
+    ctx.fillText(this.track.name.fr.toUpperCase().slice(0, 28), hudX + 14, hudY + 102);
     if (player.item) {
       const itemFrame = KART_ITEM_FRAMES[player.item] || KART_ITEM_FRAMES.cache;
-      drawSheetFrame(ctx, this.images.kartItems, 7, 6, itemFrame.col, itemFrame.row, 218, 76, 34, 34);
+      drawSheetFrame(ctx, this.images.kartItems, 7, 6, itemFrame.col, itemFrame.row, hudX + 204, hudY + 62, 34, 34);
     } else {
-      drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 1, 6, 218, 76, 34, 34);
+      drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 1, 6, hudX + 204, hudY + 62, 34, 34);
     }
     const turboRatio = clamp(player.driftCharge / 2.4, 0, 1);
     ctx.fillStyle = 'rgba(255,255,255,0.12)';
-    ctx.fillRect(28, 124, 224, 5);
+    ctx.fillRect(hudX + 14, hudY + 110, 224, 5);
     ctx.fillStyle = turboRatio > 0.72 ? '#d9b6ff' : turboRatio > 0.45 ? '#ffb15c' : '#39c5bb';
-    ctx.fillRect(28, 124, 224 * turboRatio, 5);
+    ctx.fillRect(hudX + 14, hudY + 110, 224 * turboRatio, 5);
     ctx.fillStyle = '#8aa5a5';
     ctx.font = '9px Share Tech Mono, monospace';
-    ctx.fillText(player.air > 0 ? 'TRICK BOOST' : this.startBoostWindow && this.countdown > 0 ? 'FENETRE DEPART PARFAIT' : 'CHARGE MINI-TURBO', 28, 140);
+    ctx.fillText(player.air > 0 ? 'TRICK BOOST' : this.startBoostWindow && this.countdown > 0 ? 'FENETRE DEPART PARFAIT' : 'CHARGE MINI-TURBO', hudX + 14, hudY + 126);
     ctx.fillStyle = this.objective?.complete ? '#39c5bb' : this.objective?.failed ? '#e74c3c' : '#d8fffb';
     ctx.font = '10px Share Tech Mono, monospace';
-    ctx.fillText(this.getObjectiveStatus().slice(0, 34), 28, 148);
+    ctx.fillText(this.getObjectiveStatus().slice(0, 34), hudX + 14, hudY + 134);
 
     this.drawTopDownMinimap(ctx);
 

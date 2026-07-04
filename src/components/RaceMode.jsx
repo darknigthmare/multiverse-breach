@@ -169,7 +169,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
       const key = normalizeKey(event.key);
-      keyPulseRef.current[key] = performance.now() + 180;
+      keyPulseRef.current[key] = performance.now() + 420;
       if (key === 'e') {
         engine.useItem();
         return;
@@ -204,11 +204,11 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
 
   const activateVirtualKey = (key, active) => {
     keysRef.current[key] = active;
-    if (active) keyPulseRef.current[key] = performance.now() + 260;
+    if (active) keyPulseRef.current[key] = performance.now() + 540;
   };
 
   const pulseVirtualKey = (key) => {
-    keyPulseRef.current[key] = performance.now() + 320;
+    keyPulseRef.current[key] = performance.now() + 680;
   };
 
   const triggerItem = () => {
