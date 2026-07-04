@@ -49,6 +49,7 @@ const DEFAULT_SAVE = {
     lastSeenDay: '',
     defeatIntel: {},
     heroInstability: {},
+    riftJournal: [],
     tutorialCompanionsUnlocked: false
   },
   inventory: ['nexus_anchor_coil'],
@@ -271,16 +272,18 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
       ? (lang === 'fr' ? 'Le champ se decoupe en lignes d ancrage: chaque zone devient une decision de survie.' : 'The field splits into anchor lanes: every zone becomes a survival decision.')
       : (lang === 'fr' ? 'La breche explose en arene d impact ou les signatures frappent avant dissolution.' : 'The breach bursts into an impact arena where signatures strike before dissolution.');
   const narrativeLine = getMissionNarrative(stage, lang, isOutro, victory);
+  const preparedBrief = Array.isArray(stage.launchBrief) ? stage.launchBrief.join(' ') : '';
+  const preparedOutcome = Array.isArray(stage.outcomePreview) ? stage.outcomePreview.join(' ') : '';
   const introText = lang === 'fr'
-    ? `${narrativeLine} Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que la Singularity absorbe ce lore.`
-    : `${narrativeLine} Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Singularity absorbs this lore.`;
+    ? `${narrativeLine} ${preparedBrief || `Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que la Singularity absorbe ce lore.`}`
+    : `${narrativeLine} ${preparedBrief || `Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Singularity absorbs this lore.`}`;
   const outroText = victory
     ? (lang === 'fr'
-      ? `${narrativeLine} Les donnees de ${stage.bossName} rejoignent le codex, la signature ${rarity} est indexee et les caches sont transferees a l armurerie.`
-      : `${narrativeLine} ${stage.bossName} data enters the codex, ${rarity} signature is indexed, and caches are transferred to the armory.`)
+      ? `${narrativeLine} ${preparedOutcome || `Les donnees de ${stage.bossName} rejoignent le codex, la signature ${rarity} est indexee et les caches sont transferees a l armurerie.`}`
+      : `${narrativeLine} ${preparedOutcome || `${stage.bossName} data enters the codex, ${rarity} signature is indexed, and caches are transferred to the armory.`}`)
     : (lang === 'fr'
-      ? `${narrativeLine} L escouade conserve les donnees de contact, mais ${stage.bossName} garde le controle local du signal.`
-      : `${narrativeLine} The squad keeps contact data, but ${stage.bossName} still controls the local signal.`);
+      ? `${narrativeLine} ${preparedOutcome || `L escouade conserve les donnees de contact, mais ${stage.bossName} garde le controle local du signal.`}`
+      : `${narrativeLine} ${preparedOutcome || `The squad keeps contact data, but ${stage.bossName} still controls the local signal.`}`);
 
   return (
     <div className="narrative-screen">
@@ -516,6 +519,27 @@ function App() {
       adaptation: false,
       instability: false
     };
+    const createRiftJournalEntry = (entryResult, extra = {}) => {
+      const source = activeStage.sourceUniverses?.join(' / ') || activeStage.universe;
+      const title = activeStage.displayName?.[lang] || activeStage.name || activeStage.universe;
+      return {
+        id: `${activeStage.id}-${Date.now()}-${entryResult}`,
+        at: new Date().toISOString(),
+        stageId: activeStage.id,
+        result: entryResult,
+        universe: activeStage.universe,
+        source,
+        title,
+        text: entryResult === 'victory'
+          ? (lang === 'fr'
+            ? `A.R.C.A. archive ${title}: ${activeStage.bossName} neutralise, coordonnee ${source} scellee, consequence inscrite dans la Trame Nexus.`
+            : `A.R.C.A. archives ${title}: ${activeStage.bossName} neutralized, ${source} coordinate sealed, consequence written into the Nexus Thread.`)
+          : (lang === 'fr'
+            ? `Repli sur ${title}: ${activeStage.bossName} conserve le signal local, mais A.R.C.A. garde les donnees de contact pour la prochaine tentative.`
+            : `Retreat on ${title}: ${activeStage.bossName} keeps the local signal, but A.R.C.A. stores contact data for the next attempt.`),
+        ...extra
+      };
+    };
 
     if (result === 'victory' && activeStage) {
       // Award rewards
@@ -581,7 +605,15 @@ function App() {
           ...(prev.modeWins || {}),
           [activeStage.mode]: (prev.modeWins?.[activeStage.mode] || 0) + 1,
           any: (prev.modeWins?.any || 0) + 1
-        }
+        },
+        riftJournal: [
+          createRiftJournalEntry('victory', {
+            firstClear,
+            rewardItemName: summary.rewardItemName,
+            rewards: { gold: summary.gold, shards: summary.shards, tokens: summary.tokens }
+          }),
+          ...(prev.riftJournal || [])
+        ].slice(0, 12)
       }));
 
       // Check if they dropped a random relic/item from the stage's universe
@@ -647,7 +679,14 @@ function App() {
         itemActivations: (prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0) + battleItemsUsed,
         weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed,
         lifetimeAttempts: (prev.lifetimeAttempts || 0) + 1,
-        seasonXp: (prev.seasonXp || 0) + 12 + (battleItemsUsed * 2)
+        seasonXp: (prev.seasonXp || 0) + 12 + (battleItemsUsed * 2),
+        riftJournal: [
+          createRiftJournalEntry('defeat', {
+            contactIntel: summary.contactIntel,
+            rewards: { gold: summary.gold, shards: summary.shards, tokens: 0 }
+          }),
+          ...(prev.riftJournal || [])
+        ].slice(0, 12)
       }));
     }
     setLastBattleSummary(result === 'quit' ? null : summary);

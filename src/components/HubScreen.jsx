@@ -2176,7 +2176,12 @@ function MultiverseRiftMap({
   narrativeArcs = [],
   mapKicker,
   mapTitle,
-  mapDescription
+  mapDescription,
+  getStageStatus,
+  getStageUnlockRequirementText,
+  getStageRewardPreview,
+  selectedStageId,
+  viewType = 'story'
 }) {
   const modeMeta = {
     RPG: { color: '#3498db', label: 'RPG', ring: 'ATB' },
@@ -2220,8 +2225,16 @@ function MultiverseRiftMap({
     };
   });
 
+  const viewTone = {
+    story: { color: '#39c5bb', label: lang === 'fr' ? 'Campagne' : 'Campaign' },
+    universe: { color: '#ffb15c', label: lang === 'fr' ? 'Atlas univers' : 'Universe atlas' },
+    personal: { color: '#9b59b6', label: lang === 'fr' ? 'Dossiers heros' : 'Hero files' },
+    trio: { color: '#2ecc71', label: lang === 'fr' ? 'Cellules trio' : 'Trio cells' },
+    fusion: { color: '#ff5f7e', label: lang === 'fr' ? 'Hybrides' : 'Hybrid rifts' }
+  }[viewType] || { color: '#39c5bb', label: 'A.R.C.A.' };
+
   return (
-    <div className="rift-universe-map">
+    <div className="rift-universe-map" style={{ '--rift-view-color': viewTone.color }}>
       <div className="rift-map-copy">
         <div className="portal-focus-kicker">{mapKicker || (lang === 'fr' ? 'CARTE DES FAILLES / CAMPAGNE' : 'RIFT MAP / CAMPAIGN')}</div>
         <h4>{mapTitle || (lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals')}</h4>
@@ -2231,6 +2244,9 @@ function MultiverseRiftMap({
             : 'Breaches are no longer only a grid: A.R.C.A. projects them as physical portals. In arc screens, routes link intro, missions, interludes, and boss.')}
         </p>
         <div className="rift-map-legend">
+          <span style={{ '--rift-color': viewTone.color }}>
+            {viewTone.label}
+          </span>
           {Object.entries(modeMeta).map(([mode, meta]) => (
             <span key={mode} style={{ '--rift-color': meta.color }}>
               {meta.label}: {counts[mode] || 0}
@@ -2275,11 +2291,17 @@ function MultiverseRiftMap({
         {portalNodes.map(node => {
           const completed = completedStages.includes(node.stage.id);
           const locked = !isStageUnlocked(node.stage);
+          const status = getStageStatus ? getStageStatus(node.stage) : {
+            id: completed ? 'sealed' : locked ? 'locked' : 'available',
+            label: completed ? (lang === 'fr' ? 'Scellee' : 'Sealed') : locked ? (lang === 'fr' ? 'Verrouillee' : 'Locked') : (lang === 'fr' ? 'Disponible' : 'Available')
+          };
+          const rewardPreview = getStageRewardPreview ? getStageRewardPreview(node.stage).join(' / ') : '';
+          const requirement = locked && getStageUnlockRequirementText ? getStageUnlockRequirementText(node.stage) : '';
           return (
             <button
               key={node.stage.id}
               type="button"
-              className={`rift-portal-node ${completed ? 'sealed' : ''} ${locked ? 'locked' : ''}`}
+              className={`rift-portal-node ${completed ? 'sealed' : ''} ${locked ? 'locked' : ''} ${selectedStageId === node.stage.id ? 'selected' : ''}`}
               style={{
                 '--rift-x': `${node.x}%`,
                 '--rift-y': `${node.y}%`,
@@ -2288,11 +2310,17 @@ function MultiverseRiftMap({
                 '--rift-delay': node.delay
               }}
               onClick={() => onSelectStage(node.stage)}
-              title={`${node.stage.universe} - ${node.stage.name} - ${node.stage.mode}`}
+              title={[
+                `${node.stage.universe} - ${node.stage.name} - ${node.stage.mode}`,
+                status.label,
+                requirement,
+                rewardPreview
+              ].filter(Boolean).join(' | ')}
             >
               <i />
               <b>{node.stage.id}</b>
               <span>{node.meta.ring}</span>
+              <em>{status.short || status.label}</em>
             </button>
           );
         })}
@@ -2311,14 +2339,36 @@ function RiftBriefingPanel({
   getStageArc,
   getLootRarity,
   getBossIntel,
-  getRichBreachBrief
+  getRichBreachBrief,
+  getLockedReason,
+  getStageRewardPreview,
+  getMissionLaunchBrief,
+  getMissionOutcomePreview
 }) {
-  if (!stage) return null;
+  if (!stage) {
+    return (
+      <div className="rift-briefing-panel rift-briefing-empty">
+        <div>
+          <div className="portal-focus-kicker">{lang === 'fr' ? 'INSPECTEUR A.R.C.A.' : 'A.R.C.A. INSPECTOR'}</div>
+          <div className="rift-briefing-title">{lang === 'fr' ? 'Aucune faille selectionnee' : 'No rift selected'}</div>
+          <div className="rift-briefing-copy">
+            {lang === 'fr'
+              ? 'Selectionne un portail sur la carte pour lire son briefing, ses recompenses, ses pre requis et ses consequences de Trame.'
+              : 'Select a portal on the map to read its briefing, rewards, requirements, and Thread consequences.'}
+          </div>
+        </div>
+      </div>
+    );
+  }
   const modifier = getStageModifier(stage);
   const stageArc = getStageArc(stage);
   const rarity = getLootRarity(stage);
   const bossIntel = getBossIntel(stage);
   const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode);
+  const rewardPreview = getStageRewardPreview ? getStageRewardPreview(stage) : [];
+  const launchBrief = getMissionLaunchBrief ? getMissionLaunchBrief(stage) : [];
+  const outcomePreview = getMissionOutcomePreview ? getMissionOutcomePreview(stage) : [];
+  const lockedReason = !isUnlocked(stage) && getLockedReason ? getLockedReason(stage) : '';
 
   return (
     <div className="rift-briefing-panel">
@@ -2340,6 +2390,12 @@ function RiftBriefingPanel({
         <div className="rift-briefing-copy">
           {getRichBreachBrief(stage)}
         </div>
+        {launchBrief.length > 0 && (
+          <div className="rift-briefing-block">
+            <strong>{lang === 'fr' ? 'Intro de lancement' : 'Launch intro'}</strong>
+            {launchBrief.map((line, index) => <span key={index}>{line}</span>)}
+          </div>
+        )}
         <div className="rift-briefing-row">
           <span>{lang === 'fr' ? 'Univers' : 'Universe'}: <strong>{stage.sourceUniverses?.join(' / ') || stage.universe}</strong></span>
           <span>Boss: <strong>{bossIntel?.name || stage.bossName}</strong></span>
@@ -2358,6 +2414,24 @@ function RiftBriefingPanel({
           </span>
           <span>{bossIntel?.special || (lang === 'fr' ? 'Anomalie non cataloguée' : 'Uncatalogued anomaly')}</span>
         </div>
+        {rewardPreview.length > 0 && (
+          <div className="rift-briefing-block reward">
+            <strong>{lang === 'fr' ? 'Cache prevue' : 'Expected cache'}</strong>
+            {rewardPreview.map((line, index) => <span key={index}>{line}</span>)}
+          </div>
+        )}
+        {lockedReason && (
+          <div className="rift-briefing-block locked">
+            <strong>{lang === 'fr' ? 'Prerequis verrouilles' : 'Locked requirements'}</strong>
+            <span>{lockedReason}</span>
+          </div>
+        )}
+        {outcomePreview.length > 0 && (
+          <div className="rift-briefing-block consequence">
+            <strong>{lang === 'fr' ? 'Consequences A.R.C.A.' : 'A.R.C.A. consequences'}</strong>
+            {outcomePreview.map((line, index) => <span key={index}>{line}</span>)}
+          </div>
+        )}
       </div>
       <div className="rift-briefing-actions">
         <button
@@ -3485,6 +3559,32 @@ export default function HubScreen({
   const getLockedReason = (stage) => {
     const required = getStageRequiredClears(stage);
     const missing = Math.max(0, required - completedStages.length);
+    const baseText = required > 0
+      ? (lang === 'fr'
+        ? `Progression Nexus: ${Math.min(completedStages.length, required)}/${required} breches stabilisees.`
+        : `Nexus progress: ${Math.min(completedStages.length, required)}/${required} breaches stabilized.`)
+      : null;
+    if (stage.characterArc || stage.universeArc || stage.trioArc) {
+      return getArcUnlockRequirementText(stage);
+    }
+    if (stage.fusionMission) {
+      const sourceNeed = Math.min(2, stage.sourceUniverses?.length || 1);
+      const sourceText = lang === 'fr'
+        ? `Sources de fusion: ${getFusionSourceClears(stage)}/${sourceNeed} Trames sources deja stabilisees.`
+        : `Fusion sources: ${getFusionSourceClears(stage)}/${sourceNeed} source Threads already stabilized.`;
+      return [sourceText, baseText].filter(Boolean).join(' ');
+    }
+    if (stage.id === 38) {
+      return [baseText, lang === 'fr'
+        ? 'Final A.R.C.A.: le noyau Sans-Auteur reste masque tant que le reseau de failles principales n est pas assez stabilise.'
+        : 'A.R.C.A. finale: the Authorless core stays masked until the main breach network is stabilized enough.'
+      ].filter(Boolean).join(' ');
+    }
+    if (missing <= 0) {
+      return lang === 'fr'
+        ? `${stage.universe} est disponible: selectionne une equipe puis lance la mission.`
+        : `${stage.universe} is available: select a team and launch the mission.`;
+    }
     return lang === 'fr'
       ? `Coordonnees verrouillees: stabilise encore ${missing} breche${missing > 1 ? 's' : ''} pour ouvrir ${stage.universe}.`
       : `Coordinates locked: stabilize ${missing} more breach${missing > 1 ? 'es' : ''} to open ${stage.universe}.`;
@@ -4136,6 +4236,97 @@ export default function HubScreen({
     return stage.id % 2 === 0 ? 5 : 0;
   };
 
+  const getStageRewardPreview = (stage) => {
+    const modifier = getStageModifier(stage);
+    const rarity = getLootRarity(stage);
+    const rewardFactor = modifier.reward || 1;
+    const goldPrize = Math.round(stage.goldPrize * rewardFactor);
+    const shardPrize = Math.round(stage.shardPrize * rewardFactor);
+    const tokenPrize = getStageTokenPrize(stage);
+    return [
+      lang === 'fr' ? `+${goldPrize} Or` : `+${goldPrize} Gold`,
+      lang === 'fr' ? `+${shardPrize} Fragments` : `+${shardPrize} Shards`,
+      tokenPrize > 0 ? (lang === 'fr' ? `+${tokenPrize} Jetons` : `+${tokenPrize} Tokens`) : null,
+      stage.rewardItemName ? (lang === 'fr'
+        ? `Trace speciale: ${stage.rewardItemName.fr || stage.rewardItemName.en}`
+        : `Special trace: ${stage.rewardItemName.en || stage.rewardItemName.fr}`) : null,
+      lang === 'fr' ? `Signature ${rarity.label}` : `${rarity.label} signature`
+    ].filter(Boolean);
+  };
+
+  const getStageStatus = (stage) => {
+    if (completedStages.includes(stage.id)) {
+      return {
+        id: 'sealed',
+        label: lang === 'fr' ? 'Scellee' : 'Sealed',
+        short: lang === 'fr' ? 'SCELLEE' : 'SEALED'
+      };
+    }
+    if (!isStageUnlocked(stage)) {
+      return {
+        id: 'locked',
+        label: lang === 'fr' ? 'Verrouillee' : 'Locked',
+        short: lang === 'fr' ? 'BLOQUEE' : 'LOCKED'
+      };
+    }
+    const required = getStageRequiredClears(stage);
+    return {
+      id: required > 0 ? 'available' : 'new',
+      label: required > 0
+        ? (lang === 'fr' ? 'Disponible' : 'Available')
+        : (lang === 'fr' ? 'Nouveau signal' : 'New signal'),
+      short: required > 0
+        ? (lang === 'fr' ? 'OUVERTE' : 'OPEN')
+        : (lang === 'fr' ? 'SIGNAL' : 'SIGNAL')
+    };
+  };
+
+  const getMissionLaunchBrief = (stage) => {
+    const modifier = getStageModifier(stage);
+    const source = stage.sourceUniverses?.join(' / ') || stage.universe;
+    const modeText = stage.mode === 'RPG'
+      ? (lang === 'fr' ? 'progression RPG en profondeur' : 'deep RPG progression')
+      : stage.mode === 'Tactics'
+        ? (lang === 'fr' ? 'lecture tactique du terrain' : 'tactical field reading')
+        : (lang === 'fr' ? 'duel d impact rapide' : 'fast impact duel');
+    return [
+      lang === 'fr'
+        ? `A.R.C.A. ouvre une fenetre ${stage.mode} sur ${source}: ${modeText}.`
+        : `A.R.C.A. opens a ${stage.mode} window on ${source}: ${modeText}.`,
+      lang === 'fr'
+        ? `Objectif lore: neutraliser ${stage.bossName} sans laisser le Sans-Auteur effacer la scene d origine.`
+        : `Lore objective: neutralize ${stage.bossName} before the Authorless erases the origin scene.`,
+      lang === 'fr'
+        ? `Anomalie active: ${modifier.name[lang]} modifie les regles de terrain.`
+        : `Active anomaly: ${modifier.name[lang]} alters the field rules.`
+    ];
+  };
+
+  const getMissionOutcomePreview = (stage) => {
+    const traceName = stage.rewardItemName?.[lang] || stage.rewardItemName?.en || null;
+    return [
+      lang === 'fr'
+        ? 'Victoire: la coordonnee est scellee, le journal A.R.C.A. archive la consequence et la progression long terme avance.'
+        : 'Victory: the coordinate is sealed, the A.R.C.A. journal records the consequence, and long-term progression advances.',
+      traceName
+        ? (lang === 'fr' ? `Trace possible: ${traceName}.` : `Possible trace: ${traceName}.`)
+        : (lang === 'fr' ? 'Trace possible: relique de terrain liee a l univers actif.' : 'Possible trace: field relic tied to the active universe.'),
+      lang === 'fr'
+        ? 'Defaite: donnees de contact conservees, adaptation defensive sur la prochaine tentative et instabilite douce de l equipe.'
+        : 'Defeat: contact data is kept, defensive adaptation applies to the next attempt, and the team suffers soft instability.'
+    ];
+  };
+
+  const getStageRewardScore = (stage) => {
+    const modifier = getStageModifier(stage);
+    const rewardFactor = modifier.reward || 1;
+    return Math.round(stage.goldPrize * rewardFactor)
+      + (Math.round(stage.shardPrize * rewardFactor) * 2)
+      + (getStageTokenPrize(stage) * 55)
+      + (stage.rewardItemId ? 120 : 0)
+      + (completedStages.includes(stage.id) ? -80 : 0);
+  };
+
   const prepareStage = (stage) => {
     const modifier = getStageModifier(stage);
     const rarity = getLootRarity(stage);
@@ -4149,7 +4340,9 @@ export default function HubScreen({
       heroInstability: activityProgress.heroInstability || {},
       goldPrize: Math.round(stage.goldPrize * rewardFactor),
       shardPrize: Math.round(stage.shardPrize * rewardFactor),
-      tokenPrize: getStageTokenPrize(stage)
+      tokenPrize: getStageTokenPrize(stage),
+      launchBrief: getMissionLaunchBrief(stage),
+      outcomePreview: getMissionOutcomePreview(stage)
     };
   };
 
@@ -4837,6 +5030,36 @@ export default function HubScreen({
     .sort((a, b) => seededMissionScore(a) - seededMissionScore(b))
     .slice(0, 4);
   const missionDeck = [nextUnclearedStage, ...randomMissionDeck].filter(Boolean).slice(0, 5);
+  const arcaRouteCandidates = [
+    nextUnclearedStage && {
+      id: 'priority',
+      stage: nextUnclearedStage,
+      label: lang === 'fr' ? 'Priorite A.R.C.A.' : 'A.R.C.A. priority',
+      reason: lang === 'fr'
+        ? 'Prochaine faille non scellee la plus coherente pour avancer sans casser la progression.'
+        : 'Next unsealed rift that advances progression cleanly.'
+    },
+    randomMissionDeck.find(stage => !completedStages.includes(stage.id)) && {
+      id: 'field',
+      stage: randomMissionDeck.find(stage => !completedStages.includes(stage.id)),
+      label: lang === 'fr' ? 'Signal terrain' : 'Field signal',
+      reason: lang === 'fr'
+        ? 'Cible courte pour varier le mode et eviter la repetition de la campagne principale.'
+        : 'Short target to vary the mode and avoid repeating the main campaign.'
+    },
+    unlockedMissionPool.length > 0 && {
+      id: 'reward',
+      stage: [...unlockedMissionPool].sort((a, b) => getStageRewardScore(b) - getStageRewardScore(a))[0],
+      label: lang === 'fr' ? 'Cache rentable' : 'Best cache',
+      reason: lang === 'fr'
+        ? 'Meilleure estimation de recompense actuelle avec les modificateurs de faille.'
+        : 'Best current reward estimate with active rift modifiers.'
+    }
+  ].filter(Boolean);
+  const arcaRoute = arcaRouteCandidates.filter((route, index, list) => (
+    route.stage && list.findIndex(candidate => candidate.stage?.id === route.stage.id) === index
+  ));
+  const riftJournal = (activityProgress.riftJournal || []).slice(0, 5);
   const clearedVisibleCount = missionPool.filter(stage => completedStages.includes(stage.id)).length;
   const isArcMissionScreen = Boolean(narrativeArcScreenType);
   const showModeFilters = missionScreen === 'story' || missionScreen === 'fusionMissions';
@@ -5272,31 +5495,42 @@ export default function HubScreen({
               />
             ) : narrativeArcScreenType ? (
               <>
-                <MultiverseRiftMap
-                  lang={lang}
-                  stages={missionPool}
-                  allStages={visibleStages}
-                  completedStages={completedStages}
-                  isStageUnlocked={isStageUnlocked}
-                  onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
-                  onSelectArc={openNarrativeArc}
-                  narrativeArcs={activeNarrativeArcs}
-                  mapKicker={riftMapCopy.kicker}
-                  mapTitle={riftMapCopy.title}
-                  mapDescription={riftMapCopy.desc}
-                />
-                <RiftBriefingPanel
-                  lang={lang}
-                  stage={selectedBriefingStage}
-                  isUnlocked={isStageUnlocked}
-                  onLaunch={launchStage}
-                  onClose={() => setBriefingStageId(null)}
-                  getStageModifier={getStageModifier}
-                  getStageArc={getStageArc}
-                  getLootRarity={getLootRarity}
-                  getBossIntel={getBossIntel}
-                  getRichBreachBrief={getRichBreachBrief}
-                />
+                <div className="rift-command-layout">
+                  <MultiverseRiftMap
+                    lang={lang}
+                    stages={missionPool}
+                    allStages={visibleStages}
+                    completedStages={completedStages}
+                    isStageUnlocked={isStageUnlocked}
+                    onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                    onSelectArc={openNarrativeArc}
+                    narrativeArcs={activeNarrativeArcs}
+                    mapKicker={riftMapCopy.kicker}
+                    mapTitle={riftMapCopy.title}
+                    mapDescription={riftMapCopy.desc}
+                    getStageStatus={getStageStatus}
+                    getStageUnlockRequirementText={getArcUnlockRequirementText}
+                    getStageRewardPreview={getStageRewardPreview}
+                    selectedStageId={briefingStageId}
+                    viewType={narrativeArcScreenType}
+                  />
+                  <RiftBriefingPanel
+                    lang={lang}
+                    stage={selectedBriefingStage}
+                    isUnlocked={isStageUnlocked}
+                    onLaunch={launchStage}
+                    onClose={() => setBriefingStageId(null)}
+                    getStageModifier={getStageModifier}
+                    getStageArc={getStageArc}
+                    getLootRarity={getLootRarity}
+                    getBossIntel={getBossIntel}
+                    getRichBreachBrief={getRichBreachBrief}
+                    getLockedReason={getLockedReason}
+                    getStageRewardPreview={getStageRewardPreview}
+                    getMissionLaunchBrief={getMissionLaunchBrief}
+                    getMissionOutcomePreview={getMissionOutcomePreview}
+                  />
+                </div>
                 <NarrativeArcGroupBrowser
                   lang={lang}
                   groups={narrativeArcGroups}
@@ -5311,33 +5545,81 @@ export default function HubScreen({
                 />
               </>
             ) : (
-              <MultiverseRiftMap
-                lang={lang}
-                stages={missionPool}
-                allStages={visibleStages}
-                completedStages={completedStages}
-                isStageUnlocked={isStageUnlocked}
-                onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
-                onSelectArc={openNarrativeArc}
-                narrativeArcs={activeNarrativeArcs}
-                mapKicker={riftMapCopy.kicker}
-                mapTitle={riftMapCopy.title}
-                mapDescription={riftMapCopy.desc}
-              />
-            )}
-            {!narrativeArcScreenType && !isFactionArcScreen && (
-              <RiftBriefingPanel
-                lang={lang}
-                stage={selectedBriefingStage}
-                isUnlocked={isStageUnlocked}
-                onLaunch={launchStage}
-                onClose={() => setBriefingStageId(null)}
-                getStageModifier={getStageModifier}
-                getStageArc={getStageArc}
-                getLootRarity={getLootRarity}
-                getBossIntel={getBossIntel}
-                getRichBreachBrief={getRichBreachBrief}
-              />
+              <>
+                {arcaRoute.length > 0 && (
+                  <div className="arca-route-panel">
+                    <div>
+                      <div className="portal-focus-kicker">{lang === 'fr' ? 'ROUTE A.R.C.A.' : 'A.R.C.A. ROUTE'}</div>
+                      <h4>{lang === 'fr' ? 'Parcours recommande court' : 'Short recommended path'}</h4>
+                    </div>
+                    <div className="arca-route-list">
+                      {arcaRoute.map(route => (
+                        <button
+                          key={route.id}
+                          type="button"
+                          className={`arca-route-card ${briefingStageId === route.stage.id ? 'selected' : ''}`}
+                          onClick={() => { setBriefingStageId(route.stage.id); sound.playSfx('click'); }}
+                          title={lang === 'fr' ? `Inspecte ${route.stage.displayName?.fr || route.stage.name}.` : `Inspect ${route.stage.displayName?.en || route.stage.name}.`}
+                        >
+                          <strong>{route.label}</strong>
+                          <span>#{route.stage.id} {route.stage.displayName?.[lang] || route.stage.name}</span>
+                          <em>{route.reason}</em>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="rift-command-layout">
+                  <MultiverseRiftMap
+                    lang={lang}
+                    stages={missionPool}
+                    allStages={visibleStages}
+                    completedStages={completedStages}
+                    isStageUnlocked={isStageUnlocked}
+                    onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                    onSelectArc={openNarrativeArc}
+                    narrativeArcs={activeNarrativeArcs}
+                    mapKicker={riftMapCopy.kicker}
+                    mapTitle={riftMapCopy.title}
+                    mapDescription={riftMapCopy.desc}
+                    getStageStatus={getStageStatus}
+                    getStageUnlockRequirementText={getLockedReason}
+                    getStageRewardPreview={getStageRewardPreview}
+                    selectedStageId={briefingStageId}
+                    viewType={missionScreen === 'fusionMissions' ? 'fusion' : 'story'}
+                  />
+                  <RiftBriefingPanel
+                    lang={lang}
+                    stage={selectedBriefingStage}
+                    isUnlocked={isStageUnlocked}
+                    onLaunch={launchStage}
+                    onClose={() => setBriefingStageId(null)}
+                    getStageModifier={getStageModifier}
+                    getStageArc={getStageArc}
+                    getLootRarity={getLootRarity}
+                    getBossIntel={getBossIntel}
+                    getRichBreachBrief={getRichBreachBrief}
+                    getLockedReason={getLockedReason}
+                    getStageRewardPreview={getStageRewardPreview}
+                    getMissionLaunchBrief={getMissionLaunchBrief}
+                    getMissionOutcomePreview={getMissionOutcomePreview}
+                  />
+                </div>
+                {riftJournal.length > 0 && (
+                  <div className="rift-journal-panel">
+                    <div className="portal-focus-kicker">{lang === 'fr' ? 'JOURNAL A.R.C.A.' : 'A.R.C.A. JOURNAL'}</div>
+                    <div className="rift-journal-list">
+                      {riftJournal.map(entry => (
+                        <div key={entry.id} className={`rift-journal-entry ${entry.result}`}>
+                          <strong>{entry.title}</strong>
+                          <span>{entry.text}</span>
+                          <em>{new Date(entry.at).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')} - {entry.result === 'victory' ? (lang === 'fr' ? 'stabilisation' : 'stabilization') : (lang === 'fr' ? 'repli' : 'retreat')}</em>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
             )}
 
             {showStoryMissionTools && (
