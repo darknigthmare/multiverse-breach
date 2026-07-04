@@ -391,6 +391,211 @@ public/sprites/generated/items/[univers]/[item-id].png
 public/sprites/generated/items/[univers]/[item-id]-pickup.png
 
 
+NOMBRE DE PLAQUETTES A PRODUIRE PAR PERSONNAGE
+----------------------------------------------
+Le nombre de plaquettes depend du niveau de finition vise. Pour une generation via
+Codex + OpenAI Image, il vaut mieux separer les plaquettes par usage plutot que
+demander une seule image enorme. Cela reduit les erreurs, garde les frames lisibles
+et evite les changements de costume ou de morphologie entre trop d animations.
+
+
+VERSION MINIMUM JOUABLE
+-----------------------
+Total recommande: 4 plaquettes par personnage.
+
+1. Plaquette combat principale
+   - 4 colonnes x 8 lignes.
+   - idle, run, basic attack, secondary skill, special, hurt, KO, defense.
+   - Sert a RPG, Tactics et fallback Melee.
+
+2. Plaquette HUD / avatar
+   - portraits et icones.
+   - avatar 128, avatar 64, portrait battle HUD, portrait KO, portrait blesse,
+     icone role, icone ultimate.
+
+3. Plaquette collection / Nexus
+   - full body collection, idle hub, hover, unlock, level up, duplicate/shard,
+     locked silhouette, disabled/admin silhouette.
+
+4. Plaquette objet signature
+   - arme principale, arme secondaire, ultimate icon, item drop, projectile ou
+     gadget si le personnage en utilise un.
+
+Usage:
+- Suffisant pour integrer rapidement un personnage dans le jeu.
+- Bon format pour les personnages secondaires ou les univers a gros volume.
+- Risque: Melee et FPS auront moins de variations dediees.
+
+
+VERSION COMPLETE RECOMMANDEE
+----------------------------
+Total recommande: 7 plaquettes par personnage.
+
+1. Plaquette RPG
+   - idle RPG, ready, basic attack, ranged/melee attack, secondary, defense,
+     special, cast, heal/buff receive, hurt, critical hurt, KO, victory.
+
+2. Plaquette Tactics
+   - idle tactical, move step, aim, attack, secondary tactical, special tactical,
+     overwatch, take cover, hurt, KO, interact objective, seal portal, collect
+     artifact, escort/protect stance.
+
+3. Plaquette Melee
+   - idle combat, run, jump start, jump loop, fall, land, dash/dodge, combo 1,
+     combo 2, air attack, charged attack, secondary, special, guard, hurt light,
+     hurt heavy, knockback, recovery, KO, victory.
+
+4. Plaquette Nexus / collection
+   - full body, idle hub, hover, unlock, level up, affinity/lore pose, duplicate,
+     shard conversion, locked, DLC hidden, admin disabled.
+
+5. Plaquette HUD / UI
+   - avatar 128, avatar 64, portrait dialogue, portrait combat, portrait KO,
+     portrait blesse, miniature initiative Tactics, miniature equipe, miniature
+     pack, icone role, icone univers, icone rarete.
+
+6. Plaquette FPS / premiere personne
+   - weapon idle, walk sway, sprint sway, shoot, secondary shoot, reload, melee
+     bash, equip, holster, inspect, special gadget, hit overlay, low HP shake.
+
+7. Plaquette objets / effets
+   - arme, projectile, muzzle flash, impact, hit spark, dash trail, ultimate VFX,
+     pickup terrain, item inventory, gadget ou piege.
+
+Usage:
+- Format conseille pour les heros jouables importants.
+- Permet une integration propre dans tous les modes.
+- Bon compromis entre qualite et temps de generation.
+
+
+VERSION TRES COMPLETE / PERSONNAGE MAJEUR
+-----------------------------------------
+Total recommande: 10 a 12 plaquettes par personnage.
+
+1. Plaquette RPG standard.
+2. Plaquette RPG narrative et portraits emotions.
+3. Plaquette Tactics standard.
+4. Plaquette Tactics objectifs speciaux.
+5. Plaquette Melee mouvement.
+6. Plaquette Melee attaques et reactions.
+7. Plaquette FPS armes/bras.
+8. Plaquette FPS effets/projectiles.
+9. Plaquette Nexus collection.
+10. Plaquette HUD/UI complete.
+11. Plaquette objets/gear/reliques.
+12. Plaquette skins/variantes si le personnage a plusieurs tenues.
+
+Usage:
+- A reserver aux personnages principaux, boss iconiques ou OC majeurs.
+- Donne assez de matiere pour eviter les fallbacks visuels dans l application.
+- Plus long a produire, mais beaucoup plus stable pour les mises a jour futures.
+
+
+VERSION BOSS / ENNEMI MASSIF
+----------------------------
+Total recommande: 6 a 9 plaquettes par boss.
+
+1. Plaquette boss combat large
+   - idle menace, move, basic attack, area attack, special, hurt, stagger,
+     enrage, death.
+
+2. Plaquette boss attaques larges
+   - attaques qui sortent du cadre standard, en 384 x 384 ou 512 x 512 par frame.
+
+3. Plaquette boss phases
+   - phase 1, phase 2, phase 3, transformation, shield break, weak point expose.
+
+4. Plaquette HUD boss
+   - portrait boss, icone alerte, icone phase, icone weak point, vignette intro.
+
+5. Plaquette effets boss
+   - aura, projectile, onde de choc, portail, explosion, summon, hit spark.
+
+6. Plaquette arene/objectif boss
+   - core, portail, hazard, artefact, timer surcharge, objectif de mission.
+
+Optionnel:
+7. Plaquette boss Tactics dediee.
+8. Plaquette boss Melee dediee.
+9. Plaquette boss narrative intro/outro.
+
+
+VERSION ENNEMI STANDARD
+-----------------------
+Total recommande: 3 a 5 plaquettes par ennemi.
+
+1. Plaquette combat standard
+   - idle, move, attack, secondary/special, hurt, KO.
+
+2. Plaquette role Tactics
+   - shooter/tank/assassin/support/monster behavior, aim, cover, rush, buff.
+
+3. Plaquette HUD/miniature
+   - portrait ennemi, icone menace, miniature admin, miniature mission.
+
+Optionnel:
+4. Plaquette effets/projectiles.
+5. Plaquette variante elite/corrompue.
+
+
+DECOUPAGE CONSEILLE EN PROMPTS CODEX / OPENAI
+---------------------------------------------
+Pour un heros complet, faire 7 prompts separes:
+
+Prompt 1 - RPG sheet:
+- demander uniquement les animations RPG.
+
+Prompt 2 - Tactics sheet:
+- demander uniquement grille/tour par tour, objectifs, cover, portail, artefact.
+
+Prompt 3 - Melee movement sheet:
+- demander mouvements, jump, fall, land, dash, recovery.
+
+Prompt 4 - Melee combat sheet:
+- demander combos, air attack, charged attack, special, hurt, knockback, KO.
+
+Prompt 5 - Nexus collection sheet:
+- demander full body, unlock, level up, duplicate, locked, disabled.
+
+Prompt 6 - HUD portraits sheet:
+- demander avatars, portraits, emotions, miniatures.
+
+Prompt 7 - Items and VFX sheet:
+- demander arme, projectile, impact, ultimate, pickup, role icon.
+
+Pour un personnage majeur avec FPS, ajouter:
+Prompt 8 - FPS weapon/arms sheet.
+Prompt 9 - FPS projectiles and impacts.
+Prompt 10 - skins or alternate costume sheet.
+
+
+ESTIMATION PAR TYPE DE PERSONNAGE
+---------------------------------
+Personnage jouable secondaire:
+- 4 plaquettes minimum.
+- 7 plaquettes si le personnage est regulierement utilise.
+
+Personnage jouable principal:
+- 7 plaquettes recommandees.
+- 10 a 12 plaquettes si OC majeur ou personnage tres iconique.
+
+Boss standard:
+- 6 plaquettes.
+
+Boss iconique ou final:
+- 9 a 12 plaquettes.
+
+Ennemi standard:
+- 3 plaquettes.
+
+Ennemi elite:
+- 5 plaquettes.
+
+Objet ou gear seul:
+- 1 plaquette icone/drop.
+- 2 plaquettes si l objet a aussi projectile, VFX ou animation pickup.
+
+
 PROMPT OPENAI IMAGE - TEMPLATE GENERAL
 --------------------------------------
 Create a detailed pixel-art animation sprite sheet for [CHARACTER_NAME] from
@@ -434,4 +639,3 @@ Pour chaque personnage, produire au minimum:
 8. Icone univers/synergie si specifique.
 9. Objet/arme signature.
 10. Miniature initiative Tactics.
-
