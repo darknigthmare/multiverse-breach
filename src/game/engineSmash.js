@@ -471,7 +471,16 @@ export class EngineSmash {
       }
     }
 
-    const activeHero = this.getActiveHero();
+    let activeHero = this.getActiveHero();
+    if (activeHero && activeHero.currentHp <= 0 && !this.gameOver) {
+      const nextAlive = this.heroes.find(h => h.currentHp > 0);
+      if (nextAlive) {
+        this.activeHeroId = nextAlive.id;
+        this.heroes.forEach(h => h.isLeader = false);
+        nextAlive.isLeader = true;
+        activeHero = nextAlive;
+      }
+    }
 
     if (activeHero && activeHero.currentHp > 0 && activeHero.state !== 'defense' && !this.gameOver) {
       // Glitched status halves move speed

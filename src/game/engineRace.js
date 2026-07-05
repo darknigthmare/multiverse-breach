@@ -33,6 +33,25 @@ const OBJECTIVE_LABELS = {
   timeLimit: 'Sceller avant surcharge'
 };
 
+const buildTrackFragments = (track) => {
+  const waypoints = track.waypoints || [];
+  if (waypoints.length < 4) return [];
+  const count = Math.min(8, Math.max(4, Math.floor(waypoints.length * 0.65)));
+  return Array.from({ length: count }, (_, index) => {
+    const point = waypoints[(index * 2 + 1) % waypoints.length];
+    const next = waypoints[(index * 2 + 2) % waypoints.length] || waypoints[0];
+    const laneAngle = Math.atan2(next.y - point.y, next.x - point.x) + Math.PI / 2;
+    const offset = (index % 2 === 0 ? -1 : 1) * Math.min(26, track.roadWidth * 0.24);
+    return {
+      x: point.x + Math.cos(laneAngle) * offset,
+      y: point.y + Math.sin(laneAngle) * offset,
+      r: 24,
+      collected: false,
+      value: 1
+    };
+  });
+};
+
 export const KART_GARAGE_UPGRADES = {
   engine: {
     label: { fr: 'Noyau moteur', en: 'Engine core' },
@@ -491,6 +510,7 @@ export class EngineRace {
       itemBoxes: baseTrack.itemBoxes.map(box => ({ ...box, respawn: 0 })),
       hazards: baseTrack.hazards.map(hazard => ({ ...hazard })),
       surfaceZones: (baseTrack.surfaceZones || []).map(zone => ({ ...zone })),
+      fragmentPickups: (baseTrack.fragmentPickups || buildTrackFragments(baseTrack)).map(fragment => ({ ...fragment, collected: false })),
       shortcuts: (baseTrack.shortcuts || []).map(shortcut => ({
         ...shortcut,
         from: { ...shortcut.from },
@@ -515,6 +535,7 @@ export class EngineRace {
       boostPads: track.boostPads.map(pad => snapToRoad(pad, 0.45)),
       itemBoxes: track.itemBoxes.map(box => snapToRoad(box, 0.5)),
       hazards: track.hazards.map(hazard => hazard.temporary ? hazard : snapToRoad(hazard, 0.5)),
+      fragmentPickups: (track.fragmentPickups || []).map(fragment => snapToRoad(fragment, 0.55)),
       surfaceZones: (track.surfaceZones || []).map(zone => {
         const anchored = snapToRoad(zone, zone.type === 'portal' ? 0.65 : 0.55);
         return zone.exit ? { ...anchored, exit: { ...zone.exit } } : anchored;
@@ -555,6 +576,8 @@ export class EngineRace {
     this.messageTimer = 2;
     this.particles = [];
     this.projectiles = [];
+    this.fragmentsCollected = 0;
+    this.slipstreamTimer = 0;
     this.objective = this.createObjectiveState();
     this.player = this.createKart({
       id: 'mirelle',
@@ -727,7 +750,31 @@ export class EngineRace {
       return;
     }
     this.track.hazards = this.track.hazards
-      .map(hazard => hazard.temporary ? { ...hazard, temporary: hazard.temporary - dt } : hazard)
+      .map(hazard => {
+        if (hazard.baseX === undefined) {
+          hazard.baseX = hazard.x;
+          hazard.baseY = hazard.y;
+        }
+        const road = this.getClosestRoadPoint(hazard.baseX, hazard.baseY);
+        const currentWp = this.track.waypoints[road.segment];
+        const nextWp = this.track.waypoints[(road.segment + 1) % this.track.waypoints.length];
+        const dx = nextWp.x - currentWp.x;
+        const dy = nextWp.y - currentWp.y;
+        const len = Math.hypot(dx, dy) || 1;
+        const normalX = -dy / len;
+        const normalY = dx / len;
+        
+        const amp = (this.track.roadWidth || 104) * 0.36;
+        const speed = 2.2 + (hazard.phase || 0) * 0.42;
+        const offset = Math.sin(this.time * speed + (hazard.phase || 0)) * amp;
+        
+        return {
+          ...hazard,
+          x: hazard.baseX + normalX * offset,
+          y: hazard.baseY + normalY * offset,
+          temporary: hazard.temporary ? hazard.temporary - dt : undefined
+        };
+      })
       .filter(hazard => !hazard.temporary || hazard.temporary > 0);
     this.track.itemBoxes.forEach(box => { box.respawn = Math.max(0, box.respawn - dt); });
     this.updateKart(this.player, dt);
@@ -782,6 +829,23 @@ export class EngineRace {
     const grip = clamp((surface === 'ice' ? 0.68 : 1) + (kart.ai ? 0 : this.garageStats.gripBonus), 0.62, 1.22);
     const turnPower = (0.55 + clamp(Math.abs(kart.speed) / 220, 0, 1) * 0.85) * (kart.drift ? 1.35 : 1) * grip;
     kart.angle += input.turn * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
+    
+    if (driftHeld && kart.drift > 0.12) {
+      let sparkColor = null;
+      if (kart.driftCharge > 1.75) {
+        sparkColor = '#9b59b6'; // Purple
+      } else if (kart.driftCharge > 1.1) {
+        sparkColor = '#e67e22'; // Orange
+      } else if (kart.driftCharge > 0.65) {
+        sparkColor = '#3498db'; // Blue
+      }
+      if (sparkColor && Math.random() < 0.35) {
+        const rearX = kart.x - Math.cos(kart.angle) * 12;
+        const rearY = kart.y - Math.sin(kart.angle) * 12;
+        this.spawnDriftSpark(rearX, rearY, sparkColor);
+      }
+    }
+
     if (!driftHeld && kart.drift > 0.72) {
       const turbo = kart.driftCharge > 1.75 ? 1.05 : kart.driftCharge > 1.1 ? 0.78 : 0.55;
       kart.boost = Math.max(kart.boost, turbo + (kart.ai ? 0 : this.garageStats.boostBonus));
@@ -797,7 +861,9 @@ export class EngineRace {
     this.applyBoostPads(kart);
     this.applySurfaceZones(kart);
     this.applyHazards(kart);
+    this.collectTrackFragments(kart);
     this.collectItem(kart);
+    if (!kart.ai) this.applySlipstream();
     this.updateCheckpoints(kart);
   }
 
@@ -935,6 +1001,37 @@ export class EngineRace {
         if (!kart.ai) this.showMessage(`Cache recuperee: ${this.getItemName(kart.item)}`);
       }
     });
+  }
+
+  collectTrackFragments(kart) {
+    if (kart.ai) return;
+    (this.track.fragmentPickups || []).forEach(fragment => {
+      if (fragment.collected || distance(kart, fragment) >= fragment.r) return;
+      fragment.collected = true;
+      this.fragmentsCollected += fragment.value || 1;
+      kart.boost = Math.max(kart.boost, 0.18 + this.garageStats.boostBonus * 0.35);
+      this.spawnParticles(fragment.x, fragment.y, '#ffeb3b', 10);
+      this.showMessage(`Fragment de piste ${this.fragmentsCollected}/${this.track.fragmentPickups.length}`);
+    });
+  }
+
+  applySlipstream() {
+    const target = this.opponents.find(kart => {
+      const dx = kart.x - this.player.x;
+      const dy = kart.y - this.player.y;
+      const forward = Math.cos(this.player.angle) * dx + Math.sin(this.player.angle) * dy;
+      const lateral = Math.abs(-Math.sin(this.player.angle) * dx + Math.cos(this.player.angle) * dy);
+      return forward > 32 && forward < 150 && lateral < 38 && Math.abs(angleDelta(this.player.angle, kart.angle)) < 0.62;
+    });
+    if (target && this.player.speed > 120) {
+      this.slipstreamTimer = Math.min(1.6, this.slipstreamTimer + 1 / 60);
+      if (this.slipstreamTimer > 0.72) {
+        this.player.boost = Math.max(this.player.boost, 0.3 + this.garageStats.boostBonus * 0.45);
+        this.player.speed = Math.max(this.player.speed, 190);
+      }
+    } else {
+      this.slipstreamTimer = Math.max(0, this.slipstreamTimer - 0.04);
+    }
   }
 
   rollItem(kart) {
@@ -1104,6 +1201,19 @@ export class EngineRace {
     }
   }
 
+  spawnDriftSpark(x, y, color) {
+    const angle = this.player.angle + Math.PI + (Math.random() - 0.5) * 1.2;
+    const speed = 25 + Math.random() * 30;
+    this.particles.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 0.2 + Math.random() * 0.15,
+      color
+    });
+  }
+
   updateParticles(dt) {
     this.particles.forEach(particle => {
       particle.x += particle.vx * dt;
@@ -1126,9 +1236,10 @@ export class EngineRace {
     const gradeMultiplier = { S: 1.9, A: 1.45, B: 1.08, C: 0.78 }[grade] || 0.7;
     const objectiveMultiplier = objectiveComplete ? 1.22 : 0.82;
     const trackFactor = 1 + (this.track.difficulty || 1) * 0.22;
+    const trackFragments = this.fragmentsCollected || 0;
     const fragments = Math.max(6, Math.round(12 * gradeMultiplier * objectiveMultiplier * trackFactor));
     const xp = Math.max(18, Math.round(42 * gradeMultiplier * objectiveMultiplier * trackFactor));
-    const garageParts = Math.max(4, Math.round(8 * gradeMultiplier * objectiveMultiplier + (rank === 1 ? 5 : 0)));
+    const garageParts = Math.max(4, Math.round(8 * gradeMultiplier * objectiveMultiplier + (rank === 1 ? 5 : 0) + trackFragments * 0.6));
     return {
       mode: 'Race',
       trackId: this.track.id,
@@ -1140,8 +1251,9 @@ export class EngineRace {
       laps: this.track.laps,
       objective: this.getObjectiveStatus(),
       objectiveComplete,
+      trackFragments,
       rewards: {
-        fragments,
+        fragments: fragments + trackFragments,
         xp,
         garageParts,
         unlockHint: objectiveComplete && grade !== 'C' ? 'Progression garage stabilisee' : 'Objectif incomplet: recompense reduite'
@@ -1155,15 +1267,78 @@ export class EngineRace {
     this.drawRearRoad(ctx);
     this.drawProjectedRaceObjects(ctx);
     this.drawRearPlayerKart(ctx);
+    this.drawSlipstreamWindLines(ctx);
     this.drawHud(ctx);
   }
 
+  drawSlipstreamWindLines(ctx) {
+    if (this.slipstreamTimer <= 0.72) return;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(57, 197, 187, 0.45)';
+    ctx.lineWidth = 2.5;
+    ctx.setLineDash([40, 110]);
+    const offset = (this.time * 980) % 150;
+    
+    // Left side lines
+    for (let i = 0; i < 4; i += 1) {
+      const y = 140 + i * 86;
+      ctx.beginPath();
+      ctx.moveTo(offset, y);
+      ctx.lineTo(offset + 320, y + (i - 1.5) * 20);
+      ctx.stroke();
+    }
+    
+    // Right side lines
+    for (let i = 0; i < 4; i += 1) {
+      const y = 140 + i * 86;
+      ctx.beginPath();
+      ctx.moveTo(this.width - offset, y);
+      ctx.lineTo(this.width - offset - 320, y + (i - 1.5) * 20);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
   drawRaceCameraBackdrop(ctx) {
+    const trackId = this.trackId || '';
+    let skyColor1 = '#020106';
+    let skyColor2 = '#081527';
+    let skyColor3 = '#13242c';
+    let skyColor4 = '#05030a';
+    let gridColor1 = 'rgba(57,197,187,0.14)';
+    let gridColor2 = 'rgba(255,235,59,0.12)';
+
+    if (trackId.includes('void') || trackId.includes('glitch')) {
+      // Volcanic / Danger theme
+      skyColor1 = '#090101';
+      skyColor2 = '#2a0a0e';
+      skyColor3 = '#420f12';
+      skyColor4 = '#080101';
+      gridColor1 = 'rgba(231,76,60,0.18)';
+      gridColor2 = 'rgba(230,126,34,0.14)';
+    } else if (trackId.includes('portal') || trackId.includes('ritual')) {
+      // Void / Portal theme
+      skyColor1 = '#000808';
+      skyColor2 = '#0a2e2f';
+      skyColor3 = '#0f4244';
+      skyColor4 = '#010c0d';
+      gridColor1 = 'rgba(57,197,187,0.22)';
+      gridColor2 = 'rgba(46,204,113,0.14)';
+    } else {
+      // Synthwave / Neon Classic theme
+      skyColor1 = '#08010f';
+      skyColor2 = '#1b022b';
+      skyColor3 = '#2c043e';
+      skyColor4 = '#04010a';
+      gridColor1 = 'rgba(57,197,187,0.18)';
+      gridColor2 = 'rgba(241,12,241,0.12)';
+    }
+
     const sky = ctx.createLinearGradient(0, 0, 0, this.height);
-    sky.addColorStop(0, '#020106');
-    sky.addColorStop(0.34, '#081527');
-    sky.addColorStop(0.58, '#13242c');
-    sky.addColorStop(1, '#05030a');
+    sky.addColorStop(0, skyColor1);
+    sky.addColorStop(0.34, skyColor2);
+    sky.addColorStop(0.58, skyColor3);
+    sky.addColorStop(1, skyColor4);
     ctx.fillStyle = sky;
     ctx.fillRect(0, 0, this.width, this.height);
 
@@ -1174,7 +1349,8 @@ export class EngineRace {
       ctx.drawImage(trackImage, 0, -this.height * 0.42, this.width, this.height * 1.7);
       ctx.globalAlpha = 1;
     }
-    ctx.fillStyle = 'rgba(57,197,187,0.1)';
+
+    ctx.fillStyle = gridColor1;
     for (let i = 0; i < 9; i += 1) {
       const x = (i / 8) * this.width;
       ctx.beginPath();
@@ -1184,7 +1360,8 @@ export class EngineRace {
       ctx.closePath();
       ctx.fill();
     }
-    ctx.strokeStyle = 'rgba(255,235,59,0.1)';
+
+    ctx.strokeStyle = gridColor2;
     ctx.lineWidth = 1;
     for (let y = horizon + 24; y < this.height; y += 34) {
       const width = (y - horizon) * 1.9;
@@ -1209,32 +1386,76 @@ export class EngineRace {
 
   drawRearRoad(ctx) {
     const segments = this.getProjectedTrackSegments();
-    this.drawFallbackRearRoad(ctx);
-    if (segments.length < 2) return;
+    if (segments.length < 2) {
+      this.drawFallbackRearRoad(ctx);
+      return;
+    }
+
+    const horizon = this.getRaceCameraHorizon();
+
+    // Draw background sky/ground first
+    ctx.fillStyle = '#090812';
+    ctx.fillRect(0, 0, this.width, horizon);
+    ctx.fillStyle = '#0f121d';
+    ctx.fillRect(0, horizon, this.width, this.height - horizon);
 
     ctx.save();
-    ctx.lineCap = 'butt';
-    ctx.lineJoin = 'round';
-
     segments
       .slice()
       .sort((a, b) => b.depth - a.depth)
       .forEach(segment => {
-        const width = Math.max(24, segment.width);
-        ctx.strokeStyle = 'rgba(57,197,187,0.34)';
-        ctx.lineWidth = Math.max(2, width * 0.018);
+        const width = segment.width;
         const normalX = segment.normalX;
         const normalY = segment.normalY;
-        [-1, 1].forEach(side => {
-          ctx.beginPath();
-          ctx.moveTo(segment.a.x + normalX * width * 0.48 * side, segment.a.y + normalY * width * 0.48 * side);
-          ctx.lineTo(segment.b.x + normalX * width * 0.48 * side, segment.b.y + normalY * width * 0.48 * side);
-          ctx.stroke();
-        });
 
+        // Left and right edges of start point A
+        const axL = segment.a.x - normalX * width * 0.5;
+        const ayL = segment.a.y - normalY * width * 0.5;
+        const axR = segment.a.x + normalX * width * 0.5;
+        const ayR = segment.a.y + normalY * width * 0.5;
+
+        // Left and right edges of end point B
+        const bxL = segment.b.x - normalX * width * 0.5;
+        const byL = segment.b.y - normalY * width * 0.5;
+        const bxR = segment.b.x + normalX * width * 0.5;
+        const byR = segment.b.y + normalY * width * 0.5;
+
+        // Draw main road surface polygon
+        ctx.fillStyle = segment.index % 2 === 0 ? '#272b39' : '#303443';
+        ctx.beginPath();
+        ctx.moveTo(axL, ayL);
+        ctx.lineTo(bxL, byL);
+        ctx.lineTo(bxR, byR);
+        ctx.lineTo(axR, ayR);
+        ctx.closePath();
+        ctx.fill();
+
+        // Draw red/white rumble strip borders
+        const borderW = Math.max(3, width * 0.055);
+        ctx.fillStyle = segment.index % 2 === 0 ? '#e74c3c' : '#ffffff';
+
+        // Left border
+        ctx.beginPath();
+        ctx.moveTo(axL - borderW, ayL);
+        ctx.lineTo(bxL - borderW, byL);
+        ctx.lineTo(bxL, byL);
+        ctx.lineTo(axL, ayL);
+        ctx.closePath();
+        ctx.fill();
+
+        // Right border
+        ctx.beginPath();
+        ctx.moveTo(axR, ayR);
+        ctx.lineTo(bxR, byR);
+        ctx.lineTo(bxR + borderW, byR);
+        ctx.lineTo(axR + borderW, ayR);
+        ctx.closePath();
+        ctx.fill();
+
+        // Draw center dashed yellow line
         if (segment.index % 2 === 0) {
-          ctx.strokeStyle = 'rgba(255,235,59,0.22)';
-          ctx.lineWidth = Math.max(1, width * 0.012);
+          ctx.strokeStyle = '#ffeb3b';
+          ctx.lineWidth = Math.max(1.5, width * 0.016);
           ctx.beginPath();
           ctx.moveTo(segment.a.x, segment.a.y);
           ctx.lineTo(segment.b.x, segment.b.y);
@@ -1385,8 +1606,7 @@ export class EngineRace {
     const horizon = this.getRaceCameraHorizon();
     const y = lerp(horizon + 4, this.height - 86, t ** 1.58);
     const roadHalf = lerp(42, 390, t ** 1.08);
-    const curve = this.getRoadCurveOffset(t);
-    const x = this.width / 2 + curve + lateral * (roadHalf / 125);
+    const x = this.width / 2 + lateral * (roadHalf / 125);
     const scale = lerp(0.22, 1.42, t ** 1.12);
     if (x < -120 || x > this.width + 120) return null;
     return { x, y, scale, t, forward, lateral };
@@ -1412,6 +1632,11 @@ export class EngineRace {
       const p = this.projectToRearCamera(box);
       if (p) projected.push({ type: 'item', p, source: box });
     });
+    (this.track.fragmentPickups || []).forEach(fragment => {
+      if (fragment.collected) return;
+      const p = this.projectToRearCamera(fragment);
+      if (p) projected.push({ type: 'fragment', p, source: fragment });
+    });
     this.track.hazards.forEach(hazard => {
       const p = this.projectToRearCamera(hazard);
       if (p) projected.push({ type: 'hazard', p, source: hazard });
@@ -1432,6 +1657,7 @@ export class EngineRace {
         if (entry.type === 'objective') this.drawProjectedObjectiveMarker(ctx, entry.source, entry.p);
         if (entry.type === 'boost') this.drawProjectedBoostPad(ctx, entry.p);
         if (entry.type === 'item') this.drawProjectedItemBox(ctx, entry.p);
+        if (entry.type === 'fragment') this.drawProjectedTrackFragment(ctx, entry.p);
         if (entry.type === 'hazard') this.drawProjectedHazard(ctx, entry.source, entry.p);
         if (entry.type === 'projectile') this.drawProjectedProjectile(ctx, entry.source, entry.p);
       });
@@ -1502,6 +1728,25 @@ export class EngineRace {
       ctx.textAlign = 'center';
       ctx.fillText('?', 0, 8);
     }
+    ctx.restore();
+  }
+
+  drawProjectedTrackFragment(ctx, p) {
+    ctx.save();
+    ctx.translate(p.x, p.y - 18 * p.scale);
+    ctx.scale(p.scale, p.scale);
+    ctx.rotate(this.time * 1.8);
+    ctx.fillStyle = 'rgba(255,235,59,0.22)';
+    ctx.strokeStyle = '#ffeb3b';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, -14);
+    ctx.lineTo(12, 0);
+    ctx.lineTo(0, 14);
+    ctx.lineTo(-12, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
     ctx.restore();
   }
 
@@ -1625,13 +1870,20 @@ export class EngineRace {
       ctx.fillRect(centerX - 36, baseY - 64, 72, 36);
     }
     if (this.player.boost > 0) {
-      ctx.fillStyle = 'rgba(57,197,187,0.5)';
+      ctx.save();
+      const fireGrad = ctx.createLinearGradient(centerX, baseY + 8, centerX, this.height + 60);
+      fireGrad.addColorStop(0, 'rgba(57, 197, 187, 0.95)');
+      fireGrad.addColorStop(0.35, 'rgba(57, 197, 187, 0.55)');
+      fireGrad.addColorStop(1, 'rgba(57, 197, 187, 0)');
+      ctx.fillStyle = fireGrad;
       ctx.beginPath();
-      ctx.moveTo(centerX - 46, baseY + 10);
-      ctx.lineTo(centerX, this.height + 42);
-      ctx.lineTo(centerX + 46, baseY + 10);
+      const wobble = Math.sin(this.time * 26) * 12;
+      ctx.moveTo(centerX - 36, baseY + 8);
+      ctx.lineTo(centerX + wobble, this.height + 50);
+      ctx.lineTo(centerX + 36, baseY + 8);
       ctx.closePath();
       ctx.fill();
+      ctx.restore();
     }
     if (this.player.air > 0) {
       ctx.strokeStyle = 'rgba(255,235,59,0.78)';
@@ -1641,11 +1893,21 @@ export class EngineRace {
       ctx.stroke();
     }
     if (this.player.shield > 0) {
-      ctx.strokeStyle = 'rgba(217,182,255,0.82)';
-      ctx.lineWidth = 3;
+      ctx.save();
+      const grad = ctx.createRadialGradient(centerX, baseY - 42, 20, centerX, baseY - 42, 120);
+      grad.addColorStop(0, 'rgba(155, 89, 182, 0.02)');
+      grad.addColorStop(0.75, 'rgba(155, 89, 182, 0.16)');
+      grad.addColorStop(1, 'rgba(217, 182, 255, 0.86)');
+      ctx.fillStyle = grad;
+      ctx.strokeStyle = 'rgba(217, 182, 255, 0.92)';
+      ctx.lineWidth = 3.5;
+      ctx.shadowColor = '#9b59b6';
+      ctx.shadowBlur = 16;
       ctx.beginPath();
-      ctx.ellipse(centerX, baseY - 42, 118, 72, 0, 0, TAU);
+      ctx.ellipse(centerX, baseY - 42, 122 + Math.sin(this.time * 9.5) * 4, 76 + Math.cos(this.time * 9.5) * 4, 0, 0, TAU);
+      ctx.fill();
       ctx.stroke();
+      ctx.restore();
     }
   }
 
@@ -1721,6 +1983,13 @@ export class EngineRace {
       ctx.fillStyle = this.objective.type === 'closePortals' ? '#39c5bb' : '#ffeb3b';
       ctx.beginPath();
       ctx.arc(marker.x, marker.y, 18, 0, TAU);
+      ctx.fill();
+    });
+    (this.track.fragmentPickups || []).forEach(fragment => {
+      if (fragment.collected) return;
+      ctx.fillStyle = '#ffeb3b';
+      ctx.beginPath();
+      ctx.arc(fragment.x, fragment.y, 10, 0, TAU);
       ctx.fill();
     });
     [this.player, ...this.opponents].forEach(kart => {
@@ -1953,9 +2222,9 @@ export class EngineRace {
     const hudX = 14;
     const hudY = 78;
     ctx.fillStyle = 'rgba(2,1,8,0.78)';
-    ctx.fillRect(hudX, hudY, 250, 136);
+    ctx.fillRect(hudX, hudY, 250, 148);
     ctx.strokeStyle = 'rgba(57,197,187,0.45)';
-    ctx.strokeRect(hudX, hudY, 250, 136);
+    ctx.strokeRect(hudX, hudY, 250, 148);
     drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 0, 0, hudX + 8, hudY + 10, 34, 34);
     ctx.font = 'bold 15px Share Tech Mono, monospace';
     ctx.fillStyle = '#39c5bb';
@@ -1965,9 +2234,10 @@ export class EngineRace {
     ctx.fillText(`Tour ${Math.min(player.lap + 1, this.track.laps)}/${this.track.laps}`, hudX + 50, hudY + 46);
     ctx.fillText(`Vitesse ${Math.round(Math.abs(player.speed))}`, hudX + 50, hudY + 66);
     ctx.fillText(`Cache ${player.item ? this.getItemName(player.item) : 'vide'}`, hudX + 50, hudY + 86);
+    ctx.fillText(`Fragments piste ${this.fragmentsCollected}/${this.track.fragmentPickups.length}`, hudX + 50, hudY + 106);
     ctx.fillStyle = '#8aa5a5';
     ctx.font = '10px Share Tech Mono, monospace';
-    ctx.fillText(this.track.name.fr.toUpperCase().slice(0, 28), hudX + 14, hudY + 102);
+    ctx.fillText(this.track.name.fr.toUpperCase().slice(0, 28), hudX + 14, hudY + 122);
     if (player.item) {
       const itemFrame = KART_ITEM_FRAMES[player.item] || KART_ITEM_FRAMES.cache;
       drawSheetFrame(ctx, this.images.kartItems, 7, 6, itemFrame.col, itemFrame.row, hudX + 204, hudY + 62, 34, 34);
@@ -1981,10 +2251,10 @@ export class EngineRace {
     ctx.fillRect(hudX + 14, hudY + 110, 224 * turboRatio, 5);
     ctx.fillStyle = '#8aa5a5';
     ctx.font = '9px Share Tech Mono, monospace';
-    ctx.fillText(player.air > 0 ? 'TRICK BOOST' : this.startBoostWindow && this.countdown > 0 ? 'FENETRE DEPART PARFAIT' : 'CHARGE MINI-TURBO', hudX + 14, hudY + 126);
+    ctx.fillText(player.air > 0 ? 'TRICK BOOST' : this.slipstreamTimer > 0.72 ? 'ASPIRATION ACTIVE' : this.startBoostWindow && this.countdown > 0 ? 'FENETRE DEPART PARFAIT' : 'CHARGE MINI-TURBO', hudX + 14, hudY + 136);
     ctx.fillStyle = this.objective?.complete ? '#39c5bb' : this.objective?.failed ? '#e74c3c' : '#d8fffb';
     ctx.font = '10px Share Tech Mono, monospace';
-    ctx.fillText(this.getObjectiveStatus().slice(0, 34), hudX + 14, hudY + 134);
+    ctx.fillText(this.getObjectiveStatus().slice(0, 34), hudX + 14, hudY + 144);
 
     this.drawTopDownMinimap(ctx);
 

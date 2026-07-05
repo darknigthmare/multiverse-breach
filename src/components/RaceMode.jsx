@@ -169,7 +169,6 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
       const key = normalizeKey(event.key);
-      keyPulseRef.current[key] = performance.now() + 420;
       if (key === 'e') {
         engine.useItem();
         return;

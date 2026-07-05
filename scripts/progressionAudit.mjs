@@ -129,6 +129,8 @@ assert(raceEngineSource.includes('useKartItem') && raceEngineSource.includes('sh
 assert(raceEngineSource.includes("'anchor'") && raceEngineSource.includes("'mirror'") && raceEngineSource.includes("'pulse'"), 'Race item pool must include anchor, mirror, and pulse cache types.');
 assert(raceEngineSource.includes('updateObjectiveState') && raceEngineSource.includes('getObjectiveStatus') && raceModeSource.includes('race-objective-card'), 'Race mode must expose active objectives in engine and UI.');
 assert(raceEngineSource.includes('KART_GARAGE_UPGRADES') && raceEngineSource.includes('computeGarageStats') && raceEngineSource.includes('garageParts'), 'Race mode must expose garage upgrades and race rewards.');
+assert(raceEngineSource.includes('buildTrackFragments') && raceEngineSource.includes('fragmentPickups') && raceEngineSource.includes('collectTrackFragments'), 'Race tracks must expose collectible fragments anchored to real track geometry.');
+assert(raceEngineSource.includes('applySlipstream') && raceEngineSource.includes('ASPIRATION ACTIVE'), 'Race mode must include rear-camera slipstream feedback behind rivals.');
 assert(raceModeSource.includes('multiverse-breach-kart-career') && raceModeSource.includes('buyUpgrade') && raceModeSource.includes('race-career-card'), 'Race tab must persist kart career and expose upgrade purchases.');
 assert(raceModeSource.includes('bestTimes') && raceModeSource.includes('completedObjectives') && raceModeSource.includes('race-upgrade-list'), 'Race career must track records, objective clears, and garage upgrade UI.');
 assert(rendererSource.includes('drawMirelleItemVfx') && rendererSource.includes('MIRELLE_COMPLETE_SPRITES.itemsVfx'), 'Combat renderer must use Mirelle item/VFX sheet during gameplay states.');
@@ -138,6 +140,24 @@ assert(hubSource.includes("drawPixelSprite(ctx, x, y + 24") && hubSource.include
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
 assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');
 assert(hubSource.includes("spritePreview.kind === 'pack'"), 'Admin sprite preview must render complete hero sprite packs.');
+assert(hubSource.includes('getUniverseArchiveDiagnostic') && hubSource.includes('blockedCollectionUniverses') && hubSource.includes('Univers non affiches'), 'Collection must expose diagnostic reasons for hidden or locked universes.');
+assert(hubSource.includes('incompleteCollectionUniverses') && hubSource.includes('Univers incomplets'), 'Collection must flag visible universes with missing active heroes, threats, or stages.');
+assert(hubSource.includes('spriteReadyCount') && hubSource.includes('IA {row.spriteReadyCount}/{row.spriteTotalCount}'), 'Admin universe rows must summarize OpenAI sprite coverage per universe.');
+[
+  'Serj Tankian',
+  'Daron Malakian',
+  'Shavo Odadjian',
+  'John Dolmayan'
+].forEach(name => {
+  assert(JSON.stringify(manifest).includes(name), `System of a Down manifest missing canon member ${name}.`);
+});
+[
+  'SOAD Frontline Voice',
+  'Staccato Guitarist',
+  'Groove Bassist'
+].forEach(name => {
+  assert(!JSON.stringify(manifest).includes(name), `System of a Down manifest still references generic prompt ${name}.`);
+});
 [
   'checkpoints',
   'boostPads',

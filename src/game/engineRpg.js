@@ -516,8 +516,10 @@ export class EngineRpg {
         }
       }
 
-      if (h.state === 'idle' && h.atb < 100) {
-        h.atb = Math.min(100, h.atb + atbRate);
+      if (h.state === 'idle') {
+        if (h.atb < 100) {
+          h.atb = Math.min(100, h.atb + atbRate);
+        }
         if (this.autoBattle && h.atb >= 100) {
           if (h.specialCharge >= 100) {
             this.triggerAbility(h, 'special');

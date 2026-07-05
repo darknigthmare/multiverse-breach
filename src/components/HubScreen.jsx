@@ -1710,17 +1710,31 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     const stats = selectedHero.stats || { hp: 120, atk: 12, def: 6, spd: 5 };
     const role = roleProfile[selectedHero.category] || roleProfile.marine;
     const maxAmmo = Math.round(24 * role.ammo);
+    const baseWep = {
+      type: 'pistol',
+      name: weaponProfile.name,
+      color: weaponProfile.color,
+      fireRate: weaponProfile.fireRate,
+      spread: weaponProfile.spread,
+      dmgMult: 1.0,
+      ammo: maxAmmo,
+      maxAmmo: maxAmmo
+    };
     const next = {
       phase: 'running',
       hp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
       maxHp: Math.min(260, Math.max(85, Math.round(stats.hp * 0.75 * role.hp))),
       armor: role.armor,
+      weapon: baseWep,
       ammo: maxAmmo,
       maxAmmo,
       kills: 0,
       wave: 1,
       enemies: buildEnemies(1),
       loot: buildLoot(1),
+      glitchZones: [],
+      hitMarkerTimer: 0,
+      screenShake: 0,
       t: 0,
       zone: 1,
       muzzle: 0,
@@ -1743,7 +1757,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     stateRef.current = next;
     setRunSnapshot({ phase: next.phase, hp: next.hp, ammo: next.ammo, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
     sound.playSfx('levelup');
-  }, [buildEnemies, buildLoot, objectives, roleProfile, runMode, selectedHero, universeFragments]);
+  }, [buildEnemies, buildLoot, objectives, roleProfile, runMode, selectedHero, universeFragments, weaponProfile]);
 
   const finishRun = useCallback((result) => {
     const state = stateRef.current;
@@ -1780,8 +1794,60 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       state.dash = Math.max(0, state.dash - 1);
       state.scan = Math.max(0, state.scan - 1);
       state.turret = Math.max(0, state.turret - 1);
+      state.hitMarkerTimer = Math.max(0, (state.hitMarkerTimer || 0) - 1);
+      state.screenShake = Math.max(0, (state.screenShake || 0) - 0.55);
 
       if (state.phase === 'running') {
+        // Boss Shielding Phase Check
+        const boss = state.enemies.find(enemy => enemy.kind === 'Champion de Trame');
+        if (boss && boss.hp > 0 && boss.hp <= boss.maxHp * 0.5 && !boss.bossShieldTriggered) {
+          boss.bossShieldTriggered = true;
+          boss.shieldActive = true;
+          sound.playSfx('special');
+          for (let i = 0; i < 3; i++) {
+            state.enemies.push({
+              id: `minion-drone-${Date.now()}-${i}`,
+              kind: 'Drone Protecteur',
+              color: '#e74c3c',
+              hp: 24,
+              maxHp: 24,
+              speed: 0.0036,
+              dmg: 3.5,
+              size: 0.6,
+              wx: boss.wx + (Math.random() - 0.5) * 3.5,
+              wy: boss.wy - 1.8 - Math.random() * 1.8,
+              shotTimer: 0
+            });
+          }
+        }
+
+        // Glitch Zones Update
+        if (state.t % 220 === 0) {
+          state.glitchZones = state.glitchZones || [];
+          state.glitchZones.push({
+            id: `glitch-${Date.now()}-${Math.random()}`,
+            wx: state.px + (Math.random() - 0.5) * 6.5,
+            wy: state.py + (Math.random() - 0.5) * 6.5,
+            r: 2.2,
+            timer: 120
+          });
+        }
+        state.glitchZones = (state.glitchZones || [])
+          .map(zone => {
+            zone.timer -= 1;
+            if (zone.timer === 0) {
+              const dist = Math.hypot(state.px - zone.wx, state.py - zone.wy);
+              if (dist < zone.r) {
+                state.hp = Math.max(0, state.hp - 22);
+                sound.playSfx('hit');
+                state.screenShake = 12;
+              }
+              sound.playSfx('special');
+            }
+            return zone;
+          })
+          .filter(zone => zone.timer > 0);
+
         const keys = state.moveKeys || {};
         const turnInput = (keys.turnRight ? 1 : 0) - (keys.turnLeft ? 1 : 0);
         const forwardInput = (keys.forward ? 1 : 0) - (keys.back ? 1 : 0);
@@ -1832,7 +1898,10 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
             .sort((a, b) => projectWorld(a, state).dist - projectWorld(b, state).dist)[0];
           if (target) {
             target.hp -= 14;
-            if (target.hp <= 0) state.kills += 1;
+            if (target.hp <= 0) {
+              state.kills += 1;
+              triggerEnemyDrop(target, state);
+            }
           }
         }
         if (state.enemies.every(enemy => enemy.hp <= 0)) {
@@ -1861,6 +1930,13 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
             rewards: state.rewards
           });
         }
+      }
+
+      ctx.save();
+      if (state.screenShake > 0) {
+        const dx = (Math.random() - 0.5) * state.screenShake;
+        const dy = (Math.random() - 0.5) * state.screenShake;
+        ctx.translate(dx, dy);
       }
 
       const sky = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.54);
@@ -1902,6 +1978,29 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
         for (let y = 0; y < canvas.height; y += 9) ctx.fillRect(0, y, canvas.width, 2);
       }
 
+      // Render Glitch Danger Zones
+      (state.glitchZones || [])
+        .map(zone => ({ zone, projection: projectWorld(zone, state) }))
+        .filter(({ projection }) => projection.camZ > 0.25 && Math.abs(projection.aim) < 1.3)
+        .sort((a, b) => b.projection.camZ - a.projection.camZ)
+        .forEach(({ zone, projection }) => {
+          const scale = Math.min(1.4, 1 / projection.camZ);
+          const x = canvas.width / 2 + projection.aim * canvas.width * 0.78;
+          const y = canvas.height * 0.67 + 46 * scale;
+          const rScreen = zone.r * 28 * scale;
+          ctx.save();
+          ctx.strokeStyle = `rgba(231, 76, 60, ${0.45 + Math.sin(state.t * 0.16) * 0.35})`;
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.ellipse(x, y, rScreen * 1.5, rScreen * 0.5, 0, 0, TAU);
+          ctx.stroke();
+          ctx.fillStyle = `rgba(231, 76, 60, ${0.12 + Math.sin(state.t * 0.16) * 0.08})`;
+          ctx.beginPath();
+          ctx.ellipse(x, y, rScreen * 1.5, rScreen * 0.5, 0, 0, TAU);
+          ctx.fill();
+          ctx.restore();
+        });
+
       state.loot
         .filter(item => !item.used)
         .map(item => ({ item, projection: projectWorld(item, state) }))
@@ -1915,7 +2014,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           ctx.fillRect(x - 12 * scale, y - 12 * scale, 24 * scale, 24 * scale);
           ctx.fillStyle = '#fff';
           ctx.font = `${Math.max(8, 12 * scale)}px "Share Tech Mono"`;
-          ctx.fillText(item.type.toUpperCase().slice(0, 3), x - 12 * scale, y - 17 * scale);
+          ctx.fillText(item.label || item.type.toUpperCase().slice(0, 3), x - 12 * scale, y - 17 * scale);
         });
 
       state.enemies
@@ -1927,10 +2026,21 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           const scale = Math.min(1.8, 1 / projection.camZ);
           const x = canvas.width / 2 + projection.aim * canvas.width * 0.78;
           const y = canvas.height * 0.58 - 28 * scale;
-          const w = 52 * scale * enemy.size;
-          const h = 94 * scale * enemy.size;
-          ctx.fillStyle = 'rgba(0,0,0,0.42)';
-          ctx.fillRect(x - w * 0.5, y + h * 0.86, w, 8 * scale);
+          const w = 46 * scale;
+          const h = 76 * scale;
+          
+          if (enemy.kind === 'Champion de Trame' && enemy.shieldActive) {
+            ctx.save();
+            ctx.strokeStyle = '#3498db';
+            ctx.lineWidth = 4;
+            ctx.fillStyle = 'rgba(52, 152, 219, 0.16)';
+            ctx.beginPath();
+            ctx.ellipse(x, y + h * 0.5, w * 0.75, h * 0.6, 0, 0, TAU);
+            ctx.fill();
+            ctx.stroke();
+            ctx.restore();
+          }
+
           ctx.fillStyle = enemy.color;
           ctx.fillRect(x - w * 0.35, y, w * 0.7, h);
           ctx.fillStyle = '#fff';
@@ -1967,19 +2077,72 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       ctx.lineTo(canvas.width / 2, canvas.height / 2 + 12);
       ctx.stroke();
 
-      ctx.fillStyle = 'rgba(0,0,0,0.52)';
-      ctx.fillRect(canvas.width - 116, 58, 92, 92);
-      ctx.strokeStyle = '#39c5bb';
-      ctx.strokeRect(canvas.width - 116, 58, 92, 92);
-      ctx.fillStyle = '#ffea00';
-      ctx.fillRect(canvas.width - 72 + state.px * 3.2, 103 - state.py * 1.4, 4, 4);
-      ctx.strokeStyle = '#ffea00';
+      if (state.hitMarkerTimer > 0) {
+        ctx.strokeStyle = '#e74c3c';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(canvas.width / 2 - 8, canvas.height / 2 - 8);
+        ctx.lineTo(canvas.width / 2 - 4, canvas.height / 2 - 4);
+        ctx.moveTo(canvas.width / 2 + 8, canvas.height / 2 - 8);
+        ctx.lineTo(canvas.width / 2 + 4, canvas.height / 2 - 4);
+        ctx.moveTo(canvas.width / 2 - 8, canvas.height / 2 + 8);
+        ctx.lineTo(canvas.width / 2 - 4, canvas.height / 2 + 4);
+        ctx.moveTo(canvas.width / 2 + 8, canvas.height / 2 + 8);
+        ctx.lineTo(canvas.width / 2 + 4, canvas.height / 2 + 4);
+        ctx.stroke();
+      }
+
+      // Circular Scanning Radar Minimap
+      const radX = canvas.width - 74;
+      const radY = 104;
+      const radR = 42;
+      ctx.save();
+      ctx.fillStyle = 'rgba(1, 10, 8, 0.72)';
       ctx.beginPath();
-      ctx.moveTo(canvas.width - 70 + state.px * 3.2, 105 - state.py * 1.4);
-      ctx.lineTo(canvas.width - 70 + state.px * 3.2 + Math.sin(state.angle) * 16, 105 - state.py * 1.4 - Math.cos(state.angle) * 16);
+      ctx.arc(radX, radY, radR, 0, TAU);
+      ctx.fill();
+      ctx.strokeStyle = '#39c5bb';
+      ctx.lineWidth = 1.8;
       ctx.stroke();
 
-      if (selectedHero?.id === 'arca_mirelle' && fpsHandsRef.current?.complete && fpsHandsRef.current.naturalWidth) {
+      const sweepAngle = (state.t * 0.046) % TAU;
+      ctx.strokeStyle = 'rgba(57, 197, 187, 0.35)';
+      ctx.beginPath();
+      ctx.moveTo(radX, radY);
+      ctx.lineTo(radX + Math.cos(sweepAngle) * radR, radY + Math.sin(sweepAngle) * radR);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(57, 197, 187, 0.16)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.arc(radX, radY, radR * 0.5, 0, TAU);
+      ctx.stroke();
+
+      state.enemies.forEach(enemy => {
+        if (enemy.hp <= 0) return;
+        const dx = enemy.wx - state.px;
+        const dy = enemy.wy - state.py;
+        const cos = Math.cos(-state.angle - Math.PI / 2);
+        const sin = Math.sin(-state.angle - Math.PI / 2);
+        const rx = dx * cos - dy * sin;
+        const ry = dx * sin + dy * cos;
+        const dist = Math.hypot(rx, ry);
+        if (dist > 18) return;
+        const plotX = radX + (rx / 18) * radR;
+        const plotY = radY + (ry / 18) * radR;
+        ctx.fillStyle = '#ff3b3b';
+        ctx.beginPath();
+        ctx.arc(plotX, plotY, 3, 0, TAU);
+        ctx.fill();
+      });
+
+      ctx.fillStyle = '#39c5bb';
+      ctx.beginPath();
+      ctx.arc(radX, radY, 3.5, 0, TAU);
+      ctx.fill();
+      ctx.restore();
+
+      if (fpsHandsRef.current?.complete && fpsHandsRef.current.naturalWidth) {
         const sheet = fpsHandsRef.current;
         const frameW = sheet.naturalWidth / 4;
         const frameH = sheet.naturalHeight / 10;
@@ -2007,15 +2170,6 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           ctx.drawImage(projectileSheet, 0, 0, projectileSheet.naturalWidth, projectileSheet.naturalHeight, canvas.width / 2 - 205, canvas.height / 2 - 94, 410, 146);
           ctx.globalAlpha = 1;
         }
-      } else {
-        ctx.fillStyle = selectedHero.primaryColor || '#444';
-        ctx.fillRect(canvas.width / 2 - 80 - state.turnVel * 430 + state.vx * 85, canvas.height - 116, 160, 96);
-        ctx.fillStyle = weaponProfile.color;
-        ctx.fillRect(canvas.width / 2 - 34 - state.turnVel * 430 + state.vx * 85, canvas.height - 100, 68, 28);
-        if (state.muzzle) {
-          ctx.fillStyle = '#ffea00';
-          ctx.fillRect(canvas.width / 2 - 14, canvas.height - 126, 28, 28);
-        }
       }
       if (state.phase !== 'running') {
         ctx.fillStyle = 'rgba(0,0,0,0.72)';
@@ -2032,11 +2186,45 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           canvas.height / 2 + 18
         );
       }
+      ctx.restore();
       rafId = window.requestAnimationFrame(loop);
     };
     loop();
     return () => window.cancelAnimationFrame(rafId);
   }, [buildEnemies, buildLoot, finishRun, lang, objectives, projectWorld, runMode, selectedHero, universeFragments, weaponProfile.color]);
+
+  const triggerEnemyDrop = (enemy, state) => {
+    if (Math.random() < 0.24) {
+      const types = ['shotgun', 'plasma', 'rocket'];
+      const chosen = types[Math.floor(Math.random() * types.length)];
+      let weaponData = null;
+      let label = '';
+      let color = '';
+      if (chosen === 'shotgun') {
+        weaponData = { type: 'shotgun', name: 'Fusil à Pompe / Shotgun', color: '#e67e22', fireRate: 1.5, spread: 0.28, dmgMult: 2.1, maxAmmo: 8 };
+        label = 'Shotgun';
+        color = '#e67e22';
+      } else if (chosen === 'plasma') {
+        weaponData = { type: 'plasma', name: 'Fusil Plasma / Plasma Rifle', color: '#3498db', fireRate: 0.45, spread: 0.05, dmgMult: 0.65, maxAmmo: 60 };
+        label = 'Plasma';
+        color = '#3498db';
+      } else {
+        weaponData = { type: 'rocket', name: 'Lance-Roquettes / Rocket Launcher', color: '#e74c3c', fireRate: 2.4, spread: 0.15, dmgMult: 4.5, maxAmmo: 4 };
+        label = 'Launcher';
+        color = '#e74c3c';
+      }
+      state.loot.push({
+        id: `wep-drop-${Date.now()}-${Math.random()}`,
+        type: 'weapon',
+        label,
+        wx: enemy.wx,
+        wy: enemy.wy,
+        color,
+        weaponData,
+        used: false
+      });
+    }
+  };
 
   const fire = () => {
     const state = stateRef.current;
@@ -2044,29 +2232,56 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       startRun();
       return;
     }
-    if (!state.ammo) return;
-    state.ammo -= 1;
+    const wep = state.weapon || { type: 'pistol', ammo: state.ammo || 24, maxAmmo: 24, spread: 0.12, fireRate: 1.0, dmgMult: 1.0 };
+    if (state.t - (state.lastFireTime || 0) < wep.fireRate * 18) return;
+    if (!wep.ammo) return;
+    
+    wep.ammo -= 1;
+    state.ammo = wep.ammo;
+    state.lastFireTime = state.t;
     state.muzzle = 36;
     const role = roleProfile[selectedHero?.category] || roleProfile.marine;
     const target = state.enemies
       .filter(enemy => enemy.hp > 0)
       .map(enemy => ({ enemy, projection: projectWorld(enemy, state) }))
-      .filter(({ projection }) => projection.camZ > 0.24 && Math.abs(projection.aim) < 0.2 + weaponProfile.spread)
+      .filter(({ projection }) => projection.camZ > 0.24 && Math.abs(projection.aim) < 0.2 + wep.spread)
       .sort((a, b) => (Math.abs(a.projection.aim) + a.projection.camZ * 0.035) - (Math.abs(b.projection.aim) + b.projection.camZ * 0.035))[0]?.enemy;
+    
     if (target) {
+      if (target.kind === 'Champion de Trame' && target.shieldActive) {
+        const dronesAlive = state.enemies.some(enemy => enemy.kind === 'Drone Protecteur' && enemy.hp > 0);
+        if (dronesAlive) {
+          sound.playSfx('shield');
+          state.screenShake = 4.5;
+          return;
+        } else {
+          target.shieldActive = false;
+        }
+      }
+      
       const closeBonus = selectedHero?.category === 'slayer' && projectWorld(target, state).dist < 2.2 ? 1.45 : 1;
-      target.hp -= Math.round(34 * role.dmg * closeBonus);
+      target.hp -= Math.round(34 * role.dmg * closeBonus * wep.dmgMult);
+      state.hitMarkerTimer = 6;
+      state.screenShake = 5.5 + wep.dmgMult * 1.5;
+      
       if (target.hp <= 0) {
         state.kills += 1;
         if (selectedHero?.category === 'horror') state.hp = Math.min(state.maxHp, state.hp + 8);
+        triggerEnemyDrop(target, state);
       }
     }
     sound.playSfx('confirm');
   };
 
   const reload = () => {
-    stateRef.current.ammo = stateRef.current.maxAmmo || 24;
-    stateRef.current.reloadPulse = 12;
+    const state = stateRef.current;
+    if (state.weapon) {
+      state.weapon.ammo = state.weapon.maxAmmo;
+      state.ammo = state.weapon.ammo;
+    } else {
+      state.ammo = state.maxAmmo || 24;
+    }
+    state.reloadPulse = 12;
     sound.playSfx('coin');
   };
 
@@ -2102,7 +2317,12 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     item.used = true;
     if (item.type === 'normal') {
       state.hp = Math.min(state.maxHp, state.hp + 24);
-      state.ammo = state.maxAmmo;
+      if (state.weapon) {
+        state.weapon.ammo = state.weapon.maxAmmo;
+        state.ammo = state.weapon.ammo;
+      } else {
+        state.ammo = state.maxAmmo;
+      }
       state.reloadPulse = 10;
     } else if (item.type === 'summon') {
       state.turret = Math.max(state.turret, 500);
@@ -2110,6 +2330,10 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
       state.enemies.forEach(enemy => { enemy.hp -= 95; });
       state.kills += state.enemies.filter(enemy => enemy.hp <= 0 && !enemy.counted).length;
       state.enemies.forEach(enemy => { if (enemy.hp <= 0) enemy.counted = true; });
+    } else if (item.type === 'weapon') {
+      state.weapon = { ...item.weaponData, ammo: item.weaponData.maxAmmo };
+      state.ammo = state.weapon.ammo;
+      sound.playSfx('levelup');
     }
     sound.playSfx(item.type === 'ultimate' ? 'special' : 'coin');
   };
@@ -4486,6 +4710,59 @@ export default function HubScreen({
     const stage = ADMIN_VISIBLE_STAGES.find(entry => entry.id === stageId);
     return Boolean(stage && isStageUnlocked(stage));
   };
+  const getUniverseArchiveDiagnostic = (universe) => {
+    const lore = LORE_DB[universe];
+    const stageId = UNIVERSE_TO_STAGE_ID[universe];
+    const stage = stageId ? ADMIN_VISIBLE_STAGES.find(entry => entry.id === stageId) : null;
+    const heroes = ALL_HEROES_DB.filter(hero => hero.universe === universe);
+    const enabledHeroes = heroes.filter(hero => !isAssetDisabled('heroes', hero.id));
+    const enemyRows = ENEMIES_DB[universe]
+      ? [
+        ...(ENEMIES_DB[universe].monsters || []),
+        ...(ENEMIES_DB[universe].bosses || []),
+        ENEMIES_DB[universe].worldBoss
+      ].filter(Boolean)
+      : [];
+    const enabledEnemies = enemyRows.filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy)));
+    const stageRows = ADMIN_VISIBLE_STAGES.filter(entry => entry.universe === universe || entry.sourceUniverses?.includes(universe));
+    const enabledStages = stageRows.filter(entry => !isAssetDisabled('stages', getStageAdminKey(entry)));
+    
+    const monstersCount = ENEMIES_DB[universe]?.monsters?.filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy))).length || 0;
+    const bossesCount = ENEMIES_DB[universe]?.bosses?.filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy))).length || 0;
+    const worldBossCount = (ENEMIES_DB[universe]?.worldBoss && !isAssetDisabled('enemies', getEnemyAdminKey(universe, ENEMIES_DB[universe].worldBoss))) ? 1 : 0;
+    const itemsCount = getBattleItemsForUniverse(universe).filter(item => !isAssetDisabled('gear', item.id)).length +
+      EQUIP_ITEMS_DB.filter(item => item.universe === universe && !isAssetDisabled('gear', item.id)).length;
+    const eventCount = (EVENT_ITEMS_DB[universe] && !isAssetDisabled('gear', EVENT_ITEMS_DB[universe].id)) ? 1 : 0;
+
+    const reasons = [];
+    const adminHidden = hiddenUniverseSet.has(universe);
+    if (!lore) reasons.push(lang === 'fr' ? 'Lore absent de LORE_DB' : 'Missing LORE_DB entry');
+    if (adminHidden) reasons.push(lang === 'fr' ? 'DLC masque dans ADMIN' : 'DLC hidden in ADMIN');
+    if (lore && !matchesMediaFilter(lore.mediaType)) reasons.push(lang === 'fr' ? `Filtre media actif: ${getMediaTypeLabel(mediaFilter)}` : `Active media filter: ${getMediaTypeLabel(mediaFilter)}`);
+    if (!adminHidden && stageId && !stage) reasons.push(lang === 'fr' ? `Stage principal #${stageId} introuvable` : `Main stage #${stageId} missing`);
+    if (!adminHidden && stage && !isStageUnlocked(stage)) reasons.push(getLockedReason(stage) || (lang === 'fr' ? 'Prerequis de progression non atteints' : 'Progression prerequisites not met'));
+    if (!adminHidden && heroes.length > 0 && enabledHeroes.length === 0) reasons.push(lang === 'fr' ? 'Tous les heros de cet univers sont masques' : 'Every hero in this universe is disabled');
+    if (!adminHidden && enemyRows.length > 0 && enabledEnemies.length === 0) reasons.push(lang === 'fr' ? 'Toutes les menaces de cet univers sont masquees' : 'Every threat in this universe is disabled');
+    if (!adminHidden && stageRows.length > 0 && enabledStages.length === 0) reasons.push(lang === 'fr' ? 'Toutes les missions de cet univers sont masquees' : 'Every mission in this universe is disabled');
+    const available = reasons.length === 0;
+    return {
+      universe,
+      lore,
+      stage,
+      available,
+      reasons: available ? [lang === 'fr' ? 'Visible et jouable selon la progression actuelle' : 'Visible and playable for current progression'] : reasons,
+      counts: {
+        heroes: enabledHeroes.length,
+        enemies: enabledEnemies.length,
+        stages: enabledStages.length,
+        monsters: monstersCount,
+        bosses: bossesCount,
+        worldBoss: worldBossCount,
+        items: itemsCount,
+        event: eventCount
+      }
+    };
+  };
   const getBreachBrief = (stage) => {
     if (stage.trioArc) {
       const requirementText = getArcUnlockRequirementText(stage);
@@ -5056,6 +5333,23 @@ export default function HubScreen({
   };
   const visibleCollectionUniverses = Object.keys(LORE_DB)
     .filter(isUniverseArchiveAvailable);
+  const collectionUniverseDiagnostics = Object.keys(LORE_DB)
+    .map(getUniverseArchiveDiagnostic)
+    .sort((a, b) => {
+      if (a.available !== b.available) return a.available ? -1 : 1;
+      return a.universe.localeCompare(b.universe);
+    });
+  const blockedCollectionUniverses = collectionUniverseDiagnostics.filter(entry => !entry.available);
+  const incompleteCollectionUniverses = collectionUniverseDiagnostics.filter(entry => (
+    entry.available
+    && (entry.counts.heroes < 3 ||
+        entry.counts.monsters < 3 ||
+        entry.counts.bosses < 3 ||
+        entry.counts.worldBoss < 1 ||
+        entry.counts.stages < 3 ||
+        entry.counts.items < 3 ||
+        entry.counts.event < 1)
+  ));
   const getMediaTypeLabel = (mediaType) => {
     if (mediaType === 'game') return 'Game';
     if (mediaType === 'movie') return 'Movie';
@@ -5118,6 +5412,15 @@ export default function HubScreen({
         + gear.filter(item => isAssetDisabled('gear', item.id)).length
         + stages.filter(stage => isAssetDisabled('stages', getStageAdminKey(stage))).length
       );
+      const totalHeroSprites = heroes.length;
+      const readyHeroSprites = heroes.filter(hero => getHeroSpriteInfo(hero).ready).length;
+      const totalEnemySprites = enemies.length;
+      const readyEnemySprites = enemies.filter(enemy => getEnemySpriteInfo(enemy, universe).ready).length;
+      const totalGearSprites = gear.length;
+      const readyGearSprites = gear.filter(item => getItemSpriteInfo(item).ready).length;
+      const spriteTotalCount = totalHeroSprites + totalEnemySprites + totalGearSprites;
+      const spriteReadyCount = readyHeroSprites + readyEnemySprites + readyGearSprites;
+
       return {
         universe,
         lore,
@@ -5130,7 +5433,9 @@ export default function HubScreen({
         disabledCount,
         stageCount: stages.length,
         enemyCount: enemies.length,
-        gearCount: gear.length
+        gearCount: gear.length,
+        spriteTotalCount,
+        spriteReadyCount
       };
     })
     .filter(row => {
@@ -7741,6 +8046,54 @@ export default function HubScreen({
                   ))}
                 </div>
               </div>
+
+              <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.16)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
+                  <strong style={{ color: '#ffb15c', fontSize: '11px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Univers non affiches' : 'Blocked universes'}
+                  </strong>
+                  <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{blockedCollectionUniverses.length}</span>
+                </div>
+                <div style={{ display: 'grid', gap: '6px', maxHeight: '150px', overflowY: 'auto', paddingRight: '4px' }}>
+                  {blockedCollectionUniverses.slice(0, 18).map(entry => (
+                    <div key={entry.universe} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
+                      <b style={{ color: '#ddd', fontSize: '10px' }}>{entry.lore?.title?.[lang] || entry.universe}</b>
+                      <div style={{ color: '#ffb15c', fontSize: '9px', lineHeight: 1.35, marginTop: '3px' }}>
+                        {entry.reasons.slice(0, 2).join(' / ')}
+                      </div>
+                    </div>
+                  ))}
+                  {blockedCollectionUniverses.length === 0 && (
+                    <div style={{ color: '#8dffb1', fontSize: '10px', lineHeight: 1.35 }}>
+                      {lang === 'fr' ? 'Aucun univers actif n est cache par les regles de collection.' : 'No active universe is hidden by collection rules.'}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div style={{ padding: '12px', border: '1px solid rgba(57,197,187,0.22)', background: 'rgba(57,197,187,0.045)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
+                  <strong style={{ color: '#39c5bb', fontSize: '11px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Univers incomplets' : 'Incomplete universes'}
+                  </strong>
+                  <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{incompleteCollectionUniverses.length}</span>
+                </div>
+                <div style={{ display: 'grid', gap: '6px', maxHeight: '150px', overflowY: 'auto', paddingRight: '4px' }}>
+                  {incompleteCollectionUniverses.slice(0, 18).map(entry => (
+                    <div key={entry.universe} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
+                      <b style={{ color: '#ddd', fontSize: '10px' }}>{entry.lore?.title?.[lang] || entry.universe}</b>
+                      <div style={{ color: '#9fb6bb', fontSize: '9px', lineHeight: 1.35, marginTop: '3px' }}>
+                        {entry.counts.heroes}H / {entry.counts.monsters}M / {entry.counts.bosses}B / {entry.counts.worldBoss}WB / {entry.counts.stages}S / {entry.counts.items}I / {entry.counts.event}E
+                      </div>
+                    </div>
+                  ))}
+                  {incompleteCollectionUniverses.length === 0 && (
+                    <div style={{ color: '#8dffb1', fontSize: '10px', lineHeight: 1.35 }}>
+                      {lang === 'fr' ? 'Les univers visibles respectent le standard minimal de categories.' : 'Visible universes meet the minimum standard category counts.'}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '10px', maxHeight: '520px', overflowY: 'auto', paddingRight: '4px' }}>
@@ -8487,6 +8840,7 @@ export default function HubScreen({
                         <span>{row.gearCount} gear</span>
                         <span>{row.stageCount} stages</span>
                         {row.disabledCount > 0 && <span style={{ color: '#e74c3c' }}>{row.disabledCount} off</span>}
+                        <span style={{ color: '#39c5bb', fontWeight: 'bold' }}>IA {row.spriteReadyCount}/{row.spriteTotalCount}</span>
                       </div>
                       {row.baseGame ? (
                         <span
