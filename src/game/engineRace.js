@@ -1404,21 +1404,20 @@ export class EngineRace {
       .slice()
       .sort((a, b) => b.depth - a.depth)
       .forEach(segment => {
-        const width = segment.width;
-        const normalX = segment.normalX;
-        const normalY = segment.normalY;
+        const aWidth = segment.aWidth || segment.width;
+        const bWidth = segment.bWidth || segment.width;
 
         // Left and right edges of start point A
-        const axL = segment.a.x - normalX * width * 0.5;
-        const ayL = segment.a.y - normalY * width * 0.5;
-        const axR = segment.a.x + normalX * width * 0.5;
-        const ayR = segment.a.y + normalY * width * 0.5;
+        const axL = segment.a.x - aWidth * 0.5;
+        const ayL = segment.a.y;
+        const axR = segment.a.x + aWidth * 0.5;
+        const ayR = segment.a.y;
 
         // Left and right edges of end point B
-        const bxL = segment.b.x - normalX * width * 0.5;
-        const byL = segment.b.y - normalY * width * 0.5;
-        const bxR = segment.b.x + normalX * width * 0.5;
-        const byR = segment.b.y + normalY * width * 0.5;
+        const bxL = segment.b.x - bWidth * 0.5;
+        const byL = segment.b.y;
+        const bxR = segment.b.x + bWidth * 0.5;
+        const byR = segment.b.y;
 
         // Draw main road surface polygon
         ctx.fillStyle = segment.index % 2 === 0 ? '#272b39' : '#303443';
@@ -1431,13 +1430,14 @@ export class EngineRace {
         ctx.fill();
 
         // Draw red/white rumble strip borders
-        const borderW = Math.max(3, width * 0.055);
+        const aBorderW = Math.max(3, aWidth * 0.055);
+        const bBorderW = Math.max(3, bWidth * 0.055);
         ctx.fillStyle = segment.index % 2 === 0 ? '#e74c3c' : '#ffffff';
 
         // Left border
         ctx.beginPath();
-        ctx.moveTo(axL - borderW, ayL);
-        ctx.lineTo(bxL - borderW, byL);
+        ctx.moveTo(axL - aBorderW, ayL);
+        ctx.lineTo(bxL - bBorderW, byL);
         ctx.lineTo(bxL, byL);
         ctx.lineTo(axL, ayL);
         ctx.closePath();
@@ -1447,15 +1447,15 @@ export class EngineRace {
         ctx.beginPath();
         ctx.moveTo(axR, ayR);
         ctx.lineTo(bxR, byR);
-        ctx.lineTo(bxR + borderW, byR);
-        ctx.lineTo(axR + borderW, ayR);
+        ctx.lineTo(bxR + bBorderW, byR);
+        ctx.lineTo(axR + aBorderW, ayR);
         ctx.closePath();
         ctx.fill();
 
         // Draw center dashed yellow line
         if (segment.index % 2 === 0) {
           ctx.strokeStyle = '#ffeb3b';
-          ctx.lineWidth = Math.max(1.5, width * 0.016);
+          ctx.lineWidth = Math.max(1.5, ((aWidth + bWidth) * 0.5) * 0.016);
           ctx.beginPath();
           ctx.moveTo(segment.a.x, segment.a.y);
           ctx.lineTo(segment.b.x, segment.b.y);
@@ -1499,12 +1499,14 @@ export class EngineRace {
       const dx = next.p.x - current.p.x;
       const dy = next.p.y - current.p.y;
       const len = Math.hypot(dx, dy) || 1;
-      const scale = (current.p.scale + next.p.scale) * 0.5;
-      const perspectiveT = (current.p.t + next.p.t) * 0.5;
+      const aWidth = this.getRearRoadVisualWidth(current.p.scale, current.p.t);
+      const bWidth = this.getRearRoadVisualWidth(next.p.scale, next.p.t);
       segments.push({
         a: current.p,
         b: next.p,
-        width: this.getRearRoadVisualWidth(scale, perspectiveT),
+        width: (aWidth + bWidth) * 0.5,
+        aWidth,
+        bWidth,
         depth: (current.p.forward + next.p.forward) * 0.5,
         index: current.source.segmentIndex,
         normalX: -dy / len,
@@ -1608,7 +1610,7 @@ export class EngineRace {
     const roadHalf = lerp(42, 390, t ** 1.08);
     const x = this.width / 2 + lateral * (roadHalf / 125);
     const scale = lerp(0.22, 1.42, t ** 1.12);
-    if (x < -120 || x > this.width + 120) return null;
+    if (x < -this.width * 1.5 || x > this.width * 2.5) return null;
     return { x, y, scale, t, forward, lateral };
   }
 
