@@ -1400,10 +1400,11 @@ export class EngineRace {
     ctx.fillRect(0, horizon, this.width, this.height - horizon);
 
     ctx.save();
-    segments
+    const orderedSegments = segments
       .slice()
-      .sort((a, b) => b.depth - a.depth)
-      .forEach(segment => {
+      .sort((a, b) => b.depth - a.depth);
+
+    orderedSegments.forEach(segment => {
         const aWidth = segment.aWidth || segment.width;
         const bWidth = segment.bWidth || segment.width;
 
@@ -1420,7 +1421,7 @@ export class EngineRace {
         const byR = segment.b.y;
 
         // Draw main road surface polygon
-        ctx.fillStyle = segment.index % 2 === 0 ? '#272b39' : '#303443';
+        ctx.fillStyle = segment.index % 2 === 0 ? '#34394a' : '#3d4356';
         ctx.beginPath();
         ctx.moveTo(axL, ayL);
         ctx.lineTo(bxL, byL);
@@ -1463,28 +1464,91 @@ export class EngineRace {
         }
       });
 
+    ctx.lineCap = 'round';
+    [
+      { side: -1, color: 'rgba(57,197,187,0.88)', width: 4.5 },
+      { side: 1, color: 'rgba(57,197,187,0.88)', width: 4.5 },
+      { side: 0, color: 'rgba(255,235,59,0.7)', width: 2.5, dash: [18, 18] }
+    ].forEach(edge => {
+      ctx.strokeStyle = edge.color;
+      ctx.lineWidth = edge.width;
+      ctx.setLineDash(edge.dash || []);
+      ctx.beginPath();
+      orderedSegments
+        .slice()
+        .sort((a, b) => b.depth - a.depth)
+        .forEach((segment, index) => {
+          const width = (segment.aWidth || segment.width) * 0.5;
+          const x = segment.a.x + edge.side * width;
+          const y = segment.a.y;
+          if (index === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+      ctx.stroke();
+    });
+    ctx.setLineDash([]);
+
     const startProjection = this.projectToRearCamera(this.track.start || this.track.waypoints[0]);
     if (startProjection) this.drawProjectedFinishLine(ctx, startProjection);
     ctx.restore();
   }
 
+  getPlayerRoadAnchor() {
+    const points = this.track.waypoints || [];
+    if (points.length < 2) return null;
+    let best = { segment: 0, t: 0, x: points[0].x, y: points[0].y, distance: Infinity };
+    points.forEach((point, index) => {
+      const next = points[(index + 1) % points.length];
+      const vx = next.x - point.x;
+      const vy = next.y - point.y;
+      const lengthSq = vx * vx + vy * vy || 1;
+      const t = clamp(((this.player.x - point.x) * vx + (this.player.y - point.y) * vy) / lengthSq, 0, 1);
+      const x = point.x + vx * t;
+      const y = point.y + vy * t;
+      const distanceToPlayer = Math.hypot(this.player.x - x, this.player.y - y);
+      if (distanceToPlayer < best.distance) {
+        best = { segment: index, t, x, y, distance: distanceToPlayer };
+      }
+    });
+    return best;
+  }
+
+  getTrackPointAhead(anchor, distanceAhead) {
+    const points = this.track.waypoints || [];
+    if (!anchor || points.length < 2) return null;
+    let segmentIndex = anchor.segment;
+    let t = anchor.t;
+    let remaining = distanceAhead;
+    for (let guard = 0; guard < points.length * 3; guard += 1) {
+      const point = points[segmentIndex];
+      const next = points[(segmentIndex + 1) % points.length];
+      const segmentLength = Math.max(1, distance(point, next));
+      const available = segmentLength * (1 - t);
+      if (remaining <= available) {
+        const localT = t + remaining / segmentLength;
+        return {
+          x: lerp(point.x, next.x, localT),
+          y: lerp(point.y, next.y, localT),
+          segmentIndex
+        };
+      }
+      remaining -= available;
+      segmentIndex = (segmentIndex + 1) % points.length;
+      t = 0;
+    }
+    return points[segmentIndex] ? { ...points[segmentIndex], segmentIndex } : null;
+  }
+
   getProjectedTrackSegments() {
     const points = this.track.waypoints || [];
     if (points.length < 2) return [];
+    const anchor = this.getPlayerRoadAnchor();
+    if (!anchor) return [];
     const samples = [];
-    points.forEach((point, index) => {
-      const next = points[(index + 1) % points.length];
-      const length = Math.max(1, distance(point, next));
-      const steps = Math.max(3, Math.ceil(length / 38));
-      for (let step = 0; step < steps; step += 1) {
-        const t = step / steps;
-        samples.push({
-          x: lerp(point.x, next.x, t),
-          y: lerp(point.y, next.y, t),
-          segmentIndex: index
-        });
-      }
-    });
+    for (let forward = 22; forward <= 720; forward += 46) {
+      const sample = this.getTrackPointAhead(anchor, forward);
+      if (sample) samples.push(sample);
+    }
 
     const projected = samples.map(sample => ({
       source: sample,

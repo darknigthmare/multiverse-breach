@@ -75,6 +75,18 @@ assert(hubSource.includes('getUniverseArcRosterStatus'), 'Universe arc roster ga
 assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must stay wired.');
 assert(hubSource.includes('isCurrentStoryChapterStage'), 'Story mode must filter portals by the active chapter.');
 assert(hubSource.includes('storyChapterStages'), 'Story mode count must be based on the active chapter pool.');
+assert(hubSource.includes('isOcStoryStage') && hubSource.includes('stage?.baseGameStage'), 'Main story must be restricted to OC base-game stages.');
+assert(hubSource.includes('completedOcStoryClears'), 'Story chapter progression must count only completed OC story stages.');
+assert(hubSource.includes("worlds remain side archives") || hubSource.includes('DLC remain side archives'), 'Story copy must describe DLC as side archives, not campaign requirements.');
+assert(hubSource.includes('finalGameBoss: true') && hubSource.includes('dlcStage: true'), 'Meta final boss must be flagged as DLC/meta content outside the OC story.');
+assert(hubSource.includes('insertBeforeMetaStage'), 'Stage injection must keep OC/DLC arcs before the meta final boss.');
+assert(hubSource.includes('stage.finalGameBoss') && !hubSource.includes('stage.id === 38') && !hubSource.includes('id !== 38'), 'Hub logic must use finalGameBoss metadata instead of hard-coded stage id 38.');
+assert(hubSource.includes('storyBeat') && hubSource.includes('Scene OC Nexus'), 'OC campaign stages must expose narrative intro/outro beats.');
+assert(hubSource.includes("label: { fr: 'Campagne OC'"), 'Story tab must be labelled as an OC campaign.');
+assert(hubSource.includes('Separation histoire') && hubSource.includes('visibleDlcStages'), 'Admin diagnostics must separate OC story stages from active DLC stages.');
+assert(gameCanvasSource.includes('stage.finalGameBoss') && !gameCanvasSource.includes('stage.id === 38'), 'GameCanvas must route final combat through finalGameBoss metadata.');
+assert(appSource.includes('activeStage.finalGameBoss') && !appSource.includes('activeStage.id === 38'), 'App rewards must route final bonuses through finalGameBoss metadata.');
+assert(tacticsBattlefieldsSource.includes('stage.finalGameBoss'), 'Tactics battlefields must recognize metadata-based final boss arenas.');
 assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen must receive progression to hide future chapter banners.');
 assert(hubSource.includes("setActiveTab('race')") && hubSource.includes('<RaceMode'), 'Hub must expose the playable Race/Kart tab.');
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');

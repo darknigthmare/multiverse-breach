@@ -276,7 +276,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const getEnemiesData = () => {
-    const sourceUniverse = stage.id === 38 ? 'Matrix' : stage.universe;
+    const sourceUniverse = stage.finalGameBoss ? 'Matrix' : stage.universe;
     const filterEnemyList = (universe, list) => list.filter(enemy => !disabledEnemySet.has(getEnemyAdminKey(universe, enemy)));
     const scaleEnemy = (enemy, isBoss = false) => {
       const modifier = stage.modifier || {};
@@ -323,7 +323,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       };
     }
 
-    if (stage.id === 38) {
+    if (stage.finalGameBoss) {
       // Final Boss Stage
       return {
         monsters: ensureList('Matrix', filterEnemyList('Matrix', getMonstersForUniverse('Matrix'))).map(enemy => scaleEnemy(enemy)),
@@ -584,10 +584,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       engineRef.current = new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
     } else if (stage.mode === 'RPG') {
       engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
-      engineRef.current.isFinalBoss = (stage.id === 38);
+      engineRef.current.isFinalBoss = Boolean(stage.finalGameBoss);
     } else if (stage.mode === 'Tactics') {
       engineRef.current = new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
-      engineRef.current.isFinalBoss = (stage.id === 38);
+      engineRef.current.isFinalBoss = Boolean(stage.finalGameBoss);
     }
     if (!engineRef.current) {
       setCombatRuntimeError(lang === 'fr'

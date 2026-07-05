@@ -16,6 +16,8 @@ import spriteManifest from '../../public/sprites/generated/sprite-manifest.json'
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
 import RaceMode from './RaceMode';
 
+const TAU = Math.PI * 2;
+
 const ARC_UNLOCK_RULES = {
   personalMinLevel: 3,
   universeMinHeroes: 3,
@@ -75,7 +77,7 @@ const getLinkedStagesForArc = (arc, allStages = [], allHeroes = []) => {
   const arcStage = allStages.find(stage => stage.id === arc?.stageId || stage.universeArc?.id === arc?.id || stage.characterArc?.id === arc?.id || stage.trioArc?.id === arc?.id);
   const universes = new Set(getArcUniverses(arc, allHeroes));
   const worldStages = allStages
-    .filter(stage => stage.id !== 38)
+    .filter(stage => !stage.finalGameBoss)
     .filter(stage => !stage.universeArc && !stage.characterArc && !stage.trioArc && !stage.fusionMission)
     .filter(stage => universes.has(stage.universe) || stage.sourceUniverses?.some(source => universes.has(source)))
     .sort((a, b) => a.id - b.id);
@@ -2734,6 +2736,13 @@ function RiftBriefingPanel({
             {launchBrief.map((line, index) => <span key={index}>{line}</span>)}
           </div>
         )}
+        {stage.storyBeat && (
+          <div className="rift-briefing-block">
+            <strong>{lang === 'fr' ? 'Scene OC Nexus' : 'Nexus OC scene'}</strong>
+            <span>{stage.storyBeat.intro?.[lang]}</span>
+            <span>{stage.storyBeat.outro?.[lang]}</span>
+          </div>
+        )}
         <div className="rift-briefing-row">
           <span>{lang === 'fr' ? 'Univers' : 'Universe'}: <strong>{stage.sourceUniverses?.join(' / ') || stage.universe}</strong></span>
           <span>Boss: <strong>{bossIntel?.name || stage.bossName}</strong></span>
@@ -3030,6 +3039,12 @@ export default function HubScreen({
       goldPrize: 45,
       shardPrize: 20,
       bossName: 'Greffier du Voile',
+      unlockClears: 0,
+      storyBeat: {
+        role: 'tutorial_anchor',
+        intro: { fr: 'A.R.C.A. ouvre une faille d entrainement dans l Atrium pour mesurer ta resonance sans exposer les DLC.', en: 'A.R.C.A. opens a training rift in the Atrium to measure your resonance without exposing DLC.' },
+        outro: { fr: 'Le premier verrou tient: ton Ancre peut fermer une breche OC sans emprunter de loi exterieure.', en: 'The first lock holds: your Anchor can close an OC breach without borrowing outside laws.' }
+      },
       baseGameStage: true
     },
     {
@@ -3042,6 +3057,12 @@ export default function HubScreen({
       goldPrize: 55,
       shardPrize: 22,
       bossName: 'Juge des Trames',
+      unlockClears: 0,
+      storyBeat: {
+        role: 'archive_rule',
+        intro: { fr: 'Les archives statiques testent ta capacite a separer preuve, souvenir et bruit du Sans-Auteur.', en: 'The static archives test your ability to separate proof, memory, and Authorless noise.' },
+        outro: { fr: 'Le Juge des Trames valide une premiere regle: l histoire OC reste lisible meme sans franchise active.', en: 'The Thread Judge validates a first rule: the OC story stays readable even with no franchise active.' }
+      },
       baseGameStage: true
     },
     {
@@ -3054,6 +3075,12 @@ export default function HubScreen({
       goldPrize: 70,
       shardPrize: 28,
       bossName: 'Avatar du Sans-Auteur',
+      unlockClears: 2,
+      storyBeat: {
+        role: 'origin_forge',
+        intro: { fr: 'La Fonderie condense les Eclats d Origine pour donner aux agents OC leur propre economie de progression.', en: 'The Foundry condenses Origin Shards to give OC agents their own progression economy.' },
+        outro: { fr: 'Les Eclats cessent d etre du butin brut: ils deviennent une preuve stable du lore Nexus.', en: 'Shards stop being raw loot: they become stable proof of Nexus lore.' }
+      },
       baseGameStage: true
     },
     {
@@ -3066,6 +3093,12 @@ export default function HubScreen({
       goldPrize: 85,
       shardPrize: 32,
       bossName: 'Moteur de Convergence Instable',
+      unlockClears: 3,
+      storyBeat: {
+        role: 'ledger_truth',
+        intro: { fr: 'Le registre noir expose les dettes narratives creees par la Premiere Breche.', en: 'The black ledger exposes the narrative debts created by the First Breach.' },
+        outro: { fr: 'A.R.C.A. recupere assez de donnees pour nommer l ennemi: le Sans-Auteur n est pas une franchise, c est une absence.', en: 'A.R.C.A. recovers enough data to name the enemy: the Authorless is not a franchise, it is an absence.' }
+      },
       baseGameStage: true
     },
     {
@@ -3079,6 +3112,12 @@ export default function HubScreen({
       shardPrize: 40,
       tokenPrize: 1,
       bossName: 'Juge des Trames',
+      unlockClears: 4,
+      storyBeat: {
+        role: 'portal_cleanup',
+        intro: { fr: 'La cour des portails brises isole les routes DLC pour que la campagne OC ne soit plus contaminee.', en: 'The broken portal yard isolates DLC routes so the OC campaign is no longer contaminated.' },
+        outro: { fr: 'Les portails annexes sont catalogues: ils peuvent exister comme DLC sans piloter l histoire principale.', en: 'Side portals are catalogued: they can exist as DLC without driving the main story.' }
+      },
       baseGameStage: true
     },
     {
@@ -3092,6 +3131,12 @@ export default function HubScreen({
       shardPrize: 50,
       tokenPrize: 1,
       bossName: 'Avatar du Sans-Auteur',
+      unlockClears: 5,
+      storyBeat: {
+        role: 'authorless_threshold',
+        intro: { fr: 'Le seuil final force le Sans-Auteur a se montrer dans une scene 100% Nexus.', en: 'The final threshold forces the Authorless to appear in a 100% Nexus scene.' },
+        outro: { fr: 'La campagne OC est scellee: les DLC redeviennent des archives a explorer, pas des fondations obligatoires.', en: 'The OC campaign is sealed: DLC become archives to explore, not required foundations.' }
+      },
       baseGameStage: true
     }
   ];
@@ -3139,7 +3184,7 @@ export default function HubScreen({
     { id: 37, name: 'Fury Road Desert Outpost', universe: 'Mad Max', mode: 'RPG', difficulty: 'Very Hard', goldPrize: 155, shardPrize: 45, bossName: 'The Gigahorse Interceptor Rig' },
     
     // 38th final stage
-    { id: 38, name: 'Final Omniverse Singularity', universe: 'Matrix', mode: 'RPG', difficulty: 'Final World Boss', goldPrize: 500, shardPrize: 150, bossName: 'Breach Singularity Core' }
+    { id: 38, name: 'Final Omniverse Singularity', universe: 'Matrix', mode: 'RPG', difficulty: 'Final World Boss', goldPrize: 500, shardPrize: 150, bossName: 'Breach Singularity Core', metaStage: true, finalGameBoss: true, dlcStage: true }
   ];
   const FUSION_STAGES = FUSION_MISSIONS.map(mission => ({
     id: mission.stageId,
@@ -3206,21 +3251,25 @@ export default function HubScreen({
     rewardItemName: arc.reward,
     trioArc: arc
   }));
-  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...BASE_OC_STAGES);
-  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...getExpandedStages());
-  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...FUSION_STAGES);
-  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...UNIVERSE_ARC_STAGES);
-  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...CHARACTER_STAGES);
-  STAGES.splice(STAGES.findIndex(stage => stage.id === 38), 0, ...TRIO_STAGES);
+  const insertBeforeMetaStage = (entries) => {
+    const index = STAGES.findIndex(stage => stage.finalGameBoss);
+    STAGES.splice(index >= 0 ? index : STAGES.length, 0, ...entries);
+  };
+  insertBeforeMetaStage(BASE_OC_STAGES);
+  insertBeforeMetaStage(getExpandedStages());
+  insertBeforeMetaStage(FUSION_STAGES);
+  insertBeforeMetaStage(UNIVERSE_ARC_STAGES);
+  insertBeforeMetaStage(CHARACTER_STAGES);
+  insertBeforeMetaStage(TRIO_STAGES);
   const isStageVisibleByAdmin = (stage) => {
-    if (stage.id === 38) return true;
     if (stage.sourceUniverses) return stage.sourceUniverses.every(isUniverseVisible);
     return isUniverseVisible(stage.universe);
   };
   const ADMIN_VISIBLE_STAGES = STAGES.filter(stage => isStageVisibleByAdmin(stage) && !isAssetDisabled('stages', getStageAdminKey(stage)));
-  const NORMAL_STAGE_COUNT = ADMIN_VISIBLE_STAGES.filter(stage => stage.id !== 38 && !stage.characterArc).length;
+  const NORMAL_STAGE_COUNT = ADMIN_VISIBLE_STAGES.filter(stage => !stage.finalGameBoss && !stage.characterArc).length;
   const TOTAL_UNIVERSE_COUNT = ALL_UNIVERSE_KEYS.filter(isUniverseVisible).length;
-  const FINAL_STAGE_REQUIRED_CLEARS = Math.max(18, Math.ceil(NORMAL_STAGE_COUNT * 0.45));
+  const OC_STORY_STAGE_COUNT = BASE_OC_STAGES.length;
+  const FINAL_STAGE_REQUIRED_CLEARS = Math.max(0, OC_STORY_STAGE_COUNT - 1);
   const META_RANK_THRESHOLDS = {
     strike: Math.max(8, Math.ceil(NORMAL_STAGE_COUNT * 0.15)),
     veteran: Math.max(16, Math.ceil(NORMAL_STAGE_COUNT * 0.4)),
@@ -3233,50 +3282,50 @@ export default function HubScreen({
       unlockClears: 0,
       name: { fr: 'Chapitre I - Premier verrou', en: 'Chapter I - First Lock' },
       desc: {
-        fr: 'Les premieres breches sont instables mais lisibles. Le reseau cherche des mondes-pivots pour trianguler la Singularity.',
-        en: 'The first breaches are unstable but readable. The network searches for anchor worlds to triangulate the Singularity.'
+        fr: 'Les premieres breches OC sont instables mais lisibles. A.R.C.A. isole les Ancres natives du Nexus avant toute projection DLC.',
+        en: 'The first OC breaches are unstable but readable. A.R.C.A. isolates native Nexus Anchors before any DLC projection.'
       },
-      focus: { fr: 'Ouvrir les paliers Medium et Hard.', en: 'Open Medium and Hard tiers.' }
+      focus: { fr: 'Stabiliser les premiers protocoles Nexus.', en: 'Stabilize the first Nexus protocols.' }
     },
     {
       id: 'faction_war',
-      unlockClears: 6,
+      unlockClears: 2,
       name: { fr: 'Chapitre II - Guerre des signatures', en: 'Chapter II - Signature War' },
       desc: {
-        fr: 'Les univers ne fuient plus seuls: des familles de breches commencent a resonner entre elles.',
-        en: 'Worlds no longer leak alone: families of breaches begin resonating with each other.'
+        fr: 'Les signatures originales apprennent a former une escouade stable sans emprunter de lois de franchise.',
+        en: 'Original signatures learn to form a stable squad without borrowing franchise laws.'
       },
-      focus: { fr: 'Composer des equipes par faction et decrypter les boss locaux.', en: 'Build faction teams and decrypt local bosses.' }
+      focus: { fr: 'Composer l equipe OC de base et decrypter les menaces Nexus.', en: 'Build the base OC team and decrypt Nexus threats.' }
     },
     {
       id: 'deep_archive',
-      unlockClears: 12,
+      unlockClears: 3,
       name: { fr: 'Chapitre III - Archives profondes', en: 'Chapter III - Deep Archives' },
       desc: {
-        fr: 'Les failles anciennes revelent des variantes de films, sagas et lignes temporelles qui se contredisent.',
-        en: 'Older breaches reveal movie variants, sagas, and timelines that contradict each other.'
+        fr: 'Les archives profondes ne citent plus les DLC: elles revelent les causes internes de la Premiere Breche.',
+        en: 'Deep archives no longer cite DLC: they reveal the internal causes of the First Breach.'
       },
-      focus: { fr: 'Finir des collections de franchise pour gagner des caches.', en: 'Complete franchise collections to earn caches.' }
+      focus: { fr: 'Recuperer les preuves OC et consolider les Eclats d Origine.', en: 'Recover OC evidence and consolidate Origin Shards.' }
     },
     {
       id: 'singularity_wake',
-      unlockClears: 20,
+      unlockClears: Math.max(4, OC_STORY_STAGE_COUNT - 2),
       name: { fr: 'Chapitre IV - Eveil de la Singularity', en: 'Chapter IV - Singularity Wake' },
       desc: {
-        fr: 'Le noyau final absorbe les patterns de chasse, d horreur, de magie et de scene musicale.',
-        en: 'The final core absorbs hunt, horror, magic, and music-stage patterns.'
+        fr: 'Le noyau final reagit aux seules donnees OC: Voile, Ancres, Greffiers et Sans-Auteur.',
+        en: 'The final core reacts only to OC data: Veil, Anchors, Scribes, and the Authorless.'
       },
-      focus: { fr: 'Stabiliser assez de breches pour forcer l ouverture finale.', en: 'Stabilize enough breaches to force the final opening.' }
+      focus: { fr: 'Forcer l ouverture finale sans dependance aux stages DLC.', en: 'Force the final opening without DLC stage dependency.' }
     },
     {
       id: 'omniverse_endgame',
       unlockClears: FINAL_STAGE_REQUIRED_CLEARS,
-      name: { fr: 'Chapitre V - Noyau Omniverse', en: 'Chapter V - Omniverse Core' },
+      name: { fr: 'Chapitre V - Seuil du Sans-Auteur', en: 'Chapter V - Authorless Threshold' },
       desc: {
-        fr: 'Les archives convergent: chaque monde stabilise retire une couche de defense au Breach Singularity Core.',
-        en: 'The archives converge: every stabilized world strips a defensive layer from the Breach Singularity Core.'
+        fr: 'La campagne OC converge vers le Seuil du Sans-Auteur. Les DLC restent des archives annexes, pas des prerequis de fin.',
+        en: 'The OC campaign converges on the Authorless Threshold. DLC remain side archives, not endgame requirements.'
       },
-      focus: { fr: 'Optimiser reliques, synergies et objets evenementiels.', en: 'Optimize relics, synergies, and event items.' }
+      focus: { fr: 'Optimiser l escouade OC et verrouiller le Nexus.', en: 'Optimize the OC squad and lock the Nexus.' }
     }
   ];
 
@@ -4107,7 +4156,7 @@ export default function HubScreen({
         : `Fusion sources: ${getFusionSourceClears(stage)}/${sourceNeed} source Threads already stabilized.`;
       return [sourceText, baseText].filter(Boolean).join(' ');
     }
-    if (stage.id === 38) {
+    if (stage.finalGameBoss) {
       return [baseText, lang === 'fr'
         ? 'Final A.R.C.A.: le noyau Sans-Auteur reste masque tant que le reseau de failles principales n est pas assez stabilise.'
         : 'A.R.C.A. finale: the Authorless core stays masked until the main breach network is stabilized enough.'
@@ -4589,7 +4638,8 @@ export default function HubScreen({
     if (stage.trioArc) return stage.trioArc.unlock?.type === 'clears' ? stage.trioArc.unlock.value : 0;
     if (stage.universeArc) return stage.unlockClears || 4;
     if (stage.fusionMission) return stage.unlockClears || 8;
-    if (stage.id === 38) return FINAL_STAGE_REQUIRED_CLEARS;
+    if (stage.finalGameBoss) return FINAL_STAGE_REQUIRED_CLEARS;
+    if (stage.baseGameStage && typeof stage.unlockClears === 'number') return stage.unlockClears;
     if (stage.difficulty === 'Medium') return 2;
     if (stage.difficulty === 'Hard') return 6;
     if (stage.difficulty === 'Very Hard') return 12;
@@ -4764,6 +4814,12 @@ export default function HubScreen({
     };
   };
   const getBreachBrief = (stage) => {
+    if (stage.storyBeat) {
+      const title = stage.displayName?.[lang] || stage.name;
+      return lang === 'fr'
+        ? `${title}: ${stage.storyBeat.intro.fr} Objectif OC: neutraliser ${stage.bossName} et garder la campagne separee des DLC.`
+        : `${title}: ${stage.storyBeat.intro.en} OC objective: neutralize ${stage.bossName} and keep the campaign separate from DLC.`;
+    }
     if (stage.trioArc) {
       const requirementText = getArcUnlockRequirementText(stage);
       return lang === 'fr'
@@ -4819,12 +4875,12 @@ export default function HubScreen({
   const getStageArc = (stage) => NARRATIVE_ARCS.find(arc => arc.universes.includes(stage.universe));
 
   const getLootRarity = (stage) => {
-    const score = completedStages.length + getStageRequiredClears(stage) + (stage.id === 38 ? 12 : 0);
+    const score = completedStages.length + getStageRequiredClears(stage) + (stage.finalGameBoss ? 12 : 0);
     return [...LOOT_RARITIES].reverse().find(rarity => score >= rarity.threshold) || LOOT_RARITIES[0];
   };
 
   const getStageTokenPrize = (stage) => {
-    if (stage.id === 38) return 20;
+    if (stage.finalGameBoss) return 20;
     if (stage.isSurvival) return 3;
     return stage.id % 2 === 0 ? 5 : 0;
   };
@@ -5062,31 +5118,36 @@ export default function HubScreen({
     tactical: { fr: 'Defense / soutien', en: 'Defense / support' }
   };
 
-  const currentChapter = [...STORY_CHAPTERS]
-    .reverse()
-    .find(chapter => completedStages.length >= chapter.unlockClears) || STORY_CHAPTERS[0];
-  const nextChapter = STORY_CHAPTERS.find(chapter => completedStages.length < chapter.unlockClears);
-  const getStoryChapterForStage = (stage) => {
-    if (stage.id === 38) return STORY_CHAPTERS[STORY_CHAPTERS.length - 1];
-    const requiredClears = getStageRequiredClears(stage);
-    return [...STORY_CHAPTERS]
-      .reverse()
-      .find(chapter => requiredClears >= chapter.unlockClears) || STORY_CHAPTERS[0];
-  };
-  const isMainStoryStage = (stage) => (
-    stage.id !== 38
+  const isOcStoryStage = (stage) => (
+    Boolean(stage?.baseGameStage)
+    && stage.universe === 'Nexus de Convergence'
     && !stage.characterArc
     && !stage.trioArc
     && !stage.universeArc
     && !stage.fusionMission
   );
+  const completedOcStoryClears = BASE_OC_STAGES
+    .filter(stage => completedStages.includes(stage.id))
+    .length;
+  const currentChapter = [...STORY_CHAPTERS]
+    .reverse()
+    .find(chapter => completedOcStoryClears >= chapter.unlockClears) || STORY_CHAPTERS[0];
+  const nextChapter = STORY_CHAPTERS.find(chapter => completedOcStoryClears < chapter.unlockClears);
+  const getStoryChapterForStage = (stage) => {
+    if (!isOcStoryStage(stage)) return null;
+    const requiredClears = getStageRequiredClears(stage);
+    return [...STORY_CHAPTERS]
+      .reverse()
+      .find(chapter => requiredClears >= chapter.unlockClears) || STORY_CHAPTERS[0];
+  };
+  const isMainStoryStage = isOcStoryStage;
   const isCurrentStoryChapterStage = (stage) => (
     isMainStoryStage(stage)
-    && getStoryChapterForStage(stage).id === currentChapter.id
+    && getStoryChapterForStage(stage)?.id === currentChapter.id
   );
   const getChapterStageCount = (chapter) => visibleStages.filter(stage => (
     isMainStoryStage(stage)
-    && getStoryChapterForStage(stage).id === chapter.id
+    && getStoryChapterForStage(stage)?.id === chapter.id
   )).length;
   const matchesMediaFilter = (mediaType) => (
     mediaFilter === 'all'
@@ -5209,17 +5270,15 @@ export default function HubScreen({
       : completedStages.length >= META_RANK_THRESHOLDS.strike
         ? 'Strike'
         : 'Initiate';
-  const nextProgressGoal = completedStages.length < 2
-    ? (lang === 'fr' ? 'Stabiliser 2 brèches pour ouvrir le palier Medium.' : 'Stabilize 2 breaches to open Medium tier.')
-    : completedStages.length < 6
-      ? (lang === 'fr' ? 'Atteindre 6 brèches pour débloquer le palier Hard.' : 'Reach 6 breaches to unlock Hard tier.')
-      : completedStages.length < 12
-        ? (lang === 'fr' ? 'Construire une équipe niveau 4+ avant le palier Very Hard.' : 'Build a level 4+ squad before Very Hard tier.')
-        : completedStages.length < 16
-          ? (lang === 'fr' ? 'Ouvrir le palier Expert et renforcer les reliques.' : 'Open the Expert tier and reinforce relics.')
-          : completedStages.length < FINAL_STAGE_REQUIRED_CLEARS
-            ? (lang === 'fr' ? `Stabiliser ${FINAL_STAGE_REQUIRED_CLEARS} brèches pour ouvrir le noyau final.` : `Stabilize ${FINAL_STAGE_REQUIRED_CLEARS} breaches to open the final core.`)
-            : (lang === 'fr' ? 'Noyau final disponible: optimiser les builds et le codex.' : 'Final core available: optimize builds and codex.');
+  const nextProgressGoal = completedOcStoryClears < 2
+    ? (lang === 'fr' ? 'Stabiliser 2 breches OC pour ouvrir le second chapitre Nexus.' : 'Stabilize 2 OC breaches to open the second Nexus chapter.')
+    : completedOcStoryClears < 3
+      ? (lang === 'fr' ? 'Atteindre 3 breches OC pour ouvrir les archives profondes.' : 'Reach 3 OC breaches to open the deep archives.')
+      : completedOcStoryClears < 4
+        ? (lang === 'fr' ? 'Stabiliser la Cour des portails brises pour isoler les DLC.' : 'Stabilize the Broken Portal Yard to isolate DLC.')
+        : completedOcStoryClears < FINAL_STAGE_REQUIRED_CLEARS
+          ? (lang === 'fr' ? `Stabiliser ${FINAL_STAGE_REQUIRED_CLEARS} breches OC pour ouvrir le Seuil du Sans-Auteur.` : `Stabilize ${FINAL_STAGE_REQUIRED_CLEARS} OC breaches to open the Authorless Threshold.`)
+          : (lang === 'fr' ? 'Seuil OC disponible: optimiser l escouade Nexus.' : 'OC threshold available: optimize the Nexus squad.');
 
   const weeklyOperations = [
     {
@@ -5328,7 +5387,7 @@ export default function HubScreen({
   };
 
   const getBossIntel = (stage) => {
-    if (stage.id === 38) return getFinalGameBoss();
+    if (stage.finalGameBoss) return getFinalGameBoss();
     return ENEMIES_DB[stage.universe]?.worldBoss || ENEMIES_DB[stage.universe]?.bosses?.[0];
   };
   const visibleCollectionUniverses = Object.keys(LORE_DB)
@@ -5358,13 +5417,13 @@ export default function HubScreen({
     return 'Web / Manga';
   };
 
-  const finalStageUnlocked = completedStages.length >= getStageRequiredClears({ id: 38 });
+  const finalOcStoryStage = BASE_OC_STAGES[BASE_OC_STAGES.length - 1];
+  const finalOcStoryStageUnlocked = finalOcStoryStage ? isStageUnlocked(finalOcStoryStage) : false;
   const visibleStages = ADMIN_VISIBLE_STAGES.filter(stage => {
-    if (stage.id === 38) return true;
     if (stage.fusionMission && mediaFilter === 'all') return true;
     return matchesMediaFilter(LORE_DB[stage.universe]?.mediaType);
   });
-  const unlockedVisibleStages = visibleStages.filter(stage => stage.id !== 38 && isStageUnlocked(stage));
+  const unlockedVisibleStages = visibleStages.filter(stage => !stage.finalGameBoss && isStageUnlocked(stage));
   const adminDiagnostics = {
     ocHeroes: HEROES_DB.filter(hero => hero.universe === 'Nexus de Convergence').length,
     ocEnemies: [
@@ -5373,13 +5432,15 @@ export default function HubScreen({
       ENEMIES_DB['Nexus de Convergence']?.worldBoss
     ].filter(Boolean).filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey('Nexus de Convergence', enemy))).length,
     ocItems: getBattleItemsForUniverse('Nexus de Convergence').filter(item => !isAssetDisabled('gear', item.id)).length,
-    visibleStages: visibleStages.filter(stage => stage.id !== 38).length,
+    visibleStages: visibleStages.filter(stage => !stage.finalGameBoss).length,
+    storyOcStages: ADMIN_VISIBLE_STAGES.filter(stage => isOcStoryStage(stage)).length,
+    visibleDlcStages: ADMIN_VISIBLE_STAGES.filter(stage => !isOcStoryStage(stage) && !stage.finalGameBoss).length,
     unlockedStages: unlockedVisibleStages.length,
-    lockedStages: visibleStages.filter(stage => stage.id !== 38 && !isStageUnlocked(stage)).length,
+    lockedStages: visibleStages.filter(stage => !stage.finalGameBoss && !isStageUnlocked(stage)).length,
     disabledAssets: (disabledAssets.heroes?.length || 0) + (disabledAssets.enemies?.length || 0) + (disabledAssets.gear?.length || 0) + (disabledAssets.stages?.length || 0),
     modes: ['RPG', 'Tactics', 'Smash'].map(mode => ({
       mode,
-      visible: visibleStages.filter(stage => stage.mode === mode && stage.id !== 38).length,
+      visible: visibleStages.filter(stage => stage.mode === mode && !stage.finalGameBoss).length,
       unlocked: unlockedVisibleStages.filter(stage => stage.mode === mode).length
     })),
     dlcVisible: DLC_UNIVERSE_KEYS.filter(universe => !hiddenUniverseSet.has(universe)).length,
@@ -5516,7 +5577,7 @@ export default function HubScreen({
     setExpandedAdminUniverses(prev => ({ ...prev, [universe]: !prev[universe] }));
     sound.playSfx('click');
   };
-  const finalStage = STAGES.find(stage => stage.id === 38);
+  const finalStage = finalOcStoryStage;
   const isPersonalArcVisibleForRoster = (stage) => {
     return Boolean(stage.characterArc && isStageUnlocked(stage));
   };
@@ -5543,8 +5604,8 @@ export default function HubScreen({
   const factionArcCount = arcProgress.length;
   const missionScreenMeta = {
     story: {
-      label: { fr: 'Mode histoire', en: 'Story mode' },
-      desc: { fr: 'Campagne principale: chapitre actif, carte des failles jouables, missions prioritaires et noyau final.', en: 'Main campaign: active chapter, playable rift map, priority missions, and final core.' },
+      label: { fr: 'Campagne OC', en: 'OC campaign' },
+      desc: { fr: 'Campagne principale du Nexus: uniquement stages OC, chapitre actif et seuil du Sans-Auteur.', en: 'Main Nexus campaign: OC stages only, active chapter, and Authorless threshold.' },
       count: storyMissionCount,
       color: '#39c5bb'
     },
@@ -5580,7 +5641,7 @@ export default function HubScreen({
     }
   };
   const selectedMissionMeta = missionScreenMeta[missionScreen] || missionScreenMeta.story;
-  const missionPool = visibleStages.filter(stage => stage.id !== 38 && missionCategoryFilter(stage) && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
+  const missionPool = visibleStages.filter(stage => !stage.finalGameBoss && missionCategoryFilter(stage) && (missionModeFilter === 'all' || stage.mode === missionModeFilter));
   const isFactionArcScreen = missionScreen === 'factionArcs';
   const activeNarrativeArcs = missionScreen === 'universeArcs'
     ? UNIVERSE_NARRATIVE_ARCS.filter(arc => missionPool.some(stage => stage.universeArc?.id === arc.id) && isNarrativeArcAvailable(arc))
@@ -5798,8 +5859,8 @@ export default function HubScreen({
           kicker: lang === 'fr' ? 'CARTE DES FAILLES / CAMPAGNE' : 'RIFT MAP / CAMPAIGN',
           title: lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals',
           desc: lang === 'fr'
-            ? 'Clique une faille pour afficher son briefing juste sous la carte, ou lance une cible proposee dans la campagne.'
-            : 'Select a rift to show its briefing directly under the map, or launch a proposed campaign target.'
+            ? 'Clique une faille OC pour afficher son briefing. Les DLC restent dans leurs vues annexes et ne debloquent pas la campagne.'
+            : 'Select an OC rift to show its briefing. DLC stay in side views and do not unlock the campaign.'
         };
   const assetToggleStyle = (hidden) => ({
     fontSize: '9px',
@@ -6627,14 +6688,14 @@ export default function HubScreen({
                 {nextChapter && (
                   <div style={{ marginTop: '8px', fontSize: '10px', color: '#8fa5aa' }}>
                     {lang === 'fr'
-                      ? `Prochain chapitre a ${nextChapter.unlockClears} breches stabilisees.`
-                      : `Next chapter at ${nextChapter.unlockClears} stabilized breaches.`}
+                      ? `Prochain chapitre a ${nextChapter.unlockClears} breches OC stabilisees.`
+                      : `Next chapter at ${nextChapter.unlockClears} stabilized OC breaches.`}
                   </div>
                 )}
                 <div className="story-chapter-rail">
                   {STORY_CHAPTERS.map((chapter, index) => {
                     const active = chapter.id === currentChapter.id;
-                    const open = completedStages.length >= chapter.unlockClears;
+                    const open = completedOcStoryClears >= chapter.unlockClears;
                     const chapterStageCount = getChapterStageCount(chapter);
                     return (
                       <div
@@ -7097,37 +7158,37 @@ export default function HubScreen({
                 alignItems: 'center',
                 gap: '12px',
                 flexWrap: 'wrap',
-                background: finalStageUnlocked ? 'rgba(255, 234, 0, 0.08)' : 'rgba(0,0,0,0.28)',
-                border: finalStageUnlocked ? '1px solid rgba(255,234,0,0.45)' : '1px solid #333',
+                background: finalOcStoryStageUnlocked ? 'rgba(57, 197, 187, 0.08)' : 'rgba(0,0,0,0.28)',
+                border: finalOcStoryStageUnlocked ? '1px solid rgba(57,197,187,0.45)' : '1px solid #333',
                 borderRadius: '5px'
               }}>
                 <div>
-                  <div style={{ fontSize: '11px', color: finalStageUnlocked ? '#ffea00' : '#888', marginBottom: '4px' }}>
-                    {lang === 'fr' ? 'ANOMALIE FINALE' : 'FINAL ANOMALY'}
+                  <div style={{ fontSize: '11px', color: finalOcStoryStageUnlocked ? '#39c5bb' : '#888', marginBottom: '4px' }}>
+                    {lang === 'fr' ? 'SEUIL FINAL OC' : 'FINAL OC THRESHOLD'}
                   </div>
-                  <div style={{ fontSize: '15px', fontWeight: 'bold' }}>#{finalStage.id} {finalStage.name}</div>
+                  <div style={{ fontSize: '15px', fontWeight: 'bold' }}>#{finalStage.id} {finalStage.displayName?.[lang] || finalStage.name}</div>
                   <div style={{ fontSize: '11px', color: '#bbb', marginTop: '4px' }}>
-                    {finalStageUnlocked
-                      ? (lang === 'fr' ? 'Noyau Omniverse expose.' : 'Omniverse core exposed.')
-                      : (lang === 'fr' ? `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedStages.length)} brèches à stabiliser avant ouverture.` : `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedStages.length)} breaches to stabilize before opening.`)}
+                    {finalOcStoryStageUnlocked
+                      ? (lang === 'fr' ? 'Le Sans-Auteur est expose sans utiliser de stage DLC.' : 'The Authorless is exposed without using any DLC stage.')
+                      : (lang === 'fr' ? `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedOcStoryClears)} breches OC a stabiliser avant ouverture.` : `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedOcStoryClears)} OC breaches to stabilize before opening.`)}
                   </div>
                 </div>
                 <button
-                  onClick={() => finalStageUnlocked && launchStage(finalStage)}
+                  onClick={() => finalOcStoryStageUnlocked && launchStage(finalStage)}
                   className="btn-retro"
-                  disabled={!finalStageUnlocked}
-                  title={finalStageUnlocked
-                    ? (lang === 'fr' ? 'Lance le boss final de la campagne.' : 'Start the final campaign boss.')
-                    : (lang === 'fr' ? 'Boss final verrouille: stabilise plus de breches.' : 'Final boss locked: stabilize more breaches.')}
+                  disabled={!finalOcStoryStageUnlocked}
+                  title={finalOcStoryStageUnlocked
+                    ? (lang === 'fr' ? 'Lance le seuil final de la campagne OC.' : 'Start the final OC campaign threshold.')
+                    : (lang === 'fr' ? 'Seuil final verrouille: stabilise plus de breches OC.' : 'Final threshold locked: stabilize more OC breaches.')}
                   style={{
                     padding: '8px 16px',
-                    background: finalStageUnlocked ? '#ffea00' : 'rgba(255,255,255,0.04)',
-                    color: finalStageUnlocked ? '#111' : '#777',
+                    background: finalOcStoryStageUnlocked ? '#39c5bb' : 'rgba(255,255,255,0.04)',
+                    color: finalOcStoryStageUnlocked ? '#031312' : '#777',
                     fontSize: '12px',
-                    cursor: finalStageUnlocked ? 'pointer' : 'not-allowed'
+                    cursor: finalOcStoryStageUnlocked ? 'pointer' : 'not-allowed'
                   }}
                 >
-                  {finalStageUnlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
+                  {finalOcStoryStageUnlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
                 </button>
               </div>
             )}
@@ -8671,8 +8732,12 @@ export default function HubScreen({
                 <strong style={{ color: '#e74c3c', fontSize: '20px' }}>{hiddenUniverseCount}</strong>
               </div>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
-                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Missions actives' : 'Active missions'}</div>
-                <strong style={{ color: '#39c5bb', fontSize: '20px' }}>{ADMIN_VISIBLE_STAGES.filter(stage => stage.id !== 38).length}</strong>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Campagne OC' : 'OC campaign'}</div>
+                <strong style={{ color: '#39c5bb', fontSize: '20px' }}>{adminDiagnostics.storyOcStages}</strong>
+              </div>
+              <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Stages DLC actifs' : 'Active DLC stages'}</div>
+                <strong style={{ color: '#ffb15c', fontSize: '20px' }}>{adminDiagnostics.visibleDlcStages}</strong>
               </div>
             </div>
 
@@ -8689,6 +8754,7 @@ export default function HubScreen({
                 <div style={{ display: 'grid', gap: '6px', fontSize: '10px', color: '#d8fffb', lineHeight: 1.35 }}>
                   <span>{lang === 'fr' ? 'Base OC' : 'OC base'}: {adminDiagnostics.ocHeroes} {lang === 'fr' ? 'heros' : 'heroes'} / {adminDiagnostics.ocEnemies} {lang === 'fr' ? 'menaces' : 'threats'} / {adminDiagnostics.ocItems} items.</span>
                   <span>{lang === 'fr' ? 'Missions visibles' : 'Visible missions'}: {adminDiagnostics.unlockedStages}/{adminDiagnostics.visibleStages} {lang === 'fr' ? 'jouables maintenant' : 'playable now'}.</span>
+                  <span>{lang === 'fr' ? 'Separation histoire' : 'Story separation'}: {adminDiagnostics.storyOcStages} OC / {adminDiagnostics.visibleDlcStages} DLC {lang === 'fr' ? 'hors campagne' : 'outside campaign'}.</span>
                   <span>{lang === 'fr' ? 'Verrous actifs' : 'Active locks'}: {adminDiagnostics.lockedStages} {lang === 'fr' ? 'missions demandent progression/roster' : 'missions need progress/roster'}.</span>
                   <span>{lang === 'fr' ? 'Assets desactives' : 'Disabled assets'}: {adminDiagnostics.disabledAssets}.</span>
                 </div>

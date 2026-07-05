@@ -680,7 +680,7 @@ function App() {
         + (smashGradeBonus > 0 ? 8 : 0)
         + (tacticsGradeBonus > 0 ? 8 : 0)
         + (activeStage.isSurvival ? 15 : 0)
-        + (activeStage.id === 38 ? 100 : 0);
+        + (activeStage.finalGameBoss ? 100 : 0);
       setActivityProgress(prev => ({
         ...prev,
         dayKey,

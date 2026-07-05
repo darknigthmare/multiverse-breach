@@ -120,7 +120,7 @@ export const EXPANDED_UNIVERSES = [
       { id: 'karadoc_kaamelott', name: 'Karadoc', cat: 'marine', color: '#8d6e63' }
     ],
     monsters: ['Burgonde Raider', 'Saxon Scout', 'Graal Bureaucrat'],
-    bosses: ['Lancelot Noir', 'Meleagant Whisper'],
+    bosses: ['Roi Burgonde', 'Lancelot Noir', 'Meleagant Whisper'],
     worldBoss: 'Graal Rift',
     gear: [
       ['kaamelott_excalibur', 'Excalibur Spark', 'Etincelle d Excalibur', { atk: 10, def: 4 }],

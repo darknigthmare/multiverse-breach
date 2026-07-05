@@ -296,7 +296,7 @@ export function getTacticsMissionProfile(stage = {}, battlefield = null) {
   const tags = battlefield?.tags || [];
   const hasHazards = tags.includes('hazard') || (battlefield?.tiles || []).some(cell => cell.type === 'hazard');
   const hasPortals = tags.includes('portalSpawn') || (battlefield?.tiles || []).some(cell => cell.type === 'portalSpawn');
-  const bossPressure = tags.includes('bossArena') || stage.worldBoss || stage.id === 38;
+  const bossPressure = tags.includes('bossArena') || stage.worldBoss || stage.finalGameBoss;
   if (stage.forceBaseArena || stage.dlcSuppressedArena || rank <= 0) {
     return {
       tier: 'initiation',
@@ -351,7 +351,7 @@ export function getTacticsBattlefield(stage = {}) {
   ].filter(Boolean).join(' ').toLowerCase();
 
   if (stage.forceBaseArena || stage.dlcSuppressedArena) return TACTICS_BATTLEFIELDS.training_grid;
-  if (stage.id === 38 || stage.worldBoss || /final|world boss|singularity/i.test(stage.difficulty || '')) return TACTICS_BATTLEFIELDS.boss_command_zone;
+  if (stage.finalGameBoss || stage.worldBoss || /final|world boss|singularity/i.test(stage.difficulty || '')) return TACTICS_BATTLEFIELDS.boss_command_zone;
   if (textIncludes(text, ['overload', 'surcharge', 'timer', 'core'])) return TACTICS_BATTLEFIELDS.boss_overload_zone;
   if (textIncludes(text, ['escort', 'convoi', 'civilian', 'nexus agent'])) return TACTICS_BATTLEFIELDS.nexus_escort_route;
   if (textIncludes(text, ['portal', 'rift', 'breach', 'faille'])) return TACTICS_BATTLEFIELDS.portal_lockdown;
