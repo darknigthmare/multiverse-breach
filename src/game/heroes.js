@@ -2059,6 +2059,30 @@ const heroOverrides = {
     defense: { name: 'Nebuchadnezzar Command', type: 'shield', dur: 2.1, reduce: 0.78 },
     special: { name: 'There Is No Spoon', type: 'mind_aoe', dmg: 4.5, color: '#39ff6e' }
   },
+  buckethead_avatar: {
+    weaponType: 'guitar',
+    weaponColor: '#f5f5f5',
+    simple: { name: 'Silent Shred Line', type: 'sound', dmg: 1.05 },
+    secondary: { name: 'Bucketheadland Maze Riff', type: 'hack', cd: 6, dmg: 1.6 },
+    defense: { name: 'White Mask Stillness', type: 'dodge', dur: 2.0, reduce: 0.82 },
+    special: { name: 'Soothsayer Resonance Gate', type: 'music_aoe', dmg: 4.8, color: '#f5f5f5' }
+  },
+  death_cube_k_echo: {
+    weaponType: 'drone',
+    weaponColor: '#1a1a1a',
+    simple: { name: 'Dark Ambient Pulse', type: 'darkness', dmg: 0.95 },
+    secondary: { name: 'Death Cube Slow Room', type: 'fear', cd: 7, dmg: 1.45 },
+    defense: { name: 'Drone Corridor Veil', type: 'shield', dur: 2.2, reduce: 0.8 },
+    special: { name: 'Inverted Mask Lament', type: 'dark_aoe', dmg: 4.3, color: '#9d9d9d' }
+  },
+  pike_riff_signal: {
+    weaponType: 'guitar',
+    weaponColor: '#d9d9d9',
+    simple: { name: 'Pike Pick Slash', type: 'melee', dmg: 1.1 },
+    secondary: { name: 'Motif Shift Solo', type: 'sound', cd: 6, dmg: 1.75 },
+    defense: { name: 'Riff Route Step', type: 'dodge', dur: 1.8, reduce: 0.76 },
+    special: { name: 'Pike Archive Cascade', type: 'music_aoe', dmg: 4.55, color: '#f5f5f5' }
+  },
   jill: {
     weaponType: 'gun',
     weaponColor: '#1b1f2a',

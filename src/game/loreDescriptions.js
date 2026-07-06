@@ -112,6 +112,13 @@ const CORE_UNIVERSE_SIGNATURES = {
     bossName: 'Agent Smith Clone',
     worldBoss: 'Deus Ex Machina Source Core'
   },
+  Buckethead: {
+    faction: 'cyber',
+    theme: 'Bucketheadland, masque blanc, bucket, guitare instrumentale, Pike Series, Death Cube K, riffs labyrinthiques et silence de scene',
+    stageName: 'Bucketheadland Guitar Labyrinth',
+    bossName: 'Giant Robot Riff Engine',
+    worldBoss: 'Bucketheadland Automaton'
+  },
   Stargate: {
     faction: 'sciFi',
     theme: 'SGC, Cheyenne Mountain, reseau de Portes, Abydos, Goa uld, Jaffa libres, naquadah, Anciens, Replicateurs et iris',

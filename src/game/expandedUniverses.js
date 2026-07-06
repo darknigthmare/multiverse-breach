@@ -2011,7 +2011,31 @@ export const EXPANDED_UNIVERSES = [
     { key: 're_animator', universe: 'Re-Animator', mediaType: 'movie', faction: 'horror', mode: 'RPG', difficulty: 'Hard', titleFr: 'Re-Animator', stage: 'Miskatonic Reagent Lab', boss: 'Reanimated Biomass Surge', hero: ['herbert_west', 'Herbert West', 'hacker'], allies: [['dan_cain', 'Dan Cain', 'tactical'], ['megan_halsey', 'Megan Halsey', 'horror']], theme: 'mad science, green reagent, medical horror, and corpses returning very incorrectly', motif: 'facility', colors: ['#142218', '#030503', '#61ff59'] },
     { key: 'digimon_celestial', universe: 'Digimon Celestial Rift', mediaType: 'manga', faction: 'arcane', mode: 'Tactics', difficulty: 'Very Hard', titleFr: 'Digimon - Faille celeste', stage: 'Digital World Angel Demon Gate', boss: 'Beelzemon Blast Mode Rupture', hero: ['angewomon_digi', 'Angewomon', 'hacker'], allies: [['lady_devimon_digi', 'LadyDevimon', 'horror'], ['beelzemon_digi', 'Beelzemon', 'slayer'], ['darcmon_digi', 'Darcmon', 'tactical']], theme: 'angel and demon Digimon, digital crests, holy arrows, and dark evolution conflicts', motif: 'castle', colors: ['#1b1835', '#030307', '#e8d7ff'] },
     { key: 'aural_vampire', universe: 'Aural Vampire', mediaType: 'music', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Aural Vampire', stage: 'Darkwave Vampire Club', boss: 'Bloodbeat Synth Countess', hero: ['aural_vampire_avatar', 'Aural Vampire Avatar', 'horror'], allies: [['darkwave_dj_av', 'Darkwave DJ', 'hacker'], ['bloodbeat_dancer', 'Bloodbeat Dancer', 'slayer']], theme: 'darkwave club energy, vampire aesthetics, synth beats, and gothic electronic pressure', motif: 'hauntedset', colors: ['#220d18', '#040102', '#ff3d8f'] },
-    { key: 'buckhead', universe: 'Buckhead', mediaType: 'music', faction: 'cyber', mode: 'RPG', difficulty: 'Medium', titleFr: 'Buckhead', stage: 'Masked Guitar Labyrinth', boss: 'Bucket Riff Automaton', hero: ['buckhead_avatar', 'Buckhead Avatar', 'hacker'], allies: [['bucket_guitar_echo', 'Bucket Guitar Echo', 'slayer'], ['white_mask_signal', 'White Mask Signal', 'tactical']], theme: 'masked guitar virtuosity, surreal instrumental worlds, shred mazes, and silent stage personas', motif: 'facility', colors: ['#181818', '#030303', '#f5f5f5'] },
+    {
+      key: 'buckethead',
+      universe: 'Buckethead',
+      mediaType: 'music',
+      faction: 'cyber',
+      mode: 'RPG',
+      difficulty: 'Medium',
+      titleFr: 'Buckethead',
+      stage: 'Bucketheadland Guitar Labyrinth',
+      boss: 'Bucketheadland Automaton',
+      hero: ['buckethead_avatar', 'Buckethead Persona', 'hacker'],
+      allies: [['death_cube_k_echo', 'Death Cube K Echo', 'horror'], ['pike_riff_signal', 'Pike Riff Signal', 'slayer']],
+      theme: 'masked guitar virtuosity, Bucketheadland surrealism, pike albums, silent stage personas, arcade-horror riffs, and instrumental labyrinths',
+      motif: 'facility',
+      colors: ['#181818', '#030303', '#f5f5f5'],
+      monsters: ['Bucketheadland Toy Drone', 'Animatronic Riff Guard', 'White Mask Static'],
+      bosses: ['Giant Robot Riff Engine', 'Death Cube K Shadow'],
+      worldBoss: 'Bucketheadland Automaton',
+      gear: [
+        ['buckethead_white_mask', 'White Mask Resonator', 'Resonateur masque blanc', { def: 7, spd: 1 }],
+        ['buckethead_bucket_crown', 'Bucket Crown Antenna', 'Antenne couronne-bucket', { hp: 60, atk: 5 }],
+        ['buckethead_pike_pick', 'Pike Series Guitar Pick', 'Mediator serie Pike', { atk: 10 }]
+      ],
+      event: ['evt_buckethead_shred', 'Bucketheadland Shred Gate', 'Portail shred Bucketheadland', 'A silent guitar labyrinth opens, shredding hostile code and boosting squad tempo.', 'Un labyrinthe de guitare silencieux s ouvre, lacere le code hostile et accelere le tempo de l escouade.']
+    },
     { key: 'korn', universe: 'Korn', mediaType: 'music', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Korn', stage: 'Nu-Metal Field Pit', boss: 'Freak on a Leash Core', hero: ['korn_avatar', 'Korn Avatar', 'horror'], allies: [['seven_string_riff', 'Seven String Riff', 'slayer'], ['bagpipe_signal', 'Bagpipe Signal', 'hacker']], theme: 'nu-metal dread, detuned riffs, cathartic screams, and mosh-pit emotional pressure', motif: 'hauntedset', colors: ['#181214', '#030202', '#b0b0b0'] },
     { key: 'marilyn_manson', universe: 'Marilyn Manson', mediaType: 'music', faction: 'horror', mode: 'RPG', difficulty: 'Very Hard', titleFr: 'Marilyn Manson', stage: 'Mechanical Animals Chapel', boss: 'Antichrist Superstar Effigy', hero: ['manson_avatar', 'Shock Rock Avatar', 'horror'], allies: [['mechanical_animal', 'Mechanical Animal', 'tactical'], ['pale_emperor_echo', 'Pale Emperor Echo', 'hacker']], theme: 'shock rock theatre, industrial glam, occult imagery, and corrupted celebrity rituals', motif: 'hauntedset', colors: ['#1f1111', '#030202', '#d9d9d9'] }
   ])
