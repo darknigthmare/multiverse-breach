@@ -118,15 +118,18 @@ export const ENEMIES_DB = {
   },
   'The Matrix': {
     monsters: [
-      { name: 'System Security SWAT', hp: 80, atk: 9, spd: 5, color: '#2b2b2b', weapon: 'gun' },
-      { name: 'Rogue Exiles Cyber-Program', hp: 85, atk: 11, spd: 6, color: '#27ae60', weapon: 'blade' },
-      { name: 'Sentinel Squid Drone', hp: 95, atk: 12, spd: 6, color: '#7f8c8d', weapon: 'laser' }
+      { name: 'Matrix Security SWAT Program', hp: 80, atk: 9, spd: 5, color: '#2b2b2b', weapon: 'system_rifle' },
+      { name: 'Agent Possessed Host', hp: 105, atk: 13, spd: 7, color: '#1f2b1f', weapon: 'agent_pistol' },
+      { name: 'Rogue Exile Cyber-Program', hp: 90, atk: 11, spd: 6, color: '#27ae60', weapon: 'code_blade' },
+      { name: 'Sentinel Squid Drone', hp: 100, atk: 12, spd: 6, color: '#7f8c8d', weapon: 'machine_laser' },
+      { name: 'Merovingian Twin Ghost', hp: 85, atk: 12, spd: 8, color: '#dfe6e9', weapon: 'phase_knife' }
     ],
     bosses: [
-      { name: 'Agent Smith Clone', hp: 580, atk: 21, spd: 7, color: '#1a1d24', weapon: 'gun', special: 'System Rewrite Punch' },
-      { name: 'Agent Jones Squad', hp: 480, atk: 17, spd: 7, color: '#2b2c30', weapon: 'gun', special: 'Perfect Dodge Protocol' }
+      { name: 'Agent Smith Clone', hp: 620, atk: 22, spd: 8, color: '#1a1d24', weapon: 'system_rewrite', special: 'Viral Replication Punch' },
+      { name: 'Agent Jones Squad', hp: 500, atk: 18, spd: 7, color: '#2b2c30', weapon: 'agent_pistol', special: 'Perfect Dodge Protocol' },
+      { name: 'Merovingian Exile Court', hp: 540, atk: 19, spd: 6, color: '#243323', weapon: 'causality_code', special: 'Choice Denial Loop' }
     ],
-    worldBoss: { name: 'Deus Ex Machina Core', hp: 1420, atk: 34, spd: 3, color: '#09080d', weapon: 'laser', special: 'Omniverse Glitch Beam' }
+    worldBoss: { name: 'Deus Ex Machina Source Core', hp: 1480, atk: 34, spd: 4, color: '#09080d', weapon: 'machine_swarm', special: 'Source Reset Pulse' }
   },
   'Stargate': {
     monsters: [

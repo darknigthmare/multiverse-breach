@@ -845,9 +845,39 @@ export const EQUIP_ITEMS_DB = [
     cost: 110
   },
   // The Matrix
-  { id: 'sunglasses', universe: 'The Matrix', name: { en: 'Mirrored Sunglasses', fr: 'Lunettes Noires Miroir' }, boost: { def: 7, spd: 2 }, cost: 100 },
-  { id: 'matrix_code', universe: 'The Matrix', name: { en: 'Digital Matrix Code', fr: 'Code Vert du Matrix' }, boost: { atk: 12 }, cost: 120 },
-  { id: 'leather_coat', universe: 'The Matrix', name: { en: 'Reinforced Trenchcoat', fr: 'Trenchcoat en Cuir' }, boost: { hp: 70, def: 5 }, cost: 110 },
+  {
+    id: 'sunglasses',
+    universe: 'The Matrix',
+    name: { en: 'Operator Mirrored Sunglasses', fr: 'Lunettes miroir operateur' },
+    desc: {
+      fr: 'Signature visuelle des esprits libres et des Agents. A.R.C.A. l utilise comme filtre de lecture: voir le code sans oublier la personne derriere l avatar.',
+      en: 'Visual signature of free minds and Agents. A.R.C.A. uses it as a reading filter: see the code without forgetting the person behind the avatar.'
+    },
+    boost: { def: 7, spd: 2 },
+    cost: 100
+  },
+  {
+    id: 'matrix_code',
+    universe: 'The Matrix',
+    name: { en: 'Falling Green Code Thread', fr: 'Fil de code vert tombant' },
+    desc: {
+      fr: 'Fragment lisible de la simulation. Il ne donne pas seulement des degats: il permet de comprendre quand une regle locale ment pour maintenir une prison.',
+      en: 'Readable fragment of the simulation. It does not only grant damage: it helps understand when a local rule lies to maintain a prison.'
+    },
+    boost: { atk: 12 },
+    cost: 120
+  },
+  {
+    id: 'leather_coat',
+    universe: 'The Matrix',
+    name: { en: 'Nebuchadnezzar Reinforced Coat', fr: 'Manteau renforce Nebuchadnezzar' },
+    desc: {
+      fr: 'Manteau de combat charge dans la Matrice par un operateur de Zion. Il protege l avatar assez longtemps pour atteindre un telephone de sortie.',
+      en: 'Combat coat loaded into the Matrix by a Zion operator. It protects the avatar long enough to reach an exit phone.'
+    },
+    boost: { hp: 70, def: 5 },
+    cost: 110
+  },
   // Stargate
   {
     id: 'gdo_key',
@@ -1087,8 +1117,11 @@ export const EVENT_ITEMS_DB = {
   },
   'The Matrix': {
     id: 'evt_matrix_glitch',
-    name: { en: 'Operator Code Hack', fr: 'Piratage de l\'Opérateur' },
-    desc: { en: 'Hacks reality: freezes all enemies in place for 4 seconds.', fr: 'Pirate le code : gèle tous les ennemis sur place pendant 4 secondes.' },
+    name: { en: 'Zion Operator Code Hack', fr: 'Piratage operateur Zion' },
+    desc: {
+      en: 'A Zion operator injects a clean override into the simulation. Agents lose timing, exile programs desync, and the squad receives a short exit-phone window instead of a non-lore stun.',
+      fr: 'Un operateur de Zion injecte une surcharge propre dans la simulation. Les Agents perdent leur timing, les programmes exiles se desynchronisent et l escouade recoit une courte fenetre de telephone de sortie.'
+    },
     effect: 'freeze_matrix'
   },
   'Stargate': {
@@ -2003,6 +2036,28 @@ const heroOverrides = {
     secondary: { name: 'Door Lockout Trap', type: 'trap', cd: 6, dmg: 1.45 },
     defense: { name: 'SORT System Bypass', type: 'shield', dur: 1.8, reduce: 0.76 },
     special: { name: 'Third Energy Shutdown', type: 'hack_aoe', dmg: 4.25, color: '#e74c3c' }
+  },
+  neo: {
+    simple: { name: 'Loaded Kung Fu Strike', type: 'melee', dmg: 1.15 },
+    secondary: { name: 'Bullet Time Counter', type: 'dodge_strike', cd: 6, dmg: 1.8 },
+    defense: { name: 'Stop Bullets', type: 'shield', dur: 2.2, reduce: 0.9 },
+    special: { name: 'Source Code Rewrite', type: 'glitch_aoe', dmg: 5.2, color: '#39ff6e' }
+  },
+  trinity: {
+    weaponType: 'gun',
+    weaponColor: '#050505',
+    simple: { name: 'Dual Pistol Entry', type: 'bullet', dmg: 1.0 },
+    secondary: { name: 'Lobby Wall Run', type: 'melee', cd: 6, dmg: 1.7 },
+    defense: { name: 'Exit Phone Route', type: 'dodge', dur: 2.0, reduce: 0.82 },
+    special: { name: 'Motorcycle Extraction', type: 'support_aoe', dmg: 4.4, color: '#2c3e50' }
+  },
+  morpheus: {
+    weaponType: 'katana',
+    weaponColor: '#34495e',
+    simple: { name: 'Dojo Loaded Strike', type: 'melee', dmg: 1.05 },
+    secondary: { name: 'Red Pill Break', type: 'hack', cd: 6, dmg: 1.55 },
+    defense: { name: 'Nebuchadnezzar Command', type: 'shield', dur: 2.1, reduce: 0.78 },
+    special: { name: 'There Is No Spoon', type: 'mind_aoe', dmg: 4.5, color: '#39ff6e' }
   },
   jill: {
     weaponType: 'gun',

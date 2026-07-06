@@ -107,9 +107,10 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   'The Matrix': {
     faction: 'cyber',
-    theme: 'simulation verte, agents, choix impossible, bullet time et code qui ment pour maintenir une prison',
-    stageName: 'Matrice racine',
-    bossName: 'Agent Racine'
+    theme: 'simulation verte, Zion, Nebuchadnezzar, pilule rouge, Agents, Sentinels, programmes exiles, Source, bullet time et choix contre controle',
+    stageName: 'Matrice Source',
+    bossName: 'Agent Smith Clone',
+    worldBoss: 'Deus Ex Machina Source Core'
   },
   Stargate: {
     faction: 'sciFi',

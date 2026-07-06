@@ -222,8 +222,8 @@ export const LORE_DB = {
     mediaType: 'movie',
     title: { en: 'The Matrix', fr: 'The Matrix' },
     desc: {
-      en: 'A virtual reality dreamworld built by machines to enslave the human race.',
-      fr: 'Une réalité virtuelle construite par les machines pour asservir l\'humanité.'
+      en: 'A cyberpunk universe where humanity is imprisoned inside a machine-made simulation while Zion resists underground, operators jack free minds into the Matrix, Agents enforce control, rogue programs exploit causality, and the Source turns prophecy, choice, and rebellion into system-level conflict.',
+      fr: 'Un univers cyberpunk ou l humanite est enfermee dans une simulation creee par les Machines pendant que Zion resiste sous terre, les operateurs connectent les esprits libres, les Agents maintiennent le controle, les programmes exiles manipulent la causalite et la Source transforme prophetie, choix et rebellion en conflit systeme.'
     }
   },
   'Stargate': {
