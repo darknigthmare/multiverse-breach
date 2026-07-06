@@ -126,6 +126,13 @@ const CORE_UNIVERSE_SIGNATURES = {
     bossName: 'Chop Suey Pulse',
     worldBoss: 'Toxicity Riot Core'
   },
+  Kaamelott: {
+    faction: 'arcane',
+    theme: 'Royaume de Logres, Table Ronde, quete du Graal, Excalibur, Bretagne, Perceval, Karadoc, Lancelot Noir, Meleagant et conseils qui derapent',
+    stageName: 'Kaamelott Table Ronde',
+    bossName: 'Lancelot Noir',
+    worldBoss: 'Graal Rift'
+  },
   Stargate: {
     faction: 'sciFi',
     theme: 'SGC, Cheyenne Mountain, reseau de Portes, Abydos, Goa uld, Jaffa libres, naquadah, Anciens, Replicateurs et iris',
