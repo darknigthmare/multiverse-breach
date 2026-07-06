@@ -807,7 +807,7 @@ export const OPENAI_BACKDROPS = {
     'Predator: Killer of Killers': '/backgrounds/yu-gi-oh-tactics-openai.png',
     'Alien vs Predator': '/backgrounds/resident-evil-tactics-openai.png',
     Noob: '/backgrounds/digimon-tactics-openai.png',
-    'System of a Down': '/backgrounds/yu-gi-oh-tactics-openai.png',
+    'System of a Down': '/backgrounds/metal-gear-tactics-openai.png',
     'Daft Punk': '/backgrounds/matrix-tactics-openai.png'
   },
   Smash: {

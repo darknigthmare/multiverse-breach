@@ -295,6 +295,57 @@ export const CHARACTER_PLAQUES = {
     doctrine: { fr: 'Mediator Pike, shred directionnel, changement de motif, frappe melodique.', en: 'Pike pick, directional shred, motif shift, melodic strike.' },
     tags: ['Buckethead', 'Pike Series', 'Riff', 'Shred', 'Signal']
   },
+  soad_vocal: {
+    clearance: 'MUS-SOAD01',
+    rank: { fr: 'Persona vocale frontline', en: 'Frontline vocal persona' },
+    role: { fr: 'Rupture de tempo, satire et cri de protestation', en: 'Tempo rupture, satire, and protest scream' },
+    callSign: 'Frontline Voice',
+    origin: { fr: 'Univers System of a Down - alt-metal politique / Toxicity / memoire armenienne-americaine', en: 'System of a Down universe - political alt-metal / Toxicity / Armenian-American memory' },
+    dossier: {
+      fr: 'Dans sa Trame d origine, System of a Down est une signature alternative-metal construite sur contrastes vocaux, riffs syncopes, ruptures soudaines, humour absurde, critique politique, memoire armenienne-americaine et refus de transformer la colere en simple posture. La Persona Frontline Voice condense l axe vocal du groupe: passer du murmure au cri, du chant presque rituel a la satire mordante, puis casser le tempo au moment ou l auditeur croit avoir compris la mesure.',
+      en: 'In its origin Thread, System of a Down is an alternative-metal signature built on vocal contrasts, syncopated riffs, sudden breaks, absurd humor, political critique, Armenian-American memory, and refusal to turn anger into mere posture. The Frontline Voice Persona condenses the band vocal axis: moving from whisper to scream, from almost ritual singing to biting satire, then breaking tempo exactly when the listener thinks the measure is understood.'
+    },
+    breachLore: {
+      fr: 'Dans Multiverse Breach, A.R.C.A. stabilise System of a Down comme Trame de protestation rythmique, pas comme copie de personnes civiles. Frontline Voice sert a casser les diffusions du Sans-Auteur: slogans vides, ordres militaires, publicites de controle, faux refrains de victoire. Sa force est d utiliser la dissonance comme verite: quand une faille ment trop proprement, il introduit une cassure assez brutale pour rendre le mensonge audible.',
+      en: 'In Multiverse Breach, A.R.C.A. stabilizes System of a Down as a rhythmic protest Thread, not as copies of private people. Frontline Voice breaks Authorless broadcasts: empty slogans, military orders, control advertisements, false victory choruses. Its strength is using dissonance as truth: when a breach lies too cleanly, it introduces a break brutal enough to make the lie audible.'
+    },
+    doctrine: { fr: 'Cri syncopé, satire sonore, cassure Toxicity, interruption de propagande.', en: 'Syncopated scream, sonic satire, Toxicity break, propaganda interrupt.' },
+    tags: ['System of a Down', 'Toxicity', 'Protest', 'Voice', 'Tempo']
+  },
+  soad_guitar: {
+    clearance: 'MUS-SOAD02',
+    rank: { fr: 'Persona guitare staccato', en: 'Staccato guitar persona' },
+    role: { fr: 'Riff syncopé et assaut de cassure', en: 'Syncopated riff and break assault' },
+    callSign: 'Staccato Guitar',
+    origin: { fr: 'Univers System of a Down - riffs syncopes / metal alternatif / rupture', en: 'System of a Down universe - syncopated riffs / alternative metal / rupture' },
+    dossier: {
+      fr: 'La Persona Staccato Guitar represente le cote sec, angulaire et imprevisible de System of a Down: riffs courts, changements de mesure, attaques presque punk, passages orientalisants, lourdeur metal puis bascule absurde ou melodique. Son monde d origine ne cherche pas une ligne droite; il fonctionne par virages, silences soudains et relances qui transforment chaque riff en ordre de mouvement.',
+      en: 'The Staccato Guitar Persona represents System of a Down dry, angular, unpredictable side: short riffs, meter changes, almost punk attacks, Eastern-tinged passages, metal heaviness, then absurd or melodic turns. Its origin world does not seek a straight line; it works through turns, sudden silences, and restarts that turn each riff into a movement order.'
+    },
+    breachLore: {
+      fr: 'Dans Multiverse Breach, Staccato Guitar sert de lame rythmique. Quand les ennemis avancent en formation trop stable, il coupe la grille en contretemps, force les menaces a perdre leur cadence et ouvre des angles d attaque. Le Sans-Auteur veut lisser la musique pour en faire un fond sonore; cette Persona rappelle qu un riff SOAD doit surprendre, deranger et deplacer le corps avant meme que le sens arrive.',
+      en: 'In Multiverse Breach, Staccato Guitar acts as a rhythmic blade. When enemies advance in overly stable formation, it cuts the grid off-beat, forces threats to lose cadence, and opens attack angles. The Authorless wants to smooth the music into background sound; this Persona reminds that a SOAD riff must surprise, disturb, and move the body before meaning even arrives.'
+    },
+    doctrine: { fr: 'Riff staccato, coupure de mesure, assaut syncopé, relance metal.', en: 'Staccato riff, measure cut, syncopated assault, metal restart.' },
+    tags: ['System of a Down', 'Guitar', 'Syncopation', 'Riff', 'Break']
+  },
+  soad_bass: {
+    clearance: 'MUS-SOAD03',
+    rank: { fr: 'Persona basse groove', en: 'Groove bass persona' },
+    role: { fr: 'Ancrage, tension et ligne tactique', en: 'Anchor, tension, and tactical line' },
+    callSign: 'Groove Bass',
+    origin: { fr: 'Univers System of a Down - groove lourd / protest stage / basse tactique', en: 'System of a Down universe - heavy groove / protest stage / tactical bass' },
+    dossier: {
+      fr: 'La Persona Groove Bass porte l ancrage corporel de System of a Down: lignes qui collent au riff, tension qui soutient les ruptures, energie de scene et poids collectif sous les voix et guitares. Elle represente le moment ou la protestation devient marche, ou une cassure de tempo ne disperse pas le groupe mais le rassemble dans une pulsation plus lourde.',
+      en: 'The Groove Bass Persona carries System of a Down bodily anchor: lines locked to the riff, tension supporting breaks, stage energy, and collective weight beneath voices and guitars. It represents the moment protest becomes march, where a tempo break does not scatter the group but gathers it into a heavier pulse.'
+    },
+    breachLore: {
+      fr: 'Dans Multiverse Breach, Groove Bass sert a tenir le terrain quand la Trame SOAD devient trop chaotique. A.R.C.A. l utilise pour transformer la protestation en formation tactique: proteger les allies pendant une cassure, attirer les ennemis dans une pulsation basse, puis stabiliser l escouade apres un changement brutal de mesure. Sans lui, la colere devient bruit; avec lui, elle devient ligne de front.',
+      en: 'In Multiverse Breach, Groove Bass holds the field when the SOAD Thread becomes too chaotic. A.R.C.A. uses it to turn protest into tactical formation: protect allies during a break, pull enemies into a low pulse, then stabilize the squad after a brutal meter shift. Without it, anger becomes noise; with it, it becomes a frontline.'
+    },
+    doctrine: { fr: 'Ligne basse lourde, ancrage de tempo, garde de protestation, pulsation tactique.', en: 'Heavy bass line, tempo anchor, protest guard, tactical pulse.' },
+    tags: ['System of a Down', 'Bass', 'Groove', 'Anchor', 'Protest']
+  },
   oneill: {
     clearance: 'SGC-01',
     rank: { fr: 'Colonel USAF / commandant SG-1', en: 'USAF Colonel / SG-1 commander' },

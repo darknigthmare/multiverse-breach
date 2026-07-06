@@ -2083,6 +2083,30 @@ const heroOverrides = {
     defense: { name: 'Riff Route Step', type: 'dodge', dur: 1.8, reduce: 0.76 },
     special: { name: 'Pike Archive Cascade', type: 'music_aoe', dmg: 4.55, color: '#f5f5f5' }
   },
+  soad_vocal: {
+    weaponType: 'voice',
+    weaponColor: '#b03a2e',
+    simple: { name: 'Frontline Protest Cry', type: 'sound', dmg: 1.0 },
+    secondary: { name: 'Chop Suey Tempo Cut', type: 'fear', cd: 6, dmg: 1.65 },
+    defense: { name: 'Aerials Breath Shift', type: 'shield', dur: 2.0, reduce: 0.78 },
+    special: { name: 'Toxicity Broadcast Break', type: 'music_aoe', dmg: 4.7, color: '#f1c40f' }
+  },
+  soad_guitar: {
+    weaponType: 'guitar',
+    weaponColor: '#1c2833',
+    simple: { name: 'Staccato Riff Strike', type: 'melee', dmg: 1.1 },
+    secondary: { name: 'Prison Song Siren Cut', type: 'sound', cd: 6, dmg: 1.8 },
+    defense: { name: 'Measure Skip Dodge', type: 'dodge', dur: 1.8, reduce: 0.78 },
+    special: { name: 'Syncopated Riot Wall', type: 'music_aoe', dmg: 4.55, color: '#1c2833' }
+  },
+  soad_bass: {
+    weaponType: 'bass',
+    weaponColor: '#7d6608',
+    simple: { name: 'Groove Anchor Hit', type: 'melee', dmg: 1.0 },
+    secondary: { name: 'Low Pulse Snare', type: 'trap', cd: 7, dmg: 1.5 },
+    defense: { name: 'Protest Line Guard', type: 'shield', dur: 2.2, reduce: 0.82 },
+    special: { name: 'Bassline Crowd Stabilizer', type: 'support_aoe', dmg: 4.25, color: '#7d6608' }
+  },
   jill: {
     weaponType: 'gun',
     weaponColor: '#1b1f2a',

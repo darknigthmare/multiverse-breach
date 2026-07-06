@@ -119,6 +119,13 @@ const CORE_UNIVERSE_SIGNATURES = {
     bossName: 'Giant Robot Riff Engine',
     worldBoss: 'Bucketheadland Automaton'
   },
+  'System of a Down': {
+    faction: 'horror',
+    theme: 'Toxicity, Chop Suey, Prison Song, Aerials, protestation anti-guerre, satire absurde, memoire armenienne-americaine, voix contrastees et riffs syncopes',
+    stageName: 'Toxicity Protest Stage',
+    bossName: 'Chop Suey Pulse',
+    worldBoss: 'Toxicity Riot Core'
+  },
   Stargate: {
     faction: 'sciFi',
     theme: 'SGC, Cheyenne Mountain, reseau de Portes, Abydos, Goa uld, Jaffa libres, naquadah, Anciens, Replicateurs et iris',

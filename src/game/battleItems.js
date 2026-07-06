@@ -126,6 +126,15 @@ const BATTLE_ITEM_OVERRIDES = {
     summon: ['Echo Death Cube K', 'Death Cube K Echo', 'Invocation temporaire: une nappe ambient sombre ralentit les ennemis, revele les couloirs caches et transforme la peur sonore en fenetre de repli.'],
     ultimate: ['Portail Bucketheadland', 'Bucketheadland Gate', 'Attaque ultime: le parc instrumental ouvre un labyrinthe de riffs, les automates hostiles sont dechires par le shred et l escouade suit une sortie tracee par la guitare.']
   },
+  'System of a Down': {
+    pickups: [
+      ['Mediator rupture tempo', 'Tempo Break Pick', 'Fragment de riff syncopé: en melee il coupe une charge ennemie, en tactique il augmente le cout de deplacement des cibles prises dans la cassure.'],
+      ['Banniere anti-guerre', 'Anti-War Protest Banner', 'Ancre de protestation: protege une zone, resiste aux diffusions de controle et transforme la colere en garde collective.'],
+      ['Ampli Toxicity', 'Toxicity Feedback Amp', 'Ampli de feedback instable: renvoie les ordres ennemis en bruit, charge les attaques vocales et marque les propagandes hostiles.']
+    ],
+    summon: ['Choeur de protestation', 'Protest Chorus', 'Invocation temporaire: un choeur de resonance couvre l escouade, brise les slogans du Sans-Auteur et ralentit les ennemis synchronises.'],
+    ultimate: ['Cassure Toxicity', 'Toxicity Breakdown', 'Attaque ultime: la scene coupe la mesure, les broadcasts ennemis se figent, puis voix, guitare et basse frappent en collision rythmique.']
+  },
   'Breaking Bad': {
     pickups: [
       ['Fiole bleue instable', 'Unstable Blue Flask', 'Degats chimiques controles par A.R.C.A.'],
