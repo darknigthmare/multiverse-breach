@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react
 import sound from './game/soundEngine';
 import AudioControl from './components/AudioControl';
 import AuthPanel from './components/AuthPanel';
-import { getTranslation } from './game/translation';
+import IntroSequence from './components/IntroSequence';
 import { EQUIP_ITEMS_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
 import { getStoredSession, loadCloudSave, saveCloudSave, signInAccount, signOutAccount, signUpAccount, storeSession } from './game/cloudSave';
@@ -16,6 +16,7 @@ const PortalScreen = React.lazy(() => import('./components/PortalScreen'));
 const GameCanvas = React.lazy(() => import('./components/GameCanvas'));
 
 const DEFAULT_SAVE = {
+  saveVersion: 3,
   lang: 'fr',
   gold: 200,
   breachShards: 150,
@@ -29,6 +30,12 @@ const DEFAULT_SAVE = {
   heroSkins: {},
   portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
   publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
+  onboarding: {
+    profileCreated: false,
+    prologueCompleted: false,
+    prologueStep: 0,
+    introSeen: false
+  },
   activityProgress: {
     dayKey: '',
     weekKey: '',
@@ -74,7 +81,7 @@ const loadSave = () => {
     const raw = window.localStorage.getItem(SAVE_KEY);
     if (!raw) return DEFAULT_SAVE;
     const parsed = JSON.parse(raw);
-    return normalizeSavePayload(parsed);
+    return normalizeSavePayload(parsed, { existing: true });
   } catch {
     return DEFAULT_SAVE;
   }
@@ -93,8 +100,13 @@ const appendUnique = (items = [], additions = []) => {
   return next;
 };
 
-const normalizeSavePayload = (save = {}) => {
+const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const merged = { ...DEFAULT_SAVE, ...save };
+  const onboarding = save.onboarding
+    ? { ...DEFAULT_SAVE.onboarding, ...save.onboarding }
+    : existing
+      ? { profileCreated: true, prologueCompleted: true, prologueStep: 4, introSeen: true }
+      : { ...DEFAULT_SAVE.onboarding };
   const legacyStarterIds = ['freeman', 'masterchief'];
   const hasOnlyLegacyStarterProgress = (
     (merged.portalStats?.pulls || 0) === 0
@@ -124,7 +136,9 @@ const normalizeSavePayload = (save = {}) => {
     : DEFAULT_HIDDEN_UNIVERSES;
   return {
     ...merged,
+    saveVersion: 3,
     playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
+    onboarding,
     unlockedHeroes,
     activeTeam,
     heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(merged.heroLevels || {}) },
@@ -169,6 +183,20 @@ const getContactIntel = (stage, lang) => {
 };
 
 const getMissionNarrative = (stage, lang, isOutro, victory) => {
+  if (stage.tutorial) {
+    if (!isOutro) {
+      return lang === 'fr'
+        ? 'La premiere ouverture reste dans l Atrium. A.R.C.A. projette une Marge Blanche contenue pour verifier que ta cellule peut se deplacer, employer un artefact puis rompre un noyau sans perdre sa coherence.'
+        : 'The first opening remains inside the Atrium. A.R.C.A. projects a contained White Margin to verify that your cell can move, use an artifact, and break a core without losing coherence.';
+    }
+    return victory
+      ? (lang === 'fr'
+        ? 'La calibration est stable. Ta signature peut maintenant ouvrir des routes vers les Trames deplacees.'
+        : 'Calibration is stable. Your signature can now open routes into displaced Threads.')
+      : (lang === 'fr'
+        ? 'A.R.C.A. interrompt la calibration avant toute perte de memoire. Les donnees de contact restent disponibles pour la prochaine tentative.'
+        : 'A.R.C.A. stops calibration before any memory loss. Contact data remains available for the next attempt.');
+  }
   if (stage.fusionMission) {
     if (!isOutro) return stage.fusionMission.decor[lang];
     return victory
@@ -273,10 +301,16 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
       : (lang === 'fr' ? 'La breche explose en arene d impact ou les signatures frappent avant dissolution.' : 'The breach bursts into an impact arena where signatures strike before dissolution.');
   const narrativeLine = getMissionNarrative(stage, lang, isOutro, victory);
   const preparedBrief = Array.isArray(stage.launchBrief) ? stage.launchBrief.join(' ') : '';
-  const preparedOutcome = Array.isArray(stage.outcomePreview) ? stage.outcomePreview.join(' ') : '';
+  const preparedOutcome = Array.isArray(stage.outcomePreview)
+    ? stage.outcomePreview.find((line) => (
+      victory
+        ? /^(victoire|victory)\s*:/i.test(line)
+        : /^(defaite|défaite|defeat)\s*:/i.test(line)
+    )) || ''
+    : '';
   const introText = lang === 'fr'
-    ? `${narrativeLine} ${preparedBrief || `Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que la Singularity absorbe ce lore.`}`
-    : `${narrativeLine} ${preparedBrief || `Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Singularity absorbs this lore.`}`;
+    ? `${narrativeLine} ${preparedBrief || `Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que le Sans-Auteur n efface la memoire de cette Trame.`}`
+    : `${narrativeLine} ${preparedBrief || `Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Authorless erases this Thread memory.`}`;
   const outroText = victory
     ? (lang === 'fr'
       ? `${narrativeLine} ${preparedOutcome || `Les donnees de ${stage.bossName} rejoignent le codex, la signature ${rarity} est indexee et les caches sont transferees a l armurerie.`}`
@@ -451,7 +485,7 @@ function App() {
   const cloudSaveTimerRef = useRef(null);
   const skipNextCloudSaveRef = useRef(false);
   const [lang, setLang] = useState(initialSave.lang); // FR default as requested, EN toggle
-  const [currentScreen, setCurrentScreen] = useState('intro');
+  const [currentScreen, setCurrentScreen] = useState('title');
   const [gold, setGold] = useState(initialSave.gold);
   const [breachShards, setBreachShards] = useState(initialSave.breachShards);
   const [eventTokens, setEventTokens] = useState(initialSave.eventTokens);
@@ -469,6 +503,7 @@ function App() {
   const [disabledAssets, setDisabledAssets] = useState(initialSave.disabledAssets);
   const [portalStats, setPortalStats] = useState(initialSave.portalStats);
   const [publicProfile, setPublicProfile] = useState(initialSave.publicProfile);
+  const [onboarding, setOnboarding] = useState(initialSave.onboarding);
   const [activityProgress, setActivityProgress] = useState(initialSave.activityProgress);
 
   // Inventory & Equipment
@@ -490,6 +525,7 @@ function App() {
   )).length;
 
   const getCurrentSave = useCallback(() => ({
+    saveVersion: 3,
     lang,
     gold,
     breachShards,
@@ -505,11 +541,12 @@ function App() {
     disabledAssets,
     portalStats,
     publicProfile,
+    onboarding,
     activityProgress,
     inventory,
     equippedGear,
     equippedEventItems
-  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, activityProgress, inventory, equippedGear, equippedEventItems]);
+  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
 
   useEffect(() => {
     const payload = getCurrentSave();
@@ -559,7 +596,7 @@ function App() {
   // Play ambient music
   useEffect(() => {
     sound.init();
-    if (currentScreen === 'intro' || currentScreen === 'hub') {
+    if (['title', 'profile', 'prologue', 'hub'].includes(currentScreen)) {
       sound.playBgm('hub');
     }
     return () => {
@@ -567,24 +604,77 @@ function App() {
     };
   }, [currentScreen]);
 
+  const getStarterCellSnapshot = () => {
+    const nextUnlockedHeroes = appendUnique(
+      unlockedHeroes.includes(PLAYER_HERO_ID) ? unlockedHeroes : [PLAYER_HERO_ID, ...unlockedHeroes],
+      TUTORIAL_COMPANION_IDS
+    );
+    const nextHeroLevels = {
+      ...heroLevels,
+      [PLAYER_HERO_ID]: heroLevels[PLAYER_HERO_ID] || 1,
+      ...Object.fromEntries(TUTORIAL_COMPANION_IDS.map(heroId => [heroId, heroLevels[heroId] || 1]))
+    };
+    const withPlayer = activeTeam.includes(PLAYER_HERO_ID) ? activeTeam : [PLAYER_HERO_ID, ...activeTeam];
+    return {
+      unlockedHeroes: nextUnlockedHeroes,
+      heroLevels: nextHeroLevels,
+      activeTeam: appendUnique(withPlayer, TUTORIAL_COMPANION_IDS).slice(0, 3),
+      activityProgress: { ...activityProgress, tutorialCompanionsUnlocked: true }
+    };
+  };
+
+  const ensureStarterCell = () => {
+    const starterCell = getStarterCellSnapshot();
+    setUnlockedHeroes(starterCell.unlockedHeroes);
+    setHeroLevels(starterCell.heroLevels);
+    setActiveTeam(starterCell.activeTeam);
+    setActivityProgress(starterCell.activityProgress);
+    return starterCell;
+  };
+
   const startOperation = () => {
+    const nextProfile = { ...playerProfile, name: String(playerProfile?.name || '').trim() || 'Ancre' };
+    const nextOnboarding = {
+      ...onboarding,
+      profileCreated: true,
+      prologueCompleted: false,
+      prologueStep: 0,
+      introSeen: true
+    };
+    setPlayerProfile(nextProfile);
+    setOnboarding(nextOnboarding);
+    const starterCell = ensureStarterCell();
+    setCurrentScreen('prologue');
     sound.playSfx('levelup');
-    setPlayerProfile(prev => ({ ...prev, name: String(prev?.name || '').trim() || 'Ancre' }));
-    setUnlockedHeroes(prev => appendUnique(prev.includes(PLAYER_HERO_ID) ? prev : [PLAYER_HERO_ID, ...prev], TUTORIAL_COMPANION_IDS));
-    setHeroLevels(prev => ({
+    return { ...getCurrentSave(), ...starterCell, playerProfile: nextProfile, onboarding: nextOnboarding };
+  };
+
+  const replayPrologue = () => {
+    setOnboarding(prev => ({ ...prev, prologueStep: 0, introSeen: true }));
+    setCurrentScreen('prologue');
+    sound.playSfx('special');
+  };
+
+  const movePrologue = (direction) => {
+    setOnboarding(prev => ({
       ...prev,
-      [PLAYER_HERO_ID]: prev[PLAYER_HERO_ID] || 1,
-      ...Object.fromEntries(TUTORIAL_COMPANION_IDS.map(heroId => [heroId, prev[heroId] || 1]))
+      prologueStep: Math.max(0, Math.min(4, (Number(prev.prologueStep) || 0) + direction)),
+      introSeen: true
     }));
-    setActiveTeam(prev => {
-      const withPlayer = prev.includes(PLAYER_HERO_ID) ? prev : [PLAYER_HERO_ID, ...prev];
-      return appendUnique(withPlayer, TUTORIAL_COMPANION_IDS).slice(0, 3);
-    });
-    setActivityProgress(prev => ({
+    sound.playSfx(direction > 0 ? 'coin' : 'click');
+  };
+
+  const finishPrologue = () => {
+    setOnboarding(prev => ({
       ...prev,
-      tutorialCompanionsUnlocked: true
+      profileCreated: true,
+      prologueCompleted: true,
+      prologueStep: 4,
+      introSeen: true
     }));
+    ensureStarterCell();
     setCurrentScreen('hub');
+    sound.playSfx('levelup');
   };
 
   const handleLaunchStage = (stage) => {
@@ -819,8 +909,8 @@ function App() {
     sound.playSfx('coin');
   };
 
-  const applySave = (save) => {
-    const merged = normalizeSavePayload(save);
+  const applySave = (save, { existing = true, navigateTo = 'hub' } = {}) => {
+    const merged = normalizeSavePayload(save, { existing });
     setLang(merged.lang);
     setGold(merged.gold);
     setBreachShards(merged.breachShards);
@@ -836,13 +926,16 @@ function App() {
     setDisabledAssets(merged.disabledAssets || DEFAULT_SAVE.disabledAssets);
     setPortalStats(merged.portalStats || DEFAULT_SAVE.portalStats);
     setPublicProfile(merged.publicProfile || DEFAULT_SAVE.publicProfile);
+    setOnboarding(merged.onboarding || DEFAULT_SAVE.onboarding);
     setActivityProgress(merged.activityProgress || DEFAULT_SAVE.activityProgress);
     setInventory(merged.inventory);
     setEquippedGear(merged.equippedGear);
     setEquippedEventItems(merged.equippedEventItems);
     setActiveStage(null);
     setLastBattleResult(null);
-    setCurrentScreen('hub');
+    setLastBattleSummary(null);
+    if (navigateTo) setCurrentScreen(navigateTo);
+    return merged;
   };
 
   const exportSave = async () => {
@@ -859,7 +952,7 @@ function App() {
     const raw = window.prompt(lang === 'fr' ? 'Colle ta trace Nexus exportee :' : 'Paste exported Nexus trace:');
     if (!raw) return;
     try {
-      applySave(JSON.parse(raw));
+      applySave(JSON.parse(raw), { existing: true, navigateTo: 'hub' });
       sound.playSfx('levelup');
     } catch {
       window.alert(lang === 'fr' ? 'Trace Nexus invalide.' : 'Invalid Nexus trace.');
@@ -869,7 +962,7 @@ function App() {
   const resetSave = () => {
     if (!window.confirm(lang === 'fr' ? 'Purger completement la trace Nexus ?' : 'Fully purge Nexus trace?')) return;
     window.localStorage.removeItem(SAVE_KEY);
-    applySave(DEFAULT_SAVE);
+    applySave(DEFAULT_SAVE, { existing: false, navigateTo: 'title' });
     sound.playSfx('click');
   };
 
@@ -878,36 +971,53 @@ function App() {
     setAccount(session);
     setCloudStatus(lang === 'fr' ? 'Signature ancree. Verification de l archive Nexus...' : 'Signature anchored. Checking Nexus archive...');
 
-    if (!shouldLoadCloud) return;
+    if (!shouldLoadCloud) return null;
 
     const row = await loadCloudSave(session);
     if (row?.payload) {
       skipNextCloudSaveRef.current = true;
-      applySave(row.payload);
+      const merged = applySave(row.payload, { existing: true, navigateTo: null });
       setCloudStatus(lang === 'fr' ? 'Archive Nexus chargee.' : 'Nexus archive loaded.');
+      return merged;
     } else {
       await saveCloudSave(session, getCurrentSave());
       setCloudStatus(lang === 'fr' ? 'Nouvelle archive Nexus gravee depuis cette trace.' : 'New Nexus archive engraved from this trace.');
+      return null;
     }
   };
 
   const handleSignIn = async (email, password) => {
     const session = await signInAccount(email, password);
-    await applyCloudSession(session, true);
+    const merged = await applyCloudSession(session, true);
+    if (currentScreen === 'profile') {
+      if (merged?.onboarding?.prologueCompleted) {
+        setCurrentScreen('hub');
+      } else if (merged?.onboarding?.profileCreated) {
+        setCurrentScreen('prologue');
+      } else if (merged) {
+        setCurrentScreen('profile');
+      } else {
+        startOperation();
+      }
+    }
     sound.playSfx('levelup');
+    return session;
   };
 
   const handleSignUp = async (email, password) => {
     const session = await signUpAccount(email, password);
     if (!session?.access_token) {
       setCloudStatus(lang === 'fr' ? 'Signature creee. Confirme ton email puis ancre-la.' : 'Signature created. Confirm your email, then anchor it.');
+      if (currentScreen === 'profile') startOperation();
       sound.playSfx('levelup');
-      return;
+      return session;
     }
     await applyCloudSession(session, false);
-    await saveCloudSave(session, getCurrentSave());
+    const payload = currentScreen === 'profile' ? startOperation() : getCurrentSave();
+    await saveCloudSave(session, payload);
     setCloudStatus(lang === 'fr' ? 'Signature creee et trace gravee dans le Nexus.' : 'Signature created and trace engraved into the Nexus.');
     sound.playSfx('levelup');
+    return session;
   };
 
   const handleSignOut = async () => {
@@ -933,7 +1043,7 @@ function App() {
       return;
     }
     skipNextCloudSaveRef.current = true;
-    applySave(row.payload);
+    applySave(row.payload, { existing: true, navigateTo: null });
     setCloudStatus(lang === 'fr' ? 'Archive Nexus chargee.' : 'Nexus archive loaded.');
     sound.playSfx('coin');
   };
@@ -947,238 +1057,57 @@ function App() {
 
   return (
     <>
-      {/* Global Mute/Audio Button */}
       <AudioControl />
-      <AuthPanel
-        lang={lang}
-        account={account}
-        cloudStatus={cloudStatus}
-        onSignIn={handleSignIn}
-        onSignUp={handleSignUp}
-        onSignOut={handleSignOut}
-        onLoadCloud={handleLoadCloud}
-        onSaveCloud={handleSaveCloud}
-      />
-
-      {/* Floating Language Switcher in bottom right */}
-      <button
-        onClick={toggleLanguage}
-        className="global-lang-control"
-        title={lang === 'fr' ? 'Change la langue de l interface entre francais et anglais.' : 'Switch the interface language between English and French.'}
-        style={{
-          position: 'fixed',
-          bottom: '15px',
-          right: '15px',
-          zIndex: 100,
-          background: 'rgba(20, 20, 30, 0.75)',
-          border: '1px solid #ff4500',
-          borderRadius: '4px',
-          color: '#ff4500',
-          padding: '8px 12px',
-          fontFamily: '"Share Tech Mono", monospace',
-          fontSize: '14px',
-          cursor: 'pointer',
-          boxShadow: '0 0 10px rgba(255, 69, 0, 0.3)',
-          backdropFilter: 'blur(4px)'
-        }}
-      >
-        🌐 {lang.toUpperCase()}
-      </button>
-
-      <div className="global-save-controls" style={{
-        position: 'fixed',
-        bottom: '15px',
-        left: '15px',
-        zIndex: 100,
-        display: 'flex',
-        gap: '6px',
-        flexWrap: 'wrap'
-      }}>
-        <button onClick={exportSave} className="btn-retro" title={lang === 'fr' ? 'Telecharge un fichier JSON contenant ta sauvegarde locale.' : 'Download a JSON file containing your local save.'} style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#39c5bb' }}>
-          EXPORT TRACE
-        </button>
-        <button onClick={importSave} className="btn-retro" title={lang === 'fr' ? 'Importe un fichier de sauvegarde JSON et remplace la progression locale.' : 'Import a JSON save file and replace local progress.'} style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#ffeb3b', color: '#ffeb3b' }}>
-          IMPORT TRACE
-        </button>
-        <button onClick={resetSave} className="btn-retro" title={lang === 'fr' ? 'Remet a zero la progression locale apres confirmation.' : 'Reset local progress after confirmation.'} style={{ fontSize: '10px', padding: '6px 9px', borderColor: '#e74c3c', color: '#e74c3c' }}>
-          PURGE
-        </button>
-      </div>
+      {['hub', 'portal'].includes(currentScreen) && (
+        <AuthPanel
+          lang={lang}
+          account={account}
+          cloudStatus={cloudStatus}
+          onSignIn={handleSignIn}
+          onSignUp={handleSignUp}
+          onSignOut={handleSignOut}
+          onLoadCloud={handleLoadCloud}
+          onSaveCloud={handleSaveCloud}
+          onToggleLanguage={toggleLanguage}
+          onExportSave={exportSave}
+          onImportSave={importSave}
+          onResetSave={resetSave}
+        />
+      )}
 
       {/* Screen Router */}
-      {currentScreen === 'intro' && (
-        <div className="intro-container" style={{
-          minHeight: '100vh',
-          background: 'radial-gradient(circle, #100826 0%, #020006 100%)',
-          color: '#fff',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: '20px',
-          textAlign: 'center',
-          fontFamily: '"Share Tech Mono", monospace'
-        }}>
-          <div className="intro-portal" style={{
-            position: 'absolute',
-            width: '350px',
-            height: '350px',
-            borderRadius: '50%',
-            border: '2px dotted rgba(57, 197, 187, 0.15)',
-            boxShadow: '0 0 40px rgba(155, 89, 182, 0.1)',
-            zIndex: 0,
-            animation: 'spin 10s linear infinite'
-          }} />
-
-          <div className="intro-card" style={{ zIndex: 1, maxWidth: '780px', padding: '30px' }}>
-            <h1 className="cyber-title" style={{
-              fontSize: '40px',
-              marginBottom: '10px',
-              textShadow: '0 0 15px #39c5bb',
-              lineHeight: '1.2'
-            }}>
-              {getTranslation(lang, 'title')}
-            </h1>
-            <h3 style={{ color: '#ff4500', letterSpacing: '3px', marginBottom: '30px', fontSize: '13px' }}>
-              {getTranslation(lang, 'subtitle')}
-            </h3>
-
-            <div className="intro-lore-panel" style={{
-              background: 'rgba(255, 255, 255, 0.03)',
-              border: '1px solid rgba(57, 197, 187, 0.2)',
-              borderRadius: '6px',
-              padding: '24px',
-              textAlign: 'justify',
-              lineHeight: '22px',
-              fontSize: '14px',
-              color: '#ccc',
-              marginBottom: '24px',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.5)'
-            }}>
-              <div className="intro-lore-kicker">
-                {lang === 'fr' ? 'Signal A.R.C.A. - Creation de profil Ancre' : 'A.R.C.A. signal - Anchored profile creation'}
-              </div>
-              <p style={{ marginTop: 0 }}>
-                {getTranslation(lang, 'introText1')}
-              </p>
-              <p>
-                {getTranslation(lang, 'introText2')}
-              </p>
-              <div className="intro-arca-transmission">
-                <span>
-                  {lang === 'fr'
-                    ? 'Signal vital detecte. Identite instable, mais intacte.'
-                    : 'Life signal detected. Identity unstable, but intact.'}
-                </span>
-                <span>
-                  {lang === 'fr'
-                    ? 'Tu n es pas quelque part. Tu es entre plusieurs realites a la fois.'
-                    : 'You are not somewhere. You are between several realities at once.'}
-                </span>
-                <span>
-                  {lang === 'fr'
-                    ? 'Parce que tu es encore entier, le Nexus peut t ancrer.'
-                    : 'Because you are still whole, the Nexus can anchor you.'}
-                </span>
-              </div>
-              <p style={{ marginBottom: 0 }}>
-                {lang === 'fr'
-                  ? 'Ton profil n est pas un formulaire externe: c est une signature d Ancre. Le Nexus l utilise pour retenir tes stabilisations, tes cellules, tes reliques, les Trames deja scellees et les choix qui pourront plus tard soutenir d autres Ancres sans casser la memoire.'
-                  : 'Your profile is not an external form: it is an Anchored signature. The Nexus uses it to retain stabilizations, cells, relics, sealed Threads, and choices that can later support other Anchors without breaking memory.'}
-              </p>
-            </div>
-
-            <div className="intro-profile-grid">
-              {[
-                {
-                  title: lang === 'fr' ? '1. Le Voile cede' : '1. The Veil breaks',
-                  text: lang === 'fr'
-                    ? 'La Premiere Breche ne melange pas les univers au hasard: elle tord leurs lois, leurs boss et leurs symboles en zones jouables mais instables.'
-                    : 'The First Breach does not mix universes at random: it bends their laws, bosses, and symbols into playable but unstable zones.'
-                },
-                {
-                  title: lang === 'fr' ? '2. Les signatures' : '2. The signatures',
-                  text: lang === 'fr'
-                    ? 'Chaque heros garde sa Trame d origine, puis subit une Compression de Resonance qui rend son pouvoir jouable sans effacer son identite.'
-                    : 'Each hero keeps an origin Thread, then undergoes Resonance Compression so their power becomes playable without erasing identity.'
-                },
-                {
-                  title: lang === 'fr' ? '3. L Ancre' : '3. The Anchor',
-                  text: lang === 'fr'
-                    ? 'Ton role est de rassembler les Eclats d Origine, stabiliser les Trames et empecher le Sans-Auteur de transformer le multivers en page blanche.'
-                    : 'Your role is to gather Origin Shards, stabilize Threads, and stop the Authorless from turning the multiverse into a blank page.'
-                },
-                {
-                  title: lang === 'fr' ? '4. Premiere route' : '4. First route',
-                  text: lang === 'fr'
-                  ? 'A.R.C.A. ne t envoie plus seul: le tutoriel forme une cellule de depart avec deux signatures originales du Nexus avant la premiere vraie breche.'
-                    : 'A.R.C.A. no longer sends you alone: the tutorial forms a starter cell with two original Nexus signatures before the first true breach.'
-                }
-              ].map(entry => (
-                <div className="intro-profile-step" key={entry.title}>
-                  <strong>{entry.title}</strong>
-                  <span>{entry.text}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="intro-player-identity">
-              <label htmlFor="player-name-input">
-                {lang === 'fr' ? 'Nom du heros Ancre' : 'Anchored hero name'}
-              </label>
-              <input
-                id="player-name-input"
-                value={playerProfile.name}
-                maxLength={22}
-                onChange={(event) => setPlayerProfile(prev => ({ ...prev, name: event.target.value }))}
-                placeholder={lang === 'fr' ? 'Ton pseudo' : 'Your nickname'}
-              />
-              <span>
-                {lang === 'fr'
-                  ? 'Ce nom devient ta premiere signature d Ancre et le heros central de la cellule.'
-                  : 'This name becomes your first Anchor signature and the central hero of the cell.'}
-              </span>
-            </div>
-
-            <div style={{
-              margin: '0 auto 20px',
-              maxWidth: '620px',
-              padding: '12px 14px',
-              border: '1px solid rgba(255,235,59,0.28)',
-              borderRadius: '6px',
-              background: 'linear-gradient(90deg, rgba(255,235,59,0.08), rgba(57,197,187,0.06))',
-              color: '#dffcff',
-              fontSize: '12px',
-              lineHeight: 1.45,
-              textAlign: 'left'
-            }}>
-              <strong style={{ color: '#ffeb3b' }}>
-                {lang === 'fr' ? 'Deblocage tutoriel A.R.C.A.' : 'A.R.C.A. tutorial unlock'}
-              </strong>
-              <br />
-              {lang === 'fr'
-                ? 'Mirelle Suture stabilise les blessures de Trame. Bastion Korr tient la ligne quand une faille force l ouverture. Ils rejoignent ta cellule de depart apres validation du profil.'
-                : 'Mirelle Suture stabilizes Thread wounds. Bastion Korr holds the line when a rift forces itself open. They join your starter cell after profile validation.'}
-            </div>
-
-            <button
-              onClick={startOperation}
-              className="btn-retro"
-              title={lang === 'fr' ? 'Cree ton profil joueur et ouvre le hub principal.' : 'Create your player profile and open the main hub.'}
-              style={{
-                fontSize: '18px',
-                padding: '12px 36px',
-                background: '#39c5bb',
-                color: '#111',
-                boxShadow: '0 0 20px rgba(57,197,187,0.5)',
-                border: 'none',
-                cursor: 'pointer'
-              }}
-            >
-              {getTranslation(lang, 'initButton')}
-            </button>
-          </div>
-        </div>
+      {['title', 'profile', 'prologue'].includes(currentScreen) && (
+        <IntroSequence
+          phase={currentScreen}
+          lang={lang}
+          playerProfile={playerProfile}
+          setPlayerProfile={setPlayerProfile}
+          onboarding={onboarding}
+          account={account}
+          cloudStatus={cloudStatus}
+          progressSummary={{
+            completedStages: completedStages.length,
+            unlockedHeroes: unlockedHeroes.length,
+            seasonLevel: Math.max(1, Math.floor((activityProgress.seasonXp || 0) / 250) + 1)
+          }}
+          onToggleLanguage={toggleLanguage}
+          onOpenProfile={() => { setCurrentScreen('profile'); sound.playSfx('click'); }}
+          onContinue={() => { setCurrentScreen('hub'); sound.playSfx('levelup'); }}
+          onBackToTitle={() => { setCurrentScreen('title'); sound.playSfx('click'); }}
+          onStartLocal={startOperation}
+          onReplayPrologue={replayPrologue}
+          onPreviousPrologue={() => movePrologue(-1)}
+          onNextPrologue={() => movePrologue(1)}
+          onFinishPrologue={finishPrologue}
+          onSkipPrologue={finishPrologue}
+          authProps={{
+            onSignIn: handleSignIn,
+            onSignUp: handleSignUp,
+            onSignOut: handleSignOut,
+            onLoadCloud: handleLoadCloud,
+            onSaveCloud: handleSaveCloud
+          }}
+        />
       )}
 
       {currentScreen === 'hub' && (
