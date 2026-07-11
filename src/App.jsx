@@ -480,6 +480,47 @@ class CombatErrorBoundary extends React.Component {
   }
 }
 
+class HubErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { error };
+  }
+
+  componentDidCatch(error, info) {
+    console.error('Nexus hub screen failed', error, info?.componentStack || '');
+  }
+
+  render() {
+    const { error } = this.state;
+    const { lang, onBack, children } = this.props;
+    if (!error) return children;
+    return (
+      <div className="narrative-screen">
+        <div className="narrative-backdrop">
+          <div className="narrative-rift" />
+          <div className="narrative-copy">
+            <div className="narrative-kicker">{lang === 'fr' ? 'REPLI D ARCHIVE A.R.C.A.' : 'A.R.C.A. ARCHIVE RETREAT'}</div>
+            <h1>{lang === 'fr' ? 'Trace d interface interrompue' : 'Interface trace interrupted'}</h1>
+            <p>
+              {lang === 'fr'
+                ? 'A.R.C.A. a isole l onglet fautif avant qu il ne fasse tomber toute la partie. La progression locale reste conservee.'
+                : 'A.R.C.A. isolated the faulty tab before it could crash the whole game. Local progress remains preserved.'}
+            </p>
+            <div className="narrative-intel">{error.message}</div>
+            <button onClick={onBack} className="btn-retro narrative-button">
+              {lang === 'fr' ? 'RETOUR AU SIGNAL TITRE' : 'RETURN TO TITLE SIGNAL'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
 function App() {
   const initialSave = loadSave();
   const cloudSaveTimerRef = useRef(null);
@@ -1111,8 +1152,9 @@ function App() {
       )}
 
       {currentScreen === 'hub' && (
-        <Suspense fallback={<NexusLoadingScreen lang={lang} label={lang === 'fr' ? 'Ouverture du controle Nexus...' : 'Opening Nexus control...'} />}>
-          <HubScreen
+        <HubErrorBoundary lang={lang} onBack={() => setCurrentScreen('title')}>
+          <Suspense fallback={<NexusLoadingScreen lang={lang} label={lang === 'fr' ? 'Ouverture du controle Nexus...' : 'Opening Nexus control...'} />}>
+            <HubScreen
             lang={lang}
             playerProfile={playerProfile}
             publicProfile={publicProfile}
@@ -1147,8 +1189,9 @@ function App() {
             setActivityProgress={setActivityProgress}
             onLaunchStage={handleLaunchStage}
             onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
-          />
-        </Suspense>
+            />
+          </Suspense>
+        </HubErrorBoundary>
       )}
 
       {currentScreen === 'missionIntro' && activeStage && (

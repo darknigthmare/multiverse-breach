@@ -24,6 +24,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const keysPressed = useRef({});
   const lastAnomalyWaveRef = useRef(-1);
   const bootClearedRef = useRef(false);
+  const battleCompletionHandledRef = useRef(false);
   
   const [activeHeroId, setActiveHeroId] = useState(activeTeam[0]);
   const [teamState, setTeamState] = useState([]);
@@ -510,7 +511,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     keysPressed.current = {};
     lastAnomalyWaveRef.current = -1;
     bootClearedRef.current = false;
-    sound.playBgm('battle');
+    battleCompletionHandledRef.current = false;
+    sound.playStageBgm(stage);
 
     const enemyData = getEnemiesData();
     const enemyList = flattenEnemiesData(enemyData);
@@ -568,15 +570,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const height = canvas.height;
 
     const handleBattleComplete = (result, summary = null) => {
+      if (battleCompletionHandledRef.current) return;
+      battleCompletionHandledRef.current = true;
       setBattleCompleted(true);
       setBattleResult(result);
       setBattleSummary(summary);
       sound.stopBgm();
-      if (result === 'victory') {
-        sound.playSfx('victory');
-      } else {
-        sound.playSfx('defeat');
-      }
     };
 
     // Load correct mode engine

@@ -88,7 +88,7 @@ assert(gameCanvasSource.includes('stage.finalGameBoss') && !gameCanvasSource.inc
 assert(appSource.includes('activeStage.finalGameBoss') && !appSource.includes('activeStage.id === 38'), 'App rewards must route final bonuses through finalGameBoss metadata.');
 assert(tacticsBattlefieldsSource.includes('stage.finalGameBoss'), 'Tactics battlefields must recognize metadata-based final boss arenas.');
 assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen must receive progression to hide future chapter banners.');
-assert(hubSource.includes("setActiveTab('race')") && hubSource.includes('<RaceMode'), 'Hub must expose the playable Race/Kart tab.');
+assert(hubSource.includes("{ id: 'race'") && hubSource.includes('<RaceMode'), 'Hub must expose the playable Race/Kart tab.');
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
 assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('arca-mirelle-kart-directions.png'), 'Race engine must use the Mirelle kart sprite sheet assets.');
@@ -134,6 +134,9 @@ assert(raceEngineSource.includes('getRearRoadVisualWidth') && raceEngineSource.i
 assert(raceEngineSource.includes('roadWidth * 0.9') && raceEngineSource.includes('Math.max(this.track.offroadDrag, 0.965)'), 'Race driving must keep forgiving kart-road physics instead of killing speed on small visual/track offsets.');
 assert(raceModeSource.includes('race-track-selector') && raceModeSource.includes('setTrackId') && raceModeSource.includes('trackList.map'), 'Race tab must let the player switch between available kart tracks.');
 assert(raceModeSource.includes('keyPulseRef') && raceModeSource.includes('pulseVirtualKey'), 'Race controls must keep short keyboard and touch inputs alive long enough for the engine loop.');
+assert(raceModeSource.includes('autoAccelerateRef') && raceModeSource.includes('recoverPlayer') && raceModeSource.includes('data-track-factor'), 'Race controls must provide assisted acceleration, manual recovery, and visible track-lock telemetry.');
+assert(raceEngineSource.includes('lapArmed') && raceEngineSource.includes('previousRouteProgress') && raceEngineSource.includes('previousProgress - routeProgress > 0.28'), 'Race laps must use ordered route gates so figure-eight and portal tracks cannot become impossible to finish.');
+assert(raceEngineSource.includes('getTrackPointAhead(road, lookAhead)') && raceEngineSource.includes('assistStrength'), 'Race steering must use a forward route target for player stability and AI navigation.');
 assert(raceEngineSource.includes('startBoostWindow') && raceEngineSource.includes('driftCharge') && raceEngineSource.includes('Mini-turbo violet'), 'Race mode must include start boost and charged mini-turbo handling.');
 assert(raceEngineSource.includes("zone.type === 'jump'") && raceEngineSource.includes("zone.type === 'portal'") && raceEngineSource.includes("zone.type === 'slow'"), 'Race mode must include jump, portal, and slow interactive surfaces.');
 assert(raceEngineSource.includes('drawProjectedSurfaceZone') && raceEngineSource.includes('TRICK BOOST') && raceEngineSource.includes('CHARGE MINI-TURBO'), 'Race mode must render readable surface and driving feedback.');

@@ -95,21 +95,47 @@ const angleDelta = (from, to) => {
 
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
 
+const projectPointToSegment = (a, b, x, y) => {
+  const vx = b.x - a.x;
+  const vy = b.y - a.y;
+  const lengthSq = vx * vx + vy * vy || 1;
+  const t = clamp(((x - a.x) * vx + (y - a.y) * vy) / lengthSq, 0, 1);
+  const px = a.x + vx * t;
+  const py = a.y + vy * t;
+  return {
+    x: px,
+    y: py,
+    t,
+    distance: Math.hypot(x - px, y - py),
+    angle: Math.atan2(vy, vx),
+    length: Math.sqrt(lengthSq)
+  };
+};
+
+const buildPathMetrics = (points = []) => {
+  const segmentLengths = points.map((point, index) => distance(point, points[(index + 1) % points.length]));
+  const cumulative = [];
+  let totalLength = 0;
+  segmentLengths.forEach(length => {
+    cumulative.push(totalLength);
+    totalLength += length;
+  });
+  return { segmentLengths, cumulative, totalLength: Math.max(1, totalLength) };
+};
+
 const closestPointOnPath = (points = [], x, y, roadWidth = 100) => {
-  if (points.length < 2) return { x, y, distance: 0, factor: 1 };
-  let best = { x: points[0].x, y: points[0].y, distance: Infinity, factor: 0, segment: 0 };
+  if (points.length < 2) return { x, y, distance: 0, factor: 1, segment: 0, t: 0, angle: 0 };
+  let best = { x: points[0].x, y: points[0].y, distance: Infinity, factor: 0, segment: 0, t: 0, angle: 0 };
   for (let i = 0; i < points.length; i += 1) {
     const a = points[i];
     const b = points[(i + 1) % points.length];
-    const vx = b.x - a.x;
-    const vy = b.y - a.y;
-    const lengthSq = vx * vx + vy * vy || 1;
-    const t = clamp(((x - a.x) * vx + (y - a.y) * vy) / lengthSq, 0, 1);
-    const px = a.x + vx * t;
-    const py = a.y + vy * t;
-    const d = Math.hypot(x - px, y - py);
-    if (d < best.distance) {
-      best = { x: px, y: py, distance: d, factor: clamp(1 - d / (roadWidth * 0.9), 0, 1), segment: i };
+    const projected = projectPointToSegment(a, b, x, y);
+    if (projected.distance < best.distance) {
+      best = {
+        ...projected,
+        factor: clamp(1 - projected.distance / (roadWidth * 0.9), 0, 1),
+        segment: i
+      };
     }
   }
   return best;
@@ -532,6 +558,7 @@ export class EngineRace {
     };
     return {
       ...track,
+      pathMetrics: buildPathMetrics(track.waypoints),
       boostPads: track.boostPads.map(pad => snapToRoad(pad, 0.45)),
       itemBoxes: track.itemBoxes.map(box => snapToRoad(box, 0.5)),
       hazards: track.hazards.map(hazard => hazard.temporary ? hazard : snapToRoad(hazard, 0.5)),
@@ -567,8 +594,11 @@ export class EngineRace {
   reset() {
     this.track = this.createTrackState();
     const start = this.track.start || { x: 480, y: 474, angle: -Math.PI / 2 };
+    const startRoad = closestPointOnPath(this.track.waypoints, start.x, start.y, this.track.roadWidth);
+    const startAngle = startRoad.angle;
     this.time = 0;
     this.countdown = 2.6;
+    this.raceState = 'countdown';
     this.startBoostWindow = false;
     this.finished = false;
     this.finishReported = false;
@@ -585,7 +615,7 @@ export class EngineRace {
       color: '#39c5bb',
       x: start.x,
       y: start.y,
-      angle: start.angle,
+      angle: startAngle,
       ai: false,
       laneOffset: 0,
       maxSpeed: 266 + this.garageStats.maxSpeedBonus,
@@ -593,9 +623,9 @@ export class EngineRace {
       turnRate: 3.2 + this.garageStats.turnBonus
     });
     this.opponents = [
-      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', x: start.x - 40, y: start.y + 28, angle: start.angle, ai: true, laneOffset: -26, maxSpeed: 244 }),
-      this.createKart({ id: 'loom', name: 'Loom-07', color: '#d9b6ff', x: start.x + 42, y: start.y + 30, angle: start.angle, ai: true, laneOffset: 22, maxSpeed: 252 }),
-      this.createKart({ id: 'sable', name: 'Sable Vey', color: '#e74c3c', x: start.x, y: start.y + 58, angle: start.angle, ai: true, laneOffset: 8, maxSpeed: 238 })
+      this.createKart({ id: 'bastion', name: 'Bastion Korr', color: '#ffb15c', x: start.x - 40, y: start.y + 28, angle: startAngle, ai: true, laneOffset: -26, maxSpeed: 244 }),
+      this.createKart({ id: 'loom', name: 'Loom-07', color: '#d9b6ff', x: start.x + 42, y: start.y + 30, angle: startAngle, ai: true, laneOffset: 22, maxSpeed: 252 }),
+      this.createKart({ id: 'sable', name: 'Sable Vey', color: '#e74c3c', x: start.x, y: start.y + 58, angle: startAngle, ai: true, laneOffset: 8, maxSpeed: 238 })
     ];
   }
 
@@ -622,14 +652,22 @@ export class EngineRace {
       shield: 0,
       item: null,
       lap: 0,
-      checkpoint: 0,
+      checkpoint: this.track.checkpoints.length > 1 ? 1 : 0,
       progress: 0,
       waypoint: 1,
       rank: 1,
       finished: false,
       finishTime: null,
       hitCooldown: 0,
-      itemCooldown: 0
+      itemCooldown: 0,
+      throttle: 0,
+      steerInput: 0,
+      routeSegment: 0,
+      routeProgress: 0,
+      previousRouteProgress: 0,
+      lapArmed: false,
+      stuckTimer: 0,
+      recoveryCooldown: 0
     };
   }
 
@@ -735,9 +773,12 @@ export class EngineRace {
 
   update(dt) {
     dt = clamp(dt, 0, 1 / 30);
-    this.time += dt;
     const previousCountdown = this.countdown;
     this.countdown = Math.max(0, this.countdown - dt);
+    if (this.countdown === 0) {
+      this.time += dt;
+      if (this.raceState === 'countdown') this.raceState = 'running';
+    }
     if (previousCountdown > 0 && this.countdown === 0 && this.startBoostWindow) {
       this.player.boost = Math.max(this.player.boost, 0.95);
       this.player.speed = Math.max(this.player.speed, 176);
@@ -787,6 +828,7 @@ export class EngineRace {
     if (this.player.finished && !this.finishReported) {
       this.finishReported = true;
       this.finished = true;
+      this.raceState = 'finished';
       this.onFinish(this.getRaceSummary());
     }
   }
@@ -799,36 +841,49 @@ export class EngineRace {
     kart.air = Math.max(0, kart.air - dt);
     kart.portalCooldown = Math.max(0, kart.portalCooldown - dt);
     kart.itemCooldown = Math.max(0, kart.itemCooldown - dt);
+    kart.recoveryCooldown = Math.max(0, kart.recoveryCooldown - dt);
     if (kart.finished) {
       kart.speed *= 0.985;
       kart.x += Math.cos(kart.angle) * kart.speed * dt;
       kart.y += Math.sin(kart.angle) * kart.speed * dt;
       return;
     }
+    const input = kart.ai ? kart.aiInput : this.getPlayerInput();
     if (this.countdown > 0) {
       kart.speed *= 0.94;
-      if (!kart.ai && this.countdown < 0.72 && this.countdown > 0.18 && this.getPlayerInput().accel) {
+      if (!kart.ai && this.countdown < 0.72 && this.countdown > 0.18 && input.manualAccel) {
         this.startBoostWindow = true;
       }
       return;
     }
-    const input = kart.ai ? kart.aiInput : this.getPlayerInput();
-    const trackFactor = this.getTrackFactor(kart.x, kart.y);
-    const onTrack = trackFactor > 0.52;
+    const road = this.getKartRoadAnchor(kart);
+    const trackFactor = road.factor;
+    const onTrack = trackFactor > 0.34;
     const surface = this.getSurfaceAt(kart.x, kart.y);
-    const accel = input.accel ? kart.accel : input.brake ? -kart.accel * 0.62 : 0;
-    kart.speed += accel * dt;
+    const targetThrottle = input.accel ? 1 : input.brake ? -0.68 : 0;
+    kart.throttle = lerp(kart.throttle, targetThrottle, clamp(dt * 8.5, 0, 1));
+    kart.steerInput = lerp(kart.steerInput, input.turn || 0, clamp(dt * 10.5, 0, 1));
+    kart.speed += kart.accel * kart.throttle * dt;
     const maxSpeed = kart.maxSpeed + (kart.boost > 0 ? 118 : 0);
     kart.speed = clamp(kart.speed, -88, maxSpeed);
-    const drag = surface === 'ice' ? 0.994 : surface === 'slow' ? 0.952 : onTrack ? 0.99 : Math.max(this.track.offroadDrag, 0.965);
+    const drag = surface === 'ice' ? 0.994 : surface === 'slow' ? 0.952 : onTrack ? 0.992 : Math.max(this.track.offroadDrag, 0.965);
     kart.speed *= Math.pow(drag, dt * 60);
     if (kart.spin > 0) kart.speed *= 0.965;
     const driftHeld = input.drift && Math.abs(kart.speed) > 80;
     kart.drift = clamp(kart.drift + (driftHeld ? dt * 1.6 : -dt * 2.3), 0, 1);
     kart.driftCharge = driftHeld ? clamp(kart.driftCharge + dt, 0, 2.4) : kart.driftCharge;
     const grip = clamp((surface === 'ice' ? 0.68 : 1) + (kart.ai ? 0 : this.garageStats.gripBonus), 0.62, 1.22);
-    const turnPower = (0.55 + clamp(Math.abs(kart.speed) / 220, 0, 1) * 0.85) * (kart.drift ? 1.35 : 1) * grip;
-    kart.angle += input.turn * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
+    const speedRatio = clamp(Math.abs(kart.speed) / 220, 0, 1);
+    const turnPower = (0.24 + speedRatio * 1.02) * (kart.drift ? 1.35 : 1) * grip;
+    kart.angle += kart.steerInput * kart.turnRate * turnPower * dt * (kart.speed >= 0 ? 1 : -1);
+    if (!kart.ai && Math.abs(input.turn || 0) < 0.42 && Math.abs(kart.speed) > 48) {
+      const lookAhead = 62 + clamp(Math.abs(kart.speed), 0, 280) * 0.28;
+      const target = this.getTrackPointAhead(road, lookAhead);
+      const desired = target ? Math.atan2(target.y - kart.y, target.x - kart.x) : road.angle;
+      const assist = angleDelta(kart.angle, desired);
+      const assistStrength = road.factor < 0.42 ? 2.25 : 1.05;
+      kart.angle += clamp(assist, -0.92, 0.92) * dt * assistStrength;
+    }
     
     if (driftHeld && kart.drift > 0.12) {
       let sparkColor = null;
@@ -857,7 +912,7 @@ export class EngineRace {
     }
     kart.x += Math.cos(kart.angle) * kart.speed * dt;
     kart.y += Math.sin(kart.angle) * kart.speed * dt;
-    this.applyTrackBounds(kart);
+    this.applyTrackBounds(kart, dt);
     this.applyBoostPads(kart);
     this.applySurfaceZones(kart);
     this.applyHazards(kart);
@@ -865,24 +920,32 @@ export class EngineRace {
     this.collectItem(kart);
     if (!kart.ai) this.applySlipstream();
     this.updateCheckpoints(kart);
+    const wantsForward = input.accel && !input.brake;
+    if (wantsForward && Math.abs(kart.speed) < 18 && road.factor < 0.38) {
+      kart.stuckTimer += dt;
+      if (kart.stuckTimer > 1.8) this.recoverKart(kart, 'Reancrage automatique: sortie de piste');
+    } else {
+      kart.stuckTimer = Math.max(0, kart.stuckTimer - dt * 2);
+    }
   }
 
   updateAiKart(kart, dt) {
-    const target = this.track.waypoints[kart.waypoint];
-    const previous = this.track.waypoints[(kart.waypoint + this.track.waypoints.length - 1) % this.track.waypoints.length];
-    const laneAngle = Math.atan2(target.y - previous.y, target.x - previous.x) + Math.PI / 2;
+    const road = this.getKartRoadAnchor(kart);
+    const lookAhead = 78 + clamp(Math.abs(kart.speed), 0, 260) * 0.42;
+    const target = this.getTrackPointAhead(road, lookAhead) || this.track.waypoints[kart.waypoint];
+    const nextTarget = this.getTrackPointAhead(road, lookAhead + 42) || target;
+    const laneAngle = Math.atan2(nextTarget.y - target.y, nextTarget.x - target.x) + Math.PI / 2;
     const targetWithLane = {
       x: target.x + Math.cos(laneAngle) * kart.laneOffset,
       y: target.y + Math.sin(laneAngle) * kart.laneOffset
     };
-    if (distance(kart, targetWithLane) < 72) {
-      kart.waypoint = (kart.waypoint + 1) % this.track.waypoints.length;
-    }
+    kart.waypoint = ((target.segmentIndex ?? road.segment) + 1) % this.track.waypoints.length;
     const desired = Math.atan2(targetWithLane.y - kart.y, targetWithLane.x - kart.x);
     const delta = angleDelta(kart.angle, desired);
     const difficultyWave = Math.sin(this.time * 0.9 + kart.laneOffset) * 0.16;
     kart.aiInput = {
       accel: true,
+      manualAccel: false,
       brake: Math.abs(delta) > 1.25 && kart.speed > 185,
       turn: clamp(delta * 1.35 + difficultyWave, -1, 1),
       drift: Math.abs(delta) > 0.62 && kart.speed > 145
@@ -905,22 +968,25 @@ export class EngineRace {
   }
 
   getPlayerInput() {
+    const manualAccel = Boolean(this.keys.manualAccel || this.keys.up || this.keys.w);
     return {
-      accel: Boolean(this.keys.up || this.keys.w),
+      accel: Boolean(this.keys.autoAccel || this.keys.up || this.keys.w),
+      manualAccel,
       brake: Boolean(this.keys.down || this.keys.s),
       turn: (this.keys.left || this.keys.a ? -1 : 0) + (this.keys.right || this.keys.d ? 1 : 0),
       drift: Boolean(this.keys.space)
     };
   }
 
-  applyTrackBounds(kart) {
+  applyTrackBounds(kart, dt = 1 / 60) {
     kart.x = clamp(kart.x, 34, this.width - 34);
     kart.y = clamp(kart.y, 34, this.height - 34);
-    const road = this.getClosestRoadPoint(kart.x, kart.y);
-    if (road.factor < 0.16) {
-      kart.x = lerp(kart.x, road.x, 0.08);
-      kart.y = lerp(kart.y, road.y, 0.08);
-      kart.speed *= 0.975;
+    const road = this.getKartRoadAnchor(kart);
+    if (road.factor < 0.28) {
+      const pull = clamp((0.32 - road.factor) * dt * 4.8, 0.018, 0.12);
+      kart.x = lerp(kart.x, road.x, pull);
+      kart.y = lerp(kart.y, road.y, pull);
+      kart.speed *= Math.pow(0.975, dt * 60);
     }
   }
 
@@ -936,6 +1002,70 @@ export class EngineRace {
 
   getClosestRoadPoint(x, y) {
     return closestPointOnPath(this.track.waypoints || [], x, y, this.track.roadWidth);
+  }
+
+  getKartRoadAnchor(kart) {
+    const points = this.track.waypoints || [];
+    if (!kart || points.length < 2) return this.getClosestRoadPoint(kart?.x || 0, kart?.y || 0);
+    const preferred = Number.isInteger(kart.routeSegment) ? kart.routeSegment : 0;
+    let best = null;
+    points.forEach((point, segment) => {
+      const next = points[(segment + 1) % points.length];
+      const projected = projectPointToSegment(point, next, kart.x, kart.y);
+      const rawGap = Math.abs(segment - preferred);
+      const segmentGap = Math.min(rawGap, points.length - rawGap);
+      const continuityPenalty = segmentGap > 2 ? this.track.roadWidth * 0.34 : segmentGap * 2;
+      const headingPenalty = Math.abs(kart.speed) > 24
+        ? Math.abs(angleDelta(kart.angle, projected.angle)) * this.track.roadWidth * 0.08
+        : 0;
+      const score = projected.distance + continuityPenalty + headingPenalty;
+      if (!best || score < best.score) {
+        best = { ...projected, segment, score };
+      }
+    });
+    if (!best || best.distance > this.track.roadWidth * 1.65) {
+      best = this.getClosestRoadPoint(kart.x, kart.y);
+    }
+    best.factor = clamp(1 - best.distance / (this.track.roadWidth * 0.9), 0, 1);
+    kart.routeSegment = best.segment;
+    return best;
+  }
+
+  getRouteProgress(road) {
+    const metrics = this.track.pathMetrics || buildPathMetrics(this.track.waypoints || []);
+    const segmentLength = metrics.segmentLengths[road.segment] || 0;
+    return clamp((metrics.cumulative[road.segment] + segmentLength * road.t) / metrics.totalLength, 0, 0.9999);
+  }
+
+  recoverKart(kart, message = null) {
+    if (!kart || kart.recoveryCooldown > 0) return false;
+    const road = this.getClosestRoadPoint(kart.x, kart.y);
+    kart.x = road.x;
+    kart.y = road.y;
+    kart.angle = road.angle;
+    kart.routeSegment = road.segment;
+    kart.waypoint = (road.segment + 1) % this.track.waypoints.length;
+    kart.speed = Math.max(72, Math.min(Math.abs(kart.speed), 118));
+    kart.spin = 0;
+    kart.stuckTimer = 0;
+    kart.recoveryCooldown = 1.2;
+    this.spawnParticles(kart.x, kart.y, '#d8fffb', 14);
+    if (!kart.ai && message) this.showMessage(message);
+    return true;
+  }
+
+  recoverPlayer() {
+    return this.recoverKart(this.player, 'Reancrage sur le couloir de course');
+  }
+
+  getTelemetry() {
+    const road = this.getKartRoadAnchor(this.player);
+    return {
+      raceState: this.raceState,
+      countdown: this.countdown,
+      trackFactor: road.factor,
+      routeProgress: this.player.routeProgress
+    };
   }
 
   getSurfaceAt(x, y) {
@@ -1054,26 +1184,31 @@ export class EngineRace {
   }
 
   updateCheckpoints(kart) {
-    const current = this.track.checkpoints[kart.checkpoint];
-    if (current && distance(kart, current) < current.r) {
-      kart.checkpoint += 1;
-      if (kart.checkpoint >= this.track.checkpoints.length) {
-        kart.checkpoint = 0;
-        kart.lap += 1;
-        if (!kart.ai) this.showMessage(kart.lap >= this.track.laps ? 'Dernier verrou scelle' : `Tour ${kart.lap + 1}/${this.track.laps}`);
-        if (kart.lap >= this.track.laps) {
-          kart.finished = true;
-          kart.finishTime = this.time;
-        }
-      }
+    const road = this.getKartRoadAnchor(kart);
+    const routeProgress = this.getRouteProgress(road);
+    const previousProgress = kart.previousRouteProgress;
+    const checkpointCount = Math.max(1, this.track.checkpoints.length);
+    kart.routeProgress = routeProgress;
+    kart.checkpoint = Math.min(checkpointCount - 1, Math.floor(routeProgress * checkpointCount));
+    if (routeProgress > 0.4) kart.lapArmed = true;
+    const crossedStart = kart.lapArmed && previousProgress > 0.4 && routeProgress < 0.18 && previousProgress - routeProgress > 0.28;
+    kart.previousRouteProgress = routeProgress;
+    if (!crossedStart) return;
+    kart.lap += 1;
+    kart.lapArmed = false;
+    if (!kart.ai) this.showMessage(kart.lap >= this.track.laps ? 'Dernier verrou scelle' : `Tour ${kart.lap + 1}/${this.track.laps}`);
+    if (kart.lap >= this.track.laps) {
+      kart.finished = true;
+      kart.finishTime = this.time;
     }
   }
 
   updateProgressAndRanks() {
     const racers = [this.player, ...this.opponents];
     racers.forEach(kart => {
-      const nextCheckpoint = kart.checkpoint / this.track.checkpoints.length;
-      kart.progress = kart.lap + nextCheckpoint;
+      const road = this.getKartRoadAnchor(kart);
+      kart.routeProgress = this.getRouteProgress(road);
+      kart.progress = kart.lap + kart.routeProgress;
     });
     racers
       .slice()
@@ -1494,23 +1629,8 @@ export class EngineRace {
   }
 
   getPlayerRoadAnchor() {
-    const points = this.track.waypoints || [];
-    if (points.length < 2) return null;
-    let best = { segment: 0, t: 0, x: points[0].x, y: points[0].y, distance: Infinity };
-    points.forEach((point, index) => {
-      const next = points[(index + 1) % points.length];
-      const vx = next.x - point.x;
-      const vy = next.y - point.y;
-      const lengthSq = vx * vx + vy * vy || 1;
-      const t = clamp(((this.player.x - point.x) * vx + (this.player.y - point.y) * vy) / lengthSq, 0, 1);
-      const x = point.x + vx * t;
-      const y = point.y + vy * t;
-      const distanceToPlayer = Math.hypot(this.player.x - x, this.player.y - y);
-      if (distanceToPlayer < best.distance) {
-        best = { segment: index, t, x, y, distance: distanceToPlayer };
-      }
-    });
-    return best;
+    if ((this.track.waypoints || []).length < 2) return null;
+    return this.getKartRoadAnchor(this.player);
   }
 
   getTrackPointAhead(anchor, distanceAhead) {

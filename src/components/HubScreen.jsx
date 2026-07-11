@@ -9,7 +9,7 @@ import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_I
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
-import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
+import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
@@ -53,14 +53,19 @@ const HUB_NAV_GROUPS = [
     ]
   },
   {
+    id: 'portal',
+    portal: true,
+    label: { fr: 'PORTAIL DE BRECHE', en: 'BREACH PORTAL' },
+    title: { fr: 'Ouvre directement le recrutement de nouvelles signatures.', en: 'Open new signature recruitment directly.' },
+    tabs: []
+  },
+  {
     id: 'arsenal',
     label: { fr: 'ARSENAL', en: 'ARSENAL' },
-    title: { fr: 'Equipement, collection et acquisitions', en: 'Equipment, collection, and acquisitions' },
+    title: { fr: 'Equipement et echange de ressources', en: 'Equipment and resource exchange' },
     tabs: [
       { id: 'inventory', label: { fr: 'ARMURERIE', en: 'ARMORY' }, title: { fr: 'Equipe les reliques et objets evenementiels de chaque heros.', en: 'Equip each hero with relics and event items.' } },
-      { id: 'collection', label: { fr: 'COLLECTION', en: 'COLLECTION' }, title: { fr: 'Inspecte les univers, ennemis, stages et objets archives.', en: 'Inspect archived universes, enemies, stages, and items.' } },
-      { id: 'shop', label: { fr: 'ECHANGE DE SIGNAUX', en: 'SIGNAL EXCHANGE' }, title: { fr: 'Depense les ressources dans la boutique et les evenements.', en: 'Spend resources in the shop and event exchange.' } },
-      { id: 'portal', portal: true, label: { fr: 'PORTAIL DE BRECHE', en: 'BREACH PORTAL' }, title: { fr: 'Depense des fragments pour obtenir de nouvelles signatures de heros.', en: 'Spend shards to obtain new hero signatures.' } }
+      { id: 'shop', label: { fr: 'ECHANGE DE SIGNAUX', en: 'SIGNAL EXCHANGE' }, title: { fr: 'Depense les ressources dans la boutique et les evenements.', en: 'Spend resources in the shop and event exchange.' } }
     ]
   },
   {
@@ -68,6 +73,7 @@ const HUB_NAV_GROUPS = [
     label: { fr: 'ARCHIVES', en: 'ARCHIVES' },
     title: { fr: 'Lore, chronologie et regulation', en: 'Lore, chronology, and regulation' },
     tabs: [
+      { id: 'collection', label: { fr: 'COLLECTION', en: 'COLLECTION' }, title: { fr: 'Inspecte les univers, ennemis, stages et objets archives.', en: 'Inspect archived universes, enemies, stages, and items.' } },
       { id: 'codex', label: { fr: 'CODEX & LORE', en: 'CODEX & LORE' }, title: { fr: 'Lis le lore du Nexus, des univers et des arcs.', en: 'Read Nexus, universe, and arc lore.' } },
       { id: 'admin', label: { fr: 'REGULATION A.R.C.A.', en: 'A.R.C.A. REGULATION' }, title: { fr: 'Masque ou reactive les univers, stages et assets affiches.', en: 'Hide or restore displayed universes, stages, and assets.' } }
     ]
@@ -247,7 +253,7 @@ function NarrativeArcSequencePanel({ lang, arcs, stages, completedStages, onSele
                       type="button"
                       disabled={!clickable}
                       onClick={() => clickable && onSelectStage(node.stage)}
-                      className="btn-retro"
+                      className="btn-retro mission-screen-card"
                       style={{
                         textAlign: 'left',
                         borderColor: color,
@@ -2884,9 +2890,13 @@ export default function HubScreen({
     sound.playSfx('coin');
   }, [onGoToPortal]);
   const openNavigationGroup = useCallback((group) => {
+    if (group.portal) {
+      onGoToPortal();
+      return;
+    }
     const currentTab = group.tabs.find(tab => tab.id === activeTab);
     openNavigationTab(currentTab || group.tabs.find(tab => !tab.portal) || group.tabs[0]);
-  }, [activeTab, openNavigationTab]);
+  }, [activeTab, onGoToPortal, openNavigationTab]);
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
@@ -5676,37 +5686,43 @@ export default function HubScreen({
       label: { fr: 'Campagne OC', en: 'OC campaign' },
       desc: { fr: 'Campagne principale du Nexus: uniquement stages OC, chapitre actif et seuil du Sans-Auteur.', en: 'Main Nexus campaign: OC stages only, active chapter, and Authorless threshold.' },
       count: storyMissionCount,
-      color: '#39c5bb'
+      color: '#39c5bb',
+      image: '/images/missions/campaign-oc.webp'
     },
     factionArcs: {
       label: { fr: 'Arcs narratifs de faction', en: 'Faction narrative arcs' },
       desc: { fr: 'Conflits transversaux entre factions du Nexus, avec progression, traces et recompenses dediees.', en: 'Cross-faction Nexus conflicts with dedicated progress, traces, and rewards.' },
       count: factionArcCount,
-      color: '#ffeb3b'
+      color: '#ffeb3b',
+      image: '/images/missions/faction-arcs.webp'
     },
     universeArcs: {
       label: { fr: 'Arcs narratifs par univers', en: 'Universe narrative arcs' },
       desc: { fr: 'Suites d univers lies par franchise, theme ou consequence de Trame.', en: 'Universe chains linked by franchise, theme, or Thread consequence.' },
       count: universeArcMissionCount,
-      color: '#ffb15c'
+      color: '#ffb15c',
+      image: '/images/missions/universe-arcs.webp'
     },
     personalArcs: {
       label: { fr: 'Arcs narratifs personnels', en: 'Personal narrative arcs' },
       desc: { fr: 'Missions centrees sur le dilemme propre de chaque heros possede.', en: 'Missions centered on each owned hero personal dilemma.' },
       count: personalArcMissionCount,
-      color: '#9b59b6'
+      color: '#9b59b6',
+      image: '/images/missions/personal-arcs.webp'
     },
     trioArcs: {
       label: { fr: 'Arcs narratifs trio', en: 'Trio narrative arcs' },
       desc: { fr: 'Cellules de trois personnages avec liens croises et histoire commune.', en: 'Three-character cells with crossed bonds and a shared story.' },
       count: trioArcMissionCount,
-      color: '#2ecc71'
+      color: '#2ecc71',
+      image: '/images/missions/trio-arcs.webp'
     },
     fusionMissions: {
       label: { fr: 'Failles fusionnees', en: 'Fused rifts' },
       desc: { fr: 'Missions hybrides ou plusieurs univers imposent leurs decors, ennemis et objets dans une meme breche.', en: 'Hybrid missions where several universes force their stages, enemies, and items into one breach.' },
       count: fusionMissionCount,
-      color: '#ff5f7e'
+      color: '#ff5f7e',
+      image: '/images/missions/fusion-rifts.webp'
     }
   };
   const selectedMissionMeta = missionScreenMeta[missionScreen] || missionScreenMeta.story;
@@ -6061,7 +6077,7 @@ export default function HubScreen({
             <button
               key={group.id}
               type="button"
-              className={activeNavGroup.id === group.id ? 'is-active' : ''}
+              className={`${activeNavGroup.id === group.id ? 'is-active' : ''} ${group.portal ? 'is-portal' : ''}`}
               onClick={() => openNavigationGroup(group)}
               title={getLocalizedText(group.title, lang)}
             >
@@ -6208,19 +6224,30 @@ export default function HubScreen({
                       className="btn-retro"
                       title={lang === 'fr' ? `Ouvre cet ecran de missions: ${entry.label.fr}.` : `Open this mission screen: ${entry.label.en}.`}
                       style={{
-                        minHeight: '154px',
-                        padding: '14px',
+                        minHeight: '226px',
+                        padding: 0,
                         textAlign: 'left',
                         borderColor: entry.color,
                         background: `${entry.color}10`,
                         color: '#fff',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
-                        gap: '12px'
+                        display: 'grid',
+                        gridTemplateRows: '104px minmax(0, 1fr) auto',
+                        overflow: 'hidden'
                       }}
                     >
-                      <span>
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          display: 'block',
+                          width: '100%',
+                          height: '104px',
+                          backgroundImage: `linear-gradient(180deg, transparent 55%, rgba(2,1,8,0.86)), url("${entry.image}")`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          borderBottom: `1px solid ${entry.color}55`
+                        }}
+                      />
+                      <span style={{ display: 'block', padding: '12px 14px 8px' }}>
                         <span style={{ display: 'block', color: entry.color, fontSize: '11px', marginBottom: '8px', textTransform: 'uppercase' }}>
                           {entry.label[lang]}
                         </span>
@@ -6228,7 +6255,7 @@ export default function HubScreen({
                           {entry.desc[lang]}
                         </span>
                       </span>
-                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#ffeb3b', fontSize: '10px' }}>
+                      <span style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: '#ffeb3b', fontSize: '10px', padding: '4px 14px 13px' }}>
                         <b>{entry.count} {key === 'factionArcs' ? (lang === 'fr' ? 'arcs' : 'arcs') : (lang === 'fr' ? 'missions' : 'missions')}</b>
                         <span>{lang === 'fr' ? 'OUVRIR' : 'OPEN'}</span>
                       </span>
@@ -9138,19 +9165,40 @@ export default function HubScreen({
                       {(selectedUniverseArchive.heroes.length ? selectedUniverseArchive.heroes : []).map(hero => {
                         const unlocked = unlockedHeroes.includes(hero.id);
                         const stats = getHeroStats(hero);
+                        const spriteSrc = getHeroSpriteSheetSrc(hero, 'collection');
+                        const spriteLayout = getSpriteSheetLayout(spriteSrc);
                         return (
-                          <div key={hero.id} style={{ padding: '8px', border: `1px solid ${hero.primaryColor}55`, background: `${hero.primaryColor}12`, borderRadius: '4px' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
-                              <b style={{ color: hero.primaryColor, fontSize: '11px' }}>{hero.name}</b>
-                              <span style={{ color: unlocked ? '#2ecc71' : '#777', fontSize: '9px' }}>
-                                {unlocked ? (lang === 'fr' ? 'Recrute' : 'Recruited') : (lang === 'fr' ? 'Archive' : 'Archive')}
-                              </span>
-                            </div>
-                            <div style={{ color: '#aaa', fontSize: '9px', marginTop: '4px' }}>
-                              {hero.category} / Lv {heroLevels[hero.id] || 1} / HP {stats.hp} ATK {stats.atk} DEF {stats.def}
-                            </div>
-                            <div style={{ color: '#d0d0d0', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
-                              {getLocalizedText(getCharacterPlaque(hero).breachLore, lang, getCharacterPlaque(hero).dossier?.[lang])}
+                          <div key={hero.id} style={{ display: 'grid', gridTemplateColumns: '84px minmax(0, 1fr)', gap: '9px', padding: '8px', border: `1px solid ${hero.primaryColor}55`, background: `${hero.primaryColor}12`, borderRadius: '4px' }}>
+                            <div
+                              role="img"
+                              aria-label={`${hero.name} sprite`}
+                              title={lang === 'fr' ? `Plaquette de ${hero.name}` : `${hero.name} sprite sheet`}
+                              style={{
+                                width: '84px',
+                                height: '96px',
+                                alignSelf: 'start',
+                                border: `1px solid ${hero.primaryColor}66`,
+                                backgroundColor: '#050509',
+                                backgroundImage: `url("${spriteSrc}")`,
+                                backgroundRepeat: 'no-repeat',
+                                backgroundSize: `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
+                                backgroundPosition: '0 0',
+                                imageRendering: 'pixelated'
+                              }}
+                            />
+                            <div style={{ minWidth: 0 }}>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
+                                <b style={{ color: hero.primaryColor, fontSize: '11px' }}>{hero.name}</b>
+                                <span style={{ color: unlocked ? '#2ecc71' : '#777', fontSize: '9px' }}>
+                                  {unlocked ? (lang === 'fr' ? 'Recrute' : 'Recruited') : (lang === 'fr' ? 'Archive' : 'Archive')}
+                                </span>
+                              </div>
+                              <div style={{ color: '#aaa', fontSize: '9px', marginTop: '4px' }}>
+                                {hero.category} / Lv {heroLevels[hero.id] || 1} / HP {stats.hp} ATK {stats.atk} DEF {stats.def}
+                              </div>
+                              <div style={{ color: '#d0d0d0', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
+                                {getLocalizedText(getCharacterPlaque(hero).breachLore, lang, getCharacterPlaque(hero).dossier?.[lang])}
+                              </div>
                             </div>
                           </div>
                         );

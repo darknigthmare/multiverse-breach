@@ -255,6 +255,13 @@ class SoundEngine {
     }
   }
 
+  playStageBgm(stage = {}) {
+    const mode = String(stage.mode || 'RPG');
+    const universe = String(stage.universe || 'Nexus');
+    const stageId = String(stage.id || stage.name || 'unknown-stage');
+    this.playBgm(`stage|${mode}|${universe}|${stageId}`);
+  }
+
   playBgm(theme) {
     this.resume();
     this.bgmTheme = theme;
@@ -269,6 +276,8 @@ class SoundEngine {
     let melody = [];
     let bass = [];
     let tempo = 120;
+    let leadWave = 'triangle';
+    let bassWave = 'square';
 
     if (theme === 'hub') {
       tempo = 110;
@@ -278,6 +287,31 @@ class SoundEngine {
       tempo = 140;
       melody = [E4, E4, 0, G4, A4, G4, B4, A4, E4, E4, 0, D5, C5, B4, A4, G4];
       bass = [E3, B3, E3, B3, G3, D3, G3, D3, A3, E3, A3, E3, B3, FS3, B3, B3];
+    } else if (String(theme).startsWith('stage|')) {
+      const [, mode = 'RPG'] = String(theme).split('|');
+      let seed = 2166136261;
+      for (const char of String(theme)) {
+        seed ^= char.charCodeAt(0);
+        seed = Math.imul(seed, 16777619) >>> 0;
+      }
+      const scales = [
+        [D4, E4, G4, A4, B4, D5],
+        [E4, G4, A4, B4, C5, D5],
+        [D4, E4, FS3 * 2, A4, B4, C5],
+        [E4, G4, A4, B4, D5, C5]
+      ];
+      const scale = scales[seed % scales.length];
+      const bassScale = [D3, E3, FS3, G3, A3, B3];
+      const length = 24;
+      melody = Array.from({ length }, (_, index) => {
+        const value = (seed + index * 17 + Math.imul(index + 3, index + 7)) >>> 0;
+        if ((value % 11) === 0 || (mode === 'Tactics' && index % 8 === 7)) return 0;
+        return scale[value % scale.length];
+      });
+      bass = Array.from({ length }, (_, index) => bassScale[((seed >>> 4) + Math.floor(index / 2) * 3) % bassScale.length]);
+      tempo = mode === 'Smash' ? 154 + (seed % 14) : mode === 'Tactics' ? 116 + (seed % 12) : 126 + (seed % 16);
+      leadWave = mode === 'Smash' ? 'square' : mode === 'Tactics' ? 'sine' : 'triangle';
+      bassWave = mode === 'Tactics' ? 'triangle' : 'square';
     } else {
       return;
     }
@@ -297,7 +331,7 @@ class SoundEngine {
         if (currentMelodyNote > 0) {
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
-          osc.type = 'triangle';
+          osc.type = leadWave;
           osc.frequency.setValueAtTime(currentMelodyNote, nextNoteTime);
           gain.gain.setValueAtTime(0.05, nextNoteTime);
           gain.gain.linearRampToValueAtTime(0.005, nextNoteTime + noteDuration - 0.02);
@@ -311,7 +345,7 @@ class SoundEngine {
         if (currentBassNote > 0) {
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
-          osc.type = 'square';
+          osc.type = bassWave;
           osc.frequency.setValueAtTime(currentBassNote, nextNoteTime);
           gain.gain.setValueAtTime(0.04, nextNoteTime);
           gain.gain.linearRampToValueAtTime(0.005, nextNoteTime + noteDuration - 0.02);

@@ -59,6 +59,7 @@ export class EngineRpg {
     this.selectedHeroId = this.heroes[0].id;
     this.gameOver = false;
     this.victoryTimer = 0;
+    this.completionReported = false;
     this.autoBattle = false;
     this.enemyActionLock = false;
     this.enemyGlobalRecovery = 70;
@@ -440,7 +441,8 @@ export class EngineRpg {
   update() {
     if (this.gameOver) {
       this.victoryTimer++;
-      if (this.victoryTimer > 120) {
+      if (this.victoryTimer > 120 && !this.completionReported) {
+        this.completionReported = true;
         const alive = this.heroes.some(h => h.currentHp > 0);
         this.onComplete(alive ? 'victory' : 'defeat');
       }

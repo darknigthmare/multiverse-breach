@@ -16,6 +16,11 @@ export const MIRELLE_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/nexus-de-
 export const SERJ_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/system-of-a-down/serj-tankian-complete';
 export const BUCKET_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/buckhead/bucket-guitar-echo-complete';
 export const ARTHUR_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete';
+export const HALO_COMPLETE_SPRITE_BASES = {
+  masterchief: '/sprites/generated/heroes/halo/master-chief-complete',
+  arbiter: '/sprites/generated/heroes/halo/arbiter-complete',
+  johnson: '/sprites/generated/heroes/halo/avery-johnson-complete'
+};
 
 export const ROI_BURGONDE_BOSS_SPRITE = '/sprites/generated/bosses/kaamelott/roi-burgonde.png';
 
@@ -116,6 +121,24 @@ export const ARTHUR_COMPLETE_SPRITE_PACK = [
   { id: 'fps', label: 'FPS epee / effets', src: ARTHUR_COMPLETE_SPRITES.fps },
   { id: 'kart', label: 'Kart', src: ARTHUR_COMPLETE_SPRITES.kart }
 ];
+
+export const HALO_COMPLETE_SPRITES = {
+  masterchief: `${HALO_COMPLETE_SPRITE_BASES.masterchief}/master-chief-universal.png`,
+  arbiter: `${HALO_COMPLETE_SPRITE_BASES.arbiter}/arbiter-universal.png`,
+  johnson: `${HALO_COMPLETE_SPRITE_BASES.johnson}/avery-johnson-universal.png`
+};
+
+export const HALO_COMPLETE_SPRITE_PACKS = {
+  masterchief: [
+    { id: 'universal', label: 'Halo / gameplay complet', src: HALO_COMPLETE_SPRITES.masterchief }
+  ],
+  arbiter: [
+    { id: 'universal', label: 'Halo / gameplay complet', src: HALO_COMPLETE_SPRITES.arbiter }
+  ],
+  johnson: [
+    { id: 'universal', label: 'Halo / gameplay complet', src: HALO_COMPLETE_SPRITES.johnson }
+  ]
+};
 
 export const SPRITE_SHEET_LAYOUTS = {
   [MIRELLE_COMPLETE_SPRITES.rpg]: {
@@ -293,6 +316,21 @@ export const SPRITE_SHEET_LAYOUTS = {
     rows: 8,
     rowByState: { idle: 0, run: 2, attack: 3, defense: 5, hit: 6, dead: 6 }
   },
+  [HALO_COMPLETE_SPRITES.masterchief]: {
+    columns: 4,
+    rows: 8,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 4, hit: 6, dead: 7 }
+  },
+  [HALO_COMPLETE_SPRITES.arbiter]: {
+    columns: 4,
+    rows: 8,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 4, hit: 6, dead: 7 }
+  },
+  [HALO_COMPLETE_SPRITES.johnson]: {
+    columns: 4,
+    rows: 4,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 0, hit: 3, dead: 3 }
+  },
   [ROI_BURGONDE_BOSS_SPRITE]: {
     columns: 4,
     rows: 12,
@@ -305,8 +343,11 @@ export const getHeroCompleteSpritePack = (hero) => {
   if (hero?.id === 'serj_tankian') return SERJ_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'bucket_guitar_echo') return BUCKET_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arthur_kaamelott') return ARTHUR_COMPLETE_SPRITE_PACK;
+  if (HALO_COMPLETE_SPRITE_PACKS[hero?.id]) return HALO_COMPLETE_SPRITE_PACKS[hero.id];
   return null;
 };
+
+const getHaloSpriteForContext = (hero) => HALO_COMPLETE_SPRITES[hero?.id] || null;
 
 const getMirelleSpriteForContext = (hero, context = 'auto') => {
   if (hero?.id !== 'arca_mirelle') return null;
@@ -374,6 +415,8 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (bucketSprite) return bucketSprite;
   const arthurSprite = getArthurSpriteForContext(hero, context);
   if (arthurSprite) return arthurSprite;
+  const haloSprite = getHaloSpriteForContext(hero, context);
+  if (haloSprite) return haloSprite;
   return `/sprites/generated/heroes/${slugifyAsset(hero.universe)}/${slugifyAsset(hero.id)}.png`;
 };
 

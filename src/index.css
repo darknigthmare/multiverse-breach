@@ -617,6 +617,114 @@ body {
   font-size: 10px;
 }
 
+.race-preflight-grid {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(320px, 1.28fr);
+  gap: 14px;
+}
+
+.race-preflight-section,
+.race-preflight-launch {
+  border: 1px solid rgba(57, 197, 187, 0.22);
+  border-radius: 6px;
+  background: rgba(5, 7, 14, 0.8);
+  padding: 14px;
+}
+
+.race-preflight-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #39c5bb;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.race-pilot-option {
+  width: 100%;
+  min-height: 118px;
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 5px;
+  background: rgba(255,255,255,0.025);
+  color: #d8fffb;
+  text-align: left;
+  cursor: pointer;
+}
+
+.race-pilot-option.active {
+  border-color: #ffeb3b;
+  background: rgba(255,235,59,0.08);
+  box-shadow: inset 0 0 22px rgba(255,235,59,0.06);
+}
+
+.race-pilot-option img {
+  width: 110px;
+  height: 92px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: #020204;
+}
+
+.race-pilot-option strong,
+.race-pilot-option small {
+  display: block;
+}
+
+.race-pilot-option small {
+  margin-top: 7px;
+  color: #91aaa9;
+}
+
+.race-preflight-tracks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 8px;
+}
+
+.race-preflight-launch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+
+.race-preflight-launch > div {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  color: #8aa5a5;
+  font-size: 11px;
+}
+
+.race-preflight-launch strong {
+  color: #fff;
+}
+
+.race-preflight-launch .btn-retro {
+  min-width: 190px;
+}
+
+.race-assist-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #d8fffb;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.race-assist-toggle input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #39c5bb;
+}
+
 .race-mode-grid {
   display: grid;
   grid-template-columns: minmax(520px, 1fr) 300px;
@@ -750,6 +858,21 @@ body {
   color: #d8fffb;
   font-size: 11px;
   line-height: 1.25;
+}
+
+.race-objective-card small {
+  display: block;
+  margin-top: 8px;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.race-anchor-ok {
+  color: #39c5bb;
+}
+
+.race-anchor-alert {
+  color: #ff8a65;
 }
 
 .race-cache-card {
@@ -892,7 +1015,7 @@ body {
 
 .race-touch-controls {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   padding: 10px;
 }
@@ -3056,6 +3179,19 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .race-preflight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .race-preflight-launch {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .race-preflight-launch .btn-retro {
+    width: 100%;
+  }
+
   .race-mode-canvas {
     min-height: 260px;
   }
@@ -4036,7 +4172,7 @@ summary:focus-visible {
 
 .hub-navigation-primary {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(0, 0, 0, 0.22);
 }
@@ -4061,6 +4197,17 @@ summary:focus-visible {
   background: rgba(57, 197, 187, 0.12);
   color: #8fe5df;
   box-shadow: inset 0 -2px #39c5bb;
+}
+
+.hub-navigation-primary button.is-portal {
+  color: #e2c5ff;
+  background: rgba(155, 89, 182, 0.09);
+  box-shadow: inset 0 -2px rgba(155, 89, 182, 0.72);
+}
+
+.hub-navigation-primary button.is-portal:hover {
+  background: rgba(155, 89, 182, 0.18);
+  color: #fff;
 }
 
 .hub-navigation-secondary {
