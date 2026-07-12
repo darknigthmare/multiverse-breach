@@ -18,6 +18,26 @@ export const CHARACTER_PLAQUES = {
     },
     tags: ['Nexus', 'Ancre', 'A.R.C.A.', 'Player']
   },
+  arca_bastion: {
+    clearance: 'ARC-BSTN',
+    rank: { fr: 'Gardien du Premier Rempart', en: 'First Bulwark Guardian' },
+    role: { fr: 'Protection lourde et controle de passage', en: 'Heavy protection and passage control' },
+    callSign: 'Bastion',
+    origin: { fr: 'Nexus de Convergence - Atrium avant la Premiere Breche', en: 'Nexus of Convergence - Atrium before the First Breach' },
+    dossier: {
+      fr: 'Bastion Korr commandait les equipes de securite de l Atrium quand Veyr ouvrit le premier reseau de passages. Il ne vient donc d aucune franchise annexe: son monde d origine est la Cite-Mosaique avant qu elle porte ce nom, lorsque chaque porte exigeait encore une cause, un registre et une personne responsable de sa fermeture. Pendant la Premiere Breche, Bastion maintint le Rempart Est assez longtemps pour evacuer neuf cellules, mais accepta de condamner une dixieme route dont A.R.C.A. effaca ensuite les noms. Depuis, son bouclier hexagonal n est pas un symbole d invulnerabilite; c est la preuve visible de chaque direction qu il choisit de proteger au prix des autres.',
+      en: 'Bastion Korr commanded Atrium security teams when Veyr opened the first passage network. He therefore comes from no side franchise: his origin world is Mosaic City before it carried that name, when every door still required a cause, a record, and someone responsible for closing it. During the First Breach, Bastion held the East Bulwark long enough to evacuate nine cells, but agreed to condemn a tenth route whose names A.R.C.A. later erased. His hexagonal shield is not a symbol of invulnerability; it is visible proof of every direction he chooses to protect at the expense of another.'
+    },
+    doctrine: {
+      fr: 'Dans la cellule ZERO, Bastion transforme la culpabilite en geometrie tactique: Rafale Atrium pour fixer une menace, Balise Barricade pour definir une route sure, Rempart d Ancre pour absorber une suppression et Verrou de Convergence pour condamner un passage mensonger. La Cour des faux passages lui offre une Cite parfaite ou personne n est mort sous son commandement. Il la refuse parce que cette victoire ignore les noms des sauves. Son arc Breach consiste a tenir une ligne reelle, imparfaite et partagee plutot qu a devenir le gardien solitaire d un monde invente pour le pardonner.',
+      en: 'Within Cell ZERO, Bastion turns guilt into tactical geometry: Atrium Burst pins a threat, Barricade Beacon defines a safe route, Anchor Bulwark absorbs deletion, and Convergence Lock seals a deceptive passage. The Court of False Passages offers him a perfect City where nobody died under his command. He refuses it because that victory does not know the names of those it claims he saved. His Breach arc is about holding a real, imperfect, shared line instead of becoming the lone guardian of a world invented to forgive him.'
+    },
+    threat: {
+      fr: 'Risque A.R.C.A.: les portails de regret peuvent convertir son instinct de protection en immobilisme et forcer toute la cellule a defendre une position deja perdue.',
+      en: 'A.R.C.A. risk: regret portals can turn his protective instinct into paralysis and force the whole cell to defend a position already lost.'
+    },
+    tags: ['Nexus', 'A.R.C.A.', 'Rempart', 'Portails', 'Tactical']
+  },
   marcus: {
     clearance: 'COG-01',
     rank: { fr: 'Sergent veteran', en: 'Veteran Sergeant' },

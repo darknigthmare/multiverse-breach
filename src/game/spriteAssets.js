@@ -13,6 +13,7 @@ export const slugifyAsset = (value) => String(value || 'unknown')
   .replace(/^-+|-+$/g, '') || 'unknown';
 
 export const MIRELLE_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete';
+export const BASTION_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete';
 export const SERJ_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/system-of-a-down/serj-tankian-complete';
 export const BUCKET_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/buckhead/bucket-guitar-echo-complete';
 export const ARTHUR_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete';
@@ -122,6 +123,14 @@ export const ARTHUR_COMPLETE_SPRITE_PACK = [
   { id: 'kart', label: 'Kart', src: ARTHUR_COMPLETE_SPRITES.kart }
 ];
 
+export const BASTION_COMPLETE_SPRITES = {
+  universal: `${BASTION_COMPLETE_SPRITE_BASE}/arca-bastion-universal-v1.png`
+};
+
+export const BASTION_COMPLETE_SPRITE_PACK = [
+  { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: BASTION_COMPLETE_SPRITES.universal }
+];
+
 export const HALO_COMPLETE_SPRITES = {
   masterchief: `${HALO_COMPLETE_SPRITE_BASES.masterchief}/master-chief-universal.png`,
   arbiter: `${HALO_COMPLETE_SPRITE_BASES.arbiter}/arbiter-universal.png`,
@@ -141,6 +150,11 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 };
 
 export const SPRITE_SHEET_LAYOUTS = {
+  [BASTION_COMPLETE_SPRITES.universal]: {
+    columns: 4,
+    rows: 8,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 3, support: 4, special: 5, hit: 6, dead: 7 }
+  },
   [MIRELLE_COMPLETE_SPRITES.rpg]: {
     columns: 4,
     rows: 12,
@@ -340,6 +354,7 @@ export const SPRITE_SHEET_LAYOUTS = {
 
 export const getHeroCompleteSpritePack = (hero) => {
   if (hero?.id === 'arca_mirelle') return MIRELLE_COMPLETE_SPRITE_PACK;
+  if (hero?.id === 'arca_bastion') return BASTION_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'serj_tankian') return SERJ_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'bucket_guitar_echo') return BUCKET_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arthur_kaamelott') return ARTHUR_COMPLETE_SPRITE_PACK;
@@ -348,6 +363,10 @@ export const getHeroCompleteSpritePack = (hero) => {
 };
 
 const getHaloSpriteForContext = (hero) => HALO_COMPLETE_SPRITES[hero?.id] || null;
+
+const getBastionSpriteForContext = (hero) => (
+  hero?.id === 'arca_bastion' ? BASTION_COMPLETE_SPRITES.universal : null
+);
 
 const getMirelleSpriteForContext = (hero, context = 'auto') => {
   if (hero?.id !== 'arca_mirelle') return null;
@@ -409,6 +428,8 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (!hero?.id) return '';
   const completeSprite = getMirelleSpriteForContext(hero, context);
   if (completeSprite) return completeSprite;
+  const bastionSprite = getBastionSpriteForContext(hero);
+  if (bastionSprite) return bastionSprite;
   const serjSprite = getSerjSpriteForContext(hero, context);
   if (serjSprite) return serjSprite;
   const bucketSprite = getBucketSpriteForContext(hero, context);

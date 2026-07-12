@@ -14,6 +14,8 @@ const battleItemsSource = read('../src/game/battleItems.js');
 const dlcSource = read('../src/game/dlcConfig.js');
 const appSource = read('../src/App.jsx');
 const hubSource = read('../src/components/HubScreen.jsx');
+const ocCampaignSource = read('../src/game/ocCampaign.js');
+const storySource = `${hubSource}\n${ocCampaignSource}`;
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const raceModeSource = read('../src/components/RaceMode.jsx');
 const smashEngineSource = read('../src/game/engineSmash.js');
@@ -33,8 +35,10 @@ const expectedOcEnemyNames = [
   'noeud-de-paradoxe',
   'fragment-vagabond',
   'drone-a-r-c-a-corrompu',
+  'pelerin-de-la-fausse-sortie',
   'greffier-du-voile',
   'juge-des-trames',
+  'cartographe-des-portes-mortes',
   'avatar-du-sans-auteur',
   'moteur-de-convergence-instable'
 ];
@@ -70,6 +74,7 @@ expectedOcItemIds.forEach(itemId => {
 });
 
 assert(enemiesSource.includes("'Nexus de Convergence'"), 'Base OC enemy table is missing.');
+assert(enemiesSource.includes('Pelerin de la Fausse Sortie') && enemiesSource.includes('Cartographe des Portes Mortes'), 'Chapter IV OC threats must remain connected to the Nexus enemy roster.');
 assert(hubSource.includes('ARC_UNLOCK_RULES.personalMinLevel'), 'Narrative arc level gates must stay wired.');
 assert(hubSource.includes('getUniverseArcRosterStatus'), 'Universe arc roster gates must stay wired.');
 assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must stay wired.');
@@ -77,11 +82,13 @@ assert(hubSource.includes('isCurrentStoryChapterStage'), 'Story mode must filter
 assert(hubSource.includes('storyChapterStages'), 'Story mode count must be based on the active chapter pool.');
 assert(hubSource.includes('isOcStoryStage') && hubSource.includes('stage?.baseGameStage'), 'Main story must be restricted to OC base-game stages.');
 assert(hubSource.includes('completedOcStoryClears'), 'Story chapter progression must count only completed OC story stages.');
-assert(hubSource.includes("worlds remain side archives") || hubSource.includes('DLC remain side archives'), 'Story copy must describe DLC as side archives, not campaign requirements.');
+assert(storySource.includes("worlds remain side archives") || storySource.includes('DLC remain side archives') || storySource.includes('Side universes may now join the Nexus'), 'Story copy must describe licensed universes as side archives, not campaign requirements.');
 assert(hubSource.includes('finalGameBoss: true') && hubSource.includes('dlcStage: true'), 'Meta final boss must be flagged as DLC/meta content outside the OC story.');
 assert(hubSource.includes('insertBeforeMetaStage'), 'Stage injection must keep OC/DLC arcs before the meta final boss.');
 assert(hubSource.includes('stage.finalGameBoss') && !hubSource.includes('stage.id === 38') && !hubSource.includes('id !== 38'), 'Hub logic must use finalGameBoss metadata instead of hard-coded stage id 38.');
-assert(hubSource.includes('storyBeat') && hubSource.includes('Scene OC Nexus'), 'OC campaign stages must expose narrative intro/outro beats.');
+assert(storySource.includes('storyBeat') && hubSource.includes('Scene OC Nexus'), 'OC campaign stages must expose narrative intro/outro beats.');
+assert(ocCampaignSource.includes('OC_CAMPAIGN_MISSIONS') && ocCampaignSource.includes('OC_CAMPAIGN_CHAPTERS'), 'OC campaign canon must stay centralized in its dedicated narrative module.');
+assert(hubSource.includes('<OcCampaignChronicle'), 'Story mode must expose the dedicated OC campaign chronicle.');
 assert(hubSource.includes("label: { fr: 'Campagne OC'"), 'Story tab must be labelled as an OC campaign.');
 assert(hubSource.includes('Separation histoire') && hubSource.includes('visibleDlcStages'), 'Admin diagnostics must separate OC story stages from active DLC stages.');
 assert(gameCanvasSource.includes('stage.finalGameBoss') && !gameCanvasSource.includes('stage.id === 38'), 'GameCanvas must route final combat through finalGameBoss metadata.');
@@ -119,6 +126,8 @@ assert(raceEngineSource.includes('drawTopDownMinimap') && raceModeSource.include
 });
 assert(rendererSource.includes("context = 'auto'") && rendererSource.includes('srcGetter(entity, context)'), 'Renderer must route hero sprites by mode context.');
 assert(spriteAssetsSource.includes('SPRITE_SHEET_LAYOUTS') && spriteAssetsSource.includes('rows: 12') && spriteAssetsSource.includes('rows: 10') && spriteAssetsSource.includes('rows: 6'), 'Mirelle complete sheets must declare real per-sheet crop layouts.');
+assert(spriteAssetsSource.includes('arca-bastion-universal-v1.png') && spriteAssetsSource.includes('BASTION_COMPLETE_SPRITE_PACK'), 'Bastion must keep his complete universal OC sprite pack routing.');
+assert(ocCampaignSource.includes('chapter-04-broken-portal-yard-v1.png') && ocCampaignSource.includes('chapter-05-white-threshold-v1.png'), 'Final OC chapters must keep their dedicated OpenAI key art.');
 assert(spriteAssetsSource.includes('normalizeSpriteSrc') && spriteAssetsSource.includes('new URL(value).pathname'), 'Sprite layout lookup must normalize absolute browser URLs before matching generated sheet paths.');
 assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.includes('getSpriteFrameForLayout'), 'Renderer must crop generated sprites through per-sheet layouts.');
 assert(rendererSource.includes('sourceY') && rendererSource.includes('sourceH') && spriteAssetsSource.includes('trimByState'), 'Renderer must support per-sheet trim data to avoid adjacent OpenAI sprite bleed.');
@@ -155,8 +164,9 @@ assert(hubSource.includes("drawPixelSprite(ctx, x, y + 24") && hubSource.include
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
 assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');
 assert(hubSource.includes("spritePreview.kind === 'pack'"), 'Admin sprite preview must render complete hero sprite packs.');
-assert(hubSource.includes('getUniverseArchiveDiagnostic') && hubSource.includes('blockedCollectionUniverses') && hubSource.includes('Univers non affiches'), 'Collection must expose diagnostic reasons for hidden or locked universes.');
-assert(hubSource.includes('incompleteCollectionUniverses') && hubSource.includes('Univers incomplets'), 'Collection must flag visible universes with missing active heroes, threats, or stages.');
+assert(hubSource.includes('getUniverseArchiveDiagnostic') && hubSource.includes('blockedCollectionUniverses') && hubSource.includes('Trames en reserve ou verrouillees'), 'A.R.C.A. Regulation must expose diagnostic reasons for hidden or locked universes.');
+assert(hubSource.includes('incompleteCollectionUniverses') && hubSource.includes('Trames a completer'), 'A.R.C.A. Regulation must flag visible universes with missing active heroes, threats, or stages.');
+assert(hubSource.includes("id: 'anchorProfile'") && hubSource.includes("activeTab === 'anchorProfile'"), 'Player identity and friend-code tools must live in a dedicated Anchor record instead of team management.');
 assert(hubSource.includes('spriteReadyCount') && hubSource.includes('IA {row.spriteReadyCount}/{row.spriteTotalCount}'), 'Admin universe rows must summarize OpenAI sprite coverage per universe.');
 [
   'Serj Tankian',

@@ -9,6 +9,7 @@ import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_I
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
+import { OC_CAMPAIGN, OC_CAMPAIGN_CHAPTERS, OC_CAMPAIGN_MISSIONS, getOcCampaignMission } from '../game/ocCampaign';
 import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
@@ -31,6 +32,223 @@ const getLocalizedText = (entry, lang, fallback = '') => {
   return entry[lang] || entry.fr || entry.en || fallback;
 };
 
+function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnlocked, onOpenBriefing }) {
+  const currentChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === currentChapter.id);
+  const nextMission = OC_CAMPAIGN_MISSIONS.find(mission => !completedStages.includes(mission.id) && isStageUnlocked(mission));
+  const [selectedMissionId, setSelectedMissionId] = useState(nextMission?.id || currentChapterMissions[0]?.id || OC_CAMPAIGN_MISSIONS[0].id);
+  const [cinematicMissionId, setCinematicMissionId] = useState(null);
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const selectedMission = getOcCampaignMission(selectedMissionId) || currentChapterMissions[0] || OC_CAMPAIGN_MISSIONS[0];
+  const selectedChapter = OC_CAMPAIGN_CHAPTERS.find(chapter => chapter.id === selectedMission.chapterId) || currentChapter;
+  const selectedChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === selectedChapter.id);
+  const selectedChapterClears = selectedChapterMissions.filter(mission => completedStages.includes(mission.id)).length;
+  const selectedChapterComplete = selectedChapterClears === selectedChapterMissions.length;
+  const cinematicMission = getOcCampaignMission(cinematicMissionId);
+  const cinematicScene = cinematicMission?.scenes?.[sceneIndex];
+
+  useEffect(() => {
+    if (!currentChapterMissions.some(mission => mission.id === selectedMissionId)) {
+      setSelectedMissionId(nextMission?.id || currentChapterMissions[0]?.id || OC_CAMPAIGN_MISSIONS[0].id);
+    }
+  }, [currentChapter.id, currentChapterMissions, nextMission?.id, selectedMissionId]);
+
+  useEffect(() => {
+    if (!cinematicMissionId) return undefined;
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setCinematicMissionId(null);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [cinematicMissionId]);
+
+  const openCinematic = (mission) => {
+    setCinematicMissionId(mission.id);
+    setSceneIndex(0);
+    sound.playSfx('click');
+  };
+
+  const closeCinematic = () => {
+    setCinematicMissionId(null);
+    setSceneIndex(0);
+    sound.playSfx('click');
+  };
+
+  return (
+    <section className="oc-campaign-chronicle" aria-labelledby="oc-campaign-title">
+      <div className="oc-campaign-hero">
+        <img src={selectedMission.image} alt="" />
+        <div className="oc-campaign-hero-shade" />
+        <div className="oc-campaign-hero-copy">
+          <span>{getLocalizedText(OC_CAMPAIGN.subtitle, lang)}</span>
+          <h2 id="oc-campaign-title">{getLocalizedText(OC_CAMPAIGN.title, lang)}</h2>
+          <p>{getLocalizedText(OC_CAMPAIGN.premise, lang)}</p>
+          <div className="oc-campaign-hero-meta">
+            <b>{completedStages.filter(id => OC_CAMPAIGN_MISSIONS.some(mission => mission.id === id)).length}/{OC_CAMPAIGN_MISSIONS.length} {lang === 'fr' ? 'operations stabilisees' : 'stabilized operations'}</b>
+            <em>{lang === 'fr' ? 'Menace' : 'Threat'}: {getLocalizedText(OC_CAMPAIGN.threat, lang)}</em>
+          </div>
+        </div>
+      </div>
+
+      <div className="oc-chapter-record">
+        <div className="oc-chapter-record-head">
+          <div>
+            <span>{lang === 'fr' ? `DOSSIER DE CHAPITRE ${selectedChapter.number}` : `CHAPTER ${selectedChapter.number} RECORD`}</span>
+            <h3>{getLocalizedText(selectedChapter.name, lang)}</h3>
+            <p>{getLocalizedText(selectedChapter.desc, lang)}</p>
+          </div>
+          <div className="oc-chapter-progress" aria-label={lang === 'fr' ? 'Progression du chapitre' : 'Chapter progress'}>
+            <strong>{selectedChapterClears}/{selectedChapterMissions.length}</strong>
+            <span><i style={{ width: `${(selectedChapterClears / Math.max(1, selectedChapterMissions.length)) * 100}%` }} /></span>
+          </div>
+        </div>
+        <div className="oc-chapter-record-grid">
+          <div>
+            <small>{lang === 'fr' ? 'REGLE DE TERRAIN' : 'FIELD RULE'}</small>
+            <p>{getLocalizedText(selectedChapter.gameplayRule, lang)}</p>
+          </div>
+          <div className={!selectedChapterComplete ? 'encrypted' : ''}>
+            <small>{lang === 'fr' ? 'REVELATION' : 'REVELATION'}</small>
+            <p>{selectedChapterComplete
+              ? getLocalizedText(selectedChapter.revelation, lang)
+              : (lang === 'fr' ? 'Donnee chiffree. Stabilise toutes les operations de ce chapitre.' : 'Encrypted data. Stabilize every operation in this chapter.')}</p>
+          </div>
+          <div>
+            <small>{lang === 'fr' ? 'RECOMPENSE D ACTE' : 'ACT REWARD'}</small>
+            <p>{getLocalizedText(selectedChapter.chapterReward, lang)}</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="oc-campaign-layout">
+        <div className="oc-campaign-timeline" aria-label={lang === 'fr' ? 'Operations de la campagne OC' : 'OC campaign operations'}>
+          {OC_CAMPAIGN_MISSIONS.map((mission) => {
+            const chapter = OC_CAMPAIGN_CHAPTERS.find(entry => entry.id === mission.chapterId);
+            const completed = completedStages.includes(mission.id);
+            const unlocked = isStageUnlocked(mission);
+            const active = selectedMission.id === mission.id;
+            return (
+              <button
+                key={mission.id}
+                type="button"
+                className={`oc-campaign-node ${active ? 'active' : ''} ${completed ? 'completed' : ''} ${!unlocked ? 'locked' : ''}`}
+                disabled={!unlocked}
+                onClick={() => {
+                  setSelectedMissionId(mission.id);
+                  sound.playSfx('click');
+                }}
+                title={lang === 'fr' ? `Affiche le dossier narratif de ${getLocalizedText(mission.displayName, lang)}.` : `Show the narrative record for ${getLocalizedText(mission.displayName, lang)}.`}
+              >
+                <span>{String(mission.sequence).padStart(2, '0')}</span>
+                <div>
+                  <small>{lang === 'fr' ? `CHAPITRE ${chapter?.number || '?'}` : `CHAPTER ${chapter?.number || '?'}`} / {mission.mode}</small>
+                  <strong>{getLocalizedText(mission.displayName, lang)}</strong>
+                  <em>{completed ? (lang === 'fr' ? 'STABILISEE' : 'STABILIZED') : unlocked ? (lang === 'fr' ? 'DISPONIBLE' : 'AVAILABLE') : (lang === 'fr' ? 'HORS PORTEE' : 'OUT OF RANGE')}</em>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        <article className="oc-mission-dossier">
+          <div className="oc-mission-dossier-head">
+            <div>
+              <span>{getLocalizedText(selectedMission.codename, lang)}</span>
+              <h3>{getLocalizedText(selectedMission.displayName, lang)}</h3>
+              <p>{getLocalizedText(selectedMission.storyBeat.intro, lang)}</p>
+            </div>
+            <b>{selectedMission.mode}</b>
+          </div>
+          <div className="oc-mission-brief-grid">
+            <div><small>{lang === 'fr' ? 'Lieu' : 'Location'}</small><strong>{getLocalizedText(selectedMission.location, lang)}</strong></div>
+            <div><small>{lang === 'fr' ? 'Objectif' : 'Objective'}</small><strong>{getLocalizedText(selectedMission.objective, lang)}</strong></div>
+            <div><small>{lang === 'fr' ? 'Risque narratif' : 'Narrative risk'}</small><strong>{getLocalizedText(selectedMission.stakes, lang)}</strong></div>
+            <div><small>{lang === 'fr' ? 'Trace obtenue' : 'Recovered trace'}</small><strong>{getLocalizedText(selectedMission.rewardLore, lang)}</strong></div>
+            <div className="oc-mission-rule"><small>{lang === 'fr' ? 'Regle de mission' : 'Mission rule'}</small><strong>{getLocalizedText(selectedMission.missionRule, lang)}</strong></div>
+          </div>
+          <blockquote>{getLocalizedText(OC_CAMPAIGN.doctrine, lang)}</blockquote>
+          <div className="oc-mission-actions">
+            <button
+              type="button"
+              className="btn-retro"
+              disabled={!isStageUnlocked(selectedMission)}
+              onClick={() => openCinematic(selectedMission)}
+              title={isStageUnlocked(selectedMission)
+                ? (lang === 'fr' ? 'Joue la transmission narrative qui precede cette mission.' : 'Play the narrative transmission before this mission.')
+                : (lang === 'fr' ? 'Termine les operations precedentes pour dechiffrer cette transmission.' : 'Complete previous operations to decrypt this transmission.')}
+            >
+              {lang === 'fr' ? 'VOIR LA TRANSMISSION' : 'VIEW TRANSMISSION'}
+            </button>
+            <button
+              type="button"
+              className="btn-retro oc-primary-action"
+              disabled={!isStageUnlocked(selectedMission)}
+              onClick={() => onOpenBriefing(selectedMission)}
+              title={isStageUnlocked(selectedMission)
+                ? (lang === 'fr' ? 'Ouvre le briefing tactique avant de lancer la mission.' : 'Open the tactical briefing before launching the mission.')
+                : (lang === 'fr' ? 'Termine les operations precedentes pour ouvrir ce briefing.' : 'Complete previous operations to open this briefing.')}
+            >
+              {isStageUnlocked(selectedMission) ? (lang === 'fr' ? 'OUVRIR LE BRIEFING' : 'OPEN BRIEFING') : (lang === 'fr' ? 'DOSSIER VERROUILLE' : 'RECORD LOCKED')}
+            </button>
+          </div>
+          {completedStages.includes(selectedMission.id) && (
+            <div className="oc-mission-consequence">
+              <small>{lang === 'fr' ? 'Consequence canonique' : 'Canonical consequence'}</small>
+              <p>{getLocalizedText(selectedMission.consequence, lang)}</p>
+            </div>
+          )}
+        </article>
+      </div>
+
+      {cinematicMission && cinematicScene && (
+        <div className="oc-cinematic" role="dialog" aria-modal="true" aria-label={getLocalizedText(cinematicMission.displayName, lang)}>
+          <button type="button" className="oc-cinematic-close" onClick={closeCinematic} title={lang === 'fr' ? 'Ferme la transmission.' : 'Close the transmission.'}>X</button>
+          <img src={cinematicMission.image} alt="" />
+          <div className="oc-cinematic-vignette" />
+          <div className="oc-cinematic-copy" key={`${cinematicMission.id}-${sceneIndex}`}>
+            <span>{getLocalizedText(cinematicMission.codename, lang)} / {sceneIndex + 1}-{cinematicMission.scenes.length}</span>
+            <strong>{getLocalizedText(cinematicScene.speaker, lang)}</strong>
+            <p>{getLocalizedText(cinematicScene.text, lang)}</p>
+            <div>
+              <button
+                type="button"
+                className="btn-retro"
+                disabled={sceneIndex === 0}
+                onClick={() => setSceneIndex(index => Math.max(0, index - 1))}
+                title={lang === 'fr' ? 'Revient a la replique precedente.' : 'Return to the previous line.'}
+              >
+                {lang === 'fr' ? 'PRECEDENT' : 'PREVIOUS'}
+              </button>
+              {sceneIndex < cinematicMission.scenes.length - 1 ? (
+                <button
+                  type="button"
+                  className="btn-retro oc-primary-action"
+                  onClick={() => setSceneIndex(index => Math.min(cinematicMission.scenes.length - 1, index + 1))}
+                  title={lang === 'fr' ? 'Affiche la replique suivante.' : 'Show the next line.'}
+                >
+                  {lang === 'fr' ? 'SUIVANT' : 'NEXT'}
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="btn-retro oc-primary-action"
+                  disabled={!isStageUnlocked(cinematicMission)}
+                  onClick={() => {
+                    closeCinematic();
+                    onOpenBriefing(cinematicMission);
+                  }}
+                  title={lang === 'fr' ? 'Ferme la scene et ouvre le briefing de mission.' : 'Close the scene and open the mission briefing.'}
+                >
+                  {lang === 'fr' ? 'PASSER AU BRIEFING' : 'OPEN BRIEFING'}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
 const HUB_NAV_GROUPS = [
   {
     id: 'operations',
@@ -45,11 +263,11 @@ const HUB_NAV_GROUPS = [
   {
     id: 'nexus',
     label: { fr: 'NEXUS', en: 'NEXUS' },
-    title: { fr: 'Exploration, heros et cellule active', en: 'Exploration, heroes, and active cell' },
+    title: { fr: 'Exploration de la Cite-Mosaique et dossiers des heros', en: 'Mosaic City exploration and hero records' },
     tabs: [
       { id: 'mosaicHub', label: { fr: 'CITE-MOSAIQUE', en: 'MOSAIC CITY' }, title: { fr: 'Explore le hub RPG et ses quartiers d univers.', en: 'Explore the RPG hub and its universe districts.' } },
       { id: 'roster', label: { fr: 'RESONANCE HEROS', en: 'HERO RESONANCE' }, title: { fr: 'Consulte les heros, niveaux, talents et histoires personnelles.', en: 'View heroes, levels, talents, and personal stories.' } },
-      { id: 'party', label: { fr: 'CELLULE D ANCRE', en: 'ANCHOR CELL' }, title: { fr: 'Compose l equipe active utilisee en mission.', en: 'Build the active team used in missions.' } }
+      { id: 'anchorProfile', label: { fr: 'DOSSIER D ANCRE', en: 'ANCHOR RECORD' }, title: { fr: 'Consulte ton identite de commandement, ton code ami et ta progression publique.', en: 'View your commander identity, friend code, and public progression.' } }
     ]
   },
   {
@@ -62,9 +280,10 @@ const HUB_NAV_GROUPS = [
   {
     id: 'arsenal',
     label: { fr: 'ARSENAL', en: 'ARSENAL' },
-    title: { fr: 'Equipement et echange de ressources', en: 'Equipment and resource exchange' },
+    title: { fr: 'Gestion de l equipe, equipement des heros et ressources', en: 'Team management, hero equipment, and resources' },
     tabs: [
-      { id: 'inventory', label: { fr: 'ARMURERIE', en: 'ARMORY' }, title: { fr: 'Equipe les reliques et objets evenementiels de chaque heros.', en: 'Equip each hero with relics and event items.' } },
+      { id: 'party', label: { fr: 'CELLULE D ANCRE', en: 'ANCHOR CELL' }, title: { fr: 'Compose et gere l equipe active utilisee en mission.', en: 'Build and manage the active team used in missions.' } },
+      { id: 'inventory', label: { fr: 'EQUIPEMENT DES HEROS', en: 'HERO EQUIPMENT' }, title: { fr: 'Equipe les reliques et objets evenementiels de chaque heros.', en: 'Equip each hero with relics and event items.' } },
       { id: 'shop', label: { fr: 'ECHANGE DE SIGNAUX', en: 'SIGNAL EXCHANGE' }, title: { fr: 'Depense les ressources dans la boutique et les evenements.', en: 'Spend resources in the shop and event exchange.' } }
     ]
   },
@@ -2648,8 +2867,8 @@ function MultiverseRiftMap({
             <strong>{lang === 'fr' ? 'Aucune coordonnee visible' : 'No visible coordinate'}</strong>
             <span>
               {lang === 'fr'
-                ? 'Cette vue ne contient aucune faille disponible avec les filtres, les DLC actifs et les prerequis actuels.'
-                : 'This view has no visible rift with the current filters, active DLC, and requirements.'}
+                ? 'Cette vue ne contient aucune faille disponible avec les filtres, les Trames ouvertes et les prerequis actuels.'
+                : 'This view has no visible rift with the current filters, open Threads, and requirements.'}
             </span>
           </div>
         )}
@@ -3206,7 +3425,11 @@ export default function HubScreen({
       },
       baseGameStage: true
     }
-  ];
+  ].map(stage => ({
+    ...stage,
+    ...getOcCampaignMission(stage.id),
+    baseGameStage: true
+  }));
 
   // Franchise stages are DLC; base OC stages above remain playable with every DLC hidden.
   const STAGES = [
@@ -3355,58 +3578,7 @@ export default function HubScreen({
     omega: Math.max(24, Math.ceil(NORMAL_STAGE_COUNT * 0.65))
   };
 
-  const STORY_CHAPTERS = [
-    {
-      id: 'first_lock',
-      unlockClears: 0,
-      name: { fr: 'Chapitre I - Premier verrou', en: 'Chapter I - First Lock' },
-      desc: {
-        fr: 'Les premieres breches OC sont instables mais lisibles. A.R.C.A. isole les Ancres natives du Nexus avant toute projection DLC.',
-        en: 'The first OC breaches are unstable but readable. A.R.C.A. isolates native Nexus Anchors before any DLC projection.'
-      },
-      focus: { fr: 'Stabiliser les premiers protocoles Nexus.', en: 'Stabilize the first Nexus protocols.' }
-    },
-    {
-      id: 'faction_war',
-      unlockClears: 2,
-      name: { fr: 'Chapitre II - Guerre des signatures', en: 'Chapter II - Signature War' },
-      desc: {
-        fr: 'Les signatures originales apprennent a former une escouade stable sans emprunter de lois de franchise.',
-        en: 'Original signatures learn to form a stable squad without borrowing franchise laws.'
-      },
-      focus: { fr: 'Composer l equipe OC de base et decrypter les menaces Nexus.', en: 'Build the base OC team and decrypt Nexus threats.' }
-    },
-    {
-      id: 'deep_archive',
-      unlockClears: 3,
-      name: { fr: 'Chapitre III - Archives profondes', en: 'Chapter III - Deep Archives' },
-      desc: {
-        fr: 'Les archives profondes ne citent plus les DLC: elles revelent les causes internes de la Premiere Breche.',
-        en: 'Deep archives no longer cite DLC: they reveal the internal causes of the First Breach.'
-      },
-      focus: { fr: 'Recuperer les preuves OC et consolider les Eclats d Origine.', en: 'Recover OC evidence and consolidate Origin Shards.' }
-    },
-    {
-      id: 'singularity_wake',
-      unlockClears: Math.max(4, OC_STORY_STAGE_COUNT - 2),
-      name: { fr: 'Chapitre IV - Eveil de la Singularity', en: 'Chapter IV - Singularity Wake' },
-      desc: {
-        fr: 'Le noyau final reagit aux seules donnees OC: Voile, Ancres, Greffiers et Sans-Auteur.',
-        en: 'The final core reacts only to OC data: Veil, Anchors, Scribes, and the Authorless.'
-      },
-      focus: { fr: 'Forcer l ouverture finale sans dependance aux stages DLC.', en: 'Force the final opening without DLC stage dependency.' }
-    },
-    {
-      id: 'omniverse_endgame',
-      unlockClears: FINAL_STAGE_REQUIRED_CLEARS,
-      name: { fr: 'Chapitre V - Seuil du Sans-Auteur', en: 'Chapter V - Authorless Threshold' },
-      desc: {
-        fr: 'La campagne OC converge vers le Seuil du Sans-Auteur. Les DLC restent des archives annexes, pas des prerequis de fin.',
-        en: 'The OC campaign converges on the Authorless Threshold. DLC remain side archives, not endgame requirements.'
-      },
-      focus: { fr: 'Optimiser l escouade OC et verrouiller le Nexus.', en: 'Optimize the OC squad and lock the Nexus.' }
-    }
-  ];
+  const STORY_CHAPTERS = OC_CAMPAIGN_CHAPTERS;
 
   const NARRATIVE_ARCS = [
     {
@@ -3800,8 +3972,8 @@ export default function HubScreen({
         en: 'Without sorting, film and series portals become background noise that breaks immersion and dilutes core lore.'
       },
       gameplay: {
-        fr: 'Directive A.R.C.A.: classer par ton, masquer les DLC inactifs et ouvrir seulement les archives utiles au chapitre courant.',
-        en: 'A.R.C.A. directive: classify by tone, hide inactive DLC, and open only archives useful to the current chapter.'
+        fr: 'Directive A.R.C.A.: classer par ton, placer les Trames inactives en reserve et ouvrir seulement les archives utiles au chapitre courant.',
+        en: 'A.R.C.A. directive: classify by tone, reserve inactive Threads, and open only archives useful to the current chapter.'
       },
       missions: [
         { fr: 'Recoller une archive comique sans lui retirer son absurdité.', en: 'Repair a comedy archive without removing its absurdity.' },
@@ -4718,7 +4890,7 @@ export default function HubScreen({
     if (stage.universeArc) return stage.unlockClears || 4;
     if (stage.fusionMission) return stage.unlockClears || 8;
     if (stage.finalGameBoss) return FINAL_STAGE_REQUIRED_CLEARS;
-    if (stage.baseGameStage && typeof stage.unlockClears === 'number') return stage.unlockClears;
+    if (typeof stage.unlockClears === 'number') return stage.unlockClears;
     if (stage.difficulty === 'Medium') return 2;
     if (stage.difficulty === 'Hard') return 6;
     if (stage.difficulty === 'Very Hard') return 12;
@@ -4866,7 +5038,7 @@ export default function HubScreen({
     const reasons = [];
     const adminHidden = hiddenUniverseSet.has(universe);
     if (!lore) reasons.push(lang === 'fr' ? 'Lore absent de LORE_DB' : 'Missing LORE_DB entry');
-    if (adminHidden) reasons.push(lang === 'fr' ? 'DLC masque dans ADMIN' : 'DLC hidden in ADMIN');
+    if (adminHidden) reasons.push(lang === 'fr' ? 'Trame placee en reserve par la Regulation A.R.C.A.' : 'Thread placed in reserve by A.R.C.A. Regulation');
     if (lore && !matchesMediaFilter(lore.mediaType)) reasons.push(lang === 'fr' ? `Filtre media actif: ${getMediaTypeLabel(mediaFilter)}` : `Active media filter: ${getMediaTypeLabel(mediaFilter)}`);
     if (!adminHidden && stageId && !stage) reasons.push(lang === 'fr' ? `Stage principal #${stageId} introuvable` : `Main stage #${stageId} missing`);
     if (!adminHidden && stage && !isStageUnlocked(stage)) reasons.push(getLockedReason(stage) || (lang === 'fr' ? 'Prerequis de progression non atteints' : 'Progression prerequisites not met'));
@@ -6107,7 +6279,11 @@ export default function HubScreen({
       {['missions', 'roster', 'codex', 'collection'].includes(activeTab) && (
         <div style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: hubContentMax, boxSizing: 'border-box', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '11px', color: '#888', textTransform: 'uppercase', marginRight: '5px' }}>
-            {lang === 'fr' ? 'Filtre d archives :' : 'Archive filter:'}
+            {activeTab === 'missions'
+              ? (lang === 'fr' ? 'Filtre des missions :' : 'Mission filter:')
+              : activeTab === 'roster'
+                ? (lang === 'fr' ? 'Filtre des heros :' : 'Hero filter:')
+                : (lang === 'fr' ? 'Filtre des archives :' : 'Archive filter:')}
           </span>
           <button
             onClick={() => { setMediaFilter('all'); sound.playSfx('click'); }}
@@ -6431,6 +6607,18 @@ export default function HubScreen({
               </>
             ) : (
               <>
+                {missionScreen === 'story' && (
+                  <OcCampaignChronicle
+                    lang={lang}
+                    completedStages={completedStages}
+                    currentChapter={currentChapter}
+                    isStageUnlocked={isStageUnlocked}
+                    onOpenBriefing={(stage) => {
+                      setBriefingStageId(stage.id);
+                      sound.playSfx('click');
+                    }}
+                  />
+                )}
                 {arcaRoute.length > 0 && (
                   <div className="arca-route-panel">
                     <div>
@@ -6656,7 +6844,7 @@ export default function HubScreen({
             </div>
             )}
 
-            {missionScreen === 'story' && (
+            {missionScreen === 'legacyStoryMeta' && (
             <div style={{
               padding: '14px',
               marginBottom: '14px',
@@ -6730,7 +6918,7 @@ export default function HubScreen({
             </div>
             )}
 
-            {missionScreen === 'story' && (
+            {missionScreen === 'legacyStoryMeta' && (
             <div style={{
               display: 'grid',
               gridTemplateColumns: '1fr',
@@ -6999,14 +7187,14 @@ export default function HubScreen({
                 {visibleCollectionProgress.length === 0 && (
                   <div style={{ padding: '10px', border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.05)', borderRadius: '4px', color: '#9fc', fontSize: '11px', lineHeight: 1.35 }}>
                     {lang === 'fr'
-                      ? 'Aucune collection DLC active. Le jeu de base affiche seulement les archives OC du Nexus tant qu aucun DLC n est active depuis l admin.'
-                      : 'No active DLC collection. The base game only shows OC Nexus archives until a DLC is enabled from admin.'}
+                      ? 'Aucune collection de Trame externe ouverte. Le Socle Nexus conserve seulement les archives OC tant que la Regulation maintient les autres mondes en reserve.'
+                      : 'No external Thread collection is open. The Nexus Core keeps only OC archives while Regulation holds other worlds in reserve.'}
                   </div>
                 )}
                 {visibleCollectionProgress.map(collection => {
                   const ratio = collection.total ? collection.completed / collection.total : 0;
                   const partialText = collection.hiddenCount > 0
-                    ? (lang === 'fr' ? `${collection.hiddenCount} DLC masque(s)` : `${collection.hiddenCount} hidden DLC`)
+                    ? (lang === 'fr' ? `${collection.hiddenCount} Trame(s) en reserve` : `${collection.hiddenCount} reserve Thread(s)`)
                     : mediaFilter !== 'all'
                       ? (lang === 'fr' ? `${collection.fullCompleted}/${collection.fullTotal} actifs hors filtre` : `${collection.fullCompleted}/${collection.fullTotal} active outside filter`)
                       : '';
@@ -7441,7 +7629,7 @@ export default function HubScreen({
                         color: '#9b59b6'
                       }}
                     >
-                      {getTranslation(lang, 'btnUsePotion')} (🌀 20)
+                      {getTranslation(lang, 'btnUsePotion')} (20 fragments)
                     </button>
                   </div>
                 </div>
@@ -7603,7 +7791,7 @@ export default function HubScreen({
                 {/* Talent Mods Panel */}
                 <div style={{ marginTop: '20px', padding: '15px', background: 'rgba(255, 235, 59, 0.02)', border: '1px solid rgba(255, 235, 59, 0.15)', borderRadius: '4px' }}>
                   <h4 style={{ margin: '0 0 10px 0', fontSize: '13px', color: '#ffea00', textTransform: 'uppercase', textShadow: '0 0 3px #ffea00' }}>
-                    🧬 {lang === 'fr' ? 'MODS CYBERNÉTIQUES (TALENTS)' : 'CYBERNETIC MODS (TALENTS)'}
+                    {lang === 'fr' ? 'MODS CYBERNETIQUES (TALENTS)' : 'CYBERNETIC MODS (TALENTS)'}
                   </h4>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                     {(() => {
@@ -7673,17 +7861,15 @@ export default function HubScreen({
           </div>
         )}
 
-        {/* Tab 3: Party Setup */}
-        {activeTab === 'party' && (
-          <>
-          <div className="glass-panel squad-panel" style={{ marginBottom: '14px' }}>
+        {activeTab === 'anchorProfile' && (
+          <div className="glass-panel squad-panel">
             <div className="squad-header">
               <div>
-                <h3>{lang === 'fr' ? 'Carte d Ancre / futures cellules' : 'Anchor card / future cells'}</h3>
+                <h3>{lang === 'fr' ? 'Dossier d Ancre' : 'Anchor record'}</h3>
                 <p>
                   {lang === 'fr'
-                    ? 'Prepare une carte de commandant partageable: trace Nexus, collection et cellule active.'
-                    : 'Prepare a shareable commander card: Nexus trace, collection, and active cell.'}
+                    ? 'Identite de commandement, progression publique et futur point de contact multijoueur.'
+                    : 'Commander identity, public progression, and future multiplayer contact point.'}
                 </p>
               </div>
               <button
@@ -7724,6 +7910,11 @@ export default function HubScreen({
               </div>
             </div>
           </div>
+        )}
+
+        {/* Tab 3: Party Setup */}
+        {activeTab === 'party' && (
+          <>
           <div className="glass-panel squad-panel">
             <div className="squad-header">
               <div>
@@ -8016,7 +8207,7 @@ export default function HubScreen({
                           onClick={() => toggleActiveHero(hero.id)}
                           style={{ position: 'absolute', top: '5px', right: '5px', background: 'transparent', border: 'none', color: '#e74c3c', cursor: 'pointer' }}
                         >
-                          ❌
+                          X
                         </button>
                       </>
                     ) : (
@@ -8053,7 +8244,7 @@ export default function HubScreen({
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                     {activeTeamSynergies.map(syn => (
                       <div key={syn.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontSize: '13px', fontWeight: 'bold', color: '#2ecc71' }}>✔ {getTranslation(lang, syn.key)}</span>
+                        <span style={{ fontSize: '13px', fontWeight: 'bold', color: '#2ecc71' }}>{getTranslation(lang, syn.key)}</span>
                         <span style={{ fontSize: '11px', color: '#aaa' }}>{getTranslation(lang, syn.descKey)}</span>
                       </div>
                     ))}
@@ -8127,14 +8318,14 @@ export default function HubScreen({
                   {visibleCollectionProgress.length === 0 && (
                     <div style={{ padding: '9px', background: 'rgba(57,197,187,0.08)', border: '1px solid rgba(57,197,187,0.25)', borderRadius: '4px', color: '#9fc', fontSize: '10px', lineHeight: 1.35 }}>
                       {lang === 'fr'
-                        ? 'Collections DLC masquees en mode base OC.'
-                        : 'DLC collections are hidden in OC base mode.'}
+                        ? 'Collections de Trames en reserve sous le protocole Socle Nexus.'
+                        : 'Thread collections are held in reserve under the Nexus Core protocol.'}
                     </div>
                   )}
                   {visibleCollectionProgress.map(collection => {
                     const ratio = collection.total ? collection.completed / collection.total : 0;
                     const partialText = collection.hiddenCount > 0
-                      ? (lang === 'fr' ? `${collection.hiddenCount} DLC masque(s)` : `${collection.hiddenCount} hidden DLC`)
+                      ? (lang === 'fr' ? `${collection.hiddenCount} Trame(s) en reserve` : `${collection.hiddenCount} reserve Thread(s)`)
                       : mediaFilter !== 'all'
                         ? (lang === 'fr' ? `${collection.fullCompleted}/${collection.fullTotal} actifs hors filtre` : `${collection.fullCompleted}/${collection.fullTotal} active outside filter`)
                         : '';
@@ -8178,61 +8369,14 @@ export default function HubScreen({
                 </div>
               </div>
 
-              <div style={{ padding: '12px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.16)', borderRadius: '5px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
-                  <strong style={{ color: '#ffb15c', fontSize: '11px', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Univers non affiches' : 'Blocked universes'}
-                  </strong>
-                  <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{blockedCollectionUniverses.length}</span>
-                </div>
-                <div style={{ display: 'grid', gap: '6px', maxHeight: '150px', overflowY: 'auto', paddingRight: '4px' }}>
-                  {blockedCollectionUniverses.slice(0, 18).map(entry => (
-                    <div key={entry.universe} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
-                      <b style={{ color: '#ddd', fontSize: '10px' }}>{entry.lore?.title?.[lang] || entry.universe}</b>
-                      <div style={{ color: '#ffb15c', fontSize: '9px', lineHeight: 1.35, marginTop: '3px' }}>
-                        {entry.reasons.slice(0, 2).join(' / ')}
-                      </div>
-                    </div>
-                  ))}
-                  {blockedCollectionUniverses.length === 0 && (
-                    <div style={{ color: '#8dffb1', fontSize: '10px', lineHeight: 1.35 }}>
-                      {lang === 'fr' ? 'Aucun univers actif n est cache par les regles de collection.' : 'No active universe is hidden by collection rules.'}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              <div style={{ padding: '12px', border: '1px solid rgba(57,197,187,0.22)', background: 'rgba(57,197,187,0.045)', borderRadius: '5px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
-                  <strong style={{ color: '#39c5bb', fontSize: '11px', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Univers incomplets' : 'Incomplete universes'}
-                  </strong>
-                  <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{incompleteCollectionUniverses.length}</span>
-                </div>
-                <div style={{ display: 'grid', gap: '6px', maxHeight: '150px', overflowY: 'auto', paddingRight: '4px' }}>
-                  {incompleteCollectionUniverses.slice(0, 18).map(entry => (
-                    <div key={entry.universe} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
-                      <b style={{ color: '#ddd', fontSize: '10px' }}>{entry.lore?.title?.[lang] || entry.universe}</b>
-                      <div style={{ color: '#9fb6bb', fontSize: '9px', lineHeight: 1.35, marginTop: '3px' }}>
-                        {entry.counts.heroes}H / {entry.counts.monsters}M / {entry.counts.bosses}B / {entry.counts.worldBoss}WB / {entry.counts.stages}S / {entry.counts.items}I / {entry.counts.event}E
-                      </div>
-                    </div>
-                  ))}
-                  {incompleteCollectionUniverses.length === 0 && (
-                    <div style={{ color: '#8dffb1', fontSize: '10px', lineHeight: 1.35 }}>
-                      {lang === 'fr' ? 'Les univers visibles respectent le standard minimal de categories.' : 'Visible universes meet the minimum standard category counts.'}
-                    </div>
-                  )}
-                </div>
-              </div>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '10px', maxHeight: '520px', overflowY: 'auto', paddingRight: '4px' }}>
               {visibleCollectionUniverses.length === 0 && (
                 <div style={{ gridColumn: '1 / -1', padding: '18px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.18)', borderRadius: '5px', color: '#aaa', fontSize: '11px', lineHeight: 1.45 }}>
                   {lang === 'fr'
-                    ? 'Aucun univers visible avec ce filtre. Change le filtre media ou reactive des univers dans ADMIN.'
-                    : 'No universe visible with this filter. Change the media filter or reactivate worlds in ADMIN.'}
+                    ? 'Aucun univers visible avec ce filtre. Change le filtre media ou consulte la Regulation A.R.C.A.'
+                    : 'No universe is visible with this filter. Change the media filter or review A.R.C.A. Regulation.'}
                 </div>
               )}
               {visibleCollectionUniverses.map(universe => {
@@ -8335,7 +8479,7 @@ export default function HubScreen({
               {selectedHero && (
                 <>
                   <h3 style={{ margin: '0 0 12px 0', color: selectedHero.primaryColor }}>
-                    {selectedHero.name.toUpperCase()} GEAR SLOTS
+                    {selectedHero.name.toUpperCase()} - {lang === 'fr' ? 'EMPLACEMENTS D EQUIPEMENT' : 'GEAR SLOTS'}
                   </h3>
 
                   {/* Equipped summary */}
@@ -8472,7 +8616,7 @@ export default function HubScreen({
                           }}>
                             <div>
                               <div style={{ fontWeight: 'bold', fontSize: '12px', color: '#ff4500' }}>
-                                🌟 {item.name[lang]}
+                                {item.name[lang]}
                               </div>
                               <span style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35, display: 'block', maxWidth: '520px' }}>
                                 {getEventLore(item)}
@@ -8525,7 +8669,7 @@ export default function HubScreen({
                   {/* Relic Fusion Station */}
                   <div style={{ marginTop: '20px', borderTop: '1px solid #333', paddingTop: '15px' }}>
                     <h4 style={{ margin: '0 0 10px 0', fontSize: '13px', color: '#ff9900', textTransform: 'uppercase', textShadow: '0 0 3px #ff9900' }}>
-                      ⚙️ {lang === 'fr' ? 'NOYAU DE FUSION DE RELIQUES' : 'RELIC FUSION CORE'}
+                      {lang === 'fr' ? 'NOYAU DE FUSION DE RELIQUES' : 'RELIC FUSION CORE'}
                     </h4>
                     {(() => {
                       const counts = {};
@@ -8611,8 +8755,8 @@ export default function HubScreen({
               {visibleEventShopItems.length === 0 && (
                 <div style={{ gridColumn: '1 / -1', padding: '18px', border: '1px solid rgba(231,76,60,0.22)', background: 'rgba(231,76,60,0.045)', borderRadius: '5px', color: '#ffb1a8', fontSize: '11px', lineHeight: 1.45 }}>
                   {lang === 'fr'
-                    ? 'Aucun prototype disponible dans cette rotation. Verifie les univers masques dans ADMIN pour reouvrir le stock Nexus.'
-                    : 'No prototype available in this rotation. Check hidden worlds in ADMIN to reopen Nexus stock.'}
+                    ? 'Aucun prototype disponible dans cette rotation. Consulte la Regulation A.R.C.A. pour rouvrir des Trames et leur stock.'
+                    : 'No prototype is available in this rotation. Review A.R.C.A. Regulation to reopen Threads and their stock.'}
                 </div>
               )}
               {visibleEventShopItems.map(item => {
@@ -8784,21 +8928,21 @@ export default function HubScreen({
         {activeTab === 'admin' && (
           <div className="glass-panel" style={{ padding: '20px' }}>
             <h3 style={{ margin: '0 0 5px 0', fontSize: '18px', color: '#ff4500' }}>
-              {lang === 'fr' ? 'PANNEAU ADMIN - VISIBILITE DES UNIVERS' : 'ADMIN PANEL - UNIVERSE VISIBILITY'}
+              {lang === 'fr' ? 'REGISTRE DE REGULATION A.R.C.A.' : 'A.R.C.A. REGULATION REGISTER'}
             </h3>
             <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '16px', lineHeight: 1.45 }}>
               {lang === 'fr'
-                ? 'Masque un univers pour le retirer des missions, portails, roster, codex et boutiques sans supprimer ses donnees. Utile pour DLC, rotation saisonniere ou retrait temporaire.'
-                : 'Hide a universe to remove it from missions, portals, roster, codex, and shops without deleting its data. Useful for DLC, seasonal rotation, or temporary removal.'}
+                ? 'Place une Trame en reserve pour la retirer des missions, portails, heros, archives et echanges sans effacer ses donnees. Les infobulles precisent l effet technique de chaque commande.'
+                : 'Place a Thread in reserve to remove it from missions, portals, heroes, archives, and exchanges without deleting its data. Tooltips state each command technical effect.'}
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px', marginBottom: '16px' }}>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
-                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'DLC visibles' : 'Visible DLC'}</div>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Trames actives' : 'Active Threads'}</div>
                 <strong style={{ color: '#2ecc71', fontSize: '20px' }}>{visibleUniverseCount}</strong>
               </div>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
-                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'DLC masques' : 'Hidden DLC'}</div>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Trames en reserve' : 'Reserve Threads'}</div>
                 <strong style={{ color: '#e74c3c', fontSize: '20px' }}>{hiddenUniverseCount}</strong>
               </div>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
@@ -8806,7 +8950,7 @@ export default function HubScreen({
                 <strong style={{ color: '#39c5bb', fontSize: '20px' }}>{adminDiagnostics.storyOcStages}</strong>
               </div>
               <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px', background: 'rgba(255,255,255,0.02)' }}>
-                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Stages DLC actifs' : 'Active DLC stages'}</div>
+                <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>{lang === 'fr' ? 'Failles externes actives' : 'Active external rifts'}</div>
                 <strong style={{ color: '#ffb15c', fontSize: '20px' }}>{adminDiagnostics.visibleDlcStages}</strong>
               </div>
             </div>
@@ -8831,7 +8975,7 @@ export default function HubScreen({
               </div>
               <div style={{ padding: '12px', border: '1px solid rgba(255,235,59,0.2)', background: 'rgba(255,235,59,0.04)', borderRadius: '5px' }}>
                 <div style={{ color: '#ffeb3b', fontSize: '11px', textTransform: 'uppercase', fontWeight: 'bold', marginBottom: '8px' }}>
-                  {lang === 'fr' ? 'Modes et DLC' : 'Modes and DLC'}
+                  {lang === 'fr' ? 'Modes et Trames' : 'Modes and Threads'}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '6px', marginBottom: '8px' }}>
                   {adminDiagnostics.modes.map(entry => (
@@ -8843,8 +8987,47 @@ export default function HubScreen({
                 </div>
                 <div style={{ color: '#aaa', fontSize: '10px', lineHeight: 1.35 }}>
                   {lang === 'fr'
-                    ? `DLC actifs ${adminDiagnostics.dlcVisible}, DLC masques ${adminDiagnostics.dlcHidden}. Les collections et arcs n affichent que les univers visibles et debloques.`
-                    : `Active DLC ${adminDiagnostics.dlcVisible}, hidden DLC ${adminDiagnostics.dlcHidden}. Collections and arcs only show visible, unlocked universes.`}
+                    ? `Trames actives ${adminDiagnostics.dlcVisible}, Trames en reserve ${adminDiagnostics.dlcHidden}. Les collections et arcs ne montrent que les mondes ouverts et debloques.`
+                    : `Active Threads ${adminDiagnostics.dlcVisible}, reserve Threads ${adminDiagnostics.dlcHidden}. Collections and arcs only show open, unlocked worlds.`}
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px', marginBottom: '16px' }}>
+              <div style={{ padding: '12px', border: '1px solid rgba(255,177,92,0.24)', background: 'rgba(255,177,92,0.04)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
+                  <strong style={{ color: '#ffb15c', fontSize: '11px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Trames en reserve ou verrouillees' : 'Reserve or locked Threads'}
+                  </strong>
+                  <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{blockedCollectionUniverses.length}</span>
+                </div>
+                <div style={{ display: 'grid', gap: '6px', maxHeight: '170px', overflowY: 'auto', paddingRight: '4px' }}>
+                  {blockedCollectionUniverses.slice(0, 18).map(entry => (
+                    <div key={entry.universe} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
+                      <b style={{ color: '#ddd', fontSize: '10px' }}>{entry.lore?.title?.[lang] || entry.universe}</b>
+                      <div style={{ color: '#ffb15c', fontSize: '9px', lineHeight: 1.35, marginTop: '3px' }}>{entry.reasons.slice(0, 2).join(' / ')}</div>
+                    </div>
+                  ))}
+                  {blockedCollectionUniverses.length === 0 && <span style={{ color: '#8dffb1', fontSize: '10px' }}>{lang === 'fr' ? 'Toutes les Trames autorisees sont ouvertes.' : 'All authorized Threads are open.'}</span>}
+                </div>
+              </div>
+              <div style={{ padding: '12px', border: '1px solid rgba(57,197,187,0.22)', background: 'rgba(57,197,187,0.045)', borderRadius: '5px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '8px', alignItems: 'center' }}>
+                  <strong style={{ color: '#39c5bb', fontSize: '11px', textTransform: 'uppercase' }}>
+                    {lang === 'fr' ? 'Trames a completer' : 'Threads requiring completion'}
+                  </strong>
+                  <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{incompleteCollectionUniverses.length}</span>
+                </div>
+                <div style={{ display: 'grid', gap: '6px', maxHeight: '170px', overflowY: 'auto', paddingRight: '4px' }}>
+                  {incompleteCollectionUniverses.slice(0, 18).map(entry => (
+                    <div key={entry.universe} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
+                      <b style={{ color: '#ddd', fontSize: '10px' }}>{entry.lore?.title?.[lang] || entry.universe}</b>
+                      <div style={{ color: '#9fb6bb', fontSize: '9px', lineHeight: 1.35, marginTop: '3px' }}>
+                        {entry.counts.heroes}H / {entry.counts.monsters}M / {entry.counts.bosses}B / {entry.counts.worldBoss}WB / {entry.counts.stages}S / {entry.counts.items}I / {entry.counts.event}E
+                      </div>
+                    </div>
+                  ))}
+                  {incompleteCollectionUniverses.length === 0 && <span style={{ color: '#8dffb1', fontSize: '10px' }}>{lang === 'fr' ? 'Toutes les Trames ouvertes respectent le standard A.R.C.A.' : 'All open Threads meet the A.R.C.A. standard.'}</span>}
                 </div>
               </div>
             </div>
@@ -8866,10 +9049,10 @@ export default function HubScreen({
                 }}
               />
               <button onClick={hideAllDlcUniverses} className="btn-retro" title={lang === 'fr' ? 'Masque tous les univers franchise et garde seulement le jeu de base OC.' : 'Hide every franchise universe and keep only base OC content.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#39c5bb', color: '#39c5bb' }}>
-                {lang === 'fr' ? 'BASE OC' : 'OC BASE'}
+                {lang === 'fr' ? 'SOCLE NEXUS' : 'NEXUS CORE'}
               </button>
               <button onClick={showAllDlcUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive tous les DLC franchise.' : 'Reactivate every franchise DLC.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#2ecc71', color: '#2ecc71' }}>
-                {lang === 'fr' ? 'ACTIVER DLC' : 'ENABLE DLC'}
+                {lang === 'fr' ? 'OUVRIR LES TRAMES' : 'OPEN THREADS'}
               </button>
               <button onClick={showAllUniverses} className="btn-retro" title={lang === 'fr' ? 'Reactive absolument tous les univers masques.' : 'Reactivate every hidden universe.'} style={{ fontSize: '11px', padding: '8px 12px', borderColor: '#777', color: '#ddd' }}>
                 {lang === 'fr' ? 'TOUT AFFICHER' : 'SHOW ALL'}
@@ -8967,7 +9150,7 @@ export default function HubScreen({
                       <div>
                         <div style={{ fontSize: '13px', fontWeight: 'bold', color: row.hidden ? '#ffb3aa' : '#d8fffb' }}>{row.lore?.title?.[lang] || row.universe}</div>
                         <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>
-                          {row.universe} - {row.baseGame ? (lang === 'fr' ? 'JEU DE BASE OC' : 'OC BASE GAME') : `DLC - ${getMediaTypeLabel(row.lore?.mediaType)}`}
+                          {row.universe} - {row.baseGame ? (lang === 'fr' ? 'SOCLE NEXUS' : 'NEXUS CORE') : `${lang === 'fr' ? 'TRAME EXTERNE' : 'EXTERNAL THREAD'} - ${getMediaTypeLabel(row.lore?.mediaType)}`}
                         </div>
                       </div>
                       <div style={{ fontSize: '10px', color: '#aaa', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -9001,8 +9184,8 @@ export default function HubScreen({
                           }}
                         >
                           {row.hidden
-                            ? (lang === 'fr' ? 'ACTIVER DLC' : 'ENABLE DLC')
-                            : (lang === 'fr' ? 'MASQUER DLC' : 'HIDE DLC')}
+                            ? (lang === 'fr' ? 'OUVRIR TRAME' : 'OPEN THREAD')
+                            : (lang === 'fr' ? 'METTRE EN RESERVE' : 'MOVE TO RESERVE')}
                         </button>
                       )}
                     </div>
@@ -9401,7 +9584,7 @@ export default function HubScreen({
         {activeTab === 'codex' && (
           <div className="glass-panel" style={{ padding: '20px' }}>
             <h3 style={{ margin: '0 0 5px 0', fontSize: '18px', color: '#ffeb3b', textShadow: '0 0 5px #ffeb3b' }}>
-              📚 {lang === 'fr' ? 'ARCHIVES ET LORE DES UNIVERS' : 'MULTIVERSE CODEX & HISTORICAL RECORDS'}
+              {lang === 'fr' ? 'ARCHIVES ET LORE DES UNIVERS' : 'MULTIVERSE CODEX & HISTORICAL RECORDS'}
             </h3>
             <p style={{ color: '#aaa', fontSize: '12px', marginBottom: '20px' }}>
               {lang === 'fr' 

@@ -11,11 +11,33 @@ export const ENEMIES_DB = {
       { name: 'Archiviste Rompu', hp: 82, atk: 8, spd: 4, color: '#d9b86b', weapon: 'index_blade' },
       { name: 'Noeud de Paradoxe', hp: 95, atk: 10, spd: 3, color: '#9b59b6', weapon: 'rift_burst' },
       { name: 'Fragment Vagabond', hp: 58, atk: 11, spd: 7, color: '#ff5b6e', weapon: 'shard_dash' },
-      { name: 'Drone A.R.C.A. Corrompu', hp: 105, atk: 12, spd: 4, color: '#7df9ff', weapon: 'signal_beam' }
+      { name: 'Drone A.R.C.A. Corrompu', hp: 105, atk: 12, spd: 4, color: '#7df9ff', weapon: 'signal_beam' },
+      {
+        name: 'Pelerin de la Fausse Sortie',
+        hp: 78,
+        atk: 9,
+        spd: 6,
+        color: '#f3eee2',
+        weapon: 'false_door',
+        special: 'Appel du Regret',
+        role: 'displacer',
+        lore: 'Une signature qui a traverse trop de refuges parfaits. Elle ne frappe presque jamais: elle ouvre une porte sans causes et pousse sa cible a abandonner la mission.'
+      }
     ],
     bosses: [
       { name: 'Greffier du Voile', hp: 360, atk: 16, spd: 4, color: '#39c5bb', weapon: 'seal_staff', special: 'Tampon de Reecriture' },
       { name: 'Juge des Trames', hp: 420, atk: 18, spd: 3, color: '#d9b86b', weapon: 'verdict_halberd', special: 'Sentence de Continuite' },
+      {
+        name: 'Cartographe des Portes Mortes',
+        hp: 520,
+        atk: 20,
+        spd: 5,
+        color: '#d9b86b',
+        weapon: 'dead_gate_staff',
+        special: 'Atlas des Issues Parfaites',
+        role: 'portal_controller',
+        lore: 'Ancien protocole de cartographie A.R.C.A. devenu gardien des routes sans origine. Chaque phase deplace le seul portail causal et transforme les autres en pieges adaptes aux regrets de la cellule.'
+      },
       { name: 'Avatar du Sans-Auteur', hp: 470, atk: 19, spd: 5, color: '#ff5b6e', weapon: 'meta_claw', special: 'Rature de Destin' }
     ],
     worldBoss: { name: 'Moteur de Convergence Instable', hp: 1150, atk: 27, spd: 3, color: '#7df9ff', weapon: 'nexus_lance', special: 'Compression des Mille Portails' }

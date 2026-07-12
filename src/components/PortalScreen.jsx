@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HEROES_DB } from '../game/heroes';
 import sound from '../game/soundEngine';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
@@ -67,6 +67,10 @@ const getPoolRateSummary = (pool, lang) => {
 };
 
 export default function PortalScreen({ lang, breachShards, setBreachShards, portalStats, setPortalStats, unlockedHeroes, setUnlockedHeroes, hiddenUniverses = [], disabledAssets = {}, completedStages = [], onBack }) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
+
   const [summoning, setSummoning] = useState(false);
   const [summonedHero, setSummonedHero] = useState(null);
   const [summonedBatch, setSummonedBatch] = useState(null);
@@ -306,7 +310,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
       boxSizing: 'border-box'
     }}>
       {/* Top Header Controls */}
-      <div style={{ width: '100%', maxWidth: '800px', display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+      <div className="portal-command-bar" style={{ width: '100%', maxWidth: '800px', display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
         <button onClick={onBack} className="btn-retro" title={lang === 'fr' ? 'Retourne au hub sans depenser de fragments.' : 'Return to the hub without spending shards.'}>{getTranslation(lang, 'backToHub')}</button>
         <div style={{
           padding: '8px 16px',
@@ -316,7 +320,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
           color: '#9b59b6',
           boxShadow: '0 0 10px rgba(155, 89, 182, 0.2)'
         }}>
-          🌀 {getTranslation(lang, 'shards')}: <span style={{ fontWeight: 'bold' }}>{breachShards}</span>
+          {getTranslation(lang, 'shards')}: <span style={{ fontWeight: 'bold' }}>{breachShards}</span>
         </div>
       </div>
 
