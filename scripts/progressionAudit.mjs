@@ -48,6 +48,11 @@ const expectedOcEnemyNames = [
 const expectedOcItemIds = ['arca-signal-lens', 'nexus-anchor-coil', 'origin-shard-guard'];
 const expectedOcProceduralThreats = ['Double ideal de Marrow', 'Matrice de Substitution'];
 const expectedOcOriginLocks = ['name', 'contradiction', 'scar', 'debt', 'return', 'choice'];
+const expectedChuckySpriteOutputs = [
+  '/sprites/generated/heroes/chucky/chucky.png',
+  '/sprites/generated/heroes/chucky/tiffany.png',
+  '/sprites/generated/heroes/chucky/glen.png'
+];
 
 assert(dlcSource.includes("BASE_GAME_UNIVERSES = ['Nexus de Convergence']"), 'Base OC universe must remain Nexus de Convergence.');
 assert(dlcSource.includes('DEFAULT_HIDDEN_UNIVERSES = getDlcUniverseKeys()'), 'DLC universes must be hidden by default.');
@@ -92,6 +97,12 @@ assert(ocCampaignSource.includes('export const OC_ORIGIN_LOCKS') && hubSource.in
 assert((ocCampaignSource.match(/enemyRosterExclusive: true/g) || []).length === expectedOcOriginLocks.length, 'Every OC operation must keep an exclusive lore roster.');
 assert(gameCanvasSource.includes('stage.enemyRosterExclusive') && gameCanvasSource.includes('const missionRoster'), 'GameCanvas must enforce exclusive mission rosters when requested.');
 assert(spriteChecklistSource.includes('[ ] Double ideal de Marrow') && spriteChecklistSource.includes('[ ] Matrice de Substitution'), 'Deferred OC sprite generation must remain visible in the conversion checklist.');
+expectedChuckySpriteOutputs.forEach(output => {
+  assert(manifestOutputs.has(output), `Missing Chucky OpenAI sprite ${output}.`);
+});
+assert(enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/chucky.png'") && enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/tiffany.png'"), 'Chucky and Tiffany doll bosses must use their dedicated OpenAI sheets.');
+assert(rendererSource.includes("Chucky: '/backgrounds/chucky-play-pals-breach-openai-v2.png'"), 'Chucky stages must use the dedicated Play Pals Breach background.');
+assert(spriteChecklistSource.includes('[ ] Tiffany Valentine humaine') && spriteChecklistSource.includes('quatre echecs OpenAI 504') && spriteChecklistSource.includes('cinquieme generation bloquee'), 'Deferred human Tiffany generation must remain visible in the conversion checklist.');
 assert(hubSource.includes('ARC_UNLOCK_RULES.personalMinLevel'), 'Narrative arc level gates must stay wired.');
 assert(hubSource.includes('getUniverseArcRosterStatus'), 'Universe arc roster gates must stay wired.');
 assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must stay wired.');
@@ -399,6 +410,9 @@ console.log(JSON.stringify({
   ocOriginLocks: expectedOcOriginLocks.length,
   ocDeferredSprites: expectedOcProceduralThreats.length,
   ocItemSprites: expectedOcItemIds.length,
+  chuckyOpenAiSprites: expectedChuckySpriteOutputs.length,
+  chuckyDeferredSprites: 1,
+  chuckyUniverseBackground: 'play-pals-breach-openai-v2',
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',

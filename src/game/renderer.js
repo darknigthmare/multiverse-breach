@@ -891,7 +891,7 @@ export const OPENAI_BACKDROPS = {
     Vocaloid: '/backgrounds/vocaloid-smash-openai.png',
     'Guilty Gear': '/backgrounds/guilty-gear-smash-openai.png',
     'Slender Man': '/backgrounds/slender-man-smash-openai.png',
-    Chucky: '/backgrounds/chucky-smash-openai.png',
+    Chucky: '/backgrounds/chucky-play-pals-breach-openai-v2.png',
     Fallout: '/backgrounds/fallout-smash-openai.png',
     Unreal: '/backgrounds/unreal-smash-openai.png',
     'Star Wars': '/backgrounds/star-wars-smash-openai.png',

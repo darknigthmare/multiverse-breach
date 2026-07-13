@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-05T06:18:01.998Z",
+  "generatedAt": "2026-07-13T11:14:33.514Z",
   "sheet": {
     "width": 1024,
     "height": 1024,
@@ -15,17 +15,17 @@
   },
   "counts": {
     "heroes": 1103,
-    "enemies": 998,
-    "bosses": 926,
+    "enemies": 1007,
+    "bosses": 930,
     "items": 30,
-    "total": 3057
+    "total": 3070
   },
   "availableCounts": {
-    "heroes": 280,
-    "enemies": 23,
-    "bosses": 65,
+    "heroes": 281,
+    "enemies": 25,
+    "bosses": 68,
     "items": 30,
-    "total": 398
+    "total": 404
   },
   "entries": [
     {
@@ -8105,8 +8105,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -21910,10 +21910,10 @@
     },
     {
       "kind": "hero",
-      "id": "buckhead_avatar",
-      "name": "Buckhead Avatar",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/heroes/buckhead/buckhead-avatar.png",
+      "id": "buckethead_avatar",
+      "name": "Buckethead Persona",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/heroes/buckethead/buckethead-avatar.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -21930,10 +21930,10 @@
     },
     {
       "kind": "hero",
-      "id": "bucket_guitar_echo",
-      "name": "Bucket Guitar Echo",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/heroes/buckhead/bucket-guitar-echo.png",
+      "id": "death_cube_k_echo",
+      "name": "Death Cube K Echo",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/heroes/buckethead/death-cube-k-echo.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -21950,10 +21950,10 @@
     },
     {
       "kind": "hero",
-      "id": "white_mask_signal",
-      "name": "White Mask Signal",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/heroes/buckhead/white-mask-signal.png",
+      "id": "pike_riff_signal",
+      "name": "Pike Riff Signal",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/heroes/buckethead/pike-riff-signal.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -22189,6 +22189,66 @@
       "source": "openai"
     },
     {
+      "kind": "enemy",
+      "id": "nexus-de-convergence-double-ideal-de-marrow",
+      "name": "Double ideal de Marrow",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "enemy",
+      "id": "nexus-de-convergence-matrice-de-substitution",
+      "name": "Matrice de Substitution",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/matrice-de-substitution.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "nexus-de-convergence-pelerin-de-la-fausse-sortie",
+      "name": "Pelerin de la Fausse Sortie",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/pelerin-de-la-fausse-sortie.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
       "kind": "boss",
       "id": "nexus-de-convergence-greffier-du-voile",
       "name": "Greffier du Voile",
@@ -22214,6 +22274,26 @@
       "name": "Juge des Trames",
       "universe": "Nexus de Convergence",
       "output": "/sprites/generated/bosses/nexus-de-convergence/juge-des-trames.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "boss",
+      "id": "nexus-de-convergence-cartographe-des-portes-mortes",
+      "name": "Cartographe des Portes Mortes",
+      "universe": "Nexus de Convergence",
+      "output": "/sprites/generated/bosses/nexus-de-convergence/cartographe-des-portes-mortes.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -22257,46 +22337,6 @@
       "frame": {
         "width": 256,
         "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": true,
-      "source": "openai"
-    },
-    {
-      "kind": "enemy",
-      "id": "nexus-de-convergence-pelerin-de-la-fausse-sortie",
-      "name": "Pelerin de la Fausse Sortie",
-      "universe": "Nexus de Convergence",
-      "output": "/sprites/generated/bosses/nexus-de-convergence/pelerin-de-la-fausse-sortie.png",
-      "frame": {
-        "width": 384,
-        "height": 384,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": true,
-      "source": "openai"
-    },
-    {
-      "kind": "boss",
-      "id": "nexus-de-convergence-cartographe-des-portes-mortes",
-      "name": "Cartographe des Portes Mortes",
-      "universe": "Nexus de Convergence",
-      "output": "/sprites/generated/bosses/nexus-de-convergence/cartographe-des-portes-mortes.png",
-      "frame": {
-        "width": 384,
-        "height": 384,
         "columns": 4,
         "rows": [
           "idle",
@@ -24750,10 +24790,10 @@
     },
     {
       "kind": "enemy",
-      "id": "the-matrix-system-security-swat",
-      "name": "System Security SWAT",
+      "id": "the-matrix-matrix-security-swat-program",
+      "name": "Matrix Security SWAT Program",
       "universe": "The Matrix",
-      "output": "/sprites/generated/bosses/the-matrix/system-security-swat.png",
+      "output": "/sprites/generated/bosses/the-matrix/matrix-security-swat-program.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -24770,10 +24810,30 @@
     },
     {
       "kind": "enemy",
-      "id": "the-matrix-rogue-exiles-cyber-program",
-      "name": "Rogue Exiles Cyber-Program",
+      "id": "the-matrix-agent-possessed-host",
+      "name": "Agent Possessed Host",
       "universe": "The Matrix",
-      "output": "/sprites/generated/bosses/the-matrix/rogue-exiles-cyber-program.png",
+      "output": "/sprites/generated/bosses/the-matrix/agent-possessed-host.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "the-matrix-rogue-exile-cyber-program",
+      "name": "Rogue Exile Cyber-Program",
+      "universe": "The Matrix",
+      "output": "/sprites/generated/bosses/the-matrix/rogue-exile-cyber-program.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -24794,6 +24854,26 @@
       "name": "Sentinel Squid Drone",
       "universe": "The Matrix",
       "output": "/sprites/generated/bosses/the-matrix/sentinel-squid-drone.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "the-matrix-merovingian-twin-ghost",
+      "name": "Merovingian Twin Ghost",
+      "universe": "The Matrix",
+      "output": "/sprites/generated/bosses/the-matrix/merovingian-twin-ghost.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -24990,6 +25070,26 @@
     },
     {
       "kind": "boss",
+      "id": "the-matrix-merovingian-exile-court",
+      "name": "Merovingian Exile Court",
+      "universe": "The Matrix",
+      "output": "/sprites/generated/bosses/the-matrix/merovingian-exile-court.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "boss",
       "id": "the-matrix-merovingian-exile-lord",
       "name": "Merovingian Exile Lord",
       "universe": "The Matrix",
@@ -25050,10 +25150,10 @@
     },
     {
       "kind": "boss",
-      "id": "the-matrix-deus-ex-machina-core",
-      "name": "Deus Ex Machina Core",
+      "id": "the-matrix-deus-ex-machina-source-core",
+      "name": "Deus Ex Machina Source Core",
       "universe": "The Matrix",
-      "output": "/sprites/generated/bosses/the-matrix/deus-ex-machina-core.png",
+      "output": "/sprites/generated/bosses/the-matrix/deus-ex-machina-source-core.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -25065,8 +25165,8 @@
           "hit"
         ]
       },
-      "available": true,
-      "source": "openai"
+      "available": false,
+      "source": null
     },
     {
       "kind": "enemy",
@@ -27953,7 +28053,7 @@
       "id": "chucky-chucky-doll-killer",
       "name": "Chucky Doll Killer",
       "universe": "Chucky",
-      "output": "/sprites/generated/bosses/chucky/chucky-doll-killer.png",
+      "output": "/sprites/generated/heroes/chucky/chucky.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -27965,15 +28065,15 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
       "id": "chucky-tiffany-doll-bride",
       "name": "Tiffany Doll Bride",
       "universe": "Chucky",
-      "output": "/sprites/generated/bosses/chucky/tiffany-doll-bride.png",
+      "output": "/sprites/generated/heroes/chucky/tiffany.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -27985,8 +28085,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -32950,34 +33050,6 @@
     },
     {
       "kind": "enemy",
-      "id": "kaamelott-roi-burgonde",
-      "name": "Roi Burgonde",
-      "universe": "Kaamelott",
-      "output": "/sprites/generated/bosses/kaamelott/roi-burgonde.png",
-      "frame": {
-        "width": 256,
-        "height": 128,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "command",
-          "attack",
-          "feast",
-          "taunt",
-          "confused",
-          "guard",
-          "hurt",
-          "enraged",
-          "stunned",
-          "defeated"
-        ]
-      },
-      "available": true,
-      "source": "openai"
-    },
-    {
-      "kind": "enemy",
       "id": "kaamelott-saxon-scout",
       "name": "Saxon Scout",
       "universe": "Kaamelott",
@@ -33002,6 +33074,46 @@
       "name": "Graal Bureaucrat",
       "universe": "Kaamelott",
       "output": "/sprites/generated/bosses/kaamelott/graal-bureaucrat.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "kaamelott-council-confusion-clerk",
+      "name": "Council Confusion Clerk",
+      "universe": "Kaamelott",
+      "output": "/sprites/generated/bosses/kaamelott/council-confusion-clerk.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "kaamelott-bandit-de-carmelite",
+      "name": "Bandit de Carmelite",
+      "universe": "Kaamelott",
+      "output": "/sprites/generated/bosses/kaamelott/bandit-de-carmelite.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -33078,6 +33190,26 @@
     },
     {
       "kind": "boss",
+      "id": "kaamelott-roi-burgonde",
+      "name": "Roi Burgonde",
+      "universe": "Kaamelott",
+      "output": "/sprites/generated/bosses/kaamelott/roi-burgonde.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "boss",
       "id": "kaamelott-lancelot-noir",
       "name": "Lancelot Noir",
       "universe": "Kaamelott",
@@ -33102,6 +33234,26 @@
       "name": "Meleagant Whisper",
       "universe": "Kaamelott",
       "output": "/sprites/generated/bosses/kaamelott/meleagant-whisper.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "boss",
+      "id": "kaamelott-leodagan-war-council",
+      "name": "Leodagan War Council",
+      "universe": "Kaamelott",
+      "output": "/sprites/generated/bosses/kaamelott/leodagan-war-council.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -35362,6 +35514,46 @@
       "name": "Chop Suey Tempo Break",
       "universe": "System of a Down",
       "output": "/sprites/generated/bosses/system-of-a-down/chop-suey-tempo-break.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "system-of-a-down-propaganda-screen-warden",
+      "name": "Propaganda Screen Warden",
+      "universe": "System of a Down",
+      "output": "/sprites/generated/bosses/system-of-a-down/propaganda-screen-warden.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "system-of-a-down-war-broadcast-echo",
+      "name": "War Broadcast Echo",
+      "universe": "System of a Down",
+      "output": "/sprites/generated/bosses/system-of-a-down/war-broadcast-echo.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -60258,10 +60450,10 @@
     },
     {
       "kind": "enemy",
-      "id": "buckhead-buckhead-rift-drone",
-      "name": "Buckhead Rift Drone",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/bosses/buckhead/buckhead-rift-drone.png",
+      "id": "buckethead-bucketheadland-toy-drone",
+      "name": "Bucketheadland Toy Drone",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/bosses/buckethead/bucketheadland-toy-drone.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -60278,10 +60470,10 @@
     },
     {
       "kind": "enemy",
-      "id": "buckhead-buckhead-breach-stalker",
-      "name": "Buckhead Breach Stalker",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/bosses/buckhead/buckhead-breach-stalker.png",
+      "id": "buckethead-animatronic-riff-guard",
+      "name": "Animatronic Riff Guard",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/bosses/buckethead/animatronic-riff-guard.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -60298,10 +60490,10 @@
     },
     {
       "kind": "enemy",
-      "id": "buckhead-buckhead-anomaly-pack",
-      "name": "Buckhead Anomaly Pack",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/bosses/buckhead/buckhead-anomaly-pack.png",
+      "id": "buckethead-white-mask-static",
+      "name": "White Mask Static",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/bosses/buckethead/white-mask-static.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -60318,10 +60510,10 @@
     },
     {
       "kind": "boss",
-      "id": "buckhead-buckhead-elite-guardian",
-      "name": "Buckhead Elite Guardian",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/bosses/buckhead/buckhead-elite-guardian.png",
+      "id": "buckethead-giant-robot-riff-engine",
+      "name": "Giant Robot Riff Engine",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/bosses/buckethead/giant-robot-riff-engine.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -60338,10 +60530,10 @@
     },
     {
       "kind": "boss",
-      "id": "buckhead-buckhead-crisis-avatar",
-      "name": "Buckhead Crisis Avatar",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/bosses/buckhead/buckhead-crisis-avatar.png",
+      "id": "buckethead-death-cube-k-shadow",
+      "name": "Death Cube K Shadow",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/bosses/buckethead/death-cube-k-shadow.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -60358,10 +60550,10 @@
     },
     {
       "kind": "boss",
-      "id": "buckhead-bucket-riff-automaton",
-      "name": "Bucket Riff Automaton",
-      "universe": "Buckhead",
-      "output": "/sprites/generated/bosses/buckhead/bucket-riff-automaton.png",
+      "id": "buckethead-bucketheadland-automaton",
+      "name": "Bucketheadland Automaton",
+      "universe": "Buckethead",
+      "output": "/sprites/generated/bosses/buckethead/bucketheadland-automaton.png",
       "frame": {
         "width": 256,
         "height": 256,

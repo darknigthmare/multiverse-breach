@@ -312,8 +312,8 @@ export const ENEMIES_DB = {
       { name: 'Voodoo Doll Puppet', hp: 50, atk: 12, spd: 7, color: '#7f5a38', weapon: 'zap' }
     ],
     bosses: [
-      { name: 'Chucky Doll Killer', hp: 400, atk: 17, spd: 7, color: '#f1c40f', weapon: 'knife', special: 'Voodoo Damballa Curse Fire' },
-      { name: 'Tiffany Doll Bride', hp: 380, atk: 15, spd: 7, color: '#ececec', weapon: 'knife', special: 'Aerosol Spray Fire Blast' }
+      { name: 'Chucky Doll Killer', hp: 400, atk: 17, spd: 7, color: '#f1c40f', weapon: 'knife', special: 'Voodoo Damballa Curse Fire', spriteSource: '/sprites/generated/heroes/chucky/chucky.png' },
+      { name: 'Tiffany Doll Bride', hp: 380, atk: 15, spd: 7, color: '#ececec', weapon: 'knife', special: 'Aerosol Spray Fire Blast', spriteSource: '/sprites/generated/heroes/chucky/tiffany.png' }
     ],
     worldBoss: { name: 'Play Pals Assembly Core', hp: 1100, atk: 25, spd: 4, color: '#2c3e50', weapon: 'machinery', special: 'Unleash Defective Toy Swarm' }
   },

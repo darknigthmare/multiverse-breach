@@ -74,7 +74,7 @@ const main = async () => {
       name: hero.name,
       universe: hero.universe,
       output: `/sprites/generated/${file}`,
-      frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
+        frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
       prompt: buildPrompt({
         kind: 'hero',
         name: hero.name,
@@ -97,7 +97,7 @@ const main = async () => {
         id: slugify(`${universe}-${enemy.name}`),
         name: enemy.name,
         universe,
-        output: `/sprites/generated/${file}`,
+        output: enemy.spriteSource || `/sprites/generated/${file}`,
         frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
         prompt: buildPrompt({
           kind: 'enemy',
@@ -118,7 +118,7 @@ const main = async () => {
         id: slugify(`${universe}-${boss.name}`),
         name: boss.name,
         universe,
-        output: `/sprites/generated/${file}`,
+        output: boss.spriteSource || `/sprites/generated/${file}`,
       frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
         prompt: buildPrompt({
           kind: 'boss',
