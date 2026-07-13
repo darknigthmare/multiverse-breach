@@ -38,6 +38,42 @@ export const CHARACTER_PLAQUES = {
     },
     tags: ['Nexus', 'A.R.C.A.', 'Rempart', 'Portails', 'Tactical']
   },
+  arca_nova: {
+    clearance: 'ARC-NOVA',
+    rank: { fr: 'Analyste des possibles', en: 'Possibility Analyst' },
+    role: { fr: 'Lecture de Trame et stabilisation mobile', en: 'Thread reading and mobile stabilization' },
+    callSign: 'Nova',
+    origin: { fr: 'Nexus de Convergence - Observatoire Veyr avant la Premiere Breche', en: 'Nexus of Convergence - Veyr Observatory before the First Breach' },
+    dossier: {
+      fr: 'Nova Vey grandit dans l Observatoire Veyr, une institution chargee de comparer les consequences probables avant l ouverture d un passage. Son monocle cyan ne predit pas l avenir: il superpose les routes qui possedent encore une cause mesurable. La nuit de la Premiere Breche, Nova detecta trente-deux issues plausibles et recommanda celle qui sauvait le plus grand nombre. Cette route mena pourtant a la disparition du secteur dont A.R.C.A. effaca ensuite le registre. Depuis, elle refuse de confondre probabilite et justice. Son baton bifurque est un diapason de resonance qui interroge une Trame sans lui imposer une reponse.',
+      en: 'Nova Vey grew up in Veyr Observatory, an institution tasked with comparing probable consequences before a passage was opened. Her cyan monocle does not predict the future: it overlays routes that still possess a measurable cause. On the night of the First Breach, Nova detected thirty-two plausible exits and recommended the one that saved the greatest number. That route nevertheless led to the disappearance of the sector A.R.C.A. later erased from its ledger. Since then, she refuses to confuse probability with justice. Her forked staff is a resonance tuner that questions a Thread without forcing an answer upon it.'
+    },
+    breachLore: {
+      fr: 'Dans la cellule ZERO, Nova lit les failles comme des choix encore ouverts. Ping de Trame revele une faiblesse causale, Surcadence A.R.C.A. synchronise les allies, Reflexe d Ancre traverse une prediction hostile et Reboot de Faille rend au terrain sa derniere version stable. Dans la Fonderie des Eclats d Origine, le Sans-Auteur lui offre une machine parfaite ou chaque perte peut etre evitee en supprimant les decisions imprevisibles. Nova la refuse: une Trame sans risque n est plus une histoire vecue, seulement un calcul ferme. Son arc consiste a fournir des options a l Ancre sans jamais choisir a sa place.',
+      en: 'Within Cell ZERO, Nova reads breaches as choices that remain open. Thread Ping reveals a causal weakness, A.R.C.A. Overclock synchronizes allies, Anchor Reflex crosses a hostile prediction, and Breach Reboot restores the terrain last stable version. In the Origin Shard Foundry, the Authorless offers her a perfect machine where every loss can be avoided by deleting unpredictable decisions. Nova refuses it: a Thread without risk is no longer a lived story, only a closed calculation. Her arc is about giving the Anchor options without ever choosing in their place.'
+    },
+    doctrine: { fr: 'Monocle de lecture, diapason de resonance, scan causal, surcadence de cellule, reboot local.', en: 'Reading monocle, resonance tuner, causal scan, cell overclock, local reboot.' },
+    threat: { fr: 'Risque A.R.C.A.: une surcharge de futurs possibles peut la figer dans l analyse ou lui faire traiter un sacrifice humain comme une simple valeur optimale.', en: 'A.R.C.A. risk: too many possible futures can trap her in analysis or make her treat a human sacrifice as a merely optimal value.' },
+    tags: ['Nexus', 'A.R.C.A.', 'Possibles', 'Scan', 'Hacker']
+  },
+  arca_marrow: {
+    clearance: 'ARC-MRW',
+    rank: { fr: 'Chasseur de sceaux', en: 'Seal Hunter' },
+    role: { fr: 'Execution de paradoxes et rupture de doubles', en: 'Paradox execution and duplicate breaking' },
+    callSign: 'Marrow',
+    origin: { fr: 'Nexus de Convergence - Patrouilles exterieures du Rempart', en: 'Nexus of Convergence - Outer Bulwark patrols' },
+    dossier: {
+      fr: 'Marrow Kade appartenait aux patrouilles qui coupaient les passages devenus irreversibles avant la fondation officielle d A.R.C.A. Sa lame de fracture est forgee avec les bords refroidis de trois portails condamnes; elle ne tranche correctement que ce qui possede deux continuations incompatibles. La cicatrice de son visage vient de sa premiere erreur: il attaqua une copie parfaite d un coequipier avant de comprendre que l original et le double partageaient encore la meme memoire. Il sauva l original, mais condamna la copie consciente. Marrow porte depuis le poids de cette distinction et refuse toute execution fondee sur une simple ressemblance.',
+      en: 'Marrow Kade served among the patrols that severed irreversible passages before A.R.C.A. was formally founded. His fracture blade is forged from the cooled edges of three condemned portals; it cuts cleanly only through something holding two incompatible continuations. The scar on his face came from his first mistake: he attacked a perfect copy of a teammate before realizing original and duplicate still shared the same memory. He saved the original but condemned the conscious copy. Marrow has carried the weight of that distinction ever since and refuses any execution based on resemblance alone.'
+    },
+    breachLore: {
+      fr: 'Dans Multiverse Breach, Marrow intervient quand une anomalie a deja appris a porter un nom. Coupe-Sceau rompt ses protections, Entaille de Breche ouvre une ligne dans sa causalite, Pas Entre Deux esquive par une route condamnee et Execution de Paradoxe force deux versions incompatibles a declarer laquelle choisit de continuer. A la Fonderie, son double ideal ne possede ni cicatrice ni dette et lui promet une vie ou aucune copie n a souffert. Marrow le detruit seulement apres que le double revendique le droit de remplacer tous les autres. Son arc ne consiste pas a tuer les faux, mais a proteger le droit de chaque conscience a prouver ce qu elle est devenue.',
+      en: 'In Multiverse Breach, Marrow intervenes once an anomaly has learned to wear a name. Seal Cut breaks its protections, Breach Gash opens a line through its causality, Step Between Two dodges along a condemned route, and Paradox Execution forces incompatible versions to declare which one chooses to continue. At the Foundry, his ideal double bears neither scar nor debt and promises a life where no copy suffered. Marrow destroys it only after the double claims the right to replace everyone else. His arc is not about killing what is false, but protecting every consciousness right to prove what it has become.'
+    },
+    doctrine: { fr: 'Lame de fracture, lecture de sceau, pas de phase, duel de double, execution conditionnelle.', en: 'Fracture blade, seal reading, phase step, duplicate duel, conditional execution.' },
+    threat: { fr: 'Risque A.R.C.A.: le Sans-Auteur peut falsifier une signature de remplacement et retourner son instinct d execution contre une version innocente.', en: 'A.R.C.A. risk: the Authorless can forge a replacement signature and turn his execution instinct against an innocent version.' },
+    tags: ['Nexus', 'A.R.C.A.', 'Paradoxe', 'Fracture', 'Slayer']
+  },
   marcus: {
     clearance: 'COG-01',
     rank: { fr: 'Sergent veteran', en: 'Veteran Sergeant' },

@@ -3,6 +3,13 @@ import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
 
+const faceUnitToward = (unit, target) => {
+  const unitX = unit?.gridX ?? unit?.x;
+  const targetX = target?.gridX ?? target?.x;
+  if (!Number.isFinite(unitX) || !Number.isFinite(targetX) || unitX === targetX) return;
+  unit.facing = targetX > unitX ? 1 : -1;
+};
+
 export class EngineTactics {
   constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
     this.width = width;
@@ -550,6 +557,7 @@ export class EngineTactics {
       if (target) {
         const hero = this.activeUnit;
         const defender = target.unit;
+        faceUnitToward(hero, defender);
 
         // Can attack enemies OR obstacles
         if (target.type === 'enemy' || target.type === 'obstacle') {
@@ -583,7 +591,7 @@ export class EngineTactics {
           } else if (this.selectedAction === 'special') {
             if (hero.specialCharge < 100) return { handled: false, reason: 'charge' };
             hero.specialCharge = 0;
-            hero.state = 'attack';
+            hero.state = 'special';
             hero.stateTimer = 35;
             this.playSfx('special');
 
@@ -1060,6 +1068,7 @@ export class EngineTactics {
     setTimeout(() => {
       const targetHp = attackTarget.hp ?? attackTarget.currentHp;
       if (attackDist <= rangeLimit && targetHp > 0 && this.hasLineOfSight(enemy, attackTarget, 'enemy')) {
+        faceUnitToward(enemy, attackTarget);
         enemy.state = 'attack';
         enemy.stateTimer = 20;
         this.playSfx(enemy.weapon === 'gun' || enemy.weapon === 'laser' ? 'shoot' : 'slash');
@@ -1075,6 +1084,7 @@ export class EngineTactics {
       } else if (['tank', 'bossController'].includes(role)) {
         const obstacle = this.obstacles.find(item => item.hp > 0 && Math.abs(item.gridX - enemy.gridX) + Math.abs(item.gridY - enemy.gridY) <= 1);
         if (obstacle) {
+          faceUnitToward(enemy, obstacle);
           enemy.state = 'attack';
           enemy.stateTimer = 20;
           this.applyDamage(enemy, obstacle, enemy.isBoss ? enemy.atk * 1.6 : enemy.atk * 1.1, null, { ignoreCover: true });
@@ -1188,7 +1198,8 @@ export class EngineTactics {
     // 5. Execute action after a delay
     setTimeout(() => {
       if (target) {
-        hero.state = 'attack';
+        faceUnitToward(hero, target);
+        hero.state = chosenAction === 'special' ? 'special' : 'attack';
         hero.stateTimer = 25;
 
         let status = null;
@@ -1809,12 +1820,12 @@ export class EngineTactics {
     const unit = entry.unit;
     if (entry.type === 'enemy') {
       if (unit.isBoss) {
-        drawBoss(ctx, unit.x, unit.y, unit, animTime);
+        drawBoss(ctx, unit.x, unit.y, unit, animTime, unit.facing);
       } else {
-        drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, -1);
+        drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing);
       }
     } else {
-      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, 1, 72, 'tactics');
+      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing, 72, 'tactics');
     }
 
     if (unit === this.activeUnit && unit.currentHp > 0) {

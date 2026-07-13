@@ -14,6 +14,8 @@ export const slugifyAsset = (value) => String(value || 'unknown')
 
 export const MIRELLE_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete';
 export const BASTION_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-bastion-complete';
+export const NOVA_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-nova-complete';
+export const MARROW_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete';
 export const SERJ_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/system-of-a-down/serj-tankian-complete';
 export const BUCKET_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/buckhead/bucket-guitar-echo-complete';
 export const ARTHUR_COMPLETE_SPRITE_BASE = '/sprites/generated/heroes/kaamelott/arthur-kaamelott-complete';
@@ -131,6 +133,22 @@ export const BASTION_COMPLETE_SPRITE_PACK = [
   { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: BASTION_COMPLETE_SPRITES.universal }
 ];
 
+export const NOVA_COMPLETE_SPRITES = {
+  universal: `${NOVA_COMPLETE_SPRITE_BASE}/arca-nova-universal-v1.png`
+};
+
+export const NOVA_COMPLETE_SPRITE_PACK = [
+  { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: NOVA_COMPLETE_SPRITES.universal }
+];
+
+export const MARROW_COMPLETE_SPRITES = {
+  universal: `${MARROW_COMPLETE_SPRITE_BASE}/arca-marrow-universal-v1.png`
+};
+
+export const MARROW_COMPLETE_SPRITE_PACK = [
+  { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: MARROW_COMPLETE_SPRITES.universal }
+];
+
 export const HALO_COMPLETE_SPRITES = {
   masterchief: `${HALO_COMPLETE_SPRITE_BASES.masterchief}/master-chief-universal.png`,
   arbiter: `${HALO_COMPLETE_SPRITE_BASES.arbiter}/arbiter-universal.png`,
@@ -151,6 +169,16 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 
 export const SPRITE_SHEET_LAYOUTS = {
   [BASTION_COMPLETE_SPRITES.universal]: {
+    columns: 4,
+    rows: 8,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 3, support: 4, special: 5, hit: 6, dead: 7 }
+  },
+  [NOVA_COMPLETE_SPRITES.universal]: {
+    columns: 4,
+    rows: 8,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 3, support: 4, special: 5, hit: 6, dead: 7 }
+  },
+  [MARROW_COMPLETE_SPRITES.universal]: {
     columns: 4,
     rows: 8,
     rowByState: { idle: 0, run: 1, attack: 2, defense: 3, support: 4, special: 5, hit: 6, dead: 7 }
@@ -355,6 +383,8 @@ export const SPRITE_SHEET_LAYOUTS = {
 export const getHeroCompleteSpritePack = (hero) => {
   if (hero?.id === 'arca_mirelle') return MIRELLE_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arca_bastion') return BASTION_COMPLETE_SPRITE_PACK;
+  if (hero?.id === 'arca_nova') return NOVA_COMPLETE_SPRITE_PACK;
+  if (hero?.id === 'arca_marrow') return MARROW_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'serj_tankian') return SERJ_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'bucket_guitar_echo') return BUCKET_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arthur_kaamelott') return ARTHUR_COMPLETE_SPRITE_PACK;
@@ -367,6 +397,12 @@ const getHaloSpriteForContext = (hero) => HALO_COMPLETE_SPRITES[hero?.id] || nul
 const getBastionSpriteForContext = (hero) => (
   hero?.id === 'arca_bastion' ? BASTION_COMPLETE_SPRITES.universal : null
 );
+
+const getOcUniversalSpriteForContext = (hero) => {
+  if (hero?.id === 'arca_nova') return NOVA_COMPLETE_SPRITES.universal;
+  if (hero?.id === 'arca_marrow') return MARROW_COMPLETE_SPRITES.universal;
+  return null;
+};
 
 const getMirelleSpriteForContext = (hero, context = 'auto') => {
   if (hero?.id !== 'arca_mirelle') return null;
@@ -430,6 +466,8 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (completeSprite) return completeSprite;
   const bastionSprite = getBastionSpriteForContext(hero);
   if (bastionSprite) return bastionSprite;
+  const ocUniversalSprite = getOcUniversalSpriteForContext(hero);
+  if (ocUniversalSprite) return ocUniversalSprite;
   const serjSprite = getSerjSpriteForContext(hero, context);
   if (serjSprite) return serjSprite;
   const bucketSprite = getBucketSpriteForContext(hero, context);

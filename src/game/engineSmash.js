@@ -1025,7 +1025,7 @@ export class EngineSmash {
 
     this.enemies.forEach(e => {
       if (e.isBoss) {
-        drawBoss(ctx, e.x, e.y, e, animTime);
+        drawBoss(ctx, e.x, e.y, e, animTime, e.facing);
       } else {
         drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing);
       }

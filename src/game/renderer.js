@@ -214,7 +214,7 @@ export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targ
   let isDead = state === 'dead';
   let isHit = state === 'hit';
   let isDefending = state === 'defense';
-  let isAttacking = state === 'attack';
+  let isAttacking = state === 'attack' || state === 'special';
 
   if (isDead) {
     ctx.rotate(-Math.PI / 2);
@@ -504,7 +504,7 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
 
   let isDead = state === 'dead';
   let isHit = state === 'hit';
-  let isAttacking = state === 'attack';
+  let isAttacking = state === 'attack' || state === 'special';
 
   if (isDead) {
     ctx.rotate(Math.PI / 2);
@@ -599,9 +599,9 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
   ctx.restore();
 };
 
-export const drawBoss = (ctx, x, y, boss, animTime) => {
-  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, -1, 126, getEnemySpriteSheetSrc, () => {
-    drawBoss(ctx, x, y, boss, animTime);
+export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, facing, 126, getEnemySpriteSheetSrc, () => {
+    drawBoss(ctx, x, y, boss, animTime, facing);
   });
   if (generatedStatus !== 'missing') {
     return;
@@ -610,11 +610,11 @@ export const drawBoss = (ctx, x, y, boss, animTime) => {
   const { name, color, state } = boss;
   ctx.save();
   ctx.translate(x, y);
-  ctx.scale(-1, 1); // Bosses face left
+  ctx.scale(facing, 1);
 
   let isDead = state === 'dead';
   let isHit = state === 'hit';
-  let isAttacking = state === 'attack';
+  let isAttacking = state === 'attack' || state === 'special';
 
   if (isDead) {
     ctx.rotate(Math.PI / 2);

@@ -152,6 +152,7 @@ export class EngineRpg {
     if (!target) return;
 
     hero.atb = 0;
+    if (target.x !== hero.x) hero.facing = target.x > hero.x ? 1 : -1;
 
     if (abilityType === 'simple') {
       hero.state = 'attack';
@@ -200,7 +201,7 @@ export class EngineRpg {
     } else if (abilityType === 'special') {
       if (hero.specialCharge < 100) return;
       hero.specialCharge = 0;
-      hero.state = 'attack';
+      hero.state = 'special';
       hero.stateTimer = 45;
       
       this.playSfx('special');
@@ -587,6 +588,7 @@ export class EngineRpg {
           e.atb = 0;
           e.state = 'attack';
           e.stateTimer = 40;
+          if (target.x !== e.x) e.facing = target.x > e.x ? 1 : -1;
           e.x = target.x + 50;
           e.y = target.y;
 
@@ -612,7 +614,7 @@ export class EngineRpg {
 
   draw(ctx, animTime) {
     this.heroes.forEach(h => {
-      drawPixelSprite(ctx, h.x, h.y, h, animTime, 1, 72, 'rpg');
+      drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing, 72, 'rpg');
 
       if (h.id === this.selectedHeroId && h.currentHp > 0) {
         ctx.strokeStyle = '#00ffff';
@@ -641,9 +643,9 @@ export class EngineRpg {
 
     this.enemies.forEach(e => {
       if (e.isBoss) {
-        drawBoss(ctx, e.x, e.y, e, animTime);
+        drawBoss(ctx, e.x, e.y, e, animTime, e.facing);
       } else {
-        drawPixelEnemy(ctx, e.x, e.y, e, animTime, -1);
+        drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing);
       }
 
       if (e.currentHp > 0) {

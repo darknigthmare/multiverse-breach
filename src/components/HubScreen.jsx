@@ -1480,6 +1480,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
       }
 
       state.npcs.forEach(npc => {
+        const previousNpcX = npc.x;
         if (npc.routine === 'walk') {
           npc.x = npc.baseX + Math.sin(state.t * 0.014 + npc.phase) * 46;
           npc.y = npc.baseY + Math.cos(state.t * 0.011 + npc.phase) * 22;
@@ -1490,7 +1491,8 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
           npc.x = npc.baseX + Math.sin(state.t * 0.018 + npc.phase) * 14;
           npc.y = npc.baseY + Math.cos(state.t * 0.014 + npc.phase) * 8;
         }
-        npc.facing = Math.sin(state.t * 0.018 + npc.phase) > 0 ? 1 : -1;
+        const horizontalTravel = npc.x - previousNpcX;
+        if (Math.abs(horizontalTravel) > 0.01) npc.facing = horizontalTravel > 0 ? 1 : -1;
       });
 
       const nearest = state.npcs
