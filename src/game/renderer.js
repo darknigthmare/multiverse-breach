@@ -109,6 +109,7 @@ const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHei
   ctx.save();
   ctx.translate(x, y);
   ctx.scale(facing, 1);
+  ctx.filter = entity?.spriteFilter || 'none';
   ctx.imageSmoothingEnabled = false;
   ctx.drawImage(
     entry.image,
@@ -488,7 +489,79 @@ const drawWeapon = (ctx, x, y, type, color, animTime) => {
   ctx.restore();
 };
 
+const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing) => {
+  const isForgeMatrix = enemy?.visualStyle === 'origin_forge_matrix';
+  if (!isForgeMatrix) return false;
+
+  const state = enemy.state || 'idle';
+  const pulse = Math.sin(animTime * 0.12);
+  const attacking = state === 'attack' || state === 'special';
+  const hit = state === 'hit';
+  const dead = state === 'dead';
+
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(facing * 1.35, 1.35);
+  ctx.imageSmoothingEnabled = false;
+
+  if (isForgeMatrix) {
+    const hover = dead ? 12 : pulse * 3;
+    ctx.globalAlpha = dead ? 0.55 : 1;
+    ctx.fillStyle = 'rgba(0,0,0,0.24)';
+    ctx.beginPath();
+    ctx.ellipse(0, 17, dead ? 18 : 13, 4, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.save();
+    ctx.translate(0, -12 + hover);
+    ctx.rotate(dead ? 0.7 : animTime * 0.018);
+    ctx.strokeStyle = '#d9b86b';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 19, 8, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.rotate(Math.PI / 2 + animTime * 0.011);
+    ctx.strokeStyle = '#59636a';
+    ctx.beginPath();
+    ctx.ellipse(0, 0, 18, 7, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.save();
+    ctx.translate(0, -12 + hover);
+    ctx.fillStyle = hit ? '#ffffff' : '#7df9ff';
+    ctx.shadowColor = '#7df9ff';
+    ctx.shadowBlur = 7 + pulse * 2;
+    ctx.beginPath();
+    ctx.moveTo(0, -12);
+    ctx.lineTo(10, 0);
+    ctx.lineTo(0, 12);
+    ctx.lineTo(-10, 0);
+    ctx.closePath();
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.strokeStyle = '#ff5b6e';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(-2, -10);
+    ctx.lineTo(3, -2);
+    ctx.lineTo(-1, 8);
+    ctx.stroke();
+    if (attacking && !dead) {
+      ctx.fillStyle = 'rgba(125,249,255,0.72)';
+      ctx.fillRect(9, -3, 28 + Math.max(0, pulse) * 12, 6);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(10, -1, 34, 2);
+    }
+    ctx.restore();
+    ctx.restore();
+    return true;
+  }
+
+};
+
 export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
+  if (drawOriginForgeThreat(ctx, x, y, enemy, animTime, facing)) return;
   const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, 68, getEnemySpriteSheetSrc, () => {
     drawPixelEnemy(ctx, x, y, enemy, animTime, facing);
   });

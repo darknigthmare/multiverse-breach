@@ -149,6 +149,22 @@ export const MARROW_COMPLETE_SPRITE_PACK = [
   { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: MARROW_COMPLETE_SPRITES.universal }
 ];
 
+export const SABLE_COMPLETE_SPRITES = {
+  universal: '/sprites/generated/heroes/nexus-de-convergence/arca-sable.png'
+};
+
+export const SABLE_COMPLETE_SPRITE_PACK = [
+  { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: SABLE_COMPLETE_SPRITES.universal }
+];
+
+export const LOOM_COMPLETE_SPRITES = {
+  universal: '/sprites/generated/heroes/nexus-de-convergence/arca-loom.png'
+};
+
+export const LOOM_COMPLETE_SPRITE_PACK = [
+  { id: 'universal', label: 'RPG / Tactics / Melee / Nexus', src: LOOM_COMPLETE_SPRITES.universal }
+];
+
 export const HALO_COMPLETE_SPRITES = {
   masterchief: `${HALO_COMPLETE_SPRITE_BASES.masterchief}/master-chief-universal.png`,
   arbiter: `${HALO_COMPLETE_SPRITE_BASES.arbiter}/arbiter-universal.png`,
@@ -182,6 +198,16 @@ export const SPRITE_SHEET_LAYOUTS = {
     columns: 4,
     rows: 8,
     rowByState: { idle: 0, run: 1, attack: 2, defense: 3, support: 4, special: 5, hit: 6, dead: 7 }
+  },
+  [SABLE_COMPLETE_SPRITES.universal]: {
+    columns: 4,
+    rows: 4,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 2, support: 2, special: 2, hit: 3, dead: 3 }
+  },
+  [LOOM_COMPLETE_SPRITES.universal]: {
+    columns: 4,
+    rows: 4,
+    rowByState: { idle: 0, run: 1, attack: 2, defense: 2, support: 2, special: 2, hit: 3, dead: 3 }
   },
   [MIRELLE_COMPLETE_SPRITES.rpg]: {
     columns: 4,
@@ -385,6 +411,8 @@ export const getHeroCompleteSpritePack = (hero) => {
   if (hero?.id === 'arca_bastion') return BASTION_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arca_nova') return NOVA_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arca_marrow') return MARROW_COMPLETE_SPRITE_PACK;
+  if (hero?.id === 'arca_sable') return SABLE_COMPLETE_SPRITE_PACK;
+  if (hero?.id === 'arca_loom') return LOOM_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'serj_tankian') return SERJ_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'bucket_guitar_echo') return BUCKET_COMPLETE_SPRITE_PACK;
   if (hero?.id === 'arthur_kaamelott') return ARTHUR_COMPLETE_SPRITE_PACK;
@@ -401,6 +429,8 @@ const getBastionSpriteForContext = (hero) => (
 const getOcUniversalSpriteForContext = (hero) => {
   if (hero?.id === 'arca_nova') return NOVA_COMPLETE_SPRITES.universal;
   if (hero?.id === 'arca_marrow') return MARROW_COMPLETE_SPRITES.universal;
+  if (hero?.id === 'arca_sable') return SABLE_COMPLETE_SPRITES.universal;
+  if (hero?.id === 'arca_loom') return LOOM_COMPLETE_SPRITES.universal;
   return null;
 };
 
@@ -481,6 +511,7 @@ export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
 
 export const getEnemySpriteSheetSrc = (enemy) => {
   if (!enemy?.name) return '';
+  if (enemy.spriteSource) return enemy.spriteSource;
   const universe = enemy.universe || enemy.sourceUniverse || 'unknown';
   return `/sprites/generated/bosses/${slugifyAsset(universe)}/${slugifyAsset(enemy.name)}.png`;
 };

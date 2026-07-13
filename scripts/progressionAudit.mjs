@@ -45,6 +45,7 @@ const expectedOcEnemyNames = [
   'moteur-de-convergence-instable'
 ];
 const expectedOcItemIds = ['arca-signal-lens', 'nexus-anchor-coil', 'origin-shard-guard'];
+const expectedOcProceduralThreats = ['Double ideal de Marrow', 'Matrice de Substitution'];
 
 assert(dlcSource.includes("BASE_GAME_UNIVERSES = ['Nexus de Convergence']"), 'Base OC universe must remain Nexus de Convergence.');
 assert(dlcSource.includes('DEFAULT_HIDDEN_UNIVERSES = getDlcUniverseKeys()'), 'DLC universes must be hidden by default.');
@@ -77,6 +78,12 @@ expectedOcItemIds.forEach(itemId => {
 
 assert(enemiesSource.includes("'Nexus de Convergence'"), 'Base OC enemy table is missing.');
 assert(enemiesSource.includes('Pelerin de la Fausse Sortie') && enemiesSource.includes('Cartographe des Portes Mortes'), 'Chapter IV OC threats must remain connected to the Nexus enemy roster.');
+expectedOcProceduralThreats.forEach(name => {
+  assert(enemiesSource.includes(name), `Missing playable OC threat ${name}.`);
+});
+assert(enemiesSource.includes('origin_forge_double') && enemiesSource.includes('spriteFilter') && rendererSource.includes('origin_forge_matrix'), 'Origin Foundry threats must keep distinct animated derived/procedural visuals.');
+assert(ocCampaignSource.includes("enemyRoster: ['Double ideal de Marrow', 'Matrice de Substitution', 'Fragment Vagabond']"), 'Chapter II must prioritize its own lore roster in combat.');
+assert(gameCanvasSource.includes('const prioritizedMonsters = Array.isArray(stage.enemyRoster)'), 'GameCanvas must honor mission-specific enemy rosters.');
 assert(hubSource.includes('ARC_UNLOCK_RULES.personalMinLevel'), 'Narrative arc level gates must stay wired.');
 assert(hubSource.includes('getUniverseArcRosterStatus'), 'Universe arc roster gates must stay wired.');
 assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must stay wired.');
@@ -131,8 +138,11 @@ assert(spriteAssetsSource.includes('SPRITE_SHEET_LAYOUTS') && spriteAssetsSource
 assert(spriteAssetsSource.includes('arca-bastion-universal-v1.png') && spriteAssetsSource.includes('BASTION_COMPLETE_SPRITE_PACK'), 'Bastion must keep his complete universal OC sprite pack routing.');
 assert(spriteAssetsSource.includes('arca-nova-universal-v1.png') && spriteAssetsSource.includes('NOVA_COMPLETE_SPRITE_PACK'), 'Nova must keep her complete universal OC sprite pack routing.');
 assert(spriteAssetsSource.includes('arca-marrow-universal-v1.png') && spriteAssetsSource.includes('MARROW_COMPLETE_SPRITE_PACK'), 'Marrow must keep his complete universal OC sprite pack routing.');
+assert(spriteAssetsSource.includes('SABLE_COMPLETE_SPRITE_PACK') && spriteAssetsSource.includes('LOOM_COMPLETE_SPRITE_PACK'), 'Sable and Loom must expose their OpenAI sheets as complete universal packs.');
 assert(characterPlaquesSource.includes('arca_nova') && characterPlaquesSource.includes('Observatoire Veyr'), 'Nova must keep her detailed OC origin and Breach dossier.');
 assert(characterPlaquesSource.includes('arca_marrow') && characterPlaquesSource.includes('Chasseur de sceaux'), 'Marrow must keep his detailed OC origin and Breach dossier.');
+assert(characterPlaquesSource.includes('arca_sable') && characterPlaquesSource.includes('Cartographe des routes assumees'), 'Sable must keep her detailed OC origin and Breach dossier.');
+assert(characterPlaquesSource.includes('arca_loom') && characterPlaquesSource.includes('Tisseuse de lignes de vie'), 'Loom must keep her detailed OC origin and Breach dossier.');
 assert(rpgEngineSource.includes("drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing") && rpgEngineSource.includes("drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing"), 'RPG rendering must respect live unit orientation.');
 assert(tacticsEngineSource.includes("drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing") && tacticsEngineSource.includes("drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing"), 'Tactics rendering must respect live unit orientation.');
 assert(rendererSource.includes('drawBoss = (ctx, x, y, boss, animTime, facing = -1)') && rendererSource.includes('ctx.scale(facing, 1)'), 'Boss rendering must accept live orientation instead of forcing left.');
@@ -377,6 +387,7 @@ console.log(JSON.stringify({
   baseUniverse: 'Nexus de Convergence',
   ocHeroes: expectedOcHeroIds.length,
   ocThreatSprites: expectedOcEnemyNames.length,
+  ocProceduralThreats: expectedOcProceduralThreats.length,
   ocItemSprites: expectedOcItemIds.length,
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',

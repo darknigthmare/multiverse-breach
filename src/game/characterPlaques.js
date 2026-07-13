@@ -74,6 +74,42 @@ export const CHARACTER_PLAQUES = {
     threat: { fr: 'Risque A.R.C.A.: le Sans-Auteur peut falsifier une signature de remplacement et retourner son instinct d execution contre une version innocente.', en: 'A.R.C.A. risk: the Authorless can forge a replacement signature and turn his execution instinct against an innocent version.' },
     tags: ['Nexus', 'A.R.C.A.', 'Paradoxe', 'Fracture', 'Slayer']
   },
+  arca_sable: {
+    clearance: 'ARC-SBL',
+    rank: { fr: 'Cartographe des routes assumees', en: 'Cartographer of Accountable Routes' },
+    role: { fr: 'Reconnaissance, balisage et preuve de terrain', en: 'Reconnaissance, marking, and field evidence' },
+    callSign: 'Sable',
+    origin: { fr: 'Nexus de Convergence - Corps des Cartographes de l Atrium', en: 'Nexus of Convergence - Atrium Cartographer Corps' },
+    dossier: {
+      fr: 'Avant A.R.C.A., Sable Orison parcourait les marges de l Atrium pour dessiner les passages qui apparaissaient plus vite que les institutions ne pouvaient les nommer. Son chapeau, sa longue-vue et son manteau sable ne sont pas un uniforme ceremonial: ils viennent des semaines passees dans des secteurs ou la lumiere, la gravite et les distances changeaient apres chaque ouverture. Sable signait chaque carte avec les noms de ceux qui avaient mesure la route. Lors de la Premiere Breche, ses releves prouverent qu une dixieme voie d evacuation avait existe, mais le Registre noir absorba ses coordonnees et transforma ses temoins en erreurs administratives.',
+      en: 'Before A.R.C.A., Sable Orison crossed the Atrium margins to chart passages appearing faster than institutions could name them. Her hat, scope, and sand-colored coat are not ceremonial uniform: they come from weeks spent in sectors where light, gravity, and distance changed after every opening. Sable signed each map with the names of those who measured the route. During the First Breach, her surveys proved a tenth evacuation route had existed, but the Black Ledger absorbed its coordinates and turned its witnesses into administrative errors.'
+    },
+    breachLore: {
+      fr: 'Dans la cellule ZERO, Sable refuse les cartes qui pretendent etre neutres. Tir de Balise fixe une coordonnee dans le combat, Mine de Lecture enregistre ce qui la traverse, Couverture Archivee restaure un abri prouve et Barrage du Cartographe transforme ses releves en corridor de tir. Dans le Registre des absents, elle decouvre que ses propres cartes avaient servi a choisir le secteur sacrifie. Elle ne detruit pas A.R.C.A.: elle force l organisation a publier la dette, les criteres et les noms. Son arc Breach affirme qu une route sure n est pas celle qui cache son cout, mais celle dont quelqu un accepte de repondre.',
+      en: 'Within Cell ZERO, Sable rejects maps that pretend to be neutral. Beacon Shot fixes a coordinate in battle, Reading Mine records what crosses it, Archived Cover restores a proven shelter, and Cartographer Barrage turns her surveys into a firing corridor. In the Ledger of the Absent, she discovers her own maps were used to choose the sacrificed sector. She does not destroy A.R.C.A.; she forces the organization to publish the debt, the criteria, and the names. Her Breach arc states that a safe route is not one hiding its cost, but one someone accepts responsibility for.'
+    },
+    doctrine: { fr: 'Longue-vue causale, fusil de balise, carte vivante, mine de lecture, corridor cartographie.', en: 'Causal scope, beacon rifle, living map, reading mine, mapped firing corridor.' },
+    threat: { fr: 'Risque A.R.C.A.: une carte falsifiee peut retourner son besoin de preuve contre elle et lui faire defendre une coordonnee qui n a jamais existe.', en: 'A.R.C.A. risk: a forged map can turn her need for evidence against her and make her defend a coordinate that never existed.' },
+    tags: ['Nexus', 'A.R.C.A.', 'Cartographie', 'Registre noir', 'Tactical']
+  },
+  arca_loom: {
+    clearance: 'ARC-LOOM',
+    rank: { fr: 'Tisseuse de lignes de vie', en: 'Lifeline Weaver' },
+    role: { fr: 'Extraction, soin de Trame et verification d issue', en: 'Extraction, Thread repair, and exit verification' },
+    callSign: 'Loom',
+    origin: { fr: 'Nexus de Convergence - Service de recuperation des Marges', en: 'Nexus of Convergence - Margin Recovery Service' },
+    dossier: {
+      fr: 'Loom Ivara appartenait aux equipes qui entraient dans une route apres les cartographes et avant les archivistes. Elle retrouvait les blesses, posait des plaques resonantes sur les structures instables et maintenait un fil de retour avec son drone de suture. Pendant la Premiere Breche, Loom suivit ce fil jusqu a la dixieme route condamnee. Le signal revint sans les personnes qu il devait guider, charge de voix dont les dossiers n existaient deja plus. Elle conserva clandestinement ces voix dans le noyau cyan de son drone, faisant de son outil medical une archive vivante que le Sans-Auteur ne parvient pas a classer.',
+      en: 'Loom Ivara served on teams entering a route after the cartographers and before the archivists. She recovered the wounded, placed resonance plates on unstable structures, and maintained a return thread through her suture drone. During the First Breach, Loom followed that thread into the condemned tenth route. The signal returned without the people it was meant to guide, carrying voices whose records had already ceased to exist. She secretly preserved those voices in her drone cyan core, turning a medical tool into a living archive the Authorless cannot classify.'
+    },
+    breachLore: {
+      fr: 'Dans Multiverse Breach, Loom juge une issue par ce qu elle peut ramener, jamais par la perfection du monde qu elle montre. Rafale d Origine repousse ce qui coupe le fil, Drone de Suture maintient un allie lisible, Plaque Resonante empeche une suppression et Ligne de Vie Nexus retisse les signatures d une cellule entiere. Dans la Cour des faux passages, elle detecte que les refuges parfaits ne possedent aucun signal de retour: ils savent attirer, mais pas rendre. Son arc consiste a accepter que sauver une personne ne restaure pas toujours son monde, puis a garantir qu aucune extraction reelle ne soit effacee pour simplifier le rapport.',
+      en: 'In Multiverse Breach, Loom judges an exit by what it can bring back, never by the perfection of the world it displays. Origin Burst pushes away what cuts the thread, Suture Drone keeps an ally readable, Resonance Plate prevents deletion, and Nexus Lifeline reweaves an entire cell signatures. In the Court of False Passages, she detects that perfect refuges have no return signal: they know how to attract, but not how to release. Her arc is about accepting that saving a person does not always restore their world, then ensuring no real extraction is erased to simplify a report.'
+    },
+    doctrine: { fr: 'Drone de suture, plaque resonante, fil de retour, soin de signature, extraction sous effacement.', en: 'Suture drone, resonance plate, return thread, signature repair, extraction under deletion.' },
+    threat: { fr: 'Risque A.R.C.A.: les voix conservees dans son drone peuvent etre imitees pour l attirer dans une route sans retour ou saturer ses priorites de sauvetage.', en: 'A.R.C.A. risk: the voices stored in her drone can be imitated to draw her into a route without return or overload her rescue priorities.' },
+    tags: ['Nexus', 'A.R.C.A.', 'Extraction', 'Suture', 'Marine']
+  },
   marcus: {
     clearance: 'COG-01',
     rank: { fr: 'Sergent veteran', en: 'Veteran Sergeant' },

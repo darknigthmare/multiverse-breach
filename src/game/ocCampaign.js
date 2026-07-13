@@ -189,7 +189,8 @@ export const OC_CAMPAIGN_MISSIONS = [
     stakes: { fr: 'Chaque faux passe stabilise donne au Sans-Auteur une identite qu il pourra porter.', en: 'Every stabilized false past gives the Authorless an identity it can wear.' },
     consequence: { fr: 'Marrow detruit son propre double ideal plutot que de laisser la Fonderie choisir a sa place.', en: 'Marrow destroys his own ideal double rather than let the Foundry choose for him.' },
     rewardLore: { fr: 'Eclat d Origine pur: premier materiau d evolution reserve aux agents OC.', en: 'Pure Origin Shard: first evolution material reserved for OC agents.' },
-    missionRule: { fr: 'Chaque double ideal herite des statistiques de son modele. Detruire le cristal qui porte sa cicatrice supprime cette copie et charge l ultime de Marrow.', en: 'Each ideal double inherits its model statistics. Destroying the crystal carrying its scar removes that copy and charges Marrow ultimate.' },
+    enemyRoster: ['Double ideal de Marrow', 'Matrice de Substitution', 'Fragment Vagabond'],
+    missionRule: { fr: 'Le Double ideal poursuit Marrow tandis que la Matrice copie la derniere doctrine de la cellule. Briser la Matrice retire les bonus du Double; frapper le cristal qui remplace sa cicatrice charge l ultime de Marrow.', en: 'The Ideal Double hunts Marrow while the Matrix copies the cell last doctrine. Breaking the Matrix removes the Double bonuses; striking the crystal replacing his scar charges Marrow ultimate.' },
     storyBeat: {
       role: 'origin_forge',
       intro: { fr: 'La Fonderie propose a chaque agent une version sans faute, sans perte et sans regret. Aucune ne se souvient de la route qui l a produite.', en: 'The Foundry offers every agent a version without failure, loss, or regret. None remembers the road that produced it.' },

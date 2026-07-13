@@ -13,6 +13,32 @@ export const ENEMIES_DB = {
       { name: 'Fragment Vagabond', hp: 58, atk: 11, spd: 7, color: '#ff5b6e', weapon: 'shard_dash' },
       { name: 'Drone A.R.C.A. Corrompu', hp: 105, atk: 12, spd: 4, color: '#7df9ff', weapon: 'signal_beam' },
       {
+        name: 'Double ideal de Marrow',
+        hp: 112,
+        atk: 15,
+        spd: 7,
+        color: '#f3eee2',
+        weapon: 'perfect_fracture_blade',
+        special: 'Remplacement sans dette',
+        role: 'assassin',
+        visualStyle: 'origin_forge_double',
+        spriteSource: '/sprites/generated/heroes/nexus-de-convergence/arca-marrow-complete/arca-marrow-universal-v1.png',
+        spriteFilter: 'grayscale(1) brightness(1.7) contrast(0.82) sepia(0.18) hue-rotate(145deg) saturate(0.7)',
+        lore: 'La Fonderie a retire de Marrow sa cicatrice, ses dettes et ses hesitations, puis a conserve seulement son efficacite. Ce double ne cherche pas a survivre: il veut prouver qu une version sans memoire merite davantage le nom que l original.'
+      },
+      {
+        name: 'Matrice de Substitution',
+        hp: 138,
+        atk: 12,
+        spd: 4,
+        color: '#7df9ff',
+        weapon: 'identity_copy_beam',
+        special: 'Copie de doctrine',
+        role: 'support',
+        visualStyle: 'origin_forge_matrix',
+        lore: 'Gyroscope de la Fonderie construit autour d un Eclat d Origine contamine. Il observe la derniere competence employee, imprime une version sans contexte puis la greffe au prochain double ideal.'
+      },
+      {
         name: 'Pelerin de la Fausse Sortie',
         hp: 78,
         atk: 9,
