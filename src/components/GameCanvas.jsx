@@ -333,11 +333,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       };
     }
     const monsters = ensureList(stage.universe, filterEnemyList(stage.universe, getMonstersForUniverse(stage.universe)));
-    const prioritizedMonsters = Array.isArray(stage.enemyRoster)
-      ? [
-          ...stage.enemyRoster.map(name => monsters.find(enemy => enemy.name === name)).filter(Boolean),
-          ...monsters.filter(enemy => !stage.enemyRoster.includes(enemy.name))
-        ]
+    const missionRoster = Array.isArray(stage.enemyRoster)
+      ? stage.enemyRoster.map(name => monsters.find(enemy => enemy.name === name)).filter(Boolean)
+      : [];
+    const prioritizedMonsters = missionRoster.length > 0
+      ? (stage.enemyRosterExclusive
+          ? missionRoster
+          : [...missionRoster, ...monsters.filter(enemy => !stage.enemyRoster.includes(enemy.name))])
       : monsters;
     const bosses = ensureList(stage.universe, filterEnemyList(stage.universe, getBossesForUniverse(stage.universe)), true);
     const worldBoss = getWorldBossForUniverse(stage.universe);

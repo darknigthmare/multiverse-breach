@@ -27,6 +27,7 @@ const rendererSource = read('../src/game/renderer.js');
 const smashArenasSource = read('../src/game/smashArenas.js');
 const tacticsEngineSource = read('../src/game/engineTactics.js');
 const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
+const spriteChecklistSource = read('../SPRITE_CONVERSION_CHECKLIST.txt');
 const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.json'));
 const manifestOutputs = new Set((manifest.entries || []).filter(entry => entry.available).map(entry => entry.output));
 
@@ -46,6 +47,7 @@ const expectedOcEnemyNames = [
 ];
 const expectedOcItemIds = ['arca-signal-lens', 'nexus-anchor-coil', 'origin-shard-guard'];
 const expectedOcProceduralThreats = ['Double ideal de Marrow', 'Matrice de Substitution'];
+const expectedOcOriginLocks = ['name', 'contradiction', 'scar', 'debt', 'return', 'choice'];
 
 assert(dlcSource.includes("BASE_GAME_UNIVERSES = ['Nexus de Convergence']"), 'Base OC universe must remain Nexus de Convergence.');
 assert(dlcSource.includes('DEFAULT_HIDDEN_UNIVERSES = getDlcUniverseKeys()'), 'DLC universes must be hidden by default.');
@@ -83,7 +85,13 @@ expectedOcProceduralThreats.forEach(name => {
 });
 assert(enemiesSource.includes('origin_forge_double') && enemiesSource.includes('spriteFilter') && rendererSource.includes('origin_forge_matrix'), 'Origin Foundry threats must keep distinct animated derived/procedural visuals.');
 assert(ocCampaignSource.includes("enemyRoster: ['Double ideal de Marrow', 'Matrice de Substitution', 'Fragment Vagabond']"), 'Chapter II must prioritize its own lore roster in combat.');
-assert(gameCanvasSource.includes('const prioritizedMonsters = Array.isArray(stage.enemyRoster)'), 'GameCanvas must honor mission-specific enemy rosters.');
+expectedOcOriginLocks.forEach(lockId => {
+  assert(ocCampaignSource.includes(`originLockId: '${lockId}'`), `Missing OC Origin Lock ${lockId}.`);
+});
+assert(ocCampaignSource.includes('export const OC_ORIGIN_LOCKS') && hubSource.includes('oc-origin-locks-track'), 'The six Origin Locks must remain centralized and visible in the OC chronicle.');
+assert((ocCampaignSource.match(/enemyRosterExclusive: true/g) || []).length === expectedOcOriginLocks.length, 'Every OC operation must keep an exclusive lore roster.');
+assert(gameCanvasSource.includes('stage.enemyRosterExclusive') && gameCanvasSource.includes('const missionRoster'), 'GameCanvas must enforce exclusive mission rosters when requested.');
+assert(spriteChecklistSource.includes('[ ] Double ideal de Marrow') && spriteChecklistSource.includes('[ ] Matrice de Substitution'), 'Deferred OC sprite generation must remain visible in the conversion checklist.');
 assert(hubSource.includes('ARC_UNLOCK_RULES.personalMinLevel'), 'Narrative arc level gates must stay wired.');
 assert(hubSource.includes('getUniverseArcRosterStatus'), 'Universe arc roster gates must stay wired.');
 assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must stay wired.');
@@ -388,6 +396,8 @@ console.log(JSON.stringify({
   ocHeroes: expectedOcHeroIds.length,
   ocThreatSprites: expectedOcEnemyNames.length,
   ocProceduralThreats: expectedOcProceduralThreats.length,
+  ocOriginLocks: expectedOcOriginLocks.length,
+  ocDeferredSprites: expectedOcProceduralThreats.length,
   ocItemSprites: expectedOcItemIds.length,
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',

@@ -9,7 +9,7 @@ import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_I
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
-import { OC_CAMPAIGN, OC_CAMPAIGN_CHAPTERS, OC_CAMPAIGN_MISSIONS, getOcCampaignMission } from '../game/ocCampaign';
+import { OC_CAMPAIGN, OC_CAMPAIGN_CHAPTERS, OC_CAMPAIGN_MISSIONS, OC_ORIGIN_LOCKS, getOcCampaignMission } from '../game/ocCampaign';
 import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
@@ -43,6 +43,8 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
   const selectedChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === selectedChapter.id);
   const selectedChapterClears = selectedChapterMissions.filter(mission => completedStages.includes(mission.id)).length;
   const selectedChapterComplete = selectedChapterClears === selectedChapterMissions.length;
+  const stabilizedOriginLocks = OC_ORIGIN_LOCKS.filter(lock => completedStages.includes(lock.missionId)).length;
+  const selectedOriginLock = OC_ORIGIN_LOCKS.find(lock => lock.id === selectedMission.originLockId);
   const cinematicMission = getOcCampaignMission(cinematicMissionId);
   const cinematicScene = cinematicMission?.scenes?.[sceneIndex];
 
@@ -84,8 +86,46 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
           <p>{getLocalizedText(OC_CAMPAIGN.premise, lang)}</p>
           <div className="oc-campaign-hero-meta">
             <b>{completedStages.filter(id => OC_CAMPAIGN_MISSIONS.some(mission => mission.id === id)).length}/{OC_CAMPAIGN_MISSIONS.length} {lang === 'fr' ? 'operations stabilisees' : 'stabilized operations'}</b>
+            <b>{stabilizedOriginLocks}/{OC_ORIGIN_LOCKS.length} {lang === 'fr' ? 'Verrous d Origine recuperes' : 'Origin Locks recovered'}</b>
             <em>{lang === 'fr' ? 'Menace' : 'Threat'}: {getLocalizedText(OC_CAMPAIGN.threat, lang)}</em>
           </div>
+        </div>
+      </div>
+
+      <div className="oc-origin-locks" aria-label={lang === 'fr' ? 'Progression des six Verrous d Origine' : 'Six Origin Locks progress'}>
+        <div className="oc-origin-locks-head">
+          <div>
+            <span>{lang === 'fr' ? 'ARCHITECTURE DU PALIMPSESTE' : 'PALIMPSEST ARCHITECTURE'}</span>
+            <strong>{lang === 'fr' ? 'Six preuves qu une histoire ne peut pas etre remplacee' : 'Six proofs that a story cannot be replaced'}</strong>
+          </div>
+          <b>{stabilizedOriginLocks}/{OC_ORIGIN_LOCKS.length}</b>
+        </div>
+        <div className="oc-origin-locks-track">
+          {OC_ORIGIN_LOCKS.map((lock) => {
+            const mission = getOcCampaignMission(lock.missionId);
+            const completed = completedStages.includes(lock.missionId);
+            const unlocked = mission ? isStageUnlocked(mission) : false;
+            const active = selectedMission.originLockId === lock.id;
+            return (
+              <button
+                key={lock.id}
+                type="button"
+                className={`${active ? 'active' : ''} ${completed ? 'completed' : ''} ${!unlocked ? 'locked' : ''}`}
+                disabled={!unlocked}
+                onClick={() => {
+                  setSelectedMissionId(lock.missionId);
+                  sound.playSfx('click');
+                }}
+                title={unlocked
+                  ? `${getLocalizedText(lock.name, lang)}: ${getLocalizedText(lock.principle, lang)}`
+                  : (lang === 'fr' ? 'Stabilise les operations precedentes pour identifier ce Verrou.' : 'Stabilize previous operations to identify this Lock.')}
+              >
+                <span>{String(lock.number).padStart(2, '0')}</span>
+                <strong>{getLocalizedText(lock.name, lang)}</strong>
+                <em>{completed ? (lang === 'fr' ? 'ANCRE' : 'ANCHORED') : unlocked ? (lang === 'fr' ? 'LOCALISE' : 'LOCATED') : (lang === 'fr' ? 'INCONNU' : 'UNKNOWN')}</em>
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -159,10 +199,16 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
             <b>{selectedMission.mode}</b>
           </div>
           <div className="oc-mission-brief-grid">
+            <div className="oc-mission-lock">
+              <small>{lang === 'fr' ? 'Verrou d Origine' : 'Origin Lock'}</small>
+              <strong>{selectedOriginLock ? getLocalizedText(selectedOriginLock.name, lang) : (lang === 'fr' ? 'Non identifie' : 'Unidentified')}</strong>
+              {selectedOriginLock && <span>{getLocalizedText(selectedOriginLock.principle, lang)}</span>}
+            </div>
             <div><small>{lang === 'fr' ? 'Lieu' : 'Location'}</small><strong>{getLocalizedText(selectedMission.location, lang)}</strong></div>
             <div><small>{lang === 'fr' ? 'Objectif' : 'Objective'}</small><strong>{getLocalizedText(selectedMission.objective, lang)}</strong></div>
             <div><small>{lang === 'fr' ? 'Risque narratif' : 'Narrative risk'}</small><strong>{getLocalizedText(selectedMission.stakes, lang)}</strong></div>
             <div><small>{lang === 'fr' ? 'Trace obtenue' : 'Recovered trace'}</small><strong>{getLocalizedText(selectedMission.rewardLore, lang)}</strong></div>
+            <div><small>{lang === 'fr' ? 'Signatures hostiles' : 'Hostile signatures'}</small><strong>{selectedMission.enemyRoster?.join(' / ') || (lang === 'fr' ? 'Pool Nexus standard' : 'Standard Nexus pool')}</strong></div>
             <div className="oc-mission-rule"><small>{lang === 'fr' ? 'Regle de mission' : 'Mission rule'}</small><strong>{getLocalizedText(selectedMission.missionRule, lang)}</strong></div>
           </div>
           <blockquote>{getLocalizedText(OC_CAMPAIGN.doctrine, lang)}</blockquote>

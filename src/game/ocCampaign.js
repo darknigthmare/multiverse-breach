@@ -23,6 +23,51 @@ export const OC_CAMPAIGN = {
   cast: ['L Ancre', 'Mirelle Suture', 'Bastion Korr', 'Nova Vey', 'Marrow Kade', 'Sable Orison', 'Loom Ivara']
 };
 
+export const OC_ORIGIN_LOCKS = [
+  {
+    id: 'name',
+    missionId: 8801,
+    number: 1,
+    name: { fr: 'Verrou du Nom', en: 'Lock of Name' },
+    principle: { fr: 'Une identite existe parce qu elle peut etre nommee par elle-meme et reconnue par d autres.', en: 'An identity exists because it can name itself and be recognized by others.' }
+  },
+  {
+    id: 'contradiction',
+    missionId: 8802,
+    number: 2,
+    name: { fr: 'Verrou de la Contradiction', en: 'Lock of Contradiction' },
+    principle: { fr: 'Deux souvenirs incompatibles doivent pouvoir survivre sans qu une autorite fabrique une version propre.', en: 'Two incompatible memories must be allowed to survive without an authority manufacturing a clean version.' }
+  },
+  {
+    id: 'scar',
+    missionId: 8803,
+    number: 3,
+    name: { fr: 'Verrou de la Cicatrice', en: 'Lock of the Scar' },
+    principle: { fr: 'Une vie ne se resume pas a son resultat: ses pertes et ses choix prouvent la route parcourue.', en: 'A life is not reduced to its outcome: its losses and choices prove the road it traveled.' }
+  },
+  {
+    id: 'debt',
+    missionId: 8804,
+    number: 4,
+    name: { fr: 'Verrou de la Dette', en: 'Lock of Debt' },
+    principle: { fr: 'Sauver un monde n efface pas le prix impose aux absents; la dette doit rester lisible.', en: 'Saving a world does not erase the price imposed on the absent; the debt must remain readable.' }
+  },
+  {
+    id: 'return',
+    missionId: 8805,
+    number: 5,
+    name: { fr: 'Verrou du Retour', en: 'Lock of Return' },
+    principle: { fr: 'Une issue reelle conserve une route de retour, les noms transportes et la memoire du passage.', en: 'A real exit preserves a return route, the names it carries, and the memory of the crossing.' }
+  },
+  {
+    id: 'choice',
+    missionId: 8806,
+    number: 6,
+    name: { fr: 'Verrou du Choix', en: 'Lock of Choice' },
+    principle: { fr: 'Une paix n a de valeur que si ceux qui l habitent peuvent encore la refuser et en assumer les suites.', en: 'Peace has value only if those living in it may still refuse it and accept what follows.' }
+  }
+];
+
 export const OC_CAMPAIGN_CHAPTERS = [
   {
     id: 'first_lock',
@@ -123,6 +168,9 @@ export const OC_CAMPAIGN_MISSIONS = [
     stakes: { fr: 'Si le verrou tombe, les agents presents deviennent des silhouettes utilisables par n importe quelle Trame.', en: 'If the lock falls, present agents become silhouettes usable by any Thread.' },
     consequence: { fr: 'La cellule ZERO est reconnue par la Cite. Le Sans-Auteur prononce pour la premiere fois le pseudonyme de l Ancre.', en: 'Cell ZERO is recognized by the City. The Authorless speaks the Anchor call sign for the first time.' },
     rewardLore: { fr: 'Plaque de cellule ZERO et acces aux Archives statiques.', en: 'Cell ZERO plaque and access to the Static Archives.' },
+    originLockId: 'name',
+    enemyRoster: ['Echo Sans-Auteur', 'Drone A.R.C.A. Corrompu', 'Archiviste Rompu'],
+    enemyRosterExclusive: true,
     missionRule: { fr: 'Chaque balise restauree rend une competence au groupe. Les silhouettes sans nom copient la derniere action utilisee pres d elles.', en: 'Each restored beacon returns one ability to the party. Nameless silhouettes copy the last action used near them.' },
     storyBeat: {
       role: 'tutorial_anchor',
@@ -156,6 +204,9 @@ export const OC_CAMPAIGN_MISSIONS = [
     stakes: { fr: 'Une fausse preuve peut stabiliser une chronologie mensongere aussi solidement qu une verite.', en: 'False evidence can stabilize a lying chronology as firmly as truth.' },
     consequence: { fr: 'Le Juge accorde a l Ancre le droit de contester les archives A.R.C.A.', en: 'The Judge grants the Anchor the right to challenge A.R.C.A. archives.' },
     rewardLore: { fr: 'Sceau de contradiction: revele les objectifs caches des prochaines missions OC.', en: 'Contradiction Seal: reveals hidden objectives in future OC missions.' },
+    originLockId: 'contradiction',
+    enemyRoster: ['Archiviste Rompu', 'Noeud de Paradoxe', 'Echo Sans-Auteur'],
+    enemyRosterExclusive: true,
     missionRule: { fr: 'Les trois preuves doivent rester occupees au meme tour. Une preuve isolee est reclassifiee comme fausse par le Juge.', en: 'All three evidence nodes must be occupied during the same turn. An isolated node is reclassified as false by the Judge.' },
     storyBeat: {
       role: 'archive_rule',
@@ -189,7 +240,9 @@ export const OC_CAMPAIGN_MISSIONS = [
     stakes: { fr: 'Chaque faux passe stabilise donne au Sans-Auteur une identite qu il pourra porter.', en: 'Every stabilized false past gives the Authorless an identity it can wear.' },
     consequence: { fr: 'Marrow detruit son propre double ideal plutot que de laisser la Fonderie choisir a sa place.', en: 'Marrow destroys his own ideal double rather than let the Foundry choose for him.' },
     rewardLore: { fr: 'Eclat d Origine pur: premier materiau d evolution reserve aux agents OC.', en: 'Pure Origin Shard: first evolution material reserved for OC agents.' },
+    originLockId: 'scar',
     enemyRoster: ['Double ideal de Marrow', 'Matrice de Substitution', 'Fragment Vagabond'],
+    enemyRosterExclusive: true,
     missionRule: { fr: 'Le Double ideal poursuit Marrow tandis que la Matrice copie la derniere doctrine de la cellule. Briser la Matrice retire les bonus du Double; frapper le cristal qui remplace sa cicatrice charge l ultime de Marrow.', en: 'The Ideal Double hunts Marrow while the Matrix copies the cell last doctrine. Breaking the Matrix removes the Double bonuses; striking the crystal replacing his scar charges Marrow ultimate.' },
     storyBeat: {
       role: 'origin_forge',
@@ -223,6 +276,9 @@ export const OC_CAMPAIGN_MISSIONS = [
     stakes: { fr: 'La verite peut briser la confiance qui maintient la cellule, mais l enterrer nourrit directement le Sans-Auteur.', en: 'The truth may break the trust holding the cell together, but burying it directly feeds the Authorless.' },
     consequence: { fr: 'A.R.C.A. reconnait publiquement sa dette. L Ancre refuse pourtant de dissoudre l organisation.', en: 'A.R.C.A. publicly acknowledges its debt. The Anchor nevertheless refuses to dissolve the organization.' },
     rewardLore: { fr: 'Cle du Registre noir: ouvre les dossiers censures du Codex OC.', en: 'Black Ledger Key: opens censored OC Codex records.' },
+    originLockId: 'debt',
+    enemyRoster: ['Archiviste Rompu', 'Drone A.R.C.A. Corrompu', 'Noeud de Paradoxe'],
+    enemyRosterExclusive: true,
     missionRule: { fr: 'Restaurer une ligne ouvre une tombe et augmente l instabilite du moteur. Trois preuves seulement peuvent etre extraites avant l effondrement.', en: 'Restoring a line opens a grave and increases engine instability. Only three pieces of evidence can be extracted before collapse.' },
     storyBeat: {
       role: 'ledger_truth',
@@ -257,6 +313,9 @@ export const OC_CAMPAIGN_MISSIONS = [
     stakes: { fr: 'Chaque agent voit une sortie adaptee a son regret le plus profond. Ouvrir la mauvaise porte disperse definitivement la cellule.', en: 'Every agent sees an exit tailored to their deepest regret. Opening the wrong door permanently scatters the cell.' },
     consequence: { fr: 'Bastion abandonne la vision d une Cite qu il aurait pu sauver seul et choisit la cellule reelle.', en: 'Bastion abandons the vision of a City he could have saved alone and chooses the real cell.' },
     rewardLore: { fr: 'Balise de passage causal: annule un verrou de mission une fois par chapitre futur.', en: 'Causal Passage Beacon: cancels one mission lock per future chapter.' },
+    originLockId: 'return',
+    enemyRoster: ['Pelerin de la Fausse Sortie', 'Echo Sans-Auteur', 'Fragment Vagabond'],
+    enemyRosterExclusive: true,
     missionRule: { fr: 'Loom revele les details manquants des faux passages. Les Pelerins poussent les allies vers leur regret tandis que le Cartographe deplace le portail causal a chaque verdict.', en: 'Loom reveals missing details in false passages. Pilgrims push allies toward their regret while the Cartographer moves the causal portal after each verdict.' },
     storyBeat: {
       role: 'portal_cleanup',
@@ -291,6 +350,9 @@ export const OC_CAMPAIGN_MISSIONS = [
     stakes: { fr: 'Une victoire par destruction totale ferait de l Ancre le prochain Sans-Auteur. Il faut vaincre sans supprimer.', en: 'Victory through total destruction would make the Anchor the next Authorless. The enemy must be defeated without deletion.' },
     consequence: { fr: 'Le Sans-Auteur est enferme dans un registre consultable plutot qu efface. Les univers annexes peuvent desormais rejoindre le Nexus sans devenir les fondations de son histoire.', en: 'The Authorless is confined inside a readable record rather than erased. Side universes may now join the Nexus without becoming the foundations of its story.' },
     rewardLore: { fr: 'Skin Ancre du Palimpseste, titre Gardien des Causes et ouverture de l Acte II.', en: 'Palimpsest Anchor skin, Keeper of Causes title, and Act II opening.' },
+    originLockId: 'choice',
+    enemyRoster: ['Echo Sans-Auteur', 'Noeud de Paradoxe', 'Fragment Vagabond'],
+    enemyRosterExclusive: true,
     missionRule: { fr: 'Chaque phase presente une proposition plutot qu une barre de vie finale. Il faut conserver un souvenir, formuler une contradiction puis poser un verrou.', en: 'Each phase presents a proposition instead of a final health bar. Preserve a memory, state a contradiction, then place a lock.' },
     storyBeat: {
       role: 'authorless_threshold',
