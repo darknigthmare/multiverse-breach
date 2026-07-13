@@ -1,5 +1,6 @@
 import { HEROES_DB } from './heroes';
 import { LORE_DB } from './lore';
+import { FEATURED_BATTLE_ITEM_OVERRIDES } from './featuredUniversePacks';
 
 const slugify = (value) => value
   .toLowerCase()
@@ -172,6 +173,8 @@ const BATTLE_ITEM_OVERRIDES = {
     ultimate: ['Rituel de bannissement', 'Vanquishing Ritual', 'Un cercle de bannissement frappe toutes les menaces.']
   }
 };
+
+Object.assign(BATTLE_ITEM_OVERRIDES, FEATURED_BATTLE_ITEM_OVERRIDES);
 
 const makeGenericItem = (universe, index, color) => {
   const slug = slugify(universe);

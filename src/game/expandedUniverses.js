@@ -1,3 +1,5 @@
+import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE, FEATURED_UNIVERSE_PACKS } from './featuredUniversePacks';
+
 const EXPANDED_STAGE_START_ID = 39;
 
 const modeReward = {
@@ -2041,6 +2043,15 @@ export const EXPANDED_UNIVERSES = [
   ])
 ];
 
+FEATURED_UNIVERSE_PACKS.forEach(pack => {
+  const existingIndex = EXPANDED_UNIVERSES.findIndex(universe => universe.universe === pack.universe);
+  if (existingIndex >= 0) {
+    EXPANDED_UNIVERSES[existingIndex] = pack;
+  } else {
+    EXPANDED_UNIVERSES.push(pack);
+  }
+});
+
 function makeUniverseWave(entries) {
   return entries.map(entry => {
     const [skyTop, skyBottom, accent] = entry.colors;
@@ -2173,41 +2184,74 @@ function makeCombatHero(item) {
   const stats = statsByCategory[item.cat] || statsByCategory.tactical;
   const weapon = weaponByCategory[item.cat] || 'gun';
   return {
+    ...item,
     id: item.id,
     name: item.name,
     cat: item.cat,
     color: item.color,
-    weapon,
-    stats
+    weapon: item.weapon || item.weaponType || weapon,
+    stats: item.stats || stats
   };
 }
 
-function makeEnemy(name, index, universe, tier = 0) {
+function threatName(entry) {
+  return typeof entry === 'string' ? entry : entry?.name;
+}
+
+function makeEnemy(entry, index, universe, tier = 0) {
   const rank = difficultyRank(universe);
+  const threat = typeof entry === 'string' ? { name: entry } : entry || {};
   return {
-    name,
     hp: 85 + rank * 18 + tier * 35 + index * 12,
     atk: 11 + rank * 2 + tier * 4 + index,
     spd: 4 + (index % 3),
     color: universe.decor.accent,
-    weapon: universe.faction === 'arcane' ? 'magic' : universe.faction === 'cyber' ? 'laser' : universe.faction === 'horror' ? 'claws' : 'gun'
+    weapon: universe.faction === 'arcane' ? 'magic' : universe.faction === 'cyber' ? 'laser' : universe.faction === 'horror' ? 'claws' : 'gun',
+    ...threat,
+    name: threat.name || 'Unknown Threat',
+    lore: threat.lore || FEATURED_ENEMY_LORE[universe.universe]?.[threat.name]
   };
 }
 
 export function getExpandedStages() {
-  return EXPANDED_UNIVERSES.map((universe, index) => ({
-    id: stageIdFor(index),
-    name: universe.stageName,
-    universe: universe.universe,
-    mode: universe.mode,
-    difficulty: universe.difficulty,
-    bossName: universe.bossName,
-    ...rewardFor(universe)
-  }));
+  const primaryStages = EXPANDED_UNIVERSES.flatMap((universe, index) => (
+    universe.skipPrimaryStage
+      ? []
+      : [{
+        id: stageIdFor(index),
+        name: universe.stageName,
+        universe: universe.universe,
+        mode: universe.mode,
+        difficulty: universe.difficulty,
+        bossName: universe.bossName,
+        loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[universe.mode],
+        ...rewardFor(universe)
+      }]
+  ));
+
+  const variantStages = EXPANDED_UNIVERSES.flatMap((universe, universeIndex) => (
+    (universe.stageVariants || []).map((variant, variantIndex) => {
+      const stageProfile = { ...universe, ...variant };
+      return {
+        id: 30000 + universeIndex * 10 + variantIndex,
+        name: variant.name,
+        universe: universe.universe,
+        mode: variant.mode,
+        difficulty: variant.difficulty || universe.difficulty,
+        bossName: variant.bossName || universe.bossName,
+        loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[variant.mode],
+        ...rewardFor(stageProfile)
+      };
+    })
+  ));
+
+  return [...primaryStages, ...variantStages];
 }
 
 export const EXPANDED_STAGE_ID_BY_UNIVERSE = Object.fromEntries(
-  EXPANDED_UNIVERSES.map((universe, index) => [universe.universe, stageIdFor(index)])
+  EXPANDED_UNIVERSES.flatMap((universe, index) => (
+    universe.skipPrimaryStage ? [] : [[universe.universe, stageIdFor(index)]]
+  ))
 );
 
 export const EXPANDED_UNIVERSE_SIGNATURES = Object.fromEntries(
@@ -2218,9 +2262,9 @@ export const EXPANDED_UNIVERSE_SIGNATURES = Object.fromEntries(
     theme: universe.theme || universe.desc?.en || universe.universe,
     stageName: universe.stageName,
     bossName: universe.bossName,
-    worldBoss: universe.worldBoss,
-    monsters: universe.monsters,
-    bosses: universe.bosses,
+    worldBoss: threatName(universe.worldBoss),
+    monsters: universe.monsters.map(threatName),
+    bosses: universe.bosses.map(threatName),
     gearNames: universe.gear.map(([, enName, frName]) => ({ en: enName, fr: frName })),
     eventName: { en: universe.event[1], fr: universe.event[2] },
     eventDesc: { en: universe.event[3], fr: universe.event[4] }
@@ -2238,10 +2282,10 @@ export const EXPANDED_LORE_DB = Object.fromEntries(
   EXPANDED_UNIVERSES.map(universe => [universe.universe, {
     mediaType: universe.mediaType,
     faction: universe.faction,
-    theme: universe.theme,
+    theme: universe.theme || universe.desc?.en,
     stageName: universe.stageName,
     bossName: universe.bossName,
-    worldBoss: universe.worldBoss,
+    worldBoss: threatName(universe.worldBoss),
     title: universe.title,
     desc: universe.desc
   }])
@@ -2249,20 +2293,26 @@ export const EXPANDED_LORE_DB = Object.fromEntries(
 
 export const EXPANDED_ENEMIES_DB = Object.fromEntries(
   EXPANDED_UNIVERSES.map(universe => [universe.universe, {
-    monsters: universe.monsters.map((name, index) => makeEnemy(name, index, universe)),
-    bosses: universe.bosses.map((name, index) => ({
-      ...makeEnemy(name, index, universe, 2),
-      hp: 420 + difficultyRank(universe) * 70 + index * 65,
-      atk: 19 + difficultyRank(universe) * 3 + index * 3,
-      special: `${name} Breach Pattern`
-    })),
-    worldBoss: {
-      ...makeEnemy(universe.worldBoss, 0, universe, 4),
-      hp: 1180 + difficultyRank(universe) * 170,
-      atk: 30 + difficultyRank(universe) * 4,
-      spd: 4,
-      special: `${universe.worldBoss} Omniverse Rupture`
-    }
+    monsters: universe.monsters.map((entry, index) => makeEnemy(entry, index, universe)),
+    bosses: universe.bosses.map((entry, index) => {
+      const enemy = makeEnemy(entry, index, universe, 2);
+      return {
+        ...enemy,
+        hp: 420 + difficultyRank(universe) * 70 + index * 65,
+        atk: 19 + difficultyRank(universe) * 3 + index * 3,
+        special: enemy.special || `${enemy.name} Breach Pattern`
+      };
+    }),
+    worldBoss: (() => {
+      const enemy = makeEnemy(universe.worldBoss, 0, universe, 4);
+      return {
+        ...enemy,
+        hp: 1180 + difficultyRank(universe) * 170,
+        atk: 30 + difficultyRank(universe) * 4,
+        spd: 4,
+        special: enemy.special || `${enemy.name} Omniverse Rupture`
+      };
+    })()
   }])
 );
 
@@ -2271,6 +2321,7 @@ export const EXPANDED_GEAR = EXPANDED_UNIVERSES.flatMap(universe =>
     id,
     universe: universe.universe,
     name: { en: enName, fr: frName },
+    desc: FEATURED_GEAR_LORE[id],
     boost,
     cost: 100 + difficultyRank(universe) * 20 + index * 15
   }))

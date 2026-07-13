@@ -15,9 +15,11 @@ import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
+import { FEATURED_UNIVERSE_ICONS } from '../game/featuredUniversePacks';
 import RaceMode from './RaceMode';
 
 const TAU = Math.PI * 2;
+const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
 
 const ARC_UNLOCK_RULES = {
   personalMinLevel: 3,
@@ -9345,16 +9347,26 @@ export default function HubScreen({
                 background: selectedUniverseArchive.cleared ? 'rgba(46,204,113,0.07)' : 'rgba(255,235,59,0.05)'
               }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'flex-start' }}>
-                  <div>
-                    <div style={{ color: '#ffeb3b', fontSize: '9px', textTransform: 'uppercase', marginBottom: '4px' }}>
-                      {lang === 'fr' ? 'Dossier univers / collection' : 'Universe collection file'}
-                    </div>
-                    <h2 style={{ margin: 0, color: selectedUniverseArchive.cleared ? '#2ecc71' : '#fff', fontSize: '22px' }}>
-                      {selectedUniverseArchive.lore?.title?.[lang] || selectedUniverseArchive.universe}
-                    </h2>
-                    <div style={{ marginTop: '5px', color: '#aaa', fontSize: '11px' }}>
-                      {getMediaTypeLabel(selectedUniverseArchive.lore?.mediaType)} / {selectedUniverseArchive.cleared ? (lang === 'fr' ? 'Stabilise' : 'Stabilized') : (lang === 'fr' ? 'A stabiliser' : 'To stabilize')}
-                      {selectedUniverseArchive.hidden ? ` / ${lang === 'fr' ? 'Masque admin' : 'Admin hidden'}` : ''}
+                  <div style={{ display: 'flex', gap: '12px', alignItems: 'center', minWidth: 0 }}>
+                    {getFeaturedUniverseIconSrc(selectedUniverseArchive.universe) && (
+                      <img
+                        src={getFeaturedUniverseIconSrc(selectedUniverseArchive.universe)}
+                        alt=""
+                        onError={(event) => { event.currentTarget.style.display = 'none'; }}
+                        style={{ width: '58px', height: '58px', objectFit: 'cover', border: '1px solid rgba(255,235,59,0.35)', borderRadius: '5px', flexShrink: 0 }}
+                      />
+                    )}
+                    <div style={{ minWidth: 0 }}>
+                      <div style={{ color: '#ffeb3b', fontSize: '9px', textTransform: 'uppercase', marginBottom: '4px' }}>
+                        {lang === 'fr' ? 'Dossier univers / collection' : 'Universe collection file'}
+                      </div>
+                      <h2 style={{ margin: 0, color: selectedUniverseArchive.cleared ? '#2ecc71' : '#fff', fontSize: '22px' }}>
+                        {selectedUniverseArchive.lore?.title?.[lang] || selectedUniverseArchive.universe}
+                      </h2>
+                      <div style={{ marginTop: '5px', color: '#aaa', fontSize: '11px' }}>
+                        {getMediaTypeLabel(selectedUniverseArchive.lore?.mediaType)} / {selectedUniverseArchive.cleared ? (lang === 'fr' ? 'Stabilise' : 'Stabilized') : (lang === 'fr' ? 'A stabiliser' : 'To stabilize')}
+                        {selectedUniverseArchive.hidden ? ` / ${lang === 'fr' ? 'Masque admin' : 'Admin hidden'}` : ''}
+                      </div>
                     </div>
                   </div>
                   <button
@@ -9447,24 +9459,45 @@ export default function HubScreen({
                       {lang === 'fr' ? 'Menaces locales' : 'Local threats'}
                     </strong>
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
-                      {selectedUniverseArchive.allEnemies.map((enemy, index) => (
-                        <div key={`${enemy.name}-${index}`} style={{ padding: '7px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
-                          <div style={{ color: enemy.color || '#e74c3c', fontSize: '10px', fontWeight: 'bold' }}>{enemy.name}</div>
-                          <div style={{ color: '#aaa', fontSize: '9px', marginTop: '3px' }}>
-                            HP {enemy.hp || '?'} / ATK {enemy.atk || '?'} / SPD {enemy.spd || '?'}
+                      {selectedUniverseArchive.allEnemies.map((enemy, index) => {
+                        const spriteSrc = getEnemySpriteSheetSrc(enemy, selectedUniverseArchive.universe);
+                        const spriteLayout = getSpriteSheetLayout(spriteSrc);
+                        return (
+                          <div key={`${enemy.name}-${index}`} style={{ display: 'grid', gridTemplateColumns: '72px minmax(0, 1fr)', gap: '8px', padding: '7px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
+                            <div
+                              role="img"
+                              aria-label={`${enemy.name} sprite`}
+                              style={{
+                                width: '72px',
+                                height: '72px',
+                                border: '1px solid rgba(231,76,60,0.3)',
+                                backgroundColor: '#050509',
+                                backgroundImage: `url("${spriteSrc}")`,
+                                backgroundRepeat: 'no-repeat',
+                                backgroundSize: `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
+                                backgroundPosition: '0 0',
+                                imageRendering: 'pixelated'
+                              }}
+                            />
+                            <div style={{ minWidth: 0 }}>
+                              <div style={{ color: enemy.color || '#e74c3c', fontSize: '10px', fontWeight: 'bold' }}>{enemy.name}</div>
+                              <div style={{ color: '#aaa', fontSize: '9px', marginTop: '3px' }}>
+                                HP {enemy.hp || '?'} / ATK {enemy.atk || '?'} / SPD {enemy.spd || '?'}
+                              </div>
+                              {enemy.special && <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '3px' }}>{enemy.special}</div>}
+                              <div style={{ color: '#d0b7b7', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
+                                {getEnemyLoreDescription({
+                                  enemy,
+                                  universe: selectedUniverseArchive.universe,
+                                  lang,
+                                  lore: selectedUniverseArchive.lore,
+                                  type: index === selectedUniverseArchive.allEnemies.length - 1 ? 'worldBoss' : 'menace'
+                                })}
+                              </div>
+                            </div>
                           </div>
-                          {enemy.special && <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '3px' }}>{enemy.special}</div>}
-                          <div style={{ color: '#d0b7b7', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
-                            {getEnemyLoreDescription({
-                              enemy,
-                              universe: selectedUniverseArchive.universe,
-                              lang,
-                              lore: selectedUniverseArchive.lore,
-                              type: index === selectedUniverseArchive.allEnemies.length - 1 ? 'worldBoss' : 'menace'
-                            })}
-                          </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -9476,14 +9509,18 @@ export default function HubScreen({
                     </strong>
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.relics.map(item => (
-                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, paddingBottom: '5px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                          <b style={{ color: '#d7b5ff' }}>{item.name[lang]}</b> / {formatBoostText(item.boost || {})}
-                          <div style={{ color: '#bdb3cf', marginTop: '3px' }}>{getGearLore(item)}</div>
+                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, paddingBottom: '5px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'grid', gridTemplateColumns: '34px minmax(0, 1fr)', gap: '7px', alignItems: 'center' }}>
+                          <img src={getItemSpriteSrc(item)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '34px', height: '34px', objectFit: 'contain', imageRendering: 'pixelated' }} />
+                          <div>
+                            <b style={{ color: '#d7b5ff' }}>{item.name[lang]}</b> / {formatBoostText(item.boost || {})}
+                            <div style={{ color: '#bdb3cf', marginTop: '3px' }}>{getGearLore(item)}</div>
+                          </div>
                         </div>
                       ))}
                       {selectedUniverseArchive.eventItem && (
-                        <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, paddingTop: '6px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-                          <b style={{ color: '#ff8c00' }}>{selectedUniverseArchive.eventItem.name[lang]}</b>: {getEventLore(selectedUniverseArchive.eventItem)}
+                        <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, paddingTop: '6px', borderTop: '1px solid rgba(255,255,255,0.08)', display: 'grid', gridTemplateColumns: '34px minmax(0, 1fr)', gap: '7px', alignItems: 'center' }}>
+                          <img src={getItemSpriteSrc(selectedUniverseArchive.eventItem)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '34px', height: '34px', objectFit: 'contain', imageRendering: 'pixelated' }} />
+                          <div><b style={{ color: '#ff8c00' }}>{selectedUniverseArchive.eventItem.name[lang]}</b>: {getEventLore(selectedUniverseArchive.eventItem)}</div>
                         </div>
                       )}
                     </div>
@@ -9520,13 +9557,18 @@ export default function HubScreen({
                     </strong>
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.stages.map(stage => (
-                        <div key={stage.id} style={{ color: completedStages.includes(stage.id) ? '#dfffe8' : '#aaa', fontSize: '9px', lineHeight: 1.35 }}>
+                        <div key={stage.id} style={{ color: completedStages.includes(stage.id) ? '#dfffe8' : '#aaa', fontSize: '9px', lineHeight: 1.35, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '4px', background: 'rgba(0,0,0,0.2)' }}>
+                          {getOpenAiBackdropSrc(stage.universe, stage.mode) && (
+                            <img src={getOpenAiBackdropSrc(stage.universe, stage.mode)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '100%', height: '74px', display: 'block', objectFit: 'cover' }} />
+                          )}
+                          <div style={{ padding: '7px' }}>
                           <b style={{ color: completedStages.includes(stage.id) ? '#2ecc71' : '#ffeb3b' }}>
                             #{stage.id} {stage.displayName?.[lang] || stage.name}
                           </b>
                           {' '}
                           / {stage.mode} / {stage.bossName}
                           <div style={{ color: '#9fb0ad', marginTop: '3px' }}>{getRichBreachBrief(stage)}</div>
+                          </div>
                         </div>
                       ))}
                     </div>
@@ -9880,10 +9922,15 @@ export default function HubScreen({
                       justifyContent: 'space-between'
                     }}>
                       <div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                          <span style={{ fontWeight: 'bold', fontSize: '13px', color: isCleared ? '#39c5bb' : '#555' }}>
-                            {lore.title[lang]}
-                          </span>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+                            {getFeaturedUniverseIconSrc(key) && (
+                              <img src={getFeaturedUniverseIconSrc(key)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '38px', height: '38px', objectFit: 'cover', borderRadius: '4px', border: '1px solid rgba(57,197,187,0.25)', flexShrink: 0 }} />
+                            )}
+                            <span style={{ fontWeight: 'bold', fontSize: '13px', color: isCleared ? '#39c5bb' : '#555' }}>
+                              {lore.title[lang]}
+                            </span>
+                          </div>
                           <span style={{ fontSize: '9px', padding: '2px 6px', background: 'rgba(255,255,255,0.06)', borderRadius: '3px', color: '#aaa', textTransform: 'uppercase' }}>
                             {getMediaTypeLabel(lore.mediaType)}
                           </span>

@@ -1,3 +1,5 @@
+import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE } from './featuredUniversePacks';
+
 const MEDIA_LINES = {
   game: {
     fr: 'A.R.C.A. traite cette Trame comme une architecture de regles: routes, ressources et routines de combat peuvent etre ancrees sans nier leur origine.',
@@ -410,6 +412,12 @@ export const getStageLoreDescription = ({
   const signature = getUniverseSignature(stage.universe, lore);
   const mode = MODE_LINES[stage.mode] || MODE_LINES.RPG;
   const difficulty = DIFFICULTY_LINES[stage.difficulty] || DIFFICULTY_LINES.Medium;
+  const featuredLore = FEATURED_STAGE_LORE[stage.universe]?.[stage.mode]?.[lang];
+  if (featuredLore) {
+    return lang === 'fr'
+      ? `${featuredLore} ${mode.fr} Noyau indexe: ${bossIntel?.name || stage.bossName || signature.bossName}. Recompense de stabilisation: ${stage.goldPrize} or / ${stage.shardPrize} fragments. ${difficulty.fr}`
+      : `${featuredLore} ${mode.en} Indexed core: ${bossIntel?.name || stage.bossName || signature.bossName}. Stabilization reward: ${stage.goldPrize} gold / ${stage.shardPrize} shards. ${difficulty.en}`;
+  }
   const loreDesc = lore?.desc?.[lang] || '';
   const modifierLine = modifier?.name?.[lang]
     ? (lang === 'fr'
@@ -426,7 +434,8 @@ export const getGearLoreDescription = ({ item, lang = 'fr', lore }) => {
   const signature = getUniverseSignature(item.universe, lore);
   const stats = listStats(item.boost, lang);
   const media = MEDIA_LINES[lore?.mediaType] || MEDIA_LINES.game;
-  const itemNote = item.desc?.[lang] ? `${item.desc[lang]} ` : '';
+  const featuredLore = FEATURED_GEAR_LORE[item.id]?.[lang];
+  const itemNote = featuredLore ? `${featuredLore} ` : item.desc?.[lang] ? `${item.desc[lang]} ` : '';
   const upgradeLine = item.isUpgraded
     ? (lang === 'fr'
       ? ' Version +: la relique a absorbe un echo deja scelle; son signal frappe plus fort, mais A.R.C.A. surveille sa derive.'
@@ -473,6 +482,8 @@ export const getEnemyLoreDescription = ({ enemy, universe, lang = 'fr', lore, ty
   const special = enemy.special
     ? (lang === 'fr' ? `Son pattern signale: ${enemy.special}.` : `Its pattern reads: ${enemy.special}.`)
     : '';
+  const featuredLore = FEATURED_ENEMY_LORE[universe]?.[enemy.name]?.[lang];
+  if (featuredLore) return `${featuredLore} ${special}`.trim();
   return lang === 'fr'
     ? `${enemy.name} est une ${role} de ${universe}. Signature source: ${signature.theme}. A.R.C.A. le classe comme deformation active de ${signature.stageName}: il porte la pression de ${signature.worldBoss || signature.bossName} sans effacer les lois de sa Trame. ${special}`.trim()
     : `${enemy.name} is a ${role} from ${universe}. Source signature: ${signature.theme}. A.R.C.A. classifies it as an active deformation of ${signature.stageName}: it carries pressure from ${signature.worldBoss || signature.bossName} without erasing its Thread laws. ${special}`.trim();

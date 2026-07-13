@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T11:14:33.514Z",
+  "generatedAt": "2026-07-13T20:46:30.286Z",
   "sheet": {
     "width": 1024,
     "height": 1024,
@@ -14,11 +14,11 @@
     ]
   },
   "counts": {
-    "heroes": 1103,
+    "heroes": 1104,
     "enemies": 1007,
-    "bosses": 930,
-    "items": 30,
-    "total": 3070
+    "bosses": 931,
+    "items": 84,
+    "total": 3126
   },
   "availableCounts": {
     "heroes": 281,
@@ -3954,46 +3954,6 @@
       "name": "Joey Summerskill",
       "universe": "Hellraiser",
       "output": "/sprites/generated/heroes/hellraiser/joey-summerskill.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "hero",
-      "id": "chatterer_cenobite",
-      "name": "Chatterer Cenobite",
-      "universe": "Hellraiser",
-      "output": "/sprites/generated/heroes/hellraiser/chatterer-cenobite.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "hero",
-      "id": "pinhead_cenobite",
-      "name": "Pinhead",
-      "universe": "Hellraiser",
-      "output": "/sprites/generated/heroes/hellraiser/pinhead-cenobite.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -12070,10 +12030,10 @@
     },
     {
       "kind": "hero",
-      "id": "toshio_echo",
-      "name": "Toshio Echo",
+      "id": "aubrey_grudge",
+      "name": "Aubrey Davis",
       "universe": "The Grudge",
-      "output": "/sprites/generated/heroes/the-grudge/toshio-echo.png",
+      "output": "/sprites/generated/heroes/the-grudge/aubrey-grudge.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -19050,10 +19010,10 @@
     },
     {
       "kind": "hero",
-      "id": "boozook_guard",
-      "name": "Bouzouk Guard",
+      "id": "master_boozook",
+      "name": "Boozook Master",
       "universe": "Woodruff",
-      "output": "/sprites/generated/heroes/woodruff/boozook-guard.png",
+      "output": "/sprites/generated/heroes/woodruff/master-boozook.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -22074,6 +22034,66 @@
       "name": "Pale Emperor Echo",
       "universe": "Marilyn Manson",
       "output": "/sprites/generated/heroes/marilyn-manson/pale-emperor-echo.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "hero",
+      "id": "nancy_thompson",
+      "name": "Nancy Thompson",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/heroes/a-nightmare-on-elm-street/nancy-thompson.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "hero",
+      "id": "kristen_parker",
+      "name": "Kristen Parker",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/heroes/a-nightmare-on-elm-street/kristen-parker.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "hero",
+      "id": "alice_johnson",
+      "name": "Alice Johnson",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/heroes/a-nightmare-on-elm-street/alice-johnson.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -28150,10 +28170,10 @@
     },
     {
       "kind": "enemy",
-      "id": "hellraiser-chatterer-cenobite-guard",
-      "name": "Chatterer Cenobite Guard",
+      "id": "hellraiser-skinless-frank-cotton",
+      "name": "Skinless Frank Cotton",
       "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/chatterer-cenobite-guard.png",
+      "output": "/sprites/generated/bosses/hellraiser/skinless-frank-cotton.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -28170,10 +28190,10 @@
     },
     {
       "kind": "enemy",
-      "id": "hellraiser-butterball-cenobite",
-      "name": "Butterball Cenobite",
+      "id": "hellraiser-eremite-puzzle-guardian",
+      "name": "Eremite Puzzle Guardian",
       "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/butterball-cenobite.png",
+      "output": "/sprites/generated/bosses/hellraiser/eremite-puzzle-guardian.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -28190,110 +28210,10 @@
     },
     {
       "kind": "enemy",
-      "id": "hellraiser-female-cenobite-sister",
-      "name": "Female Cenobite Sister",
+      "id": "hellraiser-labyrinth-chain-corridor",
+      "name": "Labyrinth Chain Corridor",
       "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/female-cenobite-sister.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "enemy",
-      "id": "hellraiser-chain-hook-familiar",
-      "name": "Chain Hook Familiar",
-      "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/chain-hook-familiar.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "enemy",
-      "id": "hellraiser-puzzle-guardian",
-      "name": "Puzzle Guardian",
-      "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/puzzle-guardian.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "enemy",
-      "id": "hellraiser-skinless-labyrinth-wretch",
-      "name": "Skinless Labyrinth Wretch",
-      "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/skinless-labyrinth-wretch.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "boss",
-      "id": "hellraiser-pinhead-cenobite-leader",
-      "name": "Pinhead Cenobite Leader",
-      "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/pinhead-cenobite-leader.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "boss",
-      "id": "hellraiser-the-engineer-beast",
-      "name": "The Engineer Beast",
-      "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/the-engineer-beast.png",
+      "output": "/sprites/generated/bosses/hellraiser/labyrinth-chain-corridor.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -28330,10 +28250,10 @@
     },
     {
       "kind": "boss",
-      "id": "hellraiser-leviathan-diamond-core",
-      "name": "Leviathan Diamond Core",
+      "id": "hellraiser-the-engineer",
+      "name": "The Engineer",
       "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/leviathan-diamond-core.png",
+      "output": "/sprites/generated/bosses/hellraiser/the-engineer.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -28350,10 +28270,10 @@
     },
     {
       "kind": "boss",
-      "id": "hellraiser-leviathan-diamond-god",
-      "name": "Leviathan Diamond God",
+      "id": "hellraiser-leviathan-diamond",
+      "name": "Leviathan Diamond",
       "universe": "Hellraiser",
-      "output": "/sprites/generated/bosses/hellraiser/leviathan-diamond-god.png",
+      "output": "/sprites/generated/bosses/hellraiser/leviathan-diamond.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -41830,6 +41750,26 @@
     },
     {
       "kind": "enemy",
+      "id": "the-ring-distorted-victim-echo",
+      "name": "Distorted Victim Echo",
+      "universe": "The Ring",
+      "output": "/sprites/generated/bosses/the-ring/distorted-victim-echo.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
       "id": "the-ring-cursed-tape-static",
       "name": "Cursed Tape Static",
       "universe": "The Ring",
@@ -41850,10 +41790,70 @@
     },
     {
       "kind": "enemy",
-      "id": "the-ring-wet-footprint-shade",
-      "name": "Wet Footprint Shade",
+      "id": "the-ring-morgan-ranch-horse-panic",
+      "name": "Morgan Ranch Horse Panic",
       "universe": "The Ring",
-      "output": "/sprites/generated/bosses/the-ring/wet-footprint-shade.png",
+      "output": "/sprites/generated/bosses/the-ring/morgan-ranch-horse-panic.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "boss",
+      "id": "the-ring-anna-morgan-well-vision",
+      "name": "Anna Morgan Well Vision",
+      "universe": "The Ring",
+      "output": "/sprites/generated/bosses/the-ring/anna-morgan-well-vision.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "boss",
+      "id": "the-ring-samara-television-crawl",
+      "name": "Samara Television Crawl",
+      "universe": "The Ring",
+      "output": "/sprites/generated/bosses/the-ring/samara-television-crawl.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "boss",
+      "id": "the-ring-samara-morgan",
+      "name": "Samara Morgan",
+      "universe": "The Ring",
+      "output": "/sprites/generated/bosses/the-ring/samara-morgan.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -41870,70 +41870,10 @@
     },
     {
       "kind": "enemy",
-      "id": "the-ring-well-water-hand",
-      "name": "Well Water Hand",
-      "universe": "The Ring",
-      "output": "/sprites/generated/bosses/the-ring/well-water-hand.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "boss",
-      "id": "the-ring-seven-days-phone-call",
-      "name": "Seven Days Phone Call",
-      "universe": "The Ring",
-      "output": "/sprites/generated/bosses/the-ring/seven-days-phone-call.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "boss",
-      "id": "the-ring-cursed-horse-vision",
-      "name": "Cursed Horse Vision",
-      "universe": "The Ring",
-      "output": "/sprites/generated/bosses/the-ring/cursed-horse-vision.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "boss",
-      "id": "the-ring-samara-tape-curse",
-      "name": "Samara Tape Curse",
-      "universe": "The Ring",
-      "output": "/sprites/generated/bosses/the-ring/samara-tape-curse.png",
+      "id": "the-grudge-toshio-attic-apparition",
+      "name": "Toshio Attic Apparition",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/bosses/the-grudge/toshio-attic-apparition.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -41950,10 +41890,10 @@
     },
     {
       "kind": "enemy",
-      "id": "the-grudge-crawling-onryo-shade",
-      "name": "Crawling Onryo Shade",
+      "id": "the-grudge-mar-black-cat-echo",
+      "name": "Mar Black-Cat Echo",
       "universe": "The Grudge",
-      "output": "/sprites/generated/bosses/the-grudge/crawling-onryo-shade.png",
+      "output": "/sprites/generated/bosses/the-grudge/mar-black-cat-echo.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -41970,30 +41910,10 @@
     },
     {
       "kind": "enemy",
-      "id": "the-grudge-attic-cat-echo",
-      "name": "Attic Cat Echo",
+      "id": "the-grudge-cursed-security-camera-shade",
+      "name": "Cursed Security Camera Shade",
       "universe": "The Grudge",
-      "output": "/sprites/generated/bosses/the-grudge/attic-cat-echo.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null
-    },
-    {
-      "kind": "enemy",
-      "id": "the-grudge-cursed-house-door",
-      "name": "Cursed House Door",
-      "universe": "The Grudge",
-      "output": "/sprites/generated/bosses/the-grudge/cursed-house-door.png",
+      "output": "/sprites/generated/bosses/the-grudge/cursed-security-camera-shade.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -42010,10 +41930,10 @@
     },
     {
       "kind": "boss",
-      "id": "the-grudge-toshio-stairwell-echo",
-      "name": "Toshio Stairwell Echo",
+      "id": "the-grudge-takeo-bathtub-rage-echo",
+      "name": "Takeo Bathtub Rage Echo",
       "universe": "The Grudge",
-      "output": "/sprites/generated/bosses/the-grudge/toshio-stairwell-echo.png",
+      "output": "/sprites/generated/bosses/the-grudge/takeo-bathtub-rage-echo.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -42030,10 +41950,10 @@
     },
     {
       "kind": "boss",
-      "id": "the-grudge-saeki-house-lock",
-      "name": "Saeki House Lock",
+      "id": "the-grudge-kayako-stair-crawl",
+      "name": "Kayako Stair Crawl",
       "universe": "The Grudge",
-      "output": "/sprites/generated/bosses/the-grudge/saeki-house-lock.png",
+      "output": "/sprites/generated/bosses/the-grudge/kayako-stair-crawl.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -42050,10 +41970,10 @@
     },
     {
       "kind": "boss",
-      "id": "the-grudge-kayako-onryo-curse",
-      "name": "Kayako Onryo Curse",
+      "id": "the-grudge-kayako-saeki-onryo",
+      "name": "Kayako Saeki Onryo",
       "universe": "The Grudge",
-      "output": "/sprites/generated/bosses/the-grudge/kayako-onryo-curse.png",
+      "output": "/sprites/generated/bosses/the-grudge/kayako-saeki-onryo.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -49150,10 +49070,10 @@
     },
     {
       "kind": "enemy",
-      "id": "tomba-evil-pig-soldier",
-      "name": "Evil Pig Soldier",
+      "id": "tomba-koma-pig-patrol",
+      "name": "Koma Pig Patrol",
       "universe": "Tomba",
-      "output": "/sprites/generated/bosses/tomba/evil-pig-soldier.png",
+      "output": "/sprites/generated/bosses/tomba/koma-pig-patrol.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -49170,10 +49090,10 @@
     },
     {
       "kind": "enemy",
-      "id": "tomba-cursed-mushroom",
-      "name": "Cursed Mushroom",
+      "id": "tomba-biting-plant-cluster",
+      "name": "Biting Plant Cluster",
       "universe": "Tomba",
-      "output": "/sprites/generated/bosses/tomba/cursed-mushroom.png",
+      "output": "/sprites/generated/bosses/tomba/biting-plant-cluster.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -49190,10 +49110,10 @@
     },
     {
       "kind": "enemy",
-      "id": "tomba-kokka-bird",
-      "name": "Kokka Bird",
+      "id": "tomba-needlegator-ravine-pack",
+      "name": "Needlegator Ravine Pack",
       "universe": "Tomba",
-      "output": "/sprites/generated/bosses/tomba/kokka-bird.png",
+      "output": "/sprites/generated/bosses/tomba/needlegator-ravine-pack.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -49210,10 +49130,10 @@
     },
     {
       "kind": "boss",
-      "id": "tomba-100-year-old-wise-man-trial",
-      "name": "100 Year Old Wise Man Trial",
+      "id": "tomba-fire-evil-pig",
+      "name": "Fire Evil Pig",
       "universe": "Tomba",
-      "output": "/sprites/generated/bosses/tomba/100-year-old-wise-man-trial.png",
+      "output": "/sprites/generated/bosses/tomba/fire-evil-pig.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -49230,10 +49150,10 @@
     },
     {
       "kind": "boss",
-      "id": "tomba-evil-pig-boss-gate",
-      "name": "Evil Pig Boss Gate",
+      "id": "tomba-stormy-evil-pig",
+      "name": "Stormy Evil Pig",
       "universe": "Tomba",
-      "output": "/sprites/generated/bosses/tomba/evil-pig-boss-gate.png",
+      "output": "/sprites/generated/bosses/tomba/stormy-evil-pig.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -49250,10 +49170,10 @@
     },
     {
       "kind": "boss",
-      "id": "tomba-seven-evil-pigs-gate",
-      "name": "Seven Evil Pigs Gate",
+      "id": "tomba-real-evil-pig",
+      "name": "Real Evil Pig",
       "universe": "Tomba",
-      "output": "/sprites/generated/bosses/tomba/seven-evil-pigs-gate.png",
+      "output": "/sprites/generated/bosses/tomba/real-evil-pig.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -54690,10 +54610,10 @@
     },
     {
       "kind": "enemy",
-      "id": "woodruff-woodruff-rift-drone",
-      "name": "Woodruff Rift Drone",
+      "id": "woodruff-bigwig-henchman",
+      "name": "Bigwig Henchman",
       "universe": "Woodruff",
-      "output": "/sprites/generated/bosses/woodruff/woodruff-rift-drone.png",
+      "output": "/sprites/generated/bosses/woodruff/bigwig-henchman.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -54710,10 +54630,10 @@
     },
     {
       "kind": "enemy",
-      "id": "woodruff-woodruff-breach-stalker",
-      "name": "Woodruff Breach Stalker",
+      "id": "woodruff-slammers-end-jailer",
+      "name": "Slammers End Jailer",
       "universe": "Woodruff",
-      "output": "/sprites/generated/bosses/woodruff/woodruff-breach-stalker.png",
+      "output": "/sprites/generated/bosses/woodruff/slammers-end-jailer.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -54730,10 +54650,10 @@
     },
     {
       "kind": "enemy",
-      "id": "woodruff-woodruff-anomaly-pack",
-      "name": "Woodruff Anomaly Pack",
+      "id": "woodruff-factory-permit-guard",
+      "name": "Factory Permit Guard",
       "universe": "Woodruff",
-      "output": "/sprites/generated/bosses/woodruff/woodruff-anomaly-pack.png",
+      "output": "/sprites/generated/bosses/woodruff/factory-permit-guard.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -54750,10 +54670,10 @@
     },
     {
       "kind": "boss",
-      "id": "woodruff-woodruff-elite-guardian",
-      "name": "Woodruff Elite Guardian",
+      "id": "woodruff-schnibble-sect-high-priest",
+      "name": "Schnibble Sect High Priest",
       "universe": "Woodruff",
-      "output": "/sprites/generated/bosses/woodruff/woodruff-elite-guardian.png",
+      "output": "/sprites/generated/bosses/woodruff/schnibble-sect-high-priest.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -54770,10 +54690,10 @@
     },
     {
       "kind": "boss",
-      "id": "woodruff-woodruff-crisis-avatar",
-      "name": "Woodruff Crisis Avatar",
+      "id": "woodruff-bigwig-captive-beast",
+      "name": "Bigwig Captive Beast",
       "universe": "Woodruff",
-      "output": "/sprites/generated/bosses/woodruff/woodruff-crisis-avatar.png",
+      "output": "/sprites/generated/bosses/woodruff/bigwig-captive-beast.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -54790,10 +54710,10 @@
     },
     {
       "kind": "boss",
-      "id": "woodruff-bigwig-bureaucratic-tyrant",
-      "name": "Bigwig Bureaucratic Tyrant",
+      "id": "woodruff-the-bigwig",
+      "name": "The Bigwig",
       "universe": "Woodruff",
-      "output": "/sprites/generated/bosses/woodruff/bigwig-bureaucratic-tyrant.png",
+      "output": "/sprites/generated/bosses/woodruff/the-bigwig.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -60809,6 +60729,126 @@
       "source": null
     },
     {
+      "kind": "enemy",
+      "id": "a-nightmare-on-elm-street-freddy-puppet-marionette",
+      "name": "Freddy Puppet Marionette",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/bosses/a-nightmare-on-elm-street/freddy-puppet-marionette.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "a-nightmare-on-elm-street-freddy-serpent-form",
+      "name": "Freddy Serpent Form",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/bosses/a-nightmare-on-elm-street/freddy-serpent-form.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "enemy",
+      "id": "a-nightmare-on-elm-street-soul-chest-wretch",
+      "name": "Soul Chest Wretch",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/bosses/a-nightmare-on-elm-street/soul-chest-wretch.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "boss",
+      "id": "a-nightmare-on-elm-street-freddy-television-form",
+      "name": "Freddy Television Form",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/bosses/a-nightmare-on-elm-street/freddy-television-form.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "boss",
+      "id": "a-nightmare-on-elm-street-freddy-dream-master",
+      "name": "Freddy Dream Master",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/bosses/a-nightmare-on-elm-street/freddy-dream-master.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "boss",
+      "id": "a-nightmare-on-elm-street-freddy-krueger",
+      "name": "Freddy Krueger",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/bosses/a-nightmare-on-elm-street/freddy-krueger.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
       "kind": "boss",
       "id": "final-breach-singularity-core",
       "name": "Breach Singularity Core",
@@ -61034,6 +61074,312 @@
     },
     {
       "kind": "item",
+      "id": "cenobite_hook",
+      "name": "Barbed Cenobite Hook",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/cenobite-hook.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "puzzle_piece",
+      "name": "Lament Configuration",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/puzzle-piece.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "pillar_stone",
+      "name": "Pillar of Souls Fragment",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/pillar-stone.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "ring_cursed_vhs",
+      "name": "Cursed VHS Copy",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/ring-cursed-vhs.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "ring_distorted_photo",
+      "name": "Distorted Polaroid",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/ring-distorted-photo.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "ring_shelter_well_stone",
+      "name": "Shelter Mountain Well Stone",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/ring-shelter-well-stone.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "grudge_saeki_photo",
+      "name": "Saeki Family Photograph",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/grudge-saeki-photo.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "grudge_case_recorder",
+      "name": "Nakagawa Case Recorder",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/grudge-case-recorder.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "grudge_house_key",
+      "name": "Saeki House Key",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/grudge-house-key.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "tomba_grandfather_bracelet",
+      "name": "Grandfathers Golden Bracelet",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/tomba-grandfather-bracelet.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "tomba_evil_pig_bag",
+      "name": "Evil Pig Bag",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/tomba-evil-pig-bag.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "tomba_charity_wings",
+      "name": "Charity Wings",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/tomba-charity-wings.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "woodruff_tobozon",
+      "name": "Tobozon Communicator",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/woodruff-tobozon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "woodruff_viblefrotzer",
+      "name": "Viblefrotzer Regulator",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/woodruff-viblefrotzer.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "woodruff_syllable_stone",
+      "name": "Council Syllable Stone",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/woodruff-syllable-stone.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "elm_hypnocil",
+      "name": "Hypnocil Vial",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/elm-hypnocil.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "elm_nancy_trapkit",
+      "name": "Nancys Booby-Trap Kit",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/elm-nancy-trapkit.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "elm_glove_shard",
+      "name": "Bladed Glove Shard",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/elm-glove-shard.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
       "id": "evt_halo_warthog",
       "name": "M12 Warthog LZ Beacon",
       "universe": "Halo",
@@ -61082,6 +61428,193 @@
       },
       "available": true,
       "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "evt_hellraiser_lament_reversal",
+      "name": "Lament Configuration Reversal",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/evt-hellraiser-lament-reversal.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "evt_ring_copy_deadline",
+      "name": "Copy Before Seven Days",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/evt-ring-copy-deadline.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "evt_grudge_contact_chain",
+      "name": "Ju-On Contact Chain",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/evt-grudge-contact-chain.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "evt_tomba_pig_bag_seal",
+      "name": "Evil Pig Bag Seal",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/evt-tomba-pig-bag-seal.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "evt_woodruff_schnibble_formula",
+      "name": "Schnibble Formula",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/evt-woodruff-schnibble-formula.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "evt_elm_dream_warriors",
+      "name": "Dream Warriors Link",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/evt-elm-dream-warriors.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "a_nightmare_on_elm_street_pickup_1",
+      "name": "Nancys Alarm Clock",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/a-nightmare-on-elm-street-pickup-1.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "a_nightmare_on_elm_street_pickup_2",
+      "name": "Hypnocil Dose",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/a-nightmare-on-elm-street-pickup-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "a_nightmare_on_elm_street_pickup_3",
+      "name": "1428 Booby Trap",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/a-nightmare-on-elm-street-pickup-3.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "a_nightmare_on_elm_street_summon",
+      "name": "Dream Warriors",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/a-nightmare-on-elm-street-summon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "a_nightmare_on_elm_street_ultimate",
+      "name": "Springwood Wake-Up",
+      "universe": "A Nightmare on Elm Street",
+      "output": "/sprites/generated/items/a-nightmare-on-elm-street/a-nightmare-on-elm-street-ultimate.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
     },
     {
       "kind": "item",
@@ -61167,6 +61700,91 @@
       },
       "available": true,
       "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "hellraiser_pickup_1",
+      "name": "Lemarchand Segment",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/hellraiser-pickup-1.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "hellraiser_pickup_2",
+      "name": "Labyrinth Chain",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/hellraiser-pickup-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "hellraiser_pickup_3",
+      "name": "Black-Light Shard",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/hellraiser-pickup-3.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "hellraiser_summon",
+      "name": "Elliot Spencer",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/hellraiser-summon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "hellraiser_ultimate",
+      "name": "Leviathans Sentence",
+      "universe": "Hellraiser",
+      "output": "/sprites/generated/items/hellraiser/hellraiser-ultimate.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
     },
     {
       "kind": "item",
@@ -61337,6 +61955,346 @@
       },
       "available": true,
       "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "the_grudge_pickup_1",
+      "name": "Nakagawa Recorder",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/the-grudge-pickup-1.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_grudge_pickup_2",
+      "name": "Saeki House Key",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/the-grudge-pickup-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_grudge_pickup_3",
+      "name": "Gasoline Line",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/the-grudge-pickup-3.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_grudge_summon",
+      "name": "Nakagawa Investigation Team",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/the-grudge-summon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_grudge_ultimate",
+      "name": "Saeki Visit Chain",
+      "universe": "The Grudge",
+      "output": "/sprites/generated/items/the-grudge/the-grudge-ultimate.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_ring_pickup_1",
+      "name": "Unmarked VHS Tape",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/the-ring-pickup-1.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_ring_pickup_2",
+      "name": "Distorted Polaroid",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/the-ring-pickup-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_ring_pickup_3",
+      "name": "Well Stone",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/the-ring-pickup-3.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_ring_summon",
+      "name": "Noah in the Photo Lab",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/the-ring-summon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "the_ring_ultimate",
+      "name": "Seven Days Compressed",
+      "universe": "The Ring",
+      "output": "/sprites/generated/items/the-ring/the-ring-ultimate.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "tomba_pickup_1",
+      "name": "Grappling Hook",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/tomba-pickup-1.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "tomba_pickup_2",
+      "name": "Charity Wings",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/tomba-pickup-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "tomba_pickup_3",
+      "name": "Phoenix Rod",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/tomba-pickup-3.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "tomba_summon",
+      "name": "Charles Animal Master",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/tomba-summon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "tomba_ultimate",
+      "name": "Seven Evil Pigs Sealing",
+      "universe": "Tomba",
+      "output": "/sprites/generated/items/tomba/tomba-ultimate.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "woodruff_pickup_1",
+      "name": "Public Tobozon",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/woodruff-pickup-1.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "woodruff_pickup_2",
+      "name": "Azimuth Transportozon",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/woodruff-pickup-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "woodruff_pickup_3",
+      "name": "Syllable Stone",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/woodruff-pickup-3.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "woodruff_summon",
+      "name": "Boozook Wisemens Council",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/woodruff-summon.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
+    },
+    {
+      "kind": "item",
+      "id": "woodruff_ultimate",
+      "name": "Release the Schnibble",
+      "universe": "Woodruff",
+      "output": "/sprites/generated/items/woodruff/woodruff-ultimate.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "available": false,
+      "source": null
     }
   ]
 }

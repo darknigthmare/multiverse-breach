@@ -142,9 +142,7 @@ export const LORE_ACCURATE_HERO_EXPANSIONS = {
     hero('jake_wheeler', 'Jake Wheeler', 'tactical', '#5dade2', 'bat', 'School Hall Swing', 'Doll Trap Reveal', 'Teen Survival Guard', 'Hackensack Stand')
   ],
   Hellraiser: [
-    hero('joey_summerskill', 'Joey Summerskill', 'horror', '#bfc9ca', 'puzzlebox', 'Dream Investigate Pulse', 'Lament Seal Twist', 'Reporter Resolve Guard', 'Boone Prophecy Break'),
-    hero('chatterer_cenobite', 'Chatterer Cenobite', 'slayer', '#d0d3d4', 'claws', 'Chattering Bite', 'Chain Hook Drag', 'Cenobite Flesh Guard', 'Labyrinth Hunger'),
-    hero('pinhead_cenobite', 'Pinhead', 'horror', '#17202a', 'chains', 'Hook Chain Lash', 'Hell Priest Sentence', 'Pain Theology Ward', 'Lament Configuration Verdict')
+    hero('joey_summerskill', 'Joey Summerskill', 'horror', '#bfc9ca', 'puzzlebox', 'Dream Investigate Pulse', 'Lament Seal Twist', 'Reporter Resolve Guard', 'Boone Prophecy Break')
   ],
   'Mass Effect': [
     hero('tali', 'Tali Zorah', 'hacker', '#7d5fff', 'shotgun', 'Quarian Shotgun', 'Combat Drone Deploy', 'Tech Armor Seal', 'Migrant Fleet Override'),
@@ -265,6 +263,9 @@ export const LORE_ACCURATE_HERO_OVERRIDES = {
   glen: loadout('axe', 'Doll Family Swing', 'Identity Split Feint', 'Good Doll Guard', 'Seed of Chucky Burst', '#a29bfe'),
   female_cenobite: loadout('chains', 'Needle Chain Lash', 'Labyrinth Hook Snare', 'Cenobite Pain Guard', 'Order of the Gash', '#b2bec3'),
   butterball: loadout('hook', 'Butcher Hook Hit', 'Cenobite Drag', 'Flesh Apron Guard', 'Labyrinth Appetite', '#636e72'),
+  pinhead: loadout('chains', 'Hook Chain Lash', 'Hell Priest Sentence', 'Pain Theology Ward', 'Lament Configuration Verdict', '#17202a'),
+  chatterer: loadout('claws', 'Chattering Bite', 'Chain Hook Drag', 'Cenobite Flesh Guard', 'Labyrinth Hunger', '#d0d3d4'),
+  julia_cotton: loadout('knife', 'Cotton House Lure', 'Blood Resurrection Pact', 'Human Betrayal Guard', 'Labyrinth Consort Return', '#8b0000'),
   garrus: loadout('gun', 'Turian Sniper Shot', 'Concussive Mine', 'Calibrated Cover', 'Archangel Killbox', '#0984e3'),
   liara: loadout('biotic', 'Warp Field', 'Singularity Lift', 'Asari Barrier', 'Shadow Broker Data Storm', '#74b9ff'),
   paladin: loadout('laser', 'Laser Rifle Volley', 'Power Armor Charge', 'Brotherhood Bulwark', 'Liberty Prime Beacon', '#7f8c8d'),
@@ -574,17 +575,6 @@ export const LORE_ACCURATE_ENEMY_EXPANSIONS = {
     bosses: [
       boss('Charles Lee Ray Spirit', 540, 19, 6, '#e67e22', 'voodoo_knife', 'Damballa Soul Transfer'),
       boss('Nica Possession Split', 500, 18, 7, '#8e44ad', 'split_mind', 'Cult Identity Break')
-    ]
-  },
-  Hellraiser: {
-    monsters: [
-      monster('Chain Hook Familiar', 80, 13, 5, '#7f8c8d', 'hook'),
-      monster('Puzzle Guardian', 100, 12, 4, '#d4af37', 'cube'),
-      monster('Skinless Labyrinth Wretch', 110, 15, 5, '#b03a2e', 'claws')
-    ],
-    bosses: [
-      boss('Channard Cenobite', 600, 23, 5, '#8e44ad', 'tentacles', 'And To Think I Hesitated'),
-      boss('Leviathan Diamond Core', 680, 24, 2, '#dfe6e9', 'black_light', 'Labyrinth Geometry')
     ]
   },
   'Mass Effect': {

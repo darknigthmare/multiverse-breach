@@ -1,5 +1,6 @@
 import { LORE_DB } from './lore';
 import { getUniverseSignature } from './loreDescriptions';
+import { FEATURED_CHARACTER_PLAQUES } from './featuredUniversePacks';
 
 export const CHARACTER_PLAQUES = {
   player_anchor: {
@@ -751,6 +752,8 @@ export const CHARACTER_PLAQUES = {
     tags: ['SG-1', 'Daniel', 'Abydos', 'Ancients', 'Glyphs', 'Ascension']
   }
 };
+
+Object.assign(CHARACTER_PLAQUES, FEATURED_CHARACTER_PLAQUES);
 
 const roleByCategory = {
   marine: {

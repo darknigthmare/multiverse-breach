@@ -1,6 +1,7 @@
 // Pixel Art Renderer and Particle System for Multiverse Breach
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
+import { FEATURED_BACKDROPS } from './featuredUniversePacks';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrameForLayout, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from './spriteAssets';
 
 const spriteSheetCache = new Map();
@@ -909,6 +910,12 @@ export const OPENAI_BACKDROPS = {
     'Oliver Tree': '/backgrounds/rick-morty-smash-openai.png'
   }
 };
+
+Object.entries(FEATURED_BACKDROPS).forEach(([universe, modes]) => {
+  Object.entries(modes).forEach(([mode, src]) => {
+    OPENAI_BACKDROPS[mode][universe] = src;
+  });
+});
 
 const backdropCache = new Map();
 

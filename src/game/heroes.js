@@ -1058,7 +1058,11 @@ export const EQUIP_ITEMS_DB = [
   { id: 'v8_engine', universe: 'Mad Max', name: { en: 'Interceptor V8 Supercharger', fr: 'Compresseur V8 Interceptor' }, boost: { spd: 3 }, cost: 120 }
 ];
 
-EQUIP_ITEMS_DB.push(...EXPANDED_GEAR);
+EXPANDED_GEAR.forEach(item => {
+  const existing = EQUIP_ITEMS_DB.find(entry => entry.id === item.id);
+  if (existing) Object.assign(existing, item);
+  else EQUIP_ITEMS_DB.push(item);
+});
 
 export const EVENT_ITEMS_DB = {
   'Gears of War': {

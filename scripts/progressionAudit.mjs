@@ -16,6 +16,11 @@ const appSource = read('../src/App.jsx');
 const hubSource = read('../src/components/HubScreen.jsx');
 const ocCampaignSource = read('../src/game/ocCampaign.js');
 const characterPlaquesSource = read('../src/game/characterPlaques.js');
+const featuredUniverseSource = read('../src/game/featuredUniversePacks.js');
+const expandedUniversesSource = read('../src/game/expandedUniverses.js');
+const loreAccuratePacksSource = read('../src/game/loreAccuratePacks.js');
+const loreDescriptionsSource = read('../src/game/loreDescriptions.js');
+const narrativeSystemsSource = read('../src/game/narrativeSystems.js');
 const storySource = `${hubSource}\n${ocCampaignSource}`;
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const rpgEngineSource = read('../src/game/engineRpg.js');
@@ -29,6 +34,8 @@ const tacticsEngineSource = read('../src/game/engineTactics.js');
 const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
 const spriteChecklistSource = read('../SPRITE_CONVERSION_CHECKLIST.txt');
 const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.json'));
+const featuredVisualManifest = JSON.parse(read('../public/images/generated/featured-visual-manifest.json'));
+const featuredVisualPrompts = read('../public/images/generated/featured-openai-visual-prompts.jsonl').trim().split('\n').filter(Boolean).map(line => JSON.parse(line));
 const manifestOutputs = new Set((manifest.entries || []).filter(entry => entry.available).map(entry => entry.output));
 
 const expectedOcHeroIds = ['arca_mirelle', 'arca_bastion', 'arca_nova', 'arca_marrow', 'arca_sable', 'arca_loom'];
@@ -52,6 +59,14 @@ const expectedChuckySpriteOutputs = [
   '/sprites/generated/heroes/chucky/chucky.png',
   '/sprites/generated/heroes/chucky/tiffany.png',
   '/sprites/generated/heroes/chucky/glen.png'
+];
+const expectedFeaturedUniverses = [
+  'Tomba',
+  'Woodruff',
+  'Hellraiser',
+  'A Nightmare on Elm Street',
+  'The Ring',
+  'The Grudge'
 ];
 
 assert(dlcSource.includes("BASE_GAME_UNIVERSES = ['Nexus de Convergence']"), 'Base OC universe must remain Nexus de Convergence.');
@@ -103,6 +118,30 @@ expectedChuckySpriteOutputs.forEach(output => {
 assert(enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/chucky.png'") && enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/tiffany.png'"), 'Chucky and Tiffany doll bosses must use their dedicated OpenAI sheets.');
 assert(rendererSource.includes("Chucky: '/backgrounds/chucky-play-pals-breach-openai-v2.png'"), 'Chucky stages must use the dedicated Play Pals Breach background.');
 assert(spriteChecklistSource.includes('[ ] Tiffany Valentine humaine') && spriteChecklistSource.includes('quatre echecs OpenAI 504') && spriteChecklistSource.includes('cinquieme generation bloquee'), 'Deferred human Tiffany generation must remain visible in the conversion checklist.');
+expectedFeaturedUniverses.forEach(universe => {
+  const universeEntries = (manifest.entries || []).filter(entry => entry.universe === universe);
+  const visualEntries = (featuredVisualManifest.entries || []).filter(entry => entry.universe === universe);
+  const count = kind => universeEntries.filter(entry => entry.kind === kind).length;
+  assert(featuredUniverseSource.includes(`universe: '${universe}'`), `Missing featured universe pack ${universe}.`);
+  assert(count('hero') >= 3, `${universe} must expose at least three playable characters.`);
+  assert(count('enemy') >= 3, `${universe} must expose at least three canon threats.`);
+  assert(count('boss') >= 3, `${universe} must expose two bosses and one world boss.`);
+  assert(count('item') === 9, `${universe} must expose three gear, one event, and five melee item visuals.`);
+  assert(visualEntries.filter(entry => entry.kind === 'universe-icon').length === 1, `${universe} must expose one dedicated universe icon route.`);
+  assert(visualEntries.filter(entry => entry.kind === 'stage-backdrop').length === 3, `${universe} must expose dedicated RPG, Tactics, and Smash backdrop routes.`);
+});
+assert(featuredVisualManifest.counts.icons === 6 && featuredVisualManifest.counts.backdrops === 18 && featuredVisualManifest.counts.total === 24, 'Featured visual manifest must track six icons and eighteen mode backdrops.');
+assert(featuredVisualPrompts.length === featuredVisualManifest.counts.missing, 'Featured OpenAI prompt queue must contain only missing visual assets.');
+assert(new Set(featuredVisualPrompts.map(entry => entry.output)).size === featuredVisualPrompts.length, 'Featured OpenAI visual prompts must not duplicate output paths.');
+assert((featuredVisualManifest.entries || []).some(entry => entry.output === '/backgrounds/hellraiser-rpg-openai.png' && entry.available), 'Existing Hellraiser RPG OpenAI backdrop must remain available.');
+assert(featuredUniverseSource.includes('FEATURED_UNIVERSE_NARRATIVE_ARCS') && narrativeSystemsSource.includes('FEATURED_UNIVERSE_NARRATIVE_ARCS'), 'Featured universe arcs must remain connected to narrative systems.');
+assert(featuredUniverseSource.includes('FEATURED_CHARACTER_PLAQUES') && characterPlaquesSource.includes('FEATURED_CHARACTER_PLAQUES'), 'Featured character origin and Breach dossiers must remain connected.');
+assert(featuredUniverseSource.includes('FEATURED_STAGE_LORE') && loreDescriptionsSource.includes('FEATURED_STAGE_LORE'), 'Featured RPG, Tactics, and Smash stages must keep their specific lore descriptions.');
+assert(featuredUniverseSource.includes('FEATURED_GEAR_LORE') && featuredUniverseSource.includes('FEATURED_ENEMY_LORE'), 'Featured items and threats must keep their canon-specific lore maps.');
+assert(featuredUniverseSource.includes('FEATURED_UNIVERSE_ICONS') && featuredUniverseSource.includes('FEATURED_BACKDROPS'), 'Featured universes must keep dedicated icon and stage backdrop routes.');
+assert(expandedUniversesSource.includes('FEATURED_UNIVERSE_PACKS') && expandedUniversesSource.includes('FEATURED_STAGE_LORE'), 'Featured content packs must remain injected into expanded universes.');
+assert(!loreAccuratePacksSource.includes("id: 'pinhead_cenobite'") && !loreAccuratePacksSource.includes("id: 'chatterer_cenobite'"), 'Hellraiser must not reintroduce duplicate Pinhead or Chatterer hero ids.');
+assert(!featuredUniverseSource.includes("hero('toshio_saeki'"), 'Toshio must remain a Grudge threat instead of a playable hero.');
 assert(hubSource.includes('ARC_UNLOCK_RULES.personalMinLevel'), 'Narrative arc level gates must stay wired.');
 assert(hubSource.includes('getUniverseArcRosterStatus'), 'Universe arc roster gates must stay wired.');
 assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must stay wired.');
@@ -413,6 +452,8 @@ console.log(JSON.stringify({
   chuckyOpenAiSprites: expectedChuckySpriteOutputs.length,
   chuckyDeferredSprites: 1,
   chuckyUniverseBackground: 'play-pals-breach-openai-v2',
+  featuredUniverses: expectedFeaturedUniverses.length,
+  featuredVisuals: featuredVisualManifest.counts,
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',

@@ -1,4 +1,5 @@
 import { HEROES_DB } from './heroes';
+import { FEATURED_UNIVERSE_NARRATIVE_ARCS } from './featuredUniversePacks';
 
 export const ARC_CAMPAIGN_DETAILS = {
   xeno_yautja_war: {
@@ -74,6 +75,7 @@ export const ARC_CAMPAIGN_DETAILS = {
 };
 
 export const UNIVERSE_NARRATIVE_ARCS = [
+  ...FEATURED_UNIVERSE_NARRATIVE_ARCS,
   {
     id: 'halo_installation_04_containment',
     title: { fr: 'Arc Univers - Halo: confinement Installation 04', en: 'Universe Arc - Halo: Installation 04 Containment' },
