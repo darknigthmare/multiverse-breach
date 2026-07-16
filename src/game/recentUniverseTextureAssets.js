@@ -14,11 +14,14 @@ const MODE_PATTERN_SIZE = Object.freeze({
   Tactics: [128, 128]
 });
 
+const FULL_TEXTURE_REGION = Object.freeze({ x: 0, y: 0, width: 1, height: 1 });
+
 export const RECENT_UNIVERSE_TEXTURE_ASSETS = Object.freeze(Object.fromEntries(
   REQUESTED_UNIVERSE_WAVE.map(entry => [entry.universe, Object.freeze({
     key: entry.key,
     universe: entry.universe,
     src: `/textures/recent-universes/${entry.key}-openai-atlas.webp`,
+    tacticsSrc: `/textures/recent-universes/${entry.key}-openai-tactics-3q.webp`,
     quadrants: MODE_QUADRANTS
   })])
 ));
@@ -33,14 +36,15 @@ const normalizeMode = mode => {
   return 'RPG';
 };
 
-const getAtlasEntry = universe => {
+const getAtlasEntry = (universe, mode) => {
   const asset = RECENT_UNIVERSE_TEXTURE_ASSETS[universe];
   if (!asset || typeof Image === 'undefined') return null;
-  const cached = atlasCache.get(asset.src);
+  const src = mode === 'Tactics' ? asset.tacticsSrc : asset.src;
+  const cached = atlasCache.get(src);
   if (cached) return cached;
 
   const image = new Image();
-  const entry = { image, status: 'loading', asset };
+  const entry = { image, status: 'loading', asset, src };
   image.decoding = 'async';
   image.onload = () => {
     entry.status = 'ready';
@@ -48,20 +52,20 @@ const getAtlasEntry = universe => {
   image.onerror = () => {
     entry.status = 'error';
   };
-  image.src = asset.src;
+  image.src = src;
   if (image.complete && image.naturalWidth > 0) entry.status = 'ready';
-  atlasCache.set(asset.src, entry);
+  atlasCache.set(src, entry);
   return entry;
 };
 
 export const getRecentUniverseTextureRegion = (universe, mode) => {
-  const entry = getAtlasEntry(universe);
-  if (!entry || entry.status !== 'ready' || !entry.image.naturalWidth || !entry.image.naturalHeight) return null;
   const normalizedMode = normalizeMode(mode);
-  const quadrant = MODE_QUADRANTS[normalizedMode];
+  const entry = getAtlasEntry(universe, normalizedMode);
+  if (!entry || entry.status !== 'ready' || !entry.image.naturalWidth || !entry.image.naturalHeight) return null;
+  const quadrant = normalizedMode === 'Tactics' ? FULL_TEXTURE_REGION : MODE_QUADRANTS[normalizedMode];
   return {
     image: entry.image,
-    src: entry.asset.src,
+    src: entry.src,
     mode: normalizedMode,
     sx: Math.round(entry.image.naturalWidth * quadrant.x),
     sy: Math.round(entry.image.naturalHeight * quadrant.y),
@@ -105,22 +109,25 @@ export const drawRecentUniverseTextureCover = (
   y,
   width,
   height,
-  alpha = 1
+  alpha = 1,
+  fit = 'cover'
 ) => {
   const region = getRecentUniverseTextureRegion(universe, mode);
   if (!region || width <= 0 || height <= 0) return false;
 
   let { sx, sy, sw, sh } = region;
-  const sourceRatio = sw / sh;
-  const targetRatio = width / height;
-  if (sourceRatio > targetRatio) {
-    const cropWidth = sh * targetRatio;
-    sx += (sw - cropWidth) / 2;
-    sw = cropWidth;
-  } else if (sourceRatio < targetRatio) {
-    const cropHeight = sw / targetRatio;
-    sy += (sh - cropHeight) / 2;
-    sh = cropHeight;
+  if (fit === 'cover') {
+    const sourceRatio = sw / sh;
+    const targetRatio = width / height;
+    if (sourceRatio > targetRatio) {
+      const cropWidth = sh * targetRatio;
+      sx += (sw - cropWidth) / 2;
+      sw = cropWidth;
+    } else if (sourceRatio < targetRatio) {
+      const cropHeight = sw / targetRatio;
+      sy += (sh - cropHeight) / 2;
+      sh = cropHeight;
+    }
   }
 
   ctx.save();

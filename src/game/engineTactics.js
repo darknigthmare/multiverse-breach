@@ -2,7 +2,7 @@
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
-import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
+import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 
 const faceUnitToward = (unit, target) => {
   const unitX = unit?.gridX ?? unit?.x;
@@ -25,7 +25,6 @@ export class EngineTactics {
     this.onComplete = onComplete;
     this.stage = stage;
     this.battlefield = getTacticsBattlefield(stage);
-    this.recentTilePattern = null;
     this.missionProfile = getTacticsMissionProfile(stage, this.battlefield);
     this.objective = this.battlefield.objective || 'rout';
     this.objectiveTarget = this.battlefield.objectiveTarget || 1;
@@ -1657,8 +1656,23 @@ export class EngineTactics {
   }
 
   draw(ctx, animTime) {
-    if (!this.recentTilePattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
-      this.recentTilePattern = getRecentUniverseTexturePattern(ctx, this.stage.universe, 'Tactics');
+    if (!this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(this.gridStartX, this.gridStartY, this.cols * this.cellW, this.rows * this.cellH);
+      ctx.clip();
+      drawRecentUniverseTextureCover(
+        ctx,
+        this.stage.universe,
+        'Tactics',
+        this.gridStartX,
+        this.gridStartY,
+        this.cols * this.cellW,
+        this.rows * this.cellH,
+        0.92,
+        'stretch'
+      );
+      ctx.restore();
     }
     // 1. Draw Grid board
     ctx.strokeStyle = colorWithAlpha(this.getBattlefieldAccent(), 0.62);
@@ -2113,12 +2127,6 @@ export class EngineTactics {
     ctx.beginPath();
     ctx.rect(cellX + 1, cellY + 1, this.cellW - 2, this.cellH - 2);
     ctx.clip();
-    if (this.recentTilePattern) {
-      ctx.globalAlpha = tile ? 0.46 : 0.64;
-      ctx.fillStyle = this.recentTilePattern;
-      ctx.fillRect(cellX + 1, cellY + 1, this.cellW - 2, this.cellH - 2);
-      ctx.globalAlpha = 1;
-    }
     ctx.strokeStyle = colorWithAlpha(theme.detail, tile ? 0.18 : 0.26);
     ctx.fillStyle = colorWithAlpha(theme.mid, tile ? 0.12 : 0.2);
     ctx.lineWidth = 1;

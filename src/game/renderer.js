@@ -1136,9 +1136,6 @@ function drawStageFloor(ctx, width, height, mode, theme, levelProfile = null) {
   if (mode === 'Tactics') {
     ctx.fillStyle = material ? withAlpha(material.shadow, 0.42) : 'rgba(4,8,14,0.38)';
     ctx.fillRect(width * 0.055, height * 0.12, width * 0.89, height * 0.68);
-    if (universe) {
-      drawRecentUniverseTextureCover(ctx, universe, 'Tactics', width * 0.055, height * 0.12, width * 0.89, height * 0.68, 0.34);
-    }
     return;
   }
 

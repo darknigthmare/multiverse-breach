@@ -39,6 +39,7 @@ const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
 const recentUniverseLevelsSource = read('../src/game/recentUniverseLevels.js');
 const recentUniverseTextureAssetsSource = read('../src/game/recentUniverseTextureAssets.js');
 const recentTextureSources = JSON.parse(read('../public/textures/recent-universes/openai-level-texture-sources.json'));
+const recentTacticsTextureSources = JSON.parse(read('../public/textures/recent-universes/openai-tactics-perspective-sources.json'));
 const spriteChecklistSource = read('../SPRITE_CONVERSION_CHECKLIST.txt');
 const spriteReferenceSource = read('../public/sprites/generated/sprite-reference-sources.json');
 const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.json'));
@@ -286,15 +287,21 @@ expectedRequestedUniverseWave.forEach(universe => {
   assert(textureEntry.sourcePage && textureEntry.visualAnchor, `${universe} texture atlas must retain canon source provenance.`);
   const textureUrl = new URL(`../public/textures/recent-universes/${entry.key}-openai-atlas.webp`, import.meta.url);
   assert(existsSync(textureUrl) && statSync(textureUrl).size > 100000, `${universe} OpenAI level texture atlas is missing or unexpectedly small.`);
+  const tacticsTextureEntry = recentTacticsTextureSources.entries.find(candidate => candidate.universe === universe);
+  assert(tacticsTextureEntry?.available, `${universe} must expose an available three-quarter Tactics terrain.`);
+  assert(tacticsTextureEntry.camera === 'elevated-three-quarter-rectangular-grid', `${universe} Tactics terrain must use the gameplay camera.`);
+  const tacticsTextureUrl = new URL(`../public/textures/recent-universes/${entry.key}-openai-tactics-3q.webp`, import.meta.url);
+  assert(existsSync(tacticsTextureUrl) && statSync(tacticsTextureUrl).size > 80000, `${universe} three-quarter Tactics terrain is missing or unexpectedly small.`);
 });
 assert(Object.keys(RECENT_UNIVERSE_LEVELS).length === REQUESTED_UNIVERSE_WAVE.length, 'Every recent universe must have exactly one cross-mode level profile.');
 assert(recentTextureSources.counts.universes === REQUESTED_UNIVERSE_WAVE.length && recentTextureSources.counts.available === REQUESTED_UNIVERSE_WAVE.length, 'Every recent universe texture atlas must be generated and available.');
+assert(recentTacticsTextureSources.counts.universes === REQUESTED_UNIVERSE_WAVE.length && recentTacticsTextureSources.counts.available === REQUESTED_UNIVERSE_WAVE.length, 'Every recent universe must expose a generated three-quarter Tactics terrain.');
 assert(recentUniverseTextureAssetsSource.includes('MODE_QUADRANTS') && recentUniverseTextureAssetsSource.includes('drawRecentUniverseTextureCover'), 'Recent OpenAI texture atlases must expose deterministic per-mode crops.');
 assert(recentUniverseLevelsSource.includes('platformTexture') && recentUniverseLevelsSource.includes('tileTexture'), 'Recent level profiles must expose separate melee platform and tactics tile textures.');
 assert(smashEngineSource.includes('platformTextureCanvasCache') && smashEngineSource.includes('makeTextureCanvas'), 'Melee must render platform-local textures from real collision geometry.');
 assert(smashEngineSource.includes('getRecentUniverseTexturePattern') && smashEngineSource.includes('dlcSuppressedArena'), 'Melee must use OpenAI platform textures without leaking disabled DLC assets.');
 assert(tacticsEngineSource.includes('drawTileTexture') && tacticsBattlefieldsSource.includes('tileTheme'), 'Tactics must render texture details inside the real battlefield cells.');
-assert(tacticsEngineSource.includes('recentTilePattern') && tacticsEngineSource.includes('dlcSuppressedArena'), 'Tactics must use OpenAI tile textures without leaking disabled DLC assets.');
+assert(tacticsEngineSource.includes("drawRecentUniverseTextureCover(") && tacticsEngineSource.includes("'stretch'") && tacticsEngineSource.includes('dlcSuppressedArena'), 'Tactics must map one continuous three-quarter OpenAI terrain beneath the real grid without leaking disabled DLC assets.');
 assert(rendererSource.includes("drawRecentUniverseTextureCover(ctx, universe, 'RPG'") && fighterEngineSource.includes("drawRecentUniverseTextureCover(ctx, this.universe, 'Combat'"), 'RPG and Combat must render their dedicated OpenAI floor quadrants.');
 assert(fighterModeSource.includes("drawUniverseBackground(ctx, arenaUniverse") && fighterModeSource.includes("'Combat'"), 'Combat mode must select its level from the active roster universe.');
 assert(gameCanvasSource.includes('handleBattleComplete, arenaStage);') && rpgEngineSource.includes('heroLanes'), 'RPG mode must align combatants with the active universe floor lanes.');
@@ -765,6 +772,7 @@ console.log(JSON.stringify({
   recentUniverseLevelProfiles: Object.keys(RECENT_UNIVERSE_LEVELS).length,
   recentUniverseLevelModes: ['Combat', 'Melee', 'RPG', 'Tactics'],
   recentUniverseOpenAiTextureAtlases: recentTextureSources.counts.available,
+  recentUniverseTacticsPerspectiveTextures: recentTacticsTextureSources.counts.available,
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',
