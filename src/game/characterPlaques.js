@@ -734,6 +734,23 @@ export const CHARACTER_PLAQUES = {
     doctrine: { fr: 'Lance Jaffa, duel frontal, protection SG-1, contre-doctrine Goa uld.', en: 'Jaffa staff, frontal duel, SG-1 protection, anti-Goa uld doctrine.' },
     tags: ['SG-1', 'Tealc', 'Jaffa', 'Chulak', 'Apophis', 'Freedom']
   },
+  bratac: {
+    clearance: 'JAFFA-MASTER',
+    rank: { fr: 'Ancien Prima d Apophis / maitre Jaffa libre', en: 'Former First Prime of Apophis / Free Jaffa master' },
+    role: { fr: 'Mentor Jaffa et commandant de resistance', en: 'Jaffa mentor and resistance commander' },
+    callSign: 'Bra\'tac',
+    origin: { fr: 'Univers Stargate SG-1 - Chulak / rebellion Jaffa', en: 'Stargate SG-1 universe - Chulak / Jaffa rebellion' },
+    dossier: {
+      fr: 'Dans sa Trame d origine, Bra tac est un maitre Jaffa, ancien Prima d Apophis et mentor de Teal c. Il a servi assez longtemps les Goa uld pour connaitre leurs mensonges, leurs tactiques et leurs faiblesses, puis a consacre son experience a la rebellion et a la liberte des Jaffa. Son age ne diminue ni sa precision au Ma Tok ni son autorite sur un champ de bataille.',
+      en: 'In his origin Thread, Bra tac is a Jaffa master, former First Prime of Apophis, and Teal c s mentor. He served the Goa uld long enough to know their lies, tactics, and weaknesses, then devoted that experience to rebellion and Jaffa freedom. His age diminishes neither his Ma Tok precision nor his battlefield authority.'
+    },
+    breachLore: {
+      fr: 'Dans Multiverse Breach, A.R.C.A. confie a Bra tac les Trames ou un faux dieu utilise une armee, une religion ou une technologie volee pour imposer son recit. Il organise les cellules Jaffa libres, reconnait les doctrines Goa uld contrefaites et transforme chaque Porte stabilisee en route d evacuation ou en point de soulevement.',
+      en: 'In Multiverse Breach, A.R.C.A. assigns Bra tac to Threads where a false god uses an army, religion, or stolen technology to impose its narrative. He organizes Free Jaffa cells, recognizes counterfeit Goa uld doctrine, and turns each stabilized Gate into an evacuation route or uprising point.'
+    },
+    doctrine: { fr: 'Ma Tok, tir plasma rapide, commandement Jaffa, sabotage Goa uld, repli par la Porte.', en: 'Ma Tok staff, rapid plasma fire, Jaffa command, Goa uld sabotage, Gate withdrawal.' },
+    tags: ['SG-1', 'Bratac', 'Jaffa', 'Chulak', 'Free Jaffa', 'Ma Tok']
+  },
   daniel_jackson: {
     clearance: 'SGC-04',
     rank: { fr: 'Archeologue / linguiste SG-1', en: 'Archaeologist / SG-1 linguist' },

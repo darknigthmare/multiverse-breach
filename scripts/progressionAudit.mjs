@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { REQUESTED_UNIVERSE_WAVE } from '../src/game/requestedUniverseWave.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -25,6 +26,8 @@ const storySource = `${hubSource}\n${ocCampaignSource}`;
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const rpgEngineSource = read('../src/game/engineRpg.js');
 const raceModeSource = read('../src/components/RaceMode.jsx');
+const fighterModeSource = read('../src/components/FighterMode.jsx');
+const fighterEngineSource = read('../src/game/engineFighter.js');
 const smashEngineSource = read('../src/game/engineSmash.js');
 const raceEngineSource = read('../src/game/engineRace.js');
 const spriteAssetsSource = read('../src/game/spriteAssets.js');
@@ -33,6 +36,7 @@ const smashArenasSource = read('../src/game/smashArenas.js');
 const tacticsEngineSource = read('../src/game/engineTactics.js');
 const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
 const spriteChecklistSource = read('../SPRITE_CONVERSION_CHECKLIST.txt');
+const spriteReferenceSource = read('../public/sprites/generated/sprite-reference-sources.json');
 const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.json'));
 const featuredVisualManifest = JSON.parse(read('../public/images/generated/featured-visual-manifest.json'));
 const featuredVisualPrompts = read('../public/images/generated/featured-openai-visual-prompts.jsonl').trim().split('\n').filter(Boolean).map(line => JSON.parse(line));
@@ -54,11 +58,62 @@ const expectedOcEnemyNames = [
 ];
 const expectedOcItemIds = ['arca-signal-lens', 'nexus-anchor-coil', 'origin-shard-guard'];
 const expectedOcProceduralThreats = ['Double ideal de Marrow', 'Matrice de Substitution'];
+const expectedOcDeferredSprites = ['Double ideal de Marrow'];
 const expectedOcOriginLocks = ['name', 'contradiction', 'scar', 'debt', 'return', 'choice'];
 const expectedChuckySpriteOutputs = [
   '/sprites/generated/heroes/chucky/chucky.png',
   '/sprites/generated/heroes/chucky/tiffany.png',
-  '/sprites/generated/heroes/chucky/glen.png'
+  '/sprites/generated/heroes/chucky/glen.png',
+  '/sprites/generated/heroes/chucky/tiffany-human-bride.png',
+  '/sprites/generated/heroes/chucky/tiffany-human-wedding.png',
+  '/sprites/generated/heroes/chucky/tiffany-human-all-black-1998.png',
+  '/sprites/generated/heroes/chucky/tiffany-voluptuous-original-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-leather-jacket-bride-1998.png',
+  '/sprites/generated/heroes/chucky/tiffany-dark-haired-wedding-belle-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-burned-bald-damage-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-street-siren-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-synthetic-companion-doll-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-leather-mistress-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-street-siren-doll-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-synthetic-companion-doll-form-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-leather-mistress-doll-au.png',
+  '/sprites/generated/heroes/chucky/jennifer-tilly-seed.png',
+  '/sprites/generated/heroes/chucky/jennifer-tilly-seed-glamour.png',
+  '/sprites/generated/bosses/chucky/charles-lee-ray-human.png',
+  '/sprites/generated/bosses/chucky/bride-chucky-1998.png',
+  '/sprites/generated/bosses/chucky/buddi-chucky-2019.png',
+  '/sprites/generated/bosses/chucky/good-chucky-season-2.png',
+  '/sprites/generated/bosses/chucky/buff-chucky-season-2.png',
+  '/sprites/generated/bosses/chucky/colonel-chucky-season-2.png',
+  '/sprites/generated/bosses/chucky/belle-chucky-season-2.png',
+  '/sprites/generated/bosses/chucky/christmas-chucky-season-2.png',
+  '/sprites/generated/bosses/chucky/old-chucky-season-3.png'
+];
+const expectedChuckyExpansionRoster = [
+  'Tiffany Valentine - Human (Bride)',
+  'Tiffany Valentine - Gothic Bride',
+  'Tiffany Valentine - All-Black Gothic (1998)',
+  'Tiffany Valentine - Voluptuous Original (Adult AU)',
+  'Tiffany Doll - Leather Jacket Bride (1998)',
+  'Tiffany Doll - Dark-Haired Wedding Belle (AU)',
+  'Tiffany Doll - Burned and Bald (Damage AU)',
+  'Tiffany Valentine - Street Siren (Adult AU)',
+  'Tiffany Valentine - Synthetic Doll (Adult AU)',
+  'Tiffany Valentine - Leather Mistress (Adult AU)',
+  'Tiffany Doll - Street Siren (Adult AU)',
+  'Tiffany Doll - Synthetic Companion (Adult AU)',
+  'Tiffany Doll - Leather Mistress (Adult AU)',
+  'Jennifer Tilly (Seed of Chucky)',
+  'Jennifer Tilly - Seed Glamour Costume',
+  'Charles Lee Ray - Human (1988)',
+  'Bride Chucky (1998)',
+  'Buddi Chucky (2019 Remake)',
+  'Good Chucky - Scout (Season 2)',
+  'Buff Chucky - Hulk (Season 2)',
+  'Colonel Chucky (Season 2)',
+  'Belle Disguise Chucky (Season 2)',
+  'Christmas Chucky (Season 2)',
+  'Old Chucky (Season 3)'
 ];
 const expectedFeaturedUniverses = [
   'Tomba',
@@ -68,9 +123,152 @@ const expectedFeaturedUniverses = [
   'The Ring',
   'The Grudge'
 ];
+const expectedStargateSpriteOutputs = [
+  '/sprites/generated/bosses/stargate/replicator-insect-drone.png',
+  '/sprites/generated/bosses/stargate/kull-warrior-prototype.png',
+  '/sprites/generated/bosses/stargate/anubis-jackal-guard-1994.png',
+  '/sprites/generated/bosses/stargate/jaffa-serpent-guard.png',
+  '/sprites/generated/heroes/stargate/bratac.png'
+];
+const expectedStygianInquisitionSpriteOutputs = [
+  '/sprites/generated/bosses/hellraiser/the-auditor-judgment.png',
+  '/sprites/generated/bosses/hellraiser/the-assessor-judgment.png',
+  '/sprites/generated/bosses/hellraiser/the-jury-judgment.png',
+  '/sprites/generated/bosses/hellraiser/the-cleaners-judgment.png',
+  '/sprites/generated/bosses/hellraiser/the-butcher-judgment.png',
+  '/sprites/generated/bosses/hellraiser/the-surgeon-judgment.png'
+];
+const expectedDandadanSpriteOutputs = [
+  '/sprites/generated/heroes/dandadan/momo-ayase.png',
+  '/sprites/generated/heroes/dandadan/oken-dandadan.png',
+  '/sprites/generated/heroes/dandadan/aira-dandadan.png',
+  '/sprites/generated/heroes/dandadan/jiji-dandadan.png',
+  '/sprites/generated/heroes/dandadan/seiko-dandadan.png',
+  '/sprites/generated/heroes/dandadan/turbo-granny-cat.png'
+];
+const expectedFrenchComedySpriteOutputs = [
+  '/sprites/generated/heroes/les-inconnus/inconnus-trio.png',
+  '/sprites/generated/heroes/les-inconnus/bernard-inconnus.png',
+  '/sprites/generated/heroes/les-inconnus/didier-inconnus.png',
+  '/sprites/generated/heroes/rrrrrrr/pierre-rrr.png',
+  '/sprites/generated/heroes/rrrrrrr/guy-rrr.png',
+  '/sprites/generated/heroes/rrrrrrr/chef-cheveux-sales.png',
+  '/sprites/generated/heroes/la-cite-de-la-peur/odile-deray.png',
+  '/sprites/generated/heroes/la-cite-de-la-peur/simon-jeremi.png',
+  '/sprites/generated/heroes/la-cite-de-la-peur/serge-karamazov.png'
+];
+const expectedRequestedUniverseWave = [
+  'Chainsaw Man',
+  'Cyberpunk: Edgerunners',
+  'Demon Slayer',
+  'Parasyte',
+  'Steins;Gate',
+  'Zero Escape: The Nonary Games',
+  "JoJo's Bizarre Adventure",
+  'Rurouni Kenshin',
+  'Tokyo Ghoul',
+  'Cowboy Bebop',
+  'Dragon Ball Z',
+  'Elfen Lied',
+  'Fullmetal Alchemist',
+  'Gantz',
+  'Psycho-Pass',
+  'Mashle',
+  'Solo Leveling',
+  'Frieren: Beyond Journeys End',
+  'Deadman Wonderland',
+  'Devilman',
+  'Neon Genesis Evangelion',
+  'Naruto',
+  'Naruto Shippuden',
+  'Boruto: Naruto Next Generations',
+  'Boruto: Two Blue Vortex',
+  'One Punch Man',
+  'Sword Art Online: Gun Gale Online',
+  'Sword Art Online',
+  'Les Aventures de Saturnin',
+  'MagiC JacK',
+  'Teen Titans',
+  'Godzilla'
+];
+const expectedSupplementalOpenAiSpriteOutputs = [
+  '/sprites/generated/bosses/matrix/breach-singularity-core.png',
+  '/sprites/generated/bosses/the-matrix/sentinel-squid-drone.png',
+  '/sprites/generated/bosses/the-matrix/twin-ghost-exile.png',
+  '/sprites/generated/heroes/the-matrix/agent-smith.png',
+  '/sprites/generated/heroes/the-matrix/niobe-matrix.png',
+  '/sprites/generated/heroes/the-matrix/tank-matrix.png',
+  '/sprites/generated/heroes/the-matrix/oracle-matrix.png',
+  '/sprites/generated/heroes/the-matrix/link-matrix.png',
+  '/sprites/generated/heroes/the-matrix/seraph.png',
+  '/sprites/generated/bosses/the-matrix/matrix-security-swat-program.png',
+  '/sprites/generated/bosses/the-matrix/agent-brown-program.png',
+  '/sprites/generated/bosses/the-matrix/agent-thompson-program.png',
+  '/sprites/generated/bosses/the-matrix/merovingian-guard.png',
+  '/sprites/generated/bosses/toxic-avenger/toxic-thug.png',
+  '/sprites/generated/bosses/toxic-avenger/sludge-mutant.png',
+  '/sprites/generated/bosses/toxic-avenger/corporate-dump-guard.png',
+  '/sprites/generated/bosses/toxic-avenger/tromaville-bully-pack.png',
+  '/sprites/generated/bosses/toxic-avenger/radiation-barrel-beast.png',
+  '/sprites/generated/bosses/cells-at-work/pneumococcus-germ.png',
+  '/sprites/generated/bosses/cells-at-work/cedar-pollen-allergen.png',
+  '/sprites/generated/bosses/cells-at-work/cancer-cell-scout.png',
+  '/sprites/generated/bosses/cells-at-work/influenza-virus-swarm.png',
+  '/sprites/generated/bosses/cells-at-work/killer-t-cell-drill.png',
+  '/sprites/generated/heroes/cells-at-work/red-blood-cell-courier-ae3803.png',
+  '/sprites/generated/heroes/cells-at-work/white-blood-cell-long-hair.png',
+  '/sprites/generated/heroes/cells-at-work/white-blood-cell-short-hair.png',
+  '/sprites/generated/heroes/cells-at-work/neutrophil-u1146-combat.png',
+  '/sprites/generated/heroes/cells-at-work/platelet-squad-leader.png',
+  '/sprites/generated/heroes/cells-at-work/macrophage-cleaner.png',
+  '/sprites/generated/bosses/cells-at-work/cancer-cell-true-form.png',
+  '/sprites/generated/bosses/the-batman-who-laughs/robined-crow.png',
+  '/sprites/generated/bosses/the-batman-who-laughs/dark-metal-drone.png',
+  '/sprites/generated/bosses/the-batman-who-laughs/jokerized-bat-guard.png',
+  '/sprites/generated/bosses/the-batman-who-laughs/dark-robin-swarm.png',
+  '/sprites/generated/bosses/uzumaki/spiral-snail-student.png',
+  '/sprites/generated/bosses/uzumaki/twisted-hair-storm.png',
+  '/sprites/generated/bosses/uzumaki/cremation-smoke-coil.png',
+  '/sprites/generated/bosses/uzumaki/azami-spiral-eye.png',
+  '/sprites/generated/bosses/uzumaki/lighthouse-coil.png',
+  '/sprites/generated/bosses/inuyashiki/cyber-weapon-trace.png',
+  '/sprites/generated/bosses/inuyashiki/media-panic-mob.png',
+  '/sprites/generated/bosses/inuyashiki/drone-police-unit.png',
+  '/sprites/generated/bosses/inuyashiki/airport-missile-lock.png',
+  '/sprites/generated/bosses/inuyashiki/hiro-remote-kill-pattern.png',
+  '/sprites/generated/heroes/hellraiser/pinhead.png',
+  '/sprites/generated/heroes/hellraiser/chatterer.png',
+  '/sprites/generated/heroes/hellraiser/butterball.png',
+  '/sprites/generated/heroes/hellraiser/female-cenobite.png',
+  '/sprites/generated/heroes/hellraiser/kirsty.png',
+  '/sprites/generated/heroes/hellraiser/julia-cotton.png',
+  '/sprites/generated/heroes/hellraiser/joey-summerskill.png',
+  '/sprites/generated/bosses/hellraiser/skinless-frank-cotton.png',
+  '/sprites/generated/bosses/hellraiser/eremite-puzzle-guardian.png',
+  '/sprites/generated/bosses/hellraiser/labyrinth-chain-corridor.png',
+  '/sprites/generated/bosses/hellraiser/channard-cenobite.png',
+  '/sprites/generated/bosses/hellraiser/the-engineer.png',
+  '/sprites/generated/bosses/hellraiser/leviathan-diamond.png',
+  '/sprites/generated/heroes/aural-vampire/exo-chika-av.png',
+  '/sprites/generated/heroes/aural-vampire/raveman-av.png',
+  '/sprites/generated/heroes/little-big/ilya-prusikin-lb.png',
+  '/sprites/generated/heroes/little-big/sonya-tayurskaya-lb.png',
+  '/sprites/generated/heroes/karune-cal/karune-cal-avatar.png',
+  '/sprites/generated/heroes/karune-cal/calcium-endoskeleton.png'
+];
 
 assert(dlcSource.includes("BASE_GAME_UNIVERSES = ['Nexus de Convergence']"), 'Base OC universe must remain Nexus de Convergence.');
 assert(dlcSource.includes('DEFAULT_HIDDEN_UNIVERSES = getDlcUniverseKeys()'), 'DLC universes must be hidden by default.');
+assert(REQUESTED_UNIVERSE_WAVE.length === expectedRequestedUniverseWave.length, 'The requested anime, creator, hero, and kaiju wave must contain the expected universes.');
+assert(new Set(REQUESTED_UNIVERSE_WAVE.map(entry => entry.universe)).size === REQUESTED_UNIVERSE_WAVE.length, 'The requested universe wave must not contain duplicate universe names.');
+expectedRequestedUniverseWave.forEach(universe => {
+  const entry = REQUESTED_UNIVERSE_WAVE.find(candidate => candidate.universe === universe);
+  assert(entry, `Missing requested universe ${universe}.`);
+  assert(entry.hero?.length === 3 && entry.allies?.length === 2, `${universe} must expose three playable signatures.`);
+  assert(entry.monsters?.length === 3 && entry.bosses?.length === 2 && (entry.worldBoss || entry.boss), `${universe} must expose a complete threat roster.`);
+  assert(entry.gear?.length === 3 && entry.event?.length === 5, `${universe} must expose three gear pieces and one lore event.`);
+  assert(entry.stageVariants?.length === 2, `${universe} must expose three distinct stages including the primary stage.`);
+});
 
 expectedOcHeroIds.forEach(heroId => {
   assert(heroesSource.includes(`id: '${heroId}'`), `Missing OC hero ${heroId}.`);
@@ -111,13 +309,78 @@ expectedOcOriginLocks.forEach(lockId => {
 assert(ocCampaignSource.includes('export const OC_ORIGIN_LOCKS') && hubSource.includes('oc-origin-locks-track'), 'The six Origin Locks must remain centralized and visible in the OC chronicle.');
 assert((ocCampaignSource.match(/enemyRosterExclusive: true/g) || []).length === expectedOcOriginLocks.length, 'Every OC operation must keep an exclusive lore roster.');
 assert(gameCanvasSource.includes('stage.enemyRosterExclusive') && gameCanvasSource.includes('const missionRoster'), 'GameCanvas must enforce exclusive mission rosters when requested.');
-assert(spriteChecklistSource.includes('[ ] Double ideal de Marrow') && spriteChecklistSource.includes('[ ] Matrice de Substitution'), 'Deferred OC sprite generation must remain visible in the conversion checklist.');
+assert(spriteChecklistSource.includes('[ ] Double ideal de Marrow'), 'Deferred Marrow double generation must remain visible in the conversion checklist.');
+assert(spriteChecklistSource.includes('[x] Matrice de Substitution'), 'The completed Matrice de Substitution sheet must remain visible in the conversion checklist.');
+assert(manifestOutputs.has('/sprites/generated/bosses/nexus-de-convergence/matrice-de-substitution.png'), 'Missing Matrice de Substitution OpenAI sprite.');
+[
+  '/sprites/generated/heroes/tomba/tomba-hero.png',
+  '/sprites/generated/heroes/tomba/charles-tomba.png',
+  '/sprites/generated/heroes/tomba/tabby-tomba.png',
+  '/sprites/generated/bosses/tomba/koma-pig-patrol.png',
+  '/sprites/generated/bosses/tomba/biting-plant-cluster.png',
+  '/sprites/generated/bosses/tomba/needlegator-ravine-pack.png',
+  '/sprites/generated/bosses/tomba/fire-evil-pig.png',
+  '/sprites/generated/bosses/tomba/stormy-evil-pig.png',
+  '/sprites/generated/bosses/tomba/real-evil-pig.png'
+].forEach(output => {
+  assert(manifestOutputs.has(output), `Missing Tomba OpenAI sprite ${output}.`);
+});
+assert(spriteChecklistSource.includes('[x] Trois plaquettes heros OpenAI: Tomba, Charles et Tabby'), 'The completed Tomba hero batch must remain visible in the conversion checklist.');
+assert(spriteChecklistSource.includes('[x] Six plaquettes ennemis / boss OpenAI: Koma Pig, Biting Plant, Needlegator, Fire Evil Pig, Stormy Evil Pig et Real Evil Pig'), 'The completed Tomba threat batch must remain visible in the conversion checklist.');
+expectedSupplementalOpenAiSpriteOutputs.forEach(output => {
+  assert(manifestOutputs.has(output), `Missing supplemental OpenAI sprite ${output}.`);
+});
+assert(spriteChecklistSource.includes('63 nouvelles plaquettes 4 colonnes x 4 lignes'), 'The supplemental OpenAI sprite batch must remain documented in the conversion checklist.');
+assert(spriteChecklistSource.includes('[ ] The Grim Knight: generation OpenAI bloquee'), 'The deferred Grim Knight sprite must remain explicit instead of receiving a false substitute.');
 expectedChuckySpriteOutputs.forEach(output => {
   assert(manifestOutputs.has(output), `Missing Chucky OpenAI sprite ${output}.`);
+  assert(spriteReferenceSource.includes(output), `Missing Chucky reference trace for ${output}.`);
+});
+expectedChuckyExpansionRoster.forEach(name => {
+  assert(loreAccuratePacksSource.includes(name), `Missing Chucky incarnation ${name}.`);
 });
 assert(enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/chucky.png'") && enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/tiffany.png'"), 'Chucky and Tiffany doll bosses must use their dedicated OpenAI sheets.');
 assert(rendererSource.includes("Chucky: '/backgrounds/chucky-play-pals-breach-openai-v2.png'"), 'Chucky stages must use the dedicated Play Pals Breach background.');
-assert(spriteChecklistSource.includes('[ ] Tiffany Valentine humaine') && spriteChecklistSource.includes('quatre echecs OpenAI 504') && spriteChecklistSource.includes('cinquieme generation bloquee'), 'Deferred human Tiffany generation must remain visible in the conversion checklist.');
+assert(spriteChecklistSource.includes('[x] Vingt-quatre nouvelles plaquettes Chucky') && spriteChecklistSource.includes('[x] Les trois equivalents en corps de poupee Tiffany') && spriteChecklistSource.includes('Buddi Chucky du remake 2019'), 'The completed Chucky expansion must remain visible in the conversion checklist.');
+expectedStargateSpriteOutputs.forEach(output => {
+  assert(manifestOutputs.has(output), `Missing Stargate OpenAI sprite ${output}.`);
+  assert(spriteReferenceSource.includes(output), `Missing Stargate reference trace for ${output}.`);
+});
+expectedStygianInquisitionSpriteOutputs.forEach(output => {
+  assert(manifestOutputs.has(output), `Missing Stygian Inquisition OpenAI sprite ${output}.`);
+  assert(spriteReferenceSource.includes(output), `Missing Stygian Inquisition reference trace for ${output}.`);
+});
+[
+  'The Auditor (Judgment)',
+  'The Assessor (Judgment)',
+  'The Jury (Judgment)',
+  'The Cleaners (Judgment)',
+  'The Butcher (Judgment)',
+  'The Surgeon (Judgment)'
+].forEach(name => {
+  assert(loreAccuratePacksSource.includes(name), `Missing Stygian Inquisition entity ${name}.`);
+  assert(featuredUniverseSource.includes(name), `Missing Stygian Inquisition lore entry ${name}.`);
+});
+assert(manifestOutputs.has('/sprites/generated/bosses/hellraiser/surgeon-cenobite.png'), 'The Hellseeker Surgeon Cenobite sprite must remain available.');
+assert(spriteChecklistSource.includes('Le Surgeon de Judgment reste distinct du Surgeon Cenobite'), 'The two Surgeon incarnations must remain explicitly separated in the checklist.');
+assert(loreAccuratePacksSource.includes("hero('bratac', 'Master Bra\\'tac'") && characterPlaquesSource.includes('bratac:'), 'Master Bra tac must remain playable and documented.');
+assert(enemiesSource.includes("name: 'Anubis Jackal Guard (1994)'") && enemiesSource.includes("weapon: 'kull_blaster'"), 'The 1994 Jackal Guard and Anubis Kull Warrior must remain separate canon entities.');
+assert(spriteChecklistSource.includes('Validation technique: 5 plaquettes transparentes, 16/16 cellules non vides'), 'The completed Stargate batch must remain documented in the conversion checklist.');
+expectedDandadanSpriteOutputs.forEach(output => {
+  assert(manifestOutputs.has(output), `Missing Dandadan OpenAI sprite ${output}.`);
+  assert(spriteReferenceSource.includes(output), `Missing Dandadan reference trace for ${output}.`);
+});
+assert(loreAccuratePacksSource.includes("hero('jiji_dandadan', 'Jiji'") && loreAccuratePacksSource.includes("hero('seiko_dandadan', 'Seiko Ayase'") && loreAccuratePacksSource.includes("hero('turbo_granny_cat', 'Turbo Granny - Maneki-neko'"), 'Jiji, Seiko, and Turbo Granny cat must remain playable Dandadan signatures.');
+assert(loreAccuratePacksSource.includes('momo_ayase: loadout') && loreAccuratePacksSource.includes('oken_dandadan: loadout') && loreAccuratePacksSource.includes('aira_dandadan: loadout'), 'The three original Dandadan signatures must keep their lore-specific loadouts.');
+assert(spriteChecklistSource.includes('Validation technique: 6 plaquettes transparentes, 16/16 cellules non vides'), 'The completed Dandadan character batch must remain documented in the conversion checklist.');
+expectedFrenchComedySpriteOutputs.forEach(output => {
+  assert(manifestOutputs.has(output), `Missing French comedy OpenAI sprite ${output}.`);
+  assert(spriteReferenceSource.includes(output), `Missing French comedy reference trace for ${output}.`);
+});
+assert(expandedUniversesSource.includes("hero: ['inconnus_trio', 'Pascal Legitimus'") && expandedUniversesSource.includes("['bernard_inconnus', 'Bernard Campan'") && expandedUniversesSource.includes("['didier_inconnus', 'Didier Bourdon'"), 'Les Inconnus must expose the three named comedians without replacing their save-compatible IDs.');
+assert(expandedUniversesSource.includes("hero: ['pierre_rrr', 'Pierre - Chef des Cheveux Propres'") && expandedUniversesSource.includes("['chef_cheveux_sales', 'Tonton - Chef des Cheveux Sales'"), 'RRRrrrr!!! must keep its exact clean-hair and dirty-hair identities.');
+assert(loreAccuratePacksSource.includes('inconnus_trio: loadout') && loreAccuratePacksSource.includes('pierre_rrr: loadout') && loreAccuratePacksSource.includes('odile_deray: loadout'), 'The French comedy signatures must keep their lore-specific loadouts.');
+assert(spriteChecklistSource.includes('[x] Les Inconnus - trio principal OpenAI') && spriteChecklistSource.includes('[x] RRRrrrr!!! - trio principal OpenAI') && spriteChecklistSource.includes('[x] La Cite de la Peur - trio principal OpenAI'), 'The three completed French comedy batches must remain documented in the conversion checklist.');
 expectedFeaturedUniverses.forEach(universe => {
   const universeEntries = (manifest.entries || []).filter(entry => entry.universe === universe);
   const visualEntries = (featuredVisualManifest.entries || []).filter(entry => entry.universe === universe);
@@ -126,7 +389,8 @@ expectedFeaturedUniverses.forEach(universe => {
   assert(count('hero') >= 3, `${universe} must expose at least three playable characters.`);
   assert(count('enemy') >= 3, `${universe} must expose at least three canon threats.`);
   assert(count('boss') >= 3, `${universe} must expose two bosses and one world boss.`);
-  assert(count('item') === 9, `${universe} must expose three gear, one event, and five melee item visuals.`);
+  const expectedItemCount = universe === 'Hellraiser' ? 15 : 9;
+  assert(count('item') === expectedItemCount, `${universe} must expose the expected gear, event, and melee item visuals.`);
   assert(visualEntries.filter(entry => entry.kind === 'universe-icon').length === 1, `${universe} must expose one dedicated universe icon route.`);
   assert(visualEntries.filter(entry => entry.kind === 'stage-backdrop').length === 3, `${universe} must expose dedicated RPG, Tactics, and Smash backdrop routes.`);
 });
@@ -163,6 +427,15 @@ assert(appSource.includes('activeStage.finalGameBoss') && !appSource.includes('a
 assert(tacticsBattlefieldsSource.includes('stage.finalGameBoss'), 'Tactics battlefields must recognize metadata-based final boss arenas.');
 assert(hubSource.includes('completedStages={completedStages}'), 'Portal screen must receive progression to hide future chapter banners.');
 assert(hubSource.includes("{ id: 'race'") && hubSource.includes('<RaceMode'), 'Hub must expose the playable Race/Kart tab.');
+assert(hubSource.includes("{ id: 'fighter'") && hubSource.includes('<FighterMode'), 'Hub must expose the standalone A.R.C.A. Fighter tab.');
+assert(hubSource.includes("isUniverseVisible(hero.universe) && !isAssetDisabled('heroes', hero.id)"), 'Fighter roster must respect admin universe and hero visibility.');
+assert(fighterModeSource.includes('new EngineFighter') && fighterModeSource.includes('fighter-touch-controls'), 'Fighter screen must instantiate its engine and expose responsive controls.');
+assert(fighterModeSource.includes("triggerPlayerAction('tag'") && fighterModeSource.includes("['1', '2', '3']"), 'Fighter screen must expose manual three-slot tag controls.');
+assert(fighterEngineSource.includes('fighters: playerHeroes.slice(0, 3)') && fighterEngineSource.includes('activeIndex: 0'), 'Fighter engine must keep one active combatant in a three-signature cell.');
+assert(fighterEngineSource.includes('requestTag(side, index, forced = false)') && fighterEngineSource.includes("this.requestTag(side, next.index, true)"), 'Fighter engine must support manual and forced K.O. replacements.');
+assert(fighterEngineSource.includes('guardBreak') && fighterEngineSource.includes('comboWindow') && fighterEngineSource.includes('meterCost: 100'), 'Fighter engine must retain guard break, combos, and rupture meter rules.');
+assert(fighterEngineSource.includes('spawnProjectile') && fighterEngineSource.includes('crouching') && fighterEngineSource.includes('targetHalfHeight'), 'Fighter engine must retain ranged attacks and crouch evasion.');
+assert(hubSource.includes('recordFighterMatch') && hubSource.includes('fighterCareer'), 'Fighter results must feed long-term progression and career records.');
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
 assert(raceEngineSource.includes('RACE_ASSETS') && raceEngineSource.includes('arca-mirelle-kart-directions.png'), 'Race engine must use the Mirelle kart sprite sheet assets.');
@@ -447,17 +720,25 @@ console.log(JSON.stringify({
   ocThreatSprites: expectedOcEnemyNames.length,
   ocProceduralThreats: expectedOcProceduralThreats.length,
   ocOriginLocks: expectedOcOriginLocks.length,
-  ocDeferredSprites: expectedOcProceduralThreats.length,
+  ocDeferredSprites: expectedOcDeferredSprites.length,
   ocItemSprites: expectedOcItemIds.length,
   chuckyOpenAiSprites: expectedChuckySpriteOutputs.length,
-  chuckyDeferredSprites: 1,
+  chuckyExpansionIncarnations: expectedChuckyExpansionRoster.length,
+  chuckyDeferredSprites: 0,
   chuckyUniverseBackground: 'play-pals-breach-openai-v2',
+  stargateOpenAiSprites: expectedStargateSpriteOutputs.length,
+  stygianInquisitionOpenAiSprites: expectedStygianInquisitionSpriteOutputs.length,
+  dandadanOpenAiSprites: expectedDandadanSpriteOutputs.length,
+  frenchComedyOpenAiSprites: expectedFrenchComedySpriteOutputs.length,
   featuredUniverses: expectedFeaturedUniverses.length,
+  supplementalOpenAiSprites: expectedSupplementalOpenAiSpriteOutputs.length,
   featuredVisuals: featuredVisualManifest.counts,
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',
   factionArcCompletion: 'expanded',
+  fighterMode: 'playable-hub-tab',
+  fighterGameplay: ['flat-arena', 'one-active-fighter', 'three-slot-tag', 'guard-break', 'combos', 'specials', 'projectiles', 'crouch', 'ai-difficulties'],
   raceMode: 'playable-hub-tab',
   raceGameplay: ['laps', 'checkpoints', 'drift', 'boost', 'items', 'hazards', 'ai-rivals'],
   racePilotSprite: 'mirelle-kart-openai-sheet',

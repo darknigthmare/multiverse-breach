@@ -181,10 +181,10 @@ export const ENEMIES_DB = {
   },
   'Stargate': {
     monsters: [
-      { name: 'Jaffa Serpent Guard', hp: 95, atk: 9, spd: 4, color: '#f1c40f', weapon: 'staff' },
-      { name: 'Replicator Insect Drone', hp: 60, atk: 12, spd: 7, color: '#95a5a6', weapon: 'bite' },
-      { name: 'Anubis Jaffa Guard', hp: 100, atk: 10, spd: 4, color: '#2c3e50', weapon: 'staff_cannon' },
-      { name: 'Kull Warrior Prototype', hp: 135, atk: 14, spd: 4, color: '#1f1f24', weapon: 'kull_blaster' },
+      { name: 'Jaffa Serpent Guard', hp: 95, atk: 9, spd: 4, color: '#f1c40f', weapon: 'ma_tok_staff', spriteSource: '/sprites/generated/bosses/stargate/jaffa-serpent-guard.png' },
+      { name: 'Replicator Insect Drone', hp: 60, atk: 12, spd: 7, color: '#95a5a6', weapon: 'replicator_claws', spriteSource: '/sprites/generated/bosses/stargate/replicator-insect-drone.png' },
+      { name: 'Anubis Jackal Guard (1994)', hp: 100, atk: 10, spd: 4, color: '#2c3e50', weapon: 'jackal_staff', spriteSource: '/sprites/generated/bosses/stargate/anubis-jackal-guard-1994.png' },
+      { name: 'Kull Warrior Prototype', hp: 135, atk: 14, spd: 4, color: '#1f1f24', weapon: 'kull_blaster', spriteSource: '/sprites/generated/bosses/stargate/kull-warrior-prototype.png' },
       { name: 'Ashrak Assassin', hp: 85, atk: 15, spd: 7, color: '#6d4c41', weapon: 'stealth_blade' }
     ],
     bosses: [
@@ -259,7 +259,7 @@ export const ENEMIES_DB = {
   },
   'Yu-Gi-Oh': {
     monsters: [
-      { name: 'Kuriboh Shield', hp: 50, atk: 4, spd: 6, color: '#795548', weapon: 'bash' },
+      { name: 'Kuriboh', hp: 50, atk: 4, spd: 6, color: '#795548', weapon: 'multiply_guard' },
       { name: 'Celtic Guardian Warrior', hp: 90, atk: 11, spd: 5, color: '#27ae60', weapon: 'sword' },
       { name: 'Red-Eyes Baby Dragon', hp: 80, atk: 12, spd: 6, color: '#17202a', weapon: 'fire' }
     ],
@@ -746,7 +746,7 @@ const CANON_ENEMY_EXPANSION = {
     ],
     bosses: [
       { name: 'Red-Eyes Black Dragon', hp: 600, atk: 24, spd: 6, color: '#111317', weapon: 'inferno_fire', special: 'Inferno Fire Blast' },
-      { name: 'Exodia Forbidden One', hp: 800, atk: 30, spd: 3, color: '#d4af37', weapon: 'obliteration', special: 'Obliterate the Field' }
+      { name: 'Exodia the Forbidden One', hp: 800, atk: 30, spd: 3, color: '#d4af37', weapon: 'obliteration', special: 'Obliterate the Field' }
     ]
   },
   Discworld: {

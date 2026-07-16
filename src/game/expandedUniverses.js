@@ -1,4 +1,5 @@
 import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE, FEATURED_UNIVERSE_PACKS } from './featuredUniversePacks';
+import { REQUESTED_UNIVERSE_WAVE } from './requestedUniverseWave';
 
 const EXPANDED_STAGE_START_ID = 39;
 
@@ -1192,10 +1193,16 @@ export const EXPANDED_UNIVERSES = [
     hero: { id: 'red_blood_cell', name: 'Red Blood Cell AE3803', cat: 'marine', color: '#e74c3c' },
     allies: [
       { id: 'white_blood_cell', name: 'White Blood Cell U-1146', cat: 'slayer', color: '#ecf0f1' },
-      { id: 'platelet_cells', name: 'Platelet Squad', cat: 'tactical', color: '#f6d365' }
+      { id: 'platelet_cells', name: 'Platelet Squad', cat: 'tactical', color: '#f6d365' },
+      { id: 'red_blood_cell_courier_ae3803', name: 'Red Blood Cell Courier AE3803', cat: 'tactical', color: '#e74c3c', weapon: 'oxygen delivery box' },
+      { id: 'white_blood_cell_long_hair', name: 'White Blood Cell Long-Hair Defender', cat: 'slayer', color: '#ecf0f1', weapon: 'immune baton and knife' },
+      { id: 'white_blood_cell_short_hair', name: 'White Blood Cell Short-Hair Defender', cat: 'slayer', color: '#ecf0f1', weapon: 'immune baton and knife' },
+      { id: 'neutrophil_u1146_combat', name: 'Neutrophil U-1146 Combat', cat: 'slayer', color: '#dfe6e9', weapon: 'neutrophil knife' },
+      { id: 'platelet_squad_leader', name: 'Platelet Squad Leader', cat: 'tactical', color: '#f6d365', weapon: 'repair net and clot patch' },
+      { id: 'macrophage_cleaner', name: 'Macrophage Cleaner', cat: 'tactical', color: '#f8eadf', weapon: 'cleanup sweep' }
     ],
     monsters: ['Pneumococcus Germ', 'Cedar Pollen Allergen', 'Cancer Cell Scout'],
-    bosses: ['Influenza Virus Swarm', 'Killer T Cell Drill'],
+    bosses: ['Influenza Virus Swarm', 'Killer T Cell Drill', { name: 'Cancer Cell True Form', weapon: 'tendril claws', special: 'Uncontrolled Cellular Proliferation' }],
     worldBoss: 'Sepsis Breach',
     gear: [
       ['caw_oxygen_box', 'Oxygen Delivery Box', 'Caisse oxygene', { hp: 80 }],
@@ -1892,8 +1899,8 @@ export const EXPANDED_UNIVERSES = [
     { key: 'chappie', universe: 'Chappie', mediaType: 'movie', faction: 'sciFi', mode: 'Tactics', difficulty: 'Hard', titleFr: 'Chappie', stage: 'Johannesburg Scout AI Lab', boss: 'MOOSE Weapons Platform', hero: ['chappie_ai', 'Chappie', 'hacker'], allies: [['deon_chappie', 'Deon Wilson', 'tactical'], ['yolandi_chappie', 'Yolandi', 'marine']], theme: 'learning robot consciousness, police scouts, criminal crews, and corporate weapons platforms', motif: 'facility', colors: ['#20272b', '#050607', '#8de8ff'] },
     { key: 'gremlins', universe: 'Gremlins', mediaType: 'movie', faction: 'horror', mode: 'Smash', difficulty: 'Medium', titleFr: 'Gremlins', stage: 'Kingston Falls Midnight Rules', boss: 'Stripe Gremlin Swarm', hero: ['gizmo_gremlins', 'Gizmo', 'hacker'], allies: [['billy_peltzer', 'Billy Peltzer', 'tactical'], ['kate_gremlins', 'Kate Beringer', 'marine']], theme: 'mogwai rules, midnight chaos, multiplying gremlins, and small-town creature mayhem', motif: 'hauntedset', colors: ['#142415', '#020402', '#7aff60'] },
     { key: 'rocky_horror', universe: 'Rocky Horror Picture Show', mediaType: 'movie', faction: 'arcane', mode: 'RPG', difficulty: 'Hard', titleFr: 'Rocky Horror Picture Show', stage: 'Frankenfurter Castle Floor Show', boss: 'Transylvanian Time Warp', hero: ['frank_n_furter', 'Frank-N-Furter', 'horror'], allies: [['janet_rhps', 'Janet Weiss', 'tactical'], ['rocky_rhps', 'Rocky Horror', 'slayer']], theme: 'glam sci-fi castle, theatrical horror, laboratory creation, and midnight musical ritual', motif: 'hauntedset', colors: ['#240b28', '#050106', '#ff5cff'] },
-    { key: 'les_inconnus', universe: 'Les Inconnus', mediaType: 'series', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Les Inconnus', stage: 'Sketch TV Parody Breach', boss: 'Prime Time Absurdity', hero: ['inconnus_trio', 'Le Trio Inconnu', 'hacker'], allies: [['bernard_inconnus', 'Bernard', 'tactical'], ['didier_inconnus', 'Didier', 'slayer']], theme: 'French sketch comedy, TV parody, social satire, and absurd catchphrase energy', motif: 'arcanecity', colors: ['#232323', '#040404', '#ffd15c'] },
-    { key: 'rrrrrrr', universe: 'RRRrrrr!!!', mediaType: 'movie', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'RRRrrrr!!!', stage: 'Age de Pierre Shampooing', boss: 'Premier Crime Tribal', hero: ['pierre_rrr', 'Pierre', 'slayer'], allies: [['guy_rrr', 'Guy', 'tactical'], ['chef_cheveux_sales', 'Chef Cheveux Sales', 'hacker']], theme: 'prehistoric comedy, rival hair tribes, first murder mystery, and absurd stone-age logic', motif: 'wasteland', colors: ['#302214', '#080503', '#f0b45b'] },
+    { key: 'les_inconnus', universe: 'Les Inconnus', mediaType: 'series', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Les Inconnus', stage: 'Sketch TV Parody Breach', boss: 'Prime Time Absurdity', hero: ['inconnus_trio', 'Pascal Legitimus', 'hacker'], allies: [['bernard_inconnus', 'Bernard Campan', 'tactical'], ['didier_inconnus', 'Didier Bourdon', 'slayer']], theme: 'French sketch comedy, TV parody, social satire, and absurd catchphrase energy', motif: 'arcanecity', colors: ['#232323', '#040404', '#ffd15c'] },
+    { key: 'rrrrrrr', universe: 'RRRrrrr!!!', mediaType: 'movie', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'RRRrrrr!!!', stage: 'Age de Pierre Shampooing', boss: 'Premier Crime Tribal', hero: ['pierre_rrr', 'Pierre - Chef des Cheveux Propres', 'slayer'], allies: [['guy_rrr', 'Guy', 'tactical'], ['chef_cheveux_sales', 'Tonton - Chef des Cheveux Sales', 'hacker']], theme: 'prehistoric comedy, rival hair tribes, first murder mystery, and absurd stone-age logic', motif: 'wasteland', colors: ['#302214', '#080503', '#f0b45b'] },
     { key: 'cite_peur', universe: 'La Cite de la Peur', mediaType: 'movie', faction: 'horror', mode: 'RPG', difficulty: 'Medium', titleFr: 'La Cite de la Peur', stage: 'Cannes Projection Slasher', boss: 'Odile Deray Premiere Trap', hero: ['odile_deray', 'Odile Deray', 'tactical'], allies: [['simon_jeremi', 'Simon Jeremi', 'hacker'], ['serge_karamazov', 'Serge Karamazov', 'slayer']], theme: 'French comedy thriller, film festival murders, meta-cinema jokes, and chaotic publicity tactics', motif: 'hauntedset', colors: ['#261414', '#040202', '#ff5757'] },
     { key: 'defiance', universe: 'Defiance', mediaType: 'series', faction: 'sciFi', mode: 'Tactics', difficulty: 'Hard', titleFr: 'Defiance', stage: 'Votan Frontier Siege', boss: 'Arkfall War Engine', hero: ['nolan_defiance', 'Joshua Nolan', 'marine'], allies: [['irisa_defiance', 'Irisa', 'slayer'], ['datak_tarr', 'Datak Tarr', 'tactical']], theme: 'post-alien-war frontier towns, Votan cultures, arkfall tech, and uneasy alliances', motif: 'wasteland', colors: ['#1e2b2b', '#030606', '#58d6c7'] },
     { key: 'mars_attacks', universe: 'Mars Attacks', mediaType: 'movie', faction: 'sciFi', mode: 'Smash', difficulty: 'Hard', titleFr: 'Mars Attacks', stage: 'Ack Ack Capitol Invasion', boss: 'Martian Supreme Commander', hero: ['byron_mars', 'Byron Williams', 'marine'], allies: [['ritchie_mars', 'Richie Norris', 'hacker'], ['nathalie_mars', 'Nathalie Lake', 'tactical']], theme: 'Martian rayguns, cruel comedy invasion, flying saucers, and yodel-powered reversal', motif: 'arcanecity', colors: ['#10251b', '#020503', '#39ff66'] },
@@ -1976,7 +1983,27 @@ export const EXPANDED_UNIVERSES = [
     { key: 'zombies_neighbors', universe: 'Zombies Ate My Neighbors', mediaType: 'game', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Zombies Ate My Neighbors', stage: 'Suburban Monster Rescue', boss: 'Giant Baby Chainsaw Panic', hero: ['zeke_zamn', 'Zeke', 'slayer'], allies: [['julie_zamn', 'Julie', 'tactical'], ['neighbor_rescue', 'Neighbor Rescue', 'hacker']], theme: 'suburban monster chaos, water guns, rescue runs, B-movie enemies, and arcade panic', motif: 'hauntedset', colors: ['#172b18', '#030603', '#7dff4f'] },
     { key: 'wrong_turn', universe: 'Wrong Turn', mediaType: 'movie', faction: 'horror', mode: 'Tactics', difficulty: 'Very Hard', titleFr: 'Wrong Turn', stage: 'Backwoods Trap Ambush', boss: 'Mountain Clan Butcher', hero: ['jessie_wrongturn', 'Jessie Burlingame', 'tactical'], allies: [['chris_wrongturn', 'Chris Flynn', 'marine'], ['carly_wrongturn', 'Carly', 'hacker']], theme: 'backwoods traps, brutal survival, wrong roads, and isolated forest ambushes', motif: 'wasteland', colors: ['#171f10', '#030402', '#b5d15a'] },
     { key: 'kyary', universe: 'Kyary Pamyu Pamyu', mediaType: 'music', faction: 'arcane', mode: 'Smash', difficulty: 'Medium', titleFr: 'Kyary Pamyu Pamyu', stage: 'Harajuku Candy Pop Rift', boss: 'Kawaii Nightmare Parade', hero: ['kyary_avatar', 'Kyary Avatar', 'hacker'], allies: [['ponpon_dancer', 'PonPon Dancer', 'slayer'], ['fashion_spirit_kyary', 'Fashion Spirit', 'tactical']], theme: 'Harajuku surreal pop, candy colors, fashion monsters, and dreamlike music-video logic', motif: 'arcanecity', colors: ['#35143a', '#07020a', '#ff78df'] },
-    { key: 'karune_cal', universe: 'Karune Cal', mediaType: 'music', faction: 'cyber', mode: 'RPG', difficulty: 'Medium', titleFr: 'Karune Cal', stage: 'Synthetic Vocal Archive', boss: 'Resonance Voice Core', hero: ['karune_cal_avatar', 'Karune Cal Avatar', 'hacker'], allies: [['vocal_patch_cal', 'Vocal Patch', 'tactical'], ['signal_dancer_cal', 'Signal Dancer', 'slayer']], theme: 'synthetic vocal energy, fan archive echoes, digital stages, and fragile identity signals', motif: 'facility', colors: ['#151c2d', '#030407', '#8ed6ff'] },
+    {
+      key: 'karune_cal',
+      universe: 'Karune Cal',
+      mediaType: 'music',
+      faction: 'horror',
+      mode: 'RPG',
+      difficulty: 'Very Hard',
+      title: 'Calne Ca (Karune Ca)',
+      titleFr: 'Calne Ca (Karune Ca)',
+      stage: 'Bacterial Contamination Machine Archive',
+      boss: 'Calne Ca Mechanized Casing',
+      hero: ['karune_cal_avatar', 'Calne Ca', 'horror'],
+      allies: [['calcium_endoskeleton', 'Calcium Endoskeleton', 'slayer'], ['chibi_cal_san', 'Chibi Cal-san', 'hacker']],
+      monsters: ['Magnesium Six-Legged Form', 'Isopod Head Parasite', 'Bacterial Contamination Husk'],
+      bosses: ['Saikin Osen Organic Form', 'Calcium Exposed Endoskeleton'],
+      gear: [['calne_isopod', 'Calne Ca Head Isopod', 'Isopode cranien de Calne Ca', { atk: 8, def: 6 }], ['calcium_tendon', 'Calcium Metal Tendon', 'Tendon metallique de Calcium', { atk: 10, spd: 1 }], ['miku_casing_fragment', 'Miku-Shaped Casing Fragment', 'Fragment de carapace en forme de Miku', { hp: 65, def: 5 }]],
+      event: ['evt_calne_casing_split', 'Mechanized Casing Split', 'Ouverture de la carapace mecanisee', 'Calne Ca opens the humanoid casing and exposes Calcium for a precise mechanical strike.', 'Calne Ca ouvre sa carapace humanoide et expose Calcium pour une frappe mecanique precise.'],
+      theme: 'Deinos Calne Ca derivative, a Miku-shaped casing around Calcium, exposed machine tendons, isopods, and bacterial contamination body horror',
+      motif: 'facility',
+      colors: ['#171a22', '#030304', '#65d6e8']
+    },
     { key: 'sub_urban', universe: 'Sub Urban', mediaType: 'music', faction: 'horror', mode: 'RPG', difficulty: 'Hard', titleFr: 'Sub Urban', stage: 'Cradles Dollhouse Breach', boss: 'Freakshow Shadow Ringmaster', hero: ['sub_urban_avatar', 'Sub Urban Avatar', 'horror'], allies: [['cradles_echo', 'Cradles Echo', 'hacker'], ['freak_dancer_sub', 'Freak Dancer', 'slayer']], theme: 'dark pop, dollhouse imagery, circus unease, and glitchy emotional nightmares', motif: 'hauntedset', colors: ['#201326', '#040205', '#b86cff'] },
     { key: 'billie_eilish', universe: 'Billie Eilish', mediaType: 'music', faction: 'horror', mode: 'RPG', difficulty: 'Hard', titleFr: 'Billie Eilish', stage: 'Bad Guy Neon Bedroom', boss: 'Ocean Eyes Nightmare', hero: ['billie_avatar', 'Billie Avatar', 'hacker'], allies: [['neon_shadow_billie', 'Neon Shadow', 'horror'], ['whisper_beat_billie', 'Whisper Beat', 'tactical']], theme: 'whisper pop, neon dread, dreamlike rooms, and quiet bass-heavy menace', motif: 'hauntedset', colors: ['#101812', '#020302', '#86ff61'] },
     { key: 'bella_poarch', universe: 'Bella Poarch', mediaType: 'music', faction: 'cyber', mode: 'Smash', difficulty: 'Medium', titleFr: 'Bella Poarch', stage: 'Build-a-Breach Doll Factory', boss: 'Inferno Doll Core', hero: ['bella_poarch_avatar', 'Bella Avatar', 'hacker'], allies: [['doll_guard_bella', 'Doll Guard', 'tactical'], ['inferno_dancer_bella', 'Inferno Dancer', 'slayer']], theme: 'viral pop, doll-factory rebellion, hyper-polished visuals, and social-feed glitch combat', motif: 'facility', colors: ['#2a1420', '#050203', '#ff709e'] },
@@ -1993,7 +2020,26 @@ export const EXPANDED_UNIVERSES = [
     { key: 'babymetal', universe: 'Babymetal', mediaType: 'music', faction: 'arcane', mode: 'Smash', difficulty: 'Hard', titleFr: 'Babymetal', stage: 'Fox God Metal Galaxy', boss: 'Kami Band Rift Fox', hero: ['babymetal_unit', 'Babymetal Unit', 'slayer'], allies: [['fox_god_signal', 'Fox God Signal', 'hacker'], ['kami_band_guard', 'Kami Band Guard', 'marine']], theme: 'kawaii metal, fox mythology, synchronized dance, and heavy galaxy riffs', motif: 'castle', colors: ['#1b0f18', '#030203', '#ff335f'] },
     { key: 'ladybaby', universe: 'Ladybaby', mediaType: 'music', faction: 'arcane', mode: 'Smash', difficulty: 'Medium', titleFr: 'Ladybaby', stage: 'Kawaii Metal Pop Burst', boss: 'Cute Riot Feedback', hero: ['ladybaby_unit', 'Ladybaby Unit', 'slayer'], allies: [['idol_guard_ladybaby', 'Idol Guard', 'tactical'], ['metal_cute_signal', 'Metal Cute Signal', 'hacker']], theme: 'idol metal fusion, cute chaos, heavy riffs, and bright stage absurdity', motif: 'arcanecity', colors: ['#311727', '#070304', '#ff79c8'] },
     { key: 'bigflo_oli', universe: 'Bigflo & Oli', mediaType: 'music', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Bigflo & Oli', stage: 'Toulouse Rap Storyline', boss: 'Narrative Verse Storm', hero: ['bigflo_oli_unit', 'Bigflo & Oli', 'hacker'], allies: [['toulouse_crowd', 'Toulouse Crowd', 'tactical'], ['verse_guard_bfo', 'Verse Guard', 'slayer']], theme: 'French rap storytelling, brother duo energy, city pride, and emotional verse missions', motif: 'arcanecity', colors: ['#1b2a38', '#030506', '#ffb14f'] },
-    { key: 'little_big_band', universe: 'Little Big', mediaType: 'music', faction: 'cyber', mode: 'Smash', difficulty: 'Medium', titleFr: 'Little Big', stage: 'Rave Meme Factory', boss: 'Skibidi Bass Trickster', hero: ['little_big_unit', 'Little Big Unit', 'hacker'], allies: [['rave_dancer_lb', 'Rave Dancer', 'slayer'], ['meme_signal_lb', 'Meme Signal', 'tactical']], theme: 'rave absurdity, meme choreography, hard bass, and satirical dance-floor combat', motif: 'facility', colors: ['#25143a', '#050208', '#8dff4a'] },
+    {
+      key: 'little_big_band',
+      universe: 'Little Big',
+      mediaType: 'music',
+      faction: 'cyber',
+      mode: 'Smash',
+      difficulty: 'Hard',
+      titleFr: 'Little Big',
+      stage: 'Skibidi Rave Video Set',
+      boss: 'Generation Cancellation Broadcast',
+      hero: ['ilya_prusikin_lb', 'Ilya Ilich Prusikin', 'slayer'],
+      allies: [['sonya_tayurskaya_lb', 'Sonya Tayurskaya', 'slayer'], ['danny_zuckerman_lb', 'Danny Zuckerman', 'hacker'], ['viktor_sibrinin_lb', 'Viktor Sibrinin', 'tactical']],
+      monsters: ['Skibidi Dance Double', 'Lolly Bomb Android', 'Hypnodancer Guard'],
+      bosses: ['UNO Rave Champion', 'Lobster Popstar'],
+      gear: [['littlebig_moustache', 'Ilich Stage Moustache', 'Moustache de scene d Ilich', { atk: 7, spd: 2 }], ['littlebig_uno_jacket', 'UNO Stage Jacket', 'Veste de scene UNO', { def: 6, hp: 55 }], ['littlebig_lobster_claws', 'Lobster Popstar Claws', 'Pinces Lobster Popstar', { atk: 10, hp: 35 }]],
+      event: ['evt_littlebig_skibidi', 'Skibidi Choreography Break', 'Rupture choregraphique Skibidi', 'The current Little Big lineup turns synchronized absurdity into a hard-bass knockback wave.', 'La formation actuelle de Little Big transforme une choregraphie absurde synchronisee en onde de recul hard-bass.'],
+      theme: 'Ilya Prusikin, Sonya Tayurskaya, Danny Zuckerman, Viktor Sibrinin, punk-pop-rave satire, and physical music-video choreography',
+      motif: 'facility',
+      colors: ['#25143a', '#050208', '#8dff4a']
+    },
     { key: 'the_weeknd', universe: 'The Weeknd', mediaType: 'music', faction: 'cyber', mode: 'RPG', difficulty: 'Hard', titleFr: 'The Weeknd', stage: 'After Hours Neon City', boss: 'Blinding Lights Red Suit', hero: ['weeknd_avatar', 'After Hours Avatar', 'hacker'], allies: [['neon_driver_weeknd', 'Neon Driver', 'tactical'], ['starboy_echo', 'Starboy Echo', 'slayer']], theme: 'nocturnal pop, neon city drives, red-suit imagery, and cinematic synthwave loneliness', motif: 'arcanecity', colors: ['#171326', '#030205', '#ff2f4f'] },
     { key: 'hoshi_music', universe: 'Hoshi', mediaType: 'music', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Hoshi', stage: 'Coeur Parapluie Signal', boss: 'Amour Censure Storm', hero: ['hoshi_avatar', 'Hoshi Avatar', 'hacker'], allies: [['parapluie_echo', 'Parapluie Echo', 'tactical'], ['coeur_guard_hoshi', 'Coeur Guard', 'slayer']], theme: 'French pop emotion, intimate stages, heart imagery, and sincere vocal resonance', motif: 'arcanecity', colors: ['#251b28', '#050305', '#ff8fb6'] },
     { key: 'ado', universe: 'Ado', mediaType: 'music', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Ado', stage: 'Usseewa Vocal Storm', boss: 'Show Shadow Diva', hero: ['ado_avatar', 'Ado Avatar', 'horror'], allies: [['uta_echo_ado', 'Uta Echo', 'hacker'], ['rebellion_dancer_ado', 'Rebellion Dancer', 'slayer']], theme: 'powerful vocals, rebellious silhouettes, anime-stage intensity, and shadowed pop theatre', motif: 'hauntedset', colors: ['#171327', '#030205', '#3f6dff'] },
@@ -2012,7 +2058,26 @@ export const EXPANDED_UNIVERSES = [
     { key: 'necronomicon', universe: 'Necronomicon', mediaType: 'movie', faction: 'horror', mode: 'RPG', difficulty: 'Very Hard', titleFr: 'Necronomicon', stage: 'Forbidden Book Catacomb', boss: 'Book of the Dead Avatar', hero: ['occult_reader_necro', 'Occult Reader', 'hacker'], allies: [['deadite_scribe', 'Deadite Scribe', 'horror'], ['ritual_guard_necro', 'Ritual Guard', 'tactical']], theme: 'forbidden pages, dead languages, cursed ink, and book-bound nightmare dimensions', motif: 'castle', colors: ['#1b1210', '#030202', '#c29a5a'] },
     { key: 're_animator', universe: 'Re-Animator', mediaType: 'movie', faction: 'horror', mode: 'RPG', difficulty: 'Hard', titleFr: 'Re-Animator', stage: 'Miskatonic Reagent Lab', boss: 'Reanimated Biomass Surge', hero: ['herbert_west', 'Herbert West', 'hacker'], allies: [['dan_cain', 'Dan Cain', 'tactical'], ['megan_halsey', 'Megan Halsey', 'horror']], theme: 'mad science, green reagent, medical horror, and corpses returning very incorrectly', motif: 'facility', colors: ['#142218', '#030503', '#61ff59'] },
     { key: 'digimon_celestial', universe: 'Digimon Celestial Rift', mediaType: 'manga', faction: 'arcane', mode: 'Tactics', difficulty: 'Very Hard', titleFr: 'Digimon - Faille celeste', stage: 'Digital World Angel Demon Gate', boss: 'Beelzemon Blast Mode Rupture', hero: ['angewomon_digi', 'Angewomon', 'hacker'], allies: [['lady_devimon_digi', 'LadyDevimon', 'horror'], ['beelzemon_digi', 'Beelzemon', 'slayer'], ['darcmon_digi', 'Darcmon', 'tactical']], theme: 'angel and demon Digimon, digital crests, holy arrows, and dark evolution conflicts', motif: 'castle', colors: ['#1b1835', '#030307', '#e8d7ff'] },
-    { key: 'aural_vampire', universe: 'Aural Vampire', mediaType: 'music', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Aural Vampire', stage: 'Darkwave Vampire Club', boss: 'Bloodbeat Synth Countess', hero: ['aural_vampire_avatar', 'Aural Vampire Avatar', 'horror'], allies: [['darkwave_dj_av', 'Darkwave DJ', 'hacker'], ['bloodbeat_dancer', 'Bloodbeat Dancer', 'slayer']], theme: 'darkwave club energy, vampire aesthetics, synth beats, and gothic electronic pressure', motif: 'hauntedset', colors: ['#220d18', '#040102', '#ff3d8f'] },
+    {
+      key: 'aural_vampire',
+      universe: 'Aural Vampire',
+      mediaType: 'music',
+      faction: 'horror',
+      mode: 'Smash',
+      difficulty: 'Hard',
+      titleFr: 'Aural Vampire',
+      stage: 'Vampire Ecstasy Darkwave Club',
+      boss: 'Zombie Naocchatte Procession',
+      hero: ['exo_chika_av', 'EXO-CHIKA', 'horror'],
+      allies: [['raveman_av', 'RAVEMAN', 'hacker'], ['wu_chy_av', 'Wu-CHY', 'marine'], ['higuchuuhei_av', 'Higuchuuhei', 'slayer'], ['zen_av', 'ZEN', 'hacker'], ['izu_av', 'IZU', 'marine']],
+      monsters: ['Vampire Ecstasy Mannequin', 'Razors on Backstreet Butcher', 'Darkwave Bloodline Dancer'],
+      bosses: ['Freeeze Masquerade', 'Zoltank Stage Vampire'],
+      gear: [['exo_chika_microphone', 'EXO-CHIKA Vampire Microphone', 'Micro vampirique d EXO-CHIKA', { atk: 9, spd: 1 }], ['raveman_led_mask', 'RAVEMAN LED Mask', 'Masque LED de RAVEMAN', { def: 7, spd: 2 }], ['aural_synth_module', 'Aural Vampire Synth Module', 'Module synthe Aural Vampire', { atk: 8, hp: 50 }]],
+      event: ['evt_aural_vampire_freeze', 'Freeeze Darkwave Drop', 'Drop darkwave Freeeze', 'EXO-CHIKA locks the crowd on the beat while RAVEMAN and the live band detonate the industrial sequence.', 'EXO-CHIKA fige la foule sur le rythme pendant que RAVEMAN et le groupe live declenchent la sequence industrielle.'],
+      theme: 'EXO-CHIKA vocals, RAVEMAN masked electronics, Wu-CHY bass, Higuchuuhei guitar, ZEN keyboards, IZU drums, and Japanese darkwave horror theatre',
+      motif: 'hauntedset',
+      colors: ['#220d18', '#040102', '#ff3d8f']
+    },
     {
       key: 'buckethead',
       universe: 'Buckethead',
@@ -2040,7 +2105,8 @@ export const EXPANDED_UNIVERSES = [
     },
     { key: 'korn', universe: 'Korn', mediaType: 'music', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Korn', stage: 'Nu-Metal Field Pit', boss: 'Freak on a Leash Core', hero: ['korn_avatar', 'Korn Avatar', 'horror'], allies: [['seven_string_riff', 'Seven String Riff', 'slayer'], ['bagpipe_signal', 'Bagpipe Signal', 'hacker']], theme: 'nu-metal dread, detuned riffs, cathartic screams, and mosh-pit emotional pressure', motif: 'hauntedset', colors: ['#181214', '#030202', '#b0b0b0'] },
     { key: 'marilyn_manson', universe: 'Marilyn Manson', mediaType: 'music', faction: 'horror', mode: 'RPG', difficulty: 'Very Hard', titleFr: 'Marilyn Manson', stage: 'Mechanical Animals Chapel', boss: 'Antichrist Superstar Effigy', hero: ['manson_avatar', 'Shock Rock Avatar', 'horror'], allies: [['mechanical_animal', 'Mechanical Animal', 'tactical'], ['pale_emperor_echo', 'Pale Emperor Echo', 'hacker']], theme: 'shock rock theatre, industrial glam, occult imagery, and corrupted celebrity rituals', motif: 'hauntedset', colors: ['#1f1111', '#030202', '#d9d9d9'] }
-  ])
+  ]),
+  ...makeUniverseWave(REQUESTED_UNIVERSE_WAVE)
 ];
 
 FEATURED_UNIVERSE_PACKS.forEach(pack => {
@@ -2074,7 +2140,7 @@ function makeUniverseWave(entries) {
       difficulty: entry.difficulty,
       bossName: entry.boss,
       title: { en: title, fr: titleFr },
-      desc: {
+      desc: entry.desc || {
         en: `${capitalize(entry.theme)} collide with Nexus instability through ${factionLine}.`,
         fr: `${capitalize(entry.theme)} entrent en collision avec l instabilite du Nexus via ${factionLine}.`
       },
@@ -2082,7 +2148,7 @@ function makeUniverseWave(entries) {
       allies: entry.allies.map((ally, index) => makeWaveHero(ally, index === 0 ? lightenAccent(accent) : darkenAccent(accent))),
       monsters: entry.monsters || [`${title} Rift Drone`, `${title} Breach Stalker`, `${title} Anomaly Pack`],
       bosses: entry.bosses || [`${title} Elite Guardian`, `${title} Crisis Avatar`],
-      worldBoss: entry.boss,
+      worldBoss: entry.worldBoss || entry.boss,
       gear: entry.gear || makeWaveGear(shortKey, title, titleFr),
       event: entry.event || [
         `evt_${shortKey}_breach`,
@@ -2097,7 +2163,12 @@ function makeUniverseWave(entries) {
         grid: `rgba(${hexToRgb(accent).join(', ')}, 0.28)`,
         motif: entry.motif,
         accent
-      }
+      },
+      stageVariants: (entry.stageVariants || []).map(variant => (
+        Array.isArray(variant)
+          ? { mode: variant[0], name: variant[1], difficulty: variant[2], bossName: variant[3] }
+          : variant
+      ))
     };
   });
 }
@@ -2224,7 +2295,8 @@ export function getExpandedStages() {
         mode: universe.mode,
         difficulty: universe.difficulty,
         bossName: universe.bossName,
-        loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[universe.mode],
+        loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[universe.stageName]
+          || FEATURED_STAGE_LORE[universe.universe]?.[universe.mode],
         ...rewardFor(universe)
       }]
   ));
@@ -2239,7 +2311,8 @@ export function getExpandedStages() {
         mode: variant.mode,
         difficulty: variant.difficulty || universe.difficulty,
         bossName: variant.bossName || universe.bossName,
-        loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[variant.mode],
+        loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[variant.name]
+          || FEATURED_STAGE_LORE[universe.universe]?.[variant.mode],
         ...rewardFor(stageProfile)
       };
     })

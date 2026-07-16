@@ -136,7 +136,7 @@ const main = async () => {
       available: manifestEntries.filter(entry => entry.available).length,
       missing: missingEntries.length
     },
-    entries: manifestEntries.map(({ prompt, ...entry }) => entry)
+    entries: manifestEntries.map(({ prompt: _prompt, ...entry }) => entry)
   }, null, 2), 'utf8');
 
   console.log(`Wrote ${missingEntries.length} missing visual prompts for ${FEATURED_UNIVERSE_KEYS.length} featured universes.`);

@@ -137,9 +137,9 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   Stargate: {
     faction: 'sciFi',
-    theme: 'SGC, Cheyenne Mountain, reseau de Portes, Abydos, Goa uld, Jaffa libres, naquadah, Anciens, Replicateurs et iris',
+    theme: 'SGC, Cheyenne Mountain, reseau de Portes, Abydos, Goa uld, Jaffa libres, Bra tac, gardes Serpent, Anubis, guerriers Kull, naquadah, Anciens, Replicateurs et iris',
     stageName: 'Salle de Porte SGC',
-    bossName: 'Seigneur Goa uld',
+    bossName: 'Seigneur Goa uld et garde d elite',
     worldBoss: 'Anubis Flagship Nexus'
   },
   'Half-Life': {
@@ -199,13 +199,13 @@ const CORE_UNIVERSE_SIGNATURES = {
   },
   Chucky: {
     faction: 'horror',
-    theme: 'poupee tueuse, humour noir, possession, jouets pieges et violence domestique miniature',
-    stageName: 'Atelier de jouets',
-    bossName: 'Poupee possedee'
+    theme: 'Good Guy possedes par Damballa, division d ame, variantes Scout, Buff, Colonel, Belle, Noel et vieillissement accelere; Buddi 2019 reste une continuite IA separee; Tiffany humaine, Tiffany poupee et Jennifer Tilly restent separees; les costumes adultes AU et formes Wedding Belle/brulee sont des variantes Nexus non canoniques',
+    stageName: 'Usine Play Pals et reseau Buddi fracture',
+    bossName: 'Incarnation de Charles Lee Ray'
   },
   Hellraiser: {
     faction: 'horror',
-    theme: 'configuration du Lament, chaines, Cenobites, douleur rituelle et pactes infernaux',
+    theme: 'configurations de Lemarchand, ordres cenobites de 1987 a Judgment et 2022, chaines, desir rituel et juridiction de Leviathan',
     stageName: 'Labyrinthe Cenobite',
     bossName: 'Oracle des Chaines'
   },

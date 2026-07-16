@@ -90,7 +90,8 @@ export const LORE_ACCURATE_HERO_EXPANSIONS = {
   Stargate: [
     hero('hammond', 'General Hammond', 'tactical', '#6d7d8b', 'command', 'SGC Command Mark', 'Iris Shutdown Order', 'Cheyenne Mountain Hold', 'Global Gate Authorization'),
     hero('cameron_mitchell', 'Cameron Mitchell', 'marine', '#2f4f3e', 'gun', 'F-302 Pilot Burst', 'Gate Team Push', 'Pilot Evasion Roll', 'Odyssey Fire Mission'),
-    hero('vala_mal_doran', 'Vala Mal Doran', 'hacker', '#7d5f8c', 'zat', 'Goauld Trick Shot', 'Ancient Device Scam', 'Thief Exit Plan', 'Ark of Truth Gambit')
+    hero('vala_mal_doran', 'Vala Mal Doran', 'hacker', '#7d5f8c', 'zat', 'Goauld Trick Shot', 'Ancient Device Scam', 'Thief Exit Plan', 'Ark of Truth Gambit'),
+    hero('bratac', 'Master Bra\'tac', 'tactical', '#7f8c8d', 'staff', 'Ma Tok Staff Strike', 'Rapid Staff Plasma', 'Jaffa Master Guard', 'Free Jaffa Uprising')
   ],
   'Half-Life': [
     hero('eli_vance', 'Eli Vance', 'hacker', '#5d4f42', 'terminal', 'Resistance Lab Pulse', 'Gravity Tech Insight', 'Black Mesa Mentor Guard', 'White Forest Rocket Launch'),
@@ -118,6 +119,7 @@ export const LORE_ACCURATE_HERO_EXPANSIONS = {
   ],
   'Yu-Gi-Oh': [
     hero('atem', 'Pharaoh Atem', 'tactical', '#1f1b52', 'cards', 'Duelist Command', 'Dark Magician Circle', 'Millennium Puzzle Guard', 'Mind Crush Judgment'),
+    hero('pegasus_ygo', 'Maximillion Pegasus', 'hacker', '#d7bde2', 'cards', 'Toon Summon', 'Millennium Eye Read', 'Toon World Escape', 'Relinquished Absorption'),
     hero('tea_gardner', 'Tea Gardner', 'hacker', '#f39c12', 'cards', 'Friendship Draw', 'Support Spell Boost', 'Duel Spirit Guard', 'Heart of the Team'),
     hero('mai_valentine', 'Mai Valentine', 'slayer', '#d4af37', 'cards', 'Harpie Lady Slash', 'Perfume Tactics', 'Mirror Wall Feint', 'Harpie Sisters Storm')
   ],
@@ -139,10 +141,27 @@ export const LORE_ACCURATE_HERO_EXPANSIONS = {
   Chucky: [
     hero('kyle_chucky', 'Kyle', 'tactical', '#6c7a89', 'knife', 'Foster Home Strike', 'Good Guy Factory Trap', 'Protective Dodge', 'Childs Play Rescue'),
     hero('nica_pierce', 'Nica Pierce', 'horror', '#8e6f70', 'blade', 'Possession Resist Cut', 'Wheelchair Ambush', 'Mind Split Guard', 'Cult Breakout'),
-    hero('jake_wheeler', 'Jake Wheeler', 'tactical', '#5dade2', 'bat', 'School Hall Swing', 'Doll Trap Reveal', 'Teen Survival Guard', 'Hackensack Stand')
+    hero('jake_wheeler', 'Jake Wheeler', 'tactical', '#5dade2', 'bat', 'School Hall Swing', 'Doll Trap Reveal', 'Teen Survival Guard', 'Hackensack Stand'),
+    hero('tiffany_human_bride', 'Tiffany Valentine - Human (Bride)', 'slayer', '#d8c7c2', 'knife', 'Kitchen Knife Slash', 'Aerosol Flame Burst', 'Leather Jacket Dodge', 'Damballa Bride Ritual'),
+    hero('tiffany_human_wedding', 'Tiffany Valentine - Gothic Bride', 'slayer', '#f4f1e8', 'knife', 'Bridal Knife Cut', 'Bouquet Feint', 'Veil Step Guard', 'Til Death Wedding Blaze'),
+    hero('tiffany_human_all_black_1998', 'Tiffany Valentine - All-Black Gothic (1998)', 'slayer', '#161016', 'knife', 'Black Leather Knife Cut', 'Aerosol Lighter Flash', 'Gothic Jacket Guard', 'Damballa Black Dress Ritual'),
+    hero('tiffany_voluptuous_original_au', 'Tiffany Valentine - Voluptuous Original (Adult AU)', 'slayer', '#6f1235', 'knife', 'Velvet Knife Feint', 'Handbag Weight Swing', 'Corset Stance Guard', 'Nexus Horror Glamour'),
+    hero('tiffany_leather_jacket_bride_1998', 'Tiffany Doll - Leather Jacket Bride (1998)', 'slayer', '#eee8dc', 'knife', 'Vinyl Bride Knife Cut', 'Aerosol Spark Burst', 'Black Jacket Dodge', 'Til Death Doll Ritual'),
+    hero('tiffany_dark_haired_wedding_belle_au', 'Tiffany Doll - Dark-Haired Wedding Belle (AU)', 'horror', '#eee3d7', 'knife', 'Porcelain Knife Prick', 'Belle Body Feint', 'Wedding Ribbon Guard', 'Alternate Bride Possession'),
+    hero('tiffany_burned_bald_damage_au', 'Tiffany Doll - Burned and Bald (Damage AU)', 'horror', '#5a3a2f', 'knife', 'Charred Vinyl Slash', 'Smoke Spark Burst', 'Scorched Jacket Brace', 'Damaged Damballa Return'),
+    hero('tiffany_street_siren_au', 'Tiffany Valentine - Street Siren (Adult AU)', 'slayer', '#b3132b', 'knife', 'Handbag Chain Swing', 'Pepper Spray Burst', 'Platform Heel Reversal', 'Neon Night Ambush'),
+    hero('tiffany_synthetic_companion_doll_au', 'Tiffany Valentine - Synthetic Doll (Adult AU)', 'hacker', '#d34b91', 'blade', 'Spring Handbag Strike', 'Perfume Circuit Mist', 'Articulated Kick Guard', 'Companion Protocol Override'),
+    hero('tiffany_leather_mistress_au', 'Tiffany Valentine - Leather Mistress (Adult AU)', 'slayer', '#5e1738', 'blade', 'Riding Crop Cut', 'Chain Lash Snare', 'Leather Stance Counter', 'Damballa Command Performance'),
+    hero('tiffany_street_siren_doll_au', 'Tiffany Doll - Street Siren (Adult AU)', 'slayer', '#a6192e', 'knife', 'Mini Handbag Swing', 'Pocket Spray Burst', 'Vinyl Boot Counter', 'Street Doll Ambush'),
+    hero('tiffany_synthetic_companion_doll_form_au', 'Tiffany Doll - Synthetic Companion (Adult AU)', 'hacker', '#cf4d9a', 'blade', 'Spring Purse Strike', 'Circuit Perfume Cloud', 'Toy Joint Guard', 'Wind-Up Protocol Override'),
+    hero('tiffany_leather_mistress_doll_au', 'Tiffany Doll - Leather Mistress (Adult AU)', 'slayer', '#49132d', 'blade', 'Mini Crop Slash', 'Toy Chain Snare', 'Vinyl Leather Counter', 'Damballa Doll Command'),
+    hero('jennifer_tilly_seed', 'Jennifer Tilly (Seed of Chucky)', 'tactical', '#6b4a32', 'handbag', 'Handbag Swing', 'Movie Set Flash', 'Fur Coat Brace', 'Final Girl Self-Parody'),
+    hero('jennifer_tilly_seed_glamour', 'Jennifer Tilly - Seed Glamour Costume', 'tactical', '#eee4cf', 'handbag', 'Gala Handbag Counter', 'Camera Flash Feint', 'Satin Step Guard', 'Red Carpet Escape')
   ],
   Hellraiser: [
-    hero('joey_summerskill', 'Joey Summerskill', 'horror', '#bfc9ca', 'puzzlebox', 'Dream Investigate Pulse', 'Lament Seal Twist', 'Reporter Resolve Guard', 'Boone Prophecy Break')
+    hero('joey_summerskill', 'Joey Summerskill', 'horror', '#bfc9ca', 'puzzlebox', 'Dream Investigate Pulse', 'Lament Seal Twist', 'Reporter Resolve Guard', 'Boone Prophecy Break'),
+    hero('riley_mckendry', 'Riley McKendry', 'horror', '#8f765f', 'puzzlebox', 'Configuration Blade Feint', 'Six-Phase Solve', 'Addiction Recovery Guard', 'Choose Lament'),
+    hero('the_priest_2022', 'The Priest (2022)', 'horror', '#ddd2c2', 'chains', 'Pearl-Pin Chain', 'Configuration Sentence', 'Labyrinth Procession', 'Leviathan Audience')
   ],
   'Mass Effect': [
     hero('tali', 'Tali Zorah', 'hacker', '#7d5fff', 'shotgun', 'Quarian Shotgun', 'Combat Drone Deploy', 'Tech Armor Seal', 'Migrant Fleet Override'),
@@ -173,6 +192,10 @@ export const LORE_ACCURATE_HERO_EXPANSIONS = {
     hero('leia', 'Leia Organa', 'tactical', '#f5eef8', 'gun', 'Rebel Blaster Shot', 'Command Cell Rally', 'Diplomatic Resolve Guard', 'Resistance Beacon'),
     hero('obiwan', 'Obi-Wan Kenobi', 'slayer', '#d8c3a5', 'lightsaber', 'Soresu Saber Cut', 'Jedi Mind Feint', 'High Ground Guard', 'Kenobi Final Lesson'),
     hero('ahsoka', 'Ahsoka Tano', 'slayer', '#f39c12', 'lightsaber', 'Twin Saber Flash', 'Fulcrum Ambush', 'Force Leap Guard', 'World Between Paths')
+  ],
+  'Teen Titans': [
+    hero('starfire_tt', 'Starfire', 'slayer', '#ff7a24', 'starbolts', 'Starbolt Volley', 'Tamaranean Flight Kick', 'Alien Resilience Guard', 'Nova Starburst'),
+    hero('beast_boy_tt', 'Beast Boy', 'horror', '#2ecc71', 'shapeshift', 'Gorilla Slam', 'Pterodactyl Dive', 'Mouse Escape Guard', 'T-Rex Morph Rampage')
   ],
   'Le Cinquième Element': [
     hero('vito_cornelius', 'Vito Cornelius', 'hacker', '#d9b86b', 'relic', 'Element Glyph Trace', 'Priest Archive Seal', 'Sacred Wall Guard', 'Temple Alignment'),
@@ -225,6 +248,11 @@ export const LORE_ACCURATE_HERO_EXPANSIONS = {
     hero('ishikawa_gits', 'Ishikawa', 'hacker', '#34495e', 'terminal', 'Cyberbrain Trace', 'Network Backdoor', 'Console Cover', 'Section 9 Data Sweep'),
     hero('tachikoma_unit', 'Tachikoma Unit', 'marine', '#2980b9', 'gun', 'Spider Tank Burst', 'Think Tank Grenade', 'AI Curiosity Guard', 'Tachikoma Sacrifice')
   ],
+  Dandadan: [
+    hero('jiji_dandadan', 'Jiji', 'slayer', '#b23a48', 'curse', 'Athletic Straight', 'Evil Eye Aura Kick', 'Cursed House Brace', 'Evil Eye Ground Break'),
+    hero('seiko_dandadan', 'Seiko Ayase', 'tactical', '#d9d9e5', 'bat', 'Spirit Medium Bat Swing', 'Localized Barrier Seal', 'Ward Boundary', 'Turbo Granny Exorcism'),
+    hero('turbo_granny_cat', 'Turbo Granny - Maneki-neko', 'horror', '#f4f1df', 'claws', 'Lucky Cat Claw', 'One Hundred Kilometre Dash', 'Maneki-neko Vessel Guard', 'Turbo Granny Spiritual Scream')
+  ],
   'Mad Max': [
     hero('goose_mm', 'Jim Goose', 'tactical', '#7f8c8d', 'gun', 'MFP Shotgun Blast', 'Pursuit Bike Ram', 'Highway Patrol Cover', 'Bronze Badge Revenge'),
     hero('feral_kid', 'Feral Kid', 'horror', '#d2a679', 'boomerang', 'Metal Boomerang Throw', 'Scrap Ambush', 'Crawlspace Hide', 'Wasteland Heir'),
@@ -233,6 +261,18 @@ export const LORE_ACCURATE_HERO_EXPANSIONS = {
 };
 
 export const LORE_ACCURATE_HERO_OVERRIDES = {
+  inconnus_trio: loadout('microphone', 'Stand-Up Mic Check', 'Satirical Character Switch', 'Prime-Time Composure', 'Sketch Trio Finale', '#f0c75e'),
+  bernard_inconnus: loadout('cue_cards', 'Deadpan Cue Card', 'Straight-Man Reversal', 'Studio Timing Guard', 'Absurd Sketch Crescendo', '#d8d8d8'),
+  didier_inconnus: loadout('megaphone', 'Megaphone Punchline', 'Parody Character Charge', 'Stage Jacket Guard', 'Prime-Time Satire Barrage', '#e0a93f'),
+  pierre_rrr: loadout('club', 'Clean-Hair Club Swing', 'First-Crime Investigation', 'Shampoo Bowl Guard', 'Tribe Chief Command', '#c99552'),
+  guy_rrr: loadout('bone_knife', 'Dirty-Hair Bone Feint', 'Undercover Tribe Dash', 'Mud Camouflage', 'Shampoo Spy Ambush', '#8b4b2f'),
+  chef_cheveux_sales: loadout('club', 'Dirty-Hair Club Smash', 'Belly Charge', 'Mud Clod Guard', 'Tonton Tribe Stomp', '#7b3c27'),
+  odile_deray: loadout('clipboard', 'Producer Clipboard Strike', 'Publicity Placard Rush', 'Press Line Cover', 'Cannes Premiere Blitz', '#d4b235'),
+  simon_jeremi: loadout('prop_sickle', 'Red Is Dead Prop Swing', 'Actor Panic Scream', 'Clumsy Stunt Guard', 'Final Take Catastrophe', '#254486'),
+  serge_karamazov: loadout('security_pistol', 'Security Warning Shot', 'Rolled Newspaper Baton', 'Bodyguard Dive', 'Carioca Counterattack', '#7c7f86'),
+  momo_ayase: loadout('psychic', 'Psychokinetic Aura Hand', 'Telekinetic Grip Throw', 'Psychic Hand Barrier', 'Moe Moe Tri-Beam', '#63e6d5'),
+  oken_dandadan: loadout('curse', 'Turbo Granny Dash', 'All-Out Headbutt', 'Cursed Speed Guard', 'One Hundred Kilometres Per Hour', '#d84a42'),
+  aira_dandadan: loadout('silky', 'Acrobatic Silky Kick', 'Crimson Hair Lash', 'Silky Spiral Guard', 'Acrobatic Silky Waltz', '#ef4770'),
   dom: loadout('gun', 'Lancer Cover Fire', 'Gnasher Breach Shot', 'Brotherhood Last Stand', 'Maria Memory Charge', '#3498db'),
   cole: loadout('gun', 'Thrashball Tackle', 'Boomshot Hype Shot', 'Cole Train Brace', 'Cole Train Runs On Whole Grain', '#f1c40f'),
   arbiter: loadout('energy_sword', 'Energy Sword Cut', 'Active Camo Flank', 'Sangheili Honor Guard', 'Great Schism Strike', '#95a5a6'),
@@ -253,6 +293,7 @@ export const LORE_ACCURATE_HERO_OVERRIDES = {
   luka: loadout('microphone', 'Luka Luka Night Note', 'Tuna Swing Beat', 'Bilingual Harmony Guard', 'Megurine Ocean Chorus', '#ff7675'),
   kaiba: loadout('cards', 'Blue-Eyes Command', 'Enemy Controller Input', 'KaibaCorp Shield', 'Obelisk Tribute Crush', '#2980b9'),
   joey: loadout('cards', 'Red-Eyes Slash', 'Time Wizard Gamble', 'Brooklyn Guard', 'Flame Swordsman Rally', '#e67e22'),
+  pegasus_ygo: loadout('cards', 'Toon Summon', 'Millennium Eye Read', 'Toon World Escape', 'Relinquished Absorption', '#d7bde2'),
   ky: loadout('blade', 'Stun Edge', 'Vapor Thrust', 'Sacred Order Guard', 'Ride The Lightning', '#3498db'),
   may_gg: loadout('anchor', 'Anchor Swing', 'Dolphin Charge', 'Pirate Guard', 'Great Yamada Attack', '#ff7675'),
   jin: loadout('blade', 'Ice Carver', 'Frost Bite Drive', 'Barrier Trigger Guard', 'Yukianesa Freeze', '#74b9ff'),
@@ -301,8 +342,8 @@ export const LORE_ACCURATE_HERO_OVERRIDES = {
   nux: loadout('melee', 'Chrome Spear Rush', 'War Boy Nitro', 'Witness Me Guard', 'Valhalla Turnaround', '#ffeaa7')
 };
 
-const monster = (name, hp, atk, spd, color, weapon) => ({ name, hp, atk, spd, color, weapon });
-const boss = (name, hp, atk, spd, color, weapon, special) => ({ name, hp, atk, spd, color, weapon, special });
+const monster = (name, hp, atk, spd, color, weapon, extra = {}) => ({ name, hp, atk, spd, color, weapon, ...extra });
+const boss = (name, hp, atk, spd, color, weapon, special, extra = {}) => ({ name, hp, atk, spd, color, weapon, special, ...extra });
 
 export const LORE_ACCURATE_ENEMY_EXPANSIONS = {
   Rammstein: {
@@ -525,7 +566,7 @@ export const LORE_ACCURATE_ENEMY_EXPANSIONS = {
   'Yu-Gi-Oh': {
     monsters: [
       monster('Trap Card Mimic', 70, 13, 5, '#8e44ad', 'trap'),
-      monster('Kuriboh Swarm', 55, 8, 8, '#8d6e63', 'swarm'),
+      monster('Kuriboh', 55, 8, 8, '#8d6e63', 'multiply_guard'),
       monster('Blue-Eyes Token Dragon', 130, 16, 5, '#dce9ff', 'white_light')
     ],
     bosses: [
@@ -573,8 +614,66 @@ export const LORE_ACCURATE_ENEMY_EXPANSIONS = {
       monster('Factory Conveyor Trap', 100, 13, 3, '#7f8c8d', 'machinery')
     ],
     bosses: [
-      boss('Charles Lee Ray Spirit', 540, 19, 6, '#e67e22', 'voodoo_knife', 'Damballa Soul Transfer'),
-      boss('Nica Possession Split', 500, 18, 7, '#8e44ad', 'split_mind', 'Cult Identity Break')
+      boss('Charles Lee Ray - Human (1988)', 580, 20, 6, '#4a4038', 'voodoo_knife', 'Damballa Soul Transfer', { spriteSource: '/sprites/generated/bosses/chucky/charles-lee-ray-human.png' }),
+      boss('Nica Possession Split', 500, 18, 7, '#8e44ad', 'split_mind', 'Cult Identity Break'),
+      boss('Bride Chucky (1998)', 640, 22, 7, '#d35400', 'stitched_knife', 'Stitched Bride Ambush', { spriteSource: '/sprites/generated/bosses/chucky/bride-chucky-1998.png' }),
+      boss('Buddi Chucky (2019 Remake)', 610, 21, 7, '#2e86c1', 'smart_home_override', 'Kaslan Network Lockdown', { spriteSource: '/sprites/generated/bosses/chucky/buddi-chucky-2019.png' }),
+      boss('Good Chucky - Scout (Season 2)', 470, 16, 7, '#5dade2', 'conditioned_doll', 'Baptism Identity Break', { spriteSource: '/sprites/generated/bosses/chucky/good-chucky-season-2.png' }),
+      boss('Buff Chucky - Hulk (Season 2)', 760, 29, 5, '#b9770e', 'brute_fists', 'Good Guy Power Slam', { spriteSource: '/sprites/generated/bosses/chucky/buff-chucky-season-2.png' }),
+      boss('Colonel Chucky (Season 2)', 690, 24, 6, '#6b5b3e', 'survival_knife', 'Incarnate Lord Command', { spriteSource: '/sprites/generated/bosses/chucky/colonel-chucky-season-2.png' }),
+      boss('Belle Disguise Chucky (Season 2)', 560, 20, 8, '#f2f2ed', 'hidden_knife', 'Blonde Disguise Reveal', { spriteSource: '/sprites/generated/bosses/chucky/belle-chucky-season-2.png' }),
+      boss('Christmas Chucky (Season 2)', 650, 25, 7, '#c0392b', 'chainsaw', 'Silent Night Chainsaw', { spriteSource: '/sprites/generated/bosses/chucky/christmas-chucky-season-2.png' }),
+      boss('Old Chucky (Season 3)', 720, 27, 4, '#8b7355', 'voodoo_cane', 'White House Damballa Last Stand', { spriteSource: '/sprites/generated/bosses/chucky/old-chucky-season-3.png' })
+    ]
+  },
+  Hellraiser: {
+    monsters: [
+      monster('The Gasp (2022)', 132, 17, 6, '#d9c8ba', 'throat_hooks'),
+      monster('The Weeper (2022)', 118, 16, 7, '#c8b7aa', 'tear_blades'),
+      monster('The Asphyx (2022)', 148, 18, 4, '#cfbcae', 'airway_collar'),
+      monster('The Mother (2022)', 166, 19, 3, '#d7c2b5', 'maternal_claws'),
+      monster('The Masque (2022)', 124, 17, 7, '#d8c9bd', 'face_mask_lash'),
+      monster('Chatterer (2022)', 178, 20, 6, '#d6c4b4', 'chattering_maw'),
+      monster('Pistonhead Cenobite', 126, 16, 5, '#6f625d', 'piston_ram'),
+      monster('Camerahead Cenobite', 112, 15, 6, '#81746d', 'camera_lens'),
+      monster('CD Cenobite', 118, 17, 7, '#5e5962', 'disc_blades'),
+      monster('Barbie Cenobite', 146, 18, 4, '#5f5149', 'flame_nozzle'),
+      monster('Dreamer Cenobite', 108, 15, 7, '#8a6d63', 'smoke_breath'),
+      monster('Chatterer II', 152, 19, 6, '#bca993', 'chattering_bite'),
+      monster('Chatterer III', 158, 19, 6, '#b79a82', 'pendulum_hook_bite'),
+      monster('Chatterer Beast', 184, 21, 7, '#7d6556', 'beast_charge'),
+      monster('Bloodline Twins', 176, 20, 5, '#bca794', 'twin_chain'),
+      monster('Wire Twins', 142, 18, 7, '#b7a59b', 'wire_hooks'),
+      monster('Torso Cenobite', 132, 18, 5, '#a89484', 'floor_lunge'),
+      monster('Stitch Cenobite', 136, 17, 5, '#9f8b80', 'stitch_hooks'),
+      monster('Bound Cenobites', 164, 19, 4, '#97857c', 'bound_chain'),
+      monster('Surgeon Cenobite', 154, 19, 5, '#a9988d', 'surgical_tools'),
+      monster('Little Sister Cenobite', 134, 17, 7, '#b8aaa1', 'facial_wire_chain'),
+      monster('Bound II Cenobite', 172, 20, 4, '#8f8179', 'pendulum_blade_crank'),
+      monster('Female Chatterer', 156, 19, 7, '#b59c8d', 'wire_ponytail_hooks'),
+      monster('Stitch Twins', 182, 20, 6, '#aa9187', 'twin_ribbon_chains'),
+      monster('Pseudo-Pinhead', 148, 18, 5, '#b5a18e', 'nail_grid'),
+      monster('The Auditor (Judgment)', 138, 16, 5, '#7d5f45', 'flesh_typewriter', {
+        special: 'Stygian Sin Audit'
+      }),
+      monster('The Assessor (Judgment)', 172, 17, 3, '#7a604e', 'flesh_pages', {
+        special: 'Rancid Verdict Process'
+      }),
+      monster('The Jury (Judgment)', 156, 18, 6, '#8f625b', 'collective_verdict', {
+        special: 'Threefold Guilty Verdict'
+      }),
+      monster('The Cleaners (Judgment)', 164, 16, 5, '#81756a', 'cleansing_grapple', {
+        special: 'Stygian Cleansing Process'
+      })
+    ],
+    bosses: [
+      boss('The Priest (2022)', 720, 27, 6, '#ded2c2', 'pearl_pin_chains', 'Leviathan Audience', {
+        spriteSource: '/sprites/generated/heroes/hellraiser/the-priest-2022.png'
+      }),
+      boss('Roland Voight - Leviathan Transformation', 760, 29, 3, '#d8c0ae', 'leviathan_suspension', 'Power Configuration Reward'),
+      boss('Angelique Cenobite', 660, 25, 7, '#c4b2a1', 'wire_blades', 'Princess of Torment'),
+      boss('The Butcher (Judgment)', 740, 28, 3, '#5f473c', 'giant_cleaver', 'Stygian Butchery Sentence'),
+      boss('The Surgeon (Judgment)', 680, 26, 8, '#69635f', 'surgical_rig', 'Stygian Surgical Judgment')
     ]
   },
   'Mass Effect': {

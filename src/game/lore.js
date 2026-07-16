@@ -310,16 +310,16 @@ export const LORE_DB = {
     mediaType: 'movie',
     title: { en: 'Chucky', fr: 'Chucky' },
     desc: {
-      en: 'A serial killer\'s soul transferred into a retro Good Guy doll via voodoo magic.',
-      fr: 'L\'âme d\'un tueur en série transférée dans une poupée via la magie vaudou.'
+      en: 'Charles Lee Ray transfers his soul into a Good Guy doll through Damballa voodoo, later splitting it across distinct dolls. Tiffany Valentine, Tiffany doll bodies and Jennifer Tilly remain separate identities, while the 2019 Buddi remake is an independent artificial-intelligence continuity. The leather-jacket bride and all-black human looks are canon-inspired 1998 Tiffany variants; dark-haired Wedding Belle, burned bald Tiffany, Street Siren, Synthetic Doll, Leather Mistress and Voluptuous Original are explicitly non-canon Nexus AU costumes for fictional Tiffany.',
+      fr: 'Charles Lee Ray transfere son ame dans une poupee Good Guy par le vaudou de Damballa, puis la divise entre plusieurs corps distincts. Tiffany Valentine, les corps de poupee Tiffany et Jennifer Tilly restent des identites separees, tandis que le Buddi du remake de 2019 appartient a une continuite independante fondee sur une intelligence artificielle. La mariee a veste en cuir et la Tiffany humaine tout en noir sont des variantes inspirees du canon 1998; Dark-Haired Wedding Belle, Tiffany brulee et chauve, Street Siren, Synthetic Doll, Leather Mistress et Voluptuous Original sont explicitement des costumes Nexus AU non canoniques pour la Tiffany fictive.'
     }
   },
   'Hellraiser': {
     mediaType: 'movie',
     title: { en: 'Hellraiser', fr: 'Hellraiser' },
     desc: {
-      en: 'Demonic Cenobites summoned via puzzle boxes, exploring pain and pleasure extremes.',
-      fr: 'Des Cénobites démoniaques invoqués par des boîtes à énigmes explorant la souffrance.'
+      en: 'Lemarchand configurations open Leviathans Labyrinth, where distinct Cenobite orders interpret desire, sensation, transformation, and loss as ritual bargains.',
+      fr: 'Les configurations de Lemarchand ouvrent le Labyrinthe de Leviathan, ou plusieurs ordres cenobites interpretent desir, sensation, transformation et perte comme des pactes rituels.'
     }
   },
   'Mass Effect': {

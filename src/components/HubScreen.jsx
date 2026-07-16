@@ -17,6 +17,7 @@ import spriteManifest from '../../public/sprites/generated/sprite-manifest.json'
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
 import { FEATURED_UNIVERSE_ICONS } from '../game/featuredUniversePacks';
 import RaceMode from './RaceMode';
+import FighterMode from './FighterMode';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
@@ -305,6 +306,7 @@ const HUB_NAV_GROUPS = [
     tabs: [
       { id: 'missions', label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' }, title: { fr: 'Ouvre les campagnes, arcs narratifs et missions disponibles.', en: 'Open available campaigns, narrative arcs, and missions.' } },
       { id: 'battleRoyale', label: { fr: 'ZONE D EXTINCTION', en: 'EXTINCTION ZONE' }, title: { fr: 'Ouvre le mode FPS de survie et d extraction.', en: 'Open the FPS survival and extraction mode.' } },
+      { id: 'fighter', label: { fr: 'COMBAT A.R.C.A.', en: 'A.R.C.A. FIGHTER' }, title: { fr: 'Ouvre le duel 1 contre 1 avec changements de signatures.', en: 'Open the 1v1 tag-team fighting mode.' } },
       { id: 'race', label: { fr: 'COURSE A.R.C.A.', en: 'A.R.C.A. RACE' }, title: { fr: 'Ouvre le championnat karting et sa progression de garage.', en: 'Open the kart championship and its garage progression.' } }
     ]
   },
@@ -3335,6 +3337,7 @@ export default function HubScreen({
   ];
 
   const DAILY_CONTRACTS = [
+    { id: 'fighter', mode: 'Fighter', focus: 'TAG', text: { fr: 'Gagner un combat de resonance', en: 'Win one resonance fight' } },
     { id: 'artifacts', mode: 'items', focus: 'ITEMS', text: { fr: 'Activer 3 artefacts de terrain', en: 'Activate 3 field artifacts' } },
     { id: 'rpg', mode: 'RPG', focus: 'ATB', text: { fr: 'Stabiliser une faille RPG', en: 'Stabilize one RPG breach' } },
     { id: 'tactics', mode: 'Tactics', focus: 'GRID', text: { fr: 'Gagner une mission tactique', en: 'Win one tactics mission' } },
@@ -5357,6 +5360,73 @@ export default function HubScreen({
     sound.playSfx('levelup');
   };
 
+  const recordFighterMatch = (report) => {
+    if (!report || !setActivityProgress) return;
+    const victory = report.result === 'victory';
+    const rewards = report.rewards || { gold: 0, shards: 0, seasonXp: 0 };
+    if (victory) {
+      setGold(prev => prev + (rewards.gold || 0));
+      setBreachShards(prev => prev + (rewards.shards || 0));
+    }
+    setActivityProgress(prev => {
+      const sameDay = prev.dayKey === todayKey;
+      const sameWeek = prev.weekKey === currentWeekKey;
+      const previousCareer = prev.fighterCareer || {};
+      return {
+        ...prev,
+        dayKey: todayKey,
+        weekKey: currentWeekKey,
+        dailyWins: (sameDay ? (prev.dailyWins || 0) : 0) + (victory ? 1 : 0),
+        weeklyWins: (sameWeek ? (prev.weeklyWins || 0) : 0) + (victory ? 1 : 0),
+        dailyModeWins: {
+          ...(sameDay ? (prev.dailyModeWins || {}) : {}),
+          Fighter: ((sameDay ? prev.dailyModeWins?.Fighter : 0) || 0) + (victory ? 1 : 0),
+          any: ((sameDay ? prev.dailyModeWins?.any : 0) || 0) + (victory ? 1 : 0)
+        },
+        weeklyModeWins: {
+          ...(sameWeek ? (prev.weeklyModeWins || {}) : {}),
+          Fighter: ((sameWeek ? prev.weeklyModeWins?.Fighter : 0) || 0) + (victory ? 1 : 0),
+          any: ((sameWeek ? prev.weeklyModeWins?.any : 0) || 0) + (victory ? 1 : 0)
+        },
+        modeWins: {
+          ...(prev.modeWins || {}),
+          Fighter: (prev.modeWins?.Fighter || 0) + (victory ? 1 : 0),
+          any: (prev.modeWins?.any || 0) + (victory ? 1 : 0)
+        },
+        lifetimeWins: (prev.lifetimeWins || 0) + (victory ? 1 : 0),
+        lifetimeAttempts: (prev.lifetimeAttempts || 0) + 1,
+        seasonXp: (prev.seasonXp || 0) + (rewards.seasonXp || 0),
+        fighterCareer: {
+          wins: (previousCareer.wins || 0) + (victory ? 1 : 0),
+          losses: (previousCareer.losses || 0) + (victory ? 0 : 1),
+          bestCombo: Math.max(previousCareer.bestCombo || 0, report.maxCombo || 0),
+          bestScore: Math.max(previousCareer.bestScore || 0, report.score || 0),
+          totalTags: (previousCareer.totalTags || 0) + (report.tags || 0),
+          lastGrade: report.grade || previousCareer.lastGrade || 'C'
+        },
+        riftJournal: [
+          {
+            id: `fighter-${Date.now()}-${report.result}`,
+            at: new Date().toISOString(),
+            result: report.result,
+            universe: 'Nexus de Convergence',
+            source: 'Arene d impact A.R.C.A.',
+            title: lang === 'fr' ? 'Combat de resonance' : 'Resonance Fighter',
+            text: victory
+              ? (lang === 'fr' ? `Cellule victorieuse, rang ${report.grade}, ${report.knockouts} K.-O. et combo maximal ${report.maxCombo}.` : `Cell victory, grade ${report.grade}, ${report.knockouts} K.O.s and max combo ${report.maxCombo}.`)
+              : (lang === 'fr' ? `Repli de l arene apres ${report.duration}s; donnees de duel archivees.` : `Arena retreat after ${report.duration}s; fight data archived.`),
+            battleSummary: report,
+            rewards: victory ? rewards : { gold: 0, shards: 0, seasonXp: rewards.seasonXp || 0 }
+          },
+          ...(prev.riftJournal || [])
+        ].slice(0, 12)
+      };
+    });
+    notifyNexus(victory
+      ? (lang === 'fr' ? `Combat archive: rang ${report.grade}, recompenses transferees.` : `Fight archived: grade ${report.grade}, rewards transferred.`)
+      : (lang === 'fr' ? 'Combat archive: donnees conservees pour la revanche.' : 'Fight archived: data kept for the rematch.'), victory ? 'success' : 'warn');
+  };
+
   const activeFactionSynergies = FACTION_RULES.map(rule => {
     const count = activeTeam
       .map(id => HEROES_DB.find(hero => hero.id === id))
@@ -6408,6 +6478,18 @@ export default function HubScreen({
             lang={lang}
             heroes={HEROES_DB}
             unlockedHeroes={unlockedHeroes}
+          />
+        )}
+
+        {activeTab === 'fighter' && (
+          <FighterMode
+            lang={lang}
+            heroes={HEROES_DB.filter(hero => isUniverseVisible(hero.universe) && !isAssetDisabled('heroes', hero.id))}
+            unlockedHeroes={unlockedHeroes}
+            activeTeam={activeTeam}
+            heroLevels={heroLevels}
+            fighterCareer={activityProgress.fighterCareer || {}}
+            onMatchComplete={recordFighterMatch}
           />
         )}
 
