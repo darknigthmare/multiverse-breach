@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { REQUESTED_UNIVERSE_WAVE } from '../src/game/requestedUniverseWave.js';
+import { RECENT_UNIVERSE_LEVELS } from '../src/game/recentUniverseLevels.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -35,6 +36,7 @@ const rendererSource = read('../src/game/renderer.js');
 const smashArenasSource = read('../src/game/smashArenas.js');
 const tacticsEngineSource = read('../src/game/engineTactics.js');
 const tacticsBattlefieldsSource = read('../src/game/tacticsBattlefields.js');
+const recentUniverseLevelsSource = read('../src/game/recentUniverseLevels.js');
 const spriteChecklistSource = read('../SPRITE_CONVERSION_CHECKLIST.txt');
 const spriteReferenceSource = read('../public/sprites/generated/sprite-reference-sources.json');
 const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.json'));
@@ -71,6 +73,8 @@ const expectedChuckySpriteOutputs = [
   '/sprites/generated/heroes/chucky/tiffany-leather-jacket-bride-1998.png',
   '/sprites/generated/heroes/chucky/tiffany-dark-haired-wedding-belle-au.png',
   '/sprites/generated/heroes/chucky/tiffany-burned-bald-damage-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-human-two-piece-bikini-au.png',
+  '/sprites/generated/heroes/chucky/tiffany-doll-two-piece-bikini-au.png',
   '/sprites/generated/heroes/chucky/tiffany-street-siren-au.png',
   '/sprites/generated/heroes/chucky/tiffany-synthetic-companion-doll-au.png',
   '/sprites/generated/heroes/chucky/tiffany-leather-mistress-au.png',
@@ -97,6 +101,8 @@ const expectedChuckyExpansionRoster = [
   'Tiffany Doll - Leather Jacket Bride (1998)',
   'Tiffany Doll - Dark-Haired Wedding Belle (AU)',
   'Tiffany Doll - Burned and Bald (Damage AU)',
+  'Tiffany Valentine - Two-Piece Bikini (Adult AU)',
+  'Tiffany Doll - Two-Piece Bikini (Adult AU)',
   'Tiffany Valentine - Street Siren (Adult AU)',
   'Tiffany Valentine - Synthetic Doll (Adult AU)',
   'Tiffany Valentine - Leather Mistress (Adult AU)',
@@ -268,7 +274,18 @@ expectedRequestedUniverseWave.forEach(universe => {
   assert(entry.monsters?.length === 3 && entry.bosses?.length === 2 && (entry.worldBoss || entry.boss), `${universe} must expose a complete threat roster.`);
   assert(entry.gear?.length === 3 && entry.event?.length === 5, `${universe} must expose three gear pieces and one lore event.`);
   assert(entry.stageVariants?.length === 2, `${universe} must expose three distinct stages including the primary stage.`);
+  const missionModes = new Set([entry.mode, ...entry.stageVariants.map(variant => Array.isArray(variant) ? variant[0] : variant.mode)]);
+  assert(['RPG', 'Tactics', 'Smash'].every(mode => missionModes.has(mode)), `${universe} must expose RPG, Tactics, and Melee mission stages.`);
+  const levelProfile = RECENT_UNIVERSE_LEVELS[universe];
+  assert(levelProfile?.combat && levelProfile?.melee && levelProfile?.rpg && levelProfile?.tactics, `${universe} must expose complete Combat, Melee, RPG, and Tactics level profiles.`);
+  assert(levelProfile.melee.separatePlatformTexture && levelProfile.tactics.gridAligned, `${universe} must use isolated melee platform textures and grid-aligned tactics tiles.`);
 });
+assert(Object.keys(RECENT_UNIVERSE_LEVELS).length === REQUESTED_UNIVERSE_WAVE.length, 'Every recent universe must have exactly one cross-mode level profile.');
+assert(recentUniverseLevelsSource.includes('platformTexture') && recentUniverseLevelsSource.includes('tileTexture'), 'Recent level profiles must expose separate melee platform and tactics tile textures.');
+assert(smashEngineSource.includes('platformTextureCanvasCache') && smashEngineSource.includes('makeTextureCanvas'), 'Melee must render platform-local textures from real collision geometry.');
+assert(tacticsEngineSource.includes('drawTileTexture') && tacticsBattlefieldsSource.includes('tileTheme'), 'Tactics must render texture details inside the real battlefield cells.');
+assert(fighterModeSource.includes("drawUniverseBackground(ctx, arenaUniverse") && fighterModeSource.includes("'Combat'"), 'Combat mode must select its level from the active roster universe.');
+assert(gameCanvasSource.includes('handleBattleComplete, arenaStage);') && rpgEngineSource.includes('heroLanes'), 'RPG mode must align combatants with the active universe floor lanes.');
 
 expectedOcHeroIds.forEach(heroId => {
   assert(heroesSource.includes(`id: '${heroId}'`), `Missing OC hero ${heroId}.`);
@@ -341,7 +358,7 @@ expectedChuckyExpansionRoster.forEach(name => {
 });
 assert(enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/chucky.png'") && enemiesSource.includes("spriteSource: '/sprites/generated/heroes/chucky/tiffany.png'"), 'Chucky and Tiffany doll bosses must use their dedicated OpenAI sheets.');
 assert(rendererSource.includes("Chucky: '/backgrounds/chucky-play-pals-breach-openai-v2.png'"), 'Chucky stages must use the dedicated Play Pals Breach background.');
-assert(spriteChecklistSource.includes('[x] Vingt-quatre nouvelles plaquettes Chucky') && spriteChecklistSource.includes('[x] Les trois equivalents en corps de poupee Tiffany') && spriteChecklistSource.includes('Buddi Chucky du remake 2019'), 'The completed Chucky expansion must remain visible in the conversion checklist.');
+assert(spriteChecklistSource.includes('[x] Vingt-six nouvelles plaquettes Chucky') && spriteChecklistSource.includes('[x] Les trois equivalents en corps de poupee Tiffany') && spriteChecklistSource.includes('Tiffany humaine et Tiffany poupee en maillot deux pieces Adult AU') && spriteChecklistSource.includes('Buddi Chucky du remake 2019'), 'The completed Chucky expansion must remain visible in the conversion checklist.');
 expectedStargateSpriteOutputs.forEach(output => {
   assert(manifestOutputs.has(output), `Missing Stargate OpenAI sprite ${output}.`);
   assert(spriteReferenceSource.includes(output), `Missing Stargate reference trace for ${output}.`);
@@ -733,6 +750,8 @@ console.log(JSON.stringify({
   featuredUniverses: expectedFeaturedUniverses.length,
   supplementalOpenAiSprites: expectedSupplementalOpenAiSpriteOutputs.length,
   featuredVisuals: featuredVisualManifest.counts,
+  recentUniverseLevelProfiles: Object.keys(RECENT_UNIVERSE_LEVELS).length,
+  recentUniverseLevelModes: ['Combat', 'Melee', 'RPG', 'Tactics'],
   requiredBaseModes: ['RPG', 'Tactics', 'Smash'],
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',

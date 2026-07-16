@@ -1,7 +1,12 @@
 import { drawPixelSprite } from './renderer';
+import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const lerp = (from, to, amount) => from + (to - from) * amount;
+const rgba = (hex, alpha) => {
+  const value = /^#[0-9a-f]{6}$/i.test(hex || '') ? hex.slice(1) : '39c5bb';
+  return `rgba(${parseInt(value.slice(0, 2), 16)}, ${parseInt(value.slice(2, 4), 16)}, ${parseInt(value.slice(4, 6), 16)}, ${alpha})`;
+};
 
 const DIFFICULTY = {
   training: { reaction: 0.42, aggression: 0.48, guardChance: 0.24, damage: 0.9 },
@@ -55,6 +60,8 @@ export class EngineFighter {
     this.width = width;
     this.height = height;
     this.groundY = Math.round(height * 0.82);
+    this.universe = options.universe || 'Nexus de Convergence';
+    this.levelProfile = options.levelProfile || getRecentUniverseLevelProfile(this.universe);
     this.particles = particles;
     this.playSfx = playSfx;
     this.onComplete = onComplete;
@@ -640,20 +647,24 @@ export class EngineFighter {
 
   drawArena(ctx, animTime) {
     ctx.save();
+    const material = this.levelProfile?.material;
+    const edge = material?.edge || '#39c5bb';
+    const detail = material?.detail || '#8dffea';
+    const shadow = material?.shadow || '#020207';
     const floorY = this.groundY + 12;
     const floor = ctx.createLinearGradient(0, floorY, 0, this.height);
-    floor.addColorStop(0, 'rgba(57, 197, 187, 0.38)');
-    floor.addColorStop(0.08, 'rgba(10, 12, 20, 0.88)');
-    floor.addColorStop(1, 'rgba(2, 2, 7, 0.98)');
+    floor.addColorStop(0, rgba(edge, 0.42));
+    floor.addColorStop(0.08, material ? rgba(material.base, 0.9) : 'rgba(10, 12, 20, 0.88)');
+    floor.addColorStop(1, rgba(shadow, 0.98));
     ctx.fillStyle = floor;
     ctx.fillRect(0, floorY, this.width, this.height - floorY);
-    ctx.strokeStyle = 'rgba(57, 197, 187, 0.52)';
+    ctx.strokeStyle = rgba(edge, 0.66);
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(0, floorY);
     ctx.lineTo(this.width, floorY);
     ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+    ctx.strokeStyle = rgba(detail, 0.13);
     ctx.lineWidth = 1;
     for (let x = -120; x < this.width + 120; x += 80) {
       ctx.beginPath();
@@ -667,8 +678,31 @@ export class EngineFighter {
       ctx.lineTo(this.width, y);
       ctx.stroke();
     }
+    if (material) {
+      ctx.fillStyle = rgba(material.mid, 0.22);
+      ctx.strokeStyle = rgba(material.detail, 0.2);
+      if (['wood', 'miniature'].includes(material.pattern)) {
+        for (let y = floorY + 16; y < this.height; y += 24) ctx.fillRect(0, y, this.width, 3);
+      } else if (['organic', 'roots', 'infernal'].includes(material.pattern)) {
+        for (let x = 16; x < this.width; x += 88) {
+          ctx.beginPath();
+          ctx.moveTo(x, this.height);
+          ctx.quadraticCurveTo(x + 28, floorY + 32, x + 62, floorY);
+          ctx.stroke();
+        }
+      } else if (['stone', 'alchemy', 'dungeon', 'moss', 'wetStone', 'ninja'].includes(material.pattern)) {
+        for (let y = floorY + 18; y < this.height; y += 28) {
+          const offset = Math.round((y / 28) % 2) * 22;
+          for (let x = -offset; x < this.width; x += 44) ctx.strokeRect(x, y, 38, 16);
+        }
+      } else {
+        for (let x = 24; x < this.width; x += 72) {
+          ctx.fillRect(x, floorY + 18 + (x % 3) * 11, 18, 3);
+        }
+      }
+    }
     const pulse = 0.45 + Math.sin(animTime * 0.04) * 0.18;
-    ctx.fillStyle = `rgba(255, 69, 0, ${pulse * 0.12})`;
+    ctx.fillStyle = rgba(material?.danger || '#ff4500', pulse * 0.12);
     ctx.fillRect(this.width / 2 - 2, 122, 4, floorY - 122);
     ctx.restore();
   }

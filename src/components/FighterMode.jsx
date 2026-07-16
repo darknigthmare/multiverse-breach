@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineFighter } from '../game/engineFighter';
 import { ParticleSystem, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
+import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
 import sound from '../game/soundEngine';
 
@@ -157,6 +158,15 @@ export default function FighterMode({
     return sorted.slice(0, Math.max(1, playerHeroes.length)).map(hero => scaleHeroForFight(hero, averageLevel));
   }, [averageLevel, heroes, opponentSeed, playerHeroes]);
 
+  const arenaUniverse = useMemo(() => (
+    playerHeroes.find(hero => getRecentUniverseLevelProfile(hero.universe))?.universe
+      || opponentHeroes.find(hero => getRecentUniverseLevelProfile(hero.universe))?.universe
+      || playerHeroes.find(hero => hero.universe)?.universe
+      || opponentHeroes.find(hero => hero.universe)?.universe
+      || 'Nexus de Convergence'
+  ), [opponentHeroes, playerHeroes]);
+  const arenaLevelProfile = useMemo(() => getRecentUniverseLevelProfile(arenaUniverse), [arenaUniverse]);
+
   useEffect(() => {
     if (!matchStarted || !playerHeroes.length || !opponentHeroes.length) return undefined;
     const canvas = canvasRef.current;
@@ -183,7 +193,7 @@ export default function FighterMode({
         setSnapshot(engine.getSnapshot());
         onMatchCompleteRef.current?.(resolved);
       },
-      { difficulty }
+      { difficulty, universe: arenaUniverse, levelProfile: arenaLevelProfile }
     );
     engineRef.current = engine;
     sound.playBgm('battle');
@@ -200,7 +210,7 @@ export default function FighterMode({
       const ctx = canvas.getContext('2d');
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawUniverseBackground(ctx, 'Nexus de Convergence', canvas.width, canvas.height, 'Smash');
+        drawUniverseBackground(ctx, arenaUniverse, canvas.width, canvas.height, 'Combat');
         engine.draw(ctx, now / 16.67);
         particles.draw(ctx);
       }
@@ -258,7 +268,7 @@ export default function FighterMode({
       engineRef.current = null;
       inputRef.current = {};
     };
-  }, [difficulty, matchNonce, matchStarted, opponentHeroes, playerHeroes]);
+  }, [arenaLevelProfile, arenaUniverse, difficulty, matchNonce, matchStarted, opponentHeroes, playerHeroes]);
 
   const startMatch = () => {
     if (!playerHeroes.length || !opponentHeroes.length) return;
@@ -357,8 +367,8 @@ export default function FighterMode({
     <section className="fighter-mode-shell fighter-mode-active" aria-labelledby="fighter-mode-title">
       <header className="fighter-battle-header">
         <div>
-          <span>ARENE D IMPACT A.R.C.A.</span>
-          <strong>{lang === 'fr' ? 'Combat 1 contre 1 / cellule tag' : '1v1 combat / tag cell'}</strong>
+          <span>ARENE D IMPACT A.R.C.A. / {arenaUniverse}</span>
+          <strong>{arenaLevelProfile?.combat?.name || (lang === 'fr' ? 'Duel de convergence' : 'Convergence Duel')}</strong>
         </div>
         <div>
           <b>{snapshot.timer}s</b>

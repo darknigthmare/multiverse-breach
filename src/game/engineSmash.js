@@ -3,6 +3,80 @@ import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
 
+const platformTextureCanvasCache = new Map();
+
+const makeTextureCanvas = (theme, kind) => {
+  const surface = theme.surface;
+  if (!surface || (typeof document === 'undefined' && typeof OffscreenCanvas === 'undefined')) return null;
+  const cacheKey = `${surface.id}:${kind}`;
+  if (platformTextureCanvasCache.has(cacheKey)) return platformTextureCanvasCache.get(cacheKey);
+  const canvas = typeof OffscreenCanvas !== 'undefined'
+    ? new OffscreenCanvas(32, 16)
+    : document.createElement('canvas');
+  canvas.width = 32;
+  canvas.height = 16;
+  const texture = canvas.getContext('2d');
+  if (!texture) return null;
+  texture.imageSmoothingEnabled = false;
+  texture.fillStyle = surface.base;
+  texture.fillRect(0, 0, 32, 16);
+  texture.fillStyle = surface.mid;
+  texture.globalAlpha = kind === 'main' ? 0.72 : 0.52;
+
+  if (['circuit', 'glass', 'armor', 'alloy', 'hangar', 'steel', 'prison', 'lab'].includes(surface.pattern)) {
+    texture.fillRect(0, 0, 32, 2);
+    texture.fillRect(0, 14, 32, 2);
+    texture.fillRect(1, 3, 2, 9);
+    texture.fillRect(17, 3, 2, 9);
+    texture.fillStyle = surface.detail;
+    texture.fillRect(5, 7, 10, 2);
+    texture.fillRect(21, 5, 7, 2);
+    texture.fillRect(26, 7, 2, 5);
+  } else if (['wood', 'miniature'].includes(surface.pattern)) {
+    texture.fillRect(0, 0, 32, 3);
+    texture.fillRect(0, 8, 32, 2);
+    texture.fillRect(7, 0, 2, 8);
+    texture.fillRect(23, 8, 2, 8);
+    texture.fillStyle = surface.detail;
+    texture.fillRect(4, 4, 2, 2);
+    texture.fillRect(27, 12, 2, 2);
+  } else if (['stone', 'alchemy', 'dungeon', 'moss', 'wetStone', 'ninja'].includes(surface.pattern)) {
+    texture.fillRect(0, 0, 32, 2);
+    texture.fillRect(0, 8, 32, 2);
+    texture.fillRect(15, 1, 2, 7);
+    texture.fillRect(7, 9, 2, 7);
+    texture.fillRect(25, 9, 2, 7);
+    texture.fillStyle = surface.detail;
+    texture.fillRect(3, 4, 6, 1);
+    texture.fillRect(20, 12, 5, 1);
+  } else if (['organic', 'roots', 'infernal'].includes(surface.pattern)) {
+    texture.fillRect(0, 2, 10, 3);
+    texture.fillRect(8, 5, 3, 8);
+    texture.fillRect(10, 11, 12, 3);
+    texture.fillRect(21, 4, 3, 8);
+    texture.fillRect(23, 3, 9, 3);
+    texture.fillStyle = surface.detail;
+    texture.fillRect(5, 5, 3, 3);
+    texture.fillRect(25, 10, 3, 3);
+  } else if (surface.pattern === 'studio') {
+    texture.fillRect(0, 0, 16, 8);
+    texture.fillRect(16, 8, 16, 8);
+    texture.fillStyle = surface.detail;
+    texture.fillRect(0, 7, 32, 2);
+  } else {
+    texture.fillRect(2, 3, 3, 3);
+    texture.fillRect(13, 10, 4, 2);
+    texture.fillRect(25, 5, 2, 4);
+    texture.fillStyle = surface.detail;
+    texture.fillRect(8, 6, 7, 1);
+    texture.fillRect(20, 13, 8, 1);
+  }
+
+  texture.globalAlpha = 1;
+  platformTextureCanvasCache.set(cacheKey, canvas);
+  return canvas;
+};
+
 export class EngineSmash {
   constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
     this.width = width;
@@ -1174,19 +1248,38 @@ export class EngineSmash {
 
   drawPlatform(ctx, platformData, animTime) {
     const theme = this.arena.theme;
+    const surface = platformData.surface || theme.surface;
     const width = platformData.x2 - platformData.x1;
-    const height = platformData.kind === 'main' ? 14 : 9;
+    const height = platformData.kind === 'main' ? 18 : 12;
     const y = platformData.y;
     ctx.save();
     ctx.shadowColor = theme.accent;
     ctx.shadowBlur = platformData.kind === 'main' ? 10 : 6;
-    ctx.fillStyle = platformData.kind === 'main' ? 'rgba(0,0,0,0.84)' : 'rgba(0,0,0,0.68)';
+    ctx.fillStyle = surface?.shadow || (platformData.kind === 'main' ? 'rgba(0,0,0,0.84)' : 'rgba(0,0,0,0.68)');
+    if (surface) ctx.fillRect(platformData.x1 + 3, y + height / 2, width - 6, platformData.kind === 'main' ? 12 : 7);
+    const textureCanvas = makeTextureCanvas(theme, platformData.kind);
+    const texturePattern = textureCanvas ? ctx.createPattern(textureCanvas, 'repeat') : null;
+    ctx.fillStyle = texturePattern || surface?.base || (platformData.kind === 'main' ? 'rgba(0,0,0,0.84)' : 'rgba(0,0,0,0.68)');
     ctx.strokeStyle = theme.accent;
     ctx.lineWidth = platformData.kind === 'main' ? 3 : 2;
     ctx.fillRect(platformData.x1, y - height / 2, width, height);
     ctx.strokeRect(platformData.x1, y - height / 2, width, height);
 
     ctx.shadowBlur = 0;
+    if (surface) {
+      ctx.fillStyle = surface.detail;
+      ctx.globalAlpha = 0.78;
+      ctx.fillRect(platformData.x1 + 3, y - height / 2 + 2, width - 6, 2);
+      ctx.fillStyle = surface.edge;
+      ctx.globalAlpha = 0.52;
+      for (let x = platformData.x1 + 20; x < platformData.x2 - 8; x += 48) {
+        ctx.fillRect(x, y + height / 2 - 3, 3, 3);
+      }
+      ctx.globalAlpha = 1;
+      ctx.restore();
+      return;
+    }
+
     ctx.fillStyle = theme.secondary;
     if (theme.material === 'concert' || platformData.kind === 'speaker') {
       for (let x = platformData.x1 + 10; x < platformData.x2 - 6; x += 22) {

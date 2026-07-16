@@ -1,4 +1,5 @@
 import { EXPANDED_UNIVERSE_SIGNATURES } from './expandedUniverses';
+import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 
 const tile = (x, y, type, label = null) => ({ x, y, type, label });
 const obstacle = (id, name, gridX, gridY, type = 'barrier', hp = 80, color = '#4a4e52') => ({
@@ -340,30 +341,45 @@ export function getTacticsMissionProfile(stage = {}, battlefield = null) {
 export function getTacticsBattlefield(stage = {}) {
   const universe = stage.universe || '';
   const signature = getSignature(universe);
-  const text = [
-    universe,
+  const recentProfile = stage.forceBaseArena || stage.dlcSuppressedArena
+    ? null
+    : getRecentUniverseLevelProfile(universe);
+  const missionText = [
     stage.name,
     stage.bossName,
+    stage.difficulty
+  ].filter(Boolean).join(' ').toLowerCase();
+  const loreText = [
+    universe,
     signature?.faction,
     signature?.mediaType,
     signature?.theme,
     signature?.stageName
   ].filter(Boolean).join(' ').toLowerCase();
 
-  if (stage.forceBaseArena || stage.dlcSuppressedArena) return TACTICS_BATTLEFIELDS.training_grid;
-  if (stage.finalGameBoss || stage.worldBoss || /final|world boss|singularity/i.test(stage.difficulty || '')) return TACTICS_BATTLEFIELDS.boss_command_zone;
-  if (textIncludes(text, ['overload', 'surcharge', 'timer', 'core'])) return TACTICS_BATTLEFIELDS.boss_overload_zone;
-  if (textIncludes(text, ['escort', 'convoi', 'civilian', 'nexus agent'])) return TACTICS_BATTLEFIELDS.nexus_escort_route;
-  if (textIncludes(text, ['portal', 'rift', 'breach', 'faille'])) return TACTICS_BATTLEFIELDS.portal_lockdown;
-  if (textIncludes(text, ['artifact', 'artefact', 'relic', 'shard', 'origin'])) return TACTICS_BATTLEFIELDS.artifact_bastion;
-  if (textIncludes(text, ['halo', 'war', 'marine', 'trooper', 'front', 'battle', 'borderlands', 'stargate'])) return TACTICS_BATTLEFIELDS.war_frontline;
-  if (textIncludes(text, ['lab', 'facility', 'infection', 'virus', 'biohazard', 'aperture', 'black mesa'])) return TACTICS_BATTLEFIELDS.facility_lockdown;
-  if (textIncludes(text, ['silent hill', 'saw', 'horror', 'nightmare', 'curse', 'haunt', 'hell'])) return TACTICS_BATTLEFIELDS.horror_chokepoint;
-  if (textIncludes(text, ['cyber', 'matrix', 'ghost in the shell', 'digital', 'network', 'gunnm'])) return TACTICS_BATTLEFIELDS.cyber_vertical_node;
-  if (textIncludes(text, ['magic', 'arcane', 'ruin', 'castle', 'dungeon', 'academy', 'discworld'])) return TACTICS_BATTLEFIELDS.ruined_highground;
-  if (textIncludes(text, ['city', 'gotham', 'office', 'urban', 'police', 'street'])) return TACTICS_BATTLEFIELDS.urban_crossfire;
-  if (stage.difficulty === 'Very Hard' || stage.difficulty === 'Hard') return TACTICS_BATTLEFIELDS.boss_command_zone;
-  return TACTICS_BATTLEFIELDS.training_grid;
+  let battlefield = TACTICS_BATTLEFIELDS.training_grid;
+  if (stage.forceBaseArena || stage.dlcSuppressedArena) battlefield = TACTICS_BATTLEFIELDS.training_grid;
+  else if (stage.finalGameBoss || stage.worldBoss || /final|world boss|singularity/i.test(stage.difficulty || '')) battlefield = TACTICS_BATTLEFIELDS.boss_command_zone;
+  else if (textIncludes(missionText, ['overload', 'surcharge', 'timer', 'core'])) battlefield = TACTICS_BATTLEFIELDS.boss_overload_zone;
+  else if (textIncludes(missionText, ['escort', 'convoi', 'civilian', 'nexus agent'])) battlefield = TACTICS_BATTLEFIELDS.nexus_escort_route;
+  else if (textIncludes(missionText, ['portal', 'rift', 'breach', 'faille'])) battlefield = TACTICS_BATTLEFIELDS.portal_lockdown;
+  else if (textIncludes(missionText, ['artifact', 'artefact', 'relic', 'shard', 'origin'])) battlefield = TACTICS_BATTLEFIELDS.artifact_bastion;
+  else if (recentProfile?.tactics?.battlefieldId) battlefield = TACTICS_BATTLEFIELDS[recentProfile.tactics.battlefieldId] || battlefield;
+  else if (textIncludes(loreText, ['halo', 'war', 'marine', 'trooper', 'front', 'battle', 'borderlands', 'stargate'])) battlefield = TACTICS_BATTLEFIELDS.war_frontline;
+  else if (textIncludes(loreText, ['lab', 'facility', 'infection', 'virus', 'biohazard', 'aperture', 'black mesa'])) battlefield = TACTICS_BATTLEFIELDS.facility_lockdown;
+  else if (textIncludes(loreText, ['silent hill', 'saw', 'horror', 'nightmare', 'curse', 'haunt', 'hell'])) battlefield = TACTICS_BATTLEFIELDS.horror_chokepoint;
+  else if (textIncludes(loreText, ['cyber', 'matrix', 'ghost in the shell', 'digital', 'network', 'gunnm'])) battlefield = TACTICS_BATTLEFIELDS.cyber_vertical_node;
+  else if (textIncludes(loreText, ['magic', 'arcane', 'ruin', 'castle', 'dungeon', 'academy', 'discworld'])) battlefield = TACTICS_BATTLEFIELDS.ruined_highground;
+  else if (textIncludes(loreText, ['city', 'gotham', 'office', 'urban', 'police', 'street'])) battlefield = TACTICS_BATTLEFIELDS.urban_crossfire;
+  else if (stage.difficulty === 'Very Hard' || stage.difficulty === 'Hard') battlefield = TACTICS_BATTLEFIELDS.boss_command_zone;
+
+  if (!recentProfile) return battlefield;
+  return {
+    ...battlefield,
+    levelProfile: recentProfile.tactics,
+    tileTheme: recentProfile.material,
+    tileTexture: recentProfile.tactics.tileTexture
+  };
 }
 
 export function getTacticsPickupPositions(stage = {}) {

@@ -1,4 +1,5 @@
 import { EXPANDED_UNIVERSE_SIGNATURES } from './expandedUniverses';
+import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
@@ -705,13 +706,24 @@ const hasExpandedMedia = (signature, mediaType) => signature?.mediaType === medi
 function getArenaIdForStage(stage = {}) {
   const universe = stage.universe || '';
   const signature = getUniverseSignature(universe);
+  const recentProfile = stage.forceBaseArena || stage.dlcSuppressedArena
+    ? null
+    : getRecentUniverseLevelProfile(universe);
+  const missionText = [
+    stage.name,
+    stage.displayName?.fr,
+    stage.displayName?.en,
+    stage.bossName,
+    stage.description
+  ].filter(Boolean).join(' ').toLowerCase();
   const searchText = getStageSearchText(stage, signature);
   if (stage.forceBaseArena || stage.dlcSuppressedArena) return 'training_flat';
   if (stage.isSurvival) return 'split_pit';
-  if (textMatches(searchText, [/artifact/, /artefact/, /anchor/, /ancrage/, /relic defense/, /protect/])) return 'artifact_bastion';
-  if (textMatches(searchText, [/fragment/, /collect/, /recuper/, /sweep/, /cache/])) return 'artifact_sweep';
-  if (textMatches(searchText, [/portal/, /portail/, /spawn gate/, /lockdown/])) return 'portal_lockdown';
-  if (textMatches(searchText, [/overload/, /surcharge/, /reactor/, /core meltdown/])) return 'boss_overload';
+  if (textMatches(missionText, [/artifact/, /artefact/, /anchor/, /ancrage/, /relic defense/, /protect/])) return 'artifact_bastion';
+  if (textMatches(missionText, [/fragment/, /collect/, /recuper/, /sweep/, /cache/])) return 'artifact_sweep';
+  if (textMatches(missionText, [/portal/, /portail/, /spawn gate/, /lockdown/])) return 'portal_lockdown';
+  if (textMatches(missionText, [/overload/, /surcharge/, /reactor/, /core meltdown/])) return 'boss_overload';
+  if (recentProfile?.melee?.layout) return recentProfile.melee.layout;
   if (ALIEN_UNIVERSES.includes(universe)) return 'hive_corridor';
   if (BOSS_UNIVERSES.includes(universe) || textMatches(searchText, [/kaiju/, /titan/, /colossal/, /behemoth/, /tripod/, /scarab/, /godzilla/, /cloverfield/])) return 'boss_coliseum';
   if (MUSIC_UNIVERSES.includes(universe)) return 'concert_stage';
@@ -730,11 +742,16 @@ function getArenaIdForStage(stage = {}) {
 
 export function createSmashArena(stage, width, height) {
   const base = SMASH_ARENA_LAYOUTS[getArenaIdForStage(stage)] || SMASH_ARENA_LAYOUTS.training_flat;
+  const recentProfile = stage.forceBaseArena || stage.dlcSuppressedArena
+    ? null
+    : getRecentUniverseLevelProfile(stage.universe);
   const platforms = base.platforms(width, height).map(p => ({
     ...p,
     x1: clamp(p.x1, 12, width - 24),
     x2: clamp(p.x2, 24, width - 12),
-    y: clamp(p.y, 58, height - 24)
+    y: clamp(p.y, 58, height - 24),
+    textureId: recentProfile?.melee?.platformTexture || null,
+    surface: recentProfile?.material || null
   }));
   const spawnData = base.spawns(width, height);
   const safePickups = base.pickups(width, height).map(pos => ({
@@ -754,6 +771,7 @@ export function createSmashArena(stage, width, height) {
     spawns: spawnData,
     pickups: safePickups,
     groundY: platforms[0]?.y || Math.round(height * 0.76),
+    levelProfile: recentProfile?.melee || null,
     theme: getSmashArenaTheme(stage, base)
   };
 }
@@ -764,6 +782,18 @@ export function getSmashPickupPositions(stage, width = 760, height = 360) {
 
 export function getSmashArenaTheme(stage = {}, arena = {}) {
   const universe = stage.universe || '';
+  const recentProfile = stage.forceBaseArena || stage.dlcSuppressedArena
+    ? null
+    : getRecentUniverseLevelProfile(universe);
+  if (recentProfile) return {
+    material: recentProfile.material.pattern,
+    accent: recentProfile.material.edge,
+    secondary: recentProfile.material.detail,
+    danger: recentProfile.material.danger,
+    surface: recentProfile.material,
+    platformTexture: recentProfile.melee.platformTexture,
+    levelName: recentProfile.melee.name
+  };
   if (ALIEN_UNIVERSES.includes(universe) || arena.id === 'hive_corridor') return { material: 'hive', accent: '#86ffb0', secondary: '#1a5f4a', danger: '#b6ff38' };
   if (MUSIC_UNIVERSES.includes(universe) || arena.id === 'concert_stage') return { material: 'concert', accent: '#ff4fd8', secondary: '#ffe15a', danger: '#ff5b2e' };
   if (HORROR_LAB_UNIVERSES.includes(universe) || arena.id === 'containment_lab') return { material: 'lab', accent: '#61ff59', secondary: '#d7fff0', danger: '#61ff59' };

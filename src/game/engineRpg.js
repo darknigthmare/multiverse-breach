@@ -1,21 +1,31 @@
 // Final Fantasy Record Keeper ATB RPG Engine with Synergies & Status Effects
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
+import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 
 export class EngineRpg {
-  constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete) {
+  constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
     this.width = width;
     this.height = height;
     this.particles = particles;
     this.playSfx = playSfx;
     this.onComplete = onComplete;
+    this.stage = stage;
+    this.levelProfile = getRecentUniverseLevelProfile(stage.universe);
+
+    const heroPosition = (idx) => {
+      const lane = this.levelProfile?.rpg?.heroLanes?.[idx];
+      return lane
+        ? { x: Math.round(width * lane.x), y: Math.round(height * lane.y) }
+        : { x: 70 + idx * 45, y: 90 + idx * 55 };
+    };
 
     this.heroes = heroes.map((h, idx) => ({
       ...h,
-      x: 70 + idx * 45,
-      y: 90 + idx * 55,
-      homeX: 70 + idx * 45,
-      homeY: 90 + idx * 55,
+      x: heroPosition(idx).x,
+      y: heroPosition(idx).y,
+      homeX: heroPosition(idx).x,
+      homeY: heroPosition(idx).y,
       state: 'idle',
       stateTimer: 0,
       atb: Math.random() * 20,
@@ -74,12 +84,15 @@ export class EngineRpg {
       const templates = this.enemiesData.monsters;
       for (let i = 0; i < 3; i++) {
         const t = templates[i] || templates[0];
+        const lane = this.levelProfile?.rpg?.enemyLanes?.[i];
+        const homeX = lane ? Math.round(this.width * lane.x) : this.width - 200 + i * 45;
+        const homeY = lane ? Math.round(this.height * lane.y) : 90 + i * 55;
         this.enemies.push({
           ...t,
-          x: this.width - 200 + i * 45,
-          y: 90 + i * 55,
-          homeX: this.width - 200 + i * 45,
-          homeY: 90 + i * 55,
+          x: homeX,
+          y: homeY,
+          homeX,
+          homeY,
           state: 'idle',
           stateTimer: 0,
           atb: Math.random() * 30,
@@ -95,12 +108,15 @@ export class EngineRpg {
       const templates = this.enemiesData.bosses;
       for (let i = 0; i < 2; i++) {
         const t = templates[i] || templates[0];
+        const lane = this.levelProfile?.rpg?.bossLanes?.[i];
+        const homeX = lane ? Math.round(this.width * lane.x) : this.width - 170 + i * 50;
+        const homeY = lane ? Math.round(this.height * lane.y) : 110 + i * 80;
         this.enemies.push({
           ...t,
-          x: this.width - 170 + i * 50,
-          y: 110 + i * 80,
-          homeX: this.width - 170 + i * 50,
-          homeY: 110 + i * 80,
+          x: homeX,
+          y: homeY,
+          homeX,
+          homeY,
           state: 'idle',
           stateTimer: 0,
           atb: Math.random() * 15,
@@ -115,12 +131,15 @@ export class EngineRpg {
     } else if (w === 3) {
       // Spawn 1 Giant World Boss
       const t = this.enemiesData.worldBoss;
+      const lane = this.levelProfile?.rpg?.worldBoss;
+      const homeX = lane ? Math.round(this.width * lane.x) : this.width - 140;
+      const homeY = lane ? Math.round(this.height * lane.y) : 140;
       this.enemies.push({
         ...t,
-        x: this.width - 140,
-        y: 140,
-        homeX: this.width - 140,
-        homeY: 140,
+        x: homeX,
+        y: homeY,
+        homeX,
+        homeY,
         state: 'idle',
         stateTimer: 0,
         atb: 0,

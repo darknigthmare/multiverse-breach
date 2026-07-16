@@ -10,6 +10,11 @@ const faceUnitToward = (unit, target) => {
   unit.facing = targetX > unitX ? 1 : -1;
 };
 
+const colorWithAlpha = (hex, alpha) => {
+  const value = /^#[0-9a-f]{6}$/i.test(hex || '') ? hex.slice(1) : '39c5bb';
+  return `rgba(${parseInt(value.slice(0, 2), 16)}, ${parseInt(value.slice(2, 4), 16)}, ${parseInt(value.slice(4, 6), 16)}, ${alpha})`;
+};
+
 export class EngineTactics {
   constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
     this.width = width;
@@ -1651,7 +1656,7 @@ export class EngineTactics {
 
   draw(ctx, animTime) {
     // 1. Draw Grid board
-    ctx.strokeStyle = '#2980b9';
+    ctx.strokeStyle = colorWithAlpha(this.getBattlefieldAccent(), 0.62);
     ctx.lineWidth = 1;
 
     for (let r = 0; r < this.rows; r++) {
@@ -1660,8 +1665,9 @@ export class EngineTactics {
         const cellY = this.gridStartY + r * this.cellH;
         
         const tile = this.getTileAt(c, r);
-        ctx.fillStyle = this.getTileFill(tile);
+        ctx.fillStyle = this.getTileFill(tile, c, r);
         ctx.fillRect(cellX, cellY, this.cellW, this.cellH);
+        this.drawTileTexture(ctx, cellX, cellY, c, r, tile);
         ctx.strokeRect(cellX, cellY, this.cellW, this.cellH);
 
         ctx.fillStyle = 'rgba(255,255,255,0.15)';
@@ -2095,8 +2101,58 @@ export class EngineTactics {
     };
   }
 
-  getTileFill(tile) {
-    if (!tile) return 'rgba(10, 20, 40, 0.4)';
+  drawTileTexture(ctx, cellX, cellY, col, row, tile) {
+    const theme = this.battlefield.tileTheme;
+    if (!theme) return;
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(cellX + 1, cellY + 1, this.cellW - 2, this.cellH - 2);
+    ctx.clip();
+    ctx.strokeStyle = colorWithAlpha(theme.detail, tile ? 0.18 : 0.26);
+    ctx.fillStyle = colorWithAlpha(theme.mid, tile ? 0.12 : 0.2);
+    ctx.lineWidth = 1;
+
+    if (['circuit', 'glass', 'armor', 'alloy', 'hangar', 'steel', 'prison', 'lab'].includes(theme.pattern)) {
+      ctx.strokeRect(cellX + 6, cellY + 6, this.cellW - 12, this.cellH - 12);
+      ctx.fillRect(cellX + 10, cellY + this.cellH / 2 - 1, this.cellW * 0.34, 2);
+      ctx.fillRect(cellX + this.cellW * 0.67, cellY + 10, 2, this.cellH * 0.38);
+    } else if (['wood', 'miniature'].includes(theme.pattern)) {
+      for (let y = cellY + 7; y < cellY + this.cellH; y += 10) ctx.fillRect(cellX, y, this.cellW, 2);
+      const jointX = cellX + ((col + row) % 2 ? this.cellW * 0.32 : this.cellW * 0.68);
+      ctx.fillRect(jointX, cellY, 2, this.cellH);
+    } else if (['organic', 'roots', 'infernal'].includes(theme.pattern)) {
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(cellX - 4, cellY + this.cellH);
+      ctx.quadraticCurveTo(cellX + this.cellW * 0.45, cellY + 4, cellX + this.cellW + 5, cellY + this.cellH * 0.35);
+      ctx.stroke();
+    } else if (['stone', 'alchemy', 'dungeon', 'moss', 'wetStone', 'ninja'].includes(theme.pattern)) {
+      ctx.strokeRect(cellX + 4, cellY + 5, this.cellW - 8, this.cellH - 10);
+      ctx.fillRect(cellX + this.cellW * 0.48, cellY + 5, 2, this.cellH - 10);
+      if (theme.pattern === 'alchemy') {
+        ctx.beginPath();
+        ctx.arc(cellX + this.cellW / 2, cellY + this.cellH / 2, Math.min(this.cellW, this.cellH) * 0.18, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    } else if (theme.pattern === 'studio') {
+      ctx.fillRect(cellX, cellY, this.cellW / 2, this.cellH / 2);
+      ctx.fillRect(cellX + this.cellW / 2, cellY + this.cellH / 2, this.cellW / 2, this.cellH / 2);
+    } else {
+      for (let i = 0; i < 4; i++) {
+        const x = cellX + 8 + ((i * 17 + col * 7) % Math.max(9, this.cellW - 16));
+        const y = cellY + 7 + ((i * 11 + row * 5) % Math.max(9, this.cellH - 14));
+        ctx.fillRect(x, y, 3, 2);
+      }
+    }
+    ctx.restore();
+  }
+
+  getTileFill(tile, col = 0, row = 0) {
+    const theme = this.battlefield.tileTheme;
+    const normalFill = theme
+      ? colorWithAlpha((col + row) % 2 === 0 ? theme.base : theme.mid, 0.58)
+      : 'rgba(10, 20, 40, 0.4)';
+    if (!tile) return normalFill;
     if (tile.type === 'blocked') return 'rgba(12, 12, 16, 0.86)';
     if (tile.type === 'high') return 'rgba(74, 144, 226, 0.28)';
     if (tile.type === 'lightCover') return 'rgba(79, 195, 247, 0.16)';
@@ -2106,7 +2162,7 @@ export class EngineTactics {
     if (tile.type === 'objective') return 'rgba(255, 235, 59, 0.20)';
     if (tile.type === 'portalSpawn') return 'rgba(181, 109, 255, 0.22)';
     if (tile.type === 'artifact') return 'rgba(255, 235, 59, 0.28)';
-    return 'rgba(10, 20, 40, 0.4)';
+    return normalFill;
   }
 
   getTileLabel(tile) {
@@ -2132,6 +2188,7 @@ export class EngineTactics {
   }
 
   getBattlefieldAccent() {
+    if (this.battlefield.tileTheme?.edge) return this.battlefield.tileTheme.edge;
     if (this.battlefield.tags?.includes('horror')) return '#d72f2f';
     if (this.battlefield.tags?.includes('cyber')) return '#39c5bb';
     if (this.battlefield.tags?.includes('war')) return '#ff9f43';

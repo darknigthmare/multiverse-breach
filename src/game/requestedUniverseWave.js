@@ -109,7 +109,7 @@ export const REQUESTED_UNIVERSE_WAVE = [
     desc: { en: 'Time travel follows world-line convergence rather than free rewinds, and Okabe alone retains memories across shifts.', fr: 'Le voyage temporel suit la convergence des lignes d univers plutot qu un rembobinage libre, et Okabe seul conserve ses souvenirs entre les changements.' },
     motif: 'facility',
     colors: ['#241c16', '#050403', '#ff9a3d'],
-    stageVariants: [['Tactics', 'SERN Rounder Apartment Raid', 'Very Hard', 'FB Rounder Network'], ['RPG', 'Radio Kaikan Operation Skuld', 'Expert', 'SERN Attractor Field']]
+    stageVariants: [['Tactics', 'SERN Rounder Apartment Raid', 'Very Hard', 'FB Rounder Network'], ['Smash', 'Radio Kaikan Operation Skuld', 'Expert', 'SERN Attractor Field']]
   },
   {
     key: 'zero_escape_nonary',
@@ -131,7 +131,7 @@ export const REQUESTED_UNIVERSE_WAVE = [
     desc: { en: 'The Nonary Game preserves its arithmetic doors, lethal bracelets, and information transfer across decision branches.', fr: 'Le Nonary Game conserve ses portes arithmetiques, ses bracelets mortels et ses transferts d information entre branches de decision.' },
     motif: 'shipdeck',
     colors: ['#111b25', '#020406', '#52c9ff'],
-    stageVariants: [['RPG', 'AB Project Lunar Facility', 'Very Hard', 'Zero II Decision Engine'], ['Tactics', 'Decision Game Underground Ward', 'Expert', 'Zero Time-Door Protocol']]
+    stageVariants: [['RPG', 'AB Project Lunar Facility', 'Very Hard', 'Zero II Decision Engine'], ['Smash', 'Decision Game Underground Ward', 'Expert', 'Zero Time-Door Protocol']]
   },
   {
     key: 'jojo_bizarre_adventure',
@@ -329,7 +329,7 @@ export const REQUESTED_UNIVERSE_WAVE = [
     desc: { en: 'The Dominator never becomes a generic gun: its target scan and Sibyl authorization gate every shot.', fr: 'Le Dominator ne devient jamais une arme generique: scan de cible et autorisation de Sibyl conditionnent chaque tir.' },
     motif: 'facility',
     colors: ['#12212c', '#020405', '#52e5ff'],
-    stageVariants: [['RPG', 'Hyper-Oats Facility Hostage Route', 'Hard', 'Shogo Makishima'], ['Tactics', 'SEAUn Intervention Grid', 'Expert', 'Sibyl System Collective']]
+    stageVariants: [['RPG', 'Hyper-Oats Facility Hostage Route', 'Hard', 'Shogo Makishima'], ['Smash', 'SEAUn Intervention Grid', 'Expert', 'Sibyl System Collective']]
   },
   {
     key: 'mashle',
@@ -351,7 +351,7 @@ export const REQUESTED_UNIVERSE_WAVE = [
     desc: { en: 'Mash has no magic and must solve magical threats with strength, timing, and improvised physical technique.', fr: 'Mash ne possede aucune magie et resout les menaces magiques par force, timing et techniques physiques improvisees.' },
     motif: 'castle',
     colors: ['#172c29', '#030605', '#f0d56b'],
-    stageVariants: [['RPG', 'Magia Lupus Underground Maze', 'Hard', 'Cell War'], ['Smash', 'Divine Visionary Selection Arena', 'Very Hard', 'Doom First Son']]
+    stageVariants: [['RPG', 'Magia Lupus Underground Maze', 'Hard', 'Cell War'], ['Tactics', 'Divine Visionary Selection Arena', 'Very Hard', 'Doom First Son']]
   },
   {
     key: 'solo_leveling',
@@ -395,7 +395,7 @@ export const REQUESTED_UNIVERSE_WAVE = [
     desc: { en: 'The journey measures decades, memories, mana concealment, and small spells rather than constant escalation.', fr: 'Le voyage se mesure en decennies, souvenirs, dissimulation de mana et petits sorts plutot qu en escalade constante.' },
     motif: 'wasteland',
     colors: ['#24324a', '#05070a', '#bfa6ff'],
-    stageVariants: [['Tactics', 'First-Class Mage Exam Ruins', 'Hard', 'Aura the Guillotine'], ['RPG', 'El Dorado Golden Domain', 'Very Hard', 'Macht of El Dorado']]
+    stageVariants: [['Tactics', 'First-Class Mage Exam Ruins', 'Hard', 'Aura the Guillotine'], ['Smash', 'El Dorado Golden Domain', 'Very Hard', 'Macht of El Dorado']]
   },
   {
     key: 'deadman_wonderland',
@@ -439,7 +439,7 @@ export const REQUESTED_UNIVERSE_WAVE = [
     desc: { en: 'Akira is powerful because a human heart controls Amons body; losing that empathy would erase the character, not upgrade him.', fr: 'Akira est puissant parce qu un coeur humain controle le corps d Amon; perdre cette empathie effacerait le personnage au lieu de l ameliorer.' },
     motif: 'wasteland',
     colors: ['#1e1014', '#040203', '#e53636'],
-    stageVariants: [['RPG', 'Sabbath Club Possession', 'Very Hard', 'Sirene and Kaim'], ['Smash', 'Demon Army Armageddon', 'Expert', 'Satan Final War']]
+    stageVariants: [['RPG', 'Sabbath Club Possession', 'Very Hard', 'Sirene and Kaim'], ['Tactics', 'Demon Army Armageddon', 'Expert', 'Satan Final War']]
   },
   {
     key: 'evangelion',
@@ -571,7 +571,7 @@ export const REQUESTED_UNIVERSE_WAVE = [
     desc: { en: 'Saitamas power is handled as an objective and timing constraint so his canon strength does not erase the game.', fr: 'La puissance de Saitama devient une contrainte d objectif et de timing afin que sa force canonique n efface pas le jeu.' },
     motif: 'arcanecity',
     colors: ['#1e2c35', '#040607', '#f4d52d'],
-    stageVariants: [['Tactics', 'Monster Association Underground', 'Very Hard', 'Orochi Monster King'], ['Smash', 'Alien Conqueror Ship Deck', 'Expert', 'Boros Meteoric Burst']]
+    stageVariants: [['Tactics', 'Monster Association Underground', 'Very Hard', 'Orochi Monster King'], ['RPG', 'Alien Conqueror Ship Deck', 'Expert', 'Boros Meteoric Burst']]
   },
   {
     key: 'sao_gun_gale',
@@ -593,7 +593,7 @@ export const REQUESTED_UNIVERSE_WAVE = [
     desc: { en: 'This is the firearm-focused SAO branch: rifles, ballistic prediction, ammunition, and VR avatar movement drive combat.', fr: 'Il s agit de la branche armes a feu de SAO: fusils, prediction balistique, munitions et mouvement des avatars VR dirigent le combat.' },
     motif: 'wasteland',
     colors: ['#1c2025', '#040405', '#e55838'],
-    stageVariants: [['Smash', 'GGO Desert BoB Ruins', 'Hard', 'Behemoth Heavy Gunner'], ['Tactics', 'Squad Jam Urban Killbox', 'Very Hard', 'Pitohui Berserk Avatar']]
+    stageVariants: [['Smash', 'GGO Desert BoB Ruins', 'Hard', 'Behemoth Heavy Gunner'], ['RPG', 'Squad Jam Urban Killbox', 'Very Hard', 'Pitohui Berserk Avatar']]
   },
   {
     key: 'sword_art_online',

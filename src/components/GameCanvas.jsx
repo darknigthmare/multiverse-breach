@@ -590,7 +590,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (stage.mode === 'Smash') {
       engineRef.current = new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
     } else if (stage.mode === 'RPG') {
-      engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete);
+      engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
       engineRef.current.isFinalBoss = Boolean(stage.finalGameBoss);
     } else if (stage.mode === 'Tactics') {
       engineRef.current = new EngineTactics(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
@@ -642,7 +642,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         if (!ctx) {
           throw new Error('2D context unavailable');
         }
-        const usingOpenAiBackdrop = drawUniverseBackground(ctx, stage.universe, width, height, stage.mode);
+        const renderUniverse = arenaStage.forceBaseArena || arenaStage.dlcSuppressedArena
+          ? 'Nexus de Convergence'
+          : stage.universe;
+        const usingOpenAiBackdrop = drawUniverseBackground(ctx, renderUniverse, width, height, stage.mode);
         if (!bootClearedRef.current) {
           bootClearedRef.current = true;
           setCombatBooting(false);

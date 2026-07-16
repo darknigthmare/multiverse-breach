@@ -2,6 +2,7 @@
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
 import { FEATURED_BACKDROPS } from './featuredUniversePacks';
+import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrameForLayout, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from './spriteAssets';
 
 const spriteSheetCache = new Map();
@@ -950,6 +951,12 @@ function getOpenAiBackdrop(universe, mode) {
 }
 
 export function getOpenAiBackdropSrc(universe, mode) {
+  if (mode === 'Combat' || mode === 'Fighter') {
+    return OPENAI_BACKDROPS.Combat?.[universe]
+      || OPENAI_BACKDROPS.Smash?.[universe]
+      || OPENAI_BACKDROPS.RPG?.[universe]
+      || null;
+  }
   return OPENAI_BACKDROPS[mode]?.[universe] || null;
 }
 
@@ -1011,7 +1018,7 @@ function drawBackdropAnomalyOverlay(ctx, universe, width, height, mode, time) {
     }
   }
 
-  if (mode === 'Smash') {
+  if (mode === 'Smash' || mode === 'Combat' || mode === 'Fighter') {
     ctx.fillStyle = withAlpha(accent, 0.22);
     for (let i = 0; i < 12; i++) {
       const x = (i * 67 + time * 1.7) % width;
@@ -1046,21 +1053,23 @@ function drawBackdropAnomalyOverlay(ctx, universe, width, height, mode, time) {
   ctx.restore();
 }
 
-function drawStageFloor(ctx, width, height, mode, theme) {
+function drawStageFloor(ctx, width, height, mode, theme, levelProfile = null) {
+  const material = levelProfile?.material || null;
   if (mode === 'RPG') {
-    ctx.fillStyle = theme.floor;
+    const horizon = levelProfile?.rpg?.horizon || 0.46;
+    ctx.fillStyle = material ? withAlpha(material.base, 0.62) : theme.floor;
     ctx.beginPath();
-    ctx.moveTo(0, height * 0.46);
+    ctx.moveTo(0, height * horizon);
     ctx.lineTo(width, height * 0.72);
     ctx.lineTo(width, height);
     ctx.lineTo(0, height);
     ctx.closePath();
     ctx.fill();
 
-    ctx.strokeStyle = theme.grid;
+    ctx.strokeStyle = material ? withAlpha(material.edge, 0.7) : theme.grid;
     ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(0, height * 0.46);
+    ctx.moveTo(0, height * horizon);
     ctx.lineTo(width, height * 0.72);
     ctx.stroke();
 
@@ -1069,39 +1078,67 @@ function drawStageFloor(ctx, width, height, mode, theme) {
     for (let xOffset = -width; xOffset < width * 2; xOffset += 80) {
       ctx.beginPath();
       ctx.moveTo(xOffset, height);
-      ctx.lineTo(xOffset + width * 0.6, height * 0.4);
+      ctx.lineTo(xOffset + width * 0.6, height * (horizon - 0.06));
       ctx.stroke();
+    }
+
+    if (material) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(0, height * horizon);
+      ctx.lineTo(width, height * 0.72);
+      ctx.lineTo(width, height);
+      ctx.lineTo(0, height);
+      ctx.closePath();
+      ctx.clip();
+      ctx.strokeStyle = withAlpha(material.detail, 0.2);
+      ctx.fillStyle = withAlpha(material.mid, 0.2);
+      if (['wood', 'miniature'].includes(material.pattern)) {
+        for (let y = height * horizon + 12; y < height; y += 22) ctx.fillRect(0, y, width, 3);
+      } else if (['circuit', 'glass', 'armor', 'alloy', 'hangar', 'steel', 'prison', 'lab'].includes(material.pattern)) {
+        for (let x = 12; x < width; x += 54) {
+          ctx.strokeRect(x, height * horizon + ((x / 54) % 2) * 18, 34, 22);
+        }
+      } else if (['organic', 'roots', 'infernal'].includes(material.pattern)) {
+        ctx.lineWidth = 3;
+        for (let x = -40; x < width + 80; x += 84) {
+          ctx.beginPath();
+          ctx.moveTo(x, height);
+          ctx.quadraticCurveTo(x + 34, height * 0.7, x + 72, height * horizon);
+          ctx.stroke();
+        }
+      } else {
+        for (let y = height * horizon + 18; y < height; y += 30) {
+          const offset = Math.round((y / 30) % 2) * 24;
+          for (let x = -offset; x < width; x += 48) ctx.strokeRect(x, y, 42, 18);
+        }
+      }
+      ctx.restore();
     }
     return;
   }
 
   if (mode === 'Tactics') {
-    const startX = 60;
-    const startY = 50;
-    const colW = 55;
-    const rowH = 40;
-
-    ctx.fillStyle = theme.floor;
-    ctx.fillRect(startX, startY, colW * 8, rowH * 5);
-    ctx.strokeStyle = theme.grid;
-    ctx.lineWidth = 2;
-    ctx.strokeRect(startX, startY, colW * 8, rowH * 5);
-
-    for (let r = 0; r < 5; r++) {
-      for (let c = 0; c < 8; c++) {
-        ctx.fillStyle = (r + c) % 2 === 0 ? 'rgba(255,255,255,0.035)' : 'rgba(0,0,0,0.08)';
-        ctx.fillRect(startX + c * colW + 2, startY + r * rowH + 2, colW - 4, rowH - 4);
-      }
-    }
+    ctx.fillStyle = material ? withAlpha(material.shadow, 0.42) : 'rgba(4,8,14,0.38)';
+    ctx.fillRect(width * 0.055, height * 0.12, width * 0.89, height * 0.68);
     return;
   }
 
+  if (mode === 'Combat' || mode === 'Fighter') {
+    const horizonY = height * (levelProfile?.combat?.horizon || 0.69);
+    const floor = ctx.createLinearGradient(0, horizonY, 0, height);
+    floor.addColorStop(0, material ? withAlpha(material.edge, 0.34) : theme.floor);
+    floor.addColorStop(0.12, material ? withAlpha(material.base, 0.78) : 'rgba(10,12,20,0.8)');
+    floor.addColorStop(1, material ? withAlpha(material.shadow, 0.96) : 'rgba(2,2,7,0.96)');
+    ctx.fillStyle = floor;
+    ctx.fillRect(0, horizonY, width, height - horizonY);
+    return;
+  }
+
+  // Smash platforms are drawn by EngineSmash from the real collision geometry.
+  // The background only keeps the lower void, avoiding a second decorative platform set.
   ctx.fillStyle = 'rgba(0,0,0,0.72)';
   ctx.fillRect(0, height - 20, width, 20);
-  ctx.fillStyle = theme.grid;
-  ctx.fillRect(width * 0.18, height - 48, width * 0.64, 8);
-  ctx.fillRect(width * 0.08, height - 118, width * 0.22, 7);
-  ctx.fillRect(width * 0.7, height - 132, width * 0.22, 7);
 }
 
 function drawStars(ctx, width, height, theme, count = 32) {
@@ -1355,8 +1392,12 @@ function drawMotif(ctx, theme, width, height, time) {
 }
 
 export function drawUniverseBackground(ctx, universe, width, height, mode) {
+  const levelProfile = getRecentUniverseLevelProfile(universe);
   if (drawOpenAiBackdrop(ctx, universe, width, height, mode)) {
     drawBackdropAnomalyOverlay(ctx, universe, width, height, mode, Date.now() / 33);
+    if (levelProfile && ['RPG', 'Tactics', 'Combat', 'Fighter'].includes(mode)) {
+      drawStageFloor(ctx, width, height, mode, getTheme(universe), levelProfile);
+    }
     return true;
   }
 
@@ -1372,7 +1413,7 @@ export function drawUniverseBackground(ctx, universe, width, height, mode) {
   ctx.fillRect(0, 0, width, height);
 
   drawMotif(ctx, theme, width, height, time);
-  drawStageFloor(ctx, width, height, mode, theme);
+  drawStageFloor(ctx, width, height, mode, theme, levelProfile);
 
   ctx.fillStyle = withAlpha(theme.accent, 0.12);
   for (let i = 0; i < 8; i++) {
