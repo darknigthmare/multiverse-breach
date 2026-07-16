@@ -3,6 +3,7 @@
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
 import { FEATURED_BACKDROPS } from './featuredUniversePacks';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
+import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrameForLayout, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from './spriteAssets';
 
 const spriteSheetCache = new Map();
@@ -1055,6 +1056,7 @@ function drawBackdropAnomalyOverlay(ctx, universe, width, height, mode, time) {
 
 function drawStageFloor(ctx, width, height, mode, theme, levelProfile = null) {
   const material = levelProfile?.material || null;
+  const universe = levelProfile?.universe || null;
   if (mode === 'RPG') {
     const horizon = levelProfile?.rpg?.horizon || 0.46;
     ctx.fillStyle = material ? withAlpha(material.base, 0.62) : theme.floor;
@@ -1065,6 +1067,19 @@ function drawStageFloor(ctx, width, height, mode, theme, levelProfile = null) {
     ctx.lineTo(0, height);
     ctx.closePath();
     ctx.fill();
+
+    if (universe) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(0, height * horizon);
+      ctx.lineTo(width, height * 0.72);
+      ctx.lineTo(width, height);
+      ctx.lineTo(0, height);
+      ctx.closePath();
+      ctx.clip();
+      drawRecentUniverseTextureCover(ctx, universe, 'RPG', 0, height * horizon, width, height * (1 - horizon), 0.76);
+      ctx.restore();
+    }
 
     ctx.strokeStyle = material ? withAlpha(material.edge, 0.7) : theme.grid;
     ctx.lineWidth = 2;
@@ -1121,6 +1136,9 @@ function drawStageFloor(ctx, width, height, mode, theme, levelProfile = null) {
   if (mode === 'Tactics') {
     ctx.fillStyle = material ? withAlpha(material.shadow, 0.42) : 'rgba(4,8,14,0.38)';
     ctx.fillRect(width * 0.055, height * 0.12, width * 0.89, height * 0.68);
+    if (universe) {
+      drawRecentUniverseTextureCover(ctx, universe, 'Tactics', width * 0.055, height * 0.12, width * 0.89, height * 0.68, 0.34);
+    }
     return;
   }
 
@@ -1132,6 +1150,9 @@ function drawStageFloor(ctx, width, height, mode, theme, levelProfile = null) {
     floor.addColorStop(1, material ? withAlpha(material.shadow, 0.96) : 'rgba(2,2,7,0.96)');
     ctx.fillStyle = floor;
     ctx.fillRect(0, horizonY, width, height - horizonY);
+    if (universe) {
+      drawRecentUniverseTextureCover(ctx, universe, 'Combat', 0, horizonY, width, height - horizonY, 0.72);
+    }
     return;
   }
 

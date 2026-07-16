@@ -1,5 +1,6 @@
 import { drawPixelSprite } from './renderer';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
+import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const lerp = (from, to, amount) => from + (to - from) * amount;
@@ -658,6 +659,7 @@ export class EngineFighter {
     floor.addColorStop(1, rgba(shadow, 0.98));
     ctx.fillStyle = floor;
     ctx.fillRect(0, floorY, this.width, this.height - floorY);
+    drawRecentUniverseTextureCover(ctx, this.universe, 'Combat', 0, floorY, this.width, this.height - floorY, 0.82);
     ctx.strokeStyle = rgba(edge, 0.66);
     ctx.lineWidth = 2;
     ctx.beginPath();

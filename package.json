@@ -10,6 +10,8 @@
     "check:progression": "node scripts/progressionAudit.mjs",
     "sprites:prompts": "node scripts/buildSpritePromptPack.mjs",
     "visuals:prompts": "node scripts/buildFeaturedVisualPromptPack.mjs",
+    "textures:prompts": "node scripts/buildRecentUniverseTexturePromptPack.mjs",
+    "textures:references": "node scripts/buildRecentUniverseTexturePromptPack.mjs --download-references",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -2,6 +2,7 @@
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
+import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
 
 const platformTextureCanvasCache = new Map();
 
@@ -86,6 +87,7 @@ export class EngineSmash {
     this.onComplete = onComplete;
     this.stage = stage;
     this.arena = createSmashArena(stage, width, height);
+    this.recentPlatformPattern = null;
     this.gravity = this.arena.gravity || 0.25;
     this.jumpVelocity = this.arena.jump || -7.8;
     this.hazardTick = 0;
@@ -1257,8 +1259,12 @@ export class EngineSmash {
     ctx.shadowBlur = platformData.kind === 'main' ? 10 : 6;
     ctx.fillStyle = surface?.shadow || (platformData.kind === 'main' ? 'rgba(0,0,0,0.84)' : 'rgba(0,0,0,0.68)');
     if (surface) ctx.fillRect(platformData.x1 + 3, y + height / 2, width - 6, platformData.kind === 'main' ? 12 : 7);
+    if (!this.recentPlatformPattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
+      this.recentPlatformPattern = getRecentUniverseTexturePattern(ctx, this.stage.universe, 'Melee');
+    }
     const textureCanvas = makeTextureCanvas(theme, platformData.kind);
-    const texturePattern = textureCanvas ? ctx.createPattern(textureCanvas, 'repeat') : null;
+    const fallbackTexturePattern = textureCanvas ? ctx.createPattern(textureCanvas, 'repeat') : null;
+    const texturePattern = this.recentPlatformPattern || fallbackTexturePattern;
     ctx.fillStyle = texturePattern || surface?.base || (platformData.kind === 'main' ? 'rgba(0,0,0,0.84)' : 'rgba(0,0,0,0.68)');
     ctx.strokeStyle = theme.accent;
     ctx.lineWidth = platformData.kind === 'main' ? 3 : 2;
