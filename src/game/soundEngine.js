@@ -1,4 +1,5 @@
 // Web Audio API Retro 8-bit Sound Synthesizer
+import { resolveStageMusicProfile } from './stageMusicProfiles';
 
 class SoundEngine {
   constructor() {
@@ -11,6 +12,10 @@ class SoundEngine {
     this.currentTempo = 120;
     this.beatIndex = 0;
     this.bgmTheme = null;
+    this.bgmRequest = null;
+    this.currentMusicPlan = null;
+    this.bgmMaster = null;
+    this.noiseBuffer = null;
   }
 
   init() {
@@ -37,7 +42,9 @@ class SoundEngine {
       }
     } else {
       this.resume();
-      if (this.bgmTheme) {
+      if (this.bgmRequest?.type === 'stage') {
+        this.playStageBgm(this.bgmRequest.stage, this.bgmRequest.state);
+      } else if (this.bgmTheme) {
         this.playBgm(this.bgmTheme);
       }
     }
@@ -255,113 +262,347 @@ class SoundEngine {
     }
   }
 
-  playStageBgm(stage = {}) {
-    const mode = String(stage.mode || 'RPG');
-    const universe = String(stage.universe || 'Nexus');
-    const stageId = String(stage.id || stage.name || 'unknown-stage');
-    this.playBgm(`stage|${mode}|${universe}|${stageId}`);
+  playStageBgm(stage = {}, state = null) {
+    const normalizedStage = {
+      ...stage,
+      id: stage.id || stage.name || 'unknown-stage',
+      name: stage.name || String(stage.id || 'Unknown Stage'),
+      universe: stage.universe || 'Nexus de Convergence',
+      mode: stage.mode || 'RPG'
+    };
+    const requestedState = state
+      || stage.musicState
+      || (stage.bossActive || stage.finalGameBoss ? 'boss' : 'battle');
+    const plan = resolveStageMusicProfile(normalizedStage, requestedState);
+    const alreadyPlaying = this.bgmInterval && this.currentMusicPlan?.key === plan.key;
+
+    this.bgmTheme = `stage|${normalizedStage.mode}|${normalizedStage.universe}|${normalizedStage.id}`;
+    this.bgmRequest = { type: 'stage', stage: normalizedStage, state: requestedState };
+    this.currentMusicPlan = plan;
+    this.currentTempo = plan.tempo;
+    this.resume();
+
+    if (this.muted || !this.ctx || alreadyPlaying) return plan;
+    this.startMusicPlan(plan);
+    return plan;
+  }
+
+  setStageMusicState(state, stagePatch = {}) {
+    const baseStage = this.bgmRequest?.stage || {
+      id: 'nexus-fallback',
+      name: 'Nexus de Convergence',
+      universe: 'Nexus de Convergence',
+      mode: 'RPG'
+    };
+    return this.playStageBgm({ ...baseStage, ...stagePatch }, state);
+  }
+
+  playStageMusicStinger(kind = 'boss') {
+    if (this.muted || !this.ctx || !this.currentMusicPlan) return;
+    this.scheduleProfileStinger(this.currentMusicPlan, kind, this.ctx.currentTime + 0.025);
   }
 
   playBgm(theme) {
-    this.resume();
-    this.bgmTheme = theme;
-    if (this.muted || !this.ctx) return;
+    const themeKey = String(theme || '');
+    this.bgmTheme = themeKey;
 
-    this.stopBgm();
-
-    const D4 = 293.66, E4 = 329.63, G4 = 392.00, A4 = 440.00, B4 = 493.88;
-    const D3 = 146.83, E3 = 164.81, FS3 = 185.00, G3 = 196.00, A3 = 220.00, B3 = 246.94;
-    const C5 = 523.25, D5 = 587.33;
-
-    let melody = [];
-    let bass = [];
-    let tempo = 120;
-    let leadWave = 'triangle';
-    let bassWave = 'square';
-
-    if (theme === 'hub') {
-      tempo = 110;
-      melody = [E4, G4, A4, B4, 0, B4, A4, G4, E4, D4, E4, G4, A4, 0, B4, D5];
-      bass = [E3, E3, G3, G3, A3, A3, B3, B3, E3, E3, G3, G3, A3, A3, B3, D3];
-    } else if (theme === 'battle') {
-      tempo = 140;
-      melody = [E4, E4, 0, G4, A4, G4, B4, A4, E4, E4, 0, D5, C5, B4, A4, G4];
-      bass = [E3, B3, E3, B3, G3, D3, G3, D3, A3, E3, A3, E3, B3, FS3, B3, B3];
-    } else if (String(theme).startsWith('stage|')) {
-      const [, mode = 'RPG'] = String(theme).split('|');
-      let seed = 2166136261;
-      for (const char of String(theme)) {
-        seed ^= char.charCodeAt(0);
-        seed = Math.imul(seed, 16777619) >>> 0;
-      }
-      const scales = [
-        [D4, E4, G4, A4, B4, D5],
-        [E4, G4, A4, B4, C5, D5],
-        [D4, E4, FS3 * 2, A4, B4, C5],
-        [E4, G4, A4, B4, D5, C5]
-      ];
-      const scale = scales[seed % scales.length];
-      const bassScale = [D3, E3, FS3, G3, A3, B3];
-      const length = 24;
-      melody = Array.from({ length }, (_, index) => {
-        const value = (seed + index * 17 + Math.imul(index + 3, index + 7)) >>> 0;
-        if ((value % 11) === 0 || (mode === 'Tactics' && index % 8 === 7)) return 0;
-        return scale[value % scale.length];
-      });
-      bass = Array.from({ length }, (_, index) => bassScale[((seed >>> 4) + Math.floor(index / 2) * 3) % bassScale.length]);
-      tempo = mode === 'Smash' ? 154 + (seed % 14) : mode === 'Tactics' ? 116 + (seed % 12) : 126 + (seed % 16);
-      leadWave = mode === 'Smash' ? 'square' : mode === 'Tactics' ? 'sine' : 'triangle';
-      bassWave = mode === 'Tactics' ? 'triangle' : 'square';
-    } else {
-      return;
+    if (themeKey === 'hub') {
+      return this.playStageBgm({
+        id: 'nexus-hub',
+        name: 'A.R.C.A. Nexus Hub',
+        universe: 'Nexus de Convergence',
+        mode: 'RPG'
+      }, 'hub');
     }
 
-    this.currentTempo = tempo;
-    const secondsPerBeat = 60.0 / tempo;
-    const noteDuration = secondsPerBeat * 0.5;
+    if (themeKey === 'battle') {
+      return this.playStageBgm({
+        id: 'nexus-legacy-battle',
+        name: 'A.R.C.A. Impact Arena',
+        universe: 'Nexus de Convergence',
+        mode: 'Fighter'
+      }, 'battle');
+    }
 
-    let nextNoteTime = this.ctx.currentTime;
+    if (themeKey.startsWith('stage|')) {
+      const [, mode = 'RPG', universe = 'Nexus de Convergence', stageId = 'legacy-stage'] = themeKey.split('|');
+      return this.playStageBgm({
+        id: stageId,
+        name: stageId,
+        universe,
+        mode
+      }, 'battle');
+    }
+
+    this.bgmRequest = null;
+    this.currentMusicPlan = null;
+    this.stopBgm();
+    return null;
+  }
+
+  startMusicPlan(plan) {
+    if (!this.ctx || !plan?.steps?.length) return;
+    this.stopBgm();
+    this.currentMusicPlan = plan;
+    this.currentTempo = plan.tempo;
     this.beatIndex = 0;
 
+    this.bgmMaster = this.ctx.createGain();
+    this.bgmMaster.gain.setValueAtTime(0.0001, this.ctx.currentTime);
+    this.bgmMaster.gain.exponentialRampToValueAtTime(0.72, this.ctx.currentTime + 0.08);
+    this.bgmMaster.connect(this.ctx.destination);
+
+    const stepDuration = (60 / plan.tempo) * plan.stepDurationBeats;
+    let nextStepTime = this.ctx.currentTime + 0.035;
+
+    if (plan.stinger) {
+      this.scheduleProfileStinger(plan, plan.stinger, nextStepTime);
+      nextStepTime += stepDuration * (plan.stinger === 'boss' ? 2 : 1);
+    }
+
     const scheduleNotes = () => {
-      while (nextNoteTime < this.ctx.currentTime + 0.2) {
-        const currentMelodyNote = melody[this.beatIndex % melody.length];
-        const currentBassNote = bass[this.beatIndex % bass.length];
-
-        if (currentMelodyNote > 0) {
-          const osc = this.ctx.createOscillator();
-          const gain = this.ctx.createGain();
-          osc.type = leadWave;
-          osc.frequency.setValueAtTime(currentMelodyNote, nextNoteTime);
-          gain.gain.setValueAtTime(0.05, nextNoteTime);
-          gain.gain.linearRampToValueAtTime(0.005, nextNoteTime + noteDuration - 0.02);
-          osc.connect(gain);
-          gain.connect(this.ctx.destination);
-          osc.start(nextNoteTime);
-          osc.stop(nextNoteTime + noteDuration);
-          this.activeSources.push(osc);
-        }
-
-        if (currentBassNote > 0) {
-          const osc = this.ctx.createOscillator();
-          const gain = this.ctx.createGain();
-          osc.type = bassWave;
-          osc.frequency.setValueAtTime(currentBassNote, nextNoteTime);
-          gain.gain.setValueAtTime(0.04, nextNoteTime);
-          gain.gain.linearRampToValueAtTime(0.005, nextNoteTime + noteDuration - 0.02);
-          osc.connect(gain);
-          gain.connect(this.ctx.destination);
-          osc.start(nextNoteTime);
-          osc.stop(nextNoteTime + noteDuration);
-          this.activeSources.push(osc);
-        }
-
-        nextNoteTime += noteDuration;
-        this.beatIndex++;
+      if (!this.ctx || this.muted || this.currentMusicPlan?.key !== plan.key) return;
+      while (nextStepTime < this.ctx.currentTime + 0.22) {
+        const stepIndex = this.beatIndex % plan.steps.length;
+        this.scheduleMusicStep(plan, plan.steps[stepIndex], stepIndex, nextStepTime, stepDuration);
+        nextStepTime += stepDuration;
+        this.beatIndex += 1;
       }
     };
 
-    this.bgmInterval = setInterval(scheduleNotes, 100);
+    scheduleNotes();
+    this.bgmInterval = setInterval(scheduleNotes, 75);
+  }
+
+  scheduleMusicStep(plan, step, stepIndex, startTime, stepDuration) {
+    const accent = Math.max(0.2, step.accent || 0.5);
+    const detune = ((plan.seed + stepIndex * 17) % 9) - 4;
+
+    if (step.lead) {
+      this.scheduleTone({
+        midi: step.lead,
+        wave: plan.waves.lead,
+        startTime,
+        duration: stepDuration * 0.88,
+        volume: plan.gains.lead * (0.72 + accent * 0.3),
+        filterFrequency: plan.filters.lead,
+        detune
+      });
+    }
+
+    if (step.bass) {
+      this.scheduleTone({
+        midi: step.bass,
+        wave: plan.waves.bass,
+        startTime,
+        duration: stepDuration * 1.75,
+        volume: plan.gains.bass * (0.8 + accent * 0.25),
+        filterFrequency: plan.filters.bass,
+        detune: -detune * 0.4
+      });
+    }
+
+    if (step.chord) {
+      const chordDuration = stepDuration * plan.stepsPerBar * 1.65;
+      step.chord.forEach((midi, index) => {
+        this.scheduleTone({
+          midi,
+          wave: plan.waves.pad,
+          startTime: startTime + index * 0.012,
+          duration: chordDuration,
+          volume: plan.gains.pad / Math.max(1, step.chord.length),
+          filterFrequency: plan.filters.pad,
+          attack: Math.min(0.16, chordDuration * 0.2),
+          detune: (index - 1) * 3
+        });
+      });
+    }
+
+    if (step.drum) {
+      this.scheduleDrum(step.drum, startTime, stepDuration, plan, accent);
+    }
+
+    if (plan.bossLayerEnabled && step.boss) {
+      this.scheduleTone({
+        midi: step.boss,
+        wave: plan.boss.wave || plan.waves.boss,
+        startTime,
+        duration: stepDuration * 2.4,
+        volume: (plan.boss.gain || plan.gains.boss) * (0.8 + accent * 0.25),
+        filterFrequency: plan.filters.boss,
+        detune: -7
+      });
+    }
+  }
+
+  scheduleTone({
+    midi,
+    wave = 'triangle',
+    startTime,
+    duration,
+    volume,
+    filterFrequency,
+    detune = 0,
+    attack = 0.012
+  }) {
+    if (!this.ctx || !this.bgmMaster || !Number.isFinite(midi)) return;
+    const safeDuration = Math.max(0.045, duration);
+    const endTime = startTime + safeDuration;
+    const peakTime = Math.min(endTime - 0.025, startTime + Math.max(0.004, attack));
+    const oscillator = this.ctx.createOscillator();
+    const filter = this.ctx.createBiquadFilter();
+    const gain = this.ctx.createGain();
+
+    oscillator.type = ['sine', 'square', 'sawtooth', 'triangle'].includes(wave) ? wave : 'triangle';
+    oscillator.frequency.setValueAtTime(440 * (2 ** ((midi - 69) / 12)), startTime);
+    oscillator.detune.setValueAtTime(detune, startTime);
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(Math.max(120, filterFrequency || 1800), startTime);
+    filter.Q.setValueAtTime(0.7, startTime);
+    gain.gain.setValueAtTime(0.0001, startTime);
+    gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, volume), peakTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, endTime);
+
+    oscillator.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.bgmMaster);
+    oscillator.start(startTime);
+    oscillator.stop(endTime + 0.01);
+    this.trackSource(oscillator);
+  }
+
+  scheduleDrum(code, startTime, stepDuration, plan, accent) {
+    const baseGain = plan.gains.drums * (0.68 + accent * 0.36);
+    if (code === 1) {
+      const oscillator = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(128, startTime);
+      oscillator.frequency.exponentialRampToValueAtTime(42, startTime + Math.min(0.16, stepDuration));
+      gain.gain.setValueAtTime(Math.max(0.0002, baseGain * 1.18), startTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + Math.min(0.18, stepDuration * 0.9));
+      oscillator.connect(gain);
+      gain.connect(this.bgmMaster);
+      oscillator.start(startTime);
+      oscillator.stop(startTime + Math.min(0.2, stepDuration));
+      this.trackSource(oscillator);
+      return;
+    }
+
+    const duration = code === 3 ? Math.min(0.055, stepDuration * 0.45) : Math.min(0.14, stepDuration * 0.75);
+    const filterType = code === 3 ? 'highpass' : code === 4 ? 'bandpass' : 'bandpass';
+    const frequency = code === 3 ? 5200 : code === 4 ? plan.filters.noise * 0.72 : plan.filters.noise;
+    this.scheduleNoise({
+      startTime,
+      duration,
+      volume: baseGain * (code === 3 ? 0.44 : code === 4 ? 0.88 : 0.72),
+      filterType,
+      frequency,
+      playbackRate: code === 4 ? 0.76 : code === 3 ? 1.32 : 1
+    });
+
+    if (code === 4) {
+      this.scheduleTone({
+        midi: 72 + ((plan.seed + this.beatIndex) % 8),
+        wave: 'square',
+        startTime,
+        duration: Math.min(0.1, stepDuration * 0.65),
+        volume: baseGain * 0.36,
+        filterFrequency: Math.max(900, plan.filters.noise),
+        detune: 11
+      });
+    }
+  }
+
+  scheduleNoise({ startTime, duration, volume, filterType = 'bandpass', frequency = 1800, playbackRate = 1 }) {
+    if (!this.ctx || !this.bgmMaster) return;
+    const source = this.ctx.createBufferSource();
+    const filter = this.ctx.createBiquadFilter();
+    const gain = this.ctx.createGain();
+    source.buffer = this.getNoiseBuffer();
+    source.playbackRate.setValueAtTime(playbackRate, startTime);
+    filter.type = filterType;
+    filter.frequency.setValueAtTime(Math.max(120, frequency), startTime);
+    filter.Q.setValueAtTime(filterType === 'bandpass' ? 1.6 : 0.8, startTime);
+    gain.gain.setValueAtTime(Math.max(0.0002, volume), startTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+    source.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.bgmMaster);
+    source.start(startTime);
+    source.stop(startTime + duration + 0.01);
+    this.trackSource(source);
+  }
+
+  getNoiseBuffer() {
+    if (this.noiseBuffer && this.noiseBuffer.sampleRate === this.ctx.sampleRate) return this.noiseBuffer;
+    const length = Math.max(1, Math.round(this.ctx.sampleRate * 0.5));
+    const buffer = this.ctx.createBuffer(1, length, this.ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    let seed = 0x13579BDF;
+    for (let index = 0; index < length; index += 1) {
+      seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
+      data[index] = ((seed / 4294967295) * 2 - 1) * (1 - index / length * 0.18);
+    }
+    this.noiseBuffer = buffer;
+    return buffer;
+  }
+
+  scheduleProfileStinger(plan, kind, startTime) {
+    const secondsPerBeat = 60 / plan.tempo;
+    const isBoss = kind === 'boss';
+    const isDefeat = kind === 'defeat';
+    const intervals = isBoss
+      ? plan.boss.stinger
+      : isDefeat
+        ? [7, 6, 3, 1, 0]
+        : plan.victory.intervals;
+    const beats = isBoss
+      ? intervals.map((_, index) => index === intervals.length - 1 ? 1.25 : 0.38)
+      : isDefeat
+        ? [0.7, 0.7, 0.8, 0.9, 1.5]
+        : plan.victory.beats;
+    const wave = isBoss
+      ? plan.boss.wave || plan.waves.boss
+      : isDefeat
+        ? 'triangle'
+        : plan.victory.wave || plan.waves.lead;
+    let cursor = startTime;
+
+    intervals.forEach((interval, index) => {
+      const beatLength = beats[index] || 0.5;
+      const duration = secondsPerBeat * beatLength;
+      this.scheduleTone({
+        midi: plan.tonalCenterMidi + 12 + interval,
+        wave,
+        startTime: cursor,
+        duration: Math.max(0.08, duration * 0.92),
+        volume: isBoss ? plan.gains.boss * 1.28 : plan.gains.lead * 1.2,
+        filterFrequency: isBoss ? plan.filters.boss * 1.25 : plan.filters.lead * 1.15,
+        attack: isBoss ? 0.006 : 0.012,
+        detune: isBoss ? -5 : 0
+      });
+      cursor += duration;
+    });
+
+    if (isBoss) {
+      this.scheduleNoise({
+        startTime,
+        duration: Math.min(0.24, secondsPerBeat * 0.65),
+        volume: plan.gains.drums * 1.35,
+        filterType: 'lowpass',
+        frequency: Math.max(260, plan.filters.boss),
+        playbackRate: 0.58
+      });
+    }
+  }
+
+  trackSource(source) {
+    this.activeSources.push(source);
+    source.addEventListener('ended', () => {
+      const index = this.activeSources.indexOf(source);
+      if (index >= 0) this.activeSources.splice(index, 1);
+    }, { once: true });
   }
 
   stopBgm() {
@@ -369,12 +610,19 @@ class SoundEngine {
       clearInterval(this.bgmInterval);
       this.bgmInterval = null;
     }
-    this.activeSources.forEach(src => {
+    const sources = [...this.activeSources];
+    this.activeSources = [];
+    sources.forEach(source => {
       try {
-        src.stop();
+        source.stop();
       } catch {}
     });
-    this.activeSources = [];
+    if (this.bgmMaster) {
+      try {
+        this.bgmMaster.disconnect();
+      } catch {}
+      this.bgmMaster = null;
+    }
   }
 }
 

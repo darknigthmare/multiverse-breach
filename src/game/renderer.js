@@ -2,9 +2,10 @@
 
 import { EXPANDED_DECOR_THEMES } from './expandedUniverses';
 import { FEATURED_BACKDROPS } from './featuredUniversePacks';
+import { getGeneratedStageBackdropSrc } from './generatedStageAssets';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
-import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getSpriteFrameForLayout, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from './spriteAssets';
+import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteFrameForLayout, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from './spriteAssets';
 
 const spriteSheetCache = new Map();
 
@@ -54,6 +55,22 @@ const queueSpriteSheetRedraw = (entry, ctx, draw) => {
 
 export const preloadSpriteSheetSrcs = (srcs = []) => {
   srcs.forEach(src => getCachedSpriteSheet(src));
+};
+
+export const drawItemIcon = (ctx, x, y, item, animTime, targetSize = 36) => {
+  const entry = getCachedSpriteSheet(getItemSpriteSrc(item));
+  if (!entry || entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
+    return false;
+  }
+
+  const pulse = 1 + Math.sin(animTime * 0.08 + x) * 0.08;
+  const size = targetSize * pulse;
+  ctx.save();
+  ctx.translate(Math.round(x), Math.round(y));
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(entry.image, -size / 2, -size / 2, size, size);
+  ctx.restore();
+  return true;
 };
 
 const drawMirelleItemVfx = (ctx, x, y, entity, animTime, facing, targetHeight, context, redrawWhenResolved) => {
@@ -676,7 +693,8 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
 };
 
 export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
-  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, facing, 126, getEnemySpriteSheetSrc, () => {
+  const targetHeight = Math.max(96, Math.min(620, boss.renderHeight || 126));
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, facing, targetHeight, getEnemySpriteSheetSrc, () => {
     drawBoss(ctx, x, y, boss, animTime, facing);
   });
   if (generatedStatus !== 'missing') {
@@ -952,6 +970,8 @@ function getOpenAiBackdrop(universe, mode) {
 }
 
 export function getOpenAiBackdropSrc(universe, mode) {
+  const generated = getGeneratedStageBackdropSrc(universe, mode);
+  if (generated) return generated;
   if (mode === 'Combat' || mode === 'Fighter') {
     return OPENAI_BACKDROPS.Combat?.[universe]
       || OPENAI_BACKDROPS.Smash?.[universe]

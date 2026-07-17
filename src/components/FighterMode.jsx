@@ -166,6 +166,14 @@ export default function FighterMode({
       || 'Nexus de Convergence'
   ), [opponentHeroes, playerHeroes]);
   const arenaLevelProfile = useMemo(() => getRecentUniverseLevelProfile(arenaUniverse), [arenaUniverse]);
+  const fighterMusicStage = useMemo(() => ({
+    id: `fighter-${arenaUniverse}-${opponentHeroes.map(hero => hero.id).join('-') || 'echo'}`,
+    name: arenaLevelProfile?.combat?.name || `A.R.C.A. Impact Arena - ${arenaUniverse}`,
+    universe: arenaUniverse,
+    mode: 'Fighter',
+    bossName: opponentHeroes.length === 1 ? opponentHeroes[0]?.name : '',
+    tags: ['duel', 'loreArena']
+  }), [arenaLevelProfile, arenaUniverse, opponentHeroes]);
 
   useEffect(() => {
     if (!matchStarted || !playerHeroes.length || !opponentHeroes.length) return undefined;
@@ -191,12 +199,13 @@ export default function FighterMode({
         const resolved = { ...report, result };
         setSummary(resolved);
         setSnapshot(engine.getSnapshot());
+        sound.setStageMusicState(result, { ...fighterMusicStage, result });
         onMatchCompleteRef.current?.(resolved);
       },
       { difficulty, universe: arenaUniverse, levelProfile: arenaLevelProfile }
     );
     engineRef.current = engine;
-    sound.playBgm('battle');
+    sound.playStageBgm(fighterMusicStage, 'battle');
 
     let animationId = 0;
     let last = performance.now();
@@ -268,7 +277,7 @@ export default function FighterMode({
       engineRef.current = null;
       inputRef.current = {};
     };
-  }, [arenaLevelProfile, arenaUniverse, difficulty, matchNonce, matchStarted, opponentHeroes, playerHeroes]);
+  }, [arenaLevelProfile, arenaUniverse, difficulty, fighterMusicStage, matchNonce, matchStarted, opponentHeroes, playerHeroes]);
 
   const startMatch = () => {
     if (!playerHeroes.length || !opponentHeroes.length) return;

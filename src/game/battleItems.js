@@ -1,4 +1,4 @@
-import { EQUIP_ITEMS_DB, HEROES_DB } from './heroes';
+import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from './heroes';
 import { LORE_DB } from './lore';
 import { FEATURED_BATTLE_ITEM_OVERRIDES } from './featuredUniversePacks';
 
@@ -226,7 +226,12 @@ const makeLoreBackedItem = (universe, index, color) => {
         fr: `${loreName.fr || loreName.en} est un objet physique issu de ${title.fr}; son effet de combat conserve son usage et sa silhouette reconnaissables.`,
         en: `${loreName.en || loreName.fr} is a physical ${title.en} prop whose combat effect preserves its recognizable use and silhouette.`
       },
-      sourceItemId: loreItem.id
+      sourceItemId: loreItem.id,
+      icon: loreItem.icon,
+      iconPrompt: loreItem.iconPrompt,
+      referenceUrl: loreItem.referenceUrl,
+      visualAnchor: loreItem.visualAnchor,
+      audit: loreItem.audit
     } : {}),
     universe,
     tier: 'pickup',
@@ -250,24 +255,37 @@ const makeItemsForUniverse = (universe) => {
   const color = defaultColorFor(universe);
   const slug = slugify(universe);
   const override = BATTLE_ITEM_OVERRIDES[universe];
+  const loreItems = EQUIP_ITEMS_DB.filter(item => item.universe === universe);
+  const eventItem = EVENT_ITEMS_DB[universe];
   const pickups = override
-    ? override.pickups.map(([fr, en, effectText], index) => ({
-      id: `${slug}_pickup_${index + 1}`,
-      universe,
-      tier: 'pickup',
-      role: ['offense', 'defense', 'tempo'][index % 3],
-      name: { fr, en },
-      desc: { fr: effectText, en: effectText },
-      melee: { fr: 'Ramassable en melee: declenche son effet des que le heros le securise.', en: 'Melee pickup: triggers as soon as the hero secures it.' },
-      rpg: { fr: 'Commande RPG: utilise la jauge ATB du heros actif pour convertir cet artefact en action de soutien.', en: 'RPG command: spends the active hero ATB to convert this artifact into a support action.' },
-      tactics: { fr: 'En tactique: peut devenir une case bonus ou une ressource posee sur la carte.', en: 'In tactics: can become a bonus tile or placed map resource.' },
-      effect: [
-        { damage: 34, charge: 10 },
-        { heal: 46, shield: 14 },
-        { charge: 32, damage: 16 }
-      ][index % 3],
-      color
-    }))
+    ? override.pickups.map(([fr, en, effectText], index) => {
+      const loreItem = loreItems[index];
+      return {
+        id: `${slug}_pickup_${index + 1}`,
+        universe,
+        tier: 'pickup',
+        role: ['offense', 'defense', 'tempo'][index % 3],
+        name: loreItem?.name || { fr, en },
+        desc: loreItem?.desc || { fr: effectText, en: effectText },
+        melee: { fr: 'Ramassable en melee: declenche son effet des que le heros le securise.', en: 'Melee pickup: triggers as soon as the hero secures it.' },
+        rpg: { fr: 'Commande RPG: utilise la jauge ATB du heros actif pour convertir cet artefact en action de soutien.', en: 'RPG command: spends the active hero ATB to convert this artifact into a support action.' },
+        tactics: { fr: 'En tactique: peut devenir une case bonus ou une ressource posee sur la carte.', en: 'In tactics: can become a bonus tile or placed map resource.' },
+        effect: [
+          { damage: 34, charge: 10 },
+          { heal: 46, shield: 14 },
+          { charge: 32, damage: 16 }
+        ][index % 3],
+        color,
+        ...(loreItem ? {
+          sourceItemId: loreItem.id,
+          icon: loreItem.icon,
+          iconPrompt: loreItem.iconPrompt,
+          referenceUrl: loreItem.referenceUrl,
+          visualAnchor: loreItem.visualAnchor,
+          audit: loreItem.audit
+        } : {})
+      };
+    })
     : [0, 1, 2].map(index => makeLoreBackedItem(universe, index, color));
 
   const summon = {
@@ -296,18 +314,24 @@ const makeItemsForUniverse = (universe) => {
     tier: 'ultimate',
     role: 'ultimate',
     name: {
-      fr: override?.ultimate?.[0] || `Cataclysme ${universe}`,
-      en: override?.ultimate?.[1] || `${universe} Ultimate Breach`
+      fr: override?.ultimate?.[0] || eventItem?.name?.fr || `Cataclysme ${universe}`,
+      en: override?.ultimate?.[1] || eventItem?.name?.en || `${universe} Ultimate Breach`
     },
     desc: {
-      fr: override?.ultimate?.[2] || `Attaque ultime de terrain: A.R.C.A. ouvre une breche massive de ${universe} et frappe tout l ecran.`,
-      en: override?.ultimate?.[2] || `Stage ultimate: A.R.C.A. opens a massive ${universe} breach and strikes the whole screen.`
+      fr: override?.ultimate?.[2] || eventItem?.desc?.fr || `Attaque ultime de terrain: A.R.C.A. ouvre une breche massive de ${universe} et frappe tout l ecran.`,
+      en: override?.ultimate?.[2] || eventItem?.desc?.en || `Stage ultimate: A.R.C.A. opens a massive ${universe} breach and strikes the whole screen.`
     },
     melee: { fr: 'En melee: attaque spectaculaire plein ecran, rare et decisive.', en: 'In melee: rare, decisive full-screen attack.' },
     rpg: { fr: 'Commande RPG: limite break d artefact, declenchee par le heros actif quand son ATB est prete.', en: 'RPG command: artifact limit break, triggered by the active hero when ATB is ready.' },
     tactics: { fr: 'En tactique: equivalent a une carte operationnelle a usage unique sur plusieurs cases.', en: 'In tactics: acts like a one-use operational card across several tiles.' },
     effect: { ultimateDamage: 145, charge: 18 },
-    color
+    color,
+    sourceItemId: eventItem?.id,
+    icon: eventItem?.icon,
+    iconPrompt: eventItem?.iconPrompt,
+    referenceUrl: eventItem?.referenceUrl,
+    visualAnchor: eventItem?.visualAnchor,
+    audit: eventItem?.audit
   };
 
   return [...pickups, summon, ultimate];

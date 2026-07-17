@@ -2,6 +2,7 @@
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
+import { drawGeneratedStageTextureCover, getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 
 const faceUnitToward = (unit, target) => {
@@ -24,6 +25,7 @@ export class EngineTactics {
     this.playSfx = playSfx;
     this.onComplete = onComplete;
     this.stage = stage;
+    this.generatedTilePattern = null;
     this.battlefield = getTacticsBattlefield(stage);
     this.missionProfile = getTacticsMissionProfile(stage, this.battlefield);
     this.objective = this.battlefield.objective || 'rout';
@@ -109,8 +111,9 @@ export class EngineTactics {
     });
 
     this.enemiesData = enemiesData;
+    this.finalePolicy = enemiesData.finalePolicy || null;
     this.enemies = [];
-    this.isBossStage = !!enemiesData.bosses || !!enemiesData.worldBoss;
+    this.isBossStage = (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
 
     // Spawning Destructible Obstacles
@@ -142,7 +145,16 @@ export class EngineTactics {
 
     const monsterSpawns = this.battlefield.monsterSpawns || [{ x: 5, y: 1 }, { x: 5, y: 2 }, { x: 5, y: 3 }];
     const bossSpawns = this.battlefield.bossSpawns || [{ x: 6, y: 1 }, { x: 6, y: 3 }];
-    const worldBossSpawn = this.battlefield.worldBossSpawn || { x: this.cols - 1, y: Math.floor(this.rows / 2) };
+    const worldBossAnchor = worldBoss?.anchor;
+    const anchoredWorldBossSpawn = Number.isFinite(worldBossAnchor?.x) && Number.isFinite(worldBossAnchor?.y)
+      ? {
+          x: Math.max(0, Math.min(this.cols - 1, Math.round(worldBossAnchor.x * (this.cols - 1)))),
+          y: Math.max(0, Math.min(this.rows - 1, Math.round(worldBossAnchor.y * (this.rows - 1))))
+        }
+      : null;
+    const worldBossSpawn = anchoredWorldBossSpawn
+      || this.battlefield.worldBossSpawn
+      || { x: this.cols - 1, y: Math.floor(this.rows / 2) };
 
     // 1. Spawning monsters from the active battlefield profile
     for (let i = 0; i < 3; i++) {
@@ -195,6 +207,7 @@ export class EngineTactics {
         currentHp: worldBoss.hp || 1200,
         facing: -1,
         isBoss: true,
+        isWorldBoss: true,
         statusEffects: { infected: 0, glitched: 0, radiated: 0 }
       });
     }
@@ -500,9 +513,19 @@ export class EngineTactics {
     return this.getTileAt(c, r)?.type === 'blocked';
   }
 
+  unitOccupiesCell(unit, c, r) {
+    if (!unit || unit.currentHp <= 0) return false;
+    const footprint = unit.tacticsFootprint;
+    const width = Math.max(1, Math.round(footprint?.width || 1));
+    const height = Math.max(1, Math.round(footprint?.height || 1));
+    const startX = Math.max(0, Math.min(this.cols - width, unit.gridX - Math.floor((width - 1) / 2)));
+    const startY = Math.max(0, Math.min(this.rows - height, unit.gridY - Math.floor((height - 1) / 2)));
+    return c >= startX && c < startX + width && r >= startY && r < startY + height;
+  }
+
   isCellOccupied(c, r, ignoreUnit) {
-    const heroOccupies = this.heroes.some(h => h.currentHp > 0 && h !== ignoreUnit && h.gridX === c && h.gridY === r);
-    const enemyOccupies = this.enemies.some(e => e.currentHp > 0 && e !== ignoreUnit && e.gridX === c && e.gridY === r);
+    const heroOccupies = this.heroes.some(h => h !== ignoreUnit && this.unitOccupiesCell(h, c, r));
+    const enemyOccupies = this.enemies.some(e => e !== ignoreUnit && this.unitOccupiesCell(e, c, r));
     const obstacleOccupies = this.obstacles.some(o => o.hp > 0 && o.gridX === c && o.gridY === r);
     const escortOccupies = this.escortUnit?.currentHp > 0 && this.escortUnit !== ignoreUnit && this.escortUnit.gridX === c && this.escortUnit.gridY === r;
     const artifactOccupies = this.objective === 'protect' && this.protectedArtifact?.hp > 0 && this.protectedArtifact.gridX === c && this.protectedArtifact.gridY === r;
@@ -510,9 +533,9 @@ export class EngineTactics {
   }
 
   getUnitAtCell(c, r) {
-    const hero = this.heroes.find(h => h.currentHp > 0 && h.gridX === c && h.gridY === r);
+    const hero = this.heroes.find(h => this.unitOccupiesCell(h, c, r));
     if (hero) return { unit: hero, type: 'hero' };
-    const enemy = this.enemies.find(e => e.currentHp > 0 && e.gridX === c && e.gridY === r);
+    const enemy = this.enemies.find(e => this.unitOccupiesCell(e, c, r));
     if (enemy) return { unit: enemy, type: 'enemy' };
     const obstacle = this.obstacles.find(o => o.hp > 0 && o.gridX === c && o.gridY === r);
     if (obstacle) return { unit: obstacle, type: 'obstacle' };
@@ -1661,7 +1684,7 @@ export class EngineTactics {
       ctx.beginPath();
       ctx.rect(this.gridStartX, this.gridStartY, this.cols * this.cellW, this.rows * this.cellH);
       ctx.clip();
-      drawRecentUniverseTextureCover(
+      const generatedStageDrawn = drawGeneratedStageTextureCover(
         ctx,
         this.stage.universe,
         'Tactics',
@@ -1670,9 +1693,25 @@ export class EngineTactics {
         this.cols * this.cellW,
         this.rows * this.cellH,
         0.92,
-        'stretch'
+        'stretch',
       );
+      if (!generatedStageDrawn) {
+        drawRecentUniverseTextureCover(
+          ctx,
+          this.stage.universe,
+          'Tactics',
+          this.gridStartX,
+          this.gridStartY,
+          this.cols * this.cellW,
+          this.rows * this.cellH,
+          0.92,
+          'stretch'
+        );
+      }
       ctx.restore();
+    }
+    if (!this.generatedTilePattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
+      this.generatedTilePattern = getGeneratedStageTexturePattern(ctx, this.stage.universe, 'Tactics', 'tiles');
     }
     // 1. Draw Grid board
     ctx.strokeStyle = colorWithAlpha(this.getBattlefieldAccent(), 0.62);
@@ -2127,6 +2166,12 @@ export class EngineTactics {
     ctx.beginPath();
     ctx.rect(cellX + 1, cellY + 1, this.cellW - 2, this.cellH - 2);
     ctx.clip();
+    if (this.generatedTilePattern) {
+      ctx.globalAlpha = tile ? 0.18 : 0.3;
+      ctx.fillStyle = this.generatedTilePattern;
+      ctx.fillRect(cellX, cellY, this.cellW, this.cellH);
+      ctx.globalAlpha = 1;
+    }
     ctx.strokeStyle = colorWithAlpha(theme.detail, tile ? 0.18 : 0.26);
     ctx.fillStyle = colorWithAlpha(theme.mid, tile ? 0.12 : 0.2);
     ctx.lineWidth = 1;

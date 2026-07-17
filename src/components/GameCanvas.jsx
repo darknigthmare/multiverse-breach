@@ -2,10 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
 import { EngineTactics } from '../game/engineTactics';
-import { ParticleSystem, drawUniverseBackground, drawSynergyOverlay, preloadSpriteSheetSrcs } from '../game/renderer';
+import { ParticleSystem, drawItemIcon, drawUniverseBackground, drawSynergyOverlay, preloadSpriteSheetSrcs } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { HEROES_DB as BASE_HEROES_DB, EVENT_ITEMS_DB, EQUIP_ITEMS_DB } from '../game/heroes';
-import { getMonstersForUniverse, getBossesForUniverse, getWorldBossForUniverse, getFinalGameBoss } from '../game/enemies';
+import {
+  getBossesForUniverse,
+  getFinalePolicyForUniverse,
+  getFinalGameBoss,
+  getMonstersForUniverse,
+  getWorldBossForUniverse
+} from '../game/enemies';
 import { getTranslation } from '../game/translation';
 import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../game/expandedUniverses';
 import { createPlayerHero } from '../game/playerHero';
@@ -310,17 +316,23 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         filterEnemyList(universe, getBossesForUniverse(universe)).slice(0, 1).map(enemy => scaleEnemy({ ...enemy, universe }, true))
       );
       const primaryBoss = getWorldBossForUniverse(stage.universe);
+      const finalePolicy = getFinalePolicyForUniverse(stage.universe);
       const baseMonsters = ensureList(stage.universe, filterEnemyList(stage.universe, getMonstersForUniverse(stage.universe)));
       const baseBosses = ensureList(stage.universe, filterEnemyList(stage.universe, getBossesForUniverse(stage.universe)), true);
       return {
         monsters: fusedMonsters.length ? fusedMonsters : baseMonsters.map(enemy => scaleEnemy(enemy)),
         bosses: fusedBosses.length ? fusedBosses : baseBosses.map(enemy => scaleEnemy(enemy, true)),
-        worldBoss: disabledEnemySet.has(getEnemyAdminKey(stage.universe, primaryBoss)) ? scaleEnemy(fallbackEnemy(stage.universe, true), true) : scaleEnemy({
-          ...primaryBoss,
-          name: stage.bossName || primaryBoss.name,
-          hp: Math.round((primaryBoss.hp || 1000) * 1.18),
-          atk: Math.round((primaryBoss.atk || 20) * 1.12)
-        }, true)
+        finalePolicy,
+        worldBoss: primaryBoss
+          ? (disabledEnemySet.has(getEnemyAdminKey(stage.universe, primaryBoss))
+              ? scaleEnemy(fallbackEnemy(stage.universe, true), true)
+              : scaleEnemy({
+                  ...primaryBoss,
+                  name: stage.bossName || primaryBoss.name,
+                  hp: Math.round((primaryBoss.hp || 1000) * 1.18),
+                  atk: Math.round((primaryBoss.atk || 20) * 1.12)
+                }, true))
+          : null
       };
     }
 
@@ -343,13 +355,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       : monsters;
     const bosses = ensureList(stage.universe, filterEnemyList(stage.universe, getBossesForUniverse(stage.universe)), true);
     const worldBoss = getWorldBossForUniverse(stage.universe);
+    const finalePolicy = getFinalePolicyForUniverse(stage.universe);
     return {
       monsters: prioritizedMonsters.map(enemy => scaleEnemy(enemy)),
       bosses: bosses.map(enemy => scaleEnemy(enemy, true)),
-      worldBoss: disabledEnemySet.has(getEnemyAdminKey(stage.universe, worldBoss)) ? scaleEnemy(fallbackEnemy(stage.universe, true), true) : scaleEnemy({
-        ...worldBoss,
-        name: stage.bossName || worldBoss.name
-      }, true)
+      finalePolicy,
+      worldBoss: worldBoss
+        ? (disabledEnemySet.has(getEnemyAdminKey(stage.universe, worldBoss))
+            ? scaleEnemy(fallbackEnemy(stage.universe, true), true)
+            : scaleEnemy({
+                ...worldBoss
+              }, true))
+        : null
     };
   };
 
@@ -385,13 +402,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
-    ctx.rotate(-animTime * 0.025);
     ctx.shadowBlur = 0;
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 8px Share Tech Mono, monospace';
-    ctx.textAlign = 'center';
-    ctx.fillText(label, 0, 3);
     ctx.restore();
+
+    const iconDrawn = drawItemIcon(ctx, item.x, item.y, item, animTime, size * 1.72);
+    if (!iconDrawn) {
+      ctx.save();
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 8px Share Tech Mono, monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(label, item.x, item.y + 3);
+      ctx.restore();
+    }
   };
 
   const damageEnemiesByBattleItem = (engine, amount, color, label) => {

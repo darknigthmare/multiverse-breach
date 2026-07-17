@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
+import sound from '../game/soundEngine';
 
 const CONTROL_KEYS = new Set([
   'ArrowUp',
@@ -81,6 +82,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
   const keysRef = useRef({});
   const keyPulseRef = useRef({});
   const autoAccelerateRef = useRef(true);
+  const raceMusicStateRef = useRef('grid');
   const [trackId, setTrackId] = useState(null);
   const [pilotId, setPilotId] = useState(null);
   const [raceStarted, setRaceStarted] = useState(false);
@@ -101,6 +103,29 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
 
   const trackList = useMemo(() => Object.values(RACE_TRACKS).sort((a, b) => a.difficulty - b.difficulty || a.id.localeCompare(b.id)), []);
   const track = trackId ? RACE_TRACKS[trackId] : null;
+  const raceMusicStage = useMemo(() => {
+    if (!track) {
+      return {
+        id: 'race-grid-nexus',
+        name: 'A.R.C.A. Kart Starting Grid',
+        universe: 'Nexus de Convergence',
+        mode: 'Race',
+        tags: ['grid', 'loreArena']
+      };
+    }
+    const bossArena = track.tags?.includes('bossArena');
+    return {
+      id: `race-${track.id}`,
+      name: track.name?.fr || track.id,
+      universe: track.universe || 'Nexus de Convergence',
+      sourceUniverses: track.sourceUniverses,
+      mode: 'Race',
+      family: track.family,
+      tags: [...(track.tags || []), 'loreArena'],
+      isBoss: bossArena,
+      bossName: bossArena ? 'A.R.C.A. Overload Core' : ''
+    };
+  }, [track]);
   const pilotName = playerProfile?.name?.trim() || (lang === 'fr' ? 'Ancre' : 'Anchor');
   const controlRows = useMemo(() => [
     { label: lang === 'fr' ? 'Accel.' : 'Accel.', value: 'Z/W ou fleche haut' },
@@ -114,6 +139,13 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
   useEffect(() => {
     autoAccelerateRef.current = autoAccelerate;
   }, [autoAccelerate]);
+
+  useEffect(() => {
+    if (raceStarted) return undefined;
+    raceMusicStateRef.current = 'grid';
+    sound.playStageBgm(raceMusicStage, 'grid');
+    return () => sound.stopBgm();
+  }, [raceMusicStage, raceStarted]);
 
   useEffect(() => {
     if (!raceStarted || !track) return undefined;
@@ -142,8 +174,17 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       });
       setSummary(raceSummary);
       setSnapshot(prev => ({ ...prev, grade: raceSummary.grade, rank: raceSummary.rank, time: raceSummary.time }));
+      raceMusicStateRef.current = 'result';
+      sound.setStageMusicState('result', {
+        ...raceMusicStage,
+        raceState: 'finished',
+        rank: raceSummary.rank,
+        result: raceSummary.rank === 1 ? 'victory' : 'complete'
+      });
     }, trackId, career.upgrades);
     engineRef.current = engine;
+    raceMusicStateRef.current = 'grid';
+    sound.playStageBgm(raceMusicStage, 'grid');
     let animationId = 0;
     let last = performance.now();
     let snapshotTimer = 0;
@@ -171,9 +212,26 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       if (snapshotTimer > 0.12) {
         snapshotTimer = 0;
         const telemetry = engine.getTelemetry();
+        const displayedLap = Math.min(engine.player.lap + 1, engine.track.laps);
+        const nextMusicState = telemetry.raceState === 'finished'
+          ? 'result'
+          : telemetry.raceState === 'running' && displayedLap >= engine.track.laps
+            ? 'lastLap'
+            : telemetry.raceState === 'running'
+              ? 'race'
+              : 'grid';
+        if (raceMusicStateRef.current !== nextMusicState) {
+          raceMusicStateRef.current = nextMusicState;
+          sound.setStageMusicState(nextMusicState, {
+            ...raceMusicStage,
+            raceState: telemetry.raceState,
+            lap: displayedLap,
+            bossActive: nextMusicState === 'lastLap' && raceMusicStage.isBoss
+          });
+        }
         setSnapshot({
           rank: engine.player.rank,
-          lap: Math.min(engine.player.lap + 1, engine.track.laps),
+          lap: displayedLap,
           speed: Math.round(Math.abs(engine.player.speed)),
           item: engine.player.item,
           time: engine.player.finishTime || engine.time,
@@ -223,14 +281,17 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       window.removeEventListener('keyup', onKeyUp);
       window.removeEventListener('blur', clearInputs);
       document.removeEventListener('visibilitychange', onVisibilityChange);
+      sound.stopBgm();
       engineRef.current = null;
     };
-  }, [career.upgrades, raceStarted, track, trackId]);
+  }, [career.upgrades, raceMusicStage, raceStarted, track, trackId]);
 
   const resetRace = () => {
     keysRef.current = {};
     setSummary(null);
     engineRef.current?.reset();
+    raceMusicStateRef.current = 'grid';
+    sound.playStageBgm(raceMusicStage, 'grid');
   };
 
   const selectTrack = (nextTrackId) => {

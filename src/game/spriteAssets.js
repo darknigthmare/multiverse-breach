@@ -518,8 +518,10 @@ export const getEnemySpriteSheetSrc = (enemy) => {
 
 export const getItemSpriteSrc = (item) => {
   if (!item?.id) return '';
+  if (item.icon) return item.icon;
   const universe = item.universe || item.sourceUniverse || 'unknown';
-  return `/sprites/generated/items/${slugifyAsset(universe)}/${slugifyAsset(item.id)}.png`;
+  const itemId = item.sourceItemId || item.id;
+  return `/sprites/generated/items/${slugifyAsset(universe)}/${slugifyAsset(itemId)}.png`;
 };
 
 const animationRowForState = (state) => {

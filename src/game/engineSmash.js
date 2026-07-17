@@ -2,6 +2,7 @@
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
+import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
 
 const platformTextureCanvasCache = new Map();
@@ -87,6 +88,7 @@ export class EngineSmash {
     this.onComplete = onComplete;
     this.stage = stage;
     this.arena = createSmashArena(stage, width, height);
+    this.generatedPlatformPattern = null;
     this.recentPlatformPattern = null;
     this.gravity = this.arena.gravity || 0.25;
     this.jumpVelocity = this.arena.jump || -7.8;
@@ -149,9 +151,11 @@ export class EngineSmash {
 
     // Setup wave of enemies
     this.enemiesData = enemiesData;
+    this.finalePolicy = enemiesData.finalePolicy || null;
     this.enemies = [];
     this.wave = 1;
-    this.maxWaves = this.arena.maxWaves || (stage.isSurvival ? 5 : 4);
+    const configuredMaxWaves = this.arena.maxWaves || (stage.isSurvival ? 5 : 4);
+    this.maxWaves = this.finalePolicy ? Math.min(configuredMaxWaves, 3) : configuredMaxWaves;
     this.objectiveTarget = this.arena.objectiveTarget || this.maxWaves;
     this.gameOver = false;
     this.completionReported = false;
@@ -1259,12 +1263,15 @@ export class EngineSmash {
     ctx.shadowBlur = platformData.kind === 'main' ? 10 : 6;
     ctx.fillStyle = surface?.shadow || (platformData.kind === 'main' ? 'rgba(0,0,0,0.84)' : 'rgba(0,0,0,0.68)');
     if (surface) ctx.fillRect(platformData.x1 + 3, y + height / 2, width - 6, platformData.kind === 'main' ? 12 : 7);
-    if (!this.recentPlatformPattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
+    if (!this.generatedPlatformPattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
+      this.generatedPlatformPattern = getGeneratedStageTexturePattern(ctx, this.stage.universe, 'Melee', 'platforms');
+    }
+    if (!this.generatedPlatformPattern && !this.recentPlatformPattern && !this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
       this.recentPlatformPattern = getRecentUniverseTexturePattern(ctx, this.stage.universe, 'Melee');
     }
     const textureCanvas = makeTextureCanvas(theme, platformData.kind);
     const fallbackTexturePattern = textureCanvas ? ctx.createPattern(textureCanvas, 'repeat') : null;
-    const texturePattern = this.recentPlatformPattern || fallbackTexturePattern;
+    const texturePattern = this.generatedPlatformPattern || this.recentPlatformPattern || fallbackTexturePattern;
     ctx.fillStyle = texturePattern || surface?.base || (platformData.kind === 'main' ? 'rgba(0,0,0,0.84)' : 'rgba(0,0,0,0.68)');
     ctx.strokeStyle = theme.accent;
     ctx.lineWidth = platformData.kind === 'main' ? 3 : 2;

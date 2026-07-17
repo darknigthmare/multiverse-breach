@@ -866,7 +866,9 @@ const mergeEnemyExpansion = (target, additions = {}) => {
         knownNames.add(item.name);
       });
     });
-    if (!target[universe].worldBoss && data.worldBoss) target[universe].worldBoss = data.worldBoss;
+    if (!target[universe].worldBoss && !target[universe].finalePolicy && data.worldBoss) {
+      target[universe].worldBoss = data.worldBoss;
+    }
   });
 };
 
@@ -886,7 +888,12 @@ export const FINAL_GAME_BOSS = {
 
 export const getMonstersForUniverse = (univ) => ENEMIES_DB[univ]?.monsters || ENEMIES_DB['Halo'].monsters;
 export const getBossesForUniverse = (univ) => ENEMIES_DB[univ]?.bosses || ENEMIES_DB['Halo'].bosses;
-export const getWorldBossForUniverse = (univ) => ENEMIES_DB[univ]?.worldBoss || ENEMIES_DB['Halo'].worldBoss;
+export const getWorldBossForUniverse = (univ) => (
+  Object.prototype.hasOwnProperty.call(ENEMIES_DB, univ)
+    ? ENEMIES_DB[univ].worldBoss ?? null
+    : ENEMIES_DB['Halo'].worldBoss
+);
+export const getFinalePolicyForUniverse = (univ) => ENEMIES_DB[univ]?.finalePolicy || null;
 export const getFinalGameBoss = () => FINAL_GAME_BOSS;
 export const getEnemiesForUniverse = (univ) => ({
   enemy: ENEMIES_DB[univ]?.monsters[0] || ENEMIES_DB['Halo'].monsters[0],

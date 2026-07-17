@@ -57,10 +57,11 @@ export class EngineRpg {
     });
 
     this.enemiesData = enemiesData;
+    this.finalePolicy = enemiesData.finalePolicy || null;
     this.enemies = [];
     this.wave = 1;
-    this.maxWaves = 3;
-    this.isBossStage = !!enemiesData.bosses || !!enemiesData.worldBoss;
+    this.maxWaves = enemiesData.worldBoss ? 3 : 2;
+    this.isBossStage = (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.isFinalBoss = false;
     this.finalBossChaosTimer = 0;
     
@@ -131,9 +132,19 @@ export class EngineRpg {
     } else if (w === 3) {
       // Spawn 1 Giant World Boss
       const t = this.enemiesData.worldBoss;
+      if (!t) return;
       const lane = this.levelProfile?.rpg?.worldBoss;
-      const homeX = lane ? Math.round(this.width * lane.x) : this.width - 140;
-      const homeY = lane ? Math.round(this.height * lane.y) : 140;
+      const anchor = t.anchor;
+      const homeX = Number.isFinite(anchor?.x)
+        ? Math.round(this.width * anchor.x)
+        : lane
+          ? Math.round(this.width * lane.x)
+          : this.width - 140;
+      const homeY = Number.isFinite(anchor?.y)
+        ? Math.round(this.height * anchor.y)
+        : lane
+          ? Math.round(this.height * lane.y)
+          : 140;
       this.enemies.push({
         ...t,
         x: homeX,
@@ -147,6 +158,7 @@ export class EngineRpg {
         currentHp: t.hp || 1200,
         facing: -1,
         isBoss: true,
+        isWorldBoss: true,
         statusEffects: { infected: 0, glitched: 0, radiated: 0 }
       });
       this.playSfx('portal');

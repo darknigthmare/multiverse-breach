@@ -8,6 +8,7 @@ const sourceDir = path.join(root, 'src', 'game');
 const outDir = path.join(root, 'public', 'sprites', 'generated');
 const outJsonl = path.join(outDir, 'openai-sprite-prompts.jsonl');
 const outManifest = path.join(outDir, 'sprite-manifest.json');
+const outStageRegistry = path.join(sourceDir, 'generatedStageAssets.json');
 const featuredPromptUniverses = new Set([
   'Tomba',
   'Woodruff',
@@ -28,6 +29,11 @@ const rewriteImports = (source) => source
   .replaceAll("from './expandedUniverses'", "from './expandedUniverses.js'")
   .replaceAll("from './requestedUniverseWave'", "from './requestedUniverseWave.js'")
   .replaceAll("from './featuredUniversePacks'", "from './featuredUniversePacks.js'")
+  .replaceAll("from './loreBossOverrides'", "from './loreBossOverrides.js'")
+  .replaceAll("from './loreEnemyOverrides'", "from './loreEnemyOverrides.js'")
+  .replaceAll("from './loreItemOverrides'", "from './loreItemOverrides.js'")
+  .replaceAll("from './loreWorldBossOverrides'", "from './loreWorldBossOverrides.js'")
+  .replaceAll("from './stageLoreProfiles'", "from './stageLoreProfiles.js'")
   .replaceAll("from './loreAccuratePacks'", "from './loreAccuratePacks.js'")
   .replaceAll("from './lore'", "from './lore.js'")
   .replaceAll("from './heroes'", "from './heroes.js'")
@@ -36,7 +42,7 @@ const rewriteImports = (source) => source
 const copyRuntimeModules = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
+  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
   await Promise.all(files.map(async (file) => {
     const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
     await fs.writeFile(path.join(tmpDir, file), rewriteImports(raw), 'utf8');
@@ -58,7 +64,7 @@ const buildPrompt = ({ kind, name, universe, role, weapon, color, special }) => 
 ].join('\n');
 
 const fileExists = async (relativeOutput) => {
-  const localPath = path.join(outDir, relativeOutput.replace(/^\/sprites\/generated\//, ''));
+  const localPath = path.join(root, 'public', relativeOutput.replace(/^\/+/, ''));
   try {
     const stat = await fs.stat(localPath);
     return stat.isFile() && stat.size > 0;
@@ -69,10 +75,18 @@ const fileExists = async (relativeOutput) => {
 
 const main = async () => {
   await copyRuntimeModules();
-  const [{ HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB }, { ENEMIES_DB, FINAL_GAME_BOSS }, { BATTLE_ITEM_CATALOG }] = await Promise.all([
+  const [
+    { HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB },
+    { ENEMIES_DB, FINAL_GAME_BOSS },
+    { BATTLE_ITEM_CATALOG },
+    { LORE_WORLD_BOSS_POLICIES },
+    { STAGE_LORE_PROFILES, STAGE_ARC_LORE_PROFILES }
+  ] = await Promise.all([
     import(pathToFileURL(path.join(tmpDir, 'heroes.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'enemies.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'battleItems.js')).href)
+    import(pathToFileURL(path.join(tmpDir, 'battleItems.js')).href),
+    import(pathToFileURL(path.join(tmpDir, 'loreWorldBossOverrides.js')).href),
+    import(pathToFileURL(path.join(tmpDir, 'stageLoreProfiles.js')).href)
   ]);
 
   const heroEntries = HEROES_DB.map(hero => {
@@ -109,7 +123,9 @@ const main = async () => {
         universe,
         output: enemy.spriteSource || `/sprites/generated/${file}`,
         frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
-        prompt: buildPrompt({
+        referenceUrl: enemy.referenceUrl,
+        visualAnchor: enemy.visualAnchor,
+        prompt: enemy.spritePrompt || buildPrompt({
           kind: 'enemy',
           name: enemy.name,
           universe,
@@ -129,8 +145,10 @@ const main = async () => {
         name: boss.name,
         universe,
         output: boss.spriteSource || `/sprites/generated/${file}`,
-      frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
-        prompt: buildPrompt({
+        frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
+        referenceUrl: boss.referenceUrl,
+        visualAnchor: boss.visualAnchor,
+        prompt: boss.spritePrompt || buildPrompt({
           kind: 'boss',
           name: boss.name,
           universe,
@@ -172,7 +190,7 @@ const main = async () => {
     const universe = item.universe || 'unknown';
     const universeSlug = slugify(universe);
     const file = `items/${universeSlug}/${slugify(item.id)}.png`;
-    const output = `/sprites/generated/${file}`;
+    const output = item.icon || `/sprites/generated/${file}`;
     if (seenItemOutputs.has(output)) return [];
     seenItemOutputs.add(output);
     return [{
@@ -182,7 +200,10 @@ const main = async () => {
       universe,
       output,
       frame: { width: 512, height: 512, columns: 1, rows: ['icon'] },
-      prompt: [
+      referenceUrl: item.referenceUrl,
+      visualAnchor: item.visualAnchor,
+      curatedPrompt: Boolean(item.iconPrompt),
+      prompt: item.iconPrompt || [
         'Use case: stylized-concept',
         'Asset type: transparent game item icon for a 2D canvas battle game',
         `Primary request: create a detailed pixel-art item icon for ${item.name?.en || item.id} from ${universe}.`,
@@ -195,19 +216,95 @@ const main = async () => {
   });
 
   const itemEntries = (await Promise.all(itemEntryCandidates.map(async (entry) => (
-    featuredPromptUniverses.has(entry.universe) || await fileExists(entry.output) ? entry : null
+    entry.curatedPrompt || featuredPromptUniverses.has(entry.universe) || await fileExists(entry.output) ? entry : null
   )))).filter(Boolean);
 
-  const all = [...heroEntries, ...bossEntries, ...itemEntries];
+  const finaleEntries = Object.values(LORE_WORLD_BOSS_POLICIES).map((policy) => ({
+    kind: 'finale',
+    id: slugify(`${policy.universe}-${policy.policy}`),
+    name: policy.objective.en,
+    universe: policy.universe,
+    output: policy.output,
+    frame: { type: 'layered-finale-kit', policy: policy.policy },
+    referenceUrls: policy.referenceUrls,
+    visualAnchor: policy.visualAnchor,
+    prompt: policy.assetPrompt
+  }));
+
+  const stageProfiles = [
+    ...Object.values(STAGE_LORE_PROFILES),
+    ...Object.values(STAGE_ARC_LORE_PROFILES)
+  ];
+  const stageEntries = stageProfiles.flatMap((profile) => (
+    Object.entries(profile.modes).map(([mode, spec]) => ({
+      kind: 'stage',
+      id: slugify(`${profile.key}-${mode}`),
+      name: profile.canonicalName,
+      universe: profile.universes?.join(' x ') || profile.key,
+      output: spec.assetPath,
+      frame: { type: 'environment', mode, camera: spec.camera },
+      referenceUrls: profile.referenceUrls,
+      visualAnchor: profile.visualAnchor,
+      priority: profile.priority,
+      auditStatus: profile.auditStatus,
+      generationBlocked: profile.generationBlocked,
+      profileKey: profile.key,
+      companionOutputs: [
+        spec.backdropPath,
+        spec.platformTexturePath,
+        spec.tileTexturePath
+      ].filter(Boolean),
+      prompt: spec.prompt
+    }))
+  ));
+
+  const all = [...heroEntries, ...bossEntries, ...itemEntries, ...finaleEntries, ...stageEntries];
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(outJsonl, all.map(entry => JSON.stringify(entry)).join('\n') + '\n', 'utf8');
   const manifestEntries = await Promise.all(all.map(async (item) => {
     const entry = { ...item };
     delete entry.prompt;
+    delete entry.curatedPrompt;
     entry.available = await fileExists(entry.output);
     entry.source = entry.available ? 'openai' : null;
     return entry;
   }));
+
+  const stageRegistryEntries = await Promise.all(stageProfiles.map(async (profile) => {
+    const modes = await Promise.all(Object.entries(profile.modes).map(async ([mode, spec]) => {
+      const assetPath = await fileExists(spec.assetPath) ? spec.assetPath : null;
+      const backdropPath = spec.backdropPath && await fileExists(spec.backdropPath) ? spec.backdropPath : null;
+      const platformTexturePath = spec.platformTexturePath && await fileExists(spec.platformTexturePath)
+        ? spec.platformTexturePath
+        : null;
+      const tileTexturePath = spec.tileTexturePath && await fileExists(spec.tileTexturePath)
+        ? spec.tileTexturePath
+        : null;
+      if (!assetPath && !backdropPath && !platformTexturePath && !tileTexturePath) return null;
+      return [mode, {
+        assetPath,
+        backdropPath,
+        platformTexturePath,
+        tileTexturePath
+      }];
+    }));
+    const availableModes = Object.fromEntries(modes.filter(Boolean));
+    return Object.keys(availableModes).length > 0 ? [profile.key, availableModes] : null;
+  }));
+  const stageRegistryByProfile = Object.fromEntries(stageRegistryEntries.filter(Boolean));
+  const stageRegistryModes = Object.values(stageRegistryByProfile).flatMap(profile => Object.values(profile));
+  await fs.writeFile(outStageRegistry, JSON.stringify({
+    counts: {
+      profiles: Object.keys(stageRegistryByProfile).length,
+      backdrops: stageRegistryModes.filter(mode => mode.assetPath).length,
+      companions: stageRegistryModes.reduce((sum, mode) => (
+        sum + Number(Boolean(mode.backdropPath))
+        + Number(Boolean(mode.platformTexturePath))
+        + Number(Boolean(mode.tileTexturePath))
+      ), 0)
+    },
+    byProfile: stageRegistryByProfile
+  }, null, 2), 'utf8');
 
   await fs.writeFile(outManifest, JSON.stringify({
     generatedAt: new Date().toISOString(),
@@ -217,6 +314,8 @@ const main = async () => {
       enemies: bossEntries.filter(entry => entry.kind === 'enemy').length,
       bosses: bossEntries.filter(entry => entry.kind === 'boss').length,
       items: itemEntries.length,
+      finales: finaleEntries.length,
+      stages: stageEntries.length,
       total: all.length
     },
     availableCounts: {
@@ -224,6 +323,8 @@ const main = async () => {
       enemies: manifestEntries.filter(entry => entry.kind === 'enemy' && entry.available).length,
       bosses: manifestEntries.filter(entry => entry.kind === 'boss' && entry.available).length,
       items: manifestEntries.filter(entry => entry.kind === 'item' && entry.available).length,
+      finales: manifestEntries.filter(entry => entry.kind === 'finale' && entry.available).length,
+      stages: manifestEntries.filter(entry => entry.kind === 'stage' && entry.available).length,
       total: manifestEntries.filter(entry => entry.available).length
     },
     entries: manifestEntries
@@ -231,9 +332,10 @@ const main = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   const enemyCount = bossEntries.filter(entry => entry.kind === 'enemy').length;
   const bossCount = bossEntries.filter(entry => entry.kind === 'boss').length;
-  console.log(`Wrote ${all.length} sprite prompts (${heroEntries.length} heroes, ${enemyCount} enemies, ${bossCount} bosses, ${itemEntries.length} items).`);
+  console.log(`Wrote ${all.length} asset prompts (${heroEntries.length} heroes, ${enemyCount} enemies, ${bossCount} bosses, ${itemEntries.length} items, ${finaleEntries.length} finales, ${stageEntries.length} stages).`);
   console.log(outJsonl);
   console.log(outManifest);
+  console.log(outStageRegistry);
 };
 
 main().catch(async (error) => {

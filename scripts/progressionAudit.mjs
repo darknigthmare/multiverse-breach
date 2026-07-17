@@ -1,6 +1,8 @@
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { REQUESTED_UNIVERSE_WAVE } from '../src/game/requestedUniverseWave.js';
 import { RECENT_UNIVERSE_LEVELS } from '../src/game/recentUniverseLevels.js';
+import { LORE_WORLD_BOSS_OVERRIDES, LORE_WORLD_BOSS_POLICIES } from '../src/game/loreWorldBossOverrides.js';
+import { STAGE_ARC_LORE_PROFILES, STAGE_LORE_PROFILES } from '../src/game/stageLoreProfiles.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -46,6 +48,9 @@ const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.js
 const featuredVisualManifest = JSON.parse(read('../public/images/generated/featured-visual-manifest.json'));
 const featuredVisualPrompts = read('../public/images/generated/featured-openai-visual-prompts.jsonl').trim().split('\n').filter(Boolean).map(line => JSON.parse(line));
 const manifestOutputs = new Set((manifest.entries || []).filter(entry => entry.available).map(entry => entry.output));
+const stageLoreProfiles = [...Object.values(STAGE_LORE_PROFILES), ...Object.values(STAGE_ARC_LORE_PROFILES)];
+const worldBossUniverses = new Set(Object.keys(LORE_WORLD_BOSS_OVERRIDES));
+const worldBossPolicyUniverses = new Set(Object.keys(LORE_WORLD_BOSS_POLICIES));
 
 const expectedOcHeroIds = ['arca_mirelle', 'arca_bastion', 'arca_nova', 'arca_marrow', 'arca_sable', 'arca_loom'];
 const expectedOcEnemyNames = [
@@ -268,6 +273,15 @@ const expectedSupplementalOpenAiSpriteOutputs = [
 
 assert(dlcSource.includes("BASE_GAME_UNIVERSES = ['Nexus de Convergence']"), 'Base OC universe must remain Nexus de Convergence.');
 assert(dlcSource.includes('DEFAULT_HIDDEN_UNIVERSES = getDlcUniverseKeys()'), 'DLC universes must be hidden by default.');
+assert(hubSource.includes('id: 40000 + index'), 'Universe narrative arcs must use their reserved 40000 stage range.');
+assert(!hubSource.includes('id: 9500 + index'), 'Universe narrative arcs must not collide with generated personal arcs.');
+['41001', '41002', '41003', '41004'].forEach(stageId => {
+  assert(narrativeSystemsSource.includes(`stageId: ${stageId}`), `Missing reserved trio stage ID ${stageId}.`);
+});
+['9601', '9602', '9603', '9604'].forEach(stageId => {
+  assert(!narrativeSystemsSource.includes(`stageId: ${stageId}`), `Trio stage ID ${stageId} still collides with a personal arc.`);
+});
+assert(appSource.includes('inventory.includes(`universe_arc_${arc.id}`)') && appSource.includes('inventory.includes(arc.rewardItemId)'), 'Narrative stage ID migration must preserve proven arc rewards.');
 assert(REQUESTED_UNIVERSE_WAVE.length === expectedRequestedUniverseWave.length, 'The requested anime, creator, hero, and kaiju wave must contain the expected universes.');
 assert(new Set(REQUESTED_UNIVERSE_WAVE.map(entry => entry.universe)).size === REQUESTED_UNIVERSE_WAVE.length, 'The requested universe wave must not contain duplicate universe names.');
 expectedRequestedUniverseWave.forEach(universe => {
@@ -749,6 +763,24 @@ assert(gameCanvasSource.includes('tacticsResultLines'), 'GameCanvas must render 
 assert(gameCanvasSource.includes('reinforcementsCalled') && gameCanvasSource.includes('hazardPulses'), 'GameCanvas must display Tactics pressure results.');
 assert(gameCanvasSource.includes('applyTacticalBattleItem') && gameCanvasSource.includes('Tactical artifacts'), 'GameCanvas must route Tactics artifacts through the Tactics engine and display them.');
 assert(appSource.includes('tacticsMasteryBonus'), 'App rewards must include capped Tactics mastery bonuses.');
+assert(Object.keys(STAGE_LORE_PROFILES).length >= 260, 'Every expanded universe must have a canonical stage lore profile.');
+assert(stageLoreProfiles.length === 293, 'Stage lore registry must preserve 264 universe profiles and 29 arc profiles.');
+assert(stageLoreProfiles.filter(profile => profile.generationBlocked).length === 3, 'Only the three documented ambiguous stage sources may remain generation-blocked.');
+assert(manifest.counts?.stages === stageLoreProfiles.length * 4, 'OpenAI manifest must expose all four stage views for every lore profile.');
+assert(manifest.counts?.finales === worldBossPolicyUniverses.size, 'OpenAI manifest must expose every non-combat or set-piece finale kit.');
+assert(manifest.counts?.items === 542, 'OpenAI manifest must expose the complete lore item prompt catalog.');
+worldBossPolicyUniverses.forEach(universe => {
+  assert(!worldBossUniverses.has(universe), `${universe} cannot be both a combat world boss and a finale policy.`);
+});
+assert(worldBossUniverses.has('Ecco the Dolphin'), 'Ecco the Dolphin must resolve to the canonical Vortex Queen world boss.');
+assert(gameCanvasSource.includes('drawItemIcon'), 'Collectible lore items must render their OpenAI icon on the battlefield.');
+assert(spriteAssetsSource.includes('if (item.icon) return item.icon'), 'Collectible lore items must prefer their curated icon path over a generated fallback ID.');
+assert(
+  battleItemsSource.includes('const loreItems = EQUIP_ITEMS_DB.filter') &&
+  battleItemsSource.includes('name: loreItem?.name || { fr, en }') &&
+  battleItemsSource.includes('sourceItemId: loreItem.id'),
+  'Featured battle item overrides must inherit the canonical lore item names and OpenAI icon metadata.',
+);
 
 console.log(JSON.stringify({
   baseUniverse: 'Nexus de Convergence',
@@ -804,5 +836,10 @@ console.log(JSON.stringify({
   tacticsTags: ['wide', 'vertical', 'coverHeavy', 'lineOfSight', 'hazard', 'escort', 'defense', 'bossArena', 'portalSpawn', 'loreArena', 'survival', 'artifact'],
   tacticsArtifacts: 'engine-resolved-grid-effects',
   tacticsDlcMapping: 'metadata-aware',
-  tacticsRewardLoop: 'grade-bonus'
+  tacticsRewardLoop: 'grade-bonus',
+  stageLoreProfiles: stageLoreProfiles.length,
+  stageLoreViews: manifest.counts.stages,
+  worldBossLoreOverrides: worldBossUniverses.size,
+  worldBossFinalePolicies: worldBossPolicyUniverses.size,
+  loreItemPrompts: manifest.counts.items
 }, null, 2));

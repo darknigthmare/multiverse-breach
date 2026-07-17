@@ -8,6 +8,7 @@ import { getOpenAiBackdropSrc } from './game/renderer';
 import { getStoredSession, loadCloudSave, saveCloudSave, signInAccount, signOutAccount, signUpAccount, storeSession } from './game/cloudSave';
 import { PLAYER_HERO_ID } from './game/playerHero';
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from './game/dlcConfig';
+import { TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from './game/narrativeSystems';
 
 const SAVE_KEY = 'multiverse_breach_save_v2';
 const TUTORIAL_COMPANION_IDS = ['arca_mirelle', 'arca_bastion'];
@@ -134,6 +135,14 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const hiddenUniverses = shouldUseStoredHiddenUniverses
     ? merged.hiddenUniverses
     : DEFAULT_HIDDEN_UNIVERSES;
+  const inventory = Array.isArray(merged.inventory) ? merged.inventory : [];
+  const completedStages = new Set(Array.isArray(merged.completedStages) ? merged.completedStages : []);
+  UNIVERSE_NARRATIVE_ARCS.forEach((arc, index) => {
+    if (inventory.includes(`universe_arc_${arc.id}`)) completedStages.add(40000 + index);
+  });
+  TRIO_NARRATIVE_ARCS.forEach(arc => {
+    if (inventory.includes(arc.rewardItemId)) completedStages.add(arc.stageId);
+  });
   return {
     ...merged,
     saveVersion: 3,
@@ -144,6 +153,7 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
     heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(merged.heroLevels || {}) },
     heroTalents: merged.heroTalents || {},
     heroSkins: merged.heroSkins || {},
+    completedStages: [...completedStages],
     hiddenUniverses: hiddenUniverses.filter(universe => !isBaseGameUniverse(universe)),
     disabledAssets: {
       heroes: Array.isArray(merged.disabledAssets?.heroes) ? merged.disabledAssets.heroes : [],

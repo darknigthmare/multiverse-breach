@@ -1580,7 +1580,7 @@ export const SPECIAL_EVENTS = [
 export const TRIO_NARRATIVE_ARCS = [
   {
     id: 'atrium_first_cell',
-    stageId: 9601,
+    stageId: 41001,
     heroIds: ['player_anchor', 'freeman', 'masterchief'],
     title: { fr: 'Arc Trio - Premiere cellule Atrium', en: 'Trio Arc - First Atrium Cell' },
     universes: ['Nexus de Convergence', 'Half-Life', 'Halo'],
@@ -1603,7 +1603,7 @@ export const TRIO_NARRATIVE_ARCS = [
   },
   {
     id: 'survivors_last_door',
-    stageId: 9602,
+    stageId: 41002,
     heroIds: ['ripley', 'leon', 'chell'],
     title: { fr: 'Arc Trio - Derniere porte de survie', en: 'Trio Arc - Last Survival Door' },
     universes: ['Alien', 'Resident Evil', 'Portal'],
@@ -1626,7 +1626,7 @@ export const TRIO_NARRATIVE_ARCS = [
   },
   {
     id: 'occult_wrong_prophecy',
-    stageId: 9603,
+    stageId: 41003,
     heroIds: ['predator', 'pyramidhead', 'kirsty'],
     title: { fr: 'Arc Trio - Tribunal des chasseurs', en: 'Trio Arc - Hunters Tribunal' },
     universes: ['Predator', 'Silent Hill', 'Hellraiser'],
@@ -1649,7 +1649,7 @@ export const TRIO_NARRATIVE_ARCS = [
   },
   {
     id: 'control_formula_matrix',
-    stageId: 9604,
+    stageId: 41004,
     heroIds: ['neo', 'oneill', 'snake'],
     title: { fr: 'Arc Trio - Operation Source noire', en: 'Trio Arc - Black Source Operation' },
     universes: ['The Matrix', 'Stargate', 'Metal Gear'],

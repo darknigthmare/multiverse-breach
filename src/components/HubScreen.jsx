@@ -3574,7 +3574,7 @@ export default function HubScreen({
     characterArc: arc
   }));
   const UNIVERSE_ARC_STAGES = UNIVERSE_NARRATIVE_ARCS.map((arc, index) => ({
-    id: 9500 + index,
+    id: 40000 + index,
     name: arc.title.en,
     displayName: arc.title,
     universe: arc.universes[0],

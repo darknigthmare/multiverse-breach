@@ -1,5 +1,20 @@
 import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE, FEATURED_UNIVERSE_PACKS } from './featuredUniversePacks';
+import { LORE_BOSS_OVERRIDES, LORE_BOSS_SLOT_POLICY } from './loreBossOverrides';
+import { getLoreEnemyOverrides } from './loreEnemyOverrides';
+import {
+  getLoreEquipmentOverrides,
+  getLoreEventItemOverride,
+  getLoreItemPolicy
+} from './loreItemOverrides';
+import {
+  getLoreWorldBossOverride,
+  getLoreWorldBossPolicy
+} from './loreWorldBossOverrides';
 import { REQUESTED_UNIVERSE_WAVE } from './requestedUniverseWave';
+import {
+  getStageLoreAssetPlan,
+  getStageLoreProfile
+} from './stageLoreProfiles';
 
 const EXPANDED_STAGE_START_ID = 39;
 
@@ -2118,6 +2133,25 @@ FEATURED_UNIVERSE_PACKS.forEach(pack => {
   }
 });
 
+EXPANDED_UNIVERSES.forEach(universe => {
+  const worldBossOverride = getLoreWorldBossOverride(universe.universe);
+  const worldBossPolicy = getLoreWorldBossPolicy(universe.universe);
+  const stageLoreProfile = getStageLoreProfile(universe.universe);
+
+  if (worldBossOverride) {
+    universe.worldBoss = makeLoreWorldBossRuntime(worldBossOverride);
+    universe.worldBossPolicy = null;
+  } else if (worldBossPolicy) {
+    universe.worldBoss = null;
+    universe.worldBossPolicy = worldBossPolicy;
+    universe.bossName = worldBossPolicy.objective.fr;
+  }
+
+  if (stageLoreProfile) {
+    universe.stageLoreProfile = stageLoreProfile;
+  }
+});
+
 function makeUniverseWave(entries) {
   return entries.map(entry => {
     const [skyTop, skyBottom, accent] = entry.colors;
@@ -2146,17 +2180,13 @@ function makeUniverseWave(entries) {
       },
       hero: makeWaveHero(entry.hero, accent),
       allies: entry.allies.map((ally, index) => makeWaveHero(ally, index === 0 ? lightenAccent(accent) : darkenAccent(accent))),
-      monsters: entry.monsters || [`${title} Rift Drone`, `${title} Breach Stalker`, `${title} Anomaly Pack`],
-      bosses: entry.bosses || [`${title} Elite Guardian`, `${title} Crisis Avatar`],
+      monsters: entry.monsters || makeLoreEnemyWave(entry.universe, title),
+      bosses: entry.bosses || makeLoreBossWave(entry.universe, title),
+      bossSlotPolicy: LORE_BOSS_SLOT_POLICY[entry.universe],
       worldBoss: entry.worldBoss || entry.boss,
-      gear: entry.gear || makeWaveGear(shortKey, title, titleFr),
-      event: entry.event || [
-        `evt_${shortKey}_breach`,
-        `${title} Breach Signal`,
-        `Signal breche ${titleFr}`,
-        `${title} opens a signature anomaly that damages enemies and boosts the squad tempo.`,
-        `${titleFr} ouvre une anomalie signature qui blesse les ennemis et accelere l escouade.`
-      ],
+      gear: entry.gear || makeLoreGearWave(entry.universe, shortKey, title, titleFr),
+      event: entry.event || makeLoreEventWave(entry.universe, shortKey, title, titleFr),
+      itemPolicy: getLoreItemPolicy(entry.universe),
       decor: {
         sky: [skyTop, skyBottom],
         floor: `rgba(${hexToRgb(accent).join(', ')}, 0.16)`,
@@ -2173,6 +2203,48 @@ function makeUniverseWave(entries) {
   });
 }
 
+function makeLoreEnemyWave(universe, title) {
+  const confirmedEnemies = getLoreEnemyOverrides(universe);
+  if (confirmedEnemies.length > 0) {
+    return confirmedEnemies.map(({ output, ...enemy }) => ({
+      ...enemy,
+      spriteSource: output
+    }));
+  }
+
+  return [`${title} Rift Drone`, `${title} Breach Stalker`, `${title} Anomaly Pack`];
+}
+
+function makeLoreBossWave(universe, title) {
+  const confirmedBosses = LORE_BOSS_OVERRIDES[universe] || [];
+  if (confirmedBosses.length > 0) {
+    return confirmedBosses.map(({ output, ...boss }) => ({
+      ...boss,
+      spriteSource: output
+    }));
+  }
+
+  return [`${title} Elite Guardian`, `${title} Crisis Avatar`];
+}
+
+function makeLoreWorldBossRuntime(override) {
+  const signatureAttack = override.phases
+    .flatMap(phase => phase.attacks)
+    .filter(Boolean)
+    .slice(-1)[0];
+
+  return {
+    ...override,
+    loreLocalized: override.lore,
+    lore: override.lore.fr,
+    spriteSource: override.output,
+    worldBossClass: override.layout,
+    phaseSet: override.phases,
+    special: signatureAttack || override.name,
+    isWorldBoss: true
+  };
+}
+
 function makeWaveHero([id, name, cat], color) {
   return { id, name, cat, color };
 }
@@ -2182,6 +2254,50 @@ function makeWaveGear(key, title, titleFr) {
     [`${key}_sigil`, `${title} Signature Relic`, `Relique signature ${titleFr}`, { atk: 8, spd: 1 }],
     [`${key}_armor`, `${title} Field Plate`, `Plaque terrain ${titleFr}`, { def: 6, hp: 45 }],
     [`${key}_core`, `${title} Nexus Core`, `Noyau Nexus ${titleFr}`, { hp: 75 }]
+  ];
+}
+
+function makeLoreGearWave(universe, key, title, titleFr) {
+  const loreItems = getLoreEquipmentOverrides(universe);
+  if (loreItems.length > 0) {
+    const boosts = [
+      { atk: 8, spd: 1 },
+      { def: 6, hp: 45 },
+      { hp: 55, spd: 1 }
+    ];
+    return loreItems.map((entry, index) => ([
+      entry.id,
+      entry.name.en,
+      entry.name.fr,
+      boosts[index],
+      entry
+    ]));
+  }
+
+  if (getLoreItemPolicy(universe)?.status === 'disabled') return [];
+  return makeWaveGear(key, title, titleFr);
+}
+
+function makeLoreEventWave(universe, key, title, titleFr) {
+  const loreItem = getLoreEventItemOverride(universe);
+  if (loreItem) {
+    return [
+      loreItem.id,
+      loreItem.name.en,
+      loreItem.name.fr,
+      loreItem.desc.en,
+      loreItem.desc.fr,
+      loreItem
+    ];
+  }
+
+  if (getLoreItemPolicy(universe)?.status === 'disabled') return null;
+  return [
+    `evt_${key}_breach`,
+    `${title} Breach Signal`,
+    `Signal breche ${titleFr}`,
+    `${title} opens a signature anomaly that damages enemies and boosts the squad tempo.`,
+    `${titleFr} ouvre une anomalie signature qui blesse les ennemis et accelere l escouade.`
   ];
 }
 
@@ -2284,37 +2400,61 @@ function makeEnemy(entry, index, universe, tier = 0) {
   };
 }
 
+function getStageLoreMetadata(stage) {
+  const profile = getStageLoreProfile(stage);
+  if (!profile) return {};
+
+  return {
+    stageLore: {
+      key: profile.key,
+      canonicalName: profile.canonicalName,
+      referenceUrls: profile.referenceUrls,
+      visualAnchor: profile.visualAnchor,
+      priority: profile.priority,
+      auditStatus: profile.auditStatus,
+      generationBlocked: profile.generationBlocked
+    },
+    stageAssetPlan: getStageLoreAssetPlan(stage, stage.mode)
+  };
+}
+
 export function getExpandedStages() {
   const primaryStages = EXPANDED_UNIVERSES.flatMap((universe, index) => (
     universe.skipPrimaryStage
       ? []
-      : [{
-        id: stageIdFor(index),
-        name: universe.stageName,
-        universe: universe.universe,
-        mode: universe.mode,
-        difficulty: universe.difficulty,
-        bossName: universe.bossName,
-        loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[universe.stageName]
-          || FEATURED_STAGE_LORE[universe.universe]?.[universe.mode],
-        ...rewardFor(universe)
-      }]
+      : (() => {
+        const stage = {
+          id: stageIdFor(index),
+          name: universe.stageName,
+          universe: universe.universe,
+          mode: universe.mode,
+          difficulty: universe.difficulty,
+          bossName: universe.bossName,
+          finalePolicy: universe.worldBossPolicy || null,
+          loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[universe.stageName]
+            || FEATURED_STAGE_LORE[universe.universe]?.[universe.mode],
+          ...rewardFor(universe)
+        };
+        return [{ ...stage, ...getStageLoreMetadata(stage) }];
+      })()
   ));
 
   const variantStages = EXPANDED_UNIVERSES.flatMap((universe, universeIndex) => (
     (universe.stageVariants || []).map((variant, variantIndex) => {
       const stageProfile = { ...universe, ...variant };
-      return {
+      const stage = {
         id: 30000 + universeIndex * 10 + variantIndex,
         name: variant.name,
         universe: universe.universe,
         mode: variant.mode,
         difficulty: variant.difficulty || universe.difficulty,
         bossName: variant.bossName || universe.bossName,
+        finalePolicy: universe.worldBossPolicy || null,
         loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[variant.name]
           || FEATURED_STAGE_LORE[universe.universe]?.[variant.mode],
         ...rewardFor(stageProfile)
       };
+      return { ...stage, ...getStageLoreMetadata(stage) };
     })
   ));
 
@@ -2336,11 +2476,13 @@ export const EXPANDED_UNIVERSE_SIGNATURES = Object.fromEntries(
     stageName: universe.stageName,
     bossName: universe.bossName,
     worldBoss: threatName(universe.worldBoss),
+    worldBossPolicy: universe.worldBossPolicy || null,
+    canonicalStage: universe.stageLoreProfile?.canonicalName,
     monsters: universe.monsters.map(threatName),
     bosses: universe.bosses.map(threatName),
     gearNames: universe.gear.map(([, enName, frName]) => ({ en: enName, fr: frName })),
-    eventName: { en: universe.event[1], fr: universe.event[2] },
-    eventDesc: { en: universe.event[3], fr: universe.event[4] }
+    eventName: universe.event ? { en: universe.event[1], fr: universe.event[2] } : null,
+    eventDesc: universe.event ? { en: universe.event[3], fr: universe.event[4] } : null
   }])
 );
 
@@ -2359,6 +2501,8 @@ export const EXPANDED_LORE_DB = Object.fromEntries(
     stageName: universe.stageName,
     bossName: universe.bossName,
     worldBoss: threatName(universe.worldBoss),
+    worldBossPolicy: universe.worldBossPolicy || null,
+    canonicalStage: universe.stageLoreProfile?.canonicalName,
     title: universe.title,
     desc: universe.desc
   }])
@@ -2376,7 +2520,8 @@ export const EXPANDED_ENEMIES_DB = Object.fromEntries(
         special: enemy.special || `${enemy.name} Breach Pattern`
       };
     }),
-    worldBoss: (() => {
+    finalePolicy: universe.worldBossPolicy || null,
+    worldBoss: universe.worldBoss ? (() => {
       const enemy = makeEnemy(universe.worldBoss, 0, universe, 4);
       return {
         ...enemy,
@@ -2385,30 +2530,41 @@ export const EXPANDED_ENEMIES_DB = Object.fromEntries(
         spd: 4,
         special: enemy.special || `${enemy.name} Omniverse Rupture`
       };
-    })()
+    })() : null
   }])
 );
 
 export const EXPANDED_GEAR = EXPANDED_UNIVERSES.flatMap(universe =>
-  universe.gear.map(([id, enName, frName, boost], index) => ({
+  universe.gear.map(([id, enName, frName, boost, metadata = {}], index) => ({
     id,
     universe: universe.universe,
     name: { en: enName, fr: frName },
-    desc: FEATURED_GEAR_LORE[id],
+    desc: metadata.desc || FEATURED_GEAR_LORE[id],
     boost,
-    cost: 100 + difficultyRank(universe) * 20 + index * 15
+    cost: 100 + difficultyRank(universe) * 20 + index * 15,
+    icon: metadata.icon,
+    iconPrompt: metadata.iconPrompt,
+    referenceUrl: metadata.referenceUrl,
+    visualAnchor: metadata.visualAnchor,
+    audit: metadata.audit
   }))
 );
 
 export const EXPANDED_EVENT_ITEMS = Object.fromEntries(
-  EXPANDED_UNIVERSES.map(universe => {
-    const [id, enName, frName, enDesc, frDesc] = universe.event;
-    return [universe.universe, {
+  EXPANDED_UNIVERSES.flatMap(universe => {
+    if (!universe.event) return [];
+    const [id, enName, frName, enDesc, frDesc, metadata = {}] = universe.event;
+    return [[universe.universe, {
       id,
       name: { en: enName, fr: frName },
       desc: { en: enDesc, fr: frDesc },
-      effect: id.replace('evt_', '')
-    }];
+      effect: id.replace('evt_', ''),
+      icon: metadata.icon,
+      iconPrompt: metadata.iconPrompt,
+      referenceUrl: metadata.referenceUrl,
+      visualAnchor: metadata.visualAnchor,
+      audit: metadata.audit
+    }]];
   })
 );
 
@@ -2427,15 +2583,16 @@ export const EXPANDED_MEDIA_FILTERS = [
   { id: 'music', label: { fr: 'MUSIQUE', en: 'MUSIC' } }
 ];
 
-export const EXPANDED_EVENT_SHOP_ITEMS = EXPANDED_UNIVERSES.map(universe => {
+export const EXPANDED_EVENT_SHOP_ITEMS = EXPANDED_UNIVERSES.flatMap(universe => {
+  if (!universe.event) return [];
   const [id, enName, frName] = universe.event;
-  return {
+  return [{
     id,
     name: { en: enName, fr: frName },
     isCombatEvent: true,
     universe: universe.universe,
     tokenCost: 4 + Math.min(4, difficultyRank(universe))
-  };
+  }];
 });
 
 export const EXPANDED_STAGE_ACCENT_BY_UNIVERSE = Object.fromEntries(
