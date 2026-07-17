@@ -43,7 +43,7 @@ export const FEATURED_UNIVERSE_PACKS = [
       en: 'Tomba crosses a bright island whose villages, forests, mountains, and inhabitants have been warped by seven Evil Pig curses. Events, odd favors, pig bags, the stolen golden bracelet, and physical platforming remain the laws of this Thread.',
       fr: 'Tomba traverse une ile coloree dont les villages, forets, montagnes et habitants ont ete deformes par les maledictions de sept Evil Pigs. Les evenements, services absurdes, sacs a cochons, le bracelet vole et le platforming physique restent les lois de cette Trame.'
     },
-    hero: hero('tomba_hero', 'Tomba', 'slayer', '#ff5c9a', 'grapple', 'Pig Grab Throw', 'Grappling Hook Swing', 'Animal Dash', 'Evil Pig Bag Seal'),
+    hero: hero('tomba_hero', 'Tomba', 'slayer', '#ff5c9a', 'spiked_ball', 'Pig Grab Throw', 'Spiked Ball Swing', 'Animal Dash', 'Evil Pig Bag Seal'),
     allies: [
       hero('charles_tomba', 'Charles', 'hacker', '#a66b32', 'claws', 'Monkey Pounce', 'Animal Technique Lesson', 'Tree Branch Dodge', 'Charles Training Rush'),
       hero('tabby_tomba', 'Tabby', 'tactical', '#e8c28d', 'staff', 'Travel Staff Jab', 'Friendship Necklace Signal', 'Village Route Guard', 'Evil Swine Rescue Call')
@@ -60,10 +60,10 @@ export const FEATURED_UNIVERSE_PACKS = [
     worldBoss: threat('Real Evil Pig', '/sprites/generated/bosses/tomba/real-evil-pig.png', 'curse_magic', 'Seven Curses Recast'),
     gear: [
       ['tomba_grandfather_bracelet', 'Grandfathers Golden Bracelet', 'Bracelet dore du grand-pere', { atk: 8, def: 4 }],
-      ['tomba_evil_pig_bag', 'Evil Pig Bag', 'Sac a Evil Pig', { atk: 10, spd: 2 }],
+      ['tomba_evil_pig_bag', 'Blue Evil Pig Bag', 'Sac bleu a Evil Pig', { atk: 10, spd: 2 }],
       ['tomba_charity_wings', 'Charity Wings', 'Ailes de charite', { hp: 65, spd: 2 }]
     ],
-    event: ['evt_tomba_pig_bag_seal', 'Evil Pig Bag Seal', 'Sceau du sac a Evil Pig', 'Tomba opens the matching bag inside a cursed zone, drags the active Evil Pig into its own magic, and restores the local rules instead of erasing the island.', 'Tomba ouvre le sac correspondant dans la zone maudite, attire l Evil Pig actif dans sa propre magie et restaure les regles locales au lieu d effacer l ile.'],
+    event: ['evt_tomba_pig_bag_seal', 'Black Evil Pig Bag', 'Sac noir du Real Evil Pig', 'The eighth black bag appears after the seven Evil Pigs are sealed. It reveals the Real Evil Pigs lair and provides the only physical vessel able to contain him.', 'Le huitieme sac noir apparait apres le scellement des sept Evil Pigs. Il revele le repaire du Real Evil Pig et constitue le seul receptacle physique capable de l enfermer.'],
     decor: { sky: ['#2b1640', '#07040c'], floor: 'rgba(93, 190, 92, 0.18)', grid: 'rgba(255, 102, 170, 0.3)', motif: 'wasteland', accent: '#ff66aa' },
     stageVariants: [
       { mode: 'Tactics', name: 'Phoenix Mountain Wind Routes', difficulty: 'Hard', bossName: 'Stormy Evil Pig' },
@@ -103,7 +103,7 @@ export const FEATURED_UNIVERSE_PACKS = [
       ['woodruff_viblefrotzer', 'Viblefrotzer Regulator', 'Regulateur Viblefrotzer', { atk: 8, hp: 45 }],
       ['woodruff_syllable_stone', 'Council Syllable Stone', 'Pierre-syllabe du Conseil', { hp: 70, def: 4 }]
     ],
-    event: ['evt_woodruff_schnibble_formula', 'Schnibble Formula', 'Formule du Schnibble', 'The recovered syllables reform the Boozook Council and briefly force the battlefield to obey puzzle logic: false permits collapse, locked routes open, and Bigwigs agents lose authority.', 'Les syllabes recuperees reforment le Conseil Bouzouk et obligent brievement le terrain a suivre la logique des enigmes: les faux permis tombent, les routes s ouvrent et les agents de Bigwig perdent leur autorite.'],
+    event: ['evt_woodruff_schnibble_formula', 'Boozook Council Syllable Set', 'Jeu de pierres-syllabes du Conseil Bouzouk', 'The recovered physical syllable stones reform the Boozook Councils words and formulas. Their exact order exposes false permits, opens locked routes, and restores the Chprotznog.', 'Les pierres-syllabes physiques recuperees reforment les mots et les formules du Conseil Bouzouk. Leur ordre exact devoile les faux permis, ouvre les routes verrouillees et restaure le Chprotznog.'],
     decor: { sky: ['#382a19', '#080503'], floor: 'rgba(92, 131, 86, 0.18)', grid: 'rgba(225, 195, 77, 0.28)', motif: 'arcanecity', accent: '#e1c34d' },
     stageVariants: [
       { mode: 'Tactics', name: 'Administration Permit and Factory Gate', difficulty: 'Hard', bossName: 'Schnibble Sect High Priest' },
@@ -147,7 +147,7 @@ export const FEATURED_UNIVERSE_PACKS = [
       ['hellraiser_voight_nerve_mechanism', 'Voight Nerve Mechanism', 'Mecanisme nerveux de Voight', { atk: 12, hp: 35 }],
       ['hellraiser_priest_pearl_pin', 'Priest Pearl Pin', 'Epingle perlee de la Pretresse', { def: 8, spd: 1 }]
     ],
-    event: ['evt_hellraiser_lament_reversal', 'Lament Configuration Reversal', 'Inversion de la Configuration', 'Kirsty completes the box under pressure and redirects the Labyrinth chains toward the strongest hostile signature before closing the threshold.', 'Kirsty termine la boite sous pression et redirige les chaines du Labyrinthe vers la signature hostile la plus forte avant de refermer le seuil.'],
+    event: ['evt_hellraiser_lament_reversal', 'Lament Configuration', 'Configuration des Lamentations', 'Kirsty manipulates the brass-and-black puzzle box under pressure, redirects the Labyrinth chains toward the true subject of the bargain, and closes the threshold.', 'Kirsty manipule sous pression la boite-puzzle noire et doree, redirige les chaines du Labyrinthe vers la veritable cible du pacte et referme le seuil.'],
     decor: { sky: ['#281311', '#050202'], floor: 'rgba(145, 45, 36, 0.2)', grid: 'rgba(211, 158, 72, 0.3)', motif: 'labyrinth', accent: '#d39e48' },
     stageVariants: [
       { mode: 'Tactics', name: 'Cotton House Attic Bargain', difficulty: 'Very Hard', bossName: 'The Engineer' },
@@ -188,9 +188,9 @@ export const FEATURED_UNIVERSE_PACKS = [
     gear: [
       ['elm_hypnocil', 'Hypnocil Vial', 'Fiole d Hypnocil', { hp: 65, def: 6 }],
       ['elm_nancy_trapkit', 'Nancys Booby-Trap Kit', 'Kit de pieges de Nancy', { atk: 8, spd: 2 }],
-      ['elm_glove_shard', 'Bladed Glove Shard', 'Fragment du gant a lames', { atk: 12 }]
+      ['elm_glove_shard', 'Freddys Bladed Glove', 'Gant a lames de Freddy', { atk: 12 }]
     ],
-    event: ['evt_elm_dream_warriors', 'Dream Warriors Link', 'Lien des Dream Warriors', 'Kristen pulls the squad into a controlled shared dream where each hero gains one readable signature action before Nancy forces the wake-up route.', 'Kristen attire l escouade dans un reve partage controle, chaque heros gagne une action signature lisible, puis Nancy force la route du reveil.'],
+    event: ['evt_elm_dream_warriors', 'Kristens 1428 Elm Street Model', 'Maquette du 1428 Elm Street de Kristen', 'Kristens papier-mache model reproduces the boarded house she sees in her nightmares. Securing it reveals Freddys recurring dream entry before Nancy forces the wake-up route.', 'La maquette en papier mache de Kristen reproduit la maison condamnee vue dans ses cauchemars. La securiser revele l entree recurrente de Freddy avant que Nancy ne force la route du reveil.'],
     decor: { sky: ['#2c1310', '#050101'], floor: 'rgba(156, 62, 36, 0.2)', grid: 'rgba(116, 181, 74, 0.26)', motif: 'hauntedset', accent: '#b84d2f' },
     stageVariants: [
       { mode: 'Tactics', name: 'Westin Hills Dream Warriors Ward', difficulty: 'Very Hard', bossName: 'Freddy Dream Master' },
@@ -228,9 +228,9 @@ export const FEATURED_UNIVERSE_PACKS = [
     gear: [
       ['ring_cursed_vhs', 'Cursed VHS Copy', 'Copie VHS maudite', { atk: 9, spd: 1 }],
       ['ring_distorted_photo', 'Distorted Polaroid', 'Polaroid deforme', { def: 5, hp: 55 }],
-      ['ring_shelter_well_stone', 'Shelter Mountain Well Stone', 'Pierre du puits de Shelter Mountain', { hp: 85, def: 3 }]
+      ['ring_shelter_well_stone', 'Aidans Black Ring Drawing', 'Dessin de lanneau noir d Aidan', { hp: 85, def: 3 }]
     ],
-    event: ['evt_ring_copy_deadline', 'Copy Before Seven Days', 'Copier avant sept jours', 'Rachel uses the tape rule instead of pretending the curse is healed: one marked enemy receives the copied signal while A.R.C.A. quarantines the new carrier coordinate.', 'Rachel utilise la regle de la cassette au lieu de pretendre que la malediction est guerie: un ennemi marque recoit le signal copie pendant qu A.R.C.A. met la nouvelle coordonnee porteuse en quarantaine.'],
+    event: ['evt_ring_copy_deadline', 'Copied Cursed VHS Tape', 'Copie de la cassette VHS maudite', 'Rachel duplicates the unlabelled physical tape because copying and showing it to another viewer is the curses actual survival rule, not a cure.', 'Rachel duplique la cassette physique sans etiquette, car la copier puis la montrer a un autre spectateur constitue la veritable regle de survie de la malediction, pas un remede.'],
     decor: { sky: ['#10191b', '#020303'], floor: 'rgba(82, 106, 108, 0.17)', grid: 'rgba(196, 224, 221, 0.24)', motif: 'hauntedset', accent: '#bedbd6' },
     stageVariants: [
       { mode: 'Tactics', name: 'Morgan Ranch Nensha Investigation', difficulty: 'Very Hard', bossName: 'Anna Morgan Well Vision' },
@@ -267,10 +267,10 @@ export const FEATURED_UNIVERSE_PACKS = [
     worldBoss: threat('Kayako Saeki Onryo', '/sprites/generated/bosses/the-grudge/kayako-saeki-onryo.png', 'juon_curse', 'Grudge Without Exit'),
     gear: [
       ['grudge_saeki_photo', 'Saeki Family Photograph', 'Photographie de la famille Saeki', { def: 5, hp: 55 }],
-      ['grudge_case_recorder', 'Nakagawa Case Recorder', 'Magnetophone de Nakagawa', { spd: 2, def: 4 }],
-      ['grudge_house_key', 'Saeki House Key', 'Cle de la maison Saeki', { atk: 7, hp: 45 }]
+      ['grudge_case_recorder', 'Kayakos Journal', 'Journal de Kayako', { spd: 2, def: 4 }],
+      ['grudge_house_key', 'Nakagawas Gasoline Can', 'Bidon dessence de Nakagawa', { atk: 7, hp: 45 }]
     ],
-    event: ['evt_grudge_contact_chain', 'Ju-On Contact Chain', 'Chaine de contact Ju-On', 'Nakagawas recordings reveal every unit that crossed the same cursed room; those enemies become linked, share damage, and lose hidden movement for one sequence.', 'Les enregistrements de Nakagawa revelent chaque unite ayant traverse la meme piece maudite; ces ennemis sont lies, partagent les degats et perdent leurs deplacements caches pendant une sequence.'],
+    event: ['evt_grudge_contact_chain', 'Kayakos Journal', 'Journal de Kayako', 'The physical journal records Kayakos obsession with Peter Kirk and the discovery that triggers Takeos murderous rage. Reading it identifies the curses original contact chain without claiming to break it.', 'Le journal physique consigne l obsession de Kayako pour Peter Kirk et la decouverte qui declenche la rage meurtriere de Takeo. Sa lecture identifie la chaine de contact originelle sans pretendre briser la malediction.'],
     decor: { sky: ['#181817', '#030303'], floor: 'rgba(178, 178, 166, 0.12)', grid: 'rgba(229, 229, 217, 0.22)', motif: 'hauntedset', accent: '#deded2' },
     stageVariants: [
       { mode: 'Tactics', name: 'Nakagawa Curse Contact Board', difficulty: 'Very Hard', bossName: 'Takeo Bathtub Rage Echo' },
@@ -526,7 +526,7 @@ export const FEATURED_STAGE_LORE = {
 
 export const FEATURED_GEAR_LORE = {
   tomba_grandfather_bracelet: localized('Le bracelet dore appartenait au grand-pere de Tomba avant le vol des Koma Pigs. Sa recuperation donne a toute la chasse aux Evil Pigs son objectif personnel.', 'The golden bracelet belonged to Tombas grandfather before the Koma Pigs stole it. Recovering it gives the entire Evil Pig hunt its personal objective.'),
-  tomba_evil_pig_bag: localized('Chaque Evil Pig Bag correspond a un cochon et a sa zone maudite. Ouvrir le mauvais sac ne remplace jamais le rituel du domaine concerne.', 'Every Evil Pig Bag matches one pig and one cursed region. Opening the wrong bag never replaces the ritual of the relevant domain.'),
+  tomba_evil_pig_bag: localized('Le sac bleu est remis par le Dwarf Elder et correspond a son Evil Pig. Chaque sac colore ne revele que la porte de la zone maudite qui lui est associee.', 'The blue bag is given by the Dwarf Elder and matches its Evil Pig. Each colored bag only reveals the doorway to its matching cursed region.'),
   tomba_charity_wings: localized('Les Charity Wings ramenent Tomba vers une zone deja visitee. Dans la Breche, elles conservent ce role de retour rapide plutot que de devenir des ailes de vol.', 'Charity Wings return Tomba to a previously visited area. In the Breach they keep that fast-return role rather than becoming flight wings.'),
   woodruff_tobozon: localized('Le Tobozon compose des mots avec les syllabes apprises pour appeler personnes et services. Une mauvaise combinaison produit une mauvaise route, pas une attaque magique.', 'The Tobozon combines learned syllables to call people and services. A wrong combination produces a wrong route rather than a magic attack.'),
   woodruff_viblefrotzer: localized('Azimuth utilise le Viblefrotzer pour accelerer lage des cellules et permettre a Woodruff de quitter sa cachette sous une forme adolescente.', 'Azimuth uses the Viblefrotzer to accelerate cellular aging and let Woodruff leave hiding in an adolescent form.'),
@@ -542,10 +542,10 @@ export const FEATURED_GEAR_LORE = {
   elm_hypnocil: localized('Hypnocil supprime les reves et protege temporairement les patients de Westin Hills, mais son usage prolonge comporte un risque medical mortel.', 'Hypnocil suppresses dreams and temporarily protects Westin Hills patients, but prolonged use carries lethal medical risk.'),
   ring_cursed_vhs: localized('La cassette sans etiquette contient les images psychiques de Samara et declenche un appel annoncant sept jours. La survie exige une copie montree a une autre personne.', 'The unmarked tape contains Samaras psychic images and triggers a call announcing seven days. Survival requires a copy shown to another person.'),
   ring_distorted_photo: localized('Les visages photographies se deforment apres exposition a la cassette. Rachel et Noah utilisent cette anomalie comme preuve mesurable de la nensha.', 'Photographed faces distort after exposure to the tape. Rachel and Noah use the anomaly as measurable evidence of nensha.'),
-  ring_shelter_well_stone: localized('Cette pierre vient du puits sous la Cabine 12 ou Samara survit sept jours. Elle ancre le lieu du meurtre sans pretendre apaiser son esprit.', 'This stone comes from the well beneath Cabin 12 where Samara survives seven days. It anchors the murder site without pretending to appease her spirit.'),
+  ring_shelter_well_stone: localized('Aidan dessine un cercle noir avant que Rachel ne comprenne quil reproduit lanneau de lumiere visible depuis le puits de Samara. Le dessin sert d indice physique de sa communication avec elle.', 'Aidan draws a black ring before Rachel understands that it reproduces the ring of light visible from Samaras well. The drawing is physical evidence of his contact with her.'),
   grudge_saeki_photo: localized('La photographie de famille conserve Kayako, Takeo, Toshio et Mar avant le massacre. Ses visages permettent de reconnaitre les manifestations sans les confondre.', 'The family photograph preserves Kayako, Takeo, Toshio, and Mar before the massacre. Its faces identify manifestations without confusing them.'),
-  grudge_case_recorder: localized('Le magnetophone de Nakagawa rassemble temoignages, visites et voix impossibles. Il etablit que le Ju-On suit les contacts avec la maison.', 'Nakagawas recorder gathers testimony, visits, and impossible voices. It establishes that the Ju-On follows contact with the house.'),
-  grudge_house_key: localized('La cle ouvre la maison Saeki mais ne rend jamais le seuil sur. La porter signifie accepter le risque de devenir un nouveau maillon de la chaine.', 'The key opens the Saeki house but never makes the threshold safe. Carrying it means accepting the risk of becoming a new link in the chain.')
+  grudge_case_recorder: localized('Le journal de Kayako contient ses sentiments obsessionnels pour Peter Kirk. Takeo le decouvre avant le massacre qui engendre le Ju-On.', 'Kayakos journal records her obsessive feelings for Peter Kirk. Takeo discovers it before the murders that create the Ju-On.'),
+  grudge_house_key: localized('Nakagawa apporte un bidon dessence dans la maison Saeki pour tenter de la detruire par le feu. Le geste retarde une manifestation sans supprimer la malediction.', 'Nakagawa brings a gasoline can into the Saeki house in an attempt to destroy it by fire. The act delays a manifestation without ending the curse.')
 };
 
 export const FEATURED_UNIVERSE_ICONS = {
@@ -803,12 +803,12 @@ Object.assign(FEATURED_CHARACTER_PLAQUES, {
 export const FEATURED_BATTLE_ITEM_OVERRIDES = {
   Tomba: {
     pickups: [
-      ['Grappling Hook', 'Grappling Hook', 'Le grappin ouvre une trajectoire verticale, attire un objet de quete ou interrompt une charge de Koma Pig.'],
+      ['Boule epinee de Tomba', 'Tombas Spiked Ball', 'La boule epinee au bout dune chaine frappe un obstacle, assomme un Koma Pig ou prepare sa projection.'],
       ['Charity Wings', 'Charity Wings', 'Les ailes renvoient le porteur vers une zone deja visitee et servent de repli rapide sur une case stabilisee.'],
-      ['Phoenix Rod', 'Phoenix Rod', 'Le baton concentre la chaleur de Phoenix Mountain et dissipe une malediction elementaire sans annuler les autres evenements.']
+      ['Cle du Sage de cent ans', '100-Year-Old Mans Key', 'La grande cle doree ouvre les coffres et passages lies aux enigmes du Sage de cent ans.']
     ],
-    summon: ['Charles, maitre animal', 'Charles Animal Master', 'Charles intervient temporairement, enseigne Animal Dash a la cellule et ouvre un raccourci inaccessible aux ennemis.'],
-    ultimate: ['Scellement des sept Evil Pigs', 'Seven Evil Pigs Sealing', 'Les sept sacs s ouvrent autour du terrain, aspirent chaque malediction active puis enferment le Real Evil Pig dans la seule sortie restante.']
+    summon: ['Sac bleu a Evil Pig', 'Blue Evil Pig Bag', 'Le sac remis par le Dwarf Elder revele la porte du domaine bleu et fournit le receptacle physique du scellement.'],
+    ultimate: ['Sac noir du Real Evil Pig', 'Black Evil Pig Bag', 'Le huitieme sac apparait apres les sept scellements, revele le repaire final et enferme le Real Evil Pig.']
   },
   Woodruff: {
     pickups: [
@@ -816,46 +816,46 @@ export const FEATURED_BATTLE_ITEM_OVERRIDES = {
       ['Transportozon d Azimuth', 'Azimuth Transportozon', 'Ramene le porteur vers un lieu deja visite sans inventer un teleporteur de combat hors lore.'],
       ['Pierre-syllabe', 'Syllable Stone', 'Ajoute un mot a une formule Bouzouk et change la regle dune case verrouillee.']
     ],
-    summon: ['Conseil des Sages Bouzouks', 'Boozook Wisemens Council', 'Les Sages reunis prononcent une formule coherente qui retire les faux permis et rend les objectifs lisibles.'],
-    ultimate: ['Liberation du Schnibble', 'Release the Schnibble', 'Le Schnibble traverse la ville, annule le decret de Bigwig et rend aux Bouzouks leurs routes, leurs syllabes et leur memoire.']
+    summon: ['Viblefrotzer d Azimuth', 'Azimuths Viblefrotzer', 'Lappareil d Azimuth accelere lage cellulaire de Woodruff puis sert contre Bigwig au moment precis du plan final.'],
+    ultimate: ['Chprotznog bloque au chewing-gum', 'Chewing-Gum-Locked Chprotznog', 'Le Chprotznog est suspendu au crochet puis verrouille avec le chewing-gum afin de capturer physiquement la Bete.']
   },
   Hellraiser: {
     pickups: [
-      ['Segment Lemarchand', 'Lemarchand Segment', 'Une piece mobile de la boite revele le prochain angle de chaine et donne une courte parade.'],
-      ['Chaine du Labyrinthe', 'Labyrinth Chain', 'Une chaine marque une cible deja liee au pacte et la tire vers la configuration active.'],
-      ['Eclat de lumiere noire', 'Black-Light Shard', 'Un fragment de Leviathan expose les formes cachees et empeche une transformation pendant un tour.'],
-      ['Lame de la boite 2022', '2022 Box Blade', 'La lame retractable marque la cible la plus proche et revele quelle configuration doit etre resolue pour la sauver.'],
-      ['Plan de la cage Voight', 'Voight Cage Blueprint', 'Le plan ferme temporairement une ligne de seuil du manoir sans rompre le pacte porte par une cible marquee.'],
-      ['Perle de procession', 'Procession Pearl', 'La perle signale la prochaine entree de la Pretresse et donne une courte fenetre de repositionnement a toute la cellule.']
+      ['Configuration Lament - Vie', 'Lament Configuration - Life', 'La forme cubique initiale de 2022 dissimule une lame retractable qui marque le prochain sacrifice.'],
+      ['Configuration Lore - Connaissance', 'Lore Configuration - Knowledge', 'La seconde forme octogonale represente le choix de la connaissance et poursuit le cycle des sacrifices.'],
+      ['Configuration Laudarant - Amour', 'Laudarant Configuration - Love', 'Deux pyramides imbriquees forment le choix de lamour selon la geometrie rituelle de la boite.'],
+      ['Configuration Liminal - Sensation', 'Liminal Configuration - Sensation', 'La forme creuse et angulaire correspond au don de sensation choisi par Voight.'],
+      ['Configuration Lazarus - Resurrection', 'Lazarus Configuration - Resurrection', 'La forme en sablier represente la resurrection et le temps defait.'],
+      ['Configuration Leviathan - Pouvoir', 'Leviathan Configuration - Power', 'La forme finale en losange reprend la silhouette de Leviathan et ouvre laudience apres cinq sacrifices.']
     ],
-    summon: ['Elliot Spencer', 'Elliot Spencer', 'La memoire humaine du Hell Priest interrompt la sentence, designe la vraie cible du pacte et ouvre une fenetre de fermeture.'],
-    ultimate: ['Sentence de Leviathan', 'Leviathans Sentence', 'La lumiere noire tourne au-dessus du terrain, le Labyrinthe se replie et ses chaines jugent toutes les signatures qui ont force la boite.']
+    summon: ['Crochet cenobite barbe', 'Barbed Cenobite Hook', 'Le crochet physique jaillit du seuil sur une chaine du Labyrinthe et tire la cible deja marquee par la boite.'],
+    ultimate: ['Configuration Leviathan', 'Leviathan Configuration', 'La forme finale en losange accorde laudience avec Leviathan et materialise le prix du choix de pouvoir.']
   },
   'A Nightmare on Elm Street': {
     pickups: [
       ['Reveil de Nancy', 'Nancys Alarm Clock', 'Declenche une fenetre de reveil qui retire peur et immobilisation au porteur.'],
       ['Dose d Hypnocil', 'Hypnocil Dose', 'Bloque temporairement les reves, reduit les apparitions de Freddy mais ralentit la recharge speciale.'],
-      ['Piege du 1428', '1428 Booby Trap', 'Pose un obstacle domestique qui inflige ses degats uniquement si Freddy devient materiel.']
+      ['Piege au marteau de Nancy', 'Nancys Sledgehammer Trap', 'Le marteau domestique suspendu frappe Freddy uniquement apres son extraction dans le monde materiel.']
     ],
-    summon: ['Dream Warriors', 'Dream Warriors', 'Kristen rassemble Kincaid, Taryn, Will et Joey dans un reve partage pour couvrir le reveil de la cellule.'],
-    ultimate: ['Reveil de Springwood', 'Springwood Wake-Up', 'Nancy arrache Freddy au reve, les pieges du 1428 se declenchent et les ames de ses victimes lui retirent son controle de la scene.']
+    summon: ['Maquette du 1428 de Kristen', 'Kristens 1428 Elm Street Model', 'La maquette en papier mache localise la maison condamnee qui sert de porte recurrente au cauchemar.'],
+    ultimate: ['Fedora de Freddy', 'Freddys Fedora', 'Nancy arrache le fedora marque Fred Krueger au cauchemar: cet objet physique prouve que Freddy peut etre ramene puis piege.']
   },
   'The Ring': {
     pickups: [
       ['Cassette sans etiquette', 'Unmarked VHS Tape', 'Marque une cible avec le compte des sept jours et revele sa prochaine action sous forme de frame parasite.'],
       ['Polaroid deforme', 'Distorted Polaroid', 'Montre quelle unite est deja touchee par la nensha et augmente son esquive avant manifestation.'],
-      ['Pierre du puits', 'Well Stone', 'Pose une lourde ancre de terrain qui bloque une sortie-ecran pendant quelques secondes.']
+      ['Dessin de lanneau noir d Aidan', 'Aidans Black Ring Drawing', 'Le dessin au crayon noir reproduit lanneau de lumiere vu depuis le puits et signale le contact psychique de Samara.']
     ],
-    summon: ['Noah au laboratoire photo', 'Noah in the Photo Lab', 'Noah analyse les timecodes, ralentit la bande et revele le point exact ou Samara traversera lecran.'],
-    ultimate: ['Sept jours compresses', 'Seven Days Compressed', 'Le compte entier passe en quelques secondes: telephone, puits et television convergent sur la cible marquee avant quarantaine de la copie.']
+    summon: ['Cle de la Cabine 12', 'Cabin 12 Key Tag', 'La cle etiquetee de Shelter Mountain localise la cabine ou Rachel trouve et visionne la cassette sans etiquette.'],
+    ultimate: ['Telephone des sept jours', 'Seven-Days Telephone', 'Le combine noir sonne juste apres la cassette et transmet lannonce physique du delai de sept jours.']
   },
   'The Grudge': {
     pickups: [
-      ['Magnetophone Nakagawa', 'Nakagawa Recorder', 'Rejoue un contact anterieur et revele les ennemis ayant traverse la meme piece maudite.'],
-      ['Cle de la maison Saeki', 'Saeki House Key', 'Ouvre une issue condamnee mais marque le porteur comme nouveau contact du Ju-On.'],
-      ['Ligne d essence', 'Gasoline Line', 'Cree une barriere de feu temporaire; elle retarde Kayako sans pretendre detruire la malediction.']
+      ['Journal de Kayako', 'Kayakos Journal', 'Le journal consigne lobsession pour Peter Kirk et revele la decouverte qui precede le massacre des Saeki.'],
+      ['Photographie de famille Saeki laceree', 'Defaced Saeki Family Photograph', 'La photographie dont le visage de Kayako est decoupe relie Takeo, Kayako, Toshio et Mar a lorigine du Ju-On.'],
+      ['Bidon dessence de Nakagawa', 'Nakagawas Gasoline Can', 'Le bidon alimente une barriere de feu temporaire qui retarde Kayako sans detruire la malediction.']
     ],
-    summon: ['Equipe denquete Nakagawa', 'Nakagawa Investigation Team', 'Une equipe de police relie les dossiers, ferme les nouvelles entrees et evacue les temoins non encore marques.'],
-    ultimate: ['Chaine de visites Saeki', 'Saeki Visit Chain', 'Toutes les pieces contaminees se superposent; Kayako traverse la chaine de contacts et frappe chaque ennemi ayant propage la malediction.']
+    summon: ['Photographie de Peter Kirk', 'Peter Kirk Photograph', 'La photographie conservee avec le journal materialise lobsession de Kayako et identifie le premier contact exterieur de la chaine.'],
+    ultimate: ['Briquet de Doug', 'Dougs Lighter', 'Karen ouvre le briquet de Doug au-dessus de lessence pour incendier la maison et obtenir une courte voie devacuation.']
   }
 };

@@ -1,4 +1,4 @@
-import { HEROES_DB } from './heroes';
+import { EQUIP_ITEMS_DB, HEROES_DB } from './heroes';
 import { LORE_DB } from './lore';
 import { FEATURED_BATTLE_ITEM_OVERRIDES } from './featuredUniversePacks';
 
@@ -176,12 +176,13 @@ const BATTLE_ITEM_OVERRIDES = {
 
 Object.assign(BATTLE_ITEM_OVERRIDES, FEATURED_BATTLE_ITEM_OVERRIDES);
 
-const makeGenericItem = (universe, index, color) => {
+const makeLoreBackedItem = (universe, index, color) => {
   const slug = slugify(universe);
   const lore = LORE_DB[universe];
   const mediaType = lore?.mediaType || 'game';
   const flavor = mediaItemFlavor[mediaType] || mediaItemFlavor.game;
   const title = lore?.title || { fr: universe, en: universe };
+  const loreItem = EQUIP_ITEMS_DB.filter(item => item.universe === universe)[index];
   const templates = [
     {
       id: `${slug}_field_relic`,
@@ -214,8 +215,19 @@ const makeGenericItem = (universe, index, color) => {
       effect: { charge: 28, heal: 18 }
     }
   ];
+  const template = templates[index];
+  const loreName = loreItem?.name;
+  const loreDesc = loreItem?.desc;
   return {
-    ...templates[index],
+    ...template,
+    ...(loreName ? {
+      name: loreName,
+      desc: loreDesc || {
+        fr: `${loreName.fr || loreName.en} est un objet physique issu de ${title.fr}; son effet de combat conserve son usage et sa silhouette reconnaissables.`,
+        en: `${loreName.en || loreName.fr} is a physical ${title.en} prop whose combat effect preserves its recognizable use and silhouette.`
+      },
+      sourceItemId: loreItem.id
+    } : {}),
     universe,
     tier: 'pickup',
     color,
@@ -243,7 +255,7 @@ const makeItemsForUniverse = (universe) => {
       id: `${slug}_pickup_${index + 1}`,
       universe,
       tier: 'pickup',
-      role: ['offense', 'defense', 'tempo'][index],
+      role: ['offense', 'defense', 'tempo'][index % 3],
       name: { fr, en },
       desc: { fr: effectText, en: effectText },
       melee: { fr: 'Ramassable en melee: declenche son effet des que le heros le securise.', en: 'Melee pickup: triggers as soon as the hero secures it.' },
@@ -253,10 +265,10 @@ const makeItemsForUniverse = (universe) => {
         { damage: 34, charge: 10 },
         { heal: 46, shield: 14 },
         { charge: 32, damage: 16 }
-      ][index],
+      ][index % 3],
       color
     }))
-    : [0, 1, 2].map(index => makeGenericItem(universe, index, color));
+    : [0, 1, 2].map(index => makeLoreBackedItem(universe, index, color));
 
   const summon = {
     id: `${slug}_summon`,
