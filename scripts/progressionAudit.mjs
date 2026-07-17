@@ -45,6 +45,7 @@ const recentTacticsTextureSources = JSON.parse(read('../public/textures/recent-u
 const spriteChecklistSource = read('../SPRITE_CONVERSION_CHECKLIST.txt');
 const spriteReferenceSource = read('../public/sprites/generated/sprite-reference-sources.json');
 const manifest = JSON.parse(read('../public/sprites/generated/sprite-manifest.json'));
+const generatedStageAssets = JSON.parse(read('../src/game/generatedStageAssets.json'));
 const featuredVisualManifest = JSON.parse(read('../public/images/generated/featured-visual-manifest.json'));
 const featuredVisualPrompts = read('../public/images/generated/featured-openai-visual-prompts.jsonl').trim().split('\n').filter(Boolean).map(line => JSON.parse(line));
 const manifestOutputs = new Set((manifest.entries || []).filter(entry => entry.available).map(entry => entry.output));
@@ -767,6 +768,10 @@ assert(Object.keys(STAGE_LORE_PROFILES).length >= 260, 'Every expanded universe 
 assert(stageLoreProfiles.length === 293, 'Stage lore registry must preserve 264 universe profiles and 29 arc profiles.');
 assert(stageLoreProfiles.filter(profile => profile.generationBlocked).length === 3, 'Only the three documented ambiguous stage sources may remain generation-blocked.');
 assert(manifest.counts?.stages === stageLoreProfiles.length * 4, 'OpenAI manifest must expose all four stage views for every lore profile.');
+assert(
+  generatedStageAssets.counts?.backdrops === manifest.availableCounts?.stages,
+  'Generated stage runtime registry must match the available stage backdrop count in the OpenAI manifest.',
+);
 assert(manifest.counts?.finales === worldBossPolicyUniverses.size, 'OpenAI manifest must expose every non-combat or set-piece finale kit.');
 assert(manifest.counts?.items === 542, 'OpenAI manifest must expose the complete lore item prompt catalog.');
 worldBossPolicyUniverses.forEach(universe => {
@@ -775,6 +780,9 @@ worldBossPolicyUniverses.forEach(universe => {
 assert(worldBossUniverses.has('Ecco the Dolphin'), 'Ecco the Dolphin must resolve to the canonical Vortex Queen world boss.');
 assert(gameCanvasSource.includes('drawItemIcon'), 'Collectible lore items must render their OpenAI icon on the battlefield.');
 assert(spriteAssetsSource.includes('if (item.icon) return item.icon'), 'Collectible lore items must prefer their curated icon path over a generated fallback ID.');
+assert(rendererSource.includes('getGeneratedStageBackdropSrc'), 'Renderer must prefer generated canonical stage backdrops when available.');
+assert(smashEngineSource.includes('getGeneratedStageTexturePattern') && smashEngineSource.includes("'platforms'"), 'Melee platforms must consume their generated standalone texture atlas.');
+assert(tacticsEngineSource.includes('drawGeneratedStageTextureCover') && tacticsEngineSource.includes("'tiles'"), 'Tactics maps must consume their generated battlefield and tile atlas.');
 assert(
   battleItemsSource.includes('const loreItems = EQUIP_ITEMS_DB.filter') &&
   battleItemsSource.includes('name: loreItem?.name || { fr, en }') &&
