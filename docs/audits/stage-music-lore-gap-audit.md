@@ -1,5 +1,13 @@
 # Audit des ecarts de musique lore par stage
 
+> **ARCHIVE HISTORIQUE.** Les constats d implementation ci-dessous correspondent
+> a l etat du 17 juillet 2026 et sont maintenant depasses par
+> `src/game/stageMusicProfiles.js`. La verification active est
+> `npm run music:audit`; voir
+> [stage-music-runtime-batch-2026-07-19.md](stage-music-runtime-batch-2026-07-19.md).
+> Conserver le catalogue de directions lore, mais ne pas utiliser ses mentions
+> `AUCUN_MAPPING_AUDIO_LORE` comme etat runtime courant.
+
 > **Etat audite : 2026-07-17.** Audit et direction de composition uniquement. Aucune piste, melodie, stem, parole, voix, sample ou enregistrement protege ne doit etre copie ou integre. Toutes les propositions sont des morceaux **100 % originaux**, informes seulement par les fonctions dramatiques, familles de timbres et credits canoniques.
 
 ## Resume executif

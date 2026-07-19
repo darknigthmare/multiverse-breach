@@ -102,13 +102,21 @@ def bbox_distance(point: tuple[float, float], bbox: tuple[int, int, int, int]) -
     return (dx * dx + dy * dy) ** 0.5
 
 
-def build_component_layer(source: Image.Image, component: Component) -> Image.Image:
+def build_component_layer(
+    source: Image.Image,
+    component: Component,
+    offset: tuple[int, int] = (0, 0),
+) -> Image.Image:
     layer = Image.new('RGBA', source.size, (0, 0, 0, 0))
     source_pixels = source.load()
     layer_pixels = layer.load()
+    offset_x, offset_y = offset
     for y, start, end in component.runs:
         for x in range(start, end + 1):
-            layer_pixels[x, y] = source_pixels[x, y]
+            target_x = x + offset_x
+            target_y = y + offset_y
+            if 0 <= target_x < source.width and 0 <= target_y < source.height:
+                layer_pixels[target_x, target_y] = source_pixels[x, y]
     return layer
 
 
@@ -138,6 +146,7 @@ def normalize(input_path: Path, output_path: Path) -> dict[str, object]:
             bodies_by_cell[cell] = component
 
     assignments: dict[int, list[Component]] = {cell: [] for cell in range(16)}
+    component_offsets: dict[int, tuple[int, int]] = {}
     body_roots = {component.root for component in bodies_by_cell.values()}
     for cell, body in bodies_by_cell.items():
         assignments[cell].append(body)
@@ -145,6 +154,68 @@ def normalize(input_path: Path, output_path: Path) -> dict[str, object]:
     for component in components:
         if component.root in body_roots:
             continue
+
+        # Image generators sometimes place a disconnected head or glow just
+        # above the next row boundary. Prefer the body directly below in the
+        # same column when that small component clearly protrudes upward from
+        # it; otherwise the part leaks into the preceding animation frame.
+        component_x, component_y = component.centroid
+        component_row = max(0, min(3, int(component_y // 256)))
+        component_col = max(0, min(3, int(component_x // 256)))
+        below_cell = (component_row + 1) * 4 + component_col
+        below_body = bodies_by_cell.get(below_cell) if component_row < 3 else None
+        component_width = component.bbox[2] - component.bbox[0]
+        component_height = component.bbox[3] - component.bbox[1]
+        if (
+            below_body is not None
+            and component_y % 256 >= 220
+            and component_width <= 80
+            and component_height <= 56
+            and component.bbox[3] <= (component_row + 1) * 256
+            and 0 <= below_body.bbox[1] - component.bbox[3] <= 120
+            and below_body.bbox[0] - 24 <= component_x <= below_body.bbox[2] + 24
+        ):
+            assignments[below_cell].append(component)
+            vertical_gap = below_body.bbox[1] - component.bbox[3]
+            component_offsets[component.root] = (0, max(0, vertical_gap - 2))
+            continue
+
+        right_cell = component_row * 4 + component_col + 1
+        right_body = bodies_by_cell.get(right_cell) if component_col < 3 else None
+        if (
+            right_body is not None
+            and component_x % 256 >= 220
+            and 12 <= component.area <= 1600
+            and component_width <= 80
+            and component_height <= 80
+            and component_height >= component_width
+            and component.bbox[2] <= (component_col + 1) * 256
+            and 0 <= right_body.bbox[0] - component.bbox[2] <= 120
+            and right_body.bbox[1] - 24 <= component_y <= right_body.bbox[3] + 24
+        ):
+            assignments[right_cell].append(component)
+            horizontal_gap = right_body.bbox[0] - component.bbox[2]
+            component_offsets[component.root] = (max(0, horizontal_gap - 2), 0)
+            continue
+
+        left_cell = component_row * 4 + component_col - 1
+        left_body = bodies_by_cell.get(left_cell) if component_col > 0 else None
+        if (
+            left_body is not None
+            and component_x % 256 <= 36
+            and 12 <= component.area <= 1600
+            and component_width <= 80
+            and component_height <= 80
+            and component_height >= component_width
+            and component.bbox[0] >= component_col * 256
+            and 0 <= component.bbox[0] - left_body.bbox[2] <= 120
+            and left_body.bbox[1] - 24 <= component_y <= left_body.bbox[3] + 24
+        ):
+            assignments[left_cell].append(component)
+            horizontal_gap = component.bbox[0] - left_body.bbox[2]
+            component_offsets[component.root] = (-max(0, horizontal_gap - 2), 0)
+            continue
+
         preferred_cell = min(
             bodies_by_cell,
             key=lambda cell: bbox_distance(component.centroid, bodies_by_cell[cell].bbox),
@@ -168,13 +239,26 @@ def normalize(input_path: Path, output_path: Path) -> dict[str, object]:
         row, col = divmod(cell, 4)
         frame_components = assignments[cell]
         if frame_components:
-            left = min(component.bbox[0] for component in frame_components)
-            top = min(component.bbox[1] for component in frame_components)
-            right = max(component.bbox[2] for component in frame_components)
-            bottom = max(component.bbox[3] for component in frame_components)
+            shifted_bboxes = [
+                (
+                    component.bbox[0] + component_offsets.get(component.root, (0, 0))[0],
+                    component.bbox[1] + component_offsets.get(component.root, (0, 0))[1],
+                    component.bbox[2] + component_offsets.get(component.root, (0, 0))[0],
+                    component.bbox[3] + component_offsets.get(component.root, (0, 0))[1],
+                )
+                for component in frame_components
+            ]
+            left = min(bbox[0] for bbox in shifted_bboxes)
+            top = min(bbox[1] for bbox in shifted_bboxes)
+            right = max(bbox[2] for bbox in shifted_bboxes)
+            bottom = max(bbox[3] for bbox in shifted_bboxes)
             combined = Image.new('RGBA', source.size, (0, 0, 0, 0))
             for component in frame_components:
-                combined.alpha_composite(build_component_layer(source, component))
+                combined.alpha_composite(build_component_layer(
+                    source,
+                    component,
+                    component_offsets.get(component.root, (0, 0)),
+                ))
             sprite = combined.crop((left, top, right, bottom))
         else:
             sprite = source.crop((col * 256, row * 256, (col + 1) * 256, (row + 1) * 256))

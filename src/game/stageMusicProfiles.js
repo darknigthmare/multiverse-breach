@@ -54,6 +54,7 @@ const BASE_PROFILE = {
   id: 'family-nexus-archive',
   family: 'nexusArchive',
   confidence: 'A-OC',
+  sourcePolicy: 'original-procedural-only',
   tempo: [84, 112],
   meter: { beats: 4, unit: 4, subdivisions: 2, accents: [1, 0.35, 0.62, 0.3, 0.8, 0.32, 0.58, 0.3] },
   scaleName: 'dorian',
@@ -515,6 +516,33 @@ export const MUSIC_PROFILE_OVERRIDES = {
     boss: { pattern: [1, 0, 0.45, 1, 0, 0.6], stinger: [0, 7, 5, 10, 12] },
     victory: { intervals: [0, 5, 7, 9, 12], beats: [0.75, 0.5, 0.75, 0.5, 1.5] }
   }),
+  Stargate: detailedOverride('militarySciFi', {
+    id: 'mus-stargate',
+    confidence: 'B',
+    tempo: [86, 124],
+    meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.3, 0.48, 0.86, 0.32, 0.54] },
+    scaleName: 'heroicMinor',
+    scale: SCALE_LIBRARY.heroicMinor,
+    rootMidi: 50,
+    chords: [0, 5, 3, 4],
+    instrumentation: ['frame-drum-noise', 'low-brass-synth', 'wordless-choir-pad', 'plucked-string-synth', 'gate-metal-ring', 'subspace-pulse'],
+    density: 0.68,
+    restChance: 0.2,
+    patterns: {
+      lead: [1, 0, 0.52, 0.78, 0, 0.46],
+      bass: [1, 0, 0, 0.74, 0, 0],
+      drums: [1, 3, 3, 2, 3, 4],
+      pad: [1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'chevron-lock', bars: 6, density: 0.42 },
+      { name: 'offworld-patrol', bars: 8, density: 0.76 },
+      { name: 'system-lord-contact', bars: 4, density: 0.96 },
+      { name: 'iris-return', bars: 6, density: 0.58 }
+    ],
+    boss: { pattern: [1, 0, 0.5, 1, 0, 0.66], stinger: [0, 5, 7, 10, 12] },
+    victory: { intervals: [0, 5, 7, 9, 12], beats: [0.6, 0.5, 0.6, 0.55, 1.45] }
+  }),
   'Resident Evil': detailedOverride('survivalHorror', {
     id: 'mus-resident-evil',
     confidence: 'A',
@@ -967,6 +995,110 @@ export const MUSIC_PROFILE_OVERRIDES = {
     boss: { pattern: [1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0.55, 0], stinger: [0, 7, 10, 3, 12] },
     victory: { intervals: [0, 3, 7, 10, 12, 15], beats: [0.4, 0.4, 0.5, 0.45, 0.65, 1.35] }
   }),
+  Splatterhouse: detailedOverride('survivalHorror', {
+    id: 'mus-splatterhouse',
+    confidence: 'B',
+    tempo: [66, 118],
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 39,
+    chords: [0, 1, 5, 2],
+    instrumentation: ['detuned-organ-synth', 'prepared-piano', 'low-string-drone', 'struck-chain-noise', 'arcade-toms', 'subharmonic-pulse'],
+    density: 0.58,
+    restChance: 0.3,
+    patterns: {
+      lead: [1, 0, 0.45, 0, 0.72, 0, 0.35, 0],
+      bass: [1, 0, 0, 0, 0.8, 0, 0, 0],
+      drums: [1, 0, 3, 0, 2, 0, 4, 0],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'west-mansion', bars: 8, density: 0.32 },
+      { name: 'mask-awakening', bars: 4, density: 0.68 },
+      { name: 'brutal-advance', bars: 8, density: 1 },
+      { name: 'altar-breath', bars: 4, density: 0.45 }
+    ],
+    boss: { pattern: [1, 0, 0, 0, 1, 0, 0.65, 0], stinger: [0, 1, 6, 7, 13] },
+    victory: { intervals: [0, 3, 6, 10, 12], beats: [0.6, 0.5, 0.75, 0.6, 1.5] }
+  }),
+  'Streets of Rage': detailedOverride('retroArcade', {
+    id: 'mus-streets-of-rage',
+    confidence: 'B',
+    tempo: [118, 156],
+    scaleName: 'dorian',
+    scale: SCALE_LIBRARY.dorian,
+    rootMidi: 45,
+    chords: [0, 3, 5, 4],
+    instrumentation: ['fm-style-bass-synth', 'pulse-lead', 'pcm-style-drum-noise', 'digital-marimba', 'short-house-chord', 'urban-noise-pulse'],
+    density: 0.9,
+    restChance: 0.1,
+    patterns: {
+      lead: [1, 0, 0.72, 0.4, 1, 0.35, 0.68, 0],
+      bass: [1, 0.55, 0, 0.7, 1, 0.45, 0, 0.72],
+      drums: [1, 3, 2, 3, 1, 4, 2, 3],
+      pad: [1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    form: [
+      { name: 'wood-oak-intro', bars: 4, density: 0.64 },
+      { name: 'street-brawl-a', bars: 8, density: 0.98 },
+      { name: 'syndicate-break', bars: 4, density: 0.62 },
+      { name: 'street-brawl-b', bars: 8, density: 1.08 }
+    ],
+    boss: { pattern: [1, 0, 0.72, 0, 1, 0.45, 0.8, 0], stinger: [0, 3, 7, 10, 12] },
+    victory: { intervals: [0, 3, 7, 9, 12, 15], beats: [0.35, 0.4, 0.5, 0.45, 0.65, 1.3] }
+  }),
+  'Toy Soldiers': detailedOverride('militarySciFi', {
+    id: 'mus-toy-soldiers',
+    confidence: 'B',
+    tempo: [94, 130],
+    meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.25, 0.5, 0.86, 0.28, 0.52] },
+    scaleName: 'heroicMinor',
+    scale: SCALE_LIBRARY.heroicMinor,
+    rootMidi: 50,
+    chords: [0, 4, 3, 5],
+    instrumentation: ['miniature-brass-synth', 'tin-drum-noise', 'toy-piano', 'clockwork-tick', 'small-string-ostinato', 'wooden-table-resonance'],
+    density: 0.72,
+    patterns: {
+      lead: [1, 0, 0.58, 0.82, 0, 0.48],
+      bass: [1, 0, 0, 0.78, 0, 0],
+      drums: [1, 3, 3, 2, 3, 3],
+      pad: [1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'tabletop-briefing', bars: 6, density: 0.46 },
+      { name: 'trench-advance', bars: 8, density: 0.88 },
+      { name: 'wind-up-respite', bars: 4, density: 0.42 },
+      { name: 'toybox-counterattack', bars: 8, density: 1.02 }
+    ],
+    boss: { pattern: [1, 0, 0.5, 1, 0, 0.68], stinger: [0, 5, 7, 10, 12] },
+    victory: { intervals: [0, 5, 7, 9, 12], beats: [0.55, 0.45, 0.55, 0.6, 1.4] }
+  }),
+  'Zombies Ate My Neighbors': detailedOverride('retroArcade', {
+    id: 'mus-zombies-ate-my-neighbors',
+    confidence: 'B',
+    tempo: [116, 154],
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 48,
+    chords: [0, 3, 1, 5],
+    instrumentation: ['cartoon-organ-pulse', 'chip-bass', 'noise-drum-kit', 'theremin-style-sine', 'b-movie-brass-stab', 'suburban-doorbell-pulse'],
+    density: 0.86,
+    restChance: 0.12,
+    patterns: {
+      lead: [1, 0.72, 0, 0.5, 1, 0.62, 0.38, 0],
+      bass: [1, 0, 0.6, 0, 1, 0, 0.52, 0],
+      drums: [1, 3, 2, 3, 1, 4, 2, 3],
+      pad: [1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    form: [
+      { name: 'zombie-panic', bars: 6, density: 0.76 },
+      { name: 'neighbor-rescue', bars: 8, density: 0.98 },
+      { name: 'backyard-breath', bars: 4, density: 0.5 },
+      { name: 'b-movie-surge', bars: 8, density: 1.06 }
+    ],
+    boss: { pattern: [1, 0, 0.7, 0, 1, 0.45, 0.82, 0], stinger: [0, 6, 7, 3, 12] },
+    victory: { intervals: [0, 4, 7, 10, 12, 16], beats: [0.35, 0.4, 0.5, 0.45, 0.65, 1.3] }
+  }),
   'Cyberpunk: Edgerunners': detailedOverride('cyberNetwork', {
     id: 'mus-cyberpunk-edgerunners',
     confidence: 'A',
@@ -1060,7 +1192,7 @@ export const normalizeMusicUniverse = value => {
   if (/^halo(?:\b| )/.test(key)) return 'Halo';
   if (/^doom(?:\b| )/.test(key)) return 'Doom';
   if (/^(?:alien|aliens)(?:\b| )/.test(key) && !key.includes('predator')) return 'Alien';
-  if (/^predator(?:\b| )/.test(key)) return 'Predator';
+  if (/^(?:the )?predator(?:\b| )/.test(key)) return 'Predator';
   if (/^the matrix(?:\b| )/.test(key)) return 'The Matrix';
   if (/^portal(?:\b| )/.test(key)) return 'Portal';
   if (/^metal gear(?:\b| )/.test(key) && !key.includes('rising')) return 'Metal Gear';
@@ -1153,6 +1285,9 @@ const scaleDegreeToMidi = (rootMidi, scale, degree, octave = 0) => {
 };
 
 const getSourceUniverses = stage => {
+  if (stage?.dlcSuppressedArena || stage?.forceBaseArena || stage?.musicSuppressed) {
+    return ['Nexus de Convergence'];
+  }
   const raw = Array.isArray(stage?.sourceUniverses) && stage.sourceUniverses.length
     ? stage.sourceUniverses
     : [stage?.universe];
@@ -1274,6 +1409,7 @@ export const resolveStageMusicProfile = (stage = {}, requestedState = 'battle') 
     profileId: profile.id,
     family: profile.family,
     confidence: profile.confidence,
+    sourcePolicy: profile.sourcePolicy,
     universe: sourceUniverses[0],
     sourceUniverses,
     mode,

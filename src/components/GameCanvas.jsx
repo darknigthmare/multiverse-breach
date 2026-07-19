@@ -542,7 +542,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     lastAnomalyWaveRef.current = -1;
     bootClearedRef.current = false;
     battleCompletionHandledRef.current = false;
-    sound.playStageBgm(stage);
+    sound.playStageBgm(arenaStage);
 
     const enemyData = getEnemiesData();
     const enemyList = flattenEnemiesData(enemyData);
