@@ -8,6 +8,7 @@ the older static lore-gap catalogue.
 - Every generated plan is original and procedural. No canonical melody,
   recording, sample, lyric, or protected score data is embedded.
 - Gears of War and Daft Punk keep their detailed profiles.
+- Oliver Tree, Hazbin Hotel, and Vocaloid now have distinct original profiles.
 - All modern Predator labels resolve to the Predator hunting profile.
 - Splatterhouse, Streets of Rage, Toy Soldiers, Stargate, and Zombies Ate My
   Neighbors now have dedicated profiles.
@@ -26,6 +27,9 @@ the older static lore-gap catalogue.
 | Gears of War | `mus-gears-of-war` | Low synthetic brass, military percussion, squad pressure |
 | Predator variants | `mus-predator` | Tuned tom hunt pulse, dry brass, thermal clicks |
 | Daft Punk | `mus-daft-punk` | Original filtered electronic pulse and synthetic stage build |
+| Oliver Tree | `mus-oliver-tree` | Original compressed alt-pop pulse, demolition impacts and scooter-bell accents |
+| Hazbin Hotel | `mus-hazbin-hotel` | Original infernal cabaret pulse, piano, muted brass and theater organ |
+| Vocaloid | `mus-vocaloid` | Original bright digital-stage pulse, arpeggiator and wordless formant pad |
 | Splatterhouse | `mus-splatterhouse` | Detuned organ, prepared piano, chain noise, arcade horror toms |
 | Streets of Rage | `mus-streets-of-rage` | Original FM-style bass, pulse lead, urban brawler rhythm |
 | Toy Soldiers | `mus-toy-soldiers` | Miniature brass, tin drums, toy piano, clockwork rhythm |
@@ -51,6 +55,6 @@ Validated result:
 | Lore profiles | 293 |
 | Gameplay views | 1,172 |
 | Unique deterministic runtime keys | 1,172 |
-| Dedicated-profile views | 144 |
+| Dedicated-profile views | 156 |
 | Fusion-profile views | 56 |
-| Family fallback views | 972 |
+| Family fallback views | 960 |

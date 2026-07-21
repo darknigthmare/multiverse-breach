@@ -995,6 +995,86 @@ export const MUSIC_PROFILE_OVERRIDES = {
     boss: { pattern: [1, 0, 0, 0, 0.8, 0, 0, 0, 1, 0, 0, 0, 0.8, 0, 0.55, 0], stinger: [0, 7, 10, 3, 12] },
     victory: { intervals: [0, 3, 7, 10, 12, 15], beats: [0.4, 0.4, 0.5, 0.45, 0.65, 1.35] }
   }),
+  'Oliver Tree': detailedOverride('electronicStage', {
+    id: 'mus-oliver-tree',
+    confidence: 'B',
+    tempo: [104, 142],
+    scaleName: 'minor',
+    scale: SCALE_LIBRARY.minor,
+    rootMidi: 43,
+    chords: [0, 5, 3, 4],
+    instrumentation: ['compressed-guitar-oscillator', 'distorted-alt-pop-bass', 'dry-breakbeat-noise', 'detuned-piano', 'wide-synth-pad', 'scooter-bell-pulse'],
+    density: 0.82,
+    restChance: 0.14,
+    patterns: {
+      lead: [1, 0, 0.65, 0, 0.82, 0.35, 0, 0.58, 1, 0, 0.55, 0.3, 0.76, 0, 0.45, 0],
+      bass: [1, 0, 0, 0, 0.78, 0, 0.42, 0, 1, 0, 0, 0, 0.68, 0, 0.38, 0],
+      drums: [1, 3, 3, 3, 2, 3, 4, 3, 1, 3, 3, 4, 2, 3, 3, 3],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'demolition-intro', bars: 4, density: 0.5 },
+      { name: 'ramp-run', bars: 8, density: 0.92 },
+      { name: 'awkward-break', bars: 4, density: 0.42 },
+      { name: 'scooter-surge', bars: 8, density: 1.05 }
+    ],
+    boss: { pattern: [1, 0, 0, 0, 0.72, 0, 0.42, 0, 1, 0, 0, 0.45, 0.82, 0, 0.5, 0], stinger: [0, 3, 7, 6, 12] },
+    victory: { intervals: [0, 3, 7, 9, 12, 15], beats: [0.4, 0.4, 0.5, 0.45, 0.7, 1.35] }
+  }),
+  'Hazbin Hotel': detailedOverride('comedyOddity', {
+    id: 'mus-hazbin-hotel',
+    confidence: 'B',
+    tempo: [96, 144],
+    scaleName: 'harmonicMinor',
+    scale: SCALE_LIBRARY.harmonicMinor,
+    rootMidi: 48,
+    chords: [0, 4, 1, 5],
+    instrumentation: ['cabaret-piano-synth', 'upright-bass-synth', 'muted-brass-synth', 'brushed-drum-noise', 'theater-organ-pad', 'infernal-bell', 'wordless-ensemble-pad'],
+    density: 0.8,
+    restChance: 0.14,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0.72, 0.35, 0.9, 0, 0.58, 0.42],
+      bass: [1, 0, 0.52, 0, 0.82, 0, 0.48, 0],
+      drums: [1, 3, 2, 3, 1, 4, 2, 3],
+      pad: [1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    form: [
+      { name: 'lobby-overture', bars: 6, density: 0.54 },
+      { name: 'pentagram-cabaret', bars: 8, density: 0.94 },
+      { name: 'redemption-bridge', bars: 4, density: 0.46 },
+      { name: 'infernal-finale', bars: 8, density: 1.06 }
+    ],
+    boss: { pattern: [1, 0, 0.65, 0, 1, 0.4, 0.72, 0], stinger: [0, 6, 10, 3, 12] },
+    victory: { intervals: [0, 4, 7, 11, 12, 16], beats: [0.4, 0.45, 0.5, 0.45, 0.65, 1.35] }
+  }),
+  Vocaloid: detailedOverride('electronicStage', {
+    id: 'mus-vocaloid',
+    confidence: 'B',
+    tempo: [124, 164],
+    scaleName: 'lydian',
+    scale: SCALE_LIBRARY.lydian,
+    rootMidi: 54,
+    chords: [0, 4, 1, 5],
+    instrumentation: ['bright-pulse-lead', 'sidechain-sine-bass', 'glass-marimba', 'rapid-arpeggiator', 'four-on-floor-noise-kit', 'wordless-formant-pad', 'digital-crowd-pulse'],
+    density: 0.9,
+    restChance: 0.08,
+    patterns: {
+      lead: [1, 0, 0.62, 0.35, 0.88, 0, 0.55, 0.3, 1, 0, 0.68, 0.4, 0.82, 0.3, 0.5, 0],
+      bass: [1, 0, 0, 0, 0.78, 0, 0, 0, 1, 0, 0.42, 0, 0.76, 0, 0, 0],
+      drums: [1, 3, 3, 3, 2, 3, 3, 4, 1, 3, 3, 3, 2, 3, 4, 3],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'projection-intro', bars: 4, density: 0.52 },
+      { name: 'digital-stage-a', bars: 8, density: 0.96 },
+      { name: 'audience-build', bars: 4, density: 0.78 },
+      { name: 'mirai-release', bars: 8, density: 1.1 },
+      { name: 'encore-return', bars: 4, density: 1 }
+    ],
+    boss: { pattern: [1, 0, 0, 0.45, 0.82, 0, 0.52, 0, 1, 0, 0.42, 0, 0.86, 0, 0.58, 0], stinger: [0, 6, 11, 4, 12] },
+    victory: { intervals: [0, 4, 6, 11, 12, 16], beats: [0.35, 0.4, 0.45, 0.45, 0.65, 1.3] }
+  }),
   Splatterhouse: detailedOverride('survivalHorror', {
     id: 'mus-splatterhouse',
     confidence: 'B',
