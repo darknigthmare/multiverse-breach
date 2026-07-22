@@ -1,4 +1,5 @@
 import {
+  MUSIC_PROFILE_OVERRIDES,
   normalizeMusicUniverse,
   resolveStageMusicProfile
 } from '../src/game/stageMusicProfiles.js';
@@ -29,12 +30,32 @@ const coverageCases = [
   ['War of the Worlds', 'mus-war-of-the-worlds'],
   ['Ghostbusters', 'mus-ghostbusters'],
   ['Tremors', 'mus-tremors'],
+  ['Heavy Metal 2000', 'mus-heavy-metal-2000'],
+  ['Exit 8', 'mus-exit-8'],
+  ['The Thing', 'mus-the-thing'],
+  ['Starship Troopers', 'mus-starship-troopers'],
+  ['Voyage de Chihiro', 'mus-voyage-de-chihiro'],
+  ['Death Note', 'mus-death-note'],
+  ['Saw', 'mus-saw'],
+  ['From', 'mus-from'],
+  ['House of 1000 Corpses', 'mus-house-of-1000-corpses'],
+  ['Iron Sky', 'mus-iron-sky'],
+  ['Killer Tomatoes from Outer Space', 'mus-killer-tomatoes-from-outer-space'],
+  ['Sharknado', 'mus-sharknado'],
+  ['Godzilla The Animated Series', 'mus-godzilla-the-animated-series'],
+  ['Pee-wee', 'mus-pee-wee'],
+  ['Planete Hurlante', 'mus-planete-hurlante'],
+  ['Kazaam', 'mus-kazaam'],
   ['Cyberpunk: Edgerunners', 'mus-cyberpunk-edgerunners'],
   ['Chainsaw Man', 'mus-chainsaw-man'],
   ['Demon Slayer', 'mus-demon-slayer'],
   ['Parasyte', 'mus-parasyte'],
   ['Uzumaki', 'mus-uzumaki']
 ];
+
+const overrideProfileIds = Object.values(MUSIC_PROFILE_OVERRIDES).map(profile => profile.id);
+assert(overrideProfileIds.every(id => id.startsWith('mus-')), 'Every dedicated override must use a mus-* profile ID');
+assert(new Set(overrideProfileIds).size === overrideProfileIds.length, 'Dedicated music profile IDs must be unique');
 
 const rows = coverageCases.map(([universe, expectedProfileId], index) => {
   const plan = resolveStageMusicProfile({

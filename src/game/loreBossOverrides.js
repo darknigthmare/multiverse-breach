@@ -38,16 +38,16 @@ const defineBoss = (universe, entry) => Object.freeze({
 const RAW_BOSS_OVERRIDES = {
   'Heavy Metal 2000': [
     {
-      name: 'Zeek',
-      weapon: 'canonical_rebel_weapon',
-      special: 'Rebel Counterattack',
-      phases: ['Uses the exact ranged and melee equipment visible in the film reference', 'Enters a faster evasive pattern below half health without gaining new powers'],
+      name: 'Odin - Arakacian Revealed',
+      weapon: 'Arakacian strength and fountain chamber controls',
+      special: 'Arakacian Empire Claim',
+      phases: ['Discards the cloaked sage disguise and reveals his final-film Arakacian body', 'Attempts to seize the fountain chamber until Zeek removes the crystal key and seals him inside'],
       lore: {
-        fr: 'Zeek fournit l unique remplacement local exploitable sans dupliquer Tyler.',
-        en: 'Zeek provides the only usable local replacement without duplicating Tyler.'
+        fr: 'Odin revele etre le dernier Arakacien et tente de reprendre la fontaine afin de restaurer son empire.',
+        en: 'Odin reveals himself as the last Arakacian and attempts to reclaim the fountain to restore his empire.'
       },
-      referenceUrl: 'https://www.sonypictures.com/movies/heavymetal2000',
-      visualAnchor: 'Exact small alien rebel silhouette, face, clothing and film-visible equipment; no Nexus armor or human redesign.'
+      referenceUrl: 'https://www.imdb.com/title/tt0119273/plotsummary/',
+      visualAnchor: 'Odin in the exact computer-animated Arakacian form revealed at the end of the 2000 film, after throwing off the dark sage cloak; preserve the film silhouette, pale alien materials and fountain-chamber look, with no Norse armor, no stone Zeek anatomy and no generic wizard redesign.'
     }
   ],
   'Killer Tomatoes from Outer Space': [

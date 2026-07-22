@@ -1286,6 +1286,461 @@ export const MUSIC_PROFILE_OVERRIDES = {
     boss: { pattern: [1, 0, 0.45, 1, 0, 0.7], stinger: [0, 1, 5, 8, 12] },
     victory: { intervals: [0, 3, 7, 10, 12], beats: [0.55, 0.45, 0.65, 0.55, 1.45] }
   }),
+  'Heavy Metal 2000': detailedOverride('industrialMetal', {
+    id: 'mus-heavy-metal-2000',
+    confidence: 'B',
+    tempo: [120, 164],
+    meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.32, 0.76, 0.28, 0.9, 0.34, 0.66] },
+    scaleName: 'phrygian',
+    scale: SCALE_LIBRARY.phrygian,
+    rootMidi: 41,
+    chords: [0, 1, 4, 3],
+    instrumentation: ['distorted-oscillator-guitar', 'saturated-bass', 'wasteland-tom-noise', 'mining-chain-impact', 'cosmic-corruption-synth', 'engine-rumble', 'wordless-warrior-pad'],
+    density: 0.92,
+    restChance: 0.08,
+    waves: { lead: 'sawtooth', bass: 'square', pad: 'triangle', boss: 'square' },
+    patterns: {
+      lead: [1, 0.78, 0, 0.62, 1, 0, 0.7],
+      bass: [1, 0.62, 0, 0.5, 0.88, 0, 0.56],
+      drums: [1, 3, 2, 3, 1, 4, 2],
+      pad: [1, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'eden-wasteland', bars: 6, density: 0.56 },
+      { name: 'fakk2-pursuit', bars: 8, density: 1.02 },
+      { name: 'loc-nar-warning', bars: 4, density: 0.76 },
+      { name: 'tyler-fortress-assault', bars: 8, density: 1.12 }
+    ],
+    boss: { pattern: [1, 0, 0.74, 1, 0, 0.64, 0.88], stinger: [0, 1, 6, 7, 12] },
+    victory: { intervals: [0, 3, 7, 10, 12], beats: [0.35, 0.4, 0.55, 0.5, 1.4] }
+  }),
+  'Exit 8': detailedOverride('psychologicalHorror', {
+    id: 'mus-exit-8',
+    confidence: 'B',
+    tempo: [54, 94],
+    meter: { beats: 4, unit: 4, subdivisions: 2, accents: [1, 0.08, 0.22, 0.08, 0.58, 0.08, 0.18, 0.08] },
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 47,
+    chords: [0, 1, 0, 5],
+    instrumentation: ['fluorescent-hum-sine', 'measured-footstep-noise', 'ventilation-drone', 'sign-chime-pulse', 'tile-reflection-delay', 'distant-train-rumble', 'anomaly-pulse'],
+    density: 0.34,
+    restChance: 0.5,
+    waves: { lead: 'sine', bass: 'triangle', pad: 'sine', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0, 0, 0.34, 0, 0, 0],
+      bass: [1, 0, 0, 0, 0, 0, 0.42, 0],
+      drums: [0, 3, 0, 3, 0, 3, 0, 4],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'normal-passage', bars: 8, density: 0.2 },
+      { name: 'first-repeat', bars: 8, density: 0.4 },
+      { name: 'anomaly-detected', bars: 4, density: 0.58 },
+      { name: 'exit-or-return', bars: 8, density: 0.5 }
+    ],
+    boss: { pattern: [1, 0, 0, 0, 0.48, 0, 0.76, 0], stinger: [0, 1, 6, 7, 12] },
+    victory: { intervals: [0, 1, 6, 7, 12], beats: [0.8, 0.7, 0.8, 0.7, 1.8] }
+  }),
+  'The Thing': detailedOverride('xenoHorror', {
+    id: 'mus-the-thing',
+    confidence: 'B',
+    tempo: [56, 108],
+    meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.1, 0.32, 0.1, 0.66, 0.12, 0.28, 0.1, 0.54, 0.12] },
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 43,
+    chords: [0, 1, 5, 2],
+    instrumentation: ['antarctic-wind-noise', 'irregular-sub-pulse', 'detuned-string-synth', 'outpost-metal-resonance', 'blood-test-copper-click', 'flamethrower-ignition-noise', 'isolated-piano-tone'],
+    density: 0.46,
+    restChance: 0.42,
+    waves: { lead: 'sine', bass: 'triangle', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0, 0.32, 0, 0, 0.58, 0, 0.24, 0],
+      bass: [1, 0, 0, 0, 0, 0.68, 0, 0, 0, 0],
+      drums: [0, 3, 0, 0, 4, 0, 3, 0, 2, 0],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'whiteout-isolation', bars: 8, density: 0.22 },
+      { name: 'suspicion-circle', bars: 8, density: 0.46 },
+      { name: 'blood-test', bars: 5, density: 0.7 },
+      { name: 'assimilation-breakout', bars: 8, density: 0.98 }
+    ],
+    boss: { pattern: [1, 0, 0, 0, 0.52, 0, 1, 0, 0.44, 0], stinger: [0, 6, 1, 13, 7] },
+    victory: { intervals: [0, 3, 6, 10, 12], beats: [0.8, 0.65, 0.8, 0.65, 1.8] }
+  }),
+  'Starship Troopers': detailedOverride('militarySciFi', {
+    id: 'mus-starship-troopers',
+    confidence: 'B',
+    tempo: [106, 150],
+    meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.3, 0.52, 0.9, 0.34, 0.58] },
+    scaleName: 'heroicMinor',
+    scale: SCALE_LIBRARY.heroicMinor,
+    rootMidi: 50,
+    chords: [0, 5, 3, 4],
+    instrumentation: ['synthetic-parade-brass', 'mobile-infantry-snare', 'drop-ship-engine-pulse', 'rifle-percussion-noise', 'arachnid-chatter', 'propaganda-broadcast-noise', 'bug-tunnel-sub'],
+    density: 0.88,
+    restChance: 0.1,
+    patterns: {
+      lead: [1, 0, 0.68, 0.94, 0, 0.58],
+      bass: [1, 0, 0.48, 0.86, 0, 0.46],
+      drums: [1, 3, 2, 1, 3, 4],
+      pad: [1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'federal-briefing', bars: 4, density: 0.58 },
+      { name: 'klendathu-drop', bars: 8, density: 1.04 },
+      { name: 'whiskey-outpost-defense', bars: 8, density: 0.94 },
+      { name: 'brain-bug-capture', bars: 8, density: 1.12 }
+    ],
+    boss: { pattern: [1, 0, 0.62, 1, 0, 0.78], stinger: [0, 5, 7, 10, 12] },
+    victory: { intervals: [0, 5, 7, 9, 12], beats: [0.45, 0.45, 0.55, 0.55, 1.35] }
+  }),
+  'Voyage de Chihiro': detailedOverride('arcaneFantasy', {
+    id: 'mus-voyage-de-chihiro',
+    confidence: 'B',
+    tempo: [72, 118],
+    meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.18, 0.42, 0.78, 0.2, 0.46] },
+    scaleName: 'suspended',
+    scale: SCALE_LIBRARY.suspended,
+    rootMidi: 55,
+    chords: [0, 3, 1, 4],
+    instrumentation: ['water-drop-marimba', 'soft-piano-synth', 'breath-flute-sine', 'bathhouse-wood-percussion', 'steam-noise', 'small-spirit-bells', 'river-memory-pad'],
+    density: 0.58,
+    restChance: 0.28,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sine', boss: 'sawtooth' },
+    patterns: {
+      lead: [1, 0, 0.48, 0.76, 0, 0.4],
+      bass: [1, 0, 0, 0.64, 0, 0],
+      drums: [1, 3, 0, 2, 3, 0],
+      pad: [1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'abandoned-tunnel', bars: 6, density: 0.34 },
+      { name: 'bathhouse-work', bars: 8, density: 0.68 },
+      { name: 'no-face-swell', bars: 5, density: 0.86 },
+      { name: 'water-train-name-return', bars: 8, density: 0.46 }
+    ],
+    boss: { pattern: [1, 0, 0.42, 0.82, 0, 0.62], stinger: [0, 5, 7, 10, 12] },
+    victory: { intervals: [0, 5, 7, 10, 12], beats: [0.6, 0.55, 0.65, 0.6, 1.55] }
+  }),
+  'Death Note': detailedOverride('stealthTactical', {
+    id: 'mus-death-note',
+    confidence: 'B',
+    tempo: [74, 130],
+    meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.18, 0.46, 0.72, 0.2, 0.58, 0.3] },
+    scaleName: 'harmonicMinor',
+    scale: SCALE_LIBRARY.harmonicMinor,
+    rootMidi: 45,
+    chords: [0, 5, 1, 4],
+    instrumentation: ['clockwork-tick', 'pen-scratch-noise', 'dry-keyboard-pluck', 'interrogation-string-synth', 'low-wordless-choir-pad', 'shinigami-air-noise', 'notebook-page-rustle'],
+    density: 0.65,
+    restChance: 0.22,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0.52, 0.74, 0, 0.46, 0.62],
+      bass: [1, 0, 0, 0.68, 0, 0, 0.44],
+      drums: [1, 3, 0, 2, 3, 4, 0],
+      pad: [1, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'evidence-board', bars: 7, density: 0.42 },
+      { name: 'hidden-name', bars: 7, density: 0.64 },
+      { name: 'counter-deduction', bars: 7, density: 0.82 },
+      { name: 'yellow-box-confrontation', bars: 7, density: 1 }
+    ],
+    boss: { pattern: [1, 0, 0.55, 0, 1, 0, 0.7], stinger: [0, 1, 11, 6, 12] },
+    victory: { intervals: [0, 3, 7, 11, 12], beats: [0.55, 0.5, 0.65, 0.55, 1.5] }
+  }),
+  Saw: detailedOverride('psychologicalHorror', {
+    id: 'mus-saw',
+    confidence: 'B',
+    tempo: [64, 126],
+    meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.12, 0.38, 0.12, 0.74, 0.14, 0.34, 0.12, 0.62, 0.14] },
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 42,
+    chords: [0, 1, 5, 2],
+    instrumentation: ['trap-timer-click', 'rusted-chain-noise', 'prepared-piano', 'mechanical-ratchet-pulse', 'low-heartbeat-sub', 'tape-hiss', 'scraped-metal-synth'],
+    density: 0.58,
+    restChance: 0.3,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0, 0.44, 0, 0, 0.68, 0, 0.3, 0],
+      bass: [1, 0, 0, 0, 0.72, 0, 0, 0, 0.5, 0],
+      drums: [1, 3, 0, 4, 2, 3, 0, 4, 3, 0],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'locked-room', bars: 6, density: 0.32 },
+      { name: 'recorded-rule', bars: 5, density: 0.5 },
+      { name: 'choice-window', bars: 5, density: 0.76 },
+      { name: 'trap-cycle', bars: 6, density: 1 }
+    ],
+    boss: { pattern: [1, 0, 0, 0.48, 0, 1, 0, 0.72, 0, 0], stinger: [0, 1, 6, 10, 13] },
+    victory: { intervals: [0, 3, 6, 10, 12], beats: [0.75, 0.65, 0.75, 0.65, 1.7] }
+  }),
+  From: detailedOverride('psychologicalHorror', {
+    id: 'mus-from',
+    confidence: 'B',
+    tempo: [66, 116],
+    meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.16, 0.38, 0.76, 0.18, 0.44] },
+    scaleName: 'ritualMinor',
+    scale: SCALE_LIBRARY.ritualMinor,
+    rootMidi: 43,
+    chords: [0, 1, 4, 1],
+    instrumentation: ['detuned-porch-pluck', 'bowed-fiddle-like-synth', 'talisman-wood-click', 'forest-night-noise', 'colony-house-bell', 'low-cello-synth', 'jukebox-static', 'smiling-whisper-noise'],
+    density: 0.52,
+    restChance: 0.34,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0.42, 0.68, 0, 0.36],
+      bass: [1, 0, 0, 0.62, 0, 0],
+      drums: [1, 0, 3, 2, 0, 4],
+      pad: [1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'road-loop', bars: 8, density: 0.3 },
+      { name: 'daylight-repair', bars: 6, density: 0.46 },
+      { name: 'colony-house-dusk', bars: 4, density: 0.68 },
+      { name: 'night-creatures', bars: 8, density: 0.94 }
+    ],
+    boss: { pattern: [1, 0, 0.42, 0.82, 0, 0.64], stinger: [0, 1, 6, 10, 12] },
+    victory: { intervals: [0, 3, 7, 10, 12], beats: [0.7, 0.6, 0.75, 0.65, 1.7] }
+  }),
+  'House of 1000 Corpses': detailedOverride('survivalHorror', {
+    id: 'mus-house-of-1000-corpses',
+    confidence: 'B',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [82, 132],
+    meter: { beats: 12, unit: 8, subdivisions: 1, accents: [1, 0.14, 0.32, 0.7, 0.12, 0.38, 0.86, 0.16, 0.3, 0.62, 0.12, 0.46] },
+    scaleName: 'ritualMinor',
+    scale: SCALE_LIBRARY.ritualMinor,
+    rootMidi: 40,
+    chords: [0, 1, 4, 1],
+    instrumentation: ['detuned-carnival-organ', 'rusted-guitar-oscillator', 'film-projector-flutter', 'cellar-chain-noise', 'funhouse-drum-kit', 'calliope-pressure-synth', 'dusty-room-drone'],
+    density: 0.62,
+    restChance: 0.26,
+    waves: { lead: 'square', bass: 'triangle', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0.42, 0, 0.66, 0, 0.3, 0, 0.74, 0, 0.38, 0],
+      bass: [1, 0, 0, 0, 0.62, 0, 0, 0, 0.8, 0, 0, 0],
+      drums: [1, 0, 3, 2, 0, 4, 1, 0, 3, 2, 0, 4],
+      pad: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'roadside-attraction', bars: 6, density: 0.38 },
+      { name: 'murder-ride', bars: 8, density: 0.76 },
+      { name: 'firefly-supper', bars: 4, density: 0.52 },
+      { name: 'doctor-satan-descent', bars: 8, density: 1.02 }
+    ],
+    boss: { pattern: [1, 0, 0, 0.5, 0, 0.82, 1, 0, 0.36, 0, 0.72, 0], stinger: [0, 1, 6, 8, 13] },
+    victory: { intervals: [0, 1, 5, 8, 12], beats: [0.7, 0.55, 0.8, 0.65, 1.65] }
+  }),
+  'Iron Sky': detailedOverride('militarySciFi', {
+    id: 'mus-iron-sky',
+    confidence: 'B',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [104, 148],
+    meter: { beats: 4, unit: 4, subdivisions: 2, accents: [1, 0.18, 0.58, 0.2, 0.9, 0.18, 0.52, 0.22] },
+    scaleName: 'heroicMinor',
+    scale: SCALE_LIBRARY.heroicMinor,
+    rootMidi: 43,
+    chords: [0, 5, 3, 4],
+    instrumentation: ['retro-lunar-brass-synth', 'vacuum-tube-bass', 'marching-snare-noise', 'moonbase-radar-pulse', 'saucer-engine-hum', 'orbital-metal-impact', 'satirical-cabinet-organ'],
+    density: 0.8,
+    restChance: 0.14,
+    waves: { lead: 'sawtooth', bass: 'square', pad: 'triangle', boss: 'sawtooth' },
+    patterns: {
+      lead: [1, 0, 0.6, 0.34, 0.9, 0, 0.5, 0.28],
+      bass: [1, 0, 0.4, 0, 0.86, 0, 0.46, 0],
+      drums: [1, 3, 2, 3, 1, 4, 2, 3],
+      pad: [1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    form: [
+      { name: 'dark-side-hangar', bars: 6, density: 0.5 },
+      { name: 'helium-three-raid', bars: 8, density: 0.88 },
+      { name: 'saucer-orbit', bars: 4, density: 0.62 },
+      { name: 'gotterdammerung-barrage', bars: 8, density: 1.08 }
+    ],
+    boss: { pattern: [1, 0, 0.72, 0, 1, 0.42, 0.84, 0], stinger: [0, 5, 7, 11, 12] },
+    victory: { intervals: [0, 5, 7, 9, 12, 16], beats: [0.4, 0.42, 0.52, 0.48, 0.72, 1.35] }
+  }),
+  'Killer Tomatoes from Outer Space': detailedOverride('comedyOddity', {
+    id: 'mus-killer-tomatoes-from-outer-space',
+    confidence: 'B',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [118, 166],
+    meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.2, 0.54, 0.24, 0.84, 0.22, 0.48] },
+    scaleName: 'wholeTone',
+    scale: SCALE_LIBRARY.wholeTone,
+    rootMidi: 50,
+    chords: [0, 2, 1, 4],
+    instrumentation: ['rubber-bass-synth', 'vegetable-splat-noise', 'kazoo-like-oscillator', 'government-lab-beep', 'parade-drum-noise', 'megaphone-click-pulse', 'rolling-produce-rumble'],
+    density: 0.88,
+    restChance: 0.1,
+    waves: { lead: 'square', bass: 'sawtooth', pad: 'triangle', boss: 'square' },
+    patterns: {
+      lead: [1, 0.58, 0, 0.72, 0, 0.44, 0.82],
+      bass: [1, 0, 0.5, 0, 0.86, 0, 0.42],
+      drums: [1, 3, 2, 3, 1, 4, 3],
+      pad: [1, 0, 0, 0, 1, 0, 0]
+    },
+    form: [
+      { name: 'government-lab-alert', bars: 7, density: 0.62 },
+      { name: 'finletter-airdrop', bars: 8, density: 0.94 },
+      { name: 'tomato-siege-street', bars: 7, density: 0.82 },
+      { name: 'mutant-produce-panic', bars: 8, density: 1.1 }
+    ],
+    boss: { pattern: [1, 0, 0.62, 1, 0, 0.48, 0.86], stinger: [0, 2, 6, 8, 12] },
+    victory: { intervals: [0, 2, 6, 10, 12, 14], beats: [0.3, 0.35, 0.45, 0.4, 0.6, 1.2] }
+  }),
+  Sharknado: detailedOverride('comedyOddity', {
+    id: 'mus-sharknado',
+    confidence: 'B',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [126, 174],
+    meter: { beats: 6, unit: 8, subdivisions: 2, accents: [1, 0.14, 0.38, 0.16, 0.72, 0.18, 0.94, 0.16, 0.42, 0.14, 0.68, 0.2] },
+    scaleName: 'dorian',
+    scale: SCALE_LIBRARY.dorian,
+    rootMidi: 45,
+    chords: [0, 4, 3, 5],
+    instrumentation: ['surf-guitar-oscillator', 'storm-wind-noise', 'rotor-chop-pulse', 'chainsaw-like-synth', 'lifeguard-whistle-sine', 'floodwater-impact', 'airborne-shark-rush-noise'],
+    density: 0.94,
+    restChance: 0.08,
+    waves: { lead: 'sawtooth', bass: 'square', pad: 'triangle', boss: 'sawtooth' },
+    patterns: {
+      lead: [1, 0, 0.5, 0.72, 0, 0.42, 1, 0, 0.62, 0.38, 0.76, 0],
+      bass: [1, 0, 0.44, 0, 0.8, 0, 1, 0, 0.5, 0, 0.72, 0],
+      drums: [1, 3, 2, 3, 1, 4, 1, 3, 2, 4, 1, 3],
+      pad: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'santa-monica-warning', bars: 6, density: 0.68 },
+      { name: 'freeway-flood', bars: 8, density: 0.96 },
+      { name: 'airborne-shark-swarm', bars: 6, density: 1.04 },
+      { name: 'eye-of-the-sharknado', bars: 8, density: 1.14 }
+    ],
+    boss: { pattern: [1, 0, 0.6, 0, 0.82, 1, 0, 0.46, 0.74, 0, 1, 0.52], stinger: [0, 5, 7, 10, 14] },
+    victory: { intervals: [0, 4, 7, 9, 12, 16], beats: [0.3, 0.32, 0.4, 0.38, 0.58, 1.15] }
+  }),
+  'Godzilla The Animated Series': detailedOverride('militarySciFi', {
+    id: 'mus-godzilla-the-animated-series',
+    confidence: 'B',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [96, 146],
+    meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.14, 0.46, 0.16, 0.8, 0.18, 0.36, 0.14, 0.68, 0.18] },
+    scaleName: 'heroicMinor',
+    scale: SCALE_LIBRARY.heroicMinor,
+    rootMidi: 41,
+    chords: [0, 5, 4, 3],
+    instrumentation: ['heat-lab-sequencer', 'harbor-sonar-pulse', 'seismograph-clicks', 'heavy-response-toms', 'mutant-frequency-synth', 'synthetic-titan-brass', 'jamaica-bay-wind-noise'],
+    density: 0.82,
+    restChance: 0.16,
+    waves: { lead: 'sawtooth', bass: 'square', pad: 'sine', boss: 'sawtooth' },
+    patterns: {
+      lead: [1, 0, 0.56, 0, 0.76, 0.36, 0, 0.62, 0, 0.44],
+      bass: [1, 0, 0, 0, 0.82, 0, 0.5, 0, 0, 0],
+      drums: [1, 0, 3, 0, 2, 1, 0, 4, 0, 2],
+      pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'jamaica-bay-scan', bars: 5, density: 0.46 },
+      { name: 'heat-mobilization', bars: 8, density: 0.84 },
+      { name: 'mutation-pursuit', bars: 5, density: 0.94 },
+      { name: 'manhattan-waterfront-titan', bars: 8, density: 1.1 }
+    ],
+    boss: { pattern: [1, 0, 0, 0.58, 0, 1, 0, 0.74, 0, 0.42], stinger: [0, 5, 9, 7, 12] },
+    victory: { intervals: [0, 5, 7, 11, 12], beats: [0.48, 0.5, 0.6, 0.54, 1.45] }
+  }),
+  'Pee-wee': detailedOverride('comedyOddity', {
+    id: 'mus-pee-wee',
+    confidence: 'B',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [108, 152],
+    meter: { beats: 5, unit: 8, subdivisions: 2, accents: [1, 0.16, 0.5, 0.2, 0.86, 0.18, 0.38, 0.16, 0.7, 0.2] },
+    scaleName: 'lydian',
+    scale: SCALE_LIBRARY.lydian,
+    rootMidi: 55,
+    chords: [0, 4, 1, 5],
+    instrumentation: ['bicycle-bell-pulse', 'playhouse-organ-synth', 'chair-spring-twang', 'toy-xylophone', 'clockwork-footstep-click', 'rubber-horn-noise', 'bright-workshop-pad'],
+    density: 0.84,
+    restChance: 0.12,
+    waves: { lead: 'square', bass: 'triangle', pad: 'sine', boss: 'sawtooth' },
+    patterns: {
+      lead: [1, 0.62, 0, 0.44, 0.86, 0, 0.52, 0.32, 0.72, 0],
+      bass: [1, 0, 0.46, 0, 0.74, 0, 0.4, 0, 0.66, 0],
+      drums: [1, 3, 2, 3, 1, 4, 2, 3, 1, 3],
+      pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'playhouse-morning', bars: 5, density: 0.58 },
+      { name: 'bicycle-workshop', bars: 8, density: 0.88 },
+      { name: 'roadside-detour', bars: 5, density: 0.7 },
+      { name: 'stolen-bike-dream-chase', bars: 8, density: 1.04 }
+    ],
+    boss: { pattern: [1, 0, 0.58, 0.8, 0, 1, 0, 0.46, 0.72, 0], stinger: [0, 4, 6, 11, 12] },
+    victory: { intervals: [0, 4, 6, 9, 12, 16], beats: [0.28, 0.34, 0.42, 0.38, 0.56, 1.15] }
+  }),
+  'Planete Hurlante': detailedOverride('xenoHorror', {
+    id: 'mus-planete-hurlante',
+    confidence: 'B',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [78, 128],
+    meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.12, 0.36, 0.7, 0.14, 0.48, 0.82] },
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 38,
+    chords: [0, 1, 5, 2],
+    instrumentation: ['sirius-six-radio-static', 'burrowing-metal-scrape', 'geiger-click-pulse', 'trench-drum-noise', 'cold-alloy-pad', 'teddy-mechanism-tick', 'radioactive-wind-drone'],
+    density: 0.58,
+    restChance: 0.32,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0.34, 0, 0.62, 0, 0.46],
+      bass: [1, 0, 0, 0.68, 0, 0, 0.42],
+      drums: [1, 0, 3, 0, 2, 0, 4],
+      pad: [1, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'new-alamo-watch', bars: 7, density: 0.3 },
+      { name: 'sirius-six-trench', bars: 8, density: 0.68 },
+      { name: 'teddy-decoy', bars: 5, density: 0.44 },
+      { name: 'type-three-reveal', bars: 8, density: 0.98 }
+    ],
+    boss: { pattern: [1, 0, 0.46, 0, 0.74, 1, 0], stinger: [0, 1, 6, 10, 13] },
+    victory: { intervals: [0, 3, 6, 10, 12], beats: [0.78, 0.62, 0.82, 0.68, 1.75] }
+  }),
+  Kazaam: detailedOverride('electronicStage', {
+    id: 'mus-kazaam',
+    confidence: 'B',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [94, 134],
+    meter: { beats: 4, unit: 4, subdivisions: 4, accents: [1, 0.14, 0.28, 0.16, 0.72, 0.14, 0.36, 0.16, 0.9, 0.14, 0.3, 0.16, 0.68, 0.14, 0.4, 0.18] },
+    scaleName: 'dorian',
+    scale: SCALE_LIBRARY.dorian,
+    rootMidi: 48,
+    chords: [0, 3, 5, 1],
+    instrumentation: ['boombox-sub-synth', 'synthetic-handclap', 'wish-chime-pulse', 'basketball-bounce-noise', 'urban-brass-synth', 'rooftop-wind-pad', 'genie-sparkle-arpeggiator'],
+    density: 0.78,
+    restChance: 0.16,
+    waves: { lead: 'square', bass: 'sawtooth', pad: 'sine', boss: 'triangle' },
+    patterns: {
+      lead: [1, 0, 0.5, 0, 0.76, 0.32, 0, 0.46, 1, 0, 0.58, 0.28, 0.7, 0, 0.4, 0],
+      bass: [1, 0, 0.38, 0, 0.72, 0, 0.46, 0, 1, 0, 0.34, 0, 0.66, 0, 0.42, 0],
+      drums: [1, 3, 3, 3, 2, 3, 4, 3, 1, 3, 3, 4, 2, 3, 3, 3],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'abandoned-theater', bars: 4, density: 0.48 },
+      { name: 'boombox-awakening', bars: 8, density: 0.82 },
+      { name: 'wish-cascade', bars: 4, density: 0.68 },
+      { name: 'rooftop-contract-showdown', bars: 8, density: 1.02 }
+    ],
+    boss: { pattern: [1, 0, 0.54, 0, 0.82, 0.38, 0, 0.66, 1, 0, 0.46, 0, 0.76, 0.34, 0, 0.58], stinger: [0, 3, 7, 10, 15] },
+    victory: { intervals: [0, 3, 7, 9, 12, 15], beats: [0.38, 0.4, 0.48, 0.45, 0.68, 1.3] }
+  }),
   'Cyberpunk: Edgerunners': detailedOverride('cyberNetwork', {
     id: 'mus-cyberpunk-edgerunners',
     confidence: 'A',
