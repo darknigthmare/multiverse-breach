@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T19:28:54.199Z",
+  "generatedAt": "2026-07-22T21:28:02.942Z",
   "sheet": {
     "width": 1024,
     "height": 1024,
@@ -17,19 +17,19 @@
     "heroes": 1235,
     "enemies": 1102,
     "bosses": 984,
-    "items": 542,
+    "items": 554,
     "finales": 55,
     "stages": 1172,
-    "total": 5090
+    "total": 5102
   },
   "availableCounts": {
-    "heroes": 410,
-    "enemies": 169,
-    "bosses": 167,
-    "items": 282,
+    "heroes": 419,
+    "enemies": 178,
+    "bosses": 176,
+    "items": 294,
     "finales": 7,
-    "stages": 212,
-    "total": 1247
+    "stages": 224,
+    "total": 1298
   },
   "entries": [
     {
@@ -13129,8 +13129,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -13149,8 +13149,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -13169,8 +13169,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -13189,8 +13189,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -13209,8 +13209,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -13229,8 +13229,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -13249,8 +13249,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -13269,8 +13269,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -13289,8 +13289,8 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "hero",
@@ -46374,10 +46374,10 @@
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-curien-zombie",
-      "name": "Curien Zombie",
+      "id": "house-of-the-dead-sam-type-a-1",
+      "name": "Sam Type A-1",
       "universe": "House of the Dead",
-      "output": "/sprites/generated/bosses/house-of-the-dead/curien-zombie.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead/sam-type-a-1.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46389,15 +46389,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Sam",
+      "visualAnchor": "Exact 1997 Sam Type A-1 game creature: bald decomposed humanoid, original torn clothing and exposed flesh colors, no modern remake redesign, armor or weapon.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-ceiling-crawler",
-      "name": "Ceiling Crawler",
+      "id": "house-of-the-dead-name-type-g-2",
+      "name": "Name Type G-2",
       "universe": "House of the Dead",
-      "output": "/sprites/generated/bosses/house-of-the-dead/ceiling-crawler.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead/name-type-g-2.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46409,15 +46411,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Name",
+      "visualAnchor": "Exact original Name Type G-2: dark-pink brain-shaped slug body, sharp long teeth, small pink tentacles and antennae; no humanoid anatomy and no written name label.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-undead-dog",
-      "name": "Undead Dog",
+      "id": "house-of-the-dead-kenfis-type-f-1",
+      "name": "Kenfis Type F-1",
       "universe": "House of the Dead",
-      "output": "/sprites/generated/bosses/house-of-the-dead/undead-dog.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead/kenfis-type-f-1.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46429,8 +46433,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Kenfis",
+      "visualAnchor": "Exact original Kenfis Type F-1: low eyeless gargoyle-like canine, exposed side ribs, rough gray-brown hide and small leathery wings; never a normal dog or flying dragon.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -46449,8 +46455,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Chariot",
+      "visualAnchor": "Exact original Chariot Type 27: towering gray-blue humanoid inside bulky bronze medieval armor, horned helmet and long polearm; show the exposed creature only in later damage frames, with no unrelated knight redesign.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -46469,8 +46477,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Hangedman",
+      "visualAnchor": "Exact original Hangedman Type 041: lean gray gargoyle-bat humanoid with long ears, membrane wings, red eyes and clawed hands and feet; no robe, gallows rope or skeletal angel anatomy.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -46489,15 +46499,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Magician",
+      "visualAnchor": "Exact original Magician Type-0: tall black biomechanical humanoid, exposed red-orange muscle seams, long clawed hands and feet, narrow horned head and no wings, robe, armor or magician clothing.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-2-venice-zombie",
-      "name": "Venice Zombie",
+      "id": "house-of-the-dead-2-david",
+      "name": "David",
       "universe": "House of the Dead 2",
-      "output": "/sprites/generated/bosses/house-of-the-dead-2/venice-zombie.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead-2/david.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46509,15 +46521,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/David",
+      "visualAnchor": "Exact 1998 David model: shirtless decayed humanoid in tattered jeans, one bulging eye, missing facial and chest flesh; no House of the Dead 4 redesign.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-2-aquatic-mutant",
-      "name": "Aquatic Mutant",
+      "id": "house-of-the-dead-2-ebitan",
+      "name": "Ebitan",
       "universe": "House of the Dead 2",
-      "output": "/sprites/generated/bosses/house-of-the-dead-2/aquatic-mutant.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead-2/ebitan.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46529,15 +46543,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Ebitan",
+      "visualAnchor": "Exact House of the Dead 2 Ebitan aquatic humanoid, wet green-brown body, hunched posture and long clawed arms; no generic fish monster redesign.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-2-undead-bat",
-      "name": "Undead Bat",
+      "id": "house-of-the-dead-2-devilon",
+      "name": "Devilon",
       "universe": "House of the Dead 2",
-      "output": "/sprites/generated/bosses/house-of-the-dead-2/undead-bat.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead-2/devilon.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46549,8 +46565,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Devilon",
+      "visualAnchor": "Exact House of the Dead 2 Devilon: small red-brown batlike humanoid creature, broad membrane wings, pointed ears and clawed limbs; no giant demon armor.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -46569,8 +46587,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Judgment",
+      "visualAnchor": "Show the exact House of the Dead 2 pair together: tiny blue-purple winged Zeal beside massive headless bronze-armored Kuarl carrying his oversized axe; never merge them into one body or add a third character.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -46589,15 +46609,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Tower",
+      "visualAnchor": "Exact House of the Dead 2 Tower Type 8000: four long red eel-dragon heads and one distinct blue leader head rising from one submerged body, glossy aquatic skin and toothy maws; no humanoid torso or fantasy armor.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
-      "id": "house-of-the-dead-2-emperor-prototype",
-      "name": "Emperor Prototype",
+      "id": "house-of-the-dead-2-emperor-type-alpha",
+      "name": "Emperor Type Alpha",
       "universe": "House of the Dead 2",
-      "output": "/sprites/generated/bosses/house-of-the-dead-2/emperor-prototype.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead-2/emperor-type-alpha.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46609,15 +46631,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Emperor",
+      "visualAnchor": "Exact Emperor Type Alpha: translucent pale-blue humanoid body, visible spinning red heart core and multiple floating transparent orbs; retain its smooth unfinished synthetic anatomy and never replace it with armor or a throne.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-3-efi-zombie",
-      "name": "EFI Zombie",
+      "id": "house-of-the-dead-3-mark",
+      "name": "Mark",
       "universe": "House of the Dead 3",
-      "output": "/sprites/generated/bosses/house-of-the-dead-3/efi-zombie.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead-3/mark.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46629,15 +46653,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Mark",
+      "visualAnchor": "Exact House of the Dead III Mark creature from the Sega guide art, preserving its ruined work clothing, decomposed head and facility-zombie proportions; no generic soldier armor.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-3-security-bot",
-      "name": "Security Bot",
+      "id": "house-of-the-dead-3-rogan-commando",
+      "name": "Rogan Commando",
       "universe": "House of the Dead 3",
-      "output": "/sprites/generated/bosses/house-of-the-dead-3/security-bot.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead-3/rogan-commando.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46649,15 +46675,17 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Rogan_Commando",
+      "visualAnchor": "Exact House of the Dead III Rogan Commando: black undershirt, white collared shirt and white trousers, black sleeveless vest, gloves, boots, knee pads and cap, one large combat knife in each hand; no firearm, helmet or generic modern armor.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
-      "id": "house-of-the-dead-3-death-screamer",
-      "name": "Death Screamer",
+      "id": "house-of-the-dead-3-cain",
+      "name": "Cain",
       "universe": "House of the Dead 3",
-      "output": "/sprites/generated/bosses/house-of-the-dead-3/death-screamer.png",
+      "output": "/sprites/generated/bosses/house-of-the-dead-3/cain.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -46669,8 +46697,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/List_of_creatures_in_The_House_of_the_Dead_III",
+      "visualAnchor": "Exact House of the Dead III Cain from the Sega Perfect Guide: low creature-plant hybrid with a bark-and-vine body, long flexible vine arms and rooted organic limbs; no biblical costume, humanoid clothing, dragon anatomy or generic reptile armor.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -46689,8 +46719,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Death",
+      "visualAnchor": "Exact House of the Dead III Death Type 001: enormous obese security-guard creature in torn blue uniform, peaked cap and heavy spiked club, with the small head weak point clearly readable; no Grim Reaper robe or scythe.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -46709,8 +46741,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Fool",
+      "visualAnchor": "Exact House of the Dead III Fool Type 0028: huge round dark-grey hairy sloth body, pale cracked face, orange bare feet and four extremely long curved claws, built for cage climbing; no court-jester costume, hat, ape anatomy or human weapon.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "boss",
@@ -46729,8 +46763,10 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null
+      "referenceUrl": "https://thehouseofthedead.fandom.com/wiki/Wheel_of_Fate",
+      "visualAnchor": "Exact arcade and Xbox Wheel of Fate: towering silver metallic humanoid resurrection body, circular fate mechanism and sun-mark chest weak point, with no medieval wheel, vehicle parts or generic robot armor.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "enemy",
@@ -67884,6 +67920,177 @@
     },
     {
       "kind": "item",
+      "id": "house_of_the_dead_sigil",
+      "name": "AMS EATER Custom",
+      "universe": "House of the Dead",
+      "output": "/sprites/generated/items/house-of-the-dead/ams-eater-custom.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.sega.jp/history/arcade/product/9038/",
+      "visualAnchor": "Single original-1997 AMS EATER Custom semiautomatic handgun: compact black and gunmetal slide, squared trigger guard, dark textured grip and six-round magazine, with no readable branding.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "house_of_the_dead_armor",
+      "name": "Medical Kit",
+      "universe": "House of the Dead",
+      "output": "/sprites/generated/items/house-of-the-dead/medical-kit.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.sega.jp/history/arcade/product/9038/",
+      "visualAnchor": "Single compact arcade medical kit with a rigid off-white case, red corner panels, short carry handle and one simple medical-cross color block without letters.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "house_of_the_dead_core",
+      "name": "Golden Frog",
+      "universe": "House of the Dead",
+      "output": "/sprites/generated/items/house-of-the-dead/golden-frog.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.sega.jp/history/arcade/product/9038/",
+      "visualAnchor": "Single small collectible frog statuette from Curien Mansion, crouched in profile and cast in bright worn gold with chunky arcade-era facets.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "house_of_the_dead_2_sigil",
+      "name": "Cougar Inox Handgun",
+      "universe": "House of the Dead 2",
+      "output": "/sprites/generated/items/house-of-the-dead-2/cougar-inox-handgun.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.digitpress.com/library/manuals/dreamcast/house_dead_2.pdf",
+      "visualAnchor": "Single compact stainless semiautomatic AMS handgun used during the Goldman incident, with a pale metal slide, dark grip panels and no manufacturer mark or lettering.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "house_of_the_dead_2_armor",
+      "name": "First Aid Kit",
+      "universe": "House of the Dead 2",
+      "output": "/sprites/generated/items/house-of-the-dead-2/first-aid-kit.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.digitpress.com/library/manuals/dreamcast/house_dead_2.pdf",
+      "visualAnchor": "Single compact House of the Dead 2 rescue kit with a white hard shell, deep-red medical panels, metal latch and no readable label.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "house_of_the_dead_2_core",
+      "name": "Chamber Plus 2",
+      "universe": "House of the Dead 2",
+      "output": "/sprites/generated/items/house-of-the-dead-2/chamber-plus-2.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.digitpress.com/library/manuals/dreamcast/house_dead_2.pdf",
+      "visualAnchor": "Single Original Mode capacity upgrade module: a small gunmetal cylinder with two additional brass chamber indicators, red locking collar and no written plus sign or number.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "house_of_the_dead_3_sigil",
+      "name": "Modified Short SPAS-12",
+      "universe": "House of the Dead 3",
+      "output": "/sprites/generated/items/house-of-the-dead-3/modified-short-spas-12.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Arcade//Manual/formated/The_House_of_the_Dead_III_-_2002_-_Sega.pdf",
+      "visualAnchor": "Single source-accurate modified short SPAS-12: no shoulder stock, very short dark barrel, perforated heat shield, chunky pump and integrated fore-end light, shown as one complete weapon.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "house_of_the_dead_3_armor",
+      "name": "Medical Kit",
+      "universe": "House of the Dead 3",
+      "output": "/sprites/generated/items/house-of-the-dead-3/medical-kit.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Arcade//Manual/formated/The_House_of_the_Dead_III_-_2002_-_Sega.pdf",
+      "visualAnchor": "Single compact EFI field medical kit with a scuffed off-white shell, red emergency panels, black latch and no readable text.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "house_of_the_dead_3_core",
+      "name": "12-Gauge Shotgun Shell",
+      "universe": "House of the Dead 3",
+      "output": "/sprites/generated/items/house-of-the-dead-3/12-gauge-shotgun-shell.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Arcade//Manual/formated/The_House_of_the_Dead_III_-_2002_-_Sega.pdf",
+      "visualAnchor": "Single upright red 12-gauge shotgun shell with a ribbed plastic hull, bright brass base and no loose pellets, box or duplicate shell.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
       "id": "toy_soldiers_sigil",
       "name": "Wind-up Key",
       "universe": "Toy Soldiers",
@@ -74286,6 +74493,63 @@
       "visualAnchor": "One worn pump-action shotgun with black polymer stock and taped flashlight mount.",
       "available": false,
       "source": null
+    },
+    {
+      "kind": "item",
+      "id": "evt_house_of_the_dead_breach",
+      "name": "Gold Coin",
+      "universe": "House of the Dead",
+      "output": "/sprites/generated/items/house-of-the-dead/gold-coin.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.sega.jp/history/arcade/product/9038/",
+      "visualAnchor": "Single thick round gold bonus coin with a raised concentric rim, simple starburst relief and no number, lettering or copied emblem.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "evt_house_of_the_dead_2_breach",
+      "name": "Original Mode Shotgun",
+      "universe": "House of the Dead 2",
+      "output": "/sprites/generated/items/house-of-the-dead-2/original-mode-shotgun.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.digitpress.com/library/manuals/dreamcast/house_dead_2.pdf",
+      "visualAnchor": "Single short Original Mode pump-action shotgun with a dark steel receiver, worn brown wooden pump and stock, compact barrel and no duplicate weapon or loose ammunition.",
+      "available": true,
+      "source": "openai"
+    },
+    {
+      "kind": "item",
+      "id": "evt_house_of_the_dead_3_breach",
+      "name": "Crystal Coin",
+      "universe": "House of the Dead 3",
+      "output": "/sprites/generated/items/house-of-the-dead-3/crystal-coin.png",
+      "frame": {
+        "width": 512,
+        "height": 512,
+        "columns": 1,
+        "rows": [
+          "icon"
+        ]
+      },
+      "referenceUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Arcade//Manual/formated/The_House_of_the_Dead_III_-_2002_-_Sega.pdf",
+      "visualAnchor": "Single large translucent cyan-blue crystal bonus medallion with a thick faceted rim, frosted luminous core and no number, lettering or copied symbol.",
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "item",
@@ -84099,8 +84363,8 @@
       "generationBlocked": false,
       "profileKey": "House of the Dead",
       "companionOutputs": [],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84125,8 +84389,8 @@
         "/backgrounds/lore-stages/house-of-the-dead/melee-backdrop.webp",
         "/backgrounds/lore-stages/house-of-the-dead/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84148,8 +84412,8 @@
       "generationBlocked": false,
       "profileKey": "House of the Dead",
       "companionOutputs": [],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84173,8 +84437,8 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/house-of-the-dead/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84196,8 +84460,8 @@
       "generationBlocked": false,
       "profileKey": "House of the Dead 2",
       "companionOutputs": [],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84222,8 +84486,8 @@
         "/backgrounds/lore-stages/house-of-the-dead-2/melee-backdrop.webp",
         "/backgrounds/lore-stages/house-of-the-dead-2/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84245,8 +84509,8 @@
       "generationBlocked": false,
       "profileKey": "House of the Dead 2",
       "companionOutputs": [],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84270,8 +84534,8 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/house-of-the-dead-2/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84293,8 +84557,8 @@
       "generationBlocked": false,
       "profileKey": "House of the Dead 3",
       "companionOutputs": [],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84319,8 +84583,8 @@
         "/backgrounds/lore-stages/house-of-the-dead-3/melee-backdrop.webp",
         "/backgrounds/lore-stages/house-of-the-dead-3/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84342,8 +84606,8 @@
       "generationBlocked": false,
       "profileKey": "House of the Dead 3",
       "companionOutputs": [],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",
@@ -84367,8 +84631,8 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/house-of-the-dead-3/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null
+      "available": true,
+      "source": "openai"
     },
     {
       "kind": "stage",

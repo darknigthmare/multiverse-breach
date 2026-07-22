@@ -1741,6 +1741,93 @@ export const MUSIC_PROFILE_OVERRIDES = {
     boss: { pattern: [1, 0, 0.54, 0, 0.82, 0.38, 0, 0.66, 1, 0, 0.46, 0, 0.76, 0.34, 0, 0.58], stinger: [0, 3, 7, 10, 15] },
     victory: { intervals: [0, 3, 7, 9, 12, 15], beats: [0.38, 0.4, 0.48, 0.45, 0.68, 1.3] }
   }),
+  'House of the Dead': detailedOverride('survivalHorror', {
+    id: 'mus-house-of-the-dead',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [82, 142],
+    meter: { beats: 4, unit: 4, subdivisions: 4, accents: [1, 0.1, 0.3, 0.12, 0.72, 0.1, 0.42, 0.14, 0.9, 0.1, 0.34, 0.12, 0.68, 0.1, 0.46, 0.14] },
+    scaleName: 'harmonicMinor',
+    scale: SCALE_LIBRARY.harmonicMinor,
+    rootMidi: 40,
+    chords: [0, 1, 5, 4],
+    instrumentation: ['curien-mansion-organ-synth', 'ams-pistol-mechanism-click', 'specimen-tank-bubble-noise', 'gothic-string-pulse', 'laboratory-metal-impact', 'tarot-boss-stinger', 'underground-drone'],
+    density: 0.7,
+    restChance: 0.22,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0.48, 0, 0.76, 0, 0.34, 0, 0.92, 0, 0.56, 0, 0.7, 0, 0.4, 0],
+      bass: [1, 0, 0, 0, 0.64, 0, 0, 0, 0.86, 0, 0, 0, 0.58, 0, 0, 0],
+      drums: [1, 0, 3, 0, 2, 0, 4, 0, 1, 3, 2, 0, 1, 4, 3, 0],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'curien-mansion-arrival', bars: 4, density: 0.34 },
+      { name: 'researcher-rescue-route', bars: 8, density: 0.68 },
+      { name: 'dbr-underground-laboratory', bars: 6, density: 0.88 },
+      { name: 'magician-type-zero', bars: 8, density: 1.12 }
+    ],
+    boss: { pattern: [1, 0, 0.46, 0, 0.78, 0, 1, 0.52, 1, 0, 0.62, 0, 0.84, 0, 0.7, 0], stinger: [0, 1, 8, 11, 13] },
+    victory: { intervals: [0, 3, 7, 11, 12], beats: [0.62, 0.5, 0.68, 0.56, 1.5] }
+  }),
+  'House of the Dead 2': detailedOverride('survivalHorror', {
+    id: 'mus-house-of-the-dead-2',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [104, 158],
+    meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.22, 0.62, 0.3, 0.86, 0.24, 0.5] },
+    scaleName: 'harmonicMinor',
+    scale: SCALE_LIBRARY.harmonicMinor,
+    rootMidi: 45,
+    chords: [0, 4, 1, 5],
+    instrumentation: ['venetian-bell-synth', 'canal-water-noise', 'ams-reload-click', 'arcade-breakbeat-noise', 'goldman-glass-pad', 'tarot-creature-stinger', 'emperor-core-pulse'],
+    density: 0.86,
+    restChance: 0.12,
+    waves: { lead: 'square', bass: 'sawtooth', pad: 'sine', boss: 'triangle' },
+    patterns: {
+      lead: [1, 0.58, 0, 0.72, 0.36, 0, 0.66],
+      bass: [1, 0, 0.48, 0, 0.82, 0, 0.44],
+      drums: [1, 3, 2, 1, 4, 3, 2],
+      pad: [1, 0, 0, 0, 1, 0, 0]
+    },
+    form: [
+      { name: 'venice-civilian-rescue', bars: 7, density: 0.56 },
+      { name: 'canal-creature-pursuit', bars: 8, density: 0.9 },
+      { name: 'goldman-tower-ascent', bars: 7, density: 1 },
+      { name: 'emperor-type-alpha', bars: 8, density: 1.14 }
+    ],
+    boss: { pattern: [1, 0, 0.58, 1, 0, 0.78, 0.46], stinger: [0, 4, 6, 9, 13] },
+    victory: { intervals: [0, 4, 7, 11, 12, 16], beats: [0.3, 0.36, 0.46, 0.42, 0.64, 1.2] }
+  }),
+  'House of the Dead 3': detailedOverride('survivalHorror', {
+    id: 'mus-house-of-the-dead-3',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [88, 146],
+    meter: { beats: 6, unit: 8, subdivisions: 2, accents: [1, 0.12, 0.38, 0.14, 0.72, 0.16, 0.44, 0.12, 0.88, 0.14, 0.5, 0.16] },
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 38,
+    chords: [0, 1, 5, 2],
+    instrumentation: ['shotgun-pump-click', 'efi-ventilation-noise', 'abandoned-facility-chain-hit', 'bioreactor-electric-pulse', 'ruined-concrete-impact', 'fate-wheel-metal-drone', 'partner-rescue-alarm'],
+    density: 0.76,
+    restChance: 0.2,
+    waves: { lead: 'triangle', bass: 'square', pad: 'sawtooth', boss: 'sine' },
+    patterns: {
+      lead: [1, 0, 0.42, 0, 0.7, 0, 0.34, 0, 0.82, 0, 0.54, 0],
+      bass: [1, 0, 0, 0, 0.68, 0, 1, 0, 0, 0, 0.58, 0],
+      drums: [1, 0, 3, 0, 2, 4, 1, 0, 3, 0, 2, 4],
+      pad: [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'efi-facility-entry', bars: 6, density: 0.4 },
+      { name: 'partner-rescue', bars: 6, density: 0.82 },
+      { name: 'bioreactor-descent', bars: 8, density: 0.96 },
+      { name: 'wheel-of-fate-overload', bars: 8, density: 1.12 }
+    ],
+    boss: { pattern: [1, 0, 0.5, 0, 0.82, 1, 0, 0.62, 1, 0, 0.7, 0], stinger: [0, 1, 6, 10, 13] },
+    victory: { intervals: [0, 3, 6, 10, 12], beats: [0.72, 0.58, 0.78, 0.64, 1.6] }
+  }),
   'The Simpsons': detailedOverride('comedyOddity', {
     id: 'mus-the-simpsons',
     confidence: 'A',

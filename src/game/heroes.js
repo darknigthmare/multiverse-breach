@@ -2135,6 +2135,78 @@ const heroOverrides = {
     defense: { name: 'Karadoc Ration Guard', type: 'shield', dur: 2.4, reduce: 0.84 },
     special: { name: 'Clan Survival Feast', type: 'support_aoe', dmg: 4.15, color: '#b88746' }
   },
+  thomas_rogan_hotd: {
+    weaponType: 'gun',
+    weaponColor: '#25282b',
+    simple: { name: 'AMS Handgun Double Tap', type: 'bullet', dmg: 1.05 },
+    secondary: { name: 'Curien Mansion Rescue Shot', type: 'projectile', cd: 6, dmg: 1.8 },
+    defense: { name: 'AMS Agent Sidestep', type: 'dodge', dur: 1.9, reduce: 0.84 },
+    special: { name: 'Magician Weak-Point Volley', type: 'bullet_aoe', dmg: 4.6, color: '#ff4b3e' }
+  },
+  g_hotd: {
+    weaponType: 'gun',
+    weaponColor: '#303338',
+    simple: { name: 'AMS Precision Shot', type: 'bullet', dmg: 1.02 },
+    secondary: { name: 'G File Weak-Point Read', type: 'tactical', cd: 6, dmg: 1.65 },
+    defense: { name: 'Cold Agent Cover', type: 'dodge', dur: 2.0, reduce: 0.84 },
+    special: { name: 'DBR Laboratory Crossfire', type: 'bullet_aoe', dmg: 4.45, color: '#ff6e61' }
+  },
+  sophie_hotd: {
+    weaponType: 'gun',
+    weaponColor: '#85898f',
+    simple: { name: 'Emergency Sidearm Shot', type: 'bullet', dmg: 0.86 },
+    secondary: { name: 'Curien Research Warning', type: 'debuff', cd: 7, dmg: 1.35 },
+    defense: { name: 'Laboratory First Aid', type: 'heal', dur: 2.4, reduce: 0.8 },
+    special: { name: 'Mansion Survivor Protocol', type: 'support_aoe', dmg: 3.9, color: '#dc281b' }
+  },
+  james_taylor_hotd2: {
+    weaponType: 'gun',
+    weaponColor: '#282c31',
+    simple: { name: 'AMS Critical Shot', type: 'bullet', dmg: 1.08 },
+    secondary: { name: 'Venice Rescue Route', type: 'tactical', cd: 6, dmg: 1.72 },
+    defense: { name: 'Civilian Cover Step', type: 'dodge', dur: 1.9, reduce: 0.84 },
+    special: { name: 'Emperor Core Volley', type: 'bullet_aoe', dmg: 4.7, color: '#ff9d4a' }
+  },
+  gary_stewart_hotd2: {
+    weaponType: 'gun',
+    weaponColor: '#30363c',
+    simple: { name: 'AMS Handgun Burst', type: 'bullet', dmg: 1.0 },
+    secondary: { name: 'Canal Rescue Cover', type: 'projectile', cd: 6, dmg: 1.7 },
+    defense: { name: 'Partner Guard', type: 'shield', dur: 2.1, reduce: 0.82 },
+    special: { name: 'Goldman Tower Sweep', type: 'bullet_aoe', dmg: 4.45, color: '#ffc06d' }
+  },
+  amy_crystal_hotd2: {
+    weaponType: 'gun',
+    weaponColor: '#33383d',
+    simple: { name: 'AMS Support Shot', type: 'bullet', dmg: 0.96 },
+    secondary: { name: 'Civilian Evacuation Mark', type: 'tactical', cd: 7, dmg: 1.42 },
+    defense: { name: 'AMS Rescue Medkit', type: 'heal', dur: 2.4, reduce: 0.82 },
+    special: { name: 'Venice Agent Crossfire', type: 'bullet_aoe', dmg: 4.2, color: '#dc7a27' }
+  },
+  lisa_rogan_hotd3: {
+    weaponType: 'shotgun',
+    weaponColor: '#25282a',
+    simple: { name: 'AMS Pump Shotgun Blast', type: 'shotgun', dmg: 1.16 },
+    secondary: { name: 'Partner Rescue Shot', type: 'projectile', cd: 6, dmg: 1.9 },
+    defense: { name: 'Facility Combat Roll', type: 'dodge', dur: 1.9, reduce: 0.85 },
+    special: { name: 'Wheel of Fate Chamber Salvo', type: 'shotgun_aoe', dmg: 4.75, color: '#5dff88' }
+  },
+  g_hotd3: {
+    weaponType: 'shotgun',
+    weaponColor: '#313438',
+    simple: { name: 'Veteran Shotgun Blast', type: 'shotgun', dmg: 1.12 },
+    secondary: { name: 'G File Creature Read', type: 'tactical', cd: 6, dmg: 1.7 },
+    defense: { name: 'Veteran Cover Step', type: 'dodge', dur: 2.0, reduce: 0.85 },
+    special: { name: 'BioReactor Suppression', type: 'shotgun_aoe', dmg: 4.6, color: '#80ffab' }
+  },
+  dan_taylor_hotd3: {
+    weaponType: 'shotgun',
+    weaponColor: '#292d31',
+    simple: { name: 'Commando Shotgun Blast', type: 'shotgun', dmg: 1.14 },
+    secondary: { name: 'EFI Breach Advance', type: 'projectile', cd: 6, dmg: 1.86 },
+    defense: { name: 'Rogan Team Cover', type: 'shield', dur: 2.2, reduce: 0.83 },
+    special: { name: 'Death Corridor Last Stand', type: 'shotgun_aoe', dmg: 4.68, color: '#38ca66' }
+  },
   jill: {
     weaponType: 'gun',
     weaponColor: '#1b1f2a',

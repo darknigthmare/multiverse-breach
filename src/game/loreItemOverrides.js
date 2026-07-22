@@ -113,6 +113,24 @@ const ACTIVE_PACK_SPECS = Object.freeze([
     item("Restore Materia", "Materia Restaurer", "Single translucent emerald-green Magic Materia sphere with a bright mako core, cloudy spiral facets and tiny internal star glints, no socket, stand or duplicate orb."),
     item("Bombing Mission Detonator", "Detonateur de la mission de sabotage", "Single compact AVALANCHE field detonator used to arm the Mako Reactor 1 charge: worn olive-black rectangular casing, guarded red arming switch, blank amber countdown window and short bundled red-black leads."),
   ]),
+  pack("House of the Dead", "house_of_the_dead", "https://www.sega.jp/history/arcade/product/9038/", [
+    item("AMS EATER Custom", "AMS EATER Custom", "Single original-1997 AMS EATER Custom semiautomatic handgun: compact black and gunmetal slide, squared trigger guard, dark textured grip and six-round magazine, with no readable branding."),
+    item("Medical Kit", "Trousse medicale", "Single compact arcade medical kit with a rigid off-white case, red corner panels, short carry handle and one simple medical-cross color block without letters."),
+    item("Golden Frog", "Grenouille doree", "Single small collectible frog statuette from Curien Mansion, crouched in profile and cast in bright worn gold with chunky arcade-era facets."),
+    item("Gold Coin", "Piece d or", "Single thick round gold bonus coin with a raised concentric rim, simple starburst relief and no number, lettering or copied emblem."),
+  ]),
+  pack("House of the Dead 2", "house_of_the_dead_2", "https://www.digitpress.com/library/manuals/dreamcast/house_dead_2.pdf", [
+    item("Cougar Inox Handgun", "Pistolet Cougar Inox", "Single compact stainless semiautomatic AMS handgun used during the Goldman incident, with a pale metal slide, dark grip panels and no manufacturer mark or lettering."),
+    item("First Aid Kit", "Trousse de premiers soins", "Single compact House of the Dead 2 rescue kit with a white hard shell, deep-red medical panels, metal latch and no readable label."),
+    item("Chamber Plus 2", "Chambre Plus 2", "Single Original Mode capacity upgrade module: a small gunmetal cylinder with two additional brass chamber indicators, red locking collar and no written plus sign or number."),
+    item("Original Mode Shotgun", "Fusil a pompe du mode Original", "Single short Original Mode pump-action shotgun with a dark steel receiver, worn brown wooden pump and stock, compact barrel and no duplicate weapon or loose ammunition."),
+  ]),
+  pack("House of the Dead 3", "house_of_the_dead_3", "https://www.gamesdatabase.org/Media/SYSTEM/Arcade//Manual/formated/The_House_of_the_Dead_III_-_2002_-_Sega.pdf", [
+    item("Modified Short SPAS-12", "SPAS-12 court modifie", "Single source-accurate modified short SPAS-12: no shoulder stock, very short dark barrel, perforated heat shield, chunky pump and integrated fore-end light, shown as one complete weapon."),
+    item("Medical Kit", "Trousse medicale", "Single compact EFI field medical kit with a scuffed off-white shell, red emergency panels, black latch and no readable text."),
+    item("12-Gauge Shotgun Shell", "Cartouche de calibre 12", "Single upright red 12-gauge shotgun shell with a ribbed plastic hull, bright brass base and no loose pellets, box or duplicate shell."),
+    item("Crystal Coin", "Piece de cristal", "Single large translucent cyan-blue crystal bonus medallion with a thick faceted rim, frosted luminous core and no number, lettering or copied symbol."),
+  ]),
   pack("Jet Set Radio", "jet_set_radio", "https://shop.sega.com/collections/jet-set-radio", [
     item("Spray Can", "Bombe de peinture", "Single bright aerosol paint can with removable cap and bold color blocks but no logo or text."),
     item("Magnetic Inline Skates", "Rollers magnetiques", "One complete pair of chunky magnetic inline skates with neon wheels and industrial straps."),
@@ -945,11 +963,11 @@ const validateRuntimeRegistry = () => {
   const seenIds = new Set();
   const seenIcons = new Set();
 
-  if (activeUniverses.length !== 115) {
-    throw new Error(`Expected 115 active FG4 item universes, received ${activeUniverses.length}`);
+  if (activeUniverses.length !== 118) {
+    throw new Error(`Expected 118 active FG4 item universes, received ${activeUniverses.length}`);
   }
-  if (policyUniverses.length !== 117) {
-    throw new Error(`Expected 117 FG4 item policies, received ${policyUniverses.length}`);
+  if (policyUniverses.length !== 120) {
+    throw new Error(`Expected 120 FG4 item policies, received ${policyUniverses.length}`);
   }
 
   for (const excludedUniverse of EXCLUDED_UNIVERSES) {
@@ -1019,9 +1037,9 @@ const validateRuntimeRegistry = () => {
     }
   }
 
-  if (seenIds.size !== 460 || seenIcons.size !== 460) {
+  if (seenIds.size !== 472 || seenIcons.size !== 472) {
     throw new Error(
-      `Expected 460 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
+      `Expected 472 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
     );
   }
 };

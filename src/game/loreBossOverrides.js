@@ -2568,6 +2568,84 @@ const RAW_BOSS_OVERRIDES = {
       visualAnchor: 'Exact Ian Holm likeness, Nostromo science-officer uniform, rolled magazine and source-accurate torn android neck with white fluid.'
     }
   ],
+  'House of the Dead': [
+    {
+      name: 'Chariot',
+      weapon: 'armored_halberd_and_charge',
+      special: 'Armor Break Charge',
+      phases: ['Advances in full armor with wide halberd swings and a shoulder charge', 'Broken armor exposes the unprotected body and accelerates its close-range attacks'],
+      lore: {
+        fr: 'Le premier gardien Tarot du manoir Curien combat dans son armure jusqu a ce que les agents la brisent.',
+        en: 'The first Tarot guardian of Curien Mansion fights in armor until the agents break it.'
+      },
+      referenceUrl: 'https://thehouseofthedead.fandom.com/wiki/Chariot',
+      visualAnchor: 'Exact original Chariot Type 27: towering gray-blue humanoid inside bulky bronze medieval armor, horned helmet and long polearm; show the exposed creature only in later damage frames, with no unrelated knight redesign.'
+    },
+    {
+      name: 'Hangedman',
+      weapon: 'claws_and_devilon_command',
+      special: 'Devilon Flock Drop',
+      phases: ['Hovers above the mansion roof while directing a limited Devilon flock', 'Drops into close-range claw passes after the flock is dispersed'],
+      lore: {
+        fr: 'Le gardien aile du Tarot commande les Devilons avant d attaquer lui-meme au-dessus du manoir.',
+        en: 'The winged Tarot guardian commands Devilons before attacking directly above the mansion.'
+      },
+      referenceUrl: 'https://thehouseofthedead.fandom.com/wiki/Hangedman',
+      visualAnchor: 'Exact original Hangedman Type 041: lean gray gargoyle-bat humanoid with long ears, membrane wings, red eyes and clawed hands and feet; no robe, gallows rope or skeletal angel anatomy.'
+    }
+  ],
+  'House of the Dead 2': [
+    {
+      name: 'Judgment (Kuarl & Zeal)',
+      weapon: 'kuarl_axe_and_zeal_flight',
+      special: 'Judgment Duo Assault',
+      phases: ['Zeal circles and directs Kuarl while the armored giant swings its axe', 'After Kuarl falls, Zeal performs rapid solo diving attacks'],
+      lore: {
+        fr: 'Judgment est le duo inseparable forme par le petit Zeal volant et le geant Kuarl en armure.',
+        en: 'Judgment is the inseparable duo formed by the small flying Zeal and the armored giant Kuarl.'
+      },
+      referenceUrl: 'https://thehouseofthedead.fandom.com/wiki/Judgment',
+      visualAnchor: 'Show the exact House of the Dead 2 pair together: tiny blue-purple winged Zeal beside massive headless bronze-armored Kuarl carrying his oversized axe; never merge them into one body or add a third character.'
+    },
+    {
+      name: 'Tower',
+      weapon: 'multi_headed_bites_and_water_charge',
+      special: 'Canal Hydra Assault',
+      phases: ['Four red serpent heads strike independently from the flooded chamber', 'The surviving blue leader head leaves the water for a direct pursuit'],
+      lore: {
+        fr: 'Tower est une hydre aquatique; ses tetes rouges protegent la tete bleue dominante.',
+        en: 'Tower is an aquatic hydra whose red heads protect the dominant blue head.'
+      },
+      referenceUrl: 'https://thehouseofthedead.fandom.com/wiki/Tower',
+      visualAnchor: 'Exact House of the Dead 2 Tower Type 8000: four long red eel-dragon heads and one distinct blue leader head rising from one submerged body, glossy aquatic skin and toothy maws; no humanoid torso or fantasy armor.'
+    }
+  ],
+  'House of the Dead 3': [
+    {
+      name: 'Death',
+      weapon: 'giant_club_and_body_charge',
+      special: 'EFI Security Rampage',
+      phases: ['Pursues the agents through the facility with sweeping club attacks', 'Drops the club and uses faster body charges after sustained head damage'],
+      lore: {
+        fr: 'L ancien agent de securite geant protege l EFI avec sa masse et sa force physique.',
+        en: 'The giant former security guard protects the EFI facility with his club and physical strength.'
+      },
+      referenceUrl: 'https://thehouseofthedead.fandom.com/wiki/Death',
+      visualAnchor: 'Exact House of the Dead III Death Type 001: enormous obese security-guard creature in torn blue uniform, peaked cap and heavy spiked club, with the small head weak point clearly readable; no Grim Reaper robe or scythe.'
+    },
+    {
+      name: 'Fool',
+      weapon: 'claws_and_cage_leaps',
+      special: 'Sloth Cage Pounce',
+      phases: ['Climbs rapidly around the laboratory cage and launches diagonal pounces', 'Loses its grip after claw damage and attacks from the floor with frantic swipes'],
+      lore: {
+        fr: 'La creature semblable a un paresseux grimpe sur la cage du laboratoire et attaque avec ses longues griffes.',
+        en: 'The sloth-like creature climbs the laboratory cage and attacks with its long claws.'
+      },
+      referenceUrl: 'https://thehouseofthedead.fandom.com/wiki/Fool',
+      visualAnchor: 'Exact House of the Dead III Fool Type 0028: huge round dark-grey hairy sloth body, pale cracked face, orange bare feet and four extremely long curved claws, built for cage climbing; no court-jester costume, hat, ape anatomy or human weapon.'
+    }
+  ],
   'Teen Titans': [
     {
       name: 'Slade',

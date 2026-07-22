@@ -1517,6 +1517,49 @@ const COMBAT_SPECS = Object.freeze([
     ],
     { renderHeight: 204 },
   ),
+  boss(
+    "House of the Dead",
+    "house-of-the-dead-magician-type-0",
+    "Magician Type-0",
+    "large",
+    "The House of the Dead (1997) - Curien Mansion incident",
+    "https://thehouseofthedead.fandom.com/wiki/Magician",
+    "Exact original Magician Type-0: tall black biomechanical humanoid, exposed red-orange muscle seams, long clawed hands and feet, narrow horned head and no wings, robe, armor or magician clothing.",
+    [
+      phase("curien-laboratory", "Fireball volley", "Teleport dash", "Claw pass"),
+      phase("type-zero-overload", "Rapid fire orbit", "Weak-point exposure", "Laboratory collapse"),
+    ],
+    { renderHeight: 270, anchor: { x: 0.79, y: 0.74 } },
+  ),
+  boss(
+    "House of the Dead 2",
+    "house-of-the-dead-2-emperor-type-alpha",
+    "Emperor Type Alpha",
+    "large",
+    "The House of the Dead 2 (1998) - Goldman incident",
+    "https://thehouseofthedead.fandom.com/wiki/Emperor",
+    "Exact Emperor Type Alpha: translucent pale-blue humanoid body, visible spinning red heart core and multiple floating transparent orbs; retain its smooth unfinished synthetic anatomy and never replace it with armor or a throne.",
+    [
+      phase("goldman-rooftop", "Orb throw", "Arm-sword morph", "Heart-core guard"),
+      phase("tarot-emulation", "Judgment mimic", "Hierophant mimic", "Tower mimic"),
+      phase("emergency-orbit", "Spinning orb rush", "Core exposure", "Goldman tower finish"),
+    ],
+    { renderHeight: 258, anchor: { x: 0.78, y: 0.72 } },
+  ),
+  boss(
+    "House of the Dead 3",
+    "house-of-the-dead-3-wheel-of-fate",
+    "Wheel of Fate",
+    "large",
+    "The House of the Dead III (2002) - EFI Research Facility",
+    "https://thehouseofthedead.fandom.com/wiki/Wheel_of_Fate",
+    "Exact arcade and Xbox Wheel of Fate: towering silver metallic humanoid resurrection body, circular fate mechanism and sun-mark chest weak point, with no medieval wheel, vehicle parts or generic robot armor.",
+    [
+      phase("fate-symbol-cycle", "Electric sphere", "Metallic charge", "Wheel-selected pattern"),
+      phase("curien-resurrection", "Lightning barrage", "Chest weak-point exposure", "BioReactor overload"),
+    ],
+    { renderHeight: 304, anchor: { x: 0.78, y: 0.73 } },
+  ),
 ]);
 
 const POLICY_SPECS = Object.freeze([
