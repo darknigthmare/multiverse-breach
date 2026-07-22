@@ -12,6 +12,10 @@ the older static lore-gap catalogue.
 - All modern Predator labels resolve to the Predator hunting profile.
 - Splatterhouse, Streets of Rage, Toy Soldiers, Stargate, and Zombies Ate My
   Neighbors now have dedicated profiles.
+- Spy x Family, War of the Worlds, Ghostbusters, and Tremors now replace their
+  family fallbacks with four distinct original procedural profiles.
+- Parasyte and Uzumaki now have dedicated original procedural profiles;
+  Chainsaw Man, Demon Slayer, and Cyberpunk: Edgerunners are regression-tested.
 - Hidden DLC arenas resolve to the Nexus profile, preventing disabled franchise
   music language from leaking into the OC base game.
 - RPG, Tactics, Smash, Fighter, FPS, and Race mode modifiers are checked.
@@ -35,6 +39,15 @@ the older static lore-gap catalogue.
 | Toy Soldiers | `mus-toy-soldiers` | Miniature brass, tin drums, toy piano, clockwork rhythm |
 | Stargate | `mus-stargate` | Original frame-drum pulse, low synthetic brass, gate-metal resonance |
 | Zombies Ate My Neighbors | `mus-zombies-ate-my-neighbors` | Original cartoon organ, chip bass, theremin-style pulse and B-movie stabs |
+| Spy x Family | `mus-spy-x-family` | Pizzicato chamber pulse, brushed percussion, covert clockwork and warm family pad |
+| War of the Worlds | `mus-war-of-the-worlds` | Uneven invasion pressure, bowed metal, storm noise and subsonic machine resonance |
+| Ghostbusters | `mus-ghostbusters` | Original paranormal electro-comedy pulse, elastic bass, organ and dry brass |
+| Tremors | `mus-tremors` | Dry desert suspense, ground rumble, corrugated impacts and survival rhythm |
+| Cyberpunk: Edgerunners | `mus-cyberpunk-edgerunners` | Modular bass, breakbeat noise, glass pads and network clicks |
+| Chainsaw Man | `mus-chainsaw-man` | Asymmetric industrial pulse, chainsaw-like oscillator and fragile memory pad |
+| Demon Slayer | `mus-demon-slayer` | Taiko-like pulse, plucked strings, breath shimmer and restrained heroic release |
+| Parasyte | `mus-parasyte` | Uneven heartbeat, elastic strings, cold piano and organic percussion |
+| Uzumaki | `mus-uzumaki` | Slow whole-tone spiral, bowed metal, sea noise and subterranean pressure |
 
 ## Reproduction
 
@@ -55,6 +68,6 @@ Validated result:
 | Lore profiles | 293 |
 | Gameplay views | 1,172 |
 | Unique deterministic runtime keys | 1,172 |
-| Dedicated-profile views | 156 |
+| Dedicated-profile views | 180 |
 | Fusion-profile views | 56 |
-| Family fallback views | 960 |
+| Family fallback views | 936 |

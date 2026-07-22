@@ -24,7 +24,16 @@ const coverageCases = [
   ['Streets of Rage', 'mus-streets-of-rage'],
   ['Toy Soldiers', 'mus-toy-soldiers'],
   ['Stargate', 'mus-stargate'],
-  ['Zombies Ate My Neighbors', 'mus-zombies-ate-my-neighbors']
+  ['Zombies Ate My Neighbors', 'mus-zombies-ate-my-neighbors'],
+  ['Spy x Family', 'mus-spy-x-family'],
+  ['War of the Worlds', 'mus-war-of-the-worlds'],
+  ['Ghostbusters', 'mus-ghostbusters'],
+  ['Tremors', 'mus-tremors'],
+  ['Cyberpunk: Edgerunners', 'mus-cyberpunk-edgerunners'],
+  ['Chainsaw Man', 'mus-chainsaw-man'],
+  ['Demon Slayer', 'mus-demon-slayer'],
+  ['Parasyte', 'mus-parasyte'],
+  ['Uzumaki', 'mus-uzumaki']
 ];
 
 const rows = coverageCases.map(([universe, expectedProfileId], index) => {

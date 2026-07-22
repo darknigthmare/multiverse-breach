@@ -1179,6 +1179,113 @@ export const MUSIC_PROFILE_OVERRIDES = {
     boss: { pattern: [1, 0, 0.7, 0, 1, 0.45, 0.82, 0], stinger: [0, 6, 7, 3, 12] },
     victory: { intervals: [0, 4, 7, 10, 12, 16], beats: [0.35, 0.4, 0.5, 0.45, 0.65, 1.3] }
   }),
+  'Spy x Family': detailedOverride('stealthTactical', {
+    id: 'mus-spy-x-family',
+    confidence: 'B',
+    tempo: [102, 144],
+    scaleName: 'dorian',
+    scale: SCALE_LIBRARY.dorian,
+    rootMidi: 53,
+    chords: [0, 3, 4, 1],
+    instrumentation: ['pizzicato-chamber-synth', 'brushed-snare-noise', 'muted-brass-synth', 'celesta-pulse', 'upright-bass-synth', 'covert-clock-tick', 'wordless-family-pad'],
+    density: 0.76,
+    restChance: 0.18,
+    patterns: {
+      lead: [1, 0, 0.62, 0.35, 0.82, 0, 0.48, 0.28],
+      bass: [1, 0, 0.42, 0, 0.76, 0, 0.36, 0],
+      drums: [1, 3, 0, 3, 2, 3, 4, 3],
+      pad: [1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    form: [
+      { name: 'eden-briefing', bars: 6, density: 0.5 },
+      { name: 'covert-tail', bars: 8, density: 0.88 },
+      { name: 'family-breath', bars: 4, density: 0.42 },
+      { name: 'operation-strix-surge', bars: 8, density: 1.02 }
+    ],
+    boss: { pattern: [1, 0, 0.52, 0, 1, 0.38, 0.72, 0], stinger: [0, 3, 7, 6, 12] },
+    victory: { intervals: [0, 3, 7, 9, 12, 15], beats: [0.4, 0.45, 0.5, 0.5, 0.7, 1.35] }
+  }),
+  'War of the Worlds': detailedOverride('militarySciFi', {
+    id: 'mus-war-of-the-worlds',
+    confidence: 'B',
+    tempo: [72, 126],
+    meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.16, 0.42, 0.14, 0.74, 0.16, 0.34, 0.14, 0.62, 0.16] },
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 43,
+    chords: [0, 1, 5, 2],
+    instrumentation: ['low-brass-pressure-synth', 'bowed-metal-drone', 'distant-impact-toms', 'storm-noise', 'tremolo-string-synth', 'ash-wind-noise', 'subsonic-machine-resonance'],
+    density: 0.58,
+    restChance: 0.3,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0, 0.38, 0, 0, 0.64, 0, 0.3, 0],
+      bass: [1, 0, 0, 0, 0, 0.72, 0, 0, 0, 0],
+      drums: [1, 0, 3, 0, 0, 2, 0, 4, 0, 3],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'buried-rumble', bars: 6, density: 0.3 },
+      { name: 'street-flight', bars: 8, density: 0.82 },
+      { name: 'basement-silence', bars: 4, density: 0.24 },
+      { name: 'tripod-onslaught', bars: 8, density: 1.04 }
+    ],
+    boss: { pattern: [1, 0, 0, 0, 0.62, 0, 1, 0, 0, 0.5], stinger: [0, 1, 6, 10, 13] },
+    victory: { intervals: [0, 3, 6, 10, 12], beats: [0.75, 0.6, 0.75, 0.55, 1.6] }
+  }),
+  Ghostbusters: detailedOverride('comedyOddity', {
+    id: 'mus-ghostbusters',
+    confidence: 'B',
+    tempo: [112, 148],
+    scaleName: 'harmonicMinor',
+    scale: SCALE_LIBRARY.harmonicMinor,
+    rootMidi: 48,
+    chords: [0, 4, 1, 5],
+    instrumentation: ['elastic-bass-synth', 'paranormal-sine-pulse', 'theater-organ-synth', 'dry-brass-stab-synth', 'electro-drum-noise', 'proton-click-noise', 'wordless-choir-pad'],
+    density: 0.84,
+    restChance: 0.12,
+    patterns: {
+      lead: [1, 0, 0.7, 0.38, 0.92, 0, 0.56, 0.42],
+      bass: [1, 0.52, 0, 0.42, 0.88, 0, 0.48, 0],
+      drums: [1, 3, 2, 3, 1, 4, 2, 3],
+      pad: [1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    form: [
+      { name: 'firehouse-call', bars: 6, density: 0.58 },
+      { name: 'ectoplasm-chase', bars: 8, density: 0.96 },
+      { name: 'containment-warning', bars: 4, density: 0.52 },
+      { name: 'rooftop-crossrip', bars: 8, density: 1.08 }
+    ],
+    boss: { pattern: [1, 0, 0.68, 0, 1, 0.45, 0.78, 0], stinger: [0, 6, 10, 3, 12] },
+    victory: { intervals: [0, 4, 7, 11, 12, 16], beats: [0.35, 0.4, 0.5, 0.45, 0.7, 1.3] }
+  }),
+  Tremors: detailedOverride('xenoHorror', {
+    id: 'mus-tremors',
+    confidence: 'B',
+    tempo: [90, 134],
+    meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.22, 0.48, 0.84, 0.26, 0.54] },
+    scaleName: 'phrygian',
+    scale: SCALE_LIBRARY.phrygian,
+    rootMidi: 45,
+    chords: [0, 1, 4, 3],
+    instrumentation: ['dry-desert-guitar-oscillator', 'hand-tom-noise', 'tremolo-low-string-synth', 'underground-rumble', 'corrugated-metal-hit', 'whistling-wind-noise', 'low-harmonica-like-synth'],
+    density: 0.68,
+    restChance: 0.24,
+    patterns: {
+      lead: [1, 0, 0.48, 0.76, 0, 0.42],
+      bass: [1, 0, 0, 0.82, 0, 0],
+      drums: [1, 3, 0, 2, 3, 4],
+      pad: [1, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'desert-stillness', bars: 6, density: 0.34 },
+      { name: 'ground-ripple', bars: 8, density: 0.76 },
+      { name: 'rock-island-stand', bars: 4, density: 0.5 },
+      { name: 'graboid-breakout', bars: 8, density: 1.02 }
+    ],
+    boss: { pattern: [1, 0, 0.45, 1, 0, 0.7], stinger: [0, 1, 5, 8, 12] },
+    victory: { intervals: [0, 3, 7, 10, 12], beats: [0.55, 0.45, 0.65, 0.55, 1.45] }
+  }),
   'Cyberpunk: Edgerunners': detailedOverride('cyberNetwork', {
     id: 'mus-cyberpunk-edgerunners',
     confidence: 'A',
@@ -1197,6 +1304,61 @@ export const MUSIC_PROFILE_OVERRIDES = {
     ],
     boss: { pattern: [1, 0, 0, 0, 0.72, 0, 0, 0, 1, 0, 0.55, 0, 0.82, 0, 0, 0], stinger: [0, 6, 9, 1, 13] },
     victory: { intervals: [0, 3, 7, 10, 12, 15], beats: [0.45, 0.4, 0.5, 0.45, 0.7, 1.4] }
+  }),
+  Parasyte: detailedOverride('xenoHorror', {
+    id: 'mus-parasyte',
+    confidence: 'B',
+    tempo: [92, 142],
+    meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.16, 0.5, 0.18, 0.76, 0.16, 0.42, 0.16, 0.64, 0.18] },
+    scaleName: 'phrygian',
+    scale: SCALE_LIBRARY.phrygian,
+    rootMidi: 46,
+    chords: [0, 1, 4, 2],
+    instrumentation: ['elastic-string-synth', 'wet-percussion-noise', 'heartbeat-sub', 'school-bell-fragment', 'cold-piano-pulse', 'blade-swish-noise', 'human-memory-pad'],
+    density: 0.7,
+    restChance: 0.23,
+    patterns: {
+      lead: [1, 0, 0.4, 0, 0.72, 0, 0, 0.52, 0, 0.32],
+      bass: [1, 0, 0, 0, 0.76, 0, 0, 0, 0.48, 0],
+      drums: [1, 0, 3, 0, 2, 0, 4, 0, 3, 0],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'ordinary-morning', bars: 6, density: 0.32 },
+      { name: 'right-hand-awakening', bars: 8, density: 0.72 },
+      { name: 'human-question', bars: 4, density: 0.3 },
+      { name: 'parasite-counterstrike', bars: 8, density: 1.02 }
+    ],
+    boss: { pattern: [1, 0, 0, 0.54, 0, 1, 0, 0, 0.7, 0], stinger: [0, 1, 7, 6, 12] },
+    victory: { intervals: [0, 3, 7, 8, 12], beats: [0.6, 0.45, 0.65, 0.55, 1.5] }
+  }),
+  Uzumaki: detailedOverride('psychologicalHorror', {
+    id: 'mus-uzumaki',
+    confidence: 'B',
+    tempo: [58, 108],
+    meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.12, 0.34, 0.1, 0.58, 0.12, 0.42, 0.1, 0.72, 0.12] },
+    scaleName: 'wholeTone',
+    scale: SCALE_LIBRARY.wholeTone,
+    rootMidi: 41,
+    chords: [0, 1, 2, 1],
+    instrumentation: ['spiral-organ-drone', 'bowed-metal-synth', 'distant-sea-noise', 'wood-creak-pulse', 'detuned-bell', 'breath-noise', 'subterranean-rumble'],
+    density: 0.48,
+    restChance: 0.34,
+    waves: { lead: 'sine', bass: 'triangle', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0, 0.3, 0, 0, 0.48, 0, 0.24, 0],
+      bass: [1, 0, 0, 0, 0, 0.62, 0, 0, 0, 0],
+      drums: [1, 0, 0, 3, 0, 2, 0, 0, 4, 0],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'fogbound-town', bars: 8, density: 0.24 },
+      { name: 'pattern-recognition', bars: 8, density: 0.52 },
+      { name: 'coiling-street', bars: 6, density: 0.68 },
+      { name: 'spiral-city-collapse', bars: 8, density: 0.94 }
+    ],
+    boss: { pattern: [1, 0, 0, 0, 0.46, 0, 0, 0, 0.78, 0], stinger: [0, 2, 6, 8, 12] },
+    victory: { intervals: [0, 2, 6, 8, 12], beats: [0.8, 0.7, 0.85, 0.65, 1.7] }
   })
 };
 

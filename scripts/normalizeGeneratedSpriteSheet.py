@@ -293,12 +293,84 @@ def normalize(input_path: Path, output_path: Path) -> dict[str, object]:
     }
 
 
+def normalize_strict_cells(input_path: Path, output_path: Path) -> dict[str, object]:
+    """Normalize each generated grid cell independently.
+
+    This mode is for sheets whose poses are already in the correct 4x4 cells.
+    Keeping only the dominant connected component prevents a weapon or limb
+    leaking from a neighbouring source cell into the reconstructed frame.
+    """
+    source = Image.open(input_path).convert('RGBA')
+    x_edges = [round(index * source.width / 4) for index in range(5)]
+    y_edges = [round(index * source.height / 4) for index in range(5)]
+    frames: list[Image.Image | None] = []
+    component_counts: list[int] = []
+    body_heights: list[int] = []
+
+    for cell in range(16):
+        row, col = divmod(cell, 4)
+        frame = source.crop((x_edges[col], y_edges[row], x_edges[col + 1], y_edges[row + 1]))
+        components = [
+            component
+            for component in components_from_alpha(np.asarray(frame.getchannel('A')))
+            if component.area >= 12
+        ]
+        component_counts.append(len(components))
+        if not components:
+            frames.append(None)
+            continue
+
+        body = max(components, key=lambda component: component.area)
+        sprite = build_component_layer(frame, body).crop(body.bbox)
+        frames.append(sprite)
+        body_heights.append(sprite.height)
+
+    median_height = float(np.median(body_heights)) if body_heights else 210.0
+    base_scale = min(1.35, 220.0 / max(1.0, median_height))
+    sheet = Image.new('RGBA', (1024, 1024), (0, 0, 0, 0))
+    margins: list[int] = []
+    nonempty = 0
+
+    for cell, sprite in enumerate(frames):
+        if sprite is None or not sprite.getbbox():
+            continue
+        row, col = divmod(cell, 4)
+        width, height = sprite.size
+        scale = min(base_scale, 232 / max(1, width), 232 / max(1, height))
+        target = (max(1, round(width * scale)), max(1, round(height * scale)))
+        sprite = sprite.resize(target, Image.Resampling.NEAREST)
+        x = col * 256 + (256 - target[0]) // 2
+        y = max(row * 256 + 12, row * 256 + 244 - target[1])
+        sheet.alpha_composite(sprite, (x, y))
+        nonempty += 1
+        margins.append(min(
+            x - col * 256,
+            y - row * 256,
+            (col + 1) * 256 - (x + target[0]),
+            (row + 1) * 256 - (y + target[1]),
+        ))
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    sheet.save(output_path)
+    return {
+        'input': str(input_path),
+        'output': str(output_path),
+        'strictCells': True,
+        'sourceSize': source.size,
+        'componentCounts': component_counts,
+        'nonemptyCells': nonempty,
+        'minimumMargin': min(margins) if margins else None,
+    }
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', required=True, type=Path)
     parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--strict-cells', action='store_true')
     args = parser.parse_args()
-    print(json.dumps(normalize(args.input, args.output), indent=2))
+    operation = normalize_strict_cells if args.strict_cells else normalize
+    print(json.dumps(operation(args.input, args.output), indent=2))
 
 
 if __name__ == '__main__':
