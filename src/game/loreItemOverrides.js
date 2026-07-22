@@ -107,11 +107,23 @@ const ACTIVE_PACK_SPECS = Object.freeze([
     item("Mechanical Mouse", "Souris mecanique", "Palm-sized grey robotic mouse with jointed legs, red sensor eye and segmented tail."),
     item("Teleport Receiver", "Recepteur de teleportation", "Portable dark receiver unit with cyan screen, antenna and chunky 1990s sci-fi controls."),
   ]),
+  pack("Final Fantasy VII", "final_fantasy_vii", "https://na.finalfantasy.com/titles/finalfantasy7", [
+    item("Buster Sword", "Epee Buster", "Single original-1997 Buster Sword: immense weathered rectangular steel blade with clipped angled tip, two circular materia slots near the base, riveted dark guard, long burgundy-wrapped handle and small metal pommel."),
+    item("Ribbon", "Ruban", "Single canonical status-protection accessory: narrow deep-crimson silk ribbon tied into a compact bow with two long forked tails, subtle protective sheen and no wearer or jewel."),
+    item("Restore Materia", "Materia Restaurer", "Single translucent emerald-green Magic Materia sphere with a bright mako core, cloudy spiral facets and tiny internal star glints, no socket, stand or duplicate orb."),
+    item("Bombing Mission Detonator", "Detonateur de la mission de sabotage", "Single compact AVALANCHE field detonator used to arm the Mako Reactor 1 charge: worn olive-black rectangular casing, guarded red arming switch, blank amber countdown window and short bundled red-black leads."),
+  ]),
   pack("Jet Set Radio", "jet_set_radio", "https://shop.sega.com/collections/jet-set-radio", [
     item("Spray Can", "Bombe de peinture", "Single bright aerosol paint can with removable cap and bold color blocks but no logo or text."),
     item("Magnetic Inline Skates", "Rollers magnetiques", "One complete pair of chunky magnetic inline skates with neon wheels and industrial straps."),
     item("Graffiti Soul", "Graffiti Soul", "Small floating stylized soul token with angular street-art silhouette and saturated cyan-yellow palette."),
     item("Portable Radio", "Radio portable", "Compact portable boombox with twin speakers, cassette deck and vivid street palette without branding."),
+  ]),
+  pack("Left 4 Dead", "left_4_dead", "https://developer.valvesoftware.com/wiki/Category:Left_4_Dead_Weapons", [
+    item("Auto Shotgun", "Fusil a pompe automatique", "Single Left 4 Dead Auto Shotgun: matte-grey semi-automatic receiver, long black barrel above a tubular magazine, black synthetic pistol grip, collapsible stock, ghost-ring sights and compact under-barrel flashlight."),
+    item("First Aid Kit", "Trousse de premiers soins", "Single original-game red rectangular soft medical pouch with black zippers, top carry handle and a white square patch bearing one red medical cross, no shoulder straps or words."),
+    item("Pain Pills", "Antidouleurs", "Single original-game white plastic pain-pill bottle with a red screw cap and blank red-white-blue pharmacy label blocks, sealed and shown without loose tablets or readable lettering."),
+    item("Rescue Radio", "Radio de sauvetage", "Single weathered finale rescue radio: olive-drab rectangular field transceiver with black speaker grille, short antenna, cream control knobs, red transmit lamp and one connected handset resting in its cradle."),
   ]),
   pack("Lost Planet 2", "lost_planet_2", "https://www.videogamemanual.com/xbox360/Lost%20Planet-%20Extreme%20Condition%20Colonies%20Edition.pdf", [
     item("T-ENG Canister", "Reservoir T-ENG", "Cylindrical orange thermal-energy canister with armored caps and glowing amber fluid window."),
@@ -933,11 +945,11 @@ const validateRuntimeRegistry = () => {
   const seenIds = new Set();
   const seenIcons = new Set();
 
-  if (activeUniverses.length !== 113) {
-    throw new Error(`Expected 113 active FG4 item universes, received ${activeUniverses.length}`);
+  if (activeUniverses.length !== 115) {
+    throw new Error(`Expected 115 active FG4 item universes, received ${activeUniverses.length}`);
   }
-  if (policyUniverses.length !== 115) {
-    throw new Error(`Expected 115 FG4 item policies, received ${policyUniverses.length}`);
+  if (policyUniverses.length !== 117) {
+    throw new Error(`Expected 117 FG4 item policies, received ${policyUniverses.length}`);
   }
 
   for (const excludedUniverse of EXCLUDED_UNIVERSES) {
@@ -1007,9 +1019,9 @@ const validateRuntimeRegistry = () => {
     }
   }
 
-  if (seenIds.size !== 452 || seenIcons.size !== 452) {
+  if (seenIds.size !== 460 || seenIcons.size !== 460) {
     throw new Error(
-      `Expected 452 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
+      `Expected 460 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
     );
   }
 };

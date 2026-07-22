@@ -1741,6 +1741,122 @@ export const MUSIC_PROFILE_OVERRIDES = {
     boss: { pattern: [1, 0, 0.54, 0, 0.82, 0.38, 0, 0.66, 1, 0, 0.46, 0, 0.76, 0.34, 0, 0.58], stinger: [0, 3, 7, 10, 15] },
     victory: { intervals: [0, 3, 7, 9, 12, 15], beats: [0.38, 0.4, 0.48, 0.45, 0.68, 1.3] }
   }),
+  'The Simpsons': detailedOverride('comedyOddity', {
+    id: 'mus-the-simpsons',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [104, 148],
+    meter: { beats: 4, unit: 4, subdivisions: 2, accents: [1, 0.2, 0.52, 0.22, 0.88, 0.18, 0.46, 0.24] },
+    scaleName: 'lydian',
+    scale: SCALE_LIBRARY.lydian,
+    rootMidi: 53,
+    chords: [0, 4, 1, 5],
+    instrumentation: ['cartoon-brass-synth', 'springfield-organ-pulse', 'sector-7g-key-click', 'nuclear-warning-bell', 'rubber-bass-synth', 'comic-orchestra-hit', 'reactor-hum-pad'],
+    density: 0.82,
+    restChance: 0.14,
+    waves: { lead: 'square', bass: 'triangle', pad: 'sine', boss: 'sawtooth' },
+    patterns: {
+      lead: [1, 0.62, 0, 0.44, 0.86, 0, 0.54, 0.3],
+      bass: [1, 0, 0.42, 0, 0.74, 0, 0.48, 0],
+      drums: [1, 3, 2, 3, 1, 4, 2, 3],
+      pad: [1, 0, 0, 0, 1, 0, 0, 0]
+    },
+    form: [
+      { name: 'springfield-shift', bars: 4, density: 0.54 },
+      { name: 'sector-7g-incident', bars: 8, density: 0.86 },
+      { name: 'burns-scheme', bars: 4, density: 0.72 },
+      { name: 'reactor-meltdown-gag', bars: 8, density: 1.08 }
+    ],
+    boss: { pattern: [1, 0, 0.64, 0, 1, 0.42, 0.8, 0], stinger: [0, 4, 6, 11, 12] },
+    victory: { intervals: [0, 4, 6, 9, 12, 16], beats: [0.3, 0.34, 0.44, 0.4, 0.62, 1.2] }
+  }),
+  Futurama: detailedOverride('electronicStage', {
+    id: 'mus-futurama',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [112, 158],
+    meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.24, 0.54, 0.84, 0.26, 0.66, 0.38] },
+    scaleName: 'lydian',
+    scale: SCALE_LIBRARY.lydian,
+    rootMidi: 50,
+    chords: [0, 4, 2, 5],
+    instrumentation: ['retro-future-brass-synth', 'planet-express-engine-bass', 'delivery-tube-percussion', 'robot-joint-clicks', 'new-new-york-traffic-noise', 'holophonor-like-synth', 'hypnosis-pulse'],
+    density: 0.88,
+    restChance: 0.1,
+    waves: { lead: 'square', bass: 'sawtooth', pad: 'sine', boss: 'triangle' },
+    patterns: {
+      lead: [1, 0.58, 0, 0.76, 0.38, 0, 0.68],
+      bass: [1, 0, 0.48, 0, 0.82, 0, 0.5],
+      drums: [1, 3, 2, 1, 3, 4, 2],
+      pad: [1, 0, 0, 0, 1, 0, 0]
+    },
+    form: [
+      { name: 'planet-express-briefing', bars: 7, density: 0.58 },
+      { name: 'new-new-york-delivery', bars: 8, density: 0.9 },
+      { name: 'robot-mafia-intercept', bars: 7, density: 1 },
+      { name: 'hypnotoad-singularity', bars: 8, density: 1.12 }
+    ],
+    boss: { pattern: [1, 0, 0.58, 1, 0, 0.72, 0.48], stinger: [0, 4, 6, 9, 13] },
+    victory: { intervals: [0, 4, 6, 11, 12, 16], beats: [0.3, 0.36, 0.46, 0.42, 0.62, 1.2] }
+  }),
+  'Final Fantasy VII': detailedOverride('animeHeroic', {
+    id: 'mus-final-fantasy-vii',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [86, 142],
+    meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.16, 0.46, 0.18, 0.8, 0.2, 0.4, 0.16, 0.7, 0.22] },
+    scaleName: 'harmonicMinor',
+    scale: SCALE_LIBRARY.harmonicMinor,
+    rootMidi: 40,
+    chords: [0, 5, 1, 4],
+    instrumentation: ['mako-reactor-sub-pulse', 'synthetic-string-ensemble', 'industrial-snare-noise', 'metal-catwalk-impact', 'materia-glass-arpeggiator', 'low-brass-synth', 'lifestream-air-pad'],
+    density: 0.78,
+    restChance: 0.16,
+    waves: { lead: 'triangle', bass: 'square', pad: 'sine', boss: 'sawtooth' },
+    patterns: {
+      lead: [1, 0, 0.48, 0, 0.78, 0.34, 0, 0.58, 0, 0.42],
+      bass: [1, 0, 0, 0, 0.82, 0, 0.46, 0, 0, 0],
+      drums: [1, 0, 3, 0, 2, 1, 0, 4, 0, 2],
+      pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'reactor-one-infiltration', bars: 5, density: 0.44 },
+      { name: 'mako-core-descent', bars: 8, density: 0.8 },
+      { name: 'shinra-counterattack', bars: 5, density: 0.96 },
+      { name: 'jenova-reunion', bars: 8, density: 1.1 }
+    ],
+    boss: { pattern: [1, 0, 0.52, 0, 0.86, 1, 0, 0.64, 0, 0.44], stinger: [0, 1, 8, 11, 13] },
+    victory: { intervals: [0, 3, 7, 11, 12], beats: [0.5, 0.48, 0.62, 0.56, 1.5] }
+  }),
+  'Left 4 Dead': detailedOverride('survivalHorror', {
+    id: 'mus-left-4-dead',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [74, 150],
+    meter: { beats: 4, unit: 4, subdivisions: 4, accents: [1, 0.1, 0.28, 0.12, 0.62, 0.1, 0.34, 0.12, 0.9, 0.1, 0.3, 0.12, 0.66, 0.1, 0.4, 0.14] },
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 38,
+    chords: [0, 1, 5, 2],
+    instrumentation: ['distant-infected-noise', 'safe-room-guitar-oscillator', 'heartbeat-sub', 'rooftop-wind-noise', 'horde-snare-clatter', 'rescue-radio-static', 'special-infected-stinger-synth'],
+    density: 0.68,
+    restChance: 0.24,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0, 0.38, 0, 0, 0.56, 0, 0.82, 0, 0, 0.44, 0, 0.64, 0, 0],
+      bass: [1, 0, 0, 0, 0.58, 0, 0, 0, 0.9, 0, 0, 0, 0.7, 0, 0, 0],
+      drums: [1, 0, 3, 0, 2, 0, 4, 0, 1, 3, 2, 3, 1, 4, 3, 4],
+      pad: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+    },
+    form: [
+      { name: 'safe-room-exit', bars: 4, density: 0.32 },
+      { name: 'hospital-ascent', bars: 8, density: 0.66 },
+      { name: 'crescendo-horde', bars: 6, density: 1.06 },
+      { name: 'no-mercy-evacuation', bars: 8, density: 1.16 }
+    ],
+    boss: { pattern: [1, 0, 0.42, 0, 0.72, 0, 1, 0.5, 1, 0, 0.58, 0, 0.86, 0, 0.7, 0], stinger: [0, 1, 6, 10, 13] },
+    victory: { intervals: [0, 3, 6, 10, 12], beats: [0.7, 0.58, 0.72, 0.62, 1.65] }
+  }),
   'Cyberpunk: Edgerunners': detailedOverride('cyberNetwork', {
     id: 'mus-cyberpunk-edgerunners',
     confidence: 'A',
