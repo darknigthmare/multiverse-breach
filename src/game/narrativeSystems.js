@@ -34,6 +34,8 @@ export const ARC_CAMPAIGN_DETAILS = {
     intro: { fr: 'L Alliance du Nexus forme le Rempart Atrium avec les soldats, explorateurs et commandants des Trames sci-fi.', en: 'The Nexus Alliance forms the Atrium Bulwark with soldiers, explorers, and commanders from sci-fi Threads.' },
     missions: [
       { fr: 'Construire une ligne de tir entre Halo, Stargate et Mass Effect.', en: 'Build a firing line between Halo, Stargate, and Mass Effect.' },
+      { fr: 'Synchroniser BT-7274, RoboCop et un T-800 reprogramme sans laisser leurs directives remplacer le commandement humain.', en: 'Synchronize BT-7274, RoboCop, and a reprogrammed T-800 without letting their directives replace human command.' },
+      { fr: 'Proteger Alphie pendant que NOMAD et la Fold Weapon tentent de verrouiller la meme coordonnee de la Cite-Mosaique.', en: 'Protect Alphie while NOMAD and the Fold Weapon try to lock the same Mosaic City coordinate.' },
       { fr: 'Evacuer des civils de la Cite-Mosaique sous bombardement de faille.', en: 'Evacuate Mosaic City civilians under breach bombardment.' },
       { fr: 'Activer le Rempart Atrium contre le Noyau final.', en: 'Activate the Atrium Bulwark against the final Core.' }
     ],
@@ -48,6 +50,8 @@ export const ARC_CAMPAIGN_DETAILS = {
     intro: { fr: 'La Zone 404 prouve que certaines breches sont des permissions volees, pas des lieux.', en: 'Zone 404 proves some breaches are stolen permissions, not places.' },
     missions: [
       { fr: 'Nettoyer une trace memoire corrompue par un virus de Trame.', en: 'Clean a memory trace corrupted by a Thread virus.' },
+      { fr: 'Extraire un engramme de Mikoshi avant qu Arasaka ne vende les souvenirs des heros comme contrats de mercenaires.', en: 'Extract an engram from Mikoshi before Arasaka sells hero memories as mercenary contracts.' },
+      { fr: 'Comparer une memoire de replicant Blade Runner a une Ancre authentique sans declarer la copie moins humaine.', en: 'Compare a Blade Runner replicant memory with an authentic Anchor without declaring the copy less human.' },
       { fr: 'Defendre A.R.C.A. pendant une attaque de droits administrateur.', en: 'Defend A.R.C.A. during an administrator-rights attack.' },
       { fr: 'Installer un pare-feu narratif dans le coeur du hub.', en: 'Install a narrative firewall in the hub core.' }
     ],
@@ -62,6 +66,8 @@ export const ARC_CAMPAIGN_DETAILS = {
     intro: { fr: 'Les Effaces utilisent la peur pour retirer les noms, puis les visages, puis les mondes.', en: 'The Erased use fear to remove names, then faces, then worlds.' },
     missions: [
       { fr: 'Identifier les entites avant que leurs fiches codex deviennent blanches.', en: 'Identify entities before their codex files turn white.' },
+      { fr: 'Suivre Hinako dans Ebisugaoka sans laisser le rite du Masque de Renard imposer sa fin aux autres survivants.', en: 'Follow Hinako through Ebisugaoka without letting the Fox Mask rite impose its ending on other survivors.' },
+      { fr: 'Separer le Lointain d Insidious, la ferme Perron et les faux souvenirs du Heart Eyes Killer avant qu ils partagent une meme maison.', en: 'Separate the Further, the Perron farmhouse, and the Heart Eyes Killer false memories before they share one house.' },
       { fr: 'Resister a une mission sans carte, sans nom de boss et sans musique.', en: 'Survive a mission without map, boss name, or music.' },
       { fr: 'Nommer le cauchemar central dans les Archives Impossibles.', en: 'Name the central nightmare inside the Impossible Archives.' }
     ],
@@ -71,6 +77,156 @@ export const ARC_CAMPAIGN_DETAILS = {
       { id: 'arc_fear_item_origin_lamp', type: 'item', name: { fr: 'Lampe d Origine', en: 'Origin Lamp' } }
     ],
     claimReward: { gold: 430, shards: 80, tokens: 4 }
+  },
+  dark_gotham: {
+    intro: { fr: 'Trois Gotham se superposent: le Joker transforme les portails en choix impossibles, les variantes noires imposent le nihilisme et le Chevalier noir cherche encore une solution qui ne sacrifie personne.', en: 'Three Gothams overlap: the Joker turns portals into impossible choices, dark variants impose nihilism, and the Dark Knight still seeks a solution that sacrifices no one.' },
+    missions: [
+      { fr: 'Securiser les ferries de Gotham avant que leur dilemme ne devienne une regle de mission permanente.', en: 'Secure the Gotham ferries before their dilemma becomes a permanent mission rule.' },
+      { fr: 'Neutraliser le sonar vole sans donner a A.R.C.A. un droit de surveillance totale.', en: 'Neutralize the stolen sonar without granting A.R.C.A. total surveillance rights.' },
+      { fr: 'Isoler les toxines Joker New 52 du metal noir des Robins infectes.', en: 'Separate New 52 Joker toxin from the infected Robins dark metal.' },
+      { fr: 'Vaincre le Rire noir sur le toit de l Atrium sans activer son choix final.', en: 'Defeat the Black Laugh on the Atrium roof without activating its final choice.' }
+    ],
+    outro: { fr: 'Gotham ne devient pas pure, mais elle reste capable de choisir mieux que ses monstres.', en: 'Gotham does not become pure, but remains capable of choosing better than its monsters.' },
+    rewards: [
+      { id: 'arc_gotham_skin_white_lens', type: 'skin', name: { fr: 'Apparence Lentille blanche', en: 'White Lens Appearance' } },
+      { id: 'arc_gotham_item_ferry_transponder', type: 'item', name: { fr: 'Transpondeur des ferries', en: 'Ferry Transponder' } }
+    ],
+    claimReward: { gold: 470, shards: 88, tokens: 4 }
+  },
+  arcane_paradox: {
+    intro: { fr: 'Les lois magiques de la Terre du Milieu, de Poudlard, d Hamunaptra et des royaumes comiques tentent toutes de definir le meme portail.', en: 'The magical laws of Middle-earth, Hogwarts, Hamunaptra, and comic kingdoms all try to define the same portal.' },
+    missions: [
+      { fr: 'Empêcher un fragment de l Anneau Unique de devenir l Horcruxe d une Ancre A.R.C.A.', en: 'Prevent a One Ring fragment from becoming an A.R.C.A. Anchor Horcrux.' },
+      { fr: 'Traduire les runes de Barad-dur, les mouvements de baguette et le Livre d Amon-Ra dans un sceau commun.', en: 'Translate Barad-dur runes, wand movements, and the Book of Amun-Ra into one common seal.' },
+      { fr: 'Defendre le village gaulois et le village schtroumpf contre une legion romaine guidee par Gargamel.', en: 'Defend the Gaulish and Smurf villages against a Roman legion guided by Gargamel.' },
+      { fr: 'Fermer le Grimoire d Equilibre avant que Morgoth ne soit nomme comme loi premiere du Nexus.', en: 'Close the Grimoire of Balance before Morgoth is named the Nexus first law.' }
+    ],
+    outro: { fr: 'Aucune magie ne remplace les autres: le Nexus conserve plusieurs lois locales et une seule limite commune, le consentement de la Trame.', en: 'No magic replaces the others: the Nexus keeps several local laws and one shared limit, the Thread consent.' },
+    rewards: [
+      { id: 'arc_arcane_skin_runic_wayfinder', type: 'skin', name: { fr: 'Apparence Guide runique', en: 'Runic Wayfinder Appearance' } },
+      { id: 'arc_arcane_item_three_law_seal', type: 'item', name: { fr: 'Sceau des trois lois', en: 'Three-Law Seal' } }
+    ],
+    claimReward: { gold: 490, shards: 92, tokens: 5 }
+  },
+  hell_circus: {
+    intro: { fr: 'Le spectacle infernal recrute Silent Hill f, les Deadites, Spawn et les maisons hantees comme nouveaux numeros dont personne ne peut quitter la scene.', en: 'The infernal show recruits Silent Hill f, the Deadites, Spawn, and haunted houses as new acts no one can leave.' },
+    missions: [
+      { fr: 'Interrompre le mariage du Masque de Renard avant que Hinako ne devienne le role principal du cabaret.', en: 'Interrupt the Fox Mask wedding before Hinako becomes the cabaret lead role.' },
+      { fr: 'Recuperer le Necronomicon dans les coulisses sans signer le contrat de Malebolgia.', en: 'Recover the Necronomicon backstage without signing Malebolgia s contract.' },
+      { fr: 'Fermer la porte rouge d Insidious et la cave Perron entre deux changements de decor.', en: 'Close the Insidious red door and the Perron cellar between two set changes.' },
+      { fr: 'Vaincre le Maitre de ceremonie Deadite avant le rappel final.', en: 'Defeat the Deadite Ringmaster before the final encore.' }
+    ],
+    outro: { fr: 'Le rideau tombe, mais A.R.C.A. garde une place vide pour ceux qui choisissent encore de sortir de leur role.', en: 'The curtain falls, but A.R.C.A. keeps an empty seat for those still choosing to leave their role.' },
+    rewards: [
+      { id: 'arc_hell_skin_red_curtain', type: 'skin', name: { fr: 'Apparence Rideau rouge', en: 'Red Curtain Appearance' } },
+      { id: 'arc_hell_item_exit_ticket', type: 'item', name: { fr: 'Ticket de sortie infernal', en: 'Infernal Exit Ticket' } }
+    ],
+    claimReward: { gold: 475, shards: 90, tokens: 5 }
+  },
+  containment_labs: {
+    intro: { fr: 'Les laboratoires de Rage, les IA d Evilution, Mikoshi, les experiences X1000 et les programmes UniSol partagent maintenant une meme chaine de confinement.', en: 'Rage laboratories, Evilution AI, Mikoshi, X1000 experiments, and UniSol programs now share one containment chain.' },
+    missions: [
+      { fr: 'Separer le virus Rage d une colonie de Cordyceps avant la premiere exposition croisee.', en: 'Separate the Rage virus from a Cordyceps colony before the first cross-exposure.' },
+      { fr: 'Decompiler la combinaison Evilution sans copier ses modules adaptatifs dans RoboCop ou un UniSol.', en: 'Decompile the Evilution suit without copying its adaptive modules into RoboCop or a UniSol.' },
+      { fr: 'Desactiver les puces X1000 qui classent les heros comme jouets militaires.', en: 'Disable X1000 chips that classify heroes as military toys.' },
+      { fr: 'Sceller le Laboratoire Zero pendant que les morts de Matul contaminent les conduites de refroidissement.', en: 'Seal Laboratory Zero while the Matul dead contaminate the cooling lines.' }
+    ],
+    outro: { fr: 'Le nouveau protocole ne promet pas une purge parfaite: il garantit une origine, un echantillon et une voie de sortie pour chaque incident.', en: 'The new protocol does not promise a perfect purge: it guarantees an origin, a sample, and an exit route for every incident.' },
+    rewards: [
+      { id: 'arc_containment_skin_white_hazard', type: 'skin', name: { fr: 'Apparence Risque blanc', en: 'White Hazard Appearance' } },
+      { id: 'arc_containment_item_origin_vial', type: 'item', name: { fr: 'Fiole d origine scellee', en: 'Sealed Origin Vial' } }
+    ],
+    claimReward: { gold: 500, shards: 96, tokens: 5 }
+  },
+  duel_and_arena: {
+    intro: { fr: 'La House of Blue Leaves, le ring de Philadelphie, le Continental et l Animus imposent quatre regles de duel incompatibles.', en: 'The House of Blue Leaves, Philadelphia ring, the Continental, and the Animus impose four incompatible duel rules.' },
+    missions: [
+      { fr: 'Gagner un round sans tuer afin de conserver la lecon de Rocky dans une arene d assassins.', en: 'Win a round without killing to preserve Rocky s lesson inside an assassin arena.' },
+      { fr: 'Rompre un marqueur de la Grande Table sans effacer la memoire du contrat dans l Animus.', en: 'Break a High Table marker without erasing the contract memory in the Animus.' },
+      { fr: 'Aider Beatrix a retirer les faux noms multiversels de sa liste.', en: 'Help Beatrix remove forged multiversal names from her list.' },
+      { fr: 'Vaincre le Duelliste Sans-Auteur selon une regle choisie par les trois combattants.', en: 'Defeat the Authorless Duelist under a rule chosen by all three fighters.' }
+    ],
+    outro: { fr: 'Le tournoi reconnait enfin qu une regle n est legitime que si les combattants peuvent la refuser.', en: 'The tournament finally recognizes that a rule is legitimate only if fighters can refuse it.' },
+    rewards: [
+      { id: 'arc_duel_skin_free_corner', type: 'skin', name: { fr: 'Apparence Coin libre', en: 'Free Corner Appearance' } },
+      { id: 'arc_duel_item_broken_marker', type: 'item', name: { fr: 'Marqueur brise', en: 'Broken Marker' } }
+    ],
+    claimReward: { gold: 480, shards: 90, tokens: 4 }
+  },
+  wasteland_hellfront: {
+    intro: { fr: 'La Fury Road traverse une Grande-Bretagne infectee puis debouche sur une nuit de Purge qui ne possede plus de limite horaire.', en: 'The Fury Road crosses infected Britain and opens into a Purge night that no longer has a time limit.' },
+    missions: [
+      { fr: 'Escorter le War Rig entre deux foyers Rage sans abandonner les civils lents.', en: 'Escort the War Rig between two Rage outbreaks without abandoning slow civilians.' },
+      { fr: 'Detruire une balise NFFA qui declare la Citadelle zone de Purge permanente.', en: 'Destroy an NFFA beacon declaring the Citadel a permanent Purge zone.' },
+      { fr: 'Recuperer les graines du Lieu Vert avant que le desert ne copie leur ADN.', en: 'Recover the Green Place seeds before the wasteland copies their DNA.' },
+      { fr: 'Prendre la Citadelle de Rupture et diffuser une vraie fin de sirene.', en: 'Take the Rupture Citadel and broadcast a real siren ending.' }
+    ],
+    outro: { fr: 'Le front devient une route d evacuation plutot qu une machine a produire toujours plus de survivants armes.', en: 'The front becomes an evacuation route rather than a machine producing ever more armed survivors.' },
+    rewards: [
+      { id: 'arc_waste_skin_war_rig_anchor', type: 'skin', name: { fr: 'Apparence Ancre War Rig', en: 'War Rig Anchor Appearance' } },
+      { id: 'arc_waste_item_green_seed_cache', type: 'item', name: { fr: 'Cache de graines vertes', en: 'Green Seed Cache' } }
+    ],
+    claimReward: { gold: 510, shards: 98, tokens: 5 }
+  },
+  absurd_b_movie_front: {
+    intro: { fr: 'Le ticket de Last Action Hero, les echecs de Dragonfly, les Minions et Stan Helsing imposent au Nexus des consequences reelles avec une logique volontairement absurde.', en: 'The Last Action Hero ticket, Dragonfly s failures, the Minions, and Stan Helsing impose real consequences through deliberately absurd logic.' },
+    missions: [
+      { fr: 'Recuperer le ticket dore avant qu il n ouvre toutes les fins de film en meme temps.', en: 'Recover the golden ticket before it opens every movie ending at once.' },
+      { fr: 'Terminer une mission de Dragonfly dont chaque erreur valide un objectif different.', en: 'Finish a Dragonfly mission where every mistake validates a different objective.' },
+      { fr: 'Empecher les Minions d adopter le Sans-Auteur comme nouveau super-mechant.', en: 'Stop the Minions from adopting the Authorless as their new supervillain.' },
+      { fr: 'Battre le Projectionniste impossible en respectant le rythme de la parodie.', en: 'Defeat the Impossible Projectionist while respecting parody timing.' }
+    ],
+    outro: { fr: 'A.R.C.A. archive enfin le non-sens comme une loi locale mesurable, et non comme une erreur a effacer.', en: 'A.R.C.A. finally archives nonsense as a measurable local law rather than an error to erase.' },
+    rewards: [
+      { id: 'arc_absurd_skin_golden_stub', type: 'skin', name: { fr: 'Apparence Souche doree', en: 'Golden Stub Appearance' } },
+      { id: 'arc_absurd_item_parody_timer', type: 'item', name: { fr: 'Minuteur de parodie', en: 'Parody Timer' } }
+    ],
+    claimReward: { gold: 430, shards: 82, tokens: 5 }
+  },
+  kaiju_disaster_protocol: {
+    intro: { fr: 'Mumakil, Fold Weapon, NOMAD, flottes Vogons et attaques RDA obligent A.R.C.A. a traiter la catastrophe comme un probleme d evacuation avant le combat.', en: 'Mumakil, the Fold Weapon, NOMAD, Vogon fleets, and RDA assaults force A.R.C.A. to treat disaster as an evacuation problem before combat.' },
+    missions: [
+      { fr: 'Tracer une voie civile entre les Mumakil et un largage de Titans.', en: 'Plot a civilian route between Mumakil and a Titanfall drop.' },
+      { fr: 'Faire devier NOMAD sans rediriger son rayon vers Pandora.', en: 'Deflect NOMAD without redirecting its beam toward Pandora.' },
+      { fr: 'Saboter les formulaires de demolition Vogons avant validation planetaire.', en: 'Sabotage the Vogon demolition forms before planetary approval.' },
+      { fr: 'Detruire le Coordinateur de catastrophe seulement apres la derniere extraction.', en: 'Destroy the Disaster Coordinator only after the final extraction.' }
+    ],
+    outro: { fr: 'Le protocole compte les vies evacuees avant les degats infliges, ce qui change durablement le score des missions de catastrophe.', en: 'The protocol counts evacuated lives before damage dealt, permanently changing disaster mission scoring.' },
+    rewards: [
+      { id: 'arc_kaiju_skin_rescue_beacon', type: 'skin', name: { fr: 'Apparence Balise de secours', en: 'Rescue Beacon Appearance' } },
+      { id: 'arc_kaiju_item_mass_route', type: 'item', name: { fr: 'Carte d evacuation massive', en: 'Mass Evacuation Chart' } }
+    ],
+    claimReward: { gold: 520, shards: 100, tokens: 5 }
+  },
+  screen_archive_fracture: {
+    intro: { fr: 'Les archives d ecran melangent Springfield, Pasadena, Zootopie, le video-club de Stan et les aventures de Tintin dans un programme qui change de ton a chaque porte.', en: 'Screen archives mix Springfield, Pasadena, Zootopia, Stan s video store, and Tintin s adventures into a program that changes tone at every door.' },
+    missions: [
+      { fr: 'Retrouver un indice de Tintin retire par un gag de canape des Simpson.', en: 'Recover a Tintin clue removed by a Simpsons couch gag.' },
+      { fr: 'Resoudre le modele de portail de Sheldon avec les preuves sociales de Judy et Nick.', en: 'Solve Sheldon s portal model using Judy and Nick s social evidence.' },
+      { fr: 'Ramener Lilo et Stitch hors d une archive qui classe Ohana comme anomalie administrative.', en: 'Bring Lilo and Stitch out of an archive that classifies Ohana as an administrative anomaly.' },
+      { fr: 'Verrouiller le Projecteur de ton avant qu il ne transforme toute mission en parodie mortelle.', en: 'Lock the Tone Projector before it turns every mission into lethal parody.' }
+    ],
+    outro: { fr: 'Chaque archive conserve son ton et ses consequences, sans obliger les autres mondes a jouer selon sa mise en scene.', en: 'Each archive keeps its tone and consequences without forcing other worlds to follow its staging.' },
+    rewards: [
+      { id: 'arc_screen_skin_archive_splice', type: 'skin', name: { fr: 'Apparence Montage archive', en: 'Archive Montage Appearance' } },
+      { id: 'arc_screen_item_tone_key', type: 'item', name: { fr: 'Cle de tonalite', en: 'Tone Key' } }
+    ],
+    claimReward: { gold: 445, shards: 86, tokens: 4 }
+  },
+  infection_mutation_cordon: {
+    intro: { fr: 'Les morts de Romero, le virus Rage, les morts de Matul et les Cordyceps atteignent le meme cordon avec des vitesses, memoires et comportements incompatibles.', en: 'Romero s dead, the Rage virus, Matul corpses, and Cordyceps reach the same cordon with incompatible speeds, memories, and behavior.' },
+    missions: [
+      { fr: 'Identifier quatre infections sans appliquer le mauvais antidote ni le mauvais protocole de tir.', en: 'Identify four infections without applying the wrong antidote or firing protocol.' },
+      { fr: 'Escorter Bub et Big Daddy afin d etudier leur memoire sans les transformer en armes.', en: 'Escort Bub and Big Daddy to study their memory without turning them into weapons.' },
+      { fr: 'Separer les infectes Rage des lents morts de ferme avant qu une horde hybride apparaisse.', en: 'Separate Rage infected from slow farmhouse dead before a hybrid horde appears.' },
+      { fr: 'Purger les conduites de Matul et fermer le Cordon Alpha avec tous les survivants identifies.', en: 'Purge the Matul pipes and close Cordon Alpha with every identified survivor.' }
+    ],
+    outro: { fr: 'Le Codex ne classe plus tout mort mobile comme le meme ennemi: origine, vitesse, memoire et vecteur deviennent des informations de gameplay.', en: 'The Codex no longer classifies every moving corpse as the same enemy: origin, speed, memory, and vector become gameplay information.' },
+    rewards: [
+      { id: 'arc_infection_skin_cordon_alpha', type: 'skin', name: { fr: 'Apparence Cordon Alpha', en: 'Cordon Alpha Appearance' } },
+      { id: 'arc_infection_item_four_vector_kit', type: 'item', name: { fr: 'Kit quatre vecteurs', en: 'Four-Vector Kit' } }
+    ],
+    claimReward: { gold: 515, shards: 100, tokens: 5 }
   }
 };
 
@@ -1568,6 +1724,186 @@ export const FUSION_MISSIONS = [
     enemies: { fr: 'Titans purs marques, drones civils, copies de jugement.', en: 'Marked pure titans, civilian drones, judgment copies.' },
     item: { fr: 'Page de Titan Cyber', en: 'Cyber Titan Page' },
     itemId: 'fusion_cyber_titan_page'
+  },
+  {
+    id: 'middle_earth_wizard_mummy',
+    stageId: 9007,
+    title: { fr: 'Fusion - L Anneau des deux Livres', en: 'Fusion - Ring of the Two Books' },
+    universes: ['The Lord of the Rings', 'Harry Potter', 'The Mummy'],
+    primaryUniverse: 'The Lord of the Rings',
+    mode: 'RPG',
+    difficulty: 'Fusion',
+    bossName: 'Imhotep Nazgul Horcruxe',
+    goldPrize: 245,
+    shardPrize: 100,
+    tokenPrize: 5,
+    unlockClears: 18,
+    decor: { fr: 'Barad-dur s eleve au-dessus d Hamunaptra tandis que les escaliers de Poudlard relient les deux Livres des Morts.', en: 'Barad-dur rises above Hamunaptra while Hogwarts staircases connect the two Books of the Dead.' },
+    enemies: { fr: 'Mangemorts Uruk-hai, momies Dementors et cavaliers Nazgul sous malediction egyptienne.', en: 'Death Eater Uruk-hai, Dementor mummies, and Nazgul riders under an Egyptian curse.' },
+    item: { fr: 'Fiole d Amon-Galadriel', en: 'Phial of Amun-Galadriel' },
+    itemId: 'fusion_amun_galadriel_phial'
+  },
+  {
+    id: 'machine_personhood_protocol',
+    stageId: 9008,
+    title: { fr: 'Fusion - Directive Personne', en: 'Fusion - Personhood Directive' },
+    universes: ['Terminator', 'RoboCop', 'The Creator'],
+    primaryUniverse: 'The Creator',
+    mode: 'Tactics',
+    difficulty: 'Fusion',
+    bossName: 'NOMAD-Skynet OCP Mainframe',
+    goldPrize: 250,
+    shardPrize: 102,
+    tokenPrize: 5,
+    unlockClears: 20,
+    decor: { fr: 'Un Detroit futur sert de cible a NOMAD pendant que Skynet et OCP se disputent les directives de chaque machine.', en: 'A future Detroit becomes a NOMAD target while Skynet and OCP fight over every machine directive.' },
+    enemies: { fr: 'Endosquelettes OCP, drones NOMAD et escouades ED-209 pilotees par une IA de guerre.', en: 'OCP endoskeletons, NOMAD drones, and ED-209 squads driven by a war AI.' },
+    item: { fr: 'Processeur de libre directive', en: 'Free Directive Processor' },
+    itemId: 'fusion_free_directive_cpu'
+  },
+  {
+    id: 'night_city_memory_heist',
+    stageId: 9009,
+    title: { fr: 'Fusion - Braquage de Memoire 2077', en: 'Fusion - Memory Heist 2077' },
+    universes: ['Cyberpunk', 'Blade Runner', 'Assassin\'s Creed'],
+    primaryUniverse: 'Cyberpunk',
+    mode: 'Tactics',
+    difficulty: 'Fusion',
+    bossName: 'Templier Smasher Replicant',
+    goldPrize: 255,
+    shardPrize: 105,
+    tokenPrize: 5,
+    unlockClears: 22,
+    decor: { fr: 'Mikoshi est reconstruit dans une pyramide Tyrell dont les souvenirs sont parcourus par un Animus Templier.', en: 'Mikoshi is rebuilt inside a Tyrell pyramid whose memories are traversed by a Templar Animus.' },
+    enemies: { fr: 'Assassins corporatifs, replicants sous contrat et daemons Abstergo.', en: 'Corporate assassins, contracted replicants, and Abstergo daemons.' },
+    item: { fr: 'Lame secrete Voight-Kampff', en: 'Voight-Kampff Hidden Blade' },
+    itemId: 'fusion_voight_hidden_blade'
+  },
+  {
+    id: 'zombie_vector_collision',
+    stageId: 9010,
+    title: { fr: 'Fusion - Cordon des Quatre Vitesses', en: 'Fusion - Four-Speed Cordon' },
+    universes: ['Day of the Dead', '28 Days Later', 'The Last of Us'],
+    primaryUniverse: 'Day of the Dead',
+    mode: 'RPG',
+    difficulty: 'Fusion',
+    bossName: 'Bloater Rage de Bunker',
+    goldPrize: 260,
+    shardPrize: 108,
+    tokenPrize: 5,
+    unlockClears: 24,
+    decor: { fr: 'Le bunker de Floride ouvre sur un Londres vide dont les conduites portent des spores Cordyceps.', en: 'The Florida bunker opens into an empty London whose pipes carry Cordyceps spores.' },
+    enemies: { fr: 'Infectes Rage, clickers de mine et morts lents conservant des fragments de memoire.', en: 'Rage infected, mine clickers, and slow dead retaining memory fragments.' },
+    item: { fr: 'Serum Bub-Cordyceps', en: 'Bub-Cordyceps Serum' },
+    itemId: 'fusion_bub_cordyceps_serum'
+  },
+  {
+    id: 'haunted_red_door',
+    stageId: 9011,
+    title: { fr: 'Fusion - Maison de la Porte rouge', en: 'Fusion - House of the Red Door' },
+    universes: ['Silent Hill f', 'The Conjuring', 'Insidious'],
+    primaryUniverse: 'Silent Hill f',
+    mode: 'RPG',
+    difficulty: 'Fusion',
+    bossName: 'Bathsheba au Masque de Renard',
+    goldPrize: 265,
+    shardPrize: 110,
+    tokenPrize: 6,
+    unlockClears: 26,
+    decor: { fr: 'La ferme Perron pousse dans Ebisugaoka; sa cave descend directement dans le Lointain derriere une porte rouge.', en: 'The Perron farmhouse grows inside Ebisugaoka; its cellar descends directly into the Further behind a red door.' },
+    enemies: { fr: 'Esprits fleuris, onryo du Lointain et objets hantes lies au rite du mariage.', en: 'Flowered spirits, Further onryo, and haunted objects bound to the wedding rite.' },
+    item: { fr: 'Omamori de lien astral', en: 'Astral Tether Omamori' },
+    itemId: 'fusion_astral_omamori'
+  },
+  {
+    id: 'speed_platform_trinity',
+    stageId: 9012,
+    title: { fr: 'Fusion - Route des Trois Portails', en: 'Fusion - Three-Portal Run' },
+    universes: ['Sonic', 'Crash Bandicoot', 'Spyro'],
+    primaryUniverse: 'Sonic',
+    mode: 'Smash',
+    difficulty: 'Fusion',
+    bossName: 'Eggman Cortex Gnorc Engine',
+    goldPrize: 235,
+    shardPrize: 96,
+    tokenPrize: 5,
+    unlockClears: 18,
+    decor: { fr: 'Green Hill traverse Wumpa Island avant de grimper dans le royaume cristallise des Artisans.', en: 'Green Hill crosses Wumpa Island before climbing into the crystallized Artisans realm.' },
+    enemies: { fr: 'Badniks a caisses TNT, Gnorcs mutants et assistants de laboratoire montes sur anneaux.', en: 'TNT-crate Badniks, mutant Gnorcs, and lab assistants riding rings.' },
+    item: { fr: 'Cristal du Chaos Wumpa', en: 'Wumpa Chaos Crystal' },
+    itemId: 'fusion_wumpa_chaos_crystal'
+  },
+  {
+    id: 'relic_investigation_route',
+    stageId: 9013,
+    title: { fr: 'Fusion - Ligne des Trois Reliques', en: 'Fusion - Three-Relic Line' },
+    universes: ['Tomb Raider', 'The Da Vinci Code', 'Tintin'],
+    primaryUniverse: 'Tomb Raider',
+    mode: 'Tactics',
+    difficulty: 'Fusion',
+    bossName: 'Natla du Prieure rouge',
+    goldPrize: 245,
+    shardPrize: 100,
+    tokenPrize: 5,
+    unlockClears: 20,
+    decor: { fr: 'Une tombe atlante sous le Louvre contient la Licorne et un Cryptex grave des signes du Scion.', en: 'An Atlantean tomb beneath the Louvre contains the Unicorn and a Cryptex carved with Scion signs.' },
+    enemies: { fr: 'Mercenaires templiers, faux detectives et gardiens atlantes.', en: 'Templar mercenaries, false detectives, and Atlantean guardians.' },
+    item: { fr: 'Cryptex du Scion-Licorne', en: 'Scion-Unicorn Cryptex' },
+    itemId: 'fusion_scion_unicorn_cryptex'
+  },
+  {
+    id: 'contract_ring_revenge',
+    stageId: 9014,
+    title: { fr: 'Fusion - Le Dernier Round du Contrat', en: 'Fusion - Contract Final Round' },
+    universes: ['John Wick', 'Kill Bill', 'Rocky'],
+    primaryUniverse: 'John Wick',
+    mode: 'Smash',
+    difficulty: 'Fusion',
+    bossName: 'Bill de la Grande Table',
+    goldPrize: 250,
+    shardPrize: 104,
+    tokenPrize: 5,
+    unlockClears: 22,
+    decor: { fr: 'Le ring de Philadelphie occupe le Continental, entoure par les cloisons de la House of Blue Leaves.', en: 'The Philadelphia ring occupies the Continental, surrounded by House of Blue Leaves partitions.' },
+    enemies: { fr: 'Crazy 88 sous contrat, arbitres assassins et boxeurs blindes de la Grande Table.', en: 'Contracted Crazy 88, assassin referees, and High Table armored boxers.' },
+    item: { fr: 'Marqueur du Gant Hanzo', en: 'Hanzo Glove Marker' },
+    itemId: 'fusion_hanzo_glove_marker'
+  },
+  {
+    id: 'family_toy_trap',
+    stageId: 9015,
+    title: { fr: 'Fusion - Maison des Petits Espions', en: 'Fusion - Small Spy House' },
+    universes: ['Home Alone', 'Spy Kids', 'Small Soldiers'],
+    primaryUniverse: 'Home Alone',
+    mode: 'Tactics',
+    difficulty: 'Fusion',
+    bossName: 'Chip Hazard Wet Bandit',
+    goldPrize: 225,
+    shardPrize: 92,
+    tokenPrize: 4,
+    unlockClears: 16,
+    decor: { fr: 'La maison McCallister devient un chateau de Floop dont chaque jouet contient une puce X1000.', en: 'The McCallister house becomes a Floop castle where every toy contains an X1000 chip.' },
+    enemies: { fr: 'Thumb-Thumb camoufles, Commando Elite et cambrioleurs equipes de gadgets OSS.', en: 'Camouflaged Thumb-Thumbs, Commando Elite, and burglars carrying OSS gadgets.' },
+    item: { fr: 'Talkboy X1000', en: 'X1000 Talkboy' },
+    itemId: 'fusion_x1000_talkboy'
+  },
+  {
+    id: 'fury_purge_mars',
+    stageId: 9016,
+    title: { fr: 'Fusion - Sirene rouge de Mars', en: 'Fusion - Red Siren of Mars' },
+    universes: ['Mad Max: Fury Road', 'The Purge', 'Ghosts of Mars'],
+    primaryUniverse: 'Mad Max: Fury Road',
+    mode: 'Smash',
+    difficulty: 'Fusion',
+    bossName: 'Immortan Big Daddy Purger',
+    goldPrize: 270,
+    shardPrize: 112,
+    tokenPrize: 6,
+    unlockClears: 28,
+    decor: { fr: 'Le War Rig traverse Shining Canyon pendant qu une sirene NFFA autorise les esprits martiens a posseder chaque convoi.', en: 'The War Rig crosses Shining Canyon while an NFFA siren authorizes Martian spirits to possess every convoy.' },
+    enemies: { fr: 'War Boys possedes, escadrons NFFA et mineurs martiens sur polecars.', en: 'Possessed War Boys, NFFA squads, and Martian miners on polecars.' },
+    item: { fr: 'Balise War Rig anti-possession', en: 'Anti-Possession War Rig Beacon' },
+    itemId: 'fusion_war_rig_spirit_beacon'
   }
 ];
 

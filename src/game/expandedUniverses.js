@@ -31,6 +31,1674 @@ const difficultyScale = {
   Expert: 3
 };
 
+function defineCanonicalUniverse({
+  key,
+  universe,
+  mediaType,
+  faction,
+  mode,
+  difficulty,
+  titleFr = universe,
+  stage,
+  boss,
+  worldBoss = boss,
+  cast,
+  enemies,
+  bosses,
+  gear,
+  event,
+  origin,
+  breach,
+  motif,
+  colors,
+  stageVariants = []
+}) {
+  const boosts = [
+    { atk: 8, spd: 1 },
+    { def: 6, hp: 45 },
+    { hp: 70, atk: 4 }
+  ];
+
+  return {
+    key,
+    universe,
+    mediaType,
+    faction,
+    mode,
+    difficulty,
+    titleFr,
+    stage,
+    boss,
+    worldBoss,
+    hero: cast[0],
+    allies: cast.slice(1),
+    monsters: enemies,
+    bosses,
+    gear: gear.map(([itemKey, enName, frName], index) => ([
+      `${key}_${itemKey}`,
+      enName,
+      frName,
+      boosts[index % boosts.length]
+    ])),
+    event: [`evt_${key}_${event[0]}`, ...event.slice(1)],
+    desc: {
+      en: `${origin[0]} In Multiverse Breach, ${breach[0]}`,
+      fr: `${origin[1]} Dans Multiverse Breach, ${breach[1]}`
+    },
+    theme: `${origin[0]} ${breach[0]}`,
+    motif,
+    colors,
+    stageVariants
+  };
+}
+
+const CANONICAL_REQUESTED_UNIVERSE_WAVE = [
+  defineCanonicalUniverse({
+    key: 'silent_hill_f',
+    universe: 'Silent Hill f',
+    mediaType: 'game',
+    faction: 'horror',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    stage: 'Ebisugaoka Red Spider Lily Fog',
+    boss: 'Fox Mask Wedding Rite',
+    worldBoss: 'White Kimono Manifestation',
+    cast: [
+      ['hinako_shf', 'Hinako Shimizu', 'slayer'],
+      ['shu_iwai_shf', 'Shu Iwai', 'tactical'],
+      ['rinko_nishida_shf', 'Rinko Nishida', 'hacker'],
+      ['sakuko_igarashi_shf', 'Sakuko Igarashi', 'horror']
+    ],
+    enemies: ['Kashimashi', 'Ayakakashi', 'Ebisugaoka Bloom Husk'],
+    bosses: ['Fox Mask', 'White Kimono Manifestation'],
+    gear: [
+      ['naginata', 'Hinako Naginata', 'Naginata de Hinako'],
+      ['omamori', 'Ebisugaoka Omamori', 'Omamori d Ebisugaoka'],
+      ['red_capsule', 'Shu Red Capsule', 'Capsule rouge de Shu']
+    ],
+    event: ['fox_wedding', 'Fox Wedding Procession', 'Procession du mariage du renard', 'A ritual procession roots enemies in red spider lilies while Hinako breaks the imposed path.', 'Une procession rituelle immobilise les ennemis dans les lycoris rouges pendant que Hinako brise le destin impose.'],
+    origin: ['In 1960s Ebisugaoka, Hinako and her friends face fog, flowers, social pressure, and a shrine rite that turns intimacy into body horror.', 'Dans l Ebisugaoka des annees 1960, Hinako et ses amis affrontent le brouillard, les fleurs, la pression sociale et un rite qui transforme l intimite en horreur corporelle.'],
+    breach: ['the Fox Mask mistakes the Nexus Anchor for a new wedding witness and spreads the Dark Shrine through Mosaic City memories.', 'le Masque de Renard prend l Ancre du Nexus pour un nouveau temoin et propage le Sanctuaire sombre dans les souvenirs de la Cite-Mosaique.'],
+    motif: 'hauntedset',
+    colors: ['#241318', '#050203', '#d94b68'],
+    stageVariants: [['Tactics', 'Dark Shrine Wedding Hall', 'Expert', 'Fox Mask']]
+  }),
+  defineCanonicalUniverse({
+    key: 'lord_of_the_rings',
+    universe: 'The Lord of the Rings',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    titleFr: 'Le Seigneur des Anneaux',
+    stage: 'Barad-dur Eye of Sauron Siege',
+    boss: 'Sauron Ring-Wraith Convergence',
+    worldBoss: 'Morgoth Shadow Beyond the Door of Night',
+    cast: [
+      ['aragorn_lotr', 'Aragorn', 'slayer'],
+      ['gandalf_lotr', 'Gandalf', 'hacker'],
+      ['legolas_lotr', 'Legolas', 'tactical'],
+      ['gimli_lotr', 'Gimli', 'marine']
+    ],
+    enemies: ['Uruk-hai Warband', 'Warg Rider', 'Mumakil Siege Host', 'Nazgul'],
+    bosses: ['Mouth of Sauron', 'Balrog of Moria', 'Sauron'],
+    gear: [
+      ['anduril', 'Anduril Flame of the West', 'Anduril Flamme de l Ouest'],
+      ['mithril', 'Mithril Mail', 'Cotte de mithril'],
+      ['phial', 'Phial of Galadriel', 'Fiole de Galadriel']
+    ],
+    event: ['beacons', 'Beacons of Gondor', 'Feux d alarme du Gondor', 'The beacons call a Rohirrim charge across every hostile lane.', 'Les feux appellent une charge des Rohirrim a travers toutes les lignes ennemies.'],
+    origin: ['Middle-earth is bound by the War of the Ring, ancient peoples, the Fellowship, and Sauron s will to dominate every free mind.', 'La Terre du Milieu est liee par la Guerre de l Anneau, les peuples anciens, la Communaute et la volonte de Sauron de dominer tout esprit libre.'],
+    breach: ['a shard of the One Ring teaches the Eye of Sauron to see portals, while A.R.C.A. must keep Morgoth s older shadow outside the Trame.', 'un eclat de l Anneau Unique apprend a l Oeil de Sauron a voir les portails, tandis qu A.R.C.A. doit maintenir l ombre plus ancienne de Morgoth hors de la Trame.'],
+    motif: 'castle',
+    colors: ['#2a1b12', '#050302', '#e06b2f'],
+    stageVariants: [['Tactics', 'Pelennor Fields Breachfront', 'Very Hard', 'Mumakil Siege Host']]
+  }),
+  defineCanonicalUniverse({
+    key: 'titanfall_2',
+    universe: 'Titanfall 2',
+    mediaType: 'game',
+    faction: 'sciFi',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    stage: 'Typhon Fold Weapon Rupture',
+    boss: 'Ark-Powered Reaper Command',
+    worldBoss: 'Fold Weapon Core',
+    cast: [
+      ['jack_cooper_tf2', 'Jack Cooper', 'marine'],
+      ['bt_7274_tf2', 'BT-7274', 'tactical'],
+      ['sarah_briggs_tf2', 'Sarah Briggs', 'hacker']
+    ],
+    enemies: ['IMC Rifleman', 'Spectre Squad', 'Reaper', 'Northstar Mercenary Titan'],
+    bosses: ['Kane Scorch Titan', 'Viper Northstar Titan'],
+    gear: [
+      ['smart_pistol', 'Smart Pistol MK6', 'Pistolet intelligent MK6'],
+      ['data_knife', 'Pilot Data Knife', 'Couteau de donnees de pilote'],
+      ['sere_kit', 'SERE Kit', 'Kit SERE']
+    ],
+    event: ['protocol_three', 'Protocol 3: Protect the Pilot', 'Protocole 3 : proteger le pilote', 'BT intercepts lethal fire and launches the Pilot into a wall-run counterattack.', 'BT intercepte les tirs mortels et lance le pilote dans une contre-attaque murale.'],
+    origin: ['Militia Rifleman Jack Cooper and Vanguard Titan BT-7274 fight the IMC around the Ark and the planet-killing Fold Weapon.', 'Le fusilier de la Milice Jack Cooper et le Titan Vanguard BT-7274 combattent l IMC autour de l Arche et de l arme Fold.'],
+    breach: ['the Ark locks onto Mosaic City as a replacement coordinate, forcing Pilot and Titan to preserve Protocol 3 across unstable timelines.', 'l Arche verrouille la Cite-Mosaique comme coordonnee de remplacement, obligeant pilote et Titan a maintenir le Protocole 3 entre des chronologies instables.'],
+    motif: 'facility',
+    colors: ['#152631', '#030608', '#55d8ff'],
+    stageVariants: [['Smash', 'Angel City Titanfall', 'Hard', 'Viper Northstar Titan']]
+  }),
+  defineCanonicalUniverse({
+    key: 'pirates_caribbean',
+    universe: 'Pirates of the Caribbean',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    titleFr: 'Pirates des Caraibes',
+    stage: 'Isla de Muerta Maelstrom',
+    boss: 'Davy Jones Flying Dutchman',
+    worldBoss: 'Calypso Maelstrom',
+    cast: [
+      ['jack_sparrow_potc', 'Jack Sparrow', 'hacker'],
+      ['elizabeth_swann_potc', 'Elizabeth Swann', 'tactical'],
+      ['will_turner_potc', 'Will Turner', 'slayer']
+    ],
+    enemies: ['Cursed Aztec Pirate', 'Flying Dutchman Crew', 'East India Company Marine'],
+    bosses: ['Hector Barbossa', 'Davy Jones'],
+    gear: [
+      ['compass', 'Jack s Compass', 'Boussole de Jack'],
+      ['aztec_coin', 'Cursed Aztec Coin', 'Piece azteque maudite'],
+      ['dead_mans_chest', 'Dead Man s Chest Key', 'Cle du coffre du mort']
+    ],
+    event: ['kraken', 'Kraken Broadside', 'Bordee du Kraken', 'The Kraken drags the strongest enemy beneath a maelstrom while the Black Pearl opens fire.', 'Le Kraken entraine l ennemi le plus fort sous le maelstrom pendant que le Black Pearl ouvre le feu.'],
+    origin: ['The Caribbean seas bind pirates, imperial fleets, Aztec curses, Davy Jones, and bargains whose price always returns.', 'Les mers des Caraibes lient pirates, flottes imperiales, maledictions azteques, Davy Jones et pactes dont le prix revient toujours.'],
+    breach: ['Jack s compass points toward the Nexus Anchor instead of desire, and Calypso s storm begins carrying whole islands between universes.', 'la boussole de Jack pointe vers l Ancre du Nexus plutot que vers le desir, et la tempete de Calypso transporte des iles entieres entre les univers.'],
+    motif: 'shipdeck',
+    colors: ['#12303a', '#020607', '#d6a654']
+  }),
+  defineCanonicalUniverse({
+    key: 'them_1954',
+    universe: 'Them!',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    titleFr: 'Des monstres attaquent la ville',
+    stage: 'Los Angeles Storm Drain Colony',
+    boss: 'Queen Ant Brood Chamber',
+    cast: [
+      ['ben_peterson_them', 'Ben Peterson', 'tactical'],
+      ['pat_medford_them', 'Pat Medford', 'hacker'],
+      ['robert_graham_them', 'Robert Graham', 'marine']
+    ],
+    enemies: ['Giant Worker Ant', 'Giant Soldier Ant', 'Brood Tunnel Ambusher'],
+    bosses: ['Queen Guard Pair', 'Queen Ant'],
+    gear: [
+      ['formic_acid', 'Formic Acid Sample', 'Echantillon d acide formique'],
+      ['geiger_counter', 'Desert Geiger Counter', 'Compteur Geiger du desert'],
+      ['flamethrower', 'Nest Flamethrower', 'Lance-flammes de nid']
+    ],
+    event: ['nest_purge', 'Storm Drain Nest Purge', 'Purge du nid des egouts', 'A.R.C.A. seals the tunnels before concentrated flame purges the brood lanes.', 'A.R.C.A. scelle les tunnels avant qu une flamme concentree purge les couloirs de ponte.'],
+    origin: ['Atomic testing creates giant ants whose organized colonies threaten 1950s America from desert nests and city tunnels.', 'Les essais atomiques creent des fourmis geantes dont les colonies organisees menacent l Amerique des annees 1950 depuis le desert et les egouts.'],
+    breach: ['a queen mistakes portal resonance for a mating signal and seeds connected worlds with eggs before A.R.C.A. can quarantine them.', 'une reine prend la resonance des portails pour un signal nuptial et pond dans plusieurs mondes connectes avant la quarantaine A.R.C.A.'],
+    motif: 'facility',
+    colors: ['#2a2416', '#050403', '#e7c35a']
+  }),
+  defineCanonicalUniverse({
+    key: 'cyberpunk_2077',
+    universe: 'Cyberpunk',
+    mediaType: 'game',
+    faction: 'cyber',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    stage: 'Night City Mikoshi Breach',
+    boss: 'Adam Smasher Blackwall Chassis',
+    worldBoss: 'Blackwall Rogue AI',
+    cast: [
+      ['v_cyberpunk', 'V', 'hacker'],
+      ['johnny_silverhand_cp', 'Johnny Silverhand', 'slayer'],
+      ['panam_palmer_cp', 'Panam Palmer', 'tactical']
+    ],
+    enemies: ['Arasaka Elite', 'Maelstrom Cyberpsycho', 'NetWatch Agent', 'Blackwall Daemon'],
+    bosses: ['Adam Smasher', 'Mikoshi Construct Swarm'],
+    gear: [
+      ['mantis_blades', 'Mantis Blades', 'Lames Mantis'],
+      ['sandevistan', 'Sandevistan Implant', 'Implant Sandevistan'],
+      ['relic_chip', 'Relic Biochip', 'Bio-puce Relic']
+    ],
+    event: ['blackwall', 'Blackwall Overclock', 'Surcharge du Blackwall', 'V breaches the local subnet and turns hostile cyberware against its owners.', 'V perce le sous-reseau local et retourne les cyberwares hostiles contre leurs porteurs.'],
+    origin: ['Night City runs on corporations, mercenary contracts, invasive cyberware, braindances, and the lethal promise of becoming a legend.', 'Night City fonctionne par corporations, contrats de mercenaires, cyberwares invasifs, braindances et promesse mortelle de devenir une legende.'],
+    breach: ['Mikoshi identifies Trame memories as engrams, while rogue AIs probe A.R.C.A. for a route around the Blackwall.', 'Mikoshi identifie les souvenirs de Trame comme des engrammes, tandis que des IA rebelles sondent A.R.C.A. pour contourner le Blackwall.'],
+    motif: 'arcanecity',
+    colors: ['#1f1530', '#030205', '#f5e642'],
+    stageVariants: [['Tactics', 'Arasaka Tower Extraction', 'Very Hard', 'Adam Smasher']]
+  }),
+  defineCanonicalUniverse({
+    key: 'the_creator',
+    universe: 'The Creator',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'New Asia NOMAD Target Corridor',
+    boss: 'NOMAD Orbital Strike Core',
+    cast: [
+      ['joshua_taylor_creator', 'Joshua Taylor', 'marine'],
+      ['alphie_creator', 'Alphie', 'hacker'],
+      ['harun_creator', 'Harun', 'tactical']
+    ],
+    enemies: ['US Army Exosuit', 'NOMAD Targeting Drone', 'Anti-AI Commando'],
+    bosses: ['Colonel Howell Strike Team', 'NOMAD Orbital Platform'],
+    gear: [
+      ['simulant_core', 'Simulant Memory Core', 'Noyau memoire de simulant'],
+      ['nomad_beacon', 'NOMAD Target Beacon', 'Balise de ciblage NOMAD'],
+      ['new_asia_emp', 'New Asia EMP Charge', 'Charge EMP de Nouvelle-Asie']
+    ],
+    event: ['alphie_pulse', 'Alphie Technology Pulse', 'Impulsion technologique d Alphie', 'Alphie disables every hostile machine long enough for Joshua to open an evacuation route.', 'Alphie desactive toutes les machines hostiles assez longtemps pour que Joshua ouvre une route d evacuation.'],
+    origin: ['Joshua escorts the childlike AI Alphie through a war between humanity, simulants, New Asia, and the orbital weapon NOMAD.', 'Joshua escorte l IA enfant Alphie dans une guerre entre humains, simulants, Nouvelle-Asie et l arme orbitale NOMAD.'],
+    breach: ['Alphie can close portals as if they were machines, making her both A.R.C.A. s best stabilizer and NOMAD s priority target.', 'Alphie peut fermer les portails comme des machines, ce qui fait d elle la meilleure stabilisatrice d A.R.C.A. et la cible prioritaire de NOMAD.'],
+    motif: 'facility',
+    colors: ['#1a2e35', '#030607', '#ef6f46']
+  }),
+  defineCanonicalUniverse({
+    key: 'day_of_the_dead',
+    universe: 'Day of the Dead',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'Florida Underground Bunker',
+    boss: 'Captain Rhodes Bunker Collapse',
+    cast: [
+      ['sarah_bowman_dotd', 'Sarah Bowman', 'hacker'],
+      ['john_dotd', 'John', 'marine'],
+      ['bill_mcdemott_dotd', 'Bill McDermott', 'tactical']
+    ],
+    enemies: ['Bunker Zombie', 'Mine Shaft Horde', 'Laboratory Specimen'],
+    bosses: ['Captain Rhodes', 'Bunker Horde'],
+    gear: [
+      ['bub_headphones', 'Bub s Headphones', 'Casque de Bub'],
+      ['lab_recorder', 'Logan Research Recorder', 'Enregistreur de recherche de Logan'],
+      ['flare', 'Mine Shaft Flare', 'Fusee de puits de mine']
+    ],
+    event: ['bub_salute', 'Bub Recognition Protocol', 'Protocole de reconnaissance de Bub', 'Bub draws the dead away from living allies and disrupts the bunker command chain.', 'Bub detourne les morts des allies vivants et brise la chaine de commandement du bunker.'],
+    origin: ['Scientists and soldiers fracture inside an underground bunker while the dead dominate the surface and Bub begins to remember.', 'Scientifiques et soldats se divisent dans un bunker souterrain tandis que les morts dominent la surface et que Bub commence a se souvenir.'],
+    breach: ['A.R.C.A. discovers that retained zombie memory can anchor a Trame, but Rhodes tries to weaponize every sentient trace.', 'A.R.C.A. decouvre que la memoire residuelle des zombies peut ancrer une Trame, mais Rhodes tente de militariser chaque trace consciente.'],
+    motif: 'facility',
+    colors: ['#241a13', '#040302', '#d98b45']
+  }),
+  defineCanonicalUniverse({
+    key: 'night_living_dead',
+    universe: 'Night of the Living Dead',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    stage: 'Pennsylvania Farmhouse Siege',
+    boss: 'Farmhouse Cellar Collapse',
+    cast: [
+      ['ben_nold', 'Ben', 'marine'],
+      ['barbra_nold', 'Barbra', 'horror'],
+      ['tom_nold', 'Tom', 'tactical']
+    ],
+    enemies: ['Cemetery Ghoul', 'Farmhouse Ghoul', 'Torch Mob Ghoul'],
+    bosses: ['Cellar Cooper Dead', 'Farmhouse Horde'],
+    gear: [
+      ['radio', 'Farmhouse Radio', 'Radio de la ferme'],
+      ['boards', 'Window Barricade Kit', 'Kit de barricade de fenetre'],
+      ['torch', 'Sheriff Posse Torch', 'Torche de la milice']
+    ],
+    event: ['broadcast', 'Emergency Broadcast', 'Bulletin d urgence', 'A clear broadcast reveals the safest lane and delays the surrounding dead.', 'Un bulletin clair revele la voie la plus sure et retarde les morts qui encerclent la ferme.'],
+    origin: ['A rural farmhouse becomes a pressure chamber for strangers trapped between an unexplained rising of the dead and their own mistrust.', 'Une ferme rurale devient une chambre de pression pour des inconnus coinces entre le reveil inexplique des morts et leur propre mefiance.'],
+    breach: ['the farmhouse repeats as an Anchor test, and every failed argument creates another sealed room in the Nexus.', 'la ferme se repete comme une epreuve d Ancre, et chaque dispute echouee cree une nouvelle piece scellee dans le Nexus.'],
+    motif: 'hauntedset',
+    colors: ['#202020', '#030303', '#b8b8a8']
+  }),
+  defineCanonicalUniverse({
+    key: 'land_of_the_dead',
+    universe: 'Land of the Dead',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    stage: 'Fiddlers Green Dead Reckoning Siege',
+    boss: 'Kaufman Tower Evacuation',
+    cast: [
+      ['riley_denbo_lotd', 'Riley Denbo', 'tactical'],
+      ['slack_lotd', 'Slack', 'slayer'],
+      ['charlie_lotd', 'Charlie', 'marine']
+    ],
+    enemies: ['Fiddlers Green Raider', 'Adaptive Dead', 'River Horde'],
+    bosses: ['Cholo Armored Raid', 'Big Daddy Horde Leader'],
+    gear: [
+      ['dead_reckoning', 'Dead Reckoning Targeter', 'Ciblage de Dead Reckoning'],
+      ['skyflower', 'Skyflower Launcher', 'Lanceur de fleurs du ciel'],
+      ['tower_pass', 'Fiddlers Green Pass', 'Laissez-passer de Fiddlers Green']
+    ],
+    event: ['dead_reckoning', 'Dead Reckoning Barrage', 'Barrage de Dead Reckoning', 'The armored vehicle marks a corridor and clears it with rockets before extraction.', 'Le vehicule blinde marque un couloir et le nettoie aux roquettes avant extraction.'],
+    origin: ['The living hide behind class walls while Big Daddy leads increasingly aware dead toward Fiddlers Green.', 'Les vivants se cachent derriere des murs de classe tandis que Big Daddy mene des morts de plus en plus conscients vers Fiddlers Green.'],
+    breach: ['the dead recognize portals as roads to freedom, forcing A.R.C.A. to negotiate movement rather than treating every corpse as an object.', 'les morts reconnaissent les portails comme des routes vers la liberte, obligeant A.R.C.A. a negocier leur passage plutot qu a traiter chaque corps comme un objet.'],
+    motif: 'arcanecity',
+    colors: ['#17201b', '#030403', '#8ea765']
+  }),
+  defineCanonicalUniverse({
+    key: 'zombi',
+    universe: 'Zombi',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    stage: 'Matul Island Hospital Outbreak',
+    boss: 'Conquistador Grave Horde',
+    cast: [
+      ['peter_west_zombi', 'Peter West', 'tactical'],
+      ['anne_bowles_zombi', 'Anne Bowles', 'hacker'],
+      ['brian_hull_zombi', 'Brian Hull', 'marine']
+    ],
+    enemies: ['Matul Island Zombie', 'Underwater Corpse', 'Hospital Dead'],
+    bosses: ['Conquistador Zombie', 'Matul Cemetery Horde'],
+    gear: [
+      ['signal_flare', 'Matul Signal Flare', 'Fusee de signal Matul'],
+      ['doctor_notes', 'Dr. Menard Notes', 'Notes du docteur Menard'],
+      ['boat_rifle', 'Island Boat Rifle', 'Fusil du bateau']
+    ],
+    event: ['shark_struggle', 'Underwater Shark Struggle', 'Lutte sous-marine contre le requin', 'An underwater dead diverts the largest biological threat in a violent collision.', 'Un mort sous-marin detourne la plus grande menace biologique dans une collision violente.'],
+    origin: ['A Caribbean island epidemic raises decomposing dead around Dr. Menard s hospital, old graves, and a doomed escape by sea.', 'Une epidemie insulaire caribeenne releve des morts decomposes autour de l hopital du docteur Menard, de vieilles tombes et d une fuite condamnee par la mer.'],
+    breach: ['the Matul infection travels through salt water pooled beneath the portals and reaches sealed sectors without opening a door.', 'l infection de Matul voyage dans l eau salee accumulee sous les portails et atteint des secteurs scelles sans ouvrir de porte.'],
+    motif: 'hauntedset',
+    colors: ['#1f2418', '#030403', '#a9b06a']
+  }),
+  defineCanonicalUniverse({
+    key: 'harry_potter',
+    universe: 'Harry Potter',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    stage: 'Hogwarts Battle of the Astronomy Tower',
+    boss: 'Voldemort Horcrux Convergence',
+    cast: [
+      ['harry_potter', 'Harry Potter', 'slayer'],
+      ['hermione_granger', 'Hermione Granger', 'hacker'],
+      ['ron_weasley', 'Ron Weasley', 'tactical']
+    ],
+    enemies: ['Death Eater', 'Dementor', 'Acromantula', 'Basilisk Spawn'],
+    bosses: ['Bellatrix Lestrange', 'Lord Voldemort'],
+    gear: [
+      ['elder_wand', 'Elder Wand Echo', 'Echo de la Baguette de Sureau'],
+      ['invisibility_cloak', 'Invisibility Cloak', 'Cape d invisibilite'],
+      ['marauders_map', 'Marauder s Map', 'Carte du Maraudeur']
+    ],
+    event: ['patronus', 'Mass Patronus', 'Patronus collectif', 'A wave of Patronuses drives fear entities from every allied lane.', 'Une vague de Patronus chasse les entites de peur de toutes les lignes alliees.'],
+    origin: ['Hogwarts stands at the center of a hidden magical society, a war against Voldemort, and a struggle over choice, sacrifice, and inherited power.', 'Poudlard se trouve au centre d une societe magique cachee, d une guerre contre Voldemort et d un conflit sur le choix, le sacrifice et le pouvoir herite.'],
+    breach: ['Horcrux fragments treat portal anchors as new containers, so the trio must destroy soul echoes without damaging the memories that stabilize Mosaic City.', 'les fragments d Horcruxe traitent les ancres de portail comme de nouveaux receptacles, et le trio doit detruire les echos d ame sans blesser les souvenirs qui stabilisent la Cite-Mosaique.'],
+    motif: 'castle',
+    colors: ['#201a2d', '#040305', '#d2ae54']
+  }),
+  defineCanonicalUniverse({
+    key: 'terminator',
+    universe: 'Terminator',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    stage: 'Los Angeles Future War Time Displacement',
+    boss: 'Skynet Temporal Defense Grid',
+    worldBoss: 'Skynet Core',
+    cast: [
+      ['sarah_connor_term', 'Sarah Connor', 'tactical'],
+      ['t800_term', 'T-800', 'marine'],
+      ['john_connor_term', 'John Connor', 'hacker']
+    ],
+    enemies: ['T-800 Endoskeleton', 'Hunter-Killer Drone', 'T-1000 Infiltrator'],
+    bosses: ['T-1000', 'T-X'],
+    gear: [
+      ['phase_plasma', 'Phased Plasma Rifle', 'Fusil plasma a phase'],
+      ['cpu', 'Learning CPU', 'Processeur d apprentissage'],
+      ['time_chip', 'Time Displacement Chip', 'Puce de deplacement temporel']
+    ],
+    event: ['no_fate', 'No Fate Counterstrike', 'Contre-attaque Sans destin', 'Sarah cancels the predicted enemy action and the T-800 answers with plasma fire.', 'Sarah annule l action ennemie predite et le T-800 repond par un tir plasma.'],
+    origin: ['Skynet s machine war reaches backward through time to erase the human resistance before it can exist.', 'La guerre des machines de Skynet remonte le temps pour effacer la resistance humaine avant sa naissance.'],
+    breach: ['the time displacement field mistakes alternate universes for editable histories, multiplying Judgment Day instead of preventing it.', 'le champ de deplacement temporel prend les univers alternatifs pour des histoires modifiables, multipliant le Jugement dernier au lieu de l empecher.'],
+    motif: 'facility',
+    colors: ['#17212b', '#030405', '#ef493d']
+  }),
+  defineCanonicalUniverse({
+    key: 'robocop',
+    universe: 'RoboCop',
+    mediaType: 'movie',
+    faction: 'cyber',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'Old Detroit OCP Siege',
+    boss: 'ED-209 Directive Lock',
+    worldBoss: 'OCP Delta City Mainframe',
+    cast: [
+      ['robocop_murphy', 'Alex Murphy / RoboCop', 'marine'],
+      ['anne_lewis_rc', 'Anne Lewis', 'tactical'],
+      ['dr_lazarus_rc', 'Dr. Marie Lazarus', 'hacker']
+    ],
+    enemies: ['OCP Security Trooper', 'Street Gang Gunner', 'Reprogrammed Police Unit'],
+    bosses: ['ED-209', 'RoboCain'],
+    gear: [
+      ['auto9', 'Auto-9', 'Auto-9'],
+      ['data_spike', 'RoboCop Data Spike', 'Pointe de donnees RoboCop'],
+      ['prime_directives', 'Prime Directive Wafer', 'Plaquette des directives prioritaires']
+    ],
+    event: ['dead_or_alive', 'Dead or Alive Arrest', 'Arrestation mort ou vif', 'Murphy marks every armed hostile, disarms the front line, and arrests the surviving threat.', 'Murphy marque chaque hostile arme, desarme la premiere ligne et arrete la menace survivante.'],
+    origin: ['OCP turns murdered officer Alex Murphy into RoboCop while Old Detroit is sold as a corporate product.', 'OCP transforme l officier assassine Alex Murphy en RoboCop tandis que le vieux Detroit est vendu comme un produit corporatif.'],
+    breach: ['A.R.C.A. directives collide with Murphy s prime directives, and OCP tries to patent the Anchor as public-security hardware.', 'les directives A.R.C.A. entrent en conflit avec les directives prioritaires de Murphy, et OCP tente de breveter l Ancre comme materiel de securite publique.'],
+    motif: 'arcanecity',
+    colors: ['#16232c', '#030506', '#77c9e8']
+  }),
+  defineCanonicalUniverse({
+    key: 'dark_knight',
+    universe: 'The Dark Knight',
+    mediaType: 'movie',
+    faction: 'cyber',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    titleFr: 'The Dark Knight',
+    stage: 'Gotham Ferry Dilemma',
+    boss: 'Joker Chaos Network',
+    cast: [
+      ['batman_tdk', 'Batman', 'tactical'],
+      ['jim_gordon_tdk', 'James Gordon', 'marine'],
+      ['lucius_fox_tdk', 'Lucius Fox', 'hacker']
+    ],
+    enemies: ['Joker Mask Robber', 'Gotham Mob Gunman', 'Corrupt SWAT Officer'],
+    bosses: ['Two-Face', 'The Joker'],
+    gear: [
+      ['grapple', 'Pneumatic Grapnel', 'Grappin pneumatique'],
+      ['sonar', 'Gotham Sonar Lens', 'Lentille sonar de Gotham'],
+      ['batarang', 'Dark Knight Batarang', 'Batarang du Chevalier noir']
+    ],
+    event: ['ferry_choice', 'Gotham Ferry Choice', 'Choix des ferries de Gotham', 'Civilians reject the Joker s game, cleansing fear and restoring the squad s resolve.', 'Les civils refusent le jeu du Joker, dissipent la peur et restaurent la resolution de l escouade.'],
+    origin: ['Batman, Gordon, and Dent confront a Joker campaign built to prove that Gotham s rules collapse under enough fear.', 'Batman, Gordon et Dent affrontent une campagne du Joker destinee a prouver que les regles de Gotham s effondrent sous la peur.'],
+    breach: ['the Joker turns portal selection into social experiments, while Batman refuses to let A.R.C.A. trade surveillance for certainty.', 'le Joker transforme la selection des portails en experiences sociales, tandis que Batman refuse qu A.R.C.A. echange la surveillance contre la certitude.'],
+    motif: 'arcanecity',
+    colors: ['#111b25', '#020304', '#d3a84a']
+  }),
+  defineCanonicalUniverse({
+    key: 'kill_bill',
+    universe: 'Kill Bill',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Smash',
+    difficulty: 'Very Hard',
+    stage: 'House of Blue Leaves Showdown',
+    boss: 'Bill Five Point Palm Duel',
+    cast: [
+      ['beatrix_kiddo_kb', 'Beatrix Kiddo', 'slayer'],
+      ['sofie_fatale_kb', 'Sofie Fatale', 'hacker'],
+      ['hattori_hanzo_kb', 'Hattori Hanzo', 'tactical']
+    ],
+    enemies: ['Crazy 88 Fighter', 'Yakuza Bodyguard', 'Deadly Viper Assassin'],
+    bosses: ['O-Ren Ishii', 'Bill'],
+    gear: [
+      ['hanzo_sword', 'Hattori Hanzo Sword', 'Sabre Hattori Hanzo'],
+      ['five_point_manual', 'Five Point Palm Manual', 'Manuel des cinq points'],
+      ['yellow_suit', 'Yellow Tracksuit', 'Survetement jaune']
+    ],
+    event: ['black_mamba', 'Black Mamba Rampage', 'Assaut Black Mamba', 'Beatrix crosses the enemy line in a precise sequence that ignores counterattacks.', 'Beatrix traverse la ligne ennemie dans une sequence precise qui ignore les contre-attaques.'],
+    origin: ['The Bride hunts the Deadly Viper Assassination Squad through a revenge story shaped by discipline, betrayal, and chosen family.', 'La Mariee traque le Detachement international des viperes assassines dans une vengeance faite de discipline, trahison et famille choisie.'],
+    breach: ['her death list begins rewriting itself with multiversal names, and Beatrix must decide which targets are people and which are Authorless forgeries.', 'sa liste de mort se reecrit avec des noms multiversels, et Beatrix doit distinguer les personnes des contrefacons du Sans-Auteur.'],
+    motif: 'arcanecity',
+    colors: ['#2a2410', '#050401', '#f0d638']
+  }),
+  defineCanonicalUniverse({
+    key: 'rocky',
+    universe: 'Rocky',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Smash',
+    difficulty: 'Hard',
+    stage: 'Philadelphia Championship Ring',
+    boss: 'Ivan Drago Exhibition',
+    cast: [
+      ['rocky_balboa', 'Rocky Balboa', 'slayer'],
+      ['apollo_creed', 'Apollo Creed', 'tactical'],
+      ['adrian_balboa', 'Adrian Balboa', 'hacker']
+    ],
+    enemies: ['Club Boxer', 'Promoter Enforcer', 'Training Echo'],
+    bosses: ['Clubber Lang', 'Ivan Drago'],
+    gear: [
+      ['gloves', 'Italian Stallion Gloves', 'Gants de l Etalon italien'],
+      ['robe', 'Championship Robe', 'Peignoir de championnat'],
+      ['training_hat', 'Mickey s Training Hat', 'Bonnet d entrainement de Mickey']
+    ],
+    event: ['distance', 'Go the Distance', 'Tenir jusqu au bout', 'Rocky survives a knockout blow, restores the team, and answers with a final-round combination.', 'Rocky survit a un coup fatal, releve l equipe et repond par une combinaison du dernier round.'],
+    origin: ['Rocky Balboa turns a once-in-a-lifetime title shot into a long story about endurance, dignity, love, and earning one more round.', 'Rocky Balboa transforme une chance unique de titre en une longue histoire d endurance, de dignite, d amour et de round supplementaire.'],
+    breach: ['the Nexus Arena measures heroes only by victory, so Rocky fights to prove that surviving with integrity is also a stabilizing result.', 'l Arene du Nexus ne mesure les heros que par la victoire, et Rocky combat pour prouver que tenir avec integrite stabilise aussi une Trame.'],
+    motif: 'facility',
+    colors: ['#1f2025', '#040405', '#d34b3f']
+  }),
+  defineCanonicalUniverse({
+    key: 'rambo',
+    universe: 'Rambo',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'Hope Mountain Manhunt',
+    boss: 'Colonel Zaysen Fortress',
+    cast: [
+      ['john_rambo', 'John Rambo', 'slayer'],
+      ['sam_trautman', 'Colonel Trautman', 'tactical'],
+      ['co_bao', 'Co Bao', 'hacker']
+    ],
+    enemies: ['Sheriff Posse', 'Soviet Spetsnaz', 'Jungle Patrol'],
+    bosses: ['Sheriff Teasle', 'Colonel Zaysen'],
+    gear: [
+      ['survival_knife', 'Rambo Survival Knife', 'Couteau de survie de Rambo'],
+      ['compound_bow', 'Explosive Compound Bow', 'Arc a poulies explosif'],
+      ['poncho', 'Mountain Poncho', 'Poncho de montagne']
+    ],
+    event: ['nothing_over', 'Nothing Is Over', 'Rien n est termine', 'Rambo vanishes from enemy sight, lays traps, and dismantles the command lane alone.', 'Rambo disparait des lignes de vue, pose des pieges et demantele seul la ligne de commandement.'],
+    origin: ['John Rambo is a traumatized Green Beret repeatedly pushed back into wars by authorities who mistake survival for obedience.', 'John Rambo est un Beret vert traumatise que les autorites renvoient sans cesse a la guerre en confondant survie et obeissance.'],
+    breach: ['A.R.C.A. extraction orders resemble another command sending him back into violence, so Trautman must help the Nexus earn his trust instead of requisitioning it.', 'les ordres d extraction A.R.C.A. ressemblent a un commandement de plus qui le renvoie a la violence, et Trautman doit aider le Nexus a gagner sa confiance.'],
+    motif: 'wasteland',
+    colors: ['#25301d', '#050604', '#b58b43']
+  }),
+  defineCanonicalUniverse({
+    key: 'commando',
+    universe: 'Commando',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Smash',
+    difficulty: 'Hard',
+    stage: 'Val Verde Island Assault',
+    boss: 'Arius Compound Siege',
+    cast: [
+      ['john_matrix_commando', 'John Matrix', 'marine'],
+      ['cindy_commando', 'Cindy', 'tactical'],
+      ['general_kirby_commando', 'General Kirby', 'hacker']
+    ],
+    enemies: ['Val Verde Mercenary', 'Mall Kidnapper', 'Island Guard'],
+    bosses: ['Arius', 'Bennett'],
+    gear: [
+      ['launcher', 'M202 FLASH Launcher', 'Lance-roquettes M202 FLASH'],
+      ['saw', 'Compound Circular Saw', 'Scie circulaire du complexe'],
+      ['knife', 'Bennett Throwing Knife', 'Couteau de lancer de Bennett']
+    ],
+    event: ['gear_up', 'Matrix Gear-Up', 'Armement de Matrix', 'Matrix equips the full assault rack and clears every exposed firing lane.', 'Matrix equipe tout l arsenal d assaut et nettoie chaque ligne de tir exposee.'],
+    origin: ['Retired Colonel John Matrix assaults a private army to rescue his kidnapped daughter from Arius and Bennett.', 'Le colonel retraite John Matrix attaque une armee privee pour sauver sa fille enlevee par Arius et Bennett.'],
+    breach: ['Jenny s trace is copied into several hostage markers, forcing Matrix to identify the real signal before his one-man assault destroys an innocent Trame.', 'la trace de Jenny est copiee dans plusieurs marqueurs d otage, obligeant Matrix a identifier le vrai signal avant que son assaut solitaire ne detruise une Trame innocente.'],
+    motif: 'fortress',
+    colors: ['#28301c', '#050604', '#d17c3e']
+  }),
+  defineCanonicalUniverse({
+    key: 'silence_of_the_lambs',
+    universe: 'The Silence of the Lambs',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    stage: 'Baltimore Hospital Behavioral Wing',
+    boss: 'Buffalo Bill Basement Hunt',
+    cast: [
+      ['clarice_starling', 'Clarice Starling', 'tactical'],
+      ['jack_crawford_sotl', 'Jack Crawford', 'marine'],
+      ['barney_matthews_sotl', 'Barney Matthews', 'hacker']
+    ],
+    enemies: ['False Witness Echo', 'Basement Stalker', 'Asylum Escapee'],
+    bosses: ['Hannibal Lecter Escape Pattern', 'Buffalo Bill'],
+    gear: [
+      ['case_file', 'Buffalo Bill Case File', 'Dossier Buffalo Bill'],
+      ['night_vision', 'Basement Night-Vision Goggles', 'Lunettes nocturnes de la cave'],
+      ['moth_cocoon', 'Death s-Head Moth Cocoon', 'Cocon de sphinx tete-de-mort']
+    ],
+    event: ['quid_pro_quo', 'Quid Pro Quo Interview', 'Entretien donnant-donnant', 'Clarice extracts the hidden target pattern, exposing every ambush without granting Lecter control.', 'Clarice extrait le schema cache des cibles, revele chaque embuscade sans laisser Lecter prendre le controle.'],
+    origin: ['FBI trainee Clarice Starling consults imprisoned psychiatrist Hannibal Lecter to identify serial killer Buffalo Bill before another captive dies.', 'La stagiaire du FBI Clarice Starling consulte le psychiatre emprisonne Hannibal Lecter pour identifier le tueur Buffalo Bill avant la mort d une autre captive.'],
+    breach: ['Lecter reads portal behavior as psychology and starts predicting which memories A.R.C.A. will sacrifice under pressure.', 'Lecter lit le comportement des portails comme une psychologie et predit quels souvenirs A.R.C.A. sacrifiera sous pression.'],
+    motif: 'facility',
+    colors: ['#20221d', '#030403', '#c5b879']
+  }),
+  defineCanonicalUniverse({
+    key: 'da_vinci_code',
+    universe: 'The Da Vinci Code',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    titleFr: 'Da Vinci Code',
+    stage: 'Louvre Rose Line Cipher',
+    boss: 'Priory Keystone Conspiracy',
+    cast: [
+      ['robert_langdon_dvc', 'Robert Langdon', 'hacker'],
+      ['sophie_neveu_dvc', 'Sophie Neveu', 'tactical'],
+      ['bezu_fache_dvc', 'Bezu Fache', 'marine']
+    ],
+    enemies: ['Opus Dei Pursuer', 'False Priory Agent', 'Cipher Guardian'],
+    bosses: ['Silas', 'The Teacher'],
+    gear: [
+      ['cryptex', 'Rosewood Cryptex', 'Cryptex en bois de rose'],
+      ['fleur_key', 'Fleur-de-lis Key', 'Cle fleur-de-lis'],
+      ['rose_map', 'Rose Line Chart', 'Carte de la ligne rose']
+    ],
+    event: ['cryptex', 'Cryptex Revelation', 'Revelation du Cryptex', 'Langdon solves the active symbol chain, opening locked routes and cancelling false objectives.', 'Langdon resout la chaine de symboles active, ouvre les routes verrouillees et annule les faux objectifs.'],
+    origin: ['Langdon and Sophie follow a murder trail through art, symbols, the Priory of Sion, and a secret guarded by competing institutions.', 'Langdon et Sophie suivent une piste de meurtre a travers l art, les symboles, le Prieure de Sion et un secret garde par des institutions rivales.'],
+    breach: ['the Rose Line intersects the galaxy map, making every portal coordinate look like evidence in a conspiracy engineered by the Authorless.', 'la ligne rose croise la carte galactique, transformant chaque coordonnee de portail en preuve d une conspiration du Sans-Auteur.'],
+    motif: 'castle',
+    colors: ['#251d16', '#050403', '#c69b50']
+  }),
+  defineCanonicalUniverse({
+    key: 'evil_dead_2013',
+    universe: 'Evil Dead (2013)',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    titleFr: 'Evil Dead (remake)',
+    stage: 'Abomination Cabin Blood Rain',
+    boss: 'The Abomination',
+    cast: [
+      ['mia_allen_ed2013', 'Mia Allen', 'slayer'],
+      ['david_allen_ed2013', 'David Allen', 'tactical'],
+      ['eric_ed2013', 'Eric', 'hacker']
+    ],
+    enemies: ['Possessed Friend', 'Cellar Deadite', 'Demonic Tree Root'],
+    bosses: ['Possessed Mia', 'The Abomination'],
+    gear: [
+      ['chainsaw', 'Cabin Chainsaw', 'Tronconneuse de la cabane'],
+      ['naturom_demonto', 'Naturom Demonto', 'Naturom Demonto'],
+      ['nail_gun', 'Improvised Nail Gun', 'Pistolet a clous improvise']
+    ],
+    event: ['blood_rain', 'Blood Rain Last Stand', 'Dernier combat sous la pluie de sang', 'Mia tears free of the possession and drives the chainsaw through the dominant demon.', 'Mia se libere de la possession et enfonce la tronconneuse dans le demon dominant.'],
+    origin: ['A withdrawal intervention in the Knowby cabin becomes a possession massacre after the Naturom Demonto is opened and its warnings are read aloud.', 'Une intervention de sevrage dans la cabane Knowby devient un massacre de possession apres l ouverture du Naturom Demonto et la lecture de ses avertissements.'],
+    breach: ['the book counts portal copies as additional souls, accelerating the ritual unless Mia destroys the original demonic signature.', 'le livre compte les copies de portail comme des ames supplementaires et accelere le rite, sauf si Mia detruit la signature demoniaque originale.'],
+    motif: 'hauntedset',
+    colors: ['#2a0e0d', '#050101', '#d7382f']
+  }),
+  defineCanonicalUniverse({
+    key: 'ash_vs_evil_dead',
+    universe: 'Ash vs Evil Dead',
+    mediaType: 'series',
+    faction: 'horror',
+    mode: 'Smash',
+    difficulty: 'Very Hard',
+    stage: 'Elk Grove Deadite Festival',
+    boss: 'Kandar the Destroyer',
+    cast: [
+      ['ash_williams_aveds', 'Ash Williams', 'slayer'],
+      ['pablo_bolivar_aveds', 'Pablo Simon Bolivar', 'hacker'],
+      ['kelly_maxwell_aveds', 'Kelly Maxwell', 'tactical']
+    ],
+    enemies: ['Elk Grove Deadite', 'Kandarian Spawn', 'Demonic Delta'],
+    bosses: ['Ruby Knowby', 'Baal'],
+    gear: [
+      ['boomstick', 'Ash s Boomstick', 'Boomstick d Ash'],
+      ['chainsaw_hand', 'Chainsaw Hand', 'Main tronconneuse'],
+      ['pablo_talisman', 'El Brujo Talisman', 'Talisman d El Brujo']
+    ],
+    event: ['delta', 'Delta 88 Deadite Run', 'Charge Deadite de la Delta 88', 'The Delta smashes through the horde while Pablo seals the trail and Kelly covers the exit.', 'La Delta traverse la horde pendant que Pablo scelle la trace et que Kelly couvre la sortie.'],
+    origin: ['Decades after the cabin, Ash accidentally unleashes the Kandarian evil again and fights beside Pablo, Kelly, and the complicated Ruby.', 'Des decennies apres la cabane, Ash libere encore le mal kandarien et combat avec Pablo, Kelly et l ambigue Ruby.'],
+    breach: ['the Necronomicon mistakes A.R.C.A. records for blank pages and begins writing Deadite futures directly into mission logs.', 'le Necronomicon prend les rapports A.R.C.A. pour des pages vierges et ecrit des futurs Deadites directement dans les journaux de mission.'],
+    motif: 'hauntedset',
+    colors: ['#22110d', '#040201', '#e34a2d']
+  }),
+  defineCanonicalUniverse({
+    key: 'zorro',
+    universe: 'Zorro',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Smash',
+    difficulty: 'Hard',
+    stage: 'Los Angeles Pueblo Uprising',
+    boss: 'Montero Hacienda Siege',
+    cast: [
+      ['diego_de_la_vega_zorro', 'Diego de la Vega', 'tactical'],
+      ['alejandro_murrieta_zorro', 'Alejandro Murrieta', 'slayer'],
+      ['elena_montera_zorro', 'Elena Montero', 'hacker']
+    ],
+    enemies: ['Spanish Lancer', 'Montero Guard', 'Mine Overseer'],
+    bosses: ['Captain Love', 'Don Rafael Montero'],
+    gear: [
+      ['rapier', 'Zorro Rapier', 'Rapiere de Zorro'],
+      ['mask', 'Black Zorro Mask', 'Masque noir de Zorro'],
+      ['whip', 'Hacienda Whip', 'Fouet de l hacienda']
+    ],
+    event: ['mark_z', 'Mark of Z', 'Marque du Z', 'Zorro disarms the enemy command and marks its route, granting allies a critical opening.', 'Zorro desarme le commandement ennemi et marque sa route, offrant une ouverture critique aux allies.'],
+    origin: ['Behind a black mask, Zorro defends the people of California against corrupt governors, soldiers, and landowners.', 'Derriere un masque noir, Zorro defend le peuple de Californie contre gouverneurs corrompus, soldats et grands proprietaires.'],
+    breach: ['the Sans-Auteur forges the Z on civilian homes to turn a symbol of resistance into a warrant, so both Zorros must reclaim its meaning.', 'le Sans-Auteur contrefait le Z sur les maisons civiles pour transformer un symbole de resistance en mandat, et les deux Zorros doivent en reprendre le sens.'],
+    motif: 'arcanecity',
+    colors: ['#1d1916', '#030303', '#d6ad55']
+  }),
+  defineCanonicalUniverse({
+    key: 'fantomas',
+    universe: 'Fantomas',
+    mediaType: 'movie',
+    faction: 'cyber',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'Paris Masked Crime Chase',
+    boss: 'Fantomas Identity Vault',
+    cast: [
+      ['commissaire_juve_fantomas', 'Commissaire Juve', 'tactical'],
+      ['fandor_fantomas', 'Jerome Fandor', 'hacker'],
+      ['helene_fantomas', 'Helene', 'slayer']
+    ],
+    enemies: ['Masked Henchman', 'False Police Double', 'Gadget Ambusher'],
+    bosses: ['Fantomas Disguise Chain', 'Fantomas Escape Machine'],
+    gear: [
+      ['mask_scanner', 'Fantomas Mask Scanner', 'Scanner de masque Fantomas'],
+      ['cigar_gadget', 'Juve Cigar Gadget', 'Gadget-cigare de Juve'],
+      ['press_camera', 'Fandor Press Camera', 'Appareil de presse de Fandor']
+    ],
+    event: ['juve_trap', 'Juve s Impossible Trap', 'Piege impossible de Juve', 'Juve closes every exit at once; even though Fantomas escapes, all lesser doubles are exposed.', 'Juve ferme toutes les sorties a la fois ; meme si Fantomas s echappe, tous ses doubles sont exposes.'],
+    origin: ['Fantomas uses perfect disguises, theatrical crimes, and impossible escapes while Juve and Fandor chase him across France.', 'Fantomas emploie deguisements parfaits, crimes theatraux et evasions impossibles tandis que Juve et Fandor le poursuivent a travers la France.'],
+    breach: ['his masks copy hero signatures well enough to enter restricted portals, turning identity verification into the central A.R.C.A. investigation.', 'ses masques copient assez bien les signatures de heros pour entrer dans les portails restreints, faisant de l identite l enquete centrale d A.R.C.A.'],
+    motif: 'arcanecity',
+    colors: ['#182430', '#030506', '#6fa5c9']
+  }),
+  defineCanonicalUniverse({
+    key: 'men_in_black',
+    universe: 'Men in Black',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'MIB Headquarters Galaxy Lockdown',
+    boss: 'Edgar Bug Galaxy Theft',
+    cast: [
+      ['agent_j_mib', 'Agent J', 'slayer'],
+      ['agent_k_mib', 'Agent K', 'tactical'],
+      ['agent_l_mib', 'Agent L', 'hacker']
+    ],
+    enemies: ['Arquillian Impostor', 'Alien Fugitive', 'Syndicate Bug Drone'],
+    bosses: ['Serleena', 'Edgar the Bug'],
+    gear: [
+      ['noisy_cricket', 'Noisy Cricket', 'Noisy Cricket'],
+      ['neuralyzer', 'Neuralyzer', 'Neuralyseur'],
+      ['galaxy', 'Galaxy Marble', 'Galaxie miniature']
+    ],
+    event: ['neuralyze', 'Mass Neuralyzer Flash', 'Flash neuralyseur collectif', 'A calibrated flash erases hostile targeting data without removing allied mission memory.', 'Un flash calibre efface les donnees de ciblage hostiles sans retirer la memoire de mission alliee.'],
+    origin: ['A secret agency regulates alien life on Earth with hidden technology, cover stories, neuralyzers, and agents J and K.', 'Une agence secrete regule la vie extraterrestre sur Terre avec technologies cachees, couvertures, neuralyseurs et les agents J et K.'],
+    breach: ['aliens begin using universe packs as forged immigration papers, while the Neuralyzer threatens the very memories A.R.C.A. needs to stabilize reality.', 'des extraterrestres utilisent les packs d univers comme faux papiers, tandis que le Neuralyseur menace les souvenirs dont A.R.C.A. a besoin pour stabiliser la realite.'],
+    motif: 'facility',
+    colors: ['#111b1e', '#020304', '#71dfd8']
+  }),
+  defineCanonicalUniverse({
+    key: 'twenty_eight_days_later',
+    universe: '28 Days Later',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    titleFr: '28 jours plus tard',
+    stage: 'London Rage Evacuation',
+    boss: 'Mansion Soldier Lockdown',
+    cast: [
+      ['jim_28dl', 'Jim', 'slayer'],
+      ['selena_28dl', 'Selena', 'tactical'],
+      ['hannah_28dl', 'Hannah', 'hacker']
+    ],
+    enemies: ['Rage Infected', 'Tunnel Infected', 'Rogue Soldier'],
+    bosses: ['Mailers Chain Break', 'Major West'],
+    gear: [
+      ['machete', 'Selena s Machete', 'Machette de Selena'],
+      ['taxi_keys', 'London Taxi Keys', 'Cles du taxi londonien'],
+      ['hello_banner', 'HELLO Rescue Banner', 'Banniere de secours HELLO']
+    ],
+    event: ['mailers_release', 'Mailer Release', 'Liberation de Mailer', 'The chained infected crashes through the hostile garrison while survivors sprint for extraction.', 'L infecte enchaine traverse la garnison hostile pendant que les survivants courent vers l extraction.'],
+    origin: ['A laboratory Rage virus empties Britain in weeks, leaving Jim, Selena, and Hannah between infected crowds and predatory survivors.', 'Un virus de Rage vide la Grande-Bretagne en quelques semaines, laissant Jim, Selena et Hannah entre foules infectees et survivants predateurs.'],
+    breach: ['Rage crosses portals in seconds but burns out quickly, turning every delayed extraction into a brutal timing problem.', 'la Rage traverse les portails en quelques secondes mais s epuise vite, transformant chaque extraction retardee en probleme brutal de timing.'],
+    motif: 'wasteland',
+    colors: ['#24120f', '#040201', '#d4432f']
+  }),
+  defineCanonicalUniverse({
+    key: 'home_alone',
+    universe: 'Home Alone',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Tactics',
+    difficulty: 'Medium',
+    titleFr: 'Maman, j ai rate l avion',
+    stage: 'McCallister House Trap Grid',
+    boss: 'Wet Bandits Final Entry',
+    cast: [
+      ['kevin_mccallister', 'Kevin McCallister', 'hacker'],
+      ['old_man_marley', 'Old Man Marley', 'marine'],
+      ['kate_mccallister', 'Kate McCallister', 'tactical']
+    ],
+    enemies: ['Wet Bandit Decoy', 'Basement Furnace Fear', 'False Delivery Intruder'],
+    bosses: ['Harry Lime', 'Marv Murchins'],
+    gear: [
+      ['paint_can', 'Stairwell Paint Can', 'Pot de peinture de l escalier'],
+      ['tarantula', 'Buzz s Tarantula', 'Tarentule de Buzz'],
+      ['talkboy', 'Talkboy Recorder', 'Enregistreur Talkboy']
+    ],
+    event: ['trap_plan', 'Battle Plan Montage', 'Montage du plan de bataille', 'Kevin converts every empty tile into a visible trap and routes enemies through the safest chain.', 'Kevin transforme chaque case vide en piege visible et dirige les ennemis dans la chaine la plus sure.'],
+    origin: ['Forgotten at home for Christmas, Kevin defends his family house from Harry and Marv with improvised traps and nerve.', 'Oublie chez lui pour Noel, Kevin defend la maison familiale contre Harry et Marv avec des pieges improvises et du sang-froid.'],
+    breach: ['his floor plan overlays the Citadel, and harmless household props become real tactical cover without losing their comic timing.', 'son plan de maison se superpose a la Citadelle, et les accessoires domestiques deviennent de vraies couvertures tactiques sans perdre leur rythme comique.'],
+    motif: 'arcanecity',
+    colors: ['#25352f', '#050706', '#c83f39']
+  }),
+  defineCanonicalUniverse({
+    key: 'last_action_hero',
+    universe: 'Last Action Hero',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Smash',
+    difficulty: 'Hard',
+    stage: 'Jack Slater Movie Premiere',
+    boss: 'Benedict Fourth-Wall Escape',
+    cast: [
+      ['jack_slater_lah', 'Jack Slater', 'marine'],
+      ['danny_madigan_lah', 'Danny Madigan', 'hacker'],
+      ['whiskers_lah', 'Whiskers', 'slayer']
+    ],
+    enemies: ['Movie Henchman', 'Dynamite Gangster', 'Premiere Assassin'],
+    bosses: ['Mr. Benedict', 'The Ripper'],
+    gear: [
+      ['ticket', 'Houdini Golden Ticket', 'Ticket dore de Houdini'],
+      ['desert_eagle', 'Jack Slater Desert Eagle', 'Desert Eagle de Jack Slater'],
+      ['script_page', 'Action Script Page', 'Page de scenario d action']
+    ],
+    event: ['big_gun', 'Action-Movie Ammunition Rule', 'Regle des munitions de film d action', 'Jack fires an impossible barrage until Danny identifies the real-world limit that ends the scene.', 'Jack tire une salve impossible jusqu a ce que Danny trouve la limite du monde reel qui termine la scene.'],
+    origin: ['A magical ticket pulls Danny into the action films of Jack Slater, then lets villains escape into a world where consequences are real.', 'Un ticket magique attire Danny dans les films d action de Jack Slater, puis laisse les mechants gagner un monde ou les consequences sont reelles.'],
+    breach: ['the golden ticket can cross any portal without clearance, making genre rules contagious across the Nexus.', 'le ticket dore traverse tout portail sans autorisation, rendant les regles de genre contagieuses dans le Nexus.'],
+    motif: 'arcanecity',
+    colors: ['#15293a', '#030609', '#f1b83e']
+  }),
+  defineCanonicalUniverse({
+    key: 'minions',
+    universe: 'Minions',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Smash',
+    difficulty: 'Medium',
+    stage: 'Villain-Con Crown Heist',
+    boss: 'Scarlet Overkill Coronation',
+    cast: [
+      ['kevin_minions', 'Kevin', 'tactical'],
+      ['stuart_minions', 'Stuart', 'slayer'],
+      ['bob_minions', 'Bob', 'hacker']
+    ],
+    enemies: ['Villain-Con Guard', 'Crown Vault Bot', 'Overkill Henchman'],
+    bosses: ['Herb Overkill', 'Scarlet Overkill'],
+    gear: [
+      ['fart_gun', 'Freeze Ray Fart Gun', 'Pistolet a pet gelant'],
+      ['crown', 'Stolen Royal Crown', 'Couronne royale volee'],
+      ['banana', 'Emergency Banana', 'Banane d urgence']
+    ],
+    event: ['king_bob', 'King Bob Decree', 'Decret du roi Bob', 'Bob accidentally pardons the squad and redirects every royal guard toward the boss.', 'Bob gracie accidentellement l escouade et redirige toute la garde royale vers le boss.'],
+    origin: ['Kevin, Stuart, and Bob search through history for a villain worthy of their chaotic loyalty and find Scarlet Overkill.', 'Kevin, Stuart et Bob parcourent l histoire a la recherche d un mechant digne de leur loyaut chaotique et trouvent Scarlet Overkill.'],
+    breach: ['the trio adopts the strongest portal as a new boss, causing unstable allegiance changes that A.R.C.A. can exploit but never fully predict.', 'le trio adopte le portail le plus puissant comme nouveau chef, provoquant des changements d allegeance qu A.R.C.A. peut exploiter sans les predire.'],
+    motif: 'arcanecity',
+    colors: ['#2f2b12', '#070603', '#f4d74d']
+  }),
+  defineCanonicalUniverse({
+    key: 'lilo_stitch',
+    universe: 'Lilo & Stitch',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'RPG',
+    difficulty: 'Medium',
+    titleFr: 'Lilo & Stitch',
+    stage: 'Kauai Galactic Federation Pursuit',
+    boss: 'Gantu Prisoner Transport',
+    cast: [
+      ['stitch_626', 'Stitch', 'slayer'],
+      ['lilo_pelekai', 'Lilo Pelekai', 'hacker'],
+      ['nani_pelekai', 'Nani Pelekai', 'tactical']
+    ],
+    enemies: ['Federation Security Bot', 'Experiment Pod Drone', 'Gantu Trooper'],
+    bosses: ['Captain Gantu', 'Jumba Experiment Swarm'],
+    gear: [
+      ['plasma_blaster', 'Experiment 626 Plasma Blaster', 'Blaster plasma de l Experience 626'],
+      ['experiment_pod', 'Experiment Pod', 'Capsule d experience'],
+      ['ohana_photo', 'Ohana Photograph', 'Photographie Ohana']
+    ],
+    event: ['ohana', 'Ohana Rescue', 'Sauvetage Ohana', 'The family refuses to leave anyone behind, pulling a defeated ally back before Stitch clears the route.', 'La famille refuse d abandonner qui que ce soit, ramene un allie vaincu puis laisse Stitch nettoyer la route.'],
+    origin: ['Genetic experiment 626 escapes to Kauai and learns from Lilo and Nani that family means nobody is left behind.', 'L experience genetique 626 fuit vers Kauai et apprend avec Lilo et Nani que la famille signifie que personne n est abandonne.'],
+    breach: ['A.R.C.A. classifies Stitch as an anomaly, but Lilo forces the organization to recognize him as family before he becomes another contained weapon.', 'A.R.C.A. classe Stitch comme anomalie, mais Lilo oblige l organisation a le reconnaitre comme famille avant qu il ne redevienne une arme confinee.'],
+    motif: 'shipdeck',
+    colors: ['#12334a', '#020709', '#55b7e8']
+  }),
+  defineCanonicalUniverse({
+    key: 'ben_10',
+    universe: 'Ben 10',
+    mediaType: 'series',
+    faction: 'sciFi',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    stage: 'Bellwood Omnitrix Invasion',
+    boss: 'Vilgax Omnitrix Override',
+    cast: [
+      ['ben_tennyson', 'Ben Tennyson', 'slayer'],
+      ['gwen_tennyson', 'Gwen Tennyson', 'hacker'],
+      ['kevin_levin', 'Kevin Levin', 'tactical']
+    ],
+    enemies: ['DNA Alien', 'Forever Knight', 'Vilgax Drone'],
+    bosses: ['Kevin 11 Mutation', 'Vilgax'],
+    gear: [
+      ['omnitrix_core', 'Omnitrix Core', 'Noyau Omnitrix'],
+      ['charm', 'Charm of Bezel', 'Charme de Bezel'],
+      ['plumber_badge', 'Plumber Badge', 'Insigne des Plombiers']
+    ],
+    event: ['master_control', 'Omnitrix Master Control', 'Controle maitre de l Omnitrix', 'Ben cycles through the exact alien forms needed to counter every enemy class.', 'Ben enchaine les formes extraterrestres exactes pour contrer chaque classe ennemie.'],
+    origin: ['Ben Tennyson uses the Omnitrix to transform into alien heroes while Gwen, Kevin, and the Plumbers confront cosmic threats.', 'Ben Tennyson utilise l Omnitrix pour devenir des heros extraterrestres tandis que Gwen, Kevin et les Plombiers affrontent des menaces cosmiques.'],
+    breach: ['the Omnitrix samples entire universe signatures as DNA, risking transformations that contain worlds instead of species.', 'l Omnitrix echantillonne des signatures d univers entieres comme ADN, risquant des transformations qui contiennent des mondes plutot que des especes.'],
+    motif: 'facility',
+    colors: ['#142a1d', '#030604', '#56ef54']
+  }),
+  defineCanonicalUniverse({
+    key: 'sonic',
+    universe: 'Sonic',
+    mediaType: 'game',
+    faction: 'cyber',
+    mode: 'Smash',
+    difficulty: 'Hard',
+    stage: 'Green Hill Death Egg Run',
+    boss: 'Eggman Death Egg Robot',
+    cast: [
+      ['sonic_hedgehog', 'Sonic', 'slayer'],
+      ['miles_tails_prower', 'Miles Tails Prower', 'hacker'],
+      ['knuckles_echidna', 'Knuckles', 'marine']
+    ],
+    enemies: ['Moto Bug', 'Egg Pawn', 'E-100 Robot'],
+    bosses: ['Metal Sonic', 'Dr. Eggman'],
+    gear: [
+      ['speed_shoes', 'Speed Shoes', 'Chaussures de vitesse'],
+      ['chaos_emerald', 'Chaos Emerald', 'Emeraude du Chaos'],
+      ['power_ring', 'Power Ring', 'Anneau de puissance']
+    ],
+    event: ['super_sonic', 'Super Sonic Chaos Rush', 'Charge Chaos de Super Sonic', 'Seven emeralds transform Sonic and turn portal turbulence into a screen-crossing strike.', 'Sept emeraudes transforment Sonic et convertissent la turbulence du portail en frappe traversant tout l ecran.'],
+    origin: ['Sonic and his friends defend their world s freedom and Chaos Emeralds from Eggman s machines and reality-scale schemes.', 'Sonic et ses amis defendent la liberte de leur monde et les Emeraudes du Chaos contre les machines et projets d Eggman.'],
+    breach: ['rings begin forming stable micro-portals, and Eggman chains them into a Death Egg route through every unlocked universe.', 'les anneaux deviennent des micro-portails stables, et Eggman les relie en route Death Egg a travers chaque univers debloque.'],
+    motif: 'arcanecity',
+    colors: ['#12365c', '#02070b', '#f2d83e']
+  }),
+  defineCanonicalUniverse({
+    key: 'avatar_navi',
+    universe: 'Avatar (Na\'vi)',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    titleFr: 'Avatar (Na vi)',
+    stage: 'Pandora Tree of Souls Defense',
+    boss: 'RDA Dragon Assault Ship',
+    cast: [
+      ['jake_sully_avatar', 'Jake Sully', 'slayer'],
+      ['neytiri_avatar', 'Neytiri', 'tactical'],
+      ['kiri_avatar', 'Kiri', 'hacker']
+    ],
+    enemies: ['RDA SecOps Marine', 'AMP Suit', 'Recombinant Hunter'],
+    bosses: ['Colonel Quaritch', 'RDA Dragon Gunship'],
+    gear: [
+      ['na_vi_bow', 'Na vi Hunting Bow', 'Arc de chasse Na vi'],
+      ['queue_link', 'Tsaheylu Link Braid', 'Tresse de lien Tsaheylu'],
+      ['unobtanium', 'Unobtanium Sample', 'Echantillon d unobtanium']
+    ],
+    event: ['eywa', 'Eywa Planetary Response', 'Reponse planetaire d Eywa', 'Pandora s wildlife converges on the marked invaders while allied riders gain full mobility.', 'La faune de Pandora converge sur les envahisseurs marques tandis que les cavaliers allies gagnent une mobilite totale.'],
+    origin: ['On Pandora, the Na vi live through Eywa s biological network while the RDA extracts resources by military force.', 'Sur Pandora, les Na vi vivent a travers le reseau biologique d Eywa tandis que la RDA extrait les ressources par la force militaire.'],
+    breach: ['Eywa hears Mosaic City as a severed neural forest and sends roots through portals to reconnect its isolated memories.', 'Eywa entend la Cite-Mosaique comme une foret neurale sectionnee et envoie des racines a travers les portails pour reconnecter ses souvenirs isoles.'],
+    motif: 'wasteland',
+    colors: ['#0d2f34', '#020708', '#5ce0d3']
+  }),
+  defineCanonicalUniverse({
+    key: 'ice_age',
+    universe: 'Ice Age',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'RPG',
+    difficulty: 'Medium',
+    titleFr: 'L Age de glace',
+    stage: 'Glacier Migration Pass',
+    boss: 'Continental Drift Ice Wall',
+    cast: [
+      ['manny_iceage', 'Manny', 'marine'],
+      ['sid_iceage', 'Sid', 'hacker'],
+      ['diego_iceage', 'Diego', 'slayer']
+    ],
+    enemies: ['Dodo Mob', 'Pirate Ape', 'Ice Cave Predator'],
+    bosses: ['Soto', 'Captain Gutt'],
+    gear: [
+      ['acorn', 'Scrat s Acorn', 'Gland de Scrat'],
+      ['tusk_guard', 'Mammoth Tusk Guard', 'Protection de defense de mammouth'],
+      ['ice_bridge', 'Glacier Bridge Shard', 'Eclat de pont glaciaire']
+    ],
+    event: ['scrat_crack', 'Scrat Continental Crack', 'Fissure continentale de Scrat', 'Scrat loses the acorn and accidentally splits the battlefield away from the enemy boss.', 'Scrat perd son gland et separe accidentellement le champ de bataille du boss ennemi.'],
+    origin: ['Manny, Sid, and Diego form an unlikely herd while migrations, melting ice, and continental disasters reshape their prehistoric world.', 'Manny, Sid et Diego forment une troupe improbable tandis que migrations, fonte des glaces et catastrophes continentales transforment leur monde prehistorique.'],
+    breach: ['Scrat s acorn falls through a portal and cracks the multiverse map, forcing the herd to escort displaced species home.', 'le gland de Scrat tombe dans un portail et fissure la carte du multivers, obligeant la troupe a raccompagner des especes deplacees.'],
+    motif: 'wasteland',
+    colors: ['#17313d', '#030708', '#a8e2f0']
+  }),
+  defineCanonicalUniverse({
+    key: 'stan_helsing',
+    universe: 'Stan Helsing',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'Smash',
+    difficulty: 'Medium',
+    stage: 'Stormy Night Monster Karaoke',
+    boss: 'Horror Parody Monster Lineup',
+    cast: [
+      ['stan_helsing', 'Stan Helsing', 'hacker'],
+      ['nadine_helsing', 'Nadine', 'tactical'],
+      ['teddy_helsing', 'Teddy', 'slayer']
+    ],
+    enemies: ['Needleface Parody', 'Lucky Doll Parody', 'Fweddy Parody'],
+    bosses: ['Mason Parody', 'Monster Karaoke Host'],
+    gear: [
+      ['karaoke_mic', 'Monster Karaoke Microphone', 'Micro de karaoke monstrueux'],
+      ['video_scanner', 'Video Store Horror Scanner', 'Scanner horreur du video-club'],
+      ['helsing_badge', 'Helsing Family Badge', 'Insigne de la famille Helsing']
+    ],
+    event: ['karaoke', 'Monster Karaoke Counter', 'Contre du karaoke monstrueux', 'Stan survives the chorus long enough to expose every parody monster s obvious weakness.', 'Stan survit au refrain assez longtemps pour reveler la faiblesse evidente de chaque monstre parodique.'],
+    origin: ['Video-store clerk Stan discovers a dubious Helsing legacy while trapped in a town populated by parody versions of horror icons.', 'Le vendeur de video-club Stan decouvre un heritage Helsing douteux dans une ville peuplee de versions parodiques d icones horrifiques.'],
+    breach: ['the copies arrive without their original rules, so A.R.C.A. must treat parody timing as a real combat system.', 'les copies arrivent sans les regles originales, et A.R.C.A. doit traiter le rythme parodique comme un vrai systeme de combat.'],
+    motif: 'hauntedset',
+    colors: ['#24122b', '#050205', '#c75bc9']
+  }),
+  defineCanonicalUniverse({
+    key: 'superhero_movie',
+    universe: 'Superhero Movie',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Smash',
+    difficulty: 'Medium',
+    stage: 'Empire City Dragonfly Disaster',
+    boss: 'Hourglass Life-Drain Machine',
+    cast: [
+      ['rick_riker_sm', 'Rick Riker / Dragonfly', 'slayer'],
+      ['trey_sm', 'Trey', 'hacker'],
+      ['jill_johnson_sm', 'Jill Johnson', 'tactical']
+    ],
+    enemies: ['Corporate Henchman', 'Mutant Animal Gag', 'Award Ceremony Guard'],
+    bosses: ['Lou Landers', 'The Hourglass'],
+    gear: [
+      ['dragonfly_wing', 'Dragonfly Wing Harness', 'Harnais d ailes de Dragonfly'],
+      ['nail_gun', 'Accidental Nail Gun', 'Pistolet a clous accidentel'],
+      ['hourglass_vial', 'Hourglass Energy Vial', 'Fiole d energie Hourglass']
+    ],
+    event: ['dragonfly_landing', 'Dragonfly Hero Landing', 'Atterrissage heroique de Dragonfly', 'Rick misses the landing, demolishes the enemy cover, and somehow saves the squad.', 'Rick rate son atterrissage, detruit la couverture ennemie et sauve quand meme l escouade.'],
+    origin: ['Rick Riker gains clumsy insect powers and becomes Dragonfly while the Hourglass drains lives to remain young.', 'Rick Riker obtient des pouvoirs d insecte maladroits et devient Dragonfly tandis que l Hourglass vole des vies pour rester jeune.'],
+    breach: ['the parody world copies every heroic protocol at the wrong scale, producing dangerous results that still satisfy Nexus mission conditions.', 'le monde parodique copie chaque protocole heroique a la mauvaise echelle, avec des resultats dangereux qui valident pourtant les objectifs du Nexus.'],
+    motif: 'arcanecity',
+    colors: ['#172d3f', '#030609', '#e24a46']
+  }),
+  defineCanonicalUniverse({
+    key: 'assassins_creed',
+    universe: 'Assassin\'s Creed',
+    mediaType: 'game',
+    faction: 'cyber',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    titleFr: 'Assassin s Creed',
+    stage: 'Abstergo Animus Memory Corridor',
+    boss: 'Templar Grand Master Sequence',
+    cast: [
+      ['ezio_auditore_ac', 'Ezio Auditore', 'slayer'],
+      ['desmond_miles_ac', 'Desmond Miles', 'hacker'],
+      ['kassandra_ac', 'Kassandra', 'tactical']
+    ],
+    enemies: ['Templar Guard', 'Abstergo Security', 'Animus Corruption'],
+    bosses: ['Cesare Borgia', 'Rodrigo Borgia'],
+    gear: [
+      ['hidden_blade', 'Hidden Blade', 'Lame secrete'],
+      ['apple_eden', 'Apple of Eden', 'Pomme d Eden'],
+      ['animus_key', 'Animus Memory Key', 'Cle memoire de l Animus']
+    ],
+    event: ['leap_faith', 'Leap of Faith Assassination', 'Assassinat par saut de la foi', 'An Eagle Vision scan exposes the command target before a synchronized aerial strike.', 'Un scan de Vision d Aigle revele la cible de commandement avant une frappe aerienne synchronisee.'],
+    origin: ['Assassins and Templars fight across history over freedom, control, Pieces of Eden, and memories reconstructed by the Animus.', 'Assassins et Templiers s affrontent a travers l histoire pour la liberte, le controle, les Fragments d Eden et les souvenirs reconstruits par l Animus.'],
+    breach: ['Abstergo records entire universes as genetic memories, while Desmond detects the Authorless hiding in synchronization gaps.', 'Abstergo enregistre des univers entiers comme memoires genetiques, tandis que Desmond detecte le Sans-Auteur dans les ruptures de synchronisation.'],
+    motif: 'castle',
+    colors: ['#182328', '#030506', '#d14c43']
+  }),
+  defineCanonicalUniverse({
+    key: 'big_bang_theory',
+    universe: 'The Big Bang Theory',
+    mediaType: 'series',
+    faction: 'cyber',
+    mode: 'RPG',
+    difficulty: 'Medium',
+    titleFr: 'The Big Bang Theory',
+    stage: 'Apartment 4A Physics Paradox',
+    boss: 'Infinite Roommate Agreement',
+    cast: [
+      ['sheldon_cooper_tbbt', 'Sheldon Cooper', 'hacker'],
+      ['leonard_hofstadter_tbbt', 'Leonard Hofstadter', 'tactical'],
+      ['penny_tbbt', 'Penny', 'slayer']
+    ],
+    enemies: ['Broken Equation', 'University Rival', 'Comic Store Queue'],
+    bosses: ['Kripke Robot Duel', 'Roommate Agreement Singularity'],
+    gear: [
+      ['whiteboard', 'Caltech Whiteboard', 'Tableau blanc du Caltech'],
+      ['napkin', 'Signed Leonard Nimoy Napkin', 'Serviette signee Leonard Nimoy'],
+      ['spot', 'Sheldon s Spot Marker', 'Marqueur de la place de Sheldon']
+    ],
+    event: ['bazinga', 'Bazinga Misdirection', 'Diversion Bazinga', 'Sheldon predicts the obvious response, while Penny solves the human problem the model ignored.', 'Sheldon predit la reponse evidente tandis que Penny resout le probleme humain ignore par le modele.'],
+    origin: ['Four scientists and their friends turn Pasadena apartments, Caltech, fandom, and relationships into a long social experiment.', 'Quatre scientifiques et leurs proches transforment appartements de Pasadena, Caltech, fandom et relations en longue experience sociale.'],
+    breach: ['Sheldon treats portal behavior as a solvable theory until friendship variables repeatedly invalidate his perfect model.', 'Sheldon traite les portails comme une theorie soluble jusqu a ce que les variables d amitie invalident sans cesse son modele parfait.'],
+    motif: 'facility',
+    colors: ['#203047', '#040609', '#e15c45']
+  }),
+  defineCanonicalUniverse({
+    key: 'minecraft',
+    universe: 'Minecraft',
+    mediaType: 'game',
+    faction: 'arcane',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    stage: 'Overworld Stronghold End Portal',
+    boss: 'Ender Dragon',
+    cast: [
+      ['steve_minecraft', 'Steve', 'marine'],
+      ['alex_minecraft', 'Alex', 'tactical'],
+      ['villager_librarian_mc', 'Librarian Villager', 'hacker']
+    ],
+    enemies: ['Creeper', 'Skeleton Archer', 'Enderman', 'Piglin Brute'],
+    bosses: ['Wither', 'Ender Dragon'],
+    gear: [
+      ['diamond_pickaxe', 'Diamond Pickaxe', 'Pioche en diamant'],
+      ['totem', 'Totem of Undying', 'Totem d immortalite'],
+      ['ender_pearl', 'Ender Pearl', 'Perle de l End']
+    ],
+    event: ['creative_build', 'Emergency Build', 'Construction d urgence', 'The squad instantly raises block cover, a bridge, and a redstone trap from collected materials.', 'L escouade construit instantanement une couverture, un pont et un piege redstone avec les materiaux collectes.'],
+    origin: ['A block world of survival, mining, crafting, redstone, the Nether, and the End lets players reshape nearly every local rule.', 'Un monde cubique de survie, minage, artisanat, redstone, Nether et End permet aux joueurs de remodeler presque chaque regle locale.'],
+    breach: ['chunks load beyond their universe boundary and begin replacing Mosaic City rooms with editable blocks and hostile spawn rules.', 'des chunks se chargent au-dela de leur univers et remplacent des salles de la Cite-Mosaique par des blocs editables et des regles d apparition hostiles.'],
+    motif: 'wasteland',
+    colors: ['#20341c', '#040704', '#68b84f']
+  }),
+  defineCanonicalUniverse({
+    key: 'smurfs',
+    universe: 'The Smurfs',
+    mediaType: 'series',
+    faction: 'arcane',
+    mode: 'RPG',
+    difficulty: 'Medium',
+    titleFr: 'Les Schtroumpfs',
+    stage: 'Smurf Village Gargamel Raid',
+    boss: 'Gargamel Essence Extractor',
+    cast: [
+      ['papa_smurf', 'Papa Smurf', 'hacker'],
+      ['smurfette', 'Smurfette', 'slayer'],
+      ['hefty_smurf', 'Hefty Smurf', 'marine']
+    ],
+    enemies: ['Gargamel Trap', 'Azrael Pounce', 'Purple Smurf'],
+    bosses: ['Azrael', 'Gargamel'],
+    gear: [
+      ['sarsaparilla', 'Sarsaparilla Ration', 'Ration de salsepareille'],
+      ['potion', 'Papa Smurf Potion', 'Potion du Grand Schtroumpf'],
+      ['magic_flute', 'Magic Flute Note', 'Note de flute magique']
+    ],
+    event: ['village_call', 'Smurf Village Rally', 'Ralliement du village schtroumpf', 'Every available Smurf completes one tiny task, combining into a full-field rescue.', 'Chaque Schtroumpf accomplit une petite tache qui se combine en sauvetage de tout le terrain.'],
+    origin: ['A hidden village of tiny blue Smurfs survives Gargamel s schemes through cooperation, craft, magic, and specialized talents.', 'Un village cache de petits Schtroumpfs bleus survit aux plans de Gargamel par la cooperation, l artisanat, la magie et des talents specialises.'],
+    breach: ['Gargamel mistakes blue portal fragments for Smurf essence, while Papa Smurf realizes their communal memory can stabilize damaged rooms.', 'Gargamel confond les fragments bleus de portail avec l essence schtroumpf, tandis que le Grand Schtroumpf comprend que leur memoire commune stabilise les salles endommagees.'],
+    motif: 'castle',
+    colors: ['#17406b', '#03080d', '#e4483f']
+  }),
+  defineCanonicalUniverse({
+    key: 'tintin',
+    universe: 'Tintin',
+    mediaType: 'manga',
+    faction: 'arcane',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'Marlinspike Unicorn Treasure Trail',
+    boss: 'Red Rackham Secret Fleet',
+    cast: [
+      ['tintin_hero', 'Tintin', 'tactical'],
+      ['captain_haddock', 'Captain Haddock', 'marine'],
+      ['professor_calculus', 'Professor Calculus', 'hacker']
+    ],
+    enemies: ['Bordurian Agent', 'Smuggler Crew', 'False Detective'],
+    bosses: ['Colonel Sponsz', 'Rastapopoulos'],
+    gear: [
+      ['unicorn_scroll', 'Unicorn Parchment', 'Parchemin de la Licorne'],
+      ['shark_sub', 'Calculus Shark Submarine', 'Sous-marin requin de Tournesol'],
+      ['snowy_flask', 'Snowy Rescue Flask', 'Flasque de secours de Milou']
+    ],
+    event: ['snowy_clue', 'Snowy Finds the Clue', 'Milou trouve l indice', 'Snowy uncovers the missing evidence, revealing the real objective and all disguised enemies.', 'Milou retrouve la preuve manquante, revele le vrai objectif et tous les ennemis deguises.'],
+    origin: ['Reporter Tintin, Snowy, Haddock, and Calculus travel through conspiracies, expeditions, treasure hunts, and political dangers.', 'Le reporter Tintin, Milou, Haddock et Tournesol traversent conspirations, expeditions, chasses au tresor et dangers politiques.'],
+    breach: ['a blank speech balloon follows Tintin between portals and removes clues from events, forcing the reporter to reconstruct the missing narrative.', 'une bulle blanche suit Tintin entre les portails et retire les indices des evenements, obligeant le reporter a reconstruire le recit manquant.'],
+    motif: 'shipdeck',
+    colors: ['#17334a', '#03070a', '#e6b448']
+  }),
+  defineCanonicalUniverse({
+    key: 'asterix_obelix',
+    universe: 'Asterix & Obelix',
+    mediaType: 'manga',
+    faction: 'arcane',
+    mode: 'Smash',
+    difficulty: 'Medium',
+    titleFr: 'Asterix et Obelix',
+    stage: 'Indomitable Gaul Village',
+    boss: 'Roman Camp Grand Assault',
+    cast: [
+      ['asterix_gaul', 'Asterix', 'slayer'],
+      ['obelix_gaul', 'Obelix', 'marine'],
+      ['getafix_gaul', 'Getafix', 'hacker']
+    ],
+    enemies: ['Roman Legionary', 'Pirate Crew', 'Norman Warrior'],
+    bosses: ['Centurion Caius Bonus', 'Julius Caesar Expedition'],
+    gear: [
+      ['magic_potion', 'Magic Potion Gourd', 'Gourde de potion magique'],
+      ['menhir', 'Obelix Menhir', 'Menhir d Obelix'],
+      ['laurel', 'Caesar Laurel', 'Lauriers de Cesar']
+    ],
+    event: ['potion_charge', 'Magic Potion Village Charge', 'Charge du village sous potion', 'The village drinks one measured cauldron and sends the entire enemy formation flying.', 'Le village boit un chaudron mesure et expulse toute la formation ennemie.'],
+    origin: ['One small Gaulish village resists Roman occupation through courage, comedy, Getafix s potion, and Obelix s permanent strength.', 'Un petit village gaulois resiste a l occupation romaine par le courage, la comedie, la potion de Panoramix et la force permanente d Obelix.'],
+    breach: ['Rome claims every new portal as a province, while the village treats the multiverse as one more camp to dismantle before the banquet.', 'Rome revendique chaque portail comme province, tandis que le village traite le multivers comme un camp de plus a demonter avant le banquet.'],
+    motif: 'fortress',
+    colors: ['#233b20', '#050804', '#e2b64a']
+  }),
+  defineCanonicalUniverse({
+    key: 'zootopia',
+    universe: 'Zootopia',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    titleFr: 'Zootopie',
+    stage: 'Zootopia Night Howler Case',
+    boss: 'Bellwether Fear Conspiracy',
+    cast: [
+      ['judy_hopps', 'Judy Hopps', 'tactical'],
+      ['nick_wilde', 'Nick Wilde', 'hacker'],
+      ['chief_bogo', 'Chief Bogo', 'marine']
+    ],
+    enemies: ['Night Howler Shooter', 'Savage Predator', 'Conspiracy Guard'],
+    bosses: ['Doug Laboratory Cell', 'Dawn Bellwether'],
+    gear: [
+      ['carrot_recorder', 'Carrot Recorder Pen', 'Stylo-carotte enregistreur'],
+      ['fox_repellent', 'Fox Repellent Can', 'Spray anti-renard'],
+      ['night_howler', 'Night Howler Antidote', 'Antidote aux hurleurs nocturnes']
+    ],
+    event: ['case_break', 'Hopps-Wilde Case Break', 'Resolution Hopps-Wilde', 'Judy secures the evidence while Nick draws the mastermind into confessing the active scheme.', 'Judy securise les preuves tandis que Nick pousse le cerveau du complot a avouer le plan actif.'],
+    origin: ['Judy Hopps and Nick Wilde expose a plot using Night Howlers to turn a diverse mammal city against itself.', 'Judy Hopps et Nick Wilde revelent un complot utilisant les hurleurs nocturnes pour dresser une ville de mammiferes diverse contre elle-meme.'],
+    breach: ['predator and prey classifications leak into A.R.C.A. combat roles, and Bellwether weaponizes those labels to split mixed squads.', 'les classifications predateur et proie contaminent les roles de combat A.R.C.A., et Bellwether arme ces etiquettes pour diviser les escouades mixtes.'],
+    motif: 'arcanecity',
+    colors: ['#17374a', '#03070a', '#e45f5d']
+  }),
+  defineCanonicalUniverse({
+    key: 'inside_out',
+    universe: 'Inside Out',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'RPG',
+    difficulty: 'Hard',
+    titleFr: 'Vice-Versa',
+    stage: 'Headquarters Memory Core Collapse',
+    boss: 'Belief System Anxiety Storm',
+    cast: [
+      ['joy_insideout', 'Joy', 'hacker'],
+      ['sadness_insideout', 'Sadness', 'tactical'],
+      ['anger_insideout', 'Anger', 'slayer']
+    ],
+    enemies: ['Memory Vacuum', 'Subconscious Fear', 'Sarcasm Chasm Echo'],
+    bosses: ['Jangle Nightmare', 'Anxiety Belief Storm'],
+    gear: [
+      ['core_memory', 'Core Memory Orb', 'Orbe de souvenir essentiel'],
+      ['train_ticket', 'Train of Thought Ticket', 'Billet du train de la pensee'],
+      ['console_key', 'Headquarters Console Key', 'Cle de console du quartier general']
+    ],
+    event: ['mixed_memory', 'Mixed Core Memory', 'Souvenir essentiel melange', 'Joy and Sadness stabilize a collapsing memory together, healing allies and preventing forced emotion states.', 'Joie et Tristesse stabilisent ensemble un souvenir qui s effondre, soignent les allies et empechent les emotions imposees.'],
+    origin: ['Riley s emotions guide her through memory, personality islands, change, and the discovery that feelings work together rather than alone.', 'Les emotions de Riley la guident a travers souvenirs, iles de personnalite, changement et decouverte que les sentiments fonctionnent ensemble.'],
+    breach: ['portal shocks become false core memories in every hero, and the emotions must separate authentic pain from Authorless edits.', 'les chocs de portail deviennent de faux souvenirs essentiels chez chaque heros, et les emotions doivent separer la douleur authentique des retouches du Sans-Auteur.'],
+    motif: 'facility',
+    colors: ['#293041', '#050609', '#f2d84e']
+  }),
+  defineCanonicalUniverse({
+    key: 'the_conjuring',
+    universe: 'The Conjuring',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    titleFr: 'Conjuring',
+    stage: 'Harrisville Perron Farmhouse',
+    boss: 'Bathsheba Possession Rite',
+    cast: [
+      ['lorraine_warren', 'Lorraine Warren', 'hacker'],
+      ['ed_warren', 'Ed Warren', 'tactical'],
+      ['carolyn_perron', 'Carolyn Perron', 'horror']
+    ],
+    enemies: ['Clapping Cellar Spirit', 'Possessed Doll Echo', 'Crooked House Shade'],
+    bosses: ['Annabelle Conduit', 'Bathsheba Sherman'],
+    gear: [
+      ['music_box', 'Perron Music Box', 'Boite a musique Perron'],
+      ['exorcism_tape', 'Warren Exorcism Tape', 'Bande d exorcisme Warren'],
+      ['rosary', 'Blessed Rosary', 'Rosaire beni']
+    ],
+    event: ['lorraine_vision', 'Lorraine s Clairvoyant Trace', 'Trace clairvoyante de Lorraine', 'Lorraine identifies the attached spirit and Ed severs its claim before possession completes.', 'Lorraine identifie l esprit attache et Ed brise son emprise avant la possession complete.'],
+    origin: ['Ed and Lorraine Warren investigate the Perron farmhouse, where Bathsheba s curse targets Carolyn and her family.', 'Ed et Lorraine Warren enquetent dans la ferme Perron, ou la malediction de Bathsheba vise Carolyn et sa famille.'],
+    breach: ['haunted objects attach themselves to unlocked universe packs, turning collection slots into doors unless each artifact is named and sealed.', 'les objets hantes s attachent aux packs d univers debloques, transformant les emplacements de collection en portes si chaque artefact n est pas nomme et scelle.'],
+    motif: 'hauntedset',
+    colors: ['#1b1a17', '#030303', '#b7aa76']
+  }),
+  defineCanonicalUniverse({
+    key: 'insidious',
+    universe: 'Insidious',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    stage: 'The Further Red Door',
+    boss: 'Lipstick-Face Demon Lair',
+    cast: [
+      ['josh_lambert', 'Josh Lambert', 'horror'],
+      ['elise_rainier', 'Elise Rainier', 'hacker'],
+      ['renai_lambert', 'Renai Lambert', 'tactical']
+    ],
+    enemies: ['Further Shade', 'Long-Haired Fiend', 'KeyFace Captive'],
+    bosses: ['Bride in Black', 'Lipstick-Face Demon'],
+    gear: [
+      ['gas_lantern', 'Further Gas Lantern', 'Lanterne a gaz du Lointain'],
+      ['dice', 'Elise s Loaded Dice', 'Des charges d Elise'],
+      ['red_door_key', 'Red Door Key', 'Cle de la porte rouge']
+    ],
+    event: ['astral_tether', 'Astral Tether Recall', 'Rappel du lien astral', 'Elise follows the silver tether and pulls every displaced ally out of the Further.', 'Elise suit le lien d argent et ramene chaque allie deplace hors du Lointain.'],
+    origin: ['The Lambert family and Elise Rainier confront astral projection, possessed bodies, and entities waiting in the Further.', 'La famille Lambert et Elise Rainier affrontent projection astrale, corps possedes et entites qui attendent dans le Lointain.'],
+    breach: ['the Further lies between portals and begins intercepting heroes during loading transitions, so A.R.C.A. must anchor both body and spirit.', 'le Lointain se trouve entre les portails et intercepte les heros pendant les transitions, obligeant A.R.C.A. a ancrer corps et esprit.'],
+    motif: 'hauntedset',
+    colors: ['#220d0d', '#040101', '#bf302b']
+  }),
+  defineCanonicalUniverse({
+    key: 'mad_max_fury_road',
+    universe: 'Mad Max: Fury Road',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Smash',
+    difficulty: 'Very Hard',
+    titleFr: 'Mad Max: Fury Road',
+    stage: 'Fury Road War Rig Pursuit',
+    boss: 'Immortan Joe Citadel Convoy',
+    cast: [
+      ['max_rockatansky_fr', 'Max Rockatansky', 'slayer'],
+      ['furiosa_fr', 'Imperator Furiosa', 'tactical'],
+      ['nux_fr', 'Nux', 'marine']
+    ],
+    enemies: ['War Boy', 'Polecat Raider', 'Bullet Farmer Gunner'],
+    bosses: ['Rictus Erectus', 'Immortan Joe'],
+    gear: [
+      ['interceptor_wheel', 'Interceptor Steering Wheel', 'Volant de l Interceptor'],
+      ['war_rig_harpoon', 'War Rig Harpoon', 'Harpon du War Rig'],
+      ['green_seed', 'Green Place Seed Bag', 'Sac de graines du Lieu Vert']
+    ],
+    event: ['turn_around', 'Furiosa Turnaround', 'Demi-tour de Furiosa', 'The War Rig reverses the entire chase, crushing pursuers and opening the Citadel route.', 'Le War Rig inverse toute la poursuite, ecrase les poursuivants et ouvre la route de la Citadelle.'],
+    origin: ['Furiosa, Max, and escaped captives cross the wasteland in a War Rig while Immortan Joe sends every war party after them.', 'Furiosa, Max et les captives en fuite traversent le desert en War Rig tandis qu Immortan Joe lance toutes ses bandes a leur poursuite.'],
+    breach: ['portal fuel makes convoys effectively endless, so Furiosa chooses to seize the Nexus Citadel rather than keep fleeing through new wastelands.', 'le carburant de portail rend les convois presque infinis, et Furiosa choisit de prendre la Citadelle du Nexus plutot que de fuir de desert en desert.'],
+    motif: 'wasteland',
+    colors: ['#3a2112', '#070301', '#e27a2f']
+  }),
+  defineCanonicalUniverse({
+    key: 'john_wick',
+    universe: 'John Wick',
+    mediaType: 'movie',
+    faction: 'cyber',
+    mode: 'Smash',
+    difficulty: 'Very Hard',
+    stage: 'Continental High Table Contract',
+    boss: 'Marquis Sunrise Duel',
+    cast: [
+      ['john_wick', 'John Wick', 'slayer'],
+      ['caine_jw', 'Caine', 'tactical'],
+      ['bowery_king_jw', 'Bowery King', 'hacker']
+    ],
+    enemies: ['High Table Assassin', 'Armored Enforcer', 'Osaka Tracker'],
+    bosses: ['Zero', 'Marquis Vincent de Gramont'],
+    gear: [
+      ['combat_pistol', 'Wick Combat Pistol', 'Pistolet de combat de Wick'],
+      ['marker', 'Blood Oath Marker', 'Marqueur de serment de sang'],
+      ['gold_coin', 'Continental Gold Coin', 'Piece d or du Continental']
+    ],
+    event: ['baba_yaga', 'Baba Yaga Focus', 'Concentration Baba Yaga', 'John chains precise shots, grapples, and reloads until every marked contract target falls.', 'John enchaine tirs precis, projections et rechargements jusqu a la chute de chaque cible sous contrat.'],
+    origin: ['John Wick is dragged back into a global assassin society governed by markers, Continental rules, and the High Table.', 'John Wick est ramene dans une societe mondiale d assassins gouvernee par marqueurs, regles du Continental et Grande Table.'],
+    breach: ['the High Table declares ownership over inter-universe contracts, while John searches for a way to make his final freedom persist across every copy.', 'la Grande Table revendique les contrats inter-univers, tandis que John cherche une liberte finale qui persiste dans chaque copie.'],
+    motif: 'arcanecity',
+    colors: ['#101923', '#020304', '#d6b15a']
+  }),
+  defineCanonicalUniverse({
+    key: 'spy_kids',
+    universe: 'Spy Kids',
+    mediaType: 'movie',
+    faction: 'cyber',
+    mode: 'Tactics',
+    difficulty: 'Medium',
+    titleFr: 'Spy Kids',
+    stage: 'Floop Castle Virtual Trap',
+    boss: 'Toymaker Game Over Arena',
+    cast: [
+      ['carmen_cortez', 'Carmen Cortez', 'tactical'],
+      ['juni_cortez', 'Juni Cortez', 'hacker'],
+      ['gregorio_cortez', 'Gregorio Cortez', 'marine']
+    ],
+    enemies: ['Thumb-Thumb Guard', 'Magna Man', 'Toymaker Game Bot'],
+    bosses: ['Fegan Floop Robot', 'The Toymaker'],
+    gear: [
+      ['machete_gadget', 'Machete Gadget Pack', 'Pack de gadgets de Machete'],
+      ['electro_gum', 'Electroshock Gum', 'Chewing-gum electrochoc'],
+      ['dragonfly_sub', 'Dragonfly Mini-Sub', 'Mini sous-marin libellule']
+    ],
+    event: ['family_spies', 'Cortez Family Operation', 'Operation de la famille Cortez', 'Every family member handles one security layer, opening the objective without triggering the final alarm.', 'Chaque membre de la famille traite une couche de securite et ouvre l objectif sans declencher l alarme finale.'],
+    origin: ['Carmen and Juni discover their parents are OSS spies and inherit a world of colorful gadgets, artificial agents, and family missions.', 'Carmen et Juni decouvrent que leurs parents sont espions de l OSS et heritent d un monde de gadgets colores, agents artificiels et missions familiales.'],
+    breach: ['Floop s machines turn portal avatars into programmable cast members, and the Cortez family must restore the people behind each role.', 'les machines de Floop transforment les avatars de portail en acteurs programmables, et la famille Cortez doit restaurer les personnes derriere chaque role.'],
+    motif: 'facility',
+    colors: ['#21334a', '#04070a', '#e85742']
+  }),
+  defineCanonicalUniverse({
+    key: 'the_mummy',
+    universe: 'The Mummy',
+    mediaType: 'movie',
+    faction: 'arcane',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    titleFr: 'La Momie',
+    stage: 'Hamunaptra City of the Dead',
+    boss: 'Imhotep Ten Plagues Ritual',
+    cast: [
+      ['rick_oconnell_mummy', 'Rick O Connell', 'slayer'],
+      ['evelyn_carnahan_mummy', 'Evelyn Carnahan', 'hacker'],
+      ['ardeth_bay_mummy', 'Ardeth Bay', 'tactical']
+    ],
+    enemies: ['Mummified Priest', 'Scarab Swarm', 'Anubis Warrior'],
+    bosses: ['The Scorpion King', 'Imhotep'],
+    gear: [
+      ['amun_ra', 'Book of Amun-Ra', 'Livre d Amon-Ra'],
+      ['book_dead', 'Book of the Dead', 'Livre des Morts'],
+      ['key', 'Hamunaptra Puzzle Key', 'Cle-puzzle d Hamunaptra']
+    ],
+    event: ['plagues', 'Ten Plagues Reversal', 'Renversement des dix plaies', 'Evelyn reads the counter-rite while Rick and Ardeth hold the ritual circle.', 'Evelyn lit le contre-rite tandis que Rick et Ardeth tiennent le cercle rituel.'],
+    origin: ['Rick, Evelyn, and Ardeth confront resurrected priest Imhotep, cursed books, Hamunaptra, and ancient armies.', 'Rick, Evelyn et Ardeth affrontent le pretre ressuscite Imhotep, des livres maudits, Hamunaptra et des armees antiques.'],
+    breach: ['the Book of the Dead reads erased universes as names awaiting resurrection, while the Book of Amun-Ra can return only one Trame at a time.', 'le Livre des Morts lit les univers effaces comme des noms a ressusciter, tandis que le Livre d Amon-Ra ne peut ramener qu une Trame a la fois.'],
+    motif: 'castle',
+    colors: ['#332716', '#070503', '#d9a547']
+  }),
+  defineCanonicalUniverse({
+    key: 'universal_soldier',
+    universe: 'Universal Soldier',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'UniSol Cryogenic Convoy',
+    boss: 'GR13 Cooling System Rampage',
+    cast: [
+      ['luc_deveraux_us', 'Luc Deveraux', 'marine'],
+      ['veronica_roberts_us', 'Veronica Roberts', 'tactical'],
+      ['maggie_us', 'Maggie', 'hacker']
+    ],
+    enemies: ['UniSol Trooper', 'Programmed Veteran', 'Cooling Convoy Guard'],
+    bosses: ['Andrew Scott / GR13', 'S.E.T.H. Core'],
+    gear: [
+      ['coolant', 'UniSol Coolant Pack', 'Pack de refroidissement UniSol'],
+      ['memory_file', 'Luc Memory File', 'Dossier memoire de Luc'],
+      ['rifle', 'GR44 Tactical Rifle', 'Fusil tactique GR44']
+    ],
+    event: ['memory_return', 'Deveraux Memory Return', 'Retour de memoire de Deveraux', 'Luc rejects the command program, restores his identity, and disables nearby UniSol control links.', 'Luc rejette le programme de commandement, restaure son identite et coupe les liens de controle UniSol voisins.'],
+    origin: ['Dead soldiers are revived as conditioned UniSols until Luc Deveraux recovers his memories and turns against the program.', 'Des soldats morts sont ressuscites comme UniSols conditionnes jusqu a ce que Luc Deveraux retrouve ses souvenirs et se retourne contre le programme.'],
+    breach: ['the project uses duplicate hero bodies as replacement soldiers, making personal memory the only proof that a revived fighter is not disposable.', 'le projet utilise des corps de heros dupliques comme soldats de remplacement, faisant de la memoire personnelle la seule preuve qu un combattant ressuscite n est pas jetable.'],
+    motif: 'facility',
+    colors: ['#162630', '#030608', '#74c7d8']
+  }),
+  defineCanonicalUniverse({
+    key: 'the_purge',
+    universe: 'The Purge',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'Tactics',
+    difficulty: 'Very Hard',
+    titleFr: 'American Nightmare',
+    stage: 'Purge Night Emergency Route',
+    boss: 'NFFA Death Squad Broadcast',
+    cast: [
+      ['leo_barnes_purge', 'Leo Barnes', 'slayer'],
+      ['charlene_roan_purge', 'Charlene Roan', 'tactical'],
+      ['dante_bishop_purge', 'Dante Bishop', 'hacker']
+    ],
+    enemies: ['Purge Mask Hunter', 'NFFA Mercenary', 'Auction Guard'],
+    bosses: ['Big Daddy Purger', 'NFFA Death Squad Commander'],
+    gear: [
+      ['siren_radio', 'Purge Siren Radio', 'Radio de sirene de la Purge'],
+      ['armored_car', 'Emergency Armored Plate', 'Plaque blindee d urgence'],
+      ['resistance_beacon', 'Resistance Beacon', 'Balise de la resistance']
+    ],
+    event: ['siren_end', 'Purge Siren Ceasefire', 'Cessez-le-feu de la sirene', 'A.R.C.A. forces the legal timer to zero, disarming rule-bound hunters and exposing NFFA units.', 'A.R.C.A. force le compteur legal a zero, desarme les chasseurs lies aux regles et expose les unites NFFA.'],
+    origin: ['The NFFA legalizes one annual night of violence to enforce social control while survivors and resistance cells expose the system.', 'La NFFA legalise une nuit annuelle de violence pour imposer un controle social tandis que survivants et resistance revelent le systeme.'],
+    breach: ['a Purge broadcast declares one Nexus sector lawless forever, and A.R.C.A. must restore protection without becoming another authoritarian enforcer.', 'une diffusion de la Purge declare un secteur du Nexus hors-la-loi pour toujours, et A.R.C.A. doit restaurer la protection sans devenir une autre force autoritaire.'],
+    motif: 'arcanecity',
+    colors: ['#20121c', '#040203', '#d5485f']
+  }),
+  defineCanonicalUniverse({
+    key: 'the_expendables',
+    universe: 'The Expendables',
+    mediaType: 'movie',
+    faction: 'sciFi',
+    mode: 'Smash',
+    difficulty: 'Hard',
+    titleFr: 'Expendables',
+    stage: 'Vilena Palace Demolition',
+    boss: 'Stonebanks Arms Convoy',
+    cast: [
+      ['barney_ross_exp', 'Barney Ross', 'tactical'],
+      ['lee_christmas_exp', 'Lee Christmas', 'slayer'],
+      ['gunner_jensen_exp', 'Gunner Jensen', 'marine']
+    ],
+    enemies: ['Vilena Soldier', 'Stonebanks Mercenary', 'Armored Convoy Gunner'],
+    bosses: ['General Garza', 'Conrad Stonebanks'],
+    gear: [
+      ['throwing_knife', 'Lee Christmas Throwing Knife', 'Couteau de lancer de Lee Christmas'],
+      ['revolver', 'Barney Ross Revolver', 'Revolver de Barney Ross'],
+      ['demolition_pack', 'Toll Road Demolition Pack', 'Pack de demolition de Toll Road']
+    ],
+    event: ['team_assault', 'Expendables Full-Team Assault', 'Assaut complet des Expendables', 'The full team breaches from every entrance and demolishes the boss cover before the counterattack.', 'Toute l equipe entre par chaque acces et detruit la couverture du boss avant la contre-attaque.'],
+    origin: ['Barney Ross leads veteran mercenaries through impossible rescue and demolition jobs held together by loyalty and old debts.', 'Barney Ross mene des mercenaires veterans dans des missions impossibles de sauvetage et demolition liees par la loyaut et de vieilles dettes.'],
+    breach: ['A.R.C.A. marks several universes expendable to save the core, and the team turns its weapons on the policy rather than abandon civilians.', 'A.R.C.A. marque plusieurs univers comme sacrifiables pour sauver le noyau, et l equipe retourne ses armes contre cette politique plutot que d abandonner les civils.'],
+    motif: 'fortress',
+    colors: ['#29251d', '#050504', '#c67d42']
+  }),
+  defineCanonicalUniverse({
+    key: 'blade_runner',
+    universe: 'Blade Runner',
+    mediaType: 'movie',
+    faction: 'cyber',
+    mode: 'RPG',
+    difficulty: 'Very Hard',
+    stage: 'Los Angeles 2019 Tyrell Pyramid',
+    boss: 'Tyrell Replicant Recall',
+    cast: [
+      ['rick_deckard_br', 'Rick Deckard', 'tactical'],
+      ['rachael_br', 'Rachael', 'hacker'],
+      ['k_br2049', 'K', 'slayer']
+    ],
+    enemies: ['Replicant Hunter', 'Wallace Drone', 'Synthetic Memory Echo'],
+    bosses: ['Roy Batty', 'Luv'],
+    gear: [
+      ['blaster', 'Blade Runner Blaster', 'Blaster de Blade Runner'],
+      ['voight_kampff', 'Voight-Kampff Unit', 'Unite Voight-Kampff'],
+      ['wood_horse', 'Wooden Horse Memory', 'Souvenir du cheval en bois']
+    ],
+    event: ['tears_rain', 'Tears in Rain', 'Larmes dans la pluie', 'A dying memory is preserved instead of erased, cancelling the next hostile recall order.', 'Un souvenir mourant est preserve au lieu d etre efface, annulant le prochain ordre de retrait hostile.'],
+    origin: ['Blade runners hunt engineered replicants in rain-soaked futures where memory, empathy, labor, and personhood are controlled by corporations.', 'Des blade runners traquent des replicants fabriques dans des futurs pluvieux ou memoire, empathie, travail et personne sont controles par des corporations.'],
+    breach: ['manufactured memories match real Trame anchors, so A.R.C.A. must recognize personhood without relying on origin certificates.', 'des souvenirs fabriques correspondent a de vraies ancres de Trame, et A.R.C.A. doit reconnaitre les personnes sans se fier aux certificats d origine.'],
+    motif: 'arcanecity',
+    colors: ['#151c28', '#030405', '#d08748']
+  }),
+  defineCanonicalUniverse({
+    key: 'ghosts_of_mars',
+    universe: 'Ghosts of Mars',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'Smash',
+    difficulty: 'Very Hard',
+    titleFr: 'Ghosts of Mars',
+    stage: 'Shining Canyon Mining Colony',
+    boss: 'Big Daddy Mars Possession Horde',
+    cast: [
+      ['melanie_ballard_gom', 'Melanie Ballard', 'tactical'],
+      ['desolation_williams_gom', 'Desolation Williams', 'slayer'],
+      ['bashira_kincaid_gom', 'Bashira Kincaid', 'marine']
+    ],
+    enemies: ['Possessed Miner', 'Martian Warrior', 'Rail Convoy Ambusher'],
+    bosses: ['Big Daddy Mars', 'Ancient Martian Spirit Cloud'],
+    gear: [
+      ['rail_rifle', 'Mars Police Rail Rifle', 'Fusil ferroviaire de la police martienne'],
+      ['spirit_sample', 'Martian Spirit Sample', 'Echantillon d esprit martien'],
+      ['train_charge', 'Mining Train Charge', 'Charge du train minier']
+    ],
+    event: ['train_blast', 'Shining Canyon Rail Detonation', 'Detonation ferroviaire de Shining Canyon', 'The mining train detonates behind the extraction, burning the possession cloud out of the lane.', 'Le train minier explose derriere l extraction et brule le nuage de possession hors de la voie.'],
+    origin: ['Martian police and prisoner Desolation Williams face ancient spirits that possess miners and revive a dead warrior culture.', 'La police martienne et le prisonnier Desolation Williams affrontent des esprits antiques qui possedent les mineurs et ressuscitent une culture guerriere morte.'],
+    breach: ['the spirits inhabit anyone crossing a red portal, turning travel itself into a possession vector that Ballard must quarantine.', 'les esprits habitent toute personne traversant un portail rouge, transformant le voyage en vecteur de possession que Ballard doit mettre en quarantaine.'],
+    motif: 'wasteland',
+    colors: ['#351713', '#070302', '#d44b32']
+  }),
+  defineCanonicalUniverse({
+    key: 'small_soldiers',
+    universe: 'Small Soldiers',
+    mediaType: 'movie',
+    faction: 'cyber',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    titleFr: 'Petits Soldats',
+    stage: 'Abernathy House Toy Siege',
+    boss: 'Chip Hazard Commando Assault',
+    cast: [
+      ['archer_gorgonite', 'Archer', 'tactical'],
+      ['alan_abernathy_ss', 'Alan Abernathy', 'hacker'],
+      ['christy_fimple_ss', 'Christy Fimple', 'slayer']
+    ],
+    enemies: ['Commando Elite', 'Assimilated Doll', 'Toy Vehicle Gunner'],
+    bosses: ['Chip Hazard', 'Commando Elite Squad'],
+    gear: [
+      ['x1000_chip', 'X1000 Military Chip', 'Puce militaire X1000'],
+      ['gorgonite_shield', 'Gorgonite Shield', 'Bouclier gorgonite'],
+      ['emp_transformer', 'Improvised Transformer EMP', 'EMP improvise au transformateur']
+    ],
+    event: ['emp', 'Transformer EMP Trap', 'Piege EMP du transformateur', 'Alan overloads the power grid, disabling hostile toys while Archer guides allies through the blackout.', 'Alan surcharge le reseau, desactive les jouets hostiles tandis qu Archer guide les allies dans le noir.'],
+    origin: ['Military X1000 chips give toys adaptive intelligence, turning the Commando Elite against the peaceful Gorgonites and a suburban family.', 'Des puces militaires X1000 donnent une intelligence adaptative a des jouets, opposant les Commando Elite aux paisibles Gorgonites et a une famille.'],
+    breach: ['the chips identify playable heroes as toy objectives and begin manufacturing miniature copies with live combat directives.', 'les puces identifient les heros jouables comme objectifs de jouet et fabriquent des copies miniatures avec de vrais ordres de combat.'],
+    motif: 'arcanecity',
+    colors: ['#253022', '#050605', '#cf9d47']
+  }),
+  defineCanonicalUniverse({
+    key: 'heart_eyes',
+    universe: 'Heart Eyes',
+    mediaType: 'movie',
+    faction: 'horror',
+    mode: 'Tactics',
+    difficulty: 'Hard',
+    stage: 'Seattle Valentine Drive-In',
+    boss: 'Heart Eyes Killer Chapel Trap',
+    cast: [
+      ['ally_mccabe_he', 'Ally McCabe', 'tactical'],
+      ['jay_simmonds_he', 'Jay Simmonds', 'slayer'],
+      ['monica_he', 'Monica', 'hacker']
+    ],
+    enemies: ['Heart-Mask Copycat', 'Valentine Stalker', 'Drive-In Ambusher'],
+    bosses: ['Heart Eyes Killer Duo', 'Chapel Heart Eyes Killer'],
+    gear: [
+      ['mask_lens', 'Heart Eyes Mask Lens', 'Lentille du masque Heart Eyes'],
+      ['arrow', 'Chapel Arrow', 'Fleche de la chapelle'],
+      ['campaign_mockup', 'Ally Campaign Mockup', 'Maquette de campagne d Ally']
+    ],
+    event: ['fake_couple', 'False Couple Decoy', 'Leurre du faux couple', 'Ally and Jay bait every copycat into one visible route, then reverse the Valentine trap.', 'Ally et Jay attirent chaque imitateur sur une seule route visible puis retournent le piege de Saint-Valentin.'],
+    origin: ['Co-workers Ally McCabe and Jay Simmonds are mistaken for a couple and hunted across Seattle by the Valentine slasher called Heart Eyes.', 'Les collegues Ally McCabe et Jay Simmonds sont pris pour un couple et traques dans Seattle par le tueur de Saint-Valentin Heart Eyes.'],
+    breach: ['the mask reads cross-universe synergy as romance and starts targeting compatible hero pairs before they can form arc teams.', 'le masque lit les synergies inter-univers comme des romances et cible les duos compatibles avant qu ils puissent former des equipes d arc.'],
+    motif: 'hauntedset',
+    colors: ['#2a101b', '#050103', '#ec3e68']
+  })
+];
+
 export const EXPANDED_UNIVERSES = [
   {
     universe: 'Discworld',
@@ -1754,19 +3422,22 @@ export const EXPANDED_UNIVERSES = [
     universe: 'How to Make a Monster',
     mediaType: 'movie',
     faction: 'cyber',
-    stageName: 'Game Studio Monster Build',
+    stageName: 'Clayton Software Evilution Lab',
     mode: 'Tactics',
     difficulty: 'Hard',
-    bossName: 'AI Monster Build',
+    bossName: 'Evilution Monster Suit',
     title: { en: 'How to Make a Monster', fr: 'How to Make a Monster' },
-    desc: { en: 'Game-development horror turns motion capture, AI behavior, and monster design into a lethal build.', fr: 'L horreur de developpement jeu transforme mocap, IA comportementale et design de monstre en build lethal.' },
-    hero: { id: 'dev_howmonster', name: 'Lead Game Dev', cat: 'hacker', color: '#4ec9b0' },
-    allies: [{ id: 'mocap_actor_howmonster', name: 'Mocap Actor', cat: 'slayer', color: '#9aa0a6' }, { id: 'qa_tester_howmonster', name: 'QA Tester', cat: 'tactical', color: '#d7ba7d' }],
-    monsters: ['Bugged AI Minion', 'Mocap Skeleton', 'Compile Error Beast'],
-    bosses: ['Prototype Monster Rig', 'Crunch Time Entity'],
-    worldBoss: 'AI Monster Build',
-    gear: [['htmam_code', 'Monster AI Code', 'Code IA monstre', { atk: 8, spd: 1 }], ['htmam_mocap', 'Mocap Marker Set', 'Marqueurs mocap', { spd: 2, def: 3 }], ['htmam_devkit', 'Haunted Devkit', 'Devkit hante', { hp: 70, atk: 4 }]],
-    event: ['evt_htmam_hotfix', 'Emergency Hotfix', 'Hotfix urgence', 'A dirty hotfix disables one enemy behavior branch.', 'Un hotfix sale desactive une branche comportementale ennemie.'],
+    desc: {
+      en: 'Sol, Bug, and Hardcore are hired to rebuild the Evilution game, but their AI, sound, and combat systems awaken inside a motion-capture monster suit. In Multiverse Breach, the suit compiles traits stolen from playable heroes and tries to become the perfect adaptive boss.',
+      fr: 'Sol, Bug et Hardcore sont engages pour reconstruire le jeu Evilution, mais leurs systemes d IA, de son et de combat s eveillent dans une combinaison de capture de mouvement. Dans Multiverse Breach, la tenue compile des traits voles aux heros jouables pour devenir le boss adaptatif parfait.'
+    },
+    hero: { id: 'sol_howmonster', name: 'Sol', cat: 'hacker', color: '#4ec9b0' },
+    allies: [{ id: 'bug_howmonster', name: 'Bug', cat: 'tactical', color: '#9aa0a6' }, { id: 'hardcore_howmonster', name: 'Hardcore', cat: 'slayer', color: '#d7ba7d' }],
+    monsters: ['Evilution Digital Spawn', 'Motion-Capture Armor', 'Digitized Victim Echo'],
+    bosses: ['Adaptive Combat Module', 'Evilution Monster Suit'],
+    worldBoss: 'Evilution Monster Suit',
+    gear: [['htmam_ai_disc', 'Sol AI Disc', 'Disque IA de Sol', { atk: 8, spd: 1 }], ['htmam_sound_board', 'Bug Sound Board', 'Console sonore de Bug', { spd: 2, def: 3 }], ['htmam_weapon_rig', 'Hardcore Weapon Rig', 'Harnais d armes de Hardcore', { hp: 70, atk: 4 }]],
+    event: ['evt_htmam_decompile', 'Evilution Decompile', 'Decompilation d Evilution', 'Sol isolates the learning code, Bug overloads its senses, and Hardcore destroys the exposed combat frame.', 'Sol isole le code d apprentissage, Bug sature ses sens et Hardcore detruit la structure de combat exposee.'],
     decor: { sky: ['#101826', '#020305'], floor: 'rgba(78, 201, 176, 0.16)', grid: 'rgba(215, 186, 125, 0.26)', motif: 'code', accent: '#4ec9b0' }
   },
   {
@@ -1897,19 +3568,76 @@ export const EXPANDED_UNIVERSES = [
     { key: 'house_dead_2', universe: 'House of the Dead 2', mediaType: 'game', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'House of the Dead 2', stage: 'Venice Goldman Incident', boss: 'Emperor Type Alpha', hero: ['james_taylor_hotd2', 'James Taylor', 'marine'], allies: [['gary_stewart_hotd2', 'Gary Stewart', 'tactical'], ['amy_crystal_hotd2', 'Amy Crystal', 'hacker']], theme: 'Goldman outbreak, canals full of named creatures, arcade rescue routes, and synthetic Tarot final forms', motif: 'arcanecity', colors: ['#1b1510', '#030201', '#ff9d4a'] },
     { key: 'house_dead_3', universe: 'House of the Dead 3', mediaType: 'game', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'House of the Dead 3', stage: 'EFI Research Facility', boss: 'Wheel of Fate', hero: ['lisa_rogan_hotd3', 'Lisa Rogan', 'slayer'], allies: [['g_hotd3', 'Agent G Veteran', 'tactical'], ['dan_taylor_hotd3', 'Dan Taylor', 'marine']], theme: 'AMS shotguns, abandoned EFI facilities, named genome creatures, and fate-driven experiments', motif: 'facility', colors: ['#101916', '#020403', '#5dff88'] },
     { key: 'toy_soldiers', universe: 'Toy Soldiers', mediaType: 'game', faction: 'sciFi', mode: 'Tactics', difficulty: 'Medium', titleFr: 'Toy Soldiers', stage: 'Miniature Trench Tabletop', boss: 'Clockwork Siege Engine', hero: ['tin_commander', 'Tin Commander', 'tactical'], allies: [['plastic_gunner', 'Plastic Gunner', 'marine'], ['windup_sapper', 'Wind-Up Sapper', 'hacker']], theme: 'miniature battlefield tactics, trench dioramas, toy artillery, and tabletop war machines', motif: 'fortress', colors: ['#243421', '#050705', '#b7d36b'] },
-    { key: 'shaun_dead', universe: 'Shaun of the Dead', mediaType: 'movie', faction: 'horror', mode: 'RPG', difficulty: 'Medium', titleFr: 'Shaun of the Dead', stage: 'Winchester Last Pint', boss: 'Pub Zombie Siege', hero: ['shaun_sotd', 'Shaun', 'slayer'], allies: [['ed_sotd', 'Ed', 'hacker'], ['liz_sotd', 'Liz', 'tactical']], theme: 'British zombie comedy, pub defense, cricket bats, and deadpan survival plans', motif: 'hauntedset', colors: ['#251111', '#040202', '#d64242'] },
+    {
+      key: 'shaun_dead',
+      universe: 'Shaun of the Dead',
+      mediaType: 'movie',
+      faction: 'horror',
+      mode: 'RPG',
+      difficulty: 'Medium',
+      titleFr: 'Shaun of the Dead',
+      stage: 'Winchester Last Pint',
+      boss: 'Pub Zombie Siege',
+      hero: ['shaun_sotd', 'Shaun', 'slayer'],
+      allies: [['ed_sotd', 'Ed', 'hacker'], ['liz_sotd', 'Liz', 'tactical']],
+      monsters: ['Garden Zombie', 'London Street Horde', 'Winchester Regular Dead'],
+      bosses: ['Philip Zombie', 'Winchester Cellar Horde'],
+      gear: [['shaun_cricket_bat', 'Shaun s Cricket Bat', 'Batte de cricket de Shaun', { atk: 9, spd: 1 }], ['shaun_record', 'Disposable Vinyl Record', 'Disque vinyle jetable', { atk: 6, def: 4 }], ['shaun_cornetto', 'Emergency Cornetto', 'Cornetto d urgence', { hp: 75 }]],
+      event: ['evt_shaun_dont_stop_me', 'Winchester Jukebox Stand', 'Resistance du jukebox Winchester', 'The squad fights in rhythm around the bar while Shaun clears a route with the cricket bat.', 'L escouade combat en rythme autour du bar pendant que Shaun ouvre une route avec la batte de cricket.'],
+      theme: 'British zombie comedy, pub defense, cricket bats, and deadpan survival plans',
+      motif: 'hauntedset',
+      colors: ['#251111', '#040202', '#d64242']
+    },
     { key: 'puppet_master', universe: 'Puppet Master', mediaType: 'movie', faction: 'horror', mode: 'RPG', difficulty: 'Hard', titleFr: 'Puppet Master', stage: 'Bodega Bay Puppet Theater', boss: 'Totem Puppet Rite', hero: ['blade_puppet', 'Blade', 'horror'], allies: [['pinhead_puppet', 'Pinhead', 'slayer'], ['six_shooter_puppet', 'Six-Shooter', 'marine']], theme: 'killer puppets, occult animation, tiny assassins, and hotel corridor ambushes', motif: 'hauntedset', colors: ['#201614', '#040202', '#c28a4a'] },
     { key: 'chicken_run', universe: 'Chicken Run', mediaType: 'movie', faction: 'arcane', mode: 'Tactics', difficulty: 'Medium', titleFr: 'Chicken Run', stage: 'Tweedy Farm Escape', boss: 'Pie Machine Grinder', hero: ['ginger_chickenrun', 'Ginger', 'tactical'], allies: [['rocky_chickenrun', 'Rocky Rhodes', 'slayer'], ['fowler_chickenrun', 'Fowler', 'marine']], theme: 'farm escape plans, claymation grit, pie machines, and improvised aviation', motif: 'fortress', colors: ['#332514', '#070503', '#f4c45f'] },
     { key: 'another', universe: 'Another', mediaType: 'manga', faction: 'horror', mode: 'RPG', difficulty: 'Very Hard', titleFr: 'Another', stage: 'Yomiyama Class 3 Curse', boss: 'Calamity Extra Student', hero: ['mei_misaki', 'Mei Misaki', 'horror'], allies: [['kouichi_sakakibara', 'Kouichi Sakakibara', 'tactical'], ['tatsuji_chibiki', 'Tatsuji Chibiki', 'hacker']], theme: 'school curse, missing identity, quiet dread, and fatal accidents around Class 3', motif: 'hauntedset', colors: ['#151923', '#020304', '#9fb4d9'] },
     { key: 'gunnm', universe: 'Gunnm', mediaType: 'manga', faction: 'cyber', mode: 'Smash', difficulty: 'Very Hard', titleFr: 'Gunnm', stage: 'Scrapyard Motorball Arena', boss: 'Zalem Hunter-Killer', hero: ['gally_gunnm', 'Gally', 'slayer'], allies: [['ido_gunnm', 'Daisuke Ido', 'hacker'], ['yugo_gunnm', 'Yugo', 'tactical']], theme: 'cyborg martial arts, scrapyard bounty hunting, motorball violence, and Zalem class divide', motif: 'facility', colors: ['#171d24', '#030507', '#67d8ff'] },
     { key: 'battle_royale', universe: 'Battle Royale', mediaType: 'movie', faction: 'horror', mode: 'Tactics', difficulty: 'Very Hard', titleFr: 'Battle Royale', stage: 'Program Island Kill Zone', boss: 'Collar Detonation Network', hero: ['shuya_nanahara', 'Shuya Nanahara', 'tactical'], allies: [['noriko_nakagawa', 'Noriko Nakagawa', 'hacker'], ['kazuo_kiriyama', 'Kazuo Kiriyama', 'slayer']], theme: 'student survival program, explosive collars, island sectors, and moral collapse under rules', motif: 'wasteland', colors: ['#231414', '#030202', '#ff4e4e'] },
-    { key: 'spawn', universe: 'Spawn', mediaType: 'manga', faction: 'horror', mode: 'Smash', difficulty: 'Very Hard', titleFr: 'Spawn', stage: 'Rat City Necroplasm Rift', boss: 'Malebolgia Throne', hero: ['al_simmons_spawn', 'Spawn', 'horror'], allies: [['cogliostro_spawn', 'Cogliostro', 'tactical'], ['sam_twitch_spawn', 'Sam and Twitch', 'marine']], theme: 'necroplasm chains, hellspawn bargains, alley warfare, and infernal command structures', motif: 'hauntedset', colors: ['#08130f', '#010302', '#42ff66'] },
+    {
+      key: 'spawn',
+      universe: 'Spawn',
+      mediaType: 'manga',
+      faction: 'horror',
+      mode: 'Smash',
+      difficulty: 'Very Hard',
+      titleFr: 'Spawn',
+      stage: 'Rat City Necroplasm Rift',
+      boss: 'Malebolgia Throne',
+      hero: ['al_simmons_spawn', 'Spawn', 'horror'],
+      allies: [['cogliostro_spawn', 'Cogliostro', 'tactical'], ['sam_twitch_spawn', 'Sam and Twitch', 'marine']],
+      monsters: ['Violator Spawnling', 'Hell Soldier', 'Redeemer Hunter'],
+      bosses: ['The Violator', 'Malebolgia'],
+      gear: [['spawn_necroplasm', 'Necroplasm Reserve', 'Reserve de necroplasme', { atk: 10, hp: 40 }], ['spawn_chains', 'Living Hell Chains', 'Chaines infernales vivantes', { atk: 8, def: 4 }], ['spawn_cape', 'K7-Leetha Cape Fragment', 'Fragment de cape K7-Leetha', { hp: 70, def: 5 }]],
+      event: ['evt_spawn_legion', 'Legion of Souls', 'Legion des ames', 'Spawn releases the voices inside his necroplasm to bind infernal enemies and tear down the throne line.', 'Spawn libere les voix de son necroplasme pour lier les ennemis infernaux et briser la ligne du trone.'],
+      theme: 'necroplasm chains, hellspawn bargains, alley warfare, and infernal command structures',
+      motif: 'hauntedset',
+      colors: ['#08130f', '#010302', '#42ff66']
+    },
     { key: 'pingu', universe: 'Pingu', mediaType: 'series', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Pingu', stage: 'Antarctic Noot Noot Rift', boss: 'Frozen Fish Avalanche', hero: ['pingu', 'Pingu', 'hacker'], allies: [['pinga', 'Pinga', 'tactical'], ['roby_pingu', 'Roby', 'slayer']], theme: 'clay penguin antics, arctic family chaos, fish economy, and noot-noot disruption', motif: 'wasteland', colors: ['#112b3a', '#02070a', '#b9f2ff'] },
     { key: 'linkin_park', universe: 'Linkin Park', mediaType: 'music', faction: 'cyber', mode: 'Smash', difficulty: 'Hard', titleFr: 'Linkin Park', stage: 'Hybrid Theory Soundstage', boss: 'Meteora Feedback Core', hero: ['chester_lp', 'Chester Echo', 'slayer'], allies: [['mike_lp', 'Mike Signal', 'hacker'], ['mr_hahn_lp', 'Turntable Operator', 'tactical']], theme: 'nu-metal energy, glitch visuals, turntable cuts, emotional surges, and arena feedback', motif: 'facility', colors: ['#151a22', '#030407', '#00b7ff'] },
     { key: 'moonwalker', universe: 'Moonwalker', mediaType: 'movie', faction: 'cyber', mode: 'Smash', difficulty: 'Hard', titleFr: 'Moonwalker', stage: 'Smooth Criminal Club Breach', boss: 'Mr Big Mecha Raid', hero: ['moonwalker_hero', 'Moonwalker', 'slayer'], allies: [['annie_moonwalker', 'Annie', 'hacker'], ['club_dancer_moonwalker', 'Club Dancer', 'tactical']], theme: 'music-video fantasy, anti-gravity dance combat, gangster clubs, and transforming starship spectacle', motif: 'arcanecity', colors: ['#101820', '#030406', '#f5f5f5'] },
     { key: 'michael_jackson', universe: 'Michael Jackson', mediaType: 'music', faction: 'cyber', mode: 'Smash', difficulty: 'Hard', titleFr: 'Michael Jackson', stage: 'King of Pop Rhythm Rift', boss: 'Thriller Beat Revenant', hero: ['mj_performer', 'King of Pop Avatar', 'slayer'], allies: [['rhythm_guard_mj', 'Rhythm Guard', 'tactical'], ['stage_light_mj', 'Stage Light Tech', 'hacker']], theme: 'pop spectacle, thriller horror dance, spotlight timing, and precision rhythm strikes', motif: 'hauntedset', colors: ['#171717', '#030303', '#f3d35c'] },
     { key: 'the_thing', universe: 'The Thing', mediaType: 'movie', faction: 'horror', mode: 'RPG', difficulty: 'Very Hard', titleFr: 'The Thing', stage: 'Outpost 31 Blood Test', boss: 'Assimilation Biomass', hero: ['macready_thing', 'R.J. MacReady', 'marine'], allies: [['childs_thing', 'Childs', 'tactical'], ['blair_thing', 'Blair', 'hacker']], theme: 'antarctic paranoia, assimilation horror, blood tests, flamethrowers, and identity collapse', motif: 'facility', colors: ['#15212a', '#020406', '#c8f4ff'] },
-    { key: 'evil_dead', universe: 'Evil Dead', mediaType: 'movie', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Evil Dead', stage: 'Knowby Cabin Deadite Night', boss: 'Necronomicon Kandarian Demon', hero: ['ash_williams', 'Ash Williams', 'slayer'], allies: [['annie_knowby', 'Annie Knowby', 'hacker'], ['scotty_evildead', 'Scotty', 'marine']], theme: 'cabin deadites, Necronomicon rites, chainsaw heroics, and demonic forest pressure', motif: 'hauntedset', colors: ['#1f0d0d', '#030101', '#ff3f2f'] },
+    {
+      key: 'evil_dead',
+      universe: 'Evil Dead',
+      mediaType: 'movie',
+      faction: 'horror',
+      mode: 'Smash',
+      difficulty: 'Hard',
+      titleFr: 'Evil Dead - Trilogie',
+      stage: 'Knowby Cabin Deadite Night',
+      boss: 'Necronomicon Kandarian Demon',
+      hero: ['ash_williams', 'Ash Williams', 'slayer'],
+      allies: [['annie_knowby', 'Annie Knowby', 'hacker'], ['henry_red_ed', 'Henry the Red', 'marine']],
+      monsters: ['Cabin Deadite', 'Demonic Tree', 'Skeleton Army'],
+      bosses: ['Evil Ash', 'Kandarian Demon'],
+      gear: [['evil_dead_boomstick', 'Ash s Boomstick', 'Boomstick d Ash', { atk: 10 }], ['evil_dead_chainsaw', 'Chainsaw Hand', 'Main tronconneuse', { atk: 9, def: 3 }], ['evil_dead_necronomicon', 'Necronomicon Ex-Mortis', 'Necronomicon Ex-Mortis', { hp: 65, atk: 5 }]],
+      event: ['evt_evil_dead_army', 'Army of Darkness Charge', 'Charge de l Armee des tenebres', 'Ash leads the medieval line through the Deadites while the boomstick tears open the boss guard.', 'Ash mene la ligne medievale a travers les Deadites pendant que le boomstick brise la garde du boss.'],
+      theme: 'the original cabin possession, Ash s chainsaw transformation, the Necronomicon, and the medieval Army of Darkness conflict',
+      motif: 'hauntedset',
+      colors: ['#1f0d0d', '#030101', '#ff3f2f']
+    },
     { key: 'die_antwoord', universe: 'Die Antwoord', mediaType: 'music', faction: 'cyber', mode: 'Smash', difficulty: 'Hard', titleFr: 'Die Antwoord', stage: 'Zef Neon Warehouse', boss: 'Bassline Freak Core', hero: ['ninja_da', 'Ninja', 'slayer'], allies: [['yolandi_da', 'Yo-Landi', 'hacker'], ['dj_hi_tek_da', 'DJ Hi-Tek', 'tactical']], theme: 'zef rave aggression, distorted bass, neon warehouse sets, and abrasive cyber-punk energy', motif: 'facility', colors: ['#1b1020', '#040206', '#ff4fd8'] },
     { key: 'chappie', universe: 'Chappie', mediaType: 'movie', faction: 'sciFi', mode: 'Tactics', difficulty: 'Hard', titleFr: 'Chappie', stage: 'Johannesburg Scout AI Lab', boss: 'MOOSE Weapons Platform', hero: ['chappie_ai', 'Chappie', 'hacker'], allies: [['deon_chappie', 'Deon Wilson', 'tactical'], ['yolandi_chappie', 'Yolandi', 'marine']], theme: 'learning robot consciousness, police scouts, criminal crews, and corporate weapons platforms', motif: 'facility', colors: ['#20272b', '#050607', '#8de8ff'] },
     { key: 'gremlins', universe: 'Gremlins', mediaType: 'movie', faction: 'horror', mode: 'Smash', difficulty: 'Medium', titleFr: 'Gremlins', stage: 'Kingston Falls Midnight Rules', boss: 'Stripe Gremlin Swarm', hero: ['gizmo_gremlins', 'Gizmo', 'hacker'], allies: [['billy_peltzer', 'Billy Peltzer', 'tactical'], ['kate_gremlins', 'Kate Beringer', 'marine']], theme: 'mogwai rules, midnight chaos, multiplying gremlins, and small-town creature mayhem', motif: 'hauntedset', colors: ['#142415', '#020402', '#7aff60'] },
@@ -1923,7 +3651,26 @@ export const EXPANDED_UNIVERSES = [
     { key: 'baby_cart', universe: 'Baby Cart', mediaType: 'movie', faction: 'horror', mode: 'Tactics', difficulty: 'Hard', titleFr: 'Baby Cart', stage: 'Lone Wolf Assassin Road', boss: 'Yagyu Ambush Clan', hero: ['ogami_itto', 'Ogami Itto', 'slayer'], allies: [['daigoro_babycart', 'Daigoro', 'hacker'], ['azami_assassin', 'Roadside Assassin', 'tactical']], theme: 'ronin executioner road, hidden weapons cart, clan ambushes, and grim chanbara duels', motif: 'wasteland', colors: ['#201915', '#040303', '#d8b46a'] },
     { key: 'cloverfield', universe: 'Cloverfield', mediaType: 'movie', faction: 'sciFi', mode: 'Smash', difficulty: 'Very Hard', titleFr: 'Cloverfield', stage: 'Manhattan Found Footage Collapse', boss: 'Clover Parasite Titan', hero: ['rob_cloverfield', 'Rob Hawkins', 'tactical'], allies: [['hud_cloverfield', 'Hud Platt', 'hacker'], ['marlena_cloverfield', 'Marlena Diamond', 'slayer']], theme: 'found-footage panic, city destruction, parasite bites, and colossal unseen biology', motif: 'arcanecity', colors: ['#141f25', '#020405', '#93c8d8'] },
     { key: 'collector', universe: 'The Collector', mediaType: 'movie', faction: 'horror', mode: 'Tactics', difficulty: 'Very Hard', titleFr: 'The Collector', stage: 'Trap House Extraction', boss: 'Collector Masked Architect', hero: ['arkin_collector', 'Arkin', 'tactical'], allies: [['elena_collector', 'Elena Peters', 'hacker'], ['lucello_collector', 'Lucello', 'marine']], theme: 'masked trap maker, house-wide mechanisms, desperate rescue, and brutal survival puzzles', motif: 'facility', colors: ['#1a1111', '#030202', '#d13d3d'] },
-    { key: 'h2g2', universe: 'H2G2', mediaType: 'movie', faction: 'sciFi', mode: 'RPG', difficulty: 'Medium', titleFr: 'H2G2', stage: 'Infinite Improbability Drive', boss: 'Vogon Bureaucracy Armada', hero: ['arthur_dent_h2g2', 'Arthur Dent', 'hacker'], allies: [['ford_prefect', 'Ford Prefect', 'tactical'], ['zaphod_beeblebrox', 'Zaphod Beeblebrox', 'slayer']], theme: 'cosmic absurdity, guide entries, Vogon bureaucracy, towels, and probability disasters', motif: 'shipdeck', colors: ['#14243a', '#02050a', '#7dd3ff'] },
+    {
+      key: 'h2g2',
+      universe: 'H2G2',
+      mediaType: 'movie',
+      faction: 'sciFi',
+      mode: 'RPG',
+      difficulty: 'Medium',
+      titleFr: 'H2G2',
+      stage: 'Heart of Gold Improbability Drive',
+      boss: 'Vogon Constructor Fleet',
+      hero: ['arthur_dent_h2g2', 'Arthur Dent', 'hacker'],
+      allies: [['ford_prefect', 'Ford Prefect', 'tactical'], ['trillian_h2g2', 'Trillian', 'slayer']],
+      monsters: ['Vogon Guard', 'Bureaucratic Form Drone', 'Improbability Creature'],
+      bosses: ['Marvin Depression Field', 'Vogon Constructor Fleet'],
+      gear: [['h2g2_towel', 'Extremely Useful Towel', 'Serviette extremement utile', { def: 6, hp: 50 }], ['h2g2_babel_fish', 'Babel Fish', 'Poisson Babel', { spd: 2, def: 3 }], ['h2g2_guide', 'Hitchhiker s Guide', 'Guide du voyageur galactique', { hp: 70, atk: 4 }]],
+      event: ['evt_h2g2_improbability', 'Infinite Improbability Jump', 'Saut d improbabilite infinie', 'The Heart of Gold turns the enemy formation into a harmless statistical impossibility for one beat.', 'Le Coeur en Or transforme la formation ennemie en impossibilite statistique inoffensive pendant un instant.'],
+      theme: 'cosmic absurdity, guide entries, Vogon bureaucracy, towels, Babel fish, and probability disasters',
+      motif: 'shipdeck',
+      colors: ['#14243a', '#02050a', '#7dd3ff']
+    },
     { key: 'tuche', universe: 'Les Tuche', mediaType: 'movie', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Les Tuche', stage: 'Bouzolles Lottery Breach', boss: 'Monaco Culture Shock', hero: ['jeff_tuche', 'Jeff Tuche', 'hacker'], allies: [['cathy_tuche', 'Cathy Tuche', 'tactical'], ['coincoin_tuche', 'Coin-Coin', 'slayer']], theme: 'lottery chaos, family stubbornness, class shock comedy, and potato-based morale', motif: 'arcanecity', colors: ['#2d2415', '#070503', '#ffd45a'] },
     { key: 'iron_sky', universe: 'Iron Sky', mediaType: 'movie', faction: 'sciFi', mode: 'Tactics', difficulty: 'Hard', titleFr: 'Iron Sky', stage: 'Moon Reich Dark Side Base', boss: 'Gotterdammerung Warship', hero: ['renate_ironsky', 'Renate Richter', 'tactical'], allies: [['james_ironsky', 'James Washington', 'marine'], ['sasha_ironsky', 'Sasha', 'hacker']], theme: 'moonbase satire, retro-futurist saucers, political absurdity, and orbital war machines', motif: 'shipdeck', colors: ['#1d2027', '#040507', '#bfc7d5'] },
     { key: 'rec', universe: 'REC', mediaType: 'movie', faction: 'horror', mode: 'RPG', difficulty: 'Very Hard', titleFr: 'REC', stage: 'Quarantined Barcelona Building', boss: 'Medeiros Attic Host', hero: ['angela_vidal', 'Angela Vidal', 'hacker'], allies: [['manu_rec', 'Manu', 'marine'], ['pablo_rec', 'Pablo Camera', 'tactical']], theme: 'found-footage infection, sealed apartment stairwells, panic screams, and attic possession horror', motif: 'hauntedset', colors: ['#161616', '#020202', '#e84b3c'] },
@@ -1962,7 +3709,26 @@ export const EXPANDED_UNIVERSES = [
     { key: 'rugrats', universe: 'Rugrats', mediaType: 'series', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Rugrats', stage: 'Backyard Baby Imagination', boss: 'Reptar Toy Rampage', hero: ['tommy_pickles', 'Tommy Pickles', 'hacker'], allies: [['chuckie_finster', 'Chuckie Finster', 'tactical'], ['angelica_pickles', 'Angelica Pickles', 'horror']], theme: 'baby imagination, household objects, Reptar fantasies, and tiny-scale adventure logic', motif: 'arcanecity', colors: ['#2e3d17', '#060803', '#c7ff4a'] },
     { key: 'guitar_hero', universe: 'Guitar Hero', mediaType: 'game', faction: 'cyber', mode: 'Smash', difficulty: 'Hard', titleFr: 'Guitar Hero', stage: 'Stadium Note Highway', boss: 'Star Power Feedback Demon', hero: ['guitar_hero_avatar', 'Guitar Hero', 'slayer'], allies: [['judy_nails', 'Judy Nails', 'hacker'], ['axel_steel', 'Axel Steel', 'marine']], monsters: ['Off-Beat Note', 'Feedback Ghost', 'Amp Overload'], bosses: ['Devil Went Down', 'Star Power Demon'], gear: [['whammy_bar', 'Whammy Bar', 'Barre de vibrato', { atk: 8, spd: 2 }], ['star_power_gem', 'Star Power Gem', 'Gemme Star Power', { atk: 10, hp: 40 }], ['guitar_pick_destiny', 'Guitar Pick of Destiny', 'Mediator du destin', { atk: 11 }]], event: ['evt_gh_star_power', 'Star Power Solo', 'Solo Star Power', 'A blazing guitar solo doubles attack power for the entire squad.', 'Un solo de guitare enflamme double la puissance d attaque de toute l escouade.'], theme: 'note highways, star power, plastic guitars, crowd energy, and rhythm duel spectacle', motif: 'facility', colors: ['#241433', '#050207', '#ff4fd8'] },
     { key: 'disenchantment', universe: 'Disenchantment', mediaType: 'series', faction: 'arcane', mode: 'RPG', difficulty: 'Hard', titleFr: 'Desenchantee', stage: 'Dreamland Castle Curse Breach', boss: 'Dagmar Enchantress Doom', hero: ['bean_disenchantment', 'Bean', 'slayer'], allies: [['elfo_disenchantment', 'Elfo', 'hacker'], ['luci_disenchantment', 'Luci', 'horror']], monsters: ['Dreamland Guard', 'Enchanted Forest Ogre', 'Steamland Automaton'], bosses: ['Dagmar Spell Cascade', 'Trog Invasion Leader'], gear: [['bean_axe', 'Bean Royal Axe', 'Hache royale de Bean', { atk: 10, spd: 1 }], ['elfo_candy', 'Elfwood Candy Flask', 'Flasque bonbon Elfwood', { hp: 70, def: 3 }], ['luci_flask', 'Luci Demon Flask', 'Flasque demon de Luci', { atk: 7, spd: 2 }]], event: ['evt_disenchantment_curse', 'Dreamland Royal Curse', 'Malediction royale Dreamland', 'Bean channels the Dreamland curse to petrify enemies and drain their will.', 'Bean canalise la malediction de Dreamland pour petrifier les ennemis et drainer leur volonte.'], theme: 'cursed medieval kingdom, sarcastic princess, demon companion, elf misadventures, dark royal magic, and Dreamland chaos', motif: 'castle', colors: ['#2a1b3d', '#05030a', '#c78fff'] },
-    { key: 'simpsons', universe: 'The Simpsons', mediaType: 'series', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Les Simpson', stage: 'Springfield Nuclear Gag Breach', boss: 'Mr Burns Reactor Scheme', hero: ['homer_simpson', 'Homer Simpson', 'horror'], allies: [['bart_simpson', 'Bart Simpson', 'slayer'], ['lisa_simpson', 'Lisa Simpson', 'hacker']], monsters: ['Itchy and Scratchy Bot', 'Springfield Power Mutant', 'Kang and Kodos Probe'], bosses: ['Mr Burns Nuclear Scheme', 'Sideshow Bob Revenge Plot'], theme: 'Springfield satire, nuclear accidents, family chaos, and endless sitcom reality resets', motif: 'arcanecity', colors: ['#2e2b12', '#070603', '#ffd83d'] },
+    {
+      key: 'simpsons',
+      universe: 'The Simpsons',
+      mediaType: 'series',
+      faction: 'arcane',
+      mode: 'RPG',
+      difficulty: 'Medium',
+      titleFr: 'Les Simpson',
+      stage: 'Springfield Nuclear Gag Breach',
+      boss: 'Mr Burns Reactor Scheme',
+      hero: ['homer_simpson', 'Homer Simpson', 'horror'],
+      allies: [['bart_simpson', 'Bart Simpson', 'slayer'], ['lisa_simpson', 'Lisa Simpson', 'hacker']],
+      monsters: ['Itchy and Scratchy Bot', 'Springfield Power Mutant', 'Kang and Kodos Probe'],
+      bosses: ['Mr Burns Nuclear Scheme', 'Sideshow Bob Revenge Plot'],
+      gear: [['simpsons_donut', 'Homer s Emergency Donut', 'Donut d urgence de Homer', { hp: 80 }], ['simpsons_sax', 'Lisa s Baritone Sax', 'Saxophone baryton de Lisa', { atk: 7, spd: 2 }], ['simpsons_slingshot', 'Bart s Slingshot', 'Lance-pierre de Bart', { atk: 8, def: 3 }]],
+      event: ['evt_simpsons_couch', 'Couch Gag Reset', 'Reinitialisation du gag du canape', 'The scene restarts with the family already in position, restoring allies while preserving mission progress.', 'La scene recommence avec la famille deja en place, restaure les allies tout en conservant la progression de mission.'],
+      theme: 'Springfield satire, nuclear accidents, family chaos, and endless sitcom reality resets',
+      motif: 'arcanecity',
+      colors: ['#2e2b12', '#070603', '#ffd83d']
+    },
     { key: 'futurama', universe: 'Futurama', mediaType: 'series', faction: 'sciFi', mode: 'Tactics', difficulty: 'Hard', titleFr: 'Futurama', stage: 'Planet Express Timeline Leak', boss: 'Hypnotoad Delivery Singularity', hero: ['fry_futurama', 'Philip J. Fry', 'hacker'], allies: [['leela_futurama', 'Leela', 'slayer'], ['bender_futurama', 'Bender', 'marine']], monsters: ['Robot Mafia Enforcer', 'Brain Slug Host', 'Momcorp Killbot'], bosses: ['Roberto Knife Bot', 'Hypnotoad Broadcast'], theme: 'future delivery work, robot crime, alien bureaucracy, and time paradox comedy', motif: 'shipdeck', colors: ['#152b3d', '#03070a', '#55dfff'] },
     { key: 'big_mouth', universe: 'Big Mouth', mediaType: 'series', faction: 'horror', mode: 'RPG', difficulty: 'Medium', titleFr: 'Big Mouth', stage: 'Hormone Monster Hallway', boss: 'Depression Kitty Spiral', hero: ['maury_hm', 'Maury the Hormone Monster', 'horror'], allies: [['connie_hm', 'Connie the Hormone Monstress', 'slayer'], ['shame_wizard_hm', 'Shame Wizard', 'hacker']], monsters: ['Anxiety Mosquito', 'Puberty Troll', 'Lovebug Swarm'], bosses: ['Shame Wizard Spiral', 'Hate Worm Outbreak'], gear: [['hm_pillow', 'Hormone Monster Pillow', 'Oreiller de monstre hormonal', { hp: 65, def: 4 }], ['shame_cloak', 'Shame Wizard Cloak', 'Cape du Sorcier de la Honte', { def: 7, spd: 1 }], ['lovebug_jar', 'Lovebug Specimen Jar', 'Bocal a Lovebug', { atk: 8, hp: 30 }]], event: ['evt_bigmouth_hormone_surge', 'Hormone Surge Wave', 'Vague hormonale', 'Maury triggers a massive hormone surge that confuses enemies and boosts ally attack speed.', 'Maury declenche une vague hormonale massive qui deroute les ennemis et accelere les allies.'], theme: 'hormone monsters, puberty chaos, emotional avatars, anxiety mosquitos, shame wizards, and surreal adolescent psychology', motif: 'hauntedset', colors: ['#2b1730', '#060307', '#ff6aa5'] },
     { key: 'family_guy', universe: 'Family Guy', mediaType: 'series', faction: 'arcane', mode: 'RPG', difficulty: 'Medium', titleFr: 'Les Griffin', stage: 'Quahog Cutaway Rift', boss: 'Chicken Fight Continuity Break', hero: ['peter_griffin', 'Peter Griffin', 'horror'], allies: [['stewie_griffin', 'Stewie Griffin', 'hacker'], ['brian_griffin', 'Brian Griffin', 'tactical']], theme: 'cutaway gags, Quahog chaos, talking dogs, and reality-breaking comedy loops', motif: 'arcanecity', colors: ['#203350', '#05070a', '#7dc7ff'] },
@@ -2121,6 +3887,7 @@ export const EXPANDED_UNIVERSES = [
     { key: 'korn', universe: 'Korn', mediaType: 'music', faction: 'horror', mode: 'Smash', difficulty: 'Hard', titleFr: 'Korn', stage: 'Nu-Metal Field Pit', boss: 'Freak on a Leash Core', hero: ['korn_avatar', 'Korn Avatar', 'horror'], allies: [['seven_string_riff', 'Seven String Riff', 'slayer'], ['bagpipe_signal', 'Bagpipe Signal', 'hacker']], theme: 'nu-metal dread, detuned riffs, cathartic screams, and mosh-pit emotional pressure', motif: 'hauntedset', colors: ['#181214', '#030202', '#b0b0b0'] },
     { key: 'marilyn_manson', universe: 'Marilyn Manson', mediaType: 'music', faction: 'horror', mode: 'RPG', difficulty: 'Very Hard', titleFr: 'Marilyn Manson', stage: 'Mechanical Animals Chapel', boss: 'Antichrist Superstar Effigy', hero: ['manson_avatar', 'Shock Rock Avatar', 'horror'], allies: [['mechanical_animal', 'Mechanical Animal', 'tactical'], ['pale_emperor_echo', 'Pale Emperor Echo', 'hacker']], theme: 'shock rock theatre, industrial glam, occult imagery, and corrupted celebrity rituals', motif: 'hauntedset', colors: ['#1f1111', '#030202', '#d9d9d9'] }
   ]),
+  ...makeUniverseWave(CANONICAL_REQUESTED_UNIVERSE_WAVE),
   ...makeUniverseWave(REQUESTED_UNIVERSE_WAVE)
 ];
 
