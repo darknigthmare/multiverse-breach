@@ -35,6 +35,7 @@ const rewriteImports = (source) => source
   .replaceAll("from './loreWorldBossOverrides'", "from './loreWorldBossOverrides.js'")
   .replaceAll("from './stageLoreProfiles'", "from './stageLoreProfiles.js'")
   .replaceAll("from './loreAccuratePacks'", "from './loreAccuratePacks.js'")
+  .replaceAll("from './solarOppositesSirenStarWarsPack'", "from './solarOppositesSirenStarWarsPack.js'")
   .replaceAll("from './lore'", "from './lore.js'")
   .replaceAll("from './heroes'", "from './heroes.js'")
   .replaceAll("from './enemies'", "from './enemies.js'");
@@ -42,7 +43,7 @@ const rewriteImports = (source) => source
 const copyRuntimeModules = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
+  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
   await Promise.all(files.map(async (file) => {
     const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
     await fs.writeFile(path.join(tmpDir, file), rewriteImports(raw), 'utf8');

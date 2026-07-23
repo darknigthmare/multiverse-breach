@@ -5,7 +5,6 @@ import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import { getTranslation } from '../game/translation';
 import { LORE_DB } from '../game/lore';
 import { getCharacterPlaque } from '../game/characterPlaques';
-import { EXPANDED_FACTION_UNIVERSES } from '../game/expandedUniverses';
 
 const PORTAL_RARITIES = {
   common: { id: 'common', label: { fr: 'Stable', en: 'Stable' }, color: '#9fb6bb', weight: 58, duplicateRefund: 18 },
@@ -16,6 +15,29 @@ const PORTAL_RARITIES = {
 
 const CORE_ANOMALY_IDS = new Set(['masterchief', 'predator', 'pyramidhead', 'neo', 'doomslayer', 'vader', 'rick', 'jigsaw', 'yugi']);
 const CORE_EPIC_IDS = new Set(['marcus', 'ripley', 'freeman', 'snake', 'solbadguy', 'ragna', 'shepard', 'luke', 'isaac', 'taichi', 'motoko']);
+const NEXUS_UNIVERSE = 'Nexus de Convergence';
+const PACK_PREVIEW_LIMIT = 24;
+
+const MEDIA_PORTAL_PROFILES = {
+  game: { mode: 'RPG', shape: 'arena', color: '#58a6ff', label: { fr: 'JEU', en: 'GAME' } },
+  movie: { mode: 'Smash', shape: 'cinema', color: '#ff5b6e', label: { fr: 'FILM', en: 'MOVIE' } },
+  series: { mode: 'Tactics', shape: 'iris', color: '#39c5bb', label: { fr: 'SERIE', en: 'SERIES' } },
+  manga: { mode: 'Tactics', shape: 'card', color: '#b27cff', label: { fr: 'MANGA', en: 'MANGA' } },
+  music: { mode: 'Smash', shape: 'speaker', color: '#f1c40f', label: { fr: 'MUSIQUE', en: 'MUSIC' } },
+  other: { mode: 'RPG', shape: 'omniverse', color: '#9b59b6', label: { fr: 'TRAME', en: 'THREAD' } }
+};
+
+const getUniversePortalProfile = (universe, heroes) => {
+  const mediaType = LORE_DB[universe]?.mediaType || 'other';
+  const profile = MEDIA_PORTAL_PROFILES[mediaType] || MEDIA_PORTAL_PROFILES.other;
+  const heroColor = heroes.find(hero => hero.primaryColor)?.primaryColor;
+  return { ...profile, mediaType, color: heroColor || profile.color };
+};
+
+const normalizePackSearch = (value) => String(value || '')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLocaleLowerCase();
 
 const getHeroRarity = (hero) => {
   if (!hero) return PORTAL_RARITIES.common;
@@ -77,71 +99,116 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
   const [summonResult, setSummonResult] = useState(null);
   const [showCard, setShowCard] = useState(false);
   
-  // New Banner selection state
   const [activeBanner, setActiveBanner] = useState('nexus');
+  const [packQuery, setPackQuery] = useState('');
+  const [showAllPacks, setShowAllPacks] = useState(false);
 
   const cost = 50;
   const stabilizedCount = completedStages.length;
-  const portalBanners = [
-    { id: 'nexus', minClears: 0, color: '#39c5bb', label: { fr: 'Portail Nexus OC', en: 'OC Nexus Portal' }, desc: { fr: 'Personnages originaux du jeu de base.', en: 'Original base-game characters.' }, match: h => h.universe === 'Nexus de Convergence' },
-    { id: 'multi', minClears: 6, color: '#9b59b6', label: { fr: 'Portail Multivers', en: 'Multiverse Portal' }, desc: { fr: 'Toutes les signatures heroiques detectables.', en: 'All detectable heroic signatures.' }, match: () => true },
-    { id: 'scifi', color: '#3498db', label: { fr: 'Faille Sci-Fi', en: 'Sci-Fi Rift' }, desc: { fr: 'Halo, Mass Effect, Portal, Stargate, Gears.', en: 'Halo, Mass Effect, Portal, Stargate, Gears.' }, match: h => ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Portal', 'Half-Life', 'Star Wars', 'Le Cinquième Element', ...EXPANDED_FACTION_UNIVERSES.sciFi].includes(h.universe) },
-    { id: 'xeno_yautja', color: '#8adbe6', label: { fr: 'Faille Xeno-Yautja', en: 'Xeno-Yautja Rift' }, desc: { fr: 'Alien, Predator, Prometheus, AVP.', en: 'Alien, Predator, Prometheus, AVP.' }, match: h => /Alien|Predator|Prometheus|Prey/.test(h.universe) },
-    { id: 'horror', color: '#e74c3c', label: { fr: 'Faille Horreur', en: 'Horror Rift' }, desc: { fr: 'Resident Evil, Silent Hill, Chucky, Saw, Hellraiser.', en: 'Resident Evil, Silent Hill, Chucky, Saw, Hellraiser.' }, match: h => h.category === 'horror' || ['Resident Evil', 'Silent Hill', 'Chucky', 'Hellraiser', 'Saw', 'Slender Man', 'Scary Movie', 'Dead Space', 'Hazbin Hotel', 'Rob Zombie', ...EXPANDED_FACTION_UNIVERSES.horror].includes(h.universe) },
-    { id: 'cyber', color: '#39ffcc', label: { fr: 'Faille Cyber', en: 'Cyber Rift' }, desc: { fr: 'Matrix, Ghost in the Shell, Digital Circus, Digimon.', en: 'Matrix, Ghost in the Shell, Digital Circus, Digimon.' }, match: h => ['The Matrix', 'Ghost in the Shell', 'Digital Circus', 'Digimon', 'Daft Punk', 'Oliver Tree', ...EXPANDED_FACTION_UNIVERSES.cyber].includes(h.universe) },
-    { id: 'arena', color: '#e67e22', label: { fr: 'Faille Duel & Arene', en: 'Duel & Arena Rift' }, desc: { fr: 'Metal Gear, Payday, Yu-Gi-Oh, Guilty Gear, BlazBlue, Unreal.', en: 'Metal Gear, Payday, Yu-Gi-Oh, Guilty Gear, BlazBlue, Unreal.' }, match: h => ['Metal Gear', 'Payday', 'Yu-Gi-Oh', 'Guilty Gear', 'BlazBlue', 'Unreal'].includes(h.universe) },
-    { id: 'arcade', color: '#e67e22', label: { fr: 'Faille Arcade', en: 'Arcade Rift' }, desc: { fr: 'Combattants, tacticiens et arènes.', en: 'Fighters, tacticians, and arenas.' }, match: h => h.category === 'slayer' || h.category === 'tactical' || ['Vocaloid', 'Unreal'].includes(h.universe) },
-    { id: 'arcane', color: '#d9b86b', label: { fr: 'Faille Arcane', en: 'Arcane Rift' }, desc: { fr: 'Discworld, Kaamelott, Dungeon Meshi, Noob, magie.', en: 'Discworld, Kaamelott, Dungeon Meshi, Noob, magic.' }, match: h => ['Discworld', 'Kaamelott', 'Dungeon Meshi', 'Noob', 'Harry Potter', 'Negima', 'Rosario + Vampire', ...EXPANDED_FACTION_UNIVERSES.arcane].includes(h.universe) },
-    { id: 'manga', color: '#9b59b6', label: { fr: 'Faille Manga & Web', en: 'Manga & Web Rift' }, desc: { fr: 'Univers manga, web et animation.', en: 'Manga, web, and animation worlds.' }, match: h => LORE_DB[h.universe]?.mediaType === 'manga' },
-    { id: 'music', color: '#f1c40f', label: { fr: 'Faille Musique', en: 'Music Rift' }, desc: { fr: 'Rammstein, SOAD, Rob Zombie, Daft Punk, Oliver Tree, Vocaloid.', en: 'Rammstein, SOAD, Rob Zombie, Daft Punk, Oliver Tree, Vocaloid.' }, match: h => LORE_DB[h.universe]?.mediaType === 'music' || h.universe === 'Vocaloid' },
-    { id: 'movie', color: '#ff5b6e', label: { fr: 'Faille Films & Series', en: 'Movies & TV Rift' }, desc: { fr: 'Archives ecran hors cercle specialise.', en: 'Screen archives outside specialized circles.' }, match: h => ['movie', 'series'].includes(LORE_DB[h.universe]?.mediaType) }
-  ];
-  const PORTAL_CHAPTER_UNLOCKS = {
-    nexus: 0,
-    multi: 6,
-    scifi: 6,
-    horror: 6,
-    cyber: 6,
-    arena: 6,
-    xeno_yautja: 12,
-    arcade: 12,
-    arcane: 12,
-    movie: 12,
-    manga: 20,
-    music: 20
-  };
-
-  const bannerVisuals = {
-    nexus: { universe: 'Nexus de Convergence', mode: 'RPG', shape: 'omniverse', focusRate: 1, meta: { fr: 'Bassin OC: A.R.C.A. recrute des Ancres et agents natifs du Nexus.', en: 'OC pool: A.R.C.A. recruits Anchors and native Nexus agents.' } },
-    multi: { universe: 'Matrix', mode: 'RPG', shape: 'omniverse', focusRate: 1, meta: { fr: 'Spectre complet: A.R.C.A. ouvre toutes les familles de Trames detectables.', en: 'Complete spectrum: A.R.C.A. opens every detectable Thread family.' } },
-    scifi: { universe: 'Stargate', mode: 'RPG', shape: 'iris', focusRate: 0.7, meta: { fr: 'Signatures de front: blindage, commandement et lignes de defense.', en: 'Frontline signatures: armor, command, and defensive lines.' } },
-    xeno_yautja: { universe: 'Alien', mode: 'Smash', shape: 'hive', focusRate: 0.7, meta: { fr: 'Traques primitives: acide, plasma et rites de chasse.', en: 'Primal hunts: acid, plasma, and hunting rites.' } },
-    horror: { universe: 'Silent Hill', mode: 'RPG', shape: 'sigil', focusRate: 0.7, meta: { fr: 'Signaux de peur: survie, controle et resistance aux noyaux hostiles.', en: 'Fear signals: survival, control, and resistance against hostile cores.' } },
-    cyber: { universe: 'The Matrix', mode: 'Tactics', shape: 'code', focusRate: 0.7, meta: { fr: 'Trames codees: initiative, interruptions et permissions volees.', en: 'Coded Threads: initiative, interrupts, and stolen permissions.' } },
-    arena: { universe: 'Yu-Gi-Oh', mode: 'Tactics', shape: 'duel', focusRate: 0.7, meta: { fr: 'Lois de duel: precision, contrat et frappe ritualisee.', en: 'Duel laws: precision, contract, and ritualized strikes.' } },
-    arcade: { universe: 'Unreal', mode: 'Smash', shape: 'arena', focusRate: 0.7, meta: { fr: 'Arenes rapides: signatures de choc et cellules tactiques.', en: 'Fast arenas: impact signatures and tactical cells.' } },
-    arcane: { universe: 'Harry Potter', mode: 'RPG', shape: 'rune', focusRate: 0.7, meta: { fr: 'Runes convergentes: defense, magie et controle des anomalies.', en: 'Converging runes: defense, magic, and anomaly control.' } },
-    manga: { universe: 'Yu-Gi-Oh', mode: 'Tactics', shape: 'card', focusRate: 0.7, meta: { fr: 'Trames hybrides: transformations, rivalites et lois d arc.', en: 'Hybrid Threads: transformations, rivalries, and arc laws.' } },
-    music: { universe: 'Vocaloid', mode: 'Smash', shape: 'speaker', focusRate: 0.7, meta: { fr: 'Resonances de scene: tempo, vitesse et choeurs d escouade.', en: 'Stage resonances: tempo, speed, and squad choruses.' } },
-    movie: { universe: 'Star Wars', mode: 'Smash', shape: 'cinema', focusRate: 0.7, meta: { fr: 'Trames ecran: signatures souples pour archives cinema et series.', en: 'Screen Threads: flexible signatures for film and series archives.' } }
-  };
-
-  const hiddenUniverseSet = new Set(hiddenUniverses);
-  const disabledHeroSet = new Set(disabledAssets.heroes || []);
+  const hiddenUniverseSet = new Set(hiddenUniverses || []);
+  const disabledHeroSet = new Set(disabledAssets?.heroes || []);
   const visibleHeroes = HEROES_DB.filter(hero => !hiddenUniverseSet.has(hero.universe) && !disabledHeroSet.has(hero.id));
   const summonableHeroes = visibleHeroes;
-  const visiblePortalBanners = portalBanners.filter(banner => (
-    banner.id === 'nexus'
-    || (
-      stabilizedCount >= (PORTAL_CHAPTER_UNLOCKS[banner.id] || 0)
-      && (banner.id === 'multi' || summonableHeroes.some(hero => banner.match(hero) && hero.universe !== 'Nexus de Convergence'))
-    )
-  ));
+  const heroesByUniverse = summonableHeroes.reduce((groups, hero) => {
+    const universe = hero.universe || NEXUS_UNIVERSE;
+    if (!groups.has(universe)) groups.set(universe, []);
+    groups.get(universe).push(hero);
+    return groups;
+  }, new Map());
+  const nexusHeroes = heroesByUniverse.get(NEXUS_UNIVERSE) || [];
+  const universePortalBanners = Array.from(heroesByUniverse.entries())
+    .filter(([universe, heroes]) => universe !== NEXUS_UNIVERSE && heroes.length > 0)
+    .sort(([universeA], [universeB]) => universeA.localeCompare(universeB, lang))
+    .map(([universe, heroes]) => {
+      const profile = getUniversePortalProfile(universe, heroes);
+      const names = heroes.slice(0, 3).map(hero => hero.name).join(', ');
+      const remaining = Math.max(0, heroes.length - 3);
+      const rosterLine = remaining > 0 ? `${names} +${remaining}` : names;
+      return {
+        id: `universe:${universe}`,
+        scope: 'universe',
+        universe,
+        mode: profile.mode,
+        shape: profile.shape,
+        color: profile.color,
+        mediaType: profile.mediaType,
+        mediaLabel: profile.label,
+        focusRate: 1,
+        label: { fr: `Pack ${universe}`, en: `${universe} Pack` },
+        desc: {
+          fr: `${heroes.length} signature(s): ${rosterLine}.`,
+          en: `${heroes.length} signature(s): ${rosterLine}.`
+        },
+        meta: {
+          fr: `Trame active synchronisee avec la Regulation A.R.C.A. Les appels de ce pack restent dans ${universe}.`,
+          en: `Active Thread synchronized with A.R.C.A. Regulation. Calls from this pack stay inside ${universe}.`
+        },
+        searchText: `${universe} ${profile.mediaType} ${heroes.map(hero => hero.name).join(' ')}`,
+        match: hero => hero.universe === universe
+      };
+    });
+  const nexusBanner = {
+    id: 'nexus',
+    scope: 'core',
+    universe: NEXUS_UNIVERSE,
+    mode: 'RPG',
+    shape: 'omniverse',
+    color: '#39c5bb',
+    mediaLabel: { fr: 'SOCLE', en: 'CORE' },
+    focusRate: 1,
+    label: { fr: 'Portail Nexus OC', en: 'OC Nexus Portal' },
+    desc: {
+      fr: `${nexusHeroes.length} personnage(s) originaux du jeu de base.`,
+      en: `${nexusHeroes.length} original base-game character(s).`
+    },
+    meta: {
+      fr: 'Bassin OC permanent: A.R.C.A. recrute les Ancres et agents natifs du Nexus.',
+      en: 'Permanent OC pool: A.R.C.A. recruits Anchors and native Nexus agents.'
+    },
+    searchText: `${NEXUS_UNIVERSE} OC ${nexusHeroes.map(hero => hero.name).join(' ')}`,
+    match: hero => hero.universe === NEXUS_UNIVERSE
+  };
+  const multiverseBanner = {
+    id: 'multi',
+    scope: 'core',
+    universe: universePortalBanners[0]?.universe || NEXUS_UNIVERSE,
+    mode: 'RPG',
+    shape: 'omniverse',
+    color: '#9b59b6',
+    mediaLabel: { fr: 'SPECTRE', en: 'SPECTRUM' },
+    focusRate: 1,
+    label: { fr: 'Portail Multivers', en: 'Multiverse Portal' },
+    desc: {
+      fr: `${universePortalBanners.length} Trame(s), ${summonableHeroes.length} signature(s) actives.`,
+      en: `${universePortalBanners.length} Thread(s), ${summonableHeroes.length} active signature(s).`
+    },
+    meta: {
+      fr: 'Spectre complet: chaque Trame active de la Regulation alimente ce bassin partage.',
+      en: 'Full spectrum: every Thread active in Regulation feeds this shared pool.'
+    },
+    searchText: `multivers spectrum ${universePortalBanners.map(banner => banner.universe).join(' ')}`,
+    match: () => true
+  };
+  const visiblePortalBanners = [
+    nexusBanner,
+    ...(stabilizedCount >= 6 && universePortalBanners.length > 0 ? [multiverseBanner] : []),
+    ...universePortalBanners
+  ];
+  const visibleBannerIds = visiblePortalBanners.map(banner => banner.id).join('|');
+  useEffect(() => {
+    if (visibleBannerIds.split('|').includes(activeBanner)) return;
+    setActiveBanner('nexus');
+    setSummonedHero(null);
+    setSummonedBatch(null);
+    setSummonResult(null);
+    setShowCard(false);
+  }, [activeBanner, visibleBannerIds]);
+
   const baseActiveBanner = visiblePortalBanners.find(item => item.id === activeBanner)
     || visiblePortalBanners.find(item => item.id === 'nexus')
     || visiblePortalBanners[0]
-    || portalBanners[0];
-  const activeBannerData = { ...baseActiveBanner, ...(bannerVisuals[baseActiveBanner.id] || bannerVisuals.multi) };
+    || nexusBanner;
+  const activeBannerData = baseActiveBanner;
   const activeBannerHeroes = summonableHeroes.filter(hero => activeBannerData.match(hero));
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
@@ -150,6 +217,14 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
   const pityLimit = 6;
   const duplicateStreak = portalStats?.duplicateStreak || 0;
   const pityReady = duplicateStreak >= pityLimit;
+  const normalizedPackQuery = normalizePackSearch(packQuery.trim());
+  const filteredPortalBanners = visiblePortalBanners.filter(banner => (
+    !normalizedPackQuery
+    || normalizePackSearch(`${banner.label[lang]} ${banner.desc[lang]} ${banner.searchText || ''}`).includes(normalizedPackQuery)
+  ));
+  const displayedPortalBanners = showAllPacks || normalizedPackQuery
+    ? filteredPortalBanners
+    : filteredPortalBanners.slice(0, PACK_PREVIEW_LIMIT);
 
   const pushPortalHistory = (entries) => {
     const normalized = entries.map(entry => ({
@@ -159,7 +234,7 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
       rarity: entry.rarity.id,
       rarityLabel: entry.rarity.label[lang],
       rarityColor: entry.rarity.color,
-      banner: activeBannerData.id,
+      banner: activeBannerData.label[lang],
       duplicate: entry.wasDuplicate,
       shardsReturned: entry.shardsReturned || 0,
       at: new Date().toISOString()
@@ -280,19 +355,35 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
     }, 2500);
   };
 
+  const handleSelectBanner = (bannerId) => {
+    if (bannerId === activeBannerData.id) return;
+    setActiveBanner(bannerId);
+    setSummonedHero(null);
+    setSummonedBatch(null);
+    setSummonResult(null);
+    setShowCard(false);
+    sound.playSfx('click');
+  };
+
   const isDuplicate = Boolean(summonResult?.wasDuplicate);
   const summonedPlaque = summonedHero ? getCharacterPlaque(summonedHero) : null;
   const summonedRarity = summonedHero ? (summonResult?.rarity || getHeroRarity(summonedHero)) : null;
   const focusPercent = Math.round((activeBannerData.focusRate || 1) * 100);
   const bannerRateLine = activeBannerData.id === 'multi'
     ? (lang === 'fr' ? 'Tous les heros ont le meme poids de faille.' : 'All heroes share the same rift weight.')
-    : (lang === 'fr' ? `Poids de faille ${focusPercent}: le booster attire cette famille de Trames. Appel x10: premiere carte harmonisee.` : `Rift weight ${focusPercent}: the booster attracts this Thread family. x10 call: first card harmonized.`);
+    : focusPercent >= 100
+      ? (lang === 'fr'
+          ? `Synchronisation exacte: chaque appel reste dans ${activeBannerData.universe}.`
+          : `Exact synchronization: every call stays inside ${activeBannerData.universe}.`)
+      : (lang === 'fr'
+          ? `Poids de faille ${focusPercent}: le booster attire cette Trame.`
+          : `Rift weight ${focusPercent}: the booster attracts this Thread.`);
   const pityLine = pityReady
     ? (lang === 'fr' ? 'Compas Nexus actif: le prochain appel cherche une signature absente.' : 'Nexus compass active: next call seeks a missing signature.')
     : (lang === 'fr' ? `Compas Nexus dans ${pityLimit - duplicateStreak} echo(s) deja scelle(s).` : `Nexus compass in ${pityLimit - duplicateStreak} already-sealed echo(es).`);
   const portalBackground = activeBackdrop
     ? `linear-gradient(180deg, rgba(4,2,10,0.55), rgba(4,2,10,0.92)), url(${activeBackdrop})`
-    : `radial-gradient(circle, ${activeBannerData.color}22 0%, #050209 72%)`;
+    : 'linear-gradient(180deg, rgba(4,2,10,0.62), rgba(4,2,10,0.94)), url(/images/missions/fusion-rifts.webp)';
 
   return (
     <div className="portal-container" style={{
@@ -335,40 +426,116 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
 
       {/* Banner Selectors */}
       <div style={{ width: '100%', maxWidth: '1060px', marginBottom: '25px', padding: '15px', background: 'rgba(5,4,12,0.72)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', backdropFilter: 'blur(6px)' }}>
-        <div style={{ fontSize: '11px', color: '#ffea00', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-          {getTranslation(lang, 'bannerSelect')}
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '12px', flexWrap: 'wrap', marginBottom: '12px' }}>
+          <div>
+            <div style={{ fontSize: '11px', color: '#ffea00', textTransform: 'uppercase', letterSpacing: '1px' }}>
+              {getTranslation(lang, 'bannerSelect')}
+            </div>
+            <div style={{ marginTop: '4px', color: '#9fb6bb', fontSize: '10px', lineHeight: 1.4 }}>
+              {lang === 'fr'
+                ? `${universePortalBanners.length} Trame(s) recrutables synchronisees / ${hiddenUniverseSet.size} en reserve`
+                : `${universePortalBanners.length} recruitable Thread(s) synchronized / ${hiddenUniverseSet.size} in reserve`}
+            </div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flex: '1 1 280px', maxWidth: '430px' }}>
+            <input
+              type="search"
+              value={packQuery}
+              onChange={event => setPackQuery(event.target.value)}
+              placeholder={lang === 'fr' ? 'Rechercher univers ou heros...' : 'Search universe or hero...'}
+              aria-label={lang === 'fr' ? 'Rechercher un pack actif' : 'Search an active pack'}
+              title={lang === 'fr'
+                ? 'Filtre immediatement les packs actifs par univers ou nom de heros.'
+                : 'Immediately filters active packs by universe or hero name.'}
+              style={{
+                width: '100%',
+                minWidth: 0,
+                padding: '9px 10px',
+                border: '1px solid rgba(155, 89, 182, 0.62)',
+                borderRadius: '4px',
+                background: 'rgba(0,0,0,0.56)',
+                color: '#fff',
+                fontFamily: 'inherit',
+                fontSize: '11px',
+                boxSizing: 'border-box'
+              }}
+            />
+            {packQuery && (
+              <button
+                type="button"
+                className="btn-retro"
+                onClick={() => setPackQuery('')}
+                title={lang === 'fr' ? 'Efface le filtre et montre tous les packs actifs.' : 'Clear the filter and show every active pack.'}
+                aria-label={lang === 'fr' ? 'Effacer la recherche' : 'Clear search'}
+                style={{ padding: '8px 10px', fontSize: '10px' }}
+              >
+                X
+              </button>
+            )}
+          </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: '10px' }}>
-          {visiblePortalBanners.map(banner => {
-            const visual = bannerVisuals[banner.id] || bannerVisuals.multi;
-            const pack = { ...banner, ...visual };
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(170px, 1fr))', gap: '10px' }}>
+          {displayedPortalBanners.map(banner => {
             const bannerHeroes = summonableHeroes.filter(hero => banner.match(hero));
             const owned = bannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
-            const isActive = activeBanner === banner.id;
-            const packImage = getOpenAiBackdropSrc(pack.universe, pack.mode);
+            const isActive = activeBannerData.id === banner.id;
+            const packImage = getOpenAiBackdropSrc(banner.universe, banner.mode) || '/images/missions/fusion-rifts.webp';
+            const packScope = banner.id === 'multi'
+              ? (lang === 'fr' ? 'SPECTRE' : 'SPECTRUM')
+              : banner.scope === 'universe'
+                ? (lang === 'fr' ? 'TRAME EXACTE' : 'EXACT THREAD')
+                : (lang === 'fr' ? 'SOCLE' : 'CORE');
             return (
               <button
                 key={banner.id}
-                onClick={() => { setActiveBanner(banner.id); sound.playSfx('click'); }}
+                type="button"
+                onClick={() => handleSelectBanner(banner.id)}
                 className={`portal-booster ${isActive ? 'selected' : ''}`}
+                aria-pressed={isActive}
                 title={lang === 'fr'
-                  ? `Selectionne cette banniere. Elle change les heros possibles et les chances de focus: ${owned}/${bannerHeroes.length} deja obtenus.`
-                  : `Select this banner. It changes possible heroes and focus odds: ${owned}/${bannerHeroes.length} already owned.`}
+                  ? `Selectionne ${banner.label.fr}. Ce pack contient ${bannerHeroes.length} heros actifs, dont ${owned} deja obtenus.`
+                  : `Select ${banner.label.en}. This pack contains ${bannerHeroes.length} active heroes, including ${owned} already owned.`}
                 style={{
                   '--pack-color': banner.color,
-                  backgroundImage: packImage ? `linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.86)), url(${packImage})` : undefined
+                  backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.86)), url(${packImage})`
                 }}
               >
-                <span className="portal-booster-kicker">{pack.mode}</span>
+                <span className="portal-booster-kicker">{banner.mode} / {banner.mediaLabel?.[lang] || (lang === 'fr' ? 'TRAME' : 'THREAD')}</span>
                 <span className="portal-booster-title">{banner.label[lang]}</span>
                 <span className="portal-booster-desc">{banner.desc[lang]}</span>
                 <span className="portal-booster-meta">
-                  {owned}/{bannerHeroes.length} - {banner.id === 'multi' ? (lang === 'fr' ? 'SPECTRE' : 'SPECTRUM') : `${Math.round(pack.focusRate * 100)} POIDS`}
+                  {owned}/{bannerHeroes.length} - {packScope}
                 </span>
               </button>
             );
           })}
         </div>
+        {filteredPortalBanners.length === 0 && (
+          <div style={{ padding: '22px 12px', textAlign: 'center', color: '#9fb6bb', fontSize: '11px' }}>
+            {lang === 'fr'
+              ? 'Aucun pack actif ne correspond. Reactive la Trame dans Regulation A.R.C.A. ou efface la recherche.'
+              : 'No active pack matches. Reactivate the Thread in A.R.C.A. Regulation or clear the search.'}
+          </div>
+        )}
+        {!normalizedPackQuery && filteredPortalBanners.length > PACK_PREVIEW_LIMIT && (
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '12px' }}>
+            <button
+              type="button"
+              className="btn-retro"
+              onClick={() => setShowAllPacks(current => !current)}
+              title={showAllPacks
+                ? (lang === 'fr' ? 'Reduit le catalogue aux premiers packs actifs.' : 'Collapse the catalog to the first active packs.')
+                : (lang === 'fr' ? 'Affiche tous les packs correspondant aux Trames actives.' : 'Show every pack matching active Threads.')}
+              style={{ fontSize: '10px', padding: '8px 12px' }}
+            >
+              {showAllPacks
+                ? (lang === 'fr' ? 'REDUIRE LE CATALOGUE' : 'COLLAPSE CATALOG')
+                : (lang === 'fr'
+                    ? `AFFICHER LES ${filteredPortalBanners.length - PACK_PREVIEW_LIMIT} PACKS SUIVANTS`
+                    : `SHOW ${filteredPortalBanners.length - PACK_PREVIEW_LIMIT} MORE PACKS`)}
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="portal-focus-panel" style={{ '--portal-color': activeBannerData.color }}>
@@ -379,7 +546,13 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
           <div className="portal-focus-stats">
             <span>{activeOwnedCount}/{activeBannerHeroes.length}</span>
             <span>{activeMissingCount} {lang === 'fr' ? 'signatures absentes' : 'absent signatures'}</span>
-            <span>{activeBannerData.id === 'multi' ? (lang === 'fr' ? 'SPECTRE COMPLET' : 'FULL SPECTRUM') : `${focusPercent} POIDS DE FAILLE`}</span>
+            <span>
+              {activeBannerData.id === 'multi'
+                ? (lang === 'fr' ? 'SPECTRE COMPLET' : 'FULL SPECTRUM')
+                : activeBannerData.scope === 'universe'
+                  ? (lang === 'fr' ? 'TRAME EXACTE' : 'EXACT THREAD')
+                  : `${focusPercent} ${lang === 'fr' ? 'POIDS DE FAILLE' : 'RIFT WEIGHT'}`}
+            </span>
           </div>
           <div className="portal-rate-grid">
             {activeRateSummary.map(rarity => (
@@ -415,6 +588,15 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
           <div
             className={`portal-vortex idle portal-shape-${activeBannerData.shape}`}
             data-label={activeBannerData.label[lang]}
+            role="button"
+            tabIndex={breachShards >= cost && activeBannerHeroes.length > 0 ? 0 : -1}
+            aria-disabled={breachShards < cost || activeBannerHeroes.length === 0}
+            aria-label={lang === 'fr'
+              ? `Lancer un appel dans ${activeBannerData.label.fr} pour ${cost} Fragments`
+              : `Start one call in ${activeBannerData.label.en} for ${cost} Shards`}
+            title={lang === 'fr'
+              ? `Depense ${cost} Fragments pour tirer 1 heros parmi les ${activeBannerHeroes.length} signatures actives de ce pack.`
+              : `Spend ${cost} Shards to draw 1 hero among this pack's ${activeBannerHeroes.length} active signatures.`}
             style={{
               '--portal-image': activeBackdrop ? `url(${activeBackdrop})` : 'none',
               '--portal-color': activeBannerData.color,
@@ -422,6 +604,11 @@ export default function PortalScreen({ lang, breachShards, setBreachShards, port
               opacity: breachShards >= cost && activeBannerHeroes.length > 0 ? 1 : 0.58
             }}
             onClick={handleSummon}
+            onKeyDown={event => {
+              if (event.key !== 'Enter' && event.key !== ' ') return;
+              event.preventDefault();
+              handleSummon();
+            }}
           >
             <span className="portal-energy portal-energy-back" />
             <span className="portal-energy portal-energy-front" />

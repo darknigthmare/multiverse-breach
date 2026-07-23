@@ -2,6 +2,10 @@
 
 import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from './expandedUniverses';
 import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './loreAccuratePacks';
+import {
+  SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS,
+  SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES
+} from './solarOppositesSirenStarWarsPack';
 
 export const HEROES_DB = [
   {
@@ -1892,6 +1896,7 @@ const CANON_ROSTER_EXTRA_PATCH = {
   ]
 };
 
+mergeExtraHeroData(extraHeroData, SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS);
 mergeExtraHeroData(extraHeroData, EXPANDED_EXTRA_HERO_DATA);
 mergeExtraHeroData(extraHeroData, CANON_ROSTER_EXPANSION);
 mergeExtraHeroData(extraHeroData, CANON_ROSTER_EXTRA_PATCH);
@@ -1929,7 +1934,10 @@ Object.keys(extraHeroData).forEach(universe => {
       simple: item.simple || { name: item.simpleName || `${item.name} Signature Strike`, type: defaultSimpleType, dmg: 1.0 },
       secondary: item.secondary || { name: item.secondaryName || `${item.name} Breach Technique`, type: resolvedWeapon === 'gun' ? 'projectile' : 'signature', cd: item.cd || 8, dmg: item.secondaryDmg || 2.2 },
       defense: item.defense || { name: item.defenseName || `${item.name} Guard`, type: 'shield', dur: item.dur || 2.0, reduce: item.reduce || 0.75 },
-      special: item.special || { name: item.specialName || `${item.name} Origin Burst`, type: 'origin_aoe', dmg: item.specialDmg || 4.5, color: item.specialColor || item.color }
+      special: item.special || { name: item.specialName || `${item.name} Origin Burst`, type: 'origin_aoe', dmg: item.specialDmg || 4.5, color: item.specialColor || item.color },
+      ...(item.equipment ? { equipment: item.equipment } : {}),
+      ...(item.incarnation ? { incarnation: item.incarnation } : {}),
+      ...(item.canonStatus ? { canonStatus: item.canonStatus } : {})
     });
   });
 });
@@ -2226,6 +2234,7 @@ const heroOverrides = {
 };
 
 Object.assign(heroOverrides, LORE_ACCURATE_HERO_OVERRIDES);
+Object.assign(heroOverrides, SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES);
 
 Object.entries(heroOverrides).forEach(([id, override]) => {
   const hero = HEROES_DB.find(item => item.id === id);

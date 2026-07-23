@@ -18,6 +18,7 @@ import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig'
 import { FEATURED_UNIVERSE_ICONS } from '../game/featuredUniversePacks';
 import RaceMode from './RaceMode';
 import FighterMode from './FighterMode';
+import RegulationImagePreview from './RegulationImagePreview';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
@@ -34,6 +35,201 @@ const getLocalizedText = (entry, lang, fallback = '') => {
   if (typeof entry === 'string') return entry;
   return entry[lang] || entry.fr || entry.en || fallback;
 };
+
+function OperationsSectionTabs({ lang, items, activeId, onChange, label }) {
+  return (
+    <div
+      className="operations-section-tabs"
+      role="tablist"
+      aria-label={label || (lang === 'fr' ? 'Sections du dossier' : 'Dossier sections')}
+    >
+      {items.map(item => (
+        <button
+          key={item.id}
+          type="button"
+          role="tab"
+          aria-selected={activeId === item.id}
+          onClick={() => onChange(item.id)}
+          title={getLocalizedText(item.tooltip, lang, getLocalizedText(item.label, lang))}
+        >
+          <span>{getLocalizedText(item.label, lang)}</span>
+          {item.count !== undefined && <b>{item.count}</b>}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function MissionDirectory({
+  lang,
+  stages,
+  completedStages,
+  isStageUnlocked,
+  onOpenBriefing,
+  onLaunch,
+  getStageModifier,
+  getStageArc,
+  getLootRarity,
+  getRichBreachBrief,
+  getStageRewardPreview,
+  accent = '#39c5bb',
+  emptyBackdrop
+}) {
+  const [query, setQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState('all');
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredStages = stages.filter(stage => {
+    const completed = completedStages.includes(stage.id);
+    const unlocked = isStageUnlocked(stage);
+    const statusMatches = statusFilter === 'all'
+      || (statusFilter === 'available' && unlocked && !completed)
+      || (statusFilter === 'completed' && completed)
+      || (statusFilter === 'locked' && !unlocked);
+    if (!statusMatches) return false;
+    if (!normalizedQuery) return true;
+    return [
+      stage.id,
+      stage.name,
+      stage.displayName?.fr,
+      stage.displayName?.en,
+      stage.universe,
+      ...(stage.sourceUniverses || []),
+      stage.bossName,
+      stage.mode
+    ].filter(Boolean).some(value => String(value).toLowerCase().includes(normalizedQuery));
+  });
+  const statusItems = [
+    { id: 'all', label: { fr: 'TOUTES', en: 'ALL' }, count: stages.length },
+    {
+      id: 'available',
+      label: { fr: 'OUVERTES', en: 'OPEN' },
+      count: stages.filter(stage => isStageUnlocked(stage) && !completedStages.includes(stage.id)).length
+    },
+    {
+      id: 'completed',
+      label: { fr: 'STABILISEES', en: 'STABILIZED' },
+      count: stages.filter(stage => completedStages.includes(stage.id)).length
+    },
+    {
+      id: 'locked',
+      label: { fr: 'SCELLEES', en: 'SEALED' },
+      count: stages.filter(stage => !isStageUnlocked(stage)).length
+    }
+  ];
+
+  return (
+    <section className="mission-directory" style={{ '--operations-accent': accent }}>
+      <header className="mission-directory-head">
+        <div>
+          <span className="portal-focus-kicker">{lang === 'fr' ? 'REPERTOIRE A.R.C.A.' : 'A.R.C.A. DIRECTORY'}</span>
+          <h4>{lang === 'fr' ? 'Missions de cette route' : 'Missions on this route'}</h4>
+        </div>
+        <label>
+          <span>{lang === 'fr' ? 'RECHERCHE' : 'SEARCH'}</span>
+          <input
+            value={query}
+            onChange={event => setQuery(event.target.value)}
+            placeholder={lang === 'fr' ? 'Nom, univers, boss ou mode...' : 'Name, universe, boss, or mode...'}
+          />
+        </label>
+      </header>
+      <OperationsSectionTabs
+        lang={lang}
+        items={statusItems}
+        activeId={statusFilter}
+        onChange={setStatusFilter}
+        label={lang === 'fr' ? 'Filtrer les missions par statut' : 'Filter missions by status'}
+      />
+      {filteredStages.length > 0 ? (
+        <div className="mission-directory-list">
+          {filteredStages.map(stage => {
+            const completed = completedStages.includes(stage.id);
+            const unlocked = isStageUnlocked(stage);
+            const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode)
+              || emptyBackdrop
+              || '/images/missions/fusion-rifts.webp';
+            const modifier = getStageModifier(stage);
+            const rarity = getLootRarity(stage);
+            const stageArc = getStageArc(stage);
+            const rewardPreview = getStageRewardPreview(stage) || [];
+            const statusLabel = completed
+              ? (lang === 'fr' ? 'STABILISEE' : 'STABILIZED')
+              : unlocked
+                ? (lang === 'fr' ? 'OUVERTE' : 'OPEN')
+                : (lang === 'fr' ? 'SCELLEE' : 'SEALED');
+            return (
+              <article
+                key={stage.id}
+                className={`mission-directory-entry ${completed ? 'is-complete' : ''} ${!unlocked ? 'is-locked' : ''}`}
+              >
+                <div
+                  className="mission-directory-art"
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(3,2,8,0.05), rgba(3,2,8,0.82)), url("${backdrop}")`
+                  }}
+                >
+                  <span>#{stage.id}</span>
+                  <b>{statusLabel}</b>
+                </div>
+                <div className="mission-directory-copy">
+                  <div className="mission-directory-title">
+                    <div>
+                      <span>{stage.sourceUniverses?.join(' / ') || stage.universe}</span>
+                      <h5>{stage.displayName?.[lang] || stage.name}</h5>
+                    </div>
+                    <em>{stage.mode}</em>
+                  </div>
+                  <p>{getRichBreachBrief(stage)}</p>
+                  <div className="mission-directory-tags">
+                    <span style={{ '--tag-color': modifier.color }}>{modifier.name[lang]}</span>
+                    <span style={{ '--tag-color': rarity.color }}>{rarity.label}</span>
+                    {stageArc && <span style={{ '--tag-color': stageArc.color }}>{getLocalizedText(stageArc.title, lang)}</span>}
+                  </div>
+                  <div className="mission-directory-meta">
+                    <span>{lang === 'fr' ? 'Menace' : 'Threat'}: <strong>{stage.bossName}</strong></span>
+                    <span>{rewardPreview.slice(0, 2).join(' / ')}</span>
+                  </div>
+                </div>
+                <div className="mission-directory-actions">
+                  <button
+                    type="button"
+                    className="btn-retro"
+                    onClick={() => onOpenBriefing(stage)}
+                    title={lang === 'fr' ? 'Ouvre le dossier complet de cette mission.' : 'Open this mission full dossier.'}
+                  >
+                    {lang === 'fr' ? 'BRIEFING' : 'BRIEFING'}
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-retro mission-directory-launch"
+                    disabled={!unlocked}
+                    onClick={() => onLaunch(stage)}
+                    title={unlocked
+                      ? (lang === 'fr' ? 'Lance cette mission avec l escouade active.' : 'Start this mission with the active squad.')
+                      : (lang === 'fr' ? 'Cette mission est encore scellee.' : 'This mission is still sealed.')}
+                  >
+                    {unlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLEE' : 'SEALED')}
+                  </button>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      ) : (
+        <div
+          className="operations-empty-state"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(4,3,10,0.98), rgba(4,3,10,0.72)), url("${emptyBackdrop || '/images/missions/fusion-rifts.webp'}")`
+          }}
+        >
+          <span className="portal-focus-kicker">{lang === 'fr' ? 'AUCUN SIGNAL' : 'NO SIGNAL'}</span>
+          <strong>{lang === 'fr' ? 'Aucune mission ne correspond a cette lecture' : 'No mission matches this reading'}</strong>
+          <p>{lang === 'fr' ? 'Modifie la recherche ou le statut affiche.' : 'Change the search or displayed status.'}</p>
+        </div>
+      )}
+    </section>
+  );
+}
 
 function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnlocked, onOpenBriefing }) {
   const currentChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === currentChapter.id);
@@ -474,82 +670,6 @@ const buildArcTimeline = (arc, linkedStages = [], completedStages = [], lang = '
   return nodes;
 };
 
-function NarrativeArcSequencePanel({ lang, arcs, stages, completedStages, onSelectStage }) {
-  if (!arcs?.length) return null;
-  return (
-    <div style={{
-      padding: '14px',
-      marginBottom: '14px',
-      border: '1px solid rgba(255,177,92,0.24)',
-      background: 'rgba(255,177,92,0.055)',
-      borderRadius: '5px'
-    }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
-        <div>
-          <div style={{ fontSize: '11px', color: '#ffb15c', textTransform: 'uppercase', fontWeight: 'bold' }}>
-            {lang === 'fr' ? 'Routes narratives liees a la carte' : 'Map-linked narrative routes'}
-          </div>
-          <div style={{ fontSize: '10px', color: '#d8c5af', lineHeight: 1.35, marginTop: '3px' }}>
-            {lang === 'fr'
-              ? 'Un arc n est plus une mission isolee: intro, missions, interludes, intro boss, boss puis sortie. Les noeuds mission/boss ouvrent leur faille associee.'
-              : 'An arc is no longer a single mission: intro, missions, interludes, boss intro, boss, then outro. Mission/boss nodes open their linked rift.'}
-          </div>
-        </div>
-        <span style={{ color: '#ffeb3b', fontSize: '10px' }}>{arcs.length} {lang === 'fr' ? 'arcs visibles' : 'visible arcs'}</span>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', gap: '10px' }}>
-        {arcs.map(arc => {
-          const linkedStages = getLinkedStagesForArc(arc, stages, BASE_HEROES_DB);
-          const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
-          const doneCount = timeline.filter(node => node.status === 'done').length;
-          const ratio = timeline.length ? doneCount / timeline.length : 0;
-          return (
-            <div key={arc.id} style={{ padding: '11px', border: '1px solid rgba(255,255,255,0.09)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '7px' }}>
-                <strong style={{ color: ratio >= 1 ? '#2ecc71' : '#ffb15c', fontSize: '11px' }}>{getLocalizedText(arc.title, lang, arc.id)}</strong>
-                <span style={{ color: '#ffeb3b', fontSize: '9px' }}>{doneCount}/{timeline.length}</span>
-              </div>
-              <div style={{ height: '5px', background: '#111', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '4px', overflow: 'hidden', marginBottom: '8px' }}>
-                <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: ratio >= 1 ? '#2ecc71' : '#ffb15c' }} />
-              </div>
-              <div style={{ display: 'grid', gap: '5px' }}>
-                {timeline.map((node, index) => {
-                  const clickable = node.stage && onSelectStage;
-                  const color = node.status === 'done' ? '#2ecc71' : node.status === 'locked' ? '#666' : node.type.includes('boss') ? '#e74c3c' : '#39c5bb';
-                  return (
-                    <button
-                      key={`${arc.id}-${node.type}-${index}`}
-                      type="button"
-                      disabled={!clickable}
-                      onClick={() => clickable && onSelectStage(node.stage)}
-                      className="btn-retro mission-screen-card"
-                      style={{
-                        textAlign: 'left',
-                        borderColor: color,
-                        color,
-                        background: node.status === 'done' ? 'rgba(46,204,113,0.07)' : node.status === 'locked' ? 'rgba(255,255,255,0.015)' : 'rgba(57,197,187,0.05)',
-                        padding: '7px',
-                        fontSize: '9px',
-                        lineHeight: 1.3,
-                        cursor: clickable ? 'pointer' : 'default'
-                      }}
-                    >
-                      <b>{node.label}</b>{node.stage ? ` #${node.stage.id}` : ''} - {node.text}
-                    </button>
-                  );
-                })}
-              </div>
-              <div style={{ color: '#ffeb3b', fontSize: '9px', marginTop: '7px', lineHeight: 1.3 }}>
-                {lang === 'fr' ? 'Recompense' : 'Reward'}: {getLocalizedText(arc.reward, lang, getLocalizedText(arc.rewardItemName, lang, 'Trace Nexus'))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
 function NarrativeArcGroupBrowser({
   lang,
   groups,
@@ -559,6 +679,8 @@ function NarrativeArcGroupBrowser({
   onOpenArc,
   stages,
   completedStages,
+  groupView = 'chapters',
+  onGroupViewChange,
   categoryColor = '#ffb15c',
   getStageUnlockRequirementText,
   emptyBackdrop
@@ -691,7 +813,37 @@ function NarrativeArcGroupBrowser({
         </div>
         <span>{selectedGroup.arcs.length} {lang === 'fr' ? 'arc(s)' : 'arc(s)'}</span>
       </div>
-      <div className="arc-chapter-grid">
+      <OperationsSectionTabs
+        lang={lang}
+        items={[
+          {
+            id: 'chapters',
+            label: { fr: 'CHAPITRES', en: 'CHAPTERS' },
+            count: selectedGroup.arcs.length,
+            tooltip: {
+              fr: 'Affiche les arcs narratifs de cette vue.',
+              en: 'Show narrative arcs in this view.'
+            }
+          },
+          {
+            id: 'map',
+            label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' },
+            count: stages.filter(stage => selectedGroup.arcs.some(arc => (
+              stage.universeArc?.id === arc.id
+              || stage.characterArc?.id === arc.id
+              || stage.trioArc?.id === arc.id
+            ))).length,
+            tooltip: {
+              fr: 'Affiche uniquement les coordonnees liees a cette vue.',
+              en: 'Show only coordinates linked to this view.'
+            }
+          }
+        ]}
+        activeId={groupView}
+        onChange={onGroupViewChange}
+        label={lang === 'fr' ? 'Vue du dossier narratif' : 'Narrative dossier view'}
+      />
+      {groupView === 'chapters' && <div className="arc-chapter-grid">
         {selectedGroup.arcs.map(arc => {
           const linkedStages = getLinkedStagesForArc(arc, stages, BASE_HEROES_DB);
           const primaryStage = getPrimaryArcStage(arc);
@@ -733,26 +885,36 @@ function NarrativeArcGroupBrowser({
                 {lang === 'fr' ? 'Recompense' : 'Reward'}: {getLocalizedText(arc.reward, lang)}
               </span>
             </button>
-          );
-        })}
-      </div>
+            );
+          })}
+      </div>}
     </div>
   );
 }
 
 function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone, onCompleteIntro, onSelectStage, onBack, isStageUnlocked }) {
+  const [activeSection, setActiveSection] = useState('briefing');
+
+  useEffect(() => {
+    setActiveSection('briefing');
+  }, [arc?.id]);
+
   if (!arc) return null;
   const linkedStages = getLinkedStagesForArc(arc, stages, BASE_HEROES_DB);
   const timeline = buildArcTimeline(arc, linkedStages, completedStages, lang);
   const universes = getArcUniverses(arc, BASE_HEROES_DB);
   const cinematicFrames = universes.slice(0, 3).map((universe, index) => ({
     universe,
-    src: getOpenAiBackdropSrc(universe, ['RPG', 'Tactics', 'Smash'][index % 3]),
+    src: getOpenAiBackdropSrc(universe, ['RPG', 'Tactics', 'Smash'][index % 3]) || '/images/missions/universe-arcs.webp',
     color: getUniverseHubColor(universe)
   }));
   while (cinematicFrames.length < 3) {
     const universe = universes[0] || 'Nexus de Convergence';
-    cinematicFrames.push({ universe, src: getOpenAiBackdropSrc(universe, 'RPG'), color: getUniverseHubColor(universe) });
+    cinematicFrames.push({
+      universe,
+      src: getOpenAiBackdropSrc(universe, 'RPG') || '/images/missions/universe-arcs.webp',
+      color: getUniverseHubColor(universe)
+    });
   }
 
   let previousPlayableDone = introDone;
@@ -770,6 +932,25 @@ function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone,
   const doneCount = detailedTimeline.filter(node => node.done).length;
   const ratio = detailedTimeline.length ? Math.round((doneCount / detailedTimeline.length) * 100) : 0;
   const rewardText = getLocalizedText(arc.reward, lang, getLocalizedText(arc.rewardItemName, lang, 'Trace Nexus'));
+  const resolutionText = getLocalizedText(arc.outro || arc.finale, lang);
+  const sectionItems = [
+    {
+      id: 'briefing',
+      label: { fr: 'BRIEFING', en: 'BRIEFING' },
+      tooltip: { fr: 'Contexte initial et transmission d ouverture.', en: 'Opening context and transmission.' }
+    },
+    {
+      id: 'missions',
+      label: { fr: 'MISSIONS', en: 'MISSIONS' },
+      count: detailedTimeline.length,
+      tooltip: { fr: 'Etapes jouables et ordre de progression.', en: 'Playable steps and progression order.' }
+    },
+    {
+      id: 'rewards',
+      label: { fr: 'RECOMPENSES', en: 'REWARDS' },
+      tooltip: { fr: 'Cache finale et resolution de l arc.', en: 'Final cache and arc resolution.' }
+    }
+  ];
 
   return (
     <div className="arc-detail-page">
@@ -780,7 +961,7 @@ function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone,
         <div>
           <div className="portal-focus-kicker">{lang === 'fr' ? 'ROUTE NARRATIVE / ARC DEDIE' : 'NARRATIVE ROUTE / DEDICATED ARC'}</div>
           <h3>{getLocalizedText(arc.title, lang, arc.id)}</h3>
-          <p>{getLocalizedText(arc.intro, lang)}</p>
+          <p>{universes.join(' / ') || (lang === 'fr' ? 'Nexus de Convergence' : 'Convergence Nexus')}</p>
         </div>
         <div className="arc-progress-badge">
           <strong>{ratio}%</strong>
@@ -788,85 +969,112 @@ function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone,
         </div>
       </div>
 
-      <div className="arc-cinematic-card">
-        <div className="arc-cinematic-strip">
-          {cinematicFrames.map((frame, index) => (
-            <div
-              key={`${arc.id}-frame-${index}`}
-              className="arc-cinematic-frame"
-              style={{
-                '--arc-color': frame.color,
-                backgroundImage: frame.src
-                  ? `linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.82)), url(${frame.src})`
-                  : `radial-gradient(circle, ${frame.color}44, #050209 72%)`,
-                animationDelay: `${index * 0.18}s`
-              }}
-            >
-              <span>{frame.universe}</span>
-            </div>
-          ))}
-        </div>
-        <div className="arc-cinematic-copy">
-          <strong>{introDone ? (lang === 'fr' ? 'Intro stabilisee' : 'Intro stabilized') : (lang === 'fr' ? 'Intro verrou initial' : 'Intro initial lock')}</strong>
-          <p>
-            {lang === 'fr'
-              ? 'La scenette fixe le contexte de l arc avant toute mission. Une fois l intro lue, A.R.C.A. ouvre la premiere coordonnee jouable.'
-              : 'The scene sets the arc context before any mission. Once the intro is read, A.R.C.A. opens the first playable coordinate.'}
-          </p>
-          <button
-            type="button"
-            className="btn-retro"
-            onClick={onCompleteIntro}
-            disabled={introDone}
-            title={lang === 'fr' ? 'Marque l intro comme lue et debloque la premiere mission de cet arc.' : 'Mark the intro as read and unlock this arc first mission.'}
-            style={{ borderColor: introDone ? '#2ecc71' : '#ffeb3b', color: introDone ? '#2ecc71' : '#ffeb3b' }}
-          >
-            {introDone ? (lang === 'fr' ? 'INTRO LUE' : 'INTRO READ') : (lang === 'fr' ? 'LIRE INTRO' : 'READ INTRO')}
-          </button>
-        </div>
-      </div>
+      <OperationsSectionTabs
+        lang={lang}
+        items={sectionItems}
+        activeId={activeSection}
+        onChange={(sectionId) => {
+          setActiveSection(sectionId);
+          sound.playSfx('click');
+        }}
+        label={lang === 'fr' ? 'Sections de l arc narratif' : 'Narrative arc sections'}
+      />
 
-      <div className="arc-detail-timeline">
-        {detailedTimeline.map((node, index) => {
-          const color = node.done ? '#2ecc71' : !node.unlocked ? '#666' : node.type.includes('boss') ? '#e74c3c' : node.type === 'interlude' ? '#ffb15c' : '#39c5bb';
-          const canLaunch = node.stage && node.unlocked && !node.done;
-          return (
-            <div key={`${arc.id}-detail-${node.type}-${index}`} className="arc-detail-node" style={{ '--arc-color': color }}>
-              <div className="arc-detail-node-head">
-                <span>{node.label}</span>
-                <b>{node.done ? (lang === 'fr' ? 'STABLE' : 'STABLE') : node.unlocked ? (lang === 'fr' ? 'OUVERT' : 'OPEN') : (lang === 'fr' ? 'VERROUILLE' : 'LOCKED')}</b>
+      {activeSection === 'briefing' && (
+        <div className="arc-cinematic-card" role="tabpanel">
+          <div className="arc-cinematic-strip">
+            {cinematicFrames.map((frame, index) => (
+              <div
+                key={`${arc.id}-frame-${index}`}
+                className="arc-cinematic-frame"
+                style={{
+                  '--arc-color': frame.color,
+                  backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.82)), url(${frame.src})`,
+                  animationDelay: `${index * 0.18}s`
+                }}
+              >
+                <span>{frame.universe}</span>
               </div>
-              <p>{node.text}</p>
-              {node.stage && (
-                <div className="arc-detail-stage">
-                  <span>#{node.stage.id} / {node.stage.mode} / {node.stage.bossName}</span>
-                  <button
-                    type="button"
-                    className="btn-retro"
-                    disabled={!canLaunch}
-                    onClick={() => onSelectStage(node.stage)}
-                    title={canLaunch
-                      ? (lang === 'fr' ? 'Lance cette mission de l arc.' : 'Start this arc mission.')
-                      : node.done
-                        ? (lang === 'fr' ? 'Mission deja terminee.' : 'Mission already completed.')
-                        : node.stageLocked
-                          ? (lang === 'fr' ? 'Mission verrouillee par progression globale.' : 'Mission locked by global progress.')
-                          : (lang === 'fr' ? 'Termine l etape precedente pour debloquer cette mission.' : 'Complete the previous step to unlock this mission.')}
-                    style={{ borderColor: color, color }}
-                  >
-                    {node.done ? (lang === 'fr' ? 'TERMINE' : 'DONE') : canLaunch ? (lang === 'fr' ? 'LANCER' : 'START') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
-                  </button>
-                </div>
-              )}
+            ))}
+          </div>
+          <div className="arc-cinematic-copy">
+            <strong>{lang === 'fr' ? 'Situation initiale' : 'Opening situation'}</strong>
+            <p>{getLocalizedText(arc.intro, lang)}</p>
+            <div className={`arc-intro-status ${introDone ? 'is-complete' : ''}`}>
+              <span>{introDone
+                ? (lang === 'fr' ? 'Transmission lue, premiere coordonnee ouverte.' : 'Transmission read, first coordinate open.')
+                : (lang === 'fr' ? 'Transmission requise avant la premiere mission.' : 'Transmission required before the first mission.')}</span>
+              <button
+                type="button"
+                className="btn-retro"
+                onClick={onCompleteIntro}
+                disabled={introDone}
+                title={lang === 'fr' ? 'Valide l introduction et ouvre la premiere mission.' : 'Confirm the introduction and open the first mission.'}
+              >
+                {introDone ? (lang === 'fr' ? 'INTRO STABILISEE' : 'INTRO STABILIZED') : (lang === 'fr' ? 'LIRE L INTRO' : 'READ INTRO')}
+              </button>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </div>
+      )}
 
-      <div className="arc-detail-reward">
-        <strong>{lang === 'fr' ? 'Recompense finale' : 'Final reward'}</strong>
-        <span>{rewardText}</span>
-      </div>
+      {activeSection === 'missions' && (
+        <div className="arc-detail-timeline" role="tabpanel">
+          {detailedTimeline.map((node, index) => {
+            const color = node.done ? '#2ecc71' : !node.unlocked ? '#666' : node.type.includes('boss') ? '#e74c3c' : node.type === 'interlude' ? '#ffb15c' : '#39c5bb';
+            const canLaunch = node.stage && node.unlocked && !node.done;
+            return (
+              <div key={`${arc.id}-detail-${node.type}-${index}`} className="arc-detail-node" style={{ '--arc-color': color }}>
+                <div className="arc-detail-node-head">
+                  <span>{String(index + 1).padStart(2, '0')} / {node.label}</span>
+                  <b>{node.done ? (lang === 'fr' ? 'STABLE' : 'STABLE') : node.unlocked ? (lang === 'fr' ? 'OUVERT' : 'OPEN') : (lang === 'fr' ? 'VERROUILLE' : 'LOCKED')}</b>
+                </div>
+                <p>{node.text}</p>
+                {node.stage && (
+                  <div className="arc-detail-stage">
+                    <span>#{node.stage.id} / {node.stage.mode} / {node.stage.bossName}</span>
+                    <button
+                      type="button"
+                      className="btn-retro"
+                      disabled={!canLaunch}
+                      onClick={() => onSelectStage(node.stage)}
+                      title={canLaunch
+                        ? (lang === 'fr' ? 'Lance cette mission de l arc.' : 'Start this arc mission.')
+                        : node.done
+                          ? (lang === 'fr' ? 'Mission deja terminee.' : 'Mission already completed.')
+                          : node.stageLocked
+                            ? (lang === 'fr' ? 'Mission verrouillee par la progression globale.' : 'Mission locked by global progress.')
+                            : (lang === 'fr' ? 'Termine l etape precedente pour ouvrir cette mission.' : 'Complete the previous step to open this mission.')}
+                      style={{ borderColor: color, color }}
+                    >
+                      {node.done ? (lang === 'fr' ? 'TERMINEE' : 'DONE') : canLaunch ? (lang === 'fr' ? 'LANCER' : 'START') : (lang === 'fr' ? 'SCELLEE' : 'SEALED')}
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {activeSection === 'rewards' && (
+        <div className="arc-reward-dossier" role="tabpanel">
+          <section>
+            <span>{lang === 'fr' ? 'CACHE FINALE' : 'FINAL CACHE'}</span>
+            <strong>{rewardText}</strong>
+            <p>{ratio >= 100
+              ? (lang === 'fr' ? 'Toutes les etapes sont stabilisees. La cache est rattachee a cette route.' : 'Every step is stabilized. The cache is attached to this route.')
+              : (lang === 'fr' ? `${detailedTimeline.length - doneCount} etape(s) restent a stabiliser.` : `${detailedTimeline.length - doneCount} step(s) remain to stabilize.`)}</p>
+          </section>
+          {resolutionText && (
+            <section>
+              <span>{lang === 'fr' ? 'RESOLUTION' : 'RESOLUTION'}</span>
+              <strong>{lang === 'fr' ? 'Sortie de Trame' : 'Thread outcome'}</strong>
+              <p>{resolutionText}</p>
+            </section>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -935,9 +1143,23 @@ function FactionArcBrowser({ lang, arcProgress, onClaimArcReward }) {
     }
   ].filter(Boolean) : [];
   const sections = [
-    { id: 'briefing', label: lang === 'fr' ? 'BRIEFING' : 'BRIEFING' },
-    { id: 'missions', label: lang === 'fr' ? 'MISSIONS' : 'MISSIONS' },
-    { id: 'rewards', label: lang === 'fr' ? 'RECOMPENSES' : 'REWARDS' }
+    {
+      id: 'briefing',
+      label: { fr: 'BRIEFING', en: 'BRIEFING' },
+      tooltip: { fr: 'Incident, enjeu de Trame et directive A.R.C.A.', en: 'Incident, Thread stakes, and A.R.C.A. directive.' }
+    },
+    {
+      id: 'missions',
+      label: { fr: 'MISSIONS', en: 'MISSIONS' },
+      count: missionRows.length || selectedArc?.universes?.length || 0,
+      tooltip: { fr: 'Route ordonnee de ce conflit.', en: 'Ordered route for this conflict.' }
+    },
+    {
+      id: 'rewards',
+      label: { fr: 'RECOMPENSES', en: 'REWARDS' },
+      count: selectedArc?.rewards?.length || 1,
+      tooltip: { fr: 'Cache finale et conditions de recuperation.', en: 'Final cache and claim requirements.' }
+    }
   ];
 
   return (
@@ -1043,27 +1265,18 @@ function FactionArcBrowser({ lang, arcProgress, onClaimArcReward }) {
                 </div>
               </div>
 
-              <div className="faction-arc-tabs" role="tablist" aria-label={lang === 'fr' ? 'Sections du dossier' : 'Dossier sections'}>
-                {sections.map(section => (
-                  <button
-                    key={section.id}
-                    id={`faction-tab-${selectedArc.id}-${section.id}`}
-                    type="button"
-                    role="tab"
-                    aria-selected={activeSection === section.id}
-                    aria-controls={`faction-panel-${selectedArc.id}`}
-                    onClick={() => changeSection(section.id)}
-                  >
-                    {section.label}
-                  </button>
-                ))}
-              </div>
+              <OperationsSectionTabs
+                lang={lang}
+                items={sections}
+                activeId={activeSection}
+                onChange={changeSection}
+                label={lang === 'fr' ? 'Sections du dossier de faction' : 'Faction dossier sections'}
+              />
 
               <div
                 id={`faction-panel-${selectedArc.id}`}
                 className="faction-arc-panel"
                 role="tabpanel"
-                aria-labelledby={`faction-tab-${selectedArc.id}-${activeSection}`}
               >
                 {activeSection === 'briefing' && (
                   <div className="faction-briefing-grid">
@@ -3206,6 +3419,12 @@ function RiftBriefingPanel({
   getMissionLaunchBrief,
   getMissionOutcomePreview
 }) {
+  const [activeSection, setActiveSection] = useState('briefing');
+
+  useEffect(() => {
+    setActiveSection('briefing');
+  }, [stage?.id]);
+
   if (!stage) {
     return (
       <div className="rift-briefing-panel rift-briefing-empty">
@@ -3230,77 +3449,159 @@ function RiftBriefingPanel({
   const launchBrief = getMissionLaunchBrief ? getMissionLaunchBrief(stage) : [];
   const outcomePreview = getMissionOutcomePreview ? getMissionOutcomePreview(stage) : [];
   const lockedReason = !isUnlocked(stage) && getLockedReason ? getLockedReason(stage) : '';
+  const richBrief = getRichBreachBrief(stage) || '';
+  const richBriefSentences = richBrief
+    .split(/(?<=[.!?])\s+(?=[A-ZÀ-ÖØ-Þ0-9])/u)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const missionBriefLines = [...launchBrief, ...richBriefSentences];
+  const directiveLine = missionBriefLines.find((line) => /objectif lore|directive a\.?r\.?c\.?a\.?/i.test(line));
+  const anomalyLine = missionBriefLines.find((line) => /anomalie active|protocole [^:]+:/i.test(line));
+  const contextLine = richBriefSentences
+    .filter((line) => line !== directiveLine && line !== anomalyLine)
+    .slice(0, 2)
+    .join(' ');
+  const briefingDigest = [
+    {
+      label: lang === 'fr' ? 'CONTEXTE' : 'CONTEXT',
+      value: contextLine || launchBrief[0]
+    },
+    {
+      label: lang === 'fr' ? 'DIRECTIVE' : 'DIRECTIVE',
+      value: directiveLine || launchBrief[1]
+    },
+    {
+      label: lang === 'fr' ? 'ANOMALIE' : 'ANOMALY',
+      value: anomalyLine || launchBrief[2] || modifier.desc[lang]
+    }
+  ].filter((entry) => entry.value);
+  const sectionItems = [
+    {
+      id: 'briefing',
+      label: { fr: 'BRIEFING', en: 'BRIEFING' },
+      tooltip: { fr: 'Situation et transmission avant deploiement.', en: 'Situation and pre-deployment transmission.' }
+    },
+    {
+      id: 'intel',
+      label: { fr: 'MENACES', en: 'THREATS' },
+      tooltip: { fr: 'Boss, modificateur et prerequis de la faille.', en: 'Rift boss, modifier, and requirements.' }
+    },
+    {
+      id: 'rewards',
+      label: { fr: 'RECOMPENSES', en: 'REWARDS' },
+      count: rewardPreview.length,
+      tooltip: { fr: 'Cache estimee et consequences A.R.C.A.', en: 'Estimated cache and A.R.C.A. consequences.' }
+    }
+  ];
 
   return (
     <div className="rift-briefing-panel">
-      <div
-        className="rift-briefing-art"
-        style={{
-          backgroundImage: backdrop
-            ? `linear-gradient(rgba(0,0,0,0.08), rgba(0,0,0,0.35)), url(${backdrop})`
-            : 'linear-gradient(135deg, rgba(57,197,187,0.18), rgba(155,89,182,0.14))'
+      <div className="rift-briefing-summary">
+        <div
+          className="rift-briefing-art"
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.04), rgba(0,0,0,0.58)), url(${backdrop || '/images/missions/campaign-oc.webp'})`
+          }}
+        >
+          <span>{isUnlocked(stage) ? (lang === 'fr' ? 'SIGNAL OUVERT' : 'OPEN SIGNAL') : (lang === 'fr' ? 'SIGNAL SCELLE' : 'SEALED SIGNAL')}</span>
+        </div>
+        <div className="rift-briefing-heading">
+          <div className="portal-focus-kicker">
+            {lang === 'fr' ? 'DOSSIER DE FAILLE' : 'RIFT DOSSIER'}
+          </div>
+          <div className="rift-briefing-title">
+            #{stage.id} {stage.displayName?.[lang] || stage.name}
+          </div>
+          <div className="rift-briefing-tags">
+            <span>{stage.mode}</span>
+            <span>{stage.sourceUniverses?.join(' / ') || stage.universe}</span>
+            <span style={{ '--rift-tag-color': rarity.color }}>{rarity.label}</span>
+          </div>
+        </div>
+      </div>
+
+      <OperationsSectionTabs
+        lang={lang}
+        items={sectionItems}
+        activeId={activeSection}
+        onChange={(sectionId) => {
+          setActiveSection(sectionId);
+          sound.playSfx('click');
         }}
+        label={lang === 'fr' ? 'Sections du dossier de faille' : 'Rift dossier sections'}
       />
-      <div>
-        <div className="portal-focus-kicker">
-          {lang === 'fr' ? 'INSPECTEUR DE FAILLE' : 'RIFT INSPECTOR'}
-        </div>
-        <div className="rift-briefing-title">
-          #{stage.id} {stage.displayName?.[lang] || stage.name}
-        </div>
-        <div className="rift-briefing-copy">
-          {getRichBreachBrief(stage)}
-        </div>
-        {launchBrief.length > 0 && (
-          <div className="rift-briefing-block">
-            <strong>{lang === 'fr' ? 'Intro de lancement' : 'Launch intro'}</strong>
-            {launchBrief.map((line, index) => <span key={index}>{line}</span>)}
+
+      <div className="rift-briefing-section" role="tabpanel">
+        {activeSection === 'briefing' && (
+          <>
+            <div className="rift-briefing-digest" aria-label={lang === 'fr' ? 'Synthese du briefing' : 'Briefing summary'}>
+              {briefingDigest.map((entry) => (
+                <section key={entry.label}>
+                  <span>{entry.label}</span>
+                  <p>{entry.value}</p>
+                </section>
+              ))}
+            </div>
+            {stage.storyBeat?.intro && (
+              <div className="rift-briefing-block story">
+                <strong>{lang === 'fr' ? 'Scene OC Nexus' : 'Nexus OC scene'}</strong>
+                <span>{stage.storyBeat.intro?.[lang]}</span>
+              </div>
+            )}
+            {stageArc && (
+              <div className="rift-briefing-block arc">
+                <strong>{getLocalizedText(stageArc.title, lang)}</strong>
+                <span>{getLocalizedText(stageArc.premise, lang)}</span>
+              </div>
+            )}
+          </>
+        )}
+
+        {activeSection === 'intel' && (
+          <div className="rift-intel-grid">
+            <section>
+              <span>{lang === 'fr' ? 'MENACE PRINCIPALE' : 'PRIMARY THREAT'}</span>
+              <strong>{bossIntel?.name || stage.bossName}</strong>
+              <p>{bossIntel?.special || (lang === 'fr' ? 'Anomalie non cataloguee.' : 'Uncatalogued anomaly.')}</p>
+            </section>
+            <section>
+              <span>{lang === 'fr' ? 'REGLE DE FAILLE' : 'RIFT RULE'}</span>
+              <strong style={{ color: modifier.color }}>{modifier.name[lang]}</strong>
+              <p>{modifier.desc[lang]}</p>
+            </section>
+            <section>
+              <span>{lang === 'fr' ? 'SIGNATURE' : 'SIGNATURE'}</span>
+              <strong style={{ color: rarity.color }}>{rarity.label}</strong>
+              <p>{stage.sourceUniverses?.join(' / ') || stage.universe}</p>
+            </section>
+            {lockedReason && (
+              <section className="is-locked">
+                <span>{lang === 'fr' ? 'PREREQUIS' : 'REQUIREMENTS'}</span>
+                <strong>{lang === 'fr' ? 'Coordonnee scellee' : 'Sealed coordinate'}</strong>
+                <p>{lockedReason}</p>
+              </section>
+            )}
           </div>
         )}
-        {stage.storyBeat && (
-          <div className="rift-briefing-block">
-            <strong>{lang === 'fr' ? 'Scene OC Nexus' : 'Nexus OC scene'}</strong>
-            <span>{stage.storyBeat.intro?.[lang]}</span>
-            <span>{stage.storyBeat.outro?.[lang]}</span>
-          </div>
-        )}
-        <div className="rift-briefing-row">
-          <span>{lang === 'fr' ? 'Univers' : 'Universe'}: <strong>{stage.sourceUniverses?.join(' / ') || stage.universe}</strong></span>
-          <span>Boss: <strong>{bossIntel?.name || stage.bossName}</strong></span>
-        </div>
-        <div className="rift-briefing-row">
-          <span style={{ color: modifier.color }}>{modifier.name[lang]}: {modifier.desc[lang]}</span>
-        </div>
-        {stageArc && (
-          <div className="rift-briefing-row">
-            <span style={{ color: stageArc.color }}>{stageArc.title[lang]}: {stageArc.premise[lang]}</span>
-          </div>
-        )}
-        <div className="rift-briefing-row">
-          <span style={{ color: rarity.color }}>
-            {lang === 'fr' ? 'Signature estimee' : 'Estimated signature'}: {rarity.label}
-          </span>
-          <span>{bossIntel?.special || (lang === 'fr' ? 'Anomalie non cataloguée' : 'Uncatalogued anomaly')}</span>
-        </div>
-        {rewardPreview.length > 0 && (
-          <div className="rift-briefing-block reward">
-            <strong>{lang === 'fr' ? 'Cache prevue' : 'Expected cache'}</strong>
-            {rewardPreview.map((line, index) => <span key={index}>{line}</span>)}
-          </div>
-        )}
-        {lockedReason && (
-          <div className="rift-briefing-block locked">
-            <strong>{lang === 'fr' ? 'Prerequis verrouilles' : 'Locked requirements'}</strong>
-            <span>{lockedReason}</span>
-          </div>
-        )}
-        {outcomePreview.length > 0 && (
-          <div className="rift-briefing-block consequence">
-            <strong>{lang === 'fr' ? 'Consequences A.R.C.A.' : 'A.R.C.A. consequences'}</strong>
-            {outcomePreview.map((line, index) => <span key={index}>{line}</span>)}
+
+        {activeSection === 'rewards' && (
+          <div className="rift-reward-grid">
+            <section>
+              <span>{lang === 'fr' ? 'CACHE PREVUE' : 'EXPECTED CACHE'}</span>
+              {rewardPreview.length > 0
+                ? rewardPreview.map((line, index) => <strong key={index}>{line}</strong>)
+                : <strong>{lang === 'fr' ? 'Cache non calibree' : 'Uncalibrated cache'}</strong>}
+            </section>
+            <section>
+              <span>{lang === 'fr' ? 'CONSEQUENCES A.R.C.A.' : 'A.R.C.A. CONSEQUENCES'}</span>
+              {outcomePreview.length > 0
+                ? outcomePreview.map((line, index) => <p key={index}>{line}</p>)
+                : <p>{lang === 'fr' ? 'Les donnees de contact seront archivees apres la mission.' : 'Contact data will be archived after the mission.'}</p>}
+            </section>
           </div>
         )}
       </div>
+
       <div className="rift-briefing-actions">
         <button
           data-testid="selected-briefing-deploy"
@@ -3308,15 +3609,15 @@ function RiftBriefingPanel({
           disabled={!isUnlocked(stage)}
           className="btn-retro"
           title={isUnlocked(stage)
-            ? (lang === 'fr' ? 'Lance la mission affichee dans l inspecteur.' : 'Start the mission shown in this inspector.')
-            : (lang === 'fr' ? 'Mission verrouillee: stabilise plus de breches pour la debloquer.' : 'Mission locked: stabilize more breaches to unlock it.')}
+            ? (lang === 'fr' ? 'Lance la mission affichee avec l escouade active.' : 'Start the displayed mission with the active squad.')
+            : (lang === 'fr' ? 'Mission verrouillee: consulte les prerequis dans Menaces.' : 'Mission locked: review requirements under Threats.')}
         >
-          {isUnlocked(stage) ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLE' : 'SEALED')}
+          {isUnlocked(stage) ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLEE' : 'SEALED')}
         </button>
         <button
           onClick={onClose}
           className="btn-retro"
-          title={lang === 'fr' ? 'Ferme l inspecteur de faille.' : 'Close the rift inspector.'}
+          title={lang === 'fr' ? 'Ferme ce dossier et revient a la selection.' : 'Close this dossier and return to selection.'}
         >
           {lang === 'fr' ? 'FERMER' : 'CLOSE'}
         </button>
@@ -3373,6 +3674,8 @@ export default function HubScreen({
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
   const [missionScreen, setMissionScreen] = useState('index'); // 'index' | 'story' | 'universeArcs' | 'personalArcs' | 'trioArcs' | 'fusionMissions'
+  const [missionWorkspaceView, setMissionWorkspaceView] = useState('campaign');
+  const [narrativeGroupView, setNarrativeGroupView] = useState('chapters');
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
   const [showMissionArchive, setShowMissionArchive] = useState(false);
   const [briefingStageId, setBriefingStageId] = useState(null);
@@ -3542,8 +3845,8 @@ export default function HubScreen({
     { id: 'artifacts', mode: 'items', focus: 'ITEMS', text: { fr: 'Activer 3 artefacts de terrain', en: 'Activate 3 field artifacts' } },
     { id: 'rpg', mode: 'RPG', focus: 'ATB', text: { fr: 'Stabiliser une faille RPG', en: 'Stabilize one RPG breach' } },
     { id: 'tactics', mode: 'Tactics', focus: 'GRID', text: { fr: 'Gagner une mission tactique', en: 'Win one tactics mission' } },
-    { id: 'smash', mode: 'Smash', focus: 'BURST', text: { fr: 'Fermer une brèche Smash', en: 'Close one Smash breach' } },
-    { id: 'codex', mode: 'any', focus: 'LORE', text: { fr: 'Décrypter un nouveau boss dans le codex', en: 'Decrypt a new boss codex entry' } }
+    { id: 'smash', mode: 'Smash', focus: 'BURST', text: { fr: 'Fermer une breche Smash', en: 'Close one Smash breach' } },
+    { id: 'codex', mode: 'any', focus: 'LORE', text: { fr: 'Decrypter un nouveau boss dans le codex', en: 'Decrypt a new boss codex entry' } }
   ];
 
   const FACTION_RULES = [
@@ -5509,7 +5812,7 @@ export default function HubScreen({
     onLaunchStage(prepareStage(stage));
   };
 
-  const launchSurvival = () => {
+  const _launchSurvival = () => {
     const base = missionDeck.find(stage => isStageUnlocked(stage)) || nextUnclearedStage || STAGES[0];
     const preparedBase = prepareStage(base);
     onLaunchStage({
@@ -5536,7 +5839,7 @@ export default function HubScreen({
   const claimedDaily = activityProgress.dayKey === todayKey ? (activityProgress.claimedDaily || []) : [];
   const claimedWeekly = activityProgress.weekKey === currentWeekKey ? (activityProgress.claimedWeekly || []) : [];
   const claimedMilestones = activityProgress.claimedMilestones || [];
-  const dailyContracts = DAILY_CONTRACTS
+  const _dailyContracts = DAILY_CONTRACTS
     .map((contract, idx) => DAILY_CONTRACTS[(todayIndex + idx) % DAILY_CONTRACTS.length])
     .slice(0, 3);
   const todayItemActivations = activityProgress.dayKey === todayKey ? (activityProgress.itemActivations || 0) : 0;
@@ -5548,7 +5851,7 @@ export default function HubScreen({
     if (contract.mode === 'any') return (dailyModeWins.any || 0) > 0;
     return (dailyModeWins[contract.mode] || 0) > 0;
   };
-  const claimDailyContract = (contract) => {
+  const _claimDailyContract = (contract) => {
     if (!setActivityProgress || !isDailyContractDone(contract) || claimedDaily.includes(contract.id)) return;
     setGold(prev => prev + 35);
     setBreachShards(prev => prev + 12);
@@ -6317,6 +6620,10 @@ export default function HubScreen({
   useEffect(() => {
     setSelectedNarrativeArcId(null);
     setSelectedNarrativeGroupId(null);
+    setNarrativeGroupView('chapters');
+    setMissionWorkspaceView(missionScreen === 'story' ? 'campaign' : 'map');
+    setMissionModeFilter('all');
+    setBriefingStageId(null);
   }, [missionScreen]);
   useEffect(() => {
     if (selectedNarrativeGroupId && !narrativeArcGroups.some(group => group.id === selectedNarrativeGroupId)) {
@@ -6416,8 +6723,61 @@ export default function HubScreen({
   const riftJournal = (activityProgress.riftJournal || []).slice(0, 5);
   const clearedVisibleCount = missionPool.filter(stage => completedStages.includes(stage.id)).length;
   const isArcMissionScreen = Boolean(narrativeArcScreenType);
-  const showModeFilters = missionScreen === 'story' || missionScreen === 'fusionMissions';
-  const showStoryMissionTools = false;
+  const showModeFilters = (missionScreen === 'story' || missionScreen === 'fusionMissions')
+    && ['map', 'missions'].includes(missionWorkspaceView);
+  const missionWorkspaceItems = missionScreen === 'story'
+    ? [
+      {
+        id: 'campaign',
+        label: { fr: 'CHAPITRES', en: 'CHAPTERS' },
+        count: OC_CAMPAIGN_CHAPTERS.length,
+        tooltip: { fr: 'Affiche la campagne OC et ses transmissions.', en: 'Show the OC campaign and its transmissions.' }
+      },
+      {
+        id: 'map',
+        label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' },
+        count: missionPool.length,
+        tooltip: { fr: 'Localise les portails de la campagne active.', en: 'Locate portals in the active campaign.' }
+      },
+      {
+        id: 'missions',
+        label: { fr: 'MISSIONS', en: 'MISSIONS' },
+        count: missionPool.length,
+        tooltip: { fr: 'Affiche le repertoire complet de cette campagne.', en: 'Show this campaign full directory.' }
+      },
+      ...(riftJournal.length > 0 ? [{
+        id: 'journal',
+        label: { fr: 'JOURNAL', en: 'JOURNAL' },
+        count: riftJournal.length,
+        tooltip: { fr: 'Relit les derniers contacts de cette route.', en: 'Review recent contacts on this route.' }
+      }] : [])
+    ]
+    : [
+      {
+        id: 'map',
+        label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' },
+        count: missionPool.length,
+        tooltip: { fr: 'Localise les coordonnees fusionnees disponibles.', en: 'Locate available fused coordinates.' }
+      },
+      {
+        id: 'missions',
+        label: { fr: 'MISSIONS', en: 'MISSIONS' },
+        count: missionPool.length,
+        tooltip: { fr: 'Affiche le repertoire des failles fusionnees.', en: 'Show the fused rift directory.' }
+      },
+      {
+        id: 'protocols',
+        label: { fr: 'PROTOCOLES', en: 'PROTOCOLS' },
+        count: FUSION_MISSIONS.length,
+        tooltip: { fr: 'Consulte les signatures hybrides cataloguees.', en: 'Review catalogued hybrid signatures.' }
+      },
+      ...(riftJournal.length > 0 ? [{
+        id: 'journal',
+        label: { fr: 'JOURNAL', en: 'JOURNAL' },
+        count: riftJournal.length,
+        tooltip: { fr: 'Relit les derniers contacts de cette route.', en: 'Review recent contacts on this route.' }
+      }] : [])
+    ];
   const riftMapCopy = narrativeArcScreenType === 'universe'
     ? {
       kicker: lang === 'fr' ? 'CARTE DES FAILLES / ATLAS DES UNIVERS' : 'RIFT MAP / UNIVERSE ATLAS',
@@ -6467,8 +6827,8 @@ export default function HubScreen({
     lineHeight: 1
   });
   const openSpritePreview = (info, title, subtitle) => {
-    if (!info.ready) return;
-    setSpritePreview({ src: info.src, title, subtitle, kind: info.kind });
+    if (!info?.ready) return;
+    setSpritePreview({ ...info, title, subtitle });
     sound.playSfx('coin');
   };
 
@@ -6816,42 +7176,19 @@ export default function HubScreen({
                       ? 'Choisis une vue narrative avant d ouvrir son chapitre et ses coordonnees.'
                       : 'Choose a narrative view before opening its chapter and coordinates.')
                     : (lang === 'fr'
-                      ? `${missionDeck.length} cibles A.R.C.A. proposees dans cette route.`
-                      : `${missionDeck.length} A.R.C.A. targets proposed in this route.`)}
+                      ? `${missionPool.length} signal(s) rattache(s) a cette operation. Une seule vue est affichee a la fois.`
+                      : `${missionPool.length} signal(s) linked to this operation. One view is displayed at a time.`)}
               </span>
-              {!isArcMissionScreen && !isFactionArcScreen && (
+              {!isArcMissionScreen && !isFactionArcScreen && missionWorkspaceView === 'map' && (
                 <button
                   onClick={() => { setMissionSeed(prev => prev + 1); sound.playSfx('click'); }}
                   className="btn-retro"
-                  title={lang === 'fr' ? 'Regenere les missions proposees dans cette categorie.' : 'Refresh the proposed missions in this category.'}
+                  title={lang === 'fr' ? 'Recalcule la route courte recommandee sans changer de categorie.' : 'Recalculate the recommended short route without changing category.'}
                 >
-                  {lang === 'fr' ? 'RELIRE LES SIGNAUX' : 'REREAD SIGNALS'}
+                  {lang === 'fr' ? 'RECALCULER LA ROUTE' : 'RECALCULATE ROUTE'}
                 </button>
               )}
             </div>
-            {showModeFilters && (
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
-              {['all', 'RPG', 'Tactics', 'Smash'].map(mode => (
-                <button
-                  key={mode}
-                  onClick={() => { setMissionModeFilter(mode); setMissionSeed(Date.now()); sound.playSfx('click'); }}
-                  className={`btn-retro ${missionModeFilter === mode ? 'active-tab' : ''}`}
-                  title={mode === 'all'
-                    ? (lang === 'fr' ? 'Affiche tous les modes de jeu.' : 'Show every game mode.')
-                    : (lang === 'fr' ? `Affiche seulement les missions ${mode}.` : `Show only ${mode} missions.`)}
-                  style={{
-                    padding: '6px 10px',
-                    fontSize: '10px',
-                    borderColor: missionModeFilter === mode ? '#39c5bb' : '#444',
-                    color: missionModeFilter === mode ? '#39c5bb' : '#aaa'
-                  }}
-                >
-                  {mode === 'all' ? 'ALL' : mode.toUpperCase()}
-                </button>
-              ))}
-            </div>
-            )}
-
             {selectedNarrativeArc ? (
               <NarrativeArcDetailPage
                 lang={lang}
@@ -6878,81 +7215,89 @@ export default function HubScreen({
                   lang={lang}
                   groups={narrativeArcGroups}
                   selectedGroupId={selectedNarrativeGroupId}
-                  onSelectGroup={(groupId) => { setSelectedNarrativeGroupId(groupId); setBriefingStageId(null); sound.playSfx('coin'); }}
-                  onBackToGroups={() => { setSelectedNarrativeGroupId(null); setBriefingStageId(null); sound.playSfx('click'); }}
+                  onSelectGroup={(groupId) => { setSelectedNarrativeGroupId(groupId); setNarrativeGroupView('chapters'); setBriefingStageId(null); sound.playSfx('coin'); }}
+                  onBackToGroups={() => { setSelectedNarrativeGroupId(null); setNarrativeGroupView('chapters'); setBriefingStageId(null); sound.playSfx('click'); }}
                   onOpenArc={openNarrativeArc}
                   stages={visibleStages}
                   completedStages={completedStages}
+                  groupView={narrativeGroupView}
+                  onGroupViewChange={(viewId) => { setNarrativeGroupView(viewId); setBriefingStageId(null); sound.playSfx('click'); }}
                   categoryColor={selectedMissionMeta.color}
                   getStageUnlockRequirementText={getArcUnlockRequirementText}
                   emptyBackdrop={selectedMissionMeta.image}
                 />
-                {selectedNarrativeGroup && (
-                  <div className="rift-focus-strip" style={{ '--rift-view-color': selectedNarrativeGroup.color || selectedMissionMeta.color }}>
-                    <div>
-                      <div className="portal-focus-kicker">
-                        {lang === 'fr' ? 'FOCUS DE CARTE' : 'MAP FOCUS'}
-                      </div>
-                      <strong>{selectedNarrativeGroup.label}</strong>
-                      <span>{selectedNarrativeGroup.desc}</span>
-                    </div>
-                    <button
-                      type="button"
-                      className="btn-retro"
-                      onClick={() => { setSelectedNarrativeGroupId(null); setBriefingStageId(null); sound.playSfx('click'); }}
-                      title={lang === 'fr' ? 'Reaffiche toutes les vues narratives disponibles.' : 'Show every available narrative view again.'}
-                    >
-                      {lang === 'fr' ? 'TOUTES LES VUES' : 'ALL VIEWS'}
-                    </button>
+                {selectedNarrativeGroup && narrativeGroupView === 'map' && (
+                  <div className="rift-command-layout">
+                    <MultiverseRiftMap
+                      lang={lang}
+                      stages={focusedMissionPool}
+                      allStages={visibleStages}
+                      completedStages={completedStages}
+                      isStageUnlocked={isStageUnlocked}
+                      onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                      onSelectArc={openNarrativeArc}
+                      narrativeArcs={focusedNarrativeArcs}
+                      mapKicker={riftMapCopy.kicker}
+                      mapTitle={riftMapCopy.title}
+                      mapDescription={riftMapCopy.desc}
+                      getStageStatus={getStageStatus}
+                      getStageUnlockRequirementText={getArcUnlockRequirementText}
+                      getStageRewardPreview={getStageRewardPreview}
+                      selectedStageId={briefingStageId}
+                      viewType={narrativeArcScreenType}
+                    />
+                    <RiftBriefingPanel
+                      lang={lang}
+                      stage={selectedBriefingStage}
+                      isUnlocked={isStageUnlocked}
+                      onLaunch={launchStage}
+                      onClose={() => setBriefingStageId(null)}
+                      getStageModifier={getStageModifier}
+                      getStageArc={getStageArc}
+                      getLootRarity={getLootRarity}
+                      getBossIntel={getBossIntel}
+                      getRichBreachBrief={getRichBreachBrief}
+                      getLockedReason={getLockedReason}
+                      getStageRewardPreview={getStageRewardPreview}
+                      getMissionLaunchBrief={getMissionLaunchBrief}
+                      getMissionOutcomePreview={getMissionOutcomePreview}
+                    />
                   </div>
                 )}
-                <div className="rift-command-layout">
-                  <MultiverseRiftMap
-                    lang={lang}
-                    stages={focusedMissionPool}
-                    allStages={visibleStages}
-                    completedStages={completedStages}
-                    isStageUnlocked={isStageUnlocked}
-                    onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
-                    onSelectArc={openNarrativeArc}
-                    narrativeArcs={focusedNarrativeArcs}
-                    mapKicker={riftMapCopy.kicker}
-                    mapTitle={riftMapCopy.title}
-                    mapDescription={riftMapCopy.desc}
-                    getStageStatus={getStageStatus}
-                    getStageUnlockRequirementText={getArcUnlockRequirementText}
-                    getStageRewardPreview={getStageRewardPreview}
-                    selectedStageId={briefingStageId}
-                    viewType={narrativeArcScreenType}
-                  />
-                <RiftBriefingPanel
-                  lang={lang}
-                  stage={selectedBriefingStage}
-                    isUnlocked={isStageUnlocked}
-                    onLaunch={launchStage}
-                    onClose={() => setBriefingStageId(null)}
-                    getStageModifier={getStageModifier}
-                    getStageArc={getStageArc}
-                    getLootRarity={getLootRarity}
-                    getBossIntel={getBossIntel}
-                    getRichBreachBrief={getRichBreachBrief}
-                    getLockedReason={getLockedReason}
-                    getStageRewardPreview={getStageRewardPreview}
-                    getMissionLaunchBrief={getMissionLaunchBrief}
-                    getMissionOutcomePreview={getMissionOutcomePreview}
-                  />
-                </div>
-                <NarrativeArcSequencePanel
-                  lang={lang}
-                  arcs={focusedNarrativeArcs}
-                  stages={visibleStages}
-                  completedStages={completedStages}
-                  onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
-                />
               </>
             ) : (
               <>
-                {missionScreen === 'story' && (
+                <OperationsSectionTabs
+                  lang={lang}
+                  items={missionWorkspaceItems}
+                  activeId={missionWorkspaceView}
+                  onChange={(viewId) => {
+                    setMissionWorkspaceView(viewId);
+                    setBriefingStageId(null);
+                    sound.playSfx('click');
+                  }}
+                  label={lang === 'fr' ? 'Vues de cette operation' : 'Operation views'}
+                />
+
+                {showModeFilters && (
+                  <div className="mission-mode-filter" role="group" aria-label={lang === 'fr' ? 'Filtrer par mode de jeu' : 'Filter by game mode'}>
+                    {['all', 'RPG', 'Tactics', 'Smash'].map(mode => (
+                      <button
+                        key={mode}
+                        type="button"
+                        onClick={() => { setMissionModeFilter(mode); setMissionSeed(Date.now()); sound.playSfx('click'); }}
+                        className={`btn-retro ${missionModeFilter === mode ? 'active-tab' : ''}`}
+                        title={mode === 'all'
+                          ? (lang === 'fr' ? 'Affiche tous les modes de jeu.' : 'Show every game mode.')
+                          : (lang === 'fr' ? `Affiche seulement les missions ${mode}.` : `Show only ${mode} missions.`)}
+                      >
+                        {mode === 'all' ? (lang === 'fr' ? 'TOUS LES MODES' : 'ALL MODES') : mode.toUpperCase()}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {missionScreen === 'story' && missionWorkspaceView === 'campaign' && (
                   <OcCampaignChronicle
                     lang={lang}
                     completedStages={completedStages}
@@ -6960,147 +7305,119 @@ export default function HubScreen({
                     isStageUnlocked={isStageUnlocked}
                     onOpenBriefing={(stage) => {
                       setBriefingStageId(stage.id);
+                      setMissionWorkspaceView('map');
                       sound.playSfx('click');
                     }}
                   />
                 )}
-                {arcaRoute.length > 0 && (
-                  <div className="arca-route-panel">
-                    <div>
-                      <div className="portal-focus-kicker">{lang === 'fr' ? 'ROUTE A.R.C.A.' : 'A.R.C.A. ROUTE'}</div>
-                      <h4>{lang === 'fr' ? 'Parcours recommande court' : 'Short recommended path'}</h4>
+
+                {missionWorkspaceView === 'map' && (
+                  <>
+                    {arcaRoute.length > 0 && (
+                      <div className="arca-route-panel">
+                        <div>
+                          <div className="portal-focus-kicker">{lang === 'fr' ? 'ROUTE A.R.C.A.' : 'A.R.C.A. ROUTE'}</div>
+                          <h4>{lang === 'fr' ? 'Parcours recommande court' : 'Short recommended path'}</h4>
+                        </div>
+                        <div className="arca-route-list">
+                          {arcaRoute.map(route => (
+                            <button
+                              key={route.id}
+                              type="button"
+                              className={`arca-route-card ${briefingStageId === route.stage.id ? 'selected' : ''}`}
+                              onClick={() => { setBriefingStageId(route.stage.id); sound.playSfx('click'); }}
+                              title={lang === 'fr' ? `Inspecte ${route.stage.displayName?.fr || route.stage.name}.` : `Inspect ${route.stage.displayName?.en || route.stage.name}.`}
+                            >
+                              <strong>{route.label}</strong>
+                              <span>#{route.stage.id} {route.stage.displayName?.[lang] || route.stage.name}</span>
+                              <em>{route.reason}</em>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    <div className="rift-command-layout">
+                      <MultiverseRiftMap
+                        lang={lang}
+                        stages={missionPool}
+                        allStages={visibleStages}
+                        completedStages={completedStages}
+                        isStageUnlocked={isStageUnlocked}
+                        onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
+                        onSelectArc={openNarrativeArc}
+                        narrativeArcs={activeNarrativeArcs}
+                        mapKicker={riftMapCopy.kicker}
+                        mapTitle={riftMapCopy.title}
+                        mapDescription={riftMapCopy.desc}
+                        getStageStatus={getStageStatus}
+                        getStageUnlockRequirementText={getLockedReason}
+                        getStageRewardPreview={getStageRewardPreview}
+                        selectedStageId={briefingStageId}
+                        viewType={missionScreen === 'fusionMissions' ? 'fusion' : 'story'}
+                      />
+                      <RiftBriefingPanel
+                        lang={lang}
+                        stage={selectedBriefingStage}
+                        isUnlocked={isStageUnlocked}
+                        onLaunch={launchStage}
+                        onClose={() => setBriefingStageId(null)}
+                        getStageModifier={getStageModifier}
+                        getStageArc={getStageArc}
+                        getLootRarity={getLootRarity}
+                        getBossIntel={getBossIntel}
+                        getRichBreachBrief={getRichBreachBrief}
+                        getLockedReason={getLockedReason}
+                        getStageRewardPreview={getStageRewardPreview}
+                        getMissionLaunchBrief={getMissionLaunchBrief}
+                        getMissionOutcomePreview={getMissionOutcomePreview}
+                      />
                     </div>
-                    <div className="arca-route-list">
-                      {arcaRoute.map(route => (
-                        <button
-                          key={route.id}
-                          type="button"
-                          className={`arca-route-card ${briefingStageId === route.stage.id ? 'selected' : ''}`}
-                          onClick={() => { setBriefingStageId(route.stage.id); sound.playSfx('click'); }}
-                          title={lang === 'fr' ? `Inspecte ${route.stage.displayName?.fr || route.stage.name}.` : `Inspect ${route.stage.displayName?.en || route.stage.name}.`}
-                        >
-                          <strong>{route.label}</strong>
-                          <span>#{route.stage.id} {route.stage.displayName?.[lang] || route.stage.name}</span>
-                          <em>{route.reason}</em>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                  </>
                 )}
-                <div className="rift-command-layout">
-                  <MultiverseRiftMap
+
+                {missionWorkspaceView === 'missions' && (
+                  <MissionDirectory
                     lang={lang}
                     stages={missionPool}
-                    allStages={visibleStages}
                     completedStages={completedStages}
                     isStageUnlocked={isStageUnlocked}
-                    onSelectStage={(stage) => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
-                    onSelectArc={openNarrativeArc}
-                    narrativeArcs={activeNarrativeArcs}
-                    mapKicker={riftMapCopy.kicker}
-                    mapTitle={riftMapCopy.title}
-                    mapDescription={riftMapCopy.desc}
-                    getStageStatus={getStageStatus}
-                    getStageUnlockRequirementText={getLockedReason}
-                    getStageRewardPreview={getStageRewardPreview}
-                    selectedStageId={briefingStageId}
-                    viewType={missionScreen === 'fusionMissions' ? 'fusion' : 'story'}
-                  />
-                  <RiftBriefingPanel
-                    lang={lang}
-                    stage={selectedBriefingStage}
-                    isUnlocked={isStageUnlocked}
+                    onOpenBriefing={(stage) => {
+                      setBriefingStageId(stage.id);
+                      setMissionWorkspaceView('map');
+                      sound.playSfx('click');
+                    }}
                     onLaunch={launchStage}
-                    onClose={() => setBriefingStageId(null)}
                     getStageModifier={getStageModifier}
                     getStageArc={getStageArc}
                     getLootRarity={getLootRarity}
-                    getBossIntel={getBossIntel}
                     getRichBreachBrief={getRichBreachBrief}
-                    getLockedReason={getLockedReason}
                     getStageRewardPreview={getStageRewardPreview}
-                    getMissionLaunchBrief={getMissionLaunchBrief}
-                    getMissionOutcomePreview={getMissionOutcomePreview}
+                    accent={selectedMissionMeta.color}
+                    emptyBackdrop={selectedMissionMeta.image}
                   />
-                </div>
-                {riftJournal.length > 0 && (
+                )}
+
+                {missionWorkspaceView === 'journal' && (
                   <div className="rift-journal-panel">
                     <div className="portal-focus-kicker">{lang === 'fr' ? 'JOURNAL A.R.C.A.' : 'A.R.C.A. JOURNAL'}</div>
-                    <div className="rift-journal-list">
-                      {riftJournal.map(entry => (
-                        <div key={entry.id} className={`rift-journal-entry ${entry.result}`}>
-                          <strong>{entry.title}</strong>
-                          <span>{entry.text}</span>
-                          <em>{new Date(entry.at).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')} - {entry.result === 'victory' ? (lang === 'fr' ? 'stabilisation' : 'stabilization') : (lang === 'fr' ? 'repli' : 'retreat')}</em>
-                        </div>
-                      ))}
-                    </div>
+                    {riftJournal.length > 0 ? (
+                      <div className="rift-journal-list">
+                        {riftJournal.map(entry => (
+                          <div key={entry.id} className={`rift-journal-entry ${entry.result}`}>
+                            <strong>{entry.title}</strong>
+                            <span>{entry.text}</span>
+                            <em>{new Date(entry.at).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-US')} - {entry.result === 'victory' ? (lang === 'fr' ? 'stabilisation' : 'stabilization') : (lang === 'fr' ? 'repli' : 'retreat')}</em>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="operations-empty-copy">
+                        {lang === 'fr' ? 'Aucun contact de faille archive pour cette route.' : 'No rift contact archived for this route.'}
+                      </div>
+                    )}
                   </div>
                 )}
               </>
-            )}
-
-            {showStoryMissionTools && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 1.4fr', gap: '12px', marginBottom: '14px' }}>
-              <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '5px' }}>
-                <div style={{ fontSize: '11px', color: '#ffeb3b', marginBottom: '8px', fontWeight: 'bold' }}>
-                  {lang === 'fr' ? 'SIGNAL DU JOUR' : 'DAILY SIGNAL'}
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <div style={{ fontSize: '9px', color: '#8fa5aa', lineHeight: 1.35, marginBottom: '2px' }}>
-                    {lang === 'fr'
-                    ? `Aujourd hui: ${activityProgress.dayKey === todayKey ? (activityProgress.dailyWins || 0) : 0} stabilisation(s), ${todayItemActivations} artefact(s).`
-                      : `Today: ${activityProgress.dayKey === todayKey ? (activityProgress.dailyWins || 0) : 0} stabilization(s), ${todayItemActivations} artifact(s).`}
-                  </div>
-                  {dailyContracts.map(contract => {
-                    const done = isDailyContractDone(contract);
-                    const claimed = claimedDaily.includes(contract.id);
-                    return (
-                      <div key={contract.id} style={{ display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'center', gap: '8px', fontSize: '10px', color: done ? '#2ecc71' : '#ccc' }}>
-                        <span>{claimed ? (lang === 'fr' ? 'ARCHIVE' : 'ARCHIVED') : done ? (lang === 'fr' ? 'STABLE' : 'STABLE') : (lang === 'fr' ? 'SIGNAL' : 'SIGNAL')} - {contract.text[lang]} <strong style={{ color: '#ffeb3b' }}>{contract.focus}</strong></span>
-                        <button
-                          type="button"
-                          onClick={() => claimDailyContract(contract)}
-                          disabled={!done || claimed}
-                          className="btn-retro"
-                          title={lang === 'fr' ? 'Recupere la recompense si ce contrat quotidien est termine.' : 'Claim the reward if this daily contract is complete.'}
-                          style={{ fontSize: '8px', padding: '3px 6px', borderColor: claimed ? '#2ecc71' : done ? '#ffeb3b' : '#444', color: claimed ? '#2ecc71' : done ? '#ffeb3b' : '#555' }}
-                        >
-                          {claimed ? (lang === 'fr' ? 'SCELLE' : 'SEALED') : (lang === 'fr' ? '+CACHE' : '+CACHE')}
-                        </button>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div style={{ padding: '12px', background: 'rgba(0,0,0,0.24)', border: '1px solid rgba(57,197,187,0.16)', borderRadius: '5px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '9px', gap: '10px' }}>
-                  <span style={{ fontSize: '11px', color: '#39c5bb', fontWeight: 'bold' }}>
-                    {lang === 'fr' ? 'ROUTE ACTIVE' : 'ACTIVE ROUTE'}
-                  </span>
-                  <button onClick={launchSurvival} className="btn-retro" title={lang === 'fr' ? 'Lance une mission de survie rapide.' : 'Launch a quick survival mission.'} style={{ fontSize: '10px', padding: '4px 8px', borderColor: '#ff4500', color: '#ff8c00' }}>
-                    {lang === 'fr' ? 'SURVIE' : 'SURVIVAL'}
-                  </button>
-                </div>
-                <div style={{ display: 'grid', gap: '7px' }}>
-                  {missionDeck.slice(0, 3).map((stage, index) => (
-                    <button
-                      key={stage.id}
-                      type="button"
-                      onClick={() => { setBriefingStageId(stage.id); sound.playSfx('click'); }}
-                      className="btn-retro"
-                      title={lang === 'fr' ? 'Selectionne cette faille et ouvre son briefing.' : 'Select this rift and open its briefing.'}
-                      style={{ display: 'grid', gridTemplateColumns: '28px minmax(0, 1fr) auto', alignItems: 'center', gap: '8px', padding: '7px 9px', textAlign: 'left', fontSize: '9px', borderColor: index === 0 ? '#39c5bb' : '#444', color: index === 0 ? '#dffffd' : '#aaa' }}
-                    >
-                      <b>{index + 1}</b>
-                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{stage.displayName?.[lang] || stage.name}</span>
-                      <span>{stage.mode}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
             )}
 
             {missionScreen === 'legacyStoryMeta' && (
@@ -7420,50 +7737,49 @@ export default function HubScreen({
             </div>
             )}
 
-            {missionScreen === 'fusionMissions' && (
-              <div style={{
-                padding: '14px',
-                marginBottom: '14px',
-                background: 'rgba(255,95,126,0.06)',
-                border: '1px solid rgba(255,95,126,0.24)',
-                borderRadius: '5px'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', flexWrap: 'wrap', marginBottom: '10px' }}>
+            {missionScreen === 'fusionMissions' && missionWorkspaceView === 'protocols' && (
+              <section className="fusion-protocols">
+                <header>
                   <div>
-                    <div style={{ fontSize: '11px', color: '#ff8fa3', fontWeight: 'bold', textTransform: 'uppercase' }}>
-                      {lang === 'fr' ? 'Failles fusionnees' : 'Fused rifts'}
-                    </div>
-                    <div style={{ fontSize: '10px', color: '#d9b6bf', marginTop: '3px' }}>
+                    <span className="portal-focus-kicker">{lang === 'fr' ? 'INDEX HYBRIDE' : 'HYBRID INDEX'}</span>
+                    <h4>{lang === 'fr' ? 'Protocoles de failles fusionnees' : 'Fused rift protocols'}</h4>
+                    <p>
                       {lang === 'fr'
-                        ? 'Ces breches melangent plusieurs univers: decor hybride, objet special, ennemi composite et regles locales instables.'
-                        : 'These breaches mix several universes: hybrid stage, special item, composite enemy, and unstable local rules.'}
-                    </div>
+                        ? 'Chaque dossier isole le decor hybride, l objet de contact et les univers qui alimentent la meme anomalie.'
+                        : 'Each dossier isolates the hybrid stage, contact item, and universes feeding the same anomaly.'}
+                    </p>
                   </div>
-                  <div style={{ color: '#ffeb3b', fontSize: '10px' }}>
-                    {FUSION_MISSIONS.length} {lang === 'fr' ? 'protocoles hybrides' : 'hybrid protocols'}
-                  </div>
+                  <strong>{FUSION_MISSIONS.length}</strong>
+                </header>
+                <div className="fusion-protocol-grid">
+                  {FUSION_MISSIONS.map(mission => {
+                    const backdrop = getOpenAiBackdropSrc(mission.universes?.[0], 'RPG') || selectedMissionMeta.image;
+                    return (
+                      <article key={mission.id} className="fusion-protocol-card">
+                        <div
+                          className="fusion-protocol-art"
+                          style={{ backgroundImage: `linear-gradient(180deg, rgba(3,2,8,0.08), rgba(3,2,8,0.88)), url("${backdrop}")` }}
+                        >
+                          <span>{mission.universes?.length || 0} {lang === 'fr' ? 'TRAMES' : 'THREADS'}</span>
+                          <strong>{mission.title[lang]}</strong>
+                        </div>
+                        <div className="fusion-protocol-copy">
+                          <p>{mission.decor[lang]}</p>
+                          <div>
+                            <span>{lang === 'fr' ? 'OBJET DE CONTACT' : 'CONTACT ITEM'}</span>
+                            <strong>{mission.item[lang]}</strong>
+                          </div>
+                          <div className="fusion-protocol-tags">
+                            {mission.universes.map(universe => (
+                              <span key={`${mission.id}-${universe}`}>{universe}</span>
+                            ))}
+                          </div>
+                        </div>
+                      </article>
+                    );
+                  })}
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
-                  {FUSION_MISSIONS.map(mission => (
-                    <div key={mission.id} style={{ padding: '11px', border: '1px solid rgba(255,95,126,0.22)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
-                      <strong style={{ color: '#ff8fa3', fontSize: '11px' }}>{mission.title[lang]}</strong>
-                      <div style={{ color: '#cfcfcf', fontSize: '9px', lineHeight: 1.35, marginTop: '6px' }}>
-                        {mission.decor[lang]}
-                      </div>
-                      <div style={{ color: '#ffeb3b', fontSize: '9px', lineHeight: 1.35, marginTop: '6px' }}>
-                        {lang === 'fr' ? 'Objet' : 'Item'}: {mission.item[lang]}
-                      </div>
-                      <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '8px' }}>
-                        {mission.universes.map(universe => (
-                          <span key={`${mission.id}-${universe}`} style={{ border: '1px solid rgba(255,95,126,0.35)', color: '#ffd1da', fontSize: '8px', padding: '2px 5px', borderRadius: '3px' }}>
-                            {universe}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              </section>
             )}
 
             {missionScreen === 'legacyStoryMeta' && (
@@ -7636,7 +7952,7 @@ export default function HubScreen({
             </div>
             </>
             )}
-            {!isArcMissionScreen && !isFactionArcScreen && (
+            {!isArcMissionScreen && !isFactionArcScreen && missionWorkspaceView === 'legacy' && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {missionDeck.map((stage) => {
                 const isCompleted = completedStages.includes(stage.id);
@@ -7752,7 +8068,7 @@ export default function HubScreen({
               })}
             </div>
             )}
-            {missionScreen === 'story' && finalStage && currentChapter.id === 'omniverse_endgame' && (
+            {missionScreen === 'story' && missionWorkspaceView === 'campaign' && finalStage && currentChapter.id === 'omniverse_endgame' && (
               <div style={{
                 marginTop: '14px',
                 padding: '14px 18px',
@@ -7795,7 +8111,7 @@ export default function HubScreen({
                 </button>
               </div>
             )}
-            {!isArcMissionScreen && !isFactionArcScreen && (
+            {!isArcMissionScreen && !isFactionArcScreen && missionWorkspaceView === 'legacy' && (
             <div style={{ marginTop: '14px' }}>
               <button
                 onClick={() => { setShowMissionArchive(prev => !prev); sound.playSfx('click'); }}
@@ -9428,23 +9744,19 @@ export default function HubScreen({
               })}
             </div>
 
-            <div style={{ maxHeight: '58vh', overflowY: 'auto', paddingRight: '4px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className="arca-regulation-list" style={{ maxHeight: '58vh', overflowY: 'auto', paddingRight: '4px' }}>
               {adminUniverseRows.map(row => {
                 const isOpen = Boolean(expandedAdminUniverses[row.universe]);
                 const renderAssetRow = ({ key, title, subtitle, hidden, onToggle, spriteInfo }) => (
-                  <div key={key} style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'minmax(160px, 1fr) minmax(110px, auto) auto',
-                    gap: '8px',
-                    alignItems: 'center',
+                  <div key={key} className="arca-regulation-asset-row" style={{
                     padding: '7px 8px',
                     border: '1px solid rgba(255,255,255,0.07)',
                     borderRadius: '4px',
                     background: hidden ? 'rgba(231,76,60,0.08)' : 'rgba(255,255,255,0.025)'
                   }}>
-                    <div style={{ minWidth: 0 }}>
-                      <div style={{ fontSize: '11px', color: hidden ? '#ffb3aa' : '#ddd', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{title}</div>
-                      <div style={{ fontSize: '9px', color: '#777', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{subtitle}</div>
+                    <div className="arca-regulation-asset-copy">
+                      <div className="arca-regulation-asset-title" style={{ fontSize: '11px', color: hidden ? '#ffb3aa' : '#ddd' }}>{title}</div>
+                      <div className="arca-regulation-asset-subtitle" style={{ fontSize: '9px', color: '#777' }}>{subtitle}</div>
                     </div>
                     <button onClick={onToggle} className="btn-retro" title={hidden ? (lang === 'fr' ? 'Reactive cet element dans l application.' : 'Reactivate this element in the app.') : (lang === 'fr' ? 'Masque cet element sans supprimer ses donnees.' : 'Hide this element without deleting its data.')} style={assetToggleStyle(hidden)}>
                       {hidden ? (lang === 'fr' ? 'ACTIVER' : 'ENABLE') : (lang === 'fr' ? 'MASQUER' : 'DISABLE')}
@@ -9453,6 +9765,8 @@ export default function HubScreen({
                       <button
                         type="button"
                         title={spriteInfo.ready ? (lang === 'fr' ? 'Sprite OpenAI disponible' : 'OpenAI sprite available') : (lang === 'fr' ? 'Pas encore de sprite OpenAI' : 'No OpenAI sprite yet')}
+                        aria-haspopup="dialog"
+                        aria-label={`${lang === 'fr' ? 'Afficher l image IA de' : 'Show AI image for'} ${title}`}
                         onClick={() => openSpritePreview(spriteInfo, title, subtitle)}
                         disabled={!spriteInfo.ready}
                         style={spriteButtonStyle(spriteInfo.ready)}
@@ -9463,14 +9777,12 @@ export default function HubScreen({
                   </div>
                 );
                 const sectionStyle = {
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-                  gap: '8px',
                   marginTop: '8px'
                 };
                 return (
                   <div
                     key={row.universe}
+                    className="arca-regulation-universe"
                     style={{
                       padding: '10px 12px',
                       borderRadius: '4px',
@@ -9478,12 +9790,7 @@ export default function HubScreen({
                       background: row.hidden ? 'rgba(231,76,60,0.07)' : 'rgba(57,197,187,0.04)'
                     }}
                   >
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'auto minmax(180px, 1.2fr) minmax(170px, 1fr) auto',
-                      gap: '10px',
-                      alignItems: 'center'
-                    }}>
+                    <div className="arca-regulation-universe-header">
                       <button
                         onClick={() => toggleAdminUniverseOpen(row.universe)}
                         className="btn-retro"
@@ -9492,13 +9799,13 @@ export default function HubScreen({
                       >
                         {isOpen ? 'v' : '>'}
                       </button>
-                      <div>
+                      <div className="arca-regulation-universe-title">
                         <div style={{ fontSize: '13px', fontWeight: 'bold', color: row.hidden ? '#ffb3aa' : '#d8fffb' }}>{row.lore?.title?.[lang] || row.universe}</div>
                         <div style={{ fontSize: '10px', color: '#888', textTransform: 'uppercase' }}>
                           {row.universe} - {row.baseGame ? (lang === 'fr' ? 'SOCLE NEXUS' : 'NEXUS CORE') : `${lang === 'fr' ? 'TRAME EXTERNE' : 'EXTERNAL THREAD'} - ${getMediaTypeLabel(row.lore?.mediaType)}`}
                         </div>
                       </div>
-                      <div style={{ fontSize: '10px', color: '#aaa', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                      <div className="arca-regulation-universe-stats" style={{ fontSize: '10px', color: '#aaa' }}>
                         <span>{row.heroes.length} {lang === 'fr' ? 'heros' : 'heroes'}</span>
                         <span>{row.enemyCount} {lang === 'fr' ? 'ennemis' : 'enemies'}</span>
                         <span>{row.gearCount} gear</span>
@@ -9536,10 +9843,10 @@ export default function HubScreen({
                     </div>
 
                     {isOpen && (
-                      <div style={{ marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
+                      <div className="arca-regulation-universe-details" style={{ marginTop: '10px', borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '10px' }}>
                         <details open>
                           <summary style={{ color: '#39c5bb', fontSize: '11px', cursor: 'pointer' }}>{lang === 'fr' ? 'Heros' : 'Heroes'} ({row.heroes.length})</summary>
-                          <div style={sectionStyle}>
+                          <div className="arca-regulation-asset-grid" style={sectionStyle}>
                             {row.heroes.map(hero => {
                               const spriteInfo = getHeroSpriteInfo(hero);
                               return renderAssetRow({
@@ -9555,7 +9862,7 @@ export default function HubScreen({
                         </details>
                         <details>
                           <summary style={{ color: '#e74c3c', fontSize: '11px', cursor: 'pointer', marginTop: '10px' }}>{lang === 'fr' ? 'Ennemis et boss' : 'Enemies and bosses'} ({row.enemies.length})</summary>
-                          <div style={sectionStyle}>
+                          <div className="arca-regulation-asset-grid" style={sectionStyle}>
                             {row.enemies.map(enemy => {
                               const key = getEnemyAdminKey(row.universe, enemy);
                               const spriteInfo = getEnemySpriteInfo(enemy, row.universe);
@@ -9572,7 +9879,7 @@ export default function HubScreen({
                         </details>
                         <details>
                           <summary style={{ color: '#ffeb3b', fontSize: '11px', cursor: 'pointer', marginTop: '10px' }}>Gear / shop ({row.gear.length})</summary>
-                          <div style={sectionStyle}>
+                          <div className="arca-regulation-asset-grid" style={sectionStyle}>
                             {row.gear.map(item => renderAssetRow({
                               key: item.id,
                               title: item.name?.[lang] || item.id,
@@ -9585,7 +9892,7 @@ export default function HubScreen({
                         </details>
                         <details>
                           <summary style={{ color: '#9b59b6', fontSize: '11px', cursor: 'pointer', marginTop: '10px' }}>Stages ({row.stages.length})</summary>
-                          <div style={sectionStyle}>
+                          <div className="arca-regulation-asset-grid" style={sectionStyle}>
                             {row.stages.map(stage => {
                               const key = getStageAdminKey(stage);
                               return renderAssetRow({
@@ -9892,78 +10199,11 @@ export default function HubScreen({
           </div>
         )}
 
-        {spritePreview && (
-          <div
-            onClick={() => setSpritePreview(null)}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              zIndex: 220,
-              background: 'rgba(0,0,0,0.82)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '24px'
-            }}
-          >
-            <div
-              onClick={(event) => event.stopPropagation()}
-              style={{
-                width: 'min(92vw, 980px)',
-                maxHeight: '92vh',
-                background: 'rgba(8,7,14,0.98)',
-                border: '1px solid rgba(57,197,187,0.55)',
-                borderRadius: '6px',
-                padding: '14px',
-                boxShadow: '0 0 30px rgba(57,197,187,0.22)'
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'center', marginBottom: '10px' }}>
-                <div style={{ minWidth: 0 }}>
-                  <div style={{ color: '#39c5bb', fontSize: '14px', fontWeight: 'bold', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{spritePreview.title}</div>
-                  <div style={{ color: '#888', fontSize: '10px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{spritePreview.subtitle}</div>
-                </div>
-                <button onClick={() => setSpritePreview(null)} className="btn-retro" title={lang === 'fr' ? 'Ferme la previsualisation du sprite.' : 'Close the sprite preview.'} style={{ fontSize: '10px', padding: '6px 10px' }}>
-                  {lang === 'fr' ? 'FERMER' : 'CLOSE'}
-                </button>
-              </div>
-              <div style={{ background: '#020204', border: '1px solid #222', maxHeight: '78vh', overflow: 'auto', textAlign: 'center' }}>
-                {spritePreview.kind === 'pack' && Array.isArray(spritePreview.sheets) ? (
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px', padding: '10px' }}>
-                    {spritePreview.sheets.map(sheet => (
-                      <div key={sheet.id} style={{ border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.025)', padding: '8px', textAlign: 'left' }}>
-                        <div style={{ color: '#39c5bb', fontSize: '10px', fontWeight: 'bold', marginBottom: '6px', textTransform: 'uppercase' }}>{sheet.label}</div>
-                        <img
-                          src={sheet.src}
-                          alt={`${spritePreview.title} - ${sheet.label}`}
-                          style={{
-                            width: '100%',
-                            height: 'auto',
-                            imageRendering: 'pixelated',
-                            display: 'block',
-                            background: '#020204'
-                          }}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <img
-                    src={spritePreview.src}
-                    alt={spritePreview.title}
-                    style={{
-                      width: spritePreview.kind === 'item' ? 'min(72vw, 420px)' : 'min(100%, 820px)',
-                      height: 'auto',
-                      imageRendering: 'pixelated',
-                      display: 'block',
-                      margin: '0 auto'
-                    }}
-                  />
-                )}
-              </div>
-            </div>
-          </div>
-        )}
+        <RegulationImagePreview
+          preview={spritePreview}
+          onClose={() => setSpritePreview(null)}
+          lang={lang}
+        />
 
         {/* Tab 6: Codex & Lore */}
         {activeTab === 'codex' && (

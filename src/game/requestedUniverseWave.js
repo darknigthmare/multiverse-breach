@@ -1,3 +1,5 @@
+import { SOLAR_OPPOSITES_SIREN_STAR_WARS_UNIVERSE_WAVE } from './solarOppositesSirenStarWarsPack';
+
 // Canon-focused universe packs requested after the large expanded-universe wave.
 // Keep aliases in comments so future imports do not create duplicate universes.
 export const REQUESTED_UNIVERSE_WAVE = [
@@ -708,3 +710,5 @@ export const REQUESTED_UNIVERSE_WAVE = [
     stageVariants: [['Tactics', 'Shin Godzilla Evacuation Grid', 'Expert', 'Shin Godzilla Evolution'], ['RPG', 'Biollante Lake Ashinoko Bloom', 'Very Hard', 'Biollante Rose Beast']]
   }
 ];
+
+REQUESTED_UNIVERSE_WAVE.push(...SOLAR_OPPOSITES_SIREN_STAR_WARS_UNIVERSE_WAVE);
