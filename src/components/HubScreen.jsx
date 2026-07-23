@@ -560,7 +560,8 @@ function NarrativeArcGroupBrowser({
   stages,
   completedStages,
   categoryColor = '#ffb15c',
-  getStageUnlockRequirementText
+  getStageUnlockRequirementText,
+  emptyBackdrop
 }) {
   const [groupQuery, setGroupQuery] = useState('');
   const normalizedGroupQuery = groupQuery.trim().toLowerCase();
@@ -605,19 +606,24 @@ function NarrativeArcGroupBrowser({
         </div>
         <div className="arc-group-grid">
           {visibleGroups.length === 0 && (
-            <div style={{
-              gridColumn: '1 / -1',
-              padding: '18px',
-              border: '1px solid rgba(255,255,255,0.1)',
-              background: 'rgba(0,0,0,0.2)',
-              borderRadius: '6px',
-              color: '#aaa',
-              fontSize: '11px',
-              lineHeight: 1.45
-            }}>
-              {lang === 'fr'
-                ? 'Aucune trame narrative disponible pour ton compte dans cette vue. Recrute les personnages requis, monte leurs niveaux, ou stabilise plus de breches.'
-                : 'No narrative Thread is available for your account in this view. Recruit the required characters, raise their levels, or stabilize more breaches.'}
+            <div
+              className="arc-empty-state"
+              style={{
+                backgroundImage: `linear-gradient(90deg, rgba(4,3,10,0.98), rgba(4,3,10,0.76), rgba(4,3,10,0.38)), url("${emptyBackdrop || '/images/missions/universe-arcs.webp'}")`
+              }}
+            >
+              <span className="portal-focus-kicker">{lang === 'fr' ? 'SIGNAL NON STABILISE' : 'UNSTABLE SIGNAL'}</span>
+              <strong>{lang === 'fr' ? 'Aucune route accessible pour ce profil' : 'No route available for this profile'}</strong>
+              <p>
+                {lang === 'fr'
+                  ? 'Les dossiers existent, mais A.R.C.A. ne peut pas encore ouvrir leurs coordonnees.'
+                  : 'The dossiers exist, but A.R.C.A. cannot open their coordinates yet.'}
+              </p>
+              <div>
+                <span><b>01</b>{lang === 'fr' ? 'Recruter les signatures requises' : 'Recruit required signatures'}</span>
+                <span><b>02</b>{lang === 'fr' ? 'Monter leurs niveaux' : 'Raise their levels'}</span>
+                <span><b>03</b>{lang === 'fr' ? 'Stabiliser plus de breches' : 'Stabilize more breaches'}</span>
+              </div>
             </div>
           )}
           {visibleGroups.map(group => {
@@ -866,116 +872,311 @@ function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone,
 }
 
 function FactionArcBrowser({ lang, arcProgress, onClaimArcReward }) {
+  const [selectedArcId, setSelectedArcId] = useState(arcProgress[0]?.id || null);
+  const [activeSection, setActiveSection] = useState('briefing');
+  const [arcQuery, setArcQuery] = useState('');
+  const normalizedQuery = arcQuery.trim().toLowerCase();
+  const filteredArcs = normalizedQuery
+    ? arcProgress.filter(arc => [
+      getLocalizedText(arc.title, lang),
+      getLocalizedText(arc.faction, lang),
+      getLocalizedText(arc.premise, lang),
+      ...(arc.universes || [])
+    ].some(value => String(value || '').toLowerCase().includes(normalizedQuery)))
+    : arcProgress;
+  const selectedArc = filteredArcs.find(arc => arc.id === selectedArcId) || filteredArcs[0] || null;
+
+  useEffect(() => {
+    if (!arcProgress.some(arc => arc.id === selectedArcId)) {
+      setSelectedArcId(arcProgress[0]?.id || null);
+    }
+  }, [arcProgress, selectedArcId]);
+
+  const getArcRatio = (arc) => (arc?.total ? Math.min(1, arc.completed / arc.total) : 0);
+  const getArcPhase = (arc) => {
+    const ratio = getArcRatio(arc);
+    if (ratio === 1) return lang === 'fr' ? 'Arc stabilise' : 'Arc stabilized';
+    if (ratio >= 0.66) return lang === 'fr' ? 'Finale approche' : 'Finale incoming';
+    if (ratio >= 0.33) return lang === 'fr' ? 'Conflit ouvert' : 'Open conflict';
+    return lang === 'fr' ? 'Signal faible' : 'Weak signal';
+  };
+  const getArcBackdrop = (arc, mode = 'RPG') => (
+    getOpenAiBackdropSrc(arc?.universes?.[0], mode)
+    || getOpenAiBackdropSrc(arc?.universes?.[1], mode)
+    || '/images/missions/faction-arcs.webp'
+  );
+  const selectArc = (arc) => {
+    setSelectedArcId(arc.id);
+    setActiveSection('briefing');
+    sound.playSfx('click');
+  };
+  const changeSection = (sectionId) => {
+    setActiveSection(sectionId);
+    sound.playSfx('click');
+  };
+
+  const selectedRatio = getArcRatio(selectedArc);
+  const selectedBackdrop = getArcBackdrop(selectedArc);
+  const missionRows = selectedArc?.missions?.length ? [
+    selectedArc.intro && {
+      id: 'intro',
+      label: lang === 'fr' ? 'Ouverture' : 'Opening',
+      text: getLocalizedText(selectedArc.intro, lang)
+    },
+    ...(selectedArc.missions || []).map((mission, index) => ({
+      id: `mission-${index}`,
+      label: `${lang === 'fr' ? 'Mission' : 'Mission'} ${index + 1}`,
+      text: getLocalizedText(mission, lang)
+    })),
+    (selectedArc.outro || selectedArc.finale) && {
+      id: 'finale',
+      label: lang === 'fr' ? 'Resolution' : 'Resolution',
+      text: getLocalizedText(selectedArc.outro || selectedArc.finale, lang)
+    }
+  ].filter(Boolean) : [];
+  const sections = [
+    { id: 'briefing', label: lang === 'fr' ? 'BRIEFING' : 'BRIEFING' },
+    { id: 'missions', label: lang === 'fr' ? 'MISSIONS' : 'MISSIONS' },
+    { id: 'rewards', label: lang === 'fr' ? 'RECOMPENSES' : 'REWARDS' }
+  ];
+
   return (
-    <div style={{
-      display: 'grid',
-      gap: '12px',
-      marginBottom: '14px'
-    }}>
-      <div style={{
-        padding: '14px',
-        border: '1px solid rgba(255,235,59,0.22)',
-        background: 'rgba(255,235,59,0.06)',
-        borderRadius: '5px'
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', gap: '12px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-          <div>
-            <div style={{ fontSize: '11px', color: '#ffeb3b', fontWeight: 'bold', textTransform: 'uppercase' }}>
-              {lang === 'fr' ? 'THEATRE DES FACTIONS' : 'FACTION THEATER'}
-            </div>
-            <div style={{ fontSize: '10px', color: '#d8d1a3', marginTop: '4px', lineHeight: 1.4 }}>
-              {lang === 'fr'
-                ? 'Ces arcs sont des conflits transversaux: ils ne remplacent pas la campagne principale et ne polluent plus le mode histoire.'
-                : 'These arcs are cross-faction conflicts: they no longer replace or clutter the main story mode.'}
-            </div>
-          </div>
-          <span style={{ fontSize: '10px', color: '#fff', border: '1px solid rgba(255,235,59,0.34)', padding: '4px 8px', borderRadius: '3px' }}>
-            {arcProgress.length} {lang === 'fr' ? 'arcs indexes' : 'indexed arcs'}
-          </span>
+    <section
+      className="faction-browser"
+      style={{ '--faction-color': selectedArc?.color || '#ffeb3b' }}
+      aria-label={lang === 'fr' ? 'Navigateur des arcs narratifs de faction' : 'Faction narrative arc browser'}
+    >
+      <header
+        className="faction-browser-hero"
+        style={{
+          backgroundImage: 'linear-gradient(90deg, rgba(4,3,10,0.96) 0%, rgba(4,3,10,0.72) 58%, rgba(4,3,10,0.24) 100%), url("/images/missions/faction-arcs.webp")'
+        }}
+      >
+        <div>
+          <span className="portal-focus-kicker">{lang === 'fr' ? 'THEATRE DES FACTIONS' : 'FACTION THEATER'}</span>
+          <h4>{lang === 'fr' ? 'Conflits transversaux du Nexus' : 'Cross-Nexus conflicts'}</h4>
+          <p>
+            {lang === 'fr'
+              ? 'Choisis un conflit, puis consulte uniquement le briefing, la route de missions ou les recompenses dont tu as besoin.'
+              : 'Choose a conflict, then open only the briefing, mission route, or rewards you need.'}
+          </p>
         </div>
+        <div className="faction-browser-summary">
+          <strong>{arcProgress.length}</strong>
+          <span>{lang === 'fr' ? 'arcs indexes' : 'indexed arcs'}</span>
+        </div>
+      </header>
+
+      <div className="faction-browser-tools">
+        <label>
+          <span>{lang === 'fr' ? 'RECHERCHE DE SIGNAL' : 'SIGNAL SEARCH'}</span>
+          <input
+            value={arcQuery}
+            onChange={(event) => setArcQuery(event.target.value)}
+            placeholder={lang === 'fr' ? 'Faction, univers ou conflit...' : 'Faction, universe, or conflict...'}
+          />
+        </label>
+        <span>{filteredArcs.length}/{arcProgress.length} {lang === 'fr' ? 'signaux visibles' : 'visible signals'}</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
-        {arcProgress.map(arc => {
-          const ratio = arc.total ? arc.completed / arc.total : 0;
-          const phase = ratio === 1
-            ? (lang === 'fr' ? 'Arc stabilise' : 'Arc stabilized')
-            : ratio >= 0.66
-              ? (lang === 'fr' ? 'Finale approche' : 'Finale incoming')
-              : ratio >= 0.33
-                ? (lang === 'fr' ? 'Conflit ouvert' : 'Open conflict')
-                : (lang === 'fr' ? 'Signal faible' : 'Weak signal');
-          return (
-            <div key={arc.id} style={{
-              padding: '11px',
-              border: `1px solid ${ratio === 1 ? arc.color : 'rgba(255,255,255,0.08)'}`,
-              background: ratio === 1 ? `${arc.color}18` : 'rgba(0,0,0,0.18)',
-              borderRadius: '5px'
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '5px' }}>
-                <strong style={{ fontSize: '12px', color: arc.color }}>{arc.title[lang]}</strong>
-                <span style={{ fontSize: '10px', color: '#ddd' }}>{arc.completed}/{arc.total}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', marginBottom: '7px', alignItems: 'center' }}>
-                <span style={{ fontSize: '9px', color: '#cfd8dc' }}>{arc.faction?.[lang]}</span>
-                <span style={{ fontSize: '8px', color: arc.color, border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px', textTransform: 'uppercase' }}>{phase}</span>
-              </div>
-              <div style={{ height: '4px', background: '#111', borderRadius: '4px', overflow: 'hidden', marginBottom: '7px' }}>
-                <div style={{ width: `${Math.round(ratio * 100)}%`, height: '100%', background: arc.color }} />
-              </div>
-              <div style={{ fontSize: '10px', color: '#aaa', lineHeight: 1.35 }}>{arc.premise[lang]}</div>
-              {arc.intro && (
-                <div style={{ fontSize: '9px', color: '#ffeb3b', lineHeight: 1.35, marginTop: '6px' }}>
-                  Intro: {arc.intro[lang]}
-                </div>
-              )}
-              <div style={{ fontSize: '10px', color: '#d0d0d0', lineHeight: 1.35, marginTop: '7px' }}>{arc.stakes?.[lang]}</div>
-              <div style={{ fontSize: '9px', color: '#9adbd6', lineHeight: 1.35, marginTop: '6px' }}>{arc.gameplay?.[lang]}</div>
-              {arc.missions && (
-                <div style={{ display: 'grid', gap: '3px', marginTop: '7px' }}>
-                  {arc.missions.slice(0, 3).map((mission, idx) => (
-                    <span key={`${arc.id}-mission-${idx}`} style={{ fontSize: '9px', color: '#cfcfcf', lineHeight: 1.25 }}>
-                      {idx + 1}. {mission[lang]}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <div style={{ fontSize: '9px', color: '#888', marginTop: '5px' }}>{arc.reward[lang]} - {arc.finale?.[lang]}</div>
-              {arc.rewards && (
-                <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap', marginTop: '6px' }}>
-                  {arc.rewards.map(reward => (
-                    <span key={reward.name[lang]} style={{ fontSize: '8px', color: '#fff', border: `1px solid ${arc.color}66`, padding: '1px 5px', borderRadius: '3px' }}>
-                      {reward.name[lang]}
-                    </span>
-                  ))}
-                </div>
-              )}
-              {arc.claimReward && (
-                <button
-                  onClick={() => onClaimArcReward(arc)}
-                  disabled={!arc.complete || arc.claimed}
-                  className="btn-retro"
-                  title={lang === 'fr' ? 'Recupere la recompense finale de cet arc si toutes ses missions sont terminees.' : 'Claim this arc final reward if all its missions are complete.'}
-                  style={{
-                    marginTop: '8px',
-                    padding: '5px 8px',
-                    fontSize: '9px',
-                    borderColor: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#444',
-                    color: arc.claimed ? '#2ecc71' : arc.complete ? arc.color : '#666'
-                  }}
-                >
-                  {arc.claimed
-                    ? (lang === 'fr' ? 'ARC SCELLE' : 'ARC SEALED')
-                    : arc.complete
-                      ? (lang === 'fr' ? 'SCELLER ARC' : 'SEAL ARC')
-                      : (lang === 'fr' ? 'ARC INSTABLE' : 'ARC UNSTABLE')}
-                </button>
-              )}
+      <div className="faction-browser-layout">
+        <nav className="faction-arc-selector" aria-label={lang === 'fr' ? 'Liste des arcs de faction' : 'Faction arc list'}>
+          {filteredArcs.map(arc => {
+            const ratio = getArcRatio(arc);
+            const isSelected = selectedArc?.id === arc.id;
+            const backdrop = getArcBackdrop(arc, 'Tactics');
+            return (
+              <button
+                key={arc.id}
+                type="button"
+                className={`faction-arc-option ${isSelected ? 'is-selected' : ''}`}
+                onClick={() => selectArc(arc)}
+                aria-pressed={isSelected}
+                title={lang === 'fr' ? `Ouvre le dossier ${getLocalizedText(arc.title, lang)}.` : `Open ${getLocalizedText(arc.title, lang)} dossier.`}
+                style={{
+                  '--arc-color': arc.color,
+                  backgroundImage: `linear-gradient(90deg, rgba(4,3,10,0.98) 0%, rgba(4,3,10,0.9) 58%, rgba(4,3,10,0.36) 100%), url("${backdrop}")`
+                }}
+              >
+                <span className="faction-arc-option-top">
+                  <b>{getLocalizedText(arc.title, lang, arc.id)}</b>
+                  <em>{arc.completed}/{arc.total}</em>
+                </span>
+                <span className="faction-arc-option-meta">
+                  {getLocalizedText(arc.faction, lang, lang === 'fr' ? 'Faction non classee' : 'Unclassified faction')}
+                </span>
+                <span className="faction-arc-option-progress">
+                  <i style={{ width: `${Math.round(ratio * 100)}%` }} />
+                </span>
+                <span className="faction-arc-option-phase">{getArcPhase(arc)}</span>
+              </button>
+            );
+          })}
+          {filteredArcs.length === 0 && (
+            <div className="faction-arc-no-result">
+              <strong>{lang === 'fr' ? 'Aucun signal correspondant' : 'No matching signal'}</strong>
+              <span>{lang === 'fr' ? 'Modifie le filtre pour reafficher les dossiers.' : 'Change the filter to show dossiers again.'}</span>
             </div>
-          );
-        })}
+          )}
+        </nav>
+
+        <article className="faction-arc-dossier">
+          {selectedArc ? (
+            <>
+              <div
+                className="faction-arc-dossier-visual"
+                style={{
+                  backgroundImage: `linear-gradient(180deg, rgba(3,2,8,0.08) 0%, rgba(3,2,8,0.88) 100%), url("${selectedBackdrop}")`
+                }}
+              >
+                <div className="faction-arc-dossier-status">
+                  <span>{getArcPhase(selectedArc)}</span>
+                  <b>{Math.round(selectedRatio * 100)}%</b>
+                </div>
+                <div>
+                  <span>{getLocalizedText(selectedArc.faction, lang)}</span>
+                  <h4>{getLocalizedText(selectedArc.title, lang, selectedArc.id)}</h4>
+                  <div className="faction-arc-universe-tags">
+                    {(selectedArc.universes || []).slice(0, 4).map(universe => <em key={universe}>{universe}</em>)}
+                    {(selectedArc.universes || []).length > 4 && <em>+{selectedArc.universes.length - 4}</em>}
+                  </div>
+                </div>
+              </div>
+
+              <div className="faction-arc-tabs" role="tablist" aria-label={lang === 'fr' ? 'Sections du dossier' : 'Dossier sections'}>
+                {sections.map(section => (
+                  <button
+                    key={section.id}
+                    id={`faction-tab-${selectedArc.id}-${section.id}`}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeSection === section.id}
+                    aria-controls={`faction-panel-${selectedArc.id}`}
+                    onClick={() => changeSection(section.id)}
+                  >
+                    {section.label}
+                  </button>
+                ))}
+              </div>
+
+              <div
+                id={`faction-panel-${selectedArc.id}`}
+                className="faction-arc-panel"
+                role="tabpanel"
+                aria-labelledby={`faction-tab-${selectedArc.id}-${activeSection}`}
+              >
+                {activeSection === 'briefing' && (
+                  <div className="faction-briefing-grid">
+                    <section className="faction-copy-block faction-copy-block-primary">
+                      <span>{lang === 'fr' ? 'INCIDENT' : 'INCIDENT'}</span>
+                      <p>{getLocalizedText(selectedArc.premise, lang)}</p>
+                    </section>
+                    <section className="faction-copy-block">
+                      <span>{lang === 'fr' ? 'ENJEU DE TRAME' : 'THREAD STAKES'}</span>
+                      <p>{getLocalizedText(selectedArc.stakes, lang, getLocalizedText(selectedArc.finale, lang))}</p>
+                    </section>
+                    <section className="faction-copy-block">
+                      <span>{lang === 'fr' ? 'DIRECTIVE A.R.C.A.' : 'A.R.C.A. DIRECTIVE'}</span>
+                      <p>{getLocalizedText(selectedArc.gameplay, lang)}</p>
+                    </section>
+                  </div>
+                )}
+
+                {activeSection === 'missions' && (
+                  <div className="faction-mission-route">
+                    {missionRows.length > 0 ? (
+                      <ol>
+                        {missionRows.map((mission, index) => (
+                          <li key={mission.id}>
+                            <span>{String(index + 1).padStart(2, '0')}</span>
+                            <div>
+                              <strong>{mission.label}</strong>
+                              <p>{mission.text}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ol>
+                    ) : (
+                      <>
+                        <div className="faction-route-progress">
+                          <strong>{lang === 'fr' ? 'THEATRES IMPLIQUES' : 'INVOLVED THEATERS'}</strong>
+                          <span>{selectedArc.completed}/{selectedArc.total} {lang === 'fr' ? 'stabilises' : 'stabilized'}</span>
+                        </div>
+                        <div className="faction-theater-grid">
+                          {(selectedArc.universes || []).slice(0, 8).map(universe => {
+                            const universeBackdrop = getOpenAiBackdropSrc(universe, 'RPG') || '/images/missions/faction-arcs.webp';
+                            return (
+                              <div
+                                key={universe}
+                                style={{
+                                  backgroundImage: `linear-gradient(180deg, rgba(3,2,8,0.08), rgba(3,2,8,0.9)), url("${universeBackdrop}")`
+                                }}
+                              >
+                                <strong>{universe}</strong>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {(selectedArc.universes || []).length > 8 && (
+                          <span className="faction-theater-more">
+                            +{selectedArc.universes.length - 8} {lang === 'fr' ? 'theatres indexes dans cette route' : 'theaters indexed in this route'}
+                          </span>
+                        )}
+                      </>
+                    )}
+                  </div>
+                )}
+
+                {activeSection === 'rewards' && (
+                  <div className="faction-reward-panel">
+                    <section>
+                      <span>{lang === 'fr' ? 'CACHE FINALE' : 'FINAL CACHE'}</span>
+                      <strong>{getLocalizedText(selectedArc.reward, lang)}</strong>
+                      <p>{getLocalizedText(selectedArc.finale || selectedArc.outro, lang)}</p>
+                    </section>
+                    {selectedArc.rewards?.length > 0 && (
+                      <div className="faction-reward-grid">
+                        {selectedArc.rewards.map(reward => (
+                          <div key={reward.id || getLocalizedText(reward.name, lang)}>
+                            <span>{reward.type === 'skin' ? (lang === 'fr' ? 'APPARENCE' : 'APPEARANCE') : (lang === 'fr' ? 'OBJET' : 'ITEM')}</span>
+                            <strong>{getLocalizedText(reward.name, lang)}</strong>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                    {selectedArc.claimReward && (
+                      <div className="faction-claim-row">
+                        <span>
+                          {selectedArc.claimReward.gold || 0} OR / {selectedArc.claimReward.shards || 0} FRAGMENTS / {selectedArc.claimReward.tokens || 0} JETONS
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => onClaimArcReward?.(selectedArc)}
+                          disabled={!selectedArc.complete || selectedArc.claimed}
+                          className="btn-retro"
+                          title={lang === 'fr' ? 'Recupere la recompense finale une fois tous les secteurs stabilises.' : 'Claim the final reward after every sector is stabilized.'}
+                        >
+                          {selectedArc.claimed
+                            ? (lang === 'fr' ? 'ARC SCELLE' : 'ARC SEALED')
+                            : selectedArc.complete
+                              ? (lang === 'fr' ? 'SCELLER ARC' : 'SEAL ARC')
+                              : (lang === 'fr' ? 'RECOMPENSE VERROUILLEE' : 'REWARD LOCKED')}
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <div className="faction-dossier-empty">
+              <strong>{lang === 'fr' ? 'Aucun dossier ouvert' : 'No dossier open'}</strong>
+              <span>{lang === 'fr' ? 'Choisis un signal dans la liste ou efface le filtre.' : 'Choose a signal from the list or clear the filter.'}</span>
+            </div>
+          )}
+        </article>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -6503,11 +6704,11 @@ export default function HubScreen({
         {/* Tab 1: Missions */}
         {activeTab === 'missions' && (
           <div className="glass-panel" style={{ padding: '20px', borderRadius: '8px' }}>
-            <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#39c5bb' }}>
-              {missionScreen === 'index'
-                ? (lang === 'fr' ? 'ECRAN DES MISSIONS' : 'MISSION SCREEN')
-                : selectedMissionMeta.label[lang].toUpperCase()}
-            </h3>
+            {missionScreen === 'index' && (
+              <h3 style={{ margin: '0 0 15px 0', fontSize: '18px', color: '#39c5bb' }}>
+                {lang === 'fr' ? 'ECRAN DES MISSIONS' : 'MISSION SCREEN'}
+              </h3>
+            )}
             {missionScreen === 'index' ? (
               <div style={{ display: 'grid', gap: '14px' }}>
                 <div style={{
@@ -6573,45 +6774,56 @@ export default function HubScreen({
               </div>
             ) : (
               <>
-            <div style={{
-              marginBottom: '12px',
-              padding: '10px 12px',
-              border: '1px solid rgba(57,197,187,0.24)',
-              background: 'rgba(57,197,187,0.06)',
-              color: '#c8f7f4',
-              fontSize: '11px',
-              lineHeight: 1.45,
-              borderRadius: '4px'
-            }}>
-              {selectedMissionMeta.desc[lang]}
-            </div>
-            <div style={{ marginBottom: '12px' }}>
-              <button
-                type="button"
-                onClick={() => { setMissionScreen('index'); setBriefingStageId(null); setSelectedNarrativeArcId(null); setSelectedNarrativeGroupId(null); sound.playSfx('click'); }}
-                className="btn-retro"
-                title={lang === 'fr' ? 'Retourne au choix des categories de missions.' : 'Return to mission category selection.'}
-                style={{ padding: '6px 10px', fontSize: '10px', borderColor: '#555', color: '#aaa' }}
-              >
-                {lang === 'fr' ? 'RETOUR AUX ECRANS' : 'BACK TO SCREENS'}
-              </button>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px', flexWrap: 'wrap', marginBottom: '14px', color: '#aaa', fontSize: '12px' }}>
+            <section
+              className="mission-view-hero"
+              style={{
+                '--mission-view-color': selectedMissionMeta.color,
+                backgroundImage: `linear-gradient(90deg, rgba(4,3,10,0.97) 0%, rgba(4,3,10,0.78) 56%, rgba(4,3,10,0.24) 100%), url("${selectedMissionMeta.image}")`
+              }}
+            >
+              <div className="mission-view-hero-content">
+                <button
+                  type="button"
+                  onClick={() => { setMissionScreen('index'); setBriefingStageId(null); setSelectedNarrativeArcId(null); setSelectedNarrativeGroupId(null); sound.playSfx('click'); }}
+                  className="btn-retro"
+                  title={lang === 'fr' ? 'Retourne au choix des categories de missions.' : 'Return to mission category selection.'}
+                >
+                  {lang === 'fr' ? 'RETOUR AUX ECRANS' : 'BACK TO SCREENS'}
+                </button>
+                <div className="mission-view-hero-copy">
+                  <span className="portal-focus-kicker">{lang === 'fr' ? 'OPERATIONS / ROUTE ACTIVE' : 'OPERATIONS / ACTIVE ROUTE'}</span>
+                  <h3>{selectedMissionMeta.label[lang]}</h3>
+                  <p>{selectedMissionMeta.desc[lang]}</p>
+                </div>
+                <div className="mission-view-hero-stat">
+                  <strong>{isFactionArcScreen ? arcProgress.length : `${clearedVisibleCount}/${missionPool.length}`}</strong>
+                  <span>
+                    {isFactionArcScreen
+                      ? (lang === 'fr' ? 'ARCS INDEXES' : 'INDEXED ARCS')
+                      : (lang === 'fr' ? 'BRECHES STABLES' : 'STABLE BREACHES')}
+                  </span>
+                </div>
+              </div>
+            </section>
+            <div className="mission-view-toolbar">
               <span>
                 {isFactionArcScreen
                   ? (lang === 'fr'
-                    ? `${arcProgress.length} arcs de faction indexes dans le theatre Nexus`
-                    : `${arcProgress.length} faction arcs indexed in the Nexus theater`)
-                  : (lang === 'fr'
-                    ? `${clearedVisibleCount}/${missionPool.length} breches stabilisees dans cette vue${isArcMissionScreen ? '' : ` - ${missionDeck.length} cibles proposees`}`
-                    : `${clearedVisibleCount}/${missionPool.length} breaches stabilized in this view${isArcMissionScreen ? '' : ` - ${missionDeck.length} proposed targets`}`)}
+                    ? 'Selectionne un dossier de faction, puis ouvre uniquement la section utile.'
+                    : 'Select a faction dossier, then open only the section you need.')
+                  : isArcMissionScreen
+                    ? (lang === 'fr'
+                      ? 'Choisis une vue narrative avant d ouvrir son chapitre et ses coordonnees.'
+                      : 'Choose a narrative view before opening its chapter and coordinates.')
+                    : (lang === 'fr'
+                      ? `${missionDeck.length} cibles A.R.C.A. proposees dans cette route.`
+                      : `${missionDeck.length} A.R.C.A. targets proposed in this route.`)}
               </span>
               {!isArcMissionScreen && !isFactionArcScreen && (
                 <button
                   onClick={() => { setMissionSeed(prev => prev + 1); sound.playSfx('click'); }}
                   className="btn-retro"
                   title={lang === 'fr' ? 'Regenere les missions proposees dans cette categorie.' : 'Refresh the proposed missions in this category.'}
-                  style={{ padding: '7px 12px', fontSize: '11px', borderColor: '#39c5bb' }}
                 >
                   {lang === 'fr' ? 'RELIRE LES SIGNAUX' : 'REREAD SIGNALS'}
                 </button>
@@ -6673,6 +6885,7 @@ export default function HubScreen({
                   completedStages={completedStages}
                   categoryColor={selectedMissionMeta.color}
                   getStageUnlockRequirementText={getArcUnlockRequirementText}
+                  emptyBackdrop={selectedMissionMeta.image}
                 />
                 {selectedNarrativeGroup && (
                   <div className="rift-focus-strip" style={{ '--rift-view-color': selectedNarrativeGroup.color || selectedMissionMeta.color }}>
