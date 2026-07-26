@@ -776,7 +776,7 @@ assert(gameCanvasSource.includes('applyTacticalBattleItem') && gameCanvasSource.
 assert(appSource.includes('tacticsMasteryBonus'), 'App rewards must include capped Tactics mastery bonuses.');
 assert(Object.keys(STAGE_LORE_PROFILES).length >= 260, 'Every expanded universe must have a canonical stage lore profile.');
 assert(stageLoreProfiles.length === 293, 'Stage lore registry must preserve 264 universe profiles and 29 arc profiles.');
-assert(stageLoreProfiles.filter(profile => profile.generationBlocked).length === 3, 'Only the three documented ambiguous stage sources may remain generation-blocked.');
+assert(stageLoreProfiles.filter(profile => profile.generationBlocked).length === 2, 'Only the two documented ambiguous stage sources may remain generation-blocked.');
 assert(manifest.counts?.stages === stageLoreProfiles.length * 4, 'OpenAI manifest must expose all four stage views for every lore profile.');
 assert(
   generatedStageAssets.counts?.backdrops === manifest.availableCounts?.stages,

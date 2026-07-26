@@ -1318,6 +1318,23 @@ export const EVENT_ITEMS_DB = {
 
 Object.assign(EVENT_ITEMS_DB, EXPANDED_EVENT_ITEMS);
 
+EVENT_ITEMS_DB.ASMRZ.effect = 'concert_buff';
+EVENT_ITEMS_DB['Spoof Movie'].effect = 'parody_rule_shift';
+
+EVENT_ITEMS_DB['Nexus de Convergence'] = {
+  id: 'evt_nexus_anchor_pulse',
+  name: {
+    en: 'A.R.C.A. Anchor Pulse',
+    fr: 'Impulsion d Ancrage A.R.C.A.'
+  },
+  desc: {
+    en: 'The Atrium emits a stabilizing pulse: hostile rewrites are interrupted and the squad gains a brief invulnerability window.',
+    fr: 'L Atrium emet une impulsion stabilisatrice : les reecritures hostiles sont interrompues et l escouade gagne une breve fenetre d invulnerabilite.'
+  },
+  effect: 'iris_invuln',
+  provenance: 'project-original'
+};
+
 const extraHeroData = {
   'Gears of War': [
     { id: 'dom', name: 'Dom Santiago', cat: 'marine', color: '#3498db' },

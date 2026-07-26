@@ -56,6 +56,9 @@ const REWARD_KIND_GLYPHS = {
   hud: 'H'
 };
 
+const REWARD_KIND_ORDER = ['hero', 'equipment', 'event', 'skin', 'archive', 'hud'];
+const REWARD_MANIFEST_LIMIT = 12;
+
 const OPENING_STATUS = {
   sealed: {
     fr: 'Booster scelle. Decoupe de securite prete.',
@@ -641,6 +644,13 @@ export default function PortalScreen({
     ...counts,
     [reward.kind]: (counts[reward.kind] || 0) + 1
   }), {});
+  const rewardManifestGroups = useMemo(
+    () => REWARD_KIND_ORDER.map(kind => ({
+      kind,
+      rewards: activeRewardCandidates.filter(reward => reward.kind === kind)
+    })),
+    [activeRewardCandidates]
+  );
   const openingLocked = ['charging', 'cutting', 'opening'].includes(openingPhase);
   const cardsVisible = ['revealing', 'complete'].includes(openingPhase);
   const canOpenBooster = openingPhase === 'sealed'
@@ -1016,6 +1026,40 @@ export default function PortalScreen({
               </span>
             ))}
           </div>
+          <details className="booster-reward-manifest">
+            <summary>
+              {lang === 'fr' ? 'VOIR LE CONTENU POSSIBLE' : 'VIEW POSSIBLE CONTENT'}
+            </summary>
+            <div className="booster-reward-manifest-grid">
+              {rewardManifestGroups.map(({ kind, rewards }) => {
+                const remainingCount = Math.max(0, rewards.length - REWARD_MANIFEST_LIMIT);
+                return (
+                  <section className="booster-reward-manifest-group" key={kind}>
+                    <h3>
+                      <span>{REWARD_KIND_LABELS[kind]?.[lang] || kind}</span>
+                      <strong>{rewards.length}</strong>
+                    </h3>
+                    {rewards.length > 0 ? (
+                      <ul>
+                        {rewards.slice(0, REWARD_MANIFEST_LIMIT).map(reward => (
+                          <li key={reward.id} title={getLocalizedText(reward.name, lang)}>
+                            {getLocalizedText(reward.name, lang)}
+                          </li>
+                        ))}
+                        {remainingCount > 0 && (
+                          <li className="booster-reward-manifest-more">
+                            +{remainingCount} {lang === 'fr' ? 'autres' : 'others'}
+                          </li>
+                        )}
+                      </ul>
+                    ) : (
+                      <p>{lang === 'fr' ? 'Aucun contenu' : 'No content'}</p>
+                    )}
+                  </section>
+                );
+              })}
+            </div>
+          </details>
           <div className="portal-rate-grid">
             {Object.values(PORTAL_RARITIES).map(rarity => (
               <span key={rarity.id} style={{ '--rarity-color': rarity.color }}>
@@ -1300,3 +1344,5 @@ export default function PortalScreen({
     </div>
   );
 }
+
+PortalScreen.makeBoosterCandidates = makeBoosterCandidates;

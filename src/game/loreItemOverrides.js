@@ -823,26 +823,21 @@ const ACTIVE_PACK_SPECS = Object.freeze([
     item("Stage Microphone", "Microphone de scene", "One silver-black symphonic-rock microphone with blue gem ring and no branding."),
     item("Stage Crown", "Couronne de scene", "One slender dark-silver crown with blue crystals and branching gothic points."),
   ]),
+  pack("ASMRZ", "asmrz", "https://www.youtube.com/watch?v=FoO7Pmx0bE4", [
+    item("Butler Microphone", "Microphone de majordome", "Single slim black handheld microphone used by the two Good Night Ojou-sama butler personas, silver grille and no branding."),
+    item("White Butler Glove", "Gant blanc de majordome", "Single immaculate white formal glove from the Good Night Ojou-sama butler costume, laid flat with black cuff piping."),
+    item("Late-night Smartphone", "Smartphone nocturne", "Single dark smartphone displaying only a blank midnight-blue glow, the bedtime-warning prop from Good Night Ojou-sama, no copied interface or text."),
+    item("Good Night Service Bell", "Clochette de service Bonne nuit", "Small polished brass service bell with a black ribbon, rung by the ASMRZ butler duo to begin their bedtime choreography."),
+  ]),
+  pack("Spoof Movie", "spoof_movie", "https://www.imdb.com/title/tt0116126/", [
+    item("Loc Dog Warhead Remote", "Telecommande de l ogive de Loc Dog", "Single oversized military remote held beside Loc Dog's absurd yellow-nosed truck warhead, chunky red trigger and no readable labels."),
+    item("Grandma's Handbag", "Sac a main de Grand-mere", "Single compact dark handbag carried by Loc Dog's formidable grandmother, sturdy handles and exaggerated comic weight."),
+    item("Ashtray's Juice Cup", "Gobelet de jus de Cendar", "Single clear takeaway cup filled with amber juice, white lid and straw, a direct prop conversion of the film's title joke."),
+    item("Po'Nopoly Board", "Plateau Po'Nopoly", "Single folded parody board-game set used by Ashtray, Loc Dog, Preach and Crazy Legs, original colored street grid with no copied lettering."),
+  ]),
 ]);
 
-const DISABLED_POLICY_SPECS = Object.freeze([
-  Object.freeze({
-    universe: "ASMRZ",
-    stem: "asmrz",
-    reason: Object.freeze({
-      fr: "Source non identifiee : aucun objet ne doit etre invente avant fourniture d une reference officielle non ambigue.",
-      en: "Unidentified source: no item may be invented until an unambiguous official reference is provided.",
-    }),
-  }),
-  Object.freeze({
-    universe: "Spoof Movie",
-    stem: "spoof_movie",
-    reason: Object.freeze({
-      fr: "Titre ambigu : plusieurs oeuvres peuvent correspondre. Les drops restent desactives jusqu a identification du film exact et de son annee.",
-      en: "Ambiguous title: several works may match. Drops remain disabled until the exact film and release year are identified.",
-    }),
-  }),
-]);
+const DISABLED_POLICY_SPECS = Object.freeze([]);
 
 const idsForStem = (stem) => Object.freeze({
   equipment: Object.freeze([
@@ -999,8 +994,8 @@ const validateRuntimeRegistry = () => {
   const seenIds = new Set();
   const seenIcons = new Set();
 
-  if (activeUniverses.length !== 124) {
-    throw new Error(`Expected 124 active FG4 item universes, received ${activeUniverses.length}`);
+  if (activeUniverses.length !== 126) {
+    throw new Error(`Expected 126 active FG4 item universes, received ${activeUniverses.length}`);
   }
   if (policyUniverses.length !== 126) {
     throw new Error(`Expected 126 FG4 item policies, received ${policyUniverses.length}`);
@@ -1073,9 +1068,9 @@ const validateRuntimeRegistry = () => {
     }
   }
 
-  if (seenIds.size !== 496 || seenIcons.size !== 496) {
+  if (seenIds.size !== 504 || seenIcons.size !== 504) {
     throw new Error(
-      `Expected 496 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
+      `Expected 504 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
     );
   }
 };

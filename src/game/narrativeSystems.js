@@ -838,7 +838,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
   {
     id: 'soad_frontline_voice_broadcast',
     stageId: 9232,
-    heroId: 'soad_vocal',
+    heroId: 'serj_tankian',
     title: { fr: 'Arc Personnage - SOAD Voice: broadcast brise', en: 'Character Arc - SOAD Voice: Broken Broadcast' },
     mode: 'RPG',
     difficulty: 'Personal',
@@ -857,7 +857,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
   {
     id: 'soad_staccato_guitar_measure',
     stageId: 9233,
-    heroId: 'soad_guitar',
+    heroId: 'daron_malakian',
     title: { fr: 'Arc Personnage - SOAD Guitar: mesure brisee', en: 'Character Arc - SOAD Guitar: Broken Measure' },
     mode: 'Smash',
     difficulty: 'Personal',
@@ -876,7 +876,7 @@ const CURATED_CHARACTER_NARRATIVE_ARCS = [
   {
     id: 'soad_groove_bass_frontline',
     stageId: 9234,
-    heroId: 'soad_bass',
+    heroId: 'shavo_odadjian',
     title: { fr: 'Arc Personnage - SOAD Bass: ligne de front', en: 'Character Arc - SOAD Bass: Frontline Groove' },
     mode: 'Tactics',
     difficulty: 'Personal',
@@ -1530,19 +1530,19 @@ export const SKIN_CATALOG = {
   },
   char_soad_frontline_voice: {
     id: 'char_soad_frontline_voice',
-    heroId: 'soad_vocal',
+    heroId: 'serj_tankian',
     name: { fr: 'Frontline Voice Toxicity', en: 'Toxicity Frontline Voice' },
     colors: { primaryColor: '#b03a2e', secondaryColor: '#f1c40f' }
   },
   char_soad_staccato_guitar: {
     id: 'char_soad_staccato_guitar',
-    heroId: 'soad_guitar',
+    heroId: 'daron_malakian',
     name: { fr: 'Staccato Guitar Syncopé', en: 'Syncopated Staccato Guitar' },
     colors: { primaryColor: '#1c2833', secondaryColor: '#f1c40f' }
   },
   char_soad_groove_bass: {
     id: 'char_soad_groove_bass',
-    heroId: 'soad_bass',
+    heroId: 'shavo_odadjian',
     name: { fr: 'Groove Bass Protest', en: 'Protest Groove Bass' },
     colors: { primaryColor: '#7d6608', secondaryColor: '#b03a2e' }
   },

@@ -95,10 +95,9 @@ Repartition des `264` profils univers :
 
 Chaque profil expose `Combat`, `Melee`, `RPG` et `Tactics`. Les `293` racines d'assets sont uniques. Les chemins sont des plans de production et ne declarent pas l'existence des fichiers.
 
-Les trois sources ambigues restent bloquees sans nouvelle interpretation :
+Les deux sources ambigues restent bloquees sans nouvelle interpretation :
 
 - `Despicer`
-- `Spoof Movie`
 - `Digimon Celestial Rift`
 
 Hellraiser reste dans l'audit `A-VERIFIER`, mais n'entre pas dans le denominateur `260` : son pack etendu porte `skipPrimaryStage` afin de ne pas dupliquer le stage historique `20`.
@@ -297,7 +296,7 @@ La plage `112-113` est deja couverte par les packs featured de The Ring et The G
 | P1 | House of 1000 Corpses | `165` Firefly Family Funhouse | Procedural; `funhouse` melange les lieux. | Captain Spaulding's Museum of Monsters and Madmen and Firefly house | RPG | [Lionsgate - House of 1000 Corpses](https://www.lionsgate.com/movies/house-of-1000-corpses) | `House of 1000 Corpses pixel-art RPG environment, Captain Spaulding roadside museum transitioning to the Firefly farmhouse parlor, grimy carnival Americana, broad side-view floor, no people, gore, clowns, logos or text.` |
 | P1 | Overlord Anime | `166` Nazarick Tomb Defense | Procedural; aucune architecture du Grand Tombeau. | Throne Room of Nazarick and Lemegeton approach | Tactics | [Overlord official anime](https://overlord-anime.com/) | `Overlord Great Tomb of Nazarick pixel-art tactics map, elevated three-quarter 8x6 grid, black-marble throne room, monumental stairs and Lemegeton approach, ornate gold-purple lighting, no characters, undead, banners or text.` |
 | P1 | SCP Foundation | `167` Site-19 Containment Breach | Procedural; Site-19 n'a pas une carte canonique unique et doit rester modulaire. | Modular Site-19 containment wing based on SCP facility conventions | Tactics | [SCP Wiki - Secure Facilities](https://scp-wiki.wikidot.com/secure-facilities-locations) | `Original SCP Foundation Site-19-inspired pixel-art tactics map, elevated 8x6 rectangular grid, modular containment wing, decontamination locks, observation rooms and service tunnels, no anomalies, staff, logos, class labels or text.` |
-| P0 | Spoof Movie | `168` Parody Multigenre Studio | `Spoof Movie` ne correspond pas a une oeuvre unique; impossible d'assurer le canon. | A definir apres choix du film ou de la franchise parodique exacte | RPG | [Seule source actuelle - fichier projet](https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/expandedUniverses.js) | `DO NOT GENERATE. Resolve whether Spoof Movie means Scary Movie, Epic Movie, Disaster Movie, a collection, or an original OC parody before selecting any visual location.` |
+| P1 | Spoof Movie | `168` South Central Block Party | Source-lock sur *Don't Be a Menace* (1996) ; visuel dedie absent. | South Central block party and Loc Dog drive-by route | RPG | [Universal Pictures](https://www.universalpicturesathome.com/movies/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood) | `Don't Be a Menace 1996-inspired original pixel-art RPG neighborhood stage, South Central block party, street and Loc Dog drive-by route, broad playable lane, no performers, weapons, logos or text.` |
 
 ## ABSENT-VISUEL - univers etendus 169 a 214
 
@@ -388,7 +387,7 @@ L'ID `215` (Woodruff) est un pack featured existant et passe dans `A-VERIFIER`. 
 | P1 | The Weeknd | `244` After Hours Neon City | Procedural; ville abstraite sans Las Vegas ni casino. | After Hours Las Vegas casino street | RPG | [The Weeknd official](https://www.theweeknd.com/) | `The Weeknd After Hours pixel-art RPG environment, empty Las Vegas casino street, red-lit service corridor and mirrored marquee glow, broad side-view floor, no performer, cars, crowds, casino names, logos or text.` |
 | P2 | Hoshi | `245` Coeur Parapluie Signal | Procedural; titres/themes fusionnes sans lieu. | Paris rain street and intimate Coeur Parapluie theater | RPG | [Hoshi official](https://hoshi-officiel.com/) | `Hoshi Coeur Parapluie-inspired pixel-art RPG stage, intimate Paris theater opening to a rain-soaked street, umbrella silhouettes as background decor, broad clear floor, no singer, audience, heart icons, logos or text.` |
 | P1 | Ado | `246` Usseewa Vocal Storm | Procedural; phenomene abstrait, aucune direction graphique du clip. | Usseewa graphic office-city set | Melee | [Ado official](https://www.universal-music.co.jp/ado/) | `Ado Usseewa-inspired pixel-art melee stage, graphic office-city set, harsh black-blue-red architecture and separate desk-signage platforms without writing, no singer, character illustration, logos, lyrics or text.` |
-| P1 | ASMRZ | `247` Whisper Signal Lab | Mauvaise interpretation: ASMRZ est un duo musical, pas un laboratoire ASMR generique. | Good Night Ojou-sama mansion corridor and dance set | RPG | [Apple Music - ASMRZ](https://music.apple.com/us/artist/asmrz/1732950037) | `ASMRZ Good Night Ojou-sama-inspired pixel-art RPG environment, elegant mansion corridor, formal stair, polished dance floor and soft night lighting, broad side-view lane, no performers, butler figures, logos, Korean writing or text.` |
+| P1 | ASMRZ | `247` Good Night Ojou-sama Mansion Set | Source-lock corrige sur le clip du duo ; visuel dedie absent. | Good Night Ojou-sama mansion corridor and dance set | RPG | [Apple Music - ASMRZ](https://music.apple.com/us/artist/asmrz/1732950037) | `ASMRZ Good Night Ojou-sama-inspired pixel-art RPG environment, elegant mansion corridor, formal stair, polished dance floor and soft night lighting, broad side-view lane, no performers, butler figures, logos, Korean writing or text.` |
 | P1 | Lady Gaga | `248` Chromatica Fame Monster | Procedural; plusieurs eres fusionnees sans lieu. | Chromatica desert citadel and Rain on Me plaza | Melee | [Lady Gaga official](https://www.ladygaga.com/) | `Lady Gaga Chromatica-inspired pixel-art melee stage, alien desert citadel, rain-slick geometric plaza and separate metallic platforms, saturated pink-cyan lighting, no performer, dancers, fashion figures, logos or text.` |
 | P2 | Within Temptation | `249` Symphonic Storm Cathedral | Procedural; cathedral generique, aucune ere visuelle choisie. | Mother Earth forest-ruin concert and Resist screen architecture | RPG | [Within Temptation official](https://www.within-temptation.com/) | `Within Temptation pixel-art RPG stage, Mother Earth forest ruins integrated with restrained Resist-era screen architecture, broad side-view floor, blue-gold storm light, no musicians, angels, logos, album art or text.` |
 | P1 | Nightwish | `250` Imaginaerum Dream Theater | Procedural; titre correct mais parc/cirque non rendu. | Imaginaerum winter circus and memory carousel | RPG | [Nightwish official](https://www.nightwish.com/) | `Nightwish Imaginaerum pixel-art RPG environment, winter circus theater, memory carousel, snowbound backstage and broad side-view floor, cinematic blue-amber fantasy light, no musicians, child, clown, logos or text.` |
@@ -535,7 +534,7 @@ Les suffixes `Breach`, `Rift`, `Core`, `Grid`, `Hallway`, `Arena`, `Warzone`, `O
 Cas bloques avant generation :
 
 - `Despicer` : oeuvre non identifiee de facon fiable; ne pas generer a partir d'une supposition.
-- `Spoof Movie` : titre agrege ambigu; choisir le film ou la collection exacte.
+- `Spoof Movie` : resolu comme titre francais de *Don't Be a Menace* (1996).
 - `Digimon Celestial Rift` : construction projet; choisir une continuite Digimon canonique ou reclasser explicitement le stage comme fusion OC.
 - `Necronomicon` : distinguer le texte fictif du Mythe, le film de 1993 et les univers Evil Dead.
 

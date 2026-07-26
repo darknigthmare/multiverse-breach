@@ -2711,9 +2711,9 @@ const RAW_SLOT_POLICIES = {
   }),
   'Spoof Movie': definePolicy({
     removeSlots: [fallbackName('Spoof Movie', 'CA')],
-    convertTo: { [fallbackName('Spoof Movie', 'EG')]: 'universeRouting:specificParodyFilm' },
-    fr: 'Chaque parodie doit etre rattachee a son film exact; aucun faux boss transversal.',
-    en: 'Each parody must be routed to its specific film; there is no invented cross-film boss.'
+    convertTo: { [fallbackName('Spoof Movie', 'EG')]: 'movieSetPiece:dontBeAMenace1996' },
+    fr: 'Le titre francais est rattache a Don t Be a Menace (1996) : la finale reste un set piece comique avec Cure-dents, sans faux boss transversal.',
+    en: 'The French title is locked to Don t Be a Menace (1996): the finale remains a comic set piece with Toothpick, not an invented cross-film boss.'
   }),
   'The Simpsons': definePolicy({
     removeSlots: [fallbackName('The Simpsons', 'EG'), fallbackName('The Simpsons', 'CA')],

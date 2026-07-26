@@ -423,7 +423,8 @@ export class EngineSmash {
         });
         break;
       }
-      case 'circus_glitch': {
+      case 'circus_glitch':
+      case 'parody_rule_shift': {
         this.enemies.forEach(e => {
           if (e.currentHp > 0 && e.statusEffects) {
             e.statusEffects.glitched = 360;

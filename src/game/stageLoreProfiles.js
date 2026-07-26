@@ -210,7 +210,7 @@ const UNIVERSE_PROFILE_DEFINITIONS = [
   ["House of 1000 Corpses", "P1", "ABSENT-VISUEL", "Captain Spaulding's Museum of Monsters and Madmen and Firefly house", ["https://www.lionsgate.com/movies/house-of-1000-corpses"]],
   ["Overlord Anime", "P1", "ABSENT-VISUEL", "Throne Room of Nazarick and Lemegeton approach", ["https://overlord-anime.com/"]],
   ["SCP Foundation", "P1", "ABSENT-VISUEL", "Modular Site-19 containment wing based on SCP facility conventions", ["https://scp-wiki.wikidot.com/secure-facilities-locations"]],
-  ["Spoof Movie", "P0", "ABSENT-VISUEL", "A definir apres choix du film ou de la franchise parodique exacte", ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/expandedUniverses.js"]],
+  ["Spoof Movie", "P1", "ABSENT-VISUEL", "South Central block party and Loc Dog drive-by route from Don't Be a Menace (1996)", ["https://www.universalpicturesathome.com/movies/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"]],
   ["Metal Gear Rising", "P1", "ABSENT-VISUEL", "World Marshal headquarters rooftop in Denver", ["https://store.steampowered.com/app/235460/METAL_GEAR_RISING_REVENGEANCE/"]],
   ["BioShock", "P1", "ABSENT-VISUEL", "Medical Pavilion atrium and bathysphere station", ["https://bioshock.2k.com/"]],
   ["Twisted Metal", "P1", "ABSENT-VISUEL", "Los Angeles freeway interchange and Calypso tournament arena", ["https://www.playstation.com/en-us/games/twisted-metal/"]],
