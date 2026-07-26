@@ -1,5 +1,5 @@
 import { EXPANDED_LORE_DB } from './expandedUniverses';
-import { SOLAR_OPPOSITES_SIREN_STAR_WARS_LORE_DB } from './solarOppositesSirenStarWarsPack';
+import { SOLAR_OPPOSITES_SIREN_STAR_WARS_LORE_DB } from './solarOppositesSirenStarWarsPack.js';
 
 export const NEXUS_CANON = {
   name: { en: 'Nexus of Convergence', fr: 'Nexus de Convergence' },

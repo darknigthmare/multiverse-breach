@@ -5,7 +5,7 @@ import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './l
 import {
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS,
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES
-} from './solarOppositesSirenStarWarsPack';
+} from './solarOppositesSirenStarWarsPack.js';
 
 export const HEROES_DB = [
   {

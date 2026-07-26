@@ -1,4 +1,4 @@
-import { SOLAR_OPPOSITES_SIREN_STAR_WARS_UNIVERSE_WAVE } from './solarOppositesSirenStarWarsPack';
+import { SOLAR_OPPOSITES_SIREN_STAR_WARS_UNIVERSE_WAVE } from './solarOppositesSirenStarWarsPack.js';
 
 // Canon-focused universe packs requested after the large expanded-universe wave.
 // Keep aliases in comments so future imports do not create duplicate universes.

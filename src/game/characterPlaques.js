@@ -1,7 +1,7 @@
 import { LORE_DB } from './lore';
 import { getUniverseSignature } from './loreDescriptions';
 import { FEATURED_CHARACTER_PLAQUES } from './featuredUniversePacks';
-import { SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES } from './solarOppositesSirenStarWarsPack';
+import { SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES } from './solarOppositesSirenStarWarsPack.js';
 
 export const CHARACTER_PLAQUES = {
   player_anchor: {
