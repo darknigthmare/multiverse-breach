@@ -6,6 +6,7 @@ import { getTranslation } from '../game/translation';
 import { LORE_DB } from '../game/lore';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { BOOSTER_CARD_COUNT, createBoosterRewards } from '../game/portalBoosterEngine';
+import { getUniverseUnlockables } from '../game/universeUnlockables';
 import {
   BOOSTER_ROTATION_WINDOW_MS,
   getPortalBoosterArt,
@@ -43,7 +44,11 @@ const REWARD_KIND_LABELS = {
   equipment: { fr: 'EQUIPEMENT', en: 'EQUIPMENT' },
   event: { fr: 'PROTOCOLE', en: 'PROTOCOL' },
   skin: { fr: 'APPARENCE', en: 'APPEARANCE' },
-  archive: { fr: 'ARCHIVE DE SCENE', en: 'STAGE ARCHIVE' },
+  archive: { fr: 'STAGE CUSTOM', en: 'CUSTOM STAGE' },
+  kart: { fr: 'KART', en: 'KART' },
+  battleMusic: { fr: 'MUSIQUE DE COMBAT', en: 'BATTLE MUSIC' },
+  stageMusic: { fr: 'MUSIQUE DE STAGE', en: 'STAGE MUSIC' },
+  fieldSuper: { fr: 'SUPER DE TERRAIN', en: 'FIELD SUPER' },
   hud: { fr: 'THEME HUD', en: 'HUD THEME' }
 };
 
@@ -53,10 +58,31 @@ const REWARD_KIND_GLYPHS = {
   event: 'P',
   skin: 'S',
   archive: 'Ω',
+  kart: 'K',
+  battleMusic: 'B',
+  stageMusic: 'M',
+  fieldSuper: 'O',
   hud: 'H'
 };
 
-const REWARD_KIND_ORDER = ['hero', 'equipment', 'event', 'skin', 'archive', 'hud'];
+const REWARD_KIND_ORDER = [
+  'hero',
+  'equipment',
+  'kart',
+  'event',
+  'skin',
+  'archive',
+  'battleMusic',
+  'stageMusic',
+  'fieldSuper',
+  'hud'
+];
+const PORTAL_COLLECTION_ID_KEYS = {
+  kart: 'karts',
+  battleMusic: 'battleMusic',
+  stageMusic: 'stageMusic',
+  fieldSuper: 'fieldSupers'
+};
 const REWARD_MANIFEST_LIMIT = 12;
 
 const OPENING_STATUS = {
@@ -172,7 +198,25 @@ const getRewardDetail = (reward, lang) => {
     return `${lang === 'fr' ? 'Pour' : 'For'} ${reward.data.hero.name}`;
   }
   if (reward.kind === 'archive') {
-    return `${reward.data.mode} / ${lang === 'fr' ? 'collection visuelle' : 'visual collection'}`;
+    return `${reward.data.mode} / ${lang === 'fr' ? 'stage custom jouable' : 'playable custom stage'}`;
+  }
+  if (reward.kind === 'kart') {
+    const style = reward.data.unlockable.style || 'arca';
+    return `${lang === 'fr' ? 'Chassis cosmetique' : 'Cosmetic chassis'} / ${style.toUpperCase()}`;
+  }
+  if (reward.kind === 'battleMusic') {
+    return lang === 'fr'
+      ? 'Arrangement procedural pour combat custom'
+      : 'Procedural custom-battle arrangement';
+  }
+  if (reward.kind === 'stageMusic') {
+    return lang === 'fr'
+      ? 'Arrangement procedural pour stage custom'
+      : 'Procedural custom-stage arrangement';
+  }
+  if (reward.kind === 'fieldSuper') {
+    const effect = reward.data.unlockable.effect || {};
+    return `${lang === 'fr' ? 'Impact terrain' : 'Field impact'} / DMG ${effect.damage || 0}`;
   }
   return lang === 'fr' ? 'Fond du controle Nexus' : 'Nexus control backdrop';
 };
@@ -260,8 +304,8 @@ const makeBoosterCandidates = ({
       rewardId: archiveId,
       kind: 'archive',
       name: {
-        fr: `Archive ${universe}`,
-        en: `${universe} Archive`
+        fr: `Stage custom ${universe}`,
+        en: `${universe} Custom Stage`
       },
       universe,
       color: profile.color,
@@ -280,6 +324,30 @@ const makeBoosterCandidates = ({
       color: profile.color,
       rarity: PORTAL_RARITIES.epic,
       data: { image, mode: profile.mode }
+    });
+  });
+
+  universes.forEach(universe => {
+    const unlockables = getUniverseUnlockables(universe);
+    if (!unlockables) return;
+
+    [
+      [unlockables.kart, PORTAL_RARITIES.rare],
+      [unlockables.battleMusic, PORTAL_RARITIES.rare],
+      [unlockables.stageMusic, PORTAL_RARITIES.rare],
+      [unlockables.fieldSuper, PORTAL_RARITIES.epic]
+    ].forEach(([unlockable, rarity]) => {
+      if (!unlockable) return;
+      candidates.push({
+        id: unlockable.id,
+        rewardId: unlockable.id,
+        kind: unlockable.kind,
+        name: unlockable.name,
+        universe,
+        color: unlockable.color || banner.color,
+        rarity,
+        data: { unlockable }
+      });
     });
   });
 
@@ -494,8 +562,8 @@ export default function PortalScreen({
           mediaLabel: profile.label,
           label: { fr: `Booster ${universe}`, en: `${universe} Booster` },
           desc: {
-            fr: `${heroes.length} signature(s), reliques et archives de Trame.`,
-            en: `${heroes.length} signature(s), relics and Thread archives.`
+            fr: `${heroes.length} signature(s), reliques et stages custom de Trame.`,
+            en: `${heroes.length} signature(s), relics and custom Thread stages.`
           },
           meta: {
             fr: `Synchronisation exacte: les cinq cartes restent dans ${universe}.`,
@@ -660,6 +728,18 @@ export default function PortalScreen({
   const portalBackground = activeBackdrop
     ? `linear-gradient(180deg, rgba(4,2,10,0.5), rgba(4,2,10,0.94)), url(${activeBackdrop})`
     : 'linear-gradient(180deg, rgba(4,2,10,0.62), rgba(4,2,10,0.94)), url(/images/missions/fusion-rifts.webp)';
+  const portalCollectionCounts = [
+    { kind: 'archive', count: (portalCollection.archives || []).length },
+    { kind: 'hud', count: (portalCollection.hudThemes || []).length },
+    { kind: 'kart', count: (portalCollection.karts || []).length },
+    { kind: 'battleMusic', count: (portalCollection.battleMusic || []).length },
+    { kind: 'stageMusic', count: (portalCollection.stageMusic || []).length },
+    { kind: 'fieldSuper', count: (portalCollection.fieldSupers || []).length }
+  ];
+  const portalCollectionTotal = portalCollectionCounts.reduce(
+    (total, entry) => total + entry.count,
+    0
+  );
 
   const isCandidateOwned = (candidate) => {
     if (candidate.kind === 'hero') return unlockedHeroes.includes(candidate.rewardId);
@@ -671,6 +751,10 @@ export default function PortalScreen({
     }
     if (candidate.kind === 'hud') {
       return (portalCollection.hudThemes || []).some(item => item.id === candidate.rewardId);
+    }
+    const collectionKey = PORTAL_COLLECTION_ID_KEYS[candidate.kind];
+    if (collectionKey) {
+      return (portalCollection[collectionKey] || []).includes(candidate.rewardId);
     }
     return false;
   };
@@ -702,16 +786,38 @@ export default function PortalScreen({
         mode: reward.data.mode,
         color: reward.color
       }));
+    const newKartIds = rewards
+      .filter(reward => reward.kind === 'kart' && !reward.wasDuplicate)
+      .map(reward => reward.rewardId);
+    const newBattleMusicIds = rewards
+      .filter(reward => reward.kind === 'battleMusic' && !reward.wasDuplicate)
+      .map(reward => reward.rewardId);
+    const newStageMusicIds = rewards
+      .filter(reward => reward.kind === 'stageMusic' && !reward.wasDuplicate)
+      .map(reward => reward.rewardId);
+    const newFieldSuperIds = rewards
+      .filter(reward => reward.kind === 'fieldSuper' && !reward.wasDuplicate)
+      .map(reward => reward.rewardId);
     const totalRefund = rewards.reduce((sum, reward) => sum + reward.shardsReturned, 0);
+    const hasNewPortalCollectionIds = (
+      newKartIds.length > 0
+      || newBattleMusicIds.length > 0
+      || newStageMusicIds.length > 0
+      || newFieldSuperIds.length > 0
+    );
 
     setBreachShards(previous => previous - BOOSTER_COST + totalRefund);
     if (newHeroIds.length > 0) setUnlockedHeroes(previous => appendUnique(previous, newHeroIds));
     if (newInventoryIds.length > 0) setInventory(previous => appendUnique(previous, newInventoryIds));
-    if (newArchives.length > 0 || newHudThemes.length > 0) {
+    if (newArchives.length > 0 || newHudThemes.length > 0 || hasNewPortalCollectionIds) {
       setPortalCollection(previous => ({
         ...previous,
         archives: appendUniqueObjects(previous?.archives || [], newArchives),
-        hudThemes: appendUniqueObjects(previous?.hudThemes || [], newHudThemes)
+        hudThemes: appendUniqueObjects(previous?.hudThemes || [], newHudThemes),
+        karts: appendUnique(previous?.karts || [], newKartIds),
+        battleMusic: appendUnique(previous?.battleMusic || [], newBattleMusicIds),
+        stageMusic: appendUnique(previous?.stageMusic || [], newStageMusicIds),
+        fieldSupers: appendUnique(previous?.fieldSupers || [], newFieldSuperIds)
       }));
     }
 
@@ -746,7 +852,13 @@ export default function PortalScreen({
       ].slice(0, 30)
     }));
     setBoosterRefund(totalRefund);
-    if (newHeroIds.length > 0 || newInventoryIds.length > 0 || newArchives.length > 0 || newHudThemes.length > 0) {
+    if (
+      newHeroIds.length > 0
+      || newInventoryIds.length > 0
+      || newArchives.length > 0
+      || newHudThemes.length > 0
+      || hasNewPortalCollectionIds
+    ) {
       sound.playSfx('levelup');
     } else if (totalRefund > 0) {
       sound.playSfx('coin');
@@ -879,8 +991,8 @@ export default function PortalScreen({
       <h1 className="cyber-title booster-portal-title">{getTranslation(lang, 'btnPortal')}</h1>
       <p className="booster-portal-lead">
         {lang === 'fr'
-          ? 'Chaque booster renferme exactement 5 cartes, dont au moins une Rare. Personnages, equipements, protocoles, apparences, archives de scene et themes HUD sont de vrais deblocages sauvegardes.'
-          : 'Every booster contains exactly 5 cards, including at least one Rare. Characters, equipment, protocols, appearances, stage archives and HUD themes are real saved unlocks.'}
+          ? 'Chaque booster renferme exactement 5 cartes, dont au moins une Rare. Personnages, equipements, karts, protocoles, apparences, stages custom, musiques de combat et de stage, supers de terrain et themes HUD sont de vrais deblocages sauvegardes.'
+          : 'Every booster contains exactly 5 cards, including at least one Rare. Characters, equipment, karts, protocols, appearances, custom stages, battle and stage music, field supers and HUD themes are real saved unlocks.'}
       </p>
 
       <section className="booster-catalog-panel" aria-labelledby="booster-catalog-title">
@@ -1020,9 +1132,9 @@ export default function PortalScreen({
             <span>{activeRewardCandidates.length} {lang === 'fr' ? 'cartes possibles' : 'possible cards'}</span>
           </div>
           <div className="booster-pool-types">
-            {Object.entries(rewardKindCounts).map(([kind, count]) => (
+            {REWARD_KIND_ORDER.map(kind => (
               <span key={kind}>
-                {REWARD_KIND_LABELS[kind]?.[lang] || kind} <strong>{count}</strong>
+                {REWARD_KIND_LABELS[kind]?.[lang] || kind} <strong>{rewardKindCounts[kind] || 0}</strong>
               </span>
             ))}
           </div>
@@ -1212,7 +1324,7 @@ export default function PortalScreen({
         )}
       </div>
 
-      {((portalCollection.hudThemes || []).length > 0 || (portalCollection.archives || []).length > 0) && (
+      {portalCollectionTotal > 0 && (
         <section className="booster-collection-panel" aria-labelledby="portal-collection-title">
           <div className="booster-collection-header">
             <div>
@@ -1220,8 +1332,15 @@ export default function PortalScreen({
                 {lang === 'fr' ? 'COLLECTION DE TRAME' : 'THREAD COLLECTION'}
               </div>
               <p>
-                {(portalCollection.hudThemes || []).length} HUD / {(portalCollection.archives || []).length} {lang === 'fr' ? 'archives' : 'archives'}
+                {portalCollectionTotal} {lang === 'fr' ? 'deblocage(s) sauvegarde(s)' : 'saved unlock(s)'}
               </p>
+              <div className="booster-pool-types">
+                {portalCollectionCounts.map(({ kind, count }) => (
+                  <span key={kind}>
+                    {REWARD_KIND_LABELS[kind]?.[lang] || kind} <strong>{count}</strong>
+                  </span>
+                ))}
+              </div>
             </div>
             <button
               type="button"

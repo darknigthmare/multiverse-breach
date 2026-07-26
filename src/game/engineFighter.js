@@ -63,6 +63,7 @@ export class EngineFighter {
     this.groundY = Math.round(height * 0.82);
     this.universe = options.universe || 'Nexus de Convergence';
     this.levelProfile = options.levelProfile || getRecentUniverseLevelProfile(this.universe);
+    this.fieldSuper = options.fieldSuper || null;
     this.particles = particles;
     this.playSfx = playSfx;
     this.onComplete = onComplete;
@@ -95,6 +96,9 @@ export class EngineFighter {
     this.aiThink = 0;
     this.aiMove = 0;
     this.aiGuardTimer = 0;
+    this.fieldSuperCharge = this.fieldSuper ? 20 : 0;
+    this.fieldSuperUsed = false;
+    this.fieldSuperFlash = 0;
     this.stats = {
       player: { damage: 0, taken: 0, kos: 0, tags: 0, maxCombo: 0, currentCombo: 0, comboTimer: 0 },
       cpu: { damage: 0, taken: 0, kos: 0, tags: 0, maxCombo: 0, currentCombo: 0, comboTimer: 0 }
@@ -122,6 +126,48 @@ export class EngineFighter {
     if (action === 'tag') return this.requestTag('player', index);
     if (action === 'jump') return this.tryJump(this.getActive('player'));
     return this.tryAction('player', action);
+  }
+
+  triggerFieldSuper() {
+    const attacker = this.getActive('player');
+    const target = this.getActive('cpu');
+    if (
+      !this.fieldSuper
+      || this.fieldSuperUsed
+      || this.fieldSuperCharge < 100
+      || !this.canAct(attacker)
+      || !target
+      || target.currentHp <= 0
+    ) return false;
+
+    const effect = this.fieldSuper.effect || {};
+    this.fieldSuperUsed = true;
+    this.fieldSuperCharge = 0;
+    this.fieldSuperFlash = 1.25;
+    this.announcement = this.fieldSuper.name?.fr
+      || this.fieldSuper.name?.en
+      || 'SUPER DE TERRAIN';
+    this.announcementTimer = 1.45;
+    this.playSfx('portal');
+    this.playSfx('special');
+    this.spawnBurst(this.width / 2, this.groundY - 90, this.fieldSuper.color || '#ffea00', 42);
+
+    this.getTeam('player').fighters.forEach(fighter => {
+      if (fighter.currentHp <= 0) return;
+      fighter.currentHp = Math.min(
+        fighter.maxHp,
+        fighter.currentHp + fighter.maxHp * (effect.healRatio || 0)
+      );
+      fighter.invulnerable = Math.max(fighter.invulnerable, 0.42);
+    });
+
+    this.applyHit(attacker, target, {
+      type: 'super',
+      base: effect.damage || 36,
+      guardDamage: effect.guardDamage || 70,
+      knockback: effect.knockback || 360
+    });
+    return true;
   }
 
   tryJump(fighter) {
@@ -269,6 +315,10 @@ export class EngineFighter {
 
   updatePassive(dt) {
     if (this.announcementTimer > 0) this.announcementTimer -= dt;
+    if (this.fieldSuperFlash > 0) this.fieldSuperFlash = Math.max(0, this.fieldSuperFlash - dt);
+    if (this.fieldSuper && !this.fieldSuperUsed && this.countdown <= 0) {
+      this.fieldSuperCharge = clamp(this.fieldSuperCharge + dt * 1.8, 0, 100);
+    }
     Object.entries(this.teams).forEach(([side, team]) => {
       team.tagCooldown = Math.max(0, team.tagCooldown - dt);
       team.fighters.forEach((fighter, index) => {
@@ -497,6 +547,10 @@ export class EngineFighter {
     target.meter = clamp(target.meter + damage * 0.55, 0, 100);
     this.stats[attacker.side].damage += damage;
     this.stats[target.side].taken += damage;
+    if (this.fieldSuper && !this.fieldSuperUsed) {
+      const chargeGain = attacker.side === 'player' ? damage * 0.3 : damage * 0.65;
+      this.fieldSuperCharge = clamp(this.fieldSuperCharge + chargeGain, 0, 100);
+    }
     this.stats[attacker.side].currentCombo += 1;
     this.stats[attacker.side].comboTimer = 0.82;
     this.stats[attacker.side].maxCombo = Math.max(this.stats[attacker.side].maxCombo, this.stats[attacker.side].currentCombo);
@@ -593,6 +647,7 @@ export class EngineFighter {
       knockouts: playerStats.kos,
       tags: playerStats.tags,
       maxCombo: playerStats.maxCombo,
+      fieldSuperUsed: this.fieldSuperUsed,
       survivingFighters: this.getTeam('player').fighters.filter(fighter => fighter.currentHp > 0).length,
       rewards: this.result === 'victory'
         ? { gold: 45 + playerStats.kos * 12, shards: 15 + ({ S: 12, A: 8, B: 5, C: 2 }[grade] || 0), seasonXp: 28 + playerStats.kos * 5 }
@@ -626,7 +681,10 @@ export class EngineFighter {
       player: serializeTeam('player'),
       cpu: serializeTeam('cpu'),
       combo: this.stats.player.currentCombo,
-      maxCombo: this.stats.player.maxCombo
+      maxCombo: this.stats.player.maxCombo,
+      fieldSuperCharge: this.fieldSuperCharge,
+      fieldSuperUsed: this.fieldSuperUsed,
+      fieldSuperId: this.fieldSuper?.id || null
     };
   }
 
@@ -642,6 +700,13 @@ export class EngineFighter {
       drawPixelSprite(ctx, fighter.x, fighter.y, fighter, animTime, fighter.facing, 142, 'melee');
       ctx.restore();
     });
+    if (this.fieldSuperFlash > 0) {
+      ctx.save();
+      ctx.globalAlpha = clamp(this.fieldSuperFlash * 0.38, 0, 0.42);
+      ctx.fillStyle = this.fieldSuper?.color || '#ffea00';
+      ctx.fillRect(0, 0, this.width, this.height);
+      ctx.restore();
+    }
     this.drawHud(ctx);
     if (this.announcementTimer > 0) this.drawAnnouncement(ctx);
   }

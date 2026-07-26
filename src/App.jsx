@@ -17,7 +17,7 @@ const PortalScreen = React.lazy(() => import('./components/PortalScreen'));
 const GameCanvas = React.lazy(() => import('./components/GameCanvas'));
 
 const DEFAULT_SAVE = {
-  saveVersion: 4,
+  saveVersion: 5,
   lang: 'fr',
   gold: 200,
   breachShards: 150,
@@ -33,7 +33,18 @@ const DEFAULT_SAVE = {
   portalCollection: {
     archives: [],
     hudThemes: [],
-    activeHudTheme: null
+    karts: [],
+    battleMusic: [],
+    stageMusic: [],
+    fieldSupers: [],
+    activeHudTheme: null,
+    activeKart: null,
+    customLoadout: {
+      archive: null,
+      battleMusic: null,
+      stageMusic: null,
+      fieldSuper: null
+    }
   },
   publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
   onboarding: {
@@ -148,9 +159,25 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   TRIO_NARRATIVE_ARCS.forEach(arc => {
     if (inventory.includes(arc.rewardItemId)) completedStages.add(arc.stageId);
   });
+  const normalizeCollectionIds = (entries) => (
+    Array.isArray(entries)
+      ? [...new Set(entries.filter(entry => typeof entry === 'string' && entry.trim()))]
+      : []
+  );
+  const archives = Array.isArray(merged.portalCollection?.archives)
+    ? merged.portalCollection.archives.filter(entry => entry?.id)
+    : [];
+  const hudThemes = Array.isArray(merged.portalCollection?.hudThemes)
+    ? merged.portalCollection.hudThemes.filter(entry => entry?.id)
+    : [];
+  const karts = normalizeCollectionIds(merged.portalCollection?.karts);
+  const battleMusic = normalizeCollectionIds(merged.portalCollection?.battleMusic);
+  const stageMusic = normalizeCollectionIds(merged.portalCollection?.stageMusic);
+  const fieldSupers = normalizeCollectionIds(merged.portalCollection?.fieldSupers);
+  const storedCustomLoadout = merged.portalCollection?.customLoadout || {};
   return {
     ...merged,
-    saveVersion: 4,
+    saveVersion: 5,
     playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
     onboarding,
     unlockedHeroes,
@@ -168,15 +195,32 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
     },
     portalStats: { ...DEFAULT_SAVE.portalStats, ...(merged.portalStats || {}), history: (merged.portalStats?.history || []).slice(0, 30) },
     portalCollection: {
-      archives: Array.isArray(merged.portalCollection?.archives)
-        ? merged.portalCollection.archives.filter(entry => entry?.id)
-        : [],
-      hudThemes: Array.isArray(merged.portalCollection?.hudThemes)
-        ? merged.portalCollection.hudThemes.filter(entry => entry?.id)
-        : [],
-      activeHudTheme: typeof merged.portalCollection?.activeHudTheme === 'string'
+      archives,
+      hudThemes,
+      karts,
+      battleMusic,
+      stageMusic,
+      fieldSupers,
+      activeHudTheme: hudThemes.some(theme => theme.id === merged.portalCollection?.activeHudTheme)
         ? merged.portalCollection.activeHudTheme
-        : null
+        : null,
+      activeKart: karts.includes(merged.portalCollection?.activeKart)
+        ? merged.portalCollection.activeKart
+        : null,
+      customLoadout: {
+        archive: archives.some(archive => archive.id === storedCustomLoadout.archive)
+          ? storedCustomLoadout.archive
+          : null,
+        battleMusic: battleMusic.includes(storedCustomLoadout.battleMusic)
+          ? storedCustomLoadout.battleMusic
+          : null,
+        stageMusic: stageMusic.includes(storedCustomLoadout.stageMusic)
+          ? storedCustomLoadout.stageMusic
+          : null,
+        fieldSuper: fieldSupers.includes(storedCustomLoadout.fieldSuper)
+          ? storedCustomLoadout.fieldSuper
+          : null
+      }
     },
     publicProfile: { ...DEFAULT_SAVE.publicProfile, ...(merged.publicProfile || {}) },
     activityProgress: { ...DEFAULT_SAVE.activityProgress, ...(merged.activityProgress || {}) },
@@ -593,7 +637,7 @@ function App() {
   )).length;
 
   const getCurrentSave = useCallback(() => ({
-    saveVersion: 4,
+    saveVersion: 5,
     lang,
     gold,
     breachShards,
@@ -1217,6 +1261,7 @@ function App() {
             activityProgress={activityProgress}
             setActivityProgress={setActivityProgress}
             portalCollection={portalCollection}
+            setPortalCollection={setPortalCollection}
             onLaunchStage={handleLaunchStage}
             onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
             />
@@ -1301,5 +1346,7 @@ function App() {
     </>
   );
 }
+
+App.normalizeSavePayload = normalizeSavePayload;
 
 export default App;

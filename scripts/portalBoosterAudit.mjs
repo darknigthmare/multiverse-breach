@@ -23,6 +23,10 @@ const contentMinimums = Object.freeze({
   event: 1,
   skin: 3,
   archive: 1,
+  kart: 1,
+  battleMusic: 1,
+  stageMusic: 1,
+  fieldSuper: 1,
   hud: 1
 });
 
@@ -44,6 +48,13 @@ const hasVisibleText = (value) => {
   );
 };
 
+const isHexColor = (value) => /^#[0-9a-f]{6}$/i.test(String(value || ''));
+
+const hasFiniteFields = (value, fieldNames) => (
+  isRecord(value)
+  && fieldNames.every((fieldName) => Number.isFinite(value[fieldName]))
+);
+
 const vite = await createServer({
   root: projectRoot,
   appType: 'custom',
@@ -56,15 +67,27 @@ let EQUIP_ITEMS_DB;
 let EVENT_ITEMS_DB;
 let SKIN_CATALOG;
 let makeBoosterCandidates;
+let KART_CATALOG;
+let BATTLE_MUSIC_CATALOG;
+let STAGE_MUSIC_CATALOG;
+let FIELD_SUPER_CATALOG;
+let BATTLE_ITEMS_BY_UNIVERSE;
 try {
   const heroModule = await vite.ssrLoadModule('/src/game/heroes.js');
   const narrativeModule = await vite.ssrLoadModule('/src/game/narrativeSystems.js');
   const portalModule = await vite.ssrLoadModule('/src/components/PortalScreen.jsx');
+  const unlockableModule = await vite.ssrLoadModule('/src/game/universeUnlockables.js');
+  const battleItemModule = await vite.ssrLoadModule('/src/game/battleItems.js');
   HEROES_DB = heroModule.HEROES_DB;
   EQUIP_ITEMS_DB = heroModule.EQUIP_ITEMS_DB;
   EVENT_ITEMS_DB = heroModule.EVENT_ITEMS_DB;
   SKIN_CATALOG = narrativeModule.SKIN_CATALOG;
   makeBoosterCandidates = portalModule.default.makeBoosterCandidates;
+  KART_CATALOG = unlockableModule.KART_CATALOG;
+  BATTLE_MUSIC_CATALOG = unlockableModule.BATTLE_MUSIC_CATALOG;
+  STAGE_MUSIC_CATALOG = unlockableModule.STAGE_MUSIC_CATALOG;
+  FIELD_SUPER_CATALOG = unlockableModule.FIELD_SUPER_CATALOG;
+  BATTLE_ITEMS_BY_UNIVERSE = battleItemModule.BATTLE_ITEMS_BY_UNIVERSE;
 } finally {
   await vite.close();
 }
@@ -81,6 +104,10 @@ const contentByUniverse = new Map(runtimeUniverses.map((universe) => [
     event: 0,
     skin: 0,
     archive: 0,
+    kart: 0,
+    battleMusic: 0,
+    stageMusic: 0,
+    fieldSuper: 0,
     hud: 0
   }
 ]));
@@ -88,7 +115,11 @@ const idsByFamily = new Map([
   ['hero', new Set()],
   ['equipment', new Set()],
   ['event', new Set()],
-  ['skin', new Set()]
+  ['skin', new Set()],
+  ['kart', new Set()],
+  ['battleMusic', new Set()],
+  ['stageMusic', new Set()],
+  ['fieldSuper', new Set()]
 ]);
 
 const registerId = (family, id, sourceLabel) => {
@@ -203,6 +234,101 @@ Object.entries(SKIN_CATALOG).forEach(([catalogKey, skin]) => {
   contentByUniverse.get(hero.universe).skin++;
 });
 
+const unlockableCatalogs = Object.freeze({
+  kart: KART_CATALOG,
+  battleMusic: BATTLE_MUSIC_CATALOG,
+  stageMusic: STAGE_MUSIC_CATALOG,
+  fieldSuper: FIELD_SUPER_CATALOG
+});
+const kartStyles = new Set(['needle', 'drift', 'bastion', 'wing', 'pulse']);
+const ultimateIdByUniverse = new Map(
+  Object.entries(BATTLE_ITEMS_BY_UNIVERSE).map(([universe, items]) => [
+    universe,
+    items.find((item) => item?.tier === 'ultimate')?.id
+  ])
+);
+
+Object.entries(unlockableCatalogs).forEach(([kind, catalog]) => {
+  if (!Array.isArray(catalog)) {
+    contentErrors.push(`${kind} catalog: expected an array`);
+    return;
+  }
+
+  catalog.forEach((unlockable, index) => {
+    const sourceLabel = `${kind}[${index}]`;
+    if (!isRecord(unlockable)) {
+      contentErrors.push(`${sourceLabel}: expected an object`);
+      return;
+    }
+
+    registerId(kind, unlockable.id, sourceLabel);
+    if (unlockable.kind !== kind) {
+      contentErrors.push(`${sourceLabel}: kind must be "${kind}"`);
+    }
+    if (!hasVisibleText(unlockable.name)) {
+      contentErrors.push(`${sourceLabel}: missing localized name`);
+    }
+    if (!hasVisibleText(unlockable.desc)) {
+      contentErrors.push(`${sourceLabel}: missing localized description`);
+    }
+    if (!isHexColor(unlockable.color)) {
+      contentErrors.push(`${sourceLabel}: invalid color "${unlockable.color}"`);
+    }
+    if (!hasVisibleText(unlockable.universe)) {
+      contentErrors.push(`${sourceLabel}: missing universe`);
+      return;
+    }
+    if (!runtimeUniverseSet.has(unlockable.universe)) {
+      contentErrors.push(`${sourceLabel}: unknown universe "${unlockable.universe}"`);
+      return;
+    }
+
+    contentByUniverse.get(unlockable.universe)[kind]++;
+
+    if (kind === 'kart' && !kartStyles.has(unlockable.style)) {
+      contentErrors.push(`${sourceLabel}: unknown kart style "${unlockable.style}"`);
+    }
+
+    if (kind === 'battleMusic' || kind === 'stageMusic') {
+      const musicStage = unlockable.musicStage;
+      if (
+        !isRecord(musicStage)
+        || !hasVisibleText(musicStage.id)
+        || !hasVisibleText(musicStage.name)
+        || !hasVisibleText(musicStage.mode)
+      ) {
+        contentErrors.push(`${sourceLabel}: incomplete procedural music metadata`);
+      } else if (musicStage.universe !== unlockable.universe) {
+        contentErrors.push(
+          `${sourceLabel}: music universe "${musicStage.universe}" does not match "${unlockable.universe}"`
+        );
+      }
+      if (!hasVisibleText(unlockable.state)) {
+        contentErrors.push(`${sourceLabel}: missing music state`);
+      }
+    }
+
+    if (kind === 'fieldSuper') {
+      const expectedUltimateId = ultimateIdByUniverse.get(unlockable.universe);
+      if (!hasVisibleText(unlockable.sourceUltimateId)) {
+        contentErrors.push(`${sourceLabel}: missing source ultimate id`);
+      } else if (unlockable.sourceUltimateId !== expectedUltimateId) {
+        contentErrors.push(
+          `${sourceLabel}: source ultimate "${unlockable.sourceUltimateId}" does not match "${expectedUltimateId}"`
+        );
+      }
+      if (
+        !hasFiniteFields(
+          unlockable.effect,
+          ['damage', 'guardDamage', 'knockback', 'healRatio']
+        )
+      ) {
+        contentErrors.push(`${sourceLabel}: incomplete finite field-super effect`);
+      }
+    }
+  });
+});
+
 const candidateIds = new Set();
 for (const universe of runtimeUniverses) {
   const universeHeroes = HEROES_DB.filter((hero) => hero.universe === universe);
@@ -221,7 +347,16 @@ for (const universe of runtimeUniverses) {
   }), {});
   const sourceCounts = contentByUniverse.get(universe);
 
-  for (const kind of ['hero', 'equipment', 'event', 'skin']) {
+  for (const kind of [
+    'hero',
+    'equipment',
+    'event',
+    'skin',
+    'kart',
+    'battleMusic',
+    'stageMusic',
+    'fieldSuper'
+  ]) {
     if ((candidateCounts[kind] || 0) !== sourceCounts[kind]) {
       contentErrors.push(
         `${universe}: PortalScreen exposes ${candidateCounts[kind] || 0} ${kind}, source registry contains ${sourceCounts[kind]}`
@@ -245,6 +380,20 @@ for (const universe of runtimeUniverses) {
       contentErrors.push(`${universe}: duplicate PortalScreen candidate id "${candidate.id}"`);
     }
     candidateIds.add(candidate.id);
+
+    if (unlockableCatalogs[candidate.kind]) {
+      const unlockable = candidate.data?.unlockable;
+      if (
+        !isRecord(unlockable)
+        || unlockable.id !== candidate.rewardId
+        || unlockable.kind !== candidate.kind
+        || unlockable.universe !== universe
+      ) {
+        contentErrors.push(
+          `${universe}: candidate "${candidate.id}" has invalid ${candidate.kind} metadata`
+        );
+      }
+    }
   }
 }
 
@@ -286,6 +435,10 @@ const contentTotals = {
   event: Object.keys(EVENT_ITEMS_DB).length,
   skin: collectibleSkins.length,
   archive: [...contentByUniverse.values()].reduce((sum, counts) => sum + counts.archive, 0),
+  kart: KART_CATALOG.length,
+  battleMusic: BATTLE_MUSIC_CATALOG.length,
+  stageMusic: STAGE_MUSIC_CATALOG.length,
+  fieldSuper: FIELD_SUPER_CATALOG.length,
   hud: [...contentByUniverse.values()].reduce((sum, counts) => sum + counts.hud, 0)
 };
 contentTotals.total = Object.entries(contentTotals)

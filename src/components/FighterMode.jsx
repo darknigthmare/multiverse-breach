@@ -3,12 +3,13 @@ import { EngineFighter } from '../game/engineFighter';
 import { ParticleSystem, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
+import { getUnlockableById } from '../game/universeUnlockables';
 import sound from '../game/soundEngine';
 
 const CONTROL_KEYS = new Set([
   'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
   'q', 'Q', 'd', 'D', 'a', 'A', 'w', 'W', 'z', 'Z', 's', 'S',
-  'j', 'J', 'k', 'K', 'l', 'L', 'i', 'I', 'u', 'U',
+  'j', 'J', 'k', 'K', 'l', 'L', 'i', 'I', 'u', 'U', 'o', 'O',
   '1', '2', '3', ' ', 'Shift'
 ]);
 
@@ -25,11 +26,28 @@ const emptySnapshot = {
   announcement: '',
   combo: 0,
   maxCombo: 0,
+  fieldSuperCharge: 0,
+  fieldSuperUsed: false,
+  fieldSuperId: null,
   player: { activeIndex: 0, tagCooldown: 0, fighters: [] },
   cpu: { activeIndex: 0, tagCooldown: 0, fighters: [] }
 };
 
 const hashValue = (value) => String(value).split('').reduce((total, char) => ((total * 33) + char.charCodeAt(0)) >>> 0, 5381);
+
+const getLocalizedName = (entry, lang, fallback = '') => (
+  entry?.name?.[lang]
+  || entry?.name?.fr
+  || entry?.name?.en
+  || entry?.name
+  || fallback
+);
+
+const resolveOwnedUnlockables = (kind, ids, hiddenSet) => (
+  [...new Set(Array.isArray(ids) ? ids : [])]
+    .map(id => getUnlockableById(kind, id))
+    .filter(item => item && !hiddenSet.has(item.universe))
+);
 
 const scaleHeroForFight = (hero, level = 1) => {
   const safeLevel = Math.max(1, Number(level) || 1);
@@ -107,6 +125,43 @@ function Lineup({ lang, heroes, side, snapshot, onTag }) {
   );
 }
 
+function FighterLoadoutSelect({
+  label,
+  value,
+  onChange,
+  options,
+  defaultLabel,
+  emptyLabel
+}) {
+  return (
+    <label style={{ minWidth: 0, display: 'grid', gap: 6 }}>
+      <span className="fighter-section-label">{label}</span>
+      <select
+        value={value}
+        onChange={event => onChange(event.target.value || null)}
+        style={{
+          width: '100%',
+          minHeight: 38,
+          padding: '8px 10px',
+          border: '1px solid rgba(57, 197, 187, 0.32)',
+          borderRadius: 4,
+          background: 'rgba(0, 0, 0, 0.58)',
+          color: '#e8ffff',
+          font: "10px 'Share Tech Mono', monospace"
+        }}
+      >
+        <option value="">{defaultLabel}</option>
+        {options.map(option => (
+          <option key={option.id} value={option.id}>{option.label}</option>
+        ))}
+      </select>
+      <small style={{ color: '#8fa8ad', fontSize: 9 }}>
+        {options.length ? `${options.length} ${options.length > 1 ? 'signatures' : 'signature'}` : emptyLabel}
+      </small>
+    </label>
+  );
+}
+
 export default function FighterMode({
   lang = 'fr',
   heroes = [],
@@ -114,6 +169,9 @@ export default function FighterMode({
   activeTeam = [],
   heroLevels = {},
   fighterCareer = {},
+  portalCollection = {},
+  setPortalCollection = () => {},
+  hiddenUniverses = [],
   onMatchComplete
 }) {
   const canvasRef = useRef(null);
@@ -130,6 +188,52 @@ export default function FighterMode({
   useEffect(() => {
     onMatchCompleteRef.current = onMatchComplete;
   }, [onMatchComplete]);
+
+  const hiddenSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
+  const ownedArchives = useMemo(() => (
+    (Array.isArray(portalCollection.archives) ? portalCollection.archives : [])
+      .filter(archive => archive?.id && !hiddenSet.has(archive.universe))
+  ), [hiddenSet, portalCollection.archives]);
+  const ownedBattleMusic = useMemo(
+    () => resolveOwnedUnlockables('battleMusic', portalCollection.battleMusic, hiddenSet),
+    [hiddenSet, portalCollection.battleMusic]
+  );
+  const ownedStageMusic = useMemo(
+    () => resolveOwnedUnlockables('stageMusic', portalCollection.stageMusic, hiddenSet),
+    [hiddenSet, portalCollection.stageMusic]
+  );
+  const ownedFieldSupers = useMemo(
+    () => resolveOwnedUnlockables('fieldSuper', portalCollection.fieldSupers, hiddenSet),
+    [hiddenSet, portalCollection.fieldSupers]
+  );
+  const customLoadout = portalCollection.customLoadout || {};
+  const activeArchive = useMemo(
+    () => ownedArchives.find(archive => archive.id === customLoadout.archive) || null,
+    [customLoadout.archive, ownedArchives]
+  );
+  const activeBattleMusic = useMemo(
+    () => ownedBattleMusic.find(track => track.id === customLoadout.battleMusic) || null,
+    [customLoadout.battleMusic, ownedBattleMusic]
+  );
+  const activeStageMusic = useMemo(
+    () => ownedStageMusic.find(track => track.id === customLoadout.stageMusic) || null,
+    [customLoadout.stageMusic, ownedStageMusic]
+  );
+  const activeFieldSuper = useMemo(
+    () => ownedFieldSupers.find(fieldSuper => fieldSuper.id === customLoadout.fieldSuper) || null,
+    [customLoadout.fieldSuper, ownedFieldSupers]
+  );
+
+  const updateCustomLoadout = (slot, id) => {
+    setPortalCollection(previous => ({
+      ...(previous || {}),
+      customLoadout: {
+        ...(previous?.customLoadout || {}),
+        [slot]: id || null
+      }
+    }));
+    sound.playSfx('click');
+  };
 
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
   const playerHeroes = useMemo(() => {
@@ -159,12 +263,13 @@ export default function FighterMode({
   }, [averageLevel, heroes, opponentSeed, playerHeroes]);
 
   const arenaUniverse = useMemo(() => (
-    playerHeroes.find(hero => getRecentUniverseLevelProfile(hero.universe))?.universe
+    activeArchive?.universe
+      || playerHeroes.find(hero => getRecentUniverseLevelProfile(hero.universe))?.universe
       || opponentHeroes.find(hero => getRecentUniverseLevelProfile(hero.universe))?.universe
       || playerHeroes.find(hero => hero.universe)?.universe
       || opponentHeroes.find(hero => hero.universe)?.universe
       || 'Nexus de Convergence'
-  ), [opponentHeroes, playerHeroes]);
+  ), [activeArchive, opponentHeroes, playerHeroes]);
   const arenaLevelProfile = useMemo(() => getRecentUniverseLevelProfile(arenaUniverse), [arenaUniverse]);
   const fighterMusicStage = useMemo(() => ({
     id: `fighter-${arenaUniverse}-${opponentHeroes.map(hero => hero.id).join('-') || 'echo'}`,
@@ -174,6 +279,33 @@ export default function FighterMode({
     bossName: opponentHeroes.length === 1 ? opponentHeroes[0]?.name : '',
     tags: ['duel', 'loreArena']
   }), [arenaLevelProfile, arenaUniverse, opponentHeroes]);
+  const battleMusicStage = useMemo(() => (
+    activeBattleMusic
+      ? {
+          ...activeBattleMusic.musicStage,
+          name: getLocalizedName(activeBattleMusic, lang, activeBattleMusic.musicStage?.name),
+          bossName: opponentHeroes.length === 1 ? opponentHeroes[0]?.name : ''
+        }
+      : fighterMusicStage
+  ), [activeBattleMusic, fighterMusicStage, lang, opponentHeroes]);
+  const lobbyMusicStage = useMemo(() => (
+    activeStageMusic
+      ? {
+          ...activeStageMusic.musicStage,
+          name: getLocalizedName(activeStageMusic, lang, activeStageMusic.musicStage?.name)
+        }
+      : {
+          ...fighterMusicStage,
+          id: `fighter-lobby-${fighterMusicStage.id}`,
+          tags: ['customStage', 'loreArena']
+        }
+  ), [activeStageMusic, fighterMusicStage, lang]);
+
+  useEffect(() => {
+    if (matchStarted) return undefined;
+    sound.playStageBgm(lobbyMusicStage, activeStageMusic?.state || 'grid');
+    return () => sound.stopBgm();
+  }, [activeStageMusic, lobbyMusicStage, matchStarted]);
 
   useEffect(() => {
     if (!matchStarted || !playerHeroes.length || !opponentHeroes.length) return undefined;
@@ -199,13 +331,18 @@ export default function FighterMode({
         const resolved = { ...report, result };
         setSummary(resolved);
         setSnapshot(engine.getSnapshot());
-        sound.setStageMusicState(result, { ...fighterMusicStage, result });
+        sound.setStageMusicState(result, { ...battleMusicStage, result });
         onMatchCompleteRef.current?.(resolved);
       },
-      { difficulty, universe: arenaUniverse, levelProfile: arenaLevelProfile }
+      {
+        difficulty,
+        universe: arenaUniverse,
+        levelProfile: arenaLevelProfile,
+        fieldSuper: activeFieldSuper
+      }
     );
     engineRef.current = engine;
-    sound.playStageBgm(fighterMusicStage, 'battle');
+    sound.playStageBgm(battleMusicStage, activeBattleMusic?.state || 'battle');
 
     let animationId = 0;
     let last = performance.now();
@@ -249,6 +386,7 @@ export default function FighterMode({
       else if (key === 'k') engine.triggerPlayerAction('heavy');
       else if (key === 'l') engine.triggerPlayerAction('special');
       else if (key === 'u') engine.triggerPlayerAction('super');
+      else if (key === 'o') engine.triggerFieldSuper();
       else if (['1', '2', '3'].includes(key)) engine.triggerPlayerAction('tag', Number(key) - 1);
     };
     const onKeyUp = event => {
@@ -277,7 +415,18 @@ export default function FighterMode({
       engineRef.current = null;
       inputRef.current = {};
     };
-  }, [arenaLevelProfile, arenaUniverse, difficulty, fighterMusicStage, matchNonce, matchStarted, opponentHeroes, playerHeroes]);
+  }, [
+    activeBattleMusic,
+    activeFieldSuper,
+    arenaLevelProfile,
+    arenaUniverse,
+    battleMusicStage,
+    difficulty,
+    matchNonce,
+    matchStarted,
+    opponentHeroes,
+    playerHeroes
+  ]);
 
   const startMatch = () => {
     if (!playerHeroes.length || !opponentHeroes.length) return;
@@ -305,12 +454,23 @@ export default function FighterMode({
     engineRef.current?.triggerPlayerAction(action);
   };
 
+  const triggerFieldSuper = () => {
+    engineRef.current?.triggerFieldSuper();
+  };
+
   const setHeldInput = (key, active) => {
     inputRef.current[key] = active;
   };
 
   const playerSnapshot = snapshot.player || emptySnapshot.player;
   const cpuSnapshot = snapshot.cpu || emptySnapshot.cpu;
+  const fieldSuperCharge = Math.max(0, Math.min(100, Number(snapshot.fieldSuperCharge) || 0));
+  const fieldSuperReady = Boolean(
+    activeFieldSuper
+    && !snapshot.fieldSuperUsed
+    && fieldSuperCharge >= 100
+    && snapshot.phase === 'running'
+  );
 
   if (!matchStarted) {
     return (
@@ -341,6 +501,64 @@ export default function FighterMode({
             <Lineup lang={lang} heroes={opponentHeroes} side="cpu" snapshot={{ fighters: [], tagCooldown: 0 }} />
           </section>
         </div>
+
+        <section
+          aria-label={lang === 'fr' ? 'Deblocages du combat custom' : 'Custom battle unlockables'}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+            gap: 12,
+            padding: 14,
+            border: '1px solid rgba(255, 69, 0, 0.24)',
+            borderRadius: 6,
+            background: 'rgba(3, 4, 10, 0.72)'
+          }}
+        >
+          <FighterLoadoutSelect
+            label={lang === 'fr' ? 'STAGE CUSTOM' : 'CUSTOM STAGE'}
+            value={activeArchive?.id || ''}
+            onChange={id => updateCustomLoadout('archive', id)}
+            options={ownedArchives.map(archive => ({
+              id: archive.id,
+              label: `${archive.universe} / ${archive.mode || (lang === 'fr' ? 'Stage' : 'Stage')}`
+            }))}
+            defaultLabel={lang === 'fr' ? 'NEXUS / ARENE AUTO' : 'NEXUS / AUTO ARENA'}
+            emptyLabel={lang === 'fr' ? 'Stage a obtenir dans les boosters.' : 'Find a stage in boosters.'}
+          />
+          <FighterLoadoutSelect
+            label={lang === 'fr' ? 'MUSIQUE DU COMBAT' : 'BATTLE MUSIC'}
+            value={activeBattleMusic?.id || ''}
+            onChange={id => updateCustomLoadout('battleMusic', id)}
+            options={ownedBattleMusic.map(track => ({
+              id: track.id,
+              label: getLocalizedName(track, lang, track.universe)
+            }))}
+            defaultLabel={lang === 'fr' ? 'AUTO / IMPACT A.R.C.A.' : 'AUTO / A.R.C.A. IMPACT'}
+            emptyLabel={lang === 'fr' ? 'Piste a obtenir dans les boosters.' : 'Find a track in boosters.'}
+          />
+          <FighterLoadoutSelect
+            label={lang === 'fr' ? 'MUSIQUE DU STAGE / LOBBY' : 'STAGE / LOBBY MUSIC'}
+            value={activeStageMusic?.id || ''}
+            onChange={id => updateCustomLoadout('stageMusic', id)}
+            options={ownedStageMusic.map(track => ({
+              id: track.id,
+              label: getLocalizedName(track, lang, track.universe)
+            }))}
+            defaultLabel={lang === 'fr' ? 'AUTO / SIGNAL NEXUS' : 'AUTO / NEXUS SIGNAL'}
+            emptyLabel={lang === 'fr' ? 'Theme a obtenir dans les boosters.' : 'Find a theme in boosters.'}
+          />
+          <FighterLoadoutSelect
+            label={lang === 'fr' ? 'SUPER DE TERRAIN' : 'FIELD SUPER'}
+            value={activeFieldSuper?.id || ''}
+            onChange={id => updateCustomLoadout('fieldSuper', id)}
+            options={ownedFieldSupers.map(fieldSuper => ({
+              id: fieldSuper.id,
+              label: getLocalizedName(fieldSuper, lang, fieldSuper.universe)
+            }))}
+            defaultLabel={lang === 'fr' ? 'AUCUN / EMPLACEMENT LIBRE' : 'NONE / EMPTY SLOT'}
+            emptyLabel={lang === 'fr' ? 'Super a obtenir dans les boosters.' : 'Find a super in boosters.'}
+          />
+        </section>
 
         <div className="fighter-preflight-bar">
           <div>
@@ -425,6 +643,50 @@ export default function FighterMode({
             </div>
             <Lineup lang={lang} heroes={opponentHeroes} side="cpu" snapshot={cpuSnapshot} />
           </section>
+          <section>
+            <div className="fighter-side-heading">
+              <span>{lang === 'fr' ? 'SUPER DE TERRAIN / O' : 'FIELD SUPER / O'}</span>
+              <b>
+                {!activeFieldSuper
+                  ? (lang === 'fr' ? 'VIDE' : 'EMPTY')
+                  : snapshot.fieldSuperUsed
+                    ? (lang === 'fr' ? 'UTILISE' : 'USED')
+                    : `${Math.floor(fieldSuperCharge)}%`}
+              </b>
+            </div>
+            <strong style={{ display: 'block', margin: '8px 0 6px', color: activeFieldSuper?.color || '#8fa8ad', fontSize: 10 }}>
+              {activeFieldSuper
+                ? getLocalizedName(activeFieldSuper, lang, activeFieldSuper.universe)
+                : (lang === 'fr' ? 'Aucun super equipe' : 'No field super equipped')}
+            </strong>
+            <div
+              role="progressbar"
+              aria-label={lang === 'fr' ? 'Charge du super de terrain' : 'Field super charge'}
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow={Math.floor(fieldSuperCharge)}
+              style={{ height: 7, overflow: 'hidden', background: 'rgba(255, 255, 255, 0.1)' }}
+            >
+              <i
+                style={{
+                  width: `${fieldSuperCharge}%`,
+                  height: '100%',
+                  display: 'block',
+                  background: activeFieldSuper?.color || '#8fa8ad',
+                  boxShadow: fieldSuperReady ? `0 0 12px ${activeFieldSuper?.color || '#ffea00'}` : 'none'
+                }}
+              />
+            </div>
+            <button
+              type="button"
+              className="btn-retro"
+              disabled={!fieldSuperReady}
+              onClick={triggerFieldSuper}
+              style={{ width: '100%', marginTop: 8 }}
+            >
+              {lang === 'fr' ? 'DECLENCHER LE TERRAIN [O]' : 'TRIGGER FIELD [O]'}
+            </button>
+          </section>
           <section className="fighter-control-list">
             <span>{lang === 'fr' ? 'COMMANDES' : 'CONTROLS'}</span>
             <div><b>Q/D</b><small>{lang === 'fr' ? 'Deplacement' : 'Move'}</small></div>
@@ -432,6 +694,7 @@ export default function FighterMode({
             <div><b>S / DOWN</b><small>{lang === 'fr' ? 'Accroupi' : 'Crouch'}</small></div>
             <div><b>J / K</b><small>{lang === 'fr' ? 'Leger / lourd' : 'Light / heavy'}</small></div>
             <div><b>L / U</b><small>{lang === 'fr' ? 'Special / rupture' : 'Special / rupture'}</small></div>
+            <div><b>O</b><small>{lang === 'fr' ? 'Super de terrain' : 'Field super'}</small></div>
             <div><b>I / SHIFT</b><small>{lang === 'fr' ? 'Garde' : 'Guard'}</small></div>
             <div><b>1 / 2 / 3</b><small>Tag</small></div>
           </section>
@@ -451,6 +714,7 @@ export default function FighterMode({
           <button type="button" onClick={() => triggerAction('heavy')}>K</button>
           <button type="button" onClick={() => triggerAction('special')}>L</button>
           <button type="button" onClick={() => triggerAction('super')}>U</button>
+          <button type="button" disabled={!fieldSuperReady} onClick={triggerFieldSuper}>O</button>
         </div>
       </div>
     </section>

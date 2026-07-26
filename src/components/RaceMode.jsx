@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
 import sound from '../game/soundEngine';
+import { getUnlockableById } from '../game/universeUnlockables';
 
 const CONTROL_KEYS = new Set([
   'ArrowUp',
@@ -76,7 +77,13 @@ const saveKartCareer = career => {
   localStorage.setItem('multiverse-breach-kart-career', JSON.stringify(career));
 };
 
-export default function RaceMode({ lang = 'fr', playerProfile }) {
+export default function RaceMode({
+  lang = 'fr',
+  playerProfile,
+  portalCollection = {},
+  setPortalCollection,
+  hiddenUniverses = []
+}) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const keysRef = useRef({});
@@ -102,6 +109,16 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
   });
 
   const trackList = useMemo(() => Object.values(RACE_TRACKS).sort((a, b) => a.difficulty - b.difficulty || a.id.localeCompare(b.id)), []);
+  const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
+  const ownedKarts = useMemo(() => (
+    (portalCollection.karts || [])
+      .map(id => getUnlockableById('kart', id))
+      .filter(kart => kart && !hiddenUniverseSet.has(kart.universe))
+  ), [hiddenUniverseSet, portalCollection.karts]);
+  const selectedKart = ownedKarts.find(kart => kart.id === portalCollection.activeKart) || null;
+  const selectedKartName = selectedKart?.name?.[lang]
+    || selectedKart?.name?.fr
+    || (lang === 'fr' ? 'Chassis Suture Nexus' : 'Nexus Suture Chassis');
   const track = trackId ? RACE_TRACKS[trackId] : null;
   const raceMusicStage = useMemo(() => {
     if (!track) {
@@ -181,7 +198,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
         rank: raceSummary.rank,
         result: raceSummary.rank === 1 ? 'victory' : 'complete'
       });
-    }, trackId, career.upgrades);
+    }, trackId, career.upgrades, selectedKart);
     engineRef.current = engine;
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');
@@ -284,7 +301,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
       sound.stopBgm();
       engineRef.current = null;
     };
-  }, [career.upgrades, raceMusicStage, raceStarted, track, trackId]);
+  }, [career.upgrades, raceMusicStage, raceStarted, selectedKart, track, trackId]);
 
   const resetRace = () => {
     keysRef.current = {};
@@ -298,6 +315,14 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
     keysRef.current = {};
     setSummary(null);
     setTrackId(nextTrackId);
+  };
+
+  const selectKart = (kartId) => {
+    setPortalCollection?.(previous => ({
+      ...previous,
+      activeKart: kartId
+    }));
+    sound.playSfx('click');
   };
 
   const startRace = () => {
@@ -378,7 +403,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
             <img className="race-mode-pilot-icon" src={RACE_ASSETS.hudAvatar} alt="Mirelle kart HUD" />
             <div>
               <strong>{pilotId ? 'Mirelle Suture' : (lang === 'fr' ? 'Pilote requis' : 'Pilot required')}</strong>
-              <span>{track ? (track.name[lang] || track.name.fr) : (lang === 'fr' ? 'Circuit requis' : 'Track required')}</span>
+              <span>{selectedKartName}</span>
             </div>
           </div>
         </div>
@@ -393,7 +418,36 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
           </section>
 
           <section className="race-preflight-section">
-            <span className="race-preflight-label">{lang === 'fr' ? '2. CIRCUIT' : '2. TRACK'}</span>
+            <span className="race-preflight-label">{lang === 'fr' ? '2. CHASSIS' : '2. CHASSIS'}</span>
+            <div className="race-preflight-karts" role="group" aria-label={lang === 'fr' ? 'Kart actif' : 'Active kart'}>
+              <button
+                type="button"
+                className={`race-kart-option ${!selectedKart ? 'active' : ''}`}
+                onClick={() => selectKart(null)}
+                aria-pressed={!selectedKart}
+              >
+                <span style={{ '--kart-color': '#39c5bb' }} aria-hidden="true">K</span>
+                <strong>{lang === 'fr' ? 'Chassis Suture Nexus' : 'Nexus Suture Chassis'}</strong>
+                <small>{lang === 'fr' ? 'Kart de base / performances garage' : 'Base kart / garage performance'}</small>
+              </button>
+              {ownedKarts.map(kart => (
+                <button
+                  key={kart.id}
+                  type="button"
+                  className={`race-kart-option ${selectedKart?.id === kart.id ? 'active' : ''}`}
+                  onClick={() => selectKart(kart.id)}
+                  aria-pressed={selectedKart?.id === kart.id}
+                >
+                  <span style={{ '--kart-color': kart.color }} aria-hidden="true">K</span>
+                  <strong>{kart.name[lang] || kart.name.fr}</strong>
+                  <small>{kart.desc[lang] || kart.desc.fr}</small>
+                </button>
+              ))}
+            </div>
+          </section>
+
+          <section className="race-preflight-section">
+            <span className="race-preflight-label">{lang === 'fr' ? '3. CIRCUIT' : '3. TRACK'}</span>
             <div className="race-preflight-tracks">
               {trackList.map(trackOption => (
                 <button key={trackOption.id} type="button" className={`race-track-option ${trackOption.id === trackId ? 'active' : ''}`} onClick={() => selectTrack(trackOption.id)}>
@@ -408,6 +462,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
         <div className="race-preflight-launch">
           <div>
             <span>{lang === 'fr' ? 'Pilote' : 'Pilot'}: <strong>{pilotId ? 'Mirelle Suture' : '--'}</strong></span>
+            <span>{lang === 'fr' ? 'Kart' : 'Kart'}: <strong>{selectedKartName}</strong></span>
             <span>{lang === 'fr' ? 'Circuit' : 'Track'}: <strong>{track ? (track.name[lang] || track.name.fr) : '--'}</strong></span>
           </div>
           <label className="race-assist-toggle" title={lang === 'fr' ? 'Maintient automatiquement l acceleration; le frein et les virages restent manuels.' : 'Automatically holds acceleration; braking and steering stay manual.'}>
@@ -438,7 +493,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
           <img className="race-mode-pilot-icon" src={RACE_ASSETS.hudAvatar} alt="Mirelle kart HUD" />
           <div>
             <strong>Mirelle Suture</strong>
-            <span>{track.name[lang] || track.name.fr}</span>
+            <span>{selectedKartName}</span>
           </div>
         </div>
       </div>
@@ -508,7 +563,7 @@ export default function RaceMode({ lang = 'fr', playerProfile }) {
           <div className="race-garage-card">
             <span>{lang === 'fr' ? 'Garage Nexus' : 'Nexus garage'}</span>
             <img src={RACE_ASSETS.hudGarage} alt={lang === 'fr' ? 'Garage et HUD kart de Mirelle' : 'Mirelle kart garage and HUD'} />
-            <strong>{lang === 'fr' ? 'Chassis Suture / cache A.R.C.A.' : 'Suture chassis / A.R.C.A. cache'}</strong>
+            <strong>{selectedKartName}</strong>
             <div className="race-upgrade-list">
               {Object.entries(KART_GARAGE_UPGRADES).map(([upgradeId, upgrade]) => {
                 const level = career.upgrades[upgradeId] || 0;

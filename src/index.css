@@ -623,6 +623,10 @@ body {
   gap: 14px;
 }
 
+.race-preflight-grid > .race-preflight-section:last-child {
+  grid-column: 1 / -1;
+}
+
 .race-preflight-section,
 .race-preflight-launch {
   border: 1px solid rgba(57, 197, 187, 0.22);
@@ -678,6 +682,63 @@ body {
 .race-pilot-option small {
   margin-top: 7px;
   color: #91aaa9;
+}
+
+.race-preflight-karts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 8px;
+  max-height: 270px;
+  overflow: auto;
+}
+
+.race-kart-option {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 3px 10px;
+  align-items: center;
+  min-height: 66px;
+  padding: 9px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 5px;
+  background: rgba(255,255,255,0.025);
+  color: #d8fffb;
+  text-align: left;
+  cursor: pointer;
+}
+
+.race-kart-option > span {
+  grid-row: 1 / 3;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--kart-color, #39c5bb);
+  border-radius: 50%;
+  color: var(--kart-color, #39c5bb);
+  background: color-mix(in srgb, var(--kart-color, #39c5bb) 14%, transparent);
+  font-weight: 900;
+}
+
+.race-kart-option strong,
+.race-kart-option small {
+  min-width: 0;
+}
+
+.race-kart-option small {
+  color: #91aaa9;
+  line-height: 1.35;
+}
+
+.race-kart-option.active {
+  border-color: var(--kart-color, #ffeb3b);
+  background: rgba(255,235,59,0.075);
+  box-shadow: inset 0 0 22px rgba(255,235,59,0.055);
+}
+
+.race-kart-option:hover,
+.race-kart-option:focus-visible {
+  border-color: #ffeb3b;
 }
 
 .race-preflight-tracks {

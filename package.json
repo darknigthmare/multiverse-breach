@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "oxlint",
     "check:progression": "node scripts/progressionAudit.mjs",
-    "test:boosters": "node --test scripts/portalBoosterEngine.test.mjs scripts/portalBoosterCatalog.test.mjs",
+    "test:boosters": "node --test scripts/portalBoosterEngine.test.mjs scripts/portalBoosterCatalog.test.mjs scripts/universeUnlockables.test.mjs",
     "boosters:audit": "node scripts/portalBoosterAudit.mjs",
     "items:audit": "node scripts/itemAssetAudit.mjs",
     "music:audit": "node scripts/stageMusicAudit.mjs",

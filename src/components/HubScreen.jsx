@@ -3650,6 +3650,7 @@ export default function HubScreen({
   activityProgress = {},
   setActivityProgress,
   portalCollection = {},
+  setPortalCollection,
   onLaunchStage,
   onGoToPortal
 }) {
@@ -7056,6 +7057,9 @@ export default function HubScreen({
             activeTeam={activeTeam}
             heroLevels={heroLevels}
             fighterCareer={activityProgress.fighterCareer || {}}
+            portalCollection={portalCollection}
+            setPortalCollection={setPortalCollection}
+            hiddenUniverses={hiddenUniverses}
             onMatchComplete={recordFighterMatch}
           />
         )}
@@ -7064,6 +7068,9 @@ export default function HubScreen({
           <RaceMode
             lang={lang}
             playerProfile={playerProfile}
+            portalCollection={portalCollection}
+            setPortalCollection={setPortalCollection}
+            hiddenUniverses={hiddenUniverses}
           />
         )}
 

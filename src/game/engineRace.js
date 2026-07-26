@@ -488,12 +488,20 @@ export const KART_TRACK_LAYOUTS = {
 export const RACE_TRACKS = KART_TRACK_LAYOUTS;
 
 export class EngineRace {
-  constructor(width, height, onFinish = () => {}, trackId = 'nexus_archive_loop', garageUpgrades = {}) {
+  constructor(
+    width,
+    height,
+    onFinish = () => {},
+    trackId = 'nexus_archive_loop',
+    garageUpgrades = {},
+    kartLoadout = null
+  ) {
     this.width = width;
     this.height = height;
     this.onFinish = onFinish;
     this.trackId = trackId;
     this.garageUpgrades = garageUpgrades || {};
+    this.kartLoadout = kartLoadout;
     this.garageStats = this.computeGarageStats(this.garageUpgrades);
     this.track = this.createTrackState(trackId);
     this.images = {};
@@ -611,8 +619,9 @@ export class EngineRace {
     this.objective = this.createObjectiveState();
     this.player = this.createKart({
       id: 'mirelle',
-      name: 'Mirelle Suture',
-      color: '#39c5bb',
+      name: this.kartLoadout?.name?.fr || 'Mirelle Suture',
+      color: this.kartLoadout?.color || '#39c5bb',
+      visualStyle: this.kartLoadout?.style || 'suture',
       x: start.x,
       y: start.y,
       angle: startAngle,
@@ -629,11 +638,25 @@ export class EngineRace {
     ];
   }
 
-  createKart({ id, name, color, x, y, angle, ai, laneOffset, maxSpeed = 266, accel = 320, turnRate = 3.2 }) {
+  createKart({
+    id,
+    name,
+    color,
+    visualStyle = 'standard',
+    x,
+    y,
+    angle,
+    ai,
+    laneOffset,
+    maxSpeed = 266,
+    accel = 320,
+    turnRate = 3.2
+  }) {
     return {
       id,
       name,
       color,
+      visualStyle,
       x,
       y,
       angle,
@@ -2341,7 +2364,7 @@ export class EngineRace {
     ctx.rotate(kart.angle + Math.PI / 2 + (kart.spin > 0 ? Math.sin(this.time * 26) * kart.spin : 0));
     const isPlayer = kart.id === 'mirelle';
     const sprite = isPlayer ? this.images.kartDirections : null;
-    if (isPlayer && sprite?.complete && sprite.naturalWidth) {
+    if (isPlayer && kart.visualStyle === 'suture' && sprite?.complete && sprite.naturalWidth) {
       const cols = 4;
       const rows = 4;
       const frameW = sprite.naturalWidth / cols;
@@ -2353,12 +2376,61 @@ export class EngineRace {
       ctx.fillStyle = kart.color;
       ctx.strokeStyle = '#050307';
       ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.roundRect(-18, -28, 36, 56, 8);
-      ctx.fill();
-      ctx.stroke();
-      ctx.fillStyle = '#10131c';
-      ctx.fillRect(-12, -14, 24, 18);
+      if (kart.visualStyle === 'needle') {
+        ctx.beginPath();
+        ctx.moveTo(0, -34);
+        ctx.lineTo(18, 25);
+        ctx.lineTo(0, 32);
+        ctx.lineTo(-18, 25);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      } else if (kart.visualStyle === 'drift') {
+        ctx.beginPath();
+        ctx.roundRect(-23, -25, 46, 52, 14);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#10131c';
+        ctx.fillRect(-19, 7, 38, 12);
+      } else if (kart.visualStyle === 'bastion') {
+        ctx.beginPath();
+        ctx.roundRect(-24, -30, 48, 60, 5);
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeRect(-17, -23, 34, 18);
+      } else if (kart.visualStyle === 'wing') {
+        ctx.beginPath();
+        ctx.moveTo(0, -32);
+        ctx.lineTo(14, -8);
+        ctx.lineTo(30, 17);
+        ctx.lineTo(12, 13);
+        ctx.lineTo(8, 30);
+        ctx.lineTo(-8, 30);
+        ctx.lineTo(-12, 13);
+        ctx.lineTo(-30, 17);
+        ctx.lineTo(-14, -8);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      } else if (kart.visualStyle === 'pulse') {
+        ctx.beginPath();
+        ctx.ellipse(0, 0, 23, 31, 0, 0, TAU);
+        ctx.fill();
+        ctx.stroke();
+        ctx.strokeStyle = '#d8fffb';
+        ctx.beginPath();
+        ctx.arc(0, -3, 12, 0, TAU);
+        ctx.stroke();
+      } else {
+        ctx.beginPath();
+        ctx.roundRect(-18, -28, 36, 56, 8);
+        ctx.fill();
+        ctx.stroke();
+      }
+      if (!['drift', 'pulse'].includes(kart.visualStyle)) {
+        ctx.fillStyle = '#10131c';
+        ctx.fillRect(-12, -14, 24, 18);
+      }
       ctx.fillStyle = '#ffeb3b';
       ctx.fillRect(-10, -30, 20, 6);
     }
@@ -2391,7 +2463,7 @@ export class EngineRace {
     ctx.fillStyle = kart.ai ? '#aaa' : '#d8fffb';
     ctx.font = 'bold 10px Share Tech Mono, monospace';
     ctx.textAlign = 'center';
-    ctx.fillText(kart.name, kart.x, kart.y - 34);
+    ctx.fillText(String(kart.name || '').slice(0, 24), kart.x, kart.y - 34);
   }
 
   drawParticles(ctx) {
@@ -2409,11 +2481,11 @@ export class EngineRace {
     const hudY = 78;
     ctx.fillStyle = 'rgba(2,1,8,0.78)';
     ctx.fillRect(hudX, hudY, 250, 148);
-    ctx.strokeStyle = 'rgba(57,197,187,0.45)';
+    ctx.strokeStyle = player.color;
     ctx.strokeRect(hudX, hudY, 250, 148);
     drawSheetFrame(ctx, this.images.hudIcons, 5, 7, 0, 0, hudX + 8, hudY + 10, 34, 34);
     ctx.font = 'bold 15px Share Tech Mono, monospace';
-    ctx.fillStyle = '#39c5bb';
+    ctx.fillStyle = player.color;
     ctx.fillText(`A.R.C.A. RACE // ${player.rank}/4`, hudX + 50, hudY + 24);
     ctx.font = '12px Share Tech Mono, monospace';
     ctx.fillStyle = '#d8fffb';
