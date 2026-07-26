@@ -524,7 +524,7 @@ Les entrees suivantes sont suffisamment canoniques dans le roster. Elles ne doiv
 | Metal Gear Rising | Sundowner; Mistral | Corrects, P2 art. | https://www.konami.com/mg/history/us/en/ |
 | BioShock | Frank Fontaine; Sander Cohen | Corrects, P2 art. Verrouiller Fontaine humain puis forme ADAM si les deux phases sont utilisees. | https://2k.com/en-US/game/bioshock-the-collection/ |
 | Twisted Metal | Calypso; Minion | Corrects pour un roster crossover de la serie, P2 art. | https://www.playstation.com/games/twisted-metal/ |
-| Spider-Man PS1 | Venom; Carnage | Corrects pour le jeu 2000, P2 art. | https://www.marvel.com/games |
+| Spider: The Video Game | Mechanical Arm; Museum Boss; Brain | Boss verifies pour le jeu PS1 de 1997; P2 art. | https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921 |
 | Final Fantasy VII | Safer Sephiroth; Jenova BIRTH; Jenova Synthesis | Corrects si les formes sont des phases distinctes; P2 art. | https://ffvii.square-enix-games.com/ |
 | Crash Bandicoot | Dr. Neo Cortex; N. Gin | Corrects, P2 art. | https://www.crashbandicoot.com/ |
 | Tekken | Ogre; Heihachi | Corrects, P2 art. | https://tekken.com/ |

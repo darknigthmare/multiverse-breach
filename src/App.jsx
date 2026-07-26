@@ -17,7 +17,7 @@ const PortalScreen = React.lazy(() => import('./components/PortalScreen'));
 const GameCanvas = React.lazy(() => import('./components/GameCanvas'));
 
 const DEFAULT_SAVE = {
-  saveVersion: 3,
+  saveVersion: 4,
   lang: 'fr',
   gold: 200,
   breachShards: 150,
@@ -30,6 +30,11 @@ const DEFAULT_SAVE = {
   heroTalents: {},
   heroSkins: {},
   portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
+  portalCollection: {
+    archives: [],
+    hudThemes: [],
+    activeHudTheme: null
+  },
   publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
   onboarding: {
     profileCreated: false,
@@ -145,7 +150,7 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   });
   return {
     ...merged,
-    saveVersion: 3,
+    saveVersion: 4,
     playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
     onboarding,
     unlockedHeroes,
@@ -161,7 +166,18 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
       gear: Array.isArray(merged.disabledAssets?.gear) ? merged.disabledAssets.gear : [],
       stages: Array.isArray(merged.disabledAssets?.stages) ? merged.disabledAssets.stages : []
     },
-    portalStats: { ...DEFAULT_SAVE.portalStats, ...(merged.portalStats || {}), history: (merged.portalStats?.history || []).slice(0, 20) },
+    portalStats: { ...DEFAULT_SAVE.portalStats, ...(merged.portalStats || {}), history: (merged.portalStats?.history || []).slice(0, 30) },
+    portalCollection: {
+      archives: Array.isArray(merged.portalCollection?.archives)
+        ? merged.portalCollection.archives.filter(entry => entry?.id)
+        : [],
+      hudThemes: Array.isArray(merged.portalCollection?.hudThemes)
+        ? merged.portalCollection.hudThemes.filter(entry => entry?.id)
+        : [],
+      activeHudTheme: typeof merged.portalCollection?.activeHudTheme === 'string'
+        ? merged.portalCollection.activeHudTheme
+        : null
+    },
     publicProfile: { ...DEFAULT_SAVE.publicProfile, ...(merged.publicProfile || {}) },
     activityProgress: { ...DEFAULT_SAVE.activityProgress, ...(merged.activityProgress || {}) },
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
@@ -553,6 +569,7 @@ function App() {
   const [hiddenUniverses, setHiddenUniverses] = useState(initialSave.hiddenUniverses);
   const [disabledAssets, setDisabledAssets] = useState(initialSave.disabledAssets);
   const [portalStats, setPortalStats] = useState(initialSave.portalStats);
+  const [portalCollection, setPortalCollection] = useState(initialSave.portalCollection);
   const [publicProfile, setPublicProfile] = useState(initialSave.publicProfile);
   const [onboarding, setOnboarding] = useState(initialSave.onboarding);
   const [activityProgress, setActivityProgress] = useState(initialSave.activityProgress);
@@ -576,7 +593,7 @@ function App() {
   )).length;
 
   const getCurrentSave = useCallback(() => ({
-    saveVersion: 3,
+    saveVersion: 4,
     lang,
     gold,
     breachShards,
@@ -591,13 +608,14 @@ function App() {
     hiddenUniverses,
     disabledAssets,
     portalStats,
+    portalCollection,
     publicProfile,
     onboarding,
     activityProgress,
     inventory,
     equippedGear,
     equippedEventItems
-  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
+  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, portalCollection, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
 
   useEffect(() => {
     const payload = getCurrentSave();
@@ -976,6 +994,7 @@ function App() {
     setHiddenUniverses(merged.hiddenUniverses || []);
     setDisabledAssets(merged.disabledAssets || DEFAULT_SAVE.disabledAssets);
     setPortalStats(merged.portalStats || DEFAULT_SAVE.portalStats);
+    setPortalCollection(merged.portalCollection || DEFAULT_SAVE.portalCollection);
     setPublicProfile(merged.publicProfile || DEFAULT_SAVE.publicProfile);
     setOnboarding(merged.onboarding || DEFAULT_SAVE.onboarding);
     setActivityProgress(merged.activityProgress || DEFAULT_SAVE.activityProgress);
@@ -1197,6 +1216,7 @@ function App() {
             setDisabledAssets={setDisabledAssets}
             activityProgress={activityProgress}
             setActivityProgress={setActivityProgress}
+            portalCollection={portalCollection}
             onLaunchStage={handleLaunchStage}
             onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
             />
@@ -1265,8 +1285,12 @@ function App() {
             setBreachShards={setBreachShards}
             portalStats={portalStats}
             setPortalStats={setPortalStats}
+            portalCollection={portalCollection}
+            setPortalCollection={setPortalCollection}
             unlockedHeroes={unlockedHeroes}
             setUnlockedHeroes={setUnlockedHeroes}
+            inventory={inventory}
+            setInventory={setInventory}
             hiddenUniverses={hiddenUniverses}
             disabledAssets={disabledAssets}
             completedStages={completedStages}

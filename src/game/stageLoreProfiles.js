@@ -214,7 +214,7 @@ const UNIVERSE_PROFILE_DEFINITIONS = [
   ["Metal Gear Rising", "P1", "ABSENT-VISUEL", "World Marshal headquarters rooftop in Denver", ["https://store.steampowered.com/app/235460/METAL_GEAR_RISING_REVENGEANCE/"]],
   ["BioShock", "P1", "ABSENT-VISUEL", "Medical Pavilion atrium and bathysphere station", ["https://bioshock.2k.com/"]],
   ["Twisted Metal", "P1", "ABSENT-VISUEL", "Los Angeles freeway interchange and Calypso tournament arena", ["https://www.playstation.com/en-us/games/twisted-metal/"]],
-  ["Spider-Man PS1", "P1", "ABSENT-VISUEL", "Daily Bugle rooftop route above the toxic fog", ["https://www.mobygames.com/game/3347/spider-man/"]],
+  ["Spider: The Video Game", "P1", "ABSENT-VISUEL", "Circuit Boards route through the Evil Labs sector", ["https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921", "https://www.mobygames.com/game/10149/spider-the-video-game/"]],
   ["Final Fantasy VII", "P1", "ABSENT-VISUEL", "Mako Reactor 1 catwalk and core chamber", ["https://na.finalfantasy.com/titles/finalfantasy7"]],
   ["Final Fantasy VIII", "P1", "ABSENT-VISUEL", "Balamb Garden central hall before the Battle of the Gardens", ["https://na.finalfantasy.com/titles/finalfantasy8"]],
   ["Final Fantasy XIII", "P1", "ABSENT-VISUEL", "Hanging Edge purge railway and fal'Cie structure", ["https://na.finalfantasy.com/titles/finalfantasy13"]],

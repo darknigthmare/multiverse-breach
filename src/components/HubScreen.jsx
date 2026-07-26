@@ -562,7 +562,7 @@ const UNIVERSE_HUB_PLACES = {
   'Metal Gear': { fr: 'Plateforme Shadow Moses', en: 'Shadow Moses Platform', mood: 'neige tactique, caisses militaires, radars brouilles', type: 'military' },
   'Final Fantasy VII': { fr: 'Secteur Mako', en: 'Mako Sector', mood: 'reacteurs verts, rails suspendus, fumee industrielle', type: 'reactor' },
   'Tomb Raider': { fr: 'Crypte de la Relique', en: 'Relic Crypt', mood: 'pierres anciennes, torches basses, pieges scelles', type: 'ruins' },
-  'Spider-Man PS1': { fr: 'Toits de Manhattan', en: 'Manhattan Rooftops', mood: 'toits plats, antennes, panneaux lumineux', type: 'rooftop' },
+  'Spider: The Video Game': { fr: 'Laboratoires malefiques', en: 'Evil Labs', mood: 'circuits geants, verrerie, microprocesseurs et insectes mecaniques', type: 'lab' },
   'The Simpsons': { fr: 'Rue de Springfield', en: 'Springfield Street', mood: 'maisons colorees, centrale au loin, enseignes absurdes', type: 'suburb' },
   Futurama: { fr: 'New New York', en: 'New New York', mood: 'tubes de transport, neons, livraisons orbitales', type: 'futureCity' }
 };
@@ -3649,10 +3649,13 @@ export default function HubScreen({
   setDisabledAssets,
   activityProgress = {},
   setActivityProgress,
+  portalCollection = {},
   onLaunchStage,
   onGoToPortal
 }) {
   const [activeTab, setActiveTab] = useState('missions');
+  const activeHudTheme = (portalCollection.hudThemes || [])
+    .find(theme => theme.id === portalCollection.activeHudTheme);
   const activeNavGroup = HUB_NAV_GROUPS.find(group => group.tabs.some(tab => tab.id === activeTab)) || HUB_NAV_GROUPS[0];
   const openNavigationTab = useCallback((tab) => {
     if (tab.portal) {
@@ -6833,9 +6836,12 @@ export default function HubScreen({
   };
 
   return (
-    <div className="hub-screen" style={{
+    <div className="hub-screen" data-hud-theme={activeHudTheme?.id || 'nexus-default'} style={{
       minHeight: '100vh',
-      background: 'radial-gradient(circle, #0e0722 0%, #03010b 100%)',
+      background: activeHudTheme?.image
+        ? `linear-gradient(180deg, rgba(3,1,11,0.82), rgba(3,1,11,0.96)), url(${activeHudTheme.image}) center / cover fixed`
+        : 'radial-gradient(circle, #0e0722 0%, #03010b 100%)',
+      '--hud-theme-color': activeHudTheme?.color || '#39c5bb',
       color: '#fff',
       padding: '20px 40px',
       fontFamily: '"Share Tech Mono", monospace',
@@ -6852,11 +6858,11 @@ export default function HubScreen({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingBottom: '20px',
-        borderBottom: '2px solid rgba(57, 197, 187, 0.3)',
+        borderBottom: '2px solid color-mix(in srgb, var(--hud-theme-color) 42%, transparent)',
         marginBottom: '20px'
       }}>
         <div className="hub-header-copy">
-          <h1 className="cyber-title" style={{ fontSize: '24px', margin: 0, letterSpacing: '2px', textShadow: '0 0 10px #39c5bb' }}>
+          <h1 className="cyber-title" style={{ fontSize: '24px', margin: 0, letterSpacing: '2px', textShadow: '0 0 10px var(--hud-theme-color)' }}>
             {getTranslation(lang, 'hubTitle')}
           </h1>
           <span style={{ fontSize: '11px', color: '#ff4500' }}>{getTranslation(lang, 'sysStatus')}</span>
