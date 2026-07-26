@@ -773,7 +773,7 @@ assert(
   'Generated stage runtime registry must match the available stage backdrop count in the OpenAI manifest.',
 );
 assert(manifest.counts?.finales === worldBossPolicyUniverses.size, 'OpenAI manifest must expose every non-combat or set-piece finale kit.');
-assert(manifest.counts?.items === 554, 'OpenAI manifest must expose the complete lore item prompt catalog.');
+assert(manifest.counts?.items === 558, 'OpenAI manifest must expose the complete lore item prompt catalog.');
 worldBossPolicyUniverses.forEach(universe => {
   assert(!worldBossUniverses.has(universe), `${universe} cannot be both a combat world boss and a finale policy.`);
 });

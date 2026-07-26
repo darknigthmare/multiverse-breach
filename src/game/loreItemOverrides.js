@@ -211,6 +211,42 @@ const ACTIVE_PACK_SPECS = Object.freeze([
     item("Seiko's Bat", "Batte de Seiko", "Single worn wooden baseball bat wrapped near the grip with talisman paper lacking readable text."),
     item("Okarun's Glasses", "Lunettes d Okarun", "Single pair of black rectangular school glasses with thick rims and clear lenses."),
   ]),
+  pack("Dragon Ball Z", "dragon_ball_z", "https://en.dragon-ball-official.com/news/01_672.html", [
+    item("Dragon Radar", "Radar du Dragon", "Single classic handheld Dragon Radar: compact rounded lime-green casing, large dark circular radar screen with a fine green grid, one small red control button and no visible letters, numbers or copied marks."),
+    item("Scouter", "Scouter", "Single classic Frieza Force scouter removed from its wearer: translucent red monocle lens joined to one pale grey ear module with two small controls, no head, face, eye or readable display."),
+    item("Senzu Bean", "Haricot Senzu", "Exactly one plump pale-green Senzu Bean with a smooth kidney-shaped silhouette, shallow central crease and matte natural surface, enlarged for inventory readability."),
+    item("Hoi-Poi Capsule", "Capsule Hoi-Poi", "Exactly one compact white Hoi-Poi Capsule with rounded red end caps, narrow dark center band and one raised activation button, blank casing without number, lettering or company emblem."),
+  ]),
+  pack("Fullmetal Alchemist", "fullmetal_alchemist", "https://fullmetalalchemistusa.com/introduction/", [
+    item("Transmutation Chalk", "Craie de transmutation", "Single thick white field chalk stick used to draw alchemical arrays, squared worn tip, blue-grey mineral dust embedded in its surface and no drawn circle, writing or loose duplicate chalk."),
+    item("State Alchemist Pocket Watch", "Montre d Alchimiste d Etat", "Single closed silver State Alchemist pocket watch with a short attached chain, heavy polished lid and restrained raised geometric relief without copied crest, inscription, numerals or readable text."),
+    item("Automail Maintenance Kit", "Kit d entretien automail", "Single compact closed automail maintenance case: worn blue-grey steel shell, reinforced corners, brown leather carry grip, two secure latches and no loose tools, letters or emblem."),
+    item("Philosopher's Stone", "Pierre Philosophale", "Exactly one irregular faceted crimson Philosopher's Stone with a dense blood-red core, contained internal glow and glassy mineral edges, no vial, pedestal, circle or second gem."),
+  ]),
+  pack("Neon Genesis Evangelion", "neon_genesis_evangelion", "https://www.evangelion.jp/", [
+    item("Progressive Knife", "Progressive Knife", "Single original-TV EVA-01 Progressive Knife: complete oversized dark gunmetal Bowie blade, clipped point, thick angular spine and compact purple-black mechanical handle with restrained acid-green inserts."),
+    item("NERV Access Card", "Carte d acces NERV", "Single original-series personnel access card: rigid off-white rectangular card with clipped corner, black and deep-red security bands, metallic contact strip and blank data blocks, no portrait, logo or readable characters."),
+    item("S-DAT Player", "Lecteur S-DAT", "Single original-series portable digital audio tape player: compact dark indigo rectangular casing, small blank green monochrome LCD, narrow cassette window and tactile side controls, no headphones, cord, logo, letters or numbers."),
+    item("LCL-Filled Entry Plug", "Entry Plug remplie de LCL", "Single complete original-TV 2015-type Entry Plug capsule: long tapered off-white cylindrical shell, rounded red-orange end collars, dark mechanical seams and one small amber window revealing orange LCL, no pilot, markings or readable text."),
+  ]),
+  pack("Naruto", "naruto", "https://naruto-official.com/en/anime/naruto1/list/01_228", [
+    item("Konoha Forehead Protector", "Bandeau frontal de Konoha", "Single original-series Konohagakure forehead protector: brushed silver plate with four rivets and centered engraved Leaf spiral emblem, fixed to a folded dark navy cloth band with tied ends."),
+    item("Shinobi Kunai", "Kunai shinobi", "Single standard original-series kunai with a matte dark leaf-shaped triangular blade, short wrapped handle and large circular ring pommel, no fantasy ornament or duplicate weapon."),
+    item("Scroll of Seals", "Rouleau des Sceaux", "Single oversized sealed scroll from Naruto's first mission: heavy pale parchment cylinder, dark green end caps, thick binding straps and cord, with only the small canonical Japanese title label."),
+    item("Kakashi Bell Test Bells", "Cloches de l epreuve de Kakashi", "Exactly two small polished brass training bells, each suspended from a short bright red cord joined loosely at the top, matching Team 7's original survival test."),
+  ]),
+  pack("Tokyo Ghoul", "tokyo_ghoul", "https://youngjump.jp/tokyoghoul/tg/data/", [
+    item("Quinque Case", "Mallette quinque", "Single closed CCG quinque carrying case: rigid dark gunmetal briefcase, reinforced silver corners, thick black handle, compact red release switch and no weapon deployed, insignia, letters or numbers."),
+    item("Kaneki's Ghoul Mask", "Masque de goule de Kaneki", "Single empty black leather ghoul mask made for Kaneki: asymmetric right-eye patch, one open left-eye socket, silver zipper mouth and fixed stylized white teeth, no head, face, hair or wearable stand."),
+    item("Rc Suppressant Injector", "Injecteur de suppresseur Rc", "Single sealed CCG medical injector containing pale opaque Rc suppressant, clear tubular chamber, dark plunger collar and covered stainless needle, no hand, loose syringe parts, label or readable dosage."),
+    item("Anteiku Coffee Cup", "Tasse de cafe Anteiku", "Single small antique ivory ceramic coffee cup filled with plain black coffee, subtly fluted body and dark brown rim, no saucer, spoon, steam shape, sugar, logo or readable decoration."),
+  ]),
+  pack("Steins;Gate", "steins_gate", "https://steinsgate.jp/sgflash.html", [
+    item("PhoneWave (name subject to change)", "PhoneWave (nom provisoire)", "Single harmless fictional Future Gadget Laboratory prop: one worn white domestic microwave oven modified with exposed colorful cables, decorative circuit modules and one closed black flip phone attached to its side, no room, portal or second appliance."),
+    item("IBN 5100", "IBN 5100", "Single rare mid-1970s portable computer terminal with a bulky cream-beige case, integrated small dark CRT, dense square keyboard, cassette-drive slot and ventilation panels, no modern laptop, readable branding or second machine."),
+    item("Divergence Meter", "Divergence Meter", "Single handmade world-line meter with exactly eight exposed clear Nixie vacuum tubes in one horizontal row, warm amber filaments, perforated metal electronics base, copper wiring and dark side plates, no ninth tube or enclosed clock cabinet."),
+    item("Metal Upa", "Upa metallique", "Single rare palm-sized silver Metal Upa capsule-toy figure with a rounded chubby body, simple wide face, two pointed ear fins, tiny limbs and one hanging loop, no capsule shell, living creature or duplicate mascot."),
+  ]),
   pack("Digimon Celestial Rift", "digimon_celestial", "https://toy.bandai.co.jp/manuals/files/2648482.pdf?ver=sf7ii9", [
     item("Digivice", "Digivice", "Single compact handheld evolution device with rounded white casing, blue screen and colored buttons."),
     item("Crest of Light", "Crest of Light", "One small golden crest tag with a sun-like light emblem and no lettering."),
@@ -963,11 +999,11 @@ const validateRuntimeRegistry = () => {
   const seenIds = new Set();
   const seenIcons = new Set();
 
-  if (activeUniverses.length !== 118) {
-    throw new Error(`Expected 118 active FG4 item universes, received ${activeUniverses.length}`);
+  if (activeUniverses.length !== 124) {
+    throw new Error(`Expected 124 active FG4 item universes, received ${activeUniverses.length}`);
   }
-  if (policyUniverses.length !== 120) {
-    throw new Error(`Expected 120 FG4 item policies, received ${policyUniverses.length}`);
+  if (policyUniverses.length !== 126) {
+    throw new Error(`Expected 126 FG4 item policies, received ${policyUniverses.length}`);
   }
 
   for (const excludedUniverse of EXCLUDED_UNIVERSES) {
@@ -1037,9 +1073,9 @@ const validateRuntimeRegistry = () => {
     }
   }
 
-  if (seenIds.size !== 472 || seenIcons.size !== 472) {
+  if (seenIds.size !== 496 || seenIcons.size !== 496) {
     throw new Error(
-      `Expected 472 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
+      `Expected 496 unique lore items and icons, received ${seenIds.size} IDs and ${seenIcons.size} icons`,
     );
   }
 };

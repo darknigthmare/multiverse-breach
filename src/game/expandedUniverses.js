@@ -18,6 +18,24 @@ import {
 
 const EXPANDED_STAGE_START_ID = 39;
 
+const GENERATED_ITEM_OVERRIDE_KEYS = new Set([
+  'dragon_ball_z',
+  'evangelion',
+  'fullmetal_alchemist',
+  'naruto',
+  'steins_gate',
+  'tokyo_ghoul'
+]);
+
+const REQUESTED_UNIVERSE_WAVE_WITHOUT_LEGACY_ITEMS = REQUESTED_UNIVERSE_WAVE.map(entry => {
+  if (!GENERATED_ITEM_OVERRIDE_KEYS.has(entry.key)) return entry;
+
+  const entryWithoutLegacyItems = { ...entry };
+  delete entryWithoutLegacyItems.gear;
+  delete entryWithoutLegacyItems.event;
+  return entryWithoutLegacyItems;
+});
+
 const modeReward = {
   RPG: { gold: 125, shards: 38 },
   Tactics: { gold: 135, shards: 40 },
@@ -3888,7 +3906,7 @@ export const EXPANDED_UNIVERSES = [
     { key: 'marilyn_manson', universe: 'Marilyn Manson', mediaType: 'music', faction: 'horror', mode: 'RPG', difficulty: 'Very Hard', titleFr: 'Marilyn Manson', stage: 'Mechanical Animals Chapel', boss: 'Antichrist Superstar Effigy', hero: ['manson_avatar', 'Shock Rock Avatar', 'horror'], allies: [['mechanical_animal', 'Mechanical Animal', 'tactical'], ['pale_emperor_echo', 'Pale Emperor Echo', 'hacker']], theme: 'shock rock theatre, industrial glam, occult imagery, and corrupted celebrity rituals', motif: 'hauntedset', colors: ['#1f1111', '#030202', '#d9d9d9'] }
   ]),
   ...makeUniverseWave(CANONICAL_REQUESTED_UNIVERSE_WAVE),
-  ...makeUniverseWave(REQUESTED_UNIVERSE_WAVE)
+  ...makeUniverseWave(REQUESTED_UNIVERSE_WAVE_WITHOUT_LEGACY_ITEMS)
 ];
 
 FEATURED_UNIVERSE_PACKS.forEach(pack => {

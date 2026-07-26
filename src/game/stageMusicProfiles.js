@@ -47,6 +47,14 @@ const mergeProfile = (base, override = {}) => ({
     ...(override.victory || {}),
     intervals: cloneArray(override.victory?.intervals || base.victory.intervals),
     beats: cloneArray(override.victory?.beats || base.victory.beats)
+  },
+  modeProfiles: {
+    ...(base.modeProfiles || {}),
+    ...(override.modeProfiles || {})
+  },
+  encounterProfiles: {
+    ...(base.encounterProfiles || {}),
+    ...(override.encounterProfiles || {})
   }
 });
 
@@ -832,9 +840,280 @@ export const MUSIC_PROFILE_OVERRIDES = {
     boss: { pattern: [1, 0, 0.7, 0, 1, 0, 0.75, 0.5], stinger: [0, 6, 10, 3, 12] },
     victory: { intervals: [0, 3, 7, 10, 12, 15], beats: [0.4, 0.45, 0.5, 0.45, 0.65, 1.4] }
   }),
+  'Dragon Ball Z': detailedOverride('animeHeroic', {
+    id: 'mus-dragon-ball-z',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [112, 166],
+    scaleName: 'heroicMinor',
+    scale: SCALE_LIBRARY.heroicMinor,
+    rootMidi: 50,
+    chords: [0, 4, 5, 3],
+    instrumentation: ['martial-brass-synth', 'agile-string-ostinato', 'electric-bass-oscillator', 'battle-toms', 'woodwind-synth', 'ki-energy-pulse'],
+    density: 0.86,
+    restChance: 0.12,
+    form: [
+      { name: 'distant-challenge', bars: 4, density: 0.54 },
+      { name: 'rising-power', bars: 8, density: 0.9 },
+      { name: 'aerial-exchange', bars: 8, density: 1.02 },
+      { name: 'heroic-reversal', bars: 8, density: 1.1 }
+    ],
+    modeProfiles: {
+      combat: {
+        tempo: [132, 168],
+        instrumentation: ['martial-brass-synth', 'low-string-ostinato', 'electric-bass-oscillator', 'arena-toms', 'ki-impact-noise', 'short-woodwind-synth'],
+        density: 0.96,
+        restChance: 0.08,
+        patterns: {
+          lead: [1, 0, 0.78, 0.45, 1, 0.35, 0.7, 0.5],
+          bass: [1, 0, 0.58, 0, 0.92, 0, 0.62, 0],
+          drums: [1, 3, 2, 3, 1, 4, 2, 3],
+          pad: [1, 0, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'fighter-standoff', bars: 2, density: 0.72 },
+          { name: 'ki-exchange', bars: 6, density: 1 },
+          { name: 'counter-rush', bars: 4, density: 1.08 },
+          { name: 'decisive-finisher', bars: 4, density: 1.16 }
+        ]
+      },
+      melee: {
+        tempo: [142, 178],
+        instrumentation: ['bright-brass-synth', 'rapid-string-ostinato', 'slap-bass-oscillator', 'aerial-toms', 'launch-impact-noise', 'energy-dash-pulse'],
+        density: 1.02,
+        restChance: 0.05,
+        patterns: {
+          lead: [1, 0.55, 0.82, 0, 1, 0.48, 0.76, 0.42],
+          bass: [1, 0, 0.7, 0, 1, 0, 0.66, 0],
+          drums: [1, 3, 2, 4, 1, 3, 2, 4],
+          pad: [1, 0, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'arena-launch', bars: 2, density: 0.8 },
+          { name: 'platform-pursuit', bars: 6, density: 1.04 },
+          { name: 'aerial-combo', bars: 4, density: 1.14 },
+          { name: 'ring-out-pressure', bars: 4, density: 1.2 }
+        ]
+      },
+      rpg: {
+        tempo: [86, 132],
+        instrumentation: ['warm-string-pad', 'travel-woodwind-synth', 'soft-brass-synth', 'hand-drum-noise', 'rounded-bass', 'distant-ki-shimmer'],
+        density: 0.64,
+        restChance: 0.25,
+        patterns: {
+          lead: [1, 0, 0.52, 0, 0.72, 0.3, 0, 0.46],
+          bass: [1, 0, 0, 0, 0.68, 0, 0, 0],
+          drums: [1, 0, 3, 0, 2, 0, 3, 0],
+          pad: [1, 0, 0, 0, 1, 0, 0, 0]
+        },
+        form: [
+          { name: 'capsule-road', bars: 8, density: 0.42 },
+          { name: 'training-ground', bars: 8, density: 0.66 },
+          { name: 'enemy-signal', bars: 4, density: 0.8 },
+          { name: 'heroic-response', bars: 8, density: 0.94 }
+        ]
+      },
+      tactics: {
+        tempo: [96, 138],
+        meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.18, 0.48, 0.18, 0.78, 0.18, 0.42, 0.18, 0.62, 0.18] },
+        instrumentation: ['muted-brass-synth', 'low-string-pulse', 'scouter-clicks', 'measured-toms', 'sub-bass-oscillator', 'ki-grid-pulse'],
+        density: 0.72,
+        restChance: 0.18,
+        patterns: {
+          lead: [1, 0, 0.45, 0, 0.68, 0, 0.52, 0, 0.74, 0],
+          bass: [1, 0, 0, 0, 0.72, 0, 0, 0, 0.5, 0],
+          drums: [1, 0, 3, 0, 2, 0, 3, 0, 4, 0],
+          pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'scouter-read', bars: 5, density: 0.48 },
+          { name: 'formation-step', bars: 5, density: 0.68 },
+          { name: 'flanking-flight', bars: 5, density: 0.86 },
+          { name: 'decisive-move', bars: 5, density: 1 }
+        ]
+      }
+    },
+    encounterProfiles: {
+      boss: {
+        tempo: [148, 182],
+        scaleName: 'phrygian',
+        scale: SCALE_LIBRARY.phrygian,
+        rootMidi: 41,
+        chords: [0, 1, 4, 0],
+        instrumentation: ['menacing-brass-synth', 'tremolo-string-oscillator', 'heavy-battle-toms', 'distorted-bass', 'transformation-riser', 'ki-storm-noise'],
+        density: 1.1,
+        restChance: 0.05,
+        form: [
+          { name: 'villain-transformation', bars: 4, density: 0.9 },
+          { name: 'overwhelming-power', bars: 6, density: 1.12 },
+          { name: 'last-reserve', bars: 4, density: 1.2 }
+        ],
+        boss: { pattern: [1, 0, 0.82, 0, 1, 0.55, 0.78, 0], stinger: [0, 1, 6, 7, 12] }
+      },
+      worldBoss: {
+        tempo: [156, 190],
+        scaleName: 'chromaticTension',
+        scale: SCALE_LIBRARY.chromaticTension,
+        rootMidi: 38,
+        chords: [0, 1, 5, 2],
+        instrumentation: ['cataclysmic-brass-synth', 'mass-string-ostinato', 'planetary-toms', 'subharmonic-bass', 'nonlexical-hero-choir', 'energy-storm-noise', 'final-counterpulse'],
+        density: 1.18,
+        restChance: 0.02,
+        form: [
+          { name: 'planetary-cataclysm', bars: 4, density: 1.02 },
+          { name: 'survivor-silence', bars: 2, density: 0.5 },
+          { name: 'united-counterattack', bars: 8, density: 1.24 }
+        ],
+        boss: { wave: 'square', pattern: [1, 0.72, 0, 1, 0.58, 0, 1, 0.84], stinger: [0, 6, 1, 13, 12] }
+      }
+    },
+    boss: { pattern: [1, 0, 0.72, 0, 1, 0, 0.76, 0], stinger: [0, 7, 9, 3, 12] },
+    victory: { intervals: [0, 4, 7, 9, 12, 16], beats: [0.4, 0.42, 0.48, 0.45, 0.68, 1.35] }
+  }),
+  'Tokyo Ghoul': detailedOverride('animeHeroic', {
+    id: 'mus-tokyo-ghoul',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [86, 154],
+    scaleName: 'minor',
+    scale: SCALE_LIBRARY.minor,
+    rootMidi: 45,
+    chords: [0, 5, 1, 3],
+    instrumentation: ['fragile-piano', 'chamber-string-synth', 'distorted-guitar-oscillator', 'electronic-pulse', 'sub-bass', 'kagune-swish-noise'],
+    density: 0.76,
+    restChance: 0.2,
+    form: [
+      { name: 'anteiku-calm', bars: 6, density: 0.36 },
+      { name: 'predator-in-the-crowd', bars: 6, density: 0.68 },
+      { name: 'divided-self', bars: 4, density: 0.48 },
+      { name: 'kagune-awakening', bars: 8, density: 1.04 }
+    ],
+    modeProfiles: {
+      combat: {
+        tempo: [128, 160],
+        meter: { beats: 4, unit: 4, subdivisions: 4, accents: [1, 0.14, 0.35, 0.16, 0.7, 0.14, 0.42, 0.16, 0.9, 0.14, 0.32, 0.16, 0.68, 0.14, 0.48, 0.16] },
+        instrumentation: ['distorted-guitar-oscillator', 'urgent-string-ostinato', 'breakbeat-noise', 'dark-piano-stabs', 'sub-bass', 'kagune-impact-noise'],
+        density: 0.94,
+        restChance: 0.08,
+        patterns: {
+          lead: [1, 0, 0.62, 0.28, 0.84, 0, 0.48, 0.3, 1, 0, 0.7, 0.34, 0.9, 0, 0.56, 0.24],
+          bass: [1, 0, 0, 0, 0.72, 0, 0, 0, 1, 0, 0.46, 0, 0.8, 0, 0, 0],
+          drums: [1, 3, 3, 4, 2, 3, 3, 4, 1, 3, 4, 3, 2, 3, 3, 4],
+          pad: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'mask-reveal', bars: 2, density: 0.7 },
+          { name: 'close-quarters-hunt', bars: 6, density: 1 },
+          { name: 'quinque-kagune-clash', bars: 4, density: 1.1 },
+          { name: 'survival-release', bars: 4, density: 1.16 }
+        ]
+      },
+      melee: {
+        tempo: [140, 174],
+        meter: { beats: 4, unit: 4, subdivisions: 4, accents: [1, 0.12, 0.4, 0.14, 0.68, 0.12, 0.5, 0.16, 0.92, 0.12, 0.34, 0.16, 0.72, 0.14, 0.55, 0.18] },
+        instrumentation: ['angular-guitar-oscillator', 'staccato-string-synth', 'broken-beat-noise', 'elastic-bass', 'metal-platform-hit', 'kagune-dash-swish'],
+        density: 1.02,
+        restChance: 0.05,
+        patterns: {
+          lead: [1, 0.4, 0, 0.72, 0.9, 0.28, 0.58, 0, 1, 0.32, 0, 0.68, 0.86, 0.24, 0.52, 0],
+          bass: [1, 0, 0.58, 0, 0.82, 0, 0.48, 0, 1, 0, 0.62, 0, 0.86, 0, 0.5, 0],
+          drums: [1, 3, 4, 3, 2, 3, 4, 3, 1, 4, 3, 4, 2, 3, 4, 3],
+          pad: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'rooftop-entry', bars: 2, density: 0.76 },
+          { name: 'vertical-pursuit', bars: 6, density: 1.04 },
+          { name: 'predator-counter', bars: 4, density: 1.14 },
+          { name: 'last-platform', bars: 4, density: 1.2 }
+        ]
+      },
+      rpg: {
+        tempo: [64, 104],
+        instrumentation: ['fragile-piano', 'solo-cello-synth', 'breath-pad', 'distant-city-noise', 'soft-electronic-pulse', 'low-heartbeat-sub'],
+        density: 0.5,
+        restChance: 0.36,
+        patterns: {
+          lead: [1, 0, 0, 0.42, 0, 0.58, 0, 0.3],
+          bass: [1, 0, 0, 0, 0.5, 0, 0, 0],
+          drums: [0, 0, 3, 0, 0, 0, 4, 0],
+          pad: [1, 0, 0, 0, 1, 0, 0, 0]
+        },
+        form: [
+          { name: 'quiet-cafe', bars: 8, density: 0.24 },
+          { name: 'human-memory', bars: 8, density: 0.42 },
+          { name: 'hunger-under-glass', bars: 6, density: 0.58 },
+          { name: 'choice-between-worlds', bars: 8, density: 0.7 }
+        ]
+      },
+      tactics: {
+        tempo: [88, 126],
+        meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.14, 0.44, 0.14, 0.76, 0.14, 0.38, 0.14, 0.62, 0.16] },
+        instrumentation: ['clinical-string-pulse', 'muted-piano', 'ccg-radio-clicks', 'low-electronic-bass', 'measured-snare-noise', 'quinque-charge-pulse'],
+        density: 0.68,
+        restChance: 0.2,
+        patterns: {
+          lead: [1, 0, 0.38, 0, 0.62, 0, 0.46, 0, 0.7, 0],
+          bass: [1, 0, 0, 0, 0.64, 0, 0, 0, 0.48, 0],
+          drums: [1, 0, 3, 0, 2, 0, 3, 0, 4, 0],
+          pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'ward-surveillance', bars: 5, density: 0.44 },
+          { name: 'ccg-formation', bars: 5, density: 0.66 },
+          { name: 'ghoul-ambush', bars: 5, density: 0.86 },
+          { name: 'containment-collapse', bars: 5, density: 1 }
+        ]
+      }
+    },
+    encounterProfiles: {
+      boss: {
+        tempo: [132, 170],
+        meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.12, 0.48, 0.12, 0.82, 0.12, 0.4, 0.12, 0.72, 0.14] },
+        scaleName: 'chromaticTension',
+        scale: SCALE_LIBRARY.chromaticTension,
+        rootMidi: 41,
+        chords: [0, 1, 5, 2],
+        instrumentation: ['dissonant-string-cluster', 'distorted-guitar-oscillator', 'heavy-breakbeat-noise', 'subharmonic-bass', 'kakuja-riser', 'metallic-scream-synth'],
+        density: 1.08,
+        restChance: 0.05,
+        form: [
+          { name: 'mask-of-the-predator', bars: 5, density: 0.9 },
+          { name: 'kakuja-pressure', bars: 5, density: 1.12 },
+          { name: 'fractured-will', bars: 5, density: 1.2 }
+        ],
+        boss: { wave: 'square', pattern: [1, 0, 0.72, 0, 1, 0, 0.8, 0, 0.58, 0], stinger: [0, 1, 6, 10, 13] }
+      },
+      worldBoss: {
+        tempo: [146, 184],
+        meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.18, 0.52, 0.88, 0.2, 0.62] },
+        scaleName: 'ritualMinor',
+        scale: SCALE_LIBRARY.ritualMinor,
+        rootMidi: 38,
+        chords: [0, 1, 4, 2],
+        instrumentation: ['mass-string-cluster', 'industrial-guitar-oscillator', 'cathedral-drum-noise', 'abyssal-sub-bass', 'nonlexical-tragedy-choir', 'city-collapse-noise', 'kagune-swarm-pulse'],
+        density: 1.16,
+        restChance: 0.02,
+        patterns: {
+          lead: [1, 0, 0.72, 1, 0, 0.82],
+          bass: [1, 0, 0, 0.9, 0, 0],
+          drums: [1, 3, 4, 2, 3, 4],
+          pad: [1, 0, 0, 1, 0, 0]
+        },
+        form: [
+          { name: 'ward-wide-calamity', bars: 6, density: 1.02 },
+          { name: 'human-ghoul-lament', bars: 3, density: 0.56 },
+          { name: 'one-eyed-catastrophe', bars: 8, density: 1.24 }
+        ],
+        boss: { wave: 'square', pattern: [1, 0, 0.82, 1, 0, 0.9], stinger: [0, 6, 1, 13, 7] }
+      }
+    },
+    boss: { pattern: [1, 0, 0.62, 0, 1, 0, 0.7, 0], stinger: [0, 6, 1, 10, 13] },
+    victory: { intervals: [0, 3, 7, 8, 12], beats: [0.62, 0.48, 0.68, 0.56, 1.55] }
+  }),
   'Fullmetal Alchemist': detailedOverride('animeHeroic', {
     id: 'mus-fullmetal-alchemist',
     confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
     tempo: [122, 158],
     scaleName: 'heroicMinor',
     scale: SCALE_LIBRARY.heroicMinor,
@@ -848,12 +1127,137 @@ export const MUSIC_PROFILE_OVERRIDES = {
       { name: 'loss', bars: 4, density: 0.4 },
       { name: 'resolve', bars: 8, density: 1.02 }
     ],
+    modeProfiles: {
+      combat: {
+        tempo: [128, 162],
+        instrumentation: ['heroic-brass-synth', 'rapid-string-ostinato', 'military-snare-noise', 'piano-stabs', 'transmutation-impact', 'grounded-sub-bass'],
+        density: 0.94,
+        restChance: 0.08,
+        patterns: {
+          lead: [1, 0, 0.7, 0.4, 1, 0.32, 0.64, 0],
+          bass: [1, 0, 0.55, 0, 0.9, 0, 0.48, 0],
+          drums: [1, 3, 2, 3, 1, 4, 2, 3],
+          pad: [1, 0, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'circle-drawn', bars: 2, density: 0.7 },
+          { name: 'close-alchemy', bars: 6, density: 0.98 },
+          { name: 'automail-counter', bars: 4, density: 1.08 },
+          { name: 'equivalent-finisher', bars: 4, density: 1.16 }
+        ]
+      },
+      melee: {
+        tempo: [138, 172],
+        meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.24, 0.52, 0.86, 0.28, 0.58] },
+        instrumentation: ['agile-string-synth', 'short-brass-synth', 'rolling-toms', 'clockwork-bass', 'stone-spike-impact', 'automail-metal-hit'],
+        density: 1,
+        restChance: 0.05,
+        patterns: {
+          lead: [1, 0.48, 0, 0.88, 0.36, 0.68],
+          bass: [1, 0, 0.58, 0.84, 0, 0.5],
+          drums: [1, 3, 4, 2, 3, 4],
+          pad: [1, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'central-platform', bars: 3, density: 0.76 },
+          { name: 'transmuted-route', bars: 6, density: 1.02 },
+          { name: 'automail-rush', bars: 4, density: 1.12 },
+          { name: 'arena-reconstruction', bars: 4, density: 1.18 }
+        ]
+      },
+      rpg: {
+        tempo: [78, 116],
+        meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.2, 0.48, 0.82, 0.22, 0.52] },
+        instrumentation: ['warm-chamber-strings', 'travel-woodwind-synth', 'intimate-piano', 'soft-frame-drum', 'horn-horizon-pad', 'clockwork-tick'],
+        density: 0.58,
+        restChance: 0.3,
+        patterns: {
+          lead: [1, 0, 0.52, 0.76, 0, 0.42],
+          bass: [1, 0, 0, 0.62, 0, 0],
+          drums: [1, 0, 3, 2, 0, 3],
+          pad: [1, 0, 0, 1, 0, 0]
+        },
+        form: [
+          { name: 'amestris-road', bars: 8, density: 0.36 },
+          { name: 'brothers-research', bars: 8, density: 0.56 },
+          { name: 'memory-of-loss', bars: 4, density: 0.3 },
+          { name: 'promise-forward', bars: 8, density: 0.78 }
+        ]
+      },
+      tactics: {
+        tempo: [92, 130],
+        instrumentation: ['low-string-ostinato', 'military-snare-noise', 'muted-brass-synth', 'map-table-piano', 'clockwork-clicks', 'transmutation-grid-pulse'],
+        density: 0.7,
+        restChance: 0.18,
+        patterns: {
+          lead: [1, 0, 0.44, 0, 0.68, 0, 0.52, 0],
+          bass: [1, 0, 0, 0, 0.7, 0, 0, 0],
+          drums: [1, 3, 0, 3, 2, 3, 0, 4],
+          pad: [1, 0, 0, 0, 1, 0, 0, 0]
+        },
+        form: [
+          { name: 'central-command', bars: 4, density: 0.46 },
+          { name: 'flame-alchemist-order', bars: 8, density: 0.7 },
+          { name: 'homunculus-feint', bars: 4, density: 0.84 },
+          { name: 'promised-day-maneuver', bars: 8, density: 1 }
+        ]
+      }
+    },
+    encounterProfiles: {
+      boss: {
+        tempo: [132, 168],
+        meter: { beats: 3, unit: 4, subdivisions: 2, accents: [1, 0.18, 0.52, 0.84, 0.2, 0.62] },
+        scaleName: 'harmonicMinor',
+        scale: SCALE_LIBRARY.harmonicMinor,
+        rootMidi: 43,
+        chords: [0, 5, 1, 4],
+        instrumentation: ['dark-orchestral-brass-synth', 'tremolo-string-cluster', 'ritual-snare-noise', 'low-piano', 'homunculus-pulse', 'nonlexical-choir-pad'],
+        density: 1.06,
+        restChance: 0.06,
+        patterns: {
+          lead: [1, 0, 0.62, 1, 0, 0.72],
+          bass: [1, 0, 0, 0.88, 0, 0],
+          drums: [1, 3, 4, 2, 3, 4],
+          pad: [1, 0, 0, 1, 0, 0]
+        },
+        form: [
+          { name: 'homunculus-reveal', bars: 3, density: 0.86 },
+          { name: 'philosophers-stone', bars: 6, density: 1.08 },
+          { name: 'human-resolve', bars: 4, density: 1.18 }
+        ],
+        boss: { pattern: [1, 0, 0.72, 1, 0, 0.8], stinger: [0, 6, 8, 11, 12] }
+      },
+      worldBoss: {
+        tempo: [142, 176],
+        meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.18, 0.58, 0.92, 0.22, 0.68] },
+        scaleName: 'ritualMinor',
+        scale: SCALE_LIBRARY.ritualMinor,
+        rootMidi: 38,
+        chords: [0, 1, 4, 0],
+        instrumentation: ['mass-orchestral-brass-synth', 'war-string-ostinato', 'cathedral-percussion-noise', 'pipe-organ-pad', 'nonlexical-mass-choir', 'earth-transmutation-rumble', 'human-counterpulse'],
+        density: 1.16,
+        restChance: 0.02,
+        patterns: {
+          lead: [1, 0, 0.78, 1, 0.48, 0.86],
+          bass: [1, 0, 0, 1, 0, 0.62],
+          drums: [1, 3, 4, 2, 3, 4],
+          pad: [1, 0, 0, 1, 0, 0]
+        },
+        form: [
+          { name: 'nationwide-circle', bars: 6, density: 1 },
+          { name: 'gate-of-truth', bars: 3, density: 0.58 },
+          { name: 'promised-day-counterattack', bars: 8, density: 1.24 }
+        ],
+        boss: { wave: 'square', pattern: [1, 0.62, 0.82, 1, 0.55, 0.9], stinger: [0, 1, 8, 13, 12] }
+      }
+    },
     boss: { pattern: [1, 0, 0.6, 0, 1, 0, 0.7, 0], stinger: [0, 6, 9, 3, 12] },
     victory: { intervals: [0, 4, 7, 9, 12], beats: [0.5, 0.5, 0.6, 0.55, 1.5] }
   }),
   'Neon Genesis Evangelion': detailedOverride('militarySciFi', {
     id: 'mus-neon-genesis-evangelion',
     confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
     tempo: [82, 144],
     meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.22, 0.5, 0.2, 0.82, 0.22, 0.45, 0.2, 0.68, 0.2] },
     scaleName: 'chromaticTension',
@@ -876,8 +1280,288 @@ export const MUSIC_PROFILE_OVERRIDES = {
       { name: 'angel-crisis', bars: 8, density: 1.02 },
       { name: 'human-introspection', bars: 4, density: 0.34 }
     ],
+    modeProfiles: {
+      combat: {
+        tempo: [118, 152],
+        instrumentation: ['operational-brass-synth', 'urgent-string-ostinato', 'hybrid-military-drums', 'analog-bass-pulse', 'warning-signal-noise', 'eva-servo-impact'],
+        density: 0.94,
+        restChance: 0.08,
+        patterns: {
+          lead: [1, 0, 0.66, 0.34, 1, 0, 0.58, 0.42],
+          bass: [1, 0, 0, 0, 0.86, 0, 0.5, 0],
+          drums: [1, 3, 2, 3, 1, 4, 2, 3],
+          pad: [1, 0, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'nerv-sortie', bars: 4, density: 0.72 },
+          { name: 'angel-contact', bars: 6, density: 1 },
+          { name: 'at-field-clash', bars: 4, density: 1.1 },
+          { name: 'critical-synchronization', bars: 4, density: 1.18 }
+        ]
+      },
+      melee: {
+        tempo: [132, 166],
+        meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.22, 0.56, 0.24, 0.86, 0.28, 0.62] },
+        instrumentation: ['angular-brass-synth', 'syncopated-string-synth', 'urban-drum-noise', 'analog-bass', 'concrete-impact', 'at-field-pulse'],
+        density: 1,
+        restChance: 0.05,
+        patterns: {
+          lead: [1, 0, 0.62, 0.82, 0, 0.7, 0.4],
+          bass: [1, 0, 0.54, 0, 0.82, 0, 0.46],
+          drums: [1, 3, 4, 2, 3, 4, 3],
+          pad: [1, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'tokyo-3-rise', bars: 3, density: 0.74 },
+          { name: 'vertical-evacuation', bars: 7, density: 1.02 },
+          { name: 'unit-intercept', bars: 4, density: 1.12 },
+          { name: 'berserk-edge', bars: 4, density: 1.2 }
+        ]
+      },
+      rpg: {
+        tempo: [58, 98],
+        instrumentation: ['fragile-piano', 'solo-cello-synth', 'clinical-room-tone', 'soft-organ-pad', 'distant-train-noise', 'heartbeat-sub'],
+        density: 0.44,
+        restChance: 0.4,
+        patterns: {
+          lead: [1, 0, 0, 0.38, 0, 0, 0.56, 0],
+          bass: [1, 0, 0, 0, 0.46, 0, 0, 0],
+          drums: [0, 0, 3, 0, 0, 0, 4, 0],
+          pad: [1, 0, 0, 0, 1, 0, 0, 0]
+        },
+        form: [
+          { name: 'empty-platform', bars: 8, density: 0.2 },
+          { name: 'pilot-room', bars: 8, density: 0.38 },
+          { name: 'unspoken-distance', bars: 6, density: 0.28 },
+          { name: 'decision-to-board', bars: 8, density: 0.62 }
+        ]
+      },
+      tactics: {
+        tempo: [88, 126],
+        meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.16, 0.5, 0.16, 0.82, 0.16, 0.44, 0.16, 0.68, 0.18] },
+        instrumentation: ['countdown-string-ostinato', 'muted-brass-synth', 'command-snare-noise', 'geofront-sub-pulse', 'magi-computer-clicks', 'organ-tension-pad'],
+        density: 0.72,
+        restChance: 0.16,
+        patterns: {
+          lead: [1, 0, 0.46, 0, 0.72, 0, 0.5, 0, 0.78, 0],
+          bass: [1, 0, 0, 0, 0.74, 0, 0, 0, 0.52, 0],
+          drums: [1, 0, 3, 0, 2, 0, 3, 0, 4, 0],
+          pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'magi-analysis', bars: 5, density: 0.46 },
+          { name: 'interception-plan', bars: 5, density: 0.7 },
+          { name: 'power-limit-countdown', bars: 5, density: 0.9 },
+          { name: 'operation-execution', bars: 5, density: 1.04 }
+        ]
+      }
+    },
+    encounterProfiles: {
+      boss: {
+        tempo: [118, 158],
+        meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.14, 0.56, 0.14, 0.88, 0.14, 0.46, 0.14, 0.72, 0.16] },
+        scaleName: 'chromaticTension',
+        scale: SCALE_LIBRARY.chromaticTension,
+        rootMidi: 41,
+        chords: [0, 1, 5, 2],
+        instrumentation: ['angular-orchestral-brass-synth', 'tremolo-string-cluster', 'massive-hybrid-drums', 'pipe-organ-pad', 'nonlexical-choir-cluster', 'at-field-pressure-noise'],
+        density: 1.08,
+        restChance: 0.04,
+        patterns: {
+          lead: [1, 0, 0.62, 0, 1, 0, 0.72, 0, 0.52, 0],
+          bass: [1, 0, 0, 0, 0.86, 0, 0, 0, 0.58, 0],
+          drums: [1, 0, 3, 4, 2, 0, 3, 4, 1, 4],
+          pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'angel-pattern-detected', bars: 5, density: 0.86 },
+          { name: 'at-field-inversion', bars: 5, density: 1.1 },
+          { name: 'eva-limit-break', bars: 5, density: 1.2 }
+        ],
+        boss: { wave: 'square', pattern: [1, 0, 0.74, 0, 1, 0, 0.82, 0, 0.62, 0], stinger: [0, 6, 1, 10, 13] }
+      },
+      worldBoss: {
+        tempo: [126, 168],
+        meter: { beats: 6, unit: 8, subdivisions: 1, accents: [1, 0.18, 0.58, 0.94, 0.22, 0.72] },
+        scaleName: 'ritualMinor',
+        scale: SCALE_LIBRARY.ritualMinor,
+        rootMidi: 36,
+        chords: [0, 1, 4, 2],
+        instrumentation: ['apocalyptic-orchestral-brass-synth', 'mass-string-cluster', 'cathedral-percussion-noise', 'pipe-organ', 'nonlexical-apocalypse-choir', 'geofront-collapse-rumble', 'human-instrumentality-drone'],
+        density: 1.18,
+        restChance: 0.02,
+        patterns: {
+          lead: [1, 0, 0.78, 1, 0.5, 0.9],
+          bass: [1, 0, 0, 1, 0, 0.68],
+          drums: [1, 3, 4, 2, 3, 4],
+          pad: [1, 0, 0, 1, 0, 0]
+        },
+        form: [
+          { name: 'third-impact-threshold', bars: 6, density: 1.02 },
+          { name: 'ego-boundary-collapse', bars: 3, density: 0.52 },
+          { name: 'end-of-evangelion', bars: 8, density: 1.24 }
+        ],
+        boss: { wave: 'square', pattern: [1, 0.66, 0.84, 1, 0.58, 0.92], stinger: [0, 1, 6, 13, 12] }
+      }
+    },
     boss: { pattern: [1, 0, 0.55, 0, 1, 0, 0.65, 0, 0.5, 0], stinger: [0, 6, 1, 10, 13] },
     victory: { intervals: [0, 3, 6, 10, 12], beats: [0.75, 0.5, 0.75, 0.5, 1.5] }
+  }),
+  'Steins;Gate': detailedOverride('cyberNetwork', {
+    id: 'mus-steins-gate',
+    confidence: 'A',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [74, 126],
+    meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.16, 0.48, 0.2, 0.76, 0.18, 0.56] },
+    scaleName: 'chromaticTension',
+    scale: SCALE_LIBRARY.chromaticTension,
+    rootMidi: 49,
+    chords: [0, 3, 1, 5],
+    instrumentation: ['analog-lab-piano-synth', 'cathode-tube-hum', 'world-line-sequencer-pulse', 'worn-tape-pad', 'relay-click-percussion', 'telephone-dial-noise'],
+    density: 0.68,
+    restChance: 0.24,
+    waves: { lead: 'triangle', bass: 'sine', pad: 'sawtooth', boss: 'square' },
+    patterns: {
+      lead: [1, 0, 0.46, 0, 0.72, 0.32, 0],
+      bass: [1, 0, 0, 0.58, 0, 0, 0.42],
+      drums: [1, 0, 3, 0, 2, 0, 4],
+      pad: [1, 0, 0, 0, 1, 0, 0]
+    },
+    form: [
+      { name: 'future-gadget-routine', bars: 7, density: 0.36 },
+      { name: 'd-mail-anomaly', bars: 7, density: 0.62 },
+      { name: 'world-line-displacement', bars: 7, density: 0.82 },
+      { name: 'reading-steiner-resolve', bars: 7, density: 0.96 }
+    ],
+    modeProfiles: {
+      combat: {
+        tempo: [128, 158],
+        meter: { beats: 4, unit: 4, subdivisions: 4, accents: [1, 0.12, 0.36, 0.14, 0.72, 0.12, 0.46, 0.16, 0.92, 0.12, 0.34, 0.14, 0.68, 0.12, 0.52, 0.16] },
+        instrumentation: ['serrated-analog-sequencer', 'overdriven-synth-bass', 'compressed-noise-drums', 'lab-bench-metal-hits', 'world-line-sync-pulse', 'phone-relay-clicks'],
+        density: 0.94,
+        restChance: 0.08,
+        patterns: {
+          lead: [1, 0, 0.62, 0.28, 0.86, 0, 0.52, 0.34, 1, 0, 0.7, 0.3, 0.9, 0, 0.58, 0.26],
+          bass: [1, 0, 0, 0, 0.78, 0, 0.46, 0, 1, 0, 0, 0, 0.7, 0, 0.5, 0],
+          drums: [1, 3, 3, 4, 2, 3, 4, 3, 1, 3, 4, 3, 2, 3, 3, 4],
+          pad: [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'rounder-breach', bars: 2, density: 0.7 },
+          { name: 'lab-countermeasure', bars: 6, density: 0.98 },
+          { name: 'time-leap-reversal', bars: 4, density: 1.08 },
+          { name: 'convergence-break', bars: 4, density: 1.16 }
+        ]
+      },
+      melee: {
+        tempo: [142, 174],
+        meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.2, 0.54, 0.24, 0.88, 0.28, 0.66] },
+        instrumentation: ['fast-analog-arpeggiator', 'elastic-synth-bass', 'clipped-drum-machine', 'radio-kaikan-metal-hit', 'divergent-glitch-pulse', 'rooftop-wind-noise'],
+        density: 1.02,
+        restChance: 0.05,
+        patterns: {
+          lead: [1, 0.48, 0, 0.82, 0.34, 0.72, 0.44],
+          bass: [1, 0, 0.58, 0, 0.84, 0, 0.5],
+          drums: [1, 3, 4, 2, 3, 4, 3],
+          pad: [1, 0, 0, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'radio-kaikan-approach', bars: 3, density: 0.76 },
+          { name: 'rooftop-feint', bars: 7, density: 1.04 },
+          { name: 'divergence-rebound', bars: 4, density: 1.14 },
+          { name: 'platform-escape', bars: 4, density: 1.2 }
+        ]
+      },
+      rpg: {
+        tempo: [66, 104],
+        meter: { beats: 4, unit: 4, subdivisions: 2, accents: [1, 0.16, 0.46, 0.18, 0.76, 0.16, 0.4, 0.18] },
+        instrumentation: ['worn-electric-piano-synth', 'warm-analog-pad', 'muted-bell-synth', 'soft-tape-hiss', 'cathode-tube-hum', 'lab-clock-pulse'],
+        density: 0.48,
+        restChance: 0.38,
+        patterns: {
+          lead: [1, 0, 0, 0.42, 0, 0.56, 0, 0.3],
+          bass: [1, 0, 0, 0, 0.48, 0, 0, 0],
+          drums: [0, 0, 3, 0, 0, 0, 4, 0],
+          pad: [1, 0, 0, 0, 1, 0, 0, 0]
+        },
+        form: [
+          { name: 'future-gadget-lab', bars: 8, density: 0.24 },
+          { name: 'd-mail-observation', bars: 8, density: 0.42 },
+          { name: 'reading-steiner-afterimage', bars: 6, density: 0.34 },
+          { name: 'lab-member-resolve', bars: 8, density: 0.66 }
+        ]
+      },
+      tactics: {
+        tempo: [92, 128],
+        meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.14, 0.44, 0.14, 0.78, 0.14, 0.38, 0.14, 0.64, 0.16] },
+        instrumentation: ['dry-piano-stabs', 'low-analog-sequencer', 'encrypted-modem-clicks', 'measured-electronic-snare', 'sern-surveillance-drone', 'divergence-grid-pulse'],
+        density: 0.7,
+        restChance: 0.2,
+        patterns: {
+          lead: [1, 0, 0.38, 0, 0.64, 0, 0.48, 0, 0.72, 0],
+          bass: [1, 0, 0, 0, 0.66, 0, 0, 0, 0.5, 0],
+          drums: [1, 0, 3, 0, 2, 0, 3, 0, 4, 0],
+          pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'sern-signal-trace', bars: 5, density: 0.44 },
+          { name: 'rounder-route-analysis', bars: 5, density: 0.66 },
+          { name: 'ibn-access-window', bars: 5, density: 0.84 },
+          { name: 'world-line-extraction', bars: 5, density: 1 }
+        ]
+      }
+    },
+    encounterProfiles: {
+      boss: {
+        tempo: [124, 162],
+        meter: { beats: 5, unit: 4, subdivisions: 2, accents: [1, 0.12, 0.5, 0.14, 0.84, 0.14, 0.42, 0.14, 0.7, 0.16] },
+        scaleName: 'phrygian',
+        scale: SCALE_LIBRARY.phrygian,
+        rootMidi: 41,
+        chords: [0, 1, 4, 0],
+        instrumentation: ['serrated-analog-ostinato', 'low-piano-cluster', 'rounder-radio-noise', 'gated-industrial-drums', 'tension-string-synth', 'convergence-lock-pulse'],
+        density: 1.06,
+        restChance: 0.05,
+        patterns: {
+          lead: [1, 0, 0.62, 0, 1, 0, 0.72, 0, 0.54, 0],
+          bass: [1, 0, 0, 0, 0.84, 0, 0, 0, 0.58, 0],
+          drums: [1, 0, 3, 4, 2, 0, 3, 4, 1, 4],
+          pad: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0]
+        },
+        form: [
+          { name: 'rounder-shadow', bars: 5, density: 0.84 },
+          { name: 'sern-breach', bars: 5, density: 1.08 },
+          { name: 'forced-convergence', bars: 5, density: 1.18 }
+        ],
+        boss: { wave: 'square', pattern: [1, 0, 0.74, 0, 1, 0, 0.82, 0, 0.62, 0], stinger: [0, 1, 6, 10, 13] }
+      },
+      worldBoss: {
+        tempo: [138, 176],
+        meter: { beats: 7, unit: 8, subdivisions: 1, accents: [1, 0.18, 0.58, 0.26, 0.92, 0.3, 0.7] },
+        scaleName: 'chromaticTension',
+        scale: SCALE_LIBRARY.chromaticTension,
+        rootMidi: 37,
+        chords: [0, 1, 5, 2],
+        instrumentation: ['layered-world-line-oscillators', 'divergence-meter-counterpulse', 'time-machine-subharmonic', 'nonlexical-cathode-choir-pad', 'temporal-glitch-noise', 'attractor-field-phase-pulse', 'operation-skuld-analog-riser'],
+        density: 1.18,
+        restChance: 0.02,
+        patterns: {
+          lead: [1, 0, 0.78, 1, 0.5, 0.88, 0.62],
+          bass: [1, 0, 0, 0.92, 0, 0, 0.68],
+          drums: [1, 3, 4, 2, 3, 4, 3],
+          pad: [1, 0, 0, 1, 0, 0, 0]
+        },
+        form: [
+          { name: 'beta-attractor-lock', bars: 7, density: 1.02 },
+          { name: 'observed-history-feint', bars: 4, density: 0.58 },
+          { name: 'operation-skuld', bars: 7, density: 1.18 },
+          { name: 'steins-gate-world-line', bars: 7, density: 1.24 }
+        ],
+        boss: { wave: 'square', pattern: [1, 0.64, 0.84, 1, 0.56, 0.92, 0.72], stinger: [0, 1, 6, 13, 12] }
+      }
+    },
+    boss: { pattern: [1, 0, 0.56, 0, 1, 0, 0.68], stinger: [0, 1, 6, 10, 13] },
+    victory: { intervals: [0, 3, 6, 10, 12], beats: [0.7, 0.5, 0.68, 0.54, 1.6] }
   }),
   Rammstein: detailedOverride('industrialMetal', {
     id: 'mus-rammstein',
@@ -2033,8 +2717,14 @@ const LOOKUP_ALIASES = {
   'jojo bizarre adventure': "JoJo's Bizarre Adventure",
   'jojos bizarre adventure': "JoJo's Bizarre Adventure",
   'jo jo bizarre adventure': "JoJo's Bizarre Adventure",
+  dbz: 'Dragon Ball Z',
+  'dragon ball z': 'Dragon Ball Z',
+  'tokyo ghoul re': 'Tokyo Ghoul',
   evangelion: 'Neon Genesis Evangelion',
-  'full metal alchemist': 'Fullmetal Alchemist'
+  'neon genesis evangelion': 'Neon Genesis Evangelion',
+  'full metal alchemist': 'Fullmetal Alchemist',
+  'fullmetal alchemist brotherhood': 'Fullmetal Alchemist',
+  'steins gate': 'Steins;Gate'
 };
 
 const FAMILY_RULES = [
@@ -2081,6 +2771,51 @@ const toLookupKey = value => String(value || '')
   .replace(/[^a-zA-Z0-9]+/g, ' ')
   .trim()
   .toLowerCase();
+
+const MODE_PROFILE_ALIASES = {
+  combat: 'combat',
+  fighter: 'combat',
+  melee: 'melee',
+  smash: 'melee',
+  rpg: 'rpg',
+  tactics: 'tactics'
+};
+
+const resolveEncounterVariant = (stage, state) => {
+  const tags = Array.isArray(stage?.tags) ? stage.tags.map(toLookupKey) : [];
+  const isWorldBoss = Boolean(
+    stage?.worldBoss
+    || stage?.isWorldBoss
+    || stage?.finalGameBoss
+    || tags.includes('world boss')
+    || tags.includes('worldboss')
+  );
+  if (isWorldBoss) return 'worldBoss';
+
+  const isBoss = Boolean(
+    state === 'boss'
+    || stage?.bossActive
+    || stage?.isBoss
+    || tags.includes('boss arena')
+    || tags.includes('bossarena')
+  );
+  return isBoss ? 'boss' : 'standard';
+};
+
+const resolveProfileArrangement = (baseProfile, modeKey, state, stage) => {
+  const requestedModeVariant = MODE_PROFILE_ALIASES[modeKey] || modeKey;
+  const modeOverride = baseProfile.modeProfiles?.[requestedModeVariant];
+  const modeProfile = modeOverride ? mergeProfile(baseProfile, modeOverride) : baseProfile;
+  const encounterVariant = resolveEncounterVariant(stage, state);
+  const encounterOverride = encounterVariant === 'standard'
+    ? null
+    : modeProfile.encounterProfiles?.[encounterVariant];
+  return {
+    profile: encounterOverride ? mergeProfile(modeProfile, encounterOverride) : modeProfile,
+    modeVariant: modeOverride ? requestedModeVariant : 'generic',
+    encounterVariant: encounterOverride ? encounterVariant : 'standard'
+  };
+};
 
 export const normalizeMusicUniverse = value => {
   const raw = String(value || '').trim();
@@ -2266,9 +3001,14 @@ export const resolveStageMusicProfile = (stage = {}, requestedState = 'battle') 
   const state = normalizeState(requestedState || stage.musicState);
   const sourceUniverses = getSourceUniverses(stage);
   const profiles = sourceUniverses.map(universe => resolveUniverseProfile(universe, stage));
-  const profile = blendProfiles(profiles, sourceUniverses);
+  const baseProfile = blendProfiles(profiles, sourceUniverses);
   const mode = String(stage.mode || 'RPG');
   const modeKey = toLookupKey(mode);
+  const {
+    profile,
+    modeVariant,
+    encounterVariant
+  } = resolveProfileArrangement(baseProfile, modeKey, state, stage);
   const modeConfig = MODE_MODIFIERS[modeKey] || { tempo: 1, density: 1 };
   const stateConfig = STATE_MODIFIERS[state] || STATE_MODIFIERS.battle;
   const bossKey = getBossKey(stage);
@@ -2278,6 +3018,7 @@ export const resolveStageMusicProfile = (stage = {}, requestedState = 'battle') 
     || stage.bossActive
     || stage.finalGameBoss
     || stage.worldBoss
+    || encounterVariant !== 'standard'
     || (Array.isArray(stage.tags) && stage.tags.includes('bossArena'))
   );
   const seedSource = [
@@ -2293,11 +3034,18 @@ export const resolveStageMusicProfile = (stage = {}, requestedState = 'battle') 
   const tempoBase = profile.tempo[0] + (profile.tempo[1] - profile.tempo[0]) * tempoRng();
   const tempo = Math.max(48, Math.min(196, Math.round(tempoBase * modeConfig.tempo * stateConfig.tempo)));
   const sequence = buildSequence(profile, seed, stateConfig, modeConfig);
-  const bossLayerEnabled = Boolean(stateConfig.bossLayer || stage.bossActive || stage.finalGameBoss);
+  const bossLayerEnabled = Boolean(
+    stateConfig.bossLayer
+    || stage.bossActive
+    || stage.finalGameBoss
+    || encounterVariant !== 'standard'
+  );
   const key = [
     profile.id,
     sourceUniverses.join('+'),
     modeKey || 'rpg',
+    modeVariant,
+    encounterVariant,
     state,
     seed,
     bossLayerEnabled ? 'boss-layer' : 'base-layer'
@@ -2313,6 +3061,8 @@ export const resolveStageMusicProfile = (stage = {}, requestedState = 'battle') 
     universe: sourceUniverses[0],
     sourceUniverses,
     mode,
+    modeVariant,
+    encounterVariant,
     state,
     hasBoss,
     bossKey,

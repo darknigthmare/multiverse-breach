@@ -56,6 +56,11 @@ const coverageCases = [
   ['Cyberpunk: Edgerunners', 'mus-cyberpunk-edgerunners'],
   ['Chainsaw Man', 'mus-chainsaw-man'],
   ['Demon Slayer', 'mus-demon-slayer'],
+  ['Steins;Gate', 'mus-steins-gate'],
+  ['Dragon Ball Z', 'mus-dragon-ball-z'],
+  ['Tokyo Ghoul', 'mus-tokyo-ghoul'],
+  ['Fullmetal Alchemist', 'mus-fullmetal-alchemist'],
+  ['Neon Genesis Evangelion', 'mus-neon-genesis-evangelion'],
   ['Parasyte', 'mus-parasyte'],
   ['Uzumaki', 'mus-uzumaki']
 ];
@@ -113,6 +118,233 @@ const modePlans = ['RPG', 'Tactics', 'Smash', 'Fighter', 'FPS', 'Race']
     mode
   }, 'battle'));
 assert(new Set(modePlans.map(plan => plan.tempo)).size >= 3, 'Game modes are not musically differentiated');
+
+const animeLotCases = [
+  ['Dragon Ball Z', 'mus-dragon-ball-z'],
+  ['Tokyo Ghoul', 'mus-tokyo-ghoul'],
+  ['Fullmetal Alchemist', 'mus-fullmetal-alchemist'],
+  ['Neon Genesis Evangelion', 'mus-neon-genesis-evangelion']
+];
+const animeLotModes = [
+  ['Fighter', 'combat'],
+  ['Smash', 'melee'],
+  ['RPG', 'rpg'],
+  ['Tactics', 'tactics']
+];
+const animeLotRows = animeLotCases.map(([universe, expectedProfileId]) => {
+  const profile = MUSIC_PROFILE_OVERRIDES[universe];
+  assert(profile, `${universe}: dedicated anime-lot profile is missing`);
+  assert(profile.sourcePolicy === 'original-procedural-only', `${universe}: copyrighted source policy`);
+  assert(
+    animeLotModes.every(([, modeVariant]) => profile.modeProfiles?.[modeVariant]),
+    `${universe}: one or more mode-specific arrangements are missing`
+  );
+  assert(profile.encounterProfiles?.boss, `${universe}: boss arrangement is missing`);
+  assert(profile.encounterProfiles?.worldBoss, `${universe}: world-boss arrangement is missing`);
+
+  const plans = animeLotModes.map(([mode, expectedModeVariant]) => {
+    const plan = resolveStageMusicProfile({
+      id: `anime-lot-${expectedProfileId}-${expectedModeVariant}`,
+      name: `${universe} ${expectedModeVariant} arena`,
+      universe,
+      mode
+    }, 'battle');
+    assert(plan.profileId === expectedProfileId, `${universe}/${mode}: incorrect profile`);
+    assert(plan.modeVariant === expectedModeVariant, `${universe}/${mode}: incorrect mode arrangement`);
+    assert(plan.encounterVariant === 'standard', `${universe}/${mode}: unexpected boss arrangement`);
+    assert(plan.steps.length > 0, `${universe}/${mode}: empty procedural sequence`);
+    assert(plan.instrumentation.length >= 6, `${universe}/${mode}: incomplete instrument palette`);
+    return plan;
+  });
+  assert(
+    new Set(plans.map(plan => plan.instrumentation.join('|'))).size === animeLotModes.length,
+    `${universe}: gameplay modes reuse the same instrument palette`
+  );
+  assert(
+    new Set(plans.map(plan => plan.sections.map(section => section.name).join('|'))).size === animeLotModes.length,
+    `${universe}: gameplay modes reuse the same musical form`
+  );
+
+  const bossPlan = resolveStageMusicProfile({
+    id: `anime-lot-${expectedProfileId}-boss`,
+    name: `${universe} boss arena`,
+    universe,
+    mode: 'RPG',
+    bossActive: true,
+    bossName: `${universe} boss`
+  }, 'boss');
+  const worldBossPlan = resolveStageMusicProfile({
+    id: `anime-lot-${expectedProfileId}-world-boss`,
+    name: `${universe} world boss arena`,
+    universe,
+    mode: 'RPG',
+    worldBoss: { name: `${universe} world boss` },
+    isWorldBoss: true
+  }, 'boss');
+  assert(bossPlan.encounterVariant === 'boss', `${universe}: boss arrangement did not activate`);
+  assert(worldBossPlan.encounterVariant === 'worldBoss', `${universe}: world-boss arrangement did not activate`);
+  assert(bossPlan.bossLayerEnabled, `${universe}: boss layer is disabled`);
+  assert(worldBossPlan.bossLayerEnabled, `${universe}: world-boss layer is disabled`);
+  assert(bossPlan.key !== worldBossPlan.key, `${universe}: boss and world boss share a cache key`);
+  assert(
+    bossPlan.instrumentation.join('|') !== worldBossPlan.instrumentation.join('|'),
+    `${universe}: boss and world boss reuse the same instrument palette`
+  );
+  assert(
+    worldBossPlan.density > bossPlan.density,
+    `${universe}: world-boss arrangement is not denser than the boss arrangement`
+  );
+
+  return {
+    universe,
+    profileId: expectedProfileId,
+    modes: plans.map(plan => ({
+      mode: plan.mode,
+      modeVariant: plan.modeVariant,
+      tempo: plan.tempo,
+      meter: `${plan.meter.beats}/${plan.meter.unit}`,
+      steps: plan.steps.length
+    })),
+    boss: {
+      encounterVariant: bossPlan.encounterVariant,
+      tempo: bossPlan.tempo,
+      steps: bossPlan.steps.length
+    },
+    worldBoss: {
+      encounterVariant: worldBossPlan.encounterVariant,
+      tempo: worldBossPlan.tempo,
+      steps: worldBossPlan.steps.length
+    }
+  };
+});
+
+const steinsGateProfile = MUSIC_PROFILE_OVERRIDES['Steins;Gate'];
+assert(steinsGateProfile, 'Steins;Gate: dedicated profile is missing');
+assert(steinsGateProfile.id === 'mus-steins-gate', 'Steins;Gate: incorrect profile ID');
+assert(steinsGateProfile.sourcePolicy === 'original-procedural-only', 'Steins;Gate: copyrighted source policy');
+assert(normalizeMusicUniverse('Steins Gate') === 'Steins;Gate', 'Steins;Gate: punctuation-free universe alias is missing');
+
+const steinsGateModeCases = [
+  ['Combat', 'combat'],
+  ['Melee', 'melee'],
+  ['RPG', 'rpg'],
+  ['Tactics', 'tactics']
+];
+const steinsGateModePlans = steinsGateModeCases.map(([mode, expectedModeVariant]) => {
+  const plan = resolveStageMusicProfile({
+    id: `steins-gate-${expectedModeVariant}-audit`,
+    name: `Steins;Gate ${mode} audit`,
+    universe: 'Steins;Gate',
+    mode
+  }, 'battle');
+  assert(plan.profileId === 'mus-steins-gate', `Steins;Gate/${mode}: incorrect profile`);
+  assert(plan.modeVariant === expectedModeVariant, `Steins;Gate/${mode}: incorrect mode arrangement`);
+  assert(plan.encounterVariant === 'standard', `Steins;Gate/${mode}: unexpected encounter arrangement`);
+  assert(plan.steps.length > 0, `Steins;Gate/${mode}: empty procedural sequence`);
+  assert(plan.instrumentation.length >= 6, `Steins;Gate/${mode}: incomplete instrument palette`);
+  return plan;
+});
+assert(
+  new Set(steinsGateModePlans.map(plan => plan.instrumentation.join('|'))).size === steinsGateModeCases.length,
+  'Steins;Gate: gameplay modes reuse the same instrument palette'
+);
+assert(
+  new Set(steinsGateModePlans.map(plan => plan.sections.map(section => section.name).join('|'))).size === steinsGateModeCases.length,
+  'Steins;Gate: gameplay modes reuse the same musical form'
+);
+assert(
+  new Set(steinsGateModePlans.map(plan => plan.key)).size === steinsGateModeCases.length,
+  'Steins;Gate: gameplay modes share a runtime cache key'
+);
+
+const steinsGateAliasCases = [
+  ['Fighter', 'combat', steinsGateModePlans[0]],
+  ['Smash', 'melee', steinsGateModePlans[1]]
+];
+const steinsGateAliasPlans = steinsGateAliasCases.map(([mode, expectedModeVariant, canonicalPlan]) => {
+  const plan = resolveStageMusicProfile({
+    id: `steins-gate-${mode.toLowerCase()}-alias-audit`,
+    name: `Steins;Gate ${mode} alias audit`,
+    universe: 'Steins Gate',
+    mode
+  }, 'battle');
+  assert(plan.profileId === 'mus-steins-gate', `Steins;Gate/${mode}: alias resolved the wrong profile`);
+  assert(plan.modeVariant === expectedModeVariant, `Steins;Gate/${mode}: alias resolved the wrong arrangement`);
+  assert(
+    plan.instrumentation.join('|') === canonicalPlan.instrumentation.join('|'),
+    `Steins;Gate/${mode}: alias changed the canonical instrument palette`
+  );
+  assert(
+    plan.sections.map(section => section.name).join('|') === canonicalPlan.sections.map(section => section.name).join('|'),
+    `Steins;Gate/${mode}: alias changed the canonical musical form`
+  );
+  return plan;
+});
+
+const steinsGateBossPlan = resolveStageMusicProfile({
+  id: 'steins-gate-sern-boss-audit',
+  name: 'Steins;Gate SERN Rounder confrontation',
+  universe: 'Steins;Gate',
+  mode: 'RPG',
+  bossActive: true,
+  bossName: 'Yugo Tennouji / FB'
+}, 'boss');
+const steinsGateWorldBossPlan = resolveStageMusicProfile({
+  id: 'steins-gate-attractor-field-audit',
+  name: 'Steins;Gate Attractor Field finale',
+  universe: 'Steins;Gate',
+  mode: 'RPG',
+  worldBoss: { name: 'SERN Attractor Field' },
+  isWorldBoss: true
+}, 'boss');
+assert(steinsGateBossPlan.encounterVariant === 'boss', 'Steins;Gate: boss arrangement did not activate');
+assert(steinsGateWorldBossPlan.encounterVariant === 'worldBoss', 'Steins;Gate: Attractor Field arrangement did not activate');
+assert(steinsGateBossPlan.bossLayerEnabled, 'Steins;Gate: boss layer is disabled');
+assert(steinsGateWorldBossPlan.bossLayerEnabled, 'Steins;Gate: world-boss layer is disabled');
+assert(steinsGateBossPlan.key !== steinsGateWorldBossPlan.key, 'Steins;Gate: boss and Attractor Field share a cache key');
+assert(
+  steinsGateBossPlan.instrumentation.join('|') !== steinsGateWorldBossPlan.instrumentation.join('|'),
+  'Steins;Gate: boss and Attractor Field reuse the same instrument palette'
+);
+assert(
+  steinsGateWorldBossPlan.density > steinsGateBossPlan.density,
+  'Steins;Gate: Attractor Field arrangement is not denser than the boss arrangement'
+);
+assert(
+  steinsGateWorldBossPlan.instrumentation.includes('attractor-field-phase-pulse'),
+  'Steins;Gate: Attractor Field signature pulse is missing'
+);
+assert(
+  steinsGateWorldBossPlan.sections.some(section => section.name === 'operation-skuld'),
+  'Steins;Gate: Operation Skuld section is missing from the finale'
+);
+
+const steinsGateAudit = {
+  profileId: steinsGateProfile.id,
+  modes: steinsGateModePlans.map(plan => ({
+    mode: plan.mode,
+    modeVariant: plan.modeVariant,
+    tempo: plan.tempo,
+    meter: `${plan.meter.beats}/${plan.meter.unit}`,
+    steps: plan.steps.length
+  })),
+  aliases: steinsGateAliasPlans.map(plan => ({
+    mode: plan.mode,
+    modeVariant: plan.modeVariant,
+    tempo: plan.tempo
+  })),
+  boss: {
+    encounterVariant: steinsGateBossPlan.encounterVariant,
+    tempo: steinsGateBossPlan.tempo,
+    density: Number(steinsGateBossPlan.density.toFixed(3))
+  },
+  worldBoss: {
+    encounterVariant: steinsGateWorldBossPlan.encounterVariant,
+    tempo: steinsGateWorldBossPlan.tempo,
+    density: Number(steinsGateWorldBossPlan.density.toFixed(3)),
+    sections: steinsGateWorldBossPlan.sections.map(section => section.name)
+  }
+};
 
 const suppressedPlan = resolveStageMusicProfile({
   id: 'hidden-dlc-music-audit',
@@ -181,6 +413,8 @@ console.log(JSON.stringify({
     tempo: plan.tempo,
     density: Number(plan.density.toFixed(3))
   })),
+  animeLot: animeLotRows,
+  steinsGate: steinsGateAudit,
   hiddenDlcFallback: {
     universe: suppressedPlan.universe,
     profileId: suppressedPlan.profileId
