@@ -44,6 +44,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const battleItemPoolRef = useRef([]);
   const nextBattleItemDropRef = useRef(520);
   const keysPressed = useRef({});
+  const tacticsCameraPointerRef = useRef({
+    active: false,
+    pointerId: null,
+    lastClientX: 0,
+    lastClientY: 0,
+    travel: 0,
+    moved: false
+  });
+  const suppressTacticsClickRef = useRef(false);
   const lastAnomalyWaveRef = useRef(-1);
   const bootClearedRef = useRef(false);
   const battleCompletionHandledRef = useRef(false);
@@ -69,7 +78,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [opponentState, setOpponentState] = useState([]);
   const [activeOpponentId, setActiveOpponentId] = useState('');
   const [bossState, setBossState] = useState(null);
-  const [selectedAction, setSelectedAction] = useState('simple'); // tactics
+  const [selectedAction, setSelectedAction] = useState(null); // tactics
   const [autoBattle, setAutoBattle] = useState(false);
   const [speedMultiplier, setSpeedMultiplier] = useState(1); // 1 | 2
   const [battleCompleted, setBattleCompleted] = useState(false);
@@ -1154,7 +1163,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
           engine.draw(ctx, animTime);
           if (stage.mode !== 'RPG') {
-            battlePickupsRef.current.forEach(item => drawBattleItemPickup(ctx, item, animTime));
+            battlePickupsRef.current.forEach(item => {
+              const tacticalScreen = stage.mode === 'Tactics'
+                && Number.isFinite(item.gridX)
+                && Number.isFinite(item.gridY)
+                ? engine.gridToScreen?.(item.gridX, item.gridY)
+                : null;
+              drawBattleItemPickup(
+                ctx,
+                tacticalScreen ? { ...item, ...tacticalScreen } : item,
+                animTime
+              );
+            });
           }
           checkBattleItemPickupCollision(engine);
           if (stage.mode !== 'Tactics' && animTime > nextBattleItemDropRef.current) {
@@ -1255,6 +1275,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
   const handleCanvasClick = (e) => {
     if (stage.mode !== 'Tactics' || !engineRef.current) return;
+    if (suppressTacticsClickRef.current) {
+      suppressTacticsClickRef.current = false;
+      return;
+    }
 
     const rect = canvasRef.current.getBoundingClientRect();
     const scaleX = canvasRef.current.width / rect.width;
@@ -1263,14 +1287,103 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const clickY = (e.clientY - rect.top) * scaleY;
 
     const engine = engineRef.current;
-    const gridC = Math.floor((clickX - engine.gridStartX) / engine.cellW);
-    const gridR = Math.floor((clickY - engine.gridStartY) / engine.cellH);
+    const grid = engine.screenToGrid?.(clickX, clickY) || {
+      x: Math.floor((clickX - engine.gridStartX) / engine.cellW),
+      y: Math.floor((clickY - engine.gridStartY) / engine.cellH)
+    };
+    const gridC = grid.x;
+    const gridR = grid.y;
 
     if (gridC >= 0 && gridC < engine.cols && gridR >= 0 && gridR < engine.rows) {
       const result = engine.handleCellClick(gridC, gridR);
       if (result?.type === 'move') activateTacticalPickupAtCell(gridC, gridR);
     }
   };
+
+  const handleTacticsPointerDown = (e) => {
+    if (stage.mode !== 'Tactics' || e.button !== 0 || !engineRef.current) return;
+    suppressTacticsClickRef.current = false;
+    tacticsCameraPointerRef.current = {
+      active: true,
+      pointerId: e.pointerId,
+      lastClientX: e.clientX,
+      lastClientY: e.clientY,
+      travel: 0,
+      moved: false
+    };
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  };
+
+  const handleTacticsPointerMove = (e) => {
+    const pointer = tacticsCameraPointerRef.current;
+    if (
+      stage.mode !== 'Tactics'
+      || !pointer.active
+      || pointer.pointerId !== e.pointerId
+      || !engineRef.current
+    ) return;
+    if ((e.buttons & 1) === 0) {
+      finishTacticsPointer(e, false);
+      return;
+    }
+
+    const deltaClientX = e.clientX - pointer.lastClientX;
+    const deltaClientY = e.clientY - pointer.lastClientY;
+    pointer.lastClientX = e.clientX;
+    pointer.lastClientY = e.clientY;
+    pointer.travel += Math.hypot(deltaClientX, deltaClientY);
+    if (pointer.travel <= 4) return;
+
+    pointer.moved = true;
+    const rect = canvasRef.current.getBoundingClientRect();
+    engineRef.current.panCameraBy?.(
+      deltaClientX * (canvasRef.current.width / rect.width),
+      deltaClientY * (canvasRef.current.height / rect.height)
+    );
+    e.preventDefault();
+  };
+
+  const finishTacticsPointer = (e, suppressClick = true) => {
+    const pointer = tacticsCameraPointerRef.current;
+    if (!pointer.active || pointer.pointerId !== e.pointerId) return;
+    suppressTacticsClickRef.current = suppressClick && pointer.moved;
+    tacticsCameraPointerRef.current = {
+      active: false,
+      pointerId: null,
+      lastClientX: 0,
+      lastClientY: 0,
+      travel: 0,
+      moved: false
+    };
+    if (e.currentTarget.hasPointerCapture?.(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+  };
+
+  const cancelTacticsPointer = (e) => {
+    finishTacticsPointer(e, false);
+  };
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (stage.mode !== 'Tactics' || !canvas) return undefined;
+    const handleWheel = (event) => {
+      if (!engineRef.current) return;
+      const rect = canvas.getBoundingClientRect();
+      const anchorX = (event.clientX - rect.left) * (canvas.width / rect.width);
+      const anchorY = (event.clientY - rect.top) * (canvas.height / rect.height);
+      engineRef.current.zoomCameraAt?.(
+        event.deltaY < 0 ? 1.12 : 1 / 1.12,
+        anchorX,
+        anchorY
+      );
+      event.preventDefault();
+    };
+    // Native non-passive input prevents the page from scrolling while the
+    // pointer is zooming the tactical battlefield.
+    canvas.addEventListener('wheel', handleWheel, { passive: false });
+    return () => canvas.removeEventListener('wheel', handleWheel);
+  }, [stage.mode]);
 
   const handleActiveHeroAbility = (type) => {
     if (!engineRef.current || battleCompleted) return;
@@ -1290,17 +1403,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     } else if (stage.mode === 'Tactics') {
       const canControlEnemy = battleConfig?.opponentControl === 'p2' && engine.activeUnitType === 'enemy';
       if ((!canControlEnemy && engine.activeUnitType !== 'hero') || engine.actionPhase === 'enemy_ai' || engine.actionPhase === 'end') return;
-      if (canControlEnemy && engine.selectAction) {
-        engine.selectAction(type);
-      } else {
-        engine.selectedAction = type;
-        if (engine.actionPhase === 'move') {
-          engine.actionPhase = 'action';
-          engine.movementRange = [];
-        }
-        engine.calculateAttackRange();
-      }
-      setSelectedAction(type);
+      engine.selectAction?.(type);
+      setSelectedAction(engine.selectedAction);
+    }
+  };
+
+  const handleCancelTacticsAction = () => {
+    if (stage.mode !== 'Tactics' || !engineRef.current || battleCompleted) return;
+    if (engineRef.current.cancelSelectedAction?.()) {
+      setSelectedAction(engineRef.current.selectedAction);
+      sound.playSfx('click');
     }
   };
 
@@ -1668,7 +1780,22 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           width="1040"
           height="460"
           onClick={handleCanvasClick}
-          style={{ display: 'block', width: '100%', height: 'auto', cursor: stage.mode === 'Tactics' ? 'crosshair' : 'default' }}
+          onPointerDown={handleTacticsPointerDown}
+          onPointerMove={handleTacticsPointerMove}
+          onPointerUp={finishTacticsPointer}
+          onPointerCancel={cancelTacticsPointer}
+          onLostPointerCapture={cancelTacticsPointer}
+          style={{
+            display: 'block',
+            width: '100%',
+            height: 'auto',
+            cursor: stage.mode === 'Tactics'
+              ? selectedAction
+                ? 'crosshair'
+                : 'grab'
+              : 'default',
+            touchAction: stage.mode === 'Tactics' ? 'none' : 'auto'
+          }}
         />
 
         {customPresentation && (
@@ -2093,7 +2220,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 </span>
                 {stage.mode === 'Tactics' && (
                   <span style={{ fontSize: '9px', color: '#ffb300' }}>
-                    {selectedAction === 'defense' ? getTranslation(lang, 'tacticsAction') : getTranslation(lang, 'tacticsMove')}
+                    {selectedAction
+                      ? `${lang === 'fr' ? 'VISEE' : 'TARGETING'}: ${getCombatantMove(activeHeroObj, selectedAction).name}`
+                      : (lang === 'fr' ? 'MODE DEPLACEMENT' : 'MOVEMENT MODE')}
                   </span>
                 )}
               </div>
@@ -2149,6 +2278,28 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   </div>
                 </button>
 
+                {stage.mode === 'Tactics' && selectedAction && (
+                  <button
+                    type="button"
+                    onClick={handleCancelTacticsAction}
+                    className="btn-retro"
+                    title={lang === 'fr'
+                      ? 'Annule la visee non confirmee et revient au deplacement avec les AP restants.'
+                      : 'Cancel unconfirmed targeting and return to movement with remaining AP.'}
+                    style={{
+                      gridColumn: 'span 2',
+                      padding: '8px 12px',
+                      background: 'rgba(41, 128, 185, 0.34)',
+                      borderColor: '#4fc3f7',
+                      color: '#dff6ff',
+                      fontSize: '10px',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {lang === 'fr' ? 'ANNULER LA VISEE / DEPLACEMENT' : 'CANCEL TARGETING / MOVE'}
+                  </button>
+                )}
+
                 {stage.mode === 'Tactics' && (
                   <button
                     onClick={() => {
@@ -2190,8 +2341,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               {stage.mode === 'Tactics' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
                   {lang === 'fr'
-                    ? <>Bouge sur une case <span style={{ color: '#2ecc71' }}>verte</span> ou choisis directement une attaque pour rester en place. Cases <span style={{ color: '#e74c3c' }}>rouges</span>: ligne de vue et degats prevus. <span style={{ color: '#4fc3f7' }}>COVER</span> reduit les tirs.</>
-                    : <>Move on a <span style={{ color: '#2ecc71' }}>green</span> cell or pick an attack to hold position. <span style={{ color: '#e74c3c' }}>Red</span> cells show line-of-sight strikes and damage preview. <span style={{ color: '#4fc3f7' }}>COVER</span> reduces shots.</>}
+                    ? <>Bouge sur une case <span style={{ color: '#2ecc71' }}>verte</span> ou choisis une attaque pour rester en place. Reclique l attaque ou utilise <strong>ANNULER LA VISEE</strong> avant confirmation. Maintiens le clic et glisse pour la camera; molette pour zoomer. <span style={{ color: '#4fc3f7' }}>COVER</span> reduit les tirs.</>
+                    : <>Move on a <span style={{ color: '#2ecc71' }}>green</span> cell or pick an attack to hold position. Click it again or use <strong>CANCEL TARGETING</strong> before confirming. Hold and drag to pan; use the wheel to zoom. <span style={{ color: '#4fc3f7' }}>COVER</span> reduces shots.</>}
                 </div>
               )}
             </>

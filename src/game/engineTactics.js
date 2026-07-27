@@ -1,5 +1,5 @@
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
-import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
+import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCombatantBust } from './renderer';
 import { SYNERGIES_DB } from './heroes';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
 import { drawGeneratedStageTextureCover, getGeneratedStageTexturePattern } from './generatedStageAssets';
@@ -11,6 +11,28 @@ const faceUnitToward = (unit, target) => {
   if (!Number.isFinite(unitX) || !Number.isFinite(targetX) || unitX === targetX) return;
   unit.facing = targetX > unitX ? 1 : -1;
 };
+
+const COMPASS_DIRECTIONS = [
+  { x: 1, y: 0 },
+  { x: 1, y: 1 },
+  { x: 0, y: 1 },
+  { x: -1, y: 1 },
+  { x: -1, y: 0 },
+  { x: -1, y: -1 },
+  { x: 0, y: -1 },
+  { x: 1, y: -1 }
+];
+
+const getCompassDirectionIndex = (dx, dy) => {
+  if (dx === 0 && dy === 0) return 0;
+  return (Math.round(Math.atan2(dy, dx) / (Math.PI / 4)) + COMPASS_DIRECTIONS.length)
+    % COMPASS_DIRECTIONS.length;
+};
+
+const ATTACK_TYPE_RANGED = /bullet|gun|rifle|pistol|shot|laser|beam|projectile|rocket|missile|plasma|zap|magic|spell|sound|music|fire|gravity|ray|caster|sniper|turret|drone|bow|arrow|throw|grenade|bomb|vortex|portal/i;
+const ATTACK_TYPE_AREA = /(?:^|_)aoe(?:_|$)|area|explosive|explosion|rocket|grenade|bomb|nuke|vortex|storm|barrage/i;
+const ATTACK_TYPE_CONE = /shotgun|spray|flame|flamethrower|bullet_spray|salvo|volley/i;
+const ATTACK_TYPE_LINE = /beam|laser|pierc|penetrat|impale/i;
 
 const colorWithAlpha = (hex, alpha) => {
   const value = /^#[0-9a-f]{6}$/i.test(hex || '') ? hex.slice(1) : '39c5bb';
@@ -57,6 +79,14 @@ export class EngineTactics {
     this.cellH = Math.min(48, Math.floor((this.height - 170) / this.rows));
     this.gridStartX = Math.round((this.width - this.cols * this.cellW) / 2);
     this.gridStartY = 60;
+    // Shared screen-space camera metrics keep rendering and hit-testing aligned.
+    this.baseCellW = this.cellW;
+    this.baseCellH = this.cellH;
+    this.baseGridStartX = this.gridStartX;
+    this.baseGridStartY = this.gridStartY;
+    this.cameraZoom = 1;
+    this.minCameraZoom = 0.72;
+    this.maxCameraZoom = 1.85;
     this.tiles = this.battlefield.tiles || [];
     const artifactTile = this.tiles.find(tile => tile.type === 'artifact');
     if (artifactTile) {
@@ -123,6 +153,17 @@ export class EngineTactics {
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
+    // Templates and generated sheets can carry their own defaults; runtime
+    // facing always follows the actual opposing squad instead.
+    this.enemies.forEach(enemy => {
+      const target = this.heroes
+        .filter(hero => hero.currentHp > 0)
+        .sort((a, b) => (
+          Math.abs(a.gridX - enemy.gridX) + Math.abs(a.gridY - enemy.gridY)
+          - Math.abs(b.gridX - enemy.gridX) - Math.abs(b.gridY - enemy.gridY)
+        ))[0];
+      faceUnitToward(enemy, target);
+    });
     if (this.opponentControl === 'p2') {
       this.enemies.forEach(enemy => this.normalizeEnemyActions(enemy));
     }
@@ -134,8 +175,12 @@ export class EngineTactics {
     this.activeUnit = null;
     this.actionPhase = 'move';
     this.selectedAction = null;
+    this.selectedActionExplicit = false;
     this.movementRange = [];
     this.attackRange = [];
+    this.enemyThreatCells = new Map();
+    this.movementBudget = 2;
+    this.movementSpent = 0;
 
     this.gameOver = false;
     this.battleResult = null;
@@ -335,20 +380,31 @@ export class EngineTactics {
     const next = this.turnQueue.shift();
     this.activeUnit = next.unit;
     this.activeUnitType = next.type;
+    this.movementBudget = this.activeUnit.statusEffects?.glitched > 0 ? 1 : 2;
+    this.movementSpent = 0;
     this.applyStartTileEffect(this.activeUnit);
 
     if (this.activeUnitType === 'hero') {
       this.actionPhase = 'move';
       this.selectedAction = null;
+      this.selectedActionExplicit = false;
       this.calculateMovementRange();
       if (this.autoBattle) {
         this.schedule(() => this.runHeroAI(), 600);
       }
     } else {
+      const nearestHero = this.heroes
+        .filter(hero => hero.currentHp > 0)
+        .sort((a, b) => (
+          Math.abs(a.gridX - this.activeUnit.gridX) + Math.abs(a.gridY - this.activeUnit.gridY)
+          - Math.abs(b.gridX - this.activeUnit.gridX) - Math.abs(b.gridY - this.activeUnit.gridY)
+        ))[0];
+      faceUnitToward(this.activeUnit, nearestHero);
       if (this.opponentControl === 'p2') {
         this.normalizeEnemyActions(this.activeUnit);
         this.actionPhase = 'move';
         this.selectedAction = null;
+        this.selectedActionExplicit = false;
         this.calculateMovementRange();
       } else {
         this.actionPhase = 'enemy_ai';
@@ -359,8 +415,8 @@ export class EngineTactics {
 
   calculateMovementRange() {
     const unit = this.activeUnit;
-    // Glitched status halves movement range to 1 cell
-    const range = unit.statusEffects?.glitched > 0 ? 1 : 2;
+    // Returning from target selection never grants AP that were already spent.
+    const range = Math.max(0, this.movementBudget - this.movementSpent);
     this.movementRange = this.getReachableCells(unit, range);
   }
 
@@ -415,7 +471,8 @@ export class EngineTactics {
     this.attackRange = [];
     if (!this.selectedAction) return;
 
-    const range = this.getActionRange(this.selectedAction, unit);
+    const profile = this.getAttackProfile(unit, this.selectedAction);
+    const range = profile.range;
     if (this.selectedAction === 'defense') {
       this.attackRange.push({ x: unit.gridX, y: unit.gridY });
       return;
@@ -423,19 +480,245 @@ export class EngineTactics {
 
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
-        const dist = Math.abs(unit.gridX - c) + Math.abs(unit.gridY - r);
-        if (dist <= range && this.hasLineOfSight(unit, { gridX: c, gridY: r }, this.selectedAction)) {
-          this.attackRange.push({ x: c, y: r });
+        const target = { gridX: c, gridY: r };
+        const dist = this.getAttackDistance(unit, target, profile);
+        if (
+          dist >= profile.minRange
+          && dist <= range
+          && this.isCellInAttackPattern(unit, target, profile)
+          && this.hasLineOfSight(unit, target, this.selectedAction)
+        ) {
+          this.attackRange.push({ x: c, y: r, profile });
         }
       }
     }
   }
 
+  getActionDefinition(unit, actionType) {
+    if (!unit || actionType === 'defense') return null;
+    return actionType === 'enemy' ? unit.simple || null : unit[actionType] || null;
+  }
+
+  /**
+   * Normalize legacy `type`/`dmg` actions and opt-in tactical profiles behind
+   * one contract used by range, preview, player input and AI.
+   */
+  getAttackProfile(unit = this.activeUnit, actionType = this.selectedAction || 'simple') {
+    if (!unit || actionType === 'defense') {
+      return {
+        actionType,
+        delivery: 'self',
+        shape: 'single',
+        range: 0,
+        minRange: 0,
+        areaRadius: 0,
+        axes: 1,
+        directions: 4,
+        pierceUnits: false,
+        pierceObstacles: false,
+        blocksOnUnits: false,
+        requiresLineOfSight: false,
+        maxTargets: 1
+      };
+    }
+
+    const action = this.getActionDefinition(unit, actionType) || {};
+    const profileSources = [
+      unit.tacticsAttacks?.[actionType],
+      typeof action.targeting === 'object' ? action.targeting : null,
+      action.tactics,
+      action.attackProfile,
+      action.tacticsProfile
+    ].filter(value => value && typeof value === 'object' && !Array.isArray(value));
+    const explicit = Object.assign({}, ...profileSources);
+    if (explicit.targeting && typeof explicit.targeting === 'object') {
+      Object.assign(explicit, explicit.targeting);
+    }
+    const attackText = [
+      action.type,
+      action.name,
+      unit.weaponType,
+      unit.weapon,
+      explicit.type,
+      explicit.delivery,
+      explicit.shape
+    ].filter(Boolean).join(' ');
+    const actionTypeText = String(action.type || '').toLowerCase();
+    const explicitMelee = explicit.ranged === false
+      || explicit.delivery === 'melee'
+      || /melee|slash|blade|punch|kick|bite|claw|cqc|lunge/i.test(actionTypeText);
+    const inferredRanged = explicit.ranged === true
+      || explicit.delivery === 'ranged'
+      || (!explicitMelee && ATTACK_TYPE_RANGED.test(attackText));
+    const delivery = explicitMelee ? 'melee' : inferredRanged ? 'ranged' : actionType === 'simple' ? 'melee' : 'ranged';
+
+    let shape = explicit.shape
+      || explicit.pattern
+      || (typeof explicit.targeting === 'string' ? explicit.targeting : null)
+      || (typeof action.targeting === 'string' ? action.targeting : null);
+    if (!shape) {
+      if (explicit.multiDirectional || explicit.axes > 1) shape = 'multiAxis';
+      else if (explicit.directional) shape = 'directional';
+      else if (ATTACK_TYPE_CONE.test(attackText)) shape = 'cone';
+      else if (/melee_aoe/i.test(attackText)) shape = 'radial';
+      else if (ATTACK_TYPE_AREA.test(attackText)) shape = 'area';
+      else if (ATTACK_TYPE_LINE.test(attackText)) shape = 'line';
+      else if (explicit.powerful || action.powerful) shape = 'line';
+      else shape = 'single';
+    }
+    const shapeAliases = {
+      aoe: 'area',
+      zone: 'area',
+      cross: 'multiAxis',
+      multiaxis: 'multiAxis',
+      multidirectional: 'multiAxis',
+      multi_directional: 'multiAxis',
+      ray: 'directional'
+    };
+    shape = shapeAliases[String(shape).toLowerCase()] || shape;
+
+    const role = actionType === 'enemy' ? this.getEnemyTacticsRole(unit) : null;
+    const fallbackRange = actionType === 'enemy'
+      ? this.getEnemyRoleRange(role, unit)
+      : actionType === 'secondary'
+        ? 3
+        : actionType === 'special'
+          ? 5
+          : unit.isBoss
+            ? 2
+            : 1;
+    const explicitRange = explicit.range ?? action.tacticsRange ?? action.range;
+    let range = Math.max(0, Number.isFinite(Number(explicitRange)) ? Number(explicitRange) : fallbackRange);
+    const areaRadius = Math.max(
+      0,
+      Number(explicit.areaRadius ?? explicit.radius ?? (shape === 'area' || shape === 'radial' ? 1 : 0)) || 0
+    );
+    if (shape === 'radial' && explicitRange === undefined) range = Math.max(1, areaRadius);
+
+    const powerful = !!(explicit.powerful ?? action.powerful);
+    const inferredPierce = /pierc|penetrat|impale/i.test(attackText)
+      || (shape === 'line' && actionType === 'special');
+    const pierceUnits = explicit.pierceUnits
+      ?? explicit.penetratesUnits
+      ?? explicit.pierce
+      ?? action.pierceUnits
+      ?? action.pierce
+      ?? inferredPierce;
+    const explicitMaxTargets = Number(explicit.maxTargets ?? action.maxTargets);
+    const naturallyMultiTarget = ['area', 'radial', 'cone', 'multiAxis'].includes(shape);
+    const piercingLine = ['line', 'directional'].includes(shape) && (pierceUnits || powerful);
+    const maxTargets = Number.isFinite(explicitMaxTargets) && explicitMaxTargets > 0
+      ? Math.round(explicitMaxTargets)
+      : naturallyMultiTarget || piercingLine
+        ? Number.POSITIVE_INFINITY
+        : 1;
+    const requestedMinRange = explicit.minRange ?? (shape === 'radial' ? 0 : 1);
+    const minRange = Number.isFinite(Number(requestedMinRange))
+      ? Math.max(0, Number(requestedMinRange))
+      : 1;
+    const requestedAxes = Math.max(1, Math.min(8, Math.round(Number(explicit.axes) || 3)));
+    // A discrete grid cannot split an even cone evenly around its aimed ray
+    // while keeping that ray in the footprint. Normalize 2/4/6 to the next
+    // odd count so both sides receive the same number of rays.
+    const axes = ['cone', 'multiAxis'].includes(shape)
+      && requestedAxes < COMPASS_DIRECTIONS.length
+      && requestedAxes % 2 === 0
+      ? requestedAxes + 1
+      : requestedAxes;
+
+    return {
+      ...explicit,
+      actionType,
+      delivery,
+      shape,
+      range,
+      minRange,
+      areaRadius,
+      axes,
+      directions: explicit.directions === 4 || explicit.allowDiagonal === false ? 4 : 8,
+      pierceUnits: !!pierceUnits,
+      pierceObstacles: !!(explicit.pierceObstacles ?? explicit.penetratesObstacles),
+      blocksOnUnits: explicit.blocksOnUnits
+        ?? (
+          delivery === 'melee'
+          && !pierceUnits
+          && !powerful
+          && ['single', 'directional', 'line'].includes(shape)
+        ),
+      requiresLineOfSight: explicit.requiresLineOfSight ?? (explicit.lineOfSight !== false),
+      maxTargets,
+      powerful
+    };
+  }
+
   getActionRange(actionType, unit = this.activeUnit) {
-    if (!unit || actionType === 'defense') return 0;
-    if (actionType === 'secondary') return 3;
-    if (actionType === 'special') return 5;
-    return unit.isBoss ? 2 : 1;
+    return this.getAttackProfile(unit, actionType).range;
+  }
+
+  getAttackDistance(from, to, profile) {
+    const dx = Math.abs((to.gridX ?? to.x) - (from.gridX ?? from.x));
+    const dy = Math.abs((to.gridY ?? to.y) - (from.gridY ?? from.y));
+    return ['line', 'directional', 'cone', 'multiAxis'].includes(profile.shape)
+      ? Math.max(dx, dy)
+      : dx + dy;
+  }
+
+  isCellInAttackPattern(from, to, profile) {
+    const dx = (to.gridX ?? to.x) - (from.gridX ?? from.x);
+    const dy = (to.gridY ?? to.y) - (from.gridY ?? from.y);
+    if (dx === 0 && dy === 0) return profile.minRange === 0;
+    if (!['line', 'directional', 'cone', 'multiAxis'].includes(profile.shape)) return true;
+    const cardinal = dx === 0 || dy === 0;
+    const diagonal = Math.abs(dx) === Math.abs(dy);
+    return cardinal || (profile.directions === 8 && diagonal);
+  }
+
+  /**
+   * Shared attack eligibility check for previews, threat overlays and AI.
+   * Keeping it centralized prevents CPU units from ignoring directional,
+   * minimum-range or unit-blocking rules used by player attacks.
+   */
+  canAttackCell(from, to, actionTypeOrProfile = 'simple') {
+    if (!from || !to) return false;
+    const profile = typeof actionTypeOrProfile === 'object'
+      ? actionTypeOrProfile
+      : this.getAttackProfile(from, actionTypeOrProfile);
+    const distance = this.getAttackDistance(from, to, profile);
+    return distance >= profile.minRange
+      && distance <= profile.range
+      && this.isCellInAttackPattern(from, to, profile)
+      && this.hasLineOfSight(from, to, profile);
+  }
+
+  /**
+   * Find a legal target cell whose resolved footprint actually includes the
+   * requested unit. This lets AI place splash/radial attacks on empty cells
+   * instead of testing only the victim's own cell.
+   */
+  getAttackAnchorForTarget(attacker, target, actionType = 'simple', attackerType = 'hero') {
+    if (!attacker || !target) return null;
+    const targetX = target.gridX ?? target.x;
+    const targetY = target.gridY ?? target.y;
+    const profile = this.getAttackProfile(attacker, actionType);
+    const candidates = [];
+    for (let r = 0; r < this.rows; r++) {
+      for (let c = 0; c < this.cols; c++) {
+        candidates.push({ gridX: c, gridY: r });
+      }
+    }
+    // Prefer a direct hit, then the closest legal splash anchor.
+    candidates.sort((a, b) => {
+      const distanceDelta = Math.abs(a.gridX - targetX) + Math.abs(a.gridY - targetY)
+        - Math.abs(b.gridX - targetX) - Math.abs(b.gridY - targetY);
+      if (distanceDelta !== 0) return distanceDelta;
+      if (a.gridY !== b.gridY) return a.gridY - b.gridY;
+      return a.gridX - b.gridX;
+    });
+    return candidates.find(anchor => (
+      this.canAttackCell(attacker, anchor, profile)
+      && this.getAttackTargets(attacker, anchor, actionType, attackerType)
+        .some(entry => entry.unit === target)
+    )) || null;
   }
 
   getActionBaseDamage(attacker, actionType) {
@@ -463,17 +746,39 @@ export class EngineTactics {
     };
     const selected = aliases[actionType];
     if (!selected) return false;
+    // A second click on the selected action is an explicit cancel while no
+    // target has confirmed it.
+    if (
+      this.actionPhase === 'action'
+      && this.selectedAction === selected
+      && this.selectedActionExplicit
+    ) {
+      return this.cancelSelectedAction();
+    }
     const unit = this.activeUnitType === 'enemy'
       ? this.normalizeEnemyActions(this.activeUnit)
       : this.activeUnit;
     if (selected === 'secondary' && unit.cooldown > 0) return false;
     if (selected === 'special' && unit.specialCharge < 100) return false;
     this.selectedAction = selected;
+    this.selectedActionExplicit = true;
     if (this.actionPhase === 'move') {
       this.actionPhase = 'action';
       this.movementRange = [];
     }
     this.calculateAttackRange();
+    return true;
+  }
+
+  cancelSelectedAction() {
+    const isHumanTurn = this.activeUnitType === 'hero'
+      || (this.opponentControl === 'p2' && this.activeUnitType === 'enemy');
+    if (this.gameOver || this.disposed || !isHumanTurn || this.actionPhase !== 'action') return false;
+    this.selectedAction = null;
+    this.selectedActionExplicit = false;
+    this.attackRange = [];
+    this.actionPhase = 'move';
+    this.calculateMovementRange();
     return true;
   }
 
@@ -513,7 +818,34 @@ export class EngineTactics {
     return { multiplier: Math.max(0.65, multiplier), labels };
   }
 
-  hasLineOfSight(from, to, _actionType = 'simple') {
+  getCellsOnLine(from, to) {
+    let x0 = Math.round(from.gridX ?? from.x);
+    let y0 = Math.round(from.gridY ?? from.y);
+    const x1 = Math.round(to.gridX ?? to.x);
+    const y1 = Math.round(to.gridY ?? to.y);
+    const cells = [];
+    const dx = Math.abs(x1 - x0);
+    const sx = x0 < x1 ? 1 : -1;
+    const dy = -Math.abs(y1 - y0);
+    const sy = y0 < y1 ? 1 : -1;
+    let error = dx + dy;
+
+    while (!(x0 === x1 && y0 === y1)) {
+      const twiceError = 2 * error;
+      if (twiceError >= dy) {
+        error += dy;
+        x0 += sx;
+      }
+      if (twiceError <= dx) {
+        error += dx;
+        y0 += sy;
+      }
+      cells.push({ x: x0, y: y0 });
+    }
+    return cells;
+  }
+
+  hasLineOfSight(from, to, actionType = 'simple') {
     if (!from || !to) return false;
     const sx = from.gridX;
     const sy = from.gridY;
@@ -521,23 +853,32 @@ export class EngineTactics {
     const ty = to.gridY;
     if (sx === tx && sy === ty) return true;
 
-    const dist = Math.abs(sx - tx) + Math.abs(sy - ty);
-    if (dist <= 1) return true;
+    const profile = typeof actionType === 'object'
+      ? actionType
+      : this.getAttackProfile(from, actionType);
+    if (!profile.requiresLineOfSight) return true;
 
-    const steps = Math.max(Math.abs(tx - sx), Math.abs(ty - sy)) * 2;
-    const checked = new Set();
+    const targetEntry = this.getUnitAtCell(tx, ty);
+    const intermediateCells = this.getCellsOnLine(from, to).slice(0, -1);
+    for (const cell of intermediateCells) {
+      const blockingObstacle = this.obstacles.some(
+        obstacle => obstacle.hp > 0 && obstacle.gridX === cell.x && obstacle.gridY === cell.y
+      );
+      if (!profile.pierceObstacles && (blockingObstacle || this.isBlockedTile(cell.x, cell.y))) return false;
 
-    for (let i = 1; i < steps; i++) {
-      const t = i / steps;
-      const cx = Math.round(sx + (tx - sx) * t);
-      const cy = Math.round(sy + (ty - sy) * t);
-      const key = `${cx},${cy}`;
-      if (checked.has(key)) continue;
-      checked.add(key);
-      if ((cx === sx && cy === sy) || (cx === tx && cy === ty)) continue;
-
-      const blockingObstacle = this.obstacles.some(o => o.hp > 0 && o.gridX === cx && o.gridY === cy);
-      if (blockingObstacle || this.isBlockedTile(cx, cy)) return false;
+      if (profile.blocksOnUnits && !profile.pierceUnits) {
+        const blockingCharacter = [
+          ...this.heroes,
+          ...this.enemies,
+          ...(this.escortUnit?.currentHp > 0 ? [this.escortUnit] : [])
+        ].some(unit => (
+          unit !== targetEntry?.unit
+          && unit !== from
+          && unit !== from._tacticsSourceUnit
+          && this.unitOccupiesCell(unit, cell.x, cell.y)
+        ));
+        if (blockingCharacter) return false;
+      }
     }
 
     return true;
@@ -618,22 +959,117 @@ export class EngineTactics {
 
   getEnemyThreatMap() {
     const threatMap = new Map();
+    this.enemyThreatCells = new Map();
     this.enemies.forEach(enemy => {
       if (enemy.currentHp <= 0) return;
-      const range = this.getActionRange('enemy', enemy);
+      const profile = this.getAttackProfile(enemy, 'enemy');
+      const threatenedCells = new Map();
       for (let r = 0; r < this.rows; r++) {
         for (let c = 0; c < this.cols; c++) {
-          const dist = Math.abs(enemy.gridX - c) + Math.abs(enemy.gridY - r);
-          if (dist <= range && this.hasLineOfSight(enemy, { gridX: c, gridY: r }, 'enemy')) {
-            const key = `${c},${r}`;
-            const current = threatMap.get(key) || { x: c, y: r, count: 0 };
-            current.count += 1;
-            threatMap.set(key, current);
-          }
+          const target = { gridX: c, gridY: r };
+          if (!this.canAttackCell(enemy, target, profile)) continue;
+          this.getAttackThreatCellsForAnchor(enemy, target, 'enemy', 'enemy').forEach(cell => {
+            threatenedCells.set(`${cell.x},${cell.y}`, cell);
+          });
         }
       }
+      // Count each enemy once per impacted cell even when several AoE target
+      // anchors overlap the same footprint.
+      threatenedCells.forEach(cell => {
+        const key = `${cell.x},${cell.y}`;
+        const current = threatMap.get(key) || { ...cell, count: 0 };
+        current.count += 1;
+        threatMap.set(key, current);
+      });
+      this.enemyThreatCells.set(enemy, threatenedCells);
     });
     return threatMap;
+  }
+
+  gridToScreen(gridX, gridY, centered = true) {
+    return {
+      x: this.gridStartX + gridX * this.cellW + (centered ? this.cellW / 2 : 0),
+      y: this.gridStartY + gridY * this.cellH + (centered ? this.cellH / 2 : 0)
+    };
+  }
+
+  screenToGrid(screenX, screenY) {
+    return {
+      x: Math.floor((screenX - this.gridStartX) / this.cellW),
+      y: Math.floor((screenY - this.gridStartY) / this.cellH)
+    };
+  }
+
+  getCameraState() {
+    return {
+      zoom: this.cameraZoom,
+      panX: this.gridStartX - this.baseGridStartX,
+      panY: this.gridStartY - this.baseGridStartY
+    };
+  }
+
+  clampCamera() {
+    const boardW = this.cols * this.cellW;
+    const boardH = this.rows * this.cellH;
+    const visibleEdgeX = Math.min(88, boardW / 2);
+    const visibleEdgeY = Math.min(64, boardH / 2);
+    this.gridStartX = Math.max(visibleEdgeX - boardW, Math.min(this.width - visibleEdgeX, this.gridStartX));
+    this.gridStartY = Math.max(visibleEdgeY - boardH, Math.min(this.height - visibleEdgeY, this.gridStartY));
+  }
+
+  syncActorsToCamera() {
+    [...this.heroes, ...this.enemies].forEach(unit => {
+      const screen = this.gridToScreen(unit.gridX, unit.gridY);
+      unit.x = screen.x;
+      unit.y = screen.y - this.cellH / 2 + 18 * this.cameraZoom;
+    });
+    if (this.escortUnit) {
+      const screen = this.gridToScreen(this.escortUnit.gridX, this.escortUnit.gridY);
+      this.escortUnit.x = screen.x;
+      this.escortUnit.y = screen.y - this.cellH / 2 + 18 * this.cameraZoom;
+    }
+  }
+
+  panCameraBy(deltaX, deltaY) {
+    if (!Number.isFinite(deltaX) || !Number.isFinite(deltaY)) return this.getCameraState();
+    this.gridStartX += deltaX;
+    this.gridStartY += deltaY;
+    this.clampCamera();
+    this.syncActorsToCamera();
+    return this.getCameraState();
+  }
+
+  zoomCameraAt(factor, anchorX = this.width / 2, anchorY = this.height / 2) {
+    if (!Number.isFinite(factor) || factor <= 0) return this.getCameraState();
+    const previousCellW = this.cellW;
+    const previousCellH = this.cellH;
+    const boardXAtAnchor = (anchorX - this.gridStartX) / previousCellW;
+    const boardYAtAnchor = (anchorY - this.gridStartY) / previousCellH;
+    const nextZoom = Math.max(
+      this.minCameraZoom,
+      Math.min(this.maxCameraZoom, this.cameraZoom * factor)
+    );
+    if (nextZoom === this.cameraZoom) return this.getCameraState();
+
+    this.cameraZoom = nextZoom;
+    this.cellW = this.baseCellW * nextZoom;
+    this.cellH = this.baseCellH * nextZoom;
+    // Keep the board coordinate under the cursor fixed while zooming.
+    this.gridStartX = anchorX - boardXAtAnchor * this.cellW;
+    this.gridStartY = anchorY - boardYAtAnchor * this.cellH;
+    this.clampCamera();
+    this.syncActorsToCamera();
+    return this.getCameraState();
+  }
+
+  resetCamera() {
+    this.cameraZoom = 1;
+    this.cellW = this.baseCellW;
+    this.cellH = this.baseCellH;
+    this.gridStartX = this.baseGridStartX;
+    this.gridStartY = this.baseGridStartY;
+    this.syncActorsToCamera();
+    return this.getCameraState();
   }
 
   isInsideGrid(c, r) {
@@ -683,6 +1119,199 @@ export class EngineTactics {
     return null;
   }
 
+  getAttackImpactCells(attacker, target, actionType = this.selectedAction) {
+    const profile = this.getAttackProfile(attacker, actionType);
+    const targetX = target.gridX ?? target.x;
+    const targetY = target.gridY ?? target.y;
+    const cells = [];
+    const seen = new Set();
+    const append = (x, y) => {
+      const key = `${x},${y}`;
+      if (!this.isInsideGrid(x, y) || seen.has(key)) return;
+      seen.add(key);
+      cells.push({ x, y });
+    };
+    const appendRay = (direction) => {
+      for (let distance = 1; distance <= profile.range; distance++) {
+        const x = attacker.gridX + direction.x * distance;
+        const y = attacker.gridY + direction.y * distance;
+        if (!this.isInsideGrid(x, y)) break;
+        if (distance >= profile.minRange) append(x, y);
+
+        const obstacleStopsRay = !profile.pierceObstacles && (
+          this.isBlockedTile(x, y)
+          || this.obstacles.some(obstacle => obstacle.hp > 0 && obstacle.gridX === x && obstacle.gridY === y)
+        );
+        const characterStopsRay = profile.blocksOnUnits && !profile.pierceUnits && [
+          ...this.heroes,
+          ...this.enemies,
+          ...(this.escortUnit?.currentHp > 0 ? [this.escortUnit] : [])
+        ].some(unit => (
+          unit !== attacker
+          && unit !== attacker._tacticsSourceUnit
+          && this.unitOccupiesCell(unit, x, y)
+        ));
+        if (obstacleStopsRay || characterStopsRay) break;
+      }
+    };
+
+    if (profile.shape === 'area') {
+      for (let y = targetY - profile.areaRadius; y <= targetY + profile.areaRadius; y++) {
+        for (let x = targetX - profile.areaRadius; x <= targetX + profile.areaRadius; x++) append(x, y);
+      }
+    } else if (profile.shape === 'radial') {
+      for (let y = attacker.gridY - profile.areaRadius; y <= attacker.gridY + profile.areaRadius; y++) {
+        for (let x = attacker.gridX - profile.areaRadius; x <= attacker.gridX + profile.areaRadius; x++) {
+          if (x !== attacker.gridX || y !== attacker.gridY) append(x, y);
+        }
+      }
+    } else if (['line', 'directional', 'cone', 'multiAxis'].includes(profile.shape)) {
+      let directionIndex = getCompassDirectionIndex(targetX - attacker.gridX, targetY - attacker.gridY);
+      if (profile.directions === 4 && directionIndex % 2 !== 0) {
+        directionIndex = (Math.round(directionIndex / 2) * 2) % COMPASS_DIRECTIONS.length;
+      }
+      const rayOffsets = [0];
+      const rayCount = ['cone', 'multiAxis'].includes(profile.shape) ? profile.axes : 1;
+      for (let offset = 1; rayOffsets.length < rayCount; offset++) {
+        rayOffsets.push(-offset);
+        if (rayOffsets.length < rayCount) rayOffsets.push(offset);
+      }
+      rayOffsets.forEach(offset => {
+        const index = (directionIndex + offset + COMPASS_DIRECTIONS.length) % COMPASS_DIRECTIONS.length;
+        appendRay(COMPASS_DIRECTIONS[index]);
+      });
+    } else {
+      append(targetX, targetY);
+    }
+
+    return cells;
+  }
+
+  getValidAttackTargetTypes(attackerType = this.activeUnitType) {
+    return attackerType === 'enemy'
+      ? ['hero', 'obstacle', 'artifact', 'escort']
+      : ['enemy', 'obstacle'];
+  }
+
+  getAttackTargetPriority(attacker, target, profile, cell) {
+    const targetX = target.gridX ?? target.x;
+    const targetY = target.gridY ?? target.y;
+    if (profile.shape === 'area') {
+      return Math.max(Math.abs(cell.x - targetX), Math.abs(cell.y - targetY));
+    }
+    if (profile.shape === 'radial') {
+      return Math.max(Math.abs(cell.x - attacker.gridX), Math.abs(cell.y - attacker.gridY));
+    }
+    return this.getAttackDistance(attacker, cell, profile);
+  }
+
+  orderAttackTargetCandidates(attacker, target, profile, candidates, clickedUnit = null) {
+    return [...candidates].sort((a, b) => {
+      const aClicked = clickedUnit && a.unit === clickedUnit ? 0 : 1;
+      const bClicked = clickedUnit && b.unit === clickedUnit ? 0 : 1;
+      if (aClicked !== bClicked) return aClicked - bClicked;
+
+      const priorityDelta = this.getAttackTargetPriority(attacker, target, profile, a.cell)
+        - this.getAttackTargetPriority(attacker, target, profile, b.cell);
+      if (priorityDelta !== 0) return priorityDelta;
+      if (a.cell.y !== b.cell.y) return a.cell.y - b.cell.y;
+      if (a.cell.x !== b.cell.x) return a.cell.x - b.cell.x;
+      return (a.order || 0) - (b.order || 0);
+    });
+  }
+
+  getAttackResolutionContext(attacker, target, actionType, attackerType = this.activeUnitType) {
+    const profile = this.getAttackProfile(attacker, actionType);
+    const validTypes = this.getValidAttackTargetTypes(attackerType);
+    const seen = new Set();
+    const targetX = target.gridX ?? target.x;
+    const targetY = target.gridY ?? target.y;
+    // A non-piercing ranged line can select somebody behind another unit, but
+    // remains single-target. Area/radial attacks still need their footprint so
+    // an empty splash anchor can resolve a target on its fringe.
+    const directOnly = profile.maxTargets === 1
+      && !profile.blocksOnUnits
+      && ['single', 'line', 'directional'].includes(profile.shape);
+    const impactCells = directOnly
+      ? [{ x: targetX, y: targetY }]
+      : this.getAttackImpactCells(attacker, target, actionType);
+    const candidates = [];
+    impactCells.forEach((cell, order) => {
+      const entry = this.getUnitAtCell(cell.x, cell.y);
+      if (!entry || !validTypes.includes(entry.type) || seen.has(entry.unit)) return;
+      seen.add(entry.unit);
+      candidates.push({ ...entry, cell, order });
+    });
+    const clickedEntry = this.getUnitAtCell(targetX, targetY);
+    const clickedUnit = clickedEntry && validTypes.includes(clickedEntry.type)
+      ? clickedEntry.unit
+      : null;
+    return {
+      profile,
+      validTypes,
+      impactCells,
+      clickedUnit,
+      candidates: this.orderAttackTargetCandidates(
+        attacker,
+        target,
+        profile,
+        candidates,
+        clickedUnit
+      )
+    };
+  }
+
+  getAttackTargets(attacker, target, actionType, attackerType = this.activeUnitType) {
+    const context = this.getAttackResolutionContext(attacker, target, actionType, attackerType);
+    return context.candidates
+      .slice(0, context.profile.maxTargets)
+      .map(entry => ({ unit: entry.unit, type: entry.type, cell: entry.cell }));
+  }
+
+  getAttackThreatCellsForAnchor(attacker, target, actionType = 'enemy', attackerType = 'enemy') {
+    const context = this.getAttackResolutionContext(attacker, target, actionType, attackerType);
+    if (!Number.isFinite(context.profile.maxTargets)) return context.impactCells;
+
+    const selectedUnits = new Set(
+      context.candidates
+        .slice(0, context.profile.maxTargets)
+        .map(entry => entry.unit)
+    );
+    const targetX = target.gridX ?? target.x;
+    const targetY = target.gridY ?? target.y;
+
+    return context.impactCells.filter((cell, order) => {
+      const entry = this.getUnitAtCell(cell.x, cell.y);
+      if (entry) {
+        return context.validTypes.includes(entry.type) && selectedUnits.has(entry.unit);
+      }
+
+      // Evaluate an empty cell as a potential victim without mutating the
+      // board. This preserves useful movement previews while respecting the
+      // finite target budget already consumed by higher-priority occupants.
+      const probe = { unit: {}, type: attackerType === 'enemy' ? 'hero' : 'enemy', cell, order };
+      const clickedUnit = cell.x === targetX && cell.y === targetY
+        ? probe.unit
+        : context.clickedUnit;
+      const ordered = this.orderAttackTargetCandidates(
+        attacker,
+        target,
+        context.profile,
+        [...context.candidates, probe],
+        clickedUnit
+      );
+      return ordered.indexOf(probe) < context.profile.maxTargets;
+    });
+  }
+
+  applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType) {
+    const targets = this.getAttackTargets(attacker, target, actionType, attackerType);
+    targets.forEach(entry => {
+      this.applyDamage(attacker, entry.unit, baseDamage, statusEffect, { actionType });
+    });
+    return targets;
+  }
+
   handleCellClick(c, r) {
     const isP2EnemyTurn = this.opponentControl === 'p2' && this.activeUnitType === 'enemy';
     if (
@@ -694,7 +1323,8 @@ export class EngineTactics {
     }
 
     if (this.actionPhase === 'move') {
-      const inRange = this.movementRange.some(cell => cell.x === c && cell.y === r);
+      const selectedCell = this.movementRange.find(cell => cell.x === c && cell.y === r);
+      const inRange = !!selectedCell;
       const sameCell = this.activeUnit.gridX === c && this.activeUnit.gridY === r;
       if (!inRange || (!sameCell && this.isCellOccupied(c, r, this.activeUnit))) {
         return { handled: false, reason: 'blocked' };
@@ -704,18 +1334,34 @@ export class EngineTactics {
       this.activeUnit.gridX = c;
       this.activeUnit.gridY = r;
       if (c !== previousGridX) this.activeUnit.facing = c > previousGridX ? 1 : -1;
+      this.movementSpent = Math.min(this.movementBudget, this.movementSpent + (selectedCell.cost || 0));
       this.applyStartTileEffect(this.activeUnit);
       this.playSfx('jump');
       
       this.actionPhase = 'action';
       this.selectedAction = 'simple';
+      this.selectedActionExplicit = false;
       this.calculateAttackRange();
       return { handled: true, type: 'move', unit: this.activeUnit, x: c, y: r };
     } else if (this.actionPhase === 'action') {
       const inRange = this.attackRange.some(cell => cell.x === c && cell.y === r);
       if (!inRange) return { handled: false, reason: 'out-of-range' };
 
-      const target = this.getUnitAtCell(c, r);
+      const clickedTarget = this.getUnitAtCell(c, r);
+      const attacker = this.activeUnitType === 'enemy'
+        ? this.normalizeEnemyActions(this.activeUnit)
+        : this.activeUnit;
+      const targetCell = { gridX: c, gridY: r };
+      const impactedTargets = this.getAttackTargets(
+        attacker,
+        targetCell,
+        this.selectedAction,
+        this.activeUnitType
+      );
+      const validTargetTypes = this.getValidAttackTargetTypes(this.activeUnitType);
+      const target = clickedTarget && validTargetTypes.includes(clickedTarget.type)
+        ? clickedTarget
+        : impactedTargets[0] || clickedTarget || null;
 
       if (this.selectedAction === 'defense') {
         if (this.activeUnitType === 'enemy') this.normalizeEnemyActions(this.activeUnit);
@@ -728,17 +1374,10 @@ export class EngineTactics {
       }
 
       if (target) {
-        const attacker = this.activeUnitType === 'enemy'
-          ? this.normalizeEnemyActions(this.activeUnit)
-          : this.activeUnit;
-        const defender = target.unit;
-        const validTargetTypes = this.activeUnitType === 'enemy'
-          ? ['hero', 'obstacle', 'artifact', 'escort']
-          : ['enemy', 'obstacle'];
         if (!validTargetTypes.includes(target.type)) {
           return { handled: false, reason: 'friendly-target' };
         }
-        faceUnitToward(attacker, defender);
+        faceUnitToward(attacker, targetCell);
 
         if (validTargetTypes.includes(target.type)) {
           if (this.selectedAction === 'simple') {
@@ -752,10 +1391,17 @@ export class EngineTactics {
             if (attacker.id === 'neo' || attacker.name?.includes('Smith')) status = 'glitched';
             if (attacker.name?.includes('Deathclaw') || attacker.name?.includes('Cyberdemon')) status = 'radiated';
 
-            this.applyDamage(attacker, defender, this.getActionBaseDamage(attacker, 'simple'), status, { actionType: 'simple' });
+            this.applyProfiledAttack(
+              attacker,
+              targetCell,
+              'simple',
+              this.getActionBaseDamage(attacker, 'simple'),
+              status,
+              this.activeUnitType
+            );
             attacker.specialCharge = Math.min(100, (attacker.specialCharge || 0) + 15);
             this.endActiveTurn();
-            return { handled: true, type: 'action', action: 'simple', target };
+            return { handled: true, type: 'action', action: 'simple', target, targets: impactedTargets };
 
           } else if (this.selectedAction === 'secondary') {
             if (attacker.cooldown > 0) return { handled: false, reason: 'cooldown' };
@@ -764,10 +1410,17 @@ export class EngineTactics {
             attacker.cooldown = (attacker.secondary?.cd || 3) * 60;
             this.playSfx('shoot');
             
-            this.applyDamage(attacker, defender, this.getActionBaseDamage(attacker, 'secondary'), null, { actionType: 'secondary' });
+            this.applyProfiledAttack(
+              attacker,
+              targetCell,
+              'secondary',
+              this.getActionBaseDamage(attacker, 'secondary'),
+              null,
+              this.activeUnitType
+            );
             attacker.specialCharge = Math.min(100, (attacker.specialCharge || 0) + 25);
             this.endActiveTurn();
-            return { handled: true, type: 'action', action: 'secondary', target };
+            return { handled: true, type: 'action', action: 'secondary', target, targets: impactedTargets };
 
           } else if (this.selectedAction === 'special') {
             if ((attacker.specialCharge || 0) < 100) return { handled: false, reason: 'charge' };
@@ -782,9 +1435,16 @@ export class EngineTactics {
               0, 0, attacker.primaryColor || attacker.color || '#e74c3c', 120, 30, 'glitch'
             );
 
-            this.applyDamage(attacker, defender, this.getActionBaseDamage(attacker, 'special'), null, { actionType: 'special' });
+            this.applyProfiledAttack(
+              attacker,
+              targetCell,
+              'special',
+              this.getActionBaseDamage(attacker, 'special'),
+              null,
+              this.activeUnitType
+            );
             this.endActiveTurn();
-            return { handled: true, type: 'action', action: 'special', target };
+            return { handled: true, type: 'action', action: 'special', target, targets: impactedTargets };
           }
         }
       }
@@ -799,6 +1459,7 @@ export class EngineTactics {
     this.applyTacticsMissionPressure();
     this.actionPhase = 'end';
     this.selectedAction = null;
+    this.selectedActionExplicit = false;
     this.movementRange = [];
     this.attackRange = [];
     if (this.gameOver) return;
@@ -1259,14 +1920,25 @@ export class EngineTactics {
     const emptyThreatMap = new Map();
 
     this.getReachableCells(enemy, maxMoveRange).forEach(cell => {
-      const targetDist = Math.abs((pressureTarget.gridX ?? pressureTarget.x) - cell.x) + Math.abs((pressureTarget.gridY ?? pressureTarget.y) - cell.y);
-      const hasShot = targetDist <= this.getEnemyRoleRange(role, enemy) && this.hasLineOfSight({ ...enemy, gridX: cell.x, gridY: cell.y }, tacticalTarget, 'enemy');
-      const objectiveScore = objectiveCell ? this.scoreObjectiveMove(enemy, cell, objectiveCell, emptyThreatMap, 'enemy') : -targetDist * 4;
+      const pressureDist = Math.abs((pressureTarget.gridX ?? pressureTarget.x) - cell.x) + Math.abs((pressureTarget.gridY ?? pressureTarget.y) - cell.y);
+      const simulatedEnemy = {
+        ...enemy,
+        gridX: cell.x,
+        gridY: cell.y,
+        _tacticsSourceUnit: enemy
+      };
+      const hasShot = !!this.getAttackAnchorForTarget(
+        simulatedEnemy,
+        tacticalTarget,
+        'enemy',
+        'enemy'
+      );
+      const objectiveScore = objectiveCell ? this.scoreObjectiveMove(enemy, cell, objectiveCell, emptyThreatMap, 'enemy') : -pressureDist * 4;
       const tile = this.getTileAt(cell.x, cell.y);
       const roleScore =
         (role === 'shooter' && tile?.type === 'high' ? 10 : 0) +
         (role === 'tank' && tile?.type === 'heavyCover' ? 8 : 0) +
-        (role === 'assassin' ? Math.max(0, 8 - targetDist * 2) : 0) +
+        (role === 'assassin' ? Math.max(0, 8 - pressureDist * 2) : 0) +
         (role === 'support' && tile?.type === 'portalSpawn' ? 8 : 0) +
         (role === 'bossController' && tile?.type === 'objective' ? 9 : 0);
       const score = objectiveScore + roleScore + (hasShot ? 12 : 0);
@@ -1284,12 +1956,14 @@ export class EngineTactics {
     this.playSfx('jump');
 
     const attackTarget = this.getEnemyPreferredTarget(enemy, role, closestHero);
-    const attackDist = Math.abs((attackTarget.gridX ?? attackTarget.x) - enemy.gridX) + Math.abs((attackTarget.gridY ?? attackTarget.y) - enemy.gridY);
-    const rangeLimit = this.getEnemyRoleRange(role, enemy);
+    // Once movement ends, target intent wins over stale horizontal movement
+    // facing, even when this turn ultimately cannot fire.
+    faceUnitToward(enemy, attackTarget || closestHero);
+    const attackAnchor = this.getAttackAnchorForTarget(enemy, attackTarget, 'enemy', 'enemy');
 
     this.schedule(() => {
       const targetHp = attackTarget.hp ?? attackTarget.currentHp;
-      if (attackDist <= rangeLimit && targetHp > 0 && this.hasLineOfSight(enemy, attackTarget, 'enemy')) {
+      if (attackAnchor && targetHp > 0) {
         faceUnitToward(enemy, attackTarget);
         enemy.state = 'attack';
         enemy.stateTimer = 20;
@@ -1302,7 +1976,7 @@ export class EngineTactics {
         if (enemy.name.includes('Deathclaw') || enemy.name.includes('Cyberdemon')) status = 'radiated';
 
         const roleDamage = role === 'tank' ? enemy.atk * 0.9 : role === 'assassin' ? enemy.atk * 1.15 : enemy.atk;
-        this.applyDamage(enemy, attackTarget, roleDamage, status, { actionType: 'enemy' });
+        this.applyProfiledAttack(enemy, attackAnchor, 'enemy', roleDamage, status, 'enemy');
       } else if (['tank', 'bossController'].includes(role)) {
         const obstacle = this.obstacles.find(item => item.hp > 0 && Math.abs(item.gridX - enemy.gridX) + Math.abs(item.gridY - enemy.gridY) <= 1);
         if (obstacle) {
@@ -1326,6 +2000,12 @@ export class EngineTactics {
     if (this.gameOver || this.activeUnit.currentHp <= 0 || this.activeUnitType !== 'hero') return;
 
     const hero = this.activeUnit;
+    let chosenAction = 'simple';
+    if (hero.specialCharge >= 100) {
+      chosenAction = 'special';
+    } else if (hero.cooldown <= 0) {
+      chosenAction = 'secondary';
+    }
 
     // 1. Find closest enemy
     let closestEnemy = null;
@@ -1353,7 +2033,25 @@ export class EngineTactics {
 
     this.movementRange.forEach(cell => {
       const d = Math.abs(closestEnemy.gridX - cell.x) + Math.abs(closestEnemy.gridY - cell.y);
-      const hasShot = d <= this.getActionRange('secondary', hero) && this.hasLineOfSight({ ...hero, gridX: cell.x, gridY: cell.y }, closestEnemy, 'secondary');
+      const simulatedHero = {
+        ...hero,
+        gridX: cell.x,
+        gridY: cell.y,
+        _tacticsSourceUnit: hero
+      };
+      const attackProfile = this.getAttackProfile(simulatedHero, chosenAction);
+      const directShot = this.canAttackCell(simulatedHero, closestEnemy, attackProfile)
+        && this.getAttackTargets(simulatedHero, closestEnemy, chosenAction, 'hero')
+          .some(entry => entry.unit === closestEnemy);
+      const splashAnchor = directShot
+        ? null
+        : this.getAttackAnchorForTarget(
+          simulatedHero,
+          closestEnemy,
+          chosenAction,
+          'hero'
+        );
+      const hasShot = directShot || !!splashAnchor;
       const objectiveScore = objectiveCell ? this.scoreObjectiveMove(hero, cell, objectiveCell, threatMap, 'hero') : -d * 4;
       const score = objectiveScore + (hasShot ? 10 : 0);
       if (score > bestMoveScore) {
@@ -1372,31 +2070,36 @@ export class EngineTactics {
 
     this.actionPhase = 'action';
 
-    // 3. Choose action
-    let chosenAction = 'simple';
-    if (hero.specialCharge >= 100) {
-      chosenAction = 'special';
-    } else if (hero.cooldown <= 0) {
-      chosenAction = 'secondary';
-    }
-
     this.selectedAction = chosenAction;
     this.calculateAttackRange();
 
     // 4. Find target
     let target = null;
+    let attackAnchor = null;
     let targetDist = 999;
 
-    const findTargetIn = (candidates) => candidates.forEach(e => {
-      if (e.currentHp > 0) {
-        const inRange = this.attackRange.some(cell => cell.x === e.gridX && cell.y === e.gridY);
-        if (inRange) {
-          const d = Math.abs(e.gridX - hero.gridX) + Math.abs(e.gridY - hero.gridY);
-          if (d < targetDist) {
-            targetDist = d;
-            target = e;
-          }
-        }
+    const findTargetIn = (candidates) => candidates.forEach(candidate => {
+      if ((candidate.currentHp ?? candidate.hp ?? 0) <= 0) return;
+      const profile = this.getAttackProfile(hero, chosenAction);
+      const directCell = { gridX: candidate.gridX, gridY: candidate.gridY };
+      const directAnchor = this.canAttackCell(hero, candidate, profile)
+        && this.getAttackTargets(hero, directCell, chosenAction, 'hero')
+          .some(entry => entry.unit === candidate)
+        ? directCell
+        : null;
+      const resolvedAnchor = directAnchor || this.getAttackAnchorForTarget(
+        hero,
+        candidate,
+        chosenAction,
+        'hero'
+      );
+      if (!resolvedAnchor) return;
+
+      const d = Math.abs(candidate.gridX - hero.gridX) + Math.abs(candidate.gridY - hero.gridY);
+      if (d < targetDist) {
+        targetDist = d;
+        target = candidate;
+        attackAnchor = resolvedAnchor;
       }
     });
     const preferredEnemies = this.objective === 'commander'
@@ -1407,20 +2110,18 @@ export class EngineTactics {
 
     // Check obstacles if no enemies in range
     if (!target) {
-      this.obstacles.forEach(o => {
-        if (o.hp > 0 && (o.type === 'barrel' || o.type === 'objective')) {
-          const inRange = this.attackRange.some(cell => cell.x === o.gridX && cell.y === o.gridY);
-          if (inRange) {
-            target = o;
-          }
-        }
-      });
+      findTargetIn(
+        this.obstacles.filter(obstacle => (
+          obstacle.hp > 0
+          && (obstacle.type === 'barrel' || obstacle.type === 'objective')
+        ))
+      );
     }
 
     // 5. Execute action after a delay
     this.schedule(() => {
-      if (target) {
-        faceUnitToward(hero, target);
+      if (target && attackAnchor) {
+        faceUnitToward(hero, attackAnchor);
         hero.state = chosenAction === 'special' ? 'special' : 'attack';
         hero.stateTimer = 25;
 
@@ -1430,17 +2131,17 @@ export class EngineTactics {
 
         if (chosenAction === 'simple') {
           this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
-          this.applyDamage(hero, target, hero.stats.atk * hero.simple.dmg, status, { actionType: 'simple' });
+          this.applyProfiledAttack(hero, attackAnchor, 'simple', hero.stats.atk * hero.simple.dmg, status, 'hero');
           hero.specialCharge = Math.min(100, hero.specialCharge + 15);
         } else if (chosenAction === 'secondary') {
           hero.cooldown = hero.secondary.cd * 60;
           this.playSfx('shoot');
-          this.applyDamage(hero, target, hero.stats.atk * hero.secondary.dmg, status, { actionType: 'secondary' });
+          this.applyProfiledAttack(hero, attackAnchor, 'secondary', hero.stats.atk * hero.secondary.dmg, status, 'hero');
           hero.specialCharge = Math.min(100, hero.specialCharge + 25);
         } else if (chosenAction === 'special') {
           hero.specialCharge = 0;
           this.playSfx('special');
-          this.applyDamage(hero, target, hero.stats.atk * hero.special.dmg, status, { actionType: 'special' });
+          this.applyProfiledAttack(hero, attackAnchor, 'special', hero.stats.atk * hero.special.dmg, status, 'hero');
         }
       }
       this.endActiveTurn();
@@ -1795,7 +2496,7 @@ export class EngineTactics {
     // Process Status Effects & timers for heroes
     this.heroes.forEach(h => {
       const targetX = this.gridStartX + h.gridX * this.cellW + this.cellW / 2;
-      const targetY = this.gridStartY + h.gridY * this.cellH + 18;
+      const targetY = this.gridStartY + h.gridY * this.cellH + 18 * this.cameraZoom;
       h.x += (targetX - h.x) * 0.2;
       h.y += (targetY - h.y) * 0.2;
 
@@ -1834,7 +2535,7 @@ export class EngineTactics {
     // Process Status Effects & timers for enemies
     this.enemies.forEach(e => {
       const targetX = this.gridStartX + e.gridX * this.cellW + this.cellW / 2;
-      const targetY = this.gridStartY + e.gridY * this.cellH + 18;
+      const targetY = this.gridStartY + e.gridY * this.cellH + 18 * this.cameraZoom;
       e.x += (targetX - e.x) * 0.2;
       e.y += (targetY - e.y) * 0.2;
 
@@ -1868,7 +2569,7 @@ export class EngineTactics {
 
     if (this.escortUnit) {
       const targetX = this.gridStartX + this.escortUnit.gridX * this.cellW + this.cellW / 2;
-      const targetY = this.gridStartY + this.escortUnit.gridY * this.cellH + 18;
+      const targetY = this.gridStartY + this.escortUnit.gridY * this.cellH + 18 * this.cameraZoom;
       this.escortUnit.x += (targetX - this.escortUnit.x) * 0.2;
       this.escortUnit.y += (targetY - this.escortUnit.y) * 0.2;
     }
@@ -1983,7 +2684,9 @@ export class EngineTactics {
       ctx.fillRect(ox + 10, oy + 2, (this.cellW - 20) * hpPct, 3);
     });
 
-    if (this.actionPhase === 'move' && this.activeUnitType === 'hero') {
+    const isHumanControlledTurn = this.activeUnitType === 'hero'
+      || (this.opponentControl === 'p2' && this.activeUnitType === 'enemy');
+    if (this.actionPhase === 'move' && isHumanControlledTurn) {
       ctx.fillStyle = 'rgba(46, 204, 113, 0.2)';
       ctx.strokeStyle = '#2ecc71';
       ctx.lineWidth = 2;
@@ -2000,7 +2703,7 @@ export class EngineTactics {
       });
     }
 
-    if (this.actionPhase === 'action' && this.activeUnitType === 'hero') {
+    if (this.actionPhase === 'action' && isHumanControlledTurn) {
       ctx.fillStyle = 'rgba(231, 76, 60, 0.18)';
       ctx.strokeStyle = '#e74c3c';
       ctx.lineWidth = 2;
@@ -2011,7 +2714,14 @@ export class EngineTactics {
         ctx.strokeRect(cx, cy, this.cellW, this.cellH);
 
         const target = this.getUnitAtCell(cell.x, cell.y);
-        if (target && (target.type === 'enemy' || target.type === 'obstacle')) {
+        if (target && this.getValidAttackTargetTypes(this.activeUnitType).includes(target.type)) {
+          const resolvedTargets = this.getAttackTargets(
+            this.activeUnit,
+            { gridX: cell.x, gridY: cell.y },
+            this.selectedAction,
+            this.activeUnitType
+          );
+          if (!resolvedTargets.some(entry => entry.unit === target.unit)) return;
           const preview = this.getDamagePreview(this.activeUnit, target.unit, this.selectedAction);
           ctx.fillStyle = '#ffffff';
           ctx.font = '9px "Press Start 2P"';
@@ -2053,7 +2763,7 @@ export class EngineTactics {
     ctx.fillStyle = '#fff';
     ctx.fillText('NEXT:', this.width - 235, 40);
 
-    let qStr = this.turnQueue.slice(0, 4).map(q => `${q.type === 'hero' ? 'H' : 'E'}:${q.unit.name.split(' ')[0]}`).join(' > ');
+    const qStr = this.turnQueue.slice(0, 4).map(q => q.unit.name.split(' ')[0]).join(' > ');
     ctx.fillStyle = '#00ffff';
     ctx.fillText((qStr || 'END').slice(0, 32), this.width - 235, 56);
     this.drawTurnTimeline(ctx);
@@ -2080,43 +2790,48 @@ export class EngineTactics {
     const unit = entry.unit;
     if (entry.type === 'enemy') {
       if (unit.isBoss) {
+        unit.tacticsRenderScale = this.cameraZoom;
         drawBoss(ctx, unit.x, unit.y, unit, animTime, unit.facing);
       } else {
-        drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing);
+        drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing, 68 * this.cameraZoom);
       }
     } else {
-      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing, 72, 'tactics');
+      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing, 72 * this.cameraZoom, 'tactics');
     }
 
     if (unit === this.activeUnit && unit.currentHp > 0) {
       ctx.fillStyle = '#f1c40f';
       ctx.beginPath();
       const pt = Math.sin(animTime * 0.1) * 3;
-      ctx.moveTo(unit.x, unit.y - 36 + pt);
-      ctx.lineTo(unit.x - 5, unit.y - 44 + pt);
-      ctx.lineTo(unit.x + 5, unit.y - 44 + pt);
+      ctx.moveTo(unit.x, unit.y - 36 * this.cameraZoom + pt);
+      ctx.lineTo(unit.x - 5, unit.y - 44 * this.cameraZoom + pt);
+      ctx.lineTo(unit.x + 5, unit.y - 44 * this.cameraZoom + pt);
       ctx.fill();
     }
 
     if (unit.currentHp > 0) {
+      const barWidth = 30 * this.cameraZoom;
+      const barHeight = Math.max(2, 3 * this.cameraZoom);
+      const barY = unit.y - 32 * this.cameraZoom;
       ctx.fillStyle = 'rgba(0,0,0,0.5)';
-      ctx.fillRect(unit.x - 15, unit.y - 32, 30, 3);
+      ctx.fillRect(unit.x - barWidth / 2, barY, barWidth, barHeight);
       const hpPct = unit.currentHp / unit.maxHp;
       ctx.fillStyle = entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
-      ctx.fillRect(unit.x - 15, unit.y - 32, 30 * hpPct, 3);
+      ctx.fillRect(unit.x - barWidth / 2, barY, barWidth * hpPct, barHeight);
     }
 
     if (entry.type === 'enemy' && unit.currentHp > 0) {
-      const enemyRange = this.getActionRange('enemy', unit);
+      const threatenedCells = this.enemyThreatCells.get(unit);
       const threatensHero = this.heroes.some(hero => {
         if (hero.currentHp <= 0) return false;
-        const dist = Math.abs(unit.gridX - hero.gridX) + Math.abs(unit.gridY - hero.gridY);
-        return dist <= enemyRange && this.hasLineOfSight(unit, hero, 'enemy');
+        if (!threatenedCells) return false;
+        return Array.from(threatenedCells.values())
+          .some(cell => this.unitOccupiesCell(hero, cell.x, cell.y));
       });
       if (threatensHero) {
         ctx.fillStyle = '#ff8a50';
         ctx.font = '12px "Press Start 2P"';
-        ctx.fillText('!', unit.x - 4, unit.y - 42);
+        ctx.fillText('!', unit.x - 4, unit.y - 42 * this.cameraZoom);
       }
     }
   }
@@ -2165,32 +2880,40 @@ export class EngineTactics {
     }
     if (this.escortUnit?.currentHp > 0) {
       const ex = this.gridStartX + this.escortUnit.gridX * this.cellW + this.cellW / 2;
-      const ey = this.gridStartY + this.escortUnit.gridY * this.cellH + 18;
+      const ey = this.gridStartY + this.escortUnit.gridY * this.cellH + 18 * this.cameraZoom;
+      ctx.save();
+      ctx.translate(ex, ey);
+      ctx.scale(this.cameraZoom, this.cameraZoom);
       ctx.fillStyle = '#39c5bb';
-      ctx.fillRect(ex - 10, ey - 25, 20, 24);
+      ctx.fillRect(-10, -25, 20, 24);
       ctx.fillStyle = '#020005';
       ctx.font = '8px "Press Start 2P"';
-      ctx.fillText('N', ex - 4, ey - 10);
+      ctx.fillText('N', -4, -10);
       ctx.fillStyle = 'rgba(0,0,0,0.5)';
-      ctx.fillRect(ex - 15, ey - 32, 30, 3);
+      ctx.fillRect(-15, -32, 30, 3);
       ctx.fillStyle = '#39c5bb';
-      ctx.fillRect(ex - 15, ey - 32, 30 * Math.max(0, this.escortUnit.currentHp / this.escortUnit.maxHp), 3);
+      ctx.fillRect(-15, -32, 30 * Math.max(0, this.escortUnit.currentHp / this.escortUnit.maxHp), 3);
+      ctx.restore();
     }
     if (this.objective === 'protect' && this.protectedArtifact?.hp > 0) {
       const ax = this.gridStartX + this.protectedArtifact.gridX * this.cellW + this.cellW / 2;
-      const ay = this.gridStartY + this.protectedArtifact.gridY * this.cellH + 18;
+      const ay = this.gridStartY + this.protectedArtifact.gridY * this.cellH + 18 * this.cameraZoom;
+      ctx.save();
+      ctx.translate(ax, ay);
+      ctx.scale(this.cameraZoom, this.cameraZoom);
       ctx.fillStyle = '#ffeb3b';
       ctx.beginPath();
-      ctx.moveTo(ax, ay - 28);
-      ctx.lineTo(ax + 13, ay - 10);
-      ctx.lineTo(ax, ay + 8);
-      ctx.lineTo(ax - 13, ay - 10);
+      ctx.moveTo(0, -28);
+      ctx.lineTo(13, -10);
+      ctx.lineTo(0, 8);
+      ctx.lineTo(-13, -10);
       ctx.closePath();
       ctx.fill();
       ctx.fillStyle = 'rgba(0,0,0,0.5)';
-      ctx.fillRect(ax - 18, ay - 35, 36, 3);
+      ctx.fillRect(-18, -35, 36, 3);
       ctx.fillStyle = '#ffeb3b';
-      ctx.fillRect(ax - 18, ay - 35, 36 * Math.max(0, this.protectedArtifact.hp / this.protectedArtifact.maxHp), 3);
+      ctx.fillRect(-18, -35, 36 * Math.max(0, this.protectedArtifact.hp / this.protectedArtifact.maxHp), 3);
+      ctx.restore();
     }
   }
 
@@ -2223,12 +2946,31 @@ export class EngineTactics {
       ...this.turnQueue.slice(0, limit - active.length)
     ].map((entry, index) => ({
       index,
+      unit: entry.unit,
       type: entry.type,
       active: !!entry.active,
       name: entry.unit?.name || 'Unknown',
       hp: entry.unit?.currentHp || 0,
       maxHp: entry.unit?.maxHp || entry.unit?.stats?.hp || 1
     }));
+  }
+
+  drawTimelineBust(ctx, entry, x, y, width, height) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(x, y, width, height);
+    ctx.clip();
+    ctx.fillStyle = entry.type === 'hero' ? '#12372a' : '#3b1518';
+    ctx.fillRect(x, y, width, height);
+    const portraitColor = entry.unit?.primaryColor || entry.unit?.color || (entry.type === 'hero' ? '#39c5bb' : '#e74c3c');
+    ctx.fillStyle = portraitColor;
+    ctx.beginPath();
+    ctx.arc(x + width / 2, y + 7, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillRect(x + 7, y + 13, width - 14, height - 11);
+
+    drawCombatantBust(ctx, x, y, width, height, entry.unit, entry.type);
+    ctx.restore();
   }
 
   drawTurnTimeline(ctx) {
@@ -2245,11 +2987,10 @@ export class EngineTactics {
     timeline.forEach((entry, index) => {
       const bx = x + 10 + index * 36;
       const by = y + 25;
-      ctx.fillStyle = entry.active ? '#f1c40f' : entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
-      ctx.fillRect(bx, by, 28, 24);
-      ctx.fillStyle = '#020005';
-      ctx.font = '8px "Press Start 2P"';
-      ctx.fillText(entry.type === 'hero' ? 'H' : 'E', bx + 9, by + 15);
+      this.drawTimelineBust(ctx, entry, bx, by, 28, 24);
+      ctx.strokeStyle = entry.active ? '#f1c40f' : entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
+      ctx.lineWidth = entry.active ? 2 : 1;
+      ctx.strokeRect(bx, by, 28, 24);
       ctx.fillStyle = 'rgba(255,255,255,0.18)';
       ctx.fillRect(bx, by + 27, 28, 3);
       ctx.fillStyle = entry.type === 'hero' ? '#2ecc71' : '#ff8a50';

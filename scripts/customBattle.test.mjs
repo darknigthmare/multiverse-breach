@@ -117,6 +117,36 @@ after(async () => {
   await vite?.close();
 });
 
+const makeTacticsLineEngine = (simpleAction) => {
+  const engine = new tacticsModule.EngineTactics(
+    760,
+    420,
+    [{ ...makeHero('tactics-line-hero', 80), simple: simpleAction }],
+    makeEnemyData([
+      makeThreat('tactics-line-front', 1),
+      makeThreat('tactics-line-back', 1)
+    ]),
+    particles,
+    noop,
+    noop,
+    makeStage('Tactics')
+  );
+  const hero = engine.heroes[0];
+  hero.gridX = 0;
+  hero.gridY = 2;
+  engine.enemies[0].gridX = 1;
+  engine.enemies[0].gridY = 2;
+  engine.enemies[1].gridX = 2;
+  engine.enemies[1].gridY = 2;
+  engine.obstacles = [];
+  engine.tiles = [];
+  engine.actionPhase = 'action';
+  engine.selectedAction = 'simple';
+  engine.selectedActionExplicit = true;
+  engine.calculateAttackRange();
+  return engine;
+};
+
 test('custom battle preset keeps unique bounded teams and valid rules', () => {
   const normalized = customBattle.normalizeCustomBattlePreset({
     mode: 'Tactics',
@@ -408,6 +438,627 @@ test('Tactics gives the first fast enemy P2 a move and a targeted action', () =>
   } finally {
     engine.dispose();
     assert.equal(engine.timers.size, 0);
+  }
+});
+
+test('Tactics simple melee lines stop on the first character', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Directional Test Strike',
+    type: 'melee',
+    dmg: 1,
+    tacticsProfile: { delivery: 'melee', shape: 'directional', range: 3 }
+  });
+
+  try {
+    const [front, back] = engine.enemies;
+    assert.equal(engine.getAttackProfile(engine.heroes[0], 'simple').maxTargets, 1);
+    assert.equal(engine.attackRange.some(cell => cell.x === back.gridX && cell.y === back.gridY), false);
+    const backHp = back.currentHp;
+    const action = engine.handleCellClick(front.gridX, front.gridY);
+    assert.equal(action.handled, true);
+    assert.ok(front.currentHp < front.maxHp);
+    assert.equal(back.currentHp, backHp);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics ranged lines can select behind a unit but stay single-target', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Ranged Directional Test',
+    type: 'bullet',
+    dmg: 1,
+    targeting: { delivery: 'ranged', shape: 'directional', range: 3 }
+  });
+
+  try {
+    const [front, back] = engine.enemies;
+    assert.equal(engine.attackRange.some(cell => cell.x === back.gridX && cell.y === back.gridY), true);
+    const frontHp = front.currentHp;
+    const action = engine.handleCellClick(back.gridX, back.gridY);
+    assert.equal(action.handled, true);
+    assert.equal(front.currentHp, frontHp);
+    assert.ok(back.currentHp < back.maxHp);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics powerful piercing lines can hit two aligned characters', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Piercing Test Strike',
+    type: 'melee',
+    dmg: 1,
+    attackProfile: {
+      delivery: 'melee',
+      shape: 'line',
+      range: 3,
+      powerful: true,
+      maxTargets: 2
+    }
+  });
+
+  try {
+    const [front, back] = engine.enemies;
+    assert.equal(engine.attackRange.some(cell => cell.x === back.gridX && cell.y === back.gridY), true);
+    const action = engine.handleCellClick(back.gridX, back.gridY);
+    assert.equal(action.handled, true);
+    assert.ok(front.currentHp < front.maxHp);
+    assert.ok(back.currentHp < back.maxHp);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics attack toggle returns to movement without refunding spent AP', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Cancelable Test Strike',
+    type: 'melee',
+    dmg: 1,
+    tacticsProfile: { delivery: 'melee', shape: 'directional', range: 3 }
+  });
+
+  try {
+    engine.movementBudget = 2;
+    engine.movementSpent = 1;
+    assert.equal(engine.selectAction('simple'), true);
+    assert.equal(engine.actionPhase, 'move');
+    assert.equal(engine.selectedAction, null);
+    assert.ok(engine.movementRange.every(cell => (cell.cost || 0) <= 1));
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics camera pan and zoom preserve grid hit-testing', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Camera Test Strike',
+    type: 'melee',
+    dmg: 1
+  });
+
+  try {
+    engine.panCameraBy(73, 41);
+    engine.zoomCameraAt(1.4, 380, 210);
+    const screen = engine.gridToScreen(2, 2);
+    assert.deepEqual(engine.screenToGrid(screen.x, screen.y), { x: 2, y: 2 });
+    assert.ok(engine.getCameraState().zoom > 1);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics profiles expose diagonal, multi-axis and area footprints', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Profile Shape Test',
+    type: 'melee',
+    dmg: 1
+  });
+
+  try {
+    const hero = engine.heroes[0];
+    hero.gridX = 3;
+    hero.gridY = 2;
+    hero.secondary = {
+      name: 'Three Axis Test',
+      dmg: 1,
+      tacticsProfile: {
+        targeting: { shape: 'multiAxis', range: 2, axes: 3, powerful: true }
+      }
+    };
+    hero.special = {
+      name: 'Area Test',
+      type: 'magic_aoe',
+      dmg: 2,
+      tacticsProfile: { shape: 'area', range: 4, areaRadius: 1 }
+    };
+    const multiAxis = engine.getAttackImpactCells(hero, { gridX: 5, gridY: 2 }, 'secondary');
+    assert.ok(multiAxis.some(cell => cell.x === 5 && cell.y === 2));
+    assert.ok(multiAxis.some(cell => cell.x === 4 && cell.y === 1));
+    assert.ok(multiAxis.some(cell => cell.x === 4 && cell.y === 3));
+    assert.equal(
+      engine.canAttackCell(
+        hero,
+        { gridX: 5, gridY: 3 },
+        engine.getAttackProfile(hero, 'secondary')
+      ),
+      false,
+      'off-axis target was accepted even though no multi-axis ray crossed it'
+    );
+    const area = engine.getAttackImpactCells(hero, { gridX: 5, gridY: 2 }, 'special');
+    assert.equal(area.length, 9);
+    assert.equal(
+      engine.isCellInAttackPattern(
+        hero,
+        { gridX: 5, gridY: 4 },
+        { shape: 'directional', directions: 8, minRange: 1 }
+      ),
+      true
+    );
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics finite area attacks prioritize the valid clicked target deterministically', () => {
+  const engine = new tacticsModule.EngineTactics(
+    760,
+    420,
+    [{
+      ...makeHero('finite-area-hero', 80),
+      secondary: {
+        name: 'Finite Blast',
+        type: 'explosive',
+        dmg: 1.3,
+        cd: 3,
+        tacticsProfile: {
+          delivery: 'ranged',
+          shape: 'area',
+          range: 4,
+          areaRadius: 1,
+          maxTargets: 2
+        }
+      }
+    }],
+    makeEnemyData([
+      makeThreat('finite-area-clicked', 1),
+      makeThreat('finite-area-upper', 1),
+      makeThreat('finite-area-left', 1)
+    ]),
+    particles,
+    noop,
+    noop,
+    makeStage('Tactics')
+  );
+
+  try {
+    const hero = engine.heroes[0];
+    const [clicked, upper, left] = engine.enemies;
+    hero.gridX = 0;
+    hero.gridY = 2;
+    clicked.gridX = 3;
+    clicked.gridY = 2;
+    upper.gridX = 3;
+    upper.gridY = 1;
+    left.gridX = 2;
+    left.gridY = 2;
+    engine.obstacles = [];
+    engine.tiles = [];
+
+    const targets = engine.getAttackTargets(
+      hero,
+      { gridX: clicked.gridX, gridY: clicked.gridY },
+      'secondary',
+      'hero'
+    );
+    assert.deepEqual(
+      targets.map(entry => entry.unit.id),
+      [clicked.id, upper.id],
+      'clicked target was dropped or remaining AoE targets were unstable'
+    );
+    assert.equal(targets.some(entry => entry.unit === left), false);
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics finite target budgets remove unreachable fringe cells from enemy threats', () => {
+  const finiteAreaCaster = {
+    ...makeThreat('finite-threat-caster', 1),
+    weapon: 'rocket',
+    simple: {
+      name: 'Single Victim Blast',
+      type: 'explosive',
+      dmg: 1,
+      tacticsProfile: {
+        delivery: 'ranged',
+        shape: 'area',
+        range: 1,
+        areaRadius: 1,
+        maxTargets: 1
+      }
+    }
+  };
+  const engine = new tacticsModule.EngineTactics(
+    760,
+    420,
+    [makeHero('finite-threat-north', 80), makeHero('finite-threat-west', 70)],
+    makeEnemyData([finiteAreaCaster]),
+    particles,
+    noop,
+    noop,
+    makeStage('Tactics')
+  );
+
+  try {
+    const [north, west] = engine.heroes;
+    const enemy = engine.enemies[0];
+    enemy.gridX = 3;
+    enemy.gridY = 2;
+    north.gridX = 3;
+    north.gridY = 1;
+    west.gridX = 2;
+    west.gridY = 2;
+    engine.obstacles = [];
+    engine.tiles = [];
+
+    const threatMap = engine.getEnemyThreatMap();
+    assert.equal(threatMap.has('3,1'), true);
+    assert.equal(threatMap.has('2,2'), true);
+    assert.equal(
+      threatMap.has('2,1'),
+      false,
+      'empty fringe stayed threatened although every covering anchor had spent maxTargets'
+    );
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics directional footprints honor minRange before exposing ray cells', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Minimum Range Pike',
+    type: 'melee',
+    dmg: 1,
+    tacticsProfile: {
+      delivery: 'melee',
+      shape: 'directional',
+      range: 3,
+      minRange: 2
+    }
+  });
+
+  try {
+    const hero = engine.heroes[0];
+    hero.gridX = 3;
+    hero.gridY = 2;
+    engine.enemies[0].gridX = 0;
+    engine.enemies[0].gridY = 0;
+    engine.enemies[1].gridX = 0;
+    engine.enemies[1].gridY = 1;
+    let footprint = engine.getAttackImpactCells(hero, { gridX: 6, gridY: 2 }, 'simple');
+    assert.equal(footprint.some(cell => cell.x === 4 && cell.y === 2), false);
+    assert.equal(footprint.some(cell => cell.x === 5 && cell.y === 2), true);
+    assert.equal(footprint.some(cell => cell.x === 6 && cell.y === 2), true);
+
+    engine.enemies[0].gridX = 4;
+    engine.enemies[0].gridY = 2;
+    footprint = engine.getAttackImpactCells(hero, { gridX: 6, gridY: 2 }, 'simple');
+    assert.equal(
+      footprint.some(cell => cell.x >= 5 && cell.y === 2),
+      false,
+      'a blocker inside minRange did not stop the ray'
+    );
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics even cone and multi-axis counts normalize to symmetric aimed footprints', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Symmetry Harness',
+    type: 'melee',
+    dmg: 1
+  });
+
+  try {
+    const hero = engine.heroes[0];
+    hero.gridX = 3;
+    hero.gridY = 2;
+    engine.enemies[0].gridX = 0;
+    engine.enemies[0].gridY = 0;
+    engine.enemies[1].gridX = 0;
+    engine.enemies[1].gridY = 1;
+    hero.secondary = {
+      name: 'Even Multi Axis',
+      type: 'magic',
+      dmg: 1,
+      cd: 3,
+      tacticsProfile: {
+        delivery: 'ranged',
+        shape: 'multiAxis',
+        range: 2,
+        axes: 2
+      }
+    };
+    hero.special = {
+      name: 'Even Cone',
+      type: 'flame',
+      dmg: 1,
+      tacticsProfile: {
+        delivery: 'ranged',
+        shape: 'cone',
+        range: 2,
+        axes: 2
+      }
+    };
+
+    ['secondary', 'special'].forEach(actionType => {
+      const profile = engine.getAttackProfile(hero, actionType);
+      const footprint = engine.getAttackImpactCells(
+        hero,
+        { gridX: 5, gridY: 2 },
+        actionType
+      );
+      assert.equal(profile.axes, 3, `${actionType} did not normalize to an odd ray contract`);
+      assert.equal(footprint.some(cell => cell.x === 4 && cell.y === 2), true);
+      assert.equal(footprint.some(cell => cell.x === 4 && cell.y === 1), true);
+      assert.equal(footprint.some(cell => cell.x === 4 && cell.y === 3), true);
+    });
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics hero AI resolves an area target on the attack fringe through a splash anchor', () => {
+  const engine = new tacticsModule.EngineTactics(
+    760,
+    420,
+    [{
+      ...makeHero('hero-ai-area', 80),
+      secondary: {
+        name: 'AI Fringe Blast',
+        type: 'explosive',
+        dmg: 1.3,
+        cd: 3,
+        tacticsProfile: {
+          delivery: 'ranged',
+          shape: 'area',
+          range: 2,
+          areaRadius: 1
+        }
+      }
+    }],
+    makeEnemyData([makeThreat('hero-ai-area-target', 1)]),
+    particles,
+    noop,
+    noop,
+    makeStage('Tactics')
+  );
+
+  try {
+    const hero = engine.heroes[0];
+    const enemy = engine.enemies[0];
+    hero.gridX = 2;
+    hero.gridY = 2;
+    enemy.gridX = 5;
+    enemy.gridY = 2;
+    engine.obstacles = [];
+    engine.tiles = [];
+    engine.activeUnit = hero;
+    engine.activeUnitType = 'hero';
+    engine.movementRange = [{ x: hero.gridX, y: hero.gridY, cost: 0 }];
+    engine.endActiveTurn = noop;
+    const scheduled = [];
+    engine.schedule = callback => {
+      scheduled.push(callback);
+      return null;
+    };
+    let usedAnchor = null;
+    const applyProfiledAttack = engine.applyProfiledAttack.bind(engine);
+    engine.applyProfiledAttack = (attacker, anchor, ...args) => {
+      usedAnchor = { gridX: anchor.gridX, gridY: anchor.gridY };
+      return applyProfiledAttack(attacker, anchor, ...args);
+    };
+
+    const initialHp = enemy.currentHp;
+    engine.runHeroAI();
+    assert.equal(scheduled.length, 1);
+    scheduled.shift()();
+    assert.deepEqual(usedAnchor, { gridX: 4, gridY: 2 });
+    assert.ok(enemy.currentHp < initialHp, 'hero AI did not hit the AoE fringe target');
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics hero AI accepts only targets resolved by a cardinal directional profile', () => {
+  const engine = new tacticsModule.EngineTactics(
+    760,
+    420,
+    [{
+      ...makeHero('hero-ai-directional', 80),
+      secondary: {
+        name: 'AI Cardinal Shot',
+        type: 'bullet',
+        dmg: 1.3,
+        cd: 3,
+        tacticsProfile: {
+          delivery: 'ranged',
+          shape: 'directional',
+          directions: 4,
+          range: 3
+        }
+      }
+    }],
+    makeEnemyData([makeThreat('hero-ai-directional-target', 1)]),
+    particles,
+    noop,
+    noop,
+    makeStage('Tactics')
+  );
+
+  try {
+    const hero = engine.heroes[0];
+    const enemy = engine.enemies[0];
+    hero.gridX = 2;
+    hero.gridY = 2;
+    enemy.gridX = 4;
+    enemy.gridY = 3;
+    engine.obstacles = [];
+    engine.tiles = [];
+    engine.activeUnit = hero;
+    engine.activeUnitType = 'hero';
+    engine.movementRange = [{ x: hero.gridX, y: hero.gridY, cost: 0 }];
+    engine.endActiveTurn = noop;
+    const scheduled = [];
+    engine.schedule = callback => {
+      scheduled.push(callback);
+      return null;
+    };
+
+    const initialHp = enemy.currentHp;
+    engine.runHeroAI();
+    scheduled.shift()();
+    assert.equal(enemy.currentHp, initialHp, 'hero AI attacked an off-axis target');
+
+    enemy.gridX = 4;
+    enemy.gridY = 2;
+    engine.activeUnit = hero;
+    engine.activeUnitType = 'hero';
+    scheduled.length = 0;
+    engine.runHeroAI();
+    scheduled.shift()();
+    assert.ok(enemy.currentHp < initialHp, 'hero AI skipped the aligned directional target');
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics enemy threat maps include complete overlapping area footprints', () => {
+  const areaCaster = {
+    ...makeThreat('area-caster', 1),
+    weapon: 'rocket',
+    simple: {
+      name: 'Blast Zone',
+      type: 'explosive',
+      dmg: 1,
+      tacticsProfile: {
+        delivery: 'ranged',
+        shape: 'area',
+        range: 2,
+        areaRadius: 1
+      }
+    }
+  };
+  const engine = new tacticsModule.EngineTactics(
+    760,
+    420,
+    [makeHero('area-threat-target', 80)],
+    makeEnemyData([areaCaster]),
+    particles,
+    noop,
+    noop,
+    makeStage('Tactics')
+  );
+
+  try {
+    const hero = engine.heroes[0];
+    const enemy = engine.enemies[0];
+    hero.gridX = 6;
+    hero.gridY = 2;
+    enemy.gridX = 3;
+    enemy.gridY = 2;
+    engine.obstacles = [];
+    engine.tiles = [];
+    engine.hazardsDisabled = true;
+    const threatMap = engine.getEnemyThreatMap();
+    assert.equal(threatMap.has('6,2'), true, 'AoE edge outside center range was not threatened');
+    assert.equal(threatMap.get('4,2')?.count, 1, 'overlapping anchors counted one enemy more than once');
+    assert.equal(engine.enemyThreatCells.get(enemy)?.has('6,2'), true);
+
+    const scheduled = [];
+    engine.activeUnit = enemy;
+    engine.activeUnitType = 'enemy';
+    engine.getReachableCells = () => [{ x: enemy.gridX, y: enemy.gridY, cost: 0 }];
+    engine.schedule = callback => {
+      scheduled.push(callback);
+      return null;
+    };
+    const initialHp = hero.currentHp;
+    engine.runEnemyAI();
+    scheduled.shift()();
+    assert.ok(hero.currentHp < initialHp, 'AI did not place an empty-cell AoE on its fringe');
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('Tactics enemy threats and AI respect directional attack profiles', () => {
+  const directionalGunner = {
+    ...makeThreat('directional-gunner', 1),
+    weapon: 'gun',
+    simple: {
+      name: 'Cardinal Rail Shot',
+      type: 'bullet',
+      dmg: 1,
+      tacticsProfile: {
+        delivery: 'ranged',
+        shape: 'directional',
+        directions: 4,
+        range: 3
+      }
+    }
+  };
+  const engine = new tacticsModule.EngineTactics(
+    760,
+    420,
+    [makeHero('directional-target', 80)],
+    makeEnemyData([directionalGunner]),
+    particles,
+    noop,
+    noop,
+    makeStage('Tactics')
+  );
+
+  try {
+    const hero = engine.heroes[0];
+    const enemy = engine.enemies[0];
+    hero.gridX = 0;
+    hero.gridY = 0;
+    enemy.gridX = 1;
+    enemy.gridY = 1;
+    engine.obstacles = [];
+    engine.tiles = [];
+    engine.hazardsDisabled = true;
+
+    const threatMap = engine.getEnemyThreatMap();
+    assert.equal(threatMap.has('0,0'), false, 'off-axis cell was incorrectly threatened');
+    assert.equal(threatMap.has('1,0'), true, 'aligned cell was missing from the threat map');
+
+    const scheduled = [];
+    engine.activeUnit = enemy;
+    engine.activeUnitType = 'enemy';
+    engine.getReachableCells = () => [{ x: enemy.gridX, y: enemy.gridY, cost: 0 }];
+    engine.schedule = callback => {
+      scheduled.push(callback);
+      return null;
+    };
+
+    const initialHp = hero.currentHp;
+    engine.runEnemyAI();
+    scheduled.shift()();
+    assert.equal(hero.currentHp, initialHp, 'AI fired a cardinal attack diagonally');
+
+    scheduled.length = 0;
+    hero.gridY = 1;
+    engine.activeUnit = enemy;
+    engine.activeUnitType = 'enemy';
+    engine.runEnemyAI();
+    scheduled.shift()();
+    assert.ok(hero.currentHp < initialHp, 'AI did not fire once the target was aligned');
+  } finally {
+    engine.dispose();
   }
 });
 

@@ -82,7 +82,12 @@ export default function RaceMode({
   playerProfile,
   portalCollection = {},
   setPortalCollection,
-  hiddenUniverses = []
+  hiddenUniverses = [],
+  onSessionStart,
+  onSessionEnd,
+  sessionPaused = false,
+  sessionExitRequest = 0,
+  dedicatedSession = false
 }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
@@ -90,6 +95,9 @@ export default function RaceMode({
   const keyPulseRef = useRef({});
   const autoAccelerateRef = useRef(true);
   const raceMusicStateRef = useRef('grid');
+  const onSessionEndRef = useRef(onSessionEnd);
+  const sessionPausedRef = useRef(sessionPaused);
+  const sessionExitRequestRef = useRef(sessionExitRequest);
   const [trackId, setTrackId] = useState(null);
   const [pilotId, setPilotId] = useState(null);
   const [raceStarted, setRaceStarted] = useState(false);
@@ -158,6 +166,30 @@ export default function RaceMode({
   }, [autoAccelerate]);
 
   useEffect(() => {
+    onSessionEndRef.current = onSessionEnd;
+  }, [onSessionEnd]);
+
+  // La pause du shell dedie gele la course et vide les commandes maintenues.
+  useEffect(() => {
+    sessionPausedRef.current = sessionPaused;
+    if (sessionPaused) {
+      keysRef.current = {};
+      keyPulseRef.current = {};
+    }
+  }, [sessionPaused]);
+
+  // Le retour au hub n'est applique qu'apres confirmation dans le menu pause.
+  useEffect(() => {
+    if (sessionExitRequestRef.current === sessionExitRequest) return;
+    sessionExitRequestRef.current = sessionExitRequest;
+    keysRef.current = {};
+    keyPulseRef.current = {};
+    setRaceStarted(false);
+    setSummary(null);
+    onSessionEndRef.current?.({ reason: 'abandoned' });
+  }, [sessionExitRequest]);
+
+  useEffect(() => {
     if (raceStarted) return undefined;
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');
@@ -198,6 +230,7 @@ export default function RaceMode({
         rank: raceSummary.rank,
         result: raceSummary.rank === 1 ? 'victory' : 'complete'
       });
+      onSessionEndRef.current?.({ reason: 'completed', report: raceSummary });
     }, trackId, career.upgrades, selectedKart);
     engineRef.current = engine;
     raceMusicStateRef.current = 'grid';
@@ -209,6 +242,10 @@ export default function RaceMode({
     const loop = (now) => {
       const dt = (now - last) / 1000;
       last = now;
+      if (sessionPausedRef.current) {
+        animationId = requestAnimationFrame(loop);
+        return;
+      }
       const pulseKeys = Object.fromEntries(
         Object.entries(keyPulseRef.current).filter(([, expiresAt]) => expiresAt > now).map(([key]) => [key, true])
       );
@@ -265,6 +302,7 @@ export default function RaceMode({
     const onKeyDown = (event) => {
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
+      if (sessionPausedRef.current) return;
       const key = normalizeKey(event.key);
       if (key === 'e') {
         engine.useItem();
@@ -304,7 +342,9 @@ export default function RaceMode({
   }, [career.upgrades, raceMusicStage, raceStarted, selectedKart, track, trackId]);
 
   const resetRace = () => {
+    if (sessionPausedRef.current) return;
     keysRef.current = {};
+    if (summary) onSessionStart?.();
     setSummary(null);
     engineRef.current?.reset();
     raceMusicStateRef.current = 'grid';
@@ -312,12 +352,14 @@ export default function RaceMode({
   };
 
   const selectTrack = (nextTrackId) => {
+    if (sessionPausedRef.current) return;
     keysRef.current = {};
     setSummary(null);
     setTrackId(nextTrackId);
   };
 
   const selectKart = (kartId) => {
+    if (sessionPausedRef.current) return;
     setPortalCollection?.(previous => ({
       ...previous,
       activeKart: kartId
@@ -326,7 +368,8 @@ export default function RaceMode({
   };
 
   const startRace = () => {
-    if (!pilotId || !trackId) return;
+    if (sessionPausedRef.current || !pilotId || !trackId) return;
+    onSessionStart?.();
     keysRef.current = {};
     keyPulseRef.current = {};
     setSummary(null);
@@ -335,6 +378,7 @@ export default function RaceMode({
   };
 
   const returnToGrid = () => {
+    if (sessionPausedRef.current) return;
     keysRef.current = {};
     keyPulseRef.current = {};
     setRaceStarted(false);
@@ -342,27 +386,37 @@ export default function RaceMode({
   };
 
   const activateVirtualKey = (key, active) => {
+    if (sessionPausedRef.current) {
+      keysRef.current = {};
+      keyPulseRef.current = {};
+      return;
+    }
     keysRef.current[key] = active;
     if (active) keyPulseRef.current[key] = performance.now() + 540;
   };
 
   const pulseVirtualKey = (key) => {
+    if (sessionPausedRef.current) return;
     keyPulseRef.current[key] = performance.now() + 680;
   };
 
   const triggerItem = () => {
+    if (sessionPausedRef.current) return;
     engineRef.current?.useItem();
   };
 
   const triggerBoost = () => {
+    if (sessionPausedRef.current) return;
     if (engineRef.current) engineRef.current.player.boost = Math.max(engineRef.current.player.boost, 0.28);
   };
 
   const recoverPlayer = () => {
+    if (sessionPausedRef.current) return;
     engineRef.current?.recoverPlayer();
   };
 
   const buyUpgrade = (upgradeId) => {
+    if (sessionPausedRef.current) return;
     const config = KART_GARAGE_UPGRADES[upgradeId];
     if (!config) return;
     setCareer(prev => {
@@ -589,7 +643,9 @@ export default function RaceMode({
             <span>{lang === 'fr' ? 'Grille engagee' : 'Grid engaged'}</span>
             <strong>{track.name[lang] || track.name.fr}</strong>
             <small>{track.tags.join(' / ')} / D{track.difficulty} / {track.laps} {lang === 'fr' ? 'tours' : 'laps'}</small>
-            <button type="button" className="btn-retro" onClick={returnToGrid}>{lang === 'fr' ? 'CHANGER LA GRILLE' : 'CHANGE GRID'}</button>
+            {!dedicatedSession && (
+              <button type="button" className="btn-retro" onClick={returnToGrid}>{lang === 'fr' ? 'CHANGER LA GRILLE' : 'CHANGE GRID'}</button>
+            )}
           </div>
           <div className="race-control-list">
             {controlRows.map(row => (
@@ -606,7 +662,7 @@ export default function RaceMode({
             <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('space')} onPointerDown={() => activateVirtualKey('space', true)} onPointerUp={() => activateVirtualKey('space', false)} onPointerCancel={() => activateVirtualKey('space', false)} onPointerLeave={() => activateVirtualKey('space', false)}>DRIFT</button>
             <button type="button" className="btn-retro" onClick={triggerBoost}>BOOST</button>
             <button type="button" className="btn-retro" onClick={recoverPlayer}>{lang === 'fr' ? 'REANCRER' : 'RECOVER'}</button>
-            <button type="button" className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RELANCER' : 'RESTART'}</button>
+            {summary && <button type="button" className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RELANCER' : 'RESTART'}</button>}
           </div>
         </aside>
       </div>

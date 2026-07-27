@@ -258,12 +258,20 @@ export default function FighterMode({
   disabledAssets = {},
   onMatchComplete,
   customConfig = null,
-  onExit
+  onExit,
+  onSessionStart,
+  onSessionEnd,
+  sessionPaused = false,
+  sessionExitRequest = 0,
+  dedicatedSession = false
 }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const inputRef = useRef({ player: {}, cpu: {} });
   const onMatchCompleteRef = useRef(onMatchComplete);
+  const onSessionEndRef = useRef(onSessionEnd);
+  const sessionPausedRef = useRef(sessionPaused);
+  const sessionExitRequestRef = useRef(sessionExitRequest);
   const [difficulty, setDifficulty] = useState('standard');
   const [opponentSeed, setOpponentSeed] = useState(1);
   const [matchNonce, setMatchNonce] = useState(0);
@@ -283,6 +291,27 @@ export default function FighterMode({
   useEffect(() => {
     onMatchCompleteRef.current = onMatchComplete;
   }, [onMatchComplete]);
+
+  useEffect(() => {
+    onSessionEndRef.current = onSessionEnd;
+  }, [onSessionEnd]);
+
+  // Le shell du hub pilote la pause sans reconstruire le moteur du duel.
+  useEffect(() => {
+    sessionPausedRef.current = sessionPaused;
+    if (sessionPaused) inputRef.current = { player: {}, cpu: {} };
+  }, [sessionPaused]);
+
+  // Une demande de sortie confirmee depuis le menu pause ramene le duel au lobby.
+  useEffect(() => {
+    if (sessionExitRequestRef.current === sessionExitRequest) return;
+    sessionExitRequestRef.current = sessionExitRequest;
+    setMatchStarted(false);
+    setSummary(null);
+    setSnapshot(emptySnapshot);
+    inputRef.current = { player: {}, cpu: {} };
+    onSessionEndRef.current?.({ reason: 'abandoned' });
+  }, [sessionExitRequest]);
 
   useEffect(() => {
     if (customConfig?.autoStart) setMatchStarted(true);
@@ -473,6 +502,7 @@ export default function FighterMode({
         setSnapshot(engine.getSnapshot());
         sound.setStageMusicState(result, { ...battleMusicStage, result });
         onMatchCompleteRef.current?.(resolved);
+        onSessionEndRef.current?.({ reason: 'completed', report: resolved });
       },
       {
         difficulty: configuredDifficulty,
@@ -496,6 +526,10 @@ export default function FighterMode({
     const loop = now => {
       const dt = Math.min(0.034, Math.max(0, (now - last) / 1000));
       last = now;
+      if (sessionPausedRef.current) {
+        animationId = requestAnimationFrame(loop);
+        return;
+      }
       engine.setSideInput('player', inputRef.current.player);
       engine.setSideInput('cpu', inputRef.current.cpu);
       engine.update(dt);
@@ -525,6 +559,7 @@ export default function FighterMode({
     const onKeyDown = event => {
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
+      if (sessionPausedRef.current) return;
       const key = event.key.toLowerCase();
 
       if (key === 'q') setHeldInputForSide('player', 'left', true);
@@ -629,7 +664,8 @@ export default function FighterMode({
   ]);
 
   const startMatch = () => {
-    if (!playerHeroes.length || !opponentHeroes.length) return;
+    if (sessionPausedRef.current || !playerHeroes.length || !opponentHeroes.length) return;
+    onSessionStart?.();
     setSummary(null);
     setSnapshot(emptySnapshot);
     setMatchNonce(value => value + 1);
@@ -638,6 +674,7 @@ export default function FighterMode({
   };
 
   const returnToLobby = () => {
+    if (sessionPausedRef.current) return;
     setMatchStarted(false);
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -655,19 +692,35 @@ export default function FighterMode({
   };
 
   const triggerAction = (action, side = 'player') => {
+    if (sessionPausedRef.current) return;
     engineRef.current?.triggerSideAction(side, action);
   };
 
   const triggerFieldSuper = (side = 'player') => {
+    if (sessionPausedRef.current) return;
     engineRef.current?.triggerFieldSuper(side);
   };
 
   const triggerAssist = (side = 'player') => {
+    if (sessionPausedRef.current) return;
     engineRef.current?.triggerAssist(side);
   };
 
   const setHeldInput = (key, active, side = 'player') => {
+    if (sessionPausedRef.current) {
+      inputRef.current = { player: {}, cpu: {} };
+      return;
+    }
     inputRef.current[side][key] = active;
+  };
+
+  const triggerTag = (index, side = 'player') => {
+    if (sessionPausedRef.current) return;
+    if (side === 'player') {
+      engineRef.current?.triggerPlayerAction('tag', index);
+      return;
+    }
+    engineRef.current?.triggerSideAction(side, 'tag', index);
   };
 
   const playerSnapshot = snapshot.player || emptySnapshot.player;
@@ -873,11 +926,13 @@ export default function FighterMode({
                 : snapshot.phase.toUpperCase()}
           </small>
         </div>
-        <button type="button" className="btn-retro" onClick={returnToLobby}>
-          {isCustomBattle
-            ? (lang === 'fr' ? 'RETOUR CONFIGURATION' : 'BACK TO SETUP')
-            : (lang === 'fr' ? 'QUITTER' : 'LEAVE')}
-        </button>
+        {!dedicatedSession && (
+          <button type="button" className="btn-retro" onClick={returnToLobby}>
+            {isCustomBattle
+              ? (lang === 'fr' ? 'RETOUR CONFIGURATION' : 'BACK TO SETUP')
+              : (lang === 'fr' ? 'QUITTER' : 'LEAVE')}
+          </button>
+        )}
       </header>
 
       <div className="fighter-battle-grid">
@@ -938,7 +993,7 @@ export default function FighterMode({
               <span>{lang === 'fr' ? 'REMPLACANTS' : 'TAG ROSTER'}</span>
               <b>{playerSnapshot.tagCooldown > 0 ? `${playerSnapshot.tagCooldown.toFixed(1)}s` : 'READY'}</b>
             </div>
-            <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} onTag={index => engineRef.current?.triggerPlayerAction('tag', index)} />
+            <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} onTag={index => triggerTag(index)} />
           </section>
           <section>
             <div className="fighter-side-heading">
@@ -951,7 +1006,7 @@ export default function FighterMode({
               side="cpu"
               snapshot={cpuSnapshot}
               interactive={opponentControl === 'p2'}
-              onTag={index => engineRef.current?.triggerSideAction('cpu', 'tag', index)}
+              onTag={index => triggerTag(index, 'cpu')}
             />
           </section>
           <section>

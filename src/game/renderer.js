@@ -73,6 +73,55 @@ export const drawItemIcon = (ctx, x, y, item, animTime, targetSize = 36) => {
   return true;
 };
 
+export const drawCombatantBust = (ctx, x, y, width, height, entity, kind = 'hero') => {
+  const src = kind === 'hero'
+    ? getHeroSpriteSheetSrc(entity, 'tactics')
+    : getEnemySpriteSheetSrc(entity);
+  const entry = getCachedSpriteSheet(src);
+  if (!entry || entry.status === 'error') return false;
+  if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
+    queueSpriteSheetRedraw(entry, ctx, () => {
+      drawCombatantBust(ctx, x, y, width, height, entity, kind);
+    });
+    return false;
+  }
+
+  const layout = getSpriteSheetLayout(entry.image.currentSrc || entry.image.src);
+  const frameWidth = entry.image.naturalWidth / layout.columns;
+  const frameHeight = entry.image.naturalHeight / layout.rows;
+  const frame = getSpriteFrameForLayout('idle', 0, layout);
+  const trim = frame.trim || {};
+  const sourceX = frame.col * frameWidth + (trim.left || 0);
+  const sourceY = frame.row * frameHeight + (trim.top || 0);
+  const sourceW = Math.max(1, frameWidth - (trim.left || 0) - (trim.right || 0));
+  const trimmedH = Math.max(1, frameHeight - (trim.top || 0) - (trim.bottom || 0));
+  const sourceH = Math.max(1, trimmedH * 0.68);
+  const scale = Math.max(width / sourceW, height / sourceH);
+  const drawW = sourceW * scale;
+  const drawH = sourceH * scale;
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(x, y, width, height);
+  ctx.clip();
+  ctx.translate(x + width / 2, y + height / 2);
+  ctx.scale(entity?.facing || (kind === 'hero' ? 1 : -1), 1);
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(
+    entry.image,
+    sourceX,
+    sourceY,
+    sourceW,
+    sourceH,
+    -drawW / 2,
+    -drawH / 2,
+    drawW,
+    drawH
+  );
+  ctx.restore();
+  return true;
+};
+
 const drawMirelleItemVfx = (ctx, x, y, entity, animTime, facing, targetHeight, context, redrawWhenResolved) => {
   if (entity?.id !== 'arca_mirelle' || !['attack', 'defense', 'hit'].includes(entity.state)) return;
   const entry = getCachedSpriteSheet(MIRELLE_COMPLETE_SPRITES.itemsVfx);
@@ -509,7 +558,7 @@ const drawWeapon = (ctx, x, y, type, color, animTime) => {
   ctx.restore();
 };
 
-const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing) => {
+const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing, targetHeight = 68) => {
   const isForgeMatrix = enemy?.visualStyle === 'origin_forge_matrix';
   if (!isForgeMatrix) return false;
 
@@ -521,7 +570,8 @@ const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing) => {
 
   ctx.save();
   ctx.translate(x, y);
-  ctx.scale(facing * 1.35, 1.35);
+  const scaleFactor = targetHeight / 68;
+  ctx.scale(facing * 1.35 * scaleFactor, 1.35 * scaleFactor);
   ctx.imageSmoothingEnabled = false;
 
   if (isForgeMatrix) {
@@ -580,20 +630,21 @@ const drawOriginForgeThreat = (ctx, x, y, enemy, animTime, facing) => {
 
 };
 
-export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
-  if (drawOriginForgeThreat(ctx, x, y, enemy, animTime, facing)) return;
-  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, 68, getEnemySpriteSheetSrc, () => {
-    drawPixelEnemy(ctx, x, y, enemy, animTime, facing);
+export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1, targetHeight = 68) => {
+  if (drawOriginForgeThreat(ctx, x, y, enemy, animTime, facing, targetHeight)) return;
+  const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, enemy, animTime, facing, targetHeight, getEnemySpriteSheetSrc, () => {
+    drawPixelEnemy(ctx, x, y, enemy, animTime, facing, targetHeight);
   });
   if (generatedStatus !== 'missing') {
     return;
   }
 
   const { name, color, state } = enemy;
+  const scaleFactor = targetHeight / 68;
   
   ctx.save();
   ctx.translate(x, y);
-  ctx.scale(facing, 1);
+  ctx.scale(facing * scaleFactor, scaleFactor);
 
   let isDead = state === 'dead';
   let isHit = state === 'hit';
@@ -653,7 +704,7 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
     ctx.restore();
     ctx.save();
     ctx.translate(x, y);
-    ctx.scale(facing, 1);
+    ctx.scale(facing * scaleFactor, scaleFactor);
     if (isDead) {
       ctx.rotate(Math.PI / 2);
       ctx.translate(-20, -10);
@@ -693,7 +744,9 @@ export const drawPixelEnemy = (ctx, x, y, enemy, animTime, facing = -1) => {
 };
 
 export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
-  const targetHeight = Math.max(96, Math.min(620, boss.renderHeight || 126));
+  const requestedScale = Number(boss?.tacticsRenderScale);
+  const renderScale = Number.isFinite(requestedScale) && requestedScale > 0 ? requestedScale : 1;
+  const targetHeight = Math.max(96, Math.min(620, boss.renderHeight || 126)) * renderScale;
   const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, boss, animTime, facing, targetHeight, getEnemySpriteSheetSrc, () => {
     drawBoss(ctx, x, y, boss, animTime, facing);
   });
@@ -704,7 +757,7 @@ export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
   const { name, color, state } = boss;
   ctx.save();
   ctx.translate(x, y);
-  ctx.scale(facing, 1);
+  ctx.scale(facing * renderScale, renderScale);
 
   let isDead = state === 'dead';
   let isHit = state === 'hit';
@@ -774,6 +827,7 @@ export const drawBoss = (ctx, x, y, boss, animTime, facing = -1) => {
     ctx.restore();
     ctx.save();
     ctx.translate(x, y);
+    ctx.scale(renderScale, renderScale);
     // Draw ceiling support beam
     ctx.fillStyle = '#444';
     ctx.fillRect(-8, -120, 16, 80);

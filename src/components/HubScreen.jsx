@@ -76,6 +76,137 @@ function OperationsSectionTabs({ lang, items, activeId, onChange, label }) {
   );
 }
 
+const DEDICATED_GAME_MODES = {
+  fighter: {
+    fr: 'COMBAT A.R.C.A.',
+    en: 'A.R.C.A. FIGHTER'
+  },
+  race: {
+    fr: 'COURSE A.R.C.A.',
+    en: 'A.R.C.A. RACE'
+  },
+  extinction: {
+    fr: 'ZONE D EXTINCTION',
+    en: 'EXTINCTION ZONE'
+  }
+};
+
+function DedicatedGameSessionChrome({
+  lang,
+  mode,
+  paused,
+  onOpenPause,
+  onResume,
+  onConfirmExit
+}) {
+  const pauseButtonRef = useRef(null);
+  const dialogRef = useRef(null);
+  const previousFocusRef = useRef(null);
+
+  // La pause garde le focus dans la modale puis le rend au controle precedent.
+  useEffect(() => {
+    if (!paused || typeof document === 'undefined') return undefined;
+    const dialog = dialogRef.current;
+    if (!dialog) return undefined;
+    const pauseButton = pauseButtonRef.current;
+    previousFocusRef.current = document.activeElement === document.body
+      ? pauseButton
+      : document.activeElement;
+    const getFocusableControls = () => Array.from(dialog.querySelectorAll(
+      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    ));
+    getFocusableControls()[0]?.focus();
+
+    const trapPauseFocus = event => {
+      if (event.key !== 'Tab') return;
+      const controls = getFocusableControls();
+      if (!controls.length) {
+        event.preventDefault();
+        dialog.focus();
+        return;
+      }
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (!dialog.contains(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', trapPauseFocus);
+    return () => {
+      document.removeEventListener('keydown', trapPauseFocus);
+      const previousFocus = previousFocusRef.current;
+      window.requestAnimationFrame(() => {
+        if (previousFocus?.isConnected) previousFocus.focus();
+        else pauseButton?.focus();
+      });
+    };
+  }, [paused]);
+
+  if (!mode) return null;
+  const modeLabel = DEDICATED_GAME_MODES[mode]?.[lang] || DEDICATED_GAME_MODES[mode]?.fr || mode;
+  return (
+    <>
+      <div
+        className="dedicated-game-toolbar"
+        aria-label={lang === 'fr' ? 'Session de jeu active' : 'Active game session'}
+        aria-hidden={paused ? 'true' : undefined}
+      >
+        <div>
+          <span>{lang === 'fr' ? 'SESSION IMMERSIVE' : 'IMMERSIVE SESSION'}</span>
+          <strong>{modeLabel}</strong>
+        </div>
+        <button
+          ref={pauseButtonRef}
+          type="button"
+          className="btn-retro dedicated-game-pause-button"
+          onClick={onOpenPause}
+          aria-haspopup="dialog"
+          aria-expanded={paused}
+          disabled={paused}
+        >
+          {lang === 'fr' ? 'PAUSE' : 'PAUSE'}
+        </button>
+      </div>
+      {paused && (
+        <div className="dedicated-game-pause-overlay">
+          <section
+            ref={dialogRef}
+            className="dedicated-game-pause-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="dedicated-pause-title"
+            aria-describedby="dedicated-pause-description"
+            tabIndex="-1"
+          >
+            <span>{modeLabel}</span>
+            <h2 id="dedicated-pause-title">{lang === 'fr' ? 'Partie en pause' : 'Game paused'}</h2>
+            <p id="dedicated-pause-description">
+              {lang === 'fr'
+                ? 'La simulation est gelee. Reprends la partie ou confirme son abandon pour revenir a la configuration du mode.'
+                : 'The simulation is frozen. Resume play or confirm abandonment to return to this mode setup.'}
+            </p>
+            <div>
+              <button type="button" className="btn-retro" onClick={onResume}>
+                {lang === 'fr' ? 'REPRENDRE' : 'RESUME'}
+              </button>
+              <button type="button" className="btn-retro dedicated-game-abandon-button" onClick={onConfirmExit}>
+                {lang === 'fr' ? 'CONFIRMER L ABANDON' : 'CONFIRM ABANDON'}
+              </button>
+            </div>
+          </section>
+        </div>
+      )}
+    </>
+  );
+}
+
 function MissionDirectory({
   lang,
   stages,
@@ -2331,10 +2462,20 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
   );
 }
 
-function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
+function ExtinctionRoyale({
+  lang,
+  heroes,
+  unlockedHeroes,
+  onSessionStart,
+  onSessionEnd,
+  sessionPaused = false,
+  sessionExitRequest = 0
+}) {
   const canvasRef = useRef(null);
   const fpsHandsRef = useRef(null);
   const fpsProjectileRef = useRef(null);
+  const sessionPausedRef = useRef(sessionPaused);
+  const sessionExitRequestRef = useRef(sessionExitRequest);
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
   const playableHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 40), [safeHeroes, unlockedSet]);
@@ -2416,6 +2557,41 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     };
   }, []);
 
+  // Le menu pause du shell dedie gele la simulation et relache les mouvements.
+  useEffect(() => {
+    sessionPausedRef.current = sessionPaused;
+    if (sessionPaused) {
+      stateRef.current.moveKeys = {};
+      stateRef.current.vx = 0;
+      stateRef.current.vy = 0;
+      stateRef.current.turnVel = 0;
+    }
+  }, [sessionPaused]);
+
+  // Une sortie du mode n'est acceptee qu'apres la confirmation du menu pause.
+  useEffect(() => {
+    if (sessionExitRequestRef.current === sessionExitRequest) return;
+    sessionExitRequestRef.current = sessionExitRequest;
+    stateRef.current = {
+      ...stateRef.current,
+      phase: 'ready',
+      hp: 100,
+      ammo: 24,
+      kills: 0,
+      wave: 1,
+      enemies: [],
+      loot: [],
+      moveKeys: {},
+      vx: 0,
+      vy: 0,
+      turnVel: 0,
+      result: null,
+      rewards: null
+    };
+    setRunSnapshot({ phase: 'ready', hp: 100, ammo: 24, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
+    onSessionEnd?.({ reason: 'abandoned' });
+  }, [onSessionEnd, sessionExitRequest]);
+
   const buildEnemies = useCallback((wave = 1, champion = false) => {
     const archetypes = [
       { kind: 'Traqueur', color: '#e74c3c', hp: 28, speed: 0.0025, dmg: 4, size: 1 },
@@ -2459,7 +2635,8 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   }, []);
 
   const startRun = useCallback(() => {
-    if (!selectedHero) return;
+    if (sessionPausedRef.current || !selectedHero) return;
+    onSessionStart?.();
     const stats = selectedHero.stats || { hp: 120, atk: 12, def: 6, spd: 5 };
     const role = roleProfile[selectedHero.category] || roleProfile.marine;
     const maxAmmo = Math.round(24 * role.ammo);
@@ -2510,7 +2687,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     stateRef.current = next;
     setRunSnapshot({ phase: next.phase, hp: next.hp, ammo: next.ammo, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
     sound.playSfx('levelup');
-  }, [buildEnemies, buildLoot, objectives, roleProfile, runMode, selectedHero, universeFragments, weaponProfile]);
+  }, [buildEnemies, buildLoot, objectives, onSessionStart, roleProfile, runMode, selectedHero, universeFragments, weaponProfile]);
 
   const finishRun = useCallback((result) => {
     const state = stateRef.current;
@@ -2529,7 +2706,8 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     state.rewards = rewards;
     setRunSnapshot({ phase: 'ended', hp: state.hp, ammo: state.ammo, kills: state.kills, wave: state.wave, loot: state.loot.filter(item => item.used).length, result, rewards });
     sound.playSfx(victory ? 'victory' : 'defeat');
-  }, [lang]);
+    onSessionEnd?.({ reason: 'completed', result, rewards });
+  }, [lang, onSessionEnd]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -2538,6 +2716,10 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     let rafId = 0;
     const loop = () => {
       const state = stateRef.current;
+      if (sessionPausedRef.current && state.phase === 'running') {
+        rafId = window.requestAnimationFrame(loop);
+        return;
+      }
       if (state.phase === 'running') {
         state.t += 1;
       }
@@ -2980,11 +3162,9 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   };
 
   const fire = () => {
+    if (sessionPausedRef.current) return;
     const state = stateRef.current;
-    if (state.phase !== 'running') {
-      startRun();
-      return;
-    }
+    if (state.phase !== 'running') return;
     const wep = state.weapon || { type: 'pistol', ammo: state.ammo || 24, maxAmmo: 24, spread: 0.12, fireRate: 1.0, dmgMult: 1.0 };
     if (state.t - (state.lastFireTime || 0) < wep.fireRate * 18) return;
     if (!wep.ammo) return;
@@ -3027,6 +3207,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   };
 
   const reload = () => {
+    if (sessionPausedRef.current) return;
     const state = stateRef.current;
     if (state.weapon) {
       state.weapon.ammo = state.weapon.maxAmmo;
@@ -3040,10 +3221,15 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
 
   const setMoveKey = (key, active) => {
     const state = stateRef.current;
+    if (sessionPausedRef.current) {
+      state.moveKeys = {};
+      return;
+    }
     state.moveKeys = { ...(state.moveKeys || {}), [key]: active };
   };
 
   const activateRoleSkill = () => {
+    if (sessionPausedRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     if (selectedHero?.category === 'slayer' && state.dash <= 0) {
@@ -3063,6 +3249,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
   };
 
   const collectLoot = () => {
+    if (sessionPausedRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     const item = state.loot.find(candidate => !candidate.used && Math.hypot(candidate.wx - state.px, candidate.wy - state.py) < 1.25);
@@ -3093,6 +3280,7 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
 
   useEffect(() => {
     const onKeyDown = (event) => {
+      if (sessionPausedRef.current || stateRef.current.phase !== 'running') return;
       const key = event.key.toLowerCase();
       if (key === 'w' || key === 'z' || key === 'arrowup') {
         setMoveKey('forward', true);
@@ -3150,34 +3338,38 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
     };
   });
 
+  const runActive = runSnapshot.phase === 'running';
+
   return (
-    <div className="glass-panel nexus-play-panel extinction-panel">
+    <div className={`glass-panel nexus-play-panel extinction-panel ${runActive ? 'extinction-panel-active' : ''}`}>
       <div className="nexus-play-copy">
-        <div className="portal-focus-kicker">{lang === 'fr' ? 'ZONE D EXTINCTION / FPS ROYALE' : 'EXTINCTION ZONE / FPS ROYALE'}</div>
-        <h3>{lang === 'fr' ? 'Zone d Extinction' : 'Extinction Zone'}</h3>
-        <p>
-          {lang === 'fr'
-            ? 'Simulation dangereuse A.R.C.A.: les Trames trop instables sont compressees avant d envahir la Cite-Mosaique. Choisis une signature, loot, survis aux vagues, evite la Marge Blanche et force une extraction.'
-            : 'Dangerous A.R.C.A. simulation: unstable Threads are compressed before they invade Mosaic City. Pick a signature, loot, survive waves, avoid the White Margin, and force extraction.'}
-        </p>
-        <select value={runMode} onChange={event => setRunMode(event.target.value)} className="nexus-select">
-          <option value="extraction">{lang === 'fr' ? 'Solo Extraction' : 'Solo Extraction'}</option>
-          <option value="last_signal">{lang === 'fr' ? 'Dernier Signal' : 'Last Signal'}</option>
-          <option value="infestation">{lang === 'fr' ? 'Infestation' : 'Infestation'}</option>
-          <option value="hunt">{lang === 'fr' ? 'Chasse au Champion' : 'Champion Hunt'}</option>
-        </select>
-        <select value={selectedHero?.id || ''} onChange={event => setSelectedHeroId(event.target.value)} className="nexus-select">
-          {playableHeroes.map(hero => (
-            <option key={hero.id} value={hero.id}>{hero.name} / {hero.universe}</option>
-          ))}
-        </select>
-        <div className="nexus-play-intel">
-          <strong>{weaponProfile.name}</strong>
-          <span>{selectedHero?.category || 'marine'} - {(roleProfile[selectedHero?.category] || roleProfile.marine).perk}</span>
-          <small>{universeFragments.join(' / ')} - {lang === 'fr' ? 'Z/W avancer, S reculer, A/Q-D strafes, fleches gauche/droite tourner' : 'W/Z forward, S back, A/Q-D strafe, left/right arrows turn'}</small>
+        <div className="extinction-setup-copy">
+          <div className="portal-focus-kicker">{lang === 'fr' ? 'ZONE D EXTINCTION / FPS ROYALE' : 'EXTINCTION ZONE / FPS ROYALE'}</div>
+          <h3>{lang === 'fr' ? 'Zone d Extinction' : 'Extinction Zone'}</h3>
+          <p>
+            {lang === 'fr'
+              ? 'Simulation dangereuse A.R.C.A.: les Trames trop instables sont compressees avant d envahir la Cite-Mosaique. Choisis une signature, loot, survis aux vagues, evite la Marge Blanche et force une extraction.'
+              : 'Dangerous A.R.C.A. simulation: unstable Threads are compressed before they invade Mosaic City. Pick a signature, loot, survive waves, avoid the White Margin, and force extraction.'}
+          </p>
+          <select value={runMode} onChange={event => setRunMode(event.target.value)} className="nexus-select">
+            <option value="extraction">{lang === 'fr' ? 'Solo Extraction' : 'Solo Extraction'}</option>
+            <option value="last_signal">{lang === 'fr' ? 'Dernier Signal' : 'Last Signal'}</option>
+            <option value="infestation">{lang === 'fr' ? 'Infestation' : 'Infestation'}</option>
+            <option value="hunt">{lang === 'fr' ? 'Chasse au Champion' : 'Champion Hunt'}</option>
+          </select>
+          <select value={selectedHero?.id || ''} onChange={event => setSelectedHeroId(event.target.value)} className="nexus-select">
+            {playableHeroes.map(hero => (
+              <option key={hero.id} value={hero.id}>{hero.name} / {hero.universe}</option>
+            ))}
+          </select>
+          <div className="nexus-play-intel">
+            <strong>{weaponProfile.name}</strong>
+            <span>{selectedHero?.category || 'marine'} - {(roleProfile[selectedHero?.category] || roleProfile.marine).perk}</span>
+            <small>{universeFragments.join(' / ')} - {lang === 'fr' ? 'Z/W avancer, S reculer, A/Q-D strafes, fleches gauche/droite tourner' : 'W/Z forward, S back, A/Q-D strafe, left/right arrows turn'}</small>
+          </div>
         </div>
         <div className="nexus-play-stats">
-          <span>{runSnapshot.phase === 'running' ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
+          <span>{runActive ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
           <span>HP {Math.round(runSnapshot.hp || 0)}</span>
           <span>WAVE {runSnapshot.wave}</span>
           <span>KILLS {runSnapshot.kills}</span>
@@ -3189,17 +3381,25 @@ function ExtinctionRoyale({ lang, heroes, unlockedHeroes }) {
           </div>
         )}
         <div className="nexus-play-actions">
-          <button className="btn-retro" onClick={startRun} title={lang === 'fr' ? 'Lance ou recommence une run Zone d Extinction.' : 'Start or restart an Extinction Zone run.'}>{runSnapshot.phase === 'running' ? (lang === 'fr' ? 'RESTART' : 'RESTART') : (lang === 'fr' ? 'DEMARRER RUN' : 'START RUN')}</button>
-          <button className="btn-retro" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
-          <button className="btn-retro" onClick={reload} title={lang === 'fr' ? 'Recharge les munitions au maximum.' : 'Refill ammunition to maximum.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
-          <button className="btn-retro" onClick={activateRoleSkill} title={lang === 'fr' ? 'Active la capacite speciale liee au role du heros.' : 'Activate the selected hero role ability.'}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
-          <button className="btn-retro" onClick={collectLoot} title={lang === 'fr' ? 'Ramasse l objet proche si tu es assez pres.' : 'Pick up the nearby item if you are close enough.'}>{lang === 'fr' ? 'LOOT' : 'LOOT'}</button>
-          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
-          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
-          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se deplacer lateralement a gauche.' : 'Hold to strafe left.'} onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
-          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se deplacer lateralement a droite.' : 'Hold to strafe right.'} onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
-          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la camera vers la gauche.' : 'Hold to turn the camera left.'} onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
-          <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la camera vers la droite.' : 'Hold to turn the camera right.'} onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
+          {!runActive && (
+            <button className="btn-retro" onClick={startRun} title={lang === 'fr' ? 'Lance une run Zone d Extinction.' : 'Start an Extinction Zone run.'}>
+              {lang === 'fr' ? 'DEMARRER RUN' : 'START RUN'}
+            </button>
+          )}
+          {runActive && (
+            <>
+              <button className="btn-retro" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
+              <button className="btn-retro" onClick={reload} title={lang === 'fr' ? 'Recharge les munitions au maximum.' : 'Refill ammunition to maximum.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+              <button className="btn-retro" onClick={activateRoleSkill} title={lang === 'fr' ? 'Active la capacite speciale liee au role du heros.' : 'Activate the selected hero role ability.'}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
+              <button className="btn-retro" onClick={collectLoot} title={lang === 'fr' ? 'Ramasse l objet proche si tu es assez pres.' : 'Pick up the nearby item if you are close enough.'}>{lang === 'fr' ? 'LOOT' : 'LOOT'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se deplacer lateralement a gauche.' : 'Hold to strafe left.'} onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se deplacer lateralement a droite.' : 'Hold to strafe right.'} onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la camera vers la gauche.' : 'Hold to turn the camera left.'} onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la camera vers la droite.' : 'Hold to turn the camera right.'} onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
+            </>
+          )}
         </div>
       </div>
       <canvas ref={canvasRef} width="840" height="430" className="fps-royale-canvas" onClick={fire} />
@@ -3672,6 +3872,37 @@ export default function HubScreen({
   onGoToPortal
 }) {
   const [activeTab, setActiveTab] = useState('missions');
+  // Une session active verrouille le hub sans demonter le composant de jeu.
+  const gameWorkspaceRef = useRef(null);
+  const [activeGameMode, setActiveGameMode] = useState(null);
+  const [pauseMenuOpen, setPauseMenuOpen] = useState(false);
+  const [sessionExitRequests, setSessionExitRequests] = useState({
+    fighter: 0,
+    race: 0,
+    extinction: 0
+  });
+  const startDedicatedGame = useCallback((mode) => {
+    setActiveGameMode(mode);
+    setPauseMenuOpen(false);
+  }, []);
+  const finishDedicatedGame = useCallback((mode) => {
+    setActiveGameMode(currentMode => (currentMode === mode ? null : currentMode));
+    setPauseMenuOpen(false);
+  }, []);
+  const startFighterSession = useCallback(() => startDedicatedGame('fighter'), [startDedicatedGame]);
+  const finishFighterSession = useCallback(() => finishDedicatedGame('fighter'), [finishDedicatedGame]);
+  const startRaceSession = useCallback(() => startDedicatedGame('race'), [startDedicatedGame]);
+  const finishRaceSession = useCallback(() => finishDedicatedGame('race'), [finishDedicatedGame]);
+  const startExtinctionSession = useCallback(() => startDedicatedGame('extinction'), [startDedicatedGame]);
+  const finishExtinctionSession = useCallback(() => finishDedicatedGame('extinction'), [finishDedicatedGame]);
+  const confirmDedicatedGameExit = useCallback(() => {
+    if (!activeGameMode) return;
+    setSessionExitRequests(previous => ({
+      ...previous,
+      [activeGameMode]: (previous[activeGameMode] || 0) + 1
+    }));
+    sound.playSfx('click');
+  }, [activeGameMode]);
   const activeHudTheme = (portalCollection.hudThemes || [])
     .find(theme => theme.id === portalCollection.activeHudTheme);
   const activeProfileBanner = getUnlockableById(
@@ -3684,21 +3915,23 @@ export default function HubScreen({
   );
   const activeNavGroup = HUB_NAV_GROUPS.find(group => group.tabs.some(tab => tab.id === activeTab)) || HUB_NAV_GROUPS[0];
   const openNavigationTab = useCallback((tab) => {
+    if (activeGameMode) return;
     if (tab.portal) {
       onGoToPortal();
       return;
     }
     setActiveTab(tab.id);
     sound.playSfx('coin');
-  }, [onGoToPortal]);
+  }, [activeGameMode, onGoToPortal]);
   const openNavigationGroup = useCallback((group) => {
+    if (activeGameMode) return;
     if (group.portal) {
       onGoToPortal();
       return;
     }
     const currentTab = group.tabs.find(tab => tab.id === activeTab);
     openNavigationTab(currentTab || group.tabs.find(tab => !tab.portal) || group.tabs[0]);
-  }, [activeTab, onGoToPortal, openNavigationTab]);
+  }, [activeGameMode, activeTab, onGoToPortal, openNavigationTab]);
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
@@ -3716,7 +3949,7 @@ export default function HubScreen({
   const [adminUniverseSearch, setAdminUniverseSearch] = useState('');
   const [expandedAdminUniverses, setExpandedAdminUniverses] = useState({});
   const [selectedCollectionUniverse, setSelectedCollectionUniverse] = useState(null);
-  const hubContentMax = 'min(1500px, calc(100vw - 32px))';
+  const hubContentMax = activeGameMode ? '100%' : 'min(1500px, calc(100vw - 32px))';
   const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
   const disabledAssetSets = useMemo(() => ({
@@ -3728,6 +3961,28 @@ export default function HubScreen({
   useEffect(() => {
     setCompletedArcIntros(activityProgress?.arcIntros || {});
   }, [activityProgress?.arcIntros]);
+
+  useEffect(() => {
+    if (!activeGameMode) return undefined;
+    const onKeyDown = (event) => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      if (event.repeat) return;
+      setPauseMenuOpen(open => !open);
+    };
+    window.addEventListener('keydown', onKeyDown, { passive: false });
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [activeGameMode]);
+
+  // inert bloque aussi le clavier et le pointeur derriere la modale de pause.
+  useEffect(() => {
+    const workspace = gameWorkspaceRef.current;
+    if (!workspace) return undefined;
+    workspace.inert = Boolean(activeGameMode && pauseMenuOpen);
+    return () => {
+      workspace.inert = false;
+    };
+  }, [activeGameMode, pauseMenuOpen]);
   const isAssetDisabled = useCallback((type, id) => disabledAssetSets[type]?.has(String(id)), [disabledAssetSets]);
   const getEnemyAdminKey = useCallback((universe, enemy) => `${universe}::${enemy?.name || 'unknown'}`, []);
   const getStageAdminKey = useCallback((stage) => String(stage?.id), []);
@@ -6862,7 +7117,11 @@ export default function HubScreen({
   };
 
   return (
-    <div className="hub-screen" data-hud-theme={activeHudTheme?.id || 'nexus-default'} style={{
+    <div
+      className={`hub-screen ${activeGameMode ? 'is-dedicated-game' : ''}`}
+      data-hud-theme={activeHudTheme?.id || 'nexus-default'}
+      data-game-mode={activeGameMode || 'hub'}
+      style={{
       minHeight: '100vh',
       background: activeHudTheme?.image
         ? `linear-gradient(180deg, rgba(3,1,11,0.82), rgba(3,1,11,0.96)), url(${activeHudTheme.image}) center / cover fixed`
@@ -6876,7 +7135,16 @@ export default function HubScreen({
       alignItems: 'center',
       boxSizing: 'border-box',
       width: '100%'
-    }}>
+    }}
+    >
+      <DedicatedGameSessionChrome
+        lang={lang}
+        mode={activeGameMode}
+        paused={pauseMenuOpen}
+        onOpenPause={() => setPauseMenuOpen(true)}
+        onResume={() => setPauseMenuOpen(false)}
+        onConfirmExit={confirmDedicatedGameExit}
+      />
       <header className="hub-header" style={{
         width: '100%',
         maxWidth: hubContentMax,
@@ -6940,7 +7208,7 @@ export default function HubScreen({
       </section>
 
       {nexusMessage && (
-        <div style={{
+        <div className="hub-nexus-message" style={{
           width: '100%',
           maxWidth: hubContentMax,
           marginBottom: '14px',
@@ -6990,7 +7258,7 @@ export default function HubScreen({
 
       {/* Media Category Filter Bar */}
       {['missions', 'roster', 'codex', 'collection'].includes(activeTab) && (
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: hubContentMax, boxSizing: 'border-box', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
+        <div className="hub-media-filter" style={{ display: 'flex', gap: '8px', marginBottom: '15px', width: '100%', maxWidth: hubContentMax, boxSizing: 'border-box', alignItems: 'center', background: 'rgba(255,255,255,0.01)', padding: '10px', borderRadius: '4px', border: '1px solid #222', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '11px', color: '#888', textTransform: 'uppercase', marginRight: '5px' }}>
             {activeTab === 'missions'
               ? (lang === 'fr' ? 'Filtre des missions :' : 'Mission filter:')
@@ -7042,7 +7310,12 @@ export default function HubScreen({
       )}
 
       {/* Tab bodies */}
-      <div style={{ width: '100%', maxWidth: hubContentMax, flex: 1 }}>
+      <div
+        ref={gameWorkspaceRef}
+        className="hub-tab-workspace"
+        aria-hidden={activeGameMode && pauseMenuOpen ? 'true' : undefined}
+        style={{ width: '100%', maxWidth: hubContentMax, flex: 1 }}
+      >
 
         {activeTab === 'mosaicHub' && (
           <MosaicCityHub
@@ -7071,6 +7344,10 @@ export default function HubScreen({
             lang={lang}
             heroes={HEROES_DB}
             unlockedHeroes={unlockedHeroes}
+            onSessionStart={startExtinctionSession}
+            onSessionEnd={finishExtinctionSession}
+            sessionPaused={activeGameMode === 'extinction' && pauseMenuOpen}
+            sessionExitRequest={sessionExitRequests.extinction}
           />
         )}
 
@@ -7086,6 +7363,11 @@ export default function HubScreen({
             setPortalCollection={setPortalCollection}
             hiddenUniverses={hiddenUniverses}
             onMatchComplete={recordFighterMatch}
+            onSessionStart={startFighterSession}
+            onSessionEnd={finishFighterSession}
+            sessionPaused={activeGameMode === 'fighter' && pauseMenuOpen}
+            sessionExitRequest={sessionExitRequests.fighter}
+            dedicatedSession={activeGameMode === 'fighter'}
           />
         )}
 
@@ -7116,6 +7398,11 @@ export default function HubScreen({
             portalCollection={portalCollection}
             setPortalCollection={setPortalCollection}
             hiddenUniverses={hiddenUniverses}
+            onSessionStart={startRaceSession}
+            onSessionEnd={finishRaceSession}
+            sessionPaused={activeGameMode === 'race' && pauseMenuOpen}
+            sessionExitRequest={sessionExitRequests.race}
+            dedicatedSession={activeGameMode === 'race'}
           />
         )}
 
