@@ -37,9 +37,10 @@ const getStableNumericSeed = (value) => {
   return (rawSeed >>> 0) || 1;
 };
 
-export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, onBattleEnd }) {
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, onBattleEnd, onSessionComplete, sessionPaused = false, dedicatedSession = false }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
+  const sessionPausedRef = useRef(sessionPaused);
   const battlePickupsRef = useRef([]);
   const battleItemPoolRef = useRef([]);
   const nextBattleItemDropRef = useRef(520);
@@ -106,6 +107,23 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const hiddenUniverseSet = new Set(hiddenUniverses || []);
   const battleConfig = customBattle || stage.customBattle || null;
   battleCompletedRef.current = battleCompleted;
+
+  // Une pause pilotee par le shell vide les controles sans reconstruire le moteur.
+  useEffect(() => {
+    sessionPausedRef.current = sessionPaused;
+    engineRef.current?.setPaused?.(sessionPaused);
+    if (!sessionPaused) return;
+    keysPressed.current = {};
+    tacticsCameraPointerRef.current = {
+      active: false,
+      pointerId: null,
+      lastClientX: 0,
+      lastClientY: 0,
+      travel: 0,
+      moved: false
+    };
+    suppressTacticsClickRef.current = false;
+  }, [sessionPaused]);
   const arenaStage = ['Smash', 'Tactics'].includes(stage.mode) && hiddenUniverseSet.has(stage.universe)
     ? { ...stage, forceBaseArena: true, dlcSuppressedArena: true }
     : stage;
@@ -582,6 +600,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const activateBattleItem = (pickup, source = 'manual', requestedSide = 'player') => {
+    if (sessionPausedRef.current) return;
     if (!pickup || pickup.used || !engineRef.current || battleCompletedRef.current) return;
     const engine = engineRef.current;
     const effect = pickup.effect || {};
@@ -723,6 +742,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const activateCustomAssist = (side = 'player') => {
+    if (sessionPausedRef.current) return false;
     const assist = battleConfig?.cosmetics?.npcAssist;
     const engine = engineRef.current;
     if (side === 'opponent' && battleConfig?.opponentControl !== 'p2') return false;
@@ -787,6 +807,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const activateCustomFieldSuper = (side = 'player') => {
+    if (sessionPausedRef.current) return false;
     const fieldSuper = battleConfig?.fieldSuper;
     const engine = engineRef.current;
     const resolvedSide = side === 'opponent' ? 'opponent' : 'player';
@@ -965,6 +986,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       setBattleResult(result);
       setBattleSummary(summary);
       sound.stopBgm();
+      onSessionComplete?.(result, summary);
     };
 
     // Load correct mode engine
@@ -984,6 +1006,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       sound.stopBgm();
       return undefined;
     }
+    engineRef.current.setPaused?.(sessionPausedRef.current);
 
     knockoutActorStateRef.current = {
       heroes: new Map((engineRef.current.heroes || []).map(actor => [
@@ -1010,6 +1033,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
 
     const handleKeyDown = (e) => {
+      if (sessionPausedRef.current) return;
       keysPressed.current[e.key] = true;
       keysPressed.current[e.code] = true;
       const isCustomP2 = battleConfig?.opponentControl === 'p2';
@@ -1069,6 +1093,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     const tick = () => {
       try {
+        if (sessionPausedRef.current) {
+          frameId = requestAnimationFrame(tick);
+          return;
+        }
         const ctx = canvas.getContext('2d');
         if (!ctx) {
           throw new Error('2D context unavailable');
@@ -1274,6 +1302,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   }, [stage, activeTeam]);
 
   const handleCanvasClick = (e) => {
+    if (sessionPausedRef.current) return;
     if (stage.mode !== 'Tactics' || !engineRef.current) return;
     if (suppressTacticsClickRef.current) {
       suppressTacticsClickRef.current = false;
@@ -1301,6 +1330,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const handleTacticsPointerDown = (e) => {
+    if (sessionPausedRef.current) return;
     if (stage.mode !== 'Tactics' || e.button !== 0 || !engineRef.current) return;
     suppressTacticsClickRef.current = false;
     tacticsCameraPointerRef.current = {
@@ -1315,6 +1345,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const handleTacticsPointerMove = (e) => {
+    if (sessionPausedRef.current) return;
     const pointer = tacticsCameraPointerRef.current;
     if (
       stage.mode !== 'Tactics'
@@ -1368,6 +1399,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const canvas = canvasRef.current;
     if (stage.mode !== 'Tactics' || !canvas) return undefined;
     const handleWheel = (event) => {
+      if (sessionPausedRef.current) return;
       if (!engineRef.current) return;
       const rect = canvas.getBoundingClientRect();
       const anchorX = (event.clientX - rect.left) * (canvas.width / rect.width);
@@ -1386,6 +1418,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   }, [stage.mode]);
 
   const handleActiveHeroAbility = (type) => {
+    if (sessionPausedRef.current) return;
     if (!engineRef.current || battleCompleted) return;
     const engine = engineRef.current;
 
@@ -1409,6 +1442,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const handleCancelTacticsAction = () => {
+    if (sessionPausedRef.current) return;
     if (stage.mode !== 'Tactics' || !engineRef.current || battleCompleted) return;
     if (engineRef.current.cancelSelectedAction?.()) {
       setSelectedAction(engineRef.current.selectedAction);
@@ -1418,6 +1452,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
   // Trigger Combat Event Item
   const handleActivateEventItem = () => {
+    if (sessionPausedRef.current) return;
     if (!engineRef.current || eventItemUsed || battleCompleted) return;
 
     const activeHero = HEROES_DB.find(h => h.id === activeHeroId);
@@ -1435,6 +1470,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const swapActiveHero = (id) => {
+    if (sessionPausedRef.current) return;
     if (!engineRef.current) return;
     if (stage.mode === 'Smash') {
       engineRef.current.setActiveHero(id);
@@ -1469,6 +1505,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const toggleAuto = () => {
+    if (sessionPausedRef.current) return;
     const nextVal = !autoBattle;
     setAutoBattle(nextVal);
     if (engineRef.current) {
@@ -1622,18 +1659,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             {getTranslation(lang, 'btnSpeedUp')}
           </button>
 
-          <button
-            onClick={() => onBattleEnd('quit')}
-            className="btn-retro"
-            title={stage.isCustomBattle
-              ? (lang === 'fr' ? 'Quitte la simulation sans modifier la progression et retourne a sa configuration.' : 'Leave the simulation without changing progression and return to setup.')
-              : (lang === 'fr' ? 'Quitte le combat et retourne au hub. La mission compte comme abandon.' : 'Leave combat and return to the hub. The mission counts as a retreat.')}
-            style={{ borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '6px 12px' }}
-          >
-            {stage.isCustomBattle
-              ? (lang === 'fr' ? '← CONFIGURATION' : '← SETUP')
-              : getTranslation(lang, 'retreat')}
-          </button>
+          {!dedicatedSession && (
+            <button
+              onClick={() => onBattleEnd('quit')}
+              className="btn-retro"
+              title={stage.isCustomBattle
+                ? (lang === 'fr' ? 'Quitte la simulation sans modifier la progression et retourne a sa configuration.' : 'Leave the simulation without changing progression and return to setup.')
+                : (lang === 'fr' ? 'Quitte le combat et retourne au hub. La mission compte comme abandon.' : 'Leave combat and return to the hub. The mission counts as a retreat.')}
+              style={{ borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '6px 12px' }}
+            >
+              {stage.isCustomBattle
+                ? (lang === 'fr' ? '← CONFIGURATION' : '← SETUP')
+                : getTranslation(lang, 'retreat')}
+            </button>
+          )}
         </div>
       </div>
 

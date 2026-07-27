@@ -7183,6 +7183,12 @@ summary:focus-visible {
   user-select: none;
 }
 
+.hub-screen.is-dedicated-game > .dedicated-game-toolbar,
+.hub-screen.is-dedicated-game > .dedicated-game-pause-overlay {
+  width: auto;
+  max-width: none !important;
+}
+
 body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
   display: none;
 }
@@ -7290,9 +7296,71 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
 
 .hub-screen.is-dedicated-game .fighter-mode-shell,
 .hub-screen.is-dedicated-game .race-mode-shell,
-.hub-screen.is-dedicated-game .extinction-panel {
+.hub-screen.is-dedicated-game .extinction-panel,
+.hub-screen.is-dedicated-game .mosaic-rpg-panel,
+.hub-screen.is-dedicated-game .battle-screen {
   width: min(1640px, 100%);
   margin: 0 auto;
+}
+
+.hub-screen.is-dedicated-game .battle-screen {
+  min-height: calc(100dvh - 84px) !important;
+  padding: 12px 16px 16px !important;
+}
+
+.hub-screen.is-dedicated-game .battle-screen > div {
+  max-width: min(1600px, 100%) !important;
+}
+
+.hub-screen.is-dedicated-game .mosaic-rpg-panel {
+  min-height: calc(100dvh - 84px);
+  box-sizing: border-box;
+  grid-template-columns: minmax(260px, 0.42fr) minmax(560px, 1.58fr);
+  align-items: stretch;
+  padding: 12px;
+}
+
+.hub-screen.is-dedicated-game .mosaic-rpg-stage {
+  align-content: stretch;
+}
+
+.hub-screen.is-dedicated-game .mosaic-rpg-canvas {
+  width: 100%;
+  min-height: min(78dvh, 820px);
+}
+
+.hero-resonance-actions {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
+.hero-resonance-actions > div:last-child,
+.arsenal-workspace-heading > div,
+.squad-slot-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.hero-resonance-actions .btn-retro,
+.arsenal-workspace-heading .btn-retro,
+.squad-slot-actions .btn-retro {
+  min-width: 0;
+  padding: 6px 8px;
+  font-size: 9px;
+}
+
+.squad-slot-actions {
+  margin-top: 8px;
+}
+
+.arsenal-workspace-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .extinction-setup-copy {
@@ -7325,6 +7393,17 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
 
 .extinction-panel-active .fps-royale-canvas {
   min-height: min(76dvh, 760px);
+}
+
+@media (max-width: 900px) {
+  .hub-screen.is-dedicated-game .mosaic-rpg-panel {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .hub-screen.is-dedicated-game .mosaic-rpg-canvas {
+    min-height: min(62dvh, 620px);
+  }
 }
 
 @media (max-width: 680px) {
@@ -7367,6 +7446,24 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
 
   .extinction-panel-active .fps-royale-canvas {
     min-height: 52dvh;
+  }
+
+  .hub-screen.is-dedicated-game .mosaic-rpg-panel {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .hub-screen.is-dedicated-game .mosaic-rpg-canvas {
+    min-height: 52dvh;
+  }
+
+  .hero-resonance-actions {
+    justify-items: stretch;
+  }
+
+  .arsenal-workspace-heading {
+    align-items: stretch;
+    flex-direction: column;
   }
 }
 

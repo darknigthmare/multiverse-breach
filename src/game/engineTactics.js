@@ -52,6 +52,7 @@ export class EngineTactics {
       && Array.isArray(enemiesData.customRoster);
     this.hazardsDisabled = stage.disableHazards === true && !!stage.customBattle;
     this.disposed = false;
+    this.paused = false;
     this.timers = new Set();
     this.generatedTilePattern = null;
     this.battlefield = getTacticsBattlefield(stage);
@@ -196,12 +197,28 @@ export class EngineTactics {
 
   schedule(callback, delay) {
     if (this.disposed) return null;
+    const runWhenResumed = () => {
+      if (this.disposed) return;
+      if (this.paused) {
+        const retryTimer = setTimeout(() => {
+          this.timers.delete(retryTimer);
+          runWhenResumed();
+        }, 50);
+        this.timers.add(retryTimer);
+        return;
+      }
+      callback();
+    };
     const timer = setTimeout(() => {
       this.timers.delete(timer);
-      if (!this.disposed) callback();
+      runWhenResumed();
     }, delay);
     this.timers.add(timer);
     return timer;
+  }
+
+  setPaused(paused) {
+    this.paused = Boolean(paused);
   }
 
   dispose() {

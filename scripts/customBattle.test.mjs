@@ -1,11 +1,18 @@
 import { after, before, test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
+const customBattleModeSource = readFileSync(path.join(projectRoot, 'src/components/CustomBattleMode.jsx'), 'utf8');
+const gameCanvasSource = readFileSync(path.join(projectRoot, 'src/components/GameCanvas.jsx'), 'utf8');
+const hubScreenSource = readFileSync(path.join(projectRoot, 'src/components/HubScreen.jsx'), 'utf8');
+const engineRpgSource = readFileSync(path.join(projectRoot, 'src/game/engineRpg.js'), 'utf8');
+const engineTacticsSource = readFileSync(path.join(projectRoot, 'src/game/engineTactics.js'), 'utf8');
+const indexCssSource = readFileSync(path.join(projectRoot, 'src/index.css'), 'utf8');
 let vite;
 let customBattle;
 let fighterModule;
@@ -146,6 +153,84 @@ const makeTacticsLineEngine = (simpleAction) => {
   engine.calculateAttackRange();
   return engine;
 };
+
+test('hero resonance belongs to Arsenal and keeps shared hero cross-links', () => {
+  const nexusGroup = hubScreenSource.slice(
+    hubScreenSource.indexOf("id: 'nexus'"),
+    hubScreenSource.indexOf("id: 'portal'")
+  );
+  const arsenalGroup = hubScreenSource.slice(
+    hubScreenSource.indexOf("id: 'arsenal'"),
+    hubScreenSource.indexOf("id: 'archives'")
+  );
+
+  assert.equal(nexusGroup.includes("id: 'roster'"), false);
+  assert.equal(arsenalGroup.includes("id: 'roster'"), true);
+  assert.equal((hubScreenSource.match(/\{ id: 'roster', label:/g) || []).length, 1);
+  assert.match(hubScreenSource, /openHeroArsenal\(hero\.id, 'roster'\)/);
+  assert.match(hubScreenSource, /openHeroArsenal\(selectedHero\.id, 'inventory'\)/);
+  assert.match(hubScreenSource, /openHeroArsenal\(selectedHero\.id, 'party'\)/);
+});
+
+test('Custom Battle and Mosaic City use the dedicated session contract', () => {
+  assert.match(hubScreenSource, /startDedicatedGame\('custom'\)/);
+  assert.match(hubScreenSource, /tab\.id === 'mosaicHub'/);
+  assert.match(hubScreenSource, /startDedicatedGame\('nexus'\)/);
+  assert.match(hubScreenSource, /sessionExitRequest=\{sessionExitRequests\.custom\}/);
+  assert.match(hubScreenSource, /sessionExitRequest=\{sessionExitRequests\.nexus\}/);
+  assert.match(customBattleModeSource, /onSessionStart\?\.\(\)/);
+  assert.match(customBattleModeSource, /onSessionStart=\{beginDedicatedSession\}/);
+  assert.match(customBattleModeSource, /onSessionEnd\?\.\(\{ reason: 'abandoned' \}\)/);
+  assert.match(hubScreenSource, /nexusLandingTab[\s\S]*tab\.id === 'anchorProfile'/);
+});
+
+test('Mosaic City freezes its loop and only leaves through controlled transitions', () => {
+  const mosaicCitySource = hubScreenSource.slice(
+    hubScreenSource.indexOf('function MosaicCityHub'),
+    hubScreenSource.indexOf('function ExtinctionRoyale')
+  );
+
+  assert.match(mosaicCitySource, /sessionPausedRef = useRef\(sessionPaused\)/);
+  assert.match(mosaicCitySource, /if \(sessionPausedRef\.current\) \{\s*rafId = window\.requestAnimationFrame\(loop\)/);
+  assert.match(mosaicCitySource, /if \(sessionPausedRef\.current\) return;\s*const state = stateRef\.current/);
+  assert.match(mosaicCitySource, /onSessionEnd\?\.\(\{ reason: 'abandoned' \}\)/);
+  assert.match(hubScreenSource, /finishNexusSession\(\{ reason: 'transition' \}\);\s*setActiveTab\('missions'\)/);
+  assert.match(hubScreenSource, /finishNexusSession\(\{ reason: 'transition' \}\);\s*setActiveTab\('codex'\)/);
+});
+
+test('dedicated custom runtime freezes input and hides its direct setup exit', () => {
+  assert.match(gameCanvasSource, /sessionPausedRef = useRef\(sessionPaused\)/);
+  assert.match(gameCanvasSource, /engineRef\.current\?\.setPaused\?\.\(sessionPaused\)/);
+  assert.match(gameCanvasSource, /if \(sessionPausedRef\.current\) \{\s*frameId = requestAnimationFrame\(tick\)/);
+  assert.match(gameCanvasSource, /\{!dedicatedSession && \(\s*<button\s*onClick=\{\(\) => onBattleEnd\('quit'\)\}/);
+  assert.match(customBattleModeSource, /sessionPaused=\{sessionPaused\}/);
+  assert.match(customBattleModeSource, /dedicatedSession=\{dedicatedSession\}/);
+  assert.match(engineRpgSource, /if \(this\.paused\) \{[\s\S]*runWhenResumed\(\)/);
+  assert.match(engineTacticsSource, /if \(this\.paused\) \{[\s\S]*runWhenResumed\(\)/);
+  assert.match(indexCssSource, /@media \(max-width: 900px\) \{[\s\S]*\.hub-screen\.is-dedicated-game \.mosaic-rpg-panel \{[\s\S]*grid-template-columns: 1fr/);
+});
+
+test('RPG and Tactics scheduled actions wait until the dedicated pause resumes', async () => {
+  for (const EngineClass of [rpgModule.EngineRpg, tacticsModule.EngineTactics]) {
+    const schedulerHost = {
+      disposed: false,
+      paused: true,
+      timers: new Set()
+    };
+    let callbackRan = false;
+
+    EngineClass.prototype.schedule.call(schedulerHost, () => {
+      callbackRan = true;
+    }, 10);
+    await new Promise(resolve => setTimeout(resolve, 40));
+    assert.equal(callbackRan, false);
+
+    EngineClass.prototype.setPaused.call(schedulerHost, false);
+    await new Promise(resolve => setTimeout(resolve, 80));
+    assert.equal(callbackRan, true);
+    schedulerHost.timers.forEach(timer => clearTimeout(timer));
+  }
+});
 
 test('custom battle preset keeps unique bounded teams and valid rules', () => {
   const normalized = customBattle.normalizeCustomBattlePreset({

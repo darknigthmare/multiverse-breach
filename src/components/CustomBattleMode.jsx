@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import GameCanvas from './GameCanvas';
 import FighterMode from './FighterMode';
 import sound from '../game/soundEngine';
@@ -193,10 +193,17 @@ export default function CustomBattleMode({
   portalCollection = {},
   setPortalCollection = () => {},
   hiddenUniverses = [],
-  disabledAssets = {}
+  disabledAssets = {},
+  onSessionStart,
+  onSessionEnd,
+  sessionPaused = false,
+  sessionExitRequest = 0,
+  dedicatedSession = false
 }) {
   const [phase, setPhase] = useState('setup');
   const [runtimeNonce, setRuntimeNonce] = useState(0);
+  const sessionActiveRef = useRef(false);
+  const sessionExitRequestRef = useRef(sessionExitRequest);
   const hiddenSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
   const disabledHeroSet = useMemo(() => new Set(disabledAssets.heroes || []), [disabledAssets.heroes]);
   const disabledStageSet = useMemo(
@@ -216,6 +223,16 @@ export default function CustomBattleMode({
   const allowedHeroIds = useMemo(() => availableHeroes.map(hero => hero.id), [availableHeroes]);
   const allowedEnemyIds = useMemo(() => enemyCatalog.map(enemy => enemy.id), [enemyCatalog]);
   const [preset, setPreset] = useState(() => normalizeCustomBattlePreset(portalCollection.customBattlePreset));
+
+  // Le wrapper reste seul proprietaire de l abandon pour tous les moteurs custom.
+  useEffect(() => {
+    if (sessionExitRequestRef.current === sessionExitRequest) return;
+    sessionExitRequestRef.current = sessionExitRequest;
+    setPhase('setup');
+    if (!sessionActiveRef.current) return;
+    sessionActiveRef.current = false;
+    onSessionEnd?.({ reason: 'abandoned' });
+  }, [onSessionEnd, sessionExitRequest]);
 
   useEffect(() => {
     setPreset(previous => {
@@ -321,10 +338,29 @@ export default function CustomBattleMode({
     nonce: runtimeNonce
   }), [enemyData, preset, runtimeNonce, selectedArchive, selectedBattleMusic, selectedCustomCosmetics, selectedFieldSuper, selectedStageMusic]);
 
+  const endDedicatedSession = (report) => {
+    if (!sessionActiveRef.current) return;
+    sessionActiveRef.current = false;
+    onSessionEnd?.(report);
+  };
+
+  const beginDedicatedSession = () => {
+    if (sessionActiveRef.current) return;
+    sessionActiveRef.current = true;
+    onSessionStart?.();
+  };
+
+  const returnToSetup = (reason = 'quit') => {
+    setPhase('setup');
+    endDedicatedSession({ reason: reason === 'quit' ? 'abandoned' : reason });
+  };
+
   const launch = () => {
+    if (sessionPaused) return;
     if (!preset.playerTeamIds.length) return;
     if (preset.mode === 'Fighter' && !preset.opponentTeamIds.length) return;
     if (preset.mode !== 'Fighter' && !enemyData.customRoster.length) return;
+    beginDedicatedSession();
     setRuntimeNonce(previous => previous + 1);
     setPhase(preset.mode === 'Fighter' ? 'fighter' : 'battle');
     sound.playSfx('portal');
@@ -346,7 +382,12 @@ export default function CustomBattleMode({
         hiddenUniverses={hiddenUniverses}
         disabledAssets={disabledAssets}
         customBattle={runtimeStage.customBattle}
-        onBattleEnd={() => setPhase('setup')}
+        onSessionComplete={(result, summary) => {
+          endDedicatedSession({ reason: 'completed', result, summary });
+        }}
+        onBattleEnd={(result) => returnToSetup(result)}
+        sessionPaused={sessionPaused}
+        dedicatedSession={dedicatedSession}
       />
     );
   }
@@ -376,7 +417,14 @@ export default function CustomBattleMode({
             difficulty: preset.difficulty,
             autoStart: true
           }}
-          onExit={() => setPhase('setup')}
+          onExit={() => returnToSetup('quit')}
+          onSessionStart={beginDedicatedSession}
+          onSessionEnd={(report = {}) => {
+            endDedicatedSession(report);
+            if (report.reason === 'abandoned') setPhase('setup');
+          }}
+          sessionPaused={sessionPaused}
+          dedicatedSession={dedicatedSession}
         />
       </div>
     );

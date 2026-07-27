@@ -77,9 +77,17 @@ function OperationsSectionTabs({ lang, items, activeId, onChange, label }) {
 }
 
 const DEDICATED_GAME_MODES = {
+  custom: {
+    fr: 'COMBAT CUSTOM',
+    en: 'CUSTOM BATTLE'
+  },
   fighter: {
     fr: 'COMBAT A.R.C.A.',
     en: 'A.R.C.A. FIGHTER'
+  },
+  nexus: {
+    fr: 'CITE-MOSAIQUE',
+    en: 'MOSAIC CITY'
   },
   race: {
     fr: 'COURSE A.R.C.A.',
@@ -151,6 +159,7 @@ function DedicatedGameSessionChrome({
 
   if (!mode) return null;
   const modeLabel = DEDICATED_GAME_MODES[mode]?.[lang] || DEDICATED_GAME_MODES[mode]?.fr || mode;
+  const isPersistentNexus = mode === 'nexus';
   return (
     <>
       <div
@@ -188,16 +197,22 @@ function DedicatedGameSessionChrome({
             <span>{modeLabel}</span>
             <h2 id="dedicated-pause-title">{lang === 'fr' ? 'Partie en pause' : 'Game paused'}</h2>
             <p id="dedicated-pause-description">
-              {lang === 'fr'
-                ? 'La simulation est gelee. Reprends la partie ou confirme son abandon pour revenir a la configuration du mode.'
-                : 'The simulation is frozen. Resume play or confirm abandonment to return to this mode setup.'}
+              {isPersistentNexus
+                ? (lang === 'fr'
+                  ? 'La Cite-Mosaique est gelee. Reprends l exploration ou quitte le Nexus pour revenir au controle des breches.'
+                  : 'Mosaic City is frozen. Resume exploration or leave the Nexus to return to rift control.')
+                : (lang === 'fr'
+                  ? 'La simulation est gelee. Reprends la partie ou confirme son abandon pour revenir a la configuration du mode.'
+                  : 'The simulation is frozen. Resume play or confirm abandonment to return to this mode setup.')}
             </p>
             <div>
               <button type="button" className="btn-retro" onClick={onResume}>
                 {lang === 'fr' ? 'REPRENDRE' : 'RESUME'}
               </button>
               <button type="button" className="btn-retro dedicated-game-abandon-button" onClick={onConfirmExit}>
-                {lang === 'fr' ? 'CONFIRMER L ABANDON' : 'CONFIRM ABANDON'}
+                {isPersistentNexus
+                  ? (lang === 'fr' ? 'QUITTER LE NEXUS' : 'LEAVE NEXUS')
+                  : (lang === 'fr' ? 'CONFIRMER L ABANDON' : 'CONFIRM ABANDON')}
               </button>
             </div>
           </section>
@@ -660,7 +675,6 @@ const HUB_NAV_GROUPS = [
     title: { fr: 'Exploration de la Cite-Mosaique et dossiers des heros', en: 'Mosaic City exploration and hero records' },
     tabs: [
       { id: 'mosaicHub', label: { fr: 'CITE-MOSAIQUE', en: 'MOSAIC CITY' }, title: { fr: 'Explore le hub RPG et ses quartiers d univers.', en: 'Explore the RPG hub and its universe districts.' } },
-      { id: 'roster', label: { fr: 'RESONANCE HEROS', en: 'HERO RESONANCE' }, title: { fr: 'Consulte les heros, niveaux, talents et histoires personnelles.', en: 'View heroes, levels, talents, and personal stories.' } },
       { id: 'anchorProfile', label: { fr: 'DOSSIER D ANCRE', en: 'ANCHOR RECORD' }, title: { fr: 'Consulte ton identite de commandement, ton code ami et ta progression publique.', en: 'View your commander identity, friend code, and public progression.' } }
     ]
   },
@@ -677,6 +691,7 @@ const HUB_NAV_GROUPS = [
     title: { fr: 'Gestion de l equipe, equipement des heros et ressources', en: 'Team management, hero equipment, and resources' },
     tabs: [
       { id: 'party', label: { fr: 'CELLULE D ANCRE', en: 'ANCHOR CELL' }, title: { fr: 'Compose et gere l equipe active utilisee en mission.', en: 'Build and manage the active team used in missions.' } },
+      { id: 'roster', label: { fr: 'RESONANCE HEROIQUE', en: 'HERO RESONANCE' }, title: { fr: 'Developpe les niveaux, talents, apparences et dossiers de chaque heros.', en: 'Develop each hero level, talents, appearances, and records.' } },
       { id: 'inventory', label: { fr: 'EQUIPEMENT DES HEROS', en: 'HERO EQUIPMENT' }, title: { fr: 'Equipe les reliques et objets evenementiels de chaque heros.', en: 'Equip each hero with relics and event items.' } },
       { id: 'shop', label: { fr: 'ECHANGE DE SIGNAUX', en: 'SIGNAL EXCHANGE' }, title: { fr: 'Depense les ressources dans la boutique et les evenements.', en: 'Spend resources in the shop and event exchange.' } }
     ]
@@ -1541,8 +1556,22 @@ function FactionArcBrowser({ lang, arcProgress, onClaimArcReward }) {
   );
 }
 
-function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages = [], playerProfile, onOpenMissions, onOpenCodex }) {
+function MosaicCityHub({
+  lang,
+  heroes,
+  unlockedHeroes,
+  completedStages,
+  stages = [],
+  playerProfile,
+  onOpenMissions,
+  onOpenCodex,
+  onSessionEnd,
+  sessionPaused = false,
+  sessionExitRequest = 0
+}) {
   const canvasRef = useRef(null);
+  const sessionPausedRef = useRef(sessionPaused);
+  const sessionExitRequestRef = useRef(sessionExitRequest);
   const stateRef = useRef({
     t: 0,
     player: { x: 780, y: 520, speed: 2.35, facing: 1 },
@@ -1809,6 +1838,23 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
         ? (lang === 'fr' ? 'salle en stabilisation' : 'stabilizing room')
         : (lang === 'fr' ? 'salle brumeuse' : 'fogged room');
 
+  // Le shell dedie pilote la pause et vide toute entree encore maintenue.
+  useEffect(() => {
+    sessionPausedRef.current = sessionPaused;
+    if (!sessionPaused) return;
+    stateRef.current.keys = {};
+    stateRef.current.destination = null;
+  }, [sessionPaused]);
+
+  // Une sortie confirmee depuis la pause rend le controle au hub principal.
+  useEffect(() => {
+    if (sessionExitRequestRef.current === sessionExitRequest) return;
+    sessionExitRequestRef.current = sessionExitRequest;
+    stateRef.current.keys = {};
+    stateRef.current.destination = null;
+    onSessionEnd?.({ reason: 'abandoned' });
+  }, [onSessionEnd, sessionExitRequest]);
+
   useEffect(() => {
     const districtHeroes = district.universe
       ? [
@@ -1836,6 +1882,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
   }, [completedStages.length, district, ownedHeroes, zones]);
 
   const switchDistrict = useCallback((portal) => {
+    if (sessionPausedRef.current) return;
     const target = districts[portal.target] || districts.atrium;
     const spawn = portal.spawn || target.spawn;
     currentDistrictRef.current = target.id;
@@ -1862,6 +1909,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
   }, [districts, lang]);
 
   const interactWithNearby = useCallback(() => {
+    if (sessionPausedRef.current) return;
     const state = stateRef.current;
     if (nearPortalRef.current) {
       switchDistrict(nearPortalRef.current);
@@ -1917,6 +1965,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
 
   useEffect(() => {
     const onKeyDown = event => {
+      if (sessionPausedRef.current) return;
       const key = event.key.toLowerCase();
       if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd'].includes(key)) {
         stateRef.current.keys[key] = true;
@@ -2036,6 +2085,10 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
     };
 
     const loop = () => {
+      if (sessionPausedRef.current) {
+        rafId = window.requestAnimationFrame(loop);
+        return;
+      }
       const state = stateRef.current;
       state.t += 1;
       const keys = state.keys;
@@ -2352,6 +2405,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
   }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, lang, ownedHeroes.length, playerName, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
+    if (sessionPausedRef.current) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
@@ -2389,6 +2443,7 @@ function MosaicCityHub({ lang, heroes, unlockedHeroes, completedStages, stages =
   };
 
   const setVirtualKey = (key, active) => {
+    if (sessionPausedRef.current) return;
     stateRef.current.keys[key] = active;
     if (active) stateRef.current.destination = null;
   };
@@ -3877,7 +3932,9 @@ export default function HubScreen({
   const [activeGameMode, setActiveGameMode] = useState(null);
   const [pauseMenuOpen, setPauseMenuOpen] = useState(false);
   const [sessionExitRequests, setSessionExitRequests] = useState({
+    custom: 0,
     fighter: 0,
+    nexus: 0,
     race: 0,
     extinction: 0
   });
@@ -3891,6 +3948,12 @@ export default function HubScreen({
   }, []);
   const startFighterSession = useCallback(() => startDedicatedGame('fighter'), [startDedicatedGame]);
   const finishFighterSession = useCallback(() => finishDedicatedGame('fighter'), [finishDedicatedGame]);
+  const startCustomSession = useCallback(() => startDedicatedGame('custom'), [startDedicatedGame]);
+  const finishCustomSession = useCallback(() => finishDedicatedGame('custom'), [finishDedicatedGame]);
+  const finishNexusSession = useCallback((report = {}) => {
+    finishDedicatedGame('nexus');
+    if (report.reason === 'abandoned') setActiveTab('missions');
+  }, [finishDedicatedGame]);
   const startRaceSession = useCallback(() => startDedicatedGame('race'), [startDedicatedGame]);
   const finishRaceSession = useCallback(() => finishDedicatedGame('race'), [finishDedicatedGame]);
   const startExtinctionSession = useCallback(() => startDedicatedGame('extinction'), [startDedicatedGame]);
@@ -3921,8 +3984,11 @@ export default function HubScreen({
       return;
     }
     setActiveTab(tab.id);
+    if (tab.id === 'mosaicHub') {
+      startDedicatedGame('nexus');
+    }
     sound.playSfx('coin');
-  }, [activeGameMode, onGoToPortal]);
+  }, [activeGameMode, onGoToPortal, startDedicatedGame]);
   const openNavigationGroup = useCallback((group) => {
     if (activeGameMode) return;
     if (group.portal) {
@@ -3930,10 +3996,21 @@ export default function HubScreen({
       return;
     }
     const currentTab = group.tabs.find(tab => tab.id === activeTab);
-    openNavigationTab(currentTab || group.tabs.find(tab => !tab.portal) || group.tabs[0]);
+    const nexusLandingTab = group.id === 'nexus'
+      ? group.tabs.find(tab => tab.id === 'anchorProfile')
+      : null;
+    openNavigationTab(currentTab || nexusLandingTab || group.tabs.find(tab => !tab.portal) || group.tabs[0]);
   }, [activeGameMode, activeTab, onGoToPortal, openNavigationTab]);
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
+  // Les vues Arsenal partagent le meme heros pour eviter toute re-selection.
+  const openHeroArsenal = useCallback((heroId, tabId) => {
+    if (activeGameMode) return;
+    if (heroId) setSelectedHeroId(heroId);
+    if (tabId === 'roster') setMediaFilter('all');
+    setActiveTab(tabId);
+    sound.playSfx('click');
+  }, [activeGameMode]);
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
   const [missionScreen, setMissionScreen] = useState('index'); // 'index' | 'story' | 'universeArcs' | 'personalArcs' | 'trioArcs' | 'fusionMissions'
   const [missionWorkspaceView, setMissionWorkspaceView] = useState('campaign');
@@ -7326,16 +7403,21 @@ export default function HubScreen({
             stages={visibleStages}
             playerProfile={playerProfile}
             onOpenMissions={() => {
+              finishNexusSession({ reason: 'transition' });
               setActiveTab('missions');
               setMissionScreen('universeArcs');
               setSelectedNarrativeArcId(null);
               sound.playSfx('coin');
             }}
             onOpenCodex={() => {
+              finishNexusSession({ reason: 'transition' });
               setActiveTab('codex');
               setCodexView('universes');
               sound.playSfx('coin');
             }}
+            onSessionEnd={finishNexusSession}
+            sessionPaused={activeGameMode === 'nexus' && pauseMenuOpen}
+            sessionExitRequest={sessionExitRequests.nexus}
           />
         )}
 
@@ -7388,6 +7470,11 @@ export default function HubScreen({
             setPortalCollection={setPortalCollection}
             hiddenUniverses={hiddenUniverses}
             disabledAssets={disabledAssets}
+            onSessionStart={startCustomSession}
+            onSessionEnd={finishCustomSession}
+            sessionPaused={activeGameMode === 'custom' && pauseMenuOpen}
+            sessionExitRequest={sessionExitRequests.custom}
+            dedicatedSession={activeGameMode === 'custom'}
           />
         )}
 
@@ -8518,10 +8605,13 @@ export default function HubScreen({
                   const lvl = heroLevels[hero.id] || 1;
                   const plaque = getCharacterPlaque(hero);
                   return (
-                    <div
+                    <button
+                      type="button"
                       key={hero.id}
+                      aria-pressed={isSelected}
                       onClick={() => { setSelectedHeroId(hero.id); sound.playSfx('click'); }}
                       style={{
+                        width: '100%',
                         padding: '10px',
                         background: isSelected ? 'rgba(57, 197, 187, 0.15)' : 'rgba(255,255,255,0.02)',
                         border: isSelected ? '1px solid #39c5bb' : '1px solid rgba(255,255,255,0.06)',
@@ -8530,21 +8620,24 @@ export default function HubScreen({
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        gap: '10px'
+                        gap: '10px',
+                        color: 'inherit',
+                        font: 'inherit',
+                        textAlign: 'left'
                       }}
                     >
-                      <div style={{ minWidth: 0 }}>
-                        <div style={{ fontSize: '9px', color: hero.primaryColor, fontWeight: 'bold', letterSpacing: '0.08em' }}>
+                      <span style={{ minWidth: 0, display: 'block' }}>
+                        <span style={{ display: 'block', fontSize: '9px', color: hero.primaryColor, fontWeight: 'bold', letterSpacing: '0.08em' }}>
                           {plaque.clearance} / {hero.universe}
-                        </div>
-                        <div style={{ fontWeight: 'bold', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{hero.name}</div>
-                        <span style={{ fontSize: '10px', color: '#888' }}>{plaque.role[lang]}</span>
-                      </div>
-                      <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                        <div style={{ fontSize: '11px', color: '#39c5bb' }}>LVL {lvl}</div>
+                        </span>
+                        <span style={{ display: 'block', fontWeight: 'bold', fontSize: '13px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{hero.name}</span>
+                        <span style={{ display: 'block', fontSize: '10px', color: '#888' }}>{plaque.role[lang]}</span>
+                      </span>
+                      <span style={{ display: 'block', textAlign: 'right', flexShrink: 0 }}>
+                        <span style={{ display: 'block', fontSize: '11px', color: '#39c5bb' }}>LVL {lvl}</span>
                         {isActive && <span style={{ fontSize: '8px', color: '#2ecc71' }}>● {getTranslation(lang, 'activeLabel')}</span>}
-                      </div>
-                    </div>
+                      </span>
+                    </button>
                   );
                 })}
               </div>
@@ -8568,8 +8661,26 @@ export default function HubScreen({
                       </span>
                     </div>
                   </div>
-                  <div style={{ fontSize: '18px', color: '#39c5bb', fontWeight: 'bold' }}>
-                    {getTranslation(lang, 'levelLabel')} {heroLevels[selectedHero.id] || 1}
+                  <div className="hero-resonance-actions">
+                    <div style={{ fontSize: '18px', color: '#39c5bb', fontWeight: 'bold' }}>
+                      {getTranslation(lang, 'levelLabel')} {heroLevels[selectedHero.id] || 1}
+                    </div>
+                    <div>
+                      <button
+                        type="button"
+                        className="btn-retro"
+                        onClick={() => openHeroArsenal(selectedHero.id, 'inventory')}
+                      >
+                        {lang === 'fr' ? 'GERER EQUIPEMENT' : 'MANAGE GEAR'}
+                      </button>
+                      <button
+                        type="button"
+                        className="btn-retro"
+                        onClick={() => openHeroArsenal(selectedHero.id, 'party')}
+                      >
+                        {lang === 'fr' ? 'RETOUR CELLULE' : 'BACK TO CELL'}
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -8995,14 +9106,24 @@ export default function HubScreen({
                           <span>{gear ? gear.name[lang] : (lang === 'fr' ? 'Relique vide' : 'No relic')}</span>
                           <span>{eventItem ? eventItem.name[lang] : (lang === 'fr' ? 'Event vide' : 'No event')}</span>
                         </div>
-                        <button
-                          onClick={() => { setSelectedHeroId(hero.id); setActiveTab('inventory'); sound.playSfx('click'); }}
-                          className="btn-retro"
-                          title={lang === 'fr' ? 'Ouvre l inventaire pour changer les reliques et objets de ce heros.' : 'Open inventory to change this hero relics and event items.'}
-                          style={{ fontSize: '10px', padding: '4px 8px', width: '100%', marginTop: '8px' }}
-                        >
-                          {lang === 'fr' ? 'GERER EQUIPEMENT' : 'MANAGE GEAR'}
-                        </button>
+                        <div className="squad-slot-actions">
+                          <button
+                            type="button"
+                            onClick={() => openHeroArsenal(hero.id, 'roster')}
+                            className="btn-retro"
+                            title={lang === 'fr' ? 'Ouvre la resonance, les niveaux et les talents de ce heros.' : 'Open this hero resonance, levels, and talents.'}
+                          >
+                            {lang === 'fr' ? 'RESONANCE' : 'RESONANCE'}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => openHeroArsenal(hero.id, 'inventory')}
+                            className="btn-retro"
+                            title={lang === 'fr' ? 'Ouvre l inventaire pour changer les reliques et objets de ce heros.' : 'Open inventory to change this hero relics and event items.'}
+                          >
+                            {lang === 'fr' ? 'EQUIPEMENT' : 'GEAR'}
+                          </button>
+                        </div>
                       </>
                     ) : (
                       <>
@@ -9179,6 +9300,28 @@ export default function HubScreen({
                       <span>LVL {heroLevels[hero.id] || 1}</span>
                       {gear && <span>{gear.name[lang]}</span>}
                       {wouldPair && <span>{lang === 'fr' ? 'Synergie +' : 'Synergy +'}</span>}
+                    </div>
+                    <div className="squad-slot-actions" onClick={(event) => event.stopPropagation()}>
+                      <button
+                        type="button"
+                        className="btn-retro"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          openHeroArsenal(hero.id, 'roster');
+                        }}
+                      >
+                        {lang === 'fr' ? 'RESONANCE' : 'RESONANCE'}
+                      </button>
+                      <button
+                        type="button"
+                        className="btn-retro"
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          openHeroArsenal(hero.id, 'inventory');
+                        }}
+                      >
+                        {lang === 'fr' ? 'EQUIPEMENT' : 'GEAR'}
+                      </button>
                     </div>
                   </div>
                 );
@@ -9473,20 +9616,26 @@ export default function HubScreen({
                 {HEROES_DB.filter(h => unlockedHeroes.includes(h.id)).map(h => {
                   const isSelected = h.id === selectedHeroId;
                   return (
-                    <div
+                    <button
+                      type="button"
                       key={h.id}
+                      aria-pressed={isSelected}
                       onClick={() => setSelectedHeroId(h.id)}
                       style={{
+                        width: '100%',
                         padding: '10px',
                         background: isSelected ? 'rgba(57,197,187,0.12)' : 'rgba(0,0,0,0.2)',
                         border: isSelected ? '1px solid #39c5bb' : '1px solid #222',
                         borderRadius: '4px',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        color: 'inherit',
+                        font: 'inherit',
+                        textAlign: 'left'
                       }}
                     >
-                      <div style={{ fontWeight: 'bold', fontSize: '13px' }}>{h.name}</div>
-                      <span style={{ fontSize: '10px', color: '#888' }}>{h.universe}</span>
-                    </div>
+                      <span style={{ display: 'block', fontWeight: 'bold', fontSize: '13px' }}>{h.name}</span>
+                      <span style={{ display: 'block', fontSize: '10px', color: '#888' }}>{h.universe}</span>
+                    </button>
                   );
                 })}
               </div>
@@ -9496,9 +9645,27 @@ export default function HubScreen({
             <div className="glass-panel" style={{ padding: '20px' }}>
               {selectedHero && (
                 <>
-                  <h3 style={{ margin: '0 0 12px 0', color: selectedHero.primaryColor }}>
-                    {selectedHero.name.toUpperCase()} - {lang === 'fr' ? 'EMPLACEMENTS D EQUIPEMENT' : 'GEAR SLOTS'}
-                  </h3>
+                  <div className="arsenal-workspace-heading">
+                    <h3 style={{ margin: 0, color: selectedHero.primaryColor }}>
+                      {selectedHero.name.toUpperCase()} - {lang === 'fr' ? 'EMPLACEMENTS D EQUIPEMENT' : 'GEAR SLOTS'}
+                    </h3>
+                    <div>
+                      <button
+                        type="button"
+                        className="btn-retro"
+                        onClick={() => openHeroArsenal(selectedHero.id, 'roster')}
+                      >
+                        {lang === 'fr' ? 'VOIR RESONANCE' : 'VIEW RESONANCE'}
+                      </button>
+                      <button
+                        type="button"
+                        className="btn-retro"
+                        onClick={() => openHeroArsenal(selectedHero.id, 'party')}
+                      >
+                        {lang === 'fr' ? 'RETOUR CELLULE' : 'BACK TO CELL'}
+                      </button>
+                    </div>
+                  </div>
 
                   {/* Equipped summary */}
                   <div style={{ display: 'flex', gap: '15px', marginBottom: '20px' }}>

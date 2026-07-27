@@ -16,6 +16,7 @@ export class EngineRpg {
     this.singleRoster = stage.customBattle?.singleRoster === true
       && Array.isArray(enemiesData.customRoster);
     this.disposed = false;
+    this.paused = false;
     this.timers = new Set();
 
     const heroPosition = (idx) => {
@@ -86,12 +87,28 @@ export class EngineRpg {
 
   schedule(callback, delay) {
     if (this.disposed) return null;
+    const runWhenResumed = () => {
+      if (this.disposed) return;
+      if (this.paused) {
+        const retryTimer = setTimeout(() => {
+          this.timers.delete(retryTimer);
+          runWhenResumed();
+        }, 50);
+        this.timers.add(retryTimer);
+        return;
+      }
+      callback();
+    };
     const timer = setTimeout(() => {
       this.timers.delete(timer);
-      if (!this.disposed) callback();
+      runWhenResumed();
     }, delay);
     this.timers.add(timer);
     return timer;
+  }
+
+  setPaused(paused) {
+    this.paused = Boolean(paused);
   }
 
   dispose() {
