@@ -8275,6 +8275,14 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
   scrollbar-color: var(--portal-color) rgba(0, 0, 0, 0.28);
 }
 
+.booster-drop-rate-note {
+  margin: 0;
+  padding: 7px 10px 0;
+  color: #779396;
+  font-size: 7px;
+  line-height: 1.45;
+}
+
 .booster-reward-manifest-group {
   min-width: 0;
   padding: 7px;
@@ -8314,6 +8322,24 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
   line-height: 1.4;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.booster-reward-manifest-group li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.booster-reward-manifest-group li span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.booster-reward-manifest-group li small {
+  flex: 0 0 auto;
+  color: #d9f6f7;
+  font-size: 7px;
 }
 
 .booster-reward-manifest-group .booster-reward-manifest-more {

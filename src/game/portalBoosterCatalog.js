@@ -359,10 +359,199 @@ export const BOOSTER_ART_BY_UNIVERSE = {
 
 export const BOOSTER_ART_UNIVERSES = Object.freeze(Object.keys(BOOSTER_ART_BY_UNIVERSE));
 export const MULTIVERSE_CONVERGENCE_BOOSTER_ART = '/boosters/multiverse-convergence.webp';
+export const PERMANENT_OC_BOOSTERS = Object.freeze([
+  {
+    id: 'oc:keepers-of-name',
+    art: '/boosters/oc-keepers-of-name.webp',
+    backdrop: '/images/campaign-oc/chapter-01-atrium-v1.png',
+    universe: 'Nexus de Convergence',
+    mode: 'RPG',
+    shape: 'omniverse',
+    color: '#39c5bb',
+    priceTier: 'targeted',
+    mediaLabel: { fr: 'CHAPITRE I', en: 'CHAPTER I' },
+    label: { fr: 'Booster Gardiens du Nom', en: 'Keepers of the Name Booster' },
+    desc: {
+      fr: 'Mirelle, Bastion et les protocoles qui protègent les identités.',
+      en: 'Mirelle, Bastion, and the protocols that protect identities.'
+    },
+    meta: {
+      fr: 'Pack OC permanent ciblé sur l Atrium central et le premier Verrou des Noms.',
+      en: 'Permanent OC pack focused on the Central Atrium and the first Lock of Names.'
+    },
+    searchText: 'Nexus OC Atrium Mirelle Bastion noms balises anchor names',
+    heroIds: ['arca_mirelle', 'arca_bastion'],
+    rewardKinds: [
+      'hero',
+      'equipment',
+      'event',
+      'skin',
+      'archive',
+      'hud',
+      'introPose',
+      'victoryPose',
+      'profileBanner',
+      'profileTitle'
+    ],
+    chaseRewardId: 'event:evt_nexus_anchor_pulse',
+    guaranteeNonHeroRare: true
+  },
+  {
+    id: 'oc:divergent-shards',
+    art: '/boosters/oc-divergent-shards.webp',
+    backdrop: '/images/campaign-oc/chapter-02-origin-forge-v1.png',
+    universe: 'Nexus de Convergence',
+    mode: 'RPG',
+    shape: 'omniverse',
+    color: '#7df9ff',
+    priceTier: 'targeted',
+    mediaLabel: { fr: 'CHAPITRE II', en: 'CHAPTER II' },
+    label: { fr: 'Booster Éclats Divergents', en: 'Divergent Shards Booster' },
+    desc: {
+      fr: 'Nova, Marrow et les vies possibles de la Forge d Origine.',
+      en: 'Nova, Marrow, and the possible lives of the Origin Forge.'
+    },
+    meta: {
+      fr: 'Pack OC permanent ciblé sur les doubles, les Éclats d Origine et les fractures.',
+      en: 'Permanent OC pack focused on doubles, Origin Shards, and fractures.'
+    },
+    searchText: 'Nexus OC Nova Marrow forge origine doubles divergent shards',
+    heroIds: ['arca_nova', 'arca_marrow'],
+    rewardKinds: [
+      'hero',
+      'equipment',
+      'skin',
+      'archive',
+      'battleMusic',
+      'stageMusic',
+      'fieldSuper',
+      'koEffect',
+      'portalEffect',
+      'victoryPose'
+    ],
+    chaseRewardId: 'field-super:Nexus de Convergence',
+    guaranteeNonHeroRare: true
+  },
+  {
+    id: 'oc:black-ledger',
+    art: '/boosters/oc-black-ledger.webp',
+    backdrop: '/images/campaign-oc/chapter-03-black-ledger-v1.png',
+    universe: 'Nexus de Convergence',
+    mode: 'Tactics',
+    shape: 'card',
+    color: '#d9b86b',
+    priceTier: 'targeted',
+    mediaLabel: { fr: 'CHAPITRE III', en: 'CHAPTER III' },
+    label: { fr: 'Booster Registre Noir', en: 'Black Ledger Booster' },
+    desc: {
+      fr: 'Sable, Loom et les traces vivantes du Registre des absents.',
+      en: 'Sable, Loom, and the living traces of the Ledger of the Missing.'
+    },
+    meta: {
+      fr: 'Pack OC permanent ciblé sur les archives censurées et la dette d A.R.C.A.',
+      en: 'Permanent OC pack focused on censored archives and A.R.C.A. s debt.'
+    },
+    searchText: 'Nexus OC Sable Loom registre noir archives ledger missing',
+    heroIds: ['arca_sable', 'arca_loom'],
+    rewardKinds: [
+      'hero',
+      'equipment',
+      'event',
+      'archive',
+      'hud',
+      'stageMusic',
+      'npcAssist',
+      'victoryPose',
+      'profileBanner',
+      'profileTitle'
+    ],
+    chaseRewardId: 'hud:Nexus de Convergence',
+    guaranteeNonHeroRare: true
+  },
+  {
+    id: 'oc:impossible-exodus',
+    art: '/boosters/oc-impossible-exodus.webp',
+    backdrop: '/images/campaign-oc/chapter-04-broken-portal-yard-v1.png',
+    universe: 'Nexus de Convergence',
+    mode: 'Smash',
+    shape: 'iris',
+    color: '#ff8c00',
+    priceTier: 'targeted',
+    mediaLabel: { fr: 'CHAPITRE IV', en: 'CHAPTER IV' },
+    label: { fr: 'Booster Exode Impossible', en: 'Impossible Exodus Booster' },
+    desc: {
+      fr: 'Bastion, Loom et la Cour des faux passages.',
+      en: 'Bastion, Loom, and the Court of False Passages.'
+    },
+    meta: {
+      fr: 'Pack OC permanent ciblé sur les portes mensongères et la seule route causale.',
+      en: 'Permanent OC pack focused on lying doors and the single causal route.'
+    },
+    searchText: 'Nexus OC Bastion Loom exode impossible faux passages dead gates',
+    heroIds: ['arca_bastion', 'arca_loom'],
+    rewardKinds: [
+      'hero',
+      'equipment',
+      'archive',
+      'kart',
+      'battleMusic',
+      'stageMusic',
+      'fieldSuper',
+      'npcAssist',
+      'portalEffect',
+      'introPose',
+      'victoryPose'
+    ],
+    chaseRewardId: 'portal-effect:Nexus de Convergence',
+    guaranteeNonHeroRare: true
+  },
+  {
+    id: 'oc:last-margin',
+    art: '/boosters/oc-last-margin.webp',
+    backdrop: '/images/campaign-oc/chapter-05-white-threshold-v1.png',
+    universe: 'Nexus de Convergence',
+    mode: 'RPG',
+    shape: 'omniverse',
+    color: '#ff5b6e',
+    priceTier: 'targeted',
+    mediaLabel: { fr: 'CHAPITRE V', en: 'CHAPTER V' },
+    label: { fr: 'Booster Dernière Marge', en: 'Last Margin Booster' },
+    desc: {
+      fr: 'Toute la Cellule ZÉRO face au Seuil du Sans-Auteur.',
+      en: 'The full Cell ZERO facing the Authorless Threshold.'
+    },
+    meta: {
+      fr: 'Pack OC permanent final réunissant les six signatures et tout l arsenal du Nexus.',
+      en: 'Final permanent OC pack combining all six signatures and the full Nexus arsenal.'
+    },
+    searchText: 'Nexus OC Cellule ZERO Sans Auteur seuil last margin authorless',
+    heroIds: [
+      'arca_mirelle',
+      'arca_bastion',
+      'arca_nova',
+      'arca_marrow',
+      'arca_sable',
+      'arca_loom'
+    ],
+    rewardKinds: null,
+    chaseRewardId: 'victory-pose:Nexus de Convergence',
+    guaranteeNonHeroRare: true
+  }
+].map(pack => Object.freeze({
+  ...pack,
+  heroIds: Object.freeze([...pack.heroIds]),
+  rewardKinds: pack.rewardKinds ? Object.freeze([...pack.rewardKinds]) : null
+})));
+export const DEFAULT_OC_BOOSTER_ID = PERMANENT_OC_BOOSTERS[0].id;
+export const BOOSTER_ART_BY_PACK_ID = Object.freeze({
+  ...Object.fromEntries(PERMANENT_OC_BOOSTERS.map(pack => [pack.id, pack.art])),
+  multi: MULTIVERSE_CONVERGENCE_BOOSTER_ART
+});
 export const BOOSTER_ROTATION_WINDOW_MS = 24 * 60 * 60 * 1000;
 export const BOOSTER_ROTATION_SIZE = 8;
 
 export const getPortalBoosterArt = (universe) => BOOSTER_ART_BY_UNIVERSE[universe] || null;
+export const getPortalBoosterPackArt = (packId) => BOOSTER_ART_BY_PACK_ID[packId] || null;
 
 export const getPortalBoosterRotation = (
   universes = BOOSTER_ART_UNIVERSES,

@@ -4,9 +4,11 @@ import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 
 import {
+  BOOSTER_ART_BY_PACK_ID,
   BOOSTER_ART_BY_UNIVERSE,
   BOOSTER_ART_UNIVERSES,
-  MULTIVERSE_CONVERGENCE_BOOSTER_ART
+  MULTIVERSE_CONVERGENCE_BOOSTER_ART,
+  PERMANENT_OC_BOOSTERS
 } from '../src/game/portalBoosterCatalog.js';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -414,6 +416,16 @@ for (const universe of runtimeUniverses) {
   }
   sourceCounts.archive = candidateCounts.archive || 0;
   sourceCounts.hud = candidateCounts.hud || 0;
+  const rarityIds = new Set(
+    candidates.map((candidate) => candidate.rarity?.id).filter(Boolean)
+  );
+  for (const rarityId of ['common', 'rare', 'epic', 'anomaly']) {
+    if (!rarityIds.has(rarityId)) {
+      contentErrors.push(
+        `${universe}: booster pool is missing the "${rarityId}" rarity tier`
+      );
+    }
+  }
 
   for (const candidate of candidates) {
     if (!hasVisibleText(candidate.id) || !hasVisibleText(candidate.rewardId)) {
@@ -454,6 +466,67 @@ for (const universe of runtimeUniverses) {
         );
       }
     }
+  }
+}
+
+const nexusHeroes = HEROES_DB.filter(
+  (hero) => hero.universe === 'Nexus de Convergence'
+);
+const ocPoolSignatures = new Set();
+for (const pack of PERMANENT_OC_BOOSTERS) {
+  const featuredHeroIds = new Set(pack.heroIds);
+  const candidates = makeBoosterCandidates({
+    banner: {
+      ...pack,
+      match: (hero) => featuredHeroIds.has(hero.id)
+    },
+    visibleHeroes: nexusHeroes,
+    disabledGearIds: new Set()
+  });
+  const poolIds = new Set(candidates.map(candidate => candidate.id));
+  const heroIds = candidates
+    .filter(candidate => candidate.kind === 'hero')
+    .map(candidate => candidate.rewardId)
+    .sort();
+  const expectedHeroIds = [...pack.heroIds].sort();
+  const poolSignature = heroIds.join('|');
+
+  if (candidates.length < 5 || poolIds.size < 5) {
+    contentErrors.push(`${pack.id}: targeted OC pool cannot supply five distinct cards`);
+  }
+  if (JSON.stringify(heroIds) !== JSON.stringify(expectedHeroIds)) {
+    contentErrors.push(`${pack.id}: targeted OC hero scope does not match its catalogue`);
+  }
+  if (ocPoolSignatures.has(poolSignature)) {
+    contentErrors.push(`${pack.id}: duplicate targeted OC hero pool "${poolSignature}"`);
+  }
+  ocPoolSignatures.add(poolSignature);
+  if (candidates.some(candidate => candidate.universe !== 'Nexus de Convergence')) {
+    contentErrors.push(`${pack.id}: reward leaked from outside Nexus de Convergence`);
+  }
+  const rarityIds = new Set(
+    candidates.map(candidate => candidate.rarity?.id).filter(Boolean)
+  );
+  for (const rarityId of ['common', 'rare', 'epic', 'anomaly']) {
+    if (!rarityIds.has(rarityId)) {
+      contentErrors.push(`${pack.id}: targeted OC pool is missing the "${rarityId}" rarity tier`);
+    }
+  }
+  if (
+    pack.rewardKinds
+    && candidates.some(candidate => !pack.rewardKinds.includes(candidate.kind))
+  ) {
+    contentErrors.push(`${pack.id}: reward kind leaked outside its targeted manifest`);
+  }
+  const chase = candidates.find(candidate => candidate.id === pack.chaseRewardId);
+  if (!chase || chase.rarity?.id !== 'anomaly' || chase.kind === 'hero') {
+    contentErrors.push(`${pack.id}: missing thematic non-character Anomaly chase`);
+  }
+  if (!candidates.some(candidate => (
+    candidate.kind !== 'hero'
+    && ['rare', 'epic', 'anomaly'].includes(candidate.rarity?.id)
+  ))) {
+    contentErrors.push(`${pack.id}: missing guaranteed non-character Rare+ candidate`);
   }
 }
 
@@ -551,11 +624,53 @@ for (const universe of BOOSTER_ART_UNIVERSES) {
   }
 }
 
+if (PERMANENT_OC_BOOSTERS.length !== 5) {
+  errors.push(`Expected five permanent OC boosters, found ${PERMANENT_OC_BOOSTERS.length}`);
+}
+const permanentOcIds = new Set();
+for (const pack of PERMANENT_OC_BOOSTERS) {
+  const publicPath = pack.art;
+  if (permanentOcIds.has(pack.id)) {
+    errors.push(`${pack.id}: duplicate permanent OC pack id`);
+  }
+  permanentOcIds.add(pack.id);
+  if (
+    BOOSTER_ART_BY_PACK_ID[pack.id] !== publicPath
+    || !publicPath?.startsWith('/boosters/oc-')
+    || !publicPath.endsWith('.webp')
+  ) {
+    errors.push(`${pack.id}: invalid permanent OC art mapping "${publicPath}"`);
+    continue;
+  }
+  if (paths.has(publicPath)) {
+    errors.push(`${pack.id}: duplicate public path "${publicPath}"`);
+  }
+  paths.add(publicPath);
+
+  const localPath = path.join(projectRoot, 'public', ...publicPath.split('/').filter(Boolean));
+  try {
+    const fileStats = await stat(localPath);
+    totalBytes += fileStats.size;
+    if (!fileStats.isFile() || fileStats.size < 50_000 || fileStats.size > 800_000) {
+      errors.push(`${pack.id}: suspicious booster asset (${fileStats.size} bytes)`);
+    }
+  } catch (error) {
+    errors.push(`${pack.id}: missing asset (${error.code || error.message})`);
+  }
+}
+
 const multiverseAssetPath = path.join(
   projectRoot,
   'public',
   ...MULTIVERSE_CONVERGENCE_BOOSTER_ART.split('/').filter(Boolean)
 );
+if (BOOSTER_ART_BY_PACK_ID.multi !== MULTIVERSE_CONVERGENCE_BOOSTER_ART) {
+  errors.push('Multiverse convergence: invalid permanent pack mapping');
+}
+if (paths.has(MULTIVERSE_CONVERGENCE_BOOSTER_ART)) {
+  errors.push('Multiverse convergence: duplicate public path');
+}
+paths.add(MULTIVERSE_CONVERGENCE_BOOSTER_ART);
 try {
   const fileStats = await stat(multiverseAssetPath);
   totalBytes += fileStats.size;
@@ -569,7 +684,8 @@ try {
 console.log(JSON.stringify({
   runtimeUniverses: runtimeUniverses.length,
   catalogUniverses: BOOSTER_ART_UNIVERSES.length,
-  uniqueAssets: paths.size + 1,
+  permanentOcBoosters: PERMANENT_OC_BOOSTERS.length,
+  uniqueAssets: paths.size,
   totalBytes,
   missingUniverses,
   orphanUniverses,

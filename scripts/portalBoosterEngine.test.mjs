@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   BOOSTER_CARD_COUNT,
-  createBoosterRewards
+  createBoosterRewards,
+  getBoosterFreeDrawRates
 } from '../src/game/portalBoosterEngine.js';
 
 const rarities = {
@@ -141,4 +142,57 @@ test('never selects a reward outside the candidates received by the engine', () 
   assert.equal(cards.length, BOOSTER_CARD_COUNT);
   assert.ok(cards.every(card => scopedIds.has(card.id)));
   assert.ok(cards.every(card => card.universe === 'Scoped Thread'));
+});
+
+test('a targeted OC pack guarantees a rare non-character reward', () => {
+  const candidates = [
+    reward('hero', 'oc-a', 'Nexus', rarities.epic),
+    reward('hero', 'oc-b', 'Nexus', rarities.rare),
+    reward('equipment', 'stable-gear', 'Nexus'),
+    reward('stageMusic', 'rare-theme', 'Nexus', rarities.rare),
+    reward('portalEffect', 'epic-portal', 'Nexus', rarities.epic),
+    reward('equipment', 'stable-gear-b', 'Nexus')
+  ];
+
+  const cards = createBoosterRewards({
+    candidates,
+    guaranteeNonHeroRare: true,
+    rng: () => 0
+  });
+
+  assert.equal(cards.length, BOOSTER_CARD_COUNT);
+  assert.ok(cards.some(card => card.kind === 'hero'));
+  assert.ok(cards.some(card => (
+    card.kind !== 'hero' && ['rare', 'epic', 'anomaly'].includes(card.rarity.id)
+  )));
+});
+
+test('free draws choose a rarity tier before sharing odds inside that tier', () => {
+  const anomaly = {
+    id: 'anomaly',
+    label: 'Anomaly',
+    color: '#ffb000',
+    weight: 3,
+    duplicateRefund: 50
+  };
+  const candidates = [
+    ...Array.from(
+      { length: 20 },
+      (_, index) => reward('equipment', `common-${index}`, 'Nexus', rarities.common)
+    ),
+    reward('equipment', 'rare-one', 'Nexus', rarities.rare),
+    reward('equipment', 'epic-one', 'Nexus', rarities.epic),
+    reward('fieldSuper', 'anomaly-one', 'Nexus', anomaly)
+  ];
+  const rates = getBoosterFreeDrawRates(candidates);
+  const commonRate = Array.from({ length: 20 }, (_, index) => rates.get(`common-${index}`))
+    .reduce((total, rate) => total + rate, 0);
+
+  assert.ok(Math.abs(commonRate - 0.58) < 1e-12);
+  assert.ok(Math.abs(rates.get('rare-one') - 0.28) < 1e-12);
+  assert.ok(Math.abs(rates.get('epic-one') - 0.11) < 1e-12);
+  assert.ok(Math.abs(rates.get('anomaly-one') - 0.03) < 1e-12);
+  assert.ok(Math.abs(
+    [...rates.values()].reduce((total, rate) => total + rate, 0) - 1
+  ) < 1e-12);
 });

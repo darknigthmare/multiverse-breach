@@ -5,13 +5,20 @@ import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import { getTranslation } from '../game/translation';
 import { LORE_DB } from '../game/lore';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
-import { BOOSTER_CARD_COUNT, createBoosterRewards } from '../game/portalBoosterEngine';
+import {
+  BOOSTER_CARD_COUNT,
+  createBoosterRewards,
+  getBoosterFreeDrawRates
+} from '../game/portalBoosterEngine';
+import { capDuplicateRefunds, getBoosterPrice } from '../game/portalBoosterEconomy';
 import { getUniverseUnlockables, getUnlockableById } from '../game/universeUnlockables';
 import {
   BOOSTER_ROTATION_WINDOW_MS,
+  DEFAULT_OC_BOOSTER_ID,
+  PERMANENT_OC_BOOSTERS,
   getPortalBoosterArt,
-  getPortalBoosterRotation,
-  MULTIVERSE_CONVERGENCE_BOOSTER_ART
+  getPortalBoosterPackArt,
+  getPortalBoosterRotation
 } from '../game/portalBoosterCatalog';
 
 const PORTAL_RARITIES = {
@@ -24,7 +31,6 @@ const PORTAL_RARITIES = {
 const CORE_ANOMALY_IDS = new Set(['masterchief', 'predator', 'pyramidhead', 'neo', 'doomslayer', 'vader', 'rick', 'jigsaw', 'yugi']);
 const CORE_EPIC_IDS = new Set(['marcus', 'ripley', 'freeman', 'snake', 'solbadguy', 'ragna', 'shepard', 'luke', 'isaac', 'taichi', 'motoko']);
 const NEXUS_UNIVERSE = 'Nexus de Convergence';
-const BOOSTER_COST = 100;
 const PITY_LIMIT = 6;
 const HERO_BY_ID = new Map(HEROES_DB.map(hero => [hero.id, hero]));
 const COLLECTIBLE_SKINS = Object.values(SKIN_CATALOG)
@@ -181,6 +187,18 @@ const formatRotationCountdown = (remainingMs, lang) => {
   const seconds = totalSeconds % 60;
   const unit = lang === 'fr' ? 'rotation' : 'rotation';
   return `${unit} ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+};
+
+const formatFreeDrawRate = (rate, lang) => {
+  const percentage = Math.max(0, Number(rate) || 0) * 100;
+  const formatted = percentage >= 10
+    ? percentage.toFixed(1)
+    : percentage >= 1
+      ? percentage.toFixed(2)
+      : percentage >= 0.1
+        ? percentage.toFixed(3)
+        : percentage.toFixed(4);
+  return `${formatted}% ${lang === 'fr' ? 'par tirage libre' : 'per free draw'}`;
 };
 
 const getUniversePortalProfile = (universe, heroes) => {
@@ -385,10 +403,10 @@ const makeBoosterCandidates = ({
     if (!unlockables) return;
 
     [
-      [unlockables.kart, PORTAL_RARITIES.rare],
+      [unlockables.kart, PORTAL_RARITIES.common],
       [unlockables.battleMusic, PORTAL_RARITIES.rare],
       [unlockables.stageMusic, PORTAL_RARITIES.rare],
-      [unlockables.fieldSuper, PORTAL_RARITIES.epic],
+      [unlockables.fieldSuper, PORTAL_RARITIES.anomaly],
       [unlockables.npcAssist, PORTAL_RARITIES.epic],
       [unlockables.koEffect, PORTAL_RARITIES.rare],
       [unlockables.portalEffect, PORTAL_RARITIES.epic],
@@ -411,7 +429,16 @@ const makeBoosterCandidates = ({
     });
   });
 
-  return candidates;
+  const rewardKinds = banner.rewardKinds
+    ? new Set(banner.rewardKinds)
+    : null;
+  return candidates
+    .filter(candidate => !rewardKinds || rewardKinds.has(candidate.kind))
+    .map(candidate => (
+      candidate.id === banner.chaseRewardId
+        ? { ...candidate, rarity: PORTAL_RARITIES.anomaly }
+        : candidate
+    ));
 };
 
 function RewardArtwork({ reward }) {
@@ -511,7 +538,7 @@ export default function PortalScreen({
   completedStages = [],
   onBack
 }) {
-  const [activeBanner, setActiveBanner] = useState('nexus');
+  const [activeBanner, setActiveBanner] = useState(DEFAULT_OC_BOOSTER_ID);
   const [packQuery, setPackQuery] = useState('');
   const [showAllPacks, setShowAllPacks] = useState(false);
   const [artPreviewOpen, setArtPreviewOpen] = useState(false);
@@ -600,8 +627,6 @@ export default function PortalScreen({
     });
     return groups;
   }, [visibleHeroes]);
-  const nexusHeroes = heroesByUniverse.get(NEXUS_UNIVERSE) || [];
-
   const universePortalBanners = useMemo(
     () => Array.from(heroesByUniverse.entries())
       .filter(([universe, heroes]) => universe !== NEXUS_UNIVERSE && heroes.length > 0)
@@ -614,6 +639,7 @@ export default function PortalScreen({
         return {
           id: `universe:${universe}`,
           scope: 'universe',
+          priceTier: 'targeted',
           universe,
           mode: profile.mode,
           shape: profile.shape,
@@ -636,29 +662,22 @@ export default function PortalScreen({
     [heroesByUniverse, lang]
   );
 
-  const nexusBanner = useMemo(() => ({
-    id: 'nexus',
-    scope: 'core',
-    universe: NEXUS_UNIVERSE,
-    mode: 'RPG',
-    shape: 'omniverse',
-    color: '#39c5bb',
-    mediaLabel: { fr: 'SOCLE', en: 'CORE' },
-    label: { fr: 'Booster Nexus OC', en: 'OC Nexus Booster' },
-    desc: {
-      fr: `${nexusHeroes.length} personnage(s) originaux et reliques A.R.C.A.`,
-      en: `${nexusHeroes.length} original characters and A.R.C.A. relics.`
-    },
-    meta: {
-      fr: 'Booster permanent du socle original. Chaque ouverture contient cinq cartes.',
-      en: 'Permanent original-core booster. Every opening contains five cards.'
-    },
-    searchText: `${NEXUS_UNIVERSE} OC A.R.C.A.`,
-    match: hero => hero.universe === NEXUS_UNIVERSE
-  }), [nexusHeroes.length]);
+  const ocPermanentBanners = useMemo(
+    () => PERMANENT_OC_BOOSTERS.map(pack => {
+      const featuredHeroIds = new Set(pack.heroIds);
+      return {
+        ...pack,
+        scope: 'core',
+        match: hero => featuredHeroIds.has(hero.id)
+      };
+    }),
+    []
+  );
+  const defaultOcBanner = ocPermanentBanners[0];
   const multiverseBanner = useMemo(() => ({
     id: 'multi',
     scope: 'core',
+    priceTier: 'broad',
     universe: NEXUS_UNIVERSE,
     mode: 'RPG',
     shape: 'omniverse',
@@ -701,9 +720,9 @@ export default function PortalScreen({
     [illustratedPortalBanners, rotationUniverseSet]
   );
   const permanentPortalBanners = useMemo(() => ([
-    nexusBanner,
+    ...ocPermanentBanners,
     ...(completedStages.length >= 6 && universePortalBanners.length > 0 ? [multiverseBanner] : [])
-  ]), [completedStages.length, multiverseBanner, nexusBanner, universePortalBanners.length]);
+  ]), [completedStages.length, multiverseBanner, ocPermanentBanners, universePortalBanners.length]);
   const availablePortalBanners = useMemo(
     () => [...permanentPortalBanners, ...rotationPortalBanners],
     [permanentPortalBanners, rotationPortalBanners]
@@ -722,25 +741,26 @@ export default function PortalScreen({
     if (visibleBannerIds.split('|').includes(activeBanner)) return;
     clearOpeningTimers();
     openingGuardRef.current = false;
-    setActiveBanner('nexus');
+    setActiveBanner(DEFAULT_OC_BOOSTER_ID);
     setOpeningPhase('sealed');
     setBoosterRewards([]);
     setRevealedCards([]);
   }, [activeBanner, visibleBannerIds]);
 
   const activeBannerData = useMemo(
-    () => availablePortalBanners.find(item => item.id === activeBanner) || nexusBanner,
-    [activeBanner, availablePortalBanners, nexusBanner]
+    () => availablePortalBanners.find(item => item.id === activeBanner) || defaultOcBanner,
+    [activeBanner, availablePortalBanners, defaultOcBanner]
   );
   const activeBannerHeroes = visibleHeroes.filter(hero => activeBannerData.match(hero));
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
-  const activeBackdrop = activeBannerData.id === 'multi'
-    ? '/images/missions/fusion-rifts.webp'
-    : getOpenAiBackdropSrc(activeBannerData.universe, activeBannerData.mode);
-  const activeBoosterArt = activeBannerData.id === 'multi'
-    ? MULTIVERSE_CONVERGENCE_BOOSTER_ART
-    : getPortalBoosterArt(activeBannerData.universe);
+  const activeBackdrop = activeBannerData.backdrop
+    || (activeBannerData.id === 'multi'
+      ? '/images/missions/fusion-rifts.webp'
+      : getOpenAiBackdropSrc(activeBannerData.universe, activeBannerData.mode));
+  const activeBoosterArt = getPortalBoosterPackArt(activeBannerData.id)
+    || getPortalBoosterArt(activeBannerData.universe);
+  const activeBoosterPrice = getBoosterPrice(activeBannerData);
   const boosterVisual = activeBoosterArt
     || activeBackdrop
     || '/backgrounds/multiverse-breach-title-arca-v1.png';
@@ -768,6 +788,10 @@ export default function PortalScreen({
     }),
     [activeBannerData, visibleHeroes, disabledGearSet]
   );
+  const freeDrawRates = useMemo(
+    () => getBoosterFreeDrawRates(activeRewardCandidates),
+    [activeRewardCandidates]
+  );
   const rewardKindCounts = activeRewardCandidates.reduce((counts, reward) => ({
     ...counts,
     [reward.kind]: (counts[reward.kind] || 0) + 1
@@ -782,9 +806,13 @@ export default function PortalScreen({
   const openingLocked = ['charging', 'cutting', 'opening'].includes(openingPhase);
   const cardsVisible = ['revealing', 'complete'].includes(openingPhase);
   const canOpenBooster = openingPhase === 'sealed'
-    && breachShards >= BOOSTER_COST
+    && breachShards >= activeBoosterPrice
     && activeRewardCandidates.length > 0;
   const revealedCount = revealedCards.length;
+  const rawBoosterRefund = boosterRewards.reduce(
+    (total, reward) => total + (reward.rawShardsReturned || 0),
+    0
+  );
   const portalBackground = activeBackdrop
     ? `linear-gradient(180deg, rgba(4,2,10,0.5), rgba(4,2,10,0.94)), url(${activeBackdrop})`
     : 'linear-gradient(180deg, rgba(4,2,10,0.62), rgba(4,2,10,0.94)), url(/images/missions/fusion-rifts.webp)';
@@ -823,7 +851,7 @@ export default function PortalScreen({
     return false;
   };
 
-  const applyBoosterTransaction = (rewards) => {
+  const applyBoosterTransaction = (rewards, pricePaid) => {
     const newHeroIds = rewards
       .filter(reward => reward.kind === 'hero' && !reward.wasDuplicate)
       .map(reward => reward.rewardId);
@@ -870,7 +898,12 @@ export default function PortalScreen({
           .map(reward => reward.rewardId)
       ])
     );
+    const rawRefund = rewards.reduce(
+      (sum, reward) => sum + (reward.rawShardsReturned || 0),
+      0
+    );
     const totalRefund = rewards.reduce((sum, reward) => sum + reward.shardsReturned, 0);
+    const netCost = pricePaid - totalRefund;
     const hasNewPortalCollectionIds = (
       newKartIds.length > 0
       || newBattleMusicIds.length > 0
@@ -879,7 +912,7 @@ export default function PortalScreen({
       || Object.values(newCustomCosmeticIds).some(ids => ids.length > 0)
     );
 
-    setBreachShards(previous => previous - BOOSTER_COST + totalRefund);
+    setBreachShards(previous => previous - pricePaid + totalRefund);
     if (newHeroIds.length > 0) setUnlockedHeroes(previous => appendUnique(previous, newHeroIds));
     if (newInventoryIds.length > 0) setInventory(previous => appendUnique(previous, newInventoryIds));
     if (newArchives.length > 0 || newHudThemes.length > 0 || hasNewPortalCollectionIds) {
@@ -912,8 +945,12 @@ export default function PortalScreen({
       rarityLabel: getLocalizedText(reward.rarity.label, lang),
       rarityColor: reward.rarity.color,
       pack: activeBannerData.label[lang],
+      packId: activeBannerData.id,
+      pricePaid,
       duplicate: reward.wasDuplicate,
+      rawShardsReturned: reward.rawShardsReturned || 0,
       shardsReturned: reward.shardsReturned,
+      netCost,
       at: new Date().toISOString()
     }));
     const heroRewards = rewards.filter(reward => reward.kind === 'hero');
@@ -927,6 +964,16 @@ export default function PortalScreen({
       duplicateStreak: hasNewHero
         ? 0
         : (previous?.duplicateStreak || 0) + Math.max(1, duplicateHeroes),
+      fragmentsSpent: (previous?.fragmentsSpent || 0) + pricePaid,
+      fragmentsRefunded: (previous?.fragmentsRefunded || 0) + totalRefund,
+      lastPackEconomy: {
+        packId: activeBannerData.id,
+        pricePaid,
+        rawRefund,
+        refundAwarded: totalRefund,
+        netCost,
+        at: new Date().toISOString()
+      },
       lastPull: historyEntries[historyEntries.length - 1],
       history: [
         ...historyEntries.slice().reverse(),
@@ -956,12 +1003,16 @@ export default function PortalScreen({
     const ownedCandidateIds = activeRewardCandidates
       .filter(isCandidateOwned)
       .map(candidate => candidate.id);
-    const rewards = createBoosterRewards({
-      candidates: activeRewardCandidates,
-      ownedIds: ownedCandidateIds,
-      pityReady,
-      preferUniverseSpread: activeBannerData.id === 'multi'
-    });
+    const rewards = capDuplicateRefunds(
+      createBoosterRewards({
+        candidates: activeRewardCandidates,
+        ownedIds: ownedCandidateIds,
+        pityReady,
+        preferUniverseSpread: activeBannerData.id === 'multi',
+        guaranteeNonHeroRare: activeBannerData.guaranteeNonHeroRare
+      }),
+      activeBoosterPrice
+    );
     if (rewards.length !== BOOSTER_CARD_COUNT) {
       openingGuardRef.current = false;
       return;
@@ -971,7 +1022,7 @@ export default function PortalScreen({
     setRevealedCards([]);
     setOpeningPhase('charging');
     sound.playSfx('portal');
-    applyBoosterTransaction(rewards);
+    applyBoosterTransaction(rewards, activeBoosterPrice);
 
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
@@ -1168,9 +1219,9 @@ export default function PortalScreen({
             const isActive = activeBannerData.id === banner.id;
             const isAvailable = availableBannerIds.has(banner.id);
             const isPermanent = banner.scope === 'core';
-            const packArt = banner.id === 'multi'
-              ? MULTIVERSE_CONVERGENCE_BOOSTER_ART
-              : getPortalBoosterArt(banner.universe);
+            const packArt = getPortalBoosterPackArt(banner.id)
+              || getPortalBoosterArt(banner.universe);
+            const packPrice = getBoosterPrice(banner);
             const packImage = packArt
               || getOpenAiBackdropSrc(banner.universe, banner.mode)
               || '/images/missions/fusion-rifts.webp';
@@ -1201,7 +1252,7 @@ export default function PortalScreen({
                 <span className="portal-booster-title">{banner.label[lang]}</span>
                 <span className="portal-booster-desc">{banner.desc[lang]}</span>
                 <span className="portal-booster-meta">
-                  {owned}/{bannerHeroes.length} - {packScope}
+                  {owned}/{bannerHeroes.length} - {packScope} - {packPrice} {lang === 'fr' ? 'Fragments' : 'Shards'}
                 </span>
                 <span className={`portal-booster-art-badge ${isPermanent ? 'permanent' : isAvailable ? 'active' : 'inactive'}`}>
                   {isPermanent
@@ -1250,6 +1301,7 @@ export default function PortalScreen({
             <span>{activeOwnedCount}/{activeBannerHeroes.length} {lang === 'fr' ? 'persos' : 'characters'}</span>
             <span>{activeMissingCount} {lang === 'fr' ? 'signatures absentes' : 'missing signatures'}</span>
             <span>{activeRewardCandidates.length} {lang === 'fr' ? 'cartes possibles' : 'possible cards'}</span>
+            <span>{activeBoosterPrice} {lang === 'fr' ? 'Fragments' : 'Shards'}</span>
           </div>
           <div className="booster-pool-types">
             {REWARD_KIND_ORDER.map(kind => (
@@ -1262,6 +1314,11 @@ export default function PortalScreen({
             <summary>
               {lang === 'fr' ? 'VOIR LE CONTENU POSSIBLE' : 'VIEW POSSIBLE CONTENT'}
             </summary>
+            <p className="booster-drop-rate-note">
+              {lang === 'fr'
+                ? 'Taux de base d un slot non garanti, avant retrait des cartes deja tirees. A rarete et poids identiques, les cartes se partagent le palier equitablement. Les garanties et le Compas Nexus augmentent certaines chances.'
+                : 'Base rate for one non-guaranteed slot, before removing cards already drawn. Cards with the same rarity and weight share their tier fairly. Guarantees and the Nexus Compass increase selected odds.'}
+            </p>
             <div className="booster-reward-manifest-grid">
               {rewardManifestGroups.map(({ kind, rewards }) => {
                 const remainingCount = Math.max(0, rewards.length - REWARD_MANIFEST_LIMIT);
@@ -1275,7 +1332,8 @@ export default function PortalScreen({
                       <ul>
                         {rewards.slice(0, REWARD_MANIFEST_LIMIT).map(reward => (
                           <li key={reward.id} title={getLocalizedText(reward.name, lang)}>
-                            {getLocalizedText(reward.name, lang)}
+                            <span>{getLocalizedText(reward.name, lang)}</span>
+                            <small>{formatFreeDrawRate(freeDrawRates.get(reward.id), lang)}</small>
                           </li>
                         ))}
                         {remainingCount > 0 && (
@@ -1295,14 +1353,14 @@ export default function PortalScreen({
           <div className="portal-rate-grid">
             {Object.values(PORTAL_RARITIES).map(rarity => (
               <span key={rarity.id} style={{ '--rarity-color': rarity.color }}>
-                {rarity.label[lang]} / {rarity.weight}
+                {rarity.label[lang]} / {rarity.weight}%
               </span>
             ))}
           </div>
           <div className="portal-focus-rate booster-guarantee">
             {lang === 'fr'
-              ? 'GARANTIES: 5 cartes / 1 personnage / 1 Rare ou mieux.'
-              : 'GUARANTEES: 5 cards / 1 character / 1 Rare or better.'}
+              ? `GARANTIES: 5 cartes / 1 personnage / 1 Rare ou mieux${activeBannerData.guaranteeNonHeroRare ? ' hors personnage' : ''}.`
+              : `GUARANTEES: 5 cards / 1 character / 1 Rare or better${activeBannerData.guaranteeNonHeroRare ? ' non-character reward' : ''}.`}
           </div>
           <div className={`portal-focus-rate booster-pity ${pityReady ? 'ready' : ''}`}>
             {pityReady
@@ -1313,8 +1371,8 @@ export default function PortalScreen({
           </div>
           <p className="booster-progression-note">
             {lang === 'fr'
-              ? 'Les missions et les modes restent lies a la progression de jeu: ils ne sont jamais verrouilles derriere le hasard.'
-              : 'Missions and modes remain tied to gameplay progression: they are never locked behind randomness.'}
+              ? 'Les missions et les modes restent lies a la progression de jeu. Les remboursements d echos sont plafonnes a 70 % du prix du pack.'
+              : 'Missions and modes remain tied to gameplay progression. Echo refunds are capped at 70% of the pack price.'}
           </p>
         </div>
 
@@ -1344,8 +1402,8 @@ export default function PortalScreen({
               onClick={handleOpenBooster}
               disabled={!canOpenBooster}
               aria-label={lang === 'fr'
-                ? `Ouvrir ${activeBannerData.label.fr}, cinq cartes pour ${BOOSTER_COST} Fragments`
-                : `Open ${activeBannerData.label.en}, five cards for ${BOOSTER_COST} Shards`}
+                ? `Ouvrir ${activeBannerData.label.fr}, cinq cartes pour ${activeBoosterPrice} Fragments`
+                : `Open ${activeBannerData.label.en}, five cards for ${activeBoosterPrice} Shards`}
             >
               <span
                 className="breach-booster-body"
@@ -1405,8 +1463,8 @@ export default function PortalScreen({
               {boosterRefund > 0 && (
                 <div className="booster-refund-line">
                   {lang === 'fr'
-                    ? `Echos convertis automatiquement: +${boosterRefund} Fragments.`
-                    : `Echoes automatically converted: +${boosterRefund} Shards.`}
+                    ? `Echos convertis automatiquement: +${boosterRefund} Fragments${rawBoosterRefund > boosterRefund ? ` (plafond applique sur ${rawBoosterRefund})` : ''}.`
+                    : `Echoes automatically converted: +${boosterRefund} Shards${rawBoosterRefund > boosterRefund ? ` (cap applied to ${rawBoosterRefund})` : ''}.`}
                 </div>
               )}
             </div>
@@ -1428,8 +1486,8 @@ export default function PortalScreen({
             className={`btn-retro booster-open-button ${!canOpenBooster ? 'btn-disabled' : ''}`}
           >
             {lang === 'fr'
-              ? `OUVRIR LE BOOSTER — ${BOOSTER_COST} FRAGMENTS`
-              : `OPEN BOOSTER — ${BOOSTER_COST} SHARDS`}
+              ? `OUVRIR LE BOOSTER — ${activeBoosterPrice} FRAGMENTS`
+              : `OPEN BOOSTER — ${activeBoosterPrice} SHARDS`}
           </button>
         )}
         {openingPhase === 'revealing' && revealedCount < BOOSTER_CARD_COUNT && (

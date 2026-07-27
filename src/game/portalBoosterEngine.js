@@ -31,21 +31,57 @@ const getWeight = (candidate) => {
   return Number.isFinite(weight) && weight > 0 ? weight : 0;
 };
 
-const weightedPick = (pool, rng) => {
+const getCardWeight = (candidate) => {
+  const weight = Number(candidate.dropWeight);
+  return Number.isFinite(weight) && weight > 0 ? weight : 1;
+};
+
+const weightedPickBy = (pool, rng, getItemWeight) => {
   if (pool.length === 0) return null;
 
-  const totalWeight = pool.reduce((total, candidate) => total + getWeight(candidate), 0);
+  const totalWeight = pool.reduce(
+    (total, item) => total + getItemWeight(item),
+    0
+  );
   if (totalWeight <= 0) {
     return pool[Math.floor(getRoll(rng) * pool.length)];
   }
 
   let roll = getRoll(rng) * totalWeight;
-  for (const candidate of pool) {
-    roll -= getWeight(candidate);
-    if (roll < 0) return candidate;
+  for (const item of pool) {
+    roll -= getItemWeight(item);
+    if (roll < 0) return item;
   }
 
   return pool[pool.length - 1];
+};
+
+const makeRarityGroups = (pool) => {
+  const groups = new Map();
+  pool.forEach(candidate => {
+    const rarityId = String(candidate.rarity?.id || 'unrated').toLowerCase();
+    if (!groups.has(rarityId)) {
+      groups.set(rarityId, {
+        id: rarityId,
+        weight: getWeight(candidate),
+        candidates: []
+      });
+    }
+    const group = groups.get(rarityId);
+    group.weight = Math.max(group.weight, getWeight(candidate));
+    group.candidates.push(candidate);
+  });
+  return [...groups.values()];
+};
+
+const weightedPick = (pool, rng) => {
+  if (pool.length === 0) return null;
+  const rarityGroups = makeRarityGroups(pool);
+  const rarityGroup = weightedPickBy(rarityGroups, rng, group => group.weight);
+  if (!rarityGroup || rarityGroup.weight <= 0) {
+    return weightedPickBy(pool, rng, getCardWeight);
+  }
+  return weightedPickBy(rarityGroup.candidates, rng, getCardWeight);
 };
 
 const uniqueById = (candidates) => {
@@ -74,6 +110,49 @@ const getDuplicateRefund = (candidate) => {
 };
 
 /**
+ * Returns the exact probability of each card during an unconstrained draw.
+ * Guarantee slots and pity intentionally remain separate, explicit modifiers.
+ */
+export const getBoosterFreeDrawRates = (candidates) => {
+  if (!Array.isArray(candidates)) {
+    throw new TypeError('candidates must be an array.');
+  }
+  const scopedCandidates = uniqueById(candidates);
+  const rarityGroups = makeRarityGroups(scopedCandidates);
+  const totalRarityWeight = rarityGroups.reduce(
+    (total, group) => total + group.weight,
+    0
+  );
+  const rates = new Map();
+
+  if (totalRarityWeight <= 0) {
+    const totalCardWeight = scopedCandidates.reduce(
+      (total, candidate) => total + getCardWeight(candidate),
+      0
+    );
+    scopedCandidates.forEach(candidate => {
+      rates.set(candidate.id, getCardWeight(candidate) / totalCardWeight);
+    });
+    return rates;
+  }
+
+  rarityGroups.forEach(group => {
+    const rarityRate = group.weight / totalRarityWeight;
+    const totalCardWeight = group.candidates.reduce(
+      (total, candidate) => total + getCardWeight(candidate),
+      0
+    );
+    group.candidates.forEach(candidate => {
+      rates.set(
+        candidate.id,
+        rarityRate * (getCardWeight(candidate) / totalCardWeight)
+      );
+    });
+  });
+  return rates;
+};
+
+/**
  * Selects five rewards exclusively from the supplied candidate scope.
  * Guarantees that depend on a reward type or rarity apply when a matching
  * candidate exists in that scope.
@@ -83,7 +162,8 @@ export const createBoosterRewards = ({
   ownedIds = [],
   pityReady = false,
   rng = Math.random,
-  preferUniverseSpread = false
+  preferUniverseSpread = false,
+  guaranteeNonHeroRare = false
 }) => {
   if (!Array.isArray(candidates)) {
     throw new TypeError('candidates must be an array.');
@@ -115,6 +195,13 @@ export const createBoosterRewards = ({
     const unownedHeroes = heroes.filter(hero => !ownedSet.has(hero.id));
     const heroPool = pityReady && unownedHeroes.length > 0 ? unownedHeroes : heroes;
     addCandidate(weightedPick(heroPool, rng));
+  }
+
+  const nonHeroRareOrBetter = scopedCandidates.filter(candidate => (
+    !isHero(candidate) && isRareOrBetter(candidate)
+  ));
+  if (guaranteeNonHeroRare && nonHeroRareOrBetter.length > 0) {
+    addCandidate(pickUnusedFirst(nonHeroRareOrBetter));
   }
 
   const rareOrBetter = scopedCandidates.filter(isRareOrBetter);
