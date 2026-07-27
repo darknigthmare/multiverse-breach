@@ -10,6 +10,11 @@ import {
   MULTIVERSE_CONVERGENCE_BOOSTER_ART,
   PERMANENT_OC_BOOSTERS
 } from '../src/game/portalBoosterCatalog.js';
+import {
+  OC_BOOSTER_CONTENT_UPDATES,
+  OC_BOOSTER_UPDATE_UNLOCKABLES,
+  getOcBoosterContentUpdate
+} from '../src/game/ocBoosterContentUpdates.js';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -87,6 +92,7 @@ let INTRO_POSE_CATALOG;
 let VICTORY_POSE_CATALOG;
 let PROFILE_BANNER_CATALOG;
 let PROFILE_TITLE_CATALOG;
+let getUnlockableById;
 let BATTLE_ITEMS_BY_UNIVERSE;
 try {
   const heroModule = await vite.ssrLoadModule('/src/game/heroes.js');
@@ -110,6 +116,7 @@ try {
   VICTORY_POSE_CATALOG = unlockableModule.VICTORY_POSE_CATALOG;
   PROFILE_BANNER_CATALOG = unlockableModule.PROFILE_BANNER_CATALOG;
   PROFILE_TITLE_CATALOG = unlockableModule.PROFILE_TITLE_CATALOG;
+  getUnlockableById = unlockableModule.getUnlockableById;
   BATTLE_ITEMS_BY_UNIVERSE = battleItemModule.BATTLE_ITEMS_BY_UNIVERSE;
 } finally {
   await vite.close();
@@ -473,6 +480,7 @@ const nexusHeroes = HEROES_DB.filter(
   (hero) => hero.universe === 'Nexus de Convergence'
 );
 const ocPoolSignatures = new Set();
+const ocUpdateCandidateOwners = new Map();
 for (const pack of PERMANENT_OC_BOOSTERS) {
   const featuredHeroIds = new Set(pack.heroIds);
   const candidates = makeBoosterCandidates({
@@ -490,9 +498,73 @@ for (const pack of PERMANENT_OC_BOOSTERS) {
     .sort();
   const expectedHeroIds = [...pack.heroIds].sort();
   const poolSignature = heroIds.join('|');
+  const update = getOcBoosterContentUpdate(pack.id);
+  const updateCandidates = candidates.filter(candidate => candidate.isContentUpdate);
+  const expectedUpdateIds = update?.newCardIds || [];
+  const actualUpdateIds = updateCandidates.map(candidate => candidate.id);
 
   if (candidates.length < 5 || poolIds.size < 5) {
     contentErrors.push(`${pack.id}: targeted OC pool cannot supply five distinct cards`);
+  }
+  if (
+    !update
+    || pack.contentUpdate?.id !== update.id
+    || pack.contentUpdate?.version !== update.version
+    || pack.contentUpdate?.releasedAt !== update.releasedAt
+  ) {
+    contentErrors.push(`${pack.id}: missing or inconsistent OC content update metadata`);
+  }
+  if (
+    expectedUpdateIds.length !== 5
+    || JSON.stringify(actualUpdateIds) !== JSON.stringify(expectedUpdateIds)
+  ) {
+    contentErrors.push(
+      `${pack.id}: OC content update pool differs from its five-card catalogue`
+    );
+  }
+  if (new Set(updateCandidates.map(candidate => candidate.kind)).size < 3) {
+    contentErrors.push(`${pack.id}: OC content update must span at least three reward kinds`);
+  }
+  if (updateCandidates.filter(candidate => candidate.rarity?.id === 'anomaly').length !== 1) {
+    contentErrors.push(`${pack.id}: OC content update must expose exactly one Anomaly chase`);
+  }
+  for (const candidate of updateCandidates) {
+    const definition = update.cards.find(card => card.id === candidate.id);
+    const owners = ocUpdateCandidateOwners.get(candidate.id) || [];
+    owners.push(pack.id);
+    ocUpdateCandidateOwners.set(candidate.id, owners);
+
+    if (
+      !definition
+      || candidate.rewardId !== definition.rewardId
+      || candidate.rarity?.id !== definition.rarityId
+      || candidate.contentUpdateVersion !== update.version
+      || candidate.universe !== 'Nexus de Convergence'
+    ) {
+      contentErrors.push(`${pack.id}: invalid update candidate "${candidate.id}"`);
+    }
+    if (pack.rewardKinds && !pack.rewardKinds.includes(candidate.kind)) {
+      contentErrors.push(
+        `${pack.id}: update candidate "${candidate.id}" leaked outside rewardKinds`
+      );
+    }
+    if (candidate.kind === 'archive' || candidate.kind === 'hud') {
+      if (!hasVisibleText(candidate.data?.image) || !hasVisibleText(candidate.data?.mode)) {
+        contentErrors.push(`${pack.id}: "${candidate.id}" lacks playable backdrop metadata`);
+      }
+    } else {
+      const unlockable = candidate.data?.unlockable;
+      if (
+        !isRecord(unlockable)
+        || unlockable.id !== candidate.rewardId
+        || unlockable.kind !== candidate.kind
+        || getUnlockableById(candidate.kind, candidate.rewardId) !== unlockable
+      ) {
+        contentErrors.push(
+          `${pack.id}: supplemental unlockable "${candidate.id}" is not resolvable`
+        );
+      }
+    }
   }
   if (JSON.stringify(heroIds) !== JSON.stringify(expectedHeroIds)) {
     contentErrors.push(`${pack.id}: targeted OC hero scope does not match its catalogue`);
@@ -528,6 +600,64 @@ for (const pack of PERMANENT_OC_BOOSTERS) {
   ))) {
     contentErrors.push(`${pack.id}: missing guaranteed non-character Rare+ candidate`);
   }
+}
+
+for (const [candidateId, owners] of ocUpdateCandidateOwners) {
+  if (owners.length !== 1) {
+    contentErrors.push(
+      `${candidateId}: OC content update leaked between packs (${owners.join(', ')})`
+    );
+  }
+}
+
+const ocContentUpdateCards = Object.values(OC_BOOSTER_CONTENT_UPDATES)
+  .flatMap(update => update.cards);
+const ocContentUpdateIds = new Set();
+if (
+  Object.keys(OC_BOOSTER_CONTENT_UPDATES).length !== 5
+  || ocContentUpdateCards.length !== 25
+) {
+  contentErrors.push(
+    `OC content update registry exposes ${ocContentUpdateCards.length} cards across `
+    + `${Object.keys(OC_BOOSTER_CONTENT_UPDATES).length} packs`
+  );
+}
+if (!Object.isFrozen(OC_BOOSTER_CONTENT_UPDATES)) {
+  contentErrors.push('OC content update registry must be frozen');
+}
+for (const card of ocContentUpdateCards) {
+  if (ocContentUpdateIds.has(card.id)) {
+    contentErrors.push(`OC content update has duplicate card id "${card.id}"`);
+  }
+  ocContentUpdateIds.add(card.id);
+  if (!Object.isFrozen(card) || !hasVisibleText(card.name) || !isHexColor(card.color)) {
+    contentErrors.push(`OC content update card "${card.id}" has incomplete metadata`);
+  }
+  if (idsByFamily.get(card.kind)?.has(card.id)) {
+    contentErrors.push(`OC content update card "${card.id}" collides with base catalogue`);
+  }
+  if (card.rarityId === 'anomaly' && Number(card.dropWeight) !== 2) {
+    contentErrors.push(`OC Anomaly update card "${card.id}" must use featured weight 2`);
+  }
+  const unlockable = card.data?.unlockable;
+  if (unlockable?.kind === 'fieldSuper') {
+    const effect = unlockable.effect;
+    if (
+      !hasFiniteFields(effect, ['damage', 'guardDamage', 'knockback', 'healRatio'])
+      || effect.damage > 41
+      || effect.guardDamage > 70
+      || effect.knockback > 360
+      || effect.healRatio > 0.04
+    ) {
+      contentErrors.push(`OC Field Super "${card.id}" exceeds balanced effect bounds`);
+    }
+  }
+}
+if (
+  Object.keys(OC_BOOSTER_UPDATE_UNLOCKABLES).length
+  !== ocContentUpdateCards.filter(card => card.data?.unlockable).length
+) {
+  contentErrors.push('OC supplemental unlockable registry is incomplete');
 }
 
 for (const [family, familyIds] of idsByFamily) {
@@ -579,7 +709,8 @@ const contentTotals = {
   victoryPose: VICTORY_POSE_CATALOG.length,
   profileBanner: PROFILE_BANNER_CATALOG.length,
   profileTitle: PROFILE_TITLE_CATALOG.length,
-  hud: [...contentByUniverse.values()].reduce((sum, counts) => sum + counts.hud, 0)
+  hud: [...contentByUniverse.values()].reduce((sum, counts) => sum + counts.hud, 0),
+  ocContentUpdate: ocContentUpdateCards.length
 };
 contentTotals.total = Object.entries(contentTotals)
   .filter(([kind]) => kind !== 'universes')

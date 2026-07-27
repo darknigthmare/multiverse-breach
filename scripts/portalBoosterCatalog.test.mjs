@@ -10,6 +10,11 @@ import {
   getPortalBoosterPackArt,
   getPortalBoosterRotation
 } from '../src/game/portalBoosterCatalog.js';
+import {
+  OC_BOOSTER_CONTENT_UPDATES,
+  OC_BOOSTER_UPDATE_UNLOCKABLES,
+  getOcBoosterContentUpdate
+} from '../src/game/ocBoosterContentUpdates.js';
 
 const universes = Array.from({ length: 12 }, (_, index) => `Thread ${index + 1}`);
 
@@ -66,4 +71,63 @@ test('five permanent OC editions have unique art and targeted pools', () => {
     assert.equal(getPortalBoosterPackArt(pack.id), pack.art);
     assert.equal(BOOSTER_ART_BY_PACK_ID[pack.id], pack.art);
   });
+});
+
+test('every permanent OC edition exposes an exclusive frozen content update', () => {
+  const globalCardIds = new Set();
+  const updateSignatures = new Set();
+
+  assert.equal(Object.keys(OC_BOOSTER_CONTENT_UPDATES).length, 5);
+  assert.ok(Object.isFrozen(OC_BOOSTER_CONTENT_UPDATES));
+  assert.ok(Object.isFrozen(OC_BOOSTER_UPDATE_UNLOCKABLES));
+
+  PERMANENT_OC_BOOSTERS.forEach(pack => {
+    const update = getOcBoosterContentUpdate(pack.id);
+    const cardIds = update.cards.map(card => card.id);
+    const signature = cardIds.join('|');
+
+    assert.equal(pack.contentUpdate.version, '1.1');
+    assert.equal(pack.contentUpdate.releasedAt, '2026-07-27');
+    assert.equal(pack.contentUpdate.waveId, 'oc-wave-01');
+    assert.equal(update, OC_BOOSTER_CONTENT_UPDATES[pack.id]);
+    assert.equal(update.cards.length, 5);
+    assert.deepEqual(pack.contentUpdate.newCardIds, cardIds);
+    assert.equal(new Set(cardIds).size, cardIds.length);
+    assert.ok(Object.isFrozen(pack.contentUpdate));
+    assert.ok(Object.isFrozen(pack.contentUpdate.newCardIds));
+    assert.ok(Object.isFrozen(update));
+    assert.ok(Object.isFrozen(update.cards));
+    assert.match(update.releasedAt, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(update.summary.fr);
+    assert.ok(update.summary.en);
+    assert.ok(cardIds.includes(pack.chaseRewardId));
+    assert.ok(new Set(update.cards.map(card => card.kind)).size >= 3);
+    assert.ok(update.cards.some(card => ['rare', 'epic', 'anomaly'].includes(card.rarityId)));
+    assert.equal(update.cards.filter(card => card.rarityId === 'anomaly').length, 1);
+    assert.equal(
+      update.cards.find(card => card.id === pack.chaseRewardId)?.rarityId,
+      'anomaly'
+    );
+    assert.ok(!updateSignatures.has(signature));
+    updateSignatures.add(signature);
+
+    update.cards.forEach(card => {
+      assert.equal(card.rewardId, card.id);
+      assert.equal(card.universe, 'Nexus de Convergence');
+      assert.ok(Object.isFrozen(card));
+      assert.ok(!globalCardIds.has(card.id));
+      globalCardIds.add(card.id);
+      if (pack.rewardKinds) {
+        assert.ok(pack.rewardKinds.includes(card.kind));
+      }
+    });
+  });
+
+  assert.equal(globalCardIds.size, 25);
+  assert.equal(
+    Object.keys(OC_BOOSTER_UPDATE_UNLOCKABLES).length,
+    [...globalCardIds].filter(id => !id.startsWith('archive:') && !id.startsWith('hud:')).length
+  );
+  assert.equal(getOcBoosterContentUpdate('multi'), null);
+  assert.equal(getOcBoosterContentUpdate('universe:Nexus de Convergence'), null);
 });

@@ -1,3 +1,5 @@
+import { getOcBoosterContentUpdate } from './ocBoosterContentUpdates.js';
+
 export const BOOSTER_ART_BY_UNIVERSE = {
   "28 Days Later": "/boosters/28-days-later.webp",
   "A Nightmare on Elm Street": "/boosters/a-nightmare-on-elm-street.webp",
@@ -393,7 +395,7 @@ export const PERMANENT_OC_BOOSTERS = Object.freeze([
       'profileBanner',
       'profileTitle'
     ],
-    chaseRewardId: 'event:evt_nexus_anchor_pulse',
+    chaseRewardId: 'hud:oc_lock_of_name',
     guaranteeNonHeroRare: true
   },
   {
@@ -429,7 +431,7 @@ export const PERMANENT_OC_BOOSTERS = Object.freeze([
       'portalEffect',
       'victoryPose'
     ],
-    chaseRewardId: 'field-super:Nexus de Convergence',
+    chaseRewardId: 'field-super:oc_incompatible_versions_verdict',
     guaranteeNonHeroRare: true
   },
   {
@@ -465,7 +467,7 @@ export const PERMANENT_OC_BOOSTERS = Object.freeze([
       'profileBanner',
       'profileTitle'
     ],
-    chaseRewardId: 'hud:Nexus de Convergence',
+    chaseRewardId: 'hud:oc_black_ledger_restored_lines',
     guaranteeNonHeroRare: true
   },
   {
@@ -502,7 +504,7 @@ export const PERMANENT_OC_BOOSTERS = Object.freeze([
       'introPose',
       'victoryPose'
     ],
-    chaseRewardId: 'portal-effect:Nexus de Convergence',
+    chaseRewardId: 'portal-effect:oc_named_losses_gate',
     guaranteeNonHeroRare: true
   },
   {
@@ -534,14 +536,26 @@ export const PERMANENT_OC_BOOSTERS = Object.freeze([
       'arca_loom'
     ],
     rewardKinds: null,
-    chaseRewardId: 'victory-pose:Nexus de Convergence',
+    chaseRewardId: 'field-super:oc_six_origin_locks_sentence',
     guaranteeNonHeroRare: true
   }
-].map(pack => Object.freeze({
-  ...pack,
-  heroIds: Object.freeze([...pack.heroIds]),
-  rewardKinds: pack.rewardKinds ? Object.freeze([...pack.rewardKinds]) : null
-})));
+].map(pack => {
+  const update = getOcBoosterContentUpdate(pack.id);
+  const contentUpdate = Object.freeze({
+    id: update.id,
+    waveId: update.waveId,
+    version: update.version,
+    releasedAt: update.releasedAt,
+    summary: update.summary,
+    newCardIds: update.newCardIds
+  });
+  return Object.freeze({
+    ...pack,
+    heroIds: Object.freeze([...pack.heroIds]),
+    rewardKinds: pack.rewardKinds ? Object.freeze([...pack.rewardKinds]) : null,
+    contentUpdate
+  });
+}));
 export const DEFAULT_OC_BOOSTER_ID = PERMANENT_OC_BOOSTERS[0].id;
 export const BOOSTER_ART_BY_PACK_ID = Object.freeze({
   ...Object.fromEntries(PERMANENT_OC_BOOSTERS.map(pack => [pack.id, pack.art])),

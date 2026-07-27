@@ -11,6 +11,7 @@ import {
   getBoosterFreeDrawRates
 } from '../game/portalBoosterEngine';
 import { capDuplicateRefunds, getBoosterPrice } from '../game/portalBoosterEconomy';
+import { getOcBoosterContentUpdate } from '../game/ocBoosterContentUpdates';
 import { getUniverseUnlockables, getUnlockableById } from '../game/universeUnlockables';
 import {
   BOOSTER_ROTATION_WINDOW_MS,
@@ -199,6 +200,12 @@ const formatFreeDrawRate = (rate, lang) => {
         ? percentage.toFixed(3)
         : percentage.toFixed(4);
   return `${formatted}% ${lang === 'fr' ? 'par tirage libre' : 'per free draw'}`;
+};
+
+const formatContentUpdateDate = (releasedAt, lang) => {
+  const [year, month, day] = String(releasedAt || '').split('-');
+  if (!year || !month || !day) return releasedAt;
+  return lang === 'fr' ? `${day}/${month}/${year}` : `${year}-${month}-${day}`;
 };
 
 const getUniversePortalProfile = (universe, heroes) => {
@@ -426,6 +433,18 @@ const makeBoosterCandidates = ({
         rarity,
         data: { unlockable }
       });
+    });
+  });
+
+  const contentUpdate = getOcBoosterContentUpdate(banner.id);
+  contentUpdate?.cards.forEach(card => {
+    const rarity = PORTAL_RARITIES[card.rarityId] || PORTAL_RARITIES.common;
+    candidates.push({
+      ...card,
+      rarity,
+      contentUpdateId: contentUpdate.id,
+      contentUpdateVersion: contentUpdate.version,
+      isContentUpdate: true
     });
   });
 
@@ -751,6 +770,14 @@ export default function PortalScreen({
     () => availablePortalBanners.find(item => item.id === activeBanner) || defaultOcBanner,
     [activeBanner, availablePortalBanners, defaultOcBanner]
   );
+  const activeContentUpdate = useMemo(
+    () => getOcBoosterContentUpdate(activeBannerData.id),
+    [activeBannerData.id]
+  );
+  const activeContentUpdateCardIds = useMemo(
+    () => new Set(activeContentUpdate?.newCardIds || []),
+    [activeContentUpdate]
+  );
   const activeBannerHeroes = visibleHeroes.filter(hero => activeBannerData.match(hero));
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
@@ -799,9 +826,14 @@ export default function PortalScreen({
   const rewardManifestGroups = useMemo(
     () => REWARD_KIND_ORDER.map(kind => ({
       kind,
-      rewards: activeRewardCandidates.filter(reward => reward.kind === kind)
+      rewards: activeRewardCandidates
+        .filter(reward => reward.kind === kind)
+        .sort((rewardA, rewardB) => (
+          Number(activeContentUpdateCardIds.has(rewardB.id))
+          - Number(activeContentUpdateCardIds.has(rewardA.id))
+        ))
     })),
-    [activeRewardCandidates]
+    [activeContentUpdateCardIds, activeRewardCandidates]
   );
   const openingLocked = ['charging', 'cutting', 'opening'].includes(openingPhase);
   const cardsVisible = ['revealing', 'complete'].includes(openingPhase);
@@ -1219,6 +1251,7 @@ export default function PortalScreen({
             const isActive = activeBannerData.id === banner.id;
             const isAvailable = availableBannerIds.has(banner.id);
             const isPermanent = banner.scope === 'core';
+            const packContentUpdate = banner.contentUpdate;
             const packArt = getPortalBoosterPackArt(banner.id)
               || getPortalBoosterArt(banner.universe);
             const packPrice = getBoosterPrice(banner);
@@ -1256,7 +1289,9 @@ export default function PortalScreen({
                 </span>
                 <span className={`portal-booster-art-badge ${isPermanent ? 'permanent' : isAvailable ? 'active' : 'inactive'}`}>
                   {isPermanent
-                    ? (lang === 'fr' ? 'PERMANENT' : 'PERMANENT')
+                    ? packContentUpdate
+                      ? `${lang === 'fr' ? 'PERMANENT · MÀJ' : 'PERMANENT · UPDATE'} V${packContentUpdate.version}`
+                      : 'PERMANENT'
                     : isAvailable
                       ? (lang === 'fr' ? 'ROTATION ACTIVE' : 'ACTIVE ROTATION')
                       : (lang === 'fr' ? 'HORS ROTATION' : 'OFF ROTATION')}
@@ -1297,6 +1332,25 @@ export default function PortalScreen({
           </div>
           <h2>{activeBannerData.label[lang]}</h2>
           <p>{activeBannerData.meta[lang]}</p>
+          {activeContentUpdate && (
+            <div
+              className="portal-focus-rate booster-guarantee"
+              data-content-update={activeContentUpdate.id}
+              aria-live="polite"
+            >
+              <strong>
+                {lang === 'fr' ? 'MISE À JOUR' : 'CONTENT UPDATE'} V{activeContentUpdate.version}
+              </strong>
+              {' · '}
+              <time dateTime={activeContentUpdate.releasedAt}>
+                {formatContentUpdateDate(activeContentUpdate.releasedAt, lang)}
+              </time>
+              {' · '}
+              +{activeContentUpdate.newCardIds.length} {lang === 'fr' ? 'CARTES' : 'CARDS'}
+              <br />
+              {getLocalizedText(activeContentUpdate.summary, lang)}
+            </div>
+          )}
           <div className="portal-focus-stats">
             <span>{activeOwnedCount}/{activeBannerHeroes.length} {lang === 'fr' ? 'persos' : 'characters'}</span>
             <span>{activeMissingCount} {lang === 'fr' ? 'signatures absentes' : 'missing signatures'}</span>
@@ -1332,7 +1386,14 @@ export default function PortalScreen({
                       <ul>
                         {rewards.slice(0, REWARD_MANIFEST_LIMIT).map(reward => (
                           <li key={reward.id} title={getLocalizedText(reward.name, lang)}>
-                            <span>{getLocalizedText(reward.name, lang)}</span>
+                            <span>
+                              {activeContentUpdateCardIds.has(reward.id) && (
+                                <strong style={{ color: activeBannerData.color }}>
+                                  {lang === 'fr' ? 'AJOUT' : 'NEW'} V{activeContentUpdate.version} ·{' '}
+                                </strong>
+                              )}
+                              {getLocalizedText(reward.name, lang)}
+                            </span>
                             <small>{formatFreeDrawRate(freeDrawRates.get(reward.id), lang)}</small>
                           </li>
                         ))}

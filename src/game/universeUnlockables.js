@@ -1,5 +1,6 @@
 import { BATTLE_ITEMS_BY_UNIVERSE } from './battleItems';
 import { LORE_DB } from './lore';
+import { OC_BOOSTER_UPDATE_UNLOCKABLES } from './ocBoosterContentUpdates.js';
 
 const KART_STYLES = Object.freeze([
   {
@@ -362,6 +363,21 @@ const CATALOG_BY_KIND = Object.freeze({
   profileTitle: new Map(PROFILE_TITLE_CATALOG.map(item => [item.id, item]))
 });
 
+const OC_UPDATE_CATALOG_BY_KIND = Object.freeze(Object.fromEntries(
+  Object.keys(CATALOG_BY_KIND).map(kind => [
+    kind,
+    new Map(
+      Object.values(OC_BOOSTER_UPDATE_UNLOCKABLES)
+        .filter(unlockable => unlockable.kind === kind)
+        .map(unlockable => [unlockable.id, unlockable])
+    )
+  ])
+));
+
 export const getUniverseUnlockables = (universe) => UNIVERSE_UNLOCKABLES[universe] || null;
 
-export const getUnlockableById = (kind, id) => CATALOG_BY_KIND[kind]?.get(id) || null;
+export const getUnlockableById = (kind, id) => (
+  CATALOG_BY_KIND[kind]?.get(id)
+  || OC_UPDATE_CATALOG_BY_KIND[kind]?.get(id)
+  || null
+);
