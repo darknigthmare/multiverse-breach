@@ -15,6 +15,51 @@ const DIFFICULTY = {
   expert: { reaction: 0.16, aggression: 0.82, guardChance: 0.62, damage: 1.12 }
 };
 
+const FIGHTER_COSMETIC_KEYS = Object.freeze([
+  'npcAssist',
+  'koEffect',
+  'introPose',
+  'victoryPose'
+]);
+
+const isRecord = value => (
+  value !== null
+  && typeof value === 'object'
+  && !Array.isArray(value)
+);
+
+const pickFighterCosmetics = (source = {}) => Object.fromEntries(
+  FIGHTER_COSMETIC_KEYS.map(key => [key, isRecord(source?.[key]) ? source[key] : null])
+);
+
+// A flat loadout applies fairly to both camps. Advanced callers can provide
+// { player, opponent }, { player, cpu }, or { player, p2 } to override a side.
+export const resolveFighterCosmetics = (cosmetics = {}) => {
+  const source = isRecord(cosmetics) ? cosmetics : {};
+  const playerSource = isRecord(source.player) ? source.player : source;
+  const opponentKey = ['opponent', 'cpu', 'p2'].find(
+    key => Object.prototype.hasOwnProperty.call(source, key)
+  );
+  const opponentSource = opponentKey
+    ? (isRecord(source[opponentKey]) ? source[opponentKey] : {})
+    : playerSource;
+  return {
+    player: pickFighterCosmetics(playerSource),
+    cpu: pickFighterCosmetics(opponentSource)
+  };
+};
+
+const getCosmeticName = (entry, fallback = '') => (
+  entry?.name?.fr
+  || entry?.name?.en
+  || entry?.name
+  || fallback
+);
+
+const finiteOr = (value, fallback) => (
+  Number.isFinite(Number(value)) ? Number(value) : fallback
+);
+
 const isRangedHero = (hero) => /gun|rifle|shotgun|card|magic|staff|bow|laser|ray|bullet|projectile|microphone|blaster/i.test([
   hero.weaponType,
   hero.simple?.type,
@@ -63,7 +108,10 @@ export class EngineFighter {
     this.groundY = Math.round(height * 0.82);
     this.universe = options.universe || 'Nexus de Convergence';
     this.levelProfile = options.levelProfile || getRecentUniverseLevelProfile(this.universe);
-    this.fieldSuper = options.fieldSuper || null;
+    this.opponentControl = options.opponentControl === 'p2' ? 'p2' : 'cpu';
+    this.fieldSuper = options.fieldSupers?.player || options.fieldSuper || null;
+    this.opponentFieldSuper = options.fieldSupers?.opponent || options.opponentFieldSuper || null;
+    this.cosmetics = resolveFighterCosmetics(options.cosmetics);
     this.particles = particles;
     this.playSfx = playSfx;
     this.onComplete = onComplete;
@@ -81,7 +129,8 @@ export class EngineFighter {
         tagCooldown: 0
       }
     };
-    this.playerInput = {};
+    this.inputs = { player: {}, cpu: {} };
+    this.playerInput = this.inputs.player;
     this.projectiles = [];
     this.elapsed = 0;
     this.timer = 99;
@@ -98,7 +147,40 @@ export class EngineFighter {
     this.aiGuardTimer = 0;
     this.fieldSuperCharge = this.fieldSuper ? 20 : 0;
     this.fieldSuperUsed = false;
+    this.opponentFieldSuperCharge = this.opponentFieldSuper ? 20 : 0;
+    this.opponentFieldSuperUsed = false;
     this.fieldSuperFlash = 0;
+    this.fieldSuperFlashColor = this.fieldSuper?.color || '#ffea00';
+    this.assists = {
+      player: {
+        assist: this.cosmetics.player.npcAssist,
+        charge: this.cosmetics.player.npcAssist ? 40 : 0,
+        used: false
+      },
+      cpu: {
+        assist: this.cosmetics.cpu.npcAssist,
+        charge: this.cosmetics.cpu.npcAssist ? 40 : 0,
+        used: false
+      }
+    };
+    const introDurationMs = Math.max(
+      finiteOr(
+        this.cosmetics.player.introPose?.animation?.durationMs,
+        this.cosmetics.player.introPose ? 1500 : 0
+      ),
+      finiteOr(
+        this.cosmetics.cpu.introPose?.animation?.durationMs,
+        this.cosmetics.cpu.introPose ? 1500 : 0
+      )
+    );
+    this.introPoseDuration = introDurationMs > 0
+      ? clamp(introDurationMs / 1000, 1, 2.8)
+      : 0;
+    this.introPoseTimer = this.introPoseDuration;
+    this.assistEvent = null;
+    this.koEffectEvent = null;
+    this.victoryPoseEvent = null;
+    this.winnerSide = null;
     this.stats = {
       player: { damage: 0, taken: 0, kos: 0, tags: 0, maxCombo: 0, currentCombo: 0, comboTimer: 0 },
       cpu: { damage: 0, taken: 0, kos: 0, tags: 0, maxCombo: 0, currentCombo: 0, comboTimer: 0 }
@@ -106,7 +188,13 @@ export class EngineFighter {
   }
 
   setInput(input = {}) {
-    this.playerInput = input;
+    this.setSideInput('player', input);
+  }
+
+  setSideInput(side, input = {}) {
+    const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+    this.inputs[resolvedSide] = input || {};
+    if (resolvedSide === 'player') this.playerInput = this.inputs.player;
   }
 
   getTeam(side) {
@@ -123,36 +211,70 @@ export class EngineFighter {
   }
 
   triggerPlayerAction(action, index = null) {
-    if (action === 'tag') return this.requestTag('player', index);
-    if (action === 'jump') return this.tryJump(this.getActive('player'));
-    return this.tryAction('player', action);
+    return this.triggerSideAction('player', action, index);
   }
 
-  triggerFieldSuper() {
-    const attacker = this.getActive('player');
-    const target = this.getActive('cpu');
+  triggerSideAction(side, action, index = null) {
+    const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+    if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
+    if (action === 'tag') return this.requestTag(resolvedSide, index);
+    if (action === 'jump') return this.tryJump(this.getActive(resolvedSide));
+    return this.tryAction(resolvedSide, action);
+  }
+
+  getFieldSuperState(side) {
+    if (side === 'cpu' || side === 'opponent') {
+      return {
+        super: this.opponentFieldSuper,
+        charge: this.opponentFieldSuperCharge,
+        used: this.opponentFieldSuperUsed
+      };
+    }
+    return {
+      super: this.fieldSuper,
+      charge: this.fieldSuperCharge,
+      used: this.fieldSuperUsed
+    };
+  }
+
+  setFieldSuperState(side, { charge, used }) {
+    if (side === 'cpu' || side === 'opponent') {
+      if (charge !== undefined) this.opponentFieldSuperCharge = charge;
+      if (used !== undefined) this.opponentFieldSuperUsed = used;
+      return;
+    }
+    if (charge !== undefined) this.fieldSuperCharge = charge;
+    if (used !== undefined) this.fieldSuperUsed = used;
+  }
+
+  triggerFieldSuper(side = 'player') {
+    const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+    if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
+    const state = this.getFieldSuperState(resolvedSide);
+    const attacker = this.getActive(resolvedSide);
+    const target = this.getOpponent(resolvedSide);
     if (
-      !this.fieldSuper
-      || this.fieldSuperUsed
-      || this.fieldSuperCharge < 100
+      !state.super
+      || state.used
+      || state.charge < 100
       || !this.canAct(attacker)
       || !target
       || target.currentHp <= 0
     ) return false;
 
-    const effect = this.fieldSuper.effect || {};
-    this.fieldSuperUsed = true;
-    this.fieldSuperCharge = 0;
+    const effect = state.super.effect || {};
+    this.setFieldSuperState(resolvedSide, { used: true, charge: 0 });
     this.fieldSuperFlash = 1.25;
-    this.announcement = this.fieldSuper.name?.fr
-      || this.fieldSuper.name?.en
+    this.fieldSuperFlashColor = state.super.color || '#ffea00';
+    this.announcement = state.super.name?.fr
+      || state.super.name?.en
       || 'SUPER DE TERRAIN';
     this.announcementTimer = 1.45;
     this.playSfx('portal');
     this.playSfx('special');
-    this.spawnBurst(this.width / 2, this.groundY - 90, this.fieldSuper.color || '#ffea00', 42);
+    this.spawnBurst(this.width / 2, this.groundY - 90, state.super.color || '#ffea00', 42);
 
-    this.getTeam('player').fighters.forEach(fighter => {
+    this.getTeam(resolvedSide).fighters.forEach(fighter => {
       if (fighter.currentHp <= 0) return;
       fighter.currentHp = Math.min(
         fighter.maxHp,
@@ -168,6 +290,111 @@ export class EngineFighter {
       knockback: effect.knockback || 360
     });
     return true;
+  }
+
+  getCosmetics(side) {
+    return side === 'cpu' || side === 'opponent'
+      ? this.cosmetics.cpu
+      : this.cosmetics.player;
+  }
+
+  getAssistState(side) {
+    return side === 'cpu' || side === 'opponent'
+      ? this.assists.cpu
+      : this.assists.player;
+  }
+
+  triggerNpcAssist(side = 'player') {
+    return this.triggerAssist(side);
+  }
+
+  triggerAssist(side = 'player') {
+    const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+    if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
+    return this.activateAssist(resolvedSide);
+  }
+
+  activateAssist(side) {
+    const state = this.getAssistState(side);
+    const attacker = this.getActive(side);
+    const target = this.getOpponent(side);
+    if (
+      !state.assist
+      || state.used
+      || state.charge < 100
+      || !this.canAct(attacker)
+      || !target
+      || target.currentHp <= 0
+      || target.invulnerable > 0
+    ) return false;
+
+    const effect = state.assist.effect || {};
+    const color = state.assist.color || attacker.secondaryColor || '#39c5bb';
+    const healRatio = clamp(finiteOr(effect.healRatio, 0.04), 0, 0.08);
+    state.used = true;
+    state.charge = 0;
+    attacker.guarding = false;
+    attacker.state = 'attack';
+    attacker.action = {
+      type: 'assist',
+      duration: 0.46,
+      hitAt: 0,
+      base: 0,
+      range: this.width,
+      guardDamage: 0,
+      knockback: 0,
+      elapsed: 0,
+      resolved: true
+    };
+    this.assistEvent = {
+      side,
+      assist: state.assist,
+      x: target.x,
+      y: target.y - 58,
+      duration: 1.05,
+      remaining: 1.05
+    };
+    this.announcement = getCosmeticName(state.assist, 'ASSIST A.R.C.A.');
+    this.announcementTimer = 1.15;
+    this.playSfx('portal');
+    this.playSfx('special');
+    this.spawnBurst(target.x, target.y - 58, color, 24);
+
+    this.getTeam(side).fighters.forEach(fighter => {
+      if (fighter.currentHp <= 0) return;
+      fighter.currentHp = Math.min(
+        fighter.maxHp,
+        fighter.currentHp + fighter.maxHp * healRatio
+      );
+    });
+
+    this.applyHit(attacker, target, {
+      type: 'assist',
+      base: clamp(finiteOr(effect.damage, 14), 8, 24),
+      guardDamage: clamp(finiteOr(effect.guardDamage, 22), 10, 36),
+      knockback: 175,
+      ignoreDifficulty: true
+    });
+    return true;
+  }
+
+  triggerKoCosmetic(side, x, y) {
+    const effect = this.getCosmetics(side).koEffect;
+    if (!effect) return;
+    const duration = clamp(
+      finiteOr(effect.visual?.durationMs, 900) / 1000,
+      0.55,
+      1.8
+    );
+    this.koEffectEvent = {
+      side,
+      effect,
+      x,
+      y,
+      duration,
+      remaining: duration
+    };
+    this.spawnBurst(x, y, effect.color || '#ffea00', 30);
   }
 
   tryJump(fighter) {
@@ -270,6 +497,7 @@ export class EngineFighter {
     const step = clamp(dt || 0, 0, 0.034);
     if (this.completionReported) return;
     this.elapsed += step;
+    this.updateCosmeticTimers(step);
 
     if (this.finished) {
       this.completionDelay -= step;
@@ -306,18 +534,42 @@ export class EngineFighter {
 
     this.updatePassive(step);
     this.updatePlayer(step);
-    this.updateAi(step);
+    if (this.opponentControl === 'p2') this.updateControlledSide('cpu', step);
+    else this.updateAi(step);
     this.updateActions(step);
     this.updateProjectiles(step);
     this.resolveSpacing();
     this.resolveKnockouts(step);
   }
 
+  updateCosmeticTimers(dt) {
+    this.introPoseTimer = Math.max(0, this.introPoseTimer - dt);
+    ['assistEvent', 'koEffectEvent', 'victoryPoseEvent'].forEach(eventKey => {
+      const event = this[eventKey];
+      if (!event) return;
+      event.remaining = Math.max(0, event.remaining - dt);
+      if (event.remaining <= 0 && eventKey !== 'victoryPoseEvent') {
+        this[eventKey] = null;
+      }
+    });
+  }
+
   updatePassive(dt) {
     if (this.announcementTimer > 0) this.announcementTimer -= dt;
     if (this.fieldSuperFlash > 0) this.fieldSuperFlash = Math.max(0, this.fieldSuperFlash - dt);
-    if (this.fieldSuper && !this.fieldSuperUsed && this.countdown <= 0) {
-      this.fieldSuperCharge = clamp(this.fieldSuperCharge + dt * 1.8, 0, 100);
+    if (this.countdown <= 0) {
+      ['player', 'cpu'].forEach(side => {
+        const state = this.getFieldSuperState(side);
+        if (!state.super || state.used) return;
+        this.setFieldSuperState(side, {
+          charge: clamp(state.charge + dt * 1.8, 0, 100)
+        });
+      });
+      ['player', 'cpu'].forEach(side => {
+        const state = this.getAssistState(side);
+        if (!state.assist || state.used) return;
+        state.charge = clamp(state.charge + dt * 2.4, 0, 100);
+      });
     }
     Object.entries(this.teams).forEach(([side, team]) => {
       team.tagCooldown = Math.max(0, team.tagCooldown - dt);
@@ -348,13 +600,18 @@ export class EngineFighter {
   }
 
   updatePlayer(dt) {
-    const fighter = this.getActive('player');
-    const target = this.getActive('cpu');
+    this.updateControlledSide('player', dt);
+  }
+
+  updateControlledSide(side, dt) {
+    const fighter = this.getActive(side);
+    const target = this.getOpponent(side);
+    const input = this.inputs[side] || {};
     if (!fighter || fighter.currentHp <= 0) return;
     const grounded = fighter.y >= this.groundY - 2;
     const canInput = this.canAct(fighter);
-    const guard = Boolean(this.playerInput.guard) && canInput && grounded;
-    const crouch = Boolean(this.playerInput.down) && canInput && grounded && !guard;
+    const guard = Boolean(input.guard) && canInput && grounded;
+    const crouch = Boolean(input.down) && canInput && grounded && !guard;
     fighter.guarding = guard;
     fighter.crouching = crouch;
     if (guard) {
@@ -367,7 +624,7 @@ export class EngineFighter {
       fighter.vx = lerp(fighter.vx, 0, clamp(dt * 18, 0, 1));
       return;
     }
-    const direction = (this.playerInput.right ? 1 : 0) - (this.playerInput.left ? 1 : 0);
+    const direction = (input.right ? 1 : 0) - (input.left ? 1 : 0);
     this.moveFighter(fighter, target, direction, dt);
   }
 
@@ -375,6 +632,7 @@ export class EngineFighter {
     const fighter = this.getActive('cpu');
     const target = this.getActive('player');
     if (!fighter || fighter.currentHp <= 0 || !target) return;
+    if (this.activateAssist('cpu')) return;
     const distance = Math.abs(target.x - fighter.x);
     this.aiThink -= dt;
     this.aiGuardTimer = Math.max(0, this.aiGuardTimer - dt);
@@ -511,7 +769,13 @@ export class EngineFighter {
     const blocked = target.guarding && facingAttacker && target.guardBreak <= 0;
     const attackScale = attacker.attackPower / 18;
     const defenseScale = 1 - clamp(target.defensePower * 0.012, 0.05, 0.28);
-    const cpuScale = attacker.side === 'cpu' ? this.difficulty.damage : 1;
+    const cpuScale = (
+      attacker.side === 'cpu'
+      && this.opponentControl === 'cpu'
+      && !action.ignoreDifficulty
+    )
+      ? this.difficulty.damage
+      : 1;
     let damage = Math.max(3, action.base * attackScale * defenseScale * cpuScale);
 
     if (blocked) {
@@ -532,7 +796,13 @@ export class EngineFighter {
       target.guarding = false;
       target.crouching = false;
       target.action = null;
-      target.hitstun = action.type === 'super' ? 0.78 : action.type === 'heavy' ? 0.42 : 0.24;
+      target.hitstun = action.type === 'super'
+        ? 0.78
+        : action.type === 'heavy'
+          ? 0.42
+          : action.type === 'assist'
+            ? 0.34
+            : 0.24;
       target.state = 'hit';
       target.vx = attacker.facing * action.knockback;
       target.vy = action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
@@ -547,9 +817,33 @@ export class EngineFighter {
     target.meter = clamp(target.meter + damage * 0.55, 0, 100);
     this.stats[attacker.side].damage += damage;
     this.stats[target.side].taken += damage;
-    if (this.fieldSuper && !this.fieldSuperUsed) {
-      const chargeGain = attacker.side === 'player' ? damage * 0.3 : damage * 0.65;
-      this.fieldSuperCharge = clamp(this.fieldSuperCharge + chargeGain, 0, 100);
+    const attackerFieldState = this.getFieldSuperState(attacker.side);
+    if (attackerFieldState.super && !attackerFieldState.used) {
+      this.setFieldSuperState(attacker.side, {
+        charge: clamp(attackerFieldState.charge + damage * 0.3, 0, 100)
+      });
+    }
+    const targetFieldState = this.getFieldSuperState(target.side);
+    if (targetFieldState.super && !targetFieldState.used) {
+      this.setFieldSuperState(target.side, {
+        charge: clamp(targetFieldState.charge + damage * 0.65, 0, 100)
+      });
+    }
+    const attackerAssistState = this.getAssistState(attacker.side);
+    if (attackerAssistState.assist && !attackerAssistState.used) {
+      attackerAssistState.charge = clamp(
+        attackerAssistState.charge + damage * 0.45,
+        0,
+        100
+      );
+    }
+    const targetAssistState = this.getAssistState(target.side);
+    if (targetAssistState.assist && !targetAssistState.used) {
+      targetAssistState.charge = clamp(
+        targetAssistState.charge + damage * 0.72,
+        0,
+        100
+      );
     }
     this.stats[attacker.side].currentCombo += 1;
     this.stats[attacker.side].comboTimer = 0.82;
@@ -565,6 +859,7 @@ export class EngineFighter {
       this.announcement = 'K.O.';
       this.announcementTimer = 1;
       this.playSfx('defeat');
+      this.triggerKoCosmetic(attacker.side, target.x, target.y - 58);
     }
   }
 
@@ -616,9 +911,26 @@ export class EngineFighter {
   finish(result, timeout = false) {
     this.finished = true;
     this.result = result;
+    this.winnerSide = result === 'victory' ? 'player' : 'cpu';
     this.completionDelay = 1.05;
     this.announcement = timeout ? (result === 'victory' ? 'TEMPS - AVANTAGE' : 'TEMPS - REPLI') : result === 'victory' ? 'VICTOIRE' : 'DEFAITE';
     this.announcementTimer = 4;
+    const victoryPose = this.getCosmetics(this.winnerSide).victoryPose;
+    if (victoryPose) {
+      const duration = clamp(
+        finiteOr(victoryPose.animation?.durationMs, 1800) / 1000,
+        1,
+        3.2
+      );
+      const winner = this.getActive(this.winnerSide);
+      this.victoryPoseEvent = {
+        side: this.winnerSide,
+        pose: victoryPose,
+        fighterName: winner?.name || winner?.id || '',
+        duration,
+        remaining: duration
+      };
+    }
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
   }
 
@@ -648,6 +960,14 @@ export class EngineFighter {
       tags: playerStats.tags,
       maxCombo: playerStats.maxCombo,
       fieldSuperUsed: this.fieldSuperUsed,
+      opponentFieldSuperUsed: this.opponentFieldSuperUsed,
+      assistUsed: this.assists.player.used,
+      opponentAssistUsed: this.assists.cpu.used,
+      opponentControl: this.opponentControl,
+      winnerSide: this.winnerSide || (this.result === 'victory' ? 'player' : 'cpu'),
+      victoryPose: this.getCosmetics(
+        this.winnerSide || (this.result === 'victory' ? 'player' : 'cpu')
+      ).victoryPose,
       survivingFighters: this.getTeam('player').fighters.filter(fighter => fighter.currentHp > 0).length,
       rewards: this.result === 'victory'
         ? { gold: 45 + playerStats.kos * 12, shards: 15 + ({ S: 12, A: 8, B: 5, C: 2 }[grade] || 0), seasonXp: 28 + playerStats.kos * 5 }
@@ -673,6 +993,15 @@ export class EngineFighter {
         }))
       };
     };
+    const serializeAssist = side => {
+      const state = this.getAssistState(side);
+      return {
+        id: state.assist?.id || null,
+        charge: state.charge,
+        used: state.used,
+        ready: Boolean(state.assist && !state.used && state.charge >= 100)
+      };
+    };
     return {
       phase: this.finished ? this.result : this.countdown > 0 ? 'countdown' : 'running',
       timer: Math.ceil(this.timer),
@@ -684,7 +1013,44 @@ export class EngineFighter {
       maxCombo: this.stats.player.maxCombo,
       fieldSuperCharge: this.fieldSuperCharge,
       fieldSuperUsed: this.fieldSuperUsed,
-      fieldSuperId: this.fieldSuper?.id || null
+      fieldSuperId: this.fieldSuper?.id || null,
+      opponentFieldSuperCharge: this.opponentFieldSuperCharge,
+      opponentFieldSuperUsed: this.opponentFieldSuperUsed,
+      opponentFieldSuperId: this.opponentFieldSuper?.id || null,
+      assistCharge: this.assists.player.charge,
+      assistUsed: this.assists.player.used,
+      assistId: this.assists.player.assist?.id || null,
+      opponentAssistCharge: this.assists.cpu.charge,
+      opponentAssistUsed: this.assists.cpu.used,
+      opponentAssistId: this.assists.cpu.assist?.id || null,
+      opponentControl: this.opponentControl,
+      fieldSupers: {
+        player: {
+          charge: this.fieldSuperCharge,
+          used: this.fieldSuperUsed,
+          id: this.fieldSuper?.id || null
+        },
+        opponent: {
+          charge: this.opponentFieldSuperCharge,
+          used: this.opponentFieldSuperUsed,
+          id: this.opponentFieldSuper?.id || null
+        }
+      },
+      assists: {
+        player: serializeAssist('player'),
+        opponent: serializeAssist('cpu')
+      },
+      cosmeticEvents: {
+        intro: {
+          active: this.introPoseTimer > 0,
+          remaining: this.introPoseTimer,
+          playerId: this.cosmetics.player.introPose?.id || null,
+          opponentId: this.cosmetics.cpu.introPose?.id || null
+        },
+        assistId: this.assistEvent?.assist?.id || null,
+        koEffectId: this.koEffectEvent?.effect?.id || null,
+        victoryPoseId: this.victoryPoseEvent?.pose?.id || null
+      }
     };
   }
 
@@ -703,12 +1069,192 @@ export class EngineFighter {
     if (this.fieldSuperFlash > 0) {
       ctx.save();
       ctx.globalAlpha = clamp(this.fieldSuperFlash * 0.38, 0, 0.42);
-      ctx.fillStyle = this.fieldSuper?.color || '#ffea00';
+      ctx.fillStyle = this.fieldSuperFlashColor;
       ctx.fillRect(0, 0, this.width, this.height);
       ctx.restore();
     }
+    if (this.assistEvent) this.drawAssistEffect(ctx);
+    if (this.koEffectEvent) this.drawKoEffect(ctx);
     this.drawHud(ctx);
+    if (this.introPoseTimer > 0) this.drawIntroPoses(ctx);
     if (this.announcementTimer > 0) this.drawAnnouncement(ctx);
+    if (this.victoryPoseEvent) this.drawVictoryPose(ctx);
+  }
+
+  drawAssistEffect(ctx) {
+    const event = this.assistEvent;
+    const progress = clamp(1 - event.remaining / event.duration, 0, 1);
+    const color = event.assist.color || '#39c5bb';
+    const radius = 28 + progress * 115;
+    ctx.save();
+    ctx.globalAlpha = clamp(1 - progress * 0.72, 0.18, 1);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = rgba(color, 0.13);
+    ctx.lineWidth = 5 - progress * 3;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 24;
+    ctx.beginPath();
+    ctx.arc(event.x, event.y, radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    const style = event.assist.style || 'vanguard';
+    const spokes = style === 'scout' ? 8 : style === 'breaker' ? 6 : 4;
+    for (let index = 0; index < spokes; index += 1) {
+      const angle = (Math.PI * 2 * index) / spokes + progress * 1.2;
+      ctx.beginPath();
+      ctx.moveTo(event.x + Math.cos(angle) * radius * 0.35, event.y + Math.sin(angle) * radius * 0.35);
+      ctx.lineTo(event.x + Math.cos(angle) * radius, event.y + Math.sin(angle) * radius);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  drawKoEffect(ctx) {
+    const event = this.koEffectEvent;
+    const progress = clamp(1 - event.remaining / event.duration, 0, 1);
+    const color = event.effect.color || '#ffea00';
+    const pattern = event.effect.visual?.pattern || event.effect.style || 'rift';
+    const intensity = clamp(finiteOr(event.effect.visual?.intensity, 0.8), 0.2, 1.4);
+    ctx.save();
+    ctx.globalAlpha = clamp((1 - progress) * intensity, 0, 1);
+    ctx.strokeStyle = color;
+    ctx.fillStyle = rgba(color, 0.2);
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 26;
+    ctx.lineWidth = 3;
+    if (pattern === 'scanline') {
+      for (let index = -4; index <= 4; index += 1) {
+        const y = event.y + index * 15 + progress * 34;
+        ctx.fillRect(0, y, this.width, 3 + (index % 2 === 0 ? 2 : 0));
+      }
+    } else if (pattern === 'shards') {
+      for (let index = 0; index < 12; index += 1) {
+        const angle = (Math.PI * 2 * index) / 12;
+        const inner = 22 + progress * 55;
+        const outer = 78 + progress * 145;
+        ctx.beginPath();
+        ctx.moveTo(event.x + Math.cos(angle - 0.08) * inner, event.y + Math.sin(angle - 0.08) * inner);
+        ctx.lineTo(event.x + Math.cos(angle) * outer, event.y + Math.sin(angle) * outer);
+        ctx.lineTo(event.x + Math.cos(angle + 0.08) * inner, event.y + Math.sin(angle + 0.08) * inner);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+    } else {
+      const radius = pattern === 'sigil'
+        ? 58 + progress * 70
+        : 105 - progress * 78;
+      ctx.beginPath();
+      ctx.arc(event.x, event.y, radius, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(event.x, event.y, radius * 0.62, 0, Math.PI * 2);
+      ctx.stroke();
+      if (pattern === 'sigil') {
+        ctx.strokeRect(event.x - radius * 0.48, event.y - radius * 0.48, radius * 0.96, radius * 0.96);
+      } else {
+        ctx.fillRect(event.x - 4, event.y - radius, 8, radius * 2);
+      }
+    }
+    ctx.restore();
+  }
+
+  drawIntroPoses(ctx) {
+    const poses = [
+      { side: 'player', pose: this.cosmetics.player.introPose },
+      { side: 'cpu', pose: this.cosmetics.cpu.introPose }
+    ].filter(entry => entry.pose);
+    if (!poses.length || this.introPoseDuration <= 0) return;
+    const progress = clamp(1 - this.introPoseTimer / this.introPoseDuration, 0, 1);
+    const fade = clamp(Math.min(progress * 5, (1 - progress) * 7), 0, 1);
+    ctx.save();
+    ctx.globalAlpha = fade;
+    ctx.fillStyle = 'rgba(0,0,8,0.48)';
+    ctx.fillRect(0, this.height * 0.56, this.width, 108);
+    poses.forEach(({ side, pose }) => {
+      const x = side === 'player' ? this.width * 0.25 : this.width * 0.75;
+      const color = pose.color || (side === 'player' ? '#39c5bb' : '#ff5a36');
+      this.drawPoseGlyph(ctx, x, this.height * 0.66, 48, pose.style || pose.animation?.key, color, progress);
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = 'bold 15px "Share Tech Mono", monospace';
+      ctx.shadowColor = color;
+      ctx.shadowBlur = 12;
+      ctx.fillText(getCosmeticName(pose, side === 'player' ? 'POSE J1' : 'POSE J2'), x, this.height * 0.73);
+    });
+    ctx.restore();
+  }
+
+  drawPoseGlyph(ctx, x, y, radius, style, color, progress) {
+    const normalizedStyle = String(style || 'ready').replace(/^intro-|^victory-/, '');
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.fillStyle = rgba(color, 0.12);
+    ctx.lineWidth = 3;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 18;
+    ctx.translate(x, y);
+    ctx.rotate((progress - 0.5) * (normalizedStyle === 'breach' ? 0.9 : 0.24));
+    if (normalizedStyle === 'duel') {
+      ctx.beginPath();
+      ctx.moveTo(-radius, radius * 0.65);
+      ctx.lineTo(radius, -radius * 0.65);
+      ctx.moveTo(-radius, -radius * 0.65);
+      ctx.lineTo(radius, radius * 0.65);
+      ctx.stroke();
+    } else if (normalizedStyle === 'echo') {
+      [1, 0.72, 0.44].forEach(scale => {
+        ctx.beginPath();
+        ctx.arc(0, 0, radius * scale, -Math.PI * 0.8, Math.PI * 0.8);
+        ctx.stroke();
+      });
+    } else {
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      if (normalizedStyle === 'breach') {
+        for (let index = 0; index < 6; index += 1) {
+          const angle = (Math.PI * 2 * index) / 6;
+          ctx.beginPath();
+          ctx.moveTo(Math.cos(angle) * radius * 0.4, Math.sin(angle) * radius * 0.4);
+          ctx.lineTo(Math.cos(angle + 0.18) * radius * 1.25, Math.sin(angle + 0.18) * radius * 1.25);
+          ctx.stroke();
+        }
+      } else {
+        ctx.strokeRect(-radius * 0.5, -radius * 0.5, radius, radius);
+      }
+    }
+    ctx.restore();
+  }
+
+  drawVictoryPose(ctx) {
+    const event = this.victoryPoseEvent;
+    const elapsed = event.duration - event.remaining;
+    const progress = clamp(elapsed / Math.max(event.duration, 0.01), 0, 1);
+    const color = event.pose.color || '#ffea00';
+    const x = event.side === 'player' ? this.width * 0.28 : this.width * 0.72;
+    ctx.save();
+    const veil = ctx.createLinearGradient(0, this.height * 0.48, 0, this.height);
+    veil.addColorStop(0, 'rgba(0,0,8,0)');
+    veil.addColorStop(0.2, 'rgba(0,0,8,0.78)');
+    veil.addColorStop(1, rgba(color, 0.24));
+    ctx.fillStyle = veil;
+    ctx.fillRect(0, this.height * 0.48, this.width, this.height * 0.52);
+    this.drawPoseGlyph(ctx, x, this.height * 0.7, 72, event.pose.style || event.pose.animation?.key, color, progress);
+    ctx.textAlign = event.side === 'player' ? 'left' : 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#ffffff';
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 16;
+    ctx.font = 'bold 24px "Share Tech Mono", monospace';
+    const textX = event.side === 'player' ? this.width * 0.44 : this.width * 0.56;
+    ctx.fillText(getCosmeticName(event.pose, 'POSE DE VICTOIRE'), textX, this.height * 0.66);
+    ctx.fillStyle = color;
+    ctx.font = 'bold 14px "Share Tech Mono", monospace';
+    ctx.fillText(String(event.fighterName || '').toUpperCase(), textX, this.height * 0.73);
+    ctx.restore();
   }
 
   drawArena(ctx, animTime) {
@@ -816,6 +1362,8 @@ export class EngineFighter {
     ctx.fillText(String(Math.ceil(this.timer)).padStart(2, '0'), this.width / 2, 49);
     this.drawTeamPips(ctx, 'player', 28, 105, false);
     this.drawTeamPips(ctx, 'cpu', this.width - 28, 105, true);
+    this.drawAssistIndicator(ctx, 'player', 28, 137, false);
+    this.drawAssistIndicator(ctx, 'cpu', this.width - 28, 137, true);
     if (this.stats.player.currentCombo > 1) {
       ctx.textAlign = 'left';
       ctx.fillStyle = '#ffea00';
@@ -823,6 +1371,31 @@ export class EngineFighter {
       ctx.fillText(`${this.stats.player.currentCombo} IMPACTS`, 34, 158);
     }
     ctx.restore();
+  }
+
+  drawAssistIndicator(ctx, side, x, y, reverse) {
+    const state = this.getAssistState(side);
+    if (!state.assist) return;
+    const color = state.assist.color || '#39c5bb';
+    const width = 122;
+    const left = reverse ? x - width : x;
+    ctx.fillStyle = 'rgba(0,0,6,0.75)';
+    ctx.strokeStyle = rgba(color, 0.7);
+    ctx.lineWidth = 1;
+    ctx.fillRect(left, y, width, 17);
+    ctx.strokeRect(left, y, width, 17);
+    ctx.fillStyle = color;
+    const fillWidth = state.used ? 0 : (width - 4) * clamp(state.charge / 100, 0, 1);
+    ctx.fillRect(reverse ? left + width - 2 - fillWidth : left + 2, y + 2, fillWidth, 13);
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = reverse ? 'right' : 'left';
+    ctx.font = 'bold 9px "Share Tech Mono", monospace';
+    const status = state.used
+      ? 'ASSIST USED'
+      : state.charge >= 100
+        ? 'ASSIST READY'
+        : `ASSIST ${Math.floor(state.charge)}%`;
+    ctx.fillText(status, reverse ? left + width - 5 : left + 5, y + 9);
   }
 
   drawFighterBar(ctx, fighter, x, y, width, reverse) {

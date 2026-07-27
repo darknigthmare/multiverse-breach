@@ -21,7 +21,23 @@ import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from 
 import { getSmashPickupPositions } from '../game/smashArenas';
 import { getTacticsPickupPositions } from '../game/tacticsBattlefields';
 
-export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, onBattleEnd }) {
+const getStableNumericSeed = (value) => {
+  let numericValue = Number.NaN;
+  try {
+    numericValue = Number(value);
+  } catch {
+    numericValue = Number.NaN;
+  }
+  const rawSeed = Number.isFinite(numericValue)
+    ? Math.trunc(Math.abs(numericValue))
+    : String(value || '').split('').reduce(
+        (total, char) => ((total * 31) + char.charCodeAt(0)) >>> 0,
+        17
+      );
+  return (rawSeed >>> 0) || 1;
+};
+
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, onBattleEnd }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const battlePickupsRef = useRef([]);
@@ -31,9 +47,27 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const lastAnomalyWaveRef = useRef(-1);
   const bootClearedRef = useRef(false);
   const battleCompletionHandledRef = useRef(false);
+  const battleCompletedRef = useRef(false);
+  const battleItemLogTimerRef = useRef(null);
+  const battleAnomalyTimerRef = useRef(null);
+  const customPresentationTimerRef = useRef(null);
+  const knockoutActorStateRef = useRef({
+    heroes: new Map(),
+    enemies: new Map()
+  });
+  const customFieldSuperRef = useRef({
+    player: { charge: 0, used: false },
+    opponent: { charge: 0, used: false }
+  });
+  const customAssistRef = useRef({
+    player: { used: false },
+    opponent: { used: false }
+  });
   
   const [activeHeroId, setActiveHeroId] = useState(activeTeam[0]);
   const [teamState, setTeamState] = useState([]);
+  const [opponentState, setOpponentState] = useState([]);
+  const [activeOpponentId, setActiveOpponentId] = useState('');
   const [bossState, setBossState] = useState(null);
   const [selectedAction, setSelectedAction] = useState('simple'); // tactics
   const [autoBattle, setAutoBattle] = useState(false);
@@ -47,6 +81,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [combatBooting, setCombatBooting] = useState(true);
   const [combatRuntimeError, setCombatRuntimeError] = useState(null);
   const [spriteBootStatus, setSpriteBootStatus] = useState(null);
+  const [customFieldSuperState, setCustomFieldSuperState] = useState(customFieldSuperRef.current);
+  const [customAssistState, setCustomAssistState] = useState(customAssistRef.current);
+  const [customPresentation, setCustomPresentation] = useState(null);
   
   const [activeSynergies, setActiveSynergies] = useState([]);
   const applySkin = (hero) => {
@@ -58,6 +95,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
   const hiddenUniverseSet = new Set(hiddenUniverses || []);
+  const battleConfig = customBattle || stage.customBattle || null;
+  battleCompletedRef.current = battleCompleted;
   const arenaStage = ['Smash', 'Tactics'].includes(stage.mode) && hiddenUniverseSet.has(stage.universe)
     ? { ...stage, forceBaseArena: true, dlcSuppressedArena: true }
     : stage;
@@ -68,7 +107,46 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setBattlePickups(nextPickups);
   };
 
+  const clearManagedTimer = (timerRef) => {
+    if (timerRef.current === null) return;
+    window.clearTimeout(timerRef.current);
+    timerRef.current = null;
+  };
+
+  const scheduleBattleItemLogClear = (durationMs) => {
+    clearManagedTimer(battleItemLogTimerRef);
+    const timerId = window.setTimeout(() => {
+      if (battleItemLogTimerRef.current !== timerId) return;
+      battleItemLogTimerRef.current = null;
+      setBattleItemLog(null);
+    }, durationMs);
+    battleItemLogTimerRef.current = timerId;
+  };
+
+  const scheduleBattleAnomalyClear = (durationMs) => {
+    clearManagedTimer(battleAnomalyTimerRef);
+    const timerId = window.setTimeout(() => {
+      if (battleAnomalyTimerRef.current !== timerId) return;
+      battleAnomalyTimerRef.current = null;
+      setBattleAnomaly(null);
+    }, durationMs);
+    battleAnomalyTimerRef.current = timerId;
+  };
+
+  const countNewKnockouts = (camp, actors) => {
+    const actorStates = knockoutActorStateRef.current[camp];
+    let knockouts = 0;
+    actors.forEach(actor => {
+      const alive = actor.currentHp > 0;
+      const wasAlive = actorStates.has(actor) ? actorStates.get(actor) : alive;
+      if (wasAlive && !alive) knockouts++;
+      actorStates.set(actor, alive);
+    });
+    return knockouts;
+  };
+
   const createStagePickups = (currentStage) => {
+    if (currentStage.disableItems || currentStage.customBattle?.items === false) return [];
     const pool = getBattleItemPoolForStage(currentStage);
     const tiers = ['pickup', 'pickup', 'pickup', 'summon', 'ultimate'];
     const smashPositions = currentStage.mode === 'Smash'
@@ -96,7 +174,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
     return tiers.map((tier, index) => {
       const tierPool = pool.filter(item => item.tier === tier);
-      const item = tierPool[(currentStage.id + index) % Math.max(1, tierPool.length)] || pool[index % Math.max(1, pool.length)];
+      const stageSeed = getStableNumericSeed(currentStage.id);
+      const item = tierPool[(stageSeed + index) % Math.max(1, tierPool.length)] || pool[index % Math.max(1, pool.length)];
       const fallbackPosition = resolvedPositions[index]
         || resolvedPositions[resolvedPositions.length - 1]
         || { x: 170 + index * 70, y: currentStage.mode === 'Tactics' ? 250 : 218 };
@@ -105,12 +184,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const spawnBattleItemDrop = (engine, animTime) => {
-    if (!engine || battlePickupsRef.current.filter(item => !item.used).length >= 8) return;
+    if (stage.disableItems || !engine || battlePickupsRef.current.filter(item => !item.used).length >= 8) return;
     const pool = battleItemPoolRef.current.length ? battleItemPoolRef.current : getBattleItemPoolForStage(stage);
     const tierRoll = animTime % 10;
     const tier = tierRoll === 0 ? 'ultimate' : tierRoll <= 2 ? 'summon' : 'pickup';
     const tierPool = pool.filter(item => item.tier === tier);
-    const item = tierPool[(animTime + stage.id) % Math.max(1, tierPool.length)] || pool[(animTime + stage.id) % Math.max(1, pool.length)];
+    const stageSeed = getStableNumericSeed(stage.id);
+    const item = tierPool[(animTime + stageSeed) % Math.max(1, tierPool.length)] || pool[(animTime + stageSeed) % Math.max(1, pool.length)];
     if (!item) return;
     const arenaPickups = stage.mode === 'Smash' && engine.arena?.pickups?.length ? engine.arena.pickups : null;
     const tacticsPickups = stage.mode === 'Tactics'
@@ -283,6 +363,19 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const getEnemiesData = () => {
+    if (battleConfig?.enemyData) {
+      const cloneList = list => (Array.isArray(list) ? list.map(enemy => ({ ...enemy })) : []);
+      const monsters = cloneList(battleConfig.enemyData.monsters);
+      const bosses = cloneList(battleConfig.enemyData.bosses);
+      const customRoster = cloneList(battleConfig.enemyData.customRoster);
+      return {
+        ...battleConfig.enemyData,
+        monsters: monsters.length ? monsters : customRoster,
+        bosses: bosses.length ? bosses : customRoster.map(enemy => ({ ...enemy, isBoss: true })),
+        customRoster,
+        worldBoss: battleConfig.enemyData.worldBoss ? { ...battleConfig.enemyData.worldBoss } : null
+      };
+    }
     const sourceUniverse = stage.finalGameBoss ? 'Matrix' : stage.universe;
     const filterEnemyList = (universe, list) => list.filter(enemy => !disabledEnemySet.has(getEnemyAdminKey(universe, enemy)));
     const scaleEnemy = (enemy, isBoss = false) => {
@@ -416,88 +509,142 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
   };
 
-  const damageEnemiesByBattleItem = (engine, amount, color, label) => {
-    if (!engine?.enemies) return;
-    engine.enemies.forEach(enemy => {
-      if (enemy.currentHp > 0) {
-        const bossFactor = enemy.isBoss ? 1.25 : 1;
-        enemy.currentHp = Math.max(0, enemy.currentHp - Math.round(amount * bossFactor));
-        engine.particles?.add(enemy.x || 360, (enemy.y || 160) - 14, 0, -1, color, 6, 32, 'spark');
+  const hasSymmetricBattleItemEffect = effect => (
+    ['damage', 'summonDamage', 'ultimateDamage', 'heal', 'shield', 'charge']
+      .some(key => Number(effect?.[key]) > 0)
+  );
+
+  const resolveBattleItemSides = (engine, requestedSide = 'player') => {
+    const opponentTriggered = requestedSide === 'opponent'
+      && battleConfig?.opponentControl === 'p2';
+    const allies = opponentTriggered ? engine?.enemies || [] : engine?.heroes || [];
+    const targets = opponentTriggered ? engine?.heroes || [] : engine?.enemies || [];
+    const activeAlly = opponentTriggered
+      ? stage.mode === 'Smash'
+        ? engine.getActiveOpponent?.()
+        : stage.mode === 'RPG'
+          ? engine.getSelectedEnemy?.()
+          : engine.activeUnitType === 'enemy'
+            ? engine.activeUnit
+            : allies.find(actor => actor.currentHp > 0)
+      : stage.mode === 'Smash'
+        ? engine.getActiveHero?.()
+        : stage.mode === 'RPG'
+          ? engine.getSelectedHero?.()
+          : engine.activeUnitType === 'hero'
+            ? engine.activeUnit
+            : allies.find(actor => actor.currentHp > 0);
+
+    return {
+      allies,
+      targets,
+      activeAlly,
+      opponentTriggered,
+      resolvedSide: opponentTriggered ? 'opponent' : 'player'
+    };
+  };
+
+  const damageActorsByBattleItem = (engine, actors, amount, color, label) => {
+    if (!Array.isArray(actors) || Number(amount) <= 0) return;
+    actors.forEach(actor => {
+      if (actor.currentHp > 0) {
+        const bossFactor = actor.isBoss ? 1.25 : 1;
+        actor.currentHp = Math.max(0, actor.currentHp - Math.round(Number(amount) * bossFactor));
+        if (actor.currentHp <= 0) actor.state = 'dead';
+        engine.particles?.add(actor.x || 360, (actor.y || 160) - 14, 0, -1, color, 6, 32, 'spark');
       }
     });
     engine.particles?.add(engine.width * 0.5, engine.height * 0.28, 0, -1, color, 4, 52, 'text', label);
   };
 
-  const supportHeroesByBattleItem = (engine, effect, color) => {
-    if (!engine?.heroes) return;
-    const activeHero = stage.mode === 'Smash'
-      ? engine.getActiveHero?.()
-      : stage.mode === 'RPG'
-        ? engine.getSelectedHero?.()
-        : engine.activeUnitType === 'hero'
-          ? engine.activeUnit
-          : engine.heroes.find(hero => hero.currentHp > 0);
-
-    engine.heroes.forEach(hero => {
-      if (hero.currentHp <= 0) return;
-      if (effect.heal) hero.currentHp = Math.min(hero.maxHp || hero.stats.hp, hero.currentHp + effect.heal);
-      if (effect.shield) hero.currentHp = Math.min(hero.maxHp || hero.stats.hp, hero.currentHp + effect.shield);
-      if (effect.charge && typeof hero.specialCharge === 'number') {
-        const charge = hero === activeHero ? effect.charge : Math.ceil(effect.charge * 0.45);
-        hero.specialCharge = Math.min(100, hero.specialCharge + charge);
+  const supportActorsByBattleItem = (engine, actors, activeActor, effect, color) => {
+    if (!Array.isArray(actors)) return;
+    actors.forEach(actor => {
+      if (actor.currentHp <= 0) return;
+      const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
+      if (effect.heal) actor.currentHp = Math.min(maxHp, actor.currentHp + Number(effect.heal));
+      if (effect.shield) actor.currentHp = Math.min(maxHp, actor.currentHp + Number(effect.shield));
+      if (effect.charge && typeof actor.specialCharge === 'number') {
+        const charge = actor === activeActor ? Number(effect.charge) : Math.ceil(Number(effect.charge) * 0.45);
+        actor.specialCharge = Math.min(100, actor.specialCharge + charge);
       }
-      engine.particles?.add(hero.x || 120, (hero.y || 180) - 18, 0, -1, color, 4, 26, 'spark');
+      engine.particles?.add(actor.x || 120, (actor.y || 180) - 18, 0, -1, color, 4, 26, 'spark');
     });
   };
 
-  const activateBattleItem = (pickup, source = 'manual') => {
-    if (!pickup || pickup.used || !engineRef.current || battleCompleted) return;
+  const activateBattleItem = (pickup, source = 'manual', requestedSide = 'player') => {
+    if (!pickup || pickup.used || !engineRef.current || battleCompletedRef.current) return;
     const engine = engineRef.current;
     const effect = pickup.effect || {};
     const color = pickup.color || '#39c5bb';
+    const {
+      allies,
+      targets,
+      activeAlly,
+      opponentTriggered,
+      resolvedSide
+    } = resolveBattleItemSides(engine, requestedSide);
+    const symmetricEffect = hasSymmetricBattleItemEffect(effect);
 
     if (stage.mode === 'RPG') {
-      const activeHero = engine.getSelectedHero?.();
-      if (!activeHero || activeHero.currentHp <= 0 || activeHero.atb < 100) {
+      if (!activeAlly || activeAlly.currentHp <= 0 || activeAlly.atb < 100) {
         setBattleItemLog({
           id: pickup.pickupId,
           color,
           text: lang === 'fr'
-            ? 'Commande RPG indisponible: attends qu un heros ait son ATB pleine.'
-            : 'RPG command unavailable: wait until a hero has full ATB.'
+            ? 'Commande RPG indisponible: attends que le combattant actif ait son ATB pleine.'
+            : 'RPG command unavailable: wait until the active fighter has full ATB.'
         });
-        window.setTimeout(() => setBattleItemLog(null), 2600);
+        scheduleBattleItemLogClear(2600);
         sound.playSfx('click');
         return;
       }
-      activeHero.atb = 0;
-      activeHero.state = pickup.tier === 'ultimate' ? 'attack' : 'defense';
-      activeHero.stateTimer = pickup.tier === 'ultimate' ? 34 : 22;
-      activeHero.specialCharge = Math.min(100, (activeHero.specialCharge || 0) + 6);
+      activeAlly.atb = 0;
+      activeAlly.state = pickup.tier === 'ultimate' ? 'attack' : 'defense';
+      activeAlly.stateTimer = pickup.tier === 'ultimate' ? 34 : 22;
+      if (!opponentTriggered || symmetricEffect) {
+        activeAlly.specialCharge = Math.min(100, (activeAlly.specialCharge || 0) + 6);
+      }
     }
-    if (stage.mode === 'Tactics' && !engine.applyTacticalBattleItem?.(pickup, source)) return;
+    if (
+      stage.mode === 'Tactics'
+      && !engine.applyTacticalBattleItem?.(
+        pickup,
+        source,
+        resolvedSide === 'opponent' ? 'enemy' : 'hero'
+      )
+    ) return;
 
     const nextPickups = battlePickupsRef.current.map(item =>
-      item.pickupId === pickup.pickupId ? { ...item, used: true, source } : item
+      item.pickupId === pickup.pickupId
+        ? { ...item, used: true, source, triggerSide: resolvedSide }
+        : item
     );
     syncBattlePickups(nextPickups);
 
-    if (stage.mode !== 'Tactics' && effect.damage) damageEnemiesByBattleItem(engine, effect.damage, color, 'ITEM HIT');
-    if (stage.mode !== 'Tactics' && effect.summonDamage) damageEnemiesByBattleItem(engine, effect.summonDamage, color, 'ASSIST');
-    if (stage.mode !== 'Tactics' && effect.ultimateDamage) damageEnemiesByBattleItem(engine, effect.ultimateDamage, color, 'ULTIMATE');
+    // Unknown future effects are intentionally consumed without gameplay impact for P2.
+    // This prevents an asymmetric fallback from silently buffing P1 or damaging P2.
+    if (stage.mode !== 'Tactics' && (!opponentTriggered || symmetricEffect)) {
+      if (effect.damage) damageActorsByBattleItem(engine, targets, effect.damage, color, 'ITEM HIT');
+      if (effect.summonDamage) damageActorsByBattleItem(engine, targets, effect.summonDamage, color, 'ASSIST');
+      if (effect.ultimateDamage) damageActorsByBattleItem(engine, targets, effect.ultimateDamage, color, 'ULTIMATE');
+      supportActorsByBattleItem(engine, allies, activeAlly, effect, color);
+    }
     if (stage.mode === 'Smash' && typeof engine.itemTriggers === 'number') {
       engine.itemTriggers++;
     }
-    if (stage.mode !== 'Tactics') supportHeroesByBattleItem(engine, effect, color);
 
+    const neutralNote = opponentTriggered && !symmetricEffect
+      ? (lang === 'fr' ? ' Effet P2 inconnu: signal neutre.' : ' Unknown P2 effect: neutral signal.')
+      : '';
     setBattleItemLog({
       id: pickup.pickupId,
       color,
       text: lang === 'fr'
-        ? `${pickup.name.fr}: ${(stage.mode === 'RPG' ? pickup.rpg : stage.mode === 'Tactics' ? pickup.tactics : pickup.melee)?.fr || pickup.desc?.fr || ''}`
-        : `${pickup.name.en}: ${(stage.mode === 'RPG' ? pickup.rpg : stage.mode === 'Tactics' ? pickup.tactics : pickup.melee)?.en || pickup.desc?.en || ''}`
+        ? `${pickup.name.fr}: ${(stage.mode === 'RPG' ? pickup.rpg : stage.mode === 'Tactics' ? pickup.tactics : pickup.melee)?.fr || pickup.desc?.fr || ''}${neutralNote}`
+        : `${pickup.name.en}: ${(stage.mode === 'RPG' ? pickup.rpg : stage.mode === 'Tactics' ? pickup.tactics : pickup.melee)?.en || pickup.desc?.en || ''}${neutralNote}`
     });
-    window.setTimeout(() => setBattleItemLog(null), 4200);
+    scheduleBattleItemLogClear(4200);
     sound.playSfx(pickup.tier === 'ultimate' ? 'levelup' : pickup.tier === 'summon' ? 'portal' : 'confirm');
   };
 
@@ -511,38 +658,240 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       !item.used && item.gridX === gridX && item.gridY === gridY
     );
     if (!pickup) return false;
-    activateBattleItem(pickup, 'tactics-step');
+    const triggerSide = battleConfig?.opponentControl === 'p2'
+      && engineRef.current?.activeUnitType === 'enemy'
+      ? 'opponent'
+      : 'player';
+    activateBattleItem(pickup, 'tactics-step', triggerSide);
     return true;
   };
 
   const checkBattleItemPickupCollision = (engine) => {
     if (stage.mode !== 'Smash' || !engine?.getActiveHero) return;
     const activeHero = engine.getActiveHero();
-    if (!activeHero || activeHero.currentHp <= 0) return;
+    const candidates = activeHero?.currentHp > 0
+      ? [{ actor: activeHero, side: 'player' }]
+      : [];
+    if (battleConfig?.opponentControl === 'p2') {
+      const activeOpponent = engine.getActiveOpponent?.();
+      if (activeOpponent?.currentHp > 0) {
+        candidates.push({ actor: activeOpponent, side: 'opponent' });
+      }
+    }
+    if (!candidates.length) return;
+
     battlePickupsRef.current.forEach(item => {
       if (item.used) return;
-      const dx = (activeHero.x || 0) - item.x;
-      const dy = (activeHero.y || 0) - item.y;
-      if (Math.hypot(dx, dy) < 34) activateBattleItem(item, 'pickup');
+      const collision = candidates
+        .map(candidate => ({
+          ...candidate,
+          distance: Math.hypot(
+            (candidate.actor.x || 0) - item.x,
+            (candidate.actor.y || 0) - item.y
+          )
+        }))
+        .filter(candidate => candidate.distance < 34)
+        .sort((a, b) => a.distance - b.distance)[0];
+      if (collision) activateBattleItem(item, 'pickup', collision.side);
     });
   };
 
+  const showCustomPresentation = (type, cosmetic, side = 'player', durationMs = 1200) => {
+    if (!cosmetic) return;
+    clearManagedTimer(customPresentationTimerRef);
+    setCustomPresentation({
+      id: `${type}-${side}-${Date.now()}`,
+      type,
+      side,
+      cosmetic
+    });
+    const timerId = window.setTimeout(() => {
+      if (customPresentationTimerRef.current !== timerId) return;
+      setCustomPresentation(null);
+      customPresentationTimerRef.current = null;
+    }, Math.max(500, durationMs));
+    customPresentationTimerRef.current = timerId;
+  };
+
+  const activateCustomAssist = (side = 'player') => {
+    const assist = battleConfig?.cosmetics?.npcAssist;
+    const engine = engineRef.current;
+    if (side === 'opponent' && battleConfig?.opponentControl !== 'p2') return false;
+    const {
+      allies: alliedActors,
+      targets: targetActors,
+      activeAlly,
+      resolvedSide
+    } = resolveBattleItemSides(engine, side);
+    const sideState = customAssistRef.current[resolvedSide];
+    if (!assist || !engine || battleCompletedRef.current || sideState.used) return false;
+    const attacker = activeAlly || alliedActors.find(actor => actor.currentHp > 0);
+    if (!attacker || attacker.currentHp <= 0) return false;
+    const effect = assist.effect || {};
+    const color = assist.color || '#39c5bb';
+    const damage = Math.max(0, Math.round(Number(effect.damage) || 0));
+    sideState.used = true;
+
+    alliedActors?.forEach(actor => {
+      if (actor.currentHp <= 0) return;
+      const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
+      actor.currentHp = Math.min(
+        maxHp,
+        actor.currentHp + Math.max(0, Math.round(maxHp * (effect.healRatio || 0)))
+      );
+      engine.particles?.add(actor.x || engine.width * 0.24, (actor.y || engine.height / 2) - 16, 0, -1, color, 5, 28, 'spark');
+    });
+    targetActors?.forEach(actor => {
+      if (actor.currentHp <= 0 || damage <= 0) return;
+      if (stage.mode === 'RPG') {
+        engine.applyDamage(attacker, actor, damage);
+      } else if (stage.mode === 'Tactics') {
+        engine.applyDamage(attacker, actor, damage, null, { actionType: 'simple' });
+      } else if (stage.mode === 'Smash') {
+        engine.applyDamage(attacker, actor, damage, 10);
+      }
+    });
+
+    customAssistRef.current = {
+      ...customAssistRef.current,
+      [resolvedSide]: { ...sideState }
+    };
+    setCustomAssistState({
+      player: { ...customAssistRef.current.player },
+      opponent: { ...customAssistRef.current.opponent }
+    });
+    showCustomPresentation(
+      'assist',
+      assist,
+      resolvedSide,
+      assist.visual?.durationMs || 1300
+    );
+    setBattleItemLog({
+      id: `custom-assist-${resolvedSide}`,
+      color,
+      text: `${resolvedSide === 'opponent' ? 'P2 — ' : 'P1 — '}${assist.name?.[lang] || assist.name?.fr || 'NPC Assist'}`
+    });
+    scheduleBattleItemLogClear(3600);
+    sound.playSfx('portal');
+    sound.playSfx('confirm');
+    return true;
+  };
+
+  const activateCustomFieldSuper = (side = 'player') => {
+    const fieldSuper = battleConfig?.fieldSuper;
+    const engine = engineRef.current;
+    const resolvedSide = side === 'opponent' ? 'opponent' : 'player';
+    const sideState = customFieldSuperRef.current[resolvedSide];
+    if (!fieldSuper || !engine || battleCompletedRef.current || sideState.used || sideState.charge < 100) return false;
+    const alliedActors = resolvedSide === 'player' ? engine.heroes : engine.enemies;
+    const targetActors = resolvedSide === 'player' ? engine.enemies : engine.heroes;
+    const effect = fieldSuper.effect || {};
+    const color = fieldSuper.color || '#ffeb3b';
+    sideState.used = true;
+    sideState.charge = 0;
+    alliedActors?.forEach(actor => {
+      if (actor.currentHp <= 0) return;
+      const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
+      actor.currentHp = Math.min(maxHp, actor.currentHp + Math.round(maxHp * (effect.healRatio || 0)));
+    });
+    targetActors?.forEach(actor => {
+      if (actor.currentHp <= 0) return;
+      actor.currentHp = Math.max(0, actor.currentHp - Math.round(effect.damage || 36));
+      if (actor.currentHp <= 0) actor.state = 'dead';
+      engine.particles?.add(actor.x || engine.width / 2, (actor.y || engine.height / 2) - 18, 0, -1, color, 8, 36, 'spark');
+    });
+    engine.particles?.add(
+      engine.width / 2,
+      engine.height * 0.24,
+      0,
+      -1,
+      color,
+      5,
+      72,
+      'text',
+      fieldSuper.name?.[lang] || fieldSuper.name?.fr || 'FIELD SUPER'
+    );
+    customFieldSuperRef.current = {
+      ...customFieldSuperRef.current,
+      [resolvedSide]: { ...sideState }
+    };
+    setCustomFieldSuperState({
+      player: { ...customFieldSuperRef.current.player },
+      opponent: { ...customFieldSuperRef.current.opponent }
+    });
+    setBattleItemLog({
+      id: `field-super-${resolvedSide}`,
+      color,
+      text: `${resolvedSide === 'opponent' ? 'P2 — ' : ''}${fieldSuper.name?.[lang] || fieldSuper.name?.fr || 'Field Super'}`
+    });
+    scheduleBattleItemLogClear(3600);
+    sound.playSfx('portal');
+    sound.playSfx('special');
+    return true;
+  };
+
   useEffect(() => {
+    clearManagedTimer(battleItemLogTimerRef);
+    clearManagedTimer(battleAnomalyTimerRef);
+    clearManagedTimer(customPresentationTimerRef);
     setCombatBooting(true);
     setCombatRuntimeError(null);
     setSpriteBootStatus(null);
     setBattleCompleted(false);
+    battleCompletedRef.current = false;
     setBattleResult(null);
     setBattleSummary(null);
     setBattleAnomaly(null);
+    setBattleItemLog(null);
     setBossState(null);
     setTeamState([]);
+    setOpponentState([]);
+    setActiveOpponentId('');
     setEventItemUsed(false);
     keysPressed.current = {};
     lastAnomalyWaveRef.current = -1;
     bootClearedRef.current = false;
     battleCompletionHandledRef.current = false;
-    sound.playStageBgm(arenaStage);
+    knockoutActorStateRef.current = {
+      heroes: new Map(),
+      enemies: new Map()
+    };
+    customAssistRef.current = {
+      player: { used: false },
+      opponent: { used: false }
+    };
+    setCustomAssistState({
+      player: { ...customAssistRef.current.player },
+      opponent: { ...customAssistRef.current.opponent }
+    });
+    setCustomPresentation(null);
+    customFieldSuperRef.current = {
+      player: { charge: battleConfig?.fieldSuper ? 20 : 0, used: false },
+      opponent: {
+        charge: battleConfig?.fieldSuper && battleConfig?.opponentControl === 'p2' ? 20 : 0,
+        used: false
+      }
+    };
+    setCustomFieldSuperState({
+      player: { ...customFieldSuperRef.current.player },
+      opponent: { ...customFieldSuperRef.current.opponent }
+    });
+    const configuredBattleMusic = battleConfig?.battleMusic?.musicStage
+      ? battleConfig.battleMusic
+      : null;
+    const configuredStageMusic = battleConfig?.stageMusic?.musicStage
+      ? battleConfig.stageMusic
+      : null;
+    const configuredCombatMusic = configuredBattleMusic || configuredStageMusic;
+    const battleMusicStage = configuredCombatMusic?.musicStage
+      ? {
+          ...configuredCombatMusic.musicStage,
+          name: configuredCombatMusic.name?.[lang]
+            || configuredCombatMusic.name?.fr
+            || configuredCombatMusic.musicStage.name
+        }
+      : arenaStage;
+    sound.playStageBgm(battleMusicStage, configuredCombatMusic?.state || 'battle');
 
     const enemyData = getEnemiesData();
     const enemyList = flattenEnemiesData(enemyData);
@@ -568,7 +917,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       sound.stopBgm();
       return undefined;
     }
-    const battleItemPool = getBattleItemPoolForStage(stage);
+    const battleItemPool = stage.disableItems ? [] : getBattleItemPoolForStage(stage);
     const heroSpriteContext = stage.mode === 'Tactics' ? 'tactics' : stage.mode === 'Smash' ? 'melee' : 'rpg';
     const spriteSources = [
       ...squadHeroes.map(hero => getHeroSpriteSheetSrc(hero, heroSpriteContext)),
@@ -602,6 +951,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const handleBattleComplete = (result, summary = null) => {
       if (battleCompletionHandledRef.current) return;
       battleCompletionHandledRef.current = true;
+      battleCompletedRef.current = true;
       setBattleCompleted(true);
       setBattleResult(result);
       setBattleSummary(summary);
@@ -626,30 +976,80 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       return undefined;
     }
 
+    knockoutActorStateRef.current = {
+      heroes: new Map((engineRef.current.heroes || []).map(actor => [
+        actor,
+        actor.currentHp > 0
+      ])),
+      enemies: new Map((engineRef.current.enemies || []).map(actor => [
+        actor,
+        actor.currentHp > 0
+      ]))
+    };
     battleItemPoolRef.current = battleItemPool;
     nextBattleItemDropRef.current = stage.mode === 'Tactics' ? 999999 : 520;
     syncBattlePickups(createStagePickups(stage));
     setBattleItemLog(null);
     sound.playSfx('portal');
+    if (battleConfig?.cosmetics?.introPose) {
+      showCustomPresentation(
+        'intro',
+        battleConfig.cosmetics.introPose,
+        'player',
+        battleConfig.cosmetics.introPose.animation?.durationMs || 1500
+      );
+    }
 
     const handleKeyDown = (e) => {
       keysPressed.current[e.key] = true;
-      if ((e.key === 'o' || e.key === 'O') && stage.mode !== 'Tactics') activateFirstBattleItem();
+      keysPressed.current[e.code] = true;
+      const isCustomP2 = battleConfig?.opponentControl === 'p2';
+      if (battleConfig?.fieldSuper && e.code === 'KeyT') activateCustomFieldSuper('player');
+      if (battleConfig?.fieldSuper && isCustomP2 && e.code === 'KeyO') activateCustomFieldSuper('opponent');
+      if (battleConfig?.cosmetics?.npcAssist && e.code === 'KeyY') activateCustomAssist('player');
+      if (battleConfig?.cosmetics?.npcAssist && isCustomP2 && e.code === 'KeyP') activateCustomAssist('opponent');
+      if ((e.key === 'o' || e.key === 'O') && stage.mode !== 'Tactics' && !isCustomP2) activateFirstBattleItem();
       if (stage.mode === 'Smash' && engineRef.current) {
         const activeH = engineRef.current.getActiveHero();
-        if (e.key === 'j' || e.key === 'J') engineRef.current.triggerAbility(activeH, 'simple');
-        if (e.key === 'k' || e.key === 'K') engineRef.current.triggerAbility(activeH, 'secondary');
-        if (e.key === 'l' || e.key === 'L') engineRef.current.triggerAbility(activeH, 'defense');
-        if (e.key === 'i' || e.key === 'I') engineRef.current.triggerAbility(activeH, 'special');
+        if (isCustomP2) {
+          if (e.code === 'KeyF') engineRef.current.triggerAbility(activeH, 'simple');
+          if (e.code === 'KeyG') engineRef.current.triggerAbility(activeH, 'secondary');
+          if (e.code === 'KeyH') engineRef.current.triggerAbility(activeH, 'defense');
+          if (e.code === 'KeyR') engineRef.current.triggerAbility(activeH, 'special');
+          if (e.code === 'KeyJ') engineRef.current.triggerOpponentAbility?.('simple');
+          if (e.code === 'KeyK') engineRef.current.triggerOpponentAbility?.('secondary');
+          if (e.code === 'KeyL') engineRef.current.triggerOpponentAbility?.('defense');
+          if (e.code === 'KeyI') engineRef.current.triggerOpponentAbility?.('special');
+          if (['Digit7', 'Digit8', 'Digit9'].includes(e.code)) {
+            const opponent = engineRef.current.enemies?.[Number(e.code.slice(-1)) - 7];
+            if (opponent) engineRef.current.setActiveOpponent?.(opponent.runtimeId || opponent.id || opponent.name);
+          }
+        } else {
+          if (e.key === 'j' || e.key === 'J') engineRef.current.triggerAbility(activeH, 'simple');
+          if (e.key === 'k' || e.key === 'K') engineRef.current.triggerAbility(activeH, 'secondary');
+          if (e.key === 'l' || e.key === 'L') engineRef.current.triggerAbility(activeH, 'defense');
+          if (e.key === 'i' || e.key === 'I') engineRef.current.triggerAbility(activeH, 'special');
+        }
         
-        if (e.key === '1') engineRef.current.setActiveHero(activeTeam[0]);
-        if (e.key === '2' && activeTeam[1]) engineRef.current.setActiveHero(activeTeam[1]);
-        if (e.key === '3' && activeTeam[2]) engineRef.current.setActiveHero(activeTeam[2]);
+        if (e.code === 'Digit1') engineRef.current.setActiveHero(activeTeam[0]);
+        if (e.code === 'Digit2' && activeTeam[1]) engineRef.current.setActiveHero(activeTeam[1]);
+        if (e.code === 'Digit3' && activeTeam[2]) engineRef.current.setActiveHero(activeTeam[2]);
+      }
+      if (stage.mode === 'RPG' && isCustomP2 && engineRef.current) {
+        if (e.code === 'KeyJ') engineRef.current.triggerEnemyAbility?.('simple');
+        if (e.code === 'KeyK') engineRef.current.triggerEnemyAbility?.('secondary');
+        if (e.code === 'KeyL') engineRef.current.triggerEnemyAbility?.('defense');
+        if (e.code === 'KeyI') engineRef.current.triggerEnemyAbility?.('special');
+        if (['Digit7', 'Digit8', 'Digit9'].includes(e.code)) {
+          const enemy = engineRef.current.enemies?.[Number(e.code.slice(-1)) - 7];
+          if (enemy) engineRef.current.selectEnemy?.(enemy.runtimeId || enemy.id || enemy.name);
+        }
       }
     };
 
     const handleKeyUp = (e) => {
       keysPressed.current[e.key] = false;
+      keysPressed.current[e.code] = false;
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -692,9 +1092,63 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         const engine = engineRef.current;
         if (engine) {
           engine.autoBattle = autoBattleRef.current;
+          const actorsObservedDuringUpdate = {
+            heroes: new Set(engine.heroes || []),
+            enemies: new Set(engine.enemies || [])
+          };
           const loops = speedMultiplierRef.current;
           for (let l = 0; l < loops; l++) {
-            engine.update(keysPressed.current);
+            if (stage.mode === 'Smash' && battleConfig?.opponentControl === 'p2') {
+              const p1Keys = {
+                a: Boolean(keysPressed.current.q || keysPressed.current.Q || keysPressed.current.a || keysPressed.current.A),
+                d: Boolean(keysPressed.current.d || keysPressed.current.D),
+                w: Boolean(keysPressed.current.z || keysPressed.current.Z || keysPressed.current.w || keysPressed.current.W),
+                Space: Boolean(keysPressed.current.Space)
+              };
+              engine.update(p1Keys, keysPressed.current);
+            } else {
+              engine.update(keysPressed.current);
+            }
+            (engine.heroes || []).forEach(actor => actorsObservedDuringUpdate.heroes.add(actor));
+            (engine.enemies || []).forEach(actor => actorsObservedDuringUpdate.enemies.add(actor));
+          }
+          if (battleConfig?.fieldSuper) {
+            const chargeSides = battleConfig.opponentControl === 'p2'
+              ? ['player', 'opponent']
+              : ['player'];
+            chargeSides.forEach(side => {
+              const fieldState = customFieldSuperRef.current[side];
+              if (!fieldState.used) fieldState.charge = Math.min(100, fieldState.charge + 0.055 * loops);
+            });
+            if (animTime % 12 === 0) {
+              setCustomFieldSuperState({
+                player: { ...customFieldSuperRef.current.player },
+                opponent: { ...customFieldSuperRef.current.opponent }
+              });
+            }
+          }
+          if (battleConfig?.cosmetics?.koEffect) {
+            const knockedOutHeroes = countNewKnockouts(
+              'heroes',
+              [...actorsObservedDuringUpdate.heroes]
+            );
+            const knockedOutEnemies = countNewKnockouts(
+              'enemies',
+              [...actorsObservedDuringUpdate.enemies]
+            );
+            if (knockedOutHeroes > 0 || knockedOutEnemies > 0) {
+              const presentationSide = knockedOutHeroes > 0 && knockedOutEnemies > 0
+                ? 'both'
+                : knockedOutEnemies > 0
+                  ? 'player'
+                  : 'opponent';
+              showCustomPresentation(
+                'ko',
+                battleConfig.cosmetics.koEffect,
+                presentationSide,
+                battleConfig.cosmetics.koEffect.visual?.durationMs || 900
+              );
+            }
           }
           particles.update();
 
@@ -712,11 +1166,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
           const anomalyRate = stage.isSurvival ? 420 : 720;
           const anomalyWave = Math.floor(animTime / anomalyRate);
-          if (animTime > 180 && anomalyWave !== lastAnomalyWaveRef.current && animTime % anomalyRate < 2) {
+          if (!stage.disableHazards && animTime > 180 && anomalyWave !== lastAnomalyWaveRef.current && animTime % anomalyRate < 2) {
             lastAnomalyWaveRef.current = anomalyWave;
-            const anomaly = BATTLE_ANOMALIES[(stage.id + anomalyWave) % BATTLE_ANOMALIES.length];
+            const anomaly = BATTLE_ANOMALIES[
+              (getStableNumericSeed(stage.id) + anomalyWave) % BATTLE_ANOMALIES.length
+            ];
             setBattleAnomaly(anomaly);
-            window.setTimeout(() => setBattleAnomaly(null), 3600);
+            scheduleBattleAnomalyClear(3600);
 
             if (anomaly.id === 'cache') {
               engine.heroes.forEach(hero => {
@@ -740,6 +1196,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           }
 
           setTeamState([...engine.heroes]);
+          setOpponentState([...(engine.enemies || [])]);
+          const selectedOpponent = stage.mode === 'RPG'
+            ? engine.getSelectedEnemy?.()
+            : stage.mode === 'Tactics' && engine.activeUnitType === 'enemy'
+              ? engine.activeUnit
+              : stage.mode === 'Smash'
+                ? engine.getActiveOpponent?.()
+                : null;
+          setActiveOpponentId(selectedOpponent?.runtimeId || selectedOpponent?.id || selectedOpponent?.name || '');
           if (engine.enemies.length > 0) {
             // Find active boss/worldBoss
             const boss = engine.enemies.find(e => e.isBoss && e.currentHp > 0);
@@ -774,6 +1239,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
       cancelAnimationFrame(frameId);
+      clearManagedTimer(battleItemLogTimerRef);
+      clearManagedTimer(battleAnomalyTimerRef);
+      clearManagedTimer(customPresentationTimerRef);
+      knockoutActorStateRef.current = {
+        heroes: new Map(),
+        enemies: new Map()
+      };
+      engineRef.current?.dispose?.();
+      engineRef.current = null;
       sound.stopBgm();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -806,16 +1280,26 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const activeH = engine.getActiveHero();
       engine.triggerAbility(activeH, type);
     } else if (stage.mode === 'RPG') {
-      const activeH = engine.getSelectedHero();
-      engine.triggerAbility(activeH, type);
-    } else if (stage.mode === 'Tactics') {
-      if (engine.activeUnitType !== 'hero' || engine.actionPhase === 'enemy_ai' || engine.actionPhase === 'end') return;
-      engine.selectedAction = type;
-      if (engine.actionPhase === 'move') {
-        engine.actionPhase = 'action';
-        engine.movementRange = [];
+      const activeEnemy = engine.getSelectedEnemy?.();
+      if (battleConfig?.opponentControl === 'p2' && activeEnemy?.atb >= 100) {
+        engine.triggerEnemyAbility?.(activeEnemy, type);
+      } else {
+        const activeH = engine.getSelectedHero();
+        engine.triggerAbility(activeH, type);
       }
-      engine.calculateAttackRange();
+    } else if (stage.mode === 'Tactics') {
+      const canControlEnemy = battleConfig?.opponentControl === 'p2' && engine.activeUnitType === 'enemy';
+      if ((!canControlEnemy && engine.activeUnitType !== 'hero') || engine.actionPhase === 'enemy_ai' || engine.actionPhase === 'end') return;
+      if (canControlEnemy && engine.selectAction) {
+        engine.selectAction(type);
+      } else {
+        engine.selectedAction = type;
+        if (engine.actionPhase === 'move') {
+          engine.actionPhase = 'action';
+          engine.movementRange = [];
+        }
+        engine.calculateAttackRange();
+      }
       setSelectedAction(type);
     }
   };
@@ -843,11 +1327,34 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (stage.mode === 'Smash') {
       engineRef.current.setActiveHero(id);
     } else if (stage.mode === 'RPG') {
-      engineRef.current.selectHero(id);
+      if (battleConfig?.opponentControl === 'p2' && opponentState.some(enemy => (
+        (enemy.runtimeId || enemy.id || enemy.name) === id
+      ))) {
+        engineRef.current.selectEnemy?.(id);
+      } else {
+        engineRef.current.selectHero(id);
+      }
     }
   };
 
-  const activeHeroObj = teamState.find(h => h.id === activeHeroId) || teamState[0];
+  const activeOpponentObj = opponentState.find(enemy => (
+    (enemy.runtimeId || enemy.id || enemy.name) === activeOpponentId
+  )) || opponentState.find(enemy => enemy.currentHp > 0);
+  const opponentHasCommand = battleConfig?.opponentControl === 'p2' && (
+    (stage.mode === 'RPG' && activeOpponentObj?.atb >= 100)
+    || (stage.mode === 'Tactics' && engineRef.current?.activeUnitType === 'enemy')
+  );
+  const activeHeroObj = opponentHasCommand
+    ? activeOpponentObj
+    : teamState.find(h => h.id === activeHeroId) || teamState[0];
+  const getCombatantMove = (combatant, type) => {
+    if (combatant?.[type]) return combatant[type];
+    const baseDamage = Math.max(1, Number(combatant?.atk) || 8);
+    if (type === 'secondary') return { name: combatant?.special || 'Frappe lourde', dmg: 1.45, cd: 4 };
+    if (type === 'defense') return { name: 'Garde', dur: 1.6, reduce: 0.55 };
+    if (type === 'special') return { name: combatant?.special || 'Rupture ennemie', dmg: 2.4 };
+    return { name: combatant?.weapon || 'Attaque', dmg: Math.max(0.7, baseDamage / 10) };
+  };
 
   const toggleAuto = () => {
     const nextVal = !autoBattle;
@@ -864,9 +1371,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const activeHeroStatic = HEROES_DB.find(h => h.id === activeHeroId);
   const equippedEventId = activeHeroStatic ? equippedEventItems[activeHeroStatic.id] : null;
   const equippedEvent = activeHeroStatic ? EVENT_ITEMS_DB[activeHeroStatic.universe] : null;
-  const victoryRewardText = lang === 'fr'
-    ? `Brèche fermée ! Obtenu +${stage.goldPrize} Or & +${stage.shardPrize} Fragments${stage.tokenPrize ? ` & +${stage.tokenPrize} Jetons` : ''}.`
-    : `Rift closed! Earned +${stage.goldPrize} Gold & +${stage.shardPrize} Shards${stage.tokenPrize ? ` & +${stage.tokenPrize} Tokens` : ''}.`;
+  const victoryRewardText = stage.isCustomBattle
+    ? (lang === 'fr'
+        ? 'Simulation terminee. Aucun Or, Fragment, Jeton ou progression de campagne n est attribue.'
+        : 'Simulation complete. No Gold, Shards, Tokens, or campaign progression is awarded.')
+    : lang === 'fr'
+      ? `Brèche fermée ! Obtenu +${stage.goldPrize} Or & +${stage.shardPrize} Fragments${stage.tokenPrize ? ` & +${stage.tokenPrize} Jetons` : ''}.`
+      : `Rift closed! Earned +${stage.goldPrize} Gold & +${stage.shardPrize} Shards${stage.tokenPrize ? ` & +${stage.tokenPrize} Tokens` : ''}.`;
 
   const usedBattleItems = battlePickups.filter(item => item.used).length;
   const smashResultLines = battleSummary?.mode === 'Smash'
@@ -999,8 +1510,17 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             {getTranslation(lang, 'btnSpeedUp')}
           </button>
 
-          <button onClick={() => onBattleEnd('quit')} className="btn-retro" title={lang === 'fr' ? 'Quitte le combat et retourne au hub. La mission compte comme abandon.' : 'Leave combat and return to the hub. The mission counts as a retreat.'} style={{ borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '6px 12px' }}>
-            {getTranslation(lang, 'retreat')}
+          <button
+            onClick={() => onBattleEnd('quit')}
+            className="btn-retro"
+            title={stage.isCustomBattle
+              ? (lang === 'fr' ? 'Quitte la simulation sans modifier la progression et retourne a sa configuration.' : 'Leave the simulation without changing progression and return to setup.')
+              : (lang === 'fr' ? 'Quitte le combat et retourne au hub. La mission compte comme abandon.' : 'Leave combat and return to the hub. The mission counts as a retreat.')}
+            style={{ borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '6px 12px' }}
+          >
+            {stage.isCustomBattle
+              ? (lang === 'fr' ? '← CONFIGURATION' : '← SETUP')
+              : getTranslation(lang, 'retreat')}
           </button>
         </div>
       </div>
@@ -1054,6 +1574,81 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         </div>
       </div>
 
+      {battleConfig?.fieldSuper && (
+        <div style={{
+          width: '100%',
+          maxWidth: '1120px',
+          display: 'grid',
+          gridTemplateColumns: battleConfig.opponentControl === 'p2' ? '1fr 1fr' : '1fr',
+          gap: 8,
+          marginBottom: 10
+        }}>
+          {[
+            { side: 'player', label: 'P1', key: 'T' },
+            ...(battleConfig.opponentControl === 'p2' ? [{ side: 'opponent', label: 'P2', key: 'O' }] : [])
+          ].map(entry => {
+            const state = customFieldSuperState[entry.side] || { charge: 0, used: false };
+            const ready = !state.used && state.charge >= 100 && !battleCompleted;
+            return (
+              <button
+                type="button"
+                key={entry.side}
+                className="btn-retro"
+                onClick={() => activateCustomFieldSuper(entry.side)}
+                disabled={!ready}
+                style={{
+                  padding: '8px 10px',
+                  borderColor: ready ? (battleConfig.fieldSuper.color || '#ffeb3b') : '#34454b',
+                  color: ready ? '#fff' : '#789096',
+                  background: ready ? `${battleConfig.fieldSuper.color || '#ffeb3b'}22` : 'rgba(0,0,0,0.28)'
+                }}
+              >
+                {entry.label} / {battleConfig.fieldSuper.name?.[lang] || battleConfig.fieldSuper.name?.fr || 'FIELD SUPER'}
+                {' — '}
+                {state.used ? (lang === 'fr' ? 'UTILISE' : 'USED') : `${Math.round(state.charge)}% [${entry.key}]`}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
+      {battleConfig?.cosmetics?.npcAssist && (
+        <div style={{
+          width: '100%',
+          maxWidth: '1120px',
+          display: 'grid',
+          gridTemplateColumns: battleConfig.opponentControl === 'p2' ? '1fr 1fr' : '1fr',
+          gap: 8,
+          marginBottom: 10
+        }}>
+          {[
+            { side: 'player', label: 'P1', key: 'Y' },
+            ...(battleConfig.opponentControl === 'p2' ? [{ side: 'opponent', label: 'P2', key: 'P' }] : [])
+          ].map(entry => {
+            const used = customAssistState[entry.side]?.used;
+            return (
+              <button
+                type="button"
+                key={entry.side}
+                className="btn-retro"
+                onClick={() => activateCustomAssist(entry.side)}
+                disabled={used || battleCompleted}
+                style={{
+                  padding: '8px 10px',
+                  borderColor: used ? '#34454b' : (battleConfig.cosmetics.npcAssist.color || '#39c5bb'),
+                  color: used ? '#789096' : '#fff',
+                  background: used ? 'rgba(0,0,0,0.28)' : `${battleConfig.cosmetics.npcAssist.color || '#39c5bb'}22`
+                }}
+              >
+                {entry.label} / {battleConfig.cosmetics.npcAssist.name?.[lang] || battleConfig.cosmetics.npcAssist.name?.fr || 'NPC ASSIST'}
+                {' — '}
+                {used ? (lang === 'fr' ? 'UTILISE' : 'USED') : `[${entry.key}]`}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       {/* Canvas */}
       <div style={{
         position: 'relative',
@@ -1075,6 +1670,39 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           onClick={handleCanvasClick}
           style={{ display: 'block', width: '100%', height: 'auto', cursor: stage.mode === 'Tactics' ? 'crosshair' : 'default' }}
         />
+
+        {customPresentation && (
+          <div
+            className="custom-battle-presentation"
+            data-presentation-type={customPresentation.type}
+            data-presentation-style={customPresentation.cosmetic.style || 'standard'}
+            style={{
+              '--presentation-color': customPresentation.cosmetic.color || '#39c5bb',
+              '--presentation-duration': `${customPresentation.cosmetic.animation?.durationMs || customPresentation.cosmetic.visual?.durationMs || 1200}ms`
+            }}
+          >
+            <div>
+              <small>
+                {customPresentation.side === 'both'
+                  ? `P1 + ${battleConfig?.opponentControl === 'p2' ? 'P2' : 'CPU'}`
+                  : customPresentation.side === 'opponent'
+                    ? (battleConfig?.opponentControl === 'p2' ? 'P2' : 'CPU')
+                    : 'P1'} // {
+                  customPresentation.type === 'ko'
+                    ? 'K.-O.'
+                    : customPresentation.type === 'assist'
+                      ? 'ASSIST'
+                      : (lang === 'fr' ? 'POSE D INTRODUCTION' : 'INTRODUCTION POSE')
+                }
+              </small>
+              <strong>
+                {customPresentation.cosmetic.name?.[lang]
+                  || customPresentation.cosmetic.name?.fr
+                  || customPresentation.cosmetic.universe}
+              </strong>
+            </div>
+          </div>
+        )}
 
         {(combatBooting || combatRuntimeError) && !battleCompleted && (
           <div style={{
@@ -1193,6 +1821,23 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 ? victoryRewardText
                 : getTranslation(lang, 'defeatMsg')}
             </p>
+            {battleResult === 'victory' && battleConfig?.cosmetics?.victoryPose && (
+              <div
+                className="custom-battle-victory-pose"
+                data-pose-style={battleConfig.cosmetics.victoryPose.style || 'standard'}
+                style={{
+                  '--presentation-color': battleConfig.cosmetics.victoryPose.color || '#2ecc71',
+                  '--presentation-duration': `${battleConfig.cosmetics.victoryPose.animation?.durationMs || 1800}ms`
+                }}
+              >
+                <small>{lang === 'fr' ? 'POSE DE VICTOIRE EQUIPEE' : 'EQUIPPED VICTORY POSE'}</small>
+                <strong>
+                  {battleConfig.cosmetics.victoryPose.name?.[lang]
+                    || battleConfig.cosmetics.victoryPose.name?.fr
+                    || battleConfig.cosmetics.victoryPose.universe}
+                </strong>
+              </div>
+            )}
             {[...smashResultLines, ...tacticsResultLines].length > 0 && (
               <div style={{
                 width: 'min(520px, 92%)',
@@ -1215,7 +1860,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 battleSummary
               })}
               className="btn-retro"
-              title={lang === 'fr' ? 'Valide le resultat du combat, applique les recompenses ou la defaite, puis retourne au hub.' : 'Confirm the combat result, apply rewards or defeat, then return to the hub.'}
+              title={stage.isCustomBattle
+                ? (lang === 'fr' ? 'Ferme le resultat et retourne a la configuration du combat custom.' : 'Close the result and return to custom battle setup.')
+                : (lang === 'fr' ? 'Valide le resultat du combat, applique les recompenses ou la defaite, puis retourne au hub.' : 'Confirm the combat result, apply rewards or defeat, then return to the hub.')}
               style={{
                 fontSize: '16px',
                 padding: '10px 26px',
@@ -1224,7 +1871,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 borderColor: '#fff'
               }}
             >
-              {getTranslation(lang, 'returnToHub')}
+              {stage.isCustomBattle
+                ? (lang === 'fr' ? 'RETOUR CONFIGURATION' : 'BACK TO SETUP')
+                : getTranslation(lang, 'returnToHub')}
             </button>
           </div>
         )}
@@ -1276,6 +1925,37 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               );
             })}
           </div>
+
+          {battleConfig?.opponentControl === 'p2' && opponentState.length > 0 && (
+            <div style={{ marginTop: 12, paddingTop: 10, borderTop: '1px solid rgba(255,138,80,0.25)' }}>
+              <div style={{ fontSize: 10, color: '#ff8a50', marginBottom: 7 }}>P2 / {lang === 'fr' ? 'MENACES' : 'THREATS'}</div>
+              <div style={{ display: 'grid', gap: 6 }}>
+                {opponentState.map((enemy, index) => {
+                  const runtimeId = enemy.runtimeId || enemy.id || enemy.name;
+                  const selected = runtimeId === activeOpponentId;
+                  return (
+                    <button
+                      type="button"
+                      key={`${runtimeId}-${index}`}
+                      onClick={() => stage.mode === 'RPG' && enemy.currentHp > 0 && swapActiveHero(runtimeId)}
+                      className="btn-retro"
+                      disabled={enemy.currentHp <= 0 || stage.mode === 'Tactics'}
+                      style={{
+                        padding: '6px 8px',
+                        borderColor: selected ? '#ff8a50' : '#493b37',
+                        color: enemy.currentHp > 0 ? '#ffd4bd' : '#6b4e46',
+                        textAlign: 'left',
+                        fontSize: 9
+                      }}
+                    >
+                      {index + 7}. {enemy.name} — {Math.max(0, Math.round(enemy.currentHp || 0))}/{Math.round(enemy.maxHp || enemy.hp || 1)} HP
+                      {typeof enemy.atb === 'number' ? ` / ATB ${Math.round(enemy.atb)}%` : ''}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {stage.mode === 'RPG' && (
             <button
@@ -1338,7 +2018,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 {battlePickups.map(item => (
                   <button
                     key={item.pickupId}
-                    onClick={() => stage.mode !== 'Tactics' && activateBattleItem(item, 'panel')}
+                    onClick={() => stage.mode !== 'Tactics' && activateBattleItem(
+                      item,
+                      'panel',
+                      opponentHasCommand ? 'opponent' : 'player'
+                    )}
                     disabled={item.used || battleCompleted || stage.mode === 'Tactics' || (stage.mode === 'RPG' && (!activeHeroObj || activeHeroObj.atb < 100))}
                     className="btn-retro"
                     style={{
@@ -1354,8 +2038,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                     }}
                     title={stage.mode === 'Tactics'
                       ? (lang === 'fr'
-                        ? 'En tactique, deplace un heros sur la case de cet artefact pour le declencher.'
-                        : 'In tactics, move a hero onto this artifact tile to trigger it.')
+                        ? 'En tactique, deplace une unite sur la case de cet artefact pour le declencher.'
+                        : 'In tactics, move a unit onto this artifact tile to trigger it.')
                       : stage.mode === 'RPG'
                         ? item.rpg?.[lang]
                         : item.melee?.[lang]}
@@ -1391,8 +2075,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               {stage.mode === 'RPG' && (
                 <div style={{ fontSize: '8px', color: '#aaa', marginTop: '7px', lineHeight: 1.4 }}>
                   {lang === 'fr'
-                    ? 'Commande de relique: utilisable seulement quand le heros actif a son ATB pleine.'
-                    : 'Relic command: usable only when the active hero has full ATB.'}
+                    ? 'Commande de relique: utilisable seulement quand le combattant actif a son ATB pleine.'
+                    : 'Relic command: usable only when the active fighter has full ATB.'}
                 </div>
               )}
             </div>
@@ -1404,8 +2088,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           {activeHeroObj ? (
             <>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                <span style={{ fontWeight: 'bold', color: activeHeroObj.primaryColor }}>
-                  {activeHeroObj.name.toUpperCase()} ACTIONS
+                <span style={{ fontWeight: 'bold', color: activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50' }}>
+                  {opponentHasCommand ? 'P2 / ' : ''}{activeHeroObj.name.toUpperCase()} ACTIONS
                 </span>
                 {stage.mode === 'Tactics' && (
                   <span style={{ fontSize: '9px', color: '#ffb300' }}>
@@ -1421,7 +2105,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
                 >
-                  ⚔️ {activeHeroObj.simple.name}
+                  ⚔️ {getCombatantMove(activeHeroObj, 'simple').name}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>Basic Action</div>
                 </button>
 
@@ -1431,7 +2115,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
-                  ⚡ {activeHeroObj.secondary.name}
+                  ⚡ {getCombatantMove(activeHeroObj, 'secondary').name}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>
                     {activeHeroObj.cooldown > 0 ? `COOLDOWN (${Math.ceil(activeHeroObj.cooldown/60)}s)` : 'Skill Action'}
                   </div>
@@ -1443,7 +2127,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
                 >
-                  🛡️ {activeHeroObj.defense.name}
+                  🛡️ {getCombatantMove(activeHeroObj, 'defense').name}
                   <div style={{ fontSize: '8px', color: '#ccc', marginTop: '2px' }}>Shield Defense</div>
                 </button>
 
@@ -1453,13 +2137,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   className="btn-special"
                   title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
                   style={{
-                    boxShadow: activeHeroObj.specialCharge >= 100 ? `0 0 15px ${activeHeroObj.primaryColor}` : 'none',
+                    boxShadow: activeHeroObj.specialCharge >= 100 ? `0 0 15px ${activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50'}` : 'none',
                     borderColor: activeHeroObj.specialCharge >= 100 ? '#fff' : '#444',
-                    background: activeHeroObj.specialCharge >= 100 ? activeHeroObj.primaryColor : 'rgba(0,0,0,0.4)',
+                    background: activeHeroObj.specialCharge >= 100 ? (activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50') : 'rgba(0,0,0,0.4)',
                     color: '#fff'
                   }}
                 >
-                  🔥 {activeHeroObj.special.name.toUpperCase()}
+                  🔥 {getCombatantMove(activeHeroObj, 'special').name.toUpperCase()}
                   <div style={{ fontSize: '8px', color: '#fff', marginTop: '2px' }}>
                     {activeHeroObj.specialCharge < 100 ? `SPECIAL CHARGE: ${Math.round(activeHeroObj.specialCharge)}%` : 'READY!'}
                   </div>
@@ -1494,9 +2178,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
               {stage.mode === 'Smash' && (
                 <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
-                  {lang === 'fr'
-                    ? <>Deplacement <strong>W/A/S/D</strong>. Capacites <strong>J/K/L/I</strong>. Artefact suivant <strong>O</strong>. Heros <strong>1/2/3</strong>.</>
-                    : <>Move with <strong>W/A/S/D</strong>. Abilities <strong>J/K/L/I</strong>. Next artifact <strong>O</strong>. Heroes <strong>1/2/3</strong>.</>}
+                  {battleConfig?.opponentControl === 'p2'
+                    ? (lang === 'fr'
+                        ? <>P1 <strong>ZQSD + F/G/H/R + 1/2/3</strong>. P2 <strong>fleches + J/K/L/I + 7/8/9</strong>.</>
+                        : <>P1 <strong>WASD + F/G/H/R + 1/2/3</strong>. P2 <strong>arrows + J/K/L/I + 7/8/9</strong>.</>)
+                    : (lang === 'fr'
+                        ? <>Deplacement <strong>W/A/S/D</strong>. Capacites <strong>J/K/L/I</strong>. Artefact suivant <strong>O</strong>. Heros <strong>1/2/3</strong>.</>
+                        : <>Move with <strong>W/A/S/D</strong>. Abilities <strong>J/K/L/I</strong>. Next artifact <strong>O</strong>. Heroes <strong>1/2/3</strong>.</>)}
                 </div>
               )}
               {stage.mode === 'Tactics' && (

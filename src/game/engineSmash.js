@@ -6,6 +6,37 @@ import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
 
 const platformTextureCanvasCache = new Map();
+const LOCAL_P2_CONTROL = 'p2';
+
+const isInputPressed = (keys = {}, names = []) => names.some(name => Boolean(keys[name]));
+
+const getVersusRoster = (enemiesData = {}) => {
+  if (Array.isArray(enemiesData.customRoster)) {
+    return enemiesData.customRoster.map(template => ({
+      template,
+      isBoss: Boolean(template?.isBoss || template?.customKind === 'boss' || template?.customKind === 'worldBoss')
+    }));
+  }
+
+  if (Array.isArray(enemiesData.roster)) {
+    return enemiesData.roster.map(entry => ({
+      template: entry?.enemy || entry?.data || entry,
+      isBoss: Boolean(entry?.isBoss || entry?.kind === 'boss' || entry?.kind === 'worldBoss')
+    }));
+  }
+
+  return [
+    ...(Array.isArray(enemiesData.monsters)
+      ? enemiesData.monsters.map(template => ({ template, isBoss: false }))
+      : []),
+    ...(Array.isArray(enemiesData.bosses)
+      ? enemiesData.bosses.map(template => ({ template, isBoss: true }))
+      : []),
+    ...(enemiesData.worldBoss
+      ? [{ template: enemiesData.worldBoss, isBoss: true }]
+      : [])
+  ];
+};
 
 const makeTextureCanvas = (theme, kind) => {
   const surface = theme.surface;
@@ -87,6 +118,13 @@ export class EngineSmash {
     this.playSfx = playSfx;
     this.onComplete = onComplete;
     this.stage = stage;
+    this.hazardsDisabled = Boolean(stage.disableHazards);
+    this.opponentControl = stage.customBattle?.opponentControl === LOCAL_P2_CONTROL
+      ? LOCAL_P2_CONTROL
+      : 'cpu';
+    this.isLocalP2 = this.opponentControl === LOCAL_P2_CONTROL;
+    this.singleRoster = Boolean(stage.customBattle?.singleRoster);
+    this.isFixedCustomRoster = this.isLocalP2 || this.singleRoster;
     this.arena = createSmashArena(stage, width, height);
     this.generatedPlatformPattern = null;
     this.recentPlatformPattern = null;
@@ -161,8 +199,22 @@ export class EngineSmash {
     this.completionReported = false;
     this.victoryTimer = 0;
     this.activeHeroId = this.heroes[0].id;
+    this.activeOpponentId = null;
     this.groundY = this.arena.groundY;
     this.platforms = this.arena.platforms;
+
+    if (this.isLocalP2) {
+      this.maxWaves = 1;
+      this.objectiveTarget = 1;
+      this.enemies = this.createCustomRosterOpponents(true);
+      this.activeOpponentId = this.enemies[0]?.id || null;
+      this.fixedRosterOpponentCount = this.enemies.length;
+    } else if (this.singleRoster) {
+      this.maxWaves = 1;
+      this.objectiveTarget = 1;
+      this.enemies = this.createCustomRosterOpponents(false);
+      this.fixedRosterOpponentCount = this.enemies.length;
+    }
   }
 
   getActiveHero() {
@@ -177,6 +229,210 @@ export class EngineSmash {
       this.activeHeroId = id;
       this.playSfx('jump');
     }
+  }
+
+  /**
+   * Local P2 API
+   * ------------
+   * Enable with `stage.customBattle.opponentControl = 'p2'`.
+   * `stage.customBattle.singleRoster = true` also enables a fixed CPU match:
+   * exactly the first three entries of `enemiesData.customRoster` are spawned
+   * once, with the regular campaign enemy AI but without waves or respawns.
+   * P2 reads the same custom roster and disables enemy AI. For compatibility,
+   * roster/monsters/bosses/worldBoss remain fallback sources when
+   * customRoster is absent.
+   *
+   * Runtime controls:
+   * - `getActiveOpponent()` returns P2's current fighter.
+   * - `setActiveOpponent(id)` swaps P2's controlled fighter.
+   * - `triggerOpponentAbility(type)` accepts simple, secondary, defense,
+   *   or special.
+   * - `update(keysP1, keysP2)` accepts two independent pressed-key maps.
+   *   Each map may use semantic left/right/jump keys or the usual keyboard
+   *   names. Existing campaign calls to `update(keysP1)` remain unchanged.
+   */
+  createCustomRosterOpponents(localP2 = this.isLocalP2) {
+    const roster = getVersusRoster(this.enemiesData)
+      .filter(entry => entry.template)
+      .slice(0, 3);
+    const spawnList = this.arena.spawns.enemies || [];
+
+    return roster.map(({ template, isBoss }, index) => {
+      const stats = template.stats || {};
+      const hp = Math.max(1, Number(stats.hp ?? template.hp) || (isBoss ? 420 : 100));
+      const atk = Math.max(1, Number(stats.atk ?? template.atk) || (isBoss ? 22 : 12));
+      const def = Math.max(0, Number(stats.def ?? template.def) || (isBoss ? 10 : 5));
+      const spd = Math.max(1, Number(stats.spd ?? template.spd) || 8);
+      const spawn = spawnList[index]
+        || (isBoss ? this.arena.spawns.boss : null)
+        || { x: this.width - 100 - index * 36, y: this.arena.groundY };
+      const sourceId = template.id
+        || `${template.universe || this.stage.universe || 'nexus'}:${template.name || index}`;
+      const specialName = typeof template.special === 'string'
+        ? template.special
+        : template.special?.name || 'Versus Rupture';
+      const behavior = this.getEnemyBehavior(template, isBoss);
+
+      return {
+        ...template,
+        id: `${localP2 ? 'p2' : 'cpu-custom'}:${sourceId}:${index}`,
+        sourceId,
+        x: spawn.x,
+        y: spawn.y,
+        vx: 0,
+        vy: 0,
+        state: 'idle',
+        stateTimer: 0,
+        cooldown: localP2 ? 0 : behavior.cooldown,
+        maxHp: hp,
+        currentHp: hp,
+        hp,
+        atk,
+        def,
+        spd,
+        stats: { hp, atk, def, spd },
+        defense: {
+          reduce: Number(template.defense?.reduce) || 0.45,
+          dur: Number(template.defense?.dur) || 0.6
+        },
+        versusSpecialName: specialName,
+        primaryColor: template.primaryColor || template.color || '#e74c3c',
+        secondaryColor: template.secondaryColor || template.color || '#ffb347',
+        weaponType: template.weaponType || template.weapon || 'melee',
+        behavior,
+        isBoss: Boolean(isBoss || template.isBoss),
+        isWorldBoss: Boolean(template.isWorldBoss),
+        isLeader: index === 0,
+        isLocalOpponent: localP2,
+        airJumps: isBoss ? 0 : 1,
+        jumpHeld: false,
+        recoveryLock: 0,
+        stuckTimer: 0,
+        lastX: spawn.x,
+        facing: -1,
+        specialCharge: 0,
+        statusEffects: { infected: 0, glitched: 0, radiated: 0 }
+      };
+    });
+  }
+
+  getActiveOpponent() {
+    return this.enemies.find(enemy => enemy.id === this.activeOpponentId)
+      || this.enemies.find(enemy => enemy.currentHp > 0)
+      || this.enemies[0];
+  }
+
+  setActiveOpponent(id) {
+    if (!this.isLocalP2) return false;
+    const next = this.enemies.find(enemy => enemy.id === id);
+    if (!next || next.currentHp <= 0) return false;
+    this.enemies.forEach(enemy => { enemy.isLeader = false; });
+    next.isLeader = true;
+    this.activeOpponentId = next.id;
+    this.playSfx('jump');
+    return true;
+  }
+
+  triggerOpponentAbility(abilityType) {
+    if (!this.isLocalP2 || this.gameOver) return false;
+    const opponent = this.getActiveOpponent();
+    if (
+      !opponent
+      || opponent.currentHp <= 0
+      || opponent.state === 'dead'
+      || opponent.state === 'hit'
+    ) return false;
+
+    const attack = opponent.stats?.atk || opponent.atk || 1;
+    const targets = this.heroes.filter(hero => hero.currentHp > 0);
+    if (!targets.length) return false;
+
+    if (abilityType === 'simple') {
+      opponent.state = 'attack';
+      opponent.stateTimer = 15;
+      this.playSfx(['gun', 'laser'].includes(opponent.weaponType) ? 'shoot' : 'slash');
+      const reachX = opponent.x + opponent.facing * 70;
+      targets.forEach(target => {
+        const inFront = opponent.facing === 1
+          ? target.x > opponent.x && target.x < reachX
+          : target.x < opponent.x && target.x > reachX;
+        if (Math.abs(target.y - opponent.y) < 30 && inFront) {
+          this.applyDamage(opponent, target, attack, 10);
+        }
+      });
+      opponent.specialCharge = Math.min(100, opponent.specialCharge + 10);
+      return true;
+    }
+
+    if (abilityType === 'secondary') {
+      if (opponent.cooldown > 0) return false;
+      opponent.state = 'attack';
+      opponent.stateTimer = 20;
+      opponent.cooldown = 240;
+      this.playSfx('shoot');
+      this.particles.add(
+        opponent.x + opponent.facing * 15,
+        opponent.y - 4,
+        opponent.facing * 8,
+        0,
+        opponent.secondaryColor,
+        6,
+        60,
+        'laser_line'
+      );
+      const target = targets
+        .filter(candidate => (
+          Math.abs(candidate.y - opponent.y) < 35
+          && (opponent.facing === 1 ? candidate.x > opponent.x : candidate.x < opponent.x)
+          && Math.abs(candidate.x - opponent.x) < 300
+        ))
+        .sort((left, right) => Math.abs(left.x - opponent.x) - Math.abs(right.x - opponent.x))[0];
+      if (target) this.applyDamage(opponent, target, attack * 1.35, 20);
+      opponent.specialCharge = Math.min(100, opponent.specialCharge + 15);
+      return true;
+    }
+
+    if (abilityType === 'defense') {
+      opponent.state = 'defense';
+      opponent.stateTimer = opponent.defense.dur * 60;
+      opponent.vx = 0;
+      this.playSfx('shield');
+      this.particles.add(
+        opponent.x,
+        opponent.y - 6,
+        0,
+        0,
+        opponent.secondaryColor,
+        4,
+        15,
+        'spark'
+      );
+      return true;
+    }
+
+    if (abilityType === 'special') {
+      if (opponent.specialCharge < 100) return false;
+      opponent.specialCharge = 0;
+      opponent.state = 'attack';
+      opponent.stateTimer = 40;
+      this.playSfx('special');
+      this.particles.add(this.width / 2, this.height / 2, 0, 0, opponent.primaryColor, 300, 30, 'glitch');
+      this.particles.add(
+        opponent.x - 30,
+        opponent.y - 50,
+        0,
+        -0.5,
+        '#f1c40f',
+        16,
+        80,
+        'text',
+        `!!! ${String(opponent.versusSpecialName).toUpperCase()} !!!`
+      );
+      targets.forEach(target => this.applyDamage(opponent, target, attack * 2.5, 45));
+      return true;
+    }
+
+    return false;
   }
 
   getEnemyBehavior(template = {}, isBoss = false) {
@@ -515,7 +771,178 @@ export class EngineSmash {
     }
   }
 
-  update(keysPressed) {
+  ensureLocalVersusLeaders() {
+    const activeHero = this.getActiveHero();
+    if (!activeHero || activeHero.currentHp <= 0) {
+      const nextHero = this.heroes.find(hero => hero.currentHp > 0);
+      this.heroes.forEach(hero => { hero.isLeader = false; });
+      if (nextHero) {
+        nextHero.isLeader = true;
+        this.activeHeroId = nextHero.id;
+      }
+    }
+
+    const activeOpponent = this.getActiveOpponent();
+    if (!activeOpponent || activeOpponent.currentHp <= 0) {
+      const nextOpponent = this.enemies.find(enemy => enemy.currentHp > 0);
+      this.enemies.forEach(enemy => { enemy.isLeader = false; });
+      if (nextOpponent) {
+        nextOpponent.isLeader = true;
+        this.activeOpponentId = nextOpponent.id;
+      }
+    }
+  }
+
+  updateLocalVersusMovement(actor, target, keys = {}, side = 'p1') {
+    if (!actor || actor.currentHp <= 0) return;
+    const blocked = ['attack', 'defense', 'hit', 'dead'].includes(actor.state);
+    if (blocked) {
+      actor.vx *= 0.82;
+      actor.jumpHeld = false;
+      return;
+    }
+
+    const isP2 = side === 'p2';
+    const leftPressed = isInputPressed(keys, isP2
+      ? ['left', 'ArrowLeft', 'Numpad4']
+      : ['left', 'ArrowLeft', 'a', 'A', 'q', 'Q']);
+    const rightPressed = isInputPressed(keys, isP2
+      ? ['right', 'ArrowRight', 'Numpad6']
+      : ['right', 'ArrowRight', 'd', 'D']);
+    const jumpPressed = isInputPressed(keys, isP2
+      ? ['jump', 'ArrowUp', 'Numpad8']
+      : ['jump', 'ArrowUp', 'Space', ' ', 'w', 'W', 'z', 'Z']);
+    const speedBase = actor.isBoss ? 3.2 : 4;
+    const speed = actor.statusEffects?.glitched > 0 ? speedBase * 0.5 : speedBase;
+    const direction = (rightPressed ? 1 : 0) - (leftPressed ? 1 : 0);
+
+    actor.vx = direction * speed;
+    if (direction) {
+      actor.facing = direction;
+      actor.state = 'run';
+    } else {
+      actor.vx = 0;
+      if (actor.state === 'run') actor.state = 'idle';
+      if (target) actor.facing = target.x >= actor.x ? 1 : -1;
+    }
+
+    if (jumpPressed && !actor.jumpHeld) {
+      const grounded = this.isOnGround(actor);
+      if (grounded || actor.airJumps > 0) {
+        actor.vy = grounded ? this.jumpVelocity : this.jumpVelocity * 0.82;
+        if (!grounded) actor.airJumps--;
+        actor.recoveryLock = 12;
+        this.playSfx('jump');
+      }
+    }
+    actor.jumpHeld = jumpPressed;
+  }
+
+  updateLocalVersusActor(actor) {
+    if (actor.currentHp <= 0) {
+      actor.state = 'dead';
+      actor.vx = 0;
+      actor.vy += this.gravity;
+      this.applyPhysics(actor);
+      return;
+    }
+
+    if (actor.cooldown > 0) actor.cooldown--;
+    if (actor.recoveryLock > 0) actor.recoveryLock--;
+    if (actor.stateTimer > 0) {
+      actor.stateTimer--;
+      if (actor.stateTimer === 0) actor.state = 'idle';
+    }
+
+    if (actor.statusEffects?.infected > 0) {
+      actor.statusEffects.infected--;
+      if (actor.statusEffects.infected % 60 === 0) {
+        actor.currentHp = Math.max(1, actor.currentHp - 3);
+        this.particles.add(actor.x, actor.y - 12, (Math.random() - 0.5) * 2, -1, '#2ecc71', 4, 20, 'spark');
+      }
+    }
+    if (actor.statusEffects?.glitched > 0) {
+      actor.statusEffects.glitched--;
+      if (actor.statusEffects.glitched % 12 === 0) {
+        this.particles.add(
+          actor.x + (Math.random() - 0.5) * 15,
+          actor.y - 10 + (Math.random() - 0.5) * 15,
+          0,
+          0,
+          '#00ff00',
+          4,
+          15,
+          'glitch'
+        );
+      }
+    }
+    if (actor.statusEffects?.radiated > 0) {
+      actor.statusEffects.radiated--;
+      if (actor.statusEffects.radiated % 40 === 0) {
+        this.particles.add(
+          actor.x + (Math.random() - 0.5) * 12,
+          actor.y - 12 + (Math.random() - 0.5) * 12,
+          0,
+          -0.5,
+          '#e67e22',
+          4,
+          25,
+          'spark'
+        );
+      }
+    }
+
+    if (!actor.isLeader && !['hit', 'attack', 'defense'].includes(actor.state)) {
+      actor.vx = 0;
+      actor.state = 'idle';
+      actor.jumpHeld = false;
+    }
+    actor.vy += this.gravity;
+    this.applyPhysics(actor);
+  }
+
+  finishLocalVersus(result) {
+    if (this.gameOver) return;
+    this.gameOver = true;
+    this.localVersusResult = result;
+    this.victoryTimer = 0;
+    this.playSfx(result === 'victory' ? 'victory' : 'defeat');
+  }
+
+  updateLocalVersus(keysP1 = {}, keysP2 = {}) {
+    if (this.gameOver) {
+      this.victoryTimer++;
+      if (this.victoryTimer > 120 && !this.completionReported) {
+        this.completionReported = true;
+        const result = this.localVersusResult
+          || (this.heroes.some(hero => hero.currentHp > 0) ? 'victory' : 'defeat');
+        this.onComplete(result, this.getCombatSummary(result));
+      }
+      return;
+    }
+
+    this.ensureLocalVersusLeaders();
+    const activeHero = this.getActiveHero();
+    const activeOpponent = this.getActiveOpponent();
+    this.updateLocalVersusMovement(activeHero, activeOpponent, keysP1, 'p1');
+    this.updateLocalVersusMovement(activeOpponent, activeHero, keysP2, 'p2');
+
+    this.heroes.forEach(hero => this.updateLocalVersusActor(hero));
+    this.enemies.forEach(enemy => this.updateLocalVersusActor(enemy));
+    this.applyArenaHazards();
+
+    const heroesAlive = this.heroes.some(hero => hero.currentHp > 0);
+    const opponentsAlive = this.enemies.some(enemy => enemy.currentHp > 0);
+    if (!heroesAlive) this.finishLocalVersus('defeat');
+    else if (!opponentsAlive) this.finishLocalVersus('victory');
+  }
+
+  update(keysPressed = {}, keysP2 = {}) {
+    if (this.isLocalP2) {
+      this.updateLocalVersus(keysPressed, keysP2);
+      return;
+    }
+
     if (this.gameOver) {
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
@@ -528,8 +955,10 @@ export class EngineSmash {
 
     const heroesAlive = this.heroes.some(h => h.currentHp > 0);
     const enemiesAlive = this.enemies.some(e => e.currentHp > 0 || e.stateTimer > 0);
-    this.updateArenaObjective();
-    this.updateObjectiveBattleState();
+    if (!this.isFixedCustomRoster) {
+      this.updateArenaObjective();
+      this.updateObjectiveBattleState();
+    }
 
     if (!heroesAlive && !this.gameOver) {
       this.gameOver = true;
@@ -815,8 +1244,12 @@ export class EngineSmash {
       char.vx = -Math.abs(char.vx) * 0.35;
     }
 
-    this.recoverFromArenaFall(char, previousY);
-    this.updateStuckTracker(char, previousX);
+    if (this.isLocalP2) {
+      char.lastX = char.x;
+    } else {
+      this.recoverFromArenaFall(char, previousY);
+      this.updateStuckTracker(char, previousX);
+    }
     
     if (char.y > this.height + 72) {
       char.currentHp = 0;
@@ -877,7 +1310,7 @@ export class EngineSmash {
   }
 
   applyArenaHazards() {
-    if (!this.arena.hazards?.length || this.gameOver) return;
+    if (this.hazardsDisabled || !this.arena.hazards?.length || this.gameOver) return;
     this.hazardTick++;
     const actors = [...this.heroes, ...this.enemies].filter(actor => actor.currentHp > 0);
     this.arena.hazards.forEach(hazard => {
@@ -1058,6 +1491,7 @@ export class EngineSmash {
   }
 
   isTouchingActiveHazard(actor) {
+    if (this.hazardsDisabled) return false;
     return (this.arena.hazards || []).some(hazard => {
       const active = this.hazardTick % (hazard.cadence || 120) < 48;
       return active && actor.x >= hazard.x1 && actor.x <= hazard.x2 && Math.abs(actor.y - hazard.y) < 20;
@@ -1102,7 +1536,7 @@ export class EngineSmash {
     });
 
     this.drawHazards(ctx, animTime);
-    this.drawObjectiveNodes(ctx, animTime);
+    if (!this.isFixedCustomRoster) this.drawObjectiveNodes(ctx, animTime);
 
     this.enemies.forEach(e => {
       if (e.isBoss) {
@@ -1123,6 +1557,16 @@ export class EngineSmash {
         const pct = e.currentHp / e.maxHp;
         ctx.fillStyle = e.isBoss ? '#f1c40f' : '#e74c3c';
         ctx.fillRect(e.x + xOffset, e.y + yOffset, barWidth * pct, barHeight);
+
+        if (this.isLocalP2 && e.id === this.activeOpponentId) {
+          ctx.fillStyle = '#ff5a36';
+          ctx.beginPath();
+          const pulse = Math.sin(animTime * 0.1) * 3;
+          ctx.moveTo(e.x, e.y + yOffset - 8 + pulse);
+          ctx.lineTo(e.x - 5, e.y + yOffset - 16 + pulse);
+          ctx.lineTo(e.x + 5, e.y + yOffset - 16 + pulse);
+          ctx.fill();
+        }
       }
     });
 
@@ -1151,11 +1595,20 @@ export class EngineSmash {
 
     ctx.fillStyle = '#ffffff';
     ctx.font = '12px "Press Start 2P"';
-    ctx.fillText(`WAVE: ${this.wave}/${this.maxWaves}`, 20, 30);
+    if (this.isLocalP2) {
+      const p1Alive = this.heroes.filter(hero => hero.currentHp > 0).length;
+      const p2Alive = this.enemies.filter(enemy => enemy.currentHp > 0).length;
+      ctx.fillText(`LOCAL VS  P1 ${p1Alive} / P2 ${p2Alive}`, 20, 30);
+    } else if (this.singleRoster) {
+      const cpuAlive = this.enemies.filter(enemy => enemy.currentHp > 0).length;
+      ctx.fillText(`CUSTOM CPU  ${cpuAlive}/${this.fixedRosterOpponentCount}`, 20, 30);
+    } else {
+      ctx.fillText(`WAVE: ${this.wave}/${this.maxWaves}`, 20, 30);
+    }
     ctx.fillStyle = this.arena.theme.accent;
     ctx.font = '9px "Share Tech Mono", monospace';
     ctx.fillText(this.arena.label.fr || this.arena.id, 20, 48);
-    this.drawObjectiveHud(ctx);
+    if (!this.isFixedCustomRoster) this.drawObjectiveHud(ctx);
   }
 
   drawObjectiveHud(ctx) {
@@ -1337,7 +1790,7 @@ export class EngineSmash {
   }
 
   drawHazards(ctx, animTime) {
-    if (!this.arena.hazards?.length) return;
+    if (this.hazardsDisabled || !this.arena.hazards?.length) return;
     ctx.save();
     this.arena.hazards.forEach(hazard => {
       const warning = this.hazardTick % (hazard.cadence || 120);
@@ -1357,7 +1810,12 @@ export class EngineSmash {
   }
 
   getCombatSummary(result = null) {
-    const objectivePct = Math.round(Math.max(0, Math.min(1, this.objectiveProgress / Math.max(1, this.objectiveTarget))) * 100);
+    const versusOpponentsDefeated = this.isFixedCustomRoster
+      ? this.enemies.filter(enemy => enemy.currentHp <= 0).length
+      : 0;
+    const objectivePct = this.isFixedCustomRoster
+      ? Math.round(versusOpponentsDefeated / Math.max(1, this.fixedRosterOpponentCount) * 100)
+      : Math.round(Math.max(0, Math.min(1, this.objectiveProgress / Math.max(1, this.objectiveTarget))) * 100);
     const aliveHeroes = this.heroes.filter(hero => hero.currentHp > 0);
     const hpPct = aliveHeroes.length
       ? Math.round(aliveHeroes.reduce((total, hero) => total + (hero.currentHp / Math.max(1, hero.maxHp)), 0) / aliveHeroes.length * 100)
@@ -1376,7 +1834,7 @@ export class EngineSmash {
       result,
       arenaId: this.arena.id,
       arenaLabel: this.arena.label,
-      objective: this.arena.objective,
+      objective: this.isFixedCustomRoster ? 'elimination' : this.arena.objective,
       objectivePct,
       score,
       grade,
@@ -1388,7 +1846,20 @@ export class EngineSmash {
       artifactHp: this.artifactHp,
       objectiveNodes: this.objectiveNodes.map(node => ({ id: node.id, type: node.type, progress: node.progress || 0, collected: !!node.collected, sealed: !!node.sealed })),
       aliveHeroes: aliveHeroes.length,
-      averageHpPct: hpPct
+      averageHpPct: hpPct,
+      ...(this.isLocalP2
+        ? {
+            opponentControl: LOCAL_P2_CONTROL,
+            aliveOpponents: this.enemies.filter(enemy => enemy.currentHp > 0).length,
+            localVersus: true
+          }
+        : this.singleRoster
+          ? {
+              opponentControl: 'cpu',
+              aliveOpponents: this.enemies.filter(enemy => enemy.currentHp > 0).length,
+              singleRoster: true
+            }
+        : {})
     };
   }
 }

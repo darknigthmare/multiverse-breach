@@ -25,6 +25,12 @@ export class EngineTactics {
     this.playSfx = playSfx;
     this.onComplete = onComplete;
     this.stage = stage;
+    this.opponentControl = stage.customBattle?.opponentControl === 'p2' ? 'p2' : 'cpu';
+    this.singleRoster = stage.customBattle?.singleRoster === true
+      && Array.isArray(enemiesData.customRoster);
+    this.hazardsDisabled = stage.disableHazards === true && !!stage.customBattle;
+    this.disposed = false;
+    this.timers = new Set();
     this.generatedTilePattern = null;
     this.battlefield = getTacticsBattlefield(stage);
     this.missionProfile = getTacticsMissionProfile(stage, this.battlefield);
@@ -113,8 +119,13 @@ export class EngineTactics {
     this.enemiesData = enemiesData;
     this.finalePolicy = enemiesData.finalePolicy || null;
     this.enemies = [];
-    this.isBossStage = (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
+    this.isBossStage = this.singleRoster
+      ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
+      : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
+    if (this.opponentControl === 'p2') {
+      this.enemies.forEach(enemy => this.normalizeEnemyActions(enemy));
+    }
 
     // Spawning Destructible Obstacles
     this.obstacles = (this.battlefield.obstacles || []).map(item => ({ ...item }));
@@ -138,6 +149,39 @@ export class EngineTactics {
     this.startTurn();
   }
 
+  schedule(callback, delay) {
+    if (this.disposed) return null;
+    const timer = setTimeout(() => {
+      this.timers.delete(timer);
+      if (!this.disposed) callback();
+    }, delay);
+    this.timers.add(timer);
+    return timer;
+  }
+
+  dispose() {
+    this.disposed = true;
+    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.clear();
+    this.turnQueue = [];
+    this.activeUnit = null;
+    this.actionPhase = 'end';
+  }
+
+  normalizeEnemyActions(enemy) {
+    if (!enemy) return enemy;
+    enemy.simple ||= { name: 'Basic Strike', dmg: 1 };
+    enemy.secondary ||= { name: 'Heavy Strike', dmg: 1.35, cd: 3 };
+    enemy.special ||= { name: enemy.special || 'Breach Assault', dmg: 1.7 };
+    if (typeof enemy.special === 'string') {
+      enemy.special = { name: enemy.special, dmg: 1.7 };
+    }
+    enemy.defense ||= { name: 'Guard', reduce: 0.4, dur: 1.2 };
+    enemy.cooldown = Number(enemy.cooldown) || 0;
+    enemy.specialCharge = Number(enemy.specialCharge) || 0;
+    return enemy;
+  }
+
   initBoard() {
     const monstersList = this.enemiesData.monsters;
     const bossesList = this.enemiesData.bosses;
@@ -155,6 +199,56 @@ export class EngineTactics {
     const worldBossSpawn = anchoredWorldBossSpawn
       || this.battlefield.worldBossSpawn
       || { x: this.cols - 1, y: Math.floor(this.rows / 2) };
+
+    if (this.singleRoster) {
+      const reservedCells = new Set([
+        ...this.heroes.map(hero => `${hero.gridX},${hero.gridY}`),
+        ...(this.battlefield.obstacles || []).map(obstacle => `${obstacle.gridX},${obstacle.gridY}`),
+        ...(this.protectedArtifact ? [`${this.protectedArtifact.gridX},${this.protectedArtifact.gridY}`] : []),
+        ...(this.escortUnit ? [`${this.escortUnit.gridX},${this.escortUnit.gridY}`] : [])
+      ]);
+      const spawnCandidates = [];
+      const appendSpawn = (spawn) => {
+        if (!spawn || !this.isInsideGrid(spawn.x, spawn.y) || this.isBlockedTile(spawn.x, spawn.y)) return;
+        const key = `${spawn.x},${spawn.y}`;
+        if (reservedCells.has(key) || spawnCandidates.some(candidate => candidate.x === spawn.x && candidate.y === spawn.y)) return;
+        spawnCandidates.push({ x: spawn.x, y: spawn.y });
+      };
+      [...monsterSpawns, ...bossSpawns, worldBossSpawn].forEach(appendSpawn);
+      for (let c = this.cols - 1; c >= 0 && spawnCandidates.length < 6; c--) {
+        for (let r = 0; r < this.rows && spawnCandidates.length < 6; r++) {
+          appendSpawn({ x: c, y: r });
+        }
+      }
+
+      this.enemiesData.customRoster.slice(0, 6).forEach((template, index) => {
+        const spawn = spawnCandidates[index] || { x: this.cols - 1, y: index % this.rows };
+        const isWorldBoss = template.isWorldBoss === true;
+        const isBoss = template.isBoss === true || isWorldBoss;
+        const runtimeId = `enemy:custom:${index}:${template.id || template.name}`;
+        const maxHp = template.hp || template.stats?.hp || (isBoss ? 450 : 90);
+        this.enemies.push({
+          ...template,
+          runtimeId,
+          gridX: spawn.x,
+          gridY: spawn.y,
+          x: 0,
+          y: 0,
+          state: 'idle',
+          stateTimer: 0,
+          atk: template.atk ?? template.stats?.atk ?? (isBoss ? 20 : 8),
+          def: template.def ?? template.stats?.def ?? (isBoss ? 10 : 4),
+          spd: template.spd ?? template.stats?.spd ?? (isBoss ? 6 : 8),
+          maxHp,
+          currentHp: maxHp,
+          facing: -1,
+          isBoss,
+          isWorldBoss,
+          statusEffects: { infected: 0, glitched: 0, radiated: 0 }
+        });
+      });
+      return;
+    }
 
     // 1. Spawning monsters from the active battlefield profile
     for (let i = 0; i < 3; i++) {
@@ -224,6 +318,7 @@ export class EngineTactics {
   }
 
   startTurn() {
+    if (this.disposed) return;
     if (this.turnQueue.length === 0) {
       this.rebuildTurnQueue();
       if (this.isFinalBoss) {
@@ -247,11 +342,18 @@ export class EngineTactics {
       this.selectedAction = null;
       this.calculateMovementRange();
       if (this.autoBattle) {
-        setTimeout(() => this.runHeroAI(), 600);
+        this.schedule(() => this.runHeroAI(), 600);
       }
     } else {
-      this.actionPhase = 'enemy_ai';
-      setTimeout(() => this.runEnemyAI(), 600);
+      if (this.opponentControl === 'p2') {
+        this.normalizeEnemyActions(this.activeUnit);
+        this.actionPhase = 'move';
+        this.selectedAction = null;
+        this.calculateMovementRange();
+      } else {
+        this.actionPhase = 'enemy_ai';
+        this.schedule(() => this.runEnemyAI(), 600);
+      }
     }
   }
 
@@ -300,7 +402,10 @@ export class EngineTactics {
     if (!tile) return 1;
     if (tile.type === 'high') return 2;
     if (tile.type === 'heavyCover') return 2;
-    if (tile.type === 'hazard') return unit && this.enemies.includes(unit) ? 1 : 2;
+    if (tile.type === 'hazard') {
+      if (this.hazardsDisabled) return 1;
+      return unit && this.enemies.includes(unit) ? 1 : 2;
+    }
     if (tile.type === 'portalSpawn') return unit && this.enemies.includes(unit) ? 1 : 2;
     return 1;
   }
@@ -310,9 +415,7 @@ export class EngineTactics {
     this.attackRange = [];
     if (!this.selectedAction) return;
 
-    let range = 1;
-    if (this.selectedAction === 'secondary') range = 3;
-    if (this.selectedAction === 'special') range = 5;
+    const range = this.getActionRange(this.selectedAction, unit);
     if (this.selectedAction === 'defense') {
       this.attackRange.push({ x: unit.gridX, y: unit.gridY });
       return;
@@ -337,9 +440,41 @@ export class EngineTactics {
 
   getActionBaseDamage(attacker, actionType) {
     if (!attacker) return 0;
-    if (actionType === 'secondary') return attacker.stats?.atk * attacker.secondary?.dmg;
-    if (actionType === 'special') return attacker.stats?.atk * attacker.special?.dmg;
-    return attacker.stats?.atk * (attacker.simple?.dmg || 1) || attacker.atk || 0;
+    const attack = attacker.stats?.atk ?? attacker.atk ?? 0;
+    if (actionType === 'secondary') return attack * (attacker.secondary?.dmg || 1.35);
+    if (actionType === 'special') return attack * (attacker.special?.dmg || 1.7);
+    return attack * (attacker.simple?.dmg || 1);
+  }
+
+  selectAction(actionType) {
+    const isHumanTurn = this.activeUnitType === 'hero'
+      || (this.opponentControl === 'p2' && this.activeUnitType === 'enemy');
+    if (this.gameOver || this.disposed || !isHumanTurn) return false;
+    const aliases = {
+      attack: 'simple',
+      basic: 'simple',
+      simple: 'simple',
+      strong: 'secondary',
+      heavy: 'secondary',
+      secondary: 'secondary',
+      special: 'special',
+      guard: 'defense',
+      defense: 'defense'
+    };
+    const selected = aliases[actionType];
+    if (!selected) return false;
+    const unit = this.activeUnitType === 'enemy'
+      ? this.normalizeEnemyActions(this.activeUnit)
+      : this.activeUnit;
+    if (selected === 'secondary' && unit.cooldown > 0) return false;
+    if (selected === 'special' && unit.specialCharge < 100) return false;
+    this.selectedAction = selected;
+    if (this.actionPhase === 'move') {
+      this.actionPhase = 'action';
+      this.movementRange = [];
+    }
+    this.calculateAttackRange();
+    return true;
   }
 
   getFacingVector(unit) {
@@ -371,7 +506,7 @@ export class EngineTactics {
       multiplier += 0.15;
       labels.push('HIGH');
     }
-    if (attackerTile?.type === 'hazard') {
+    if (!this.hazardsDisabled && attackerTile?.type === 'hazard') {
       multiplier -= 0.12;
       labels.push('RISK');
     }
@@ -436,7 +571,7 @@ export class EngineTactics {
     if (!tile) return;
     const px = this.gridStartX + unit.gridX * this.cellW + this.cellW / 2;
     const py = this.gridStartY + unit.gridY * this.cellH + 12;
-    if (tile.type === 'hazard') {
+    if (tile.type === 'hazard' && !this.hazardsDisabled) {
       unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
       this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 40, 'text', 'DANGER');
     }
@@ -549,7 +684,14 @@ export class EngineTactics {
   }
 
   handleCellClick(c, r) {
-    if (this.gameOver || this.activeUnitType !== 'hero') return { handled: false, reason: 'inactive' };
+    const isP2EnemyTurn = this.opponentControl === 'p2' && this.activeUnitType === 'enemy';
+    if (
+      this.gameOver
+      || this.disposed
+      || (this.activeUnitType !== 'hero' && !isP2EnemyTurn)
+    ) {
+      return { handled: false, reason: 'inactive' };
+    }
 
     if (this.actionPhase === 'move') {
       const inRange = this.movementRange.some(cell => cell.x === c && cell.y === r);
@@ -576,61 +718,71 @@ export class EngineTactics {
       const target = this.getUnitAtCell(c, r);
 
       if (this.selectedAction === 'defense') {
+        if (this.activeUnitType === 'enemy') this.normalizeEnemyActions(this.activeUnit);
         this.activeUnit.state = 'defense';
-        this.activeUnit.stateTimer = this.activeUnit.defense.dur * 60;
+        this.activeUnit.stateTimer = (this.activeUnit.defense?.dur || 1.2) * 60;
+        this.activeUnit.specialCharge = Math.min(100, (this.activeUnit.specialCharge || 0) + 10);
         this.playSfx('shield');
         this.endActiveTurn();
         return { handled: true, type: 'defense', unit: this.activeUnit };
       }
 
       if (target) {
-        const hero = this.activeUnit;
+        const attacker = this.activeUnitType === 'enemy'
+          ? this.normalizeEnemyActions(this.activeUnit)
+          : this.activeUnit;
         const defender = target.unit;
-        faceUnitToward(hero, defender);
+        const validTargetTypes = this.activeUnitType === 'enemy'
+          ? ['hero', 'obstacle', 'artifact', 'escort']
+          : ['enemy', 'obstacle'];
+        if (!validTargetTypes.includes(target.type)) {
+          return { handled: false, reason: 'friendly-target' };
+        }
+        faceUnitToward(attacker, defender);
 
-        // Can attack enemies OR obstacles
-        if (target.type === 'enemy' || target.type === 'obstacle') {
+        if (validTargetTypes.includes(target.type)) {
           if (this.selectedAction === 'simple') {
-            hero.state = 'attack';
-            hero.stateTimer = 25;
-            this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
+            attacker.state = 'attack';
+            attacker.stateTimer = 25;
+            const weapon = attacker.weaponType || attacker.weapon;
+            this.playSfx(weapon === 'gun' || weapon === 'laser' ? 'shoot' : 'slash');
             
-            // Apply Status Effect chances: Resident Evil inflicts infected, Matrix glitches
             let status = null;
-            if (hero.id === 'leon') status = 'infected';
-            if (hero.id === 'neo') status = 'glitched';
+            if (attacker.id === 'leon' || attacker.name?.includes('Nemesis')) status = 'infected';
+            if (attacker.id === 'neo' || attacker.name?.includes('Smith')) status = 'glitched';
+            if (attacker.name?.includes('Deathclaw') || attacker.name?.includes('Cyberdemon')) status = 'radiated';
 
-            this.applyDamage(hero, defender, hero.stats.atk * hero.simple.dmg, status, { actionType: 'simple' });
-            hero.specialCharge = Math.min(100, hero.specialCharge + 15);
+            this.applyDamage(attacker, defender, this.getActionBaseDamage(attacker, 'simple'), status, { actionType: 'simple' });
+            attacker.specialCharge = Math.min(100, (attacker.specialCharge || 0) + 15);
             this.endActiveTurn();
             return { handled: true, type: 'action', action: 'simple', target };
 
           } else if (this.selectedAction === 'secondary') {
-            if (hero.cooldown > 0) return { handled: false, reason: 'cooldown' };
-            hero.state = 'attack';
-            hero.stateTimer = 25;
-            hero.cooldown = hero.secondary.cd * 60;
+            if (attacker.cooldown > 0) return { handled: false, reason: 'cooldown' };
+            attacker.state = 'attack';
+            attacker.stateTimer = 25;
+            attacker.cooldown = (attacker.secondary?.cd || 3) * 60;
             this.playSfx('shoot');
             
-            this.applyDamage(hero, defender, hero.stats.atk * hero.secondary.dmg, null, { actionType: 'secondary' });
-            hero.specialCharge = Math.min(100, hero.specialCharge + 25);
+            this.applyDamage(attacker, defender, this.getActionBaseDamage(attacker, 'secondary'), null, { actionType: 'secondary' });
+            attacker.specialCharge = Math.min(100, (attacker.specialCharge || 0) + 25);
             this.endActiveTurn();
             return { handled: true, type: 'action', action: 'secondary', target };
 
           } else if (this.selectedAction === 'special') {
-            if (hero.specialCharge < 100) return { handled: false, reason: 'charge' };
-            hero.specialCharge = 0;
-            hero.state = 'special';
-            hero.stateTimer = 35;
+            if ((attacker.specialCharge || 0) < 100) return { handled: false, reason: 'charge' };
+            attacker.specialCharge = 0;
+            attacker.state = 'special';
+            attacker.stateTimer = 35;
             this.playSfx('special');
 
             this.particles.add(
               this.gridStartX + c * this.cellW + this.cellW/2,
               this.gridStartY + r * this.cellH + this.cellH/2,
-              0, 0, hero.primaryColor, 120, 30, 'glitch'
+              0, 0, attacker.primaryColor || attacker.color || '#e74c3c', 120, 30, 'glitch'
             );
 
-            this.applyDamage(hero, defender, hero.stats.atk * hero.special.dmg, null, { actionType: 'special' });
+            this.applyDamage(attacker, defender, this.getActionBaseDamage(attacker, 'special'), null, { actionType: 'special' });
             this.endActiveTurn();
             return { handled: true, type: 'action', action: 'special', target };
           }
@@ -650,7 +802,7 @@ export class EngineTactics {
     this.movementRange = [];
     this.attackRange = [];
     if (this.gameOver) return;
-    setTimeout(() => this.startTurn(), 600);
+    this.schedule(() => this.startTurn(), 600);
   }
 
   updateTacticsObjective() {
@@ -798,6 +950,7 @@ export class EngineTactics {
     if (this.gameOver || this.turnsElapsed <= 0) return;
     const { reinforcementEvery, hazardPulseEvery } = this.missionProfile;
     this.advanceEscortUnit();
+    if (this.hazardsDisabled) return;
     if (reinforcementEvery > 0 && this.turnsElapsed % reinforcementEvery === 0) {
       this.spawnTacticsReinforcement();
     }
@@ -839,6 +992,7 @@ export class EngineTactics {
       statusEffects: { infected: 0, glitched: 0, radiated: 0 },
       reinforcement: true
     };
+    if (this.opponentControl === 'p2') this.normalizeEnemyActions(reinforcement);
     this.enemies.push(reinforcement);
     this.turnQueue.push({ unit: reinforcement, type: 'enemy' });
     this.reinforcementsCalled++;
@@ -846,6 +1000,7 @@ export class EngineTactics {
   }
 
   applyHazardPulse() {
+    if (this.hazardsDisabled) return;
     const hazardTiles = this.tiles.filter(tile => tile.type === 'hazard');
     if (!hazardTiles.length) return;
     const radius = this.missionProfile.hazardRadius || 0;
@@ -870,20 +1025,55 @@ export class EngineTactics {
     this.hazardPulses++;
   }
 
-  applyTacticalBattleItem(pickup) {
+  applyTacticalBattleItem(pickup, _source = 'manual', triggerSide = this.activeUnitType) {
     if (!pickup || this.gameOver) return false;
     const tier = pickup.tier || 'pickup';
     const effect = pickup.effect || {};
     const color = pickup.color || '#39c5bb';
     const triggerX = pickup.gridX ?? this.activeUnit?.gridX ?? 0;
     const triggerY = pickup.gridY ?? this.activeUnit?.gridY ?? 0;
+    const opponentTriggered = this.opponentControl === 'p2' && triggerSide === 'enemy';
+    const allies = opponentTriggered ? this.enemies : this.heroes;
+    const targets = opponentTriggered ? this.heroes : this.enemies;
+    const symmetricEffect = [
+      'damage',
+      'summonDamage',
+      'ultimateDamage',
+      'heal',
+      'shield',
+      'charge'
+    ].some(key => Number(effect[key]) > 0);
+    const itemAttacker = {
+      gridX: triggerX,
+      gridY: triggerY,
+      stats: { atk: 1 },
+      simple: { dmg: 1 },
+      primaryColor: color
+    };
     this.tacticalItemsUsed++;
+
+    // Future effects without an explicit mirrored value stay neutral for P2.
+    // Never fall back to the P1-oriented default heal/damage in that case.
+    if (opponentTriggered && !symmetricEffect) {
+      this.particles.add(
+        this.gridStartX + triggerX * this.cellW + this.cellW / 2,
+        this.gridStartY + triggerY * this.cellH,
+        0,
+        -1,
+        color,
+        10,
+        42,
+        'text',
+        'NEUTRE P2'
+      );
+      return true;
+    }
 
     if (tier === 'ultimate') {
       const damage = Math.max(effect.ultimateDamage || 180, 160);
-      this.enemies.forEach(enemy => {
-        if (enemy.currentHp > 0) {
-          this.applyDamage({ gridX: triggerX, gridY: triggerY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: color }, enemy, damage, null, { ignoreCover: true });
+      targets.forEach(target => {
+        if (target.currentHp > 0) {
+          this.applyDamage(itemAttacker, target, damage, null, { ignoreCover: true });
           this.tacticalItemImpact += damage;
         }
       });
@@ -892,12 +1082,12 @@ export class EngineTactics {
     }
 
     if (tier === 'summon') {
-      const target = this.enemies
-        .filter(enemy => enemy.currentHp > 0)
+      const target = targets
+        .filter(actor => actor.currentHp > 0)
         .sort((a, b) => b.currentHp - a.currentHp)[0];
       if (target) {
         const damage = Math.max(effect.summonDamage || 120, 90);
-        this.applyDamage({ gridX: triggerX, gridY: triggerY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: color }, target, damage, 'glitched', { ignoreCover: true });
+        this.applyDamage(itemAttacker, target, damage, 'glitched', { ignoreCover: true });
         this.tacticalItemImpact += damage;
         this.particles.add(target.x, target.y - 44, 0, -1, color, 12, 44, 'text', 'ASSIST');
       }
@@ -908,21 +1098,24 @@ export class EngineTactics {
 
     const heal = Math.max(effect.heal || effect.shield || 45, 35);
     const damage = Math.max(effect.damage || 55, 45);
-    this.heroes.forEach(hero => {
-      if (hero.currentHp <= 0) return;
-      const dist = Math.abs(hero.gridX - triggerX) + Math.abs(hero.gridY - triggerY);
+    allies.forEach(ally => {
+      if (ally.currentHp <= 0) return;
+      const dist = Math.abs(ally.gridX - triggerX) + Math.abs(ally.gridY - triggerY);
       if (dist <= 2) {
-        hero.currentHp = Math.min(hero.maxHp, hero.currentHp + heal);
-        hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + 12);
+        const maxHp = ally.maxHp || ally.stats?.hp || ally.hp || ally.currentHp;
+        ally.currentHp = Math.min(maxHp, ally.currentHp + heal);
+        if (typeof ally.specialCharge === 'number') {
+          ally.specialCharge = Math.min(100, ally.specialCharge + 12);
+        }
         this.tacticalItemImpact += heal;
-        this.particles.add(hero.x, hero.y - 28, 0, -1, color, 10, 38, 'text', '+TACT');
+        this.particles.add(ally.x, ally.y - 28, 0, -1, color, 10, 38, 'text', '+TACT');
       }
     });
-    this.enemies.forEach(enemy => {
-      if (enemy.currentHp <= 0) return;
-      const dist = Math.abs(enemy.gridX - triggerX) + Math.abs(enemy.gridY - triggerY);
+    targets.forEach(target => {
+      if (target.currentHp <= 0) return;
+      const dist = Math.abs(target.gridX - triggerX) + Math.abs(target.gridY - triggerY);
       if (dist <= 1) {
-        this.applyDamage({ gridX: triggerX, gridY: triggerY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: color }, enemy, damage, null, { ignoreCover: true });
+        this.applyDamage(itemAttacker, target, damage, null, { ignoreCover: true });
         this.tacticalItemImpact += damage;
       }
     });
@@ -983,7 +1176,7 @@ export class EngineTactics {
     if (tile?.type === 'heavyCover') score += unitType === 'hero' ? 5 : 1;
     if (tile?.type === 'lightCover') score += unitType === 'hero' ? 3 : 1;
     if (tile?.type === 'heal' && unitType === 'hero' && unit.currentHp < unit.maxHp) score += 7;
-    if (tile?.type === 'hazard') score -= unitType === 'hero' ? 8 : 3;
+    if (tile?.type === 'hazard' && !this.hazardsDisabled) score -= unitType === 'hero' ? 8 : 3;
     if (tile?.type === 'portalSpawn') score += this.objective === 'portals' && unitType === 'hero' ? 14 : unitType === 'enemy' ? 6 : -2;
     if (tile?.type === 'artifact') score += ['artifact', 'protect', 'escort'].includes(this.objective) && unitType === 'hero' ? 10 : unitType === 'enemy' ? 7 : 0;
     if (this.objective === 'control' && tile?.type === 'objective') score += unitType === 'hero' ? 10 : 8;
@@ -1094,7 +1287,7 @@ export class EngineTactics {
     const attackDist = Math.abs((attackTarget.gridX ?? attackTarget.x) - enemy.gridX) + Math.abs((attackTarget.gridY ?? attackTarget.y) - enemy.gridY);
     const rangeLimit = this.getEnemyRoleRange(role, enemy);
 
-    setTimeout(() => {
+    this.schedule(() => {
       const targetHp = attackTarget.hp ?? attackTarget.currentHp;
       if (attackDist <= rangeLimit && targetHp > 0 && this.hasLineOfSight(enemy, attackTarget, 'enemy')) {
         faceUnitToward(enemy, attackTarget);
@@ -1225,7 +1418,7 @@ export class EngineTactics {
     }
 
     // 5. Execute action after a delay
-    setTimeout(() => {
+    this.schedule(() => {
       if (target) {
         faceUnitToward(hero, target);
         hero.state = chosenAction === 'special' ? 'special' : 'attack';
@@ -1417,7 +1610,7 @@ export class EngineTactics {
           o.hp = Math.max(0, o.hp - 100);
           if (o.hp <= 0 && o.type === 'barrel') {
             // Chain reaction explosion!
-            setTimeout(() => this.triggerBarrelExplosion(o.gridX, o.gridY), 200);
+            this.schedule(() => this.triggerBarrelExplosion(o.gridX, o.gridY), 200);
           }
         }
       }
@@ -1576,6 +1769,7 @@ export class EngineTactics {
     }
   }
   update() {
+    if (this.disposed) return;
     if (this.gameOver) {
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
@@ -1646,6 +1840,7 @@ export class EngineTactics {
 
       if (e.currentHp <= 0) return;
 
+      if (e.cooldown > 0) e.cooldown--;
       if (e.stateTimer > 0) {
         e.stateTimer--;
         if (e.stateTimer === 0 && e.state !== 'dead') e.state = 'idle';

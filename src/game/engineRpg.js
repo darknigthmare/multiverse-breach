@@ -12,6 +12,11 @@ export class EngineRpg {
     this.onComplete = onComplete;
     this.stage = stage;
     this.levelProfile = getRecentUniverseLevelProfile(stage.universe);
+    this.opponentControl = stage.customBattle?.opponentControl === 'p2' ? 'p2' : 'cpu';
+    this.singleRoster = stage.customBattle?.singleRoster === true
+      && Array.isArray(enemiesData.customRoster);
+    this.disposed = false;
+    this.timers = new Set();
 
     const heroPosition = (idx) => {
       const lane = this.levelProfile?.rpg?.heroLanes?.[idx];
@@ -60,14 +65,17 @@ export class EngineRpg {
     this.finalePolicy = enemiesData.finalePolicy || null;
     this.enemies = [];
     this.wave = 1;
-    this.maxWaves = enemiesData.worldBoss ? 3 : 2;
-    this.isBossStage = (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
+    this.maxWaves = this.singleRoster ? 1 : enemiesData.worldBoss ? 3 : 2;
+    this.isBossStage = this.singleRoster
+      ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
+      : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.isFinalBoss = false;
     this.finalBossChaosTimer = 0;
     
     this.spawnWave();
 
     this.selectedHeroId = this.heroes[0].id;
+    this.selectedEnemyId = this.enemies[0]?.battleId || this.enemies[0]?.id || null;
     this.gameOver = false;
     this.victoryTimer = 0;
     this.completionReported = false;
@@ -76,11 +84,72 @@ export class EngineRpg {
     this.enemyGlobalRecovery = 70;
   }
 
+  schedule(callback, delay) {
+    if (this.disposed) return null;
+    const timer = setTimeout(() => {
+      this.timers.delete(timer);
+      if (!this.disposed) callback();
+    }, delay);
+    this.timers.add(timer);
+    return timer;
+  }
+
+  dispose() {
+    this.disposed = true;
+    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.clear();
+    this.enemyActionLock = false;
+  }
+
   spawnWave() {
     this.enemies = [];
     const w = this.wave;
 
-    if (w === 1) {
+    if (this.singleRoster) {
+      this.enemies = this.enemiesData.customRoster.slice(0, 3).map((template, index) => {
+        const isWorldBoss = template.isWorldBoss === true;
+        const isBoss = template.isBoss === true || isWorldBoss;
+        const lane = isWorldBoss
+          ? this.levelProfile?.rpg?.worldBoss
+          : isBoss
+            ? this.levelProfile?.rpg?.bossLanes?.[index]
+            : this.levelProfile?.rpg?.enemyLanes?.[index];
+        const anchor = template.anchor;
+        const homeX = Number.isFinite(anchor?.x)
+          ? Math.round(this.width * anchor.x)
+          : lane
+            ? Math.round(this.width * lane.x)
+            : this.width - 200 + index * 45;
+        const homeY = Number.isFinite(anchor?.y)
+          ? Math.round(this.height * anchor.y)
+          : lane
+            ? Math.round(this.height * lane.y)
+            : 90 + index * 55;
+        const runtimeId = `enemy:custom:${index}:${template.id || template.name}`;
+        return {
+          ...template,
+          battleId: runtimeId,
+          runtimeId,
+          x: homeX,
+          y: homeY,
+          homeX,
+          homeY,
+          state: 'idle',
+          stateTimer: 0,
+          atb: Math.random() * (isBoss ? 15 : 30),
+          cooldown: 0,
+          specialCharge: 0,
+          defense: template.defense || { reduce: 0.42, dur: 1.2 },
+          maxHp: template.hp || template.stats?.hp || (isBoss ? 450 : 90),
+          currentHp: template.hp || template.stats?.hp || (isBoss ? 450 : 90),
+          facing: -1,
+          isBoss,
+          isWorldBoss,
+          statusEffects: { infected: 0, glitched: 0, radiated: 0 }
+        };
+      });
+      if (this.enemies.some(enemy => enemy.isBoss)) this.playSfx('portal');
+    } else if (w === 1) {
       // Spawn 3 standard monsters aligned diagonally
       const templates = this.enemiesData.monsters;
       for (let i = 0; i < 3; i++) {
@@ -90,6 +159,8 @@ export class EngineRpg {
         const homeY = lane ? Math.round(this.height * lane.y) : 90 + i * 55;
         this.enemies.push({
           ...t,
+          battleId: `enemy:${w}:${i}:${t.id || t.name}`,
+          runtimeId: `enemy:${w}:${i}:${t.id || t.name}`,
           x: homeX,
           y: homeY,
           homeX,
@@ -97,6 +168,9 @@ export class EngineRpg {
           state: 'idle',
           stateTimer: 0,
           atb: Math.random() * 30,
+          cooldown: 0,
+          specialCharge: 0,
+          defense: t.defense || { reduce: 0.42, dur: 1.2 },
           maxHp: t.hp || 90,
           currentHp: t.hp || 90,
           facing: -1,
@@ -114,6 +188,8 @@ export class EngineRpg {
         const homeY = lane ? Math.round(this.height * lane.y) : 110 + i * 80;
         this.enemies.push({
           ...t,
+          battleId: `enemy:${w}:${i}:${t.id || t.name}`,
+          runtimeId: `enemy:${w}:${i}:${t.id || t.name}`,
           x: homeX,
           y: homeY,
           homeX,
@@ -121,6 +197,9 @@ export class EngineRpg {
           state: 'idle',
           stateTimer: 0,
           atb: Math.random() * 15,
+          cooldown: 0,
+          specialCharge: 0,
+          defense: t.defense || { reduce: 0.42, dur: 1.2 },
           maxHp: t.hp || 450,
           currentHp: t.hp || 450,
           facing: -1,
@@ -147,6 +226,8 @@ export class EngineRpg {
           : 140;
       this.enemies.push({
         ...t,
+        battleId: `enemy:${w}:0:${t.id || t.name}`,
+        runtimeId: `enemy:${w}:0:${t.id || t.name}`,
         x: homeX,
         y: homeY,
         homeX,
@@ -154,6 +235,9 @@ export class EngineRpg {
         state: 'idle',
         stateTimer: 0,
         atb: 0,
+        cooldown: 0,
+        specialCharge: 0,
+        defense: t.defense || { reduce: 0.42, dur: 1.2 },
         maxHp: t.hp || 1200,
         currentHp: t.hp || 1200,
         facing: -1,
@@ -163,6 +247,16 @@ export class EngineRpg {
       });
       this.playSfx('portal');
     }
+    const selected = this.enemies.find(enemy => (
+      enemy.currentHp > 0
+      && (
+        enemy.runtimeId === this.selectedEnemyId
+        || enemy.battleId === this.selectedEnemyId
+        || enemy.id === this.selectedEnemyId
+        || enemy.name === this.selectedEnemyId
+      )
+    )) || this.enemies.find(enemy => enemy.currentHp > 0);
+    this.selectedEnemyId = selected?.battleId || selected?.id || null;
   }
 
   getSelectedHero() {
@@ -174,6 +268,142 @@ export class EngineRpg {
     if (hero && hero.currentHp > 0) {
       this.selectedHeroId = id;
     }
+  }
+
+  getSelectedEnemy() {
+    return this.enemies.find(enemy => (
+      enemy.currentHp > 0
+      && (enemy.battleId === this.selectedEnemyId || enemy.id === this.selectedEnemyId)
+    )) || this.enemies.find(enemy => enemy.currentHp > 0) || null;
+  }
+
+  selectEnemy(id) {
+    const enemy = this.enemies.find(candidate => (
+      candidate.currentHp > 0
+      && (
+        candidate.runtimeId === id
+        || candidate.battleId === id
+        || candidate.id === id
+        || candidate.name === id
+      )
+    ));
+    if (!enemy) return false;
+    this.selectedEnemyId = enemy.battleId || enemy.id;
+    return true;
+  }
+
+  triggerEnemyAbility(enemyOrType = 'simple', maybeType = null) {
+    if (this.opponentControl !== 'p2' || this.gameOver || this.disposed || this.enemyActionLock) {
+      return false;
+    }
+
+    const actionAliases = {
+      attack: 'simple',
+      basic: 'simple',
+      simple: 'simple',
+      strong: 'secondary',
+      heavy: 'secondary',
+      secondary: 'secondary',
+      special: 'special',
+      guard: 'defense',
+      defense: 'defense'
+    };
+    let enemy = null;
+    let requestedType = maybeType;
+    if (enemyOrType && typeof enemyOrType === 'object') {
+      enemy = enemyOrType;
+    } else if (maybeType) {
+      enemy = this.enemies.find(candidate => (
+        candidate.runtimeId === enemyOrType
+        || candidate.battleId === enemyOrType
+        || candidate.id === enemyOrType
+        || candidate.name === enemyOrType
+      ));
+    } else {
+      const matchingEnemy = this.enemies.find(candidate => (
+        candidate.runtimeId === enemyOrType
+        || candidate.battleId === enemyOrType
+        || candidate.id === enemyOrType
+        || candidate.name === enemyOrType
+      ));
+      if (matchingEnemy) {
+        enemy = matchingEnemy;
+        requestedType = 'simple';
+      } else {
+        requestedType = enemyOrType;
+      }
+    }
+    enemy ||= this.getSelectedEnemy();
+    const abilityType = actionAliases[requestedType] || 'simple';
+    if (!enemy || enemy.currentHp <= 0 || enemy.state !== 'idle' || enemy.atb < 100) {
+      return false;
+    }
+    if (abilityType === 'secondary' && enemy.cooldown > 0) return false;
+    if (abilityType === 'special' && enemy.specialCharge < 100) return false;
+
+    if (abilityType === 'defense') {
+      enemy.atb = 0;
+      this.selectedEnemyId = enemy.battleId || enemy.id;
+      this.enemyGlobalRecovery = 25;
+      enemy.state = 'defense';
+      enemy.stateTimer = Math.max(45, Math.round((enemy.defense?.dur || 1.2) * 60));
+      enemy.specialCharge = Math.min(100, enemy.specialCharge + 15);
+      this.playSfx('shield');
+      this.particles.add(enemy.x, enemy.y - 8, 0, 0, enemy.color || '#e74c3c', 6, 24, 'spark');
+      return true;
+    }
+
+    const target = this.getRandomAliveHero();
+    if (!target) return false;
+    enemy.atb = 0;
+    this.selectedEnemyId = enemy.battleId || enemy.id;
+    this.enemyGlobalRecovery = 25;
+    this.enemyActionLock = true;
+    enemy.state = abilityType === 'special' ? 'special' : 'attack';
+    enemy.stateTimer = abilityType === 'special' ? 45 : 35;
+    if (target.x !== enemy.x) enemy.facing = target.x > enemy.x ? 1 : -1;
+
+    if (abilityType === 'simple') {
+      enemy.x = target.x + 50;
+      enemy.y = target.y;
+      enemy.specialCharge = Math.min(100, enemy.specialCharge + 20);
+      this.playSfx(enemy.weapon === 'gun' || enemy.weapon === 'laser' ? 'shoot' : 'slash');
+      this.schedule(() => {
+        if (target.currentHp > 0 && enemy.currentHp > 0) {
+          this.applyDamage(enemy, target, enemy.atk || 8);
+        }
+        enemy.x = enemy.homeX;
+        enemy.y = enemy.homeY;
+        this.enemyActionLock = false;
+      }, 200);
+    } else if (abilityType === 'secondary') {
+      enemy.cooldown = 180;
+      enemy.specialCharge = Math.min(100, enemy.specialCharge + 35);
+      this.playSfx('shoot');
+      this.particles.add(enemy.x - 15, enemy.y - 4, -8, 0, enemy.color || '#e74c3c', 6, 40, 'laser_line');
+      this.schedule(() => {
+        if (target.currentHp > 0 && enemy.currentHp > 0) {
+          this.applyDamage(enemy, target, (enemy.atk || 8) * 1.45);
+        }
+        this.enemyActionLock = false;
+      }, 260);
+    } else {
+      enemy.specialCharge = 0;
+      this.playSfx('special');
+      this.particles.add(this.width / 2, this.height / 2, 0, 0, enemy.color || '#e74c3c', 260, 34, 'glitch');
+      const targets = this.heroes.filter(hero => hero.currentHp > 0);
+      targets.forEach((hero, index) => {
+        this.schedule(() => {
+          if (hero.currentHp > 0 && enemy.currentHp > 0) {
+            this.applyDamage(enemy, hero, (enemy.atk || 8) * 1.15);
+          }
+          if (index === targets.length - 1) {
+            this.enemyActionLock = false;
+          }
+        }, 180 + index * 70);
+      });
+    }
+    return true;
   }
 
   triggerAbility(hero, abilityType) {
@@ -193,7 +423,7 @@ export class EngineRpg {
 
       this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
 
-      setTimeout(() => {
+      this.schedule(() => {
         if (target.currentHp > 0) {
           // Status effect chances: Leon infects
           let status = null;
@@ -215,7 +445,7 @@ export class EngineRpg {
       this.playSfx('shoot');
       this.particles.add(hero.x + 15, hero.y - 4, 8, 0, hero.secondaryColor || '#ff9900', 6, 40, 'laser_line');
 
-      setTimeout(() => {
+      this.schedule(() => {
         if (target.currentHp > 0) {
           this.applyDamage(hero, target, hero.stats.atk * hero.secondary.dmg);
         }
@@ -241,7 +471,7 @@ export class EngineRpg {
 
       this.enemies.forEach(e => {
         if (e.currentHp > 0) {
-          setTimeout(() => {
+          this.schedule(() => {
             // Special glitch effect by Neo
             let status = null;
             if (hero.id === 'neo') status = 'glitched';
@@ -251,7 +481,7 @@ export class EngineRpg {
       });
     }
 
-    setTimeout(() => {
+    this.schedule(() => {
       const nextReady = this.heroes.find(h => h.currentHp > 0 && h.atb >= 100);
       if (nextReady) this.selectedHeroId = nextReady.id;
     }, 400);
@@ -472,6 +702,7 @@ export class EngineRpg {
   }
 
   update() {
+    if (this.disposed) return;
     if (this.gameOver) {
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
@@ -585,6 +816,7 @@ export class EngineRpg {
           e.y = e.homeY;
         }
       }
+      if (e.cooldown > 0) e.cooldown--;
 
       // Infection DoT
       if (e.statusEffects?.infected > 0) {
@@ -613,7 +845,7 @@ export class EngineRpg {
         e.atb = Math.min(100, e.atb + atbRate);
       }
 
-      if (!this.enemyActionLock && this.enemyGlobalRecovery <= 0 && e.atb >= 100 && e.state === 'idle') {
+      if (this.opponentControl === 'cpu' && !this.enemyActionLock && this.enemyGlobalRecovery <= 0 && e.atb >= 100 && e.state === 'idle') {
         const target = this.getRandomAliveHero();
         if (target) {
           this.enemyActionLock = true;
@@ -626,7 +858,7 @@ export class EngineRpg {
 
           this.playSfx(e.weapon === 'gun' || e.weapon === 'laser' ? 'shoot' : 'slash');
 
-          setTimeout(() => {
+          this.schedule(() => {
             if (target.currentHp > 0) {
               // Bosses can inflict status effects
               let status = null;
@@ -642,6 +874,19 @@ export class EngineRpg {
         }
       }
     });
+    const selectedEnemy = this.enemies.find(enemy => (
+      enemy.currentHp > 0
+      && (
+        enemy.runtimeId === this.selectedEnemyId
+        || enemy.battleId === this.selectedEnemyId
+        || enemy.id === this.selectedEnemyId
+        || enemy.name === this.selectedEnemyId
+      )
+    ));
+    if (!selectedEnemy) {
+      const nextAlive = this.enemies.find(enemy => enemy.currentHp > 0);
+      this.selectedEnemyId = nextAlive?.battleId || nextAlive?.id || null;
+    }
   }
 
   draw(ctx, animTime) {

@@ -6,7 +6,7 @@ import { getTranslation } from '../game/translation';
 import { LORE_DB } from '../game/lore';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { BOOSTER_CARD_COUNT, createBoosterRewards } from '../game/portalBoosterEngine';
-import { getUniverseUnlockables } from '../game/universeUnlockables';
+import { getUniverseUnlockables, getUnlockableById } from '../game/universeUnlockables';
 import {
   BOOSTER_ROTATION_WINDOW_MS,
   getPortalBoosterArt,
@@ -49,6 +49,13 @@ const REWARD_KIND_LABELS = {
   battleMusic: { fr: 'MUSIQUE DE COMBAT', en: 'BATTLE MUSIC' },
   stageMusic: { fr: 'MUSIQUE DE STAGE', en: 'STAGE MUSIC' },
   fieldSuper: { fr: 'SUPER DE TERRAIN', en: 'FIELD SUPER' },
+  npcAssist: { fr: 'ASSIST PNJ', en: 'NPC ASSIST' },
+  koEffect: { fr: 'EFFET DE K.-O.', en: 'K.O. EFFECT' },
+  portalEffect: { fr: 'EFFET DE PORTAIL', en: 'PORTAL EFFECT' },
+  introPose: { fr: 'POSE D INTRODUCTION', en: 'INTRODUCTION POSE' },
+  victoryPose: { fr: 'POSE DE VICTOIRE', en: 'VICTORY POSE' },
+  profileBanner: { fr: 'BANNIERE DE PROFIL', en: 'PROFILE BANNER' },
+  profileTitle: { fr: 'TITRE DE PROFIL', en: 'PROFILE TITLE' },
   hud: { fr: 'THEME HUD', en: 'HUD THEME' }
 };
 
@@ -62,6 +69,13 @@ const REWARD_KIND_GLYPHS = {
   battleMusic: 'B',
   stageMusic: 'M',
   fieldSuper: 'O',
+  npcAssist: 'N',
+  koEffect: 'X',
+  portalEffect: 'P',
+  introPose: 'I',
+  victoryPose: 'V',
+  profileBanner: 'B',
+  profileTitle: 'T',
   hud: 'H'
 };
 
@@ -75,14 +89,37 @@ const REWARD_KIND_ORDER = [
   'battleMusic',
   'stageMusic',
   'fieldSuper',
+  'npcAssist',
+  'koEffect',
+  'portalEffect',
+  'introPose',
+  'victoryPose',
+  'profileBanner',
+  'profileTitle',
   'hud'
 ];
 const PORTAL_COLLECTION_ID_KEYS = {
   kart: 'karts',
   battleMusic: 'battleMusic',
   stageMusic: 'stageMusic',
-  fieldSuper: 'fieldSupers'
+  fieldSuper: 'fieldSupers',
+  npcAssist: 'npcAssists',
+  koEffect: 'koEffects',
+  portalEffect: 'portalEffects',
+  introPose: 'introPoses',
+  victoryPose: 'victoryPoses',
+  profileBanner: 'profileBanners',
+  profileTitle: 'profileTitles'
 };
+const CUSTOM_COSMETIC_KINDS = [
+  'npcAssist',
+  'koEffect',
+  'portalEffect',
+  'introPose',
+  'victoryPose',
+  'profileBanner',
+  'profileTitle'
+];
 const REWARD_MANIFEST_LIMIT = 12;
 
 const OPENING_STATUS = {
@@ -218,6 +255,22 @@ const getRewardDetail = (reward, lang) => {
     const effect = reward.data.unlockable.effect || {};
     return `${lang === 'fr' ? 'Impact terrain' : 'Field impact'} / DMG ${effect.damage || 0}`;
   }
+  if (reward.kind === 'npcAssist') {
+    const effect = reward.data.unlockable.effect || {};
+    return `${lang === 'fr' ? 'Une fois par combat' : 'Once per battle'} / DMG ${effect.damage || 0}`;
+  }
+  if (['koEffect', 'portalEffect'].includes(reward.kind)) {
+    return lang === 'fr' ? 'Effet cosmetique equipable' : 'Equippable cosmetic effect';
+  }
+  if (['introPose', 'victoryPose'].includes(reward.kind)) {
+    return lang === 'fr' ? 'Animation de combat equipable' : 'Equippable battle animation';
+  }
+  if (reward.kind === 'profileBanner') {
+    return lang === 'fr' ? 'Habillage procedural du Dossier d Ancre' : 'Procedural Anchor-record styling';
+  }
+  if (reward.kind === 'profileTitle') {
+    return lang === 'fr' ? 'Titre public equipable' : 'Equippable public title';
+  }
   return lang === 'fr' ? 'Fond du controle Nexus' : 'Nexus control backdrop';
 };
 
@@ -335,7 +388,14 @@ const makeBoosterCandidates = ({
       [unlockables.kart, PORTAL_RARITIES.rare],
       [unlockables.battleMusic, PORTAL_RARITIES.rare],
       [unlockables.stageMusic, PORTAL_RARITIES.rare],
-      [unlockables.fieldSuper, PORTAL_RARITIES.epic]
+      [unlockables.fieldSuper, PORTAL_RARITIES.epic],
+      [unlockables.npcAssist, PORTAL_RARITIES.epic],
+      [unlockables.koEffect, PORTAL_RARITIES.rare],
+      [unlockables.portalEffect, PORTAL_RARITIES.epic],
+      [unlockables.introPose, PORTAL_RARITIES.rare],
+      [unlockables.victoryPose, PORTAL_RARITIES.rare],
+      [unlockables.profileBanner, PORTAL_RARITIES.rare],
+      [unlockables.profileTitle, PORTAL_RARITIES.epic]
     ].forEach(([unlockable, rarity]) => {
       if (!unlockable) return;
       candidates.push({
@@ -734,7 +794,11 @@ export default function PortalScreen({
     { kind: 'kart', count: (portalCollection.karts || []).length },
     { kind: 'battleMusic', count: (portalCollection.battleMusic || []).length },
     { kind: 'stageMusic', count: (portalCollection.stageMusic || []).length },
-    { kind: 'fieldSuper', count: (portalCollection.fieldSupers || []).length }
+    { kind: 'fieldSuper', count: (portalCollection.fieldSupers || []).length },
+    ...CUSTOM_COSMETIC_KINDS.map(kind => ({
+      kind,
+      count: (portalCollection[PORTAL_COLLECTION_ID_KEYS[kind]] || []).length
+    }))
   ];
   const portalCollectionTotal = portalCollectionCounts.reduce(
     (total, entry) => total + entry.count,
@@ -798,12 +862,21 @@ export default function PortalScreen({
     const newFieldSuperIds = rewards
       .filter(reward => reward.kind === 'fieldSuper' && !reward.wasDuplicate)
       .map(reward => reward.rewardId);
+    const newCustomCosmeticIds = Object.fromEntries(
+      CUSTOM_COSMETIC_KINDS.map(kind => [
+        kind,
+        rewards
+          .filter(reward => reward.kind === kind && !reward.wasDuplicate)
+          .map(reward => reward.rewardId)
+      ])
+    );
     const totalRefund = rewards.reduce((sum, reward) => sum + reward.shardsReturned, 0);
     const hasNewPortalCollectionIds = (
       newKartIds.length > 0
       || newBattleMusicIds.length > 0
       || newStageMusicIds.length > 0
       || newFieldSuperIds.length > 0
+      || Object.values(newCustomCosmeticIds).some(ids => ids.length > 0)
     );
 
     setBreachShards(previous => previous - BOOSTER_COST + totalRefund);
@@ -817,7 +890,16 @@ export default function PortalScreen({
         karts: appendUnique(previous?.karts || [], newKartIds),
         battleMusic: appendUnique(previous?.battleMusic || [], newBattleMusicIds),
         stageMusic: appendUnique(previous?.stageMusic || [], newStageMusicIds),
-        fieldSupers: appendUnique(previous?.fieldSupers || [], newFieldSuperIds)
+        fieldSupers: appendUnique(previous?.fieldSupers || [], newFieldSuperIds),
+        ...Object.fromEntries(
+          CUSTOM_COSMETIC_KINDS.map(kind => {
+            const collectionKey = PORTAL_COLLECTION_ID_KEYS[kind];
+            return [
+              collectionKey,
+              appendUnique(previous?.[collectionKey] || [], newCustomCosmeticIds[kind])
+            ];
+          })
+        )
       }));
     }
 
@@ -956,6 +1038,37 @@ export default function PortalScreen({
     sound.playSfx('click');
   };
 
+  const customCosmeticOptions = Object.fromEntries(
+    CUSTOM_COSMETIC_KINDS.map(kind => {
+      const collectionKey = PORTAL_COLLECTION_ID_KEYS[kind];
+      return [
+        kind,
+        (portalCollection[collectionKey] || [])
+          .map(id => getUnlockableById(kind, id))
+          .filter(Boolean)
+      ];
+    })
+  );
+  const equippedCustomCosmetics = Object.fromEntries(
+    CUSTOM_COSMETIC_KINDS.map(kind => [
+      kind,
+      getUnlockableById(kind, portalCollection.customLoadout?.[kind])
+    ])
+  );
+  const equipCustomCosmetic = (kind, id) => {
+    const collectionKey = PORTAL_COLLECTION_ID_KEYS[kind];
+    const ownedIds = portalCollection[collectionKey] || [];
+    const safeId = ownedIds.includes(id) ? id : null;
+    setPortalCollection(previous => ({
+      ...(previous || {}),
+      customLoadout: {
+        ...(previous?.customLoadout || {}),
+        [kind]: safeId
+      }
+    }));
+    sound.playSfx('click');
+  };
+
   const closeArtPreview = () => {
     setArtPreviewOpen(false);
     window.requestAnimationFrame(() => previewTriggerRef.current?.focus());
@@ -966,9 +1079,16 @@ export default function PortalScreen({
       className="portal-container booster-portal"
       data-pack-id={activeBannerData.id}
       data-booster-phase={openingPhase}
+      data-portal-effect={equippedCustomCosmetics.portalEffect?.style || 'standard'}
       style={{
-        '--portal-color': activeBannerData.color,
-        backgroundImage: portalBackground
+        '--portal-color': equippedCustomCosmetics.portalEffect?.color || activeBannerData.color,
+        '--portal-effect-color': equippedCustomCosmetics.portalEffect?.color || activeBannerData.color,
+        '--portal-effect-duration': `${equippedCustomCosmetics.portalEffect?.visual?.durationMs || 1200}ms`,
+        '--portal-effect-intensity': equippedCustomCosmetics.portalEffect?.visual?.intensity || 0.9,
+        backgroundImage: portalBackground,
+        boxShadow: equippedCustomCosmetics.portalEffect
+          ? `inset 0 0 90px ${equippedCustomCosmetics.portalEffect.color}33`
+          : undefined
       }}
     >
       <div className="portal-command-bar">
@@ -991,8 +1111,8 @@ export default function PortalScreen({
       <h1 className="cyber-title booster-portal-title">{getTranslation(lang, 'btnPortal')}</h1>
       <p className="booster-portal-lead">
         {lang === 'fr'
-          ? 'Chaque booster renferme exactement 5 cartes, dont au moins une Rare. Personnages, equipements, karts, protocoles, apparences, stages custom, musiques de combat et de stage, supers de terrain et themes HUD sont de vrais deblocages sauvegardes.'
-          : 'Every booster contains exactly 5 cards, including at least one Rare. Characters, equipment, karts, protocols, appearances, custom stages, battle and stage music, field supers and HUD themes are real saved unlocks.'}
+          ? 'Chaque booster renferme exactement 5 cartes, dont au moins une Rare. Personnages, equipements, karts, protocoles, apparences, stages, musiques, supers de terrain, assists, effets K.-O./portail, poses, bannieres, titres et themes HUD sont de vrais deblocages sauvegardes.'
+          : 'Every booster contains exactly 5 cards, including at least one Rare. Characters, equipment, karts, protocols, appearances, stages, music, field supers, assists, K.O./portal effects, poses, banners, titles and HUD themes are real saved unlocks.'}
       </p>
 
       <section className="booster-catalog-panel" aria-labelledby="booster-catalog-title">
@@ -1370,6 +1490,72 @@ export default function PortalScreen({
                 </button>
               ))}
             </div>
+          )}
+
+          {CUSTOM_COSMETIC_KINDS.some(kind => customCosmeticOptions[kind].length > 0) && (
+            <section
+              aria-labelledby="booster-cosmetic-loadout-title"
+              style={{
+                marginTop: 14,
+                padding: 14,
+                border: `1px solid ${equippedCustomCosmetics.profileBanner?.color || 'rgba(57,197,187,0.3)'}`,
+                borderRadius: 6,
+                background: equippedCustomCosmetics.profileBanner
+                  ? `radial-gradient(circle at 18% 0%, ${equippedCustomCosmetics.profileBanner.color}44, transparent 42%), linear-gradient(135deg, rgba(7,9,18,.96), rgba(0,0,0,.82))`
+                  : 'rgba(0,0,0,.32)'
+              }}
+            >
+              <div id="booster-cosmetic-loadout-title" className="booster-section-kicker">
+                {lang === 'fr' ? 'EQUIPEMENT COSMETIQUE CUSTOM' : 'CUSTOM COSMETIC LOADOUT'}
+              </div>
+              <p style={{ margin: '5px 0 12px', color: '#aebfc3', fontSize: 10 }}>
+                {lang === 'fr'
+                  ? 'Ces choix habillent les combats custom et le Dossier d Ancre. Aucun mode ni mission ne peut tomber dans un booster.'
+                  : 'These choices style custom battles and the Anchor record. Modes and missions can never drop from boosters.'}
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(205px, 1fr))', gap: 10 }}>
+                {CUSTOM_COSMETIC_KINDS.map(kind => {
+                  const options = customCosmeticOptions[kind];
+                  const active = equippedCustomCosmetics[kind];
+                  return (
+                    <label key={kind} style={{ display: 'grid', gap: 5, minWidth: 0 }}>
+                      <span style={{ color: active?.color || '#8fa8ad', fontSize: 9, fontWeight: 700 }}>
+                        {REWARD_KIND_LABELS[kind]?.[lang] || kind}
+                      </span>
+                      <select
+                        value={active?.id || ''}
+                        disabled={options.length === 0}
+                        onChange={event => equipCustomCosmetic(kind, event.target.value)}
+                        style={{
+                          minHeight: 38,
+                          width: '100%',
+                          border: `1px solid ${active?.color || 'rgba(255,255,255,.18)'}`,
+                          borderRadius: 4,
+                          background: 'rgba(0,0,0,.72)',
+                          color: '#efffff',
+                          padding: '7px 9px',
+                          font: "10px 'Share Tech Mono', monospace"
+                        }}
+                      >
+                        <option value="">{lang === 'fr' ? 'AUCUN / STANDARD' : 'NONE / STANDARD'}</option>
+                        {options.map(option => (
+                          <option key={option.id} value={option.id}>
+                            {getLocalizedText(option.name, lang)}
+                          </option>
+                        ))}
+                      </select>
+                      <small style={{ minHeight: 24, color: '#7f969b', fontSize: 8, lineHeight: 1.35 }}>
+                        {active
+                          ? getLocalizedText(active.desc, lang)
+                          : options.length
+                            ? `${options.length} ${lang === 'fr' ? 'choix obtenus' : 'owned choices'}`
+                            : (lang === 'fr' ? 'A obtenir dans un booster.' : 'Find in a booster.')}
+                      </small>
+                    </label>
+                  );
+                })}
+              </div>
+            </section>
           )}
 
           {(portalCollection.archives || []).length > 0 && (

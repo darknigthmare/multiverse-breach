@@ -27,6 +27,13 @@ const contentMinimums = Object.freeze({
   battleMusic: 1,
   stageMusic: 1,
   fieldSuper: 1,
+  npcAssist: 1,
+  koEffect: 1,
+  portalEffect: 1,
+  introPose: 1,
+  victoryPose: 1,
+  profileBanner: 1,
+  profileTitle: 1,
   hud: 1
 });
 
@@ -71,6 +78,13 @@ let KART_CATALOG;
 let BATTLE_MUSIC_CATALOG;
 let STAGE_MUSIC_CATALOG;
 let FIELD_SUPER_CATALOG;
+let NPC_ASSIST_CATALOG;
+let KO_EFFECT_CATALOG;
+let PORTAL_EFFECT_CATALOG;
+let INTRO_POSE_CATALOG;
+let VICTORY_POSE_CATALOG;
+let PROFILE_BANNER_CATALOG;
+let PROFILE_TITLE_CATALOG;
 let BATTLE_ITEMS_BY_UNIVERSE;
 try {
   const heroModule = await vite.ssrLoadModule('/src/game/heroes.js');
@@ -87,6 +101,13 @@ try {
   BATTLE_MUSIC_CATALOG = unlockableModule.BATTLE_MUSIC_CATALOG;
   STAGE_MUSIC_CATALOG = unlockableModule.STAGE_MUSIC_CATALOG;
   FIELD_SUPER_CATALOG = unlockableModule.FIELD_SUPER_CATALOG;
+  NPC_ASSIST_CATALOG = unlockableModule.NPC_ASSIST_CATALOG;
+  KO_EFFECT_CATALOG = unlockableModule.KO_EFFECT_CATALOG;
+  PORTAL_EFFECT_CATALOG = unlockableModule.PORTAL_EFFECT_CATALOG;
+  INTRO_POSE_CATALOG = unlockableModule.INTRO_POSE_CATALOG;
+  VICTORY_POSE_CATALOG = unlockableModule.VICTORY_POSE_CATALOG;
+  PROFILE_BANNER_CATALOG = unlockableModule.PROFILE_BANNER_CATALOG;
+  PROFILE_TITLE_CATALOG = unlockableModule.PROFILE_TITLE_CATALOG;
   BATTLE_ITEMS_BY_UNIVERSE = battleItemModule.BATTLE_ITEMS_BY_UNIVERSE;
 } finally {
   await vite.close();
@@ -108,6 +129,13 @@ const contentByUniverse = new Map(runtimeUniverses.map((universe) => [
     battleMusic: 0,
     stageMusic: 0,
     fieldSuper: 0,
+    npcAssist: 0,
+    koEffect: 0,
+    portalEffect: 0,
+    introPose: 0,
+    victoryPose: 0,
+    profileBanner: 0,
+    profileTitle: 0,
     hud: 0
   }
 ]));
@@ -119,7 +147,14 @@ const idsByFamily = new Map([
   ['kart', new Set()],
   ['battleMusic', new Set()],
   ['stageMusic', new Set()],
-  ['fieldSuper', new Set()]
+  ['fieldSuper', new Set()],
+  ['npcAssist', new Set()],
+  ['koEffect', new Set()],
+  ['portalEffect', new Set()],
+  ['introPose', new Set()],
+  ['victoryPose', new Set()],
+  ['profileBanner', new Set()],
+  ['profileTitle', new Set()]
 ]);
 
 const registerId = (family, id, sourceLabel) => {
@@ -238,7 +273,14 @@ const unlockableCatalogs = Object.freeze({
   kart: KART_CATALOG,
   battleMusic: BATTLE_MUSIC_CATALOG,
   stageMusic: STAGE_MUSIC_CATALOG,
-  fieldSuper: FIELD_SUPER_CATALOG
+  fieldSuper: FIELD_SUPER_CATALOG,
+  npcAssist: NPC_ASSIST_CATALOG,
+  koEffect: KO_EFFECT_CATALOG,
+  portalEffect: PORTAL_EFFECT_CATALOG,
+  introPose: INTRO_POSE_CATALOG,
+  victoryPose: VICTORY_POSE_CATALOG,
+  profileBanner: PROFILE_BANNER_CATALOG,
+  profileTitle: PROFILE_TITLE_CATALOG
 });
 const kartStyles = new Set(['needle', 'drift', 'bastion', 'wing', 'pulse']);
 const ultimateIdByUniverse = new Map(
@@ -355,7 +397,14 @@ for (const universe of runtimeUniverses) {
     'kart',
     'battleMusic',
     'stageMusic',
-    'fieldSuper'
+    'fieldSuper',
+    'npcAssist',
+    'koEffect',
+    'portalEffect',
+    'introPose',
+    'victoryPose',
+    'profileBanner',
+    'profileTitle'
   ]) {
     if ((candidateCounts[kind] || 0) !== sourceCounts[kind]) {
       contentErrors.push(
@@ -380,6 +429,17 @@ for (const universe of runtimeUniverses) {
       contentErrors.push(`${universe}: duplicate PortalScreen candidate id "${candidate.id}"`);
     }
     candidateIds.add(candidate.id);
+
+    if (!Object.prototype.hasOwnProperty.call(contentMinimums, candidate.kind)) {
+      contentErrors.push(
+        `${universe}: candidate "${candidate.id}" uses forbidden random kind "${candidate.kind}"`
+      );
+    }
+    if (candidate.kind === 'mission' || candidate.kind === 'mode') {
+      contentErrors.push(
+        `${universe}: missions and modes must never be random booster rewards`
+      );
+    }
 
     if (unlockableCatalogs[candidate.kind]) {
       const unlockable = candidate.data?.unlockable;
@@ -439,6 +499,13 @@ const contentTotals = {
   battleMusic: BATTLE_MUSIC_CATALOG.length,
   stageMusic: STAGE_MUSIC_CATALOG.length,
   fieldSuper: FIELD_SUPER_CATALOG.length,
+  npcAssist: NPC_ASSIST_CATALOG.length,
+  koEffect: KO_EFFECT_CATALOG.length,
+  portalEffect: PORTAL_EFFECT_CATALOG.length,
+  introPose: INTRO_POSE_CATALOG.length,
+  victoryPose: VICTORY_POSE_CATALOG.length,
+  profileBanner: PROFILE_BANNER_CATALOG.length,
+  profileTitle: PROFILE_TITLE_CATALOG.length,
   hud: [...contentByUniverse.values()].reduce((sum, counts) => sum + counts.hud, 0)
 };
 contentTotals.total = Object.entries(contentTotals)

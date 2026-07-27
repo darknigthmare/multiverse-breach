@@ -10,13 +10,40 @@ const catalogKeys = [
   'KART_CATALOG',
   'BATTLE_MUSIC_CATALOG',
   'STAGE_MUSIC_CATALOG',
-  'FIELD_SUPER_CATALOG'
+  'FIELD_SUPER_CATALOG',
+  'NPC_ASSIST_CATALOG',
+  'KO_EFFECT_CATALOG',
+  'PORTAL_EFFECT_CATALOG',
+  'INTRO_POSE_CATALOG',
+  'VICTORY_POSE_CATALOG',
+  'PROFILE_BANNER_CATALOG',
+  'PROFILE_TITLE_CATALOG'
 ];
 const kindByCatalogKey = {
   KART_CATALOG: 'kart',
   BATTLE_MUSIC_CATALOG: 'battleMusic',
   STAGE_MUSIC_CATALOG: 'stageMusic',
-  FIELD_SUPER_CATALOG: 'fieldSuper'
+  FIELD_SUPER_CATALOG: 'fieldSuper',
+  NPC_ASSIST_CATALOG: 'npcAssist',
+  KO_EFFECT_CATALOG: 'koEffect',
+  PORTAL_EFFECT_CATALOG: 'portalEffect',
+  INTRO_POSE_CATALOG: 'introPose',
+  VICTORY_POSE_CATALOG: 'victoryPose',
+  PROFILE_BANNER_CATALOG: 'profileBanner',
+  PROFILE_TITLE_CATALOG: 'profileTitle'
+};
+const idPrefixByKind = {
+  kart: 'kart',
+  battleMusic: 'battle-music',
+  stageMusic: 'stage-music',
+  fieldSuper: 'field-super',
+  npcAssist: 'npc-assist',
+  koEffect: 'ko-effect',
+  portalEffect: 'portal-effect',
+  introPose: 'intro-pose',
+  victoryPose: 'victory-pose',
+  profileBanner: 'profile-banner',
+  profileTitle: 'profile-title'
 };
 
 let vite;
@@ -95,13 +122,7 @@ test('builds one complete unlockable of every new kind for all runtime universes
     for (const item of catalog) {
       assert.ok(Object.isFrozen(item), `${item.id} must be frozen`);
       assert.equal(item.kind, expectedKind);
-      assert.ok(item.id.startsWith(`${expectedKind === 'battleMusic'
-        ? 'battle-music'
-        : expectedKind === 'stageMusic'
-          ? 'stage-music'
-          : expectedKind === 'fieldSuper'
-            ? 'field-super'
-            : 'kart'}:`));
+      assert.ok(item.id.startsWith(`${idPrefixByKind[expectedKind]}:`));
       assert.ok(localizedTextIsComplete(item.name), `${item.id}: incomplete name`);
       assert.ok(localizedTextIsComplete(item.desc), `${item.id}: incomplete description`);
       assert.match(item.color, /^#[0-9a-f]{6}$/i, `${item.id}: invalid color`);
@@ -219,13 +240,61 @@ test('field supers reuse the existing universe ultimate and stay within balance 
   }
 });
 
-test('save v5 migrates legacy portal collections and validates active loadouts', () => {
+test('custom cosmetic rewards are complete, bounded and contain no mission or mode unlock', () => {
+  for (const assist of unlockableModule.NPC_ASSIST_CATALOG) {
+    assert.ok(Object.isFrozen(assist.effect));
+    assert.ok(assist.effect.damage >= 10 && assist.effect.damage <= 20);
+    assert.ok(assist.effect.guardDamage >= 10 && assist.effect.guardDamage <= 30);
+    assert.ok(assist.effect.healRatio >= 0 && assist.effect.healRatio <= 0.1);
+  }
+
+  for (const effect of [
+    ...unlockableModule.KO_EFFECT_CATALOG,
+    ...unlockableModule.PORTAL_EFFECT_CATALOG
+  ]) {
+    assert.ok(Object.isFrozen(effect.visual));
+    assert.ok(effect.visual.durationMs >= 500 && effect.visual.durationMs <= 2000);
+    assert.ok(effect.visual.intensity > 0 && effect.visual.intensity <= 1);
+  }
+
+  for (const pose of [
+    ...unlockableModule.INTRO_POSE_CATALOG,
+    ...unlockableModule.VICTORY_POSE_CATALOG
+  ]) {
+    assert.ok(Object.isFrozen(pose.animation));
+    assert.ok(pose.animation.durationMs >= 1000 && pose.animation.durationMs <= 2500);
+  }
+
+  for (const banner of unlockableModule.PROFILE_BANNER_CATALOG) {
+    assert.ok(Object.isFrozen(banner.visual));
+    assert.match(banner.visual.accent, /^#[0-9a-f]{6}$/i);
+  }
+
+  const randomKinds = new Set(
+    Object.values(unlockableModule.UNIVERSE_UNLOCKABLES)
+      .flatMap(entry => Object.values(entry))
+      .map(item => item.kind)
+  );
+  assert.equal(randomKinds.has('mission'), false);
+  assert.equal(randomKinds.has('mode'), false);
+});
+
+test('save v6 migrates legacy portal collections and validates active loadouts', () => {
   const archive = { id: 'archive:Nexus de Convergence:RPG', universe: 'Nexus de Convergence' };
   const hud = { id: 'hud:Nexus de Convergence', universe: 'Nexus de Convergence' };
   const kart = unlockableModule.KART_CATALOG[0];
   const battleMusic = unlockableModule.BATTLE_MUSIC_CATALOG[0];
   const stageMusic = unlockableModule.STAGE_MUSIC_CATALOG[0];
   const fieldSuper = unlockableModule.FIELD_SUPER_CATALOG[0];
+  const customCosmetics = Object.fromEntries([
+    ['npcAssist', unlockableModule.NPC_ASSIST_CATALOG[0]],
+    ['koEffect', unlockableModule.KO_EFFECT_CATALOG[0]],
+    ['portalEffect', unlockableModule.PORTAL_EFFECT_CATALOG[0]],
+    ['introPose', unlockableModule.INTRO_POSE_CATALOG[0]],
+    ['victoryPose', unlockableModule.VICTORY_POSE_CATALOG[0]],
+    ['profileBanner', unlockableModule.PROFILE_BANNER_CATALOG[0]],
+    ['profileTitle', unlockableModule.PROFILE_TITLE_CATALOG[0]]
+  ]);
 
   const migratedLegacy = appModule.default.normalizeSavePayload({
     saveVersion: 4,
@@ -236,16 +305,27 @@ test('save v5 migrates legacy portal collections and validates active loadouts',
     }
   }, { existing: true });
 
-  assert.equal(migratedLegacy.saveVersion, 5);
+  assert.equal(migratedLegacy.saveVersion, 6);
   assert.deepEqual(migratedLegacy.portalCollection.karts, []);
   assert.deepEqual(migratedLegacy.portalCollection.battleMusic, []);
   assert.deepEqual(migratedLegacy.portalCollection.stageMusic, []);
   assert.deepEqual(migratedLegacy.portalCollection.fieldSupers, []);
+  for (const kind of Object.keys(customCosmetics)) {
+    const collectionKey = `${kind}s`;
+    assert.deepEqual(migratedLegacy.portalCollection[collectionKey], []);
+  }
   assert.deepEqual(migratedLegacy.portalCollection.customLoadout, {
     archive: null,
     battleMusic: null,
     stageMusic: null,
-    fieldSuper: null
+    fieldSuper: null,
+    npcAssist: null,
+    koEffect: null,
+    portalEffect: null,
+    introPose: null,
+    victoryPose: null,
+    profileBanner: null,
+    profileTitle: null
   });
   assert.equal(migratedLegacy.portalCollection.activeHudTheme, hud.id);
 
@@ -257,13 +337,27 @@ test('save v5 migrates legacy portal collections and validates active loadouts',
       battleMusic: [battleMusic.id],
       stageMusic: [stageMusic.id],
       fieldSupers: [fieldSuper.id],
+      npcAssists: [customCosmetics.npcAssist.id],
+      koEffects: [customCosmetics.koEffect.id],
+      portalEffects: [customCosmetics.portalEffect.id],
+      introPoses: [customCosmetics.introPose.id],
+      victoryPoses: [customCosmetics.victoryPose.id],
+      profileBanners: [customCosmetics.profileBanner.id],
+      profileTitles: [customCosmetics.profileTitle.id],
       activeHudTheme: 'hud:not-owned',
       activeKart: kart.id,
       customLoadout: {
         archive: archive.id,
         battleMusic: battleMusic.id,
         stageMusic: 'stage-music:not-owned',
-        fieldSuper: fieldSuper.id
+        fieldSuper: fieldSuper.id,
+        npcAssist: customCosmetics.npcAssist.id,
+        koEffect: customCosmetics.koEffect.id,
+        portalEffect: customCosmetics.portalEffect.id,
+        introPose: customCosmetics.introPose.id,
+        victoryPose: customCosmetics.victoryPose.id,
+        profileBanner: customCosmetics.profileBanner.id,
+        profileTitle: customCosmetics.profileTitle.id
       }
     }
   });
@@ -275,7 +369,14 @@ test('save v5 migrates legacy portal collections and validates active loadouts',
     archive: archive.id,
     battleMusic: battleMusic.id,
     stageMusic: null,
-    fieldSuper: fieldSuper.id
+    fieldSuper: fieldSuper.id,
+    npcAssist: customCosmetics.npcAssist.id,
+    koEffect: customCosmetics.koEffect.id,
+    portalEffect: customCosmetics.portalEffect.id,
+    introPose: customCosmetics.introPose.id,
+    victoryPose: customCosmetics.victoryPose.id,
+    profileBanner: customCosmetics.profileBanner.id,
+    profileTitle: customCosmetics.profileTitle.id
   });
 });
 

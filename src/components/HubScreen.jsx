@@ -12,12 +12,14 @@ import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_N
 import { OC_CAMPAIGN, OC_CAMPAIGN_CHAPTERS, OC_CAMPAIGN_MISSIONS, OC_ORIGIN_LOCKS, getOcCampaignMission } from '../game/ocCampaign';
 import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
+import { getUnlockableById } from '../game/universeUnlockables';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
 import { FEATURED_UNIVERSE_ICONS } from '../game/featuredUniversePacks';
 import RaceMode from './RaceMode';
 import FighterMode from './FighterMode';
+import CustomBattleMode from './CustomBattleMode';
 import RegulationImagePreview from './RegulationImagePreview';
 
 const TAU = Math.PI * 2;
@@ -34,6 +36,20 @@ const getLocalizedText = (entry, lang, fallback = '') => {
   if (!entry) return fallback;
   if (typeof entry === 'string') return entry;
   return entry[lang] || entry.fr || entry.en || fallback;
+};
+
+const getProfileBannerBackground = (banner) => {
+  if (!banner) return undefined;
+  const color = banner.color || '#39c5bb';
+  const base = `linear-gradient(135deg, ${color}18, rgba(2,4,10,.94) 58%)`;
+  const patterns = {
+    'linear-grid': `linear-gradient(${color}18 1px, transparent 1px), linear-gradient(90deg, ${color}18 1px, transparent 1px), ${base}`,
+    'concentric-rings': `repeating-radial-gradient(circle at 12% 0%, ${color}28 0 2px, transparent 3px 22px), ${base}`,
+    'diagonal-shards': `repeating-linear-gradient(132deg, transparent 0 24px, ${color}20 25px 27px, transparent 28px 48px), ${base}`,
+    'signal-bars': `repeating-linear-gradient(90deg, ${color}20 0 8px, transparent 9px 22px), ${base}`
+  };
+  return patterns[banner.visual?.pattern]
+    || `radial-gradient(circle at 12% 0%, ${color}44, transparent 38%), ${base}`;
 };
 
 function OperationsSectionTabs({ lang, items, activeId, onChange, label }) {
@@ -502,6 +518,7 @@ const HUB_NAV_GROUPS = [
     tabs: [
       { id: 'missions', label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' }, title: { fr: 'Ouvre les campagnes, arcs narratifs et missions disponibles.', en: 'Open available campaigns, narrative arcs, and missions.' } },
       { id: 'battleRoyale', label: { fr: 'ZONE D EXTINCTION', en: 'EXTINCTION ZONE' }, title: { fr: 'Ouvre le mode FPS de survie et d extraction.', en: 'Open the FPS survival and extraction mode.' } },
+      { id: 'customBattle', label: { fr: 'COMBAT CUSTOM', en: 'CUSTOM BATTLE' }, title: { fr: 'Compose un combat RPG, tactique, melee ou duel contre CPU ou P2 local.', en: 'Build an RPG, tactics, melee, or fighter match versus CPU or local P2.' } },
       { id: 'fighter', label: { fr: 'COMBAT A.R.C.A.', en: 'A.R.C.A. FIGHTER' }, title: { fr: 'Ouvre le duel 1 contre 1 avec changements de signatures.', en: 'Open the 1v1 tag-team fighting mode.' } },
       { id: 'race', label: { fr: 'COURSE A.R.C.A.', en: 'A.R.C.A. RACE' }, title: { fr: 'Ouvre le championnat karting et sa progression de garage.', en: 'Open the kart championship and its garage progression.' } }
     ]
@@ -3657,6 +3674,14 @@ export default function HubScreen({
   const [activeTab, setActiveTab] = useState('missions');
   const activeHudTheme = (portalCollection.hudThemes || [])
     .find(theme => theme.id === portalCollection.activeHudTheme);
+  const activeProfileBanner = getUnlockableById(
+    'profileBanner',
+    portalCollection.customLoadout?.profileBanner
+  );
+  const activeProfileTitle = getUnlockableById(
+    'profileTitle',
+    portalCollection.customLoadout?.profileTitle
+  );
   const activeNavGroup = HUB_NAV_GROUPS.find(group => group.tabs.some(tab => tab.id === activeTab)) || HUB_NAV_GROUPS[0];
   const openNavigationTab = useCallback((tab) => {
     if (tab.portal) {
@@ -3781,7 +3806,7 @@ export default function HubScreen({
     || itemId.startsWith('arc_')
     || itemId.startsWith('fusion_')
   )).length;
-  const playerHero = createPlayerHero(playerProfile);
+  const playerHero = useMemo(() => createPlayerHero(playerProfile), [playerProfile]);
   const applySkin = useCallback((hero) => {
     const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
     return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
@@ -7064,6 +7089,26 @@ export default function HubScreen({
           />
         )}
 
+        {activeTab === 'customBattle' && (
+          <CustomBattleMode
+            lang={lang}
+            playerProfile={playerProfile}
+            heroes={HEROES_DB}
+            unlockedHeroes={unlockedHeroes}
+            activeTeam={activeTeam}
+            heroLevels={heroLevels}
+            equippedGear={equippedGear}
+            equippedEventItems={equippedEventItems}
+            heroTalents={heroTalents}
+            heroSkins={heroSkins}
+            completedStages={completedStages}
+            portalCollection={portalCollection}
+            setPortalCollection={setPortalCollection}
+            hiddenUniverses={hiddenUniverses}
+            disabledAssets={disabledAssets}
+          />
+        )}
+
         {activeTab === 'race' && (
           <RaceMode
             lang={lang}
@@ -8536,7 +8581,15 @@ export default function HubScreen({
         )}
 
         {activeTab === 'anchorProfile' && (
-          <div className="glass-panel squad-panel">
+          <div
+            className="glass-panel squad-panel"
+            data-profile-banner={activeProfileBanner?.style || 'nexus'}
+            style={{
+              borderColor: activeProfileBanner?.color || undefined,
+              background: getProfileBannerBackground(activeProfileBanner),
+              boxShadow: activeProfileBanner ? `inset 0 0 50px ${activeProfileBanner.color}18` : undefined
+            }}
+          >
             <div className="squad-header">
               <div>
                 <h3>{lang === 'fr' ? 'Dossier d Ancre' : 'Anchor record'}</h3>
@@ -8564,7 +8617,11 @@ export default function HubScreen({
                   <div className="squad-grade">{String(playerProfile?.name || 'A').slice(0, 2).toUpperCase()}</div>
                   <div>
                     <strong>{playerProfile?.name || 'Ancre'}</strong>
-                    <small>{publicProfile?.title || 'Prime Anchor'}</small>
+                    <small>
+                      {activeProfileTitle
+                        ? getLocalizedText(activeProfileTitle.name, lang)
+                        : (publicProfile?.title || 'Prime Anchor')}
+                    </small>
                   </div>
                 </div>
               </div>

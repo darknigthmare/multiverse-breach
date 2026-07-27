@@ -17,7 +17,7 @@ const PortalScreen = React.lazy(() => import('./components/PortalScreen'));
 const GameCanvas = React.lazy(() => import('./components/GameCanvas'));
 
 const DEFAULT_SAVE = {
-  saveVersion: 5,
+  saveVersion: 6,
   lang: 'fr',
   gold: 200,
   breachShards: 150,
@@ -37,13 +37,41 @@ const DEFAULT_SAVE = {
     battleMusic: [],
     stageMusic: [],
     fieldSupers: [],
+    npcAssists: [],
+    koEffects: [],
+    portalEffects: [],
+    introPoses: [],
+    victoryPoses: [],
+    profileBanners: [],
+    profileTitles: [],
     activeHudTheme: null,
     activeKart: null,
     customLoadout: {
       archive: null,
       battleMusic: null,
       stageMusic: null,
-      fieldSuper: null
+      fieldSuper: null,
+      npcAssist: null,
+      koEffect: null,
+      portalEffect: null,
+      introPose: null,
+      victoryPose: null,
+      profileBanner: null,
+      profileTitle: null
+    },
+    customBattlePreset: {
+      mode: 'RPG',
+      opponentControl: 'cpu',
+      playerTeamIds: [],
+      opponentTeamIds: [],
+      enemyIds: [],
+      stageArchiveId: null,
+      battleMusicId: null,
+      stageMusicId: null,
+      fieldSuperId: null,
+      difficulty: 'standard',
+      items: true,
+      hazards: true
     }
   },
   publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
@@ -117,6 +145,28 @@ const appendUnique = (items = [], additions = []) => {
   return next;
 };
 
+const normalizeStoredCustomBattlePreset = (preset = {}) => {
+  const uniqueIds = (value, limit) => (
+    [...new Set(Array.isArray(value) ? value.filter(id => typeof id === 'string' && id.trim()) : [])]
+      .slice(0, limit)
+  );
+  const optionalId = value => (typeof value === 'string' && value.trim() ? value : null);
+  return {
+    mode: ['RPG', 'Tactics', 'Smash', 'Fighter'].includes(preset.mode) ? preset.mode : 'RPG',
+    opponentControl: ['cpu', 'p2'].includes(preset.opponentControl) ? preset.opponentControl : 'cpu',
+    playerTeamIds: uniqueIds(preset.playerTeamIds, 3),
+    opponentTeamIds: uniqueIds(preset.opponentTeamIds, 3),
+    enemyIds: uniqueIds(preset.enemyIds, 6),
+    stageArchiveId: optionalId(preset.stageArchiveId),
+    battleMusicId: optionalId(preset.battleMusicId),
+    stageMusicId: optionalId(preset.stageMusicId),
+    fieldSuperId: optionalId(preset.fieldSuperId),
+    difficulty: ['training', 'standard', 'expert'].includes(preset.difficulty) ? preset.difficulty : 'standard',
+    items: preset.items !== false,
+    hazards: preset.hazards !== false
+  };
+};
+
 const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const merged = { ...DEFAULT_SAVE, ...save };
   const onboarding = save.onboarding
@@ -174,10 +224,18 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const battleMusic = normalizeCollectionIds(merged.portalCollection?.battleMusic);
   const stageMusic = normalizeCollectionIds(merged.portalCollection?.stageMusic);
   const fieldSupers = normalizeCollectionIds(merged.portalCollection?.fieldSupers);
+  const npcAssists = normalizeCollectionIds(merged.portalCollection?.npcAssists);
+  const koEffects = normalizeCollectionIds(merged.portalCollection?.koEffects);
+  const portalEffects = normalizeCollectionIds(merged.portalCollection?.portalEffects);
+  const introPoses = normalizeCollectionIds(merged.portalCollection?.introPoses);
+  const victoryPoses = normalizeCollectionIds(merged.portalCollection?.victoryPoses);
+  const profileBanners = normalizeCollectionIds(merged.portalCollection?.profileBanners);
+  const profileTitles = normalizeCollectionIds(merged.portalCollection?.profileTitles);
   const storedCustomLoadout = merged.portalCollection?.customLoadout || {};
+  const customBattlePreset = normalizeStoredCustomBattlePreset(merged.portalCollection?.customBattlePreset);
   return {
     ...merged,
-    saveVersion: 5,
+    saveVersion: 6,
     playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
     onboarding,
     unlockedHeroes,
@@ -201,6 +259,13 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
       battleMusic,
       stageMusic,
       fieldSupers,
+      npcAssists,
+      koEffects,
+      portalEffects,
+      introPoses,
+      victoryPoses,
+      profileBanners,
+      profileTitles,
       activeHudTheme: hudThemes.some(theme => theme.id === merged.portalCollection?.activeHudTheme)
         ? merged.portalCollection.activeHudTheme
         : null,
@@ -219,6 +284,42 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
           : null,
         fieldSuper: fieldSupers.includes(storedCustomLoadout.fieldSuper)
           ? storedCustomLoadout.fieldSuper
+          : null,
+        npcAssist: npcAssists.includes(storedCustomLoadout.npcAssist)
+          ? storedCustomLoadout.npcAssist
+          : null,
+        koEffect: koEffects.includes(storedCustomLoadout.koEffect)
+          ? storedCustomLoadout.koEffect
+          : null,
+        portalEffect: portalEffects.includes(storedCustomLoadout.portalEffect)
+          ? storedCustomLoadout.portalEffect
+          : null,
+        introPose: introPoses.includes(storedCustomLoadout.introPose)
+          ? storedCustomLoadout.introPose
+          : null,
+        victoryPose: victoryPoses.includes(storedCustomLoadout.victoryPose)
+          ? storedCustomLoadout.victoryPose
+          : null,
+        profileBanner: profileBanners.includes(storedCustomLoadout.profileBanner)
+          ? storedCustomLoadout.profileBanner
+          : null,
+        profileTitle: profileTitles.includes(storedCustomLoadout.profileTitle)
+          ? storedCustomLoadout.profileTitle
+          : null
+      },
+      customBattlePreset: {
+        ...customBattlePreset,
+        stageArchiveId: archives.some(archive => archive.id === customBattlePreset.stageArchiveId)
+          ? customBattlePreset.stageArchiveId
+          : null,
+        battleMusicId: battleMusic.includes(customBattlePreset.battleMusicId)
+          ? customBattlePreset.battleMusicId
+          : null,
+        stageMusicId: stageMusic.includes(customBattlePreset.stageMusicId)
+          ? customBattlePreset.stageMusicId
+          : null,
+        fieldSuperId: fieldSupers.includes(customBattlePreset.fieldSuperId)
+          ? customBattlePreset.fieldSuperId
           : null
       }
     },
@@ -637,7 +738,7 @@ function App() {
   )).length;
 
   const getCurrentSave = useCallback(() => ({
-    saveVersion: 5,
+    saveVersion: 6,
     lang,
     gold,
     breachShards,
