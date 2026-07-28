@@ -104,7 +104,7 @@ test('builds one complete unlockable of every new kind for all runtime universes
   const runtimeUniverses = [...new Set(
     heroModule.HEROES_DB.map((hero) => hero.universe).filter(Boolean)
   )].sort();
-  assert.equal(runtimeUniverses.length, 357);
+  assert.ok(runtimeUniverses.length >= 357);
 
   const allIds = [];
   for (const catalogKey of catalogKeys) {
@@ -140,7 +140,7 @@ test('builds one complete unlockable of every new kind for all runtime universes
     }
   }
 
-  assert.equal(allIds.length, 357 * catalogKeys.length);
+  assert.equal(allIds.length, runtimeUniverses.length * catalogKeys.length);
   assert.equal(new Set(allIds).size, allIds.length, 'New catalog IDs collide across kinds');
 });
 
@@ -204,8 +204,9 @@ test('battle and stage music are distinct original procedural plans for every un
     stagePlans.set(stageMusic.universe, stagePlan.key);
   }
 
-  assert.equal(new Set(battlePlans.values()).size, 357);
-  assert.equal(new Set(stagePlans.values()).size, 357);
+  const universeCount = Object.keys(unlockableModule.UNIVERSE_UNLOCKABLES).length;
+  assert.equal(new Set(battlePlans.values()).size, universeCount);
+  assert.equal(new Set(stagePlans.values()).size, universeCount);
   assert.doesNotMatch(
     JSON.stringify([
       unlockableModule.BATTLE_MUSIC_CATALOG,
@@ -279,7 +280,7 @@ test('custom cosmetic rewards are complete, bounded and contain no mission or mo
   assert.equal(randomKinds.has('mode'), false);
 });
 
-test('save v6 migrates legacy portal collections and validates active loadouts', () => {
+test('save migration preserves legacy portal collections and validates active loadouts', () => {
   const archive = { id: 'archive:Nexus de Convergence:RPG', universe: 'Nexus de Convergence' };
   const hud = { id: 'hud:Nexus de Convergence', universe: 'Nexus de Convergence' };
   const kart = unlockableModule.KART_CATALOG[0];
@@ -305,7 +306,7 @@ test('save v6 migrates legacy portal collections and validates active loadouts',
     }
   }, { existing: true });
 
-  assert.equal(migratedLegacy.saveVersion, 6);
+  assert.equal(migratedLegacy.saveVersion, 8);
   assert.deepEqual(migratedLegacy.portalCollection.karts, []);
   assert.deepEqual(migratedLegacy.portalCollection.battleMusic, []);
   assert.deepEqual(migratedLegacy.portalCollection.stageMusic, []);

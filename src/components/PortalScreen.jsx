@@ -16,6 +16,7 @@ import { getUniverseUnlockables, getUnlockableById } from '../game/universeUnloc
 import {
   BOOSTER_ROTATION_WINDOW_MS,
   DEFAULT_OC_BOOSTER_ID,
+  ORIGINAL_WORLD_BOOSTERS,
   PERMANENT_OC_BOOSTERS,
   getPortalBoosterArt,
   getPortalBoosterPackArt,
@@ -33,7 +34,8 @@ const CORE_ANOMALY_IDS = new Set(['masterchief', 'predator', 'pyramidhead', 'neo
 const CORE_EPIC_IDS = new Set(['marcus', 'ripley', 'freeman', 'snake', 'solbadguy', 'ragna', 'shepard', 'luke', 'isaac', 'taichi', 'motoko']);
 const NEXUS_UNIVERSE = 'Nexus de Convergence';
 const PITY_LIMIT = 6;
-const HERO_BY_ID = new Map(HEROES_DB.map(hero => [hero.id, hero]));
+const PORTAL_ELIGIBLE_HEROES = HEROES_DB.filter(hero => !hero.campaignExclusive);
+const HERO_BY_ID = new Map(PORTAL_ELIGIBLE_HEROES.map(hero => [hero.id, hero]));
 const COLLECTIBLE_SKINS = Object.values(SKIN_CATALOG)
   .filter(skin => skin.id !== 'default' && skin.heroId && HERO_BY_ID.has(skin.heroId));
 
@@ -304,6 +306,54 @@ const makeBoosterCandidates = ({
   visibleHeroes,
   disabledGearIds
 }) => {
+  if (Array.isArray(banner.candidatePool) && banner.candidatePool.length > 0) {
+    return banner.candidatePool.map(candidate => {
+      const entity = candidate.data;
+      const rarity = PORTAL_RARITIES[candidate.rarityId] || PORTAL_RARITIES.common;
+      const hero = candidate.kind === 'hero'
+        ? (HERO_BY_ID.get(entity.id) || entity)
+        : candidate.kind === 'skin'
+          ? HERO_BY_ID.get(entity.heroId)
+          : null;
+      const item = candidate.kind === 'equipment'
+        ? (EQUIP_ITEMS_DB.find(entry => entry.id === entity.id) || entity)
+        : candidate.kind === 'event'
+          ? (EVENT_ITEMS_DB[banner.universe] || entity)
+          : null;
+      const unlockable = ![
+        'hero', 'equipment', 'event', 'skin', 'archive', 'hud'
+      ].includes(candidate.kind)
+        ? (getUnlockableById(candidate.kind, candidate.id) || entity)
+        : null;
+      const landscapeData = ['archive', 'hud'].includes(candidate.kind)
+        ? {
+            ...(entity.data || {}),
+            image: entity.data?.image || banner.backdrop,
+            mode: entity.data?.mode || banner.mode
+          }
+        : null;
+
+      return {
+        id: candidate.id,
+        rewardId: candidate.id,
+        kind: candidate.kind,
+        name: entity.name || candidate.id,
+        universe: banner.universe,
+        color: entity.color || entity.colors?.primaryColor || banner.color,
+        rarity,
+        data: candidate.kind === 'hero'
+          ? { hero }
+          : candidate.kind === 'equipment' || candidate.kind === 'event'
+            ? { item }
+            : candidate.kind === 'skin'
+              ? { skin: entity, hero: { ...hero, ...(entity.colors || {}) } }
+              : landscapeData
+                ? landscapeData
+                : { unlockable }
+      };
+    });
+  }
+
   const scopedHeroes = banner.id === 'multi'
     ? visibleHeroes
     : visibleHeroes.filter(hero => banner.match(hero));
@@ -463,6 +513,16 @@ const makeBoosterCandidates = ({
 function RewardArtwork({ reward }) {
   if (reward.kind === 'hero' || reward.kind === 'skin') {
     const hero = reward.data.hero;
+    if (hero.originalContent && hero.portrait) {
+      return (
+        <img
+          className="booster-reward-sprite"
+          src={hero.portrait}
+          alt=""
+          aria-hidden="true"
+        />
+      );
+    }
     return (
       <canvas
         className="booster-reward-sprite"
@@ -631,7 +691,7 @@ export default function PortalScreen({
     [disabledAssets]
   );
   const visibleHeroes = useMemo(
-    () => HEROES_DB.filter(hero => (
+    () => PORTAL_ELIGIBLE_HEROES.filter(hero => (
       !hiddenUniverseSet.has(hero.universe)
       && !disabledHeroSet.has(hero.id)
     )),
@@ -655,6 +715,16 @@ export default function PortalScreen({
         const names = heroes.slice(0, 3).map(hero => hero.name).join(', ');
         const remaining = Math.max(0, heroes.length - 3);
         const rosterLine = remaining > 0 ? `${names} +${remaining}` : names;
+        const originalWorldPack = ORIGINAL_WORLD_BOOSTERS.find(
+          pack => pack.universe === universe
+        );
+        if (originalWorldPack) {
+          return {
+            ...originalWorldPack,
+            scope: 'universe',
+            match: hero => hero.universe === universe
+          };
+        }
         return {
           id: `universe:${universe}`,
           scope: 'universe',

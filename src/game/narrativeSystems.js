@@ -1,5 +1,29 @@
 import { HEROES_DB } from './heroes';
 import { FEATURED_UNIVERSE_NARRATIVE_ARCS } from './featuredUniversePacks';
+import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
+
+const ORIGINAL_UNIVERSE_NARRATIVE_ARCS = ORIGINAL_UNIVERSE_DEFINITIONS.map(world => ({
+  ...world.narrativeArc,
+  universes: [world.universe],
+  stages: world.stages,
+  rewardItemId: `universe_arc_${world.narrativeArc.id}`,
+  rewards: [
+    {
+      id: world.booster.chaseRewardId,
+      type: 'hud',
+      name: world.customUnlockables.find(item => item.id === world.booster.chaseRewardId)?.name
+    }
+  ],
+  claimReward: { gold: 560, shards: 115, tokens: 6 },
+  sourceType: 'original',
+  originalContent: true
+}));
+
+const ORIGINAL_SKIN_CATALOG = Object.fromEntries(
+  ORIGINAL_UNIVERSE_DEFINITIONS.flatMap(world => (
+    world.skins.map(skin => [skin.id, skin])
+  ))
+);
 
 export const ARC_CAMPAIGN_DETAILS = {
   xeno_yautja_war: {
@@ -232,6 +256,7 @@ export const ARC_CAMPAIGN_DETAILS = {
 
 export const UNIVERSE_NARRATIVE_ARCS = [
   ...FEATURED_UNIVERSE_NARRATIVE_ARCS,
+  ...ORIGINAL_UNIVERSE_NARRATIVE_ARCS,
   {
     id: 'halo_installation_04_containment',
     title: { fr: 'Arc Univers - Halo: confinement Installation 04', en: 'Universe Arc - Halo: Installation 04 Containment' },
@@ -1372,6 +1397,12 @@ export const SKIN_CATALOG = {
     name: { fr: 'Ancre Prime', en: 'Prime Anchor' },
     colors: { primaryColor: '#ffffff', secondaryColor: '#39c5bb' }
   },
+  char_player_anchor_palimpsest: {
+    id: 'char_player_anchor_palimpsest',
+    heroId: 'player_anchor',
+    name: { fr: 'Ancre du Palimpseste', en: 'Palimpsest Anchor' },
+    colors: { primaryColor: '#f7fbff', secondaryColor: '#8a63ff' }
+  },
   char_freeman_hev_nexus: {
     id: 'char_freeman_hev_nexus',
     heroId: 'freeman',
@@ -1589,6 +1620,7 @@ export const SKIN_CATALOG = {
     colors: { primaryColor: '#2f75b5', secondaryColor: '#f6f1d1' }
   },
   ...GENERATED_CHARACTER_SKINS,
+  ...ORIGINAL_SKIN_CATALOG,
   arc_scifi_skin_atrium_bulwark: {
     id: 'arc_scifi_skin_atrium_bulwark',
     name: { fr: 'Rempart Atrium', en: 'Atrium Bulwark' },

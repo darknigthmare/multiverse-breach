@@ -8,8 +8,8 @@ const PROLOGUE_SCENES = [
     title: { fr: 'Le ciel se brise', en: 'The sky breaks' },
     kicker: { fr: 'Archive 00 / La Premiere Breche', en: 'Archive 00 / The First Breach' },
     body: {
-      fr: 'Veyr, Archiviste du Voile, voulut relier les mondes sans les conquerir. Son Nexus de paix ouvrit pourtant une blessure que rien ne savait refermer. Dans cette ouverture, le Sans-Auteur trouva enfin un passage.',
-      en: 'Veyr, Archivist of the Veil, tried to connect worlds without conquering them. His peaceful Nexus opened a wound nothing could close. Inside that opening, the Authorless finally found a path.'
+      fr: 'Veyr, Archiviste du Voile, voulut relier les mondes sans les conquerir. Il ouvrit pourtant la Premiere Breche en sachant qu une route tomberait. Quand A.R.C.A. effaca les noms de cette Route X sacrifiee, sa pression causale prit forme dans le passage de Veyr: le Sans-Auteur ne venait pas d ailleurs, il naquit de ce que le Nexus refusait de reconnaitre.',
+      en: 'Veyr, Archivist of the Veil, tried to connect worlds without conquering them. Yet he opened the First Breach knowing one route would fall. When A.R.C.A. erased the names of that sacrificed Route X, its causal pressure took form through Veyr passage: the Authorless did not come from elsewhere, but was born from what the Nexus refused to acknowledge.'
     },
     signal: {
       fr: 'Le Voile ne protege plus chaque histoire. Il les laisse tomber les unes dans les autres.',

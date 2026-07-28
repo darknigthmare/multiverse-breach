@@ -5339,6 +5339,197 @@ body {
   border-color: #9ffff7 !important;
 }
 
+.oc-ending-backdrop {
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.oc-ending-copy {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 100%);
+  margin: auto;
+  padding: 30px;
+  border: 1px solid rgba(57, 197, 187, 0.35);
+  background: linear-gradient(145deg, rgba(4, 2, 14, 0.92), rgba(11, 5, 28, 0.82));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55), inset 0 0 34px rgba(57, 197, 187, 0.06);
+  animation: narrativeSlide 0.6s ease-out both;
+}
+
+.oc-ending-copy > h1 {
+  margin: 0;
+  max-width: 900px;
+  color: #fff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(23px, 4vw, 42px);
+  line-height: 1.25;
+}
+
+.oc-ending-copy > p {
+  max-width: 880px;
+  color: #d9e7ea;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.oc-ending-warning {
+  margin: 22px 0;
+  padding: 12px 14px;
+  border-left: 3px solid #ffeb3b;
+  background: rgba(255, 235, 59, 0.07);
+  color: #ffef7d;
+  font-size: 12px;
+}
+
+.oc-ending-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.oc-ending-choice {
+  min-height: 210px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--ending-primary) 55%, transparent);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.55));
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.oc-ending-choice:hover,
+.oc-ending-choice:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--ending-primary);
+  box-shadow: 0 0 26px color-mix(in srgb, var(--ending-primary) 24%, transparent);
+  outline: none;
+}
+
+.oc-ending-choice > span,
+.oc-ending-consequence > span {
+  display: block;
+  color: var(--ending-secondary);
+  font-size: 10px;
+  letter-spacing: 1.4px;
+}
+
+.oc-ending-choice > strong {
+  display: block;
+  margin: 10px 0;
+  color: var(--ending-primary);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.oc-ending-choice > p {
+  margin: 0;
+  color: #c8d7dc;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.oc-ending-choice > em {
+  display: block;
+  margin-top: 14px;
+  color: #81959b;
+  font-size: 9px;
+  font-style: normal;
+}
+
+.oc-ending-choice.seen {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--ending-primary) 8%, transparent), rgba(0, 0, 0, 0.55));
+}
+
+.oc-ending-choice.previous > em {
+  color: var(--ending-secondary);
+}
+
+.oc-ending-epilogue {
+  width: min(880px, 100%);
+  border-color: color-mix(in srgb, var(--ending-primary) 65%, transparent);
+}
+
+.oc-ending-scene {
+  min-height: 180px;
+  margin: 28px 0;
+  padding: 22px;
+  border: 1px solid color-mix(in srgb, var(--ending-primary) 45%, transparent);
+  border-left: 4px solid var(--ending-primary);
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.oc-ending-scene > strong {
+  color: var(--ending-secondary);
+  font-size: 12px;
+  letter-spacing: 1.2px;
+}
+
+.oc-ending-scene > p,
+.oc-ending-consequence > p {
+  color: #e0edf0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.oc-ending-consequence {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.oc-ending-consequence > b {
+  color: var(--ending-primary);
+}
+
+.oc-ending-credits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 22px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.oc-ending-credits > span {
+  display: grid;
+  gap: 4px;
+  color: #dbe7ea;
+}
+
+.oc-ending-credits small {
+  color: #71898f;
+  font-size: 9px;
+}
+
+.oc-ending-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+@media (max-width: 760px) {
+  .oc-ending-backdrop {
+    padding: 20px 14px;
+  }
+
+  .oc-ending-copy {
+    padding: 20px 16px;
+  }
+
+  .oc-ending-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .oc-ending-choice {
+    min-height: 0;
+  }
+}
+
 @keyframes narrativePulse {
   from { transform: scale(0.92); opacity: 0.55; }
   to { transform: scale(1.08); opacity: 1; }

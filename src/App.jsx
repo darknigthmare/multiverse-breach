@@ -15,15 +15,69 @@ import {
   migrateHiddenUniversesForOcDlc
 } from './game/dlcConfig';
 import { TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from './game/narrativeSystems';
+import {
+  OC_CAMPAIGN_ENDINGS,
+  OC_CAMPAIGN_EPILOGUE,
+  OC_CAMPAIGN_MISSIONS,
+  OC_FINAL_MISSION_ID,
+  OC_ORIGIN_LOCKS,
+  getOcCampaignEnding,
+  getOcCampaignMission
+} from './game/ocCampaign';
 
 const SAVE_KEY = 'multiverse_breach_save_v2';
 const TUTORIAL_COMPANION_IDS = ['arca_mirelle', 'arca_bastion'];
+const OC_CAMPAIGN_SKIN_ID = 'char_player_anchor_palimpsest';
 const HubScreen = React.lazy(() => import('./components/HubScreen'));
 const PortalScreen = React.lazy(() => import('./components/PortalScreen'));
 const GameCanvas = React.lazy(() => import('./components/GameCanvas'));
 
+const buildOcMainCampaignState = (completedStages = [], existingState = {}) => {
+  const completed = new Set(
+    (Array.isArray(completedStages) ? completedStages : []).map(stageId => String(stageId))
+  );
+  const completedMissionIds = OC_CAMPAIGN_MISSIONS
+    .filter(mission => completed.has(String(mission.id)))
+    .map(mission => mission.id);
+  const completedMissionSet = new Set(completedMissionIds);
+  const recoveredLockIds = OC_ORIGIN_LOCKS
+    .filter(lock => completedMissionSet.has(lock.missionId))
+    .map(lock => lock.id);
+  const allowedEndingIds = new Set(OC_CAMPAIGN_ENDINGS.map(ending => ending.id));
+  const finalMissionComplete = completedMissionSet.has(OC_FINAL_MISSION_ID);
+  const endingId = finalMissionComplete && allowedEndingIds.has(existingState?.endingId)
+    ? existingState.endingId
+    : null;
+  const endingHistory = finalMissionComplete
+    ? [...new Set(
+      (Array.isArray(existingState?.endingHistory) ? existingState.endingHistory : [])
+        .filter(id => allowedEndingIds.has(id))
+    )]
+    : [];
+  if (endingId && !endingHistory.includes(endingId)) endingHistory.push(endingId);
+  const nextMission = OC_CAMPAIGN_MISSIONS.find(mission => !completedMissionSet.has(mission.id)) || null;
+  const lastMission = [...OC_CAMPAIGN_MISSIONS]
+    .reverse()
+    .find(mission => completedMissionSet.has(mission.id)) || null;
+
+  return {
+    completedMissionIds,
+    recoveredLockIds,
+    lastMissionId: lastMission?.id || null,
+    nextMissionId: nextMission?.id || null,
+    finalMissionComplete,
+    endingId,
+    endingHistory,
+    completedAt: endingId && typeof existingState?.completedAt === 'string'
+      ? existingState.completedAt
+      : null,
+    epilogueSeen: Boolean(endingId && existingState?.epilogueSeen),
+    completionRewardClaimed: Boolean(endingId && existingState?.completionRewardClaimed)
+  };
+};
+
 const DEFAULT_SAVE = {
-  saveVersion: 7,
+  saveVersion: 8,
   lang: 'fr',
   gold: 200,
   breachShards: 150,
@@ -35,6 +89,7 @@ const DEFAULT_SAVE = {
   completedStages: [],
   enabledContentPacks: [],
   campaignProgress: buildOcDlcCampaignProgress([], {}),
+  ocCampaignState: buildOcMainCampaignState([], {}),
   heroTalents: {},
   heroSkins: {},
   portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
@@ -194,9 +249,25 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const normalizedUnlockedHeroes = hasOnlyLegacyStarterProgress
     ? mergedUnlockedHeroes.filter(heroId => !legacyStarterIds.includes(heroId))
     : mergedUnlockedHeroes;
-  const unlockedHeroes = normalizedUnlockedHeroes.includes(PLAYER_HERO_ID)
-    ? normalizedUnlockedHeroes
-    : [PLAYER_HERO_ID, ...normalizedUnlockedHeroes];
+  const completedStages = new Set(Array.isArray(merged.completedStages) ? merged.completedStages : []);
+  const completedStageIdSet = new Set([...completedStages].map(stageId => String(stageId)));
+  const recoveredOcCampaignHeroes = OC_CAMPAIGN_MISSIONS
+    .filter(mission => mission.rewardHeroId && completedStageIdSet.has(String(mission.id)))
+    .map(mission => mission.rewardHeroId);
+  const unlockedHeroesWithCampaignRewards = appendUnique(normalizedUnlockedHeroes, recoveredOcCampaignHeroes);
+  const unlockedHeroes = unlockedHeroesWithCampaignRewards.includes(PLAYER_HERO_ID)
+    ? unlockedHeroesWithCampaignRewards
+    : [PLAYER_HERO_ID, ...unlockedHeroesWithCampaignRewards];
+  const normalizedHeroLevels = {
+    ...DEFAULT_SAVE.heroLevels,
+    ...(merged.heroLevels || {}),
+    ...Object.fromEntries(
+      recoveredOcCampaignHeroes.map(heroId => [
+        heroId,
+        Math.max(1, Number(merged.heroLevels?.[heroId]) || 1)
+      ])
+    )
+  };
   const mergedActiveTeam = Array.isArray(merged.activeTeam) ? merged.activeTeam : [];
   const normalizedActiveTeam = hasOnlyLegacyStarterProgress
     ? mergedActiveTeam.filter(heroId => !legacyStarterIds.includes(heroId))
@@ -211,7 +282,6 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
     ? merged.hiddenUniverses
     : DEFAULT_HIDDEN_UNIVERSES;
   const inventory = Array.isArray(merged.inventory) ? merged.inventory : [];
-  const completedStages = new Set(Array.isArray(merged.completedStages) ? merged.completedStages : []);
   UNIVERSE_NARRATIVE_ARCS.forEach((arc, index) => {
     if (inventory.includes(`universe_arc_${arc.id}`)) completedStages.add(40000 + index);
   });
@@ -230,6 +300,10 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const campaignProgress = buildOcDlcCampaignProgress(
     normalizedCompletedStages,
     merged.campaignProgress
+  );
+  const ocCampaignState = buildOcMainCampaignState(
+    normalizedCompletedStages,
+    merged.ocCampaignState
   );
   const normalizeCollectionIds = (entries) => (
     Array.isArray(entries)
@@ -257,18 +331,19 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const customBattlePreset = normalizeStoredCustomBattlePreset(merged.portalCollection?.customBattlePreset);
   return {
     ...merged,
-    saveVersion: 7,
+    saveVersion: 8,
     playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
     onboarding,
     unlockedHeroes,
     activeTeam,
-    heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(merged.heroLevels || {}) },
+    heroLevels: normalizedHeroLevels,
     heroTalents: merged.heroTalents || {},
     heroSkins: merged.heroSkins || {},
     completedStages: normalizedCompletedStages,
     hiddenUniverses: hiddenUniverses.filter(universe => !isBaseGameUniverse(universe)),
     enabledContentPacks,
     campaignProgress,
+    ocCampaignState,
     disabledAssets: {
       heroes: Array.isArray(merged.disabledAssets?.heroes) ? merged.disabledAssets.heroes : [],
       enemies: Array.isArray(merged.disabledAssets?.enemies) ? merged.disabledAssets.enemies : [],
@@ -591,6 +666,11 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
               {rewardSummary.eventRewardName && (
                 <span>{lang === 'fr' ? `Relique evenementielle archivee: ${rewardSummary.eventRewardName}.` : `Event relic archived: ${rewardSummary.eventRewardName}.`}</span>
               )}
+              {rewardSummary.rewardHeroName && (
+                <span>{lang === 'fr'
+                  ? `Nouvelle recrue Cellule ZERO: ${rewardSummary.rewardHeroName}.`
+                  : `New Cell ZERO recruit: ${rewardSummary.rewardHeroName}.`}</span>
+              )}
               {rewardSummary.droppedItemName && (
                 <span>{lang === 'fr' ? `Relique recuperee: ${rewardSummary.droppedItemName}.` : `Relic recovered: ${rewardSummary.droppedItemName}.`}</span>
               )}
@@ -613,11 +693,175 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
           </div>
           {modifierDesc && <div className="narrative-intel">{modifierDesc}</div>}
           <button onClick={onContinue} className="btn-retro narrative-button">
-            {isOutro
-              ? (lang === 'fr' ? 'RETOUR AU HUB' : 'RETURN TO HUB')
+            {isOutro && victory && stage.campaignFinale
+              ? (lang === 'fr' ? 'OUVRIR LE REGISTRE PRIMORDIAL' : 'OPEN THE PRIMORDIAL LEDGER')
+              : isOutro
+                ? (lang === 'fr' ? 'RETOUR AU HUB' : 'RETURN TO HUB')
               : (lang === 'fr' ? 'LANCER LA MISSION' : 'LAUNCH MISSION')}
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function OcCampaignEndingScreen({
+  lang,
+  playerProfile,
+  previousEndingId,
+  endingHistory = [],
+  onComplete
+}) {
+  const [selectedEndingId, setSelectedEndingId] = useState(null);
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const selectedEnding = selectedEndingId ? getOcCampaignEnding(selectedEndingId) : null;
+  const scenes = selectedEnding?.scenes || [];
+  const currentScene = scenes[sceneIndex] || null;
+  const isLastScene = Boolean(selectedEnding && sceneIndex >= Math.max(0, scenes.length - 1));
+  const localize = value => value?.[lang] || value?.fr || value?.en || '';
+  const epilogueIntro = localize(OC_CAMPAIGN_EPILOGUE.intro);
+  const endingBackdrop = getOcCampaignMission(OC_FINAL_MISSION_ID)?.image || '';
+
+  const chooseEnding = (endingId) => {
+    setSelectedEndingId(endingId);
+    setSceneIndex(0);
+    sound.playSfx('special');
+  };
+
+  if (!selectedEnding) {
+    return (
+      <div className="narrative-screen oc-ending-screen">
+        <div
+          className="narrative-backdrop oc-ending-backdrop"
+          style={{
+            backgroundImage: `linear-gradient(90deg, rgba(2,1,8,0.58), rgba(2,1,8,0.94)), url(${endingBackdrop})`
+          }}
+        >
+          <div className="narrative-rift" />
+          <div className="narrative-scanline" />
+          <main className="oc-ending-copy" aria-labelledby="oc-ending-title">
+            <div className="narrative-kicker">
+              {lang === 'fr' ? 'ACTE V · DECISION D ANCRE' : 'ACT V · ANCHOR DECISION'}
+            </div>
+            <h1 id="oc-ending-title">{localize(OC_CAMPAIGN_EPILOGUE.title)}</h1>
+            <p>{epilogueIntro}</p>
+            <div className="oc-ending-warning">
+              {lang === 'fr'
+                ? `${playerProfile?.name || 'Ancre'}, les quatre issues sont reelles. Aucune ne sera effacee de la Chronique.`
+                : `${playerProfile?.name || 'Anchor'}, all four outcomes are real. None will be erased from the Chronicle.`}
+            </div>
+            <div className="oc-ending-grid">
+              {OC_CAMPAIGN_ENDINGS.map(ending => {
+                const wasSeen = endingHistory.includes(ending.id);
+                const wasLast = previousEndingId === ending.id;
+                return (
+                  <button
+                    key={ending.id}
+                    type="button"
+                    className={`oc-ending-choice${wasSeen ? ' seen' : ''}${wasLast ? ' previous' : ''}`}
+                    style={{
+                      '--ending-primary': ending.colors?.primary || '#39c5bb',
+                      '--ending-secondary': ending.colors?.secondary || '#ffeb3b'
+                    }}
+                    onClick={() => chooseEnding(ending.id)}
+                  >
+                    <span>{localize(ending.shortLabel || ending.title)}</span>
+                    <strong>{localize(ending.title)}</strong>
+                    <p>{localize(ending.summary)}</p>
+                    <em>
+                      {wasLast
+                        ? (lang === 'fr' ? 'DERNIERE FIN INSCRITE' : 'LAST RECORDED ENDING')
+                        : wasSeen
+                          ? (lang === 'fr' ? 'DEJA VUE' : 'ALREADY SEEN')
+                          : (lang === 'fr' ? 'ISSUE NON INSCRITE' : 'UNRECORDED OUTCOME')}
+                    </em>
+                  </button>
+                );
+              })}
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="narrative-screen oc-ending-screen"
+      style={{
+        '--ending-primary': selectedEnding.colors?.primary || '#39c5bb',
+        '--ending-secondary': selectedEnding.colors?.secondary || '#ffeb3b'
+      }}
+    >
+      <div
+        className="narrative-backdrop oc-ending-backdrop"
+        style={{
+          backgroundImage: `linear-gradient(90deg, rgba(2,1,8,0.64), rgba(2,1,8,0.94)), url(${endingBackdrop})`
+        }}
+      >
+        <div className="narrative-rift" />
+        <div className="narrative-scanline" />
+        <main className="oc-ending-copy oc-ending-epilogue" aria-live="polite">
+          <div className="narrative-kicker">
+            {lang === 'fr' ? `EPILOGUE ${sceneIndex + 1}/${Math.max(1, scenes.length)}` : `EPILOGUE ${sceneIndex + 1}/${Math.max(1, scenes.length)}`}
+          </div>
+          <h1>{localize(selectedEnding.title)}</h1>
+          {currentScene && (
+            <blockquote className="oc-ending-scene">
+              <strong>{localize(currentScene.speaker)}</strong>
+              <p>{localize(currentScene.text)}</p>
+            </blockquote>
+          )}
+          {isLastScene && (
+            <section className="oc-ending-consequence">
+              <span>{lang === 'fr' ? 'CONSEQUENCE PERSISTANTE' : 'PERSISTENT CONSEQUENCE'}</span>
+              <p>{localize(selectedEnding.consequence)}</p>
+              <b>{localize(selectedEnding.rewardItemName)}</b>
+              <div className="oc-ending-credits">
+                {(OC_CAMPAIGN_EPILOGUE.credits || []).map((credit, index) => (
+                  <span key={`${credit.name}-${index}`}>
+                    <small>{localize(credit.role)}</small>
+                    {credit.name}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
+          <div className="oc-ending-actions">
+            <button
+              type="button"
+              className="btn-retro"
+              onClick={() => {
+                if (sceneIndex > 0) {
+                  setSceneIndex(index => index - 1);
+                } else {
+                  setSelectedEndingId(null);
+                }
+                sound.playSfx('click');
+              }}
+            >
+              {sceneIndex > 0
+                ? (lang === 'fr' ? 'SCENE PRECEDENTE' : 'PREVIOUS SCENE')
+                : (lang === 'fr' ? 'AUTRE ISSUE' : 'OTHER OUTCOME')}
+            </button>
+            <button
+              type="button"
+              className="btn-retro narrative-button"
+              onClick={() => {
+                if (!isLastScene) {
+                  setSceneIndex(index => index + 1);
+                  sound.playSfx('coin');
+                  return;
+                }
+                onComplete(selectedEnding.id);
+              }}
+            >
+              {isLastScene
+                ? (lang === 'fr' ? 'INSCRIRE CETTE FIN' : 'RECORD THIS ENDING')
+                : (lang === 'fr' ? 'SCENE SUIVANTE' : 'NEXT SCENE')}
+            </button>
+          </div>
+        </main>
       </div>
     </div>
   );
@@ -751,6 +995,7 @@ function App() {
   const [activeTeam, setActiveTeam] = useState(initialSave.activeTeam);
   const [completedStages, setCompletedStages] = useState(initialSave.completedStages);
   const [campaignProgress, setCampaignProgress] = useState(initialSave.campaignProgress);
+  const [ocCampaignState, setOcCampaignState] = useState(initialSave.ocCampaignState);
   const [activeStage, setActiveStage] = useState(null);
   const [lastBattleResult, setLastBattleResult] = useState(null);
   const [lastBattleSummary, setLastBattleSummary] = useState(null);
@@ -783,7 +1028,7 @@ function App() {
   )).length;
 
   const getCurrentSave = useCallback(() => ({
-    saveVersion: 7,
+    saveVersion: 8,
     lang,
     gold,
     breachShards,
@@ -795,6 +1040,7 @@ function App() {
     completedStages,
     enabledContentPacks: getEnabledOcDlcPackIds(hiddenUniverses),
     campaignProgress: buildOcDlcCampaignProgress(completedStages, campaignProgress),
+    ocCampaignState: buildOcMainCampaignState(completedStages, ocCampaignState),
     heroTalents,
     heroSkins,
     hiddenUniverses,
@@ -807,7 +1053,7 @@ function App() {
     inventory,
     equippedGear,
     equippedEventItems
-  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, campaignProgress, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, portalCollection, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
+  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, campaignProgress, ocCampaignState, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, portalCollection, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
 
   useEffect(() => {
     const payload = getCurrentSave();
@@ -963,6 +1209,7 @@ function App() {
       droppedItemName: null,
       rewardItemName: null,
       eventRewardName: null,
+      rewardHeroName: null,
       consolation: false,
       contactIntel: null,
       adaptation: false,
@@ -1018,6 +1265,14 @@ function App() {
 
       if (firstClear) {
         setCompletedStages(prev => [...prev, activeStage.id]);
+        const ocMission = getOcCampaignMission(activeStage.id);
+        if (ocMission) {
+          const campaignStages = appendUnique(completedStages, [activeStage.id]);
+          setOcCampaignState(prev => buildOcMainCampaignState(campaignStages, {
+            ...prev,
+            lastMissionId: activeStage.id
+          }));
+        }
       }
 
       if (activeStage.rewardItemId) {
@@ -1032,6 +1287,21 @@ function App() {
           || eventReward?.name?.fr
           || eventReward?.name?.en
           || activeStage.eventRewardId;
+      }
+
+      if (activeStage.rewardHeroId) {
+        const heroAlreadyUnlocked = unlockedHeroes.includes(activeStage.rewardHeroId);
+        setUnlockedHeroes(prev => appendUnique(prev, [activeStage.rewardHeroId]));
+        setHeroLevels(prev => ({
+          ...prev,
+          [activeStage.rewardHeroId]: Math.max(1, Number(prev[activeStage.rewardHeroId]) || 1)
+        }));
+        if (!heroAlreadyUnlocked) {
+          summary.rewardHeroName = activeStage.rewardHeroName?.[lang]
+            || activeStage.rewardHeroName?.fr
+            || activeStage.rewardHeroName?.en
+            || activeStage.rewardHeroId;
+        }
       }
 
       const { dayKey, weekKey } = getProgressKeys();
@@ -1081,6 +1351,7 @@ function App() {
             firstClear,
             rewardItemName: summary.rewardItemName,
             eventRewardName: summary.eventRewardName,
+            rewardHeroName: summary.rewardHeroName,
             battleSummary,
             smashMasteryBonus: summary.smashMasteryBonus,
             tacticsMasteryBonus: summary.tacticsMasteryBonus,
@@ -1169,10 +1440,53 @@ function App() {
   };
 
   const closeMissionOutro = () => {
+    if (lastBattleResult === 'victory' && activeStage?.id === OC_FINAL_MISSION_ID) {
+      setCurrentScreen('campaignEnding');
+      sound.playSfx('special');
+      return;
+    }
     setCurrentScreen('hub');
     setActiveStage(null);
     setLastBattleResult(null);
     setLastBattleSummary(null);
+  };
+
+  const replayOcCampaignEnding = () => {
+    const finalMission = getOcCampaignMission(OC_FINAL_MISSION_ID);
+    if (!finalMission || !completedStages.includes(OC_FINAL_MISSION_ID)) return;
+    setActiveStage(finalMission);
+    setLastBattleResult('victory');
+    setLastBattleSummary(null);
+    setCurrentScreen('campaignEnding');
+    sound.playSfx('special');
+  };
+
+  const completeOcCampaignEnding = (endingId) => {
+    const ending = getOcCampaignEnding(endingId);
+    if (!ending) return;
+    const completedAt = ocCampaignState?.completedAt || new Date().toISOString();
+    const endingHistory = appendUnique(ocCampaignState?.endingHistory || [], [ending.id]);
+    const campaignStages = appendUnique(completedStages, [OC_FINAL_MISSION_ID]);
+
+    setOcCampaignState(prev => buildOcMainCampaignState(campaignStages, {
+      ...prev,
+      endingId: ending.id,
+      endingHistory,
+      completedAt,
+      epilogueSeen: true,
+      completionRewardClaimed: true
+    }));
+    setInventory(prev => appendUnique(prev, [ending.rewardItemId, OC_CAMPAIGN_SKIN_ID].filter(Boolean)));
+    setHeroSkins(prev => ({ ...prev, [PLAYER_HERO_ID]: OC_CAMPAIGN_SKIN_ID }));
+    setPublicProfile(prev => ({
+      ...prev,
+      title: ending.profileTitle?.[lang] || ending.profileTitle?.fr || ending.profileTitle?.en || prev.title
+    }));
+    setCurrentScreen('hub');
+    setActiveStage(null);
+    setLastBattleResult(null);
+    setLastBattleSummary(null);
+    sound.playSfx('levelup');
   };
 
   const toggleLanguage = () => {
@@ -1193,6 +1507,7 @@ function App() {
     setActiveTeam(merged.activeTeam);
     setCompletedStages(merged.completedStages);
     setCampaignProgress(merged.campaignProgress || DEFAULT_SAVE.campaignProgress);
+    setOcCampaignState(merged.ocCampaignState || DEFAULT_SAVE.ocCampaignState);
     setHeroTalents(merged.heroTalents);
     setHeroSkins(merged.heroSkins || {});
     setHiddenUniverses(merged.hiddenUniverses || []);
@@ -1404,6 +1719,7 @@ function App() {
             activeTeam={activeTeam}
             setActiveTeam={setActiveTeam}
             completedStages={completedStages}
+            campaignProgress={ocCampaignState}
             inventory={inventory}
             setInventory={setInventory}
             equippedGear={equippedGear}
@@ -1423,6 +1739,7 @@ function App() {
             portalCollection={portalCollection}
             setPortalCollection={setPortalCollection}
             onLaunchStage={handleLaunchStage}
+            onReplayEnding={replayOcCampaignEnding}
             onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
             />
           </Suspense>
@@ -1478,6 +1795,17 @@ function App() {
           result={lastBattleResult}
           rewardSummary={lastBattleSummary}
           onContinue={closeMissionOutro}
+        />
+      )}
+
+      {currentScreen === 'campaignEnding' && (
+        <OcCampaignEndingScreen
+          key={`oc-ending-${ocCampaignState?.endingId || 'unwritten'}`}
+          lang={lang}
+          playerProfile={playerProfile}
+          previousEndingId={ocCampaignState?.endingId}
+          endingHistory={ocCampaignState?.endingHistory}
+          onComplete={completeOcCampaignEnding}
         />
       )}
 

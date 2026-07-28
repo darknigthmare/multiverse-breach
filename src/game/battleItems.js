@@ -1,6 +1,7 @@
 import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from './heroes';
 import { LORE_DB } from './lore';
 import { FEATURED_BATTLE_ITEM_OVERRIDES } from './featuredUniversePacks';
+import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
 
 const slugify = (value) => value
   .toLowerCase()
@@ -352,13 +353,33 @@ const universeNames = Array.from(new Set([
   ...HEROES_DB.map(hero => hero.universe)
 ])).filter(Boolean).sort((a, b) => a.localeCompare(b));
 
+const originalBattleItemsByUniverse = Object.freeze(Object.fromEntries(
+  ORIGINAL_UNIVERSE_DEFINITIONS.map(world => [
+    world.universe,
+    Object.freeze(world.battleItems.map(item => Object.freeze({
+      ...item,
+      icon: world.audiovisual.itemIcons[item.id],
+      sourceType: 'original',
+      originalContent: true,
+      contentOrigin: 'oc'
+    })))
+  ])
+));
+
 export const BATTLE_ITEMS_BY_UNIVERSE = Object.fromEntries(
-  universeNames.map(universe => [universe, makeItemsForUniverse(universe)])
+  universeNames.map(universe => [
+    universe,
+    originalBattleItemsByUniverse[universe] || makeItemsForUniverse(universe)
+  ])
 );
 
 export const BATTLE_ITEM_CATALOG = Object.values(BATTLE_ITEMS_BY_UNIVERSE).flat();
 
-export const getBattleItemsForUniverse = (universe) => BATTLE_ITEMS_BY_UNIVERSE[universe] || makeItemsForUniverse(universe);
+export const getBattleItemsForUniverse = (universe) => (
+  BATTLE_ITEMS_BY_UNIVERSE[universe]
+  || originalBattleItemsByUniverse[universe]
+  || makeItemsForUniverse(universe)
+);
 
 export const getBattleItemPoolForStage = (stage) => {
   const universes = Array.from(new Set([

@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://multiverse-breach.local/schemas/original-universe-manifest.schema.json",
+  "title": "Multiverse Breach Original Universe Manifest",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "project",
+    "contentContract",
+    "totals",
+    "universes"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "project": {
+      "const": "Multiverse Breach"
+    },
+    "universes": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": [
+          "key",
+          "universe",
+          "sourceType",
+          "mediaType",
+          "isOriginal",
+          "faction",
+          "mode",
+          "difficulty",
+          "lore",
+          "heroes",
+          "enemies",
+          "bosses",
+          "worldBoss",
+          "gear",
+          "battleItems",
+          "stages",
+          "narrativeArc",
+          "booster",
+          "boosterPoolPlan",
+          "legacyPack"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$"
+          },
+          "universe": {
+            "type": "string",
+            "minLength": 2
+          },
+          "sourceType": {
+            "const": "original"
+          },
+          "mediaType": {
+            "const": "game"
+          },
+          "isOriginal": {
+            "const": true
+          },
+          "faction": {
+            "enum": [
+              "apocalypse",
+              "arcane",
+              "cyber",
+              "horror",
+              "sciFi",
+              "stage",
+              "tactical",
+              "unknown"
+            ]
+          },
+          "mode": {
+            "enum": [
+              "RPG",
+              "Smash",
+              "Tactics"
+            ]
+          },
+          "heroes": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "name",
+                "category",
+                "stats",
+                "simple",
+                "secondary",
+                "defense",
+                "special",
+                "universe"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9_]+$"
+                },
+                "category": {
+                  "enum": [
+                    "marine",
+                    "slayer",
+                    "horror",
+                    "hacker",
+                    "tactical"
+                  ]
+                },
+                "stats": {
+                  "type": "object",
+                  "required": [
+                    "hp",
+                    "atk",
+                    "def",
+                    "spd"
+                  ],
+                  "properties": {
+                    "hp": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "atk": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "def": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "spd": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "enemies": {
+            "type": "array",
+            "minItems": 5,
+            "maxItems": 5
+          },
+          "bosses": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "gear": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "battleItems": {
+            "type": "array",
+            "minItems": 5,
+            "maxItems": 5
+          },
+          "stages": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "customUnlockables": {
+            "type": "array",
+            "minItems": 3
+          },
+          "boosterPoolPlan": {
+            "type": "object",
+            "required": [
+              "cardsPerOpenedBooster",
+              "minimumUniqueCandidates",
+              "anomalyChaseRewardId"
+            ],
+            "properties": {
+              "cardsPerOpenedBooster": {
+                "const": 5
+              },
+              "minimumUniqueCandidates": {
+                "minimum": 24
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

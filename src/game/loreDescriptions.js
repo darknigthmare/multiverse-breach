@@ -1,5 +1,11 @@
 import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE } from './featuredUniversePacks';
 
+const localizedValue = (value, lang = 'fr', fallback = '') => (
+  typeof value === 'string'
+    ? value
+    : value?.[lang] || value?.fr || value?.en || fallback
+);
+
 const MEDIA_LINES = {
   game: {
     fr: 'A.R.C.A. traite cette Trame comme une architecture de regles: routes, ressources et routines de combat peuvent etre ancrees sans nier leur origine.',
@@ -408,6 +414,19 @@ export const getStageLoreDescription = ({
       : `${stage.displayName.en} fuses ${sources}. ${stage.fusionMission.decor.en} Stabilized sources (${sourceClears}/${sourceTotal}) determine opening safety; ${stage.bossName} acts as the hybrid lock. Promised trace: ${stage.rewardItemName.en}, proof that several origin laws can coexist without becoming white noise.`;
   }
 
+  if (stage.originalContent && stage.campaignDependency === 'originalCampaign') {
+    const name = stage.displayName?.[lang] || stage.name;
+    const setting = stage.setting?.[lang] || stage.setting?.fr || '';
+    const objective = stage.objective?.[lang] || stage.objective?.fr || stage.objectiveType;
+    const common = stage.production?.layout?.common || {};
+    const tacticalDetails = lang === 'fr'
+      ? `${common.heroSpawns?.length || 0} points d entree, ${common.lightCover?.length || 0} couverts legers, ${common.heavyCover?.length || 0} couvert lourd et ${common.traps?.length || 0} piege telegraphie.`
+      : `${common.heroSpawns?.length || 0} entry points, ${common.lightCover?.length || 0} light covers, ${common.heavyCover?.length || 0} heavy cover, and ${common.traps?.length || 0} telegraphed trap.`;
+    return lang === 'fr'
+      ? `${name} appartient integralement a la Trame originale ${stage.universe}. Terrain: ${setting} Objectif d arc: ${objective} Menace finale: ${bossIntel?.name || stage.bossName}. Layout v2: ${tacticalDetails} Recompense: ${stage.goldPrize} or / ${stage.shardPrize} fragments.`
+      : `${name} belongs entirely to the original ${stage.universe} Thread. Terrain: ${setting} Arc objective: ${objective} Final threat: ${bossIntel?.name || stage.bossName}. Layout v2: ${tacticalDetails} Reward: ${stage.goldPrize} gold / ${stage.shardPrize} shards.`;
+  }
+
   const media = MEDIA_LINES[lore?.mediaType] || MEDIA_LINES.game;
   const signature = getUniverseSignature(stage.universe, lore);
   const mode = MODE_LINES[stage.mode] || MODE_LINES.RPG;
@@ -479,8 +498,9 @@ export const getEnemyLoreDescription = ({ enemy, universe, lang = 'fr', lore, ty
     : type === 'boss'
       ? (lang === 'fr' ? 'champion de faille' : 'breach champion')
       : (lang === 'fr' ? 'menace de terrain' : 'field threat');
-  const special = enemy.special
-    ? (lang === 'fr' ? `Son pattern signale: ${enemy.special}.` : `Its pattern reads: ${enemy.special}.`)
+  const specialText = localizedValue(enemy.special, lang);
+  const special = specialText
+    ? (lang === 'fr' ? `Son pattern signale: ${specialText}.` : `Its pattern reads: ${specialText}.`)
     : '';
   const featuredLore = FEATURED_ENEMY_LORE[universe]?.[enemy.name]?.[lang];
   if (featuredLore) return `${featuredLore} ${special}`.trim();

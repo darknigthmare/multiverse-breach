@@ -1,6 +1,8 @@
 import { getOcBoosterContentUpdate } from './ocBoosterContentUpdates.js';
+import { ORIGINAL_WORLD_BOOSTERS } from './originalUniverseWave.js';
 
 export const BOOSTER_ART_BY_UNIVERSE = {
+  ...Object.fromEntries(ORIGINAL_WORLD_BOOSTERS.map(pack => [pack.universe, pack.art])),
   "28 Days Later": "/boosters/28-days-later.webp",
   "A Nightmare on Elm Street": "/boosters/a-nightmare-on-elm-street.webp",
   "Ado": "/boosters/ado.webp",
@@ -562,6 +564,7 @@ export const PERMANENT_OC_BOOSTERS = Object.freeze([
 export const DEFAULT_OC_BOOSTER_ID = PERMANENT_OC_BOOSTERS[0].id;
 export const BOOSTER_ART_BY_PACK_ID = Object.freeze({
   ...Object.fromEntries(PERMANENT_OC_BOOSTERS.map(pack => [pack.id, pack.art])),
+  ...Object.fromEntries(ORIGINAL_WORLD_BOOSTERS.map(pack => [pack.id, pack.art])),
   multi: MULTIVERSE_CONVERGENCE_BOOSTER_ART
 });
 export const BOOSTER_ROTATION_WINDOW_MS = 24 * 60 * 60 * 1000;
@@ -569,6 +572,8 @@ export const BOOSTER_ROTATION_SIZE = 8;
 
 export const getPortalBoosterArt = (universe) => BOOSTER_ART_BY_UNIVERSE[universe] || null;
 export const getPortalBoosterPackArt = (packId) => BOOSTER_ART_BY_PACK_ID[packId] || null;
+
+export { ORIGINAL_WORLD_BOOSTERS };
 
 export const getPortalBoosterRotation = (
   universes = BOOSTER_ART_UNIVERSES,

@@ -88,8 +88,8 @@ export const CORE_CODEX_ENTRIES = [
     category: { en: 'Threat', fr: 'Menace' },
     title: { en: 'The Authorless', fr: 'Le Sans-Auteur' },
     desc: {
-      en: 'The Authorless wants to erase every story into a single silent reality. It does not conquer worlds: it removes meaning, origin, memory, and choice until no Thread can resist.',
-      fr: 'Le Sans-Auteur veut effacer toutes les histoires dans une seule realite silencieuse. Il ne conquiert pas les mondes: il retire le sens, l origine, la memoire et le choix jusqu a ce qu aucune Trame ne puisse resister.'
+      en: 'The Authorless is the causal pressure of Route X, the inhabited route sacrificed during the First Breach and then stripped of names by A.R.C.A. Veyr passage gave that pressure form and access to the multiverse; it did not summon an external entity. It removes meaning, origin, memory, and choice until no Thread can resist.',
+      fr: 'Le Sans-Auteur est la pression causale de la Route X, route habitee sacrifiee pendant la Premiere Breche puis privee de noms par A.R.C.A. Le passage de Veyr a donne une forme et un acces multiversel a cette pression; il n a pas invoque une entite exterieure. Elle retire le sens, l origine, la memoire et le choix jusqu a ce qu aucune Trame ne puisse resister.'
     }
   },
   {
@@ -97,8 +97,8 @@ export const CORE_CODEX_ENTRIES = [
     category: { en: 'Hidden Truth', fr: 'Verite cachee' },
     title: { en: 'Veyr, Cartographer of Ruptures', fr: 'Veyr, Cartographe des Ruptures' },
     desc: {
-      en: 'Veyr was an Archivist who tried to build a peaceful Nexus between worlds. That attempt caused the First Breach and gave the Authorless a path into the multiverse.',
-      fr: 'Veyr etait un Archiviste qui voulait creer un Nexus de paix entre les mondes. Cette tentative a cause la Premiere Breche et offert au Sans-Auteur un chemin dans le multivers.'
+      en: 'Veyr was an Archivist who tried to build a peaceful Nexus between worlds. He opened the First Breach knowing one route would fall. Route X became causal pressure when A.R.C.A. erased its names; Veyr passage gave that pressure form and access, but did not import a being from outside the multiverse.',
+      fr: 'Veyr etait un Archiviste qui voulait creer un Nexus de paix entre les mondes. Il ouvrit la Premiere Breche en sachant qu une route tomberait. La Route X devint une pression causale quand A.R.C.A. effaca ses noms; le passage de Veyr donna une forme et un acces a cette pression, sans importer un etre venu de l exterieur du multivers.'
     }
   }
 ];
@@ -108,48 +108,48 @@ export const NARRATIVE_ACTS = [
     id: 'prologue',
     title: { en: 'Prologue - The Sky Breaks', fr: 'Prologue - Le ciel se brise' },
     text: {
-      en: 'A.R.C.A. detects a living signal inside the Nexus while broken Threads fall through the Veil.',
-      fr: 'A.R.C.A. detecte un signal vivant dans le Nexus pendant que des Trames brisees tombent a travers le Voile.'
+      en: 'A.R.C.A. detects a living signal inside the Nexus. The Anchor forms Cell ZERO and restores the first Lock of Name.',
+      fr: 'A.R.C.A. detecte un signal vivant dans le Nexus. L Ancre forme la cellule ZERO et restaure le premier Verrou du Nom.'
     }
   },
   {
     id: 'arrivals',
-    title: { en: 'Act I - The Arrivals', fr: 'Acte I - Les Arrivants' },
+    title: { en: 'Act I - The Lives That Arrive', fr: 'Acte I - Les vies qui arrivent' },
     text: {
-      en: 'Heroes, bosses, relics, and Resonance Personas appear without understanding what pulled them away from home.',
-      fr: 'Heros, boss, reliques et Personas de Resonance apparaissent sans comprendre ce qui les a arraches a leur monde.'
+      en: 'Contradictory memories and possible lives reveal how the Authorless turns regret into attractive replacements.',
+      fr: 'Les memoires contradictoires et les vies possibles revelent comment le Sans-Auteur transforme le regret en remplacements seduisants.'
     }
   },
   {
     id: 'anchors',
     title: { en: 'Act II - The War of Anchors', fr: 'Acte II - La Guerre des Ancrages' },
     text: {
-      en: 'Factions fight to control stable anchors while the player learns to recover Origin Shards.',
-      fr: 'Les factions se battent pour controler les ancrages stables pendant que le joueur apprend a recuperer les Eclats d Origine.'
+      en: 'The Black Ledger exposes the route sacrificed to stabilize the first anchors. A.R.C.A. must acknowledge its debt instead of turning it into a weapon.',
+      fr: 'Le Registre noir expose la route sacrifiee pour stabiliser les premiers ancrages. A.R.C.A. doit reconnaitre sa dette au lieu d en faire une arme.'
     }
   },
   {
     id: 'archives',
     title: { en: 'Act III - The Impossible Archives', fr: 'Acte III - Les Archives Impossibles' },
     text: {
-      en: 'The truth about Veyr surfaces inside archives that remember futures which never happened.',
-      fr: 'La verite sur Veyr remonte dans des archives capables de se souvenir de futurs qui n ont jamais eu lieu.'
+      en: 'Perfect portals offer lives without failure. Cell ZERO preserves the only causal passage because it still carries names, losses, and contradictions.',
+      fr: 'Les portails parfaits offrent des vies sans echec. La cellule ZERO conserve le seul passage causal parce qu il transporte encore noms, pertes et contradictions.'
     }
   },
   {
     id: 'white-void',
     title: { en: 'Act IV - The White Void', fr: 'Acte IV - Le Vide Blanc' },
     text: {
-      en: 'The Authorless begins deleting color, conflict, music, memory, and choice from the Nexus.',
-      fr: 'Le Sans-Auteur commence a supprimer la couleur, le conflit, la musique, la memoire et le choix du Nexus.'
+      en: 'The Authorless takes form at the White Threshold. The Anchor records and bounds it rather than repeating the original erasure; its first coordinate reveals Route X.',
+      fr: 'Le Sans-Auteur prend forme au Seuil blanc. L Ancre l inscrit et le limite au lieu de repeter l effacement originel; sa premiere coordonnee revele la Route X.'
     }
   },
   {
     id: 'primordial',
     title: { en: 'Act V - The Primordial Breach', fr: 'Acte V - La Breche Primordiale' },
     text: {
-      en: 'The squad reaches the first wound and must decide whether to seal, converge, break, or surrender the multiverse.',
-      fr: 'L escouade atteint la premiere blessure et doit choisir entre sceller, faire converger, rompre ou abandonner le multivers.'
+      en: 'Route X recovers its names, Veyr and A.R.C.A. answer for their distinct decisions, and the squad reaches the first wound to choose whether to seal, converge, break, or surrender the multiverse.',
+      fr: 'La Route X retrouve ses noms, Veyr et A.R.C.A. repondent de leurs decisions distinctes, puis l escouade atteint la premiere blessure et choisit entre sceller, faire converger, rompre ou abandonner le multivers.'
     }
   }
 ];

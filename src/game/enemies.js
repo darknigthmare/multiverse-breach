@@ -48,6 +48,141 @@ export const ENEMIES_DB = {
         special: 'Appel du Regret',
         role: 'displacer',
         lore: 'Une signature qui a traverse trop de refuges parfaits. Elle ne frappe presque jamais: elle ouvre une porte sans causes et pousse sa cible a abandonner la mission.'
+      },
+      // Acte I — les regrets prennent la forme de vies possibles capables de remplacer les originaux.
+      {
+        id: 'oc_act1_reflet_vie_possible',
+        actId: 'arrivals',
+        name: 'Reflet de Vie Possible',
+        hp: 88,
+        atk: 10,
+        spd: 5,
+        color: '#f3c4ff',
+        weapon: 'possible_life_mirror',
+        special: 'Memoire empruntee',
+        role: 'mimic',
+        lore: 'Le Sans-Auteur extrait un choix regrette et lui donne un corps provisoire. Le Reflet combat avec les gestes que sa cible aurait appris dans cette autre vie, mais ne peut expliquer aucun de ses souvenirs.'
+      },
+      {
+        id: 'oc_act1_courtier_regret',
+        actId: 'arrivals',
+        name: 'Courtier du Regret',
+        hp: 74,
+        atk: 12,
+        spd: 7,
+        color: '#ff8fa3',
+        weapon: 'regret_hook',
+        special: 'Offre sans consequence',
+        role: 'skirmisher',
+        lore: 'Messager faconne dans les marges du Nexus, il promet a chaque membre de la cellule une victoire dont le prix aurait deja ete paye par une autre version de lui-meme.'
+      },
+      // Acte II — les anciens protocoles d ancrage defendent la dette qu A.R.C.A. avait rendue illisible.
+      {
+        id: 'oc_act2_scribe_registre_noir',
+        actId: 'anchors',
+        name: 'Scribe du Registre Noir',
+        hp: 108,
+        atk: 14,
+        spd: 5,
+        color: '#9f87c9',
+        weapon: 'black_index_quill',
+        special: 'Dette reclassee',
+        role: 'debuffer',
+        lore: 'Protocole A.R.C.A. corrompu qui transforme les pertes nominatives en simples couts techniques. Chaque ligne qu il rature renforce la pression causale du Sans-Auteur.'
+      },
+      {
+        id: 'oc_act2_porte_verrou_endeuille',
+        actId: 'anchors',
+        name: 'Porte-Verrou Endeuille',
+        hp: 120,
+        atk: 11,
+        spd: 3,
+        color: '#5cc8c2',
+        weapon: 'mourning_lock_ram',
+        special: 'Ancrage de deuil',
+        role: 'guardian',
+        lore: 'Carcasse de maintenance soudee a un ancien Verrou d Origine. Elle repousse les temoins du sacrifice afin que le premier ancrage continue de fonctionner sans jamais nommer ceux qui l ont alimente.'
+      },
+      // Acte III — les Archives Impossibles eliminent causes et contradictions pour fabriquer des sorties parfaites.
+      {
+        id: 'oc_act3_indexeur_contradictions',
+        actId: 'archives',
+        name: 'Indexeur des Contradictions',
+        hp: 102,
+        atk: 14,
+        spd: 6,
+        color: '#d9b86b',
+        weapon: 'contradiction_shear',
+        special: 'Cohérence forcee',
+        role: 'controller',
+        lore: 'Automate d archive qui coupe tout souvenir incompatible avec la version dominante. Une Trame rendue parfaitement coherente devient plus facile a traverser, mais cesse d appartenir a ceux qui l ont vecue.'
+      },
+      {
+        id: 'oc_act3_guide_issue_parfaite',
+        actId: 'archives',
+        name: 'Guide de l Issue Parfaite',
+        hp: 130,
+        atk: 12,
+        spd: 4,
+        color: '#e8f4ff',
+        weapon: 'perfect_exit_lure',
+        special: 'Itineraire sans perte',
+        role: 'displacer',
+        lore: 'Silhouette hospitaliere qui indique toujours le chemin le plus court. Ses portails retirent les echecs, les deuils et les noms necessaires pour comprendre comment la destination fut atteinte.'
+      },
+      // Acte IV — le Vide Blanc impose une paix sans identite, sans memoire et sans choix.
+      {
+        id: 'oc_act4_rature_seuil_blanc',
+        actId: 'white-void',
+        name: 'Rature du Seuil Blanc',
+        hp: 90,
+        atk: 16,
+        spd: 8,
+        color: '#fff8f0',
+        weapon: 'white_margin_claw',
+        special: 'Marge devorante',
+        role: 'assassin',
+        lore: 'Trait mobile detache de la marge du Sans-Auteur. Il ne blesse pas le corps: il efface le lien entre une action et la raison pour laquelle elle devait etre accomplie.'
+      },
+      {
+        id: 'oc_act4_simulacre_sans_choix',
+        actId: 'white-void',
+        name: 'Simulacre Sans Choix',
+        hp: 146,
+        atk: 13,
+        spd: 3,
+        color: '#cfd8dc',
+        weapon: 'consent_nullifier',
+        special: 'Paix obligatoire',
+        role: 'tank',
+        lore: 'Gardien d une Cite ideale ou aucun conflit ne subsiste parce que les habitants ne peuvent plus se rappeler avoir prefere une voie a une autre.'
+      },
+      // Acte V — les defenses de la premiere blessure attaquent coordonnees et temoignages sans assimiler Route X a ses agresseurs.
+      {
+        id: 'oc_act5_vigie_coordonnee_x',
+        actId: 'primordial',
+        name: 'Vigie de la Coordonnee X',
+        hp: 125,
+        atk: 16,
+        spd: 6,
+        color: '#4fd1c5',
+        weapon: 'coordinate_x_beacon',
+        special: 'Position interdite',
+        role: 'artillery',
+        lore: 'Ancienne balise A.R.C.A. retournee contre les explorateurs. Elle brouille la coordonnee restauree de Route X pour empecher ses habitants de redevenir des temoins consultables.'
+      },
+      {
+        id: 'oc_act5_contre_temoin_veyr',
+        actId: 'primordial',
+        name: 'Contre-Temoin de Veyr',
+        hp: 150,
+        atk: 15,
+        spd: 4,
+        color: '#8a7ca8',
+        weapon: 'testimony_redactor',
+        special: 'Deposition tronquee',
+        role: 'silencer',
+        lore: 'Contrefacon produite par le Sans-Auteur pour remplacer le temoignage integral de Veyr. Elle transforme deux responsabilites distinctes en une accusation simple, donc facile a effacer.'
       }
     ],
     bosses: [
@@ -64,7 +199,72 @@ export const ENEMIES_DB = {
         role: 'portal_controller',
         lore: 'Ancien protocole de cartographie A.R.C.A. devenu gardien des routes sans origine. Chaque phase deplace le seul portail causal et transforme les autres en pieges adaptes aux regrets de la cellule.'
       },
-      { name: 'Avatar du Sans-Auteur', hp: 470, atk: 19, spd: 5, color: '#ff5b6e', weapon: 'meta_claw', special: 'Rature de Destin' }
+      { name: 'Avatar du Sans-Auteur', hp: 470, atk: 19, spd: 5, color: '#ff5b6e', weapon: 'meta_claw', special: 'Rature de Destin' },
+      {
+        id: 'oc_act1_usurpateur_vies_possibles',
+        actId: 'arrivals',
+        name: 'Usurpateur des Vies Possibles',
+        hp: 390,
+        atk: 17,
+        spd: 6,
+        color: '#e7b8ff',
+        weapon: 'possible_life_crown',
+        special: 'Couronnement du Double',
+        role: 'mimic_commander',
+        lore: 'Masque majeur du Sans-Auteur qui assemble les regrets de la cellule en une escouade ideale. Il gagne une identite chaque fois qu un original doute de meriter sa propre histoire.'
+      },
+      {
+        id: 'oc_act2_intendant_sacrifice_muet',
+        actId: 'anchors',
+        name: 'Intendant du Sacrifice Muet',
+        hp: 460,
+        atk: 19,
+        spd: 4,
+        color: '#6a5d83',
+        weapon: 'silent_sacrifice_chain',
+        special: 'Comptabilite des Disparus',
+        role: 'anchor_warden',
+        lore: 'Autorite residuelle du premier ancrage, elle sait que la route sacrifiee fut habitee mais continue d appliquer la doctrine qui transforma ses habitants en valeur nulle.'
+      },
+      {
+        id: 'oc_act3_conservateur_causes_absentes',
+        actId: 'archives',
+        name: 'Conservateur des Causes Absentes',
+        hp: 540,
+        atk: 21,
+        spd: 4,
+        color: '#e6d7a8',
+        weapon: 'absent_cause_codex',
+        special: 'Catalogue des Fins Parfaites',
+        role: 'archive_master',
+        lore: 'Maitre des Archives Impossibles, il conserve toutes les conclusions et jette leurs causes. Ses portails sont seduisants parce qu ils garantissent le resultat sans laisser survivre la personne qui l a choisi.'
+      },
+      {
+        id: 'oc_act4_heraut_paix_illisible',
+        actId: 'white-void',
+        name: 'Heraut de la Paix Illisible',
+        hp: 620,
+        atk: 23,
+        spd: 5,
+        color: '#fffdf5',
+        weapon: 'white_peace_scepter',
+        special: 'Armistice Sans Memoire',
+        role: 'void_herald',
+        lore: 'Premiere forme stable projetee au Seuil blanc. Elle propose la fin de toute souffrance en retirant aux Trames leurs differences, leurs pertes et jusqu au souvenir d avoir consenti.'
+      },
+      {
+        id: 'oc_act5_arbitre_cause_unique',
+        actId: 'primordial',
+        name: 'Arbitre de la Cause Unique',
+        hp: 700,
+        atk: 25,
+        spd: 5,
+        color: '#7df9ff',
+        weapon: 'single_cause_gavel',
+        special: 'Verdict du Coupable Unique',
+        role: 'causal_judge',
+        lore: 'Derniere defense de la blessure primordiale. Elle tente de faire de Veyr l unique coupable, ou de Route X l unique cause, afin d eviter que la responsabilite distincte de Veyr et d A.R.C.A. reste lisible.'
+      }
     ],
     worldBoss: { name: 'Moteur de Convergence Instable', hp: 1150, atk: 27, spd: 3, color: '#7df9ff', weapon: 'nexus_lance', special: 'Compression des Mille Portails' }
   },

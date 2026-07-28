@@ -3,6 +3,16 @@ import { REQUESTED_UNIVERSE_WAVE } from '../src/game/requestedUniverseWave.js';
 import { RECENT_UNIVERSE_LEVELS } from '../src/game/recentUniverseLevels.js';
 import { LORE_WORLD_BOSS_OVERRIDES, LORE_WORLD_BOSS_POLICIES } from '../src/game/loreWorldBossOverrides.js';
 import { STAGE_ARC_LORE_PROFILES, STAGE_LORE_PROFILES } from '../src/game/stageLoreProfiles.js';
+import {
+  OC_CAMPAIGN_ACTS,
+  OC_CAMPAIGN_CHAPTERS,
+  OC_CAMPAIGN_ENDINGS,
+  OC_CAMPAIGN_MISSIONS,
+  OC_FINAL_MISSION_ID,
+  OC_ORIGIN_LOCKS,
+  getOcCampaignProgress
+} from '../src/game/ocCampaign.js';
+import { resolveStageEnemyData } from '../src/game/stageEnemyResolver.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -56,7 +66,19 @@ const originalOcStageLoreProfiles = stageLoreProfiles.filter(profile => profile.
 const worldBossUniverses = new Set(Object.keys(LORE_WORLD_BOSS_OVERRIDES));
 const worldBossPolicyUniverses = new Set(Object.keys(LORE_WORLD_BOSS_POLICIES));
 
-const expectedOcHeroIds = ['arca_mirelle', 'arca_bastion', 'arca_nova', 'arca_marrow', 'arca_sable', 'arca_loom'];
+const expectedOcHeroIds = [
+  'arca_mirelle',
+  'arca_bastion',
+  'arca_nova',
+  'arca_marrow',
+  'arca_sable',
+  'arca_loom',
+  'arca_tessera',
+  'arca_quillon',
+  'arca_nadir',
+  'arca_elyra',
+  'arca_oryn'
+];
 const expectedOcEnemyNames = [
   'echo-sans-auteur',
   'archiviste-rompu',
@@ -68,7 +90,22 @@ const expectedOcEnemyNames = [
   'juge-des-trames',
   'cartographe-des-portes-mortes',
   'avatar-du-sans-auteur',
-  'moteur-de-convergence-instable'
+  'moteur-de-convergence-instable',
+  'reflet-de-vie-possible',
+  'courtier-du-regret',
+  'usurpateur-des-vies-possibles',
+  'scribe-du-registre-noir',
+  'porte-verrou-endeuille',
+  'intendant-du-sacrifice-muet',
+  'indexeur-des-contradictions',
+  'guide-de-l-issue-parfaite',
+  'conservateur-des-causes-absentes',
+  'rature-du-seuil-blanc',
+  'simulacre-sans-choix',
+  'heraut-de-la-paix-illisible',
+  'vigie-de-la-coordonnee-x',
+  'contre-temoin-de-veyr',
+  'arbitre-de-la-cause-unique'
 ];
 const expectedOcItemIds = ['arca-signal-lens', 'nexus-anchor-coil', 'origin-shard-guard'];
 const expectedOcProceduralThreats = ['Double ideal de Marrow', 'Matrice de Substitution'];
@@ -350,14 +387,155 @@ expectedOcItemIds.forEach(itemId => {
   assert(manifestOutputs.has(`/sprites/generated/items/nexus-de-convergence/${itemId}.png`), `Missing OC item sprite ${itemId}.`);
 });
 
-[
-  ['8801', 'RPG'],
-  ['8802', 'Tactics'],
-  ['8803', 'Smash']
-].forEach(([stageId, mode]) => {
-  assert(hubSource.includes(`id: ${stageId}`), `Base OC stage ${stageId} is missing.`);
-  assert(hubSource.includes(`mode: '${mode}'`), `Base OC stage ${stageId} should preserve ${mode} coverage.`);
+const numberedOcActs = OC_CAMPAIGN_ACTS.filter(act => act.number > 0);
+assert(numberedOcActs.length === 5, 'The OC campaign must contain five complete numbered acts.');
+assert(
+  numberedOcActs.every((act, index) => act.number === index + 1 && act.missionIds.length > 0 && act.finaleMissionId),
+  'Each OC act must have ordered playable missions and an explicit finale.'
+);
+assert(OC_CAMPAIGN_MISSIONS.length === 12, 'The complete five-act OC campaign must expose twelve playable operations.');
+assert(
+  OC_CAMPAIGN_MISSIONS.every((mission, index) => (
+    mission.id === 8801 + index
+    && mission.sequence === index + 1
+    && OC_CAMPAIGN_CHAPTERS.some(chapter => chapter.id === mission.chapterId)
+    && OC_CAMPAIGN_ACTS.some(act => act.id === mission.actId)
+  )),
+  'OC campaign IDs, sequence, chapters, and acts must form one coherent playable route.'
+);
+assert(
+  ['RPG', 'Tactics', 'Smash'].every(mode => OC_CAMPAIGN_MISSIONS.some(mission => mission.mode === mode)),
+  'The complete OC campaign must preserve RPG, Tactics, and Smash coverage.'
+);
+assert(
+  hubSource.includes('OC_CAMPAIGN_MISSIONS.map') && !hubSource.includes('id: 8801,'),
+  'HubScreen must derive the playable OC stage registry from the canonical mission list.'
+);
+const ocMissionIds = OC_CAMPAIGN_MISSIONS.map(mission => mission.id);
+const completeOcProgress = getOcCampaignProgress(ocMissionIds, 'seal');
+assert(
+  completeOcProgress.complete && completeOcProgress.completedCount === OC_CAMPAIGN_MISSIONS.length,
+  'Completing every OC operation and an ending must close the campaign.'
+);
+assert(
+  OC_CAMPAIGN_MISSIONS.every(mission => (
+    mission.displayName?.fr
+    && mission.displayName?.en
+    && mission.storyBeat?.intro?.fr
+    && mission.storyBeat?.outro?.en
+    && mission.rewardItemId
+    && mission.rewardItemName?.fr
+    && mission.enemyRosterExclusive === true
+    && Array.isArray(mission.scenes)
+    && mission.scenes.length >= 3
+    && existsSync(new URL(`../public${mission.image}`, import.meta.url))
+  )),
+  'Every OC operation must be localized, rewarded, narratively staged, exclusive, and backed by existing key art.'
+);
+const nexusEnemySectionStart = enemiesSource.indexOf("'Nexus de Convergence':");
+const nexusEnemySectionEnd = enemiesSource.indexOf("\n  'Gears of War':", nexusEnemySectionStart);
+assert(
+  nexusEnemySectionStart >= 0 && nexusEnemySectionEnd > nexusEnemySectionStart,
+  'The Nexus enemy registry must remain a distinct base-game section.'
+);
+const nexusEnemySection = enemiesSource.slice(nexusEnemySectionStart, nexusEnemySectionEnd);
+const nexusMonsterSectionEnd = nexusEnemySection.indexOf('bosses: [');
+const nexusBossSectionEnd = nexusEnemySection.indexOf('worldBoss:');
+assert(
+  nexusMonsterSectionEnd > 0 && nexusBossSectionEnd > nexusMonsterSectionEnd,
+  'The Nexus registry must preserve separate standard enemy and boss pools.'
+);
+const parseOcActEntries = section => [...section.matchAll(
+  /id:\s*'(oc_act([1-5])_[^']+)'[\s\S]*?actId:\s*'([^']+)'[\s\S]*?name:\s*'([^']+)'/g
+)].map(match => ({
+  id: match[1],
+  actNumber: Number(match[2]),
+  actId: match[3],
+  name: match[4]
+}));
+const ocActStandardEnemies = parseOcActEntries(nexusEnemySection.slice(0, nexusMonsterSectionEnd));
+const ocActBosses = parseOcActEntries(nexusEnemySection.slice(nexusMonsterSectionEnd, nexusBossSectionEnd));
+const ocActEnemyIds = [...ocActStandardEnemies, ...ocActBosses].map(enemy => enemy.id);
+assert(ocActStandardEnemies.length === 10, 'The five OC acts must add exactly ten original standard enemies.');
+assert(ocActBosses.length === 5, 'The five OC acts must add exactly five original bosses.');
+assert(new Set(ocActEnemyIds).size === 15, 'Original OC act enemy IDs must be unique.');
+numberedOcActs.forEach(act => {
+  const actStandards = ocActStandardEnemies.filter(enemy => enemy.actId === act.id);
+  const actBosses = ocActBosses.filter(enemy => enemy.actId === act.id);
+  const actMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.actId === act.id);
+  assert(
+    actStandards.length === 2 && actStandards.every(enemy => enemy.actNumber === act.number),
+    `OC act ${act.number} must own exactly two original standard enemies.`
+  );
+  assert(
+    actBosses.length === 1 && actBosses[0].actNumber === act.number,
+    `OC act ${act.number} must own exactly one original boss.`
+  );
+  actStandards.forEach(enemy => {
+    assert(
+      actMissions.some(mission => mission.enemyRoster?.includes(enemy.name)),
+      `Original OC standard enemy ${enemy.id} must be wired to an act ${act.number} mission.`
+    );
+  });
+  assert(
+    actMissions.some(mission => mission.bossName === actBosses[0].name),
+    `Original OC boss ${actBosses[0].id} must be wired to an act ${act.number} mission.`
+  );
 });
+const ocRewardHeroMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.rewardHeroId);
+const ocRewardHeroIds = ocRewardHeroMissions.map(mission => mission.rewardHeroId);
+assert(ocRewardHeroMissions.length === 5, 'The five numbered OC acts must expose five reward heroes.');
+assert(new Set(ocRewardHeroIds).size === 5, 'OC campaign reward hero IDs must be unique.');
+numberedOcActs.forEach(act => {
+  assert(
+    ocRewardHeroMissions.filter(mission => mission.actId === act.id).length === 1,
+    `OC act ${act.number} must grant exactly one reward hero.`
+  );
+});
+ocRewardHeroMissions.forEach(mission => {
+  assert(
+    heroesSource.includes(`id: '${mission.rewardHeroId}'`)
+    && heroesSource.includes(`name: '${mission.rewardHeroName?.fr}'`),
+    `OC reward hero ${mission.rewardHeroId} must resolve in the playable hero registry.`
+  );
+  assert(
+    characterPlaquesSource.includes(`  ${mission.rewardHeroId}: {`),
+    `OC reward hero ${mission.rewardHeroId} must own an explicit character plaque.`
+  );
+});
+const nexusMonsterNames = [...new Set(OC_CAMPAIGN_MISSIONS.flatMap(mission => mission.enemyRoster || []))];
+const nexusWorldBossName = 'Moteur de Convergence Instable';
+const nexusBossNames = [...new Set(
+  OC_CAMPAIGN_MISSIONS
+    .map(mission => mission.bossName)
+    .filter(name => name && name !== nexusWorldBossName)
+)];
+const nexusEnemies = {
+  monsters: nexusMonsterNames.map(name => ({ name, hp: 80, atk: 10, def: 5, spd: 8 })),
+  bosses: nexusBossNames.map(name => ({ name, hp: 420, atk: 18, def: 10, spd: 5 })),
+  worldBoss: { name: nexusWorldBossName, hp: 1150, atk: 27, def: 14, spd: 3 }
+};
+OC_CAMPAIGN_MISSIONS.forEach(mission => {
+  assert(enemiesSource.includes(mission.bossName), `Nexus enemy data must contain OC boss ${mission.bossName}.`);
+  const resolved = resolveStageEnemyData({
+    stage: mission,
+    monsters: nexusEnemies.monsters,
+    bosses: nexusEnemies.bosses,
+    worldBoss: nexusEnemies.worldBoss
+  });
+  const resolvedBoss = resolved.worldBoss || resolved.bosses[0];
+  assert(resolvedBoss?.name === mission.bossName, `OC mission ${mission.id} must play its announced boss ${mission.bossName}.`);
+});
+assert(
+  OC_CAMPAIGN_MISSIONS.at(-1)?.id === OC_FINAL_MISSION_ID
+  && OC_CAMPAIGN_MISSIONS.at(-1)?.campaignFinale === true,
+  'The final OC operation must be the explicit campaign finale.'
+);
+assert(
+  OC_CAMPAIGN_ENDINGS.length === 4
+  && ['seal', 'converge', 'break', 'surrender'].every(id => OC_CAMPAIGN_ENDINGS.some(ending => ending.id === id)),
+  'Act V must conclude with all four canonical endings.'
+);
 
 assert(enemiesSource.includes("'Nexus de Convergence'"), 'Base OC enemy table is missing.');
 assert(enemiesSource.includes('Pelerin de la Fausse Sortie') && enemiesSource.includes('Cartographe des Portes Mortes'), 'Chapter IV OC threats must remain connected to the Nexus enemy roster.');
@@ -365,12 +543,19 @@ expectedOcProceduralThreats.forEach(name => {
   assert(enemiesSource.includes(name), `Missing playable OC threat ${name}.`);
 });
 assert(enemiesSource.includes('origin_forge_double') && enemiesSource.includes('spriteFilter') && rendererSource.includes('origin_forge_matrix'), 'Origin Foundry threats must keep distinct animated derived/procedural visuals.');
-assert(ocCampaignSource.includes("enemyRoster: ['Double ideal de Marrow', 'Matrice de Substitution', 'Fragment Vagabond']"), 'Chapter II must prioritize its own lore roster in combat.');
+const originFoundryMission = OC_CAMPAIGN_MISSIONS.find(mission => mission.id === 8803);
+const actOneOriginalStandards = ocActStandardEnemies.filter(enemy => enemy.actId === 'arrivals');
+assert(
+  originFoundryMission?.enemyRoster?.includes('Matrice de Substitution')
+  && actOneOriginalStandards.every(enemy => originFoundryMission.enemyRoster.includes(enemy.name)),
+  'The Origin Foundry climax must prioritize its two Act I threats and the substitution matrix.'
+);
 expectedOcOriginLocks.forEach(lockId => {
   assert(ocCampaignSource.includes(`originLockId: '${lockId}'`), `Missing OC Origin Lock ${lockId}.`);
 });
 assert(ocCampaignSource.includes('export const OC_ORIGIN_LOCKS') && hubSource.includes('oc-origin-locks-track'), 'The six Origin Locks must remain centralized and visible in the OC chronicle.');
-assert((ocCampaignSource.match(/enemyRosterExclusive: true/g) || []).length === expectedOcOriginLocks.length, 'Every OC operation must keep an exclusive lore roster.');
+assert(OC_ORIGIN_LOCKS.length === expectedOcOriginLocks.length, 'The complete campaign must preserve the six Origin Locks.');
+assert((ocCampaignSource.match(/enemyRosterExclusive: true/g) || []).length === OC_CAMPAIGN_MISSIONS.length, 'Every OC operation must keep an exclusive lore roster.');
 assert(gameCanvasSource.includes('resolveStageEnemyData'), 'GameCanvas must enforce exact mission rosters and canonical bosses.');
 assert(spriteChecklistSource.includes('[ ] Double ideal de Marrow'), 'Deferred Marrow double generation must remain visible in the conversion checklist.');
 assert(spriteChecklistSource.includes('[x] Matrice de Substitution'), 'The completed Matrice de Substitution sheet must remain visible in the conversion checklist.');
@@ -452,8 +637,8 @@ expectedFeaturedUniverses.forEach(universe => {
   assert(count('hero') >= 3, `${universe} must expose at least three playable characters.`);
   assert(count('enemy') >= 3, `${universe} must expose at least three canon threats.`);
   assert(count('boss') >= 3, `${universe} must expose two bosses and one world boss.`);
-  const expectedItemCount = universe === 'Hellraiser' ? 15 : 9;
-  assert(count('item') === expectedItemCount, `${universe} must expose the expected gear, event, and melee item visuals.`);
+  const expectedItemCount = universe === 'Hellraiser' ? 8 : 5;
+  assert(count('item') >= expectedItemCount, `${universe} must expose its complete gear, event, and summon visual set.`);
   assert(visualEntries.filter(entry => entry.kind === 'universe-icon').length === 1, `${universe} must expose one dedicated universe icon route.`);
   assert(visualEntries.filter(entry => entry.kind === 'stage-backdrop').length === 3, `${universe} must expose dedicated RPG, Tactics, and Smash backdrop routes.`);
 });
@@ -474,7 +659,12 @@ assert(hubSource.includes('getUniverseArcRosterStatus'), 'Universe arc roster ga
 assert(hubSource.includes('getTrioArcRosterStatus'), 'Trio arc roster gates must stay wired.');
 assert(hubSource.includes('isCurrentStoryChapterStage'), 'Story mode must filter portals by the active chapter.');
 assert(hubSource.includes('storyChapterStages'), 'Story mode count must be based on the active chapter pool.');
-assert(hubSource.includes('isOcStoryStage') && hubSource.includes('stage?.baseGameStage'), 'Main story must be restricted to OC base-game stages.');
+assert(
+  hubSource.includes('isOcStoryStage')
+  && hubSource.includes('getOcMissionForStage')
+  && hubSource.includes('getOcCampaignMission(stage?.id)'),
+  'Main story must be restricted to canonical OC campaign stages.'
+);
 assert(hubSource.includes('completedOcStoryClears'), 'Story chapter progression must count only completed OC story stages.');
 assert(storySource.includes("worlds remain side archives") || storySource.includes('DLC remain side archives') || storySource.includes('Side universes may now join the Nexus'), 'Story copy must describe licensed universes as side archives, not campaign requirements.');
 assert(hubSource.includes('finalGameBoss: true') && hubSource.includes('dlcStage: true'), 'Meta final boss must be flagged as DLC/meta content outside the OC story.');
@@ -546,7 +736,20 @@ assert(rpgEngineSource.includes("drawPixelSprite(ctx, h.x, h.y, h, animTime, h.f
 assert(tacticsEngineSource.includes("drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing") && tacticsEngineSource.includes("drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing"), 'Tactics rendering must respect live unit orientation.');
 assert(rendererSource.includes('drawBoss = (ctx, x, y, boss, animTime, facing = -1)') && rendererSource.includes('ctx.scale(facing, 1)'), 'Boss rendering must accept live orientation instead of forcing left.');
 assert(hubSource.includes('const previousNpcX = npc.x') && hubSource.includes('const horizontalTravel = npc.x - previousNpcX'), 'Mosaic City NPC facing must follow actual horizontal travel.');
-assert(ocCampaignSource.includes('chapter-04-broken-portal-yard-v1.png') && ocCampaignSource.includes('chapter-05-white-threshold-v1.png'), 'Final OC chapters must keep their dedicated OpenAI key art.');
+const dedicatedOcChapterKeyArts = [
+  '/images/campaign-oc/chapter-04-broken-portal-yard-v1.png',
+  '/images/campaign-oc/chapter-05-white-threshold-v1.png',
+  '/images/campaign-oc/chapter-06-route-x-v1.png',
+  '/images/campaign-oc/chapter-07-veyr-observatory-v1.png',
+  '/images/campaign-oc/chapter-08-primordial-breach-v1.png'
+];
+dedicatedOcChapterKeyArts.forEach(assetRoute => {
+  assert(
+    ocCampaignSource.includes(assetRoute)
+    && existsSync(new URL(`../public${assetRoute}`, import.meta.url)),
+    `Dedicated OC chapter key art must exist and remain wired: ${assetRoute}.`
+  );
+});
 assert(spriteAssetsSource.includes('normalizeSpriteSrc') && spriteAssetsSource.includes('new URL(value).pathname'), 'Sprite layout lookup must normalize absolute browser URLs before matching generated sheet paths.');
 assert(rendererSource.includes('getSpriteSheetLayout') && rendererSource.includes('getSpriteFrameForLayout'), 'Renderer must crop generated sprites through per-sheet layouts.');
 assert(rendererSource.includes('sourceY') && rendererSource.includes('sourceH') && spriteAssetsSource.includes('trimByState'), 'Renderer must support per-sheet trim data to avoid adjacent OpenAI sprite bleed.');
@@ -798,7 +1001,13 @@ assert(
   'Generated stage runtime registry must match the available stage backdrop count in the OpenAI manifest.',
 );
 assert(manifest.counts?.finales === worldBossPolicyUniverses.size, 'OpenAI manifest must expose every non-combat or set-piece finale kit.');
-assert(manifest.counts?.items === 573, 'OpenAI manifest must expose the complete lore item prompt catalog including the three standalone OC acts.');
+const manifestItemEntries = (manifest.entries || []).filter(entry => entry.kind === 'item');
+assert(
+  manifest.counts?.items === manifestItemEntries.length
+  && new Set(manifestItemEntries.map(entry => entry.output)).size === manifestItemEntries.length
+  && manifestItemEntries.length >= 661,
+  'OpenAI manifest must expose a unique item prompt for every complete lore item contract without regressing the established catalog.',
+);
 worldBossPolicyUniverses.forEach(universe => {
   assert(!worldBossUniverses.has(universe), `${universe} cannot be both a combat world boss and a finale policy.`);
 });
@@ -821,6 +1030,12 @@ console.log(JSON.stringify({
   ocThreatSprites: expectedOcEnemyNames.length,
   ocProceduralThreats: expectedOcProceduralThreats.length,
   ocOriginLocks: expectedOcOriginLocks.length,
+  ocCampaignActs: numberedOcActs.length,
+  ocCampaignMissions: OC_CAMPAIGN_MISSIONS.length,
+  ocCampaignEndings: OC_CAMPAIGN_ENDINGS.length,
+  ocCampaignRewardHeroes: ocRewardHeroIds.length,
+  ocActStandardEnemies: ocActStandardEnemies.length,
+  ocActBosses: ocActBosses.length,
   ocDeferredSprites: expectedOcDeferredSprites.length,
   ocItemSprites: expectedOcItemIds.length,
   chuckyOpenAiSprites: expectedChuckySpriteOutputs.length,

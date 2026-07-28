@@ -9,7 +9,19 @@ import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_I
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
-import { OC_CAMPAIGN, OC_CAMPAIGN_CHAPTERS, OC_CAMPAIGN_MISSIONS, OC_ORIGIN_LOCKS, getOcCampaignMission } from '../game/ocCampaign';
+import {
+  OC_CAMPAIGN,
+  OC_CAMPAIGN_ACTS,
+  OC_CAMPAIGN_CHAPTERS,
+  OC_CAMPAIGN_ENDINGS,
+  OC_CAMPAIGN_EPILOGUE,
+  OC_CAMPAIGN_MISSIONS,
+  OC_ORIGIN_LOCKS,
+  getNextOcCampaignMission,
+  getOcCampaignEnding,
+  getOcCampaignMission,
+  getOcCampaignProgress
+} from '../game/ocCampaign';
 import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getUnlockableById } from '../game/universeUnlockables';
@@ -38,6 +50,61 @@ const getLocalizedText = (entry, lang, fallback = '') => {
   if (typeof entry === 'string') return entry;
   return entry[lang] || entry.fr || entry.en || fallback;
 };
+
+// Gear Shop visuals try the OpenAI item asset first. The compact glyph is only
+// exposed after a missing source or a real loading error, including to readers.
+function GearShopItemVisual({ item, lang, accent, fallbackGlyph }) {
+  const spriteSrc = getItemSpriteSrc(item);
+  const [spriteFailed, setSpriteFailed] = useState(!spriteSrc);
+  const itemName = getLocalizedText(item.name, lang, item.id);
+
+  useEffect(() => {
+    setSpriteFailed(!spriteSrc);
+  }, [spriteSrc]);
+
+  if (spriteFailed) {
+    return (
+      <span
+        role="img"
+        aria-label={lang === 'fr'
+          ? `Illustration indisponible pour ${itemName}`
+          : `Illustration unavailable for ${itemName}`}
+        style={{
+          transform: 'rotate(-45deg)',
+          color: '#fff',
+          fontSize: fallbackGlyph.length > 5 ? '10px' : '14px',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          textShadow: `0 0 8px ${accent}`,
+          maxWidth: '68px',
+          lineHeight: 1.05
+        }}
+      >
+        {fallbackGlyph}
+      </span>
+    );
+  }
+
+  return (
+    <img
+      src={spriteSrc}
+      alt={lang === 'fr' ? `Illustration OpenAI de ${itemName}` : `OpenAI artwork of ${itemName}`}
+      loading="lazy"
+      decoding="async"
+      onError={() => setSpriteFailed(true)}
+      style={{
+        width: '82%',
+        height: '82%',
+        maxWidth: '74px',
+        maxHeight: '74px',
+        objectFit: 'contain',
+        imageRendering: 'pixelated',
+        transform: 'rotate(-45deg)',
+        filter: `drop-shadow(0 0 7px ${accent}aa)`
+      }}
+    />
+  );
+}
 
 const getProfileBannerBackground = (banner) => {
   if (!banner) return undefined;
@@ -308,7 +375,8 @@ function MissionDirectory({
           {filteredStages.map(stage => {
             const completed = completedStages.includes(stage.id);
             const unlocked = isStageUnlocked(stage);
-            const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode)
+            const backdrop = stage.stageArt
+              || getOpenAiBackdropSrc(stage.universe, stage.mode)
               || emptyBackdrop
               || '/images/missions/fusion-rifts.webp';
             const modifier = getStageModifier(stage);
@@ -674,27 +742,48 @@ function OcDlcLibrary({
   );
 }
 
-function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnlocked, onOpenBriefing }) {
+function OcCampaignChronicle({
+  lang,
+  completedStages,
+  currentChapter,
+  isStageUnlocked,
+  campaignProgress = null,
+  onReplayEnding,
+  onOpenBriefing
+}) {
+  const endingId = campaignProgress?.endingId || null;
+  const canonicalProgress = getOcCampaignProgress(completedStages, endingId);
+  const completedMissionIdSet = new Set(canonicalProgress.completedMissionIds);
   const currentChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === currentChapter.id);
-  const nextMission = OC_CAMPAIGN_MISSIONS.find(mission => !completedStages.includes(mission.id) && isStageUnlocked(mission));
-  const [selectedMissionId, setSelectedMissionId] = useState(nextMission?.id || currentChapterMissions[0]?.id || OC_CAMPAIGN_MISSIONS[0].id);
+  const nextMission = canonicalProgress.nextMission || getNextOcCampaignMission(completedStages);
+  const completedCampaignMission = canonicalProgress.missionsComplete
+    ? OC_CAMPAIGN_MISSIONS[OC_CAMPAIGN_MISSIONS.length - 1]
+    : null;
+  const [selectedMissionId, setSelectedMissionId] = useState(
+    nextMission?.id
+    || completedCampaignMission?.id
+    || currentChapterMissions[0]?.id
+    || OC_CAMPAIGN_MISSIONS[0]?.id
+    || null
+  );
   const [cinematicMissionId, setCinematicMissionId] = useState(null);
   const [sceneIndex, setSceneIndex] = useState(0);
   const selectedMission = getOcCampaignMission(selectedMissionId) || currentChapterMissions[0] || OC_CAMPAIGN_MISSIONS[0];
   const selectedChapter = OC_CAMPAIGN_CHAPTERS.find(chapter => chapter.id === selectedMission.chapterId) || currentChapter;
   const selectedChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === selectedChapter.id);
-  const selectedChapterClears = selectedChapterMissions.filter(mission => completedStages.includes(mission.id)).length;
+  const selectedChapterClears = selectedChapterMissions.filter(mission => completedMissionIdSet.has(mission.id)).length;
   const selectedChapterComplete = selectedChapterClears === selectedChapterMissions.length;
-  const stabilizedOriginLocks = OC_ORIGIN_LOCKS.filter(lock => completedStages.includes(lock.missionId)).length;
+  const stabilizedOriginLocks = canonicalProgress.lockIds.length;
   const selectedOriginLock = OC_ORIGIN_LOCKS.find(lock => lock.id === selectedMission.originLockId);
+  const selectedEnding = getOcCampaignEnding(canonicalProgress.endingId);
   const cinematicMission = getOcCampaignMission(cinematicMissionId);
   const cinematicScene = cinematicMission?.scenes?.[sceneIndex];
 
   useEffect(() => {
-    if (!currentChapterMissions.some(mission => mission.id === selectedMissionId)) {
-      setSelectedMissionId(nextMission?.id || currentChapterMissions[0]?.id || OC_CAMPAIGN_MISSIONS[0].id);
+    if (!getOcCampaignMission(selectedMissionId)) {
+      setSelectedMissionId(nextMission?.id || currentChapterMissions[0]?.id || OC_CAMPAIGN_MISSIONS[0]?.id || null);
     }
-  }, [currentChapter.id, currentChapterMissions, nextMission?.id, selectedMissionId]);
+  }, [currentChapterMissions, nextMission?.id, selectedMissionId]);
 
   useEffect(() => {
     if (!cinematicMissionId) return undefined;
@@ -727,10 +816,57 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
           <h2 id="oc-campaign-title">{getLocalizedText(OC_CAMPAIGN.title, lang)}</h2>
           <p>{getLocalizedText(OC_CAMPAIGN.premise, lang)}</p>
           <div className="oc-campaign-hero-meta">
-            <b>{completedStages.filter(id => OC_CAMPAIGN_MISSIONS.some(mission => mission.id === id)).length}/{OC_CAMPAIGN_MISSIONS.length} {lang === 'fr' ? 'operations stabilisees' : 'stabilized operations'}</b>
+            <b>{canonicalProgress.completedCount}/{canonicalProgress.totalCount} {lang === 'fr' ? 'operations stabilisees' : 'stabilized operations'} ({canonicalProgress.percent}%)</b>
             <b>{stabilizedOriginLocks}/{OC_ORIGIN_LOCKS.length} {lang === 'fr' ? 'Verrous d Origine recuperes' : 'Origin Locks recovered'}</b>
             <em>{lang === 'fr' ? 'Menace' : 'Threat'}: {getLocalizedText(OC_CAMPAIGN.threat, lang)}</em>
           </div>
+        </div>
+      </div>
+
+      <div className="oc-origin-locks" aria-label={lang === 'fr' ? 'Progression des actes de la campagne' : 'Campaign act progress'}>
+        <div className="oc-origin-locks-head">
+          <div>
+            <span>{lang === 'fr' ? 'CHRONIQUE DES ACTES' : 'ACT CHRONICLE'}</span>
+            <strong>{lang === 'fr' ? 'Une seule route causale, du premier nom au choix primordial' : 'One causal route, from the first name to the primordial choice'}</strong>
+          </div>
+          <b>{canonicalProgress.percent}%</b>
+        </div>
+        <div className="oc-origin-locks-track" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))' }}>
+          {OC_CAMPAIGN_ACTS.map((act) => {
+            const actMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.actId === act.id);
+            const actCompletedCount = actMissions.filter(mission => completedMissionIdSet.has(mission.id)).length;
+            const actComplete = actMissions.length > 0 && actCompletedCount === actMissions.length;
+            const firstActMission = actMissions[0];
+            const actUnlocked = Boolean(
+              firstActMission
+              && (completedMissionIdSet.has(firstActMission.id) || isStageUnlocked(firstActMission))
+            );
+            const targetMission = actMissions.find(mission => !completedMissionIdSet.has(mission.id) && isStageUnlocked(mission))
+              || [...actMissions].reverse().find(mission => completedMissionIdSet.has(mission.id))
+              || firstActMission;
+            const active = selectedMission.actId === act.id;
+            return (
+              <button
+                key={act.id}
+                type="button"
+                className={`${active ? 'active' : ''} ${actComplete ? 'completed' : ''} ${!actUnlocked ? 'locked' : ''}`}
+                disabled={!actUnlocked || !targetMission}
+                onClick={() => {
+                  setSelectedMissionId(targetMission.id);
+                  sound.playSfx('click');
+                }}
+                title={getLocalizedText(act.summary, lang)}
+              >
+                <span>{String(act.number).padStart(2, '0')}</span>
+                <strong>{getLocalizedText(act.title, lang)}</strong>
+                <em>{actComplete
+                  ? (lang === 'fr' ? 'ACTE STABILISE' : 'ACT STABILIZED')
+                  : actUnlocked
+                    ? `${actCompletedCount}/${actMissions.length}`
+                    : (lang === 'fr' ? 'HORS CAUSALITE' : 'OUT OF CAUSALITY')}</em>
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -745,7 +881,7 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
         <div className="oc-origin-locks-track">
           {OC_ORIGIN_LOCKS.map((lock) => {
             const mission = getOcCampaignMission(lock.missionId);
-            const completed = completedStages.includes(lock.missionId);
+            const completed = completedMissionIdSet.has(lock.missionId);
             const unlocked = mission ? isStageUnlocked(mission) : false;
             const active = selectedMission.originLockId === lock.id;
             return (
@@ -805,7 +941,7 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
         <div className="oc-campaign-timeline" aria-label={lang === 'fr' ? 'Operations de la campagne OC' : 'OC campaign operations'}>
           {OC_CAMPAIGN_MISSIONS.map((mission) => {
             const chapter = OC_CAMPAIGN_CHAPTERS.find(entry => entry.id === mission.chapterId);
-            const completed = completedStages.includes(mission.id);
+            const completed = completedMissionIdSet.has(mission.id);
             const unlocked = isStageUnlocked(mission);
             const active = selectedMission.id === mission.id;
             return (
@@ -853,6 +989,16 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
             <div><small>{lang === 'fr' ? 'Signatures hostiles' : 'Hostile signatures'}</small><strong>{selectedMission.enemyRoster?.join(' / ') || (lang === 'fr' ? 'Pool Nexus standard' : 'Standard Nexus pool')}</strong></div>
             <div className="oc-mission-rule"><small>{lang === 'fr' ? 'Regle de mission' : 'Mission rule'}</small><strong>{getLocalizedText(selectedMission.missionRule, lang)}</strong></div>
           </div>
+          {selectedMission.rewardHeroId && (
+            <div className="oc-mission-consequence">
+              <small>{lang === 'fr' ? 'Recrue de campagne' : 'Campaign recruit'}</small>
+              <p>
+                <strong>{getLocalizedText(selectedMission.rewardHeroName, lang, selectedMission.rewardHeroId)}</strong>
+                {' — '}
+                {getLocalizedText(selectedMission.recruitLore, lang)}
+              </p>
+            </div>
+          )}
           <blockquote>{getLocalizedText(OC_CAMPAIGN.doctrine, lang)}</blockquote>
           <div className="oc-mission-actions">
             <button
@@ -878,7 +1024,7 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
               {isStageUnlocked(selectedMission) ? (lang === 'fr' ? 'OUVRIR LE BRIEFING' : 'OPEN BRIEFING') : (lang === 'fr' ? 'DOSSIER VERROUILLE' : 'RECORD LOCKED')}
             </button>
           </div>
-          {completedStages.includes(selectedMission.id) && (
+          {completedMissionIdSet.has(selectedMission.id) && (
             <div className="oc-mission-consequence">
               <small>{lang === 'fr' ? 'Consequence canonique' : 'Canonical consequence'}</small>
               <p>{getLocalizedText(selectedMission.consequence, lang)}</p>
@@ -886,6 +1032,67 @@ function OcCampaignChronicle({ lang, completedStages, currentChapter, isStageUnl
           )}
         </article>
       </div>
+
+      {canonicalProgress.missionsComplete && (
+        <div
+          className="oc-chapter-record"
+          style={{
+            borderColor: selectedEnding?.colors?.primary || '#39c5bb',
+            boxShadow: selectedEnding ? `0 0 24px ${selectedEnding.colors.primary}22` : undefined
+          }}
+        >
+          <div className="oc-chapter-record-head">
+            <div>
+              <span>{lang === 'fr' ? 'REGISTRE PRIMORDIAL' : 'PRIMORDIAL LEDGER'}</span>
+              <h3>{selectedEnding
+                ? getLocalizedText(selectedEnding.title, lang)
+                : (lang === 'fr' ? 'Conclusion de l Ancre en attente' : 'Anchor conclusion pending')}</h3>
+              <p>{selectedEnding
+                ? getLocalizedText(selectedEnding.summary, lang)
+                : (lang === 'fr'
+                  ? `Les ${canonicalProgress.totalCount} operations tiennent. La campagne ne sera complete qu apres un choix explicite entre les quatre protocoles.`
+                  : `All ${canonicalProgress.totalCount} operations hold. The campaign becomes complete only after an explicit choice between the four protocols.`)}</p>
+            </div>
+            <div className="oc-chapter-progress">
+              <strong>{selectedEnding ? (lang === 'fr' ? 'FIN INSCRITE' : 'ENDING RECORDED') : (lang === 'fr' ? 'CHOIX REQUIS' : 'CHOICE REQUIRED')}</strong>
+              <span><i style={{ width: selectedEnding ? '100%' : '92%' }} /></span>
+            </div>
+          </div>
+          <div className="oc-chapter-record-grid">
+            <div>
+              <small>{lang === 'fr' ? 'EPILOGUE' : 'EPILOGUE'}</small>
+              <p>{getLocalizedText(OC_CAMPAIGN_EPILOGUE.intro, lang)}</p>
+            </div>
+            <div className={!selectedEnding ? 'encrypted' : ''}>
+              <small>{lang === 'fr' ? 'CONSEQUENCE CONSERVEE' : 'PRESERVED CONSEQUENCE'}</small>
+              <p>{selectedEnding
+                ? getLocalizedText(selectedEnding.consequence, lang)
+                : (lang === 'fr' ? 'Le cout restera chiffre tant que la fin n est pas choisie.' : 'The cost remains encrypted until an ending is chosen.')}</p>
+            </div>
+            <div>
+              <small>{lang === 'fr' ? 'TITRE DE PROFIL' : 'PROFILE TITLE'}</small>
+              <p>{selectedEnding
+                ? getLocalizedText(selectedEnding.profileTitle, lang)
+                : (lang === 'fr' ? 'Aucun titre primordial attribue.' : 'No primordial title granted.')}</p>
+            </div>
+          </div>
+          {selectedEnding && typeof onReplayEnding === 'function' && (
+            <div className="oc-mission-actions" style={{ marginTop: '12px' }}>
+              <button
+                type="button"
+                className="btn-retro oc-primary-action"
+                onClick={() => {
+                  onReplayEnding(selectedEnding.id);
+                  sound.playSfx('click');
+                }}
+                title={lang === 'fr' ? 'Rejoue la scene de la fin inscrite sans effacer la progression.' : 'Replay the recorded ending scene without erasing progress.'}
+              >
+                {lang === 'fr' ? `REJOUER ${getLocalizedText(selectedEnding.shortLabel, lang)}` : `REPLAY ${getLocalizedText(selectedEnding.shortLabel, lang)}`}
+              </button>
+            </div>
+          )}
+        </div>
+      )}
 
       {cinematicMission && cinematicScene && (
         <div className="oc-cinematic" role="dialog" aria-modal="true" aria-label={getLocalizedText(cinematicMission.displayName, lang)}>
@@ -4196,6 +4403,8 @@ export default function HubScreen({
   heroLevels, setHeroLevels,
   activeTeam, setActiveTeam,
   completedStages,
+  campaignProgress = null,
+  onReplayEnding,
   inventory, setInventory,
   equippedGear, setEquippedGear,
   equippedEventItems, setEquippedEventItems,
@@ -4315,11 +4524,6 @@ export default function HubScreen({
   const hubContentMax = activeGameMode ? '100%' : 'min(1500px, calc(100vw - 32px))';
   const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
-  const completedStageIdSet = useMemo(
-    () => new Set((completedStages || []).map(stageId => String(stageId))),
-    [completedStages]
-  );
-  const isStageCompletedById = useCallback(stageId => completedStageIdSet.has(String(stageId)), [completedStageIdSet]);
   const disabledAssetSets = useMemo(() => ({
     heroes: new Set(disabledAssets.heroes || []),
     enemies: new Set(disabledAssets.enemies || []),
@@ -4530,120 +4734,11 @@ export default function HubScreen({
     { id: 'anomaly', label: 'Anomalie', color: '#ff4500', threshold: 24 }
   ];
 
-  const BASE_OC_STAGES = [
-    {
-      id: 8801,
-      name: 'Atrium Primer Lock',
-      displayName: { fr: 'Atrium - Premier verrou', en: 'Atrium - Primer Lock' },
-      universe: 'Nexus de Convergence',
-      mode: 'RPG',
-      difficulty: 'Easy',
-      goldPrize: 45,
-      shardPrize: 20,
-      bossName: 'Greffier du Voile',
-      unlockClears: 0,
-      storyBeat: {
-        role: 'tutorial_anchor',
-        intro: { fr: 'A.R.C.A. ouvre une faille d entrainement dans l Atrium pour mesurer ta resonance sans exposer les DLC.', en: 'A.R.C.A. opens a training rift in the Atrium to measure your resonance without exposing DLC.' },
-        outro: { fr: 'Le premier verrou tient: ton Ancre peut fermer une breche OC sans emprunter de loi exterieure.', en: 'The first lock holds: your Anchor can close an OC breach without borrowing outside laws.' }
-      },
-      baseGameStage: true
-    },
-    {
-      id: 8802,
-      name: 'Archive Static Corridor',
-      displayName: { fr: 'Archive - Couloir statique', en: 'Archive - Static Corridor' },
-      universe: 'Nexus de Convergence',
-      mode: 'Tactics',
-      difficulty: 'Easy',
-      goldPrize: 55,
-      shardPrize: 22,
-      bossName: 'Juge des Trames',
-      unlockClears: 0,
-      storyBeat: {
-        role: 'archive_rule',
-        intro: { fr: 'Les archives statiques testent ta capacite a separer preuve, souvenir et bruit du Sans-Auteur.', en: 'The static archives test your ability to separate proof, memory, and Authorless noise.' },
-        outro: { fr: 'Le Juge des Trames valide une premiere regle: l histoire OC reste lisible meme sans franchise active.', en: 'The Thread Judge validates a first rule: the OC story stays readable even with no franchise active.' }
-      },
-      baseGameStage: true
-    },
-    {
-      id: 8803,
-      name: 'Origin Shard Foundry',
-      displayName: { fr: 'Fonderie des Eclats d Origine', en: 'Origin Shard Foundry' },
-      universe: 'Nexus de Convergence',
-      mode: 'Smash',
-      difficulty: 'Medium',
-      goldPrize: 70,
-      shardPrize: 28,
-      bossName: 'Avatar du Sans-Auteur',
-      unlockClears: 2,
-      storyBeat: {
-        role: 'origin_forge',
-        intro: { fr: 'La Fonderie condense les Eclats d Origine pour donner aux agents OC leur propre economie de progression.', en: 'The Foundry condenses Origin Shards to give OC agents their own progression economy.' },
-        outro: { fr: 'Les Eclats cessent d etre du butin brut: ils deviennent une preuve stable du lore Nexus.', en: 'Shards stop being raw loot: they become stable proof of Nexus lore.' }
-      },
-      baseGameStage: true
-    },
-    {
-      id: 8804,
-      name: 'A.R.C.A. Black Ledger',
-      displayName: { fr: 'Grand registre noir A.R.C.A.', en: 'A.R.C.A. Black Ledger' },
-      universe: 'Nexus de Convergence',
-      mode: 'RPG',
-      difficulty: 'Medium',
-      goldPrize: 85,
-      shardPrize: 32,
-      bossName: 'Moteur de Convergence Instable',
-      unlockClears: 3,
-      storyBeat: {
-        role: 'ledger_truth',
-        intro: { fr: 'Le registre noir expose les dettes narratives creees par la Premiere Breche.', en: 'The black ledger exposes the narrative debts created by the First Breach.' },
-        outro: { fr: 'A.R.C.A. recupere assez de donnees pour nommer l ennemi: le Sans-Auteur n est pas une franchise, c est une absence.', en: 'A.R.C.A. recovers enough data to name the enemy: the Authorless is not a franchise, it is an absence.' }
-      },
-      baseGameStage: true
-    },
-    {
-      id: 8805,
-      name: 'Broken Portal Yard',
-      displayName: { fr: 'Cour des portails brises', en: 'Broken Portal Yard' },
-      universe: 'Nexus de Convergence',
-      mode: 'Tactics',
-      difficulty: 'Hard',
-      goldPrize: 105,
-      shardPrize: 40,
-      tokenPrize: 1,
-      bossName: 'Juge des Trames',
-      unlockClears: 4,
-      storyBeat: {
-        role: 'portal_cleanup',
-        intro: { fr: 'La cour des portails brises isole les routes DLC pour que la campagne OC ne soit plus contaminee.', en: 'The broken portal yard isolates DLC routes so the OC campaign is no longer contaminated.' },
-        outro: { fr: 'Les portails annexes sont catalogues: ils peuvent exister comme DLC sans piloter l histoire principale.', en: 'Side portals are catalogued: they can exist as DLC without driving the main story.' }
-      },
-      baseGameStage: true
-    },
-    {
-      id: 8806,
-      name: 'Sans-Auteur Threshold',
-      displayName: { fr: 'Seuil du Sans-Auteur', en: 'Sans-Auteur Threshold' },
-      universe: 'Nexus de Convergence',
-      mode: 'Smash',
-      difficulty: 'Hard',
-      goldPrize: 125,
-      shardPrize: 50,
-      tokenPrize: 1,
-      bossName: 'Avatar du Sans-Auteur',
-      unlockClears: 5,
-      storyBeat: {
-        role: 'authorless_threshold',
-        intro: { fr: 'Le seuil final force le Sans-Auteur a se montrer dans une scene 100% Nexus.', en: 'The final threshold forces the Authorless to appear in a 100% Nexus scene.' },
-        outro: { fr: 'La campagne OC est scellee: les DLC redeviennent des archives a explorer, pas des fondations obligatoires.', en: 'The OC campaign is sealed: DLC become archives to explore, not required foundations.' }
-      },
-      baseGameStage: true
-    }
-  ].map(stage => ({
+  // The canonical campaign registry is also the playable stage registry. Keeping
+  // this projection data-only prevents narrative metadata and combat rewards from
+  // drifting apart when a new OC operation is appended.
+  const BASE_OC_STAGES = OC_CAMPAIGN_MISSIONS.map(stage => ({
     ...stage,
-    ...getOcCampaignMission(stage.id),
     baseGameStage: true
   }));
 
@@ -4795,6 +4890,19 @@ export default function HubScreen({
   };
 
   const STORY_CHAPTERS = OC_CAMPAIGN_CHAPTERS;
+  const completedStageIdSet = useMemo(
+    () => new Set((completedStages || []).map(stageId => String(stageId))),
+    [completedStages]
+  );
+  const isStageCompletedById = (stageId) => completedStageIdSet.has(String(stageId));
+  const getOcMissionForStage = (stage) => getOcCampaignMission(stage?.id);
+  const getPreviousOcMissions = (mission) => {
+    const missionIndex = OC_CAMPAIGN_MISSIONS.findIndex(entry => entry.id === mission?.id);
+    return missionIndex > 0 ? OC_CAMPAIGN_MISSIONS.slice(0, missionIndex) : [];
+  };
+  const getMissingPreviousOcMissions = (mission) => (
+    getPreviousOcMissions(mission).filter(entry => !isStageCompletedById(entry.id))
+  );
 
   const NARRATIVE_ARCS = [
     {
@@ -5431,6 +5539,29 @@ export default function HubScreen({
     'Mad Max': { id: 'war_rig_run', name: { fr: 'Convoi War Rig', en: 'War Rig Run' }, desc: { fr: 'La route impose la vitesse et la survie: ennemis +8% vitesse, cache +19%.', en: 'The road demands speed and survival: enemies +8% speed, cache +19%.' }, enemySpd: 1.08, reward: 1.19, color: '#d98a3d' }
   };
 
+  const SHOP_ITEM_UNIVERSE_HINTS = {
+    millennium_puzzle: 'Yu-Gi-Oh',
+    bandana_infinite: 'Metal Gear',
+    crucible_guard: 'Doom',
+    udamage_power: 'Unreal'
+  };
+  const getShopItemUniverse = (item) => item.universe || SHOP_ITEM_UNIVERSE_HINTS[item.id] || null;
+
+  // Resolve combat entries against the runtime DB so late lore/OpenAI metadata
+  // remains available to the shop instead of being lost in its price projection.
+  const resolveShopItem = (item) => {
+    const universe = getShopItemUniverse(item);
+    const eventDetails = item.isCombatEvent ? EVENT_ITEMS_DB[universe] : null;
+    const runtimeDetails = eventDetails?.id === item.id ? eventDetails : {};
+    return {
+      ...item,
+      ...runtimeDetails,
+      universe,
+      isCombatEvent: Boolean(item.isCombatEvent),
+      tokenCost: item.tokenCost
+    };
+  };
+
   // List of high-tier items in the Event Shop
   const EVENT_SHOP_ITEMS = [
     { id: 'millennium_puzzle', name: { en: 'Millennium Puzzle', fr: 'Puzzle du Millénium' }, boost: { hp: 100, atk: 10, def: 5 }, tokenCost: 3 },
@@ -5442,18 +5573,11 @@ export default function HubScreen({
     { id: 'evt_doom_quad', name: { en: 'Quad Damage Powerup', fr: 'Multiplicateur Quad Damage' }, isCombatEvent: true, universe: 'Doom', tokenCost: 6 },
     { id: 'evt_ut_redeemer', name: { en: 'Redeemer Missile Targeter', fr: 'Viseur de Missile Rédempteur' }, isCombatEvent: true, universe: 'Unreal', tokenCost: 8 },
     ...EXPANDED_EVENT_SHOP_ITEMS
-  ];
+  ].map(resolveShopItem);
   const visibleEventShopItems = EVENT_SHOP_ITEMS.filter(item => (
     (!item.universe || isUniverseVisible(item.universe))
     && !isAssetDisabled('gear', item.id)
   ));
-  const SHOP_ITEM_UNIVERSE_HINTS = {
-    millennium_puzzle: 'Yu-Gi-Oh',
-    bandana_infinite: 'Metal Gear',
-    crucible_guard: 'Doom',
-    udamage_power: 'Unreal'
-  };
-  const getShopItemUniverse = (item) => item.universe || SHOP_ITEM_UNIVERSE_HINTS[item.id] || null;
   const getShopItemAccent = (item) => {
     const universe = getShopItemUniverse(item);
     return UNIVERSE_MODIFIERS[universe]?.color
@@ -5631,6 +5755,33 @@ export default function HubScreen({
       return lang === 'fr'
         ? `Mission scellée : termine d’abord ${previousName || 'la mission précédente de cet acte'}. Aucune progression de campagne principale n’est requise.`
         : `Mission sealed: complete ${previousName || 'the previous mission in this act'} first. No main campaign progress is required.`;
+    }
+
+    const ocMission = getOcMissionForStage(stage);
+    if (ocMission) {
+      const missionIndex = OC_CAMPAIGN_MISSIONS.findIndex(entry => entry.id === ocMission.id);
+      const previousMissions = getPreviousOcMissions(ocMission);
+      const missingPreviousMissions = getMissingPreviousOcMissions(ocMission);
+      const missionName = getLocalizedText(ocMission.displayName, lang, ocMission.name);
+      if (isStageCompletedById(ocMission.id)) {
+        return lang === 'fr'
+          ? `Operation ${missionIndex + 1}/${OC_CAMPAIGN_MISSIONS.length} deja stabilisee: ${missionName} peut etre rejouee.`
+          : `Operation ${missionIndex + 1}/${OC_CAMPAIGN_MISSIONS.length} already stabilized: ${missionName} can be replayed.`;
+      }
+      if (missingPreviousMissions.length === 0) {
+        return lang === 'fr'
+          ? `Operation ${missionIndex + 1}/${OC_CAMPAIGN_MISSIONS.length} disponible: ${missionName}.`
+          : `Operation ${missionIndex + 1}/${OC_CAMPAIGN_MISSIONS.length} available: ${missionName}.`;
+      }
+      const requiredMission = missingPreviousMissions[0];
+      const requiredMissionName = getLocalizedText(requiredMission.displayName, lang, requiredMission.name);
+      const stabilizedPrevious = previousMissions.length - missingPreviousMissions.length;
+      const lockLabel = ocMission.campaignFinale
+        ? (lang === 'fr' ? 'Finale OC scellee' : 'OC finale sealed')
+        : (lang === 'fr' ? `Operation ${missionIndex + 1} verrouillee` : `Operation ${missionIndex + 1} locked`);
+      return lang === 'fr'
+        ? `${lockLabel}: termine d abord ${requiredMissionName} (${stabilizedPrevious}/${previousMissions.length} operations precedentes stabilisees).`
+        : `${lockLabel}: complete ${requiredMissionName} first (${stabilizedPrevious}/${previousMissions.length} previous operations stabilized).`;
     }
 
     const required = getStageRequiredClears(stage);
@@ -6071,6 +6222,36 @@ export default function HubScreen({
       .filter(it => inventory.includes(it.id) || previewEventIds.has(it.id));
   };
   const SPECIAL_NEXUS_ITEMS = Object.fromEntries([
+    ...OC_CAMPAIGN_MISSIONS.filter(mission => mission.rewardItemId).map(mission => [
+      mission.rewardItemId,
+      {
+        id: mission.rewardItemId,
+        name: mission.rewardItemName,
+        desc: {
+          fr: `${mission.rewardItemName.fr} conserve la preuve de l operation ${mission.displayName.fr}. Cette trace OC atteste le verrou recupere et reste independante de toute archive DLC.`,
+          en: `${mission.rewardItemName.en} preserves proof of operation ${mission.displayName.en}. This OC trace records the recovered lock and remains independent from every DLC archive.`
+        }
+      }
+    ]),
+    ...OC_CAMPAIGN_ENDINGS.map(ending => [
+      ending.rewardItemId,
+      {
+        id: ending.rewardItemId,
+        name: ending.rewardItemName,
+        desc: ending.consequence
+      }
+    ]),
+    [
+      SKIN_CATALOG.char_player_anchor_palimpsest.id,
+      {
+        id: SKIN_CATALOG.char_player_anchor_palimpsest.id,
+        name: SKIN_CATALOG.char_player_anchor_palimpsest.name,
+        desc: {
+          fr: 'Apparence finale de l Ancre, debloquee apres l inscription d une fin complete dans le Registre primordial.',
+          en: 'The Anchor final appearance, unlocked after recording a complete ending in the Primordial Ledger.'
+        }
+      }
+    ],
     ...FUSION_MISSIONS.map(mission => [
       mission.itemId,
       {
@@ -6138,6 +6319,10 @@ export default function HubScreen({
 
   const getStageRequiredClears = (stage) => {
     if (stage?.ocDlc) return 0;
+    const ocMission = getOcMissionForStage(stage);
+    if (ocMission) {
+      return Math.max(0, OC_CAMPAIGN_MISSIONS.findIndex(entry => entry.id === ocMission.id));
+    }
     if (stage.characterArc) return stage.characterArc.unlock?.type === 'clears' ? stage.characterArc.unlock.value : 0;
     if (stage.trioArc) return stage.trioArc.unlock?.type === 'clears' ? stage.trioArc.unlock.value : 0;
     if (stage.universeArc) return stage.unlockClears || 4;
@@ -6242,6 +6427,18 @@ export default function HubScreen({
         && isOcDlcMissionUnlocked(stage, completedStages);
     }
 
+    const ocMission = getOcMissionForStage(stage);
+    if (ocMission) {
+      // OC operations never borrow global/DLC clear counts: every preceding
+      // canonical mission must be stabilized before this one can open.
+      return getMissingPreviousOcMissions(ocMission).length === 0;
+    }
+    if (stage.campaignDependency === 'originalCampaign') {
+      const requiredStages = Array.isArray(stage.requiredCampaignStageIds)
+        ? stage.requiredCampaignStageIds
+        : [];
+      return requiredStages.every(stageId => completedStages.includes(stageId));
+    }
     const baseUnlocked = completedStages.length >= getStageRequiredClears(stage);
     if (!baseUnlocked) return false;
     if (stage.characterArc) {
@@ -6410,6 +6607,9 @@ export default function HubScreen({
       stage.rewardItemName ? (lang === 'fr'
         ? `Trace speciale: ${stage.rewardItemName.fr || stage.rewardItemName.en}`
         : `Special trace: ${stage.rewardItemName.en || stage.rewardItemName.fr}`) : null,
+      stage.rewardHeroId ? (lang === 'fr'
+        ? `Recrue ZERO: ${getLocalizedText(stage.rewardHeroName, lang, stage.rewardHeroId)}`
+        : `ZERO recruit: ${getLocalizedText(stage.rewardHeroName, lang, stage.rewardHeroId)}`) : null,
       lang === 'fr' ? `Signature ${rarity.label}` : `${rarity.label} signature`
     ].filter(Boolean);
   };
@@ -6464,6 +6664,9 @@ export default function HubScreen({
 
   const getMissionOutcomePreview = (stage) => {
     const traceName = stage.rewardItemName?.[lang] || stage.rewardItemName?.en || null;
+    const recruitName = stage.rewardHeroId
+      ? getLocalizedText(stage.rewardHeroName, lang, stage.rewardHeroId)
+      : null;
     return [
       lang === 'fr'
         ? 'Victoire: la coordonnee est scellee, le journal A.R.C.A. archive la consequence et la progression long terme avance.'
@@ -6471,10 +6674,15 @@ export default function HubScreen({
       traceName
         ? (lang === 'fr' ? `Trace possible: ${traceName}.` : `Possible trace: ${traceName}.`)
         : (lang === 'fr' ? 'Trace possible: relique de terrain liee a l univers actif.' : 'Possible trace: field relic tied to the active universe.'),
+      recruitName
+        ? (lang === 'fr'
+          ? `Premiere victoire: ${recruitName} rejoint la cellule ZERO.`
+          : `First victory: ${recruitName} joins Cell ZERO.`)
+        : null,
       lang === 'fr'
         ? 'Defaite: donnees de contact conservees, adaptation defensive sur la prochaine tentative et instabilite douce de l equipe.'
         : 'Defeat: contact data is kept, defensive adaptation applies to the next attempt, and the team suffers soft instability.'
-    ];
+    ].filter(Boolean);
   };
 
   const getStageRewardScore = (stage) => {
@@ -6696,28 +6904,35 @@ export default function HubScreen({
     tactical: { fr: 'Defense / soutien', en: 'Defense / support' }
   };
 
-  const isOcStoryStage = (stage) => (
-    Boolean(stage?.baseGameStage)
-    && stage.universe === 'Nexus de Convergence'
-    && !stage.characterArc
-    && !stage.trioArc
-    && !stage.universeArc
-    && !stage.fusionMission
-  );
+  const isOcStoryStage = (stage) => Boolean(getOcMissionForStage(stage));
   const completedOcStoryClears = BASE_OC_STAGES
-    .filter(stage => completedStages.includes(stage.id))
+    .filter(stage => isStageCompletedById(stage.id))
     .length;
-  const currentChapter = [...STORY_CHAPTERS]
-    .reverse()
-    .find(chapter => completedOcStoryClears >= chapter.unlockClears) || STORY_CHAPTERS[0];
-  const nextChapter = STORY_CHAPTERS.find(chapter => completedOcStoryClears < chapter.unlockClears);
   const getStoryChapterForStage = (stage) => {
-    if (!isOcStoryStage(stage)) return null;
-    const requiredClears = getStageRequiredClears(stage);
-    return [...STORY_CHAPTERS]
-      .reverse()
-      .find(chapter => requiredClears >= chapter.unlockClears) || STORY_CHAPTERS[0];
+    const mission = getOcMissionForStage(stage);
+    if (!mission?.chapterId) return null;
+    return STORY_CHAPTERS.find(chapter => chapter.id === mission.chapterId) || null;
   };
+  const getFirstStoryStageForChapter = (chapter) => (
+    BASE_OC_STAGES.find(stage => stage.chapterId === chapter?.id) || null
+  );
+  const isStoryChapterUnlocked = (chapter) => {
+    const firstChapterStage = getFirstStoryStageForChapter(chapter);
+    return Boolean(
+      firstChapterStage
+      && (isStageUnlocked(firstChapterStage) || isStageCompletedById(firstChapterStage.id))
+    );
+  };
+  const nextOcStoryStage = BASE_OC_STAGES.find(stage => !isStageCompletedById(stage.id)) || null;
+  const lastCompletedOcStoryStage = [...BASE_OC_STAGES]
+    .reverse()
+    .find(stage => isStageCompletedById(stage.id)) || null;
+  const chapterReferenceStage = nextOcStoryStage || lastCompletedOcStoryStage || BASE_OC_STAGES[0];
+  const currentChapter = getStoryChapterForStage(chapterReferenceStage) || STORY_CHAPTERS[0];
+  const currentChapterIndex = STORY_CHAPTERS.findIndex(chapter => chapter.id === currentChapter?.id);
+  const nextChapter = nextOcStoryStage && currentChapterIndex >= 0
+    ? STORY_CHAPTERS[currentChapterIndex + 1] || null
+    : null;
   const isMainStoryStage = isOcStoryStage;
   const isCurrentStoryChapterStage = (stage) => (
     isMainStoryStage(stage)
@@ -6777,10 +6992,12 @@ export default function HubScreen({
     const universe = selectedCollectionUniverse;
     const lore = LORE_DB[universe];
     const stageId = UNIVERSE_TO_STAGE_ID[universe];
-    const stages = ADMIN_VISIBLE_STAGES
+    const indexedStages = ADMIN_VISIBLE_STAGES
       .filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe))
-      .filter(stage => !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission)
-      .filter(isStageUnlocked);
+      .filter(stage => !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission);
+    const stages = lore?.isOriginal
+      ? indexedStages
+      : indexedStages.filter(isStageUnlocked);
     const heroes = HEROES_DB.filter(hero => hero.universe === universe);
     const allEnemies = ENEMIES_DB[universe]
       ? [
@@ -6836,7 +7053,10 @@ export default function HubScreen({
       stages,
       universeArcs,
       characterArcs,
-      franchiseCollections
+      franchiseCollections,
+      livingWorld: lore?.livingWorld || null,
+      worldItems: lore?.worldItems || [],
+      audiovisual: lore?.audiovisual || null
     };
   })() : null;
   const timelineProgress = BREACH_TIMELINE.map(entry => ({
@@ -6852,15 +7072,17 @@ export default function HubScreen({
       : completedStages.length >= META_RANK_THRESHOLDS.strike
         ? 'Strike'
         : 'Initiate';
-  const nextProgressGoal = completedOcStoryClears < 2
-    ? (lang === 'fr' ? 'Stabiliser 2 breches OC pour ouvrir le second chapitre Nexus.' : 'Stabilize 2 OC breaches to open the second Nexus chapter.')
-    : completedOcStoryClears < 3
-      ? (lang === 'fr' ? 'Atteindre 3 breches OC pour ouvrir les archives profondes.' : 'Reach 3 OC breaches to open the deep archives.')
-      : completedOcStoryClears < 4
-        ? (lang === 'fr' ? 'Stabiliser la Cour des portails brises pour isoler les DLC.' : 'Stabilize the Broken Portal Yard to isolate DLC.')
-        : completedOcStoryClears < FINAL_STAGE_REQUIRED_CLEARS
-          ? (lang === 'fr' ? `Stabiliser ${FINAL_STAGE_REQUIRED_CLEARS} breches OC pour ouvrir le Seuil du Sans-Auteur.` : `Stabilize ${FINAL_STAGE_REQUIRED_CLEARS} OC breaches to open the Authorless Threshold.`)
-          : (lang === 'fr' ? 'Seuil OC disponible: optimiser l escouade Nexus.' : 'OC threshold available: optimize the Nexus squad.');
+  const nextProgressGoal = nextOcStoryStage
+    ? [
+      nextOcStoryStage.campaignFinale
+        ? (lang === 'fr' ? 'Finale OC' : 'OC finale')
+        : (lang === 'fr' ? `Operation ${nextOcStoryStage.sequence || completedOcStoryClears + 1}/${OC_CAMPAIGN_MISSIONS.length}` : `Operation ${nextOcStoryStage.sequence || completedOcStoryClears + 1}/${OC_CAMPAIGN_MISSIONS.length}`),
+      getLocalizedText(nextOcStoryStage.displayName, lang, nextOcStoryStage.name),
+      getLocalizedText(nextOcStoryStage.objective, lang)
+    ].filter(Boolean).join(' - ')
+    : (campaignProgress?.endingId
+      ? (lang === 'fr' ? 'Campagne OC terminee: la fin choisie peut etre rejouee depuis la chronique.' : 'OC campaign complete: the chosen ending can be replayed from the chronicle.')
+      : (lang === 'fr' ? 'Toutes les operations OC sont stabilisees: choisis la conclusion de l Ancre.' : 'Every OC operation is stabilized: choose the Anchor conclusion.'));
 
   const weeklyOperations = [
     {
@@ -7009,8 +7231,16 @@ export default function HubScreen({
     return 'Web / Manga';
   };
 
-  const finalOcStoryStage = BASE_OC_STAGES[BASE_OC_STAGES.length - 1];
+  const finalOcStoryStage = BASE_OC_STAGES.find(stage => stage.campaignFinale)
+    || BASE_OC_STAGES[BASE_OC_STAGES.length - 1]
+    || null;
   const finalOcStoryStageUnlocked = finalOcStoryStage ? isStageUnlocked(finalOcStoryStage) : false;
+  const finalOcStoryMissingMissions = finalOcStoryStage
+    ? getMissingPreviousOcMissions(finalOcStoryStage)
+    : [];
+  const finalOcStoryChapter = finalOcStoryStage
+    ? getStoryChapterForStage(finalOcStoryStage)
+    : null;
   const visibleStages = ADMIN_VISIBLE_STAGES.filter(stage => {
     if (stage.fusionMission && mediaFilter === 'all') return true;
     return matchesMediaFilter(LORE_DB[stage.universe]?.mediaType);
@@ -7181,6 +7411,9 @@ export default function HubScreen({
   };
   const missionCategoryFilter = (stage) => {
     if (missionScreen === 'ocDlc') return Boolean(stage.ocDlc);
+    if (missionScreen === 'originalWorlds') {
+      return stage.campaignDependency === 'originalCampaign';
+    }
     if (missionScreen === 'universeArcs') return isUniverseArcVisibleForRoster(stage);
     if (missionScreen === 'personalArcs') return Boolean(stage.characterArc) && isPersonalArcVisibleForRoster(stage);
     if (missionScreen === 'trioArcs') return isTrioArcVisibleForRoster(stage);
@@ -7195,6 +7428,9 @@ export default function HubScreen({
   const trioArcMissionCount = visibleStages.filter(isTrioArcVisibleForRoster).length;
   const fusionMissionCount = visibleStages.filter(stage => stage.fusionMission).length;
   const ocDlcMissionCount = OC_DLC_PACKS.reduce((total, pack) => total + pack.missions.length, 0);
+  const originalWorldMissionCount = visibleStages.filter(
+    stage => stage.campaignDependency === 'originalCampaign'
+  ).length;
   const factionArcCount = arcProgress.length;
   const missionScreenMeta = {
     story: {
@@ -7213,6 +7449,16 @@ export default function HubScreen({
       count: ocDlcMissionCount,
       color: '#7df9ff',
       image: getOpenAiBackdropSrc(OC_DLC_PACKS[0]?.universe, 'RPG') || '/images/missions/campaign-oc.webp'
+    },
+    originalWorlds: {
+      label: { fr: 'UNIVERS OC', en: 'OC UNIVERSES' },
+      desc: {
+        fr: 'Vingt Trames originales autonomes, chacune avec trois opérations liées, ses héros, ses ennemis et son world boss.',
+        en: 'Twenty autonomous original Threads, each with three linked operations, heroes, enemies, and a world boss.'
+      },
+      count: originalWorldMissionCount,
+      color: '#ff8c42',
+      image: '/images/oc-worlds/neon_requiem/backdrop.svg'
     },
     factionArcs: {
       label: { fr: 'Arcs narratifs de faction', en: 'Faction narrative arcs' },
@@ -7353,12 +7599,14 @@ export default function HubScreen({
     setMissionWorkspaceView(
       missionScreen === 'story'
         ? 'campaign'
-        : missionScreen === 'ocDlc'
+        : missionScreen === 'ocDlc' || missionScreen === 'originalWorlds'
           ? 'library'
           : 'map'
     );
     setMissionModeFilter('all');
-    if (missionScreen === 'ocDlc') setMediaFilter('all');
+    if (missionScreen === 'ocDlc' || missionScreen === 'originalWorlds') {
+      setMediaFilter('all');
+    }
     setBriefingStageId(null);
   }, [missionScreen]);
   useEffect(() => {
@@ -7408,18 +7656,23 @@ export default function HubScreen({
   };
   const unlockedMissionPool = missionPool.filter(isStageUnlocked);
   const scanPool = unlockedMissionPool.length > 0 ? unlockedMissionPool : missionPool.slice(0, 1);
-  const nextUnclearedStage = scanPool.find(stage => !completedStages.includes(stage.id)) || scanPool[0];
+  const canonicalStoryPriorityStage = ['index', 'story'].includes(missionScreen)
+    ? nextOcStoryStage || finalOcStoryStage
+    : null;
+  const nextUnclearedStage = canonicalStoryPriorityStage && isStageUnlocked(canonicalStoryPriorityStage)
+    ? canonicalStoryPriorityStage
+    : scanPool.find(stage => !completedStages.includes(stage.id)) || scanPool[0];
   const recommendedMissionScreen = nextUnclearedStage?.ocDlc
     ? 'ocDlc'
     : nextUnclearedStage?.universeArc
       ? 'universeArcs'
       : nextUnclearedStage?.characterArc
-        ? 'personalArcs'
-        : nextUnclearedStage?.trioArc
-          ? 'trioArcs'
-          : nextUnclearedStage?.fusionMission
-            ? 'fusionMissions'
-            : 'story';
+      ? 'personalArcs'
+      : nextUnclearedStage?.trioArc
+        ? 'trioArcs'
+        : nextUnclearedStage?.fusionMission
+          ? 'fusionMissions'
+          : 'story';
   const seededMissionScore = (stage) => {
     const raw = Math.sin(stage.id * 9301 + missionSeed * 49297) * 10000;
     return raw - Math.floor(raw);
@@ -7923,8 +8176,8 @@ export default function HubScreen({
                   borderRadius: '4px'
                 }}>
                   {lang === 'fr'
-                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : campagne principale, actes annexes OC, arcs de faction, arcs univers, arcs personnels ou cellules trio.'
-                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, OC standalone acts, faction arcs, universe arcs, personal arcs, or trio cells.'}
+                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : campagne principale, univers OC, actes annexes, arcs de faction, arcs univers, arcs personnels ou cellules trio.'
+                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, OC universes, standalone acts, faction arcs, universe arcs, personal arcs, or trio cells.'}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
                   {Object.entries(missionScreenMeta).map(([key, entry]) => (
@@ -8137,11 +8390,16 @@ export default function HubScreen({
                         type="button"
                         onClick={() => { setMissionModeFilter(mode); setMissionSeed(Date.now()); sound.playSfx('click'); }}
                         className={`btn-retro ${missionModeFilter === mode ? 'active-tab' : ''}`}
+                        aria-pressed={missionModeFilter === mode}
                         title={mode === 'all'
                           ? (lang === 'fr' ? 'Affiche tous les modes de jeu.' : 'Show every game mode.')
-                          : (lang === 'fr' ? `Affiche seulement les missions ${mode}.` : `Show only ${mode} missions.`)}
+                          : (lang === 'fr'
+                            ? `Affiche seulement les missions ${mode === 'Tactics' ? 'Tactique' : mode}.`
+                            : `Show only ${mode} missions.`)}
                       >
-                        {mode === 'all' ? (lang === 'fr' ? 'TOUS LES MODES' : 'ALL MODES') : mode.toUpperCase()}
+                        {mode === 'all'
+                          ? (lang === 'fr' ? 'TOUS LES MODES' : 'ALL MODES')
+                          : (lang === 'fr' && mode === 'Tactics' ? 'TACTIQUE' : mode.toUpperCase())}
                       </button>
                     ))}
                   </div>
@@ -8153,6 +8411,8 @@ export default function HubScreen({
                     completedStages={completedStages}
                     currentChapter={currentChapter}
                     isStageUnlocked={isStageUnlocked}
+                    campaignProgress={campaignProgress}
+                    onReplayEnding={onReplayEnding}
                     onOpenBriefing={(stage) => {
                       setBriefingStageId(stage.id);
                       setMissionWorkspaceView('map');
@@ -8477,15 +8737,16 @@ export default function HubScreen({
                 {nextChapter && (
                   <div style={{ marginTop: '8px', fontSize: '10px', color: '#8fa5aa' }}>
                     {lang === 'fr'
-                      ? `Prochain chapitre a ${nextChapter.unlockClears} breches OC stabilisees.`
-                      : `Next chapter at ${nextChapter.unlockClears} stabilized OC breaches.`}
+                      ? `Termine les operations du chapitre actif pour ouvrir ${getLocalizedText(nextChapter.name, lang)}.`
+                      : `Complete the active chapter operations to open ${getLocalizedText(nextChapter.name, lang)}.`}
                   </div>
                 )}
                 <div className="story-chapter-rail">
                   {STORY_CHAPTERS.map((chapter, index) => {
                     const active = chapter.id === currentChapter.id;
-                    const open = completedOcStoryClears >= chapter.unlockClears;
+                    const open = isStoryChapterUnlocked(chapter);
                     const chapterStageCount = getChapterStageCount(chapter);
+                    const firstChapterStage = getFirstStoryStageForChapter(chapter);
                     return (
                       <div
                         key={chapter.id}
@@ -8498,7 +8759,9 @@ export default function HubScreen({
                             ? (active
                               ? (lang === 'fr' ? 'Chapitre projete dans les portails' : 'Chapter projected in portals')
                               : (lang === 'fr' ? 'Archive scellee' : 'Sealed archive'))
-                            : (lang === 'fr' ? `${chapter.unlockClears} breches requises` : `${chapter.unlockClears} breaches required`)}
+                            : (firstChapterStage
+                              ? getLockedReason(firstChapterStage)
+                              : (lang === 'fr' ? 'Aucune operation canonique associee.' : 'No canonical operation assigned.'))}
                         </em>
                         <b>{chapterStageCount} {lang === 'fr' ? 'failles' : 'rifts'}</b>
                       </div>
@@ -8937,7 +9200,7 @@ export default function HubScreen({
               })}
             </div>
             )}
-            {missionScreen === 'story' && missionWorkspaceView === 'campaign' && finalStage && currentChapter.id === 'omniverse_endgame' && (
+            {missionScreen === 'story' && missionWorkspaceView === 'campaign' && finalStage && currentChapter.id === finalOcStoryChapter?.id && (
               <div style={{
                 marginTop: '14px',
                 padding: '14px 18px',
@@ -8958,7 +9221,9 @@ export default function HubScreen({
                   <div style={{ fontSize: '11px', color: '#bbb', marginTop: '4px' }}>
                     {finalOcStoryStageUnlocked
                       ? (lang === 'fr' ? 'Le Sans-Auteur est expose sans utiliser de stage DLC.' : 'The Authorless is exposed without using any DLC stage.')
-                      : (lang === 'fr' ? `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedOcStoryClears)} breches OC a stabiliser avant ouverture.` : `${Math.max(0, FINAL_STAGE_REQUIRED_CLEARS - completedOcStoryClears)} OC breaches to stabilize before opening.`)}
+                      : (lang === 'fr'
+                        ? `${finalOcStoryMissingMissions.length} operation${finalOcStoryMissingMissions.length > 1 ? 's' : ''} OC precedente${finalOcStoryMissingMissions.length > 1 ? 's' : ''} a stabiliser. Prochaine: ${getLocalizedText(finalOcStoryMissingMissions[0]?.displayName, lang, finalOcStoryMissingMissions[0]?.name)}.`
+                        : `${finalOcStoryMissingMissions.length} previous OC operation${finalOcStoryMissingMissions.length > 1 ? 's' : ''} to stabilize. Next: ${getLocalizedText(finalOcStoryMissingMissions[0]?.displayName, lang, finalOcStoryMissingMissions[0]?.name)}.`)}
                   </div>
                 </div>
                 <button
@@ -8967,7 +9232,7 @@ export default function HubScreen({
                   disabled={!finalOcStoryStageUnlocked}
                   title={finalOcStoryStageUnlocked
                     ? (lang === 'fr' ? 'Lance le seuil final de la campagne OC.' : 'Start the final OC campaign threshold.')
-                    : (lang === 'fr' ? 'Seuil final verrouille: stabilise plus de breches OC.' : 'Final threshold locked: stabilize more OC breaches.')}
+                    : getLockedReason(finalStage)}
                   style={{
                     padding: '8px 16px',
                     background: finalOcStoryStageUnlocked ? '#39c5bb' : 'rgba(255,255,255,0.04)',
@@ -9507,9 +9772,7 @@ export default function HubScreen({
                 const hero = HEROES_DB.find(h => h.id === id);
                 const stats = hero ? getHeroStats(hero) : null;
                 const gear = hero ? getGearDisplay(equippedGear[hero.id]) : null;
-                const eventItem = hero && equippedEventItems[hero.id]
-                  ? Object.values(EVENT_ITEMS_DB).find(item => item.id === equippedEventItems[hero.id])
-                  : null;
+                const eventItem = hero ? getEventItemDisplay(equippedEventItems[hero.id]) : null;
                 return (
                   <div key={idx} className={`squad-slot ${hero ? 'filled' : 'empty'}`} style={{ '--slot-color': hero?.primaryColor || '#444' }}>
                     {hero ? (
@@ -9615,9 +9878,7 @@ export default function HubScreen({
                 const hero = HEROES_DB.find(h => h.id === id);
                 const stats = hero ? getHeroStats(hero) : null;
                 const gear = hero ? getGearDisplay(equippedGear[hero.id]) : null;
-                const eventItem = hero && equippedEventItems[hero.id]
-                  ? Object.values(EVENT_ITEMS_DB).find(item => item.id === equippedEventItems[hero.id])
-                  : null;
+                const eventItem = hero ? getEventItemDisplay(equippedEventItems[hero.id]) : null;
                 return (
                   <div key={idx} className={`squad-slot ${hero ? 'filled' : 'empty'}`} style={{ '--slot-color': hero?.primaryColor || '#444' }}>
                     {hero ? (
@@ -10132,7 +10393,7 @@ export default function HubScreen({
                     {/* Event item slot */}
                     <div style={{ flex: 1, padding: '12px', background: 'rgba(0,0,0,0.3)', border: '1px dashed #333' }}>
                       <div style={{ fontSize: '10px', color: '#888' }}>{getTranslation(lang, 'eventItem')}</div>
-                      {equippedEventItems[selectedHero.id] ? (
+                      {selectedEquippedEvent ? (
                         <div>
                           <div style={{ fontWeight: 'bold', color: '#fff', fontSize: '13px', margin: '4px 0' }}>
                             {selectedEquippedEvent?.name[lang]}
@@ -10427,8 +10688,8 @@ export default function HubScreen({
                       }} />
                       <div style={{
                         position: 'relative',
-                        width: '84px',
-                        height: '84px',
+                        width: 'clamp(68px, 18vw, 84px)',
+                        height: 'clamp(68px, 18vw, 84px)',
                         border: `2px solid ${accent}`,
                         background: 'rgba(0,0,0,0.68)',
                         boxShadow: `0 0 18px ${accent}77, inset 0 0 18px ${accent}22`,
@@ -10437,18 +10698,12 @@ export default function HubScreen({
                         alignItems: 'center',
                         justifyContent: 'center'
                       }}>
-                        <span style={{
-                          transform: 'rotate(-45deg)',
-                          color: '#fff',
-                          fontSize: getShopItemGlyph(item).length > 5 ? '10px' : '14px',
-                          fontWeight: 'bold',
-                          textAlign: 'center',
-                          textShadow: `0 0 8px ${accent}`,
-                          maxWidth: '68px',
-                          lineHeight: 1.05
-                        }}>
-                          {getShopItemGlyph(item)}
-                        </span>
+                        <GearShopItemVisual
+                          item={item}
+                          lang={lang}
+                          accent={accent}
+                          fallbackGlyph={getShopItemGlyph(item)}
+                        />
                       </div>
                       <div style={{
                         position: 'absolute',
@@ -10975,7 +11230,8 @@ export default function HubScreen({
                       {(selectedUniverseArchive.heroes.length ? selectedUniverseArchive.heroes : []).map(hero => {
                         const unlocked = unlockedHeroes.includes(hero.id);
                         const stats = getHeroStats(hero);
-                        const spriteSrc = getHeroSpriteSheetSrc(hero, 'collection');
+                        const portraitSrc = hero.portrait || null;
+                        const spriteSrc = portraitSrc || getHeroSpriteSheetSrc(hero, 'collection');
                         const spriteLayout = getSpriteSheetLayout(spriteSrc);
                         return (
                           <div key={hero.id} style={{ display: 'grid', gridTemplateColumns: '84px minmax(0, 1fr)', gap: '9px', padding: '8px', border: `1px solid ${hero.primaryColor}55`, background: `${hero.primaryColor}12`, borderRadius: '4px' }}>
@@ -10991,8 +11247,8 @@ export default function HubScreen({
                                 backgroundColor: '#050509',
                                 backgroundImage: `url("${spriteSrc}")`,
                                 backgroundRepeat: 'no-repeat',
-                                backgroundSize: `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
-                                backgroundPosition: '0 0',
+                                backgroundSize: portraitSrc ? 'cover' : `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
+                                backgroundPosition: portraitSrc ? 'center 22%' : '0 0',
                                 imageRendering: 'pixelated'
                               }}
                             />
@@ -11027,7 +11283,8 @@ export default function HubScreen({
                     </strong>
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.allEnemies.map((enemy, index) => {
-                        const spriteSrc = getEnemySpriteSheetSrc(enemy, selectedUniverseArchive.universe);
+                        const portraitSrc = enemy.portrait || null;
+                        const spriteSrc = portraitSrc || getEnemySpriteSheetSrc(enemy, selectedUniverseArchive.universe);
                         const spriteLayout = getSpriteSheetLayout(spriteSrc);
                         return (
                           <div key={`${enemy.name}-${index}`} style={{ display: 'grid', gridTemplateColumns: '72px minmax(0, 1fr)', gap: '8px', padding: '7px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
@@ -11041,8 +11298,8 @@ export default function HubScreen({
                                 backgroundColor: '#050509',
                                 backgroundImage: `url("${spriteSrc}")`,
                                 backgroundRepeat: 'no-repeat',
-                                backgroundSize: `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
-                                backgroundPosition: '0 0',
+                                backgroundSize: portraitSrc ? 'cover' : `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
+                                backgroundPosition: portraitSrc ? 'center 22%' : '0 0',
                                 imageRendering: 'pixelated'
                               }}
                             />
@@ -11051,7 +11308,11 @@ export default function HubScreen({
                               <div style={{ color: '#aaa', fontSize: '9px', marginTop: '3px' }}>
                                 HP {enemy.hp || '?'} / ATK {enemy.atk || '?'} / SPD {enemy.spd || '?'}
                               </div>
-                              {enemy.special && <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '3px' }}>{enemy.special}</div>}
+                              {enemy.special && (
+                                <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '3px' }}>
+                                  {getLocalizedText(enemy.special, lang, enemy.name)}
+                                </div>
+                              )}
                               <div style={{ color: '#d0b7b7', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
                                 {getEnemyLoreDescription({
                                   enemy,
@@ -11117,6 +11378,107 @@ export default function HubScreen({
                   </div>
                 </div>
 
+                {selectedUniverseArchive.livingWorld && (
+                  <div style={{ padding: '12px', border: '1px solid rgba(52,152,219,0.3)', background: 'rgba(52,152,219,0.05)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#8bd4ff', fontSize: '11px', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Monde vivant complet' : 'Complete living world'}
+                    </strong>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(235px, 1fr))', gap: '10px', marginTop: '9px' }}>
+                      <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
+                        <b style={{ color: '#8bd4ff' }}>{lang === 'fr' ? 'Lieux et routes' : 'Places and routes'}</b>
+                        {selectedUniverseArchive.livingWorld.locations.map(location => (
+                          <div key={location.id} style={{ marginTop: '5px' }}>
+                            <b>{getLocalizedText(location.name, lang, location.id)}</b> / {location.type}
+                            <div style={{ color: '#aebfca' }}>{getLocalizedText(location.dailyUse, lang)}{location.connectedTo ? ` → ${location.connectedTo}` : ''}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
+                        <b style={{ color: '#8bd4ff' }}>{lang === 'fr' ? 'Population et autorités' : 'Population and authorities'}</b>
+                        <div style={{ marginTop: '5px' }}>{lang === 'fr' ? 'Habitants' : 'Inhabitants'}: {selectedUniverseArchive.livingWorld.population.inhabitants.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Dirigeants' : 'Leaders'}: {selectedUniverseArchive.livingWorld.population.leaders.join(', ')}</div>
+                        {selectedUniverseArchive.livingWorld.population.supportNpcs.map(npc => (
+                          <div key={npc.id}>{npc.role}: {npc.name}</div>
+                        ))}
+                        <div style={{ color: '#aebfca', marginTop: '4px' }}>
+                          {lang === 'fr' ? 'Créatures neutres' : 'Neutral creatures'}: {selectedUniverseArchive.livingWorld.population.neutralCreatures.join(', ')}
+                        </div>
+                      </div>
+                      <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
+                        <b style={{ color: '#8bd4ff' }}>{lang === 'fr' ? 'Société et économie' : 'Society and economy'}</b>
+                        <div style={{ marginTop: '5px' }}>{lang === 'fr' ? 'Factions' : 'Factions'}: {selectedUniverseArchive.livingWorld.society.minorFactions.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Croyances' : 'Beliefs'}: {selectedUniverseArchive.livingWorld.society.beliefs.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Métiers' : 'Professions'}: {selectedUniverseArchive.livingWorld.society.professions.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Ressources' : 'Resources'}: {selectedUniverseArchive.livingWorld.society.resources.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Monnaie' : 'Currency'}: {selectedUniverseArchive.livingWorld.society.economy.currency}</div>
+                        <div>{lang === 'fr' ? 'Exportations' : 'Exports'}: {selectedUniverseArchive.livingWorld.society.economy.exports.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Importations' : 'Imports'}: {selectedUniverseArchive.livingWorld.society.economy.imports.join(', ')}</div>
+                        <div style={{ color: '#aebfca', marginTop: '4px' }}>{selectedUniverseArchive.livingWorld.society.architecture}</div>
+                        <div>{lang === 'fr' ? 'Cuisine' : 'Food'}: {selectedUniverseArchive.livingWorld.society.food.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Véhicules' : 'Vehicles'}: {selectedUniverseArchive.livingWorld.society.vehicles.join(', ')}</div>
+                      </div>
+                      <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
+                        <b style={{ color: '#8bd4ff' }}>{lang === 'fr' ? 'Écologie' : 'Ecology'}</b>
+                        <div style={{ marginTop: '5px' }}>{lang === 'fr' ? 'Flore' : 'Flora'}: {selectedUniverseArchive.livingWorld.ecology.flora.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Faune' : 'Fauna'}: {selectedUniverseArchive.livingWorld.ecology.fauna.join(', ')}</div>
+                        <div>{lang === 'fr' ? 'Menaces' : 'Threats'}: {selectedUniverseArchive.livingWorld.ecology.threats.join(', ')}</div>
+                      </div>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(235px, 1fr))', gap: '10px', marginTop: '10px', paddingTop: '9px', borderTop: '1px solid rgba(139,212,255,0.16)' }}>
+                      <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
+                        <b style={{ color: '#8bd4ff' }}>{lang === 'fr' ? 'Dialogues et relations' : 'Dialogues and relationships'}</b>
+                        {selectedUniverseArchive.livingWorld.dialogues.map(dialogue => (
+                          <div key={dialogue.id} style={{ marginTop: '5px' }}><b>{dialogue.speaker}</b> ({dialogue.location}): {dialogue.line}</div>
+                        ))}
+                        {selectedUniverseArchive.livingWorld.heroRelationships.map(relationship => (
+                          <div key={relationship.id} style={{ color: '#aebfca' }}>{relationship.bond} / +{relationship.gameplayBonus.assistChargePercent}% assist</div>
+                        ))}
+                      </div>
+                      <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
+                        <b style={{ color: '#8bd4ff' }}>{lang === 'fr' ? 'Quêtes secondaires' : 'Side quests'}</b>
+                        {selectedUniverseArchive.livingWorld.sideQuests.map(quest => (
+                          <div key={quest.id} style={{ marginTop: '5px' }}>
+                            <b>{getLocalizedText(quest.title, lang, quest.id)}</b> / {quest.giver}
+                            <div style={{ color: '#aebfca' }}>{quest.objective}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
+                        <b style={{ color: '#8bd4ff' }}>{lang === 'fr' ? 'Événements dynamiques' : 'Dynamic events'}</b>
+                        {selectedUniverseArchive.livingWorld.randomEvents.map(event => (
+                          <div key={event.id} style={{ marginTop: '5px' }}>{Math.round(event.chance * 100)}% / {event.effect}</div>
+                        ))}
+                      </div>
+                      <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
+                        <b style={{ color: '#8bd4ff' }}>{lang === 'fr' ? 'Entrées de codex' : 'Codex entries'}</b>
+                        {selectedUniverseArchive.livingWorld.codexEntries.map(entry => (
+                          <div key={entry.id} style={{ marginTop: '5px' }}>
+                            <b>{getLocalizedText(entry.title, lang, entry.id)}</b>
+                            <div style={{ color: '#aebfca' }}>{getLocalizedText(entry.body, lang)}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {selectedUniverseArchive.worldItems.length > 0 && (
+                  <div style={{ padding: '12px', border: '1px solid rgba(241,196,15,0.28)', background: 'rgba(241,196,15,0.05)', borderRadius: '5px' }}>
+                    <strong style={{ color: '#ffe27a', fontSize: '11px', textTransform: 'uppercase' }}>
+                      {lang === 'fr' ? 'Catalogue local complet — 12 objets' : 'Complete local catalogue — 12 items'}
+                    </strong>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '6px', marginTop: '9px' }}>
+                      {selectedUniverseArchive.worldItems.map(item => (
+                        <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.4, padding: '7px', border: '1px solid rgba(255,226,122,0.12)', background: 'rgba(0,0,0,0.18)', borderRadius: '4px' }}>
+                          <b style={{ color: '#ffe27a' }}>{getLocalizedText(item.name, lang, item.id)}</b>
+                          <div style={{ color: '#aebfca' }}>{getLocalizedText(item.desc, lang)}</div>
+                          <div>{item.type} / {item.rarityId} / {item.acquisition} / 3 {lang === 'fr' ? 'rangs' : 'ranks'}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
                   <div style={{ padding: '12px', border: '1px solid rgba(46,204,113,0.24)', background: 'rgba(46,204,113,0.05)', borderRadius: '5px' }}>
                     <strong style={{ color: '#8dffb1', fontSize: '11px', textTransform: 'uppercase' }}>
@@ -11125,8 +11487,8 @@ export default function HubScreen({
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.stages.map(stage => (
                         <div key={stage.id} style={{ color: completedStages.includes(stage.id) ? '#dfffe8' : '#aaa', fontSize: '9px', lineHeight: 1.35, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '4px', background: 'rgba(0,0,0,0.2)' }}>
-                          {getOpenAiBackdropSrc(stage.universe, stage.mode) && (
-                            <img src={getOpenAiBackdropSrc(stage.universe, stage.mode)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '100%', height: '74px', display: 'block', objectFit: 'cover' }} />
+                          {(stage.stageArt || getOpenAiBackdropSrc(stage.universe, stage.mode)) && (
+                            <img src={stage.stageArt || getOpenAiBackdropSrc(stage.universe, stage.mode)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '100%', height: '74px', display: 'block', objectFit: 'cover' }} />
                           )}
                           <div style={{ padding: '7px' }}>
                           <b style={{ color: completedStages.includes(stage.id) ? '#2ecc71' : '#ffeb3b' }}>

@@ -1,6 +1,7 @@
 import { BATTLE_ITEMS_BY_UNIVERSE } from './battleItems';
 import { LORE_DB } from './lore';
 import { OC_BOOSTER_UPDATE_UNLOCKABLES } from './ocBoosterContentUpdates.js';
+import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
 
 const KART_STYLES = Object.freeze([
   {
@@ -311,9 +312,39 @@ const makeUniverseUnlockables = (universe) => {
   });
 };
 
+const originalUnlockablesByUniverse = Object.freeze(Object.fromEntries(
+  ORIGINAL_UNIVERSE_DEFINITIONS.map(world => [
+    world.universe,
+    world.universeUnlockables
+  ])
+));
+
 export const UNIVERSE_UNLOCKABLES = Object.freeze(Object.fromEntries(
-  Object.keys(BATTLE_ITEMS_BY_UNIVERSE)
-    .map(universe => [universe, makeUniverseUnlockables(universe)])
+  Object.keys(BATTLE_ITEMS_BY_UNIVERSE).map(universe => {
+    const generated = makeUniverseUnlockables(universe);
+    const originalOverrides = originalUnlockablesByUniverse[universe];
+    if (!originalOverrides) return [universe, generated];
+
+    return [
+      universe,
+      Object.freeze(Object.fromEntries(
+        Object.entries(generated).map(([kind, unlockable]) => [
+          kind,
+          Object.freeze({
+            ...unlockable,
+            ...originalOverrides[kind],
+            effect: unlockable.effect,
+            musicStage: unlockable.musicStage,
+            state: unlockable.state,
+            visual: Object.freeze({
+              ...(unlockable.visual || {}),
+              ...(originalOverrides[kind]?.visual || {})
+            })
+          })
+        ])
+      ))
+    ];
+  })
 ));
 
 export const KART_CATALOG = Object.freeze(Object.values(UNIVERSE_UNLOCKABLES)

@@ -28,6 +28,8 @@ const slugify = (value) => String(value || 'unknown')
 const rewriteImports = (source) => source
   .replaceAll("from './expandedUniverses'", "from './expandedUniverses.js'")
   .replaceAll("from './ocDlcPacks'", "from './ocDlcPacks.js'")
+  .replaceAll("from './originalUniverseProduction'", "from './originalUniverseProduction.js'")
+  .replaceAll("from './originalUniverseWave'", "from './originalUniverseWave.js'")
   .replaceAll("from './requestedUniverseWave'", "from './requestedUniverseWave.js'")
   .replaceAll("from './featuredUniversePacks'", "from './featuredUniversePacks.js'")
   .replaceAll("from './loreBossOverrides'", "from './loreBossOverrides.js'")
@@ -44,7 +46,7 @@ const rewriteImports = (source) => source
 const copyRuntimeModules = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
+  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'originalUniversesManifest.json', 'originalUniverseProduction.js', 'originalUniverseWave.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
   await Promise.all(files.map(async (file) => {
     const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
     await fs.writeFile(path.join(tmpDir, file), rewriteImports(raw), 'utf8');
@@ -112,6 +114,29 @@ const main = async () => {
       })
     };
   });
+  if (!heroEntries.some(entry => entry.id === 'player_anchor')) {
+    heroEntries.push({
+      kind: 'hero',
+      id: 'player_anchor',
+      name: 'A.R.C.A. Anchor',
+      universe: 'Nexus de Convergence',
+      output: '/sprites/generated/heroes/nexus-de-convergence/player-anchor.png',
+      frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
+      visualAnchor: 'A neutral androgynous Anchor in dark A.R.C.A. tactical armor, carrying a cyan anchor gauntlet with restrained yellow signal accents.',
+      prompt: [
+        buildPrompt({
+          kind: 'hero',
+          name: 'A.R.C.A. Anchor',
+          universe: 'Nexus de Convergence',
+          role: 'customizable tactical anchor',
+          weapon: 'cyan anchor gauntlet',
+          color: 'dark charcoal, archive white, cyan and restrained signal yellow',
+          special: 'stabilizing prismatic anchor pulse'
+        }),
+        'Identity constraint: keep the face neutral and non-specific so the sprite can represent any player profile; use an entirely original design with no franchise resemblance.'
+      ].join('\n')
+    });
+  }
 
   const bossEntries = [];
   Object.entries(ENEMIES_DB).forEach(([universe, data]) => {

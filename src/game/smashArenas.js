@@ -241,6 +241,49 @@ export const SMASH_ARENA_LAYOUTS = {
       { x: width * 0.50, y: height * 0.71 }
     ]
   },
+  oc_authorless_finale: {
+    id: 'oc_authorless_finale',
+    label: { fr: 'Seuil des trois propositions', en: 'Threshold of Three Propositions' },
+    tags: ['bossArena', 'portalSpawn', 'loreArena', 'wide'],
+    // The portals stage the Authorless propositions, but only defeating the
+    // canonical final boss can complete this arena.
+    objective: 'boss',
+    objectiveTarget: 3,
+    gravity: 0.23,
+    jump: -7.6,
+    maxWaves: 3,
+    platforms: (width, height) => [
+      scaledPlatform(width, height, 0.04, 0.96, 0.80, 'main', false),
+      scaledPlatform(width, height, 0.12, 0.32, 0.57, 'soft'),
+      scaledPlatform(width, height, 0.40, 0.60, 0.40, 'anchor'),
+      scaledPlatform(width, height, 0.68, 0.88, 0.57, 'soft')
+    ],
+    objectiveNodes: (width, height) => [
+      objectiveNode(width, height, 0.20, 0.80, 'portal', 'proposal_memory'),
+      objectiveNode(width, height, 0.50, 0.40, 'portal', 'proposal_contradiction'),
+      objectiveNode(width, height, 0.80, 0.80, 'portal', 'proposal_choice')
+    ],
+    spawns: (width, height) => ({
+      heroes: [
+        { x: width * 0.18, y: height * 0.80 },
+        { x: width * 0.28, y: height * 0.57 },
+        { x: width * 0.38, y: height * 0.80 }
+      ],
+      enemies: [
+        { x: width * 0.80, y: height * 0.80 },
+        { x: width * 0.50, y: height * 0.40 },
+        { x: width * 0.20, y: height * 0.80 }
+      ],
+      boss: { x: width * 0.76, y: height * 0.80 }
+    }),
+    pickups: (width, height) => [
+      { x: width * 0.26, y: height * 0.51 },
+      { x: width * 0.44, y: height * 0.34 },
+      { x: width * 0.56, y: height * 0.34 },
+      { x: width * 0.74, y: height * 0.51 },
+      { x: width * 0.50, y: height * 0.73 }
+    ]
+  },
   concert_stage: {
     id: 'concert_stage',
     label: { fr: 'Scene de resonance', en: 'Resonance Stage' },
@@ -795,6 +838,7 @@ export function getSmashArenaTheme(stage = {}, arena = {}) {
     platformTexture: recentProfile.melee.platformTexture,
     levelName: recentProfile.melee.name
   };
+  if (arena.id === 'oc_authorless_finale') return { material: 'palimpsest', accent: '#f3eee2', secondary: '#7df9ff', danger: '#ff5b6e' };
   if (ALIEN_UNIVERSES.includes(universe) || arena.id === 'hive_corridor') return { material: 'hive', accent: '#86ffb0', secondary: '#1a5f4a', danger: '#b6ff38' };
   if (MUSIC_UNIVERSES.includes(universe) || arena.id === 'concert_stage') return { material: 'concert', accent: '#ff4fd8', secondary: '#ffe15a', danger: '#ff5b2e' };
   if (HORROR_LAB_UNIVERSES.includes(universe) || arena.id === 'containment_lab') return { material: 'lab', accent: '#61ff59', secondary: '#d7fff0', danger: '#61ff59' };

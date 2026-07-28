@@ -1460,6 +1460,28 @@ export class EngineSmash {
 
     if (objective === 'boss') {
       const boss = aliveEnemies.find(enemy => enemy.isBoss);
+      if (this.arena.id === 'oc_authorless_finale') {
+        const remainingRatio = boss
+          ? Math.max(0, boss.currentHp / Math.max(1, boss.maxHp))
+          : (this.wave >= this.maxWaves ? 0 : 1);
+        const damageRatio = 1 - remainingRatio;
+        this.objectiveNodes.forEach((node, index) => {
+          if (node.sealed) return;
+          const threshold = (index + 1) * 0.25;
+          node.progress = Math.max(0, Math.min(100, (damageRatio / threshold) * 100));
+          if (damageRatio >= threshold) {
+            node.sealed = true;
+            this.objectivePulse = `PROPOSITION ${index + 1} CONTREDITE`;
+            this.particles.add(node.x, node.y - 20, 0, -1, this.arena.theme.secondary, 10, 60, 'text', 'ANCRE');
+          }
+        });
+        this.objectiveProgress = this.objectiveNodes.filter(node => node.sealed).length;
+        if (boss && this.objectiveTick % 210 === 0) {
+          boss.vx *= 0.5;
+          this.objectivePulse = 'SOUVENIR RESTAURE';
+        }
+        return;
+      }
       this.objectiveProgress = boss
         ? Math.max(0, this.objectiveTarget - Math.ceil((boss.currentHp / Math.max(1, boss.maxHp)) * this.objectiveTarget))
         : this.wave;
@@ -1697,7 +1719,13 @@ export class EngineSmash {
       ctx.stroke();
       ctx.fillStyle = node.type === 'portal' ? theme.danger : theme.secondary;
       ctx.font = '8px "Press Start 2P"';
-      const label = node.type === 'portal' ? 'PORTAIL' : node.type === 'artifact' ? `ANCRE ${Math.max(0, Math.round(this.artifactHp || 0))}%` : 'TRACE';
+      const label = this.arena.id === 'oc_authorless_finale'
+        ? 'PROPOSITION'
+        : node.type === 'portal'
+          ? 'PORTAIL'
+          : node.type === 'artifact'
+            ? `ANCRE ${Math.max(0, Math.round(this.artifactHp || 0))}%`
+            : 'TRACE';
       ctx.fillText(label, node.x - 34, node.y - 30);
       if (node.type === 'portal') {
         ctx.fillStyle = 'rgba(255,255,255,0.14)';

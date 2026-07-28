@@ -1,21 +1,22 @@
-import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE, FEATURED_UNIVERSE_PACKS } from './featuredUniversePacks';
-import { LORE_BOSS_OVERRIDES, LORE_BOSS_SLOT_POLICY } from './loreBossOverrides';
-import { getLoreEnemyOverrides } from './loreEnemyOverrides';
+import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE, FEATURED_UNIVERSE_PACKS } from './featuredUniversePacks.js';
+import { LORE_BOSS_OVERRIDES, LORE_BOSS_SLOT_POLICY } from './loreBossOverrides.js';
+import { getLoreEnemyOverrides } from './loreEnemyOverrides.js';
 import {
   getLoreEquipmentOverrides,
   getLoreEventItemOverride,
   getLoreItemPolicy
-} from './loreItemOverrides';
+} from './loreItemOverrides.js';
 import {
   getLoreWorldBossOverride,
   getLoreWorldBossPolicy
-} from './loreWorldBossOverrides';
-import { REQUESTED_UNIVERSE_WAVE } from './requestedUniverseWave';
+} from './loreWorldBossOverrides.js';
+import { REQUESTED_UNIVERSE_WAVE } from './requestedUniverseWave.js';
 import {
   getStageLoreAssetPlan,
   getStageLoreProfile
-} from './stageLoreProfiles';
-import { OC_DLC_UNIVERSES } from './ocDlcPacks';
+} from './stageLoreProfiles.js';
+import { OC_DLC_UNIVERSES } from './ocDlcPacks.js';
+import { ORIGINAL_UNIVERSE_WAVE } from './originalUniverseWave.js';
 
 const EXPANDED_STAGE_START_ID = 39;
 
@@ -3926,6 +3927,17 @@ OC_DLC_UNIVERSES.forEach(pack => {
   }
 });
 
+ORIGINAL_UNIVERSE_WAVE.forEach(pack => {
+  const existingIndex = EXPANDED_UNIVERSES.findIndex(
+    universe => universe.universe === pack.universe
+  );
+  if (existingIndex >= 0) {
+    EXPANDED_UNIVERSES[existingIndex] = pack;
+  } else {
+    EXPANDED_UNIVERSES.push(pack);
+  }
+});
+
 EXPANDED_UNIVERSES.forEach(universe => {
   const worldBossOverride = getLoreWorldBossOverride(universe.universe);
   const worldBossPolicy = getLoreWorldBossPolicy(universe.universe);
@@ -4211,6 +4223,64 @@ function getStageLoreMetadata(stage) {
   };
 }
 
+const EXPANDED_STAGE_RUNTIME_METADATA_KEYS = [
+  'contentPackId',
+  'contentOrigin',
+  'originalContent',
+  'originalContentNotice',
+  'ocDlc',
+  'dlcStage',
+  'standalone',
+  'numberedAct',
+  'campaignDependency',
+  'requiredCampaignStageIds',
+  'actLabel',
+  'packTitle',
+  'displayName',
+  'bossNameLocalized',
+  'bossId',
+  'previousStageId',
+  'contentStageId',
+  'stageKey',
+  'objectiveType',
+  'setting',
+  'production',
+  'stageArt',
+  'sourceUniverses',
+  'enemyRoster',
+  'enemyRosterExclusive',
+  'tacticsBattlefieldId',
+  'smashArenaId',
+  'intro',
+  'scenes',
+  'outro',
+  'storyBeat',
+  'objective',
+  'stakes',
+  'consequence',
+  'reward',
+  'rewardItemId',
+  'rewardItemName',
+  'eventRewardId',
+  'goldPrize',
+  'shardPrize',
+  'tokenPrize'
+];
+
+function getExpandedStageRuntimeMetadata(source) {
+  const metadata = Object.fromEntries(
+    EXPANDED_STAGE_RUNTIME_METADATA_KEYS
+      .filter(key => Object.hasOwn(source, key))
+      .map(key => [key, source[key]])
+  );
+
+  if (source.ocDlc && !Object.hasOwn(metadata, 'dlcStage')) {
+    metadata.dlcStage = true;
+  }
+
+  return metadata;
+}
+
 export function getExpandedStages() {
   const primaryStages = EXPANDED_UNIVERSES.flatMap((universe, index) => (
     universe.skipPrimaryStage
@@ -4267,6 +4337,8 @@ export const EXPANDED_UNIVERSE_SIGNATURES = Object.fromEntries(
     universe: universe.universe,
     mediaType: universe.mediaType,
     faction: universe.faction,
+    sourceType: universe.sourceType,
+    isOriginal: universe.isOriginal === true,
     theme: universe.theme || universe.desc?.en || universe.universe,
     stageName: universe.stageName,
     bossName: universe.bossName,
@@ -4292,6 +4364,10 @@ export const EXPANDED_LORE_DB = Object.fromEntries(
   EXPANDED_UNIVERSES.map(universe => [universe.universe, {
     mediaType: universe.mediaType,
     faction: universe.faction,
+    sourceType: universe.sourceType,
+    isOriginal: universe.isOriginal === true,
+    originalContent: universe.originalContent === true,
+    originalContentNotice: universe.originalContentNotice,
     theme: universe.theme || universe.desc?.en,
     stageName: universe.stageName,
     bossName: universe.bossName,
@@ -4299,7 +4375,12 @@ export const EXPANDED_LORE_DB = Object.fromEntries(
     worldBossPolicy: universe.worldBossPolicy || null,
     canonicalStage: universe.stageLoreProfile?.canonicalName,
     title: universe.title,
-    desc: universe.desc
+    desc: universe.desc,
+    narrativeArc: universe.narrativeArc,
+    livingWorld: universe.livingWorld,
+    worldItems: universe.worldItems,
+    audiovisual: universe.audiovisual,
+    sensitivityNotes: universe.sensitivityNotes
   }])
 );
 
@@ -4308,21 +4389,33 @@ export const EXPANDED_ENEMIES_DB = Object.fromEntries(
     monsters: universe.monsters.map((entry, index) => makeEnemy(entry, index, universe)),
     bosses: universe.bosses.map((entry, index) => {
       const enemy = makeEnemy(entry, index, universe, 2);
+      const hasAuthoredStats = entry && typeof entry === 'object';
       return {
         ...enemy,
-        hp: 420 + difficultyRank(universe) * 70 + index * 65,
-        atk: 19 + difficultyRank(universe) * 3 + index * 3,
+        hp: hasAuthoredStats && Number.isFinite(entry.hp)
+          ? entry.hp
+          : 420 + difficultyRank(universe) * 70 + index * 65,
+        atk: hasAuthoredStats && Number.isFinite(entry.atk)
+          ? entry.atk
+          : 19 + difficultyRank(universe) * 3 + index * 3,
         special: enemy.special || `${enemy.name} Breach Pattern`
       };
     }),
     finalePolicy: universe.worldBossPolicy || null,
     worldBoss: universe.worldBoss ? (() => {
       const enemy = makeEnemy(universe.worldBoss, 0, universe, 4);
+      const hasAuthoredStats = typeof universe.worldBoss === 'object';
       return {
         ...enemy,
-        hp: 1180 + difficultyRank(universe) * 170,
-        atk: 30 + difficultyRank(universe) * 4,
-        spd: 4,
+        hp: hasAuthoredStats && Number.isFinite(universe.worldBoss.hp)
+          ? universe.worldBoss.hp
+          : 1180 + difficultyRank(universe) * 170,
+        atk: hasAuthoredStats && Number.isFinite(universe.worldBoss.atk)
+          ? universe.worldBoss.atk
+          : 30 + difficultyRank(universe) * 4,
+        spd: hasAuthoredStats && Number.isFinite(universe.worldBoss.spd)
+          ? universe.worldBoss.spd
+          : 4,
         special: enemy.special || `${enemy.name} Omniverse Rupture`
       };
     })() : null
@@ -4402,52 +4495,3 @@ export const EXPANDED_EVENT_SHOP_ITEMS = EXPANDED_UNIVERSES.flatMap(universe => 
 export const EXPANDED_STAGE_ACCENT_BY_UNIVERSE = Object.fromEntries(
   EXPANDED_UNIVERSES.map(universe => [universe.universe, colorPalette[universe.faction] || universe.decor.accent])
 );
-const EXPANDED_STAGE_RUNTIME_METADATA_KEYS = [
-  'contentPackId',
-  'contentOrigin',
-  'originalContent',
-  'originalContentNotice',
-  'ocDlc',
-  'dlcStage',
-  'standalone',
-  'numberedAct',
-  'campaignDependency',
-  'requiredCampaignStageIds',
-  'actLabel',
-  'packTitle',
-  'displayName',
-  'bossNameLocalized',
-  'previousStageId',
-  'enemyRoster',
-  'enemyRosterExclusive',
-  'tacticsBattlefieldId',
-  'smashArenaId',
-  'intro',
-  'scenes',
-  'outro',
-  'storyBeat',
-  'objective',
-  'stakes',
-  'consequence',
-  'reward',
-  'rewardItemId',
-  'rewardItemName',
-  'eventRewardId',
-  'goldPrize',
-  'shardPrize',
-  'tokenPrize'
-];
-
-function getExpandedStageRuntimeMetadata(source) {
-  const metadata = Object.fromEntries(
-    EXPANDED_STAGE_RUNTIME_METADATA_KEYS
-      .filter(key => Object.hasOwn(source, key))
-      .map(key => [key, source[key]])
-  );
-
-  if (source.ocDlc && !Object.hasOwn(metadata, 'dlcStage')) {
-    metadata.dlcStage = true;
-  }
-
-  return metadata;
-}
