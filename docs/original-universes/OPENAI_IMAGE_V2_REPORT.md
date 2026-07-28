@@ -17,7 +17,9 @@ Répartition : 20 boosters, 20 décors, 60 stages, 60 héros, 100 ennemis,
 
 - Plan et prompts :
   `docs/original-universes/openai-image-v2-plan.json`
-  (SHA-256 `0724b99934c91f54dc5c3e3510835dcc7c9364875a844b194c3ef14e158f9998`)
+  (SHA-256 `38e5b69fb230ccf6b59e94199bde1520fbc603d30d98dbf9ba4050468025137b`)
+- Revue culturelle et garde-fous ciblés :
+  `docs/original-universes/cultural-remediation-v3.json`
 - Sidecars de provenance :
   `docs/original-universes/openai-image-v2-ledger/entries/`
 - Images finales :
@@ -38,6 +40,11 @@ Les prompts reprennent les descriptions du monde, le conflit central, la
 direction visuelle, la palette et les faits propres à chaque personnage,
 menace, lieu ou objet. Les 38 notes de sensibilité du manifeste sont injectées
 textuellement dans les 375 prompts concernés.
+
+Une revue documentaire ciblée a renforcé exactement 27 prompts : 15 pour
+Kemet et 12 pour Tawantinsuyu. Les 473 autres prompts et les 500 destinations
+runtime restent inchangés. Le détail des constats, sources et corrections est
+conservé dans `CULTURAL_REVIEW_KEMET_TAWANTINSUYU.md`.
 
 Ces garde-fous écrits ne constituent pas une consultation humaine. En
 particulier, la revue spécialisée en égyptologie demandée pour Kemet et la

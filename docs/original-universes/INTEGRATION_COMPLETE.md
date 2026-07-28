@@ -81,10 +81,12 @@ cartes. Les cinq boosters permanents de la Cellule ZÉRO restent indépendants.
 
 - Validation structurelle du manifeste : 20 univers, 60 héros, 100 ennemis, 60 boss,
   20 world boss, 60 équipements, 100 objets de combat, 60 stages, 20 arcs et 20 boosters.
-- Tests spécialisés : 17/17.
+- Tests spécialisés : 18/18.
 - Audit OpenAI Image v2 : 500/500 PNG distincts, 500/500 sidecars de provenance,
   parité exacte plan/runtime et 38 notes de sensibilité reprises dans 375 prompts.
+- Revue documentaire Kemet/Tawantinsuyu : 27 visuels régénérés avec garde-fous
+  institutionnels ciblés, sans revendiquer de consultation humaine.
 - Validation pré-build complète et build Vite de production : réussis.
 - Parcours navigateur vérifié : écran 60 missions sans vue vide, trois missions Neon Requiem
-  filtrées, stage PNG v2 dans le répertoire et l'introduction, combat lancé, puis ouverture
+  filtrées, stage PNG v2 chargé dans le répertoire, introduction affichée, combat lancé, puis ouverture
   réelle d'un booster Aevum Fracture de cinq cartes sans ressource OC legacy.

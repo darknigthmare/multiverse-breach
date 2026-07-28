@@ -12,6 +12,12 @@ const DEFAULT_OUTPUT = path.join(
   'original-universes',
   'openai-image-v2-plan.json'
 );
+const DEFAULT_REMEDIATION = path.join(
+  REPOSITORY_ROOT,
+  'docs',
+  'original-universes',
+  'cultural-remediation-v3.json'
+);
 const SAFE_SEGMENT = /^[a-z0-9][a-z0-9_-]*$/i;
 const EXPECTED_WORLD_COUNT = 20;
 const EXPECTED_PER_WORLD = Object.freeze({
@@ -40,6 +46,7 @@ function parseArguments(argv) {
   const options = {
     source: DEFAULT_SOURCE,
     out: DEFAULT_OUTPUT,
+    remediation: DEFAULT_REMEDIATION,
     check: false,
     help: false
   };
@@ -51,6 +58,9 @@ function parseArguments(argv) {
       index += 1;
     } else if (argument === '--out') {
       options.out = path.resolve(REPOSITORY_ROOT, argv[index + 1] || '');
+      index += 1;
+    } else if (argument === '--remediation') {
+      options.remediation = path.resolve(REPOSITORY_ROOT, argv[index + 1] || '');
       index += 1;
     } else if (argument === '--check') {
       options.check = true;
@@ -71,6 +81,7 @@ function printHelp() {
     'Options:',
     '  --source <file>  Original-universe source manifest',
     '  --out <file>     Deterministic OpenAI Image plan destination',
+    '  --remediation <file>  Reviewed per-asset cultural guardrails',
     '  --check          Verify that the saved plan exactly matches the source',
     '  --help           Show this help'
   ].join('\n'));
@@ -311,7 +322,63 @@ function scalarEntityReference(label, value, pointer, fieldLabel) {
   return entityReference(label, scalarFact(value, pointer, fieldLabel));
 }
 
-function buildPlan(manifest, sourcePath, sourceText) {
+function prepareRemediation(remediation, remediationPath, remediationText) {
+  if (remediation?.schemaVersion !== 1) {
+    throw new Error('cultural remediation schemaVersion must be 1.');
+  }
+  if (remediation?.humanSpecialistConsultation !== false) {
+    throw new Error(
+      'cultural remediation must truthfully record that no human specialist consultation occurred.'
+    );
+  }
+  const sources = remediation?.sources;
+  if (!sources || typeof sources !== 'object' || Array.isArray(sources)) {
+    throw new Error('cultural remediation sources must be an object.');
+  }
+  const entries = requireArray(remediation?.assets, 'cultural remediation assets');
+  const byAssetId = new Map();
+  for (const [index, entry] of entries.entries()) {
+    const label = `cultural remediation assets[${index}]`;
+    const assetId = cleanString(entry?.assetId, `${label}.assetId`);
+    const reason = cleanString(entry?.reason, `${label}.reason`);
+    const promptAddendum = cleanString(
+      entry?.promptAddendum,
+      `${label}.promptAddendum`
+    );
+    const sourceKeys = requireArray(entry?.sourceKeys, `${label}.sourceKeys`);
+    if (sourceKeys.length === 0) {
+      throw new Error(`${label}.sourceKeys must not be empty.`);
+    }
+    for (const sourceKey of sourceKeys) {
+      const normalizedKey = cleanString(sourceKey, `${label}.sourceKeys`);
+      if (typeof sources[normalizedKey] !== 'string' || !sources[normalizedKey].trim()) {
+        throw new Error(`${label} references unknown source key: ${normalizedKey}.`);
+      }
+    }
+    if (byAssetId.has(assetId)) {
+      throw new Error(`Duplicate cultural remediation asset id: ${assetId}.`);
+    }
+    byAssetId.set(assetId, {
+      reason,
+      promptAddendum,
+      sourceKeys
+    });
+  }
+  return {
+    byAssetId,
+    metadata: {
+      file: path.relative(REPOSITORY_ROOT, remediationPath).split(path.sep).join('/'),
+      sha256: sha256(remediationText),
+      schemaVersion: remediation.schemaVersion,
+      reviewDate: remediation.reviewDate,
+      reviewType: remediation.reviewType,
+      humanSpecialistConsultation: remediation.humanSpecialistConsultation,
+      assets: entries.length
+    }
+  };
+}
+
+function buildPlan(manifest, sourcePath, sourceText, remediationData) {
   const universes = requireArray(
     manifest?.universes,
     'manifest.universes',
@@ -321,6 +388,7 @@ function buildPlan(manifest, sourcePath, sourceText) {
   const assetIds = new Set();
   const destinations = new Set();
   const promptHashes = new Set();
+  const consumedRemediation = new Set();
   const counts = Object.fromEntries(Object.keys(EXPECTED_PER_WORLD).map(kind => [kind, 0]));
 
   function addJob({
@@ -345,13 +413,18 @@ function buildPlan(manifest, sourcePath, sourceText) {
 
     const worldPointer = `/universes/${worldIndex}`;
     const context = worldContext(world, worldPointer);
-    const prompt = buildPrompt({
+    let prompt = buildPrompt({
       assetId,
       kind,
       entity,
       context,
       entityFacts: facts
     });
+    const culturalRemediation = remediationData.byAssetId.get(assetId) || null;
+    if (culturalRemediation) {
+      prompt = `${prompt}\n${culturalRemediation.promptAddendum}`;
+      consumedRemediation.add(assetId);
+    }
     const promptSha256 = sha256(prompt);
     if (promptHashes.has(promptSha256)) {
       throw new Error(`Duplicate prompt generated for ${assetId}.`);
@@ -374,6 +447,12 @@ function buildPlan(manifest, sourcePath, sourceText) {
       generator: 'OpenAI built-in image_gen',
       model: 'built-in/imagegen',
       promptSha256,
+      culturalRemediation: culturalRemediation
+        ? {
+            reason: culturalRemediation.reason,
+            sourceKeys: culturalRemediation.sourceKeys
+          }
+        : null,
       loreReferences: uniquePointers([
         ...context.references,
         ...facts.map(fact => fact.reference)
@@ -582,6 +661,13 @@ function buildPlan(manifest, sourcePath, sourceText) {
       throw new Error(`Expected ${expected} ${kind} jobs; generated ${counts[kind]}.`);
     }
   }
+  if (consumedRemediation.size !== remediationData.byAssetId.size) {
+    const unknown = [...remediationData.byAssetId.keys()]
+      .filter(assetId => !consumedRemediation.has(assetId));
+    throw new Error(
+      `Cultural remediation references unknown plan jobs: ${unknown.join(', ')}.`
+    );
+  }
 
   return {
     schemaVersion: 1,
@@ -599,6 +685,7 @@ function buildPlan(manifest, sourcePath, sourceText) {
       manifestSchemaVersion: manifest.schemaVersion,
       manifestGeneratedAt: manifest.generatedAt
     },
+    culturalRemediation: remediationData.metadata,
     destinationConvention: {
       booster: '/boosters/original-worlds/v2/<worldKey>.png',
       assets: '/images/oc-worlds/v2/<worldKey>/{backdrop.png,stages/<stageId>.png,heroes/<heroId>.png,threats/<slugName>.png,items/<itemId>.png}'
@@ -628,7 +715,19 @@ async function main() {
 
   const sourceText = await readFile(options.source, 'utf8');
   const manifest = JSON.parse(sourceText);
-  const plan = buildPlan(manifest, options.source, sourceText);
+  const remediationText = await readFile(options.remediation, 'utf8');
+  const remediation = JSON.parse(remediationText);
+  const remediationData = prepareRemediation(
+    remediation,
+    options.remediation,
+    remediationText
+  );
+  const plan = buildPlan(
+    manifest,
+    options.source,
+    sourceText,
+    remediationData
+  );
   const serializedPlan = `${JSON.stringify(plan, null, 2)}\n`;
 
   if (options.check) {

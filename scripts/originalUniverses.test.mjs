@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
 import {
@@ -46,6 +47,14 @@ const EXPECTED_IMAGE_CONTRACT = Object.freeze({
   model: 'built-in/imagegen',
   planId: 'multiverse-breach-original-universes-openai-image-v2'
 });
+const CULTURAL_REMEDIATION_URL = new URL(
+  '../docs/original-universes/cultural-remediation-v3.json',
+  import.meta.url
+);
+const IMAGE_V2_PLAN_URL = new URL(
+  '../docs/original-universes/openai-image-v2-plan.json',
+  import.meta.url
+);
 
 const slugify = value => String(value || '')
   .normalize('NFD')
@@ -609,4 +618,86 @@ test('the 500 audiovisual paths use the linked and unique OpenAI Image PNG v2 co
   assertUnique(allPaths, 'all original-universe PNG v2 paths');
   assert.ok(allPaths.every(path => path.endsWith('.png')));
   assert.ok(allPaths.every(path => !path.includes('.svg')));
+});
+
+test('Kemet and Tawantinsuyu cultural remediations stay explicit and traceable', () => {
+  const remediationText = readFileSync(CULTURAL_REMEDIATION_URL, 'utf8');
+  const remediation = JSON.parse(remediationText);
+  const plan = JSON.parse(readFileSync(IMAGE_V2_PLAN_URL, 'utf8'));
+  const remediationIds = remediation.assets.map(asset => asset.assetId);
+  const remediationById = new Map(
+    remediation.assets.map(asset => [asset.assetId, asset])
+  );
+  const remediatedJobs = plan.jobs.filter(job => job.culturalRemediation);
+
+  assert.equal(remediation.schemaVersion, 1);
+  assert.equal(remediation.humanSpecialistConsultation, false);
+  assert.equal(remediation.assets.length, 27);
+  assertUnique(remediationIds, 'cultural remediation asset IDs');
+  assert.equal(
+    remediationIds.filter(assetId => assetId.startsWith('oc-v2:kemet_devoured_sun:')).length,
+    15
+  );
+  assert.equal(
+    remediationIds.filter(assetId => assetId.startsWith('oc-v2:tawantinsuyu_split_sun:')).length,
+    12
+  );
+  assert.ok(
+    Object.values(remediation.sources).every(source => /^https:\/\//.test(source)),
+    'cultural remediation sources must remain public HTTPS references'
+  );
+
+  assert.equal(plan.culturalRemediation.assets, 27);
+  assert.equal(plan.culturalRemediation.humanSpecialistConsultation, false);
+  assert.equal(
+    plan.culturalRemediation.sha256,
+    createHash('sha256').update(remediationText).digest('hex')
+  );
+  assert.equal(remediatedJobs.length, 27);
+  assertUnique(remediatedJobs.map(job => job.assetId), 'remediated plan jobs');
+
+  remediatedJobs.forEach(job => {
+    const asset = remediationById.get(job.assetId);
+    assert.ok(asset, `${job.assetId} is absent from the remediation source`);
+    assert.deepEqual(job.culturalRemediation, {
+      reason: asset.reason,
+      sourceKeys: asset.sourceKeys
+    });
+    assert.ok(
+      job.prompt.endsWith(asset.promptAddendum),
+      `${job.assetId} does not end with its binding cultural guardrails`
+    );
+    assert.equal(
+      createHash('sha256').update(job.prompt).digest('hex'),
+      job.promptSha256,
+      `${job.assetId} has a stale prompt hash`
+    );
+  });
+
+  const requiredPromptFragments = new Map([
+    ['oc-v2:kemet_devoured_sun:booster:booster', 'only three human figures'],
+    ['oc-v2:kemet_devoured_sun:hero:khepri_sen', 'plain straight timekeeping rod'],
+    ['oc-v2:kemet_devoured_sun:hero:taset_lioness', 'no lion head'],
+    ['oc-v2:kemet_devoured_sun:enemy:shabti_corrompu', 'show zero shield'],
+    ['oc-v2:kemet_devoured_sun:enemy:ombre_de_ba', 'complete zoological bird body'],
+    ['oc-v2:kemet_devoured_sun:boss:ammit_aux_balances_brisees', 'remains on four legs'],
+    ['oc-v2:kemet_devoured_sun:gear:kemet_feather_maat', 'must not touch or enter any container'],
+    ['oc-v2:kemet_devoured_sun:battleItem:kemet_jackal_guard', 'warm amber internal light must dominate'],
+    ['oc-v2:kemet_devoured_sun:enemy:chacal_de_tombe', 'non-visual gameplay tag for its bite'],
+    ['oc-v2:tawantinsuyu_split_sun:stage:inca_qorikancha_split_sun', 'trapezoidal doorways'],
+    ['oc-v2:tawantinsuyu_split_sun:enemy:ombre_d_uku_pacha', 'zero human or humanoid anatomy'],
+    ['oc-v2:tawantinsuyu_split_sun:enemy:chasqui_corrompu', 'tiny closed utility sheath'],
+    ['oc-v2:tawantinsuyu_split_sun:enemy:gardien_puma_de_pierre', 'non-visual gameplay tag for a full-body stone charge'],
+    ['oc-v2:tawantinsuyu_split_sun:enemy:jeune_amaru_de_tempete', 'sinuous limbless body'],
+    ['oc-v2:tawantinsuyu_split_sun:enemy:masque_du_monde_renverse', 'no symmetrical stepped mass'],
+    ['oc-v2:tawantinsuyu_split_sun:boss:echo_de_la_montagne_aux_neiges_noires', 'environmental landscape event with no creature body'],
+    ['oc-v2:tawantinsuyu_split_sun:worldBoss:pachakuti_du_soleil_noir', 'no raised central platform or plaza'],
+    ['oc-v2:tawantinsuyu_split_sun:battleItem:inca_four_quarters_align', 'four distinct road']
+  ]);
+
+  requiredPromptFragments.forEach((fragment, assetId) => {
+    const job = plan.jobs.find(candidate => candidate.assetId === assetId);
+    assert.ok(job, `${assetId} is absent from the OpenAI Image plan`);
+    assert.ok(job.prompt.toLowerCase().includes(fragment));
+  });
 });

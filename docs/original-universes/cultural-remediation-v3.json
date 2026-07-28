@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-07-28",
+  "reviewType": "Source-based cultural desk review performed by OpenAI; not a human specialist consultation",
+  "humanSpecialistConsultation": false,
+  "sources": {
+    "met-ba": "https://www.metmuseum.org/art/collection/search/545942",
+    "met-shabti": "https://www.metmuseum.org/art/collection/search/555087",
+    "met-heart-scarab": "https://www.metmuseum.org/art/collection/search/550986",
+    "met-hall-two-truths": "https://www.metmuseum.org/art/collection/search/557657",
+    "met-egyptian-kings": "https://www.metmuseum.org/fr/essays/kings-and-queens-of-egypt",
+    "ucl-temple": "https://www.ucl.ac.uk/museums-static/digitalegypt/temple/reading.html",
+    "british-museum-gods": "https://www.britishmuseum.org/learn/schools/ages-7-11/ancient-egypt/ancient-egyptian-gods-and-goddesses",
+    "unesco-qhapaq-nan": "https://whc.unesco.org/en/list/1459/",
+    "smithsonian-cusco": "https://americanindian.si.edu/inkaroad/inkauniverse/cusco/cusco-experience.html",
+    "smithsonian-road": "https://americanindian.si.edu/inkaroad/inkauniverse/inkaroadexpansion/road-administration.html",
+    "met-amaru": "https://www.metmuseum.org/art/collection/search/316938",
+    "met-khipu": "https://resources.metmuseum.org/resources/metpublications/pdf/Weaving_Abstraction.pdf",
+    "inah-piedra-del-sol": "https://agenda.inah.gob.mx/compra-en-linea/catalogo-de-publicaciones/2583.html"
+  },
+  "assets": [
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:booster:booster",
+      "reason": "The original packet repeated divine-animal conflations in the mortal hero silhouettes.",
+      "sourceKeys": ["british-museum-gods", "met-ba"],
+      "promptAddendum": "Binding cultural-remediation guardrails: all three canonical heroes are fully human mortals. Khepri-Sen may carry a small scarab-shaped chronometer but has no insect head, carapace, wings or divine body. Taset is a human woman whose Lioness title is an epithet; she has no feline anatomy and no Sekhmet solar disk or cobra. Keep the heroes as the only three human figures, all small secondary silhouettes beside the solar barque and balance. Do not depict any animal-headed god, anthropomorphic scarab, lion woman, monumental seated figure, flanking humanoid statue or giant guardian."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:stage:kemet_hall_two_truths",
+      "reason": "The original hall used a generic fantasy throne room and a humanoid crocodilian Ammit.",
+      "sourceKeys": ["met-hall-two-truths", "british-museum-gods", "ucl-temple"],
+      "promptAddendum": "Binding cultural-remediation guardrails: make this a rectilinear axial Egyptian judgment hall with papyriform columns, cavetto cornice, judges and a clearly readable balance. Ammit is a subordinate natural quadruped waiting beside the scale, with crocodile head, lion forequarters and hippopotamus hindquarters. No throne, no Gothic or pointed arches, no humanoid crocodile and no upright monster."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:stage:kemet_temple_eclipse",
+      "reason": "The original architecture relied on pointed fantasy arches and an unclear temple pylon.",
+      "sourceKeys": ["ucl-temple"],
+      "promptAddendum": "Binding cultural-remediation guardrails: use a clearly rectilinear Egyptian temple sequence with monumental pylon, open court, columned hall and axial sanctuary. Show the red eclipse and the project-original Red Storm as a non-anthropomorphic atmospheric corruption. No Gothic, pointed or horseshoe arches, no medieval fantasy masonry and no imported classical colonnade."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:hero:nefra_balance",
+      "reason": "The original mortal archivist carried a generic fantasy scimitar.",
+      "sourceKeys": ["met-egyptian-kings"],
+      "promptAddendum": "Binding cultural-remediation guardrails: Nefra is an entirely human mortal archivist, not a goddess or animal-headed being. Her khopesh-hooks must use recognizably ancient Egyptian sickle-shaped bronze blades with straight handles and sharpened outer curves, not fantasy scimitars. No divine crown, wings, feline or avian anatomy."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:hero:khepri_sen",
+      "reason": "The original mortal was rendered as the scarab-headed god Khepri.",
+      "sourceKeys": ["british-museum-gods"],
+      "promptAddendum": "Binding cultural-remediation guardrails: Khepri-Sen is a fully human mortal chronomancer. The scarab is only a small portable timepiece or amulet in his hand or belt. Preserve a visible human face, human skin and normal human anatomy. If his staff is shown, it must be a plain straight timekeeping rod with no circle, ring, halo, disk, rays, sun emblem or winged ornament anywhere on it. No beetle head or helmet, carapace, mandibles, insect limbs, wings, solar disk, cobra or divine transformation."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:hero:taset_lioness",
+      "reason": "The original mortal protector was rendered as a lion-headed divine figure.",
+      "sourceKeys": ["british-museum-gods"],
+      "promptAddendum": "Binding cultural-remediation guardrails: Taset is a fully human mortal warrior woman; Lioness is an epithet describing courage. Preserve a visible human face, human skin and normal human anatomy. Use practical linen protection, shield and spear appropriate to the project lore. No lion head, muzzle, fur, paws, tail, feline body, solar disk, cobra or Sekhmet-like divine regalia."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:enemy:shabti_corrompu",
+      "reason": "The original enemy was a monumental human warrior instead of an animated funerary figurine.",
+      "sourceKeys": ["met-shabti"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic standard-enemy and weapon-visible framing above. Depict one unmistakably small palm-sized animated mummiform funerary shabti figurine beside its even smaller basket, on a low pedestal with back pillar. Its crossed compact faience arms hold only a small pick and hoe. Interpret weapon=shield_bash as the statuette ramming with its own hard body: show zero shield, held weapon or combat armor. Use a restrained plain wig or bare mummiform head with no royal nemes, crown, uraeus, royal beard or pharaonic regalia. Its corruption may crack or animate the statuette without turning it into a full-size human, living mummy, giant warrior, pharaoh or deity."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:enemy:ombre_de_ba",
+      "reason": "The original image inverted ba iconography into a human body with a bird head.",
+      "sourceKeys": ["met-ba"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic standard-enemy framing above. Full-body means one complete zoological bird body from neck to tail and taloned bird feet, with wings attached to the bird trunk and one clearly human head joined directly at the bird neck. Below the head there must be zero human anatomy: no human neck, shoulders, torso, arms, hands, waist, legs or feet. Render it as a dark mobile soul-aspect. No falcon-headed deity, armor, Horus regalia or generic angel."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:enemy:chacal_de_tombe",
+      "reason": "The original hostile anthropomorphic jackal was visually conflated with Anubis.",
+      "sourceKeys": ["british-museum-gods"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic weapon-visible framing above. This is a project-original feral tomb scavenger, shown as a natural quadruped desert canid corrupted by the Breach. Treat the quoted blade weapon as a non-visual gameplay tag for its bite and slashing shadow; show no blade or held weapon. Differentiate it from Anubis through broken stone-and-shadow anatomy and the absence of sacred regalia. No human body, no staff, no scale, no divine collar, no headdress and no god pose."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:enemy:pretre_d_isfet",
+      "reason": "The original cultist used royal nemes and cartouche imagery and duplicated the usurper.",
+      "sourceKeys": ["met-egyptian-kings"],
+      "promptAddendum": "Binding cultural-remediation guardrails: make the Priest of Isfet a clearly mortal, project-original cultist in restrained linen carrying a falsified-name tablet. He is neither king nor deity. No royal nemes, pharaonic crown, royal cartouche, animal head, divine body or visual duplication of the Pharaon Usurpateur."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:boss:ammit_aux_balances_brisees",
+      "reason": "The original boss was a bipedal crocodilian monster with no readable composite anatomy.",
+      "sourceKeys": ["british-museum-gods", "met-hall-two-truths"],
+      "promptAddendum": "Binding cultural-remediation guardrails: Ammit remains on four legs with a crocodile head, clearly lion-like chest and forelegs, and a heavy hippopotamus rear body and hind legs. Keep all three animal components readable in one coherent natural quadruped silhouette beside broken balances. No biped, humanoid torso, Godzilla posture, wings, crown or invented divine regalia."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:gear:kemet_feather_maat",
+      "reason": "The original object resembled a peacock or fantasy wing feather.",
+      "sourceKeys": ["british-museum-gods"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE any pedestal, holder or display framing above. Show one single long, straight and balanced ostrich feather associated with Ma'at, with a simple central shaft and natural symmetrical vanes, lying diagonally on plain dark linen or floating alone. Its entire pointed tip must remain visible in open air and must not touch or enter any container, liquid, ink, basin, stand, socket or holder. It is an inventory object, not a writing tool or character. No peacock eye, rainbow plumage, wing, quill pen, inkpot, angel feather, crown or excessive fantasy ornament."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:gear:kemet_ceremonial_khopesh",
+      "reason": "The original weapon read as a generic fantasy scimitar.",
+      "sourceKeys": ["met-egyptian-kings"],
+      "promptAddendum": "Binding cultural-remediation guardrails: depict one recognizably ancient Egyptian khopesh with a straight grip and a pronounced sickle or epsilon-shaped bronze blade whose cutting edge follows the outer curve. Keep it fully visible as an inventory object. No scimitar, saber, medieval guard, oversized fantasy blade, hieroglyph text or divine emblem."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:battleItem:kemet_heart_scarab",
+      "reason": "The original framing made the object read as a modern heart-shaped jewel.",
+      "sourceKeys": ["met-heart-scarab"],
+      "promptAddendum": "Binding cultural-remediation guardrails: make the object one large funerary scarab amulet designed to rest over the chest, with beetle form dominant and a flat inscribed underside only hinted without legible text. Avoid a literal modern Valentine-heart outline or heart-cut gemstone. No anatomical heart, winged heart, jewelry necklace display or readable writing."
+    },
+    {
+      "assetId": "oc-v2:kemet_devoured_sun:battleItem:kemet_jackal_guard",
+      "reason": "The original summon was too close to an anthropomorphic Anubis figure.",
+      "sourceKeys": ["british-museum-gods"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic isolated-item and pedestal framing above. This summon is an active natural quadruped canid spirit running or warding on four paws, never a statue on a base. Form its plain body from broken dark stone with low-intensity diffuse warm amber ward light visible only through cracks. The warm amber internal light must dominate; keep the quoted teal canonical color to faint background Breach specks or a minimal rim affecting less than ten percent of the subject, never cyan internal illumination. The silhouette must contain zero jewelry, collar, necklace, pendant, chest plate, armor, gold regalia, headdress or ornamental costume. No seated or recumbent funerary pose, pedestal, human body, staff, scale, divine emblem or copied historical deity design; it is explicitly project-original and not Anubis."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:backdrop:backdrop",
+      "reason": "The original central silhouette could be read as a stepped Mesoamerican pyramid.",
+      "sourceKeys": ["unesco-qhapaq-nan", "smithsonian-cusco"],
+      "promptAddendum": "Binding cultural-remediation guardrails: anchor the landscape in a high Andean cliff road with fitted retaining walls, agricultural terraces, stairs, drainage and a rope bridge. Four distinct routes should converge toward Cusco without forming a pyramid. No stepped temple, Mesoamerican pyramid, circular calendar stone, Maya glyphs, Aztec imagery or fantasy ziggurat."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:stage:inca_qorikancha_split_sun",
+      "reason": "The original stage contained a fantasy dragon and lacked clear Inka architectural markers.",
+      "sourceKeys": ["smithsonian-cusco"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic boss-presence wording above and omit the quoted boss from this environmental stage frame. Depict the Qorikancha-inspired golden enclosure through finely fitted mortarless stone courses, trapezoidal doorways and niches, and buildings around a kancha courtyard. The split sun is an atmospheric Breach effect above the architecture. No dragon, serpent monster, pyramid, stepped temple, classical columns, Gothic arch or Mesoamerican glyph."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:hero:killa_mayu",
+      "reason": "The original heroine lacked a clearly readable chaski relay identity.",
+      "sourceKeys": ["smithsonian-road"],
+      "promptAddendum": "Binding cultural-remediation guardrails: Killa Mayu is a fully human chaski relay runner in motion on the Andean road, with a small message packet or khipu and a clearly readable sling as secondary equipment. Emphasize endurance, relay and route knowledge rather than a generic warrior pose. No assassin blade, feather crown, Mesoamerican armor, priest costume or fantasy wings."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:enemy:ombre_d_uku_pacha",
+      "reason": "The original enemy resembled a generic fantasy shaman-priest.",
+      "sourceKeys": ["met-khipu"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic standard-enemy framing above for this asset. Full-body means the complete outline of one free-floating non-human anomaly, and weapon=magic means its environmental extinguishing effect, never a held item. The image must contain zero human or humanoid anatomy: no head, face, torso, shoulders, arms, hands, legs, feet or clothing. Build one irregular cave-dark void from depth layers and severed khipu threads, with a beacon being extinguished nearby to show its controller role. No priest, shaman, sorcerer, feather headdress, staff, skull costume or invented religious ceremony."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:enemy:chasqui_corrompu",
+      "reason": "The original messenger read as a knife-wielding assassin.",
+      "sourceKeys": ["smithsonian-road"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic weapon-visible framing above. Preserve the identity of a human chaski relay messenger running between waystations, carrying a small packet or khipu while the route or message visibly corrupts behind him. The quoted blade fact must never become an exposed or held weapon; represent it only as a tiny closed utility sheath at the belt, with no cutting edge visible. No knife in hand, assassin stance, macuahuitl, feather crown, Mesoamerican armor, pseudo-shaman costume or generalized fantasy bandit."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:enemy:gardien_puma_de_pierre",
+      "reason": "The original guardian was a generic bipedal feline warrior.",
+      "sourceKeys": ["smithsonian-cusco"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic weapon-visible framing above. Depict a single quadruped puma guardian carved from fitted Andean stone, low and powerful on four paws, animated by restrained Breach light. Treat the quoted shield_bash weapon as a non-visual gameplay tag for a full-body stone charge; show no shield or held weapon. No biped, humanoid armor, spear, feather crown, jaguar-warrior shorthand, Mesoamerican costume or Egyptian sphinx pose."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:enemy:jeune_amaru_de_tempete",
+      "reason": "The original creature was an avian humanoid warrior rather than a serpent.",
+      "sourceKeys": ["met-amaru"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic weapon-visible framing above. Depict one young elongated Andean storm serpent with a sinuous limbless body, textile-like zigzag coloration and rain energy. Treat the quoted claws weapon as a non-visual gameplay tag for a coiling body or tail strike; show no claws and no held weapon. No human torso, arms, legs, horns, wings, feather crown or dragon head. Avoid Chinese and European dragon anatomy, Quetzalcoatl, Mesoamerican regalia and temple-pyramid scenery."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:enemy:masque_du_monde_renverse",
+      "reason": "The original radiant disk and feather silhouette strongly evoked Mexica imagery.",
+      "sourceKeys": ["met-khipu", "inah-piedra-del-sol"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic standard-enemy and weapon-held framing above. The complete enemy is one free-floating abstract mask-like Breach object with no wearer and no supporting body. The image must contain zero humanoid anatomy or clothing: no head behind the object, face, neck, shoulders, torso, arms, hands, legs, feet, robe or headdress. Assemble one asymmetric fractured fitted-stone plane from sober geometric textile bands and severed khipu cords; use empty voids rather than a literal face. Interpret the quoted staff as one plain broken vertical stone axis floating separately behind the anomaly, never held. Use an irregular Andean cliff road, fitted retaining wall and terraces as the only background architecture. No symmetrical stepped mass, stepped temple, pyramid, radiant feather crown, circular calendar disk, solar face, Piedra del Sol layout, Maya glyphs, Aztec imagery, Quetzalcoatl or pseudo-tribal shaman mask."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:boss:echo_de_la_montagne_aux_neiges_noires",
+      "reason": "The original boss was a giant anthropomorphic religious figure.",
+      "sourceKeys": ["unesco-qhapaq-nan"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic full-body boss, combat-pose and complete-silhouette framing above. Make the Echo a non-anthropomorphic Andean avalanche, rockfall and reverberating plume of black snow threatening a cliff road and terraces; compose it as an environmental landscape event with no creature body. It may suggest a vast presence through landscape rhythm only. No giant human, deity, priest, face in the mountain, feather headdress, altar scene or invented ceremony."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:boss:amaru_de_la_tempete_fendue",
+      "reason": "The original boss used a generic horned and feathered dragon design.",
+      "sourceKeys": ["met-amaru"],
+      "promptAddendum": "Binding cultural-remediation guardrails: depict an immense elongated Andean storm serpent with a continuous limbless body, rain, fertility and protective symbolism corrupted by the Breach, and restrained textile-like zigzag patterning. No legs, claws, wings, horns, feather crown or generic dragon head. Avoid Chinese and European dragons, Quetzalcoatl, Mesoamerican regalia and pyramid temples."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:worldBoss:pachakuti_du_soleil_noir",
+      "reason": "The original world boss personified Pachakuti as a multi-armed winged god.",
+      "sourceKeys": ["smithsonian-cusco", "unesco-qhapaq-nan"],
+      "promptAddendum": "Binding cultural-remediation guardrails: OVERRIDE the generic monumental world-boss, low-angle and complete-silhouette framing above. Pachakuti is the environmental cataclysm or turning of world and time, not a deity-character; compose it as a wide environmental disaster with no character or creature silhouette. Show four suyus through roads, terraces and khipu lines breaking around an irregular, low, horizontally dispersed Cusco under the permanent black sun. Cusco must be ordinary fitted-stone streets, walls and kancha blocks at varied offsets, never a centered monument: no raised central platform or plaza, no concentric or radial rings, no circular foundation, no tower, ziggurat or stepped mass. No humanoid figure, giant god, face, multiple arms, wings, worshippers, feather crown, calendar disk, stepped pyramid or invented religious ritual."
+    },
+    {
+      "assetId": "oc-v2:tawantinsuyu_split_sun:battleItem:inca_four_quarters_align",
+      "reason": "The original round glyph disk resembled the Mexica Piedra del Sol.",
+      "sourceKeys": ["smithsonian-cusco", "met-khipu", "inah-piedra-del-sol"],
+      "promptAddendum": "Binding cultural-remediation guardrails: represent the four suyus with four distinct road, textile or khipu bands converging on one central Cusco knot in a clear cross-like network. Keep the object readable as a project-original ultimate item. No circular calendar stone, solar face, concentric glyph disk, Piedra del Sol, Maya writing, Aztec imagery, feather crown or stepped pyramid."
+    }
+  ]
+}
