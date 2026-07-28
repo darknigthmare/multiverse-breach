@@ -36,6 +36,23 @@ const REQUIRED_HERO_ANIMATION_MODES = Object.freeze([
   'Kart'
 ]);
 const ASSET_PATH_PATTERN = /^\/.+\.(?:avif|gif|jpe?g|ogg|png|svg|webp|wav)$/i;
+const OC_IMAGE_V2_ROOT = '/images/oc-worlds/v2';
+const OC_BOOSTER_V2_ROOT = '/boosters/original-worlds/v2';
+const EXPECTED_IMAGE_CONTRACT = Object.freeze({
+  version: 'v2',
+  format: 'PNG',
+  provider: 'OpenAI',
+  interface: 'built-in image_gen',
+  model: 'built-in/imagegen',
+  planId: 'multiverse-breach-original-universes-openai-image-v2'
+});
+
+const slugify = value => String(value || '')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '_')
+  .replace(/^_+|_+$/g, '');
 
 const assertText = (value, label) => {
   assert.equal(typeof value, 'string', `${label} must be a string`);
@@ -494,7 +511,7 @@ test('each targeted booster resolves at least 24 real candidates and 11 named un
   assertUnique(globalUnlockableIds, 'universe unlockable IDs across universes');
 });
 
-test('audiovisual paths are complete, linked and unique within each asset category', () => {
+test('the 500 audiovisual paths use the linked and unique OpenAI Image PNG v2 contract', () => {
   const pathsByCategory = {
     boosterArt: [],
     backdrop: [],
@@ -507,8 +524,17 @@ test('audiovisual paths are complete, linked and unique within each asset catego
   ORIGINAL_UNIVERSE_DEFINITIONS.forEach(definition => {
     const label = `${definition.key}.audiovisual`;
     assertRecord(definition.audiovisual, label);
+    assert.deepEqual(definition.audiovisual.imageContract, EXPECTED_IMAGE_CONTRACT);
     assert.equal(definition.booster.art, definition.audiovisual.boosterArt);
     assert.equal(definition.booster.backdrop, definition.audiovisual.backdrop);
+    assert.equal(
+      definition.audiovisual.boosterArt,
+      `${OC_BOOSTER_V2_ROOT}/${definition.key}.png`
+    );
+    assert.equal(
+      definition.audiovisual.backdrop,
+      `${OC_IMAGE_V2_ROOT}/${definition.key}/backdrop.png`
+    );
 
     assertAssetPath(definition.audiovisual.boosterArt, `${label}.boosterArt`);
     assertAssetPath(definition.audiovisual.backdrop, `${label}.backdrop`);
@@ -535,12 +561,25 @@ test('audiovisual paths are complete, linked and unique within each asset catego
         definition.audiovisual.stageCards[stage.stageKey || stage.id],
         `${stage.id}.stageArt is out of sync`
       );
+      assert.equal(
+        stage.stageArt,
+        `${OC_IMAGE_V2_ROOT}/${definition.key}/stages/${stage.stageKey || stage.id}.png`
+      );
     });
     definition.heroes.forEach(hero => {
       assert.equal(
         hero.portrait,
         definition.audiovisual.heroPortraits[hero.id],
         `${hero.id}.portrait is out of sync`
+      );
+      assert.equal(
+        hero.portrait,
+        `${OC_IMAGE_V2_ROOT}/${definition.key}/heroes/${hero.id}.png`
+      );
+      assert.equal(
+        hero.production.audiovisual.portrait,
+        hero.portrait,
+        `${hero.id}.production.audiovisual.portrait is out of sync`
       );
     });
     [...definition.enemies, ...definition.bosses, definition.worldBoss].forEach(threat => {
@@ -549,10 +588,25 @@ test('audiovisual paths are complete, linked and unique within each asset catego
         definition.audiovisual.threatPortraits[threat.name],
         `${threat.id}.portrait is out of sync`
       );
+      assert.equal(
+        threat.portrait,
+        `${OC_IMAGE_V2_ROOT}/${definition.key}/threats/${slugify(threat.name)}.png`
+      );
+    });
+    [...definition.gear, ...definition.battleItems].forEach(item => {
+      assert.equal(
+        definition.audiovisual.itemIcons[item.id],
+        `${OC_IMAGE_V2_ROOT}/${definition.key}/items/${item.id}.png`
+      );
     });
   });
 
   Object.entries(pathsByCategory).forEach(([category, paths]) => {
     assertUnique(paths, `${category} paths`);
   });
+  const allPaths = Object.values(pathsByCategory).flat();
+  assert.equal(allPaths.length, 500);
+  assertUnique(allPaths, 'all original-universe PNG v2 paths');
+  assert.ok(allPaths.every(path => path.endsWith('.png')));
+  assert.ok(allPaths.every(path => !path.includes('.svg')));
 });

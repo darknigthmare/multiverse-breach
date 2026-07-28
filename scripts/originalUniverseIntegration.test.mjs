@@ -6,6 +6,8 @@ import { createServer } from 'vite';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
+const OC_IMAGE_V2_PATTERN = /^\/images\/oc-worlds\/v2\/[a-z0-9_-]+\/.+\.png$/;
+const OC_BOOSTER_V2_PATTERN = /^\/boosters\/original-worlds\/v2\/[a-z0-9_-]+\.png$/;
 
 let vite;
 let originalUniverseModule;
@@ -118,6 +120,7 @@ test('expanded universe registry exposes all 20 worlds and their 60 runtime stag
     assert.deepEqual(stages.map(stage => stage.contentStageId), expectedContentIds);
 
     stages.forEach((stage, stageIndex) => {
+      const manifestStage = definition.stages[stageIndex];
       assert.equal(stage.campaignDependency, 'originalCampaign');
       assert.equal(stage.originalContent, true);
       assert.equal(stage.contentOrigin, 'oc');
@@ -128,6 +131,8 @@ test('expanded universe registry exposes all 20 worlds and their 60 runtime stag
         stage.previousStageId,
         stageIndex === 0 ? null : expectedRuntimeIds[stageIndex - 1]
       );
+      assert.equal(stage.stageArt, manifestStage.stageArt);
+      assert.match(stage.stageArt, OC_IMAGE_V2_PATTERN);
     });
   });
 });
@@ -163,6 +168,9 @@ test('heroes runtime registry contains the 60 rich original heroes', () => {
     assert.ok(Object.keys(hero.production.modeKits).length >= 3);
     assert.ok(Object.keys(hero.production.animations).length >= 5);
     assert.ok(Object.keys(hero.production.hitboxes).length >= 4);
+    assert.equal(hero.portrait, manifestHero.portrait);
+    assert.equal(hero.production.audiovisual.portrait, manifestHero.portrait);
+    assert.match(hero.portrait, OC_IMAGE_V2_PATTERN);
   });
 });
 
@@ -195,16 +203,20 @@ test('enemy runtime registry contains 100 enemies, 60 bosses and 20 rich world b
     );
     assert.equal(runtime.worldBoss.id, definition.worldBoss.id);
 
-    runtime.monsters.forEach(enemy => {
+    runtime.monsters.forEach((enemy, enemyIndex) => {
       assertText(enemy.name, `${label}.monster.name`);
       ['hp', 'atk', 'spd'].forEach(stat => assertFiniteStat(enemy[stat], `${label}.${enemy.id}.${stat}`));
       assertRecord(enemy.production?.stateMachine, `${label}.${enemy.id}.production.stateMachine`);
       assert.ok(Object.keys(enemy.production.stateMachine.states).length >= 5);
+      assert.equal(enemy.portrait, definition.enemies[enemyIndex].portrait);
+      assert.match(enemy.portrait, OC_IMAGE_V2_PATTERN);
     });
-    runtime.bosses.forEach(boss => {
+    runtime.bosses.forEach((boss, bossIndex) => {
       assertText(boss.name, `${label}.boss.name`);
       ['hp', 'atk', 'spd'].forEach(stat => assertFiniteStat(boss[stat], `${label}.${boss.id}.${stat}`));
       assert.ok(boss.production?.phases.length >= 3, `${label}.${boss.id} has no rich phase script`);
+      assert.equal(boss.portrait, definition.bosses[bossIndex].portrait);
+      assert.match(boss.portrait, OC_IMAGE_V2_PATTERN);
     });
     ['hp', 'atk', 'spd'].forEach(stat => {
       assertFiniteStat(runtime.worldBoss[stat], `${label}.${runtime.worldBoss.id}.${stat}`);
@@ -213,6 +225,8 @@ test('enemy runtime registry contains 100 enemies, 60 bosses and 20 rich world b
       runtime.worldBoss.production?.phases.length >= 4,
       `${label}.${runtime.worldBoss.id} has no world-boss phase script`
     );
+    assert.equal(runtime.worldBoss.portrait, definition.worldBoss.portrait);
+    assert.match(runtime.worldBoss.portrait, OC_IMAGE_V2_PATTERN);
 
     enemyCount += runtime.monsters.length;
     bossCount += runtime.bosses.length;
@@ -241,6 +255,7 @@ test('battle-item projection preserves the five manifest items for every world',
       const label = `${definition.universe}.battleItems[${itemIndex}]`;
       manifestFieldsArePreserved(item, definition.battleItems[itemIndex], label);
       assert.equal(item.icon, definition.audiovisual.itemIcons[item.id]);
+      assert.match(item.icon, OC_IMAGE_V2_PATTERN);
       assert.equal(item.sourceType, 'original');
       assert.equal(item.originalContent, true);
       assert.equal(item.contentOrigin, 'oc');
@@ -332,7 +347,7 @@ test('20 world boosters stay separate from five Nexus editions and resolve their
     assert.equal(portalBoosterModule.getPortalBoosterArt(booster.universe), booster.art);
     assert.equal(portalBoosterModule.getPortalBoosterPackArt(booster.id), booster.art);
     assertText(booster.art, `${booster.id}.art`);
-    assert.match(booster.art, /^\/.+\.(?:png|svg|webp)$/i);
+    assert.match(booster.art, OC_BOOSTER_V2_PATTERN);
   });
 });
 

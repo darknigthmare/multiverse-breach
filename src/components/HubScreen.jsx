@@ -4620,7 +4620,13 @@ export default function HubScreen({
   const getItemSpriteInfo = useCallback((item) => {
     const src = getItemSpriteSrc(item);
     const entry = spriteOutputMap.get(src);
-    return { src, ready: Boolean(entry), source: entry?.source || null, kind: 'item' };
+    const originalUniverseImageV2 = src.startsWith('/images/oc-worlds/v2/') && src.endsWith('.png');
+    return {
+      src,
+      ready: Boolean(entry) || originalUniverseImageV2,
+      source: entry?.source || (originalUniverseImageV2 ? 'openai-imagegen-v2' : null),
+      kind: 'item'
+    };
   }, [spriteOutputMap]);
   const isUniverseVisible = useCallback(
     (universe) => !universe || universe === 'Nexus de Convergence' || !hiddenUniverseSet.has(universe),
@@ -7458,7 +7464,7 @@ export default function HubScreen({
       },
       count: originalWorldMissionCount,
       color: '#ff8c42',
-      image: '/images/oc-worlds/neon_requiem/backdrop.svg'
+      image: '/images/oc-worlds/v2/neon_requiem/backdrop.png'
     },
     factionArcs: {
       label: { fr: 'Arcs narratifs de faction', en: 'Faction narrative arcs' },
@@ -7599,7 +7605,7 @@ export default function HubScreen({
     setMissionWorkspaceView(
       missionScreen === 'story'
         ? 'campaign'
-        : missionScreen === 'ocDlc' || missionScreen === 'originalWorlds'
+        : missionScreen === 'ocDlc'
           ? 'library'
           : 'map'
     );

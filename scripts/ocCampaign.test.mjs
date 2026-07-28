@@ -406,7 +406,10 @@ test('save migration derives OC state and preserves only a valid completed endin
 
 test('the UI consumes canonical story beats, grants endings, and supports replay', () => {
   assert.match(appSource, /if \(stage\.storyBeat\)/);
-  assert.match(appSource, /const backdrop = stage\.image \|\| getOpenAiBackdropSrc/);
+  assert.match(
+    appSource,
+    /const backdrop = stage\.stageArt \|\| stage\.image \|\| getOpenAiBackdropSrc/
+  );
   assert.match(appSource, /currentScreen === 'campaignEnding'/);
   assert.match(appSource, /completionRewardClaimed: true/);
   assert.match(appSource, /OC_CAMPAIGN_SKIN_ID/);

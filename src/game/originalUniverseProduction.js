@@ -3,6 +3,17 @@ const ORIGINAL_CONTENT_NOTICE = Object.freeze({
   fr: 'Contenu entièrement original créé pour Multiverse Breach.'
 });
 
+const ORIGINAL_UNIVERSE_IMAGE_ROOT = '/images/oc-worlds/v2';
+const ORIGINAL_UNIVERSE_BOOSTER_ROOT = '/boosters/original-worlds/v2';
+const ORIGINAL_UNIVERSE_IMAGE_CONTRACT = Object.freeze({
+  version: 'v2',
+  format: 'PNG',
+  provider: 'OpenAI',
+  interface: 'built-in image_gen',
+  model: 'built-in/imagegen',
+  planId: 'multiverse-breach-original-universes-openai-image-v2'
+});
+
 const UNLOCKABLE_KINDS = Object.freeze([
   'kart',
   'battleMusic',
@@ -344,7 +355,7 @@ export function buildHeroProduction(world, hero, heroIndex) {
       Kart: Object.freeze(['driver-idle', 'steer-left', 'steer-right', 'boost', 'hit', 'victory'])
     }),
     audiovisual: Object.freeze({
-      portrait: `/images/oc-worlds/${world.key}/heroes/${hero.id}.svg`,
+      portrait: `${ORIGINAL_UNIVERSE_IMAGE_ROOT}/${world.key}/heroes/${hero.id}.png`,
       palette: Object.freeze([color, hero.secondaryColor || color, hero.weaponColor || color]),
       voiceCuePrefix: `oc.${world.key}.${hero.id}`,
       vfxCuePrefix: `oc.${world.key}.${hero.id}.vfx`
@@ -670,15 +681,16 @@ export function buildUniverseUnlockables(world) {
 
 export function buildAudiovisualContract(world) {
   return Object.freeze({
-    boosterArt: `/boosters/original-worlds/${world.key}.svg`,
-    backdrop: `/images/oc-worlds/${world.key}/backdrop.svg`,
+    imageContract: ORIGINAL_UNIVERSE_IMAGE_CONTRACT,
+    boosterArt: `${ORIGINAL_UNIVERSE_BOOSTER_ROOT}/${world.key}.png`,
+    backdrop: `${ORIGINAL_UNIVERSE_IMAGE_ROOT}/${world.key}/backdrop.png`,
     stageCards: Object.freeze(Object.fromEntries(world.stages.map(stage => [
       stage.stageKey || stage.id,
-      `/images/oc-worlds/${world.key}/stages/${stage.stageKey || stage.id}.svg`
+      `${ORIGINAL_UNIVERSE_IMAGE_ROOT}/${world.key}/stages/${stage.stageKey || stage.id}.png`
     ]))),
     heroPortraits: Object.freeze(Object.fromEntries(world.heroes.map(hero => [
       hero.id,
-      `/images/oc-worlds/${world.key}/heroes/${hero.id}.svg`
+      `${ORIGINAL_UNIVERSE_IMAGE_ROOT}/${world.key}/heroes/${hero.id}.png`
     ]))),
     threatPortraits: Object.freeze(Object.fromEntries([
       ...world.enemies,
@@ -686,14 +698,14 @@ export function buildAudiovisualContract(world) {
       world.worldBoss
     ].map(threat => [
       threat.name,
-      `/images/oc-worlds/${world.key}/threats/${slugify(threat.name)}.svg`
+      `${ORIGINAL_UNIVERSE_IMAGE_ROOT}/${world.key}/threats/${slugify(threat.name)}.png`
     ]))),
     itemIcons: Object.freeze(Object.fromEntries([
       ...world.gear,
       ...world.battleItems
     ].map(item => [
       item.id,
-      `/images/oc-worlds/${world.key}/items/${item.id}.svg`
+      `${ORIGINAL_UNIVERSE_IMAGE_ROOT}/${world.key}/items/${item.id}.png`
     ]))),
     vfx: Object.freeze({
       portal: `oc.${world.key}.vfx.portal`,
@@ -777,4 +789,8 @@ export function completeOriginalUniverseProduction(world) {
   });
 }
 
-export { ORIGINAL_CONTENT_NOTICE, UNLOCKABLE_KINDS };
+export {
+  ORIGINAL_CONTENT_NOTICE,
+  ORIGINAL_UNIVERSE_IMAGE_CONTRACT,
+  UNLOCKABLE_KINDS
+};

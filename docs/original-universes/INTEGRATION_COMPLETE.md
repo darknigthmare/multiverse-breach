@@ -58,9 +58,12 @@ cartes. Les cinq boosters permanents de la Cellule ZÉRO restent indépendants.
   économie, architecture, nourriture, véhicules, flore, faune, dialogues, quêtes secondaires,
   événements, codex et relations entre héros sont accessibles dans le dossier d'univers.
 - Audiovisuel : les vingt boosters, vingt décors, soixante cartes de stage, soixante portraits
-  de héros, cent quatre-vingts portraits de menaces et cent soixante icônes d'objet sont des
-  SVG originaux déterministes. Les portails, K.-O., HUD, armes, ambiances et musiques utilisent
-  les contrats VFX/SFX et les plans procéduraux originaux du moteur existant.
+  de héros, cent quatre-vingts portraits de menaces et cent soixante icônes d'objet sont
+  500 PNG distincts générés individuellement avec l'interface OpenAI `image_gen`. Chaque image
+  possède un prompt propre dérivé du manifeste, des références lore précises et un sidecar de
+  provenance vérifiable. Le runtime ne référence plus les anciens SVG. Les portails, K.-O.,
+  HUD, armes, ambiances et musiques utilisent les contrats VFX/SFX et les plans procéduraux
+  originaux du moteur existant.
 
 ## Surfaces jouables
 
@@ -79,7 +82,9 @@ cartes. Les cinq boosters permanents de la Cellule ZÉRO restent indépendants.
 - Validation structurelle du manifeste : 20 univers, 60 héros, 100 ennemis, 60 boss,
   20 world boss, 60 équipements, 100 objets de combat, 60 stages, 20 arcs et 20 boosters.
 - Tests spécialisés : 17/17.
-- Audit visuel : 500/500 fichiers.
+- Audit OpenAI Image v2 : 500/500 PNG distincts, 500/500 sidecars de provenance,
+  parité exacte plan/runtime et 38 notes de sensibilité reprises dans 375 prompts.
 - Validation pré-build complète et build Vite de production : réussis.
-- Parcours navigateur vérifié : écran 60 missions, lancement d'une mission Neon Requiem,
-  dossier de monde vivant et ouverture réelle d'un booster Helios 56 de cinq cartes.
+- Parcours navigateur vérifié : écran 60 missions sans vue vide, trois missions Neon Requiem
+  filtrées, stage PNG v2 dans le répertoire et l'introduction, combat lancé, puis ouverture
+  réelle d'un booster Aevum Fracture de cinq cartes sans ressource OC legacy.

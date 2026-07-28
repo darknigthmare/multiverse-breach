@@ -572,7 +572,7 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
 function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue }) {
   const isOutro = Boolean(result);
   const victory = result === 'victory';
-  const backdrop = stage.image || getOpenAiBackdropSrc(stage.universe, stage.mode);
+  const backdrop = stage.stageArt || stage.image || getOpenAiBackdropSrc(stage.universe, stage.mode);
   const modifierName = stage.modifier?.name?.[lang] || stage.modifier?.id || (lang === 'fr' ? 'Anomalie inconnue' : 'Unknown anomaly');
   const modifierDesc = stage.modifier?.desc?.[lang] || '';
   const rarity = stage.lootRarity?.label || 'Common';
