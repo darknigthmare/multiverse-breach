@@ -305,7 +305,17 @@ const makeItemsForUniverse = (universe) => {
     rpg: { fr: 'Commande RPG: depense une ATB pleine pour appeler un renfort temporaire entre deux tours ennemis.', en: 'RPG command: spends a full ATB to call a temporary assist between enemy turns.' },
     tactics: { fr: 'En tactique: pose un marqueur allie qui frappe la case ennemie prioritaire.', en: 'In tactics: places an allied marker that strikes the priority enemy tile.' },
     effect: { summonDamage: 76, charge: 12 },
-    color
+    color,
+    ...(eventItem?.summonIcon ? {
+      contentPackId: eventItem.contentPackId,
+      contentOrigin: eventItem.contentOrigin,
+      originalContent: eventItem.originalContent,
+      originalContentNotice: eventItem.originalContentNotice,
+      icon: eventItem.summonIcon,
+      iconPrompt: eventItem.summonIconPrompt,
+      visualAnchor: eventItem.visualAnchor,
+      audit: eventItem.audit
+    } : {})
   };
 
   const ultimate = {

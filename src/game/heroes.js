@@ -1939,6 +1939,7 @@ Object.keys(extraHeroData).forEach(universe => {
     const defaultSimpleType = resolvedWeapon === 'gun' ? 'bullet' : resolvedWeapon === 'laser' ? 'energy' : resolvedWeapon === 'wand' ? 'magic' : 'melee';
 
     HEROES_DB.push({
+      ...item,
       id: item.id,
       name: item.name,
       universe: universe,

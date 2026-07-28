@@ -718,6 +718,7 @@ function getArenaIdForStage(stage = {}) {
   ].filter(Boolean).join(' ').toLowerCase();
   const searchText = getStageSearchText(stage, signature);
   if (stage.forceBaseArena || stage.dlcSuppressedArena) return 'training_flat';
+  if (stage.smashArenaId && SMASH_ARENA_LAYOUTS[stage.smashArenaId]) return stage.smashArenaId;
   if (stage.isSurvival) return 'split_pit';
   if (textMatches(missionText, [/artifact/, /artefact/, /anchor/, /ancrage/, /relic defense/, /protect/])) return 'artifact_bastion';
   if (textMatches(missionText, [/fragment/, /collect/, /recuper/, /sweep/, /cache/])) return 'artifact_sweep';

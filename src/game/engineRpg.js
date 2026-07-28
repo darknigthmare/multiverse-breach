@@ -15,6 +15,7 @@ export class EngineRpg {
     this.opponentControl = stage.customBattle?.opponentControl === 'p2' ? 'p2' : 'cpu';
     this.singleRoster = stage.customBattle?.singleRoster === true
       && Array.isArray(enemiesData.customRoster);
+    this.exclusiveEnemyRoster = stage.enemyRosterExclusive === true && !this.singleRoster;
     this.disposed = false;
     this.paused = false;
     this.timers = new Set();
@@ -196,9 +197,11 @@ export class EngineRpg {
         });
       }
     } else if (w === 2) {
-      // Spawn 2 Bosses aligned diagonally
+      // Exclusive campaign rosters contain one canonical boss; regular stages
+      // retain the classic two-boss formation.
       const templates = this.enemiesData.bosses;
-      for (let i = 0; i < 2; i++) {
+      const bossCount = this.exclusiveEnemyRoster ? templates.length : 2;
+      for (let i = 0; i < bossCount; i++) {
         const t = templates[i] || templates[0];
         const lane = this.levelProfile?.rpg?.bossLanes?.[i];
         const homeX = lane ? Math.round(this.width * lane.x) : this.width - 170 + i * 50;
@@ -224,7 +227,7 @@ export class EngineRpg {
           statusEffects: { infected: 0, glitched: 0, radiated: 0 }
         });
       }
-      this.playSfx('portal');
+      if (bossCount > 0) this.playSfx('portal');
     } else if (w === 3) {
       // Spawn 1 Giant World Boss
       const t = this.enemiesData.worldBoss;
@@ -749,8 +752,12 @@ export class EngineRpg {
     }
     if (!enemiesAlive) {
       // Wave cleared
-      if (this.wave < this.maxWaves) {
-        this.wave++;
+      const nextWave = this.wave + 1;
+      const missingExclusiveWorldBossWave = this.exclusiveEnemyRoster
+        && nextWave === 3
+        && !this.enemiesData.worldBoss;
+      if (this.wave < this.maxWaves && !missingExclusiveWorldBossWave) {
+        this.wave = nextWave;
         this.enemyActionLock = false;
         this.enemyGlobalRecovery = 90;
         this.spawnWave();

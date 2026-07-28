@@ -3,7 +3,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const root = process.cwd();
-const tmpDir = path.join(root, '.sprite-prompt-tmp');
+const tmpDir = process.env.MULTIVERSE_SPRITE_TMP_DIR || path.join(root, '.sprite-prompt-tmp');
 const sourceDir = path.join(root, 'src', 'game');
 const outDir = path.join(root, 'public', 'sprites', 'generated');
 const outJsonl = path.join(outDir, 'openai-sprite-prompts.jsonl');
@@ -27,6 +27,7 @@ const slugify = (value) => String(value || 'unknown')
 
 const rewriteImports = (source) => source
   .replaceAll("from './expandedUniverses'", "from './expandedUniverses.js'")
+  .replaceAll("from './ocDlcPacks'", "from './ocDlcPacks.js'")
   .replaceAll("from './requestedUniverseWave'", "from './requestedUniverseWave.js'")
   .replaceAll("from './featuredUniversePacks'", "from './featuredUniversePacks.js'")
   .replaceAll("from './loreBossOverrides'", "from './loreBossOverrides.js'")
@@ -43,7 +44,7 @@ const rewriteImports = (source) => source
 const copyRuntimeModules = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
+  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
   await Promise.all(files.map(async (file) => {
     const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
     await fs.writeFile(path.join(tmpDir, file), rewriteImports(raw), 'utf8');

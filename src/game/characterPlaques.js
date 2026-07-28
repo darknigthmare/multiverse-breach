@@ -942,13 +942,22 @@ export const getCharacterPlaque = (hero) => {
   const category = roleByCategory[hero.category] || roleByCategory.tactical;
   const doctrine = hero.special?.name || hero.weaponType || 'signature inconnue';
   const signature = getUniverseSignature(hero.universe, LORE_DB[hero.universe]);
+  const authoredLore = hero.loreLocalized || hero.lore;
+  const authoredDossier = typeof authoredLore === 'string'
+    ? { fr: authoredLore, en: authoredLore }
+    : authoredLore && (authoredLore.fr || authoredLore.en)
+      ? {
+        fr: authoredLore.fr || authoredLore.en,
+        en: authoredLore.en || authoredLore.fr
+      }
+      : null;
   return enrichPlaque(hero, {
     clearance: buildClearance(hero),
     rank: category.rank,
     role: category.role,
     callSign: hero.name,
     origin: { fr: `Trame d origine - ${hero.universe}`, en: `Origin Thread - ${hero.universe}` },
-    dossier: {
+    dossier: authoredDossier || {
       fr: `${hero.name} est classe comme signature ${hero.category} de la Trame ${hero.universe}. Signature source: ${signature.theme}. A.R.C.A. relie son arme, sa posture et sa doctrine a ${signature.stageName}, afin que le personnage reste reconnaissable meme face au noyau ${signature.worldBoss || signature.bossName}.`,
       en: `${hero.name} is classified as a ${hero.category} signature from the ${hero.universe} Thread. Source signature: ${signature.theme}. A.R.C.A. ties weapon, posture, and doctrine to ${signature.stageName}, so the character remains recognizable even against the ${signature.worldBoss || signature.bossName} core.`
     },

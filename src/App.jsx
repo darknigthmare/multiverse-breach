@@ -3,11 +3,17 @@ import sound from './game/soundEngine';
 import AudioControl from './components/AudioControl';
 import AuthPanel from './components/AuthPanel';
 import IntroSequence from './components/IntroSequence';
-import { EQUIP_ITEMS_DB } from './game/heroes';
+import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
 import { getStoredSession, loadCloudSave, saveCloudSave, signInAccount, signOutAccount, signUpAccount, storeSession } from './game/cloudSave';
 import { PLAYER_HERO_ID } from './game/playerHero';
-import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from './game/dlcConfig';
+import {
+  DEFAULT_HIDDEN_UNIVERSES,
+  buildOcDlcCampaignProgress,
+  getEnabledOcDlcPackIds,
+  isBaseGameUniverse,
+  migrateHiddenUniversesForOcDlc
+} from './game/dlcConfig';
 import { TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from './game/narrativeSystems';
 
 const SAVE_KEY = 'multiverse_breach_save_v2';
@@ -17,7 +23,7 @@ const PortalScreen = React.lazy(() => import('./components/PortalScreen'));
 const GameCanvas = React.lazy(() => import('./components/GameCanvas'));
 
 const DEFAULT_SAVE = {
-  saveVersion: 6,
+  saveVersion: 7,
   lang: 'fr',
   gold: 200,
   breachShards: 150,
@@ -27,6 +33,8 @@ const DEFAULT_SAVE = {
   heroLevels: { [PLAYER_HERO_ID]: 1 },
   activeTeam: [PLAYER_HERO_ID],
   completedStages: [],
+  enabledContentPacks: [],
+  campaignProgress: buildOcDlcCampaignProgress([], {}),
   heroTalents: {},
   heroSkins: {},
   portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
@@ -168,6 +176,7 @@ const normalizeStoredCustomBattlePreset = (preset = {}) => {
 };
 
 const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
+  const fromVersion = Number(save.saveVersion) || 0;
   const merged = { ...DEFAULT_SAVE, ...save };
   const onboarding = save.onboarding
     ? { ...DEFAULT_SAVE.onboarding, ...save.onboarding }
@@ -198,7 +207,7 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const shouldUseStoredHiddenUniverses = hadHiddenUniverseData
     && Array.isArray(merged.hiddenUniverses)
     && !(hasOnlyLegacyStarterProgress && merged.hiddenUniverses.length === 0);
-  const hiddenUniverses = shouldUseStoredHiddenUniverses
+  const storedHiddenUniverses = shouldUseStoredHiddenUniverses
     ? merged.hiddenUniverses
     : DEFAULT_HIDDEN_UNIVERSES;
   const inventory = Array.isArray(merged.inventory) ? merged.inventory : [];
@@ -209,6 +218,19 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   TRIO_NARRATIVE_ARCS.forEach(arc => {
     if (inventory.includes(arc.rewardItemId)) completedStages.add(arc.stageId);
   });
+  const hiddenUniverses = migrateHiddenUniversesForOcDlc(storedHiddenUniverses, fromVersion);
+  const normalizedCompletedStages = [...new Set(
+    [...completedStages].map(stageId => {
+      if (typeof stageId !== 'string' || !stageId.trim()) return stageId;
+      const numericStageId = Number(stageId);
+      return Number.isSafeInteger(numericStageId) ? numericStageId : stageId;
+    })
+  )];
+  const enabledContentPacks = getEnabledOcDlcPackIds(hiddenUniverses);
+  const campaignProgress = buildOcDlcCampaignProgress(
+    normalizedCompletedStages,
+    merged.campaignProgress
+  );
   const normalizeCollectionIds = (entries) => (
     Array.isArray(entries)
       ? [...new Set(entries.filter(entry => typeof entry === 'string' && entry.trim()))]
@@ -235,7 +257,7 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const customBattlePreset = normalizeStoredCustomBattlePreset(merged.portalCollection?.customBattlePreset);
   return {
     ...merged,
-    saveVersion: 6,
+    saveVersion: 7,
     playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
     onboarding,
     unlockedHeroes,
@@ -243,8 +265,10 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
     heroLevels: { ...DEFAULT_SAVE.heroLevels, ...(merged.heroLevels || {}) },
     heroTalents: merged.heroTalents || {},
     heroSkins: merged.heroSkins || {},
-    completedStages: [...completedStages],
+    completedStages: normalizedCompletedStages,
     hiddenUniverses: hiddenUniverses.filter(universe => !isBaseGameUniverse(universe)),
+    enabledContentPacks,
+    campaignProgress,
     disabledAssets: {
       heroes: Array.isArray(merged.disabledAssets?.heroes) ? merged.disabledAssets.heroes : [],
       enemies: Array.isArray(merged.disabledAssets?.enemies) ? merged.disabledAssets.enemies : [],
@@ -354,6 +378,23 @@ const getContactIntel = (stage, lang) => {
 };
 
 const getMissionNarrative = (stage, lang, isOutro, victory) => {
+  if (stage.storyBeat) {
+    if (!isOutro) {
+      return stage.storyBeat.intro?.[lang]
+        || stage.storyBeat.intro?.fr
+        || stage.storyBeat.intro?.en
+        || '';
+    }
+    if (victory) {
+      return stage.storyBeat.outro?.[lang]
+        || stage.storyBeat.outro?.fr
+        || stage.storyBeat.outro?.en
+        || '';
+    }
+    return lang === 'fr'
+      ? `${stage.displayName?.fr || stage.name} reste instable. La cellule conserve les contradictions observees et recommencera sans fabriquer de victoire.`
+      : `${stage.displayName?.en || stage.name} remains unstable. The cell preserves the observed contradictions and will try again without manufacturing a victory.`;
+  }
   if (stage.tutorial) {
     if (!isOutro) {
       return lang === 'fr'
@@ -456,7 +497,7 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
 function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue }) {
   const isOutro = Boolean(result);
   const victory = result === 'victory';
-  const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode);
+  const backdrop = stage.image || getOpenAiBackdropSrc(stage.universe, stage.mode);
   const modifierName = stage.modifier?.name?.[lang] || stage.modifier?.id || (lang === 'fr' ? 'Anomalie inconnue' : 'Unknown anomaly');
   const modifierDesc = stage.modifier?.desc?.[lang] || '';
   const rarity = stage.lootRarity?.label || 'Common';
@@ -546,6 +587,9 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
               )}
               {rewardSummary.rewardItemName && (
                 <span>{lang === 'fr' ? `Trace speciale archivee: ${rewardSummary.rewardItemName}.` : `Special trace archived: ${rewardSummary.rewardItemName}.`}</span>
+              )}
+              {rewardSummary.eventRewardName && (
+                <span>{lang === 'fr' ? `Relique evenementielle archivee: ${rewardSummary.eventRewardName}.` : `Event relic archived: ${rewardSummary.eventRewardName}.`}</span>
               )}
               {rewardSummary.droppedItemName && (
                 <span>{lang === 'fr' ? `Relique recuperee: ${rewardSummary.droppedItemName}.` : `Relic recovered: ${rewardSummary.droppedItemName}.`}</span>
@@ -706,6 +750,7 @@ function App() {
   const [heroLevels, setHeroLevels] = useState(initialSave.heroLevels);
   const [activeTeam, setActiveTeam] = useState(initialSave.activeTeam);
   const [completedStages, setCompletedStages] = useState(initialSave.completedStages);
+  const [campaignProgress, setCampaignProgress] = useState(initialSave.campaignProgress);
   const [activeStage, setActiveStage] = useState(null);
   const [lastBattleResult, setLastBattleResult] = useState(null);
   const [lastBattleSummary, setLastBattleSummary] = useState(null);
@@ -738,7 +783,7 @@ function App() {
   )).length;
 
   const getCurrentSave = useCallback(() => ({
-    saveVersion: 6,
+    saveVersion: 7,
     lang,
     gold,
     breachShards,
@@ -748,6 +793,8 @@ function App() {
     heroLevels,
     activeTeam,
     completedStages,
+    enabledContentPacks: getEnabledOcDlcPackIds(hiddenUniverses),
+    campaignProgress: buildOcDlcCampaignProgress(completedStages, campaignProgress),
     heroTalents,
     heroSkins,
     hiddenUniverses,
@@ -760,7 +807,7 @@ function App() {
     inventory,
     equippedGear,
     equippedEventItems
-  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, portalCollection, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
+  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, campaignProgress, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, portalCollection, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
 
   useEffect(() => {
     const payload = getCurrentSave();
@@ -915,6 +962,7 @@ function App() {
       firstClear,
       droppedItemName: null,
       rewardItemName: null,
+      eventRewardName: null,
       consolation: false,
       contactIntel: null,
       adaptation: false,
@@ -977,6 +1025,15 @@ function App() {
         summary.rewardItemName = activeStage.rewardItemName?.[lang] || activeStage.rewardItemName?.en || activeStage.rewardItemId;
       }
 
+      if (activeStage.eventRewardId) {
+        setInventory(prev => appendUnique(prev, [activeStage.eventRewardId]));
+        const eventReward = Object.values(EVENT_ITEMS_DB).find(item => item.id === activeStage.eventRewardId);
+        summary.eventRewardName = eventReward?.name?.[lang]
+          || eventReward?.name?.fr
+          || eventReward?.name?.en
+          || activeStage.eventRewardId;
+      }
+
       const { dayKey, weekKey } = getProgressKeys();
       const seasonGain = 35
         + (firstClear ? 20 : 0)
@@ -1023,6 +1080,7 @@ function App() {
           createRiftJournalEntry('victory', {
             firstClear,
             rewardItemName: summary.rewardItemName,
+            eventRewardName: summary.eventRewardName,
             battleSummary,
             smashMasteryBonus: summary.smashMasteryBonus,
             tacticsMasteryBonus: summary.tacticsMasteryBonus,
@@ -1134,6 +1192,7 @@ function App() {
     setHeroLevels(merged.heroLevels);
     setActiveTeam(merged.activeTeam);
     setCompletedStages(merged.completedStages);
+    setCampaignProgress(merged.campaignProgress || DEFAULT_SAVE.campaignProgress);
     setHeroTalents(merged.heroTalents);
     setHeroSkins(merged.heroSkins || {});
     setHiddenUniverses(merged.hiddenUniverses || []);

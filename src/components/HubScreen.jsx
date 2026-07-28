@@ -17,6 +17,7 @@ import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDesc
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
 import { FEATURED_UNIVERSE_ICONS } from '../game/featuredUniversePacks';
+import { OC_DLC_PACKS, getOcDlcPackByUniverse, isOcDlcMissionUnlocked } from '../game/ocDlcPacks';
 import RaceMode from './RaceMode';
 import FighterMode from './FighterMode';
 import CustomBattleMode from './CustomBattleMode';
@@ -389,6 +390,286 @@ function MissionDirectory({
           <p>{lang === 'fr' ? 'Modifie la recherche ou le statut affiche.' : 'Change the search or displayed status.'}</p>
         </div>
       )}
+    </section>
+  );
+}
+
+function OcDlcLibrary({
+  lang,
+  completedStages,
+  hiddenUniverses,
+  getStageByMissionId,
+  onSetPackActive,
+  onOpenBriefing
+}) {
+  const completedMissionIds = useMemo(
+    () => new Set((completedStages || []).map(stageId => String(stageId))),
+    [completedStages]
+  );
+  const hiddenUniverseIds = useMemo(
+    () => new Set(hiddenUniverses || []),
+    [hiddenUniverses]
+  );
+
+  return (
+    <section
+      aria-label={lang === 'fr' ? 'Bibliothèque des actes annexes OC' : 'OC standalone acts library'}
+      style={{ display: 'grid', gap: '16px' }}
+    >
+      <header style={{
+        padding: '16px',
+        border: '1px solid rgba(125,249,255,0.28)',
+        borderRadius: '7px',
+        background: 'linear-gradient(135deg, rgba(57,197,187,0.1), rgba(4,3,10,0.92) 62%)'
+      }}>
+        <span className="portal-focus-kicker">
+          {lang === 'fr' ? 'BIBLIOTHÈQUE / CRÉATIONS ORIGINALES' : 'LIBRARY / ORIGINAL CREATIONS'}
+        </span>
+        <h4 style={{ margin: '7px 0', color: '#fff', fontSize: '16px' }}>
+          {lang === 'fr' ? 'Trois actes annexes autonomes' : 'Three standalone side acts'}
+        </h4>
+        <p style={{ margin: 0, color: '#cfd8dc', fontSize: '11px', lineHeight: 1.5 }}>
+          {lang === 'fr'
+            ? 'Chaque dossier est une histoire OC complète et indépendante. Active uniquement les actes que tu veux parcourir : leur progression ne dépend jamais de la campagne principale.'
+            : 'Each record is a complete, independent OC story. Activate only the acts you want to explore: their progress never depends on the main campaign.'}
+        </p>
+      </header>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 310px), 1fr))',
+        gap: '14px'
+      }}>
+        {OC_DLC_PACKS.map(cataloguePack => {
+          const pack = getOcDlcPackByUniverse(cataloguePack.universe) || cataloguePack;
+          const active = !hiddenUniverseIds.has(pack.universe);
+          const missionIds = pack.missions.map(mission => mission.id);
+          const completedCount = missionIds.filter(missionId => completedMissionIds.has(String(missionId))).length;
+          const complete = completedCount === missionIds.length;
+          const nextMission = pack.missions.find(mission => (
+            !completedMissionIds.has(String(mission.id))
+            && isOcDlcMissionUnlocked(mission, completedStages)
+          )) || null;
+          const targetMission = nextMission || (complete ? pack.missions.at(-1) : null);
+          const targetStage = targetMission ? getStageByMissionId(targetMission.id) || targetMission : null;
+          const targetUnlocked = Boolean(
+            active
+            && targetMission
+            && (complete || isOcDlcMissionUnlocked(targetMission, completedStages))
+          );
+          const accent = pack.decor?.accent || pack.colors?.at(-1) || '#39c5bb';
+          const backdrop = getOpenAiBackdropSrc(pack.universe, 'RPG') || '/images/missions/campaign-oc.webp';
+          const threatCount = pack.monsters.length + pack.bosses.length + (pack.worldBoss ? 1 : 0);
+          const relicCount = pack.gear.length + (pack.event ? 1 : 0);
+
+          return (
+            <article
+              key={pack.id}
+              data-oc-dlc-pack={pack.id}
+              data-pack-active={active ? 'true' : 'false'}
+              style={{
+                minWidth: 0,
+                border: `1px solid ${active ? accent : '#4b4b55'}`,
+                borderRadius: '8px',
+                overflow: 'hidden',
+                background: 'rgba(3,2,10,0.94)',
+                boxShadow: active ? `0 0 22px ${accent}18` : 'none',
+                opacity: active ? 1 : 0.82
+              }}
+            >
+              <div style={{
+                minHeight: '152px',
+                padding: '15px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                gap: '18px',
+                backgroundImage: `linear-gradient(180deg, rgba(3,2,10,0.2), rgba(3,2,10,0.96)), url("${backdrop}")`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '10px' }}>
+                  <span style={{
+                    padding: '4px 7px',
+                    border: `1px solid ${accent}`,
+                    borderRadius: '3px',
+                    color: accent,
+                    background: 'rgba(3,2,10,0.78)',
+                    fontSize: '9px',
+                    textTransform: 'uppercase'
+                  }}>
+                    {getLocalizedText(pack.actLabel, lang)}
+                  </span>
+                  <span style={{
+                    padding: '4px 7px',
+                    borderRadius: '999px',
+                    color: active ? '#bfffd2' : '#d4d4dd',
+                    background: active ? 'rgba(46,204,113,0.18)' : 'rgba(120,120,130,0.24)',
+                    fontSize: '9px'
+                  }}>
+                    {active
+                      ? (lang === 'fr' ? 'ACTIF' : 'ACTIVE')
+                      : (lang === 'fr' ? 'EN RÉSERVE' : 'IN RESERVE')}
+                  </span>
+                </div>
+                <div>
+                  <small style={{ color: accent, fontSize: '9px', textTransform: 'uppercase' }}>
+                    {pack.universe}
+                  </small>
+                  <h4 style={{ margin: '5px 0 0', color: '#fff', fontSize: '16px', lineHeight: 1.2 }}>
+                    {getLocalizedText(pack.title, lang)}
+                  </h4>
+                </div>
+              </div>
+
+              <div style={{ padding: '14px', display: 'grid', gap: '13px' }}>
+                <p style={{ margin: 0, minHeight: '48px', color: '#cfd8dc', fontSize: '10px', lineHeight: 1.55 }}>
+                  {getLocalizedText(pack.desc, lang)}
+                </p>
+
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+                  gap: '6px'
+                }}>
+                  {[
+                    [lang === 'fr' ? 'HÉROS' : 'HEROES', pack.heroes.length],
+                    [lang === 'fr' ? 'MENACES' : 'THREATS', threatCount],
+                    [lang === 'fr' ? 'RELIQUES' : 'RELICS', relicCount]
+                  ].map(([label, value]) => (
+                    <span key={label} style={{
+                      padding: '7px 5px',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      borderRadius: '4px',
+                      color: '#9ea7ad',
+                      background: 'rgba(255,255,255,0.025)',
+                      fontSize: '8px',
+                      textAlign: 'center'
+                    }}>
+                      <b style={{ display: 'block', marginBottom: '3px', color: '#fff', fontSize: '12px' }}>{value}</b>
+                      {label}
+                    </span>
+                  ))}
+                </div>
+
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px', color: '#b5bec4', fontSize: '9px' }}>
+                    <span>{lang === 'fr' ? 'Progression de l’acte' : 'Act progress'}</span>
+                    <strong style={{ color: complete ? '#2ecc71' : accent }}>{completedCount}/{missionIds.length}</strong>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      display: 'block',
+                      height: '4px',
+                      marginTop: '6px',
+                      borderRadius: '999px',
+                      overflow: 'hidden',
+                      background: 'rgba(255,255,255,0.08)'
+                    }}
+                  >
+                    <i style={{
+                      display: 'block',
+                      width: `${missionIds.length ? (completedCount / missionIds.length) * 100 : 0}%`,
+                      height: '100%',
+                      background: complete ? '#2ecc71' : accent
+                    }} />
+                  </span>
+                </div>
+
+                <div style={{ display: 'grid', gap: '6px' }}>
+                  {pack.missions.map((mission, missionIndex) => {
+                    const missionCompleted = completedMissionIds.has(String(mission.id));
+                    const missionUnlocked = active && isOcDlcMissionUnlocked(mission, completedStages);
+                    const missionStage = getStageByMissionId(mission.id) || mission;
+                    const lockedReason = missionUnlocked
+                      ? ''
+                      : active
+                        ? (lang === 'fr' ? 'Termine la mission précédente de cet acte.' : 'Complete the previous mission in this act.')
+                        : (lang === 'fr' ? 'Active cet acte pour ouvrir ses briefings.' : 'Activate this act to open its briefings.');
+                    const lockedReasonId = `oc-dlc-mission-${mission.id}-locked-reason`;
+                    const modeLabel = lang === 'fr' && mission.mode === 'Tactics' ? 'Tactique' : mission.mode;
+                    return (
+                      <div key={mission.id} style={{ display: 'grid', gap: '3px' }}>
+                        <button
+                          type="button"
+                          className="btn-retro"
+                          aria-disabled={!missionUnlocked}
+                          aria-describedby={!missionUnlocked ? lockedReasonId : undefined}
+                          onClick={() => {
+                            if (missionUnlocked) onOpenBriefing(missionStage);
+                          }}
+                          title={missionUnlocked
+                            ? (lang === 'fr' ? 'Ouvre le briefing de cette mission.' : 'Open this mission briefing.')
+                            : lockedReason}
+                          style={{
+                            width: '100%',
+                            padding: '7px 8px',
+                            display: 'grid',
+                            gridTemplateColumns: '24px minmax(0, 1fr) auto',
+                            alignItems: 'center',
+                            gap: '7px',
+                            borderColor: missionCompleted ? '#2ecc71' : missionUnlocked ? accent : '#35353d',
+                            color: missionUnlocked ? '#fff' : '#666',
+                            textAlign: 'left'
+                          }}
+                        >
+                          <span style={{ color: missionCompleted ? '#2ecc71' : accent }}>
+                            {missionCompleted ? '✓' : '◇'}
+                          </span>
+                          <span style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {getLocalizedText(mission.displayName || mission.name, lang)}
+                          </span>
+                          <small style={{ color: missionUnlocked ? '#aeb8bd' : '#5a5a62', fontSize: '8px' }}>
+                            {missionIndex + 1}/{missionIds.length} · {modeLabel}
+                          </small>
+                        </button>
+                        {!missionUnlocked && (
+                          <small id={lockedReasonId} style={{ color: '#8c8c96', fontSize: '9px', lineHeight: 1.35 }}>
+                            {lockedReason}
+                          </small>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 0.8fr) minmax(0, 1.2fr)', gap: '8px' }}>
+                  <button
+                    type="button"
+                    className="btn-retro"
+                    onClick={() => onSetPackActive(pack.universe, !active)}
+                    title={active
+                      ? (lang === 'fr' ? 'Replace cet acte en réserve sans effacer sa progression.' : 'Put this act in reserve without erasing its progress.')
+                      : (lang === 'fr' ? 'Active cet acte autonome.' : 'Activate this standalone act.')}
+                    style={{ borderColor: active ? '#e67e22' : '#2ecc71', color: active ? '#ffbd7a' : '#86f5ac' }}
+                  >
+                    {active
+                      ? (lang === 'fr' ? 'DÉSACTIVER' : 'DEACTIVATE')
+                      : (lang === 'fr' ? 'ACTIVER' : 'ACTIVATE')}
+                  </button>
+                  <button
+                    type="button"
+                    className="btn-retro"
+                    disabled={!targetUnlocked}
+                    onClick={() => targetStage && onOpenBriefing(targetStage)}
+                    title={!active
+                      ? (lang === 'fr' ? 'Active d’abord cet acte.' : 'Activate this act first.')
+                      : targetUnlocked
+                        ? (lang === 'fr' ? 'Ouvre le briefing ciblé.' : 'Open the targeted briefing.')
+                        : (lang === 'fr' ? 'La mission suivante est encore scellée.' : 'The next mission is still sealed.')}
+                    style={{ borderColor: targetUnlocked ? accent : '#35353d', color: targetUnlocked ? '#fff' : '#666' }}
+                  >
+                    {complete
+                      ? (lang === 'fr' ? 'ACTE TERMINÉ · BRIEFING FINAL' : 'ACT COMPLETE · FINAL BRIEFING')
+                      : (lang === 'fr' ? 'MISSION SUIVANTE' : 'NEXT MISSION')}
+                  </button>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 }
@@ -3532,7 +3813,8 @@ function MultiverseRiftMap({
     universe: { color: '#ffb15c', label: lang === 'fr' ? 'Atlas univers' : 'Universe atlas' },
     personal: { color: '#9b59b6', label: lang === 'fr' ? 'Dossiers heros' : 'Hero files' },
     trio: { color: '#2ecc71', label: lang === 'fr' ? 'Cellules trio' : 'Trio cells' },
-    fusion: { color: '#ff5f7e', label: lang === 'fr' ? 'Hybrides' : 'Hybrid rifts' }
+    fusion: { color: '#ff5f7e', label: lang === 'fr' ? 'Hybrides' : 'Hybrid rifts' },
+    ocDlc: { color: '#7df9ff', label: lang === 'fr' ? 'Actes annexes OC' : 'OC standalone acts' }
   }[viewType] || { color: '#39c5bb', label: 'A.R.C.A.' };
 
   return (
@@ -3716,6 +3998,10 @@ function RiftBriefingPanel({
   const stageArc = getStageArc(stage);
   const rarity = getLootRarity(stage);
   const bossIntel = getBossIntel(stage);
+  const ocDlcPack = stage.ocDlc ? getOcDlcPackByUniverse(stage.universe) : null;
+  const storyBeatLabel = ocDlcPack
+    ? `${lang === 'fr' ? 'Scène OC' : 'OC scene'} · ${getLocalizedText(ocDlcPack.actLabel, lang, stage.universe)}`
+    : (lang === 'fr' ? 'Scène OC Nexus' : 'Nexus OC scene');
   const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode);
   const rewardPreview = getStageRewardPreview ? getStageRewardPreview(stage) : [];
   const launchBrief = getMissionLaunchBrief ? getMissionLaunchBrief(stage) : [];
@@ -3816,7 +4102,7 @@ function RiftBriefingPanel({
             </div>
             {stage.storyBeat?.intro && (
               <div className="rift-briefing-block story">
-                <strong>{lang === 'fr' ? 'Scene OC Nexus' : 'Nexus OC scene'}</strong>
+                <strong>{storyBeatLabel}</strong>
                 <span>{stage.storyBeat.intro?.[lang]}</span>
               </div>
             )}
@@ -4012,7 +4298,7 @@ export default function HubScreen({
     sound.playSfx('click');
   }, [activeGameMode]);
   const [missionModeFilter, setMissionModeFilter] = useState('all'); // 'all' | 'RPG' | 'Tactics' | 'Smash'
-  const [missionScreen, setMissionScreen] = useState('index'); // 'index' | 'story' | 'universeArcs' | 'personalArcs' | 'trioArcs' | 'fusionMissions'
+  const [missionScreen, setMissionScreen] = useState('index'); // 'index' | 'story' | 'ocDlc' | narrative arc screens
   const [missionWorkspaceView, setMissionWorkspaceView] = useState('campaign');
   const [narrativeGroupView, setNarrativeGroupView] = useState('chapters');
   const [missionSeed, setMissionSeed] = useState(() => Date.now());
@@ -4029,6 +4315,11 @@ export default function HubScreen({
   const hubContentMax = activeGameMode ? '100%' : 'min(1500px, calc(100vw - 32px))';
   const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
+  const completedStageIdSet = useMemo(
+    () => new Set((completedStages || []).map(stageId => String(stageId))),
+    [completedStages]
+  );
+  const isStageCompletedById = useCallback(stageId => completedStageIdSet.has(String(stageId)), [completedStageIdSet]);
   const disabledAssetSets = useMemo(() => ({
     heroes: new Set(disabledAssets.heroes || []),
     enemies: new Set(disabledAssets.enemies || []),
@@ -4131,6 +4422,13 @@ export default function HubScreen({
     (universe) => !universe || universe === 'Nexus de Convergence' || !hiddenUniverseSet.has(universe),
     [hiddenUniverseSet]
   );
+  const isGearContentPackVisible = useCallback((item) => {
+    if (!item?.contentPackId) return true;
+    const pack = OC_DLC_PACKS.find(candidate => (
+      candidate.contentPackId === item.contentPackId || candidate.id === item.contentPackId
+    ));
+    return !pack || isUniverseVisible(pack.universe);
+  }, [isUniverseVisible]);
   const [inventoryFilter, setInventoryFilter] = useState('all');
   const collectionBonusCount = inventory.filter(itemId => (
     itemId.startsWith('collection_reward_')
@@ -5285,7 +5583,7 @@ export default function HubScreen({
       const isUpgraded = gearId.endsWith('_plus');
       const baseGearId = isUpgraded ? gearId.replace('_plus', '') : gearId;
       const gear = EQUIP_ITEMS_DB.find(it => it.id === baseGearId);
-      if (gear && gear.boost) {
+      if (gear && isGearContentPackVisible(gear) && gear.boost) {
         const factor = isUpgraded ? 2 : 1;
         if (gear.boost.hp) stats.hp += gear.boost.hp * factor;
         if (gear.boost.atk) stats.atk += gear.boost.atk * factor;
@@ -5308,6 +5606,33 @@ export default function HubScreen({
   };
 
   const getLockedReason = (stage) => {
+    const ocDlcPack = stage?.ocDlc ? getOcDlcPackByUniverse(stage.universe) : null;
+    if (ocDlcPack) {
+      const missionIndex = ocDlcPack.missions.findIndex(mission => mission.id === stage.id);
+      const mission = missionIndex >= 0 ? ocDlcPack.missions[missionIndex] : stage;
+      const missionName = getLocalizedText(mission.displayName || mission.name, lang, stage.name);
+      if (!isUniverseVisible(ocDlcPack.universe)) {
+        return lang === 'fr'
+          ? `Acte annexe en réserve : active ${getLocalizedText(ocDlcPack.title, lang)} dans la bibliothèque OC pour ouvrir ${missionName}.`
+          : `Standalone act in reserve: activate ${getLocalizedText(ocDlcPack.title, lang)} in the OC library to open ${missionName}.`;
+      }
+      if (isStageCompletedById(mission.id)) {
+        return lang === 'fr'
+          ? `Mission stabilisée dans cet acte annexe : ${missionName} peut être rejouée.`
+          : `Mission stabilized in this standalone act: ${missionName} can be replayed.`;
+      }
+      if (isOcDlcMissionUnlocked(mission, completedStages)) {
+        return lang === 'fr'
+          ? `Mission disponible dans cet acte annexe : ${missionName}.`
+          : `Mission available in this standalone act: ${missionName}.`;
+      }
+      const previousMission = ocDlcPack.missions.find(entry => entry.id === mission.previousStageId);
+      const previousName = getLocalizedText(previousMission?.displayName || previousMission?.name, lang, previousMission?.name);
+      return lang === 'fr'
+        ? `Mission scellée : termine d’abord ${previousName || 'la mission précédente de cet acte'}. Aucune progression de campagne principale n’est requise.`
+        : `Mission sealed: complete ${previousName || 'the previous mission in this act'} first. No main campaign progress is required.`;
+    }
+
     const required = getStageRequiredClears(stage);
     const missing = Math.max(0, required - completedStages.length);
     const baseText = required > 0
@@ -5374,7 +5699,11 @@ export default function HubScreen({
   };
 
   const autoEquipRelics = () => {
-    const availableRelics = EQUIP_ITEMS_DB.filter(r => inventory.includes(r.id) && !isAssetDisabled('gear', r.id));
+    const availableRelics = EQUIP_ITEMS_DB.filter(r => (
+      inventory.includes(r.id)
+      && isGearContentPackVisible(r)
+      && !isAssetDisabled('gear', r.id)
+    ));
     if (availableRelics.length === 0) {
       notifyNexus(lang === 'fr' ? 'Aucune relique standard disponible pour l auto-equipement.' : 'No standard relic available for auto-equip.', 'warn');
       sound.playSfx('click');
@@ -5669,7 +5998,7 @@ export default function HubScreen({
     const baseId = isUpgraded ? gearId.replace('_plus', '') : gearId;
     if (isAssetDisabled('gear', baseId)) return null;
     const item = EQUIP_ITEMS_DB.find(it => it.id === baseId);
-    if (!item) return null;
+    if (!item || !isGearContentPackVisible(item)) return null;
     const factor = isUpgraded ? 2 : 1;
     const boost = Object.fromEntries(Object.entries(item.boost || {}).map(([key, value]) => [key, value * factor]));
     return {
@@ -5693,11 +6022,15 @@ export default function HubScreen({
       || selectedHero.universe;
     return getEventLoreDescription({ item, lang, universe: sourceUniverse, lore: LORE_DB[sourceUniverse] });
   };
+  const getEventItemDisplay = (eventItemId) => {
+    if (!eventItemId) return null;
+    const item = Object.values(EVENT_ITEMS_DB).find(candidate => candidate.id === eventItemId);
+    if (!item || !isGearContentPackVisible(item) || isAssetDisabled('gear', item.id)) return null;
+    return item;
+  };
 
   const selectedEquippedGear = getGearDisplay(equippedGear[selectedHero.id]);
-  const selectedEquippedEvent = equippedEventItems[selectedHero.id]
-    ? Object.values(EVENT_ITEMS_DB).find(item => item.id === equippedEventItems[selectedHero.id] && !isAssetDisabled('gear', item.id))
-    : null;
+  const selectedEquippedEvent = getEventItemDisplay(equippedEventItems[selectedHero.id]);
 
   // Filter items in inventory
   const getGearInInventory = () => {
@@ -5707,7 +6040,7 @@ export default function HubScreen({
       const baseId = isUpgraded ? invId.replace('_plus', '') : invId;
       if (isAssetDisabled('gear', baseId)) return;
       const baseItem = EQUIP_ITEMS_DB.find(it => it.id === baseId);
-      if (baseItem) {
+      if (baseItem && isGearContentPackVisible(baseItem)) {
         list.push({
           ...baseItem,
           id: invId,
@@ -5733,6 +6066,7 @@ export default function HubScreen({
     return Object.keys(EVENT_ITEMS_DB)
       .filter(key => isUniverseVisible(key))
       .map(key => ({ ...EVENT_ITEMS_DB[key], universe: key }))
+      .filter(isGearContentPackVisible)
       .filter(it => !isAssetDisabled('gear', it.id))
       .filter(it => inventory.includes(it.id) || previewEventIds.has(it.id));
   };
@@ -5803,6 +6137,7 @@ export default function HubScreen({
   };
 
   const getStageRequiredClears = (stage) => {
+    if (stage?.ocDlc) return 0;
     if (stage.characterArc) return stage.characterArc.unlock?.type === 'clears' ? stage.characterArc.unlock.value : 0;
     if (stage.trioArc) return stage.trioArc.unlock?.type === 'clears' ? stage.trioArc.unlock.value : 0;
     if (stage.universeArc) return stage.unlockClears || 4;
@@ -5901,6 +6236,12 @@ export default function HubScreen({
     return clearText || '';
   };
   const isStageUnlocked = (stage) => {
+    const ocDlcPack = stage?.ocDlc ? getOcDlcPackByUniverse(stage.universe) : null;
+    if (ocDlcPack) {
+      return isUniverseVisible(ocDlcPack.universe)
+        && isOcDlcMissionUnlocked(stage, completedStages);
+    }
+
     const baseUnlocked = completedStages.length >= getStageRequiredClears(stage);
     if (!baseUnlocked) return false;
     if (stage.characterArc) {
@@ -6049,6 +6390,7 @@ export default function HubScreen({
   };
 
   const getStageTokenPrize = (stage) => {
+    if (Number.isFinite(stage?.tokenPrize)) return stage.tokenPrize;
     if (stage.finalGameBoss) return 20;
     if (stage.isSurvival) return 3;
     return stage.id % 2 === 0 ? 5 : 0;
@@ -6318,8 +6660,8 @@ export default function HubScreen({
   }, {});
   const deployedSynergies = SYNERGIES_DB.filter(syn => (deployedCategories[syn.category] || 0) >= 2);
   const deployedFactionSynergies = activeFactionSynergies.filter(rule => rule.active);
-  const equippedRelicCount = deployedHeroes.filter(hero => equippedGear[hero.id]).length;
-  const equippedEventCount = deployedHeroes.filter(hero => equippedEventItems[hero.id]).length;
+  const equippedRelicCount = deployedHeroes.filter(hero => getGearDisplay(equippedGear[hero.id])).length;
+  const equippedEventCount = deployedHeroes.filter(hero => getEventItemDisplay(equippedEventItems[hero.id])).length;
   const averageTeamLevel = deployedHeroes.length
     ? deployedHeroes.reduce((sum, hero) => sum + (heroLevels[hero.id] || 1), 0) / deployedHeroes.length
     : 0;
@@ -6448,7 +6790,11 @@ export default function HubScreen({
       ].filter(Boolean)
         .filter(enemy => !isAssetDisabled('enemies', getEnemyAdminKey(universe, enemy)))
       : [];
-    const relics = EQUIP_ITEMS_DB.filter(item => item.universe === universe && !isAssetDisabled('gear', item.id));
+    const relics = EQUIP_ITEMS_DB.filter(item => (
+      item.universe === universe
+      && isGearContentPackVisible(item)
+      && !isAssetDisabled('gear', item.id)
+    ));
     const eventItem = EVENT_ITEMS_DB[universe] && !isAssetDisabled('gear', EVENT_ITEMS_DB[universe].id)
       ? EVENT_ITEMS_DB[universe]
       : null;
@@ -6624,7 +6970,17 @@ export default function HubScreen({
 
   const getBossIntel = (stage) => {
     if (stage.finalGameBoss) return getFinalGameBoss();
-    return ENEMIES_DB[stage.universe]?.worldBoss || ENEMIES_DB[stage.universe]?.bosses?.[0];
+    const universeEnemies = ENEMIES_DB[stage.universe] || {};
+    if (stage.ocDlc && stage.bossName) {
+      const exactBoss = [
+        ...(universeEnemies.bosses || []),
+        universeEnemies.worldBoss
+      ]
+        .filter(Boolean)
+        .find(enemy => enemy.name === stage.bossName);
+      if (exactBoss) return exactBoss;
+    }
+    return universeEnemies.worldBoss || universeEnemies.bosses?.[0];
   };
   const visibleCollectionUniverses = Object.keys(LORE_DB)
     .filter(isUniverseArchiveAvailable);
@@ -6824,6 +7180,7 @@ export default function HubScreen({
     return Boolean(stage.trioArc && isStageUnlocked(stage));
   };
   const missionCategoryFilter = (stage) => {
+    if (missionScreen === 'ocDlc') return Boolean(stage.ocDlc);
     if (missionScreen === 'universeArcs') return isUniverseArcVisibleForRoster(stage);
     if (missionScreen === 'personalArcs') return Boolean(stage.characterArc) && isPersonalArcVisibleForRoster(stage);
     if (missionScreen === 'trioArcs') return isTrioArcVisibleForRoster(stage);
@@ -6837,6 +7194,7 @@ export default function HubScreen({
   const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc && isPersonalArcVisibleForRoster(stage)).length;
   const trioArcMissionCount = visibleStages.filter(isTrioArcVisibleForRoster).length;
   const fusionMissionCount = visibleStages.filter(stage => stage.fusionMission).length;
+  const ocDlcMissionCount = OC_DLC_PACKS.reduce((total, pack) => total + pack.missions.length, 0);
   const factionArcCount = arcProgress.length;
   const missionScreenMeta = {
     story: {
@@ -6845,6 +7203,16 @@ export default function HubScreen({
       count: storyMissionCount,
       color: '#39c5bb',
       image: '/images/missions/campaign-oc.webp'
+    },
+    ocDlc: {
+      label: { fr: 'ACTES ANNEXES OC', en: 'OC STANDALONE ACTS' },
+      desc: {
+        fr: 'Trois récits originaux autonomes, activables séparément et sans prérequis de campagne principale.',
+        en: 'Three original standalone stories, activated separately with no main campaign prerequisite.'
+      },
+      count: ocDlcMissionCount,
+      color: '#7df9ff',
+      image: getOpenAiBackdropSrc(OC_DLC_PACKS[0]?.universe, 'RPG') || '/images/missions/campaign-oc.webp'
     },
     factionArcs: {
       label: { fr: 'Arcs narratifs de faction', en: 'Faction narrative arcs' },
@@ -6982,8 +7350,15 @@ export default function HubScreen({
     setSelectedNarrativeArcId(null);
     setSelectedNarrativeGroupId(null);
     setNarrativeGroupView('chapters');
-    setMissionWorkspaceView(missionScreen === 'story' ? 'campaign' : 'map');
+    setMissionWorkspaceView(
+      missionScreen === 'story'
+        ? 'campaign'
+        : missionScreen === 'ocDlc'
+          ? 'library'
+          : 'map'
+    );
     setMissionModeFilter('all');
+    if (missionScreen === 'ocDlc') setMediaFilter('all');
     setBriefingStageId(null);
   }, [missionScreen]);
   useEffect(() => {
@@ -7034,15 +7409,17 @@ export default function HubScreen({
   const unlockedMissionPool = missionPool.filter(isStageUnlocked);
   const scanPool = unlockedMissionPool.length > 0 ? unlockedMissionPool : missionPool.slice(0, 1);
   const nextUnclearedStage = scanPool.find(stage => !completedStages.includes(stage.id)) || scanPool[0];
-  const recommendedMissionScreen = nextUnclearedStage?.universeArc
-    ? 'universeArcs'
-    : nextUnclearedStage?.characterArc
-      ? 'personalArcs'
-      : nextUnclearedStage?.trioArc
-        ? 'trioArcs'
-        : nextUnclearedStage?.fusionMission
-          ? 'fusionMissions'
-          : 'story';
+  const recommendedMissionScreen = nextUnclearedStage?.ocDlc
+    ? 'ocDlc'
+    : nextUnclearedStage?.universeArc
+      ? 'universeArcs'
+      : nextUnclearedStage?.characterArc
+        ? 'personalArcs'
+        : nextUnclearedStage?.trioArc
+          ? 'trioArcs'
+          : nextUnclearedStage?.fusionMission
+            ? 'fusionMissions'
+            : 'story';
   const seededMissionScore = (stage) => {
     const raw = Math.sin(stage.id * 9301 + missionSeed * 49297) * 10000;
     return raw - Math.floor(raw);
@@ -7083,8 +7460,12 @@ export default function HubScreen({
   ));
   const riftJournal = (activityProgress.riftJournal || []).slice(0, 5);
   const clearedVisibleCount = missionPool.filter(stage => completedStages.includes(stage.id)).length;
+  const clearedOcDlcMissionCount = OC_DLC_PACKS
+    .flatMap(pack => pack.missions)
+    .filter(mission => completedStageIdSet.has(String(mission.id)))
+    .length;
   const isArcMissionScreen = Boolean(narrativeArcScreenType);
-  const showModeFilters = (missionScreen === 'story' || missionScreen === 'fusionMissions')
+  const showModeFilters = ['story', 'ocDlc', 'fusionMissions'].includes(missionScreen)
     && ['map', 'missions'].includes(missionWorkspaceView);
   const missionWorkspaceItems = missionScreen === 'story'
     ? [
@@ -7113,7 +7494,28 @@ export default function HubScreen({
         tooltip: { fr: 'Relit les derniers contacts de cette route.', en: 'Review recent contacts on this route.' }
       }] : [])
     ]
-    : [
+    : missionScreen === 'ocDlc'
+      ? [
+        {
+          id: 'library',
+          label: { fr: 'BIBLIOTHÈQUE OC', en: 'OC LIBRARY' },
+          count: OC_DLC_PACKS.length,
+          tooltip: { fr: 'Parcours et active les trois actes annexes autonomes.', en: 'Browse and activate the three standalone side acts.' }
+        },
+        {
+          id: 'map',
+          label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' },
+          count: missionPool.length,
+          tooltip: { fr: 'Localise uniquement les missions des actes OC actifs.', en: 'Locate only missions from active OC acts.' }
+        },
+        {
+          id: 'missions',
+          label: { fr: 'MISSIONS', en: 'MISSIONS' },
+          count: missionPool.length,
+          tooltip: { fr: 'Affiche les missions des actes annexes actuellement actifs.', en: 'Show missions from currently active standalone acts.' }
+        }
+      ]
+      : [
       {
         id: 'map',
         label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' },
@@ -7163,13 +7565,21 @@ export default function HubScreen({
             ? 'Les routes marquent les cellules ou trois signatures doivent agir ensemble. Chaque arc ouvre ses chapitres de synergie.'
             : 'Routes mark cells where three signatures must act together. Each arc opens its synergy chapters.'
         }
-        : {
-          kicker: lang === 'fr' ? 'CARTE DES FAILLES / CAMPAGNE' : 'RIFT MAP / CAMPAIGN',
-          title: lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals',
-          desc: lang === 'fr'
-            ? 'Clique une faille OC pour afficher son briefing. Les DLC restent dans leurs vues annexes et ne debloquent pas la campagne.'
-            : 'Select an OC rift to show its briefing. DLC stay in side views and do not unlock the campaign.'
-        };
+        : missionScreen === 'ocDlc'
+          ? {
+            kicker: lang === 'fr' ? 'CARTE DES FAILLES / ACTES ANNEXES OC' : 'RIFT MAP / OC STANDALONE ACTS',
+            title: lang === 'fr' ? 'Portails des actes actifs' : 'Active act portals',
+            desc: lang === 'fr'
+              ? 'La carte montre uniquement les actes annexes activés dans la bibliothèque. Chaque récit suit sa propre chaîne de trois missions et ne modifie pas la campagne principale.'
+              : 'The map shows only standalone acts activated in the library. Each story follows its own three-mission chain and never alters the main campaign.'
+          }
+          : {
+            kicker: lang === 'fr' ? 'CARTE DES FAILLES / CAMPAGNE' : 'RIFT MAP / CAMPAIGN',
+            title: lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals',
+            desc: lang === 'fr'
+              ? 'Clique une faille OC pour afficher son briefing. Les DLC restent dans leurs vues annexes et ne debloquent pas la campagne.'
+              : 'Select an OC rift to show its briefing. DLC stay in side views and do not unlock the campaign.'
+          };
   const assetToggleStyle = (hidden) => ({
     fontSize: '9px',
     padding: '4px 7px',
@@ -7513,8 +7923,8 @@ export default function HubScreen({
                   borderRadius: '4px'
                 }}>
                   {lang === 'fr'
-                    ? 'A.R.C.A. compartimente la carte des missions pour eviter la surcharge de Trame. Choisis un ecran: campagne principale, arcs de faction, arcs univers, arcs personnels ou cellules trio.'
-                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, faction arcs, universe arcs, personal arcs, or trio cells.'}
+                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : campagne principale, actes annexes OC, arcs de faction, arcs univers, arcs personnels ou cellules trio.'
+                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, OC standalone acts, faction arcs, universe arcs, personal arcs, or trio cells.'}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
                   {Object.entries(missionScreenMeta).map(([key, entry]) => (
@@ -7588,11 +7998,19 @@ export default function HubScreen({
                   <p>{selectedMissionMeta.desc[lang]}</p>
                 </div>
                 <div className="mission-view-hero-stat">
-                  <strong>{isFactionArcScreen ? arcProgress.length : `${clearedVisibleCount}/${missionPool.length}`}</strong>
+                  <strong>
+                    {isFactionArcScreen
+                      ? arcProgress.length
+                      : missionScreen === 'ocDlc'
+                        ? `${clearedOcDlcMissionCount}/${ocDlcMissionCount}`
+                        : `${clearedVisibleCount}/${missionPool.length}`}
+                  </strong>
                   <span>
                     {isFactionArcScreen
                       ? (lang === 'fr' ? 'ARCS INDEXES' : 'INDEXED ARCS')
-                      : (lang === 'fr' ? 'BRECHES STABLES' : 'STABLE BREACHES')}
+                      : missionScreen === 'ocDlc'
+                        ? (lang === 'fr' ? 'MISSIONS STABLES' : 'STABLE MISSIONS')
+                        : (lang === 'fr' ? 'BRECHES STABLES' : 'STABLE BREACHES')}
                   </span>
                 </div>
               </div>
@@ -7743,6 +8161,21 @@ export default function HubScreen({
                   />
                 )}
 
+                {missionScreen === 'ocDlc' && missionWorkspaceView === 'library' && (
+                  <OcDlcLibrary
+                    lang={lang}
+                    completedStages={completedStages}
+                    hiddenUniverses={hiddenUniverses}
+                    getStageByMissionId={(missionId) => STAGES.find(stage => stage.id === missionId)}
+                    onSetPackActive={(universe, active) => setUniverseHidden(universe, !active)}
+                    onOpenBriefing={(stage) => {
+                      setBriefingStageId(stage.id);
+                      setMissionWorkspaceView('map');
+                      sound.playSfx('click');
+                    }}
+                  />
+                )}
+
                 {missionWorkspaceView === 'map' && (
                   <>
                     {arcaRoute.length > 0 && (
@@ -7785,7 +8218,11 @@ export default function HubScreen({
                         getStageUnlockRequirementText={getLockedReason}
                         getStageRewardPreview={getStageRewardPreview}
                         selectedStageId={briefingStageId}
-                        viewType={missionScreen === 'fusionMissions' ? 'fusion' : 'story'}
+                        viewType={missionScreen === 'fusionMissions'
+                          ? 'fusion'
+                          : missionScreen === 'ocDlc'
+                            ? 'ocDlc'
+                            : 'story'}
                       />
                       <RiftBriefingPanel
                         lang={lang}
@@ -9863,7 +10300,11 @@ export default function HubScreen({
                           counts[invId] = (counts[invId] || 0) + 1;
                         }
                       });
-                      const fusables = EQUIP_ITEMS_DB.filter(it => !isAssetDisabled('gear', it.id) && (counts[it.id] || 0) >= 3);
+                      const fusables = EQUIP_ITEMS_DB.filter(it => (
+                        isGearContentPackVisible(it)
+                        && !isAssetDisabled('gear', it.id)
+                        && (counts[it.id] || 0) >= 3
+                      ));
 
                       if (fusables.length === 0) {
                         return (

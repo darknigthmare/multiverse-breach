@@ -359,6 +359,7 @@ export function getTacticsBattlefield(stage = {}) {
 
   let battlefield = TACTICS_BATTLEFIELDS.training_grid;
   if (stage.forceBaseArena || stage.dlcSuppressedArena) battlefield = TACTICS_BATTLEFIELDS.training_grid;
+  else if (stage.tacticsBattlefieldId && TACTICS_BATTLEFIELDS[stage.tacticsBattlefieldId]) battlefield = TACTICS_BATTLEFIELDS[stage.tacticsBattlefieldId];
   else if (stage.finalGameBoss || stage.worldBoss || /final|world boss|singularity/i.test(stage.difficulty || '')) battlefield = TACTICS_BATTLEFIELDS.boss_command_zone;
   else if (textIncludes(missionText, ['overload', 'surcharge', 'timer', 'core'])) battlefield = TACTICS_BATTLEFIELDS.boss_overload_zone;
   else if (textIncludes(missionText, ['escort', 'convoi', 'civilian', 'nexus agent'])) battlefield = TACTICS_BATTLEFIELDS.nexus_escort_route;

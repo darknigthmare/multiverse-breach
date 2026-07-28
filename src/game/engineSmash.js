@@ -464,7 +464,10 @@ export class EngineSmash {
     let template;
     let isBoss = false;
 
-    if (waveType === 1) {
+    if (waveType >= this.maxWaves) {
+      isBoss = true;
+      template = this.enemiesData.worldBoss || this.enemiesData.bosses[0];
+    } else if (waveType === 1) {
       template = this.enemiesData.monsters[0];
     } else if (waveType === 2) {
       template = this.enemiesData.monsters[1] || this.enemiesData.monsters[0];

@@ -50,6 +50,7 @@ export class EngineTactics {
     this.opponentControl = stage.customBattle?.opponentControl === 'p2' ? 'p2' : 'cpu';
     this.singleRoster = stage.customBattle?.singleRoster === true
       && Array.isArray(enemiesData.customRoster);
+    this.exclusiveEnemyRoster = stage.enemyRosterExclusive === true && !this.singleRoster;
     this.hazardsDisabled = stage.disableHazards === true && !!stage.customBattle;
     this.disposed = false;
     this.paused = false;
@@ -331,8 +332,10 @@ export class EngineTactics {
       });
     }
 
-    // 2. Spawning bosses from the active battlefield profile
-    for (let i = 0; i < 2; i++) {
+    // 2. Exclusive campaign rosters spawn their exact canonical boss pool.
+    // Regular stages retain the classic two-boss formation.
+    const bossCount = this.exclusiveEnemyRoster ? bossesList.length : 2;
+    for (let i = 0; i < bossCount; i++) {
       const template = bossesList[i] || bossesList[0];
       const spawn = bossSpawns[i] || bossSpawns[bossSpawns.length - 1] || { x: this.cols - 2, y: i * 2 + 1 };
       this.enemies.push({

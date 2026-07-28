@@ -277,7 +277,31 @@ const UNIVERSE_PROFILE_DEFINITIONS = [
   ["Buckethead", "P1", "ABSENT-VISUEL", "Bucketheadland haunted theme-park entrance and Giant Robot ride", ["https://www.bucketheadpikes.com/"]],
   ["Korn", "P1", "ABSENT-VISUEL", "Follow the Leader playground and arena pit", ["https://www.kornofficial.com/"]],
   ["Marilyn Manson", "P1", "ABSENT-VISUEL", "Mechanical Animals sterile glam television studio", ["https://www.marilynmanson.com/"]],
-  ["Nexus de Convergence", "P1", "ABSENT-VISUEL", "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure", ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocCampaign.js"]]
+  ["Nexus de Convergence", "P1", "ABSENT-VISUEL", "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure", ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocCampaign.js"]],
+  [
+    "Thalassa Mnémique",
+    "P0",
+    "ORIGINAL-OC",
+    "Récif des Registres beneath the Salt Archive and its mnemonic tide engines",
+    ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocDlcPacks.js"],
+    "A submerged civic archive grown through pale memory-coral, brass pressure locks, glass maps, bioluminescent testimony ribbons and a distant false dawn below the ocean"
+  ],
+  [
+    "Méridien Creux",
+    "P0",
+    "ORIGINAL-OC",
+    "Grand Cadran district surrounding the Chronobank and its seized-hour foundry",
+    ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocDlcPacks.js"],
+    "A vertical clockwork city of amber ledgers, moving dial bridges, cyan contraband seconds, surgical time conduits and neighborhoods aging at visibly different rates"
+  ],
+  [
+    "Viridienne Ultime",
+    "P0",
+    "ORIGINAL-OC",
+    "Canopy of Orbits above the Star-Seed Nursery and the Root-Sun heart",
+    ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocDlcPacks.js"],
+    "A cosmic garden where luminous roots hold planet-seeds, comet herds cross branching orbital paths, living machines tend prismatic spores and many possible suns bloom at once"
+  ]
 ];
 
 const FULL_COVERAGE_PROFILE_DEFINITIONS = [

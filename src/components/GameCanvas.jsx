@@ -20,6 +20,7 @@ import { getBattleItemPoolForStage } from '../game/battleItems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
 import { getSmashPickupPositions } from '../game/smashArenas';
 import { getTacticsPickupPositions } from '../game/tacticsBattlefields';
+import { resolveStageEnemyData } from '../game/stageEnemyResolver';
 
 const getStableNumericSeed = (value) => {
   let numericValue = Number.NaN;
@@ -310,7 +311,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     // 2. Deployed Synergy multipliers
     const squadCats = activeTeam
       .map(id => HEROES_DB.find(h => h.id === id))
-      .filter(h => h && !disabledHeroSet.has(h.id))
+      .filter(h => h && !disabledHeroSet.has(h.id) && !hiddenUniverseSet.has(h.universe))
       .map(h => h.category || '');
     const activeCatsCount = squadCats.reduce((acc, c) => {
       acc[c] = (acc[c] || 0) + 1;
@@ -328,7 +329,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     FACTION_RULES.forEach(rule => {
       const activeCount = activeTeam
         .map(id => HEROES_DB.find(h => h.id === id))
-        .filter(h => h && !disabledHeroSet.has(h.id))
+        .filter(h => h && !disabledHeroSet.has(h.id) && !hiddenUniverseSet.has(h.universe))
         .map(h => h.universe)
         .filter(universe => rule.universes.includes(universe)).length;
       if (activeCount >= 2 && rule.universes.includes(hero.universe)) {
@@ -355,7 +356,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const baseGearId = isUpgraded ? gearId.replace('_plus', '') : gearId;
       if (disabledGearSet.has(baseGearId)) return stats;
       const gear = EQUIP_ITEMS_DB.find(it => it.id === baseGearId);
-      if (gear && gear.boost) {
+      if (gear && gear.boost && !hiddenUniverseSet.has(gear.universe)) {
         const factor = isUpgraded ? 2 : 1;
         if (gear.boost.hp) stats.hp += gear.boost.hp * factor;
         if (gear.boost.atk) stats.atk += gear.boost.atk * factor;
@@ -465,27 +466,28 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       };
     }
     const monsters = ensureList(stage.universe, filterEnemyList(stage.universe, getMonstersForUniverse(stage.universe)));
-    const missionRoster = Array.isArray(stage.enemyRoster)
-      ? stage.enemyRoster.map(name => monsters.find(enemy => enemy.name === name)).filter(Boolean)
-      : [];
-    const prioritizedMonsters = missionRoster.length > 0
-      ? (stage.enemyRosterExclusive
-          ? missionRoster
-          : [...missionRoster, ...monsters.filter(enemy => !stage.enemyRoster.includes(enemy.name))])
-      : monsters;
     const bosses = ensureList(stage.universe, filterEnemyList(stage.universe, getBossesForUniverse(stage.universe)), true);
-    const worldBoss = getWorldBossForUniverse(stage.universe);
+    const universeWorldBoss = getWorldBossForUniverse(stage.universe);
+    const worldBoss = universeWorldBoss
+      ? (disabledEnemySet.has(getEnemyAdminKey(stage.universe, universeWorldBoss))
+          ? fallbackEnemy(stage.universe, true)
+          : universeWorldBoss)
+      : null;
     const finalePolicy = getFinalePolicyForUniverse(stage.universe);
+    const resolvedEnemyData = resolveStageEnemyData({
+      stage,
+      monsters,
+      bosses,
+      worldBoss,
+      fallbackMonster: fallbackEnemy(stage.universe),
+      fallbackBoss: fallbackEnemy(stage.universe, true)
+    });
     return {
-      monsters: prioritizedMonsters.map(enemy => scaleEnemy(enemy)),
-      bosses: bosses.map(enemy => scaleEnemy(enemy, true)),
+      monsters: resolvedEnemyData.monsters.map(enemy => scaleEnemy(enemy)),
+      bosses: resolvedEnemyData.bosses.map(enemy => scaleEnemy(enemy, true)),
       finalePolicy,
-      worldBoss: worldBoss
-        ? (disabledEnemySet.has(getEnemyAdminKey(stage.universe, worldBoss))
-            ? scaleEnemy(fallbackEnemy(stage.universe, true), true)
-            : scaleEnemy({
-                ...worldBoss
-              }, true))
+      worldBoss: resolvedEnemyData.worldBoss
+        ? scaleEnemy(resolvedEnemyData.worldBoss, true)
         : null
     };
   };
@@ -927,7 +929,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const enemyList = flattenEnemiesData(enemyData);
     let squadHeroes = activeTeam.map(id => {
       const base = HEROES_DB.find(h => h.id === id);
-      if (!base || disabledHeroSet.has(base.id)) return null;
+      if (!base || disabledHeroSet.has(base.id) || hiddenUniverseSet.has(base.universe)) return null;
       const scaledStats = getHeroStats(base);
       return {
         ...base,
@@ -1456,7 +1458,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (!engineRef.current || eventItemUsed || battleCompleted) return;
 
     const activeHero = HEROES_DB.find(h => h.id === activeHeroId);
-    if (!activeHero) return;
+    if (!activeHero || hiddenUniverseSet.has(activeHero.universe)) return;
 
     const eventId = equippedEventItems[activeHero.id];
     if (!eventId) return;
@@ -1518,8 +1520,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
   // Check if active hero has an event item equipped
   const activeHeroStatic = HEROES_DB.find(h => h.id === activeHeroId);
-  const equippedEventId = activeHeroStatic ? equippedEventItems[activeHeroStatic.id] : null;
-  const equippedEvent = activeHeroStatic ? EVENT_ITEMS_DB[activeHeroStatic.universe] : null;
+  const activeHeroUniverseEnabled = activeHeroStatic && !hiddenUniverseSet.has(activeHeroStatic.universe);
+  const equippedEventId = activeHeroUniverseEnabled ? equippedEventItems[activeHeroStatic.id] : null;
+  const equippedEvent = activeHeroUniverseEnabled ? EVENT_ITEMS_DB[activeHeroStatic.universe] : null;
   const victoryRewardText = stage.isCustomBattle
     ? (lang === 'fr'
         ? 'Simulation terminee. Aucun Or, Fragment, Jeton ou progression de campagne n est attribue.'

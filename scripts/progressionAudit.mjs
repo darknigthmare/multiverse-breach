@@ -51,6 +51,8 @@ const featuredVisualManifest = JSON.parse(read('../public/images/generated/featu
 const featuredVisualPrompts = read('../public/images/generated/featured-openai-visual-prompts.jsonl').trim().split('\n').filter(Boolean).map(line => JSON.parse(line));
 const manifestOutputs = new Set((manifest.entries || []).filter(entry => entry.available).map(entry => entry.output));
 const stageLoreProfiles = [...Object.values(STAGE_LORE_PROFILES), ...Object.values(STAGE_ARC_LORE_PROFILES)];
+const generatedStageLoreProfiles = stageLoreProfiles.filter(profile => profile.auditStatus !== 'ORIGINAL-OC');
+const originalOcStageLoreProfiles = stageLoreProfiles.filter(profile => profile.auditStatus === 'ORIGINAL-OC');
 const worldBossUniverses = new Set(Object.keys(LORE_WORLD_BOSS_OVERRIDES));
 const worldBossPolicyUniverses = new Set(Object.keys(LORE_WORLD_BOSS_POLICIES));
 
@@ -277,7 +279,11 @@ const expectedSupplementalOpenAiSpriteOutputs = [
 ];
 
 assert(dlcSource.includes("BASE_GAME_UNIVERSES = ['Nexus de Convergence']"), 'Base OC universe must remain Nexus de Convergence.');
-assert(dlcSource.includes('DEFAULT_HIDDEN_UNIVERSES = getDlcUniverseKeys()'), 'DLC universes must be hidden by default.');
+assert(
+  dlcSource.includes('DEFAULT_HIDDEN_UNIVERSES')
+  && dlcSource.includes('getDlcUniverseKeys()'),
+  'DLC universes must be hidden by default.'
+);
 assert(hubSource.includes('id: 40000 + index'), 'Universe narrative arcs must use their reserved 40000 stage range.');
 assert(!hubSource.includes('id: 9500 + index'), 'Universe narrative arcs must not collide with generated personal arcs.');
 ['41001', '41002', '41003', '41004'].forEach(stageId => {
@@ -365,7 +371,7 @@ expectedOcOriginLocks.forEach(lockId => {
 });
 assert(ocCampaignSource.includes('export const OC_ORIGIN_LOCKS') && hubSource.includes('oc-origin-locks-track'), 'The six Origin Locks must remain centralized and visible in the OC chronicle.');
 assert((ocCampaignSource.match(/enemyRosterExclusive: true/g) || []).length === expectedOcOriginLocks.length, 'Every OC operation must keep an exclusive lore roster.');
-assert(gameCanvasSource.includes('stage.enemyRosterExclusive') && gameCanvasSource.includes('const missionRoster'), 'GameCanvas must enforce exclusive mission rosters when requested.');
+assert(gameCanvasSource.includes('resolveStageEnemyData'), 'GameCanvas must enforce exact mission rosters and canonical bosses.');
 assert(spriteChecklistSource.includes('[ ] Double ideal de Marrow'), 'Deferred Marrow double generation must remain visible in the conversion checklist.');
 assert(spriteChecklistSource.includes('[x] Matrice de Substitution'), 'The completed Matrice de Substitution sheet must remain visible in the conversion checklist.');
 assert(manifestOutputs.has('/sprites/generated/bosses/nexus-de-convergence/matrice-de-substitution.png'), 'Missing Matrice de Substitution OpenAI sprite.');
@@ -474,7 +480,12 @@ assert(storySource.includes("worlds remain side archives") || storySource.includ
 assert(hubSource.includes('finalGameBoss: true') && hubSource.includes('dlcStage: true'), 'Meta final boss must be flagged as DLC/meta content outside the OC story.');
 assert(hubSource.includes('insertBeforeMetaStage'), 'Stage injection must keep OC/DLC arcs before the meta final boss.');
 assert(hubSource.includes('stage.finalGameBoss') && !hubSource.includes('stage.id === 38') && !hubSource.includes('id !== 38'), 'Hub logic must use finalGameBoss metadata instead of hard-coded stage id 38.');
-assert(storySource.includes('storyBeat') && hubSource.includes('Scene OC Nexus'), 'OC campaign stages must expose narrative intro/outro beats.');
+assert(
+  storySource.includes('storyBeat')
+  && hubSource.includes('storyBeatLabel')
+  && hubSource.includes('Nexus OC scene'),
+  'OC campaign stages must expose narrative intro/outro beats.'
+);
 assert(ocCampaignSource.includes('OC_CAMPAIGN_MISSIONS') && ocCampaignSource.includes('OC_CAMPAIGN_CHAPTERS'), 'OC campaign canon must stay centralized in its dedicated narrative module.');
 assert(hubSource.includes('<OcCampaignChronicle'), 'Story mode must expose the dedicated OC campaign chronicle.');
 assert(hubSource.includes("label: { fr: 'Campagne OC'"), 'Story tab must be labelled as an OC campaign.');
@@ -775,15 +786,19 @@ assert(gameCanvasSource.includes('reinforcementsCalled') && gameCanvasSource.inc
 assert(gameCanvasSource.includes('applyTacticalBattleItem') && gameCanvasSource.includes('Tactical artifacts'), 'GameCanvas must route Tactics artifacts through the Tactics engine and display them.');
 assert(appSource.includes('tacticsMasteryBonus'), 'App rewards must include capped Tactics mastery bonuses.');
 assert(Object.keys(STAGE_LORE_PROFILES).length >= 260, 'Every expanded universe must have a canonical stage lore profile.');
-assert(stageLoreProfiles.length === 293, 'Stage lore registry must preserve 264 universe profiles and 29 arc profiles.');
+assert(generatedStageLoreProfiles.length === 293, 'Generated stage lore registry must preserve 264 universe profiles and 29 arc profiles.');
+assert(originalOcStageLoreProfiles.length === 3, 'Stage lore registry must preserve exactly three original OC DLC profiles.');
 assert(stageLoreProfiles.filter(profile => profile.generationBlocked).length === 2, 'Only the two documented ambiguous stage sources may remain generation-blocked.');
-assert(manifest.counts?.stages === stageLoreProfiles.length * 4, 'OpenAI manifest must expose all four stage views for every lore profile.');
+assert(
+  manifest.counts?.stages === (generatedStageLoreProfiles.length + originalOcStageLoreProfiles.length) * 4,
+  'OpenAI manifest must expose all four stage views for every generated and original OC lore profile.',
+);
 assert(
   generatedStageAssets.counts?.backdrops === manifest.availableCounts?.stages,
   'Generated stage runtime registry must match the available stage backdrop count in the OpenAI manifest.',
 );
 assert(manifest.counts?.finales === worldBossPolicyUniverses.size, 'OpenAI manifest must expose every non-combat or set-piece finale kit.');
-assert(manifest.counts?.items === 558, 'OpenAI manifest must expose the complete lore item prompt catalog.');
+assert(manifest.counts?.items === 573, 'OpenAI manifest must expose the complete lore item prompt catalog including the three standalone OC acts.');
 worldBossPolicyUniverses.forEach(universe => {
   assert(!worldBossUniverses.has(universe), `${universe} cannot be both a combat world boss and a finale policy.`);
 });
