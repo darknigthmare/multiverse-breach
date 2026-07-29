@@ -5,6 +5,7 @@ import AuthPanel from './components/AuthPanel';
 import IntroSequence from './components/IntroSequence';
 import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
+import { resolveActiveHudTheme } from './game/cosmeticVisualAssets';
 import { getStoredSession, loadCloudSave, saveCloudSave, signInAccount, signOutAccount, signUpAccount, storeSession } from './game/cloudSave';
 import { PLAYER_HERO_ID } from './game/playerHero';
 import {
@@ -1782,6 +1783,7 @@ function App() {
               collectionBonusCount={collectionBonusCount}
               hiddenUniverses={hiddenUniverses}
               disabledAssets={disabledAssets}
+              hudTheme={resolveActiveHudTheme(portalCollection)}
               onBattleEnd={handleBattleEnd}
             />
           </Suspense>

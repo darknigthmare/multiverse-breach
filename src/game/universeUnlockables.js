@@ -1,4 +1,5 @@
 import { BATTLE_ITEMS_BY_UNIVERSE } from './battleItems';
+import { OPENAI_COSMETIC_VISUALS, getOpenAiCosmeticAtlas } from './cosmeticVisualAssets';
 import { LORE_DB } from './lore';
 import { OC_BOOSTER_UPDATE_UNLOCKABLES } from './ocBoosterContentUpdates.js';
 import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
@@ -226,10 +227,15 @@ const makeUniverseUnlockables = (universe) => {
         en: `${universe} ${koStyle.label.en} K.O.`
       },
       desc: {
-        fr: `Effet cosmetique original ${koStyle.label.fr} joue lorsqu une signature provoque un K.-O.`,
-        en: `Original ${koStyle.label.en} cosmetic played when a signature scores a K.O.`
+        fr: `Animation OpenAI originale ${koStyle.label.fr}, accordee a la couleur de ${universe}, jouee lorsqu une signature provoque un K.-O.`,
+        en: `Original OpenAI ${koStyle.label.en} animation tuned to the ${universe} color and played when a signature scores a K.O.`
       },
-      visual: Object.freeze({ pattern: koStyle.id, durationMs: 900, intensity: 0.8 })
+      visual: Object.freeze({
+        pattern: koStyle.id,
+        durationMs: 900,
+        intensity: 0.8,
+        ...getOpenAiCosmeticAtlas('koEffect', koStyle.id)
+      })
     }),
     portalEffect: Object.freeze({
       id: `portal-effect:${universe}`,
@@ -242,10 +248,15 @@ const makeUniverseUnlockables = (universe) => {
         en: `${universe} ${portalStyle.label.en} Portal`
       },
       desc: {
-        fr: `Habillage cosmetique original de portail inspire par la signature de ${universe}.`,
-        en: `Original portal cosmetic inspired by the ${universe} signature.`
+        fr: `Animation OpenAI originale de portail composee avec le decor et la signature chromatique de ${universe}.`,
+        en: `Original OpenAI portal animation composed with the ${universe} backdrop and color signature.`
       },
-      visual: Object.freeze({ pattern: portalStyle.id, durationMs: 1200, intensity: 0.9 })
+      visual: Object.freeze({
+        pattern: portalStyle.id,
+        durationMs: 1200,
+        intensity: 0.9,
+        ...getOpenAiCosmeticAtlas('portalEffect', portalStyle.id)
+      })
     }),
     introPose: Object.freeze({
       id: `intro-pose:${universe}`,
@@ -258,10 +269,14 @@ const makeUniverseUnlockables = (universe) => {
         en: `${universe} Introduction Pose`
       },
       desc: {
-        fr: `Animation cosmetique de ${poseStyle.intro.fr} avant un combat custom.`,
-        en: `${poseStyle.intro.en} cosmetic animation before a custom battle.`
+        fr: `Sprite OpenAI anime de ${poseStyle.intro.fr}, teinte par la Trame ${universe}, avant un combat custom.`,
+        en: `OpenAI animated sprite for ${poseStyle.intro.en}, colored by the ${universe} Thread, before a custom battle.`
       },
-      animation: Object.freeze({ key: `intro-${poseStyle.id}`, durationMs: 1500 })
+      animation: Object.freeze({
+        key: `intro-${poseStyle.id}`,
+        durationMs: 1500,
+        ...getOpenAiCosmeticAtlas('introPose', poseStyle.id)
+      })
     }),
     victoryPose: Object.freeze({
       id: `victory-pose:${universe}`,
@@ -274,10 +289,14 @@ const makeUniverseUnlockables = (universe) => {
         en: `${universe} Victory Pose`
       },
       desc: {
-        fr: `Animation cosmetique de ${poseStyle.victory.fr} apres une victoire custom.`,
-        en: `${poseStyle.victory.en} cosmetic animation after a custom victory.`
+        fr: `Sprite OpenAI anime de ${poseStyle.victory.fr}, teinte par la Trame ${universe}, apres une victoire custom.`,
+        en: `OpenAI animated sprite for ${poseStyle.victory.en}, colored by the ${universe} Thread, after a custom victory.`
       },
-      animation: Object.freeze({ key: `victory-${poseStyle.id}`, durationMs: 1800 })
+      animation: Object.freeze({
+        key: `victory-${poseStyle.id}`,
+        durationMs: 1800,
+        ...getOpenAiCosmeticAtlas('victoryPose', poseStyle.id)
+      })
     }),
     profileBanner: Object.freeze({
       id: `profile-banner:${universe}`,
@@ -290,10 +309,15 @@ const makeUniverseUnlockables = (universe) => {
         en: `${universe} Profile Banner`
       },
       desc: {
-        fr: `Banniere procedurale originale ${bannerStyle.pattern} pour le Dossier d Ancre.`,
-        en: `Original procedural ${bannerStyle.pattern} banner for the Anchor record.`
+        fr: `Cadre de banniere OpenAI original ${bannerStyle.pattern}, compose avec le decor de ${universe}, pour le Dossier d Ancre.`,
+        en: `Original OpenAI ${bannerStyle.pattern} banner frame composed with the ${universe} backdrop for the Anchor record.`
       },
-      visual: Object.freeze({ pattern: bannerStyle.pattern, accent: color })
+      visual: Object.freeze({
+        pattern: bannerStyle.pattern,
+        accent: color,
+        image: OPENAI_COSMETIC_VISUALS.profileBanner.image,
+        source: 'openai'
+      })
     }),
     profileTitle: Object.freeze({
       id: `profile-title:${universe}`,
@@ -305,9 +329,13 @@ const makeUniverseUnlockables = (universe) => {
         en: `${universe} Archivist`
       },
       desc: {
-        fr: `Titre public prouvant la stabilisation de la Trame ${universe}.`,
-        en: `Public title proving stabilization of the ${universe} Thread.`
-      }
+        fr: `Plaque de titre OpenAI publique prouvant la stabilisation de la Trame ${universe}.`,
+        en: `Public OpenAI title plate proving stabilization of the ${universe} Thread.`
+      },
+      visual: Object.freeze({
+        image: OPENAI_COSMETIC_VISUALS.profileTitle.image,
+        source: 'openai'
+      })
     })
   });
 };
@@ -339,6 +367,10 @@ export const UNIVERSE_UNLOCKABLES = Object.freeze(Object.fromEntries(
             visual: Object.freeze({
               ...(unlockable.visual || {}),
               ...(originalOverrides[kind]?.visual || {})
+            }),
+            animation: Object.freeze({
+              ...(unlockable.animation || {}),
+              ...(originalOverrides[kind]?.animation || {})
             })
           })
         ])

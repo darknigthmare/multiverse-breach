@@ -25,6 +25,7 @@ import {
 import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getUnlockableById } from '../game/universeUnlockables';
+import { OPENAI_COSMETIC_VISUALS, resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
 import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
@@ -34,6 +35,7 @@ import RaceMode from './RaceMode';
 import FighterMode from './FighterMode';
 import CustomBattleMode from './CustomBattleMode';
 import RegulationImagePreview from './RegulationImagePreview';
+import GameHudThemeLayer from './GameHudThemeLayer';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
@@ -109,15 +111,19 @@ function GearShopItemVisual({ item, lang, accent, fallbackGlyph }) {
 const getProfileBannerBackground = (banner) => {
   if (!banner) return undefined;
   const color = banner.color || '#39c5bb';
-  const base = `linear-gradient(135deg, ${color}18, rgba(2,4,10,.94) 58%)`;
+  const base = `linear-gradient(135deg, ${color}24, rgba(2,4,10,.78) 58%)`;
   const patterns = {
     'linear-grid': `linear-gradient(${color}18 1px, transparent 1px), linear-gradient(90deg, ${color}18 1px, transparent 1px), ${base}`,
     'concentric-rings': `repeating-radial-gradient(circle at 12% 0%, ${color}28 0 2px, transparent 3px 22px), ${base}`,
     'diagonal-shards': `repeating-linear-gradient(132deg, transparent 0 24px, ${color}20 25px 27px, transparent 28px 48px), ${base}`,
     'signal-bars': `repeating-linear-gradient(90deg, ${color}20 0 8px, transparent 9px 22px), ${base}`
   };
-  return patterns[banner.visual?.pattern]
+  const pattern = patterns[banner.visual?.pattern]
     || `radial-gradient(circle at 12% 0%, ${color}44, transparent 38%), ${base}`;
+  const frame = banner.visual?.image || OPENAI_COSMETIC_VISUALS.profileBanner.image;
+  const backdrop = getOpenAiBackdropSrc(banner.universe, 'Combat')
+    || '/images/missions/fusion-rifts.webp';
+  return `url(${frame}) center / 100% 100% no-repeat, ${pattern}, linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.56)), url(${backdrop}) center / cover no-repeat`;
 };
 
 function OperationsSectionTabs({ lang, items, activeId, onChange, label }) {
@@ -2054,6 +2060,7 @@ function MosaicCityHub({
   onOpenMissions,
   onOpenCodex,
   onSessionEnd,
+  hudTheme = null,
   sessionPaused = false,
   sessionExitRequest = 0
 }) {
@@ -2937,7 +2944,8 @@ function MosaicCityHub({
   };
 
   return (
-    <div className="glass-panel nexus-play-panel mosaic-rpg-panel">
+    <div className={`glass-panel nexus-play-panel mosaic-rpg-panel ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
+      <GameHudThemeLayer theme={hudTheme} mode="nexus" />
       <div className="nexus-play-copy">
         <div className="portal-focus-kicker">{lang === 'fr' ? 'CITE-MOSAIQUE / RPG VIVANT' : 'MOSAIC CITY / LIVING RPG'}</div>
         <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
@@ -3011,6 +3019,7 @@ function ExtinctionRoyale({
   unlockedHeroes,
   onSessionStart,
   onSessionEnd,
+  hudTheme = null,
   sessionPaused = false,
   sessionExitRequest = 0
 }) {
@@ -3884,7 +3893,8 @@ function ExtinctionRoyale({
   const runActive = runSnapshot.phase === 'running';
 
   return (
-    <div className={`glass-panel nexus-play-panel extinction-panel ${runActive ? 'extinction-panel-active' : ''}`}>
+    <div className={`glass-panel nexus-play-panel extinction-panel ${runActive ? 'extinction-panel-active' : ''} ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
+      <GameHudThemeLayer theme={hudTheme} mode="fps" />
       <div className="nexus-play-copy">
         <div className="extinction-setup-copy">
           <div className="portal-focus-kicker">{lang === 'fr' ? 'ZONE D EXTINCTION / FPS ROYALE' : 'EXTINCTION ZONE / FPS ROYALE'}</div>
@@ -4461,8 +4471,7 @@ export default function HubScreen({
     }));
     sound.playSfx('click');
   }, [activeGameMode]);
-  const activeHudTheme = (portalCollection.hudThemes || [])
-    .find(theme => theme.id === portalCollection.activeHudTheme);
+  const activeHudTheme = resolveActiveHudTheme(portalCollection);
   const activeProfileBanner = getUnlockableById(
     'profileBanner',
     portalCollection.customLoadout?.profileBanner
@@ -7865,14 +7874,11 @@ export default function HubScreen({
   return (
     <div
       className={`hub-screen ${activeGameMode ? 'is-dedicated-game' : ''}`}
-      data-hud-theme={activeHudTheme?.id || 'nexus-default'}
       data-game-mode={activeGameMode || 'hub'}
       style={{
       minHeight: '100vh',
-      background: activeHudTheme?.image
-        ? `linear-gradient(180deg, rgba(3,1,11,0.82), rgba(3,1,11,0.96)), url(${activeHudTheme.image}) center / cover fixed`
-        : 'radial-gradient(circle, #0e0722 0%, #03010b 100%)',
-      '--hud-theme-color': activeHudTheme?.color || '#39c5bb',
+      background: 'radial-gradient(circle, #0e0722 0%, #03010b 100%)',
+      '--hud-theme-color': '#39c5bb',
       color: '#fff',
       padding: '20px 40px',
       fontFamily: '"Share Tech Mono", monospace',
@@ -8085,6 +8091,7 @@ export default function HubScreen({
               sound.playSfx('coin');
             }}
             onSessionEnd={finishNexusSession}
+            hudTheme={activeHudTheme}
             sessionPaused={activeGameMode === 'nexus' && pauseMenuOpen}
             sessionExitRequest={sessionExitRequests.nexus}
           />
@@ -8097,6 +8104,7 @@ export default function HubScreen({
             unlockedHeroes={unlockedHeroes}
             onSessionStart={startExtinctionSession}
             onSessionEnd={finishExtinctionSession}
+            hudTheme={activeHudTheme}
             sessionPaused={activeGameMode === 'extinction' && pauseMenuOpen}
             sessionExitRequest={sessionExitRequests.extinction}
           />
@@ -9723,7 +9731,13 @@ export default function HubScreen({
                   <div className="squad-grade">{String(playerProfile?.name || 'A').slice(0, 2).toUpperCase()}</div>
                   <div>
                     <strong>{playerProfile?.name || 'Ancre'}</strong>
-                    <small>
+                    <small
+                      className={activeProfileTitle ? 'anchor-profile-title-badge' : undefined}
+                      style={activeProfileTitle ? {
+                        '--profile-title-color': activeProfileTitle.color || '#39c5bb',
+                        backgroundImage: `url(${activeProfileTitle.visual?.image || OPENAI_COSMETIC_VISUALS.profileTitle.image})`
+                      } : undefined}
+                    >
                       {activeProfileTitle
                         ? getLocalizedText(activeProfileTitle.name, lang)
                         : (publicProfile?.title || 'Prime Anchor')}

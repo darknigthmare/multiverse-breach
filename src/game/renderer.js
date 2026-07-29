@@ -57,6 +57,73 @@ export const preloadSpriteSheetSrcs = (srcs = []) => {
   srcs.forEach(src => getCachedSpriteSheet(src));
 };
 
+export const drawCosmeticAtlasFrame = (
+  ctx,
+  atlas,
+  frameIndex,
+  x,
+  y,
+  width,
+  height,
+  {
+    alpha = 1,
+    facing = 1,
+    glowColor = '#39c5bb',
+    glowBlur = 18
+  } = {}
+) => {
+  const src = atlas?.sheet || atlas?.image;
+  const entry = getCachedSpriteSheet(src);
+  if (!entry || entry.status === 'error') return false;
+  if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
+    queueSpriteSheetRedraw(entry, ctx, () => {
+      drawCosmeticAtlasFrame(
+        ctx,
+        atlas,
+        frameIndex,
+        x,
+        y,
+        width,
+        height,
+        { alpha, facing, glowColor, glowBlur }
+      );
+    });
+    return false;
+  }
+
+  const columns = Math.max(1, Math.floor(Number(atlas.columns) || 1));
+  const rows = Math.max(1, Math.floor(Number(atlas.rows) || 1));
+  const frames = Math.max(1, Math.min(columns, Math.floor(Number(atlas.frames) || columns)));
+  const column = Math.max(0, Math.min(frames - 1, Math.floor(Number(frameIndex) || 0)));
+  const row = Math.max(0, Math.min(rows - 1, Math.floor(Number(atlas.row) || 0)));
+  const sourceWidth = entry.image.naturalWidth / columns;
+  const sourceHeight = entry.image.naturalHeight / rows;
+  const scale = Math.min(width / sourceWidth, height / sourceHeight);
+  const drawWidth = sourceWidth * scale;
+  const drawHeight = sourceHeight * scale;
+
+  ctx.save();
+  ctx.globalAlpha *= Math.max(0, Math.min(1, Number(alpha) || 0));
+  ctx.imageSmoothingEnabled = false;
+  ctx.shadowColor = glowColor;
+  ctx.shadowBlur = Math.max(0, Number(glowBlur) || 0);
+  ctx.translate(Math.round(x), Math.round(y));
+  ctx.scale(facing < 0 ? -1 : 1, 1);
+  ctx.drawImage(
+    entry.image,
+    column * sourceWidth,
+    row * sourceHeight,
+    sourceWidth,
+    sourceHeight,
+    -drawWidth / 2,
+    -drawHeight / 2,
+    drawWidth,
+    drawHeight
+  );
+  ctx.restore();
+  return true;
+};
+
 export const drawItemIcon = (ctx, x, y, item, animTime, targetSize = 36) => {
   const entry = getCachedSpriteSheet(getItemSpriteSrc(item));
   if (!entry || entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {

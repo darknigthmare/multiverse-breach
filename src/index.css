@@ -4085,6 +4085,76 @@ body {
   line-height: 1.35;
 }
 
+.squad-grade-row .anchor-profile-title-badge {
+  min-width: 184px;
+  min-height: 38px;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  margin-top: 4px;
+  padding: 5px 24px;
+  overflow: hidden;
+  color: #efffff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: drop-shadow(0 0 8px var(--profile-title-color));
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 0 8px var(--profile-title-color), 0 1px 2px #000;
+}
+
+.game-hud-themed-interface {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.battle-screen.game-hud-themed-interface {
+  padding: clamp(104px, 9vw, 138px) clamp(82px, 9vw, 132px) clamp(82px, 8vw, 122px) !important;
+}
+
+.fighter-mode-shell.game-hud-themed-interface,
+.race-mode-shell.game-hud-themed-interface,
+.nexus-play-panel.game-hud-themed-interface {
+  padding: clamp(82px, 9vw, 132px) !important;
+}
+
+.game-hud-theme-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: block;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.game-hud-theme-backdrop {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.12;
+  filter: saturate(1.2) contrast(1.05);
+}
+
+.game-hud-theme-frame {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  image-rendering: pixelated;
+  opacity: 0.72;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 0 12px var(--game-hud-accent)) saturate(1.08);
+}
+
 .squad-meter {
   height: 8px;
   margin: 10px 0 8px;
@@ -8150,6 +8220,45 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
   animation: booster-portal-effect-pulse var(--portal-effect-duration, 1200ms) ease-in-out infinite alternate;
 }
 
+.portal-openai-effect-atlas {
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  z-index: 0;
+  width: min(46vw, 520px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  background-image: var(--portal-effect-sheet);
+  background-position: 0 var(--portal-effect-row);
+  background-repeat: no-repeat;
+  background-size: 400% 400%;
+  image-rendering: pixelated;
+  mix-blend-mode: screen;
+  opacity: clamp(0.58, var(--portal-effect-intensity, 0.9), 0.94);
+  filter: drop-shadow(0 0 26px var(--portal-effect-color)) saturate(1.18);
+  transform: translate(-50%, -50%);
+  animation: portal-openai-atlas var(--portal-effect-duration, 1200ms) steps(1, end) infinite;
+}
+
+@keyframes portal-openai-atlas {
+  0%,
+  23% {
+    background-position: 0 var(--portal-effect-row);
+  }
+  25%,
+  48% {
+    background-position: 33.333% var(--portal-effect-row);
+  }
+  50%,
+  73% {
+    background-position: 66.667% var(--portal-effect-row);
+  }
+  75%,
+  100% {
+    background-position: 100% var(--portal-effect-row);
+  }
+}
+
 @keyframes booster-portal-effect-pulse {
   from {
     filter: saturate(0.82) brightness(0.84);
@@ -9039,7 +9148,9 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
 
 .booster-reward-sprite,
 .booster-reward-landscape,
-.booster-reward-glyph {
+.booster-reward-glyph,
+.booster-reward-cosmetic-atlas,
+.booster-reward-profile-title {
   width: 100%;
   height: 76px;
   display: grid;
@@ -9057,6 +9168,30 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
 
 .booster-reward-landscape {
   object-fit: cover;
+}
+
+.booster-reward-cosmetic-atlas {
+  background-color: rgba(0, 0, 0, 0.46);
+  filter: drop-shadow(0 0 10px var(--cosmetic-preview-color));
+}
+
+.booster-reward-profile-title {
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: drop-shadow(0 0 10px var(--profile-title-color));
+  overflow: hidden;
+}
+
+.booster-reward-profile-title span {
+  max-width: 86%;
+  padding: 3px 8px;
+  color: #f4ffff;
+  background: rgba(0, 0, 0, 0.44);
+  font-size: 7px;
+  line-height: 1.15;
+  text-shadow: 0 0 8px var(--profile-title-color);
 }
 
 .booster-reward-glyph {
@@ -9463,5 +9598,28 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
   .booster-opening-status {
     right: 8px;
     bottom: 7px;
+  }
+}
+
+@media (max-width: 760px) {
+  .battle-screen.game-hud-themed-interface,
+  .fighter-mode-shell.game-hud-themed-interface,
+  .race-mode-shell.game-hud-themed-interface,
+  .nexus-play-panel.game-hud-themed-interface {
+    padding: clamp(132px, 18dvh, 170px) 36px clamp(96px, 14dvh, 128px) !important;
+  }
+
+  .game-hud-theme-frame {
+    opacity: 0.6;
+  }
+
+  .portal-openai-effect-atlas {
+    top: 31%;
+    width: min(78vw, 390px);
+  }
+
+  .booster-reward-cosmetic-atlas,
+  .booster-reward-profile-title {
+    height: 66px;
   }
 }

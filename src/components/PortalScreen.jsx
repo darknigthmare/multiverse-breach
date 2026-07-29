@@ -14,6 +14,10 @@ import { capDuplicateRefunds, getBoosterPrice } from '../game/portalBoosterEcono
 import { getOcBoosterContentUpdate } from '../game/ocBoosterContentUpdates';
 import { getUniverseUnlockables, getUnlockableById } from '../game/universeUnlockables';
 import {
+  OPENAI_COSMETIC_VISUALS,
+  getCosmeticAtlasPreviewStyle
+} from '../game/cosmeticVisualAssets';
+import {
   BOOSTER_ROTATION_WINDOW_MS,
   DEFAULT_OC_BOOSTER_ID,
   ORIGINAL_WORLD_BOOSTERS,
@@ -287,16 +291,21 @@ const getRewardDetail = (reward, lang) => {
     return `${lang === 'fr' ? 'Une fois par combat' : 'Once per battle'} / DMG ${effect.damage || 0}`;
   }
   if (['koEffect', 'portalEffect'].includes(reward.kind)) {
-    return lang === 'fr' ? 'Effet cosmetique equipable' : 'Equippable cosmetic effect';
+    return lang === 'fr' ? 'Effet OpenAI anime equipable' : 'Equippable animated OpenAI effect';
   }
   if (['introPose', 'victoryPose'].includes(reward.kind)) {
-    return lang === 'fr' ? 'Animation de combat equipable' : 'Equippable battle animation';
+    return lang === 'fr' ? 'Sprite OpenAI anime equipable' : 'Equippable animated OpenAI sprite';
   }
   if (reward.kind === 'profileBanner') {
-    return lang === 'fr' ? 'Habillage procedural du Dossier d Ancre' : 'Procedural Anchor-record styling';
+    return lang === 'fr' ? 'Cadre OpenAI du Dossier d Ancre' : 'OpenAI Anchor-record frame';
   }
   if (reward.kind === 'profileTitle') {
-    return lang === 'fr' ? 'Titre public equipable' : 'Equippable public title';
+    return lang === 'fr' ? 'Plaque OpenAI publique equipable' : 'Equippable public OpenAI plate';
+  }
+  if (reward.kind === 'hud') {
+    return lang === 'fr'
+      ? 'Cadre HUD OpenAI compose avec la Trame'
+      : 'OpenAI HUD frame composed with the Thread';
   }
   return lang === 'fr' ? 'Fond du controle Nexus' : 'Nexus control backdrop';
 };
@@ -451,7 +460,11 @@ const makeBoosterCandidates = ({
       universe,
       color: profile.color,
       rarity: PORTAL_RARITIES.epic,
-      data: { image, mode: profile.mode }
+      data: {
+        image,
+        frame: OPENAI_COSMETIC_VISUALS.hudTheme.image,
+        mode: profile.mode
+      }
     });
   });
 
@@ -510,7 +523,7 @@ const makeBoosterCandidates = ({
     ));
 };
 
-function RewardArtwork({ reward }) {
+function RewardArtwork({ reward, lang }) {
   if (reward.kind === 'hero' || reward.kind === 'skin') {
     const hero = reward.data.hero;
     if (hero.originalContent && hero.portrait) {
@@ -540,11 +553,68 @@ function RewardArtwork({ reward }) {
   }
 
   if (reward.kind === 'archive' || reward.kind === 'hud') {
+    const hudFrame = reward.kind === 'hud'
+      ? (reward.data.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image)
+      : null;
     return (
       <span
         className="booster-reward-landscape"
         aria-hidden="true"
-        style={{ backgroundImage: `url(${reward.data.image})` }}
+        style={{
+          backgroundImage: hudFrame
+            ? `url(${hudFrame}), linear-gradient(180deg, transparent, rgba(0,0,0,.72)), url(${reward.data.image})`
+            : `linear-gradient(180deg, transparent, rgba(0,0,0,.72)), url(${reward.data.image})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: hudFrame ? '100% 100%, cover, cover' : 'cover, cover'
+        }}
+      />
+    );
+  }
+
+  const unlockable = reward.data?.unlockable;
+  if (reward.kind === 'profileBanner') {
+    const backdrop = getOpenAiBackdropSrc(reward.universe, 'Combat')
+      || '/images/missions/fusion-rifts.webp';
+    return (
+      <span
+        className="booster-reward-landscape booster-reward-profile-banner"
+        aria-hidden="true"
+        style={{
+          backgroundImage: `url(${unlockable?.visual?.image || OPENAI_COSMETIC_VISUALS.profileBanner.image}), linear-gradient(135deg, ${reward.color}22, rgba(0,0,0,.66)), url(${backdrop})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '100% 100%, cover, cover'
+        }}
+      />
+    );
+  }
+
+  if (reward.kind === 'profileTitle') {
+    return (
+      <span
+        className="booster-reward-profile-title"
+        aria-hidden="true"
+        style={{
+          '--profile-title-color': reward.color,
+          backgroundImage: `url(${unlockable?.visual?.image || OPENAI_COSMETIC_VISUALS.profileTitle.image})`
+        }}
+      >
+        <span>{getLocalizedText(reward.name, lang)}</span>
+      </span>
+    );
+  }
+
+  if (['koEffect', 'portalEffect', 'introPose', 'victoryPose'].includes(reward.kind)) {
+    const atlas = unlockable?.animation || unlockable?.visual;
+    return (
+      <span
+        className="booster-reward-cosmetic-atlas"
+        aria-hidden="true"
+        style={{
+          '--cosmetic-preview-color': reward.color,
+          ...getCosmeticAtlasPreviewStyle(atlas)
+        }}
       />
     );
   }
@@ -584,7 +654,7 @@ function BoosterRewardCard({ reward, lang, revealed, onReveal }) {
         </span>
         <span className="booster-reward-card-front" aria-hidden={!revealed}>
           <span className="booster-reward-type">{typeLabel}</span>
-          <RewardArtwork reward={reward} />
+          <RewardArtwork reward={reward} lang={lang} />
           <strong>{rewardName}</strong>
           <span className="booster-reward-universe">{reward.universe}</span>
           <small>{getRewardDetail(reward, lang)}</small>
@@ -977,6 +1047,7 @@ export default function PortalScreen({
         name: reward.name,
         universe: reward.universe,
         image: reward.data.image,
+        frame: reward.data.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image,
         mode: reward.data.mode,
         color: reward.color
       }));
@@ -1208,6 +1279,18 @@ export default function PortalScreen({
       getUnlockableById(kind, portalCollection.customLoadout?.[kind])
     ])
   );
+  const equippedPortalAtlas = equippedCustomCosmetics.portalEffect?.visual;
+  const equippedPortalRows = Math.max(1, Number(equippedPortalAtlas?.rows) || 1);
+  const equippedPortalRow = Math.max(
+    0,
+    Math.min(equippedPortalRows - 1, Number(equippedPortalAtlas?.row) || 0)
+  );
+  const equippedProfileBackdrop = equippedCustomCosmetics.profileBanner
+    ? (
+        getOpenAiBackdropSrc(equippedCustomCosmetics.profileBanner.universe, 'Combat')
+        || '/images/missions/fusion-rifts.webp'
+      )
+    : null;
   const equipCustomCosmetic = (kind, id) => {
     const collectionKey = PORTAL_COLLECTION_ID_KEYS[kind];
     const ownedIds = portalCollection[collectionKey] || [];
@@ -1244,6 +1327,16 @@ export default function PortalScreen({
           : undefined
       }}
     >
+      {equippedPortalAtlas?.sheet && (
+        <span
+          className="portal-openai-effect-atlas"
+          aria-hidden="true"
+          style={{
+            '--portal-effect-sheet': `url(${equippedPortalAtlas.sheet})`,
+            '--portal-effect-row': `${equippedPortalRows > 1 ? (equippedPortalRow / (equippedPortalRows - 1)) * 100 : 0}%`
+          }}
+        />
+      )}
       <div className="portal-command-bar">
         <button
           type="button"
@@ -1670,7 +1763,10 @@ export default function PortalScreen({
                   onClick={() => activateHudTheme(theme.id)}
                   style={{
                     '--theme-color': theme.color,
-                    backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.88)), url(${theme.image})`
+                    backgroundImage: `url(${theme.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image}), linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.88)), url(${theme.image})`,
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '100% 100%, cover, cover'
                   }}
                   aria-pressed={portalCollection.activeHudTheme === theme.id}
                 >
@@ -1690,7 +1786,7 @@ export default function PortalScreen({
                 border: `1px solid ${equippedCustomCosmetics.profileBanner?.color || 'rgba(57,197,187,0.3)'}`,
                 borderRadius: 6,
                 background: equippedCustomCosmetics.profileBanner
-                  ? `radial-gradient(circle at 18% 0%, ${equippedCustomCosmetics.profileBanner.color}44, transparent 42%), linear-gradient(135deg, rgba(7,9,18,.96), rgba(0,0,0,.82))`
+                  ? `url(${equippedCustomCosmetics.profileBanner.visual?.image || OPENAI_COSMETIC_VISUALS.profileBanner.image}) center / 100% 100% no-repeat, radial-gradient(circle at 18% 0%, ${equippedCustomCosmetics.profileBanner.color}44, transparent 42%), linear-gradient(135deg, rgba(7,9,18,.82), rgba(0,0,0,.72)), url(${equippedProfileBackdrop}) center / cover no-repeat`
                   : 'rgba(0,0,0,.32)'
               }}
             >

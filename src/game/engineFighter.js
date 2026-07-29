@@ -1,4 +1,4 @@
-import { drawPixelSprite } from './renderer';
+import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 
@@ -1115,6 +1115,27 @@ export class EngineFighter {
     const color = event.effect.color || '#ffea00';
     const pattern = event.effect.visual?.pattern || event.effect.style || 'rift';
     const intensity = clamp(finiteOr(event.effect.visual?.intensity, 0.8), 0.2, 1.4);
+    const atlas = event.effect.visual;
+    const atlasFrame = Math.min(
+      Math.max(1, Math.floor(finiteOr(atlas?.frames, 4))) - 1,
+      Math.floor(progress * Math.max(1, Math.floor(finiteOr(atlas?.frames, 4))))
+    );
+    const atlasDrawn = drawCosmeticAtlasFrame(
+      ctx,
+      atlas,
+      atlasFrame,
+      event.x,
+      event.y,
+      330,
+      330,
+      {
+        alpha: clamp((1 - progress * 0.72) * intensity, 0, 1),
+        glowColor: color,
+        glowBlur: 30
+      }
+    );
+    if (atlasDrawn) return;
+
     ctx.save();
     ctx.globalAlpha = clamp((1 - progress) * intensity, 0, 1);
     ctx.strokeStyle = color;
@@ -1174,7 +1195,26 @@ export class EngineFighter {
     poses.forEach(({ side, pose }) => {
       const x = side === 'player' ? this.width * 0.25 : this.width * 0.75;
       const color = pose.color || (side === 'player' ? '#39c5bb' : '#ff5a36');
-      this.drawPoseGlyph(ctx, x, this.height * 0.66, 48, pose.style || pose.animation?.key, color, progress);
+      const frames = Math.max(1, Math.floor(finiteOr(pose.animation?.frames, 4)));
+      const frame = Math.min(frames - 1, Math.floor(progress * frames));
+      const poseDrawn = drawCosmeticAtlasFrame(
+        ctx,
+        pose.animation,
+        frame,
+        x,
+        this.height * 0.64,
+        178,
+        178,
+        {
+          alpha: fade,
+          facing: side === 'player' ? 1 : -1,
+          glowColor: color,
+          glowBlur: 24
+        }
+      );
+      if (!poseDrawn) {
+        this.drawPoseGlyph(ctx, x, this.height * 0.66, 48, pose.style || pose.animation?.key, color, progress);
+      }
       ctx.fillStyle = '#ffffff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -1242,7 +1282,26 @@ export class EngineFighter {
     veil.addColorStop(1, rgba(color, 0.24));
     ctx.fillStyle = veil;
     ctx.fillRect(0, this.height * 0.48, this.width, this.height * 0.52);
-    this.drawPoseGlyph(ctx, x, this.height * 0.7, 72, event.pose.style || event.pose.animation?.key, color, progress);
+    const frames = Math.max(1, Math.floor(finiteOr(event.pose.animation?.frames, 4)));
+    const frame = Math.min(frames - 1, Math.floor(progress * frames));
+    const poseDrawn = drawCosmeticAtlasFrame(
+      ctx,
+      event.pose.animation,
+      frame,
+      x,
+      this.height * 0.69,
+      248,
+      248,
+      {
+        alpha: clamp(Math.min(progress * 4, (1 - progress) * 5), 0.25, 1),
+        facing: event.side === 'player' ? 1 : -1,
+        glowColor: color,
+        glowBlur: 30
+      }
+    );
+    if (!poseDrawn) {
+      this.drawPoseGlyph(ctx, x, this.height * 0.7, 72, event.pose.style || event.pose.animation?.key, color, progress);
+    }
     ctx.textAlign = event.side === 'player' ? 'left' : 'right';
     ctx.textBaseline = 'middle';
     ctx.fillStyle = '#ffffff';

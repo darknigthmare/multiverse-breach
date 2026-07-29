@@ -21,6 +21,7 @@ import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from 
 import { getSmashPickupPositions } from '../game/smashArenas';
 import { getTacticsPickupPositions } from '../game/tacticsBattlefields';
 import { resolveStageEnemyData } from '../game/stageEnemyResolver';
+import GameHudThemeLayer from './GameHudThemeLayer';
 
 const getStableNumericSeed = (value) => {
   let numericValue = Number.NaN;
@@ -38,7 +39,7 @@ const getStableNumericSeed = (value) => {
   return (rawSeed >>> 0) || 1;
 };
 
-export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, onBattleEnd, onSessionComplete, sessionPaused = false, dedicatedSession = false }) {
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, hudTheme = null, onBattleEnd, onSessionComplete, sessionPaused = false, dedicatedSession = false }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const sessionPausedRef = useRef(sessionPaused);
@@ -1566,7 +1567,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       : (lang === 'fr' ? 'RPG: les reliques soutiennent le tempo ATB.' : 'RPG: relics support ATB tempo.');
 
   return (
-    <div className="battle-screen" style={{
+    <div className={`battle-screen ${hudTheme ? 'game-hud-themed-interface' : ''}`} style={{
       minHeight: '100vh',
       background: '#04020a',
       display: 'flex',
@@ -1578,6 +1579,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       boxSizing: 'border-box',
       width: '100%'
     }}>
+      <GameHudThemeLayer theme={hudTheme} mode={stage.mode} />
       {/* Top Bar */}
       <div style={{
         width: '100%',

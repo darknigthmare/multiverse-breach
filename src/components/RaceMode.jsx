@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
 import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
+import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
+import GameHudThemeLayer from './GameHudThemeLayer';
 
 const CONTROL_KEYS = new Set([
   'ArrowUp',
@@ -117,6 +119,7 @@ export default function RaceMode({
   });
 
   const trackList = useMemo(() => Object.values(RACE_TRACKS).sort((a, b) => a.difficulty - b.difficulty || a.id.localeCompare(b.id)), []);
+  const activeHudTheme = resolveActiveHudTheme(portalCollection);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
   const ownedKarts = useMemo(() => (
     (portalCollection.karts || [])
@@ -442,7 +445,8 @@ export default function RaceMode({
 
   if (!raceStarted) {
     return (
-      <div className="race-mode-shell">
+      <div className={`race-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
+        <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
         <div className="race-mode-header">
           <div>
             <div className="portal-focus-kicker">{lang === 'fr' ? 'GRILLE DE DEPART / PREPARATION' : 'STARTING GRID / PREPARATION'}</div>
@@ -532,7 +536,8 @@ export default function RaceMode({
   }
 
   return (
-    <div className="race-mode-shell">
+    <div className={`race-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`}>
+      <GameHudThemeLayer theme={activeHudTheme} mode="kart" />
       <div className="race-mode-header">
         <div>
           <div className="portal-focus-kicker">{lang === 'fr' ? 'PROTOCOLE COURSE / TEST NEXUS' : 'RACE PROTOCOL / NEXUS TEST'}</div>

@@ -256,6 +256,11 @@ test('custom cosmetic rewards are complete, bounded and contain no mission or mo
     assert.ok(Object.isFrozen(effect.visual));
     assert.ok(effect.visual.durationMs >= 500 && effect.visual.durationMs <= 2000);
     assert.ok(effect.visual.intensity > 0 && effect.visual.intensity <= 1);
+    assert.match(effect.visual.sheet, /^\/visuals\/cosmetics\/openai\/.+-atlas-v1\.png$/);
+    assert.equal(effect.visual.columns, 4);
+    assert.equal(effect.visual.rows, 4);
+    assert.equal(effect.visual.frames, 4);
+    assert.ok(effect.visual.row >= 0 && effect.visual.row <= 3);
   }
 
   for (const pose of [
@@ -264,11 +269,28 @@ test('custom cosmetic rewards are complete, bounded and contain no mission or mo
   ]) {
     assert.ok(Object.isFrozen(pose.animation));
     assert.ok(pose.animation.durationMs >= 1000 && pose.animation.durationMs <= 2500);
+    assert.match(pose.animation.sheet, /^\/visuals\/cosmetics\/openai\/.+-atlas-v1\.png$/);
+    assert.equal(pose.animation.columns, 4);
+    assert.equal(pose.animation.rows, 4);
+    assert.equal(pose.animation.frames, 4);
+    assert.ok(pose.animation.row >= 0 && pose.animation.row <= 3);
   }
 
   for (const banner of unlockableModule.PROFILE_BANNER_CATALOG) {
     assert.ok(Object.isFrozen(banner.visual));
     assert.match(banner.visual.accent, /^#[0-9a-f]{6}$/i);
+    assert.equal(
+      banner.visual.image,
+      '/visuals/cosmetics/openai/profile-banner-frame-v1.png'
+    );
+  }
+
+  for (const title of unlockableModule.PROFILE_TITLE_CATALOG) {
+    assert.ok(Object.isFrozen(title.visual));
+    assert.equal(
+      title.visual.image,
+      '/visuals/cosmetics/openai/profile-title-badge-v1.png'
+    );
   }
 
   const randomKinds = new Set(

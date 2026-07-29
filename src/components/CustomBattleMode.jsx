@@ -3,6 +3,7 @@ import GameCanvas from './GameCanvas';
 import FighterMode from './FighterMode';
 import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
+import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import {
   buildCustomEnemyCatalog,
   buildCustomEnemyData,
@@ -382,6 +383,7 @@ export default function CustomBattleMode({
         hiddenUniverses={hiddenUniverses}
         disabledAssets={disabledAssets}
         customBattle={runtimeStage.customBattle}
+        hudTheme={resolveActiveHudTheme(portalCollection)}
         onSessionComplete={(result, summary) => {
           endDedicatedSession({ reason: 'completed', result, summary });
         }}

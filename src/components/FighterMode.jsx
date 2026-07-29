@@ -4,7 +4,9 @@ import { ParticleSystem, drawUniverseBackground, preloadSpriteSheetSrcs } from '
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
 import { getUnlockableById } from '../game/universeUnlockables';
+import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import sound from '../game/soundEngine';
+import GameHudThemeLayer from './GameHudThemeLayer';
 
 const CONTROL_KEYS = new Set([
   'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown',
@@ -279,6 +281,7 @@ export default function FighterMode({
   const [summary, setSummary] = useState(null);
   const [snapshot, setSnapshot] = useState(emptySnapshot);
   const isCustomBattle = Boolean(customConfig);
+  const activeHudTheme = resolveActiveHudTheme(portalCollection);
   const opponentControl = customConfig?.opponentControl === 'p2' ? 'p2' : 'cpu';
   const fighterCosmetics = useMemo(
     () => resolveFighterCosmetics(customConfig?.cosmetics),
@@ -477,9 +480,15 @@ export default function FighterMode({
     inputRef.current = { player: {}, cpu: {} };
     setSummary(null);
     setSnapshot(emptySnapshot);
+    const cosmeticSpriteSheets = ['player', 'cpu'].flatMap(side => (
+      Object.values(fighterCosmetics[side] || {})
+        .map(cosmetic => cosmetic?.animation?.sheet || cosmetic?.visual?.sheet)
+        .filter(Boolean)
+    ));
     preloadSpriteSheetSrcs([
       ...playerHeroes.map(hero => getHeroSpriteSheetSrc(hero, 'melee')),
-      ...opponentHeroes.map(hero => getHeroSpriteSheetSrc(hero, 'melee'))
+      ...opponentHeroes.map(hero => getHeroSpriteSheetSrc(hero, 'melee')),
+      ...cosmeticSpriteSheets
     ]);
 
     const particles = new ParticleSystem();
@@ -778,7 +787,8 @@ export default function FighterMode({
 
   if (!matchStarted) {
     return (
-      <section className="fighter-mode-shell" aria-labelledby="fighter-mode-title">
+      <section className={`fighter-mode-shell ${activeHudTheme ? 'game-hud-themed-interface' : ''}`} aria-labelledby="fighter-mode-title">
+        <GameHudThemeLayer theme={activeHudTheme} mode="combat" />
         <header className="fighter-mode-header">
           <div>
             <span>PROTOCOLE DUEL A.R.C.A.</span>
@@ -910,7 +920,8 @@ export default function FighterMode({
   }
 
   return (
-    <section className="fighter-mode-shell fighter-mode-active" aria-labelledby="fighter-mode-title">
+    <section className={`fighter-mode-shell fighter-mode-active ${activeHudTheme ? 'game-hud-themed-interface' : ''}`} aria-labelledby="fighter-mode-title">
+      <GameHudThemeLayer theme={activeHudTheme} mode="combat" />
       <header className="fighter-battle-header">
         <div>
           <span>ARENE D IMPACT A.R.C.A. / {arenaUniverse}</span>

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "npm run test:custom && npm run test:boosters && npm run test:campaign && npm run test:oc-dlc && npm run test:original-universes && npm run audit:oc-dlc && npm run audit:original-universes && npm run check:progression",
+    "prebuild": "npm run test:custom && npm run test:boosters && npm run cosmetics:audit && npm run test:campaign && npm run test:oc-dlc && npm run test:original-universes && npm run audit:oc-dlc && npm run audit:original-universes && npm run check:progression",
     "build": "vite build",
     "lint": "oxlint",
     "check:progression": "node scripts/progressionAudit.mjs",
@@ -17,6 +17,7 @@
     "boosters:audit": "node scripts/portalBoosterAudit.mjs",
     "items:audit": "node scripts/itemAssetAudit.mjs",
     "gear-shop:audit": "node scripts/gearShopAudit.mjs --strict",
+    "cosmetics:audit": "node scripts/cosmeticVisualAudit.mjs",
     "music:audit": "node scripts/stageMusicAudit.mjs",
     "audit:oc-dlc": "node scripts/ocDlcAssetsAudit.mjs",
     "audit:original-universes": "node scripts/originalUniverseImageV2Audit.mjs",
