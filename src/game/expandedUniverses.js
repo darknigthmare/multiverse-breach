@@ -16,6 +16,7 @@ import {
   getStageLoreProfile
 } from './stageLoreProfiles.js';
 import { OC_DLC_UNIVERSES } from './ocDlcPacks.js';
+import { getGearShopVisualMetadata } from './gearShopVisualContracts.js';
 import { ORIGINAL_UNIVERSE_WAVE } from './originalUniverseWave.js';
 
 const EXPANDED_STAGE_START_ID = 39;
@@ -4443,17 +4444,22 @@ export const EXPANDED_EVENT_ITEMS = Object.fromEntries(
   EXPANDED_UNIVERSES.flatMap(universe => {
     if (!universe.event) return [];
     const [id, enName, frName, enDesc, frDesc, metadata = {}] = universe.event;
+    const visualMetadata = getGearShopVisualMetadata({
+      id,
+      universe: universe.universe,
+      metadata
+    });
     return [[universe.universe, {
-      ...metadata,
+      ...visualMetadata,
       id,
       name: { en: enName, fr: frName },
       desc: { en: enDesc, fr: frDesc },
       effect: id.replace('evt_', ''),
-      icon: metadata.icon,
-      iconPrompt: metadata.iconPrompt,
-      referenceUrl: metadata.referenceUrl,
-      visualAnchor: metadata.visualAnchor,
-      audit: metadata.audit
+      icon: visualMetadata.icon,
+      iconPrompt: visualMetadata.iconPrompt,
+      referenceUrl: visualMetadata.referenceUrl,
+      visualAnchor: visualMetadata.visualAnchor,
+      audit: visualMetadata.audit
     }]];
   })
 );
@@ -4476,19 +4482,25 @@ export const EXPANDED_MEDIA_FILTERS = [
 export const EXPANDED_EVENT_SHOP_ITEMS = EXPANDED_UNIVERSES.flatMap(universe => {
   if (!universe.event) return [];
   const [id, enName, frName, enDesc, frDesc, metadata = {}] = universe.event;
+  const visualMetadata = getGearShopVisualMetadata({
+    id,
+    universe: universe.universe,
+    metadata
+  });
   return [{
-    ...metadata,
+    ...visualMetadata,
     id,
     name: { en: enName, fr: frName },
     desc: { en: enDesc, fr: frDesc },
     isCombatEvent: true,
     universe: universe.universe,
     tokenCost: 4 + Math.min(4, difficultyRank(universe)),
-    icon: metadata.icon,
-    iconPrompt: metadata.iconPrompt,
-    referenceUrl: metadata.referenceUrl,
-    visualAnchor: metadata.visualAnchor,
-    audit: metadata.audit
+    // Keep the OpenAI/lore contract intact when an event enters the Gear Shop.
+    icon: visualMetadata.icon,
+    iconPrompt: visualMetadata.iconPrompt,
+    referenceUrl: visualMetadata.referenceUrl,
+    visualAnchor: visualMetadata.visualAnchor,
+    audit: visualMetadata.audit
   }];
 });
 

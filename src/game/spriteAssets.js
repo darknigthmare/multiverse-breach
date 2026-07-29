@@ -516,9 +516,17 @@ export const getEnemySpriteSheetSrc = (enemy) => {
   return `/sprites/generated/bosses/${slugifyAsset(universe)}/${slugifyAsset(enemy.name)}.png`;
 };
 
+const ITEM_SPRITE_ALIASES = Object.freeze({
+  evt_shaun_dont_stop_me: '/sprites/generated/items/shaun-of-the-dead/vinyl-record.png',
+  evt_spawn_legion: '/sprites/generated/items/spawn/necroplasm-chain.png',
+  evt_evil_dead_army: '/sprites/generated/items/evil-dead/boomstick.png',
+  evt_panic_event_horde: '/sprites/generated/items/left-4-dead/rescue-radio.png'
+});
+
 export const getItemSpriteSrc = (item) => {
   if (!item?.id) return '';
   if (item.icon) return item.icon;
+  if (ITEM_SPRITE_ALIASES[item.id]) return ITEM_SPRITE_ALIASES[item.id];
   const universe = item.universe || item.sourceUniverse || 'unknown';
   const itemId = item.sourceItemId || item.id;
   return `/sprites/generated/items/${slugifyAsset(universe)}/${slugifyAsset(itemId)}.png`;

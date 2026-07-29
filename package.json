@@ -16,6 +16,7 @@
     "test:custom": "node --test scripts/customBattle.test.mjs",
     "boosters:audit": "node scripts/portalBoosterAudit.mjs",
     "items:audit": "node scripts/itemAssetAudit.mjs",
+    "gear-shop:audit": "node scripts/gearShopAudit.mjs --strict",
     "music:audit": "node scripts/stageMusicAudit.mjs",
     "audit:oc-dlc": "node scripts/ocDlcAssetsAudit.mjs",
     "audit:original-universes": "node scripts/originalUniverseImageV2Audit.mjs",

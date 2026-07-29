@@ -46,7 +46,7 @@ const rewriteImports = (source) => source
 const copyRuntimeModules = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'originalUniversesManifest.json', 'originalUniverseProduction.js', 'originalUniverseWave.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
+  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'originalUniversesManifest.json', 'originalUniverseProduction.js', 'originalUniverseWave.js', 'gearShopVisualContractsFirst40.js', 'gearShopVisualContractsRemaining47.js', 'gearShopVisualContracts.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
   await Promise.all(files.map(async (file) => {
     const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
     await fs.writeFile(path.join(tmpDir, file), rewriteImports(raw), 'utf8');
@@ -84,13 +84,15 @@ const main = async () => {
     { ENEMIES_DB, FINAL_GAME_BOSS },
     { BATTLE_ITEM_CATALOG },
     { LORE_WORLD_BOSS_POLICIES },
-    { STAGE_LORE_PROFILES, STAGE_ARC_LORE_PROFILES }
+    { STAGE_LORE_PROFILES, STAGE_ARC_LORE_PROFILES },
+    { getItemSpriteSrc }
   ] = await Promise.all([
     import(pathToFileURL(path.join(tmpDir, 'heroes.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'enemies.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'battleItems.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'loreWorldBossOverrides.js')).href),
-    import(pathToFileURL(path.join(tmpDir, 'stageLoreProfiles.js')).href)
+    import(pathToFileURL(path.join(tmpDir, 'stageLoreProfiles.js')).href),
+    import(pathToFileURL(path.join(tmpDir, 'spriteAssets.js')).href)
   ]);
 
   const heroEntries = HEROES_DB.map(hero => {
@@ -217,7 +219,7 @@ const main = async () => {
     const universe = item.universe || 'unknown';
     const universeSlug = slugify(universe);
     const file = `items/${universeSlug}/${slugify(item.id)}.png`;
-    const output = item.icon || `/sprites/generated/${file}`;
+    const output = getItemSpriteSrc(item) || `/sprites/generated/${file}`;
     if (seenItemOutputs.has(output)) return [];
     seenItemOutputs.add(output);
     return [{
