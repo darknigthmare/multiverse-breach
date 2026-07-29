@@ -1,4 +1,15 @@
 const OPENAI_COSMETIC_ROOT = '/visuals/cosmetics/openai';
+const OPENAI_UNIVERSE_COSMETIC_ROOT = `${OPENAI_COSMETIC_ROOT}/universes`;
+
+export const GAME_HUD_THEME_MODES = Object.freeze([
+  'RPG',
+  'Tactics',
+  'Smash',
+  'combat',
+  'kart',
+  'fps',
+  'nexus'
+]);
 
 const makeImageAsset = (file, width = 1536, height = 1024) => Object.freeze({
   image: `${OPENAI_COSMETIC_ROOT}/${file}`,
@@ -16,6 +27,69 @@ const makeAtlasAsset = (file, rowByStyle) => Object.freeze({
   frames: 4,
   rowByStyle: Object.freeze(rowByStyle),
   source: 'openai'
+});
+
+const makeUniverseImageAsset = (
+  universeSlug,
+  file,
+  width,
+  height
+) => Object.freeze({
+  image: `${OPENAI_UNIVERSE_COSMETIC_ROOT}/${universeSlug}/${file}`,
+  width,
+  height,
+  source: 'openai'
+});
+
+const makeUniverseAtlasAsset = (universeSlug, file) => Object.freeze({
+  sheet: `${OPENAI_UNIVERSE_COSMETIC_ROOT}/${universeSlug}/${file}`,
+  width: 1024,
+  height: 256,
+  columns: 4,
+  rows: 1,
+  frames: 4,
+  row: 0,
+  source: 'openai'
+});
+
+const makeUniverseCosmeticPack = (
+  universeSlug,
+  { hudHeight = 512 } = {}
+) => Object.freeze({
+  hudTheme: makeUniverseImageAsset(
+    universeSlug,
+    'hud-theme.webp',
+    1024,
+    hudHeight
+  ),
+  profileTitle: makeUniverseImageAsset(
+    universeSlug,
+    'profile-title.webp',
+    1024,
+    256
+  ),
+  profileBanner: makeUniverseImageAsset(
+    universeSlug,
+    'profile-banner.webp',
+    1024,
+    256
+  ),
+  portalEffect: makeUniverseAtlasAsset(
+    universeSlug,
+    'portal-effects-atlas.webp'
+  ),
+  koEffect: makeUniverseAtlasAsset(
+    universeSlug,
+    'ko-effects-atlas.webp'
+  ),
+  introPose: makeUniverseAtlasAsset(
+    universeSlug,
+    'intro-poses-atlas.webp'
+  ),
+  victoryPose: makeUniverseAtlasAsset(
+    universeSlug,
+    'victory-poses-atlas.webp'
+  )
 });
 
 export const OPENAI_COSMETIC_VISUALS = Object.freeze({
@@ -48,6 +122,22 @@ export const OPENAI_COSMETIC_VISUALS = Object.freeze({
   })
 });
 
+export const UNIVERSE_COSMETIC_VISUAL_PACKS = Object.freeze({
+  '28 Days Later': makeUniverseCosmeticPack('28-days-later'),
+  'A Nightmare on Elm Street': makeUniverseCosmeticPack(
+    'a-nightmare-on-elm-street'
+  ),
+  Ado: makeUniverseCosmeticPack('ado', { hudHeight: 256 }),
+  'Aegea: War of the Moirai': makeUniverseCosmeticPack(
+    'aegea-war-of-the-moirai',
+    { hudHeight: 256 }
+  )
+});
+
+export const getUniverseCosmeticVisuals = (universe) => (
+  UNIVERSE_COSMETIC_VISUAL_PACKS[universe] || null
+);
+
 export const resolveActiveHudTheme = (portalCollection = {}) => {
   const activeId = portalCollection?.activeHudTheme;
   if (!activeId) return null;
@@ -56,15 +146,21 @@ export const resolveActiveHudTheme = (portalCollection = {}) => {
     : [];
   const activeTheme = themes.find(theme => theme?.id === activeId);
   if (!activeTheme) return null;
+  const universeFrame = getUniverseCosmeticVisuals(activeTheme.universe)?.hudTheme;
   return {
     ...activeTheme,
-    frame: activeTheme.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image,
-    source: activeTheme.source || OPENAI_COSMETIC_VISUALS.hudTheme.source
+    frame: universeFrame?.image
+      || activeTheme.frame
+      || OPENAI_COSMETIC_VISUALS.hudTheme.image,
+    source: universeFrame?.source
+      || activeTheme.source
+      || OPENAI_COSMETIC_VISUALS.hudTheme.source
   };
 };
 
-export const getOpenAiCosmeticAtlas = (kind, style) => {
-  const asset = OPENAI_COSMETIC_VISUALS[kind];
+export const getOpenAiCosmeticAtlas = (kind, style, universe) => {
+  const asset = getUniverseCosmeticVisuals(universe)?.[kind]
+    || OPENAI_COSMETIC_VISUALS[kind];
   if (!asset?.sheet) return null;
   return {
     sheet: asset.sheet,
@@ -73,7 +169,7 @@ export const getOpenAiCosmeticAtlas = (kind, style) => {
     columns: asset.columns,
     rows: asset.rows,
     frames: asset.frames,
-    row: asset.rowByStyle?.[style] ?? 0,
+    row: asset.row ?? asset.rowByStyle?.[style] ?? 0,
     source: asset.source
   };
 };

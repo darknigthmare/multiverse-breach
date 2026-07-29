@@ -54,6 +54,8 @@ let battleItemModule;
 let musicModule;
 let appModule;
 let fighterEngineModule;
+let cosmeticVisualModule;
+let gameHudThemeModule;
 
 const localizedTextIsComplete = (value) => (
   value
@@ -84,7 +86,9 @@ before(async () => {
     battleItemModule,
     musicModule,
     appModule,
-    fighterEngineModule
+    fighterEngineModule,
+    cosmeticVisualModule,
+    gameHudThemeModule
   ] = await Promise.all([
     vite.ssrLoadModule('/src/game/universeUnlockables.js?determinism=first'),
     vite.ssrLoadModule('/src/game/universeUnlockables.js?determinism=second'),
@@ -92,7 +96,9 @@ before(async () => {
     vite.ssrLoadModule('/src/game/battleItems.js'),
     vite.ssrLoadModule('/src/game/stageMusicProfiles.js'),
     vite.ssrLoadModule('/src/App.jsx?unlockable-save-migration'),
-    vite.ssrLoadModule('/src/game/engineFighter.js?field-super-test')
+    vite.ssrLoadModule('/src/game/engineFighter.js?field-super-test'),
+    vite.ssrLoadModule('/src/game/cosmeticVisualAssets.js'),
+    vite.ssrLoadModule('/src/components/GameHudThemeLayer.jsx')
   ]);
 });
 
@@ -253,43 +259,55 @@ test('custom cosmetic rewards are complete, bounded and contain no mission or mo
     ...unlockableModule.KO_EFFECT_CATALOG,
     ...unlockableModule.PORTAL_EFFECT_CATALOG
   ]) {
+    const universePack = cosmeticVisualModule.getUniverseCosmeticVisuals(effect.universe);
     assert.ok(Object.isFrozen(effect.visual));
     assert.ok(effect.visual.durationMs >= 500 && effect.visual.durationMs <= 2000);
     assert.ok(effect.visual.intensity > 0 && effect.visual.intensity <= 1);
-    assert.match(effect.visual.sheet, /^\/visuals\/cosmetics\/openai\/.+-atlas-v1\.png$/);
+    assert.match(
+      effect.visual.sheet,
+      /^\/visuals\/cosmetics\/openai\/(?:.+-atlas-v1\.png|universes\/.+-atlas\.webp)$/
+    );
     assert.equal(effect.visual.columns, 4);
-    assert.equal(effect.visual.rows, 4);
     assert.equal(effect.visual.frames, 4);
-    assert.ok(effect.visual.row >= 0 && effect.visual.row <= 3);
+    assert.equal(effect.visual.rows, universePack ? 1 : 4);
+    assert.ok(effect.visual.row >= 0 && effect.visual.row < effect.visual.rows);
   }
 
   for (const pose of [
     ...unlockableModule.INTRO_POSE_CATALOG,
     ...unlockableModule.VICTORY_POSE_CATALOG
   ]) {
+    const universePack = cosmeticVisualModule.getUniverseCosmeticVisuals(pose.universe);
     assert.ok(Object.isFrozen(pose.animation));
     assert.ok(pose.animation.durationMs >= 1000 && pose.animation.durationMs <= 2500);
-    assert.match(pose.animation.sheet, /^\/visuals\/cosmetics\/openai\/.+-atlas-v1\.png$/);
+    assert.match(
+      pose.animation.sheet,
+      /^\/visuals\/cosmetics\/openai\/(?:.+-atlas-v1\.png|universes\/.+-atlas\.webp)$/
+    );
     assert.equal(pose.animation.columns, 4);
-    assert.equal(pose.animation.rows, 4);
     assert.equal(pose.animation.frames, 4);
-    assert.ok(pose.animation.row >= 0 && pose.animation.row <= 3);
+    assert.equal(pose.animation.rows, universePack ? 1 : 4);
+    assert.ok(pose.animation.row >= 0 && pose.animation.row < pose.animation.rows);
   }
 
   for (const banner of unlockableModule.PROFILE_BANNER_CATALOG) {
+    const universePack = cosmeticVisualModule.getUniverseCosmeticVisuals(banner.universe);
     assert.ok(Object.isFrozen(banner.visual));
     assert.match(banner.visual.accent, /^#[0-9a-f]{6}$/i);
     assert.equal(
       banner.visual.image,
-      '/visuals/cosmetics/openai/profile-banner-frame-v1.png'
+      universePack?.profileBanner?.image
+        || '/visuals/cosmetics/openai/profile-banner-frame-v1.png'
     );
   }
 
   for (const title of unlockableModule.PROFILE_TITLE_CATALOG) {
+    const universePack = cosmeticVisualModule.getUniverseCosmeticVisuals(title.universe);
     assert.ok(Object.isFrozen(title.visual));
     assert.equal(
       title.visual.image,
-      '/visuals/cosmetics/openai/profile-title-badge-v1.png'
+      universePack?.profileTitle?.image
+        || '/visuals/cosmetics/openai/profile-title-badge-v1.png'
     );
   }
 
@@ -300,6 +318,65 @@ test('custom cosmetic rewards are complete, bounded and contain no mission or mo
   );
   assert.equal(randomKinds.has('mission'), false);
   assert.equal(randomKinds.has('mode'), false);
+});
+
+test('registered universe packs replace legacy masters without changing reward ids', () => {
+  const expectedKinds = [
+    'hudTheme',
+    'profileTitle',
+    'profileBanner',
+    'portalEffect',
+    'koEffect',
+    'introPose',
+    'victoryPose'
+  ];
+
+  for (const [universe, pack] of Object.entries(
+    cosmeticVisualModule.UNIVERSE_COSMETIC_VISUAL_PACKS
+  )) {
+    assert.ok(Object.isFrozen(pack), `${universe}: pack must be frozen`);
+    assert.deepEqual(Object.keys(pack), expectedKinds);
+    assert.equal(
+      unlockableModule.getUniverseUnlockables(universe).profileTitle.id,
+      `profile-title:${universe}`
+    );
+    assert.match(pack.hudTheme.image, /\/universes\/.+\/hud-theme\.webp$/);
+    for (const kind of ['portalEffect', 'koEffect', 'introPose', 'victoryPose']) {
+      assert.equal(pack[kind].columns, 4);
+      assert.equal(pack[kind].rows, 1);
+      assert.equal(pack[kind].frames, 4);
+    }
+
+    const legacyTheme = {
+      id: `hud:${universe}`,
+      universe,
+      frame: cosmeticVisualModule.OPENAI_COSMETIC_VISUALS.hudTheme.image
+    };
+    const resolved = cosmeticVisualModule.resolveActiveHudTheme({
+      activeHudTheme: legacyTheme.id,
+      hudThemes: [legacyTheme]
+    });
+    assert.equal(resolved.frame, pack.hudTheme.image);
+  }
+});
+
+test('HUD theme layer accepts exactly the seven in-game interfaces', () => {
+  assert.deepEqual(cosmeticVisualModule.GAME_HUD_THEME_MODES, [
+    'RPG',
+    'Tactics',
+    'Smash',
+    'combat',
+    'kart',
+    'fps',
+    'nexus'
+  ]);
+  const theme = { id: 'hud:test', universe: 'test' };
+  for (const mode of cosmeticVisualModule.GAME_HUD_THEME_MODES) {
+    assert.ok(gameHudThemeModule.default({ theme, mode }));
+  }
+  for (const mode of [undefined, null, 'hub', 'portal', 'profile', 'shop']) {
+    assert.equal(gameHudThemeModule.default({ theme, mode }), null);
+  }
 });
 
 test('save migration preserves legacy portal collections and validates active loadouts', () => {

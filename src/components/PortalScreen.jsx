@@ -15,7 +15,8 @@ import { getOcBoosterContentUpdate } from '../game/ocBoosterContentUpdates';
 import { getUniverseUnlockables, getUnlockableById } from '../game/universeUnlockables';
 import {
   OPENAI_COSMETIC_VISUALS,
-  getCosmeticAtlasPreviewStyle
+  getCosmeticAtlasPreviewStyle,
+  getUniverseCosmeticVisuals
 } from '../game/cosmeticVisualAssets';
 import {
   BOOSTER_ROTATION_WINDOW_MS,
@@ -134,6 +135,9 @@ const CUSTOM_COSMETIC_KINDS = [
   'profileTitle'
 ];
 const REWARD_MANIFEST_LIMIT = 12;
+const getUniverseHudFrame = (universe) => (
+  getUniverseCosmeticVisuals(universe)?.hudTheme?.image || null
+);
 
 const OPENING_STATUS = {
   sealed: {
@@ -462,7 +466,8 @@ const makeBoosterCandidates = ({
       rarity: PORTAL_RARITIES.epic,
       data: {
         image,
-        frame: OPENAI_COSMETIC_VISUALS.hudTheme.image,
+        frame: getUniverseHudFrame(universe)
+          || OPENAI_COSMETIC_VISUALS.hudTheme.image,
         mode: profile.mode
       }
     });
@@ -554,7 +559,11 @@ function RewardArtwork({ reward, lang }) {
 
   if (reward.kind === 'archive' || reward.kind === 'hud') {
     const hudFrame = reward.kind === 'hud'
-      ? (reward.data.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image)
+      ? (
+          getUniverseHudFrame(reward.universe)
+          || reward.data.frame
+          || OPENAI_COSMETIC_VISUALS.hudTheme.image
+        )
       : null;
     return (
       <span
@@ -1047,7 +1056,9 @@ export default function PortalScreen({
         name: reward.name,
         universe: reward.universe,
         image: reward.data.image,
-        frame: reward.data.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image,
+        frame: getUniverseHudFrame(reward.universe)
+          || reward.data.frame
+          || OPENAI_COSMETIC_VISUALS.hudTheme.image,
         mode: reward.data.mode,
         color: reward.color
       }));
@@ -1763,7 +1774,7 @@ export default function PortalScreen({
                   onClick={() => activateHudTheme(theme.id)}
                   style={{
                     '--theme-color': theme.color,
-                    backgroundImage: `url(${theme.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image}), linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.88)), url(${theme.image})`,
+                    backgroundImage: `url(${getUniverseHudFrame(theme.universe) || theme.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image}), linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.88)), url(${theme.image})`,
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
                     backgroundSize: '100% 100%, cover, cover'

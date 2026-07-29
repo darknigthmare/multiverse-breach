@@ -1,8 +1,13 @@
 import React from 'react';
-import { OPENAI_COSMETIC_VISUALS } from '../game/cosmeticVisualAssets';
+import {
+  GAME_HUD_THEME_MODES,
+  OPENAI_COSMETIC_VISUALS
+} from '../game/cosmeticVisualAssets';
+
+const GAME_HUD_THEME_MODE_SET = new Set(GAME_HUD_THEME_MODES);
 
 export default function GameHudThemeLayer({ theme, mode }) {
-  if (!theme) return null;
+  if (!theme || !GAME_HUD_THEME_MODE_SET.has(mode)) return null;
 
   const frame = theme.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image;
   const accent = theme.color || '#39c5bb';

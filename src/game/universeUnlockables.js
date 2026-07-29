@@ -1,5 +1,9 @@
 import { BATTLE_ITEMS_BY_UNIVERSE } from './battleItems';
-import { OPENAI_COSMETIC_VISUALS, getOpenAiCosmeticAtlas } from './cosmeticVisualAssets';
+import {
+  OPENAI_COSMETIC_VISUALS,
+  getOpenAiCosmeticAtlas,
+  getUniverseCosmeticVisuals
+} from './cosmeticVisualAssets';
 import { LORE_DB } from './lore';
 import { OC_BOOSTER_UPDATE_UNLOCKABLES } from './ocBoosterContentUpdates.js';
 import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
@@ -105,6 +109,7 @@ const makeUniverseUnlockables = (universe) => {
   const musicFlavor = MEDIA_MUSIC_FLAVORS[mediaType] || MEDIA_MUSIC_FLAVORS.other;
   const ultimate = getUltimateForUniverse(universe);
   const color = ultimate?.color || '#39c5bb';
+  const cosmeticPack = getUniverseCosmeticVisuals(universe);
   const universeHash = hashValue(universe);
   const kartStyle = KART_STYLES[universeHash % KART_STYLES.length];
   const assistStyle = ASSIST_STYLES[universeHash % ASSIST_STYLES.length];
@@ -234,7 +239,7 @@ const makeUniverseUnlockables = (universe) => {
         pattern: koStyle.id,
         durationMs: 900,
         intensity: 0.8,
-        ...getOpenAiCosmeticAtlas('koEffect', koStyle.id)
+        ...getOpenAiCosmeticAtlas('koEffect', koStyle.id, universe)
       })
     }),
     portalEffect: Object.freeze({
@@ -255,7 +260,7 @@ const makeUniverseUnlockables = (universe) => {
         pattern: portalStyle.id,
         durationMs: 1200,
         intensity: 0.9,
-        ...getOpenAiCosmeticAtlas('portalEffect', portalStyle.id)
+        ...getOpenAiCosmeticAtlas('portalEffect', portalStyle.id, universe)
       })
     }),
     introPose: Object.freeze({
@@ -275,7 +280,7 @@ const makeUniverseUnlockables = (universe) => {
       animation: Object.freeze({
         key: `intro-${poseStyle.id}`,
         durationMs: 1500,
-        ...getOpenAiCosmeticAtlas('introPose', poseStyle.id)
+        ...getOpenAiCosmeticAtlas('introPose', poseStyle.id, universe)
       })
     }),
     victoryPose: Object.freeze({
@@ -295,7 +300,7 @@ const makeUniverseUnlockables = (universe) => {
       animation: Object.freeze({
         key: `victory-${poseStyle.id}`,
         durationMs: 1800,
-        ...getOpenAiCosmeticAtlas('victoryPose', poseStyle.id)
+        ...getOpenAiCosmeticAtlas('victoryPose', poseStyle.id, universe)
       })
     }),
     profileBanner: Object.freeze({
@@ -315,7 +320,8 @@ const makeUniverseUnlockables = (universe) => {
       visual: Object.freeze({
         pattern: bannerStyle.pattern,
         accent: color,
-        image: OPENAI_COSMETIC_VISUALS.profileBanner.image,
+        image: cosmeticPack?.profileBanner?.image
+          || OPENAI_COSMETIC_VISUALS.profileBanner.image,
         source: 'openai'
       })
     }),
@@ -333,7 +339,8 @@ const makeUniverseUnlockables = (universe) => {
         en: `Public OpenAI title plate proving stabilization of the ${universe} Thread.`
       },
       visual: Object.freeze({
-        image: OPENAI_COSMETIC_VISUALS.profileTitle.image,
+        image: cosmeticPack?.profileTitle?.image
+          || OPENAI_COSMETIC_VISUALS.profileTitle.image,
         source: 'openai'
       })
     })

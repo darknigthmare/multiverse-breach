@@ -4,7 +4,10 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { inflateSync } from 'node:zlib';
-import { OPENAI_COSMETIC_VISUALS } from '../src/game/cosmeticVisualAssets.js';
+import {
+  OPENAI_COSMETIC_VISUALS,
+  UNIVERSE_COSMETIC_VISUAL_PACKS
+} from '../src/game/cosmeticVisualAssets.js';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -133,6 +136,34 @@ const hashCell = (image, x, y, width, height) => {
 const encodedHashes = new Set();
 const reports = [];
 
+const decodeWebpHeader = (source, label) => {
+  assert.equal(source.toString('ascii', 0, 4), 'RIFF', `${label}: missing RIFF`);
+  assert.equal(source.toString('ascii', 8, 12), 'WEBP', `${label}: missing WEBP`);
+  let offset = 12;
+  while (offset + 8 <= source.length) {
+    const type = source.toString('ascii', offset, offset + 4);
+    const length = source.readUInt32LE(offset + 4);
+    const dataStart = offset + 8;
+    const dataEnd = dataStart + length;
+    assert.ok(dataEnd <= source.length, `${label}: malformed ${type} chunk`);
+    if (type === 'VP8X') {
+      assert.ok(length >= 10, `${label}: malformed VP8X header`);
+      const flags = source[dataStart];
+      const width = 1
+        + source[dataStart + 4]
+        + (source[dataStart + 5] << 8)
+        + (source[dataStart + 6] << 16);
+      const height = 1
+        + source[dataStart + 7]
+        + (source[dataStart + 8] << 8)
+        + (source[dataStart + 9] << 16);
+      return { width, height, hasAlpha: Boolean(flags & 0x10) };
+    }
+    offset = dataEnd + (length % 2);
+  }
+  throw new Error(`${label}: extended WebP header not found`);
+};
+
 for (const [kind, contract] of Object.entries(expectedAssets)) {
   const asset = OPENAI_COSMETIC_VISUALS[kind];
   assert.ok(asset, `${kind}: missing runtime asset contract`);
@@ -204,4 +235,106 @@ for (const [kind, contract] of Object.entries(expectedAssets)) {
 }
 
 assert.equal(encodedHashes.size, 7, 'the seven OpenAI cosmetic masters must be distinct files');
-console.log(JSON.stringify({ status: 'ok', assets: reports }, null, 2));
+
+const universePackReports = [];
+const expectedUniverseAssets = Object.freeze({
+  hudTheme: { width: 1024, heights: [256, 512], atlas: false },
+  profileTitle: { width: 1024, height: 256, atlas: false },
+  profileBanner: { width: 1024, height: 256, atlas: false },
+  portalEffect: { width: 1024, height: 256, atlas: true },
+  koEffect: { width: 1024, height: 256, atlas: true },
+  introPose: { width: 1024, height: 256, atlas: true },
+  victoryPose: { width: 1024, height: 256, atlas: true }
+});
+
+for (const [universe, pack] of Object.entries(UNIVERSE_COSMETIC_VISUAL_PACKS)) {
+  assert.ok(Object.isFrozen(pack), `${universe}: cosmetic pack must be frozen`);
+  const packHashes = new Set();
+  const assetReports = [];
+
+  for (const [kind, contract] of Object.entries(expectedUniverseAssets)) {
+    const asset = pack[kind];
+    assert.ok(asset, `${universe}:${kind}: missing runtime contract`);
+    assert.equal(asset.source, 'openai', `${universe}:${kind}: invalid source`);
+    const publicPath = asset.image || asset.sheet;
+    assert.match(
+      publicPath,
+      /^\/visuals\/cosmetics\/openai\/universes\/[^/]+\/.+\.webp$/
+    );
+    const repositoryPath = path.join(
+      projectRoot,
+      'public',
+      ...publicPath.split('/').filter(Boolean)
+    );
+    const source = readFileSync(repositoryPath);
+    assert.ok(source.length > 10_000, `${universe}:${kind}: suspiciously small`);
+    const header = decodeWebpHeader(source, `${universe}:${kind}`);
+    assert.equal(header.width, contract.width, `${universe}:${kind}: width`);
+    if (contract.heights) {
+      assert.ok(
+        contract.heights.includes(header.height),
+        `${universe}:${kind}: unsupported height`
+      );
+    } else {
+      assert.equal(header.height, contract.height, `${universe}:${kind}: height`);
+    }
+    assert.equal(header.width, asset.width, `${universe}:${kind}: contract width`);
+    assert.equal(header.height, asset.height, `${universe}:${kind}: contract height`);
+    assert.equal(header.hasAlpha, true, `${universe}:${kind}: alpha is required`);
+
+    const hash = createHash('sha256').update(source).digest('hex');
+    packHashes.add(hash);
+    if (contract.atlas) {
+      assert.equal(asset.columns, 4, `${universe}:${kind}: columns`);
+      assert.equal(asset.rows, 1, `${universe}:${kind}: rows`);
+      assert.equal(asset.frames, 4, `${universe}:${kind}: frames`);
+      assert.equal(asset.row, 0, `${universe}:${kind}: row`);
+    }
+    assetReports.push({
+      kind,
+      file: path.relative(projectRoot, repositoryPath).replaceAll('\\', '/'),
+      dimensions: `${header.width}x${header.height}`,
+      bytes: source.length
+    });
+  }
+
+  assert.equal(
+    packHashes.size,
+    7,
+    `${universe}: the seven universe variants must be distinct files`
+  );
+  const hudRepositoryPath = path.join(
+    projectRoot,
+    'public',
+    ...pack.hudTheme.image.split('/').filter(Boolean)
+  );
+  const dossierPath = path.join(path.dirname(hudRepositoryPath), 'reference-dossier.json');
+  const dossier = JSON.parse(readFileSync(dossierPath, 'utf8'));
+  assert.equal(dossier.universeKey, universe, `${universe}: dossier key mismatch`);
+  assert.equal(dossier.generationAllowed, true, `${universe}: generation not approved`);
+  assert.match(dossier.referenceConfidence, /^(medium|high)$/);
+  assert.match(dossier.mode, /^built-in-imagegen/);
+  assert.ok(
+    typeof dossier.prompt === 'string'
+      || typeof dossier.generationPrompt === 'string',
+    `${universe}: final prompt is missing`
+  );
+  if (dossier.rightsClass === 'third-party') {
+    assert.ok(
+      Array.isArray(dossier.officialReferenceUrls)
+        && dossier.officialReferenceUrls.length > 0,
+      `${universe}: official reference URLs are required`
+    );
+  }
+  universePackReports.push({
+    universe,
+    dossier: path.relative(projectRoot, dossierPath).replaceAll('\\', '/'),
+    assets: assetReports
+  });
+}
+
+console.log(JSON.stringify({
+  status: 'ok',
+  masters: reports,
+  universePacks: universePackReports
+}, null, 2));
