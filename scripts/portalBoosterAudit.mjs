@@ -283,8 +283,13 @@ Object.entries(SKIN_CATALOG).forEach(([catalogKey, skin]) => {
     return;
   }
 
-  collectibleSkins.push(skin);
-  contentByUniverse.get(hero.universe).skin++;
+  // Campaign-exclusive heroes and their skins are progression rewards, not
+  // random Portal drops. Validate their metadata above, but do not count them
+  // against the booster pool exposed by PortalScreen.
+  if (!hero.campaignExclusive) {
+    collectibleSkins.push(skin);
+    contentByUniverse.get(hero.universe).skin++;
+  }
 });
 
 const unlockableCatalogs = Object.freeze({
