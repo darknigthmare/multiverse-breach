@@ -15,6 +15,10 @@ import {
   OC_BOOSTER_UPDATE_UNLOCKABLES,
   getOcBoosterContentUpdate
 } from '../src/game/ocBoosterContentUpdates.js';
+import {
+  STANDALONE_OC_BOOSTER_CONTENT_UPDATES,
+  STANDALONE_OC_BOOSTER_UPDATE_UNLOCKABLES
+} from '../src/game/standaloneOcBoosterContentUpdates.js';
 
 const universes = Array.from({ length: 12 }, (_, index) => `Thread ${index + 1}`);
 
@@ -130,4 +134,39 @@ test('every permanent OC edition exposes an exclusive frozen content update', ()
   );
   assert.equal(getOcBoosterContentUpdate('multi'), null);
   assert.equal(getOcBoosterContentUpdate('universe:Nexus de Convergence'), null);
+});
+
+test('the three standalone OC boosters expose their first exclusive content wave', () => {
+  const updates = Object.values(STANDALONE_OC_BOOSTER_CONTENT_UPDATES);
+  const globalCardIds = new Set();
+
+  assert.equal(updates.length, 3);
+  assert.ok(Object.isFrozen(STANDALONE_OC_BOOSTER_CONTENT_UPDATES));
+  assert.ok(Object.isFrozen(STANDALONE_OC_BOOSTER_UPDATE_UNLOCKABLES));
+
+  updates.forEach(update => {
+    assert.equal(getOcBoosterContentUpdate(update.packId), update);
+    assert.equal(update.version, '1.1');
+    assert.equal(update.releasedAt, '2026-08-01');
+    assert.equal(update.waveId, 'oc-standalone-wave-01');
+    assert.equal(update.cards.length, 5);
+    assert.deepEqual(update.newCardIds, update.cards.map(card => card.id));
+    assert.equal(new Set(update.cards.map(card => card.kind)).size, 5);
+    assert.equal(update.cards.filter(card => card.rarityId === 'anomaly').length, 1);
+    assert.equal(
+      update.cards.find(card => card.id === update.chaseRewardId)?.rarityId,
+      'anomaly'
+    );
+    assert.ok(Object.isFrozen(update));
+    assert.ok(Object.isFrozen(update.cards));
+
+    update.cards.forEach(card => {
+      assert.equal(card.universe, update.universe);
+      assert.ok(!globalCardIds.has(card.id));
+      globalCardIds.add(card.id);
+    });
+  });
+
+  assert.equal(globalCardIds.size, 15);
+  assert.equal(Object.keys(STANDALONE_OC_BOOSTER_UPDATE_UNLOCKABLES).length, 12);
 });

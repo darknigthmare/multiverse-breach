@@ -11,6 +11,11 @@ import {
   ORIGINAL_WORLD_CUSTOM_UNLOCKABLES,
   ORIGINAL_WORLD_ITEM_CATALOG
 } from '../src/game/originalUniverseWave.js';
+import {
+  ORIGINAL_WORLD_BOOSTER_CONTENT_UPDATES,
+  ORIGINAL_WORLD_BOOSTER_UPDATE_UNLOCKABLES,
+  getOriginalWorldBoosterContentUpdate
+} from '../src/game/originalWorldBoosterContentUpdates.js';
 
 const EXPECTED_TOTALS = Object.freeze({
   universes: 20,
@@ -518,6 +523,58 @@ test('each targeted booster resolves at least 24 real candidates and 11 named un
   });
 
   assertUnique(globalUnlockableIds, 'universe unlockable IDs across universes');
+});
+
+test('all 20 targeted boosters expose a frozen five-card content update', () => {
+  const globalCardIds = new Set();
+  const updates = Object.values(ORIGINAL_WORLD_BOOSTER_CONTENT_UPDATES);
+
+  assert.equal(updates.length, 20);
+  assert.ok(Object.isFrozen(ORIGINAL_WORLD_BOOSTER_CONTENT_UPDATES));
+  assert.ok(Object.isFrozen(ORIGINAL_WORLD_BOOSTER_UPDATE_UNLOCKABLES));
+
+  ORIGINAL_UNIVERSE_DEFINITIONS.forEach(world => {
+    const update = getOriginalWorldBoosterContentUpdate(world.booster.id);
+    const kinds = update.cards.map(card => card.kind);
+
+    assert.equal(update.packId, world.booster.id);
+    assert.equal(update.version, '1.1');
+    assert.equal(update.releasedAt, '2026-08-01');
+    assert.equal(update.waveId, 'oc-original-wave-01');
+    assert.equal(update.cards.length, 5);
+    assert.deepEqual(
+      kinds,
+      ['archive', 'battleMusic', 'stageMusic', 'npcAssist', 'fieldSuper']
+    );
+    assert.deepEqual(update.newCardIds, update.cards.map(card => card.id));
+    assert.equal(update.cards.filter(card => card.rarityId === 'anomaly').length, 1);
+    assert.equal(
+      update.cards.find(card => card.id === update.chaseRewardId)?.rarityId,
+      'anomaly'
+    );
+    assert.ok(Object.isFrozen(update));
+    assert.ok(Object.isFrozen(update.cards));
+    assert.ok(update.summary.fr);
+    assert.ok(update.summary.en);
+
+    update.cards.forEach(card => {
+      assert.equal(card.universe, world.universe);
+      assert.ok(Object.isFrozen(card));
+      assert.ok(!globalCardIds.has(card.id), `${card.id} is duplicated`);
+      globalCardIds.add(card.id);
+
+      const fieldEffect = card.data?.unlockable?.effect;
+      if (card.kind === 'fieldSuper') {
+        assert.ok(fieldEffect.damage <= 41);
+        assert.ok(fieldEffect.guardDamage <= 70);
+        assert.ok(fieldEffect.knockback <= 360);
+        assert.ok(fieldEffect.healRatio <= 0.04);
+      }
+    });
+  });
+
+  assert.equal(globalCardIds.size, 100);
+  assert.equal(Object.keys(ORIGINAL_WORLD_BOOSTER_UPDATE_UNLOCKABLES).length, 80);
 });
 
 test('the 500 audiovisual paths use the linked and unique OpenAI Image PNG v2 contract', () => {

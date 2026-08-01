@@ -1,3 +1,6 @@
+import { getOriginalWorldBoosterContentUpdate } from './originalWorldBoosterContentUpdates.js';
+import { getStandaloneOcBoosterContentUpdate } from './standaloneOcBoosterContentUpdates.js';
+
 const OC_UNIVERSE = 'Nexus de Convergence';
 const UPDATE_WAVE_ID = 'oc-wave-01';
 const UPDATE_VERSION = '1.1';
@@ -682,5 +685,8 @@ export const OC_BOOSTER_UPDATE_UNLOCKABLES = deepFreeze(Object.fromEntries(
 ));
 
 export const getOcBoosterContentUpdate = (packId) => (
-  OC_BOOSTER_CONTENT_UPDATES[packId] || null
+  OC_BOOSTER_CONTENT_UPDATES[packId]
+  || getStandaloneOcBoosterContentUpdate(packId)
+  || getOriginalWorldBoosterContentUpdate(packId)
+  || null
 );

@@ -314,13 +314,36 @@ const getRewardDetail = (reward, lang) => {
   return lang === 'fr' ? 'Fond du controle Nexus' : 'Nexus control backdrop';
 };
 
+const finalizeBoosterCandidates = (baseCandidates, banner) => {
+  const contentUpdate = getOcBoosterContentUpdate(banner.id);
+  const candidates = [
+    ...baseCandidates,
+    ...(contentUpdate?.cards || []).map(card => ({
+      ...card,
+      rarity: PORTAL_RARITIES[card.rarityId] || PORTAL_RARITIES.common,
+      contentUpdateId: contentUpdate.id,
+      contentUpdateVersion: contentUpdate.version,
+      isContentUpdate: true
+    }))
+  ];
+  const rewardKinds = banner.rewardKinds ? new Set(banner.rewardKinds) : null;
+
+  return candidates
+    .filter(candidate => !rewardKinds || rewardKinds.has(candidate.kind))
+    .map(candidate => (
+      candidate.id === banner.chaseRewardId
+        ? { ...candidate, rarity: PORTAL_RARITIES.anomaly }
+        : candidate
+    ));
+};
+
 const makeBoosterCandidates = ({
   banner,
   visibleHeroes,
   disabledGearIds
 }) => {
   if (Array.isArray(banner.candidatePool) && banner.candidatePool.length > 0) {
-    return banner.candidatePool.map(candidate => {
+    const candidates = banner.candidatePool.map(candidate => {
       const entity = candidate.data;
       const rarity = PORTAL_RARITIES[candidate.rarityId] || PORTAL_RARITIES.common;
       const hero = candidate.kind === 'hero'
@@ -365,6 +388,7 @@ const makeBoosterCandidates = ({
                 : { unlockable }
       };
     });
+    return finalizeBoosterCandidates(candidates, banner);
   }
 
   const scopedHeroes = banner.id === 'multi'
@@ -504,28 +528,7 @@ const makeBoosterCandidates = ({
     });
   });
 
-  const contentUpdate = getOcBoosterContentUpdate(banner.id);
-  contentUpdate?.cards.forEach(card => {
-    const rarity = PORTAL_RARITIES[card.rarityId] || PORTAL_RARITIES.common;
-    candidates.push({
-      ...card,
-      rarity,
-      contentUpdateId: contentUpdate.id,
-      contentUpdateVersion: contentUpdate.version,
-      isContentUpdate: true
-    });
-  });
-
-  const rewardKinds = banner.rewardKinds
-    ? new Set(banner.rewardKinds)
-    : null;
-  return candidates
-    .filter(candidate => !rewardKinds || rewardKinds.has(candidate.kind))
-    .map(candidate => (
-      candidate.id === banner.chaseRewardId
-        ? { ...candidate, rarity: PORTAL_RARITIES.anomaly }
-        : candidate
-    ));
+  return finalizeBoosterCandidates(candidates, banner);
 };
 
 function RewardArtwork({ reward, lang }) {
@@ -808,6 +811,7 @@ export default function PortalScreen({
           id: `universe:${universe}`,
           scope: 'universe',
           priceTier: 'targeted',
+          contentUpdate: getOcBoosterContentUpdate(`universe:${universe}`),
           universe,
           mode: profile.mode,
           shape: profile.shape,

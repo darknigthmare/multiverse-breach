@@ -346,6 +346,11 @@ test('20 world boosters stay separate from five Nexus editions and resolve their
     );
     assert.equal(portalBoosterModule.getPortalBoosterArt(booster.universe), booster.art);
     assert.equal(portalBoosterModule.getPortalBoosterPackArt(booster.id), booster.art);
+    assert.equal(booster.contentUpdate?.version, '1.1');
+    assert.equal(booster.contentUpdate?.releasedAt, '2026-08-01');
+    assert.equal(booster.contentUpdate?.waveId, 'oc-original-wave-01');
+    assert.equal(booster.contentUpdate?.newCardIds.length, 5);
+    assertText(booster.contentUpdate?.chaseRewardId, `${booster.id}.contentUpdate.chaseRewardId`);
     assertText(booster.art, `${booster.id}.art`);
     assert.match(booster.art, OC_BOOSTER_V2_PATTERN);
   });

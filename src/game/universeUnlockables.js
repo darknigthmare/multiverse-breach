@@ -6,7 +6,9 @@ import {
 } from './cosmeticVisualAssets';
 import { LORE_DB } from './lore';
 import { OC_BOOSTER_UPDATE_UNLOCKABLES } from './ocBoosterContentUpdates.js';
+import { ORIGINAL_WORLD_BOOSTER_UPDATE_UNLOCKABLES } from './originalWorldBoosterContentUpdates.js';
 import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
+import { STANDALONE_OC_BOOSTER_UPDATE_UNLOCKABLES } from './standaloneOcBoosterContentUpdates.js';
 
 const KART_STYLES = Object.freeze([
   {
@@ -433,11 +435,17 @@ const CATALOG_BY_KIND = Object.freeze({
   profileTitle: new Map(PROFILE_TITLE_CATALOG.map(item => [item.id, item]))
 });
 
+const BOOSTER_UPDATE_UNLOCKABLES = Object.freeze({
+  ...OC_BOOSTER_UPDATE_UNLOCKABLES,
+  ...STANDALONE_OC_BOOSTER_UPDATE_UNLOCKABLES,
+  ...ORIGINAL_WORLD_BOOSTER_UPDATE_UNLOCKABLES
+});
+
 const OC_UPDATE_CATALOG_BY_KIND = Object.freeze(Object.fromEntries(
   Object.keys(CATALOG_BY_KIND).map(kind => [
     kind,
     new Map(
-      Object.values(OC_BOOSTER_UPDATE_UNLOCKABLES)
+      Object.values(BOOSTER_UPDATE_UNLOCKABLES)
         .filter(unlockable => unlockable.kind === kind)
         .map(unlockable => [unlockable.id, unlockable])
     )

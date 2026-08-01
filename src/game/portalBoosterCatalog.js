@@ -1,5 +1,22 @@
 import { getOcBoosterContentUpdate } from './ocBoosterContentUpdates.js';
-import { ORIGINAL_WORLD_BOOSTERS } from './originalUniverseWave.js';
+import { ORIGINAL_WORLD_BOOSTERS as BASE_ORIGINAL_WORLD_BOOSTERS } from './originalUniverseWave.js';
+
+const makeContentUpdateMetadata = (update) => Object.freeze({
+  id: update.id,
+  waveId: update.waveId,
+  version: update.version,
+  releasedAt: update.releasedAt,
+  summary: update.summary,
+  newCardIds: update.newCardIds,
+  chaseRewardId: update.chaseRewardId || null
+});
+
+export const ORIGINAL_WORLD_BOOSTERS = Object.freeze(
+  BASE_ORIGINAL_WORLD_BOOSTERS.map(pack => Object.freeze({
+    ...pack,
+    contentUpdate: makeContentUpdateMetadata(getOcBoosterContentUpdate(pack.id))
+  }))
+);
 
 export const BOOSTER_ART_BY_UNIVERSE = {
   ...Object.fromEntries(ORIGINAL_WORLD_BOOSTERS.map(pack => [pack.universe, pack.art])),
@@ -546,14 +563,7 @@ export const PERMANENT_OC_BOOSTERS = Object.freeze([
   }
 ].map(pack => {
   const update = getOcBoosterContentUpdate(pack.id);
-  const contentUpdate = Object.freeze({
-    id: update.id,
-    waveId: update.waveId,
-    version: update.version,
-    releasedAt: update.releasedAt,
-    summary: update.summary,
-    newCardIds: update.newCardIds
-  });
+  const contentUpdate = makeContentUpdateMetadata(update);
   return Object.freeze({
     ...pack,
     heroIds: Object.freeze([...pack.heroIds]),
@@ -572,8 +582,6 @@ export const BOOSTER_ROTATION_SIZE = 8;
 
 export const getPortalBoosterArt = (universe) => BOOSTER_ART_BY_UNIVERSE[universe] || null;
 export const getPortalBoosterPackArt = (packId) => BOOSTER_ART_BY_PACK_ID[packId] || null;
-
-export { ORIGINAL_WORLD_BOOSTERS };
 
 export const getPortalBoosterRotation = (
   universes = BOOSTER_ART_UNIVERSES,

@@ -8,6 +8,7 @@ import {
   BOOSTER_ART_BY_UNIVERSE,
   BOOSTER_ART_UNIVERSES,
   MULTIVERSE_CONVERGENCE_BOOSTER_ART,
+  ORIGINAL_WORLD_BOOSTERS,
   PERMANENT_OC_BOOSTERS
 } from '../src/game/portalBoosterCatalog.js';
 import {
@@ -15,6 +16,14 @@ import {
   OC_BOOSTER_UPDATE_UNLOCKABLES,
   getOcBoosterContentUpdate
 } from '../src/game/ocBoosterContentUpdates.js';
+import {
+  ORIGINAL_WORLD_BOOSTER_CONTENT_UPDATES,
+  ORIGINAL_WORLD_BOOSTER_UPDATE_UNLOCKABLES
+} from '../src/game/originalWorldBoosterContentUpdates.js';
+import {
+  STANDALONE_OC_BOOSTER_CONTENT_UPDATES,
+  STANDALONE_OC_BOOSTER_UPDATE_UNLOCKABLES
+} from '../src/game/standaloneOcBoosterContentUpdates.js';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -602,6 +611,101 @@ for (const pack of PERMANENT_OC_BOOSTERS) {
   }
 }
 
+const additionalOcUpdatePacks = [
+  ...ORIGINAL_WORLD_BOOSTERS.map(pack => ({
+    pack,
+    update: ORIGINAL_WORLD_BOOSTER_CONTENT_UPDATES[pack.id]
+  })),
+  ...Object.values(STANDALONE_OC_BOOSTER_CONTENT_UPDATES).map(update => ({
+    pack: {
+      id: update.packId,
+      universe: update.universe,
+      mode: 'RPG',
+      color: update.cards[0]?.color || '#39c5bb',
+      contentUpdate: update,
+      match: hero => hero.universe === update.universe
+    },
+    update
+  }))
+];
+
+for (const { pack, update } of additionalOcUpdatePacks) {
+  const universeHeroes = HEROES_DB.filter(hero => hero.universe === pack.universe);
+  const banner = {
+    ...pack,
+    match: pack.match || (hero => hero.universe === pack.universe)
+  };
+  const candidates = makeBoosterCandidates({
+    banner,
+    visibleHeroes: universeHeroes,
+    disabledGearIds: new Set()
+  });
+  const updateCandidates = candidates.filter(candidate => candidate.isContentUpdate);
+  const expectedUpdateIds = update?.newCardIds || [];
+  const actualUpdateIds = updateCandidates.map(candidate => candidate.id);
+
+  if (!update || getOcBoosterContentUpdate(pack.id) !== update) {
+    contentErrors.push(`${pack.id}: missing OC content update registry entry`);
+    continue;
+  }
+  if (
+    pack.contentUpdate?.version !== update.version
+    || pack.contentUpdate?.releasedAt !== update.releasedAt
+  ) {
+    contentErrors.push(`${pack.id}: missing or inconsistent content update metadata`);
+  }
+  if (
+    expectedUpdateIds.length !== 5
+    || JSON.stringify(actualUpdateIds) !== JSON.stringify(expectedUpdateIds)
+  ) {
+    contentErrors.push(`${pack.id}: content update pool differs from its five-card catalogue`);
+  }
+  if (new Set(updateCandidates.map(candidate => candidate.kind)).size < 3) {
+    contentErrors.push(`${pack.id}: content update must span at least three reward kinds`);
+  }
+  if (updateCandidates.filter(candidate => candidate.rarity?.id === 'anomaly').length !== 1) {
+    contentErrors.push(`${pack.id}: content update must expose exactly one Anomaly chase`);
+  }
+  if (candidates.some(candidate => candidate.universe !== pack.universe)) {
+    contentErrors.push(`${pack.id}: reward leaked outside ${pack.universe}`);
+  }
+  if (new Set(candidates.map(candidate => candidate.id)).size !== candidates.length) {
+    contentErrors.push(`${pack.id}: booster pool contains duplicate candidate ids`);
+  }
+
+  for (const candidate of updateCandidates) {
+    const definition = update.cards.find(card => card.id === candidate.id);
+    const owners = ocUpdateCandidateOwners.get(candidate.id) || [];
+    owners.push(pack.id);
+    ocUpdateCandidateOwners.set(candidate.id, owners);
+
+    if (
+      !definition
+      || candidate.rewardId !== definition.rewardId
+      || candidate.rarity?.id !== definition.rarityId
+      || candidate.contentUpdateVersion !== update.version
+      || candidate.universe !== pack.universe
+    ) {
+      contentErrors.push(`${pack.id}: invalid update candidate "${candidate.id}"`);
+    }
+    if (candidate.kind === 'archive' || candidate.kind === 'hud') {
+      if (!hasVisibleText(candidate.data?.image) || !hasVisibleText(candidate.data?.mode)) {
+        contentErrors.push(`${pack.id}: "${candidate.id}" lacks playable backdrop metadata`);
+      }
+    } else {
+      const unlockable = candidate.data?.unlockable;
+      if (
+        !isRecord(unlockable)
+        || unlockable.id !== candidate.rewardId
+        || unlockable.kind !== candidate.kind
+        || getUnlockableById(candidate.kind, candidate.rewardId) !== unlockable
+      ) {
+        contentErrors.push(`${pack.id}: supplemental unlockable "${candidate.id}" is not resolvable`);
+      }
+    }
+  }
+}
+
 for (const [candidateId, owners] of ocUpdateCandidateOwners) {
   if (owners.length !== 1) {
     contentErrors.push(
@@ -610,19 +714,27 @@ for (const [candidateId, owners] of ocUpdateCandidateOwners) {
   }
 }
 
-const ocContentUpdateCards = Object.values(OC_BOOSTER_CONTENT_UPDATES)
-  .flatMap(update => update.cards);
+const allOcContentUpdates = [
+  ...Object.values(OC_BOOSTER_CONTENT_UPDATES),
+  ...Object.values(STANDALONE_OC_BOOSTER_CONTENT_UPDATES),
+  ...Object.values(ORIGINAL_WORLD_BOOSTER_CONTENT_UPDATES)
+];
+const ocContentUpdateCards = allOcContentUpdates.flatMap(update => update.cards);
 const ocContentUpdateIds = new Set();
 if (
-  Object.keys(OC_BOOSTER_CONTENT_UPDATES).length !== 5
-  || ocContentUpdateCards.length !== 25
+  allOcContentUpdates.length !== 28
+  || ocContentUpdateCards.length !== 140
 ) {
   contentErrors.push(
     `OC content update registry exposes ${ocContentUpdateCards.length} cards across `
-    + `${Object.keys(OC_BOOSTER_CONTENT_UPDATES).length} packs`
+    + `${allOcContentUpdates.length} packs`
   );
 }
-if (!Object.isFrozen(OC_BOOSTER_CONTENT_UPDATES)) {
+if (
+  !Object.isFrozen(OC_BOOSTER_CONTENT_UPDATES)
+  || !Object.isFrozen(STANDALONE_OC_BOOSTER_CONTENT_UPDATES)
+  || !Object.isFrozen(ORIGINAL_WORLD_BOOSTER_CONTENT_UPDATES)
+) {
   contentErrors.push('OC content update registry must be frozen');
 }
 for (const card of ocContentUpdateCards) {
@@ -640,8 +752,20 @@ for (const card of ocContentUpdateCards) {
     contentErrors.push(`OC Anomaly update card "${card.id}" must use featured weight 2`);
   }
   const unlockable = card.data?.unlockable;
+  if (unlockable) {
+    const resolvedUnlockable = getUnlockableById(unlockable.kind, unlockable.id);
+    if (
+      !resolvedUnlockable
+      || resolvedUnlockable.id !== unlockable.id
+      || resolvedUnlockable.kind !== unlockable.kind
+      || resolvedUnlockable.universe !== unlockable.universe
+    ) {
+      contentErrors.push(`OC supplemental unlockable "${card.id}" is not resolvable`);
+    }
+  }
   if (unlockable?.kind === 'fieldSuper') {
     const effect = unlockable.effect;
+    const expectedUltimateId = ultimateIdByUniverse.get(unlockable.universe);
     if (
       !hasFiniteFields(effect, ['damage', 'guardDamage', 'knockback', 'healRatio'])
       || effect.damage > 41
@@ -651,10 +775,20 @@ for (const card of ocContentUpdateCards) {
     ) {
       contentErrors.push(`OC Field Super "${card.id}" exceeds balanced effect bounds`);
     }
+    if (
+      !hasVisibleText(unlockable.sourceUltimateId)
+      || unlockable.sourceUltimateId !== expectedUltimateId
+    ) {
+      contentErrors.push(
+        `OC Field Super "${card.id}" does not reuse ${unlockable.universe} ultimate`
+      );
+    }
   }
 }
 if (
   Object.keys(OC_BOOSTER_UPDATE_UNLOCKABLES).length
+    + Object.keys(STANDALONE_OC_BOOSTER_UPDATE_UNLOCKABLES).length
+    + Object.keys(ORIGINAL_WORLD_BOOSTER_UPDATE_UNLOCKABLES).length
   !== ocContentUpdateCards.filter(card => card.data?.unlockable).length
 ) {
   contentErrors.push('OC supplemental unlockable registry is incomplete');
@@ -733,7 +867,10 @@ if (orphanUniverses.length > 0) {
 for (const universe of BOOSTER_ART_UNIVERSES) {
   const publicPath = BOOSTER_ART_BY_UNIVERSE[universe];
 
-  if (!publicPath?.startsWith('/boosters/') || !publicPath.endsWith('.webp')) {
+  if (
+    !publicPath?.startsWith('/boosters/')
+    || !/\.(?:png|webp)$/i.test(publicPath)
+  ) {
     errors.push(`${universe}: invalid public path "${publicPath}"`);
     continue;
   }
