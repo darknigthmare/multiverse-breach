@@ -71,6 +71,13 @@ export const GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG = Object.freeze([
     packSha256: "e5578b62b1899eb723c001496af196df0d83eac9ae860d8654ab36901b2aa872"
   }),
   Object.freeze({
+    universe: "Fallout",
+    slug: "fallout",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "fce02f207f0431153f11aa40c1fed145e8e44d38253c1ab98b88297933109ae2"
+  }),
+  Object.freeze({
     universe: "Gears of War",
     slug: "gears-of-war",
     hudHeight: 512,
@@ -127,6 +134,13 @@ export const GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG = Object.freeze([
     packSha256: "c5b80606bdee1d8291f447a9b81a30cb18d08f5ab006c8c9998b6fb4d9b2f2cc"
   }),
   Object.freeze({
+    universe: "Portal",
+    slug: "portal",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "931288df94deca568eddc6b2d62400bf42583eeaa91a420e13ca42231f2d10db"
+  }),
+  Object.freeze({
     universe: "Rayman",
     slug: "rayman",
     hudHeight: 512,
@@ -162,11 +176,25 @@ export const GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG = Object.freeze([
     packSha256: "8cb588320db8672ae2410953fb507fac0984cee291aadbafd9e0f71a4294bab8"
   }),
   Object.freeze({
+    universe: "Silent Hill",
+    slug: "silent-hill",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "3fe4e06b688b3dcaed8177bdd1e91bfeecafdcbae497e29bc7e583d1a96a900b"
+  }),
+  Object.freeze({
     universe: "Spyro",
     slug: "spyro",
     hudHeight: 512,
     portalFile: "portal-effects-atlas.webp",
     packSha256: "f311dd9e71d92dae9f05608a6fe1988a10f6c759d45be7d4048f942def272518"
+  }),
+  Object.freeze({
+    universe: "Stargate",
+    slug: "stargate",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "9d705084ad680001d5f73e0c0f609b27938b9bed0af2617d07eeea40d486630f"
   }),
   Object.freeze({
     universe: "The Brave Little Toaster",
