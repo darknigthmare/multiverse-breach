@@ -1,3 +1,11 @@
+import { drawCosmeticAtlasFrame } from '../game/renderer';
+import {
+  getGameCanvasCosmeticAtlas,
+  getGameCanvasCosmeticDurationMs,
+  getGameCanvasCosmeticFacing,
+  getGameCanvasCosmeticFrame,
+  supportsGameCanvasCosmeticPresentation
+} from '../game/gameCanvasCosmeticPresentation';
 import React, { useEffect, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
@@ -38,6 +46,60 @@ const getStableNumericSeed = (value) => {
       );
   return (rawSeed >>> 0) || 1;
 };
+
+function CosmeticAtlasPresentation({ mode, type, side = 'player', cosmetic }) {
+  const canvasRef = useRef(null);
+  const atlas = getGameCanvasCosmeticAtlas(type, cosmetic);
+  const durationMs = getGameCanvasCosmeticDurationMs(type, cosmetic);
+  const supported = supportsGameCanvasCosmeticPresentation(mode);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!supported || !atlas || !canvas) return undefined;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return undefined;
+
+    let animationFrameId = 0;
+    let startedAt = null;
+    const draw = timestamp => {
+      if (startedAt === null) startedAt = timestamp;
+      const elapsedMs = Math.min(durationMs, Math.max(0, timestamp - startedAt));
+      const frame = getGameCanvasCosmeticFrame(atlas, elapsedMs, durationMs);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawCosmeticAtlasFrame(
+        ctx,
+        atlas,
+        frame,
+        canvas.width / 2,
+        canvas.height / 2,
+        canvas.width - 20,
+        canvas.height - 20,
+        {
+          facing: getGameCanvasCosmeticFacing(type, side),
+          glowColor: cosmetic?.color || (type === 'ko' ? '#ffea00' : '#39c5bb'),
+          glowBlur: type === 'ko' ? 30 : 24
+        }
+      );
+      if (elapsedMs < durationMs) animationFrameId = requestAnimationFrame(draw);
+    };
+    animationFrameId = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [atlas, cosmetic?.color, durationMs, side, supported, type]);
+
+  if (!supported || !atlas) return null;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="game-canvas-cosmetic-atlas"
+      data-cosmetic-atlas-type={type}
+      data-cosmetic-atlas-source={atlas.sheet}
+      width="256"
+      height="256"
+      aria-label={`${cosmetic?.name?.en || cosmetic?.name?.fr || cosmetic?.universe || type} animation`}
+      role="img"
+    />
+  );
+}
 
 export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, hudTheme = null, onBattleEnd, onSessionComplete, sessionPaused = false, dedicatedSession = false }) {
   const canvasRef = useRef(null);
@@ -1853,6 +1915,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             }}
           >
             <div>
+              <CosmeticAtlasPresentation
+                mode={stage.mode}
+                type={customPresentation.type}
+                side={customPresentation.side}
+                cosmetic={customPresentation.cosmetic}
+              />
               <small>
                 {customPresentation.side === 'both'
                   ? `P1 + ${battleConfig?.opponentControl === 'p2' ? 'P2' : 'CPU'}`
@@ -2001,6 +2069,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   '--presentation-duration': `${battleConfig.cosmetics.victoryPose.animation?.durationMs || 1800}ms`
                 }}
               >
+                <CosmeticAtlasPresentation
+                  mode={stage.mode}
+                  type="victory"
+                  side="player"
+                  cosmetic={battleConfig.cosmetics.victoryPose}
+                />
                 <small>{lang === 'fr' ? 'POSE DE VICTOIRE EQUIPEE' : 'EQUIPPED VICTORY POSE'}</small>
                 <strong>
                   {battleConfig.cosmetics.victoryPose.name?.[lang]

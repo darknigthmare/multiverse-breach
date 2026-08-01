@@ -1,3 +1,5 @@
+import { GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG } from './cosmeticVisualPackCatalog.generated.js';
+
 const OPENAI_COSMETIC_ROOT = '/visuals/cosmetics/openai';
 const OPENAI_UNIVERSE_COSMETIC_ROOT = `${OPENAI_COSMETIC_ROOT}/universes`;
 
@@ -54,7 +56,7 @@ const makeUniverseAtlasAsset = (universeSlug, file) => Object.freeze({
 
 const makeUniverseCosmeticPack = (
   universeSlug,
-  { hudHeight = 512 } = {}
+  { hudHeight = 512, portalFile = 'portal-effects-atlas.webp' } = {}
 ) => Object.freeze({
   hudTheme: makeUniverseImageAsset(
     universeSlug,
@@ -76,7 +78,7 @@ const makeUniverseCosmeticPack = (
   ),
   portalEffect: makeUniverseAtlasAsset(
     universeSlug,
-    'portal-effects-atlas.webp'
+    portalFile
   ),
   koEffect: makeUniverseAtlasAsset(
     universeSlug,
@@ -122,17 +124,17 @@ export const OPENAI_COSMETIC_VISUALS = Object.freeze({
   })
 });
 
-export const UNIVERSE_COSMETIC_VISUAL_PACKS = Object.freeze({
-  '28 Days Later': makeUniverseCosmeticPack('28-days-later'),
-  'A Nightmare on Elm Street': makeUniverseCosmeticPack(
-    'a-nightmare-on-elm-street'
-  ),
-  Ado: makeUniverseCosmeticPack('ado', { hudHeight: 256 }),
-  'Aegea: War of the Moirai': makeUniverseCosmeticPack(
-    'aegea-war-of-the-moirai',
-    { hudHeight: 256 }
-  )
-});
+export const UNIVERSE_COSMETIC_VISUAL_PACKS = Object.freeze(Object.fromEntries(
+  GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG.map(({
+    universe,
+    slug,
+    hudHeight,
+    portalFile
+  }) => [
+    universe,
+    makeUniverseCosmeticPack(slug, { hudHeight, portalFile })
+  ])
+));
 
 export const getUniverseCosmeticVisuals = (universe) => (
   UNIVERSE_COSMETIC_VISUAL_PACKS[universe] || null

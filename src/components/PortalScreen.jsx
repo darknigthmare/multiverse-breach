@@ -1348,6 +1348,8 @@ export default function PortalScreen({
           aria-hidden="true"
           style={{
             '--portal-effect-sheet': `url(${equippedPortalAtlas.sheet})`,
+            '--portal-effect-columns': equippedPortalAtlas.columns || 4,
+            '--portal-effect-rows': equippedPortalRows,
             '--portal-effect-row': `${equippedPortalRows > 1 ? (equippedPortalRow / (equippedPortalRows - 1)) * 100 : 0}%`
           }}
         />

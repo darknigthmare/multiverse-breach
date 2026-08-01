@@ -265,7 +265,7 @@ test('custom cosmetic rewards are complete, bounded and contain no mission or mo
     assert.ok(effect.visual.intensity > 0 && effect.visual.intensity <= 1);
     assert.match(
       effect.visual.sheet,
-      /^\/visuals\/cosmetics\/openai\/(?:.+-atlas-v1\.png|universes\/.+-atlas\.webp)$/
+      /^\/visuals\/cosmetics\/openai\/(?:.+-atlas-v1\.png|universes\/.+-atlas(?:-p3)?\.webp)$/
     );
     assert.equal(effect.visual.columns, 4);
     assert.equal(effect.visual.frames, 4);

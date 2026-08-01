@@ -17,6 +17,8 @@
     "boosters:audit": "node scripts/portalBoosterAudit.mjs",
     "items:audit": "node scripts/itemAssetAudit.mjs",
     "gear-shop:audit": "node scripts/gearShopAudit.mjs --strict",
+    "cosmetics:sync": "node scripts/syncCosmeticVisualCatalog.mjs",
+    "test:cosmetics": "node --test scripts/cosmeticVisualCatalog.test.mjs",
     "cosmetics:audit": "node scripts/cosmeticVisualAudit.mjs",
     "music:audit": "node scripts/stageMusicAudit.mjs",
     "audit:oc-dlc": "node scripts/ocDlcAssetsAudit.mjs",

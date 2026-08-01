@@ -8,10 +8,41 @@ import {
   OPENAI_COSMETIC_VISUALS,
   UNIVERSE_COSMETIC_VISUAL_PACKS
 } from '../src/game/cosmeticVisualAssets.js';
+import { GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG } from '../src/game/cosmeticVisualPackCatalog.generated.js';
+import { collectCompleteUniverseCosmeticPacks } from './syncCosmeticVisualCatalog.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
 const pngSignature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
+const defaultCompleteUniverseCount = 380;
+
+const getRequiredCompleteCount = () => {
+  const inline = process.argv.find((argument) => argument.startsWith('--require-complete='));
+  if (inline) return Number(inline.slice(inline.indexOf('=') + 1));
+  const index = process.argv.indexOf('--require-complete');
+  if (index < 0) return null;
+  const next = process.argv[index + 1];
+  return next && /^\d+$/.test(next) ? Number(next) : defaultCompleteUniverseCount;
+};
+
+const requiredCompleteCount = getRequiredCompleteCount();
+const scannedPacks = collectCompleteUniverseCosmeticPacks();
+assert.deepEqual(
+  GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG,
+  scannedPacks,
+  'runtime cosmetic catalog is stale; run npm run cosmetics:sync'
+);
+if (requiredCompleteCount !== null) {
+  assert.ok(
+    Number.isSafeInteger(requiredCompleteCount) && requiredCompleteCount > 0,
+    '--require-complete must be a positive integer'
+  );
+  assert.equal(
+    scannedPacks.length,
+    requiredCompleteCount,
+    `complete cosmetic coverage requires ${requiredCompleteCount} packs`
+  );
+}
 
 const expectedAssets = Object.freeze({
   hudTheme: { width: 1536, height: 1024, atlas: false },
@@ -313,7 +344,7 @@ for (const [universe, pack] of Object.entries(UNIVERSE_COSMETIC_VISUAL_PACKS)) {
   assert.equal(dossier.universeKey, universe, `${universe}: dossier key mismatch`);
   assert.equal(dossier.generationAllowed, true, `${universe}: generation not approved`);
   assert.match(dossier.referenceConfidence, /^(medium|high)$/);
-  assert.match(dossier.mode, /^built-in-imagegen/);
+  assert.match(dossier.mode, /^(?:built-in-imagegen|cli-gpt-image-2)/);
   assert.ok(
     typeof dossier.prompt === 'string'
       || typeof dossier.generationPrompt === 'string',
@@ -335,6 +366,7 @@ for (const [universe, pack] of Object.entries(UNIVERSE_COSMETIC_VISUAL_PACKS)) {
 
 console.log(JSON.stringify({
   status: 'ok',
+  requiredCompleteCount,
   masters: reports,
   universePacks: universePackReports
 }, null, 2));

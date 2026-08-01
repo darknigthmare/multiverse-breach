@@ -645,6 +645,32 @@ body {
   box-shadow: 0 0 28px color-mix(in srgb, var(--presentation-color) 52%, transparent);
 }
 
+.custom-battle-presentation > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-canvas-cosmetic-atlas {
+  display: block;
+  width: clamp(132px, 24vw, 206px);
+  height: clamp(132px, 24vw, 206px);
+  margin: -8px auto 2px;
+  image-rendering: pixelated;
+}
+
+.custom-battle-presentation[data-presentation-type='ko'] .game-canvas-cosmetic-atlas {
+  width: clamp(150px, 28vw, 232px);
+  height: clamp(150px, 28vw, 232px);
+  margin-top: -18px;
+}
+
+.custom-battle-victory-pose .game-canvas-cosmetic-atlas {
+  width: clamp(150px, 26vw, 224px);
+  height: clamp(150px, 26vw, 224px);
+  margin: -18px auto 0;
+}
+
 .custom-battle-presentation small,
 .custom-battle-victory-pose small {
   display: block;
@@ -4111,6 +4137,11 @@ body {
   box-sizing: border-box;
 }
 
+.game-hud-themed-interface > :not(.game-hud-theme-layer) {
+  position: relative;
+  z-index: 1;
+}
+
 .battle-screen.game-hud-themed-interface {
   padding: clamp(104px, 9vw, 138px) clamp(82px, 9vw, 132px) clamp(82px, 8vw, 122px) !important;
 }
@@ -4124,7 +4155,7 @@ body {
 .game-hud-theme-layer {
   position: absolute;
   inset: 0;
-  z-index: 8;
+  z-index: 0;
   display: block;
   pointer-events: none;
   overflow: hidden;
@@ -8231,7 +8262,9 @@ body:has(.hub-screen.is-dedicated-game) .auth-panel-floating {
   background-image: var(--portal-effect-sheet);
   background-position: 0 var(--portal-effect-row);
   background-repeat: no-repeat;
-  background-size: 400% 400%;
+  background-size:
+    calc(var(--portal-effect-columns, 4) * 100%)
+    calc(var(--portal-effect-rows, 4) * 100%);
   image-rendering: pixelated;
   mix-blend-mode: screen;
   opacity: clamp(0.58, var(--portal-effect-intensity, 0.9), 0.94);
