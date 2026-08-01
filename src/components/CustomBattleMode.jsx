@@ -10,6 +10,12 @@ import {
   buildCustomRuntimeStage,
   normalizeCustomBattlePreset
 } from '../game/customBattle';
+import {
+  STAGE_EVENT_INTENSITIES,
+  STAGE_TOPOLOGY_CATALOG,
+  STAGE_TOPOLOGY_IDS,
+  STAGE_VARIANTS
+} from '../game/melee/stageTopologyCatalog';
 
 const MODE_OPTIONS = [
   { id: 'RPG', fr: 'RPG - ATB', en: 'RPG - ATB', descFr: 'Escouade contre menaces, commandes ATB.', descEn: 'Squad versus threats with ATB commands.' },
@@ -461,7 +467,10 @@ export default function CustomBattleMode({
               key={mode.id}
               className="btn-retro"
               aria-pressed={preset.mode === mode.id}
-              onClick={() => updatePreset({ mode: mode.id })}
+              onClick={() => updatePreset({
+                mode: mode.id,
+                ...(mode.id === 'Smash' ? { hazards: true } : {})
+              })}
               style={{
                 padding: '10px 8px',
                 borderColor: preset.mode === mode.id ? '#39c5bb' : '#34454b',
@@ -484,7 +493,12 @@ export default function CustomBattleMode({
               key={option.id}
               className="btn-retro"
               aria-pressed={preset.opponentControl === option.id}
-              onClick={() => updatePreset({ opponentControl: option.id })}
+              onClick={() => updatePreset({
+                opponentControl: option.id,
+                ...(option.id === 'p2'
+                  ? { difficulty: 'standard', skipPreMatchInTraining: false }
+                  : {})
+              })}
               style={{ padding: 9, borderColor: preset.opponentControl === option.id ? '#ff8a50' : '#34454b', color: preset.opponentControl === option.id ? '#fff' : '#8fa5aa' }}
             >
               <strong>{lang === 'fr' ? option.fr : option.en}</strong>
@@ -529,7 +543,11 @@ export default function CustomBattleMode({
             <span className="fighter-section-label">{lang === 'fr' ? 'STAGE' : 'STAGE'}</span>
             <select value={preset.stageArchiveId || ''} onChange={event => updatePreset({ stageArchiveId: event.target.value || null })} style={selectStyle}>
               <option value="">{lang === 'fr' ? 'Nexus - arene de simulation' : 'Nexus simulation arena'}</option>
-              {archives.map(archive => <option key={archive.id} value={archive.id}>{archive.universe}</option>)}
+              {archives.map(archive => (
+                <option key={archive.id} value={archive.id}>
+                  {archive.universe} — {localized(archive, lang, archive.id)}
+                </option>
+              ))}
             </select>
           </label>
           <label style={{ display: 'grid', gap: 6 }}>
@@ -548,7 +566,7 @@ export default function CustomBattleMode({
               {[
                 { key: 'items', fr: 'Objets', en: 'Items' },
                 { key: 'hazards', fr: 'Dangers', en: 'Hazards' }
-              ].map(rule => (
+              ].filter(rule => preset.mode !== 'Smash' || rule.key !== 'hazards').map(rule => (
                 <label key={rule.key} style={{ minHeight: 40, display: 'flex', alignItems: 'center', gap: 8, padding: '0 10px', border: '1px solid #34454b', borderRadius: 4, color: '#cce6e7', fontSize: 10 }}>
                   <input type="checkbox" checked={preset[rule.key]} onChange={event => updatePreset({ [rule.key]: event.target.checked })} />
                   {lang === 'fr' ? rule.fr : rule.en}
@@ -557,6 +575,70 @@ export default function CustomBattleMode({
             </div>
           )}
         </div>
+        {preset.mode === 'Smash' && (
+          <fieldset className="custom-melee-stage-rules">
+            <legend>{lang === 'fr' ? 'REGLES P5 DU STAGE MELEE' : 'P5 MELEE STAGE RULES'}</legend>
+            <label>
+              <span className="fighter-section-label">{lang === 'fr' ? 'VARIANTE' : 'VARIANT'}</span>
+              <select
+                value={preset.stageVariant}
+                onChange={event => updatePreset({
+                  stageVariant: event.target.value,
+                  ...(event.target.value === STAGE_VARIANTS.competitive
+                    ? { stageEventIntensity: STAGE_EVENT_INTENSITIES.off }
+                    : {})
+                })}
+                style={selectStyle}
+              >
+                <option value={STAGE_VARIANTS.lore}>{lang === 'fr' ? 'Lore — evenement complet' : 'Lore — full event'}</option>
+                <option value={STAGE_VARIANTS.competitive}>{lang === 'fr' ? 'Competitive — evenement coupe' : 'Competitive — event disabled'}</option>
+              </select>
+            </label>
+            <label>
+              <span className="fighter-section-label">{lang === 'fr' ? 'INTENSITE' : 'INTENSITY'}</span>
+              <select
+                value={preset.stageVariant === STAGE_VARIANTS.competitive
+                  ? STAGE_EVENT_INTENSITIES.off
+                  : preset.stageEventIntensity}
+                onChange={event => updatePreset({ stageEventIntensity: event.target.value })}
+                disabled={preset.stageVariant === STAGE_VARIANTS.competitive}
+                style={selectStyle}
+              >
+                <option value={STAGE_EVENT_INTENSITIES.off}>Off</option>
+                <option value={STAGE_EVENT_INTENSITIES.light}>Light</option>
+                <option value={STAGE_EVENT_INTENSITIES.full}>Full</option>
+              </select>
+              {preset.stageVariant === STAGE_VARIANTS.competitive && (
+                <small>{lang === 'fr' ? 'Competitive force Off au runtime.' : 'Competitive forces Off at runtime.'}</small>
+              )}
+            </label>
+            <label>
+              <span className="fighter-section-label">{lang === 'fr' ? 'TOPOLOGIE' : 'TOPOLOGY'}</span>
+              <select value={preset.stageTopologyId} onChange={event => updatePreset({ stageTopologyId: event.target.value })} style={selectStyle}>
+                <option value="auto">{lang === 'fr' ? 'Automatique selon l univers' : 'Automatic for universe'}</option>
+                {Object.values(STAGE_TOPOLOGY_IDS).map(topologyId => (
+                  <option key={topologyId} value={topologyId}>
+                    {STAGE_TOPOLOGY_CATALOG[topologyId].name[lang] || STAGE_TOPOLOGY_CATALOG[topologyId].name.fr}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <div className="custom-melee-countdown-rule">
+              <strong>{lang === 'fr' ? 'PRE-MATCH : 3 SECONDES' : 'PRE-MATCH: 3 SECONDS'}</strong>
+              <span>{lang === 'fr' ? 'Intro, cadrage A.R.C.A. et 3-2-1 synchronises.' : 'Synchronized intro, A.R.C.A. framing and 3-2-1.'}</span>
+              {preset.difficulty === 'training' && (
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={preset.skipPreMatchInTraining}
+                    onChange={event => updatePreset({ skipPreMatchInTraining: event.target.checked })}
+                  />
+                  {lang === 'fr' ? 'Ignorer automatiquement en entrainement' : 'Skip automatically in training'}
+                </label>
+              )}
+            </div>
+          </fieldset>
+        )}
         {selectedArchive?.image && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(180px, 100%), 1fr))', gap: 12, alignItems: 'center', padding: 10, border: '1px solid rgba(57,197,187,0.18)', background: 'rgba(57,197,187,0.04)' }}>
             <img src={selectedArchive.image} alt="" style={{ width: 180, maxWidth: '100%', maxHeight: 110, objectFit: 'cover', border: '1px solid #31545a', boxSizing: 'border-box' }} />

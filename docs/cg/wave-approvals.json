@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "approvalSignal": "Continue",
+  "approvedAt": "2026-08-01",
+  "approvedBaseline": {
+    "range": "CG01-CG05",
+    "characterCount": 6,
+    "catalogEntryCount": 30,
+    "manifestSha256": "ff6bba12825e2d20f39999a5d04868752785be6300da53794c6ecac5152dd34e"
+  },
+  "openedWave": {
+    "range": "CG06-CG08",
+    "types": [
+      "introPose",
+      "victoryPose",
+      "defeatPose"
+    ],
+    "characterCount": 6,
+    "targetEntryCount": 18,
+    "characterReferencePolicy": "Reuse the exact approved CG01 characterReferenceId and source PNG for every pose."
+  },
+  "excluded": [
+    "CG09-CG15 fan-service and What If variants",
+    "new characters",
+    "new universes"
+  ]
+}

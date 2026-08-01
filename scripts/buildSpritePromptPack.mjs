@@ -31,6 +31,11 @@ const rewriteImports = (source) => source
   .replaceAll("from './originalUniverseProduction'", "from './originalUniverseProduction.js'")
   .replaceAll("from './originalUniverseWave'", "from './originalUniverseWave.js'")
   .replaceAll("from './requestedUniverseWave'", "from './requestedUniverseWave.js'")
+  .replaceAll("from './canonRosterWave'", "from './canonRosterWave.js'")
+  .replaceAll("from './canonRosterWavePartA'", "from './canonRosterWavePartA.js'")
+  .replaceAll("from './canonRosterWavePartB'", "from './canonRosterWavePartB.js'")
+  .replaceAll("from './canonRosterWavePartC'", "from './canonRosterWavePartC.js'")
+  .replaceAll("from './nonCombatTrial'", "from './nonCombatTrial.js'")
   .replaceAll("from './featuredUniversePacks'", "from './featuredUniversePacks.js'")
   .replaceAll("from './loreBossOverrides'", "from './loreBossOverrides.js'")
   .replaceAll("from './loreEnemyOverrides'", "from './loreEnemyOverrides.js'")
@@ -46,10 +51,12 @@ const rewriteImports = (source) => source
 const copyRuntimeModules = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'originalUniversesManifest.json', 'originalUniverseProduction.js', 'originalUniverseWave.js', 'gearShopVisualContractsFirst40.js', 'gearShopVisualContractsRemaining47.js', 'gearShopVisualContracts.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js'];
+  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'canonRosterWave.js', 'canonRosterWavePartA.js', 'canonRosterWavePartB.js', 'canonRosterWavePartC.js', 'nonCombatTrial.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'originalUniversesManifest.json', 'originalUniverseProduction.js', 'originalUniverseWave.js', 'gearShopVisualContractsFirst40.js', 'gearShopVisualContractsRemaining47.js', 'gearShopVisualContracts.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js', 'melee/meleeAnimationManifest.js', 'melee/meleeStateMachine.js'];
   await Promise.all(files.map(async (file) => {
     const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
-    await fs.writeFile(path.join(tmpDir, file), rewriteImports(raw), 'utf8');
+    const destination = path.join(tmpDir, file);
+    await fs.mkdir(path.dirname(destination), { recursive: true });
+    await fs.writeFile(destination, rewriteImports(raw), 'utf8');
   }));
 };
 
@@ -66,6 +73,20 @@ const buildPrompt = ({ kind, name, universe, role, weapon, color, special }) => 
   'Background: perfectly flat solid #00ff00 chroma key, no floor, no cast shadow, no text, no watermark.',
   'Constraints: one character only, no extra characters, no UI labels, no cropped body, consistent proportions across all 16 frames.'
 ].join('\n');
+
+const getSpritePromptMetadata = (subject = {}) => ({
+  referenceUrl: subject.referenceUrl,
+  visualAnchor: subject.visualAnchor,
+  canonStatus: subject.canonStatus,
+  spritePrompt: subject.spritePrompt
+});
+
+const appendSpritePromptMetadata = (prompt, subject = {}) => [
+  prompt,
+  subject.canonStatus ? `Canon status: ${subject.canonStatus}.` : null,
+  subject.referenceUrl ? `Reference source: ${subject.referenceUrl}` : null,
+  subject.visualAnchor ? `Verified visual anchor: ${subject.visualAnchor}` : null
+].filter(Boolean).join('\n');
 
 const fileExists = async (relativeOutput) => {
   const localPath = path.join(root, 'public', relativeOutput.replace(/^\/+/, ''));
@@ -104,8 +125,9 @@ const main = async () => {
       name: hero.name,
       universe: hero.universe,
       output: `/sprites/generated/${file}`,
-        frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
-      prompt: buildPrompt({
+      frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
+      ...getSpritePromptMetadata(hero),
+      prompt: appendSpritePromptMetadata(hero.spritePrompt || buildPrompt({
         kind: 'hero',
         name: hero.name,
         universe: hero.universe,
@@ -113,7 +135,7 @@ const main = async () => {
         weapon: hero.weaponType || hero.simple?.name,
         color: `${hero.primaryColor}${hero.secondaryColor ? ` and ${hero.secondaryColor}` : ''}`,
         special: hero.special?.name
-      })
+      }), hero)
     };
   });
   if (!heroEntries.some(entry => entry.id === 'player_anchor')) {
@@ -152,9 +174,8 @@ const main = async () => {
         universe,
         output: enemy.spriteSource || `/sprites/generated/${file}`,
         frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
-        referenceUrl: enemy.referenceUrl,
-        visualAnchor: enemy.visualAnchor,
-        prompt: enemy.spritePrompt || buildPrompt({
+        ...getSpritePromptMetadata(enemy),
+        prompt: appendSpritePromptMetadata(enemy.spritePrompt || buildPrompt({
           kind: 'enemy',
           name: enemy.name,
           universe,
@@ -162,7 +183,7 @@ const main = async () => {
           weapon: enemy.weapon,
           color: enemy.color,
           special: enemy.special
-        })
+        }), enemy)
       });
     });
     [...(data.bosses || []), data.worldBoss].filter(Boolean).forEach((boss) => {
@@ -175,9 +196,8 @@ const main = async () => {
         universe,
         output: boss.spriteSource || `/sprites/generated/${file}`,
         frame: { width: 256, height: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
-        referenceUrl: boss.referenceUrl,
-        visualAnchor: boss.visualAnchor,
-        prompt: boss.spritePrompt || buildPrompt({
+        ...getSpritePromptMetadata(boss),
+        prompt: appendSpritePromptMetadata(boss.spritePrompt || buildPrompt({
           kind: 'boss',
           name: boss.name,
           universe,
@@ -185,7 +205,35 @@ const main = async () => {
           weapon: boss.weapon,
           color: boss.color,
           special: boss.special
-        })
+        }), boss)
+      });
+    });
+    (data.trials || []).filter(Boolean).forEach((trial) => {
+      const universeSlug = slugify(universe);
+      const file = `bosses/${universeSlug}/${slugify(trial.name)}.png`;
+      const basePrompt = trial.spritePrompt || [
+        'Use case: stylized-concept',
+        'Asset type: non-combat objective state sheet for a 2D canvas trial stage',
+        `Primary request: create an original fan-made pixel-art objective sheet for ${trial.name} from ${universe}.`,
+        `Objective identity: ${trial.policy?.objective?.en || trial.policy?.objective?.fr || 'resolve the stage objective without defeating a character'}.`,
+        `Verified visual anchor: ${trial.visualAnchor || trial.policy?.visualAnchor || 'lore-faithful stage mechanisms and props'}.`,
+        'Constraints: do not depict the subject as a hostile fighter, do not add a health bar, attack pose, gore, copied official asset or actor likeness.'
+      ].join('\n');
+      const prompt = [
+        basePrompt,
+        'Delivery layout lock: exact 4 columns x 4 rows, equal 256x256 cells on a 1024x1024 sheet; rows show untouched, active, nearly resolved and completed objective animation states, with four distinct animation frames per row.',
+        'Background lock: perfectly flat solid #00ff00 chroma key in every cell, no floor, no cast shadow, no text and no watermark.'
+      ].join('\n');
+      bossEntries.push({
+        kind: 'trial',
+        id: slugify(`${universe}-${trial.id || trial.name}-trial`),
+        name: trial.name,
+        universe,
+        output: trial.output || trial.spriteSource || `/sprites/generated/${file}`,
+        frame: { width: 256, height: 256, columns: 4, rows: ['untouched', 'active', 'resolving', 'complete'] },
+        ...getSpritePromptMetadata(trial),
+        referenceUrls: trial.referenceUrls,
+        prompt: appendSpritePromptMetadata(prompt, trial)
       });
     });
   });
@@ -236,16 +284,23 @@ const main = async () => {
         'Use case: stylized-concept',
         'Asset type: transparent game item icon for a 2D canvas battle game',
         `Primary request: create a detailed pixel-art item icon for ${item.name?.en || item.id} from ${universe}.`,
-        'Style/medium: highly detailed dark fantasy pixel art, ornate pixel texture, crisp outline, readable at small UI size.',
+        item.visualAnchor ? `Reference-locked visual anchor: ${item.visualAnchor}` : null,
+        item.canonStatus ? `Canon status: ${item.canonStatus}.` : null,
+        item.referenceUrl ? `Reference source: ${item.referenceUrl}` : null,
+        'Style/medium: highly detailed 32-bit pixel art faithful to the source medium, with crisp outline and a silhouette readable at small UI size.',
         'Composition/framing: centered single item icon, generous padding, three-quarter top angle, no character.',
         'Background: perfectly flat solid #00ff00 chroma key, no floor, no cast shadow, no text, no watermark.',
         'Constraints: one item only, no UI labels, no readable logos unless explicitly part of the item lore, consistent icon scale.'
-      ].join('\n')
+      ].filter(Boolean).join('\n')
     }];
   });
 
   const itemEntries = (await Promise.all(itemEntryCandidates.map(async (entry) => (
-    entry.curatedPrompt || featuredPromptUniverses.has(entry.universe) || await fileExists(entry.output) ? entry : null
+    entry.curatedPrompt
+      || featuredPromptUniverses.has(entry.universe)
+      || entry.referenceUrl
+      || entry.visualAnchor
+      || await fileExists(entry.output) ? entry : null
   )))).filter(Boolean);
 
   const finaleEntries = Object.values(LORE_WORLD_BOSS_POLICIES).map((policy) => ({
@@ -342,6 +397,7 @@ const main = async () => {
       heroes: heroEntries.length,
       enemies: bossEntries.filter(entry => entry.kind === 'enemy').length,
       bosses: bossEntries.filter(entry => entry.kind === 'boss').length,
+      trials: bossEntries.filter(entry => entry.kind === 'trial').length,
       items: itemEntries.length,
       finales: finaleEntries.length,
       stages: stageEntries.length,
@@ -361,7 +417,8 @@ const main = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   const enemyCount = bossEntries.filter(entry => entry.kind === 'enemy').length;
   const bossCount = bossEntries.filter(entry => entry.kind === 'boss').length;
-  console.log(`Wrote ${all.length} asset prompts (${heroEntries.length} heroes, ${enemyCount} enemies, ${bossCount} bosses, ${itemEntries.length} items, ${finaleEntries.length} finales, ${stageEntries.length} stages).`);
+  const trialCount = bossEntries.filter(entry => entry.kind === 'trial').length;
+  console.log(`Wrote ${all.length} asset prompts (${heroEntries.length} heroes, ${enemyCount} enemies, ${bossCount} bosses, ${trialCount} trials, ${itemEntries.length} items, ${finaleEntries.length} finales, ${stageEntries.length} stages).`);
   console.log(outJsonl);
   console.log(outManifest);
   console.log(outStageRegistry);

@@ -83,6 +83,17 @@ test('a raw refund below the cap remains unchanged', () => {
   assert.deepEqual(capped.map(reward => reward.rawShardsReturned), [12, 20, 0]);
 });
 
+test('a free booster credit awards no duplicate fragments', () => {
+  const rewards = Array.from(
+    { length: 5 },
+    (_, cardIndex) => duplicateReward(cardIndex, 50)
+  );
+  const settled = capDuplicateRefunds(rewards, 0);
+
+  assert.equal(settled.reduce((sum, reward) => sum + reward.rawShardsReturned, 0), 250);
+  assert.equal(settled.reduce((sum, reward) => sum + reward.shardsReturned, 0), 0);
+});
+
 test('settlement does not alter selected card IDs, order or guarantees', () => {
   const rare = {
     id: 'rare',

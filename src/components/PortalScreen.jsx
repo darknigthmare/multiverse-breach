@@ -27,6 +27,20 @@ import {
   getPortalBoosterPackArt,
   getPortalBoosterRotation
 } from '../game/portalBoosterCatalog';
+import { createCardCatalogFromPortalCandidates } from '../game/cards/cardCatalog';
+import { createCardSetCatalog } from '../game/cards/cardSetCatalog';
+import { buildCardId, createCardDefinition } from '../game/cards/cardSchema';
+import {
+  addCardToCollection,
+  addCardsToCollection,
+  appendOpeningHistory,
+  claimSetMilestone
+} from '../game/cards/cardCollectionEngine';
+import { migrateCardSaveWithDiagnostics } from '../game/cards/cardSaveMigration';
+import PortalAtlas from './visuals/PortalAtlas';
+
+const CollectionHome = React.lazy(() => import('./collection/CollectionHome'));
+const PortalLab = React.lazy(() => import('./admin/PortalLab'));
 
 const PORTAL_RARITIES = {
   common: { id: 'common', label: { fr: 'Stable', en: 'Stable' }, color: '#9fb6bb', weight: 58, duplicateRefund: 12 },
@@ -39,6 +53,23 @@ const CORE_ANOMALY_IDS = new Set(['masterchief', 'predator', 'pyramidhead', 'neo
 const CORE_EPIC_IDS = new Set(['marcus', 'ripley', 'freeman', 'snake', 'solbadguy', 'ragna', 'shepard', 'luke', 'isaac', 'taichi', 'motoko']);
 const NEXUS_UNIVERSE = 'Nexus de Convergence';
 const PITY_LIMIT = 6;
+const EMPTY_REWARD_ID_SET = new Set();
+// P2 starts with two reviewed visual pilots. Other universes remain visibly
+// marked DRAFT until their reference dossiers and palettes are approved.
+const CARD_PILOT_PALETTES = Object.freeze({
+  [NEXUS_UNIVERSE]: Object.freeze({
+    palettePrimary: '#39c5bb',
+    paletteSecondary: '#07131d',
+    accent: '#ffcf5a',
+    foilGradient: 'linear-gradient(125deg, #39c5bb, #7df9ff 42%, #ffcf5a 72%, #b27cff)'
+  }),
+  '28 Days Later': Object.freeze({
+    palettePrimary: '#b83a2d',
+    paletteSecondary: '#170d0a',
+    accent: '#f4c768',
+    foilGradient: 'linear-gradient(125deg, #5c1712, #b83a2d 38%, #f4c768 68%, #657169)'
+  })
+});
 const PORTAL_ELIGIBLE_HEROES = HEROES_DB.filter(hero => !hero.campaignExclusive);
 const HERO_BY_ID = new Map(PORTAL_ELIGIBLE_HEROES.map(hero => [hero.id, hero]));
 const COLLECTIBLE_SKINS = Object.values(SKIN_CATALOG)
@@ -177,6 +208,31 @@ const appendUnique = (items = [], additions = []) => {
     if (!next.includes(item)) next.push(item);
   });
   return next;
+};
+
+const getCardRewardKey = ({ universe, kind, rewardKind, rewardId }) => (
+  `${String(universe || '')}\u0000${String(rewardKind || kind || '')}\u0000${String(rewardId || '')}`
+);
+const getLegacyRewardKey = ({ kind, rewardKind, rewardId }) => (
+  `${String(rewardKind || kind || '')}\u0000${String(rewardId || '')}`
+);
+
+const getRewardIdentityCollisions = definitions => {
+  const grouped = new Map();
+  definitions.forEach(definition => {
+    const key = `${definition.rewardKind}\u0000${definition.rewardId}`;
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(definition);
+  });
+  return Array.from(grouped.entries())
+    .filter(([, entries]) => entries.length > 1)
+    .map(([key, entries]) => ({
+      key,
+      rewardKind: entries[0].rewardKind,
+      rewardId: entries[0].rewardId,
+      cardIds: entries.map(entry => entry.id),
+      universes: [...new Set(entries.map(entry => entry.universe))]
+    }));
 };
 
 const appendUniqueObjects = (items = [], additions = []) => {
@@ -370,7 +426,9 @@ const makeBoosterCandidates = ({
         : null;
 
       return {
-        id: candidate.id,
+        id: candidate.kind === 'hero'
+          ? `hero:${encodeURIComponent(banner.universe)}:${encodeURIComponent(candidate.id)}`
+          : candidate.id,
         rewardId: candidate.id,
         kind: candidate.kind,
         name: entity.name || candidate.id,
@@ -401,7 +459,7 @@ const makeBoosterCandidates = ({
 
   scopedHeroes.forEach(hero => {
     candidates.push({
-      id: `hero:${hero.id}`,
+      id: `hero:${encodeURIComponent(hero.universe)}:${encodeURIComponent(hero.id)}`,
       rewardId: hero.id,
       kind: 'hero',
       name: hero.name,
@@ -697,6 +755,7 @@ export default function PortalScreen({
   hiddenUniverses = [],
   disabledAssets = {},
   completedStages = [],
+  collectionOnly = false,
   onBack
 }) {
   const [activeBanner, setActiveBanner] = useState(DEFAULT_OC_BOOSTER_ID);
@@ -707,6 +766,8 @@ export default function PortalScreen({
   const [boosterRewards, setBoosterRewards] = useState([]);
   const [revealedCards, setRevealedCards] = useState([]);
   const [boosterRefund, setBoosterRefund] = useState(0);
+  const [collectionOpen, setCollectionOpen] = useState(false);
+  const [portalLabOpen, setPortalLabOpen] = useState(false);
   const [rotationNow, setRotationNow] = useState(() => Date.now());
   const timersRef = useRef([]);
   const openingGuardRef = useRef(false);
@@ -867,6 +928,129 @@ export default function PortalScreen({
     searchText: `multivers permanent convergence ${universePortalBanners.map(banner => banner.universe).join(' ')}`,
     match: () => true
   }), [universePortalBanners]);
+  const catalogRewardCandidates = useMemo(() => {
+    const baseCandidates = makeBoosterCandidates({
+      banner: multiverseBanner,
+      visibleHeroes: PORTAL_ELIGIBLE_HEROES,
+      disabledGearIds: EMPTY_REWARD_ID_SET
+    });
+    const originalWorldCandidates = ORIGINAL_WORLD_BOOSTERS.flatMap(pack => (
+      makeBoosterCandidates({
+        banner: pack,
+        visibleHeroes: PORTAL_ELIGIBLE_HEROES,
+        disabledGearIds: EMPTY_REWARD_ID_SET
+      })
+    ));
+    const ocUpdateCandidates = ocPermanentBanners.flatMap(pack => (
+      getOcBoosterContentUpdate(pack.id)?.cards || []
+    ));
+    const uniqueCandidates = new Map();
+    [...baseCandidates, ...originalWorldCandidates, ...ocUpdateCandidates].forEach(candidate => {
+      const key = getCardRewardKey(candidate);
+      if (!uniqueCandidates.has(key)) uniqueCandidates.set(key, candidate);
+    });
+    return Array.from(uniqueCandidates.values());
+  }, [multiverseBanner, ocPermanentBanners]);
+  const cardCatalog = useMemo(
+    () => createCardCatalogFromPortalCandidates(catalogRewardCandidates),
+    [catalogRewardCandidates]
+  );
+  const cardSetCatalog = useMemo(
+    () => createCardSetCatalog(cardCatalog, {
+      pageSize: 12,
+      releaseDate: '2026-07-31',
+      paletteByUniverse: CARD_PILOT_PALETTES
+    }),
+    [cardCatalog]
+  );
+  const completionCardDefinitions = useMemo(() => cardSetCatalog.definitions.map(setDefinition => {
+    const sourceCardId = setDefinition.chaseCardIds?.[0] || setDefinition.cardIds?.at(-1);
+    const sourceCard = sourceCardId ? cardCatalog.cardsById[sourceCardId] : null;
+    const logicalDefinition = createCardDefinition({
+      id: buildCardId({
+        universe: setDefinition.universe,
+        kind: 'completion',
+        rewardId: setDefinition.id
+      }),
+      setId: setDefinition.id,
+      number: setDefinition.cardIds.length + 1,
+      universe: setDefinition.universe,
+      kind: 'whatIf',
+      rewardKind: 'completion',
+      rewardId: setDefinition.id,
+      canonStatus: 'nexus-variant',
+      rarityId: 'anomaly',
+      dropWeight: 0,
+      color: setDefinition.palette?.accent || sourceCard?.color || '#ffb000',
+      tags: ['completion', 'master-frame'],
+      name: {
+        fr: `Anomalie de completion - ${setDefinition.universe}`,
+        en: `${setDefinition.universe} Completion Anomaly`
+      },
+      lore: {
+        fr: 'Signature hors serie accordee apres stabilisation complete du set.',
+        en: 'Out-of-series signature awarded after complete set stabilization.'
+      },
+      artId: sourceCard?.artId || null
+    });
+    const visualTheme = setDefinition.palette || null;
+    return {
+      ...logicalDefinition,
+      art: logicalDefinition.artId ? cardCatalog.artById[logicalDefinition.artId] || null : null,
+      visualTheme,
+      visualStatus: visualTheme ? 'pilot' : 'draft',
+      completionReward: true
+    };
+  }), [cardCatalog, cardSetCatalog]);
+  const collectionDefinitions = useMemo(() => {
+    const baseDefinitions = cardCatalog.definitions.map(definition => {
+      const visualTheme = cardSetCatalog.setsById[definition.setId]?.palette || null;
+      return {
+        ...definition,
+        art: definition.artId ? cardCatalog.artById[definition.artId] || null : null,
+        visualTheme,
+        visualStatus: visualTheme ? 'pilot' : 'draft'
+      };
+    });
+    return [
+      ...baseDefinitions,
+      ...completionCardDefinitions.filter(definition => portalCollection.cards?.[definition.id])
+    ];
+  }, [cardCatalog, cardSetCatalog, completionCardDefinitions, portalCollection.cards]);
+  const cardDefinitionByReward = useMemo(
+    () => new Map(cardCatalog.definitions.map(definition => [
+      getCardRewardKey(definition),
+      definition
+    ])),
+    [cardCatalog]
+  );
+  const collectionDiagnostics = useMemo(() => ({
+    collisions: cardCatalog.diagnostics.filter(diagnostic => diagnostic.code === 'card-id-collision'),
+    rewardIdentityCollisions: getRewardIdentityCollisions(cardCatalog.definitions)
+  }), [cardCatalog]);
+  const ambiguousLegacyRewardKeys = useMemo(
+    () => new Set(collectionDiagnostics.rewardIdentityCollisions.map(getLegacyRewardKey)),
+    [collectionDiagnostics]
+  );
+
+  // The catalog is required for a safe retroactive import: a legacy bare id
+  // is migrated only when it resolves to one continuity, and the operation is
+  // idempotent on every later portal visit.
+  useEffect(() => {
+    if (cardCatalog.definitions.length === 0) return;
+    setPortalCollection(previous => {
+      const migration = migrateCardSaveWithDiagnostics({
+        saveVersion: 9,
+        unlockedHeroes,
+        inventory,
+        portalStats,
+        portalCollection: previous
+      }, { cardDefinitions: cardCatalog.definitions });
+      return migration.migratedCardIds.length > 0
+        ? migration.save.portalCollection
+        : previous;
+    });
+  }, [cardCatalog, inventory, portalStats, setPortalCollection, unlockedHeroes]);
   const illustratedPortalBanners = useMemo(
     () => universePortalBanners.filter(banner => getPortalBoosterArt(banner.universe)),
     [universePortalBanners]
@@ -903,6 +1087,10 @@ export default function PortalScreen({
     () => [...permanentPortalBanners, ...illustratedPortalBanners],
     [illustratedPortalBanners, permanentPortalBanners]
   );
+  const portalLabUniverseNames = useMemo(() => Array.from(new Set([
+    NEXUS_UNIVERSE,
+    ...universePortalBanners.map(banner => banner.universe)
+  ])), [universePortalBanners]);
   const availableBannerIds = useMemo(
     () => new Set(availablePortalBanners.map(banner => banner.id)),
     [availablePortalBanners]
@@ -941,6 +1129,12 @@ export default function PortalScreen({
   const activeBoosterArt = getPortalBoosterPackArt(activeBannerData.id)
     || getPortalBoosterArt(activeBannerData.universe);
   const activeBoosterPrice = getBoosterPrice(activeBannerData);
+  const activeCardSet = cardSetCatalog.definitions.find(
+    setDefinition => setDefinition.universe === activeBannerData.universe
+  ) || null;
+  const activeFreeBoosterCredits = activeBannerData.id === 'multi' || !activeCardSet
+    ? 0
+    : Math.max(0, Number(portalCollection.freeBoosterCredits?.[activeCardSet.id]) || 0);
   const boosterVisual = activeBoosterArt
     || activeBackdrop
     || '/backgrounds/multiverse-breach-title-arca-v1.png';
@@ -991,7 +1185,7 @@ export default function PortalScreen({
   const openingLocked = ['charging', 'cutting', 'opening'].includes(openingPhase);
   const cardsVisible = ['revealing', 'complete'].includes(openingPhase);
   const canOpenBooster = openingPhase === 'sealed'
-    && breachShards >= activeBoosterPrice
+    && (activeFreeBoosterCredits > 0 || breachShards >= activeBoosterPrice)
     && activeRewardCandidates.length > 0;
   const revealedCount = revealedCards.length;
   const rawBoosterRefund = boosterRewards.reduce(
@@ -1017,8 +1211,15 @@ export default function PortalScreen({
     (total, entry) => total + entry.count,
     0
   );
+  const collectionOwnedCount = cardCatalog.definitions.reduce(
+    (total, definition) => total + Number((portalCollection.cards?.[definition.id]?.copies || 0) > 0),
+    0
+  );
 
   const isCandidateOwned = (candidate) => {
+    const cardDefinition = cardDefinitionByReward.get(getCardRewardKey(candidate));
+    if ((portalCollection.cards?.[cardDefinition?.id]?.copies || 0) > 0) return true;
+    if (ambiguousLegacyRewardKeys.has(getLegacyRewardKey(candidate))) return false;
     if (candidate.kind === 'hero') return unlockedHeroes.includes(candidate.rewardId);
     if (['equipment', 'event', 'skin'].includes(candidate.kind)) {
       return inventory.includes(candidate.rewardId);
@@ -1036,7 +1237,11 @@ export default function PortalScreen({
     return false;
   };
 
-  const applyBoosterTransaction = (rewards, pricePaid) => {
+  const applyBoosterTransaction = (rewards, pricePaid, freeCreditSetId = null) => {
+    const obtainedAt = new Date().toISOString();
+    const cardDefinitions = rewards
+      .map(reward => reward.cardDefinition)
+      .filter(Boolean);
     const newHeroIds = rewards
       .filter(reward => reward.kind === 'hero' && !reward.wasDuplicate)
       .map(reward => reward.rewardId);
@@ -1103,9 +1308,17 @@ export default function PortalScreen({
     setBreachShards(previous => previous - pricePaid + totalRefund);
     if (newHeroIds.length > 0) setUnlockedHeroes(previous => appendUnique(previous, newHeroIds));
     if (newInventoryIds.length > 0) setInventory(previous => appendUnique(previous, newInventoryIds));
-    if (newArchives.length > 0 || newHudThemes.length > 0 || hasNewPortalCollectionIds) {
-      setPortalCollection(previous => ({
+    setPortalCollection(previous => {
+      const freeBoosterCredits = { ...(previous?.freeBoosterCredits || {}) };
+      if (freeCreditSetId) {
+        freeBoosterCredits[freeCreditSetId] = Math.max(
+          0,
+          (Number(freeBoosterCredits[freeCreditSetId]) || 0) - 1
+        );
+      }
+      const withRuntimeRewards = {
         ...previous,
+        freeBoosterCredits,
         archives: appendUniqueObjects(previous?.archives || [], newArchives),
         hudThemes: appendUniqueObjects(previous?.hudThemes || [], newHudThemes),
         karts: appendUnique(previous?.karts || [], newKartIds),
@@ -1121,11 +1334,16 @@ export default function PortalScreen({
             ];
           })
         )
-      }));
-    }
+      };
+      return addCardsToCollection(withRuntimeRewards, cardDefinitions, {
+        duplicateMode: previous?.duplicateMode,
+        obtainedAt
+      }).portalCollection;
+    });
 
     const historyEntries = rewards.map(reward => ({
       rewardId: reward.rewardId,
+      cardId: reward.cardDefinition?.id,
       kind: reward.kind,
       name: getLocalizedText(reward.name, lang),
       universe: reward.universe,
@@ -1139,14 +1357,14 @@ export default function PortalScreen({
       rawShardsReturned: reward.rawShardsReturned || 0,
       shardsReturned: reward.shardsReturned,
       netCost,
-      at: new Date().toISOString()
+      at: obtainedAt
     }));
     const heroRewards = rewards.filter(reward => reward.kind === 'hero');
     const hasNewHero = heroRewards.some(reward => !reward.wasDuplicate);
     const duplicateHeroes = heroRewards.filter(reward => reward.wasDuplicate).length;
 
-    setPortalStats(previous => ({
-      ...previous,
+    setPortalStats(previous => appendOpeningHistory({
+      ...(previous || {}),
       pulls: (previous?.pulls || 0) + rewards.length,
       packsOpened: (previous?.packsOpened || 0) + 1,
       duplicateStreak: hasNewHero
@@ -1160,14 +1378,10 @@ export default function PortalScreen({
         rawRefund,
         refundAwarded: totalRefund,
         netCost,
-        at: new Date().toISOString()
+        at: obtainedAt
       },
-      lastPull: historyEntries[historyEntries.length - 1],
-      history: [
-        ...historyEntries.slice().reverse(),
-        ...(previous?.history || [])
-      ].slice(0, 30)
-    }));
+      lastPull: historyEntries[historyEntries.length - 1]
+    }, historyEntries.slice().reverse()));
     setBoosterRefund(totalRefund);
     if (
       newHeroIds.length > 0
@@ -1191,6 +1405,8 @@ export default function PortalScreen({
     const ownedCandidateIds = activeRewardCandidates
       .filter(isCandidateOwned)
       .map(candidate => candidate.id);
+    const freeCreditSetId = activeFreeBoosterCredits > 0 ? activeCardSet?.id : null;
+    const pricePaid = freeCreditSetId ? 0 : activeBoosterPrice;
     const rewards = capDuplicateRefunds(
       createBoosterRewards({
         candidates: activeRewardCandidates,
@@ -1199,18 +1415,21 @@ export default function PortalScreen({
         preferUniverseSpread: activeBannerData.id === 'multi',
         guaranteeNonHeroRare: activeBannerData.guaranteeNonHeroRare
       }),
-      activeBoosterPrice
+      pricePaid
     );
     if (rewards.length !== BOOSTER_CARD_COUNT) {
       openingGuardRef.current = false;
       return;
     }
-
-    setBoosterRewards(rewards);
+    const rewardsWithCards = rewards.map(reward => ({
+      ...reward,
+      cardDefinition: cardDefinitionByReward.get(getCardRewardKey(reward)) || null
+    }));
+    setBoosterRewards(rewardsWithCards);
     setRevealedCards([]);
     setOpeningPhase('charging');
     sound.playSfx('portal');
-    applyBoosterTransaction(rewards, activeBoosterPrice);
+    applyBoosterTransaction(rewardsWithCards, pricePaid, freeCreditSetId);
 
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
@@ -1325,6 +1544,137 @@ export default function PortalScreen({
     window.requestAnimationFrame(() => previewTriggerRef.current?.focus());
   };
 
+  const updateCollectionCard = (cardId, patch) => {
+    setPortalCollection(previous => {
+      const entry = previous?.cards?.[cardId];
+      if (!entry) return previous;
+      return {
+        ...previous,
+        cards: {
+          ...previous.cards,
+          [cardId]: { ...entry, ...patch }
+        }
+      };
+    });
+  };
+
+  const handleClaimSetMilestone = (setDefinition, rewardDescriptor) => {
+    const milestone = Number(rewardDescriptor.milestone);
+    const claim = claimSetMilestone({
+      portalCollection,
+      setDefinition,
+      milestone
+    });
+    if (!claim.claimed) return;
+
+    const unlockables = getUniverseUnlockables(setDefinition.universe);
+    let nextCollection = claim.portalCollection;
+    if (milestone === 10) {
+      nextCollection = {
+        ...nextCollection,
+        freeBoosterCredits: {
+          ...(nextCollection.freeBoosterCredits || {}),
+          [setDefinition.id]: (Number(nextCollection.freeBoosterCredits?.[setDefinition.id]) || 0)
+            + Math.max(1, Number(rewardDescriptor.amount) || 1)
+        }
+      };
+    }
+    if (milestone === 25 && unlockables?.profileTitle) {
+      nextCollection = {
+        ...nextCollection,
+        profileTitles: appendUnique(nextCollection.profileTitles || [], [unlockables.profileTitle.id])
+      };
+    }
+    if (milestone === 50 && unlockables?.profileBanner) {
+      nextCollection = {
+        ...nextCollection,
+        profileBanners: appendUnique(nextCollection.profileBanners || [], [unlockables.profileBanner.id])
+      };
+    }
+    if (milestone === 75) {
+      const effect = unlockables?.portalEffect || unlockables?.koEffect;
+      if (effect) {
+        const collectionKey = PORTAL_COLLECTION_ID_KEYS[effect.kind];
+        nextCollection = {
+          ...nextCollection,
+          [collectionKey]: appendUnique(nextCollection[collectionKey] || [], [effect.id])
+        };
+      }
+    }
+    if (milestone === 90) {
+      const hudDefinition = cardCatalog.definitions.find(definition => (
+        definition.universe === setDefinition.universe && definition.rewardKind === 'hud'
+      ));
+      const hudArt = hudDefinition?.artId ? cardCatalog.artById[hudDefinition.artId] : null;
+      if (hudDefinition) {
+        const hudTheme = {
+          id: hudDefinition.rewardId,
+          name: hudDefinition.name,
+          universe: hudDefinition.universe,
+          image: hudArt?.backdrop || hudArt?.image,
+          frame: hudArt?.image || OPENAI_COSMETIC_VISUALS.hudTheme.image,
+          mode: 'RPG',
+          color: hudDefinition.color
+        };
+        nextCollection = {
+          ...nextCollection,
+          hudThemes: appendUniqueObjects(nextCollection.hudThemes || [], [hudTheme])
+        };
+      }
+    }
+    if (milestone === 100) {
+      const completionDefinition = completionCardDefinitions.find(definition => (
+        definition.setId === setDefinition.id
+      ));
+      if (completionDefinition) {
+        nextCollection = addCardToCollection(nextCollection, completionDefinition, {
+          duplicateMode: nextCollection.duplicateMode
+        }).portalCollection;
+        const completionEntry = nextCollection.cards?.[completionDefinition.id];
+        nextCollection = {
+          ...nextCollection,
+          cards: {
+            ...nextCollection.cards,
+            [completionDefinition.id]: {
+              ...completionEntry,
+              finishesOwned: appendUnique(completionEntry?.finishesOwned || [], ['animated'])
+            }
+          },
+          masterFrames: appendUnique(nextCollection.masterFrames || [], [setDefinition.id])
+        };
+      }
+    }
+    setPortalCollection(nextCollection);
+    sound.playSfx('levelup');
+  };
+
+  if (collectionOnly) {
+    return (
+      <main className="title-collection-route" data-title-collection="true">
+        <React.Suspense fallback={(
+          <div className="tcg-album-overlay" role="status">
+            <div className="tcg-empty-state">
+              {lang === 'fr' ? 'Indexation de la collection...' : 'Indexing collection...'}
+            </div>
+          </div>
+        )}>
+          <CollectionHome
+            lang={lang}
+            definitions={collectionDefinitions}
+            sets={cardSetCatalog.definitions}
+            cards={portalCollection.cards || {}}
+            setProgress={portalCollection.setProgress || {}}
+            history={portalStats?.history || []}
+            diagnostics={collectionDiagnostics}
+            onClose={onBack}
+            onUpdateCard={updateCollectionCard}
+            onClaimMilestone={handleClaimSetMilestone}
+          />
+        </React.Suspense>
+      </main>
+    );
+  }
+
   return (
     <div
       className="portal-container booster-portal"
@@ -1366,16 +1716,43 @@ export default function PortalScreen({
         >
           {getTranslation(lang, 'backToHub')}
         </button>
+        <button
+          type="button"
+          className="btn-retro"
+          disabled={openingLocked}
+          data-open-tcg-album="true"
+          onClick={() => {
+            setCollectionOpen(true);
+            sound.playSfx('click');
+          }}
+        >
+          {lang === 'fr' ? 'ALBUM DES TRAMES' : 'THREAD ALBUM'} {collectionOwnedCount}/{cardCatalog.definitions.length}
+        </button>
+        <button
+          type="button"
+          className="btn-retro"
+          data-open-portal-lab="true"
+          disabled={openingLocked}
+          onClick={() => {
+            setPortalLabOpen(true);
+            sound.playSfx('click');
+          }}
+        >
+          PORTAL LAB P3
+        </button>
         <div className="portal-shard-counter">
           {getTranslation(lang, 'shards')}: <strong>{breachShards}</strong>
+          {activeFreeBoosterCredits > 0 ? (
+            <small> / {lang === 'fr' ? 'BOOSTER OFFERT' : 'FREE BOOSTER'} x{activeFreeBoosterCredits}</small>
+          ) : null}
         </div>
       </div>
 
       <h1 className="cyber-title booster-portal-title">{getTranslation(lang, 'btnPortal')}</h1>
       <p className="booster-portal-lead">
         {lang === 'fr'
-          ? 'Chaque booster renferme exactement 5 cartes, dont au moins une Rare. Personnages, equipements, karts, protocoles, apparences, stages, musiques, supers de terrain, assists, effets K.-O./portail, poses, bannieres, titres et themes HUD sont de vrais deblocages sauvegardes.'
-          : 'Every booster contains exactly 5 cards, including at least one Rare. Characters, equipment, karts, protocols, appearances, stages, music, field supers, assists, K.O./portal effects, poses, banners, titles and HUD themes are real saved unlocks.'}
+          ? 'Chaque booster renferme exactement 5 cartes. L Album des Trames conserve les copies, la maitrise, les finitions et les 100 derniers tirages sans doubler les remboursements de fragments.'
+          : 'Every booster contains exactly 5 cards. The Thread Album preserves copies, mastery, finishes and the last 100 pulls without duplicating fragment refunds.'}
       </p>
 
       <section className="booster-catalog-panel" aria-labelledby="booster-catalog-title">
@@ -1623,17 +2000,22 @@ export default function PortalScreen({
           style={{ '--portal-color': activeBannerData.color }}
         >
           <div
-            className={`portal-vortex booster-stage-vortex portal-shape-${activeBannerData.shape}`}
+            className="booster-stage-portal-visual"
             style={{
               '--portal-image': activeBackdrop ? `url(${activeBackdrop})` : 'none',
               '--portal-color': activeBannerData.color
             }}
             aria-hidden="true"
           >
-            <span className="portal-energy portal-energy-back" />
-            <span className="portal-energy portal-energy-front" />
-            <span className="portal-fracture" />
-            <span className="portal-core" />
+            <span className="booster-stage-portal-backdrop" />
+            <PortalAtlas
+              universe={activeBannerData.universe}
+              openingPhase={openingPhase}
+              lang={lang}
+              className="booster-stage-portal-atlas"
+              decorative
+              style={{ '--portal-atlas-color': activeBannerData.color }}
+            />
           </div>
 
           {!cardsVisible && (
@@ -1902,6 +2284,47 @@ export default function PortalScreen({
           </div>
         </section>
       )}
+
+      {collectionOpen ? (
+        <React.Suspense fallback={(
+          <div className="tcg-album-overlay" role="status">
+            <div className="tcg-empty-state">
+              {lang === 'fr' ? 'Indexation de la collection...' : 'Indexing collection...'}
+            </div>
+          </div>
+        )}>
+          <CollectionHome
+            lang={lang}
+            definitions={collectionDefinitions}
+            sets={cardSetCatalog.definitions}
+            cards={portalCollection.cards || {}}
+            setProgress={portalCollection.setProgress || {}}
+            history={portalStats?.history || []}
+            diagnostics={collectionDiagnostics}
+            onClose={() => {
+              setCollectionOpen(false);
+              sound.playSfx('click');
+            }}
+            onUpdateCard={updateCollectionCard}
+            onClaimMilestone={handleClaimSetMilestone}
+          />
+        </React.Suspense>
+      ) : null}
+
+      {portalLabOpen ? (
+        <React.Suspense fallback={null}>
+          <PortalLab
+            isOpen
+            lang={lang}
+            initialUniverse={activeBannerData.universe}
+            universes={portalLabUniverseNames}
+            onClose={() => {
+              setPortalLabOpen(false);
+              sound.playSfx('click');
+            }}
+          />
+        </React.Suspense>
+      ) : null}
 
       {artPreviewOpen && activeBoosterArt && (
         <div

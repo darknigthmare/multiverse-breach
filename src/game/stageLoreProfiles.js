@@ -82,7 +82,8 @@ const buildProfile = ({
   priority,
   auditStatus,
   stageId = null,
-  universes = null
+  universes = null,
+  exclusiveVisualReference = false
 }) => {
   const normalizedCanonicalName = normalizeText(canonicalName);
   const normalizedVisualAnchor = normalizeText(visualAnchor);
@@ -99,6 +100,7 @@ const buildProfile = ({
     generationBlocked,
     ...(stageId === null ? {} : { stageId }),
     ...(universes ? { universes: Object.freeze([...universes]) } : {}),
+    ...(exclusiveVisualReference ? { exclusiveVisualReference: true } : {}),
     modes: buildModes({
       universeLabel,
       slug,
@@ -162,7 +164,14 @@ const UNIVERSE_PROFILE_DEFINITIONS = [
   ["War of the Worlds", "P1", "ABSENT-VISUEL", "Bayonne street and ferry approach under Tripod attack", ["https://www.paramountpictures.com/movies/war-of-the-worlds"]],
   ["Ghostbusters", "P1", "ABSENT-VISUEL", "55 Central Park West rooftop temple", ["https://www.sonypictures.com/movies/ghostbusters"]],
   ["Onechanbara", "P1", "ABSENT-VISUEL", "Zombie-infested Shinjuku rooftop and subway entrance", ["https://store.steampowered.com/app/1232460/Onee_Chanbara_ORIGIN/"]],
-  ["Despicer", "P0", "ABSENT-VISUEL", "A definir apres identification de l'oeuvre exacte", ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/expandedUniverses.js"]],
+  [
+    "Despicer",
+    "P0",
+    "ABSENT-VISUEL",
+    "Despiser (Philip J. Cook): purgatory highway and lava bridges leading to the Despiser's dark fortress",
+    ["https://www.imdb.com/title/tt0349345/plotsummary/", "https://www.rockshockpop.com/articles/movies-aa/441088-despiser-visual-vengeance-blu-ray-review"],
+    "Surreal early-CGI purgatory with paved soul roads above lava oceans, ragged Shadowmen, improvised missile vehicles and a macabre alien fortress; preserve the source key spelling Despicer only for save compatibility"
+  ],
   ["Repo! The Genetic Opera", "P1", "ABSENT-VISUEL", "Genetic Opera stage inside GeneCo tower", ["https://en.wikipedia.org/wiki/Repo!_The_Genetic_Opera"]],
   ["Tremors", "P1", "ABSENT-VISUEL", "Perfection general store rooftops and exposed road", ["https://www.universalpictures.com/movies/tremors"]],
   ["Skyline", "P1", "ABSENT-VISUEL", "Marina del Rey penthouse rooftop under the blue harvest light", ["https://en.wikipedia.org/wiki/Skyline_(2010_film)"]],
@@ -209,7 +218,7 @@ const UNIVERSE_PROFILE_DEFINITIONS = [
   ["Banlieue 13", "P1", "ABSENT-VISUEL", "B13 tower-block rooftops and casino approach", ["https://www.imdb.com/title/tt0414852/"]],
   ["House of 1000 Corpses", "P1", "ABSENT-VISUEL", "Captain Spaulding's Museum of Monsters and Madmen and Firefly house", ["https://www.lionsgate.com/movies/house-of-1000-corpses"]],
   ["Overlord Anime", "P1", "ABSENT-VISUEL", "Throne Room of Nazarick and Lemegeton approach", ["https://overlord-anime.com/"]],
-  ["SCP Foundation", "P1", "ABSENT-VISUEL", "Modular Site-19 containment wing based on SCP facility conventions", ["https://scp-wiki.wikidot.com/secure-facilities-locations"]],
+  ["SCP Foundation", "P1", "ABSENT-VISUEL", "Original modular containment wing compatible with Site-19 facility conventions; no single canonical visual layout is asserted", ["https://scp-wiki.wikidot.com/secure-facilities-locations", "https://scp-wiki.wikidot.com/site-19-dossier"]],
   ["Spoof Movie", "P1", "ABSENT-VISUEL", "South Central block party and Loc Dog drive-by route from Don't Be a Menace (1996)", ["https://www.universalpicturesathome.com/movies/dont-be-a-menace-to-south-central-while-drinking-your-juice-in-the-hood"]],
   ["Metal Gear Rising", "P1", "ABSENT-VISUEL", "World Marshal headquarters rooftop in Denver", ["https://store.steampowered.com/app/235460/METAL_GEAR_RISING_REVENGEANCE/"]],
   ["BioShock", "P1", "ABSENT-VISUEL", "Medical Pavilion atrium and bathysphere station", ["https://bioshock.2k.com/"]],
@@ -272,11 +281,31 @@ const UNIVERSE_PROFILE_DEFINITIONS = [
   ["Cthulhu", "P1", "ABSENT-VISUEL", "R'lyeh risen city from The Call of Cthulhu", ["https://en.wikisource.org/wiki/The_Call_of_Cthulhu"]],
   ["Necronomicon", "P1", "ABSENT-VISUEL", "Miskatonic library archive framing the 1993 anthology portals", ["https://www.imdb.com/title/tt0107664/"]],
   ["Re-Animator", "P1", "ABSENT-VISUEL", "Miskatonic Medical School morgue laboratory", ["https://www.arrowfilms.com/re-animator-blu-ray/11204546.html"]],
-  ["Digimon Celestial Rift", "P0", "ABSENT-VISUEL", "A definir: choisir une serie Digimon et un lieu canonique avant generation", ["https://digimon.net/"]],
+  [
+    "Digimon Celestial Rift",
+    "P0",
+    "ABSENT-VISUEL",
+    "Custom crossover battlefield at the Kernel boundary above the Dark Area",
+    [
+      "https://digimon.net/reference_en/detail.php?directory_name=angewomon",
+      "https://digimon.net/reference_en/detail.php?directory_name=ladydevimon",
+      "https://digimon.net/reference_en/detail.php?directory_name=ofanimon",
+      "https://digimon.net/reference_en/detail.php?directory_name=anubimon"
+    ],
+    "A luminous white-gold data lattice and holy gate descending into a black-violet Dark Area; angelic feather geometry, batlike darkness waves and Egyptian judgment motifs, treated explicitly as an original crossover rather than a single canonical anime location"
+  ],
   ["Aural Vampire", "P1", "ABSENT-VISUEL", "Vampire Ecstasy industrial darkwave live club", ["https://www.auralvampire.com/"]],
   ["Buckethead", "P1", "ABSENT-VISUEL", "Bucketheadland haunted theme-park entrance and Giant Robot ride", ["https://www.bucketheadpikes.com/"]],
   ["Korn", "P1", "ABSENT-VISUEL", "Follow the Leader playground and arena pit", ["https://www.kornofficial.com/"]],
   ["Marilyn Manson", "P1", "ABSENT-VISUEL", "Mechanical Animals sterile glam television studio", ["https://www.marilynmanson.com/"]],
+  [
+    "Neon Requiem",
+    "P0",
+    "ABSENT-VISUEL",
+    "Nadir-9 vertical megacity, from the Rainline Bazaar to the Helix Memory Vault and OMNIA Cathedral",
+    ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/originalUniversesManifest.json"],
+    "Original project canon only: near-black violet sky and black-blue architecture, cyan Ghostline data rails, magenta Helix Crown accents, acid rain, licensed memory canisters and stacked transit platforms; OMNIA manifests as a monumental citymind cathedral rather than a humanoid robot"
+  ],
   ["Nexus de Convergence", "P1", "ABSENT-VISUEL", "Mosaic City Central Atrium and A.R.C.A. anchor infrastructure", ["https://github.com/darknigthmare/multiverse-breach/blob/master/src/game/ocCampaign.js"]],
   [
     "Thalassa Mnémique",
@@ -309,7 +338,7 @@ const FULL_COVERAGE_PROFILE_DEFINITIONS = [
   ["Police Squad", "P2", "ABSENT-VISUEL", "Police Squad precinct bullpen and evidence room", ["https://www.paramountplus.com/shows/police-squad/"]],
   ["Stargate Infinity", "P2", "ABSENT-VISUEL", "SGC evacuation gate room in the animated continuity", ["https://en.wikipedia.org/wiki/Stargate_Infinity"]],
   ["The Brave Little Toaster", "P2", "ABSENT-VISUEL", "Ernie's Disposal junkyard crusher line", ["https://movies.disney.com/the-brave-little-toaster"]],
-  ["Evolution", "P2", "ABSENT-VISUEL", "Glen Canyon mall service corridors during the selenium finale", ["https://en.wikipedia.org/wiki/Evolution_(2001_film)"]],
+  ["Evolution", "P2", "ABSENT-VISUEL", "Arizona meteor cave and desert command site after the napalm strike, with the selenium fire engine facing the fused final organism", ["https://www.paramountpictures.com/movies/evolution", "https://en.wikipedia.org/wiki/Evolution_(2001_film)"]],
   ["Evolution: The Animated Series", "P2", "ABSENT-VISUEL", "Genus command laboratory and alien containment yard", ["https://en.wikipedia.org/wiki/Alienators:_Evolution_Continues"]],
   ["Early Edition", "P2", "ABSENT-VISUEL", "McGinty's bar and Chicago street delivery route", ["https://en.wikipedia.org/wiki/Early_Edition"]],
   ["VelociPastor", "P2", "ABSENT-VISUEL", "Church parish hall opening onto the Chinatown showdown alley", ["https://www.thevelocipastor.com/"]],
@@ -457,6 +486,23 @@ const STAGE_ARC_PROFILE_DEFINITIONS = [
     canonicalName: 'Shiganshina rooftop above a Death Note investigation command post invaded by Inuyashiki machinery',
     referenceUrls: ['https://shingeki.tv/final/', 'https://www.viz.com/death-note', 'https://www.inuyashiki-project.com/'],
     universes: ['Attack on Titan', 'Death Note', 'Inuyashiki']
+  },
+  {
+    key: 'hellraiser_2022_six_configurations',
+    stageId: 40003,
+    priority: 'P0',
+    auditStatus: 'ABSENT-VISUEL',
+    canonicalName: "Hellraiser (2022) Voight mansion threshold opening into Leviathan's clean, surgical Labyrinth, staged around all six transforming configurations",
+    visualAnchor: 'Hellraiser (2022) continuity only, not the classic 1987 Pinhead: center the tall, pale, hairless and androgynous Priest as a ceremonial silhouette with a face divided by thin phrenology-like incisions, short pearl-capped pins instead of long iron nails, and exposed anatomy folded into floor-length flesh vestments in ivory, pink, lilac and vermilion; absolutely no black leather, male Elliot Spencer likeness or actor likeness. Array six distinct black-and-brass puzzle forms around the Priest, each readable at thumbnail scale: Lament as the base cube; Lore as an octagonal form forced from the cube; Laudarant as two joined pyramids; Liminal as open hypercube-like geometry; Lazarus as an hourglass; and Leviathan as the elongated diamond-like final form. Keep the 2022 Labyrinth clinical, geometric and surgical, with no readable text or logo.',
+    referenceUrls: [
+      'https://press.hulu.com/shows/hellraiser/',
+      'https://www.youtube.com/watch?v=c4yrj7Uu7ek',
+      'https://blog.keiththompsonart.com/2022/10/hellraiser.html',
+      'https://hellraiser.uk/interviews/keith-thompson-lead-concept-artist-hellraiser-2022/',
+      'https://emborg.artstation.com/projects/vJ6ZRA'
+    ],
+    universes: ['Hellraiser'],
+    exclusiveVisualReference: true
   },
   {
     key: 'resident_evil_raccoon_lockdown',

@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "approvalSignal": "Continue",
+  "approvedAt": "2026-08-01",
+  "approvedBaseline": {
+    "range": "CG01-CG08",
+    "characterCount": 6,
+    "catalogEntryCount": 48,
+    "manifestSha256": "5ee71ee95fcdd90cdda39a08e6c8c659b813d59911ebee8a6a5a16f342509d54"
+  },
+  "openedWave": {
+    "range": "CG09-CG15",
+    "targetEntryCount": 35,
+    "generationAllowed": true,
+    "manualReview": {
+      "referenceDossiers": true,
+      "rightsAndLore": true,
+      "contentRating": "family-safe fan art; non-graphic corruption",
+      "approvedBySignal": "Continue"
+    },
+    "characterReferencePolicy": "Use the approved local CG01 bitmap as the identity anchor. Timeline and swap variants receive an explicit variant reference id after QA.",
+    "characters": [
+      {
+        "characterId": "player_anchor",
+        "ageStatus": "unknown-family-safe-only",
+        "consentStatus": "no-romance",
+        "approvedTypes": [
+          "goofy",
+          "alignmentSwap",
+          "zombieVersion",
+          "firstStep"
+        ],
+        "excluded": {
+          "beachFamily": "Age and body identity are intentionally unknown; fan-service remains blocked.",
+          "maidService": "Age and body identity are intentionally unknown; service fan-service remains blocked.",
+          "genderSwap/iconicOutfitSwap": "A gender swap is not visually meaningful under the anonymous closed armor, and no second approved outfit anchor is designated."
+        }
+      },
+      {
+        "characterId": "masterchief",
+        "ageStatus": "adult-confirmed",
+        "consentStatus": "no-romance",
+        "approvedTypes": [
+          "goofy",
+          "alignmentSwap",
+          "iconicOutfitSwap",
+          "zombieVersion",
+          "firstStep"
+        ],
+        "excluded": {
+          "beachFamily": "No lore-coherent beach outfit; the helmeted MJOLNIR identity lock must not be bypassed.",
+          "maidService": "The costume is culturally and tonally incoherent for John-117."
+        }
+      },
+      {
+        "characterId": "arbiter",
+        "ageStatus": "adult-confirmed",
+        "consentStatus": "no-romance",
+        "approvedTypes": [
+          "goofy",
+          "alignmentSwap",
+          "iconicOutfitSwap",
+          "zombieVersion",
+          "futureExperienced"
+        ],
+        "excluded": {
+          "beachFamily": "No attested lore-coherent beach outfit and no need to expose Sangheili anatomy for fan-service.",
+          "maidService": "A human maid/service costume is culturally incoherent for Thel."
+        }
+      },
+      {
+        "characterId": "wesker",
+        "ageStatus": "adult-confirmed",
+        "consentStatus": "no-romance",
+        "approvedTypes": [
+          "beachFamily",
+          "maidService",
+          "goofy",
+          "alignmentSwap",
+          "genderSwap",
+          "zombieVersion",
+          "firstStep"
+        ],
+        "excluded": {}
+      },
+      {
+        "characterId": "jill",
+        "ageStatus": "adult-confirmed",
+        "consentStatus": "no-romance",
+        "approvedTypes": [
+          "beachFamily",
+          "maidService",
+          "goofy",
+          "alignmentSwap",
+          "genderSwap",
+          "zombieVersion",
+          "futureExperienced"
+        ],
+        "excluded": {}
+      },
+      {
+        "characterId": "leon",
+        "ageStatus": "adult-confirmed",
+        "consentStatus": "no-romance",
+        "approvedTypes": [
+          "beachFamily",
+          "maidService",
+          "goofy",
+          "alignmentSwap",
+          "genderSwap",
+          "zombieVersion",
+          "futureExperienced"
+        ],
+        "excluded": {}
+      }
+    ]
+  },
+  "safety": {
+    "romance": "No kiss and no imposed romance in this wave.",
+    "fanService": "Family-safe, non-sexualized, natural poses only. Beach and service variants require adult-confirmed.",
+    "corruption": "Readable but non-graphic: no gore, exposed organs, severed body parts or humiliation.",
+    "rights": "Official pages are fact references only. No publisher bitmap, screenshot, poster composition, logo, watermark, actor or scan-model likeness.",
+    "classification": "CG09-CG11 publish only as Fan Art. CG12-CG15 publish only as What If, including real timeline variants relative to the pilot anchor."
+  },
+  "excluded": [
+    "romantic affection",
+    "furryHuman option",
+    "new characters",
+    "new universes"
+  ]
+}

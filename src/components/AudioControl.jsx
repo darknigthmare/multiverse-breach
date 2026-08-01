@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
-import sound from '../game/soundEngine';
+import React from 'react';
 
-export default function AudioControl() {
-  const [muted, setMuted] = useState(sound.muted);
-
-  const toggleMute = () => {
-    const nextState = !muted;
-    setMuted(nextState);
-    sound.setMute(nextState);
-  };
-
+export default function AudioControl({ lang = 'fr', muted = false, onToggleMute }) {
   return (
     <button
       type="button"
-      onClick={toggleMute}
+      onClick={onToggleMute}
       className={`global-audio-control ${muted ? 'is-muted' : ''}`}
       aria-pressed={muted}
-      title={muted ? 'Reactive la musique et les effets sonores.' : 'Coupe la musique et les effets sonores.'}
+      title={muted
+        ? (lang === 'fr' ? 'Reactive la musique et les effets sonores.' : 'Enable music and sound effects.')
+        : (lang === 'fr' ? 'Coupe la musique et les effets sonores.' : 'Mute music and sound effects.')}
     >
       <span>AUDIO</span>
       <strong>{muted ? 'OFF' : 'ON'}</strong>

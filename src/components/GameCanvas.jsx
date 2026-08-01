@@ -10,7 +10,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
 import { EngineTactics } from '../game/engineTactics';
-import { ParticleSystem, drawItemIcon, drawUniverseBackground, drawSynergyOverlay, preloadSpriteSheetSrcs } from '../game/renderer';
+import { EngineNonCombatTrial } from '../game/nonCombatTrial';
+import { ParticleSystem, drawItemIcon, drawPixelSprite, drawUniverseBackground, drawSynergyOverlay, preloadMeleeSpriteSheetSrcs, preloadSpriteSheetSrcs } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { HEROES_DB as BASE_HEROES_DB, EVENT_ITEMS_DB, EQUIP_ITEMS_DB } from '../game/heroes';
 import {
@@ -30,6 +31,37 @@ import { getSmashPickupPositions } from '../game/smashArenas';
 import { getTacticsPickupPositions } from '../game/tacticsBattlefields';
 import { resolveStageEnemyData } from '../game/stageEnemyResolver';
 import GameHudThemeLayer from './GameHudThemeLayer';
+import MeleeControlsPanel from './MeleeControlsPanel';
+import {
+  MELEE_ACTIONS,
+  createDefaultMeleeInputMaps,
+  diffMeleeActionEdges,
+  getMeleeActionsForCode,
+  loadMeleeInputMaps,
+  mergeMeleeInputSnapshots,
+  readGamepadMeleeInput,
+  readKeyboardMeleeInput,
+  replaceMeleeBinding,
+  saveMeleeInputMaps,
+  toEngineHeldInput
+} from '../game/melee/meleeInputMap';
+
+const getTouchMeleeSnapshot = heldSlots => {
+  const held = heldSlots instanceof Set ? heldSlots : new Set();
+  const horizontal = (held.has('moveRight') ? 1 : 0) - (held.has('moveLeft') ? 1 : 0);
+  const vertical = held.has('crouch') ? 1 : 0;
+  const actions = Object.fromEntries(Object.values(MELEE_ACTIONS).map(action => [action, false]));
+  actions[MELEE_ACTIONS.moveHorizontal] = horizontal !== 0;
+  actions[MELEE_ACTIONS.moveVertical] = vertical !== 0;
+  actions[MELEE_ACTIONS.jump] = held.has('jump');
+  actions[MELEE_ACTIONS.crouch] = held.has('crouch');
+  actions[MELEE_ACTIONS.attackLight] = held.has('attackLight');
+  actions[MELEE_ACTIONS.chargedAttack] = held.has('chargedAttack');
+  actions[MELEE_ACTIONS.special] = held.has('special');
+  actions[MELEE_ACTIONS.shield] = held.has('shield');
+  actions[MELEE_ACTIONS.taunt] = held.has('taunt');
+  return { horizontal, vertical, actions };
+};
 
 const getStableNumericSeed = (value) => {
   let numericValue = Number.NaN;
@@ -109,6 +141,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const battleItemPoolRef = useRef([]);
   const nextBattleItemDropRef = useRef(520);
   const keysPressed = useRef({});
+  const meleePressedCodesRef = useRef(new Set());
+  const meleePreviousInputRef = useRef({ player: null, cpu: null });
+  const meleeTouchHeldRef = useRef({ player: new Set(), cpu: new Set() });
+  const meleeNeutralGateRef = useRef({ player: false, cpu: false });
   const tacticsCameraPointerRef = useRef({
     active: false,
     pointerId: null,
@@ -158,6 +194,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const [customFieldSuperState, setCustomFieldSuperState] = useState(customFieldSuperRef.current);
   const [customAssistState, setCustomAssistState] = useState(customAssistRef.current);
   const [customPresentation, setCustomPresentation] = useState(null);
+  const [preMatchAnnouncement, setPreMatchAnnouncement] = useState(null);
+  const preMatchCueRef = useRef(null);
+  const [meleeInputMaps, setMeleeInputMaps] = useState(() => loadMeleeInputMaps());
+  const meleeInputMapsRef = useRef(meleeInputMaps);
+  meleeInputMapsRef.current = meleeInputMaps;
   
   const [activeSynergies, setActiveSynergies] = useState([]);
   const applySkin = (hero) => {
@@ -172,12 +213,39 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const battleConfig = customBattle || stage.customBattle || null;
   battleCompletedRef.current = battleCompleted;
 
+  const handleMeleeRemap = (side, slot, code) => {
+    setMeleeInputMaps(previous => saveMeleeInputMaps(
+      replaceMeleeBinding(previous, side, slot, code)
+    ));
+  };
+
+  const handleResetMeleeInputs = () => {
+    setMeleeInputMaps(saveMeleeInputMaps(createDefaultMeleeInputMaps()));
+  };
+
+  const handleMeleeTouchAction = (slot, phase) => {
+    const held = meleeTouchHeldRef.current.player;
+    if (phase === 'down') held.add(slot);
+    else held.delete(slot);
+  };
+
+  const clearMeleeControls = () => {
+    engineRef.current?.clearMeleeInputState?.('player');
+    engineRef.current?.clearMeleeInputState?.('cpu');
+    keysPressed.current = {};
+    meleePressedCodesRef.current.clear();
+    meleePreviousInputRef.current = { player: null, cpu: null };
+    meleeTouchHeldRef.current.player.clear();
+    meleeTouchHeldRef.current.cpu.clear();
+    meleeNeutralGateRef.current = { player: true, cpu: true };
+  };
+
   // Une pause pilotee par le shell vide les controles sans reconstruire le moteur.
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
     engineRef.current?.setPaused?.(sessionPaused);
     if (!sessionPaused) return;
-    keysPressed.current = {};
+    clearMeleeControls();
     tacticsCameraPointerRef.current = {
       active: false,
       pointerId: null,
@@ -454,6 +522,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   };
 
   const getEnemiesData = () => {
+    if (stage.nonCombatTrial) {
+      return {
+        monsters: [],
+        bosses: [],
+        worldBoss: null,
+        customRoster: [],
+        finalePolicy: stage.finalePolicy || stage.nonCombatTrial.policy || null,
+        nonCombatTrial: stage.nonCombatTrial
+      };
+    }
     if (battleConfig?.enemyData) {
       const cloneList = list => (Array.isArray(list) ? list.map(enemy => ({ ...enemy })) : []);
       const monsters = cloneList(battleConfig.enemyData.monsters);
@@ -500,7 +578,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         filterEnemyList(universe, getBossesForUniverse(universe)).slice(0, 1).map(enemy => scaleEnemy({ ...enemy, universe }, true))
       );
       const primaryBoss = getWorldBossForUniverse(stage.universe);
-      const finalePolicy = getFinalePolicyForUniverse(stage.universe);
+      const finalePolicy = stage.finalePolicy || getFinalePolicyForUniverse(stage.universe);
       const baseMonsters = ensureList(stage.universe, filterEnemyList(stage.universe, getMonstersForUniverse(stage.universe)));
       const baseBosses = ensureList(stage.universe, filterEnemyList(stage.universe, getBossesForUniverse(stage.universe)), true);
       return {
@@ -536,7 +614,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           ? fallbackEnemy(stage.universe, true)
           : universeWorldBoss)
       : null;
-    const finalePolicy = getFinalePolicyForUniverse(stage.universe);
+    const finalePolicy = stage.finalePolicy || getFinalePolicyForUniverse(stage.universe);
     const resolvedEnemyData = resolveStageEnemyData({
       stage,
       monsters,
@@ -668,6 +746,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (sessionPausedRef.current) return;
     if (!pickup || pickup.used || !engineRef.current || battleCompletedRef.current) return;
     const engine = engineRef.current;
+    if (stage.mode === 'Smash' && engine.isMatchInputLocked?.()) return;
     const effect = pickup.effect || {};
     const color = pickup.color || '#39c5bb';
     const {
@@ -810,6 +889,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (sessionPausedRef.current) return false;
     const assist = battleConfig?.cosmetics?.npcAssist;
     const engine = engineRef.current;
+    if (stage.mode === 'Smash' && engine?.isMatchInputLocked?.()) return false;
     if (side === 'opponent' && battleConfig?.opponentControl !== 'p2') return false;
     const {
       allies: alliedActors,
@@ -875,6 +955,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (sessionPausedRef.current) return false;
     const fieldSuper = battleConfig?.fieldSuper;
     const engine = engineRef.current;
+    if (stage.mode === 'Smash' && engine?.isMatchInputLocked?.()) return false;
     const resolvedSide = side === 'opponent' ? 'opponent' : 'player';
     const sideState = customFieldSuperRef.current[resolvedSide];
     if (!fieldSuper || !engine || battleCompletedRef.current || sideState.used || sideState.charge < 100) return false;
@@ -960,6 +1041,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       opponent: { ...customAssistRef.current.opponent }
     });
     setCustomPresentation(null);
+    setPreMatchAnnouncement(null);
+    preMatchCueRef.current = null;
     customFieldSuperRef.current = {
       player: { charge: battleConfig?.fieldSuper ? 20 : 0, used: false },
       opponent: {
@@ -1004,7 +1087,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const anchor = HEROES_DB[0];
       squadHeroes = [{ ...anchor, stats: getHeroStats(anchor), talent: null }];
     }
-    if (enemyList.length === 0) {
+    if (enemyList.length === 0 && !stage.nonCombatTrial) {
       setCombatRuntimeError(lang === 'fr'
         ? 'Aucune menace valide dans cette breche. Verifie les assets ennemis actifs dans ADMIN.'
         : 'No valid threat in this breach. Check active enemy assets in ADMIN.');
@@ -1023,6 +1106,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       ? `Plaquettes OpenAI: ${spriteSources.length} sprites indexes avant rendu final.`
       : `OpenAI sheets: ${spriteSources.length} sprites indexed before final render.`);
     preloadSpriteSheetSrcs(spriteSources);
+    if (stage.mode === 'Smash') {
+      squadHeroes.forEach(hero => preloadMeleeSpriteSheetSrcs(hero));
+    }
     const activeCategoriesCount = squadHeroes.reduce((acc, h) => {
       acc[h.category] = (acc[h.category] || 0) + 1;
       return acc;
@@ -1054,8 +1140,24 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       onSessionComplete?.(result, summary);
     };
 
-    // Load correct mode engine
-    if (stage.mode === 'Smash') {
+    // Non-combat trials deliberately bypass every combat engine: their
+    // objective objects never become actors with health or attack values.
+    if (stage.nonCombatTrial) {
+      const trialStage = {
+        ...stage,
+        drawTrialHero: (ctx, hero, animTime) => drawPixelSprite(
+          ctx,
+          hero.x,
+          hero.y,
+          hero,
+          animTime,
+          hero.facing,
+          72,
+          'melee'
+        )
+      };
+      engineRef.current = new EngineNonCombatTrial(width, height, squadHeroes, stage.finalePolicy || stage.nonCombatTrial, particles, (type) => sound.playSfx(type), handleBattleComplete, trialStage);
+    } else if (stage.mode === 'Smash') {
       engineRef.current = new EngineSmash(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
     } else if (stage.mode === 'RPG') {
       engineRef.current = new EngineRpg(width, height, squadHeroes, enemyData, particles, (type) => sound.playSfx(type), handleBattleComplete, arenaStage);
@@ -1072,6 +1174,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       return undefined;
     }
     engineRef.current.setPaused?.(sessionPausedRef.current);
+    if (stage.mode === 'Smash') {
+      const initialPreMatch = engineRef.current.getPreMatchState?.(lang) || null;
+      preMatchCueRef.current = initialPreMatch
+        ? `${initialPreMatch.state}:${initialPreMatch.cueId}`
+        : null;
+      setPreMatchAnnouncement(initialPreMatch);
+    }
 
     knockoutActorStateRef.current = {
       heroes: new Map((engineRef.current.heroes || []).map(actor => [
@@ -1098,9 +1207,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
 
     const handleKeyDown = (e) => {
-      if (sessionPausedRef.current) return;
+      if (sessionPausedRef.current || e.defaultPrevented) return;
       keysPressed.current[e.key] = true;
       keysPressed.current[e.code] = true;
+      meleePressedCodesRef.current.add(e.code);
       const isCustomP2 = battleConfig?.opponentControl === 'p2';
       if (battleConfig?.fieldSuper && e.code === 'KeyT') activateCustomFieldSuper('player');
       if (battleConfig?.fieldSuper && isCustomP2 && e.code === 'KeyO') activateCustomFieldSuper('opponent');
@@ -1108,27 +1218,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       if (battleConfig?.cosmetics?.npcAssist && isCustomP2 && e.code === 'KeyP') activateCustomAssist('opponent');
       if ((e.key === 'o' || e.key === 'O') && stage.mode !== 'Tactics' && !isCustomP2) activateFirstBattleItem();
       if (stage.mode === 'Smash' && engineRef.current) {
-        const activeH = engineRef.current.getActiveHero();
-        if (isCustomP2) {
-          if (e.code === 'KeyF') engineRef.current.triggerAbility(activeH, 'simple');
-          if (e.code === 'KeyG') engineRef.current.triggerAbility(activeH, 'secondary');
-          if (e.code === 'KeyH') engineRef.current.triggerAbility(activeH, 'defense');
-          if (e.code === 'KeyR') engineRef.current.triggerAbility(activeH, 'special');
-          if (e.code === 'KeyJ') engineRef.current.triggerOpponentAbility?.('simple');
-          if (e.code === 'KeyK') engineRef.current.triggerOpponentAbility?.('secondary');
-          if (e.code === 'KeyL') engineRef.current.triggerOpponentAbility?.('defense');
-          if (e.code === 'KeyI') engineRef.current.triggerOpponentAbility?.('special');
-          if (['Digit7', 'Digit8', 'Digit9'].includes(e.code)) {
-            const opponent = engineRef.current.enemies?.[Number(e.code.slice(-1)) - 7];
-            if (opponent) engineRef.current.setActiveOpponent?.(opponent.runtimeId || opponent.id || opponent.name);
-          }
-        } else {
-          if (e.key === 'j' || e.key === 'J') engineRef.current.triggerAbility(activeH, 'simple');
-          if (e.key === 'k' || e.key === 'K') engineRef.current.triggerAbility(activeH, 'secondary');
-          if (e.key === 'l' || e.key === 'L') engineRef.current.triggerAbility(activeH, 'defense');
-          if (e.key === 'i' || e.key === 'I') engineRef.current.triggerAbility(activeH, 'special');
+        const maps = meleeInputMapsRef.current;
+        const boundActions = [
+          ...getMeleeActionsForCode(e.code, maps.player),
+          ...(isCustomP2 ? getMeleeActionsForCode(e.code, maps.cpu) : [])
+        ];
+        const editableTarget = ['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target?.tagName);
+        if (boundActions.length && !editableTarget) e.preventDefault();
+        if (isCustomP2 && ['Digit7', 'Digit8', 'Digit9'].includes(e.code)) {
+          const opponent = engineRef.current.enemies?.[Number(e.code.slice(-1)) - 7];
+          if (opponent) engineRef.current.setActiveOpponent?.(opponent.runtimeId || opponent.id || opponent.name);
         }
-        
+
         if (e.code === 'Digit1') engineRef.current.setActiveHero(activeTeam[0]);
         if (e.code === 'Digit2' && activeTeam[1]) engineRef.current.setActiveHero(activeTeam[1]);
         if (e.code === 'Digit3' && activeTeam[2]) engineRef.current.setActiveHero(activeTeam[2]);
@@ -1148,16 +1249,93 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const handleKeyUp = (e) => {
       keysPressed.current[e.key] = false;
       keysPressed.current[e.code] = false;
+      meleePressedCodesRef.current.delete(e.code);
+    };
+
+    const clearMeleeInput = () => {
+      clearMeleeControls();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) clearMeleeInput();
     };
 
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener('blur', clearMeleeInput);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    const readMeleeInput = (side) => {
+      const maps = meleeInputMapsRef.current;
+      const map = side === 'cpu' ? maps.cpu : maps.player;
+      const keyboard = readKeyboardMeleeInput(meleePressedCodesRef.current, map);
+      const gamepads = typeof navigator !== 'undefined' && navigator.getGamepads
+        ? navigator.getGamepads()
+        : [];
+      const gamepad = readGamepadMeleeInput(gamepads?.[side === 'cpu' ? 1 : 0]);
+      const touch = getTouchMeleeSnapshot(meleeTouchHeldRef.current[side]);
+      return mergeMeleeInputSnapshots(keyboard, gamepad, touch);
+    };
+
+    const dispatchMeleeInputEdges = (engine, side, current) => {
+      if (meleeNeutralGateRef.current[side]) {
+        const hasInput = Math.abs(Number(current?.horizontal) || 0) > 0.35
+          || Math.abs(Number(current?.vertical) || 0) > 0.35
+          || Object.values(current?.actions || {}).some(Boolean);
+        meleePreviousInputRef.current[side] = current;
+        if (!hasInput) meleeNeutralGateRef.current[side] = false;
+        return true;
+      }
+      const previous = meleePreviousInputRef.current[side];
+      const edges = diffMeleeActionEdges(previous, current);
+      meleePreviousInputRef.current[side] = current;
+
+      edges.pressed.forEach(action => {
+        if (action === MELEE_ACTIONS.chargedAttack) {
+          engine.beginChargedMeleeAttack?.(side);
+        } else if (action === MELEE_ACTIONS.shield) {
+          engine.setMeleeShield?.(side, true);
+        } else if (action === MELEE_ACTIONS.pause) {
+          // The shell owns the pause menu. A custom binding is bridged to its
+          // existing Escape contract while physical Escape remains untouched.
+          if (!meleePressedCodesRef.current.has('Escape')) {
+            window.dispatchEvent(new KeyboardEvent('keydown', {
+              key: 'Escape',
+              code: 'Escape',
+              bubbles: true
+            }));
+          }
+        } else if ([
+          MELEE_ACTIONS.attackLight,
+          MELEE_ACTIONS.special,
+          MELEE_ACTIONS.taunt,
+          MELEE_ACTIONS.jump,
+          MELEE_ACTIONS.climb,
+          MELEE_ACTIONS.drop,
+          MELEE_ACTIONS.ledgeAttack
+        ].includes(action)) {
+          engine.triggerMeleeAction?.(side, action);
+        }
+      });
+
+      edges.released.forEach(action => {
+        if (action === MELEE_ACTIONS.chargedAttack) engine.releaseChargedMeleeAttack?.(side);
+        if (action === MELEE_ACTIONS.shield) engine.setMeleeShield?.(side, false);
+      });
+      return false;
+    };
 
     let animTime = 0;
+    let combatTime = 0;
+    let previousFrameTimestamp = null;
     let frameId;
 
-    const tick = () => {
+    const tick = (frameTimestamp = performance.now()) => {
       try {
+        const frameDeltaMs = previousFrameTimestamp === null
+          ? 1000 / 60
+          : Math.max(0, Math.min(100, frameTimestamp - previousFrameTimestamp));
+        previousFrameTimestamp = frameTimestamp;
         if (sessionPausedRef.current) {
           frameId = requestAnimationFrame(tick);
           return;
@@ -1194,27 +1372,47 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         const engine = engineRef.current;
         if (engine) {
           engine.autoBattle = autoBattleRef.current;
+          let meleeHeldP1 = keysPressed.current;
+          let meleeHeldP2 = {};
+          if (stage.mode === 'Smash') {
+            const playerInput = readMeleeInput('player');
+            const playerNeutralGated = dispatchMeleeInputEdges(engine, 'player', playerInput);
+            meleeHeldP1 = playerNeutralGated ? {} : toEngineHeldInput(playerInput);
+            if (battleConfig?.opponentControl === 'p2') {
+              const opponentInput = readMeleeInput('cpu');
+              const opponentNeutralGated = dispatchMeleeInputEdges(engine, 'cpu', opponentInput);
+              meleeHeldP2 = opponentNeutralGated ? {} : toEngineHeldInput(opponentInput);
+            }
+          }
           const actorsObservedDuringUpdate = {
             heroes: new Set(engine.heroes || []),
             enemies: new Set(engine.enemies || [])
           };
           const loops = speedMultiplierRef.current;
-          for (let l = 0; l < loops; l++) {
-            if (stage.mode === 'Smash' && battleConfig?.opponentControl === 'p2') {
-              const p1Keys = {
-                a: Boolean(keysPressed.current.q || keysPressed.current.Q || keysPressed.current.a || keysPressed.current.A),
-                d: Boolean(keysPressed.current.d || keysPressed.current.D),
-                w: Boolean(keysPressed.current.z || keysPressed.current.Z || keysPressed.current.w || keysPressed.current.W),
-                Space: Boolean(keysPressed.current.Space)
-              };
-              engine.update(p1Keys, keysPressed.current);
-            } else {
-              engine.update(keysPressed.current);
-            }
+          const updateLoops = stage.mode === 'Smash' && engine.isPreMatchLocked?.() ? 1 : loops;
+          let matchInputLocked = false;
+          for (let l = 0; l < updateLoops; l++) {
+            engine.update(meleeHeldP1, meleeHeldP2, {
+              preMatchDeltaMs: frameDeltaMs,
+              stageDeltaMs: frameDeltaMs
+            });
             (engine.heroes || []).forEach(actor => actorsObservedDuringUpdate.heroes.add(actor));
             (engine.enemies || []).forEach(actor => actorsObservedDuringUpdate.enemies.add(actor));
           }
-          if (battleConfig?.fieldSuper) {
+          matchInputLocked = stage.mode === 'Smash' && engine.isMatchInputLocked?.();
+          if (stage.mode === 'Smash') {
+            const nextPreMatch = engine.getPreMatchState?.(lang) || null;
+            const cueKey = nextPreMatch ? `${nextPreMatch.state}:${nextPreMatch.cueId}` : null;
+            if (cueKey && cueKey !== preMatchCueRef.current) {
+              preMatchCueRef.current = cueKey;
+              setPreMatchAnnouncement(nextPreMatch);
+              if (nextPreMatch.cueId === '3') {
+                clearManagedTimer(customPresentationTimerRef);
+                setCustomPresentation(current => current?.type === 'intro' ? null : current);
+              }
+            }
+          }
+          if (battleConfig?.fieldSuper && !matchInputLocked) {
             const chargeSides = battleConfig.opponentControl === 'p2'
               ? ['player', 'opponent']
               : ['player'];
@@ -1254,8 +1452,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           }
           particles.update();
 
-          engine.draw(ctx, animTime);
-          if (stage.mode !== 'RPG') {
+          engine.draw(ctx, animTime, lang);
+          if (stage.mode !== 'RPG' && !matchInputLocked) {
             battlePickupsRef.current.forEach(item => {
               const tacticalScreen = stage.mode === 'Tactics'
                 && Number.isFinite(item.gridX)
@@ -1269,17 +1467,17 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               );
             });
           }
-          checkBattleItemPickupCollision(engine);
-          if (stage.mode !== 'Tactics' && animTime > nextBattleItemDropRef.current) {
-            spawnBattleItemDrop(engine, animTime);
-            nextBattleItemDropRef.current = animTime + (stage.mode === 'Smash' ? 540 : 780);
+          if (!matchInputLocked) checkBattleItemPickupCollision(engine);
+          if (!matchInputLocked && stage.mode !== 'Tactics' && combatTime > nextBattleItemDropRef.current) {
+            spawnBattleItemDrop(engine, combatTime);
+            nextBattleItemDropRef.current = combatTime + (stage.mode === 'Smash' ? 540 : 780);
           }
           particles.draw(ctx);
           drawSynergyOverlay(ctx, activeSynergies, width, height, animTime);
 
           const anomalyRate = stage.isSurvival ? 420 : 720;
-          const anomalyWave = Math.floor(animTime / anomalyRate);
-          if (!stage.disableHazards && animTime > 180 && anomalyWave !== lastAnomalyWaveRef.current && animTime % anomalyRate < 2) {
+          const anomalyWave = Math.floor(combatTime / anomalyRate);
+          if (!matchInputLocked && !stage.disableHazards && combatTime > 180 && anomalyWave !== lastAnomalyWaveRef.current && combatTime % anomalyRate < 2) {
             lastAnomalyWaveRef.current = anomalyWave;
             const anomaly = BATTLE_ANOMALIES[
               (getStableNumericSeed(stage.id) + anomalyWave) % BATTLE_ANOMALIES.length
@@ -1334,6 +1532,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           }
         }
 
+        if (!(stage.mode === 'Smash' && engineRef.current?.isMatchInputLocked?.())) combatTime++;
         animTime++;
         frameId = requestAnimationFrame(tick);
       } catch (error) {
@@ -1351,6 +1550,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener('blur', clearMeleeInput);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       cancelAnimationFrame(frameId);
       clearManagedTimer(battleItemLogTimerRef);
       clearManagedTimer(battleAnomalyTimerRef);
@@ -1519,6 +1720,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const handleActivateEventItem = () => {
     if (sessionPausedRef.current) return;
     if (!engineRef.current || eventItemUsed || battleCompleted) return;
+    if (stage.mode === 'Smash' && engineRef.current.isMatchInputLocked?.()) return;
 
     const activeHero = HEROES_DB.find(h => h.id === activeHeroId);
     if (!activeHero || hiddenUniverseSet.has(activeHero.universe)) return;
@@ -1530,8 +1732,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (!eventDetails) return;
 
     // Trigger effect in engine
-    engineRef.current.triggerCombatEvent(eventDetails.effect);
-    setEventItemUsed(true);
+    if (engineRef.current.triggerCombatEvent(eventDetails.effect) === true) {
+      setEventItemUsed(true);
+    }
   };
 
   const swapActiveHero = (id) => {
@@ -1586,11 +1789,18 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const activeHeroUniverseEnabled = activeHeroStatic && !hiddenUniverseSet.has(activeHeroStatic.universe);
   const equippedEventId = activeHeroUniverseEnabled ? equippedEventItems[activeHeroStatic.id] : null;
   const equippedEvent = activeHeroUniverseEnabled ? EVENT_ITEMS_DB[activeHeroStatic.universe] : null;
+  const preMatchLocked = stage.mode === 'Smash'
+    && !stage.nonCombatTrial
+    && preMatchAnnouncement?.locked !== false;
   const victoryRewardText = stage.isCustomBattle
     ? (lang === 'fr'
         ? 'Simulation terminee. Aucun Or, Fragment, Jeton ou progression de campagne n est attribue.'
         : 'Simulation complete. No Gold, Shards, Tokens, or campaign progression is awarded.')
-    : lang === 'fr'
+    : stage.nonCombatTrial
+      ? (lang === 'fr'
+          ? `Épreuve réussie ! Obtenu +${stage.goldPrize} Or & +${stage.shardPrize} Fragments${stage.tokenPrize ? ` & +${stage.tokenPrize} Jetons` : ''}.`
+          : `Trial complete! Earned +${stage.goldPrize} Gold & +${stage.shardPrize} Shards${stage.tokenPrize ? ` & +${stage.tokenPrize} Tokens` : ''}.`)
+      : lang === 'fr'
       ? `Brèche fermée ! Obtenu +${stage.goldPrize} Or & +${stage.shardPrize} Fragments${stage.tokenPrize ? ` & +${stage.tokenPrize} Jetons` : ''}.`
       : `Rift closed! Earned +${stage.goldPrize} Gold & +${stage.shardPrize} Shards${stage.tokenPrize ? ` & +${stage.tokenPrize} Tokens` : ''}.`;
 
@@ -1612,17 +1822,31 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       `${lang === 'fr' ? 'Artefacts tactiques' : 'Tactical artifacts'}: ${battleSummary.tacticalItemsUsed || 0} | ${lang === 'fr' ? 'Impact' : 'Impact'}: ${battleSummary.tacticalItemImpact || 0}`
     ]
     : [];
+  const trialResultLines = battleSummary?.mode === 'Trial'
+    ? [
+      `${lang === 'fr' ? 'Épreuve' : 'Trial'}: ${battleSummary.trialType}`,
+      `${lang === 'fr' ? 'Rang' : 'Grade'} ${battleSummary.grade} | Score ${battleSummary.score} | ${lang === 'fr' ? 'Objectif' : 'Objective'} ${battleSummary.progressPct}%`,
+      battleSummary.objective?.[lang] || battleSummary.objective?.fr || battleSummary.objective?.en,
+      `${lang === 'fr' ? 'Interactions réussies' : 'Successful interactions'}: ${battleSummary.successfulInteractions}/${battleSummary.interactions} | ${lang === 'fr' ? 'Erreurs' : 'Mistakes'}: ${battleSummary.mistakes}`
+    ].filter(Boolean)
+    : [];
   const totalBattleItems = battlePickups.length;
   const unstableTeamCount = activeTeam.filter(heroId => (stage.heroInstability?.[heroId] || 0) > 0).length;
   const smashObjective = stage.mode === 'Smash'
     ? engineRef.current?.getObjectiveText?.(lang)
     : null;
-  const battleObjective = stage.mode === 'Tactics'
+  const battleObjective = stage.nonCombatTrial
+    ? `${lang === 'fr' ? 'Directive A.R.C.A. épreuve' : 'A.R.C.A. trial directive'}: ${smashObjective || stage.nonCombatTrial.objective?.[lang] || stage.nonCombatTrial.objective?.fr || stage.nonCombatTrial.objective?.en}`
+    : stage.mode === 'Tactics'
     ? `${lang === 'fr' ? 'Directive A.R.C.A. tactique' : 'A.R.C.A. tactics directive'}: ${engineRef.current?.getObjectiveText?.(lang) || (lang === 'fr' ? 'securiser la grille et garder l escouade lisible.' : 'secure the grid and keep the squad readable.')}`
     : stage.mode === 'Smash'
       ? `${lang === 'fr' ? 'Directive A.R.C.A. melee' : 'A.R.C.A. melee directive'}: ${smashObjective || (lang === 'fr' ? 'tenir les vagues, recuperer les artefacts et briser le champion.' : 'hold the waves, recover artifacts, and break the champion.')}`
       : (lang === 'fr' ? 'Directive A.R.C.A.: synchroniser l ATB, declencher les reliques et fermer la breche.' : 'A.R.C.A. directive: sync ATB, trigger relics, and close the breach.');
-  const modeSignal = stage.mode === 'Tactics'
+  const modeSignal = stage.nonCombatTrial
+    ? (lang === 'fr'
+        ? 'Épreuve: aucun adversaire ni barre de vie; accomplis uniquement l’objectif du stage.'
+        : 'Trial: no opponent or health bar; complete only the stage objective.')
+    : stage.mode === 'Tactics'
     ? (lang === 'fr' ? 'Tactique: les items deviennent des ressources de carte.' : 'Tactics: items behave as map resources.')
     : stage.mode === 'Smash'
       ? (lang === 'fr' ? 'Melee: les drops se ramassent dans l arene ou via le panneau.' : 'Melee: drops can be collected in-arena or from the panel.')
@@ -1643,7 +1867,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }}>
       <GameHudThemeLayer theme={hudTheme} mode={stage.mode} />
       {/* Top Bar */}
-      <div style={{
+      <div className="battle-top-bar" style={{
         width: '100%',
         maxWidth: '1120px',
         display: 'flex',
@@ -1670,12 +1894,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           )}
           {stage.arcaAdaptation && (
             <div style={{ fontSize: '10px', color: '#2ecc71', marginTop: '3px' }}>
-              {lang === 'fr'
-                ? `Adaptation A.R.C.A.: ${stage.bossName} scanne, +5% HP equipe.`
-                : `A.R.C.A. adaptation: ${stage.bossName} scanned, +5% team HP.`}
+              {stage.nonCombatTrial
+                ? (lang === 'fr'
+                  ? 'A.R.C.A. conserve les données de la tentative précédente pour relire l objectif.'
+                  : 'A.R.C.A. retains the previous attempt data to clarify the objective.')
+                : (lang === 'fr'
+                  ? `Adaptation A.R.C.A.: ${stage.bossName} scanne, +5% HP equipe.`
+                  : `A.R.C.A. adaptation: ${stage.bossName} scanned, +5% team HP.`)}
             </div>
           )}
-          {unstableTeamCount > 0 && (
+          {unstableTeamCount > 0 && !stage.nonCombatTrial && (
             <div style={{ fontSize: '10px', color: '#ffeb3b', marginTop: '3px' }}>
               {lang === 'fr'
                 ? `Instabilite de repli: ${unstableTeamCount} heros a -5% stats pendant cette mission.`
@@ -1732,7 +1960,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               className="btn-retro"
               title={stage.isCustomBattle
                 ? (lang === 'fr' ? 'Quitte la simulation sans modifier la progression et retourne a sa configuration.' : 'Leave the simulation without changing progression and return to setup.')
-                : (lang === 'fr' ? 'Quitte le combat et retourne au hub. La mission compte comme abandon.' : 'Leave combat and return to the hub. The mission counts as a retreat.')}
+                : stage.nonCombatTrial
+                  ? (lang === 'fr' ? 'Quitte l épreuve et retourne au hub. La tentative reste inachevée.' : 'Leave the trial and return to the hub. The attempt remains incomplete.')
+                  : (lang === 'fr' ? 'Quitte le combat et retourne au hub. La mission compte comme abandon.' : 'Leave combat and return to the hub. The mission counts as a retreat.')}
               style={{ borderColor: '#e74c3c', color: '#e74c3c', fontSize: '11px', padding: '6px 12px' }}
             >
               {stage.isCustomBattle
@@ -1806,7 +2036,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             ...(battleConfig.opponentControl === 'p2' ? [{ side: 'opponent', label: 'P2', key: 'O' }] : [])
           ].map(entry => {
             const state = customFieldSuperState[entry.side] || { charge: 0, used: false };
-            const ready = !state.used && state.charge >= 100 && !battleCompleted;
+            const ready = !state.used && state.charge >= 100 && !battleCompleted && !preMatchLocked;
             return (
               <button
                 type="button"
@@ -1823,7 +2053,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               >
                 {entry.label} / {battleConfig.fieldSuper.name?.[lang] || battleConfig.fieldSuper.name?.fr || 'FIELD SUPER'}
                 {' — '}
-                {state.used ? (lang === 'fr' ? 'UTILISE' : 'USED') : `${Math.round(state.charge)}% [${entry.key}]`}
+                {preMatchLocked
+                  ? 'PRE-MATCH'
+                  : state.used
+                    ? (lang === 'fr' ? 'UTILISE' : 'USED')
+                    : `${Math.round(state.charge)}% [${entry.key}]`}
               </button>
             );
           })}
@@ -1850,7 +2084,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 key={entry.side}
                 className="btn-retro"
                 onClick={() => activateCustomAssist(entry.side)}
-                disabled={used || battleCompleted}
+                disabled={used || battleCompleted || preMatchLocked}
                 style={{
                   padding: '8px 10px',
                   borderColor: used ? '#34454b' : (battleConfig.cosmetics.npcAssist.color || '#39c5bb'),
@@ -1860,7 +2094,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               >
                 {entry.label} / {battleConfig.cosmetics.npcAssist.name?.[lang] || battleConfig.cosmetics.npcAssist.name?.fr || 'NPC ASSIST'}
                 {' — '}
-                {used ? (lang === 'fr' ? 'UTILISE' : 'USED') : `[${entry.key}]`}
+                {preMatchLocked
+                  ? 'PRE-MATCH'
+                  : used
+                    ? (lang === 'fr' ? 'UTILISE' : 'USED')
+                    : `[${entry.key}]`}
               </button>
             );
           })}
@@ -1880,6 +2118,57 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         maxWidth: '1280px'
       }}>
         <div className="crt-overlay" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, pointerEvents: 'none', zIndex: 5 }} />
+
+        <div
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          style={{
+            position: 'absolute',
+            width: 1,
+            height: 1,
+            padding: 0,
+            margin: -1,
+            overflow: 'hidden',
+            clip: 'rect(0, 0, 0, 0)',
+            whiteSpace: 'nowrap',
+            border: 0
+          }}
+        >
+          {preMatchAnnouncement
+            ? preMatchAnnouncement.cueId === 'coordinates'
+              ? `${preMatchAnnouncement.cue}. ${preMatchAnnouncement.message}`
+              : preMatchAnnouncement.cue
+            : ''}
+        </div>
+
+        {preMatchAnnouncement?.locked && (
+          <div className="melee-pre-match-cue-layer" aria-hidden="true">
+            <strong>{preMatchAnnouncement.cue}</strong>
+            <span>
+              {preMatchAnnouncement.cueId === 'coordinates'
+                ? preMatchAnnouncement.message
+                : `A.R.C.A. / ${preMatchAnnouncement.source}`}
+            </span>
+          </div>
+        )}
+
+        {preMatchAnnouncement?.canSkip && (
+          <button
+            type="button"
+            className="btn-retro melee-pre-match-skip"
+            onClick={() => {
+              if (!engineRef.current?.skipPreMatch?.()) return;
+              clearMeleeControls();
+              sound.playSfx('confirm');
+            }}
+            title={lang === 'fr'
+              ? 'Ignore le compte a rebours uniquement pour cette session d entrainement.'
+              : 'Skip the countdown for this training session only.'}
+          >
+            {lang === 'fr' ? 'PASSER EN ENTRAINEMENT' : 'SKIP IN TRAINING'}
+          </button>
+        )}
 
         <canvas
           ref={canvasRef}
@@ -2083,7 +2372,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 </strong>
               </div>
             )}
-            {[...smashResultLines, ...tacticsResultLines].length > 0 && (
+            {[...trialResultLines, ...smashResultLines, ...tacticsResultLines].length > 0 && (
               <div style={{
                 width: 'min(520px, 92%)',
                 margin: '0 0 24px 0',
@@ -2095,7 +2384,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 fontSize: '11px',
                 lineHeight: 1.7
               }}>
-                {[...smashResultLines, ...tacticsResultLines].map(line => <div key={line}>{line}</div>)}
+                {[...trialResultLines, ...smashResultLines, ...tacticsResultLines].map(line => <div key={line}>{line}</div>)}
               </div>
             )}
             <button
@@ -2143,12 +2432,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {teamState.map((h) => {
               const isSelected = h.id === activeHeroId;
-              const isDead = h.currentHp <= 0;
+              const isDead = !stage.nonCombatTrial && h.currentHp <= 0;
               return (
-                <div
+                <button
+                  type="button"
                   key={h.id}
                   onClick={() => !isDead && swapActiveHero(h.id)}
+                  disabled={isDead || preMatchLocked}
                   style={{
+                    width: '100%',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
@@ -2156,17 +2448,22 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                     background: isSelected ? 'rgba(57, 197, 187, 0.15)' : 'rgba(0,0,0,0.3)',
                     border: isSelected ? '1px solid #39c5bb' : '1px solid rgba(255,255,255,0.06)',
                     borderRadius: '4px',
-                    cursor: isDead ? 'default' : 'pointer',
-                    opacity: isDead ? 0.4 : 1
+                    cursor: isDead || preMatchLocked ? 'default' : 'pointer',
+                    opacity: isDead ? 0.4 : 1,
+                    color: '#fff',
+                    font: 'inherit',
+                    textAlign: 'left'
                   }}
                 >
                   <span style={{ fontWeight: 'bold', fontSize: '13px' }}>
                     {h.name.split(' ')[0]} {isSelected && '◀'}
                   </span>
                   <span style={{ fontSize: '11px', color: isDead ? '#e74c3c' : '#2ecc71' }}>
-                    {isDead ? 'KO' : `${h.currentHp}/${h.stats.hp} HP`}
+                    {stage.nonCombatTrial
+                      ? (lang === 'fr' ? 'ACTIF' : 'ACTIVE')
+                      : isDead ? 'KO' : `${h.currentHp}/${h.stats.hp} HP`}
                   </span>
-                </div>
+                </button>
               );
             })}
           </div>
@@ -2224,9 +2521,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           {equippedEventId && equippedEvent && (
             <button
               onClick={handleActivateEventItem}
-              disabled={eventItemUsed || battleCompleted}
+              disabled={eventItemUsed || battleCompleted || preMatchLocked}
               className="btn-retro"
-              title={eventItemUsed
+              title={preMatchLocked
+                ? (lang === 'fr' ? 'Indisponible pendant le pre-match.' : 'Unavailable during pre-match.')
+                : eventItemUsed
                 ? (lang === 'fr' ? 'Objet evenementiel deja utilise pendant ce combat.' : 'Event item already used in this combat.')
                 : (lang === 'fr' ? 'Active l objet evenementiel equipe une seule fois pendant ce combat.' : 'Activate the equipped event item once during this combat.')}
               style={{
@@ -2234,15 +2533,19 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 width: '100%',
                 fontSize: '10px',
                 padding: '8px',
-                borderColor: eventItemUsed ? '#444' : '#ff4500',
-                background: eventItemUsed ? 'transparent' : 'rgba(255, 69, 0, 0.12)',
-                color: eventItemUsed ? '#555' : '#ff8c00',
-                boxShadow: eventItemUsed ? 'none' : '0 0 10px rgba(255, 69, 0, 0.25)',
+                borderColor: eventItemUsed || preMatchLocked ? '#444' : '#ff4500',
+                background: eventItemUsed || preMatchLocked ? 'transparent' : 'rgba(255, 69, 0, 0.12)',
+                color: eventItemUsed || preMatchLocked ? '#777' : '#ff8c00',
+                boxShadow: eventItemUsed || preMatchLocked ? 'none' : '0 0 10px rgba(255, 69, 0, 0.25)',
                 fontWeight: 'bold',
-                cursor: eventItemUsed ? 'not-allowed' : 'pointer'
+                cursor: eventItemUsed || preMatchLocked ? 'not-allowed' : 'pointer'
               }}
             >
-              🌟 {eventItemUsed ? getTranslation(lang, 'eventUsed') : equippedEvent.name[lang].toUpperCase()}
+              🌟 {preMatchLocked
+                ? (lang === 'fr' ? 'PRE-MATCH VERROUILLE' : 'PRE-MATCH LOCKED')
+                : eventItemUsed
+                  ? getTranslation(lang, 'eventUsed')
+                  : equippedEvent.name[lang].toUpperCase()}
             </button>
           )}
 
@@ -2268,7 +2571,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                       'panel',
                       opponentHasCommand ? 'opponent' : 'player'
                     )}
-                    disabled={item.used || battleCompleted || stage.mode === 'Tactics' || (stage.mode === 'RPG' && (!activeHeroObj || activeHeroObj.atb < 100))}
+                    disabled={item.used || battleCompleted || preMatchLocked || stage.mode === 'Tactics' || (stage.mode === 'RPG' && (!activeHeroObj || activeHeroObj.atb < 100))}
                     className="btn-retro"
                     style={{
                       width: '100%',
@@ -2332,7 +2635,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         <div>
           {activeHeroObj ? (
             <>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+              <div style={{ display: stage.mode === 'Smash' ? 'none' : 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                 <span style={{ fontWeight: 'bold', color: activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50' }}>
                   {opponentHasCommand ? 'P2 / ' : ''}{activeHeroObj.name.toUpperCase()} ACTIONS
                 </span>
@@ -2345,10 +2648,10 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 )}
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+              <div style={{ display: stage.mode === 'Smash' ? 'none' : 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 <button
                   onClick={() => handleActiveHeroAbility('simple')}
-                  disabled={activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
                 >
@@ -2358,7 +2661,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('secondary')}
-                  disabled={activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
@@ -2370,7 +2673,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('defense')}
-                  disabled={activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
                 >
@@ -2380,7 +2683,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('special')}
-                  disabled={activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className="btn-special"
                   title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
                   style={{
@@ -2446,14 +2749,17 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               </div>
 
               {stage.mode === 'Smash' && (
-                <div style={{ fontSize: '9px', color: '#aaa', marginTop: '12px', textAlign: 'center' }}>
-                  {battleConfig?.opponentControl === 'p2'
-                    ? (lang === 'fr'
-                        ? <>P1 <strong>ZQSD + F/G/H/R + 1/2/3</strong>. P2 <strong>fleches + J/K/L/I + 7/8/9</strong>.</>
-                        : <>P1 <strong>WASD + F/G/H/R + 1/2/3</strong>. P2 <strong>arrows + J/K/L/I + 7/8/9</strong>.</>)
-                    : (lang === 'fr'
-                        ? <>Deplacement <strong>W/A/S/D</strong>. Capacites <strong>J/K/L/I</strong>. Artefact suivant <strong>O</strong>. Heros <strong>1/2/3</strong>.</>
-                        : <>Move with <strong>W/A/S/D</strong>. Abilities <strong>J/K/L/I</strong>. Next artifact <strong>O</strong>. Heroes <strong>1/2/3</strong>.</>)}
+                <div style={{ marginTop: '12px' }}>
+                  <MeleeControlsPanel
+                    lang={lang}
+                    trial={Boolean(stage.nonCombatTrial)}
+                    maps={meleeInputMaps}
+                    localP2={battleConfig?.opponentControl === 'p2'}
+                    onRemap={handleMeleeRemap}
+                    onReset={handleResetMeleeInputs}
+                    runtimeActor={teamState.find(hero => hero.id === activeHeroId) || teamState[0]}
+                    onTouchAction={handleMeleeTouchAction}
+                  />
                 </div>
               )}
               {stage.mode === 'Tactics' && (

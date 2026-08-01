@@ -1,4 +1,11 @@
 import { ENEMIES_DB } from './enemies';
+import {
+  STAGE_EVENT_INTENSITIES,
+  STAGE_VARIANTS,
+  normalizeStageEventIntensity,
+  normalizeStageTopologyId,
+  normalizeStageVariant
+} from './melee/stageTopologyCatalog';
 
 export const CUSTOM_BATTLE_MODES = Object.freeze(['RPG', 'Tactics', 'Smash', 'Fighter']);
 export const CUSTOM_OPPONENT_CONTROLS = Object.freeze(['cpu', 'p2']);
@@ -15,7 +22,11 @@ export const DEFAULT_CUSTOM_BATTLE_PRESET = Object.freeze({
   fieldSuperId: null,
   difficulty: 'standard',
   items: true,
-  hazards: true
+  hazards: true,
+  stageVariant: STAGE_VARIANTS.lore,
+  stageEventIntensity: STAGE_EVENT_INTENSITIES.full,
+  stageTopologyId: 'auto',
+  skipPreMatchInTraining: false
 });
 
 const uniqueIds = (value, limit = Infinity) => (
@@ -37,12 +48,24 @@ export const normalizeCustomBattlePreset = (preset = {}, options = {}) => {
   const opponentTeamIds = filterAllowed(uniqueIds(merged.opponentTeamIds, 3), allowedHeroIds);
   const enemyLimit = mode === 'Tactics' ? 6 : 3;
   const enemyIds = filterAllowed(uniqueIds(merged.enemyIds, enemyLimit), allowedEnemyIds);
+  const opponentControl = CUSTOM_OPPONENT_CONTROLS.includes(merged.opponentControl)
+    ? merged.opponentControl
+    : DEFAULT_CUSTOM_BATTLE_PRESET.opponentControl;
+  const requestedDifficulty = ['training', 'standard', 'expert'].includes(merged.difficulty)
+    ? merged.difficulty
+    : DEFAULT_CUSTOM_BATTLE_PRESET.difficulty;
+  const difficulty = opponentControl === 'p2' ? 'standard' : requestedDifficulty;
+  const hasExplicitEventIntensity = Object.prototype.hasOwnProperty.call(preset || {}, 'stageEventIntensity');
+  const stageEventIntensity = !hasExplicitEventIntensity && merged.hazards === false
+    ? STAGE_EVENT_INTENSITIES.off
+    : normalizeStageEventIntensity(merged.stageEventIntensity);
+  const stageTopologyId = merged.stageTopologyId === 'auto'
+    ? 'auto'
+    : normalizeStageTopologyId(merged.stageTopologyId) || 'auto';
 
   return {
     mode,
-    opponentControl: CUSTOM_OPPONENT_CONTROLS.includes(merged.opponentControl)
-      ? merged.opponentControl
-      : DEFAULT_CUSTOM_BATTLE_PRESET.opponentControl,
+    opponentControl,
     playerTeamIds,
     opponentTeamIds,
     enemyIds,
@@ -50,11 +73,15 @@ export const normalizeCustomBattlePreset = (preset = {}, options = {}) => {
     battleMusicId: optionalId(merged.battleMusicId),
     stageMusicId: optionalId(merged.stageMusicId),
     fieldSuperId: optionalId(merged.fieldSuperId),
-    difficulty: ['training', 'standard', 'expert'].includes(merged.difficulty)
-      ? merged.difficulty
-      : DEFAULT_CUSTOM_BATTLE_PRESET.difficulty,
+    difficulty,
     items: merged.items !== false,
-    hazards: merged.hazards !== false
+    hazards: mode === 'Smash' ? true : merged.hazards !== false,
+    stageVariant: normalizeStageVariant(merged.stageVariant),
+    stageEventIntensity,
+    stageTopologyId,
+    skipPreMatchInTraining: opponentControl !== 'p2'
+      && difficulty === 'training'
+      && Boolean(merged.skipPreMatchInTraining)
   };
 };
 
@@ -196,10 +223,21 @@ export const buildCustomRuntimeStage = ({
     image: archive?.image || null,
     isCustomBattle: true,
     disableItems: !preset.items,
-    disableHazards: !preset.hazards,
+    disableHazards: (preset.mode !== 'Smash' && !preset.hazards)
+      || preset.stageVariant === STAGE_VARIANTS.competitive
+      || preset.stageEventIntensity === STAGE_EVENT_INTENSITIES.off,
+    meleeStageVariant: preset.stageVariant,
+    meleeEventIntensity: preset.stageEventIntensity,
+    meleeTopologyId: preset.stageTopologyId === 'auto' ? null : preset.stageTopologyId,
+    skipPreMatchInTraining: preset.difficulty === 'training' && preset.skipPreMatchInTraining,
+    stageEventSeed: `custom|${universe}|${preset.stageTopologyId}|${preset.stageVariant}`,
     customBattle: {
       opponentControl: preset.opponentControl,
       difficulty: preset.difficulty,
+      stageVariant: preset.stageVariant,
+      stageEventIntensity: preset.stageEventIntensity,
+      stageTopologyId: preset.stageTopologyId,
+      skipPreMatchInTraining: preset.difficulty === 'training' && preset.skipPreMatchInTraining,
       singleRoster: true,
       enemyData: runtimeEnemyData,
       battleMusic: adaptMusicToMode(battleMusic),

@@ -36,6 +36,7 @@ const expandedUniversesSource = read('../src/game/expandedUniverses.js');
 const loreAccuratePacksSource = read('../src/game/loreAccuratePacks.js');
 const loreDescriptionsSource = read('../src/game/loreDescriptions.js');
 const narrativeSystemsSource = read('../src/game/narrativeSystems.js');
+const missionStageProjectionSource = read('../src/game/missions/missionStageProjection.js');
 const storySource = `${hubSource}\n${ocCampaignSource}`;
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const rpgEngineSource = read('../src/game/engineRpg.js');
@@ -321,7 +322,17 @@ assert(
   && dlcSource.includes('getDlcUniverseKeys()'),
   'DLC universes must be hidden by default.'
 );
-assert(hubSource.includes('id: 40000 + index'), 'Universe narrative arcs must use their reserved 40000 stage range.');
+assert(
+  missionStageProjectionSource.includes('UNIVERSE_ARC_FINAL_STAGE_BASE_ID = 40000')
+  && missionStageProjectionSource.includes('UNIVERSE_ARC_FINAL_STAGE_BASE_ID + arcIndex'),
+  'Universe narrative arcs must preserve their reserved 40000 final stage range.'
+);
+assert(
+  missionStageProjectionSource.includes('MISSION_TEAM_SIZE = 3')
+  && missionStageProjectionSource.includes('UNIVERSE_ARC_PHASE_STAGE_BASE_ID = 46000')
+  && missionStageProjectionSource.includes('UNIVERSE_ARC_PHASE_STAGE_BASE_ID + (arcIndex * 10) + phaseIndex'),
+  'Universe arc preludes must stay within the reserved 46000 range and three-signature cell limit.'
+);
 assert(!hubSource.includes('id: 9500 + index'), 'Universe narrative arcs must not collide with generated personal arcs.');
 ['41001', '41002', '41003', '41004'].forEach(stageId => {
   assert(narrativeSystemsSource.includes(`stageId: ${stageId}`), `Missing reserved trio stage ID ${stageId}.`);
@@ -989,9 +1000,9 @@ assert(gameCanvasSource.includes('reinforcementsCalled') && gameCanvasSource.inc
 assert(gameCanvasSource.includes('applyTacticalBattleItem') && gameCanvasSource.includes('Tactical artifacts'), 'GameCanvas must route Tactics artifacts through the Tactics engine and display them.');
 assert(appSource.includes('tacticsMasteryBonus'), 'App rewards must include capped Tactics mastery bonuses.');
 assert(Object.keys(STAGE_LORE_PROFILES).length >= 260, 'Every expanded universe must have a canonical stage lore profile.');
-assert(generatedStageLoreProfiles.length === 293, 'Generated stage lore registry must preserve 264 universe profiles and 29 arc profiles.');
+assert(generatedStageLoreProfiles.length === 295, 'Generated stage lore registry must preserve 265 universe profiles and 30 arc profiles.');
 assert(originalOcStageLoreProfiles.length === 3, 'Stage lore registry must preserve exactly three original OC DLC profiles.');
-assert(stageLoreProfiles.filter(profile => profile.generationBlocked).length === 2, 'Only the two documented ambiguous stage sources may remain generation-blocked.');
+assert(stageLoreProfiles.filter(profile => profile.generationBlocked).length === 0, 'Resolved stage sources must not remain generation-blocked.');
 assert(
   manifest.counts?.stages === (generatedStageLoreProfiles.length + originalOcStageLoreProfiles.length) * 4,
   'OpenAI manifest must expose all four stage views for every generated and original OC lore profile.',

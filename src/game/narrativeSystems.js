@@ -449,7 +449,7 @@ export const UNIVERSE_NARRATIVE_ARCS = [
   {
     id: 'anime_judgment_cell',
     title: { fr: 'Arc Univers - Corps, carnets et titans', en: 'Universe Arc - Cells, Notes, and Titans' },
-    universes: ['Attack on Titan', 'Death Note', 'Cells at Work', 'Inuyashiki'],
+    universes: ['Attack on Titan', 'Death Note', 'Cells at Work!', 'Inuyashiki'],
     intro: { fr: 'Ces Trames posent la meme question au Nexus: qui decide qu une vie vaut moins qu une histoire?', en: 'These Threads ask the Nexus one question: who decides a life is worth less than a story?' },
     missions: [
       { fr: 'Evacuer une ville miniature attaquee par des geants et des cellules infectees.', en: 'Evacuate a miniature city attacked by giants and infected cells.' },

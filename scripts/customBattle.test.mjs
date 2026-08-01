@@ -239,9 +239,10 @@ test('custom battle preset keeps unique bounded teams and valid rules', () => {
     playerTeamIds: ['a', 'a', 'b', 'c', 'd'],
     opponentTeamIds: ['e', 'e'],
     enemyIds: ['x', 'x', 'y'],
-    difficulty: 'impossible',
+    difficulty: 'training',
     items: false,
-    hazards: false
+    hazards: false,
+    skipPreMatchInTraining: true
   }, {
     allowedHeroIds: ['a', 'b', 'c', 'd', 'e'],
     allowedEnemyIds: ['x', 'y']
@@ -255,6 +256,19 @@ test('custom battle preset keeps unique bounded teams and valid rules', () => {
   assert.equal(normalized.difficulty, 'standard');
   assert.equal(normalized.items, false);
   assert.equal(normalized.hazards, false);
+  assert.equal(normalized.stageVariant, 'lore');
+  assert.equal(normalized.stageEventIntensity, 'off', 'legacy hazards=false did not migrate to P5 Off');
+  assert.equal(normalized.stageTopologyId, 'auto');
+  assert.equal(normalized.skipPreMatchInTraining, false);
+
+  const smash = customBattle.normalizeCustomBattlePreset({
+    mode: 'Smash',
+    opponentControl: 'cpu',
+    hazards: false,
+    stageEventIntensity: 'full'
+  });
+  assert.equal(smash.hazards, true, 'hidden legacy hazard toggle still disabled Smash P5');
+  assert.equal(smash.stageEventIntensity, 'full');
 });
 
 test('enemy catalog filters hidden universes and disabled enemy assets', () => {
@@ -1197,6 +1211,8 @@ test('Tactics mirrors P2 pickups and keeps unknown effects neutral', () => {
 });
 
 test('Smash P2 moves and lands a manual opponent attack', () => {
+  const stage = makeStage('Smash');
+  stage.customBattle.difficulty = 'training';
   const engine = new smashModule.EngineSmash(
     760,
     420,
@@ -1205,8 +1221,9 @@ test('Smash P2 moves and lands a manual opponent attack', () => {
     particles,
     noop,
     noop,
-    makeStage('Smash')
+    stage
   );
+  assert.equal(engine.skipPreMatch(), true, 'training could not skip PRE_MATCH_LOCK');
   const hero = engine.getActiveHero();
   const opponent = engine.getActiveOpponent();
   const initialX = opponent.x;
@@ -1223,6 +1240,304 @@ test('Smash P2 moves and lands a manual opponent attack', () => {
   const initialHp = hero.currentHp;
   assert.equal(engine.triggerOpponentAbility('simple'), true);
   assert.ok(hero.currentHp < initialHp, 'P2 attack did not damage P1');
+});
+
+test('Smash semantic P4 charge resolves one hit and one mastery metric', () => {
+  const engine = new smashModule.EngineSmash(
+    760,
+    420,
+    [makeHero('player_anchor')],
+    makeEnemyData([makeThreat('p4-charge-target')]),
+    particles,
+    noop,
+    noop,
+    makeStage('Smash')
+  );
+  const hero = engine.getActiveHero();
+  const opponent = engine.getActiveOpponent();
+  const baselineY = engine.arena.groundY;
+  hero.x = 240;
+  hero.y = baselineY;
+  hero.facing = 1;
+  opponent.x = 290;
+  opponent.y = baselineY;
+  opponent.facing = -1;
+
+  assert.equal(hero.state, 'intro');
+  assert.equal(engine.beginChargedMeleeAttack('player'), false, 'intro accepted a combat action');
+  const introHeroHp = hero.currentHp;
+  const introOpponentHp = opponent.currentHp;
+  assert.equal(engine.triggerOpponentAbility('simple'), false, 'legacy P2 action bypassed the intro');
+  engine.triggerAbility(hero, 'simple');
+  assert.equal(engine.triggerCombatEvent('hammer_strike'), false, 'combat item bypassed the intro lock');
+  assert.equal(hero.state, 'intro', 'legacy P1 action interrupted the intro');
+  assert.equal(hero.currentHp, introHeroHp);
+  assert.equal(opponent.currentHp, introOpponentHp);
+  assert.equal(engine.itemTriggers, 0, 'combat item was consumed during the intro');
+  for (let frame = 0; frame < 20; frame++) engine.update({ right: true }, { left: true });
+  assert.equal(hero.x, 240, 'P1 moved before the intro completed');
+  assert.equal(opponent.x, 290, 'P2 moved before the intro completed');
+  for (let frame = 0; frame < 160; frame++) engine.update({}, {});
+  assert.equal(engine.getPreMatchState('fr').locked, false, 'PRE_MATCH_LOCK did not last exactly 180 ticks');
+  assert.equal(hero.state, 'idle');
+  assert.equal(engine.triggerCombatEvent('heal_squad'), true, 'combat item did not report a successful activation');
+  assert.equal(engine.itemTriggers, 1, 'successful combat item was not consumed exactly once');
+
+  assert.equal(engine.beginChargedMeleeAttack('player'), true);
+  for (let frame = 0; frame < 100; frame++) engine.update({}, {});
+  assert.equal(hero.charging, true);
+  assert.equal(engine.releaseChargedMeleeAttack('player'), true);
+
+  const initialHp = opponent.currentHp;
+  for (let frame = 0; frame < 40; frame++) engine.update({}, {});
+  assert.ok(opponent.currentHp < initialHp, 'semantic charged attack did not damage P2');
+  assert.equal(hero.meleeMetrics.chargedHits, 1, 'charged hit metric was missed or counted twice');
+
+  opponent.currentHp = 0;
+  engine.update({}, {});
+  assert.equal(hero.state, 'victory', 'Player Anchor victory pose was not latched');
+});
+
+test('Smash P5 PRE_MATCH_LOCK freezes every gameplay clock without Player Anchor', () => {
+  const stage = makeStage('Smash');
+  stage.universe = 'Camera Cafe';
+  stage.customBattle.difficulty = 'standard';
+  stage.customBattle.stageVariant = 'lore';
+  stage.customBattle.stageEventIntensity = 'full';
+  const engine = new smashModule.EngineSmash(
+    760,
+    420,
+    [makeHero('p5-lock-hero')],
+    makeEnemyData([makeThreat('p5-lock-opponent')]),
+    particles,
+    noop,
+    noop,
+    stage
+  );
+  const hero = engine.getActiveHero();
+  const opponent = engine.getActiveOpponent();
+  engine.stageEventRuntime.nextDelayMs = 0;
+  const initial = {
+    heroX: hero.x,
+    opponentX: opponent.x,
+    heroHp: hero.currentHp,
+    opponentHp: opponent.currentHp
+  };
+
+  assert.notEqual(hero.id, 'player_anchor', 'test accidentally uses Player Anchor');
+  assert.equal(hero.state, 'intro', 'P5 did not author an intro state for every fighter');
+  assert.equal(engine.setActiveHero(hero.id), false, 'fighter selection bypassed PRE_MATCH_LOCK');
+  for (let frame = 0; frame < 179; frame++) engine.update({ right: true }, { left: true });
+  assert.equal(engine.isPreMatchLocked(), true, 'PRE_MATCH_LOCK released before tick 180');
+  engine.update({ right: true }, { left: true });
+
+  assert.equal(engine.isPreMatchLocked(), false);
+  assert.equal(engine.stageEventRuntime.elapsedMs, 0, 'stage event advanced during PRE_MATCH_LOCK');
+  assert.equal(engine.mobilePlatformElapsedMs, 0, 'mobile platform advanced during PRE_MATCH_LOCK');
+  assert.equal(engine.hazardTick, 0, 'legacy hazard advanced during PRE_MATCH_LOCK');
+  assert.equal(engine.objectiveTick, 0, 'objective advanced during PRE_MATCH_LOCK');
+  assert.deepEqual({
+    heroX: hero.x,
+    opponentX: opponent.x,
+    heroHp: hero.currentHp,
+    opponentHp: opponent.currentHp
+  }, initial);
+
+  engine.update({}, {});
+  assert.ok(engine.stageEventRuntime.elapsedMs > 0, 'P5 event clock did not start after unlock');
+  assert.ok(engine.mobilePlatformElapsedMs > 0, 'mobile platform clock did not start after unlock');
+  const releaseCueMs = engine.preMatchReleaseCueMs;
+  assert.equal(engine.syncPreMatchFromServer(3000), true);
+  assert.equal(engine.preMatchReleaseCueMs, releaseCueMs, 'repeated terminal server packet restarted BREACH overlay');
+});
+
+test('Smash P5 damage respects telegraph, safe zone and no-auto-KO contract', () => {
+  const stage = makeStage('Smash');
+  stage.universe = 'Alien';
+  stage.customBattle.difficulty = 'training';
+  stage.customBattle.stageVariant = 'lore';
+  stage.customBattle.stageEventIntensity = 'full';
+  const engine = new smashModule.EngineSmash(
+    760,
+    420,
+    [makeHero('p5-alien-target')],
+    makeEnemyData([makeThreat('p5-alien-safe')]),
+    particles,
+    noop,
+    noop,
+    stage
+  );
+  assert.equal(engine.skipPreMatch(), true);
+  engine.stageEventRuntime.nextDelayMs = 0;
+  engine.updateStageFlow();
+  assert.equal(engine.stageEventSnapshot.phase, 'telegraph');
+
+  const hero = engine.getActiveHero();
+  const opponent = engine.getActiveOpponent();
+  const zone = engine.stageEventSnapshot.targetZone;
+  hero.x = ((zone.x1 + zone.x2) / 2) * engine.width;
+  opponent.x = zone.x1 > 0
+    ? zone.x1 * engine.width / 2
+    : ((zone.x2 + 1) / 2) * engine.width;
+  hero.currentHp = 2;
+  const opponentHp = opponent.currentHp;
+  engine.updateStageFlow();
+  assert.equal(hero.currentHp, 2, 'damage landed during the warning window');
+
+  engine.stageEventRuntime.phaseElapsedMs = engine.stageEventRuntime.activeDefinition.telegraphMs - (1000 / 60);
+  engine.updateStageFlow();
+  assert.equal(engine.stageEventSnapshot.phase, 'active');
+  assert.equal(hero.currentHp, 1, 'environmental event either missed or auto-KOd the target');
+  assert.equal(opponent.currentHp, opponentHp, 'actor in the announced safe zone was damaged');
+  assert.equal(engine.hazardHits, 1);
+  assert.equal(engine.getCombatSummary().stageEventOccurrences['predalien-inner-jaw'], 1);
+});
+
+test('Smash P5 Competitive Full disables authored events and legacy hazards', () => {
+  const stage = makeStage('Smash');
+  stage.universe = 'Alien';
+  stage.customBattle.difficulty = 'training';
+  stage.customBattle.stageVariant = 'competitive';
+  stage.customBattle.stageEventIntensity = 'full';
+  const engine = new smashModule.EngineSmash(
+    760,
+    420,
+    [makeHero('p5-competitive-hero')],
+    makeEnemyData([makeThreat('p5-competitive-opponent')]),
+    particles,
+    noop,
+    noop,
+    stage
+  );
+  const hero = engine.getActiveHero();
+  const opponent = engine.getActiveOpponent();
+  const heroHp = hero.currentHp;
+  const opponentHp = opponent.currentHp;
+
+  assert.ok(engine.arena.hazards.length > 0, 'Alien pilot did not use a native hazard arena');
+  assert.equal(engine.arena.requestedEventIntensity, 'full');
+  assert.equal(engine.arena.eventIntensity, 'off');
+  assert.equal(engine.hazardsDisabled, true);
+  assert.equal(engine.skipPreMatch(), true);
+  for (let frame = 0; frame < 300; frame++) engine.update({}, {});
+
+  assert.equal(engine.hazardTick, 0);
+  assert.equal(engine.stageEventRuntime.phase, 'disabled');
+  assert.equal(engine.stageEventRuntime.elapsedMs, 0);
+  assert.deepEqual(engine.stageEventRuntime.occurrences, {});
+  assert.equal(hero.currentHp, heroHp);
+  assert.equal(opponent.currentHp, opponentHp);
+});
+
+test('Smash P5 dynamic topologies move riders deterministically and transform safely', () => {
+  const makeMobileEngine = id => {
+    const stage = makeStage('Smash');
+    stage.universe = 'Camera Cafe';
+    stage.customBattle.difficulty = 'training';
+    stage.customBattle.stageVariant = 'lore';
+    stage.customBattle.stageEventIntensity = 'full';
+    const engine = new smashModule.EngineSmash(
+      760,
+      420,
+      [makeHero(`p5-mobile-${id}`)],
+      makeEnemyData([makeThreat(`p5-mobile-opponent-${id}`)]),
+      particles,
+      noop,
+      noop,
+      stage
+    );
+    assert.equal(engine.skipPreMatch(), true);
+    return engine;
+  };
+  const first = makeMobileEngine('a');
+  const second = makeMobileEngine('b');
+  const firstPlatform = first.platforms.find(entry => entry.motion?.axis === 'x');
+  const secondPlatform = second.platforms.find(entry => entry.topologyPlatformId === firstPlatform.topologyPlatformId);
+  const firstHero = first.getActiveHero();
+  const secondHero = second.getActiveHero();
+  [
+    [firstHero, firstPlatform],
+    [secondHero, secondPlatform]
+  ].forEach(([hero, platformData]) => {
+    hero.x = (platformData.x1 + platformData.x2) / 2;
+    hero.y = platformData.y;
+    hero.vy = 0;
+  });
+  const oldPlatformX = firstPlatform.x1;
+  const oldHeroX = firstHero.x;
+  first.updateStageFlow();
+  second.updateStageFlow();
+  const platformDx = firstPlatform.x1 - oldPlatformX;
+
+  assert.notEqual(platformDx, 0, 'mobile rail did not advance');
+  assert.ok(Math.abs((firstHero.x - oldHeroX) - platformDx) < 1e-9, 'platform did not carry its rider');
+  assert.equal(firstPlatform.x1, secondPlatform.x1, 'identical mobile clocks diverged');
+  assert.equal(firstPlatform.y, secondPlatform.y, 'identical mobile rails diverged vertically');
+
+  const transformStage = makeStage('Smash');
+  transformStage.customBattle.difficulty = 'training';
+  transformStage.customBattle.stageVariant = 'lore';
+  transformStage.customBattle.stageEventIntensity = 'full';
+  transformStage.customBattle.stageTopologyId = 'TRANSFORMING_EVENT';
+  const transform = new smashModule.EngineSmash(
+    760,
+    420,
+    [makeHero('p5-transform-hero')],
+    makeEnemyData([makeThreat('p5-transform-opponent')]),
+    particles,
+    noop,
+    noop,
+    transformStage
+  );
+  assert.equal(transform.skipPreMatch(), true);
+  const support = transform.platforms.find(entry => entry.kind !== 'main');
+  const transformHero = transform.getActiveHero();
+  transformHero.x = (support.x1 + support.x2) / 2;
+  transformHero.y = support.y;
+  transformHero.vy = 0;
+  const hpBefore = transformHero.currentHp;
+  const xBefore = transformHero.x;
+  const yBefore = transformHero.y;
+  const layoutBefore = JSON.stringify(transform.platforms);
+
+  assert.equal(transform.applyTelegraphedLayout(1), true);
+  assert.notEqual(JSON.stringify(transform.platforms), layoutBefore);
+  assert.ok(transformHero.vy <= -2.2, 'rider was not safely released from a disappearing support');
+  assert.equal(transformHero.currentHp, hpBefore);
+  assert.equal(transformHero.x, xBefore, 'layout transformation teleported the fighter horizontally');
+  assert.equal(transformHero.y, yBefore, 'layout transformation teleported the fighter vertically');
+  assert.ok(transform.platforms.some(entry => entry.kind === 'main' && entry.passThrough === false));
+});
+
+test('Smash objective defeat preserves its result and advances the authored pose', () => {
+  let completion = null;
+  const engine = new smashModule.EngineSmash(
+    760,
+    420,
+    [makeHero('player_anchor')],
+    makeEnemyData([makeThreat('objective-threat')]),
+    particles,
+    noop,
+    (result, summary) => { completion = { result, summary }; },
+    makeStage('Smash', 'cpu')
+  );
+  const hero = engine.getActiveHero();
+
+  for (let frame = 0; frame < 30; frame++) engine.update({}, {});
+  engine.arena.objective = 'protect';
+  engine.objectiveProgress = 0;
+  engine.objectiveTarget = 1;
+  engine.artifactHp = 0;
+  engine.updateObjectiveBattleState();
+
+  assert.equal(engine.gameOver, true);
+  assert.equal(engine.meleeOutcomeResult, 'defeat');
+  assert.equal(hero.state, 'defeat');
+  const initialElapsed = hero.stateElapsed;
+  for (let frame = 0; frame < 121; frame++) engine.update({}, {});
+  assert.ok(hero.stateElapsed > initialElapsed, 'defeat animation remained frozen on its first frame');
+  assert.equal(completion?.result, 'defeat');
+  assert.equal(completion?.summary.result, 'defeat');
 });
 
 test('singleRoster CPU modes spawn each selected threat exactly once', () => {

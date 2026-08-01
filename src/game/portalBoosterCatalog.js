@@ -378,7 +378,21 @@ export const BOOSTER_ART_BY_UNIVERSE = {
   "Zombi": "/boosters/zombi.webp",
   "Zombies Ate My Neighbors": "/boosters/zombies-ate-my-neighbors.webp",
   "Zootopia": "/boosters/zootopia.webp",
-  "Zorro": "/boosters/zorro.webp"
+  "Zorro": "/boosters/zorro.webp",
+  "Poppy Playtime": "/boosters/poppy-playtime.webp",
+  "Plants vs. Zombies": "/boosters/plants-vs-zombies.webp",
+  "Happy Wheels": "/boosters/happy-wheels.webp",
+  "Marble Hornets": "/boosters/marble-hornets.webp",
+  "The Horribly Slow Murderer": "/boosters/the-horribly-slow-murderer.webp",
+  "Sartorius Stedim Biotech": "/boosters/sartorius-stedim-biotech.webp",
+  "Trololo": "/boosters/trololo.webp",
+  "Rick Astley": "/boosters/rick-astley.webp",
+  "Nyan Cat": "/boosters/nyan-cat.webp",
+  "Mr. Bean": "/boosters/mr-bean.webp",
+  "Famille Pirate": "/boosters/famille-pirate.webp",
+  "The Wild Thornberrys": "/boosters/the-wild-thornberrys.webp",
+  "Téléchat": "/boosters/telechat.webp",
+  "Nicolas et Pimprenelle": "/boosters/nicolas-et-pimprenelle.webp"
 };
 
 export const BOOSTER_ART_UNIVERSES = Object.freeze(Object.keys(BOOSTER_ART_BY_UNIVERSE));

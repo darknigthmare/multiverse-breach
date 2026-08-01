@@ -14,7 +14,12 @@ dist-ssr
 
 # Local generation, reference, and QA workspaces
 .tmp
+.tmp-*
 tmp
+
+# Python caches
+__pycache__/
+*.py[cod]
 
 # Editor directories and files
 .vscode/*

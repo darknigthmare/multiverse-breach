@@ -1,0 +1,41 @@
+{
+  "universeKey": "Negima",
+  "universeName": "Negima",
+  "medium": "manga",
+  "rightsClass": "third-party",
+  "officialReferenceUrls": [
+    "https://kodansha.us/series/negima/"
+  ],
+  "canonicalMotif": "Le campus de Mahora Academy et la magie de Negi Springfield",
+  "canonicalStage": "Le campus de Mahora Academy et la magie de Negi Springfield",
+  "visualAnchors": [
+    "Grande académie japonaise mêlant bâtiments scolaires, allées d'arbres et architecture européenne, sous un immense arbre-monde visible derrière le campus. Un jeune mage enseignant générique ouvre un cercle magique au-dessus d'une cour où des silhouettes d'élèves se rassemblent; associer vie scolaire lumineuse, symboles de pactio, grimoires et portails fantastiques sans reproduire une couverture.",
+    "Le campus de Mahora Academy et la magie de Negi Springfield"
+  ],
+  "heroAnchors": [
+    "Lead character: Negi Springfield",
+    "Gameplay archetype: hacker",
+    "Signature weapon type: magic_staff",
+    "Primary costume or energy color: #ec7063",
+    "Secondary costume or energy color: #f7dc6f",
+    "Approved local character reference metadata: public/sprites/generated/heroes/negima/negi.png"
+  ],
+  "leadHeroName": "Negi Springfield",
+  "leadReferencePath": "public/sprites/generated/heroes/negima/negi.png",
+  "localReferencePaths": [
+    "public/sprites/generated/heroes/negima/negi.png"
+  ],
+  "referenceConfidence": "high",
+  "generationAllowed": true,
+  "mode": "built-in-imagegen-ephemeral-worker",
+  "sourceManifest": {
+    "id": "multiverse-breach.universe-cosmetic-generation-manifest",
+    "schemaVersion": 1
+  },
+  "review": {
+    "alpha": true,
+    "distinctFrames": true,
+    "processedAt": "2026-08-01T10:13:59.978Z"
+  },
+  "generationPrompt": "Use case: stylized-concept\nAsset type: production-ready keyed 2D game cosmetic atlas for \"Negima\".\nPrimary request: create exactly one 1024x1536 portrait raster sprite sheet, conceptually divided into 4 equal columns by 6 equal rows; every cell is exactly 256x256 and the row order below is mandatory.\nCanonical stage or motif: Le campus de Mahora Academy et la magie de Negi Springfield.\nConcrete verified visual anchors: Grande académie japonaise mêlant bâtiments scolaires, allées d'arbres et architecture européenne, sous un immense arbre-monde visible derrière le campus. Un jeune mage enseignant générique ouvre un cercle magique au-dessus d'une cour où des silhouettes d'élèves se rassemblent; associer vie scolaire lumineuse, symboles de pactio, grimoires et portails fantastiques sans reproduire une couverture. | Le campus de Mahora Academy et la magie de Negi Springfield.\nOfficial source provenance URLs researched before prompt encoding: https://kodansha.us/series/negima/.\nThe canonical motif, visual anchors and hero facts above are concrete facts already encoded from the researched official-source provenance. Do not browse, fetch, open or infer unseen content from any URL; reproduce only these explicit encoded details.\nFidelity gate: the encoded official-source facts and approved local references meet the current production threshold; do not add unsupported visual lore.\nLead identity for both character-animation rows: Negi Springfield.\nConcrete hero anchors: Lead character: Negi Springfield | Gameplay archetype: hacker | Signature weapon type: magic_staff | Primary costume or energy color: #ec7063 | Secondary costume or energy color: #f7dc6f | Approved local character reference metadata: public/sprites/generated/heroes/negima/negi.png.\nApproved local lead-reference metadata path: public/sprites/generated/heroes/negima/negi.png. Treat this path as provenance metadata; use the bitmap for identity and costume cues only when it is actually supplied as an input image, and never copy its pixel placement, sheet layout or pose.\nRights treatment: wholly original fan-made fan-art interpretation; preserve recognizable canonical visual logic without copying official artwork, key art, frames, sprites, logos or exact proprietary composition.\nIdentity safety: if this source is live action, depicts a real person, or the named lead is associated with a real performer, use an anonymous identity-safe Thread Echo. Preserve only source-grounded role, costume, equipment, palette and broad silhouette cues; do not reproduce a performer face, biometric identity, celebrity likeness or photoreal portrait.\nStyle/medium: crisp highly detailed 16-bit/32-bit-inspired pixel art, deliberate readable pixel clusters, sharp silhouettes, controlled selective anti-aliasing, rich material texture and modern game-production lighting; never painterly, photorealistic, smooth vector art or a placeholder.\nTechnical chroma background: every unused pixel, every gap and all open centers must be perfectly flat uniform solid #00ff00. Never use #00ff00 or near chroma green in artwork, highlights or effects. No gradient, texture, vignette, floor, cast shadow, reflection, atmospheric backdrop, green spill, grid line, gutter label or guide mark.\nROW 0, y=0..255: one coherent full-width 1024x256 PROFILE TITLE / HUD TOP frame. Build universe-specific corners, materials and a restrained central crest from the verified anchors, but keep the broad center empty/open for runtime title and HUD information. Render no text, letters, numbers or pseudo-glyphs.\nROW 1, y=256..511: one coherent full-width 1024x256 PROFILE BANNER / HUD LOWER frame. It must pair visually with row 0 as a unified 1024x512 gameplay HUD theme, while leaving a broad clean center empty/open for runtime profile art and interface content. Render no baked controls, meters or text.\nROW 2, y=512..767: FOUR isolated 256x256 PORTAL EFFECT frames from left to right: dormant universe-specific aperture, opening phase, fully open energy rift, then clean collapse/dissipation. Keep one consistent portal design, scale and center with pure-green separation around every frame.\nROW 3, y=768..1023: FOUR isolated 256x256 KO EFFECT frames from left to right: intact universe-specific emblem or energy focus, impact/rupture, readable peak burst, then sparse fading fragments. This row is effect-only: absolutely no character, body, face, limb, corpse, gore, letters or numbers.\nROW 4, y=1024..1279: FOUR isolated 256x256 INTRO POSE animation frames of the SAME Negi Springfield identity from left to right: composed arrival, recognition/turn, signature readying action, stable battle-ready pose. Keep full body and equipment inside every cell, with identical proportions, costume, palette, scale, baseline and identity across all four frames; no ground shadow.\nROW 5, y=1280..1535: FOUR isolated 256x256 VICTORY POSE animation frames of that SAME Negi Springfield identity from left to right: post-battle recovery, rising transition, signature celebratory action, stable final victory pose. Keep full body and equipment inside every cell, with identical proportions, costume, palette, scale, baseline and identity across all four frames; no ground shadow.\nComposition and separation: rows 0 and 1 are each a single full-width strip; rows 2 through 5 each contain exactly four isolated frames. Keep all content inside its assigned row and cell, never cross a row boundary, and leave at least 10 pixels of pure #00ff00 separation around independent sprites.\nFinal constraints: one atlas only, exact 1024x1536 size and exact 4x6 order; original project art or original fan-art only; no copied official image or sprite; no poster recreation; no readable text; no logo; no watermark; no signature; no decorative sheet title; no extra character; no cropped body, limb or equipment."
+}

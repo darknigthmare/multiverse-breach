@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "id": "multiverse-breach.player-anchor-p4-prompt-manifest",
+  "phase": "P4",
+  "date": "2026-08-01",
+  "provider": "OpenAI built-in image_gen",
+  "pathBases": {
+    "sourcePath": "repository-root",
+    "finalPath": "repository-root",
+    "assetPath": "public-root"
+  },
+  "identity": {
+    "characterId": "player_anchor",
+    "displayName": "Ancre",
+    "universe": "Nexus de Convergence",
+    "reference": {
+      "id": "player-anchor-approved-reference",
+      "path": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+      "role": "approved character identity, costume, palette, proportions, silhouette and pixel-art style reference"
+    }
+  },
+  "sheets": [
+    {
+      "sheetId": "M1_MOVEMENT",
+      "provider": "OpenAI built-in image_gen",
+      "useCase": "stylized-concept",
+      "assetPath": "sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m1-movement-openai-v1.webp",
+      "sourcePath": ".tmp-p4-melee-assets/m1-source.png",
+      "finalPath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m1-movement-openai-v1.webp",
+      "characterId": "player_anchor",
+      "identityReferenceId": "player-anchor-approved-reference",
+      "identityReferencePath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+      "prompt": "Use case: stylized-concept\nAsset type: production-ready transparent sprite atlas source for the 2D browser game Multiverse Breach, P4 melee pilot M1_MOVEMENT\nInput image: use the supplied local player-anchor.png only as the approved character identity and pixel-art style reference.\nPrimary request: create an exact 4 columns by 4 rows square sprite atlas of the same original A.R.C.A. Anchor character.\nSubject identity lock: neutral androgynous living Anchor in black and gunmetal tactical armor, rounded sealed helmet with a thin amber-yellow visor line, long split dark coat tails, cyan luminous anchor gauntlet on the forward arm, restrained small amber signal accents. Preserve the silhouette, armor panels, helmet, coat, palette, proportions and gauntlet from the reference in every frame.\nCamera/orientation: strict 2D side battle view, full body, facing right in every cell, feet aligned to one stable baseline per row.\nGrid: sixteen equal cells, four cells per row, no gutters, borders, labels or separators. Keep all body parts, coat and gauntlet inside every cell with generous padding.\nAnimation rows: row 1 idle breathing cycle; row 2 forward run cycle; row 3 jump start/rise/apex/fall progression; row 4 turn then controlled landing progression.\nStyle/medium: high-detail handcrafted 32-bit pixel art, crisp deliberate pixel clusters, nearest-neighbor game sprite quality, no painterly blur and no smooth vector look.\nBackdrop: perfectly flat uniform solid #00ff00 chroma-key color filling every unused pixel and every cell. No floor, shadow, glow spill onto the background, gradient, texture or transparency simulation. Do not use #00ff00 in the character.\nConstraints: exactly one character pose per cell; consistent scale and anatomy; no cropped weapon/body; no extra character, creature, prop, platform, UI, text, letter, numeral, logo, watermark or frame.\nAvoid: redesigning the helmet, changing gender/body shape, generic superhero armor, photorealism, duplicated whole figures within a cell, contact shadows, motion blur.",
+      "sourceSha256": "FFB2D5521F92F4E9D663902B5DB80C8E3596EC245AE9EF325CFE970D03E6D798",
+      "finalSha256": "A2E2C192B7C4E1CEE52ADE5B3629B730DA035C2D402CA374FB1E9D87B5CC6399",
+      "pipeline": {
+        "generation": "OpenAI built-in image_gen with a flat #00ff00 chroma-key background",
+        "helper": {
+          "path": "$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py",
+          "arguments": [
+            "--auto-key",
+            "border",
+            "--soft-matte",
+            "--transparent-threshold",
+            "35",
+            "--opaque-threshold",
+            "160",
+            "--despill",
+            "--edge-contract",
+            "1"
+          ],
+          "intermediatePath": ".tmp-p4-melee-assets/m1-alpha-aggressive.webp"
+        },
+        "normalization": {
+          "helper": "scripts/normalizeGeneratedSpriteSheet.py",
+          "arguments": [
+            "--strict-cells"
+          ]
+        }
+      },
+      "sourceDimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "png"
+      },
+      "finalDimensions": {
+        "width": 1024,
+        "height": 1024,
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 256,
+        "cellHeight": 256,
+        "format": "webp",
+        "alpha": true
+      },
+      "reviewStatus": "approved",
+      "reviewDate": "2026-08-01"
+    },
+    {
+      "sheetId": "M2_CROUCH_DEFENSE",
+      "provider": "OpenAI built-in image_gen",
+      "useCase": "identity-preserve",
+      "assetPath": "sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m2-crouch-defense-openai-v1.webp",
+      "sourcePath": ".tmp-p4-melee-assets/m2-source.png",
+      "finalPath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m2-crouch-defense-openai-v1.webp",
+      "characterId": "player_anchor",
+      "identityReferenceId": "player-anchor-approved-reference",
+      "identityReferencePath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+      "prompt": "Use case: identity-preserve\nAsset type: production-ready 2D pixel-art melee sprite atlas, M2_CROUCH_DEFENSE\nInput image: Image 1 is the strict identity, silhouette, costume, proportions, palette, and pixel-rendering reference for the original character player_anchor (\"Ancre\"). Preserve the same dark charcoal futuristic armor, rounded helmet, narrow yellow illuminated visor, yellow accent marks, long split coat tails, heavy boots, and cyan energy gauntlet on the forward/right arm. Create new poses, not a rearrangement of the existing source frames.\nPrimary request: Create one square sprite sheet arranged as an EXACT 4 columns by 4 rows grid: sixteen equal-size cells, one and only one complete character sprite per cell. All sprites are strict side-view profile FACING RIGHT. This is a readable frame atlas, not a poster or contact sheet.\nRow choreography, left to right:\nROW 1 — crouch enter / idle / exit cycle: C1 lowering into crouch, C2 fully settled crouch idle, C3 subtle alternate crouch-idle frame, C4 rising out of crouch.\nROW 2 — crouchLight: C1 crouched anticipation, C2 quick low cyan-gauntlet strike startup, C3 full low strike extension, C4 crouched recovery.\nROW 3 — shield enter / hold / hit: C1 summon a compact cyan energy shield while crouched, C2 stable shield hold, C3 shield visibly absorbs one impact without an attacker, C4 return to guarded hold.\nROW 4 — perfect shield then shield break: C1 precise perfect-shield onset, C2 bright compact perfect-shield peak, C3 shield fractures into cyan energy fragments and character recoils, C4 dedicated guard-break stagger/collapse pose. Keep effects compact inside the same cell.\nScene/backdrop: perfectly flat, solid, uniform #00ff00 chroma-key background across the entire canvas and in every gap between sprites. No shadows, gradients, texture, reflections, floor plane, lighting variation, grid lines, separators, borders, or panels.\nStyle/medium: crisp high-quality pixel art matching Image 1, clean readable silhouette, consistent pixel density and scale, gameplay-ready.\nComposition/framing: exact evenly spaced 4x4 matrix. Same character scale and anchor/baseline in every cell. Generous padding on all four sides of every cell. Helmet, coat, boots, gauntlet, shield, fragments, and all effects must remain fully inside their own cell with zero cropping and zero overlap or bleed into adjacent cells.\nConstraints: preserve identity exactly; same outfit and equipment in all sixteen frames; no extra characters; no attacker; no weapon substitution; do not use #00ff00 or any green hue on the subject or effects; cyan shield/gauntlet energy only; all sixteen sprites face right.\nAvoid: text, letters, numbers, captions, labels, logos, watermark, UI, guides, cell outlines, cast shadow, contact shadow, reflection, scenery, frame clipping, mixed facing directions, duplicated poster poses, painterly blur, smooth 3D render.",
+      "sourceSha256": "0B2924E50C3C9032F27C64F62B1DDBECD5F19C54EE5B526FF8366CC02B07EE2D",
+      "finalSha256": "CA209A566A374D555A1A50161587669D13AA6BA69F9DDC68EA45DC2D61BF1B2F",
+      "pipeline": {
+        "generation": "OpenAI built-in image_gen with a flat #00ff00 chroma-key background",
+        "gridPreparation": "Preserve the raw 1254x1254 source, pad one sampled-key pixel on every edge to 1256x1256, then move row 4 down by 42 pixels inside its cells to remove inter-row bleed; temporary preparation files were not retained.",
+        "helper": {
+          "path": "$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py",
+          "arguments": [
+            "--auto-key",
+            "border",
+            "--soft-matte",
+            "--transparent-threshold",
+            "12",
+            "--opaque-threshold",
+            "220",
+            "--despill"
+          ]
+        },
+        "normalization": {
+          "helper": "scripts/normalizeMeleeSpriteAtlas.mjs",
+          "method": "nearest-neighbor normalization from a strict 1256x1256 4x4 grid to a lossless 1024x1024 WebP",
+          "finalCellWidth": 256,
+          "finalCellHeight": 256
+        }
+      },
+      "sourceDimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "png"
+      },
+      "finalDimensions": {
+        "width": 1024,
+        "height": 1024,
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 256,
+        "cellHeight": 256,
+        "format": "webp",
+        "alpha": true
+      },
+      "reviewStatus": "approved",
+      "reviewDate": "2026-08-01"
+    },
+    {
+      "sheetId": "M3_CHARGE_TAUNT",
+      "provider": "OpenAI built-in image_gen",
+      "useCase": "stylized-concept",
+      "assetPath": "sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m3-charge-taunt-openai-v1.webp",
+      "sourcePath": ".tmp-p4-melee-assets/m3-source.png",
+      "finalPath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m3-charge-taunt-openai-v1.webp",
+      "characterId": "player_anchor",
+      "identityReferenceId": "player-anchor-approved-reference",
+      "identityReferencePath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+      "prompt": "Use case: stylized-concept\nAsset type: production sprite animation sheet for the 2D side-view melee mode of Multiverse Breach, sheet M3_CHARGE_TAUNT\nInput image: Image 1 is the strict identity and pixel-art reference for the original character player_anchor; preserve the exact character design, not the poses or old sheet layout.\nPrimary request: create one exact 4 columns by 4 rows sprite sheet, sixteen equal square cells, one complete player_anchor figure in every cell, all side-view facing right.\nSubject invariants: same charcoal-black futuristic segmented armor, same long split dark trench coat, same fully enclosed rounded helmet, same narrow horizontal yellow visor slit, same small yellow armor accents, same heavy boots, and same cyan holographic powered right gauntlet. Keep body proportions, helmet, costume, palette and scale identical in all sixteen frames.\nAnimation layout, left to right:\nRow 1 COMBO: frame 1 combat-ready windup; frames 2, 3 and 4 are three clearly different successive right-facing powered-gauntlet strikes, readable as one quick three-hit glove combo.\nRow 2 CHARGE: chargeStart then three seamless chargeLoop progression frames; planted stance, cyan energy gathering tightly around the gauntlet and forearm, increasing but never hiding or enlarging the body.\nRow 3 RELEASE_RECOVERY: frames 1 and 2 release a compact cyan anchoring impulse forward from the gauntlet; frames 3 and 4 settle into finite recovery and return toward guard. The impulse remains inside its cell and does not connect to neighboring cells.\nRow 4 TAUNT: four-frame characteristic A.R.C.A. signal taunt: player_anchor deliberately raises the cyan gauntlet, emits a small abstract cyan resonance beacon, acknowledges it with a confident helmet tilt, then returns to stance. No letters, words, logo, UI or readable glyph.\nStyle/medium: crisp highly detailed dark sci-fi pixel art matching Image 1 exactly, hard readable silhouette, restrained cyan bloom, no soft painterly rendering.\nComposition/framing: exact orthographic 4x4 grid; identical character baseline, anchor point and scale in every cell; generous internal padding on all four sides of every cell; full helmet, coat tails, fists, boots, energy and effects fully contained; no overlap or bleed across cell boundaries; no visible grid lines.\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background across every unused pixel, including gutters and corners. One uniform color only: no shadows, gradients, texture, floor, reflections, lighting variation or transparency.\nConstraints: exactly sixteen frames and exactly four rows of four; one character only per cell; face right in every frame; preserve identity strictly; no cropped body or effects; no cast/contact shadow; do not use #00ff00 anywhere in the character or VFX; no text, watermark, signature, border, panel, labels or logos.",
+      "sourceSha256": "90D5BBD7B64924AA7A8C717A6E744ED62E4C9982F8332C147F6693EB2A8C1520",
+      "finalSha256": "D050D845F47E02945269D942B156377B931EF042FC0FEBFC881DC19515A714A4",
+      "pipeline": {
+        "generation": "OpenAI built-in image_gen with a flat #00ff00 chroma-key background",
+        "helper": {
+          "path": "$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py",
+          "arguments": [
+            "--auto-key",
+            "border",
+            "--soft-matte",
+            "--transparent-threshold",
+            "12",
+            "--opaque-threshold",
+            "220",
+            "--despill"
+          ],
+          "intermediatePath": ".tmp-p4-melee-assets/m3-alpha.webp"
+        },
+        "normalization": {
+          "helper": "scripts/normalizeGeneratedSpriteSheet.py",
+          "arguments": [
+            "--strict-cells"
+          ]
+        }
+      },
+      "sourceDimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "png"
+      },
+      "finalDimensions": {
+        "width": 1024,
+        "height": 1024,
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 256,
+        "cellHeight": 256,
+        "format": "webp",
+        "alpha": true
+      },
+      "reviewStatus": "approved",
+      "reviewDate": "2026-08-01"
+    },
+    {
+      "sheetId": "M4_LEDGE",
+      "provider": "OpenAI built-in image_gen",
+      "useCase": "stylized-concept",
+      "useCaseDeclaredInPrompt": false,
+      "assetPath": "sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m4-ledge-openai-v1.webp",
+      "sourcePath": ".tmp-p4-melee-assets/m4-source.png",
+      "finalPath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m4-ledge-openai-v1.webp",
+      "characterId": "player_anchor",
+      "identityReferenceId": "player-anchor-approved-reference",
+      "identityReferencePath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+      "prompt": "Create one production-ready 2D pixel-art sprite sheet for an original game character, using the attached player_anchor sheet ONLY as the identity, costume, palette, and rendering-style reference.\n\nOUTPUT AND LAYOUT — NON-NEGOTIABLE:\n- Exactly one square 1024×1024 image.\n- Exact 4 columns × 4 rows: sixteen equal 256×256 animation cells, read left-to-right then top-to-bottom.\n- One and only one full character pose per cell.\n- Strict orthographic side view in every cell, character facing screen-right in every cell.\n- Keep the entire character and any tiny local ledge prop fully inside each cell with generous transparent-key-color padding; no cropping, no overlap, no bleed across cells.\n- Consistent character scale, pivot, and registration across all sixteen cells.\n- Do NOT draw grid lines, cell borders, labels, numbering, text, logos, or watermark.\n\nCHARACTER IDENTITY — MATCH THE REFERENCE:\n- Same original player_anchor: compact futuristic black/anthracite segmented armor, rounded dark helmet, narrow glowing yellow visor slit, small yellow armor accents, long split dark coat tails, heavy boots, and the distinctive bright cyan energy gauntlet on the forward/right arm.\n- Preserve proportions, silhouette, costume construction, helmet shape, yellow/cyan palette, and crisp detailed pixel-art finish.\n- Do not redesign, unmask, recolor, add weapons, add accessories, or create alternate characters.\n\nEXACT ROW CONTENT:\nROW 1 — LEDGE CATCH, four successive frames: airborne reach toward a ledge at screen-right; fingertips contact; both hands secure the edge; body settles into a caught hanging position.\nROW 2 — LEDGE HANG LOOP, four subtly distinct looping frames: stable two-hand hang from the same screen-right ledge, small breathing/body sway and coat-tail motion, hands never release.\nROW 3 — CLIMB THEN DROP: columns 1–2 are successive climb-up frames (pull torso above the edge, then plant/raise onto the top); columns 3–4 are successive intentional drop frames (release from hang, then descend clear below the ledge).\nROW 4 — LEDGE ATTACK THEN LEDGE JUMP: columns 1–2 are successive ledge-attack frames while hanging (wind-up, then a compact screen-right cyan-gauntlet strike); columns 3–4 are successive ledge-jump frames (coil from hang, then launch upward/right away from the edge).\n\nLEDGE PROP:\n- Include only the smallest possible neutral dark-gray platform lip immediately local to the hands where indispensable to read the grab.\n- Keep the same simple ledge profile and height within each relevant sequence.\n- No floor, no room, no scenery, no background objects, no environmental storytelling, no shadows, no particles except a very tight cyan attack glow attached to the gauntlet in row 4 column 2.\n\nBACKGROUND:\n- Perfectly flat, uniform chroma-key green #00FF00 filling every background pixel.\n- No gradients, texture, lighting variation, vignette, shadows, antialias halo, or green contamination on the subject.\n\nThe result must read as a coherent, game-ready sixteen-frame ledge animation sheet, with clearly distinct progressive poses and no duplicated cells.",
+      "sourceSha256": "C1E160A8F6CD64D749D507F98D4AFB3188A8A8430FC8B01B1E0ADB8035A9535F",
+      "finalSha256": "E32E4E00E92E2BB793D38F9A6E6AF159F5CE3DFAAE3170A485E519AB5C01A8B8",
+      "pipeline": {
+        "generation": "OpenAI built-in image_gen with a flat #00ff00 chroma-key background",
+        "helper": {
+          "path": "$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py",
+          "arguments": [
+            "--auto-key",
+            "border",
+            "--soft-matte",
+            "--transparent-threshold",
+            "12",
+            "--opaque-threshold",
+            "220",
+            "--despill"
+          ],
+          "intermediatePath": ".tmp-p4-melee-assets/m4-alpha.webp"
+        },
+        "normalization": {
+          "helper": "scripts/normalizeGeneratedSpriteSheet.py",
+          "arguments": [
+            "--strict-cells"
+          ]
+        }
+      },
+      "sourceDimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "png"
+      },
+      "finalDimensions": {
+        "width": 1024,
+        "height": 1024,
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 256,
+        "cellHeight": 256,
+        "format": "webp",
+        "alpha": true
+      },
+      "reviewStatus": "approved",
+      "reviewDate": "2026-08-01"
+    },
+    {
+      "sheetId": "M5_INTRO_OUTRO",
+      "provider": "OpenAI built-in image_gen",
+      "useCase": "stylized-concept",
+      "assetPath": "sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m5-intro-outro-openai-v1.webp",
+      "sourcePath": ".tmp-p4-melee-assets/m5-source.png",
+      "finalPath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor/melee/player-anchor-m5-intro-outro-openai-v1.webp",
+      "characterId": "player_anchor",
+      "identityReferenceId": "player-anchor-approved-reference",
+      "identityReferencePath": "public/sprites/generated/heroes/nexus-de-convergence/player-anchor.png",
+      "prompt": "Use case: stylized-concept\nAsset type: production-ready transparent sprite atlas source for the 2D browser game Multiverse Breach, P4 melee pilot M5_INTRO_OUTRO\nInput image: use the supplied local player-anchor.png only as the approved character identity and pixel-art style reference.\nPrimary request: create an exact 4 columns by 4 rows square sprite atlas of the same original A.R.C.A. Anchor character.\nSubject identity lock: neutral androgynous living Anchor in black and gunmetal tactical armor, rounded sealed helmet with a thin amber-yellow visor line, long split dark coat tails, cyan luminous anchor gauntlet on the forward arm, restrained small amber signal accents. Preserve the exact silhouette, armor panels, helmet, coat, palette, proportions and gauntlet from the reference in every frame.\nCamera/orientation: strict 2D side battle view, full body, facing right in every cell, feet aligned to one stable baseline per row.\nGrid: sixteen equal cells, four cells per row, no gutters, borders, labels or separators. Keep all body parts, coat and gauntlet inside every cell with generous padding.\nAnimation rows: row 1 lore-specific intro where the Anchor stabilizes from a bounded cyan breach and assumes ready stance; row 2 restrained victorious Anchor pose sealing the breach with the cyan gauntlet; row 3 dignified defeat/recoil-to-kneel sequence, never humiliating; row 4 hit-stun impact and controlled recovery progression.\nStyle/medium: high-detail handcrafted 32-bit pixel art, crisp deliberate pixel clusters, nearest-neighbor game sprite quality, no painterly blur and no smooth vector look.\nEffects: small cyan causal fragments may remain tightly attached to the gauntlet/body silhouette, never crossing a cell boundary.\nBackdrop: perfectly flat uniform solid #00ff00 chroma-key color filling every unused pixel and every cell. No floor, shadow, gradient, texture or transparency simulation. Do not use #00ff00 in the character or effects.\nConstraints: exactly one character pose per cell; consistent scale and anatomy; no cropped body/gauntlet/effect; no extra character, creature, prop, platform, UI, text, letter, numeral, logo, watermark or frame.\nAvoid: redesigning the helmet, changing gender/body shape, generic superhero armor, photorealism, duplicated figures inside a cell, contact shadows, motion blur.",
+      "sourceSha256": "C9821375CE9AFAD1F2FB0C01AFC2E8AB1FC617E1BE5CB656FFB497A5068EDD80",
+      "finalSha256": "B7E3271A3CC50F141448A5EC5F8EC6749CDA6C483658D1D4C0B93AA9C4A152E2",
+      "pipeline": {
+        "generation": "OpenAI built-in image_gen with a flat #00ff00 chroma-key background",
+        "helper": {
+          "path": "$CODEX_HOME/skills/.system/imagegen/scripts/remove_chroma_key.py",
+          "arguments": [
+            "--auto-key",
+            "border",
+            "--soft-matte",
+            "--transparent-threshold",
+            "20",
+            "--opaque-threshold",
+            "190",
+            "--despill"
+          ],
+          "intermediatePath": ".tmp-p4-melee-assets/m5-alpha.webp"
+        },
+        "normalization": {
+          "helper": "scripts/normalizeGeneratedSpriteSheet.py",
+          "arguments": [
+            "--strict-cells"
+          ]
+        }
+      },
+      "sourceDimensions": {
+        "width": 1254,
+        "height": 1254,
+        "format": "png"
+      },
+      "finalDimensions": {
+        "width": 1024,
+        "height": 1024,
+        "columns": 4,
+        "rows": 4,
+        "cellWidth": 256,
+        "cellHeight": 256,
+        "format": "webp",
+        "alpha": true
+      },
+      "reviewStatus": "approved",
+      "reviewDate": "2026-08-01"
+    }
+  ]
+}

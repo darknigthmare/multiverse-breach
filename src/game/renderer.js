@@ -5,7 +5,16 @@ import { FEATURED_BACKDROPS } from './featuredUniversePacks';
 import { getGeneratedStageBackdropSrc } from './generatedStageAssets';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
-import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteFrameForLayout, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from './spriteAssets';
+import {
+  getEnemySpriteSheetSrc,
+  getHeroMeleeAnimationFrame,
+  getHeroMeleeSpriteSheetSrcs,
+  getHeroSpriteSheetSrc,
+  getItemSpriteSrc,
+  getSpriteFrameForLayout,
+  getSpriteSheetLayout,
+  MIRELLE_COMPLETE_SPRITES
+} from './spriteAssets';
 
 const spriteSheetCache = new Map();
 
@@ -55,6 +64,12 @@ const queueSpriteSheetRedraw = (entry, ctx, draw) => {
 
 export const preloadSpriteSheetSrcs = (srcs = []) => {
   srcs.forEach(src => getCachedSpriteSheet(src));
+};
+
+export const preloadMeleeSpriteSheetSrcs = characterOrId => {
+  const srcs = getHeroMeleeSpriteSheetSrcs(characterOrId);
+  preloadSpriteSheetSrcs(srcs);
+  return srcs;
 };
 
 export const drawCosmeticAtlasFrame = (
@@ -219,6 +234,96 @@ const drawMirelleItemVfx = (ctx, x, y, entity, animTime, facing, targetHeight, c
   ctx.restore();
 };
 
+const preloadedMeleeCharacters = new Set();
+const meleeAnimationClocks = new WeakMap();
+
+const getMeleeElapsedMs = (entity, animTime) => {
+  if (entity?.stateElapsed != null) {
+    const stateElapsed = Number(entity.stateElapsed);
+    if (Number.isFinite(stateElapsed)) return Math.max(0, stateElapsed) * 1000;
+  }
+
+  const timelineFrame = Math.max(0, Number(animTime) || 0);
+  if (!entity || typeof entity !== 'object') return timelineFrame * (1000 / 60);
+  const stateToken = `${entity.state || 'idle'}:${entity.stateNonce || 0}`;
+  const clock = meleeAnimationClocks.get(entity);
+  if (!clock || clock.stateToken !== stateToken || timelineFrame < clock.startedAt) {
+    meleeAnimationClocks.set(entity, { stateToken, startedAt: timelineFrame });
+    return 0;
+  }
+  return (timelineFrame - clock.startedAt) * (1000 / 60);
+};
+
+const getTrimValue = (trim, side) => Math.max(0, Number(trim?.[side]) || 0);
+const getAnchorValue = (value, fallback) => {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : fallback;
+};
+
+const drawMeleeManifestSpriteSheet = (
+  ctx,
+  x,
+  y,
+  entity,
+  animTime,
+  facing,
+  targetHeight,
+  redrawWhenResolved
+) => {
+  const frame = getHeroMeleeAnimationFrame(entity, getMeleeElapsedMs(entity, animTime));
+  if (!frame?.manifest || !frame.animation?.sheet) return 'missing';
+
+  const { manifest } = frame;
+  if (typeof Image !== 'undefined' && !preloadedMeleeCharacters.has(manifest.characterId)) {
+    preloadMeleeSpriteSheetSrcs(entity);
+    preloadedMeleeCharacters.add(manifest.characterId);
+  }
+
+  const entry = getCachedSpriteSheet(frame.animation.sheet);
+  if (!entry || entry.status === 'error') return 'missing';
+  if (entry.status !== 'ready' || !entry.image.complete || entry.image.naturalWidth === 0) {
+    queueSpriteSheetRedraw(entry, ctx, () => redrawWhenResolved?.());
+    return 'loading';
+  }
+
+  const cellWidth = Math.max(1, Number(manifest.cellWidth) || 1);
+  const cellHeight = Math.max(1, Number(manifest.cellHeight) || 1);
+  const trim = frame.trim || {};
+  const trimLeft = getTrimValue(trim, 'left');
+  const trimRight = getTrimValue(trim, 'right');
+  const trimTop = getTrimValue(trim, 'top');
+  const trimBottom = getTrimValue(trim, 'bottom');
+  const sourceX = frame.col * cellWidth + trimLeft;
+  const sourceY = frame.row * cellHeight + trimTop;
+  const sourceW = Math.max(1, cellWidth - trimLeft - trimRight);
+  const sourceH = Math.max(1, cellHeight - trimTop - trimBottom);
+  const scale = targetHeight / cellHeight;
+  const drawW = sourceW * scale;
+  const drawH = sourceH * scale;
+  const anchorX = getAnchorValue(frame.anchor?.x, 0.5) * cellWidth - trimLeft;
+  const anchorY = getAnchorValue(frame.anchor?.y, frame.anchor?.baseline === 'ledgeGrip' ? 0.72 : 0.94) * cellHeight - trimTop;
+  const flipX = manifest.facingMode === 'flip' && facing < 0 ? -1 : 1;
+
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.scale(flipX, 1);
+  ctx.filter = entity?.spriteFilter || 'none';
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(
+    entry.image,
+    sourceX,
+    sourceY,
+    sourceW,
+    sourceH,
+    -anchorX * scale,
+    -anchorY * scale,
+    drawW,
+    drawH
+  );
+  ctx.restore();
+  return 'drawn';
+};
+
 const drawGeneratedSpriteSheet = (ctx, x, y, entity, animTime, facing, targetHeight, srcGetter, redrawWhenResolved, context = 'auto') => {
   const entry = getCachedSpriteSheet(srcGetter(entity, context));
   if (!entry || entry.status === 'error') return 'missing';
@@ -333,6 +438,13 @@ export class ParticleSystem {
 }
 
 export const drawPixelSprite = (ctx, x, y, character, animTime, facing = 1, targetHeight = 72, context = 'auto') => {
+  if (context === 'melee') {
+    const meleeManifestStatus = drawMeleeManifestSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, () => {
+      drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
+    });
+    if (meleeManifestStatus !== 'missing') return;
+  }
+
   const generatedStatus = drawGeneratedSpriteSheet(ctx, x, y, character, animTime, facing, targetHeight, getHeroSpriteSheetSrc, () => {
     drawPixelSprite(ctx, x, y, character, animTime, facing, targetHeight, context);
   }, context);

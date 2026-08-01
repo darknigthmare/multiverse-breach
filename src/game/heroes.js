@@ -1,7 +1,8 @@
 // Heroes Database with Crossover Gear, Event Items, and Synergies (37 Universes)
 
-import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from './expandedUniverses';
-import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './loreAccuratePacks';
+import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from './expandedUniverses.js';
+import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './loreAccuratePacks.js';
+import { CANON_ROSTER_WAVE } from './canonRosterWave.js';
 import {
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS,
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES
@@ -2017,6 +2018,17 @@ mergeExtraHeroData(extraHeroData, EXPANDED_EXTRA_HERO_DATA);
 mergeExtraHeroData(extraHeroData, CANON_ROSTER_EXPANSION);
 mergeExtraHeroData(extraHeroData, CANON_ROSTER_EXTRA_PATCH);
 mergeExtraHeroData(extraHeroData, LORE_ACCURATE_HERO_EXPANSIONS);
+
+// Canon roster packs replace their historical partial entries. This final
+// projection prevents older expansion layers from silently appending a fourth
+// or fifth hero after the fidelity-aware three-character roster was authored.
+const canonRosterUniverseSet = new Set(CANON_ROSTER_WAVE.map(entry => entry.universe));
+for (let index = HEROES_DB.length - 1; index >= 0; index--) {
+  if (canonRosterUniverseSet.has(HEROES_DB[index].universe)) HEROES_DB.splice(index, 1);
+}
+canonRosterUniverseSet.forEach(universe => {
+  extraHeroData[universe] = [...(EXPANDED_EXTRA_HERO_DATA[universe] || [])];
+});
 
 const knownHeroIds = new Set(HEROES_DB.map(hero => hero.id));
 

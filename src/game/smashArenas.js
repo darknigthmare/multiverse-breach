@@ -1,5 +1,9 @@
 import { EXPANDED_UNIVERSE_SIGNATURES } from './expandedUniverses';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
+import {
+  decoratePlatformsForTopology,
+  resolveStageTopologyProfile
+} from './melee/stageTopologyCatalog';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
@@ -785,11 +789,19 @@ function getArenaIdForStage(stage = {}) {
 }
 
 export function createSmashArena(stage, width, height) {
-  const base = SMASH_ARENA_LAYOUTS[getArenaIdForStage(stage)] || SMASH_ARENA_LAYOUTS.training_flat;
+  const arenaId = getArenaIdForStage(stage);
+  const base = SMASH_ARENA_LAYOUTS[arenaId] || SMASH_ARENA_LAYOUTS.training_flat;
+  const topologyProfile = resolveStageTopologyProfile(stage, base.id);
   const recentProfile = stage.forceBaseArena || stage.dlcSuppressedArena
     ? null
     : getRecentUniverseLevelProfile(stage.universe);
-  const platforms = base.platforms(width, height).map(p => ({
+  const topologyPlatforms = decoratePlatformsForTopology(
+    base.platforms(width, height),
+    topologyProfile,
+    width,
+    height
+  );
+  const platforms = topologyPlatforms.map(p => ({
     ...p,
     x1: clamp(p.x1, 12, width - 24),
     x2: clamp(p.x2, 24, width - 12),
@@ -816,6 +828,11 @@ export function createSmashArena(stage, width, height) {
     pickups: safePickups,
     groundY: platforms[0]?.y || Math.round(height * 0.76),
     levelProfile: recentProfile?.melee || null,
+    topologyId: topologyProfile.topologyId,
+    stageVariant: topologyProfile.variant,
+    eventIntensity: topologyProfile.eventIntensity,
+    requestedEventIntensity: topologyProfile.requestedIntensity,
+    topologyProfile,
     theme: getSmashArenaTheme(stage, base)
   };
 }

@@ -4,6 +4,42 @@ import { SYNERGIES_DB } from './heroes';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
 import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
+import {
+  absorbMeleeGuardHit,
+  beginMeleeAction,
+  beginMeleeCharge,
+  beginMeleeLightCombo,
+  beginMeleeShield,
+  cancelMeleeHeldInputs,
+  getMeleeHurtbox,
+  initializeMeleeActorRuntime,
+  isMeleeMovementLocked,
+  performMeleeLedgeAction,
+  releaseMeleeCharge,
+  releaseMeleeShield,
+  setMeleeCrouch,
+  tickMeleeCombatActor,
+  tryCatchMeleeLedge
+} from './melee/meleeCombatRuntime';
+import { transitionMeleeState } from './melee/meleeStateMachine';
+import { MELEE_ACTIONS } from './melee/meleeInputMap';
+import {
+  createCanonicalTopologyPlatforms,
+  STAGE_EVENT_INTENSITIES,
+  STAGE_TOPOLOGY_IDS
+} from './melee/stageTopologyCatalog';
+import {
+  applyAuthoritativeStageEventSnapshot,
+  createPreMatchLock,
+  createStageEventRuntime,
+  getPreMatchSnapshot,
+  getStageEventSnapshot,
+  PRE_MATCH_STATES,
+  serializeStageEventRuntime,
+  skipPreMatchLock,
+  tickPreMatchLock,
+  tickStageEventRuntime
+} from './melee/stageEventEngine';
 
 const platformTextureCanvasCache = new Map();
 const LOCAL_P2_CONTROL = 'p2';
@@ -126,6 +162,23 @@ export class EngineSmash {
     this.singleRoster = Boolean(stage.customBattle?.singleRoster);
     this.isFixedCustomRoster = this.isLocalP2 || this.singleRoster;
     this.arena = createSmashArena(stage, width, height);
+    this.stageTopologyProfile = this.arena.topologyProfile;
+    this.hazardsDisabled = this.hazardsDisabled
+      || this.stageTopologyProfile.eventIntensity === STAGE_EVENT_INTENSITIES.off;
+    this.preMatchLock = createPreMatchLock({
+      stage,
+      serverElapsedMs: stage.multiplayer?.preMatchElapsedMs
+    });
+    this.stageEventRuntime = createStageEventRuntime({
+      stage,
+      arena: this.arena,
+      profile: this.stageTopologyProfile
+    });
+    this.stageEventSnapshot = getStageEventSnapshot(this.stageEventRuntime);
+    this.mobilePlatformElapsedMs = 0;
+    this.stageEventWeatherMs = 0;
+    this.layoutTransitionMs = 0;
+    this.preMatchReleaseCueMs = 0;
     this.generatedPlatformPattern = null;
     this.recentPlatformPattern = null;
     this.gravity = this.arena.gravity || 0.25;
@@ -145,13 +198,13 @@ export class EngineSmash {
     this.portalSpawnTick = 0;
     
     // Map base heroes
-    this.heroes = heroes.map((h, index) => ({
+    this.heroes = heroes.map((h, index) => initializeMeleeActorRuntime({
       ...h,
       x: this.arena.spawns.heroes[index]?.x || (100 + index * 30),
       y: this.arena.spawns.heroes[index]?.y || this.arena.groundY,
       vx: 0,
       vy: 0,
-      state: 'idle',
+      state: 'intro',
       stateTimer: 0,
       cooldown: 0,
       specialCharge: 0,
@@ -198,6 +251,7 @@ export class EngineSmash {
     this.gameOver = false;
     this.completionReported = false;
     this.victoryTimer = 0;
+    this.meleeOutcomeResult = null;
     this.activeHeroId = this.heroes[0].id;
     this.activeOpponentId = null;
     this.groundY = this.arena.groundY;
@@ -214,7 +268,10 @@ export class EngineSmash {
       this.objectiveTarget = 1;
       this.enemies = this.createCustomRosterOpponents(false);
       this.fixedRosterOpponentCount = this.enemies.length;
+    } else {
+      this.spawnEnemy();
     }
+    if (!this.isPreMatchLocked()) this.completeMeleeIntros();
   }
 
   getActiveHero() {
@@ -222,13 +279,16 @@ export class EngineSmash {
   }
 
   setActiveHero(id) {
+    if (this.isMatchInputLocked?.()) return false;
     const next = this.heroes.find(h => h.id === id);
     if (next && next.currentHp > 0) {
       this.heroes.forEach(h => h.isLeader = false);
       next.isLeader = true;
       this.activeHeroId = id;
       this.playSfx('jump');
+      return true;
     }
+    return false;
   }
 
   /**
@@ -273,7 +333,7 @@ export class EngineSmash {
         : template.special?.name || 'Versus Rupture';
       const behavior = this.getEnemyBehavior(template, isBoss);
 
-      return {
+      return initializeMeleeActorRuntime({
         ...template,
         id: `${localP2 ? 'p2' : 'cpu-custom'}:${sourceId}:${index}`,
         sourceId,
@@ -281,7 +341,7 @@ export class EngineSmash {
         y: spawn.y,
         vx: 0,
         vy: 0,
-        state: 'idle',
+        state: this.isPreMatchLocked() ? 'intro' : 'idle',
         stateTimer: 0,
         cooldown: localP2 ? 0 : behavior.cooldown,
         maxHp: hp,
@@ -312,7 +372,7 @@ export class EngineSmash {
         facing: -1,
         specialCharge: 0,
         statusEffects: { infected: 0, glitched: 0, radiated: 0 }
-      };
+      });
     });
   }
 
@@ -323,7 +383,7 @@ export class EngineSmash {
   }
 
   setActiveOpponent(id) {
-    if (!this.isLocalP2) return false;
+    if (!this.isLocalP2 || this.isMatchInputLocked()) return false;
     const next = this.enemies.find(enemy => enemy.id === id);
     if (!next || next.currentHp <= 0) return false;
     this.enemies.forEach(enemy => { enemy.isLeader = false; });
@@ -333,8 +393,172 @@ export class EngineSmash {
     return true;
   }
 
+  getMeleeActor(side = 'player') {
+    return ['cpu', 'opponent', 'p2'].includes(side)
+      ? this.getActiveOpponent()
+      : this.getActiveHero();
+  }
+
+  isPreMatchLocked() {
+    return this.preMatchLock?.state === PRE_MATCH_STATES.locked;
+  }
+
+  isMatchInputLocked() {
+    return this.isPreMatchLocked() || this.isMeleeIntroActive();
+  }
+
+  getPreMatchState(lang = 'fr') {
+    return getPreMatchSnapshot(this.preMatchLock, this.stage, lang);
+  }
+
+  syncPreMatchFromServer(serverElapsedMs) {
+    if (!Number.isFinite(serverElapsedMs)) return false;
+    tickPreMatchLock(this.preMatchLock, 0, serverElapsedMs);
+    if (this.isPreMatchLocked()) {
+      this.preMatchReleaseCueMs = 0;
+    } else if (this.preMatchLock.justUnlocked) {
+      this.completeMeleeIntros();
+      this.preMatchReleaseCueMs = 600;
+    }
+    return true;
+  }
+
+  getStageEventNetworkSnapshot(serverTick = null, revision = null) {
+    return serializeStageEventRuntime(this.stageEventRuntime, { serverTick, revision });
+  }
+
+  syncStageEventsFromServer(snapshot) {
+    const previousLayoutIndex = this.stageEventRuntime.layoutIndex;
+    if (!applyAuthoritativeStageEventSnapshot(this.stageEventRuntime, snapshot)) return false;
+    if (this.stageTopologyProfile.topologyId === STAGE_TOPOLOGY_IDS.transformingEvent
+      && this.stageEventRuntime.layoutIndex !== previousLayoutIndex) {
+      this.applyTelegraphedLayout(this.stageEventRuntime.layoutIndex);
+    }
+    this.stageEventSnapshot = getStageEventSnapshot(this.stageEventRuntime);
+    return true;
+  }
+
+  skipPreMatch() {
+    const skipped = skipPreMatchLock(this.preMatchLock);
+    if (skipped) {
+      this.completeMeleeIntros();
+      this.preMatchReleaseCueMs = 600;
+    }
+    return skipped;
+  }
+
+  completeMeleeIntros() {
+    [...this.heroes, ...this.enemies].forEach(actor => {
+      if (actor.state !== 'intro') return;
+      transitionMeleeState(actor, 'idle', { force: true, restart: true });
+    });
+  }
+
+  advancePreMatchLock(deltaMs = 1000 / 60) {
+    if (!this.isPreMatchLocked()) return false;
+    [...this.heroes, ...this.enemies]
+      .filter(actor => actor.state === 'intro')
+      .forEach(actor => tickMeleeCombatActor(actor, 1 / 60));
+    tickPreMatchLock(this.preMatchLock, deltaMs);
+    if (!this.isPreMatchLocked()) {
+      this.completeMeleeIntros();
+      this.preMatchReleaseCueMs = 600;
+    }
+    return true;
+  }
+
+  /**
+   * Semantic melee action entry point. Keyboard, gamepad and touch controls
+   * all call this API so the combat rules never depend on physical key names.
+   */
+  triggerMeleeAction(side, actionName) {
+    if (this.gameOver || this.isMatchInputLocked()) return false;
+    const actor = this.getMeleeActor(side);
+    if (!actor || actor.currentHp <= 0) return false;
+
+    if (actor.ledge) {
+      if (actionName === MELEE_ACTIONS.climb) return performMeleeLedgeAction(actor, 'climb');
+      if (actionName === MELEE_ACTIONS.drop) return performMeleeLedgeAction(actor, 'drop');
+      if (actionName === MELEE_ACTIONS.ledgeAttack || actionName === MELEE_ACTIONS.attackLight) {
+        return performMeleeLedgeAction(actor, 'attack');
+      }
+      if (actionName === MELEE_ACTIONS.jump) return performMeleeLedgeAction(actor, 'jump');
+    }
+
+    if (actionName === MELEE_ACTIONS.attackLight) {
+      if (actor.crouching && this.isOnGround(actor)) return beginMeleeAction(actor, 'crouchLight');
+      if (!this.isOnGround(actor)) return beginMeleeAction(actor, 'aerialNeutral');
+      return beginMeleeLightCombo(actor);
+    }
+    if (actionName === MELEE_ACTIONS.chargedAttack) return beginMeleeCharge(actor);
+    if (actionName === MELEE_ACTIONS.special) {
+      if (actor.specialCharge < 30) return false;
+      const started = beginMeleeAction(actor, 'special');
+      if (started) actor.specialCharge = Math.max(0, actor.specialCharge - 30);
+      return started;
+    }
+    if (actionName === MELEE_ACTIONS.shield) return beginMeleeShield(actor);
+    if (actionName === MELEE_ACTIONS.taunt) return beginMeleeAction(actor, 'taunt');
+    return false;
+  }
+
+  beginChargedMeleeAttack(side = 'player') {
+    if (this.gameOver || this.isMatchInputLocked()) return false;
+    return beginMeleeCharge(this.getMeleeActor(side));
+  }
+
+  releaseChargedMeleeAttack(side = 'player') {
+    if (this.gameOver || this.isMatchInputLocked()) return false;
+    return releaseMeleeCharge(this.getMeleeActor(side));
+  }
+
+  setMeleeShield(side = 'player', held = false) {
+    if (this.gameOver || this.isMatchInputLocked()) return false;
+    const actor = this.getMeleeActor(side);
+    return held ? beginMeleeShield(actor) : releaseMeleeShield(actor);
+  }
+
+  clearMeleeInputState(side = 'player') {
+    return cancelMeleeHeldInputs(this.getMeleeActor(side));
+  }
+
+  resolveMeleeActionHit(attacker, action) {
+    const attackerIsHero = this.heroes.includes(attacker);
+    const targets = (attackerIsHero ? this.enemies : this.heroes)
+      .filter(target => target.currentHp > 0);
+    const attackStat = Math.max(1, Number(attacker.stats?.atk ?? attacker.atk) || 1);
+    const powerScale = Math.max(0.1, Number(action.powerScale) || 1);
+    let hitCount = 0;
+
+    targets.forEach(target => {
+      const dx = target.x - attacker.x;
+      const inFront = action.range === Infinity || Math.sign(dx || attacker.facing) === attacker.facing;
+      const inRange = action.range === Infinity || Math.abs(dx) <= action.range;
+      const hurtbox = getMeleeHurtbox(target);
+      const attackTop = action.id === 'aerialDown' ? attacker.y - 16 : attacker.y - (action.id === 'crouchLight' ? 28 : 62);
+      const attackBottom = action.id === 'aerialDown' ? attacker.y + 82 : attacker.y + 4;
+      const verticalOverlap = attackBottom >= hurtbox.top && attackTop <= hurtbox.bottom;
+      if (!inFront || !inRange || !verticalOverlap) return;
+      const damage = attackStat * (action.base / 10) * powerScale;
+      this.applyDamage(
+        attacker,
+        target,
+        damage,
+        Math.max(4, action.knockback / 10) * powerScale,
+        null,
+        action.guardDamage * powerScale
+      );
+      hitCount += 1;
+    });
+
+    if (hitCount > 0) {
+      attacker.specialCharge = Math.min(100, (attacker.specialCharge || 0) + (action.id === 'charged' ? 16 : 8));
+    }
+    return hitCount;
+  }
+
   triggerOpponentAbility(abilityType) {
-    if (!this.isLocalP2 || this.gameOver) return false;
+    if (!this.isLocalP2 || this.gameOver || this.isMatchInputLocked()) return false;
     const opponent = this.getActiveOpponent();
     if (
       !opponent
@@ -478,6 +702,7 @@ export class EngineSmash {
       template = this.enemiesData.worldBoss || this.enemiesData.bosses[0];
     }
 
+    if (!template) return false;
     const spawnList = this.arena.spawns.enemies || [];
     const activePortals = this.objectiveNodes.filter(node => node.type === 'portal' && !node.sealed);
     const spawn = isBoss
@@ -490,12 +715,12 @@ export class EngineSmash {
 
     const behavior = this.getEnemyBehavior(template, isBoss);
 
-    this.enemies.push({
+    this.enemies.push(initializeMeleeActorRuntime({
       ...template,
       x: spawnX,
       y: spawnY,
       vx: 0, vy: 0,
-      state: 'idle',
+      state: this.isPreMatchLocked() ? 'intro' : 'idle',
       stateTimer: 0,
       maxHp: template.hp || 90,
       currentHp: template.hp || 90,
@@ -509,14 +734,15 @@ export class EngineSmash {
       facing: -1,
       cooldown: behavior.cooldown,
       statusEffects: { infected: 0, glitched: 0, radiated: 0 }
-    });
+    }));
 
     this.playSfx('portal');
     this.particles.add(spawnX, spawnY - 10, 0, 0, '#9b59b6', 15, 45, 'portal');
+    return true;
   }
 
   triggerAbility(hero, abilityType) {
-    if (hero.currentHp <= 0 || hero.state === 'dead' || this.gameOver) return;
+    if (hero.currentHp <= 0 || hero.state === 'dead' || this.gameOver || this.isMatchInputLocked()) return;
 
     if (abilityType === 'simple') {
       hero.state = 'attack';
@@ -587,7 +813,7 @@ export class EngineSmash {
   }
 
   triggerCombatEvent(effect) {
-    if (this.gameOver) return;
+    if (this.gameOver || this.isMatchInputLocked()) return false;
     this.itemTriggers++;
     this.playSfx('special');
     this.particles.add(this.width/2, this.height/2, 0, 0, '#ffffff', 300, 35, 'glitch');
@@ -718,10 +944,34 @@ export class EngineSmash {
         });
       }
     }
+    return true;
   }
 
 
-  applyDamage(attacker, defender, baseDmg, knockbackForce = 10, statusEffect = null) {
+  applyDamage(attacker, defender, baseDmg, knockbackForce = 10, statusEffect = null, guardDamage = 8) {
+    const guardResult = absorbMeleeGuardHit(defender, {
+      damage: baseDmg,
+      guardDamage
+    });
+    if (guardResult.guarded) {
+      baseDmg *= guardResult.damageScale;
+      knockbackForce *= guardResult.knockbackScale;
+      this.playSfx('shield');
+      this.particles.add(
+        defender.x,
+        defender.y - 18,
+        0,
+        -0.6,
+        guardResult.perfect ? '#ffffff' : (defender.secondaryColor || '#00ffff'),
+        guardResult.perfect ? 10 : 5,
+        24,
+        'spark'
+      );
+      if (guardResult.perfect) {
+        this.particles.add(defender.x, defender.y - 38, 0, -1, '#7ffcff', 9, 32, 'text', 'PERFECT');
+        return 0;
+      }
+    }
     if (defender.state === 'defense') {
       baseDmg *= (1 - defender.defense.reduce);
     }
@@ -744,8 +994,12 @@ export class EngineSmash {
     defender.vy = Math.min(defender.vy, -2.5 - Math.min(5, knockbackForce * 0.08));
     defender.recoveryLock = defender.isBoss ? 28 : 18;
     
-    if (defender.state !== 'defense') {
-      defender.state = 'hit';
+    if (defender.state !== 'defense' && !guardResult.guarded) {
+      const hitState = defender.id === 'player_anchor' ? 'hitStun' : 'hit';
+      if (!transitionMeleeState(defender, hitState, { force: true, restart: true })) {
+        defender.state = hitState;
+        defender.stateElapsed = 0;
+      }
       defender.stateTimer = Math.max(12, Math.min(34, Math.round(10 + knockbackForce * 0.55)));
     }
 
@@ -762,7 +1016,7 @@ export class EngineSmash {
     }
 
     if (defender.currentHp <= 0) {
-      defender.state = 'dead';
+      transitionMeleeState(defender, 'dead', { force: true, restart: true });
       defender.stateTimer = 60;
       if (!defender.wasCountedDefeated) {
         defender.wasCountedDefeated = true;
@@ -794,11 +1048,23 @@ export class EngineSmash {
         this.activeOpponentId = nextOpponent.id;
       }
     }
+    return true;
   }
 
   updateLocalVersusMovement(actor, target, keys = {}, side = 'p1') {
     if (!actor || actor.currentHp <= 0) return;
-    const blocked = ['attack', 'defense', 'hit', 'dead'].includes(actor.state);
+    initializeMeleeActorRuntime(actor);
+    const guardPressed = isInputPressed(keys, ['guard', 'Shield']);
+    if (guardPressed) beginMeleeShield(actor);
+    else if (actor.guarding) releaseMeleeShield(actor);
+
+    const crouchPressed = isInputPressed(keys, ['down', 'crouch', 'Crouch']);
+    const groundedNow = Boolean(this.isOnGround(actor));
+    actor.fastFallHeld = crouchPressed && !groundedNow;
+    setMeleeCrouch(actor, crouchPressed && groundedNow);
+
+    const blocked = ['attack', 'defense', 'hit', 'hitStun', 'dead'].includes(actor.state)
+      || isMeleeMovementLocked(actor);
     if (blocked) {
       actor.vx *= 0.82;
       actor.jumpHeld = false;
@@ -816,17 +1082,22 @@ export class EngineSmash {
       ? ['jump', 'ArrowUp', 'Numpad8']
       : ['jump', 'ArrowUp', 'Space', ' ', 'w', 'W', 'z', 'Z']);
     const speedBase = actor.isBoss ? 3.2 : 4;
-    const speed = actor.statusEffects?.glitched > 0 ? speedBase * 0.5 : speedBase;
+    const stageSpeedScale = actor.stageSpeedBoostMs > 0 ? 1.15 : actor.stageSlowMs > 0 ? 0.72 : 1;
+    const speed = (actor.statusEffects?.glitched > 0 ? speedBase * 0.5 : speedBase) * stageSpeedScale;
     const direction = (rightPressed ? 1 : 0) - (leftPressed ? 1 : 0);
 
-    actor.vx = direction * speed;
-    if (direction) {
+    actor.vx = actor.crouching ? 0 : direction * speed;
+    if (direction && !actor.crouching) {
       actor.facing = direction;
-      actor.state = 'run';
+      transitionMeleeState(actor, Math.abs(direction) > 0.8 ? 'run' : 'walk', { force: true });
     } else {
       actor.vx = 0;
-      if (actor.state === 'run') actor.state = 'idle';
-      if (target) actor.facing = target.x >= actor.x ? 1 : -1;
+      if (actor.crouching) {
+        if (actor.state === 'idle') transitionMeleeState(actor, 'crouchEnter', { force: true });
+      } else if (['run', 'walk', 'turn', 'crouchExit'].includes(actor.state)) {
+        transitionMeleeState(actor, 'idle', { force: true });
+      }
+      if (target && ['idle', 'crouchIdle'].includes(actor.state)) actor.facing = target.x >= actor.x ? 1 : -1;
     }
 
     if (jumpPressed && !actor.jumpHeld) {
@@ -835,6 +1106,8 @@ export class EngineSmash {
         actor.vy = grounded ? this.jumpVelocity : this.jumpVelocity * 0.82;
         if (!grounded) actor.airJumps--;
         actor.recoveryLock = 12;
+        actor.crouching = false;
+        transitionMeleeState(actor, 'jumpStart', { force: true, restart: true });
         this.playSfx('jump');
       }
     }
@@ -850,11 +1123,17 @@ export class EngineSmash {
       return;
     }
 
+    tickMeleeCombatActor(actor, 1 / 60, {
+      resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action)
+    });
+
     if (actor.cooldown > 0) actor.cooldown--;
     if (actor.recoveryLock > 0) actor.recoveryLock--;
     if (actor.stateTimer > 0) {
       actor.stateTimer--;
-      if (actor.stateTimer === 0) actor.state = 'idle';
+      if (actor.stateTimer === 0 && !actor.action && !actor.guarding && actor.shieldBreakTimer <= 0) {
+        transitionMeleeState(actor, 'idle', { force: true });
+      }
     }
 
     if (actor.statusEffects?.infected > 0) {
@@ -895,25 +1174,203 @@ export class EngineSmash {
       }
     }
 
-    if (!actor.isLeader && !['hit', 'attack', 'defense'].includes(actor.state)) {
+    if (!actor.isLeader && !['hit', 'hitStun', 'attack', 'defense'].includes(actor.state) && !isMeleeMovementLocked(actor)) {
       actor.vx = 0;
       actor.state = 'idle';
       actor.jumpHeld = false;
     }
-    actor.vy += this.gravity;
+    actor.vy += this.gravity * (actor.fastFallHeld ? 1.75 : 1);
     this.applyPhysics(actor);
+  }
+
+  /**
+   * The Player Anchor owns a short authored intro. While it plays, the whole
+   * match waits so neither the CPU nor local P2 can take a free first hit.
+   */
+  advanceMeleeIntro() {
+    const introActors = this.heroes.filter(hero => hero.id === 'player_anchor' && hero.state === 'intro');
+    if (!introActors.length) return false;
+    introActors.forEach(actor => tickMeleeCombatActor(actor, 1 / 60));
+    return true;
+  }
+
+  updateStageFlow(deltaMs = 1000 / 60) {
+    const stepMs = Math.max(0, Math.min(100, Number(deltaMs) || 0));
+    this.mobilePlatformElapsedMs += stepMs;
+    this.stageEventWeatherMs = Math.max(0, this.stageEventWeatherMs - stepMs);
+    this.layoutTransitionMs = Math.max(0, this.layoutTransitionMs - stepMs);
+    this.preMatchReleaseCueMs = Math.max(0, this.preMatchReleaseCueMs - stepMs);
+    [...this.heroes, ...this.enemies].forEach(actor => {
+      actor.stageSpeedBoostMs = Math.max(0, (actor.stageSpeedBoostMs || 0) - stepMs);
+      actor.stageSlowMs = Math.max(0, (actor.stageSlowMs || 0) - stepMs);
+    });
+    this.updateDynamicPlatforms();
+    const emissions = tickStageEventRuntime(this.stageEventRuntime, stepMs);
+    emissions.forEach(emission => this.applyStageEventEmission(emission));
+    this.stageEventSnapshot = getStageEventSnapshot(this.stageEventRuntime);
+  }
+
+  updateDynamicPlatforms() {
+    const actors = [...this.heroes, ...this.enemies].filter(actor => actor.currentHp > 0);
+    this.platforms.forEach(platformData => {
+      if (!platformData.motion) return;
+      const oldX1 = platformData.x1;
+      const oldX2 = platformData.x2;
+      const oldY = platformData.y;
+      const periodMs = Math.max(2800, Number(platformData.motion.periodMs) || 4600);
+      const phase = Number(platformData.motion.phase) || 0;
+      const wave = Math.sin((this.mobilePlatformElapsedMs / periodMs) * Math.PI * 2 + phase);
+      const range = Math.max(8, Number(platformData.motion.range) || 24);
+      if (platformData.motion.axis === 'y') {
+        platformData.y = platformData.baseY + wave * range;
+      } else {
+        platformData.x1 = platformData.baseX1 + wave * range;
+        platformData.x2 = platformData.baseX2 + wave * range;
+      }
+      const dx = platformData.x1 - oldX1;
+      const dy = platformData.y - oldY;
+      actors.forEach(actor => {
+        const wasStanding = actor.x >= oldX1 && actor.x <= oldX2
+          && Math.abs(actor.y - oldY) <= 5
+          && actor.vy >= -0.2;
+        if (!wasStanding) return;
+        actor.x = Math.max(20, Math.min(this.width - 20, actor.x + dx));
+        actor.y += dy;
+      });
+    });
+  }
+
+  applyStageEventEmission(emission) {
+    const { type, definition, snapshot } = emission;
+    if (type === 'telegraph') {
+      this.playSfx(definition.warningSfx);
+      const targetX = snapshot.targetZone
+        ? ((snapshot.targetZone.x1 + snapshot.targetZone.x2) / 2) * this.width
+        : this.width / 2;
+      this.particles.add(
+        targetX,
+        this.height * 0.3,
+        0,
+        -0.2,
+        this.arena.theme.danger,
+        12,
+        Math.max(60, Math.round(definition.telegraphMs / (1000 / 60))),
+        'text',
+        'ALERTE TRAME'
+      );
+      return;
+    }
+    if (type !== 'activate') return;
+
+    const intensityScale = this.stageTopologyProfile.eventIntensity === STAGE_EVENT_INTENSITIES.light ? 0.55 : 1;
+    if (definition.effect === 'damage') {
+      const zone = snapshot.targetZone || { x1: 0, x2: 1 };
+      const actors = [...this.heroes, ...this.enemies].filter(actor => (
+        actor.currentHp > 0
+        && actor.x >= zone.x1 * this.width
+        && actor.x <= zone.x2 * this.width
+      ));
+      actors.forEach(actor => {
+        const damage = Math.max(1, Math.round(actor.maxHp * definition.damageRatio * intensityScale));
+        actor.currentHp = Math.max(1, actor.currentHp - damage);
+        actor.vx += actor.x < this.width / 2 ? -definition.knockback * intensityScale : definition.knockback * intensityScale;
+        actor.vy = Math.min(actor.vy, -2.5 * intensityScale);
+        if (this.heroes.includes(actor)) this.hazardHits += 1;
+      });
+    } else if (definition.effect === 'assist' && definition.assistKind === 'office-tempo') {
+      this.enemies.filter(enemy => enemy.currentHp > 0).forEach(enemy => {
+        enemy.stageSlowMs = definition.activeMs;
+      });
+      this.heroes.filter(hero => hero.currentHp > 0).forEach(hero => {
+        hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + definition.heroCharge * intensityScale);
+      });
+    } else if (definition.effect === 'assist') {
+      this.enemies.filter(enemy => enemy.currentHp > 0).forEach(enemy => {
+        const damage = Math.max(1, Math.round(enemy.maxHp * definition.damageRatio * intensityScale));
+        enemy.currentHp = Math.max(1, enemy.currentHp - damage);
+      });
+      this.heroes.filter(hero => hero.currentHp > 0).forEach(hero => {
+        hero.stageSpeedBoostMs = definition.heroSpeedMs;
+      });
+    } else if (definition.effect === 'layout') {
+      this.applyTelegraphedLayout(snapshot.layoutIndex);
+    } else if (definition.effect === 'weather') {
+      this.stageEventWeatherMs = definition.activeMs;
+    }
+    this.playSfx('special');
+  }
+
+  applyTelegraphedLayout(layoutIndex) {
+    if (this.stageTopologyProfile.topologyId !== STAGE_TOPOLOGY_IDS.transformingEvent) return false;
+    const oldPlatforms = this.platforms;
+    const actors = [...this.heroes, ...this.enemies].filter(actor => actor.currentHp > 0);
+    actors.forEach(actor => {
+      const support = oldPlatforms.find(platformData => (
+        actor.x >= platformData.x1
+        && actor.x <= platformData.x2
+        && Math.abs(actor.y - platformData.y) <= 5
+      ));
+      if (support && support.kind !== 'main') actor.vy = Math.min(actor.vy, -2.2);
+    });
+    const surface = oldPlatforms[0]?.surface || this.arena.theme.surface || null;
+    const textureId = oldPlatforms[0]?.textureId || null;
+    this.platforms = createCanonicalTopologyPlatforms(
+      STAGE_TOPOLOGY_IDS.transformingEvent,
+      this.width,
+      this.height,
+      layoutIndex
+    ).map(platformData => ({ ...platformData, surface, textureId }));
+    this.arena.platforms = this.platforms;
+    this.arena.groundY = this.platforms[0].y;
+    this.groundY = this.platforms[0].y;
+    this.layoutTransitionMs = 520;
+    return true;
+  }
+
+  isMeleeIntroActive() {
+    return this.heroes.some(hero => hero.id === 'player_anchor' && hero.state === 'intro');
+  }
+
+  tickMeleeOutcomeStates() {
+    this.heroes
+      .filter(hero => ['victory', 'defeat'].includes(hero.state))
+      .forEach(hero => tickMeleeCombatActor(hero, 1 / 60));
+  }
+
+  /** Keep the authored result pose stable after the combat simulation stops. */
+  setMeleeOutcomeStates(result) {
+    this.meleeOutcomeResult = result;
+    this.heroes.forEach(hero => {
+      if (hero.id !== 'player_anchor') return;
+      hero.action = null;
+      hero.queuedMeleeAction = null;
+      hero.charging = false;
+      hero.guarding = false;
+      hero.crouching = false;
+      hero.fastFallHeld = false;
+      hero.meleeRecoveryTimer = 0;
+      hero.shieldBreakTimer = 0;
+      hero.stateTimer = 0;
+      hero.ledge = null;
+      hero.vx = 0;
+      hero.vy = 0;
+      const nextState = result === 'victory' && hero.currentHp > 0 ? 'victory' : 'defeat';
+      transitionMeleeState(hero, nextState, { force: true, restart: true });
+    });
   }
 
   finishLocalVersus(result) {
     if (this.gameOver) return;
+    this.setMeleeOutcomeStates(result);
     this.gameOver = true;
     this.localVersusResult = result;
     this.victoryTimer = 0;
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
   }
 
-  updateLocalVersus(keysP1 = {}, keysP2 = {}) {
+  updateLocalVersus(keysP1 = {}, keysP2 = {}, timing = {}) {
     if (this.gameOver) {
+      this.tickMeleeOutcomeStates();
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
         this.completionReported = true;
@@ -923,6 +1380,11 @@ export class EngineSmash {
       }
       return;
     }
+
+    if (this.advancePreMatchLock(timing.preMatchDeltaMs)) return;
+    if (this.advanceMeleeIntro()) return;
+
+    this.updateStageFlow(timing.stageDeltaMs);
 
     this.ensureLocalVersusLeaders();
     const activeHero = this.getActiveHero();
@@ -940,33 +1402,43 @@ export class EngineSmash {
     else if (!opponentsAlive) this.finishLocalVersus('victory');
   }
 
-  update(keysPressed = {}, keysP2 = {}) {
+  update(keysPressed = {}, keysP2 = {}, timing = {}) {
     if (this.isLocalP2) {
-      this.updateLocalVersus(keysPressed, keysP2);
+      this.updateLocalVersus(keysPressed, keysP2, timing);
       return;
     }
 
     if (this.gameOver) {
+      this.tickMeleeOutcomeStates();
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
         this.completionReported = true;
         const alive = this.heroes.some(h => h.currentHp > 0);
-        this.onComplete(alive ? 'victory' : 'defeat', this.getCombatSummary(alive ? 'victory' : 'defeat'));
+        const result = this.meleeOutcomeResult || (alive ? 'victory' : 'defeat');
+        this.onComplete(result, this.getCombatSummary(result));
       }
       return;
     }
+
+    if (this.advancePreMatchLock(timing.preMatchDeltaMs)) return;
+    if (this.advanceMeleeIntro()) return;
+
+    this.updateStageFlow(timing.stageDeltaMs);
 
     const heroesAlive = this.heroes.some(h => h.currentHp > 0);
     const enemiesAlive = this.enemies.some(e => e.currentHp > 0 || e.stateTimer > 0);
     if (!this.isFixedCustomRoster) {
       this.updateArenaObjective();
       this.updateObjectiveBattleState();
+      if (this.gameOver) return;
     }
 
     if (!heroesAlive && !this.gameOver) {
+      this.setMeleeOutcomeStates('defeat');
       this.gameOver = true;
       this.victoryTimer = 0;
       this.playSfx('defeat');
+      return;
     } else if (!enemiesAlive && !this.gameOver) {
       if (this.wave < this.maxWaves) {
         this.wave++;
@@ -978,9 +1450,11 @@ export class EngineSmash {
           this.spawnEnemy();
         }
       } else {
+        this.setMeleeOutcomeStates('victory');
         this.gameOver = true;
         this.victoryTimer = 0;
         this.playSfx('victory');
+        return;
       }
     }
 
@@ -995,33 +1469,8 @@ export class EngineSmash {
       }
     }
 
-    if (activeHero && activeHero.currentHp > 0 && activeHero.state !== 'defense' && !this.gameOver) {
-      // Glitched status halves move speed
-      let speed = activeHero.statusEffects?.glitched > 0 ? 2 : 4;
-      activeHero.vx = 0;
-      if (keysPressed['ArrowLeft'] || keysPressed['a'] || keysPressed['A']) {
-        activeHero.vx = -speed;
-        activeHero.facing = -1;
-        activeHero.state = 'run';
-      } else if (keysPressed['ArrowRight'] || keysPressed['d'] || keysPressed['D']) {
-        activeHero.vx = speed;
-        activeHero.facing = 1;
-        activeHero.state = 'run';
-      } else if (activeHero.state === 'run') {
-        activeHero.state = 'idle';
-      }
-
-      const jumpPressed = keysPressed['ArrowUp'] || keysPressed['Space'] || keysPressed['w'] || keysPressed['W'];
-      if (jumpPressed && !activeHero.jumpHeld) {
-        const grounded = this.isOnGround(activeHero);
-        if (grounded || activeHero.airJumps > 0) {
-          activeHero.vy = grounded ? this.jumpVelocity : this.jumpVelocity * 0.82;
-          if (!grounded) activeHero.airJumps--;
-          activeHero.recoveryLock = 12;
-          this.playSfx('jump');
-        }
-      }
-      activeHero.jumpHeld = !!jumpPressed;
+    if (activeHero && activeHero.currentHp > 0 && !this.gameOver) {
+      this.updateLocalVersusMovement(activeHero, this.getNearestEnemy(activeHero), keysPressed, 'p1');
     }
 
     this.heroes.forEach(h => {
@@ -1033,11 +1482,17 @@ export class EngineSmash {
         return;
       }
 
+      tickMeleeCombatActor(h, 1 / 60, {
+        resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action)
+      });
+
       if (h.cooldown > 0) h.cooldown--;
       if (h.recoveryLock > 0) h.recoveryLock--;
       if (h.stateTimer > 0) {
         h.stateTimer--;
-        if (h.stateTimer === 0) h.state = 'idle';
+        if (h.stateTimer === 0 && !h.action && !h.guarding && h.shieldBreakTimer <= 0) {
+          transitionMeleeState(h, 'idle', { force: true });
+        }
       }
 
       // Infection DoT
@@ -1065,7 +1520,11 @@ export class EngineSmash {
         }
       }
 
-      if (!h.isLeader && h.state !== 'hit' && h.state !== 'defense' && h.state !== 'attack' && !this.gameOver) {
+      if (h.ledge && !h.isLeader && h.state === 'ledgeHang' && h.stateElapsed > 0.22) {
+        performMeleeLedgeAction(h, 'climb');
+      }
+
+      if (!h.isLeader && !['hit', 'hitStun', 'defense', 'attack'].includes(h.state) && !isMeleeMovementLocked(h) && !this.gameOver) {
         const distToLeader = activeHero.x - h.x;
         if (Math.abs(distToLeader) > 80) {
           h.vx = Math.sign(distToLeader) * 2.5;
@@ -1090,7 +1549,7 @@ export class EngineSmash {
         }
       }
 
-      h.vy += this.gravity;
+      h.vy += this.gravity * (h.fastFallHeld ? 1.75 : 1);
       this.applyPhysics(h);
     });
 
@@ -1103,9 +1562,15 @@ export class EngineSmash {
         return;
       }
 
+      tickMeleeCombatActor(e, 1 / 60, {
+        resolveActionHit: (source, action) => this.resolveMeleeActionHit(source, action)
+      });
+
       if (e.stateTimer > 0) {
         e.stateTimer--;
-        if (e.stateTimer === 0) e.state = 'idle';
+        if (e.stateTimer === 0 && !e.action && !e.guarding && e.shieldBreakTimer <= 0) {
+          transitionMeleeState(e, 'idle', { force: true });
+        }
       }
       if (e.recoveryLock > 0) e.recoveryLock--;
 
@@ -1126,8 +1591,10 @@ export class EngineSmash {
         }
       }
 
+      if (e.ledge && e.state === 'ledgeHang' && e.stateElapsed > 0.22) performMeleeLedgeAction(e, 'climb');
+
       const target = this.getClosestHero(e);
-      if (target && e.state !== 'hit' && !this.gameOver) {
+      if (target && !['hit', 'hitStun', 'shieldBreak'].includes(e.state) && !isMeleeMovementLocked(e) && !this.gameOver) {
         const dx = target.x - e.x;
         const dy = target.y - e.y;
         e.facing = dx > 0 ? 1 : -1;
@@ -1141,7 +1608,7 @@ export class EngineSmash {
         }
 
         if (Math.abs(dx) > Math.max(48, behavior.attackRange - 18)) {
-          let speed = behavior.speed;
+          let speed = behavior.speed * (e.stageSlowMs > 0 ? 0.72 : e.stageSpeedBoostMs > 0 ? 1.15 : 1);
           if (e.statusEffects?.glitched > 0) speed *= 0.5; // slow down if glitched
 
           e.vx = Math.sign(dx) * speed;
@@ -1185,18 +1652,21 @@ export class EngineSmash {
     const objective = this.arena.objective || 'waves';
     const objectiveComplete = this.objectiveProgress >= this.objectiveTarget;
     if (['collect', 'portals', 'protect'].includes(objective) && objectiveComplete) {
+      this.setMeleeOutcomeStates('victory');
       this.gameOver = true;
       this.victoryTimer = 0;
       this.playSfx('victory');
       return;
     }
     if (objective === 'protect' && this.artifactHp <= 0) {
+      this.setMeleeOutcomeStates('defeat');
       this.gameOver = true;
       this.victoryTimer = 0;
       this.playSfx('defeat');
       return;
     }
     if (objective === 'overload' && this.objectiveProgress >= this.objectiveTarget && this.enemies.some(enemy => enemy.isBoss && enemy.currentHp > 0)) {
+      this.setMeleeOutcomeStates('defeat');
       this.gameOver = true;
       this.victoryTimer = 0;
       this.playSfx('defeat');
@@ -1224,18 +1694,38 @@ export class EngineSmash {
   }
 
   applyPhysics(char) {
+    if (char.ledge) {
+      char.vx = 0;
+      char.vy = 0;
+      return;
+    }
     const previousY = char.y;
     const previousX = char.x;
     char.x += char.vx;
     char.y += char.vy;
 
-    if (char.state === 'hit') char.vx *= 0.85;
+    if (['hit', 'hitStun'].includes(char.state)) char.vx *= 0.85;
+
+    if (tryCatchMeleeLedge(char, this.platforms)) return;
 
     const plat = this.getLandingPlatform(char, previousY);
     if (plat) {
+      const landedFromAir = ['jumpStart', 'jumpRise', 'jumpApex', 'fall', 'fastFall', 'ledgeJump', 'ledgeDrop'].includes(char.state);
       char.y = plat.y;
       char.vy = 0;
       char.airJumps = char.isBoss ? 0 : 1;
+      char.fastFallHeld = false;
+      if (landedFromAir && !char.action) transitionMeleeState(char, 'land', { force: true, restart: true });
+    } else if (!isMeleeMovementLocked(char)) {
+      if (char.fastFallHeld && char.vy > 0.5) {
+        transitionMeleeState(char, 'fastFall', { force: true });
+      } else if (char.vy < -0.45 && !(char.state === 'jumpStart' && char.stateElapsed < 0.06)) {
+        transitionMeleeState(char, 'jumpRise', { force: true });
+      } else if (Math.abs(char.vy) <= 0.45) {
+        transitionMeleeState(char, 'jumpApex', { force: true });
+      } else if (char.vy > 0.45) {
+        transitionMeleeState(char, 'fall', { force: true });
+      }
     }
 
     if (char.x < 20) {
@@ -1317,12 +1807,13 @@ export class EngineSmash {
     this.hazardTick++;
     const actors = [...this.heroes, ...this.enemies].filter(actor => actor.currentHp > 0);
     this.arena.hazards.forEach(hazard => {
-      const active = this.hazardTick % (hazard.cadence || 120) < 48;
+      const active = this.hazardTick >= 60 && this.hazardTick % (hazard.cadence || 120) < 48;
       if (!active) return;
       actors.forEach(actor => {
         const onHazard = actor.x >= hazard.x1 && actor.x <= hazard.x2 && Math.abs(actor.y - hazard.y) < 20;
         if (!onHazard || this.hazardTick % 30 !== 0) return;
-        actor.currentHp = Math.max(actor.isBoss ? 1 : 0, actor.currentHp - hazard.damage);
+        const intensityScale = this.stageTopologyProfile.eventIntensity === STAGE_EVENT_INTENSITIES.light ? 0.5 : 1;
+        actor.currentHp = Math.max(1, actor.currentHp - hazard.damage * intensityScale);
         if (this.heroes.includes(actor)) this.hazardHits++;
         actor.vx += hazard.knockX ? (actor.x < (hazard.x1 + hazard.x2) / 2 ? -hazard.knockX : hazard.knockX) : 0;
         actor.vy = hazard.knockY || Math.min(actor.vy, -3);
@@ -1553,14 +2044,16 @@ export class EngineSmash {
     return closest;
   }
 
-  draw(ctx, animTime) {
+  draw(ctx, animTime, lang = 'fr') {
     this.drawArena(ctx, animTime);
 
     this.platforms.forEach(p => {
+      this.drawPlatformRail(ctx, p);
       this.drawPlatform(ctx, p, animTime);
     });
 
     this.drawHazards(ctx, animTime);
+    this.drawStageEvent(ctx, animTime, lang);
     if (!this.isFixedCustomRoster) this.drawObjectiveNodes(ctx, animTime);
 
     this.enemies.forEach(e => {
@@ -1632,11 +2125,12 @@ export class EngineSmash {
     }
     ctx.fillStyle = this.arena.theme.accent;
     ctx.font = '9px "Share Tech Mono", monospace';
-    ctx.fillText(this.arena.label.fr || this.arena.id, 20, 48);
-    if (!this.isFixedCustomRoster) this.drawObjectiveHud(ctx);
+    ctx.fillText(this.arena.label[lang] || this.arena.label.fr || this.arena.id, 20, 48);
+    if (!this.isFixedCustomRoster) this.drawObjectiveHud(ctx, lang);
+    this.drawPreMatchOverlay(ctx, lang);
   }
 
-  drawObjectiveHud(ctx) {
+  drawObjectiveHud(ctx, lang = 'fr') {
     const target = Math.max(1, this.objectiveTarget || this.maxWaves);
     const pct = Math.max(0, Math.min(1, this.objectiveProgress / target));
     const x = this.width - 214;
@@ -1649,7 +2143,7 @@ export class EngineSmash {
     ctx.strokeRect(x, y, 190, 34);
     ctx.fillStyle = this.arena.theme.accent;
     ctx.font = '8px "Press Start 2P"';
-    ctx.fillText(getSmashObjectiveLabel(this.arena, 'fr').toUpperCase(), x + 8, y + 13);
+    ctx.fillText(getSmashObjectiveLabel(this.arena, lang).toUpperCase(), x + 8, y + 13);
     ctx.fillStyle = 'rgba(255,255,255,0.14)';
     ctx.fillRect(x + 8, y + 20, 174, 6);
     ctx.fillStyle = this.arena.theme.secondary;
@@ -1734,6 +2228,95 @@ export class EngineSmash {
         ctx.fillRect(node.x - 28, node.y + 6, 56 * Math.max(0, Math.min(1, (node.progress || 0) / 100)), 4);
       }
     });
+    ctx.restore();
+  }
+
+  drawPlatformRail(ctx, platformData) {
+    if (!platformData.motion) return;
+    const centerX = (platformData.baseX1 + platformData.baseX2) / 2;
+    const centerY = platformData.baseY;
+    const range = platformData.motion.range || 24;
+    ctx.save();
+    ctx.globalAlpha = 0.46;
+    ctx.strokeStyle = this.arena.theme.secondary;
+    ctx.fillStyle = this.arena.theme.secondary;
+    ctx.setLineDash([5, 6]);
+    ctx.beginPath();
+    if (platformData.motion.axis === 'y') {
+      ctx.moveTo(centerX, centerY - range);
+      ctx.lineTo(centerX, centerY + range);
+      ctx.stroke();
+      ctx.fillRect(centerX - 3, centerY - range - 3, 6, 6);
+      ctx.fillRect(centerX - 3, centerY + range - 3, 6, 6);
+    } else {
+      ctx.moveTo(centerX - range, centerY);
+      ctx.lineTo(centerX + range, centerY);
+      ctx.stroke();
+      ctx.fillRect(centerX - range - 3, centerY - 3, 6, 6);
+      ctx.fillRect(centerX + range - 3, centerY - 3, 6, 6);
+    }
+    ctx.restore();
+  }
+
+  drawStageEvent(ctx, animTime, lang = 'fr') {
+    const snapshot = this.stageEventSnapshot;
+    if (this.stageEventWeatherMs > 0) {
+      ctx.save();
+      ctx.globalAlpha = 0.08 + Math.sin(animTime * 0.04) * 0.025;
+      ctx.fillStyle = this.arena.theme.secondary;
+      ctx.fillRect(0, 0, this.width, this.height);
+      ctx.restore();
+    }
+    if (!snapshot || !['telegraph', 'active'].includes(snapshot.phase)) return;
+
+    ctx.save();
+    const active = snapshot.phase === 'active';
+    if (snapshot.targetZone) {
+      const x = snapshot.targetZone.x1 * this.width;
+      const width = (snapshot.targetZone.x2 - snapshot.targetZone.x1) * this.width;
+      ctx.globalAlpha = active ? 0.3 : 0.12 + Math.sin(animTime * 0.18) * 0.06;
+      ctx.fillStyle = this.arena.theme.danger;
+      ctx.fillRect(x, 58, width, this.height - 82);
+      ctx.globalAlpha = 0.8;
+      ctx.strokeStyle = this.arena.theme.danger;
+      ctx.lineWidth = active ? 4 : 2;
+      ctx.strokeRect(x + 3, 61, width - 6, this.height - 88);
+    }
+    ctx.globalAlpha = 0.9;
+    ctx.fillStyle = 'rgba(0,0,0,0.72)';
+    ctx.fillRect(this.width * 0.2, 62, this.width * 0.6, 42);
+    ctx.strokeStyle = active ? this.arena.theme.danger : this.arena.theme.secondary;
+    ctx.strokeRect(this.width * 0.2, 62, this.width * 0.6, 42);
+    ctx.fillStyle = active ? this.arena.theme.danger : this.arena.theme.secondary;
+    ctx.font = '8px "Press Start 2P"';
+    ctx.textAlign = 'center';
+    ctx.fillText(active ? 'ANOMALIE ACTIVE' : 'TELEGRAPHE A.R.C.A.', this.width / 2, 78);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '9px "Share Tech Mono", monospace';
+    const counterplay = snapshot.counterplay?.[lang] || snapshot.counterplay?.fr || snapshot.eventId;
+    ctx.fillText(counterplay, this.width / 2, 94, this.width * 0.55);
+    ctx.restore();
+  }
+
+  drawPreMatchOverlay(ctx, lang = 'fr') {
+    if (!this.isPreMatchLocked() && this.preMatchReleaseCueMs <= 0) return;
+    const snapshot = this.getPreMatchState(lang);
+    ctx.save();
+    ctx.fillStyle = 'rgba(1,4,10,0.76)';
+    ctx.fillRect(this.width * 0.14, this.height * 0.28, this.width * 0.72, this.height * 0.38);
+    ctx.strokeStyle = this.arena.theme.accent;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(this.width * 0.14, this.height * 0.28, this.width * 0.72, this.height * 0.38);
+    ctx.textAlign = 'center';
+    ctx.fillStyle = this.arena.theme.secondary;
+    ctx.font = '9px "Share Tech Mono", monospace';
+    ctx.fillText(`A.R.C.A. / ${snapshot.source}`, this.width / 2, this.height * 0.36, this.width * 0.64);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = snapshot.cue.length <= 2 ? '28px "Press Start 2P"' : '12px "Press Start 2P"';
+    ctx.fillText(snapshot.cue, this.width / 2, this.height * 0.48, this.width * 0.62);
+    ctx.fillStyle = this.arena.theme.accent;
+    ctx.font = '11px "Share Tech Mono", monospace';
+    ctx.fillText(snapshot.message, this.width / 2, this.height * 0.58, this.width * 0.62);
     ctx.restore();
   }
 
@@ -1825,7 +2408,7 @@ export class EngineSmash {
     ctx.save();
     this.arena.hazards.forEach(hazard => {
       const warning = this.hazardTick % (hazard.cadence || 120);
-      const active = warning < 48;
+      const active = this.hazardTick >= 60 && warning < 48;
       ctx.globalAlpha = active ? 0.82 : 0.26 + Math.sin(animTime * 0.12) * 0.1;
       ctx.fillStyle = this.arena.theme.danger;
       ctx.strokeStyle = this.arena.theme.danger;
@@ -1848,6 +2431,15 @@ export class EngineSmash {
       ? Math.round(versusOpponentsDefeated / Math.max(1, this.fixedRosterOpponentCount) * 100)
       : Math.round(Math.max(0, Math.min(1, this.objectiveProgress / Math.max(1, this.objectiveTarget))) * 100);
     const aliveHeroes = this.heroes.filter(hero => hero.currentHp > 0);
+    const meleeMetrics = [...this.heroes, ...this.enemies].reduce((totals, actor) => {
+      const metrics = actor.meleeMetrics || {};
+      totals.perfectShields += Number(metrics.perfectShields) || 0;
+      totals.guardBreaks += Number(metrics.guardBreaks) || 0;
+      totals.chargedHits += Number(metrics.chargedHits) || 0;
+      totals.ledgeRecoveries += Number(metrics.ledgeRecoveries) || 0;
+      totals.taunts += Number(metrics.taunts) || 0;
+      return totals;
+    }, { perfectShields: 0, guardBreaks: 0, chargedHits: 0, ledgeRecoveries: 0, taunts: 0 });
     const hpPct = aliveHeroes.length
       ? Math.round(aliveHeroes.reduce((total, hero) => total + (hero.currentHp / Math.max(1, hero.maxHp)), 0) / aliveHeroes.length * 100)
       : 0;
@@ -1865,6 +2457,11 @@ export class EngineSmash {
       result,
       arenaId: this.arena.id,
       arenaLabel: this.arena.label,
+      topologyId: this.arena.topologyId,
+      stageVariant: this.arena.stageVariant,
+      eventIntensity: this.arena.eventIntensity,
+      stageEventSeed: this.stageEventRuntime.seed,
+      stageEventOccurrences: { ...this.stageEventRuntime.occurrences },
       objective: this.isFixedCustomRoster ? 'elimination' : this.arena.objective,
       objectivePct,
       score,
@@ -1874,6 +2471,8 @@ export class EngineSmash {
       damageTaken: this.damageTaken,
       hazardHits: this.hazardHits,
       itemTriggers: this.itemTriggers,
+      ...meleeMetrics,
+      meleeMetrics,
       artifactHp: this.artifactHp,
       objectiveNodes: this.objectiveNodes.map(node => ({ id: node.id, type: node.type, progress: node.progress || 0, collected: !!node.collected, sealed: !!node.sealed })),
       aliveHeroes: aliveHeroes.length,

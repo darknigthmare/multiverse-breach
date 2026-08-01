@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "id": "multiverse-breach.portal-prompt-manifest",
+  "promptVersion": "portal-atlas-v1",
+  "fallback": {
+    "universe": "Nexus de Convergence",
+    "slug": "nexus-production-fallback",
+    "continuityId": "nexus-generic-v1",
+    "status": "production",
+    "source": "openai",
+    "atlas": {
+      "sheet": "/visuals/cosmetics/openai/portal-effects-atlas-v1.png",
+      "width": 1024,
+      "height": 1024,
+      "columns": 4,
+      "rows": 4,
+      "frames": 4,
+      "frameWidth": 256,
+      "frameHeight": 256,
+      "row": 0,
+      "source": "openai"
+    },
+    "adminLabel": {
+      "fr": "PORTAIL EN PRODUCTION",
+      "en": "PORTAL IN PRODUCTION"
+    }
+  },
+  "portals": [
+    {
+      "universe": "28 Days Later",
+      "slug": "28-days-later",
+      "continuityId": "film-2002",
+      "status": "approved",
+      "promptVersion": "portal-atlas-v1",
+      "source": "openai",
+      "rightsClass": "third-party",
+      "releaseYear": 2002,
+      "medium": "movie",
+      "generationAllowed": true,
+      "atlas": {
+        "sheet": "/visuals/cosmetics/openai/universes/28-days-later/portal-effects-atlas-p3.webp",
+        "width": 1024,
+        "height": 256,
+        "columns": 4,
+        "rows": 1,
+        "frames": 4,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "source": "openai"
+      },
+      "motifs": [
+        "London street-map geometry",
+        "analogue emergency broadcast",
+        "infected red pupil and veins",
+        "evacuation chevrons"
+      ],
+      "materials": [
+        "torn emergency tape",
+        "scratched CCTV plastic",
+        "oxidized metal",
+        "wet asphalt"
+      ],
+      "palette": [
+        "charcoal",
+        "dirty concrete gray",
+        "faded khaki",
+        "warning red",
+        "cold white"
+      ],
+      "mustAvoid": [
+        "official poster composition",
+        "official logo or title typography",
+        "actor likeness",
+        "official biohazard mark",
+        "gore"
+      ],
+      "officialReferenceUrls": [
+        "https://www.20thcenturystudios.com/movies/28-days-later",
+        "https://www.sonypictures.com/movies/28dayslater"
+      ],
+      "review": {
+        "lore": true,
+        "composition": true,
+        "alpha": true,
+        "distinctFrames": true,
+        "approvedAt": "2026-08-01"
+      },
+      "referenceDossier": "/visuals/cosmetics/openai/universes/28-days-later/reference-dossier.json",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent pixel-art cosmetic atlas for a 2D multiverse game\nPrimary request: Create one original, highly detailed cosmetic design atlas inspired by the objective and official references for the 2002 film 28 Days Later: deserted London after the Rage plague, desperate survivor improvisation, infected red eyes, evacuation and analogue emergency broadcasts. Do not reproduce any official poster, logo, actor likeness, or protected character design.\nScene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal in every transparent/empty area.\nStyle/medium: crisp high-detail 2D pixel art, dark survival-horror game UI, internally consistent scale and palette.\nComposition/framing: exact portrait 2:3 sheet divided into a strict 4-column by 6-row grid of equal cells, no gutters and no visible grid lines. Rows 1-2 together form one coherent 4-cells-wide by 2-cells-high transparent HUD border: center completely empty green for gameplay, distressed emergency tape corners, London street-map geometry, broken CCTV brackets, red Rage-vein accents, dirty off-white medical markings, reserved safe zones and no opaque center. Row 3 contains exactly four left-to-right frames of a portal animation: a red infected pupil/vein aperture tears open and stabilizes. Row 4 contains exactly four left-to-right frames of a K.O. effect: CCTV desaturation, violent red pulse, shattered emergency chevrons, then blackout residue. Row 5 contains exactly four left-to-right frames of an introduction pose: the same generic anonymous survivor silhouette in practical improvised clothing enters alert, raises a blunt survival tool, settles into guard. Row 6 contains exactly four left-to-right frames of a victory pose: the same survivor checks the street, lowers the tool, breathes, then stands cautiously relieved. Keep every frame fully inside its cell with generous transparent padding and consistent feet/ground line for pose rows.\nLighting/mood: bleak overcast London, harsh red emergency glow, grainy early-digital-video mood.\nColor palette: charcoal, dirty concrete gray, faded khaki, warning red, small cold-white highlights. Never use #00ff00 in the artwork.\nMaterials/textures: torn tape, scratched plastic, oxidized metal, cracked monitor glass, wet asphalt cues.\nConstraints: background must be perfectly uniform #00ff00 with no shadows, gradients, texture, reflections, floor plane, or lighting variation; crisp pixel edges; four distinct progressive frames in each animation row; same anonymous silhouette and proportions in pose frames; no text, no letters, no numbers, no logos, no trademarks, no watermark, no gore, no official biohazard symbol.\nAvoid: poster composition, actor likenesses, official title typography, photorealism, smooth vector art, duplicated frames, opaque cell backgrounds, green fringe."
+    },
+    {
+      "universe": "A Nightmare on Elm Street",
+      "slug": "a-nightmare-on-elm-street",
+      "continuityId": "film-1984",
+      "status": "approved",
+      "promptVersion": "portal-atlas-v1",
+      "source": "openai",
+      "rightsClass": "third-party",
+      "releaseYear": 1984,
+      "medium": "movie",
+      "generationAllowed": true,
+      "atlas": {
+        "sheet": "/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/portal-effects-atlas-p3.webp",
+        "width": 1024,
+        "height": 256,
+        "columns": 4,
+        "rows": 1,
+        "frames": 4,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "source": "openai"
+      },
+      "motifs": [
+        "rusted boiler-room pipes",
+        "analog alarm clocks",
+        "four diagonal dream scratches",
+        "suburban bedroom fragments",
+        "restrained burgundy and olive knit strips"
+      ],
+      "materials": [
+        "scorched black steel",
+        "oxidized copper",
+        "dirty brass gauges",
+        "torn knit fabric",
+        "furnace embers"
+      ],
+      "palette": [
+        "soot black",
+        "rust brown",
+        "oxidized copper",
+        "dirty brass",
+        "furnace red",
+        "dark burgundy",
+        "muted deep olive",
+        "ivory-hot highlights"
+      ],
+      "mustAvoid": [
+        "official logo or poster composition",
+        "actor likeness",
+        "recognizable franchise-character portrait",
+        "clock numerals or readable text",
+        "blood or gore"
+      ],
+      "officialReferenceUrls": [
+        "https://www.warnerbros.co.jp/home_entertainment/fuoaukh9rq21/",
+        "https://www.wescraven.com/film/a-nightmare-on-elm-street/"
+      ],
+      "review": {
+        "lore": true,
+        "composition": true,
+        "alpha": true,
+        "distinctFrames": true,
+        "approvedAt": "2026-08-01"
+      },
+      "referenceDossier": "/visuals/cosmetics/openai/universes/a-nightmare-on-elm-street/reference-dossier.json",
+      "generationPrompt": "Create one original fan-made production atlas, exactly 1024 x 1536, on perfectly flat uniform #00ff00, conceptually aligned to four 256 px columns by six 256 px rows with no grid, labels, floor, shadows, reflections, green spill, text or watermark. Rows 1-2 form one coherent open-center 1024 x 512 HUD perimeter; row 1 must also work as profile-title trim and row 2 as profile-banner trim. Use rusted boiler-room steel, copper pipes, brass gauges, clockwork, restrained burgundy/olive knit, furnace embers and four-scratch corner accents while preserving a very large empty gameplay center. Row 3 is a strict portal sequence: tiny dormant pinhole, opening ring, the only fully open boiler-dream bedroom vortex, then collapsed/dissipating fragments with no open center. Row 4 is a non-gory effect-only KO sequence: four-scratch spark, expanding four-slash impact, fractured steam burst, sparse soot fade; never include a person. Rows 5-6 contain eight distinct full-body intro/victory poses of the exact same anonymous young-adult dream survivor, with the same featureless shadowed face, charcoal 1980s denim jacket, dark shirt, faded jeans and high-tops. Every one of the eight poses must retain the exact same short copper pipe on viewer-left and the exact same analog alarm clock on viewer-right, with no swap or disappearance. Keep each effect and body fully inside its own cell with generous transparent-key padding. Gritty hand-painted game UI with pixel-sharp edges and a late-1980s practical-horror mood; soot black, rust, copper, dirty brass, furnace red, burgundy, muted olive and ivory highlights. Do not use official logos, poster composition, movie title, words, letters, clock numerals, pseudo-writing, actor likeness, recognizable character portrait, blood, gore or extra people. Final targeted edit requirement: change only clock faces to plain unlabeled tick marks and simple hands; preserve all geometry, layout, sequences, poses, accessories, palette and chroma backdrop."
+    },
+    {
+      "universe": "Ado",
+      "slug": "ado",
+      "continuityId": "resonance-persona-2020-2026",
+      "status": "approved",
+      "promptVersion": "portal-atlas-v1",
+      "source": "openai",
+      "rightsClass": "real-person-persona",
+      "releaseYear": 2020,
+      "medium": "music",
+      "generationAllowed": true,
+      "atlas": {
+        "sheet": "/visuals/cosmetics/openai/universes/ado/portal-effects-atlas-p3.webp",
+        "width": 1024,
+        "height": 256,
+        "columns": 4,
+        "rows": 1,
+        "frames": 4,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "source": "openai"
+      },
+      "motifs": [
+        "original blue rose",
+        "stepped soundwave",
+        "equalizer geometry",
+        "cobalt resonance rings"
+      ],
+      "materials": [
+        "pixel-light filigree",
+        "opaque petal clusters",
+        "angular game-interface trim"
+      ],
+      "palette": [
+        "midnight navy",
+        "cobalt blue",
+        "electric cyan",
+        "violet",
+        "cool white"
+      ],
+      "mustAvoid": [
+        "real-person likeness",
+        "existing official illustrated character",
+        "album or music-video art",
+        "official logo",
+        "artist name or readable text"
+      ],
+      "officialReferenceUrls": [
+        "https://cloud9pro.co.jp/artist/profile/ado/",
+        "https://www.universal-music.co.jp/ado/biography/",
+        "https://sp.universal-music.co.jp/ado/exhibition-adotomy/news/20251213/"
+      ],
+      "review": {
+        "lore": true,
+        "composition": true,
+        "alpha": true,
+        "distinctFrames": true,
+        "approvedAt": "2026-08-01"
+      },
+      "referenceDossier": "/visuals/cosmetics/openai/universes/ado/reference-dossier.json",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: production-ready high-detail retro pixel-art cosmetic sprite atlas for a game, exact 1024 x 1536 portrait canvas.\nPrimary request: create one unique, original symbolic Resonance Persona cosmetic pack for the music universe Ado. Use only abstract identity cues documented by official sources: anonymous utaite / expressive singing culture, a symbolic blue rose, dramatic vocal resonance. This must be new fan-made art, not a copy of any existing Ado artwork.\n\nEXACT ATLAS GEOMETRY: the canvas is an exact invisible grid of 4 columns x 6 rows, each cell exactly 256 x 256 pixels, total 24 cells. Do not draw grid lines, labels, row numbers, captions, or guides. Keep every animated figure/effect fully inside its own 256px cell with generous green padding and no spill into neighboring cells. Rows 0 and 1 are allowed to form continuous coherent interface ornament across all four columns.\n\nROW 0 (y 0-255): one coherent wide HUD top/header and profile-title frame across the full 1024px row. Empty readable center, midnight navy and cobalt-blue angular frame, cyan-to-violet stepped soundwave filigree, original blue-rose petal accents at the outer corners. Decorative border only, no text.\nROW 1 (y 256-511): one coherent matching wide HUD lower/profile-banner frame across the full 1024px row. Empty broad center, waveform equalizer marks and sparse rose-petal geometry concentrated along the lower and side edges. It must visually join row 0 as one HUD theme, but remain useful as a separate banner. No text.\nROW 2 (y 512-767): four left-to-right animation frames of one circular resonance portal: (1) small cobalt sound ring and folded petals, (2) opening concentric wave iris, (3) fully open blue-rose resonance vortex made of crisp opaque pixel clusters, (4) stable bright portal with violet waveform sparks. Each frame centered and isolated.\nROW 3 (y 768-1023): four left-to-right KO effect animation frames: (1) sharp compressed voice pulse, (2) fractured equalizer shockwave, (3) explosive burst of cobalt rose petals and violet music-wave shards, (4) fading stepped resonance rings and a few falling petals. No letters and no words.\nROW 4 (y 1024-1279): four left-to-right INTRO pose animation frames of the exact same entirely original anonymous, non-identifiable Resonance Persona. The persona is a faceless deep-navy silhouette in an original short asymmetric performance coat, cobalt rose-shaped resonance emblem at the collar, gloved hands, abstract cyan waveform ribbon; no visible facial features and no likeness to a real person or existing illustrated character. Sequence: shadow gathers, half-turn entrance, hand near collar emblem, confident centered performance-ready pose. Full body, consistent proportions, same costume in all four cells.\nROW 5 (y 1280-1535): four left-to-right VICTORY pose animation frames of that exact same persona and costume: steady recovery, raised open hand conducting a sound ring, blue rose resonance blooms above the palm, final calm victorious silhouette framed by a clean cobalt/violet waveform halo. Full body, consistent proportions, isolated in each cell.\n\nStyle/medium: crisp authored 32-bit-era Japanese game pixel art, precise block clusters, strong readable silhouettes at small size, limited midnight navy / cobalt / electric cyan / violet / tiny cool-white highlights. Effects must be rendered with opaque stepped pixel shapes rather than transparent haze so chroma removal is clean.\nComposition: orthographic game sprite-sheet presentation; strict alignment; consistent frame scale and baseline; no perspective floor.\nBackdrop: perfectly flat, perfectly uniform solid #00ff00 chroma-key background covering every unused pixel, including between subjects and around all outer edges. No shadows, gradients, texture, reflections, floor plane, lighting variation, or green-tinted fringe. Do not use #00ff00 or any green anywhere in the artwork.\nConstraints: exactly the six requested rows in the exact order; same anonymous persona across all eight pose frames; coherent HUD across rows 0-1; crisp edges; generous cell padding.\nAvoid: any direct portrait or likeness of Ado; any existing official Ado character design; official logos; artist name; copyrighted album covers or music-video imagery; microphone-brand marks; readable text; symbols resembling an official logo; watermark; signature; decorative frame around the full atlas; grid lines; cell labels; duplicated frames; merged animated cells; cast shadows; contact shadows; glow bleeding into the green background."
+    },
+    {
+      "universe": "Aegea: War of the Moirai",
+      "slug": "aegea-war-of-the-moirai",
+      "continuityId": "original-project-v2",
+      "status": "approved",
+      "promptVersion": "portal-atlas-v1",
+      "source": "openai",
+      "rightsClass": "original",
+      "releaseYear": 2026,
+      "medium": "game",
+      "generationAllowed": true,
+      "atlas": {
+        "sheet": "/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/portal-effects-atlas-p3.webp",
+        "width": 1024,
+        "height": 256,
+        "columns": 4,
+        "rows": 1,
+        "frames": 4,
+        "frameWidth": 256,
+        "frameHeight": 256,
+        "source": "openai"
+      },
+      "motifs": [
+        "three-spindle Moirai crest",
+        "broken Greek meander",
+        "severable violet fate threads",
+        "bronze fate loom",
+        "open fourth path"
+      ],
+      "materials": [
+        "patinated bronze",
+        "limestone ivory",
+        "turquoise inlay",
+        "controlled pixel-light threads"
+      ],
+      "palette": [
+        "midnight navy",
+        "near-black",
+        "Aegean blue",
+        "prophecy violet",
+        "old bronze",
+        "limestone ivory",
+        "turquoise patina"
+      ],
+      "mustAvoid": [
+        "external franchise assets",
+        "extra characters",
+        "text or pseudo-glyphs",
+        "cropped limbs or weapons",
+        "opaque gameplay center"
+      ],
+      "officialReferenceUrls": [],
+      "review": {
+        "lore": true,
+        "composition": true,
+        "alpha": true,
+        "distinctFrames": true,
+        "approvedAt": "2026-08-01"
+      },
+      "referenceDossier": "/visuals/cosmetics/openai/universes/aegea-war-of-the-moirai/reference-dossier.json",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: production-ready keyed 2D game cosmetic atlas for the original universe \"Aegea: War of the Moirai\"\nPrimary request: create one EXACT 1024x1536 portrait sprite sheet divided conceptually into 4 equal columns by 6 equal rows, each cell exactly 256x256. This is a technical pilot atlas and the layout must be followed exactly.\nInput images:\nImage 1: visual-world reference only - Aegea backdrop; preserve its nocturnal Aegean archipelago mood, cliff temples, bronze machinery, blue grids and violet fate threads.\nImage 2: lead-character reference only - Thaleia of Naxos; use her as the SAME consistent character in every intro and victory animation frame: athletic dark-haired Greek heroine, blue-and-white draped travel outfit with gold trim, sandals, blue ribbons, xiphos.\nImage 3: supporting style reference only - Melantho the Unfinished Oracle; use her violet prophecy, gold laurel and branching-futures visual language in the UI and effects, but do not put her character in the animation rows.\nImage 4: supporting material reference only - Doros Bronzehand; use his patinated bronze, turquoise inlays and sacred-automaton craftsmanship in the HUD and portal construction, but do not put his character in the animation rows.\nSupporting local booster reference inspected separately: its concentric circular core, alternating Aegean-blue and prophecy-violet polygonal geometry, and strong framed breach-card silhouette inform the portal and central Moirai crest; render no booster text.\nStyle/medium: highly detailed crisp 16-bit/32-bit-inspired pixel art matching the supplied original Aegea game art; readable silhouettes; controlled pixel clusters; no painterly blur, no photorealism.\nPalette: midnight navy #172a46 and near-black #03060d, Aegean blue #54a0ff, prophecy violet #9b59b6, old bronze and gold #b87333/#f4d35e, limestone ivory #d7c7a1, small turquoise patina accents #58c6c7. Never use #00ff00 inside any asset.\nTechnical canvas and background: the entire unused canvas and every gap must be a perfectly flat, uniform solid #00ff00 chroma-key background. No texture, gradient, vignette, floor, shadow, reflection, glow spill, panel border, labels, captions, watermark, or guide lines on the green. Leave at least 10 pixels of pure green separation around every independent sprite in animation rows. All content must stay inside its assigned row and cell; nothing may cross a row boundary.\nEXACT ROW CONTENT, from top to bottom:\nROW 0, y=0..255: one coherent full-width PROFILE TITLE / HUD TOP nameplate asset spanning the 1024x256 row, centered and symmetrical, with a strong bronze Greek-temple silhouette, broken meander-key corners, a central three-spindle Moirai crest, restrained violet fate threads and blue/turquoise inlays. Empty interior area for runtime text, but render NO text, NO letters and NO pseudo-glyphs.\nROW 1, y=256..511: one coherent full-width PROFILE BANNER / HUD LOWER frame spanning the 1024x256 row, an elegant wide open frame combining limestone temple edges, patinated bronze loom mechanisms, labyrinth pathways and severable violet fate threads; clear transparent/open center for profile art and runtime UI; no text. Together rows 0 and 1 must also read as a unified 1024x512 HUD theme for RPG/Tactic/Melee/Combat/Kart/FPS/Nexus game interfaces only.\nROW 2, y=512..767: FOUR isolated 256x256 PORTAL EFFECT frames, left-to-right animation phases: (1) dormant circular bronze fate loom with closed dark center, (2) opening ring as blue grid lines and violet threads wind around three spindles, (3) fully open Aegean rift with luminous blue-violet vortex and bronze Greek meander rim, (4) collapsing ring with clean cut fate threads and bronze sparks. Same portal design and scale in all frames, centered, generous green padding.\nROW 3, y=768..1023: FOUR isolated 256x256 KO EFFECT frames, left-to-right animation phases: (1) intact bronze theatrical fate mask crossed by taut violet thread, (2) xiphos-like blue slash cuts the thread, (3) mask fractures into bronze and limestone shards with violet-blue energy burst, (4) fragments and three severed thread ends fade into sparse blue sparks. No character, no letters, same center and scale.\nROW 4, y=1024..1279: FOUR isolated 256x256 INTRO POSE animation frames of the SAME Thaleia from Image 2, full body, consistent face/outfit/proportions and xiphos, left-to-right: (1) calm navigator stance holding a coil of violet fate thread, (2) turns toward danger and draws her xiphos, (3) steps forward as the thread tightens across her path, (4) decisive ready stance after cutting the imposed thread, blue ribbons and white mantle settling. Side/front three-quarter game sprite view, entire body and sword inside every cell, no ground shadow.\nROW 5, y=1280..1535: FOUR isolated 256x256 VICTORY POSE animation frames of that SAME Thaleia, full body and consistent identity, left-to-right: (1) low guarded stance after battle, (2) rises and gathers three severed violet threads, (3) raises xiphos with the free threads spiraling in blue-violet arcs, (4) stable heroic victory pose, xiphos upright, free thread forming an open non-closed fourth path behind her. Entire body and sword inside every cell, no ground shadow.\nComposition: orthographic game-asset presentation, consistent sprite scale across each four-frame sequence; effects centered in their cells; row 0 and row 1 are each full-width strips, while rows 2-5 contain four clearly isolated frames.\nConstraints: entirely original fan-made/project art; preserve the supplied Aegea visual identity without copying external franchise assets; exact 4x6 order; one Thaleia only per animation cell; no Melantho or Doros figures; no extra characters; no text or symbols resembling letters; no logos; no watermark; no cropped limbs/weapons; no anti-green subject colors; no atmospheric background; no cast/contact shadows."
+    }
+  ]
+}

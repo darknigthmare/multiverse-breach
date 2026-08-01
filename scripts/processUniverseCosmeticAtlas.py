@@ -29,11 +29,20 @@ def visible_ratio(image: Image.Image) -> float:
     return visible / (image.width * image.height)
 
 
-def validate_hud_safe_area(image: Image.Image) -> None:
+def hud_safe_area_bounds(image: Image.Image) -> tuple[int, int, int, int]:
     if image.height == CELL_SIZE:
-        safe_area = image.crop((256, 72, 768, 200))
-    else:
-        safe_area = image.crop((320, 160, 704, 352))
+        return (256, 72, 768, 200)
+    return (320, 160, 704, 352)
+
+
+def clear_hud_safe_area(image: Image.Image) -> Image.Image:
+    cleared = image.copy()
+    cleared.paste((0, 0, 0, 0), hud_safe_area_bounds(cleared))
+    return cleared
+
+
+def validate_hud_safe_area(image: Image.Image) -> None:
+    safe_area = image.crop(hud_safe_area_bounds(image))
     ratio = visible_ratio(safe_area)
     if ratio > 0.02:
         raise ValueError(
@@ -100,6 +109,11 @@ def parse_args() -> argparse.Namespace:
         default="both",
         help="Select which keyed UI row forms the in-game HUD frame.",
     )
+    parser.add_argument(
+        "--clear-hud-safe-area",
+        action="store_true",
+        help="Clear the protected gameplay center from the HUD output only.",
+    )
     return parser.parse_args()
 
 
@@ -147,6 +161,8 @@ def main() -> None:
             (0, 5 * CELL_SIZE, 4 * CELL_SIZE, 6 * CELL_SIZE)
         ),
     }
+    if args.clear_hud_safe_area:
+        assets["hudTheme"] = clear_hud_safe_area(assets["hudTheme"])
     filenames = {
         "hudTheme": "hud-theme.webp",
         "profileTitle": "profile-title.webp",

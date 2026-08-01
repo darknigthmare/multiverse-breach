@@ -11,6 +11,7 @@ import {
   getLoreWorldBossPolicy
 } from './loreWorldBossOverrides.js';
 import { REQUESTED_UNIVERSE_WAVE } from './requestedUniverseWave.js';
+import { CANON_ROSTER_WAVE } from './canonRosterWave.js';
 import {
   getStageLoreAssetPlan,
   getStageLoreProfile
@@ -18,8 +19,126 @@ import {
 import { OC_DLC_UNIVERSES } from './ocDlcPacks.js';
 import { getGearShopVisualMetadata } from './gearShopVisualContracts.js';
 import { ORIGINAL_UNIVERSE_WAVE } from './originalUniverseWave.js';
+import {
+  inferNonCombatTrial,
+  makeNonCombatPolicyFromThreat
+} from './nonCombatTrial.js';
 
 const EXPANDED_STAGE_START_ID = 39;
+
+// Explicit migration list for legacy rosters that represented hazards,
+// puzzles, pursuits, containment objectives or comic rivals as combatants.
+// True antagonists that are meant to be fought are intentionally absent.
+const LEGACY_NON_COMBAT_TRIAL_ROUTES = Object.freeze([
+  ['Avatar (Na\'vi)', 'switches', ['avatar_ardmore']],
+  ['Avatar (Na\'vi)', 'break-object', ['avatar_seadragon']],
+  ['Skyline', 'rescue', ['skyline_brain_collector']],
+  ['Skyline', 'hit-targets', ['skyline_harvest_core']],
+  ['Skyline', 'switches', ['skyline_mothership']],
+  ['Happy Wheels', 'escape', ['hw_spike_strip', 'hw_harpoon_turret', 'hw_landmine', 'hw_wrecking_course', 'hw_harpoon_gauntlet', 'hw_crusher_machine', 'hw_impossible_course']],
+  ['Marble Hornets', 'evidence', ['mh_signal_distortion', 'mh_lost_time', 'mh_hostile_archive', 'mh_hooded_figure', 'mh_benedict_loop']],
+  ['Marble Hornets', 'escape-evidence', ['mh_operator']],
+  ['The Horribly Slow Murderer', 'survive', ['ginosaji_spoon_tap', 'ginosaji_lost_sleep', 'ginosaji_impossible_return', 'ginosaji_home_ambush', 'ginosaji_world_chase', 'ginosaji_tunnel_return', 'ginosaji_endless']],
+  ['Sartorius Stedim Biotech', 'switches', ['sartorius_particle_excursion', 'sartorius_seal_loss', 'sartorius_connector_misalignment', 'sartorius_bioburden_excursion', 'sartorius_pressure_cascade', 'sartorius_traceability_break', 'sartorius_contamination_cascade']],
+  ['Trololo', 'hit-targets', ['trololo_dead_air', 'trololo_tape_dropout', 'trololo_tempo_drift', 'trololo_broadcast_interference', 'trololo_endless_repeat', 'trololo_silent_stage', 'trololo_global_vocalise']],
+  ['Rick Astley', 'hit-targets', ['rick_astley_misleading_hyperlink', 'rick_astley_autoplay_popup', 'rick_astley_comment_spam_bot']],
+  ['Rick Astley', 'switches', ['rick_astley_broken_embed', 'rick_astley_claim_gate', 'rick_astley_algorithm_loop', 'rick_astley_infinite_rickroll']],
+  ['Nyan Cat', 'escape', ['nyan_cat_space_dog', 'nyan_cat_ufo', 'nyan_cat_meteor', 'nyan_cat_giant_ufo', 'nyan_cat_meteor_swarm', 'nyan_cat_candy_vacuum', 'nyan_cat_tac_nayn']],
+  ['SCP Foundation', 'switches', ['scp_foundation_scp_049', 'scp_foundation_scp_939', 'scp_foundation_scp_008', 'scp_foundation_scp_096', 'scp_foundation_scp_106', 'scp_foundation_scp_079', 'scp_foundation_scp_682']],
+  ['Mr. Bean', 'switches', ['mr_bean_exam_clock', 'mr_bean_laundry_machine', 'mr_bean_christmas_turkey', 'mr_bean_room_426', 'mr_bean_premiere_queue', 'mr_bean_nativity_mixup', 'mr_bean_paint_bomb_chain']],
+  ['Famille Pirate', 'collect', ['famille_pirate_lerequin_crew_0', 'famille_pirate_lerequin_crew_1', 'famille_pirate_lerequin_crew_2', 'famille_pirate_bolaf', 'famille_pirate_hercule', 'famille_pirate_irvin', 'famille_pirate_ecumoir']],
+  ['Téléchat', 'switches', ['telechat_tele_bete_revolt']],
+  ['Nicolas et Pimprenelle', 'collect', ['nicolas_pimprenelle_restless_pillow', 'nicolas_pimprenelle_lost_cloud', 'nicolas_pimprenelle_early_alarm', 'nicolas_pimprenelle_lost_treasure_sack']],
+  ['Nicolas et Pimprenelle', 'switches', ['nicolas_pimprenelle_faceless_nightmare', 'nicolas_pimprenelle_sleepless_night']]
+]);
+
+const LEGACY_NON_COMBAT_TRIAL_TYPE_BY_ID = new Map(
+  LEGACY_NON_COMBAT_TRIAL_ROUTES.flatMap(([universe, type, ids]) => (
+    ids.map(id => [`${universe}:${id}`, type])
+  ))
+);
+
+// Older waves often stored a prop, victim, clue, hazard or abstract system as
+// a plain string, so it could not carry the `nonCombat` marker used by the new
+// canon sheets. Keep this list explicit: genuine antagonists in mixed
+// universes remain combatants, while only the named non-enemies become trials.
+const LEGACY_NON_COMBAT_TRIAL_NAME_ROUTES = Object.freeze([
+  ['Death Note', 'evidence', ['Task Force Tail', 'Kira Copycat', 'Shinigami Whisper', 'Rem Contract', 'Near Deduction Trap']],
+  ['From', 'switches', ['Faraway Tree Echo', 'Music Box Ballerina']],
+  ['From', 'survive', ['Cicada Nightmare']],
+  ['Uzumaki', 'rescue', ['Spiral Snail Student', 'Azami Spiral Eye']],
+  ['Uzumaki', 'survive', ['Twisted Hair Storm']],
+  ['Uzumaki', 'escape', ['Cremation Smoke Coil', 'Lighthouse Coil']],
+  ['Exit 8', 'evidence', ['Wrong Poster Copy', 'Blinking Light Fault', 'Passing Man Echo', 'Impossible Signage']],
+  ['Exit 8', 'escape', ['Flooded Corridor']],
+  ['Hell House LLC', 'evidence', ['Basement Clown Prop', 'Hotel Door Knocker', 'Found Footage Static', 'Stairwell Camera Trap']],
+  ['Hell House LLC', 'survive', ['Abaddon Priest Shade']],
+  ['Spermageddon', 'escape', ['Hormone Gremlin', 'Body Cell Patrol', 'Awkward Musical Note', 'Contraception Gatekeeper', 'Cringe Chorus Beast']],
+  ['Repo! The Genetic Opera', 'rescue', ['Zydrate Addict Echo']],
+  ['Repo! The Genetic Opera', 'switches', ['Surgical Drone']],
+  ['Repo! The Genetic Opera', 'evidence', ['Luigi Pavi Rotti Cell', 'Amber Sweet Stage']],
+  ['Another', 'evidence', ['Reiko Mikami - The Extra']],
+  ['La Cite de la Peur', 'evidence', ['Emile Gravier', 'Jean-Paul Martoni']],
+  ['Voyage de Chihiro', 'evidence', ['Yubaba']],
+  ['Voyage de Chihiro', 'switches', ['Kashira Trio']],
+  ['The Simpsons', 'evidence', ['Mr Burns Nuclear Scheme']],
+  ['Steins;Gate', 'evidence', ['Jellyman Experiment', 'FB Rounder Network', 'Nae Time-Leap Echo']],
+  ['Steins;Gate', 'switches', ['D-Mail Divergence Echo']],
+  ['Zero Escape: The Nonary Games', 'switches', ['Bracelet Bomb Enforcer', 'Q Room Trap Drone', 'Zero II Decision Engine']],
+  ['Zero Escape: The Nonary Games', 'rescue', ['Radical-6 Host']],
+  ['Zero Escape: The Nonary Games', 'evidence', ['Dio Myrmidon']],
+  ['Psycho-Pass', 'switches', ['Crime Coefficient Drone']],
+  ['Siren Head', 'switches', ['Stolen Voice Echo', 'Number Station Lure', 'Broadcast Relay Colossus']],
+  ['Siren Head', 'escape-evidence', ['Tree-Line Mimic', 'Old-Media Faux Body']]
+]);
+
+const normalizeLegacyTrialName = value => String(value || '')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, ' ')
+  .trim();
+
+const LEGACY_NON_COMBAT_TRIAL_TYPE_BY_NAME = new Map(
+  LEGACY_NON_COMBAT_TRIAL_NAME_ROUTES.flatMap(([universe, type, names]) => (
+    names.map(name => [`${universe}:${normalizeLegacyTrialName(name)}`, type])
+  ))
+);
+
+const LORE_WORLD_BOSS_POLICY_UNIVERSE_ALIASES = Object.freeze({
+  'Digital Circus': 'The Amazing Digital Circus',
+  'Le Cinquième Element': 'Le Cinquieme Element',
+  'Guns N Roses': "Guns N' Roses",
+  'Atarashii Gakko': 'Atarashii Gakko!'
+});
+
+const POLICY_ONLY_CLEAR_COMBAT_UNIVERSES = new Set([
+  'Vocaloid',
+  'Slender Man',
+  'Digital Circus',
+  'The Amazing Digital Circus',
+  'Death Note',
+  'Exit 8',
+  'Hell House LLC',
+  'Spermageddon',
+  'Another',
+  'Pingu',
+  'La Cite de la Peur',
+  'Cool Spot',
+  'Zero Escape: The Nonary Games',
+  'Siren Head'
+]);
+
+export const shouldClearCombatRosterForPolicy = universe => (
+  POLICY_ONLY_CLEAR_COMBAT_UNIVERSES.has(universe)
+  || POLICY_ONLY_CLEAR_COMBAT_UNIVERSES.has(LORE_WORLD_BOSS_POLICY_UNIVERSE_ALIASES[universe])
+);
+
+export const getResolvedLoreWorldBossPolicy = universe => (
+  getLoreWorldBossPolicy(universe)
+  || getLoreWorldBossPolicy(LORE_WORLD_BOSS_POLICY_UNIVERSE_ALIASES[universe])
+  || null
+);
 
 const GENERATED_ITEM_OVERRIDE_KEYS = new Set([
   'dragon_ball_z',
@@ -3939,23 +4058,123 @@ ORIGINAL_UNIVERSE_WAVE.forEach(pack => {
   }
 });
 
-EXPANDED_UNIVERSES.forEach(universe => {
-  const worldBossOverride = getLoreWorldBossOverride(universe.universe);
-  const worldBossPolicy = getLoreWorldBossPolicy(universe.universe);
-  const stageLoreProfile = getStageLoreProfile(universe.universe);
+makeUniverseWave(CANON_ROSTER_WAVE).forEach(pack => {
+  const existingIndex = EXPANDED_UNIVERSES.findIndex(
+    universe => universe.universe === pack.universe
+  );
+  if (existingIndex >= 0) {
+    EXPANDED_UNIVERSES[existingIndex] = pack;
+  } else {
+    EXPANDED_UNIVERSES.push(pack);
+  }
+});
 
-  if (worldBossOverride) {
-    universe.worldBoss = makeLoreWorldBossRuntime(worldBossOverride);
-    universe.worldBossPolicy = null;
-  } else if (worldBossPolicy) {
-    universe.worldBoss = null;
-    universe.worldBossPolicy = worldBossPolicy;
-    universe.bossName = worldBossPolicy.objective.fr;
+const CANON_ROSTER_UNIVERSES = new Set(CANON_ROSTER_WAVE.map(entry => entry.universe));
+
+function splitCombatantsAndEncounters(universe) {
+  const routeThreat = (threat, kind, index) => {
+    const name = threatName(threat);
+    const explicitType = threat && typeof threat === 'object'
+      ? LEGACY_NON_COMBAT_TRIAL_TYPE_BY_ID.get(`${universe.universe}:${threat.id}`)
+      : null;
+    const legacyType = explicitType || LEGACY_NON_COMBAT_TRIAL_TYPE_BY_NAME.get(
+      `${universe.universe}:${normalizeLegacyTrialName(name)}`
+    );
+    if (threat?.nonCombat !== true && !legacyType) {
+      return { combatant: threat, encounter: null };
+    }
+
+    const generatedId = `legacy-${universe.key || normalizeLegacyTrialName(universe.universe).replace(/\s+/g, '-')}-${kind}-${index}-${normalizeLegacyTrialName(name).replace(/\s+/g, '-')}`;
+    const source = threat && typeof threat === 'object'
+      ? { ...threat, id: threat.id || generatedId, name: threat.name || name }
+      : { id: generatedId, name };
+    const routedThreat = {
+      ...source,
+      nonCombat: true,
+      trialType: source.trialType || legacyType,
+      nonCombatTrial: {
+        ...(source.nonCombatTrial || {}),
+        type: source.nonCombatTrial?.type || source.trialType || legacyType
+      },
+      visualAnchor: source.visualAnchor
+        || `${universe.stageName}: ${name} represented as an objective state, never as a fighter.`
+    };
+    const policy = makeNonCombatPolicyFromThreat(universe.universe, routedThreat);
+    return {
+      combatant: null,
+      encounter: policy
+        ? { id: routedThreat.id, name: routedThreat.name, kind, threat: routedThreat, policy }
+        : null
+    };
+  };
+
+  const monsterRoutes = (universe.monsters || []).map((threat, index) => routeThreat(threat, 'monster', index));
+  const bossRoutes = (universe.bosses || []).map((threat, index) => routeThreat(threat, 'boss', index));
+  const existingEncounters = universe.encounters || [];
+  const knownEncounterKeys = new Set(existingEncounters.map(encounter => (
+    `${encounter.kind}:${encounter.id || normalizeLegacyTrialName(encounter.name)}`
+  )));
+  const routedEncounters = [...monsterRoutes, ...bossRoutes]
+    .flatMap(route => route.encounter ? [route.encounter] : [])
+    .filter(encounter => {
+      const key = `${encounter.kind}:${encounter.id || normalizeLegacyTrialName(encounter.name)}`;
+      if (knownEncounterKeys.has(key)) return false;
+      knownEncounterKeys.add(key);
+      return true;
+    });
+
+  return {
+    monsters: monsterRoutes.flatMap(route => route.combatant ? [route.combatant] : []),
+    bosses: bossRoutes.flatMap(route => route.combatant ? [route.combatant] : []),
+    encounters: [...existingEncounters, ...routedEncounters]
+  };
+}
+
+EXPANDED_UNIVERSES.forEach((universe, index) => {
+  const worldBossOverride = getLoreWorldBossOverride(universe.universe);
+  const worldBossPolicy = getResolvedLoreWorldBossPolicy(universe.universe)
+    || (universe.mediaType === 'music'
+      ? makeNonCombatPolicyFromThreat(universe.universe, {
+          id: `${universe.key || universe.universe}-final-performance`,
+          name: `${universe.universe} — final performance`,
+          nonCombat: true,
+          entityType: 'live-performance-trial',
+          trialType: 'hit-targets',
+          objectiveText: {
+            fr: 'Réussir la performance finale en maintenant le rythme et la sécurité de la scène.',
+            en: 'Complete the final performance while maintaining rhythm and stage safety.'
+          },
+          visualAnchor: universe.theme || universe.stageName
+        })
+      : null);
+  const stageLoreProfile = getStageLoreProfile(universe.universe);
+  const enrichedUniverse = { ...universe, ...splitCombatantsAndEncounters(universe) };
+
+  if (worldBossOverride && !CANON_ROSTER_UNIVERSES.has(universe.universe)) {
+    enrichedUniverse.worldBoss = makeLoreWorldBossRuntime(worldBossOverride);
+    enrichedUniverse.worldBossPolicy = null;
+  } else if (worldBossPolicy && !CANON_ROSTER_UNIVERSES.has(universe.universe)) {
+    const clearCombatRoster = universe.mediaType === 'music'
+      || shouldClearCombatRosterForPolicy(universe.universe);
+    enrichedUniverse.worldBoss = null;
+    enrichedUniverse.worldBossPolicy = worldBossPolicy;
+    // A policy is an objective contract, never a boss label. Mixed universes
+    // keep their last verified combat boss; pure puzzle/pursuit worlds expose
+    // no boss at all.
+    enrichedUniverse.bossName = clearCombatRoster
+      ? null
+      : threatName(enrichedUniverse.bosses.at(-1)) || null;
+    if (clearCombatRoster) {
+      enrichedUniverse.monsters = [];
+      enrichedUniverse.bosses = [];
+    }
   }
 
   if (stageLoreProfile) {
-    universe.stageLoreProfile = stageLoreProfile;
+    enrichedUniverse.stageLoreProfile = stageLoreProfile;
   }
+
+  EXPANDED_UNIVERSES[index] = enrichedUniverse;
 });
 
 function makeUniverseWave(entries) {
@@ -3964,6 +4183,106 @@ function makeUniverseWave(entries) {
     const title = entry.title || entry.universe;
     const titleFr = entry.titleFr || entry.universe;
     const shortKey = entry.key.replace(/[^a-z0-9_]/gi, '').toLowerCase();
+    const authoredMonsters = entry.monsters || makeLoreEnemyWave(entry.universe, title);
+    const authoredBosses = entry.bosses || makeLoreBossWave(entry.universe, title);
+    const authoredWorldBoss = entry.worldBoss || entry.boss;
+    const routeThreat = (threat, kind) => {
+      const sourceName = threatName(threat);
+      const legacyTrialType = (
+        threat && typeof threat === 'object'
+          ? LEGACY_NON_COMBAT_TRIAL_TYPE_BY_ID.get(`${entry.universe}:${threat.id}`)
+          : null
+      ) || LEGACY_NON_COMBAT_TRIAL_TYPE_BY_NAME.get(
+        `${entry.universe}:${normalizeLegacyTrialName(sourceName)}`
+      );
+      if (threat?.nonCombat !== true && !legacyTrialType) {
+        return { combatant: threat, encounter: null };
+      }
+
+      const generatedThreatId = `legacy-${entry.key}-${kind}-${normalizeLegacyTrialName(sourceName).replace(/\s+/g, '-')}`;
+      const threatRecord = threat && typeof threat === 'object'
+        ? { ...threat, id: threat.id || generatedThreatId, name: threat.name || sourceName }
+        : {
+            id: generatedThreatId,
+            name: sourceName,
+            visualAnchor: `${entry.stage}: ${sourceName} represented as an objective state, never as a fighter.`
+          };
+      const nonCombatThreat = legacyTrialType
+        ? {
+            ...threatRecord,
+            nonCombat: true,
+            trialType: threatRecord.trialType || legacyTrialType,
+            nonCombatTrial: {
+              ...(threatRecord.nonCombatTrial || {}),
+              type: threatRecord.nonCombatTrial?.type || threatRecord.trialType || legacyTrialType
+            }
+          }
+        : { ...threatRecord, nonCombat: true };
+      const policy = makeNonCombatPolicyFromThreat(entry.universe, nonCombatThreat);
+      return {
+        combatant: null,
+        encounter: {
+          id: nonCombatThreat.id,
+          name: nonCombatThreat.name,
+          kind,
+          threat: nonCombatThreat,
+          policy
+        }
+      };
+    };
+    const monsterRoutes = authoredMonsters.map(threat => routeThreat(threat, 'monster'));
+    const bossRoutes = authoredBosses.map(threat => routeThreat(threat, 'boss'));
+    const worldBossRoute = routeThreat(authoredWorldBoss, 'worldBoss');
+    const monsters = monsterRoutes.flatMap(route => route.combatant ? [route.combatant] : []);
+    const bosses = bossRoutes.flatMap(route => route.combatant ? [route.combatant] : []);
+    const encounters = [
+      ...monsterRoutes.flatMap(route => route.encounter ? [route.encounter] : []),
+      ...bossRoutes.flatMap(route => route.encounter ? [route.encounter] : []),
+      ...(worldBossRoute.encounter ? [worldBossRoute.encounter] : [])
+    ];
+    const worldBossPolicy = worldBossRoute.encounter?.policy || null;
+    const normalizeEncounterName = value => String(value || '')
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+    const stageVariants = (entry.stageVariants || []).map(variant => {
+      const normalizedVariant = Array.isArray(variant)
+        ? {
+            ...(variant[4] && typeof variant[4] === 'object' ? variant[4] : {}),
+            mode: variant[0],
+            name: variant[1],
+            difficulty: variant[2],
+            bossName: variant[3]
+          }
+        : { ...variant };
+      const targetEncounter = encounters.find(encounter => (
+        normalizeEncounterName(encounter.name) === normalizeEncounterName(normalizedVariant.bossName)
+      ));
+      if (!targetEncounter?.policy) return normalizedVariant;
+
+      const trial = inferNonCombatTrial(targetEncounter.policy, {
+        universe: entry.universe,
+        sourceId: targetEncounter.id,
+        sourceName: targetEncounter.name
+      });
+      return {
+        ...normalizedVariant,
+        originalMode: normalizedVariant.mode,
+        mode: 'Smash',
+        bossName: null,
+        encounterId: targetEncounter.id,
+        nonCombat: true,
+        finalePolicy: targetEncounter.policy,
+        nonCombatTrial: trial,
+        objectiveType: trial?.type,
+        enemyRoster: [],
+        enemyRosterExclusive: true,
+        disableItems: true,
+        disableHazards: true
+      };
+    });
     const factionLine = {
       sciFi: 'technology, survival protocols, and breach combat',
       horror: 'fear pressure, curses, ambushes, and survival horror',
@@ -3972,13 +4291,28 @@ function makeUniverseWave(entries) {
     }[entry.faction] || 'multiverse instability and anomaly combat';
 
     return {
+      key: entry.key,
+      aliases: entry.aliases,
+      canonProfile: entry.canonProfile,
+      canonStatus: entry.canonStatus,
+      referenceUrl: entry.referenceUrl,
+      referenceUrls: entry.referenceUrls,
+      visualAnchor: entry.visualAnchor,
+      researchDate: entry.researchDate,
+      licensing: entry.licensing,
+      continuity: entry.continuity,
+      fidelityNotes: entry.fidelityNotes,
+      lore: entry.lore,
       universe: entry.universe,
       mediaType: entry.mediaType,
       faction: entry.faction,
       stageName: entry.stage,
+      stageMeta: entry.stageMeta,
       mode: entry.mode,
       difficulty: entry.difficulty,
-      bossName: entry.boss,
+      bossName: worldBossRoute.encounter
+        ? threatName(bosses.at(-1)) || worldBossPolicy?.objective?.fr || null
+        : entry.boss,
       title: { en: title, fr: titleFr },
       desc: entry.desc || {
         en: `${capitalize(entry.theme)} collide with Nexus instability through ${factionLine}.`,
@@ -3986,10 +4320,12 @@ function makeUniverseWave(entries) {
       },
       hero: makeWaveHero(entry.hero, accent),
       allies: entry.allies.map((ally, index) => makeWaveHero(ally, index === 0 ? lightenAccent(accent) : darkenAccent(accent))),
-      monsters: entry.monsters || makeLoreEnemyWave(entry.universe, title),
-      bosses: entry.bosses || makeLoreBossWave(entry.universe, title),
+      monsters,
+      bosses,
+      encounters,
       bossSlotPolicy: LORE_BOSS_SLOT_POLICY[entry.universe],
-      worldBoss: entry.worldBoss || entry.boss,
+      worldBoss: worldBossRoute.combatant,
+      worldBossPolicy,
       gear: entry.gear || makeLoreGearWave(entry.universe, shortKey, title, titleFr),
       event: entry.event || makeLoreEventWave(entry.universe, shortKey, title, titleFr),
       itemPolicy: getLoreItemPolicy(entry.universe),
@@ -4000,11 +4336,7 @@ function makeUniverseWave(entries) {
         motif: entry.motif,
         accent
       },
-      stageVariants: (entry.stageVariants || []).map(variant => (
-        Array.isArray(variant)
-          ? { mode: variant[0], name: variant[1], difficulty: variant[2], bossName: variant[3] }
-          : variant
-      ))
+      stageVariants
     };
   });
 }
@@ -4051,8 +4383,23 @@ function makeLoreWorldBossRuntime(override) {
   };
 }
 
-function makeWaveHero([id, name, cat], color) {
-  return { id, name, cat, color };
+function makeWaveHero([id, name, cat, metadata = {}], color) {
+  const authoredMetadata = metadata && typeof metadata === 'object' && !Array.isArray(metadata)
+    ? metadata
+    : {};
+  const normalizeMove = move => typeof move === 'string' ? { name: move } : move;
+  const simple = normalizeMove(authoredMetadata.simple ?? authoredMetadata.basic);
+  return {
+    ...authoredMetadata,
+    id,
+    name,
+    cat,
+    color: authoredMetadata.color || color,
+    ...(simple ? { simple } : {}),
+    ...(authoredMetadata.secondary ? { secondary: normalizeMove(authoredMetadata.secondary) } : {}),
+    ...(authoredMetadata.defense ? { defense: normalizeMove(authoredMetadata.defense) } : {}),
+    ...(authoredMetadata.special ? { special: normalizeMove(authoredMetadata.special) } : {})
+  };
 }
 
 function makeWaveGear(key, title, titleFr) {
@@ -4160,6 +4507,16 @@ function stageIdFor(index) {
   return EXPANDED_STAGE_START_ID + index;
 }
 
+export function stableTrialStageId(universe, encounterId) {
+  const source = `${String(universe || 'Nexus')}\u241f${String(encounterId || 'trial')}`;
+  let hash = 2166136261;
+  for (let index = 0; index < source.length; index += 1) {
+    hash ^= source.charCodeAt(index);
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+  return 810000000 + (hash % 180000000);
+}
+
 function difficultyRank(universe) {
   return difficultyScale[universe.difficulty] || 0;
 }
@@ -4224,6 +4581,17 @@ function getStageLoreMetadata(stage) {
   };
 }
 
+function trialRewardFor(universe) {
+  const reward = rewardFor(universe);
+  return {
+    goldPrize: Math.max(20, Math.round(reward.goldPrize * 0.35)),
+    shardPrize: Math.max(8, Math.round(reward.shardPrize * 0.35)),
+    ...(reward.tokenPrize
+      ? { tokenPrize: Math.max(1, Math.round(reward.tokenPrize * 0.35)) }
+      : {})
+  };
+}
+
 const EXPANDED_STAGE_RUNTIME_METADATA_KEYS = [
   'contentPackId',
   'contentOrigin',
@@ -4250,6 +4618,12 @@ const EXPANDED_STAGE_RUNTIME_METADATA_KEYS = [
   'sourceUniverses',
   'enemyRoster',
   'enemyRosterExclusive',
+  'encounterId',
+  'originalMode',
+  'nonCombat',
+  'nonCombatTrial',
+  'disableItems',
+  'disableHazards',
   'tacticsBattlefieldId',
   'smashArenaId',
   'intro',
@@ -4287,17 +4661,51 @@ export function getExpandedStages() {
     universe.skipPrimaryStage
       ? []
       : (() => {
+        const primaryEncounter = universe.encounters?.[0]
+          || (universe.worldBossPolicy && universe.monsters.length === 0 && universe.bosses.length === 0
+            ? {
+                id: universe.worldBossPolicy.legacyWorldBossId,
+                name: universe.title?.fr || universe.universe,
+                policy: universe.worldBossPolicy
+              }
+            : null);
+        const hasCombatActors = universe.monsters.length > 0
+          || universe.bosses.length > 0
+          || Boolean(universe.worldBoss);
+        const usePrimaryTrial = Boolean(
+          primaryEncounter?.policy
+          && !hasCombatActors
+        );
+        const primaryTrial = usePrimaryTrial
+          ? inferNonCombatTrial(primaryEncounter.policy, {
+              universe: universe.universe,
+              sourceId: primaryEncounter.id,
+              sourceName: primaryEncounter.name
+            })
+          : null;
         const stage = {
           id: universe.stageId ?? stageIdFor(index),
           name: universe.stageName,
           universe: universe.universe,
-          mode: universe.mode,
+          mode: usePrimaryTrial ? 'Smash' : universe.mode,
+          originalMode: usePrimaryTrial ? universe.mode : undefined,
           difficulty: universe.difficulty,
-          bossName: universe.bossName,
-          finalePolicy: universe.worldBossPolicy || null,
+          bossName: usePrimaryTrial ? null : universe.bossName,
+          finalePolicy: usePrimaryTrial ? primaryEncounter.policy : null,
+          encounterId: usePrimaryTrial ? primaryEncounter.id : undefined,
+          nC: usePrimaryTrial,
+          nonCombat: usePrimaryTrial,
+          nonCombatTrial: primaryTrial,
+          objectiveType: primaryTrial?.type,
+          enemyRoster: usePrimaryTrial ? [] : universe.enemyRoster,
+          enemyRosterExclusive: usePrimaryTrial ? true : universe.enemyRosterExclusive,
+          disableItems: usePrimaryTrial ? true : universe.disableItems,
+          disableHazards: usePrimaryTrial ? true : universe.disableHazards,
           loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[universe.stageName]
             || FEATURED_STAGE_LORE[universe.universe]?.[universe.mode],
-          ...rewardFor(universe),
+          ...(usePrimaryTrial ? trialRewardFor(universe) : rewardFor(universe)),
+          optionalTrial: false,
+          countsTowardCampaign: true,
           ...getExpandedStageRuntimeMetadata(universe)
         };
         return [{ ...stage, ...getStageLoreMetadata(stage) }];
@@ -4313,18 +4721,116 @@ export function getExpandedStages() {
         universe: universe.universe,
         mode: variant.mode,
         difficulty: variant.difficulty || universe.difficulty,
-        bossName: variant.bossName || universe.bossName,
-        finalePolicy: universe.worldBossPolicy || null,
+        bossName: Object.hasOwn(variant, 'bossName') ? variant.bossName : universe.bossName,
+        finalePolicy: variant.finalePolicy || null,
+        encounterId: variant.encounterId,
+        nC: Boolean(variant.nonCombatTrial || variant.nonCombat),
+        nonCombat: Boolean(variant.nonCombatTrial || variant.nonCombat),
+        nonCombatTrial: variant.nonCombatTrial || null,
+        originalMode: variant.originalMode,
+        enemyRoster: variant.nonCombatTrial ? [] : variant.enemyRoster,
+        enemyRosterExclusive: variant.nonCombatTrial ? true : variant.enemyRosterExclusive,
+        disableItems: variant.nonCombatTrial ? true : variant.disableItems,
+        disableHazards: variant.nonCombatTrial ? true : variant.disableHazards,
         loreDescription: FEATURED_STAGE_LORE[universe.universe]?.[variant.name]
           || FEATURED_STAGE_LORE[universe.universe]?.[variant.mode],
-        ...rewardFor(stageProfile),
+        ...(variant.nonCombatTrial ? trialRewardFor(stageProfile) : rewardFor(stageProfile)),
+        optionalTrial: false,
+        countsTowardCampaign: true,
         ...getExpandedStageRuntimeMetadata(stageProfile)
       };
       return { ...stage, ...getStageLoreMetadata(stage) };
     })
   ));
 
-  return [...primaryStages, ...variantStages];
+  const projectedStages = [...primaryStages, ...variantStages];
+  const representedEncounterIds = new Set(
+    projectedStages
+      .filter(stage => stage.nonCombatTrial && stage.encounterId)
+      .map(stage => `${stage.universe}:${stage.encounterId}`)
+  );
+  const representedPolicyIds = new Set(
+    projectedStages
+      .filter(stage => stage.nonCombatTrial && stage.finalePolicy?.legacyWorldBossId)
+      .map(stage => `${stage.universe}:${stage.finalePolicy.legacyWorldBossId}`)
+  );
+  const dedicatedTrialStages = EXPANDED_UNIVERSES.flatMap((universe, universeIndex) => {
+    const candidates = (universe.encounters || [])
+      .filter(encounter => !representedEncounterIds.has(`${universe.universe}:${encounter.id}`))
+      .map(encounter => ({
+        encounterId: encounter.id,
+        sourceName: encounter.name,
+        policy: encounter.policy
+      }));
+    if (
+      universe.worldBossPolicy
+      && !representedPolicyIds.has(`${universe.universe}:${universe.worldBossPolicy.legacyWorldBossId}`)
+      && !candidates.some(candidate => (
+        candidate.policy?.legacyWorldBossId === universe.worldBossPolicy.legacyWorldBossId
+      ))
+    ) {
+      candidates.push({
+        encounterId: universe.worldBossPolicy.legacyWorldBossId,
+        sourceName: universe.title?.fr || universe.universe,
+        policy: universe.worldBossPolicy
+      });
+    }
+
+    return candidates.flatMap(candidate => {
+      if (!candidate.policy) return [];
+      const trial = inferNonCombatTrial(candidate.policy, {
+        universe: universe.universe,
+        sourceId: candidate.encounterId,
+        sourceName: candidate.sourceName
+      });
+      if (!trial) return [];
+      const stageProfile = { ...universe, mode: 'Smash' };
+      const hybridLeadInStageId = candidate.policy.policy === 'stageSetpiece'
+        && (universe.monsters.length > 0 || universe.bosses.length > 0 || universe.worldBoss)
+        ? universe.stageId ?? stageIdFor(universeIndex)
+        : null;
+      const stage = {
+        id: stableTrialStageId(universe.universe, candidate.encounterId),
+        name: `Épreuve — ${candidate.sourceName}`,
+        displayName: {
+          fr: `Épreuve — ${candidate.sourceName}`,
+          en: `Trial — ${candidate.sourceName}`
+        },
+        universe: universe.universe,
+        mode: 'Smash',
+        originalMode: universe.mode,
+        difficulty: universe.difficulty,
+        bossName: null,
+        encounterId: candidate.encounterId,
+        nC: true,
+        nonCombat: true,
+        finalePolicy: candidate.policy,
+        nonCombatTrial: trial,
+        objectiveType: trial.type,
+        enemyRoster: [],
+        enemyRosterExclusive: true,
+        disableItems: true,
+        disableHazards: true,
+        optionalTrial: true,
+        countsTowardCampaign: false,
+        hybridSetpiece: Boolean(hybridLeadInStageId),
+        requiredLeadInStageId: hybridLeadInStageId || undefined,
+        loreDescription: candidate.policy.objective?.fr,
+        ...trialRewardFor(stageProfile)
+      };
+      return [{ ...stage, ...getStageLoreMetadata(stage) }];
+    });
+  });
+
+  const stages = [...projectedStages, ...dedicatedTrialStages];
+  const seenIds = new Set();
+  for (const stage of stages) {
+    if (seenIds.has(stage.id)) {
+      throw new Error(`[expandedUniverses] duplicate stage ID ${stage.id}`);
+    }
+    seenIds.add(stage.id);
+  }
+  return stages;
 }
 
 export const EXPANDED_STAGE_ID_BY_UNIVERSE = Object.fromEntries(
@@ -4348,6 +4854,13 @@ export const EXPANDED_UNIVERSE_SIGNATURES = Object.fromEntries(
     canonicalStage: universe.stageLoreProfile?.canonicalName,
     monsters: universe.monsters.map(threatName),
     bosses: universe.bosses.map(threatName),
+    encounters: (universe.encounters || []).map(encounter => ({
+      id: encounter.id,
+      name: encounter.name,
+      kind: encounter.kind,
+      nonCombat: true,
+      trialType: encounter.policy?.trialType
+    })),
     gearNames: universe.gear.map(([, enName, frName]) => ({ en: enName, fr: frName })),
     eventName: universe.event ? { en: universe.event[1], fr: universe.event[2] } : null,
     eventDesc: universe.event ? { en: universe.event[3], fr: universe.event[4] } : null
@@ -4375,6 +4888,13 @@ export const EXPANDED_LORE_DB = Object.fromEntries(
     worldBoss: threatName(universe.worldBoss),
     worldBossPolicy: universe.worldBossPolicy || null,
     canonicalStage: universe.stageLoreProfile?.canonicalName,
+    encounters: (universe.encounters || []).map(encounter => ({
+      id: encounter.id,
+      name: encounter.name,
+      kind: encounter.kind,
+      nonCombat: true,
+      policy: encounter.policy
+    })),
     title: universe.title,
     desc: universe.desc,
     narrativeArc: universe.narrativeArc,
@@ -4403,6 +4923,26 @@ export const EXPANDED_ENEMIES_DB = Object.fromEntries(
       };
     }),
     finalePolicy: universe.worldBossPolicy || null,
+    trials: (universe.encounters || []).map(encounter => ({
+      id: encounter.id,
+      name: encounter.name,
+      kind: encounter.kind,
+      nonCombat: true,
+      output: encounter.threat?.output || encounter.threat?.spriteSource,
+      spriteSource: encounter.threat?.spriteSource || encounter.threat?.output,
+      referenceUrl: encounter.threat?.referenceUrl,
+      referenceUrls: encounter.threat?.referenceUrls,
+      visualAnchor: encounter.threat?.visualAnchor,
+      canonStatus: encounter.threat?.canonStatus,
+      spritePrompt: encounter.threat?.spritePrompt,
+      lore: encounter.threat?.lore,
+      policy: encounter.policy,
+      trial: inferNonCombatTrial(encounter.policy, {
+        universe: universe.universe,
+        sourceId: encounter.id,
+        sourceName: encounter.name
+      })
+    })),
     worldBoss: universe.worldBoss ? (() => {
       const enemy = makeEnemy(universe.worldBoss, 0, universe, 4);
       const hasAuthoredStats = typeof universe.worldBoss === 'object';

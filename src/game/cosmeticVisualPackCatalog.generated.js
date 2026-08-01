@@ -4,8 +4,8 @@ export const GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG = Object.freeze([
     universe: "A Nightmare on Elm Street",
     slug: "a-nightmare-on-elm-street",
     hudHeight: 512,
-    portalFile: "portal-effects-atlas.webp",
-    packSha256: "0771f1f66c618a517c490f102813484ea4fb44f945a45a86f0270a51c59d8bcd"
+    portalFile: "portal-effects-atlas-p3.webp",
+    packSha256: "1e6aa036b9d4194c477b001bc0e7e9be71bd2d957309298a66303abd44841221"
   }),
   Object.freeze({
     universe: "Alien",

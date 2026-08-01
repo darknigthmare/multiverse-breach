@@ -1,11 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { CORE_CODEX_ENTRIES, LORE_DB, NARRATIVE_ACTS } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
-import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages } from '../game/expandedUniverses';
+import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages, getResolvedLoreWorldBossPolicy } from '../game/expandedUniverses';
+import { inferNonCombatTrial } from '../game/nonCombatTrial';
 import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
@@ -36,6 +37,10 @@ import FighterMode from './FighterMode';
 import CustomBattleMode from './CustomBattleMode';
 import RegulationImagePreview from './RegulationImagePreview';
 import GameHudThemeLayer from './GameHudThemeLayer';
+import CgGallery from './cg/CgGallery';
+import { autoComposeMissionTeam, evaluateMissionAccess } from '../game/missions/missionAccessRules';
+import { isArcReplayProgressionBypassed } from '../game/missions/missionReplayPolicy';
+import { projectUniverseArcDeploymentPhases } from '../game/missions/missionStageProjection';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
@@ -51,6 +56,46 @@ const getLocalizedText = (entry, lang, fallback = '') => {
   if (!entry) return fallback;
   if (typeof entry === 'string') return entry;
   return entry[lang] || entry.fr || entry.en || fallback;
+};
+
+const getNonCombatStageDetails = (stage, lang) => {
+  const isNonCombat = stage?.nonCombat === true
+    || stage?.nC === true
+    || Boolean(stage?.nonCombatTrial)
+    || stage?.finalePolicy?.nonCombat === true
+    || stage?.finalePolicy?.policy === 'nonCombatFinal';
+  if (!isNonCombat) return null;
+
+  const trial = stage.nonCombatTrial || inferNonCombatTrial(stage.finalePolicy, {
+    stage,
+    universe: stage.universe,
+    sourceId: stage.encounterId || `stage-${stage.id}`,
+    sourceName: stage.name
+  });
+  const fallbackTitle = getLocalizedText(stage.displayName, lang, stage.name || stage.universe);
+  const title = getLocalizedText(trial?.title, lang, getLocalizedText(stage.finalePolicy?.name, lang, fallbackTitle));
+  const objective = getLocalizedText(
+    trial?.objective,
+    lang,
+    getLocalizedText(
+      stage.finalePolicy?.objective,
+      lang,
+      stage.loreDescription || (lang === 'fr' ? `Reussir l epreuve ${title}.` : `Complete the ${title} trial.`)
+    )
+  );
+  return { title, objective };
+};
+
+// Les dossiers privilégient toujours l'illustration propre à la mission. Les
+// profils dynamiques et le décor univers/mode restent des replis OpenAI sûrs.
+const getRiftDossierArtSrc = (stage, fallback = null) => {
+  const profileKey = stage?.stageAssetPlan?.profileKey;
+  return stage?.dossierArt
+    || stage?.stageArt
+    || stage?.image
+    || (profileKey ? getOpenAiBackdropSrc(profileKey, stage?.mode) : null)
+    || getOpenAiBackdropSrc(stage?.universe, stage?.mode)
+    || fallback;
 };
 
 // Gear Shop visuals try the OpenAI item asset first. The compact glyph is only
@@ -301,6 +346,7 @@ function MissionDirectory({
   stages,
   completedStages,
   isStageUnlocked,
+  getMissionDeployment,
   onOpenBriefing,
   onLaunch,
   getStageModifier,
@@ -317,9 +363,11 @@ function MissionDirectory({
   const filteredStages = stages.filter(stage => {
     const completed = completedStages.includes(stage.id);
     const unlocked = isStageUnlocked(stage);
+    const deploymentReady = getMissionDeployment?.(stage).allowed ?? unlocked;
     const statusMatches = statusFilter === 'all'
-      || (statusFilter === 'available' && unlocked && !completed)
+      || (statusFilter === 'available' && deploymentReady && !completed)
       || (statusFilter === 'completed' && completed)
+      || (statusFilter === 'composition' && unlocked && !deploymentReady)
       || (statusFilter === 'locked' && !unlocked);
     if (!statusMatches) return false;
     if (!normalizedQuery) return true;
@@ -339,12 +387,20 @@ function MissionDirectory({
     {
       id: 'available',
       label: { fr: 'OUVERTES', en: 'OPEN' },
-      count: stages.filter(stage => isStageUnlocked(stage) && !completedStages.includes(stage.id)).length
+      count: stages.filter(stage => (getMissionDeployment?.(stage).allowed ?? isStageUnlocked(stage)) && !completedStages.includes(stage.id)).length
     },
     {
       id: 'completed',
       label: { fr: 'STABILISEES', en: 'STABILIZED' },
       count: stages.filter(stage => completedStages.includes(stage.id)).length
+    },
+    {
+      id: 'composition',
+      label: { fr: 'CELLULE', en: 'SQUAD' },
+      count: stages.filter(stage => {
+        const unlocked = isStageUnlocked(stage);
+        return unlocked && !(getMissionDeployment?.(stage).allowed ?? unlocked);
+      }).length
     },
     {
       id: 'locked',
@@ -381,23 +437,28 @@ function MissionDirectory({
           {filteredStages.map(stage => {
             const completed = completedStages.includes(stage.id);
             const unlocked = isStageUnlocked(stage);
-            const backdrop = stage.stageArt
-              || getOpenAiBackdropSrc(stage.universe, stage.mode)
-              || emptyBackdrop
-              || '/images/missions/fusion-rifts.webp';
+            const nonCombatDetails = getNonCombatStageDetails(stage, lang);
+            const deployment = getMissionDeployment?.(stage) || { allowed: unlocked, baseUnlocked: unlocked };
+            const canDeploy = deployment.allowed;
+            const backdrop = getRiftDossierArtSrc(
+              stage,
+              emptyBackdrop || '/images/missions/fusion-rifts.webp'
+            );
             const modifier = getStageModifier(stage);
             const rarity = getLootRarity(stage);
             const stageArc = getStageArc(stage);
             const rewardPreview = getStageRewardPreview(stage) || [];
             const statusLabel = completed
               ? (lang === 'fr' ? 'STABILISEE' : 'STABILIZED')
-              : unlocked
+              : canDeploy
                 ? (lang === 'fr' ? 'OUVERTE' : 'OPEN')
-                : (lang === 'fr' ? 'SCELLEE' : 'SEALED');
+                : unlocked
+                  ? (lang === 'fr' ? 'CELLULE' : 'SQUAD')
+                  : (lang === 'fr' ? 'SCELLEE' : 'SEALED');
             return (
               <article
                 key={stage.id}
-                className={`mission-directory-entry ${completed ? 'is-complete' : ''} ${!unlocked ? 'is-locked' : ''}`}
+                className={`mission-directory-entry ${completed ? 'is-complete' : ''} ${!unlocked ? 'is-locked' : ''} ${unlocked && !canDeploy ? 'is-composition' : ''}`}
               >
                 <div
                   className="mission-directory-art"
@@ -423,7 +484,11 @@ function MissionDirectory({
                     {stageArc && <span style={{ '--tag-color': stageArc.color }}>{getLocalizedText(stageArc.title, lang)}</span>}
                   </div>
                   <div className="mission-directory-meta">
-                    <span>{lang === 'fr' ? 'Menace' : 'Threat'}: <strong>{stage.bossName}</strong></span>
+                    <span>
+                      {nonCombatDetails
+                        ? (lang === 'fr' ? 'Epreuve' : 'Trial')
+                        : (lang === 'fr' ? 'Menace' : 'Threat')}: <strong>{nonCombatDetails?.title || stage.bossName}</strong>
+                    </span>
                     <span>{rewardPreview.slice(0, 2).join(' / ')}</span>
                   </div>
                 </div>
@@ -439,13 +504,17 @@ function MissionDirectory({
                   <button
                     type="button"
                     className="btn-retro mission-directory-launch"
-                    disabled={!unlocked}
+                    disabled={!canDeploy}
                     onClick={() => onLaunch(stage)}
-                    title={unlocked
+                    title={canDeploy
                       ? (lang === 'fr' ? 'Lance cette mission avec l escouade active.' : 'Start this mission with the active squad.')
-                      : (lang === 'fr' ? 'Cette mission est encore scellee.' : 'This mission is still sealed.')}
+                      : (deployment.message?.[lang] || deployment.message?.fr || deployment.message?.en || (lang === 'fr' ? 'Cette mission est encore scellee.' : 'This mission is still sealed.'))}
                   >
-                    {unlocked ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLEE' : 'SEALED')}
+                    {canDeploy
+                      ? getTranslation(lang, 'deploySquad')
+                      : unlocked
+                        ? (lang === 'fr' ? 'CELLULE REQUISE' : 'SQUAD REQUIRED')
+                        : (lang === 'fr' ? 'SCELLEE' : 'SEALED')}
                   </button>
                 </div>
               </article>
@@ -1196,6 +1265,7 @@ const HUB_NAV_GROUPS = [
     title: { fr: 'Lore, chronologie et regulation', en: 'Lore, chronology, and regulation' },
     tabs: [
       { id: 'collection', label: { fr: 'COLLECTION', en: 'COLLECTION' }, title: { fr: 'Inspecte les univers, ennemis, stages et objets archives.', en: 'Inspect archived universes, enemies, stages, and items.' } },
+      { id: 'cgGallery', label: { fr: 'GALERIE CG', en: 'CG GALLERY' }, title: { fr: 'Inspecte les illustrations CG debloquees et leurs references.', en: 'Inspect unlocked CG illustrations and their references.' } },
       { id: 'codex', label: { fr: 'CODEX & LORE', en: 'CODEX & LORE' }, title: { fr: 'Lis le lore du Nexus, des univers et des arcs.', en: 'Read Nexus, universe, and arc lore.' } },
       { id: 'admin', label: { fr: 'REGULATION A.R.C.A.', en: 'A.R.C.A. REGULATION' }, title: { fr: 'Masque ou reactive les univers, stages et assets affiches.', en: 'Hide or restore displayed universes, stages, and assets.' } }
     ]
@@ -1245,15 +1315,22 @@ const getArcUniverses = (arc, allHeroes = []) => {
 };
 
 const getLinkedStagesForArc = (arc, allStages = [], allHeroes = []) => {
-  const arcStage = allStages.find(stage => stage.id === arc?.stageId || stage.universeArc?.id === arc?.id || stage.characterArc?.id === arc?.id || stage.trioArc?.id === arc?.id);
+  const arcStages = allStages
+    .filter(stage => stage.id === arc?.stageId || stage.universeArc?.id === arc?.id || stage.characterArc?.id === arc?.id || stage.trioArc?.id === arc?.id)
+    .sort((left, right) => (left.arcPhaseIndex || 0) - (right.arcPhaseIndex || 0));
+  const finalArcStage = arcStages.find(stage => stage.isArcFinalPhase) || arcStages.at(-1);
+  const preludeArcStages = arcStages.filter(stage => stage !== finalArcStage);
   const universes = new Set(getArcUniverses(arc, allHeroes));
   const worldStages = allStages
     .filter(stage => !stage.finalGameBoss)
     .filter(stage => !stage.universeArc && !stage.characterArc && !stage.trioArc && !stage.fusionMission)
     .filter(stage => universes.has(stage.universe) || stage.sourceUniverses?.some(source => universes.has(source)))
     .sort((a, b) => a.id - b.id);
-  const ordered = [...worldStages.slice(0, Math.max(3, arc?.missions?.length || 3))];
-  if (arcStage && !ordered.some(stage => stage.id === arcStage.id)) ordered.push(arcStage);
+  const ordered = [
+    ...preludeArcStages,
+    ...worldStages
+  ].slice(0, Math.max(3, arc?.missions?.length || 3));
+  if (finalArcStage && !ordered.some(stage => stage.id === finalArcStage.id)) ordered.push(finalArcStage);
   return ordered;
 };
 
@@ -1689,7 +1766,11 @@ function NarrativeArcDetailPage({ lang, arc, stages, completedStages, introDone,
                 <p>{node.text}</p>
                 {node.stage && (
                   <div className="arc-detail-stage">
-                    <span>#{node.stage.id} / {node.stage.mode} / {node.stage.bossName}</span>
+                    <span>
+                      #{node.stage.id} / {node.stage.mode} / {getNonCombatStageDetails(node.stage, lang)
+                        ? `${lang === 'fr' ? 'Epreuve' : 'Trial'}: ${getNonCombatStageDetails(node.stage, lang).title}`
+                        : node.stage.bossName}
+                    </span>
                     <button
                       type="button"
                       className="btn-retro"
@@ -4174,6 +4255,146 @@ function MultiverseRiftMap({
   );
 }
 
+function MissionRequirementPortrait({ hero, label }) {
+  const src = hero ? getHeroSpriteSheetSrc(hero, 'melee') : '';
+  const layout = getSpriteSheetLayout(src);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!src) {
+      setLoaded(false);
+      return undefined;
+    }
+    let cancelled = false;
+    const image = new Image();
+    image.onload = () => { if (!cancelled) setLoaded(true); };
+    image.onerror = () => { if (!cancelled) setLoaded(false); };
+    image.src = src;
+    return () => { cancelled = true; };
+  }, [src]);
+
+  const initials = String(label || '?')
+    .split(/\s+/)
+    .map(part => part[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase();
+
+  return (
+    <span
+      className="mission-requirement-portrait"
+      style={{
+        backgroundImage: loaded ? `url("${src}")` : 'none',
+        backgroundSize: `${layout.columns * 100}% ${layout.rows * 100}%`,
+        backgroundPosition: '0 0',
+        color: hero?.secondaryColor || '#39c5bb'
+      }}
+      aria-hidden="true"
+    >
+      {loaded ? null : <b>{initials}</b>}
+    </span>
+  );
+}
+
+function MissionDeploymentPanel({
+  lang,
+  deployment,
+  onAutoCompose,
+  onOpenRoster,
+  onOpenPortal
+}) {
+  const titleId = useId();
+  if (!deployment?.requiredTeam) return null;
+
+  const message = deployment.message?.[lang]
+    || deployment.message?.fr
+    || deployment.message?.en;
+  const autoComposeLabel = deployment.replayFree
+    ? (lang === 'fr' ? 'REJOUER EN CONDITIONS CANON' : 'REPLAY CANON CONDITIONS')
+    : (lang === 'fr' ? 'COMPOSER AUTOMATIQUEMENT' : 'AUTO-COMPOSE');
+
+  return (
+    <section
+      className={`mission-deployment-panel ${deployment.allowed ? 'is-ready' : 'is-blocked'} ${deployment.replayFree ? 'is-free-replay' : ''}`}
+      aria-labelledby={titleId}
+    >
+      <header>
+        <div>
+          <span>{lang === 'fr' ? 'CELLULE DE DEPLOIEMENT' : 'DEPLOYMENT CELL'}</span>
+          <strong id={titleId} aria-live="polite">{message}</strong>
+        </div>
+        {deployment.replayFree ? (
+          <em>{lang === 'fr' ? 'ARC TERMINE — EQUIPE LIBRE' : 'ARC COMPLETE — FREE TEAM'}</em>
+        ) : (
+          <em>{lang === 'fr' ? 'CONDITIONS PREMIER PARCOURS' : 'FIRST-CLEAR CONDITIONS'}</em>
+        )}
+      </header>
+
+      {deployment.requiredHeroes.length > 0 ? (
+        <div
+          className="mission-requirement-list"
+          role="list"
+          aria-label={lang === 'fr' ? 'Signatures requises' : 'Required signatures'}
+        >
+          {deployment.requiredHeroes.map(requirement => (
+            <div
+              key={`${requirement.heroId}-${requirement.sourceUniverse || ''}`}
+              className={`mission-requirement-card ${requirement.active ? 'is-active' : ''} ${!requirement.owned ? 'is-missing' : ''}`}
+              role="listitem"
+            >
+              <MissionRequirementPortrait hero={requirement.hero} label={requirement.name} />
+              <div>
+                <strong>{requirement.name}</strong>
+                <span>{requirement.sourceUniverse || requirement.hero?.universe || requirement.heroId}</span>
+              </div>
+              <ul>
+                <li className={requirement.owned ? 'ok' : 'bad'}>
+                  {requirement.owned
+                    ? (lang === 'fr' ? 'POSSEDE' : 'OWNED')
+                    : (lang === 'fr' ? 'NON POSSEDE' : 'NOT OWNED')}
+                </li>
+                <li className={requirement.levelReady ? 'ok' : 'bad'}>
+                  {lang === 'fr' ? 'NIV.' : 'LV.'} {requirement.level}/{requirement.requiredLevel}
+                </li>
+                <li className={requirement.active ? 'ok' : 'warn'}>
+                  {requirement.active
+                    ? (lang === 'fr' ? 'ACTIVE' : 'ACTIVE')
+                    : (lang === 'fr' ? 'RESERVE' : 'RESERVE')}
+                </li>
+              </ul>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="mission-deployment-empty">
+          {lang === 'fr'
+            ? 'Aucune signature compatible ne peut etre proposee depuis le roster actuel.'
+            : 'No compatible signature can be proposed from the current roster.'}
+        </p>
+      )}
+
+      <div className="mission-deployment-actions">
+        <button
+          type="button"
+          className="btn-retro mission-auto-compose"
+          onClick={onAutoCompose}
+          disabled={!deployment.baseUnlocked || !deployment.canAutoCompose}
+        >
+          {autoComposeLabel}
+        </button>
+        <button type="button" className="btn-retro" onClick={onOpenRoster}>
+          {lang === 'fr' ? 'OUVRIR LE ROSTER' : 'OPEN ROSTER'}
+        </button>
+        {deployment.hasMissingOwnership ? (
+          <button type="button" className="btn-retro" onClick={onOpenPortal}>
+            {lang === 'fr' ? 'TROUVER LE BOOSTER' : 'FIND BOOSTER'}
+          </button>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
 function RiftBriefingPanel({
   lang,
   stage,
@@ -4188,7 +4409,11 @@ function RiftBriefingPanel({
   getLockedReason,
   getStageRewardPreview,
   getMissionLaunchBrief,
-  getMissionOutcomePreview
+  getMissionOutcomePreview,
+  getMissionDeployment,
+  onAutoCompose,
+  onOpenRoster,
+  onOpenPortal
 }) {
   const [activeSection, setActiveSection] = useState('briefing');
 
@@ -4214,16 +4439,23 @@ function RiftBriefingPanel({
   const modifier = getStageModifier(stage);
   const stageArc = getStageArc(stage);
   const rarity = getLootRarity(stage);
+  const nonCombatDetails = getNonCombatStageDetails(stage, lang);
   const bossIntel = getBossIntel(stage);
   const ocDlcPack = stage.ocDlc ? getOcDlcPackByUniverse(stage.universe) : null;
   const storyBeatLabel = ocDlcPack
     ? `${lang === 'fr' ? 'Scène OC' : 'OC scene'} · ${getLocalizedText(ocDlcPack.actLabel, lang, stage.universe)}`
     : (lang === 'fr' ? 'Scène OC Nexus' : 'Nexus OC scene');
-  const backdrop = getOpenAiBackdropSrc(stage.universe, stage.mode);
+  const backdrop = getRiftDossierArtSrc(stage, '/images/missions/campaign-oc.webp');
   const rewardPreview = getStageRewardPreview ? getStageRewardPreview(stage) : [];
   const launchBrief = getMissionLaunchBrief ? getMissionLaunchBrief(stage) : [];
   const outcomePreview = getMissionOutcomePreview ? getMissionOutcomePreview(stage) : [];
-  const lockedReason = !isUnlocked(stage) && getLockedReason ? getLockedReason(stage) : '';
+  const baseUnlocked = isUnlocked(stage);
+  const deployment = getMissionDeployment
+    ? getMissionDeployment(stage)
+    : { allowed: baseUnlocked, baseUnlocked, requiredTeam: null };
+  const lockedReason = !deployment.allowed
+    ? (deployment.message?.[lang] || deployment.message?.fr || deployment.message?.en || (getLockedReason ? getLockedReason(stage) : ''))
+    : '';
   const richBrief = getRichBreachBrief(stage) || '';
   const richBriefSentences = richBrief
     .split(/(?<=[.!?])\s+(?=[A-ZÀ-ÖØ-Þ0-9])/u)
@@ -4258,8 +4490,10 @@ function RiftBriefingPanel({
     },
     {
       id: 'intel',
-      label: { fr: 'MENACES', en: 'THREATS' },
-      tooltip: { fr: 'Boss, modificateur et prerequis de la faille.', en: 'Rift boss, modifier, and requirements.' }
+      label: nonCombatDetails ? { fr: 'OBJECTIF', en: 'OBJECTIVE' } : { fr: 'MENACES', en: 'THREATS' },
+      tooltip: nonCombatDetails
+        ? { fr: 'Epreuve, objectif et prerequis de la faille.', en: 'Rift trial, objective, and requirements.' }
+        : { fr: 'Boss, modificateur et prerequis de la faille.', en: 'Rift boss, modifier, and requirements.' }
     },
     {
       id: 'rewards',
@@ -4275,10 +4509,10 @@ function RiftBriefingPanel({
         <div
           className="rift-briefing-art"
           style={{
-            backgroundImage: `linear-gradient(rgba(0,0,0,0.04), rgba(0,0,0,0.58)), url(${backdrop || '/images/missions/campaign-oc.webp'})`
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.04), rgba(0,0,0,0.58)), url(${backdrop})`
           }}
         >
-          <span>{isUnlocked(stage) ? (lang === 'fr' ? 'SIGNAL OUVERT' : 'OPEN SIGNAL') : (lang === 'fr' ? 'SIGNAL SCELLE' : 'SEALED SIGNAL')}</span>
+          <span>{baseUnlocked ? (lang === 'fr' ? 'SIGNAL OUVERT' : 'OPEN SIGNAL') : (lang === 'fr' ? 'SIGNAL SCELLE' : 'SEALED SIGNAL')}</span>
         </div>
         <div className="rift-briefing-heading">
           <div className="portal-focus-kicker">
@@ -4335,9 +4569,11 @@ function RiftBriefingPanel({
         {activeSection === 'intel' && (
           <div className="rift-intel-grid">
             <section>
-              <span>{lang === 'fr' ? 'MENACE PRINCIPALE' : 'PRIMARY THREAT'}</span>
-              <strong>{bossIntel?.name || stage.bossName}</strong>
-              <p>{bossIntel?.special || (lang === 'fr' ? 'Anomalie non cataloguee.' : 'Uncatalogued anomaly.')}</p>
+              <span>{nonCombatDetails
+                ? (lang === 'fr' ? 'OBJECTIF' : 'OBJECTIVE')
+                : (lang === 'fr' ? 'MENACE PRINCIPALE' : 'PRIMARY THREAT')}</span>
+              <strong>{nonCombatDetails?.title || bossIntel?.name || stage.bossName}</strong>
+              <p>{nonCombatDetails?.objective || bossIntel?.special || (lang === 'fr' ? 'Anomalie non cataloguee.' : 'Uncatalogued anomaly.')}</p>
             </section>
             <section>
               <span>{lang === 'fr' ? 'REGLE DE FAILLE' : 'RIFT RULE'}</span>
@@ -4377,17 +4613,29 @@ function RiftBriefingPanel({
         )}
       </div>
 
+      <MissionDeploymentPanel
+        lang={lang}
+        deployment={deployment}
+        onAutoCompose={() => onAutoCompose(stage)}
+        onOpenRoster={onOpenRoster}
+        onOpenPortal={onOpenPortal}
+      />
+
       <div className="rift-briefing-actions">
         <button
           data-testid="selected-briefing-deploy"
           onClick={() => onLaunch(stage)}
-          disabled={!isUnlocked(stage)}
+          disabled={!deployment.allowed}
           className="btn-retro"
-          title={isUnlocked(stage)
+          title={deployment.allowed
             ? (lang === 'fr' ? 'Lance la mission affichee avec l escouade active.' : 'Start the displayed mission with the active squad.')
-            : (lang === 'fr' ? 'Mission verrouillee: consulte les prerequis dans Menaces.' : 'Mission locked: review requirements under Threats.')}
+            : lockedReason}
         >
-          {isUnlocked(stage) ? getTranslation(lang, 'deploySquad') : (lang === 'fr' ? 'SCELLEE' : 'SEALED')}
+          {deployment.allowed
+            ? getTranslation(lang, 'deploySquad')
+            : baseUnlocked
+              ? (lang === 'fr' ? 'CELLULE REQUISE' : 'SQUAD REQUIRED')
+              : (lang === 'fr' ? 'SCELLEE' : 'SEALED')}
         </button>
         <button
           onClick={onClose}
@@ -4413,6 +4661,8 @@ export default function HubScreen({
   heroLevels, setHeroLevels,
   activeTeam, setActiveTeam,
   completedStages,
+  completedArcIds = [],
+  arcReplayUnlockedIds = [],
   campaignProgress = null,
   onReplayEnding,
   inventory, setInventory,
@@ -4668,6 +4918,15 @@ export default function HubScreen({
     )),
     [ALL_HEROES_DB, isUniverseVisible, isAssetDisabled, playerHero.id]
   );
+  const missionHeroById = useMemo(
+    () => new Map(ALL_HEROES_DB.map(hero => [hero.id, hero])),
+    [ALL_HEROES_DB]
+  );
+  const ownedMissionHeroIds = useMemo(
+    () => new Set([playerHero.id, ...unlockedHeroes, ...activeTeam]),
+    [activeTeam, playerHero.id, unlockedHeroes]
+  );
+  const activeMissionHeroIds = useMemo(() => new Set(activeTeam), [activeTeam]);
   const ALL_UNIVERSE_KEYS = Object.keys(LORE_DB);
   const DLC_UNIVERSE_KEYS = ALL_UNIVERSE_KEYS.filter(universe => !isBaseGameUniverse(universe));
 
@@ -4777,7 +5036,7 @@ export default function HubScreen({
     { id: 4, name: 'Val Verde Jungle Temple', universe: 'Predator', mode: 'RPG', difficulty: 'Easy', goldPrize: 50, shardPrize: 20, bossName: 'Bad Blood Alpha' },
     { id: 5, name: 'Raccoon City Police Dept', universe: 'Resident Evil', mode: 'Tactics', difficulty: 'Easy', goldPrize: 50, shardPrize: 20, bossName: 'Super Tyrant' },
     { id: 6, name: 'Toluca Lake Fog Sector', universe: 'Silent Hill', mode: 'RPG', difficulty: 'Medium', goldPrize: 60, shardPrize: 20, bossName: 'The God' },
-    { id: 7, name: 'Ibis Dinosaur Facility', universe: 'Dino Crisis', mode: 'Smash', difficulty: 'Medium', goldPrize: 65, shardPrize: 25, bossName: 'Spinosaurus' },
+    { id: 7, name: 'Edward City Missile Silo', universe: 'Dino Crisis', mode: 'Smash', difficulty: 'Medium', goldPrize: 65, shardPrize: 25, bossName: 'Giganotosaurus' },
     { id: 8, name: 'Zion Digital Pipeline', universe: 'The Matrix', mode: 'Tactics', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Deus Ex Machina' },
     { id: 9, name: 'Abydos Pyramids Breach', universe: 'Stargate', mode: 'RPG', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Anubis Flagship Nexus' },
     { id: 10, name: 'Anomalous Materials Lab', universe: 'Half-Life', mode: 'Smash', difficulty: 'Medium', goldPrize: 75, shardPrize: 25, bossName: 'Combine Strider' },
@@ -4813,7 +5072,31 @@ export default function HubScreen({
     
     // 38th final stage
     { id: 38, name: 'Final Omniverse Singularity', universe: 'Matrix', mode: 'RPG', difficulty: 'Final World Boss', goldPrize: 500, shardPrize: 150, bossName: 'Breach Singularity Core', metaStage: true, finalGameBoss: true, dlcStage: true }
-  ];
+  ].map(stage => {
+    const finalePolicy = getResolvedLoreWorldBossPolicy(stage.universe);
+    if (!finalePolicy || stage.finalGameBoss || stage.tutorial) return stage;
+    const nonCombatTrial = inferNonCombatTrial(finalePolicy, {
+      universe: stage.universe,
+      sourceId: `legacy-stage-${stage.id}`,
+      sourceName: stage.name
+    });
+    if (!nonCombatTrial) return stage;
+    return {
+      ...stage,
+      originalMode: stage.mode,
+      mode: 'Smash',
+      bossName: null,
+      nonCombat: true,
+      finalePolicy,
+      nonCombatTrial,
+      objectiveType: nonCombatTrial.type,
+      enemyRoster: [],
+      enemyRosterExclusive: true,
+      disableItems: true,
+      disableHazards: true,
+      loreDescription: finalePolicy.objective?.fr
+    };
+  });
   const FUSION_STAGES = FUSION_MISSIONS.map(mission => ({
     id: mission.stageId,
     name: mission.title.en,
@@ -4829,7 +5112,12 @@ export default function HubScreen({
     unlockClears: mission.unlockClears,
     rewardItemId: mission.itemId,
     rewardItemName: mission.item,
-    fusionMission: mission
+    fusionMission: mission,
+    requiredTeam: {
+      type: 'sources',
+      sourceUniverses: mission.universes,
+      arcId: mission.id
+    }
   }));
   const CHARACTER_STAGES = CHARACTER_NARRATIVE_ARCS.map(arc => ({
     id: arc.stageId,
@@ -4844,25 +5132,53 @@ export default function HubScreen({
     bossName: arc.bossName,
     rewardItemId: arc.rewardItemId,
     rewardItemName: arc.reward,
-    characterArc: arc
+    characterArc: arc,
+    requiredTeam: {
+      type: 'character',
+      heroId: arc.heroId,
+      allowAnchor: arc.allowAnchor === true,
+      arcId: arc.id
+    }
   }));
-  const UNIVERSE_ARC_STAGES = UNIVERSE_NARRATIVE_ARCS.map((arc, index) => ({
-    id: 40000 + index,
-    name: arc.title.en,
-    displayName: arc.title,
-    universe: arc.universes[0],
-    sourceUniverses: arc.universes,
-    mode: ['RPG', 'Tactics', 'Smash'][index % 3],
-    difficulty: 'Universe Arc',
-    goldPrize: 180 + index * 20,
-    shardPrize: 75 + index * 10,
-    tokenPrize: 3,
-    bossName: arc.bossName || `${arc.title.fr} Core`,
-    rewardItemId: `universe_arc_${arc.id}`,
-    rewardItemName: arc.reward,
-    universeArc: arc,
-    unlockClears: 4 + index * 2
-  }));
+  const UNIVERSE_ARC_STAGES = UNIVERSE_NARRATIVE_ARCS.flatMap((arc, index) => (
+    projectUniverseArcDeploymentPhases(arc, index).map(phase => {
+      const isPrelude = phase.arcPhaseCount > 1 && !phase.isArcFinalPhase;
+      const phaseLabel = `${phase.arcPhaseIndex + 1}/${phase.arcPhaseCount}`;
+      return {
+        id: phase.runtimeStageId,
+        name: isPrelude ? `${arc.title.en} - Deployment ${phaseLabel}` : arc.title.en,
+        displayName: isPrelude
+          ? {
+              fr: `${arc.title.fr} - Deploiement ${phaseLabel}`,
+              en: `${arc.title.en} - Deployment ${phaseLabel}`
+            }
+          : arc.title,
+        universe: phase.sourceUniverses[0],
+        sourceUniverses: phase.sourceUniverses,
+        allSourceUniverses: phase.allSourceUniverses,
+        mode: ['RPG', 'Tactics', 'Smash'][index % 3],
+        difficulty: phase.arcPhaseCount > 1 ? `Universe Arc ${phaseLabel}` : 'Universe Arc',
+        goldPrize: isPrelude ? Math.max(60, Math.round((180 + index * 20) * 0.25)) : 180 + index * 20,
+        shardPrize: isPrelude ? Math.max(25, Math.round((75 + index * 10) * 0.25)) : 75 + index * 10,
+        tokenPrize: isPrelude ? 1 : 3,
+        bossName: isPrelude ? `${arc.title.en} Phase Gate` : (arc.bossName || `${arc.title.fr} Core`),
+        ...(phase.isArcFinalPhase
+          ? {
+              rewardItemId: `universe_arc_${arc.id}`,
+              rewardItemName: arc.reward
+            }
+          : {}),
+        universeArc: phase.universeArc,
+        requiredTeam: phase.requiredTeam,
+        arcId: phase.arcId,
+        arcPhaseIndex: phase.arcPhaseIndex,
+        arcPhaseCount: phase.arcPhaseCount,
+        isArcFinalPhase: phase.isArcFinalPhase,
+        previousArcStageId: phase.previousArcStageId,
+        unlockClears: 4 + index * 2
+      };
+    })
+  ));
   const TRIO_STAGES = TRIO_NARRATIVE_ARCS.map(arc => ({
     id: arc.stageId,
     name: arc.title.en,
@@ -4877,7 +5193,12 @@ export default function HubScreen({
     bossName: arc.bossName,
     rewardItemId: arc.rewardItemId,
     rewardItemName: arc.reward,
-    trioArc: arc
+    trioArc: arc,
+    requiredTeam: {
+      type: 'exact',
+      heroIds: arc.heroIds,
+      arcId: arc.id
+    }
   }));
   const insertBeforeMetaStage = (entries) => {
     const index = STAGES.findIndex(stage => stage.finalGameBoss);
@@ -4890,7 +5211,8 @@ export default function HubScreen({
   insertBeforeMetaStage(CHARACTER_STAGES);
   insertBeforeMetaStage(TRIO_STAGES);
   const isStageVisibleByAdmin = (stage) => {
-    if (stage.sourceUniverses) return stage.sourceUniverses.every(isUniverseVisible);
+    const sourceUniverses = stage.allSourceUniverses || stage.sourceUniverses;
+    if (sourceUniverses) return sourceUniverses.every(isUniverseVisible);
     return isUniverseVisible(stage.universe);
   };
   const ADMIN_VISIBLE_STAGES = STAGES.filter(stage => isStageVisibleByAdmin(stage) && !isAssetDisabled('stages', getStageAdminKey(stage)));
@@ -5799,6 +6121,12 @@ export default function HubScreen({
         : `${lockLabel}: complete ${requiredMissionName} first (${stabilizedPrevious}/${previousMissions.length} previous operations stabilized).`;
     }
 
+    if (stage.requiredLeadInStageId && !completedStages.includes(stage.requiredLeadInStageId)) {
+      return lang === 'fr'
+        ? `Épreuve hybride scellée : termine d abord la phase hostile #${stage.requiredLeadInStageId}.`
+        : `Hybrid trial sealed: complete hostile phase #${stage.requiredLeadInStageId} first.`;
+    }
+
     const required = getStageRequiredClears(stage);
     const missing = Math.max(0, required - completedStages.length);
     const baseText = required > 0
@@ -6361,9 +6689,12 @@ export default function HubScreen({
   );
   const getUniverseArcRosterStatus = (stage) => {
     const universes = stage.sourceUniverses?.length ? stage.sourceUniverses : [stage.universe];
+    const usesSourceRepresentatives = universes.length > 1 || stage.requiredTeam?.type === 'sources';
     const candidates = universes.map(universe => {
       const universeHeroes = HEROES_DB.filter(hero => hero.universe === universe);
-      const requiredCount = Math.min(ARC_UNLOCK_RULES.universeMinHeroes, Math.max(1, universeHeroes.length));
+      const requiredCount = usesSourceRepresentatives
+        ? 1
+        : Math.min(ARC_UNLOCK_RULES.universeMinHeroes, Math.max(1, universeHeroes.length));
       const readyHeroes = universeHeroes.filter(hero => unlockedHeroes.includes(hero.id) && getHeroLevelValue(hero.id) >= ARC_UNLOCK_RULES.universeMinLevel);
       return {
         universe,
@@ -6373,6 +6704,16 @@ export default function HubScreen({
         ready: readyHeroes.length >= requiredCount
       };
     });
+    if (usesSourceRepresentatives) {
+      return {
+        universe: universes.join(' / '),
+        requiredCount: candidates.length,
+        readyCount: candidates.filter(candidate => candidate.ready).length,
+        totalCount: candidates.reduce((total, candidate) => total + candidate.totalCount, 0),
+        ready: candidates.length > 0 && candidates.every(candidate => candidate.ready),
+        candidates
+      };
+    }
     const readyCandidate = candidates.find(candidate => candidate.ready);
     return readyCandidate || candidates.sort((a, b) => b.readyCount - a.readyCount)[0] || {
       universe: stage.universe,
@@ -6391,9 +6732,12 @@ export default function HubScreen({
       ready: heroIds.length > 0 && readyHeroIds.length === heroIds.length
     };
   };
-  const getStageForNarrativeArc = (arc) => (
-    ADMIN_VISIBLE_STAGES.find(stage => stage.universeArc?.id === arc?.id || stage.characterArc?.id === arc?.id || stage.trioArc?.id === arc?.id)
-  );
+  const getStageForNarrativeArc = (arc) => {
+    const matchingStages = ADMIN_VISIBLE_STAGES
+      .filter(stage => stage.universeArc?.id === arc?.id || stage.characterArc?.id === arc?.id || stage.trioArc?.id === arc?.id)
+      .sort((left, right) => (left.arcPhaseIndex || 0) - (right.arcPhaseIndex || 0));
+    return matchingStages.find(stage => !completedStages.includes(stage.id)) || matchingStages.at(-1);
+  };
   const getArcUnlockRequirementText = (stage) => {
     const clearRequirement = getStageRequiredClears(stage);
     const clearText = clearRequirement > 0
@@ -6422,7 +6766,18 @@ export default function HubScreen({
       const rosterText = lang === 'fr'
         ? `Condition univers: ${roster.readyCount}/${roster.requiredCount} heros ${roster.universe} niveau ${ARC_UNLOCK_RULES.universeMinLevel}+ possedes.`
         : `Universe condition: ${roster.readyCount}/${roster.requiredCount} ${roster.universe} heroes level ${ARC_UNLOCK_RULES.universeMinLevel}+ owned.`;
-      return [rosterText, sourceText, clearText].filter(Boolean).join(' ');
+      const bypassesProjectedArcPhase = isArcReplayProgressionBypassed(stage, {
+        completedArcIds,
+        arcReplayUnlockedIds
+      });
+      const previousPhaseText = stage.previousArcStageId
+        && !completedStages.includes(stage.previousArcStageId)
+        && !bypassesProjectedArcPhase
+        ? (lang === 'fr'
+          ? `Phase precedente requise: mission #${stage.previousArcStageId}.`
+          : `Previous phase required: mission #${stage.previousArcStageId}.`)
+        : null;
+      return [previousPhaseText, rosterText, sourceText, clearText].filter(Boolean).join(' ');
     }
 
     if (stage.trioArc) {
@@ -6454,6 +6809,21 @@ export default function HubScreen({
         : [];
       return requiredStages.every(stageId => completedStages.includes(stageId));
     }
+    if (stage.requiredLeadInStageId && !completedStages.includes(stage.requiredLeadInStageId)) {
+      return false;
+    }
+    const bypassesProjectedArcPhase = isArcReplayProgressionBypassed(stage, {
+      completedArcIds,
+      arcReplayUnlockedIds
+    });
+    // Une sauvegarde legacy peut ne contenir que l'ancien final de l'arc.
+    // On saute uniquement la nouvelle dependance de phase : les conditions
+    // de clears, possession et niveau restent l'autorite de base du replay.
+    if (
+      stage.previousArcStageId
+      && !completedStages.includes(stage.previousArcStageId)
+      && !bypassesProjectedArcPhase
+    ) return false;
     const baseUnlocked = completedStages.length >= getStageRequiredClears(stage);
     if (!baseUnlocked) return false;
     if (stage.characterArc) {
@@ -6470,6 +6840,147 @@ export default function HubScreen({
     }
     if (stage.fusionMission) return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
     return true;
+  };
+  const getMissionHeroLevelRequirement = (stage) => {
+    if (stage.characterArc) return getPersonalArcLevelRequirement(stage.characterArc);
+    if (stage.trioArc || stage.requiredTeam?.type === 'exact') return ARC_UNLOCK_RULES.trioMinLevel;
+    if (stage.universeArc || stage.requiredTeam?.type === 'universe') return ARC_UNLOCK_RULES.universeMinLevel;
+    return 1;
+  };
+  const getMissionDeployment = (stage) => {
+    const baseUnlocked = isStageUnlocked(stage);
+    const baseMessage = baseUnlocked ? '' : getLockedReason(stage);
+    const requiredHeroLevel = getMissionHeroLevelRequirement(stage);
+    const eligibleHeroIds = [...ownedMissionHeroIds].filter(heroId => (
+      requiredHeroLevel <= 1 || getHeroLevelValue(heroId) >= requiredHeroLevel
+    ));
+    const deployment = evaluateMissionAccess(stage, {
+      heroDb: HEROES_DB,
+      activeTeam,
+      ownedHeroIds: ownedMissionHeroIds,
+      eligibleHeroIds,
+      completedArcIds,
+      arcReplayUnlockedIds,
+      maxTeamSize: 3,
+      baseAccess: baseUnlocked
+        ? true
+        : {
+            allowed: false,
+            message: { fr: baseMessage, en: baseMessage }
+          }
+    });
+    const rule = deployment.requiredTeam;
+    if (!rule) return { ...deployment, baseUnlocked, requiredHeroes: [], hasMissingOwnership: false };
+
+    const rankCandidates = (universe) => HEROES_DB
+      .filter(hero => hero.playable !== false && hero.id !== playerHero.id && (!universe || hero.universe === universe))
+      .sort((left, right) => {
+        const levelDelta = Number(getHeroLevelValue(right.id) >= requiredHeroLevel)
+          - Number(getHeroLevelValue(left.id) >= requiredHeroLevel);
+        if (levelDelta) return levelDelta;
+        const activeDelta = Number(activeMissionHeroIds.has(right.id)) - Number(activeMissionHeroIds.has(left.id));
+        if (activeDelta) return activeDelta;
+        const ownedDelta = Number(ownedMissionHeroIds.has(right.id)) - Number(ownedMissionHeroIds.has(left.id));
+        return ownedDelta || left.id.localeCompare(right.id, 'en');
+      });
+    const requirements = [];
+    const addRequirement = (heroId, sourceUniverse = '') => {
+      const hero = missionHeroById.get(heroId) || null;
+      requirements.push({ heroId, hero, sourceUniverse });
+    };
+
+    if (rule.type === 'character') {
+      addRequirement(rule.heroId);
+    } else if (rule.type === 'exact') {
+      rule.heroIds.forEach(heroId => addRequirement(heroId));
+    } else if (rule.type === 'universe') {
+      const candidates = rankCandidates(rule.universe);
+      const requiredCount = Number.isInteger(rule.minCount)
+        ? rule.minCount
+        : Math.min(3, candidates.length);
+      candidates.slice(0, requiredCount).forEach(hero => addRequirement(hero.id, rule.universe));
+    } else if (rule.type === 'sources') {
+      rule.sourceUniverses.forEach(sourceUniverse => {
+        const candidate = rankCandidates(sourceUniverse)[0];
+        addRequirement(candidate?.id || `source:${sourceUniverse}`, sourceUniverse);
+      });
+    }
+
+    const requiredLevel = requiredHeroLevel;
+    const requiredHeroes = requirements.map(requirement => {
+      const owned = Boolean(requirement.hero && ownedMissionHeroIds.has(requirement.heroId));
+      const level = owned ? getHeroLevelValue(requirement.heroId) : 0;
+      return {
+        ...requirement,
+        name: getLocalizedText(
+          requirement.hero?.name,
+          lang,
+          requirement.sourceUniverse || requirement.heroId
+        ),
+        owned,
+        active: activeMissionHeroIds.has(requirement.heroId),
+        level,
+        requiredLevel,
+        levelReady: owned && level >= requiredLevel
+      };
+    });
+
+    return {
+      ...deployment,
+      baseUnlocked,
+      requiredHeroes,
+      hasMissingOwnership: requiredHeroes.some(requirement => !requirement.owned)
+    };
+  };
+  const autoComposeStageTeam = (stage) => {
+    const deployment = getMissionDeployment(stage);
+    if (!deployment.baseUnlocked || !deployment.canAutoCompose) {
+      notifyNexus(
+        deployment.message?.[lang] || deployment.message?.fr || deployment.message?.en,
+        'warn'
+      );
+      sound.playSfx('click');
+      return;
+    }
+    const composition = autoComposeMissionTeam(stage, {
+      heroDb: HEROES_DB,
+      activeTeam,
+      ownedHeroIds: ownedMissionHeroIds,
+      eligibleHeroIds: [...ownedMissionHeroIds].filter(heroId => (
+        getMissionHeroLevelRequirement(stage) <= 1
+        || getHeroLevelValue(heroId) >= getMissionHeroLevelRequirement(stage)
+      )),
+      maxTeamSize: 3
+    });
+    if (!composition.composed || composition.team.length === 0) {
+      notifyNexus(
+        lang === 'fr'
+          ? 'Composition impossible avec les signatures possedees.'
+          : 'Cannot compose a team from owned signatures.',
+        'warn'
+      );
+      sound.playSfx('click');
+      return;
+    }
+    setActiveTeam(composition.team);
+    notifyNexus(
+      deployment.replayFree
+        ? (lang === 'fr' ? 'Conditions canon restaurees.' : 'Canonical conditions restored.')
+        : (lang === 'fr' ? 'Cellule canon composee automatiquement.' : 'Canonical cell auto-composed.'),
+      'success'
+    );
+    sound.playSfx('confirm');
+  };
+  const openMissionRoster = () => {
+    setBriefingStageId(null);
+    setActiveTab('roster');
+    setMediaFilter('all');
+    sound.playSfx('click');
+  };
+  const openMissionBooster = () => {
+    setBriefingStageId(null);
+    sound.playSfx('click');
+    onGoToPortal();
   };
   const isNarrativeArcAvailable = (arc) => {
     const stage = getStageForNarrativeArc(arc);
@@ -6536,6 +7047,12 @@ export default function HubScreen({
     };
   };
   const getBreachBrief = (stage) => {
+    const nonCombatDetails = getNonCombatStageDetails(stage, lang);
+    if (nonCombatDetails) {
+      return lang === 'fr'
+        ? `Epreuve ${nonCombatDetails.title}. Objectif: ${nonCombatDetails.objective}`
+        : `${nonCombatDetails.title} trial. Objective: ${nonCombatDetails.objective}`;
+    }
     if (stage.storyBeat) {
       const title = stage.displayName?.[lang] || stage.name;
       return lang === 'fr'
@@ -6576,13 +7093,26 @@ export default function HubScreen({
   };
 
   const getStageModifier = (stage) => {
+    const nonCombatDetails = getNonCombatStageDetails(stage, lang);
+    if (nonCombatDetails) {
+      return {
+        id: 'trial_contract',
+        name: { fr: 'Règle d épreuve', en: 'Trial rule' },
+        desc: {
+          fr: `Aucun adversaire ni barre de vie : accomplir « ${nonCombatDetails.objective} »`,
+          en: `No opponent or health bar: complete “${nonCombatDetails.objective}”`
+        },
+        reward: 1,
+        color: '#39c5bb'
+      };
+    }
     if (UNIVERSE_MODIFIERS[stage.universe]) return UNIVERSE_MODIFIERS[stage.universe];
     const index = Math.abs(Math.floor((stage.id * 17 + missionSeed) % BREACH_MODIFIERS.length));
     return BREACH_MODIFIERS[index];
   };
 
   const getRichBreachBrief = (stage) => {
-    if (stage.trioArc || stage.universeArc) return getBreachBrief(stage);
+    if (getNonCombatStageDetails(stage, lang) || stage.trioArc || stage.universeArc) return getBreachBrief(stage);
     return getStageLoreDescription({
       stage,
       lang,
@@ -6603,6 +7133,7 @@ export default function HubScreen({
 
   const getStageTokenPrize = (stage) => {
     if (Number.isFinite(stage?.tokenPrize)) return stage.tokenPrize;
+    if (getNonCombatStageDetails(stage, lang)) return 0;
     if (stage.finalGameBoss) return 20;
     if (stage.isSurvival) return 3;
     return stage.id % 2 === 0 ? 5 : 0;
@@ -6644,6 +7175,13 @@ export default function HubScreen({
         short: lang === 'fr' ? 'BLOQUEE' : 'LOCKED'
       };
     }
+    if (!getMissionDeployment(stage).allowed) {
+      return {
+        id: 'composition',
+        label: lang === 'fr' ? 'Cellule requise' : 'Squad required',
+        short: lang === 'fr' ? 'COMPOSER' : 'COMPOSE'
+      };
+    }
     const required = getStageRequiredClears(stage);
     return {
       id: required > 0 ? 'available' : 'new',
@@ -6659,7 +7197,10 @@ export default function HubScreen({
   const getMissionLaunchBrief = (stage) => {
     const modifier = getStageModifier(stage);
     const source = stage.sourceUniverses?.join(' / ') || stage.universe;
-    const modeText = stage.mode === 'RPG'
+    const nonCombatDetails = getNonCombatStageDetails(stage, lang);
+    const modeText = nonCombatDetails
+      ? (lang === 'fr' ? 'résolution interactive sans adversaire' : 'interactive objective with no opponent')
+      : stage.mode === 'RPG'
       ? (lang === 'fr' ? 'progression RPG en profondeur' : 'deep RPG progression')
       : stage.mode === 'Tactics'
         ? (lang === 'fr' ? 'lecture tactique du terrain' : 'tactical field reading')
@@ -6669,23 +7210,36 @@ export default function HubScreen({
         ? `A.R.C.A. ouvre une fenetre ${stage.mode} sur ${source}: ${modeText}.`
         : `A.R.C.A. opens a ${stage.mode} window on ${source}: ${modeText}.`,
       lang === 'fr'
-        ? `Objectif lore: neutraliser ${stage.bossName} sans laisser le Sans-Auteur effacer la scene d origine.`
-        : `Lore objective: neutralize ${stage.bossName} before the Authorless erases the origin scene.`,
+        ? (nonCombatDetails
+          ? `Objectif lore - ${nonCombatDetails.title}: ${nonCombatDetails.objective}`
+          : `Objectif lore: neutraliser ${stage.bossName} sans laisser le Sans-Auteur effacer la scene d origine.`)
+        : (nonCombatDetails
+          ? `Lore objective - ${nonCombatDetails.title}: ${nonCombatDetails.objective}`
+          : `Lore objective: neutralize ${stage.bossName} before the Authorless erases the origin scene.`),
       lang === 'fr'
-        ? `Anomalie active: ${modifier.name[lang]} modifie les regles de terrain.`
-        : `Active anomaly: ${modifier.name[lang]} alters the field rules.`
+        ? (nonCombatDetails
+          ? `Règle active: ${modifier.desc.fr}`
+          : `Anomalie active: ${modifier.name[lang]} modifie les regles de terrain.`)
+        : (nonCombatDetails
+          ? `Active rule: ${modifier.desc.en}`
+          : `Active anomaly: ${modifier.name[lang]} alters the field rules.`)
     ];
   };
 
   const getMissionOutcomePreview = (stage) => {
     const traceName = stage.rewardItemName?.[lang] || stage.rewardItemName?.en || null;
+    const nonCombatDetails = getNonCombatStageDetails(stage, lang);
     const recruitName = stage.rewardHeroId
       ? getLocalizedText(stage.rewardHeroName, lang, stage.rewardHeroId)
       : null;
     return [
       lang === 'fr'
-        ? 'Victoire: la coordonnee est scellee, le journal A.R.C.A. archive la consequence et la progression long terme avance.'
-        : 'Victory: the coordinate is sealed, the A.R.C.A. journal records the consequence, and long-term progression advances.',
+        ? (nonCombatDetails
+          ? `Victoire: epreuve ${nonCombatDetails.title} reussie, objectif valide et coordonnee scellee dans le journal A.R.C.A.`
+          : 'Victoire: la coordonnee est scellee, le journal A.R.C.A. archive la consequence et la progression long terme avance.')
+        : (nonCombatDetails
+          ? `Victory: ${nonCombatDetails.title} trial completed, objective validated, and coordinate sealed in the A.R.C.A. journal.`
+          : 'Victory: the coordinate is sealed, the A.R.C.A. journal records the consequence, and long-term progression advances.'),
       traceName
         ? (lang === 'fr' ? `Trace possible: ${traceName}.` : `Possible trace: ${traceName}.`)
         : (lang === 'fr' ? 'Trace possible: relique de terrain liee a l univers actif.' : 'Possible trace: field relic tied to the active universe.'),
@@ -6695,8 +7249,12 @@ export default function HubScreen({
           : `First victory: ${recruitName} joins Cell ZERO.`)
         : null,
       lang === 'fr'
-        ? 'Defaite: donnees de contact conservees, adaptation defensive sur la prochaine tentative et instabilite douce de l equipe.'
-        : 'Defeat: contact data is kept, defensive adaptation applies to the next attempt, and the team suffers soft instability.'
+        ? (nonCombatDetails
+          ? `Defaite: epreuve ${nonCombatDetails.title} inachevee, objectif conserve pour la prochaine tentative.`
+          : 'Defaite: donnees de contact conservees, adaptation defensive sur la prochaine tentative et instabilite douce de l equipe.')
+        : (nonCombatDetails
+          ? `Defeat: ${nonCombatDetails.title} trial incomplete; its objective is kept for the next attempt.`
+          : 'Defeat: contact data is kept, defensive adaptation applies to the next attempt, and the team suffers soft instability.')
     ].filter(Boolean);
   };
 
@@ -6710,7 +7268,7 @@ export default function HubScreen({
       + (completedStages.includes(stage.id) ? -80 : 0);
   };
 
-  const prepareStage = (stage) => {
+  const prepareStage = (stage, missionDeployment = null) => {
     const modifier = getStageModifier(stage);
     const rarity = getLootRarity(stage);
     const rewardFactor = modifier.reward || 1;
@@ -6725,17 +7283,29 @@ export default function HubScreen({
       shardPrize: Math.round(stage.shardPrize * rewardFactor),
       tokenPrize: getStageTokenPrize(stage),
       launchBrief: getMissionLaunchBrief(stage),
-      outcomePreview: getMissionOutcomePreview(stage)
+      outcomePreview: getMissionOutcomePreview(stage),
+      missionDeployment: missionDeployment
+        ? {
+            allowed: missionDeployment.allowed,
+            replayFree: missionDeployment.replayFree,
+            arcId: missionDeployment.arcId,
+            canonicalTeamRequired: missionDeployment.canonicalTeamRequired
+          }
+        : null
     };
   };
 
   const launchStage = (stage) => {
-    if (!isStageUnlocked(stage)) {
-      notifyNexus(getLockedReason(stage), 'warn');
+    const deployment = getMissionDeployment(stage);
+    if (!deployment.allowed) {
+      notifyNexus(
+        deployment.message?.[lang] || deployment.message?.fr || deployment.message?.en || getLockedReason(stage),
+        'warn'
+      );
       sound.playSfx('click');
       return;
     }
-    onLaunchStage(prepareStage(stage));
+    onLaunchStage(prepareStage(stage, deployment));
   };
 
   const _launchSurvival = () => {
@@ -7206,6 +7776,7 @@ export default function HubScreen({
   };
 
   const getBossIntel = (stage) => {
+    if (getNonCombatStageDetails(stage, lang)) return null;
     if (stage.finalGameBoss) return getFinalGameBoss();
     const universeEnemies = ENEMIES_DB[stage.universe] || {};
     if (stage.ocDlc && stage.bossName) {
@@ -7426,6 +7997,7 @@ export default function HubScreen({
   };
   const missionCategoryFilter = (stage) => {
     if (missionScreen === 'ocDlc') return Boolean(stage.ocDlc);
+    if (missionScreen === 'trials') return Boolean(stage.nonCombatTrial || stage.nonCombat || stage.nC);
     if (missionScreen === 'originalWorlds') {
       return stage.campaignDependency === 'originalCampaign';
     }
@@ -7442,6 +8014,7 @@ export default function HubScreen({
   const personalArcMissionCount = visibleStages.filter(stage => stage.characterArc && isPersonalArcVisibleForRoster(stage)).length;
   const trioArcMissionCount = visibleStages.filter(isTrioArcVisibleForRoster).length;
   const fusionMissionCount = visibleStages.filter(stage => stage.fusionMission).length;
+  const trialMissionCount = visibleStages.filter(stage => stage.nonCombatTrial || stage.nonCombat || stage.nC).length;
   const ocDlcMissionCount = OC_DLC_PACKS.reduce((total, pack) => total + pack.missions.length, 0);
   const originalWorldMissionCount = visibleStages.filter(
     stage => stage.campaignDependency === 'originalCampaign'
@@ -7509,6 +8082,16 @@ export default function HubScreen({
       count: fusionMissionCount,
       color: '#ff5f7e',
       image: '/images/missions/fusion-rifts.webp'
+    },
+    trials: {
+      label: { fr: 'Épreuves sans combat', en: 'Non-combat trials' },
+      desc: {
+        fr: 'Objectifs de précision, observation, collecte, sauvetage, survie ou destruction de décor, sans faux ennemi ni barre de vie.',
+        en: 'Precision, observation, collection, rescue, survival or prop-breaking objectives, without a fake enemy or health bar.'
+      },
+      count: trialMissionCount,
+      color: '#39c5bb',
+      image: '/images/missions/universe-arcs.webp'
     }
   };
   const selectedMissionMeta = missionScreenMeta[missionScreen] || missionScreenMeta.story;
@@ -7677,7 +8260,9 @@ export default function HubScreen({
   const nextUnclearedStage = canonicalStoryPriorityStage && isStageUnlocked(canonicalStoryPriorityStage)
     ? canonicalStoryPriorityStage
     : scanPool.find(stage => !completedStages.includes(stage.id)) || scanPool[0];
-  const recommendedMissionScreen = nextUnclearedStage?.ocDlc
+  const recommendedMissionScreen = nextUnclearedStage?.nonCombatTrial
+    ? 'trials'
+    : nextUnclearedStage?.ocDlc
     ? 'ocDlc'
     : nextUnclearedStage?.universeArc
       ? 'universeArcs'
@@ -7733,7 +8318,7 @@ export default function HubScreen({
     .filter(mission => completedStageIdSet.has(String(mission.id)))
     .length;
   const isArcMissionScreen = Boolean(narrativeArcScreenType);
-  const showModeFilters = ['story', 'ocDlc', 'fusionMissions'].includes(missionScreen)
+  const showModeFilters = ['story', 'ocDlc', 'fusionMissions', 'trials'].includes(missionScreen)
     && ['map', 'missions'].includes(missionWorkspaceView);
   const missionWorkspaceItems = missionScreen === 'story'
     ? [
@@ -7783,6 +8368,27 @@ export default function HubScreen({
           tooltip: { fr: 'Affiche les missions des actes annexes actuellement actifs.', en: 'Show missions from currently active standalone acts.' }
         }
       ]
+      : missionScreen === 'trials'
+        ? [
+          {
+            id: 'map',
+            label: { fr: 'CARTE DES ÉPREUVES', en: 'TRIAL MAP' },
+            count: missionPool.length,
+            tooltip: { fr: 'Localise les épreuves disponibles.', en: 'Locate available trials.' }
+          },
+          {
+            id: 'missions',
+            label: { fr: 'ÉPREUVES', en: 'TRIALS' },
+            count: missionPool.length,
+            tooltip: { fr: 'Affiche le répertoire complet des épreuves.', en: 'Show the complete trial directory.' }
+          },
+          ...(riftJournal.length > 0 ? [{
+            id: 'journal',
+            label: { fr: 'JOURNAL', en: 'JOURNAL' },
+            count: riftJournal.length,
+            tooltip: { fr: 'Relit les dernières épreuves.', en: 'Review recent trials.' }
+          }] : [])
+        ]
       : [
       {
         id: 'map',
@@ -7841,6 +8447,14 @@ export default function HubScreen({
               ? 'La carte montre uniquement les actes annexes activés dans la bibliothèque. Chaque récit suit sa propre chaîne de trois missions et ne modifie pas la campagne principale.'
               : 'The map shows only standalone acts activated in the library. Each story follows its own three-mission chain and never alters the main campaign.'
           }
+          : missionScreen === 'trials'
+            ? {
+              kicker: lang === 'fr' ? 'CARTE DES FAILLES / ÉPREUVES' : 'RIFT MAP / TRIALS',
+              title: lang === 'fr' ? 'Objectifs sans adversaire' : 'Objectives without opponents',
+              desc: lang === 'fr'
+                ? 'Chaque faille remplace un faux ennemi par une règle jouable et vérifiable, sans PV ni attaque inventés.'
+                : 'Each rift replaces a fake enemy with a playable, verifiable rule, without invented health or attack stats.'
+            }
           : {
             kicker: lang === 'fr' ? 'CARTE DES FAILLES / CAMPAGNE' : 'RIFT MAP / CAMPAIGN',
             title: lang === 'fr' ? 'Portails actifs du multivers' : 'Active multiverse portals',
@@ -7933,7 +8547,9 @@ export default function HubScreen({
           <h2>{nextUnclearedStage?.displayName?.[lang] || nextUnclearedStage?.name || (lang === 'fr' ? 'Scanner une nouvelle Breche' : 'Scan a new Breach')}</h2>
           <p>
             {nextUnclearedStage
-              ? `${nextUnclearedStage.universe} / ${nextUnclearedStage.mode} / ${nextUnclearedStage.bossName}`
+              ? `${nextUnclearedStage.universe} / ${nextUnclearedStage.mode} / ${getNonCombatStageDetails(nextUnclearedStage, lang)
+                ? `${lang === 'fr' ? 'Epreuve' : 'Trial'}: ${getNonCombatStageDetails(nextUnclearedStage, lang).title}`
+                : nextUnclearedStage.bossName}`
               : (lang === 'fr' ? 'A.R.C.A. attend une coordonnee stable.' : 'A.R.C.A. is waiting for stable coordinates.')}
           </p>
           <button
@@ -8190,8 +8806,8 @@ export default function HubScreen({
                   borderRadius: '4px'
                 }}>
                   {lang === 'fr'
-                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : campagne principale, univers OC, actes annexes, arcs de faction, arcs univers, arcs personnels ou cellules trio.'
-                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, OC universes, standalone acts, faction arcs, universe arcs, personal arcs, or trio cells.'}
+                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : campagne principale, univers OC, actes annexes, arcs narratifs, failles fusionnées ou épreuves sans combat.'
+                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, OC universes, standalone acts, narrative arcs, fused rifts, or non-combat trials.'}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
                   {Object.entries(missionScreenMeta).map(([key, entry]) => (
@@ -8378,6 +8994,10 @@ export default function HubScreen({
                       getStageRewardPreview={getStageRewardPreview}
                       getMissionLaunchBrief={getMissionLaunchBrief}
                       getMissionOutcomePreview={getMissionOutcomePreview}
+                      getMissionDeployment={getMissionDeployment}
+                      onAutoCompose={autoComposeStageTeam}
+                      onOpenRoster={openMissionRoster}
+                      onOpenPortal={openMissionBooster}
                     />
                   </div>
                 )}
@@ -8513,6 +9133,10 @@ export default function HubScreen({
                         getStageRewardPreview={getStageRewardPreview}
                         getMissionLaunchBrief={getMissionLaunchBrief}
                         getMissionOutcomePreview={getMissionOutcomePreview}
+                        getMissionDeployment={getMissionDeployment}
+                        onAutoCompose={autoComposeStageTeam}
+                        onOpenRoster={openMissionRoster}
+                        onOpenPortal={openMissionBooster}
                       />
                     </div>
                   </>
@@ -8524,6 +9148,7 @@ export default function HubScreen({
                     stages={missionPool}
                     completedStages={completedStages}
                     isStageUnlocked={isStageUnlocked}
+                    getMissionDeployment={getMissionDeployment}
                     onOpenBriefing={(stage) => {
                       setBriefingStageId(stage.id);
                       setMissionWorkspaceView('map');
@@ -9105,11 +9730,12 @@ export default function HubScreen({
                 const requiredClears = getStageRequiredClears(stage);
                 const isLocked = !isStageUnlocked(stage);
                 const isPriority = stage.id === nextUnclearedStage?.id;
-                const backdropSrc = getOpenAiBackdropSrc(stage.universe, stage.mode);
+                const backdropSrc = getRiftDossierArtSrc(stage);
                 const preparedStage = prepareStage(stage);
                 const modifier = preparedStage.modifier;
                 const rarity = preparedStage.lootRarity;
                 const stageArc = getStageArc(stage);
+                const nonCombatDetails = getNonCombatStageDetails(stage, lang);
 
                 return (
                   <div key={stage.id} style={{
@@ -9164,7 +9790,9 @@ export default function HubScreen({
                       </div>
 
                       <div style={{ fontSize: '12px', color: '#bbb', marginTop: '4px' }}>
-                        Univers: <strong style={{ color: '#fff' }}>{stage.sourceUniverses?.join(' / ') || stage.universe}</strong> | Boss: <strong style={{ color: '#e74c3c' }}>{stage.bossName}</strong>
+                        Univers: <strong style={{ color: '#fff' }}>{stage.sourceUniverses?.join(' / ') || stage.universe}</strong> | {nonCombatDetails
+                          ? (lang === 'fr' ? 'Epreuve' : 'Trial')
+                          : 'Boss'}: <strong style={{ color: nonCombatDetails ? '#39c5bb' : '#e74c3c' }}>{nonCombatDetails?.title || stage.bossName}</strong>
                       </div>
                       <div style={{ fontSize: '11px', color: '#8fa5aa', marginTop: '4px', maxWidth: '560px', lineHeight: 1.35 }}>
                         {getRichBreachBrief(stage)}
@@ -10324,6 +10952,15 @@ export default function HubScreen({
           </div>
         )}
 
+        {activeTab === 'cgGallery' && (
+          <CgGallery
+            lang={lang}
+            unlockedHeroes={unlockedHeroes}
+            hiddenUniverses={hiddenUniverses}
+            disabledHeroIds={disabledAssets.heroes || []}
+          />
+        )}
+
         {/* Tab 4: Inventory & Equipment */}
         {activeTab === 'inventory' && (
           <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 2.2fr', gap: '20px' }}>
@@ -11135,10 +11772,13 @@ export default function HubScreen({
                           <div className="arca-regulation-asset-grid" style={sectionStyle}>
                             {row.stages.map(stage => {
                               const key = getStageAdminKey(stage);
+                              const nonCombatDetails = getNonCombatStageDetails(stage, lang);
                               return renderAssetRow({
                                 key,
                                 title: stage.displayName?.[lang] || stage.name,
-                                subtitle: `#${stage.id} - ${stage.mode} - ${stage.bossName}`,
+                                subtitle: nonCombatDetails
+                                  ? `#${stage.id} - ${lang === 'fr' ? 'Epreuve' : 'Trial'}: ${nonCombatDetails.title} - ${lang === 'fr' ? 'Objectif' : 'Objective'}: ${nonCombatDetails.objective}`
+                                  : `#${stage.id} - ${stage.mode} - ${stage.bossName}`,
                                 hidden: isAssetDisabled('stages', key),
                                 onToggle: () => setAssetDisabled('stages', key, !isAssetDisabled('stages', key)),
                                 spriteInfo: { ready: false, src: '' }
@@ -11507,15 +12147,17 @@ export default function HubScreen({
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.stages.map(stage => (
                         <div key={stage.id} style={{ color: completedStages.includes(stage.id) ? '#dfffe8' : '#aaa', fontSize: '9px', lineHeight: 1.35, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '4px', background: 'rgba(0,0,0,0.2)' }}>
-                          {(stage.stageArt || getOpenAiBackdropSrc(stage.universe, stage.mode)) && (
-                            <img src={stage.stageArt || getOpenAiBackdropSrc(stage.universe, stage.mode)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '100%', height: '74px', display: 'block', objectFit: 'cover' }} />
+                          {getRiftDossierArtSrc(stage) && (
+                            <img src={getRiftDossierArtSrc(stage)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '100%', height: '74px', display: 'block', objectFit: 'cover' }} />
                           )}
                           <div style={{ padding: '7px' }}>
                           <b style={{ color: completedStages.includes(stage.id) ? '#2ecc71' : '#ffeb3b' }}>
                             #{stage.id} {stage.displayName?.[lang] || stage.name}
                           </b>
                           {' '}
-                          / {stage.mode} / {stage.bossName}
+                          / {stage.mode} / {getNonCombatStageDetails(stage, lang)
+                            ? `${lang === 'fr' ? 'Epreuve' : 'Trial'}: ${getNonCombatStageDetails(stage, lang).title}`
+                            : stage.bossName}
                           <div style={{ color: '#9fb0ad', marginTop: '3px' }}>{getRichBreachBrief(stage)}</div>
                           </div>
                         </div>

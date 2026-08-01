@@ -1,8 +1,17 @@
 // Expanded Enemies Database for 37 universes
 // Includes 3 monsters, 2 bosses, and 1 local World Boss per universe, plus 1 Final Game Boss & obstacles
 
-import { EXPANDED_ENEMIES_DB } from './expandedUniverses';
-import { LORE_ACCURATE_ENEMY_EXPANSIONS } from './loreAccuratePacks';
+import {
+  EXPANDED_ENEMIES_DB,
+  getResolvedLoreWorldBossPolicy,
+  shouldClearCombatRosterForPolicy
+} from './expandedUniverses.js';
+import { LORE_ACCURATE_ENEMY_EXPANSIONS } from './loreAccuratePacks.js';
+import { CANON_ROSTER_WAVE } from './canonRosterWave.js';
+
+const CANON_ROSTER_RUNTIME_UNIVERSES = new Set(
+  CANON_ROSTER_WAVE.map(entry => entry.universe)
+);
 
 export const ENEMIES_DB = {
   'Nexus de Convergence': {
@@ -737,7 +746,32 @@ export const ENEMIES_DB = {
   }
 };
 
+const cloneEnemyRoster = roster => ({
+  ...roster,
+  monsters: [...(roster.monsters || [])],
+  bosses: [...(roster.bosses || [])],
+  trials: [...(roster.trials || [])]
+});
+
+const ensureMutableEnemyRoster = (target, universe) => {
+  const roster = target[universe];
+  if (roster && roster === EXPANDED_ENEMIES_DB[universe]) {
+    target[universe] = cloneEnemyRoster(roster);
+  }
+  return target[universe];
+};
+
 Object.assign(ENEMIES_DB, EXPANDED_ENEMIES_DB);
+
+// Legacy policy-only universes used invented performers, proxies or system
+// cores as enemies. Their historical stages now run through Trial mode, while
+// legitimate film adversaries (for example the Mangalores) remain selectable.
+const BASE_NON_COMBAT_POLICY_ALIASES = Object.freeze([
+  'Vocaloid',
+  'Slender Man',
+  'Digital Circus',
+  'Le Cinquième Element'
+]);
 
 const CANON_ENEMY_EXPANSION = {
   'Gears of War': {
@@ -1053,27 +1087,77 @@ const CANON_ENEMY_EXPANSION = {
 
 const mergeEnemyExpansion = (target, additions = {}) => {
   Object.entries(additions).forEach(([universe, data]) => {
+    if (CANON_ROSTER_RUNTIME_UNIVERSES.has(universe)) return;
+    const existingRoster = target[universe];
+    if (
+      existingRoster?.finalePolicy
+      && existingRoster.monsters?.length === 0
+      && existingRoster.bosses?.length === 0
+      && !existingRoster.worldBoss
+    ) return;
     if (!target[universe]) {
       target[universe] = { monsters: [], bosses: [], worldBoss: data.worldBoss || null };
     }
-    ['monsters', 'bosses'].forEach(kind => {
+
+    const pendingByKind = Object.fromEntries(['monsters', 'bosses'].map(kind => {
       const incoming = Array.isArray(data?.[kind]) ? data[kind] : [];
-      if (!Array.isArray(target[universe][kind])) target[universe][kind] = [];
-      const knownNames = new Set(target[universe][kind].map(item => item.name));
-      incoming.forEach(item => {
-        if (!item?.name || knownNames.has(item.name)) return;
-        target[universe][kind].push(item);
+      const current = Array.isArray(target[universe][kind]) ? target[universe][kind] : [];
+      const knownNames = new Set(current.map(item => item.name));
+      const pending = incoming.filter(item => {
+        if (!item?.name || knownNames.has(item.name)) return false;
         knownNames.add(item.name);
+        return true;
       });
+      return [kind, pending];
+    }));
+    const shouldSetWorldBoss = (
+      !target[universe].worldBoss
+      && !target[universe].finalePolicy
+      && Boolean(data.worldBoss)
+    );
+    if (
+      pendingByKind.monsters.length === 0
+      && pendingByKind.bosses.length === 0
+      && !shouldSetWorldBoss
+    ) return;
+
+    const mutableRoster = ensureMutableEnemyRoster(target, universe);
+    ['monsters', 'bosses'].forEach(kind => {
+      if (!Array.isArray(mutableRoster[kind])) mutableRoster[kind] = [];
+      mutableRoster[kind].push(...pendingByKind[kind]);
     });
-    if (!target[universe].worldBoss && !target[universe].finalePolicy && data.worldBoss) {
-      target[universe].worldBoss = data.worldBoss;
+    if (shouldSetWorldBoss) {
+      mutableRoster.worldBoss = data.worldBoss;
     }
   });
 };
 
 mergeEnemyExpansion(ENEMIES_DB, CANON_ENEMY_EXPANSION);
 mergeEnemyExpansion(ENEMIES_DB, LORE_ACCURATE_ENEMY_EXPANSIONS);
+
+new Set([...Object.keys(ENEMIES_DB), ...BASE_NON_COMBAT_POLICY_ALIASES]).forEach(universe => {
+  const currentRoster = ENEMIES_DB[universe];
+  const finalePolicy = currentRoster?.finalePolicy || getResolvedLoreWorldBossPolicy(universe);
+  if (!currentRoster || !finalePolicy) return;
+  const clearCombatRoster = shouldClearCombatRosterForPolicy(universe);
+  const requiresMutation = (
+    currentRoster.finalePolicy !== finalePolicy
+    || currentRoster.worldBoss !== null
+    || (clearCombatRoster && (
+      currentRoster.monsters?.length > 0
+      || currentRoster.bosses?.length > 0
+    ))
+  );
+  if (!requiresMutation) return;
+
+  const mutableRoster = ensureMutableEnemyRoster(ENEMIES_DB, universe);
+  mutableRoster.finalePolicy = finalePolicy;
+  mutableRoster.worldBoss = null;
+  if (clearCombatRoster) {
+    mutableRoster.monsters = [];
+    mutableRoster.bosses = [];
+  }
+});
 
 // Final game boss (The final breach singularity core)
 export const FINAL_GAME_BOSS = {

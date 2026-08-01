@@ -405,7 +405,7 @@ test('save migration preserves legacy portal collections and validates active lo
     }
   }, { existing: true });
 
-  assert.equal(migratedLegacy.saveVersion, 8);
+  assert.equal(migratedLegacy.saveVersion, 9);
   assert.deepEqual(migratedLegacy.portalCollection.karts, []);
   assert.deepEqual(migratedLegacy.portalCollection.battleMusic, []);
   assert.deepEqual(migratedLegacy.portalCollection.stageMusic, []);
@@ -430,7 +430,12 @@ test('save migration preserves legacy portal collections and validates active lo
   assert.equal(migratedLegacy.portalCollection.activeHudTheme, hud.id);
 
   const normalized = appModule.default.normalizeSavePayload({
+    saveVersion: 9,
+    completedArcIds: ['arc:historique'],
+    arcReplayUnlockedIds: ['arc:replay-seul'],
     portalCollection: {
+      freeBoosterCredits: { 'set:nexus': 2, 'set:vide': 0 },
+      masterFrames: ['set:nexus', 'set:nexus'],
       archives: [archive],
       hudThemes: [hud],
       karts: [kart.id, kart.id, null],
@@ -463,6 +468,10 @@ test('save migration preserves legacy portal collections and validates active lo
   });
 
   assert.deepEqual(normalized.portalCollection.karts, [kart.id]);
+  assert.deepEqual(normalized.portalCollection.freeBoosterCredits, { 'set:nexus': 2 });
+  assert.deepEqual(normalized.portalCollection.masterFrames, ['set:nexus']);
+  assert.deepEqual(normalized.completedArcIds, ['arc:historique']);
+  assert.deepEqual(normalized.arcReplayUnlockedIds, ['arc:replay-seul', 'arc:historique']);
   assert.equal(normalized.portalCollection.activeHudTheme, null);
   assert.equal(normalized.portalCollection.activeKart, kart.id);
   assert.deepEqual(normalized.portalCollection.customLoadout, {

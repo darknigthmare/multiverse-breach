@@ -1,3 +1,10 @@
+import {
+  getMeleeAnimationFrame,
+  getMeleeAnimationManifest,
+  getMeleeAnimationSheetSources,
+  getMeleeSheetLayout
+} from './melee/meleeAnimationManifest.js';
+
 export const SPRITE_SHEET_META = {
   frameWidth: 256,
   frameHeight: 256,
@@ -490,8 +497,35 @@ const getArthurSpriteForContext = (hero, context = 'auto') => {
   return ARTHUR_COMPLETE_SPRITES.rpg;
 };
 
+const LEGACY_MELEE_STATE_ALIASES = Object.freeze({
+  attack: 'attackLight1',
+  defense: 'shieldHold',
+  hit: 'hitStun',
+  jump: 'jumpRise'
+});
+
+const normalizeHeroMeleeState = state => (
+  LEGACY_MELEE_STATE_ALIASES[state] || state || 'idle'
+);
+
+export const getHeroMeleeAnimationFrame = (hero, elapsedMs = 0) => {
+  const manifest = getMeleeAnimationManifest(hero?.id);
+  if (!manifest) return null;
+  const state = normalizeHeroMeleeState(hero?.state);
+  const frame = getMeleeAnimationFrame(manifest, state, elapsedMs);
+  return frame ? { manifest, state, ...frame } : null;
+};
+
+export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
+  getMeleeAnimationSheetSources(heroOrId)
+);
+
 export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (!hero?.id) return '';
+  if (context === 'melee') {
+    const meleeFrame = getHeroMeleeAnimationFrame(hero);
+    if (meleeFrame?.animation?.sheet) return meleeFrame.animation.sheet;
+  }
   const completeSprite = getMirelleSpriteForContext(hero, context);
   if (completeSprite) return completeSprite;
   const bastionSprite = getBastionSpriteForContext(hero);
@@ -551,11 +585,15 @@ const normalizeSpriteSrc = (src) => {
   }
 };
 
-export const getSpriteSheetLayout = (src) => SPRITE_SHEET_LAYOUTS[normalizeSpriteSrc(src)] || {
-  columns: SPRITE_SHEET_META.columns,
-  rows: SPRITE_SHEET_META.rows.length,
-  rowByState: null
-};
+export const getSpriteSheetLayout = (src) => (
+  getMeleeSheetLayout(src)
+  || SPRITE_SHEET_LAYOUTS[normalizeSpriteSrc(src)]
+  || {
+    columns: SPRITE_SHEET_META.columns,
+    rows: SPRITE_SHEET_META.rows.length,
+    rowByState: null
+  }
+);
 
 const animationRowForLayout = (state, layout) => {
   if (layout?.rowByState && Object.prototype.hasOwnProperty.call(layout.rowByState, state)) {

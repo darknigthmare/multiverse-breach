@@ -2,6 +2,13 @@ const SUPABASE_SESSION_KEY = 'multiverse_breach_supabase_session_v1';
 const CLOUD_GAME_KEY = 'multiverse_breach';
 const CLOUD_SAVE_TABLE = 'multiverse_save_states';
 
+export class CloudSaveConflictError extends Error {
+  constructor(message = 'L archive cloud a change sur un autre appareil.') {
+    super(message);
+    this.name = 'CloudSaveConflictError';
+  }
+}
+
 let cachedConfig = null;
 
 const readEnvConfig = () => {
@@ -72,7 +79,9 @@ const supabaseFetch = async (path, options = {}, accessToken = null) => {
     } catch {
       message = await res.text();
     }
-    throw new Error(message);
+    const error = new Error(message);
+    error.status = res.status;
+    throw error;
   }
 
   if (res.status === 204) return null;
@@ -126,13 +135,13 @@ export const loadCloudSave = async (session) => {
   return rows?.[0] || null;
 };
 
-export const saveCloudSave = async (session, payload) => {
-  if (!session?.user?.id || !session?.access_token) return;
-  await supabaseFetch(`/rest/v1/${CLOUD_SAVE_TABLE}`, {
+export const createCloudSave = async (session, payload) => {
+  if (!session?.user?.id || !session?.access_token) return null;
+  const rows = await supabaseFetch(`/rest/v1/${CLOUD_SAVE_TABLE}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Prefer: 'resolution=merge-duplicates,return=minimal'
+      Prefer: 'return=representation'
     },
     body: JSON.stringify({
       user_id: session.user.id,
@@ -140,4 +149,24 @@ export const saveCloudSave = async (session, payload) => {
       payload
     })
   }, session.access_token);
+  return rows?.[0] || null;
+};
+
+export const updateCloudSave = async (session, payload, expectedUpdatedAt) => {
+  if (!session?.user?.id || !session?.access_token || !expectedUpdatedAt) {
+    throw new CloudSaveConflictError();
+  }
+  const userId = encodeURIComponent(session.user.id);
+  const gameKey = encodeURIComponent(CLOUD_GAME_KEY);
+  const updatedAt = encodeURIComponent(expectedUpdatedAt);
+  const rows = await supabaseFetch(`/rest/v1/${CLOUD_SAVE_TABLE}?user_id=eq.${userId}&game_key=eq.${gameKey}&updated_at=eq.${updatedAt}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Prefer: 'return=representation'
+    },
+    body: JSON.stringify({ payload })
+  }, session.access_token);
+  if (!rows?.length) throw new CloudSaveConflictError();
+  return rows[0];
 };

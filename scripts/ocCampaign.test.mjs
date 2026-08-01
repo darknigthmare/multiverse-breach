@@ -28,6 +28,7 @@ const gameCanvasSource = readFileSync(path.join(projectRoot, 'src/components/Gam
 const spriteManifestPath = path.join(projectRoot, 'public/sprites/generated/sprite-manifest.json');
 const stageAssetRegistryPath = path.join(projectRoot, 'src/game/generatedStageAssets.json');
 const campaignKeyArtPromptPath = path.join(projectRoot, 'public/images/campaign-oc/openai-key-art-prompts.jsonl');
+const riftDossierPromptPath = path.join(projectRoot, 'public/images/rift-dossiers/openai/openai-prompts.jsonl');
 let vite;
 let App;
 let smashArenas;
@@ -36,6 +37,17 @@ let smashEngine;
 let enemiesDb;
 let heroesDb;
 let characterPlaques;
+
+const readPngMetadata = (filePath) => {
+  const source = readFileSync(filePath);
+  assert.equal(source.subarray(1, 4).toString('ascii'), 'PNG', `${filePath}: expected PNG`);
+  assert.equal(source.subarray(12, 16).toString('ascii'), 'IHDR', `${filePath}: missing IHDR`);
+  return {
+    width: source.readUInt32BE(16),
+    height: source.readUInt32BE(20),
+    colorType: source.readUInt8(25)
+  };
+};
 
 before(async () => {
   vite = await createServer({
@@ -121,6 +133,41 @@ test('all twelve operations form one localized, rewarded, playable route', () =>
   assert.equal(OC_CAMPAIGN_MISSIONS.at(-1).campaignFinale, true);
   assert.ok(getOcCampaignMission(8803).enemyRoster.includes('Double ideal de Marrow'));
   assert.ok(getOcCampaignMission(8803).enemyRoster.includes('Matrice de Substitution'));
+});
+
+test('all twelve rift dossiers use unique mission-specific OpenAI artwork', () => {
+  const promptEntries = readFileSync(riftDossierPromptPath, 'utf8')
+    .trim()
+    .split('\n')
+    .map(line => JSON.parse(line));
+  const dossierArt = OC_CAMPAIGN_MISSIONS.map(mission => mission.dossierArt);
+  const campaignMissionIds = new Set(OC_CAMPAIGN_MISSIONS.map(mission => mission.id));
+  const campaignPromptEntries = promptEntries.filter(entry => (
+    campaignMissionIds.has(entry.missionId)
+  ));
+
+  assert.equal(new Set(dossierArt).size, OC_CAMPAIGN_MISSIONS.length);
+  assert.equal(campaignPromptEntries.length, OC_CAMPAIGN_MISSIONS.length);
+
+  OC_CAMPAIGN_MISSIONS.forEach((mission) => {
+    assert.match(mission.dossierArt, /^\/images\/rift-dossiers\/openai\/mission-\d+-.+-v1\.png$/);
+    const filePath = path.join(projectRoot, 'public', mission.dossierArt.replace(/^\//, ''));
+    assert.equal(existsSync(filePath), true, `${mission.id}: missing dossier art`);
+    assert.deepEqual(
+      readPngMetadata(filePath),
+      { width: 1672, height: 941, colorType: 2 },
+      `${mission.id}: dossier art must be a 1672x941 RGB PNG`
+    );
+
+    const promptEntry = campaignPromptEntries.find(entry => entry.missionId === mission.id);
+    assert.ok(promptEntry, `${mission.id}: missing OpenAI prompt provenance`);
+    assert.equal(promptEntry.output, mission.dossierArt);
+    assert.equal(promptEntry.kind, 'rift-dossier-thumbnail');
+    assert.equal(promptEntry.generation?.provider, 'OpenAI');
+    assert.equal(promptEntry.generation?.interface, 'built-in image_gen');
+    assert.equal(promptEntry.image?.sha256.length, 64);
+    assert.match(promptEntry.prompt, /32-bit/i);
+  });
 });
 
 test('the complete OC campaign uses OpenAI visuals without player-facing fallbacks', () => {
@@ -362,7 +409,7 @@ test('save migration derives OC state and preserves only a valid completed endin
     completedStages: [...ids.slice(0, 4), 90000, 40001],
     ocCampaignState: { endingId: 'seal', epilogueSeen: true }
   }, { existing: true });
-  assert.equal(partial.saveVersion, 8);
+  assert.equal(partial.saveVersion, 9);
   assert.deepEqual(partial.ocCampaignState.completedMissionIds, ids.slice(0, 4));
   assert.equal(partial.ocCampaignState.endingId, null);
   assert.equal(partial.ocCampaignState.nextMissionId, ids[4]);
@@ -416,6 +463,7 @@ test('the UI consumes canonical story beats, grants endings, and supports replay
   assert.match(appSource, /ending\.rewardItemId/);
   assert.match(appSource, /activeStage\.rewardHeroId/);
   assert.match(hubSource, /const BASE_OC_STAGES = OC_CAMPAIGN_MISSIONS\.map/);
+  assert.match(hubSource, /stage\?\.dossierArt[\s\S]*stage\?\.stageArt[\s\S]*stage\?\.image/);
   assert.match(hubSource, /selectedMission\.recruitLore/);
   assert.match(hubSource, /Recrue ZERO/);
   assert.match(portalSource, /HEROES_DB\.filter\(hero => !hero\.campaignExclusive\)/);

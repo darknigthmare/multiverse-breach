@@ -1,10 +1,19 @@
 // Web Audio API Retro 8-bit Sound Synthesizer
-import { resolveStageMusicProfile } from './stageMusicProfiles';
+import { resolveStageMusicProfile } from './stageMusicProfiles.js';
+import { readAudioPreferences, writeAudioPreferences } from './audioPreferences.js';
 
-class SoundEngine {
-  constructor() {
+export class SoundEngine {
+  constructor({ storage = globalThis?.localStorage } = {}) {
+    const preferences = readAudioPreferences(storage);
+    this.storage = storage;
     this.ctx = null;
-    this.muted = false;
+    this.unlocked = false;
+    this.muted = preferences.muted;
+    this.musicVolume = preferences.musicVolume;
+    this.sfxVolume = preferences.sfxVolume;
+    this.masterOutput = null;
+    this.musicOutput = null;
+    this.sfxOutput = null;
     this.bgmNode = null;
     this.activeSources = [];
     this.bgmInterval = null;
@@ -20,21 +29,77 @@ class SoundEngine {
 
   init() {
     if (this.ctx) return;
+    if (!this.unlocked || typeof window === 'undefined') return;
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (AudioContext) {
       this.ctx = new AudioContext();
+      this.masterOutput = this.ctx.createGain();
+      this.musicOutput = this.ctx.createGain();
+      this.sfxOutput = this.ctx.createGain();
+      this.musicOutput.connect(this.masterOutput);
+      this.sfxOutput.connect(this.masterOutput);
+      this.masterOutput.connect(this.ctx.destination);
+      this.applyOutputSettings();
     }
   }
 
   resume() {
+    if (!this.unlocked) return;
     this.init();
     if (this.ctx && this.ctx.state === 'suspended') {
       this.ctx.resume();
     }
   }
 
+  unlockFromGesture() {
+    if (!this.unlocked) this.unlocked = true;
+    this.resume();
+    if (this.muted) return;
+    if (this.bgmRequest?.type === 'stage') {
+      this.playStageBgm(this.bgmRequest.stage, this.bgmRequest.state);
+    } else if (this.bgmTheme) {
+      this.playBgm(this.bgmTheme);
+    }
+  }
+
+  getSettings() {
+    return {
+      musicVolume: this.musicVolume,
+      sfxVolume: this.sfxVolume,
+      muted: this.muted
+    };
+  }
+
+  persistSettings() {
+    writeAudioPreferences(this.getSettings(), this.storage);
+  }
+
+  applyOutputSettings() {
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime;
+    this.masterOutput?.gain.setValueAtTime(this.muted ? 0 : 1, now);
+    this.musicOutput?.gain.setValueAtTime(this.musicVolume, now);
+    this.sfxOutput?.gain.setValueAtTime(this.sfxVolume, now);
+  }
+
+  setMusicVolume(volume) {
+    this.musicVolume = Math.min(1, Math.max(0, Number(volume) || 0));
+    this.applyOutputSettings();
+    this.persistSettings();
+    return this.getSettings();
+  }
+
+  setSfxVolume(volume) {
+    this.sfxVolume = Math.min(1, Math.max(0, Number(volume) || 0));
+    this.applyOutputSettings();
+    this.persistSettings();
+    return this.getSettings();
+  }
+
   setMute(mute) {
-    this.muted = mute;
+    this.muted = Boolean(mute);
+    this.applyOutputSettings();
+    this.persistSettings();
     if (mute) {
       this.stopBgm();
       if (this.ctx && this.ctx.state === 'running') {
@@ -51,7 +116,7 @@ class SoundEngine {
   }
 
   playSfx(type) {
-    this.resume();
+    this.unlockFromGesture();
     if (this.muted || !this.ctx) return;
 
     const ctx = this.ctx;
@@ -67,7 +132,7 @@ class SoundEngine {
         gain.gain.setValueAtTime(0.3, now);
         gain.gain.linearRampToValueAtTime(0.01, now + 0.15);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this.sfxOutput);
         osc.start(now);
         osc.stop(now + 0.16);
         break;
@@ -81,7 +146,7 @@ class SoundEngine {
         gain.gain.setValueAtTime(0.15, now);
         gain.gain.linearRampToValueAtTime(0.01, now + 0.2);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this.sfxOutput);
         osc.start(now);
         osc.stop(now + 0.21);
         break;
@@ -96,7 +161,7 @@ class SoundEngine {
         gain.gain.setValueAtTime(0.2, now);
         gain.gain.linearRampToValueAtTime(0.01, now + 0.12);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this.sfxOutput);
         osc.start(now);
         osc.stop(now + 0.13);
         break;
@@ -110,7 +175,7 @@ class SoundEngine {
         gain.gain.setValueAtTime(0.2, now);
         gain.gain.linearRampToValueAtTime(0.01, now + 0.4);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this.sfxOutput);
         osc.start(now);
         osc.stop(now + 0.41);
         break;
@@ -124,7 +189,7 @@ class SoundEngine {
         gain.gain.setValueAtTime(0.2, now);
         gain.gain.linearRampToValueAtTime(0.01, now + 0.18);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this.sfxOutput);
         osc.start(now);
         osc.stop(now + 0.19);
         break;
@@ -138,7 +203,7 @@ class SoundEngine {
         gain.gain.setValueAtTime(0.2, now);
         gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this.sfxOutput);
         osc.start(now);
         osc.stop(now + 0.26);
         break;
@@ -155,7 +220,7 @@ class SoundEngine {
           gain.gain.setValueAtTime(0.15, t);
           gain.gain.linearRampToValueAtTime(0.01, t + 0.15);
           osc.connect(gain);
-          gain.connect(ctx.destination);
+          gain.connect(this.sfxOutput);
           osc.start(t);
           osc.stop(t + 0.16);
         });
@@ -174,7 +239,7 @@ class SoundEngine {
           gain.gain.setValueAtTime(0.1, t);
           gain.gain.linearRampToValueAtTime(0.01, t + 0.3);
           osc.connect(gain);
-          gain.connect(ctx.destination);
+          gain.connect(this.sfxOutput);
           osc.start(t);
           osc.stop(t + 0.31);
         });
@@ -198,7 +263,7 @@ class SoundEngine {
           gain.gain.setValueAtTime(0.15, runningTime);
           gain.gain.linearRampToValueAtTime(0.01, runningTime + note.dur - 0.02);
           osc.connect(gain);
-          gain.connect(ctx.destination);
+          gain.connect(this.sfxOutput);
           osc.start(runningTime);
           osc.stop(runningTime + note.dur);
           runningTime += note.dur;
@@ -221,7 +286,7 @@ class SoundEngine {
           gain.gain.setValueAtTime(0.2, runningTime);
           gain.gain.linearRampToValueAtTime(0.01, runningTime + note.dur - 0.02);
           osc.connect(gain);
-          gain.connect(ctx.destination);
+          gain.connect(this.sfxOutput);
           osc.start(runningTime);
           osc.stop(runningTime + note.dur);
           runningTime += note.dur;
@@ -237,7 +302,7 @@ class SoundEngine {
         gain.gain.setValueAtTime(0.15, now);
         gain.gain.linearRampToValueAtTime(0.01, now + 0.25);
         osc.connect(gain);
-        gain.connect(ctx.destination);
+        gain.connect(this.sfxOutput);
         osc.start(now);
         osc.stop(now + 0.26);
         break;
@@ -253,7 +318,7 @@ class SoundEngine {
           gain.gain.setValueAtTime(0.2, t);
           gain.gain.linearRampToValueAtTime(0.01, t + 0.15);
           osc.connect(gain);
-          gain.connect(ctx.destination);
+          gain.connect(this.sfxOutput);
           osc.start(t);
           osc.stop(t + 0.16);
         });
@@ -280,10 +345,11 @@ class SoundEngine {
     this.bgmRequest = { type: 'stage', stage: normalizedStage, state: requestedState };
     this.currentMusicPlan = plan;
     this.currentTempo = plan.tempo;
+    if (!this.unlocked) return plan;
     this.resume();
 
     if (this.muted || !this.ctx || alreadyPlaying) return plan;
-    this.startMusicPlan(plan);
+    this.startMusicPlan(plan, { arcaIdent: Boolean(normalizedStage.titleIntro) });
     return plan;
   }
 
@@ -305,6 +371,16 @@ class SoundEngine {
   playBgm(theme) {
     const themeKey = String(theme || '');
     this.bgmTheme = themeKey;
+
+    if (themeKey === 'title') {
+      return this.playStageBgm({
+        id: 'nexus-title',
+        name: 'A.R.C.A. Title Signal',
+        universe: 'Nexus de Convergence',
+        mode: 'RPG',
+        titleIntro: true
+      }, 'hub');
+    }
 
     if (themeKey === 'hub') {
       return this.playStageBgm({
@@ -340,7 +416,7 @@ class SoundEngine {
     return null;
   }
 
-  startMusicPlan(plan) {
+  startMusicPlan(plan, { arcaIdent = false } = {}) {
     if (!this.ctx || !plan?.steps?.length) return;
     this.stopBgm();
     this.currentMusicPlan = plan;
@@ -350,10 +426,14 @@ class SoundEngine {
     this.bgmMaster = this.ctx.createGain();
     this.bgmMaster.gain.setValueAtTime(0.0001, this.ctx.currentTime);
     this.bgmMaster.gain.exponentialRampToValueAtTime(0.72, this.ctx.currentTime + 0.08);
-    this.bgmMaster.connect(this.ctx.destination);
+    this.bgmMaster.connect(this.musicOutput);
 
     const stepDuration = (60 / plan.tempo) * plan.stepDurationBeats;
     let nextStepTime = this.ctx.currentTime + 0.035;
+
+    if (arcaIdent) {
+      nextStepTime += this.scheduleArcaIdent(plan, nextStepTime);
+    }
 
     if (plan.stinger) {
       this.scheduleProfileStinger(plan, plan.stinger, nextStepTime);
@@ -372,6 +452,27 @@ class SoundEngine {
 
     scheduleNotes();
     this.bgmInterval = setInterval(scheduleNotes, 75);
+  }
+
+  // Ident original tres court : cinq impulsions A.R.C.A. sont programmees
+  // avant que la premiere mesure du theme Nexus ne commence.
+  scheduleArcaIdent(plan, startTime) {
+    const intervals = [0, 7, 3, 10, 12];
+    const durations = [0.11, 0.11, 0.14, 0.14, 0.28];
+    let cursor = startTime;
+    intervals.forEach((interval, index) => {
+      this.scheduleTone({
+        midi: plan.tonalCenterMidi + 12 + interval,
+        wave: index === intervals.length - 1 ? 'sine' : 'triangle',
+        startTime: cursor,
+        duration: durations[index],
+        volume: plan.gains.lead * (index === intervals.length - 1 ? 1.18 : 0.92),
+        filterFrequency: plan.filters.lead * 1.2,
+        attack: 0.008
+      });
+      cursor += durations[index] + 0.045;
+    });
+    return cursor - startTime + 0.12;
   }
 
   scheduleMusicStep(plan, step, stepIndex, startTime, stepDuration) {

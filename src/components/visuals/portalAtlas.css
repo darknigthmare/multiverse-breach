@@ -1,0 +1,116 @@
+.portal-atlas {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  overflow: visible;
+  isolation: isolate;
+}
+
+.portal-atlas__frame {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  filter:
+    drop-shadow(0 0 10px color-mix(in srgb, var(--portal-atlas-color) 76%, transparent))
+    drop-shadow(0 0 28px color-mix(in srgb, var(--portal-atlas-color) 44%, transparent));
+  transform: scale(0.98);
+  transform-origin: center;
+  transition: filter 180ms ease, opacity 180ms ease, transform 180ms ease;
+}
+
+.portal-atlas[data-opening-phase='charging'] .portal-atlas__frame,
+.portal-atlas[data-opening-phase='cutting'] .portal-atlas__frame {
+  animation: portal-atlas-charge 520ms ease-in-out infinite alternate;
+}
+
+.portal-atlas[data-opening-phase='opening'] .portal-atlas__frame {
+  filter:
+    brightness(1.12)
+    saturate(1.18)
+    drop-shadow(0 0 18px var(--portal-atlas-color))
+    drop-shadow(0 0 42px color-mix(in srgb, var(--portal-atlas-color) 64%, transparent));
+  transform: scale(1.04);
+}
+
+.portal-atlas[data-opening-phase='revealing'] .portal-atlas__frame,
+.portal-atlas[data-opening-phase='complete'] .portal-atlas__frame {
+  animation: portal-atlas-stable 1800ms ease-in-out infinite alternate;
+}
+
+.portal-atlas[data-portal-fallback='true'] {
+  --portal-atlas-color: #39c5bb;
+}
+
+.booster-stage-portal-visual {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  width: min(340px, 72%);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.booster-stage-portal-backdrop {
+  position: absolute;
+  inset: 17%;
+  z-index: 0;
+  border-radius: 50%;
+  background-image: var(--portal-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: saturate(0.82) brightness(0.62);
+  opacity: 0.46;
+  mask-image: radial-gradient(circle, #000 0 58%, transparent 76%);
+}
+
+.booster-stage-portal-atlas {
+  z-index: 1;
+  width: 100%;
+}
+
+.phase-opening .booster-stage-portal-backdrop,
+.phase-revealing .booster-stage-portal-backdrop,
+.phase-complete .booster-stage-portal-backdrop {
+  filter: saturate(1.04) brightness(0.78);
+  opacity: 0.64;
+}
+
+@keyframes portal-atlas-charge {
+  from {
+    filter: brightness(0.86) saturate(0.94) drop-shadow(0 0 12px var(--portal-atlas-color));
+    transform: scale(0.96);
+  }
+
+  to {
+    filter: brightness(1.14) saturate(1.2) drop-shadow(0 0 30px var(--portal-atlas-color));
+    transform: scale(1.025);
+  }
+}
+
+@keyframes portal-atlas-stable {
+  from { opacity: 0.9; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-atlas__frame,
+  .portal-atlas[data-opening-phase] .portal-atlas__frame {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .booster-stage-portal-visual {
+    top: 31%;
+    width: min(280px, 74vw);
+  }
+}

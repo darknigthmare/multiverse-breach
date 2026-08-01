@@ -1,13 +1,24 @@
-import React, { useState, useEffect, useRef, useCallback, Suspense } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo, Suspense } from 'react';
 import sound from './game/soundEngine';
 import AudioControl from './components/AudioControl';
+import NetworkStatusBadge from './components/NetworkStatusBadge';
 import AuthPanel from './components/AuthPanel';
 import IntroSequence from './components/IntroSequence';
-import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB } from './game/heroes';
+import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from './game/heroes';
 import { getOpenAiBackdropSrc } from './game/renderer';
 import { resolveActiveHudTheme } from './game/cosmeticVisualAssets';
-import { getStoredSession, loadCloudSave, saveCloudSave, signInAccount, signOutAccount, signUpAccount, storeSession } from './game/cloudSave';
-import { PLAYER_HERO_ID } from './game/playerHero';
+import {
+  CloudSaveConflictError,
+  createCloudSave,
+  getStoredSession,
+  loadCloudSave,
+  signInAccount,
+  signOutAccount,
+  signUpAccount,
+  storeSession,
+  updateCloudSave
+} from './game/cloudSave';
+import { createPlayerHero, PLAYER_HERO_ID } from './game/playerHero';
 import {
   DEFAULT_HIDDEN_UNIVERSES,
   buildOcDlcCampaignProgress,
@@ -15,7 +26,39 @@ import {
   isBaseGameUniverse,
   migrateHiddenUniversesForOcDlc
 } from './game/dlcConfig';
-import { TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from './game/narrativeSystems';
+import {
+  CHARACTER_NARRATIVE_ARCS,
+  FUSION_MISSIONS,
+  SPECIAL_EVENTS,
+  TRIO_NARRATIVE_ARCS,
+  UNIVERSE_NARRATIVE_ARCS
+} from './game/narrativeSystems';
+import { migrateCardCollectionSave } from './game/cards/cardSaveMigration';
+import { migrateArcReplayState } from './game/missions/arcReplayMigration';
+import {
+  canLaunchPreparedMission,
+  getPreparedMissionCompletionScreen,
+  getPreparedMissionLaunchScreen,
+  isFirstClearMissionVictory,
+  isFreeMissionReplay,
+  shouldGrantFirstClearMissionReward
+} from './game/missions/missionReplayPolicy';
+import {
+  CLOUD_SAVE_CONFLICT_ACTIONS,
+  resolveCloudSaveConflict
+} from './game/cloudSaveConflictPolicy';
+import { getTraceContinuationScreen } from './game/titleNavigation';
+import {
+  buildTitleRotationRoster,
+  buildUnlockedAttractCards,
+  buildUnlockedAttractStages,
+  getLocalDayKey
+} from './game/titlePresentation';
+import {
+  normalizeStageEventIntensity,
+  normalizeStageTopologyId,
+  normalizeStageVariant
+} from './game/melee/stageTopologyCatalog';
 import {
   OC_CAMPAIGN_ENDINGS,
   OC_CAMPAIGN_EPILOGUE,
@@ -28,7 +71,23 @@ import {
 
 const SAVE_KEY = 'multiverse_breach_save_v2';
 const TUTORIAL_COMPANION_IDS = ['arca_mirelle', 'arca_bastion'];
+const TITLE_PRESENTATION_MODES = Object.freeze(['RPG', 'Tactics', 'Smash']);
 const OC_CAMPAIGN_SKIN_ID = 'char_player_anchor_palimpsest';
+// These IDs mirror the existing Hub projection. They are frozen here so the
+// v9 migration can recover completed legacy universe arcs without rewriting
+// any stage or reward data in the dirty campaign worktree.
+const ARC_REPLAY_DEFINITIONS = Object.freeze([
+  ...CHARACTER_NARRATIVE_ARCS,
+  ...TRIO_NARRATIVE_ARCS,
+  ...FUSION_MISSIONS.map(mission => ({
+    arcId: mission.id,
+    finalStageId: mission.stageId
+  })),
+  ...UNIVERSE_NARRATIVE_ARCS.map((arc, index) => ({
+    arcId: arc.id,
+    finalStageId: 40000 + index
+  }))
+]);
 const HubScreen = React.lazy(() => import('./components/HubScreen'));
 const PortalScreen = React.lazy(() => import('./components/PortalScreen'));
 const GameCanvas = React.lazy(() => import('./components/GameCanvas'));
@@ -78,7 +137,7 @@ const buildOcMainCampaignState = (completedStages = [], existingState = {}) => {
 };
 
 const DEFAULT_SAVE = {
-  saveVersion: 8,
+  saveVersion: 9,
   lang: 'fr',
   gold: 200,
   breachShards: 150,
@@ -88,6 +147,8 @@ const DEFAULT_SAVE = {
   heroLevels: { [PLAYER_HERO_ID]: 1 },
   activeTeam: [PLAYER_HERO_ID],
   completedStages: [],
+  completedArcIds: [],
+  arcReplayUnlockedIds: [],
   enabledContentPacks: [],
   campaignProgress: buildOcDlcCampaignProgress([], {}),
   ocCampaignState: buildOcMainCampaignState([], {}),
@@ -95,6 +156,12 @@ const DEFAULT_SAVE = {
   heroSkins: {},
   portalStats: { pulls: 0, duplicateStreak: 0, history: [] },
   portalCollection: {
+    cards: {},
+    setProgress: {},
+    threadDust: 0,
+    duplicateMode: 'autoConvert',
+    freeBoosterCredits: {},
+    masterFrames: [],
     archives: [],
     hudThemes: [],
     karts: [],
@@ -135,7 +202,11 @@ const DEFAULT_SAVE = {
       fieldSuperId: null,
       difficulty: 'standard',
       items: true,
-      hazards: true
+      hazards: true,
+      stageVariant: 'lore',
+      stageEventIntensity: 'full',
+      stageTopologyId: 'auto',
+      skipPreMatchInTraining: false
     }
   },
   publicProfile: { shareCode: null, title: 'Ancre Prime', visibility: 'private' },
@@ -166,7 +237,8 @@ const DEFAULT_SAVE = {
     defeatIntel: {},
     heroInstability: {},
     riftJournal: [],
-    tutorialCompanionsUnlocked: false
+    tutorialCompanionsUnlocked: false,
+    activeSpecialEventId: null
   },
   inventory: ['nexus_anchor_coil'],
   equippedGear: {
@@ -209,15 +281,38 @@ const appendUnique = (items = [], additions = []) => {
   return next;
 };
 
+const hasMeaningfulTrace = payload => {
+  if (!payload) return false;
+  if (payload.onboarding?.profileCreated || payload.onboarding?.prologueCompleted) return true;
+  if ((payload.completedStages || []).length > 0) return true;
+  if ((payload.portalStats?.pulls || payload.portalStats?.packsOpened || 0) > 0) return true;
+  if ((payload.activityProgress?.lifetimeAttempts || 0) > 0) return true;
+  if ((payload.unlockedHeroes || []).some(heroId => heroId !== PLAYER_HERO_ID)) return true;
+  // A payload from a legacy schema without onboarding metadata represents an
+  // existing trace and must never be treated as an empty default.
+  return !payload.onboarding;
+};
+
 const normalizeStoredCustomBattlePreset = (preset = {}) => {
   const uniqueIds = (value, limit) => (
     [...new Set(Array.isArray(value) ? value.filter(id => typeof id === 'string' && id.trim()) : [])]
       .slice(0, limit)
   );
   const optionalId = value => (typeof value === 'string' && value.trim() ? value : null);
+  const explicitEventIntensity = Object.prototype.hasOwnProperty.call(preset, 'stageEventIntensity');
+  const stageEventIntensity = !explicitEventIntensity && preset.hazards === false
+    ? 'off'
+    : normalizeStageEventIntensity(preset.stageEventIntensity);
+  const stageTopologyId = preset.stageTopologyId === 'auto'
+    ? 'auto'
+    : normalizeStageTopologyId(preset.stageTopologyId) || 'auto';
+  const mode = ['RPG', 'Tactics', 'Smash', 'Fighter'].includes(preset.mode) ? preset.mode : 'RPG';
+  const opponentControl = ['cpu', 'p2'].includes(preset.opponentControl) ? preset.opponentControl : 'cpu';
+  const requestedDifficulty = ['training', 'standard', 'expert'].includes(preset.difficulty) ? preset.difficulty : 'standard';
+  const difficulty = opponentControl === 'p2' ? 'standard' : requestedDifficulty;
   return {
-    mode: ['RPG', 'Tactics', 'Smash', 'Fighter'].includes(preset.mode) ? preset.mode : 'RPG',
-    opponentControl: ['cpu', 'p2'].includes(preset.opponentControl) ? preset.opponentControl : 'cpu',
+    mode,
+    opponentControl,
     playerTeamIds: uniqueIds(preset.playerTeamIds, 3),
     opponentTeamIds: uniqueIds(preset.opponentTeamIds, 3),
     enemyIds: uniqueIds(preset.enemyIds, 6),
@@ -225,9 +320,15 @@ const normalizeStoredCustomBattlePreset = (preset = {}) => {
     battleMusicId: optionalId(preset.battleMusicId),
     stageMusicId: optionalId(preset.stageMusicId),
     fieldSuperId: optionalId(preset.fieldSuperId),
-    difficulty: ['training', 'standard', 'expert'].includes(preset.difficulty) ? preset.difficulty : 'standard',
+    difficulty,
     items: preset.items !== false,
-    hazards: preset.hazards !== false
+    hazards: mode === 'Smash' ? true : preset.hazards !== false,
+    stageVariant: normalizeStageVariant(preset.stageVariant),
+    stageEventIntensity,
+    stageTopologyId,
+    skipPreMatchInTraining: opponentControl !== 'p2'
+      && difficulty === 'training'
+      && Boolean(preset.skipPreMatchInTraining)
   };
 };
 
@@ -330,9 +431,10 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
   const profileTitles = normalizeCollectionIds(merged.portalCollection?.profileTitles);
   const storedCustomLoadout = merged.portalCollection?.customLoadout || {};
   const customBattlePreset = normalizeStoredCustomBattlePreset(merged.portalCollection?.customBattlePreset);
-  return {
+  const normalizedSave = {
     ...merged,
-    saveVersion: 8,
+    saveVersion: 9,
+    lang: merged.lang === 'en' ? 'en' : 'fr',
     playerProfile: { ...DEFAULT_SAVE.playerProfile, ...(merged.playerProfile || {}) },
     onboarding,
     unlockedHeroes,
@@ -351,8 +453,18 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
       gear: Array.isArray(merged.disabledAssets?.gear) ? merged.disabledAssets.gear : [],
       stages: Array.isArray(merged.disabledAssets?.stages) ? merged.disabledAssets.stages : []
     },
-    portalStats: { ...DEFAULT_SAVE.portalStats, ...(merged.portalStats || {}), history: (merged.portalStats?.history || []).slice(0, 30) },
+    portalStats: { ...DEFAULT_SAVE.portalStats, ...(merged.portalStats || {}), history: (merged.portalStats?.history || []).slice(0, 100) },
     portalCollection: {
+      cards: merged.portalCollection?.cards || {},
+      setProgress: merged.portalCollection?.setProgress || {},
+      threadDust: Math.max(0, Number(merged.portalCollection?.threadDust) || 0),
+      duplicateMode: merged.portalCollection?.duplicateMode === 'keep' ? 'keep' : 'autoConvert',
+      freeBoosterCredits: Object.fromEntries(
+        Object.entries(merged.portalCollection?.freeBoosterCredits || {})
+          .map(([setId, amount]) => [setId, Math.max(0, Math.floor(Number(amount) || 0))])
+          .filter(([, amount]) => amount > 0)
+      ),
+      masterFrames: normalizeCollectionIds(merged.portalCollection?.masterFrames),
       archives,
       hudThemes,
       karts,
@@ -428,6 +540,11 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
     equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
   };
+  const withCardCollection = migrateCardCollectionSave(normalizedSave, { targetVersion: 9 });
+  return migrateArcReplayState(
+    withCardCollection,
+    fromVersion < 9 ? ARC_REPLAY_DEFINITIONS : []
+  );
 };
 
 const getProgressKeys = (date = new Date()) => {
@@ -445,9 +562,47 @@ const getNextLoginStreak = (lastSeenDay, dayKey, currentStreak = 0) => {
   return today - last === 86400000 ? (currentStreak || 0) + 1 : 1;
 };
 
+const getLocalizedStageText = (value, lang, fallback = '') => {
+  if (!value) return fallback;
+  if (typeof value === 'string') return value;
+  return value[lang] || value.fr || value.en || fallback;
+};
+
+const getNonCombatStageDetails = (stage, lang) => {
+  const isNonCombat = stage?.nonCombat === true
+    || stage?.nC === true
+    || Boolean(stage?.nonCombatTrial)
+    || stage?.finalePolicy?.nonCombat === true
+    || stage?.finalePolicy?.policy === 'nonCombatFinal';
+  if (!isNonCombat) return null;
+
+  const fallbackTitle = getLocalizedStageText(stage.displayName, lang, stage.name || stage.universe);
+  const title = getLocalizedStageText(
+    stage.nonCombatTrial?.title,
+    lang,
+    getLocalizedStageText(stage.finalePolicy?.name, lang, fallbackTitle)
+  );
+  const objective = getLocalizedStageText(
+    stage.nonCombatTrial?.objective,
+    lang,
+    getLocalizedStageText(
+      stage.finalePolicy?.objective,
+      lang,
+      stage.loreDescription || (lang === 'fr' ? `Reussir l epreuve ${title}.` : `Complete the ${title} trial.`)
+    )
+  );
+  return { title, objective };
+};
+
 const getContactIntel = (stage, lang) => {
   const modifierName = stage?.modifier?.name?.[lang] || stage?.modifier?.id || (lang === 'fr' ? 'anomalie non classee' : 'unclassified anomaly');
   const source = stage?.sourceUniverses?.join(' / ') || stage?.universe || (lang === 'fr' ? 'Trame inconnue' : 'Unknown Thread');
+  const nonCombatDetails = getNonCombatStageDetails(stage, lang);
+  if (nonCombatDetails) {
+    return lang === 'fr'
+      ? `Donnees d epreuve: ${nonCombatDetails.title} / ${source} / objectif ${nonCombatDetails.objective}. A.R.C.A. conserve cette lecture pour la prochaine tentative.`
+      : `Trial data: ${nonCombatDetails.title} / ${source} / objective ${nonCombatDetails.objective}. A.R.C.A. keeps this reading for the next attempt.`;
+  }
   return lang === 'fr'
     ? `Donnees de contact: ${stage?.bossName || 'noyau hostile'} / ${source} / modificateur ${modifierName}. A.R.C.A. annonce une adaptation +5% HP sur la prochaine tentative.`
     : `Contact data: ${stage?.bossName || 'hostile core'} / ${source} / ${modifierName} modifier. A.R.C.A. grants +5% HP adaptation on the next attempt.`;
@@ -573,20 +728,31 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
 function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue }) {
   const isOutro = Boolean(result);
   const victory = result === 'victory';
+  const nonCombatDetails = getNonCombatStageDetails(stage, lang);
   const backdrop = stage.stageArt || stage.image || getOpenAiBackdropSrc(stage.universe, stage.mode);
   const modifierName = stage.modifier?.name?.[lang] || stage.modifier?.id || (lang === 'fr' ? 'Anomalie inconnue' : 'Unknown anomaly');
   const modifierDesc = stage.modifier?.desc?.[lang] || '';
   const rarity = stage.lootRarity?.label || 'Common';
-  const title = isOutro
-    ? victory
-      ? (lang === 'fr' ? 'BRECHE STABILISEE' : 'BREACH STABILIZED')
-      : (lang === 'fr' ? 'REPLI D ANCRE' : 'ANCHOR RETREAT')
-    : (lang === 'fr' ? 'SEQUENCE NARRATIVE' : 'NARRATIVE SEQUENCE');
-  const modeLine = stage.mode === 'RPG'
-    ? (lang === 'fr' ? 'L escouade avance selon le protocole Resonance: initiative, charges et rupture du noyau.' : 'The squad advances under the Resonance protocol: initiative, charges, and core rupture.')
-    : stage.mode === 'Tactics'
-      ? (lang === 'fr' ? 'Le champ se decoupe en lignes d ancrage: chaque zone devient une decision de survie.' : 'The field splits into anchor lanes: every zone becomes a survival decision.')
-      : (lang === 'fr' ? 'La breche explose en arene d impact ou les signatures frappent avant dissolution.' : 'The breach bursts into an impact arena where signatures strike before dissolution.');
+  const title = nonCombatDetails
+    ? isOutro
+      ? victory
+        ? (lang === 'fr' ? 'EPREUVE REUSSIE' : 'TRIAL COMPLETED')
+        : (lang === 'fr' ? 'EPREUVE INACHEVEE' : 'TRIAL INCOMPLETE')
+      : (lang === 'fr' ? 'SEQUENCE D EPREUVE' : 'TRIAL SEQUENCE')
+    : isOutro
+      ? victory
+        ? (lang === 'fr' ? 'BRECHE STABILISEE' : 'BREACH STABILIZED')
+        : (lang === 'fr' ? 'REPLI D ANCRE' : 'ANCHOR RETREAT')
+      : (lang === 'fr' ? 'SEQUENCE NARRATIVE' : 'NARRATIVE SEQUENCE');
+  const modeLine = nonCombatDetails
+    ? (lang === 'fr'
+      ? `La cellule suit les regles de l epreuve ${nonCombatDetails.title}. Objectif: ${nonCombatDetails.objective}`
+      : `The squad follows the ${nonCombatDetails.title} trial rules. Objective: ${nonCombatDetails.objective}`)
+    : stage.mode === 'RPG'
+      ? (lang === 'fr' ? 'L escouade avance selon le protocole Resonance: initiative, charges et rupture du noyau.' : 'The squad advances under the Resonance protocol: initiative, charges, and core rupture.')
+      : stage.mode === 'Tactics'
+        ? (lang === 'fr' ? 'Le champ se decoupe en lignes d ancrage: chaque zone devient une decision de survie.' : 'The field splits into anchor lanes: every zone becomes a survival decision.')
+        : (lang === 'fr' ? 'La breche explose en arene d impact ou les signatures frappent avant dissolution.' : 'The breach bursts into an impact arena where signatures strike before dissolution.');
   const narrativeLine = getMissionNarrative(stage, lang, isOutro, victory);
   const preparedBrief = Array.isArray(stage.launchBrief) ? stage.launchBrief.join(' ') : '';
   const preparedOutcome = Array.isArray(stage.outcomePreview)
@@ -596,16 +762,28 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
         : /^(defaite|défaite|defeat)\s*:/i.test(line)
     )) || ''
     : '';
-  const introText = lang === 'fr'
-    ? `${narrativeLine} ${preparedBrief || `Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que le Sans-Auteur n efface la memoire de cette Trame.`}`
-    : `${narrativeLine} ${preparedBrief || `Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Authorless erases this Thread memory.`}`;
-  const outroText = victory
+  const introText = nonCombatDetails
     ? (lang === 'fr'
-      ? `${narrativeLine} ${preparedOutcome || `Les donnees de ${stage.bossName} rejoignent le codex, la signature ${rarity} est indexee et les caches sont transferees a l armurerie.`}`
-      : `${narrativeLine} ${preparedOutcome || `${stage.bossName} data enters the codex, ${rarity} signature is indexed, and caches are transferred to the armory.`}`)
-    : (lang === 'fr'
-      ? `${narrativeLine} ${preparedOutcome || `L escouade conserve les donnees de contact, mais ${stage.bossName} garde le controle local du signal.`}`
-      : `${narrativeLine} ${preparedOutcome || `The squad keeps contact data, but ${stage.bossName} still controls the local signal.`}`);
+      ? `${narrativeLine} ${preparedBrief || `${modeLine} Le Nexus archive le titre et l objectif reels de cette epreuve.`}`
+      : `${narrativeLine} ${preparedBrief || `${modeLine} The Nexus records this trial's authored title and objective.`}`)
+    : lang === 'fr'
+      ? `${narrativeLine} ${preparedBrief || `Les archives du Nexus detectent ${stage.bossName}, lie au pattern "${modifierName}". ${modeLine} Objectif: verrouiller les coordonnees avant que le Sans-Auteur n efface la memoire de cette Trame.`}`
+      : `${narrativeLine} ${preparedBrief || `Nexus archives detect ${stage.bossName}, tied to the "${modifierName}" pattern. ${modeLine} Objective: lock the coordinates before the Authorless erases this Thread memory.`}`;
+  const outroText = nonCombatDetails
+    ? victory
+      ? (lang === 'fr'
+        ? `${narrativeLine} ${preparedOutcome || `Epreuve ${nonCombatDetails.title} reussie. Objectif valide: ${nonCombatDetails.objective}`}`
+        : `${narrativeLine} ${preparedOutcome || `${nonCombatDetails.title} trial completed. Objective validated: ${nonCombatDetails.objective}`}`)
+      : (lang === 'fr'
+        ? `${narrativeLine} ${preparedOutcome || `Epreuve ${nonCombatDetails.title} inachevee. Objectif conserve: ${nonCombatDetails.objective}`}`
+        : `${narrativeLine} ${preparedOutcome || `${nonCombatDetails.title} trial incomplete. Objective retained: ${nonCombatDetails.objective}`}`)
+    : victory
+      ? (lang === 'fr'
+        ? `${narrativeLine} ${preparedOutcome || `Les donnees de ${stage.bossName} rejoignent le codex, la signature ${rarity} est indexee et les caches sont transferees a l armurerie.`}`
+        : `${narrativeLine} ${preparedOutcome || `${stage.bossName} data enters the codex, ${rarity} signature is indexed, and caches are transferred to the armory.`}`)
+      : (lang === 'fr'
+        ? `${narrativeLine} ${preparedOutcome || `L escouade conserve les donnees de contact, mais ${stage.bossName} garde le controle local du signal.`}`
+        : `${narrativeLine} ${preparedOutcome || `The squad keeps contact data, but ${stage.bossName} still controls the local signal.`}`);
 
   return (
     <div className="narrative-screen">
@@ -624,8 +802,12 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
               </strong>
               <span>
                 {lang === 'fr'
-                  ? `Rapport de mission: ${stage.mode} / ${stage.universe} / cible ${stage.bossName}.`
-                  : `Mission report: ${stage.mode} / ${stage.universe} / target ${stage.bossName}.`}
+                  ? (nonCombatDetails
+                    ? `Rapport d epreuve: ${nonCombatDetails.title} / objectif ${nonCombatDetails.objective}`
+                    : `Rapport de mission: ${stage.mode} / ${stage.universe} / cible ${stage.bossName}.`)
+                  : (nonCombatDetails
+                    ? `Trial report: ${nonCombatDetails.title} / objective ${nonCombatDetails.objective}`
+                    : `Mission report: ${stage.mode} / ${stage.universe} / target ${stage.bossName}.`)}
               </span>
               <span>
                 {lang === 'fr'
@@ -690,7 +872,7 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
           <div className="narrative-tags">
             <span>{stage.mode}</span>
             <span>{modifierName}</span>
-            <span>{stage.bossName}</span>
+            <span>{nonCombatDetails?.title || stage.bossName}</span>
           </div>
           {modifierDesc && <div className="narrative-intel">{modifierDesc}</div>}
           <button onClick={onContinue} className="btn-retro narrative-button">
@@ -985,8 +1167,15 @@ function App() {
   const initialSave = loadSave();
   const cloudSaveTimerRef = useRef(null);
   const skipNextCloudSaveRef = useRef(false);
+  const cloudUpdatedAtRef = useRef(null);
   const [lang, setLang] = useState(initialSave.lang); // FR default as requested, EN toggle
   const [currentScreen, setCurrentScreen] = useState('title');
+  const [portalMode, setPortalMode] = useState('store');
+  const [audioSettings, setAudioSettings] = useState(() => sound.getSettings());
+  const [isOnline, setIsOnline] = useState(() => (
+    typeof navigator === 'undefined' ? true : navigator.onLine
+  ));
+  const [titleDayKey, setTitleDayKey] = useState(() => getLocalDayKey());
   const [gold, setGold] = useState(initialSave.gold);
   const [breachShards, setBreachShards] = useState(initialSave.breachShards);
   const [eventTokens, setEventTokens] = useState(initialSave.eventTokens);
@@ -995,6 +1184,8 @@ function App() {
   const [heroLevels, setHeroLevels] = useState(initialSave.heroLevels);
   const [activeTeam, setActiveTeam] = useState(initialSave.activeTeam);
   const [completedStages, setCompletedStages] = useState(initialSave.completedStages);
+  const [completedArcIds, setCompletedArcIds] = useState(initialSave.completedArcIds || []);
+  const [arcReplayUnlockedIds, setArcReplayUnlockedIds] = useState(initialSave.arcReplayUnlockedIds || []);
   const [campaignProgress, setCampaignProgress] = useState(initialSave.campaignProgress);
   const [ocCampaignState, setOcCampaignState] = useState(initialSave.ocCampaignState);
   const [activeStage, setActiveStage] = useState(null);
@@ -1016,9 +1207,12 @@ function App() {
   // Equipped Event Items (1 slot per hero)
   const [equippedEventItems, setEquippedEventItems] = useState(initialSave.equippedEventItems);
   const [account, setAccount] = useState(() => getStoredSession());
+  const [cloudSyncState, setCloudSyncState] = useState(() => (
+    getStoredSession() ? 'unreconciled' : 'detached'
+  ));
   const [cloudStatus, setCloudStatus] = useState(() => (
     getStoredSession()
-      ? 'Signature detectee. La trace locale reste active, cloud disponible.'
+      ? 'Signature detectee. Reconciliation requise avant toute synchronisation.'
       : 'Trace locale active. Ancre une signature pour synchroniser.'
   ));
   const collectionBonusCount = inventory.filter(itemId => (
@@ -1027,40 +1221,113 @@ function App() {
     || itemId.startsWith('arc_')
     || itemId.startsWith('fusion_')
   )).length;
-
-  const getCurrentSave = useCallback(() => ({
-    saveVersion: 8,
-    lang,
-    gold,
-    breachShards,
-    eventTokens,
-    playerProfile,
-    unlockedHeroes,
-    heroLevels,
-    activeTeam,
-    completedStages,
-    enabledContentPacks: getEnabledOcDlcPackIds(hiddenUniverses),
-    campaignProgress: buildOcDlcCampaignProgress(completedStages, campaignProgress),
-    ocCampaignState: buildOcMainCampaignState(completedStages, ocCampaignState),
-    heroTalents,
-    heroSkins,
+  const titleRotationRoster = useMemo(() => buildTitleRotationRoster({
+    unlockedHeroIds: unlockedHeroes,
+    heroes: [createPlayerHero(playerProfile), ...HEROES_DB],
     hiddenUniverses,
-    disabledAssets,
-    portalStats,
-    portalCollection,
-    publicProfile,
-    onboarding,
-    activityProgress,
-    inventory,
-    equippedGear,
-    equippedEventItems
-  }), [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, campaignProgress, ocCampaignState, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, portalCollection, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
+    disabledHeroIds: disabledAssets.heroes || [],
+    dayKey: titleDayKey,
+    maxItems: 6
+  }), [unlockedHeroes, playerProfile, hiddenUniverses, disabledAssets.heroes, titleDayKey]);
+  const titleRotation = useMemo(() => titleRotationRoster.map((entry, index) => {
+    const preferredMode = TITLE_PRESENTATION_MODES[index % TITLE_PRESENTATION_MODES.length];
+    const candidates = [preferredMode, ...TITLE_PRESENTATION_MODES.filter(mode => mode !== preferredMode)];
+    const resolvedMode = candidates.find(mode => getOpenAiBackdropSrc(entry.universe, mode)) || preferredMode;
+    return {
+      ...entry,
+      mode: resolvedMode,
+      image: getOpenAiBackdropSrc(entry.universe, resolvedMode) || '/images/missions/fusion-rifts.webp'
+    };
+  }), [titleRotationRoster]);
+  const titleAttractCards = useMemo(() => buildUnlockedAttractCards({
+    history: portalStats.history || [],
+    cards: portalCollection.cards || {},
+    hiddenUniverses,
+    maxItems: 6
+  }), [portalStats.history, portalCollection.cards, hiddenUniverses]);
+  const titleAttractStageRoster = useMemo(() => buildUnlockedAttractStages({
+    completedStageIds: completedStages,
+    journal: activityProgress.riftJournal || [],
+    unlockedFallbackStages: onboarding.profileCreated
+      ? [{
+          stageId: 90000,
+          title: lang === 'fr' ? 'Premiere directive - Faille de l Atrium' : 'First Directive - Atrium Rift',
+          universe: 'Nexus de Convergence',
+          mode: 'RPG'
+        }]
+      : [],
+    hiddenUniverses,
+    disabledStageIds: disabledAssets.stages || [],
+    maxItems: 6
+  }), [completedStages, activityProgress.riftJournal, onboarding.profileCreated, lang, hiddenUniverses, disabledAssets.stages]);
+  const titleAttractStages = useMemo(() => titleAttractStageRoster.map(stage => ({
+    ...stage,
+    image: getOpenAiBackdropSrc(stage.universe, stage.mode) || '/images/missions/fusion-rifts.webp'
+  })), [titleAttractStageRoster]);
+  const titleEventVariant = useMemo(() => {
+    const activeEvent = SPECIAL_EVENTS.find(event => event.id === activityProgress.activeSpecialEventId);
+    if (!activeEvent) return null;
+    return {
+      id: activeEvent.id,
+      title: activeEvent.title?.[lang] || activeEvent.title?.fr || activeEvent.id,
+      tokenCount: eventTokens
+    };
+  }, [activityProgress.activeSpecialEventId, eventTokens, lang]);
+  const titleEventOptions = useMemo(() => SPECIAL_EVENTS.map(event => ({
+    id: event.id,
+    title: event.title?.[lang] || event.title?.fr || event.id
+  })), [lang]);
+  const selectTitleEventVariant = useCallback(eventId => {
+    const normalizedEventId = SPECIAL_EVENTS.some(event => event.id === eventId) ? eventId : null;
+    setActivityProgress(previous => ({
+      ...previous,
+      activeSpecialEventId: normalizedEventId
+    }));
+    sound.playSfx(normalizedEventId ? 'confirm' : 'click');
+  }, []);
+
+  const getCurrentSave = useCallback(() => {
+    const normalizedCompletedArcIds = [...new Set(completedArcIds)];
+    const normalizedReplayIds = [...new Set([
+      ...arcReplayUnlockedIds,
+      ...normalizedCompletedArcIds
+    ])];
+    return {
+      saveVersion: 9,
+      lang,
+      gold,
+      breachShards,
+      eventTokens,
+      playerProfile,
+      unlockedHeroes,
+      heroLevels,
+      activeTeam,
+      completedStages,
+      completedArcIds: normalizedCompletedArcIds,
+      arcReplayUnlockedIds: normalizedReplayIds,
+      enabledContentPacks: getEnabledOcDlcPackIds(hiddenUniverses),
+      campaignProgress: buildOcDlcCampaignProgress(completedStages, campaignProgress),
+      ocCampaignState: buildOcMainCampaignState(completedStages, ocCampaignState),
+      heroTalents,
+      heroSkins,
+      hiddenUniverses,
+      disabledAssets,
+      portalStats,
+      portalCollection,
+      publicProfile,
+      onboarding,
+      activityProgress,
+      inventory,
+      equippedGear,
+      equippedEventItems
+    };
+  }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, completedArcIds, arcReplayUnlockedIds, campaignProgress, ocCampaignState, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, portalCollection, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
 
   useEffect(() => {
     const payload = getCurrentSave();
     saveGame(payload);
 
-    if (!account?.access_token) return;
+    if (!account?.access_token || cloudSyncState !== 'ready' || !isOnline) return;
     if (skipNextCloudSaveRef.current) {
       skipNextCloudSaveRef.current = false;
       return;
@@ -1069,15 +1336,60 @@ function App() {
     window.clearTimeout(cloudSaveTimerRef.current);
     cloudSaveTimerRef.current = window.setTimeout(async () => {
       try {
-        await saveCloudSave(account, payload);
+        const row = await updateCloudSave(account, payload, cloudUpdatedAtRef.current);
+        cloudUpdatedAtRef.current = row.updated_at;
         setCloudStatus(lang === 'fr' ? 'Trace Nexus synchronisee dans le cloud.' : 'Nexus trace synced to cloud.');
       } catch (err) {
+        setCloudSyncState(err instanceof CloudSaveConflictError ? 'conflict' : 'suspended');
         setCloudStatus(`${lang === 'fr' ? 'Synchronisation Nexus impossible' : 'Nexus sync failed'}: ${err.message}`);
       }
     }, 1200);
 
     return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [getCurrentSave, account, lang]);
+  }, [getCurrentSave, account, lang, cloudSyncState, isOnline]);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => {
+      setIsOnline(false);
+      setCloudStatus(lang === 'fr'
+        ? 'Hors ligne. La trace locale reste disponible; aucun envoi cloud ne sera tente.'
+        : 'Offline. The local trace remains available; no cloud upload will be attempted.');
+    };
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, [lang]);
+
+  useEffect(() => {
+    let dayTimer = null;
+    const scheduleNextLocalDay = () => {
+      const now = new Date();
+      setTitleDayKey(getLocalDayKey(now));
+      const nextDay = new Date(now);
+      nextDay.setHours(24, 0, 1, 0);
+      dayTimer = window.setTimeout(scheduleNextLocalDay, Math.max(1000, nextDay.getTime() - now.getTime()));
+    };
+    scheduleNextLocalDay();
+    return () => window.clearTimeout(dayTimer);
+  }, []);
+
+  useEffect(() => {
+    const unlockAudio = () => sound.unlockFromGesture();
+    window.addEventListener('pointerdown', unlockAudio, { once: true });
+    window.addEventListener('keydown', unlockAudio, { once: true });
+    return () => {
+      window.removeEventListener('pointerdown', unlockAudio);
+      window.removeEventListener('keydown', unlockAudio);
+    };
+  }, []);
 
   useEffect(() => {
     const { dayKey, weekKey } = getProgressKeys();
@@ -1101,10 +1413,12 @@ function App() {
     });
   }, []);
 
-  // Play ambient music
+  // La demande musicale est mise en attente; le moteur ne cree son contexte
+  // qu apres la premiere interaction autorisee par le navigateur.
   useEffect(() => {
-    sound.init();
-    if (['title', 'profile', 'prologue', 'hub'].includes(currentScreen)) {
+    if (currentScreen === 'title') {
+      sound.playBgm('title');
+    } else if (['profile', 'prologue', 'hub'].includes(currentScreen)) {
       sound.playBgm('hub');
     }
     return () => {
@@ -1186,20 +1500,22 @@ function App() {
   };
 
   const handleLaunchStage = (stage) => {
+    // Defense en profondeur : un appel programmatique ne contourne pas le
+    // verrou de composition deja evalue par le Hub.
+    if (!canLaunchPreparedMission(stage)) return;
     sound.playSfx('special');
     setActiveStage(stage);
     setLastBattleResult(null);
     setLastBattleSummary(null);
-    setCurrentScreen('missionIntro');
+    // Les cinematiques de premier parcours ne sont pas rejouees une fois que
+    // l arc a explicitement ouvert son mode equipe libre.
+    setCurrentScreen(getPreparedMissionLaunchScreen(stage));
   };
 
   const handleBattleEnd = (result, report = {}) => {
     const battleItemsUsed = report.battleItemsUsed || 0;
     const battleSummary = report.battleSummary || null;
-    const firstClear = result === 'victory'
-      && activeStage
-      && !activeStage.isSurvival
-      && !completedStages.includes(activeStage.id);
+    const firstClear = isFirstClearMissionVictory(result, activeStage, completedStages);
     const summary = {
       result,
       gold: 0,
@@ -1221,6 +1537,7 @@ function App() {
     const createRiftJournalEntry = (entryResult, extra = {}) => {
       const source = activeStage.sourceUniverses?.join(' / ') || activeStage.universe;
       const title = activeStage.displayName?.[lang] || activeStage.name || activeStage.universe;
+      const nonCombatDetails = getNonCombatStageDetails(activeStage, lang);
       return {
         id: `${activeStage.id}-${Date.now()}-${entryResult}`,
         at: new Date().toISOString(),
@@ -1228,14 +1545,23 @@ function App() {
         result: entryResult,
         universe: activeStage.universe,
         source,
+        mode: activeStage.mode,
         title,
         text: entryResult === 'victory'
           ? (lang === 'fr'
-            ? `A.R.C.A. archive ${title}: ${activeStage.bossName} neutralise, coordonnee ${source} scellee, consequence inscrite dans la Trame Nexus.`
-            : `A.R.C.A. archives ${title}: ${activeStage.bossName} neutralized, ${source} coordinate sealed, consequence written into the Nexus Thread.`)
+            ? (nonCombatDetails
+              ? `A.R.C.A. archive ${title}: epreuve ${nonCombatDetails.title} reussie, objectif "${nonCombatDetails.objective}" valide, coordonnee ${source} scellee dans la Trame Nexus.`
+              : `A.R.C.A. archive ${title}: ${activeStage.bossName} neutralise, coordonnee ${source} scellee, consequence inscrite dans la Trame Nexus.`)
+            : (nonCombatDetails
+              ? `A.R.C.A. archives ${title}: ${nonCombatDetails.title} trial completed, objective "${nonCombatDetails.objective}" validated, ${source} coordinate sealed in the Nexus Thread.`
+              : `A.R.C.A. archives ${title}: ${activeStage.bossName} neutralized, ${source} coordinate sealed, consequence written into the Nexus Thread.`))
           : (lang === 'fr'
-            ? `Repli sur ${title}: ${activeStage.bossName} conserve le signal local, mais A.R.C.A. garde les donnees de contact pour la prochaine tentative.`
-            : `Retreat on ${title}: ${activeStage.bossName} keeps the local signal, but A.R.C.A. stores contact data for the next attempt.`),
+            ? (nonCombatDetails
+              ? `Repli sur ${title}: epreuve ${nonCombatDetails.title} inachevee, objectif "${nonCombatDetails.objective}" conserve par A.R.C.A. pour la prochaine tentative.`
+              : `Repli sur ${title}: ${activeStage.bossName} conserve le signal local, mais A.R.C.A. garde les donnees de contact pour la prochaine tentative.`)
+            : (nonCombatDetails
+              ? `Retreat on ${title}: ${nonCombatDetails.title} trial incomplete; objective "${nonCombatDetails.objective}" retained by A.R.C.A. for the next attempt.`
+              : `Retreat on ${title}: ${activeStage.bossName} keeps the local signal, but A.R.C.A. stores contact data for the next attempt.`)),
         ...extra
       };
     };
@@ -1265,7 +1591,15 @@ function App() {
       }
 
       if (firstClear) {
-        setCompletedStages(prev => [...prev, activeStage.id]);
+        const nextCompletedStages = appendUnique(completedStages, [activeStage.id]);
+        setCompletedStages(nextCompletedStages);
+        const replayState = migrateArcReplayState({
+          completedStages: nextCompletedStages,
+          completedArcIds,
+          arcReplayUnlockedIds
+        }, ARC_REPLAY_DEFINITIONS);
+        setCompletedArcIds(replayState.completedArcIds);
+        setArcReplayUnlockedIds(replayState.arcReplayUnlockedIds);
         const ocMission = getOcCampaignMission(activeStage.id);
         if (ocMission) {
           const campaignStages = appendUnique(completedStages, [activeStage.id]);
@@ -1276,12 +1610,14 @@ function App() {
         }
       }
 
-      if (activeStage.rewardItemId) {
+      // Les traces et objets d evenement sont des recompenses de premiere
+      // victoire. Les ressources de combat et les drops restent rejouables.
+      if (shouldGrantFirstClearMissionReward(firstClear, activeStage.rewardItemId)) {
         setInventory(prev => prev.includes(activeStage.rewardItemId) ? prev : [...prev, activeStage.rewardItemId]);
         summary.rewardItemName = activeStage.rewardItemName?.[lang] || activeStage.rewardItemName?.en || activeStage.rewardItemId;
       }
 
-      if (activeStage.eventRewardId) {
+      if (shouldGrantFirstClearMissionReward(firstClear, activeStage.eventRewardId)) {
         setInventory(prev => appendUnique(prev, [activeStage.eventRewardId]));
         const eventReward = Object.values(EVENT_ITEMS_DB).find(item => item.id === activeStage.eventRewardId);
         summary.eventRewardName = eventReward?.name?.[lang]
@@ -1290,7 +1626,7 @@ function App() {
           || activeStage.eventRewardId;
       }
 
-      if (activeStage.rewardHeroId) {
+      if (shouldGrantFirstClearMissionReward(firstClear, activeStage.rewardHeroId)) {
         const heroAlreadyUnlocked = unlockedHeroes.includes(activeStage.rewardHeroId);
         setUnlockedHeroes(prev => appendUnique(prev, [activeStage.rewardHeroId]));
         setHeroLevels(prev => ({
@@ -1435,6 +1771,13 @@ function App() {
         ].slice(0, 12)
       }));
     }
+    if (isFreeMissionReplay(activeStage)) {
+      setLastBattleSummary(null);
+      setLastBattleResult(null);
+      setActiveStage(null);
+      setCurrentScreen(getPreparedMissionCompletionScreen(activeStage));
+      return;
+    }
     setLastBattleSummary(result === 'quit' ? null : summary);
     setLastBattleResult(result);
     setCurrentScreen('missionOutro');
@@ -1496,6 +1839,18 @@ function App() {
     sound.playSfx('coin');
   };
 
+  const changeAudioSetting = (setting, value) => {
+    const nextSettings = setting === 'musicVolume'
+      ? sound.setMusicVolume(value)
+      : sound.setSfxVolume(value);
+    setAudioSettings(nextSettings);
+  };
+
+  const toggleMute = () => {
+    sound.setMute(!audioSettings.muted);
+    setAudioSettings(sound.getSettings());
+  };
+
   const applySave = (save, { existing = true, navigateTo = 'hub' } = {}) => {
     const merged = normalizeSavePayload(save, { existing });
     setLang(merged.lang);
@@ -1507,6 +1862,8 @@ function App() {
     setHeroLevels(merged.heroLevels);
     setActiveTeam(merged.activeTeam);
     setCompletedStages(merged.completedStages);
+    setCompletedArcIds(merged.completedArcIds || []);
+    setArcReplayUnlockedIds(merged.arcReplayUnlockedIds || []);
     setCampaignProgress(merged.campaignProgress || DEFAULT_SAVE.campaignProgress);
     setOcCampaignState(merged.ocCampaignState || DEFAULT_SAVE.ocCampaignState);
     setHeroTalents(merged.heroTalents);
@@ -1542,7 +1899,14 @@ function App() {
     const raw = window.prompt(lang === 'fr' ? 'Colle ta trace Nexus exportee :' : 'Paste exported Nexus trace:');
     if (!raw) return;
     try {
+      window.clearTimeout(cloudSaveTimerRef.current);
+      if (account) setCloudSyncState('conflict');
       applySave(JSON.parse(raw), { existing: true, navigateTo: 'hub' });
+      if (account) {
+        setCloudStatus(lang === 'fr'
+          ? 'Trace importee localement. Archive cloud preservee jusqu a un choix explicite.'
+          : 'Trace imported locally. Cloud archive preserved until an explicit choice.');
+      }
       sound.playSfx('levelup');
     } catch {
       window.alert(lang === 'fr' ? 'Trace Nexus invalide.' : 'Invalid Nexus trace.');
@@ -1551,43 +1915,111 @@ function App() {
 
   const resetSave = () => {
     if (!window.confirm(lang === 'fr' ? 'Purger completement la trace Nexus ?' : 'Fully purge Nexus trace?')) return;
+    window.clearTimeout(cloudSaveTimerRef.current);
     window.localStorage.removeItem(SAVE_KEY);
-    applySave(DEFAULT_SAVE, { existing: false, navigateTo: 'title' });
+    setCloudSyncState(account ? 'conflict' : 'detached');
+    cloudUpdatedAtRef.current = null;
+    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'title' });
+    setCloudStatus(account
+      ? (lang === 'fr' ? 'Trace locale purgee. Archive cloud preservee.' : 'Local trace purged. Cloud archive preserved.')
+      : (lang === 'fr' ? 'Trace locale purgee.' : 'Local trace purged.'));
     sound.playSfx('click');
   };
 
+  const reconcileCloudSave = async session => {
+    window.clearTimeout(cloudSaveTimerRef.current);
+    setCloudSyncState('reconciling');
+    setCloudStatus(lang === 'fr' ? 'Comparaison des Traces locale et cloud...' : 'Comparing local and cloud Traces...');
+
+    try {
+      const localPayload = getCurrentSave();
+      const row = await loadCloudSave(session);
+      const cloudPayload = row?.payload || null;
+      const resolution = resolveCloudSaveConflict({
+        localPayload,
+        cloudPayload,
+        localHasTrace: hasMeaningfulTrace(localPayload),
+        cloudHasTrace: hasMeaningfulTrace(cloudPayload)
+      });
+
+      if (resolution.action === CLOUD_SAVE_CONFLICT_ACTIONS.NOOP) {
+        cloudUpdatedAtRef.current = row?.updated_at || null;
+        skipNextCloudSaveRef.current = Boolean(row);
+        setCloudSyncState(row ? 'ready' : 'empty');
+        setCloudStatus(row
+          ? (lang === 'fr' ? 'Traces identiques. Archive cloud verifiee.' : 'Traces match. Cloud archive verified.')
+          : (lang === 'fr' ? 'Aucune Trace gravee dans le cloud.' : 'No Trace stored in the cloud.'));
+        return { status: row ? 'equivalent' : 'no-trace', merged: null, row };
+      }
+
+      if (resolution.action === CLOUD_SAVE_CONFLICT_ACTIONS.UPLOAD_LOCAL) {
+        const createdRow = await createCloudSave(session, localPayload);
+        cloudUpdatedAtRef.current = createdRow.updated_at;
+        skipNextCloudSaveRef.current = true;
+        setCloudSyncState('ready');
+        setCloudStatus(lang === 'fr' ? 'Trace locale gravee dans une nouvelle archive cloud.' : 'Local Trace stored in a new cloud archive.');
+        return { status: 'uploaded-local', merged: null, row: createdRow };
+      }
+
+      if (resolution.action === CLOUD_SAVE_CONFLICT_ACTIONS.LOAD_CLOUD) {
+        cloudUpdatedAtRef.current = row.updated_at;
+        skipNextCloudSaveRef.current = true;
+        const merged = applySave(cloudPayload, { existing: true, navigateTo: null });
+        setCloudSyncState('ready');
+        setCloudStatus(lang === 'fr' ? 'Archive cloud chargee; Trace locale restauree.' : 'Cloud archive loaded; local Trace restored.');
+        return { status: 'loaded-cloud', merged, row };
+      }
+
+      setCloudSyncState('conflict');
+      const acceptCloud = window.confirm(lang === 'fr'
+        ? `Deux Traces differentes existent. Charger l archive cloud du ${new Date(row.updated_at).toLocaleString('fr-FR')} ?\n\nOK : charger le cloud.\nAnnuler : garder les deux Traces intactes et suspendre la synchronisation.`
+        : `Two different Traces exist. Load the cloud archive from ${new Date(row.updated_at).toLocaleString('en-GB')}?\n\nOK: load cloud.\nCancel: keep both Traces intact and suspend sync.`);
+      if (!acceptCloud) {
+        setCloudStatus(lang === 'fr'
+          ? 'Conflit conserve. Trace locale active, archive cloud intacte, envois suspendus.'
+          : 'Conflict preserved. Local Trace active, cloud archive intact, uploads suspended.');
+        return { status: 'conflict-preserved', merged: null, row };
+      }
+
+      cloudUpdatedAtRef.current = row.updated_at;
+      skipNextCloudSaveRef.current = true;
+      const merged = applySave(cloudPayload, { existing: true, navigateTo: null });
+      setCloudSyncState('ready');
+      setCloudStatus(lang === 'fr' ? 'Choix confirme: archive cloud chargee.' : 'Choice confirmed: cloud archive loaded.');
+      return { status: 'loaded-cloud', merged, row };
+    } catch (err) {
+      setCloudSyncState(err instanceof CloudSaveConflictError ? 'conflict' : 'suspended');
+      setCloudStatus(`${lang === 'fr' ? 'Reconciliation cloud suspendue' : 'Cloud reconciliation suspended'}: ${err.message}`);
+      throw err;
+    }
+  };
+
   const applyCloudSession = async (session, shouldLoadCloud = true) => {
+    window.clearTimeout(cloudSaveTimerRef.current);
     storeSession(session);
     setAccount(session);
+    setCloudSyncState(shouldLoadCloud ? 'reconciling' : 'unreconciled');
     setCloudStatus(lang === 'fr' ? 'Signature ancree. Verification de l archive Nexus...' : 'Signature anchored. Checking Nexus archive...');
 
-    if (!shouldLoadCloud) return null;
-
-    const row = await loadCloudSave(session);
-    if (row?.payload) {
-      skipNextCloudSaveRef.current = true;
-      const merged = applySave(row.payload, { existing: true, navigateTo: null });
-      setCloudStatus(lang === 'fr' ? 'Archive Nexus chargee.' : 'Nexus archive loaded.');
-      return merged;
-    } else {
-      await saveCloudSave(session, getCurrentSave());
-      setCloudStatus(lang === 'fr' ? 'Nouvelle archive Nexus gravee depuis cette trace.' : 'New Nexus archive engraved from this trace.');
-      return null;
-    }
+    if (!shouldLoadCloud) return { status: 'unreconciled', merged: null, row: null };
+    return reconcileCloudSave(session);
   };
 
   const handleSignIn = async (email, password) => {
     const session = await signInAccount(email, password);
-    const merged = await applyCloudSession(session, true);
+    const reconciliation = await applyCloudSession(session, true);
     if (currentScreen === 'profile') {
-      if (merged?.onboarding?.prologueCompleted) {
-        setCurrentScreen('hub');
-      } else if (merged?.onboarding?.profileCreated) {
-        setCurrentScreen('prologue');
-      } else if (merged) {
-        setCurrentScreen('profile');
+      const effectiveOnboarding = reconciliation.merged?.onboarding || onboarding;
+      if (reconciliation.status === 'no-trace') {
+        const payload = startOperation();
+        const row = reconciliation.row
+          ? await updateCloudSave(session, payload, reconciliation.row.updated_at)
+          : await createCloudSave(session, payload);
+        cloudUpdatedAtRef.current = row.updated_at;
+        skipNextCloudSaveRef.current = true;
+        setCloudSyncState('ready');
       } else {
-        startOperation();
+        setCurrentScreen(getTraceContinuationScreen(effectiveOnboarding));
       }
     }
     sound.playSfx('levelup');
@@ -1604,7 +2036,10 @@ function App() {
     }
     await applyCloudSession(session, false);
     const payload = currentScreen === 'profile' ? startOperation() : getCurrentSave();
-    await saveCloudSave(session, payload);
+    const row = await createCloudSave(session, payload);
+    cloudUpdatedAtRef.current = row.updated_at;
+    skipNextCloudSaveRef.current = true;
+    setCloudSyncState('ready');
     setCloudStatus(lang === 'fr' ? 'Signature creee et trace gravee dans le Nexus.' : 'Signature created and trace engraved into the Nexus.');
     sound.playSfx('levelup');
     return session;
@@ -1614,6 +2049,9 @@ function App() {
     const current = account;
     storeSession(null);
     setAccount(null);
+    setCloudSyncState('detached');
+    cloudUpdatedAtRef.current = null;
+    window.clearTimeout(cloudSaveTimerRef.current);
     setCloudStatus(lang === 'fr' ? 'Signature detachee. Trace locale active.' : 'Signature detached. Local trace active.');
     if (current?.access_token) {
       try {
@@ -1627,28 +2065,90 @@ function App() {
 
   const handleLoadCloud = async () => {
     if (!account) return;
-    const row = await loadCloudSave(account);
-    if (!row?.payload) {
-      setCloudStatus(lang === 'fr' ? 'Aucune archive Nexus trouvee.' : 'No Nexus archive found.');
-      return;
-    }
-    skipNextCloudSaveRef.current = true;
-    applySave(row.payload, { existing: true, navigateTo: null });
-    setCloudStatus(lang === 'fr' ? 'Archive Nexus chargee.' : 'Nexus archive loaded.');
+    await reconcileCloudSave(account);
     sound.playSfx('coin');
   };
 
   const handleSaveCloud = async () => {
     if (!account) return;
-    await saveCloudSave(account, getCurrentSave());
-    setCloudStatus(lang === 'fr' ? 'Trace envoyee dans le cloud.' : 'Trace uploaded to cloud.');
-    sound.playSfx('coin');
+    window.clearTimeout(cloudSaveTimerRef.current);
+    setCloudSyncState('reconciling');
+    try {
+      const localPayload = getCurrentSave();
+      const row = await loadCloudSave(account);
+      if (!row) {
+        const createdRow = await createCloudSave(account, localPayload);
+        cloudUpdatedAtRef.current = createdRow.updated_at;
+      } else {
+        const equivalent = resolveCloudSaveConflict({
+          localPayload,
+          cloudPayload: row.payload,
+          localHasTrace: hasMeaningfulTrace(localPayload),
+          cloudHasTrace: hasMeaningfulTrace(row.payload)
+        }).action === CLOUD_SAVE_CONFLICT_ACTIONS.NOOP;
+        if (!equivalent) {
+          const replaceCloud = window.confirm(lang === 'fr'
+            ? `Remplacer explicitement l archive cloud du ${new Date(row.updated_at).toLocaleString('fr-FR')} par la Trace locale ?`
+            : `Explicitly replace the cloud archive from ${new Date(row.updated_at).toLocaleString('en-GB')} with the local Trace?`);
+          if (!replaceCloud) {
+            setCloudSyncState('conflict');
+            setCloudStatus(lang === 'fr' ? 'Envoi annule. Les deux Traces restent intactes.' : 'Upload cancelled. Both Traces remain intact.');
+            return;
+          }
+        }
+        const updatedRow = equivalent
+          ? row
+          : await updateCloudSave(account, localPayload, row.updated_at);
+        cloudUpdatedAtRef.current = updatedRow.updated_at;
+      }
+      skipNextCloudSaveRef.current = true;
+      setCloudSyncState('ready');
+      setCloudStatus(lang === 'fr' ? 'Trace locale envoyee dans le cloud.' : 'Local Trace uploaded to cloud.');
+      sound.playSfx('coin');
+    } catch (err) {
+      setCloudSyncState(err instanceof CloudSaveConflictError ? 'conflict' : 'suspended');
+      setCloudStatus(`${lang === 'fr' ? 'Envoi cloud suspendu' : 'Cloud upload suspended'}: ${err.message}`);
+      throw err;
+    }
+  };
+
+  const startNewLocalTrace = () => {
+    window.clearTimeout(cloudSaveTimerRef.current);
+    window.localStorage.removeItem(SAVE_KEY);
+    setCloudSyncState(account ? 'conflict' : 'detached');
+    cloudUpdatedAtRef.current = null;
+    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'profile' });
+    setCloudStatus(account
+      ? (lang === 'fr' ? 'Nouvelle Trace locale. Archive cloud preservee, synchronisation suspendue.' : 'New local Trace. Cloud archive preserved, sync suspended.')
+      : (lang === 'fr' ? 'Nouvelle Trace locale ouverte.' : 'New local Trace opened.'));
+    sound.playSfx('click');
+  };
+
+  const continueTrace = async () => {
+    let effectiveOnboarding = onboarding;
+    if (account && cloudSyncState === 'unreconciled' && isOnline) {
+      try {
+        const reconciliation = await reconcileCloudSave(account);
+        effectiveOnboarding = reconciliation.merged?.onboarding || onboarding;
+      } catch {
+        // A failed cloud check never blocks access to the preserved local Trace.
+      }
+    }
+    setCurrentScreen(getTraceContinuationScreen(effectiveOnboarding));
+    sound.playSfx('levelup');
+  };
+
+  const openTitleCollection = () => {
+    setPortalMode('collection');
+    setCurrentScreen('portal');
+    sound.playSfx('click');
   };
 
   return (
     <>
-      <AudioControl />
-      {['hub', 'portal'].includes(currentScreen) && (
+      <AudioControl lang={lang} muted={audioSettings.muted} onToggleMute={toggleMute} />
+      <NetworkStatusBadge lang={lang} isOnline={isOnline} />
+      {(currentScreen === 'hub' || (currentScreen === 'portal' && portalMode === 'store')) && (
         <AuthPanel
           lang={lang}
           account={account}
@@ -1681,8 +2181,9 @@ function App() {
             seasonLevel: Math.max(1, Math.floor((activityProgress.seasonXp || 0) / 250) + 1)
           }}
           onToggleLanguage={toggleLanguage}
-          onOpenProfile={() => { setCurrentScreen('profile'); sound.playSfx('click'); }}
-          onContinue={() => { setCurrentScreen('hub'); sound.playSfx('levelup'); }}
+          onContinue={continueTrace}
+          onNewTrace={startNewLocalTrace}
+          onOpenCollection={openTitleCollection}
           onBackToTitle={() => { setCurrentScreen('title'); sound.playSfx('click'); }}
           onStartLocal={startOperation}
           onReplayPrologue={replayPrologue}
@@ -1697,6 +2198,16 @@ function App() {
             onLoadCloud: handleLoadCloud,
             onSaveCloud: handleSaveCloud
           }}
+          audioSettings={audioSettings}
+          onChangeAudioSetting={changeAudioSetting}
+          onToggleMute={toggleMute}
+          titleRotation={titleRotation}
+          attractStages={titleAttractStages}
+          attractCards={titleAttractCards}
+          eventVariant={titleEventVariant}
+          eventOptions={titleEventOptions}
+          activeEventId={activityProgress.activeSpecialEventId}
+          onSelectEvent={selectTitleEventVariant}
         />
       )}
 
@@ -1720,6 +2231,8 @@ function App() {
             activeTeam={activeTeam}
             setActiveTeam={setActiveTeam}
             completedStages={completedStages}
+            completedArcIds={completedArcIds}
+            arcReplayUnlockedIds={arcReplayUnlockedIds}
             campaignProgress={ocCampaignState}
             inventory={inventory}
             setInventory={setInventory}
@@ -1741,7 +2254,7 @@ function App() {
             setPortalCollection={setPortalCollection}
             onLaunchStage={handleLaunchStage}
             onReplayEnding={replayOcCampaignEnding}
-            onGoToPortal={() => { sound.playSfx('click'); setCurrentScreen('portal'); }}
+            onGoToPortal={() => { sound.playSfx('click'); setPortalMode('store'); setCurrentScreen('portal'); }}
             />
           </Suspense>
         </HubErrorBoundary>
@@ -1829,7 +2342,11 @@ function App() {
             hiddenUniverses={hiddenUniverses}
             disabledAssets={disabledAssets}
             completedStages={completedStages}
-            onBack={() => { sound.playSfx('click'); setCurrentScreen('hub'); }}
+            collectionOnly={portalMode === 'collection'}
+            onBack={() => {
+              sound.playSfx('click');
+              setCurrentScreen(portalMode === 'collection' ? 'title' : 'hub');
+            }}
           />
         </Suspense>
       )}
