@@ -8,6 +8,20 @@ export const GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG = Object.freeze([
     packSha256: "049eaaff73748db087114a7cd71aabc7224f6c776266feaadd6794e8fd557189"
   }),
   Object.freeze({
+    universe: "Chucky",
+    slug: "chucky",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "3691f40a9c42c4c98495202a807255a4043d15116d19f910a116a76733ff266b"
+  }),
+  Object.freeze({
+    universe: "Crash Bandicoot",
+    slug: "crash-bandicoot",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "5a84003046165c310082bbe6cf3e9aa239d2084b1320cb0e97b3530a54929b0e"
+  }),
+  Object.freeze({
     universe: "Dead Space",
     slug: "dead-space",
     hudHeight: 512,
@@ -34,6 +48,20 @@ export const GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG = Object.freeze([
     hudHeight: 512,
     portalFile: "portal-effects-atlas.webp",
     packSha256: "a6b24b3ff8920cf4ff74e870710b0e8a36b9a2d32041f886c9bd8f76e83f3187"
+  }),
+  Object.freeze({
+    universe: "Doom",
+    slug: "doom",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "4494975593e4eb7829b8f16e6cc34050ed2f86c1334c76116a7a3f1a8695ae12"
+  }),
+  Object.freeze({
+    universe: "Exit 8",
+    slug: "exit-8",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "e5578b62b1899eb723c001496af196df0d83eac9ae860d8654ab36901b2aa872"
   }),
   Object.freeze({
     universe: "Gears of War",
@@ -64,11 +92,53 @@ export const GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG = Object.freeze([
     packSha256: "b98e8304ffa5a7ffe132241859f05a9d32525c881099f9528d32a04857a960e3"
   }),
   Object.freeze({
+    universe: "Hazbin Hotel",
+    slug: "hazbin-hotel",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "cfd3efb8e3b1a9efac3a557a0d9b6c86f25516adb7b18c4df964d933cd0e030f"
+  }),
+  Object.freeze({
+    universe: "Mass Effect",
+    slug: "mass-effect",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "62feb7288dadff255bfc225913b84ae84fd6eeb25b89a7afeba9195b4ac95a64"
+  }),
+  Object.freeze({
+    universe: "Rayman",
+    slug: "rayman",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "a09000aac7d6816aea91682bc891a4970731dd1cf7253a7065e789ff3d0f0d5d"
+  }),
+  Object.freeze({
+    universe: "Rick & Morty",
+    slug: "rick-morty",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "8583e3d5e8bedadf633afc9a982b8ea303ff8c4e02f782377eec2a1943373360"
+  }),
+  Object.freeze({
+    universe: "Rubber",
+    slug: "rubber",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "3a16853217a26de05050ccab1e61f29dd242c787ec4a3d37e9dd8a0afddae135"
+  }),
+  Object.freeze({
     universe: "Sausage Party",
     slug: "sausage-party",
     hudHeight: 512,
     portalFile: "portal-effects-atlas.webp",
     packSha256: "483508a899283a9e65801573833eed802557a523001320d3d0d4d0e58d713057"
+  }),
+  Object.freeze({
+    universe: "Saw",
+    slug: "saw",
+    hudHeight: 512,
+    portalFile: "portal-effects-atlas.webp",
+    packSha256: "8cb588320db8672ae2410953fb507fac0984cee291aadbafd9e0f71a4294bab8"
   }),
   Object.freeze({
     universe: "Spyro",
