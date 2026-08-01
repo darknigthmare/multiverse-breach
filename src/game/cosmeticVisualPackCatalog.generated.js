@@ -96,7 +96,7 @@ export const GENERATED_UNIVERSE_COSMETIC_PACK_CATALOG = Object.freeze([
     slug: "hazbin-hotel",
     hudHeight: 512,
     portalFile: "portal-effects-atlas.webp",
-    packSha256: "cfd3efb8e3b1a9efac3a557a0d9b6c86f25516adb7b18c4df964d933cd0e030f"
+    packSha256: "bcb7f523945a68d52141913b2522c68a514f57fb42947ee30ecf0dfda164955e"
   }),
   Object.freeze({
     universe: "Mass Effect",
