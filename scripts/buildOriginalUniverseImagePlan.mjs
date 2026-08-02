@@ -224,9 +224,9 @@ function modeComposition(mode) {
 function assetPresentation(kind, entity = {}) {
   if (kind === 'booster') {
     return {
-      assetType: 'vertical 2:3 collectible booster artwork',
-      composition: 'one centered sealed foil packet, completely visible from top seam to bottom seam, with a single lore-faithful emblematic scene and controlled negative space; no loose cards',
-      subject: 'the universe conflict distilled into one representative environmental scene, with the three canonical heroes used only as small, readable action silhouettes'
+      assetType: 'vertical 2:3 physical collectible foil booster pack artwork',
+      composition: 'one centered sealed metallic foil packet, completely visible from the full crimped top seam to the full crimped bottom seam, surrounded by a narrow dark cosmic margin; one large circular luminous breach portal frames the lore-faithful cinematic scene; no loose cards',
+      subject: 'the universe conflict distilled into one representative cinematic environmental scene inside the portal, with the three canonical heroes used only as small, readable action silhouettes'
     };
   }
   if (kind === 'backdrop') {
@@ -291,6 +291,27 @@ function buildPrompt({
   const factText = entityFacts
     .map(fact => `${fact.label}=${quote(fact.reference.value)}`)
     .join('; ');
+
+  if (kind === 'booster') {
+    return [
+      'Use case: stylized-concept',
+      `Asset type: ${presentation.assetType} for Multiverse Breach`,
+      `Asset ID (metadata only, never render it): ${quote(assetId)}`,
+      `Primary request: create exactly one original physical booster wrapper for the canonical universe ${quote(context.universe.value)}.`,
+      `Current world lore (verbatim from the project manifest; obey it visually, do not render it as copy): origin=${quote(context.origin.value)}; breach=${quote(context.breach.value)}; core conflict=${quote(context.conflict.value)}.`,
+      `Current visual canon (verbatim): motif=${quote(context.motif.value)}; palette=${quote(context.colors.value)}.`,
+      `Current sensitivity notes (verbatim project constraints): ${context.sensitivity.length > 0 ? context.sensitivity.map(note => quote(note.value)).join('; ') : 'none recorded for this original world'}. Respect every recorded note as a binding visual constraint. A note requesting specialist review is a caution to avoid unsupported depictions, not a claim that human consultation has occurred.`,
+      `Current asset facts (verbatim): ${factText}.`,
+      `Subject: ${presentation.subject}.`,
+      'Style/medium: premium cinematic game key art printed on highly detailed metallic foil; realistic crinkles, highlights and material depth; wholly original project artwork, never a flat poster, trading card, box, placeholder or copied key art.',
+      `Composition/framing: ${presentation.composition}.`,
+      'Brand structure: universe title large at the top; UNIVERSE directly beneath it; BREACH PORTAL BOOSTER as the central product line; 5 UNLOCKABLES in a clean lower information panel; ANOMALY SERIES on the bottom rarity band. Preserve breathing room around every label and keep the complete wrapper silhouette readable.',
+      'Required visible text, exact and exhaustive: the exact universe title quoted in Primary request; UNIVERSE; BREACH PORTAL BOOSTER; 5 UNLOCKABLES; ANOMALY SERIES. Render those five labels legibly and do not invent, misspell, repeat or add any other text.',
+      'Lore fidelity: treat every quoted project fact as binding; add only connective visual detail that does not contradict the current lore; preserve the entity identity, function, hierarchy and established world palette.',
+      'Constraints: one image, one booster, one universe and one coherent composition only; complete top and bottom crimped seams; circular luminous breach portal; wholly original design; no copied official key art or licensed character design; no franchise insignia; no loose cards; no UI; no signature; no watermark.',
+      'Avoid: flat poster, flat card, cropped packet, missing seam, box, pouch without crimped foil seams, collage, contact sheet, split panels, multiple variants, extra logos, extra typography, pseudo-text, watermark, unrelated crossover elements.'
+    ].join('\n');
+  }
 
   return [
     'Use case: stylized-concept',

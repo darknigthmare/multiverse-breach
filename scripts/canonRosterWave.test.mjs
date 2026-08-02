@@ -319,7 +319,9 @@ test('wave C locks the researched continuity and noncombat finales', () => {
 
   const survivaure = byUniverse('Les Aventuriers du Survivaure');
   assert.equal(survivaure.licensing?.permissionRequired, true);
-  assert.equal(survivaure.licensing?.status, 'not-authorized-for-public-release');
+  assert.equal(survivaure.licensing?.status, 'authorized-for-public-release');
+  assert.equal(survivaure.licensing?.authorizationConfirmedAt, '2026-08-02');
+  assert.equal(survivaure.licensing?.authorizationSource, 'project-owner confirmation');
 
   const expectedTrialTypes = new Map([
     ['survivaure_haldar', 'evidence'],

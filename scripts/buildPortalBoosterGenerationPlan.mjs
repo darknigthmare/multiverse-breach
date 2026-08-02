@@ -52,7 +52,7 @@ export const slugifyBoosterUniverse = (universe) => {
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/&/g, ' and ')
     .replace(/\+/g, ' plus ')
-    .replace(/[’']/g, '')
+    .replace(/[\u2019']/g, '')
     .replace(/[^a-zA-Z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .toLowerCase();
@@ -119,9 +119,9 @@ const buildPrompt = ({ universe, heroes }) => {
     'Style/medium: premium cinematic trading-card packaging, detailed original fan art, metallic foil, embossed accents, dramatic but readable lighting.',
     'Composition/framing: exact 2:3 portrait; one straight-on vertical packet centered with generous margin; crimped foil seams visible at top and bottom; circular luminous breach portal in the middle; no cropped wrapper edge.',
     'Materials/textures: realistic dark metallic foil with a universe-specific accent palette and controlled holographic reflections.',
-    `Text (verbatim): "${universe}" at the top; "UNIVERSE"; "BREACH PORTAL BOOSTER"; "5 UNLOCKABLES"; "ANOMALY SERIES".`,
-    `Constraints: ${universe} only; one booster and one wrapper; original fan-made illustration; preserve the established Multiverse Breach booster structure; no official key art copied from a source image.`,
-    'Avoid: collage, grid, contact sheet, multiple packets, loose cards, hands, store shelf, poster layout, UI mockup, franchise logo, unrelated crossover character, watermark, illegible decorative paragraphs.'
+    `Required visible text, exact and exhaustive: "${universe}" at the top; "UNIVERSE"; "BREACH PORTAL BOOSTER"; "5 UNLOCKABLES"; "ANOMALY SERIES". Render those five labels legibly; do not invent, misspell, repeat, or add any other text.`,
+    `Constraints: ${universe} only; one booster and one wrapper; original fan-made illustration; preserve the established Multiverse Breach booster structure; complete top and bottom crimped seams; one circular luminous breach portal; no official key art copied from a source image.`,
+    'Avoid: flat poster, flat card, cropped packet, missing seam, box, uncrimped pouch, collage, grid, contact sheet, multiple packets, loose cards, hands, store shelf, UI mockup, franchise logo, unrelated crossover character, extra typography, pseudo-text, watermark.'
   ].join('\n');
 };
 

@@ -427,6 +427,11 @@ const inspectExistingBooster = async plan => {
 
 const main = async () => {
   const { force, universes } = parseArguments(process.argv.slice(2));
+  if (force) {
+    throw new Error(
+      'Derived sprite-composite boosters are disabled. Runtime booster art must be an independently generated and visually reviewed OpenAI foil-pack asset.'
+    );
+  }
   const allPlans = makePlans(CANON_ROSTER_WAVE);
   const requestedUniverses = new Set(universes);
   const plans = requestedUniverses.size === 0
@@ -444,8 +449,13 @@ const main = async () => {
   for (const plan of plans) {
     if (!force && await exists(plan.outputPath)) {
       outputs.push({ plan, source: await inspectExistingBooster(plan), action: 'skipped' });
-    } else {
+    } else if (force) {
       outputs.push({ plan, source: await composeBooster(plan, validations), action: 'written' });
+    } else {
+      throw new Error(
+        `${plan.universe}: missing independently generated OpenAI booster at ${plan.outputPath}. `
+        + 'The sprite-composite fallback is intentionally disabled.'
+      );
     }
   }
 
@@ -466,8 +476,8 @@ const main = async () => {
 
   console.log(JSON.stringify({
     status: 'approved',
-    source: 'canon-roster-final-sprites',
-    rightsTreatment: 'original fan-made game art only; no official bitmap asset used',
+    source: 'independently-generated-openai-booster-art',
+    rightsTreatment: 'original fan-made OpenAI game art only; no official bitmap asset used',
     force,
     written: outputs.filter(output => output.action === 'written').map(output => (
       `/boosters/${path.basename(output.plan.outputPath)}`

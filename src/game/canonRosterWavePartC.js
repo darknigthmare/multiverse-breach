@@ -261,7 +261,14 @@ const survivaure = definePack(SURVIVAURE, {
   fr: 'Bleûten, Johnson et Rasmusen tentent de remplir une mission spatiale qui dégénère entre Krygonites, pannes et créatures improbables.',
   en: 'Bleûten, Johnson and Rasmusen attempt a space mission that collapses into Krygonites, breakdowns and improbable creatures.',
   referenceUrls: [SURVIVAURE.url, 'https://www.knarfworld.net/sites/default/files/survivaure_episode_10.pdf', 'https://www.knarfworld.net/sites/default/files/Episode_15.pdf', 'https://www.knarfworld.net/sites/default/files/Episode_16.pdf', 'https://www.knarfworld.net/bd.html'],
-  licensing: { permissionRequired: true, status: 'not-authorized-for-public-release', referenceUrl: 'https://www.knarfworld.net/comment/reply/21.html', releaseRule: 'Do not publish or deploy this pack without written permission from Knarf.' },
+  licensing: {
+    permissionRequired: true,
+    status: 'authorized-for-public-release',
+    authorizationConfirmedAt: '2026-08-02',
+    authorizationSource: 'project-owner confirmation',
+    referenceUrl: 'https://www.knarfworld.net/comment/reply/21.html',
+    releaseRule: 'Written permission is confirmed for this project; retain the authorization record with the project documentation.'
+  },
   characters: [
     { id: 'bleuten', name: 'Capitaine Bleûten', role: 'tactical', weapon: 'Blaster réglementaire', weaponType: 'gun', simple: 'Tir de blaster', secondary: 'Ordre improvisé', defense: 'Abri de passerelle', special: 'Manœuvre du capitaine', visualAnchor: 'Human starship captain in a dark practical uniform with rank details, sidearm and an often overwhelmed command posture.', fr: 'Le capitaine du Survivaure maintient tant bien que mal une chaîne de commandement.', en: 'The Survivaure’s captain keeps a chain of command together as best he can.' },
     { id: 'johnson', name: 'Sergent Johnson', role: 'marine', weapon: 'Fusil spatial', weaponType: 'gun', simple: 'Rafale du sergent', secondary: 'Couverture rapprochée', defense: 'Position fortifiée', special: 'Discipline militaire', visualAnchor: 'Stocky sergeant in a reinforced space uniform, long firearm and squared military stance.', fr: 'Le sergent apporte une réponse militaire directe aux problèmes de l’équipage.', en: 'The sergeant supplies a direct military answer to the crew’s problems.' },

@@ -392,7 +392,12 @@ export const BOOSTER_ART_BY_UNIVERSE = {
   "Famille Pirate": "/boosters/famille-pirate.webp",
   "The Wild Thornberrys": "/boosters/the-wild-thornberrys.webp",
   "Téléchat": "/boosters/telechat.webp",
-  "Nicolas et Pimprenelle": "/boosters/nicolas-et-pimprenelle.webp"
+  "Nicolas et Pimprenelle": "/boosters/nicolas-et-pimprenelle.webp",
+  "Le Donjon de Naheulbeuk": "/boosters/donjon-de-naheulbeuk.webp",
+  "Les Aventuriers du Survivaure": "/boosters/aventuriers-du-survivaure.webp",
+  "Adoprixtoxis": "/boosters/adoprixtoxis.webp",
+  "Reflets d’Acide": "/boosters/reflets-d-acide.webp",
+  "Unreal Tournament": "/boosters/unreal-tournament.webp"
 };
 
 export const BOOSTER_ART_UNIVERSES = Object.freeze(Object.keys(BOOSTER_ART_BY_UNIVERSE));
