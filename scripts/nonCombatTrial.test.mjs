@@ -38,7 +38,8 @@ test('pure resolver recognizes every supported neutral trial family', () => {
     ['Libérer puis sauver la victime.', 'rescue'],
     ['Survivre et protéger le refuge jusqu’au matin.', 'survive'],
     ['Atteindre la sortie et évacuer.', 'escape'],
-    ['Rassembler les preuves et obtenir les aveux.', 'evidence']
+    ['Rassembler les preuves et obtenir les aveux.', 'evidence'],
+    ['Find Bubba and trigger the level exit.', 'escape']
   ];
 
   for (const [objective, expected] of cases) {

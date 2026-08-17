@@ -4,6 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { CANON_ROSTER_WAVE } from '../src/game/canonRosterWave.js';
+import { BOOSTER_ART_BY_UNIVERSE } from '../src/game/portalBoosterCatalog.js';
+import { slugifyBoosterUniverse } from './buildPortalBoosterGenerationPlan.mjs';
 
 const BOOSTER_WIDTH = 640;
 const BOOSTER_HEIGHT = 960;
@@ -13,18 +15,10 @@ const CELL_SIZE = 256;
 const CELL_COUNT = 16;
 const CELL_GUARD_PIXELS = 12;
 const CHROMA_TOLERANCE = 32;
-const EXPECTED_BOOSTER_COUNT = 31;
+const EXPECTED_BOOSTER_COUNT = 172;
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const boosterDirectory = path.join(repositoryRoot, 'public', 'boosters');
-
-const STABLE_BOOSTER_SLUGS = Object.freeze({
-  "Avatar (Na'vi)": 'avatar-navi',
-  'SCP Foundation': 'scp-foundation',
-  Skibidi: 'skibidi',
-  Skyline: 'skyline',
-  'Kill Bill': 'kill-bill'
-});
 
 const slugify = value => String(value || 'unknown')
   .normalize('NFD')
@@ -98,13 +92,23 @@ const makePlans = wave => {
     }
     const worldBoss = String(threatName(entry.worldBoss) || '').trim();
     if (!worldBoss) throw new Error(`${universe}: a named world boss is required.`);
-    const slug = STABLE_BOOSTER_SLUGS[universe] || slugify(universe);
+    const outputPublicPath = BOOSTER_ART_BY_UNIVERSE[universe]
+      || `/boosters/${slugifyBoosterUniverse(universe)}.webp`;
+    const outputSegments = outputPublicPath.split('/').filter(Boolean);
+    if (
+      outputSegments[0] !== 'boosters'
+      || outputSegments.some(segment => segment === '..')
+      || path.extname(outputSegments.at(-1) || '').toLowerCase() !== '.webp'
+    ) {
+      throw new Error(`${universe}: invalid runtime booster path ${outputPublicPath}.`);
+    }
+    const slug = path.basename(outputSegments.at(-1), '.webp');
     return {
       entry,
       universe,
       title: boosterTitle(entry),
       slug,
-      outputPath: path.join(boosterDirectory, `${slug}.webp`),
+      outputPath: path.join(repositoryRoot, 'public', ...outputSegments),
       sources: [
         ...heroes.map((hero, index) => ({
           role: `hero-${index + 1}`,

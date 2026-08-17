@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import { CANON_ROSTER_WAVE } from '../src/game/canonRosterWave.js';
 
-const EXPECTED_SHEET_COUNT = 310;
+const EXPECTED_SHEET_COUNT = CANON_ROSTER_WAVE.length * 10;
 const SHEET_SIZE = 1024;
 const CELL_SIZE = 256;
 const CELL_COLUMNS = 4;

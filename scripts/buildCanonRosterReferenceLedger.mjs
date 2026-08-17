@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { CANON_ROSTER_WAVE } from '../src/game/canonRosterWave.js';
 
-const EXPECTED_ENTRY_COUNT = 310;
+const EXPECTED_ENTRY_COUNT = CANON_ROSTER_WAVE.length * 10;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ledgerPath = path.join(

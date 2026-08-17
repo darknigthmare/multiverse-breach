@@ -4247,6 +4247,10 @@ function makeUniverseWave(entries) {
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, ' ')
       .trim();
+    const nonCombatCharacters = [entry.hero, ...(entry.allies || [])].filter(characterEntry => (
+      Array.isArray(characterEntry)
+      && characterEntry[3]?.nonCombat === true
+    ));
     const stageVariants = (entry.stageVariants || []).map(variant => {
       const normalizedVariant = Array.isArray(variant)
         ? {
@@ -4260,21 +4264,50 @@ function makeUniverseWave(entries) {
       const targetEncounter = encounters.find(encounter => (
         normalizeEncounterName(encounter.name) === normalizeEncounterName(normalizedVariant.bossName)
       ));
-      if (!targetEncounter?.policy) return normalizedVariant;
+      const targetCharacter = nonCombatCharacters.find(characterEntry => (
+        normalizeEncounterName(characterEntry[1]) === normalizeEncounterName(normalizedVariant.bossName)
+      ));
+      const authoredStageTrial = normalizedVariant.nonCombat === true
+        || Boolean(normalizedVariant.nonCombatTrial)
+        || Boolean(targetCharacter);
+      if (!targetEncounter?.policy && !authoredStageTrial) return normalizedVariant;
 
-      const trial = inferNonCombatTrial(targetEncounter.policy, {
+      const characterMetadata = targetCharacter?.[3] || {};
+      const stageTrialId = targetEncounter?.id
+        || targetCharacter?.[0]
+        || `stage-trial-${entry.key}-${normalizeEncounterName(normalizedVariant.name).replace(/\s+/g, '-')}`;
+      const stageTrialName = targetEncounter?.name
+        || targetCharacter?.[1]
+        || normalizedVariant.bossName
+        || normalizedVariant.name;
+      const stageTrialPolicy = targetEncounter?.policy || makeNonCombatPolicyFromThreat(entry.universe, {
+        id: stageTrialId,
+        name: stageTrialName,
+        nonCombat: true,
+        entityType: characterMetadata.entityType || normalizedVariant.entityType || 'authored-stage-trial',
+        objective: characterMetadata.objective || normalizedVariant.objective,
+        objectiveFr: characterMetadata.objectiveFr || normalizedVariant.objectiveFr,
+        objectiveEn: characterMetadata.objectiveEn || normalizedVariant.objectiveEn,
+        victoryCondition: characterMetadata.victoryCondition || normalizedVariant.victoryCondition || 'complete-stage-trial',
+        trialType: characterMetadata.trialType || normalizedVariant.trialType || normalizedVariant.objectiveType,
+        visualAnchor: characterMetadata.visualAnchor || normalizedVariant.visualAnchor || entry.visualAnchor,
+        nonCombatTrial: characterMetadata.nonCombatTrial || normalizedVariant.nonCombatTrial
+      });
+      if (!stageTrialPolicy) return normalizedVariant;
+
+      const trial = inferNonCombatTrial(stageTrialPolicy, {
         universe: entry.universe,
-        sourceId: targetEncounter.id,
-        sourceName: targetEncounter.name
+        sourceId: stageTrialId,
+        sourceName: stageTrialName
       });
       return {
         ...normalizedVariant,
         originalMode: normalizedVariant.mode,
         mode: 'Smash',
         bossName: null,
-        encounterId: targetEncounter.id,
+        encounterId: stageTrialId,
         nonCombat: true,
-        finalePolicy: targetEncounter.policy,
+        finalePolicy: stageTrialPolicy,
         nonCombatTrial: trial,
         objectiveType: trial?.type,
         enemyRoster: [],
@@ -4311,7 +4344,7 @@ function makeUniverseWave(entries) {
       mode: entry.mode,
       difficulty: entry.difficulty,
       bossName: worldBossRoute.encounter
-        ? threatName(bosses.at(-1)) || worldBossPolicy?.objective?.fr || null
+        ? threatName(bosses.at(-1)) || null
         : entry.boss,
       title: { en: title, fr: titleFr },
       desc: entry.desc || {

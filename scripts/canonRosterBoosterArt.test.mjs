@@ -27,3 +27,21 @@ test('the canon-roster builder cannot recreate derived sprite-composite placehol
     }
   );
 });
+
+test('the canon-roster builder validates the complete 172-universe wave before filtering', async () => {
+  await assert.rejects(
+    execFileAsync(process.execPath, [
+      builderPath,
+      '--universe=Definitely Missing Canon Universe'
+    ], {
+      cwd: repositoryRoot,
+      maxBuffer: 1024 * 1024
+    }),
+    (error) => {
+      const output = `${error.stderr || ''}\n${error.stdout || ''}`;
+      assert.match(output, /Unknown canon roster universe filter/);
+      assert.doesNotMatch(output, /must contain exactly \d+ entries/);
+      return true;
+    }
+  );
+});

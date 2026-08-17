@@ -35,6 +35,9 @@ const rewriteImports = (source) => source
   .replaceAll("from './canonRosterWavePartA'", "from './canonRosterWavePartA.js'")
   .replaceAll("from './canonRosterWavePartB'", "from './canonRosterWavePartB.js'")
   .replaceAll("from './canonRosterWavePartC'", "from './canonRosterWavePartC.js'")
+  .replaceAll("from './canonRosterWavePartD'", "from './canonRosterWavePartD.js'")
+  .replaceAll("from './canonRosterWavePartE'", "from './canonRosterWavePartE.js'")
+  .replaceAll("from './canonRosterWavePartF'", "from './canonRosterWavePartF.js'")
   .replaceAll("from './nonCombatTrial'", "from './nonCombatTrial.js'")
   .replaceAll("from './featuredUniversePacks'", "from './featuredUniversePacks.js'")
   .replaceAll("from './loreBossOverrides'", "from './loreBossOverrides.js'")
@@ -51,7 +54,8 @@ const rewriteImports = (source) => source
 const copyRuntimeModules = async () => {
   await fs.rm(tmpDir, { recursive: true, force: true });
   await fs.mkdir(tmpDir, { recursive: true });
-  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'canonRosterWave.js', 'canonRosterWavePartA.js', 'canonRosterWavePartB.js', 'canonRosterWavePartC.js', 'nonCombatTrial.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'originalUniversesManifest.json', 'originalUniverseProduction.js', 'originalUniverseWave.js', 'gearShopVisualContractsFirst40.js', 'gearShopVisualContractsRemaining47.js', 'gearShopVisualContracts.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js', 'melee/meleeAnimationManifest.js', 'melee/meleeStateMachine.js'];
+  const files = ['featuredUniversePacks.js', 'requestedUniverseWave.js', 'canonRosterWave.js', 'canonRosterWavePartA.js', 'canonRosterWavePartB.js', 'canonRosterWavePartC.js', 'canonRosterWavePartD.js', 'canonRosterWavePartE.js', 'canonRosterWavePartF.js', 'nonCombatTrial.js', 'loreBossOverrides.js', 'loreEnemyOverrides.js', 'loreItemOverrides.js', 'loreWorldBossOverrides.js', 'stageLoreProfiles.js', 'ocDlcPacks.js', 'originalUniversesManifest.json', 'originalUniverseProduction.js', 'originalUniverseWave.js', 'gearShopVisualContractsFirst40.js', 'gearShopVisualContractsRemaining47.js', 'gearShopVisualContracts.js', 'expandedUniverses.js', 'loreAccuratePacks.js', 'solarOppositesSirenStarWarsPack.js', 'heroes.js', 'enemies.js', 'lore.js', 'battleItems.js', 'spriteAssets.js', 'melee/meleeAnimationManifest.js', 'melee/meleeStateMachine.js'];
+  files.push('canonRosterPackFactory.js', ...'GHIJKLM'.split('').map(part => `canonRosterWavePart${part}.js`));
   await Promise.all(files.map(async (file) => {
     const raw = await fs.readFile(path.join(sourceDir, file), 'utf8');
     const destination = path.join(tmpDir, file);

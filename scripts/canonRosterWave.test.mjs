@@ -9,6 +9,13 @@ import {
 } from '../src/game/expandedUniverses.js';
 import { HEROES_DB } from '../src/game/heroes.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';
+import { CANON_ROSTER_WAVE_PART_G } from '../src/game/canonRosterWavePartG.js';
+import { CANON_ROSTER_WAVE_PART_H } from '../src/game/canonRosterWavePartH.js';
+import { CANON_ROSTER_WAVE_PART_I } from '../src/game/canonRosterWavePartI.js';
+import { CANON_ROSTER_WAVE_PART_J } from '../src/game/canonRosterWavePartJ.js';
+import { CANON_ROSTER_WAVE_PART_K } from '../src/game/canonRosterWavePartK.js';
+import { CANON_ROSTER_WAVE_PART_L } from '../src/game/canonRosterWavePartL.js';
+import { CANON_ROSTER_WAVE_PART_M } from '../src/game/canonRosterWavePartM.js';
 
 const EXPECTED_UNIVERSES = Object.freeze([
   'Poppy Playtime',
@@ -41,7 +48,53 @@ const EXPECTED_UNIVERSES = Object.freeze([
   'The Purge',
   'Saw',
   'Puppet Master',
-  'Planete Hurlante'
+  'Planete Hurlante',
+  'Sanctum',
+  'Goat Simulator',
+  'Quake',
+  'Like a Dragon',
+  'Italian Brainrot',
+  'Legacy of Kain',
+  'Prey (2006)',
+  'Beyond Good & Evil',
+  'Metal: Hellsinger',
+  'Dead by Daylight',
+  "Dante's Inferno",
+  'Shadow Man',
+  'Croc: Legend of the Gobbos',
+  'Gex',
+  'Spyro',
+  'Rayman',
+  'NieR',
+  'Discipline: The Record of a Crusade',
+  'Bible Black',
+  'Hotline Miami',
+  'Warhammer 40,000: Space Marine',
+  'Back to the Future',
+  'Terminator',
+  'RoboCop',
+  'The Walking Dead — Telltale',
+  'Horizon Zero Dawn',
+  'Soldier of Fortune',
+  'Extreme Ghostbusters',
+  'Heart of Darkness',
+  'Rival Schools',
+  'MediEvil',
+  'Jersey Devil',
+  "Goemon's Great Adventure",
+  'MDK',
+  'Tail Concerto',
+  'Redneck Rampage',
+  'Hexen',
+  'Duke Nukem',
+  'Marathon',
+  ...CANON_ROSTER_WAVE_PART_G.map(pack => pack.universe),
+  ...CANON_ROSTER_WAVE_PART_H.map(pack => pack.universe),
+  ...CANON_ROSTER_WAVE_PART_I.map(pack => pack.universe),
+  ...CANON_ROSTER_WAVE_PART_J.map(pack => pack.universe),
+  ...CANON_ROSTER_WAVE_PART_K.map(pack => pack.universe),
+  ...CANON_ROSTER_WAVE_PART_L.map(pack => pack.universe),
+  ...CANON_ROSTER_WAVE_PART_M.map(pack => pack.universe)
 ]);
 
 const normalize = value => String(value || '')
@@ -130,7 +183,7 @@ const byUniverse = universe => {
   return entry;
 };
 
-test('canon roster wave exposes exactly the thirty-one requested runtime universes', () => {
+test('canon roster wave exposes exactly the 172 deduplicated requested runtime universes', () => {
   assert.ok(Array.isArray(CANON_ROSTER_WAVE));
   assert.equal(CANON_ROSTER_WAVE.length, EXPECTED_UNIVERSES.length);
   assert.deepEqual(CANON_ROSTER_WAVE.map(entry => entry.universe), EXPECTED_UNIVERSES);
@@ -557,5 +610,37 @@ test('dedicated trial IDs are stable and globally unique', () => {
   for (const stage of stages.filter(entry => entry.optionalTrial && entry.id >= 810000000)) {
     assert.equal(stage.id, stableTrialStageId(stage.universe, stage.encounterId), stage.name);
     assert.equal(stage.countsTowardCampaign, false, stage.name);
+  }
+});
+
+test('every authored noncombat stage variant becomes a playable trial without a fake boss', () => {
+  const stages = getExpandedStages();
+
+  for (const authored of CANON_ROSTER_WAVE) {
+    const nonCombatCharacterNames = new Set(
+      getCharacters(authored)
+        .filter(character => character[3]?.nonCombat === true)
+        .map(character => normalize(character[1]))
+    );
+    const authoredTrials = (authored.stageVariants || []).filter(variant => {
+      const metadata = Array.isArray(variant) ? variant[4] || {} : variant;
+      const bossName = Array.isArray(variant) ? variant[3] : variant.bossName;
+      return metadata.nonCombat === true
+        || Boolean(metadata.nonCombatTrial)
+        || nonCombatCharacterNames.has(normalize(bossName));
+    });
+
+    for (const variant of authoredTrials) {
+      const variantName = Array.isArray(variant) ? variant[1] : variant.name;
+      const stage = stages.find(candidate => (
+        candidate.universe === authored.universe
+        && candidate.name === variantName
+      ));
+      assert.ok(stage, `${authored.universe}/${variantName} stage`);
+      assert.equal(stage.nonCombat, true, `${authored.universe}/${variantName} noncombat flag`);
+      assert.ok(stage.nonCombatTrial, `${authored.universe}/${variantName} playable trial`);
+      assert.equal(stage.bossName, null, `${authored.universe}/${variantName} fake boss label`);
+      assert.deepEqual(stage.enemyRoster, [], `${authored.universe}/${variantName} enemy roster`);
+    }
   }
 });

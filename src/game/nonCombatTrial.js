@@ -113,7 +113,7 @@ const inferTypeFromText = value => {
   if (has('voiture', 'vehicle', 'vehicule', 'break ', 'briser', 'casser', 'frapper objet', 'destroy prop')) return 'break-object';
   if (has('collect', 'recuperer', 'rassembler', 'gather', 'pages')) return 'collect';
   if (has('switch', 'interrupteur', 'relay', 'relais', 'activate', 'activer', 'disable', 'desactiver', 'disarm', 'desamorcer', 'sabot')) return 'switches';
-  if (has('escape', 'sortie', 'evac', 'extract', 'fuir', 'atteindre la sortie', 'collapse', 'catch', 'attraper', 'arrest', 'chase', 'poursuivre', 'course', 'race')) return 'escape';
+  if (has('escape', 'exit', 'sortie', 'evac', 'extract', 'fuir', 'atteindre la sortie', 'collapse', 'catch', 'attraper', 'arrest', 'chase', 'poursuivre', 'course', 'race')) return 'escape';
   if (has('target', 'cible', 'shoot', 'tirer', 'stand de tir')) return 'hit-targets';
   if (has('survive', 'survivre', 'protect', 'proteger', 'until morning', 'jusqu a', 'siege', 'countdown')) return 'survive';
   return 'hit-targets';
