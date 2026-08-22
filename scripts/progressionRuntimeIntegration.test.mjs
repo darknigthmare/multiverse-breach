@@ -71,17 +71,18 @@ test('real combat consumes all 22 faction contracts and saved reputation passive
   assert.ok(Object.keys(baseStats).some(stat => withReputation[stat] > withoutReputation[stat]));
 });
 
-test('unclassified universes do not activate a narrative faction rule by fallback', () => {
-  assert.deepEqual(resolveUniverseFactionIds('Dino Crisis'), []);
-  assert.deepEqual(resolveUniverseFactionIds('Half-Life'), []);
+test('curated legacy affinities activate only their explicit base rule', () => {
+  assert.deepEqual(resolveUniverseFactionIds('Dino Crisis'), ['sci_fi']);
+  assert.deepEqual(resolveUniverseFactionIds('Half-Life'), ['sci_fi']);
+  assert.deepEqual(resolveUniverseFactionIds('Unknown Test Thread'), []);
   const result = applyFactionBonuses({ hp: 100, atk: 100, def: 100, spd: 100 }, {
     teamUniverses: ['Dino Crisis', 'Half-Life'],
     heroUniverse: 'Dino Crisis',
     stage: { universe: 'Dino Crisis' },
     reputationProgress: {}
   });
-  assert.deepEqual(result.activeRules, []);
-  assert.deepEqual(result.stats, { hp: 100, atk: 100, def: 100, spd: 100 });
+  assert.deepEqual(result.activeRules.map(rule => rule.id), ['sci_fi']);
+  assert.deepEqual(result.stats, { hp: 108, atk: 100, def: 100, spd: 100 });
 });
 
 test('every seasonal reward resolves to a mechanical item rendered by Hub inventory', () => {

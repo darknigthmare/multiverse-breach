@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { BOOSTER_ART_UNIVERSES } from '../src/game/portalBoosterCatalog.js';
 
 import {
+  BASE_FACTION_UNIVERSES,
+  CURATED_FACTION_UNIVERSES,
   FACTION_RULES,
   REPUTATION_TRACKS,
   applyFactionBonuses,
@@ -22,6 +25,27 @@ test('all 22 exposed faction labels own a unique mechanical contract', () => {
     assert.equal(rule.minMembers, 2);
     assert.ok(REPUTATION_TRACKS.some(track => track.id === rule.reputationId), `${rule.id} reputation`);
   });
+});
+
+test('every runtime Thread owns an explicit lore-authored base affinity', () => {
+  const curatedUniverses = Object.values(CURATED_FACTION_UNIVERSES).flat();
+  assert.equal(curatedUniverses.length, 112);
+  assert.equal(new Set(curatedUniverses).size, 112);
+
+  const runtimeUniverses = [...BOOSTER_ART_UNIVERSES, 'Nexus de Convergence'];
+  assert.equal(runtimeUniverses.length, 525);
+  assert.deepEqual(
+    runtimeUniverses.filter(universe => resolveUniverseFactionIds(universe).length === 0),
+    []
+  );
+  assert.deepEqual(
+    curatedUniverses.filter(universe => resolveUniverseFactionIds(universe).length !== 1),
+    []
+  );
+  assert.deepEqual(
+    Object.keys(BASE_FACTION_UNIVERSES).sort(),
+    ['apocalypse', 'arcane', 'cyber', 'horror', 'sci_fi', 'tactical']
+  );
 });
 
 test('the five reputation tracks gain ranks and apply real passive bonuses', () => {

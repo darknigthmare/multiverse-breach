@@ -54,19 +54,19 @@
   },
   "summary": {
     "characterArcEntryCount": 1912,
-    "entriesWithLocalReferences": 975,
-    "entriesWithoutLocalReferences": 937,
-    "uniqueReferencePathCount": 975,
+    "entriesWithLocalReferences": 976,
+    "entriesWithoutLocalReferences": 936,
+    "uniqueReferencePathCount": 976,
     "missingReferenceFileCount": 0,
     "referenceClassifications": {
-      "approved": 806,
+      "approved": 807,
       "rejected-placeholder": 164,
       "needs-review": 5
     },
     "entryClassifications": {
-      "approved": 806,
+      "approved": 807,
       "rejected-placeholder": 164,
-      "needs-review": 942
+      "needs-review": 941
     }
   },
   "knownCaseExpectations": {
@@ -34725,6 +34725,59 @@
       }
     },
     {
+      "path": "/sprites/generated/heroes/predator/greyback-yautja.png",
+      "classification": "approved",
+      "reasons": [
+        "meets-detailed-sprite-reference-thresholds"
+      ],
+      "usedByEntryCount": 1,
+      "entryIds": [
+        9366
+      ],
+      "characters": [
+        "Greyback Elder"
+      ],
+      "universes": [
+        "Predator"
+      ],
+      "metrics": {
+        "fileBytes": 1086996,
+        "fileSha256": "1284f35efb3378e4f9755f58a1a8ac197bb19fd34bb44b4bb4667425685c9fbc",
+        "format": "PNG",
+        "sourceMode": "RGBA",
+        "width": 1024,
+        "height": 1024,
+        "pixelCount": 1048576,
+        "hasAlpha": true,
+        "alphaLevelCount": 2,
+        "opaquePixels": 325117,
+        "alphaOccupancy": 0.310056,
+        "semiTransparentPixelShare": 0.0,
+        "occupiedBoundingBox": [
+          12,
+          12,
+          1012,
+          1012
+        ],
+        "occupiedBoundingBoxFill": 0.325117,
+        "opaqueColorCount": 134369,
+        "quantizedColorCount16": 684,
+        "dominantOpaqueColorShare": 0.006994,
+        "colorEntropyBits": 16.144792,
+        "luminanceEntropyBits": 7.534391,
+        "bytesPerPixel": 1.03664,
+        "validOpaqueNeighborPairs": 635634,
+        "colorTransitionRate": 0.998055,
+        "strongDetailRate": 0.749214,
+        "meanNeighborDifference": 40.124575,
+        "tileDiversity4x4": {
+          "tileCount": 16,
+          "uniqueCoarseTileCount": 16,
+          "uniqueCoarseTileShare": 1.0
+        }
+      }
+    },
+    {
       "path": "/sprites/generated/heroes/predator/harrigan-predator.png",
       "classification": "approved",
       "reasons": [
@@ -54665,10 +54718,12 @@
       "universes": [
         "Predator"
       ],
-      "localReferences": [],
-      "classification": "needs-review",
+      "localReferences": [
+        "/sprites/generated/heroes/predator/greyback-yautja.png"
+      ],
+      "classification": "approved",
       "reasons": [
-        "no-local-reference"
+        "all-local-references-approved"
       ]
     },
     {

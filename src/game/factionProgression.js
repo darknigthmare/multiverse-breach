@@ -3,6 +3,138 @@ import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
 
 const unique = values => [...new Set(values.filter(Boolean))];
 
+// Explicit affinities for the legacy/core worlds and for expansion packs whose
+// source tag is intentionally broader than the six mechanical Thread families.
+// Keep this authored: a hash or a generic `multiverse` fallback would make the
+// same universe change faction when catalogs are reordered and would erase its
+// lore identity.
+export const CURATED_FACTION_UNIVERSES = Object.freeze({
+  sci_fi: Object.freeze([
+    'Angels Fall First',
+    "Avatar (Na'vi)",
+    'Back to the Future',
+    'Crysis',
+    'Daikatana',
+    'Dino Crisis',
+    'Evolve',
+    'Half-Life',
+    'Interstellar Marines',
+    'Invincible',
+    'Le Cinquième Element',
+    'Lost Planet 2',
+    'Natural Selection 2',
+    "No Man's Sky",
+    'Red Faction',
+    'Redneck Rampage',
+    'Rick & Morty',
+    'Sartorius Stedim Biotech',
+    'Serious Sam',
+    'Starship Troopers',
+    'Stellar Dream — Safe Colony Mission',
+    'Subverse — Safe Galactic Rebellion',
+    'Turok',
+    'Nexus de Convergence'
+  ]),
+  horror: Object.freeze([
+    'Agony',
+    'Bendy and the Ink Machine',
+    'BioShock',
+    'Buckshot Roulette',
+    'Choo-Choo Charles',
+    'Finding Frankie',
+    'Halloween',
+    'Hello Neighbor',
+    'Jersey Devil',
+    'Killing Floor 2',
+    'Nemesis — Awaken Realms',
+    'Phantasmagoria',
+    'R.E.P.O.',
+    'Scary Movie',
+    'The Backrooms — Kane Pixels',
+    'The Binding of Isaac: Rebirth',
+    'The Darkness',
+    'The Forest'
+  ]),
+  cyber: Object.freeze([
+    'Atomic Heart',
+    'Beat Banger — Safe Rhythm Studio',
+    'BIT.TRIP',
+    'Deus Ex',
+    'E.Y.E: Divine Cybermancy',
+    'Gex',
+    "Goemon's Great Adventure",
+    'Horizon Zero Dawn',
+    'Jet Set Radio',
+    "Mirror's Edge",
+    'Murder Drones',
+    'Putt-Putt',
+    'Remember Me',
+    'RoboCop',
+    'SUPERHOT',
+    'Tail Concerto',
+    'The Surge',
+    'The Truman Show',
+    'Torbahead',
+    'Vocaloid',
+    'Wallace & Gromit'
+  ]),
+  arcane: Object.freeze([
+    'Brütal Legend',
+    'Crypt of the NecroDancer',
+    'Cuphead',
+    'Dark Souls',
+    'Devil May Cry',
+    'Extreme Ghostbusters',
+    'Freddi Fish',
+    'Heart of Darkness',
+    'La Petite Histoire de France',
+    'Les Kassos',
+    'Les Zinzins de l’espace',
+    'Magicka',
+    'MediEvil',
+    'Oggy et les Cafards',
+    'Palworld',
+    'Peepoodo — Safe Educational Adaptation',
+    'Rock of Ages',
+    'Skullgirls',
+    'The Amazing Patate Show',
+    'The Ball',
+    'Trololo'
+  ]),
+  tactical: Object.freeze([
+    'Absolver: Downfall',
+    'Happy Wheels',
+    'HITMAN — World of Assassination',
+    'Killer Instinct',
+    'Max Payne 2',
+    'Metal Slug',
+    'Overgrowth',
+    'PUBG',
+    'Rival Schools',
+    'Sam & Max',
+    'Soldier of Fortune',
+    'Spy Fox',
+    'Squirrel with a Gun',
+    'Super Meat Boy',
+    'Team Fortress 2',
+    'The Wild Thornberrys',
+    'Tom Clancy’s Splinter Cell',
+    'Unreal Tournament 2004',
+    'Wolfenstein',
+    'Worms'
+  ]),
+  apocalypse: Object.freeze([
+    'Borderlands 2',
+    'BRINK',
+    'Dead Rising',
+    'Deponia',
+    'Doom Sweeper — Safe Apocalypse',
+    'Oddworld',
+    'Plants vs. Zombies',
+    'Postal'
+  ])
+});
+
 const ORIGINAL_UNIVERSES_BY_FACTION = Object.fromEntries(
   ['sciFi', 'horror', 'cyber', 'arcane', 'tactical', 'apocalypse'].map(factionId => [
     factionId,
@@ -16,30 +148,36 @@ export const BASE_FACTION_UNIVERSES = Object.freeze({
   sci_fi: Object.freeze(unique([
     'Alien', 'Predator', 'Prometheus', 'Stargate', 'Stargate Atlantis', 'Stargate Universe',
     'Stargate Infinity', 'Halo', 'Mass Effect', 'Gears of War', 'Star Wars', 'The Fifth Element',
+    ...CURATED_FACTION_UNIVERSES.sci_fi,
     ...(EXPANDED_FACTION_UNIVERSES.sciFi || []),
     ...(ORIGINAL_UNIVERSES_BY_FACTION.sciFi || [])
   ])),
   horror: Object.freeze(unique([
     'Resident Evil', 'Silent Hill', 'Saw', 'Hellraiser', 'Dead Space', 'Chucky', 'Slender Man',
     ...(EXPANDED_FACTION_UNIVERSES.horror || []),
+    ...CURATED_FACTION_UNIVERSES.horror,
     ...(ORIGINAL_UNIVERSES_BY_FACTION.horror || [])
   ])),
   cyber: Object.freeze(unique([
     'The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus', 'Digimon',
     ...(EXPANDED_FACTION_UNIVERSES.cyber || []),
+    ...CURATED_FACTION_UNIVERSES.cyber,
     ...(ORIGINAL_UNIVERSES_BY_FACTION.cyber || [])
   ])),
   arcane: Object.freeze(unique([
     'Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue',
     ...(EXPANDED_FACTION_UNIVERSES.arcane || []),
+    ...CURATED_FACTION_UNIVERSES.arcane,
     ...(ORIGINAL_UNIVERSES_BY_FACTION.arcane || [])
   ])),
   tactical: Object.freeze(unique([
     'Metal Gear', 'Payday', 'Guilty Gear', 'Unreal', 'Counter-Strike', 'Rainbow Six',
+    ...CURATED_FACTION_UNIVERSES.tactical,
     ...(ORIGINAL_UNIVERSES_BY_FACTION.tactical || [])
   ])),
   apocalypse: Object.freeze(unique([
     'Mad Max', 'Mad Max: Fury Road', 'Fallout', 'Doom', 'The Purge', 'Ghosts of Mars',
+    ...CURATED_FACTION_UNIVERSES.apocalypse,
     ...(ORIGINAL_UNIVERSES_BY_FACTION.apocalypse || [])
   ]))
 });

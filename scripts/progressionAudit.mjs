@@ -13,7 +13,8 @@ import {
   getOcCampaignProgress
 } from '../src/game/ocCampaign.js';
 import { resolveStageEnemyData } from '../src/game/stageEnemyResolver.js';
-import { FACTION_RULES, REPUTATION_TRACKS } from '../src/game/factionProgression.js';
+import { FACTION_RULES, REPUTATION_TRACKS, resolveUniverseFactionIds } from '../src/game/factionProgression.js';
+import { BOOSTER_ART_UNIVERSES } from '../src/game/portalBoosterCatalog.js';
 import { SPECIAL_EVENTS, getSpecialEventRewardById } from '../src/game/specialEvents.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
@@ -694,6 +695,14 @@ assert(ocCampaignSource.includes('OC_CAMPAIGN_MISSIONS') && ocCampaignSource.inc
 assert(hubSource.includes('<OcCampaignChronicle'), 'Story mode must expose the dedicated OC campaign chronicle.');
 assert(narrativeSystemsSource.includes('manga_war_council: {'), 'The Manga War Council must live in the central faction campaign registry.');
 assert(FACTION_RULES.length === 22 && new Set(FACTION_RULES.map(rule => rule.id)).size === 22, 'Every exposed faction label must own a unique mechanical rule.');
+const factionAffinityUniverses = [...BOOSTER_ART_UNIVERSES, 'Nexus de Convergence'];
+const missingFactionAffinities = factionAffinityUniverses.filter(
+  universe => resolveUniverseFactionIds(universe).length === 0
+);
+assert(
+  missingFactionAffinities.length === 0,
+  `Every runtime Thread must own an explicit faction affinity; missing: ${missingFactionAffinities.join(', ')}`
+);
 assert(REPUTATION_TRACKS.length === 5 && REPUTATION_TRACKS.every(track => track.thresholds.length >= 5 && track.passive), 'All five reputation tracks must expose ranks and a gameplay passive.');
 assert(appSource.includes('awardMissionReputation') && appSource.includes('getReputationResourceMultiplier'), 'Mission results must award reputation and apply its resource passive.');
 assert(hubSource.includes('applyFactionBonuses') && hubSource.includes('resolveMissionFactionIds') && !hubSource.includes('const FACTION_RULES = ['), 'Hub combat stats and synergy UI must consume the centralized 22-rule faction engine.');
@@ -1095,6 +1104,11 @@ console.log(JSON.stringify({
   dlcDefault: 'hidden',
   storyChapterPortals: 'active-chapter-only',
   factionArcCompletion: 'expanded',
+  factionAffinityCoverage: {
+    total: factionAffinityUniverses.length,
+    classified: factionAffinityUniverses.length - missingFactionAffinities.length,
+    missing: missingFactionAffinities.length
+  },
   fighterMode: 'playable-hub-tab',
   fighterGameplay: ['flat-arena', 'one-active-fighter', 'three-slot-tag', 'guard-break', 'combos', 'specials', 'projectiles', 'crouch', 'ai-difficulties'],
   raceMode: 'playable-hub-tab',

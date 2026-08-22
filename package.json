@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "npm run test:custom && npm run test:boosters && npm run boosters:audit && npm run test:extension && npm run test:polish && npm run test:cg && npm run cg:manifest:check && npm run test:melee && npm run test:stages && npm run test:noncombat-trials && npm run melee:sprites:audit && npm run portals:audit && npm run portals:prompts -- --check && npm run cosmetics:audit && npm run test:cosmetics && npm run rift:audit && npm run test:rift && npm run music:audit && npm run test:campaign && npm run test:oc-dlc && npm run test:original-universes && npm run audit:oc-dlc && npm run audit:original-universes && npm run check:progression",
+    "prebuild": "npm run test:custom && npm run test:boosters && npm run boosters:audit && npm run test:extension && npm run test:polish && npm run test:cg && npm run cg:manifest:check && npm run test:melee && npm run test:stages && npm run test:noncombat-trials && npm run melee:sprites:audit && npm run sprites:provenance:audit && npm run portals:audit && npm run portals:prompts -- --check && npm run cosmetics:audit && npm run test:cosmetics && npm run rift:audit && npm run test:rift && npm run music:audit && npm run test:campaign && npm run test:oc-dlc && npm run test:original-universes && npm run audit:oc-dlc && npm run audit:original-universes && npm run check:progression",
     "build": "vite build",
     "lint": "oxlint",
     "check:progression": "node scripts/progressionAudit.mjs",
@@ -44,6 +44,8 @@
     "audit:original-universes": "node scripts/originalUniverseImageV2Audit.mjs",
     "visuals:original-universes": "node scripts/buildOriginalUniverseImagePlan.mjs",
     "sprites:prompts": "node scripts/buildSpritePromptPack.mjs",
+    "sprites:install": "node scripts/installGeneratedBitmap.mjs",
+    "sprites:provenance:audit": "node scripts/openAiSpriteProvenanceAudit.mjs",
     "visuals:prompts": "node scripts/buildFeaturedVisualPromptPack.mjs",
     "portals:prompts": "node scripts/buildPortalPromptManifest.mjs",
     "portals:audit": "node scripts/portalVisualAudit.mjs",

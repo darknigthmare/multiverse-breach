@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const root = process.cwd();
 const tmpDir = process.env.MULTIVERSE_SPRITE_TMP_DIR || path.join(root, '.sprite-prompt-tmp');
@@ -8,6 +9,7 @@ const sourceDir = path.join(root, 'src', 'game');
 const outDir = path.join(root, 'public', 'sprites', 'generated');
 const outJsonl = path.join(outDir, 'openai-sprite-prompts.jsonl');
 const outManifest = path.join(outDir, 'sprite-manifest.json');
+const provenanceLedgerPath = path.join(outDir, 'openai-asset-ledger.jsonl');
 const outStageRegistry = path.join(sourceDir, 'generatedStageAssets.json');
 const featuredPromptUniverses = new Set([
   'Tomba',
@@ -97,6 +99,32 @@ const fileExists = async (relativeOutput) => {
   try {
     const stat = await fs.stat(localPath);
     return stat.isFile() && stat.size > 0;
+  } catch {
+    return false;
+  }
+};
+
+const sha256 = value => createHash('sha256').update(value).digest('hex');
+
+const loadProvenanceLedger = async () => {
+  try {
+    const raw = await fs.readFile(provenanceLedgerPath, 'utf8');
+    return raw.split(/\r?\n/u).filter(Boolean).map(line => JSON.parse(line));
+  } catch (error) {
+    if (error?.code === 'ENOENT') return [];
+    throw error;
+  }
+};
+
+const verifyProvenanceRecord = async (item, record) => {
+  if (!record || record.output !== item.output) return false;
+  const catalogPromptSha256 = sha256(Buffer.from(item.prompt, 'utf8'));
+  if ((record.catalogPromptSha256 || record.promptSha256) !== catalogPromptSha256) return false;
+  if (record.generation?.provider !== 'OpenAI' || record.generation?.interface !== 'built-in image_gen') return false;
+  if (!String(record.generation?.generationId || '').startsWith('exec-')) return false;
+  try {
+    const output = await fs.readFile(path.join(root, 'public', item.output.replace(/^\/+/, '')));
+    return sha256(output) === record.image?.sha256;
   } catch {
     return false;
   }
@@ -347,6 +375,8 @@ const main = async () => {
   ));
 
   const all = [...heroEntries, ...bossEntries, ...itemEntries, ...finaleEntries, ...stageEntries];
+  const provenanceLedger = await loadProvenanceLedger();
+  const provenanceByAsset = new Map(provenanceLedger.map(record => [`${record.kind}:${record.id}`, record]));
   await fs.mkdir(outDir, { recursive: true });
   await fs.writeFile(outJsonl, all.map(entry => JSON.stringify(entry)).join('\n') + '\n', 'utf8');
   const manifestEntries = await Promise.all(all.map(async (item) => {
@@ -355,6 +385,17 @@ const main = async () => {
     delete entry.curatedPrompt;
     entry.available = await fileExists(entry.output);
     entry.source = entry.available ? 'openai' : null;
+    const provenanceRecord = provenanceByAsset.get(`${item.kind}:${item.id}`);
+    const verifiedOpenAi = entry.available && await verifyProvenanceRecord(item, provenanceRecord);
+    entry.provenanceStatus = verifiedOpenAi
+      ? 'verified-openai'
+      : entry.available
+        ? 'legacy-openai-declared'
+        : 'missing';
+    if (verifiedOpenAi) {
+      entry.generationId = provenanceRecord.generation.generationId;
+      entry.outputSha256 = provenanceRecord.image.sha256;
+    }
     return entry;
   }));
 
@@ -411,10 +452,31 @@ const main = async () => {
       heroes: manifestEntries.filter(entry => entry.kind === 'hero' && entry.available).length,
       enemies: manifestEntries.filter(entry => entry.kind === 'enemy' && entry.available).length,
       bosses: manifestEntries.filter(entry => entry.kind === 'boss' && entry.available).length,
+      trials: manifestEntries.filter(entry => entry.kind === 'trial' && entry.available).length,
       items: manifestEntries.filter(entry => entry.kind === 'item' && entry.available).length,
       finales: manifestEntries.filter(entry => entry.kind === 'finale' && entry.available).length,
       stages: manifestEntries.filter(entry => entry.kind === 'stage' && entry.available).length,
       total: manifestEntries.filter(entry => entry.available).length
+    },
+    verifiedOpenAiCounts: {
+      heroes: manifestEntries.filter(entry => entry.kind === 'hero' && entry.provenanceStatus === 'verified-openai').length,
+      enemies: manifestEntries.filter(entry => entry.kind === 'enemy' && entry.provenanceStatus === 'verified-openai').length,
+      bosses: manifestEntries.filter(entry => entry.kind === 'boss' && entry.provenanceStatus === 'verified-openai').length,
+      trials: manifestEntries.filter(entry => entry.kind === 'trial' && entry.provenanceStatus === 'verified-openai').length,
+      items: manifestEntries.filter(entry => entry.kind === 'item' && entry.provenanceStatus === 'verified-openai').length,
+      finales: manifestEntries.filter(entry => entry.kind === 'finale' && entry.provenanceStatus === 'verified-openai').length,
+      stages: manifestEntries.filter(entry => entry.kind === 'stage' && entry.provenanceStatus === 'verified-openai').length,
+      total: manifestEntries.filter(entry => entry.provenanceStatus === 'verified-openai').length
+    },
+    missingCounts: {
+      heroes: heroEntries.length - manifestEntries.filter(entry => entry.kind === 'hero' && entry.available).length,
+      enemies: bossEntries.filter(entry => entry.kind === 'enemy').length - manifestEntries.filter(entry => entry.kind === 'enemy' && entry.available).length,
+      bosses: bossEntries.filter(entry => entry.kind === 'boss').length - manifestEntries.filter(entry => entry.kind === 'boss' && entry.available).length,
+      trials: bossEntries.filter(entry => entry.kind === 'trial').length - manifestEntries.filter(entry => entry.kind === 'trial' && entry.available).length,
+      items: itemEntries.length - manifestEntries.filter(entry => entry.kind === 'item' && entry.available).length,
+      finales: finaleEntries.length - manifestEntries.filter(entry => entry.kind === 'finale' && entry.available).length,
+      stages: stageEntries.length - manifestEntries.filter(entry => entry.kind === 'stage' && entry.available).length,
+      total: all.length - manifestEntries.filter(entry => entry.available).length
     },
     entries: manifestEntries
   }, null, 2), 'utf8');
