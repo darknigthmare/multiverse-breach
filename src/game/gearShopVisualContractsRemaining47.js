@@ -23,7 +23,7 @@ export const GEAR_SHOP_VISUAL_CONTRACTS_REMAINING47 = Object.freeze({
     referenceUrl: 'https://www.playmobil.com/fr-be/asterix-%3A-panoramix-et-le-chaudron-de-potion-magique/70933.html',
     visualAnchor: 'Single large rounded black-iron Getafix magic-potion cauldron with two small side handles and a restrained pale golden bubbling potion surface, no druid, ladle, fire or text.'
   },
-  evt_zootopia_case_break: {
+  evt_zootopia_case_breakthrough: {
     referenceUrl: 'https://movies.disney.com/zootopia',
     visualAnchor: 'Single Judy Hopps carrot recorder pen: tapered bright-orange body, silver pen tip, green leafy cap-clip, small dark microphone grille and three compact side control buttons, with no hand, character badge or readable interface.'
   },
@@ -35,7 +35,7 @@ export const GEAR_SHOP_VISUAL_CONTRACTS_REMAINING47 = Object.freeze({
     referenceUrl: 'https://www.warnerbros.com/movies/conjuring',
     visualAnchor: 'Single Perron music box from The Conjuring: small weathered red-and-cream striped wooden box, open top with its small rotating oval mirror, tarnished side crank, chipped paint and dark age marks, with no reflected face, hand or readable inscription.'
   },
-  evt_mad_max_fury_road_turn_around: {
+  evt_mad_max_fury_road_turn_the_rig: {
     referenceUrl: 'https://www.therpf.com/forums/threads/furiosas-steering-wheel-fury-road-references-and-tinkering.261268/',
     visualAnchor: 'Single War Rig steering wheel from Mad Max: Fury Road: worn dark three-spoke wheel whose open central hub is a symmetrical skull sculpted from bent steel wire, with clearly outlined eye sockets and teeth; no solid truck hub, tan lashings, hands or vehicle.'
   },
@@ -55,7 +55,7 @@ export const GEAR_SHOP_VISUAL_CONTRACTS_REMAINING47 = Object.freeze({
     referenceUrl: 'https://api.yourprops.com/prop-details/840023',
     visualAnchor: 'Single screen-used black-and-white Vietnam unit photograph: a bowed glossy print with a narrow pale edge, exactly five pre-UniSol soldiers posed in jungle grass, three standing helmeted across the rear and two crouched across the front; no yellow display mat, watermark, white UniSol armor, eyepiece, dossier, stamp or loose objects.'
   },
-  evt_the_purge_siren_end: {
+  evt_the_purge_2013_morning_ceasefire: {
     referenceUrl: 'https://statcdn.fandango.com/MPX/image/NBCU_Fandango/207/599/Purge_49757.jpg',
     visualAnchor: "Single Mary Sandin butterfly ring from the film's final ceasefire moment: small silver band with a compact symmetrical butterfly setting and a faint dried-blood trace, no cut television broadcast, unseen siren device, hand, table or text."
   },
@@ -107,7 +107,7 @@ export const GEAR_SHOP_VISUAL_CONTRACTS_REMAINING47 = Object.freeze({
     referenceUrl: 'https://www.cowboy-bebop.net/',
     visualAnchor: 'Single compact black frying pan with colorful bell peppers, no character or text.'
   },
-  evt_vector_field: {
+  evt_elfen_lied_breach_event: {
     referenceUrl: 'https://en.wikipedia.org/wiki/Elfen_Lied',
     visualAnchor: 'Single antique light-wood music box with lid slightly open and visible mechanism, no character or text.'
   },

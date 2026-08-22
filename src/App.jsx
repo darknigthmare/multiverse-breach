@@ -29,10 +29,29 @@ import {
 import {
   CHARACTER_NARRATIVE_ARCS,
   FUSION_MISSIONS,
-  SPECIAL_EVENTS,
   TRIO_NARRATIVE_ARCS,
   UNIVERSE_NARRATIVE_ARCS
 } from './game/narrativeSystems';
+import {
+  DEFAULT_KART_CAREER,
+  LEGACY_KART_CAREER_KEY,
+  migrateLegacyKartCareer,
+  normalizeKartCareer
+} from './game/kartCareer';
+import {
+  awardMissionReputation,
+  getReputationResourceMultiplier,
+  normalizeReputationProgress
+} from './game/factionProgression';
+import {
+  SPECIAL_EVENTS,
+  buildSpecialEventStage,
+  formatSpecialEventWindow,
+  getActiveSpecialEvents,
+  isSpecialEventActive,
+  normalizeSpecialEventProgress,
+  recordSpecialEventResult
+} from './game/specialEvents';
 import { migrateCardCollectionSave } from './game/cards/cardSaveMigration';
 import { migrateArcReplayState } from './game/missions/arcReplayMigration';
 import {
@@ -165,6 +184,7 @@ const DEFAULT_SAVE = {
     archives: [],
     hudThemes: [],
     karts: [],
+    raceCareer: DEFAULT_KART_CAREER,
     battleMusic: [],
     stageMusic: [],
     fieldSupers: [],
@@ -238,7 +258,9 @@ const DEFAULT_SAVE = {
     heroInstability: {},
     riftJournal: [],
     tutorialCompanionsUnlocked: false,
-    activeSpecialEventId: null
+    activeSpecialEventId: null,
+    reputationProgress: normalizeReputationProgress(),
+    specialEventProgress: {}
   },
   inventory: ['nexus_anchor_coil'],
   equippedGear: {
@@ -260,9 +282,19 @@ const loadSave = () => {
   if (typeof window === 'undefined') return DEFAULT_SAVE;
   try {
     const raw = window.localStorage.getItem(SAVE_KEY);
-    if (!raw) return DEFAULT_SAVE;
-    const parsed = JSON.parse(raw);
-    return normalizeSavePayload(parsed, { existing: true });
+    const legacyCareerRaw = window.localStorage.getItem(LEGACY_KART_CAREER_KEY);
+    if (!raw && !legacyCareerRaw) return DEFAULT_SAVE;
+    const parsed = raw ? JSON.parse(raw) : {};
+    let legacyCareer = null;
+    if (legacyCareerRaw) {
+      try {
+        legacyCareer = JSON.parse(legacyCareerRaw);
+      } catch {
+        legacyCareer = null;
+      }
+    }
+    const migrated = migrateLegacyKartCareer(parsed, legacyCareer);
+    return normalizeSavePayload(migrated, { existing: Boolean(raw) });
   } catch {
     return DEFAULT_SAVE;
   }
@@ -271,6 +303,9 @@ const loadSave = () => {
 const saveGame = (payload) => {
   if (typeof window === 'undefined') return;
   window.localStorage.setItem(SAVE_KEY, JSON.stringify(payload));
+  if (payload?.portalCollection?.raceCareer) {
+    window.localStorage.removeItem(LEGACY_KART_CAREER_KEY);
+  }
 };
 
 const appendUnique = (items = [], additions = []) => {
@@ -419,6 +454,7 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
     ? merged.portalCollection.hudThemes.filter(entry => entry?.id)
     : [];
   const karts = normalizeCollectionIds(merged.portalCollection?.karts);
+  const raceCareer = normalizeKartCareer(merged.portalCollection?.raceCareer);
   const battleMusic = normalizeCollectionIds(merged.portalCollection?.battleMusic);
   const stageMusic = normalizeCollectionIds(merged.portalCollection?.stageMusic);
   const fieldSupers = normalizeCollectionIds(merged.portalCollection?.fieldSupers);
@@ -468,6 +504,7 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
       archives,
       hudThemes,
       karts,
+      raceCareer,
       battleMusic,
       stageMusic,
       fieldSupers,
@@ -536,7 +573,12 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
       }
     },
     publicProfile: { ...DEFAULT_SAVE.publicProfile, ...(merged.publicProfile || {}) },
-    activityProgress: { ...DEFAULT_SAVE.activityProgress, ...(merged.activityProgress || {}) },
+    activityProgress: {
+      ...DEFAULT_SAVE.activityProgress,
+      ...(merged.activityProgress || {}),
+      reputationProgress: normalizeReputationProgress(merged.activityProgress?.reputationProgress),
+      specialEventProgress: normalizeSpecialEventProgress(merged.activityProgress?.specialEventProgress)
+    },
     equippedGear: { ...DEFAULT_SAVE.equippedGear, ...(merged.equippedGear || {}) },
     equippedEventItems: { ...DEFAULT_SAVE.equippedEventItems, ...(merged.equippedEventItems || {}) }
   };
@@ -609,6 +651,34 @@ const getContactIntel = (stage, lang) => {
 };
 
 const getMissionNarrative = (stage, lang, isOutro, victory) => {
+  if (stage.specialEventId) {
+    if (!isOutro) {
+      return getLocalizedStageText(
+        stage.intro,
+        lang,
+        lang === 'fr'
+          ? 'A.R.C.A. engage une operation saisonniere active.'
+          : 'A.R.C.A. deploys an active seasonal operation.'
+      );
+    }
+    if (victory) {
+      return getLocalizedStageText(
+        stage.outro,
+        lang,
+        lang === 'fr'
+          ? 'L operation saisonniere est stabilisee et archivee.'
+          : 'The seasonal operation is stabilized and archived.'
+      );
+    }
+    const operationName = getLocalizedStageText(
+      stage.displayName,
+      lang,
+      stage.name || stage.universe
+    );
+    return lang === 'fr'
+      ? `${operationName} reste active. A.R.C.A. conserve les donnees de la tentative sans accorder la recompense saisonniere.`
+      : `${operationName} remains active. A.R.C.A. keeps the attempt data without granting the seasonal reward.`;
+  }
   if (stage.storyBeat) {
     if (!isOutro) {
       return stage.storyBeat.intro?.[lang]
@@ -1264,27 +1334,42 @@ function App() {
     ...stage,
     image: getOpenAiBackdropSrc(stage.universe, stage.mode) || '/images/missions/fusion-rifts.webp'
   })), [titleAttractStageRoster]);
+  const titleEventDate = useMemo(() => {
+    const [year, month, day] = String(titleDayKey).split('-').map(Number);
+    return Number.isInteger(year) && Number.isInteger(month) && Number.isInteger(day)
+      ? new Date(Date.UTC(year, month - 1, day, 12))
+      : new Date(Date.UTC(1970, 0, 1, 12));
+  }, [titleDayKey]);
+  const activeTitleEvents = useMemo(() => getActiveSpecialEvents(titleEventDate), [titleEventDate]);
   const titleEventVariant = useMemo(() => {
-    const activeEvent = SPECIAL_EVENTS.find(event => event.id === activityProgress.activeSpecialEventId);
+    const activeEvent = activeTitleEvents.find(event => event.id === activityProgress.activeSpecialEventId);
     if (!activeEvent) return null;
+    const stage = buildSpecialEventStage(activeEvent, titleEventDate);
     return {
       id: activeEvent.id,
       title: activeEvent.title?.[lang] || activeEvent.title?.fr || activeEvent.id,
-      tokenCount: eventTokens
+      tokenCount: eventTokens,
+      windowLabel: formatSpecialEventWindow(activeEvent, lang, titleEventDate.getUTCFullYear()),
+      stageTitle: stage?.displayName?.[lang] || stage?.displayName?.fr || '',
+      playable: stage?.missionDeployment?.allowed === true
     };
-  }, [activityProgress.activeSpecialEventId, eventTokens, lang]);
+  }, [activeTitleEvents, activityProgress.activeSpecialEventId, eventTokens, lang, titleEventDate]);
   const titleEventOptions = useMemo(() => SPECIAL_EVENTS.map(event => ({
     id: event.id,
-    title: event.title?.[lang] || event.title?.fr || event.id
-  })), [lang]);
+    title: event.title?.[lang] || event.title?.fr || event.id,
+    active: isSpecialEventActive(event, titleEventDate),
+    windowLabel: formatSpecialEventWindow(event, lang, titleEventDate.getUTCFullYear())
+  })), [lang, titleEventDate]);
   const selectTitleEventVariant = useCallback(eventId => {
-    const normalizedEventId = SPECIAL_EVENTS.some(event => event.id === eventId) ? eventId : null;
+    const normalizedEventId = SPECIAL_EVENTS.some(event => (
+      event.id === eventId && isSpecialEventActive(event, titleEventDate)
+    )) ? eventId : null;
     setActivityProgress(previous => ({
       ...previous,
       activeSpecialEventId: normalizedEventId
     }));
     sound.playSfx(normalizedEventId ? 'confirm' : 'click');
-  }, []);
+  }, [titleEventDate]);
 
   const getCurrentSave = useCallback(() => {
     const normalizedCompletedArcIds = [...new Set(completedArcIds)];
@@ -1392,9 +1477,15 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const { dayKey, weekKey } = getProgressKeys();
+    const { dayKey, weekKey } = getProgressKeys(titleEventDate);
+    const scheduledEventId = getActiveSpecialEvents(titleEventDate)[0]?.id || null;
     setActivityProgress(prev => {
-      if (prev.lastSeenDay === dayKey && prev.dayKey === dayKey && prev.weekKey === weekKey) return prev;
+      if (
+        prev.lastSeenDay === dayKey
+        && prev.dayKey === dayKey
+        && prev.weekKey === weekKey
+        && prev.activeSpecialEventId === scheduledEventId
+      ) return prev;
       return {
         ...prev,
         dayKey,
@@ -1408,10 +1499,11 @@ function App() {
         dailyModeWins: prev.dayKey === dayKey ? (prev.dailyModeWins || {}) : {},
         weeklyModeWins: prev.weekKey === weekKey ? (prev.weeklyModeWins || {}) : {},
         loginStreak: getNextLoginStreak(prev.lastSeenDay, dayKey, prev.loginStreak),
-        lastSeenDay: dayKey
+        lastSeenDay: dayKey,
+        activeSpecialEventId: scheduledEventId
       };
     });
-  }, []);
+  }, [titleEventDate]);
 
   // La demande musicale est mise en attente; le moteur ne cree son contexte
   // qu apres la premiere interaction autorisee par le navigateur.
@@ -1512,6 +1604,14 @@ function App() {
     setCurrentScreen(getPreparedMissionLaunchScreen(stage));
   };
 
+  const launchTitleSpecialEvent = () => {
+    const event = SPECIAL_EVENTS.find(candidate => candidate.id === activityProgress.activeSpecialEventId);
+    if (!event) return;
+    const stage = buildSpecialEventStage(event, titleEventDate);
+    if (!stage?.missionDeployment?.allowed) return;
+    handleLaunchStage(stage);
+  };
+
   const handleBattleEnd = (result, report = {}) => {
     const battleItemsUsed = report.battleItemsUsed || 0;
     const battleSummary = report.battleSummary || null;
@@ -1572,6 +1672,10 @@ function App() {
       const firstClearShards = firstClear ? 10 : 0;
       const itemMasteryTokens = battleItemsUsed >= 3 ? 1 : 0;
       const seasonRewardBonus = Math.min(0.18, Math.floor((activityProgress.seasonXp || 0) / 500) * 0.02);
+      const reputationShardMultiplier = getReputationResourceMultiplier(
+        'shards',
+        activityProgress.reputationProgress
+      );
       const smashGradeBonus = activeStage.mode === 'Smash' && battleSummary?.mode === 'Smash'
         ? ({ S: 18, A: 12, B: 7, C: 3 }[battleSummary.grade] || 0)
         : 0;
@@ -1581,7 +1685,12 @@ function App() {
       summary.smashMasteryBonus = smashGradeBonus;
       summary.tacticsMasteryBonus = tacticsGradeBonus;
       summary.gold = Math.round(activeStage.goldPrize * (1 + seasonRewardBonus)) + firstClearGold;
-      summary.shards = Math.round(activeStage.shardPrize * (1 + seasonRewardBonus)) + firstClearShards + smashGradeBonus + tacticsGradeBonus;
+      summary.shards = Math.round((
+        Math.round(activeStage.shardPrize * (1 + seasonRewardBonus))
+        + firstClearShards
+        + smashGradeBonus
+        + tacticsGradeBonus
+      ) * reputationShardMultiplier);
       summary.tokens = (activeStage.tokenPrize || 0) + itemMasteryTokens;
       setGold(prev => prev + summary.gold);
       setBreachShards(prev => prev + summary.shards);
@@ -1670,6 +1779,14 @@ function App() {
         lifetimeWins: (prev.lifetimeWins || 0) + 1,
         lifetimeAttempts: (prev.lifetimeAttempts || 0) + 1,
         seasonXp: (prev.seasonXp || 0) + seasonGain,
+        reputationProgress: awardMissionReputation(prev.reputationProgress, activeStage, {
+          victory: true,
+          firstClear
+        }),
+        specialEventProgress: recordSpecialEventResult(prev.specialEventProgress, activeStage, {
+          result: 'victory',
+          grade: battleSummary?.grade
+        }),
         defeatIntel: Object.fromEntries(
           Object.entries(prev.defeatIntel || {}).filter(([stageId]) => String(stageId) !== String(activeStage.id))
         ),
@@ -1762,6 +1879,14 @@ function App() {
         weeklyItemActivations: (prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0) + battleItemsUsed,
         lifetimeAttempts: (prev.lifetimeAttempts || 0) + 1,
         seasonXp: (prev.seasonXp || 0) + 12 + (battleItemsUsed * 2),
+        reputationProgress: awardMissionReputation(prev.reputationProgress, activeStage, {
+          victory: false,
+          firstClear: false
+        }),
+        specialEventProgress: recordSpecialEventResult(prev.specialEventProgress, activeStage, {
+          result: 'defeat',
+          grade: battleSummary?.grade
+        }),
         riftJournal: [
           createRiftJournalEntry('defeat', {
             contactIntel: summary.contactIntel,
@@ -1917,6 +2042,7 @@ function App() {
     if (!window.confirm(lang === 'fr' ? 'Purger completement la trace Nexus ?' : 'Fully purge Nexus trace?')) return;
     window.clearTimeout(cloudSaveTimerRef.current);
     window.localStorage.removeItem(SAVE_KEY);
+    window.localStorage.removeItem(LEGACY_KART_CAREER_KEY);
     setCloudSyncState(account ? 'conflict' : 'detached');
     cloudUpdatedAtRef.current = null;
     applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'title' });
@@ -2115,6 +2241,7 @@ function App() {
   const startNewLocalTrace = () => {
     window.clearTimeout(cloudSaveTimerRef.current);
     window.localStorage.removeItem(SAVE_KEY);
+    window.localStorage.removeItem(LEGACY_KART_CAREER_KEY);
     setCloudSyncState(account ? 'conflict' : 'detached');
     cloudUpdatedAtRef.current = null;
     applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'profile' });
@@ -2208,6 +2335,7 @@ function App() {
           eventOptions={titleEventOptions}
           activeEventId={activityProgress.activeSpecialEventId}
           onSelectEvent={selectTitleEventVariant}
+          onLaunchEvent={launchTitleSpecialEvent}
         />
       )}
 
@@ -2293,6 +2421,7 @@ function App() {
               heroTalents={heroTalents}
               heroSkins={heroSkins}
               completedStages={completedStages}
+              reputationProgress={activityProgress.reputationProgress}
               collectionBonusCount={collectionBonusCount}
               hiddenUniverses={hiddenUniverses}
               disabledAssets={disabledAssets}

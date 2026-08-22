@@ -245,7 +245,7 @@ function collectRuntimeAssets() {
       JSON.stringify(definition.audiovisual.imageContract) === JSON.stringify(EXPECTED_CONTRACT),
       `${definition.key}.audiovisual.imageContract does not declare the PNG v2 OpenAI Image contract`
     );
-    add(definition, 'booster', definition.audiovisual.boosterArt);
+    add(definition, 'booster', definition.audiovisual.boosterSourceArt);
     add(definition, 'backdrop', definition.audiovisual.backdrop);
     definition.stages.forEach(stage => {
       add(

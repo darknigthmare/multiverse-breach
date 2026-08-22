@@ -222,6 +222,30 @@ export const ARC_CAMPAIGN_DETAILS = {
     ],
     claimReward: { gold: 520, shards: 100, tokens: 5 }
   },
+  manga_war_council: {
+    faction: { fr: 'Archivistes des arcs de destin', en: 'Fate Arc Archivists' },
+    intro: { fr: 'Les Trames manga n ouvrent pas seulement des mondes: elles imposent des arcs, des rivalites et des transformations.', en: 'Manga Threads do not only open worlds: they impose arcs, rivalries, and transformations.' },
+    stakes: {
+      fr: 'Si ces lois d arc se melangent sans cadre, chaque mission peut devenir une guerre finale avant que le joueur soit pret.',
+      en: 'If these arc laws mix without structure, every mission can become a final war before the player is ready.'
+    },
+    gameplay: {
+      fr: 'Directive A.R.C.A.: monter les niveaux, respecter les prerequis de personnages et reserver les trios aux conflits de synergie.',
+      en: 'A.R.C.A. directive: raise levels, respect character prerequisites, and reserve trios for synergy conflicts.'
+    },
+    missions: [
+      { fr: 'Isoler un carnet, une malediction ou un front militaire avant contamination d un autre arc.', en: 'Isolate a notebook, curse, or military front before it contaminates another arc.' },
+      { fr: 'Forcer une transformation a rester un choix tactique et pas une reecriture permanente.', en: 'Force a transformation to remain a tactical choice, not a permanent rewrite.' },
+      { fr: 'Sceller le Conseil des Rivaux sans effacer leurs histoires d origine.', en: 'Seal the Council of Rivals without erasing their origin stories.' }
+    ],
+    outro: { fr: 'Les arcs manga restent intenses, mais ils ne sautent plus les etapes de progression.', en: 'Manga arcs remain intense, but no longer skip progression steps.' },
+    finale: { fr: 'Transformer les tropes de destin en routes jouables et coherentes.', en: 'Turn fate tropes into playable, coherent routes.' },
+    rewards: [
+      { id: 'arc_manga_skin_rival_mark', type: 'skin', name: { fr: 'Marque de Rivalite', en: 'Rival Mark' } },
+      { id: 'arc_manga_item_arc_seal', type: 'item', name: { fr: 'Sceau de Chapitre Manga', en: 'Manga Chapter Seal' } }
+    ],
+    claimReward: { gold: 500, shards: 105, tokens: 5 }
+  },
   screen_archive_fracture: {
     intro: { fr: 'Les archives d ecran melangent Springfield, Pasadena, Zootopie, le video-club de Stan et les aventures de Tintin dans un programme qui change de ton a chaque porte.', en: 'Screen archives mix Springfield, Pasadena, Zootopia, Stan s video store, and Tintin s adventures into a program that changes tone at every door.' },
     missions: [
@@ -1939,11 +1963,7 @@ export const FUSION_MISSIONS = [
   }
 ];
 
-export const SPECIAL_EVENTS = [
-  { id: 'thousand_portals', title: { fr: 'Nuit des Mille Portails', en: 'Night of a Thousand Portals' }, reward: { fr: 'Jetons evenement + apparence Voile Fissure', en: 'Event tokens + Fractured Veil appearance' } },
-  { id: 'zone_404_week', title: { fr: 'Semaine Zone 404', en: 'Zone 404 Week' }, reward: { fr: 'Relique Pare-feu et bonus vitesse cyber', en: 'Firewall relic and cyber speed bonus' } },
-  { id: 'yautja_hunt', title: { fr: 'Chasse Yautja', en: 'Yautja Hunt' }, reward: { fr: 'Trophees, plasma et apparence traqueur', en: 'Trophies, plasma, and hunter appearance' } }
-];
+export { SPECIAL_EVENTS } from './specialEvents.js';
 
 export const TRIO_NARRATIVE_ARCS = [
   {
@@ -2040,13 +2060,7 @@ export const TRIO_NARRATIVE_ARCS = [
   }
 ];
 
-export const REPUTATION_TRACKS = [
-  { id: 'nexus_alliance', label: { fr: 'Alliance du Nexus', en: 'Nexus Alliance' }, gameplay: { fr: 'Directive d Ancre: tenir les lignes, escorter les civils et graver les armures de garnison.', en: 'Anchor directive: hold lines, escort civilians, and engrave garrison armor.' } },
-  { id: 'archivists', label: { fr: 'Archivistes', en: 'Archivists' }, gameplay: { fr: 'Directive d Archive: clarifier les traces, ouvrir les caches de savoir et decrypter les noyaux.', en: 'Archive directive: clarify traces, open knowledge caches, and decrypt cores.' } },
-  { id: 'free_fractures', label: { fr: 'Libres-Fractures', en: 'Free-Fractures' }, gameplay: { fr: 'Directive de Fracture: frapper juste, accepter les missions instables et canaliser les reliques.', en: 'Fracture directive: strike precisely, accept unstable missions, and channel relics.' } },
-  { id: 'broken_throne', label: { fr: 'Trone Brise', en: 'Broken Throne' }, gameplay: { fr: 'Directive du Trone: avancer par force brute, survivre aux mondes morts et sceller par domination.', en: 'Throne directive: advance through raw force, survive dead worlds, and seal by domination.' } },
-  { id: 'erased', label: { fr: 'Effaces', en: 'Erased' }, gameplay: { fr: 'Directive des Effaces: contenir la peur, esquiver l oubli et proteger les missions de memoire.', en: 'Erased directive: contain fear, evade oblivion, and protect memory missions.' } }
-];
+export { REPUTATION_TRACKS } from './factionProgression.js';
 
 export const META_NEXUS_RECOMMENDATIONS = [
   { id: 'first_team', text: { fr: 'Garde ton Ancre dans l escouade: sa signature fixe empeche les autres Trames de se dissoudre.', en: 'Keep your Anchor in the squad: their fixed signature prevents other Threads from dissolving.' } },

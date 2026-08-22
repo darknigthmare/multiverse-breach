@@ -4,7 +4,8 @@ const ORIGINAL_CONTENT_NOTICE = Object.freeze({
 });
 
 const ORIGINAL_UNIVERSE_IMAGE_ROOT = '/images/oc-worlds/v2';
-const ORIGINAL_UNIVERSE_BOOSTER_ROOT = '/boosters/original-worlds/v2';
+const ORIGINAL_UNIVERSE_BOOSTER_SOURCE_ROOT = '/boosters/original-worlds/v2';
+const ORIGINAL_UNIVERSE_BOOSTER_RUNTIME_ROOT = '/boosters';
 const ORIGINAL_UNIVERSE_IMAGE_CONTRACT = Object.freeze({
   version: 'v2',
   format: 'PNG',
@@ -57,6 +58,16 @@ const slugify = (value) => String(value || '')
   .toLowerCase()
   .replace(/[^a-z0-9]+/g, '_')
   .replace(/^_+|_+$/g, '');
+
+const slugifyBoosterUniverse = (value) => String(value || '')
+  .normalize('NFKD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/&/g, ' and ')
+  .replace(/\+/g, ' plus ')
+  .replace(/[\u2019']/g, '')
+  .replace(/[^a-zA-Z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+  .toLowerCase();
 
 const hashValue = (value) => String(value).split('').reduce(
   (total, char) => ((total * 33) + char.charCodeAt(0)) >>> 0,
@@ -682,7 +693,8 @@ export function buildUniverseUnlockables(world) {
 export function buildAudiovisualContract(world) {
   return Object.freeze({
     imageContract: ORIGINAL_UNIVERSE_IMAGE_CONTRACT,
-    boosterArt: `${ORIGINAL_UNIVERSE_BOOSTER_ROOT}/${world.key}.png`,
+    boosterArt: `${ORIGINAL_UNIVERSE_BOOSTER_RUNTIME_ROOT}/${slugifyBoosterUniverse(world.universe)}.webp`,
+    boosterSourceArt: `${ORIGINAL_UNIVERSE_BOOSTER_SOURCE_ROOT}/${world.key}.png`,
     backdrop: `${ORIGINAL_UNIVERSE_IMAGE_ROOT}/${world.key}/backdrop.png`,
     stageCards: Object.freeze(Object.fromEntries(world.stages.map(stage => [
       stage.stageKey || stage.id,

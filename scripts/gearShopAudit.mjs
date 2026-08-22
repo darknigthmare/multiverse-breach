@@ -31,7 +31,13 @@ const STATIC_GEAR_SHOP_ITEMS = [
   { id: 'udamage_power', universe: 'Unreal', name: { en: 'U-Damage Amplifier', fr: 'Double Degats U-Damage' } },
   { id: 'evt_fo_nuke', universe: 'Fallout', name: { en: 'Fat Man Nuke Launcher', fr: 'Fat Man Lance-Nuke' } },
   { id: 'evt_doom_quad', universe: 'Doom', name: { en: 'Quad Damage Powerup', fr: 'Multiplicateur Quad Damage' } },
-  { id: 'evt_ut_redeemer', universe: 'Unreal', name: { en: 'Redeemer Missile Targeter', fr: 'Viseur de Missile Redempteur' } }
+  {
+    id: 'evt_ut_redeemer',
+    universe: 'Unreal',
+    name: { en: 'Redeemer Missile Targeter', fr: 'Viseur de Missile Redempteur' },
+    audit: 'legacy-project-art',
+    provenance: 'Pre-existing project asset; no OpenAI generation record is available.'
+  }
 ];
 
 const getLocalPath = (assetPath) => (
@@ -108,6 +114,7 @@ const rows = auditedItems.map((item) => {
     name: item.name?.en || item.name?.fr || item.id,
     output,
     audit: item.audit,
+    provenance: item.provenance,
     metadataContract: Boolean(item.icon && item.iconPrompt && item.referenceUrl && item.visualAnchor),
     available,
     openAiManifest: Boolean(openAiManifestEntry),
@@ -127,7 +134,7 @@ const duplicateOutputs = rows
 const available = rows.filter(row => row.available);
 const missing = rows.filter(row => !row.available);
 const manifestViolations = available.filter(
-  row => row.audit !== 'original-oc' && !row.openAiManifest
+  row => !['original-oc', 'legacy-project-art'].includes(row.audit) && !row.openAiManifest
 );
 const expandedRows = rows.slice(STATIC_GEAR_SHOP_ITEMS.length);
 const contractedRows = rows.filter(row => contractIdSet.has(row.id));
@@ -150,6 +157,9 @@ console.log(JSON.stringify({
   alphaCapablePngs: alphaCapablePngs.length,
   svgAssets: svgAssets.length,
   originalOcItems: expandedRows.filter(row => row.audit === 'original-oc').length,
+  legacyProjectArtItems: rows
+    .filter(row => row.audit === 'legacy-project-art')
+    .map(row => ({ id: row.id, output: row.output, provenance: row.provenance })),
   openAiManifestEntries: available.filter(
     row => row.audit !== 'original-oc' && row.openAiManifest
   ).length,

@@ -252,8 +252,8 @@ function IntroTitleDialog({
               <legend>{lang === 'fr' ? 'Variante evenementielle du titre' : 'Title event variant'}</legend>
               <p>
                 {lang === 'fr'
-                  ? 'Choisis la fenetre A.R.C.A. affichee sur le titre, sans modifier la navigation ni les recompenses.'
-                  : 'Choose the A.R.C.A. window shown on the title without changing navigation or rewards.'}
+                  ? 'Les operations suivent leur calendrier annuel. Seule une fenetre active peut etre engagee et accorder ses recompenses saisonnieres.'
+                  : 'Operations follow their annual calendar. Only an active window can be deployed and grant its seasonal rewards.'}
               </p>
               <div>
                 <button
@@ -270,9 +270,13 @@ function IntroTitleDialog({
                     type="button"
                     className="btn-retro"
                     aria-pressed={event.id === activeEventId}
+                    disabled={!event.active}
+                    title={event.active
+                      ? (lang === 'fr' ? 'Operation active et jouable.' : 'Active playable operation.')
+                      : `${lang === 'fr' ? 'Fenetre planifiee' : 'Scheduled window'}: ${event.windowLabel}`}
                     onClick={() => onSelectEvent(event.id)}
                   >
-                    {event.title}
+                    {event.title} / {event.windowLabel} {event.active ? (lang === 'fr' ? '(ACTIVE)' : '(ACTIVE)') : ''}
                   </button>
                 ))}
               </div>
@@ -444,7 +448,8 @@ export default function IntroSequence({
   eventVariant = null,
   eventOptions = [],
   activeEventId = null,
-  onSelectEvent = () => {}
+  onSelectEvent = () => {},
+  onLaunchEvent = () => {}
 }) {
   const [titleDialog, setTitleDialog] = useState(null);
   const [rotationIndex, setRotationIndex] = useState(0);
@@ -548,6 +553,12 @@ export default function IntroSequence({
             <div className="intro-event-variant" data-title-event={eventVariant.id || 'active'}>
               <span>{lang === 'fr' ? 'FENETRE EVENEMENTIELLE' : 'EVENT WINDOW'}</span>
               <strong>{eventVariant.title} / {lang === 'fr' ? `${eventVariant.tokenCount} Echos disponibles` : `${eventVariant.tokenCount} Echoes available`}</strong>
+              <small>{eventVariant.windowLabel} / {eventVariant.stageTitle}</small>
+              {hasFinishedPrologue && eventVariant.playable && (
+                <button type="button" className="btn-retro" onClick={onLaunchEvent}>
+                  {lang === 'fr' ? 'ENGAGER L OPERATION' : 'DEPLOY OPERATION'}
+                </button>
+              )}
             </div>
           )}
           <h1 className="cyber-title">{lang === 'fr' ? 'BRECHE MULTIVERSELLE' : 'MULTIVERSE BREACH'}</h1>

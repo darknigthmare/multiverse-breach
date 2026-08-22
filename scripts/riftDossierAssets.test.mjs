@@ -17,6 +17,10 @@ import {
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
+const riftDossierCatalog = JSON.parse(readFileSync(
+  path.join(projectRoot, 'docs', 'rift-dossiers', 'catalog.json'),
+  'utf8'
+));
 const toPublicFile = (assetPath) => path.join(
   projectRoot,
   'public',
@@ -45,7 +49,7 @@ test('rift dossier registry has a valid unique schema and all available files ex
     new Set(RIFT_DOSSIER_ASSET_ENTRIES.map(entry => entry.assetPath)).size,
     RIFT_DOSSIER_ASSET_ENTRIES.length
   );
-  assert.equal(RIFT_DOSSIER_ASSET_ENTRIES.length, 2086);
+  assert.equal(RIFT_DOSSIER_ASSET_ENTRIES.length, riftDossierCatalog.total);
 
   const availableHashes = RIFT_DOSSIER_ASSET_ENTRIES
     .filter(entry => entry.status === 'available')

@@ -11,6 +11,14 @@ import { getCharacterPlaque } from '../game/characterPlaques';
 import { createPlayerHero } from '../game/playerHero';
 import { ARC_CAMPAIGN_DETAILS, CHARACTER_NARRATIVE_ARCS, FUSION_MISSIONS, META_NEXUS_RECOMMENDATIONS, REPUTATION_TRACKS, SKIN_CATALOG, SPECIAL_EVENTS, TRIO_NARRATIVE_ARCS, UNIVERSE_NARRATIVE_ARCS } from '../game/narrativeSystems';
 import {
+  FACTION_RULES,
+  applyFactionBonuses,
+  getReputationRank,
+  resolveMissionFactionIds,
+  resolveUniverseFactionIds
+} from '../game/factionProgression';
+import { getSpecialEventRewardById } from '../game/specialEvents';
+import {
   OC_CAMPAIGN,
   OC_CAMPAIGN_ACTS,
   OC_CAMPAIGN_CHAPTERS,
@@ -41,6 +49,7 @@ import CgGallery from './cg/CgGallery';
 import { autoComposeMissionTeam, evaluateMissionAccess } from '../game/missions/missionAccessRules';
 import { isArcReplayProgressionBypassed } from '../game/missions/missionReplayPolicy';
 import { projectUniverseArcDeploymentPhases } from '../game/missions/missionStageProjection';
+import { resolveRiftDossierAssetSrc } from '../game/riftDossierAssets';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
@@ -93,6 +102,7 @@ const getRiftDossierArtSrc = (stage, fallback = null) => {
   return stage?.dossierArt
     || stage?.stageArt
     || stage?.image
+    || resolveRiftDossierAssetSrc(stage)
     || (profileKey ? getOpenAiBackdropSrc(profileKey, stage?.mode) : null)
     || getOpenAiBackdropSrc(stage?.universe, stage?.mode)
     || fallback;
@@ -4986,12 +4996,6 @@ export default function HubScreen({
     { id: 'codex', mode: 'any', focus: 'LORE', text: { fr: 'Decrypter un nouveau boss dans le codex', en: 'Decrypt a new boss codex entry' } }
   ];
 
-  const FACTION_RULES = [
-    { id: 'sci_fi', stat: 'hp', label: 'Sci-Fi Marines', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator', ...EXPANDED_FACTION_UNIVERSES.sciFi], bonus: '+8% HP' },
-    { id: 'horror', stat: 'atk', label: 'Horreur cosmique', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw', ...EXPANDED_FACTION_UNIVERSES.horror], bonus: '+8% ATK' },
-    { id: 'cyber', stat: 'spd', label: 'IA & Cyber', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus', ...EXPANDED_FACTION_UNIVERSES.cyber], bonus: '+8% SPD' },
-    { id: 'arcane', stat: 'def', label: 'Mages & Occulte', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue', ...EXPANDED_FACTION_UNIVERSES.arcane], bonus: '+8% DEF' }
-  ];
   const UNIQUE = (items) => Array.from(new Set(items.filter(Boolean)));
   const MUSIC_ARC_UNIVERSES = UNIQUE(['Vocaloid', 'Rammstein', 'System of a Down', 'Rob Zombie', 'Daft Punk', 'Oliver Tree', 'Linkin Park', 'Michael Jackson', 'Moonwalker', 'Die Antwoord', ...Object.keys(LORE_DB).filter(universe => LORE_DB[universe]?.mediaType === 'music')]);
   const ABSURD_ARC_UNIVERSES = UNIQUE(['Velocipastor', 'Rubber', 'Killer Tomatoes from Outer Space', 'Sharknado', 'Sausage Party', 'Spermageddon', 'Kung Pow', 'Pingu', 'Pee-wee', 'Kazaam', 'Spoof Movie', 'Grrrrrrrrrrrrrrrrr', 'Les Feebles', 'Roger Rabbit', 'Les Tuche', 'Camera Cafe', 'Samantha Oups', 'Les Chevaliers du Fiel', 'Les Inconnus', 'La Cite de la Peur', 'Les Visiteurs']);
@@ -5216,6 +5220,9 @@ export default function HubScreen({
     return isUniverseVisible(stage.universe);
   };
   const ADMIN_VISIBLE_STAGES = STAGES.filter(stage => isStageVisibleByAdmin(stage) && !isAssetDisabled('stages', getStageAdminKey(stage)));
+  const selectedBriefingStage = briefingStageId
+    ? ADMIN_VISIBLE_STAGES.find(stage => stage.id === briefingStageId)
+    : null;
   const NORMAL_STAGE_COUNT = ADMIN_VISIBLE_STAGES.filter(stage => !stage.finalGameBoss && !stage.characterArc).length;
   const TOTAL_UNIVERSE_COUNT = ALL_UNIVERSE_KEYS.filter(isUniverseVisible).length;
   const OC_STORY_STAGE_COUNT = BASE_OC_STAGES.length;
@@ -6009,14 +6016,15 @@ export default function HubScreen({
       if (hero.category === 'tactical') stats.def = Math.round(stats.def * 1.20);
     }
 
-    FACTION_RULES.forEach(rule => {
-      const activeCount = activeTeam
-        .map(id => HEROES_DB.find(h => h.id === id)?.universe)
-        .filter(universe => rule.universes.includes(universe)).length;
-      if (activeCount >= 2 && rule.universes.includes(hero.universe)) {
-        stats[rule.stat] = Math.round(stats[rule.stat] * 1.08);
-      }
-    });
+    const teamUniverses = activeTeam
+      .map(id => HEROES_DB.find(h => h.id === id)?.universe)
+      .filter(Boolean);
+    stats = applyFactionBonuses(stats, {
+      heroUniverse: hero.universe,
+      teamUniverses,
+      stage: selectedBriefingStage,
+      reputationProgress: activityProgress.reputationProgress
+    }).stats;
 
     // 3. Talent Mod boosts
     if (heroTalents && heroTalents[hero.id]) {
@@ -6491,7 +6499,8 @@ export default function HubScreen({
     const isUpgraded = gearId.endsWith('_plus');
     const baseId = isUpgraded ? gearId.replace('_plus', '') : gearId;
     if (isAssetDisabled('gear', baseId)) return null;
-    const item = EQUIP_ITEMS_DB.find(it => it.id === baseId);
+    const item = EQUIP_ITEMS_DB.find(it => it.id === baseId)
+      || getSpecialEventRewardById(baseId);
     if (!item || !isGearContentPackVisible(item)) return null;
     const factor = isUpgraded ? 2 : 1;
     const boost = Object.fromEntries(Object.entries(item.boost || {}).map(([key, value]) => [key, value * factor]));
@@ -6533,7 +6542,8 @@ export default function HubScreen({
       const isUpgraded = invId.endsWith('_plus');
       const baseId = isUpgraded ? invId.replace('_plus', '') : invId;
       if (isAssetDisabled('gear', baseId)) return;
-      const baseItem = EQUIP_ITEMS_DB.find(it => it.id === baseId);
+      const baseItem = EQUIP_ITEMS_DB.find(it => it.id === baseId)
+        || getSpecialEventRewardById(baseId);
       if (baseItem && isGearContentPackVisible(baseItem)) {
         list.push({
           ...baseItem,
@@ -6601,8 +6611,8 @@ export default function HubScreen({
         id: mission.itemId,
         name: mission.item,
         desc: {
-          fr: `${mission.item.fr} est une preuve de fusion extraite de ${mission.title.fr}. Elle garde la memoire croisee de ${mission.sourceUniverses?.join(' / ') || 'plusieurs Trames'} et sert de matrice pour apparences, passifs de faction, arcs scelles et futures missions hybrides.`,
-          en: `${mission.item.en} is fusion proof extracted from ${mission.title.en}. It preserves crossed memory from ${mission.sourceUniverses?.join(' / ') || 'multiple Threads'} and acts as a matrix for appearances, faction passives, sealed arcs, and future hybrid missions.`
+          fr: `${mission.item.fr} est une preuve de fusion extraite de ${mission.title.fr}. Elle garde la memoire croisee de ${mission.universes?.join(' / ') || 'plusieurs Trames'} et sert de matrice pour apparences, passifs de faction, arcs scelles et futures missions hybrides.`,
+          en: `${mission.item.en} is fusion proof extracted from ${mission.title.en}. It preserves crossed memory from ${mission.universes?.join(' / ') || 'multiple Threads'} and acts as a matrix for appearances, faction passives, sealed arcs, and future hybrid missions.`
         }
       }
     ]),
@@ -7323,10 +7333,6 @@ export default function HubScreen({
     });
   };
 
-  const selectedBriefingStage = briefingStageId
-    ? ADMIN_VISIBLE_STAGES.find(stage => stage.id === briefingStageId)
-    : null;
-
   const todayIndex = Math.floor(Date.now() / 86400000);
   const todayKey = new Date().toISOString().slice(0, 10);
   const startOfYear = new Date(Date.UTC(new Date().getUTCFullYear(), 0, 1));
@@ -7427,13 +7433,22 @@ export default function HubScreen({
       : (lang === 'fr' ? 'Combat archive: donnees conservees pour la revanche.' : 'Fight archived: data kept for the rematch.'), victory ? 'success' : 'warn');
   };
 
+  const activeTeamUniverses = activeTeam
+    .map(id => HEROES_DB.find(hero => hero.id === id))
+    .filter(hero => hero && !isAssetDisabled('heroes', hero.id))
+    .map(hero => hero.universe);
+  const selectedMissionFactionIds = new Set(resolveMissionFactionIds(selectedBriefingStage));
   const activeFactionSynergies = FACTION_RULES.map(rule => {
-    const count = activeTeam
-      .map(id => HEROES_DB.find(hero => hero.id === id))
-      .filter(hero => hero && !isAssetDisabled('heroes', hero.id))
-      .map(hero => hero.universe)
-      .filter(universe => rule.universes.includes(universe)).length;
-    return { ...rule, count, active: count >= 2 };
+    const count = rule.base
+      ? activeTeamUniverses.filter(universe => resolveUniverseFactionIds(universe).includes(rule.id)).length
+      : (selectedMissionFactionIds.has(rule.id) ? activeTeamUniverses.length : 0);
+    return {
+      ...rule,
+      label: rule.label?.[lang] || rule.label?.fr || rule.id,
+      bonusLabel: `+${Math.round(rule.bonus * 100)}% ${rule.stat.toUpperCase()}`,
+      count,
+      active: count >= rule.minMembers
+    };
   });
 
   const deployedHeroes = activeTeam
@@ -9310,14 +9325,20 @@ export default function HubScreen({
                 </div>
                 <div style={{ padding: '10px', border: '1px solid rgba(155,89,182,0.22)', background: 'rgba(155,89,182,0.05)', borderRadius: '4px' }}>
                   <strong style={{ color: '#d9b6ff', fontSize: '10px', textTransform: 'uppercase' }}>
-                    {lang === 'fr' ? 'Reputation future' : 'Future reputation'}
+                    {lang === 'fr' ? 'Reputations actives' : 'Active reputations'}
                   </strong>
                   <div style={{ display: 'grid', gap: '5px', marginTop: '7px' }}>
-                    {REPUTATION_TRACKS.slice(0, 5).map(track => (
-                      <span key={track.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
-                        <b>{track.label[lang]}</b>: {track.gameplay[lang]}
-                      </span>
-                    ))}
+                    {REPUTATION_TRACKS.slice(0, 5).map(track => {
+                      const reputationEntry = activityProgress.reputationProgress?.[track.id] || { xp: 0 };
+                      const rank = getReputationRank(track.id, activityProgress.reputationProgress);
+                      const nextThreshold = track.thresholds[rank + 1];
+                      return (
+                        <span key={track.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.3 }}>
+                          <b>{track.label[lang]} / {lang === 'fr' ? 'RANG' : 'RANK'} {rank}</b>
+                          {` - ${reputationEntry.xp || 0}/${nextThreshold || 'MAX'} XP: ${track.gameplay[lang]}`}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
                 <div style={{ padding: '10px', border: '1px solid rgba(255,140,0,0.22)', background: 'rgba(255,140,0,0.05)', borderRadius: '4px' }}>
@@ -9693,7 +9714,7 @@ export default function HubScreen({
                   fontSize: '10px',
                   color: rule.active ? '#d9ffe5' : '#888'
                 }}>
-                  <strong>{rule.label}</strong> {rule.count}/2 - {rule.bonus}
+                  <strong>{rule.label}</strong> {rule.count}/{rule.minMembers} - {rule.bonusLabel}
                 </div>
               ))}
             </div>

@@ -2,6 +2,7 @@ import { stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
+import sharp from 'sharp';
 
 import {
   BOOSTER_ART_BY_PACK_ID,
@@ -874,7 +875,7 @@ for (const universe of BOOSTER_ART_UNIVERSES) {
 
   if (
     !publicPath?.startsWith('/boosters/')
-    || !/\.(?:png|webp)$/i.test(publicPath)
+    || !/^[a-z0-9][a-z0-9-]*\.webp$/i.test(path.basename(publicPath))
   ) {
     errors.push(`${universe}: invalid public path "${publicPath}"`);
     continue;
@@ -887,10 +888,19 @@ for (const universe of BOOSTER_ART_UNIVERSES) {
 
   const localPath = path.join(projectRoot, 'public', ...publicPath.split('/').filter(Boolean));
   try {
-    const fileStats = await stat(localPath);
+    const [fileStats, metadata] = await Promise.all([
+      stat(localPath),
+      sharp(localPath, { failOn: 'error' }).metadata()
+    ]);
     totalBytes += fileStats.size;
-    if (!fileStats.isFile() || fileStats.size < 50_000) {
+    if (!fileStats.isFile() || fileStats.size < 50_000 || fileStats.size > 800_000) {
       errors.push(`${universe}: suspicious booster asset (${fileStats.size} bytes)`);
+    }
+    if (metadata.format !== 'webp' || metadata.width !== 640 || metadata.height !== 960) {
+      errors.push(
+        `${universe}: expected 640x960 WebP runtime booster, received `
+        + `${metadata.width}x${metadata.height} ${metadata.format}`
+      );
     }
   } catch (error) {
     errors.push(`${universe}: missing asset (${error.code || error.message})`);

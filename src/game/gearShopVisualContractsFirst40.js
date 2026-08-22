@@ -50,7 +50,7 @@ export const GEAR_SHOP_VISUAL_CONTRACTS_FIRST40 = Object.freeze({
     visualAnchor:
       "Single Oliver Tree signature silver aluminum Razor kick scooter from Hurt, narrow deck, black T-grips and tiny black wheels, strict music-video proportions, no rider, stickers or colored wheels.",
   },
-  evt_hazbin_redemption: {
+  evt_hazbin_hotel_breach_event: {
     referenceUrl: "https://hazbinhotel.fandom.com/wiki/Ready_For_This",
     visualAnchor:
       "Single Alastor sentient vintage microphone staff used by Charlie in Ready For This, complete thin dark-red staff and small black-and-red oval microphone with cross grille, no character, face, gold cabaret body or text.",

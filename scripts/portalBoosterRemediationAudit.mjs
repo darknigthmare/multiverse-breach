@@ -21,6 +21,13 @@ const ORIGINAL_PLAN_PATH = path.join(
   'original-universes',
   'openai-image-v2-plan.json'
 );
+const ORIGINAL_RUNTIME_MANIFEST_PATH = path.join(
+  REPOSITORY_ROOT,
+  'public',
+  'boosters',
+  'original-worlds',
+  'runtime-manifest.json'
+);
 const SHA256_PATTERN = /^[0-9a-f]{64}$/;
 const EXPECTED_TOP_LEVEL_SLUGS = Object.freeze([
   'avatar-navi',
@@ -146,17 +153,29 @@ function absolutePublicPath(publicPath, label) {
 }
 
 async function main() {
-  const [ledgerSource, originalPlanSource] = await Promise.all([
+  const [ledgerSource, originalPlanSource, originalRuntimeManifestSource] = await Promise.all([
     readFile(LEDGER_PATH, 'utf8'),
-    readFile(ORIGINAL_PLAN_PATH, 'utf8')
+    readFile(ORIGINAL_PLAN_PATH, 'utf8'),
+    readFile(ORIGINAL_RUNTIME_MANIFEST_PATH, 'utf8')
   ]);
   const ledger = JSON.parse(ledgerSource);
   const originalPlan = JSON.parse(originalPlanSource);
+  const originalRuntimeManifest = JSON.parse(originalRuntimeManifestSource);
   const originalJobs = originalPlan.jobs.filter(job => job.category === 'booster');
   const originalJobsByPath = new Map(originalJobs.map(job => [job.destination, job]));
-  const expectedPaths = new Set([
+  const originalRuntimeEntries = Array.isArray(originalRuntimeManifest.entries)
+    ? originalRuntimeManifest.entries
+    : [];
+  const originalRuntimeBySourcePath = new Map(
+    originalRuntimeEntries.map(entry => [entry.source?.publicPath, entry])
+  );
+  const expectedRemediationArtifactPaths = new Set([
     ...EXPECTED_TOP_LEVEL_SLUGS.map(slug => `/boosters/${slug}.webp`),
     ...originalJobs.map(job => job.destination)
+  ]);
+  const expectedCurrentRuntimePaths = new Set([
+    ...EXPECTED_TOP_LEVEL_SLUGS.map(slug => `/boosters/${slug}.webp`),
+    ...originalRuntimeEntries.map(entry => entry.runtime?.publicPath)
   ]);
 
   check(ledger.schemaVersion === 1, 'ledger.schemaVersion must be 1');
@@ -185,12 +204,27 @@ async function main() {
   check(ledger.counts?.entries === 53, 'ledger.counts.entries must be 53');
   check(ledger.counts?.topLevel === 33, 'ledger.counts.topLevel must be 33');
   check(ledger.counts?.originalV2 === 20, 'ledger.counts.originalV2 must be 20');
+  check(originalRuntimeManifest.schemaVersion === 1, 'original runtime manifest schemaVersion must be 1');
+  check(
+    originalRuntimeManifest.contractId === 'multiverse-breach-original-booster-runtime-v1',
+    'original runtime manifest contractId is invalid'
+  );
+  check(originalRuntimeEntries.length === 20, `expected 20 original runtime derivatives, received ${originalRuntimeEntries.length}`);
+  check(
+    originalRuntimeBySourcePath.size === originalRuntimeEntries.length,
+    'original runtime manifest contains duplicate source paths'
+  );
+  check(expectedCurrentRuntimePaths.size === 53, 'expected 53 unique current runtime paths');
 
   const universes = new Set();
   const paths = new Set();
+  const currentRuntimePaths = new Set();
   const promptHashes = new Set();
   const runtimeHashes = new Set();
+  const currentRuntimeHashes = new Set();
   let verifiedBytes = 0;
+  let verifiedDerivativeBytes = 0;
+  let originalRuntimeDerivatives = 0;
 
   for (const [index, entry] of entries.entries()) {
     const label = `entries[${index}] ${entry?.universe || '<unknown>'}`;
@@ -256,13 +290,25 @@ async function main() {
     check(Math.abs((source.width / source.height) - (2 / 3)) <= 0.002, `${label}: source is not 2:3`);
 
     const runtime = entry.runtime || {};
-    check(expectedPaths.has(runtime.publicPath), `${label}: runtime path is outside the remediation set`);
-    check(BOOSTER_ART_BY_UNIVERSE[entry.universe] === runtime.publicPath, `${label}: runtime path differs from catalogue`);
+    check(expectedRemediationArtifactPaths.has(runtime.publicPath), `${label}: remediation artifact path is outside the locked set`);
+    const originalRuntimeDerivative = runtime.publicPath?.endsWith('.png')
+      ? originalRuntimeBySourcePath.get(runtime.publicPath)
+      : null;
+    const currentRuntime = originalRuntimeDerivative?.runtime || runtime;
+    check(
+      BOOSTER_ART_BY_UNIVERSE[entry.universe] === currentRuntime.publicPath,
+      `${label}: current runtime path differs from catalogue`
+    );
     check(!paths.has(runtime.publicPath), `${label}: duplicate runtime path`);
     paths.add(runtime.publicPath);
+    check(!currentRuntimePaths.has(currentRuntime.publicPath), `${label}: duplicate current runtime path`);
+    currentRuntimePaths.add(currentRuntime.publicPath);
     check(SHA256_PATTERN.test(runtime.sha256 || ''), `${label}: runtime SHA-256 is invalid`);
     check(!runtimeHashes.has(runtime.sha256), `${label}: duplicate runtime image hash`);
     runtimeHashes.add(runtime.sha256);
+    check(SHA256_PATTERN.test(currentRuntime.sha256 || ''), `${label}: current runtime SHA-256 is invalid`);
+    check(!currentRuntimeHashes.has(currentRuntime.sha256), `${label}: duplicate current runtime image hash`);
+    currentRuntimeHashes.add(currentRuntime.sha256);
     check(entry.visualReview?.approved === true, `${label}: visual review is not approved`);
     check(
       typeof entry.visualReview?.notes === 'string' && entry.visualReview.notes.trim(),
@@ -291,15 +337,59 @@ async function main() {
         check(metadata.width === 640 && metadata.height === 960, `${label}: WebP runtime must be 640x960`);
         check(fileStats.size >= 50_000 && fileStats.size <= 800_000, `${label}: WebP byte size is suspicious`);
       } else {
-        check(metadata.format === 'png', `${label}: original-v2 runtime must be PNG`);
-        check(metadata.width >= 900 && metadata.height >= 1300, `${label}: original-v2 runtime is too small`);
+        check(metadata.format === 'png', `${label}: original-v2 source master must be PNG`);
+        check(metadata.width >= 900 && metadata.height >= 1300, `${label}: original-v2 source master is too small`);
         const job = originalJobsByPath.get(runtime.publicPath);
-        check(Boolean(job), `${label}: original-v2 runtime has no canonical job`);
+        check(Boolean(job), `${label}: original-v2 source master has no canonical job`);
+        check(Boolean(originalRuntimeDerivative), `${label}: original-v2 source master has no runtime derivative`);
         if (job) {
           check(entry.slug === job.worldKey, `${label}: original-v2 slug mismatch`);
           check(entry.universe === job.universe, `${label}: original-v2 universe mismatch`);
           check(generation.prompt === job.prompt, `${label}: original-v2 prompt is not canonical`);
           check(generation.promptSha256 === job.promptSha256, `${label}: original-v2 prompt hash mismatch`);
+        }
+        if (originalRuntimeDerivative) {
+          originalRuntimeDerivatives += 1;
+          const derivativeSource = originalRuntimeDerivative.source || {};
+          const derivativeRuntime = originalRuntimeDerivative.runtime || {};
+          check(originalRuntimeDerivative.worldKey === entry.slug, `${label}: runtime derivative world key mismatch`);
+          check(originalRuntimeDerivative.universe === entry.universe, `${label}: runtime derivative universe mismatch`);
+          check(derivativeSource.publicPath === runtime.publicPath, `${label}: runtime derivative source path mismatch`);
+          check(derivativeSource.repositoryPath === runtime.repositoryPath, `${label}: runtime derivative source repository path mismatch`);
+          check(derivativeSource.sha256 === runtime.sha256, `${label}: runtime derivative source SHA-256 mismatch`);
+          check(derivativeSource.bytes === runtime.bytes, `${label}: runtime derivative source byte size mismatch`);
+          check(derivativeSource.width === runtime.width, `${label}: runtime derivative source width mismatch`);
+          check(derivativeSource.height === runtime.height, `${label}: runtime derivative source height mismatch`);
+          check(String(derivativeSource.format).toLowerCase() === runtime.format, `${label}: runtime derivative source format mismatch`);
+          check(derivativeRuntime.format === 'WebP', `${label}: runtime derivative must declare WebP`);
+          check(derivativeRuntime.width === 640 && derivativeRuntime.height === 960, `${label}: runtime derivative must declare 640x960`);
+
+          const derivativeLocalPath = absolutePublicPath(
+            derivativeRuntime.publicPath,
+            `${label}.runtimeDerivative.publicPath`
+          );
+          if (derivativeLocalPath) {
+            try {
+              const [derivativeBuffer, derivativeStats, derivativeMetadata] = await Promise.all([
+                readFile(derivativeLocalPath),
+                stat(derivativeLocalPath),
+                sharp(derivativeLocalPath, { failOn: 'error' }).metadata()
+              ]);
+              verifiedDerivativeBytes += derivativeStats.size;
+              check(derivativeStats.isFile(), `${label}: runtime derivative is not a regular file`);
+              check(
+                derivativeRuntime.repositoryPath === path.relative(REPOSITORY_ROOT, derivativeLocalPath).split(path.sep).join('/'),
+                `${label}: runtime derivative repositoryPath mismatch`
+              );
+              check(derivativeRuntime.sha256 === sha256(derivativeBuffer), `${label}: runtime derivative SHA-256 mismatch`);
+              check(derivativeRuntime.bytes === derivativeStats.size, `${label}: runtime derivative byte size mismatch`);
+              check(derivativeMetadata.format === 'webp', `${label}: runtime derivative file must be WebP`);
+              check(derivativeMetadata.width === 640 && derivativeMetadata.height === 960, `${label}: runtime derivative file must be 640x960`);
+              check(derivativeStats.size >= 50_000 && derivativeStats.size <= 800_000, `${label}: runtime derivative byte size is suspicious`);
+            } catch (error) {
+              errors.push(`${label}: runtime derivative inspection failed (${error.code || error.message})`);
+            }
+          }
         }
       }
     } catch (error) {
@@ -307,9 +397,17 @@ async function main() {
     }
   }
 
-  const missingPaths = [...expectedPaths].filter(publicPath => !paths.has(publicPath));
+  const missingPaths = [...expectedRemediationArtifactPaths].filter(publicPath => !paths.has(publicPath));
+  const missingCurrentRuntimePaths = [...expectedCurrentRuntimePaths]
+    .filter(publicPath => !currentRuntimePaths.has(publicPath));
   check(paths.size === 53, `expected 53 unique runtime paths, received ${paths.size}`);
   check(missingPaths.length === 0, `missing remediation runtime paths: ${missingPaths.join(', ')}`);
+  check(currentRuntimePaths.size === 53, `expected 53 unique current runtime paths, received ${currentRuntimePaths.size}`);
+  check(
+    missingCurrentRuntimePaths.length === 0,
+    `missing current runtime paths: ${missingCurrentRuntimePaths.join(', ')}`
+  );
+  check(originalRuntimeDerivatives === 20, `expected 20 verified original runtime derivatives, received ${originalRuntimeDerivatives}`);
 
   console.log(JSON.stringify({
     contractId: ledger.contractId,
@@ -317,7 +415,11 @@ async function main() {
     uniqueUniverses: universes.size,
     uniqueRuntimePaths: paths.size,
     uniqueRuntimeHashes: runtimeHashes.size,
+    uniqueCurrentRuntimePaths: currentRuntimePaths.size,
+    uniqueCurrentRuntimeHashes: currentRuntimeHashes.size,
+    originalRuntimeDerivatives,
     verifiedBytes,
+    verifiedDerivativeBytes,
     errors
   }, null, 2));
   if (errors.length > 0) process.exitCode = 1;

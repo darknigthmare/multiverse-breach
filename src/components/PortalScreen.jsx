@@ -12,6 +12,7 @@ import {
 } from '../game/portalBoosterEngine';
 import { capDuplicateRefunds, getBoosterPrice } from '../game/portalBoosterEconomy';
 import { getOcBoosterContentUpdate } from '../game/ocBoosterContentUpdates';
+import { resolvePortalBoosterEditorialWave } from '../game/portalBoosterEditorialWaves';
 import { getUniverseUnlockables, getUnlockableById } from '../game/universeUnlockables';
 import {
   OPENAI_COSMETIC_VISUALS,
@@ -1111,14 +1112,6 @@ export default function PortalScreen({
     () => availablePortalBanners.find(item => item.id === activeBanner) || defaultOcBanner,
     [activeBanner, availablePortalBanners, defaultOcBanner]
   );
-  const activeContentUpdate = useMemo(
-    () => getOcBoosterContentUpdate(activeBannerData.id),
-    [activeBannerData.id]
-  );
-  const activeContentUpdateCardIds = useMemo(
-    () => new Set(activeContentUpdate?.newCardIds || []),
-    [activeContentUpdate]
-  );
   const activeBannerHeroes = visibleHeroes.filter(hero => activeBannerData.match(hero));
   const activeOwnedCount = activeBannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
   const activeMissingCount = Math.max(0, activeBannerHeroes.length - activeOwnedCount);
@@ -1161,6 +1154,23 @@ export default function PortalScreen({
       disabledGearIds: disabledGearSet
     }),
     [activeBannerData, visibleHeroes, disabledGearSet]
+  );
+  const activeContentUpdate = useMemo(
+    () => resolvePortalBoosterEditorialWave({
+      packId: activeBannerData.id,
+      universe: activeBannerData.universe,
+      candidates: activeRewardCandidates,
+      authoredUpdate: getOcBoosterContentUpdate(activeBannerData.id)
+    }),
+    [activeBannerData.id, activeBannerData.universe, activeRewardCandidates]
+  );
+  const activeContentUpdateCardIds = useMemo(
+    () => new Set(
+      activeContentUpdate?.featuredCardIds
+      || activeContentUpdate?.newCardIds
+      || []
+    ),
+    [activeContentUpdate]
   );
   const freeDrawRates = useMemo(
     () => getBoosterFreeDrawRates(activeRewardCandidates),
@@ -1896,14 +1906,20 @@ export default function PortalScreen({
               aria-live="polite"
             >
               <strong>
-                {lang === 'fr' ? 'MISE À JOUR' : 'CONTENT UPDATE'} V{activeContentUpdate.version}
+                {activeContentUpdate.type === 'editorial-wave'
+                  ? (lang === 'fr' ? 'SÉLECTION ÉDITORIALE' : 'EDITORIAL SPOTLIGHT')
+                  : (lang === 'fr' ? 'MISE À JOUR' : 'CONTENT UPDATE')} V{activeContentUpdate.version}
               </strong>
               {' · '}
               <time dateTime={activeContentUpdate.releasedAt}>
                 {formatContentUpdateDate(activeContentUpdate.releasedAt, lang)}
               </time>
               {' · '}
-              +{activeContentUpdate.newCardIds.length} {lang === 'fr' ? 'CARTES' : 'CARDS'}
+              {activeContentUpdate.type === 'editorial-wave' ? '' : '+'}
+              {(activeContentUpdate.featuredCardIds || activeContentUpdate.newCardIds).length}{' '}
+              {activeContentUpdate.type === 'editorial-wave'
+                ? (lang === 'fr' ? 'CARTES MISES EN AVANT' : 'FEATURED CARDS')
+                : (lang === 'fr' ? 'CARTES' : 'CARDS')}
               <br />
               {getLocalizedText(activeContentUpdate.summary, lang)}
             </div>
@@ -1946,7 +1962,9 @@ export default function PortalScreen({
                             <span>
                               {activeContentUpdateCardIds.has(reward.id) && (
                                 <strong style={{ color: activeBannerData.color }}>
-                                  {lang === 'fr' ? 'AJOUT' : 'NEW'} V{activeContentUpdate.version} ·{' '}
+                                  {activeContentUpdate.type === 'editorial-wave'
+                                    ? (lang === 'fr' ? 'SÉLECTION' : 'FEATURED')
+                                    : (lang === 'fr' ? 'AJOUT' : 'NEW')} V{activeContentUpdate.version} ·{' '}
                                 </strong>
                               )}
                               {getLocalizedText(reward.name, lang)}

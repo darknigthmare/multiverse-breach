@@ -23,6 +23,13 @@ const characterReferenceQualityPath = path.join(
   projectRoot,
   'docs/rift-dossiers/character-reference-quality.json'
 );
+const checkOnly = process.argv.includes('--check');
+const refreshCharacterReferenceAudit = process.argv.includes('--refresh-character-reference-audit');
+assert.equal(
+  checkOnly && refreshCharacterReferenceAudit,
+  false,
+  '--check and --refresh-character-reference-audit cannot be combined'
+);
 const researchedReferencePaths = [
   'franchises-a.json',
   'franchises-b.json',
@@ -55,11 +62,11 @@ const subjectReferencePaths = [
 
 const EXPECTED_COUNTS = Object.freeze({
   'campagne-oc': 12,
-  expanded: 476,
+  expanded: 1175,
   statique: 39,
   fusion: 16,
   'arc-univers': 41,
-  'arc-personnage': 1498,
+  'arc-personnage': 1912,
   trio: 4
 });
 
@@ -162,11 +169,14 @@ const buildOpenAiPrompt = ({
   univers,
   mode,
   boss,
+  nonCombatPolicy = null,
+  nonCombatObjective = null,
   visualAnchors = [],
   bossVisualAnchor = null,
   characterName = null,
   characterDescriptors = [],
-  hasApprovedCharacterReference = false
+  hasApprovedCharacterReference = false,
+  referencePolicy = 'authoritative-public'
 }) => {
   const localizedTitle = nom.fr === nom.en
     ? `"${nom.en}"`
@@ -178,9 +188,16 @@ const buildOpenAiPrompt = ({
     'OpenAI image request: create one original 32-bit pixel-art rift-dossier thumbnail for the fan-made game Multiverse Breach.',
     `Operation: ${localizedTitle}.`,
     `Canonical Thread or universe: ${univers.join(' + ')}.`,
-    `Gameplay mode: ${mode}.`,
-    `Final threat or boss: ${boss}.`
+    `Gameplay mode: ${mode}.`
   ];
+  if (nonCombatPolicy) {
+    promptParts.push(
+      'Final encounter: non-combat finale; no boss or hostile subject.',
+      `Interactive objective: ${nonCombatObjective}.`
+    );
+  } else {
+    promptParts.push(`Final threat or boss: ${boss}.`);
+  }
   if (characterName) {
     promptParts.push(`Character focus: ${characterName}.`);
     if (hasApprovedCharacterReference) {
@@ -200,7 +217,9 @@ const buildOpenAiPrompt = ({
   }
   if (visualAnchors.length > 0) {
     promptParts.push(
-      `Verified visual anchors researched before generation: ${visualAnchors.join(' | ')}.`
+      referencePolicy === 'project-runtime-lore'
+        ? `Project-runtime lore anchors (not independently researched): ${visualAnchors.join(' | ')}.`
+        : `Verified visual anchors researched before generation: ${visualAnchors.join(' | ')}.`
     );
   }
   if (bossVisualAnchor) {
@@ -225,6 +244,8 @@ const makeEntry = ({
   univers,
   mode,
   boss,
+  nonCombatPolicy = null,
+  nonCombatObjective = null,
   existingPath = null,
   promptOverride = null,
   visualAnchors = [],
@@ -234,13 +255,15 @@ const makeEntry = ({
   localReferencePaths = [],
   localReferenceCandidatePaths = [],
   characterName = null,
-  characterDescriptors = []
+  characterDescriptors = [],
+  referencePolicy = 'authoritative-public'
 }) => {
   const normalizedName = normalizeLocalizedName(nom);
   const normalizedUniverses = uniqueStrings(
     univers.flatMap(universe => (Array.isArray(universe) ? universe : [universe]))
   );
   const normalizedBoss = String(boss || '').trim();
+  const normalizedNonCombatObjective = getLocalizedText(nonCombatObjective, 'en');
   const normalizedMode = String(mode || '').trim();
   const normalizedVisualAnchors = uniqueStrings(visualAnchors);
   const normalizedBossVisualAnchor = String(bossVisualAnchor || '').trim() || null;
@@ -256,22 +279,36 @@ const makeEntry = ({
     localReferenceCandidatePaths.map(normalizePublicAssetPath)
   );
   const normalizedCharacterDescriptors = uniqueStrings(characterDescriptors);
+  assert.ok(
+    ['authoritative-public', 'project-runtime-lore'].includes(referencePolicy),
+    `${famille}:${id}: unsupported reference policy ${referencePolicy}`
+  );
 
   assert.ok(Number.isInteger(id), `${famille}: dossier id must be an integer`);
   assert.ok(normalizedUniverses.length > 0, `${famille}:${id}: missing universe`);
   assert.ok(normalizedMode, `${famille}:${id}: missing mode`);
-  assert.ok(normalizedBoss, `${famille}:${id}: missing boss`);
+  if (nonCombatPolicy) {
+    assert.ok(
+      normalizedNonCombatObjective,
+      `${famille}:${id}: non-combat finale is missing its objective`
+    );
+  } else {
+    assert.ok(normalizedBoss, `${famille}:${id}: missing boss`);
+  }
 
   const promptInput = {
     nom: normalizedName,
     univers: normalizedUniverses,
     mode: normalizedMode,
     boss: normalizedBoss,
+    nonCombatPolicy,
+    nonCombatObjective: normalizedNonCombatObjective,
     visualAnchors: normalizedVisualAnchors,
     bossVisualAnchor: normalizedBossVisualAnchor,
     characterName,
     characterDescriptors: normalizedCharacterDescriptors,
-    hasApprovedCharacterReference: normalizedLocalReferencePaths.length > 0
+    hasApprovedCharacterReference: normalizedLocalReferencePaths.length > 0,
+    referencePolicy
   };
 
   return {
@@ -280,12 +317,19 @@ const makeEntry = ({
     nom: normalizedName,
     univers: normalizedUniverses,
     mode: normalizedMode,
-    boss: normalizedBoss,
+    ...(nonCombatPolicy
+      ? {
+          boss: null,
+          finalePolicy: nonCombatPolicy,
+          objectifFinale: normalizeLocalizedName(nonCombatObjective)
+        }
+      : { boss: normalizedBoss }),
     personnage: characterName || null,
     ancragesVisuels: normalizedVisualAnchors,
     referenceUrls: normalizedReferenceUrls,
     bossVisualAnchor: normalizedBossVisualAnchor,
     bossReferenceUrls: normalizedBossReferenceUrls,
+    politiqueReferences: referencePolicy,
     referencesLocalesOpenAI: normalizedLocalReferencePaths,
     ...(famille === 'arc-personnage'
       ? { candidatsReferencesLocalesAudit: normalizedLocalReferenceCandidatePaths }
@@ -377,6 +421,8 @@ const loadExportedData = async () => {
     return {
       campaignMissions: campaignModule.OC_CAMPAIGN_MISSIONS,
       expandedStages: expandedModule.getExpandedStages(),
+      expandedUniverseSignatures: expandedModule.EXPANDED_UNIVERSE_SIGNATURES,
+      getResolvedLoreWorldBossPolicy: expandedModule.getResolvedLoreWorldBossPolicy,
       fusionMissions: narrativeModule.FUSION_MISSIONS,
       universeArcs: narrativeModule.UNIVERSE_NARRATIVE_ARCS,
       characterArcs: narrativeModule.CHARACTER_NARRATIVE_ARCS,
@@ -421,7 +467,7 @@ const loadSubjectReferences = () => {
   return references;
 };
 
-const loadCharacterReferenceQuality = () => {
+const loadCharacterReferenceQuality = ({ allowStale = false } = {}) => {
   assert.equal(
     existsSync(characterReferenceQualityPath),
     true,
@@ -434,11 +480,13 @@ const loadCharacterReferenceQuality = () => {
     'rift-dossier-character-reference-quality-audit',
     'Unexpected character-reference quality report kind'
   );
-  assert.equal(
-    report.summary?.characterArcEntryCount,
-    EXPECTED_COUNTS['arc-personnage'],
-    'Character-reference report entry count drifted'
-  );
+  if (!allowStale) {
+    assert.equal(
+      report.summary?.characterArcEntryCount,
+      EXPECTED_COUNTS['arc-personnage'],
+      'Character-reference report entry count drifted'
+    );
+  }
   assert.ok(Array.isArray(report.referenceFiles), 'Character-reference report omits referenceFiles');
   assert.ok(Array.isArray(report.entries), 'Character-reference report omits entries');
 
@@ -510,7 +558,9 @@ const buildCatalog = async () => {
       reference
     ])
   );
-  const characterReferenceQuality = loadCharacterReferenceQuality();
+  const characterReferenceQuality = loadCharacterReferenceQuality({
+    allowStale: refreshCharacterReferenceAudit
+  });
   const profileByUniverse = new Map(
     Object.values(source.stageLoreProfiles).map(profile => [profile.key, profile])
   );
@@ -588,6 +638,17 @@ const buildCatalog = async () => {
     expanded: source.expandedStages
       .map(stage => {
         const internalSetting = stage.setting || stage.production?.setting;
+        const universeSignature = source.expandedUniverseSignatures[stage.universe];
+        const finalePolicy = stage.finalePolicy
+          || source.getResolvedLoreWorldBossPolicy(stage.universe)
+          || universeSignature?.worldBossPolicy
+          || null;
+        const nonCombatPolicy = ['nonCombatFinal', 'stageSetpiece'].includes(finalePolicy?.policy)
+          ? finalePolicy.policy
+          : null;
+        const bossName = nonCombatPolicy
+          ? null
+          : stage.bossName || universeSignature?.bossName || universeSignature?.worldBoss;
         const subjectReference = subjectReferenceByDossier.get(`expanded:${stage.id}`);
         const visualReferences = getVisualReferences({
           universes: [stage.universe],
@@ -606,18 +667,35 @@ const buildCatalog = async () => {
           && subjectReference.visualAnchors.length > 0
           ? subjectReference.visualAnchors
           : visualReferences.visualAnchors;
+        const referencePolicy = visualReferences.referenceUrls.length > 0
+          || (subjectReference?.bossReferenceUrls || []).length > 0
+          ? 'authoritative-public'
+          : 'project-runtime-lore';
+        const resolvedVisualAnchors = subjectVisualAnchors.length > 0
+          ? subjectVisualAnchors
+          : uniqueStrings([
+              stage.name,
+              universeSignature?.stageName,
+              universeSignature?.theme,
+              universeSignature?.worldBoss,
+              ...(universeSignature?.monsters || []),
+              ...(universeSignature?.bosses || [])
+            ]);
         return makeEntry({
           id: stage.id,
           famille: 'expanded',
           nom: stage.displayName || stage.name,
           univers: [stage.universe],
           mode: stage.mode,
-          boss: stage.bossName,
+          boss: bossName,
+          nonCombatPolicy,
+          nonCombatObjective: finalePolicy?.objective,
           existingPath: stage.stageArt,
           bossVisualAnchor: subjectReference?.bossVisualAnchor,
           bossReferenceUrls: subjectReference?.bossReferenceUrls,
-          visualAnchors: subjectVisualAnchors,
-          referenceUrls: visualReferences.referenceUrls
+          visualAnchors: resolvedVisualAnchors,
+          referenceUrls: visualReferences.referenceUrls,
+          referencePolicy
         });
       })
       .sort((left, right) => left.id - right.id),
@@ -705,29 +783,41 @@ const buildCatalog = async () => {
           ? [normalizePublicAssetPath(localReferencePath)]
           : [];
         const reportedEntry = characterReferenceQuality.entryById.get(arc.stageId);
-        assert.ok(
-          reportedEntry,
-          `Character arc ${arc.stageId} is missing from the character-reference report`
-        );
-        assert.deepEqual(
-          uniqueStrings((reportedEntry.localReferences || []).map(normalizePublicAssetPath)),
-          localReferenceCandidatePaths,
-          `Character arc ${arc.stageId} local-reference candidates drifted; refresh the quality audit`
-        );
-        const approvedLocalReferencePaths = localReferenceCandidatePaths.filter(referencePath => {
-          const classification = characterReferenceQuality.classificationByPath.get(referencePath);
+        if (!refreshCharacterReferenceAudit) {
           assert.ok(
-            classification,
-            `${referencePath}: candidate is missing from the character-reference quality report`
+            reportedEntry,
+            `Character arc ${arc.stageId} is missing from the character-reference report`
           );
-          return classification === 'approved';
-        });
+          assert.deepEqual(
+            uniqueStrings((reportedEntry.localReferences || []).map(normalizePublicAssetPath)),
+            localReferenceCandidatePaths,
+            `Character arc ${arc.stageId} local-reference candidates drifted; refresh the quality audit`
+          );
+        }
+        const approvedLocalReferencePaths = refreshCharacterReferenceAudit
+          ? []
+          : localReferenceCandidatePaths.filter(referencePath => {
+            const classification = characterReferenceQuality.classificationByPath.get(referencePath);
+            assert.ok(
+              classification,
+              `${referencePath}: candidate is missing from the character-reference quality report`
+            );
+            return classification === 'approved';
+          });
         const visualReferences = getVisualReferences({ universes: [heroUniverse] });
         const subjectReference = subjectReferenceByDossier.get(`arc-personnage:${arc.stageId}`);
         const subjectVisualAnchors = Array.isArray(subjectReference?.visualAnchors)
           && subjectReference.visualAnchors.length > 0
           ? subjectReference.visualAnchors
           : visualReferences.visualAnchors;
+        const characterDescriptors = buildCharacterDescriptors({ hero, arc, heroUniverse });
+        const referencePolicy = visualReferences.referenceUrls.length > 0
+          || (subjectReference?.bossReferenceUrls || []).length > 0
+          ? 'authoritative-public'
+          : 'project-runtime-lore';
+        const resolvedVisualAnchors = subjectVisualAnchors.length > 0
+          ? subjectVisualAnchors
+          : characterDescriptors;
 
         assert.ok(heroUniverse, `Character arc ${arc.id} does not resolve hero ${arc.heroId}`);
         return makeEntry({
@@ -738,13 +828,14 @@ const buildCatalog = async () => {
           mode: arc.mode,
           boss: arc.bossName,
           characterName: hero?.name || arc.title?.en || arc.heroId,
-          characterDescriptors: buildCharacterDescriptors({ hero, arc, heroUniverse }),
+          characterDescriptors,
           bossVisualAnchor: subjectReference?.bossVisualAnchor,
           bossReferenceUrls: subjectReference?.bossReferenceUrls,
           localReferencePaths: approvedLocalReferencePaths,
           localReferenceCandidatePaths,
-          visualAnchors: subjectVisualAnchors,
-          referenceUrls: visualReferences.referenceUrls
+          visualAnchors: resolvedVisualAnchors,
+          referenceUrls: visualReferences.referenceUrls,
+          referencePolicy
         });
       })
       .sort((left, right) => left.id - right.id),
@@ -803,7 +894,9 @@ const validateCatalog = catalog => {
 
   const ids = new Set();
   const targets = new Set();
-  const characterReferenceQuality = loadCharacterReferenceQuality();
+  const characterReferenceQuality = loadCharacterReferenceQuality({
+    allowStale: refreshCharacterReferenceAudit
+  });
 
   for (const entry of catalog.entrees) {
     const usesAuthoritativeCampaignPrompt = entry.famille === 'campagne-oc'
@@ -832,7 +925,23 @@ const validateCatalog = catalog => {
       );
     }
     assert.ok(entry.ancragesVisuels.length > 0, `${entry.id}: missing visual anchors`);
-    assert.ok(entry.referenceUrls.length > 0, `${entry.id}: missing source references`);
+    if (entry.politiqueReferences === 'project-runtime-lore') {
+      assert.ok(
+        ['expanded', 'arc-personnage'].includes(entry.famille),
+        `${entry.id}: runtime-lore fallback is restricted to expanded stages and character arcs`
+      );
+      assert.equal(
+        entry.referenceUrls.length,
+        0,
+        `${entry.id}: runtime-lore fallback must not mask available public references`
+      );
+      assert.ok(
+        entry.promptOpenAI.includes('Project-runtime lore anchors (not independently researched):'),
+        `${entry.id}: prompt does not disclose runtime-only lore provenance`
+      );
+    } else {
+      assert.ok(entry.referenceUrls.length > 0, `${entry.id}: missing source references`);
+    }
     assert.equal(
       entry.promptOpenAI.includes('[object Object]'),
       false,
@@ -846,7 +955,19 @@ const validateCatalog = catalog => {
       );
     }
     if (entry.id !== 90000 && !usesAuthoritativeCampaignPrompt) {
-      assert.ok(entry.promptOpenAI.includes(entry.boss), `${entry.id}: prompt omits boss`);
+      if (['nonCombatFinal', 'stageSetpiece'].includes(entry.finalePolicy)) {
+        assert.equal(entry.boss, null, `${entry.id}: non-combat finale must not declare a boss`);
+        assert.ok(
+          entry.promptOpenAI.includes('no boss or hostile subject'),
+          `${entry.id}: non-combat prompt does not explicitly exclude a boss`
+        );
+        assert.ok(
+          entry.promptOpenAI.includes(entry.objectifFinale.en),
+          `${entry.id}: non-combat prompt omits its objective`
+        );
+      } else {
+        assert.ok(entry.promptOpenAI.includes(entry.boss), `${entry.id}: prompt omits boss`);
+      }
     }
     if (!usesAuthoritativeCampaignPrompt) {
       entry.univers.forEach(universe => {
@@ -859,9 +980,11 @@ const validateCatalog = catalog => {
     if (entry.famille === 'arc-personnage') {
       const approvedReferences = entry.referencesLocalesOpenAI || [];
       const candidateReferences = entry.candidatsReferencesLocalesAudit || [];
-      const expectedApprovedReferences = candidateReferences.filter(referencePath => (
-        characterReferenceQuality.classificationByPath.get(referencePath) === 'approved'
-      ));
+      const expectedApprovedReferences = refreshCharacterReferenceAudit
+        ? []
+        : candidateReferences.filter(referencePath => (
+          characterReferenceQuality.classificationByPath.get(referencePath) === 'approved'
+        ));
       assert.deepEqual(
         approvedReferences,
         expectedApprovedReferences,
@@ -882,11 +1005,13 @@ const validateCatalog = catalog => {
         false,
         `${entry.id}: rejected placeholder exposed to OpenAI`
       );
-      for (const referencePath of candidateReferences) {
-        assert.ok(
-          characterReferenceQuality.classificationByPath.has(referencePath),
-          `${entry.id}: unaudited local-reference candidate ${referencePath}`
-        );
+      if (!refreshCharacterReferenceAudit) {
+        for (const referencePath of candidateReferences) {
+          assert.ok(
+            characterReferenceQuality.classificationByPath.has(referencePath),
+            `${entry.id}: unaudited local-reference candidate ${referencePath}`
+          );
+        }
       }
       assert.ok(
         entry.promptOpenAI.includes(CHARACTER_SEMANTIC_PROMPT_MARKER),
@@ -926,8 +1051,6 @@ const serializeCatalog = catalog => `${JSON.stringify(catalog, null, 2)}\n`;
 
 const catalog = validateCatalog(await buildCatalog());
 const serializedCatalog = serializeCatalog(catalog);
-const checkOnly = process.argv.includes('--check');
-
 if (checkOnly) {
   assert.equal(existsSync(outputPath), true, `Missing generated catalog ${outputPath}`);
   assert.equal(

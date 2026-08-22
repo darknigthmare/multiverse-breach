@@ -1,5 +1,6 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
+import { applyRaceResult, normalizeKartCareer } from '../game/kartCareer';
 import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
@@ -49,36 +50,6 @@ const formatRaceTime = seconds => {
   return `${minutes}:${remaining.toFixed(2).padStart(5, '0')}`;
 };
 
-const DEFAULT_KART_CAREER = {
-  xp: 0,
-  fragments: 0,
-  garageParts: 0,
-  upgrades: { engine: 0, grip: 0, capacitor: 0, stabilizer: 0 },
-  bestTimes: {},
-  completedObjectives: {}
-};
-
-const loadKartCareer = () => {
-  if (typeof localStorage === 'undefined') return DEFAULT_KART_CAREER;
-  try {
-    const parsed = JSON.parse(localStorage.getItem('multiverse-breach-kart-career') || 'null');
-    return {
-      ...DEFAULT_KART_CAREER,
-      ...(parsed || {}),
-      upgrades: { ...DEFAULT_KART_CAREER.upgrades, ...(parsed?.upgrades || {}) },
-      bestTimes: parsed?.bestTimes || {},
-      completedObjectives: parsed?.completedObjectives || {}
-    };
-  } catch {
-    return DEFAULT_KART_CAREER;
-  }
-};
-
-const saveKartCareer = career => {
-  if (typeof localStorage === 'undefined') return;
-  localStorage.setItem('multiverse-breach-kart-career', JSON.stringify(career));
-};
-
 export default function RaceMode({
   lang = 'fr',
   playerProfile,
@@ -103,7 +74,6 @@ export default function RaceMode({
   const [trackId, setTrackId] = useState(null);
   const [pilotId, setPilotId] = useState(null);
   const [raceStarted, setRaceStarted] = useState(false);
-  const [career, setCareer] = useState(loadKartCareer);
   const [summary, setSummary] = useState(null);
   const [autoAccelerate, setAutoAccelerate] = useState(true);
   const [snapshot, setSnapshot] = useState({
@@ -117,6 +87,32 @@ export default function RaceMode({
     raceState: 'idle',
     trackFactor: 1
   });
+
+  const career = useMemo(
+    () => normalizeKartCareer(portalCollection.raceCareer),
+    [portalCollection.raceCareer]
+  );
+  const garageUpgrades = useMemo(() => ({
+    engine: career.upgrades.engine,
+    grip: career.upgrades.grip,
+    capacitor: career.upgrades.capacitor,
+    stabilizer: career.upgrades.stabilizer
+  }), [
+    career.upgrades.engine,
+    career.upgrades.grip,
+    career.upgrades.capacitor,
+    career.upgrades.stabilizer
+  ]);
+  const updateCareer = useCallback(updater => {
+    setPortalCollection?.(previous => {
+      const currentCareer = normalizeKartCareer(previous?.raceCareer);
+      const nextCareer = typeof updater === 'function' ? updater(currentCareer) : updater;
+      return {
+        ...previous,
+        raceCareer: normalizeKartCareer(nextCareer)
+      };
+    });
+  }, [setPortalCollection]);
 
   const trackList = useMemo(() => Object.values(RACE_TRACKS).sort((a, b) => a.difficulty - b.difficulty || a.id.localeCompare(b.id)), []);
   const activeHudTheme = resolveActiveHudTheme(portalCollection);
@@ -204,26 +200,7 @@ export default function RaceMode({
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     const engine = new EngineRace(960, 540, raceSummary => {
-      setCareer(prev => {
-        const rewards = raceSummary.rewards || { fragments: 0, xp: 0, garageParts: 0 };
-        const previousBest = prev.bestTimes?.[raceSummary.trackId];
-        const nextCareer = {
-          ...prev,
-          xp: prev.xp + rewards.xp,
-          fragments: prev.fragments + rewards.fragments,
-          garageParts: prev.garageParts + rewards.garageParts,
-          bestTimes: {
-            ...prev.bestTimes,
-            [raceSummary.trackId]: previousBest ? Math.min(previousBest, raceSummary.time) : raceSummary.time
-          },
-          completedObjectives: {
-            ...prev.completedObjectives,
-            [raceSummary.trackId]: Boolean(prev.completedObjectives?.[raceSummary.trackId] || raceSummary.objectiveComplete)
-          }
-        };
-        saveKartCareer(nextCareer);
-        return nextCareer;
-      });
+      updateCareer(prev => applyRaceResult(prev, raceSummary));
       setSummary(raceSummary);
       setSnapshot(prev => ({ ...prev, grade: raceSummary.grade, rank: raceSummary.rank, time: raceSummary.time }));
       raceMusicStateRef.current = 'result';
@@ -234,7 +211,7 @@ export default function RaceMode({
         result: raceSummary.rank === 1 ? 'victory' : 'complete'
       });
       onSessionEndRef.current?.({ reason: 'completed', report: raceSummary });
-    }, trackId, career.upgrades, selectedKart);
+    }, trackId, garageUpgrades, selectedKart);
     engineRef.current = engine;
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');
@@ -342,7 +319,7 @@ export default function RaceMode({
       sound.stopBgm();
       engineRef.current = null;
     };
-  }, [career.upgrades, raceMusicStage, raceStarted, selectedKart, track, trackId]);
+  }, [garageUpgrades, raceMusicStage, raceStarted, selectedKart, track, trackId, updateCareer]);
 
   const resetRace = () => {
     if (sessionPausedRef.current) return;
@@ -422,7 +399,7 @@ export default function RaceMode({
     if (sessionPausedRef.current) return;
     const config = KART_GARAGE_UPGRADES[upgradeId];
     if (!config) return;
-    setCareer(prev => {
+    updateCareer(prev => {
       const currentLevel = prev.upgrades[upgradeId] || 0;
       if (currentLevel >= config.maxLevel) return prev;
       const cost = config.cost(currentLevel);
@@ -435,7 +412,6 @@ export default function RaceMode({
           [upgradeId]: currentLevel + 1
         }
       };
-      saveKartCareer(nextCareer);
       engineRef.current?.updateGarage(nextCareer.upgrades);
       return nextCareer;
     });

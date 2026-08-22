@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   FEATURED_BACKDROPS,
   FEATURED_STAGE_LORE,
@@ -73,7 +74,7 @@ const fileExists = async (output) => {
   }
 };
 
-const buildIconPrompt = (universe, lock) => [
+export const buildIconPrompt = (universe, lock) => [
   'Use case: stylized-concept',
   'Asset type: square universe icon for the Multiverse Breach archive and portal selector',
   `Primary request: create one unmistakable lore-faithful emblem for ${universe} using ${lock.icon}.`,
@@ -83,7 +84,7 @@ const buildIconPrompt = (universe, lock) => [
   'Constraints: no character portrait, no franchise logo, no title, no letters, no numbers, no UI mockup, no border text, no watermark, no unrelated crossover motif.'
 ].join('\n');
 
-const buildBackdropPrompt = (universe, mode, lock) => [
+export const buildBackdropPrompt = (universe, mode, lock) => [
   'Use case: stylized-concept',
   `Asset type: ${mode} combat-stage backdrop for the browser game Multiverse Breach`,
   `Primary request: create a lore-faithful ${universe} environment showing ${lock[mode]}.`,
@@ -94,29 +95,29 @@ const buildBackdropPrompt = (universe, mode, lock) => [
   'Constraints: environment only, no playable hero, no enemy, no boss, no crowd, no text, no logo, no HUD, no health bar, no watermark, no frame, no modern generic sci-fi portal in the center.'
 ].join('\n');
 
-const main = async () => {
-  const entries = [];
-  for (const universe of FEATURED_UNIVERSE_KEYS) {
+export const buildFeaturedVisualPromptEntries = () => (
+  FEATURED_UNIVERSE_KEYS.flatMap(universe => {
     const lock = VISUAL_LOCKS[universe];
-    entries.push({
+    return [{
       kind: 'universe-icon',
       universe,
       mode: null,
       output: FEATURED_UNIVERSE_ICONS[universe],
       ratio: '1:1',
       prompt: buildIconPrompt(universe, lock)
-    });
-    for (const mode of ['RPG', 'Tactics', 'Smash']) {
-      entries.push({
+    }, ...['RPG', 'Tactics', 'Smash'].map(mode => ({
         kind: 'stage-backdrop',
         universe,
         mode,
         output: FEATURED_BACKDROPS[universe][mode],
         ratio: '16:9',
         prompt: buildBackdropPrompt(universe, mode, lock)
-      });
-    }
-  }
+      }))];
+  })
+);
+
+const main = async () => {
+  const entries = buildFeaturedVisualPromptEntries();
 
   const manifestEntries = await Promise.all(entries.map(async entry => ({
     ...entry,
@@ -144,7 +145,9 @@ const main = async () => {
   console.log(outManifest);
 };
 
-main().catch(error => {
-  console.error(error);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch(error => {
+    console.error(error);
+    process.exit(1);
+  });
+}

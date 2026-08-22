@@ -2961,10 +2961,66 @@ const resolveFamilyId = stage => {
   return FAMILY_RULES.find(rule => rule.test.test(context))?.id || 'nexusArchive';
 };
 
-const resolveUniverseProfile = (universe, stage) => {
+const PROCEDURAL_UNIVERSE_PROFILE_CACHE = new Map();
+const clampMusicValue = (value, minimum, maximum) => Math.max(minimum, Math.min(maximum, value));
+const rotateMusicArray = (values, offset) => {
+  if (!Array.isArray(values) || values.length < 2) return cloneArray(values);
+  const shift = ((offset % values.length) + values.length) % values.length;
+  return [...values.slice(shift), ...values.slice(0, shift)];
+};
+const musicSeedVariation = (universe, label, radius) => (
+  (hashMusicSeed(`${universe}|${label}`) % (radius * 2 + 1)) - radius
+);
+
+export const buildProceduralUniverseProfile = universe => {
+  const normalized = normalizeMusicUniverse(universe);
+  if (PROCEDURAL_UNIVERSE_PROFILE_CACHE.has(normalized)) {
+    return PROCEDURAL_UNIVERSE_PROFILE_CACHE.get(normalized);
+  }
+
+  const familyId = resolveFamilyId({ universe: normalized, sourceUniverses: [] });
+  const familyProfile = MUSIC_PROFILE_FAMILIES[familyId] || MUSIC_PROFILE_FAMILIES.nexusArchive;
+  const rotate = (values, label) => rotateMusicArray(
+    values,
+    hashMusicSeed(`${normalized}|${label}`)
+  );
+  const profile = mergeProfile(familyProfile, {
+    id: `universe-${toLookupKey(normalized).replaceAll(' ', '-')}`,
+    family: familyProfile.family,
+    confidence: 'procedural-universe',
+    sourcePolicy: 'original-procedural-only',
+    tempo: [
+      familyProfile.tempo[0] + musicSeedVariation(normalized, 'tempo-low', 4),
+      familyProfile.tempo[1] + musicSeedVariation(normalized, 'tempo-high', 4)
+    ],
+    rootMidi: familyProfile.rootMidi + musicSeedVariation(normalized, 'root', 2),
+    chords: rotate(familyProfile.chords, 'chords'),
+    instrumentation: rotate(familyProfile.instrumentation, 'instrumentation'),
+    density: clampMusicValue(
+      familyProfile.density + musicSeedVariation(normalized, 'density', 6) / 100,
+      0.2,
+      1
+    ),
+    restChance: clampMusicValue(
+      familyProfile.restChance + musicSeedVariation(normalized, 'rest', 4) / 100,
+      0.04,
+      0.6
+    ),
+    patterns: {
+      lead: rotate(familyProfile.patterns.lead, 'lead-pattern'),
+      bass: rotate(familyProfile.patterns.bass, 'bass-pattern'),
+      drums: rotate(familyProfile.patterns.drums, 'drum-pattern'),
+      pad: rotate(familyProfile.patterns.pad, 'pad-pattern')
+    }
+  });
+  PROCEDURAL_UNIVERSE_PROFILE_CACHE.set(normalized, profile);
+  return profile;
+};
+
+const resolveUniverseProfile = universe => {
   const normalized = normalizeMusicUniverse(universe);
   if (MUSIC_PROFILE_OVERRIDES[normalized]) return MUSIC_PROFILE_OVERRIDES[normalized];
-  return MUSIC_PROFILE_FAMILIES[resolveFamilyId({ ...stage, universe: normalized, sourceUniverses: [] })] || MUSIC_PROFILE_FAMILIES.nexusArchive;
+  return buildProceduralUniverseProfile(normalized);
 };
 
 const blendProfiles = (profiles, universes) => {

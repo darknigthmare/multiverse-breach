@@ -13,6 +13,8 @@ import {
   getOcCampaignProgress
 } from '../src/game/ocCampaign.js';
 import { resolveStageEnemyData } from '../src/game/stageEnemyResolver.js';
+import { FACTION_RULES, REPUTATION_TRACKS } from '../src/game/factionProgression.js';
+import { SPECIAL_EVENTS, getSpecialEventRewardById } from '../src/game/specialEvents.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -41,6 +43,7 @@ const storySource = `${hubSource}\n${ocCampaignSource}`;
 const gameCanvasSource = read('../src/components/GameCanvas.jsx');
 const rpgEngineSource = read('../src/game/engineRpg.js');
 const raceModeSource = read('../src/components/RaceMode.jsx');
+const kartCareerSource = read('../src/game/kartCareer.js');
 const fighterModeSource = read('../src/components/FighterMode.jsx');
 const fighterEngineSource = read('../src/game/engineFighter.js');
 const smashEngineSource = read('../src/game/engineSmash.js');
@@ -689,6 +692,29 @@ assert(
 );
 assert(ocCampaignSource.includes('OC_CAMPAIGN_MISSIONS') && ocCampaignSource.includes('OC_CAMPAIGN_CHAPTERS'), 'OC campaign canon must stay centralized in its dedicated narrative module.');
 assert(hubSource.includes('<OcCampaignChronicle'), 'Story mode must expose the dedicated OC campaign chronicle.');
+assert(narrativeSystemsSource.includes('manga_war_council: {'), 'The Manga War Council must live in the central faction campaign registry.');
+assert(FACTION_RULES.length === 22 && new Set(FACTION_RULES.map(rule => rule.id)).size === 22, 'Every exposed faction label must own a unique mechanical rule.');
+assert(REPUTATION_TRACKS.length === 5 && REPUTATION_TRACKS.every(track => track.thresholds.length >= 5 && track.passive), 'All five reputation tracks must expose ranks and a gameplay passive.');
+assert(appSource.includes('awardMissionReputation') && appSource.includes('getReputationResourceMultiplier'), 'Mission results must award reputation and apply its resource passive.');
+assert(hubSource.includes('applyFactionBonuses') && hubSource.includes('resolveMissionFactionIds') && !hubSource.includes('const FACTION_RULES = ['), 'Hub combat stats and synergy UI must consume the centralized 22-rule faction engine.');
+assert(hubSource.includes('getReputationRank') && !hubSource.includes('Reputation future'), 'Hub must show live reputation ranks instead of future placeholders.');
+assert(gameCanvasSource.includes('FACTION_RULES, applyFactionBonuses') && !gameCanvasSource.includes('const FACTION_RULES = ['), 'GameCanvas must consume the centralized 22-rule faction engine instead of four local rules.');
+assert(gameCanvasSource.includes('reputationProgress') && appSource.includes('reputationProgress={activityProgress.reputationProgress}'), 'Saved reputation passives must reach real combat hero statistics.');
+assert(SPECIAL_EVENTS.length === 3 && SPECIAL_EVENTS.every(event => event.schedule && event.stage?.stageId && event.stage?.rewardItemId), 'Seasonal events must expose annual schedules, playable stages, and first-clear rewards.');
+assert(SPECIAL_EVENTS.every(event => {
+  const rewardItem = getSpecialEventRewardById(event.stage.rewardItemId);
+  return rewardItem && Object.values(rewardItem.boost || {}).some(value => Number(value) > 0);
+}), 'Every seasonal first-clear reward must resolve to a mechanically active catalog item.');
+assert(hubSource.includes('getSpecialEventRewardById(baseId)') && hubSource.includes('visibleGearItems.map'), 'Seasonal reward items must resolve and render in the Hub relic inventory.');
+assert(appSource.includes('buildSpecialEventStage') && appSource.includes('recordSpecialEventResult'), 'The title flow and save progression must deploy and record seasonal operations.');
+assert(
+  appSource.includes('getActiveSpecialEvents(titleEventDate)')
+  && appSource.includes('buildSpecialEventStage(event, titleEventDate)')
+  && appSource.includes('}, [titleEventDate]);')
+  && !appSource.includes('getActiveSpecialEvents(new Date())')
+  && !appSource.includes('buildSpecialEventStage(event, new Date())'),
+  'Seasonal auto-selection and launch must share the titleDayKey-derived event date across midnight boundaries.'
+);
 assert(hubSource.includes("label: { fr: 'Campagne OC'"), 'Story tab must be labelled as an OC campaign.');
 assert(hubSource.includes('Separation histoire') && hubSource.includes('visibleDlcStages'), 'Admin diagnostics must separate OC story stages from active DLC stages.');
 assert(gameCanvasSource.includes('stage.finalGameBoss') && !gameCanvasSource.includes('stage.id === 38'), 'GameCanvas must route final combat through finalGameBoss metadata.');
@@ -788,8 +814,9 @@ assert(raceEngineSource.includes('updateObjectiveState') && raceEngineSource.inc
 assert(raceEngineSource.includes('KART_GARAGE_UPGRADES') && raceEngineSource.includes('computeGarageStats') && raceEngineSource.includes('garageParts'), 'Race mode must expose garage upgrades and race rewards.');
 assert(raceEngineSource.includes('buildTrackFragments') && raceEngineSource.includes('fragmentPickups') && raceEngineSource.includes('collectTrackFragments'), 'Race tracks must expose collectible fragments anchored to real track geometry.');
 assert(raceEngineSource.includes('applySlipstream') && raceEngineSource.includes('ASPIRATION ACTIVE'), 'Race mode must include rear-camera slipstream feedback behind rivals.');
-assert(raceModeSource.includes('multiverse-breach-kart-career') && raceModeSource.includes('buyUpgrade') && raceModeSource.includes('race-career-card'), 'Race tab must persist kart career and expose upgrade purchases.');
-assert(raceModeSource.includes('bestTimes') && raceModeSource.includes('completedObjectives') && raceModeSource.includes('race-upgrade-list'), 'Race career must track records, objective clears, and garage upgrade UI.');
+assert(!raceModeSource.includes('multiverse-breach-kart-career') && raceModeSource.includes('portalCollection.raceCareer') && raceModeSource.includes('buyUpgrade') && raceModeSource.includes('race-career-card'), 'Race tab must persist kart career inside the main save and expose upgrade purchases.');
+assert(appSource.includes('LEGACY_KART_CAREER_KEY') && appSource.includes('migrateLegacyKartCareer') && appSource.includes('raceCareer'), 'Save v9 must migrate the legacy kart key into local, cloud, export, import, reset, and New Trace flows.');
+assert(raceModeSource.includes('bestTimes') && kartCareerSource.includes('completedObjectives') && raceModeSource.includes('race-upgrade-list'), 'Race career must track records, objective clears, and garage upgrade UI.');
 assert(rendererSource.includes('drawMirelleItemVfx') && rendererSource.includes('MIRELLE_COMPLETE_SPRITES.itemsVfx'), 'Combat renderer must use Mirelle item/VFX sheet during gameplay states.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');

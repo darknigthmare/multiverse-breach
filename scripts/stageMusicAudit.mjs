@@ -399,6 +399,12 @@ const lorePlans = loreProfiles.flatMap(({ universe, profile }) => (
 ));
 assert(lorePlans.length === loreProfiles.length * 4, 'Not every lore profile exposes all four gameplay music plans');
 assert(new Set(lorePlans.map(plan => plan.key)).size === lorePlans.length, 'Two lore stage views share the same runtime music key');
+const proceduralUniverseViews = lorePlans
+  .filter(plan => plan.profileId.startsWith('universe-')).length;
+const familyFallbackViews = lorePlans
+  .filter(plan => plan.profileId.startsWith('family-')).length;
+assert(proceduralUniverseViews > 0, 'No procedural universe profile was exercised');
+assert(familyFallbackViews === 0, 'One or more lore views still use a raw family fallback');
 
 console.log(JSON.stringify({
   coverage: rows,
@@ -429,6 +435,7 @@ console.log(JSON.stringify({
     uniqueRuntimeKeys: new Set(lorePlans.map(plan => plan.key)).size,
     dedicatedViews: lorePlans.filter(plan => plan.profileId.startsWith('mus-')).length,
     fusionViews: lorePlans.filter(plan => plan.profileId.startsWith('fusion-')).length,
-    familyFallbackViews: lorePlans.filter(plan => plan.profileId.startsWith('family-')).length
+    proceduralUniverseViews,
+    familyFallbackViews
   }
 }, null, 2));

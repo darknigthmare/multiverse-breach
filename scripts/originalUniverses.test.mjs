@@ -43,7 +43,8 @@ const REQUIRED_HERO_ANIMATION_MODES = Object.freeze([
 ]);
 const ASSET_PATH_PATTERN = /^\/.+\.(?:avif|gif|jpe?g|ogg|png|svg|webp|wav)$/i;
 const OC_IMAGE_V2_ROOT = '/images/oc-worlds/v2';
-const OC_BOOSTER_V2_ROOT = '/boosters/original-worlds/v2';
+const OC_BOOSTER_SOURCE_V2_ROOT = '/boosters/original-worlds/v2';
+const OC_BOOSTER_RUNTIME_PATTERN = /^\/boosters\/[a-z0-9][a-z0-9-]*\.webp$/;
 const EXPECTED_IMAGE_CONTRACT = Object.freeze({
   version: 'v2',
   format: 'PNG',
@@ -577,9 +578,10 @@ test('all 20 targeted boosters expose a frozen five-card content update', () => 
   assert.equal(Object.keys(ORIGINAL_WORLD_BOOSTER_UPDATE_UNLOCKABLES).length, 80);
 });
 
-test('the 500 audiovisual paths use the linked and unique OpenAI Image PNG v2 contract', () => {
+test('the 500 OpenAI PNG v2 sources and 20 booster WebP runtime derivatives stay linked and unique', () => {
   const pathsByCategory = {
     boosterArt: [],
+    boosterSourceArt: [],
     backdrop: [],
     stageCards: [],
     heroPortraits: [],
@@ -594,17 +596,20 @@ test('the 500 audiovisual paths use the linked and unique OpenAI Image PNG v2 co
     assert.equal(definition.booster.art, definition.audiovisual.boosterArt);
     assert.equal(definition.booster.backdrop, definition.audiovisual.backdrop);
     assert.equal(
-      definition.audiovisual.boosterArt,
-      `${OC_BOOSTER_V2_ROOT}/${definition.key}.png`
+      definition.audiovisual.boosterSourceArt,
+      `${OC_BOOSTER_SOURCE_V2_ROOT}/${definition.key}.png`
     );
+    assert.match(definition.audiovisual.boosterArt, OC_BOOSTER_RUNTIME_PATTERN);
     assert.equal(
       definition.audiovisual.backdrop,
       `${OC_IMAGE_V2_ROOT}/${definition.key}/backdrop.png`
     );
 
     assertAssetPath(definition.audiovisual.boosterArt, `${label}.boosterArt`);
+    assertAssetPath(definition.audiovisual.boosterSourceArt, `${label}.boosterSourceArt`);
     assertAssetPath(definition.audiovisual.backdrop, `${label}.backdrop`);
     pathsByCategory.boosterArt.push(definition.audiovisual.boosterArt);
+    pathsByCategory.boosterSourceArt.push(definition.audiovisual.boosterSourceArt);
     pathsByCategory.backdrop.push(definition.audiovisual.backdrop);
 
     [
@@ -671,9 +676,10 @@ test('the 500 audiovisual paths use the linked and unique OpenAI Image PNG v2 co
     assertUnique(paths, `${category} paths`);
   });
   const allPaths = Object.values(pathsByCategory).flat();
-  assert.equal(allPaths.length, 500);
-  assertUnique(allPaths, 'all original-universe PNG v2 paths');
-  assert.ok(allPaths.every(path => path.endsWith('.png')));
+  assert.equal(allPaths.length, 520);
+  assertUnique(allPaths, 'all original-universe source and runtime paths');
+  assert.equal(allPaths.filter(path => path.endsWith('.png')).length, 500);
+  assert.equal(allPaths.filter(path => path.endsWith('.webp')).length, 20);
   assert.ok(allPaths.every(path => !path.includes('.svg')));
 });
 

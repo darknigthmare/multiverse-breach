@@ -22,7 +22,8 @@ import {
   getWorldBossForUniverse
 } from '../game/enemies';
 import { getTranslation } from '../game/translation';
-import { EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE } from '../game/expandedUniverses';
+import { EXPANDED_STAGE_ID_BY_UNIVERSE } from '../game/expandedUniverses';
+import { FACTION_RULES, applyFactionBonuses } from '../game/factionProgression';
 import { createPlayerHero } from '../game/playerHero';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { getBattleItemPoolForStage } from '../game/battleItems';
@@ -30,6 +31,7 @@ import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from 
 import { getSmashPickupPositions } from '../game/smashArenas';
 import { getTacticsPickupPositions } from '../game/tacticsBattlefields';
 import { resolveStageEnemyData } from '../game/stageEnemyResolver';
+import { getSpecialEventRewardById } from '../game/specialEvents';
 import GameHudThemeLayer from './GameHudThemeLayer';
 import MeleeControlsPanel from './MeleeControlsPanel';
 import {
@@ -133,7 +135,7 @@ function CosmeticAtlasPresentation({ mode, type, side = 'player', cosmetic }) {
   );
 }
 
-export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, hudTheme = null, onBattleEnd, onSessionComplete, sessionPaused = false, dedicatedSession = false }) {
+export default function GameCanvas({ lang, playerProfile, activeTeam, stage, heroLevels, equippedGear, equippedEventItems, heroTalents, heroSkins, completedStages, reputationProgress = {}, collectionBonusCount = 0, hiddenUniverses = [], disabledAssets = {}, customBattle = null, hudTheme = null, onBattleEnd, onSessionComplete, sessionPaused = false, dedicatedSession = false }) {
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const sessionPausedRef = useRef(sessionPaused);
@@ -399,13 +401,6 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
   ];
 
-  const FACTION_RULES = [
-    { stat: 'hp', universes: ['Halo', 'Gears of War', 'Mass Effect', 'Stargate', 'Alien', 'Predator', ...EXPANDED_FACTION_UNIVERSES.sciFi] },
-    { stat: 'atk', universes: ['Silent Hill', 'Resident Evil', 'Dead Space', 'Hellraiser', 'Saw', ...EXPANDED_FACTION_UNIVERSES.horror] },
-    { stat: 'spd', universes: ['The Matrix', 'Portal', 'Ghost in the Shell', 'Digital Circus', ...EXPANDED_FACTION_UNIVERSES.cyber] },
-    { stat: 'def', universes: ['Harry Potter', 'Yu-Gi-Oh', 'Negima', 'Rosario + Vampire', 'BlazBlue', ...EXPANDED_FACTION_UNIVERSES.arcane] }
-  ];
-
   const UNIVERSE_TO_STAGE_ID = {
     'Gears of War': 1, 'Halo': 2, 'Alien': 3, 'Predator': 4, 'Resident Evil': 5,
     'Silent Hill': 6, 'Dino Crisis': 7, 'The Matrix': 8, 'Stargate': 9, 'Half-Life': 10,
@@ -457,16 +452,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       if (hero.category === 'tactical') stats.def = Math.round(stats.def * 1.20);
     }
 
-    FACTION_RULES.forEach(rule => {
-      const activeCount = activeTeam
-        .map(id => HEROES_DB.find(h => h.id === id))
-        .filter(h => h && !disabledHeroSet.has(h.id) && !hiddenUniverseSet.has(h.universe))
-        .map(h => h.universe)
-        .filter(universe => rule.universes.includes(universe)).length;
-      if (activeCount >= 2 && rule.universes.includes(hero.universe)) {
-        stats[rule.stat] = Math.round(stats[rule.stat] * 1.08);
-      }
-    });
+    const factionTeamUniverses = activeTeam
+      .map(id => HEROES_DB.find(h => h.id === id))
+      .filter(h => h && !disabledHeroSet.has(h.id) && !hiddenUniverseSet.has(h.universe))
+      .map(h => h.universe);
+    stats = applyFactionBonuses(stats, {
+      teamUniverses: factionTeamUniverses,
+      heroUniverse: hero.universe,
+      stage,
+      reputationProgress
+    }).stats;
 
     // 3. Talent Mod boosts
     if (heroTalents && heroTalents[hero.id]) {
@@ -486,7 +481,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       const isUpgraded = gearId.endsWith('_plus');
       const baseGearId = isUpgraded ? gearId.replace('_plus', '') : gearId;
       if (disabledGearSet.has(baseGearId)) return stats;
-      const gear = EQUIP_ITEMS_DB.find(it => it.id === baseGearId);
+      const gear = EQUIP_ITEMS_DB.find(it => it.id === baseGearId)
+        || getSpecialEventRewardById(baseGearId);
       if (gear && gear.boost && !hiddenUniverseSet.has(gear.universe)) {
         const factor = isUpgraded ? 2 : 1;
         if (gear.boost.hp) stats.hp += gear.boost.hp * factor;
@@ -1113,7 +1109,22 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       acc[h.category] = (acc[h.category] || 0) + 1;
       return acc;
     }, {});
-    const activeSyns = ['marine', 'slayer', 'horror', 'hacker', 'tactical'].filter(cat => (activeCategoriesCount[cat] || 0) >= 2);
+    const deployedUniverses = squadHeroes.map(hero => hero.universe);
+    const activeFactionRuleIds = new Set(squadHeroes.flatMap(hero => (
+      applyFactionBonuses({}, {
+        teamUniverses: deployedUniverses,
+        heroUniverse: hero.universe,
+        stage,
+        reputationProgress
+      }).activeRules.map(rule => rule.id)
+    )));
+    const activeFactionSyns = FACTION_RULES
+      .filter(rule => activeFactionRuleIds.has(rule.id))
+      .map(rule => rule.id);
+    const activeSyns = [...new Set([
+      ...['marine', 'slayer', 'horror', 'hacker', 'tactical'].filter(cat => (activeCategoriesCount[cat] || 0) >= 2),
+      ...activeFactionSyns
+    ])];
     setActiveSynergies(activeSyns);
     if (activeSyns.length > 0) {
       sound.playSfx('levelup');

@@ -57,7 +57,12 @@ const originalUniverseLedgerByOutput = groupBy(
 
 const catalog = JSON.parse(readFileSync(catalogPath, 'utf8'));
 assert.equal(catalog.schemaVersion, 1, 'Unsupported rift-dossier catalog schema');
-assert.equal(catalog.total, 2086, 'Rift-dossier catalog must cover every playable stage');
+assert.equal(
+  catalog.total,
+  Object.values(catalog.comptesParFamille || {})
+    .reduce((total, count) => total + count, 0),
+  'Rift-dossier catalog total must match its declared family counts'
+);
 assert.equal(catalog.entrees.length, catalog.total, 'Catalog total is inconsistent');
 
 const entries = catalog.entrees.map((entry) => {

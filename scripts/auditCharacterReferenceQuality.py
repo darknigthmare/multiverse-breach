@@ -42,6 +42,8 @@ DEFAULT_OUTPUT_PATH = (
     / "character-reference-quality.json"
 )
 PUBLIC_ROOT = (REPOSITORY_ROOT / "public").resolve()
+EXPECTED_CHARACTER_ARC_ENTRY_COUNT = 1_912
+EXPECTED_UNIQUE_REFERENCE_PATH_COUNT = 975
 
 ALPHA_OCCUPIED_THRESHOLD = 8
 STRONG_NEIGHBOR_DIFFERENCE = 12
@@ -622,14 +624,22 @@ def canonical_json(report: dict[str, Any]) -> str:
 
 def assert_report_invariants(report: dict[str, Any]) -> None:
     summary = report["summary"]
-    if summary["characterArcEntryCount"] != 1_498:
+    if (
+        summary["characterArcEntryCount"]
+        != EXPECTED_CHARACTER_ARC_ENTRY_COUNT
+    ):
         raise ValueError(
-            "Expected 1,498 arc-personnage entries, found "
+            f"Expected {EXPECTED_CHARACTER_ARC_ENTRY_COUNT:,} "
+            "arc-personnage entries, found "
             f"{summary['characterArcEntryCount']}."
         )
-    if summary["uniqueReferencePathCount"] != 470:
+    if (
+        summary["uniqueReferencePathCount"]
+        != EXPECTED_UNIQUE_REFERENCE_PATH_COUNT
+    ):
         raise ValueError(
-            "Expected 470 unique current local references, found "
+            f"Expected {EXPECTED_UNIQUE_REFERENCE_PATH_COUNT} unique current "
+            "local references, found "
             f"{summary['uniqueReferencePathCount']}."
         )
 

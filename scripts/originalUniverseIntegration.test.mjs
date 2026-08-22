@@ -7,7 +7,7 @@ import { createServer } from 'vite';
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
 const OC_IMAGE_V2_PATTERN = /^\/images\/oc-worlds\/v2\/[a-z0-9_-]+\/.+\.png$/;
-const OC_BOOSTER_V2_PATTERN = /^\/boosters\/original-worlds\/v2\/[a-z0-9_-]+\.png$/;
+const OC_BOOSTER_RUNTIME_PATTERN = /^\/boosters\/[a-z0-9][a-z0-9-]*\.webp$/;
 
 let vite;
 let originalUniverseModule;
@@ -352,7 +352,7 @@ test('20 world boosters stay separate from five Nexus editions and resolve their
     assert.equal(booster.contentUpdate?.newCardIds.length, 5);
     assertText(booster.contentUpdate?.chaseRewardId, `${booster.id}.contentUpdate.chaseRewardId`);
     assertText(booster.art, `${booster.id}.art`);
-    assert.match(booster.art, OC_BOOSTER_V2_PATTERN);
+    assert.match(booster.art, OC_BOOSTER_RUNTIME_PATTERN);
   });
 });
 
