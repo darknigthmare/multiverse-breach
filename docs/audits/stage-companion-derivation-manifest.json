@@ -1,0 +1,1339 @@
+{
+  "schemaVersion": 1,
+  "contract": {
+    "melee-backdrop.webp": "1536x864 RGB WebP; stage-cover normalization from the matching Melee primary",
+    "melee-platforms.webp": "192x64 RGB WebP repeat texture; lower traversal-surface crop from the matching Melee primary",
+    "tactics-tiles.webp": "128x128 RGB WebP repeat texture; central board-surface crop from the matching Tactics primary"
+  },
+  "entries": [
+    {
+      "id": "attack-on-titan-melee",
+      "universe": "Attack on Titan",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/attack-on-titan/melee.webp",
+      "sourceSha256": "6e20daac0dda1b93cbd0150d76d689ac88b6db739be679582c7e888f08002728",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-a60ca202-0841-47fe-a72c-cf8692e83db8",
+      "companion": "/backgrounds/lore-stages/attack-on-titan/melee-backdrop.webp",
+      "outputSha256": "8e971febe00aa14d49efa0069170152fbb2ab626ba6040192bb454f63e60727d",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 189456
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "attack-on-titan-melee",
+      "universe": "Attack on Titan",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/attack-on-titan/melee.webp",
+      "sourceSha256": "6e20daac0dda1b93cbd0150d76d689ac88b6db739be679582c7e888f08002728",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-a60ca202-0841-47fe-a72c-cf8692e83db8",
+      "companion": "/backgrounds/lore-stages/attack-on-titan/melee-platforms.webp",
+      "outputSha256": "d04544bbad1dc3b541be4ae8c3e8f5b21dd6729d4c7f317beb780198f24f93ea",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5378
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "attack-on-titan-tactics",
+      "universe": "Attack on Titan",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/attack-on-titan/tactics.webp",
+      "sourceSha256": "55c23fe3cb097b38c1618bf76ddef8034069864f6ec6589d04277f90e56858a8",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-43598574-53c0-441b-8221-63eb5350b6a5",
+      "companion": "/backgrounds/lore-stages/attack-on-titan/tactics-tiles.webp",
+      "outputSha256": "b9b94260cc4bfcbbac83c68f2c35042ed19c69bff409e616753619f02d6bc8ff",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 7946
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "breaking-bad-melee",
+      "universe": "Breaking Bad",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/breaking-bad/melee.webp",
+      "sourceSha256": "b3eb50c051ef36a425537c571adae10b4d39bb0ce56c100d32871a46dddaff64",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-1105d65a-877e-4ea8-bad0-48ba739b4980",
+      "companion": "/backgrounds/lore-stages/breaking-bad/melee-backdrop.webp",
+      "outputSha256": "e6a0a28cfcb4de38d0e6382780c0341e7c78238ff8aa26fbb5845b239f6f072f",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 207594
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "breaking-bad-melee",
+      "universe": "Breaking Bad",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/breaking-bad/melee.webp",
+      "sourceSha256": "b3eb50c051ef36a425537c571adae10b4d39bb0ce56c100d32871a46dddaff64",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-1105d65a-877e-4ea8-bad0-48ba739b4980",
+      "companion": "/backgrounds/lore-stages/breaking-bad/melee-platforms.webp",
+      "outputSha256": "b935373d3d71de7cf34ce6c6cab7c76dc1e15f50ca82735bc92051eae519b9fc",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5600
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "breaking-bad-tactics",
+      "universe": "Breaking Bad",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/breaking-bad/tactics.webp",
+      "sourceSha256": "dab48602577b7872a85ef06314cf52234b8ff529171c66329cc265e526eecb56",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-f8fc4ec4-e549-4f38-8806-0e189e072db1",
+      "companion": "/backgrounds/lore-stages/breaking-bad/tactics-tiles.webp",
+      "outputSha256": "7733e55b549594dae28ad8cd97ee441725a5984330a36285b9858aff65092123",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 6802
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "buffy-the-vampire-slayer-melee",
+      "universe": "Buffy the Vampire Slayer",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/buffy-the-vampire-slayer/melee.webp",
+      "sourceSha256": "b3eccda32a43802b0b41a76544da0de213e22f47636d40fc038051db9fbc1d3c",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-827b4c0d-68ab-49df-b731-df2898044f64",
+      "companion": "/backgrounds/lore-stages/buffy-the-vampire-slayer/melee-backdrop.webp",
+      "outputSha256": "21478857078a2ca1f671c0d2d36a96fd5d927d20d7418d1924c06e7e9a8f4a9a",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 156506
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "buffy-the-vampire-slayer-melee",
+      "universe": "Buffy the Vampire Slayer",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/buffy-the-vampire-slayer/melee.webp",
+      "sourceSha256": "b3eccda32a43802b0b41a76544da0de213e22f47636d40fc038051db9fbc1d3c",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-827b4c0d-68ab-49df-b731-df2898044f64",
+      "companion": "/backgrounds/lore-stages/buffy-the-vampire-slayer/melee-platforms.webp",
+      "outputSha256": "ab8ca5f0b5a8965f3706499eafd430038e89145c19cc05d187fedc9b74b79171",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 4548
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "buffy-the-vampire-slayer-tactics",
+      "universe": "Buffy the Vampire Slayer",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/buffy-the-vampire-slayer/tactics.webp",
+      "sourceSha256": "bb8e1bae98ff54b1ef14258a24454e1ffc3ead58246c902d70fdac329f4913ef",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-86f5f02f-ff54-4dfa-8953-1a501d4a722c",
+      "companion": "/backgrounds/lore-stages/buffy-the-vampire-slayer/tactics-tiles.webp",
+      "outputSha256": "7d8a6f11b1da3008db6340a3905bf0b323880adb1c638fd3f5599df368ba8a3c",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5376
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "charmed-melee",
+      "universe": "Charmed",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/charmed/melee.webp",
+      "sourceSha256": "75d7b2b4316022bfc6055173b5dce99bbb079c2ab579d7c79fb39a6a75b1e355",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-00d19dab-d09c-4ffc-9a41-93fdd0f97072",
+      "companion": "/backgrounds/lore-stages/charmed/melee-backdrop.webp",
+      "outputSha256": "c4d6b6f58c770c278e0577e66d4e09d01a34506bc7d263b441bf9d3e78b78fb0",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 169138
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "charmed-melee",
+      "universe": "Charmed",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/charmed/melee.webp",
+      "sourceSha256": "75d7b2b4316022bfc6055173b5dce99bbb079c2ab579d7c79fb39a6a75b1e355",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-00d19dab-d09c-4ffc-9a41-93fdd0f97072",
+      "companion": "/backgrounds/lore-stages/charmed/melee-platforms.webp",
+      "outputSha256": "d0cb56fdf7c7232e2c60d8491cf92346c81b1fd69caa328374d19b33aba766f9",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 4314
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "charmed-tactics",
+      "universe": "Charmed",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/charmed/tactics.webp",
+      "sourceSha256": "4a86af3f19eaffd16d2df2e38eea28475aab4ba3b8c299c5644708ac5080826e",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-944e4954-78db-4d2d-a7b0-4e276864aea7",
+      "companion": "/backgrounds/lore-stages/charmed/tactics-tiles.webp",
+      "outputSha256": "783659862baee9e4eb569011d07d8b31dfb2ac3fc755e916f07eb6bddbd41e4b",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 6940
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "meridien-creux-melee",
+      "universe": "Méridien Creux",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/meridien-creux/melee.webp",
+      "sourceSha256": "b711cfae1df84c71c300328c631ff38fe17d7c01467b530b5e694901b50e0ac0",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/meridien-creux/melee-backdrop.webp",
+      "outputSha256": "7908cb3e44ef474ba9d4582cb21dcad95426ac24c5b390128806762fb4febd03",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 344578
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "meridien-creux-melee",
+      "universe": "Méridien Creux",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/meridien-creux/melee.webp",
+      "sourceSha256": "b711cfae1df84c71c300328c631ff38fe17d7c01467b530b5e694901b50e0ac0",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/meridien-creux/melee-platforms.webp",
+      "outputSha256": "0bec1547638e32cf1de1f6b3ebe2a17dd5b003f83d7ba2cca9ec9fcfdb9964d1",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 7008
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 696,
+          "width": 768,
+          "height": 205
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "meridien-creux-tactics",
+      "universe": "Méridien Creux",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/meridien-creux/tactics.webp",
+      "sourceSha256": "d9648087eb240674faf94fad276c8d00f2601f48b45dc95968847215bfc353c1",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/meridien-creux/tactics-tiles.webp",
+      "outputSha256": "9ace914e4adc68744b1eef521101a546cd7570aaa21b8a9bef35f43e0a6ae191",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 8780
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 508,
+          "top": 472,
+          "width": 483,
+          "height": 483
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "nexus-de-convergence-melee",
+      "universe": "Nexus de Convergence",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/nexus-de-convergence/melee.webp",
+      "sourceSha256": "2d2ff6e451929bf6300d7ee9d8da80640c6663a7e9428377e75638022edf2b13",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/nexus-de-convergence/melee-backdrop.webp",
+      "outputSha256": "7da3fe4fca046abe3874fbf3ded982fb9c74d04c10a1b6f9be64d2706b7a3e73",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 217224
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "scp-foundation-melee",
+      "universe": "SCP Foundation",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/scp-foundation/melee.webp",
+      "sourceSha256": "fa6bf39e2403d3de8cca27fe0f6b9140335254e38fb01e2f7867d903bbba2bc6",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/scp-foundation/melee-backdrop.webp",
+      "outputSha256": "cf72127a70108f21c394d5edb6cd38749890ec3772b3ab4e8f47fea327d52244",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 134148
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "scp-foundation-melee",
+      "universe": "SCP Foundation",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/scp-foundation/melee.webp",
+      "sourceSha256": "fa6bf39e2403d3de8cca27fe0f6b9140335254e38fb01e2f7867d903bbba2bc6",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/scp-foundation/melee-platforms.webp",
+      "outputSha256": "cfa18e4a8518ef2fe4956e2bcac490e5c163ef98f8b4a69d42fdee9ed531240f",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 2928
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "scp-foundation-tactics",
+      "universe": "SCP Foundation",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/scp-foundation/tactics.webp",
+      "sourceSha256": "f3aa67bcb5f4b7810fc736563f7ffebdb79b7eeb10328aed0baad71e99a617c1",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/scp-foundation/tactics-tiles.webp",
+      "outputSha256": "e447dbacd048c67ca604022108357abe3850139e7d538d91f060bd1600afe9d6",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5194
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "skibidi-melee",
+      "universe": "Skibidi",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/skibidi/melee.webp",
+      "sourceSha256": "54fba70f3928571dfd72ac043d906d5993a74dfed5589a6dc3a85868de77c0d0",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/skibidi/melee-backdrop.webp",
+      "outputSha256": "a80a7875e6fdde4abebed8ca96b0e8d191efb45dff9d4091f2e62c8c4ddc7d16",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 232118
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "skibidi-melee",
+      "universe": "Skibidi",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/skibidi/melee.webp",
+      "sourceSha256": "54fba70f3928571dfd72ac043d906d5993a74dfed5589a6dc3a85868de77c0d0",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/skibidi/melee-platforms.webp",
+      "outputSha256": "77e7d44535feb9cc0484d8e89c9e2885e1dc46cbd9d64cca62f5aea967624571",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5560
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "skibidi-tactics",
+      "universe": "Skibidi",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/skibidi/tactics.webp",
+      "sourceSha256": "b09bab8461a9f044d2dbb97f81459b1daf2e1a4e26dae576ea890e9e81729241",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/skibidi/tactics-tiles.webp",
+      "outputSha256": "fba022236a9b52d6aed0e38368abb9f535a5cf259facf4424e195382d8cbbe46",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 6450
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "skyline-melee",
+      "universe": "Skyline",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/skyline/melee.webp",
+      "sourceSha256": "afce4650cef89ed57a72dc6317386203d7fa536c288a2a3c73361b172606fb87",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/skyline/melee-backdrop.webp",
+      "outputSha256": "4f5a106ba067927126cdc9b66819cb4b2b3c1d7dcdac113909b1863cff1d15f0",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 160112
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "skyline-melee",
+      "universe": "Skyline",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/skyline/melee.webp",
+      "sourceSha256": "afce4650cef89ed57a72dc6317386203d7fa536c288a2a3c73361b172606fb87",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/skyline/melee-platforms.webp",
+      "outputSha256": "be053a8e68d4218f7b80682872702bc109d73f6dcf645f61ccc2aab314d02faf",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 3904
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "skyline-tactics",
+      "universe": "Skyline",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/skyline/tactics.webp",
+      "sourceSha256": "88e517839d03cd743d3a3b7eab6fe2d9a55d4d1d27851f491fc70e7165e5276b",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/skyline/tactics-tiles.webp",
+      "outputSha256": "9704518b6dfb060da8dc8452c7e3c17ac907432ae23abdd9c1dd1e95a644cd19",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 7466
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "slender-man-melee",
+      "universe": "Slender Man",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/slender-man/melee.webp",
+      "sourceSha256": "bdd585b50eca25fdbe70d3f0151799343735c04883b4fc1328c3b0bb9fc46bab",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-5422fefa-dba2-4ecb-bf78-581ffb4a4e82",
+      "companion": "/backgrounds/lore-stages/slender-man/melee-backdrop.webp",
+      "outputSha256": "835af97d1bbaaed364115b52db5056e51fdc910a69570aa61d3e3afef89effe4",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 135116
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "slender-man-melee",
+      "universe": "Slender Man",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/slender-man/melee.webp",
+      "sourceSha256": "bdd585b50eca25fdbe70d3f0151799343735c04883b4fc1328c3b0bb9fc46bab",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-5422fefa-dba2-4ecb-bf78-581ffb4a4e82",
+      "companion": "/backgrounds/lore-stages/slender-man/melee-platforms.webp",
+      "outputSha256": "f197e1331c01fc5a54ca163fc00cc5db3d8e878aaf07f495afa499b2055935e8",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 4018
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "slender-man-tactics",
+      "universe": "Slender Man",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/slender-man/tactics.webp",
+      "sourceSha256": "eb26ce6ee107e230b35106286de535b1232a01239ec3c5164609be2d270ffc35",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-6e913a50-5dd6-4ba2-9458-05831cb06ece",
+      "companion": "/backgrounds/lore-stages/slender-man/tactics-tiles.webp",
+      "outputSha256": "ae517a3a3a5a55751ce226be4e4a5879c61c155a2f9c34576353f9bbfb4ecb97",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5304
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "stargate-atlantis-melee",
+      "universe": "Stargate Atlantis",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/stargate-atlantis/melee.webp",
+      "sourceSha256": "c8c42f78efd1268afbbd3124f2919cb0404ab0ebfa18fd51642aa2e19c4d3bb6",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-151be6b2-e98c-43ad-97af-e0ffe3203f05",
+      "companion": "/backgrounds/lore-stages/stargate-atlantis/melee-backdrop.webp",
+      "outputSha256": "ea55fc0bcf647a2d1ebe0eb87c4cd4aeab3b9aee7c640bfa10d0184687118a06",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 258324
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "stargate-atlantis-melee",
+      "universe": "Stargate Atlantis",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/stargate-atlantis/melee.webp",
+      "sourceSha256": "c8c42f78efd1268afbbd3124f2919cb0404ab0ebfa18fd51642aa2e19c4d3bb6",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-151be6b2-e98c-43ad-97af-e0ffe3203f05",
+      "companion": "/backgrounds/lore-stages/stargate-atlantis/melee-platforms.webp",
+      "outputSha256": "1b6adf3bc5c5aa560b1e35fa2736681cf20c3c92647ee8b541d79ffc9137819f",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5596
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "stargate-atlantis-tactics",
+      "universe": "Stargate Atlantis",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/stargate-atlantis/tactics.webp",
+      "sourceSha256": "40e5a1c8ebd29dced3b2ac8ae7c21b60cdc00e1877cb134f28dae64239d6676d",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-75d14e80-f0e3-4e68-ac4c-12c4c29b5535",
+      "companion": "/backgrounds/lore-stages/stargate-atlantis/tactics-tiles.webp",
+      "outputSha256": "b864129cc5c31cb532f4437edebebc310ebca9eda487561cb2ffa9bfcd5a26e3",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 7992
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "stargate-universe-melee",
+      "universe": "Stargate Universe",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/stargate-universe/melee.webp",
+      "sourceSha256": "13da0bf46adfda9b3a522cd780cb8d507c29c1926bef38d2c446cffa2f064695",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-df03887d-94a6-4ef3-bc12-39edbc09aace",
+      "companion": "/backgrounds/lore-stages/stargate-universe/melee-backdrop.webp",
+      "outputSha256": "d678659860913532ea2bc8beb70bcbea4bea02dc0117fe6f38bbfe565d3c3352",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 200194
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "stargate-universe-melee",
+      "universe": "Stargate Universe",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/stargate-universe/melee.webp",
+      "sourceSha256": "13da0bf46adfda9b3a522cd780cb8d507c29c1926bef38d2c446cffa2f064695",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-df03887d-94a6-4ef3-bc12-39edbc09aace",
+      "companion": "/backgrounds/lore-stages/stargate-universe/melee-platforms.webp",
+      "outputSha256": "1766f5059014ffbc4fcc221eb9f9e47756634349f1604ca5e3ec3e6ef2537ccb",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5228
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "stargate-universe-tactics",
+      "universe": "Stargate Universe",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/stargate-universe/tactics.webp",
+      "sourceSha256": "46d055b23eae2aeccb3ee8febf170695da09773c2b9584d474408d8da165f493",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-e2c78398-c90e-4177-829a-d77bee13d35b",
+      "companion": "/backgrounds/lore-stages/stargate-universe/tactics-tiles.webp",
+      "outputSha256": "8b71dfc1ed2cf205d1b23f02203979957e96530444fdd501ca7d1e5e9a9e40dd",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 7872
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "thalassa-mnemique-melee",
+      "universe": "Thalassa Mnémique",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/thalassa-mnemique/melee.webp",
+      "sourceSha256": "a09e5a81814f1d023e7063be000ec105157c40b55dfa5f69fe6d3d3e9974a91e",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/thalassa-mnemique/melee-backdrop.webp",
+      "outputSha256": "10fdc332780809b8d9a0cfd24f9a6ceb4d5ae820ae0412ebaa73a0111250ffd6",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 191674
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "thalassa-mnemique-melee",
+      "universe": "Thalassa Mnémique",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/thalassa-mnemique/melee.webp",
+      "sourceSha256": "a09e5a81814f1d023e7063be000ec105157c40b55dfa5f69fe6d3d3e9974a91e",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/thalassa-mnemique/melee-platforms.webp",
+      "outputSha256": "f5ca9e34b0006d210e924004b13ff26d6a8f30f0d7b375febc2fd76e951c9088",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5662
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 415,
+          "top": 645,
+          "width": 830,
+          "height": 190
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "thalassa-mnemique-tactics",
+      "universe": "Thalassa Mnémique",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/thalassa-mnemique/tactics.webp",
+      "sourceSha256": "961cfb93faebab405b6de5d75757b9ccbd582a9021cc780ab117cf9cb3fb2854",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/thalassa-mnemique/tactics-tiles.webp",
+      "outputSha256": "a39a041272056596dd68ab7d680d4264cde646a8daf4ce4c5adec8016535e526",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 9816
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 533,
+          "top": 461,
+          "width": 471,
+          "height": 471
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "unreal-melee",
+      "universe": "Unreal",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/unreal/melee.webp",
+      "sourceSha256": "5f6d42a158e0a8f391c369d0e14aefb7fd44d02c63c0182654455d58e62a756c",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-2b84e072-c9a5-4492-89d7-a39c62724422",
+      "companion": "/backgrounds/lore-stages/unreal/melee-backdrop.webp",
+      "outputSha256": "f0e7b0f61bbaae214b5c03c9fe8b87d872949f4dd6741243441d54e0c97813d9",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 223742
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "unreal-melee",
+      "universe": "Unreal",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/unreal/melee.webp",
+      "sourceSha256": "5f6d42a158e0a8f391c369d0e14aefb7fd44d02c63c0182654455d58e62a756c",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-2b84e072-c9a5-4492-89d7-a39c62724422",
+      "companion": "/backgrounds/lore-stages/unreal/melee-platforms.webp",
+      "outputSha256": "5cc9fce076e030bff09abbbc5ef3d96d98ab4ff5724ffc52c5e321ae44e0825d",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 5206
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 588,
+          "width": 768,
+          "height": 173
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "unreal-tactics",
+      "universe": "Unreal",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/unreal/tactics.webp",
+      "sourceSha256": "f40c86d9bdb870efa38038b45472318a1e703257b8727405f62525474fa1b2db",
+      "sourceProvenanceStatus": "verified-openai",
+      "sourceGenerationId": "exec-e06f4098-babf-4c52-aef0-59594ee65272",
+      "companion": "/backgrounds/lore-stages/unreal/tactics-tiles.webp",
+      "outputSha256": "55c978b1ebeb53c19bbb4e4de040b6afc9a61bc41191216c20856f9caae25c90",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 8944
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 570,
+          "top": 389,
+          "width": 397,
+          "height": 397
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "viridienne-ultime-melee",
+      "universe": "Viridienne Ultime",
+      "mode": "Melee",
+      "companionKind": "melee-backdrop",
+      "source": "/backgrounds/lore-stages/viridienne-ultime/melee.webp",
+      "sourceSha256": "231ed0083181d40e86a55e3813817adc4da1b2e664cf9dae8b273409a0b23bec",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/viridienne-ultime/melee-backdrop.webp",
+      "outputSha256": "4a3ddc83b5df815a08ee40ebebadb833464e879a390e9cbfdd176b6178a25feb",
+      "output": {
+        "width": 1536,
+        "height": 864,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 529122
+      },
+      "transformation": {
+        "operation": "stage-cover-normalization",
+        "dimensions": "1536x864",
+        "crop": "center-cover",
+        "kernel": "nearest",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "viridienne-ultime-melee",
+      "universe": "Viridienne Ultime",
+      "mode": "Melee",
+      "companionKind": "melee-platforms",
+      "source": "/backgrounds/lore-stages/viridienne-ultime/melee.webp",
+      "sourceSha256": "231ed0083181d40e86a55e3813817adc4da1b2e664cf9dae8b273409a0b23bec",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/viridienne-ultime/melee-platforms.webp",
+      "outputSha256": "c773a7d341293efeb2e4cc830cf6127e2cf00cf7427384282a90e4acc71c7742",
+      "output": {
+        "width": 192,
+        "height": 64,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 7252
+      },
+      "transformation": {
+        "operation": "melee-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 384,
+          "top": 696,
+          "width": 768,
+          "height": 205
+        },
+        "dimensions": "192x64",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    },
+    {
+      "id": "viridienne-ultime-tactics",
+      "universe": "Viridienne Ultime",
+      "mode": "Tactics",
+      "companionKind": "tactics-tiles",
+      "source": "/backgrounds/lore-stages/viridienne-ultime/tactics.webp",
+      "sourceSha256": "7e06830801f6c6a8b7c1d7850e5d3a490c374e70e5ca2a09fac66985a89019d6",
+      "sourceProvenanceStatus": "legacy-openai-declared",
+      "sourceGenerationId": null,
+      "companion": "/backgrounds/lore-stages/viridienne-ultime/tactics-tiles.webp",
+      "outputSha256": "725426215fc20505ef48b7d7ef41309d7ffb97fd16e0c4dd9b543e201eb34d1a",
+      "output": {
+        "width": 128,
+        "height": 128,
+        "format": "webp",
+        "channels": 3,
+        "bytes": 10860
+      },
+      "transformation": {
+        "operation": "tactics-repeat-texture-crop+mirror-wrap",
+        "sourceCrop": {
+          "left": 508,
+          "top": 472,
+          "width": 483,
+          "height": 483
+        },
+        "dimensions": "128x128",
+        "kernel": "nearest",
+        "seamTreatment": "horizontal-and-vertical-mirror-wrap",
+        "format": "webp",
+        "quality": 88
+      }
+    }
+  ]
+}

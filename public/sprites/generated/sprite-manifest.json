@@ -1,5 +1,12 @@
 {
-  "generatedAt": "2026-08-22T13:27:38.812Z",
+  "generatedAt": "2026-08-24T19:05:22.485Z",
+  "identityAliases": {
+    "boss:the-simpsons-mr-burns-nuclear-scheme": "trial:the-simpsons-legacy-simpsons-boss-mr-burns-nuclear-scheme-trial",
+    "enemy:stargate-universe-drone-command-ship": "boss:stargate-universe-drone-command-ship",
+    "enemy:roger-rabbit-smart-ass": "boss:roger-rabbit-smart-ass",
+    "enemy:ecco-the-dolphin-vortex-drone": "boss:ecco-the-dolphin-vortex-drone",
+    "enemy:cthulhu-shoggoth": "boss:cthulhu-shoggoth"
+  },
   "sheet": {
     "width": 1024,
     "height": 1024,
@@ -15,43 +22,43 @@
   },
   "counts": {
     "heroes": 1912,
-    "enemies": 1522,
-    "bosses": 1525,
+    "enemies": 1518,
+    "bosses": 1507,
     "trials": 334,
     "items": 1545,
     "finales": 55,
     "stages": 1192,
-    "total": 8085
+    "total": 8063
   },
   "availableCounts": {
     "heroes": 976,
-    "enemies": 609,
-    "bosses": 716,
-    "trials": 302,
-    "items": 772,
-    "finales": 16,
-    "stages": 273,
-    "total": 3664
+    "enemies": 608,
+    "bosses": 712,
+    "trials": 334,
+    "items": 812,
+    "finales": 55,
+    "stages": 304,
+    "total": 3801
   },
   "verifiedOpenAiCounts": {
     "heroes": 1,
     "enemies": 1,
     "bosses": 1,
-    "trials": 9,
-    "items": 9,
-    "finales": 9,
-    "stages": 1,
-    "total": 31
+    "trials": 41,
+    "items": 49,
+    "finales": 48,
+    "stages": 32,
+    "total": 173
   },
   "missingCounts": {
     "heroes": 936,
-    "enemies": 913,
-    "bosses": 809,
-    "trials": 32,
-    "items": 773,
-    "finales": 39,
-    "stages": 919,
-    "total": 4421
+    "enemies": 910,
+    "bosses": 795,
+    "trials": 0,
+    "items": 733,
+    "finales": 0,
+    "stages": 888,
+    "total": 4262
   },
   "entries": [
     {
@@ -48398,6 +48405,8 @@
           "hit"
         ]
       },
+      "outputAliasOf": "hero:tiffany",
+      "outputAliasReason": "Tiffany Valentine is intentionally playable and encounter-capable in the same Chucky continuity.",
       "available": true,
       "source": "openai",
       "provenanceStatus": "legacy-openai-declared"
@@ -49364,6 +49373,8 @@
           "hit"
         ]
       },
+      "outputAliasOf": "hero:the_priest_2022",
+      "outputAliasReason": "The Priest (2022) intentionally keeps one visual identity across playable and encounter roles.",
       "available": true,
       "source": "openai",
       "provenanceStatus": "legacy-openai-declared"
@@ -50340,27 +50351,6 @@
       "name": "Spider Mastermind Core",
       "universe": "Doom",
       "output": "/sprites/generated/bosses/doom/spider-mastermind-core.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "doom-marauder-sentinel-fallen",
-      "name": "Marauder Sentinel Fallen",
-      "universe": "Doom",
-      "output": "/sprites/generated/bosses/doom/marauder-sentinel-fallen.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -55630,27 +55620,6 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "prey-feral-predator",
-      "name": "Feral Predator",
-      "universe": "Prey",
-      "output": "/sprites/generated/bosses/prey/feral-predator.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
       "referenceUrl": "https://avp.fandom.com/wiki/Feral_Predator",
       "visualAnchor": "The 1719 Feral Predator with bone mask, primitive armor, shield, spear and bolt gun; no modern plasma caster.",
       "spritePrompt": "Use case: stylized-concept. Create original highly detailed pixel art for a 2D RPG and Tactics game. Subject: Feral Predator from Prey. Continuity lock: Prey (2022) - Great Plains 1719. Layout: duelist; produce one full-body 4x4 animation sheet, 1024x1024, 256px cells. Visual lock: The 1719 Feral Predator with bone mask, primitive armor, shield, spear and bolt gun; no modern plasma caster. Gameplay phases: forest-hunt: Bolt gun, Retractable shield, Spear combo; mud-trap: Bear trap, Mask removal, Redirected bolt finish. Use a three-quarter battle angle facing left unless the layout is arena-wide. Keep anatomy, costume, scale and equipment consistent between states. No copied frame, crossover equipment, Nexus armor, text, logo, watermark, border, cropped anatomy or duplicate subject.",
@@ -57219,27 +57188,6 @@
       "name": "Lucian Raider",
       "universe": "Stargate Universe",
       "output": "/sprites/generated/bosses/stargate-universe/lucian-raider.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "enemy",
-      "id": "stargate-universe-drone-command-ship",
-      "name": "Drone Command Ship",
-      "universe": "Stargate Universe",
-      "output": "/sprites/generated/bosses/stargate-universe/drone-command-ship.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -59596,9 +59544,11 @@
         ]
       },
       "visualAnchor": "Endless Passage Anomaly: Impossible Signage represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-52718cc4-f477-4925-8af5-2ac9387815c6",
+      "outputSha256": "a97377d0feaf83d9a14e29660190337729c56b46ad09961347bde64756725fd6"
     },
     {
       "kind": "trial",
@@ -59618,9 +59568,11 @@
         ]
       },
       "visualAnchor": "Abaddon Hotel Walkthrough: Basement Clown Prop represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-4e1b284b-1dc8-4c5f-95d1-8ddc78642c7a",
+      "outputSha256": "5a045f7075b39ab3b63bff8cf7b6a811984d53f9799deefcfc90ce1955b2e50f"
     },
     {
       "kind": "trial",
@@ -59640,9 +59592,11 @@
         ]
       },
       "visualAnchor": "Abaddon Hotel Walkthrough: Hotel Door Knocker represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-0ebdcd2e-4993-4c1a-8026-fcdffa08ab77",
+      "outputSha256": "aa806ea481b48e686a8d8c3ca97bdcd49495c7fd99ae1dac817ec42866153f84"
     },
     {
       "kind": "trial",
@@ -59662,9 +59616,11 @@
         ]
       },
       "visualAnchor": "Abaddon Hotel Walkthrough: Found Footage Static represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-4b7b3ebd-291c-43b0-ad63-aef32127f2ad",
+      "outputSha256": "8c86e550450592689dc4a637672ff16da1fe7c76ac0d658aee70ab959367f7b8"
     },
     {
       "kind": "trial",
@@ -59684,9 +59640,11 @@
         ]
       },
       "visualAnchor": "Abaddon Hotel Walkthrough: Abaddon Priest Shade represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-0a44e440-5c01-44b7-a115-156e807c15ff",
+      "outputSha256": "7cadcf218c46730c627365960bcf6bea0f80c9f52e9df27e59d176357ad6f6c7"
     },
     {
       "kind": "trial",
@@ -59706,9 +59664,11 @@
         ]
       },
       "visualAnchor": "Abaddon Hotel Walkthrough: Stairwell Camera Trap represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-5557de2e-722f-4b49-96c9-1dce886183cd",
+      "outputSha256": "b75d041303d7b72aa18c6bbfee8b275ae3839cf85b3da773843e1de3cdd844e0"
     },
     {
       "kind": "enemy",
@@ -59857,9 +59817,11 @@
         ]
       },
       "visualAnchor": "Body Odyssey Breach: Hormone Gremlin represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-3e6cd65e-d12d-4720-a641-0b53e6ab5c5d",
+      "outputSha256": "7ddd9740acfe0fffa0e7ca9f7a2cd07835c11b306948a50c2fd841d0d1ccd175"
     },
     {
       "kind": "trial",
@@ -59879,9 +59841,11 @@
         ]
       },
       "visualAnchor": "Body Odyssey Breach: Body Cell Patrol represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-ae5da01b-cacd-487a-849a-c820c8e143a3",
+      "outputSha256": "d56f759ea09dcd4ec864b3ccac8c2fe8a9ebae2447cf461c4b497824833e7c54"
     },
     {
       "kind": "trial",
@@ -59901,9 +59865,11 @@
         ]
       },
       "visualAnchor": "Body Odyssey Breach: Awkward Musical Note represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "0eda1979-9ca3-4f54-adbf-f5f8f2f0babd",
+      "outputSha256": "5c72e4f1d646fbaa21a08974fc9e2b755dcc9eac34001bf75fbb154a27b40af9"
     },
     {
       "kind": "trial",
@@ -59923,9 +59889,11 @@
         ]
       },
       "visualAnchor": "Body Odyssey Breach: Contraception Gatekeeper represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "1b273204-7945-491f-81cf-1efe137f9e42",
+      "outputSha256": "3482c072110a4ebca4390c214cf4ed026ad56f0ec767869a28161fbdb1d156a3"
     },
     {
       "kind": "trial",
@@ -59945,9 +59913,11 @@
         ]
       },
       "visualAnchor": "Body Odyssey Breach: Cringe Chorus Beast represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "05a798f0-2128-4838-a439-bac1a7fd5dc5",
+      "outputSha256": "d2aab967cb12f23f75272cacc4bfd66e4dc1f993e9d06160bf0a281dbb885f63"
     },
     {
       "kind": "enemy",
@@ -61640,27 +61610,6 @@
           "hit"
         ]
       },
-      "available": true,
-      "source": "openai",
-      "provenanceStatus": "legacy-openai-declared"
-    },
-    {
-      "kind": "boss",
-      "id": "ghostbusters-stay-puft-marshmallow-man",
-      "name": "Stay Puft Marshmallow Man",
-      "universe": "Ghostbusters",
-      "output": "/sprites/generated/bosses/ghostbusters/stay-puft-marshmallow-man.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
       "referenceUrl": "https://ghostbusters.fandom.com/wiki/Stay_Puft_Marshmallow_Man",
       "visualAnchor": "The 1984 Stay Puft destructor form with sailor collar, red neckerchief and soft white body towering over New York streets.",
       "spritePrompt": "Use case: stylized-concept. Create original highly detailed pixel art for a 2D RPG and Tactics game. Subject: Stay Puft Marshmallow Man from Ghostbusters. Continuity lock: Ghostbusters (1984) - Gozer rooftop finale. Layout: kaiju; produce a multipart 2048px or 4096px atlas with separate body, limbs, weak points and telegraphs. Visual lock: The 1984 Stay Puft destructor form with sailor collar, red neckerchief and soft white body towering over New York streets. Gameplay phases: manhattan-march: Building crush, Street stomp, Marshmallow grab; rooftop-crossrip: Proton-stream weak points, Gozer gate surge, Cross-stream detonation. Use a three-quarter battle angle facing left unless the layout is arena-wide. Keep anatomy, costume, scale and equipment consistent between states. No copied frame, crossover equipment, Nexus armor, text, logo, watermark, border, cropped anatomy or duplicate subject.",
@@ -62152,27 +62101,6 @@
       "provenanceStatus": "missing"
     },
     {
-      "kind": "boss",
-      "id": "how-to-make-a-monster-evilution-monster-suit",
-      "name": "Evilution Monster Suit",
-      "universe": "How to Make a Monster",
-      "output": "/sprites/generated/bosses/how-to-make-a-monster/evilution-monster-suit.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
       "kind": "enemy",
       "id": "repo-the-genetic-opera-geneco-guard",
       "name": "GeneCo Guard",
@@ -62211,9 +62139,11 @@
         ]
       },
       "visualAnchor": "GeneCo Opera Breach: Zydrate Addict Echo represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "3c61d3d2-3253-4a32-abef-7ba95cb3aaca",
+      "outputSha256": "14e4883917b0cc1e9024e94b485bbc9a5699af56a526a1c10a7207bd48f077f0"
     },
     {
       "kind": "trial",
@@ -62233,9 +62163,11 @@
         ]
       },
       "visualAnchor": "GeneCo Opera Breach: Surgical Drone represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "29c0e2cc-c3f2-43bc-9d7f-61b4794e1ae0",
+      "outputSha256": "a6950e71d81f6e8cc6dc43d5d6aa167147ae810790eda837f04dcf4f5180e88a"
     },
     {
       "kind": "trial",
@@ -62255,9 +62187,11 @@
         ]
       },
       "visualAnchor": "GeneCo Opera Breach: Luigi Pavi Rotti Cell represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "26def54c-5ed6-4c34-ba83-bccf4e7acc18",
+      "outputSha256": "4fcd14d113a1bfd3afe739e389b66aa9bf04403af06b8f244314b9c4848c89d8"
     },
     {
       "kind": "trial",
@@ -62277,9 +62211,11 @@
         ]
       },
       "visualAnchor": "GeneCo Opera Breach: Amber Sweet Stage represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "db0f6008-85d4-41bc-a192-a241b67883b3",
+      "outputSha256": "929f9a6ad907e4d094d56a4f61cefe7aa521cd08ef5f0a9a692bfaca67126ac7"
     },
     {
       "kind": "enemy",
@@ -65168,9 +65104,11 @@
       "referenceUrl": "https://another.fandom.com/wiki/Reiko_Mikami",
       "visualAnchor": "Exact anime teacher appearance, light-brown hair and modest adult clothing, with restrained supernatural effects.",
       "spritePrompt": "Use case: stylized-concept. Asset type: transparent game sprite sheet for a 2D canvas battle game. Create one original highly detailed dark-fantasy pixel-art animation sheet, 1024x1024, exactly 4 columns x 4 rows, sixteen equal 256x256 cells. One boss entity only, except for a canonically inseparable duo or trio explicitly required by the visual lock; full body, three-quarter side battle angle facing right, centered with identical scale and anatomy in every cell. Row 1 idle breathing, row 2 walk or run cycle, row 3 canonical signature attack, row 4 hit or recoil cycle. Perfectly flat solid #00ff00 chroma background, no floor, no cast shadow, no text, no labels, no border, no watermark, no cropped limbs and no duplicate subject. Subject: Reiko Mikami - The Extra from Another. Visual lock: Exact anime teacher appearance, light-brown hair and modest adult clothing, with restrained supernatural effects. Canonical combat identity: memory_distortion; signature action: Calamity Revelation. Gameplay phases: Uses memory distortions and defensive movement without invented spells Then The Extra identity is revealed and the arena calamity intensifies. Do not add Nexus armor, cross-franchise equipment, alternate-era clothing or anatomy that is absent from the reference.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "fea7e964-dfc6-4876-9e29-f667c4562ed5",
+      "outputSha256": "823f9926fede8ff72bce6b336000199b8752e72458d50562ca25339c3aeeec11"
     },
     {
       "kind": "enemy",
@@ -66608,9 +66546,11 @@
       "referenceUrl": "https://fr.wikipedia.org/wiki/La_Cit%C3%A9_de_la_peur_(film,_1994)",
       "visualAnchor": "Exact black killer costume, pale mask, sickle and later film likeness, without generic slasher additions.",
       "spritePrompt": "Use case: stylized-concept. Asset type: transparent game sprite sheet for a 2D canvas battle game. Create one original highly detailed dark-fantasy pixel-art animation sheet, 1024x1024, exactly 4 columns x 4 rows, sixteen equal 256x256 cells. One boss entity only, except for a canonically inseparable duo or trio explicitly required by the visual lock; full body, three-quarter side battle angle facing right, centered with identical scale and anatomy in every cell. Row 1 idle breathing, row 2 walk or run cycle, row 3 canonical signature attack, row 4 hit or recoil cycle. Perfectly flat solid #00ff00 chroma background, no floor, no cast shadow, no text, no labels, no border, no watermark, no cropped limbs and no duplicate subject. Subject: Emile Gravier from La Cite de la Peur. Visual lock: Exact black killer costume, pale mask, sickle and later film likeness, without generic slasher additions. Canonical combat identity: sickle; signature action: Red Is Dead Killer Reveal. Gameplay phases: Uses the masked Red Is Dead killer disguise and clumsy chase attacks Then Loses the mask and becomes more frantic after the reveal. Do not add Nexus armor, cross-franchise equipment, alternate-era clothing or anatomy that is absent from the reference.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "81c9ca65-7457-4422-b06f-aeadf2af9e40",
+      "outputSha256": "69f1c245fde7bc89443014985a757d9b11b030f462a14f58d24ecd2081910aa7"
     },
     {
       "kind": "trial",
@@ -66632,9 +66572,11 @@
       "referenceUrl": "https://fr.wikipedia.org/wiki/La_Cit%C3%A9_de_la_peur_(film,_1994)",
       "visualAnchor": "Exact Gerard Darmon likeness, dark suit and 1994 film handgun.",
       "spritePrompt": "Use case: stylized-concept. Asset type: transparent game sprite sheet for a 2D canvas battle game. Create one original highly detailed dark-fantasy pixel-art animation sheet, 1024x1024, exactly 4 columns x 4 rows, sixteen equal 256x256 cells. One boss entity only, except for a canonically inseparable duo or trio explicitly required by the visual lock; full body, three-quarter side battle angle facing right, centered with identical scale and anatomy in every cell. Row 1 idle breathing, row 2 walk or run cycle, row 3 canonical signature attack, row 4 hit or recoil cycle. Perfectly flat solid #00ff00 chroma background, no floor, no cast shadow, no text, no labels, no border, no watermark, no cropped limbs and no duplicate subject. Subject: Jean-Paul Martoni from La Cite de la Peur. Visual lock: Exact Gerard Darmon likeness, dark suit and 1994 film handgun. Canonical combat identity: handgun; signature action: Cannes Gangster Escape. Gameplay phases: Uses intimidation and aimed handgun fire Then Attempts a panicked escape when his protection is broken. Do not add Nexus armor, cross-franchise equipment, alternate-era clothing or anatomy that is absent from the reference.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "2cb03eec-ff5e-4a8e-ae83-f4c09e6d742d",
+      "outputSha256": "e78f99b30e803a9186bd34bab20735b362066cd55b71944336475346a748084c"
     },
     {
       "kind": "enemy",
@@ -67383,27 +67325,6 @@
       "name": "Marvin Depression Field",
       "universe": "H2G2",
       "output": "/sprites/generated/bosses/h2g2/marvin-depression-field.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "h2g2-vogon-constructor-fleet",
-      "name": "Vogon Constructor Fleet",
-      "universe": "H2G2",
-      "output": "/sprites/generated/bosses/h2g2/vogon-constructor-fleet.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -68327,30 +68248,6 @@
       "available": true,
       "source": "openai",
       "provenanceStatus": "legacy-openai-declared"
-    },
-    {
-      "kind": "enemy",
-      "id": "roger-rabbit-smart-ass",
-      "name": "Smart Ass",
-      "universe": "Roger Rabbit",
-      "output": "/sprites/generated/bosses/roger-rabbit/smart-ass.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "referenceUrl": "https://disney.fandom.com/wiki/Smart_Ass",
-      "visualAnchor": "Tall Toon weasel in purple zoot suit and fedora, cigar and revolver; preserve exaggerated cartoon proportions.",
-      "spritePrompt": "Pixel art sprite sheet 4x4, 256 px cells, three-quarter RPG view facing right. Smart Ass. Tall Toon weasel in purple zoot suit and fedora, cigar and revolver; preserve exaggerated cartoon proportions. Row 1 idle; row 2 movement; row 3 revolver shot; row 4 hit reaction. Keep the same anatomy, colors and equipment in all 16 frames. Full body centered, flat #00ff00 background, no text, shadow or crop.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
     },
     {
       "kind": "enemy",
@@ -69731,27 +69628,6 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "twisted-metal-minion",
-      "name": "Minion",
-      "universe": "Twisted Metal",
-      "output": "/sprites/generated/bosses/twisted-metal/minion.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
       "referenceUrl": "https://twistedmetal.fandom.com/wiki/Minion",
       "visualAnchor": "The heavy demonic armored Minion combat vehicle from the original Twisted Metal, viewed from a gameplay-correct rear three-quarter arena angle.",
       "spritePrompt": "Use case: stylized-concept. Create original highly detailed pixel art for a 2D RPG and Tactics game. Subject: Minion from Twisted Metal. Continuity lock: Twisted Metal (1995) - Minion vehicle finale. Layout: large; produce one full-body 4x4 or 4x6 large-creature sheet with every appendage visible. Visual lock: The heavy demonic armored Minion combat vehicle from the original Twisted Metal, viewed from a gameplay-correct rear three-quarter arena angle. Gameplay phases: arena-pursuit: Heavy cannon, Missile salvo, Ram; armor-break: Mine trail, Flame burst, Engine exposure. Use a three-quarter battle angle facing left unless the layout is arena-wide. Keep anatomy, costume, scale and equipment consistent between states. No copied frame, crossover equipment, Nexus armor, text, logo, watermark, border, cropped anatomy or duplicate subject.",
@@ -70118,27 +69994,6 @@
     },
     {
       "kind": "boss",
-      "id": "final-fantasy-vii-safer-sephiroth",
-      "name": "Safer Sephiroth",
-      "universe": "Final Fantasy VII",
-      "output": "/sprites/generated/bosses/final-fantasy-vii/safer-sephiroth.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": true,
-      "source": "openai",
-      "provenanceStatus": "legacy-openai-declared"
-    },
-    {
-      "kind": "boss",
       "id": "final-fantasy-vii-jenova-birth",
       "name": "Jenova BIRTH",
       "universe": "Final Fantasy VII",
@@ -70272,27 +70127,6 @@
       "name": "T-Rexaur",
       "universe": "Final Fantasy VIII",
       "output": "/sprites/generated/bosses/final-fantasy-viii/t-rexaur.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "final-fantasy-viii-ultimecia",
-      "name": "Ultimecia",
-      "universe": "Final Fantasy VIII",
-      "output": "/sprites/generated/bosses/final-fantasy-viii/ultimecia.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -71530,27 +71364,6 @@
     },
     {
       "kind": "boss",
-      "id": "parasite-eve-eve-ultimate-being",
-      "name": "Eve Ultimate Being",
-      "universe": "Parasite Eve",
-      "output": "/sprites/generated/bosses/parasite-eve/eve-ultimate-being.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
       "id": "parasite-eve-maya-brea",
       "name": "Maya Brea",
       "universe": "Parasite Eve",
@@ -72388,27 +72201,6 @@
       "name": "Sideshow Bob Revenge Plot",
       "universe": "The Simpsons",
       "output": "/sprites/generated/bosses/the-simpsons/sideshow-bob-revenge-plot.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": true,
-      "source": "openai",
-      "provenanceStatus": "legacy-openai-declared"
-    },
-    {
-      "kind": "boss",
-      "id": "the-simpsons-mr-burns-nuclear-scheme",
-      "name": "Mr Burns Nuclear Scheme",
-      "universe": "The Simpsons",
-      "output": "/sprites/generated/bosses/the-simpsons/mr-burns-nuclear-scheme.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -73441,27 +73233,6 @@
           "hit"
         ]
       },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "the-last-of-us-rat-king",
-      "name": "Rat King",
-      "universe": "The Last of Us",
-      "output": "/sprites/generated/bosses/the-last-of-us/rat-king.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
       "referenceUrl": "https://thelastofus.fandom.com/wiki/Rat_king",
       "visualAnchor": "The Rat King as a fused mass of infected bodies with distinct limbs and Stalker component in the hospital basement, never a Bloater nest.",
       "spritePrompt": "Use case: stylized-concept. Create original highly detailed pixel art for a 2D RPG and Tactics game. Subject: Rat King from The Last of Us. Continuity lock: The Last of Us Part II - Seattle hospital. Layout: large; produce one full-body 4x4 or 4x6 large-creature sheet with every appendage visible. Visual lock: The Rat King as a fused mass of infected bodies with distinct limbs and Stalker component in the hospital basement, never a Bloater nest. Gameplay phases: hospital-basement: Mass charge, Wall break, Acid spore throw; stalker-separation: Detached Stalker ambush, Grab, Fire vulnerability. Use a three-quarter battle angle facing left unless the layout is arena-wide. Keep anatomy, costume, scale and equipment consistent between states. No copied frame, crossover equipment, Nexus armor, text, logo, watermark, border, cropped anatomy or duplicate subject.",
@@ -73884,27 +73655,6 @@
       "name": "Spitter Acid Pool",
       "universe": "Left 4 Dead",
       "output": "/sprites/generated/bosses/left-4-dead/spitter-acid-pool.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": true,
-      "source": "openai",
-      "provenanceStatus": "legacy-openai-declared"
-    },
-    {
-      "kind": "boss",
-      "id": "left-4-dead-tank",
-      "name": "Tank",
-      "universe": "Left 4 Dead",
-      "output": "/sprites/generated/bosses/left-4-dead/tank.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -75203,30 +74953,6 @@
     },
     {
       "kind": "enemy",
-      "id": "ecco-the-dolphin-vortex-drone",
-      "name": "Vortex Drone",
-      "universe": "Ecco the Dolphin",
-      "output": "/sprites/generated/bosses/ecco-the-dolphin/vortex-drone.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "referenceUrl": "https://eccothedolphin.fandom.com/wiki/Vortex_Drone",
-      "visualAnchor": "Dark green biomechanical arthropod from the original game: tall oval domed head, purple facial cavity, segmented tapering body, two long clawed arms plus smaller limbs, and a narrow tail; no shark body, fish fins, dolphin silhouette, or added metal armor.",
-      "spritePrompt": "Pixel art sprite sheet 4x4, 256 px cells, three-quarter RPG view facing right. Vortex Drone. Dark green biomechanical arthropod from the original game: tall oval domed head, purple facial cavity, segmented tapering body, two long clawed arms plus smaller limbs, and a narrow tail; no shark body, fish fins, dolphin silhouette, or added metal armor. Row 1 idle; row 2 movement; row 3 grapple, bite and severed-head pursuit; row 4 hit reaction. Keep the same anatomy, colors and equipment in all 16 frames. Full body centered, flat #00ff00 background, no text, shadow or crop.",
-      "available": true,
-      "source": "openai",
-      "provenanceStatus": "legacy-openai-declared"
-    },
-    {
-      "kind": "enemy",
       "id": "ecco-the-dolphin-jellyfish",
       "name": "Jellyfish",
       "universe": "Ecco the Dolphin",
@@ -75413,30 +75139,6 @@
       "referenceUrl": "https://www.microids.com/game-flashback/",
       "visualAnchor": "Faithful high-detail expansion of the original Flashback human disguise and documented Morph reveal, with the game energy pistol.",
       "spritePrompt": "Use case: stylized-concept. Asset type: transparent game sprite sheet for a 2D canvas battle game. Create one original highly detailed dark-fantasy pixel-art animation sheet, 1024x1024, exactly 4 columns x 4 rows, sixteen equal 256x256 cells. One boss entity only, except for a canonically inseparable duo or trio explicitly required by the visual lock; full body, three-quarter side battle angle facing right, centered with identical scale and anatomy in every cell. Row 1 idle breathing, row 2 walk or run cycle, row 3 canonical signature attack, row 4 hit or recoil cycle. Perfectly flat solid #00ff00 chroma background, no floor, no cast shadow, no text, no labels, no border, no watermark, no cropped limbs and no duplicate subject. Subject: Morph Assassin from Flashback. Visual lock: Faithful high-detail expansion of the original Flashback human disguise and documented Morph reveal, with the game energy pistol. Canonical combat identity: energy_pistol_and_disguise; signature action: Morph Reveal. Gameplay phases: Fights in a human disguise with an energy pistol Then Reveals the exact alien Morph form and attacks more quickly. Do not add Nexus armor, cross-franchise equipment, alternate-era clothing or anatomy that is absent from the reference.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "flashback-master-brain",
-      "name": "Master Brain",
-      "universe": "Flashback",
-      "output": "/sprites/generated/bosses/flashback/master-brain.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "referenceUrl": "https://flashback.fandom.com/wiki/Master_Brain",
-      "visualAnchor": "Faithful high-detail expansion of the original alien brain-computer sprite, cables, industrial housing and exposed central core.",
-      "spritePrompt": "Use case: stylized-concept. Asset type: transparent game sprite sheet for a 2D canvas battle game. Create one original highly detailed dark-fantasy pixel-art animation sheet, 1024x1024, exactly 4 columns x 4 rows, sixteen equal 256x256 cells. One boss entity only, except for a canonically inseparable duo or trio explicitly required by the visual lock; full body, three-quarter side battle angle facing right, centered with identical scale and anatomy in every cell. Row 1 idle breathing, row 2 walk or run cycle, row 3 canonical signature attack, row 4 hit or recoil cycle. Perfectly flat solid #00ff00 chroma background, no floor, no cast shadow, no text, no labels, no border, no watermark, no cropped limbs and no duplicate subject. Subject: Master Brain from Flashback. Visual lock: Faithful high-detail expansion of the original alien brain-computer sprite, cables, industrial housing and exposed central core. Canonical combat identity: psionic_beams_and_modules; signature action: Core Exposure. Gameplay phases: Uses control beams and linked defense modules Then Exposes the central alien brain core after the modules are destroyed. Do not add Nexus armor, cross-franchise equipment, alternate-era clothing or anatomy that is absent from the reference.",
       "available": false,
       "source": null,
       "provenanceStatus": "missing"
@@ -76723,30 +76425,6 @@
       "provenanceStatus": "missing"
     },
     {
-      "kind": "enemy",
-      "id": "cthulhu-shoggoth",
-      "name": "Shoggoth",
-      "universe": "Cthulhu",
-      "output": "/sprites/generated/bosses/cthulhu/shoggoth.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "referenceUrl": "https://lovecraft.fandom.com/wiki/Shoggoth",
-      "visualAnchor": "Black iridescent protoplasmic mass forming temporary eyes and mouths; no fixed limbs or mechanical parts.",
-      "spritePrompt": "Pixel art sprite sheet 4x4, 256 px cells, three-quarter RPG view facing right. Shoggoth. Black iridescent protoplasmic mass forming temporary eyes and mouths; no fixed limbs or mechanical parts. Row 1 idle; row 2 movement; row 3 pseudopod crush; row 4 hit reaction. Keep the same anatomy, colors and equipment in all 16 frames. Full body centered, flat #00ff00 background, no text, shadow or crop.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
       "kind": "boss",
       "id": "cthulhu-shoggoth",
       "name": "Shoggoth",
@@ -77265,27 +76943,6 @@
       "name": "Fox Mask",
       "universe": "Silent Hill f",
       "output": "/sprites/generated/bosses/silent-hill-f/fox-mask.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "silent-hill-f-white-kimono-manifestation",
-      "name": "White Kimono Manifestation",
-      "universe": "Silent Hill f",
-      "output": "/sprites/generated/bosses/silent-hill-f/white-kimono-manifestation.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -80053,27 +79710,6 @@
       "provenanceStatus": "missing"
     },
     {
-      "kind": "boss",
-      "id": "evil-dead-2013-the-abomination",
-      "name": "The Abomination",
-      "universe": "Evil Dead (2013)",
-      "output": "/sprites/generated/bosses/evil-dead-2013/the-abomination.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
       "kind": "enemy",
       "id": "ash-vs-evil-dead-elk-grove-deadite",
       "name": "Elk Grove Deadite",
@@ -82347,27 +81983,6 @@
       "name": "Wither",
       "universe": "Minecraft",
       "output": "/sprites/generated/bosses/minecraft/wither.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "minecraft-ender-dragon",
-      "name": "Ender Dragon",
-      "universe": "Minecraft",
-      "output": "/sprites/generated/bosses/minecraft/ender-dragon.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -85374,9 +84989,11 @@
         ]
       },
       "visualAnchor": "Akihabara Future Gadget Laboratory: Jellyman Experiment represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "ce872711-d998-49bf-a848-0a41c54a2de9",
+      "outputSha256": "ecacbca959e00f3ae6015f673e2a8148004c9f9be4d973460bd05472862a197a"
     },
     {
       "kind": "trial",
@@ -85396,9 +85013,11 @@
         ]
       },
       "visualAnchor": "Akihabara Future Gadget Laboratory: D-Mail Divergence Echo represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "ebffbfa3-f918-49c4-a20f-be8dfbdf7a4f",
+      "outputSha256": "75d11e976405b76b4631e4c438606909c8a8477bf61d3cde1f7769b7f77ff6ae"
     },
     {
       "kind": "trial",
@@ -85418,9 +85037,11 @@
         ]
       },
       "visualAnchor": "Akihabara Future Gadget Laboratory: FB Rounder Network represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "e804b5e3-a329-44c1-abb1-666ab026d062",
+      "outputSha256": "113b56cdc3512e17b2acd73cb2b4e8f43da49282836c0f0b4e41f7fb401b7a89"
     },
     {
       "kind": "trial",
@@ -85440,9 +85061,11 @@
         ]
       },
       "visualAnchor": "Akihabara Future Gadget Laboratory: Nae Time-Leap Echo represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "ebfa392d-eb4b-46b4-b0db-5ac4c936af3a",
+      "outputSha256": "fcb1d2a985e2911c41ffb42982d961f39658c34b620d8c653b45e096318a096e"
     },
     {
       "kind": "trial",
@@ -85462,9 +85085,11 @@
         ]
       },
       "visualAnchor": "Gigantic Nonary Game: Bracelet Bomb Enforcer represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "9af88b82-32d3-4a08-8d09-979e72dd04e7",
+      "outputSha256": "61d138cc23fec88b0a3b2f4e7c6906b868a30e37ef3c5d536d4ad637abade9ff"
     },
     {
       "kind": "trial",
@@ -85484,9 +85109,11 @@
         ]
       },
       "visualAnchor": "Gigantic Nonary Game: Q Room Trap Drone represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "c6c9d812-aaf6-4fb8-88c7-6ae5a3e26cac",
+      "outputSha256": "97371a4c6d048b054cdc97a1034fd7658fef4cbe31ff564fdafa903928bc2c9f"
     },
     {
       "kind": "trial",
@@ -85506,9 +85133,11 @@
         ]
       },
       "visualAnchor": "Gigantic Nonary Game: Radical-6 Host represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "277d0dbd-ad94-4ec8-a071-599e2e657d72",
+      "outputSha256": "e5d828318a9bf7491db4a7db57e7ee626bc1fdf811b50438941d11da819c80eb"
     },
     {
       "kind": "trial",
@@ -85528,9 +85157,11 @@
         ]
       },
       "visualAnchor": "Gigantic Nonary Game: Dio Myrmidon represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "925f51e8-abed-4cea-9650-fbb11508a559",
+      "outputSha256": "fb249ab1d8a9c485f4ea786b2bc1ad4fc4a9a24c2d45379864e8870f07c8ea28"
     },
     {
       "kind": "trial",
@@ -85550,9 +85181,11 @@
         ]
       },
       "visualAnchor": "Gigantic Nonary Game: Zero II Decision Engine represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "ab61e5c2-242d-412b-8f7b-135af137de55",
+      "outputSha256": "4b242d90848db54bcf53fb60c0244dcdf979a36105199c5813777cd98d7be46a"
     },
     {
       "kind": "enemy",
@@ -88458,27 +88091,6 @@
       "provenanceStatus": "missing"
     },
     {
-      "kind": "boss",
-      "id": "les-aventures-de-saturnin-foxes-village-caper",
-      "name": "Foxes Village Caper",
-      "universe": "Les Aventures de Saturnin",
-      "output": "/sprites/generated/bosses/les-aventures-de-saturnin/foxes-village-caper.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
       "kind": "enemy",
       "id": "magic-jack-lobby-advocate",
       "name": "Lobby Advocate",
@@ -88526,27 +88138,6 @@
       "name": "Speciesist Broadcast Drone",
       "universe": "MagiC JacK",
       "output": "/sprites/generated/bosses/magic-jack/speciesist-broadcast-drone.png",
-      "frame": {
-        "width": 256,
-        "height": 256,
-        "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ]
-      },
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
-    },
-    {
-      "kind": "boss",
-      "id": "magic-jack-human-lobby-incarnation",
-      "name": "Human Lobby Incarnation",
-      "universe": "MagiC JacK",
-      "output": "/sprites/generated/bosses/magic-jack/human-lobby-incarnation.png",
       "frame": {
         "width": 256,
         "height": 256,
@@ -88985,9 +88576,11 @@
         ]
       },
       "visualAnchor": "North American Forest Number Station: Tree-Line Mimic represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "e18cee4b-7894-4c38-b5be-e46ee902fc15",
+      "outputSha256": "ecbb14eac516e1b671eb02e3b6d991017b0ed829a87bae98492a8a96b5795518"
     },
     {
       "kind": "trial",
@@ -89007,9 +88600,11 @@
         ]
       },
       "visualAnchor": "North American Forest Number Station: Stolen Voice Echo represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "099c5a30-881f-4d34-905b-3bd3b1668058",
+      "outputSha256": "e76afe423b334f340d37389840ea56591b5a359d7a36f209b09edc57622fd14a"
     },
     {
       "kind": "trial",
@@ -89029,9 +88624,11 @@
         ]
       },
       "visualAnchor": "North American Forest Number Station: Number Station Lure represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "cb23e468-850a-443d-a15a-fbcf1b0f5520",
+      "outputSha256": "d0097e10618dfd600404fd09424a79f1db3ff4947ddc643d07bcd19d9169c61f"
     },
     {
       "kind": "trial",
@@ -89051,9 +88648,11 @@
         ]
       },
       "visualAnchor": "North American Forest Number Station: Broadcast Relay Colossus represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "1db8c1e4-9e9c-4a83-854d-01d9393081ff",
+      "outputSha256": "e1827b30490d121d4ebdd5473a3b77d62d38e85d1e82ad52ba60660cde0293cb"
     },
     {
       "kind": "trial",
@@ -89073,9 +88672,11 @@
         ]
       },
       "visualAnchor": "North American Forest Number Station: Old-Media Faux Body represented as an objective state, never as a fighter.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "bc4f2dec-8f58-4d43-87d6-264142db1d57",
+      "outputSha256": "ff8f7efd003c10e23af0e2a6ed2b9bf5c95cd67b3e251364e5f65a2b00b85d07"
     },
     {
       "kind": "enemy",
@@ -138130,9 +137731,11 @@
       },
       "referenceUrl": "https://oldunreal.com/guides/Unreal%20manual.pdf",
       "visualAnchor": "Small translator device illuminating carved Nali text in an ancient stone chamber.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-47b5daf7-682f-4cce-8261-57e4e5efd60b",
+      "outputSha256": "92209898c803ce476856863191a59f9c051325b2d9a4be46de7d5f52d31be670"
     },
     {
       "kind": "item",
@@ -138168,9 +137771,11 @@
       },
       "referenceUrl": "https://www.lionsgate.com/movies/saw",
       "visualAnchor": "Tape waveform, mechanical timer and three highlighted safety catches with no readable text or gore.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-b41ab4f9-85f5-45a4-b094-06e178818748",
+      "outputSha256": "9ca16bfa852097ebc514f79ed239f3ba59032c564a0b067c53cf62c2a5dd5bcc"
     },
     {
       "kind": "item",
@@ -145245,9 +144850,11 @@
       },
       "referenceUrl": "https://coffeestain.com/game/sanctum-2/",
       "visualAnchor": "Three Guardians placing translucent tower blueprints around a luminous Core while the next wave glows in the distance.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-5a2e6201-6de9-40bf-b40d-28b196da0e2f",
+      "outputSha256": "f156cfca0b44b5f7b949f5bb5abf272b5c3e9cd0e55951c867fa244de695350f"
     },
     {
       "kind": "item",
@@ -145265,9 +144872,11 @@
       },
       "referenceUrl": "https://coffeestain.com/game/goat-simulator/",
       "visualAnchor": "Pilgor, Tall Goat and Tony Shark crossing the same sunny stunt line amid harmless flying props and no UI text.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-33f68325-2a8c-45e2-9f8b-5eed2231736c",
+      "outputSha256": "fb59074c4a8d71e93638d307cbc8a56fa188504ae61092d6934f19628920094d"
     },
     {
       "kind": "item",
@@ -145285,9 +144894,11 @@
       },
       "referenceUrl": "https://bethesda.net/game/quake",
       "visualAnchor": "One rusted Slipgate splitting into a brown rune castle route and a black-metal Strogg factory route, with no merged creature design.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-007aca46-d848-41e9-bb74-f4870ea03a1e",
+      "outputSha256": "e1386ef0aa9665821920d262c72ab1229783abc4f43c68045fb8689debd0c941"
     },
     {
       "kind": "item",
@@ -145305,9 +144916,11 @@
       },
       "referenceUrl": "https://rggstudio.sega.com/games/",
       "visualAnchor": "Three distinct heroes converging in a wet neon alley, bicycles and traffic cones becoming improvised props without copied UI.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-4004113c-6063-4f1c-b5c9-bd7559d784c1",
+      "outputSha256": "9d8ca2d0f1a64802292810503c773b807f38783ca7f33c45f0c7ec563149ba3f"
     },
     {
       "kind": "item",
@@ -145325,9 +144938,11 @@
       },
       "referenceUrl": "https://apnews.com/article/7600d1faea12be53609f3c2092e02eb7",
       "visualAnchor": "Colorful hybrid silhouettes placing neutral beat tokens into a four-slot sequencer with no readable UI text.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-8670949a-b662-40ac-abbb-2f71219c37a3",
+      "outputSha256": "5815c39f2c8467d931383cafd078f869283609099ae15585907c4886fcb07e7b"
     },
     {
       "kind": "item",
@@ -145345,9 +144960,11 @@
       },
       "referenceUrl": "https://nxeassets.xbox.com/shaxam/0201/21/3a/213a78dd-eeef-42f8-979a-c8a2158160da.PDF?v=1",
       "visualAnchor": "Tommy’s translucent spirit bow circling a distant resting body through red and blue motes, with no death or gore shown.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-9b473967-5607-4637-ade9-bf3128cf775f",
+      "outputSha256": "15c616cdf06358d72ff7ef574bc4ea8a0d7c14a1a5a1b34b75f8585c16f6a12b"
     },
     {
       "kind": "item",
@@ -145365,9 +144982,11 @@
       },
       "referenceUrl": "https://www.ubisoft.com/en-us/game/beyond-good-and-evil/20th-anniversary-edition",
       "visualAnchor": "Original green evidence photographs propagating across abstract blank city screens while Jade, Pey’j and Double H board the hovercraft; no readable article text.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-f57cfaf9-2cf3-4165-8afe-7a958d69e2d7",
+      "outputSha256": "d9afcc5d1d426cebe7287b450136d659126b3ecaa9c400dff6cf1be4592ad09e"
     },
     {
       "kind": "item",
@@ -145385,9 +145004,11 @@
       },
       "referenceUrl": "https://www.metalhellsinger.com/",
       "visualAnchor": "The Unknown and Paz surrounded by sixteen abstract ember beat marks while the arena’s instrument layers brighten, with no lyrics or text.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-aeb09674-542b-4190-b38b-7397fd30f770",
+      "outputSha256": "a97a4247e5c5b7c49723f43ee4dd0e01c8e9535344bf0ac1242ce9a365221c8e"
     },
     {
       "kind": "item",
@@ -145405,9 +145026,11 @@
       },
       "referenceUrl": "https://deadbydaylight.com/news/dbd-celebrates-10-years-in-the-fog/",
       "visualAnchor": "Three original Survivors performing repair, chase and rescue in separate lanes linked by the same gate light; no combat pose.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-a9fd55ed-3047-4b65-bcb4-e0b4aa26f7fc",
+      "outputSha256": "8d2dcfcbbe0f69f71fb550b0751a8a44e2d6ddd29ca61942837a7c986f92c75d"
     },
     {
       "kind": "item",
@@ -145425,9 +145048,11 @@
       },
       "referenceUrl": "https://news.ea.com/press-releases/press-releases-details/2010/EA-Welcomes-Players-to-Hell-with-the-Release-of-Dantes-Inferno/default.aspx",
       "visualAnchor": "White cross light opening one path beside a dark scythe path, with Virgil and Beatrice shown only as distant dignified guides.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-ed0bc1e1-fa36-4f45-a81e-3198855fa417",
+      "outputSha256": "3c0c82ac90dbfd9c4f043e98054612615ff3363fc42d9cc34d4d1af7898a1078"
     },
     {
       "kind": "item",
@@ -145445,9 +145070,11 @@
       },
       "referenceUrl": "https://store.steampowered.com/app/1413870/Shadow_Man_Remastered/",
       "visualAnchor": "Louisiana church silhouette under an eclipse mirrored against the purple Asylum, with the Mask of Shadows glowing at the crossing.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-87127e2c-9297-4078-8dc5-ff006ac31e39",
+      "outputSha256": "aea8c26b3b0df132e3928aed25fb0112a2d7ef3851c86953852df9a957d1d9e4"
     },
     {
       "kind": "item",
@@ -145465,9 +145092,11 @@
       },
       "referenceUrl": "https://store.steampowered.com/app/3043940/Croc_Legend_of_the_Gobbos/",
       "visualAnchor": "Croc opening six bright clean cages as orange Gobbos bounce toward a yellow Beany Gong, with no UI text.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-27779d16-8d4a-41e5-a391-d7664f595ebb",
+      "outputSha256": "1128325708abe194feacd4a89fe3f944e44ff6bcdea3277f72d9f228c9794461"
     },
     {
       "kind": "item",
@@ -145485,9 +145114,11 @@
       },
       "referenceUrl": "https://gextrilogy.com/",
       "visualAnchor": "Three CRT portals changing from horror to cartoon to science fiction around Gex’s exact green silhouette.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-3649ea00-efba-4e89-a1f4-3a4b47279e88",
+      "outputSha256": "6578e2baaace50281f37a96f5ee7799bf3a0580f9585aa8483bb2aa10af1bf8c"
     },
     {
       "kind": "item",
@@ -145505,9 +145136,11 @@
       },
       "referenceUrl": "https://www.jp.square-enix.com/nierautomata/",
       "visualAnchor": "Abstract monochrome data space with three Pod lights protecting fragmented android memories; no real-world credits or text.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-2b78f68d-a146-4eb5-944f-8aff032b1453",
+      "outputSha256": "9f51da7ffc6e36c2d6dd2c9acf664f3bb1e82a996aaa9cb98201889c9da679d9"
     },
     {
       "kind": "item",
@@ -145525,9 +145158,11 @@
       },
       "referenceUrl": "https://www.mobygames.com/game/106070/discipline-the-record-of-a-crusade/",
       "visualAnchor": "Neutral academy reading room with three fully clothed investigators, closed folders and warm desk lamps; no suggestive imagery.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-b45629b3-4d01-4a2c-ad77-1882bba5ad38",
+      "outputSha256": "d950947d6758eeea86293557456608f60107a7033b0358f631b9cd18bb0037cc"
     },
     {
       "kind": "item",
@@ -145545,9 +145180,11 @@
       },
       "referenceUrl": "https://www.mobygames.com/game/27648/bible-black-the-game/",
       "visualAnchor": "Three fully clothed investigators viewed from behind at a supervised archive desk, sealed case and warm lamps; no suggestive or harmful imagery.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-53e40464-97f8-4eee-a5eb-8568bdf137e2",
+      "outputSha256": "8986b3e5ced8b5cbc9d65da5262cb08c73cb376a9a3f0898e4638f5b6c9bc2d6"
     },
     {
       "kind": "item",
@@ -145565,9 +145202,11 @@
       },
       "referenceUrl": "https://www.hotlinemiami.com/",
       "visualAnchor": "Top-down neon floor duplicated into three clean route overlays, no text, bodies or gore.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-57e51e6b-14d5-43cc-8858-ffa15069e421",
+      "outputSha256": "1fd52d8618f93e106c481bd3c3c6dabb1b69290dd5c5dbfd6271fccf41fb31d1"
     },
     {
       "kind": "item",
@@ -145585,9 +145224,11 @@
       },
       "referenceUrl": "https://www.warhammer-community.com/en-gb/articles/wr3d2srg/who-is-lieutenant-titus-the-long-and-glorious-history-of-the-space-marine-2-hero/",
       "visualAnchor": "Three blue-armoured Ultramarines at correct superhuman scale between Ork scrap barricades and Graia’s cathedral machines.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-dc70213c-f619-4a3d-bd57-7f61e7e434d0",
+      "outputSha256": "bb68ea00e5b786aa957f40cedbccbaaf1a09bea3e68af64017aa983f2b056271"
     },
     {
       "kind": "item",
@@ -145605,9 +145246,11 @@
       },
       "referenceUrl": "https://www.backtothefuture.com/movies/backtothefuture1",
       "visualAnchor": "Clock tower lightning, taut overhead cable and DeLorean beneath, with characters only as tiny safe silhouettes.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-d817074b-76fb-4e7a-94cb-4765170f9971",
+      "outputSha256": "8fc0b167ae3e9a9dc72b87b24052ca55e337688aa8eb61e33547d9ac55ba7ce8"
     },
     {
       "kind": "item",
@@ -145625,9 +145268,11 @@
       },
       "referenceUrl": "https://help.skybound.com/support/solutions/folders/30000056389",
       "visualAnchor": "Three blank dialogue-choice panels reflected in an inked road sign, survivors kept as safe distant silhouettes.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-21fae4c2-33cd-4f11-92e8-b24a5480e122",
+      "outputSha256": "f5aa58e3573e1279eb5e10b611217d3dc58d84412ba5ca54253a9e3c1e0e0dcf"
     },
     {
       "kind": "item",
@@ -145645,9 +145290,11 @@
       },
       "referenceUrl": "https://www.playstation.com/en-us/editorial/horizon-zero-dawn-the-story-so-far/",
       "visualAnchor": "Meridian Spire above allied tribal defenders and an accurately componentised Deathbringer, all in original fan-made composition.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-e65289d9-ba6d-4f1a-a562-5b9e002ac038",
+      "outputSha256": "e9fbbb5de9f788a6371ff3ba39da284f507144b2b79f7f42d774ae20fbc60949"
     },
     {
       "kind": "item",
@@ -145665,9 +145312,11 @@
       },
       "referenceUrl": "https://www.gog.com/en/game/soldier_of_fortune_platinum_edition",
       "visualAnchor": "Back-room bookshop map with four abstract warhead markers extinguishing in sequence.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-d48adc9e-e662-4f76-9d7a-3b36d23248d3",
+      "outputSha256": "e7053db4f5d5db6ed7a7105af03ae278e918d621530cebf8b1bff2636e58d140"
     },
     {
       "kind": "item",
@@ -145685,9 +145334,11 @@
       },
       "referenceUrl": "https://www.sonypictures.com/tv/extremeghostbustersthecompleteseries",
       "visualAnchor": "Firehouse workshop with old and new proton silhouettes converging around a repaired containment relay.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-8b8e2ab1-dcd9-4ba1-a20b-b56206961563",
+      "outputSha256": "77f6d50f56d7d7baa7c2e972b586aa0151231da3dbbac1153c5e2284cae77678"
     },
     {
       "kind": "item",
@@ -145705,9 +145356,11 @@
       },
       "referenceUrl": "https://www.thealmightyguru.com/Wiki/images/6/63/Heart_of_Darkness_-_PS1_-_USA_-_Manual.pdf",
       "visualAnchor": "Huge servant silhouette shielding tiny Andy and Amigos from the Master’s fireballs.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-f6df61c2-24cd-4a2d-be1d-7fce63e5a122",
+      "outputSha256": "a3307703bd9f1b4c2176e14572bd1f44772a6db42d105d1958e6329e93aa0633"
     },
     {
       "kind": "item",
@@ -145725,9 +145378,11 @@
       },
       "referenceUrl": "https://game.capcom.com/cfn/sfv/column-130231?lang=en",
       "visualAnchor": "Three distinct Taiyo silhouettes entering from separate screen edges into one impact frame.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-64f16d19-1d07-4fea-9bfe-874b0a567e34",
+      "outputSha256": "4ff6e8c3ab3de67b29ca027c725229d3e8f05b6a5d788c702aeaf16c52f2ce1d"
     },
     {
       "kind": "item",
@@ -145745,9 +145400,11 @@
       },
       "referenceUrl": "https://www.playstation.com/en-gb/games/medievil/",
       "visualAnchor": "Jawless Sir Dan beneath luminous statues raising their cups in a vast golden hall.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-d91de77b-e008-4ebf-bca7-5cb5e5751489",
+      "outputSha256": "ee5e2c96be8440c79acf178597a04f5ba94360d13ed08a0cb575335b7f1f689b"
     },
     {
       "kind": "item",
@@ -145765,9 +145422,11 @@
       },
       "referenceUrl": "https://www.videogamemanual.com/ps1/Jersey%20Devil%20%28USA%29.pdf",
       "visualAnchor": "Five abstract letter-shaped token silhouettes slotting into a crooked laboratory gate; no copied UI font.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-8bdf8d09-16db-4ab1-8e7a-c4bff723b79b",
+      "outputSha256": "b8ce62513ce3c86a22aa03e1e6128366cc7deb21083f08c9944f3cb9076a4a9a"
     },
     {
       "kind": "item",
@@ -145785,9 +145444,11 @@
       },
       "referenceUrl": "https://world-of-nintendo.com/manuals/nintendo_64/goemon_great_adventure.shtml",
       "visualAnchor": "Two giant clockwork robots passing the control baton before a synchronized punch-and-kick impact.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-e9d2938c-c7e6-4663-8dfa-02b81ebe56ad",
+      "outputSha256": "4de7e1f84dfcd596fafd807d573351cf8ca03fab21daebc142c2e56d664b586b"
     },
     {
       "kind": "item",
@@ -145805,9 +145466,11 @@
       },
       "referenceUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/38460/manuals/Manual%20-%20English.pdf",
       "visualAnchor": "Palace split into sniper, four-gun and invention lanes converging on one surreal chamber.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-11eff010-dc9f-4800-a5dc-2690487d5bc1",
+      "outputSha256": "5378421747e83600199e4a494183fedebb25143e8ff3a7e22e9dc70d5949db54"
     },
     {
       "kind": "item",
@@ -145825,9 +145488,11 @@
       },
       "referenceUrl": "https://www.mobygames.com/game/8483/tail-concerto/",
       "visualAnchor": "Three distinct Pris sisters directing balloons away from the Iron Giant as Police Robo enters the core route.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-911be8dc-17e8-4750-9138-add5b80f54b4",
+      "outputSha256": "991df7b1465afea91125bd4f08a08a1736d8e1d0dc5d248358e97b2ca4b6c6a4"
     },
     {
       "kind": "item",
@@ -145845,9 +145510,11 @@
       },
       "referenceUrl": "https://steamcdn-a.akamaihd.net/steam/apps/565550/manuals/Redneck_Rampage.pdf",
       "visualAnchor": "Farm map progressing from pig pen through cloned town to a saucer holding bay.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-97bd7654-8a55-4900-910c-50893aaa69d0",
+      "outputSha256": "aa6b8273b98a511c53d95fc77eaeb8a706209900ce1b217c71fb847ce8a16a9a"
     },
     {
       "kind": "item",
@@ -145865,9 +145532,11 @@
       },
       "referenceUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Sony_Playstation/manual/Formated/Hexen-_Beyond_Heretic_-_1997_-_GT_Interactive_Software.pdf",
       "visualAnchor": "Three class-colored weapon silhouettes joining above the Seven Portals hub.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-a304471e-171d-4925-a570-7246b2cf1a07",
+      "outputSha256": "e1666a4ce63ab74931de50902b476b7a1511d81cabeaf08d43f2d0af7267e240"
     },
     {
       "kind": "item",
@@ -145885,9 +145554,11 @@
       },
       "referenceUrl": "https://www.gamesdatabase.org/Media/SYSTEM/Microsoft_DOS/manual/Formated/Duke_Nukem_3D.pdf",
       "visualAnchor": "Gray-red EDF formation creating a corridor through alien fire at a concrete dam.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-4a5c3d75-a734-4650-b16a-93bb80179351",
+      "outputSha256": "52d5cd636595e5b52cd8e0f08018a0888385039654333590c6c4dc7ff72c285f"
     },
     {
       "kind": "item",
@@ -145905,9 +145576,11 @@
       },
       "referenceUrl": "https://marathon.bungie.org/story/_files/Marathon_Manual.pdf",
       "visualAnchor": "Two green-black terminal columns branching toward defense and abduction routes, with Tycho’s red signal intruding.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-c47b83c4-238d-4f42-b058-947480b353df",
+      "outputSha256": "f1b53e2c522b5523aa2e9c9182610ebb570e67fd6cc9d0392000bd3a2733e066"
     },
     {
       "kind": "item",
@@ -145925,9 +145598,11 @@
       },
       "referenceUrl": "https://braceyourselfgames.com/crypt-of-the-necrodancer/",
       "visualAnchor": "Five crypt biomes change palette and hazard pattern in synchrony with one continuous medley.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-514b333c-abe8-4830-a649-2e052fcbf113",
+      "outputSha256": "8f9dee0b2bf6778553b28c2c656916679cbb46f5011d629762833ae1f580f48a"
     },
     {
       "kind": "item",
@@ -145945,9 +145620,11 @@
       },
       "referenceUrl": "https://store.steampowered.com/app/1034140/Subverse/",
       "visualAnchor": "Resistance beacons ignite across five nebulae while the Mary Celeste crosses the foreground.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-82348219-8cb1-48f7-a577-da8a875665e3",
+      "outputSha256": "28d606dedb7a7b76b36b25f739a624f0f3215218415e0b3387b1cfe03efa3321"
     },
     {
       "kind": "item",
@@ -145965,9 +145642,11 @@
       },
       "referenceUrl": "https://www.nomanssky.com/atlas-rises-update/",
       "visualAnchor": "Red Atlas glyphs repeat through portals while reality fragments into glass-like layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-34f9c3d2-0cb0-4dc5-ac38-fb2b6abb883b",
+      "outputSha256": "06dda62ddc2728f621625eb24135baff796a5f9c60250df69ec3811569ec5169"
     },
     {
       "kind": "item",
@@ -145985,9 +145664,11 @@
       },
       "referenceUrl": "https://www.krafton.com/en/games/natural-selection-2/",
       "visualAnchor": "Marine extractors and Kharaa harvesters contest the same glowing resource nodes.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-3f34f852-da33-4d45-a19c-628bac0a4891",
+      "outputSha256": "232b75b577c72d96a738461cf6bb80f83ea3649b396d112eba8aa1e6fd45e5b6"
     },
     {
       "kind": "item",
@@ -149749,9 +149430,11 @@
         "https://wiki.evageeks.org/Mass_Production_Evangelions"
       ],
       "visualAnchor": "Separate Mass Production Eva encounter layers followed by red horizon, Rei-Lilith, crosses and Tree-of-Life masks; no walking Lilith sprite.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-f9cd9154-9888-420b-a3a3-3f85635ba09f",
+      "outputSha256": "a833b2e900e3fabcb0b4e12c70cd1abc2de7f1ae5b414c450a8cc2bb05d7847f"
     },
     {
       "kind": "finale",
@@ -149767,9 +149450,11 @@
         "https://en.wikipedia.org/wiki/Spermageddon"
       ],
       "visualAnchor": "Tasteful stylized organic race lanes, non-explicit cartoon competitors, ovum objective and immune-cell hazards on separate layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-adf86aaa-2840-4b61-84cb-5816d284604f",
+      "outputSha256": "bbef8cfedc2791eeeedb7515d02caafb78bf1c04f9e6463de7b586b4ddc6ca9a"
     },
     {
       "kind": "finale",
@@ -149785,9 +149470,11 @@
         "https://fr.wikipedia.org/wiki/Le_Visiteur_du_futur_%28film%29"
       ],
       "visualAnchor": "Axomako facility, time device, opposing agents, evacuation gates and timeline effect layers; no living reactor.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-794dea3b-a2ad-4b43-bcd6-4eb7de49503e",
+      "outputSha256": "c99a713ce1a7b768414bedcb86bf754174f226f33c4866938b0451529c896deb"
     },
     {
       "kind": "finale",
@@ -149821,9 +149508,11 @@
         "https://en.wikipedia.org/wiki/Cool_Spot"
       ],
       "visualAnchor": "Original 16-bit-inspired miniature platform kit with cages, bubbles and bottle-scale scenery; omit brand logos and any giant hostile cap.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-a01821b4-b6e0-4982-b491-06b0aa3da5f8",
+      "outputSha256": "6754a9f1273b1e702320757c1a13b910a4a044d25072196dd134e1e8c5d279e6"
     },
     {
       "kind": "finale",
@@ -149839,9 +149528,11 @@
         "https://fifth-element.fandom.com/wiki/Great_Evil"
       ],
       "visualAnchor": "Black molten Great Evil sphere in the sky, Mondoshawan temple, four elemental stones and final beam as independent layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-f80555df-ffbc-472c-a63c-d7ffe20c058b",
+      "outputSha256": "30aa0d26be565f469facc18678ea3bc166d7a4f43ad84afba5c42bf598ac77bb"
     },
     {
       "kind": "finale",
@@ -149857,9 +149548,11 @@
         "https://fr.wikipedia.org/wiki/La_Cit%C3%A9_de_la_peur"
       ],
       "visualAnchor": "Cannes red carpet, festival backstage, masked killer and the main trio as separate layers; Odile is always visually allied.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-c8dfb78d-9c7a-40f2-928b-62490c887028",
+      "outputSha256": "1ccaf4d05d98e6685ee95c5e2575e5063628e1553e58c26fa11dbf4a3fffbe34"
     },
     {
       "kind": "finale",
@@ -149875,9 +149568,11 @@
         "https://www.pingu.jp/"
       ],
       "visualAnchor": "Clay-like pixel-art ice field, igloo, Pingu family, fish, snow and crack tile states; no living avalanche.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-8826eafe-59f5-43e1-8884-3734420f1f71",
+      "outputSha256": "4e2dd1b5a5e3053c83790bb991524a8de627c240d50e7df5e4e7b1fabd352267"
     },
     {
       "kind": "finale",
@@ -149893,9 +149588,11 @@
         "https://www.hulu.com/series/solar-opposites-f089664b-1a87-433b-86a5-24e7da5a246a"
       ],
       "visualAnchor": "Shlorpian suburban house, source-locked Pupa states, alien gadgets and neighborhood terraformation masks; no evil Pupa form.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-424e7b8c-13c1-4e42-9104-9f6f85496a1f",
+      "outputSha256": "a42844ae267534da3f6001465030395013e9ea3b1535202276c7356a18c57c47"
     },
     {
       "kind": "finale",
@@ -149911,9 +149608,11 @@
         "https://trevorhenderson.fandom.com/wiki/Siren_Head"
       ],
       "visualAnchor": "Extremely tall emaciated rust-brown humanoid with twin sirens at distant scales, forest, pylons and audio telegraph layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-c1e646af-f6d2-4a42-b994-74ea3999598a",
+      "outputSha256": "22e626abd90f0523b196d3f3d3722c53f5c73c204617722d0ad586ea713f3543"
     },
     {
       "kind": "finale",
@@ -149929,9 +149628,11 @@
         "https://ec.crypton.co.jp/pages/prod/virtualsinger/cv01_us"
       ],
       "visualAnchor": "Virtual Shibuya stage with source-locked Hatsune Miku silhouette, holographic musicians, cyan-pink lighting and crowd layers; no hostile core.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-f27259dc-6f73-475a-89ac-26f0067cbaec",
+      "outputSha256": "3c6ead1e3a1c06826f2953192cbe0807d8f19b7ac087d4bb82ce3c92fac39d07"
     },
     {
       "kind": "finale",
@@ -149947,9 +149648,11 @@
         "https://www.rammstein.de/en/"
       ],
       "visualAnchor": "All six musicians on an original industrial stage with source-locked tour clothing, instruments and separately animated pyrotechnics.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-3bccbc85-fe29-4bc8-bf75-28081915199e",
+      "outputSha256": "ffb8631d32c9807aca769b441afc9c2dd457e6f9b235330e48a35449f475f374"
     },
     {
       "kind": "finale",
@@ -149965,9 +149668,11 @@
         "https://systemofadown.com/"
       ],
       "visualAnchor": "Serj, Daron, Shavo and John on a compact stage, source-locked to one era, with separate instruments, crowd and rhythmic effects.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-fd4ed774-3813-43b7-8ec9-21883ca2ddd9",
+      "outputSha256": "f7886119fb3998357836227a148ef53bbad089fbcdfbdbb25176db7364270600"
     },
     {
       "kind": "finale",
@@ -149983,9 +149688,11 @@
         "https://robzombie.com/"
       ],
       "visualAnchor": "Rob Zombie and band on an original horror-industrial stage with a separate hot-rod show prop, dancers, flames and lighting.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-1dc45b7d-fbe3-46fb-811e-ca5e469b79f3",
+      "outputSha256": "335fa1ceb8628fcbc7af316a2e35192da1de3eff4bc4762ea31ec60bf0245eff"
     },
     {
       "kind": "finale",
@@ -150001,9 +149708,11 @@
         "https://www.daftpunk.com/"
       ],
       "visualAnchor": "The helmeted duo at an original Alive-inspired pyramid console with amber-cyan beams and audience layers; the pyramid is never hostile.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-deff8e24-9ee9-4333-bc9b-b72cbe749cbf",
+      "outputSha256": "397bb2caa932deab24cc5bf41297a631222e41868dfe40cded4fa03913c0343b"
     },
     {
       "kind": "finale",
@@ -150019,9 +149728,11 @@
         "https://www.olivertreemusic.com/"
       ],
       "visualAnchor": "Source-locked bowl-cut and oversized outfit, scooter, ramps and stage as separate assets for a stunt-performance finale.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-4aed1c54-5831-4262-b4b7-72e3d8d55a22",
+      "outputSha256": "2458dc20ec79a9cb49cb94597f1239445e769500a96d06d6e3e685254613478d"
     },
     {
       "kind": "finale",
@@ -150037,9 +149748,11 @@
         "https://www.linkinpark.com/"
       ],
       "visualAnchor": "One explicitly source-locked lineup and era, with vocals, guitars, drums, sampler, screens and memorial encore layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-243c720d-0025-4369-94bd-f79a69e14d18",
+      "outputSha256": "35635de0c7153f2091822f3c2e9948d3b2503f8b9e65864f0de6302f6e87224a"
     },
     {
       "kind": "finale",
@@ -150055,9 +149768,11 @@
         "https://www.dieantwoord.com/"
       ],
       "visualAnchor": "Source-locked duo on an original Zef stage with costumes, dancers and projections as separate layers; no invented creature.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-8b24bd68-35b9-4abe-a2a5-afb861d161f8",
+      "outputSha256": "71527b56efb6463b62ead0fe6bc03a7b2fbab5478f90cd7435aa26ba4e37a759"
     },
     {
       "kind": "finale",
@@ -150073,9 +149788,11 @@
         "https://skrillex.com/"
       ],
       "visualAnchor": "Source-locked artist silhouette at an original electronic stage with booth, speaker arrays, strobes and crowd states.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-61a49e3c-7d00-4b4c-9021-8427854927be",
+      "outputSha256": "4d6b26d64af29e95d408eb86851e313a1447f873da301c14e5078f46d9ec7b26"
     },
     {
       "kind": "finale",
@@ -150091,9 +149808,11 @@
         "https://www.bellapoarch.com/"
       ],
       "visualAnchor": "Original dark-pop video stage with source-locked performer appearance, dancers and modular props; no hostile doll entity.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-0d847701-de1f-4ee5-9ee9-195ccdce5e5b",
+      "outputSha256": "c696a2b16a15a9cb42d4b787bd7c804bf07e121be8cb3f2f59995fcb44e4ffe1"
     },
     {
       "kind": "finale",
@@ -150109,9 +149828,11 @@
         "https://www.gunsnroses.com/"
       ],
       "visualAnchor": "Explicitly selected band era on an original stadium stage with instruments, solo positions and crowd layers; no serpent monster.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-9e415532-3837-4610-addf-39b6ece03752",
+      "outputSha256": "f8e2c95d73c1ef5d28b03772ddb4c299b8ee4494aed8c954b74d9d5afe3915ad"
     },
     {
       "kind": "finale",
@@ -150127,9 +149848,11 @@
         "https://bandmaid.tokyo/"
       ],
       "visualAnchor": "Source-locked lineup in maid-rock stage clothing with separate guitars, bass, drums, vocals and audience states.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-bcb6f0e9-f04e-494c-8f0d-f183e96f70bf",
+      "outputSha256": "0c2cdad04e555a00bfac22ef1334ff9a5b0710f01a4e29ba7652b332f13f09e9"
     },
     {
       "kind": "finale",
@@ -150145,9 +149868,11 @@
         "https://www.bmthofficial.com/"
       ],
       "visualAnchor": "Source-locked era and lineup on an original festival stage with vocals, guitars, synths and crowd-control states.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-96bf8102-82ea-440f-8ab8-9d150c738e7a",
+      "outputSha256": "68d289af8f58e6a937ca58c85d9e6b8fb8fbf3ca5023d9f4f221e1583353d8f0"
     },
     {
       "kind": "finale",
@@ -150163,9 +149888,11 @@
         "https://www.blackpinkofficial.com/"
       ],
       "visualAnchor": "All four members in one source-locked performance wardrobe, with catwalk, formation markers, dancers and pink-black lighting.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-9307de86-f2bf-4263-8510-700659aafb46",
+      "outputSha256": "7f7db5cfdd629686fc8cb085147bbdd54ea29157c243624779ce659646b51832"
     },
     {
       "kind": "finale",
@@ -150181,9 +149908,11 @@
         "https://www.lilnasx.com/"
       ],
       "visualAnchor": "Source-locked performer wardrobe across original western-pop stage transitions with mount, vehicle and dance layers; no enemy rider.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-4b4b7246-b703-497f-9607-0b25b124f9c1",
+      "outputSha256": "713590382a9ca663f560dd93055dee0ef7e6aba042ba1178e8e7d9e6289ea1dc"
     },
     {
       "kind": "finale",
@@ -150199,9 +149928,11 @@
         "https://atarashiigakko.com/"
       ],
       "visualAnchor": "All four members in source-locked uniforms with original synchronized choreography, formation markers and gym-stage layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-79f93c71-80f7-4f15-93c5-b1bbc1e99892",
+      "outputSha256": "f5d5635673e068c32dba904c6dd93d60b1ea80e8f25b1d96faf17c530c74a461"
     },
     {
       "kind": "finale",
@@ -150217,9 +149948,11 @@
         "https://babymetal.com/"
       ],
       "visualAnchor": "Source-locked formation and Kami Band on a metal stage with choreography and fire layers; fox imagery is a non-hostile light motif.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-a39d1d75-78c2-4986-b3f0-b80021459703",
+      "outputSha256": "fc9de98dc51ac6ba73f708f3968db35b779d2ab24215b79e54eef2913c3d5a17"
     },
     {
       "kind": "finale",
@@ -150235,9 +149968,11 @@
         "https://en.wikipedia.org/wiki/Ladybaby"
       ],
       "visualAnchor": "One explicitly locked lineup and period with referenced costumes, original choreography, instruments and kawaii-metal stage layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-6b9ac3e8-c215-455c-b9d4-0e4380aef478",
+      "outputSha256": "efda0af920ab43dfec1edb9f81ce67d364d86376c0921e295201e4e43af30da6"
     },
     {
       "kind": "finale",
@@ -150253,9 +149988,11 @@
         "https://bigfloetoli.com/"
       ],
       "visualAnchor": "The duo in source-locked tour clothing on an original urban stage with alternating verses, screens and crowd response states.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-81399166-b291-4732-a000-41d2d398c587",
+      "outputSha256": "f598be663e5ca7a899a54c1934e3e2bbf3666bb99518d843c7a2a02afeda7e28"
     },
     {
       "kind": "finale",
@@ -150271,9 +150008,11 @@
         "https://littlebig.band/"
       ],
       "visualAnchor": "One source-locked lineup on an original satirical pop set with documented costume cues and modular visual-gag props.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-2a14f2e3-3598-4bb2-a963-4384b76a92ba",
+      "outputSha256": "148695e8c37e22b9f15162303a7979b0323c1f96f75d149413af1f9252fbfda2"
     },
     {
       "kind": "finale",
@@ -150289,9 +150028,11 @@
         "https://www.joandco.fr/artiste/hoshi/"
       ],
       "visualAnchor": "Source-locked performer at piano and microphone with an original intimate-to-full-stage lighting progression.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-4a0fcce8-7231-4de7-910d-524ca640a979",
+      "outputSha256": "9f2845728a5849b5df54c65cc80ed4d688b4ab9d741b6dd0e89496b97adf93c9"
     },
     {
       "kind": "finale",
@@ -150307,9 +150048,11 @@
         "https://www.ladygaga.com/"
       ],
       "visualAnchor": "One explicitly selected tour era and wardrobe, with original choreography, piano, dancers, catwalk and encore states.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-79d1fba3-ff0c-49e3-8a24-9f435fa6f400",
+      "outputSha256": "d8633e4baffda814793ebdf82e67dd6481a2510a424e45a41deea013971c3c2f"
     },
     {
       "kind": "finale",
@@ -150325,9 +150068,11 @@
         "https://www.within-temptation.com/"
       ],
       "visualAnchor": "Source-locked band era on an original symphonic-gothic stage with vocals, guitars, orchestral layers and fabric effects.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-c15cf927-0220-49e8-bd2c-a6fd8f877b1b",
+      "outputSha256": "f8a4c1006b2e1245686c9f55292de8e99e16199e583bbb79d7ff6c01aeb91027"
     },
     {
       "kind": "finale",
@@ -150343,9 +150088,11 @@
         "https://www.pnation.com/artists"
       ],
       "visualAnchor": "Source-locked PSY performance wardrobe with dancers, an original stage, audience response and confetti states; no horse creature.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-47ed842f-5edc-439c-b372-471e9bd30795",
+      "outputSha256": "af2d66ed3ceb1bff6f215d06668edac8ce97089f1329d94aa971207ff588ac8a"
     },
     {
       "kind": "finale",
@@ -150361,9 +150108,11 @@
         "https://www.blackeyedpeas.com/"
       ],
       "visualAnchor": "One explicitly selected lineup and era on an original festival stage with microphones, DJ or instruments and crowd layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-3cbef89e-b387-4948-8d81-c0c4ac17448c",
+      "outputSha256": "6c97f64a1fe74b90bd38a72f72b4e48e9d1ce3d33d52c08fa267355cf9a2badd"
     },
     {
       "kind": "finale",
@@ -150379,9 +150128,11 @@
         "https://www.shakaponk.com/"
       ],
       "visualAnchor": "Source-locked band on an original rock-electronic stage with Goz as a non-hostile projected avatar and separate screen layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-b440db56-b273-41c2-a74c-a3dce827bedd",
+      "outputSha256": "c9b3da6aa843e0bc38a0600bcb3a0927b1f4adc479136da45806a0085bb3d666"
     },
     {
       "kind": "finale",
@@ -150397,9 +150148,11 @@
         "https://www.shakira.com/"
       ],
       "visualAnchor": "Source-locked tour wardrobe on an original stage with choreography, percussion, dancers and audience layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-559dba9d-a524-4c44-b86a-816eddf21332",
+      "outputSha256": "792b7ee90be7a4a494593f108bac1ee61c929beb1d278d17c0c6f156bb4f793b"
     },
     {
       "kind": "finale",
@@ -150415,9 +150168,11 @@
         "https://deadmau5.com/"
       ],
       "visualAnchor": "Source-locked mau5 helmet and an original cube-DJ stage with abstract mappings, beams and crowd states; no hostile signal.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-855be119-0980-48c0-95dc-8fd5559acd07",
+      "outputSha256": "8a65b9b2cc8f9208448b122c05bfd086798c30d09f0c877ea1961fc976d0afcd"
     },
     {
       "kind": "finale",
@@ -150433,9 +150188,11 @@
         "https://kornofficial.com/"
       ],
       "visualAnchor": "One source-locked lineup and era with instruments, microphone stand, original nu-metal stage and audience layers.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-952c3511-59a7-4936-b60c-e7edbc5211cb",
+      "outputSha256": "8b9e4aa9c1400a71f98d27838f1118134edf75917a3566d975f6e4a9a82b49af"
     },
     {
       "kind": "finale",
@@ -150451,9 +150208,11 @@
         "https://www.auralvampire.com/"
       ],
       "visualAnchor": "Official-site source-locked members and costumes on an original darkwave club stage with synths and lighting; Naocchatte remains non-hostile.",
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-74093ea9-33b3-461a-a72d-97b30028b647",
+      "outputSha256": "b16a982699713f1145840e20436246bbc11b08206df2d3cb8773a01a9a39b845"
     },
     {
       "kind": "stage",
@@ -153231,9 +152990,11 @@
         "/backgrounds/lore-stages/slender-man/melee-backdrop.webp",
         "/backgrounds/lore-stages/slender-man/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-5422fefa-dba2-4ecb-bf78-581ffb4a4e82",
+      "outputSha256": "bdd585b50eca25fdbe70d3f0151799343735c04883b4fc1328c3b0bb9fc46bab"
     },
     {
       "kind": "stage",
@@ -153255,9 +153016,11 @@
       "generationBlocked": false,
       "profileKey": "Slender Man",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-e3dc1ba2-2788-464a-9b6c-1229bdfbabd1",
+      "outputSha256": "9e5a1b54e797cd28bbdd08a385c1af45c589abb2f3189bf7fcf3e4d7a974bfce"
     },
     {
       "kind": "stage",
@@ -153281,9 +153044,11 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/slender-man/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-6e913a50-5dd6-4ba2-9458-05831cb06ece",
+      "outputSha256": "eb26ce6ee107e230b35106286de535b1232a01239ec3c5164609be2d270ffc35"
     },
     {
       "kind": "stage",
@@ -153305,9 +153070,11 @@
       "generationBlocked": false,
       "profileKey": "Unreal",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-e3d3077e-a91f-4a5f-9a9e-f95d4150dc62",
+      "outputSha256": "e60eebdededcbd872d603269c0422130b89816b607c79813cf48afb66f06f825"
     },
     {
       "kind": "stage",
@@ -153332,9 +153099,11 @@
         "/backgrounds/lore-stages/unreal/melee-backdrop.webp",
         "/backgrounds/lore-stages/unreal/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-2b84e072-c9a5-4492-89d7-a39c62724422",
+      "outputSha256": "5f6d42a158e0a8f391c369d0e14aefb7fd44d02c63c0182654455d58e62a756c"
     },
     {
       "kind": "stage",
@@ -153356,9 +153125,11 @@
       "generationBlocked": false,
       "profileKey": "Unreal",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-4e72670c-2a8f-490d-af72-2dd7e188731e",
+      "outputSha256": "d18eb06e197742248bbe797ae73d9e97710cff44c8287a4c08f302483c7dd7f1"
     },
     {
       "kind": "stage",
@@ -153382,9 +153153,11 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/unreal/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-e06f4098-babf-4c52-aef0-59594ee65272",
+      "outputSha256": "f40c86d9bdb870efa38038b45472318a1e703257b8727405f62525474fa1b2db"
     },
     {
       "kind": "stage",
@@ -153406,9 +153179,11 @@
       "generationBlocked": false,
       "profileKey": "Breaking Bad",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-d01585dd-b0a3-4722-afc6-cfc95cf89fa8",
+      "outputSha256": "f27f619b94773dfc5d5acd5721165df6605358b4853e7cd7a6da89d968b020a6"
     },
     {
       "kind": "stage",
@@ -153433,9 +153208,11 @@
         "/backgrounds/lore-stages/breaking-bad/melee-backdrop.webp",
         "/backgrounds/lore-stages/breaking-bad/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-1105d65a-877e-4ea8-bad0-48ba739b4980",
+      "outputSha256": "b3eb50c051ef36a425537c571adae10b4d39bb0ce56c100d32871a46dddaff64"
     },
     {
       "kind": "stage",
@@ -153457,9 +153234,11 @@
       "generationBlocked": false,
       "profileKey": "Breaking Bad",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-2104e2c7-9e74-4591-bd4b-38ac1537e63d",
+      "outputSha256": "fd0871b0d0850f1327a9acc509eb2cf68ce6e1af2ac12c2e70b7de4688da3372"
     },
     {
       "kind": "stage",
@@ -153483,9 +153262,11 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/breaking-bad/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-f8fc4ec4-e549-4f38-8806-0e189e072db1",
+      "outputSha256": "dab48602577b7872a85ef06314cf52234b8ff529171c66329cc265e526eecb56"
     },
     {
       "kind": "stage",
@@ -153507,9 +153288,11 @@
       "generationBlocked": false,
       "profileKey": "Stargate Atlantis",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-6696ed53-0f27-47b6-9c7b-cd8b1c01b331",
+      "outputSha256": "f1ab2714332956973217912b56b805fa2d20cc96e75dd77b70374aca3dd5a156"
     },
     {
       "kind": "stage",
@@ -153534,9 +153317,11 @@
         "/backgrounds/lore-stages/stargate-atlantis/melee-backdrop.webp",
         "/backgrounds/lore-stages/stargate-atlantis/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-151be6b2-e98c-43ad-97af-e0ffe3203f05",
+      "outputSha256": "c8c42f78efd1268afbbd3124f2919cb0404ab0ebfa18fd51642aa2e19c4d3bb6"
     },
     {
       "kind": "stage",
@@ -153558,9 +153343,11 @@
       "generationBlocked": false,
       "profileKey": "Stargate Atlantis",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-d1244638-8fd7-4330-ad9b-4b73c9ebc160",
+      "outputSha256": "c9bb73b946db8be7a61534784ff23b22b80e23c8e4744453576579592606abc8"
     },
     {
       "kind": "stage",
@@ -153584,9 +153371,11 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/stargate-atlantis/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-75d14e80-f0e3-4e68-ac4c-12c4c29b5535",
+      "outputSha256": "40e5a1c8ebd29dced3b2ac8ae7c21b60cdc00e1877cb134f28dae64239d6676d"
     },
     {
       "kind": "stage",
@@ -153608,9 +153397,11 @@
       "generationBlocked": false,
       "profileKey": "Stargate Universe",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-57ebf8c9-3707-4f2e-8e9e-3b764aafb605",
+      "outputSha256": "b019546239cdc370243174e3866b6d2caa1ea43b8df368534f2cc97b0d01828d"
     },
     {
       "kind": "stage",
@@ -153635,9 +153426,11 @@
         "/backgrounds/lore-stages/stargate-universe/melee-backdrop.webp",
         "/backgrounds/lore-stages/stargate-universe/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-df03887d-94a6-4ef3-bc12-39edbc09aace",
+      "outputSha256": "13da0bf46adfda9b3a522cd780cb8d507c29c1926bef38d2c446cffa2f064695"
     },
     {
       "kind": "stage",
@@ -153659,9 +153452,11 @@
       "generationBlocked": false,
       "profileKey": "Stargate Universe",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-69ca4d35-c687-4e3c-8338-f0a3e375bcbf",
+      "outputSha256": "7d8a1d005c09cdbc27bb180e89ed64793bb2156eec9209b4733fcd877aa54271"
     },
     {
       "kind": "stage",
@@ -153685,9 +153480,11 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/stargate-universe/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-e2c78398-c90e-4177-829a-d77bee13d35b",
+      "outputSha256": "46d055b23eae2aeccb3ee8febf170695da09773c2b9584d474408d8da165f493"
     },
     {
       "kind": "stage",
@@ -153709,9 +153506,11 @@
       "generationBlocked": false,
       "profileKey": "Charmed",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-56e39ff0-cc83-48d1-8323-94cc2124f505",
+      "outputSha256": "4c99cc529e2539614a307cfcd7d872b5f3d14a4fa57ab10eb71b4d471e0603e4"
     },
     {
       "kind": "stage",
@@ -153736,9 +153535,11 @@
         "/backgrounds/lore-stages/charmed/melee-backdrop.webp",
         "/backgrounds/lore-stages/charmed/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-00d19dab-d09c-4ffc-9a41-93fdd0f97072",
+      "outputSha256": "75d7b2b4316022bfc6055173b5dce99bbb079c2ab579d7c79fb39a6a75b1e355"
     },
     {
       "kind": "stage",
@@ -153760,9 +153561,11 @@
       "generationBlocked": false,
       "profileKey": "Charmed",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-a176977a-af37-47e6-bdfa-bf5f7691e1f2",
+      "outputSha256": "06f10b8d303c24eded66fd9701eebfde6a97459acf6a6f96f23f3ee5391fdcd2"
     },
     {
       "kind": "stage",
@@ -153786,9 +153589,11 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/charmed/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-944e4954-78db-4d2d-a7b0-4e276864aea7",
+      "outputSha256": "4a86af3f19eaffd16d2df2e38eea28475aab4ba3b8c299c5644708ac5080826e"
     },
     {
       "kind": "stage",
@@ -153810,9 +153615,11 @@
       "generationBlocked": false,
       "profileKey": "Buffy the Vampire Slayer",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-bc30de96-249e-4808-9ef4-5dcc33be30f7",
+      "outputSha256": "3767923828a6d85fdb8451a07c608ae59b7b175ac489ad98fc0dc12f216c7bfb"
     },
     {
       "kind": "stage",
@@ -153837,9 +153644,11 @@
         "/backgrounds/lore-stages/buffy-the-vampire-slayer/melee-backdrop.webp",
         "/backgrounds/lore-stages/buffy-the-vampire-slayer/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-827b4c0d-68ab-49df-b731-df2898044f64",
+      "outputSha256": "b3eccda32a43802b0b41a76544da0de213e22f47636d40fc038051db9fbc1d3c"
     },
     {
       "kind": "stage",
@@ -153861,9 +153670,11 @@
       "generationBlocked": false,
       "profileKey": "Buffy the Vampire Slayer",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-49b0a3f4-04e0-4446-9571-27f2991bee8a",
+      "outputSha256": "d40e243b8d15b4eaf4e7a30dd88aa43bff3d797f6eb3d8d5a472f7a56ab0046d"
     },
     {
       "kind": "stage",
@@ -153887,9 +153698,11 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/buffy-the-vampire-slayer/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-86f5f02f-ff54-4dfa-8953-1a501d4a722c",
+      "outputSha256": "bb8e1bae98ff54b1ef14258a24454e1ffc3ead58246c902d70fdac329f4913ef"
     },
     {
       "kind": "stage",
@@ -153911,9 +153724,11 @@
       "generationBlocked": false,
       "profileKey": "Attack on Titan",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-8ed55e1e-fdfa-41f6-8b6e-0c85ff8e8f7c",
+      "outputSha256": "dfc75f21fdd8e00dff35c5884bb14abc51cefa87047a67952312873dd37ec89b"
     },
     {
       "kind": "stage",
@@ -153938,9 +153753,11 @@
         "/backgrounds/lore-stages/attack-on-titan/melee-backdrop.webp",
         "/backgrounds/lore-stages/attack-on-titan/melee-platforms.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-a60ca202-0841-47fe-a72c-cf8692e83db8",
+      "outputSha256": "6e20daac0dda1b93cbd0150d76d689ac88b6db739be679582c7e888f08002728"
     },
     {
       "kind": "stage",
@@ -153962,9 +153779,11 @@
       "generationBlocked": false,
       "profileKey": "Attack on Titan",
       "companionOutputs": [],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-b82961d8-81d2-41e7-b8f3-4ffe9ff93c0c",
+      "outputSha256": "944772d7796b1840ae32adf7d4434d4f7ba8243d65e03df98dd6e1d6a3e6c49c"
     },
     {
       "kind": "stage",
@@ -153988,9 +153807,11 @@
       "companionOutputs": [
         "/backgrounds/lore-stages/attack-on-titan/tactics-tiles.webp"
       ],
-      "available": false,
-      "source": null,
-      "provenanceStatus": "missing"
+      "available": true,
+      "source": "openai",
+      "provenanceStatus": "verified-openai",
+      "generationId": "exec-43598574-53c0-441b-8221-63eb5350b6a5",
+      "outputSha256": "55c23fe3cb097b38c1618bf76ddef8034069864f6ec6589d04277f90e56858a8"
     },
     {
       "kind": "stage",

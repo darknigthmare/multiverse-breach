@@ -1085,6 +1085,13 @@ const CANON_ENEMY_EXPANSION = {
   }
 };
 
+const normalizeThreatName = value => String(value || '')
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, ' ')
+  .trim();
+
 const mergeEnemyExpansion = (target, additions = {}) => {
   Object.entries(additions).forEach(([universe, data]) => {
     if (CANON_ROSTER_RUNTIME_UNIVERSES.has(universe)) return;
@@ -1099,17 +1106,27 @@ const mergeEnemyExpansion = (target, additions = {}) => {
       target[universe] = { monsters: [], bosses: [], worldBoss: data.worldBoss || null };
     }
 
-    const pendingByKind = Object.fromEntries(['monsters', 'bosses'].map(kind => {
-      const incoming = Array.isArray(data?.[kind]) ? data[kind] : [];
-      const current = Array.isArray(target[universe][kind]) ? target[universe][kind] : [];
-      const knownNames = new Set(current.map(item => item.name));
-      const pending = incoming.filter(item => {
-        if (!item?.name || knownNames.has(item.name)) return false;
-        knownNames.add(item.name);
-        return true;
-      });
-      return [kind, pending];
-    }));
+    const current = target[universe];
+    const knownNames = new Set([
+      ...(current.monsters || []),
+      ...(current.bosses || []),
+      ...(current.trials || []),
+      current.worldBoss
+    ].filter(Boolean).map(item => normalizeThreatName(item.name)));
+    const uniqueIncoming = incoming => incoming.filter(item => {
+      const normalizedName = normalizeThreatName(item?.name);
+      if (!normalizedName || knownNames.has(normalizedName)) return false;
+      knownNames.add(normalizedName);
+      return true;
+    });
+    // Bosses take precedence over regular enemies inside an expansion. Existing
+    // runtime roles (including trials and world bosses) always keep ownership.
+    const pendingBosses = uniqueIncoming(Array.isArray(data?.bosses) ? data.bosses : []);
+    const pendingMonsters = uniqueIncoming(Array.isArray(data?.monsters) ? data.monsters : []);
+    const pendingByKind = {
+      monsters: pendingMonsters,
+      bosses: pendingBosses
+    };
     const shouldSetWorldBoss = (
       !target[universe].worldBoss
       && !target[universe].finalePolicy

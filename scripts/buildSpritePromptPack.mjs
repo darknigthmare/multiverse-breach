@@ -2,6 +2,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
+import {
+  applySpriteCatalogContracts,
+  LEGACY_SPRITE_ID_ALIASES
+} from './spriteCatalogContracts.mjs';
 
 const root = process.cwd();
 const tmpDir = process.env.MULTIVERSE_SPRITE_TMP_DIR || path.join(root, '.sprite-prompt-tmp');
@@ -121,7 +125,10 @@ const verifyProvenanceRecord = async (item, record) => {
   const catalogPromptSha256 = sha256(Buffer.from(item.prompt, 'utf8'));
   if ((record.catalogPromptSha256 || record.promptSha256) !== catalogPromptSha256) return false;
   if (record.generation?.provider !== 'OpenAI' || record.generation?.interface !== 'built-in image_gen') return false;
-  if (!String(record.generation?.generationId || '').startsWith('exec-')) return false;
+  const generationId = String(record.generation?.generationId || '');
+  const isNativeImageGenerationId = /^exec-[a-z0-9-]+$/iu.test(generationId)
+    || /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(generationId);
+  if (!isNativeImageGenerationId) return false;
   try {
     const output = await fs.readFile(path.join(root, 'public', item.output.replace(/^\/+/, '')));
     return sha256(output) === record.image?.sha256;
@@ -374,7 +381,9 @@ const main = async () => {
     }))
   ));
 
-  const all = [...heroEntries, ...bossEntries, ...itemEntries, ...finaleEntries, ...stageEntries];
+  const all = applySpriteCatalogContracts([
+    ...heroEntries, ...bossEntries, ...itemEntries, ...finaleEntries, ...stageEntries
+  ], { strict: true });
   const provenanceLedger = await loadProvenanceLedger();
   const provenanceByAsset = new Map(provenanceLedger.map(record => [`${record.kind}:${record.id}`, record]));
   await fs.mkdir(outDir, { recursive: true });
@@ -437,6 +446,7 @@ const main = async () => {
 
   await fs.writeFile(outManifest, JSON.stringify({
     generatedAt: new Date().toISOString(),
+    identityAliases: LEGACY_SPRITE_ID_ALIASES,
     sheet: { width: 1024, height: 1024, frameWidth: 256, frameHeight: 256, columns: 4, rows: ['idle', 'run', 'attack', 'hit'] },
     counts: {
       heroes: heroEntries.length,

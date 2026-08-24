@@ -61,7 +61,10 @@ const main = async () => {
     if (record.output !== prompt.output) issues.push(`${key}: output path differs from catalog`);
     if (record.generation?.provider !== 'OpenAI') issues.push(`${key}: provider is not OpenAI`);
     if (record.generation?.interface !== 'built-in image_gen') issues.push(`${key}: interface is not built-in image_gen`);
-    if (!String(record.generation?.generationId || '').startsWith('exec-')) issues.push(`${key}: invalid generation id`);
+    const generationId = String(record.generation?.generationId || '');
+    const isNativeImageGenerationId = /^exec-[a-z0-9-]+$/iu.test(generationId)
+      || /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/iu.test(generationId);
+    if (!isNativeImageGenerationId) issues.push(`${key}: invalid generation id`);
     if (record.generationPromptStatus === 'recorded-verbatim') {
       generationPromptsRecorded += 1;
       const actualHash = sha256(Buffer.from(record.generationPrompt || '', 'utf8'));

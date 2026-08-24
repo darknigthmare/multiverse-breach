@@ -99,6 +99,41 @@ const normalizeLegacyTrialName = value => String(value || '')
   .replace(/[^a-z0-9]+/g, ' ')
   .trim();
 
+const dedupeThreatsByName = threats => {
+  const seen = new Set();
+  return [...(threats || [])].reverse().filter(threat => {
+    const key = normalizeLegacyTrialName(threatName(threat));
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).reverse();
+};
+
+// A combatant has one authoritative role in a universe. World bosses outrank
+// local bosses, local bosses outrank regular enemies, and objective encounters
+// outrank every combat role. This keeps legacy names stable while preventing a
+// single subject from owning several sprite-catalog identities.
+const enforceThreatRolePrecedence = universe => {
+  const encounterNames = new Set((universe.encounters || [])
+    .map(encounter => normalizeLegacyTrialName(encounter.name))
+    .filter(Boolean));
+  const worldBossName = normalizeLegacyTrialName(threatName(universe.worldBoss));
+  const bosses = dedupeThreatsByName(universe.bosses).filter(boss => {
+    const name = normalizeLegacyTrialName(threatName(boss));
+    return name && name !== worldBossName && !encounterNames.has(name);
+  });
+  const bossNames = new Set(bosses.map(boss => normalizeLegacyTrialName(threatName(boss))));
+  const monsters = dedupeThreatsByName(universe.monsters).filter(monster => {
+    const name = normalizeLegacyTrialName(threatName(monster));
+    return name
+      && name !== worldBossName
+      && !bossNames.has(name)
+      && !encounterNames.has(name);
+  });
+
+  return { monsters, bosses };
+};
+
 const LEGACY_NON_COMBAT_TRIAL_TYPE_BY_NAME = new Map(
   LEGACY_NON_COMBAT_TRIAL_NAME_ROUTES.flatMap(([universe, type, names]) => (
     names.map(name => [`${universe}:${normalizeLegacyTrialName(name)}`, type])
@@ -4169,6 +4204,10 @@ EXPANDED_UNIVERSES.forEach((universe, index) => {
       enrichedUniverse.bosses = [];
     }
   }
+
+  const authoritativeRoster = enforceThreatRolePrecedence(enrichedUniverse);
+  enrichedUniverse.monsters = authoritativeRoster.monsters;
+  enrichedUniverse.bosses = authoritativeRoster.bosses;
 
   if (stageLoreProfile) {
     enrichedUniverse.stageLoreProfile = stageLoreProfile;
