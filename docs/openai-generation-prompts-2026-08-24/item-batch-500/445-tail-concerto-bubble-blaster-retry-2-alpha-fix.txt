@@ -1,0 +1,9 @@
+Use case: background-extraction
+Asset type: transparent game item icon for a 2D canvas battle game
+Input images: Image 1: edit target, the newly generated Tail Concerto Bubble Blaster pixel-art icon.
+Primary request: change only the transparency treatment. Preserve the Bubble Blaster design, colors, pixel-art rendering, proportions, framing, blue-gray Police Robo nozzle, cyan capture sphere, highlights and internal mist.
+Outside-silhouette correction: completely remove every white or gray checkerboard square and every baked background pixel outside the combined nozzle-and-bubble silhouette. Replace that exterior only with genuine zero-alpha transparency.
+Bubble correction: the cyan sphere must not function as a transparent window. Paint over and eliminate every checkerboard square, grid line or background trace inside the circular bubble. Keep the sphere visually translucent through painted glassy highlights, a luminous cyan rim, layered blue reflections and internal pale-blue fog, but make its complete circular interior self-filled and opaque enough that no external background can be seen through it.
+Alpha lock: alpha 0 only outside the complete nozzle-and-bubble silhouette. Every pixel inside the sphere silhouette must contain visible cyan or pale-blue artwork with nonzero opacity and no cutout holes.
+Invariants: change only backdrop/transparency and the removal of grid traces inside the bubble; do not redesign, recolor, crop, move, duplicate or add any object; preserve the exact original icon composition.
+Output lock: 32-bit RGBA PNG; no checkerboard pattern, no chroma key, no white backdrop, no floor, no cast shadow, no text, no letters, no numbers, no logos, no UI, no signature and no watermark.

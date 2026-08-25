@@ -143,6 +143,7 @@ const main = async () => {
     { HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB },
     { ENEMIES_DB, FINAL_GAME_BOSS },
     { BATTLE_ITEM_CATALOG },
+    { LORE_ITEM_OVERRIDES },
     { LORE_WORLD_BOSS_POLICIES },
     { STAGE_LORE_PROFILES, STAGE_ARC_LORE_PROFILES },
     { getItemSpriteSrc }
@@ -150,6 +151,7 @@ const main = async () => {
     import(pathToFileURL(path.join(tmpDir, 'heroes.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'enemies.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'battleItems.js')).href),
+    import(pathToFileURL(path.join(tmpDir, 'loreItemOverrides.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'loreWorldBossOverrides.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'stageLoreProfiles.js')).href),
     import(pathToFileURL(path.join(tmpDir, 'spriteAssets.js')).href)
@@ -298,6 +300,7 @@ const main = async () => {
   const itemSource = [
     ...EQUIP_ITEMS_DB,
     ...Object.entries(EVENT_ITEMS_DB).map(([universe, item]) => ({ ...item, universe: item.universe || universe })),
+    ...Object.values(LORE_ITEM_OVERRIDES).flatMap((policy) => policy.allItems || []),
     ...BATTLE_ITEM_CATALOG
   ];
   const seenItemOutputs = new Set();

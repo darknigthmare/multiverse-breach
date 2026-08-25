@@ -36,6 +36,29 @@ const assertSheetCells = async (file, label, issues) => {
   }
 };
 
+const assertItemTransparency = async (file, label, issues) => {
+  const { data, info } = await sharp(file).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const guard = 24;
+  let visiblePixels = 0;
+  let guardPixels = 0;
+  for (let y = 0; y < info.height; y += 1) {
+    for (let x = 0; x < info.width; x += 1) {
+      const alpha = data[(y * info.width + x) * 4 + 3];
+      if (alpha <= 12) continue;
+      visiblePixels += 1;
+      if (x < guard || x >= info.width - guard || y < guard || y >= info.height - guard) {
+        guardPixels += 1;
+      }
+    }
+  }
+  const visibleRatio = visiblePixels / (info.width * info.height);
+  if (visiblePixels < 1024) issues.push(`${label}: item icon is effectively empty`);
+  if (guardPixels > 0) issues.push(`${label}: item icon violates the ${guard} px transparent guard`);
+  if (visibleRatio > 0.72) {
+    issues.push(`${label}: item icon is ${Math.round(visibleRatio * 100)}% opaque and likely retains a baked background`);
+  }
+};
+
 const main = async () => {
   if (!existsSync(ledgerPath)) throw new Error('Missing OpenAI asset provenance ledger');
   const prompts = readJsonl(promptsPath);
@@ -87,6 +110,8 @@ const main = async () => {
     if (record.kind === 'item') {
       if (metadata.width !== 512 || metadata.height !== 512 || metadata.format !== 'png' || metadata.channels !== 4) {
         issues.push(`${key}: item must be 512x512 RGBA PNG`);
+      } else {
+        await assertItemTransparency(file, key, issues);
       }
     } else if (record.kind === 'stage') {
       if (metadata.width !== 1536 || metadata.height !== 864 || metadata.format !== 'webp' || metadata.channels !== 3) {
