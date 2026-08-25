@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-missing-500-wave-2-corrections-z-safe-467-2026-08-25",
+  "kind": "hero",
+  "sourceBatch": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500.json",
+  "sourceBatchSha256": "34e4d986b16057bd94e0398b5d9e508ec4e6db231ced18eb033bf10c4fedc221",
+  "promptSetSha256": "1accbaa627de406ac479cf7308578364531a2e8058cd4dcfcea5df5e26f72086",
+  "selectionPolicy": [
+    "single deterministic safety overlay for correction sequence 467",
+    "preserve the original hero identity and runtime output path",
+    "use positive age-appropriate wording after two input-moderation rejections",
+    "child-safe defensive and support actions only, with no working weapon"
+  ],
+  "counts": {
+    "total": 1,
+    "safetyOverlay": 1
+  },
+  "jobs": [
+    {
+      "sequence": 467,
+      "kind": "hero",
+      "id": "tiny_tina_bl",
+      "name": "Tiny Tina",
+      "universe": "Borderlands",
+      "output": "/sprites/generated/heroes/borderlands/tiny-tina-bl.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction-safe-overlay",
+      "selectionTier": "visual-qa-safety-overlay",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "young adolescent girl with clearly age-appropriate proportions, messy blond hair in uneven pigtails, large expressive eyes and an eccentric but friendly grin",
+        "outfit": "fully covering patched purple, white and orange demolition overalls over thick leggings, chunky boots, goggles and bunny-ear headgear/backpack",
+        "role": "Tiny Tina, eccentric young explosives expert from Borderlands, shown in a harmless training and tea-party interlude",
+        "equipment": "inert cartoon bunny-shaped training prop, deactivated remote control and tea-party accessories used only for playful support actions; no working explosive or weapon",
+        "avoid": "pink-haired adult mage, firearm, combat attack, realistic explosion, victim, injury or blood"
+      },
+      "sourcePromptSha256": "c1cca33055d923ab90e4c043df9826cae8e153aded4d41b1b2e6543757c85bd0",
+      "replacesGenerationPromptSha256": "6e0cd18c7c55ce420697d2931c506a0fd2d4e4a7ea6a69a247891c934d3f547c",
+      "generationPromptSha256": "1accbaa627de406ac479cf7308578364531a2e8058cd4dcfcea5df5e26f72086",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-z-safe-467/467-hero-tiny-tina-bl-safe.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Tiny Tina from Borderlands; this safely replaces a prior visually incorrect generation.\nCanonical physical anchor: young adolescent girl with clearly age-appropriate proportions, messy blond hair in uneven pigtails, large expressive eyes and an eccentric but friendly grin.\nCanonical outfit anchor: fully covering patched purple, white and orange demolition overalls over thick leggings, chunky boots, goggles and bunny-ear headgear/backpack.\nCanonical role anchor: Tiny Tina, eccentric young explosives expert from Borderlands, shown here in a harmless training and tea-party interlude.\nCanonical equipment and power anchor: inert cartoon bunny-shaped training prop, deactivated remote control and tea-party accessories used only for playful support actions; no working explosive or weapon.\nIdentity exclusions: pink-haired adult mage, firearm, combat attack, realistic explosion, victim, injury or blood.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk and skipping poses; row 3 has four safe support frames: tea-party setup, cheerful warning gesture, remote activation of a harmless marker light on the inert bunny training prop and bunker-blanket duck/recovery; row 4 has four gentle surprise, brace, recoil and recovery poses.\nCadence lock: bouncy uneven hop with a delayed harmless marker-light blink.\nNon-combat safety lock: this young character never attacks. Row 3 uses only harmless, deactivated props for support or defensive actions against empty space, with no weapon, victim, injury, blood or gore.\nCell lock: keep head, feet, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: wholesome, fully clothed and unmistakably age-appropriate adventure presentation and actions; no wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, readable badge, UI label, signature or watermark.\n"
+    }
+  ]
+}

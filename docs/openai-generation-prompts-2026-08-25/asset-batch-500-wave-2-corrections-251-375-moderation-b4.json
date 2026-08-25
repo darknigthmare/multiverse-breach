@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-missing-500-wave-2-corrections-251-375-moderation-b4-2026-08-25",
+  "kind": "mixed",
+  "promptCatalogSha256": "01d7f266de73e8c4193ff0a66b879e3b9ee3dacb05cf01d62a526b34af8f3c4d",
+  "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-moderation-b3-2026-08-25",
+  "selectionPolicy": {
+    "scope": "immutable-post-moderation-b3-single-abstract-archive-automaton-regeneration",
+    "sourceSequences": [
+      344
+    ],
+    "publicInstallAuthorized": false,
+    "runtimeManifestMutationAuthorized": false
+  },
+  "counts": {
+    "total": 1,
+    "hero": 1
+  },
+  "jobs": [
+    {
+      "sequence": 344,
+      "kind": "hero",
+      "id": "yoda",
+      "output": "/sprites/generated/heroes/star-wars/yoda.png",
+      "sourcePromptSha256": "c3f04152a52a45294d7bdfc82c6bdaf57711e4304b92c11ccb3fe7ff032df23f",
+      "generationPromptSha256": "71bc01b410a3ec331c911f7f58597742ea86eb359dc36b25632e983c15f13f0d",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-moderation-b4/344-jade-archive-automaton.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production pixel-art sprite sheet for a 2D canvas role-playing game\nPrimary request: create one wholly original 4x4 pixel-art animation sheet featuring an ancient jade ceramic archive automaton.\nSubject anchor: compact adult-inspired proportions, a sculpted patinated face, thoughtful amber inset eyes, broad triangular lateral fins and a dignified silhouette.\nWardrobe anchor: flowing ivory robes with warm cream layers, a woven bronze sash and soft ceremonial shoes.\nRole anchor: patient archive keeper, luminous record curator and calm guide for visiting scholars.\nCorrection anchor: original educational identity with consistent descriptive features across all cells.\nReference-locked continuity: preserve the same defining silhouette, palette and wardrobe in all sixteen cells.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original celestial-fantasy design.\nComposition and framing: one square 1024 x 1024 RGBA PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal 256 x 256 isolated populated cells; one complete full-body archive automaton centered in each cell; consistent elevated three-quarter side view facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 presents four calm breathing and contemplation poses; row 2 presents four measured archive travel poses; row 3 presents four knowledge-transmission gestures with a luminous record sphere, an open palm, a projected constellation and a welcoming two-hand explanation; row 4 presents four mediation poses with attentive listening, a respectful bow, gentle reassurance and serene centered repose.\nCadence lock: meditative pauses, precise light steps and graceful teaching gestures.\nContinuity lock: preserve the same jade ceramic shell, sculpted patinated face, amber inset eyes, broad triangular lateral fins, compact proportions, ivory-cream robes and bronze sash in every cell.\nCell lock: each cell presents exactly one complete pose with face, lateral fins, feet, clothing and compact archive light comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: genuine transparent alpha fills every open area around the sixteen silhouettes in a polished 32-bit RGBA sprite sheet.\nPositive safety lock: wholesome adult educational fantasy.\nBranding lock: purely pictorial storytelling with abstract geometric motifs.\n",
+      "correctionOfGenerationPromptSha256": "b048a9b7cf7661f6711b6dff3ad8e9c2c008963dc941c2d72acd498ffd8e9f7b"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-missing-500-wave-2-corrections-251-375-zzz-moderation-a-adult-calm-2026-08-25",
+  "kind": "mixed",
+  "promptCatalogSha256": "01d7f266de73e8c4193ff0a66b879e3b9ee3dacb05cf01d62a526b34af8f3c4d",
+  "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-z-safe-moderation-2026-08-25",
+  "sourceBatchId": "assets-missing-500-wave-2-2026-08-25",
+  "selectionPolicy": {
+    "scope": "adult-calm-moderation-regeneration-only",
+    "sourceRange": [
+      251,
+      375
+    ],
+    "sourceSequences": [
+      334,
+      337,
+      343
+    ],
+    "promptTone": "positive-adult-calm-travel-knowledge",
+    "publicInstallAuthorized": false,
+    "runtimeManifestMutationAuthorized": false
+  },
+  "counts": {
+    "total": 3,
+    "item": 0,
+    "hero": 3
+  },
+  "jobs": [
+    {
+      "sequence": 334,
+      "kind": "hero",
+      "id": "snape",
+      "name": "Severus Snape",
+      "universe": "Harry Potter",
+      "output": "/sprites/generated/heroes/harry-potter/snape.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "adult-calm-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult gothic alchemy professor with a tall lean silhouette, pale angular illustrated face, shoulder-length straight black hair and a composed scholarly expression",
+        "outfit": "layered floor-length black teaching robes with a high collar, fitted long sleeves, subtle charcoal piping and practical dark shoes",
+        "role": "adult alchemy professor devoted to careful teaching, quiet travel and archival study",
+        "equipment": "sealed jewel-toned glass potion vials, a brass alchemy model and a compact leather folio"
+      },
+      "sourcePromptSha256": "0718ebc8b11599fb45acab10b31f97de63c129b92f6b83af5ceef661a7017476",
+      "generationPromptSha256": "585d79f997367b7d0e19712a1ea3e14a4c022c8739c126e899326b2357bb122c",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zzz-moderation-a-adult-calm/334-hero-adult-gothic-alchemy-professor-585d79f9.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet, 1024 x 1024 RGBA PNG\nPrimary request: create one wholly original adult storybook-animation pixel-art character sheet for a calm journey and knowledge scene.\nReference-locked adult physical silhouette: adult gothic alchemy professor with a tall lean silhouette, pale angular illustrated face, shoulder-length straight black hair and a composed scholarly expression.\nReference-locked outfit: layered floor-length black teaching robes with a high collar, fitted long sleeves, subtle charcoal piping and practical dark shoes.\nReference-locked role: adult alchemy professor devoted to careful teaching, quiet travel and archival study.\nReference-locked equipment: sealed jewel-toned glass potion vials, a brass alchemy model and a compact leather folio.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines and readable full-body silhouettes.\nComposition and framing: exactly 4 columns x 4 rows, exactly sixteen equal isolated filled cells, one complete full-body pose centered in every cell, consistent elevated three-quarter side view facing right, consistent scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm breathing and thoughtful observation poses. Row 2 contains four gentle travel poses with natural cloth movement. Row 3 presents four knowledge-sharing poses: lift a sealed teal vial toward the light, compare two small glass vessels, indicate a brass alchemy model, and close a compact leather folio with calm precision. Row 4 contains four peaceful arrival poses: pause, settle the clothing, check the travel item and finish in a composed resting stance.\nCadence lock: Measured professor gestures, elegant robe movement and precise hands.\nContinuity lock: preserve one identical adult face, hairstyle, anatomy, outfit, palette and equipment family across all sixteen cells.\nCell lock: every cell presents one complete centered silhouette with head, feet, clothing, props and compact light effects comfortably inside its boundaries with generous transparent breathing room.\nBackground and output lock: genuine transparent alpha surrounds every isolated pose in a 32-bit RGBA PNG prepared at exactly 1024 x 1024 pixels.\nPositive safety lock: wholesome adult educational fantasy.\nBranding lock: entirely unlettered image, abstract geometric costume details and clean presentation.\nProduction lock: exactly sixteen complete distinct poses arranged in the strict 4 columns x 4 rows production grid.",
+      "correctionReason": "Adult calm travel and knowledge illustration pass.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-z-safe-moderation-2026-08-25",
+      "correctionOfGenerationPromptSha256": "40c137242f2331f0f9d8d0d906d1510c1aa5a801fe9e19354c94767d11cf70b3"
+    },
+    {
+      "sequence": 337,
+      "kind": "hero",
+      "id": "ahsoka_padawan",
+      "name": "Ahsoka Tano (Padawan)",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "adult-calm-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult orange-skinned extraterrestrial diplomat with symmetrical white facial markings, large blue-white striped head crests and long striped lekku, bright attentive eyes and balanced adult proportions",
+        "outfit": "fully covered maroon and soft-grey diplomatic travel tunic with layered sash, fitted trousers, forearm wraps and practical boots",
+        "role": "adult interstellar diplomat devoted to peaceful journeys, cultural exchange and shared knowledge",
+        "equipment": "compact star-map tablet, ceramic peace token and slim travel satchel"
+      },
+      "sourcePromptSha256": "1d3b89b8e29037d0c231eee9921166d1049b6cafb83d662971faeb4814c5c412",
+      "generationPromptSha256": "86a283c9b350b3d6c0c63a0ff2b7ce22bb2cce0bed99ea3994c0ff418cdc91e4",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zzz-moderation-a-adult-calm/337-hero-adult-orange-extraterrestrial-diplomat-86a283c9.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet, 1024 x 1024 RGBA PNG\nPrimary request: create one wholly original adult storybook-animation pixel-art character sheet for a calm journey and knowledge scene.\nReference-locked adult physical silhouette: adult orange-skinned extraterrestrial diplomat with symmetrical white facial markings, large blue-white striped head crests and long striped lekku, bright attentive eyes and balanced adult proportions.\nReference-locked outfit: fully covered maroon and soft-grey diplomatic travel tunic with layered sash, fitted trousers, forearm wraps and practical boots.\nReference-locked role: adult interstellar diplomat devoted to peaceful journeys, cultural exchange and shared knowledge.\nReference-locked equipment: compact star-map tablet, ceramic peace token and slim travel satchel.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines and readable full-body silhouettes.\nComposition and framing: exactly 4 columns x 4 rows, exactly sixteen equal isolated filled cells, one complete full-body pose centered in every cell, consistent elevated three-quarter side view facing right, consistent scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm breathing and thoughtful observation poses. Row 2 contains four gentle travel poses with natural cloth movement. Row 3 presents four diplomatic learning poses: offer a ceramic peace token, open a small blue star-map projection, point to a calm travel route, and complete a respectful two-handed greeting. Row 4 contains four peaceful arrival poses: pause, settle the clothing, check the travel item and finish in a composed resting stance.\nCadence lock: Graceful adult footwork, open diplomatic gestures and calm confidence.\nContinuity lock: preserve one identical adult face, hairstyle, anatomy, outfit, palette and equipment family across all sixteen cells.\nCell lock: every cell presents one complete centered silhouette with head, feet, clothing, props and compact light effects comfortably inside its boundaries with generous transparent breathing room.\nBackground and output lock: genuine transparent alpha surrounds every isolated pose in a 32-bit RGBA PNG prepared at exactly 1024 x 1024 pixels.\nPositive safety lock: wholesome adult educational fantasy.\nBranding lock: entirely unlettered image, abstract geometric costume details and clean presentation.\nProduction lock: exactly sixteen complete distinct poses arranged in the strict 4 columns x 4 rows production grid.",
+      "correctionReason": "Adult calm travel and knowledge illustration pass.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-z-safe-moderation-2026-08-25",
+      "correctionOfGenerationPromptSha256": "3d21d1c61fbc45d68ebfc8b97d08544ad00a093bbc669076ca9e4676d1e4f138"
+    },
+    {
+      "sequence": 343,
+      "kind": "hero",
+      "id": "obi_wan",
+      "name": "Obi-Wan Kenobi",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/obi-wan.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "adult-calm-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult diplomatic mentor with swept auburn hair, a neatly trimmed auburn beard, calm observant eyes and a balanced lean adult silhouette",
+        "outfit": "layered cream travel tunic, tan tabards, broad brown belt, dark trousers, tall brown boots and a flowing brown outer robe",
+        "role": "adult diplomatic mentor devoted to patient guidance, contemplative journeys and peaceful knowledge exchange",
+        "equipment": "rolled star chart, brass compass disk and compact brown travel satchel"
+      },
+      "sourcePromptSha256": "ae3c8d4790b78a322640e4670dbd02aae15af487847f9d3de5cd0eac655db0cd",
+      "generationPromptSha256": "892cf01b337329888c05f38b1160c2cf4b96cf81c93318bc6b1257ab09571929",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zzz-moderation-a-adult-calm/343-hero-adult-auburn-diplomatic-mentor-892cf01b.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet, 1024 x 1024 RGBA PNG\nPrimary request: create one wholly original adult storybook-animation pixel-art character sheet for a calm journey and knowledge scene.\nReference-locked adult physical silhouette: adult diplomatic mentor with swept auburn hair, a neatly trimmed auburn beard, calm observant eyes and a balanced lean adult silhouette.\nReference-locked outfit: layered cream travel tunic, tan tabards, broad brown belt, dark trousers, tall brown boots and a flowing brown outer robe.\nReference-locked role: adult diplomatic mentor devoted to patient guidance, contemplative journeys and peaceful knowledge exchange.\nReference-locked equipment: rolled star chart, brass compass disk and compact brown travel satchel.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines and readable full-body silhouettes.\nComposition and framing: exactly 4 columns x 4 rows, exactly sixteen equal isolated filled cells, one complete full-body pose centered in every cell, consistent elevated three-quarter side view facing right, consistent scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm breathing and thoughtful observation poses. Row 2 contains four gentle travel poses with natural cloth movement. Row 3 presents four mentoring poses: unfold a rolled star chart, indicate a route with a brass compass disk, share a patient open-hand explanation, and return the chart to the travel satchel. Row 4 contains four peaceful arrival poses: pause, settle the clothing, check the travel item and finish in a composed resting stance.\nCadence lock: Patient measured steps, compact teaching gestures and centered adult posture.\nContinuity lock: preserve one identical adult face, hairstyle, anatomy, outfit, palette and equipment family across all sixteen cells.\nCell lock: every cell presents one complete centered silhouette with head, feet, clothing, props and compact light effects comfortably inside its boundaries with generous transparent breathing room.\nBackground and output lock: genuine transparent alpha surrounds every isolated pose in a 32-bit RGBA PNG prepared at exactly 1024 x 1024 pixels.\nPositive safety lock: wholesome adult educational fantasy.\nBranding lock: entirely unlettered image, abstract geometric costume details and clean presentation.\nProduction lock: exactly sixteen complete distinct poses arranged in the strict 4 columns x 4 rows production grid.",
+      "correctionReason": "Adult calm travel and knowledge illustration pass.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-z-safe-moderation-2026-08-25",
+      "correctionOfGenerationPromptSha256": "46e38ba0361f2ab4e7de9d53d2b04a773cb497e20f7babaeef430f44dd10e48a"
+    }
+  ]
+}

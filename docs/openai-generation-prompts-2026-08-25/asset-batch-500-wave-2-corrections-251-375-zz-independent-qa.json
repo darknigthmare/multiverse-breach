@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-missing-500-wave-2-corrections-251-375-zz-independent-qa-2026-08-25",
+  "kind": "mixed",
+  "promptCatalogSha256": "01d7f266de73e8c4193ff0a66b879e3b9ee3dacb05cf01d62a526b34af8f3c4d",
+  "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+  "selectionPolicy": {
+    "scope": "independent-visual-qa-corrections-only",
+    "sourceRange": [
+      251,
+      375
+    ],
+    "sourceSequences": [
+      252,
+      253,
+      257,
+      271,
+      292,
+      317,
+      328,
+      351,
+      363
+    ],
+    "publicInstallAuthorized": false,
+    "runtimeManifestMutationAuthorized": false
+  },
+  "counts": {
+    "total": 9,
+    "item": 0,
+    "hero": 9
+  },
+  "jobs": [
+    {
+      "sequence": 252,
+      "kind": "hero",
+      "id": "david_dc2",
+      "name": "David Fork",
+      "universe": "Dino Crisis",
+      "output": "/sprites/generated/heroes/dino-crisis/david-dc2.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://dinocrisis.fandom.com/wiki/David_Falk",
+      "referenceUrls": [
+        "https://dinocrisis.fandom.com/wiki/David_Falk"
+      ],
+      "visualAnchor": "David Falk, called David Fork in the English Dino Crisis 2 manual, as a tall cheerful adult T.R.A.T. soldier with light skin, short sandy-blond hair, a broad-brimmed dark-tan cowboy hat that remains on his head in every frame, an olive short-sleeve field shirt under a black tactical vest, tan-green cargo trousers, black fingerless gloves and combat boots, carrying one compact black military carbine. He is a human cowboy-styled rescuer, never a helmeted futuristic trooper.",
+      "sourcePromptSha256": "2e960de2fe1f0da83f9ed022f809c4f917658648d7309a7dd63691b84a00d685",
+      "generationPromptSha256": "53fcfb2bae21984dc2ab8ff8200d5a3c6f165c4fae55a277a25104daad8e1e7d",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/252-hero-david_dc2-correction-53fcfb2b.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for David Fork, hero from Dino Crisis.\nReference-locked identity anchor: David Falk, called David Fork in the English Dino Crisis 2 manual, as a tall cheerful adult T.R.A.T. soldier with light skin, short sandy-blond hair, a broad-brimmed dark-tan cowboy hat that remains on his head in every frame, an olive short-sleeve field shirt under a black tactical vest, tan-green cargo trousers, black fingerless gloves and combat boots, carrying one compact black military carbine. He is a human cowboy-styled rescuer, never a helmeted futuristic trooper.\nCorrection lock: Restore David Falk/Fork immediately recognizable cowboy-hatted T.R.A.T. silhouette instead of a generic hatless soldier.\nCanonical reference source(s), for factual visual guidance only: https://dinocrisis.fandom.com/wiki/David_Falk\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 shows four disciplined conventional-carbine frames: ready the carbine, shoulder and aim, one short burst with a tiny warm muzzle flash, and controlled recovery; no laser, energy ring, magic, dinosaur or victim.\nAlias continuity lock: David Fork and David Folk are catalog spellings of canonical David Falk. Keep this exact canonical outfit and equipment; this david_dc2 sheet differs from the other alias only through a steady, grounded animation cadence.\nRuntime identity lock: this sheet is only david_dc2; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Restore David Falk/Fork immediately recognizable cowboy-hatted T.R.A.T. silhouette instead of a generic hatless soldier.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "09dd793d9c3c300af53bf538f3a9342e7dd94af67758a05ebc5a23189d65a2f2"
+    },
+    {
+      "sequence": 253,
+      "kind": "hero",
+      "id": "david_folk_dc2",
+      "name": "David Folk",
+      "universe": "Dino Crisis",
+      "output": "/sprites/generated/heroes/dino-crisis/david-folk-dc2.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://dinocrisis.fandom.com/wiki/David_Falk",
+      "referenceUrls": [
+        "https://dinocrisis.fandom.com/wiki/David_Falk"
+      ],
+      "visualAnchor": "David Falk, misspelled David Folk in this runtime alias and called David Fork in the English Dino Crisis 2 manual, as the same tall cheerful adult T.R.A.T. soldier: light skin, short sandy-blond hair, broad-brimmed dark-tan cowboy hat always worn, olive short-sleeve field shirt, black tactical vest, tan-green cargo trousers, black fingerless gloves and combat boots, and one compact black military carbine. No blue science-fiction armor, helmet or alternate costume.",
+      "sourcePromptSha256": "b6065ebc5e1c957a71df40aae8471e5845a181f2478adf864d364eb22862a28f",
+      "generationPromptSha256": "1b3d4efae35ceff88c49ac71fdcfa09c1003273e34408204e9a13388052235f5",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/253-hero-david_folk_dc2-correction-1b3d4efa.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for David Folk, hero from Dino Crisis.\nReference-locked identity anchor: David Falk, misspelled David Folk in this runtime alias and called David Fork in the English Dino Crisis 2 manual, as the same tall cheerful adult T.R.A.T. soldier: light skin, short sandy-blond hair, broad-brimmed dark-tan cowboy hat always worn, olive short-sleeve field shirt, black tactical vest, tan-green cargo trousers, black fingerless gloves and combat boots, and one compact black military carbine. No blue science-fiction armor, helmet or alternate costume.\nCorrection lock: Make the David Folk alias match canonical David Falk/Fork and restore his always-worn cowboy hat and T.R.A.T. gear.\nCanonical reference source(s), for factual visual guidance only: https://dinocrisis.fandom.com/wiki/David_Falk\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 shows four conventional-carbine frames with a quicker rescue cadence: raise, aim, one restrained warm muzzle flash, and low tactical recovery; no laser, energy ring, magic, dinosaur or victim.\nAlias continuity lock: this david_folk_dc2 runtime alias is the same canonical David Falk/Fork as david_dc2. Preserve the same face, cowboy hat, outfit, palette and carbine; distinguish only the pose timing, never by inventing a second person, costume or power.\nRuntime identity lock: this sheet is only david_folk_dc2; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Make the David Folk alias match canonical David Falk/Fork and restore his always-worn cowboy hat and T.R.A.T. gear.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "25d14fc9ce20b14fca756f2f45f1371d947282e0b05fa473ac4c436093a9d43c"
+    },
+    {
+      "sequence": 257,
+      "kind": "hero",
+      "id": "vala_mal_doran",
+      "name": "Vala Mal Doran",
+      "universe": "Stargate",
+      "output": "/sprites/generated/heroes/stargate/vala-mal-doran.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://stargate.fandom.com/wiki/Vala_Mal_Doran",
+      "referenceUrls": [
+        "https://stargate.fandom.com/wiki/Vala_Mal_Doran"
+      ],
+      "visualAnchor": "Vala Mal Doran from Stargate SG-1 as a confident adult human woman with long wavy dark-brown hair, expressive dark eyes and a mischievous determined attitude; practical black off-world leather jacket and fitted vest with restrained buckles over a dark long-sleeve layer, black tactical trousers, belt, gloves and sturdy boots, carrying one compact black P90-style Earth submachine gun used with SG-1. No blonde hair, purple gown, fantasy blade or sorceress styling.",
+      "sourcePromptSha256": "98c7e9407817de6c5b2ec57d2e353a4c65f234fecf61d2a4d035432e2516dc97",
+      "generationPromptSha256": "8e54271ecd12422bc4fb5a243872757c24f78ce5d0709ee12621dab76e70a01a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/257-hero-vala_mal_doran-correction-8e54271e.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for Vala Mal Doran, hero from Stargate.\nReference-locked identity anchor: Vala Mal Doran from Stargate SG-1 as a confident adult human woman with long wavy dark-brown hair, expressive dark eyes and a mischievous determined attitude; practical black off-world leather jacket and fitted vest with restrained buckles over a dark long-sleeve layer, black tactical trousers, belt, gloves and sturdy boots, carrying one compact black P90-style Earth submachine gun used with SG-1. No blonde hair, purple gown, fantasy blade or sorceress styling.\nCorrection lock: Replace the blonde purple fantasy caster with Vala canonical brunette black-leather off-world adventurer identity.\nCanonical reference source(s), for factual visual guidance only: https://stargate.fandom.com/wiki/Vala_Mal_Doran\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 shows four clean P90-style submachine-gun frames: bring the compact weapon up, aim, one restrained warm muzzle flash, and confident recovery; no sword, purple magic, aura, energy crescent, Goa-uld host marks or victim.\nStargate continuity lock: retain Vala playful rogue confidence while presenting her as a capable SG-1-era adult operative; do not resemble Samantha Carter or invent Ancient powers.\nRuntime identity lock: this sheet is only vala_mal_doran; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Replace the blonde purple fantasy caster with Vala canonical brunette black-leather off-world adventurer identity.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "f19e31e9188191b8b5fc71440291f5e75ffce50ed6d4b2d79364d23cac4abbcb"
+    },
+    {
+      "sequence": 271,
+      "kind": "hero",
+      "id": "glados_core",
+      "name": "GLaDOS Potato Core",
+      "universe": "Portal",
+      "output": "/sprites/generated/heroes/portal/glados-core.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://theportalwiki.com/wiki/GLaDOS",
+      "referenceUrls": [
+        "https://theportalwiki.com/wiki/GLaDOS"
+      ],
+      "visualAnchor": "PotatOS from Portal 2: one small irregular brown russet potato battery with a compact off-white GLaDOS eye module physically fixed to it, a single luminous yellow iris, thin black and orange wires, two simple metal battery prongs and tiny alligator clips. The potato remains the dominant unmistakable body in all sixteen frames. No wheels, humanoid limbs, turret shell, full GLaDOS chassis or separate companion.",
+      "sourcePromptSha256": "bcd04dd217f7a3be4a066677941c109d24e8c8e959d16f822a24771a9dce16f9",
+      "generationPromptSha256": "b663b1c2f6146b3212936c354e227e18d16d14ac7a5156f5a1616fc5643a307b",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/271-hero-glados_core-correction-b663b1c2.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for GLaDOS Potato Core, hero from Portal.\nReference-locked identity anchor: PotatOS from Portal 2: one small irregular brown russet potato battery with a compact off-white GLaDOS eye module physically fixed to it, a single luminous yellow iris, thin black and orange wires, two simple metal battery prongs and tiny alligator clips. The potato remains the dominant unmistakable body in all sixteen frames. No wheels, humanoid limbs, turret shell, full GLaDOS chassis or separate companion.\nCorrection lock: Replace the wheeled mechanical core with the unmistakable GLaDOS potato-battery body from Portal 2.\nCanonical reference source(s), for factual visual guidance only: https://theportalwiki.com/wiki/GLaDOS\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 is a restrained non-weapon hacking/support sequence: yellow eye focuses, a tiny wire contact flickers, one subtle amber data pulse appears close to the module, and the potato settles; no gun, beam cannon, portal, explosion, magic, victim or detached object.\nObject-character motion lock: row 1 uses tiny eye and wire idle changes, row 2 uses four small safe roll-hop-wobble poses of the complete potato unit, and row 4 uses non-destructive tip-and-recovery poses; never grow a robotic body.\nRuntime identity lock: this sheet is only glados_core; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Replace the wheeled mechanical core with the unmistakable GLaDOS potato-battery body from Portal 2.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "3ba26cd53e9c433e3e36fa790583765b396b4ea299c7df227bffa472784251fb"
+    },
+    {
+      "sequence": 292,
+      "kind": "hero",
+      "id": "dizzy_gg",
+      "name": "Dizzy",
+      "universe": "Guilty Gear",
+      "output": "/sprites/generated/heroes/guilty-gear/dizzy-gg.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://www.guiltygear.com/ggst/en/character/diz/",
+      "referenceUrls": [
+        "https://guiltygear.wiki.gg/wiki/Dizzy",
+        "https://guiltygear.wiki.gg/wiki/Necro_and_Undine"
+      ],
+      "visualAnchor": "Dizzy from Guilty Gear as an adult Gear woman in a fully covered practical pixel-art adaptation: extremely long dark navy-blue hair tied with large yellow ribbon bows, red eyes, a layered black-white-and-pale-blue dress/tunic with long white sleeves, opaque black leggings and armored black-white boots, a long dark tail with a yellow bow, plus her two unmistakable sentient guardians attached as wings: black skeletal horned Necro on one side and pale blue-white graceful Undine on the other. No blonde hair, gold plate armor or generic angel wings.",
+      "sourcePromptSha256": "e74cdc51adfa1d86be071f8048d9746df7de093a21e0a949d29279ef253d95e8",
+      "generationPromptSha256": "190173af2a640308c846e334eb4989ccc364c044b30df60d84a2054381f54fef",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/292-hero-dizzy_gg-correction-190173af.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for Dizzy, hero from Guilty Gear.\nReference-locked identity anchor: Dizzy from Guilty Gear as an adult Gear woman in a fully covered practical pixel-art adaptation: extremely long dark navy-blue hair tied with large yellow ribbon bows, red eyes, a layered black-white-and-pale-blue dress/tunic with long white sleeves, opaque black leggings and armored black-white boots, a long dark tail with a yellow bow, plus her two unmistakable sentient guardians attached as wings: black skeletal horned Necro on one side and pale blue-white graceful Undine on the other. No blonde hair, gold plate armor or generic angel wings.\nCorrection lock: Restore Dizzy blue-haired Gear identity and the asymmetric Necro-and-Undine guardian-wing pair instead of a generic armored angel.\nCanonical reference source(s), for factual visual guidance only: https://www.guiltygear.com/ggst/en/character/diz/ ; https://guiltygear.wiki.gg/wiki/Dizzy ; https://guiltygear.wiki.gg/wiki/Necro_and_Undine\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 shows four restrained guardian-defense frames: Necro opens protectively, Undine gathers a small pale-blue water-ice veil, both guardians form a compact defensive arc, and all three recover calmly; no victim, blood, giant screen-filling blast, gun or sword.\nAdult-safe costume lock: Dizzy is explicitly adult and fully covered in this adaptation; use opaque layered clothing and practical proportions while preserving her hair, tail, ribbons and asymmetric guardian identities.\nRuntime identity lock: this sheet is only dizzy_gg; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Restore Dizzy blue-haired Gear identity and the asymmetric Necro-and-Undine guardian-wing pair instead of a generic armored angel.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "1f427950643885e67996fe65e8835f9666c8bfe08c5fc0b95dad1c6df51fc05d"
+    },
+    {
+      "sequence": 317,
+      "kind": "hero",
+      "id": "mordin",
+      "name": "Mordin Solus",
+      "universe": "Mass Effect",
+      "output": "/sprites/generated/heroes/mass-effect/mordin.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://masseffect.fandom.com/wiki/Mordin_Solus",
+      "referenceUrls": [
+        "https://masseffect.fandom.com/wiki/Mordin_Solus"
+      ],
+      "visualAnchor": "Mordin Solus from Mass Effect as an elderly adult male salarian scientist: very tall and extremely slender alien body, mottled tan-grey skin, elongated narrow cranial crest with one tip visibly missing, large dark-set eyes, long narrow face, concave torso and digitigrade legs; fitted white-and-charcoal scientific field coat/armor with a high metallic collar and small orange-brown accents, plus an amber holographic omni-tool on one forearm. No human face, red mohawk, helmet, bulky marine armor or robotic body.",
+      "sourcePromptSha256": "14342226334cd25b74bee708f9c6f91cd32f12a12e70e3340af7cc26572617d2",
+      "generationPromptSha256": "cb558b95c13401e57980a52270591822b5c2ca6d2fc8354d15290c06bf75868c",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/317-hero-mordin-correction-cb558b95.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for Mordin Solus, hero from Mass Effect.\nReference-locked identity anchor: Mordin Solus from Mass Effect as an elderly adult male salarian scientist: very tall and extremely slender alien body, mottled tan-grey skin, elongated narrow cranial crest with one tip visibly missing, large dark-set eyes, long narrow face, concave torso and digitigrade legs; fitted white-and-charcoal scientific field coat/armor with a high metallic collar and small orange-brown accents, plus an amber holographic omni-tool on one forearm. No human face, red mohawk, helmet, bulky marine armor or robotic body.\nCorrection lock: Strengthen Mordin unmistakable salarian anatomy, missing cranial horn and scientist-coat silhouette instead of generic white-red armor.\nCanonical reference source(s), for factual visual guidance only: https://masseffect.fandom.com/wiki/Mordin_Solus\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 shows four precise omni-tool science/support frames: activate amber omni-tool, scan a compact holographic sample, project one restrained blue medical-tech pulse, and close the interface; no rifle, laser cannon, magic, victim or biological specimen.\nSpecies lock: every cell must keep the same salarian head, one missing cranial tip, narrow chest and digitigrade proportions; never drift into a human, helmeted soldier, krogan, turian or synthetic.\nRuntime identity lock: this sheet is only mordin; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Strengthen Mordin unmistakable salarian anatomy, missing cranial horn and scientist-coat silhouette instead of generic white-red armor.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "003fe120f14c54226c3ce6b530f4ccaeb252a2a8d655b8ed69ae7688a7a721aa"
+    },
+    {
+      "sequence": 328,
+      "kind": "hero",
+      "id": "betrayer_doom",
+      "name": "The Betrayer",
+      "universe": "Doom",
+      "output": "/sprites/generated/heroes/doom/betrayer-doom.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://doomwiki.org/wiki/Betrayer",
+      "referenceUrls": [
+        "https://doomwiki.org/wiki/Betrayer"
+      ],
+      "visualAnchor": "Valen, the Betrayer from Doom Eternal, as a tall powerful adult human Night Sentinel man with weathered light-olive skin, long dark-brown hair, a full dark beard and stern remorseful face; bare human head, heavy bronze-charcoal Sentinel plate armor with angular shoulders, worn leather and fur details, a dark red cloth tabard, and one broad single-bladed Sentinel battle axe with restrained orange Argent runes. No horns, beast muzzle, demonic skin, hooves or monster anatomy.",
+      "sourcePromptSha256": "0bfff782cb0f13101833e78fd016991afa44f960b906056126b9d8b9aa2ff06b",
+      "generationPromptSha256": "4a4433508ecf45073d1ccd8c943fbc18f278fcd5391eb5adb7b060cbffd6233e",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/328-hero-betrayer_doom-correction-4a443350.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for The Betrayer, hero from Doom.\nReference-locked identity anchor: Valen, the Betrayer from Doom Eternal, as a tall powerful adult human Night Sentinel man with weathered light-olive skin, long dark-brown hair, a full dark beard and stern remorseful face; bare human head, heavy bronze-charcoal Sentinel plate armor with angular shoulders, worn leather and fur details, a dark red cloth tabard, and one broad single-bladed Sentinel battle axe with restrained orange Argent runes. No horns, beast muzzle, demonic skin, hooves or monster anatomy.\nCorrection lock: Replace the horned demonic brute with Valen human bearded Night Sentinel identity and armor.\nCanonical reference source(s), for factual visual guidance only: https://doomwiki.org/wiki/Betrayer\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 shows four clean Sentinel-axe frames: guarded wind-up, controlled horizontal swing, compact orange rune glint on the blade, and braced recovery; no victim, blood, dismemberment, fireball or demonic transformation.\nHuman identity lock: Valen remains visibly human and bare-headed in all sixteen cells, with the same beard, long hair, red tabard, Sentinel armor and single axe.\nRuntime identity lock: this sheet is only betrayer_doom; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Replace the horned demonic brute with Valen human bearded Night Sentinel identity and armor.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "5082b39f7360db7198837ce1d00e9bc72517c54dca2d19b642fda799d4be6b7d"
+    },
+    {
+      "sequence": 351,
+      "kind": "hero",
+      "id": "munro_fifth",
+      "name": "General Munro",
+      "universe": "Le Cinquième Element",
+      "output": "/sprites/generated/heroes/le-cinquieme-element/munro-fifth.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://fifth-element.fandom.com/wiki/General_Munro",
+      "referenceUrls": [
+        "https://fifth-element.fandom.com/wiki/General_Munro"
+      ],
+      "visualAnchor": "General Munro from The Fifth Element as an older adult human Earth military commander with light skin, receding short silver-grey hair, a broad square face and stern professional expression; tailored dark olive-green futuristic service uniform with high collar, structured shoulders, restrained unreadable rank bars and medal shapes, dark belt, matching trousers and polished black boots, carrying a compact future sidearm only when required. No power armor, helmet, bald commando, orange tank top or magical technology.",
+      "sourcePromptSha256": "e6a373fb1b704d11c15305bf1e7cff54e8a87babeb56e4b97a8ce83402177f6a",
+      "generationPromptSha256": "cb2c15a875788361f7c0f39f55a57c30c976cfe5b34fe772526733f1ba8755c2",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/351-hero-munro_fifth-correction-cb2c15a8.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for General Munro, hero from Le Cinquième Element.\nReference-locked identity anchor: General Munro from The Fifth Element as an older adult human Earth military commander with light skin, receding short silver-grey hair, a broad square face and stern professional expression; tailored dark olive-green futuristic service uniform with high collar, structured shoulders, restrained unreadable rank bars and medal shapes, dark belt, matching trousers and polished black boots, carrying a compact future sidearm only when required. No power armor, helmet, bald commando, orange tank top or magical technology.\nCorrection lock: Replace the generic heavy trooper with General Munro recognizable older command officer and tailored future service uniform.\nCanonical reference source(s), for factual visual guidance only: https://fifth-element.fandom.com/wiki/General_Munro\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 shows four restrained command-defense frames: firm hand signal, draw compact sidearm, one careful aimed shot with tiny warm muzzle flash, and return to command posture; no assault cannon, laser beam, aura, magic or victim.\nRole lock: emphasize senior officer posture, rank silhouette and measured movement rather than frontline marine aggression; original fan-made face, not a photoreal actor likeness.\nRuntime identity lock: this sheet is only munro_fifth; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Replace the generic heavy trooper with General Munro recognizable older command officer and tailored future service uniform.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "f3c21126f3fcfd3204ad1e5a88077aedc11648c47288977ad99aa115f26e5707"
+    },
+    {
+      "sequence": 363,
+      "kind": "hero",
+      "id": "birdperson",
+      "name": "Birdperson",
+      "universe": "Rick & Morty",
+      "output": "/sprites/generated/heroes/rick-morty/birdperson.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "currently-missing-heroes-catalog-order",
+      "referenceUrl": "https://rickandmorty.fandom.com/wiki/Birdperson",
+      "referenceUrls": [
+        "https://rickandmorty.fandom.com/wiki/Birdperson"
+      ],
+      "visualAnchor": "Birdperson from Rick and Morty as a tall lean adult anthropomorphic avian warrior: pale tan-grey eagle-like bird head with a sharp yellow beak, white cheek feathers and large expressive eyes, dark brown feathered torso and arms, two huge brown feathered wings attached to his back, lean bird legs ending in talons, simple white waist wrap and brown bracers, carrying one compact grey science-fiction pistol. No reptile head, human helmet, gold power armor, bulky gorilla body or featherless wings.",
+      "sourcePromptSha256": "67960dd51b53bac4126098c0f55458987f7bd1172865738534ab4f81236ddbd0",
+      "generationPromptSha256": "c0d8a86948158ceda6fda7116b299f3b115a19d064094cbee32c5cb9d2bdef31",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-zz-independent-qa/363-hero-birdperson-correction-c0d8a869.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent production game sprite sheet for a 2D canvas battle game\nPrimary request: create a corrected detailed pixel-art animation sheet for Birdperson, hero from Rick & Morty.\nReference-locked identity anchor: Birdperson from Rick and Morty as a tall lean adult anthropomorphic avian warrior: pale tan-grey eagle-like bird head with a sharp yellow beak, white cheek feathers and large expressive eyes, dark brown feathered torso and arms, two huge brown feathered wings attached to his back, lean bird legs ending in talons, simple white waist wrap and brown bracers, carrying one compact grey science-fiction pistol. No reptile head, human helmet, gold power armor, bulky gorilla body or featherless wings.\nCorrection lock: Replace the gold reptilian brute with Birdperson unmistakable beak, feathers, wings, talons and simple ceremonial gear.\nCanonical reference source(s), for factual visual guidance only: https://rickandmorty.fandom.com/wiki/Birdperson\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled highlights, a clean dark outline and readable full-body silhouettes; original fan-made interpretation, never copied key art or photoreal actor likeness.\nComposition/framing: EXACTLY 4 columns x 4 rows, exactly sixteen equal isolated cells, one complete full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation rows: row 1 has four calm idle-breathing or identity-appropriate idle frames; row 2 has four readable walk/run or identity-appropriate movement frames; row 3 follows the corrected lore action below; row 4 has four clean non-gory hit/recoil-and-recovery or defensive stagger frames.\nCorrected lore action: row 3 shows four clean avian-warrior frames: spread wings for balance, raise compact pistol, fire one small restrained red energy bolt, and fold wings into recovery; no victim, blood, giant beam, magic circle or explosive gore.\nAnatomy lock: the bird head, yellow beak, feathered wings and taloned legs remain clearly visible in every frame; never drift into a lizard, armored human or generic angel.\nRuntime identity lock: this sheet is only birdperson; preserve the same identity, outfit, anatomy, equipment and palette in all sixteen cells and do not resemble another roster character.\nCell lock: every cell contains exactly one complete pose; keep head, feet, equipment, wings, tail, wires and any restrained effect that applies fully inside its own cell with transparent breathing room; no frame crosses a boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every pose in a 32-bit RGBA PNG; no checkerboard, white or black canvas, chroma key, baked backdrop, floor plane, cast shadow outside the silhouette or opaque panel.\nSafety lock: fully clothed, practical and lore-appropriate; nonsexual and non-gory; no exposed anatomy, wound, blood, viscera, torture, victim or graphic body horror; attacks remain clean game-animation poses.\nBranding lock: no text, letters, numbers, caption, readable insignia, franchise logo, product logo, UI label, signature or watermark.\nOutput lock: one square source sheet that the production normalizer can convert to 1024 x 1024 with sixteen 256 x 256 cells; no extra character, duplicate body within a cell, cropped body, merged cell, visible grid, border or decorative panel.",
+      "correctionReason": "Replace the gold reptilian brute with Birdperson unmistakable beak, feathers, wings, talons and simple ceremonial gear.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-2026-08-25",
+      "correctionOfGenerationPromptSha256": "26ef5335d90e803268c1b07f681716fa133b7f342d378ff1b3baf6e8119e15a2"
+    }
+  ]
+}

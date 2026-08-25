@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-missing-500-wave-2-corrections-251-375-z-safe-moderation-2026-08-25",
+  "kind": "mixed",
+  "promptCatalogSha256": "01d7f266de73e8c4193ff0a66b879e3b9ee3dacb05cf01d62a526b34af8f3c4d",
+  "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-2026-08-25",
+  "sourceBatchId": "assets-missing-500-wave-2-2026-08-25",
+  "selectionPolicy": {
+    "scope": "moderation-safe-positive-regeneration-only",
+    "sourceRange": [
+      251,
+      375
+    ],
+    "sourceSequences": [
+      334,
+      337,
+      343,
+      344,
+      347,
+      348
+    ],
+    "promptTone": "positive-literary-animation-lesson-protection-calm-choreography",
+    "publicInstallAuthorized": false,
+    "runtimeManifestMutationAuthorized": false
+  },
+  "counts": {
+    "total": 6,
+    "item": 0,
+    "hero": 6
+  },
+  "jobs": [
+    {
+      "sequence": 334,
+      "kind": "hero",
+      "id": "snape",
+      "name": "Severus Snape",
+      "universe": "Harry Potter",
+      "output": "/sprites/generated/heroes/harry-potter/snape.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "safe-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "book-continuity adult professor with pale angular face, shoulder-length straight black hair and a reserved severe expression",
+        "outfit": "high-collared layered black teaching robes, long sleeves and practical dark shoes",
+        "role": "Severus Snape as an original literary-continuity fan-made pixel-art potions professor",
+        "equipment": "slender dark wand, small potion vial and clean silver-green protective magic"
+      },
+      "sourcePromptSha256": "0718ebc8b11599fb45acab10b31f97de63c129b92f6b83af5ceef661a7017476",
+      "generationPromptSha256": "40c137242f2331f0f9d8d0d906d1510c1aa5a801fe9e19354c94767d11cf70b3",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-z-safe-moderation/334-hero-snape-safe-40c13724.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create a wholly original literary- or animation-inspired pixel-art interpretation of Severus Snape from Harry Potter, bound to runtime identity snape.\nCanonical physical anchor: book-continuity adult professor with pale angular face, shoulder-length straight black hair and a reserved severe expression.\nCanonical outfit anchor: high-collared layered black teaching robes, long sleeves and practical dark shoes.\nCanonical role anchor: Severus Snape as an original literary-continuity fan-made pixel-art potions professor.\nCanonical equipment anchor: slender dark wand, small potion vial and clean silver-green protective magic.\nCreative identity: a unique hand-illustrated face and silhouette derived from the descriptive literary or animated traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; Row 3 presents a calm classroom demonstration in four stages: hold a sealed potion vial at eye level, trace a compact silver-green ward with the teaching wand, let the ward settle as a small protective oval, then return both tools to a composed inspection pose. Row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nCadence lock: Measured economical professor gestures, a controlled robe turn and precise hands.\nContinuity lock: Keep the same pale angular illustrated face, shoulder-length straight black hair, layered black teaching robes, dark teaching wand and small sealed vial in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, equipment and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate, fully clothed lesson, protection and calm practice choreography; relaxed expressions, careful tool handling and luminous practice effects aimed into open practice space.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and clean presentation.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Positive literary and animation illustration pass using calm lesson, protection and practice choreography.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-2026-08-25",
+      "correctionOfGenerationPromptSha256": "df45b62b7b8ffdbd46e179860cbefeebeed4d29a609f9bb20239b139091e3d27"
+    },
+    {
+      "sequence": 337,
+      "kind": "hero",
+      "id": "ahsoka_padawan",
+      "name": "Ahsoka Tano (Padawan)",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/ahsoka-padawan.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "safe-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "animated-continuity Togruta teenage apprentice with orange skin, symmetrical white facial markings, blue-and-white short montrals and lekku, and age-appropriate proportions",
+        "outfit": "fully covered maroon and grey practical Padawan tunic, fitted leggings, bracers and boots",
+        "role": "Ahsoka Tano during her Padawan years as an original animation-inspired fan-made pixel-art hero",
+        "equipment": "one green training lightsaber held with careful defensive discipline"
+      },
+      "sourcePromptSha256": "1d3b89b8e29037d0c231eee9921166d1049b6cafb83d662971faeb4814c5c412",
+      "generationPromptSha256": "3d21d1c61fbc45d68ebfc8b97d08544ad00a093bbc669076ca9e4676d1e4f138",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-z-safe-moderation/337-hero-ahsoka_padawan-safe-3d21d1c6.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create a wholly original literary- or animation-inspired pixel-art interpretation of Ahsoka Tano (Padawan) from Star Wars, bound to runtime identity ahsoka_padawan.\nCanonical physical anchor: animated-continuity Togruta teenage apprentice with orange skin, symmetrical white facial markings, blue-and-white short montrals and lekku, and age-appropriate proportions.\nCanonical outfit anchor: fully covered maroon and grey practical Padawan tunic, fitted leggings, bracers and boots.\nCanonical role anchor: Ahsoka Tano during her Padawan years as an original animation-inspired fan-made pixel-art hero.\nCanonical equipment anchor: one green training lightsaber held with careful defensive discipline.\nCreative identity: a unique hand-illustrated face and silhouette derived from the descriptive literary or animated traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; Row 3 presents a supervised Padawan protection exercise in four stages: balanced reverse-grip ready stance, short green training-saber guard, compact luminous defensive curve through empty practice space, and centered two-foot recovery. Row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nCadence lock: Energetic youthful footwork with careful training control and a friendly focused expression.\nContinuity lock: Keep the same orange Togruta complexion, symmetrical white facial markings, short blue-white montrals and lekku, fully covered maroon-grey Padawan tunic and single green training saber in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, equipment and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate, fully clothed lesson, protection and calm practice choreography; relaxed expressions, careful tool handling and luminous practice effects aimed into open practice space.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and clean presentation.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Positive literary and animation illustration pass using calm lesson, protection and practice choreography.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-2026-08-25",
+      "correctionOfGenerationPromptSha256": "0346e14225f4577a03bb04ea9001bf9f8fa7116318bcd608bafa113ebd2f6493"
+    },
+    {
+      "sequence": 343,
+      "kind": "hero",
+      "id": "obi_wan",
+      "name": "Obi-Wan Kenobi",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/obi-wan.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "safe-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "animated-literary adult Jedi with auburn hair, neatly trimmed auburn beard and calm observant eyes",
+        "outfit": "layered cream tunic, tan tabards, brown belt, dark trousers, tall boots and brown robe",
+        "role": "Obi-Wan Kenobi as an original animation-inspired fan-made pixel-art guardian",
+        "equipment": "single blue lightsaber used in calm defensive Soresu forms"
+      },
+      "sourcePromptSha256": "ae3c8d4790b78a322640e4670dbd02aae15af487847f9d3de5cd0eac655db0cd",
+      "generationPromptSha256": "46e38ba0361f2ab4e7de9d53d2b04a773cb497e20f7babaeef430f44dd10e48a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-z-safe-moderation/343-hero-obi_wan-safe-46e38ba0.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create a wholly original literary- or animation-inspired pixel-art interpretation of Obi-Wan Kenobi from Star Wars, bound to runtime identity obi_wan.\nCanonical physical anchor: animated-literary adult Jedi with auburn hair, neatly trimmed auburn beard and calm observant eyes.\nCanonical outfit anchor: layered cream tunic, tan tabards, brown belt, dark trousers, tall boots and brown robe.\nCanonical role anchor: Obi-Wan Kenobi as an original animation-inspired fan-made pixel-art guardian.\nCanonical equipment anchor: single blue lightsaber used in calm defensive Soresu forms.\nCreative identity: a unique hand-illustrated face and silhouette derived from the descriptive literary or animated traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; Row 3 presents a calm Soresu lesson in four stages: centered blue-saber guard, compact circular protective sweep through empty practice space, a small blue defensive crescent close to the blade, and patient upright recovery. Row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nCadence lock: Compact circular defense and patient measured adult footwork.\nContinuity lock: Keep the same original auburn-haired and neatly bearded illustrated Jedi, cream tunic, tan tabards, brown belt and robe, tall boots and single blue saber in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, equipment and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate, fully clothed lesson, protection and calm practice choreography; relaxed expressions, careful tool handling and luminous practice effects aimed into open practice space.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and clean presentation.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Positive literary and animation illustration pass using calm lesson, protection and practice choreography.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-2026-08-25",
+      "correctionOfGenerationPromptSha256": "48f0f373799effcdd6c5400103f751228d0857a5bda864e3bdcfb23c817f41ac"
+    },
+    {
+      "sequence": 344,
+      "kind": "hero",
+      "id": "yoda",
+      "name": "Yoda",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/yoda.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "safe-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "small elderly green Jedi with large pointed ears, deeply thoughtful eyes and compact balanced proportions",
+        "outfit": "simple layered cream and tan robes with a small brown belt",
+        "role": "Yoda as an original animation-inspired fan-made pixel-art mentor and guardian",
+        "equipment": "gnarled walking cane and one small green lightsaber used only in controlled training movement"
+      },
+      "sourcePromptSha256": "c3f04152a52a45294d7bdfc82c6bdaf57711e4304b92c11ccb3fe7ff032df23f",
+      "generationPromptSha256": "34dabe834b6998f5e8c7dbe34656117c5b7fb486db81de72eee75691ea36b280",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-z-safe-moderation/344-hero-yoda-safe-34dabe83.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create a wholly original literary- or animation-inspired pixel-art interpretation of Yoda from Star Wars, bound to runtime identity yoda.\nCanonical physical anchor: small elderly green Jedi with large pointed ears, deeply thoughtful eyes and compact balanced proportions.\nCanonical outfit anchor: simple layered cream and tan robes with a small brown belt.\nCanonical role anchor: Yoda as an original animation-inspired fan-made pixel-art mentor and guardian.\nCanonical equipment anchor: gnarled walking cane and one small green lightsaber used only in controlled training movement.\nCreative identity: a unique hand-illustrated face and silhouette derived from the descriptive literary or animated traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; Row 3 presents a mentor-led protection exercise in four stages: set the cane aside neatly, raise the small green training saber, form one compact green protective spiral through empty practice space, and finish in a serene balanced stance beside the cane. Row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nCadence lock: Meditative pauses alternating with brief, precise and light-footed movement.\nContinuity lock: Keep the same small elderly green mentor, large pointed ears, thoughtful eyes, cream-tan robes, brown belt, gnarled cane and small green training saber in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, equipment and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate, fully clothed lesson, protection and calm practice choreography; relaxed expressions, careful tool handling and luminous practice effects aimed into open practice space.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and clean presentation.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Positive literary and animation illustration pass using calm lesson, protection and practice choreography.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-2026-08-25",
+      "correctionOfGenerationPromptSha256": "b2845209cb187d524beada73c9928d04056fff692223fc1a909b735b0a54aea8"
+    },
+    {
+      "sequence": 347,
+      "kind": "hero",
+      "id": "obiwan",
+      "name": "Obi-Wan Kenobi",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/obiwan.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "safe-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "the same adult Obi-Wan Kenobi identity with auburn hair, neat beard and calm observant eyes",
+        "outfit": "the same layered cream tunic, tan tabards, brown belt, dark trousers, boots and brown robe",
+        "role": "Obi-Wan Kenobi as an original animation-inspired fan-made pixel-art Jedi guardian",
+        "equipment": "single blue lightsaber used in clean defensive practice"
+      },
+      "sourcePromptSha256": "df2582c69e7a5b36305013fbf564959b594a7d368ef3601f41e64ee822b669fb",
+      "generationPromptSha256": "8528cb9831a69896108591ee7d1a376a415112fcded834c71353a989c848a0b1",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-z-safe-moderation/347-hero-obiwan-safe-8528cb98.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create a wholly original literary- or animation-inspired pixel-art interpretation of Obi-Wan Kenobi from Star Wars, bound to runtime identity obiwan.\nCanonical physical anchor: the same adult Obi-Wan Kenobi identity with auburn hair, neat beard and calm observant eyes.\nCanonical outfit anchor: the same layered cream tunic, tan tabards, brown belt, dark trousers, boots and brown robe.\nCanonical role anchor: Obi-Wan Kenobi as an original animation-inspired fan-made pixel-art Jedi guardian.\nCanonical equipment anchor: single blue lightsaber used in clean defensive practice.\nCreative identity: a unique hand-illustrated face and silhouette derived from the descriptive literary or animated traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; Row 3 presents a teaching-oriented defensive sequence in four stages: thoughtful ready pose, rising blue-saber parry through empty practice space, compact blue protective arc close to the blade, and quiet teaching recovery. Row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nCadence lock: Slower instructional timing than sequence 343 while preserving the same identity, costume and equipment.\nContinuity lock: Alias continuity: obiwan is the same original auburn-haired, neatly bearded Obi-Wan identity as obi_wan, with cream tunic, tan tabards, brown belt and robe, tall boots and one blue saber.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, equipment and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate, fully clothed lesson, protection and calm practice choreography; relaxed expressions, careful tool handling and luminous practice effects aimed into open practice space.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and clean presentation.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Positive literary and animation illustration pass using calm lesson, protection and practice choreography.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-2026-08-25",
+      "correctionOfGenerationPromptSha256": "ad8466b8a1f1d672f340c69b54bc9622ee5d1771cb79cc81fd79933ca03378cf"
+    },
+    {
+      "sequence": 348,
+      "kind": "hero",
+      "id": "ahsoka",
+      "name": "Ahsoka Tano (Siege of Mandalore)",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/ahsoka.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "safe-moderation-regeneration",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "animated-continuity young Togruta woman with orange skin, symmetrical white facial markings and longer blue-and-white montrals and lekku",
+        "outfit": "fully covered blue-grey Siege of Mandalore tunic, fitted trousers, bracers and practical boots",
+        "role": "Ahsoka Tano during the Siege of Mandalore as an original animation-inspired fan-made pixel-art hero",
+        "equipment": "paired blue lightsabers used in controlled defensive choreography"
+      },
+      "sourcePromptSha256": "447a7e255e530e89f12d4dbbfe89ac29627550380a09d732c37f4d9bf8ba9f8c",
+      "generationPromptSha256": "444c8527bd7e2242e2635ee8b7b30f057c9fe640740ae4a5dc01a90f99fba262",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-251-375-z-safe-moderation/348-hero-ahsoka-safe-444c8527.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create a wholly original literary- or animation-inspired pixel-art interpretation of Ahsoka Tano (Siege of Mandalore) from Star Wars, bound to runtime identity ahsoka.\nCanonical physical anchor: animated-continuity young Togruta woman with orange skin, symmetrical white facial markings and longer blue-and-white montrals and lekku.\nCanonical outfit anchor: fully covered blue-grey Siege of Mandalore tunic, fitted trousers, bracers and practical boots.\nCanonical role anchor: Ahsoka Tano during the Siege of Mandalore as an original animation-inspired fan-made pixel-art hero.\nCanonical equipment anchor: paired blue lightsabers used in controlled defensive choreography.\nCreative identity: a unique hand-illustrated face and silhouette derived from the descriptive literary or animated traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; Row 3 presents a composed twin-saber protection exercise in four stages: alert paired blue-saber guard, synchronized crossing defensive curves through empty practice space, a compact blue protective oval close to the blades, and balanced reverse-grip recovery. Row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nCadence lock: Mature precision with synchronized twin-blade timing and calm leadership.\nContinuity lock: Keep the same orange Togruta complexion, symmetrical white facial markings, long blue-white montrals and lekku, fully covered blue-grey Siege tunic, fitted trousers, bracers, boots and paired blue sabers in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, equipment and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate, fully clothed lesson, protection and calm practice choreography; relaxed expressions, careful tool handling and luminous practice effects aimed into open practice space.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and clean presentation.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Positive literary and animation illustration pass using calm lesson, protection and practice choreography.",
+      "correctionOfBatchId": "assets-missing-500-wave-2-corrections-251-375-2026-08-25",
+      "correctionOfGenerationPromptSha256": "9c9f89eb28bf013ce28754d8e1ed9d0631210f6383bed41af3bb4fa5d94f494f"
+    }
+  ]
+}

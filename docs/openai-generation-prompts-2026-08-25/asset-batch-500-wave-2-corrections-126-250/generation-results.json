@@ -1,0 +1,1820 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-missing-500-wave-2-corrections-126-250-2026-08-25",
+  "batchFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250.json",
+  "generatedAt": "2026-08-25T17:23:17.919Z",
+  "queue": {
+    "total": 20,
+    "complete": 20,
+    "pending": 0,
+    "failed": 0,
+    "invalid": 0,
+    "attempts": 20,
+    "retries": 0
+  },
+  "qa": {
+    "normalized": 20,
+    "visualPass": 19,
+    "visualPassWithReviewNote": 1,
+    "visualFail": 0,
+    "metrics": {
+      "items": {
+        "count": 5,
+        "occupancyMin": 0.202915,
+        "occupancyMax": 0.355289,
+        "guardViolations": 0,
+        "allBinaryAlpha": true
+      },
+      "heroes": {
+        "count": 15,
+        "cellOccupancyMin": 0.14328,
+        "cellOccupancyMax": 0.410187,
+        "cellGuardViolations": 0,
+        "allSixteenUniqueAlpha": true,
+        "allSixteenUniqueRgba": true,
+        "allBinaryAlpha": true,
+        "minimumNormalizerGuard": 12
+      }
+    },
+    "contacts": [
+      {
+        "png": "tmp/qa-corrections-126-250-20260825/contacts/items-149-198.png",
+        "webp": "tmp/qa-corrections-126-250-20260825/contacts/items-149-198.webp"
+      },
+      {
+        "png": "tmp/qa-corrections-126-250-20260825/contacts/heroes-236-240.png",
+        "webp": "tmp/qa-corrections-126-250-20260825/contacts/heroes-236-240.webp"
+      },
+      {
+        "png": "tmp/qa-corrections-126-250-20260825/contacts/heroes-241-245.png",
+        "webp": "tmp/qa-corrections-126-250-20260825/contacts/heroes-241-245.webp"
+      },
+      {
+        "png": "tmp/qa-corrections-126-250-20260825/contacts/heroes-246-250.png",
+        "webp": "tmp/qa-corrections-126-250-20260825/contacts/heroes-246-250.webp"
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "sequence": 149,
+      "kind": "item",
+      "id": "serious_sam_cannon",
+      "name": "Cannon",
+      "universe": "Serious Sam",
+      "output": "/sprites/generated/items/serious-sam/serious-sam-cannon.png",
+      "generationId": "exec-09e51558-2629-4247-91d5-ebf57c52a90f",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/149-item-serious_sam_cannon-correction-59760ef1.txt",
+      "generationPromptSha256": "59760ef19554313581b2432257cc1b4f3ed4698f518eb8e9461bcb31558120bc",
+      "sourcePromptSha256": "9a171e8d344e29e84de60f291043b5f802a895d248f8c7994b6ce56472949eef",
+      "correctionOfGenerationPromptSha256": "6d3ceb6a0d40834d570d8b0c788dc81375c0bec7e09a81a6c3a6f1582cdcdfb7",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/149-item-serious-sam-cannon/attempts/001/raw.png",
+        "sha256": "6e8af92b827f6a974892699c19ecfdbe0baa6adca02cdf6bbb3138bec5ca7fcb",
+        "bytes": 1081889,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/149-item-serious_sam_cannon.png",
+        "sha256": "063c95664d880a9f7e21760826eab40820b7bef24c44bf68e506a51b745fc2ba",
+        "width": 512,
+        "height": 512,
+        "alphaLevels": 2,
+        "occupancy": 0.217545,
+        "guard24Pixels": 0,
+        "processing": {
+          "operation": "connected-edge-background-removal+item-normalization",
+          "backgroundKeys": [
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              248,
+              244,
+              244
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              248,
+              248,
+              244
+            ],
+            [
+              252,
+              252,
+              255
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1127536,
+          "padding": 36
+        }
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: unmistakable handheld barrel; no wheels, carriage or artillery mount."
+      }
+    },
+    {
+      "sequence": 171,
+      "kind": "item",
+      "id": "binding_of_isaac_rebirth_lucky_foot",
+      "name": "Lucky Foot",
+      "universe": "The Binding of Isaac: Rebirth",
+      "output": "/sprites/generated/items/the-binding-of-isaac-rebirth/binding-of-isaac-rebirth-lucky-foot.png",
+      "generationId": "exec-e49e9a22-966d-403f-bce0-de312ad72d2c",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/171-item-binding_of_isaac_rebirth_lucky_foot-correction-223b25b3.txt",
+      "generationPromptSha256": "223b25b33dcb18a4bb1a14366ac3d7895013d8d85354cb4fc097f7bb7462524e",
+      "sourcePromptSha256": "3d22532cd95a07c7912b8f5d88a63504ecf616fcded4e4d5999beac1f6c5fb3c",
+      "correctionOfGenerationPromptSha256": "c2250d8bcebe7d65d83268ed3a0e364327a0019a9e94aa5993288ac0d1d34e22",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/171-item-binding-of-isaac-rebirth-lucky-foot/attempts/001/raw.png",
+        "sha256": "cd7c7a20a3f3ac6cc37ed8b0fac2334635df0ef562f331057f3a0e2547f48d28",
+        "bytes": 880826,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/171-item-binding_of_isaac_rebirth_lucky_foot.png",
+        "sha256": "aed95e3b2f3f0ba317dac700859fe80f7707ae409e3df16419aa77d512996090",
+        "width": 512,
+        "height": 512,
+        "alphaLevels": 2,
+        "occupancy": 0.292339,
+        "guard24Pixels": 0,
+        "processing": {
+          "operation": "connected-edge-background-removal+item-normalization",
+          "backgroundKeys": [
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              248,
+              248,
+              244
+            ],
+            [
+              252,
+              252,
+              255
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1307261,
+          "padding": 36
+        }
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: intact closed lucky charm; no wound, exposed anatomy or gore."
+      }
+    },
+    {
+      "sequence": 172,
+      "kind": "item",
+      "id": "the_darkness_darkness_guns",
+      "name": "Darkness Guns",
+      "universe": "The Darkness",
+      "output": "/sprites/generated/items/the-darkness/the-darkness-darkness-guns.png",
+      "generationId": "exec-c121aa4a-1205-4c31-8c27-88ec060b9f77",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/172-item-the_darkness_darkness_guns-correction-4cf3900f.txt",
+      "generationPromptSha256": "4cf3900faf72bfc8083b9a324b3a2ae890bc70edcba56082cc1f642a70eb5e95",
+      "sourcePromptSha256": "b223bf5e53f44e44f0f19915590044c94038e2f59016dcc1959e104a75c7c7f1",
+      "correctionOfGenerationPromptSha256": "03850147443c16c73759609d2443defb1a26a1a386a5897838070036bb701388",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/172-item-the-darkness-darkness-guns/attempts/001/raw.png",
+        "sha256": "09d742b717811833143aa091a293073819cdefb07170c3c96da1cc22e93b227d",
+        "bytes": 1495513,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/172-item-the_darkness_darkness_guns.png",
+        "sha256": "526f4a3ece2c065b57341479c882d86e276daf9fa48f3ef4301df3f334616127",
+        "width": 512,
+        "height": 512,
+        "alphaLevels": 2,
+        "occupancy": 0.311169,
+        "guard24Pixels": 0,
+        "processing": {
+          "operation": "connected-edge-background-removal+item-normalization",
+          "backgroundKeys": [
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              255,
+              255,
+              252
+            ],
+            [
+              252,
+              255,
+              252
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1079156,
+          "padding": 36
+        }
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: exactly two distinct handgun silhouettes with restrained dark-energy seams; no dragon heads."
+      }
+    },
+    {
+      "sequence": 177,
+      "kind": "item",
+      "id": "the_surge_astir_spectre",
+      "name": "ASTir Spectre",
+      "universe": "The Surge",
+      "output": "/sprites/generated/items/the-surge/the-surge-astir-spectre.png",
+      "generationId": "exec-147948c0-b531-42e4-8c94-42cbe9eba4bd",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/177-item-the_surge_astir_spectre-correction-07bdaab5.txt",
+      "generationPromptSha256": "07bdaab5d0b6b24897db8cd590e7b49e205254342ac2550cc88d15d44eff04dd",
+      "sourcePromptSha256": "f67bac9dfd5f03dd863a25239705d7ec623d0d612e58210e6be317b6324b5b2f",
+      "correctionOfGenerationPromptSha256": "7a75fffc7d7d78da684982b6ea11d99d650420d81068d112317cdea5a13d4a47",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/177-item-the-surge-astir-spectre/attempts/001/raw.png",
+        "sha256": "7dee35da6a68addcce331ad07dc0ab962869bca835b5b9b3e626be24733db80a",
+        "bytes": 1347826,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/177-item-the_surge_astir_spectre.png",
+        "sha256": "1e388d7ea14db9290791ff7c05c1e80d1823c8c5cbc54981d2a955eeb0a4a91b",
+        "width": 512,
+        "height": 512,
+        "alphaLevels": 2,
+        "occupancy": 0.202915,
+        "guard24Pixels": 0,
+        "processing": {
+          "operation": "connected-edge-background-removal+item-normalization",
+          "backgroundKeys": [
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              244,
+              240,
+              240
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1184196,
+          "padding": 36
+        }
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: long industrial single-rigged cutter with arm clamp and orange plasma nodes; no orb."
+      }
+    },
+    {
+      "sequence": 198,
+      "kind": "item",
+      "id": "gushing_magical_girls_safe_team_signal_gem",
+      "name": "Team Signal Gem",
+      "universe": "Gushing over Magical Girls — Safe Adult Reinterpretation",
+      "output": "/sprites/generated/items/gushing-over-magical-girls-safe-adult-reinterpretation/gushing-magical-girls-safe-team-signal-gem.png",
+      "generationId": "exec-d4acf682-a74b-4d51-a181-c644514eff21",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/198-item-gushing_magical_girls_safe_team_signal_gem-correction-e3944c11.txt",
+      "generationPromptSha256": "e3944c119df8faa6b3e4ca0146b59039dca83e1dd8f3ce65aee9a00ef190f5cb",
+      "sourcePromptSha256": "ebd985be033781b8395dc5f3a995b918845566a417d6619093af4cda081f1563",
+      "correctionOfGenerationPromptSha256": "d1c914d7920e929503f63b9d41bd481ad44dc515bac5495efb47a7d767722bd7",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/198-item-gushing-magical-girls-safe-team-signal-gem/attempts/001/raw.png",
+        "sha256": "363c1edf1afe199e89efb15b632085d37333a5995a7a948f87f00470a6afbae7",
+        "bytes": 1171295,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/198-item-gushing_magical_girls_safe_team_signal_gem.png",
+        "sha256": "4d2907c179a5ab42d57b4dd8cbe64bd54c3e83ad959b504282fb82e84d3f53ab",
+        "width": 512,
+        "height": 512,
+        "alphaLevels": 2,
+        "occupancy": 0.355289,
+        "guard24Pixels": 0,
+        "processing": {
+          "operation": "connected-edge-background-removal+item-normalization",
+          "backgroundKeys": [
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              255,
+              255,
+              252
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              244,
+              240,
+              240
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1147643,
+          "padding": 36
+        }
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: cyan hexagonal relay gem with asymmetric antenna cage, clearly distinct from the Transformation Star."
+      }
+    },
+    {
+      "sequence": 236,
+      "kind": "hero",
+      "id": "harrigan_p2_core",
+      "name": "Mike Harrigan",
+      "universe": "Predator",
+      "output": "/sprites/generated/heroes/predator/harrigan-p2-core.png",
+      "generationId": "exec-5e957332-64e0-4f57-908e-18cfc3dad5a2",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/236-hero-harrigan_p2_core-correction-184debe5.txt",
+      "generationPromptSha256": "184debe58cc17183aa3ba026abd86cbe12b47f5608e5675bf8252c0703767760",
+      "sourcePromptSha256": "29e0194afb72b7aece2dc58bfa85e09c51ff8ddeab1f02eb8fa69e4d7364e683",
+      "correctionOfGenerationPromptSha256": "13868c3d0db391d9e7d7eb3678c6780422be5f2c407adedea35be7b9b5f82c45",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/236-hero-harrigan-p2-core/attempts/001/raw.png",
+        "sha256": "86a504539c23d9c5a8d2067722844c3b93328d387cd07de429615456997d3cd1",
+        "bytes": 1505713,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/236-hero-harrigan_p2_core.png",
+        "sha256": "8a9da98a01a2940cc294329e7278442d8026ba95beaac9a6fda194a90a344a79",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.231339,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              248,
+              248,
+              244
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1248525,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: Black middle-aged LAPD detective silhouette, shirt, tie and service handgun; distinct from Royce."
+      }
+    },
+    {
+      "sequence": 237,
+      "kind": "hero",
+      "id": "royce_predators_core",
+      "name": "Royce",
+      "universe": "Predator",
+      "output": "/sprites/generated/heroes/predator/royce-predators-core.png",
+      "generationId": "exec-e2c16d8f-1b03-4f02-ae55-9b5a29ef13be",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/237-hero-royce_predators_core-correction-d1796cc7.txt",
+      "generationPromptSha256": "d1796cc75b15e2b9a676b90cd199a0dab8eaf35687929830f5d802f9127eb1e6",
+      "sourcePromptSha256": "046035564dce4de5cd03262206fb54612bc5c47698039df5c5d0960271efa8bb",
+      "correctionOfGenerationPromptSha256": "98059947a5589e05398ac290f4649eaec073bd96246944f66fd0d9b5bd67c77d",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/237-hero-royce-predators-core/attempts/001/raw.png",
+        "sha256": "ff42a355e9b183083b90534fcbcf4e6e6a09e526a1002c05e78ded30c9725914",
+        "bytes": 1646032,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/237-hero-royce_predators_core.png",
+        "sha256": "25975c78167cb8bf504918abd068e0c3b5e76535da6f1751e7e1281b69d7db65",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.251453,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              244,
+              244,
+              240
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1205252,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: jungle mercenary gear and drum-fed shotgun; distinct identity and no supernatural effect."
+      }
+    },
+    {
+      "sequence": 238,
+      "kind": "hero",
+      "id": "chris_redfield",
+      "name": "Chris Redfield",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/heroes/resident-evil/chris-redfield.png",
+      "generationId": "exec-33b48568-963b-4cab-be47-46669d475e52",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/238-hero-chris_redfield-correction-6044a0e5.txt",
+      "generationPromptSha256": "6044a0e55e929f475411a45798f0d5da10e42fbca0928abbc54328d4485564fa",
+      "sourcePromptSha256": "bcf63fa1a651b6173339f12ed380828c0084071775d12b61f6b9065e52c13171",
+      "correctionOfGenerationPromptSha256": "ba328ffde46194f9b60045e8d838270dfb64f39cd58d50d0e60f4c32509388a4",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/238-hero-chris-redfield/attempts/001/raw.png",
+        "sha256": "e214139681401ee6dfa4635e97c70e42df023c4f8911977b525a626cb3dd5618",
+        "bytes": 1533421,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/238-hero-chris_redfield.png",
+        "sha256": "69c395511c288b9950af06a81c58728aab7d7aecdef23058b8cfaec513c2417a",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.255178,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              248,
+              248,
+              244
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              244,
+              248,
+              244
+            ],
+            [
+              252,
+              252,
+              255
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1257569,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: classic green tactical Chris silhouette and conventional handgun action only."
+      }
+    },
+    {
+      "sequence": 239,
+      "kind": "hero",
+      "id": "claire_redfield",
+      "name": "Claire Redfield",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/heroes/resident-evil/claire-redfield.png",
+      "generationId": "exec-be5517f9-d83a-41e3-bd7d-45f41353ddbf",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/239-hero-claire_redfield-correction-6d96af67.txt",
+      "generationPromptSha256": "6d96af671564319ce94b1123b2b9c15dfc62423fbb1fa0894f884cf9277884a3",
+      "sourcePromptSha256": "21273ffe61a174a01607f64bfc945e3f5e1cbb23767615b053789e946ec276bf",
+      "correctionOfGenerationPromptSha256": "2f01dcd288da52a149f8ed7a328d1f60aff225a45716145e056f138bbf53bbf9",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/239-hero-claire-redfield/attempts/001/raw.png",
+        "sha256": "1b3336d37ce22de28b19c6800da77d4bee154884da47b24b00992c52d7557bbc",
+        "bytes": 1474741,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/239-hero-claire_redfield.png",
+        "sha256": "17127ecfc80bc1b866f0b23cfc14335494373e531137159c49c0bfc5691d8ecb",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.208934,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              252,
+              255,
+              252
+            ],
+            [
+              248,
+              244,
+              244
+            ],
+            [
+              252,
+              252,
+              255
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1293806,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: red-jacket Claire silhouette and conventional handgun action only."
+      }
+    },
+    {
+      "sequence": 240,
+      "kind": "hero",
+      "id": "ada_wong",
+      "name": "Ada Wong",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/heroes/resident-evil/ada-wong.png",
+      "generationId": "exec-a758dd54-4000-4c97-b804-bb76ec6e3965",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/240-hero-ada_wong-correction-7d7bcd4d.txt",
+      "generationPromptSha256": "7d7bcd4d6ea829871778c7a9e9f849d750b9cdb8e4f80d5a46558d11d36b5622",
+      "sourcePromptSha256": "84cd2fb93b7e5414aaf8a4ff31ea887b24869465bbf61019b72cc3bfaad6be05",
+      "correctionOfGenerationPromptSha256": "977a8b67af24d2d5700f63c591fa65a270e28028e29cf78594af9a46029e7875",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/240-hero-ada-wong/attempts/001/raw.png",
+        "sha256": "b713417c5a2e8ae4746cbf93dc52f885edc59ac2c9293e82ca2ccea039a4bcd9",
+        "bytes": 1397899,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/240-hero-ada_wong.png",
+        "sha256": "a8924494038863555230cddda6412a4d9e530905219dd9a56e368da965896b89",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.203238,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              244,
+              244,
+              240
+            ],
+            [
+              240,
+              244,
+              240
+            ],
+            [
+              244,
+              240,
+              240
+            ],
+            [
+              255,
+              252,
+              255
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1316499,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: red covert outfit, pistol and grappling-hook choreography; no laser or magic."
+      }
+    },
+    {
+      "sequence": 241,
+      "kind": "hero",
+      "id": "rebecca_chambers",
+      "name": "Rebecca Chambers",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/heroes/resident-evil/rebecca-chambers.png",
+      "generationId": "exec-650c222c-9c1e-4271-8232-717412bdcf7f",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/241-hero-rebecca_chambers-correction-227c6bd7.txt",
+      "generationPromptSha256": "227c6bd7ba7760845eb7490a3de6a17a561d8a682b3c72c60390327787681f65",
+      "sourcePromptSha256": "e7dd89fbd9b930db3580fc63da7f9040899f72443f7140b1dd692418911782d9",
+      "correctionOfGenerationPromptSha256": "1808b8a53b7885feb8caa94e34347baee67a00a91a5df1d18078cc99219457e0",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/241-hero-rebecca-chambers/attempts/001/raw.png",
+        "sha256": "e5961c8cf5e2a7aff71e592a843038ade5d5bfa3361c732dc4ea1837939694fb",
+        "bytes": 1518829,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/241-hero-rebecca_chambers.png",
+        "sha256": "c13c98d5837b200f64576a67c88c57176192d74ca953a2c3be5460b3203835f0",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.219838,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              255,
+              255,
+              252
+            ],
+            [
+              252,
+              255,
+              252
+            ],
+            [
+              248,
+              248,
+              244
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1288281,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: S.T.A.R.S. medic identity and first-aid support choreography; no attack or laser."
+      }
+    },
+    {
+      "sequence": 242,
+      "kind": "hero",
+      "id": "barry_burton",
+      "name": "Barry Burton",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/heroes/resident-evil/barry-burton.png",
+      "generationId": "exec-0d9293d2-1bcf-41ff-bd76-c2b3aa1cf18a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/242-hero-barry_burton-correction-b511370e.txt",
+      "generationPromptSha256": "b511370eddfd33317e23410ad9e1f0bc2d5d3f3fde6759f1fde488c4f18b1de4",
+      "sourcePromptSha256": "9e1b477fa687862a8720f1c284fa9bcb89f1db9c56be5ed83371e8c9d1b5bb0c",
+      "correctionOfGenerationPromptSha256": "c0925a11c1c56a79a119b4c091dd3680d69ea8243be113df2a794bfdd98b04d9",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/242-hero-barry-burton/attempts/001/raw.png",
+        "sha256": "a7fc5a966e335f933aadb9386b3c2aa21df67552ac919b2bbb5074b5abd0b53a",
+        "bytes": 1631533,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/242-hero-barry_burton.png",
+        "sha256": "6d305c9acb68c253f3f45616808bf7c0e7318e474d026812479206864af35cfb",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.252296,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              248,
+              248,
+              244
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              248,
+              244,
+              244
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1227492,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: broad veteran build, red vest and large magnum; no energy shield."
+      }
+    },
+    {
+      "sequence": 243,
+      "kind": "hero",
+      "id": "carlos_oliveira",
+      "name": "Carlos Oliveira",
+      "universe": "Resident Evil",
+      "output": "/sprites/generated/heroes/resident-evil/carlos-oliveira.png",
+      "generationId": "exec-83268d3c-52c2-488c-a65f-2b0df35cac63",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/243-hero-carlos_oliveira-correction-41021610.txt",
+      "generationPromptSha256": "41021610b9d48788c5349f14327b8ef7342823824132a8f3aaf744007210ea35",
+      "sourcePromptSha256": "f74b7f051abc9aee9efd4a046c50bd42e93967d8bdad56cde7853508ccddf411",
+      "correctionOfGenerationPromptSha256": "c37184de6c032d4c902f838a986cb436a32d4b1af872ee764f198f01cff181d3",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/243-hero-carlos-oliveira/attempts/001/raw.png",
+        "sha256": "f1e28029accd1753643a29132d4d85e196bf7b9bb51b10d8c05fc2c9947a2814",
+        "bytes": 1727209,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/243-hero-carlos_oliveira.png",
+        "sha256": "6f545d79f031a43c4ffe93ce55b6fea8a6604198428ae7257f3241273fcc2415",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.246547,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              236,
+              236,
+              236
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              240,
+              240,
+              236
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              240,
+              236,
+              236
+            ],
+            [
+              236,
+              240,
+              236
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1198024,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: U.B.C.S. tactical identity and conventional rifle sequence; no blue burst."
+      }
+    },
+    {
+      "sequence": 244,
+      "kind": "hero",
+      "id": "harry_mason",
+      "name": "Harry Mason",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/heroes/silent-hill/harry-mason.png",
+      "generationId": "exec-e535c14e-84fe-48d4-8f2c-72fc2db32cb5",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/244-hero-harry_mason-correction-d7b1d893.txt",
+      "generationPromptSha256": "d7b1d893b0b701459758095d44d6dbc03f68d570a05754a7e122551a91372200",
+      "sourcePromptSha256": "8868e0ecbd14e5a5321ffc46a2e857801584cd372370fade9f3722df4d7135d7",
+      "correctionOfGenerationPromptSha256": "b5c666480fb6f95a285f9ea675ad9f97359fa6ecaeed011b7178763163caf364",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/244-hero-harry-mason/attempts/001/raw.png",
+        "sha256": "951a1caeb4e84a23da8a46dce0806d6ac1afc28c752a3a948d906d7046045145",
+        "bytes": 1561868,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/244-hero-harry_mason.png",
+        "sha256": "3fcfe63a6e894f0c8b1ba5ce439e34073d4ac4dc0b3b7dc31e3b7d8494d7454f",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.236238,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              248,
+              248,
+              248
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1229520,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: ordinary father silhouette, brown jacket and physical steel-pipe action; no aura."
+      }
+    },
+    {
+      "sequence": 245,
+      "kind": "hero",
+      "id": "alessa_gillespie",
+      "name": "Alessa Gillespie",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/heroes/silent-hill/alessa-gillespie.png",
+      "generationId": "exec-3c4572ab-7be4-413b-bb56-bd4d2cbcff4f",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/245-hero-alessa_gillespie-correction-04a159ca.txt",
+      "generationPromptSha256": "04a159caac23ca48421ab404fb368f92d0f4b8a87fb82e369b96e25f2292784c",
+      "sourcePromptSha256": "6cf06903555cc06f9fb66b363c889c12f406292e3d9b361aabcff4bcbd513c9a",
+      "correctionOfGenerationPromptSha256": "6d42a2e40aac29ce384e909d6466601e71c8bb11d445f445b396b558d646b53b",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/245-hero-alessa-gillespie/attempts/001/raw.png",
+        "sha256": "bba2dfa29066379bd1222aa37b3054ecc2340185a8bb4e5dcfeb27059615cdea",
+        "bytes": 1433970,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/245-hero-alessa_gillespie.png",
+        "sha256": "e1e35ff9af76d6bf0dd769d92e809cf7acda90883deda6934fc031ac4ecb1ca8",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.215912,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              244,
+              244,
+              240
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              252,
+              252,
+              255
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1308747,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: safe intact school-uniform astral projection with a close defensive psychic ward; no laser or book."
+      }
+    },
+    {
+      "sequence": 246,
+      "kind": "hero",
+      "id": "maria_sh2",
+      "name": "Maria",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/heroes/silent-hill/maria-sh2.png",
+      "generationId": "exec-fb3ac833-385c-449a-9052-4f31ee4c6c4f",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/246-hero-maria_sh2-correction-d7fe73bb.txt",
+      "generationPromptSha256": "d7fe73bbf3e996e33cda321003c334c648bebb15859a4a02a63d3c5fbff5f39e",
+      "sourcePromptSha256": "ab3c679a45b5c6c7ced73f2f461e318b4c42181c6e459fd099ab8fe6b73a04dc",
+      "correctionOfGenerationPromptSha256": "87e62891b870eb910e246478846c8dfacf8c57b958e2ca96f1b0c6c00f7152ed",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/246-hero-maria-sh2/attempts/001/raw.png",
+        "sha256": "d230b159bbb8f344eb22fdc6cd8dd752813b35e28a020c89f6a7a08434549aef",
+        "bytes": 1406469,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/246-hero-maria_sh2.png",
+        "sha256": "329c107422c49f44f6006e0e2b0f11e47067b744e761ac02303b79523980774c",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.173167,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              255,
+              255,
+              252
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              252,
+              252,
+              248
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1311664,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: pink-and-leopard Maria identity with Chinese cleaver; no military uniform, sword or magic."
+      }
+    },
+    {
+      "sequence": 247,
+      "kind": "hero",
+      "id": "cybil_bennett",
+      "name": "Cybil Bennett",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/heroes/silent-hill/cybil-bennett.png",
+      "generationId": "exec-d5983b84-e4b4-42ab-93e8-cc7461427c44",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/247-hero-cybil_bennett-correction-5680fdba.txt",
+      "generationPromptSha256": "5680fdbac43892b13e7aa1c42b7fcedd09323b91142aabe17b15735bfd868341",
+      "sourcePromptSha256": "60f84219cd63a7d5cf296a95d67c6fb32121b313ea884d0a1ffeebd5bccceabc",
+      "correctionOfGenerationPromptSha256": "a19746fe068e9b136bd0381832d215e2316499cd7a52e6d5aeddb3a9e4ca6935",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/247-hero-cybil-bennett/attempts/001/raw.png",
+        "sha256": "6403fbe504081760b7e992d6df9d4f70b0bd840e9e1a5e6ad7fa01fb3ae322c7",
+        "bytes": 1464194,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/247-hero-cybil_bennett.png",
+        "sha256": "e663c7b5b5ecd94f4b5168902989e1b8f792ba1d898a65298a3ba908f76e3e2d",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.188568,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              255,
+              252,
+              252
+            ],
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              236,
+              236,
+              236
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1304775,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: blonde police identity and conventional handgun sequence; no energy orb."
+      }
+    },
+    {
+      "sequence": 248,
+      "kind": "hero",
+      "id": "claudia_wolf",
+      "name": "Claudia Wolf",
+      "universe": "Silent Hill",
+      "output": "/sprites/generated/heroes/silent-hill/claudia-wolf.png",
+      "generationId": "exec-cc8f7a4b-363c-4be0-8a05-85c46f9bd47c",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/248-hero-claudia_wolf-correction-55d6ee7c.txt",
+      "generationPromptSha256": "55d6ee7c1fa13e35644ddea2bde620389e6e03390df87c42a3214c075da227b3",
+      "sourcePromptSha256": "903b15cd26e55b3938f95b791a04871f19cb6715c826a8becb252cb9fafe340f",
+      "correctionOfGenerationPromptSha256": "1ebf455adf2dd58680d56ea4b9e5b633e4c66dd4c534a43c5e573434e6392817",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/248-hero-claudia-wolf/attempts/001/raw.png",
+        "sha256": "676367c7e10b6353711b892dd7cb3694428e1ba90caee035ae74caabbcd640ba",
+        "bytes": 1539014,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/248-hero-claudia_wolf.png",
+        "sha256": "745b269cf953ed642dc59e0a1e425bb794fd8331fb8549c10259cd482c925053",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.25028,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              244,
+              244,
+              244
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              248,
+              248,
+              248
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              255,
+              252,
+              252
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1191463,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: barefoot unarmed black-robed priestess with restrained ritual gestures."
+      }
+    },
+    {
+      "sequence": 249,
+      "kind": "hero",
+      "id": "gail_dc",
+      "name": "Gail",
+      "universe": "Dino Crisis",
+      "output": "/sprites/generated/heroes/dino-crisis/gail-dc.png",
+      "generationId": "exec-66c6c9c0-cfc3-43ed-9842-09c5397dfe4f",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/249-hero-gail_dc-correction-b8846fc2.txt",
+      "generationPromptSha256": "b8846fc204023643cc91dc6c576276e75a219a6ea24fec92ad677cff89ba47af",
+      "sourcePromptSha256": "5c6fab9d5ac0be7eea8b2fda5383e55dfe16b6712d8b49f0b75bf6a91f641524",
+      "correctionOfGenerationPromptSha256": "c68c846b21e7fe9d9ca7c7835f7c5081bbbdf4357eb06d8b342fa659d6f66240",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/249-hero-gail-dc/attempts/001/raw.png",
+        "sha256": "fe52a6159e4223b91a426ed7f2ceeadd53fb642302321f17274caa3bef2f5d2f",
+        "bytes": 1646372,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/249-hero-gail_dc.png",
+        "sha256": "904b82a2ba7ca85d1eebc6929dd6ebc852195830fbba0a79efa2d407b177e1a5",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.249078,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              252,
+              252,
+              255
+            ],
+            [
+              236,
+              236,
+              236
+            ],
+            [
+              255,
+              255,
+              252
+            ],
+            [
+              255,
+              252,
+              252
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1223657,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass",
+        "note": "PASS: adult male blond S.O.R.T. leader with compact carbine; no red-haired Regina-like identity."
+      }
+    },
+    {
+      "sequence": 250,
+      "kind": "hero",
+      "id": "paula_dc2",
+      "name": "Paula",
+      "universe": "Dino Crisis",
+      "output": "/sprites/generated/heroes/dino-crisis/paula-dc2.png",
+      "generationId": "exec-1ab629d7-2c99-4174-ae03-0e0ecc599ff8",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-126-250/250-hero-paula_dc2-correction-1c72cebe.txt",
+      "generationPromptSha256": "1c72cebecaf67ba828c17796a18b67e1ff5cbd1806c67fe6ded9ece86c443f0b",
+      "sourcePromptSha256": "6ec7910cce5d5fbc4ddd554aa7f8d3ccc87baf67bfea649a6de235298f86ebff",
+      "correctionOfGenerationPromptSha256": "bbf2c5fb83797836d3a04c38a3610011c8fbac263a53700783a866310609e0ab",
+      "source": {
+        "queuePath": "tmp/openai-sprite-batches/assets-missing-500-wave-2-corrections-126-250-2026-08-25/jobs/250-hero-paula-dc2/attempts/001/raw.png",
+        "sha256": "e1f8d035a7d111521e5bfca491a03cd2cae7fef88492ba6ec318f2eab8b2044d",
+        "bytes": 1474495,
+        "width": 1254,
+        "height": 1254,
+        "channels": 3,
+        "hasAlpha": false
+      },
+      "normalization": {
+        "qaPath": "tmp/qa-corrections-126-250-20260825/normalized/250-hero-paula_dc2.png",
+        "sha256": "2875165cba9419ede0fb303a7d2663771f621476fd1aaf5d4cb6751a64d7bffd",
+        "width": 1024,
+        "height": 1024,
+        "alphaLevels": 2,
+        "occupancy": 0.226554,
+        "processing": {
+          "operation": "connected-edge-background-removal+strict-4x4-normalization",
+          "backgroundKeys": [
+            [
+              255,
+              255,
+              255
+            ],
+            [
+              240,
+              240,
+              240
+            ],
+            [
+              252,
+              252,
+              252
+            ],
+            [
+              240,
+              240,
+              236
+            ],
+            [
+              236,
+              236,
+              236
+            ],
+            [
+              236,
+              240,
+              236
+            ],
+            [
+              255,
+              252,
+              255
+            ],
+            [
+              240,
+              236,
+              236
+            ]
+          ],
+          "backgroundModes": [
+            "neutral-checkerboard"
+          ],
+          "removedBackgroundPixels": 1299499,
+          "nonemptyCells": 16,
+          "minimumGuard": 12
+        },
+        "nonemptyCells": 16,
+        "uniqueAlphaCells": 16,
+        "uniqueRgbaCells": 16,
+        "cellGuardViolations": 0
+      },
+      "visualQa": {
+        "status": "pass-with-review-note",
+        "note": "PASS WITH REVIEW NOTE: blonde unarmed Paula identity, black biker gear, helmet and defensive evasion are correct; age may read as late-teen/young adult at small contact-sheet scale."
+      }
+    }
+  ]
+}

@@ -82,6 +82,7 @@ const createFixture = async (t, suffix) => {
     jobs: [{
       kind: entry.kind,
       id: entry.id,
+      output: entry.output,
       source: sourcePath,
       generationId: 'exec-test-green-edge-relic',
       generationPromptFile: generationPromptPath,
@@ -95,6 +96,7 @@ const createFixture = async (t, suffix) => {
     entry,
     prompt,
     generationPrompt,
+    generationPromptPath,
     sourcePath,
     batchPath,
     resultsPath,
@@ -224,6 +226,51 @@ test('batch install removes opaque edge-connected chroma green and records exact
   const persistedResult = JSON.parse(readFileSync(fixture.resultsPath, 'utf8'));
   assert.equal(persistedResult.status, 'complete');
   assert.equal(persistedResult.records[0].id, fixture.entry.id);
+});
+
+test('batch install rejects output drift before publishing an asset', async (t) => {
+  const fixture = await createFixture(t, 'output-drift');
+  const batch = JSON.parse(readFileSync(fixture.batchPath, 'utf8'));
+  batch.jobs[0].output = '/sprites/generated/items/installer-test/forbidden-drift.png';
+  writeFileSync(fixture.batchPath, JSON.stringify(batch, null, 2), 'utf8');
+
+  await assert.rejects(
+    installBatchFile({
+      root: fixture.root,
+      batchPath: fixture.batchPath,
+      resultsPath: fixture.resultsPath
+    }),
+    /batch output differs from prompt catalog/u
+  );
+  assert.equal(existsSync(fixture.outputPath), false);
+  assert.equal(readFileSync(fixture.ledgerPath, 'utf8'), '');
+});
+
+test('batch install preserves generation prompt bytes verbatim including final newline', async (t) => {
+  const fixture = await createFixture(t, 'prompt-verbatim');
+  const verbatimPrompt = fixture.generationPrompt + '\n';
+  writeFileSync(fixture.generationPromptPath, verbatimPrompt, 'utf8');
+  const batch = JSON.parse(readFileSync(fixture.batchPath, 'utf8'));
+  batch.jobs[0].generationPromptSha256 = sha256Buffer(
+    Buffer.from(verbatimPrompt, 'utf8')
+  );
+  writeFileSync(fixture.batchPath, JSON.stringify(batch, null, 2), 'utf8');
+
+  await installBatchFile({
+    root: fixture.root,
+    batchPath: fixture.batchPath,
+    resultsPath: fixture.resultsPath
+  });
+  const ledger = readFileSync(fixture.ledgerPath, 'utf8')
+    .trim()
+    .split(/\r?\n/u)
+    .map(line => JSON.parse(line));
+  assert.equal(ledger[0].generationPrompt, verbatimPrompt);
+  assert.equal(
+    ledger[0].generationPromptSha256,
+    sha256Buffer(Buffer.from(verbatimPrompt, 'utf8'))
+  );
+  assert.equal(ledger[0].generationPromptStatus, 'recorded-verbatim');
 });
 
 test('opt-in repair removes a large enclosed neutral checker cavity only', () => {

@@ -174,6 +174,7 @@ test('ingest preserves the original, copies exact PNG bytes, resumes idempotentl
   const installBatch = JSON.parse(await readFile(exported.output, 'utf8'));
   assert.deepEqual(installBatch.counts, { total: 2, complete: 1, remaining: 1 });
   assert.equal(installBatch.jobs.length, 1);
+  assert.equal(installBatch.jobs[0].output, '/sprites/generated/items/universe-1/job-1.png');
   assert.equal(installBatch.jobs[0].source, ingested.result.source.rawPath);
   assert.equal(installBatch.jobs[0].generationId, generationId);
   assert.equal(installBatch.jobs[0].replace, false);

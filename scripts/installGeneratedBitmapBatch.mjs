@@ -40,8 +40,8 @@ const HELP = [
   '',
   'Batch schemaVersion 1 fields:',
   '  batchId?, promptCatalogSha256?, jobs[]',
-  '  jobs: { kind, id, source, generationId, generationPromptFile,',
-  '          generationPromptSha256?, catalogPromptSha256?, replace?,',
+  '  jobs: { kind, id, output, source, generationId, generationPromptFile,',
+  '          generationPromptSha256, catalogPromptSha256, replace?,',
   '          repairEnclosedNeutralBackground?, recomposeNineRadialTiles? }',
   '',
   'Batch sources and prompts may be absolute or relative to the batch file.',
@@ -1035,13 +1035,14 @@ const normalizeStage = async source => ({
   }
 });
 
-export const normalizeGeneratedSource = (source, kind, options = {}) => (
-  kind === 'stage'
-    ? normalizeStage(source)
-    : kind === 'item'
-      ? normalizeItem(source, options)
-      : normalizeSheet(source)
-);
+const SHEET_KINDS = new Set(['hero', 'enemy', 'boss', 'trial', 'finale']);
+
+export const normalizeGeneratedSource = async (source, kind, options = {}) => {
+  if (kind === 'stage') return normalizeStage(source);
+  if (kind === 'item') return normalizeItem(source, options);
+  if (SHEET_KINDS.has(kind)) return normalizeSheet(source);
+  throw new Error(`Unsupported generated bitmap kind: ${kind}`);
+};
 
 export const atomicWriteTextFile = (target, value, options = {}) => {
   mkdirSync(path.dirname(target), { recursive: true });
@@ -1115,6 +1116,7 @@ const normalizeBatchJob = (input, baseDirectory) => {
   return {
     kind: merged.kind,
     id: merged.id,
+    output: merged.output || null,
     source: sourceValue ? resolveInputPath(sourceValue, baseDirectory) : null,
     generationId: merged.generationId || merged['generation-id'],
     generationPromptFile: promptValue
@@ -1169,7 +1171,8 @@ const prepareJob = async ({
   job,
   promptCatalog,
   stagingRoot,
-  requireGenerationPrompt
+  requireGenerationPrompt,
+  requireBatchContract
 }) => {
   const label = (job.kind || 'unknown') + '/' + (job.id || 'unknown');
   for (const key of ['source', 'kind', 'id', 'generationId']) {
@@ -1179,6 +1182,11 @@ const prepareJob = async ({
     throw new Error(label + ': invalid built-in image_gen generation id');
   }
   if (!existsSync(job.source)) throw new Error(label + ': source does not exist');
+  if (requireBatchContract) {
+    for (const key of ['output', 'generationPromptSha256', 'catalogPromptSha256']) {
+      if (!job[key]) throw new Error(label + ': batch installs require ' + key);
+    }
+  }
   if (requireGenerationPrompt && !job.generationPromptFile) {
     throw new Error(label + ': batch installs require generationPromptFile');
   }
@@ -1187,16 +1195,22 @@ const prepareJob = async ({
   }
   const promptEntry = promptCatalog.byIdentity.get(job.kind + ':' + String(job.id));
   if (!promptEntry) throw new Error('Unknown prompt entry: ' + label);
+  if (job.output && job.output !== promptEntry.output) {
+    throw new Error(label + ': batch output differs from prompt catalog');
+  }
   const catalogPromptSha256 = sha256Buffer(Buffer.from(promptEntry.prompt, 'utf8'));
   if (job.catalogPromptSha256 && job.catalogPromptSha256 !== catalogPromptSha256) {
     throw new Error(label + ': catalog prompt hash changed after planning');
   }
   const generationPrompt = job.generationPromptFile
-    ? readFileSync(job.generationPromptFile, 'utf8').trim()
+    ? readFileSync(job.generationPromptFile, 'utf8')
     : null;
-  const generationPromptSha256 = generationPrompt
+  const generationPromptSha256 = generationPrompt !== null
     ? sha256Buffer(Buffer.from(generationPrompt, 'utf8'))
     : null;
+  if (requireBatchContract && generationPrompt.length === 0) {
+    throw new Error(label + ': generation prompt file is empty');
+  }
   if (
     job.generationPromptSha256
     && job.generationPromptSha256 !== generationPromptSha256
@@ -1228,7 +1242,7 @@ const prepareJob = async ({
     catalogPromptSha256,
     generationPrompt,
     generationPromptSha256,
-    generationPromptStatus: generationPrompt
+    generationPromptStatus: generationPrompt !== null
       ? 'recorded-verbatim'
       : 'catalog-prompt-with-tool-augmentation-not-recorded',
     generation: {
@@ -1344,6 +1358,7 @@ export const installJobs = async ({
   jobs,
   promptCatalogSha256 = null,
   requireGenerationPrompt = false,
+  requireBatchContract = false,
   hooks = {}
 }) => {
   if (!Array.isArray(jobs) || jobs.length === 0) throw new Error('No install jobs supplied');
@@ -1366,7 +1381,8 @@ export const installJobs = async ({
         job,
         promptCatalog,
         stagingRoot,
-        requireGenerationPrompt
+        requireGenerationPrompt,
+        requireBatchContract
       }));
     }
     assertUniqueJobs(prepared);
@@ -1424,11 +1440,15 @@ export const installBatchFile = async ({
   let jobs = [];
   try {
     ({ document, jobs } = loadBatchDocument(absoluteBatchPath));
+    if (!document.promptCatalogSha256) {
+      throw new Error('Batch installs require promptCatalogSha256');
+    }
     const installed = await installJobs({
       root,
       jobs,
       promptCatalogSha256: document.promptCatalogSha256 || null,
       requireGenerationPrompt: true,
+      requireBatchContract: true,
       hooks
     });
     const result = {

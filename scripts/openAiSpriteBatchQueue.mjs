@@ -20,6 +20,7 @@ const GENERATION_ID_PATTERN = /^exec-[A-Za-z0-9](?:[A-Za-z0-9-]{1,126})$/u;
 const HASH_PATTERN = /^[a-f0-9]{64}$/u;
 const BATCH_ID_PATTERN = /^[a-z0-9](?:[a-z0-9._-]{0,126}[a-z0-9])?$/u;
 const RESULT_STATUSES = new Set(['pending', 'failed', 'complete']);
+const ALLOWED_ASSET_KINDS = new Set(['item', 'hero', 'enemy', 'boss', 'trial', 'finale', 'stage']);
 const STALE_LOCK_MILLISECONDS = 30 * 60 * 1000;
 
 const sha256 = value => createHash('sha256').update(value).digest('hex');
@@ -160,7 +161,8 @@ export async function loadSpriteBatch(batchPath, options = {}) {
   }
 
   const seenSequences = new Set();
-  const seenIds = new Set();
+  const seenIdentities = new Set();
+  const seenOutputs = new Set();
   const jobs = [];
   for (const rawJob of document.jobs) {
     if (!rawJob || typeof rawJob !== 'object' || Array.isArray(rawJob)) {
@@ -168,11 +170,24 @@ export async function loadSpriteBatch(batchPath, options = {}) {
     }
     const sequence = parsePositiveInteger(rawJob.sequence, 'job.sequence');
     const id = String(rawJob.id || '').trim();
+    const kind = String(rawJob.kind || document.kind || 'item').trim();
     if (!id) throw new Error(`Job ${sequence} must provide id`);
+    if (document.kind === 'mixed' && !rawJob.kind) {
+      throw new Error(`Mixed batch job ${sequence}/${id} must provide kind explicitly`);
+    }
+    if (!kind || kind === 'mixed') throw new Error(`Job ${sequence}/${id} must provide a concrete kind`);
+    if (!ALLOWED_ASSET_KINDS.has(kind)) throw new Error(`Unsupported job kind: ${kind}`);
+    const identity = `${kind}:${id}`;
+    const output = String(rawJob.output || '').trim();
     if (seenSequences.has(sequence)) throw new Error(`Duplicate job sequence: ${sequence}`);
-    if (seenIds.has(id)) throw new Error(`Duplicate job id: ${id}`);
+    if (seenIdentities.has(identity)) throw new Error(`Duplicate job identity: ${identity}`);
+    if (document.kind === 'mixed' && !output) {
+      throw new Error(`Mixed batch job ${sequence}/${identity} must provide output`);
+    }
+    if (output && seenOutputs.has(output)) throw new Error(`Duplicate job output: ${output}`);
     seenSequences.add(sequence);
-    seenIds.add(id);
+    seenIdentities.add(identity);
+    if (output) seenOutputs.add(output);
 
     if (typeof rawJob.generationPrompt !== 'string' || !rawJob.generationPrompt) {
       throw new Error(`Job ${sequence}/${id} must provide generationPrompt`);
@@ -199,12 +214,14 @@ export async function loadSpriteBatch(batchPath, options = {}) {
       ...rawJob,
       sequence,
       id,
-      kind: String(rawJob.kind || document.kind || 'item'),
+      kind,
       promptFile: rawJob.promptFile,
       promptFileAbsolute: promptFile,
       generationPromptSha256,
       catalogPromptSha256: rawJob.sourcePromptSha256 || null,
-      directorySlug: safeJobId(id)
+      directorySlug: document.kind === 'mixed'
+        ? safeJobId(`${kind}-${id}`)
+        : safeJobId(id)
     });
   }
   jobs.sort((left, right) => left.sequence - right.sequence || left.id.localeCompare(right.id));
@@ -261,6 +278,7 @@ const validateQueueMetadata = (metadata, batch, paths) => {
     throw new Error(`Unsupported queue schemaVersion: ${metadata.schemaVersion}`);
   }
   if (metadata.batchId !== batch.batchId) throw new Error('Queue batchId does not match batch JSON');
+  if (metadata.kind !== batch.kind) throw new Error('Queue kind does not match batch JSON');
   if (metadata.batchSha256 !== batch.batchSha256) {
     throw new Error(
       'Batch JSON changed after queue initialization; use a new batchId to preserve resumability'
@@ -320,7 +338,7 @@ const validateResult = (result, batch, job, paths) => {
   }
   if (result.schemaVersion !== QUEUE_SCHEMA_VERSION) throw new Error('Unsupported result schemaVersion');
   if (result.batchId !== batch.batchId) throw new Error('Result batchId mismatch');
-  if (result.sequence !== job.sequence || result.id !== job.id) throw new Error('Result job identity mismatch');
+  if (result.sequence !== job.sequence || result.kind !== job.kind || result.id !== job.id) throw new Error('Result job identity mismatch');
   if (!RESULT_STATUSES.has(result.status)) throw new Error(`Invalid result status: ${result.status}`);
   if (!Number.isSafeInteger(result.attempts) || result.attempts < 0) {
     throw new Error('Result attempts must be a non-negative integer');
@@ -765,6 +783,7 @@ export async function exportInstallBatch(options = {}) {
       sequence: job.sequence,
       kind: job.kind,
       id: job.id,
+      output: job.output,
       source: result.source.rawPath,
       generationId: result.generationId,
       generationPromptFile: job.promptFileAbsolute,

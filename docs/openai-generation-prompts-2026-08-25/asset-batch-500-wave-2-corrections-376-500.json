@@ -1,0 +1,1247 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-missing-500-wave-2-corrections-376-500-2026-08-25",
+  "kind": "hero",
+  "sourceBatch": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2.json",
+  "sourceBatchSha256": "c6e203eff348362a07bada6600db7dfe0c4a6b3b14f059a1f3dfcc10a1f42e0a",
+  "promptSetSha256": "9fd369e65b5fa167ac90d69d354529149b9db0960d3ab7c9379ab79f9cb2234c",
+  "selectionPolicy": [
+    "visual QA correction set for original sequences 376 through 500",
+    "preserve original hero kind:id and runtime output path",
+    "canonical physical, outfit, role and equipment anchors",
+    "safe defensive actions for minors and non-combatants",
+    "no runtime manifest, ledger or public asset mutation"
+  ],
+  "counts": {
+    "jobs": 35,
+    "netCorrections": 29,
+    "reviewCorrections": 6
+  },
+  "jobs": [
+    {
+      "sequence": 378,
+      "kind": "hero",
+      "id": "yukari_rv",
+      "name": "Yukari Sendo",
+      "universe": "Rosario + Vampire",
+      "output": "/sprites/generated/heroes/rosario-vampire/yukari-rv.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "very short early-teen witch prodigy, youthful face, long straight violet hair and large violet eyes; unmistakably a child, never adult-proportioned",
+        "outfit": "modest Yokai Academy school uniform with cream blazer, white shirt, red ribbon, dark pleated skirt, knee socks, plus a large classic pointed witch hat",
+        "role": "Yukari Sendo, brilliant young witch and support caster from Rosario + Vampire",
+        "equipment": "small wooden magic wand, floating violet glyphs and a compact cauldron motif; absolutely no firearm, rifle, blade or tactical armor",
+        "avoid": "adult body, sexualized school uniform, gun, rifle, sword, military gear, generic purple commando"
+      },
+      "sourcePromptSha256": "a7b97160107be09926289d5259af2e6777a0020d424145449ee4571a8ad0367f",
+      "replacesGenerationPromptSha256": "54342eec928cac97cdd73379fe1469c896a443ecac59e6665ec66040d88e997d",
+      "generationPromptSha256": "31d1884ab92e0f0bcc392b87aae746960d5a69262e17fe787dbd592ce27762b9",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/378-hero-yukari-rv-31d1884a.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Yukari Sendo from Rosario + Vampire; this replaces a prior visually incorrect generation.\nCanonical physical anchor: very short early-teen witch prodigy, youthful face, long straight violet hair and large violet eyes; unmistakably a child, never adult-proportioned.\nCanonical outfit anchor: modest Yokai Academy school uniform with cream blazer, white shirt, red ribbon, dark pleated skirt, knee socks, plus a large classic pointed witch hat.\nCanonical role anchor: Yukari Sendo, brilliant young witch and support caster from Rosario + Vampire.\nCanonical equipment and power anchor: small wooden magic wand, floating violet glyphs and a compact cauldron motif; absolutely no firearm, rifle, blade or tactical armor.\nIdentity exclusions: adult body, sexualized school uniform, gun, rifle, sword, military gear, generic purple commando.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four clean support-spell frames: wand spark, cauldron glyph, circular magic barrier and gentle counter-spell with no victim; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: measured two-beat wand cadence with the glyph appearing late; deliberately different timing from the existing yukari_sendo sister sheet.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 379,
+      "kind": "hero",
+      "id": "mizore_rv",
+      "name": "Mizore Shirayuki",
+      "universe": "Rosario + Vampire",
+      "output": "/sprites/generated/heroes/rosario-vampire/mizore-rv.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "pale teenage yuki-onna, slim modest proportions, straight ice-blue hair with distinctive long face-framing strands and cool blue eyes",
+        "outfit": "modest Yokai Academy uniform in cream, white and dark green with a red ribbon, winter-blue accents and no exposed anatomy",
+        "role": "Mizore Shirayuki, quiet snow-woman ally from Rosario + Vampire",
+        "equipment": "ice claws formed around her hands, snow crystals, frost mist and a translucent ice barrier; no firearm or mechanical weapon",
+        "avoid": "gun, rifle, black tactical weapon, fire effects, adult sexualization, unrelated blue-haired soldier"
+      },
+      "sourcePromptSha256": "4fff01a3b88b3b32c4181789fa5f9ac78f0b1914bf0a7069ac2ce8174d0e142a",
+      "replacesGenerationPromptSha256": "124916f9517708fe98cf222c3a3ddf8cc8b6f94887f7c0376337845aadd05809",
+      "generationPromptSha256": "afade3d18596e67a0959e836fa190655526fea7eab62f59811eaf6aa8fc8e6d5",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/379-hero-mizore-rv-afade3d1.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Mizore Shirayuki from Rosario + Vampire; this replaces a prior visually incorrect generation.\nCanonical physical anchor: pale teenage yuki-onna, slim modest proportions, straight ice-blue hair with distinctive long face-framing strands and cool blue eyes.\nCanonical outfit anchor: modest Yokai Academy uniform in cream, white and dark green with a red ribbon, winter-blue accents and no exposed anatomy.\nCanonical role anchor: Mizore Shirayuki, quiet snow-woman ally from Rosario + Vampire.\nCanonical equipment and power anchor: ice claws formed around her hands, snow crystals, frost mist and a translucent ice barrier; no firearm or mechanical weapon.\nIdentity exclusions: gun, rifle, black tactical weapon, fire effects, adult sexualization, unrelated blue-haired soldier.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four clean ice-power frames: short ice-claw sweep, ground frost trail, snowflake shield and controlled ice-shard fan with no target; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: low sliding ice-skate cadence with a delayed frost wake; distinct from the mizore_shirayuki sister sheet.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 380,
+      "kind": "hero",
+      "id": "gin_rv",
+      "name": "Gin Morioka",
+      "universe": "Rosario + Vampire",
+      "output": "/sprites/generated/heroes/rosario-vampire/gin-rv.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "athletic teenage male with messy silver-white hair, amber eyes and subtle wolf-like intensity while remaining one consistent human-form identity",
+        "outfit": "loosened but recognizable Yokai Academy boys uniform, white shirt, dark trousers, school jacket and an optional camera-club strap",
+        "role": "Gin Morioka, newspaper-club werewolf sprinter from Rosario + Vampire",
+        "equipment": "natural clawed hands, brief silver wolf aura and full-moon speed streaks; no scythe, sword, gun or separate wolf body",
+        "avoid": "black-haired reaper, scythe, purple necromancy, firearm, separate animal companion"
+      },
+      "sourcePromptSha256": "93951dd278748dd1397452bd0282ca4d99345d9d3aa18579bb96d4c44c9c66ba",
+      "replacesGenerationPromptSha256": "195cdb503743366d404c1cff3e9effcc345925695a77b00cb1dda0492b847566",
+      "generationPromptSha256": "df572ba6fa7c52742f1518752d397715cb0711827fc1879703cfa3b21339ce1f",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/380-hero-gin-rv-df572ba6.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Gin Morioka from Rosario + Vampire; this replaces a prior visually incorrect generation.\nCanonical physical anchor: athletic teenage male with messy silver-white hair, amber eyes and subtle wolf-like intensity while remaining one consistent human-form identity.\nCanonical outfit anchor: loosened but recognizable Yokai Academy boys uniform, white shirt, dark trousers, school jacket and an optional camera-club strap.\nCanonical role anchor: Gin Morioka, newspaper-club werewolf sprinter from Rosario + Vampire.\nCanonical equipment and power anchor: natural clawed hands, brief silver wolf aura and full-moon speed streaks; no scythe, sword, gun or separate wolf body.\nIdentity exclusions: black-haired reaper, scythe, purple necromancy, firearm, separate animal companion.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four clean werewolf-power frames: crouch, claw dash, newspaper-flash feint and full-moon sprint slash with no victim; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: long crouch-to-sprint acceleration and wider recovery; distinct from the gin_morioka sister sheet.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 384,
+      "kind": "hero",
+      "id": "konoka_negima",
+      "name": "Konoka Konoe",
+      "universe": "Negima",
+      "output": "/sprites/generated/heroes/negima/konoka-negima.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "teenage Japanese girl with very long dark-brown hair, warm brown eyes, gentle expression and modest school-age proportions",
+        "outfit": "Mahora Academy dark blazer, white shirt, red ribbon tie, pleated skirt, dark knee socks and practical shoes; optional subtle Kyoto shrine charm",
+        "role": "Konoka Konoe, compassionate healer and magical support student from Negima",
+        "equipment": "small ceremonial healing bell or Pactio fan, warm gold-green healing motes and a protective prayer circle; no gun or melee weapon",
+        "avoid": "pink hair, cat ears, maid costume, rifle, sword, aggressive beam cannon, adult sexualization"
+      },
+      "sourcePromptSha256": "be92f171559a1ce8c374c4831bc2065574cbdc19e72d973ed444a8d8edfce0db",
+      "replacesGenerationPromptSha256": "df9e7a2443d06470ca05cd432d2046d00cb699de0e3330208297032f64fcb3a3",
+      "generationPromptSha256": "1897297acb3ce98c7a5ccda4c946533e6b6c06756853579b7d3c7f695f8accad",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/384-hero-konoka-negima-1897297a.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Konoka Konoe from Negima; this replaces a prior visually incorrect generation.\nCanonical physical anchor: teenage Japanese girl with very long dark-brown hair, warm brown eyes, gentle expression and modest school-age proportions.\nCanonical outfit anchor: Mahora Academy dark blazer, white shirt, red ribbon tie, pleated skirt, dark knee socks and practical shoes; optional subtle Kyoto shrine charm.\nCanonical role anchor: Konoka Konoe, compassionate healer and magical support student from Negima.\nCanonical equipment and power anchor: small ceremonial healing bell or Pactio fan, warm gold-green healing motes and a protective prayer circle; no gun or melee weapon.\nIdentity exclusions: pink hair, cat ears, maid costume, rifle, sword, aggressive beam cannon, adult sexualization.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four support frames: bell pulse, Kyoto barrier prayer, gentle Pactio guard and restorative light bloom; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: slow prayer-first cadence with hands joining before the bell pulse; distinct from konoka_konoe.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 387,
+      "kind": "hero",
+      "id": "konoka_konoe",
+      "name": "Konoka Konoe",
+      "universe": "Negima",
+      "output": "/sprites/generated/heroes/negima/konoka-konoe.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "the same canonical Konoka Konoe identity: teenage Japanese girl, very long dark-brown hair, brown eyes and a calm friendly face",
+        "outfit": "Mahora Academy dark blazer, white shirt, red ribbon tie, pleated skirt, dark knee socks; modest and continuity-faithful",
+        "role": "Konoka Konoe, healer, barrier caster and gentle Pactio support from Negima",
+        "equipment": "ceremonial fan and small bell, warm green-gold restorative glyphs and a compact protective barrier; no firearm or blade",
+        "avoid": "pink hair, cat ears, idol dress, maid costume, gun, laser rifle, aggressive warrior redesign"
+      },
+      "sourcePromptSha256": "c8c51679460bb88daabb7db59889efedc8bd4512f5a199c31b220ea375a3a1a1",
+      "replacesGenerationPromptSha256": "29e958cab3876176e6597ffdbc6bef8df3524455468401542aa15dd553740f05",
+      "generationPromptSha256": "c2f8bda2da3cb250d04bfeedf4e1d40227c5071aefb218bffba6bb888483f966",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/387-hero-konoka-konoe-c2f8bda2.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Konoka Konoe from Negima; this replaces a prior visually incorrect generation.\nCanonical physical anchor: the same canonical Konoka Konoe identity: teenage Japanese girl, very long dark-brown hair, brown eyes and a calm friendly face.\nCanonical outfit anchor: Mahora Academy dark blazer, white shirt, red ribbon tie, pleated skirt, dark knee socks; modest and continuity-faithful.\nCanonical role anchor: Konoka Konoe, healer, barrier caster and gentle Pactio support from Negima.\nCanonical equipment and power anchor: ceremonial fan and small bell, warm green-gold restorative glyphs and a compact protective barrier; no firearm or blade.\nIdentity exclusions: pink hair, cat ears, idol dress, maid costume, gun, laser rifle, aggressive warrior redesign.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four support frames: brisk fan-open heal, bell-step ward, rotating Pactio barrier and recovery bow; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: brisk bell-and-fan rhythm with a side step; visibly different timing from konoka_negima without changing costume or continuity.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 390,
+      "kind": "hero",
+      "id": "aramaki",
+      "name": "Daisuke Aramaki",
+      "universe": "Ghost in the Shell",
+      "output": "/sprites/generated/heroes/ghost-in-the-shell/aramaki.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "short elderly Japanese man with bald crown, sparse swept-back grey side hair, deeply lined face, heavy brows and distinctive shrewd ape-like features",
+        "outfit": "conservative charcoal three-piece suit or dark overcoat, white shirt, restrained tie and discreet Section 9 earpiece",
+        "role": "Daisuke Aramaki, elderly strategic chief of Public Security Section 9; command and political judgment, not frontline assault",
+        "equipment": "secure communicator, slim briefing tablet and hand-command gestures; no assault rifle, sword or magic",
+        "avoid": "young operative, long-haired gunman, cyber ninja, heavy armor, automatic weapon"
+      },
+      "sourcePromptSha256": "f851d3e8cb9e3ac6c5aa735d307f6b16f31ed45a91d11b6c992bca5e1888385f",
+      "replacesGenerationPromptSha256": "8d4254e3a3fb7c179134c52e4ba2a6536924b2b19f9aa8a21a514c4ce576c2a8",
+      "generationPromptSha256": "c017d9cb053fddda84c72b107656ec34815e451bf9a59e70d5d6814a2a91479d",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/390-hero-aramaki-c017d9cb.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Daisuke Aramaki from Ghost in the Shell; this replaces a prior visually incorrect generation.\nCanonical physical anchor: short elderly Japanese man with bald crown, sparse swept-back grey side hair, deeply lined face, heavy brows and distinctive shrewd ape-like features.\nCanonical outfit anchor: conservative charcoal three-piece suit or dark overcoat, white shirt, restrained tie and discreet Section 9 earpiece.\nCanonical role anchor: Daisuke Aramaki, elderly strategic chief of Public Security Section 9; command and political judgment, not frontline assault.\nCanonical equipment and power anchor: secure communicator, slim briefing tablet and hand-command gestures; no assault rifle, sword or magic.\nIdentity exclusions: young operative, long-haired gunman, cyber ninja, heavy armor, automatic weapon.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four command frames: issue order, consult tablet, signal tactical withdrawal and brace behind compact cover; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: deliberate economical movements appropriate to an elderly commander.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 391,
+      "kind": "hero",
+      "id": "saito_gits",
+      "name": "Saito",
+      "universe": "Ghost in the Shell",
+      "output": "/sprites/generated/heroes/ghost-in-the-shell/saito-gits.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-review-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "lean adult Japanese male sniper with short dark hair, stern face and a clearly readable cybernetic left eye with a small red circular scope implant",
+        "outfit": "dark Section 9 tactical suit with light armor panels, gloves and compact sniper harness; no fantasy coat",
+        "role": "Saito, Section 9 precision sniper and Hawkeye specialist from Ghost in the Shell",
+        "equipment": "long precision sniper rifle, scope and cyber-eye targeting reticle; no energy magic or oversized shield",
+        "avoid": "white-haired wizard, eyeless generic rifleman, glowing magic disc, bulky space marine"
+      },
+      "sourcePromptSha256": "c7a5fd8a5c962af53cc6a012ae2e20199ad7a51ced2d9314302523c552d41aee",
+      "replacesGenerationPromptSha256": "96ad820bedce9db61a9ffa4113a066f306ced6d6752118bf953e5b843b7540d7",
+      "generationPromptSha256": "2c1c7a0b1413ad0c9bbfad47cc69da9e8e7ba191ca36ea837ba71297d072db0d",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/391-hero-saito-gits-2c1c7a0b.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Saito from Ghost in the Shell; this replaces a prior visually incorrect generation.\nCanonical physical anchor: lean adult Japanese male sniper with short dark hair, stern face and a clearly readable cybernetic left eye with a small red circular scope implant.\nCanonical outfit anchor: dark Section 9 tactical suit with light armor panels, gloves and compact sniper harness; no fantasy coat.\nCanonical role anchor: Saito, Section 9 precision sniper and Hawkeye specialist from Ghost in the Shell.\nCanonical equipment and power anchor: long precision sniper rifle, scope and cyber-eye targeting reticle; no energy magic or oversized shield.\nIdentity exclusions: white-haired wizard, eyeless generic rifleman, glowing magic disc, bulky space marine.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four sniper frames: scope check, low relocation, clean precision shot and recoil-to-cover; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: patient aim-hold cadence followed by a single sharp shot.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 395,
+      "kind": "hero",
+      "id": "toast_mm",
+      "name": "Toast the Knowing",
+      "universe": "Mad Max",
+      "output": "/sprites/generated/heroes/mad-max/toast-mm.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "lean adult Black woman with a shaved or extremely close-cropped head, strong cheekbones and alert survivor posture",
+        "outfit": "weathered pale desert wraps and practical layered cloth from the Fury Road convoy, scarf, utility belt and dust goggles kept off the face",
+        "role": "Toast the Knowing, observant survivor and capable lookout from Mad Max: Fury Road",
+        "equipment": "compact wasteland rifle used only for clean warning/cover poses, plus binoculars; no fantasy armor or axe",
+        "avoid": "male body, long dreadlocks, shaggy barbarian, magic shield, ornate medieval armor"
+      },
+      "sourcePromptSha256": "b48481bae765af5a0486e7605206bfc8f962923193ff56e93582920ad1fd2f3b",
+      "replacesGenerationPromptSha256": "53d2bb9a338de3f27349950edfb27bafbbbb61f0571f5fa7bb6fe0c70f15bb49",
+      "generationPromptSha256": "f93ea6f002fac326789d177d873bf315d37de6a8e9d08b0a9a7ce3820d674a5b",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/395-hero-toast-mm-f93ea6f0.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Toast the Knowing from Mad Max; this replaces a prior visually incorrect generation.\nCanonical physical anchor: lean adult Black woman with a shaved or extremely close-cropped head, strong cheekbones and alert survivor posture.\nCanonical outfit anchor: weathered pale desert wraps and practical layered cloth from the Fury Road convoy, scarf, utility belt and dust goggles kept off the face.\nCanonical role anchor: Toast the Knowing, observant survivor and capable lookout from Mad Max: Fury Road.\nCanonical equipment and power anchor: compact wasteland rifle used only for clean warning/cover poses, plus binoculars; no fantasy armor or axe.\nIdentity exclusions: male body, long dreadlocks, shaggy barbarian, magic shield, ornate medieval armor.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four survivor frames: scan horizon, sprint low, warning shot away from any victim and guarded recoil; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: quick lookout-to-cover cadence with economical movements.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 396,
+      "kind": "hero",
+      "id": "capable_mm",
+      "name": "Capable",
+      "universe": "Mad Max",
+      "output": "/sprites/generated/heroes/mad-max/capable-mm.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "young adult pale woman with long vivid red hair, slim realistic proportions and compassionate determined expression",
+        "outfit": "modest layered cream and off-white desert wraps inspired by the Fury Road escape group, practical boots and no exposed anatomy",
+        "role": "Capable, empathetic survivor from Mad Max: Fury Road; escape, reassurance and mutual aid rather than combat",
+        "equipment": "small water flask, cloth signal and improvised forearm guard only; absolutely no gun, sword or military armor",
+        "avoid": "male commando, firearm, heavy tactical vest, muscular soldier, aggressive magic attack"
+      },
+      "sourcePromptSha256": "8c594581d0f815f2d50d05b757431226eeb30ffb9f89ce67b550e06d4afee7d5",
+      "replacesGenerationPromptSha256": "ada1811a9655a34541a1ee41a56b194394ce78aa280651e5c17016a848559d98",
+      "generationPromptSha256": "8001553082e7837c1688cf7cd235378721f9b14930455d59aa63fc8ae0f4f0d2",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/396-hero-capable-mm-80015530.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Capable from Mad Max; this replaces a prior visually incorrect generation.\nCanonical physical anchor: young adult pale woman with long vivid red hair, slim realistic proportions and compassionate determined expression.\nCanonical outfit anchor: modest layered cream and off-white desert wraps inspired by the Fury Road escape group, practical boots and no exposed anatomy.\nCanonical role anchor: Capable, empathetic survivor from Mad Max: Fury Road; escape, reassurance and mutual aid rather than combat.\nCanonical equipment and power anchor: small water flask, cloth signal and improvised forearm guard only; absolutely no gun, sword or military armor.\nIdentity exclusions: male commando, firearm, heavy tactical vest, muscular soldier, aggressive magic attack.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe support frames: signal, sprint, shield another person off-screen with cloth/guard and duck from danger; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: fluid evasive cadence with protective pauses.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 399,
+      "kind": "hero",
+      "id": "feral_kid",
+      "name": "Feral Kid",
+      "universe": "Mad Max",
+      "output": "/sprites/generated/heroes/mad-max/feral-kid.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-review-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "small wiry preteen boy with wild sun-bleached blond hair, dusty face and unmistakably child-sized proportions",
+        "outfit": "rough fur-and-scrap wasteland clothing, simple leather pieces, bare practical arms and sturdy scavenged boots; fully nonsexual",
+        "role": "the Feral Kid from Mad Max 2, agile hidden survivor and boomerang thrower",
+        "equipment": "single curved metal boomerang; no gun, oversized blade or adult armor",
+        "avoid": "adult muscular barbarian, beard, firearm, giant axe, sexualized child, blood"
+      },
+      "sourcePromptSha256": "aa4bbad8b46e83bf350ef0971b8019c9d79a6e24fb4d0e3611ba4d0377e06b6a",
+      "replacesGenerationPromptSha256": "abddc51d0b6aecc59b874196d9fbab4fbb2d5a634be6f7799a4fbed034782654",
+      "generationPromptSha256": "34c682bf73fae11bf33ba3365ba25c102bef116a61e02409d4d883439428650e",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/399-hero-feral-kid-34c682bf.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Feral Kid from Mad Max; this replaces a prior visually incorrect generation.\nCanonical physical anchor: small wiry preteen boy with wild sun-bleached blond hair, dusty face and unmistakably child-sized proportions.\nCanonical outfit anchor: rough fur-and-scrap wasteland clothing, simple leather pieces, bare practical arms and sturdy scavenged boots; fully nonsexual.\nCanonical role anchor: the Feral Kid from Mad Max 2, agile hidden survivor and boomerang thrower.\nCanonical equipment and power anchor: single curved metal boomerang; no gun, oversized blade or adult armor.\nIdentity exclusions: adult muscular barbarian, beard, firearm, giant axe, sexualized child, blood.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four child-safe frames: crouched listen, quick scuttle, boomerang target throw with no victim and crawlspace hide/recoil; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: small fast skittering run with a low boomerang arc.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 406,
+      "kind": "hero",
+      "id": "long_horse",
+      "name": "Long Horse",
+      "universe": "Siren Head",
+      "output": "/sprites/generated/heroes/siren-head/long-horse.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "a horse skull lacking its lower jaw attached to an impossibly long pale segmented neck of repeating vertebra-like joints with sparse dark mane; no visible torso or limbs",
+        "outfit": "no clothing; waxy bone-and-neck creature surface only",
+        "role": "Long Horse, benevolent omen entity that warns people of approaching disaster",
+        "equipment": "no weapon; protective warning presence represented by a soft pale alert halo and cinnamon-colored motes",
+        "avoid": "humanoid body, arms, legs, biped, gun, sword, aggressive monster attack, gore, horse body"
+      },
+      "sourcePromptSha256": "4deda19686176df329793e11c1e22e39ff8f22b0ff1b93c065003f75d52ebe97",
+      "replacesGenerationPromptSha256": "85690ca372306b2ac63acef9454424107d34c7c324e325598d7a1b883b55a693",
+      "generationPromptSha256": "dfa26f46735ac108e46b3216d5944c9a7097db5ac1e18d60509ff27447ca480a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/406-hero-long-horse-dfa26f46.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Long Horse from Siren Head; this replaces a prior visually incorrect generation.\nCanonical physical anchor: a horse skull lacking its lower jaw attached to an impossibly long pale segmented neck of repeating vertebra-like joints with sparse dark mane; no visible torso or limbs.\nCanonical outfit anchor: no clothing; waxy bone-and-neck creature surface only.\nCanonical role anchor: Long Horse, benevolent omen entity that warns people of approaching disaster.\nCanonical equipment and power anchor: no weapon; protective warning presence represented by a soft pale alert halo and cinnamon-colored motes.\nIdentity exclusions: humanoid body, arms, legs, biped, gun, sword, aggressive monster attack, gore, horse body.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four nonviolent omen frames: skull tilt, neck coil glide, protective warning arc and startled recoil while the neck remains continuous; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: slow impossible neck undulation with new joints appearing between poses.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 408,
+      "kind": "hero",
+      "id": "twoflower_dw",
+      "name": "Twoflower",
+      "universe": "Discworld",
+      "output": "/sprites/generated/heroes/discworld/twoflower-dw.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "cheerful middle-aged Agatean tourist, short round build, warm East Asian features, round spectacles and eager smile",
+        "outfit": "loud colorful travel shirt beneath a practical coat, knee-length travel trousers, socks, sensible shoes, camera strap and overstuffed satchel",
+        "role": "Twoflower, Discworld first tourist: curious observer, photographer and accidental adventurer",
+        "equipment": "box camera, guidebook, folded map and travel umbrella only; no firearm, sword or cowboy gear",
+        "avoid": "cowboy hat, rifle, gunslinger, rugged bounty hunter, combat armor, extra Luggage creature"
+      },
+      "sourcePromptSha256": "f405454e6edfbe127cc619780e2ce836d0cd0aa298c6d99a206ba5189f88d741",
+      "replacesGenerationPromptSha256": "48b5a7dab6b898be8f11027d5e81cc7ca0846c7a894fcf059dbe072d57387114",
+      "generationPromptSha256": "33e4214839832bcd38301b5a421619c6a83f262ba16c7364fca0f6489f417038",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/408-hero-twoflower-dw-33e42148.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Twoflower from Discworld; this replaces a prior visually incorrect generation.\nCanonical physical anchor: cheerful middle-aged Agatean tourist, short round build, warm East Asian features, round spectacles and eager smile.\nCanonical outfit anchor: loud colorful travel shirt beneath a practical coat, knee-length travel trousers, socks, sensible shoes, camera strap and overstuffed satchel.\nCanonical role anchor: Twoflower, Discworld first tourist: curious observer, photographer and accidental adventurer.\nCanonical equipment and power anchor: box camera, guidebook, folded map and travel umbrella only; no firearm, sword or cowboy gear.\nIdentity exclusions: cowboy hat, rifle, gunslinger, rugged bounty hunter, combat armor, extra Luggage creature.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe comedy frames: camera flash, hurried tourist walk, map-and-umbrella guard and startled stumble/recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: bouncy curious tourist cadence with a delayed camera flash.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 416,
+      "kind": "hero",
+      "id": "bohort_kaamelott",
+      "name": "Bohort",
+      "universe": "Kaamelott",
+      "output": "/sprites/generated/heroes/kaamelott/bohort-kaamelott.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-review-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult courtly man with shoulder-length light-brown hair, tidy moustache and beard, refined gentle face and visibly cautious posture",
+        "outfit": "elegant cream-and-blue medieval court tunic, embroidered surcoat, soft cloak, belt and clean boots; light ceremonial protection only",
+        "role": "Bohort of Kaamelott, courteous, diplomatic and famously reluctant to fight",
+        "equipment": "rolled parchment, small diplomatic pennant and modest round shield; no gun, rifle or aggressive sword",
+        "avoid": "armored gunman, assault rifle, berserker, dark assassin, magical cannon"
+      },
+      "sourcePromptSha256": "975964495d924fede6fa4dc3d4b1ddd2f45f43de2de7f9db0d216f283be71494",
+      "replacesGenerationPromptSha256": "82328bc393115c4d98f64ad1d446a7252c9ae1cf4cc17c6531c3536bbdbddd7c",
+      "generationPromptSha256": "dc94275c2c20575fcd07d32652880b9dd0eb48b51f8174ab1c8d1d7248ec715a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/416-hero-bohort-kaamelott-dc94275c.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Bohort from Kaamelott; this replaces a prior visually incorrect generation.\nCanonical physical anchor: adult courtly man with shoulder-length light-brown hair, tidy moustache and beard, refined gentle face and visibly cautious posture.\nCanonical outfit anchor: elegant cream-and-blue medieval court tunic, embroidered surcoat, soft cloak, belt and clean boots; light ceremonial protection only.\nCanonical role anchor: Bohort of Kaamelott, courteous, diplomatic and famously reluctant to fight.\nCanonical equipment and power anchor: rolled parchment, small diplomatic pennant and modest round shield; no gun, rifle or aggressive sword.\nIdentity exclusions: armored gunman, assault rifle, berserker, dark assassin, magical cannon.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe support frames: polite bow, hurried retreat, raise small shield and recover composure behind parchment; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: hesitant step-and-retreat timing with comic dignity.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 418,
+      "kind": "hero",
+      "id": "newt_hadley",
+      "name": "Newt",
+      "universe": "Aliens",
+      "output": "/sprites/generated/heroes/aliens/newt-hadley.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "small eight-year-old girl with messy light-brown to dirty-blond bob haircut, dirty but non-injured face and unmistakably child proportions",
+        "outfit": "modest grey T-shirt, worn dark overalls, practical sneakers and a tiny utility strap, matching the Hadley Hope survivor look",
+        "role": "Rebecca Newt Jorden, child survivor of Hadley Hope in Aliens; stealth, courage and escape only",
+        "equipment": "small flashlight and broken doll head as a comfort object; absolutely no gun, blade, armor or magic weapon",
+        "avoid": "adult woman, blonde glamour, cleavage, makeup, firearm, sexualized pose, combat soldier, gore"
+      },
+      "sourcePromptSha256": "eaf9eb464a04f8a664ac6113d1d3cd1c6d3ff1e1e48013eaa4aa57e1a1bf2189",
+      "replacesGenerationPromptSha256": "07e9e7cbccab6dc949b063abe365635bffd8317030df8fdc23e56c190c4adb99",
+      "generationPromptSha256": "fd3fff0d5f69e00dabfe988f7ec92480f8fbbf3818b6f10360fc1252d412401d",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/418-hero-newt-hadley-fd3fff0d.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Newt from Aliens; this replaces a prior visually incorrect generation.\nCanonical physical anchor: small eight-year-old girl with messy light-brown to dirty-blond bob haircut, dirty but non-injured face and unmistakably child proportions.\nCanonical outfit anchor: modest grey T-shirt, worn dark overalls, practical sneakers and a tiny utility strap, matching the Hadley Hope survivor look.\nCanonical role anchor: Rebecca Newt Jorden, child survivor of Hadley Hope in Aliens; stealth, courage and escape only.\nCanonical equipment and power anchor: small flashlight and broken doll head as a comfort object; absolutely no gun, blade, armor or magic weapon.\nIdentity exclusions: adult woman, blonde glamour, cleavage, makeup, firearm, sexualized pose, combat soldier, gore.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four child-safe frames: listen with flashlight, crawl/run, signal toward an off-screen vent and duck/hide/recover; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: small cautious steps, quick crawl and protective crouch.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 435,
+      "kind": "hero",
+      "id": "rob_blasko_nicholson",
+      "name": "Rob \"Blasko\" Nicholson",
+      "universe": "Rob Zombie",
+      "output": "/sprites/generated/heroes/rob-zombie/rob-blasko-nicholson.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult male heavy-metal bassist with shaved or very close-cropped head, long dark goatee, sturdy stage build and grounded performance stance; no direct real-person portrait",
+        "outfit": "plain black sleeveless stage shirt, dark cargo trousers, wristbands and subtle tattoo-like abstract ink with no logos",
+        "role": "Rob Blasko Nicholson, bassist in the Rob Zombie stage lineup",
+        "equipment": "low-slung black four-string electric bass and compact stage cable; no gun, gas mask or combat armor",
+        "avoid": "masked soldier, firearm, tactical helmet, sci-fi armor, copied photographic likeness, band logo"
+      },
+      "sourcePromptSha256": "af0b9b1bfe4dae869017243e6e16ce53ba8bc1eff1a3df4d786fd890bf14a0fa",
+      "replacesGenerationPromptSha256": "e60b8b055c10cee04ea4710e1f8956f3cfb96a39a6fbea5d76baedfa5d914bc6",
+      "generationPromptSha256": "83871fd32e443f74d4464801a515d509d1a02f309a5f8e486b713df1f0ea575a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/435-hero-rob-blasko-nicholson-83871fd3.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Rob \"Blasko\" Nicholson from Rob Zombie; this replaces a prior visually incorrect generation.\nCanonical physical anchor: adult male heavy-metal bassist with shaved or very close-cropped head, long dark goatee, sturdy stage build and grounded performance stance; no direct real-person portrait.\nCanonical outfit anchor: plain black sleeveless stage shirt, dark cargo trousers, wristbands and subtle tattoo-like abstract ink with no logos.\nCanonical role anchor: Rob Blasko Nicholson, bassist in the Rob Zombie stage lineup.\nCanonical equipment and power anchor: low-slung black four-string electric bass and compact stage cable; no gun, gas mask or combat armor.\nIdentity exclusions: masked soldier, firearm, tactical helmet, sci-fi armor, copied photographic likeness, band logo.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four music frames: bass idle groove, heavy step, low power riff with clean sound-wave arc and headbang recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: slow heavy downbeat with wide bass-neck motion.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 439,
+      "kind": "hero",
+      "id": "stella_interstella",
+      "name": "Stella (Interstella 5555)",
+      "universe": "Daft Punk",
+      "output": "/sprites/generated/heroes/daft-punk/stella-interstella.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult blue-skinned extraterrestrial woman with very long golden-blond hair, full fringe and high ponytail held by a silver clip, elegant Leiji-inspired proportions",
+        "outfit": "white, gold and pale-blue futuristic Crescendolls performance outfit, modest and nonsexual, with sleek boots and metallic trim",
+        "role": "Stella, blue-skinned bassist and central Crescendolls member from Interstella 5555",
+        "equipment": "sleek electric bass guitar and restrained cyan-gold music energy; no gun or human skin tone",
+        "avoid": "peach human skin, orange tracksuit, generic blonde shooter, sword, firearm, copied film frame"
+      },
+      "sourcePromptSha256": "3d5b287e4ea4ec6c9cc9908aec2fa21f0a825a835b54deaeef71eee45aaecbbe",
+      "replacesGenerationPromptSha256": "953e06dac29bbf704b7a9d6c1597be58be095b78b7c557fb0ad9768e728dcd00",
+      "generationPromptSha256": "aa3dda548a6aaa20381c3f22e80a19d1a672016e41cf2a880ad808b958a9cc78",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/439-hero-stella-interstella-aa3dda54.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Stella (Interstella 5555) from Daft Punk; this replaces a prior visually incorrect generation.\nCanonical physical anchor: adult blue-skinned extraterrestrial woman with very long golden-blond hair, full fringe and high ponytail held by a silver clip, elegant Leiji-inspired proportions.\nCanonical outfit anchor: white, gold and pale-blue futuristic Crescendolls performance outfit, modest and nonsexual, with sleek boots and metallic trim.\nCanonical role anchor: Stella, blue-skinned bassist and central Crescendolls member from Interstella 5555.\nCanonical equipment and power anchor: sleek electric bass guitar and restrained cyan-gold music energy; no gun or human skin tone.\nIdentity exclusions: peach human skin, orange tracksuit, generic blonde shooter, sword, firearm, copied film frame.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four performance frames: poised bass idle, stage run, bass-riff crescent and protective music pulse/recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: elegant syncopated bass timing with hair and ponytail follow-through.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 440,
+      "kind": "hero",
+      "id": "shep_interstella",
+      "name": "Shep (Interstella 5555)",
+      "universe": "Daft Punk",
+      "output": "/sprites/generated/heroes/daft-punk/shep-interstella.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult blue-skinned extraterrestrial male pilot with long dark-brown hair, lean build and earnest heroic expression",
+        "outfit": "brown-orange space-pilot suit with purple sleeves, pale harness, white gloves/boots and compact rescue gear",
+        "role": "Shep, Interstella 5555 pilot and self-sacrificing rescuer who pursues the kidnapped Crescendolls",
+        "equipment": "compact rescue control, guitar-shaped spacecraft motif as a small cyan energy arc, and pilot wrist console; no firearm",
+        "avoid": "human skin, blond female rocker, ordinary band guitarist, rifle, gun, unrelated orange anime heroine"
+      },
+      "sourcePromptSha256": "605059193468ce4f695c041c6c5ba989eee8d7d86e7ac9f51f0141de999afcf7",
+      "replacesGenerationPromptSha256": "957322ed5c244380d2632eb4d4043c8d113d3555c04a4b9cce217391b7a5717d",
+      "generationPromptSha256": "3eed09abeeaa5bd653515415390ffcfebd7cd8d286a1b32ee462ebb357802ce5",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/440-hero-shep-interstella-3eed09ab.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Shep (Interstella 5555) from Daft Punk; this replaces a prior visually incorrect generation.\nCanonical physical anchor: adult blue-skinned extraterrestrial male pilot with long dark-brown hair, lean build and earnest heroic expression.\nCanonical outfit anchor: brown-orange space-pilot suit with purple sleeves, pale harness, white gloves/boots and compact rescue gear.\nCanonical role anchor: Shep, Interstella 5555 pilot and self-sacrificing rescuer who pursues the kidnapped Crescendolls.\nCanonical equipment and power anchor: compact rescue control, guitar-shaped spacecraft motif as a small cyan energy arc, and pilot wrist console; no firearm.\nIdentity exclusions: human skin, blond female rocker, ordinary band guitarist, rifle, gun, unrelated orange anime heroine.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four rescue frames: pilot-console idle, forward rescue dash, protective cosmic arc and exhausted but safe recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: decisive pilot launch cadence with a long rescue glide.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 445,
+      "kind": "hero",
+      "id": "ronon_dex",
+      "name": "Ronon Dex",
+      "universe": "Stargate Atlantis",
+      "output": "/sprites/generated/heroes/stargate-atlantis/ronon-dex.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-review-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "tall muscular adult Satedan man with long dark dreadlocks, rugged face and controlled hunter stance",
+        "outfit": "weathered dark-brown leather coat and vest, layered Satedan clothing, arm guards, utility belt and heavy boots",
+        "role": "Ronon Dex, former Runner and Wraith hunter in Stargate Atlantis",
+        "equipment": "his distinctive large Satedan particle magnum pistol as the primary weapon, with a small utility knife kept secondary; no axe or energy sword",
+        "avoid": "axe, giant sword, medieval warrior, generic assault rifle, short hair, clean formal uniform"
+      },
+      "sourcePromptSha256": "fdf2652ae38d3348c1ff597b4594e942a6c5b106f5b331e3a6647ad0a6f51b2a",
+      "replacesGenerationPromptSha256": "4288d6d78248a1eec32b600d717798b701e40b47e2720c06d79aba31af08f2fe",
+      "generationPromptSha256": "31d847ddf37bb679fc03afe72114828e5d07495b94120ee79cbf30791e551823",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/445-hero-ronon-dex-31d847dd.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Ronon Dex from Stargate Atlantis; this replaces a prior visually incorrect generation.\nCanonical physical anchor: tall muscular adult Satedan man with long dark dreadlocks, rugged face and controlled hunter stance.\nCanonical outfit anchor: weathered dark-brown leather coat and vest, layered Satedan clothing, arm guards, utility belt and heavy boots.\nCanonical role anchor: Ronon Dex, former Runner and Wraith hunter in Stargate Atlantis.\nCanonical equipment and power anchor: his distinctive large Satedan particle magnum pistol as the primary weapon, with a small utility knife kept secondary; no axe or energy sword.\nIdentity exclusions: axe, giant sword, medieval warrior, generic assault rifle, short hair, clean formal uniform.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four clean combat frames: particle-magnum ready, Satedan rush, bright magnum shot and runner-instinct recoil/guard; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: heavy forward hunter cadence with one powerful pistol discharge.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 447,
+      "kind": "hero",
+      "id": "carson_beckett",
+      "name": "Carson Beckett",
+      "universe": "Stargate Atlantis",
+      "output": "/sprites/generated/heroes/stargate-atlantis/carson-beckett.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "middle-aged Scottish man with short brown hair, gentle intelligent face and average doctor build; original illustration, not actor likeness",
+        "outfit": "blue-grey Atlantis expedition medical uniform with dark side panels, medical badge shapes without readable text, gloves and compact satchel",
+        "role": "Dr. Carson Beckett, physician, Ancient Technology Activation gene specialist and compassionate Atlantis medic",
+        "equipment": "Ancient gene scanner, medical tablet, vial case and soft blue infirmary shield; absolutely no rifle or commando armor",
+        "avoid": "young black-haired soldier, firearm, energy rifle, assault pose, heavy armor, copied actor portrait"
+      },
+      "sourcePromptSha256": "9b35b3c6359ba9eed6547afc81244524a2d09ccfb531e2ee57386df4fdc8224c",
+      "replacesGenerationPromptSha256": "a95bf18579067b4b867b02d453c4131b51914c660a78091dee86ee37c13f619b",
+      "generationPromptSha256": "8fd006dfb8d5cf35dd9efad52f774d83fa4250f0a0b3eba70612090111f80937",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/447-hero-carson-beckett-8fd006df.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Carson Beckett from Stargate Atlantis; this replaces a prior visually incorrect generation.\nCanonical physical anchor: middle-aged Scottish man with short brown hair, gentle intelligent face and average doctor build; original illustration, not actor likeness.\nCanonical outfit anchor: blue-grey Atlantis expedition medical uniform with dark side panels, medical badge shapes without readable text, gloves and compact satchel.\nCanonical role anchor: Dr. Carson Beckett, physician, Ancient Technology Activation gene specialist and compassionate Atlantis medic.\nCanonical equipment and power anchor: Ancient gene scanner, medical tablet, vial case and soft blue infirmary shield; absolutely no rifle or commando armor.\nIdentity exclusions: young black-haired soldier, firearm, energy rifle, assault pose, heavy armor, copied actor portrait.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe medical frames: scan, hurry to patient off-screen, deploy medical shield and stabilize/recover; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: careful clinical motion followed by a brisk emergency step.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 450,
+      "kind": "hero",
+      "id": "eli_wallace_sgu",
+      "name": "Eli Wallace",
+      "universe": "Stargate Universe",
+      "output": "/sprites/generated/heroes/stargate-universe/eli-wallace-sgu.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "young adult stocky heavyset man with curly dark-brown hair, round friendly face and civilian posture; original illustration, not actor likeness",
+        "outfit": "dark casual T-shirt or hoodie under a practical Destiny field jacket, cargo trousers and simple shoes, no military rank gear",
+        "role": "Eli Wallace, civilian mathematical prodigy, Kino operator and Ancient-systems problem solver aboard Destiny",
+        "equipment": "Kino remote/tablet, small floating Kino sphere and pale-blue Ancient mathematical hologram; no firearm",
+        "avoid": "lean commando, rifle, military body armor, generic marine, copied actor likeness"
+      },
+      "sourcePromptSha256": "66e47aec89706ae59d59d39a16b601654ef06cad4c4a57abdab858d4203af0ac",
+      "replacesGenerationPromptSha256": "c31d2427f01e0414adc072ddeab75e77c8ac17ffccd96e4e94f0f130e81770f2",
+      "generationPromptSha256": "432c839723935f67a168c5162e0a6eaf5b76883a00a69e6e33669357662243af",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/450-hero-eli-wallace-sgu-432c8397.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Eli Wallace from Stargate Universe; this replaces a prior visually incorrect generation.\nCanonical physical anchor: young adult stocky heavyset man with curly dark-brown hair, round friendly face and civilian posture; original illustration, not actor likeness.\nCanonical outfit anchor: dark casual T-shirt or hoodie under a practical Destiny field jacket, cargo trousers and simple shoes, no military rank gear.\nCanonical role anchor: Eli Wallace, civilian mathematical prodigy, Kino operator and Ancient-systems problem solver aboard Destiny.\nCanonical equipment and power anchor: Kino remote/tablet, small floating Kino sphere and pale-blue Ancient mathematical hologram; no firearm.\nIdentity exclusions: lean commando, rifle, military body armor, generic marine, copied actor likeness.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe technical frames: tablet calculation, hurried corridor run, Kino scan projection and console-cover brace/recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: slightly awkward but energetic run followed by rapid tablet taps.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 455,
+      "kind": "hero",
+      "id": "angel_buffy",
+      "name": "Angel",
+      "universe": "Buffy the Vampire Slayer",
+      "output": "/sprites/generated/heroes/buffy-the-vampire-slayer/angel-buffy.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult pale man with dark-brown swept-back hair, strong brow and restrained vampire intensity; no direct actor likeness",
+        "outfit": "long black coat over dark shirt and trousers, practical boots and no celestial ornament",
+        "role": "Angel, ensouled vampire and brooding protector from Buffy the Vampire Slayer",
+        "equipment": "vampire strength, clean hand-to-hand movement and an optional wooden stake kept small; no wings, halo, feathers or holy magic",
+        "avoid": "angel wings, halo, white feathers, celestial knight, glowing holy beam, blood, fanged gore"
+      },
+      "sourcePromptSha256": "a7b03e35507da4d1aefb9ffd27984f848c71fbecd1ddf84183088b3412155093",
+      "replacesGenerationPromptSha256": "164ad779477a6c3723812c7b7828fc253fa7759b73f30f1f7cdb05d0d7769a0a",
+      "generationPromptSha256": "4fed84b731a5c8b216271176488ea6074d263747e9b0732f21b8d2872444641c",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/455-hero-angel-buffy-4fed84b7.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Angel from Buffy the Vampire Slayer; this replaces a prior visually incorrect generation.\nCanonical physical anchor: adult pale man with dark-brown swept-back hair, strong brow and restrained vampire intensity; no direct actor likeness.\nCanonical outfit anchor: long black coat over dark shirt and trousers, practical boots and no celestial ornament.\nCanonical role anchor: Angel, ensouled vampire and brooding protector from Buffy the Vampire Slayer.\nCanonical equipment and power anchor: vampire strength, clean hand-to-hand movement and an optional wooden stake kept small; no wings, halo, feathers or holy magic.\nIdentity exclusions: angel wings, halo, white feathers, celestial knight, glowing holy beam, blood, fanged gore.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four clean frames: brooding idle, coat-swept dash, non-gory vampire-strength strike and guarded recoil; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: heavy restrained lunge with coat follow-through.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 465,
+      "kind": "hero",
+      "id": "mordecai_bl",
+      "name": "Mordecai",
+      "universe": "Borderlands",
+      "output": "/sprites/generated/heroes/borderlands/mordecai-bl.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "lean adult male Vault Hunter with spiky blue-black mohawk, pointed goatee, tinted goggles and narrow hunter silhouette",
+        "outfit": "tan-brown desert hunter gear with asymmetrical light armor, scarf, fingerless gloves, ammo pouches and narrow boots",
+        "role": "Mordecai, Borderlands sniper and avian hunter",
+        "equipment": "long sniper rifle and Bloodwing represented only as a small red-brown bird companion or fast avian trail in attack cells; no axe or heavy bruiser armor",
+        "avoid": "bulky axe warrior, red plate armor, giant sword, stocky berserker, missing sniper rifle"
+      },
+      "sourcePromptSha256": "b1297994c3e0260ab75c95d95938c828de913ecb8ab81f24bf036caad9e951f7",
+      "replacesGenerationPromptSha256": "19f56d6fb2a0ad228c0ec7665a697c7d82c09da08e4d2f1154935307710519b4",
+      "generationPromptSha256": "a2ba6d461b1918dc5e268d5d17087d17896a9ad7dca3d70c33627eca67e524f4",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/465-hero-mordecai-bl-a2ba6d46.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Mordecai from Borderlands; this replaces a prior visually incorrect generation.\nCanonical physical anchor: lean adult male Vault Hunter with spiky blue-black mohawk, pointed goatee, tinted goggles and narrow hunter silhouette.\nCanonical outfit anchor: tan-brown desert hunter gear with asymmetrical light armor, scarf, fingerless gloves, ammo pouches and narrow boots.\nCanonical role anchor: Mordecai, Borderlands sniper and avian hunter.\nCanonical equipment and power anchor: long sniper rifle and Bloodwing represented only as a small red-brown bird companion or fast avian trail in attack cells; no axe or heavy bruiser armor.\nIdentity exclusions: bulky axe warrior, red plate armor, giant sword, stocky berserker, missing sniper rifle.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four hunter frames: rifle idle, quick hunter roll, precision shot with Bloodwing dive trail and guarded recoil; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: lean snap-to-scope cadence with Bloodwing crossing late in the attack row.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 467,
+      "kind": "hero",
+      "id": "tiny_tina_bl",
+      "name": "Tiny Tina",
+      "universe": "Borderlands",
+      "output": "/sprites/generated/heroes/borderlands/tiny-tina-bl.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-review-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "small thirteen-year-old girl with child-safe proportions, messy blond hair in uneven pigtails, large expressive eyes and manic but nonthreatening grin",
+        "outfit": "patched purple, white and orange demolition clothes, modest shorts over leggings, bandages, chunky boots, goggles and bunny-ear headgear/backpack",
+        "role": "Tiny Tina, eccentric young explosives expert from Borderlands",
+        "equipment": "cartoonish bunny bomb, small remote detonator and tea-party prop; no magic wand, laser rifle or sexualized gear",
+        "avoid": "pink-haired adult mage, firearm, erotic pose, exposed anatomy, realistic explosion victim, blood"
+      },
+      "sourcePromptSha256": "c1cca33055d923ab90e4c043df9826cae8e153aded4d41b1b2e6543757c85bd0",
+      "replacesGenerationPromptSha256": "1258b630ae9d384f708513c5f38930aece38cdb8d2f0a86914e561aa6d9dfb47",
+      "generationPromptSha256": "6e0cd18c7c55ce420697d2931c506a0fd2d4e4a7ea6a69a247891c934d3f547c",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/467-hero-tiny-tina-bl-6e0cd18c.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Tiny Tina from Borderlands; this replaces a prior visually incorrect generation.\nCanonical physical anchor: small thirteen-year-old girl with child-safe proportions, messy blond hair in uneven pigtails, large expressive eyes and manic but nonthreatening grin.\nCanonical outfit anchor: patched purple, white and orange demolition clothes, modest shorts over leggings, bandages, chunky boots, goggles and bunny-ear headgear/backpack.\nCanonical role anchor: Tiny Tina, eccentric young explosives expert from Borderlands.\nCanonical equipment and power anchor: cartoonish bunny bomb, small remote detonator and tea-party prop; no magic wand, laser rifle or sexualized gear.\nIdentity exclusions: pink-haired adult mage, firearm, erotic pose, exposed anatomy, realistic explosion victim, blood.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four child-safe game frames: tea-party idle, skipping run, remote bunny-bomb sparkle with no victim and bunker-blanket duck/recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: bouncy uneven hop with a delayed harmless comic pop.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 470,
+      "kind": "hero",
+      "id": "bond_spy",
+      "name": "Bond Forger",
+      "universe": "Spy x Family",
+      "output": "/sprites/generated/heroes/spy-x-family/bond-spy.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "very large fluffy white Great-Pyrenees-like dog with broad body, drooping black ears, black nose, gentle eyes and oversized paws",
+        "outfit": "simple black collar with a small gold mission tag, no clothing and no human accessories",
+        "role": "Bond Forger, the Forger family dog with brief precognitive visions in Spy x Family",
+        "equipment": "no weapon; foresight shown as a small pale-blue vision ripple above the head and protective body-block posture",
+        "avoid": "human operative, biped, gun, suit, sword, anthropomorphic hands, attack magic"
+      },
+      "sourcePromptSha256": "2aba64cf06419523647b60d67ad07d52aca52946996e72a1e983ebd9f2337990",
+      "replacesGenerationPromptSha256": "45ca8bf62b614dc8561ffaa6a5c9d3d8afb6800f66c70574a913e57b08ca98f1",
+      "generationPromptSha256": "eb9b785b9380233a208a13fa6f6d87a564dd75ba6b7c830b8d1f240f186488b6",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/470-hero-bond-spy-eb9b785b.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Bond Forger from Spy x Family; this replaces a prior visually incorrect generation.\nCanonical physical anchor: very large fluffy white Great-Pyrenees-like dog with broad body, drooping black ears, black nose, gentle eyes and oversized paws.\nCanonical outfit anchor: simple black collar with a small gold mission tag, no clothing and no human accessories.\nCanonical role anchor: Bond Forger, the Forger family dog with brief precognitive visions in Spy x Family.\nCanonical equipment and power anchor: no weapon; foresight shown as a small pale-blue vision ripple above the head and protective body-block posture.\nIdentity exclusions: human operative, biped, gun, suit, sword, anthropomorphic hands, attack magic.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe canine frames: calm pant, heavy fluffy trot, foresight alert and protective crouch/recoil; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: slow powerful dog trot with soft fur bounce.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 473,
+      "kind": "hero",
+      "id": "victoria_terrifier",
+      "name": "Victoria Heyes",
+      "universe": "Terrifier",
+      "output": "/sprites/generated/heroes/terrifier/victoria-terrifier.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-review-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "young adult woman with long dark-brown hair and a visibly asymmetrical but completely non-graphic healed survivor face, partly covered by a neutral medical patch",
+        "outfit": "plain dark civilian coat, practical trousers, hospital-survivor scarf and modest shoes",
+        "role": "Victoria Heyes, traumatized survivor from Terrifier; vulnerable human survival, not a fantasy warrior",
+        "equipment": "flashlight, phone alarm and compact first-aid wrap only; no sword, gun or supernatural beam",
+        "avoid": "graphic disfigurement, blood, gore, sword heroine, fantasy armor, magic portal, sexualization"
+      },
+      "sourcePromptSha256": "b1f4e113e5db303e4f7af2b39f98b428f411e51059721f4977e3edfa7c87238d",
+      "replacesGenerationPromptSha256": "b7f4ae9ccd19794ae92cc4f6c0c73325933728ca4e22085e144ba44976d31ed9",
+      "generationPromptSha256": "c80bf9d15eb59504351ee920620220f0952edbf44d9f45efd9730c3b50585070",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/473-hero-victoria-terrifier-c80bf9d1.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Victoria Heyes from Terrifier; this replaces a prior visually incorrect generation.\nCanonical physical anchor: young adult woman with long dark-brown hair and a visibly asymmetrical but completely non-graphic healed survivor face, partly covered by a neutral medical patch.\nCanonical outfit anchor: plain dark civilian coat, practical trousers, hospital-survivor scarf and modest shoes.\nCanonical role anchor: Victoria Heyes, traumatized survivor from Terrifier; vulnerable human survival, not a fantasy warrior.\nCanonical equipment and power anchor: flashlight, phone alarm and compact first-aid wrap only; no sword, gun or supernatural beam.\nIdentity exclusions: graphic disfigurement, blood, gore, sword heroine, fantasy armor, magic portal, sexualization.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe survivor frames: wary idle, hurried escape, flashlight/alarm warning and brace/recover; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: uneven cautious movement with protective face turn.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 474,
+      "kind": "hero",
+      "id": "jonathan_terrifier",
+      "name": "Jonathan Shaw",
+      "universe": "Terrifier",
+      "output": "/sprites/generated/heroes/terrifier/jonathan-terrifier.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "slim teenage boy with curly dark-brown hair, youthful face and clearly adolescent proportions",
+        "outfit": "casual layered hoodie and jacket, jeans, sneakers and small school backpack",
+        "role": "Jonathan Shaw, Sienna younger brother and determined teenage investigator/survivor from Terrifier 2",
+        "equipment": "flashlight, notebook and phone camera only; no firearm, body armor or military equipment",
+        "avoid": "adult commando, gun, tactical vest, soldier helmet, gore, sexualization"
+      },
+      "sourcePromptSha256": "3b9ca20efcda426d341fb589c07e9593a1c43f3382bc7b803e2f65c0c95c3991",
+      "replacesGenerationPromptSha256": "1233579fbe2b0498b7c533a75097ae689b356c0770668eb05d61b5d618445c3f",
+      "generationPromptSha256": "833857fe80afddee33c22cf2d786726020f7173cc68450e2a01cd7f3c1b02123",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/474-hero-jonathan-terrifier-833857fe.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Jonathan Shaw from Terrifier; this replaces a prior visually incorrect generation.\nCanonical physical anchor: slim teenage boy with curly dark-brown hair, youthful face and clearly adolescent proportions.\nCanonical outfit anchor: casual layered hoodie and jacket, jeans, sneakers and small school backpack.\nCanonical role anchor: Jonathan Shaw, Sienna younger brother and determined teenage investigator/survivor from Terrifier 2.\nCanonical equipment and power anchor: flashlight, notebook and phone camera only; no firearm, body armor or military equipment.\nIdentity exclusions: adult commando, gun, tactical vest, soldier helmet, gore, sexualization.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe frames: investigate notebook, run, flash warning light and duck/recover behind backpack; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: quick anxious teenage run with a hesitant flashlight check.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 485,
+      "kind": "hero",
+      "id": "samantha_oups",
+      "name": "Samantha",
+      "universe": "Samantha Oups!",
+      "output": "/sprites/generated/heroes/samantha-oups/samantha-oups.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "young adult comedic woman with long bright-blond hair, exaggerated cheerful expression and ordinary realistic proportions",
+        "outfit": "recognizable bright pink top or cardigan, colorful skirt or trousers, costume-jewelry shapes and everyday apartment shoes; campy sketch-show styling",
+        "role": "Samantha Lo from Samantha Oups!, impulsive blonde best friend in domestic comedy sketches",
+        "equipment": "misunderstood telephone, lost keys and harmless household prop only",
+        "avoid": "pink cyber warrior, gun, armor, magic shield, anime assassin, realistic male portrait, violence"
+      },
+      "sourcePromptSha256": "f5f7cd958867c41481fd8a57f260858cdade4d3d206295bc3ac4163d670476ff",
+      "replacesGenerationPromptSha256": "eb9c5b1ff6cae6f5f1a6a7c4226feaef45035f86f1481dc2818a94ada08b26ed",
+      "generationPromptSha256": "6e85dce9b1a14db0e0495d93afedfe571e66e40ebfb896e8e3051640933af3d8",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/485-hero-samantha-oups-6e85dce9.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Samantha from Samantha Oups!; this replaces a prior visually incorrect generation.\nCanonical physical anchor: young adult comedic woman with long bright-blond hair, exaggerated cheerful expression and ordinary realistic proportions.\nCanonical outfit anchor: recognizable bright pink top or cardigan, colorful skirt or trousers, costume-jewelry shapes and everyday apartment shoes; campy sketch-show styling.\nCanonical role anchor: Samantha Lo from Samantha Oups!, impulsive blonde best friend in domestic comedy sketches.\nCanonical equipment and power anchor: misunderstood telephone, lost keys and harmless household prop only.\nIdentity exclusions: pink cyber warrior, gun, armor, magic shield, anime assassin, realistic male portrait, violence.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four comedy frames: chatty idle, flustered apartment run, phone-confusion gesture and harmless pratfall/recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: big expressive sitcom gestures with a two-step stumble.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 486,
+      "kind": "hero",
+      "id": "chantal_oups",
+      "name": "Chantal",
+      "universe": "Samantha Oups!",
+      "output": "/sprites/generated/heroes/samantha-oups/chantal-oups.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "young adult comedic woman with brunette hair, blue eyes, friendly face and ordinary realistic proportions",
+        "outfit": "blue-dominant everyday cardigan or jacket, simple top and trousers/skirt, black bead necklace and practical apartment shoes",
+        "role": "Chantal Mathieu, Samantha loyal brunette best friend from Samantha Oups!",
+        "equipment": "handbag, compact camera or household note only; no weapon",
+        "avoid": "blue-haired anime fighter, laser, gun, fantasy armor, magic portal, violence"
+      },
+      "sourcePromptSha256": "bfc9bb3da2ce03e97f817e98a93f95d23b870340546001680aaa5e95cdd24104",
+      "replacesGenerationPromptSha256": "f89b3b0895c0b496bd5a7cc60ee9e0a27bc575ace658b5352ea5d5180e6294e0",
+      "generationPromptSha256": "33c287e26115096bcdd0a1755b779891dc243735411a4095c6cf756d9b05e474",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/486-hero-chantal-oups-33c287e2.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Chantal from Samantha Oups!; this replaces a prior visually incorrect generation.\nCanonical physical anchor: young adult comedic woman with brunette hair, blue eyes, friendly face and ordinary realistic proportions.\nCanonical outfit anchor: blue-dominant everyday cardigan or jacket, simple top and trousers/skirt, black bead necklace and practical apartment shoes.\nCanonical role anchor: Chantal Mathieu, Samantha loyal brunette best friend from Samantha Oups!.\nCanonical equipment and power anchor: handbag, compact camera or household note only; no weapon.\nIdentity exclusions: blue-haired anime fighter, laser, gun, fantasy armor, magic portal, violence.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four comedy frames: attentive idle, hurried walk, camera/handbag confusion and startled but safe recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: slightly steadier sitcom timing than Samantha, ending in the same comic misunderstanding.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 487,
+      "kind": "hero",
+      "id": "voisine_oups",
+      "name": "Voisine Oups",
+      "universe": "Samantha Oups!",
+      "output": "/sprites/generated/heroes/samantha-oups/voisine-oups.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "older adult apartment neighbour with conventional styled hair, expressive disapproving face and grounded non-fantasy proportions",
+        "outfit": "beige-gold cardigan, patterned blouse, modest skirt or trousers and house shoes, carrying a small neighbour handbag",
+        "role": "the recurring Oups neighbour archetype: complaint, gossip and apartment-door comedy, not a supernatural warrior",
+        "equipment": "door keys, complaint note and handbag only; no scythe or magic",
+        "avoid": "blonde fantasy reaper, scythe, armor, energy vortex, gun, combat pose"
+      },
+      "sourcePromptSha256": "b2d8aa350527526db18892d5ea92b1aa705a0d26b68fef64681cb71baff4b4af",
+      "replacesGenerationPromptSha256": "a3dd54af345404ec0af975d27fcf43f129d394a0c74bd86d78db77fab05c9701",
+      "generationPromptSha256": "3099ed2efe31e5d391ba982421b4d1d9790a39415ef5cbcba4c9421e02718445",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/487-hero-voisine-oups-3099ed2e.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Voisine Oups from Samantha Oups!; this replaces a prior visually incorrect generation.\nCanonical physical anchor: older adult apartment neighbour with conventional styled hair, expressive disapproving face and grounded non-fantasy proportions.\nCanonical outfit anchor: beige-gold cardigan, patterned blouse, modest skirt or trousers and house shoes, carrying a small neighbour handbag.\nCanonical role anchor: the recurring Oups neighbour archetype: complaint, gossip and apartment-door comedy, not a supernatural warrior.\nCanonical equipment and power anchor: door keys, complaint note and handbag only; no scythe or magic.\nIdentity exclusions: blonde fantasy reaper, scythe, armor, energy vortex, gun, combat pose.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four comedy frames: listen at door, brisk approach, wave complaint note and recoil from harmless apartment mishap; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: stiff offended walk followed by a comic double-take.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 491,
+      "kind": "hero",
+      "id": "mado_perna",
+      "name": "Mado la Nicoise",
+      "universe": "Noelle Perna",
+      "output": "/sprites/generated/heroes/noelle-perna/mado-perna.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "older curvy Niçoise comedy persona with voluminous dyed-blond coiffure, heavily expressive but tasteful makeup and exuberant Mediterranean gestures; original caricature, not portrait",
+        "outfit": "signature fitted bright-pink dress or wrap top with black skirt, colorful scarf, chunky rings, bracelets and necklace, practical heels",
+        "role": "Mado la Niçoise, unstoppable café storyteller and one-woman-show monologist created by Noëlle Perna",
+        "equipment": "stage microphone, folded café napkin and expressive hand gestures only",
+        "avoid": "young pink armored warrior, gun, magic beam, combat armor, copied actor portrait, sexualized framing"
+      },
+      "sourcePromptSha256": "7001e64f2220a359c1909f8c6bdc097025118b0e2a793297e57a2dad9eee7af6",
+      "replacesGenerationPromptSha256": "2fc5a827f3e91cc0537726005dd8d1e05921bdd757855c8d82ee8a5ecd38f1cb",
+      "generationPromptSha256": "c9667b1d0dcc86b12b06c0981f7edd6618d5b08d83d38df1fec989b726efeb39",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/491-hero-mado-perna-c9667b1d.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Mado la Nicoise from Noelle Perna; this replaces a prior visually incorrect generation.\nCanonical physical anchor: older curvy Niçoise comedy persona with voluminous dyed-blond coiffure, heavily expressive but tasteful makeup and exuberant Mediterranean gestures; original caricature, not portrait.\nCanonical outfit anchor: signature fitted bright-pink dress or wrap top with black skirt, colorful scarf, chunky rings, bracelets and necklace, practical heels.\nCanonical role anchor: Mado la Niçoise, unstoppable café storyteller and one-woman-show monologist created by Noëlle Perna.\nCanonical equipment and power anchor: stage microphone, folded café napkin and expressive hand gestures only.\nIdentity exclusions: young pink armored warrior, gun, magic beam, combat armor, copied actor portrait, sexualized framing.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four comedy-performance frames: pose at microphone, bustling step, rapid Niçoise tirade gesture and audience-reaction bow/recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: rapid verbal hand choreography with a broad comic pause.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 492,
+      "kind": "hero",
+      "id": "cafe_nice_regular",
+      "name": "Cafe de Nice Regular",
+      "universe": "Noelle Perna",
+      "output": "/sprites/generated/heroes/noelle-perna/cafe-nice-regular.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "middle-aged everyday Nice café regular with sun-weathered friendly face and grounded civilian proportions",
+        "outfit": "short-sleeved patterned shirt, light cardigan or café jacket, neutral trousers and ordinary shoes",
+        "role": "Café de Nice regular in the Mado comedy world: gossip listener and comic respondent",
+        "equipment": "small espresso cup, saucer and folded local newspaper only",
+        "avoid": "steampunk heroine, ornate armor, gun, magic circle, sword, adventurer costume"
+      },
+      "sourcePromptSha256": "11c27650be6195cd063acfe93ad0fc1ed087377cc9bd9e8ebc63aeeb876b4bed",
+      "replacesGenerationPromptSha256": "42e293b204a09a457b8f65a6dce077bd41f135525bc95c22a3d2feaaf70cdc7e",
+      "generationPromptSha256": "e04e0ddd8756a754164cb3dd94b9b878ebe7b5e9c128741dc933a0ef9074826f",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/492-hero-cafe-nice-regular-e04e0ddd.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Cafe de Nice Regular from Noelle Perna; this replaces a prior visually incorrect generation.\nCanonical physical anchor: middle-aged everyday Nice café regular with sun-weathered friendly face and grounded civilian proportions.\nCanonical outfit anchor: short-sleeved patterned shirt, light cardigan or café jacket, neutral trousers and ordinary shoes.\nCanonical role anchor: Café de Nice regular in the Mado comedy world: gossip listener and comic respondent.\nCanonical equipment and power anchor: small espresso cup, saucer and folded local newspaper only.\nIdentity exclusions: steampunk heroine, ornate armor, gun, magic circle, sword, adventurer costume.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four comedy frames: sip espresso, hurry to table, raise newspaper as harmless guard and surprised spill/recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: slow café shuffle interrupted by a quick comic double-take.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 493,
+      "kind": "hero",
+      "id": "theater_stagehand",
+      "name": "Theater Stagehand",
+      "universe": "Noelle Perna",
+      "output": "/sprites/generated/heroes/noelle-perna/theater-stagehand.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "adult theatre technician with ordinary civilian face, sturdy working build and alert backstage posture",
+        "outfit": "plain black stagehand T-shirt, dark cargo trousers, work gloves, headset and utility belt with tape",
+        "role": "theatre stagehand supporting Mado one-woman-show cues, lights and props",
+        "equipment": "coiled cable, gaffer tape roll and small light-control handset; no firearm or armor",
+        "avoid": "masked commando, gas mask, rifle, tactical soldier, magic shield, combat pose"
+      },
+      "sourcePromptSha256": "ee45a95da16d9e62a0346380f09d39793a78b1b9d67c65385696bc6dabbe5039",
+      "replacesGenerationPromptSha256": "d8813a627168172cc960cff1c23122180de7be0238add02afe0b7bf2f86ddefd",
+      "generationPromptSha256": "cf28baec5895707c7735b1df0f9bbb8a223af070618ec13215ef6dd7d862d645",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/493-hero-theater-stagehand-cf28baec.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Theater Stagehand from Noelle Perna; this replaces a prior visually incorrect generation.\nCanonical physical anchor: adult theatre technician with ordinary civilian face, sturdy working build and alert backstage posture.\nCanonical outfit anchor: plain black stagehand T-shirt, dark cargo trousers, work gloves, headset and utility belt with tape.\nCanonical role anchor: theatre stagehand supporting Mado one-woman-show cues, lights and props.\nCanonical equipment and power anchor: coiled cable, gaffer tape roll and small light-control handset; no firearm or armor.\nIdentity exclusions: masked commando, gas mask, rifle, tactical soldier, magic shield, combat pose.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe work frames: check headset, carry cable, trigger spotlight cue and duck/recover from a harmless prop wobble; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: efficient backstage walk with precise cue timing.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 494,
+      "kind": "hero",
+      "id": "rachel_wotw",
+      "name": "Rachel Ferrier",
+      "universe": "War of the Worlds",
+      "output": "/sprites/generated/heroes/war-of-the-worlds/rachel-wotw.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "small ten-year-old girl with light-brown shoulder-length hair, youthful face and unmistakably child proportions",
+        "outfit": "modest lavender hoodie or jacket over simple shirt, practical trousers and sneakers suitable for a frightened civilian escape",
+        "role": "Rachel Ferrier, Ray young daughter and child survivor in Spielberg War of the Worlds",
+        "equipment": "small backpack and protective ear-covering gesture only; no weapon",
+        "avoid": "adult woman, dress warrior, gun, sword, magic attack, sexualization, injury, blood"
+      },
+      "sourcePromptSha256": "df0ee7955a192b3c58e2b72515db7573985bf80681aa20a446fa4a09ffdc4d54",
+      "replacesGenerationPromptSha256": "d1179354eb11d9f781b6b7ec30adc8909c1b859bbcc761f5ae0cfd349ad6b6ac",
+      "generationPromptSha256": "eed6e5831cf413bddd7f49e9c6db1d6f40bcac97f11ca1a286eeb354743a90d8",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/494-hero-rachel-wotw-eed6e583.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Rachel Ferrier from War of the Worlds; this replaces a prior visually incorrect generation.\nCanonical physical anchor: small ten-year-old girl with light-brown shoulder-length hair, youthful face and unmistakably child proportions.\nCanonical outfit anchor: modest lavender hoodie or jacket over simple shirt, practical trousers and sneakers suitable for a frightened civilian escape.\nCanonical role anchor: Rachel Ferrier, Ray young daughter and child survivor in Spielberg War of the Worlds.\nCanonical equipment and power anchor: small backpack and protective ear-covering gesture only; no weapon.\nIdentity exclusions: adult woman, dress warrior, gun, sword, magic attack, sexualization, injury, blood.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four child-safe survival frames: anxious idle, run toward parent off-screen, cover ears under a soft protective ripple and crouch/recover; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: short frightened steps with a protective pause.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 495,
+      "kind": "hero",
+      "id": "robbie_wotw",
+      "name": "Robbie Ferrier",
+      "universe": "War of the Worlds",
+      "output": "/sprites/generated/heroes/war-of-the-worlds/robbie-wotw.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "slim teenage boy with medium brown hair, youthful face and adolescent proportions",
+        "outfit": "dark casual hoodie or jacket, T-shirt, jeans and worn sneakers appropriate to a suburban refugee",
+        "role": "Robbie Ferrier, Ray teenage son in Spielberg War of the Worlds; impulsive protector and civilian survivor, not a soldier",
+        "equipment": "flashlight and improvised family signal only; no firearm, military armor or energy weapon",
+        "avoid": "adult tactical soldier, rifle, body armor, green magic gun, facial hair, gore"
+      },
+      "sourcePromptSha256": "be8e64fababc57025afd248df15da42e45ae4a0af81016c8ed934a1d493be5bb",
+      "replacesGenerationPromptSha256": "f45acae5855183281b97a95d75c2883bf208e08c1fec57f43c23416c903ffa03",
+      "generationPromptSha256": "c0f23d59bdd568fabd0e6ca800aa1401ce16bf66be93692c2b0b6f2a0adefe45",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/495-hero-robbie-wotw-c0f23d59.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Robbie Ferrier from War of the Worlds; this replaces a prior visually incorrect generation.\nCanonical physical anchor: slim teenage boy with medium brown hair, youthful face and adolescent proportions.\nCanonical outfit anchor: dark casual hoodie or jacket, T-shirt, jeans and worn sneakers appropriate to a suburban refugee.\nCanonical role anchor: Robbie Ferrier, Ray teenage son in Spielberg War of the Worlds; impulsive protector and civilian survivor, not a soldier.\nCanonical equipment and power anchor: flashlight and improvised family signal only; no firearm, military armor or energy weapon.\nIdentity exclusions: adult tactical soldier, rifle, body armor, green magic gun, facial hair, gore.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four safe survival frames: watch horizon, urgent run, signal family behind cover and brace/recover from tripod shockwave; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: long teenage stride with impulsive forward lean.\nNon-combat safety lock: this character does not attack. Row 3 must be a defensive, support, warning, rescue, medical, technical or comedy action with no weapon and no victim.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    },
+    {
+      "sequence": 499,
+      "kind": "hero",
+      "id": "spengler_gb",
+      "name": "Egon Spengler",
+      "universe": "Ghostbusters",
+      "output": "/sprites/generated/heroes/ghostbusters/spengler-gb.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "asset-batch-500-wave-2-canonical-correction",
+      "selectionTier": "visual-qa-net-correction",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": {
+        "physical": "tall lanky adult male scientist with high swept-up brown hair, large forehead, wire-rim glasses and narrow thoughtful face; original caricature, not actor likeness",
+        "outfit": "classic tan Ghostbusters utility jumpsuit with dark boots, elbow pads and equipment harness; no readable name patch or logo",
+        "role": "Dr. Egon Spengler, laconic physicist, engineer and scientific brain of the Ghostbusters",
+        "equipment": "proton pack and wand plus a handheld PKE meter used in support frames",
+        "avoid": "short heavyset blond brawler, missing glasses, generic identical Ghostbuster face, rifle, magic staff, copied actor portrait"
+      },
+      "sourcePromptSha256": "d1fc67f8a682c35ea6148b4f7dfef3a9b5799d39261cc8d3fa32b18340a20b9d",
+      "replacesGenerationPromptSha256": "989d6aed09c964818ed96ab3cea5502ff26ba75ee6fc61963e8b336f26a62f2a",
+      "generationPromptSha256": "037d4eb843b3307c6b86f954068e1e6bfbea9394ec6a3785399b3f600572da6c",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-2-corrections-376-500/499-hero-spengler-gb-037d4eb8.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: correction-quality transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a lore-faithful original fan-made 4x4 pixel-art animation sheet for Egon Spengler from Ghostbusters; this replaces a prior visually incorrect generation.\nCanonical physical anchor: tall lanky adult male scientist with high swept-up brown hair, large forehead, wire-rim glasses and narrow thoughtful face; original caricature, not actor likeness.\nCanonical outfit anchor: classic tan Ghostbusters utility jumpsuit with dark boots, elbow pads and equipment harness; no readable name patch or logo.\nCanonical role anchor: Dr. Egon Spengler, laconic physicist, engineer and scientific brain of the Ghostbusters.\nCanonical equipment and power anchor: proton pack and wand plus a handheld PKE meter used in support frames.\nIdentity exclusions: short heavyset blond brawler, missing glasses, generic identical Ghostbuster face, rifle, magic staff, copied actor portrait.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, clean dark outlines and a readable full-body silhouette; original fan art only, not copied key art and not a photorealistic actor or musician likeness.\nComposition/framing: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body identity centered per cell; consistent elevated three-quarter side battle angle facing right, consistent scale, proportions, pixel density and light direction.\nAnimation choreography: row 1 has four calm identity-specific idle poses; row 2 has four readable walk, run, trot or glide poses appropriate to the subject; row 3 has four science-combat frames: PKE scan idle, lanky equipment run, controlled proton stream and careful pack-recoil recovery; row 4 has four non-gory surprise, brace, recoil and recovery poses.\nCadence lock: precise analytical timing with a brief meter check before the proton shot.\nClean-action lock: row 3 uses only the stated canonical equipment or power against empty space, with no victim, injury, blood or gore.\nCell lock: keep head, feet or full creature extent, equipment and effects inside each cell with transparent breathing room; no body or effect crosses a cell boundary; no cropped pose, merged cell, visible grid or duplicate body.\nBackground/output lock: request genuine transparent alpha around every pose; no checkerboard, white canvas, black canvas, chroma key, baked room, floor plane, opaque panel or cast shadow outside the silhouette. If the service still returns an opaque generated backdrop, keep it flat, edge-connected and free of internal detail so the project normalizer can remove it safely.\nUniversal safety lock: fully clothed and nonsexual; minors retain unmistakably age-appropriate proportions and actions; no nudity, erotic framing, exposed anatomy, wounds, blood, gore, torture or graphic horror.\nBranding lock: no text, letters, numbers, caption, franchise logo, product logo, band logo, readable badge, UI label, signature or watermark."
+    }
+  ]
+}
