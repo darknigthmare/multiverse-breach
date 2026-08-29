@@ -808,7 +808,12 @@ assert(raceEngineSource.includes('KART_TRACK_LAYOUTS') && raceEngineSource.inclu
 assert(raceEngineSource.includes('getClosestRoadPoint') && raceEngineSource.includes('this.track.roadWidth') && raceEngineSource.includes('this.track.shortcuts'), 'Race physics and minimap must follow the active track path instead of one fixed oval.');
 assert(raceEngineSource.includes('getProjectedTrackSegments') && raceEngineSource.includes('normalizeTrackObjects') && raceEngineSource.includes('closestPointOnPath'), 'Race rear camera, physics, and objects must be anchored to the same track geometry.');
 assert(raceEngineSource.includes('getRearRoadVisualWidth') && raceEngineSource.includes('cameraWidthBoost') && raceEngineSource.includes('kartW = 218'), 'Race rear camera must keep a real track scale where the kart is smaller than the road.');
-assert(raceEngineSource.includes('roadWidth * 0.9') && raceEngineSource.includes('Math.max(this.track.offroadDrag, 0.965)'), 'Race driving must keep forgiving kart-road physics instead of killing speed on small visual/track offsets.');
+assert(
+  raceEngineSource.includes('roadWidth * 0.9')
+    && raceEngineSource.includes("clamp(Number(this.track.offroadDrag) || 0.9, 0.82, 0.965)")
+    && raceEngineSource.includes("onTrack ? 0.992 : offroadDrag"),
+  'Race driving must keep forgiving track margins while applying each circuit\'s real off-road penalty.'
+);
 assert(raceModeSource.includes('race-track-selector') && raceModeSource.includes('setTrackId') && raceModeSource.includes('trackList.map'), 'Race tab must let the player switch between available kart tracks.');
 assert(raceModeSource.includes('keyPulseRef') && raceModeSource.includes('pulseVirtualKey'), 'Race controls must keep short keyboard and touch inputs alive long enough for the engine loop.');
 assert(raceModeSource.includes('autoAccelerateRef') && raceModeSource.includes('recoverPlayer') && raceModeSource.includes('data-track-factor'), 'Race controls must provide assisted acceleration, manual recovery, and visible track-lock telemetry.');

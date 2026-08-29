@@ -77,11 +77,15 @@ export class EngineTactics {
 
     this.rows = this.battlefield.rows || 5;
     this.cols = this.battlefield.cols || 8;
+    this.perspectiveSpread = 0.34;
     this.cellW = Math.min(66, Math.floor((this.width - 140) / this.cols));
-    this.cellH = Math.min(48, Math.floor((this.height - 170) / this.rows));
+    this.gridStartY = Math.max(106, Math.round(this.height * 0.31));
+    this.cellH = Math.min(
+      56,
+      Math.floor(Math.max(180, this.height - this.gridStartY - 24) / this.rows)
+    );
     this.gridStartX = Math.round((this.width - this.cols * this.cellW) / 2);
-    this.gridStartY = 60;
-    // Shared screen-space camera metrics keep rendering and hit-testing aligned.
+    // Shared perspective-camera metrics keep rendering and hit-testing aligned.
     this.baseCellW = this.cellW;
     this.baseCellH = this.cellH;
     this.baseGridStartX = this.gridStartX;
@@ -116,6 +120,7 @@ export class EngineTactics {
     // Convert heroes
     this.heroes = heroes.map((h, idx) => ({
       ...h,
+      stats: { ...h.stats },
       gridX: this.battlefield.heroSpawns?.[idx]?.x ?? 0,
       gridY: this.battlefield.heroSpawns?.[idx]?.y ?? idx + 1,
       x: 0, y: 0,
@@ -194,6 +199,8 @@ export class EngineTactics {
 
     this.rebuildTurnQueue();
     this.startTurn();
+    // Avoid the opening frame sliding every pawn in from the canvas origin.
+    this.syncActorsToCamera();
   }
 
   schedule(callback, delay) {
@@ -930,8 +937,7 @@ export class EngineTactics {
     if (!unit || unit.currentHp <= 0) return;
     const tile = this.getTileAt(unit.gridX, unit.gridY);
     if (!tile) return;
-    const px = this.gridStartX + unit.gridX * this.cellW + this.cellW / 2;
-    const py = this.gridStartY + unit.gridY * this.cellH + 12;
+    const { x: px, y: py } = this.gridToScreen(unit.gridX, unit.gridY);
     if (tile.type === 'hazard' && !this.hazardsDisabled) {
       unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
       this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 40, 'text', 'DANGER');
@@ -1006,18 +1012,115 @@ export class EngineTactics {
     return threatMap;
   }
 
-  gridToScreen(gridX, gridY, centered = true) {
+  getPerspectiveScaleAtRow(rowCoordinate) {
+    const depth = Math.max(0, Math.min(1, rowCoordinate / Math.max(1, this.rows)));
+    return 1 + this.perspectiveSpread * depth;
+  }
+
+  getPerspectivePoint(columnCoordinate, rowCoordinate) {
+    const boardTopWidth = this.cols * this.cellW;
+    const scale = this.getPerspectiveScaleAtRow(rowCoordinate);
+    const centerX = this.gridStartX + boardTopWidth / 2;
+    const left = centerX - boardTopWidth * scale / 2;
     return {
-      x: this.gridStartX + gridX * this.cellW + (centered ? this.cellW / 2 : 0),
-      y: this.gridStartY + gridY * this.cellH + (centered ? this.cellH / 2 : 0)
+      x: left + columnCoordinate * this.cellW * scale,
+      y: this.gridStartY + rowCoordinate * this.cellH
     };
   }
 
-  screenToGrid(screenX, screenY) {
+  getCellPolygon(gridX, gridY, inset = 0) {
+    const points = [
+      this.getPerspectivePoint(gridX, gridY),
+      this.getPerspectivePoint(gridX + 1, gridY),
+      this.getPerspectivePoint(gridX + 1, gridY + 1),
+      this.getPerspectivePoint(gridX, gridY + 1)
+    ];
+    if (!(inset > 0)) return points;
+    const center = points.reduce(
+      (acc, point) => ({ x: acc.x + point.x / points.length, y: acc.y + point.y / points.length }),
+      { x: 0, y: 0 }
+    );
+    const ratio = Math.min(0.38, inset / Math.max(1, Math.min(this.cellW, this.cellH)));
+    return points.map(point => ({
+      x: point.x + (center.x - point.x) * ratio,
+      y: point.y + (center.y - point.y) * ratio
+    }));
+  }
+
+  getCellBounds(gridX, gridY, inset = 0) {
+    const polygon = this.getCellPolygon(gridX, gridY, inset);
+    const xs = polygon.map(point => point.x);
+    const ys = polygon.map(point => point.y);
     return {
-      x: Math.floor((screenX - this.gridStartX) / this.cellW),
-      y: Math.floor((screenY - this.gridStartY) / this.cellH)
+      left: Math.min(...xs),
+      right: Math.max(...xs),
+      top: Math.min(...ys),
+      bottom: Math.max(...ys),
+      width: Math.max(...xs) - Math.min(...xs),
+      height: Math.max(...ys) - Math.min(...ys)
     };
+  }
+
+  tracePolygonPath(ctx, points) {
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    points.slice(1).forEach(point => ctx.lineTo(point.x, point.y));
+    ctx.closePath();
+  }
+
+  traceCellPath(ctx, gridX, gridY, inset = 0) {
+    this.tracePolygonPath(ctx, this.getCellPolygon(gridX, gridY, inset));
+  }
+
+  getBoardPolygon() {
+    return [
+      this.getPerspectivePoint(0, 0),
+      this.getPerspectivePoint(this.cols, 0),
+      this.getPerspectivePoint(this.cols, this.rows),
+      this.getPerspectivePoint(0, this.rows)
+    ];
+  }
+
+  getBoardBounds() {
+    const polygon = this.getBoardPolygon();
+    const xs = polygon.map(point => point.x);
+    const ys = polygon.map(point => point.y);
+    return {
+      left: Math.min(...xs),
+      right: Math.max(...xs),
+      top: Math.min(...ys),
+      bottom: Math.max(...ys),
+      width: Math.max(...xs) - Math.min(...xs),
+      height: Math.max(...ys) - Math.min(...ys)
+    };
+  }
+
+  gridToScreen(gridX, gridY, centered = true) {
+    return this.getPerspectivePoint(
+      gridX + (centered ? 0.5 : 0),
+      gridY + (centered ? 0.5 : 0)
+    );
+  }
+
+  screenToGrid(screenX, screenY) {
+    const rowCoordinate = (screenY - this.gridStartY) / this.cellH;
+    const boardTopWidth = this.cols * this.cellW;
+    const scale = this.getPerspectiveScaleAtRow(rowCoordinate);
+    const centerX = this.gridStartX + boardTopWidth / 2;
+    const left = centerX - boardTopWidth * scale / 2;
+    return {
+      x: Math.floor((screenX - left) / (this.cellW * scale)),
+      y: Math.floor(rowCoordinate)
+    };
+  }
+
+  getUnitScreenPosition(gridX, gridY) {
+    return this.getPerspectivePoint(gridX + 0.5, gridY + 0.78);
+  }
+
+  getUnitRenderScale(gridY) {
+    const depth = Math.max(0, Math.min(1, (gridY + 0.5) / Math.max(1, this.rows)));
+    return this.cameraZoom * (0.82 + depth * 0.22);
   }
 
   getCameraState() {
@@ -1029,24 +1132,25 @@ export class EngineTactics {
   }
 
   clampCamera() {
-    const boardW = this.cols * this.cellW;
-    const boardH = this.rows * this.cellH;
-    const visibleEdgeX = Math.min(88, boardW / 2);
-    const visibleEdgeY = Math.min(64, boardH / 2);
-    this.gridStartX = Math.max(visibleEdgeX - boardW, Math.min(this.width - visibleEdgeX, this.gridStartX));
-    this.gridStartY = Math.max(visibleEdgeY - boardH, Math.min(this.height - visibleEdgeY, this.gridStartY));
+    const bounds = this.getBoardBounds();
+    const visibleEdgeX = Math.min(88, bounds.width / 2);
+    const visibleEdgeY = Math.min(64, bounds.height / 2);
+    if (bounds.right < visibleEdgeX) this.gridStartX += visibleEdgeX - bounds.right;
+    if (bounds.left > this.width - visibleEdgeX) this.gridStartX -= bounds.left - (this.width - visibleEdgeX);
+    if (bounds.bottom < visibleEdgeY) this.gridStartY += visibleEdgeY - bounds.bottom;
+    if (bounds.top > this.height - visibleEdgeY) this.gridStartY -= bounds.top - (this.height - visibleEdgeY);
   }
 
   syncActorsToCamera() {
     [...this.heroes, ...this.enemies].forEach(unit => {
-      const screen = this.gridToScreen(unit.gridX, unit.gridY);
+      const screen = this.getUnitScreenPosition(unit.gridX, unit.gridY);
       unit.x = screen.x;
-      unit.y = screen.y - this.cellH / 2 + 18 * this.cameraZoom;
+      unit.y = screen.y;
     });
     if (this.escortUnit) {
-      const screen = this.gridToScreen(this.escortUnit.gridX, this.escortUnit.gridY);
+      const screen = this.getUnitScreenPosition(this.escortUnit.gridX, this.escortUnit.gridY);
       this.escortUnit.x = screen.x;
-      this.escortUnit.y = screen.y - this.cellH / 2 + 18 * this.cameraZoom;
+      this.escortUnit.y = screen.y;
     }
   }
 
@@ -1063,8 +1167,11 @@ export class EngineTactics {
     if (!Number.isFinite(factor) || factor <= 0) return this.getCameraState();
     const previousCellW = this.cellW;
     const previousCellH = this.cellH;
-    const boardXAtAnchor = (anchorX - this.gridStartX) / previousCellW;
     const boardYAtAnchor = (anchorY - this.gridStartY) / previousCellH;
+    const previousBoardWidth = this.cols * previousCellW;
+    const previousScale = this.getPerspectiveScaleAtRow(boardYAtAnchor);
+    const previousLeft = this.gridStartX + previousBoardWidth / 2 - previousBoardWidth * previousScale / 2;
+    const boardXAtAnchor = (anchorX - previousLeft) / (previousCellW * previousScale);
     const nextZoom = Math.max(
       this.minCameraZoom,
       Math.min(this.maxCameraZoom, this.cameraZoom * factor)
@@ -1075,8 +1182,12 @@ export class EngineTactics {
     this.cellW = this.baseCellW * nextZoom;
     this.cellH = this.baseCellH * nextZoom;
     // Keep the board coordinate under the cursor fixed while zooming.
-    this.gridStartX = anchorX - boardXAtAnchor * this.cellW;
     this.gridStartY = anchorY - boardYAtAnchor * this.cellH;
+    const nextBoardWidth = this.cols * this.cellW;
+    const nextScale = this.getPerspectiveScaleAtRow(boardYAtAnchor);
+    this.gridStartX = anchorX
+      - nextBoardWidth * (1 - nextScale) / 2
+      - boardXAtAnchor * this.cellW * nextScale;
     this.clampCamera();
     this.syncActorsToCamera();
     return this.getCameraState();
@@ -1449,9 +1560,10 @@ export class EngineTactics {
             attacker.stateTimer = 35;
             this.playSfx('special');
 
+            const specialScreen = this.gridToScreen(c, r);
             this.particles.add(
-              this.gridStartX + c * this.cellW + this.cellW/2,
-              this.gridStartY + r * this.cellH + this.cellH/2,
+              specialScreen.x,
+              specialScreen.y,
               0, 0, attacker.primaryColor || attacker.color || '#e74c3c', 120, 30, 'glitch'
             );
 
@@ -1623,7 +1735,8 @@ export class EngineTactics {
     this.escortUnit.gridX = next.x;
     this.escortUnit.gridY = next.y;
     if (next.x !== previousX) this.escortUnit.facing = next.x > previousX ? 1 : -1;
-    this.particles.add(this.gridStartX + next.x * this.cellW + this.cellW / 2, this.gridStartY + next.y * this.cellH, 0, -1, '#39c5bb', 9, 34, 'text', 'ESCORTE');
+    const escortScreen = this.gridToScreen(next.x, next.y);
+    this.particles.add(escortScreen.x, escortScreen.y, 0, -1, '#39c5bb', 9, 34, 'text', 'ESCORTE');
     this.updateTacticsObjective();
   }
 
@@ -1657,13 +1770,14 @@ export class EngineTactics {
     ]);
     if (!spawn) return;
     const pressureScale = 0.68 + this.missionProfile.pressure * 0.08;
+    const reinforcementScreen = this.getUnitScreenPosition(spawn.x, spawn.y);
     const reinforcement = {
       ...template,
       name: `${template.name} Echo ${this.reinforcementsCalled + 1}`,
       gridX: spawn.x,
       gridY: spawn.y,
-      x: this.gridStartX + spawn.x * this.cellW + this.cellW / 2,
-      y: this.gridStartY + spawn.y * this.cellH + 18,
+      x: reinforcementScreen.x,
+      y: reinforcementScreen.y,
       state: 'idle',
       stateTimer: 0,
       maxHp: Math.round((template.hp || 90) * pressureScale),
@@ -1690,15 +1804,13 @@ export class EngineTactics {
       ...this.enemies.filter(unit => unit.currentHp > 0)
     ];
     hazardTiles.forEach(tile => {
-      const px = this.gridStartX + tile.x * this.cellW + this.cellW / 2;
-      const py = this.gridStartY + tile.y * this.cellH + this.cellH / 2;
+      const { x: px, y: py } = this.gridToScreen(tile.x, tile.y);
       this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 42, 'text', 'SURTENSION');
       units.forEach(unit => {
         const dist = Math.abs(unit.gridX - tile.x) + Math.abs(unit.gridY - tile.y);
         if (dist <= radius) {
           unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - (8 + this.missionProfile.pressure * 2));
-          const ux = this.gridStartX + unit.gridX * this.cellW + this.cellW / 2;
-          const uy = this.gridStartY + unit.gridY * this.cellH + 18;
+          const { x: ux, y: uy } = this.getUnitScreenPosition(unit.gridX, unit.gridY);
           this.particles.add(ux, uy - 28, 0, -1, '#ff5b5b', 10, 38, 'text', 'PULSE');
         }
       });
@@ -1736,9 +1848,10 @@ export class EngineTactics {
     // Future effects without an explicit mirrored value stay neutral for P2.
     // Never fall back to the P1-oriented default heal/damage in that case.
     if (opponentTriggered && !symmetricEffect) {
+      const neutralScreen = this.gridToScreen(triggerX, triggerY);
       this.particles.add(
-        this.gridStartX + triggerX * this.cellW + this.cellW / 2,
-        this.gridStartY + triggerY * this.cellH,
+        neutralScreen.x,
+        neutralScreen.y,
         0,
         -1,
         color,
@@ -1800,7 +1913,8 @@ export class EngineTactics {
         this.tacticalItemImpact += damage;
       }
     });
-    this.particles.add(this.gridStartX + triggerX * this.cellW + this.cellW / 2, this.gridStartY + triggerY * this.cellH, 0, -1, color, 10, 42, 'text', 'RESSOURCE');
+    const resourceScreen = this.gridToScreen(triggerX, triggerY);
+    this.particles.add(resourceScreen.x, resourceScreen.y, 0, -1, color, 10, 42, 'text', 'RESSOURCE');
     return true;
   }
 
@@ -2172,8 +2286,7 @@ export class EngineTactics {
     if (defender === this.protectedArtifact) {
       const wasAlive = defender.hp > 0;
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
-      const targetPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
-      const targetPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+      const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
       this.particles.add(targetPxX, targetPxY - 24, 0, -1, '#ffeb3b', 12, 42, 'text', `ARTEFACT -${Math.round(baseDmg)}`);
       if (wasAlive && defender.hp <= 0) this.updateTacticsObjective();
       return;
@@ -2185,8 +2298,7 @@ export class EngineTactics {
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
       this.playSfx('hit');
 
-      const targetPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
-      const targetPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+      const { x: targetPxX, y: targetPxY } = this.gridToScreen(defender.gridX, defender.gridY);
       this.particles.add(targetPxX, targetPxY - 20, 0, -1.5, '#7f8c8d', 12, 35, 'text', `${Math.round(baseDmg)}`);
 
       if (wasAlive && defender.hp <= 0) {
@@ -2208,24 +2320,21 @@ export class EngineTactics {
     const coverReduction = options.ignoreCover ? 0 : this.getCoverReduction(attacker, defender, options.actionType || 'simple');
     if (coverReduction > 0) {
       baseDmg *= (1 - coverReduction);
-      const coverPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
-      const coverPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+      const { x: coverPxX, y: coverPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
       this.particles.add(coverPxX, coverPxY - 48, 0, -1, '#4fc3f7', 10, 42, 'text', `COVER -${Math.round(coverReduction * 100)}%`);
     }
 
     const facing = this.getFacingBonus(attacker, defender);
     if (!options.ignoreCover && facing.bonus > 0 && options.actionType !== 'special') {
       baseDmg *= (1 + facing.bonus);
-      const flankPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
-      const flankPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+      const { x: flankPxX, y: flankPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
       this.particles.add(flankPxX, flankPxY - 58, 0, -1, '#ffeb3b', 10, 42, 'text', facing.label);
     }
 
     const terrain = this.getTerrainDamageModifier(attacker, defender);
     if (!options.ignoreCover && terrain.multiplier !== 1) {
       baseDmg *= terrain.multiplier;
-      const terrainPxX = this.gridStartX + attacker.gridX * this.cellW + this.cellW / 2;
-      const terrainPxY = this.gridStartY + attacker.gridY * this.cellH + 10;
+      const { x: terrainPxX, y: terrainPxY } = this.getUnitScreenPosition(attacker.gridX, attacker.gridY);
       this.particles.add(terrainPxX, terrainPxY - 44, 0, -1, terrain.multiplier > 1 ? '#8fb3ff' : '#ff8a50', 9, 40, 'text', terrain.labels.join('+'));
     }
 
@@ -2244,8 +2353,7 @@ export class EngineTactics {
       }
       if (attacker.talent === 'suppressing_fire' && defender.stats) {
         defender.stats.def = Math.round(defender.stats.def * 0.8);
-        const defPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
-        const defPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+        const { x: defPxX, y: defPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
         this.particles.add(defPxX, defPxY - 45, 0, -1.2, '#3498db', 11, 50, 'text', 'DEF DOWN');
       }
     }
@@ -2262,8 +2370,7 @@ export class EngineTactics {
     if (attacker && attacker.talent === 'lifedrain' && attacker.currentHp > 0 && attacker.gridX !== undefined) {
       const heal = Math.round(finalDmg * 0.10);
       attacker.currentHp = Math.min(attacker.maxHp, attacker.currentHp + heal);
-      const atkPxX = this.gridStartX + attacker.gridX * this.cellW + this.cellW / 2;
-      const atkPxY = this.gridStartY + attacker.gridY * this.cellH + 10;
+      const { x: atkPxX, y: atkPxY } = this.getUnitScreenPosition(attacker.gridX, attacker.gridY);
       this.particles.add(atkPxX, atkPxY - 20, 0, -1, '#2ecc71', 11, 40, 'text', `+${heal} HP`);
     }
 
@@ -2278,13 +2385,11 @@ export class EngineTactics {
       const label = statusEffect === 'infected' ? 'INFECTED' : statusEffect === 'glitched' ? 'GLITCHED' : 'RADIATED';
       const color = statusEffect === 'infected' ? '#2ecc71' : statusEffect === 'glitched' ? '#00ff00' : '#e67e22';
       
-      const targetPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
-      const targetPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+      const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
       this.particles.add(targetPxX, targetPxY - 35, 0, -1, color, 12, 60, 'text', label);
     }
 
-    const targetPxX = this.gridStartX + defender.gridX * this.cellW + this.cellW / 2;
-    const targetPxY = this.gridStartY + defender.gridY * this.cellH + 10;
+    const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
 
     this.particles.add(targetPxX, targetPxY - 20, (Math.random()-0.5)*2, -1.5, defender.isBoss ? '#f1c40f' : '#e74c3c', 14, 45, 'text', `${finalDmg}`);
     for (let i = 0; i < 5; i++) {
@@ -2304,8 +2409,7 @@ export class EngineTactics {
   }
 
   triggerBarrelExplosion(bgX, bgY) {
-    const centerPxX = this.gridStartX + bgX * this.cellW + this.cellW / 2;
-    const centerPxY = this.gridStartY + bgY * this.cellH + this.cellH / 2;
+    const { x: centerPxX, y: centerPxY } = this.gridToScreen(bgX, bgY);
 
     this.particles.add(centerPxX, centerPxY, 0, 0, '#ff4500', 100, 30, 'glitch');
     this.playSfx('special');
@@ -2386,7 +2490,7 @@ export class EngineTactics {
           if (e.currentHp > 0) {
             e.state = 'hit';
             e.stateTimer = 180;
-            e.gridX = Math.min(7, e.gridX + 2);
+            e.gridX = Math.min(this.cols - 1, e.gridX + 2);
             this.applyDamage({ gridX: 0, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#3498db' }, e, dmg, null, { ignoreCover: true });
           }
         });
@@ -2403,8 +2507,7 @@ export class EngineTactics {
             const cap = h.statusEffects?.radiated > 0 ? h.maxHp * 0.5 : h.maxHp;
             h.currentHp = Math.min(cap, h.currentHp + heal);
             
-            const targetPxX = this.gridStartX + h.gridX * this.cellW + this.cellW / 2;
-            const targetPxY = this.gridStartY + h.gridY * this.cellH + 10;
+            const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(h.gridX, h.gridY);
             this.particles.add(targetPxX, targetPxY - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${heal}`);
           }
         });
@@ -2430,8 +2533,7 @@ export class EngineTactics {
           if (e.currentHp > 0) {
             e.state = 'hit';
             e.stateTimer = duration;
-            const targetPxX = this.gridStartX + e.gridX * this.cellW + this.cellW / 2;
-            const targetPxY = this.gridStartY + e.gridY * this.cellH + 10;
+            const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(e.gridX, e.gridY);
             this.particles.add(targetPxX, targetPxY - 15, 0, 0, '#00ff00', 8, 15, 'spark');
             if (effect === 'marker_insanity') {
               this.applyDamage({ gridX: e.gridX, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#8e44ad' }, e, 120, null, { ignoreCover: true });
@@ -2515,8 +2617,7 @@ export class EngineTactics {
 
     // Process Status Effects & timers for heroes
     this.heroes.forEach(h => {
-      const targetX = this.gridStartX + h.gridX * this.cellW + this.cellW / 2;
-      const targetY = this.gridStartY + h.gridY * this.cellH + 18 * this.cameraZoom;
+      const { x: targetX, y: targetY } = this.getUnitScreenPosition(h.gridX, h.gridY);
       h.x += (targetX - h.x) * 0.2;
       h.y += (targetY - h.y) * 0.2;
 
@@ -2554,8 +2655,7 @@ export class EngineTactics {
 
     // Process Status Effects & timers for enemies
     this.enemies.forEach(e => {
-      const targetX = this.gridStartX + e.gridX * this.cellW + this.cellW / 2;
-      const targetY = this.gridStartY + e.gridY * this.cellH + 18 * this.cameraZoom;
+      const { x: targetX, y: targetY } = this.getUnitScreenPosition(e.gridX, e.gridY);
       e.x += (targetX - e.x) * 0.2;
       e.y += (targetY - e.y) * 0.2;
 
@@ -2588,28 +2688,30 @@ export class EngineTactics {
     });
 
     if (this.escortUnit) {
-      const targetX = this.gridStartX + this.escortUnit.gridX * this.cellW + this.cellW / 2;
-      const targetY = this.gridStartY + this.escortUnit.gridY * this.cellH + 18 * this.cameraZoom;
+      const { x: targetX, y: targetY } = this.getUnitScreenPosition(
+        this.escortUnit.gridX,
+        this.escortUnit.gridY
+      );
       this.escortUnit.x += (targetX - this.escortUnit.x) * 0.2;
       this.escortUnit.y += (targetY - this.escortUnit.y) * 0.2;
     }
   }
 
   draw(ctx, animTime) {
+    const boardBounds = this.getBoardBounds();
     if (!this.stage.forceBaseArena && !this.stage.dlcSuppressedArena) {
       ctx.save();
-      ctx.beginPath();
-      ctx.rect(this.gridStartX, this.gridStartY, this.cols * this.cellW, this.rows * this.cellH);
+      this.tracePolygonPath(ctx, this.getBoardPolygon());
       ctx.clip();
       const generatedStageDrawn = drawGeneratedStageTextureCover(
         ctx,
         this.stage.universe,
         'Tactics',
-        this.gridStartX,
-        this.gridStartY,
-        this.cols * this.cellW,
-        this.rows * this.cellH,
-        0.92,
+        boardBounds.left,
+        boardBounds.top,
+        boardBounds.width,
+        boardBounds.height,
+        0.18,
         'stretch',
       );
       if (!generatedStageDrawn) {
@@ -2617,11 +2719,11 @@ export class EngineTactics {
           ctx,
           this.stage.universe,
           'Tactics',
-          this.gridStartX,
-          this.gridStartY,
-          this.cols * this.cellW,
-          this.rows * this.cellH,
-          0.92,
+          boardBounds.left,
+          boardBounds.top,
+          boardBounds.width,
+          boardBounds.height,
+          0.18,
           'stretch'
         );
       }
@@ -2636,22 +2738,23 @@ export class EngineTactics {
 
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
-        const cellX = this.gridStartX + c * this.cellW;
-        const cellY = this.gridStartY + r * this.cellH;
-        
         const tile = this.getTileAt(c, r);
         ctx.fillStyle = this.getTileFill(tile, c, r);
-        ctx.fillRect(cellX, cellY, this.cellW, this.cellH);
-        this.drawTileTexture(ctx, cellX, cellY, c, r, tile);
-        ctx.strokeRect(cellX, cellY, this.cellW, this.cellH);
+        this.traceCellPath(ctx, c, r);
+        ctx.fill();
+        this.drawTileTexture(ctx, c, r, tile);
+        this.traceCellPath(ctx, c, r);
+        ctx.stroke();
 
+        const polygon = this.getCellPolygon(c, r);
+        const center = this.gridToScreen(c, r);
         ctx.fillStyle = 'rgba(255,255,255,0.15)';
         ctx.font = '8px monospace';
-        ctx.fillText(`${String.fromCharCode(65 + c)}${r + 1}`, cellX + 4, cellY + 12);
+        ctx.fillText(`${String.fromCharCode(65 + c)}${r + 1}`, polygon[0].x + 5, polygon[0].y + 12);
         if (tile?.type && tile.type !== 'normal') {
           ctx.fillStyle = this.getTileLabelColor(tile);
           ctx.font = '7px "Press Start 2P"';
-          ctx.fillText(this.getTileLabel(tile), cellX + 8, cellY + this.cellH - 10);
+          ctx.fillText(this.getTileLabel(tile), center.x - 18, polygon[3].y - 9);
         }
       }
     }
@@ -2660,78 +2763,87 @@ export class EngineTactics {
 
     const threatMap = this.getEnemyThreatMap();
     threatMap.forEach(cell => {
-      const tx = this.gridStartX + cell.x * this.cellW;
-      const ty = this.gridStartY + cell.y * this.cellH;
       ctx.fillStyle = cell.count > 1 ? 'rgba(255, 92, 47, 0.24)' : 'rgba(255, 92, 47, 0.14)';
-      ctx.fillRect(tx + 2, ty + 2, this.cellW - 4, this.cellH - 4);
+      this.traceCellPath(ctx, cell.x, cell.y, 3);
+      ctx.fill();
+      const bounds = this.getCellBounds(cell.x, cell.y, 3);
       ctx.fillStyle = '#ff8a50';
       ctx.font = '8px "Press Start 2P"';
-      ctx.fillText(cell.count > 1 ? `x${cell.count}` : '!', tx + this.cellW - 18, ty + 13);
+      ctx.fillText(cell.count > 1 ? `x${cell.count}` : '!', bounds.right - 18, bounds.top + 13);
     });
 
     // 2. Draw Obstacles
     this.obstacles.forEach(o => {
       if (o.hp <= 0) return;
-      const ox = this.gridStartX + o.gridX * this.cellW;
-      const oy = this.gridStartY + o.gridY * this.cellH;
+      const bounds = this.getCellBounds(o.gridX, o.gridY, 6);
+      const center = this.gridToScreen(o.gridX, o.gridY);
 
       ctx.fillStyle = o.color;
-      ctx.fillRect(ox + 6, oy + 6, this.cellW - 12, this.cellH - 12);
-      
+      this.traceCellPath(ctx, o.gridX, o.gridY, 6);
+      ctx.fill();
+
       // Draw grid details/lines on obstacles to look like barriers
       ctx.strokeStyle = '#111';
-      ctx.strokeRect(ox + 6, oy + 6, this.cellW - 12, this.cellH - 12);
+      this.traceCellPath(ctx, o.gridX, o.gridY, 6);
+      ctx.stroke();
 
       if (o.type === 'barrel') {
         // draw a toxic nuclear symbol or band
+        ctx.save();
+        this.traceCellPath(ctx, o.gridX, o.gridY, 6);
+        ctx.clip();
         ctx.fillStyle = '#111';
-        ctx.fillRect(ox + 6, oy + 18, this.cellW - 12, 8);
+        ctx.fillRect(bounds.left, center.y - 4, bounds.width, 8);
+        ctx.restore();
       } else if (o.type === 'objective') {
         ctx.fillStyle = '#ffeb3b';
         ctx.font = '8px "Press Start 2P"';
-        ctx.fillText('LOCK', ox + 10, oy + 27);
+        ctx.fillText('LOCK', center.x - 16, center.y + 3);
       } else {
         ctx.fillStyle = '#4fc3f7';
         ctx.font = '8px "Press Start 2P"';
-        ctx.fillText('COV', ox + 14, oy + 27);
+        ctx.fillText('COV', center.x - 12, center.y + 3);
       }
 
       // Draw obstacle HP bar
+      const hpBarWidth = Math.max(12, bounds.width - 20);
       ctx.fillStyle = 'rgba(0,0,0,0.5)';
-      ctx.fillRect(ox + 10, oy + 2, this.cellW - 20, 3);
+      ctx.fillRect(center.x - hpBarWidth / 2, bounds.top + 2, hpBarWidth, 3);
       const hpPct = o.hp / o.maxHp;
       ctx.fillStyle = o.type === 'barrel' ? '#00ff00' : '#7f8c8d';
-      ctx.fillRect(ox + 10, oy + 2, (this.cellW - 20) * hpPct, 3);
+      ctx.fillRect(center.x - hpBarWidth / 2, bounds.top + 2, hpBarWidth * hpPct, 3);
     });
 
     const isHumanControlledTurn = this.activeUnitType === 'hero'
       || (this.opponentControl === 'p2' && this.activeUnitType === 'enemy');
     if (this.actionPhase === 'move' && isHumanControlledTurn) {
-      ctx.fillStyle = 'rgba(46, 204, 113, 0.2)';
-      ctx.strokeStyle = '#2ecc71';
       ctx.lineWidth = 2;
       this.movementRange.forEach(cell => {
-        const cx = this.gridStartX + cell.x * this.cellW;
-        const cy = this.gridStartY + cell.y * this.cellH;
-        ctx.fillRect(cx, cy, this.cellW, this.cellH);
-        ctx.strokeRect(cx, cy, this.cellW, this.cellH);
+        ctx.fillStyle = 'rgba(46, 204, 113, 0.2)';
+        ctx.strokeStyle = '#2ecc71';
+        this.traceCellPath(ctx, cell.x, cell.y, 2);
+        ctx.fill();
+        this.traceCellPath(ctx, cell.x, cell.y, 2);
+        ctx.stroke();
         if (cell.cost > 0) {
+          const bounds = this.getCellBounds(cell.x, cell.y, 2);
+          const center = this.gridToScreen(cell.x, cell.y);
           ctx.fillStyle = '#b8ffd2';
           ctx.font = '9px "Press Start 2P"';
-          ctx.fillText(`${cell.cost} AP`, cx + 12, cy + this.cellH - 10);
+          ctx.fillText(`${cell.cost} AP`, center.x - 18, bounds.bottom - 9);
         }
       });
     }
 
     if (this.actionPhase === 'action' && isHumanControlledTurn) {
-      ctx.fillStyle = 'rgba(231, 76, 60, 0.18)';
-      ctx.strokeStyle = '#e74c3c';
       ctx.lineWidth = 2;
       this.attackRange.forEach(cell => {
-        const cx = this.gridStartX + cell.x * this.cellW;
-        const cy = this.gridStartY + cell.y * this.cellH;
-        ctx.fillRect(cx, cy, this.cellW, this.cellH);
-        ctx.strokeRect(cx, cy, this.cellW, this.cellH);
+        ctx.fillStyle = 'rgba(231, 76, 60, 0.18)';
+        ctx.strokeStyle = '#e74c3c';
+        this.traceCellPath(ctx, cell.x, cell.y, 2);
+        ctx.fill();
+        this.traceCellPath(ctx, cell.x, cell.y, 2);
+        ctx.stroke();
 
         const target = this.getUnitAtCell(cell.x, cell.y);
         if (target && this.getValidAttackTargetTypes(this.activeUnitType).includes(target.type)) {
@@ -2743,23 +2855,25 @@ export class EngineTactics {
           );
           if (!resolvedTargets.some(entry => entry.unit === target.unit)) return;
           const preview = this.getDamagePreview(this.activeUnit, target.unit, this.selectedAction);
+          const bounds = this.getCellBounds(cell.x, cell.y, 2);
+          const center = this.gridToScreen(cell.x, cell.y);
           ctx.fillStyle = '#ffffff';
           ctx.font = '9px "Press Start 2P"';
-          ctx.fillText(`-${preview.damage}`, cx + 8, cy + this.cellH - 11);
+          ctx.fillText(`-${preview.damage}`, center.x - 18, bounds.bottom - 10);
           if (preview.cover > 0) {
             ctx.fillStyle = '#4fc3f7';
             ctx.font = '7px "Press Start 2P"';
-            ctx.fillText('COVER', cx + 8, cy + 24);
+            ctx.fillText('COVER', bounds.left + 8, bounds.top + 24);
           }
           if (preview.facing?.label) {
             ctx.fillStyle = '#ffeb3b';
             ctx.font = '7px "Press Start 2P"';
-            ctx.fillText(preview.facing.label, cx + 8, cy + 34);
+            ctx.fillText(preview.facing.label, bounds.left + 8, bounds.top + 34);
           }
           if (preview.terrain?.labels?.length) {
             ctx.fillStyle = preview.terrain.multiplier > 1 ? '#8fb3ff' : '#ff8a50';
             ctx.font = '7px "Press Start 2P"';
-            ctx.fillText(preview.terrain.labels.join('+'), cx + 8, cy + 43);
+            ctx.fillText(preview.terrain.labels.join('+'), bounds.left + 8, bounds.top + 43);
           }
         }
       });
@@ -2808,31 +2922,32 @@ export class EngineTactics {
 
   drawTacticsUnit(ctx, entry, animTime) {
     const unit = entry.unit;
+    const renderScale = this.getUnitRenderScale(unit.gridY);
     if (entry.type === 'enemy') {
       if (unit.isBoss) {
-        unit.tacticsRenderScale = this.cameraZoom;
+        unit.tacticsRenderScale = renderScale;
         drawBoss(ctx, unit.x, unit.y, unit, animTime, unit.facing);
       } else {
-        drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing, 68 * this.cameraZoom);
+        drawPixelEnemy(ctx, unit.x, unit.y, unit, animTime, unit.facing, 68 * renderScale);
       }
     } else {
-      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing, 72 * this.cameraZoom, 'tactics');
+      drawPixelSprite(ctx, unit.x, unit.y, unit, animTime, unit.facing, 72 * renderScale, 'tactics');
     }
 
     if (unit === this.activeUnit && unit.currentHp > 0) {
       ctx.fillStyle = '#f1c40f';
       ctx.beginPath();
       const pt = Math.sin(animTime * 0.1) * 3;
-      ctx.moveTo(unit.x, unit.y - 36 * this.cameraZoom + pt);
-      ctx.lineTo(unit.x - 5, unit.y - 44 * this.cameraZoom + pt);
-      ctx.lineTo(unit.x + 5, unit.y - 44 * this.cameraZoom + pt);
+      ctx.moveTo(unit.x, unit.y - 36 * renderScale + pt);
+      ctx.lineTo(unit.x - 5, unit.y - 44 * renderScale + pt);
+      ctx.lineTo(unit.x + 5, unit.y - 44 * renderScale + pt);
       ctx.fill();
     }
 
     if (unit.currentHp > 0) {
-      const barWidth = 30 * this.cameraZoom;
-      const barHeight = Math.max(2, 3 * this.cameraZoom);
-      const barY = unit.y - 32 * this.cameraZoom;
+      const barWidth = 30 * renderScale;
+      const barHeight = Math.max(2, 3 * renderScale);
+      const barY = unit.y - 32 * renderScale;
       ctx.fillStyle = 'rgba(0,0,0,0.5)';
       ctx.fillRect(unit.x - barWidth / 2, barY, barWidth, barHeight);
       const hpPct = unit.currentHp / unit.maxHp;
@@ -2851,7 +2966,7 @@ export class EngineTactics {
       if (threatensHero) {
         ctx.fillStyle = '#ff8a50';
         ctx.font = '12px "Press Start 2P"';
-        ctx.fillText('!', unit.x - 4, unit.y - 42 * this.cameraZoom);
+        ctx.fillText('!', unit.x - 4, unit.y - 42 * renderScale);
       }
     }
   }
@@ -2859,15 +2974,16 @@ export class EngineTactics {
   drawTacticsObjectiveZones(ctx, animTime) {
     const pulse = 0.18 + Math.sin(animTime * 0.08) * 0.06;
     const drawCellMarker = (cell, color, label) => {
-      const x = this.gridStartX + cell.x * this.cellW;
-      const y = this.gridStartY + cell.y * this.cellH;
       ctx.fillStyle = color.replace('ALPHA', pulse.toFixed(2));
-      ctx.fillRect(x + 3, y + 3, this.cellW - 6, this.cellH - 6);
+      this.traceCellPath(ctx, cell.x, cell.y, 3);
+      ctx.fill();
       ctx.strokeStyle = color.replace('ALPHA', '0.7');
-      ctx.strokeRect(x + 5, y + 5, this.cellW - 10, this.cellH - 10);
+      this.traceCellPath(ctx, cell.x, cell.y, 5);
+      ctx.stroke();
+      const center = this.gridToScreen(cell.x, cell.y);
       ctx.fillStyle = '#fff';
       ctx.font = '7px "Press Start 2P"';
-      ctx.fillText(label, x + 10, y + 24);
+      ctx.fillText(label, center.x - 14, center.y + 3);
     };
 
     if (this.objective === 'extract') {
@@ -2896,14 +3012,15 @@ export class EngineTactics {
       const remaining = Math.max(0, this.objectiveTarget - this.turnsElapsed);
       ctx.fillStyle = remaining <= 2 ? '#ff5b5b' : '#ffeb3b';
       ctx.font = '8px "Press Start 2P"';
-      ctx.fillText(`SURCHARGE T-${remaining}`, this.gridStartX + this.cols * this.cellW - 136, this.gridStartY - 10);
+      const boardBounds = this.getBoardBounds();
+      ctx.fillText(`SURCHARGE T-${remaining}`, boardBounds.right - 136, boardBounds.top - 10);
     }
     if (this.escortUnit?.currentHp > 0) {
-      const ex = this.gridStartX + this.escortUnit.gridX * this.cellW + this.cellW / 2;
-      const ey = this.gridStartY + this.escortUnit.gridY * this.cellH + 18 * this.cameraZoom;
+      const { x: ex, y: ey } = this.getUnitScreenPosition(this.escortUnit.gridX, this.escortUnit.gridY);
+      const renderScale = this.getUnitRenderScale(this.escortUnit.gridY);
       ctx.save();
       ctx.translate(ex, ey);
-      ctx.scale(this.cameraZoom, this.cameraZoom);
+      ctx.scale(renderScale, renderScale);
       ctx.fillStyle = '#39c5bb';
       ctx.fillRect(-10, -25, 20, 24);
       ctx.fillStyle = '#020005';
@@ -2916,11 +3033,14 @@ export class EngineTactics {
       ctx.restore();
     }
     if (this.objective === 'protect' && this.protectedArtifact?.hp > 0) {
-      const ax = this.gridStartX + this.protectedArtifact.gridX * this.cellW + this.cellW / 2;
-      const ay = this.gridStartY + this.protectedArtifact.gridY * this.cellH + 18 * this.cameraZoom;
+      const { x: ax, y: ay } = this.getUnitScreenPosition(
+        this.protectedArtifact.gridX,
+        this.protectedArtifact.gridY
+      );
+      const renderScale = this.getUnitRenderScale(this.protectedArtifact.gridY);
       ctx.save();
       ctx.translate(ax, ay);
-      ctx.scale(this.cameraZoom, this.cameraZoom);
+      ctx.scale(renderScale, renderScale);
       ctx.fillStyle = '#ffeb3b';
       ctx.beginPath();
       ctx.moveTo(0, -28);
@@ -3116,17 +3236,21 @@ export class EngineTactics {
     };
   }
 
-  drawTileTexture(ctx, cellX, cellY, col, row, tile) {
+  drawTileTexture(ctx, col, row, tile) {
     const theme = this.battlefield.tileTheme;
     if (!theme) return;
+    const bounds = this.getCellBounds(col, row, 1);
+    const cellX = bounds.left;
+    const cellY = bounds.top;
+    const cellWidth = bounds.width;
+    const cellHeight = bounds.height;
     ctx.save();
-    ctx.beginPath();
-    ctx.rect(cellX + 1, cellY + 1, this.cellW - 2, this.cellH - 2);
+    this.traceCellPath(ctx, col, row, 1);
     ctx.clip();
     if (this.generatedTilePattern) {
-      ctx.globalAlpha = tile ? 0.18 : 0.3;
+      ctx.globalAlpha = tile ? 0.12 : 0.18;
       ctx.fillStyle = this.generatedTilePattern;
-      ctx.fillRect(cellX, cellY, this.cellW, this.cellH);
+      ctx.fillRect(cellX, cellY, cellWidth, cellHeight);
       ctx.globalAlpha = 1;
     }
     ctx.strokeStyle = colorWithAlpha(theme.detail, tile ? 0.18 : 0.26);
@@ -3134,34 +3258,34 @@ export class EngineTactics {
     ctx.lineWidth = 1;
 
     if (['circuit', 'glass', 'armor', 'alloy', 'hangar', 'steel', 'prison', 'lab'].includes(theme.pattern)) {
-      ctx.strokeRect(cellX + 6, cellY + 6, this.cellW - 12, this.cellH - 12);
-      ctx.fillRect(cellX + 10, cellY + this.cellH / 2 - 1, this.cellW * 0.34, 2);
-      ctx.fillRect(cellX + this.cellW * 0.67, cellY + 10, 2, this.cellH * 0.38);
+      ctx.strokeRect(cellX + 6, cellY + 6, cellWidth - 12, cellHeight - 12);
+      ctx.fillRect(cellX + 10, cellY + cellHeight / 2 - 1, cellWidth * 0.34, 2);
+      ctx.fillRect(cellX + cellWidth * 0.67, cellY + 10, 2, cellHeight * 0.38);
     } else if (['wood', 'miniature'].includes(theme.pattern)) {
-      for (let y = cellY + 7; y < cellY + this.cellH; y += 10) ctx.fillRect(cellX, y, this.cellW, 2);
-      const jointX = cellX + ((col + row) % 2 ? this.cellW * 0.32 : this.cellW * 0.68);
-      ctx.fillRect(jointX, cellY, 2, this.cellH);
+      for (let y = cellY + 7; y < cellY + cellHeight; y += 10) ctx.fillRect(cellX, y, cellWidth, 2);
+      const jointX = cellX + ((col + row) % 2 ? cellWidth * 0.32 : cellWidth * 0.68);
+      ctx.fillRect(jointX, cellY, 2, cellHeight);
     } else if (['organic', 'roots', 'infernal'].includes(theme.pattern)) {
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.moveTo(cellX - 4, cellY + this.cellH);
-      ctx.quadraticCurveTo(cellX + this.cellW * 0.45, cellY + 4, cellX + this.cellW + 5, cellY + this.cellH * 0.35);
+      ctx.moveTo(cellX - 4, cellY + cellHeight);
+      ctx.quadraticCurveTo(cellX + cellWidth * 0.45, cellY + 4, cellX + cellWidth + 5, cellY + cellHeight * 0.35);
       ctx.stroke();
     } else if (['stone', 'alchemy', 'dungeon', 'moss', 'wetStone', 'ninja'].includes(theme.pattern)) {
-      ctx.strokeRect(cellX + 4, cellY + 5, this.cellW - 8, this.cellH - 10);
-      ctx.fillRect(cellX + this.cellW * 0.48, cellY + 5, 2, this.cellH - 10);
+      ctx.strokeRect(cellX + 4, cellY + 5, cellWidth - 8, cellHeight - 10);
+      ctx.fillRect(cellX + cellWidth * 0.48, cellY + 5, 2, cellHeight - 10);
       if (theme.pattern === 'alchemy') {
         ctx.beginPath();
-        ctx.arc(cellX + this.cellW / 2, cellY + this.cellH / 2, Math.min(this.cellW, this.cellH) * 0.18, 0, Math.PI * 2);
+        ctx.arc(cellX + cellWidth / 2, cellY + cellHeight / 2, Math.min(cellWidth, cellHeight) * 0.18, 0, Math.PI * 2);
         ctx.stroke();
       }
     } else if (theme.pattern === 'studio') {
-      ctx.fillRect(cellX, cellY, this.cellW / 2, this.cellH / 2);
-      ctx.fillRect(cellX + this.cellW / 2, cellY + this.cellH / 2, this.cellW / 2, this.cellH / 2);
+      ctx.fillRect(cellX, cellY, cellWidth / 2, cellHeight / 2);
+      ctx.fillRect(cellX + cellWidth / 2, cellY + cellHeight / 2, cellWidth / 2, cellHeight / 2);
     } else {
       for (let i = 0; i < 4; i++) {
-        const x = cellX + 8 + ((i * 17 + col * 7) % Math.max(9, this.cellW - 16));
-        const y = cellY + 7 + ((i * 11 + row * 5) % Math.max(9, this.cellH - 14));
+        const x = cellX + 8 + ((i * 17 + col * 7) % Math.max(9, cellWidth - 16));
+        const y = cellY + 7 + ((i * 11 + row * 5) % Math.max(9, cellHeight - 14));
         ctx.fillRect(x, y, 3, 2);
       }
     }
@@ -3171,10 +3295,10 @@ export class EngineTactics {
   getTileFill(tile, col = 0, row = 0) {
     const theme = this.battlefield.tileTheme;
     const normalFill = theme
-      ? colorWithAlpha((col + row) % 2 === 0 ? theme.base : theme.mid, 0.58)
-      : 'rgba(10, 20, 40, 0.4)';
+      ? colorWithAlpha((col + row) % 2 === 0 ? theme.base : theme.mid, 0.22)
+      : 'rgba(10, 20, 40, 0.16)';
     if (!tile) return normalFill;
-    if (tile.type === 'blocked') return 'rgba(12, 12, 16, 0.86)';
+    if (tile.type === 'blocked') return 'rgba(12, 12, 16, 0.62)';
     if (tile.type === 'high') return 'rgba(74, 144, 226, 0.28)';
     if (tile.type === 'lightCover') return 'rgba(79, 195, 247, 0.16)';
     if (tile.type === 'heavyCover') return 'rgba(79, 195, 247, 0.28)';

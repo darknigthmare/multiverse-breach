@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-missing-500-wave-3-makeup-5-2026-08-28",
+  "kind": "hero",
+  "promptCatalogSha256": "01d7f266de73e8c4193ff0a66b879e3b9ee3dacb05cf01d62a526b34af8f3c4d",
+  "sourceBatch": {
+    "batchId": "assets-missing-500-wave-3-lore-corrected-2026-08-26",
+    "batchSha256": "9d3e27f25bd1f916d0bdc2bde72f7ccd400c537920574040ffe186a08123dcaf",
+    "failedSequences": [
+      72,
+      73,
+      74,
+      423,
+      447
+    ]
+  },
+  "selectionPolicy": [
+    "replace only permanent two-attempt failures from immutable Wave 3",
+    "select still-missing heroes immediately after the original frozen 500 in catalog order",
+    "preserve one successful installed asset per failed source job"
+  ],
+  "counts": {
+    "jobs": 5,
+    "selectedHeroes": 5,
+    "replacedPermanentFailures": 5
+  },
+  "jobs": [
+    {
+      "sequence": 1,
+      "kind": "hero",
+      "id": "manny_iceage",
+      "name": "Manny",
+      "universe": "Ice Age",
+      "output": "/sprites/generated/heroes/ice-age/manny-iceage.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-3-permanent-failure-makeup-catalog-order",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": null,
+      "sourcePromptSha256": "148d5e2bf7e5d13f760439f5793db1921cc79b966a2175241258194cebf79dd1",
+      "generationPromptSha256": "251fde0db1bf451ba1fde0383dd35aff679e6957bdf85f3515afa6f5ef00b558",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-3-makeup/001-hero-manny-iceage-224c1668.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Manny from Ice Age; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity manny_iceage; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark."
+    },
+    {
+      "sequence": 2,
+      "kind": "hero",
+      "id": "sid_iceage",
+      "name": "Sid",
+      "universe": "Ice Age",
+      "output": "/sprites/generated/heroes/ice-age/sid-iceage.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-3-permanent-failure-makeup-catalog-order",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": null,
+      "sourcePromptSha256": "51e0663eea1a6518bf811732f64fdb55aa4bb7e7442f66ed7e9b688d54650518",
+      "generationPromptSha256": "3b4b18b83a6c167d602e904b249b56c80425b6208baa08d53f04dbf8d192d16e",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-3-makeup/002-hero-sid-iceage-f19f88ec.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Sid from Ice Age; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity sid_iceage; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark."
+    },
+    {
+      "sequence": 3,
+      "kind": "hero",
+      "id": "diego_iceage",
+      "name": "Diego",
+      "universe": "Ice Age",
+      "output": "/sprites/generated/heroes/ice-age/diego-iceage.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-3-permanent-failure-makeup-catalog-order",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": null,
+      "sourcePromptSha256": "ca37b763aabb15bdbd493249615534f6f472231235730e1784433f1d29610644",
+      "generationPromptSha256": "ff04bf9639f0f8a5974ff8306d1c89305c0a37e78a39ddc00472fe2f1d815b86",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-3-makeup/003-hero-diego-iceage-be410d4d.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Diego from Ice Age; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity diego_iceage; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark."
+    },
+    {
+      "sequence": 4,
+      "kind": "hero",
+      "id": "stan_helsing",
+      "name": "Stan Helsing",
+      "universe": "Stan Helsing",
+      "output": "/sprites/generated/heroes/stan-helsing/stan-helsing.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-3-permanent-failure-makeup-catalog-order",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": null,
+      "sourcePromptSha256": "32b281960a8be72a16a8045d080a87a3d4491dcaa230c2c1231147aae105ebc3",
+      "generationPromptSha256": "23ef83cab0b8a457ef9a3e2c3dc486921f0df2c884b5161fa4ace5fd0115bef0",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-3-makeup/004-hero-stan-helsing-3b16a9ea.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Stan Helsing from Stan Helsing; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity stan_helsing; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark."
+    },
+    {
+      "sequence": 5,
+      "kind": "hero",
+      "id": "nadine_helsing",
+      "name": "Nadine",
+      "universe": "Stan Helsing",
+      "output": "/sprites/generated/heroes/stan-helsing/nadine-helsing.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-3-permanent-failure-makeup-catalog-order",
+      "referenceUrl": null,
+      "referenceUrls": [],
+      "visualAnchor": null,
+      "sourcePromptSha256": "2326439a7c3b4bca22b958e8c47fdf016e1abef24ae675eae1058399d4909000",
+      "generationPromptSha256": "3ac387416ed0b55ea1e3c36b5c25e2eb3d220732d1f5f0725d6814355413aacc",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-3-makeup/005-hero-nadine-helsing-8f48b65f.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Nadine from Stan Helsing; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity nadine_helsing; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark."
+    }
+  ]
+}

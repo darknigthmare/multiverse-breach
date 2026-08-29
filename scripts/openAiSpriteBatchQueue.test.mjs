@@ -190,6 +190,39 @@ test('ingest preserves the original, copies exact PNG bytes, resumes idempotentl
   );
 });
 
+test('export propagates explicit replace and preserves the safe false default', async context => {
+  const fixture = await createFixture(context, 2);
+  const batch = JSON.parse(await readFile(fixture.batchPath, 'utf8'));
+  batch.jobs[1].replace = true;
+  await writeFile(fixture.batchPath, `${JSON.stringify(batch, null, 2)}\n`, 'utf8');
+  await initializeQueue(fixture);
+
+  const defaultSource = await writeSource(fixture, 'default-replace-source.png');
+  const replacementSource = await writeSource(fixture, 'explicit-replace-source.png');
+  await ingestGeneratedResult({
+    ...fixture,
+    sequence: 1,
+    source: defaultSource,
+    generationId: 'exec-export-default'
+  });
+  await ingestGeneratedResult({
+    ...fixture,
+    sequence: 2,
+    source: replacementSource,
+    generationId: 'exec-export-replacement'
+  });
+
+  const exported = await exportInstallBatch(fixture);
+  const installBatch = JSON.parse(await readFile(exported.output, 'utf8'));
+  assert.deepEqual(
+    installBatch.jobs.map(job => ({ id: job.id, replace: job.replace })),
+    [
+      { id: 'job-1', replace: false },
+      { id: 'job-2', replace: true }
+    ]
+  );
+});
+
 test('fail, status, explicit retry and successful second attempt remain auditable', async context => {
   const fixture = await createFixture(context, 1);
   await initializeQueue(fixture);

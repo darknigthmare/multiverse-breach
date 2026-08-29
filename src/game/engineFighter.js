@@ -1,6 +1,7 @@
 import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
+import { resolveFighterTagEntry } from './fighterTagPlacement.js';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const lerp = (from, to, amount) => from + (to - from) * amount;
@@ -456,6 +457,7 @@ export class EngineFighter {
   requestTag(side, index, forced = false) {
     const team = this.getTeam(side);
     const active = this.getActive(side);
+    const opponent = this.getOpponent(side);
     const nextIndex = Number(index);
     const next = team.fighters[nextIndex];
     if (
@@ -468,11 +470,20 @@ export class EngineFighter {
     active.action = null;
     active.guarding = false;
     if (active.currentHp > 0) active.state = 'idle';
-    next.x = clamp(active.x + (side === 'player' ? -34 : 34), 78, this.width - 78);
+    // Le remplacant entre derriere son partenaire par rapport a l'adversaire.
+    // Une direction fixe par camp le faisait parfois apparaitre face au bord
+    // de l'ecran apres un croisement des deux combattants.
+    const tagEntry = resolveFighterTagEntry({
+      activeX: active.x,
+      opponentX: opponent?.x,
+      side,
+      width: this.width
+    });
+    next.x = tagEntry.x;
     next.y = this.groundY;
-    next.vx = side === 'player' ? 150 : -150;
+    next.vx = tagEntry.vx;
     next.vy = -90;
-    next.facing = side === 'player' ? 1 : -1;
+    next.facing = tagEntry.facing;
     next.state = 'run';
     next.invulnerable = forced ? 0.75 : 0.48;
     team.activeIndex = nextIndex;

@@ -789,7 +789,7 @@ export async function exportInstallBatch(options = {}) {
       generationPromptFile: job.promptFileAbsolute,
       generationPromptSha256: job.generationPromptSha256,
       catalogPromptSha256: job.catalogPromptSha256,
-      replace: false
+      replace: job.replace === true
     }))
   };
   await atomicWriteJson(output, document);

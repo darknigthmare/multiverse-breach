@@ -3104,6 +3104,9 @@ function MosaicCityHub({
   );
 }
 
+const EXTINCTION_BEACON_TARGET = 3;
+const EXTINCTION_INFESTATION_TARGET_FRAMES = 60 * 60;
+
 function ExtinctionRoyale({
   lang,
   heroes,
@@ -3117,6 +3120,8 @@ function ExtinctionRoyale({
   const canvasRef = useRef(null);
   const fpsHandsRef = useRef(null);
   const fpsProjectileRef = useRef(null);
+  const fpsBackdropRef = useRef(null);
+  const aimPointerRef = useRef({ active: false, pointerId: null, x: 0, moved: false });
   const sessionPausedRef = useRef(sessionPaused);
   const sessionExitRequestRef = useRef(sessionExitRequest);
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
@@ -3124,7 +3129,23 @@ function ExtinctionRoyale({
   const playableHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 40), [safeHeroes, unlockedSet]);
   const [selectedHeroId, setSelectedHeroId] = useState(() => playableHeroes[0]?.id || safeHeroes[0]?.id || '');
   const [runMode, setRunMode] = useState('extraction');
-  const [runSnapshot, setRunSnapshot] = useState({ phase: 'ready', hp: 100, ammo: 24, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
+  const [runSnapshot, setRunSnapshot] = useState({
+    phase: 'ready',
+    hp: 100,
+    armor: 0,
+    ammo: 24,
+    reserveAmmo: 72,
+    kills: 0,
+    wave: 1,
+    loot: 0,
+    beacons: 0,
+    skillCooldown: 0,
+    nearbyLoot: null,
+    objectiveText: null,
+    statusText: null,
+    result: null,
+    rewards: null
+  });
   const selectedHero = playableHeroes.find(hero => hero.id === selectedHeroId) || playableHeroes[0] || safeHeroes[0] || null;
   const stateRef = useRef({
     phase: 'ready',
@@ -3132,6 +3153,7 @@ function ExtinctionRoyale({
     armor: 0,
     ammo: 24,
     maxAmmo: 24,
+    reserveAmmo: 72,
     kills: 0,
     wave: 1,
     enemies: [],
@@ -3150,6 +3172,10 @@ function ExtinctionRoyale({
     dash: 0,
     scan: 0,
     turret: 0,
+    skillCooldown: 0,
+    beaconsStabilized: 0,
+    nearbyLoot: null,
+    statusText: null,
     fragments: [],
     objective: null,
     result: null,
@@ -3186,6 +3212,55 @@ function ExtinctionRoyale({
     hunt: lang === 'fr' ? 'Chasse au Champion: faire apparaitre et abattre le noyau local.' : 'Champion Hunt: expose and kill the local core.'
   }), [lang]);
 
+  const getRunObjectiveText = useCallback((state) => {
+    if (!state) return objectives[runMode];
+    if (runMode === 'extraction') {
+      const secured = Math.min(EXTINCTION_BEACON_TARGET, state.beaconsStabilized || 0);
+      return secured < EXTINCTION_BEACON_TARGET
+        ? (lang === 'fr'
+            ? `BALISES ${secured}/${EXTINCTION_BEACON_TARGET} · sécurise la balise de la vague ${Math.min(state.wave || 1, EXTINCTION_BEACON_TARGET)}`
+            : `BEACONS ${secured}/${EXTINCTION_BEACON_TARGET} · secure the wave ${Math.min(state.wave || 1, EXTINCTION_BEACON_TARGET)} beacon`)
+        : (lang === 'fr' ? 'BALISES 3/3 · neutralise le Champion de Trame' : 'BEACONS 3/3 · neutralize the Thread Champion');
+    }
+    if (runMode === 'infestation') {
+      const remaining = Math.max(0, Math.ceil((EXTINCTION_INFESTATION_TARGET_FRAMES - (state.t || 0)) / 60));
+      return lang === 'fr'
+        ? `TENIR ENCORE ${remaining} S · extraction automatique ensuite`
+        : `HOLD ${remaining}S · automatic extraction follows`;
+    }
+    if (runMode === 'hunt') {
+      return state.enemies?.some(enemy => enemy.kind === 'Champion de Trame' && enemy.hp > 0)
+        ? (lang === 'fr' ? 'CHAMPION EXPOSE · détruis le noyau local' : 'CHAMPION EXPOSED · destroy the local core')
+        : (lang === 'fr' ? `PISTE ${Math.min(2, state.wave || 1)}/2 · élimine les gardiens` : `TRAIL ${Math.min(2, state.wave || 1)}/2 · clear the guards`);
+    }
+    return lang === 'fr'
+      ? `SIGNAL ${Math.min(4, state.wave || 1)}/4 · aucune signature ne doit survivre`
+      : `SIGNAL ${Math.min(4, state.wave || 1)}/4 · leave no hostile signature`;
+  }, [lang, objectives, runMode]);
+
+  const buildRunSnapshot = useCallback((state) => {
+    const nearbyLoot = state.phase === 'running'
+      ? state.loot?.find(candidate => !candidate.used && Math.hypot(candidate.wx - state.px, candidate.wy - state.py) < 1.25) || null
+      : null;
+    return {
+      phase: state.phase,
+      hp: state.hp,
+      armor: state.armor || 0,
+      ammo: state.ammo || 0,
+      reserveAmmo: state.reserveAmmo || 0,
+      kills: state.kills || 0,
+      wave: state.wave || 1,
+      loot: state.loot?.filter(item => item.used && item.type !== 'beacon').length || 0,
+      beacons: state.beaconsStabilized || 0,
+      skillCooldown: state.skillCooldown || 0,
+      nearbyLoot: nearbyLoot?.label || null,
+      objectiveText: getRunObjectiveText(state),
+      statusText: state.statusText || null,
+      result: state.result || null,
+      rewards: state.rewards || null
+    };
+  }, [getRunObjectiveText]);
+
   useEffect(() => {
     if (typeof Image === 'undefined') return undefined;
     const hands = new Image();
@@ -3199,6 +3274,25 @@ function ExtinctionRoyale({
       fpsProjectileRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    if (typeof Image === 'undefined' || !selectedHero?.universe) {
+      fpsBackdropRef.current = null;
+      return undefined;
+    }
+    const src = getOpenAiBackdropSrc(selectedHero.universe, 'RPG')
+      || getOpenAiBackdropSrc(selectedHero.universe, 'Tactics');
+    if (!src) {
+      fpsBackdropRef.current = null;
+      return undefined;
+    }
+    const backdrop = new Image();
+    backdrop.src = src;
+    fpsBackdropRef.current = backdrop;
+    return () => {
+      if (fpsBackdropRef.current === backdrop) fpsBackdropRef.current = null;
+    };
+  }, [selectedHero?.universe]);
 
   // Le menu pause du shell dedie gele la simulation et relache les mouvements.
   useEffect(() => {
@@ -3220,10 +3314,15 @@ function ExtinctionRoyale({
       phase: 'ready',
       hp: 100,
       ammo: 24,
+      maxAmmo: 24,
+      reserveAmmo: 72,
       kills: 0,
       wave: 1,
       enemies: [],
       loot: [],
+      beaconsStabilized: 0,
+      skillCooldown: 0,
+      statusText: null,
       moveKeys: {},
       vx: 0,
       vy: 0,
@@ -3231,9 +3330,9 @@ function ExtinctionRoyale({
       result: null,
       rewards: null
     };
-    setRunSnapshot({ phase: 'ready', hp: 100, ammo: 24, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
+    setRunSnapshot(buildRunSnapshot(stateRef.current));
     onSessionEnd?.({ reason: 'abandoned' });
-  }, [onSessionEnd, sessionExitRequest]);
+  }, [buildRunSnapshot, onSessionEnd, sessionExitRequest]);
 
   const buildEnemies = useCallback((wave = 1, champion = false) => {
     const archetypes = [
@@ -3261,11 +3360,20 @@ function ExtinctionRoyale({
   }, [universeFragments]);
 
   const buildLoot = useCallback((wave = 1) => ([
-    { id: `heal-${wave}`, type: 'normal', label: lang === 'fr' ? 'Cache soin' : 'Heal cache', wx: -2.8, wy: 3.8 + wave * 0.6, color: '#2ecc71' },
-    { id: `ammo-${wave}`, type: 'normal', label: lang === 'fr' ? 'Munitions' : 'Ammo', wx: 2.6, wy: 4.8 + wave * 0.55, color: '#ffea00' },
+    { id: `heal-${wave}`, type: 'normal', effect: 'heal', label: lang === 'fr' ? 'Cache soin' : 'Heal cache', wx: -2.8, wy: 3.8 + wave * 0.6, color: '#2ecc71' },
+    { id: `ammo-${wave}`, type: 'normal', effect: 'ammo', label: lang === 'fr' ? 'Munitions' : 'Ammo', wx: 2.6, wy: 4.8 + wave * 0.55, color: '#ffea00' },
     { id: `summon-${wave}`, type: 'summon', label: lang === 'fr' ? 'PNJ temporaire' : 'Temporary NPC', wx: -0.9, wy: 6.4 + wave * 0.7, color: '#39c5bb' },
-    { id: `ultimate-${wave}`, type: 'ultimate', label: lang === 'fr' ? 'Ultime univers' : 'Universe ultimate', wx: 1.25, wy: 8.1 + wave * 0.8, color: '#e74c3c' }
-  ]), [lang]);
+    { id: `ultimate-${wave}`, type: 'ultimate', label: lang === 'fr' ? 'Ultime univers' : 'Universe ultimate', wx: 1.25, wy: 8.1 + wave * 0.8, color: '#e74c3c' },
+    ...(runMode === 'extraction' && wave <= EXTINCTION_BEACON_TARGET ? [{
+      id: `beacon-${wave}`,
+      type: 'beacon',
+      wave,
+      label: lang === 'fr' ? `Balise ${wave}` : `Beacon ${wave}`,
+      wx: wave % 2 === 0 ? 1.7 : -1.7,
+      wy: 5.2 + wave * 1.35,
+      color: '#7df9ff'
+    }] : [])
+  ]), [lang, runMode]);
 
   const projectWorld = useCallback((entity, state) => {
     const dx = (entity.wx || 0) - (state.px || 0);
@@ -3301,6 +3409,7 @@ function ExtinctionRoyale({
       weapon: baseWep,
       ammo: maxAmmo,
       maxAmmo,
+      reserveAmmo: maxAmmo * 3,
       kills: 0,
       wave: 1,
       enemies: buildEnemies(1),
@@ -3322,35 +3431,46 @@ function ExtinctionRoyale({
       dash: 0,
       scan: selectedHero.category === 'hacker' ? 240 : 0,
       turret: selectedHero.category === 'tactical' ? 420 : 0,
+      skillCooldown: 0,
+      beaconsStabilized: 0,
+      nearbyLoot: null,
+      statusText: lang === 'fr' ? 'Compression lancée. Lis la directive et reste mobile.' : 'Compression started. Read the directive and keep moving.',
       fragments: universeFragments,
       objective: objectives[runMode],
       result: null,
       rewards: null
     };
     stateRef.current = next;
-    setRunSnapshot({ phase: next.phase, hp: next.hp, ammo: next.ammo, kills: 0, wave: 1, loot: 0, result: null, rewards: null });
+    setRunSnapshot(buildRunSnapshot(next));
     sound.playSfx('levelup');
-  }, [buildEnemies, buildLoot, objectives, onSessionStart, roleProfile, runMode, selectedHero, universeFragments, weaponProfile]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, lang, objectives, onSessionStart, roleProfile, runMode, selectedHero, universeFragments, weaponProfile]);
 
   const finishRun = useCallback((result) => {
     const state = stateRef.current;
     if (state.phase === 'ended') return;
     const victory = result === 'victory';
+    const victoryTitle = {
+      extraction: lang === 'fr' ? 'Extraction A.R.C.A. réussie' : 'A.R.C.A. extraction successful',
+      last_signal: lang === 'fr' ? 'Dernier Signal sécurisé' : 'Last Signal secured',
+      infestation: lang === 'fr' ? 'Cordon d infestation tenu' : 'Infestation cordon held',
+      hunt: lang === 'fr' ? 'Champion de Trame neutralisé' : 'Thread Champion neutralized'
+    }[runMode];
     const rewards = {
       gold: victory ? 70 + state.wave * 22 + state.kills * 3 : 18 + state.kills,
       shards: victory ? 24 + state.wave * 7 : 7 + Math.floor(state.kills / 2),
       modeXp: victory ? 120 + state.wave * 30 : 35 + state.kills * 4,
       title: victory
-        ? (lang === 'fr' ? 'Extraction A.R.C.A. reussie' : 'A.R.C.A. extraction successful')
+        ? victoryTitle
         : (lang === 'fr' ? 'Repli d Ancre: donnees conservees' : 'Anchor retreat: contact data preserved')
     };
     state.phase = 'ended';
     state.result = result;
     state.rewards = rewards;
-    setRunSnapshot({ phase: 'ended', hp: state.hp, ammo: state.ammo, kills: state.kills, wave: state.wave, loot: state.loot.filter(item => item.used).length, result, rewards });
+    state.statusText = rewards.title;
+    setRunSnapshot(buildRunSnapshot(state));
     sound.playSfx(victory ? 'victory' : 'defeat');
     onSessionEnd?.({ reason: 'completed', result, rewards });
-  }, [lang, onSessionEnd]);
+  }, [buildRunSnapshot, lang, onSessionEnd, runMode]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -3372,6 +3492,7 @@ function ExtinctionRoyale({
       state.dash = Math.max(0, state.dash - 1);
       state.scan = Math.max(0, state.scan - 1);
       state.turret = Math.max(0, state.turret - 1);
+      state.skillCooldown = Math.max(0, (state.skillCooldown || 0) - 1);
       state.hitMarkerTimer = Math.max(0, (state.hitMarkerTimer || 0) - 1);
       state.screenShake = Math.max(0, (state.screenShake || 0) - 0.55);
 
@@ -3476,37 +3597,41 @@ function ExtinctionRoyale({
             .sort((a, b) => projectWorld(a, state).dist - projectWorld(b, state).dist)[0];
           if (target) {
             target.hp -= 14;
-            if (target.hp <= 0) {
+            if (target.hp <= 0 && !target.counted) {
+              target.counted = true;
               state.kills += 1;
               triggerEnemyDrop(target, state);
             }
           }
         }
         if (state.enemies.every(enemy => enemy.hp <= 0)) {
-          const nextWave = state.wave + 1;
-          if (state.enemies.some(enemy => enemy.kind === 'Champion de Trame')) {
-            finishRun('victory');
-          } else if ((runMode === 'extraction' && nextWave >= 4) || (runMode === 'hunt' && state.wave >= 2) || (runMode === 'last_signal' && nextWave >= 5)) {
-            state.enemies = buildEnemies(nextWave, true);
-            state.wave = nextWave;
+          const pendingBeacon = runMode === 'extraction'
+            && state.wave <= EXTINCTION_BEACON_TARGET
+            && state.loot.some(item => item.type === 'beacon' && item.wave === state.wave && !item.used);
+          if (pendingBeacon) {
+            state.statusText = lang === 'fr'
+              ? `Vague ${state.wave} nettoyée: rejoins la balise et utilise LOOT / E.`
+              : `Wave ${state.wave} cleared: reach the beacon and use LOOT / E.`;
           } else {
-            state.wave = nextWave;
-            state.enemies = buildEnemies(nextWave, runMode === 'hunt' && nextWave >= 3);
-            state.loot = [...state.loot.filter(item => !item.used), ...buildLoot(nextWave)];
+            const nextWave = state.wave + 1;
+            if (state.enemies.some(enemy => enemy.kind === 'Champion de Trame')) {
+              finishRun('victory');
+            } else if ((runMode === 'extraction' && nextWave >= 4) || (runMode === 'hunt' && state.wave >= 2) || (runMode === 'last_signal' && nextWave >= 5)) {
+              state.enemies = buildEnemies(nextWave, true);
+              state.wave = nextWave;
+              state.statusText = lang === 'fr' ? 'Champion de Trame détecté.' : 'Thread Champion detected.';
+            } else {
+              state.wave = nextWave;
+              state.enemies = buildEnemies(nextWave, runMode === 'hunt' && nextWave >= 3);
+              state.loot = [...state.loot.filter(item => !item.used), ...buildLoot(nextWave)];
+              state.statusText = lang === 'fr' ? `Vague ${nextWave} engagée.` : `Wave ${nextWave} engaged.`;
+            }
           }
         }
         if (state.hp <= 0) finishRun('defeat');
+        else if (runMode === 'infestation' && state.t >= EXTINCTION_INFESTATION_TARGET_FRAMES) finishRun('victory');
         if (state.t % 18 === 0) {
-          setRunSnapshot({
-            phase: state.phase,
-            hp: state.hp,
-            ammo: state.ammo,
-            kills: state.kills,
-            wave: state.wave,
-            loot: state.loot.filter(item => item.used).length,
-            result: state.result,
-            rewards: state.rewards
-          });
+          setRunSnapshot(buildRunSnapshot(state));
         }
       }
 
@@ -3517,11 +3642,22 @@ function ExtinctionRoyale({
         ctx.translate(dx, dy);
       }
 
+      const backdrop = fpsBackdropRef.current;
+      if (backdrop?.complete && backdrop.naturalWidth > 0) {
+        const coverScale = Math.max(canvas.width / backdrop.naturalWidth, canvas.height / backdrop.naturalHeight);
+        const drawWidth = backdrop.naturalWidth * coverScale;
+        const drawHeight = backdrop.naturalHeight * coverScale;
+        ctx.globalAlpha = 0.38;
+        ctx.drawImage(backdrop, (canvas.width - drawWidth) / 2, (canvas.height - drawHeight) / 2, drawWidth, drawHeight);
+        ctx.globalAlpha = 1;
+      }
       const sky = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.54);
       sky.addColorStop(0, state.fragments?.[0] ? '#201235' : '#151515');
       sky.addColorStop(1, '#050209');
       ctx.fillStyle = sky;
+      ctx.globalAlpha = backdrop?.complete ? 0.72 : 1;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = 1;
       const bandColors = ['#162845', '#231339', '#381515'];
       (state.fragments || universeFragments).forEach((fragment, index) => {
         ctx.fillStyle = bandColors[index % bandColors.length];
@@ -3635,17 +3771,21 @@ function ExtinctionRoyale({
 
       ctx.fillStyle = 'rgba(0,0,0,0.66)';
       ctx.fillRect(0, 0, canvas.width, 48);
+      const hpRatio = Math.max(0, Math.min(1, state.hp / Math.max(1, state.maxHp || state.hp || 1)));
       ctx.fillStyle = state.hp < 35 ? '#e74c3c' : '#2ecc71';
-      ctx.fillRect(18, 17, Math.max(0, state.hp) * 1.2, 10);
+      ctx.fillRect(18, 17, 308 * hpRatio, 10);
       ctx.strokeStyle = '#2ecc71';
       ctx.strokeRect(18, 17, 308, 10);
       ctx.fillStyle = '#3498db';
-      ctx.fillRect(18, 30, Math.max(0, state.armor) * 2.2, 5);
+      ctx.fillRect(18, 30, Math.min(308, Math.max(0, state.armor) * 3), 5);
       ctx.fillStyle = '#fff';
       ctx.font = '12px "Share Tech Mono"';
-      ctx.fillText(`${selectedHero.name} / HP ${Math.round(state.hp)} / ARM ${Math.round(state.armor)} / AMMO ${state.ammo} / W${state.wave} / K${state.kills}`, 18, 45);
+      ctx.fillText(`${selectedHero.name} / HP ${Math.round(state.hp)} / ARM ${Math.round(state.armor)} / AMMO ${state.ammo}+${state.reserveAmmo || 0} / W${state.wave} / K${state.kills}`, 18, 45);
       ctx.fillStyle = '#ffea00';
-      ctx.fillText(state.objective || objectives[runMode], canvas.width - 390, 31);
+      ctx.font = 'bold 12px "Share Tech Mono"';
+      ctx.textAlign = 'right';
+      ctx.fillText(getRunObjectiveText(state), canvas.width - 18, 31, Math.min(430, canvas.width * 0.52));
+      ctx.textAlign = 'left';
 
       ctx.strokeStyle = state.muzzle ? '#ffea00' : 'rgba(255,255,255,0.72)';
       ctx.beginPath();
@@ -3769,7 +3909,7 @@ function ExtinctionRoyale({
     };
     loop();
     return () => window.cancelAnimationFrame(rafId);
-  }, [buildEnemies, buildLoot, finishRun, lang, objectives, projectWorld, runMode, selectedHero, universeFragments, weaponProfile.color]);
+  }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, getRunObjectiveText, lang, projectWorld, runMode, selectedHero, universeFragments, weaponProfile.color]);
 
   const triggerEnemyDrop = (enemy, state) => {
     if (Math.random() < 0.24) {
@@ -3809,8 +3949,12 @@ function ExtinctionRoyale({
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     const wep = state.weapon || { type: 'pistol', ammo: state.ammo || 24, maxAmmo: 24, spread: 0.12, fireRate: 1.0, dmgMult: 1.0 };
+    if (state.reloadPulse > 0) return;
     if (state.t - (state.lastFireTime || 0) < wep.fireRate * 18) return;
-    if (!wep.ammo) return;
+    if (!wep.ammo) {
+      state.statusText = lang === 'fr' ? 'Chargeur vide: recharge avec R.' : 'Magazine empty: reload with R.';
+      return;
+    }
     
     wep.ammo -= 1;
     state.ammo = wep.ammo;
@@ -3840,11 +3984,17 @@ function ExtinctionRoyale({
       state.hitMarkerTimer = 6;
       state.screenShake = 5.5 + wep.dmgMult * 1.5;
       
-      if (target.hp <= 0) {
+      if (target.hp <= 0 && !target.counted) {
+        target.counted = true;
         state.kills += 1;
         if (selectedHero?.category === 'horror') state.hp = Math.min(state.maxHp, state.hp + 8);
         triggerEnemyDrop(target, state);
       }
+      state.statusText = target.hp <= 0
+        ? (lang === 'fr' ? `${target.kind} neutralisé.` : `${target.kind} neutralized.`)
+        : (lang === 'fr' ? `Impact confirmé sur ${target.kind}.` : `Confirmed hit on ${target.kind}.`);
+    } else {
+      state.statusText = lang === 'fr' ? 'Aucune signature dans le réticule.' : 'No signature in the reticle.';
     }
     sound.playSfx('confirm');
   };
@@ -3852,13 +4002,22 @@ function ExtinctionRoyale({
   const reload = () => {
     if (sessionPausedRef.current) return;
     const state = stateRef.current;
-    if (state.weapon) {
-      state.weapon.ammo = state.weapon.maxAmmo;
-      state.ammo = state.weapon.ammo;
-    } else {
-      state.ammo = state.maxAmmo || 24;
+    if (state.phase !== 'running' || state.reloadPulse > 0) return;
+    const weapon = state.weapon || { ammo: state.ammo || 0, maxAmmo: state.maxAmmo || 24 };
+    const needed = Math.max(0, weapon.maxAmmo - weapon.ammo);
+    const loaded = Math.min(needed, state.reserveAmmo || 0);
+    if (loaded <= 0) {
+      state.statusText = needed <= 0
+        ? (lang === 'fr' ? 'Chargeur déjà plein.' : 'Magazine already full.')
+        : (lang === 'fr' ? 'Réserve vide: trouve des munitions.' : 'Reserve empty: find ammunition.');
+      return;
     }
-    state.reloadPulse = 12;
+    weapon.ammo += loaded;
+    state.weapon = weapon;
+    state.ammo = weapon.ammo;
+    state.reserveAmmo -= loaded;
+    state.reloadPulse = 36;
+    state.statusText = lang === 'fr' ? `Recharge: +${loaded}.` : `Reloaded: +${loaded}.`;
     sound.playSfx('coin');
   };
 
@@ -3875,19 +4034,31 @@ function ExtinctionRoyale({
     if (sessionPausedRef.current) return;
     const state = stateRef.current;
     if (state.phase !== 'running') return;
+    if (state.skillCooldown > 0) {
+      state.statusText = lang === 'fr'
+        ? `Capacité disponible dans ${Math.ceil(state.skillCooldown / 60)} s.`
+        : `Ability ready in ${Math.ceil(state.skillCooldown / 60)}s.`;
+      return;
+    }
     if (selectedHero?.category === 'slayer' && state.dash <= 0) {
       state.px = Math.max(-7.5, Math.min(7.5, state.px + Math.sin(state.angle) * 2.4));
       state.py = Math.max(-1.4, Math.min(28, state.py + Math.cos(state.angle) * 2.4));
       state.dash = 220;
+      state.skillCooldown = 240;
     } else if (selectedHero?.category === 'hacker') {
       state.scan = 360;
+      state.skillCooldown = 360;
     } else if (selectedHero?.category === 'tactical') {
       state.turret = 520;
+      state.skillCooldown = 480;
     } else if (selectedHero?.category === 'marine') {
       state.armor += 18;
+      state.skillCooldown = 420;
     } else if (selectedHero?.category === 'horror') {
       state.hp = Math.min(state.maxHp, state.hp + 20);
+      state.skillCooldown = 480;
     }
+    state.statusText = lang === 'fr' ? 'Capacité de rôle activée.' : 'Role ability activated.';
     sound.playSfx('special');
   };
 
@@ -3896,29 +4067,83 @@ function ExtinctionRoyale({
     const state = stateRef.current;
     if (state.phase !== 'running') return;
     const item = state.loot.find(candidate => !candidate.used && Math.hypot(candidate.wx - state.px, candidate.wy - state.py) < 1.25);
-    if (!item) return;
+    if (!item) {
+      state.statusText = lang === 'fr' ? 'Aucun objet à portée.' : 'No nearby item.';
+      return;
+    }
     item.used = true;
     if (item.type === 'normal') {
-      state.hp = Math.min(state.maxHp, state.hp + 24);
-      if (state.weapon) {
-        state.weapon.ammo = state.weapon.maxAmmo;
-        state.ammo = state.weapon.ammo;
+      if (item.effect === 'heal') {
+        state.hp = Math.min(state.maxHp, state.hp + 24);
       } else {
-        state.ammo = state.maxAmmo;
+        const ammoGain = (state.weapon?.maxAmmo || state.maxAmmo || 24) * 2;
+        state.reserveAmmo = Math.min((state.weapon?.maxAmmo || 24) * 5, (state.reserveAmmo || 0) + ammoGain);
       }
       state.reloadPulse = 10;
     } else if (item.type === 'summon') {
       state.turret = Math.max(state.turret, 500);
     } else if (item.type === 'ultimate') {
-      state.enemies.forEach(enemy => { enemy.hp -= 95; });
-      state.kills += state.enemies.filter(enemy => enemy.hp <= 0 && !enemy.counted).length;
-      state.enemies.forEach(enemy => { if (enemy.hp <= 0) enemy.counted = true; });
+      state.enemies.forEach(enemy => {
+        const wasAlive = enemy.hp > 0;
+        enemy.hp -= 95;
+        if (wasAlive && enemy.hp <= 0 && !enemy.counted) {
+          enemy.counted = true;
+          state.kills += 1;
+          triggerEnemyDrop(enemy, state);
+        }
+      });
     } else if (item.type === 'weapon') {
       state.weapon = { ...item.weaponData, ammo: item.weaponData.maxAmmo };
       state.ammo = state.weapon.ammo;
+      state.reserveAmmo = state.weapon.maxAmmo * 2;
       sound.playSfx('levelup');
+    } else if (item.type === 'beacon') {
+      state.beaconsStabilized = Math.min(EXTINCTION_BEACON_TARGET, (state.beaconsStabilized || 0) + 1);
+      state.statusText = lang === 'fr'
+        ? `Balise ${item.wave} stabilisée (${state.beaconsStabilized}/${EXTINCTION_BEACON_TARGET}).`
+        : `Beacon ${item.wave} stabilized (${state.beaconsStabilized}/${EXTINCTION_BEACON_TARGET}).`;
+    }
+    if (item.type !== 'beacon') {
+      state.statusText = lang === 'fr' ? `${item.label} récupéré.` : `${item.label} collected.`;
     }
     sound.playSfx(item.type === 'ultimate' ? 'special' : 'coin');
+  };
+
+  const beginCanvasAim = (event) => {
+    if (sessionPausedRef.current || stateRef.current.phase !== 'running') return;
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    aimPointerRef.current = { active: true, pointerId: event.pointerId, x: event.clientX, moved: false };
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  };
+
+  const moveCanvasAim = (event) => {
+    const pointer = aimPointerRef.current;
+    if (!pointer.active || pointer.pointerId !== event.pointerId || sessionPausedRef.current) return;
+    const deltaX = event.clientX - pointer.x;
+    if (Math.abs(deltaX) > 1) {
+      stateRef.current.angle += deltaX * 0.008;
+      pointer.moved = pointer.moved || Math.abs(deltaX) > 4;
+      pointer.x = event.clientX;
+    }
+  };
+
+  const endCanvasAim = (event) => {
+    const pointer = aimPointerRef.current;
+    if (pointer.pointerId !== event.pointerId) return;
+    pointer.active = false;
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+  };
+
+  const cancelCanvasAim = () => {
+    aimPointerRef.current = { active: false, pointerId: null, x: 0, moved: false };
+  };
+
+  const handleCanvasFire = () => {
+    if (aimPointerRef.current.moved) {
+      aimPointerRef.current.moved = false;
+      return;
+    }
+    fire();
   };
 
   useEffect(() => {
@@ -3995,13 +4220,23 @@ function ExtinctionRoyale({
               ? 'Simulation dangereuse A.R.C.A.: les Trames trop instables sont compressees avant d envahir la Cite-Mosaique. Choisis une signature, loot, survis aux vagues, evite la Marge Blanche et force une extraction.'
               : 'Dangerous A.R.C.A. simulation: unstable Threads are compressed before they invade Mosaic City. Pick a signature, loot, survive waves, avoid the White Margin, and force extraction.'}
           </p>
-          <select value={runMode} onChange={event => setRunMode(event.target.value)} className="nexus-select">
+          <select
+            value={runMode}
+            onChange={event => setRunMode(event.target.value)}
+            className="nexus-select"
+            aria-label={lang === 'fr' ? 'Type de run Zone d Extinction' : 'Extinction Zone run type'}
+          >
             <option value="extraction">{lang === 'fr' ? 'Solo Extraction' : 'Solo Extraction'}</option>
             <option value="last_signal">{lang === 'fr' ? 'Dernier Signal' : 'Last Signal'}</option>
             <option value="infestation">{lang === 'fr' ? 'Infestation' : 'Infestation'}</option>
             <option value="hunt">{lang === 'fr' ? 'Chasse au Champion' : 'Champion Hunt'}</option>
           </select>
-          <select value={selectedHero?.id || ''} onChange={event => setSelectedHeroId(event.target.value)} className="nexus-select">
+          <select
+            value={selectedHero?.id || ''}
+            onChange={event => setSelectedHeroId(event.target.value)}
+            className="nexus-select"
+            aria-label={lang === 'fr' ? 'Signature jouable pour la Zone d Extinction' : 'Playable Extinction Zone signature'}
+          >
             {playableHeroes.map(hero => (
               <option key={hero.id} value={hero.id}>{hero.name} / {hero.universe}</option>
             ))}
@@ -4009,15 +4244,24 @@ function ExtinctionRoyale({
           <div className="nexus-play-intel">
             <strong>{weaponProfile.name}</strong>
             <span>{selectedHero?.category || 'marine'} - {(roleProfile[selectedHero?.category] || roleProfile.marine).perk}</span>
-            <small>{universeFragments.join(' / ')} - {lang === 'fr' ? 'Z/W avancer, S reculer, A/Q-D strafes, fleches gauche/droite tourner' : 'W/Z forward, S back, A/Q-D strafe, left/right arrows turn'}</small>
+            <small>{universeFragments.join(' / ')} - {lang === 'fr' ? 'Z/W avancer, S reculer, A/Q-D strafes, flèches tourner, glisser sur la vue pour viser' : 'W/Z forward, S back, A/Q-D strafe, arrows turn, drag the view to aim'}</small>
           </div>
         </div>
-        <div className="nexus-play-stats">
+        <div className="nexus-play-stats" role="status" aria-live="polite" aria-atomic="true">
           <span>{runActive ? (lang === 'fr' ? 'RUN ACTIVE' : 'RUN ACTIVE') : (lang === 'fr' ? 'PRET' : 'READY')}</span>
-          <span>HP {Math.round(runSnapshot.hp || 0)}</span>
+          <span>HP {Math.round(runSnapshot.hp || 0)} / ARM {Math.round(runSnapshot.armor || 0)}</span>
+          <span>AMMO {runSnapshot.ammo}+{runSnapshot.reserveAmmo}</span>
           <span>WAVE {runSnapshot.wave}</span>
           <span>KILLS {runSnapshot.kills}</span>
+          {runMode === 'extraction' && <span>BEACONS {runSnapshot.beacons}/{EXTINCTION_BEACON_TARGET}</span>}
         </div>
+        {runSnapshot.objectiveText && (
+          <div className="extinction-objective-strip">
+            <strong>{lang === 'fr' ? 'OBJECTIF ACTIF' : 'ACTIVE OBJECTIVE'}</strong>
+            <span>{runSnapshot.objectiveText}</span>
+            {runSnapshot.statusText && <small>{runSnapshot.statusText}</small>}
+          </div>
+        )}
         {runSnapshot.rewards && (
           <div className="nexus-play-intel">
             <strong>{runSnapshot.rewards.title}</strong>
@@ -4033,20 +4277,38 @@ function ExtinctionRoyale({
           {runActive && (
             <>
               <button className="btn-retro" onClick={fire} title={lang === 'fr' ? 'Tire avec l arme FPS du heros selectionne.' : 'Fire the selected hero FPS weapon.'}>{lang === 'fr' ? 'TIRER' : 'FIRE'}</button>
-              <button className="btn-retro" onClick={reload} title={lang === 'fr' ? 'Recharge les munitions au maximum.' : 'Refill ammunition to maximum.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
-              <button className="btn-retro" onClick={activateRoleSkill} title={lang === 'fr' ? 'Active la capacite speciale liee au role du heros.' : 'Activate the selected hero role ability.'}>{lang === 'fr' ? 'ROLE' : 'ROLE'}</button>
-              <button className="btn-retro" onClick={collectLoot} title={lang === 'fr' ? 'Ramasse l objet proche si tu es assez pres.' : 'Pick up the nearby item if you are close enough.'}>{lang === 'fr' ? 'LOOT' : 'LOOT'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se deplacer lateralement a gauche.' : 'Hold to strafe left.'} onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se deplacer lateralement a droite.' : 'Hold to strafe right.'} onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la camera vers la gauche.' : 'Hold to turn the camera left.'} onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
-              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la camera vers la droite.' : 'Hold to turn the camera right.'} onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
+              <button className="btn-retro" onClick={reload} disabled={runSnapshot.reserveAmmo <= 0} title={lang === 'fr' ? 'Transfère les munitions de la réserve vers le chargeur.' : 'Transfer reserve ammunition into the magazine.'}>{lang === 'fr' ? 'RECHARGER' : 'RELOAD'}</button>
+              <button className="btn-retro" onClick={activateRoleSkill} disabled={runSnapshot.skillCooldown > 0} title={lang === 'fr' ? 'Active la capacité spéciale liée au rôle du héros.' : 'Activate the selected hero role ability.'}>{runSnapshot.skillCooldown > 0 ? `ROLE ${Math.ceil(runSnapshot.skillCooldown / 60)}s` : 'ROLE'}</button>
+              <button className="btn-retro" onClick={collectLoot} disabled={!runSnapshot.nearbyLoot} title={runSnapshot.nearbyLoot || (lang === 'fr' ? 'Approche-toi d un objet ou d une balise.' : 'Move near an item or beacon.')}>{runSnapshot.nearbyLoot ? `LOOT: ${runSnapshot.nearbyLoot}` : 'LOOT'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour avancer.' : 'Hold to move forward.'} onPointerDown={() => setMoveKey('forward', true)} onPointerUp={() => setMoveKey('forward', false)} onPointerCancel={() => setMoveKey('forward', false)} onPointerLeave={() => setMoveKey('forward', false)}>{lang === 'fr' ? 'AVANT' : 'FORWARD'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour reculer.' : 'Hold to move backward.'} onPointerDown={() => setMoveKey('back', true)} onPointerUp={() => setMoveKey('back', false)} onPointerCancel={() => setMoveKey('back', false)} onPointerLeave={() => setMoveKey('back', false)}>{lang === 'fr' ? 'RECUL' : 'BACK'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à gauche.' : 'Hold to strafe left.'} onPointerDown={() => setMoveKey('strafeLeft', true)} onPointerUp={() => setMoveKey('strafeLeft', false)} onPointerCancel={() => setMoveKey('strafeLeft', false)} onPointerLeave={() => setMoveKey('strafeLeft', false)}>{lang === 'fr' ? 'STRAFE G' : 'STRAFE L'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour se déplacer latéralement à droite.' : 'Hold to strafe right.'} onPointerDown={() => setMoveKey('strafeRight', true)} onPointerUp={() => setMoveKey('strafeRight', false)} onPointerCancel={() => setMoveKey('strafeRight', false)} onPointerLeave={() => setMoveKey('strafeRight', false)}>{lang === 'fr' ? 'STRAFE D' : 'STRAFE R'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la gauche.' : 'Hold to turn the camera left.'} onPointerDown={() => setMoveKey('turnLeft', true)} onPointerUp={() => setMoveKey('turnLeft', false)} onPointerCancel={() => setMoveKey('turnLeft', false)} onPointerLeave={() => setMoveKey('turnLeft', false)}>{lang === 'fr' ? 'TOURNER G' : 'TURN L'}</button>
+              <button className="btn-retro" title={lang === 'fr' ? 'Maintenir pour tourner la caméra vers la droite.' : 'Hold to turn the camera right.'} onPointerDown={() => setMoveKey('turnRight', true)} onPointerUp={() => setMoveKey('turnRight', false)} onPointerCancel={() => setMoveKey('turnRight', false)} onPointerLeave={() => setMoveKey('turnRight', false)}>{lang === 'fr' ? 'TOURNER D' : 'TURN R'}</button>
             </>
           )}
         </div>
       </div>
-      <canvas ref={canvasRef} width="840" height="430" className="fps-royale-canvas" onClick={fire} />
+      {runActive && (
+        <div className="fps-orientation-note">
+          {lang === 'fr' ? 'Format paysage conseillé · glisse pour viser · touche pour tirer' : 'Landscape recommended · drag to aim · tap to fire'}
+        </div>
+      )}
+      <canvas
+        ref={canvasRef}
+        width="840"
+        height="430"
+        className="fps-royale-canvas"
+        tabIndex={0}
+        aria-label={lang === 'fr' ? 'Vue jouable de la Zone d Extinction' : 'Playable Extinction Zone view'}
+        onClick={handleCanvasFire}
+        onPointerDown={beginCanvasAim}
+        onPointerMove={moveCanvasAim}
+        onPointerUp={endCanvasAim}
+        onPointerCancel={cancelCanvasAim}
+        onContextMenu={event => event.preventDefault()}
+      />
     </div>
   );
 }

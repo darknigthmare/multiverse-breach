@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 
 import {
   EngineNonCombatTrial,
@@ -9,6 +10,9 @@ import {
 } from '../src/game/nonCombatTrial.js';
 import { LORE_WORLD_BOSS_POLICIES } from '../src/game/loreWorldBossOverrides.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';
+
+const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
+const indexCssSource = readFileSync(new URL('../src/index.css', import.meta.url), 'utf8');
 
 const hero = id => ({
   id,
@@ -278,6 +282,7 @@ test('survive uses safety progress instead of damage and can end in victory or d
   assert.equal(victory[0][0], 'victory');
   assert.equal(victory[0][1].progressPct, 100);
   assert.equal('damageTaken' in victory[0][1], false);
+  assert.ok(victory[0][1].objects.every(object => object.completed), 'victory summary must not show safe zones as incomplete');
 
   const defeat = [];
   const unsafe = new EngineNonCombatTrial(
@@ -295,6 +300,57 @@ test('survive uses safety progress instead of damage and can end in victory or d
   unsafe.update({});
   assert.equal(defeat[0][0], 'defeat');
   assert.equal(defeat[0][1].safetyProgress, 0);
+});
+
+test('trial HUD guidance exposes range, order, mistakes, and gated objectives', () => {
+  const engine = new EngineNonCombatTrial(
+    640,
+    360,
+    [hero('investigator')],
+    makePolicy('Rassembler les preuves puis rejoindre la sortie.', {
+      type: 'escape-evidence',
+      targetCount: 3
+    }),
+    null,
+    null,
+    null,
+    { universe: 'Guidance' }
+  );
+  const active = engine.getActiveHero();
+  const extraction = engine.objects.find(object => object.kind === 'extraction');
+  assert.equal(engine.trial.mistakeLimit, 8);
+  assert.equal(engine.isObjectLocked(extraction), true);
+  active.x = extraction.x;
+  active.y = extraction.y;
+  engine.update({});
+  assert.equal(extraction.completed, false, 'locked extraction cannot auto-complete');
+
+  active.x = 24;
+  active.facing = -1;
+  assert.equal(engine.triggerAbility(active, 'secondary'), false);
+  assert.match(engine.getObjectiveText('fr'), /erreurs 1\/8/i);
+  assert.match(engine.feedback.fr, /Hors portée|mauvais ordre/);
+  assert.match(engine.getInteractionHint('fr'), /REJOINS|APPROCHE-TOI/);
+});
+
+test('Extinction Zone contracts keep real objectives, bounded resources, aiming, and undistorted mobile canvas', () => {
+  [
+    'EXTINCTION_BEACON_TARGET = 3',
+    "type: 'beacon'",
+    'beaconsStabilized',
+    'reserveAmmo',
+    'skillCooldown',
+    'EXTINCTION_INFESTATION_TARGET_FRAMES',
+    'beginCanvasAim',
+    'moveCanvasAim',
+    'getRunObjectiveText',
+    'fpsBackdropRef'
+  ].forEach(marker => assert.ok(hubSource.includes(marker), `Extinction runtime missing ${marker}`));
+  assert.match(hubSource, /effect: 'heal'/);
+  assert.match(hubSource, /effect: 'ammo'/);
+  assert.match(hubSource, /state\.hp\s*\/\s*Math\.max\(1, state\.maxHp/);
+  assert.match(indexCssSource, /\.extinction-panel-active \.fps-royale-canvas[\s\S]*?aspect-ratio: 84 \/ 43/);
+  assert.doesNotMatch(indexCssSource, /\.extinction-panel-active \.fps-royale-canvas\s*\{[^}]*min-height:\s*52dvh/);
 });
 
 test('survive fails without active-zone participation even while guarding', () => {

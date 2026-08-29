@@ -889,7 +889,12 @@ export class EngineRace {
     kart.speed += kart.accel * kart.throttle * dt;
     const maxSpeed = kart.maxSpeed + (kart.boost > 0 ? 118 : 0);
     kart.speed = clamp(kart.speed, -88, maxSpeed);
-    const drag = surface === 'ice' ? 0.994 : surface === 'slow' ? 0.952 : onTrack ? 0.992 : Math.max(this.track.offroadDrag, 0.965);
+    // Les circuits exposent chacun leur propre penalite hors-piste. L'ancien
+    // Math.max neutralisait toutes les valeurs du catalogue (0.83 a 0.91) en
+    // les remontant systematiquement a 0.965, ce qui rendait les sorties de
+    // route presque aussi rapides que l'asphalte.
+    const offroadDrag = clamp(Number(this.track.offroadDrag) || 0.9, 0.82, 0.965);
+    const drag = surface === 'ice' ? 0.994 : surface === 'slow' ? 0.952 : onTrack ? 0.992 : offroadDrag;
     kart.speed *= Math.pow(drag, dt * 60);
     if (kart.spin > 0) kart.speed *= 0.965;
     const driftHeld = input.drift && Math.abs(kart.speed) > 80;
@@ -1538,26 +1543,40 @@ export class EngineRace {
     const upcoming = this.track.waypoints[this.player.waypoint] || this.track.waypoints[0];
     const desired = Math.atan2(upcoming.y - this.player.y, upcoming.x - this.player.x);
     const delta = angleDelta(this.player.angle, desired);
-    const driftPull = this.player.drift * Math.sign(delta || 1) * 0.18;
-    return (delta * 0.72 + driftPull) * depthT * depthT * 190;
+    const driftPull = this.player.drift * Math.sign(delta || this.player.steerInput || 1) * 0.12;
+    const farWeight = Math.pow(1 - clamp(depthT, 0, 1), 1.35);
+    // Le bas de la route doit rester verrouille sous le kart. La courbe se
+    // developpe vers l'horizon, sinon la chaussee glisse lateralement sous le
+    // joueur et donne l'impression que le vehicule roule hors du decor.
+    return clamp(
+      (delta * 0.68 + driftPull) * farWeight * 300,
+      -this.width * 0.42,
+      this.width * 0.42
+    );
   }
 
   drawRearRoad(ctx) {
     const segments = this.getProjectedTrackSegments();
-    if (segments.length < 2) {
-      this.drawFallbackRearRoad(ctx);
-      return;
-    }
-
-    const horizon = this.getRaceCameraHorizon();
-
-    // Draw background sky/ground first
-    ctx.fillStyle = '#090812';
-    ctx.fillRect(0, 0, this.width, horizon);
-    ctx.fillStyle = '#0f121d';
-    ctx.fillRect(0, horizon, this.width, this.height - horizon);
+    // Une perspective continue reste toujours presente. Les segments issus de
+    // la vraie topologie ne sont ajoutes que s'ils couvrent reellement la
+    // profondeur de l'ecran; sur les virages serres, leur projection
+    // euclidienne pouvait se reduire a une bande horizontale ou disparaitre.
+    this.drawFallbackRearRoad(ctx);
+    const startProjection = this.projectToRearCamera(this.track.start || this.track.waypoints[0]);
+    if (startProjection) this.drawProjectedFinishLine(ctx, startProjection);
+    const projectedPoints = segments.flatMap(segment => [segment.a, segment.b]);
+    const minY = projectedPoints.length ? Math.min(...projectedPoints.map(point => point.y)) : 0;
+    const maxY = projectedPoints.length ? Math.max(...projectedPoints.map(point => point.y)) : 0;
+    const hasNearRoad = projectedPoints.some(point => point.t >= 0.62);
+    const hasFarRoad = projectedPoints.some(point => point.t <= 0.28);
+    const hasUsefulCoverage = segments.length >= 6
+      && hasNearRoad
+      && hasFarRoad
+      && maxY - minY >= this.height * 0.24;
+    if (!hasUsefulCoverage) return;
 
     ctx.save();
+    ctx.globalAlpha = 0.58;
     const orderedSegments = segments
       .slice()
       .sort((a, b) => b.depth - a.depth);
@@ -1646,8 +1665,6 @@ export class EngineRace {
     });
     ctx.setLineDash([]);
 
-    const startProjection = this.projectToRearCamera(this.track.start || this.track.waypoints[0]);
-    if (startProjection) this.drawProjectedFinishLine(ctx, startProjection);
     ctx.restore();
   }
 
@@ -1797,12 +1814,6 @@ export class EngineRace {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    ctx.fillStyle = 'rgba(255,255,255,0.82)';
-    ctx.fillRect(centerX - 76, roadBottom - 110, 152, 8);
-    ctx.fillStyle = 'rgba(0,0,0,0.58)';
-    for (let i = 0; i < 12; i += 1) {
-      ctx.fillRect(centerX - 76 + i * 13, roadBottom - 110, 6, 8);
-    }
   }
 
   projectToRearCamera(point) {
@@ -1859,7 +1870,8 @@ export class EngineRace {
       if (p) projected.push({ type: 'opponent', p, source: kart });
     });
     projected
-      .sort((a, b) => a.p.forward - b.p.forward)
+      // Painter order: les elements eloignes passent avant les proches.
+      .sort((a, b) => b.p.forward - a.p.forward)
       .forEach(entry => {
         if (entry.type === 'opponent') this.drawProjectedOpponent(ctx, entry.source, entry.p);
         if (entry.type === 'surface') this.drawProjectedSurfaceZone(ctx, entry.source, entry.p);
@@ -2479,6 +2491,9 @@ export class EngineRace {
     const player = this.player;
     const hudX = 14;
     const hudY = 78;
+    ctx.save();
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
     ctx.fillStyle = 'rgba(2,1,8,0.78)';
     ctx.fillRect(hudX, hudY, 250, 148);
     ctx.strokeStyle = player.color;
@@ -2538,5 +2553,6 @@ export class EngineRace {
       ctx.fillText(this.message, 480, 52);
       ctx.textAlign = 'left';
     }
+    ctx.restore();
   }
 }

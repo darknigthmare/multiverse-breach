@@ -928,10 +928,12 @@ export default function FighterMode({
           <strong>{arenaLevelProfile?.combat?.name || (lang === 'fr' ? 'Duel de convergence' : 'Convergence Duel')}</strong>
         </div>
         <div>
-          <b>{snapshot.timer}s</b>
+          <b>{snapshot.phase === 'countdown' ? snapshot.countdown : snapshot.timer}s</b>
           <small>
             {opponentControl === 'p2'
               ? (lang === 'fr' ? 'P2 LOCAL' : 'LOCAL P2')
+              : snapshot.phase === 'countdown'
+                ? (lang === 'fr' ? 'ANCRAGE' : 'SYNC')
               : snapshot.phase === 'running'
                 ? (lang === 'fr' ? 'DUEL ACTIF' : 'LIVE FIGHT')
                 : snapshot.phase.toUpperCase()}
@@ -954,7 +956,16 @@ export default function FighterMode({
             height="540"
             className="fighter-mode-canvas"
             aria-label={lang === 'fr' ? 'Arene de combat A.R.C.A. jouable' : 'Playable A.R.C.A. fighting arena'}
+            data-fighter-phase={snapshot.phase}
+            data-fighter-timer={snapshot.timer}
+            data-player-active={playerSnapshot.activeIndex}
+            data-opponent-active={cpuSnapshot.activeIndex}
           />
+          <p className="gameplay-live-status" role="status" aria-live="polite">
+            {lang === 'fr'
+              ? `Duel ${snapshot.phase}. ${snapshot.timer} secondes. ${playerSnapshot.fighters.filter(fighter => !fighter.ko).length} signatures joueur et ${cpuSnapshot.fighters.filter(fighter => !fighter.ko).length} signatures adverses encore actives.`
+              : `Fight ${snapshot.phase}. ${snapshot.timer} seconds. ${playerSnapshot.fighters.filter(fighter => !fighter.ko).length} player signatures and ${cpuSnapshot.fighters.filter(fighter => !fighter.ko).length} opponent signatures remain.`}
+          </p>
           {summary && (
             <div
               className={`fighter-result-banner ${summary.result}`}
@@ -976,7 +987,7 @@ export default function FighterMode({
                       ? (lang === 'fr' ? 'VICTOIRE JOUEUR 2' : 'PLAYER 2 VICTORY')
                       : (lang === 'fr' ? 'REPLI DE CELLULE' : 'CELL RETREAT')}
                 </strong>
-                <span>RANG {summary.grade} / {summary.score} PTS / COMBO {summary.maxCombo}</span>
+                <span>RANG {summary.grade} / {summary.score} PTS / COMBO {summary.maxCombo} / {summary.duration}s</span>
                 {summary.victoryPose && (
                   <small style={{ display: 'block', marginTop: 5, color: summary.victoryPose.color || '#39c5bb' }}>
                     {getLocalizedName(summary.victoryPose, lang, lang === 'fr' ? 'Pose de victoire' : 'Victory pose')}

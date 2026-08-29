@@ -249,7 +249,7 @@ export const audit = async ({ batch: batchArgument, installBatch: installBatchAr
         errors.push('strict 4x4 normalization provenance is invalid');
       }
     } else {
-      errors.push(`unexpected kind in wave 2: ${job.kind}`);
+      errors.push(`unexpected kind in 500-asset batch: ${job.kind}`);
     }
     if (errors.length > 0) invalid.push({ identity, output: job.output, errors });
   }

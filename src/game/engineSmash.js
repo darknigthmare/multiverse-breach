@@ -1427,19 +1427,22 @@ export class EngineSmash {
 
     const heroesAlive = this.heroes.some(h => h.currentHp > 0);
     const enemiesAlive = this.enemies.some(e => e.currentHp > 0 || e.stateTimer > 0);
+    // A party wipe is terminal before any objective can award a same-frame
+    // victory from previously accumulated progress.
+    if (!heroesAlive) {
+      this.setMeleeOutcomeStates('defeat');
+      this.gameOver = true;
+      this.victoryTimer = 0;
+      this.playSfx('defeat');
+      return;
+    }
     if (!this.isFixedCustomRoster) {
       this.updateArenaObjective();
       this.updateObjectiveBattleState();
       if (this.gameOver) return;
     }
 
-    if (!heroesAlive && !this.gameOver) {
-      this.setMeleeOutcomeStates('defeat');
-      this.gameOver = true;
-      this.victoryTimer = 0;
-      this.playSfx('defeat');
-      return;
-    } else if (!enemiesAlive && !this.gameOver) {
+    if (!enemiesAlive && !this.gameOver) {
       if (this.wave < this.maxWaves) {
         this.wave++;
         this.enemies = [];
@@ -1650,19 +1653,21 @@ export class EngineSmash {
   updateObjectiveBattleState() {
     if (this.gameOver) return;
     const objective = this.arena.objective || 'waves';
+    // A destroyed protected artifact is an immediate loss, including on the
+    // exact frame where the survival timer reaches its target.
+    if (objective === 'protect' && this.artifactHp <= 0) {
+      this.setMeleeOutcomeStates('defeat');
+      this.gameOver = true;
+      this.victoryTimer = 0;
+      this.playSfx('defeat');
+      return;
+    }
     const objectiveComplete = this.objectiveProgress >= this.objectiveTarget;
     if (['collect', 'portals', 'protect'].includes(objective) && objectiveComplete) {
       this.setMeleeOutcomeStates('victory');
       this.gameOver = true;
       this.victoryTimer = 0;
       this.playSfx('victory');
-      return;
-    }
-    if (objective === 'protect' && this.artifactHp <= 0) {
-      this.setMeleeOutcomeStates('defeat');
-      this.gameOver = true;
-      this.victoryTimer = 0;
-      this.playSfx('defeat');
       return;
     }
     if (objective === 'overload' && this.objectiveProgress >= this.objectiveTarget && this.enemies.some(enemy => enemy.isBoss && enemy.currentHp > 0)) {

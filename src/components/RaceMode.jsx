@@ -24,7 +24,6 @@ const CONTROL_KEYS = new Set([
   'S',
   'D',
   ' ',
-  'Shift',
   'e',
   'E',
   'r',
@@ -37,7 +36,6 @@ const normalizeKey = (key) => {
   if (key === 'ArrowLeft') return 'left';
   if (key === 'ArrowRight') return 'right';
   if (key === ' ') return 'space';
-  if (key === 'Shift') return 'shift';
   if (key.toLowerCase() === 'z') return 'up';
   if (key.toLowerCase() === 'q') return 'left';
   return key.toLowerCase();
@@ -229,10 +227,6 @@ export default function RaceMode({
       const pulseKeys = Object.fromEntries(
         Object.entries(keyPulseRef.current).filter(([, expiresAt]) => expiresAt > now).map(([key]) => [key, true])
       );
-      if (keysRef.current.shift) {
-        engine.player.boost = Math.max(engine.player.boost, 0.22);
-        keysRef.current.shift = false;
-      }
       const mergedInputs = { ...keysRef.current, ...pulseKeys };
       engine.setInput({
         ...mergedInputs,
@@ -383,11 +377,6 @@ export default function RaceMode({
   const triggerItem = () => {
     if (sessionPausedRef.current) return;
     engineRef.current?.useItem();
-  };
-
-  const triggerBoost = () => {
-    if (sessionPausedRef.current) return;
-    if (engineRef.current) engineRef.current.player.boost = Math.max(engineRef.current.player.boost, 0.28);
   };
 
   const recoverPlayer = () => {
@@ -546,6 +535,11 @@ export default function RaceMode({
             data-lap={snapshot.lap}
             data-track-factor={snapshot.trackFactor.toFixed(2)}
           />
+          <p className="gameplay-live-status" role="status" aria-live="polite">
+            {lang === 'fr'
+              ? `Course ${snapshot.raceState}. Position ${snapshot.rank} sur 4. Tour ${snapshot.lap} sur ${track.laps}.`
+              : `Race ${snapshot.raceState}. Position ${snapshot.rank} of 4. Lap ${snapshot.lap} of ${track.laps}.`}
+          </p>
           {summary && (
             <div className="race-result-banner">
               <strong>{lang === 'fr' ? 'COURSE STABILISEE' : 'RACE STABILIZED'} // {summary.grade}</strong>
@@ -559,6 +553,9 @@ export default function RaceMode({
               </span>
               <button type="button" className="btn-retro" onClick={resetRace}>
                 {lang === 'fr' ? 'RELANCER' : 'RESTART'}
+              </button>
+              <button type="button" className="btn-retro" onClick={returnToGrid}>
+                {lang === 'fr' ? 'CHANGER DE CIRCUIT' : 'CHANGE TRACK'}
               </button>
             </div>
           )}
@@ -591,8 +588,13 @@ export default function RaceMode({
             <span>{lang === 'fr' ? 'Cache active' : 'Active cache'}</span>
             <strong>{snapshot.item || (lang === 'fr' ? 'vide' : 'empty')}</strong>
             <img className="race-cache-strip" src={RACE_ASSETS.kartItems} alt={lang === 'fr' ? 'Plaquette objets kart de Mirelle' : 'Mirelle kart item sheet'} />
-            <button type="button" className="btn-retro" onClick={triggerItem}>
-              {lang === 'fr' ? 'UTILISER' : 'USE'}
+            <button
+              type="button"
+              className="btn-retro"
+              onClick={triggerItem}
+              disabled={!snapshot.item || snapshot.raceState !== 'running'}
+            >
+              {snapshot.item ? (lang === 'fr' ? 'UTILISER' : 'USE') : (lang === 'fr' ? 'CACHE VIDE' : 'EMPTY CACHE')}
             </button>
           </div>
           <div className="race-garage-card">
@@ -641,7 +643,7 @@ export default function RaceMode({
             <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('left')} onPointerDown={() => activateVirtualKey('left', true)} onPointerUp={() => activateVirtualKey('left', false)} onPointerCancel={() => activateVirtualKey('left', false)} onPointerLeave={() => activateVirtualKey('left', false)}>GAUCHE</button>
             <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('right')} onPointerDown={() => activateVirtualKey('right', true)} onPointerUp={() => activateVirtualKey('right', false)} onPointerCancel={() => activateVirtualKey('right', false)} onPointerLeave={() => activateVirtualKey('right', false)}>DROITE</button>
             <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('space')} onPointerDown={() => activateVirtualKey('space', true)} onPointerUp={() => activateVirtualKey('space', false)} onPointerCancel={() => activateVirtualKey('space', false)} onPointerLeave={() => activateVirtualKey('space', false)}>DRIFT</button>
-            <button type="button" className="btn-retro" onClick={triggerBoost}>BOOST</button>
+            <button type="button" className="btn-retro" onClick={() => pulseVirtualKey('down')} onPointerDown={() => activateVirtualKey('down', true)} onPointerUp={() => activateVirtualKey('down', false)} onPointerCancel={() => activateVirtualKey('down', false)} onPointerLeave={() => activateVirtualKey('down', false)}>{lang === 'fr' ? 'FREIN' : 'BRAKE'}</button>
             <button type="button" className="btn-retro" onClick={recoverPlayer}>{lang === 'fr' ? 'REANCRER' : 'RECOVER'}</button>
             {summary && <button type="button" className="btn-retro" onClick={resetRace}>{lang === 'fr' ? 'RELANCER' : 'RESTART'}</button>}
           </div>

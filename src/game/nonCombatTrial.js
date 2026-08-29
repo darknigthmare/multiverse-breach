@@ -431,7 +431,7 @@ export const inferNonCombatTrial = (policy, context = {}) => {
     durationFrames,
     requiredParticipationRatio,
     activeZoneIntervalFrames,
-    mistakeLimit: positiveInteger(authoredTrial.mistakeLimit ?? context.mistakeLimit, 5, 1, 50),
+    mistakeLimit: positiveInteger(authoredTrial.mistakeLimit ?? context.mistakeLimit, 8, 1, 50),
     requiredProgress,
     objects,
     visualAnchor: String(authoredTrial.visualAnchor || policy?.visualAnchor || ''),
@@ -525,6 +525,8 @@ export class EngineNonCombatTrial {
     this.mistakes = 0;
     this.interactions = 0;
     this.successfulInteractions = 0;
+    this.feedback = localize(null, 'Repère l objectif actif puis approche-toi.', 'Locate the active objective, then move closer.');
+    this.feedbackFrames = 0;
     this.gameOver = false;
     this.completionReported = false;
     this.paused = false;
@@ -582,21 +584,66 @@ export class EngineNonCombatTrial {
     const progress = Math.round(this.getProgressRatio() * 100);
     const remaining = Math.max(0, Math.ceil((this.trial.timeLimitFrames - this.elapsedFrames) / 60));
     return locale === 'fr'
-      ? `${objective} Progression ${progress} %, ${remaining} s restantes.`
-      : `${objective} Progress ${progress}%, ${remaining}s remaining.`;
+      ? `${objective} Progression ${progress} %, ${remaining} s restantes, erreurs ${this.mistakes}/${this.trial.mistakeLimit}.`
+      : `${objective} Progress ${progress}%, ${remaining}s remaining, mistakes ${this.mistakes}/${this.trial.mistakeLimit}.`;
+  }
+
+  setFeedback(fr, en = fr, frames = 120) {
+    this.feedback = localize(null, fr, en);
+    this.feedbackFrames = Math.max(1, frames);
+  }
+
+  isObjectLocked(object) {
+    if (!object || object.completed) return false;
+    if (object.gatedBy === 'all-evidence') {
+      return this.objects.some(item => item.kind === 'evidence' && !item.completed);
+    }
+    if (object.gatedBy === 'all-mechanisms') {
+      return this.objects.some(item => item.kind === 'rescue-mechanism' && !item.completed);
+    }
+    if (object.kind === 'checkpoint') {
+      const expected = this.objects
+        .filter(item => item.kind === 'checkpoint' && !item.completed)
+        .sort((left, right) => left.order - right.order)[0];
+      return expected !== object;
+    }
+    return false;
+  }
+
+  getInteractionHint(lang = 'fr') {
+    const locale = lang === 'fr' ? 'fr' : 'en';
+    if (this.gameOver) {
+      return locale === 'fr' ? 'Épreuve terminée.' : 'Trial complete.';
+    }
+    const hero = this.getActiveHero();
+    if (!hero) return locale === 'fr' ? 'Aucune Ancre active.' : 'No active Anchor.';
+    const ranged = this.trial.type === 'hit-targets';
+    const active = this.getActiveTrialObject(hero, ranged ? 260 : 96, ranged);
+    if (active) {
+      const label = active.label[locale] || active.label.fr || active.label.en;
+      if (['collectible', 'evidence', 'checkpoint', 'extraction'].includes(active.kind)) {
+        return locale === 'fr' ? `APPROCHE-TOI · ${label}` : `MOVE CLOSER · ${label}`;
+      }
+      if (active.kind === 'safety-zone') {
+        return locale === 'fr' ? `RESTE DANS LA ZONE · ${label}` : `HOLD THE ZONE · ${label}`;
+      }
+      return ranged
+        ? (locale === 'fr' ? `VISE ET TIRE · ${label}` : `AIM AND FIRE · ${label}`)
+        : (locale === 'fr' ? `INTERAGIS / ATTAQUE · ${label}` : `INTERACT / ATTACK · ${label}`);
+    }
+    const next = this.objects
+      .filter(object => !object.completed && !this.isObjectLocked(object))
+      .sort((left, right) => Math.abs(left.x - hero.x) - Math.abs(right.x - hero.x))[0];
+    if (!next) return locale === 'fr' ? 'Objectif en validation.' : 'Objective validating.';
+    const label = next.label[locale] || next.label.fr || next.label.en;
+    return locale === 'fr' ? `REJOINS · ${label}` : `REACH · ${label}`;
   }
 
   getActiveTrialObject(hero = this.getActiveHero(), range = 72, ranged = false) {
     if (!hero) return null;
     const candidates = this.objects.filter(object => {
       if (object.completed) return false;
-      if (object.gatedBy === 'all-evidence' && this.objects.some(item => item.kind === 'evidence' && !item.completed)) return false;
-      if (object.gatedBy === 'all-mechanisms' && this.objects.some(item => item.kind === 'rescue-mechanism' && !item.completed)) return false;
-      if (object.kind === 'checkpoint') {
-        const expected = this.objects.filter(item => item.kind === 'checkpoint' && !item.completed)
-          .sort((left, right) => left.order - right.order)[0];
-        if (expected !== object) return false;
-      }
+      if (this.isObjectLocked(object)) return false;
       const dx = object.x - hero.x;
       const dy = object.y - hero.y;
       if (Math.abs(dy) > (ranged ? this.height : 120)) return false;
@@ -622,6 +669,10 @@ export class EngineNonCombatTrial {
 
     object.pulse = 12;
     this.successfulInteractions++;
+    this.setFeedback(
+      object.completed ? `${object.label.fr} validé.` : `${object.label.fr}: progression enregistrée.`,
+      object.completed ? `${object.label.en} cleared.` : `${object.label.en}: progress registered.`
+    );
     this.playSfx(object.completed ? 'confirm' : 'hit');
     this.particles?.add?.(object.x, object.y - 14, 0, -1, object.completed ? '#39c5bb' : '#ffea00', 4, 24, 'spark');
     this.updateObjectiveProgress();
@@ -634,6 +685,10 @@ export class EngineNonCombatTrial {
     if (!object) {
       this.interactions++;
       this.mistakes++;
+      this.setFeedback(
+        `Hors portée ou mauvais ordre · erreur ${this.mistakes}/${this.trial.mistakeLimit}.`,
+        `Out of range or wrong order · mistake ${this.mistakes}/${this.trial.mistakeLimit}.`
+      );
       if (this.mistakes >= this.trial.mistakeLimit) this.complete('defeat');
       return false;
     }
@@ -793,6 +848,7 @@ export class EngineNonCombatTrial {
     }
 
     this.elapsedFrames++;
+    this.feedbackFrames = Math.max(0, this.feedbackFrames - 1);
     this.heroes.forEach(candidate => this.updateHero(candidate, candidate === hero ? held : {}));
     this.updateAutoBattle(hero);
     this.updateAutomaticInteractions(hero);
@@ -841,8 +897,16 @@ export class EngineNonCombatTrial {
 
   complete(result) {
     if (this.completionReported) return;
+    if (result === 'victory' && this.trial.type === 'survive') {
+      this.objects.filter(object => object.kind === 'safety-zone').forEach(object => { object.completed = true; });
+    }
     this.gameOver = true;
     this.completionReported = true;
+    this.setFeedback(
+      result === 'victory' ? 'Épreuve validée.' : 'Épreuve échouée: relis la directive.',
+      result === 'victory' ? 'Trial cleared.' : 'Trial failed: review the directive.',
+      240
+    );
     const summary = this.getTrialSummary(result);
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
     this.onComplete(result, summary);
@@ -883,16 +947,30 @@ export class EngineNonCombatTrial {
     };
   }
 
-  drawObject(ctx, object, animTime, lang) {
+  drawObject(ctx, object, animTime, lang, { active = false, locked = false } = {}) {
     const locale = lang === 'fr' ? 'fr' : 'en';
     const pulse = object.pulse > 0 ? 1.12 : 1 + Math.sin(animTime * 0.08 + object.x) * 0.04;
-    const color = object.completed || object.active ? '#39c5bb' : object.kind === 'safety-zone' ? '#66758a' : '#ffea00';
+    const color = locked
+      ? '#66758a'
+      : object.completed || object.active
+        ? '#39c5bb'
+        : object.kind === 'safety-zone'
+          ? '#66758a'
+          : '#ffea00';
     ctx.save();
     ctx.translate(object.x, object.y);
     ctx.scale(pulse, pulse);
     ctx.strokeStyle = color;
     ctx.fillStyle = object.completed ? 'rgba(57,197,187,0.28)' : 'rgba(12,18,28,0.82)';
     ctx.lineWidth = 3;
+
+    if (active) {
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(-48, -68, 96, 88);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 3;
+    }
 
     if (object.kind === 'breakable-object') {
       ctx.fillRect(-38, -22, 76, 32);
@@ -943,10 +1021,15 @@ export class EngineNonCombatTrial {
     ctx.restore();
 
     ctx.save();
-    ctx.fillStyle = object.completed ? '#39c5bb' : '#f4f7ff';
-    ctx.font = 'bold 10px Share Tech Mono, monospace';
+    ctx.fillStyle = locked ? '#8a99a8' : object.completed ? '#39c5bb' : '#f4f7ff';
+    ctx.font = 'bold 12px Share Tech Mono, monospace';
     ctx.textAlign = 'center';
-    ctx.fillText(object.label[locale] || object.label.fr || object.label.en, object.x, object.y + 29);
+    const stateLabel = locked
+      ? `[${locale === 'fr' ? 'VERROU' : 'LOCK'}] `
+      : active
+        ? '▶ '
+        : '';
+    ctx.fillText(`${stateLabel}${object.label[locale] || object.label.fr || object.label.en}`, object.x, object.y + 31);
     ctx.restore();
   }
 
@@ -963,24 +1046,39 @@ export class EngineNonCombatTrial {
     ctx.stroke();
     ctx.restore();
 
-    this.objects.forEach(object => this.drawObject(ctx, object, animTime, lang));
+    const hero = this.getActiveHero();
+    const ranged = this.trial.type === 'hit-targets';
+    const activeObject = this.getActiveTrialObject(hero, ranged ? 260 : 96, ranged);
+    this.objects.forEach(object => this.drawObject(ctx, object, animTime, lang, {
+      active: object === activeObject,
+      locked: this.isObjectLocked(object)
+    }));
     this.heroes.forEach(hero => this.drawTrialHero(ctx, hero, animTime));
 
     const progress = this.getProgressRatio();
     ctx.save();
     ctx.fillStyle = 'rgba(3,8,15,0.86)';
-    ctx.fillRect(18, 16, Math.min(440, this.width - 36), 52);
+    ctx.fillRect(18, 16, Math.min(560, this.width - 36), 78);
     ctx.strokeStyle = '#39c5bb';
-    ctx.strokeRect(18, 16, Math.min(440, this.width - 36), 52);
+    ctx.strokeRect(18, 16, Math.min(560, this.width - 36), 78);
     ctx.fillStyle = '#f4f7ff';
     ctx.font = 'bold 11px Share Tech Mono, monospace';
     ctx.textAlign = 'left';
     ctx.fillText(this.trial.title[lang === 'fr' ? 'fr' : 'en'], 29, 35);
-    const barWidth = Math.min(410, this.width - 66);
+    const barWidth = Math.min(530, this.width - 66);
     ctx.fillStyle = 'rgba(255,255,255,0.12)';
     ctx.fillRect(29, 45, barWidth, 10);
     ctx.fillStyle = this.gameOver ? '#39c5bb' : '#ffea00';
     ctx.fillRect(29, 45, barWidth * progress, 10);
+    ctx.fillStyle = '#d8f7ff';
+    ctx.font = 'bold 11px Share Tech Mono, monospace';
+    const remaining = Math.max(0, Math.ceil((this.trial.timeLimitFrames - this.elapsedFrames) / 60));
+    ctx.fillText(`${Math.round(progress * 100)}% · ${remaining}s · ${lang === 'fr' ? 'ERREURS' : 'MISTAKES'} ${this.mistakes}/${this.trial.mistakeLimit}`, 29, 72);
+    ctx.fillStyle = this.feedbackFrames > 0 ? '#ffea00' : '#f4f7ff';
+    const feedback = this.feedbackFrames > 0
+      ? (this.feedback[lang === 'fr' ? 'fr' : 'en'] || this.feedback.fr || this.feedback.en)
+      : this.getInteractionHint(lang);
+    ctx.fillText(feedback, 29, 87, Math.max(120, Math.min(530, this.width - 66)));
     ctx.restore();
   }
 }

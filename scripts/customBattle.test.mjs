@@ -647,6 +647,115 @@ test('Tactics camera pan and zoom preserve grid hit-testing', () => {
   }
 });
 
+test('RPG anchors every custom combatant on the perspective floor', () => {
+  const heroes = [
+    makeHero('rpg-floor-a'),
+    makeHero('rpg-floor-b'),
+    makeHero('rpg-floor-c')
+  ];
+  const roster = [
+    { ...makeThreat('rpg-floor-enemy-a'), anchor: { x: 0.91, y: 0.08 } },
+    { ...makeThreat('rpg-floor-enemy-b'), isBoss: true, anchor: { x: 0.78, y: 0.22 } },
+    { ...makeThreat('rpg-floor-enemy-c'), anchor: { x: 0.84, y: 0.34 } }
+  ];
+  const engine = new rpgModule.EngineRpg(
+    760,
+    360,
+    heroes,
+    makeEnemyData(roster),
+    particles,
+    noop,
+    noop,
+    makeStage('RPG', 'cpu')
+  );
+
+  try {
+    const floorThreshold = engine.height * (engine.getFloorHorizon() + 0.08);
+    [...engine.heroes, ...engine.enemies].forEach(unit => {
+      assert.ok(unit.homeY >= floorThreshold, `${unit.name} spawned above the RPG floor`);
+      assert.equal(unit.y, unit.homeY);
+    });
+    assert.ok(engine.heroes[0].homeY < engine.heroes[1].homeY);
+    assert.ok(engine.heroes[1].homeY < engine.heroes[2].homeY);
+    assert.ok(engine.enemies[0].homeY >= engine.height * 0.66);
+    assert.equal(engine.enemies[0].homeX, Math.round(engine.width * 0.91));
+  } finally {
+    engine.dispose();
+  }
+});
+
+test('RPG and Tactics keep source hero stats immutable across synergy runtime copies', () => {
+  for (const [mode, EngineClass, height] of [
+    ['RPG', rpgModule.EngineRpg, 360],
+    ['Tactics', tacticsModule.EngineTactics, 420]
+  ]) {
+    const heroes = [
+      { ...makeHero(`${mode}-stats-a`), category: 'slayer' },
+      { ...makeHero(`${mode}-stats-b`), category: 'slayer' }
+    ];
+    const originalStats = heroes.map(hero => ({ ...hero.stats }));
+    const engine = new EngineClass(
+      760,
+      height,
+      heroes,
+      makeEnemyData([makeThreat(`${mode}-stats-enemy`)]),
+      particles,
+      noop,
+      noop,
+      makeStage(mode, 'cpu')
+    );
+
+    try {
+      assert.deepEqual(heroes.map(hero => hero.stats), originalStats);
+      assert.ok(engine.heroes.every(hero => hero.stats !== heroes.find(source => source.id === hero.id)?.stats));
+      assert.ok(engine.heroes.every(hero => hero.stats.atk > originalStats[0].atk));
+    } finally {
+      engine.dispose();
+    }
+  }
+});
+
+test('Tactics projects a widening floor board and round-trips every cell after camera changes', () => {
+  const engine = makeTacticsLineEngine({
+    name: 'Perspective Board Test',
+    type: 'melee',
+    dmg: 1
+  });
+
+  try {
+    const board = engine.getBoardPolygon();
+    const topWidth = board[1].x - board[0].x;
+    const bottomWidth = board[2].x - board[3].x;
+    assert.ok(bottomWidth > topWidth * 1.25);
+    assert.ok(engine.gridStartY >= engine.height * 0.3);
+    assert.ok(engine.getCellBounds(2, engine.rows - 1).width > engine.getCellBounds(2, 0).width);
+    assert.ok(engine.getUnitRenderScale(engine.rows - 1) > engine.getUnitRenderScale(0));
+
+    const assertRoundTrips = () => {
+      for (let row = 0; row < engine.rows; row += 1) {
+        for (let col = 0; col < engine.cols; col += 1) {
+          const screen = engine.gridToScreen(col, row);
+          assert.deepEqual(engine.screenToGrid(screen.x, screen.y), { x: col, y: row });
+        }
+      }
+    };
+    assertRoundTrips();
+    engine.panCameraBy(61, 27);
+    engine.zoomCameraAt(1.35, 380, 210);
+    assertRoundTrips();
+
+    engine.syncActorsToCamera();
+    [...engine.heroes, ...engine.enemies].forEach(unit => {
+      assert.deepEqual(
+        { x: unit.x, y: unit.y },
+        engine.getUnitScreenPosition(unit.gridX, unit.gridY)
+      );
+    });
+  } finally {
+    engine.dispose();
+  }
+});
+
 test('Tactics profiles expose diagonal, multi-axis and area footprints', () => {
   const engine = makeTacticsLineEngine({
     name: 'Profile Shape Test',

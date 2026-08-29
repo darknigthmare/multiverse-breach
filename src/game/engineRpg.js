@@ -3,6 +3,26 @@ import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { SYNERGIES_DB } from './heroes';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 
+const RPG_FLOOR_LANES = Object.freeze({
+  heroes: Object.freeze([
+    Object.freeze({ x: 0.14, y: 0.66 }),
+    Object.freeze({ x: 0.20, y: 0.78 }),
+    Object.freeze({ x: 0.26, y: 0.89 })
+  ]),
+  enemies: Object.freeze([
+    Object.freeze({ x: 0.74, y: 0.66 }),
+    Object.freeze({ x: 0.80, y: 0.78 }),
+    Object.freeze({ x: 0.86, y: 0.89 })
+  ]),
+  bosses: Object.freeze([
+    Object.freeze({ x: 0.75, y: 0.72 }),
+    Object.freeze({ x: 0.84, y: 0.86 })
+  ]),
+  worldBoss: Object.freeze({ x: 0.80, y: 0.78 })
+});
+
+const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
 export class EngineRpg {
   constructor(width, height, heroes, enemiesData, particles, playSfx, onComplete, stage = {}) {
     this.width = width;
@@ -22,27 +42,29 @@ export class EngineRpg {
 
     const heroPosition = (idx) => {
       const lane = this.levelProfile?.rpg?.heroLanes?.[idx];
-      return lane
-        ? { x: Math.round(width * lane.x), y: Math.round(height * lane.y) }
-        : { x: 70 + idx * 45, y: 90 + idx * 55 };
+      return this.resolveFloorPosition(lane, RPG_FLOOR_LANES.heroes[idx] || RPG_FLOOR_LANES.heroes.at(-1));
     };
 
-    this.heroes = heroes.map((h, idx) => ({
-      ...h,
-      x: heroPosition(idx).x,
-      y: heroPosition(idx).y,
-      homeX: heroPosition(idx).x,
-      homeY: heroPosition(idx).y,
-      state: 'idle',
-      stateTimer: 0,
-      atb: Math.random() * 20,
-      cooldown: 0,
-      specialCharge: 0,
-      maxHp: h.stats.hp,
-      currentHp: h.stats.hp,
-      facing: 1,
-      statusEffects: { infected: 0, glitched: 0, radiated: 0 }
-    }));
+    this.heroes = heroes.map((h, idx) => {
+      const position = heroPosition(idx);
+      return {
+        ...h,
+        stats: { ...h.stats },
+        x: position.x,
+        y: position.y,
+        homeX: position.x,
+        homeY: position.y,
+        state: 'idle',
+        stateTimer: 0,
+        atb: Math.random() * 20,
+        cooldown: 0,
+        specialCharge: 0,
+        maxHp: h.stats.hp,
+        currentHp: h.stats.hp,
+        facing: 1,
+        statusEffects: { infected: 0, glitched: 0, radiated: 0 }
+      };
+    });
 
     // Calculate Synergy Sets
     const categoriesCount = this.heroes.reduce((acc, h) => {
@@ -84,6 +106,34 @@ export class EngineRpg {
     this.autoBattle = false;
     this.enemyActionLock = false;
     this.enemyGlobalRecovery = 70;
+  }
+
+  getFloorHorizon() {
+    return clamp(this.levelProfile?.rpg?.horizon ?? 0.52, 0.42, 0.68);
+  }
+
+  resolveFloorPosition(lane, fallback, authoredAnchor = null) {
+    const authoredX = Number.isFinite(authoredAnchor?.x) ? authoredAnchor.x : null;
+    const authoredY = Number.isFinite(authoredAnchor?.y) ? authoredAnchor.y : null;
+    const baseline = lane || fallback;
+    const normalizedX = clamp(authoredX ?? baseline.x, 0.05, 0.95);
+    // Authored boss anchors describe composition, but a combatant's feet must
+    // never sit above the perspective floor used by the active RPG lane.
+    const normalizedY = clamp(
+      Math.max(authoredY ?? baseline.y, baseline.y, this.getFloorHorizon() + 0.08),
+      0.54,
+      0.94
+    );
+    return {
+      x: Math.round(this.width * normalizedX),
+      y: Math.round(this.height * normalizedY)
+    };
+  }
+
+  getDepthScale(y) {
+    const floorSpan = Math.max(1, this.height * (0.96 - this.getFloorHorizon()));
+    const depth = clamp((y - this.height * this.getFloorHorizon()) / floorSpan, 0, 1);
+    return 0.84 + depth * 0.22;
   }
 
   schedule(callback, delay) {
@@ -133,16 +183,17 @@ export class EngineRpg {
             ? this.levelProfile?.rpg?.bossLanes?.[index]
             : this.levelProfile?.rpg?.enemyLanes?.[index];
         const anchor = template.anchor;
-        const homeX = Number.isFinite(anchor?.x)
-          ? Math.round(this.width * anchor.x)
-          : lane
-            ? Math.round(this.width * lane.x)
-            : this.width - 200 + index * 45;
-        const homeY = Number.isFinite(anchor?.y)
-          ? Math.round(this.height * anchor.y)
-          : lane
-            ? Math.round(this.height * lane.y)
-            : 90 + index * 55;
+        const position = this.resolveFloorPosition(
+          lane,
+          isWorldBoss
+            ? RPG_FLOOR_LANES.worldBoss
+            : isBoss
+              ? RPG_FLOOR_LANES.bosses[index] || RPG_FLOOR_LANES.bosses.at(-1)
+              : RPG_FLOOR_LANES.enemies[index] || RPG_FLOOR_LANES.enemies.at(-1),
+          anchor
+        );
+        const homeX = position.x;
+        const homeY = position.y;
         const runtimeId = `enemy:custom:${index}:${template.id || template.name}`;
         return {
           ...template,
@@ -173,8 +224,9 @@ export class EngineRpg {
       for (let i = 0; i < 3; i++) {
         const t = templates[i] || templates[0];
         const lane = this.levelProfile?.rpg?.enemyLanes?.[i];
-        const homeX = lane ? Math.round(this.width * lane.x) : this.width - 200 + i * 45;
-        const homeY = lane ? Math.round(this.height * lane.y) : 90 + i * 55;
+        const position = this.resolveFloorPosition(lane, RPG_FLOOR_LANES.enemies[i] || RPG_FLOOR_LANES.enemies.at(-1));
+        const homeX = position.x;
+        const homeY = position.y;
         this.enemies.push({
           ...t,
           battleId: `enemy:${w}:${i}:${t.id || t.name}`,
@@ -204,8 +256,13 @@ export class EngineRpg {
       for (let i = 0; i < bossCount; i++) {
         const t = templates[i] || templates[0];
         const lane = this.levelProfile?.rpg?.bossLanes?.[i];
-        const homeX = lane ? Math.round(this.width * lane.x) : this.width - 170 + i * 50;
-        const homeY = lane ? Math.round(this.height * lane.y) : 110 + i * 80;
+        const position = this.resolveFloorPosition(
+          lane,
+          RPG_FLOOR_LANES.bosses[i] || RPG_FLOOR_LANES.bosses.at(-1),
+          t.anchor
+        );
+        const homeX = position.x;
+        const homeY = position.y;
         this.enemies.push({
           ...t,
           battleId: `enemy:${w}:${i}:${t.id || t.name}`,
@@ -233,17 +290,9 @@ export class EngineRpg {
       const t = this.enemiesData.worldBoss;
       if (!t) return;
       const lane = this.levelProfile?.rpg?.worldBoss;
-      const anchor = t.anchor;
-      const homeX = Number.isFinite(anchor?.x)
-        ? Math.round(this.width * anchor.x)
-        : lane
-          ? Math.round(this.width * lane.x)
-          : this.width - 140;
-      const homeY = Number.isFinite(anchor?.y)
-        ? Math.round(this.height * anchor.y)
-        : lane
-          ? Math.round(this.height * lane.y)
-          : 140;
+      const position = this.resolveFloorPosition(lane, RPG_FLOOR_LANES.worldBoss, t.anchor);
+      const homeX = position.x;
+      const homeY = position.y;
       this.enemies.push({
         ...t,
         battleId: `enemy:${w}:0:${t.id || t.name}`,
@@ -913,60 +962,77 @@ export class EngineRpg {
     }
   }
 
+  drawRpgHero(ctx, h, animTime) {
+    const scale = this.getDepthScale(h.y);
+    drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing, 72 * scale, 'rpg');
+
+    if (h.id === this.selectedHeroId && h.currentHp > 0) {
+      ctx.strokeStyle = '#00ffff';
+      ctx.lineWidth = Math.max(1, scale);
+      ctx.strokeRect(h.x - 18 * scale, h.y - 30 * scale, 36 * scale, 42 * scale);
+
+      ctx.fillStyle = '#00ffff';
+      ctx.font = '8px "Press Start 2P"';
+      ctx.fillText('ACTIVE', h.x - 20 * scale, h.y - 36 * scale);
+    }
+
+    if (h.currentHp > 0) {
+      const barWidth = 40 * scale;
+      const barX = h.x - barWidth / 2;
+      const barY = h.y + 18 * scale;
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(barX, barY, barWidth, 3);
+      const hpPct = h.currentHp / h.maxHp;
+      ctx.fillStyle = '#2ecc71';
+      ctx.fillRect(barX, barY, barWidth * hpPct, 3);
+
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(barX, barY + 5, barWidth, 3);
+      const atbPct = h.atb / 100;
+      ctx.fillStyle = h.atb >= 100 ? '#f1c40f' : '#3498db';
+      ctx.fillRect(barX, barY + 5, barWidth * atbPct, 3);
+    }
+  }
+
+  drawRpgEnemy(ctx, e, animTime) {
+    const scale = this.getDepthScale(e.y);
+    if (e.isBoss) {
+      drawBoss(ctx, e.x, e.y, e, animTime, e.facing);
+    } else {
+      drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing, 68 * scale);
+    }
+
+    if (e.currentHp > 0) {
+      const width = (e.isBoss ? 70 : 36) * scale;
+      const xOffset = -width / 2;
+      const yOffset = (e.isBoss ? 40 : 18) * scale;
+
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(e.x + xOffset, e.y + yOffset, width, 3);
+      const hpPct = e.currentHp / e.maxHp;
+      ctx.fillStyle = '#e74c3c';
+      ctx.fillRect(e.x + xOffset, e.y + yOffset, width * hpPct, 3);
+
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.fillRect(e.x + xOffset, e.y + yOffset + 4, width, 2);
+      const atbPct = e.atb / 100;
+      ctx.fillStyle = '#9b59b6';
+      ctx.fillRect(e.x + xOffset, e.y + yOffset + 4, width * atbPct, 2);
+    }
+  }
+
   draw(ctx, animTime) {
-    this.heroes.forEach(h => {
-      drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing, 72, 'rpg');
-
-      if (h.id === this.selectedHeroId && h.currentHp > 0) {
-        ctx.strokeStyle = '#00ffff';
-        ctx.lineWidth = 1;
-        ctx.strokeRect(h.x - 18, h.y - 30, 36, 42);
-        
-        ctx.fillStyle = '#00ffff';
-        ctx.font = '8px "Press Start 2P"';
-        ctx.fillText('ACTIVE', h.x - 20, h.y - 36);
-      }
-
-      if (h.currentHp > 0) {
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.fillRect(h.x - 20, h.y + 18, 40, 3);
-        const hpPct = h.currentHp / h.maxHp;
-        ctx.fillStyle = '#2ecc71';
-        ctx.fillRect(h.x - 20, h.y + 18, 40 * hpPct, 3);
-
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.fillRect(h.x - 20, h.y + 23, 40, 3);
-        const atbPct = h.atb / 100;
-        ctx.fillStyle = h.atb >= 100 ? '#f1c40f' : '#3498db';
-        ctx.fillRect(h.x - 20, h.y + 23, 40 * atbPct, 3);
-      }
-    });
-
-    this.enemies.forEach(e => {
-      if (e.isBoss) {
-        drawBoss(ctx, e.x, e.y, e, animTime, e.facing);
-      } else {
-        drawPixelEnemy(ctx, e.x, e.y, e, animTime, e.facing);
-      }
-
-      if (e.currentHp > 0) {
-        const width = e.isBoss ? 70 : 36;
-        const xOffset = e.isBoss ? -35 : -18;
-        const yOffset = e.isBoss ? 40 : 18;
-
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.fillRect(e.x + xOffset, e.y + yOffset, width, 3);
-        const hpPct = e.currentHp / e.maxHp;
-        ctx.fillStyle = '#e74c3c';
-        ctx.fillRect(e.x + xOffset, e.y + yOffset, width * hpPct, 3);
-
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.fillRect(e.x + xOffset, e.y + yOffset + 4, width, 2);
-        const atbPct = e.atb / 100;
-        ctx.fillStyle = '#9b59b6';
-        ctx.fillRect(e.x + xOffset, e.y + yOffset + 4, width * atbPct, 2);
-      }
-    });
+    // A shared depth pass prevents a far enemy from painting over a combatant
+    // whose feet are lower on the perspective floor.
+    [
+      ...this.heroes.map(unit => ({ unit, type: 'hero' })),
+      ...this.enemies.map(unit => ({ unit, type: 'enemy' }))
+    ]
+      .sort((a, b) => a.unit.y - b.unit.y || a.unit.x - b.unit.x)
+      .forEach(entry => {
+        if (entry.type === 'hero') this.drawRpgHero(ctx, entry.unit, animTime);
+        else this.drawRpgEnemy(ctx, entry.unit, animTime);
+      });
 
     ctx.fillStyle = '#ffffff';
     ctx.font = '10px "Press Start 2P"';
