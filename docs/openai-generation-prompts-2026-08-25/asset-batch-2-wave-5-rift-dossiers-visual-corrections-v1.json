@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "correctionVersion": 1,
+  "batchId": "assets-rift-dossier-wave-5-visual-corrections-v1-2026-08-30",
+  "kind": "stage",
+  "promptCatalogSha256": "d81b6ead6bac3606904ceadf5d9dbf38c71dd84ce46919dbadc2e85764e131cb",
+  "sources": {
+    "wave5Primary": {
+      "path": "docs/openai-generation-prompts-2026-08-25/asset-batch-500-wave-5-rift-dossiers.json",
+      "batchId": "assets-rift-dossier-pending-500-wave-5-2026-08-30",
+      "sha256": "3b0e136cbb2c4cedcaf858d89c7471a04a6b3bd0b88b9acc4a72c7ced44b5292"
+    },
+    "wave5SafetyMakeup": {
+      "path": "docs/openai-generation-prompts-2026-08-25/asset-batch-3-wave-5-rift-dossiers-makeup.json",
+      "batchId": "assets-rift-dossier-wave-5-safety-makeup-2026-08-30",
+      "sha256": "eeb81c4e9dfb65da0ce33ca53b8907ae36439c8de57112e36624d2b3e41d37e3"
+    }
+  },
+  "overlayOrder": [
+    "wave-5-primary",
+    "wave-5-safety-makeup",
+    "wave-5-visual-corrections-v1"
+  ],
+  "correctionPolicy": [
+    "select exactly the two Wave 5 thumbnails rejected by the post-generation visual gameplay audit",
+    "apply this versioned correction layer after the safety makeup layer",
+    "preserve runtime identity and output while replacing the installed image and catalog prompt",
+    "pin the exact successful OpenAI generation ID, original PNG SHA-256 and source dimensions",
+    "allow at most two ImageGen calls per job; preflight file-access failures are recorded separately"
+  ],
+  "counts": {
+    "jobs": 2,
+    "replaceTrue": 2,
+    "safetyMakeupSources": 1,
+    "primarySources": 1
+  },
+  "jobs": [
+    {
+      "sequence": 1,
+      "correctionVersion": 1,
+      "replacementOfSequence": 385,
+      "kind": "stage",
+      "id": "33841",
+      "stageId": 33841,
+      "assetId": "stage-33841-savannah-convergence-de-la-horde-v1",
+      "name": "Savannah — convergence de la horde",
+      "universe": "The Walking Dead — Telltale",
+      "family": "expanded",
+      "mode": "Tactics",
+      "output": "/images/rift-dossiers/openai/expanded/stage-33841-savannah-convergence-de-la-horde-v1.webp",
+      "replace": true,
+      "sourceLayer": "wave-5-safety-makeup",
+      "correctionOfBatchId": "assets-rift-dossier-wave-5-safety-makeup-2026-08-30",
+      "correctionOfSequence": 3,
+      "correctionOfGenerationPromptSha256": "b218078d2d68f1849d5fad8b6920d6ad3bb5fcce5eec47df940f78495c2c44f5",
+      "replacedPromptSha256": "b218078d2d68f1849d5fad8b6920d6ad3bb5fcce5eec47df940f78495c2c44f5",
+      "visualAuditIssue": "baked-tactics-grid-conflicts-with-runtime-grid",
+      "correctionReason": "Remove every baked tactical overlay while preserving an implied navigation lattice aligned with the separately rendered runtime grid.",
+      "sourcePromptSha256": "8def69a4a17130dc65bdea5e987adb2dd110b8a29019993912430a1983544983",
+      "generationPromptSha256": "8def69a4a17130dc65bdea5e987adb2dd110b8a29019993912430a1983544983",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-2-wave-5-rift-dossiers-visual-corrections-v1/001-stage-33841-remove-baked-grid-v1.txt",
+      "generationPrompt": "Create one original 32-bit pixel-art landscape thumbnail for the fan-made game Multiverse Breach, 16:9 composition intended for a final 640x360 RGB WebP.\n\nOperation: “Savannah — convergence de la horde”. Universe continuity: The Walking Dead — Telltale. Gameplay mode: Tactics. This is a strict environment-only safety replacement: NEVER depict people, humanoids, silhouettes, creatures, walkers, remains, injuries, combat, weapons or crowds.\n\nShow deserted historic Savannah coastal streets in an original fan-art interpretation: brick facades, humid haze, subtly overgrown pavement, abandoned streetcar tracks, empty crossroads and a cyan multiverse breach. Use an elevated three-quarter tactics environment with clear traversable lanes and obstacles aligned to an IMPLIED rectangular navigation lattice.\n\nCRITICAL: the game renders its own interactive grid separately. Draw absolutely NO grid lines, squares, dotted paths, arrows, chevrons, route markings, icons, cursors, highlights, selection zones, tactical overlays, HUD, UI, text, logos, watermark or decorative frame. Navigation must be readable only through architecture, curbs, paving seams and streetcar tracks. Strong high-contrast ink-like pixel shading, layered foreground/midground/breach light, readable at thumbnail size. No photorealism, no copied official key art, no poster composition.",
+      "successfulGeneration": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-b812cfa3-0aec-42f0-a634-daf6aae6fb06",
+        "sourceImage": {
+          "format": "PNG",
+          "width": 1672,
+          "height": 941,
+          "sha256": "eb195c6186a18d7e4ae92824f6d196ce1d7d5e5aaad339890f610fc03debe9e0"
+        }
+      },
+      "attemptAudit": {
+        "maximumImageGenCalls": 2,
+        "usedImageGenCalls": 1,
+        "preflightFailures": [
+          "A local referenced-image edit was blocked before ImageGen by a sandbox ACL preflight failure. It did not consume an ImageGen call; the successful result used the frozen text prompt."
+        ]
+      }
+    },
+    {
+      "sequence": 2,
+      "correctionVersion": 1,
+      "replacementOfSequence": 500,
+      "kind": "stage",
+      "id": "34420",
+      "stageId": 34420,
+      "assetId": "stage-34420-blackout-infiltration-v1",
+      "name": "Blackout Infiltration",
+      "universe": "Interstellar Marines",
+      "family": "expanded",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34420-blackout-infiltration-v1.webp",
+      "replace": true,
+      "sourceLayer": "wave-5-primary",
+      "correctionOfBatchId": "assets-rift-dossier-pending-500-wave-5-2026-08-30",
+      "correctionOfSequence": 500,
+      "correctionOfGenerationPromptSha256": "f726439622007b9e41ce14875e44d4234fd507f87f0ad78188ee19182de31cab",
+      "replacedPromptSha256": "f726439622007b9e41ce14875e44d4234fd507f87f0ad78188ee19182de31cab",
+      "visualAuditIssue": "perspective-corridor-conflicts-with-rpg-side-view",
+      "correctionReason": "Replace the forward-facing corridor with the strict side-on 2.5D battle lane required by RPG gameplay.",
+      "sourcePromptSha256": "e32ecd502994b20f37844940c56aa23ce00e6a2ecbdfa54478e0ff0d0713b0eb",
+      "generationPromptSha256": "e32ecd502994b20f37844940c56aa23ce00e6a2ecbdfa54478e0ff0d0713b0eb",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-2-wave-5-rift-dossiers-visual-corrections-v1/002-stage-34420-orthographic-rpg-camera-v1.txt",
+      "generationPrompt": "Create one original 32-bit pixel-art landscape thumbnail for the fan-made game Multiverse Breach, 16:9 composition intended for a final 640x360 RGB WebP.\n\nOperation: “Blackout Infiltration”. Universe continuity: Interstellar Marines. Gameplay mode: RPG. Runtime lore anchors: The Vault Target Course, SARA Final Evaluation, CTR Rifle Unit, CTR Heavy Unit, Defective CTR, Sentry Grid Evaluation, NeuroGen Incident, Starcrown Assault. Preserve this military sci-fi continuity through an original fan-art scene; do not copy official key art.\n\nCRITICAL CAMERA CONTRACT: strict orthographic side-on 2.5D RPG battle view. The camera axis is perpendicular to one continuous horizontal battle lane spanning the lower third. A readable party zone is on the left and the Starcrown Assault threat zone is on the right. Complete silhouettes are viewed in profile. Layered training-vault architecture recedes only as parallax behind the lane, with blackout emergency lights and a cyan breach.\n\nAbsolutely NO corridor aimed into the screen, NO central vanishing-point charge, NO frontal camera, NO over-the-shoulder, FPS, TPS or elevated tactics framing, and nobody aims toward the viewer. Broad uncluttered combat lane, strong foreground/midground/background separation, immediately readable at thumbnail size. No crosshair, markers, grid, baked UI, text, logos, watermark, decorative frame, photorealism, real-person likeness or copied poster composition.",
+      "successfulGeneration": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "generationId": "exec-733b0711-fdae-416b-a897-b978b1c037f4",
+        "sourceImage": {
+          "format": "PNG",
+          "width": 1672,
+          "height": 941,
+          "sha256": "90f27fcc37b9d03a28d315148ed3d1b71b33f7da96eb2aa7e699d53669b8dcf0"
+        }
+      },
+      "attemptAudit": {
+        "maximumImageGenCalls": 2,
+        "usedImageGenCalls": 1,
+        "preflightFailures": []
+      }
+    }
+  ]
+}

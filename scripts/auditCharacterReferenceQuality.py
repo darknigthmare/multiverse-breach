@@ -43,7 +43,7 @@ DEFAULT_OUTPUT_PATH = (
 )
 PUBLIC_ROOT = (REPOSITORY_ROOT / "public").resolve()
 EXPECTED_CHARACTER_ARC_ENTRY_COUNT = 1_912
-EXPECTED_UNIQUE_REFERENCE_PATH_COUNT = 1_742
+EXPECTED_UNIQUE_REFERENCE_PATH_COUNT = 1_912
 
 ALPHA_OCCUPIED_THRESHOLD = 8
 STRONG_NEIGHBOR_DIFFERENCE = 12
@@ -80,20 +80,55 @@ THRESHOLDS = {
 
 KNOWN_EXPECTATIONS = {
     "/sprites/generated/heroes/buffy-the-vampire-slayer/buffy-summers.png": (
-        "rejected-placeholder"
+        "approved"
     ),
-    "/sprites/generated/heroes/breaking-bad/walter-white.png": (
-        "rejected-placeholder"
-    ),
-    "/sprites/generated/heroes/police-squad/frank-drebin.png": (
-        "rejected-placeholder"
-    ),
+    "/sprites/generated/heroes/breaking-bad/walter-white.png": "approved",
+    "/sprites/generated/heroes/police-squad/frank-drebin.png": "approved",
     "/sprites/generated/heroes/half-life/freeman.png": "approved",
     (
         "/sprites/generated/heroes/halo/master-chief-complete/"
         "master-chief-universal.png"
     ): "approved",
     "/sprites/generated/heroes/resident-evil/leon.png": "approved",
+    (
+        "/sprites/generated/heroes/bit-trip/"
+        "bit-trip-commander-video.png"
+    ): "approved",
+    (
+        "/sprites/generated/heroes/bit-trip/"
+        "bit-trip-commandgirl-video.png"
+    ): "approved",
+    "/sprites/generated/heroes/bit-trip/bit-trip-radbot.png": "approved",
+    (
+        "/sprites/generated/heroes/super-meat-boy/"
+        "super-meat-boy-brownie.png"
+    ): "approved",
+    (
+        "/sprites/generated/heroes/super-meat-boy/"
+        "super-meat-boy-meat-boy.png"
+    ): "approved",
+}
+
+MANUAL_APPROVED_REFERENCE_SHA256 = {
+    (
+        "/sprites/generated/heroes/bit-trip/"
+        "bit-trip-commander-video.png"
+    ): "764e3bb0224d02474fe09e2000307d6e7911e9554b7188f70d7ab5870e5cf4ac",
+    (
+        "/sprites/generated/heroes/bit-trip/"
+        "bit-trip-commandgirl-video.png"
+    ): "2a47d40f2d445793a139770c1fc3a28d086a06b2c92464eac4f4396d6ba95d02",
+    (
+        "/sprites/generated/heroes/bit-trip/bit-trip-radbot.png"
+    ): "fca7e3143ce6324d3392456c9153b0835aa891b6c72049b2b5338a51197b6059",
+    (
+        "/sprites/generated/heroes/super-meat-boy/"
+        "super-meat-boy-brownie.png"
+    ): "73b050ea743133b4000ffcb2a30a7ade8a8fa9c7c6ea69bdc22447ffe7bf7572",
+    (
+        "/sprites/generated/heroes/super-meat-boy/"
+        "super-meat-boy-meat-boy.png"
+    ): "2e6dfb37fd3f02dd164a8daa6b17644b0915eb2753a474e89e832d4497936a45",
 }
 
 
@@ -452,7 +487,19 @@ def build_report() -> dict[str, Any]:
                     f"{analysis_error}"
                 )
 
-        classification, reasons = classify_metrics(metrics, error)
+        manual_sha256 = MANUAL_APPROVED_REFERENCE_SHA256.get(catalog_path)
+        if (
+            manual_sha256
+            and metrics
+            and metrics.get("fileSha256") == manual_sha256
+        ):
+            classification = "approved"
+            reasons = [
+                "manual-approval:canon-minimalist-16-pose-sheet",
+                "manual-approval:sha256-pinned",
+            ]
+        else:
+            classification, reasons = classify_metrics(metrics, error)
         classification_by_path[catalog_path] = classification
         used_by = path_usage[catalog_path]
         reference_files.append(
@@ -548,6 +595,9 @@ def build_report() -> dict[str, Any]:
                 STRONG_NEIGHBOR_DIFFERENCE
             ),
             "thresholds": THRESHOLDS,
+            "manualApprovedReferenceSha256": (
+                MANUAL_APPROVED_REFERENCE_SHA256
+            ),
             "metrics": [
                 "dimensions and encoded byte size",
                 "alpha levels, occupied-pixel share and occupied bounding box",

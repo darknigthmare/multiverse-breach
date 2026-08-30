@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import {
   existsSync,
   mkdirSync,
@@ -23,6 +24,17 @@ const characterReferenceQualityPath = path.join(
   projectRoot,
   'docs/rift-dossiers/character-reference-quality.json'
 );
+const wave5SafetyMakeupPath = path.join(
+  projectRoot,
+  'docs/openai-generation-prompts-2026-08-25/asset-batch-3-wave-5-rift-dossiers-makeup.json'
+);
+const wave5VisualCorrectionsPath = path.join(
+  projectRoot,
+  'docs/openai-generation-prompts-2026-08-25/asset-batch-2-wave-5-rift-dossiers-visual-corrections-v1.json'
+);
+const WAVE_5_SOURCE_BATCH_SHA256 = '3b0e136cbb2c4cedcaf858d89c7471a04a6b3bd0b88b9acc4a72c7ced44b5292';
+const WAVE_5_SAFETY_MAKEUP_SHA256 = 'eeb81c4e9dfb65da0ce33ca53b8907ae36439c8de57112e36624d2b3e41d37e3';
+const WAVE_5_VISUAL_CORRECTIONS_SHA256 = 'd6d4da80f210567998df3c5c822b8b1caa160de9b5640ec1afaac5193e12091c';
 const checkOnly = process.argv.includes('--check');
 const refreshCharacterReferenceAudit = process.argv.includes('--refresh-character-reference-audit');
 assert.equal(
@@ -129,6 +141,239 @@ const getLocalizedText = (value, language, fallback = '') => {
 const uniqueStrings = values => (
   [...new Set(values.filter(Boolean).map(value => String(value).trim()).filter(Boolean))]
 );
+
+const sha256 = value => createHash('sha256').update(value).digest('hex');
+
+const loadWave5SafetyPromptOverrides = () => {
+  if (!existsSync(wave5SafetyMakeupPath)) return new Map();
+  const bytes = readFileSync(wave5SafetyMakeupPath);
+  assert.equal(
+    sha256(bytes),
+    WAVE_5_SAFETY_MAKEUP_SHA256,
+    'Wave 5 safety makeup artifact SHA drifted'
+  );
+  const document = JSON.parse(bytes.toString('utf8'));
+  assert.equal(document.schemaVersion, 1, 'Wave 5 safety makeup schemaVersion drifted');
+  assert.equal(
+    document.source?.batchSha256,
+    WAVE_5_SOURCE_BATCH_SHA256,
+    'Wave 5 safety makeup source batch SHA drifted'
+  );
+  assert.equal(document.jobs?.length, 3, 'Wave 5 safety makeup must contain exactly three jobs');
+  const overrides = new Map();
+  for (const job of document.jobs) {
+    const id = Number(job.id);
+    assert.ok(Number.isInteger(id), 'Wave 5 safety makeup stage id must be an integer');
+    assert.equal(job.kind, 'stage', `Wave 5 safety makeup ${id} must use kind=stage`);
+    assert.equal(
+      job.safetyPolicy,
+      'environment-only-no-characters',
+      `Wave 5 safety makeup ${id} has an unsupported policy`
+    );
+    assert.ok(!overrides.has(id), `Duplicate Wave 5 safety makeup stage ${id}`);
+    assert.equal(
+      sha256(Buffer.from(job.generationPrompt, 'utf8')),
+      job.generationPromptSha256,
+      `Wave 5 safety makeup ${id} prompt hash mismatch`
+    );
+    const promptFile = path.resolve(projectRoot, job.promptFile);
+    assert.equal(
+      readFileSync(promptFile, 'utf8'),
+      job.generationPrompt,
+      `Wave 5 safety makeup ${id} prompt file drifted`
+    );
+    overrides.set(id, job);
+  }
+  return overrides;
+};
+
+const wave5SafetyPromptOverrides = loadWave5SafetyPromptOverrides();
+
+const applyWave5SafetyPromptOverrides = entries => {
+  if (wave5SafetyPromptOverrides.size === 0) return;
+  const entryById = new Map(entries.map(entry => [entry.id, entry]));
+  for (const [id, override] of wave5SafetyPromptOverrides) {
+    const entry = entryById.get(id);
+    assert.ok(entry, `Wave 5 safety makeup stage ${id} is absent from the dossier catalog`);
+    assert.equal(entry.famille, 'expanded', `Wave 5 safety makeup ${id} must remain expanded`);
+    assert.equal(entry.cheminCibleDedie, override.output, `Wave 5 safety makeup ${id} output drifted`);
+    assert.equal(
+      sha256(Buffer.from(entry.promptOpenAI, 'utf8')),
+      override.replacedPromptSha256,
+      `Wave 5 safety makeup ${id} no longer replaces its audited source prompt`
+    );
+    entry.promptOpenAI = override.generationPrompt;
+    entry.promptSafetyOverride = {
+      policy: override.safetyPolicy,
+      sourceBatchSha256: WAVE_5_SOURCE_BATCH_SHA256,
+      replacementOfSequence: override.replacementOfSequence,
+      replacedPromptSha256: override.replacedPromptSha256
+    };
+  }
+};
+
+const loadWave5VisualPromptOverrides = () => {
+  if (!existsSync(wave5VisualCorrectionsPath)) {
+    return { batchId: null, overrides: new Map() };
+  }
+  const bytes = readFileSync(wave5VisualCorrectionsPath);
+  assert.equal(
+    sha256(bytes),
+    WAVE_5_VISUAL_CORRECTIONS_SHA256,
+    'Wave 5 visual correction artifact SHA drifted'
+  );
+  const document = JSON.parse(bytes.toString('utf8'));
+  assert.equal(document.schemaVersion, 1, 'Wave 5 visual correction schemaVersion drifted');
+  assert.equal(document.correctionVersion, 1, 'Wave 5 visual correction version drifted');
+  assert.equal(
+    document.batchId,
+    'assets-rift-dossier-wave-5-visual-corrections-v1-2026-08-30',
+    'Wave 5 visual correction batchId drifted'
+  );
+  assert.equal(document.kind, 'stage', 'Wave 5 visual correction must use kind=stage');
+  assert.equal(
+    document.sources?.wave5Primary?.sha256,
+    WAVE_5_SOURCE_BATCH_SHA256,
+    'Wave 5 visual correction primary source SHA drifted'
+  );
+  assert.equal(
+    document.sources?.wave5SafetyMakeup?.sha256,
+    WAVE_5_SAFETY_MAKEUP_SHA256,
+    'Wave 5 visual correction safety source SHA drifted'
+  );
+  assert.deepEqual(
+    document.overlayOrder,
+    ['wave-5-primary', 'wave-5-safety-makeup', 'wave-5-visual-corrections-v1'],
+    'Wave 5 visual correction overlay order drifted'
+  );
+  assert.equal(document.jobs?.length, 2, 'Wave 5 visual correction must contain two jobs');
+
+  const expected = new Map([
+    [33841, {
+      sequence: 1,
+      sourceLayer: 'wave-5-safety-makeup',
+      replacedPromptSha256: 'b218078d2d68f1849d5fad8b6920d6ad3bb5fcce5eec47df940f78495c2c44f5',
+      generationPromptSha256: '8def69a4a17130dc65bdea5e987adb2dd110b8a29019993912430a1983544983',
+      visualAuditIssue: 'baked-tactics-grid-conflicts-with-runtime-grid'
+    }],
+    [34420, {
+      sequence: 2,
+      sourceLayer: 'wave-5-primary',
+      replacedPromptSha256: 'f726439622007b9e41ce14875e44d4234fd507f87f0ad78188ee19182de31cab',
+      generationPromptSha256: 'e32ecd502994b20f37844940c56aa23ce00e6a2ecbdfa54478e0ff0d0713b0eb',
+      visualAuditIssue: 'perspective-corridor-conflicts-with-rpg-side-view'
+    }]
+  ]);
+  const overrides = new Map();
+  for (const job of document.jobs) {
+    const id = Number(job.id);
+    const contract = expected.get(id);
+    assert.ok(contract, `Unexpected Wave 5 visual correction stage ${job.id}`);
+    assert.equal(job.sequence, contract.sequence, `Wave 5 visual correction sequence drifted for ${id}`);
+    assert.equal(job.correctionVersion, 1, `Wave 5 visual correction version drifted for ${id}`);
+    assert.equal(job.kind, 'stage', `Wave 5 visual correction ${id} must use kind=stage`);
+    assert.equal(job.family, 'expanded', `Wave 5 visual correction ${id} must remain expanded`);
+    assert.equal(job.replace, true, `Wave 5 visual correction ${id} must replace its asset`);
+    assert.equal(job.sourceLayer, contract.sourceLayer, `Wave 5 visual correction source layer drifted for ${id}`);
+    assert.equal(
+      job.replacedPromptSha256,
+      contract.replacedPromptSha256,
+      `Wave 5 visual correction replaced prompt drifted for ${id}`
+    );
+    assert.equal(
+      job.generationPromptSha256,
+      contract.generationPromptSha256,
+      `Wave 5 visual correction prompt SHA drifted for ${id}`
+    );
+    assert.equal(job.sourcePromptSha256, job.generationPromptSha256, `Wave 5 visual correction catalog SHA drifted for ${id}`);
+    assert.equal(job.visualAuditIssue, contract.visualAuditIssue, `Wave 5 visual audit issue drifted for ${id}`);
+    assert.ok(!overrides.has(id), `Duplicate Wave 5 visual correction stage ${id}`);
+    assert.equal(
+      sha256(Buffer.from(job.generationPrompt, 'utf8')),
+      job.generationPromptSha256,
+      `Wave 5 visual correction prompt hash mismatch for ${id}`
+    );
+    const promptFile = path.resolve(projectRoot, job.promptFile);
+    const promptDirectory = path.join(
+      path.dirname(wave5VisualCorrectionsPath),
+      path.basename(wave5VisualCorrectionsPath, '.json')
+    );
+    const promptRelativePath = path.relative(promptDirectory, promptFile);
+    assert.ok(
+      promptRelativePath
+        && !promptRelativePath.startsWith(`..${path.sep}`)
+        && promptRelativePath !== '..'
+        && !path.isAbsolute(promptRelativePath),
+      `Wave 5 visual correction prompt escapes its artifact directory for ${id}`
+    );
+    assert.equal(
+      readFileSync(promptFile, 'utf8'),
+      job.generationPrompt,
+      `Wave 5 visual correction prompt file drifted for ${id}`
+    );
+    assert.equal(job.successfulGeneration?.provider, 'OpenAI', `Wave 5 visual correction provider drifted for ${id}`);
+    assert.equal(
+      job.successfulGeneration?.interface,
+      'built-in image_gen',
+      `Wave 5 visual correction interface drifted for ${id}`
+    );
+    assert.match(
+      job.successfulGeneration?.generationId || '',
+      /^exec-[A-Za-z0-9-]+$/u,
+      `Wave 5 visual correction generationId drifted for ${id}`
+    );
+    assert.equal(job.successfulGeneration?.sourceImage?.format, 'PNG', `Wave 5 visual correction source format drifted for ${id}`);
+    assert.equal(job.successfulGeneration?.sourceImage?.width, 1672, `Wave 5 visual correction source width drifted for ${id}`);
+    assert.equal(job.successfulGeneration?.sourceImage?.height, 941, `Wave 5 visual correction source height drifted for ${id}`);
+    assert.match(
+      job.successfulGeneration?.sourceImage?.sha256 || '',
+      /^[a-f0-9]{64}$/u,
+      `Wave 5 visual correction source SHA drifted for ${id}`
+    );
+    assert.equal(job.attemptAudit?.maximumImageGenCalls, 2, `Wave 5 visual correction call budget drifted for ${id}`);
+    assert.ok(
+      Number.isInteger(job.attemptAudit?.usedImageGenCalls)
+        && job.attemptAudit.usedImageGenCalls >= 1
+        && job.attemptAudit.usedImageGenCalls <= job.attemptAudit.maximumImageGenCalls,
+      `Wave 5 visual correction used call count drifted for ${id}`
+    );
+    overrides.set(id, job);
+  }
+  assert.deepEqual([...overrides.keys()], [...expected.keys()], 'Wave 5 visual correction identity set drifted');
+  return { batchId: document.batchId, overrides };
+};
+
+const wave5VisualPromptOverrides = loadWave5VisualPromptOverrides();
+
+const applyWave5VisualPromptOverrides = entries => {
+  if (!wave5VisualPromptOverrides.overrides?.size) return;
+  const entryById = new Map(entries.map(entry => [entry.id, entry]));
+  for (const [id, override] of wave5VisualPromptOverrides.overrides) {
+    const entry = entryById.get(id);
+    assert.ok(entry, `Wave 5 visual correction stage ${id} is absent from the dossier catalog`);
+    assert.equal(entry.famille, 'expanded', `Wave 5 visual correction ${id} must remain expanded`);
+    assert.equal(entry.cheminCibleDedie, override.output, `Wave 5 visual correction ${id} output drifted`);
+    assert.equal(
+      sha256(Buffer.from(entry.promptOpenAI, 'utf8')),
+      override.replacedPromptSha256,
+      `Wave 5 visual correction ${id} no longer replaces the active layered prompt`
+    );
+    entry.promptOpenAI = override.generationPrompt;
+    entry.promptVisualCorrection = {
+      version: override.correctionVersion,
+      batchId: wave5VisualPromptOverrides.batchId,
+      batchSha256: WAVE_5_VISUAL_CORRECTIONS_SHA256,
+      sourceLayer: override.sourceLayer,
+      replacementOfSequence: override.replacementOfSequence,
+      visualAuditIssue: override.visualAuditIssue,
+      correctionReason: override.correctionReason,
+      replacedPromptSha256: override.replacedPromptSha256,
+      generationPromptSha256: override.generationPromptSha256,
+      generationId: override.successfulGeneration.generationId,
+      sourceImageSha256: override.successfulGeneration.sourceImage.sha256
+    };
+  }
+};
 
 const normalizePublicAssetPath = value => {
   const normalized = String(value || '').trim().replaceAll('\\', '/');
@@ -865,6 +1110,9 @@ const buildCatalog = async () => {
   const entries = Object.keys(EXPECTED_COUNTS)
     .flatMap(family => entriesByFamily[family]);
 
+  applyWave5SafetyPromptOverrides(entries);
+  applyWave5VisualPromptOverrides(entries);
+
   const counts = Object.fromEntries(
     Object.keys(EXPECTED_COUNTS)
       .map(family => [family, entriesByFamily[family].length])
@@ -899,6 +1147,8 @@ const validateCatalog = catalog => {
   });
 
   for (const entry of catalog.entrees) {
+    const usesEnvironmentOnlySafetyPrompt = entry.promptSafetyOverride?.policy
+      === 'environment-only-no-characters';
     const usesAuthoritativeCampaignPrompt = entry.famille === 'campagne-oc'
       && campaignPromptByMissionId.get(entry.id) === entry.promptOpenAI;
     assert.equal(ids.has(entry.id), false, `Duplicate playable stage id ${entry.id}`);
@@ -935,10 +1185,17 @@ const validateCatalog = catalog => {
         0,
         `${entry.id}: runtime-lore fallback must not mask available public references`
       );
-      assert.ok(
-        entry.promptOpenAI.includes('Project-runtime lore anchors (not independently researched):'),
-        `${entry.id}: prompt does not disclose runtime-only lore provenance`
-      );
+      if (entry.promptVisualCorrection) {
+        assert.ok(
+          ['wave-5-primary', 'wave-5-safety-makeup'].includes(entry.promptVisualCorrection.sourceLayer),
+          `${entry.id}: visual correction does not preserve a pinned runtime-lore source layer`
+        );
+      } else {
+        assert.ok(
+          entry.promptOpenAI.includes('Project-runtime lore anchors (not independently researched):'),
+          `${entry.id}: prompt does not disclose runtime-only lore provenance`
+        );
+      }
     } else {
       assert.ok(entry.referenceUrls.length > 0, `${entry.id}: missing source references`);
     }
@@ -947,6 +1204,42 @@ const validateCatalog = catalog => {
       false,
       `${entry.id}: serialized object leaked into prompt`
     );
+    if (usesEnvironmentOnlySafetyPrompt) {
+      assert.ok(
+        entry.promptOpenAI.includes('Safety policy: environment-only-no-characters.')
+          || (
+            entry.promptVisualCorrection
+            && entry.promptOpenAI.includes('strict environment-only safety replacement')
+          ),
+        `${entry.id}: safety makeup prompt omits its audited policy marker`
+      );
+      assert.ok(
+        entry.promptOpenAI.includes('No people, creatures, combat, weapons')
+          || (
+            entry.promptVisualCorrection
+            && entry.promptOpenAI.includes('NEVER depict people')
+            && entry.promptOpenAI.includes('combat, weapons')
+          ),
+        `${entry.id}: safety makeup prompt does not explicitly exclude unsafe subjects`
+      );
+    }
+    if (entry.promptVisualCorrection) {
+      assert.equal(
+        sha256(Buffer.from(entry.promptOpenAI, 'utf8')),
+        entry.promptVisualCorrection.generationPromptSha256,
+        `${entry.id}: active visual correction prompt hash drifted`
+      );
+      assert.equal(
+        entry.promptVisualCorrection.batchSha256,
+        WAVE_5_VISUAL_CORRECTIONS_SHA256,
+        `${entry.id}: visual correction batch SHA drifted`
+      );
+      assert.match(
+        entry.promptVisualCorrection.generationId,
+        /^exec-[A-Za-z0-9-]+$/u,
+        `${entry.id}: visual correction generation ID drifted`
+      );
+    }
     if (['statique', 'fusion', 'trio'].includes(entry.famille)) {
       assert.ok(entry.bossVisualAnchor, `${entry.famille}:${entry.id}: missing boss visual anchor`);
       assert.ok(
@@ -961,11 +1254,13 @@ const validateCatalog = catalog => {
           entry.promptOpenAI.includes('no boss or hostile subject'),
           `${entry.id}: non-combat prompt does not explicitly exclude a boss`
         );
-        assert.ok(
-          entry.promptOpenAI.includes(entry.objectifFinale.en),
-          `${entry.id}: non-combat prompt omits its objective`
-        );
-      } else {
+        if (!usesEnvironmentOnlySafetyPrompt) {
+          assert.ok(
+            entry.promptOpenAI.includes(entry.objectifFinale.en),
+            `${entry.id}: non-combat prompt omits its objective`
+          );
+        }
+      } else if (!usesEnvironmentOnlySafetyPrompt) {
         assert.ok(entry.promptOpenAI.includes(entry.boss), `${entry.id}: prompt omits boss`);
       }
     }

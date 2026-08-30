@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-character-reference-wave-4-corrections-makeup-9-2026-08-30",
+  "kind": "hero",
+  "promptCatalogSha256": "01d7f266de73e8c4193ff0a66b879e3b9ee3dacb05cf01d62a526b34af8f3c4d",
+  "sources": {
+    "correctionBatch": {
+      "path": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections.json",
+      "batchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "sha256": "658c8d1fa413c88dc7718bd0fb2a9eeb4cbd9f4d8a372e55c68de8e32e5d461a"
+    }
+  },
+  "correctionPolicy": [
+    "select exactly the 9 terminal safety refusals from the first correction batch",
+    "replace each prompt with a standalone strongly distinct original design",
+    "preserve runtime identity, output, frame and replace contracts",
+    "allow at most two OpenAI image calls per job and never substitute a runtime identity"
+  ],
+  "selectionHashes": {
+    "failedSequenceListSha256": "5fc58bbae2853b57ec3fcbdd77913c425aff327f60120aa15fba0746cdb973b4"
+  },
+  "counts": {
+    "jobs": 9,
+    "replaceFalse": 5,
+    "replaceTrue": 4
+  },
+  "jobs": [
+    {
+      "sequence": 1,
+      "kind": "hero",
+      "id": "bob_minions",
+      "name": "Bob",
+      "universe": "Minions",
+      "output": "/sprites/generated/heroes/minions/bob-minions.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10485,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://www.illumination.com/movie/minions/",
+      "referenceUrls": [
+        "https://www.illumination.com/movie/minions/",
+        "https://www.illumination.com/movie/minions-the-rise-of-gru/"
+      ],
+      "visualAnchor": {
+        "physical": "small lemon-yellow clockwork service orb with two asymmetrical cyan sensor windows, teal apron-like armor panels, four tiny caster feet and a red tool token",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Villain-Con puis le Londres criminel des années 1960",
+        "Hall de convention rétro des années 1960 rempli de stands de gadgets de super-vilains, débouchant sur un Londres stylisé aux bus rouges, pierre grise et palais. Trois petites silhouettes jaunes cylindriques en salopettes de denim préparent un cambriolage maladroit au premier plan; utiliser jaune vif, bleu denim et décors mid-century, sans copier une pose promotionnelle."
+      ],
+      "sourcePromptSha256": "7d3e4c5f77878f7c3ac79ee929d2329890a860268fcd6cb6ff0feed8cd3fd356",
+      "generationPromptSha256": "56e2c150f4bda97f1011da0966d68eb9b82701b404ce09e8989c8037b52c9fa9",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/001-hero-bob-minions-original-56e2c150.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: small lemon-yellow clockwork service orb with two asymmetrical cyan sensor windows, teal apron-like armor panels, four tiny caster feet and a red tool token.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 10,
+      "correctionOfGenerationPromptSha256": "a2fc6b0bd10e0a4c6f4efc8c827628eeec6c2016dd685f61354d2b9d04c1ded4",
+      "originalWave4Sequence": 96
+    },
+    {
+      "sequence": 2,
+      "kind": "hero",
+      "id": "kevin_minions",
+      "name": "Kevin",
+      "universe": "Minions",
+      "output": "/sprites/generated/heroes/minions/kevin-minions.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10483,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://www.illumination.com/movie/minions/",
+      "referenceUrls": [
+        "https://www.illumination.com/movie/minions/",
+        "https://www.illumination.com/movie/minions-the-rise-of-gru/"
+      ],
+      "visualAnchor": {
+        "physical": "tall saffron-orange rectangular service automaton with two cyan square sensors, navy utility panels, telescopic legs and an unlettered maintenance tablet",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Villain-Con puis le Londres criminel des années 1960",
+        "Hall de convention rétro des années 1960 rempli de stands de gadgets de super-vilains, débouchant sur un Londres stylisé aux bus rouges, pierre grise et palais. Trois petites silhouettes jaunes cylindriques en salopettes de denim préparent un cambriolage maladroit au premier plan; utiliser jaune vif, bleu denim et décors mid-century, sans copier une pose promotionnelle."
+      ],
+      "sourcePromptSha256": "37c37a0e018ce258598d107a504eacdf058d140efc3c02ff78e389048bd17d24",
+      "generationPromptSha256": "3aa2293253be86946e878306e4a9a342cb58d1c91846f73c83fbd9edebbe4c1e",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/002-hero-kevin-minions-original-3aa22932.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: tall saffron-orange rectangular service automaton with two cyan square sensors, navy utility panels, telescopic legs and an unlettered maintenance tablet.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 11,
+      "correctionOfGenerationPromptSha256": "18635095c704c0a4b185b7c98b508a5fb588b7338d63a1133b49b78853d57758",
+      "originalWave4Sequence": 97
+    },
+    {
+      "sequence": 3,
+      "kind": "hero",
+      "id": "stuart_minions",
+      "name": "Stuart",
+      "universe": "Minions",
+      "output": "/sprites/generated/heroes/minions/stuart-minions.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10484,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://www.illumination.com/movie/minions/",
+      "referenceUrls": [
+        "https://www.illumination.com/movie/minions/",
+        "https://www.illumination.com/movie/minions-the-rise-of-gru/"
+      ],
+      "visualAnchor": {
+        "physical": "medium golden spherical sound-check drone with one cyan hexagonal sensor, indigo side plates, three short legs and a small harmless chime bar",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Villain-Con puis le Londres criminel des années 1960",
+        "Hall de convention rétro des années 1960 rempli de stands de gadgets de super-vilains, débouchant sur un Londres stylisé aux bus rouges, pierre grise et palais. Trois petites silhouettes jaunes cylindriques en salopettes de denim préparent un cambriolage maladroit au premier plan; utiliser jaune vif, bleu denim et décors mid-century, sans copier une pose promotionnelle."
+      ],
+      "sourcePromptSha256": "3bc593e707076006951336f287c20149e9ef8cb29ef7c1b595f0d9edecd9624b",
+      "generationPromptSha256": "37cd4f6c2a139509aebbe742fdabc49e4827c8d9ae692d997c3c2fb69831f6af",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/003-hero-stuart-minions-original-37cd4f6c.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: medium golden spherical sound-check drone with one cyan hexagonal sensor, indigo side plates, three short legs and a small harmless chime bar.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 12,
+      "correctionOfGenerationPromptSha256": "a358cef52e667f062b01aacfc5e57f971a68f46db951a32402cc856e0da1842f",
+      "originalWave4Sequence": 98
+    },
+    {
+      "sequence": 4,
+      "kind": "hero",
+      "id": "cyber_spider_kelly",
+      "name": "Cybernetic Spider (Dr. Michael Kelly)",
+      "universe": "Spider: The Video Game",
+      "output": "/sprites/generated/heroes/spider-the-video-game/cyber-spider-kelly.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10082,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921",
+      "referenceUrls": [
+        "https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921",
+        "https://www.mobygames.com/game/10149/spider-the-video-game/"
+      ],
+      "visualAnchor": {
+        "physical": "compact gunmetal eight-legged laboratory rover with one smooth dome sensor, teal stabilizer lights, a white lab beacon and no organic anatomy",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Circuit Boards route through the Evil Labs sector"
+      ],
+      "sourcePromptSha256": "e4e38ec2618da51019cf204e4ce8394e9675f0ebaf1567d5fa30d538dce07867",
+      "generationPromptSha256": "c092e981a34dbbc56ed8b79db5febf002eddacac9d4036f05c1341698975c88a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/004-hero-cyber-spider-kelly-original-c092e981.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: compact gunmetal eight-legged laboratory rover with one smooth dome sensor, teal stabilizer lights, a white lab beacon and no organic anatomy.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 17,
+      "correctionOfGenerationPromptSha256": "60041f24dc3ee133a9a686f0a3b85227f5737cf0ab55758b756e478d5ea01a48",
+      "originalWave4Sequence": 121
+    },
+    {
+      "sequence": 5,
+      "kind": "hero",
+      "id": "batman_tdk",
+      "name": "Batman",
+      "universe": "The Dark Knight",
+      "output": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10438,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://www.dc.com/movies/the-dark-knight-2008",
+      "referenceUrls": [
+        "https://www.dc.com/movies/the-dark-knight-2008"
+      ],
+      "visualAnchor": {
+        "physical": "original adult rooftop rescue technician with an uncovered original face, charcoal high-collared short coat, silver wraparound visor, blue forensic scanner and coiled climbing line; no mask, cape or emblem",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Dilemme des deux ferries dans le port de Gotham et réseau de chaos du Joker.",
+        "architecture: Ponts et coursives de deux ferries industriels séparés sur une eau noire, skyline dense de Gotham et docks aux structures métalliques en arrière-plan.",
+        "palette: Cyan acier, noir, gris béton et ambre sodium, avec très petites touches violet-vert associées au Joker.",
+        "props: Deux consoles de décision scellées, caisses, gilets de sauvetage, câbles, écrans de surveillance sans texte et cartes à jouer abstraites.",
+        "menace: Réseau de lignes parasites reliant les deux navires à une silhouette du Joker hors champ, tandis qu'un signal d'urgence ambre pulse sans chiffres ni compte à rebours; Batman n'est qu'une silhouette sombre sur les hauteurs."
+      ],
+      "sourcePromptSha256": "dee0e7614ccb930171e2149e5d281ab81ac2ddc4b962cf31caf196d9d2e92bd9",
+      "generationPromptSha256": "8a1094058e9f023b8f5773da162ee472433a61d0515636333b8bb30e831c3aac",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/005-hero-batman-tdk-original-8a109405.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: original adult rooftop rescue technician with an uncovered original face, charcoal high-collared short coat, silver wraparound visor, blue forensic scanner and coiled climbing line; no mask, cape or emblem.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 22,
+      "correctionOfGenerationPromptSha256": "cc7fb0d279a9211b87b5a4a11264974a2b4d50c3d1da208a1fed63ac86f928c4",
+      "originalWave4Sequence": 143
+    },
+    {
+      "sequence": 6,
+      "kind": "hero",
+      "id": "harry",
+      "name": "Harry Potter",
+      "universe": "Harry Potter",
+      "output": "/sprites/generated/heroes/harry-potter/harry.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9324,
+      "rejectedSourceSha256": "1b23bd73b25bb4a4d9806ddc01182852ecafdfb8929b6c76368b588102fcdefa",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://www.harrypotter.com/fact-file/locations/hogwarts",
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/locations/hogwarts"
+      ],
+      "visualAnchor": {
+        "physical": "original adult magical-academy cartographer with tousled dark hair, square spectacles, navy academic coat, practical trousers, boots, a brass star compass and closed map; no wand or facial scar",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Château de Hogwarts dans les Highlands, en particulier la Grande Salle et ses tours magiques.",
+        "architecture: Immense château gothique écossais, tours et tourelles en pierre, toits d'ardoise, escaliers imprévisibles, fenêtres ogivales et salle haute à charpente sombre.",
+        "palette: Gris ardoise et bleu brume à l'extérieur, ambre des bougies, or, bordeaux et vert bouteille à l'intérieur.",
+        "props: Bougies flottantes, portraits, parchemins, chandeliers, baguettes, écussons de maisons reconfigurés et livres anciens.",
+        "bossSilhouette: Détraqueur flottant en robes déchirées ou Basilic serpentiforme dans une arcade, silhouette noire sans reprendre un acteur."
+      ],
+      "sourcePromptSha256": "f54ee0bba736aed357c98fc74a9fbb86f8bc4aa3b97f40d0c63251a0e61abee3",
+      "generationPromptSha256": "e51ca674b24c720b480c2763eb2b45a58374bdfe80818f98ea5b66d3ae8b52a6",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/006-hero-harry-original-e51ca674.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: original adult magical-academy cartographer with tousled dark hair, square spectacles, navy academic coat, practical trousers, boots, a brass star compass and closed map; no wand or facial scar.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 25,
+      "correctionOfGenerationPromptSha256": "5dea1e6841438607853c55b63202013daf28df4000acb8dc1d80c9f831b986bb",
+      "originalWave4Sequence": 245
+    },
+    {
+      "sequence": 7,
+      "kind": "hero",
+      "id": "batman_n52",
+      "name": "Batman New 52",
+      "universe": "Joker New 52",
+      "output": "/sprites/generated/heroes/joker-new-52/batman-n52.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9633,
+      "rejectedSourceSha256": "d5524e7e4845efb3b2f7e19c93aeb46dbd6da2f1bcefd55dfc6265d536f732de",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame"
+      ],
+      "visualAnchor": {
+        "physical": "original adult rooftop rescue engineer with an uncovered original face, slate-grey reinforced coat, white-lens safety visor, orange rope spool and compact analysis tablet; no mask, cape or emblem",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Jokerized Gotham streets around the parade route and ruined GCPD barricades"
+      ],
+      "sourcePromptSha256": "0befe1c3c7a4e1ff2996cc58ab24a222d04aab629e1ebc967a653618b579d792",
+      "generationPromptSha256": "ada868710fbeb844cf0a5ea6b96fd27f7f5fda5de6bf0e0d8353dc69e593ee90",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/007-hero-batman-n52-original-ada86871.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: original adult rooftop rescue engineer with an uncovered original face, slate-grey reinforced coat, white-lens safety visor, orange rope spool and compact analysis tablet; no mask, cape or emblem.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 27,
+      "correctionOfGenerationPromptSha256": "7e2244b76a5bcff9cb51f86ac75afa0115eb1bb2e205c52c646c4d0aa48dec33",
+      "originalWave4Sequence": 250
+    },
+    {
+      "sequence": 8,
+      "kind": "hero",
+      "id": "joker_n52",
+      "name": "Joker New 52",
+      "universe": "Joker New 52",
+      "output": "/sprites/generated/heroes/joker-new-52/joker-n52.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9631,
+      "rejectedSourceSha256": "86c6f7a49ef1afc6da21f183e83700d405e98cf76c38c653dcd592a45eb4c3fe",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame"
+      ],
+      "visualAnchor": {
+        "physical": "original adult stage illusionist with warm peach skin, dark teal swept hair, plum formal coat, silver scarf, blank cards and a lavender silk ribbon; friendly and non-threatening",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Jokerized Gotham streets around the parade route and ruined GCPD barricades"
+      ],
+      "sourcePromptSha256": "3de53392720d558216c9a0334a942823031dcb4d152b5068c76b8fa033f73c3b",
+      "generationPromptSha256": "0cadf3c0f8296d2eff1dc2726a8490db243132d4239f11c4a0382cd170c850c6",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/008-hero-joker-n52-original-0cadf3c0.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: original adult stage illusionist with warm peach skin, dark teal swept hair, plum formal coat, silver scarf, blank cards and a lavender silk ribbon; friendly and non-threatening.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 29,
+      "correctionOfGenerationPromptSha256": "03fe0275ef318e34134af5141b8a426c77504914bfc68c21902cd7f37d52973c",
+      "originalWave4Sequence": 252
+    },
+    {
+      "sequence": 9,
+      "kind": "hero",
+      "id": "vader",
+      "name": "Darth Vader",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/vader.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9530,
+      "rejectedSourceSha256": "270bd0bbcb6c1012814ccd185cb74e6bb043d8fe8d5ecd7b2d9ffc0ca04e1fd2",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-second-pass-distinct-original",
+      "referenceUrl": "https://www.starwars.com/databank/death-star",
+      "referenceUrls": [
+        "https://www.starwars.com/databank/death-star",
+        "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
+        "https://www.starwars.com/databank/anti-air-turbolaser-tower"
+      ],
+      "visualAnchor": {
+        "physical": "tall nonhuman obsidian observatory automaton with a faceted rectangular helmet, cyan horizontal visor, charcoal shoulder mantle and ruby calibration rod emitting a short gentle glow",
+        "outfit": "fully clothed or fully enclosed original design",
+        "role": "wholesome work, navigation or presentation helper",
+        "equipment": "harmless described prop only"
+      },
+      "visualAnchors": [
+        "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador.",
+        "architecture: Canal technique gris extrêmement profond, parois couvertes de panneaux, conduites et greebles, passerelles transversales et tours de turbolaser; perspective axiale longue et étroite.",
+        "palette: Gris froid, noir et blanc cassé, ponctués de lasers verts et rouges, de moteurs rose-rouge et de reflets bleus.",
+        "props: Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
+        "menace: TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
+      ],
+      "sourcePromptSha256": "3160a02455f8b0325f59fa6b424c238ee540a0f4b3a3707d0db0c3b13b759fa7",
+      "generationPromptSha256": "90b408128748bcbd22e4f998688e7681bb8726f51896e05d54aabc3ea7aea5be",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/009-hero-vader-original-90b40812.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: safety-first transparent production sprite sheet for a 2D canvas game\nPrimary request: invent a completely original storybook-animation character from this standalone art direction: tall nonhuman obsidian observatory automaton with a faceted rectangular helmet, cyan horizontal visor, charcoal shoulder mantle and ruby calibration rod emitting a short gentle glow.\nOriginality lock: do not depict, imitate, name or reproduce any existing franchise character, celebrity, actor, trademark costume, signature logo or protected exact likeness.\nStyle: polished detailed 32-bit-era pixel art, crisp clusters, controlled highlights, clean dark outlines and a readable complete silhouette.\nSheet geometry: one square PNG, exact 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells, one complete centered full-body pose per cell, consistent elevated three-quarter side angle facing right, consistent scale and lighting.\nAnimation rows: row 1 four calm idle poses; row 2 four readable travel poses; row 3 four harmless work, navigation or presentation demonstrations using only the described safe prop; row 4 four gentle balance-reset poses ending in composed recovery.\nContinuity: keep the same wholly original body shape, face or sensor arrangement, outfit or armor colors and safe prop in every cell.\nCell lock: head and feet or full chassis, clothing or panels, prop and any compact soft light must remain entirely inside its own cell with transparent breathing room.\nOutput lock: genuine transparent alpha around every pose in a 32-bit RGBA PNG; no background, floor, cast shadow, checkerboard, chroma key, opaque panel or visible grid.\nSafety lock: fully clothed or fully enclosed, wholesome and non-threatening; no attack, weapon, fighting, injury, threat, gore, victim, nudity or sexualization.\nBranding lock: no text, letters, numbers, logo, watermark, signature, UI, poster or copied key art.\nProduction target: a square source sheet normalized to 1024 x 1024, yielding sixteen 256 x 256 cells.",
+      "correctionReason": "Second-pass, strongly distinct original design after a terminal 2/2 safety refusal.",
+      "correctionOfBatchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+      "correctionOfSequence": 32,
+      "correctionOfGenerationPromptSha256": "b2b4b8ea06ed0cf844b787190050e530ae08ca11d988ca013297b6bd2ebf90a7",
+      "originalWave4Sequence": 313
+    }
+  ]
+}

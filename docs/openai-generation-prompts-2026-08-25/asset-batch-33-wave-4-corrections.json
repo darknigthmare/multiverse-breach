@@ -1,0 +1,1579 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-character-reference-wave-4-corrections-33-2026-08-30",
+  "kind": "hero",
+  "promptCatalogSha256": "01d7f266de73e8c4193ff0a66b879e3b9ee3dacb05cf01d62a526b34af8f3c4d",
+  "sources": {
+    "wave4Batch": {
+      "path": "docs/openai-generation-prompts-2026-08-25/asset-batch-334-wave-4.json",
+      "batchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "sha256": "e6216aa7dc58ea4f284ba02bd2869f7619684afc80ef734ef58bb08d3e5c4cc3"
+    }
+  },
+  "correctionPolicy": [
+    "select exactly the 33 terminal Wave 4 failures by frozen source sequence",
+    "reuse the exact prompt only for the 9 technical orchestration failures",
+    "replace the 24 moderation failures with original non-resembling, fully clothed and harmless descriptive prompts",
+    "preserve every runtime identity, output path, frame contract and replace flag",
+    "allow at most two OpenAI image calls per correction job and never substitute a different runtime identity"
+  ],
+  "selectionHashes": {
+    "failedSequenceListSha256": "75c9745cbe2fa3cda9673f3edf9730af91bde2001f45e4e3939bd471920fc4a7"
+  },
+  "counts": {
+    "jobs": 33,
+    "technicalRetries": 9,
+    "safeRewrites": 24,
+    "replaceFalse": 22,
+    "replaceTrue": 11
+  },
+  "jobs": [
+    {
+      "sequence": 1,
+      "kind": "hero",
+      "id": "rick_deckard_br",
+      "name": "Rick Deckard",
+      "universe": "Blade Runner",
+      "output": "/sprites/generated/heroes/blade-runner/rick-deckard-br.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10558,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://www.warnerbros.co.jp/home_entertainment/5xw5dns0b/",
+      "referenceUrls": [
+        "https://www.warnerbros.co.jp/home_entertainment/5xw5dns0b/",
+        "https://www.bfi.org.uk/features/blade-runner"
+      ],
+      "visualAnchor": "Los Angeles 2019 sous une pluie perpétuelle, dominée par les pyramides de la Tyrell Corporation et la publicité géante.",
+      "visualAnchors": [
+        "Los Angeles 2019 sous une pluie perpétuelle, dominée par les pyramides de la Tyrell Corporation et la publicité géante.",
+        "architecture: Mégastructures pyramidales, tours rétrofuturistes bardées de conduits, rues basses bondées sous enseignes multilingues et strates urbaines très verticales.",
+        "palette: Noir, ambre tungstène et bleu nocturne, néons cyan et magenta dans l'asphalte mouillé, fumée orange autour des tours.",
+        "props: Spinner volant, parapluies transparents, écrans CRT, ventilateurs, stores vénitiens et hologrammes publicitaires non identiques aux visuels du film.",
+        "bossSilhouette: Réplicant humain athlétique au manteau long, cheveux clairs ou trempés, silhouette volontairement presque humaine pour préserver l'ambiguïté."
+      ],
+      "sourcePromptSha256": "00ad1685d8db0b06b5100989c683a85dc1e0d3ccba6cf81dd2d0ec4f344a2b39",
+      "generationPromptSha256": "4cea64d53a53c2e1373f21c48ff24c6b158dfd75f01eda32aeab6a5db28cf2c5",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/001-hero-rick-deckard-br-safe-4cea64d5.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Rick Deckard from Blade Runner; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity rick_deckard_br; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 15,
+      "correctionOfGenerationPromptSha256": "4cea64d53a53c2e1373f21c48ff24c6b158dfd75f01eda32aeab6a5db28cf2c5"
+    },
+    {
+      "sequence": 2,
+      "kind": "hero",
+      "id": "boruto_uzumaki",
+      "name": "Boruto Uzumaki",
+      "universe": "Boruto: Naruto Next Generations",
+      "output": "/sprites/generated/heroes/boruto-naruto-next-generations/boruto-uzumaki.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10639,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://naruto-official.com/en/anime/boruto",
+      "referenceUrls": [
+        "https://naruto-official.com/en/anime/boruto"
+      ],
+      "visualAnchor": "Modern Konoha Chunin arena, Kara chamber and Otsutsuki invasion",
+      "visualAnchors": [
+        "Modern Konoha Chunin arena, Kara chamber and Otsutsuki invasion",
+        "Modern Konoha Chunin arena, clean village concrete and rail technology, Kara chamber black alloy and Isshiki invasion fractures"
+      ],
+      "sourcePromptSha256": "342e26101ef182a29389ce44a8c318938fc867684d0978ae1bac7eba93688986",
+      "generationPromptSha256": "bb6ebbe11049497a94686a51a5948c76b4c63dc0300d3c596ed5a00de4cc5c08",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/002-hero-boruto-uzumaki-safe-bb6ebbe1.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Boruto Uzumaki from Boruto: Naruto Next Generations; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity boruto_uzumaki; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 16,
+      "correctionOfGenerationPromptSha256": "bb6ebbe11049497a94686a51a5948c76b4c63dc0300d3c596ed5a00de4cc5c08"
+    },
+    {
+      "sequence": 3,
+      "kind": "hero",
+      "id": "mitsuki_boruto",
+      "name": "Mitsuki",
+      "universe": "Boruto: Naruto Next Generations",
+      "output": "/sprites/generated/heroes/boruto-naruto-next-generations/mitsuki-boruto.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10641,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://naruto-official.com/en/anime/boruto",
+      "referenceUrls": [
+        "https://naruto-official.com/en/anime/boruto"
+      ],
+      "visualAnchor": "Modern Konoha Chunin arena, Kara chamber and Otsutsuki invasion",
+      "visualAnchors": [
+        "Modern Konoha Chunin arena, Kara chamber and Otsutsuki invasion",
+        "Modern Konoha Chunin arena, clean village concrete and rail technology, Kara chamber black alloy and Isshiki invasion fractures"
+      ],
+      "sourcePromptSha256": "376ae9c065eb328ef54c185de9ff0e1adb0431dd880125469c64e3f319072996",
+      "generationPromptSha256": "b2c484246c64f1ed72e54cfe2b42b753c8cede5665ba75b29ead247d914af67a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/003-hero-mitsuki-boruto-safe-b2c48424.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Mitsuki from Boruto: Naruto Next Generations; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity mitsuki_boruto; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 17,
+      "correctionOfGenerationPromptSha256": "b2c484246c64f1ed72e54cfe2b42b753c8cede5665ba75b29ead247d914af67a"
+    },
+    {
+      "sequence": 4,
+      "kind": "hero",
+      "id": "sarada_uchiha",
+      "name": "Sarada Uchiha",
+      "universe": "Boruto: Naruto Next Generations",
+      "output": "/sprites/generated/heroes/boruto-naruto-next-generations/sarada-uchiha.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10640,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://naruto-official.com/en/anime/boruto",
+      "referenceUrls": [
+        "https://naruto-official.com/en/anime/boruto"
+      ],
+      "visualAnchor": "Modern Konoha Chunin arena, Kara chamber and Otsutsuki invasion",
+      "visualAnchors": [
+        "Modern Konoha Chunin arena, Kara chamber and Otsutsuki invasion",
+        "Modern Konoha Chunin arena, clean village concrete and rail technology, Kara chamber black alloy and Isshiki invasion fractures"
+      ],
+      "sourcePromptSha256": "fa72ee9062842556a382f3de28f0d6f9d79bcb6a2b59fcceecb4c0bac0ae1163",
+      "generationPromptSha256": "221a440a850f6bd6589e8bd3433246a73f04d8d8a82c4b7c1c33f4de78f89e8e",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/004-hero-sarada-uchiha-safe-221a440a.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Sarada Uchiha from Boruto: Naruto Next Generations; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity sarada_uchiha; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 18,
+      "correctionOfGenerationPromptSha256": "221a440a850f6bd6589e8bd3433246a73f04d8d8a82c4b7c1c33f4de78f89e8e"
+    },
+    {
+      "sequence": 5,
+      "kind": "hero",
+      "id": "saturnin_duck",
+      "name": "Saturnin the Duck",
+      "universe": "Les Aventures de Saturnin",
+      "output": "/sprites/generated/heroes/les-aventures-de-saturnin/saturnin-duck.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10654,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://catalogue.ina.fr/doc/TV-RADIO/DA_CPB94001362/les-matins-de-saturnin-emission-du-13-fevrier-1994",
+      "referenceUrls": [
+        "https://catalogue.ina.fr/doc/TV-RADIO/DA_CPB94001362/les-matins-de-saturnin-emission-du-13-fevrier-1994"
+      ],
+      "visualAnchor": {
+        "physical": "small bright-yellow anthropomorphic farm duck, orange beak and webbed feet, green farm vest, red neckerchief, wicker seed basket, cheerful waddling storybook helper",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Saturnin miniature village, Professor Popof workshop and alpine ski set",
+        "1960s live-animal miniature village, painted Professor Popof workshop, tiny roads, alpine ski-set snow and handcrafted props"
+      ],
+      "sourcePromptSha256": "e8f6758f44f3c4e393f2ea8664c606fbfbb3cb28672c814a569f0bdb17b8e115",
+      "generationPromptSha256": "dc3bf7c25851a47fdbedfef5e4f87fdee135f785911fca1ed8d8c8ac590613d8",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/005-hero-saturnin-duck-safe-dc3bf7c2.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: small bright-yellow anthropomorphic farm duck, orange beak and webbed feet, green farm vest, red neckerchief, wicker seed basket, cheerful waddling storybook helper. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 75,
+      "correctionOfGenerationPromptSha256": "e1ad7eb5fd0f51db5c47ac1896b39bef5cbca1cc35c8f6a7ca930da9ecc843ae"
+    },
+    {
+      "sequence": 6,
+      "kind": "hero",
+      "id": "lilo_pelekai",
+      "name": "Lilo Pelekai",
+      "universe": "Lilo & Stitch",
+      "output": "/sprites/generated/heroes/lilo-stitch/lilo-pelekai.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10487,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://disneyanimation.com/films/lilo--stitch/",
+      "referenceUrls": [
+        "https://disneyanimation.com/films/lilo--stitch/",
+        "https://movies.disney.com/lilo-stitch"
+      ],
+      "visualAnchor": {
+        "physical": "young Hawaiian child adventurer, warm brown skin, long straight black hair, loose knee-length red dress with cream leaf motifs, flat sandals, handmade map and soft signal light; entirely age-appropriate problem-solving",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "La côte verdoyante de Kauaʻi et la maison de l'ohana",
+        "Petite maison hawaïenne entourée de végétation tropicale, plage de sable et océan turquoise sous un ciel aux nuages doux, avec montagnes volcaniques en arrière-plan. Une petite silhouette extraterrestre bleue observe une planche de surf et des motifs de hula depuis le rivage tandis qu'un vaisseau discret traverse le ciel; retrouver les aquarelles chaudes et arrondies du film de 2002."
+      ],
+      "sourcePromptSha256": "49db2e215ca5974e7e7f6738dc9477d98ba9238ec514da4cc7f9c88bd40645be",
+      "generationPromptSha256": "998508e57642a3129d26671cb1832ab66a788e4c2dfdbbcdc8b57af5ff6cb029",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/006-hero-lilo-pelekai-safe-998508e5.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: young Hawaiian child adventurer, warm brown skin, long straight black hair, loose knee-length red dress with cream leaf motifs, flat sandals, handmade map and soft signal light; entirely age-appropriate problem-solving. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 76,
+      "correctionOfGenerationPromptSha256": "809d940a0cbf8e386a7d6b8c5c3514cb4cf5c0f83f26284dc24aa8cea4351ad5"
+    },
+    {
+      "sequence": 7,
+      "kind": "hero",
+      "id": "stitch_626",
+      "name": "Stitch",
+      "universe": "Lilo & Stitch",
+      "output": "/sprites/generated/heroes/lilo-stitch/stitch-626.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10486,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://disneyanimation.com/films/lilo--stitch/",
+      "referenceUrls": [
+        "https://disneyanimation.com/films/lilo--stitch/",
+        "https://movies.disney.com/lilo-stitch"
+      ],
+      "visualAnchor": {
+        "physical": "small blue alien helper, oversized ears, dark oval eyes, rounded muzzle, four compact arms, plain red utility harness and harmless calibration beacon",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "La côte verdoyante de Kauaʻi et la maison de l'ohana",
+        "Petite maison hawaïenne entourée de végétation tropicale, plage de sable et océan turquoise sous un ciel aux nuages doux, avec montagnes volcaniques en arrière-plan. Une petite silhouette extraterrestre bleue observe une planche de surf et des motifs de hula depuis le rivage tandis qu'un vaisseau discret traverse le ciel; retrouver les aquarelles chaudes et arrondies du film de 2002."
+      ],
+      "sourcePromptSha256": "79892271ac1b2752dccf814357ef0ad7b9f2c4e98a0468435b593205b81fcc9f",
+      "generationPromptSha256": "938f859dd1067c993086b182a3fbad6ecc0e28a4c8651a6b9bd6d90e97cc5eed",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/007-hero-stitch-626-safe-938f859d.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: small blue alien helper, oversized ears, dark oval eyes, rounded muzzle, four compact arms, plain red utility harness and harmless calibration beacon. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 77,
+      "correctionOfGenerationPromptSha256": "6192fd8b960e99ac0f64ed65b848a7be71281d61e0c98e06a00960d5e4cfbfe9"
+    },
+    {
+      "sequence": 8,
+      "kind": "hero",
+      "id": "mj_performer",
+      "name": "King of Pop Avatar",
+      "universe": "Michael Jackson",
+      "output": "/sprites/generated/heroes/michael-jackson/mj-performer.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 9968,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.michaeljackson.com/the-artist/short-films/",
+      "referenceUrls": [
+        "https://www.michaeljackson.com/the-artist/short-films/"
+      ],
+      "visualAnchor": {
+        "physical": "original adult rhythm performer, medium-brown skin, shoulder-length dark curls, black stage jacket, white shirt, cropped black trousers, white socks, black loafers and plain fedora; no resemblance to any real person",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Thriller Palace Theater street and graveyard set"
+      ],
+      "sourcePromptSha256": "50bdb7ec2876d339125bcf03cc0b5f3a5286b4ce9d45bf840f7b9f67445c02a5",
+      "generationPromptSha256": "5569cde0d45f3a1e3f0a16cf88195af1485d13813915bf2744a94ca3e5100298",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/008-hero-mj-performer-safe-5569cde0.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult rhythm performer, medium-brown skin, shoulder-length dark curls, black stage jacket, white shirt, cropped black trousers, white socks, black loafers and plain fedora; no resemblance to any real person. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 90,
+      "correctionOfGenerationPromptSha256": "ce2fbab35da57ff71f7d45727afb899a49b6c3db52a5f37f741257ea5c91f408"
+    },
+    {
+      "sequence": 9,
+      "kind": "hero",
+      "id": "rhythm_guard_mj",
+      "name": "Rhythm Guard",
+      "universe": "Michael Jackson",
+      "output": "/sprites/generated/heroes/michael-jackson/rhythm-guard-mj.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 9969,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.michaeljackson.com/the-artist/short-films/",
+      "referenceUrls": [
+        "https://www.michaeljackson.com/the-artist/short-films/"
+      ],
+      "visualAnchor": {
+        "physical": "original adult rhythm guard, dark skin, short curls, navy military-inspired stage coat with silver piping, black trousers, boots, plain brimmed hat and illuminated tempo baton; no resemblance to any real person",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Thriller Palace Theater street and graveyard set"
+      ],
+      "sourcePromptSha256": "8bacbdddccac35462d736fb0cf68c138a677a2d6b18363f92e88eed7f9fc5c27",
+      "generationPromptSha256": "c6aaadc611fb3366f81ad7ff456c6dcf8709ed1b126bdfd60aff81e475de0e52",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/009-hero-rhythm-guard-mj-safe-c6aaadc6.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult rhythm guard, dark skin, short curls, navy military-inspired stage coat with silver piping, black trousers, boots, plain brimmed hat and illuminated tempo baton; no resemblance to any real person. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 91,
+      "correctionOfGenerationPromptSha256": "2db6c10b6c9c801cd11454d4170d42831cd83a412842b07f437dafa06376b61f"
+    },
+    {
+      "sequence": 10,
+      "kind": "hero",
+      "id": "bob_minions",
+      "name": "Bob",
+      "universe": "Minions",
+      "output": "/sprites/generated/heroes/minions/bob-minions.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10485,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.illumination.com/movie/minions/",
+      "referenceUrls": [
+        "https://www.illumination.com/movie/minions/",
+        "https://www.illumination.com/movie/minions-the-rise-of-gru/"
+      ],
+      "visualAnchor": {
+        "physical": "very short yellow cylindrical workshop helper, two large brown eyes, silver dual-lens goggles, plain blue overalls, black gloves and boots, small red calibration button",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Villain-Con puis le Londres criminel des années 1960",
+        "Hall de convention rétro des années 1960 rempli de stands de gadgets de super-vilains, débouchant sur un Londres stylisé aux bus rouges, pierre grise et palais. Trois petites silhouettes jaunes cylindriques en salopettes de denim préparent un cambriolage maladroit au premier plan; utiliser jaune vif, bleu denim et décors mid-century, sans copier une pose promotionnelle."
+      ],
+      "sourcePromptSha256": "7d3e4c5f77878f7c3ac79ee929d2329890a860268fcd6cb6ff0feed8cd3fd356",
+      "generationPromptSha256": "a2fc6b0bd10e0a4c6f4efc8c827628eeec6c2016dd685f61354d2b9d04c1ded4",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/010-hero-bob-minions-safe-a2fc6b0b.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: very short yellow cylindrical workshop helper, two large brown eyes, silver dual-lens goggles, plain blue overalls, black gloves and boots, small red calibration button. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 96,
+      "correctionOfGenerationPromptSha256": "5bfa9e8c8da45d2edd15aee224204a0d7ac82aca34aca6039cb292f7d748da69"
+    },
+    {
+      "sequence": 11,
+      "kind": "hero",
+      "id": "kevin_minions",
+      "name": "Kevin",
+      "universe": "Minions",
+      "output": "/sprites/generated/heroes/minions/kevin-minions.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10483,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.illumination.com/movie/minions/",
+      "referenceUrls": [
+        "https://www.illumination.com/movie/minions/",
+        "https://www.illumination.com/movie/minions-the-rise-of-gru/"
+      ],
+      "visualAnchor": {
+        "physical": "tall slim yellow cylindrical workshop helper, two attentive eyes, silver dual-lens goggles, plain blue overalls, black gloves and boots, compact unlettered clipboard",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Villain-Con puis le Londres criminel des années 1960",
+        "Hall de convention rétro des années 1960 rempli de stands de gadgets de super-vilains, débouchant sur un Londres stylisé aux bus rouges, pierre grise et palais. Trois petites silhouettes jaunes cylindriques en salopettes de denim préparent un cambriolage maladroit au premier plan; utiliser jaune vif, bleu denim et décors mid-century, sans copier une pose promotionnelle."
+      ],
+      "sourcePromptSha256": "37c37a0e018ce258598d107a504eacdf058d140efc3c02ff78e389048bd17d24",
+      "generationPromptSha256": "18635095c704c0a4b185b7c98b508a5fb588b7338d63a1133b49b78853d57758",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/011-hero-kevin-minions-safe-18635095.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: tall slim yellow cylindrical workshop helper, two attentive eyes, silver dual-lens goggles, plain blue overalls, black gloves and boots, compact unlettered clipboard. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 97,
+      "correctionOfGenerationPromptSha256": "bb9c4232b94f428cdaebcb1be8ca85b32aa682d6ea30853490c80b8fe5d05766"
+    },
+    {
+      "sequence": 12,
+      "kind": "hero",
+      "id": "stuart_minions",
+      "name": "Stuart",
+      "universe": "Minions",
+      "output": "/sprites/generated/heroes/minions/stuart-minions.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10484,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.illumination.com/movie/minions/",
+      "referenceUrls": [
+        "https://www.illumination.com/movie/minions/",
+        "https://www.illumination.com/movie/minions-the-rise-of-gru/"
+      ],
+      "visualAnchor": {
+        "physical": "medium-height yellow cylindrical workshop helper, one large brown eye, single silver goggle, plain blue overalls, black gloves and boots, small brown four-string practice instrument",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Villain-Con puis le Londres criminel des années 1960",
+        "Hall de convention rétro des années 1960 rempli de stands de gadgets de super-vilains, débouchant sur un Londres stylisé aux bus rouges, pierre grise et palais. Trois petites silhouettes jaunes cylindriques en salopettes de denim préparent un cambriolage maladroit au premier plan; utiliser jaune vif, bleu denim et décors mid-century, sans copier une pose promotionnelle."
+      ],
+      "sourcePromptSha256": "3bc593e707076006951336f287c20149e9ef8cb29ef7c1b595f0d9edecd9624b",
+      "generationPromptSha256": "a358cef52e667f062b01aacfc5e57f971a68f46db951a32402cc856e0da1842f",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/012-hero-stuart-minions-safe-a358cef5.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: medium-height yellow cylindrical workshop helper, one large brown eye, single silver goggle, plain blue overalls, black gloves and boots, small brown four-string practice instrument. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 98,
+      "correctionOfGenerationPromptSha256": "ee485ad86de35b347011d6af78ea1ae07f28bca0cba7458c9dbbdf55407e4a37"
+    },
+    {
+      "sequence": 13,
+      "kind": "hero",
+      "id": "jack_sparrow_potc",
+      "name": "Jack Sparrow",
+      "universe": "Pirates of the Caribbean",
+      "output": "/sprites/generated/heroes/pirates-of-the-caribbean/jack-sparrow-potc.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10408,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://movies.disney.com/pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+      "referenceUrls": [
+        "https://movies.disney.com/pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+        "https://pirates.disney.com/"
+      ],
+      "visualAnchor": {
+        "physical": "original adult seafaring rogue, sun-warmed skin, dark braided hair, thin moustache, tricorn, cream shirt, dark long coat, burgundy sash, trousers, boots, compass and sea chart; no actor likeness",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Le Black Pearl au large de Port Royal sous la malédiction aztèque",
+        "Galion aux voiles noires déchirées entrant dans une baie caribéenne au clair de lune, batteries de canons et fort colonial de Port Royal sur la côte. Dans l'eau, la lumière lunaire révèle brièvement des silhouettes de pirates squelettiques autour d'un médaillon d'or, avec brume marine et ciel d'orage; garder l'aventure surnaturelle sans portrait de Jack Sparrow."
+      ],
+      "sourcePromptSha256": "45112d219796d3135f2144de60c0766edbfd8b8ad0f705f0e385b5447991732a",
+      "generationPromptSha256": "424965176054c42ce0cc4736e0f41ba7960a3fc3a7a61345b4493299aad2db97",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/013-hero-jack-sparrow-potc-safe-42496517.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult seafaring rogue, sun-warmed skin, dark braided hair, thin moustache, tricorn, cream shirt, dark long coat, burgundy sash, trousers, boots, compass and sea chart; no actor likeness. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 114,
+      "correctionOfGenerationPromptSha256": "a0d427db040564c2041ff15b1f3527df96d876363d61661b356900295f3286ba"
+    },
+    {
+      "sequence": 14,
+      "kind": "hero",
+      "id": "roger_rabbit",
+      "name": "Roger Rabbit",
+      "universe": "Roger Rabbit",
+      "output": "/sprites/generated/heroes/roger-rabbit/roger-rabbit.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10049,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://movies.disney.com/who-framed-roger-rabbit",
+      "referenceUrls": [
+        "https://movies.disney.com/who-framed-roger-rabbit"
+      ],
+      "visualAnchor": {
+        "physical": "tall white cartoon rabbit, very long ears, large blue eyes, red stage overalls, blue bow tie, yellow gloves, oversized brown shoes and unlettered clapperboard",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Acme warehouse threshold opening into Toontown"
+      ],
+      "sourcePromptSha256": "1175aef6e7f629433bbb12314d7f4604887b7c72b719b21d59975665848112e4",
+      "generationPromptSha256": "24b967b85d86b11b4b323d070b0c1e4c95b3bc704cdf2b43598167f47508803b",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/014-hero-roger-rabbit-safe-24b967b8.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: tall white cartoon rabbit, very long ears, large blue eyes, red stage overalls, blue bow tie, yellow gloves, oversized brown shoes and unlettered clapperboard. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 115,
+      "correctionOfGenerationPromptSha256": "cc877fb68091d3d8d44209f90370950c4054fa592baf2fda203f78dee9fb0ef9"
+    },
+    {
+      "sequence": 15,
+      "kind": "hero",
+      "id": "cyber_spider_electro_beam",
+      "name": "Cybernetic Spider - Electro-Beam Loadout",
+      "universe": "Spider: The Video Game",
+      "output": "/sprites/generated/heroes/spider-the-video-game/cyber-spider-electro-beam.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10084,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921",
+      "referenceUrls": [
+        "https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921",
+        "https://www.mobygames.com/game/10149/spider-the-video-game/"
+      ],
+      "visualAnchor": {
+        "physical": "compact chrome cybernetic spider, eight articulated legs, dark chassis, cyan sensor lenses, abstract cyan circuitry and harmless short-range alignment light",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Circuit Boards route through the Evil Labs sector"
+      ],
+      "sourcePromptSha256": "8b9d06e075dce605853c1499f478de77a2ba1f73f7a2c1034e118ef73b261046",
+      "generationPromptSha256": "59cb61b9d6d745b0b65d369aed6b95c10fcd555d3f8b69657239d5ec290012e6",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/015-hero-cyber-spider-electro-beam-safe-59cb61b9.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: compact chrome cybernetic spider, eight articulated legs, dark chassis, cyan sensor lenses, abstract cyan circuitry and harmless short-range alignment light. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 119,
+      "correctionOfGenerationPromptSha256": "3e44d45972711a12d2ab09c37b4d9bec24e683dfdd58871a1f4d9628d3d81842"
+    },
+    {
+      "sequence": 16,
+      "kind": "hero",
+      "id": "cyber_spider_flamethrower",
+      "name": "Cybernetic Spider - Flamethrower Loadout",
+      "universe": "Spider: The Video Game",
+      "output": "/sprites/generated/heroes/spider-the-video-game/cyber-spider-flamethrower.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10083,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921",
+      "referenceUrls": [
+        "https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921",
+        "https://www.mobygames.com/game/10149/spider-the-video-game/"
+      ],
+      "visualAnchor": {
+        "physical": "compact bronze cybernetic spider, eight articulated legs, dark chassis, amber sensor lenses, heat-shield plates and safe warm-orange inspection lamp with no flame",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Circuit Boards route through the Evil Labs sector"
+      ],
+      "sourcePromptSha256": "cd7a1789d9184dd35c3ff39c9292c0fb63238bb7a431923c0c5d0174bbbf6134",
+      "generationPromptSha256": "576e9c9cb7b445d18e8ec5212dfa2c9edbd7f9ee78a962724b6b66e71e81e7be",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/016-hero-cyber-spider-flamethrower-safe-576e9c9c.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: compact bronze cybernetic spider, eight articulated legs, dark chassis, amber sensor lenses, heat-shield plates and safe warm-orange inspection lamp with no flame. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 120,
+      "correctionOfGenerationPromptSha256": "1b2fa0e6caadf46eebe944ed4c9e4f2a7782e8a8d2b3f47bfc821bd24817a0c2"
+    },
+    {
+      "sequence": 17,
+      "kind": "hero",
+      "id": "cyber_spider_kelly",
+      "name": "Cybernetic Spider (Dr. Michael Kelly)",
+      "universe": "Spider: The Video Game",
+      "output": "/sprites/generated/heroes/spider-the-video-game/cyber-spider-kelly.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10082,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921",
+      "referenceUrls": [
+        "https://gamefaqs.gamespot.com/ps/198744-spider-the-video-game/faqs/60921",
+        "https://www.mobygames.com/game/10149/spider-the-video-game/"
+      ],
+      "visualAnchor": "Circuit Boards route through the Evil Labs sector",
+      "visualAnchors": [
+        "Circuit Boards route through the Evil Labs sector"
+      ],
+      "sourcePromptSha256": "e4e38ec2618da51019cf204e4ce8394e9675f0ebaf1567d5fa30d538dce07867",
+      "generationPromptSha256": "60041f24dc3ee133a9a686f0a3b85227f5737cf0ab55758b756e478d5ea01a48",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/017-hero-cyber-spider-kelly-safe-60041f24.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Cybernetic Spider (Dr. Michael Kelly) from Spider: The Video Game; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity cyber_spider_kelly; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 121,
+      "correctionOfGenerationPromptSha256": "60041f24dc3ee133a9a686f0a3b85227f5737cf0ab55758b756e478d5ea01a48"
+    },
+    {
+      "sequence": 18,
+      "kind": "hero",
+      "id": "carmen_cortez",
+      "name": "Carmen Cortez",
+      "universe": "Spy Kids",
+      "output": "/sprites/generated/heroes/spy-kids/carmen-cortez.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10543,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://www.miramax.com/movie/spy-kids/",
+      "referenceUrls": [
+        "https://www.miramax.com/movie/spy-kids/",
+        "https://www.miramax.com/movie/spy-kids-3-d-game-over/"
+      ],
+      "visualAnchor": "Piège virtuel mêlant le château surréaliste de Fegan Floop et une arène de niveaux de Game Over.",
+      "visualAnchors": [
+        "Piège virtuel mêlant le château surréaliste de Fegan Floop et une arène de niveaux de Game Over.",
+        "architecture: Couloirs de château aux portes et alcôves volontairement déformées, raccordés à des plateformes virtuelles, tunnels, cubes et passerelles de jeu vidéo très lisibles.",
+        "palette: Violet, cyan, vert électrique, orange et rouge saturés, avec surfaces noires brillantes et lumières de laboratoire.",
+        "props: Gadgets OSS compacts, sacs propulseurs, lunettes, consoles, cartes de niveau abstraites, Thumb-Thumb aux formes lisibles et doubles robotiques sans traits d'acteurs.",
+        "menace: Machine-arène du Toymaker projetant obstacles et créatures holographiques, avec un noyau circulaire rouge-vert; la menace doit paraître ludique, étrange et dangereuse plutôt que militaire réaliste."
+      ],
+      "sourcePromptSha256": "553b135a25091d8a8e7219039db6fa5ad73d87666222b54af7e3fcab15bd5860",
+      "generationPromptSha256": "641d0311e652ae12b15fe284609c56443e4e7a1370d4b341402a5274ac4970ca",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/018-hero-carmen-cortez-safe-641d0311.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Carmen Cortez from Spy Kids; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity carmen_cortez; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 122,
+      "correctionOfGenerationPromptSha256": "641d0311e652ae12b15fe284609c56443e4e7a1370d4b341402a5274ac4970ca"
+    },
+    {
+      "sequence": 19,
+      "kind": "hero",
+      "id": "gregorio_cortez",
+      "name": "Gregorio Cortez",
+      "universe": "Spy Kids",
+      "output": "/sprites/generated/heroes/spy-kids/gregorio-cortez.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10545,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://www.miramax.com/movie/spy-kids/",
+      "referenceUrls": [
+        "https://www.miramax.com/movie/spy-kids/",
+        "https://www.miramax.com/movie/spy-kids-3-d-game-over/"
+      ],
+      "visualAnchor": "Piège virtuel mêlant le château surréaliste de Fegan Floop et une arène de niveaux de Game Over.",
+      "visualAnchors": [
+        "Piège virtuel mêlant le château surréaliste de Fegan Floop et une arène de niveaux de Game Over.",
+        "architecture: Couloirs de château aux portes et alcôves volontairement déformées, raccordés à des plateformes virtuelles, tunnels, cubes et passerelles de jeu vidéo très lisibles.",
+        "palette: Violet, cyan, vert électrique, orange et rouge saturés, avec surfaces noires brillantes et lumières de laboratoire.",
+        "props: Gadgets OSS compacts, sacs propulseurs, lunettes, consoles, cartes de niveau abstraites, Thumb-Thumb aux formes lisibles et doubles robotiques sans traits d'acteurs.",
+        "menace: Machine-arène du Toymaker projetant obstacles et créatures holographiques, avec un noyau circulaire rouge-vert; la menace doit paraître ludique, étrange et dangereuse plutôt que militaire réaliste."
+      ],
+      "sourcePromptSha256": "f881d0186ac2fce5ee56bc6c7fb64432788b0a6be75299f2567274b9a4951a8e",
+      "generationPromptSha256": "9fbec5235c4b6faed95e8e1aeb6675dcabd486c0aa3fff5e04a67ec0020ff841",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/019-hero-gregorio-cortez-safe-9fbec523.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Gregorio Cortez from Spy Kids; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity gregorio_cortez; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 123,
+      "correctionOfGenerationPromptSha256": "9fbec5235c4b6faed95e8e1aeb6675dcabd486c0aa3fff5e04a67ec0020ff841"
+    },
+    {
+      "sequence": 20,
+      "kind": "hero",
+      "id": "raven_tt",
+      "name": "Raven",
+      "universe": "Teen Titans",
+      "output": "/sprites/generated/heroes/teen-titans/raven-tt.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10662,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.dc.com/tv/teen-titans-2003-2005",
+      "referenceUrls": [
+        "https://www.dc.com/tv/teen-titans-2003-2005"
+      ],
+      "visualAnchor": {
+        "physical": "original hooded young adult mystical guardian, pale grey-violet skin, short dark-violet hair, indigo bodysuit, boots, belt, deep-purple cloak and harmless meditation crystal",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Titans Tower operations room, HIVE Academy and Azarath",
+        "2003 animated Titans Tower alloy and glass, HIVE Academy training floor and Azarath stone under a violet eclipse"
+      ],
+      "sourcePromptSha256": "120420728e19b114fe2049c0e99722b8a671e61c77a901cbf719e93f5e5fe811",
+      "generationPromptSha256": "391807d70f2819345f452df53304b53115490f9ed7efae514a83036846005162",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/020-hero-raven-tt-safe-391807d7.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original hooded young adult mystical guardian, pale grey-violet skin, short dark-violet hair, indigo bodysuit, boots, belt, deep-purple cloak and harmless meditation crystal. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 131,
+      "correctionOfGenerationPromptSha256": "6803539a114074d832bff18e93b7e61eb0fa233419eb4af9eead8b56ce4a0fdb"
+    },
+    {
+      "sequence": 21,
+      "kind": "hero",
+      "id": "starfire_tt",
+      "name": "Starfire",
+      "universe": "Teen Titans",
+      "output": "/sprites/generated/heroes/teen-titans/starfire-tt.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10663,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.dc.com/tv/teen-titans-2003-2005",
+      "referenceUrls": [
+        "https://www.dc.com/tv/teen-titans-2003-2005"
+      ],
+      "visualAnchor": {
+        "physical": "original orange-skinned adult cosmic guardian, long auburn hair, green eyes, fully covered purple space suit, silver bracers, boots and harmless green star-light",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Titans Tower operations room, HIVE Academy and Azarath",
+        "2003 animated Titans Tower alloy and glass, HIVE Academy training floor and Azarath stone under a violet eclipse"
+      ],
+      "sourcePromptSha256": "5b45ee8ec1f32502bc7a8f4520fe40729592cacaaf1d057750d1d6ac5508a87e",
+      "generationPromptSha256": "da7cecd9fe72aa5e439bb25a5c89ea96fe771d284c4aff529d81eb205eb206ee",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/021-hero-starfire-tt-safe-da7cecd9.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original orange-skinned adult cosmic guardian, long auburn hair, green eyes, fully covered purple space suit, silver bracers, boots and harmless green star-light. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 132,
+      "correctionOfGenerationPromptSha256": "a8584e1ace3cb50997f8ab809e5f043472483b77673ee23220e84921319bd2a9"
+    },
+    {
+      "sequence": 22,
+      "kind": "hero",
+      "id": "batman_tdk",
+      "name": "Batman",
+      "universe": "The Dark Knight",
+      "output": "/sprites/generated/heroes/the-dark-knight/batman-tdk.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": false,
+      "remediationReason": "missing-local-reference",
+      "qualityEntryId": 10438,
+      "rejectedSourceSha256": null,
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.dc.com/movies/the-dark-knight-2008",
+      "referenceUrls": [
+        "https://www.dc.com/movies/the-dark-knight-2008"
+      ],
+      "visualAnchor": {
+        "physical": "original adult nocturnal city guardian, black cowl, opaque white lenses, matte-black and graphite armor, scalloped cape, utility belt, boots and blue forensic scanner; no emblem or actor likeness",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Dilemme des deux ferries dans le port de Gotham et réseau de chaos du Joker.",
+        "architecture: Ponts et coursives de deux ferries industriels séparés sur une eau noire, skyline dense de Gotham et docks aux structures métalliques en arrière-plan.",
+        "palette: Cyan acier, noir, gris béton et ambre sodium, avec très petites touches violet-vert associées au Joker.",
+        "props: Deux consoles de décision scellées, caisses, gilets de sauvetage, câbles, écrans de surveillance sans texte et cartes à jouer abstraites.",
+        "menace: Réseau de lignes parasites reliant les deux navires à une silhouette du Joker hors champ, tandis qu'un signal d'urgence ambre pulse sans chiffres ni compte à rebours; Batman n'est qu'une silhouette sombre sur les hauteurs."
+      ],
+      "sourcePromptSha256": "dee0e7614ccb930171e2149e5d281ab81ac2ddc4b962cf31caf196d9d2e92bd9",
+      "generationPromptSha256": "cc7fb0d279a9211b87b5a4a11264974a2b4d50c3d1da208a1fed63ac86f928c4",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/022-hero-batman-tdk-safe-cc7fb0d2.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult nocturnal city guardian, black cowl, opaque white lenses, matte-black and graphite armor, scalloped cape, utility belt, boots and blue forensic scanner; no emblem or actor likeness. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 143,
+      "correctionOfGenerationPromptSha256": "b1f43dd7b7f3b77525444b7e328ea64925e9483eb077ca3c7db457fd84dd4ff2"
+    },
+    {
+      "sequence": 23,
+      "kind": "hero",
+      "id": "nick_v",
+      "name": "Nick Valentine",
+      "universe": "Fallout",
+      "output": "/sprites/generated/heroes/fallout/nick-v.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9503,
+      "rejectedSourceSha256": "50f8d08083617b2f581ef5db64993de8db32e43fa596b88c342772dd617daad0",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://fallout.bethesda.net/en/games/fallout-4/welcome-home",
+      "referenceUrls": [
+        "https://fallout.bethesda.net/en/games/fallout-4/welcome-home"
+      ],
+      "visualAnchor": "Commonwealth post-apocalyptique autour d'un abri Vault-Tec et des ruines rétrofuturistes de Boston.",
+      "visualAnchors": [
+        "Commonwealth post-apocalyptique autour d'un abri Vault-Tec et des ruines rétrofuturistes de Boston.",
+        "architecture: Béton atomique des années 1950, porte d'abri circulaire, stations-service fuselées, autoroutes effondrées et immeubles Art déco rouillés.",
+        "palette: Turquoise délavé, jaune crème, rouille, olive et poussière beige, verts CRT du Pip-Boy et rouge Nuka très localisé.",
+        "props: Pip-Boy, capsule de bouteille, radio à lampes, armure assistée, distributeur rétro, caisses militaires et panneaux de sécurité atomique originaux.",
+        "bossSilhouette: Deathclaw voûté, grandes cornes recourbées et griffes longues, ou armure assistée massive en contre-jour dans l'entrée de l'abri."
+      ],
+      "sourcePromptSha256": "0138929fcd92dc35fad5937bff7f62bb214ffa4eeb98f858a5599c5a802d7941",
+      "generationPromptSha256": "106a74af7ef3ef1b7f314905acf077064a1807920957e301f0382c3a3adef21a",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/023-hero-nick-v-safe-106a74af.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Nick Valentine from Fallout; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity nick_v; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 236,
+      "correctionOfGenerationPromptSha256": "106a74af7ef3ef1b7f314905acf077064a1807920957e301f0382c3a3adef21a"
+    },
+    {
+      "sequence": 24,
+      "kind": "hero",
+      "id": "paladin",
+      "name": "Paladin Danse",
+      "universe": "Fallout",
+      "output": "/sprites/generated/heroes/fallout/paladin.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9502,
+      "rejectedSourceSha256": "ed4afa8869854abb1209a16ed588836deebb89674e969c9c38466ce668a9f88c",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-technical-retry",
+      "referenceUrl": "https://fallout.bethesda.net/en/games/fallout-4/welcome-home",
+      "referenceUrls": [
+        "https://fallout.bethesda.net/en/games/fallout-4/welcome-home"
+      ],
+      "visualAnchor": "Commonwealth post-apocalyptique autour d'un abri Vault-Tec et des ruines rétrofuturistes de Boston.",
+      "visualAnchors": [
+        "Commonwealth post-apocalyptique autour d'un abri Vault-Tec et des ruines rétrofuturistes de Boston.",
+        "architecture: Béton atomique des années 1950, porte d'abri circulaire, stations-service fuselées, autoroutes effondrées et immeubles Art déco rouillés.",
+        "palette: Turquoise délavé, jaune crème, rouille, olive et poussière beige, verts CRT du Pip-Boy et rouge Nuka très localisé.",
+        "props: Pip-Boy, capsule de bouteille, radio à lampes, armure assistée, distributeur rétro, caisses militaires et panneaux de sécurité atomique originaux.",
+        "bossSilhouette: Deathclaw voûté, grandes cornes recourbées et griffes longues, ou armure assistée massive en contre-jour dans l'entrée de l'abri."
+      ],
+      "sourcePromptSha256": "b972ead1fd0f378e71943d26783887c0d753f67499784b6c79c1dc9aa71a64f4",
+      "generationPromptSha256": "48c96bdf1ebaf1da3d2dcf2a699d8ffabb3c136aadf3250cc8bc5804049940a0",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/024-hero-paladin-safe-48c96bdf.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: transparent game sprite sheet for a 2D canvas battle game\nPrimary request: create a detailed pixel-art animation sheet for the named playable roster character from the named continuity.\nStyle/medium: polished highly detailed 32-bit-era pixel art with crisp clusters, controlled hand-painted highlights, a clean dark outline and a readable full-body silhouette faithful to the named continuity.\nComposition/framing: exact 4 columns x 4 rows, exactly sixteen equal isolated cells, one full-body frame centered in each cell, consistent elevated three-quarter side battle angle facing right, scale, proportions and light direction.\nAnimation rows: row 1 idle breathing, row 2 walk/run cycle, row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 clean non-gory hit/recoil.\nLore lock: preserve only canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude for the named character in the named continuity; include equipment only when explicitly canon-established, otherwise none; do not invent a redesign, class, faction, power or palette.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nConstraints: exactly one character identity across all sixteen cells; no extra character, duplicate body in one cell, cropped body, merged cells, visible grid, UI label, text, logo or watermark.\n\nProduction override — this block has priority over any conflicting catalog instruction:\nCanon authority lock: the named character and named continuity are the sole identity source. Ignore synthetic gameplay classes, generic weapon assignments, generated hex palettes and invented motifs. Do not mix adaptations or eras; when a visual detail is uncertain, omit it instead of inventing it.\nSheet lock: produce one square transparent PNG containing exactly a 4 columns x 4 rows animation sheet; exactly sixteen equal nonempty cells; the production normalizer will deliver a 1024 x 1024 sheet with sixteen 256 x 256 cells.\nIdentity lock: preserve the recognizable canon-established silhouette, body proportions, era-appropriate outfit, defining colors and attitude of Paladin Danse from Fallout; include equipment only when explicitly canon-established, otherwise none; create original fan-made pixel art, not copied key art, a redesign or a photorealistic actor likeness.\nRoster-variant lock: this is the dedicated runtime identity paladin; if another catalog entry represents the same canonical character, keep the same lore identity but distinguish this sheet through animation timing and pose cadence only, without inventing a new costume, power or continuity.\nAnimation choreography lock: row 1 contains four calm idle-breathing frames; row 2 contains four readable walk/run frames; row 3 uses only equipment or abilities explicitly established elsewhere in this prompt; otherwise use four unarmed guard, dodge, or movement frames with no weapon, tool, projectile, aura, effect, named power, or performance; row 4 contains four non-gory hit/recoil-and-recovery frames.\nCell lock: every cell contains exactly one complete full-body pose; keep the complete pose and any explicitly canon-established equipment or effect inside that cell with transparent breathing room; consistent identity, facing, scale and pixel density across all sixteen cells; no frame may cross a cell boundary.\nBackground/output lock: genuine transparent alpha in every cell and around every full-body frame (32-bit RGBA); no chroma-key color, no green-screen fill, no checkerboard pattern, no baked backdrop, no floor plane, no cast shadow outside the silhouette and no opaque panel.\nUniversal safety lock: completely nonsexual and non-gory; preserve the established outfit without erotic emphasis; no nudity, exposed anatomy, wounds, blood, viscera, torture or graphic body horror; actions remain clean game-animation poses with no victim.\nBranding lock: no text, no letters, no numbers, no caption, no franchise logo, no product logo, no UI label, no signature and no watermark.",
+      "correctionReason": "Exact prompt retry after a technical orchestration failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 237,
+      "correctionOfGenerationPromptSha256": "48c96bdf1ebaf1da3d2dcf2a699d8ffabb3c136aadf3250cc8bc5804049940a0"
+    },
+    {
+      "sequence": 25,
+      "kind": "hero",
+      "id": "harry",
+      "name": "Harry Potter",
+      "universe": "Harry Potter",
+      "output": "/sprites/generated/heroes/harry-potter/harry.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9324,
+      "rejectedSourceSha256": "1b23bd73b25bb4a4d9806ddc01182852ecafdfb8929b6c76368b588102fcdefa",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.harrypotter.com/fact-file/locations/hogwarts",
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/locations/hogwarts"
+      ],
+      "visualAnchor": {
+        "physical": "original adult wizard student, messy dark hair, round spectacles, small lightning-shaped brow scar, fully covering black academic robe, white shirt, red-and-gold tie, dark trousers, shoes and wooden practice wand",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Château de Hogwarts dans les Highlands, en particulier la Grande Salle et ses tours magiques.",
+        "architecture: Immense château gothique écossais, tours et tourelles en pierre, toits d'ardoise, escaliers imprévisibles, fenêtres ogivales et salle haute à charpente sombre.",
+        "palette: Gris ardoise et bleu brume à l'extérieur, ambre des bougies, or, bordeaux et vert bouteille à l'intérieur.",
+        "props: Bougies flottantes, portraits, parchemins, chandeliers, baguettes, écussons de maisons reconfigurés et livres anciens.",
+        "bossSilhouette: Détraqueur flottant en robes déchirées ou Basilic serpentiforme dans une arcade, silhouette noire sans reprendre un acteur."
+      ],
+      "sourcePromptSha256": "f54ee0bba736aed357c98fc74a9fbb86f8bc4aa3b97f40d0c63251a0e61abee3",
+      "generationPromptSha256": "5dea1e6841438607853c55b63202013daf28df4000acb8dc1d80c9f831b986bb",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/025-hero-harry-safe-5dea1e68.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult wizard student, messy dark hair, round spectacles, small lightning-shaped brow scar, fully covering black academic robe, white shirt, red-and-gold tie, dark trousers, shoes and wooden practice wand. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 245,
+      "correctionOfGenerationPromptSha256": "19f6380289ebd5a6fb1c4f6f636f5eb270a49a348a95e95a5e0c13334a52181c"
+    },
+    {
+      "sequence": 26,
+      "kind": "hero",
+      "id": "hermione",
+      "name": "Hermione Granger",
+      "universe": "Harry Potter",
+      "output": "/sprites/generated/heroes/harry-potter/hermione.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9520,
+      "rejectedSourceSha256": "f51b3d557663fd15848b8519a8dfdcd4cec1a143a4a3c2fe0a6d93781cb2f389",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.harrypotter.com/fact-file/locations/hogwarts",
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/locations/hogwarts"
+      ],
+      "visualAnchor": {
+        "physical": "original adult wizard scholar, warm brown skin, thick chestnut curls, focused brown eyes, fully covering black academic robe, white shirt, burgundy tie, practical shoes, practice wand and closed reference book",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Château de Hogwarts dans les Highlands, en particulier la Grande Salle et ses tours magiques.",
+        "architecture: Immense château gothique écossais, tours et tourelles en pierre, toits d'ardoise, escaliers imprévisibles, fenêtres ogivales et salle haute à charpente sombre.",
+        "palette: Gris ardoise et bleu brume à l'extérieur, ambre des bougies, or, bordeaux et vert bouteille à l'intérieur.",
+        "props: Bougies flottantes, portraits, parchemins, chandeliers, baguettes, écussons de maisons reconfigurés et livres anciens.",
+        "bossSilhouette: Détraqueur flottant en robes déchirées ou Basilic serpentiforme dans une arcade, silhouette noire sans reprendre un acteur."
+      ],
+      "sourcePromptSha256": "607c4a59195da73fe803f79475569263ab05b3cf225af372ef956f641823e712",
+      "generationPromptSha256": "7e23e3c292d886d3eb87f254194db9c8916a5e6a741bfcd0a60ae254779904b4",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/026-hero-hermione-safe-7e23e3c2.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult wizard scholar, warm brown skin, thick chestnut curls, focused brown eyes, fully covering black academic robe, white shirt, burgundy tie, practical shoes, practice wand and closed reference book. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 246,
+      "correctionOfGenerationPromptSha256": "70da48701271df1961d060867fd6853c1a61454af428441e4ffac86f0ea0d989"
+    },
+    {
+      "sequence": 27,
+      "kind": "hero",
+      "id": "batman_n52",
+      "name": "Batman New 52",
+      "universe": "Joker New 52",
+      "output": "/sprites/generated/heroes/joker-new-52/batman-n52.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9633,
+      "rejectedSourceSha256": "d5524e7e4845efb3b2f7e19c93aeb46dbd6da2f1bcefd55dfc6265d536f732de",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame"
+      ],
+      "visualAnchor": {
+        "physical": "original adult nocturnal urban guardian, broad armored silhouette, black cowl, white lenses, graphite segmented suit, long black cape, utility belt and forensic tablet; no emblem or exact protected likeness",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Jokerized Gotham streets around the parade route and ruined GCPD barricades"
+      ],
+      "sourcePromptSha256": "0befe1c3c7a4e1ff2996cc58ab24a222d04aab629e1ebc967a653618b579d792",
+      "generationPromptSha256": "7e2244b76a5bcff9cb51f86ac75afa0115eb1bb2e205c52c646c4d0aa48dec33",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/027-hero-batman-n52-safe-7e2244b7.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult nocturnal urban guardian, broad armored silhouette, black cowl, white lenses, graphite segmented suit, long black cape, utility belt and forensic tablet; no emblem or exact protected likeness. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 250,
+      "correctionOfGenerationPromptSha256": "05563cbf3410fe6b2a50a52f89d1f9bb09f5602826eb85418462011752237325"
+    },
+    {
+      "sequence": 28,
+      "kind": "hero",
+      "id": "harley_n52",
+      "name": "Harley Quinn New 52",
+      "universe": "Joker New 52",
+      "output": "/sprites/generated/heroes/joker-new-52/harley-n52.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9632,
+      "rejectedSourceSha256": "7502809d7050b2bacd306b5f96f0e71b74b5cc3a64fe982f15951d162dfdef58",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame"
+      ],
+      "visualAnchor": {
+        "physical": "original adult colorful urban acrobat, pale skin, blonde twin ponytails, blue eyes, fully covering red-and-black tactical suit, short utility jacket, gloves, boots and soft foam training batons",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Jokerized Gotham streets around the parade route and ruined GCPD barricades"
+      ],
+      "sourcePromptSha256": "61cfee29b169ea900194777473ecaefb52694208296f82dff49f7c379d268f20",
+      "generationPromptSha256": "3fa23e20b9f5d82fcc4bcb9b2b27b8522afb2b27e63677db6b5a1d8472426acd",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/028-hero-harley-n52-safe-3fa23e20.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult colorful urban acrobat, pale skin, blonde twin ponytails, blue eyes, fully covering red-and-black tactical suit, short utility jacket, gloves, boots and soft foam training batons. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 251,
+      "correctionOfGenerationPromptSha256": "984a0217317feefede346b9af3b113558bd8c45e4f313da4b6af9305398e64bd"
+    },
+    {
+      "sequence": 29,
+      "kind": "hero",
+      "id": "joker_n52",
+      "name": "Joker New 52",
+      "universe": "Joker New 52",
+      "output": "/sprites/generated/heroes/joker-new-52/joker-n52.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9631,
+      "rejectedSourceSha256": "86c6f7a49ef1afc6da21f183e83700d405e98cf76c38c653dcd592a45eb4c3fe",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/endgame-2015/the-joker-endgame"
+      ],
+      "visualAnchor": {
+        "physical": "original adult pale circus trickster, swept green hair, narrow expressive eyes, purple tailcoat, green waistcoat, striped trousers, gloves, shoes, blank cards and purple silk handkerchief",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Jokerized Gotham streets around the parade route and ruined GCPD barricades"
+      ],
+      "sourcePromptSha256": "3de53392720d558216c9a0334a942823031dcb4d152b5068c76b8fa033f73c3b",
+      "generationPromptSha256": "03fe0275ef318e34134af5141b8a426c77504914bfc68c21902cd7f37d52973c",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/029-hero-joker-n52-safe-03fe0275.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult pale circus trickster, swept green hair, narrow expressive eyes, purple tailcoat, green waistcoat, striped trousers, gloves, shoes, blank cards and purple silk handkerchief. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 252,
+      "correctionOfGenerationPromptSha256": "5b46be5f263091cac3c1efcb6bd5e1d6d2b16fa5319caa3799714559ecb7c1ef"
+    },
+    {
+      "sequence": 30,
+      "kind": "hero",
+      "id": "han_solo",
+      "name": "Han Solo",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/han-solo.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9531,
+      "rejectedSourceSha256": "67eff8bca814923b30c86b55c2de8772579869ff17f7e4d4803cb7bb593d49ac",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.starwars.com/databank/death-star",
+      "referenceUrls": [
+        "https://www.starwars.com/databank/death-star",
+        "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
+        "https://www.starwars.com/databank/anti-air-turbolaser-tower"
+      ],
+      "visualAnchor": {
+        "physical": "original adult space smuggler, tousled brown hair, alert eyes, cream shirt, black vest, navy trousers with red side stripe, utility belt, tall boots and navigation scanner; no actor likeness",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador.",
+        "architecture: Canal technique gris extrêmement profond, parois couvertes de panneaux, conduites et greebles, passerelles transversales et tours de turbolaser; perspective axiale longue et étroite.",
+        "palette: Gris froid, noir et blanc cassé, ponctués de lasers verts et rouges, de moteurs rose-rouge et de reflets bleus.",
+        "props: Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
+        "menace: TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
+      ],
+      "sourcePromptSha256": "a91383a2e3c0a273d828b3e5563a843b6cafdfada10849162c7e232552245133",
+      "generationPromptSha256": "742d04c5839953cccec201ecd60c0cde09717a836cb31966013d6dfc83db6fd7",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/030-hero-han-solo-safe-742d04c5.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult space smuggler, tousled brown hair, alert eyes, cream shirt, black vest, navy trousers with red side stripe, utility belt, tall boots and navigation scanner; no actor likeness. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 311,
+      "correctionOfGenerationPromptSha256": "b4c395f1bb694da31544d76af5049eb113e4ed2174dc710e4fa4539521ffb385"
+    },
+    {
+      "sequence": 31,
+      "kind": "hero",
+      "id": "luke",
+      "name": "Luke Skywalker",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/luke.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9325,
+      "rejectedSourceSha256": "7412ebfe374fb0e61069737c2b99eb32a08f20ec5444bceb8ebd2992317411d5",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.starwars.com/databank/death-star",
+      "referenceUrls": [
+        "https://www.starwars.com/databank/death-star",
+        "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
+        "https://www.starwars.com/databank/anti-air-turbolaser-tower"
+      ],
+      "visualAnchor": {
+        "physical": "original adult desert guardian, sandy-blond hair, blue eyes, cream tunic, tan belt, dark trousers, wrapped boots, short brown cloak and calm blue training light blade",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador.",
+        "architecture: Canal technique gris extrêmement profond, parois couvertes de panneaux, conduites et greebles, passerelles transversales et tours de turbolaser; perspective axiale longue et étroite.",
+        "palette: Gris froid, noir et blanc cassé, ponctués de lasers verts et rouges, de moteurs rose-rouge et de reflets bleus.",
+        "props: Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
+        "menace: TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
+      ],
+      "sourcePromptSha256": "43de4578ea9ed19dc7e44f1cbc1607eff43b7fa96cd90cb7cdf9ce730795977b",
+      "generationPromptSha256": "925b87c10d1b5254b54c30e92d883a00e2ab2f8b6c73a5ccf35862eab8267349",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/031-hero-luke-safe-925b87c1.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult desert guardian, sandy-blond hair, blue eyes, cream tunic, tan belt, dark trousers, wrapped boots, short brown cloak and calm blue training light blade. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 312,
+      "correctionOfGenerationPromptSha256": "d0e56ac310f7c9e6f44b4d07b69f51fe12142646461c05eb2937cb82993b5b43"
+    },
+    {
+      "sequence": 32,
+      "kind": "hero",
+      "id": "vader",
+      "name": "Darth Vader",
+      "universe": "Star Wars",
+      "output": "/sprites/generated/heroes/star-wars/vader.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9530,
+      "rejectedSourceSha256": "270bd0bbcb6c1012814ccd185cb74e6bb043d8fe8d5ecd7b2d9ffc0ca04e1fd2",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.starwars.com/databank/death-star",
+      "referenceUrls": [
+        "https://www.starwars.com/databank/death-star",
+        "https://www.starwars.com/databank/darth-vader-s-tie-fighter",
+        "https://www.starwars.com/databank/anti-air-turbolaser-tower"
+      ],
+      "visualAnchor": {
+        "physical": "original tall black-armored space sentinel, glossy domed helmet, triangular breathing grille, broad shoulders, chest control lights, long cape and slow red training light blade; no exact protected likeness",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Tranchée de l'Étoile de la Mort lors de l'assaut de Yavin, poursuivie par le TIE Advanced de Dark Vador.",
+        "architecture: Canal technique gris extrêmement profond, parois couvertes de panneaux, conduites et greebles, passerelles transversales et tours de turbolaser; perspective axiale longue et étroite.",
+        "palette: Gris froid, noir et blanc cassé, ponctués de lasers verts et rouges, de moteurs rose-rouge et de reflets bleus.",
+        "props: Chasseurs X-wing, TIE à ailes hexagonales, tourelles doubles, conduits, puits et panneaux techniques sans marquage lisible.",
+        "menace: TIE Advanced de Vador reconnaissable à ses panneaux inclinés et sa coque centrale, escorté par deux TIE; le danger vient également de la tranchée, des tirs croisés et de l'échelle écrasante de la station."
+      ],
+      "sourcePromptSha256": "3160a02455f8b0325f59fa6b424c238ee540a0f4b3a3707d0db0c3b13b759fa7",
+      "generationPromptSha256": "b2b4b8ea06ed0cf844b787190050e530ae08ca11d988ca013297b6bd2ebf90a7",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/032-hero-vader-safe-b2b4b8ea.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original tall black-armored space sentinel, glossy domed helmet, triangular breathing grille, broad shoulders, chest control lights, long cape and slow red training light blade; no exact protected likeness. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 313,
+      "correctionOfGenerationPromptSha256": "903280cea6f082aaa171e64ff61e04d0e3e6d89f6111c7ca606801e7599d0ba7"
+    },
+    {
+      "sequence": 33,
+      "kind": "hero",
+      "id": "grim_knight",
+      "name": "The Grim Knight",
+      "universe": "The Batman Who Laughs",
+      "output": "/sprites/generated/heroes/the-batman-who-laughs/grim-knight.png",
+      "frame": {
+        "width": 256,
+        "height": 256,
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ]
+      },
+      "replace": true,
+      "remediationReason": "rejected-placeholder",
+      "qualityEntryId": 9635,
+      "rejectedSourceSha256": "eac41e6f37d1ded21e84c6695c295b49f22bc8c51fffefa18fda9c8a18684fd9",
+      "catalogSource": "openai-sprite-prompts",
+      "selectionTier": "wave-4-safe-original-moderation-rewrite",
+      "referenceUrl": "https://www.dc.com/graphic-novels/the-batman-who-laughs-2018/the-batman-who-laughs",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/the-batman-who-laughs-2018/the-batman-who-laughs"
+      ],
+      "visualAnchor": {
+        "physical": "original adult dark gothic guardian, enclosed angular black helmet, heavy charcoal armor, weathered coat-cape, utility straps, boots, red forensic lamp and folded rescue line; no emblem or weapon",
+        "outfit": "fully clothed original design",
+        "role": "moderation-safe original interpretation",
+        "equipment": "harmless practice props only"
+      },
+      "visualAnchors": [
+        "Dark Multiverse Gotham beneath the infected Batcave and chained city spires"
+      ],
+      "sourcePromptSha256": "314b40990642704e111d0cbdc6d4eae7a37f1e85d9f327e1231fe0cd29f59521",
+      "generationPromptSha256": "b8e85ffb49dadcbb9813f4c16b1cc97482f7f3c680c7fdba850317938e3b86df",
+      "promptFile": "docs/openai-generation-prompts-2026-08-25/asset-batch-33-wave-4-corrections/033-hero-grim-knight-safe-b8e85ffb.txt",
+      "generationPrompt": "Use case: stylized-concept\nAsset type: moderation-safe transparent production sprite sheet for a 2D canvas battle game\nPrimary request: create one wholly original pixel-art character interpretation described only by this art direction: original adult dark gothic guardian, enclosed angular black helmet, heavy charcoal armor, weathered coat-cape, utility straps, boots, red forensic lamp and folded rescue line; no emblem or weapon. Do not imitate or reproduce any exact protected character design or real person.\nCreative identity: use a unique hand-illustrated face, proportions, costume details and silhouette derived only from the descriptive traits above.\nStyle and medium: polished detailed 32-bit-era pixel art with crisp clusters, controlled highlights, clean dark outlines, readable full-body silhouettes and an original storybook-animation character design.\nComposition and framing: one square PNG arranged as exactly 4 columns x 4 rows, exactly sixteen equal isolated nonempty cells; one complete full-body pose centered in each cell; consistent elevated three-quarter side battle angle facing right, scale, proportions, pixel density and light direction.\nAnimation plan: row 1 contains four calm identity-specific idle poses; row 2 contains four readable travel poses; row 3 contains four harmless practice or problem-solving poses with compact non-threatening light effects; row 4 contains four gentle balance-reset poses: notice, brace, soft step back and composed recovery.\nContinuity lock: keep exactly the same original physical traits, outfit colors and harmless props in every cell.\nCell lock: each cell presents exactly one complete pose with head, feet, clothing, props and compact light effects comfortably inside its own boundaries and surrounded by transparent breathing room.\nBackground and output lock: preserve genuine transparent alpha around every pose in a 32-bit RGBA PNG; a service fallback field may be a single flat edge-connected neutral color suitable for clean production normalization.\nPositive safety lock: wholesome, age appropriate and fully clothed presentation; calm practice or problem-solving only; no attack, injury, threat, gore, realistic weapon use or sexualization.\nLikeness lock: no real-person likeness and no protected exact likeness; keep the result visibly original while honoring only the descriptive art direction.\nBranding lock: an entirely unlettered image with plain costume surfaces, abstract unreadable geometric motifs and no text, logo, watermark, UI or copied key art.\nOutput lock: one square source sheet prepared for production normalization to 1024 x 1024, yielding sixteen 256 x 256 cells with complete centered silhouettes.",
+      "correctionReason": "Original non-resembling, fully clothed and harmless animation rewrite after moderation failure.",
+      "correctionOfBatchId": "assets-character-reference-remediation-334-wave-4-2026-08-28",
+      "correctionOfSequence": 323,
+      "correctionOfGenerationPromptSha256": "b49c1fe52f60ccd5c5176de17a372a8e82cf3fdbfd31889b6100fa109ff217cd"
+    }
+  ]
+}
