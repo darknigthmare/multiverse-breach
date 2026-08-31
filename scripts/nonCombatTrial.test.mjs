@@ -10,6 +10,7 @@ import {
 } from '../src/game/nonCombatTrial.js';
 import { LORE_WORLD_BOSS_POLICIES } from '../src/game/loreWorldBossOverrides.js';
 import { ENEMIES_DB } from '../src/game/enemies.js';
+import { getExpandedStages } from '../src/game/expandedUniverses.js';
 
 const hubSource = readFileSync(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
 const indexCssSource = readFileSync(new URL('../src/index.css', import.meta.url), 'utf8');
@@ -61,6 +62,83 @@ test('pure resolver recognizes every supported neutral trial family', () => {
     'escape-evidence'
   ]);
   assert.equal(inferNonCombatTrial({ policy: 'combat', objective: 'Defeat the fighter.' }), null);
+});
+
+test('cure inference recognizes complete medical verbs with punctuation and mixed case', () => {
+  for (const objective of [
+    'Cure Manchas.',
+    'The antidotal dose cures Manchas.',
+    'Keep the cured patient safe.',
+    'Finish curing Manchas.',
+    'CURE: Manchas.'
+  ]) {
+    assert.equal(inferNonCombatTrial(makePolicy(objective)).type, 'rescue', objective);
+  }
+});
+
+test('secure and procure wording never becomes a cure-based rescue', () => {
+  const cases = [
+    ['Secure the fourth nuclear warhead and disarm its transfer system.', 'switches'],
+    ['The warhead is secured; disable the transfer system.', 'switches'],
+    ['Secure the evidence.', 'evidence'],
+    ['Procure evidence and identify the suspect.', 'evidence'],
+    ['Secure the exit.', 'escape'],
+    ['Keep the secured shelter protected until morning.', 'survive'],
+    ['Procure the items and collect every page.', 'collect'],
+    ['The route is obscure; activate the relay.', 'switches']
+  ];
+  for (const [objective, expected] of cases) {
+    assert.equal(inferNonCombatTrial(makePolicy(objective)).type, expected, objective);
+  }
+});
+
+test('other rescue terms and the composite and authored type priorities remain unchanged', () => {
+  for (const objective of [
+    'Rescue the captive.', 'Sauver la victime.', 'Libérer la victime.',
+    'Free the captive.', 'Guérir Manchas.', 'Deliver the antidote.',
+    'Pacify the patient.', 'Apaiser la victime.', 'Retrouver la famille.',
+    'Find the family.', 'Rescue the captive and activate the relay.'
+  ]) {
+    assert.equal(inferNonCombatTrial(makePolicy(objective)).type, 'rescue', objective);
+  }
+  assert.equal(inferNonCombatTrial(makePolicy('Escape/evidence, then cure the patient.')).type, 'escape-evidence');
+  assert.equal(inferNonCombatTrial(makePolicy('Cure the patient.', { type: 'switches' })).type, 'switches');
+  assert.equal(inferNonCombatTrial(makePolicy('Secure the transfer.', { type: 'rescue' })).type, 'rescue');
+  const explicit = makeNonCombatPolicyFromThreat('Test', {
+    nonCombat: true, trialType: 'rescue', objective: 'Secure the transfer.'
+  });
+  assert.equal(explicit.trialType, 'rescue');
+});
+
+test('Fourth Warhead Transfer resolves through the real threat adapter to switches, not a person to rescue', () => {
+  const stage = getExpandedStages().find(candidate => candidate.id === 922560111);
+  assert.ok(stage, 'Fourth Warhead Transfer stage');
+  assert.equal(stage.finalePolicy.victoryCondition, 'warhead-secured');
+  assert.equal(stage.finalePolicy.objective.en, 'Secure the fourth nuclear warhead and disarm its transfer system.');
+  assert.equal(stage.finalePolicy.trialType, 'switches');
+  assert.equal(stage.nonCombatTrial.type, 'switches');
+  assert.ok(stage.nonCombatTrial.objects.length > 0);
+  assert.equal(stage.nonCombatTrial.objects.every(object => object.kind === 'switch'), true);
+  assert.equal(stage.nonCombatTrial.objects.some(object => object.kind === 'rescue-target'), false);
+});
+
+test('Carpathian Train keeps its evidence objective instead of a secure substring rescue', () => {
+  const stage = getExpandedStages().find(candidate => candidate.id === 34381);
+  assert.ok(stage, 'Carpathian Train stage');
+  assert.match(stage.finalePolicy.objective.en, /Expose Providence, secure the train route/);
+  assert.equal(stage.nonCombatTrial.type, 'evidence');
+  assert.equal(stage.nonCombatTrial.objects.at(-1).kind, 'submission');
+  assert.equal(stage.nonCombatTrial.objects.some(object => object.kind === 'rescue-target'), false);
+});
+
+test('Renato Manchas remains a real cure rescue encounter after word-boundary matching', () => {
+  const stage = getExpandedStages().find(candidate => candidate.id === 987724964);
+  assert.ok(stage, 'Renato Manchas stage');
+  assert.equal(stage.finalePolicy.victoryCondition, 'cure');
+  assert.equal(stage.finalePolicy.objective.en, 'Cure Manchas with a Night Howler antidote dart.');
+  assert.equal(stage.finalePolicy.trialType, 'rescue');
+  assert.equal(stage.nonCombatTrial.type, 'rescue');
+  assert.equal(stage.nonCombatTrial.objects.filter(object => object.kind === 'rescue-target').length, 1);
 });
 
 test('all historical finale policies resolve to interactive objects without combat stats', () => {

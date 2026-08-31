@@ -2,20 +2,21 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import {
   existsSync,
-  mkdirSync,
-  readFileSync,
-  writeFileSync
+  readFileSync
 } from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { applyWave6ProductionPromptOverrides } from './riftDossierWave6PromptOverrides.mjs';
+import { resolveCatalogOutputPath, writeCatalogAtomically } from './riftDossierCatalogOutput.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
 const hubSourcePath = path.join(projectRoot, 'src/components/HubScreen.jsx');
-const outputPath = path.join(projectRoot, 'docs/rift-dossiers/catalog.json');
+const outputPath = resolveCatalogOutputPath(process.argv.slice(2), {
+  defaultOutputPath: path.join(projectRoot, 'docs/rift-dossiers/catalog.json')
+});
 const riftDossierLedgerPath = path.join(
   projectRoot,
   'public/images/rift-dossiers/openai/openai-prompts.jsonl'
@@ -1125,6 +1126,10 @@ const buildCatalog = async () => {
         const resolvedVisualAnchors = subjectVisualAnchors.length > 0
           ? subjectVisualAnchors
           : characterDescriptors;
+        const finalePolicy = arc.finalePolicy || null;
+        const nonCombatPolicy = ['nonCombatFinal', 'stageSetpiece'].includes(finalePolicy?.policy)
+          ? finalePolicy.policy
+          : null;
 
         assert.ok(heroUniverse, `Character arc ${arc.id} does not resolve hero ${arc.heroId}`);
         return makeEntry({
@@ -1133,7 +1138,9 @@ const buildCatalog = async () => {
           nom: arc.title,
           univers: [heroUniverse],
           mode: arc.mode,
-          boss: arc.bossName,
+          boss: nonCombatPolicy ? null : arc.bossName,
+          nonCombatPolicy,
+          nonCombatObjective: finalePolicy?.objective,
           characterName: hero?.name || arc.title?.en || arc.heroId,
           characterDescriptors,
           bossVisualAnchor: subjectReference?.bossVisualAnchor,
@@ -1417,8 +1424,7 @@ if (checkOnly) {
     'Generated rift dossier catalog is stale; run this script without --check'
   );
 } else {
-  mkdirSync(path.dirname(outputPath), { recursive: true });
-  writeFileSync(outputPath, serializedCatalog, 'utf8');
+  writeCatalogAtomically(outputPath, serializedCatalog);
 }
 
 const action = checkOnly ? 'validated' : 'generated';

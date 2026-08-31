@@ -59,17 +59,15 @@ import SquadProposalPanel from './SquadProposalPanel';
 import AnchorCustomizationPanel from './AnchorCustomizationPanel';
 import { advanceMosaicGuide, advanceMosaicPlayer, clampMosaicPosition, createMosaicGuide, getMosaicDestinationView, getMosaicGuideStep, getMosaicInteractionTargets, getMosaicUniverseCatalog, getMosaicZoneAnchor, MOSAIC_CITY_ART, MOSAIC_WELCOME, resolveMosaicInteraction, transitionMosaicGuide } from '../game/mosaicCityRuntime';
 import { createFixedStepClock } from '../game/fixedStepClock';
+import {
+  ARC_UNLOCK_RULES,
+  projectCharacterArcStage,
+  resolveMissionHeroLevelRequirement
+} from '../game/characterArcStage';
 import './MosaicCityHub.css';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
-
-const ARC_UNLOCK_RULES = {
-  personalMinLevel: 3,
-  universeMinHeroes: 3,
-  universeMinLevel: 4,
-  trioMinLevel: 5
-};
 
 const getLocalizedText = (entry, lang, fallback = '') => {
   if (!entry) return fallback;
@@ -5610,27 +5608,7 @@ export default function HubScreen({
       arcId: mission.id
     }
   }));
-  const CHARACTER_STAGES = CHARACTER_NARRATIVE_ARCS.map(arc => ({
-    id: arc.stageId,
-    name: arc.title.en,
-    displayName: arc.title,
-    universe: arc.heroId === 'player_anchor' ? 'Nexus de Convergence' : (BASE_HEROES_DB.find(hero => hero.id === arc.heroId)?.universe || 'Nexus de Convergence'),
-    mode: arc.mode,
-    difficulty: arc.difficulty,
-    goldPrize: 150,
-    shardPrize: 60,
-    tokenPrize: 2,
-    bossName: arc.bossName,
-    rewardItemId: arc.rewardItemId,
-    rewardItemName: arc.reward,
-    characterArc: arc,
-    requiredTeam: {
-      type: 'character',
-      heroId: arc.heroId,
-      allowAnchor: arc.allowAnchor === true,
-      arcId: arc.id
-    }
-  }));
+  const CHARACTER_STAGES = CHARACTER_NARRATIVE_ARCS.map(projectCharacterArcStage);
   const UNIVERSE_ARC_STAGES = UNIVERSE_NARRATIVE_ARCS.flatMap((arc, index) => (
     projectUniverseArcDeploymentPhases(arc, index).map(phase => {
       const isPrelude = phase.arcPhaseCount > 1 && !phase.isArcFinalPhase;
@@ -7316,12 +7294,7 @@ export default function HubScreen({
     if (stage.fusionMission) return getFusionSourceClears(stage) >= Math.min(2, stage.sourceUniverses?.length || 1);
     return true;
   };
-  const getMissionHeroLevelRequirement = (stage) => {
-    if (stage.characterArc) return getPersonalArcLevelRequirement(stage.characterArc);
-    if (stage.trioArc || stage.requiredTeam?.type === 'exact') return ARC_UNLOCK_RULES.trioMinLevel;
-    if (stage.universeArc || stage.requiredTeam?.type === 'universe') return ARC_UNLOCK_RULES.universeMinLevel;
-    return 1;
-  };
+  const getMissionHeroLevelRequirement = resolveMissionHeroLevelRequirement;
   const getMissionDeployment = (stage) => {
     const baseUnlocked = isStageUnlocked(stage);
     const baseMessage = baseUnlocked ? '' : getLockedReason(stage);
@@ -7349,6 +7322,7 @@ export default function HubScreen({
 
     const rankCandidates = (universe) => HEROES_DB
       .filter(hero => hero.playable !== false && hero.id !== playerHero.id && (!universe || hero.universe === universe))
+      .filter(hero => !rule.excludedHeroIds?.includes(hero.id))
       .sort((left, right) => {
         const levelDelta = Number(getHeroLevelValue(right.id) >= requiredHeroLevel)
           - Number(getHeroLevelValue(left.id) >= requiredHeroLevel);

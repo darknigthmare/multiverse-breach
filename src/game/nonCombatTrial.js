@@ -106,9 +106,11 @@ const normalizeType = value => TYPE_ALIASES[normalizeSearchText(value).trim()] |
 const inferTypeFromText = value => {
   const text = normalizeSearchText(value);
   const has = (...terms) => terms.some(term => text.includes(term));
+  // Medical verbs must not match inside "secure", "secured" or "procure".
+  const hasCureVerb = /\b(?:cure|cures|cured|curing)\b/.test(text);
 
   if (has('escape/evidence', 'evidence/escape')) return 'escape-evidence';
-  if (has('rescue', 'sauver', 'liberer', 'free ', 'cure', 'guerir', 'antidote', 'pacify', 'apaiser', 'retrouver la famille', 'find the family')) return 'rescue';
+  if (hasCureVerb || has('rescue', 'sauver', 'liberer', 'free ', 'guerir', 'antidote', 'pacify', 'apaiser', 'retrouver la famille', 'find the family')) return 'rescue';
   if (has('evidence', 'preuve', 'indice', 'clue', 'confess', 'aveu', 'expose', 'demaquer', 'identify', 'identifier', 'deduction', 'enquete', 'negotiate')) return 'evidence';
   if (has('voiture', 'vehicle', 'vehicule', 'break ', 'briser', 'casser', 'frapper objet', 'destroy prop')) return 'break-object';
   if (has('collect', 'recuperer', 'rassembler', 'gather', 'pages')) return 'collect';

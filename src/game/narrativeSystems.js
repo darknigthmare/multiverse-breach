@@ -1378,7 +1378,44 @@ const GENERATED_CHARACTER_NARRATIVE_ARCS = HEROES_DB
         fr: `Apparence ${hero.name} Nexus + ${profile.reward.fr}`,
         en: `${hero.name} Nexus Appearance + ${profile.reward.en}`
       },
-      rewardItemId: `char_auto_${slug}_nexus`
+      rewardItemId: `char_auto_${slug}_nexus`,
+      // Original rescue adaptation: Saturnin is the protected identity, never
+      // both the deployed fighter and the escorted duckling in this mission.
+      ...(hero.id === 'saturnin_duck' ? {
+        bossName: null,
+        finalePolicy: {
+          policy: 'nonCombatFinal',
+          objective: {
+            fr: 'Escorter Saturnin vivant jusqu’à la zone d’extraction',
+            en: 'Escort Saturnin alive to the extraction zone'
+          }
+        },
+        tacticsBattlefieldId: 'nexus_escort_route',
+        escort: {
+          heroId: hero.id,
+          universe: hero.universe,
+          role: { fr: 'Caneton à escorter', en: 'Duckling to escort' }
+        },
+        requiredTeam: {
+          type: 'sources',
+          sourceUniverses: [hero.universe],
+          excludedHeroIds: [hero.id],
+          allowAnchor: true
+        },
+        intro: {
+          fr: 'Adaptation originale du projet : Saturnin doit quitter le village miniature sous la protection de ses compagnons. Déployez Police Dog ou Professor Popof avec votre Cellule éligible ; Saturnin reste la cible escortée, pas un combattant de l’équipe.',
+          en: 'Original project adaptation: Saturnin must leave the miniature village under his companions’ protection. Deploy Police Dog or Professor Popof with your eligible Cell; Saturnin remains the escorted target, not a squad fighter.'
+        },
+        missions: [
+          { fr: 'Former une équipe de secours avec au moins un compagnon de Saturnin, sans déployer Saturnin lui-même.', en: 'Form a rescue squad with at least one of Saturnin’s companions, without deploying Saturnin himself.' },
+          { fr: 'Rester à proximité du caneton et dégager une route praticable jusqu’à la zone d’extraction.', en: 'Stay close to the duckling and clear a walkable route to the extraction zone.' },
+          { fr: 'Amener Saturnin vivant jusqu’à la zone d’extraction : éliminer les menaces ne termine pas l’escorte.', en: 'Get Saturnin to the extraction zone alive: clearing threats does not complete the escort.' }
+        ],
+        outro: {
+          fr: 'Saturnin atteint la sortie vivant grâce à ses compagnons. Cette escorte originale préserve son identité de caneton et les souvenirs de son village.',
+          en: 'Saturnin reaches the exit alive thanks to his companions. This original escort preserves his duckling identity and memories of his village.'
+        }
+      } : {})
     };
   });
 

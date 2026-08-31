@@ -212,6 +212,21 @@ test('oversized or malformed exact teams are blocked structurally', () => {
   });
   assert.equal(malformed.allowed, false);
   assert.ok(reasonCodes(malformed).includes(MISSION_ACCESS_REASON_CODES.EXACT_TEAM_INVALID));
+
+  const reserved = autoComposeMissionTeam({
+    requiredTeam: {
+      type: 'exact',
+      heroIds: ['ripley', 'leon', 'chell'],
+      excludedHeroIds: ['leon']
+    }
+  }, {
+    heroDb: HEROES,
+    activeTeam: ['ripley', 'chell'],
+    ownedHeroIds: owned
+  });
+  assert.equal(reserved.composed, false);
+  assert.equal(reserved.team.includes('leon'), false);
+  assert.deepEqual(reserved.missing, [{ type: 'reservedHero', heroId: 'leon' }]);
 });
 
 test('universe rules enforce minCount and reject every foreign signature', () => {

@@ -402,6 +402,10 @@ export const getStageLoreDescription = ({
   if (!stage) return '';
 
   if (stage.characterArc) {
+    if (stage.escort?.heroId) {
+      const objectives = (stage.characterArc.missions || []).map(item => localizedValue(item, lang)).join(' ');
+      return `${localizedValue(stage.displayName, lang, stage.name)}: ${localizedValue(stage.characterArc.intro, lang)} ${objectives} ${lang === 'fr' ? 'Trace promise' : 'Promised trace'}: ${localizedValue(stage.rewardItemName, lang)}.`;
+    }
     return lang === 'fr'
       ? `${stage.displayName.fr} est une mission personnelle: ${stage.characterArc.intro.fr} Le Nexus force ${bossIntel?.name || stage.bossName} a reveler la contradiction qui menace cette signature. Trace promise: ${stage.rewardItemName.fr}, une marque identitaire gravee dans l archive vivante du heros.`
       : `${stage.displayName.en} is a personal mission: ${stage.characterArc.intro.en} The Nexus forces ${bossIntel?.name || stage.bossName} to reveal the contradiction threatening this signature. Promised trace: ${stage.rewardItemName.en}, an identity mark engraved into the hero living archive.`;

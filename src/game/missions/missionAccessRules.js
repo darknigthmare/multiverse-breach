@@ -8,6 +8,7 @@ export const REQUIRED_TEAM_TYPES = Object.freeze({
 export const MISSION_ACCESS_REASON_CODES = Object.freeze({
   BASE_ACCESS_BLOCKED: 'baseAccessBlocked',
   ACTIVE_HERO_REQUIRED: 'activeHeroRequired',
+  HERO_RESERVED_FOR_MISSION: 'heroReservedForMission',
   EXACT_TEAM_INCOMPLETE: 'exactTeamIncomplete',
   EXACT_TEAM_FOREIGN: 'exactTeamForeign',
   EXACT_TEAM_INVALID: 'exactTeamInvalid',
@@ -96,6 +97,9 @@ const localizedList = (values, lang) => {
 const getRulePolicy = (rule, arcId) => ({
   firstClearOnly: rule?.firstClearOnly !== false,
   freeReplayAfterArc: rule?.freeReplayAfterArc !== false,
+  ...(uniqueIds(rule?.excludedHeroIds).length
+    ? { excludedHeroIds: uniqueIds(rule.excludedHeroIds) }
+    : {}),
   ...(arcId ? { arcId } : {})
 });
 
@@ -320,15 +324,21 @@ const composeCharacterTeam = (rule, environment) => {
 };
 
 const composeExactTeam = (rule, environment) => {
-  const missing = rule.heroIds
+  const excludedHeroIds = new Set(rule.excludedHeroIds || []);
+  const deployableHeroIds = rule.heroIds.filter(heroId => !excludedHeroIds.has(heroId));
+  const missing = deployableHeroIds
     .filter(heroId => !heroIsAvailable(heroId, environment))
     .map(heroId => missingActiveHero(heroId, environment));
-  const validSize = rule.heroIds.length === environment.maxTeamSize;
+  missing.push(...rule.heroIds
+    .filter(heroId => excludedHeroIds.has(heroId))
+    .map(heroId => ({ type: 'reservedHero', heroId })));
+  const validSize = deployableHeroIds.length === environment.maxTeamSize
+    && deployableHeroIds.length === rule.heroIds.length;
   return {
     composed: validSize && missing.length === 0,
-    team: rule.heroIds.slice(0, environment.maxTeamSize),
+    team: deployableHeroIds.slice(0, environment.maxTeamSize),
     missing,
-    preservedAnchor: rule.heroIds.includes(ANCHOR_HERO_ID) && environment.activeSet.has(ANCHOR_HERO_ID)
+    preservedAnchor: deployableHeroIds.includes(ANCHOR_HERO_ID) && environment.activeSet.has(ANCHOR_HERO_ID)
   };
 };
 
@@ -418,6 +428,17 @@ const composeSourcesTeam = (rule, environment) => {
 };
 
 const composeRule = (rule, environment) => {
+  // Reserved NPC identities cannot re-enter the suggested deployment, even
+  // when they were already selected or remain owned in the player's roster.
+  const reserved = new Set(rule?.excludedHeroIds || []);
+  if (reserved.size) {
+    environment = {
+      ...environment,
+      activeTeam: environment.activeTeam.filter(heroId => !reserved.has(heroId)),
+      activeSet: new Set([...environment.activeSet].filter(heroId => !reserved.has(heroId))),
+      eligibleHeroIds: new Set([...environment.eligibleHeroIds].filter(heroId => !reserved.has(heroId)))
+    };
+  }
   if (!rule) {
     return {
       composed: true,
@@ -490,6 +511,12 @@ const makeMessage = ({ allowed, replayFree, reasons, rule, environment }) => {
   }
 
   const reason = reasons[0] || {};
+  if (reason.code === MISSION_ACCESS_REASON_CODES.HERO_RESERVED_FOR_MISSION) {
+    return {
+      fr: `${getHeroName(reason.heroId, environment.heroLookup, 'fr')} est la cible protégée de cette mission et ne peut pas être déployé dans la Cellule active.`,
+      en: `${getHeroName(reason.heroId, environment.heroLookup, 'en')} is this mission’s protected target and cannot be deployed in the active Cell.`
+    };
+  }
   if (reason.code === MISSION_ACCESS_REASON_CODES.ACTIVE_HERO_REQUIRED) {
     return {
       fr: `${getHeroName(reason.heroId, environment.heroLookup, 'fr')} doit être dans la Cellule active.`,
@@ -603,6 +630,19 @@ export const evaluateMissionAccess = (stage, context = {}, heroDbOverride) => {
       composition,
       environment,
       message: baseAccess.message
+    });
+  }
+
+  // Replay relaxes companion composition, never the identity of an NPC.
+  const reservedHeroId = rule?.excludedHeroIds?.find(heroId => environment.activeSet.has(heroId));
+  if (reservedHeroId) {
+    return makeResult({
+      allowed: false,
+      rule,
+      arcId,
+      reasons: [{ code: MISSION_ACCESS_REASON_CODES.HERO_RESERVED_FOR_MISSION, type: 'reservedHero', heroId: reservedHeroId }],
+      composition,
+      environment
     });
   }
 
