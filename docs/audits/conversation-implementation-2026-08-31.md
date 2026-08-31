@@ -6,7 +6,7 @@ Conversation retrouvée : « Améliorations du jeu Multiverse Breach », identif
 
 Ce document est un suivi d'implémentation, pas une transcription. Le connecteur a fourni deux échanges et tronquait la première réponse à 20 000 caractères. La page publique du partage a ensuite été récupérée (HTTP 200) : son contenu textuel JSON contient la première réponse complète de 34 148 caractères et la demande de 3 226 caractères. La fin a été lue, y compris la campagne, l'accueil narratif, le tutoriel détaillé et le plan de la Cité-Mosaïque. Le deuxième échange de la tâche d'origine a aussi été lu intégralement. Aucun export supplémentaire n'est requis.
 
-## Lot en cours de validation
+## Lot gameplay/hub publié
 
 | Demande | Implémentation |
 | --- | --- |
@@ -66,7 +66,9 @@ Les contrôles de complétion des vagues 4 (334/334) et 5 (500/500) réussissent
 
 Les 33 chemins de pickups manquants concernent trois objets par univers : Breaking Bad, Buckethead, Buffy, Charmed, Dino Crisis, Half-Life, Kaamelott, Portal, Stargate, System of a Down et The Matrix. Ce contrôle utilise l'identité authored restaurée, et non l'ancien objet de relique associé arbitrairement par index. Les deux lignes d'objets du tableau ont donc des périmètres différents et ne constituent pas un total global de fichiers uniques.
 
-Prochaine vague identifiée, pas encore générée : **500 dossiers = 309 expanded + 191 arcs personnage**, du stage `34421` au stage `9469` dans l'ordre du catalogue courant. Créer un constructeur Wave6 séparé ; ne pas réexécuter la création Wave5 dont la base de sélection est figée. Les 14 reprises doivent être explicitement marquées comme remplacements.
+La sélection Wave6 est maintenant figée séparément : **500 dossiers = 309 expanded + 191 arcs personnage**, du stage `34421` au stage `9469` dans l'ordre du catalogue. Les 14 reprises sont explicitement marquées comme remplacements et exigent la conservation des images et preuves antérieures. La création Wave5 n'a pas été réexécutée.
+
+Point de reprise après contrôle des premiers prompts : **4/500 nouveaux dossiers validés et intégrés**, 496 restant à traiter. Les quatre premiers essais génériques ont été rejetés puis régénérés avec des références primaires et une composition spécifique ; aucun rejet n'est compté terminé. Le registre global est désormais à **998/3 199 disponibles**, soit **2 201 en attente**. Voir [la revue Wave6](wave6-visual-review-2026-08-31.md) et [le contrat de reprise](../openai-generation-prompts-2026-08-31/README-wave-6-rift-dossiers.md). Ce point ne clôt pas les chantiers fonctionnels listés plus haut.
 
 ## Validation et publication
 
@@ -78,4 +80,8 @@ Prochaine vague identifiée, pas encore générée : **500 dossiers = 309 expand
 - Contrôle préalable du paquet : 13 031 fichiers, dont 589 décors ; aucun `.codex`, fichier local de secrets ni fichier temporaire inclus.
 - Pas de recette navigateur : l'environnement de contrôle reste indisponible. La présence des assets et les tests automatiques ne certifient pas tous les cadrages.
 
-Le lot est prêt pour commit/push et vérification d'un candidat Vercel avant promotion. Le statut de publication effectif est communiqué avec le résultat de la livraison ; cette ligne ne constitue pas à elle seule une preuve de mise en production.
+Le lot gameplay/hub a été committé et poussé sous `1b085968df3d86b91925565a43827f64a1266b38`. Le candidat Vercel `dpl_HiRXCWxXQ71Hq76ezCNnnnyHj5TZ` a exécuté le build complet avec succès, puis a été promu sur https://multiverse-breach.vercel.app après contrôle de ses fichiers servis. La page publique, les bundles GameCanvas/Hub/Portal, un décor Nexus, le sprite de déplacement de l'Ancre et la configuration publique ont répondu correctement. Le bundle principal public est `index-Jv8uzvTx.js` ; les marqueurs de ciblage manuel, garde de sauvegarde, tutoriel Mosaïque et préparation des synergies sont présents dans les bundles contrôlés. Le scan des erreurs serveur sur les quinze minutes autour de la livraison n'a renvoyé aucun log ; ce résultat ne constitue pas une recette navigateur.
+
+Le déploiement Git automatique est bloqué par le quota Git LFS du dépôt. La publication ci-dessus a utilisé un envoi direct des fichiers locaux vérifiés, sans changement de facturation ni de quota. La prochaine vague doit conserver une validation distincte : un prompt planifié ou une image rejetée n'est pas un dossier terminé.
+
+La reprise Wave6 de quatre dossiers a ensuite passé la validation complète locale : **598 tests Node**, lint, audits et compilation. Le blocage d'écriture Git sur I: a été résolu après autorisation explicite de l'utilisateur : magasin complémentaire sur C:, ancienne jonction conservée et historique accessible via les magasins alternatifs existants. Aucun objet ni historique n'a été supprimé ou déplacé ; le contrôle de connectivité Git réussit. La revue Wave6 consigne la réparation et la contre-vérification des quatre dossiers. Ce lot distinct reste à **4/500 terminés, 496 restants** ; sa publication ne vaut pas achèvement de toute la conversation ni de la vague.

@@ -122,6 +122,63 @@ const decodeSingleQuotedSourceString = value => (
   value.replace(/\\(['\\])/g, '$1')
 );
 
+const INTERSTELLAR_34421_REFERENCE = 'https://store.steampowered.com/app/236370/Interstellar_Marines/';
+// Stage-specific art contracts: do not inherit the whole universe's roster or locations.
+// The local canonRosterWavePartJ explicitly locks KI to the Xbox 2013 reboot and KF2 to KF2.
+const TARGETED_COMBAT_DOSSIERS = new Map([
+  [34430, {
+    references: ['https://www.ultra-combo.com/characters/eyedol/', 'https://www.ultra-combo.com/eyedols-accessories/'],
+    anchor: 'Eyedol, default Season 3 design in the Killer Instinct 2013 reboot: one ogre body with a single skull cleaved into two halves, one eye in each half, wielding a skull-adorned war-club; not the 1994 two-complete-heads design.',
+    environment: 'Ultratech Industries: one enclosed advanced industrial weapons facility',
+    prompt: [
+      'Use case: stylized-concept. Dedicated original fan-art rift-dossier thumbnail for Multiverse Breach. Operation: Ultratech Industries. Universe: Killer Instinct. Stage 34430. RPG.',
+      'Continuity is strictly the Xbox 2013 reboot including Season 3, not the 1994 arcade chronology. Depict ONLY Eyedol as the boss, in his DEFAULT reboot appearance: one huge muscular ogre body, a SINGLE skull split vertically into two separated halves with one eye per half, visibly joined to the same upper torso. A narrow red-purple energy cleft makes the split legible without graphic gore. He carries a heavy blunt skull-adorned WAR-CLUB. No axe, no sword, no two intact heads on separate necks, no generic two-headed demon.',
+      'One coherent location ONLY: an enclosed Ultratech industrial weapons-development hall with heavy metallic assembly infrastructure, conduits and restrained cold machine lights. The project places this encounter at Ultratech Industries; this is an original environment interpretation within reboot technology, not a claim that Eyedol has this canonical home stage. No Tiger Lair, no temple, no Astral Plane, no city montage or divided scene.',
+      'Eyedol stands on the right facing left, entirely visible with his club and feet inside the frame. Leave the left party deployment area empty: no extra fighters, no Fulgore, no ARIA, no Gargos, no Ultratech guards or drones. Machinery is scenery, not additional combatants. The sole focal subject is Eyedol within this facility.',
+      'Strict orthographic side-on 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. No corridor vanishing into the screen, overhead view, split panels or collage. Premium hand-crafted 32-bit era pixel art, crisp pixels and readable silhouettes. Original fan-art composition, never copied official key art. Landscape 16:9, downstream 640x360 RGB WebP. No readable text, lettering, logos, watermark, UI, health bars or grid.'
+    ].join('\n')
+  }],
+  [34431, {
+    references: ['https://www.ultra-combo.com/characters/gargos/', 'https://www.ultra-combo.com/killer-instinct-versions/'],
+    anchor: 'Gargos, default Killer Instinct 2013 reboot Shadow Lord: a hulking horned gargoyle with large batlike wings, claws and a tail, alone in the Astral Plane; not a roster montage.',
+    environment: 'Astral Plane: a single otherworldly Shadow Energy arena, no Earth location',
+    prompt: [
+      'Use case: stylized-concept. Dedicated original fan-art rift-dossier thumbnail for Multiverse Breach. Operation: Astral Plane. Universe: Killer Instinct. Stage 34431. RPG.',
+      'Continuity is strictly the Xbox 2013 reboot and Shadow Lords. Depict ONLY Gargos in his default reboot form: a large muscular horned gargoyle, stony gray skin, broad batlike membranous wings, powerful clawed hands and feet, and a long tail. Recognizable creature anatomy, not a human in royal armor, not Eyedol and not a dragon. Show one Gargos on the right facing left, full body and wings contained within the frame.',
+      'One coherent location ONLY: the ASTRAL PLANE, an alien dimensional arena surrounded by vast swirling Shadow Energy, distant celestial light and suspended terrain fragments. A continuous otherworldly rocky fighting shelf grounds both sides of the encounter. Atmospheric violet-blue and green shadow light, enormous empty dimensional depth. This is an original fan-art interpretation of the otherworldly arena, not a copied screenshot or invented Earth landmark.',
+      'Absolutely no Tiger Lair, tiger statues, Asian temple, Ultratech factory, industrial pipes, Earth city, Paris skyline or fused locations. No extra boss, Eyedol, Fulgore, ARIA, minion army or character lineup. Keep the left party deployment area empty; only Gargos occupies the opposing side.',
+      'Strict orthographic side-on 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. No corridor vanishing into the screen, overhead view, split panels or collage. Premium hand-crafted 32-bit era pixel art, crisp pixels and readable silhouettes. Original fan-art composition, never copied official key art. Landscape 16:9, downstream 640x360 RGB WebP. No readable text, lettering, logos, watermark, UI, health bars or grid.'
+    ].join('\n')
+  }],
+  [34440, {
+    references: ['https://store.steampowered.com/news/posts/?appids=232090&enddate=1575999627&feed=steam_community_announcements', 'https://killingfloor2.com/yuletidehorror2019/'],
+    anchor: 'Matriarch is Rachel Clamely in Killing Floor 2: biotech-modified human in an enhanced armored mech suit, mechanical grappling claw, plasma cannon and back-mounted electrical device. Show the intact armored phase, not a horned demon queen.',
+    environment: 'Biotics Lab: enclosed Horzine cloning laboratory, no Burning Paris or Sanitarium',
+    prompt: [
+      'Use case: stylized-concept. Dedicated original fan-art rift-dossier thumbnail for Multiverse Breach. Operation: Biotics Lab. Universe: Killing Floor 2. Stage 34440. RPG.',
+      'Continuity is Killing Floor 2 ONLY, with strongly reduced gore. The sole boss is MATRIARCH, Rachel Clamely: a biotech-modified human integrated into a bulky advanced MECH SUIT. Show her intact armored phase: protective head armor, heavy mechanical torso and leg armor, one mechanical grappling claw arm, a distinct plasma-cannon arm, cables and a back-mounted electrical apparatus. Industrial mechanical construction must dominate her silhouette, not fantasy flesh or royal costume. Electric arcs are restrained technology effects.',
+      'No horned demon queen, horns, crown, bat wings, demonic robes or free-floating tentacle swarm. Do not depict her later unarmored mutation; this image deliberately selects the armored phase, without denying other canonical phases. Full body on the right facing left, cannon aimed toward the empty left battle area, all extremities inside the frame.',
+      'One coherent location ONLY: the enclosed Horzine BIOTICS LAB, a clinical bio-industrial cloning chamber with sealed specimen tanks, cloning machinery, steel walkways, glass partitions, laboratory conduits and cold practical lighting with small warning lights. No exterior skyline, no Burning Paris, no Eiffel Tower, no Gothic asylum, no Sanitarium ritual. The Matriarch encounter here is the project scenario, not a claim about the canonical Objective-mode finale.',
+      'No other boss, no Patriarch, no Hans Volter, no King Fleshpound, no extra Zeds or E.D.A.R. army. Leave the left party deployment area empty. A subtle distant causal light fracture is optional but cannot introduce another creature or obscure the laboratory.',
+      'Strict orthographic side-on 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. No corridor vanishing into the screen, overhead view, split panels or collage. Premium hand-crafted 32-bit era pixel art, crisp pixels and readable silhouettes. Original fan-art composition, never copied official key art. Landscape 16:9, downstream 640x360 RGB WebP. No readable text, lettering, logos, watermark, UI, health bars or grid.'
+    ].join('\n')
+  }]
+]);
+const INTERSTELLAR_34421_ANCHOR = 'SARA is the central neural-network AI supervising The Vault infrastructure, artificial weather and human-scale mechanical Combat Training Robots; SARA Final Evaluation is a project objective label, not a canonical humanoid boss.';
+const INTERSTELLAR_34421_PROMPT = [
+  'Use case: stylized-concept',
+  'Asset type: dedicated 16:9 RPG rift-dossier thumbnail for the original fan-made game Multiverse Breach.',
+  'Operation: "Dynamic Weather Extraction". Universe: Interstellar Marines. Stage: 34421. Preserve "SARA Final Evaluation" only as the project evaluation/extraction objective label; it is NOT a canonical boss name and must not be rendered as text.',
+  'Canonical setting: The Vault, the ITO military training facility deep beneath Groom Lake, Nevada. SARA is its central neural-network AI supervising artificial weather and Combat Training Robots, not a creature or physical boss.',
+  'Scene: a truly enormous but completely ENCLOSED underground military training hall. Clearly show the solid high ceiling, structural trusses, ceiling-mounted weather generators, rain nozzles, industrial walls and extraction doors. Artificial rain falls inside the hall onto a wet training floor; this is not an outdoor alien landscape or an open-sky arena.',
+  'Action: a small tactical marine squad evacuates toward a reachable extraction door while human-scale mechanical CTR humanoid training robots contest the route. Marines and CTRs must share credible human body scale. Express SARA ONLY through distributed abstract sensor lights, overhead camera arrays and environmental control infrastructure; no face, avatar, holographic person, giant robot or alien embodiment of SARA.',
+  'Project crossover accent: optionally place one small causal breach as a narrow light fracture in distant infrastructure, without any emerging entity. Extraction and supervised evaluation remain the focal event.',
+  'Camera and gameplay: strict orthographic side-on 2.5D RPG view, camera perpendicular to the battle lane, party space on the left and human-scale CTR threats on the right. Keep a broad clear horizontal playable lane across the lower half; ceiling and machinery occupy the upper half. No corridor aimed into the screen, no overhead tactics view, no giant foreground obstruction.',
+  'Style: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and rain reflections, cool industrial lights with restrained amber evacuation lights. Original fan-art composition; no copied official key art.',
+  'Constraints: no giant humanoid, no giant alien, no monster boss, no anthropomorphic SARA. No readable text, letters, logos, watermark, baked UI, decorative frame, grid lines, photorealism or real-person likeness. Landscape 16:9, optimized downstream as a 640x360 RGB WebP.',
+  `Official setting reference: ${INTERSTELLAR_34421_REFERENCE}`
+].join('\n');
+
 const normalizeLocalizedName = value => {
   if (typeof value === 'string') {
     return { fr: value, en: value };
@@ -926,6 +983,7 @@ const buildCatalog = async () => {
               ...(universeSignature?.monsters || []),
               ...(universeSignature?.bosses || [])
             ]);
+        const targetedCombat = TARGETED_COMBAT_DOSSIERS.get(stage.id);
         return makeEntry({
           id: stage.id,
           famille: 'expanded',
@@ -936,11 +994,14 @@ const buildCatalog = async () => {
           nonCombatPolicy,
           nonCombatObjective: finalePolicy?.objective,
           existingPath: stage.stageArt,
-          bossVisualAnchor: subjectReference?.bossVisualAnchor,
-          bossReferenceUrls: subjectReference?.bossReferenceUrls,
-          visualAnchors: resolvedVisualAnchors,
-          referenceUrls: visualReferences.referenceUrls,
-          referencePolicy
+          bossVisualAnchor: targetedCombat?.anchor || (stage.id === 34421 ? INTERSTELLAR_34421_ANCHOR : subjectReference?.bossVisualAnchor),
+          bossReferenceUrls: targetedCombat?.references || (stage.id === 34421 ? [INTERSTELLAR_34421_REFERENCE] : subjectReference?.bossReferenceUrls),
+          visualAnchors: stage.id === 34421
+            ? ['The Vault beneath Groom Lake', 'Enclosed ITO military training hall', 'Ceiling weather generators and artificial rain', 'Human-scale mechanical CTR training robots', INTERSTELLAR_34421_ANCHOR]
+            : targetedCombat ? [targetedCombat.environment, targetedCombat.anchor] : resolvedVisualAnchors,
+          referenceUrls: targetedCombat?.references || (stage.id === 34421 ? [INTERSTELLAR_34421_REFERENCE] : visualReferences.referenceUrls),
+          referencePolicy: stage.id === 34421 || targetedCombat ? 'authoritative-public' : referencePolicy,
+          promptOverride: stage.id === 34421 ? INTERSTELLAR_34421_PROMPT : targetedCombat ? `${targetedCombat.prompt}\nOfficial references: ${targetedCombat.references.join(' ; ')}` : null
         });
       })
       .sort((left, right) => left.id - right.id),
