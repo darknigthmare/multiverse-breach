@@ -217,6 +217,7 @@ const sanitizeCustomObject = (source, index) => {
       ? { progress: clamp(Number(source?.progress) || 0, 0, requiredProgress), requiredProgress }
       : { integrity: clamp(integrity, 0, maxIntegrity), maxIntegrity }),
     order: positiveInteger(source?.order, index + 1),
+    ...(source?.requiresGuard === true ? { requiresGuard: true } : {}),
     gatedBy: source?.gatedBy ? String(source.gatedBy) : null
   });
 };
@@ -435,7 +436,9 @@ export const inferNonCombatTrial = (policy, context = {}) => {
     requiredProgress,
     objects,
     visualAnchor: String(authoredTrial.visualAnchor || policy?.visualAnchor || ''),
-    source: String(policy?.source || 'stage-authored-trial')
+    source: String(policy?.source || 'stage-authored-trial'),
+    ...(authoredTrial.orderedObjects === true ? { orderedObjects: true } : {}),
+    ...(authoredTrial.forbidAttacks === true ? { forbidAttacks: true } : {})
   });
 };
 
@@ -595,11 +598,20 @@ export class EngineNonCombatTrial {
 
   isObjectLocked(object) {
     if (!object || object.completed) return false;
+    if (this.trial.orderedObjects) {
+      const expected = this.objects.filter(item => !item.completed)
+        .sort((left, right) => left.order - right.order)[0];
+      if (expected !== object) return true;
+    }
     if (object.gatedBy === 'all-evidence') {
       return this.objects.some(item => item.kind === 'evidence' && !item.completed);
     }
     if (object.gatedBy === 'all-mechanisms') {
       return this.objects.some(item => item.kind === 'rescue-mechanism' && !item.completed);
+    }
+    if (object.gatedBy) {
+      const prerequisite = this.objects.find(item => item.id === object.gatedBy);
+      if (!prerequisite?.completed) return true;
     }
     if (object.kind === 'checkpoint') {
       const expected = this.objects
@@ -621,6 +633,9 @@ export class EngineNonCombatTrial {
     const active = this.getActiveTrialObject(hero, ranged ? 260 : 96, ranged);
     if (active) {
       const label = active.label[locale] || active.label.fr || active.label.en;
+      if (active.requiresGuard) {
+        return locale === 'fr' ? `DÉPLACE-TOI DISCRÈTEMENT · MAINTIENS GARDE · ${label}` : `MOVE QUIETLY · HOLD GUARD · ${label}`;
+      }
       if (['collectible', 'evidence', 'checkpoint', 'extraction'].includes(active.kind)) {
         return locale === 'fr' ? `APPROCHE-TOI · ${label}` : `MOVE CLOSER · ${label}`;
       }
@@ -657,6 +672,16 @@ export class EngineNonCombatTrial {
 
   applyObjectProgress(object, amount = 1) {
     if (!object || object.completed || this.gameOver) return false;
+    if (this.isObjectLocked(object)) return false;
+    if (object.requiresGuard && !this.getActiveHero()?.guardHeld) {
+      if (this.lastDetectionFrame === undefined || this.elapsedFrames - this.lastDetectionFrame >= 60) {
+        this.lastDetectionFrame = this.elapsedFrames;
+        this.mistakes++;
+        this.setFeedback('Repéré : maintiens Garde pour te déplacer discrètement.', 'Detected: hold Guard to move quietly.');
+        if (this.mistakes >= this.trial.mistakeLimit) this.complete('defeat');
+      }
+      return false;
+    }
     this.interactions++;
 
     if (Number.isFinite(object.integrity)) {
@@ -708,6 +733,7 @@ export class EngineNonCombatTrial {
       this.playSfx('jump');
       return true;
     }
+    if (this.trial.forbidAttacks) return false;
     if (normalizedAction === 'special') return this.triggerAbility(hero, 'special');
     if (normalizedAction !== 'attacklight' && normalizedAction !== 'ledgeattack') return false;
 
@@ -723,6 +749,7 @@ export class EngineNonCombatTrial {
       : this.getActiveHero();
     if (!hero) return false;
 
+    if (this.trial.forbidAttacks && type !== 'defense') return false;
     hero.state = type === 'defense' ? 'defense' : type === 'special' ? 'special' : 'attack';
     hero.stateTimer = type === 'special' ? 18 : 10;
     if (type === 'defense') {
@@ -739,6 +766,7 @@ export class EngineNonCombatTrial {
 
   beginChargedMeleeAttack(side = 'player') {
     if (side !== 'player' || this.gameOver || this.paused) return false;
+    if (this.trial.forbidAttacks) return false;
     const hero = this.getActiveHero();
     if (!hero) return false;
     hero.trialCharge = Math.max(1, hero.trialCharge);
@@ -748,6 +776,7 @@ export class EngineNonCombatTrial {
 
   releaseChargedMeleeAttack(side = 'player') {
     if (side !== 'player' || this.gameOver || this.paused) return false;
+    if (this.trial.forbidAttacks) return false;
     const hero = this.getActiveHero();
     if (!hero || hero.trialCharge <= 0) return false;
     const force = clamp(1 + Math.floor(hero.trialCharge / 20), 2, 5);
@@ -829,12 +858,15 @@ export class EngineNonCombatTrial {
     if (nearest) hero.facing = nearest.x >= hero.x ? 1 : -1;
     const target = this.getActiveTrialObject(hero, this.width + this.height, true);
     if (!target) return;
+    // Automated traversal obeys the same quiet-marker prerequisite as manual
+    // play instead of repeatedly detecting an unguarded actor.
+    if (target.requiresGuard) hero.guardHeld = true;
     const dx = target.x - hero.x;
     if (Math.abs(dx) > 36) {
       hero.vx = Math.sign(dx) * 2.6;
       hero.x = clamp(hero.x + hero.vx, 24, this.width - 24);
       hero.facing = Math.sign(dx);
-    } else if (this.elapsedFrames % 24 === 0) {
+    } else if (target.kind !== 'safety-zone' && this.elapsedFrames % 24 === 0) {
       this.applyObjectProgress(target, 1);
     }
   }

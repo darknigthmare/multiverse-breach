@@ -4315,11 +4315,12 @@ function makeUniverseWave(entries) {
       const stageTrialId = targetEncounter?.id
         || targetCharacter?.[0]
         || `stage-trial-${entry.key}-${normalizeEncounterName(normalizedVariant.name).replace(/\s+/g, '-')}`;
-      const stageTrialName = targetEncounter?.name
+      const stageTrialName = (normalizedVariant.stageObjectiveOverride ? normalizedVariant.name : null)
+        || targetEncounter?.name
         || targetCharacter?.[1]
         || normalizedVariant.bossName
         || normalizedVariant.name;
-      const stageTrialPolicy = targetEncounter?.policy || makeNonCombatPolicyFromThreat(entry.universe, {
+      const stageTrialPolicy = (!normalizedVariant.stageObjectiveOverride && targetEncounter?.policy) || makeNonCombatPolicyFromThreat(entry.universe, {
         id: stageTrialId,
         name: stageTrialName,
         nonCombat: true,

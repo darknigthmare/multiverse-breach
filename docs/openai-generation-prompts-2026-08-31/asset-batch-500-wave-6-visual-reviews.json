@@ -139,6 +139,486 @@
       "notes": "Image inspectée : silhouette biomécanique blindée, canon plasma distinct, pince mécanique et appareillage électrique dorsal. Laboratoire fermé avec cuves et passerelles ; pas de reine démoniaque ni Paris, voie de combat vide à gauche.",
       "generationId": "exec-c7d24fca-4f14-400e-b6db-363d308312e4",
       "sourceSha256": "fa8d5c1042c6b4d804ab65cb2561e5a787a7a5591f23d5e2ac7562c133a170eb"
+    },
+    {
+      "id": "34441",
+      "promptSha256": "cee4633ba75a6ca0c51d0e392f953fc0775cdbcd2053841479ab9e8fca4a9223",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T15:22:28.5406338Z",
+      "notes": "Outpost confirmé au nord du cercle arctique. Illustration officielle du Patriarch réellement inspectée : silhouette asymétrique, peau gris-vert, nodules verts, bras chain-gun et jambe mécanique. Scène unique arctique, boss à droite tourné vers la gauche ; aucun emprunt au décor parisien ni autre boss. Le staging RPG est l'adaptation explicitée du projet.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://killingfloor2.com/overview/",
+          "notes": "Outpost est une installation expérimentale isolée au nord du cercle arctique ; le lieu ne se confond pas avec Burning Paris."
+        },
+        {
+          "kind": "official-url",
+          "reference": "https://killingfloor2.com/returnofthepatriarch/",
+          "notes": "Illustration officielle du Patriarch consultée : mutant asymétrique, nodules verts, bras-chaingun et jambe mécanique. La composition et les textes officiels ne seront pas copiés."
+        },
+        {
+          "kind": "official-url",
+          "reference": "https://killingfloor2.com/InfiniteOnslaught18/",
+          "notes": "Le développeur décrit le Patriarch comme un grand monstre tentaculaire équipé d'une chain gun."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js:8",
+          "notes": "Continuité KF2 uniquement et gore atténué ; Outpost, Patriarch et les limites d'adaptation viennent du catalogue verrouillé du projet."
+        }
+      ]
+    },
+    {
+      "id": "34441",
+      "promptSha256": "cee4633ba75a6ca0c51d0e392f953fc0775cdbcd2053841479ab9e8fca4a9223",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T15:27:04.3307468Z",
+      "notes": "PNG effectivement inspecté en pleine image : installation arctique enneigée et clôturée, aucun Paris ; un seul Patriarch cyborg asymétrique, nodules verts, canon rotatif et jambe mécanique, appendice tentaculaire sans gore. Silhouette entière à droite, regard et arme vers la gauche, voie horizontale libre, aucune inscription ou interface.",
+      "generationId": "exec-161f4bca-4f77-4529-b0f7-cc201fb944a9",
+      "sourceSha256": "187db87f6a5afe55b889136783ceecd0bfc03d372afd5cd1b150d007d1c2379b"
+    },
+    {
+      "id": "34480",
+      "promptSha256": "a019bbbd900d9c55b165ac55cb4064590d91027251af894f4676563b6e9187eb",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:37:44.908Z",
+      "notes": "Prompt relu : parcours de livraison non combattant, trois sacs physiques, toits blancs et accents rouges, déplacement latéral. Continuité 2008 uniquement et adaptation de projet explicite ; aucun policier ni boss.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://www.ea.com/es/games/mirrors-edge/mirrors-edge",
+          "notes": "EA's original Mirror's Edge product page identifies Faith and the original game; no Catalyst/Glass continuity is used. The local delivery and puzzle objectives remain project adaptations."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js",
+          "notes": "Mirror's Edge 2008 only; non-combat project delivery course, not Catalyst."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence12 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34481",
+      "promptSha256": "2eb57ea02639967ba9f37510df3dcab33938cfb526b804eb0e594f7ad809b899",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:37:44.909Z",
+      "notes": "Prompt relu : un seul niveau de service du Shard, prises rouges et route verticale accessible vue de côté, sans Jacknife ni police. Le puzzle non combattant reste explicitement une adaptation du projet.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://www.ea.com/es/games/mirrors-edge/mirrors-edge",
+          "notes": "EA's original Mirror's Edge product page identifies Faith and the original game; no Catalyst/Glass continuity is used. The local delivery and puzzle objectives remain project adaptations."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js",
+          "notes": "Mirror's Edge 2008 only; original route-puzzle adaptation at The Shard, not the City of Glass."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence13 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34480",
+      "promptSha256": "a019bbbd900d9c55b165ac55cb4064590d91027251af894f4676563b6e9187eb",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:06.372Z",
+      "notes": "PNG inspecté : exactement trois sacs noirs à accents rouges sur des appuis accessibles, toits blancs, aucun personnage hostile, sol latéral continu et sortie cohérente. Aucun texte ni interface.",
+      "generationId": "exec-34fa7c75-ba14-473a-84ba-f64376b0c6b7",
+      "sourceSha256": "aa95adb9bba1ca92a803859638cb32cf5b7c5d412193ecd028ee26420f545b12"
+    },
+    {
+      "id": "34481",
+      "promptSha256": "2eb57ea02639967ba9f37510df3dcab33938cfb526b804eb0e594f7ad809b899",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:06.513Z",
+      "notes": "PNG inspecté : salle de service blanche, prises rouges et plateformes verticales, vue latérale, voie basse libre et issue à droite. Aucun policier, boss, texte lisible ou interface.",
+      "generationId": "exec-09a034d4-1fad-4575-bfc3-2d3ace9a28d9",
+      "sourceSha256": "4a523d905e2aad07f5c6c65cbfd86754103e8a8f8ea3d3f69254bfbac3cf3475"
+    },
+    {
+      "id": "34510",
+      "promptSha256": "f389f72603efac69121b2315296ee014a5302db7ee3b4093eecd482f490b25d6",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:37.577Z",
+      "notes": "Sujet relu : passage secret de manoir gothique, panneau mobile et porte cachée, enquête non combattante sans démon ni automate hostile, angle latéral. Disposition originale explicitement adaptée au projet.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://store.steampowered.com/app/501990/Phantasmagoria/",
+          "notes": "Sierra/Activision product description confirms Roberta Williams' original 1995 FMV nightmare. It does not authenticate invented trial names, mechanisms or a canonical boss called Carnovasch Demon Seal."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js",
+          "notes": "Original Phantasmagoria1995; non-combat investigation adapted to platform traversal. No FMV actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence18 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34511",
+      "promptSha256": "0d23a6363184314ef304e7edfda98219d8faff336c69607aea2e4041a362b3fe",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:37.725Z",
+      "notes": "Sujet relu : une chambre du manoir avec livre et emplacements des artefacts, puis accès à la sortie. Rituel et fuite sans boss visible, aucune violence graphique, une seule pièce cohérente.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://store.steampowered.com/app/501990/Phantasmagoria/",
+          "notes": "Sierra/Activision product description confirms Roberta Williams' original 1995 FMV nightmare. It does not authenticate invented trial names, mechanisms or a canonical boss called Carnovasch Demon Seal."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js",
+          "notes": "Phantasmagoria1995 only; the Banishment Trial is the project's non-combat escape/interaction scenario."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence19 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34540",
+      "promptSha256": "8a79f8eeb59a844b73a648465f966fb2c3be8ee23d89f0509545ebf7141cdfe6",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:37.873Z",
+      "notes": "Sujet relu : route rurale Erangel, infrastructure militaire usée, cônes de slalom et véhicule orienté dans le sens du trajet. Défi sans rivaux ni tirs ; adaptation latérale explicitée.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://support.pubg.com/hc/en-us/articles/115004199614-I-want-to-know-more-about-Erangel",
+          "notes": "PUBG support identifies Erangel as a fictional Black Sea island with former Soviet military infrastructure. No specific driving-course mission or invented narrative survivor is confirmed."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js",
+          "notes": "PUBG contemporary setting, original unnamed avatars, non-combat slalom adaptation."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence24 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34541",
+      "promptSha256": "06132f18023ff40279a07972dc7daf0df9e3cd03cde3700fa4baeb2e0c8699d7",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:38.017Z",
+      "notes": "Sujet relu : abri bas et rocher en bordure de champ Erangel, frontière bleue dans le monde et route sûre. Défi de survie à couvert sans tirs ni adversaire, aucune mini-carte peinte.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://support.pubg.com/hc/en-us/articles/115004199614-I-want-to-know-more-about-Erangel",
+          "notes": "PUBG support identifies Erangel as a fictional Black Sea island with former Soviet military infrastructure. No specific driving-course mission or invented narrative survivor is confirmed."
+        },
+        {
+          "kind": "official-url",
+          "reference": "https://support.pubg.com/hc/en-us/articles/115004168813-What-is-the-blue-circle",
+          "notes": "PUBG support distinguishes the shrinking blue zone and safe play area; use a world-space boundary, not a painted minimap or a supernatural monster."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js",
+          "notes": "PUBG contemporary non-combat cover/survival drill, not a supernatural finale."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence25 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34550",
+      "promptSha256": "c6e70db22e41166a05f85cd81bb32c7f089922c0b6115afba6a68ae8bda7653c",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:38.159Z",
+      "notes": "Sujet relu : salon de 1695 et exercice de protocole de cour. Boiseries et mobilier XVIIe, aucun empereur ni soldat napoléonien. Personnages non nécessaires ; aucune ressemblance avec acteurs.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://pro.m6.fr/w9/programme/2026-1/la-petite-histoire-de-france-70068585835889856",
+          "notes": "M6/W9 confirms the relatives-comedy premise and the Louis XIV/Napoleon periods, plus Philippe Honore, Marie-Louise and Renata/Jean Plancher. Exact years and gameplay objectives here come from project canon, not an authenticated episode."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js",
+          "notes": "La Petite Histoire de France, Louis XIV-era family comedy; year1695 from project canon. Non-combat; no actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence26 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34551",
+      "promptSha256": "0c2e7c081322811c84d8ab8e1955cc0fafbb5ba790fc7a9db05896c302b22016",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:38.316Z",
+      "notes": "Sujet relu : accueil d auberge de 1810, comptoir, bagages et accès aux chambres. Puzzle non combattant, aucune scène de bataille ni mélange avec salon de1695 ou taverne médiévale.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://pro.m6.fr/w9/programme/2026-1/la-petite-histoire-de-france-70068585835889856",
+          "notes": "M6/W9 confirms the relatives-comedy premise and the Louis XIV/Napoleon periods, plus Philippe Honore, Marie-Louise and Renata/Jean Plancher. Exact years and gameplay objectives here come from project canon, not an authenticated episode."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartJ.js",
+          "notes": "La Petite Histoire de France, Napoleonic-era inn comedy; year1810 comes from project canon. Non-combat, no actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence27 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34560",
+      "promptSha256": "557524c6e274464521777408e7d446e2f4e4d5544b6ada692cc2b0f0b77e9212",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:38.469Z",
+      "notes": "Sujet relu : maison fortifiée Strode de la continuité2018, interrupteurs et issue comme objectifs environnementaux. Aucun Michael Myers ni victime ; dispositif fictif non détaillé comme plan de construction.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://www.universalpicturesathome.com/press-release/halloween-2018-press-release",
+          "notes": "Universal describes Laurie Strode's heavily guarded home outside Haddonfield and preparations for Michael's return. This supports a fortified domestic setting, not a fantasy dungeon."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartK.js",
+          "notes": "Halloween2018/Kills/Ends continuity only; this scene selects the2018 fortified home. No Silver Shamrock or actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence28 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34561",
+      "promptSha256": "dbd3e4f85a834ffb0d1d093b1d6687b9723ac43682f1fdbe1acecf55b16a6b60",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:40:38.617Z",
+      "notes": "Sujet relu : drainage de Haddonfield interprété pour le projet, section latérale, balises de maintenance et sortie à droite. Pas de tueur visible ni promesse de reproduction exacte du film.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://www.universalpicturesathome.com/press-release/halloween-2018-press-release",
+          "notes": "Universal describes Laurie Strode's heavily guarded home outside Haddonfield and preparations for Michael's return. This supports a fortified domestic setting, not a fantasy dungeon."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartK.js",
+          "notes": "Halloween2018/Kills/Ends only; non-combat project evasion course. Sewer geometry here is an original scene interpretation pending any exact-film match."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence29 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34510",
+      "promptSha256": "f389f72603efac69121b2315296ee014a5302db7ee3b4093eecd482f490b25d6",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:43:58.767Z",
+      "notes": "PNG inspecté : boiseries du manoir, panneau fermé et passage dissimulé, clé accessible, voie latérale et accès inférieur. Pas de démon, de personnage ni de texte lisible.",
+      "generationId": "exec-5e145630-bca2-4b71-a482-21690a46abd6",
+      "sourceSha256": "02383be3666edc4c3975391a7ccd9ffbce061652fe2b48a510fe7998aba59b84"
+    },
+    {
+      "id": "34511",
+      "promptSha256": "0d23a6363184314ef304e7edfda98219d8faff336c69607aea2e4041a362b3fe",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:43:58.895Z",
+      "notes": "PNG inspecté : pièce gothique unique, livre fermé sur table et artefacts sur emplacements au sol, sortie lumineuse à droite. Aucun boss ni victime, pas de texte ou interface.",
+      "generationId": "exec-f1c31052-8151-492f-83ea-5bbefbf97264",
+      "sourceSha256": "753813fd77b1ce0c568badadc35874681762b6dc2edc918adf14334bd847b81e"
+    },
+    {
+      "id": "34540",
+      "promptSha256": "8a79f8eeb59a844b73a648465f966fb2c3be8ee23d89f0509545ebf7141cdfe6",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:43:59.023Z",
+      "notes": "PNG inspecté : route à cônes de slalom, véhicule et conducteur tournés vers la droite, hangar rural militaire cohérent, voie continue. Aucun adversaire ni tirs, ni texte ou marque lisible.",
+      "generationId": "exec-93e5570f-718a-4194-bd58-7eb73280dc3a",
+      "sourceSha256": "872539fab61abd3df6ba9edf656d7157f7e7ec616850034bb1a2709879f4e47d"
+    },
+    {
+      "id": "34541",
+      "promptSha256": "06132f18023ff40279a07972dc7daf0df9e3cd03cde3700fa4baeb2e0c8699d7",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:43:59.149Z",
+      "notes": "PNG inspecté : personnage original casqué accroupi derrière un mur, rocher et voie libre, zone bleue à distance dans le décor. Aucun tir ni adversaire, pas de mini-carte ni interface.",
+      "generationId": "exec-c2037f0c-7f54-4bc5-9fd7-381adc727ae5",
+      "sourceSha256": "464a4373aaa043470d640e4f10e05a9fae42ccf4c1ea40f4197e06ad535761fb"
+    },
+    {
+      "id": "34560",
+      "promptSha256": "557524c6e274464521777408e7d446e2f4e4d5544b6ada692cc2b0f0b77e9212",
+      "stage": "raster",
+      "status": "rejected",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:48:11.300Z",
+      "notes": "PNG inspecté et rejeté : les pointes verticales et la porte circulaire de coffre ajoutent des pièges fantaisistes non justifiés. Retouche requise vers volets et grilles métalliques domestiques, sans pointes.",
+      "generationId": "exec-49e09623-51a6-4def-be29-88b1164f1ff9",
+      "sourceSha256": "6263c95b324a3a7daac702a258a6059e460618a8706e97c40a255bfab523e209"
+    },
+    {
+      "id": "34560",
+      "promptSha256": "f70e78e25bca60e3eecc7fd13f3b18ebe4c5a39d21727af131e4924f270d147a",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:48:12.860Z",
+      "notes": "Retouche relue : conserver caméra et maison, retirer toutes les pointes et la porte de coffre ; remplacer par grilles à bouts plats, volets et porte domestique renforcée. Aucun ennemi ni ajout de décor étranger.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://www.universalpicturesathome.com/press-release/halloween-2018-press-release",
+          "notes": "Universal describes Laurie Strode's heavily guarded home outside Haddonfield and preparations for Michael's return. This supports a fortified domestic setting, not a fantasy dungeon."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartK.js",
+          "notes": "Halloween2018/Kills/Ends continuity only; this scene selects the2018 fortified home. No Silver Shamrock or actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence28 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34560",
+      "promptSha256": "a2e2a48d639f508353cbc34f0709e80e69fd6c2685efdc392972064fd36b2e63",
+      "stage": "subject-scene",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T16:49:07.822Z",
+      "notes": "Nouvelle génération relue : maison rurale américaine fortifiée, trois interrupteurs, grilles planes et volets ouverts ; pointes, portes circulaires et pièges médiévaux explicitement exclus. Le chargement du PNG de retouche a échoué avant génération ; aucun faux résultat compté.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "reference": "https://www.universalpicturesathome.com/press-release/halloween-2018-press-release",
+          "notes": "Universal describes Laurie Strode's heavily guarded home outside Haddonfield and preparations for Michael's return. This supports a fortified domestic setting, not a fantasy dungeon."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "src/game/canonRosterWavePartK.js",
+          "notes": "Halloween2018/Kills/Ends continuity only; this scene selects the2018 fortified home. No Silver Shamrock or actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "reference": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "notes": "Sequence28 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "id": "34550",
+      "promptSha256": "c6e70db22e41166a05f85cd81bb32c7f089922c0b6115afba6a68ae8bda7653c",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T17:33:01.453Z",
+      "notes": "PNG inspecté : salon à boiseries, mobilier et perruques XVIIe, document scellé sur table, vue latérale. Figures originales minuscules sans acteur identifiable, aucune armée impériale ni texte lisible.",
+      "generationId": "exec-f8469de1-fd09-49f6-9920-52657082d6d9",
+      "sourceSha256": "0186689a334b71f9a0789ae291ce953779797ad4935151dcb3bf9eeeab22da23"
+    },
+    {
+      "id": "34551",
+      "promptSha256": "0c2e7c081322811c84d8ab8e1955cc0fafbb5ba790fc7a9db05896c302b22016",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T17:33:01.580Z",
+      "notes": "PNG inspecté : comptoir et clés, bagages physiques, accès aux chambres et tenues début XIXe. Voyageurs tournés vers aubergiste, aucune bataille, aucun chiffre de chambre ni texte lisible.",
+      "generationId": "exec-8a34aaf3-6051-4128-8c47-d2a8572c80c8",
+      "sourceSha256": "f7461e1783eb90bdc110891d2b0dd2cea8ad28bf63aeccc11bb1cdc43794f87c"
+    },
+    {
+      "id": "34560",
+      "promptSha256": "a2e2a48d639f508353cbc34f0709e80e69fd6c2685efdc392972064fd36b2e63",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T17:33:01.689Z",
+      "notes": "PNG corrigé inspecté : portes domestiques renforcées, volets et grilles planes sans pointes, trois interrupteurs et escaliers, aucune porte circulaire de coffre. Voie basse libre, nuit automnale, aucun personnage ou texte.",
+      "generationId": "exec-80b6776f-25c7-4784-baf8-2adde4532ba0",
+      "sourceSha256": "338b63657a776ee398bde9598347780d6caf39b47c0e01f0278c064cd890e29c"
+    },
+    {
+      "id": "34561",
+      "promptSha256": "dbd3e4f85a834ffb0d1d093b1d6687b9723ac43682f1fdbe1acecf55b16a6b60",
+      "stage": "raster",
+      "status": "approved",
+      "reviewer": "root/codex",
+      "reviewedAt": "2026-08-31T17:33:01.805Z",
+      "notes": "PNG inspecté : drainage béton humide, éclairages physiques sur petits supports guidant vers sortie droite, section latérale et passerelle continue. Aucun tueur, cadavre, interface ou texte lisible.",
+      "generationId": "exec-006b54f5-1195-418c-a507-e0f8bba88d0e",
+      "sourceSha256": "d00121b594408d98879e75832436649eaa0c557cf3296103afd2c004f741cc2b"
     }
   ]
 }

@@ -47,7 +47,7 @@ Les décisions structurées sont enregistrées séparément dans `asset-batch-50
 
 Chaque décision contient `id`, `promptSha256`, `stage`, `status`, `reviewer`, l'heure réelle `reviewedAt` au format ISO et des observations concrètes `notes`. Les valeurs possibles de `stage` sont `subject-scene` et `raster` ; celles de `status` sont `approved` et `rejected`.
 
-- `subject-scene` exige aussi `sources: [{ kind, reference, notes }]`. `kind` vaut `official-url` pour une URL HTTPS officielle de franchise ou `project-canon` pour une référence exacte du canon/adaptation du projet. Les notes précisent ce que cette source confirme.
+- `subject-scene` exige aussi `sources: [{ kind, reference, notes }]`. `kind` vaut `official-url` pour une URL HTTPS officielle de franchise, `reference-url` pour une source secondaire HTTPS recoupée (jamais présentée comme officielle), ou `project-canon` pour une référence exacte du canon/adaptation du projet. Les notes précisent ce que cette source confirme.
 - `raster` exige l'identifiant réel `generationId` de l'outil intégré (`exec-…`) et le SHA-256 `sourceSha256` du PNG effectivement inspecté.
 - Une décision porte uniquement sur son identité et son prompt exact. Une modification de prompt invalide l'approbation précédente. La dernière décision pertinente du journal prévaut ; une revue de raster antérieure à la revue sujet/scène courante ne suffit pas.
 
@@ -97,6 +97,22 @@ Les archives doivent correspondre aux hashes et à la preuve historique du manif
 
 Les 500 **identités et sorties** restent fixes. Leur premier jeu de prompts ne signifie pas que les 496 autres sujets ont passé une revue de fidélité. Une correction ultérieure du catalogue pour un job non installé est donc légitime, mais le contrôle courant échoue explicitement avec `Current catalog prompt drift <id>` ; il ne remplit pas silencieusement le manifeste et ne prétend pas que l'ancienne approbation est encore valable.
 
-Cette situation demande une révision de production explicite et versionnée, sous tâche dédiée : conserver l'artefact et le prompt précédents comme trace, garder les mêmes 500 identités/sorties/baseline, modifier seulement le prompt du job non installé, enregistrer la justification et les nouveaux hashes, puis refaire sa revue sujet/scène et sa génération. L'ancien PNG et les anciens identifiants restent associés à leur vrai prompt. Un job déjà installé exige une décision de remplacement distincte avec archivage ; il ne peut pas être réétiqueté. Le constructeur courant n'offre délibérément aucun `--force` ni révision automatique.
+Cette situation demande une révision de production explicite et versionnée : conserver l'artefact et le prompt précédents comme trace, garder les mêmes 500 identités/sorties/baseline, corriger seulement les prompts de jobs `pending` ou `replacement-required`, enregistrer la justification et les nouveaux hashes, puis refaire leur revue sujet/scène et leur génération. L'ancien PNG et les anciens identifiants restent associés à leur vrai prompt. Un job déjà installé ou bloqué est refusé. Un remplacement d'image déjà installée demande une décision distincte avec archivage ; aucun réétiquetage n'est permis.
 
-Les tests couvrent notamment cette dérive bloquante, les doublons, les 14 remplacements, la conservation des 500 identités après installation partielle, les écritures idempotentes et l'impossibilité de conclure à une complétion à partir du prompt/PNG seuls.
+Après correction explicite du catalogue canonique, préparer une requête JSON contenant `schemaVersion: 1`, le `batchId` exact, un `revisionId` inédit, le SHA-256 réel `expectedArtifactSha256` de l'artefact actif, l'opérateur `author`, l'heure réelle ISO `createdAt` et une liste non vide `changes`. Chaque changement précise `id`, `priorPromptSha256`, `newPromptSha256`, `reason` et `sources: [{ kind, reference, notes }]`. Le nouveau texte est repris verbatim du catalogue courant, jamais reconstitué depuis un hash.
+
+```powershell
+node scripts/reviseRiftDossierBatch500Wave6.mjs --propose <requete.json> --out <plan.json>
+node scripts/reviseRiftDossierBatch500Wave6.mjs --apply <plan.json>
+node scripts/buildRiftDossierBatch500Wave6.mjs --check
+node scripts/buildRiftDossierBatch500Wave6.mjs --status
+node --test scripts/riftDossierBatch500Wave6Revision.test.mjs scripts/riftDossierWave6PromptOverrides.test.mjs
+```
+
+La proposition est sans mutation de l'artefact actif. Elle fige les hashes du catalogue, du registre, du ledger et les états de production. L'application recontrôle ces sources avant activation et échoue si elles ont changé : ne pas appliquer une révision pendant qu'un autre opérateur installe des images. Elle conserve `before.json`, les 500 prompts antérieurs, `after.json`, les nouveaux prompts versionnés et `revision.json` dans `asset-batch-500-wave-6-revisions/<numero>-<revisionId>/`. Les fichiers originaux ne sont ni effacés ni remplacés. Les seules métadonnées modifiables d'un job sont le texte et ses hashes, son chemin de prompt, sa politique et ses références documentées ; l'identité, le mode, la sortie et les preuves historiques de remplacement restent intacts.
+
+Un plan déjà appliqué est réutilisé sans nouvelle modification de l'artefact ni des archives. Une archive incomplète mais identique peut être reprise ; des octets divergents sont bloquants. Un verrou `apply.lock` indique une opération en cours ou interrompue : inspecter cette opération avant toute reprise, ne pas le contourner avec une application concurrente. Aucun `--force`, nouvelle sélection ou retour à un ancien hash de prompt n'est proposé.
+
+Le contrôle standard vérifie toute la chaîne de révisions, les archives, les prompts actifs **et le contenu exact des 500 fichiers de prompt originaux**, y compris lorsqu'un nouveau chemin versionné les a remplacés à l'usage. Une archive saine ne masque donc pas la corruption d'un original. Le mode interne `checkCatalog: false`, réservé aux propositions, conserve ces contrôles d'intégrité. Une nouvelle révision ne vaut pas approbation visuelle et n'avance aucun compteur d'images terminées.
+
+Les tests isolés couvrent notamment cette dérive bloquante, les doublons, les 14 remplacements, les quatre jobs déjà installés, les révisions successives, la corruption d'archives ou d'un prompt original révisé, les snapshots périmés, les écritures idempotentes et l'impossibilité de conclure à une complétion à partir du prompt/PNG seuls.

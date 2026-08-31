@@ -1,0 +1,874 @@
+{
+  "schemaVersion": 1,
+  "batchId": "assets-rift-dossier-pending-500-wave-6-2026-08-31",
+  "reviewedAt": "2026-08-31",
+  "sequenceRange": [
+    9,
+    32
+  ],
+  "count": 24,
+  "scope": "Independent subject/scene research only. No manifest, catalog, runtime, image or approval journal mutated.",
+  "policy": "promptPrepared is not visual approval. requiresResearch entries must not be generated until their specific evidence/design gaps are resolved. Web pages establish only the facts stated in source notes; generic publisher pages do not authenticate exact boss appearances.",
+  "reviews": [
+    {
+      "sequence": 9,
+      "id": "34461",
+      "stageId": 34461,
+      "assetId": "stage-34461-woden-manor-construction-v1",
+      "title": "Woden Manor Construction",
+      "univers": "Max Payne 2",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34461-woden-manor-construction-v1.webp",
+      "sourceGenerationPromptSha256": "cc56155dba530149d3cc6e8987325f7be88fbb2c4696cdb318d0a52a2553f1ee",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Woden Manor Construction. Universe: Max Payne 2. Stage: 34461. Mode: RPG.\nContinuity and adaptation: Max Payne 2 original only; no actor likeness.\nScene/backdrop: One enclosed Woden Manor construction hall: unfinished mansion walls, scaffolding and overhead construction platforms, a clear horizontal lower floor; no hospital, street or other locations.\nSubject and action: Vladimir Lem is the sole named antagonist. Keep him human-sized on the right, looking and aiming left; use his verified Max Payne 2 finale model only. Do not turn a Russian criminal into an armored supervillain or invent facial/wardrobe details.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Remove the whole-world cast and Hospital Noir. Primary page is insufficient to approve the finale model and vertical platform configuration.",
+      "researchNeeded": "Obtain a publisher/developer gameplay frame of Vladimir and Woden Manor's finale; then resolve how its vertical danger is represented without obscuring the RPG lane.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://www.rockstargames.com/newswire/article/o349k55254a293/classic-max-payne-avatar-items-now-available-on-xbox-live.html",
+          "note": "Rockstar lists a Vladimir Lem outfit tied to the original games; does not establish the Woden Manor finale geometry or the exact finale outfit."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Max Payne 2 original only; no actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence9 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 10,
+      "id": "34470",
+      "stageId": 34470,
+      "assetId": "stage-34470-occupied-city-v1",
+      "title": "Occupied City",
+      "univers": "Metal Slug",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34470-occupied-city-v1.webp",
+      "sourceGenerationPromptSha256": "36ae1f4fcf5df2be81029fab90cea640eed2fb8a0805822624a2dd9fba1fc211",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Occupied City. Universe: Metal Slug. Stage: 34470. Mode: RPG.\nContinuity and adaptation: Metal Slug arcade anthology; this encounter location is an explicit project adaptation.\nScene/backdrop: One occupied industrial city waterfront, a horizontal quay as battle floor and water behind it. Keep the war-damaged city within this single location; no desert insert or airfield montage.\nSubject and action: Big Shiee alone is the designated threat. Verify its original mechanical hull, waterline and turret profile before depicting it; never invent a giant soldier, animal or walking tank from its name. The verified vehicle's weapons point toward the open left combat lane.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "A generic occupied street cannot justify a boss design. A waterfront interpretation is proposed to accommodate the mechanical encounter, pending primary visual verification.",
+      "researchNeeded": "Find an official original-arcade frame identifying Big Shiee, its aquatic/vehicle configuration and relative scale; waterfront geometry is provisional.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://www.snk-corp.co.jp/official/akeakaneogeo/metalslug/",
+          "note": "SNK confirms the 1996 game, Marco/Tarma, Morden and stolen military vehicles. This page does not identify Big Shiee or Hi-Do morphology."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Metal Slug arcade anthology; this encounter location is an explicit project adaptation."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence10 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 11,
+      "id": "34471",
+      "stageId": 34471,
+      "assetId": "stage-34471-final-mission-airfield-v1",
+      "title": "Final Mission Airfield",
+      "univers": "Metal Slug",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34471-final-mission-airfield-v1.webp",
+      "sourceGenerationPromptSha256": "22733a44e9007788ad3e3ccf37adf97960868020c20927441baf95185707a577",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Final Mission Airfield. Universe: Metal Slug. Stage: 34471. Mode: RPG.\nContinuity and adaptation: Metal Slug original-arcade military language; project airfield encounter, not a claim of an exact recreated mission.\nScene/backdrop: One military airfield apron with runway slabs and hangar background; keep open ground across the lower half, no occupied-city or desert split.\nSubject and action: General Morden - Hi-Do is one encounter, not Morden plus several unrelated bosses. Verify the Hi-Do aircraft silhouette, rotor and gun arrangement and Morden's position before drawing; face the craft's attack direction left and keep it within frame.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "The original prompt could generate a generic giant Morden and multiple vehicles. Preserve the compound identity while withholding unverified machine details.",
+      "researchNeeded": "Obtain an official SNK original-game image identifying Hi-Do and how Morden appears with it.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://www.snk-corp.co.jp/official/akeakaneogeo/metalslug/",
+          "note": "SNK confirms the 1996 game, Marco/Tarma, Morden and stolen military vehicles. This page does not identify Big Shiee or Hi-Do morphology."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Metal Slug original-arcade military language; project airfield encounter, not a claim of an exact recreated mission."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence11 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 12,
+      "id": "34480",
+      "stageId": 34480,
+      "assetId": "stage-34480-runner-bag-delivery-v1",
+      "title": "Runner Bag Delivery",
+      "univers": "Mirror's Edge",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34480-runner-bag-delivery-v1.webp",
+      "sourceGenerationPromptSha256": "b2dd4d34a79db7930ce74629761049d18396e1904843a219101fa55562a64e05",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Runner Bag Delivery. Universe: Mirror's Edge. Stage: 34480. Mode: Smash.\nContinuity and adaptation: Mirror's Edge 2008 only; non-combat project delivery course, not Catalyst.\nScene/backdrop: One continuous white concrete rooftop courier route with red traversal accents, vent housings, low rails and exactly three unobtrusive messenger bags as physical objectives. Bright clean daylight; no extra districts.\nSubject and action: No boss, hostile police, pursuers or combat stance. Keep traversal left-to-right with bag placements on reachable ledges. The playable runner area can remain empty; do not add named characters merely because they occur in universe metadata.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Remove Callaghan and all enemy anchors; the local source explicitly asks delivery of three bags.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://www.ea.com/es/games/mirrors-edge/mirrors-edge",
+          "note": "EA's original Mirror's Edge product page identifies Faith and the original game; no Catalyst/Glass continuity is used. The local delivery and puzzle objectives remain project adaptations."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Mirror's Edge 2008 only; non-combat project delivery course, not Catalyst."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence12 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 13,
+      "id": "34481",
+      "stageId": 34481,
+      "assetId": "stage-34481-the-shard-route-puzzle-v1",
+      "title": "The Shard Route Puzzle",
+      "univers": "Mirror's Edge",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34481-the-shard-route-puzzle-v1.webp",
+      "sourceGenerationPromptSha256": "6b7911b9c682d5321ef6b44ed4207909dd50950df2ac149a77de3e6995756a71",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: The Shard Route Puzzle. Universe: Mirror's Edge. Stage: 34481. Mode: Smash.\nContinuity and adaptation: Mirror's Edge 2008 only; original route-puzzle adaptation at The Shard, not the City of Glass.\nScene/backdrop: One high-rise service level of The Shard with clean pale surfaces, red handholds, connected maintenance ledges and a visible route to an exit. Maintain a single indoor space rather than a tower-plus-rooftops collage.\nSubject and action: No Jacknife, police, boss or actor likeness. Show navigable gaps and route choices without target icons or combat. No invented readable security display.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "The local authoring row says ouvrir la route verticale while the frozen runtime uses Hit every target. Illustrate reachable service ledges and an opening route; preserve current non-combat mode without asserting a new mechanic.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://www.ea.com/es/games/mirrors-edge/mirrors-edge",
+          "note": "EA's original Mirror's Edge product page identifies Faith and the original game; no Catalyst/Glass continuity is used. The local delivery and puzzle objectives remain project adaptations."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Mirror's Edge 2008 only; original route-puzzle adaptation at The Shard, not the City of Glass."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence13 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 14,
+      "id": "34490",
+      "stageId": 34490,
+      "assetId": "stage-34490-rabbits-of-the-moon-v1",
+      "title": "Rabbits of the Moon",
+      "univers": "Overgrowth",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34490-rabbits-of-the-moon-v1.webp",
+      "sourceGenerationPromptSha256": "7a8a808c136c7dcfea705d86f8f289d3f30a1869c9718c2a5f6c316b81f0b5fb",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Rabbits of the Moon. Universe: Overgrowth. Stage: 34490. Mode: RPG.\nContinuity and adaptation: Project explicitly combines Overgrowth and the included Lugaru campaign; no mods.\nScene/backdrop: One rocky rabbit-settlement approach for the operation Rabbits of the Moon, with low stone ruins and a clear earthen battle terrace. Do not interpret the title as rabbits on a literal lunar surface.\nSubject and action: Ash alone is the designated adversary. A developer-hosted community wiki calls him an alpha wolf from Lugaru; verify the shipped Overgrowth/Lugaru model before specifying fur, gear or weapons. Place the verified anthropomorphic subject on the right facing left.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Ash's identity is not established by the primary store page; the community-hosted lead is useful but not independent developer authorship. Keep the permitted anthology explicit.",
+      "researchNeeded": "Verify Ash in official Wolfire gameplay or shipped data, and verify what Rabbits of the Moon denotes before final scene approval.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://wiki.wolfire.com/Ash",
+          "note": "Developer-hosted COMMUNITY wiki, not verified developer authorship: calls Ash an alpha wolf in Lugaru and Overgrowth's Lugaru campaign. Treated only as a research lead, not a primary visual approval."
+        },
+        {
+          "kind": "official-url",
+          "url": "https://store.steampowered.com/app/25000/Overgrowth/",
+          "note": "Wolfire's publisher description confirms rabbit liberation, acrobatic martial arts and the included prequel story. It does not specify Ash/Amethyst models or fortress geometry."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Project explicitly combines Overgrowth and the included Lugaru campaign; no mods."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence14 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 15,
+      "id": "34491",
+      "stageId": 34491,
+      "assetId": "stage-34491-sky-island-fortress-v1",
+      "title": "Sky Island Fortress",
+      "univers": "Overgrowth",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34491-sky-island-fortress-v1.webp",
+      "sourceGenerationPromptSha256": "a1c432ca701cb5409efdb51509dd945450b198294bd80f99575f11c846b54a72",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Sky Island Fortress. Universe: Overgrowth. Stage: 34491. Mode: RPG.\nContinuity and adaptation: Overgrowth and Lugaru anthology as authored; no workshop characters.\nScene/backdrop: One high rocky island fortress courtyard above cloud level, connected masonry and a continuous near battle floor. This is a proposed original interpretation of Sky Island Fortress, not a verified map recreation.\nSubject and action: Amethyst alone is the named encounter. Do not infer a purple gemstone golem, dragon, sorceress, or rabbit from the name. Use only an authenticated base-game model, fully visible on the right facing left.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "The source gives Amethyst's name without species or silhouette. A fully invented gem-themed boss would be misleading.",
+      "researchNeeded": "Obtain Wolfire-authored or shipped-game evidence for Amethyst's species, costume and fortress setting; no subject generation before this.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://store.steampowered.com/app/25000/Overgrowth/",
+          "note": "Wolfire's publisher description confirms rabbit liberation, acrobatic martial arts and the included prequel story. It does not specify Ash/Amethyst models or fortress geometry."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Overgrowth and Lugaru anthology as authored; no workshop characters."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence15 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 16,
+      "id": "34500",
+      "stageId": 34500,
+      "assetId": "stage-34500-rayne-syndicate-tower-v1",
+      "title": "Rayne Syndicate Tower",
+      "univers": "Palworld",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34500-rayne-syndicate-tower-v1.webp",
+      "sourceGenerationPromptSha256": "a17c0598273f1024ac0ea63690f1c2680c137248db2c9cabbac4098044766008",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Rayne Syndicate Tower. Universe: Palworld. Stage: 34500. Mode: RPG.\nContinuity and adaptation: Palworld launch-era tower leaders only. The frozen Rayne Syndicate Tower pairing with Axel & Orserk is a PROJECT encounter, not a verified canonical tower assignment.\nScene/backdrop: One enclosed Rayne tower arena with a continuous stone-tech floor and tall walls, no mountains, volcano or second tower merged into it.\nSubject and action: Axel & Orserk are the only opposing pair, human trainer and his own verified Pal model; do not substitute Zoe & Grizzbolt or add other tower teams. Both oriented toward the open left lane, Pal whole-body silhouette legible.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Preserve output identity without silently swapping the named boss or falsely claiming its home tower. The general Pocketpair page does not validate this association or exact models.",
+      "researchNeeded": "Verify launch-era Axel/Orserk models and official tower affiliation; explicitly approve any cross-tower scenario as project adaptation.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://store.steampowered.com/app/1623730/Palworld/",
+          "note": "Pocketpair confirms Pals, poaching syndicates, mounts and survival. The current page includes later material; only the launch-era roster locked by project canon is in scope. It does not validate the requested boss/tower pairing."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Palworld launch-era tower leaders only. The frozen Rayne Syndicate Tower pairing with Axel & Orserk is a PROJECT encounter, not a verified canonical tower assignment."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence16 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 17,
+      "id": "34501",
+      "stageId": 34501,
+      "assetId": "stage-34501-astral-mountains-v1",
+      "title": "Astral Mountains",
+      "univers": "Palworld",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34501-astral-mountains-v1.webp",
+      "sourceGenerationPromptSha256": "37e599ec42259b577a6b78aa070ac4b9732c939043aaecffd0a09b79ce180a00",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Astral Mountains. Universe: Palworld. Stage: 34501. Mode: RPG.\nContinuity and adaptation: Palworld launch roster only; outdoor Astral Mountains scene is a project encounter rather than a claim of the exact tower battle.\nScene/backdrop: One snowy mountain terrace in the Astral Mountains, cold rock, snowbanks and distant peaks in one continuous landscape. Do not render outer space because of the word Astral.\nSubject and action: Victor & Shadowbeak only, using authenticated launch-era trainer and Pal silhouettes. Pair on right facing left, whole Pal visible; no extra Grizzbolt, Orserk or tower roster. Do not invent an ordinary raven or black dragon in place of Shadowbeak.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "The generic prompt blends Windswept Hills and every tower boss; remove that contamination. Exact trainer/Pal appearance still lacks primary verification.",
+      "researchNeeded": "Obtain official launch-era Victor/Shadowbeak imagery and mountain setting reference; do not use later1.0 additions.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://store.steampowered.com/app/1623730/Palworld/",
+          "note": "Pocketpair confirms Pals, poaching syndicates, mounts and survival. The current page includes later material; only the launch-era roster locked by project canon is in scope. It does not validate the requested boss/tower pairing."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Palworld launch roster only; outdoor Astral Mountains scene is a project encounter rather than a claim of the exact tower battle."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence17 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 18,
+      "id": "34510",
+      "stageId": 34510,
+      "assetId": "stage-34510-secret-rooms-puzzle-v1",
+      "title": "Secret Rooms Puzzle",
+      "univers": "Phantasmagoria",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34510-secret-rooms-puzzle-v1.webp",
+      "sourceGenerationPromptSha256": "87803003219028b3f05e23535c952bfc2e2318d2a8cf3f3a3fb752da1fe748e8",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Secret Rooms Puzzle. Universe: Phantasmagoria. Stage: 34510. Mode: Smash.\nContinuity and adaptation: Original Phantasmagoria1995; non-combat investigation adapted to platform traversal. No FMV actor likeness.\nScene/backdrop: One enclosed gothic manor secret passage with aged wood panels, a concealed door, stone recesses and an accessible corridor across the frame. The door-and-clue layout is an original project puzzle, not a copied canonical room.\nSubject and action: No demon, boss or hostile automaton. Use an unmarked key object, movable panel and reachable exit as environmental clues; do not add portraits resembling the actors.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Remove all demon/trial-threat anchors from the non-combat finale; preserve the opening-passages intent while avoiding fictional canonical machinery.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://store.steampowered.com/app/501990/Phantasmagoria/",
+          "note": "Sierra/Activision product description confirms Roberta Williams' original 1995 FMV nightmare. It does not authenticate invented trial names, mechanisms or a canonical boss called Carnovasch Demon Seal."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Original Phantasmagoria1995; non-combat investigation adapted to platform traversal. No FMV actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence18 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 19,
+      "id": "34511",
+      "stageId": 34511,
+      "assetId": "stage-34511-banishment-trial-v1",
+      "title": "Banishment Trial",
+      "univers": "Phantasmagoria",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34511-banishment-trial-v1.webp",
+      "sourceGenerationPromptSha256": "198fe01b84d638ff9e74a64bffaee28067d7fd5097580d258c3112a2b08c94d0",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Banishment Trial. Universe: Phantasmagoria. Stage: 34511. Mode: Smash.\nContinuity and adaptation: Phantasmagoria1995 only; the Banishment Trial is the project's non-combat escape/interaction scenario.\nScene/backdrop: One secluded chamber in the gothic manor with a small ritual-object table, a closed old book, talisman placement space and a clear retreat to a lit doorway. One room, not crypt, theater and chapel collaged together.\nSubject and action: No visible monster, attack, victim, gore or sexual violence. Treat banishment as arranging objects and escaping, not a newly invented canonical Carnovasch boss. Any human may be omitted to avoid actor likeness.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Frozen objective asks ordered checkpoints and exit; source authoring mentions artifacts and escape. Keep both visually compatible and do not promise a boss battle.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://store.steampowered.com/app/501990/Phantasmagoria/",
+          "note": "Sierra/Activision product description confirms Roberta Williams' original 1995 FMV nightmare. It does not authenticate invented trial names, mechanisms or a canonical boss called Carnovasch Demon Seal."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Phantasmagoria1995 only; the Banishment Trial is the project's non-combat escape/interaction scenario."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence19 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 20,
+      "id": "34520",
+      "stageId": 34520,
+      "assetId": "stage-34520-stuttgart-rave-v1",
+      "title": "Stuttgart Rave",
+      "univers": "Sam & Max",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34520-stuttgart-rave-v1.webp",
+      "sourceGenerationPromptSha256": "94fe070a7afe18d7c9268ac98cccbfe940592c0e5426ab91c7b90a0b513d1c7a",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Stuttgart Rave. Universe: Sam & Max. Stage: 34520. Mode: RPG.\nContinuity and adaptation: Sam & Max classic/Telltale anthology is allowed locally; General Skun-kaape at Stuttgart is explicitly an anthology encounter, not the canonical rave adversary.\nScene/backdrop: One cartoon Stuttgart nightclub dance floor, speakers and colored dance lighting inside a single club; no Freelance Police office, spaceship interior or street insert.\nSubject and action: Only the authenticated General Skun-kaape model on the right facing left. Do not replace him with Jurgen or add Maxthulhu, zombies and Maimtron just because the universe list names them. Keep the center dance-floor lane clear.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Official season2 describes the vampire/dancing-zombie setting, while season3 covers cosmic villains. The pairing must not be presented as an original episode event.",
+      "researchNeeded": "Verify the General's exact shipped model and the Stuttgart club visuals from developer material; retain the cross-season warning.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://skunkapegames.com/samandmax/season2/",
+          "note": "Developer describes the second season, dancing zombies and a Eurotrash vampire. It does not establish General Skun-kaape as the canonical Stuttgart adversary."
+        },
+        {
+          "kind": "official-url",
+          "url": "https://skunkapegames.com/samandmax/season3/index.html",
+          "note": "Developer identifies The Devil's Playhouse as the 2010 third season; Max's psychic powers and the Toys of Power attract intergalactic villains. Exact final transformed anatomy and the Stuttgart pairing are not established by the text."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Sam & Max classic/Telltale anthology is allowed locally; General Skun-kaape at Stuttgart is explicitly an anthology encounter, not the canonical rave adversary."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence20 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 21,
+      "id": "34521",
+      "stageId": 34521,
+      "assetId": "stage-34521-straight-and-narrow-v1",
+      "title": "Straight & Narrow",
+      "univers": "Sam & Max",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34521-straight-and-narrow-v1.webp",
+      "sourceGenerationPromptSha256": "146ec5c764d694f5761fedf6b9be466856a2683f3752511902353177e85c7ae4",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Straight & Narrow. Universe: Sam & Max. Stage: 34521. Mode: RPG.\nContinuity and adaptation: Sam & Max Telltale anthology; the frozen boss label Maxthulhu is retained, not treated as a generic Lovecraft license.\nScene/backdrop: One cartoon Straight & Narrow street frontage and pavement at night, a single continuous neighborhood view. No Stuttgart nightclub or spaceship montage.\nSubject and action: The exact transformed Max associated with the final Devil's Playhouse story is the sole threat; validate its actual anatomy and scale first. Do not invent a stock green octopus god from the nickname Maxthulhu. Keep the combat frontage readable, threat oriented toward the left.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Developer prose confirms Max's powers becoming dangerous but not the final monster's exact morphology or the nickname. This cannot be approved from name alone.",
+      "researchNeeded": "Acquire an official finale frame establishing transformed Max's identity, head, limbs and scale relative to this street.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://skunkapegames.com/samandmax/season3/index.html",
+          "note": "Developer identifies The Devil's Playhouse as the 2010 third season; Max's psychic powers and the Toys of Power attract intergalactic villains. Exact final transformed anatomy and the Stuttgart pairing are not established by the text."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "Sam & Max Telltale anthology; the frozen boss label Maxthulhu is retained, not treated as a generic Lovecraft license."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence21 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 22,
+      "id": "34530",
+      "stageId": 34530,
+      "assetId": "stage-34530-apocalypse-weekend-v1",
+      "title": "Apocalypse Weekend",
+      "univers": "Postal",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34530-apocalypse-weekend-v1.webp",
+      "sourceGenerationPromptSha256": "03a985e944e784eee778bd69fce81ca9b7678aadf2d5e667085ac07f8e419a62",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Apocalypse Weekend. Universe: Postal. Stage: 34530. Mode: RPG.\nContinuity and adaptation: POSTAL anthology allowed, no celebrities, protected-group caricatures, nudity or gore. Apocalypse Weekend remains its own POSTAL2 setting.\nScene/backdrop: One damaged Paradise suburban block during the Apocalypse Weekend crisis, dusty street and modest buildings with a clear ground lane. Any psychological distortion stays confined to this same scene.\nSubject and action: Brain-Damaged Nightmare is a PROJECT threat label without an authenticated creature model. Do not convert it into a canonical boss or import a Brain Damaged character without approval. Do not generate the threat until its project visual design is specified.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "RWS confirms Apocalypse Weekend and a head-injury premise; the named nightmare is not confirmed. Preserve the identity and block invented boss morphology.",
+      "researchNeeded": "Need a project-canon visual definition for Brain-Damaged Nightmare, or a formally chosen verified antagonist; no implicit substitution.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://runningwithscissors.com/games/postal2/",
+          "note": "RWS describes Apocalypse Weekend as a POSTAL2 expansion with head-injury ambiguity and the destruction of Paradise. It does not identify Brain-Damaged Nightmare as a named canonical boss."
+        },
+        {
+          "kind": "official-url",
+          "url": "https://runningwithscissors.com/games/postal-brain-damaged/",
+          "note": "RWS describes Brain Damaged as a separate retro-shooter spin-off beginning in an asylum and proceeding through a fever dream. It does not identify a canonical entity named Paradise Meltdown."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "POSTAL anthology allowed, no celebrities, protected-group caricatures, nudity or gore. Apocalypse Weekend remains its own POSTAL2 setting."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence22 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 23,
+      "id": "34531",
+      "stageId": 34531,
+      "assetId": "stage-34531-brain-damaged-dreamscape-v1",
+      "title": "Brain-Damaged Dreamscape",
+      "univers": "Postal",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34531-brain-damaged-dreamscape-v1.webp",
+      "sourceGenerationPromptSha256": "948edb0688b13766f72cec54234c7a9755f4216bc0f2fbf5857299a12a8c1459",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Brain-Damaged Dreamscape. Universe: Postal. Stage: 34531. Mode: RPG.\nContinuity and adaptation: POSTAL: Brain Damaged dream framing within the local anthology; no new canonical boss called Paradise Meltdown.\nScene/backdrop: One distorted asylum common room from the Brain Damaged fever-dream premise, warped institutional doors and an intact horizontal walking strip. Keep it one spatial scene, not several games blended together.\nSubject and action: Paradise Meltdown is an undefined PROJECT encounter label. Do not invent a nuclear mutant, a giant Postal Dude or a literal city-shaped monster. A threat needs an approved project visual definition before generation; no celebrities, gore or nudity.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "RWS supports the asylum/fever dream, not a named Paradise Meltdown entity. The operation and enemy labels cross themes without defining a physical subject.",
+      "researchNeeded": "Resolve whether Paradise Meltdown is an environmental crisis or a particular entity; obtain project authorization/design before depicting it.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://runningwithscissors.com/games/postal-brain-damaged/",
+          "note": "RWS describes Brain Damaged as a separate retro-shooter spin-off beginning in an asylum and proceeding through a fever dream. It does not identify a canonical entity named Paradise Meltdown."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "POSTAL: Brain Damaged dream framing within the local anthology; no new canonical boss called Paradise Meltdown."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence23 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 24,
+      "id": "34540",
+      "stageId": 34540,
+      "assetId": "stage-34540-erangel-driving-course-v1",
+      "title": "Erangel Driving Course",
+      "univers": "PUBG",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34540-erangel-driving-course-v1.webp",
+      "sourceGenerationPromptSha256": "ce1502375d28e6f8cdd9c87fc5835d9feb9e73bb0ffdba6730eceacd2348136a",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Erangel Driving Course. Universe: PUBG. Stage: 34540. Mode: Smash.\nContinuity and adaptation: PUBG contemporary setting, original unnamed avatars, non-combat slalom adaptation.\nScene/backdrop: One Erangel rural-road training segment with grass, weathered military-storehouse frontage and physical slalom cones on a continuous road. One modest off-road training vehicle may face right; no branded model claim.\nSubject and action: No rival survivor, sniper, red-zone bombardment or boss. Emphasize driving between cones and reaching an open exit. Vehicle and any driver face their direction of travel; no collision victims.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Project source says finish the slalom; the frozen generic target objective must not be interpreted as shooting people. Visual conveys the named driving trial without changing runtime.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://support.pubg.com/hc/en-us/articles/115004199614-I-want-to-know-more-about-Erangel",
+          "note": "PUBG support identifies Erangel as a fictional Black Sea island with former Soviet military infrastructure. No specific driving-course mission or invented narrative survivor is confirmed."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "PUBG contemporary setting, original unnamed avatars, non-combat slalom adaptation."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence24 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 25,
+      "id": "34541",
+      "stageId": 34541,
+      "assetId": "stage-34541-final-circle-survival-trial-v1",
+      "title": "Final Circle Survival Trial",
+      "univers": "PUBG",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34541-final-circle-survival-trial-v1.webp",
+      "sourceGenerationPromptSha256": "8434262e45b838bae0ea1dd88222a3b830a0ae0ce28a2a2d920cc1ead805a121",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Final Circle Survival Trial. Universe: PUBG. Stage: 34541. Mode: Smash.\nContinuity and adaptation: PUBG contemporary non-combat cover/survival drill, not a supernatural finale.\nScene/backdrop: One Erangel field edge with a low ruined wall and a rock inside a shrinking safe area. A faint blue energy boundary is visible in the physical distance; no map rings painted on the ground or HUD overlay.\nSubject and action: No hostile person, named boss, bullets or combat. An optional original helmeted trainee remains behind cover, looking toward the safe route on the right. Final Circle is a game condition, not a monster.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Keep the author's remain-covered-without-attacking rule; remove the enemy roster and do not anthropomorphize the Blue Zone.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://support.pubg.com/hc/en-us/articles/115004199614-I-want-to-know-more-about-Erangel",
+          "note": "PUBG support identifies Erangel as a fictional Black Sea island with former Soviet military infrastructure. No specific driving-course mission or invented narrative survivor is confirmed."
+        },
+        {
+          "kind": "official-url",
+          "url": "https://support.pubg.com/hc/en-us/articles/115004168813-What-is-the-blue-circle",
+          "note": "PUBG support distinguishes the shrinking blue zone and safe play area; use a world-space boundary, not a painted minimap or a supernatural monster."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "PUBG contemporary non-combat cover/survival drill, not a supernatural finale."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence25 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 26,
+      "id": "34550",
+      "stageId": 34550,
+      "assetId": "stage-34550-le-salon-de-1695-v1",
+      "title": "Le salon de 1695",
+      "univers": "La Petite Histoire de France",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34550-le-salon-de-1695-v1.webp",
+      "sourceGenerationPromptSha256": "32d5583d417f1364c4826af54f22880393ec0b4afbc93e74e7665325eee23335",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Le salon de 1695. Universe: La Petite Histoire de France. Stage: 34550. Mode: Smash.\nContinuity and adaptation: La Petite Histoire de France, Louis XIV-era family comedy; year1695 from project canon. Non-combat; no actor likeness.\nScene/backdrop: One modestly pretentious late-seventeenth-century salon: wood paneling, fireplace, period chairs and a table laid for a protocol exercise. No medieval tavern or Napoleonic inn merged into it.\nSubject and action: No boss, weapons or monarch cameo. Use period seating and an unlettered sealed document as environmental interaction clues; omit people or use tiny non-identifying original figures attending the table.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Frozen objective says Imperial Inspection despite1695; do not add Napoleon or imperial soldiers. Render a neutral protocol puzzle preserving the correct era.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://pro.m6.fr/w9/programme/2026-1/la-petite-histoire-de-france-70068585835889856",
+          "note": "M6/W9 confirms the relatives-comedy premise and the Louis XIV/Napoleon periods, plus Philippe Honore, Marie-Louise and Renata/Jean Plancher. Exact years and gameplay objectives here come from project canon, not an authenticated episode."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "La Petite Histoire de France, Louis XIV-era family comedy; year1695 from project canon. Non-combat; no actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence26 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 27,
+      "id": "34551",
+      "stageId": 34551,
+      "assetId": "stage-34551-l-auberge-de-1810-v1",
+      "title": "L auberge de 1810",
+      "univers": "La Petite Histoire de France",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34551-l-auberge-de-1810-v1.webp",
+      "sourceGenerationPromptSha256": "09318cf7104ba95e43a3e06da780edc0713b653ece3d87c62822f9ec67b392c5",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: L auberge de 1810. Universe: La Petite Histoire de France. Stage: 34551. Mode: Smash.\nContinuity and adaptation: La Petite Histoire de France, Napoleonic-era inn comedy; year1810 comes from project canon. Non-combat, no actor likeness.\nScene/backdrop: One early-nineteenth-century inn reception room with a timber counter, luggage, coat hooks and doors to guest rooms. A single connected interior, neither medieval tavern nor aristocratic1695salon.\nSubject and action: No boss or battle. Show luggage waiting to be matched with room access through physical placement, without readable room numbers or floating objective symbols. Optional tiny original innkeeper faces the luggage/guests, not camera.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Source authoring asks matching rooms and bags; generic runtime targets are not authority to add shooting or imperial combat.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://pro.m6.fr/w9/programme/2026-1/la-petite-histoire-de-france-70068585835889856",
+          "note": "M6/W9 confirms the relatives-comedy premise and the Louis XIV/Napoleon periods, plus Philippe Honore, Marie-Louise and Renata/Jean Plancher. Exact years and gameplay objectives here come from project canon, not an authenticated episode."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartJ.js",
+          "note": "La Petite Histoire de France, Napoleonic-era inn comedy; year1810 comes from project canon. Non-combat, no actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence27 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 28,
+      "id": "34560",
+      "stageId": 34560,
+      "assetId": "stage-34560-strode-compound-traps-v1",
+      "title": "Strode Compound Traps",
+      "univers": "Halloween",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34560-strode-compound-traps-v1.webp",
+      "sourceGenerationPromptSha256": "299e3c558c7c457d30cfed517458dbcf6bbe25ea6283f5754abfd1facd173721",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Strode Compound Traps. Universe: Halloween. Stage: 34560. Mode: Smash.\nContinuity and adaptation: Halloween2018/Kills/Ends continuity only; this scene selects the2018 fortified home. No Silver Shamrock or actor likeness.\nScene/backdrop: One interior zone of the Strode fortified house with reinforced doors, practical shutters, a descending escape access and clearly separated mechanical switches. Domestic wood and hard security hardware, autumn-night light.\nSubject and action: No Michael Myers, Sartain, Corey, victim or boss in the image: the authored finale is non-combat. The trap mechanisms are environmental objectives, not a diagram for construction. Keep a traversable escape lane.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "Universal supports a heavily guarded home; the exact sequential switch puzzle is a project adaptation. Remove all antagonist-list contamination.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://www.universalpicturesathome.com/press-release/halloween-2018-press-release",
+          "note": "Universal describes Laurie Strode's heavily guarded home outside Haddonfield and preparations for Michael's return. This supports a fortified domestic setting, not a fantasy dungeon."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartK.js",
+          "note": "Halloween2018/Kills/Ends continuity only; this scene selects the2018 fortified home. No Silver Shamrock or actor likeness."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence28 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 29,
+      "id": "34561",
+      "stageId": 34561,
+      "assetId": "stage-34561-sewer-pursuit-v1",
+      "title": "Sewer Pursuit",
+      "univers": "Halloween",
+      "mode": "Smash",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34561-sewer-pursuit-v1.webp",
+      "sourceGenerationPromptSha256": "5b3e7da13d808fdaeaa591303b06a8299cd493a731b58c061dae54a3bad3c3ca",
+      "status": "promptPrepared",
+      "requiresResearch": false,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Sewer Pursuit. Universe: Halloween. Stage: 34561. Mode: Smash.\nContinuity and adaptation: Halloween2018/Kills/Ends only; non-combat project evasion course. Sewer geometry here is an original scene interpretation pending any exact-film match.\nScene/backdrop: One damp Haddonfield drainage passage with concrete walls, shallow runoff, maintenance ledges and an exit toward distant daylight. Show a side-on longitudinal section, never a corridor centered into the screen.\nSubject and action: No visible killer, Corey, boss, corpse or actor likeness. Convey pursuit through empty dark space behind the route, not an added hostile subject. Physical maintenance lights lead toward the right exit.\nComposition/framing: Strict side-view Smash traversal camera with shallow parallax, clear floor edges, reachable ledges and an unambiguous route. This is a NON-COMBAT trial, no boss or hostile subject. Keep a usable continuous lower navigation strip.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "The local authored trial says follow markers unnoticed; render environmental navigation. No claim that this generic drainage-room design exactly reproduces Halloween Ends.",
+      "researchNeeded": null,
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://www.universalpicturesathome.com/press-release/halloween-2018-press-release",
+          "note": "Universal describes Laurie Strode's heavily guarded home outside Haddonfield and preparations for Michael's return. This supports a fortified domestic setting, not a fantasy dungeon."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartK.js",
+          "note": "Halloween2018/Kills/Ends only; non-combat project evasion course. Sewer geometry here is an original scene interpretation pending any exact-film match."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence29 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 30,
+      "id": "34570",
+      "stageId": 34570,
+      "assetId": "stage-34570-eos-rebellion-v1",
+      "title": "Eos Rebellion",
+      "univers": "Red Faction",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34570-eos-rebellion-v1.webp",
+      "sourceGenerationPromptSha256": "4f21ceadcbb099fc83fdf5feccc92c785e1c10faa8dc3435ebbbcc150ef025d6",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Eos Rebellion. Universe: Red Faction. Stage: 34570. Mode: RPG.\nContinuity and adaptation: Red Faction anthology is allowed only while characters keep their own Martian era. Eos Rebellion is temporally ambiguous here.\nScene/backdrop: One Martian industrial rebellion terrace with red dust, destructible-looking concrete and steel structures, open lower lane. Do not mix underground Ultor mines and a later surface city in one frame.\nSubject and action: General Roth remains the frozen opposing identity. Do not silently reinterpret Eos as a person, replace Roth with Masako or add an army spanning several eras. Use only Roth's authenticated era-specific appearance, on right facing left.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "This source title may invoke the earlier Eos character while the selected antagonist belongs to another era; anthology allowance does not remove the explicit chronology rule.",
+      "researchNeeded": "Resolve whether Eos means character or district/operation, verify Roth's primary model and era, then approve a temporally coherent encounter.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://thqnordic.com/news/it-s-hammer-time-red-faction-guerrilla-re-mars-tered-edition-out-now",
+          "note": "THQ Nordic confirms Guerrilla's Mars rebellion setting. This alone does not establish General Roth's model or permit mixing him with the earlier Eos character's era."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartK.js",
+          "note": "Red Faction anthology is allowed only while characters keep their own Martian era. Eos Rebellion is temporally ambiguous here."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence30 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 31,
+      "id": "34571",
+      "stageId": 34571,
+      "assetId": "stage-34571-terraformer-siege-v1",
+      "title": "Terraformer Siege",
+      "univers": "Red Faction",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34571-terraformer-siege-v1.webp",
+      "sourceGenerationPromptSha256": "c6801788a45438ec631cad17e9732abac0328271b6cddcb2a8979775c82153b2",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: Terraformer Siege. Universe: Red Faction. Stage: 34571. Mode: RPG.\nContinuity and adaptation: Red Faction: Armageddon era for Adam Hale and the Terraformer; do not add Parker, Eos or Sopot from earlier episodes.\nScene/backdrop: One exterior Terraformer service platform on Mars, the enormous atmospheric machine rising behind it, red dust and damaged structural supports. One location, not a montage of underground mines and alien caves.\nSubject and action: Adam Hale is the sole named antagonist, human scale, on right facing left. Match his verified Armageddon equipment and silhouette; do not infer an armored demon or giant machine from the role. No invented boss mech.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "The official manual excerpt supports Hale destroying the Terraformer. Exact costume and machinery appearance remain visually unverified, so the concept stays conditional.",
+      "researchNeeded": "Inspect official Armageddon footage/manual imagery for Hale and Terraformer structure before generation; the fetched PDF exceeded the tool size limit.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://manuals.thqnordic.com/RedFactionArmageddon/RedFactionArmageddon_PC_Manual_EN.pdf",
+          "note": "Official THQ Nordic manual search excerpt names Adam Hale and his cult destroying the Terraformer during Darius's service. Full PDF fetch exceeded the tool size limit, so no exact armor or machine design is claimed verified."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartK.js",
+          "note": "Red Faction: Armageddon era for Adam Hale and the Terraformer; do not add Parker, Eos or Sopot from earlier episodes."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence31 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    },
+    {
+      "sequence": 32,
+      "id": "34580",
+      "stageId": 34580,
+      "assetId": "stage-34580-la-bastille-memory-remix-v1",
+      "title": "La Bastille Memory Remix",
+      "univers": "Remember Me",
+      "mode": "RPG",
+      "output": "/images/rift-dossiers/openai/expanded/stage-34580-la-bastille-memory-remix-v1.webp",
+      "sourceGenerationPromptSha256": "3e444f7136e053228b31186cfbf705244dce2f06abdc8911c9eb891f6e71f7ea",
+      "status": "requiresResearch",
+      "requiresResearch": true,
+      "generationApproved": false,
+      "reviewScope": "subject-and-scene prompt research only; no generated-raster review performed",
+      "promptCorrige": "Use case: stylized-concept\nAsset type: dedicated rift-dossier thumbnail for the original fan-made game Multiverse Breach. Operation: La Bastille Memory Remix. Universe: Remember Me. Stage: 34580. Mode: RPG.\nContinuity and adaptation: Remember Me2013, Neo-Paris2084. Memory Remix changes a person's remembered events; it is not a generic magic blast.\nScene/backdrop: One enclosed La Bastille memory-processing/service room with worn pale walls, industrial confinement architecture and restrained digital-memory light. No rooftop skyline or second prison scene.\nSubject and action: Johnny Greenteeth alone is the frozen opposing identity; use his authenticated game model and full silhouette on right facing left after verification. Do not infer green skin, a tooth monster or a crocodile from his nickname. No Madame, Kid X-Mas or H3O added.\nComposition/framing: Orthographic side-view 2.5D RPG camera perpendicular to a broad clear horizontal battle lane across the lower half. Left deployment area unobstructed; threats on right face left. No forced perspective corridor or top-down tactics angle.\nStyle/medium: premium hand-crafted 32-bit era pixel art, crisp intentional pixels, readable silhouettes and controlled layered depth. Original fan-art composition, not copied key art or screenshot.\nConstraints: one scene, one coherent location. No collage, split panels, roster lineup, unrelated characters, UI, health bars, grid, readable text, logos or watermark. No photorealism or real-person likeness. Landscape16:9; downstream640x360RGB WebP.",
+      "reason": "DON'T NOD confirms the setting and distinguishes martial arts from Memory Remix, but the accessible primary page does not verify Johnny's appearance or this exact operation.",
+      "researchNeeded": "Obtain primary Johnny/Bastille gameplay reference and clarify whether the title denotes a remix, a remembrane or an adapted combat encounter; do not conflate these functions.",
+      "sources": [
+        {
+          "kind": "official-url",
+          "url": "https://dont-nod.com/en/games/remember-me/",
+          "note": "DON'T NOD confirms Neo-Paris2084, Nilin's memory theft/alteration, prison escape, martial-arts combat and Memory Remix. The page text does not verify Johnny Greenteeth's design or identify a remix as his boss fight."
+        },
+        {
+          "kind": "project-canon",
+          "path": "src/game/canonRosterWavePartK.js",
+          "note": "Remember Me2013, Neo-Paris2084. Memory Remix changes a person's remembered events; it is not a generic magic blast."
+        },
+        {
+          "kind": "project-canon",
+          "path": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-rift-dossiers.json",
+          "note": "Sequence32 fixes identity, title, mode, output and current encounter; authoritative for this project, not proof of franchise canon."
+        }
+      ]
+    }
+  ]
+}

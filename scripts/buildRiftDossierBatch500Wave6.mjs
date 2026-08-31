@@ -17,6 +17,7 @@ const artifactDirectory = 'docs/openai-generation-prompts-2026-08-31';
 export const batchRelativePath = `${artifactDirectory}/asset-batch-500-wave-6-rift-dossiers.json`;
 export const promptRelativeDirectory = `${artifactDirectory}/asset-batch-500-wave-6-rift-dossiers`;
 export const visualReviewRelativePath = `${artifactDirectory}/asset-batch-500-wave-6-visual-reviews.json`;
+export const revisionRelativeDirectory = `${artifactDirectory}/asset-batch-500-wave-6-revisions`;
 export const batchJsonPath = path.join(projectRoot, batchRelativePath);
 export const promptDirectory = path.join(projectRoot, promptRelativeDirectory);
 const catalogRelativePath = 'docs/rift-dossiers/catalog.json';
@@ -154,6 +155,12 @@ export const validateBatch = (batch, catalog = null) => {
   assert.equal(batch.schemaVersion, SCHEMA_VERSION);
   assert.equal(batch.batchId, BATCH_ID);
   assert.equal(batch.kind, 'stage');
+  if (batch.revision !== undefined) {
+    assert(Number.isSafeInteger(batch.revision.sequence) && batch.revision.sequence > 0, 'Invalid revision sequence');
+    assert.match(batch.revision.id || '', /^[a-z0-9][a-z0-9-]{0,63}$/);
+    assert.match(batch.revision.beforeArtifactSha256 || '', HASH);
+    assert.equal(batch.revision.recordFile, `${revisionRelativeDirectory}/${String(batch.revision.sequence).padStart(4, '0')}-${batch.revision.id}/revision.json`);
+  }
   assert.equal(batch.jobs?.length, EXPECTED_JOB_COUNT);
   assert.deepEqual(batch.counts, { jobs: 500, expanded: 309, 'arc-personnage': 191, replace: 14, new: 486 });
   assert.deepEqual({ total: batch.baseline.total, available: batch.baseline.available, pending: batch.baseline.pending }, EXPECTED_BASELINE);
@@ -176,8 +183,9 @@ export const validateBatch = (batch, catalog = null) => {
     assert.deepEqual(job.reviewRequirements, { subjectAndSceneBeforeGeneration: true, generatedRasterBeforeInstall: true });
     publicPath(projectRoot, job.output);
     assert(job.output.includes(`/${job.family}/`));
-    assert(job.promptFile.startsWith(`${promptRelativeDirectory}/`) && !job.promptFile.includes('..') && job.promptFile.endsWith('.txt'));
-    assert.equal(path.dirname(job.promptFile), promptRelativeDirectory);
+    const initialPrompt = path.dirname(job.promptFile) === promptRelativeDirectory;
+    const versionedPrompt = job.promptFile.startsWith(`${revisionRelativeDirectory}/`) && /^\d{4,}-[a-z0-9][a-z0-9-]{0,63}\/prompts\/stage-\d+-[a-f0-9]{64}\.txt$/.test(job.promptFile.slice(revisionRelativeDirectory.length + 1));
+    assert((initialPrompt || (batch.revision && versionedPrompt)) && !job.promptFile.includes('..') && job.promptFile.endsWith('.txt'), `Invalid prompt path ${job.id}`);
     assert.equal(typeof job.generationPrompt, 'string');
     assert(job.generationPrompt.length >= 400 && !job.generationPrompt.includes('[object Object]'));
     assert.equal(sha256(job.generationPrompt), job.generationPromptSha256);
@@ -200,12 +208,23 @@ export const validateBatch = (batch, catalog = null) => {
   return batch;
 };
 
-export const validateBatchArtifact = async ({ root = projectRoot } = {}) => {
+// checkCatalog=false is reserved for an explicit revision proposal: intrinsic history remains fully checked.
+export const validateBatchArtifact = async ({ root = projectRoot, checkCatalog = true } = {}) => {
   const [artifactBytes, catalogBytes] = await Promise.all([batchRelativePath, catalogRelativePath].map(file => fs.readFile(path.join(root, file))));
-  const artifact = validateBatch(JSON.parse(artifactBytes), JSON.parse(catalogBytes));
+  const artifact = validateBatch(JSON.parse(artifactBytes), checkCatalog ? JSON.parse(catalogBytes) : null);
+  const initialArtifact = artifact.revision
+    ? await (await import('./reviseRiftDossierBatch500Wave6.mjs')).validateRevisionChain(artifact, { root, artifactBytes })
+    : artifact;
   for (const job of artifact.jobs) assert.equal(await fs.readFile(path.join(root, job.promptFile), 'utf8'), job.generationPrompt, `Prompt file drift ${job.id}`);
+  if (artifact.revision) {
+    // Revised jobs use new active paths, but their original files remain part of
+    // the frozen production evidence. An intact archive must not conceal edits.
+    await Promise.all(initialArtifact.jobs.map(async job => {
+      assert.equal(await fs.readFile(path.join(root, job.promptFile), 'utf8'), job.generationPrompt, `Original prompt file drift ${job.id}`);
+    }));
+  }
   const files = (await fs.readdir(path.join(root, promptRelativeDirectory))).sort();
-  assert.deepEqual(files, artifact.jobs.map(job => path.basename(job.promptFile)).sort(), 'Wave 6 prompt directory mismatch');
+  assert.deepEqual(files, initialArtifact.jobs.map(job => path.basename(job.promptFile)).sort(), 'Wave 6 prompt directory mismatch');
   return { artifact, artifactSha256: sha256(artifactBytes) };
 };
 
@@ -250,9 +269,9 @@ export const validateVisualReviewRecords = records => {
     if (record.stage === 'subject-scene') {
       assert(Array.isArray(record.sources) && record.sources.length > 0, 'Subject/scene review requires source references');
       for (const source of record.sources) {
-        assert(['official-url', 'project-canon'].includes(source.kind), 'Review source must distinguish franchise references from project canon');
+        assert(['official-url', 'reference-url', 'project-canon'].includes(source.kind), 'Review source must distinguish official references, crosschecked references and project canon');
         assert(typeof source.reference === 'string' && source.reference.trim(), 'Missing review source');
-        if (source.kind === 'official-url') assert(/^https:\/\//.test(source.reference), 'Official reference must be an HTTPS URL');
+        if (source.kind === 'official-url' || source.kind === 'reference-url') assert(/^https:\/\//.test(source.reference), 'Web reference must be an HTTPS URL');
         assert(typeof source.notes === 'string' && source.notes.trim(), 'Review source requires the supported semantic anchors');
       }
     } else {

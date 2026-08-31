@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "kind": "wave6-prompt-revision-plan",
+  "batchId": "assets-rift-dossier-pending-500-wave-6-2026-08-31",
+  "request": {
+    "schemaVersion": 1,
+    "batchId": "assets-rift-dossier-pending-500-wave-6-2026-08-31",
+    "revisionId": "outpost-01",
+    "expectedArtifactSha256": "0307551f26a22866c497dc1031d69ea0b4458389db0e2f520e89bb005dcea5a1",
+    "author": "root/codex",
+    "createdAt": "2026-08-31T15:20:57.2136085Z",
+    "changes": [
+      {
+        "id": "34441",
+        "priorPromptSha256": "faa3991b066617ec476ab56edba9e275d8ae441a712d61e9c9d3a81d5c6fa7d1",
+        "newPromptSha256": "cee4633ba75a6ca0c51d0e392f953fc0775cdbcd2053841479ab9e8fca4a9223",
+        "reason": "Outpost arctique et silhouette officielle du Patriarch ; retrait de Paris et des autres boss, orientation logique et scène RPG unique.",
+        "sources": [
+          {
+            "kind": "official-url",
+            "reference": "https://killingfloor2.com/overview/",
+            "notes": "Outpost est une installation expérimentale isolée au nord du cercle arctique ; le lieu ne se confond pas avec Burning Paris."
+          },
+          {
+            "kind": "official-url",
+            "reference": "https://killingfloor2.com/returnofthepatriarch/",
+            "notes": "Illustration officielle du Patriarch consultée : mutant asymétrique, nodules verts, bras-chaingun et jambe mécanique. La composition et les textes officiels ne seront pas copiés."
+          },
+          {
+            "kind": "official-url",
+            "reference": "https://killingfloor2.com/InfiniteOnslaught18/",
+            "notes": "Le développeur décrit le Patriarch comme un grand monstre tentaculaire équipé d'une chain gun."
+          },
+          {
+            "kind": "project-canon",
+            "reference": "src/game/canonRosterWavePartJ.js:8",
+            "notes": "Continuité KF2 uniquement et gore atténué ; Outpost, Patriarch et les limites d'adaptation viennent du catalogue verrouillé du projet."
+          }
+        ]
+      }
+    ]
+  },
+  "revision": {
+    "sequence": 1,
+    "id": "outpost-01",
+    "directory": "docs/openai-generation-prompts-2026-08-31/asset-batch-500-wave-6-revisions/0001-outpost-01"
+  },
+  "snapshot": {
+    "beforeArtifactSha256": "0307551f26a22866c497dc1031d69ea0b4458389db0e2f520e89bb005dcea5a1",
+    "catalogSha256": "d63a7caef27dee3428392eda7f0ef2fc95a55af64ad62acd8890f1201bdc6578",
+    "registrySha256": "91dc785914db539e8b6d2e9f83b40241720e553aed6c34c7b701bf7abdee9945",
+    "ledgerSha256": "6f465f765a9be1f1e394f1d8f0cc0830780c0dfa1dd5fb95b3d2a261b0ce4af7"
+  },
+  "afterArtifactSha256": "05fef1cdade8bd35afdbfb75ee5f753c32bbc7475044cfe8232fcc8f2afc9f29",
+  "promptCatalogSha256": "5429abe3766747717bd7dce434c948784376fbf239504d038495c9ddc28806c3",
+  "planSha256": "7f2ab75dc543251e45a0516a78142a58b9fb29291acd81ade4f0ebbdaf797a42"
+}

@@ -10,6 +10,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
+import { applyWave6ProductionPromptOverrides } from './riftDossierWave6PromptOverrides.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -1173,6 +1174,7 @@ const buildCatalog = async () => {
 
   applyWave5SafetyPromptOverrides(entries);
   applyWave5VisualPromptOverrides(entries);
+  applyWave6ProductionPromptOverrides(entries, { root: projectRoot });
 
   const counts = Object.fromEntries(
     Object.keys(EXPECTED_COUNTS)

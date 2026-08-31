@@ -172,6 +172,10 @@ const makeStage = (pack, rawStage, index) => {
       canonStatus: definition.canonStatus || 'canon location or canon-inspired objective route',
       lore: lore(definition.fr || `${name} structure l'épreuve de cette brèche.`, definition.en || `${name} structures this breach challenge.`),
       objective: definition.objective || (nonCombat ? `Complete ${name} without combat.` : `Reach and clear ${name}.`),
+      ...(definition.stageObjectiveOverride ? {
+        stageObjectiveOverride: true,
+        nonCombatTrial: definition.nonCombatTrial
+      } : {}),
       ...(nonCombat ? { nonCombat: true, trialType: definition.trialType || 'Trial' } : {})
     })
   ]);
