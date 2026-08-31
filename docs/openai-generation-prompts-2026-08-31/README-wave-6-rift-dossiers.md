@@ -116,3 +116,15 @@ Un plan déjà appliqué est réutilisé sans nouvelle modification de l'artefac
 Le contrôle standard vérifie toute la chaîne de révisions, les archives, les prompts actifs **et le contenu exact des 500 fichiers de prompt originaux**, y compris lorsqu'un nouveau chemin versionné les a remplacés à l'usage. Une archive saine ne masque donc pas la corruption d'un original. Le mode interne `checkCatalog: false`, réservé aux propositions, conserve ces contrôles d'intégrité. Une nouvelle révision ne vaut pas approbation visuelle et n'avance aucun compteur d'images terminées.
 
 Les tests isolés couvrent notamment cette dérive bloquante, les doublons, les 14 remplacements, les quatre jobs déjà installés, les révisions successives, la corruption d'archives ou d'un prompt original révisé, les snapshots périmés, les écritures idempotentes et l'impossibilité de conclure à une complétion à partir du prompt/PNG seuls.
+
+## Contrôle des fichiers réellement envoyés à Vercel
+
+Un fichier présent localement peut être absent de l'envoi CLI, notamment lorsque son dossier est une jonction Windows. Avant chaque envoi, depuis la racine du dépôt :
+
+```powershell
+vercel deploy --dry --json | node scripts/auditVercelUploadManifest.mjs
+```
+
+Ce contrôle est sans déploiement ni modification de fichiers. Il compare les chemins du manifeste sec aux fichiers `public/` suivis par Git, avec la casse exacte du serveur Linux, et refuse les chemins absolus, les traversées et les doublons. Les fichiers manquants sont tous listés ; corriger leur inclusion puis relancer le contrôle avant l'envoi réel. Ne pas fusionner stderr avec stdout : l'entrée du vérificateur doit rester le JSON du CLI. Il vérifie la présence dans l'envoi, pas le contenu des images ni leur provenance.
+
+Les petites fixtures de ce validateur sont exécutées par `npm run test:deployment-inputs`, également inclus dans `prebuild`. Elles ne remplacent pas le contrôle du manifeste réel avant publication.
