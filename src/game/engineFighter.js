@@ -5,6 +5,10 @@ import { resolveFighterTagEntry } from './fighterTagPlacement.js';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const lerp = (from, to, amount) => from + (to - from) * amount;
+const faceOpponent = (fighter, target) => {
+  const dx = target?.x - fighter?.x;
+  if (Number.isFinite(dx) && dx !== 0) fighter.facing = Math.sign(dx);
+};
 const rgba = (hex, alpha) => {
   const value = /^#[0-9a-f]{6}$/i.test(hex || '') ? hex.slice(1) : '39c5bb';
   return `rgba(${parseInt(value.slice(0, 2), 16)}, ${parseInt(value.slice(2, 4), 16)}, ${parseInt(value.slice(4, 6), 16)}, ${alpha})`;
@@ -264,6 +268,7 @@ export class EngineFighter {
     ) return false;
 
     const effect = state.super.effect || {};
+    faceOpponent(attacker, target);
     this.setFieldSuperState(resolvedSide, { used: true, charge: 0 });
     this.fieldSuperFlash = 1.25;
     this.fieldSuperFlashColor = state.super.color || '#ffea00';
@@ -332,6 +337,7 @@ export class EngineFighter {
     const effect = state.assist.effect || {};
     const color = state.assist.color || attacker.secondaryColor || '#39c5bb';
     const healRatio = clamp(finiteOr(effect.healRatio, 0.04), 0, 0.08);
+    faceOpponent(attacker, target);
     state.used = true;
     state.charge = 0;
     attacker.guarding = false;
@@ -430,6 +436,9 @@ export class EngineFighter {
     };
     const spec = specs[type];
     if (!spec || fighter.meter < (spec.meterCost || 0)) return false;
+    // Input may arrive between physics frames after the fighters crossed.
+    // Aim once on commitment; an ongoing swing never turns to track a dodge.
+    faceOpponent(fighter, this.getOpponent(side));
 
     if (type === 'light') {
       fighter.comboStep = fighter.comboWindow > 0 ? (fighter.comboStep % 3) + 1 : 1;
@@ -444,7 +453,7 @@ export class EngineFighter {
     fighter.meter = Math.max(0, fighter.meter - (spec.meterCost || 0));
     fighter.guarding = false;
     fighter.state = 'attack';
-    fighter.action = { ...spec, type, elapsed: 0, resolved: false };
+    fighter.action = { ...spec, type, facing: fighter.facing, elapsed: 0, resolved: false };
     this.playSfx(type === 'light' ? 'slash' : type === 'heavy' ? 'hit' : 'special');
     if (type === 'super') {
       this.announcement = fighter.special?.name || 'RUPTURE ULTIME';
@@ -621,6 +630,7 @@ export class EngineFighter {
     if (!fighter || fighter.currentHp <= 0) return;
     const grounded = fighter.y >= this.groundY - 2;
     const canInput = this.canAct(fighter);
+    if (canInput) faceOpponent(fighter, target);
     const guard = Boolean(input.guard) && canInput && grounded;
     const crouch = Boolean(input.down) && canInput && grounded && !guard;
     fighter.guarding = guard;
@@ -643,6 +653,7 @@ export class EngineFighter {
     const fighter = this.getActive('cpu');
     const target = this.getActive('player');
     if (!fighter || fighter.currentHp <= 0 || !target) return;
+    if (this.canAct(fighter)) faceOpponent(fighter, target);
     if (this.activateAssist('cpu')) return;
     const distance = Math.abs(target.x - fighter.x);
     this.aiThink -= dt;
@@ -688,7 +699,7 @@ export class EngineFighter {
       this.applyPhysics(fighter, dt);
       return;
     }
-    fighter.facing = target.x >= fighter.x ? 1 : -1;
+    faceOpponent(fighter, target);
     fighter.vx = lerp(fighter.vx, direction * fighter.moveSpeed, clamp(dt * 18, 0, 1));
     if (direction) fighter.state = 'run';
     this.applyPhysics(fighter, dt);
@@ -729,18 +740,19 @@ export class EngineFighter {
 
   spawnProjectile(fighter, action) {
     const color = fighter.secondaryColor || fighter.weaponColor || '#39c5bb';
+    const direction = action.facing ?? fighter.facing;
     this.projectiles.push({
       side: fighter.side,
       owner: fighter,
-      x: fighter.x + fighter.facing * 58,
+      x: fighter.x + direction * 58,
       y: fighter.y - 64,
-      vx: fighter.facing * 520,
+      vx: direction * 520,
       radius: action.type === 'super' ? 22 : 13,
       life: 1.25,
       action: { ...action, range: 34 },
       color
     });
-    this.particles.add(fighter.x, fighter.y - 62, fighter.facing * 5, 0, color, 6, 34, 'laser_line');
+    this.particles.add(fighter.x, fighter.y - 62, direction * 5, 0, color, 6, 34, 'laser_line');
   }
 
   updateProjectiles(dt) {
@@ -757,7 +769,7 @@ export class EngineFighter {
         && Math.abs(projectile.x - target.x) < projectile.radius + 32
         && Math.abs(projectile.y - targetCenterY) < targetHalfHeight
       ) {
-        this.applyHit(projectile.owner, target, projectile.action, true);
+        this.applyHit(projectile.owner, target, projectile.action, true, Math.sign(projectile.vx));
         this.projectiles.splice(index, 1);
       } else if (projectile.life <= 0 || projectile.x < -40 || projectile.x > this.width + 40) {
         this.projectiles.splice(index, 1);
@@ -767,16 +779,20 @@ export class EngineFighter {
 
   attemptHit(attacker, target, action) {
     if (!target || target.currentHp <= 0 || target.invulnerable > 0) return false;
-    const inFront = attacker.facing > 0 ? target.x >= attacker.x : target.x <= attacker.x;
+    const direction = action.facing ?? attacker.facing;
+    const inFront = direction > 0 ? target.x >= attacker.x : target.x <= attacker.x;
     const closeY = Math.abs(target.y - attacker.y) < 92;
     if (!inFront || !closeY || Math.abs(target.x - attacker.x) > action.range) return false;
-    this.applyHit(attacker, target, action, false);
+    this.applyHit(attacker, target, action, false, direction);
     return true;
   }
 
-  applyHit(attacker, target, action, projectile = false) {
+  applyHit(attacker, target, action, projectile = false, impactDirection = null) {
     if (target.invulnerable > 0 || target.currentHp <= 0) return;
-    const facingAttacker = target.facing === Math.sign(attacker.x - target.x);
+    // A travelling projectile keeps its own incoming direction even after its
+    // owner turns, jumps across the target, or tags out before impact.
+    const hitDirection = impactDirection || Math.sign(target.x - attacker.x) || action.facing || attacker.facing;
+    const facingAttacker = target.facing === -hitDirection;
     const blocked = target.guarding && facingAttacker && target.guardBreak <= 0;
     const attackScale = attacker.attackPower / 18;
     const defenseScale = 1 - clamp(target.defensePower * 0.012, 0.05, 0.28);
@@ -792,7 +808,7 @@ export class EngineFighter {
     if (blocked) {
       damage *= 0.2;
       target.guard = Math.max(0, target.guard - action.guardDamage);
-      target.vx = attacker.facing * action.knockback * 0.26;
+      target.vx = hitDirection * action.knockback * 0.26;
       this.playSfx('shield');
       this.spawnBurst(target.x, target.y - 58, '#7df9ff', 8);
       if (target.guard <= 0) {
@@ -815,7 +831,7 @@ export class EngineFighter {
             ? 0.34
             : 0.24;
       target.state = 'hit';
-      target.vx = attacker.facing * action.knockback;
+      target.vx = hitDirection * action.knockback;
       target.vy = action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
       this.playSfx(projectile ? 'shoot' : 'hit');
       this.spawnBurst(target.x, target.y - 60, attacker.secondaryColor || '#ff5a36', action.type === 'super' ? 26 : 12);
@@ -864,7 +880,7 @@ export class EngineFighter {
     if (target.currentHp <= 0) {
       target.state = 'dead';
       target.koDelay = 0.9;
-      target.vx = attacker.facing * Math.max(action.knockback, 250);
+      target.vx = hitDirection * Math.max(action.knockback, 250);
       target.vy = -210;
       this.stats[attacker.side].kos += 1;
       this.announcement = 'K.O.';
@@ -886,8 +902,8 @@ export class EngineFighter {
       player.x = clamp(player.x - push * sign, 66, this.width - 66);
       cpu.x = clamp(cpu.x + push * sign, 66, this.width - 66);
     }
-    if (!player.action) player.facing = cpu.x >= player.x ? 1 : -1;
-    if (!cpu.action) cpu.facing = player.x >= cpu.x ? 1 : -1;
+    if (this.canAct(player)) faceOpponent(player, cpu);
+    if (this.canAct(cpu)) faceOpponent(cpu, player);
   }
 
   resolveKnockouts(dt) {

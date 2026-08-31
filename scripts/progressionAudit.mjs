@@ -16,6 +16,8 @@ import { resolveStageEnemyData } from '../src/game/stageEnemyResolver.js';
 import { FACTION_RULES, REPUTATION_TRACKS, resolveUniverseFactionIds } from '../src/game/factionProgression.js';
 import { BOOSTER_ART_UNIVERSES } from '../src/game/portalBoosterCatalog.js';
 import { SPECIAL_EVENTS, getSpecialEventRewardById } from '../src/game/specialEvents.js';
+import { getGridFacingBonus } from '../src/game/tacticalFacing.js';
+import { findBattlePickupSource, normalizeBattlePickupDefinition } from '../src/game/battlePickupSemantics.js';
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), 'utf8');
 const fail = (message) => {
@@ -834,7 +836,14 @@ assert(raceModeSource.includes('bestTimes') && kartCareerSource.includes('comple
 assert(rendererSource.includes('drawMirelleItemVfx') && rendererSource.includes('MIRELLE_COMPLETE_SPRITES.itemsVfx'), 'Combat renderer must use Mirelle item/VFX sheet during gameplay states.');
 assert(gameCanvasSource.includes('heroSpriteContext'), 'GameCanvas must preload mode-specific hero sprites.');
 assert(hubSource.includes("drawPixelSprite(ctx, 150, 182, selectedHero, 0, 1, 178, 'nexus')"), 'Roster must render Mirelle with Nexus/collection sheet.');
-assert(hubSource.includes("drawPixelSprite(ctx, x, y + 24") && hubSource.includes('false, hero)'), 'Mosaic City Nexus NPCs must render real hero sprites instead of color fallback blocks.');
+const mosaicCitySource = hubSource.match(/function MosaicCityHub\([\s\S]*?(?=\nconst EXTINCTION_BEACON_TARGET)/)?.[0] || '';
+assert(
+  mosaicCitySource.includes('const hero = npc.hero;')
+    && /drawPixelPerson\([^;\n]*false,\s*\{\s*\.\.\.hero,\s*state:\s*npc\.sceneState\s*\}\s*\)/.test(mosaicCitySource)
+    && mosaicCitySource.includes("const spriteState = hero.state || 'idle';")
+    && /if\s*\(hero\?\.id\)\s*\{[\s\S]*?drawPixelSprite\(ctx, x, y \+ 24 \+ bob, \{ \.\.\.hero, state: spriteState \}, stateRef\.current\.t, facing, isPlayer \? 78 : 68, 'nexus'\);[\s\S]*?return;\s*\}/.test(mosaicCitySource),
+  'Mosaic City Nexus NPCs must preserve their real hero identity and movement state through the Nexus sprite renderer, returning before color fallback blocks.'
+);
 assert(hubSource.includes("drawPixelSprite(ctx, 56, 98, hero, 0, 1, 88, 'hud')") && hubSource.includes("drawPixelSprite(ctx, 38, 70, hero, 0, 1, 62, 'hud')"), 'Resonance hero icons must use cropped HUD avatars.');
 assert(hubSource.includes('fpsHandsRef') && hubSource.includes('MIRELLE_COMPLETE_SPRITES.fpsHands'), 'FPS mode must use Mirelle FPS hands and effects sheets.');
 assert(
@@ -981,7 +990,20 @@ assert(tacticsEngineSource.includes('applyStartTileEffect'), 'Tactics engine mus
 assert(tacticsEngineSource.includes('getTileMoveCost'), 'Tactics movement must support terrain movement costs.');
 assert(tacticsEngineSource.includes('getTileFill'), 'Tactics engine must render terrain types distinctly.');
 assert(tacticsEngineSource.includes('getCoverReduction') && tacticsEngineSource.includes('heavyCover'), 'Tactics engine must apply cover from terrain tiles.');
-assert(tacticsEngineSource.includes('getFacingBonus') && tacticsEngineSource.includes('FLANK') && tacticsEngineSource.includes('BACK'), 'Tactics damage must support flank and back attacks.');
+assert(
+  tacticsEngineSource.includes("from './tacticalFacing.js'")
+    && tacticsEngineSource.includes('return getGridFacingBonus(attacker, defender);')
+    && tacticsEngineSource.includes('baseDmg *= (1 + facing.bonus);')
+    && tacticsEngineSource.includes("'text', facing.label"),
+  'Tactics damage and feedback must use the shared grid-facing bonus, not a disconnected helper.'
+);
+for (const [x, y] of [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]]) {
+  const defender = { gridX: 5, gridY: 5, facingVector: { x, y } };
+  const front = getGridFacingBonus({ gridX: 5 + x, gridY: 5 + y }, defender);
+  const back = getGridFacingBonus({ gridX: 5 - x, gridY: 5 - y }, defender);
+  const flank = getGridFacingBonus({ gridX: 5 - y, gridY: 5 + x }, defender);
+  assert(front.bonus === 0 && front.label === null && back.bonus === 0.25 && back.label === 'BACK' && flank.bonus === 0.12 && flank.label === 'FLANK', `Tactics damage must distinguish front, flank and back for grid heading ${x},${y}.`);
+}
 assert(tacticsEngineSource.includes('getTerrainDamageModifier') && tacticsEngineSource.includes('HIGH') && tacticsEngineSource.includes('RISK'), 'Tactics damage must support height advantage and hazard penalties.');
 [
   "objective: 'rout'",
@@ -1069,11 +1091,25 @@ assert(spriteAssetsSource.includes('if (item.icon) return item.icon'), 'Collecti
 assert(rendererSource.includes('getGeneratedStageBackdropSrc'), 'Renderer must prefer generated canonical stage backdrops when available.');
 assert(smashEngineSource.includes('getGeneratedStageTexturePattern') && smashEngineSource.includes("'platforms'"), 'Melee platforms must consume their generated standalone texture atlas.');
 assert(tacticsEngineSource.includes('drawGeneratedStageTextureCover') && tacticsEngineSource.includes("'tiles'"), 'Tactics maps must consume their generated battlefield and tile atlas.');
+const featuredPickupSource = battleItemsSource.match(/\? override\.pickups\.map[\s\S]*?(?=\n\s*:\s*\['offense')/ )?.[0] || '';
 assert(
-  battleItemsSource.includes('const loreItems = EQUIP_ITEMS_DB.filter') &&
-  battleItemsSource.includes('name: loreItem?.name || { fr, en }') &&
-  battleItemsSource.includes('sourceItemId: loreItem.id'),
-  'Featured battle item overrides must inherit the canonical lore item names and OpenAI icon metadata.',
+  battleItemsSource.includes('const loreItems = EQUIP_ITEMS_DB.filter(item => item.universe === universe)')
+    && featuredPickupSource.includes('normalizeBattlePickupDefinition(definition)')
+    && featuredPickupSource.includes('findBattlePickupSource(authored, loreItems)')
+    && featuredPickupSource.includes('name: authored.name')
+    && ['sourceItemId: loreItem.id', 'icon: loreItem.icon', 'iconPrompt: loreItem.iconPrompt', 'referenceUrl: loreItem.referenceUrl', 'visualAnchor: loreItem.visualAnchor'].every(field => featuredPickupSource.includes(field))
+    && !featuredPickupSource.includes('loreItems[index]'),
+  'Featured battle items must preserve authored identity and inherit icon metadata only from their matching same-universe lore item, never the catalog index.'
+);
+const auditPickupSources = [
+  { id: 'unrelated-radio', name: { fr: 'Radio', en: 'Radio' }, icon: '/radio.png' },
+  { id: 'matched-herb', name: { fr: 'Herbe verte', en: 'Green Herb' }, icon: '/herb.png' }
+];
+assert(
+  findBattlePickupSource(normalizeBattlePickupDefinition(['Herbe verte', 'Green Herb', 'Soin']), auditPickupSources) === auditPickupSources[1]
+    && findBattlePickupSource({ sourceItemId: 'matched-herb', name: { en: 'Alias' } }, auditPickupSources) === auditPickupSources[1]
+    && findBattlePickupSource({ name: { en: 'Unmatched health drink' } }, auditPickupSources) === null,
+  'Battle pickup source matching must resolve explicit identity or exact name and refuse unrelated artwork.'
 );
 
 console.log(JSON.stringify({

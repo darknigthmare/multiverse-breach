@@ -1,6 +1,8 @@
 // Super Smash Bros Mêlée Mode Engine with Synergies & Status Effects
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
+import { absorbBattleItemDamage } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
+import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
 import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
@@ -228,16 +230,11 @@ export class EngineSmash {
     }, {});
     
     this.activeSynergies = SYNERGIES_DB.filter(syn => (categoriesCount[syn.category] || 0) >= 2);
-    this.activeSynergies.forEach(syn => {
-      this.heroes.forEach(h => {
-        if (syn.multiplier.hp) {
-          h.maxHp = Math.round(h.maxHp * syn.multiplier.hp);
-          h.currentHp = h.maxHp;
-        }
-        if (syn.multiplier.atk) h.stats.atk = Math.round(h.stats.atk * syn.multiplier.atk);
-        if (syn.multiplier.def) h.stats.def = Math.round(h.stats.def * syn.multiplier.def);
-        if (syn.multiplier.spd) h.stats.spd = Math.round(h.stats.spd * syn.multiplier.spd);
-      });
+    this.heroes.forEach(hero => {
+      hero.stats = resolveArchetypeCombatStats(hero, this.activeSynergies);
+      hero.maxHp = hero.stats.hp;
+      hero.currentHp = hero.maxHp;
+      hero.archetypeSynergiesPrepared = true;
     });
 
     // Setup wave of enemies
@@ -976,8 +973,8 @@ export class EngineSmash {
       baseDmg *= (1 - defender.defense.reduce);
     }
     const variance = (Math.random() * 0.2) + 0.9;
-    const defenseFactor = defender.def ? Math.max(0.72, 1 - defender.def * 0.01) : 1;
-    const finalDmg = Math.round(baseDmg * variance * defenseFactor);
+    const defenseFactor = Math.max(0.72, 1 - getEffectiveCombatDefense(defender, attacker) * 0.01);
+    const finalDmg = absorbBattleItemDamage(defender, Math.round(baseDmg * variance * defenseFactor));
     if (this.heroes.includes(attacker) && this.enemies.includes(defender)) {
       this.damageDealt += finalDmg;
     } else if (this.enemies.includes(attacker) && this.heroes.includes(defender)) {
@@ -1597,10 +1594,12 @@ export class EngineSmash {
       if (e.ledge && e.state === 'ledgeHang' && e.stateElapsed > 0.22) performMeleeLedgeAction(e, 'climb');
 
       const target = this.getClosestHero(e);
-      if (target && !['hit', 'hitStun', 'shieldBreak'].includes(e.state) && !isMeleeMovementLocked(e) && !this.gameOver) {
+      // Legacy enemy strikes use stateTimer, not an action object. Respect
+      // their recovery so AI cannot cancel the pose and turn on the next frame.
+      if (target && !['attack', 'defense', 'hit', 'hitStun', 'shieldBreak'].includes(e.state) && !isMeleeMovementLocked(e) && !this.gameOver) {
         const dx = target.x - e.x;
         const dy = target.y - e.y;
-        e.facing = dx > 0 ? 1 : -1;
+        if (dx !== 0) e.facing = Math.sign(dx);
 
         const ground = this.isOnGround(e);
         const behavior = e.behavior || this.getEnemyBehavior(e, e.isBoss);

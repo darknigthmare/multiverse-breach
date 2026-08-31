@@ -1,7 +1,10 @@
 // Final Fantasy Record Keeper ATB RPG Engine with Synergies & Status Effects
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
+import { absorbBattleItemDamage } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
+import { resolveArchetypeCombatStats } from './combatStatPreparation';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
+import { calculateRpgDamage, getRpgActionProfile, getRpgEligibleTargets, resolveRpgTargets, rpgUnitId } from './rpgTargeting';
 
 const RPG_FLOOR_LANES = Object.freeze({
   heroes: Object.freeze([
@@ -39,6 +42,9 @@ export class EngineRpg {
     this.disposed = false;
     this.paused = false;
     this.timers = new Set();
+    this.targeting = null;
+    this.targetingWait = true;
+    this.actionQueue = [];
 
     const heroPosition = (idx) => {
       const lane = this.levelProfile?.rpg?.heroLanes?.[idx];
@@ -49,6 +55,8 @@ export class EngineRpg {
       const position = heroPosition(idx);
       return {
         ...h,
+        battleId: `hero:${idx}:${h.id}`,
+        runtimeId: `hero:${idx}:${h.id}`,
         stats: { ...h.stats },
         x: position.x,
         y: position.y,
@@ -65,6 +73,7 @@ export class EngineRpg {
         statusEffects: { infected: 0, glitched: 0, radiated: 0 }
       };
     });
+    this.heroes.forEach(hero => this.fitCombatantToArena(hero));
 
     // Calculate Synergy Sets
     const categoriesCount = this.heroes.reduce((acc, h) => {
@@ -73,16 +82,11 @@ export class EngineRpg {
     }, {});
     
     this.activeSynergies = SYNERGIES_DB.filter(syn => (categoriesCount[syn.category] || 0) >= 2);
-    this.activeSynergies.forEach(syn => {
-      this.heroes.forEach(h => {
-        if (syn.multiplier.hp) {
-          h.maxHp = Math.round(h.maxHp * syn.multiplier.hp);
-          h.currentHp = h.maxHp;
-        }
-        if (syn.multiplier.atk) h.stats.atk = Math.round(h.stats.atk * syn.multiplier.atk);
-        if (syn.multiplier.def) h.stats.def = Math.round(h.stats.def * syn.multiplier.def);
-        if (syn.multiplier.spd) h.stats.spd = Math.round(h.stats.spd * syn.multiplier.spd);
-      });
+    this.heroes.forEach(hero => {
+      hero.stats = resolveArchetypeCombatStats(hero, this.activeSynergies);
+      hero.maxHp = hero.stats.hp;
+      hero.currentHp = hero.maxHp;
+      hero.archetypeSynergiesPrepared = true;
     });
 
     this.enemiesData = enemiesData;
@@ -136,11 +140,65 @@ export class EngineRpg {
     return 0.84 + depth * 0.22;
   }
 
+  getCombatantBounds(unit) {
+    const scale = this.getDepthScale(unit.y);
+    const height = unit.isBoss
+      ? Math.min(Math.max(96, unit.authoredRenderHeight || unit.renderHeight || 126), this.height * 0.48, this.width * 0.32)
+      : (this.heroes?.includes(unit) ? 72 : 68) * scale;
+    // Reserve the square sprite-frame envelope and the HP/ATB below the feet.
+    return { halfWidth: height * 0.65, top: height + 8, bottom: (unit.isBoss ? 48 : 30) * scale, height };
+  }
+
+  fitCombatantToArena(unit, { home = true } = {}) {
+    if (unit.isBoss) unit.authoredRenderHeight ??= unit.renderHeight || 126;
+    const bounds = this.getCombatantBounds(unit);
+    unit.x = clamp(unit.x, bounds.halfWidth + 8, this.width - bounds.halfWidth - 8);
+    unit.y = clamp(unit.y, Math.max(bounds.top, this.height * (this.getFloorHorizon() + 0.08)), this.height - bounds.bottom - 8);
+    if (unit.isBoss) unit.renderHeight = bounds.height;
+    if (home) {
+      unit.homeX = unit.x;
+      unit.homeY = unit.y;
+    }
+  }
+
+  faceTarget(actor, target) {
+    if (actor && target && Math.abs(target.x - actor.x) > 0.5) actor.facing = target.x > actor.x ? 1 : -1;
+  }
+
+  getFacingTarget(actor) {
+    const opponents = this.heroes.includes(actor) ? this.enemies : this.heroes;
+    return opponents.find(unit => unit.currentHp > 0 && rpgUnitId(unit) === actor.focusTargetId)
+      || opponents.filter(unit => unit.currentHp > 0).sort((a, b) => Math.abs(a.x - actor.x) - Math.abs(b.x - actor.x))[0];
+  }
+
+  returnToFormation(actor, preferredTarget = null) {
+    actor.x = actor.homeX;
+    actor.y = actor.homeY;
+    const opponents = this.heroes.includes(actor) ? this.enemies : this.heroes;
+    const target = preferredTarget?.currentHp > 0 ? preferredTarget
+      : opponents.filter(unit => unit.currentHp > 0).sort((a, b) => Math.abs(a.x - actor.x) - Math.abs(b.x - actor.x))[0];
+    this.faceTarget(actor, target);
+  }
+
+  positionForMelee(actor, target) {
+    const actorBounds = this.getCombatantBounds(actor);
+    const targetBounds = this.getCombatantBounds(target);
+    const gap = actorBounds.halfWidth + targetBounds.halfWidth + 8;
+    const approaches = [target.x - gap, target.x + gap]
+      .filter(x => x >= actorBounds.halfWidth + 8 && x <= this.width - actorBounds.halfWidth - 8)
+      .sort((a, b) => Math.abs(a - actor.x) - Math.abs(b - actor.x));
+    actor.x = approaches[0] ?? actor.x;
+    actor.y = target.y;
+    this.fitCombatantToArena(actor, { home: false });
+    // Resolve after placement so a changed approach side still faces the victim.
+    this.faceTarget(actor, target);
+  }
+
   schedule(callback, delay) {
     if (this.disposed) return null;
     const runWhenResumed = () => {
       if (this.disposed) return;
-      if (this.paused) {
+      if (this.paused || this.isTargetingPaused?.()) {
         const retryTimer = setTimeout(() => {
           this.timers.delete(retryTimer);
           runWhenResumed();
@@ -162,11 +220,28 @@ export class EngineRpg {
     this.paused = Boolean(paused);
   }
 
+  scheduleAction(callback, delay) {
+    this.actionQueue.push({ callback, ticks: Math.max(1, Math.ceil(delay * 60 / 1000)) });
+  }
+
+  advanceActions() {
+    const due = [];
+    this.actionQueue = this.actionQueue.filter(action => {
+      action.ticks--;
+      if (action.ticks > 0) return true;
+      due.push(action);
+      return false;
+    });
+    due.forEach(action => action.callback());
+  }
+
   dispose() {
     this.disposed = true;
     this.timers.forEach(timer => clearTimeout(timer));
     this.timers.clear();
     this.enemyActionLock = false;
+    this.targeting = null;
+    this.actionQueue = [];
   }
 
   spawnWave() {
@@ -316,6 +391,10 @@ export class EngineRpg {
       });
       this.playSfx('portal');
     }
+    this.enemies.forEach(enemy => {
+      if (enemy.stats) enemy.stats = { ...enemy.stats };
+      this.fitCombatantToArena(enemy);
+    });
     const selected = this.enemies.find(enemy => (
       enemy.currentHp > 0
       && (
@@ -361,199 +440,260 @@ export class EngineRpg {
     return true;
   }
 
-  triggerEnemyAbility(enemyOrType = 'simple', maybeType = null) {
-    if (this.opponentControl !== 'p2' || this.gameOver || this.disposed || this.enemyActionLock) {
-      return false;
-    }
+  resolveActor(actorOrId, side = 'player') {
+    const team = side === 'enemy' ? this.enemies : this.heroes;
+    if (actorOrId && typeof actorOrId === 'object') return team.includes(actorOrId) ? actorOrId : null;
+    return team.find(unit => [rpgUnitId(unit), unit.id, unit.name].includes(actorOrId)) || null;
+  }
 
-    const actionAliases = {
-      attack: 'simple',
-      basic: 'simple',
-      simple: 'simple',
-      strong: 'secondary',
-      heavy: 'secondary',
-      secondary: 'secondary',
-      special: 'special',
-      guard: 'defense',
-      defense: 'defense'
+  getActionContext(actor, abilityType, side = 'player') {
+    const allies = side === 'enemy' ? this.enemies : this.heroes;
+    const opponents = side === 'enemy' ? this.heroes : this.enemies;
+    const profile = getRpgActionProfile(actor, abilityType, side, this);
+    const eligibleTargets = getRpgEligibleTargets({ actor, profile, allies, opponents });
+    return { actor, abilityType, side, profile, eligibleTargets };
+  }
+
+  canUseAction(actor, abilityType, side = 'player') {
+    if (!this.resolveActor(actor, side) || this.disposed || this.paused || this.gameOver || actor.currentHp <= 0
+      || actor.state !== 'idle' || actor.actionPending || actor.atb < 100) return false;
+    if (side === 'enemy' && this.enemyActionLock) return false;
+    if (abilityType === 'secondary' && actor.cooldown > 0) return false;
+    if (abilityType === 'special' && actor.specialCharge < 100) return false;
+    return !!getRpgActionProfile(actor, abilityType, side, this);
+  }
+
+  chooseDefaultTargets(context) {
+    const { profile, eligibleTargets } = context;
+    if (!profile || !eligibleTargets.length || profile.shape === 'group') return [];
+    const sorted = [...eligibleTargets];
+    if (profile.effect === 'heal') sorted.sort((a, b) => a.currentHp / a.maxHp - b.currentHp / b.maxHp);
+    return sorted.slice(0, profile.shape === 'multi' ? profile.maxTargets : 1).map(rpgUnitId);
+  }
+
+  // Manual selection never spends ATB, cooldown or charge. Both simulation and
+  // delayed impacts wait until confirmation/cancel, including P2 targeting.
+  beginTargeting(actorOrId, abilityType, side = 'player') {
+    if (this.targeting) return false;
+    if (side !== 'player' && side !== 'enemy') return false;
+    if (side === 'enemy' && this.opponentControl !== 'p2') return false;
+    const actor = this.resolveActor(actorOrId, side);
+    if (!this.canUseAction(actor, abilityType, side)) return false;
+    const context = this.getActionContext(actor, abilityType, side);
+    if (!context.eligibleTargets.length) return false;
+    if (abilityType === 'defense') return this.executeRpgAction(context, [rpgUnitId(actor)]);
+    this.targeting = {
+      actor, abilityType, side,
+      selectedTargetIds: this.chooseDefaultTargets(context)
     };
-    let enemy = null;
-    let requestedType = maybeType;
-    if (enemyOrType && typeof enemyOrType === 'object') {
-      enemy = enemyOrType;
-    } else if (maybeType) {
-      enemy = this.enemies.find(candidate => (
-        candidate.runtimeId === enemyOrType
-        || candidate.battleId === enemyOrType
-        || candidate.id === enemyOrType
-        || candidate.name === enemyOrType
-      ));
-    } else {
-      const matchingEnemy = this.enemies.find(candidate => (
-        candidate.runtimeId === enemyOrType
-        || candidate.battleId === enemyOrType
-        || candidate.id === enemyOrType
-        || candidate.name === enemyOrType
-      ));
-      if (matchingEnemy) {
-        enemy = matchingEnemy;
-        requestedType = 'simple';
-      } else {
-        requestedType = enemyOrType;
-      }
-    }
-    enemy ||= this.getSelectedEnemy();
-    const abilityType = actionAliases[requestedType] || 'simple';
-    if (!enemy || enemy.currentHp <= 0 || enemy.state !== 'idle' || enemy.atb < 100) {
-      return false;
-    }
-    if (abilityType === 'secondary' && enemy.cooldown > 0) return false;
-    if (abilityType === 'special' && enemy.specialCharge < 100) return false;
+    return true;
+  }
 
-    if (abilityType === 'defense') {
-      enemy.atb = 0;
-      this.selectedEnemyId = enemy.battleId || enemy.id;
-      this.enemyGlobalRecovery = 25;
-      enemy.state = 'defense';
-      enemy.stateTimer = Math.max(45, Math.round((enemy.defense?.dur || 1.2) * 60));
-      enemy.specialCharge = Math.min(100, enemy.specialCharge + 15);
-      this.playSfx('shield');
-      this.particles.add(enemy.x, enemy.y - 8, 0, 0, enemy.color || '#e74c3c', 6, 24, 'spark');
-      return true;
-    }
+  previewTargets(targetIds = this.targeting?.selectedTargetIds) {
+    if (!this.targeting) return null;
+    const { actor, abilityType, side } = this.targeting;
+    const context = this.getActionContext(actor, abilityType, side);
+    const selectedTargetIds = Array.isArray(targetIds) ? [...targetIds] : [];
+    const resolved = resolveRpgTargets({ ...context, selectedTargetIds });
+    const profile = context.profile;
+    const amount = (actor.stats?.atk ?? actor.atk ?? 8) * profile.multiplier;
+    const estimates = resolved.targets.map(unit => {
+      let value = amount;
+      if (profile.effect === 'damage') value = calculateRpgDamage(unit, amount * (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1), 1, true, actor);
+      else if (profile.effect === 'heal') {
+        const cap = unit.statusEffects?.radiated > 0 ? unit.maxHp * 0.5 : unit.maxHp;
+        value = Math.max(0, Math.min(cap - unit.currentHp, profile.healRatio ? unit.maxHp * profile.healRatio : amount));
+      } else if (profile.effect === 'revive') value = unit.maxHp * profile.reviveRatio;
+      else value = 0;
+      return { id: rpgUnitId(unit), effect: profile.effect, amount: Math.round(value), min: profile.effect === 'damage' ? calculateRpgDamage(unit, amount * (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1), 0.9, true, actor) : Math.round(value), max: profile.effect === 'damage' ? calculateRpgDamage(unit, amount * (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1), 1.1, true, actor) : Math.round(value) };
+    });
+    return {
+      side, actorId: rpgUnitId(actor), actorName: actor.name, abilityType,
+      abilityName: profile.name, profile,
+      effect: profile.effect, delivery: profile.delivery, shape: profile.shape, maxTargets: profile.maxTargets,
+      eligibleTargets: context.eligibleTargets.map(unit => ({
+        id: rpgUnitId(unit), name: unit.name, x: unit.x, y: unit.y,
+        hp: unit.currentHp, maxHp: unit.maxHp,
+        side: this.heroes.includes(unit) ? 'player' : 'enemy',
+        dead: unit.currentHp <= 0
+      })),
+      selectedTargetIds,
+      previewTargetIds: resolved.targets.map(rpgUnitId),
+      estimates, estimate: estimates,
+      valid: resolved.valid && this.canUseAction(actor, abilityType, side),
+      reason: resolved.reason
+    };
+  }
 
-    const target = this.getRandomAliveHero();
-    if (!target) return false;
-    enemy.atb = 0;
-    this.selectedEnemyId = enemy.battleId || enemy.id;
-    this.enemyGlobalRecovery = 25;
-    this.enemyActionLock = true;
-    enemy.state = abilityType === 'special' ? 'special' : 'attack';
-    enemy.stateTimer = abilityType === 'special' ? 45 : 35;
-    if (target.x !== enemy.x) enemy.facing = target.x > enemy.x ? 1 : -1;
+  getTargetingState() {
+    return this.previewTargets();
+  }
 
-    if (abilityType === 'simple') {
-      enemy.x = target.x + 50;
-      enemy.y = target.y;
-      enemy.specialCharge = Math.min(100, enemy.specialCharge + 20);
-      this.playSfx(enemy.weapon === 'gun' || enemy.weapon === 'laser' ? 'shoot' : 'slash');
-      this.schedule(() => {
-        if (target.currentHp > 0 && enemy.currentHp > 0) {
-          this.applyDamage(enemy, target, enemy.atk || 8);
-        }
-        enemy.x = enemy.homeX;
-        enemy.y = enemy.homeY;
-        this.enemyActionLock = false;
-      }, 200);
-    } else if (abilityType === 'secondary') {
-      enemy.cooldown = 180;
-      enemy.specialCharge = Math.min(100, enemy.specialCharge + 35);
-      this.playSfx('shoot');
-      this.particles.add(enemy.x - 15, enemy.y - 4, -8, 0, enemy.color || '#e74c3c', 6, 40, 'laser_line');
-      this.schedule(() => {
-        if (target.currentHp > 0 && enemy.currentHp > 0) {
-          this.applyDamage(enemy, target, (enemy.atk || 8) * 1.45);
-        }
-        this.enemyActionLock = false;
-      }, 260);
-    } else {
-      enemy.specialCharge = 0;
-      this.playSfx('special');
-      this.particles.add(this.width / 2, this.height / 2, 0, 0, enemy.color || '#e74c3c', 260, 34, 'glitch');
-      const targets = this.heroes.filter(hero => hero.currentHp > 0);
-      targets.forEach((hero, index) => {
-        this.schedule(() => {
-          if (hero.currentHp > 0 && enemy.currentHp > 0) {
-            this.applyDamage(enemy, hero, (enemy.atk || 8) * 1.15);
-          }
-          if (index === targets.length - 1) {
-            this.enemyActionLock = false;
-          }
-        }, 180 + index * 70);
-      });
+  isTargetingPaused() {
+    return !!this.targeting && this.targetingWait;
+  }
+
+  setTargetingWait(wait) {
+    this.targetingWait = Boolean(wait);
+  }
+
+  selectTarget(id, { toggle = true } = {}) {
+    if (!this.targeting) return false;
+    const context = this.getActionContext(this.targeting.actor, this.targeting.abilityType, this.targeting.side);
+    if (!context.eligibleTargets.some(unit => rpgUnitId(unit) === id)) return false;
+    if (context.profile.shape === 'group') return true;
+    if (context.profile.shape !== 'multi') this.targeting.selectedTargetIds = [id];
+    else {
+      const ids = this.targeting.selectedTargetIds;
+      if (ids.includes(id)) {
+        if (toggle) this.targeting.selectedTargetIds = ids.filter(entry => entry !== id);
+      } else if (ids.length < context.profile.maxTargets) this.targeting.selectedTargetIds = [...ids, id];
+      else return false;
     }
     return true;
   }
 
-  triggerAbility(hero, abilityType) {
-    if (hero.currentHp <= 0 || hero.state === 'dead' || hero.atb < 100 || this.gameOver) return;
+  cancelTargeting() {
+    if (!this.targeting) return false;
+    this.targeting = null;
+    return true;
+  }
 
-    const target = this.getRandomAliveEnemy();
-    if (!target) return;
+  confirmTargeting() {
+    if (!this.targeting) return false;
+    const { actor, abilityType, side, selectedTargetIds } = this.targeting;
+    const context = this.getActionContext(actor, abilityType, side);
+    if (!this.canUseAction(actor, abilityType, side)) return false;
+    // The resolver is exactly the one used by preview; invalidated/dead targets
+    // are rejected rather than replaced with a random survivor.
+    if (!resolveRpgTargets({ ...context, selectedTargetIds }).valid) return false;
+    this.targeting = null;
+    return this.executeRpgAction(context, selectedTargetIds);
+  }
 
-    hero.atb = 0;
-    if (target.x !== hero.x) hero.facing = target.x > hero.x ? 1 : -1;
+  triggerEnemyAbility(enemyOrType = 'simple', maybeType = null, selectedTargetIds = null) {
+    if (this.opponentControl !== 'p2' || this.targeting) return false;
+    const aliases = { attack: 'simple', basic: 'simple', simple: 'simple', strong: 'secondary', heavy: 'secondary', secondary: 'secondary', special: 'special', guard: 'defense', defense: 'defense' };
+    let enemy = this.resolveActor(enemyOrType, 'enemy');
+    const abilityType = aliases[maybeType || (enemy ? 'simple' : enemyOrType)] || 'simple';
+    enemy ||= this.getSelectedEnemy();
+    if (!this.canUseAction(enemy, abilityType, 'enemy')) return false;
+    const context = this.getActionContext(enemy, abilityType, 'enemy');
+    return this.executeRpgAction(context, selectedTargetIds || this.chooseDefaultTargets(context));
+  }
 
-    if (abilityType === 'simple') {
-      hero.state = 'attack';
-      hero.stateTimer = 30;
-      hero.x = target.x - 50;
-      hero.y = target.y;
+  triggerAbility(hero, abilityType, selectedTargetIds = null) {
+    if (this.targeting || !this.canUseAction(hero, abilityType, 'player')) return false;
+    const context = this.getActionContext(hero, abilityType, 'player');
+    return this.executeRpgAction(context, selectedTargetIds || this.chooseDefaultTargets(context));
+  }
 
-      this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
+  emitTargetedProjectile(actor, target, color) {
+    const dx = target.x - actor.x;
+    const dy = target.y - actor.y;
+    const distance = Math.max(1, Math.hypot(dx, dy));
+    const ux = dx / distance;
+    const uy = dy / distance;
+    this.particles.add(actor.x + ux * 15, actor.y - 12 + uy * 15, ux * 8, uy * 8, color, 6, Math.max(12, Math.ceil(distance / 8)), 'laser_line');
+  }
 
-      this.schedule(() => {
-        if (target.currentHp > 0) {
-          // Status effect chances: Leon infects
-          let status = null;
-          if (hero.id === 'leon') status = 'infected';
-          this.applyDamage(hero, target, hero.stats.atk * hero.simple.dmg, status);
-        }
-        hero.x = hero.homeX;
-        hero.y = hero.homeY;
-      }, 200);
+  applyHealing(target, amount) {
+    if (target.currentHp <= 0) return 0;
+    const cap = target.statusEffects?.radiated > 0 ? target.maxHp * 0.5 : target.maxHp;
+    const gained = Math.max(0, Math.min(cap - target.currentHp, Math.round(amount)));
+    target.currentHp += gained;
+    if (gained > 0) this.particles.add(target.x, target.y - 20, 0, -1, '#2ecc71', 12, 45, 'text', '+' + gained);
+    return gained;
+  }
 
-      hero.specialCharge = Math.min(100, hero.specialCharge + 12);
+  executeRpgAction(context, selectedTargetIds) {
+    const { actor, abilityType, side, profile } = context;
+    if (!this.canUseAction(actor, abilityType, side)) return false;
+    const resolved = resolveRpgTargets({ ...context, selectedTargetIds });
+    if (!resolved.valid) return false;
+    // Freeze object identities before moving the caster or scheduling impacts.
+    // An impact never acquires a new target if one of these actors dies.
+    const targets = [...resolved.targets];
+    const anchor = resolved.anchor;
+    if (profile.effect === 'damage') actor.focusTargetId = rpgUnitId(anchor);
+    actor.atb = 0;
+    if (side === 'enemy') this.selectedEnemyId = rpgUnitId(actor);
+    if (abilityType === 'secondary') actor.cooldown = Math.round((profile.action.cd ?? 3) * 60);
+    if (abilityType === 'special') actor.specialCharge = 0;
+    else actor.specialCharge = Math.min(100, actor.specialCharge + (abilityType === 'secondary' ? 20 : abilityType === 'defense' ? 15 : 12));
 
-    } else if (abilityType === 'secondary') {
-      if (hero.cooldown > 0) return;
-      hero.state = 'attack';
-      hero.stateTimer = 30;
-      hero.cooldown = hero.secondary.cd * 60;
-
-      this.playSfx('shoot');
-      this.particles.add(hero.x + 15, hero.y - 4, 8, 0, hero.secondaryColor || '#ff9900', 6, 40, 'laser_line');
-
-      this.schedule(() => {
-        if (target.currentHp > 0) {
-          this.applyDamage(hero, target, hero.stats.atk * hero.secondary.dmg);
-        }
-      }, 300);
-
-      hero.specialCharge = Math.min(100, hero.specialCharge + 20);
-
-    } else if (abilityType === 'defense') {
-      hero.state = 'defense';
-      hero.stateTimer = hero.defense.dur * 60;
+    if (abilityType === 'defense') {
+      actor.state = 'defense';
+      actor.stateTimer = Math.max(1, Math.round((actor.defense?.dur || 1.2) * 60));
+      if (actor.defense?.type === 'heal') this.applyHealing(actor, (actor.stats?.atk ?? actor.atk ?? 8) * 1.2);
       this.playSfx('shield');
-      this.particles.add(hero.x, hero.y - 6, 0, 0, hero.secondaryColor || '#00ffff', 4, 15, 'spark');
-
-    } else if (abilityType === 'special') {
-      if (hero.specialCharge < 100) return;
-      hero.specialCharge = 0;
-      hero.state = 'special';
-      hero.stateTimer = 45;
-      
-      this.playSfx('special');
-      this.particles.add(this.width/2, this.height/2, 0, 0, hero.primaryColor, 300, 35, 'glitch');
-      this.particles.add(hero.x - 10, hero.y - 40, 0, -0.4, '#f1c40f', 16, 90, 'text', `${hero.special.name.toUpperCase()}!`);
-
-      this.enemies.forEach(e => {
-        if (e.currentHp > 0) {
-          this.schedule(() => {
-            // Special glitch effect by Neo
-            let status = null;
-            if (hero.id === 'neo') status = 'glitched';
-            this.applyDamage(hero, e, hero.stats.atk * hero.special.dmg, status);
-          }, 250);
-        }
-      });
+      this.particles.add(actor.x, actor.y - 8, 0, 0, actor.secondaryColor || actor.color || '#39c5bb', 6, 24, 'spark');
+      return true;
     }
 
-    this.schedule(() => {
-      const nextReady = this.heroes.find(h => h.currentHp > 0 && h.atb >= 100);
+    actor.actionPending = true;
+    if (side === 'enemy') this.enemyActionLock = true;
+    actor.state = abilityType === 'special' ? 'special' : 'attack';
+    actor.stateTimer = abilityType === 'special' ? 45 : 35;
+    this.faceTarget(actor, anchor);
+    const color = profile.action.color || actor.secondaryColor || actor.color || '#ff9900';
+    if (profile.delivery === 'melee' && profile.effect === 'damage') {
+      this.positionForMelee(actor, anchor);
+      this.playSfx('slash');
+    } else {
+      this.playSfx(profile.effect === 'damage' ? 'shoot' : 'shield');
+      targets.forEach(target => this.emitTargetedProjectile(actor, target, color));
+    }
+    if (abilityType === 'special') {
+      this.playSfx('special');
+      this.particles.add(actor.x, actor.y - 40, 0, -0.4, color, 16, 90, 'text', profile.name.toUpperCase() + '!');
+    }
+
+    this.scheduleAction(() => {
+      if (!this.gameOver && actor.currentHp > 0) {
+        for (const target of targets) {
+          const isStillPresent = this.heroes.includes(target) || this.enemies.includes(target);
+          if (!isStillPresent) continue;
+          const amount = (actor.stats?.atk ?? actor.atk ?? 8) * profile.multiplier;
+          if (profile.effect === 'revive') {
+            if (target.currentHp > 0) continue;
+            target.currentHp = Math.max(1, Math.round(target.maxHp * profile.reviveRatio));
+            target.state = 'idle';
+            target.stateTimer = 0;
+            target.atb = 0;
+            target.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+            this.returnToFormation(target);
+            this.particles.add(target.x, target.y - 20, 0, -1, '#2ecc71', 12, 45, 'text', 'REVIVE');
+          } else if (target.currentHp <= 0) continue;
+          else if (profile.effect === 'heal') this.applyHealing(target, profile.healRatio ? target.maxHp * profile.healRatio : amount);
+          else if (profile.effect === 'buff') {
+            target.rpgBuffTicks = Math.round(profile.duration * 60);
+            target.rpgBuffMultiplier = profile.buffMultiplier;
+            this.particles.add(target.x, target.y - 20, 0, -1, color, 12, 45, 'text', 'ATK UP');
+          } else if (profile.effect === 'guard') {
+            target.rpgGuardTicks = Math.round(profile.duration * 60);
+            target.rpgGuardReduce = profile.guardReduce;
+            this.particles.add(target.x, target.y - 20, 0, -1, color, 12, 45, 'text', 'GUARD');
+          } else if (profile.effect === 'damage') {
+            let status = null;
+            if (actor.id === 'leon' || actor.name?.includes('Nemesis')) status = 'infected';
+            if ((actor.id === 'neo' && abilityType === 'special') || actor.name?.includes('Smith')) status = 'glitched';
+            if (/Deathclaw|Cyberdemon/.test(actor.name || '')) status = 'radiated';
+            this.applyDamage(actor, target, amount, status);
+          }
+          if (profile.cleanses && target.currentHp > 0) target.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+        }
+      }
+      this.returnToFormation(actor, anchor);
+      actor.actionPending = false;
+      if (side === 'enemy') {
+        this.enemyActionLock = false;
+        this.enemyGlobalRecovery = actor.isBoss ? 85 : 110;
+      }
+      const nextReady = this.heroes.find(unit => unit.currentHp > 0 && unit.atb >= 100 && !unit.actionPending);
       if (nextReady) this.selectedHeroId = nextReady.id;
-    }, 400);
+    }, profile.delivery === 'melee' ? 200 : 300);
+    return true;
   }
 
   triggerFinalBossRandomEvent() {
@@ -702,9 +842,7 @@ export class EngineRpg {
     }
   }
   applyDamage(attacker, defender, baseDmg, statusEffect = null) {
-    if (defender.state === 'defense') {
-      baseDmg *= (1 - defender.defense.reduce);
-    }
+    if (!defender || defender.currentHp <= 0 || !Number.isFinite(baseDmg)) return 0;
     
     // Apply attacker talent modifications
     if (attacker && attacker.talent) {
@@ -714,22 +852,23 @@ export class EngineRpg {
       if (attacker.talent === 'incendiary' && Math.random() < 0.25) {
         statusEffect = 'radiated';
       }
-      if (attacker.talent === 'suppressing_fire' && defender.stats) {
-        defender.stats.def = Math.round(defender.stats.def * 0.8);
+      if (attacker.talent === 'suppressing_fire') {
+        if (defender.stats) defender.stats.def = Math.round((defender.stats.def || 0) * 0.8);
+        else defender.def = Math.round((defender.def || 0) * 0.8);
         this.particles.add(defender.x, defender.y - 45, 0, -1.2, '#3498db', 11, 50, 'text', 'DEF DOWN');
       }
     }
 
     const variance = (Math.random() * 0.2) + 0.9;
-    const finalDmg = Math.round(baseDmg * variance);
+    const buff = attacker?.rpgBuffTicks > 0 ? attacker.rpgBuffMultiplier : 1;
+    const finalDmg = absorbBattleItemDamage(defender, calculateRpgDamage(defender, baseDmg * buff, variance, false, attacker));
+    const dealtDamage = Math.min(defender.currentHp, finalDmg);
 
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
 
     // Nanite lifesteal
     if (attacker && attacker.talent === 'lifedrain' && attacker.currentHp > 0) {
-      const heal = Math.round(finalDmg * 0.10);
-      attacker.currentHp = Math.min(attacker.maxHp, attacker.currentHp + heal);
-      this.particles.add(attacker.x, attacker.y - 20, 0, -1, '#2ecc71', 11, 40, 'text', `+${heal} HP`);
+      this.applyHealing(attacker, Math.round(dealtDamage * 0.10));
     }
 
     if (defender.state !== 'defense') {
@@ -756,6 +895,7 @@ export class EngineRpg {
     } else {
       this.playSfx('hit');
     }
+    return dealtDamage;
   }
 
   getRandomAliveEnemy() {
@@ -771,7 +911,7 @@ export class EngineRpg {
   }
 
   update() {
-    if (this.disposed) return;
+    if (this.disposed || this.paused || this.isTargetingPaused()) return;
     if (this.gameOver) {
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
@@ -781,6 +921,8 @@ export class EngineRpg {
       }
       return;
     }
+
+    this.advanceActions();
 
     if (this.isFinalBoss) {
       this.finalBossChaosTimer++;
@@ -823,6 +965,8 @@ export class EngineRpg {
       if (h.currentHp <= 0) return;
 
       if (h.cooldown > 0) h.cooldown--;
+      if (h.rpgBuffTicks > 0) h.rpgBuffTicks--;
+      if (h.rpgGuardTicks > 0) h.rpgGuardTicks--;
       if (h.stateTimer > 0) {
         h.stateTimer--;
         if (h.stateTimer === 0) h.state = 'idle';
@@ -855,19 +999,14 @@ export class EngineRpg {
         }
       }
 
-      if (h.state === 'idle') {
+      if (h.state === 'idle' && !h.actionPending) {
         if (h.atb < 100) {
           h.atb = Math.min(100, h.atb + atbRate);
         }
-        if (this.autoBattle && h.atb >= 100) {
-          if (h.specialCharge >= 100) {
-            this.triggerAbility(h, 'special');
-          } else if (h.cooldown <= 0) {
-            this.triggerAbility(h, 'secondary');
-          } else {
-            this.triggerAbility(h, 'simple');
-          }
+        if (this.autoBattle && h.atb >= 100 && !h.actionPending) {
+          ['special', 'secondary', 'simple'].some(type => this.triggerAbility(h, type));
         }
+        if (!h.actionPending) this.faceTarget(h, this.getFacingTarget(h));
       }
     });
 
@@ -885,11 +1024,12 @@ export class EngineRpg {
         e.stateTimer--;
         if (e.stateTimer === 0) {
           e.state = 'idle';
-          e.x = e.homeX;
-          e.y = e.homeY;
+          if (!e.actionPending) this.returnToFormation(e);
         }
       }
       if (e.cooldown > 0) e.cooldown--;
+      if (e.rpgBuffTicks > 0) e.rpgBuffTicks--;
+      if (e.rpgGuardTicks > 0) e.rpgGuardTicks--;
 
       // Infection DoT
       if (e.statusEffects?.infected > 0) {
@@ -918,32 +1058,12 @@ export class EngineRpg {
         e.atb = Math.min(100, e.atb + atbRate);
       }
 
+      if (e.state === 'idle' && !e.actionPending) this.faceTarget(e, this.getFacingTarget(e));
       if (this.opponentControl === 'cpu' && !this.enemyActionLock && this.enemyGlobalRecovery <= 0 && e.atb >= 100 && e.state === 'idle') {
-        const target = this.getRandomAliveHero();
-        if (target) {
-          this.enemyActionLock = true;
-          e.atb = 0;
-          e.state = 'attack';
-          e.stateTimer = 40;
-          if (target.x !== e.x) e.facing = target.x > e.x ? 1 : -1;
-          e.x = target.x + 50;
-          e.y = target.y;
-
-          this.playSfx(e.weapon === 'gun' || e.weapon === 'laser' ? 'shoot' : 'slash');
-
-          this.schedule(() => {
-            if (target.currentHp > 0) {
-              // Bosses can inflict status effects
-              let status = null;
-              if (e.name.includes('Nemesis')) status = 'infected';
-              if (e.name.includes('Smith')) status = 'glitched';
-              if (e.name.includes('Deathclaw') || e.name.includes('Cyberdemon')) status = 'radiated';
-
-              this.applyDamage(e, target, e.atk, status);
-            }
-            this.enemyActionLock = false;
-            this.enemyGlobalRecovery = e.isBoss ? 85 : 110;
-          }, 200);
+        for (const abilityType of ['special', 'secondary', 'simple']) {
+          if (!this.canUseAction(e, abilityType, 'enemy')) continue;
+          const context = this.getActionContext(e, abilityType, 'enemy');
+          if (this.executeRpgAction(context, this.chooseDefaultTargets(context))) break;
         }
       }
     });

@@ -33,7 +33,7 @@ const PROLOGUE_SCENES = [
   },
   {
     id: 'arca-awakens',
-    image: '/backgrounds/resident-evil-tactics-openai.png',
+    image: '/images/campaign-oc/chapter-01-atrium-v1.png',
     title: { fr: 'A.R.C.A. repond', en: 'A.R.C.A. answers' },
     kicker: { fr: 'Archive 02 / Protocole de sauvegarde', en: 'Archive 02 / Preservation protocol' },
     body: {
@@ -47,7 +47,7 @@ const PROLOGUE_SCENES = [
   },
   {
     id: 'anchor-signal',
-    image: '/backgrounds/half-life-smash-openai.png',
+    image: '/backgrounds/lore-stages/nexus-de-convergence/rpg.webp',
     title: { fr: 'Un signal reste entier', en: 'One signal remains whole' },
     kicker: { fr: 'Archive 03 / Identification Ancre', en: 'Archive 03 / Anchor identification' },
     body: {
@@ -61,7 +61,7 @@ const PROLOGUE_SCENES = [
   },
   {
     id: 'first-cell',
-    image: '/backgrounds/stargate-rpg-openai.png',
+    image: '/backgrounds/lore-stages/nexus-de-convergence/tactics.webp',
     title: { fr: 'La premiere cellule', en: 'The first cell' },
     kicker: { fr: 'Archive 04 / Ordre de mission', en: 'Archive 04 / Mission order' },
     body: {

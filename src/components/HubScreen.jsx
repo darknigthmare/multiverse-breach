@@ -3,7 +3,7 @@ import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_
 import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
-import { CORE_CODEX_ENTRIES, LORE_DB, NARRATIVE_ACTS } from '../game/lore';
+import { CORE_CODEX_ENTRIES, LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages, getResolvedLoreWorldBossPolicy } from '../game/expandedUniverses';
 import { inferNonCombatTrial } from '../game/nonCombatTrial';
@@ -20,7 +20,6 @@ import {
 import { getSpecialEventRewardById } from '../game/specialEvents';
 import {
   OC_CAMPAIGN,
-  OC_CAMPAIGN_ACTS,
   OC_CAMPAIGN_CHAPTERS,
   OC_CAMPAIGN_ENDINGS,
   OC_CAMPAIGN_EPILOGUE,
@@ -28,8 +27,7 @@ import {
   OC_ORIGIN_LOCKS,
   getNextOcCampaignMission,
   getOcCampaignEnding,
-  getOcCampaignMission,
-  getOcCampaignProgress
+  getOcCampaignMission
 } from '../game/ocCampaign';
 import { getEnemySpriteSheetSrc, getHeroCompleteSpritePack, getHeroSpriteSheetSrc, getItemSpriteSrc, getSpriteSheetLayout, MIRELLE_COMPLETE_SPRITES } from '../game/spriteAssets';
 import { getBattleItemsForUniverse } from '../game/battleItems';
@@ -44,12 +42,24 @@ import RaceMode from './RaceMode';
 import FighterMode from './FighterMode';
 import CustomBattleMode from './CustomBattleMode';
 import RegulationImagePreview from './RegulationImagePreview';
+import UniverseArchiveDialog from './UniverseArchiveDialog';
+import { getOcCampaignResumeTarget, getOcCampaignUiProgress } from '../game/ocCampaignUiProgress';
+import { OC_DLC_UNIVERSE_KEYS } from '../game/ocDlcPacks';
+import { canInspectUniverseArchive, getArchiveNeighbour, normalizeArchiveLivingWorld } from '../game/universeArchiveView';
 import GameHudThemeLayer from './GameHudThemeLayer';
 import CgGallery from './cg/CgGallery';
 import { autoComposeMissionTeam, evaluateMissionAccess } from '../game/missions/missionAccessRules';
 import { isArcReplayProgressionBypassed } from '../game/missions/missionReplayPolicy';
 import { projectUniverseArcDeploymentPhases } from '../game/missions/missionStageProjection';
 import { resolveRiftDossierAssetSrc } from '../game/riftDossierAssets';
+import CatalogPagination from './CatalogPagination';
+import { catalogSearchText, createCatalogView, paginateCatalog, updateCatalogView } from '../game/catalogPagination';
+import { calculateSquadReadiness, proposeRelicAssignment, proposeSquad } from '../game/squadPreparation';
+import SquadProposalPanel from './SquadProposalPanel';
+import AnchorCustomizationPanel from './AnchorCustomizationPanel';
+import { advanceMosaicGuide, advanceMosaicPlayer, clampMosaicPosition, createMosaicGuide, getMosaicDestinationView, getMosaicGuideStep, getMosaicInteractionTargets, getMosaicUniverseCatalog, getMosaicZoneAnchor, MOSAIC_CITY_ART, MOSAIC_WELCOME, resolveMosaicInteraction, transitionMosaicGuide } from '../game/mosaicCityRuntime';
+import { createFixedStepClock } from '../game/fixedStepClock';
+import './MosaicCityHub.css';
 
 const TAU = Math.PI * 2;
 const getFeaturedUniverseIconSrc = (universe) => FEATURED_UNIVERSE_ICONS[universe] || null;
@@ -827,7 +837,7 @@ function OcDlcLibrary({
   );
 }
 
-function OcCampaignChronicle({
+export function OcCampaignChronicle({
   lang,
   completedStages,
   currentChapter,
@@ -837,9 +847,11 @@ function OcCampaignChronicle({
   onOpenBriefing
 }) {
   const endingId = campaignProgress?.endingId || null;
-  const canonicalProgress = getOcCampaignProgress(completedStages, endingId);
+  const campaignUi = getOcCampaignUiProgress(completedStages, endingId);
+  const canonicalProgress = campaignUi.progress;
+  const resumeTarget = getOcCampaignResumeTarget({ completedStages, endingId, isStageAvailable: isStageUnlocked });
   const completedMissionIdSet = new Set(canonicalProgress.completedMissionIds);
-  const currentChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === currentChapter.id);
+  const currentChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === (currentChapter?.id || OC_CAMPAIGN_CHAPTERS[0]?.id));
   const nextMission = canonicalProgress.nextMission || getNextOcCampaignMission(completedStages);
   const completedCampaignMission = canonicalProgress.missionsComplete
     ? OC_CAMPAIGN_MISSIONS[OC_CAMPAIGN_MISSIONS.length - 1]
@@ -852,9 +864,10 @@ function OcCampaignChronicle({
     || null
   );
   const [cinematicMissionId, setCinematicMissionId] = useState(null);
+  const [chronicleSection, setChronicleSection] = useState('acts');
   const [sceneIndex, setSceneIndex] = useState(0);
   const selectedMission = getOcCampaignMission(selectedMissionId) || currentChapterMissions[0] || OC_CAMPAIGN_MISSIONS[0];
-  const selectedChapter = OC_CAMPAIGN_CHAPTERS.find(chapter => chapter.id === selectedMission.chapterId) || currentChapter;
+  const selectedChapter = OC_CAMPAIGN_CHAPTERS.find(chapter => chapter.id === selectedMission.chapterId) || currentChapter || OC_CAMPAIGN_CHAPTERS[0];
   const selectedChapterMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.chapterId === selectedChapter.id);
   const selectedChapterClears = selectedChapterMissions.filter(mission => completedMissionIdSet.has(mission.id)).length;
   const selectedChapterComplete = selectedChapterClears === selectedChapterMissions.length;
@@ -903,12 +916,34 @@ function OcCampaignChronicle({
           <div className="oc-campaign-hero-meta">
             <b>{canonicalProgress.completedCount}/{canonicalProgress.totalCount} {lang === 'fr' ? 'operations stabilisees' : 'stabilized operations'} ({canonicalProgress.percent}%)</b>
             <b>{stabilizedOriginLocks}/{OC_ORIGIN_LOCKS.length} {lang === 'fr' ? 'Verrous d Origine recuperes' : 'Origin Locks recovered'}</b>
+            <b>{campaignUi.completedChapterCount}/{campaignUi.totalChapterCount} {lang === 'fr' ? 'chapitres stabilises' : 'stabilized chapters'}</b>
+            <b>{canonicalProgress.complete ? (lang === 'fr' ? 'Conclusion inscrite' : 'Conclusion recorded') : canonicalProgress.missionsComplete ? (lang === 'fr' ? 'Conclusion a choisir' : 'Conclusion to choose') : (lang === 'fr' ? 'Conclusion non atteinte' : 'Conclusion not reached')}</b>
             <em>{lang === 'fr' ? 'Menace' : 'Threat'}: {getLocalizedText(OC_CAMPAIGN.threat, lang)}</em>
           </div>
         </div>
       </div>
 
-      <div className="oc-origin-locks" aria-label={lang === 'fr' ? 'Progression des actes de la campagne' : 'Campaign act progress'}>
+      <div style={{ display: 'grid', gap: 8, marginTop: 12 }}>
+        <button type="button" className="btn-retro oc-primary-action" data-campaign-resume-stage={resumeTarget.stage?.id} disabled={!resumeTarget.stage || (resumeTarget.kind === 'ending-replay' ? typeof onReplayEnding !== 'function' : typeof onOpenBriefing !== 'function')} onClick={() => {
+          if (!resumeTarget.stage) return;
+          if (resumeTarget.kind === 'ending-replay') onReplayEnding?.(canonicalProgress.endingId);
+          else onOpenBriefing?.(resumeTarget.stage);
+        }}>
+          {resumeTarget.kind === 'ending-replay' ? (lang === 'fr' ? 'REJOUER LA CONCLUSION' : 'REPLAY CONCLUSION') : resumeTarget.kind === 'ending-choice' ? (lang === 'fr' ? 'CHOISIR UNE CONCLUSION' : 'CHOOSE A CONCLUSION') : (lang === 'fr' ? 'CONTINUER LA CAMPAGNE' : 'CONTINUE CAMPAIGN')}
+        </button>
+        <small style={{ color: '#a9bac5' }}>{lang === 'fr' ? 'Consulter une transmission ne termine pas une operation. Les six Verrous ouvrent l Acte V ; seule une conclusion choisie termine la campagne.' : 'Viewing a transmission does not complete an operation. The six Locks open Act V; only a chosen conclusion completes the campaign.'}</small>
+      </div>
+
+      <nav aria-label={lang === 'fr' ? 'Sections de la chronique OC' : 'OC chronicle sections'} style={{ display: 'flex', gap: 10, flexWrap: 'wrap', margin: '16px 0' }}>
+        {[
+          { id: 'acts', fr: 'ACTES', en: 'ACTS' },
+          { id: 'locks', fr: 'VERROUS D’ORIGINE', en: 'ORIGIN LOCKS' },
+          { id: 'dossier', fr: 'CHAPITRE ET DOSSIER', en: 'CHAPTER AND DOSSIER' }
+        ].map(section => <button key={section.id} type="button" className="btn-retro" aria-pressed={chronicleSection === section.id} onClick={() => setChronicleSection(section.id)}>{section[lang] || section.fr}</button>)}
+      </nav>
+
+      {chronicleSection === 'acts' && (
+      <div className="oc-origin-locks" data-chronicle-section="acts" aria-label={lang === 'fr' ? 'Progression des actes de la campagne' : 'Campaign act progress'}>
         <div className="oc-origin-locks-head">
           <div>
             <span>{lang === 'fr' ? 'CHRONIQUE DES ACTES' : 'ACT CHRONICLE'}</span>
@@ -917,15 +952,8 @@ function OcCampaignChronicle({
           <b>{canonicalProgress.percent}%</b>
         </div>
         <div className="oc-origin-locks-track" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))' }}>
-          {OC_CAMPAIGN_ACTS.map((act) => {
-            const actMissions = OC_CAMPAIGN_MISSIONS.filter(mission => mission.actId === act.id);
-            const actCompletedCount = actMissions.filter(mission => completedMissionIdSet.has(mission.id)).length;
-            const actComplete = actMissions.length > 0 && actCompletedCount === actMissions.length;
+          {campaignUi.acts.map(({ act, missions: actMissions, completedCount: actCompletedCount, complete: actComplete, unlocked: actUnlocked, awaitingEnding }) => {
             const firstActMission = actMissions[0];
-            const actUnlocked = Boolean(
-              firstActMission
-              && (completedMissionIdSet.has(firstActMission.id) || isStageUnlocked(firstActMission))
-            );
             const targetMission = actMissions.find(mission => !completedMissionIdSet.has(mission.id) && isStageUnlocked(mission))
               || [...actMissions].reverse().find(mission => completedMissionIdSet.has(mission.id))
               || firstActMission;
@@ -938,6 +966,7 @@ function OcCampaignChronicle({
                 disabled={!actUnlocked || !targetMission}
                 onClick={() => {
                   setSelectedMissionId(targetMission.id);
+                  setChronicleSection('dossier');
                   sound.playSfx('click');
                 }}
                 title={getLocalizedText(act.summary, lang)}
@@ -946,6 +975,8 @@ function OcCampaignChronicle({
                 <strong>{getLocalizedText(act.title, lang)}</strong>
                 <em>{actComplete
                   ? (lang === 'fr' ? 'ACTE STABILISE' : 'ACT STABILIZED')
+                  : awaitingEnding
+                    ? (lang === 'fr' ? 'CONCLUSION A CHOISIR' : 'CONCLUSION TO CHOOSE')
                   : actUnlocked
                     ? `${actCompletedCount}/${actMissions.length}`
                     : (lang === 'fr' ? 'HORS CAUSALITE' : 'OUT OF CAUSALITY')}</em>
@@ -955,7 +986,10 @@ function OcCampaignChronicle({
         </div>
       </div>
 
-      <div className="oc-origin-locks" aria-label={lang === 'fr' ? 'Progression des six Verrous d Origine' : 'Six Origin Locks progress'}>
+      )}
+
+      {chronicleSection === 'locks' && (
+      <div className="oc-origin-locks" data-chronicle-section="locks" aria-label={lang === 'fr' ? 'Progression des six Verrous d Origine' : 'Six Origin Locks progress'}>
         <div className="oc-origin-locks-head">
           <div>
             <span>{lang === 'fr' ? 'ARCHITECTURE DU PALIMPSESTE' : 'PALIMPSEST ARCHITECTURE'}</span>
@@ -977,6 +1011,7 @@ function OcCampaignChronicle({
                 disabled={!unlocked}
                 onClick={() => {
                   setSelectedMissionId(lock.missionId);
+                  setChronicleSection('dossier');
                   sound.playSfx('click');
                 }}
                 title={unlocked
@@ -992,6 +1027,10 @@ function OcCampaignChronicle({
         </div>
       </div>
 
+      )}
+
+      {chronicleSection === 'dossier' && (
+      <div data-chronicle-section="dossier">
       <div className="oc-chapter-record">
         <div className="oc-chapter-record-head">
           <div>
@@ -1016,7 +1055,7 @@ function OcCampaignChronicle({
               : (lang === 'fr' ? 'Donnee chiffree. Stabilise toutes les operations de ce chapitre.' : 'Encrypted data. Stabilize every operation in this chapter.')}</p>
           </div>
           <div>
-            <small>{lang === 'fr' ? 'RECOMPENSE D ACTE' : 'ACT REWARD'}</small>
+            <small>{lang === 'fr' ? 'RECOMPENSE DE CHAPITRE' : 'CHAPTER REWARD'}</small>
             <p>{getLocalizedText(selectedChapter.chapterReward, lang)}</p>
           </div>
         </div>
@@ -1177,6 +1216,9 @@ function OcCampaignChronicle({
             </div>
           )}
         </div>
+      )}
+
+      </div>
       )}
 
       {cinematicMission && cinematicScene && (
@@ -2148,6 +2190,8 @@ function MosaicCityHub({
   completedStages,
   stages = [],
   playerProfile,
+  tutorialProgress = null,
+  onTutorialProgress,
   onOpenMissions,
   onOpenCodex,
   onSessionEnd,
@@ -2169,6 +2213,44 @@ function MosaicCityHub({
   const nearHeroRef = useRef(null);
   const nearPortalRef = useRef(null);
   const nearZoneRef = useRef(null);
+  const nearbyInteractionRef = useRef(null);
+  const guideRef = useRef(createMosaicGuide(tutorialProgress));
+  const [guideState, setGuideState] = useState(() => guideRef.current);
+  const guideStep = getMosaicGuideStep(guideState);
+  const guideProgressCallbackRef = useRef(onTutorialProgress);
+  guideProgressCallbackRef.current = onTutorialProgress;
+  const publishedGuideRef = useRef(JSON.stringify(guideRef.current));
+  const [welcomeOpen, setWelcomeOpen] = useState(() => !guideRef.current.welcomeSeen);
+  const [welcomeIndex, setWelcomeIndex] = useState(0);
+  const commitGuide = useCallback(next => {
+    const snapshot = createMosaicGuide(next);
+    guideRef.current = snapshot;
+    const serialized = JSON.stringify(snapshot);
+    if (serialized === publishedGuideRef.current) return;
+    publishedGuideRef.current = serialized;
+    setGuideState(snapshot);
+    guideProgressCallbackRef.current?.(snapshot);
+  }, []);
+  useEffect(() => {
+    const imported = createMosaicGuide(tutorialProgress);
+    if (JSON.stringify(imported) === publishedGuideRef.current) return;
+    publishedGuideRef.current = JSON.stringify(imported);
+    guideRef.current = imported;
+    setGuideState(imported);
+    setWelcomeOpen(!imported.welcomeSeen);
+    setWelcomeIndex(0);
+  }, [tutorialProgress]);
+  const [nearbyLabel, setNearbyLabel] = useState('');
+  const recordGuide = useCallback((event, amount = 0) => {
+    const before = guideRef.current;
+    const next = advanceMosaicGuide(before, event, amount);
+    guideRef.current = next;
+    // Persist actual checkpoints, not every animation frame or menu click.
+    if (getMosaicGuideStep(next) !== getMosaicGuideStep(before)) commitGuide(next);
+  }, [commitGuide]);
+  const controlGuide = command => commitGuide(transitionMosaicGuide(guideRef.current, command));
+  const [destinationQuery, setDestinationQuery] = useState('');
+  const [destinationPage, setDestinationPage] = useState(0);
   const [nearHeroId, setNearHeroId] = useState(null);
   const [nearZoneId, setNearZoneId] = useState(null);
   const [selectedHeroId, setSelectedHeroId] = useState(null);
@@ -2182,12 +2264,11 @@ function MosaicCityHub({
     : 'A.R.C.A. keeps Mosaic City stable. Move your Anchor and synchronize nearby signatures.');
   const unlockedSet = useMemo(() => new Set(unlockedHeroes), [unlockedHeroes]);
   const safeHeroes = useMemo(() => (heroes || []).filter(Boolean), [heroes]);
-  const ownedHeroes = useMemo(() => safeHeroes.filter(hero => unlockedSet.has(hero.id)).slice(0, 24), [safeHeroes, unlockedSet]);
-  const unlockedUniverses = useMemo(() => Array.from(new Set(ownedHeroes.map(hero => hero.universe))).slice(0, 10), [ownedHeroes]);
-  const visibleThreadUniverses = useMemo(() => {
-    const fallback = ['Nexus de Convergence', 'Halo', 'Half-Life', 'Resident Evil', 'Stargate'];
-    return (unlockedUniverses.length ? unlockedUniverses : fallback).slice(0, 10);
-  }, [unlockedUniverses]);
+  const ownedHeroes = useMemo(() => safeHeroes.filter(hero => hero.id !== 'player_anchor' && unlockedSet.has(hero.id)), [safeHeroes, unlockedSet]);
+  const playerAvatar = useMemo(() => createPlayerHero(playerProfile), [playerProfile]);
+  const unlockedUniverses = useMemo(() => getMosaicUniverseCatalog(safeHeroes, unlockedHeroes), [safeHeroes, unlockedHeroes]);
+  const destinationView = useMemo(() => getMosaicDestinationView(unlockedUniverses, { query: destinationQuery, page: destinationPage }), [unlockedUniverses, destinationQuery, destinationPage]);
+  const visibleThreadUniverses = destinationView.items;
   const universeStageStats = useMemo(() => {
     const stats = {};
     stages.forEach(stage => {
@@ -2215,27 +2296,27 @@ function MosaicCityHub({
         spawn: { x: 820, y: 760 }
       };
     });
-    const universeDistricts = Object.fromEntries(threadUniversePortals.map(portal => [
-      portal.target,
+    const universeDistricts = Object.fromEntries(unlockedUniverses.map(universe => [
+      getUniverseHubId(universe),
       {
-        id: portal.target,
-        label: getUniverseHubPlace(portal.universe, lang).name,
-        universe: portal.universe,
-        place: getUniverseHubPlace(portal.universe, lang),
-        role: lang === 'fr' ? `lieu reconstruit depuis ${portal.universe}` : `${portal.universe} reconstructed place`,
-        color: portal.color,
+        id: getUniverseHubId(universe),
+        label: getUniverseHubPlace(universe, lang).name,
+        universe,
+        place: getUniverseHubPlace(universe, lang),
+        role: lang === 'fr' ? `lieu reconstruit depuis ${universe}` : `${universe} reconstructed place`,
+        color: getUniverseHubColor(universe),
         worldW: 1920,
         worldH: 1180,
         spawn: { x: 820, y: 760 },
         portals: [
           {
-            id: `back-${portal.target}`,
+            id: `back-${getUniverseHubId(universe)}`,
             target: 'threads',
             x: 820,
             y: 910,
             label: lang === 'fr' ? 'Retour Galerie' : 'Back to Gallery',
             color: '#9b59b6',
-            spawn: { x: portal.x, y: Math.min(1180, portal.y + 86) }
+            spawn: { x: 220, y: 700 }
           }
         ]
       }
@@ -2294,7 +2375,7 @@ function MosaicCityHub({
     },
     ...universeDistricts
   };
-  }, [lang, visibleThreadUniverses]);
+  }, [lang, unlockedUniverses, visibleThreadUniverses]);
   const district = districts[currentDistrict] || districts.atrium;
   const zones = useMemo(() => {
     const source = visibleThreadUniverses;
@@ -2358,7 +2439,7 @@ function MosaicCityHub({
       ];
     }
     if (currentDistrict === 'threads') {
-      return source.slice(0, 10).map((universe, index) => {
+      return source.map((universe, index) => {
         const col = index % 3;
         const row = Math.floor(index / 3);
         return {
@@ -2404,6 +2485,7 @@ function MosaicCityHub({
     return [
       { id: 'atrium', universe: 'Nexus', label: lang === 'fr' ? 'Atrium central' : 'Central Atrium', x: 550, y: 360, w: 470, h: 260, color: '#39c5bb', role: lang === 'fr' ? 'zone stable' : 'stable zone' },
       { id: 'gate-hall', universe: 'Nexus', label: lang === 'fr' ? 'Hall des portails' : 'Portal Hall', x: 1180, y: 360, w: 330, h: 260, color: '#9b59b6', role: lang === 'fr' ? 'depart vers quartiers' : 'district departures' },
+      { id: 'atrium-directive', universe: null, action: 'mission', label: lang === 'fr' ? 'Table des missions' : 'Mission Table', x: 930, y: 230, w: 200, h: 120, color: '#ffea00', role: lang === 'fr' ? 'choisir librement un objectif' : 'freely choose an objective' },
       ...threadRooms
     ];
   }, [currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
@@ -2430,7 +2512,9 @@ function MosaicCityHub({
     if (!sessionPaused) return;
     stateRef.current.keys = {};
     stateRef.current.destination = null;
-  }, [sessionPaused]);
+    stateRef.current.pendingInteraction = null;
+    commitGuide(guideRef.current);
+  }, [commitGuide, sessionPaused]);
 
   // Une sortie confirmee depuis la pause rend le controle au hub principal.
   useEffect(() => {
@@ -2438,8 +2522,10 @@ function MosaicCityHub({
     sessionExitRequestRef.current = sessionExitRequest;
     stateRef.current.keys = {};
     stateRef.current.destination = null;
+    stateRef.current.pendingInteraction = null;
+    commitGuide(guideRef.current);
     onSessionEnd?.({ reason: 'abandoned' });
-  }, [onSessionEnd, sessionExitRequest]);
+  }, [commitGuide, onSessionEnd, sessionExitRequest]);
 
   useEffect(() => {
     const districtHeroes = district.universe
@@ -2448,7 +2534,8 @@ function MosaicCityHub({
         ...ownedHeroes.filter(hero => hero.universe !== district.universe)
       ]
       : ownedHeroes;
-    stateRef.current.npcs = districtHeroes.slice(0, 18).map((hero, index) => {
+    const guideHero = currentDistrict === 'atrium' ? (safeHeroes.find(hero => hero.id === 'arca_mirelle') || BASE_HEROES_DB.find(hero => hero.id === 'arca_mirelle')) : null;
+    stateRef.current.npcs = districtHeroes.filter(hero => hero.id !== guideHero?.id).slice(0, 17).map((hero, index) => {
       const zone = zones[index % Math.max(1, zones.length)] || district;
       const compatibleCount = districtHeroes.filter(other => other.id !== hero.id && (other.universe === hero.universe || other.category === hero.category)).length;
       const routine = compatibleCount && index % 4 === 1 ? 'talk' : index % 3 === 0 ? 'walk' : 'idle';
@@ -2465,12 +2552,13 @@ function MosaicCityHub({
         facing: index % 2 ? -1 : 1
       };
     });
-  }, [completedStages.length, district, ownedHeroes, zones]);
+    if (guideHero) stateRef.current.npcs.unshift({ hero: guideHero, x: 910, y: 520, baseX: 910, baseY: 520, zoneId: 'atrium', routine: 'idle', phase: 0, facing: -1, isGuide: true });
+  }, [completedStages.length, currentDistrict, district, ownedHeroes, safeHeroes, zones]);
 
   const switchDistrict = useCallback((portal) => {
     if (sessionPausedRef.current) return;
     const target = districts[portal.target] || districts.atrium;
-    const spawn = portal.spawn || target.spawn;
+    const spawn = clampMosaicPosition(portal.spawn || target.spawn, target);
     currentDistrictRef.current = target.id;
     currentZoneRef.current = target.id;
     nearHeroRef.current = null;
@@ -2480,6 +2568,10 @@ function MosaicCityHub({
     stateRef.current.player.x = spawn.x;
     stateRef.current.player.y = spawn.y;
     stateRef.current.destination = null;
+    stateRef.current.pendingInteraction = null;
+    stateRef.current.keys = {};
+    nearbyInteractionRef.current = null;
+    setNearbyLabel('');
     stateRef.current.camera = {
       x: Math.max(0, Math.min(target.worldW - 960, spawn.x - 480)),
       y: Math.max(0, Math.min(target.worldH - 540, spawn.y - 270))
@@ -2494,41 +2586,53 @@ function MosaicCityHub({
     sound.playSfx('special');
   }, [districts, lang]);
 
-  const interactWithNearby = useCallback(() => {
+  useEffect(() => {
+    if (!districts[currentDistrict]) switchDistrict({ target: 'atrium' });
+  }, [currentDistrict, districts, switchDistrict]);
+
+  const interactWithNearby = useCallback((requestedTarget = null) => {
     if (sessionPausedRef.current) return;
     const state = stateRef.current;
-    if (nearPortalRef.current) {
-      switchDistrict(nearPortalRef.current);
+    const preferred = requestedTarget?.id && requestedTarget?.type ? requestedTarget : null;
+    const interaction = resolveMosaicInteraction(state.player, { portals: district.portals, npcs: state.npcs, zones }, preferred);
+    if (!interaction) {
+      setHubLog(lang === 'fr' ? 'Approche une personne, un portail ou une borne lumineuse.' : 'Move near a person, portal, or glowing terminal.');
       return;
     }
-    if (nearZoneRef.current?.action === 'mission') {
+    state.destination = null;
+    state.pendingInteraction = null;
+    recordGuide('interact');
+    if (interaction.type === 'portal') {
+      switchDistrict(interaction.target);
+      return;
+    }
+    const zone = interaction.type === 'zone' ? interaction.target : null;
+    if (zone?.action === 'mission') {
+      recordGuide('objective');
       setHubLog(lang === 'fr'
-        ? `Balise de ${nearZoneRef.current.universe} activee. A.R.C.A. ouvre la carte des failles sur les arcs et missions liees.`
-        : `${nearZoneRef.current.universe} beacon activated. A.R.C.A. opens the rift map for linked arcs and missions.`);
+        ? 'Table de missions activee. Choisis ton objectif sur la carte; aucune mission ne demarre automatiquement.'
+        : 'Mission board active. Choose your objective on the map; no mission starts automatically.');
       sound.playSfx('special');
-      onOpenMissions?.(nearZoneRef.current.universe);
+      onOpenMissions?.(zone.universe);
       return;
     }
-    if (nearZoneRef.current?.action === 'codex') {
+    if (zone?.action === 'codex') {
       setHubLog(lang === 'fr'
-        ? `Codex local ouvert: ${nearZoneRef.current.universe}. Les archives restent in-lore sous forme de dossier A.R.C.A.`
-        : `Local Codex opened: ${nearZoneRef.current.universe}. Archives stay in-lore as an A.R.C.A. file.`);
+        ? `Codex local ouvert: ${zone.universe}.`
+        : `Local Codex opened: ${zone.universe}.`);
       sound.playSfx('confirm');
-      onOpenCodex?.(nearZoneRef.current.universe);
+      onOpenCodex?.(zone.universe);
       return;
     }
-    if (nearZoneRef.current?.action === 'anchor') {
-      const stats = universeStageStats[nearZoneRef.current.universe] || { total: 0, cleared: 0 };
+    if (zone?.action === 'anchor') {
+      const stats = universeStageStats[zone.universe] || { total: 0, cleared: 0 };
       setHubLog(lang === 'fr'
-        ? `Ancre locale: ${nearZoneRef.current.universe}. Stabilite ${stats.cleared}/${stats.total || '?'}; la salle gagne en lumiere quand ses failles sont scellees.`
-        : `Local anchor: ${nearZoneRef.current.universe}. Stability ${stats.cleared}/${stats.total || '?'}; the room brightens as its rifts are sealed.`);
+        ? `Ancre locale: ${zone.universe}. Stabilite ${stats.cleared}/${stats.total || '?'}; la salle gagne en lumiere quand ses failles sont scellees.`
+        : `Local anchor: ${zone.universe}. Stability ${stats.cleared}/${stats.total || '?'}; the room brightens as its rifts are sealed.`);
       sound.playSfx('click');
       return;
     }
-    const target = nearHeroRef.current || state.npcs
-      .map(npc => ({ npc, dist: Math.hypot(npc.x - state.player.x, npc.y - state.player.y) }))
-      .filter(entry => entry.dist < 58)
-      .sort((a, b) => a.dist - b.dist)[0]?.npc?.hero;
+    const target = interaction.type === 'npc' ? interaction.target.hero : null;
     if (!target) {
       setHubLog(lang === 'fr'
         ? 'Aucune signature assez proche. Approche un heros ou une salle de Trame.'
@@ -2537,6 +2641,14 @@ function MosaicCityHub({
       return;
     }
     setSelectedHeroId(target.id);
+    if (Math.abs(state.player.x - interaction.target.x) > 0.01) interaction.target.facing = Math.sign(state.player.x - interaction.target.x);
+    if (interaction.target.isGuide) {
+      setWelcomeIndex(0);
+      setWelcomeOpen(true);
+      setHubLog(MOSAIC_WELCOME.lines[lang === 'fr' ? 'fr' : 'en'][0]);
+      sound.playSfx('confirm');
+      return;
+    }
     const compatible = state.npcs
       .map(npc => npc.hero)
       .filter(hero => hero.id !== target.id && (hero.universe === target.universe || hero.category === target.category))
@@ -2547,41 +2659,56 @@ function MosaicCityHub({
       ? `${target.name} synchronise sa Trame avec ${playerName}. ${compatible.length ? `Discussion compatible avec ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} faille(s) stabilisee(s).`
       : `${target.name} synchronizes their Thread with ${playerName}. ${compatible.length ? `Compatible discussion with ${compatible.join(' / ')}. ` : ''}${target.universe}: ${stats.cleared}/${stats.total || '?'} stabilized rift(s).`);
     sound.playSfx('confirm');
-  }, [lang, onOpenCodex, onOpenMissions, playerName, switchDistrict, universeStageStats]);
+  }, [district, lang, onOpenCodex, onOpenMissions, playerName, recordGuide, switchDistrict, universeStageStats, zones]);
 
   useEffect(() => {
     const onKeyDown = event => {
       if (sessionPausedRef.current) return;
+      if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       const key = event.key.toLowerCase();
-      if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd'].includes(key)) {
+      if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd', 'z', 'q'].includes(key)) {
         stateRef.current.keys[key] = true;
         stateRef.current.destination = null;
+        stateRef.current.pendingInteraction = null;
         event.preventDefault();
       }
-      if (key === 'e') {
+      if (key === 'e' && !event.repeat) {
+        event.preventDefault();
         interactWithNearby();
       }
     };
     const onKeyUp = event => {
       stateRef.current.keys[event.key.toLowerCase()] = false;
     };
+    const clearInput = () => {
+      stateRef.current.keys = {};
+      stateRef.current.destination = null;
+      stateRef.current.pendingInteraction = null;
+      commitGuide(guideRef.current);
+    };
+    const onVisibilityChange = () => { if (document.hidden) clearInput(); };
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('keyup', onKeyUp);
+    window.addEventListener('blur', clearInput);
+    document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
+      window.removeEventListener('blur', clearInput);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
     };
-  }, [interactWithNearby]);
+  }, [commitGuide, interactWithNearby]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     const ctx = canvas.getContext('2d');
     let rafId = 0;
+    let lastFrame = null;
     const drawPixelPerson = (x, y, color, accent, facing = 1, label = '', isPlayer = false, hero = null) => {
       if (hero?.id) {
         const bob = Math.sin(stateRef.current.t * 0.12 + x * 0.01) * 1.4;
-        const spriteState = hero.state || (Math.abs(Math.sin(stateRef.current.t * 0.018 + x * 0.01)) > 0.62 ? 'run' : 'idle');
+        const spriteState = hero.state || 'idle';
         ctx.fillStyle = 'rgba(0,0,0,0.42)';
         ctx.fillRect(x - 18, y + 21, 36, 7);
         drawPixelSprite(ctx, x, y + 24 + bob, { ...hero, state: spriteState }, stateRef.current.t, facing, isPlayer ? 78 : 68, 'nexus');
@@ -2670,42 +2797,20 @@ function MosaicCityHub({
       ctx.restore();
     };
 
-    const loop = () => {
-      if (sessionPausedRef.current) {
+    const loop = (timestamp = performance.now()) => {
+      if (sessionPausedRef.current || document.hidden) {
+        lastFrame = null;
         rafId = window.requestAnimationFrame(loop);
         return;
       }
       const state = stateRef.current;
-      state.t += 1;
-      const keys = state.keys;
-      let dx = 0;
-      let dy = 0;
-      if (keys.arrowleft || keys.a) dx -= 1;
-      if (keys.arrowright || keys.d) dx += 1;
-      if (keys.arrowup || keys.w) dy -= 1;
-      if (keys.arrowdown || keys.s) dy += 1;
-
-      if (state.destination && !dx && !dy) {
-        const toX = state.destination.x - state.player.x;
-        const toY = state.destination.y - state.player.y;
-        const dist = Math.hypot(toX, toY);
-        if (dist > 4) {
-          dx = toX / dist;
-          dy = toY / dist;
-        } else {
-          state.destination = null;
-        }
-      }
-
-      if (dx || dy) {
-        const len = Math.hypot(dx, dy) || 1;
-        state.player.x = Math.max(34, Math.min(district.worldW - 34, state.player.x + (dx / len) * state.player.speed));
-        state.player.y = Math.max(42, Math.min(district.worldH - 36, state.player.y + (dy / len) * state.player.speed));
-        state.player.facing = dx < 0 ? -1 : dx > 0 ? 1 : state.player.facing;
-      }
-
-      state.camera.x += (Math.max(0, Math.min(district.worldW - canvas.width, state.player.x - canvas.width / 2)) - state.camera.x) * 0.12;
-      state.camera.y += (Math.max(0, Math.min(district.worldH - canvas.height, state.player.y - canvas.height / 2)) - state.camera.y) * 0.12;
+      const elapsedMs = lastFrame === null ? 0 : Math.max(0, Math.min(50, timestamp - lastFrame));
+      lastFrame = timestamp;
+      state.t += elapsedMs * 60 / 1000;
+      recordGuide('move', advanceMosaicPlayer(state, district, elapsedMs));
+      const cameraBlend = 1 - Math.pow(0.88, elapsedMs * 60 / 1000);
+      state.camera.x += (Math.max(0, Math.min(district.worldW - canvas.width, state.player.x - canvas.width / 2)) - state.camera.x) * cameraBlend;
+      state.camera.y += (Math.max(0, Math.min(district.worldH - canvas.height, state.player.y - canvas.height / 2)) - state.camera.y) * cameraBlend;
 
       let activeZone = district;
       zones.forEach(zone => {
@@ -2717,33 +2822,25 @@ function MosaicCityHub({
         currentZoneRef.current = activeZone.id;
         setCurrentZone(activeZone.id);
       }
-      const nearestZone = zones
-        .map(zone => ({
-          zone,
-          dist: Math.hypot(zone.x + zone.w / 2 - state.player.x, zone.y + zone.h / 2 - state.player.y)
-        }))
-        .filter(entry => entry.dist < Math.max(entry.zone.w, entry.zone.h) * 0.58)
-        .sort((a, b) => a.dist - b.dist)[0]?.zone || null;
-      nearZoneRef.current = nearestZone?.action ? nearestZone : null;
-      if ((nearestZone?.id || null) !== nearZoneRef.current?.lastId) {
-        nearZoneRef.current = nearestZone?.action ? { ...nearestZone, lastId: nearestZone.id } : null;
-        setNearZoneId(nearestZone?.action ? nearestZone.id : null);
-      }
+      const nearestZone = resolveMosaicInteraction(state.player, { zones })?.target || null;
+      if ((nearestZone?.id || null) !== (nearZoneRef.current?.id || null)) setNearZoneId(nearestZone?.id || null);
+      nearZoneRef.current = nearestZone;
 
       state.npcs.forEach(npc => {
         const previousNpcX = npc.x;
+        const previousNpcY = npc.y;
         if (npc.routine === 'walk') {
           npc.x = npc.baseX + Math.sin(state.t * 0.014 + npc.phase) * 46;
           npc.y = npc.baseY + Math.cos(state.t * 0.011 + npc.phase) * 22;
-        } else if (npc.routine === 'talk') {
-          npc.x = npc.baseX + Math.sin(state.t * 0.01 + npc.phase) * 8;
-          npc.y = npc.baseY + Math.cos(state.t * 0.012 + npc.phase) * 5;
         } else {
-          npc.x = npc.baseX + Math.sin(state.t * 0.018 + npc.phase) * 14;
-          npc.y = npc.baseY + Math.cos(state.t * 0.014 + npc.phase) * 8;
+          npc.x = npc.baseX;
+          npc.y = npc.baseY;
         }
+        Object.assign(npc, clampMosaicPosition(npc, district));
+        if (Math.hypot(npc.x - state.player.x, npc.y - state.player.y) < 28) { npc.x = previousNpcX; npc.y = previousNpcY; }
         const horizontalTravel = npc.x - previousNpcX;
         if (Math.abs(horizontalTravel) > 0.01) npc.facing = horizontalTravel > 0 ? 1 : -1;
+        npc.sceneState = Math.hypot(horizontalTravel, npc.y - previousNpcY) > 0.01 ? 'run' : 'idle';
       });
 
       const nearest = state.npcs
@@ -2761,6 +2858,16 @@ function MosaicCityHub({
         .filter(entry => entry.dist < 72)
         .sort((a, b) => a.dist - b.dist)[0]?.portal || null;
       nearPortalRef.current = nearestPortal;
+      const interactionScene = { portals: district.portals, npcs: state.npcs, zones };
+      const interaction = resolveMosaicInteraction(state.player, interactionScene);
+      const interactionKey = interaction ? `${interaction.type}:${interaction.id}` : '';
+      if (interactionKey !== nearbyInteractionRef.current?.key) {
+        nearbyInteractionRef.current = interaction ? { ...interaction, key: interactionKey } : null;
+        setNearbyLabel(interaction?.target?.label || interaction?.target?.hero?.name || '');
+      }
+      if (state.pendingInteraction && resolveMosaicInteraction(state.player, interactionScene, state.pendingInteraction)) {
+        interactWithNearby(state.pendingInteraction);
+      }
 
       const sky = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
       sky.addColorStop(0, '#120821');
@@ -2844,7 +2951,18 @@ function MosaicCityHub({
         ctx.fillStyle = zone.color;
         ctx.font = '10px "Share Tech Mono"';
         ctx.fillText(zone.role.toUpperCase().slice(0, 24), zone.x + 12, zone.y + 36);
-        if (zone.action && zoneActive) {
+        if (zone.action && zone.action !== 'talk') {
+          const anchor = getMosaicZoneAnchor(zone);
+          ctx.fillStyle = 'rgba(0,0,0,0.8)';
+          ctx.fillRect(anchor.x - 22, anchor.y - 18, 44, 36);
+          ctx.strokeStyle = zone.color;
+          ctx.lineWidth = 2;
+          ctx.strokeRect(anchor.x - 22, anchor.y - 18, 44, 36);
+          ctx.fillStyle = zone.color;
+          ctx.font = '18px "Share Tech Mono"';
+          ctx.fillText(zone.action === 'mission' ? '!' : zone.action === 'codex' ? '?' : '+', anchor.x - 5, anchor.y + 6);
+        }
+        if (zone.action && zone.id === nearZoneRef.current?.id) {
           ctx.fillStyle = '#ffea00';
           ctx.fillText((lang === 'fr' ? 'E: INTERAGIR' : 'E: INTERACT'), zone.x + 12, zone.y + zone.h - 28);
         }
@@ -2903,12 +3021,15 @@ function MosaicCityHub({
       }
       ctx.stroke();
 
-      state.npcs
-        .slice()
+      [...state.npcs, { ...state.player, hero: playerAvatar, isPlayer: true }]
         .sort((a, b) => a.y - b.y)
         .forEach(npc => {
+          if (npc.isPlayer) {
+            drawPixelPerson(npc.x, npc.y, '#39c5bb', '#ffea00', npc.facing, playerName.slice(0, 10), true, { ...playerAvatar, state: npc.state });
+            return;
+          }
           const hero = npc.hero;
-          drawPixelPerson(npc.x, npc.y, hero.primaryColor, hero.secondaryColor, npc.facing, String(hero.name || '?').slice(0, 8), false, hero);
+          drawPixelPerson(npc.x, npc.y, hero.primaryColor, hero.secondaryColor, npc.facing, String(hero.name || '?').slice(0, 8), false, { ...hero, state: npc.sceneState });
           if (npc.routine === 'talk' || npc.reaction) {
             ctx.fillStyle = npc.reaction ? '#ffea00' : '#d8f7ff';
             ctx.font = '9px "Share Tech Mono"';
@@ -2924,14 +3045,12 @@ function MosaicCityHub({
           }
         });
 
-      drawPixelPerson(state.player.x, state.player.y, '#39c5bb', '#ffea00', state.player.facing, playerName.slice(0, 10), true);
-
       ctx.restore();
 
       ctx.fillStyle = 'rgba(0,0,0,0.68)';
-      ctx.fillRect(12, 12, 290, 64);
+      ctx.fillRect(12, 12, 290, 88);
       ctx.strokeStyle = '#39c5bb';
-      ctx.strokeRect(12, 12, 290, 64);
+      ctx.strokeRect(12, 12, 290, 88);
       ctx.fillStyle = '#39c5bb';
       ctx.font = '11px "Press Start 2P"';
       ctx.fillText(lang === 'fr' ? 'CITE-MOSAIQUE' : 'MOSAIC CITY', 24, 34);
@@ -2943,14 +3062,10 @@ function MosaicCityHub({
         ctx.font = '10px "Share Tech Mono"';
         ctx.fillText(districtStateLabel.toUpperCase().slice(0, 30), 24, 72);
       }
-      if (nearestPortal) {
+      if (interaction) {
         ctx.fillStyle = '#ffea00';
         ctx.font = '10px "Share Tech Mono"';
-        ctx.fillText(lang === 'fr' ? `E: ${nearestPortal.label}` : `E: ${nearestPortal.label}`, 24, district.universe ? 88 : 72);
-      } else if (nearZoneRef.current?.action) {
-        ctx.fillStyle = '#ffea00';
-        ctx.font = '10px "Share Tech Mono"';
-        ctx.fillText(lang === 'fr' ? `E: ${nearZoneRef.current.label}` : `E: ${nearZoneRef.current.label}`, 24, district.universe ? 88 : 72);
+        ctx.fillText(`E: ${interaction.target.label || interaction.target.hero?.name}`.slice(0, 40), 24, district.universe ? 88 : 78);
       }
 
       ctx.fillStyle = 'rgba(0,0,0,0.58)';
@@ -2987,52 +3102,81 @@ function MosaicCityHub({
       rafId = window.requestAnimationFrame(loop);
     };
     loop();
-    return () => window.cancelAnimationFrame(rafId);
-  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, lang, ownedHeroes.length, playerName, unlockedUniverses.length, zones]);
+    const onClockVisibilityChange = () => { lastFrame = null; };
+    document.addEventListener('visibilitychange', onClockVisibilityChange);
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      document.removeEventListener('visibilitychange', onClockVisibilityChange);
+    };
+  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
     if (sessionPausedRef.current) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    event.preventDefault();
+    canvas.focus({ preventScroll: true });
     const scaleX = canvas.width / rect.width;
     const scaleY = canvas.height / rect.height;
     const x = (event.clientX - rect.left) * scaleX + stateRef.current.camera.x;
     const y = (event.clientY - rect.top) * scaleY + stateRef.current.camera.y;
-    const closePortal = (district.portals || []).find(portal => Math.hypot(portal.x - x, portal.y - y) < 46);
-    if (closePortal) {
-      switchDistrict(closePortal);
-      return;
-    }
-    const closeNpc = stateRef.current.npcs.find(npc => Math.hypot(npc.x - x, npc.y - y) < 34);
-    if (closeNpc) {
-      nearHeroRef.current = closeNpc.hero;
-      nearHeroIdRef.current = closeNpc.hero.id;
-      setNearHeroId(closeNpc.hero.id);
-      interactWithNearby();
-      return;
-    }
-    const closeZone = zones.find(zone => zone.action && x >= zone.x && x <= zone.x + zone.w && y >= zone.y && y <= zone.y + zone.h);
-    if (closeZone) {
-      nearZoneRef.current = { ...closeZone, lastId: closeZone.id };
-      setNearZoneId(closeZone.id);
-      stateRef.current.destination = { x: closeZone.x + closeZone.w / 2, y: closeZone.y + closeZone.h / 2 };
-      if (Math.hypot(stateRef.current.player.x - (closeZone.x + closeZone.w / 2), stateRef.current.player.y - (closeZone.y + closeZone.h / 2)) < Math.max(closeZone.w, closeZone.h) * 0.48) {
-        interactWithNearby();
-      } else {
-        sound.playSfx('click');
+    const scene = { portals: district.portals, npcs: stateRef.current.npcs, zones };
+    const clicked = getMosaicInteractionTargets(scene)
+      .map(target => ({ ...target, distance: Math.hypot(target.x - x, target.y - y) }))
+      .filter(target => target.distance <= (target.type === 'portal' ? 46 : 34))
+      .sort((a, b) => a.distance - b.distance)[0];
+    stateRef.current.keys = {};
+    if (clicked) {
+      const preferred = { type: clicked.type, id: clicked.id };
+      if (resolveMosaicInteraction(stateRef.current.player, scene, preferred)) interactWithNearby(preferred);
+      else {
+        stateRef.current.pendingInteraction = preferred;
+        stateRef.current.destination = clampMosaicPosition(clicked, district);
       }
       return;
     }
-    stateRef.current.destination = { x, y };
+    stateRef.current.pendingInteraction = null;
+    stateRef.current.destination = clampMosaicPosition({ x, y }, district);
     sound.playSfx('click');
   };
 
   const setVirtualKey = (key, active) => {
     if (sessionPausedRef.current) return;
     stateRef.current.keys[key] = active;
-    if (active) stateRef.current.destination = null;
+    if (active) { stateRef.current.destination = null; stateRef.current.pendingInteraction = null; }
   };
+
+  const clearCityDestination = () => {
+    stateRef.current.keys = {};
+    stateRef.current.destination = null;
+    stateRef.current.pendingInteraction = null;
+  };
+  const approachDistrictPortal = universe => {
+    if (sessionPausedRef.current || currentDistrict !== 'threads') return;
+    const portal = district.portals.find(candidate => candidate.universe === universe);
+    if (!portal) return;
+    clearCityDestination();
+    stateRef.current.destination = clampMosaicPosition(portal, district);
+    stateRef.current.pendingInteraction = { type: 'portal', id: portal.id };
+    setHubLog(lang === 'fr' ? `Approche du portail ${universe}. L entree se fait a proximite.` : `Approaching the ${universe} portal. Entry requires reaching it.`);
+  };
+  const welcomeLanguage = lang === 'fr' ? 'fr' : 'en';
+  const advanceWelcome = () => {
+    if (welcomeIndex + 1 < MOSAIC_WELCOME.lines[welcomeLanguage].length) setWelcomeIndex(index => index + 1);
+    else {
+      controlGuide('welcome-read');
+      setWelcomeOpen(false);
+    }
+  };
+
+  const guideCopy = {
+    move: { title: lang === 'fr' ? '1. Fais tes premiers pas' : '1. Take your first steps', body: lang === 'fr' ? 'Marche dans la ville avec ZQSD/WASD, les fleches ou un toucher au sol. Mirelle attend dans l Atrium central.' : 'Walk through the City with WASD, arrows, or a tap on the ground. Mirelle waits in the central Atrium.' },
+    interact: { title: lang === 'fr' ? '2. Interagis dans la ville' : '2. Interact in the City', body: lang === 'fr' ? 'Approche Mirelle, une autre personne ou une borne, puis E ou Interagir. Un toucher te fait approcher avant l interaction.' : 'Approach Mirelle, another person or a terminal, then press E or Interact. Tapping walks you closer first.' },
+    objective: { title: lang === 'fr' ? '3. Ouvre le choix des missions' : '3. Open mission selection', body: lang === 'fr' ? 'La table ! au nord-est de l Atrium ouvre les missions. Les bornes des quartiers aussi : tu gardes le choix.' : 'The ! table northeast of the Atrium opens missions. District beacons work too: the choice stays yours.' },
+    done: { title: lang === 'fr' ? 'Premiers reperes acquis' : 'First bearings acquired', body: lang === 'fr' ? 'Marche, interaction et table des missions explorees. Les combats et la preparation de ton equipe restent a jouer librement.' : 'Walking, interaction and the mission board explored. Battles and team preparation remain yours to play.' }
+  }[guideStep];
 
   return (
     <div className={`glass-panel nexus-play-panel mosaic-rpg-panel ${hudTheme ? 'game-hud-themed-interface' : ''}`}>
@@ -3042,16 +3186,36 @@ function MosaicCityHub({
         <h3>{lang === 'fr' ? 'Cite-Mosaique' : 'Mosaic City'}</h3>
         <p>
           {lang === 'fr'
-            ? 'Un hub RPG navigable: ton Ancre explore des quartiers plus grands que l ecran. La Galerie des Trames contient maintenant des portails d univers ouvrant une salle dediee a chaque monde debloque.'
-            : 'A navigable RPG hub: your Anchor explores districts larger than the screen. The Thread Gallery now contains universe portals that open a dedicated room for each unlocked world.'}
+            ? 'Un carrefour vivant entre les Trames. Mirelle t accueille dans l Atrium; explore a ton rythme.'
+            : 'A living crossroads between Threads. Mirelle welcomes you in the Atrium; explore at your own pace.'}
         </p>
         <div className="nexus-play-stats">
           <span>{ownedHeroes.length} {lang === 'fr' ? 'signatures' : 'signatures'}</span>
-          <span>{unlockedUniverses.length} {lang === 'fr' ? 'Trames visibles' : 'visible Threads'}</span>
+          <span>{unlockedUniverses.length} {lang === 'fr' ? 'destinations disponibles' : 'available destinations'}</span>
           <span>{completedStages.length} {lang === 'fr' ? 'breches scellees' : 'sealed breaches'}</span>
           <span>{district.label}</span>
           <span>{currentZoneData?.label || 'Nexus'}</span>
         </div>
+        {currentDistrict === 'threads' ? (
+          <section className="nexus-play-intel" aria-label={lang === 'fr' ? 'Catalogue des quartiers disponibles' : 'Available district catalog'}>
+            <strong>{lang === 'fr' ? 'Toutes tes destinations disponibles' : 'All your available destinations'}</strong>
+            <label style={{ display: 'grid', gap: 6, width: '100%' }}>
+              <span>{lang === 'fr' ? 'Rechercher un quartier' : 'Find a district'}</span>
+              <input type="search" className="nexus-select" value={destinationQuery} onFocus={clearCityDestination} onChange={event => { clearCityDestination(); setDestinationQuery(event.target.value); setDestinationPage(0); }} placeholder={lang === 'fr' ? 'Nom de l univers…' : 'Universe name…'} />
+            </label>
+            <span role="status">{destinationView.matching} / {destinationView.total} {lang === 'fr' ? 'destinations · signatures possedees' : 'destinations · owned signatures'}</span>
+            <div style={{ display: 'grid', gap: 6, width: '100%' }}>
+              {destinationView.items.map(universe => <button key={universe} type="button" className="btn-retro" style={{ minHeight: 44, textAlign: 'left' }} onClick={() => approachDistrictPortal(universe)}>{universe}</button>)}
+              {!destinationView.matching && <span>{lang === 'fr' ? 'Aucun quartier disponible ne correspond a cette recherche.' : 'No available district matches this search.'}</span>}
+            </div>
+            <div className="mosaic-room-actions">
+              <button type="button" className="btn-retro" disabled={!destinationView.page} onClick={() => { clearCityDestination(); setDestinationPage(destinationView.page - 1); }}>{lang === 'fr' ? 'Precedent' : 'Previous'}</button>
+              <span>{destinationView.page + 1} / {destinationView.pageCount}</span>
+              <button type="button" className="btn-retro" disabled={destinationView.page + 1 >= destinationView.pageCount} onClick={() => { clearCityDestination(); setDestinationPage(destinationView.page + 1); }}>{lang === 'fr' ? 'Suivant' : 'Next'}</button>
+            </div>
+            <small>{lang === 'fr' ? 'Choisir un nom fait marcher ton Ancre vers le portail affiche. Aucun quartier verrouille n est ouvert.' : 'Selecting a name walks your Anchor to its displayed portal. Locked districts stay locked.'}</small>
+          </section>
+        ) : <p>{lang === 'fr' ? 'La Galerie des Trames propose la recherche de tous tes quartiers disponibles. Son portail est a l est de l Atrium.' : 'The Thread Gallery lets you search all your available districts. Its portal is east of the Atrium.'}</p>}
         {district.universe && (
           <div className="mosaic-room-intel">
             <strong>{district.label}</strong>
@@ -3069,7 +3233,7 @@ function MosaicCityHub({
         )}
         {nearZoneData?.action && (
           <div className="mosaic-room-actions">
-            <button className="btn-retro" onClick={interactWithNearby} title={lang === 'fr' ? 'Execute l action de la zone proche.' : 'Run the nearby zone action.'}>
+            <button className="btn-retro" onClick={() => interactWithNearby({ type: 'zone', id: nearZoneData.id })} title={lang === 'fr' ? 'Execute l action de la zone proche.' : 'Run the nearby zone action.'}>
               {nearZoneData.action === 'mission'
                 ? (lang === 'fr' ? 'OUVRIR MISSIONS' : 'OPEN MISSIONS')
                 : nearZoneData.action === 'codex'
@@ -3079,25 +3243,45 @@ function MosaicCityHub({
             <span>{nearZoneData.label}</span>
           </div>
         )}
-        <div className="mosaic-rpg-log">
+        <div className="mosaic-rpg-log" role="status" aria-live="polite">
           <strong>{lang === 'fr' ? 'Journal de Trame' : 'Thread Log'}</strong>
           <span>{hubLog}</span>
         </div>
         <div className="mosaic-rpg-controls">
-          <span>{lang === 'fr' ? 'WASD/fleches: explorer. E: parler ou entrer dans un portail. Tap/clic: destination ou portail.' : 'WASD/arrows: explore. E: talk or enter a portal. Tap/click: destination or portal.'}</span>
-          <button className="btn-retro" onClick={interactWithNearby} title={lang === 'fr' ? 'Interagit avec le heros ou le portail le plus proche.' : 'Interact with the nearest hero or portal.'}>
-            {lang === 'fr' ? 'SYNCHRONISER' : 'SYNCHRONIZE'}
+          <span id="mosaic-city-controls-help">{lang === 'fr' ? 'ZQSD/WASD ou fleches : marcher. E : interagir. Touche le sol pour avancer; une personne ou une borne pour l approcher.' : 'WASD or arrows: walk. E: interact. Tap the ground to move; tap a person or terminal to approach.'}</span>
+          <button className="btn-retro" onClick={interactWithNearby} disabled={!nearbyLabel} title={lang === 'fr' ? 'Interagit avec le heros ou le portail le plus proche.' : 'Interact with the nearest hero or portal.'}>
+            {nearbyLabel ? `${lang === 'fr' ? 'INTERAGIR' : 'INTERACT'} - ${nearbyLabel}` : (lang === 'fr' ? 'APPROCHE UNE SIGNATURE' : 'APPROACH A SIGNATURE')}
           </button>
         </div>
       </div>
       <div className="mosaic-rpg-stage">
-        <canvas ref={canvasRef} width="960" height="540" className="nexus-hub-canvas mosaic-rpg-canvas" onPointerDown={moveToPointer} />
+        {welcomeOpen && (
+          <section className="mosaic-city-guide" style={{ gridTemplateColumns: 'minmax(0, 1fr) auto' }} aria-label={MOSAIC_WELCOME.title[welcomeLanguage]}>
+            <div aria-live="polite"><strong>{MOSAIC_WELCOME.title[welcomeLanguage]}</strong><p>{MOSAIC_WELCOME.lines[welcomeLanguage][welcomeIndex]}</p></div>
+            <div style={{ display: 'grid', gap: 6 }}>
+              <button type="button" className="mosaic-city-guide-restore" onClick={advanceWelcome}>{welcomeIndex + 1 === MOSAIC_WELCOME.lines[welcomeLanguage].length ? (lang === 'fr' ? 'Explorer' : 'Explore') : (lang === 'fr' ? 'Suite' : 'Next')}</button>
+              <button type="button" className="mosaic-city-guide-restore" onClick={() => setWelcomeOpen(false)}>{lang === 'fr' ? 'Plus tard' : 'Later'}</button>
+            </div>
+          </section>
+        )}
+        {guideState.status === 'active' || guideState.status === 'completed' ? (
+          <section className="mosaic-city-guide" aria-label={lang === 'fr' ? 'Premiers pas dans la Cite' : 'First steps in the City'}>
+            <div className="mosaic-city-guide-progress" aria-label={lang === 'fr' ? 'Progression du guide' : 'Guide progress'}>{['move', 'interact', 'objective'].map((step, index) => <span key={step} className={guideStep === 'done' || index < ['move', 'interact', 'objective'].indexOf(guideStep) ? 'is-done' : guideStep === step ? 'is-current' : ''}>{index + 1}</span>)}</div>
+            <div aria-live="polite"><strong>{guideCopy.title}</strong><p>{guideCopy.body}</p></div>
+            {guideState.status === 'active' && <button type="button" onClick={() => controlGuide('pause')}>{lang === 'fr' ? 'Pause guide' : 'Pause guide'}</button>}
+          </section>
+        ) : <div className="mosaic-city-guide" style={{ gridTemplateColumns: 'minmax(0, 1fr) auto' }}><span>{guideState.status === 'skipped' ? (lang === 'fr' ? 'Guide ignore. Exploration libre, progression conservee.' : 'Guide skipped. Free exploration, progress retained.') : (lang === 'fr' ? 'Guide en pause. Ton dernier repere est conserve.' : 'Guide paused. Your last checkpoint is retained.')}</span><button type="button" onClick={() => controlGuide('resume')}>{lang === 'fr' ? 'Reprendre' : 'Resume'}</button></div>}
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          <button className="mosaic-city-guide-restore" type="button" onClick={() => { setWelcomeIndex(0); setWelcomeOpen(true); }}>{lang === 'fr' ? 'Revoir l accueil' : 'Replay welcome'}</button>
+          <button className="mosaic-city-guide-restore" type="button" onClick={() => controlGuide('restart')}>{lang === 'fr' ? 'Rejouer les reperes' : 'Replay first steps'}</button>
+          {guideState.status !== 'completed' && guideState.status !== 'skipped' && <button className="mosaic-city-guide-restore" type="button" onClick={() => controlGuide('skip')}>{lang === 'fr' ? 'Ignorer le guide' : 'Skip guide'}</button>}
+        </div>
+        <canvas ref={canvasRef} width="960" height="540" tabIndex={0} aria-label={lang === 'fr' ? 'Cite-Mosaique, zone d exploration interactive' : 'Mosaic City, interactive exploration area'} aria-describedby="mosaic-city-controls-help" className="nexus-hub-canvas mosaic-rpg-canvas" onPointerDown={moveToPointer} />
         <div className="mosaic-mobile-pad">
-          <button title={lang === 'fr' ? 'Deplace le heros vers le haut.' : 'Move the hero upward.'} onPointerDown={() => setVirtualKey('arrowup', true)} onPointerUp={() => setVirtualKey('arrowup', false)} onPointerLeave={() => setVirtualKey('arrowup', false)}>UP</button>
-          <button title={lang === 'fr' ? 'Deplace le heros vers la gauche.' : 'Move the hero left.'} onPointerDown={() => setVirtualKey('arrowleft', true)} onPointerUp={() => setVirtualKey('arrowleft', false)} onPointerLeave={() => setVirtualKey('arrowleft', false)}>LEFT</button>
-          <button title={lang === 'fr' ? 'Interagit avec le heros ou portail proche.' : 'Interact with the nearby hero or portal.'} onClick={interactWithNearby}>{lang === 'fr' ? 'SYNC' : 'SYNC'}</button>
-          <button title={lang === 'fr' ? 'Deplace le heros vers la droite.' : 'Move the hero right.'} onPointerDown={() => setVirtualKey('arrowright', true)} onPointerUp={() => setVirtualKey('arrowright', false)} onPointerLeave={() => setVirtualKey('arrowright', false)}>RIGHT</button>
-          <button title={lang === 'fr' ? 'Deplace le heros vers le bas.' : 'Move the hero downward.'} onPointerDown={() => setVirtualKey('arrowdown', true)} onPointerUp={() => setVirtualKey('arrowdown', false)} onPointerLeave={() => setVirtualKey('arrowdown', false)}>DOWN</button>
+          {[['arrowleft', '←'], ['arrowup', '↑'], ['arrowdown', '↓'], ['arrowright', '→']].map(([key, label]) => (
+            <button key={key} type="button" aria-label={`${lang === 'fr' ? 'Deplacement' : 'Move'} ${label}`} onPointerDown={event => { event.preventDefault(); event.currentTarget.setPointerCapture?.(event.pointerId); setVirtualKey(key, true); }} onPointerUp={() => setVirtualKey(key, false)} onPointerCancel={() => setVirtualKey(key, false)} onLostPointerCapture={() => setVirtualKey(key, false)} onPointerLeave={() => setVirtualKey(key, false)}>{label}</button>
+          ))}
+          <button type="button" title={nearbyLabel || (lang === 'fr' ? 'Approche une personne ou une borne.' : 'Approach a person or terminal.')} disabled={!nearbyLabel} onClick={interactWithNearby}>{lang === 'fr' ? 'INTERAGIR' : 'INTERACT'}</button>
         </div>
       </div>
     </div>
@@ -3477,26 +3661,28 @@ function ExtinctionRoyale({
     if (!canvas || !selectedHero) return undefined;
     const ctx = canvas.getContext('2d');
     let rafId = 0;
-    const loop = () => {
+    const clock = createFixedStepClock();
+    const loop = (timestamp = performance.now()) => {
       const state = stateRef.current;
-      if (sessionPausedRef.current && state.phase === 'running') {
+      const paused = sessionPausedRef.current || document.hidden;
+      const simulationSteps = clock.advance(timestamp, { paused: paused || state.phase !== 'running' });
+      if (paused) {
         rafId = window.requestAnimationFrame(loop);
         return;
       }
-      if (state.phase === 'running') {
+      // One display frame can contain zero or several fixed 60 Hz updates.
+      for (let step = 0; step < simulationSteps && state.phase === 'running'; step++) {
         state.t += 1;
-      }
-      state.zone = state.phase === 'running' ? Math.max(0.22, 1 - state.t / (runMode === 'infestation' ? 9000 : 6200)) : state.zone;
-      state.muzzle = Math.max(0, state.muzzle - 1);
-      state.reloadPulse = Math.max(0, (state.reloadPulse || 0) - 1);
-      state.dash = Math.max(0, state.dash - 1);
-      state.scan = Math.max(0, state.scan - 1);
-      state.turret = Math.max(0, state.turret - 1);
-      state.skillCooldown = Math.max(0, (state.skillCooldown || 0) - 1);
-      state.hitMarkerTimer = Math.max(0, (state.hitMarkerTimer || 0) - 1);
-      state.screenShake = Math.max(0, (state.screenShake || 0) - 0.55);
+        state.zone = Math.max(0.22, 1 - state.t / (runMode === 'infestation' ? 9000 : 6200));
+        state.muzzle = Math.max(0, state.muzzle - 1);
+        state.reloadPulse = Math.max(0, (state.reloadPulse || 0) - 1);
+        state.dash = Math.max(0, state.dash - 1);
+        state.scan = Math.max(0, state.scan - 1);
+        state.turret = Math.max(0, state.turret - 1);
+        state.skillCooldown = Math.max(0, (state.skillCooldown || 0) - 1);
+        state.hitMarkerTimer = Math.max(0, (state.hitMarkerTimer || 0) - 1);
+        state.screenShake = Math.max(0, (state.screenShake || 0) - 0.55);
 
-      if (state.phase === 'running') {
         // Boss Shielding Phase Check
         const boss = state.enemies.find(enemy => enemy.kind === 'Champion de Trame');
         if (boss && boss.hp > 0 && boss.hp <= boss.maxHp * 0.5 && !boss.bossShieldTriggered) {
@@ -3566,6 +3752,7 @@ function ExtinctionRoyale({
         state.py = Math.max(-1.4, Math.min(28, state.py + state.vy));
 
         state.enemies = state.enemies.map((enemy, index) => {
+          if (enemy.hp <= 0) return enemy;
           const slow = state.scan > 0 ? 0.55 : 1;
           const dx = state.px - enemy.wx;
           const dy = state.py - enemy.wy;
@@ -3604,7 +3791,7 @@ function ExtinctionRoyale({
             }
           }
         }
-        if (state.enemies.every(enemy => enemy.hp <= 0)) {
+        if (state.hp > 0 && state.enemies.every(enemy => enemy.hp <= 0)) {
           const pendingBeacon = runMode === 'extraction'
             && state.wave <= EXTINCTION_BEACON_TARGET
             && state.loot.some(item => item.type === 'beacon' && item.wave === state.wave && !item.used);
@@ -3908,7 +4095,12 @@ function ExtinctionRoyale({
       rafId = window.requestAnimationFrame(loop);
     };
     loop();
-    return () => window.cancelAnimationFrame(rafId);
+    const onClockVisibilityChange = () => clock.reset();
+    document.addEventListener('visibilitychange', onClockVisibilityChange);
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      document.removeEventListener('visibilitychange', onClockVisibilityChange);
+    };
   }, [buildEnemies, buildLoot, buildRunSnapshot, finishRun, getRunObjectiveText, lang, projectWorld, runMode, selectedHero, universeFragments, weaponProfile.color]);
 
   const triggerEnemyDrop = (enemy, state) => {
@@ -4149,6 +4341,7 @@ function ExtinctionRoyale({
   useEffect(() => {
     const onKeyDown = (event) => {
       if (sessionPausedRef.current || stateRef.current.phase !== 'running') return;
+      if (event.target?.closest?.('input, textarea, select, [contenteditable="true"]')) return;
       const key = event.key.toLowerCase();
       if (key === 'w' || key === 'z' || key === 'arrowup') {
         setMoveKey('forward', true);
@@ -4198,11 +4391,24 @@ function ExtinctionRoyale({
         setMoveKey('turnRight', false);
       }
     };
+    const clearMovement = () => {
+      const state = stateRef.current;
+      state.moveKeys = {};
+      state.vx = 0;
+      state.vy = 0;
+      state.turnVel = 0;
+      aimPointerRef.current = { active: false, pointerId: null, x: 0, moved: false };
+    };
+    const onVisibilityChange = () => { if (document.hidden) clearMovement(); };
     window.addEventListener('keydown', onKeyDown);
     window.addEventListener('keyup', onKeyUp);
+    window.addEventListener('blur', clearMovement);
+    document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
+      window.removeEventListener('blur', clearMovement);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
     };
   });
 
@@ -4923,6 +5129,7 @@ function RiftBriefingPanel({
 
 export default function HubScreen({
   lang,
+  initialTab = 'missions',
   playerProfile,
   publicProfile,
   setPublicProfile,
@@ -4953,7 +5160,7 @@ export default function HubScreen({
   onLaunchStage,
   onGoToPortal
 }) {
-  const [activeTab, setActiveTab] = useState('missions');
+  const [activeTab, setActiveTab] = useState(() => HUB_NAV_GROUPS.some(group => group.tabs.some(tab => !tab.portal && tab.id === initialTab)) ? initialTab : 'missions');
   // Une session active verrouille le hub sans demonter le composant de jeu.
   const gameWorkspaceRef = useRef(null);
   const [activeGameMode, setActiveGameMode] = useState(null);
@@ -5028,6 +5235,18 @@ export default function HubScreen({
     openNavigationTab(currentTab || nexusLandingTab || group.tabs.find(tab => !tab.portal) || group.tabs[0]);
   }, [activeGameMode, activeTab, onGoToPortal, openNavigationTab]);
   const [selectedHeroId, setSelectedHeroId] = useState(unlockedHeroes[0]);
+  const [squadProposal, setSquadProposal] = useState(null);
+  const [squadProposalBusy, setSquadProposalBusy] = useState(false);
+  const [squadProposalChecked, setSquadProposalChecked] = useState(0);
+  const [squadUniverse, setSquadUniverse] = useState('');
+  const squadProposalRequestRef = useRef(0);
+  useEffect(() => () => { squadProposalRequestRef.current++; }, []);
+  const [catalogViews, setCatalogViews] = useState(() => Object.fromEntries(
+    ['roster', 'reserve', 'arsenalHeroes', 'inventory', 'shop'].map(key => [key, createCatalogView()])
+  ));
+  const updateCatalog = useCallback((key, changes) => {
+    setCatalogViews(previous => updateCatalogView(previous, key, changes));
+  }, []);
   const [mediaFilter, setMediaFilter] = useState('all'); // 'all' | 'game' | 'movie' | 'manga' | 'music'
   // Les vues Arsenal partagent le meme heros pour eviter toute re-selection.
   const openHeroArsenal = useCallback((heroId, tabId) => {
@@ -5052,6 +5271,12 @@ export default function HubScreen({
   const [adminUniverseSearch, setAdminUniverseSearch] = useState('');
   const [expandedAdminUniverses, setExpandedAdminUniverses] = useState({});
   const [selectedCollectionUniverse, setSelectedCollectionUniverse] = useState(null);
+  const [universeArchiveSection, setUniverseArchiveSection] = useState('signatures');
+  const closeUniverseArchive = useCallback(() => setSelectedCollectionUniverse(null), []);
+  const openUniverseArchive = useCallback(universe => {
+    setUniverseArchiveSection('signatures');
+    setSelectedCollectionUniverse(universe);
+  }, []);
   const hubContentMax = activeGameMode ? '100%' : 'min(1500px, calc(100vw - 32px))';
   const [spritePreview, setSpritePreview] = useState(null);
   const hiddenUniverseSet = useMemo(() => new Set(hiddenUniverses), [hiddenUniverses]);
@@ -6244,7 +6469,7 @@ export default function HubScreen({
 
   Object.assign(UNIVERSE_TO_STAGE_ID, EXPANDED_STAGE_ID_BY_UNIVERSE);
 
-  const getHeroStats = (hero) => {
+  const getHeroStats = (hero, gearMap = equippedGear, teamIds = activeTeam) => {
     const lvl = heroLevels[hero.id] || 1;
     const multiplier = 1 + (lvl - 1) * 0.1;
     let stats = {
@@ -6264,7 +6489,7 @@ export default function HubScreen({
     }
 
     // 2. Deployed Synergy multipliers
-    const squadCats = activeTeam.map(id => HEROES_DB.find(h => h.id === id)?.category || '');
+    const squadCats = teamIds.map(id => HEROES_DB.find(h => h.id === id)?.category || '');
     const activeCatsCount = squadCats.reduce((acc, c) => {
       acc[c] = (acc[c] || 0) + 1;
       return acc;
@@ -6278,7 +6503,7 @@ export default function HubScreen({
       if (hero.category === 'tactical') stats.def = Math.round(stats.def * 1.20);
     }
 
-    const teamUniverses = activeTeam
+    const teamUniverses = teamIds
       .map(id => HEROES_DB.find(h => h.id === id)?.universe)
       .filter(Boolean);
     stats = applyFactionBonuses(stats, {
@@ -6300,27 +6525,28 @@ export default function HubScreen({
       if (talent === 'guardian_plates') stats.hp = Math.round(stats.hp * 1.20);
     }
 
-    if (collectionBonusCount > 0) {
-      const collectionFactor = 1 + Math.min(0.3, collectionBonusCount * 0.02);
-      stats.hp = Math.round(stats.hp * collectionFactor);
-      stats.atk = Math.round(stats.atk * collectionFactor);
-      stats.def = Math.round(stats.def * collectionFactor);
-      stats.spd = Math.round(stats.spd * collectionFactor);
-    }
-
     // 4. Add equipped gear boosts
-    const gearId = equippedGear[hero.id];
+    const gearId = gearMap[hero.id];
     if (gearId) {
       const isUpgraded = gearId.endsWith('_plus');
       const baseGearId = isUpgraded ? gearId.replace('_plus', '') : gearId;
-      const gear = EQUIP_ITEMS_DB.find(it => it.id === baseGearId);
-      if (gear && isGearContentPackVisible(gear) && gear.boost) {
+      const gear = EQUIP_ITEMS_DB.find(it => it.id === baseGearId) || getSpecialEventRewardById(baseGearId);
+      if (gear && isGearContentPackVisible(gear) && !isAssetDisabled('gear', baseGearId) && gear.boost) {
         const factor = isUpgraded ? 2 : 1;
         if (gear.boost.hp) stats.hp += gear.boost.hp * factor;
         if (gear.boost.atk) stats.atk += gear.boost.atk * factor;
         if (gear.boost.def) stats.def += gear.boost.def * factor;
         if (gear.boost.spd) stats.spd += gear.boost.spd * factor;
       }
+    }
+    // Match the battle preparation order: collection bonuses include equipped
+    // relics. Mission-only modifiers remain on the actual deployment screen.
+    if (collectionBonusCount > 0) {
+      const collectionFactor = 1 + Math.min(0.3, collectionBonusCount * 0.02);
+      stats.hp = Math.round(stats.hp * collectionFactor);
+      stats.atk = Math.round(stats.atk * collectionFactor);
+      stats.def = Math.round(stats.def * collectionFactor);
+      stats.spd = Math.round(stats.spd * collectionFactor);
     }
     return stats;
   };
@@ -6462,45 +6688,22 @@ export default function HubScreen({
     sound.playSfx('levelup');
   };
 
-  const autoEquipRelics = () => {
-    const availableRelics = EQUIP_ITEMS_DB.filter(r => (
-      inventory.includes(r.id)
-      && isGearContentPackVisible(r)
-      && !isAssetDisabled('gear', r.id)
-    ));
-    if (availableRelics.length === 0) {
-      notifyNexus(lang === 'fr' ? 'Aucune relique standard disponible pour l auto-equipement.' : 'No standard relic available for auto-equip.', 'warn');
-      sound.playSfx('click');
-      return;
-    }
-    sound.playSfx('confirm');
-    availableRelics.sort((a, b) => {
-      const scoreA = (a.boost.atk || 0) * 1.5 + (a.boost.spd || 0) * 1.2 + (a.boost.def || 0) + (a.boost.hp || 0) * 0.1;
-      const scoreB = (b.boost.atk || 0) * 1.5 + (b.boost.spd || 0) * 1.2 + (b.boost.def || 0) + (b.boost.hp || 0) * 0.1;
-      return scoreB - scoreA;
+  const previewRelicAssignment = () => {
+    if (squadProposalBusy) return;
+    const proposal = proposeRelicAssignment({
+      team: activeTeam, equippedGear, inventoryIds: inventory,
+      items: [...new Set([...inventory, ...Object.values(equippedGear).filter(Boolean)])].map(getGearDisplay).filter(Boolean)
     });
-
-    const newEquipped = { ...equippedGear };
-    activeTeam.forEach(heroId => {
-      delete newEquipped[heroId];
+    setSquadProposal({
+      ...proposal,
+      sourceKey: squadProposalSourceKey,
+      changed: proposal.changes.length > 0,
+      beforeReadiness: getReadinessForTeam(activeTeam),
+      afterReadiness: getReadinessForTeam(activeTeam, proposal.after),
+      beforeStats: getSquadStats(activeTeam),
+      afterStats: getSquadStats(activeTeam, proposal.after)
     });
-
-    let relicIdx = 0;
-    activeTeam.forEach(heroId => {
-      while (relicIdx < availableRelics.length) {
-        const candidate = availableRelics[relicIdx];
-        const isEquippedElsewhere = Object.keys(newEquipped).some(id => newEquipped[id] === candidate.id);
-        if (!isEquippedElsewhere) {
-          newEquipped[heroId] = candidate.id;
-          relicIdx++;
-          break;
-        }
-        relicIdx++;
-      }
-    });
-
-    setEquippedGear(newEquipped);
-    notifyNexus(lang === 'fr' ? 'Le Nexus a assigne les meilleures reliques a l escouade active.' : 'Nexus assigned the best relics to the active squad.', 'success');
+    sound.playSfx('click');
   };
 
   const toggleActiveHero = (heroId) => {
@@ -7732,21 +7935,88 @@ export default function HubScreen({
   const deployedFactionSynergies = activeFactionSynergies.filter(rule => rule.active);
   const equippedRelicCount = deployedHeroes.filter(hero => getGearDisplay(equippedGear[hero.id])).length;
   const equippedEventCount = deployedHeroes.filter(hero => getEventItemDisplay(equippedEventItems[hero.id])).length;
-  const averageTeamLevel = deployedHeroes.length
-    ? deployedHeroes.reduce((sum, hero) => sum + (heroLevels[hero.id] || 1), 0) / deployedHeroes.length
-    : 0;
-  const squadReadiness = Math.min(100, Math.round(
-    (deployedHeroes.length / 3) * 38
-    + Math.min(22, averageTeamLevel * 4)
-    + deployedSynergies.length * 12
-    + deployedFactionSynergies.length * 8
-    + equippedRelicCount * 5
-    + equippedEventCount * 3
-  ));
-  const squadGrade = squadReadiness >= 85 ? 'S'
-    : squadReadiness >= 70 ? 'A'
-      : squadReadiness >= 50 ? 'B'
-        : 'C';
+  const preparationContext = { synergies: SYNERGIES_DB, factionRules: FACTION_RULES, missionFactionIds: [...selectedMissionFactionIds] };
+  const getPreparationById = (gearMap = equippedGear) => {
+    const validRelics = new Set(Object.values(gearMap).filter(gearId => getGearDisplay(gearId)));
+    const validEvents = new Set(Object.values(equippedEventItems).filter(eventId => getEventItemDisplay(eventId)));
+    return new Map(HEROES_DB.map(hero => [hero.id, {
+      id: hero.id, category: hero.category, level: heroLevels[hero.id] || 1,
+      factionIds: resolveUniverseFactionIds(hero.universe),
+      factionEligible: !isAssetDisabled('heroes', hero.id),
+      hasRelic: validRelics.has(gearMap[hero.id]), hasEvent: validEvents.has(equippedEventItems[hero.id])
+    }]));
+  };
+  const preparationById = getPreparationById();
+  const getReadinessForTeam = (teamIds, gearMap = equippedGear) => {
+    const entries = gearMap === equippedGear ? preparationById : getPreparationById(gearMap);
+    return calculateSquadReadiness(teamIds.map(heroId => entries.get(heroId)).filter(Boolean), preparationContext);
+  };
+  const getSquadStats = (teamIds, gearMap = equippedGear) => teamIds.reduce((sum, heroId) => {
+    const hero = HEROES_DB.find(candidate => candidate.id === heroId);
+    if (!hero) return sum;
+    const stats = getHeroStats(hero, gearMap, teamIds);
+    for (const stat of ['hp', 'atk', 'def', 'spd']) sum[stat] += stats[stat];
+    return sum;
+  }, { hp: 0, atk: 0, def: 0, spd: 0 });
+  const squadReadinessReport = getReadinessForTeam(activeTeam);
+  const squadReadiness = squadReadinessReport.score;
+  const squadGrade = squadReadinessReport.grade;
+  const squadProposalSourceKey = JSON.stringify([activeTeam, equippedGear, equippedEventItems, inventory, unlockedHeroes, heroLevels, heroTalents, hiddenUniverses, disabledAssets, selectedBriefingStage?.id, completedArcIds, arcReplayUnlockedIds, completedStages, activityProgress.reputationProgress]);
+  const squadProposalValid = squadProposal?.sourceKey === squadProposalSourceKey;
+  const cancelSquadProposal = () => {
+    squadProposalRequestRef.current++;
+    setSquadProposal(null);
+    setSquadProposalBusy(false);
+  };
+  const confirmSquadProposal = () => {
+    if (!squadProposalValid || !squadProposal?.changed) return;
+    if (squadProposal.kind === 'gear') setEquippedGear({ ...squadProposal.after });
+    else setActiveTeam([...squadProposal.team]);
+    setSquadProposal(null);
+    sound.playSfx('confirm');
+    notifyNexus(lang === 'fr' ? 'Proposition confirmée. Aucun objet vendu ou consommé.' : 'Proposal confirmed. No item sold or consumed.', 'success');
+  };
+  const previewSquad = async (mode, universe = null) => {
+    if (squadProposalBusy) return;
+    if (selectedBriefingStage && !isStageUnlocked(selectedBriefingStage)) {
+      notifyNexus(getLockedReason(selectedBriefingStage), 'warn');
+      return;
+    }
+    const request = ++squadProposalRequestRef.current;
+    setSquadProposal(null);
+    setSquadProposalBusy(true);
+    setSquadProposalChecked(0);
+    const level = selectedBriefingStage ? getMissionHeroLevelRequirement(selectedBriefingStage) : 1;
+    try {
+      const proposal = await proposeSquad({
+        heroes: HEROES_DB, ownedHeroIds: [playerHero.id, ...unlockedHeroes],
+        eligibleHeroIds: HEROES_DB.filter(hero => (heroLevels[hero.id] || 1) >= level).map(hero => hero.id),
+        currentTeam: activeTeam, stage: selectedBriefingStage, completedArcIds, arcReplayUnlockedIds,
+        mode, universe, preparationById, preparationContext, anchorId: playerHero.id,
+        yieldControl: () => new Promise(resolve => setTimeout(resolve, 0)),
+        onProgress: checked => { if (request === squadProposalRequestRef.current) setSquadProposalChecked(checked); },
+        isCancelled: () => request !== squadProposalRequestRef.current
+      });
+      if (request !== squadProposalRequestRef.current) return;
+      if (!proposal.valid) {
+        const reason = proposal.reason === 'universe-incomplete'
+          ? (lang === 'fr' ? `${proposal.count}/${proposal.required} héros éligibles possédés pour ${universe}. Recrute les partenaires manquants ; l’Ancre est conservée si la mission le permet.` : `${proposal.count}/${proposal.required} eligible heroes owned for ${universe}. Recruit the missing partners; the Anchor is kept when the mission allows it.`)
+          : (lang === 'fr' ? 'Aucune équipe légale avec les héros possédés, leurs niveaux et la mission sélectionnée.' : 'No legal team with the owned heroes, their levels and the selected mission.');
+        notifyNexus(getLocalizedText(proposal.message, lang, reason), 'warn');
+        return;
+      }
+      setSquadProposal({
+        ...proposal, sourceKey: squadProposalSourceKey, beforeTeam: [...activeTeam],
+        changed: JSON.stringify(proposal.team) !== JSON.stringify(activeTeam),
+        beforeReadiness: squadReadinessReport, afterReadiness: proposal.readiness,
+        beforeStats: getSquadStats(activeTeam), afterStats: getSquadStats(proposal.team)
+      });
+    } catch {
+      if (request === squadProposalRequestRef.current) notifyNexus(lang === 'fr' ? 'Calcul indisponible. L’équipe et les objets restent inchangés.' : 'Calculation unavailable. Team and items remain unchanged.', 'warn');
+    } finally {
+      if (request === squadProposalRequestRef.current) setSquadProposalBusy(false);
+    }
+  };
   const squadFocus = deployedStats.atk >= deployedStats.def && deployedStats.atk >= deployedStats.spd
     ? (lang === 'fr' ? 'Assaut direct' : 'Direct assault')
     : deployedStats.def >= deployedStats.spd
@@ -7755,7 +8025,7 @@ export default function HubScreen({
   const squadWarnings = [
     deployedHeroes.length < 3 && (lang === 'fr' ? 'Slot libre: ajoute un troisieme heros pour securiser les modes longs.' : 'Open slot: add a third hero to secure longer modes.'),
     deployedSynergies.length === 0 && (lang === 'fr' ? 'Aucune synergie archetype: double une categorie pour activer un bonus fort.' : 'No archetype synergy: double a category to activate a strong bonus.'),
-    equippedRelicCount < deployedHeroes.length && (lang === 'fr' ? 'Relique manquante: auto-equipe pour convertir l inventaire en puissance directe.' : 'Missing relic: auto-equip to turn inventory into direct power.'),
+    equippedRelicCount < deployedHeroes.length && (lang === 'fr' ? 'Relique manquante: prévisualise une proposition de reliques puis confirme les changements utiles.' : 'Missing relic: preview a relic proposal and confirm useful changes.'),
     equippedEventCount === 0 && (lang === 'fr' ? 'Aucun objet evenementiel arme: les combats boss seront moins explosifs.' : 'No event item armed: boss fights will be less explosive.')
   ].filter(Boolean);
   const categoryLabels = {
@@ -7767,9 +8037,8 @@ export default function HubScreen({
   };
 
   const isOcStoryStage = (stage) => Boolean(getOcMissionForStage(stage));
-  const completedOcStoryClears = BASE_OC_STAGES
-    .filter(stage => isStageCompletedById(stage.id))
-    .length;
+  const ocCampaignUi = getOcCampaignUiProgress(completedStages, campaignProgress?.endingId);
+  const completedOcStoryClears = ocCampaignUi.progress.completedCount;
   const getStoryChapterForStage = (stage) => {
     const mission = getOcMissionForStage(stage);
     if (!mission?.chapterId) return null;
@@ -7785,7 +8054,8 @@ export default function HubScreen({
       && (isStageUnlocked(firstChapterStage) || isStageCompletedById(firstChapterStage.id))
     );
   };
-  const nextOcStoryStage = BASE_OC_STAGES.find(stage => !isStageCompletedById(stage.id)) || null;
+  const nextOcStoryStage = BASE_OC_STAGES.find(stage => stage.id === ocCampaignUi.progress.nextMission?.id) || null;
+  const campaignResumeTarget = getOcCampaignResumeTarget({ completedStages, endingId: campaignProgress?.endingId, stages: BASE_OC_STAGES, isStageAvailable: isStageUnlocked });
   const lastCompletedOcStoryStage = [...BASE_OC_STAGES]
     .reverse()
     .find(stage => isStageCompletedById(stage.id)) || null;
@@ -7850,12 +8120,13 @@ export default function HubScreen({
     };
   });
   const visibleCollectionProgress = collectionProgress.filter(collection => collection.total > 0);
-  const selectedUniverseArchive = selectedCollectionUniverse ? (() => {
+  const codexUniverseKeys = ALL_UNIVERSE_KEYS.filter(universe => isUniverseVisible(universe) && matchesMediaFilter(LORE_DB[universe]?.mediaType));
+  const selectedUniverseArchive = canInspectUniverseArchive(selectedCollectionUniverse, LORE_DB, isUniverseVisible) ? (() => {
     const universe = selectedCollectionUniverse;
     const lore = LORE_DB[universe];
     const stageId = UNIVERSE_TO_STAGE_ID[universe];
     const indexedStages = ADMIN_VISIBLE_STAGES
-      .filter(stage => stage.universe === universe || stage.sourceUniverses?.includes(universe))
+      .filter(stage => stage && (stage.universe === universe || stage.sourceUniverses?.includes(universe)))
       .filter(stage => !stage.characterArc && !stage.trioArc && !stage.universeArc && !stage.fusionMission);
     const stages = lore?.isOriginal
       ? indexedStages
@@ -7879,7 +8150,7 @@ export default function HubScreen({
       : null;
     const battleItems = getBattleItemsForUniverse(universe).filter(item => !isAssetDisabled('gear', item.id));
     const universeArcs = UNIVERSE_NARRATIVE_ARCS
-      .filter(arc => arc.universes.includes(universe))
+      .filter(arc => arc?.universes?.includes(universe))
       .filter(isNarrativeArcAvailable);
     const characterArcs = CHARACTER_NARRATIVE_ARCS.filter(arc => {
       const hero = ALL_HEROES_DB.find(item => item.id === arc.heroId);
@@ -7916,8 +8187,8 @@ export default function HubScreen({
       universeArcs,
       characterArcs,
       franchiseCollections,
-      livingWorld: lore?.livingWorld || null,
-      worldItems: lore?.worldItems || [],
+      livingWorld: normalizeArchiveLivingWorld(lore?.livingWorld),
+      worldItems: Array.isArray(lore?.worldItems) ? lore.worldItems.filter(Boolean) : [],
       audiovisual: lore?.audiovisual || null
     };
   })() : null;
@@ -7942,7 +8213,7 @@ export default function HubScreen({
       getLocalizedText(nextOcStoryStage.displayName, lang, nextOcStoryStage.name),
       getLocalizedText(nextOcStoryStage.objective, lang)
     ].filter(Boolean).join(' - ')
-    : (campaignProgress?.endingId
+    : (ocCampaignUi.progress.complete
       ? (lang === 'fr' ? 'Campagne OC terminee: la fin choisie peut etre rejouee depuis la chronique.' : 'OC campaign complete: the chosen ending can be replayed from the chronicle.')
       : (lang === 'fr' ? 'Toutes les operations OC sont stabilisees: choisis la conclusion de l Ancre.' : 'Every OC operation is stabilized: choose the Anchor conclusion.'));
 
@@ -8132,10 +8403,10 @@ export default function HubScreen({
     dlcHidden: DLC_UNIVERSE_KEYS.filter(universe => hiddenUniverseSet.has(universe)).length
   };
   useEffect(() => {
-    if (selectedCollectionUniverse && !visibleCollectionUniverses.includes(selectedCollectionUniverse)) {
+    if (selectedCollectionUniverse && !canInspectUniverseArchive(selectedCollectionUniverse, LORE_DB, isUniverseVisible)) {
       setSelectedCollectionUniverse(null);
     }
-  }, [selectedCollectionUniverse, visibleCollectionUniverses]);
+  }, [selectedCollectionUniverse, isUniverseVisible]);
   const adminUniverseRows = ALL_UNIVERSE_KEYS
     .map(universe => {
       const lore = LORE_DB[universe];
@@ -8532,7 +8803,7 @@ export default function HubScreen({
   const unlockedMissionPool = missionPool.filter(isStageUnlocked);
   const scanPool = unlockedMissionPool.length > 0 ? unlockedMissionPool : missionPool.slice(0, 1);
   const canonicalStoryPriorityStage = ['index', 'story'].includes(missionScreen)
-    ? nextOcStoryStage || finalOcStoryStage
+    ? campaignResumeTarget.stage
     : null;
   const nextUnclearedStage = canonicalStoryPriorityStage && isStageUnlocked(canonicalStoryPriorityStage)
     ? canonicalStoryPriorityStage
@@ -8762,6 +9033,75 @@ export default function HubScreen({
     sound.playSfx('coin');
   };
 
+  const matchesHeroCatalog = (hero, view, includeMedia = false) => (
+    (!includeMedia || matchesMediaFilter(LORE_DB[hero.universe]?.mediaType))
+    && (view.category === 'all' || hero.category === view.category)
+    && (view.status === 'all' || (view.status === 'active' ? activeTeam.includes(hero.id) : !activeTeam.includes(hero.id)))
+  );
+  const heroCatalogSearch = hero => catalogSearchText(hero) + ' ' + getLocalizedText(categoryLabels[hero.category], lang);
+  const rosterPage = paginateCatalog(visibleUnlockedHeroes, { ...catalogViews.roster, predicate: hero => matchesHeroCatalog(hero, catalogViews.roster, true), getSearchText: heroCatalogSearch });
+  const reservePage = paginateCatalog(visibleUnlockedHeroes, { ...catalogViews.reserve, predicate: hero => matchesHeroCatalog(hero, catalogViews.reserve), getSearchText: heroCatalogSearch });
+  const arsenalHeroesPage = paginateCatalog(visibleUnlockedHeroes, { ...catalogViews.arsenalHeroes, predicate: hero => matchesHeroCatalog(hero, catalogViews.arsenalHeroes), getSearchText: heroCatalogSearch });
+  const inventoryCatalog = [
+    ...visibleGearItems.map(item => ({ ...item, catalogKind: 'gear' })),
+    ...visibleEventItems.map(item => ({ ...item, catalogKind: 'event' })),
+    ...visibleNexusItems.map(item => ({ ...item, catalogKind: 'nexus' }))
+  ];
+  const isInventoryCatalogCompatible = item => item.catalogKind === 'gear'
+    || (item.catalogKind === 'event' && item.id === EVENT_ITEMS_DB[selectedHero.universe]?.id);
+  const isInventoryCatalogEquipped = item => Object.values(item.catalogKind === 'event' ? equippedEventItems : equippedGear).includes(item.id);
+  const inventoryPage = paginateCatalog(inventoryCatalog, {
+    ...catalogViews.inventory,
+    predicate: item => catalogViews.inventory.status === 'all'
+      || (catalogViews.inventory.status === 'compatible' && isInventoryCatalogCompatible(item))
+      || (catalogViews.inventory.status === 'equipped' && isInventoryCatalogEquipped(item))
+      || (catalogViews.inventory.status === 'available' && isInventoryCatalogCompatible(item) && !isInventoryCatalogEquipped(item))
+  });
+  const shopPage = paginateCatalog(visibleEventShopItems, {
+    ...catalogViews.shop,
+    predicate: item => (catalogViews.shop.category === 'all' || (item.isCombatEvent ? 'event' : 'gear') === catalogViews.shop.category)
+      && (catalogViews.shop.status === 'all'
+        || (catalogViews.shop.status === 'owned' && inventory.includes(item.id))
+        || (catalogViews.shop.status === 'unowned' && !inventory.includes(item.id))
+        || (catalogViews.shop.status === 'affordable' && !inventory.includes(item.id) && eventTokens >= item.tokenCost))
+  });
+  const catalogPages = { roster: rosterPage, reserve: reservePage, arsenalHeroes: arsenalHeroesPage, inventory: inventoryPage, shop: shopPage };
+  const rosterPageIndex = rosterPage.page;
+  const reservePageIndex = reservePage.page;
+  const arsenalHeroPageIndex = arsenalHeroesPage.page;
+  const inventoryPageIndex = inventoryPage.page;
+  const shopPageIndex = shopPage.page;
+  useEffect(() => {
+    // Clamp only page cursors affected by a shrinking source. Detail selection
+    // and other catalogs' queries/filters are deliberately untouched.
+    const bounded = { roster: rosterPageIndex, reserve: reservePageIndex, arsenalHeroes: arsenalHeroPageIndex, inventory: inventoryPageIndex, shop: shopPageIndex };
+    setCatalogViews(previous => {
+      const changed = Object.keys(bounded).filter(key => previous[key].page !== bounded[key]);
+      if (!changed.length) return previous;
+      const next = { ...previous };
+      changed.forEach(key => { next[key] = { ...previous[key], page: bounded[key] }; });
+      return next;
+    });
+  }, [rosterPageIndex, reservePageIndex, arsenalHeroPageIndex, inventoryPageIndex, shopPageIndex]);
+  const getCatalogControlsProps = (key, title, filters = []) => ({
+    catalogId: key, title, lang, page: catalogPages[key], query: catalogViews[key].query,
+    onQueryChange: query => updateCatalog(key, { query }),
+    onPageChange: page => updateCatalog(key, { page }),
+    onPageSizeChange: pageSize => updateCatalog(key, { pageSize }), filters
+  });
+  const getHeroCatalogFilters = key => [
+    {
+      id: 'category', label: lang === 'fr' ? 'Rôle' : 'Role', value: catalogViews[key].category,
+      onChange: category => updateCatalog(key, { category }),
+      options: [{ value: 'all', label: lang === 'fr' ? 'Tous les rôles' : 'All roles' }, ...[...new Set(visibleUnlockedHeroes.map(hero => hero.category))].sort().map(category => ({ value: category, label: getLocalizedText(categoryLabels[category], lang, category) }))]
+    },
+    {
+      id: 'status', label: lang === 'fr' ? 'Déploiement' : 'Deployment', value: catalogViews[key].status,
+      onChange: status => updateCatalog(key, { status }),
+      options: [{ value: 'all', label: lang === 'fr' ? 'Tous' : 'All' }, { value: 'active', label: lang === 'fr' ? 'Équipe active' : 'Active team' }, { value: 'reserve', label: lang === 'fr' ? 'En réserve' : 'In reserve' }]
+    }
+  ];
+
   return (
     <div
       className={`hub-screen ${activeGameMode ? 'is-dedicated-game' : ''}`}
@@ -8883,10 +9223,16 @@ export default function HubScreen({
             </button>
           ))}
         </div>
-        <div className="hub-navigation-secondary">
+        <div className={`hub-navigation-secondary ${activeNavGroup.id === 'nexus' ? 'is-mosaic-navigation' : ''}`}>
           <span className="hub-navigation-context">{getLocalizedText(activeNavGroup.title, lang)}</span>
+          {activeNavGroup.id === 'nexus' && (
+            <button type="button" className="mosaic-city-entry" onClick={() => openNavigationTab(activeNavGroup.tabs.find(tab => tab.id === 'mosaicHub'))}>
+              <img src={MOSAIC_CITY_ART} alt="" loading="lazy" />
+              <span><small>NEXUS / A.R.C.A.</small><strong>{lang === 'fr' ? 'Entre dans la Cite-Mosaique' : 'Enter Mosaic City'}</strong><span>{lang === 'fr' ? 'Retrouve Mirelle, rencontre les signatures et choisis ta prochaine aventure.' : 'Meet Mirelle, encounter the signatures, and choose your next adventure.'}</span><em>{lang === 'fr' ? 'EXPLORER LA CITE →' : 'EXPLORE THE CITY →'}</em></span>
+            </button>
+          )}
           <div>
-            {activeNavGroup.tabs.map(tab => (
+            {activeNavGroup.tabs.filter(tab => tab.id !== 'mosaicHub').map(tab => (
               <button
                 key={tab.id}
                 type="button"
@@ -8970,17 +9316,27 @@ export default function HubScreen({
             completedStages={completedStages}
             stages={visibleStages}
             playerProfile={playerProfile}
-            onOpenMissions={() => {
+            tutorialProgress={activityProgress.mosaicTutorial}
+            onTutorialProgress={next => setActivityProgress?.(previous => {
+              const mosaicTutorial = createMosaicGuide(next);
+              return JSON.stringify(previous?.mosaicTutorial) === JSON.stringify(mosaicTutorial) ? previous : { ...previous, mosaicTutorial };
+            })}
+            onOpenMissions={universe => {
               finishNexusSession({ reason: 'transition' });
               setActiveTab('missions');
               setMissionScreen('universeArcs');
+              setMediaFilter('all');
+              setMissionModeFilter('all');
+              setSelectedNarrativeGroupId(universe ? `universe-${universe}` : null);
+              setNarrativeGroupView('chapters');
               setSelectedNarrativeArcId(null);
               sound.playSfx('coin');
             }}
-            onOpenCodex={() => {
+            onOpenCodex={universe => {
               finishNexusSession({ reason: 'transition' });
               setActiveTab('codex');
               setCodexView('universes');
+              if (universe && LORE_DB[universe] && isUniverseVisible(universe)) openUniverseArchive(universe);
               sound.playSfx('coin');
             }}
             onSessionEnd={finishNexusSession}
@@ -10221,12 +10577,13 @@ export default function HubScreen({
 
         {/* Tab 2: Roster */}
         {activeTab === 'roster' && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '20px' }}>
+          <div className="hub-catalog-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '20px' }}>
             {/* List */}
             <div className="glass-panel" style={{ padding: '16px', maxHeight: '70vh', overflowY: 'auto' }}>
               <h3 style={{ margin: '0 0 10px 0', fontSize: '15px', color: '#39c5bb' }}>{getTranslation(lang, 'recountedHeroes')}</h3>
+              <CatalogPagination {...getCatalogControlsProps('roster', lang === 'fr' ? 'Résonance héroïque' : 'Hero resonance', getHeroCatalogFilters('roster'))} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {HEROES_DB.filter(h => unlockedHeroes.includes(h.id) && matchesMediaFilter(LORE_DB[h.universe]?.mediaType)).map((hero) => {
+                {rosterPage.items.map((hero) => {
                   const isSelected = hero.id === selectedHeroId;
                   const isActive = activeTeam.includes(hero.id);
                   const lvl = heroLevels[hero.id] || 1;
@@ -10552,7 +10909,7 @@ export default function HubScreen({
                         ];
                       } else if (selectedHero.category === 'slayer') {
                         options = [
-                          { id: 'critical_edge', name: { en: 'Critical Edge', fr: 'Lame Critique' }, desc: { en: '+20% ATK, pierce DEF', fr: '+20% ATQ, perce-DEF' } },
+                          { id: 'critical_edge', name: { en: 'Critical Edge', fr: 'Lame Critique' }, desc: { en: '+20% ATK; direct attacks ignore 20% DEF (RPG/Tactics/Melee). Guard, cover and shields unchanged; separate Fighter mode excluded.', fr: '+20% ATQ ; attaques directes : ignore 20% de DEF (RPG/Tactics/Mêlée). Garde, couvert et boucliers inchangés ; mode Fighter séparé exclu.' } },
                           { id: 'hyper_velocity', name: { en: 'Hyper Velocity', fr: 'Hyper Vélocité' }, desc: { en: '+15% Action Speed', fr: '+15% Vitesse' } }
                         ];
                       } else if (selectedHero.category === 'hacker') {
@@ -10671,6 +11028,7 @@ export default function HubScreen({
                 </div>
               </div>
             </div>
+            <AnchorCustomizationPanel lang={lang} portalCollection={portalCollection} setPortalCollection={setPortalCollection} />
           </div>
         )}
 
@@ -10684,12 +11042,13 @@ export default function HubScreen({
                 <p>{getTranslation(lang, 'teamDeploySub')}</p>
               </div>
               <button
-                onClick={autoEquipRelics}
+                onClick={previewRelicAssignment}
+                disabled={squadProposalBusy}
                 className="btn-retro"
-                title={lang === 'fr' ? 'Equipe automatiquement les meilleures reliques disponibles sur l equipe active.' : 'Automatically equip the best available relics on the active team.'}
+                title={lang === 'fr' ? 'Prévisualise les reliques avant confirmation, sans toucher à la réserve.' : 'Preview relics before confirmation without touching the reserve.'}
                 style={{ fontSize: '11px', padding: '7px 12px', background: 'rgba(57, 197, 187, 0.1)', borderColor: '#39c5bb', color: '#39c5bb' }}
               >
-                {getTranslation(lang, 'btnAutoEquip')}
+                {lang === 'fr' ? 'PROPOSER LES RELIQUES' : 'PREVIEW RELIC LOADOUT'}
               </button>
             </div>
 
@@ -10697,6 +11056,20 @@ export default function HubScreen({
               <span>{lang === 'fr' ? 'Equipe active' : 'Active team'}</span>
               <small>{lang === 'fr' ? 'Les trois cartes qui partiront en mission.' : 'The three cards that will enter missions.'}</small>
             </div>
+            <div className="squad-composition-controls" aria-label={lang === 'fr' ? 'Propositions d’équipe' : 'Team proposals'}>
+              <button type="button" className="btn-retro" disabled={squadProposalBusy} onClick={() => previewSquad('random')}>{lang === 'fr' ? 'PROPOSER UNE ÉQUIPE ALÉATOIRE' : 'PROPOSE RANDOM TEAM'}</button>
+              <button type="button" className="btn-retro" disabled={squadProposalBusy} onClick={() => previewSquad('optimize')}>{lang === 'fr' ? 'MAXIMISER LA PRÉPARATION A.R.C.A.' : 'MAXIMIZE A.R.C.A. READINESS'}</button>
+              <label>
+                {lang === 'fr' ? 'Univers de l’équipe' : 'Team universe'}
+                <select value={squadUniverse} onChange={event => setSquadUniverse(event.target.value)} disabled={squadProposalBusy}>
+                  <option value="">{lang === 'fr' ? 'Choisir un univers' : 'Choose a universe'}</option>
+                  {[...new Set(visibleUnlockedHeroes.map(hero => hero.universe))].sort().map(universe => <option key={universe} value={universe}>{universe} ({visibleUnlockedHeroes.filter(hero => hero.universe === universe).length})</option>)}
+                </select>
+              </label>
+              <button type="button" className="btn-retro" disabled={!squadUniverse || squadProposalBusy} onClick={() => previewSquad('random', squadUniverse)}>{lang === 'fr' ? 'PROPOSER PAR UNIVERS' : 'PROPOSE UNIVERSE TEAM'}</button>
+            </div>
+            {squadProposalBusy && <div role="status">{lang === 'fr' ? 'Calcul des équipes légales' : 'Checking legal teams'} — {squadProposalChecked} <button type="button" className="btn-retro" onClick={cancelSquadProposal}>{lang === 'fr' ? 'ANNULER LE CALCUL' : 'CANCEL CALCULATION'}</button></div>}
+            <SquadProposalPanel proposal={squadProposal} lang={lang} heroes={HEROES_DB} getGearDisplay={getGearDisplay} valid={squadProposalValid} onConfirm={confirmSquadProposal} onCancel={cancelSquadProposal} />
             <div className="squad-slot-grid">
               {[0, 1, 2].map((idx) => {
                 const id = activeTeam[idx];
@@ -10783,6 +11156,7 @@ export default function HubScreen({
                 </div>
                 <div className="squad-meter"><span style={{ width: `${squadReadiness}%` }} /></div>
                 <p>{squadFocus}</p>
+                <p>{lang === 'fr' ? 'Indice de préparation, pas une probabilité de victoire.' : 'Readiness index, not a probability of victory.'}</p>
               </div>
 
               <div className="squad-stat-grid">
@@ -10886,8 +11260,9 @@ export default function HubScreen({
               <h4>{getTranslation(lang, 'reserves')}</h4>
               <span>{lang === 'fr' ? 'Clique pour deployer ou retirer. Les cartes montrent la valeur actuelle avec bonus.' : 'Click to deploy or bench. Cards show current value with bonuses.'}</span>
             </div>
+            <CatalogPagination {...getCatalogControlsProps('reserve', lang === 'fr' ? 'Réserve' : 'Reserve', getHeroCatalogFilters('reserve'))} />
             <div className="squad-reserve-grid">
-              {HEROES_DB.filter(h => unlockedHeroes.includes(h.id)).map((hero) => {
+              {reservePage.items.map((hero) => {
                 const isActive = activeTeam.includes(hero.id);
                 const stats = getHeroStats(hero);
                 const gear = getGearDisplay(equippedGear[hero.id]);
@@ -10964,12 +11339,13 @@ export default function HubScreen({
                 <p style={{ color: '#aaa', fontSize: '12px', margin: 0 }}>{getTranslation(lang, 'teamDeploySub')}</p>
               </div>
               <button
-                onClick={autoEquipRelics}
+                onClick={previewRelicAssignment}
+                disabled={squadProposalBusy}
                 className="btn-retro"
-                title={lang === 'fr' ? 'Equipe automatiquement les meilleures reliques disponibles sur l equipe active.' : 'Automatically equip the best available relics on the active team.'}
+                title={lang === 'fr' ? 'Prévisualise les reliques avant confirmation, sans toucher à la réserve.' : 'Preview relics before confirmation without touching the reserve.'}
                 style={{ fontSize: '11px', padding: '6px 12px', background: 'rgba(57, 197, 187, 0.1)', borderColor: '#39c5bb', color: '#39c5bb' }}
               >
-                {getTranslation(lang, 'btnAutoEquip')}
+                {lang === 'fr' ? 'PROPOSER LES RELIQUES' : 'PREVIEW RELIC LOADOUT'}
               </button>
             </div>
 
@@ -11045,7 +11421,7 @@ export default function HubScreen({
 
             <h4 style={{ margin: '0 0 10px 0', fontSize: '13px' }}>{getTranslation(lang, 'reserves')}</h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '10px' }}>
-              {HEROES_DB.filter(h => unlockedHeroes.includes(h.id)).map((hero) => {
+              {reservePage.items.map((hero) => {
                 const isActive = activeTeam.includes(hero.id);
                 return (
                   <div
@@ -11184,7 +11560,7 @@ export default function HubScreen({
                   <button
                     key={universe}
                     type="button"
-                    onClick={() => { setSelectedCollectionUniverse(universe); sound.playSfx('coin'); }}
+                    onClick={() => { openUniverseArchive(universe); sound.playSfx('coin'); }}
                     title={lang === 'fr' ? `Ouvre le dossier detaille de l univers ${universe}.` : `Open the detailed file for ${universe}.`}
                     style={{
                       padding: '12px',
@@ -11246,12 +11622,13 @@ export default function HubScreen({
 
         {/* Tab 4: Inventory & Equipment */}
         {activeTab === 'inventory' && (
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 2.2fr', gap: '20px' }}>
+          <div className="hub-catalog-layout" style={{ display: 'grid', gridTemplateColumns: '1.2fr 2.2fr', gap: '20px' }}>
             {/* Recruited list */}
             <div className="glass-panel" style={{ padding: '15px' }}>
               <h3 style={{ margin: '0 0 10px 0', fontSize: '14px', color: '#39c5bb' }}>{getTranslation(lang, 'equipTitle')}</h3>
+              <CatalogPagination {...getCatalogControlsProps('arsenalHeroes', lang === 'fr' ? 'Personnages à équiper' : 'Heroes to equip', getHeroCatalogFilters('arsenalHeroes'))} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                {HEROES_DB.filter(h => unlockedHeroes.includes(h.id)).map(h => {
+                {arsenalHeroesPage.items.map(h => {
                   const isSelected = h.id === selectedHeroId;
                   return (
                     <button
@@ -11362,7 +11739,7 @@ export default function HubScreen({
                       <button
                         key={group.id}
                         type="button"
-                        onClick={() => setInventoryFilter(group.id)}
+                        onClick={() => { setInventoryFilter(group.id); updateCatalog('inventory', { page: 1 }); }}
                         className="btn-retro"
                         title={lang === 'fr' ? `Filtre l inventaire sur: ${group.label.fr}.` : `Filter inventory to: ${group.label.en}.`}
                         style={{
@@ -11376,12 +11753,17 @@ export default function HubScreen({
                       </button>
                     ))}
                   </div>
-                  {visibleGearItems.length === 0 && visibleEventItems.length === 0 && visibleNexusItems.length === 0 ? (
+                  <CatalogPagination {...getCatalogControlsProps('inventory', lang === 'fr' ? 'Armurerie' : 'Armory', [{
+                    id: 'status', label: lang === 'fr' ? 'Disponibilité' : 'Availability', value: catalogViews.inventory.status,
+                    onChange: status => updateCatalog('inventory', { status }),
+                    options: [{ value: 'all', label: lang === 'fr' ? 'Tout' : 'All' }, { value: 'compatible', label: lang === 'fr' ? 'Compatible avec ce héros' : 'Compatible with this hero' }, { value: 'available', label: lang === 'fr' ? 'Compatible et libre' : 'Compatible and free' }, { value: 'equipped', label: lang === 'fr' ? 'Déjà équipé' : 'Already equipped' }]
+                  }])} />
+                  {inventoryPage.total === 0 ? (
                     <div style={{ color: '#555', fontSize: '12px' }}>{getTranslation(lang, 'noItems')}</div>
                   ) : (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '35vh', overflowY: 'auto' }}>
                       {/* Weapon Gear */}
-                      {visibleGearItems.map(item => {
+                      {inventoryPage.items.filter(item => item.catalogKind === 'gear').map(item => {
                         const isEquippedElsewhere = Object.keys(equippedGear).some(id => equippedGear[id] === item.id);
                         const isEquippedOnSelf = equippedGear[selectedHero.id] === item.id;
                         
@@ -11422,7 +11804,7 @@ export default function HubScreen({
                       })}
 
                       {/* Event Items */}
-                      {visibleEventItems.map(item => {
+                      {inventoryPage.items.filter(item => item.catalogKind === 'event').map(item => {
                         // Event items match hero universe to be equipped
                         const matchesUniverse = item.id === EVENT_ITEMS_DB[selectedHero.universe]?.id;
                         const isEquippedOnSelf = equippedEventItems[selectedHero.id] === item.id;
@@ -11463,7 +11845,7 @@ export default function HubScreen({
                         );
                       })}
 
-                      {visibleNexusItems.map(item => (
+                      {inventoryPage.items.filter(item => item.catalogKind === 'nexus').map(item => (
                         <div key={item.id} style={{
                           padding: '8px 12px',
                           background: 'rgba(255,235,59,0.04)',
@@ -11578,15 +11960,28 @@ export default function HubScreen({
               {lang === 'fr' ? 'Depense tes jetons evenement pour acheter des prototypes, reliques rares et declencheurs de combat synchronises au Nexus.' : 'Spend Event Tokens on prototypes, rare relics, and combat triggers synchronized by the Nexus.'}
             </p>
 
+            <CatalogPagination {...getCatalogControlsProps('shop', lang === 'fr' ? 'Boutique' : 'Shop', [
+              {
+                id: 'category', label: lang === 'fr' ? 'Type' : 'Type', value: catalogViews.shop.category,
+                onChange: category => updateCatalog('shop', { category }),
+                options: [{ value: 'all', label: lang === 'fr' ? 'Tout' : 'All' }, { value: 'gear', label: lang === 'fr' ? 'Reliques' : 'Relics' }, { value: 'event', label: lang === 'fr' ? 'Événements' : 'Events' }]
+              },
+              {
+                id: 'status', label: lang === 'fr' ? 'Acquisition' : 'Ownership', value: catalogViews.shop.status,
+                onChange: status => updateCatalog('shop', { status }),
+                options: [{ value: 'all', label: lang === 'fr' ? 'Tout' : 'All' }, { value: 'unowned', label: lang === 'fr' ? 'Non possédé' : 'Not owned' }, { value: 'owned', label: lang === 'fr' ? 'Possédé' : 'Owned' }, { value: 'affordable', label: lang === 'fr' ? 'Achetable maintenant' : 'Affordable now' }]
+              }
+            ])} />
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '15px' }}>
-              {visibleEventShopItems.length === 0 && (
+              {shopPage.total === 0 && (
                 <div style={{ gridColumn: '1 / -1', padding: '18px', border: '1px solid rgba(231,76,60,0.22)', background: 'rgba(231,76,60,0.045)', borderRadius: '5px', color: '#ffb1a8', fontSize: '11px', lineHeight: 1.45 }}>
                   {lang === 'fr'
-                    ? 'Aucun prototype disponible dans cette rotation. Consulte la Regulation A.R.C.A. pour rouvrir des Trames et leur stock.'
-                    : 'No prototype is available in this rotation. Review A.R.C.A. Regulation to reopen Threads and their stock.'}
+                    ? (visibleEventShopItems.length ? 'Aucun prototype ne correspond aux filtres. Modifie la recherche, le type ou l acquisition.' : 'Aucun prototype disponible dans cette rotation. Consulte la Regulation A.R.C.A. pour rouvrir des Trames et leur stock.')
+                    : (visibleEventShopItems.length ? 'No prototype matches these filters. Change search, type or ownership.' : 'No prototype is available in this rotation. Review A.R.C.A. Regulation to reopen Threads and their stock.')}
                 </div>
               )}
-              {visibleEventShopItems.map(item => {
+              {shopPage.items.map(item => {
                 const owned = inventory.includes(item.id);
                 const visualUniverse = getShopItemUniverse(item);
                 const accent = getShopItemAccent(item);
@@ -12079,33 +12474,7 @@ export default function HubScreen({
         )}
 
         {selectedUniverseArchive && (
-          <div
-            onClick={() => setSelectedCollectionUniverse(null)}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              zIndex: 215,
-              background: 'rgba(0,0,0,0.84)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '18px'
-            }}
-          >
-            <div
-              onClick={(event) => event.stopPropagation()}
-              style={{
-                width: 'min(96vw, 1120px)',
-                maxHeight: '92vh',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                background: 'rgba(7,6,14,0.98)',
-                border: `1px solid ${selectedUniverseArchive.cleared ? 'rgba(46,204,113,0.55)' : 'rgba(255,235,59,0.42)'}`,
-                borderRadius: '7px',
-                boxShadow: '0 0 34px rgba(57,197,187,0.18)'
-              }}
-            >
+          <UniverseArchiveDialog onClose={closeUniverseArchive} cleared={selectedUniverseArchive.cleared} universe={selectedUniverseArchive.universe}>
               <div style={{
                 padding: '15px',
                 borderBottom: '1px solid rgba(255,255,255,0.08)',
@@ -12125,7 +12494,7 @@ export default function HubScreen({
                       <div style={{ color: '#ffeb3b', fontSize: '9px', textTransform: 'uppercase', marginBottom: '4px' }}>
                         {lang === 'fr' ? 'Dossier univers / collection' : 'Universe collection file'}
                       </div>
-                      <h2 style={{ margin: 0, color: selectedUniverseArchive.cleared ? '#2ecc71' : '#fff', fontSize: '22px' }}>
+                      <h2 id="universe-archive-title" style={{ margin: 0, color: selectedUniverseArchive.cleared ? '#2ecc71' : '#fff', fontSize: '22px' }}>
                         {selectedUniverseArchive.lore?.title?.[lang] || selectedUniverseArchive.universe}
                       </h2>
                       <div style={{ marginTop: '5px', color: '#aaa', fontSize: '11px' }}>
@@ -12135,7 +12504,8 @@ export default function HubScreen({
                     </div>
                   </div>
                   <button
-                    onClick={() => setSelectedCollectionUniverse(null)}
+                    data-archive-close
+                    onClick={closeUniverseArchive}
                     className="btn-retro"
                     title={lang === 'fr' ? 'Ferme le dossier de collection de cet univers.' : 'Close this universe collection file.'}
                     style={{ fontSize: '10px', padding: '7px 11px' }}
@@ -12146,9 +12516,28 @@ export default function HubScreen({
                 <p style={{ color: '#d8d8d8', fontSize: '11px', lineHeight: 1.45, margin: '12px 0 0' }}>
                   {selectedUniverseArchive.loreBrief}
                 </p>
+                <p style={{ color: '#9eb6c6', fontSize: '10px', margin: '7px 0 0' }}>
+                  {(selectedUniverseArchive.lore?.isOriginal || OC_DLC_UNIVERSE_KEYS.includes(selectedUniverseArchive.universe) || selectedUniverseArchive.universe === 'Nexus de Convergence')
+                    ? (lang === 'fr' ? 'Création originale : continuité propre à Multiverse Breach.' : 'Original creation: a continuity belonging to Multiverse Breach.')
+                    : (lang === 'fr' ? 'Univers de franchise : origines de référence distinctes de leur adaptation fan-made dans Multiverse Breach.' : 'Franchise universe: source origins are separate from their fan-made adaptation in Multiverse Breach.')}
+                </p>
+                <nav aria-label={lang === 'fr' ? 'Navigation du dossier univers' : 'Universe dossier navigation'} style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '12px' }}>
+                  {[
+                    ['signatures', lang === 'fr' ? 'PERSONNAGES ET MENACES' : 'CHARACTERS AND THREATS'],
+                    ['items', lang === 'fr' ? 'OBJETS' : 'ITEMS'],
+                    ...(selectedUniverseArchive.livingWorld ? [['world', lang === 'fr' ? 'MONDE VIVANT' : 'LIVING WORLD']] : []),
+                    ['missions', lang === 'fr' ? 'MISSIONS ET ARCS' : 'MISSIONS AND ARCS']
+                  ].map(([section, label]) => (
+                    <button key={section} type="button" className="btn-retro" aria-pressed={universeArchiveSection === section} onClick={() => setUniverseArchiveSection(section)} style={{ padding: '7px', fontSize: '9px', borderColor: universeArchiveSection === section ? '#39c5bb' : '#555' }}>{label}</button>
+                  ))}
+                  {[-1, 1].map(direction => {
+                    const neighbour = getArchiveNeighbour(codexUniverseKeys, selectedUniverseArchive.universe, direction);
+                    return <button key={direction} type="button" className="btn-retro" disabled={!neighbour} onClick={() => { if (neighbour) openUniverseArchive(neighbour); }} style={{ padding: '7px', fontSize: '9px' }}>{direction < 0 ? (lang === 'fr' ? '← UNIVERS PRÉCÉDENT' : '← PREVIOUS UNIVERSE') : (lang === 'fr' ? 'UNIVERS SUIVANT →' : 'NEXT UNIVERSE →')}</button>;
+                  })}
+                </nav>
               </div>
 
-              <div style={{ overflowY: 'auto', padding: '15px', display: 'grid', gap: '12px' }}>
+              <div key={`${selectedUniverseArchive.universe}:${universeArchiveSection}`} data-archive-section={universeArchiveSection} style={{ minHeight: 0, overflowY: 'auto', padding: '15px', display: 'grid', gap: '12px' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '8px' }}>
                   {[
                     { label: lang === 'fr' ? 'Heros' : 'Heroes', value: selectedUniverseArchive.heroes.length, color: '#39c5bb' },
@@ -12164,6 +12553,7 @@ export default function HubScreen({
                   ))}
                 </div>
 
+                {universeArchiveSection === 'signatures' && (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
                   <div style={{ padding: '12px', border: '1px solid rgba(57,197,187,0.24)', background: 'rgba(57,197,187,0.05)', borderRadius: '5px' }}>
                     <strong style={{ color: '#39c5bb', fontSize: '11px', textTransform: 'uppercase' }}>
@@ -12173,6 +12563,7 @@ export default function HubScreen({
                       {(selectedUniverseArchive.heroes.length ? selectedUniverseArchive.heroes : []).map(hero => {
                         const unlocked = unlockedHeroes.includes(hero.id);
                         const stats = getHeroStats(hero);
+                        const plaque = getCharacterPlaque(hero);
                         const portraitSrc = hero.portrait || null;
                         const spriteSrc = portraitSrc || getHeroSpriteSheetSrc(hero, 'collection');
                         const spriteLayout = getSpriteSheetLayout(spriteSrc);
@@ -12206,8 +12597,12 @@ export default function HubScreen({
                                 {hero.category} / Lv {heroLevels[hero.id] || 1} / HP {stats.hp} ATK {stats.atk} DEF {stats.def}
                               </div>
                               <div style={{ color: '#d0d0d0', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
-                                {getLocalizedText(getCharacterPlaque(hero).breachLore, lang, getCharacterPlaque(hero).dossier?.[lang])}
+                                <b>{getLocalizedText(plaque?.origin, lang)}</b>
+                                <p style={{ margin: '4px 0 0' }}>{getLocalizedText(plaque?.dossier, lang)}</p>
                               </div>
+                              {plaque?.breachLore && <div style={{ color: '#9eb6c6', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
+                                <b>{lang === 'fr' ? 'Adaptation Breach : ' : 'Breach adaptation: '}</b>{getLocalizedText(plaque.breachLore, lang)}
+                              </div>}
                             </div>
                           </div>
                         );
@@ -12273,6 +12668,9 @@ export default function HubScreen({
                   </div>
                 </div>
 
+                )}
+
+                {universeArchiveSection === 'items' && (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px' }}>
                   <div style={{ padding: '12px', border: '1px solid rgba(155,89,182,0.26)', background: 'rgba(155,89,182,0.05)', borderRadius: '5px' }}>
                     <strong style={{ color: '#d7b5ff', fontSize: '11px', textTransform: 'uppercase' }}>
@@ -12283,7 +12681,7 @@ export default function HubScreen({
                         <div key={item.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, paddingBottom: '5px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'grid', gridTemplateColumns: '34px minmax(0, 1fr)', gap: '7px', alignItems: 'center' }}>
                           <img src={getItemSpriteSrc(item)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '34px', height: '34px', objectFit: 'contain', imageRendering: 'pixelated' }} />
                           <div>
-                            <b style={{ color: '#d7b5ff' }}>{item.name[lang]}</b> / {formatBoostText(item.boost || {})}
+                            <b style={{ color: '#d7b5ff' }}>{getLocalizedText(item.name, lang, item.id)}</b> / {formatBoostText(item.boost || {})}
                             <div style={{ color: '#bdb3cf', marginTop: '3px' }}>{getGearLore(item)}</div>
                           </div>
                         </div>
@@ -12291,7 +12689,7 @@ export default function HubScreen({
                       {selectedUniverseArchive.eventItem && (
                         <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35, paddingTop: '6px', borderTop: '1px solid rgba(255,255,255,0.08)', display: 'grid', gridTemplateColumns: '34px minmax(0, 1fr)', gap: '7px', alignItems: 'center' }}>
                           <img src={getItemSpriteSrc(selectedUniverseArchive.eventItem)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '34px', height: '34px', objectFit: 'contain', imageRendering: 'pixelated' }} />
-                          <div><b style={{ color: '#ff8c00' }}>{selectedUniverseArchive.eventItem.name[lang]}</b>: {getEventLore(selectedUniverseArchive.eventItem)}</div>
+                          <div><b style={{ color: '#ff8c00' }}>{getLocalizedText(selectedUniverseArchive.eventItem.name, lang, selectedUniverseArchive.eventItem.id)}</b>: {getEventLore(selectedUniverseArchive.eventItem)}</div>
                         </div>
                       )}
                     </div>
@@ -12311,7 +12709,7 @@ export default function HubScreen({
                             style={{ width: '28px', height: '28px', objectFit: 'contain', imageRendering: 'pixelated' }}
                           />
                           <div>
-                          <b style={{ color: item.color }}>{item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : item.role.toUpperCase()}</b>
+                          <b style={{ color: item.color }}>{item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : String(item.role || 'item').toUpperCase()}</b>
                           {' '}
                           {getBattleItemLoreDescription({ item, lang, lore: selectedUniverseArchive.lore })}
                           </div>
@@ -12321,7 +12719,9 @@ export default function HubScreen({
                   </div>
                 </div>
 
-                {selectedUniverseArchive.livingWorld && (
+                )}
+
+                {universeArchiveSection === 'world' && selectedUniverseArchive.livingWorld && (
                   <div style={{ padding: '12px', border: '1px solid rgba(52,152,219,0.3)', background: 'rgba(52,152,219,0.05)', borderRadius: '5px' }}>
                     <strong style={{ color: '#8bd4ff', fontSize: '11px', textTransform: 'uppercase' }}>
                       {lang === 'fr' ? 'Monde vivant complet' : 'Complete living world'}
@@ -12374,7 +12774,7 @@ export default function HubScreen({
                           <div key={dialogue.id} style={{ marginTop: '5px' }}><b>{dialogue.speaker}</b> ({dialogue.location}): {dialogue.line}</div>
                         ))}
                         {selectedUniverseArchive.livingWorld.heroRelationships.map(relationship => (
-                          <div key={relationship.id} style={{ color: '#aebfca' }}>{relationship.bond} / +{relationship.gameplayBonus.assistChargePercent}% assist</div>
+                          <div key={relationship.id} style={{ color: '#aebfca' }}>{relationship.bond}{relationship.gameplayBonus?.assistChargePercent != null ? ` / +${relationship.gameplayBonus.assistChargePercent}% assist` : ''}</div>
                         ))}
                       </div>
                       <div style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.45 }}>
@@ -12405,10 +12805,10 @@ export default function HubScreen({
                   </div>
                 )}
 
-                {selectedUniverseArchive.worldItems.length > 0 && (
+                {universeArchiveSection === 'items' && selectedUniverseArchive.worldItems.length > 0 && (
                   <div style={{ padding: '12px', border: '1px solid rgba(241,196,15,0.28)', background: 'rgba(241,196,15,0.05)', borderRadius: '5px' }}>
                     <strong style={{ color: '#ffe27a', fontSize: '11px', textTransform: 'uppercase' }}>
-                      {lang === 'fr' ? 'Catalogue local complet — 12 objets' : 'Complete local catalogue — 12 items'}
+                      {lang === 'fr' ? `Catalogue local complet — ${selectedUniverseArchive.worldItems.length} objets` : `Complete local catalogue — ${selectedUniverseArchive.worldItems.length} items`}
                     </strong>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.worldItems.map(item => (
@@ -12422,6 +12822,7 @@ export default function HubScreen({
                   </div>
                 )}
 
+                {universeArchiveSection === 'missions' && (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
                   <div style={{ padding: '12px', border: '1px solid rgba(46,204,113,0.24)', background: 'rgba(46,204,113,0.05)', borderRadius: '5px' }}>
                     <strong style={{ color: '#8dffb1', fontSize: '11px', textTransform: 'uppercase' }}>
@@ -12455,20 +12856,20 @@ export default function HubScreen({
                     <div style={{ display: 'grid', gap: '7px', marginTop: '9px' }}>
                       {[...selectedUniverseArchive.universeArcs, ...selectedUniverseArchive.characterArcs].map(arc => (
                         <div key={arc.id} style={{ color: '#ddd', fontSize: '9px', lineHeight: 1.35 }}>
-                          <b style={{ color: '#ffb15c' }}>{arc.title[lang]}</b>: {arc.intro?.[lang] || arc.reward?.[lang]}
+                          <b style={{ color: '#ffb15c' }}>{getLocalizedText(arc.title, lang, arc.id)}</b>: {getLocalizedText(arc.intro || arc.reward, lang)}
                         </div>
                       ))}
                       {selectedUniverseArchive.franchiseCollections.map(collection => (
                         <div key={collection.id} style={{ color: collection.complete ? '#2ecc71' : '#aaa', fontSize: '9px', lineHeight: 1.35 }}>
-                          <b>{collection.title[lang]}</b>: {collection.completed}/{collection.total} / {collection.bonus[lang]}
+                          <b>{getLocalizedText(collection.title, lang, collection.id)}</b>: {collection.completed}/{collection.total} / {getLocalizedText(collection.bonus, lang)}
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
+                )}
               </div>
-            </div>
-          </div>
+          </UniverseArchiveDialog>
         )}
 
         <RegulationImagePreview
@@ -12546,10 +12947,9 @@ export default function HubScreen({
                 {lang === 'fr' ? 'Arc narratif principal' : 'Main story arc'}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: '8px' }}>
-                {NARRATIVE_ACTS.map((act, index) => {
-                  const visible = completedStages.length >= Math.max(0, index * 3);
+                {ocCampaignUi.acts.map(({ act, unlocked: visible, complete, awaitingEnding, completedCount, totalCount }) => {
                   return (
-                    <div key={act.id} style={{
+                    <div key={act.id} data-codex-act={act.id} data-act-status={complete ? 'complete' : awaitingEnding ? 'ending-choice' : visible ? 'available' : 'locked'} style={{
                       padding: '10px',
                       border: visible ? '1px solid rgba(255,140,0,0.35)' : '1px dashed #333',
                       background: visible ? 'rgba(255,140,0,0.05)' : 'rgba(0,0,0,0.2)',
@@ -12560,15 +12960,20 @@ export default function HubScreen({
                         {visible ? act.title[lang] : (lang === 'fr' ? 'Archive verrouillee' : 'Locked archive')}
                       </div>
                       <div style={{ color: visible ? '#ccc' : '#555', fontSize: '10px', lineHeight: 1.35 }}>
-                        {visible ? act.text[lang] : (lang === 'fr' ? 'Stabilise plus de breches pour restaurer cette memoire.' : 'Stabilize more breaches to restore this memory.')}
+                        {visible ? getLocalizedText(act.summary, lang) : (lang === 'fr' ? 'Termine les operations OC precedentes pour restaurer cette memoire. Les failles annexes ne la debloquent pas.' : 'Complete the preceding OC operations to restore this memory. Side rifts do not unlock it.')}
                       </div>
+                      {visible && <div style={{ color: complete ? '#2ecc71' : '#ffcf70', fontSize: '9px', marginTop: '7px' }}>{completedCount}/{totalCount} {lang === 'fr' ? 'operations' : 'operations'} / {complete ? (lang === 'fr' ? 'ACTE STABILISE' : 'ACT STABILIZED') : awaitingEnding ? (lang === 'fr' ? 'CONCLUSION A CHOISIR' : 'CONCLUSION TO CHOOSE') : (lang === 'fr' ? 'EN COURS' : 'IN PROGRESS')}</div>}
+                      {complete && <p style={{ color: '#a6c7b1', fontSize: '10px' }}>{getLocalizedText(act.conclusion, lang)}</p>}
                     </div>
                   );
                 })}
               </div>
             </div>
 
-            <div style={{ display: codexView === 'canon' ? 'grid' : 'none', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px', marginBottom: '16px' }}>
+            <details style={{ display: codexView === 'canon' ? 'block' : 'none', marginBottom: '16px' }}>
+              <summary style={{ color: '#8fb4c5', cursor: 'pointer', fontSize: '11px' }}>{lang === 'fr' ? 'Chronologie annexe du reseau — hors progression OC' : 'Side network timeline — outside OC progression'}</summary>
+              <p style={{ color: '#aaa', fontSize: '10px' }}>{lang === 'fr' ? 'Archives historiques de l exploration multiverselle : ces jalons utilisent le total des failles stabilisees. Ils ne debloquent aucun acte OC et ne constituent pas la fin de la campagne.' : 'Historical multiverse exploration archives: these milestones use total stabilized rifts. They unlock no OC act and do not mark campaign completion.'}</p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '8px' }}>
               {timelineProgress.map(entry => (
                 <div key={entry.id} style={{
                   padding: '10px',
@@ -12585,7 +12990,8 @@ export default function HubScreen({
                   </div>
                 </div>
               ))}
-            </div>
+              </div>
+            </details>
 
             {codexView === 'groups' && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '12px' }}>
@@ -12678,152 +13084,33 @@ export default function HubScreen({
               </div>
             )}
 
-            <div style={{ display: codexView === 'universes' ? 'grid' : 'none', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '15px', maxHeight: '450px', overflowY: 'auto', paddingRight: '5px' }}>
-              {(() => {
-                const encryptString = (str) => {
-                  return str.replace(/[a-zA-Z0-9àâäéèêëîïôöùûüûœçÀÆ]/g, '█');
-                };
-
-                return Object.keys(LORE_DB).filter(key => isUniverseVisible(key) && matchesMediaFilter(LORE_DB[key]?.mediaType)).map(key => {
-                  const lore = LORE_DB[key];
-                  const universeHeroes = HEROES_DB.filter(h => h.universe === key);
-                  const ustageId = UNIVERSE_TO_STAGE_ID[key];
-                  const isCleared = !ustageId || completedStages.includes(ustageId);
-                  const bossIntel = ENEMIES_DB[key]?.worldBoss || ENEMIES_DB[key]?.bosses?.[0];
-                  const enemyCount = ENEMIES_DB[key]
-                    ? [
-                      ...(ENEMIES_DB[key].monsters || []),
-                      ...(ENEMIES_DB[key].bosses || []),
-                      ENEMIES_DB[key].worldBoss
-                    ].filter(Boolean).length
-                    : 0;
-                  const relicCount = EQUIP_ITEMS_DB.filter(item => item.universe === key).length + (EVENT_ITEMS_DB[key] ? 1 : 0);
-                  const stageCount = STAGES.filter(stage => stage.universe === key || stage.sourceUniverses?.includes(key)).length;
-                  const linkedArcCount = UNIVERSE_NARRATIVE_ARCS.filter(arc => arc.universes.includes(key)).length
-                    + CHARACTER_NARRATIVE_ARCS.filter(arc => {
-                      const hero = ALL_HEROES_DB.find(item => item.id === arc.heroId);
-                      return hero?.universe === key;
-                    }).length;
-                  const battleItems = getBattleItemsForUniverse(key);
-                  const universeBrief = getUniverseLoreDescription({
-                    universe: key,
-                    lang,
-                    lore,
-                    faction: getUniverseFaction(key),
-                    cleared: isCleared,
-                    heroCount: universeHeroes.length,
-                    enemyCount,
-                    relicCount: relicCount + battleItems.length,
-                    stageCount,
-                    arcCount: linkedArcCount
-                  });
-                  
-                  return (
-                    <div key={key} style={{
-                      padding: '14px',
-                      background: isCleared ? 'rgba(255,255,255,0.01)' : 'rgba(255,0,0,0.01)',
-                      border: isCleared ? '1px solid #333' : '1px dashed #e74c3c66',
-                      borderRadius: '6px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between'
-                    }}>
-                      <div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
-                            {getFeaturedUniverseIconSrc(key) && (
-                              <img src={getFeaturedUniverseIconSrc(key)} alt="" onError={(event) => { event.currentTarget.style.display = 'none'; }} style={{ width: '38px', height: '38px', objectFit: 'cover', borderRadius: '4px', border: '1px solid rgba(57,197,187,0.25)', flexShrink: 0 }} />
-                            )}
-                            <span style={{ fontWeight: 'bold', fontSize: '13px', color: isCleared ? '#39c5bb' : '#555' }}>
-                              {lore.title[lang]}
-                            </span>
-                          </div>
-                          <span style={{ fontSize: '9px', padding: '2px 6px', background: 'rgba(255,255,255,0.06)', borderRadius: '3px', color: '#aaa', textTransform: 'uppercase' }}>
-                            {getMediaTypeLabel(lore.mediaType)}
-                          </span>
-                        </div>
-                        <div style={{ marginBottom: '8px' }}>
-                          <span style={{ fontSize: '9px', fontWeight: 'bold', color: isCleared ? '#2ecc71' : '#e74c3c' }}>
-                            {isCleared
-                              ? (lang === 'fr' ? 'TRACE A.R.C.A. STABILISEE' : 'A.R.C.A. TRACE STABILIZED')
-                              : (lang === 'fr' ? `COORDONNEES SCELLEES: faille ${ustageId}` : `SEALED COORDINATES: breach ${ustageId}`)}
-                          </span>
-                        </div>
-                        <div style={{ fontSize: '11px', color: isCleared ? '#ccc' : '#555', lineHeight: '1.4', marginBottom: '10px', fontFamily: isCleared ? 'inherit' : 'Courier New', wordBreak: 'break-all' }}>
-                          {isCleared ? universeBrief : encryptString(universeBrief)}
-                        </div>
-                        {bossIntel && (
-                          <div style={{
-                            padding: '8px',
-                            marginBottom: '10px',
-                            border: isCleared ? '1px solid rgba(231,76,60,0.35)' : '1px solid #222',
-                            background: isCleared ? 'rgba(231,76,60,0.06)' : 'rgba(0,0,0,0.22)',
-                            borderRadius: '4px',
-                            color: isCleared ? '#ddd' : '#555',
-                            fontSize: '10px',
-                            lineHeight: 1.35
-                          }}>
-                            <strong style={{ color: isCleared ? '#e74c3c' : '#555' }}>
-                              {lang === 'fr' ? 'Noyau hostile indexe' : 'Indexed hostile core'}:
-                            </strong> {isCleared ? bossIntel.name : encryptString(bossIntel.name)}
-                            <br />
-                            {isCleared ? `HP ${bossIntel.hp} | ATK ${bossIntel.atk} | ${bossIntel.special}` : encryptString(lang === 'fr' ? 'Pattern hostile scelle' : 'Sealed hostile pattern')}
-                            {isCleared && (
-                              <div style={{ color: '#d0b7b7', marginTop: '5px' }}>
-                                {getEnemyLoreDescription({
-                                  enemy: bossIntel,
-                                  universe: key,
-                                  lang,
-                                  lore,
-                                  type: 'worldBoss'
-                                })}
-                              </div>
-                            )}
-                          </div>
-                        )}
-                        <div style={{
-                          padding: '8px',
-                          marginBottom: '10px',
-                          border: isCleared ? '1px solid rgba(255,235,59,0.25)' : '1px solid #222',
-                          background: isCleared ? 'rgba(255,235,59,0.05)' : 'rgba(0,0,0,0.22)',
-                          borderRadius: '4px'
-                        }}>
-                          <div style={{ fontSize: '9px', color: isCleared ? '#ffeb3b' : '#555', fontWeight: 'bold', marginBottom: '5px', textTransform: 'uppercase' }}>
-                            {lang === 'fr' ? 'Artefacts melee / tactique' : 'Melee / tactics artifacts'}
-                          </div>
-                          <div style={{ display: 'grid', gap: '4px' }}>
-                            {battleItems.map(item => (
-                              <div key={item.id} style={{ fontSize: '9px', color: isCleared ? '#ccc' : '#555', lineHeight: 1.3, display: 'flex', alignItems: 'center', gap: '5px' }}>
-                                {isCleared && (
-                                  <img
-                                    src={getItemSpriteSrc(item)}
-                                    alt=""
-                                    onError={(event) => { event.currentTarget.style.display = 'none'; }}
-                                    style={{ width: '20px', height: '20px', objectFit: 'contain', imageRendering: 'pixelated' }}
-                                  />
-                                )}
-                                <span style={{ color: isCleared ? item.color : '#555', fontWeight: 'bold' }}>
-                                  {item.tier === 'ultimate' ? 'ULT' : item.tier === 'summon' ? 'PNJ' : 'ITEM'}
-                                </span>
-                                {' '}
-                                {isCleared ? item.name[lang] : encryptString(item.name[lang])}
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                      <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', borderTop: '1px solid #222', paddingTop: '8px' }}>
-                        {universeHeroes.map(h => (
-                          <span key={h.id} style={{ fontSize: '8px', padding: '1px 5px', background: `${h.primaryColor}22`, border: `1px solid ${h.primaryColor}`, color: isCleared ? '#fff' : '#666', borderRadius: '3px' }}>
-                            {h.name} ({h.category.toUpperCase()})
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                });
-              })()}
-            </div>
+            {codexView === 'universes' && (
+              <section aria-label={lang === 'fr' ? 'Dossiers des univers' : 'Universe dossiers'}>
+                <div style={{ color: '#a9c8d5', fontSize: '11px', marginBottom: '10px' }}>
+                  {lang === 'fr'
+                    ? `${codexUniverseKeys.length} univers affichés / ${TOTAL_UNIVERSE_COUNT} visibles. Ouvre un dossier pour consulter ses rubriques sans quitter le Codex.`
+                    : `${codexUniverseKeys.length} universes shown / ${TOTAL_UNIVERSE_COUNT} visible. Open a dossier to browse its sections without leaving the Codex.`}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '10px', maxHeight: 'min(60vh, 650px)', overflowY: 'auto', paddingRight: '5px' }}>
+                  {codexUniverseKeys.map(universe => {
+                    const lore = LORE_DB[universe];
+                    const stageId = UNIVERSE_TO_STAGE_ID[universe];
+                    const cleared = !stageId || completedStages.includes(stageId);
+                    return (
+                      <button key={universe} type="button" data-universe-open={universe} aria-haspopup="dialog" onClick={() => openUniverseArchive(universe)} style={{ padding: '12px', color: '#ddd', textAlign: 'left', cursor: 'pointer', background: 'rgba(57,197,187,0.04)', border: `1px solid ${cleared ? '#39c5bb77' : '#666'}`, borderRadius: '6px', display: 'grid', gap: '8px' }}>
+                        <span style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
+                          {getFeaturedUniverseIconSrc(universe) && <img src={getFeaturedUniverseIconSrc(universe)} alt="" loading="lazy" onError={event => { event.currentTarget.style.display = 'none'; }} style={{ width: '42px', height: '42px', objectFit: 'cover', borderRadius: '4px' }} />}
+                          <strong style={{ color: '#39c5bb', fontSize: '13px' }}>{getLocalizedText(lore.title, lang, universe)}</strong>
+                        </span>
+                        <span style={{ fontSize: '10px', color: '#aaa' }}>{getMediaTypeLabel(lore.mediaType)} / {(lore.isOriginal || OC_DLC_UNIVERSE_KEYS.includes(universe) || universe === 'Nexus de Convergence') ? (lang === 'fr' ? 'Création originale' : 'Original creation') : (lang === 'fr' ? 'Franchise — adaptation Breach' : 'Franchise — Breach adaptation')}</span>
+                        <span style={{ fontSize: '9px', color: cleared ? '#2ecc71' : '#ffcf70' }}>{cleared ? (lang === 'fr' ? 'Coordonnées stabilisées' : 'Coordinates stabilized') : (lang === 'fr' ? 'Dossier consultable — coordonnées instables' : 'Dossier available — unstable coordinates')}</span>
+                        <span style={{ fontSize: '10px', color: '#fff' }}>{lang === 'fr' ? 'OUVRIR LE DOSSIER →' : 'OPEN DOSSIER →'}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
           </div>
         )}
 

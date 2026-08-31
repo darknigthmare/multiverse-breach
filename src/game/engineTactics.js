@@ -1,16 +1,13 @@
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
 import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCombatantBust } from './renderer';
+import { absorbBattleItemDamage, grantBattleItemShield } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
+import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
 import { drawGeneratedStageTextureCover, getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
-
-const faceUnitToward = (unit, target) => {
-  const unitX = unit?.gridX ?? unit?.x;
-  const targetX = target?.gridX ?? target?.x;
-  if (!Number.isFinite(unitX) || !Number.isFinite(targetX) || unitX === targetX) return;
-  unit.facing = targetX > unitX ? 1 : -1;
-};
+import { faceGridUnitToward as faceUnitToward, getGridFacingVector, getGridFacingBonus } from './tacticalFacing.js';
+import { resolveTacticsEscort, getTacticsEscortPose } from './tacticsEscort.js';
 
 const COMPASS_DIRECTIONS = [
   { x: 1, y: 0 },
@@ -105,8 +102,16 @@ export class EngineTactics {
       };
     }
     if (this.battlefield.escortSpawn) {
+      this.escortIdentity = resolveTacticsEscort(stage);
       this.escortUnit = {
-        name: 'A.R.C.A. Witness',
+        ...this.escortIdentity.spriteHero,
+        name: this.escortIdentity.name.fr,
+        runtimeId: this.escortIdentity.id,
+        identity: this.escortIdentity,
+        stats: { hp: 120, atk: 0, def: 0, spd: 0 },
+        state: 'idle',
+        stateTimer: 0,
+        extracted: false,
         gridX: this.battlefield.escortSpawn.x,
         gridY: this.battlefield.escortSpawn.y,
         x: 0,
@@ -141,16 +146,11 @@ export class EngineTactics {
     }, {});
     
     this.activeSynergies = SYNERGIES_DB.filter(syn => (categoriesCount[syn.category] || 0) >= 2);
-    this.activeSynergies.forEach(syn => {
-      this.heroes.forEach(h => {
-        if (syn.multiplier.hp) {
-          h.maxHp = Math.round(h.maxHp * syn.multiplier.hp);
-          h.currentHp = h.maxHp;
-        }
-        if (syn.multiplier.atk) h.stats.atk = Math.round(h.stats.atk * syn.multiplier.atk);
-        if (syn.multiplier.def) h.stats.def = Math.round(h.stats.def * syn.multiplier.def);
-        if (syn.multiplier.spd) h.stats.spd = Math.round(h.stats.spd * syn.multiplier.spd);
-      });
+    this.heroes.forEach(hero => {
+      hero.stats = resolveArchetypeCombatStats(hero, this.activeSynergies);
+      hero.maxHp = hero.stats.hp;
+      hero.currentHp = hero.maxHp;
+      hero.archetypeSynergiesPrepared = true;
     });
 
     this.enemiesData = enemiesData;
@@ -162,15 +162,9 @@ export class EngineTactics {
     this.initBoard();
     // Templates and generated sheets can carry their own defaults; runtime
     // facing always follows the actual opposing squad instead.
-    this.enemies.forEach(enemy => {
-      const target = this.heroes
-        .filter(hero => hero.currentHp > 0)
-        .sort((a, b) => (
-          Math.abs(a.gridX - enemy.gridX) + Math.abs(a.gridY - enemy.gridY)
-          - Math.abs(b.gridX - enemy.gridX) - Math.abs(b.gridY - enemy.gridY)
-        ))[0];
-      faceUnitToward(enemy, target);
-    });
+    this.heroes.forEach(hero => this.faceNearestOpponent(hero, this.enemies));
+    this.enemies.forEach(enemy => this.faceNearestOpponent(enemy, this.heroes));
+    if (this.escortUnit) faceUnitToward(this.escortUnit, this.battlefield.extractionZone?.[0]);
     if (this.opponentControl === 'p2') {
       this.enemies.forEach(enemy => this.normalizeEnemyActions(enemy));
     }
@@ -250,6 +244,15 @@ export class EngineTactics {
     enemy.cooldown = Number(enemy.cooldown) || 0;
     enemy.specialCharge = Number(enemy.specialCharge) || 0;
     return enemy;
+  }
+
+  faceNearestOpponent(unit, opponents) {
+    const target = opponents.filter(candidate => candidate.currentHp > 0)
+      .sort((a, b) => (
+        Math.abs(a.gridX - unit.gridX) + Math.abs(a.gridY - unit.gridY)
+        - Math.abs(b.gridX - unit.gridX) - Math.abs(b.gridY - unit.gridY)
+      ))[0];
+    faceUnitToward(unit, target);
   }
 
   initBoard() {
@@ -412,6 +415,7 @@ export class EngineTactics {
     this.applyStartTileEffect(this.activeUnit);
 
     if (this.activeUnitType === 'hero') {
+      this.faceNearestOpponent(this.activeUnit, this.enemies);
       this.actionPhase = 'move';
       this.selectedAction = null;
       this.selectedActionExplicit = false;
@@ -420,13 +424,7 @@ export class EngineTactics {
         this.schedule(() => this.runHeroAI(), 600);
       }
     } else {
-      const nearestHero = this.heroes
-        .filter(hero => hero.currentHp > 0)
-        .sort((a, b) => (
-          Math.abs(a.gridX - this.activeUnit.gridX) + Math.abs(a.gridY - this.activeUnit.gridY)
-          - Math.abs(b.gridX - this.activeUnit.gridX) - Math.abs(b.gridY - this.activeUnit.gridY)
-        ))[0];
-      faceUnitToward(this.activeUnit, nearestHero);
+      this.faceNearestOpponent(this.activeUnit, this.heroes);
       if (this.opponentControl === 'p2') {
         this.normalizeEnemyActions(this.activeUnit);
         this.actionPhase = 'move';
@@ -810,23 +808,11 @@ export class EngineTactics {
   }
 
   getFacingVector(unit) {
-    if (!unit) return { x: unit?.facing || 1, y: 0 };
-    return { x: unit.facing || 1, y: 0 };
+    return getGridFacingVector(unit);
   }
 
   getFacingBonus(attacker, defender) {
-    if (!attacker || !defender || defender.gridX === undefined) return { bonus: 0, label: null };
-    const facing = this.getFacingVector(defender);
-    const attackVector = {
-      x: Math.sign(attacker.gridX - defender.gridX),
-      y: Math.sign(attacker.gridY - defender.gridY)
-    };
-    const dot = attackVector.x * facing.x + attackVector.y * facing.y;
-    if (dot > 0) return { bonus: 0.25, label: 'BACK' };
-    if (dot === 0 && Math.abs(attacker.gridX - defender.gridX) + Math.abs(attacker.gridY - defender.gridY) <= 2) {
-      return { bonus: 0.12, label: 'FLANK' };
-    }
-    return { bonus: 0, label: null };
+    return getGridFacingBonus(attacker, defender);
   }
 
   getTerrainDamageModifier(attacker, defender) {
@@ -1234,6 +1220,24 @@ export class EngineTactics {
     return heroOccupies || enemyOccupies || obstacleOccupies || escortOccupies || artifactOccupies || this.isBlockedTile(c, r);
   }
 
+  pushUnitHorizontally(unit, distance) {
+    const direction = Math.sign(distance);
+    // Forced movement preserves heading and stops at the first obstruction,
+    // including every occupied cell of a large boss footprint.
+    for (let step = 0; step < Math.abs(distance); step++) {
+      const candidate = { ...unit, gridX: unit.gridX + direction };
+      if (!this.isInsideGrid(candidate.gridX, candidate.gridY)) break;
+      let blocked = false;
+      for (let y = 0; y < this.rows && !blocked; y++) {
+        for (let x = 0; x < this.cols && !blocked; x++) {
+          blocked = this.unitOccupiesCell(candidate, x, y) && this.isCellOccupied(x, y, unit);
+        }
+      }
+      if (blocked) break;
+      unit.gridX = candidate.gridX;
+    }
+  }
+
   getUnitAtCell(c, r) {
     const hero = this.heroes.find(h => this.unitOccupiesCell(h, c, r));
     if (hero) return { unit: hero, type: 'hero' };
@@ -1461,10 +1465,9 @@ export class EngineTactics {
         return { handled: false, reason: 'blocked' };
       }
 
-      const previousGridX = this.activeUnit.gridX;
+      faceUnitToward(this.activeUnit, { x: c, y: r });
       this.activeUnit.gridX = c;
       this.activeUnit.gridY = r;
-      if (c !== previousGridX) this.activeUnit.facing = c > previousGridX ? 1 : -1;
       this.movementSpent = Math.min(this.movementBudget, this.movementSpent + (selectedCell.cost || 0));
       this.applyStartTileEffect(this.activeUnit);
       this.playSfx('jump');
@@ -1636,7 +1639,12 @@ export class EngineTactics {
       const extractionZone = this.battlefield.extractionZone || [];
       const inZone = extractionZone.some(cell => cell.x === this.escortUnit.gridX && cell.y === this.escortUnit.gridY);
       this.objectiveProgress = inZone ? 1 : 0;
-      if (inZone) this.completeBattle('victory');
+      if (inZone) {
+        this.escortUnit.extracted = true;
+        this.escortUnit.state = getTacticsEscortPose(this.escortUnit);
+        Object.assign(this.escortUnit, this.getUnitScreenPosition(this.escortUnit.gridX, this.escortUnit.gridY));
+        this.completeBattle('victory');
+      }
       return;
     }
 
@@ -1714,27 +1722,31 @@ export class EngineTactics {
     if (!hasEscort) return;
     const extractionZone = this.battlefield.extractionZone || [];
     if (!extractionZone.length) return;
-    const target = extractionZone.reduce((best, cell) => {
-      const dist = Math.abs(cell.x - this.escortUnit.gridX) + Math.abs(cell.y - this.escortUnit.gridY);
-      return !best || dist < best.dist ? { ...cell, dist } : best;
-    }, null);
-    const candidates = [
-      { x: this.escortUnit.gridX + Math.sign(target.x - this.escortUnit.gridX), y: this.escortUnit.gridY },
-      { x: this.escortUnit.gridX, y: this.escortUnit.gridY + Math.sign(target.y - this.escortUnit.gridY) },
-      { x: this.escortUnit.gridX + 1, y: this.escortUnit.gridY },
-      { x: this.escortUnit.gridX, y: this.escortUnit.gridY + 1 },
-      { x: this.escortUnit.gridX, y: this.escortUnit.gridY - 1 }
-    ].filter(cell => this.isInsideGrid(cell.x, cell.y) && !this.isCellOccupied(cell.x, cell.y, this.escortUnit));
-    const next = candidates.sort((a, b) => (
-      Math.abs(a.x - target.x) + Math.abs(a.y - target.y)
-    ) - (
-      Math.abs(b.x - target.x) + Math.abs(b.y - target.y)
-    ))[0];
+    // Breadth-first routing may briefly move away from extraction to get
+    // around cover; the former greedy step could stay on its own cell forever.
+    const visited = new Set([`${this.escortUnit.gridX},${this.escortUnit.gridY}`]);
+    const queue = [{ x: this.escortUnit.gridX, y: this.escortUnit.gridY, first: null }];
+    let next = null;
+    for (let index = 0; index < queue.length; index++) {
+      const cell = queue[index];
+      if (extractionZone.some(target => target.x === cell.x && target.y === cell.y)) {
+        next = cell.first;
+        if (!next) this.updateTacticsObjective();
+        break;
+      }
+      for (const direction of [{ x: 1, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }, { x: -1, y: 0 }]) {
+        const candidate = { x: cell.x + direction.x, y: cell.y + direction.y };
+        const key = `${candidate.x},${candidate.y}`;
+        if (visited.has(key) || !this.isInsideGrid(candidate.x, candidate.y) || this.isCellOccupied(candidate.x, candidate.y, this.escortUnit)) continue;
+        visited.add(key);
+        queue.push({ ...candidate, first: cell.first || candidate });
+      }
+    }
     if (!next) return;
-    const previousX = this.escortUnit.gridX;
+    faceUnitToward(this.escortUnit, next);
     this.escortUnit.gridX = next.x;
     this.escortUnit.gridY = next.y;
-    if (next.x !== previousX) this.escortUnit.facing = next.x > previousX ? 1 : -1;
+    this.escortUnit.state = 'run';
     const escortScreen = this.gridToScreen(next.x, next.y);
     this.particles.add(escortScreen.x, escortScreen.y, 0, -1, '#39c5bb', 9, 34, 'text', 'ESCORTE');
     this.updateTacticsObjective();
@@ -1787,6 +1799,7 @@ export class EngineTactics {
       statusEffects: { infected: 0, glitched: 0, radiated: 0 },
       reinforcement: true
     };
+    this.faceNearestOpponent(reinforcement, this.heroes);
     if (this.opponentControl === 'p2') this.normalizeEnemyActions(reinforcement);
     this.enemies.push(reinforcement);
     this.turnQueue.push({ unit: reinforcement, type: 'enemy' });
@@ -1890,25 +1903,27 @@ export class EngineTactics {
       return true;
     }
 
-    const heal = Math.max(effect.heal || effect.shield || 45, 35);
-    const damage = Math.max(effect.damage || 55, 45);
+    const heal = Math.max(0, Number(effect.heal) || 0);
+    const damage = Math.max(0, Number(effect.damage) || 0);
+    const charge = Math.max(0, Number(effect.charge) || 0);
     allies.forEach(ally => {
       if (ally.currentHp <= 0) return;
       const dist = Math.abs(ally.gridX - triggerX) + Math.abs(ally.gridY - triggerY);
       if (dist <= 2) {
         const maxHp = ally.maxHp || ally.stats?.hp || ally.hp || ally.currentHp;
         ally.currentHp = Math.min(maxHp, ally.currentHp + heal);
+        const shield = grantBattleItemShield(ally, effect.shield);
         if (typeof ally.specialCharge === 'number') {
-          ally.specialCharge = Math.min(100, ally.specialCharge + 12);
+          ally.specialCharge = Math.min(100, ally.specialCharge + charge);
         }
-        this.tacticalItemImpact += heal;
+        this.tacticalItemImpact += heal + shield;
         this.particles.add(ally.x, ally.y - 28, 0, -1, color, 10, 38, 'text', '+TACT');
       }
     });
     targets.forEach(target => {
       if (target.currentHp <= 0) return;
       const dist = Math.abs(target.gridX - triggerX) + Math.abs(target.gridY - triggerY);
-      if (dist <= 1) {
+      if (damage > 0 && dist <= 1) {
         this.applyDamage(itemAttacker, target, damage, null, { ignoreCover: true });
         this.tacticalItemImpact += damage;
       }
@@ -2083,10 +2098,9 @@ export class EngineTactics {
       }
     });
 
-    const previousEnemyX = enemy.gridX;
+    faceUnitToward(enemy, { x: bestX, y: bestY });
     enemy.gridX = bestX;
     enemy.gridY = bestY;
-    if (bestX !== previousEnemyX) enemy.facing = bestX > previousEnemyX ? 1 : -1;
     this.playSfx('jump');
 
     const attackTarget = this.getEnemyPreferredTarget(enemy, role, closestHero);
@@ -2098,7 +2112,7 @@ export class EngineTactics {
     this.schedule(() => {
       const targetHp = attackTarget.hp ?? attackTarget.currentHp;
       if (attackAnchor && targetHp > 0) {
-        faceUnitToward(enemy, attackTarget);
+        faceUnitToward(enemy, attackAnchor);
         enemy.state = 'attack';
         enemy.stateTimer = 20;
         this.playSfx(enemy.weapon === 'gun' || enemy.weapon === 'laser' ? 'shoot' : 'slash');
@@ -2155,6 +2169,26 @@ export class EngineTactics {
     });
 
     if (!closestEnemy) {
+      if (this.objective === 'escort' && this.escortUnit?.currentHp > 0) {
+        const escort = this.escortUnit;
+        const exit = this.battlefield.extractionZone?.[0] || escort;
+        const best = this.getReachableCells(hero, Math.max(0, this.movementBudget - this.movementSpent))
+          .sort((a, b) => {
+            const score = cell => {
+              const dx = cell.x - escort.gridX;
+              const dy = cell.y - escort.gridY;
+              const ahead = dx * ((exit.x ?? exit.gridX) - escort.gridX) + dy * ((exit.y ?? exit.gridY) - escort.gridY) > 0;
+              return (Math.abs(dx) + Math.abs(dy)) * 100 + (ahead ? 10 : 0) + (cell.cost || 0);
+            };
+            return score(a) - score(b);
+          })[0];
+        if (best) {
+          faceUnitToward(hero, best);
+          hero.gridX = best.x;
+          hero.gridY = best.y;
+          this.applyStartTileEffect(hero);
+        }
+      }
       this.endActiveTurn();
       return;
     }
@@ -2195,10 +2229,9 @@ export class EngineTactics {
     });
 
     // Move there
-    const previousHeroX = hero.gridX;
+    faceUnitToward(hero, bestMoveCell);
     hero.gridX = bestMoveCell.x;
     hero.gridY = bestMoveCell.y;
-    if (bestMoveCell.x !== previousHeroX) hero.facing = bestMoveCell.x > previousHeroX ? 1 : -1;
     this.applyStartTileEffect(hero);
     this.playSfx('jump');
 
@@ -2338,7 +2371,7 @@ export class EngineTactics {
       this.particles.add(terrainPxX, terrainPxY - 44, 0, -1, terrain.multiplier > 1 ? '#8fb3ff' : '#ff8a50', 9, 40, 'text', terrain.labels.join('+'));
     }
 
-    const defenseReduction = defender.stats?.def ? Math.min(0.3, defender.stats.def / 100) : 0;
+    const defenseReduction = Math.min(0.3, getEffectiveCombatDefense(defender, attacker) / 100);
     if (defenseReduction > 0) {
       baseDmg *= (1 - defenseReduction);
     }
@@ -2359,7 +2392,7 @@ export class EngineTactics {
     }
 
     const variance = (Math.random() * 0.2) + 0.9;
-    const finalDmg = Math.round(baseDmg * variance);
+    const finalDmg = absorbBattleItemDamage(defender, Math.round(baseDmg * variance));
 
     const defenderWasAlive = defender.currentHp > 0;
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
@@ -2490,7 +2523,7 @@ export class EngineTactics {
           if (e.currentHp > 0) {
             e.state = 'hit';
             e.stateTimer = 180;
-            e.gridX = Math.min(this.cols - 1, e.gridX + 2);
+            this.pushUnitHorizontally(e, 2);
             this.applyDamage({ gridX: 0, gridY: e.gridY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#3498db' }, e, dmg, null, { ignoreCover: true });
           }
         });
@@ -2609,7 +2642,7 @@ export class EngineTactics {
       this.completeBattle('defeat');
       return;
     }
-    if (!enemiesAlive) {
+    if (!enemiesAlive && this.objective !== 'escort') {
       this.objectiveProgress = this.objectiveTarget;
       this.completeBattle('victory');
       return;
@@ -2694,6 +2727,12 @@ export class EngineTactics {
       );
       this.escortUnit.x += (targetX - this.escortUnit.x) * 0.2;
       this.escortUnit.y += (targetY - this.escortUnit.y) * 0.2;
+      if (this.escortUnit.currentHp > 0) {
+        if (this.escortUnit.stateTimer > 0) this.escortUnit.stateTimer--;
+        if (this.escortUnit.stateTimer <= 0) {
+          this.escortUnit.state = Math.abs(targetX - this.escortUnit.x) + Math.abs(targetY - this.escortUnit.y) > 0.5 ? 'run' : 'idle';
+        }
+      }
     }
   }
 
@@ -2912,7 +2951,8 @@ export class EngineTactics {
   getTacticsDrawOrder() {
     return [
       ...this.enemies.map(unit => ({ unit, type: 'enemy' })),
-      ...this.heroes.map(unit => ({ unit, type: 'hero' }))
+      ...this.heroes.map(unit => ({ unit, type: 'hero' })),
+      ...(this.escortUnit ? [{ unit: this.escortUnit, type: 'escort' }] : [])
     ].sort((a, b) => {
       const depthA = a.unit.gridY * 100 + a.unit.gridX + (a.type === 'hero' ? 0.1 : 0);
       const depthB = b.unit.gridY * 100 + b.unit.gridX + (b.type === 'hero' ? 0.1 : 0);
@@ -2951,8 +2991,17 @@ export class EngineTactics {
       ctx.fillStyle = 'rgba(0,0,0,0.5)';
       ctx.fillRect(unit.x - barWidth / 2, barY, barWidth, barHeight);
       const hpPct = unit.currentHp / unit.maxHp;
-      ctx.fillStyle = entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
+      ctx.fillStyle = entry.type === 'escort' ? '#39c5bb' : entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
       ctx.fillRect(unit.x - barWidth / 2, barY, barWidth * hpPct, barHeight);
+    }
+
+    if (entry.type === 'escort' && unit.currentHp > 0) {
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#9ff9eb';
+      ctx.font = '7px "Press Start 2P"';
+      ctx.fillText(unit.extracted ? 'EXTRACTION OK' : 'ESCORTE', unit.x, unit.y + 12 * renderScale);
+      ctx.restore();
     }
 
     if (entry.type === 'enemy' && unit.currentHp > 0) {
@@ -3015,23 +3064,6 @@ export class EngineTactics {
       const boardBounds = this.getBoardBounds();
       ctx.fillText(`SURCHARGE T-${remaining}`, boardBounds.right - 136, boardBounds.top - 10);
     }
-    if (this.escortUnit?.currentHp > 0) {
-      const { x: ex, y: ey } = this.getUnitScreenPosition(this.escortUnit.gridX, this.escortUnit.gridY);
-      const renderScale = this.getUnitRenderScale(this.escortUnit.gridY);
-      ctx.save();
-      ctx.translate(ex, ey);
-      ctx.scale(renderScale, renderScale);
-      ctx.fillStyle = '#39c5bb';
-      ctx.fillRect(-10, -25, 20, 24);
-      ctx.fillStyle = '#020005';
-      ctx.font = '8px "Press Start 2P"';
-      ctx.fillText('N', -4, -10);
-      ctx.fillStyle = 'rgba(0,0,0,0.5)';
-      ctx.fillRect(-15, -32, 30, 3);
-      ctx.fillStyle = '#39c5bb';
-      ctx.fillRect(-15, -32, 30 * Math.max(0, this.escortUnit.currentHp / this.escortUnit.maxHp), 3);
-      ctx.restore();
-    }
     if (this.objective === 'protect' && this.protectedArtifact?.hp > 0) {
       const { x: ax, y: ay } = this.getUnitScreenPosition(
         this.protectedArtifact.gridX,
@@ -3060,9 +3092,9 @@ export class EngineTactics {
   drawTacticsObjectiveHud(ctx) {
     const pct = Math.min(1, this.objectiveProgress / Math.max(1, this.objectiveTarget));
     ctx.fillStyle = 'rgba(0,0,0,0.72)';
-    ctx.fillRect(18, 32, 315, 62);
+    ctx.fillRect(18, 32, 315, this.escortIdentity ? 80 : 62);
     ctx.strokeStyle = this.getBattlefieldAccent();
-    ctx.strokeRect(18, 32, 315, 62);
+    ctx.strokeRect(18, 32, 315, this.escortIdentity ? 80 : 62);
     ctx.fillStyle = '#dff';
     ctx.font = '8px "Press Start 2P"';
     ctx.fillText(this.getObjectiveText('fr').toUpperCase().slice(0, 44), 28, 48);
@@ -3075,6 +3107,10 @@ export class EngineTactics {
     ctx.fillStyle = this.getBattlefieldAccent();
     ctx.font = '7px "Press Start 2P"';
     ctx.fillText((this.missionProfile.label?.fr || this.missionProfile.tier).toUpperCase().slice(0, 38), 28, 86);
+    if (this.escortIdentity) {
+      ctx.fillStyle = this.escortIdentity.provisional ? '#ffdf8b' : '#9ff9eb';
+      ctx.fillText(this.escortIdentity.provisional ? 'REPRESENTATION PROVISOIRE' : 'IDENTITE DEFINIE PAR LA MISSION', 28, 104);
+    }
   }
 
   getTurnTimeline(limit = 6) {
@@ -3181,8 +3217,8 @@ export class EngineTactics {
         en: 'Directive: recover Nexus relics'
       },
       escort: {
-        fr: 'Directive: escorter le temoin A.R.C.A.',
-        en: 'Directive: escort the A.R.C.A. witness'
+        fr: `Directive: escorter ${this.escortIdentity?.name.fr || this.escortUnit?.name || 'la personne designee'}`,
+        en: `Directive: escort ${this.escortIdentity?.name.en || this.escortUnit?.name || 'the designated person'}`
       },
       overload: {
         fr: 'Directive: abattre le boss avant surcharge',
@@ -3226,6 +3262,16 @@ export class EngineTactics {
       collectedArtifacts: this.collectedArtifactKeys.size,
       artifactHp: this.protectedArtifact ? Math.max(0, this.protectedArtifact.hp) : null,
       escortHp: this.escortUnit ? Math.max(0, this.escortUnit.currentHp) : null,
+      escortIdentity: this.escortIdentity ? {
+        id: this.escortIdentity.id,
+        name: this.escortIdentity.name,
+        role: this.escortIdentity.role,
+        universe: this.escortIdentity.universe,
+        provisional: this.escortIdentity.provisional,
+        representation: this.escortIdentity.representation,
+        sourceHeroId: this.escortIdentity.sourceHeroId,
+        extracted: this.escortUnit?.extracted === true
+      } : null,
       turnsElapsed: this.turnsElapsed,
       defeatedEnemies,
       survivingHeroes,

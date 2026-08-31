@@ -67,6 +67,10 @@ import {
   resolveCloudSaveConflict
 } from './game/cloudSaveConflictPolicy';
 import { getTraceContinuationScreen } from './game/titleNavigation';
+import { applyBoosterRotationReroll } from './game/portalRotationReroll';
+import { createLocalSaveGuard } from './game/localSaveGuard';
+import { getTacticsBattlefield } from './game/tacticsBattlefields';
+import { getTacticsEscortBriefing } from './game/tacticsEscort';
 import {
   buildTitleRotationRoster,
   buildUnlockedAttractCards,
@@ -300,12 +304,14 @@ const loadSave = () => {
   }
 };
 
-const saveGame = (payload) => {
-  if (typeof window === 'undefined') return;
-  window.localStorage.setItem(SAVE_KEY, JSON.stringify(payload));
+const saveGame = (payload, guard) => {
+  if (typeof window === 'undefined') return { saved: false, reason: 'persistence-failed' };
+  const result = guard.write(payload);
+  if (!result.saved) return result;
   if (payload?.portalCollection?.raceCareer) {
-    window.localStorage.removeItem(LEGACY_KART_CAREER_KEY);
+    try { window.localStorage.removeItem(LEGACY_KART_CAREER_KEY); } catch { /* The full v9 save already contains this career. */ }
   }
+  return result;
 };
 
 const appendUnique = (items = [], additions = []) => {
@@ -797,6 +803,7 @@ const getMissionNarrative = (stage, lang, isOutro, victory) => {
 
 function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue }) {
   const isOutro = Boolean(result);
+  const escortBriefing = useMemo(() => stage.mode === 'Tactics' && getTacticsBattlefield(stage).objective === 'escort' ? getTacticsEscortBriefing(stage, lang) : '', [stage, lang]);
   const victory = result === 'victory';
   const nonCombatDetails = getNonCombatStageDetails(stage, lang);
   const backdrop = stage.stageArt || stage.image || getOpenAiBackdropSrc(stage.universe, stage.mode);
@@ -865,6 +872,7 @@ function MissionNarrativeScreen({ lang, stage, result, rewardSummary, onContinue
           <h1>{stage.displayName?.[lang] || stage.universe}</h1>
           <h2>{stage.sourceUniverses ? stage.sourceUniverses.join(' / ') : stage.name}</h2>
           <p>{isOutro ? outroText : introText}</p>
+          {escortBriefing && <div className="narrative-intel">{escortBriefing}</div>}
           {isOutro && rewardSummary && (
             <div className="narrative-intel" style={{ display: 'grid', gap: '6px' }}>
               <strong style={{ color: rewardSummary.result === 'victory' ? '#2ecc71' : '#ffeb3b' }}>
@@ -1234,13 +1242,23 @@ class HubErrorBoundary extends React.Component {
 }
 
 function App() {
-  const initialSave = loadSave();
+  const [initialSave] = useState(loadSave);
+  const localSaveGuardRef = useRef(null);
+  if (!localSaveGuardRef.current && typeof window !== 'undefined') {
+    let storage;
+    try { storage = window.localStorage; } catch { /* The guard reports denied persistence without crashing the screen. */ }
+    localSaveGuardRef.current = createLocalSaveGuard(storage, SAVE_KEY);
+  }
+  const [localSaveIssue, setLocalSaveIssue] = useState(null);
+  const rotationTransactionRef = useRef(false);
+  const getCurrentSaveRef = useRef(null);
   const cloudSaveTimerRef = useRef(null);
   const skipNextCloudSaveRef = useRef(false);
   const cloudUpdatedAtRef = useRef(null);
   const [lang, setLang] = useState(initialSave.lang); // FR default as requested, EN toggle
   const [currentScreen, setCurrentScreen] = useState('title');
   const [portalMode, setPortalMode] = useState('store');
+  const [hubInitialTab, setHubInitialTab] = useState('missions');
   const [audioSettings, setAudioSettings] = useState(() => sound.getSettings());
   const [isOnline, setIsOnline] = useState(() => (
     typeof navigator === 'undefined' ? true : navigator.onLine
@@ -1407,31 +1425,79 @@ function App() {
       equippedEventItems
     };
   }, [lang, gold, breachShards, eventTokens, playerProfile, unlockedHeroes, heroLevels, activeTeam, completedStages, completedArcIds, arcReplayUnlockedIds, campaignProgress, ocCampaignState, heroTalents, heroSkins, hiddenUniverses, disabledAssets, portalStats, portalCollection, publicProfile, onboarding, activityProgress, inventory, equippedGear, equippedEventItems]);
+  getCurrentSaveRef.current = getCurrentSave;
+
+  const persistLocalSave = useCallback(payload => {
+    const result = saveGame(payload, localSaveGuardRef.current);
+    setLocalSaveIssue(result.saved ? null : result.reason);
+    if (!result.saved) window.clearTimeout(cloudSaveTimerRef.current);
+    return result;
+  }, []);
+
+  const rerollPortalRotation = useCallback(async request => {
+    if (rotationTransactionRef.current) return { applied: false, reason: 'busy' };
+    rotationTransactionRef.current = true;
+    const commit = () => {
+      const result = applyBoosterRotationReroll(getCurrentSaveRef.current(), request);
+      if (!result.applied) return { applied: false, reason: result.reason };
+      const persisted = persistLocalSave(result.save);
+      if (!persisted.saved) return { applied: false, reason: persisted.reason };
+      // Persist currency + selection together before updating either React state.
+      getCurrentSaveRef.current = () => result.save;
+      setGold(result.save.gold);
+      setPortalStats(result.save.portalStats);
+      return { applied: true, reason: null };
+    };
+    try {
+      return navigator.locks?.request ? await navigator.locks.request(SAVE_KEY, commit) : commit();
+    } catch {
+      return { applied: false, reason: 'persistence-failed' };
+    } finally {
+      rotationTransactionRef.current = false;
+    }
+  }, [persistLocalSave]);
 
   useEffect(() => {
-    const payload = getCurrentSave();
-    saveGame(payload);
+    let cancelled = false;
+    const persistAndScheduleCloud = () => {
+      if (cancelled) return;
+      const payload = getCurrentSaveRef.current();
+      if (!persistLocalSave(payload).saved) return;
 
-    if (!account?.access_token || cloudSyncState !== 'ready' || !isOnline) return;
-    if (skipNextCloudSaveRef.current) {
-      skipNextCloudSaveRef.current = false;
-      return;
-    }
-
-    window.clearTimeout(cloudSaveTimerRef.current);
-    cloudSaveTimerRef.current = window.setTimeout(async () => {
-      try {
-        const row = await updateCloudSave(account, payload, cloudUpdatedAtRef.current);
-        cloudUpdatedAtRef.current = row.updated_at;
-        setCloudStatus(lang === 'fr' ? 'Trace Nexus synchronisee dans le cloud.' : 'Nexus trace synced to cloud.');
-      } catch (err) {
-        setCloudSyncState(err instanceof CloudSaveConflictError ? 'conflict' : 'suspended');
-        setCloudStatus(`${lang === 'fr' ? 'Synchronisation Nexus impossible' : 'Nexus sync failed'}: ${err.message}`);
+      if (!account?.access_token || cloudSyncState !== 'ready' || !isOnline) return;
+      if (skipNextCloudSaveRef.current) {
+        skipNextCloudSaveRef.current = false;
+        return;
       }
-    }, 1200);
 
-    return () => window.clearTimeout(cloudSaveTimerRef.current);
-  }, [getCurrentSave, account, lang, cloudSyncState, isOnline]);
+      window.clearTimeout(cloudSaveTimerRef.current);
+      cloudSaveTimerRef.current = window.setTimeout(async () => {
+        try {
+          const row = await updateCloudSave(account, payload, cloudUpdatedAtRef.current);
+          cloudUpdatedAtRef.current = row.updated_at;
+          setCloudStatus(lang === 'fr' ? 'Trace Nexus synchronisee dans le cloud.' : 'Nexus trace synced to cloud.');
+        } catch (err) {
+          setCloudSyncState(err instanceof CloudSaveConflictError ? 'conflict' : 'suspended');
+          setCloudStatus(`${lang === 'fr' ? 'Synchronisation Nexus impossible' : 'Nexus sync failed'}: ${err.message}`);
+        }
+      }, 1200);
+    };
+    if (navigator.locks?.request) {
+      navigator.locks.request(SAVE_KEY, persistAndScheduleCloud).catch(() => setLocalSaveIssue('persistence-failed'));
+    } else persistAndScheduleCloud();
+
+    return () => { cancelled = true; window.clearTimeout(cloudSaveTimerRef.current); };
+  }, [getCurrentSave, account, lang, cloudSyncState, isOnline, persistLocalSave]);
+
+  useEffect(() => {
+    const checkExternalSave = event => {
+      if (event.key !== SAVE_KEY && event.key !== null) return;
+      const result = localSaveGuardRef.current.check();
+      if (!result.ok) { setLocalSaveIssue(result.reason); window.clearTimeout(cloudSaveTimerRef.current); }
+    };
+    window.addEventListener('storage', checkExternalSave);
+    return () => window.removeEventListener('storage', checkExternalSave);
+  }, []);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -1976,8 +2042,19 @@ function App() {
     setAudioSettings(sound.getSettings());
   };
 
-  const applySave = (save, { existing = true, navigateTo = 'hub' } = {}) => {
+  const applySave = (save, { existing = true, navigateTo = 'hub', acceptExternalChange = false } = {}) => {
     const merged = normalizeSavePayload(save, { existing });
+    // Automatic cloud restoration must never adopt another tab's newer trace.
+    // Only an explicit import, reset or confirmed cloud choice can rebase it.
+    const localStatus = acceptExternalChange
+      ? localSaveGuardRef.current?.rebase()
+      : localSaveGuardRef.current?.check();
+    if (!localStatus?.ok) {
+      window.clearTimeout(cloudSaveTimerRef.current);
+      setLocalSaveIssue(localStatus?.reason || 'persistence-failed');
+      throw new Error(localStatus?.reason || 'persistence-failed');
+    }
+    setLocalSaveIssue(null);
     setLang(merged.lang);
     setGold(merged.gold);
     setBreachShards(merged.breachShards);
@@ -2026,7 +2103,7 @@ function App() {
     try {
       window.clearTimeout(cloudSaveTimerRef.current);
       if (account) setCloudSyncState('conflict');
-      applySave(JSON.parse(raw), { existing: true, navigateTo: 'hub' });
+      applySave(JSON.parse(raw), { existing: true, navigateTo: 'hub', acceptExternalChange: true });
       if (account) {
         setCloudStatus(lang === 'fr'
           ? 'Trace importee localement. Archive cloud preservee jusqu a un choix explicite.'
@@ -2045,7 +2122,7 @@ function App() {
     window.localStorage.removeItem(LEGACY_KART_CAREER_KEY);
     setCloudSyncState(account ? 'conflict' : 'detached');
     cloudUpdatedAtRef.current = null;
-    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'title' });
+    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'title', acceptExternalChange: true });
     setCloudStatus(account
       ? (lang === 'fr' ? 'Trace locale purgee. Archive cloud preservee.' : 'Local trace purged. Cloud archive preserved.')
       : (lang === 'fr' ? 'Trace locale purgee.' : 'Local trace purged.'));
@@ -2058,8 +2135,14 @@ function App() {
     setCloudStatus(lang === 'fr' ? 'Comparaison des Traces locale et cloud...' : 'Comparing local and cloud Traces...');
 
     try {
-      const localPayload = getCurrentSave();
       const row = await loadCloudSave(session);
+      const localStatus = localSaveGuardRef.current?.check();
+      if (!localStatus?.ok) {
+        setLocalSaveIssue(localStatus?.reason || 'persistence-failed');
+        throw new Error(localStatus?.reason || 'persistence-failed');
+      }
+      // Gameplay may have advanced while the network request was pending.
+      const localPayload = getCurrentSaveRef.current();
       const cloudPayload = row?.payload || null;
       const resolution = resolveCloudSaveConflict({
         localPayload,
@@ -2109,7 +2192,7 @@ function App() {
 
       cloudUpdatedAtRef.current = row.updated_at;
       skipNextCloudSaveRef.current = true;
-      const merged = applySave(cloudPayload, { existing: true, navigateTo: null });
+      const merged = applySave(cloudPayload, { existing: true, navigateTo: null, acceptExternalChange: true });
       setCloudSyncState('ready');
       setCloudStatus(lang === 'fr' ? 'Choix confirme: archive cloud chargee.' : 'Choice confirmed: cloud archive loaded.');
       return { status: 'loaded-cloud', merged, row };
@@ -2244,7 +2327,7 @@ function App() {
     window.localStorage.removeItem(LEGACY_KART_CAREER_KEY);
     setCloudSyncState(account ? 'conflict' : 'detached');
     cloudUpdatedAtRef.current = null;
-    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'profile' });
+    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'profile', acceptExternalChange: true });
     setCloudStatus(account
       ? (lang === 'fr' ? 'Nouvelle Trace locale. Archive cloud preservee, synchronisation suspendue.' : 'New local Trace. Cloud archive preserved, sync suspended.')
       : (lang === 'fr' ? 'Nouvelle Trace locale ouverte.' : 'New local Trace opened.'));
@@ -2275,6 +2358,13 @@ function App() {
     <>
       <AudioControl lang={lang} muted={audioSettings.muted} onToggleMute={toggleMute} />
       <NetworkStatusBadge lang={lang} isOnline={isOnline} />
+      {localSaveIssue && <aside role="alert" style={{ position: 'fixed', zIndex: 50000, bottom: 16, left: 16, right: 16, padding: 16, background: '#3b1717', color: '#fff0df', border: '2px solid #ffb478' }}>
+        <p>{localSaveIssue === 'save-conflict'
+          ? (lang === 'fr' ? 'Une autre fenêtre a modifié la Trace. Sauvegarde automatique suspendue pour ne pas écraser sa progression. Exporte tes changements de cette fenêtre avant de recharger.' : 'Another window changed the Trace. Automatic saving is paused to preserve its progress. Export this window’s changes before reloading.')
+          : (lang === 'fr' ? 'Sauvegarde locale impossible. Les achats de rotation sont bloqués. Exporte ta Trace avant de quitter ou de recharger.' : 'Local saving failed. Rotation purchases are blocked. Export your Trace before leaving or reloading.')}</p>
+        <button type="button" className="btn-retro" onClick={exportSave}>{lang === 'fr' ? 'Exporter cette Trace' : 'Export this Trace'}</button>
+        <button type="button" className="btn-retro" onClick={() => window.location.reload()}>{lang === 'fr' ? 'Recharger la sauvegarde conservée' : 'Reload preserved save'}</button>
+      </aside>}
       {(currentScreen === 'hub' || (currentScreen === 'portal' && portalMode === 'store')) && (
         <AuthPanel
           lang={lang}
@@ -2344,6 +2434,7 @@ function App() {
           <Suspense fallback={<NexusLoadingScreen lang={lang} label={lang === 'fr' ? 'Ouverture du controle Nexus...' : 'Opening Nexus control...'} />}>
             <HubScreen
             lang={lang}
+            initialTab={hubInitialTab}
             playerProfile={playerProfile}
             publicProfile={publicProfile}
             setPublicProfile={setPublicProfile}
@@ -2457,6 +2548,9 @@ function App() {
         <Suspense fallback={<NexusLoadingScreen lang={lang} label={lang === 'fr' ? 'Ouverture du portail...' : 'Opening portal...'} />}>
           <PortalScreen
             lang={lang}
+            gold={gold}
+            onRerollRotation={rerollPortalRotation}
+            onOpenAnchorProfile={() => { setHubInitialTab('anchorProfile'); setCurrentScreen('hub'); }}
             playerProfile={playerProfile}
             breachShards={breachShards}
             setBreachShards={setBreachShards}

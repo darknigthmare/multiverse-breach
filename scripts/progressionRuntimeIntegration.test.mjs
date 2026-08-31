@@ -125,11 +125,21 @@ test('save migration removes the legacy kart key only after the integrated save 
     appSource.indexOf('const saveGame ='),
     appSource.indexOf('const appendUnique =')
   );
-  const mainSaveWrite = saveGameSource.indexOf('localStorage.setItem(SAVE_KEY');
+  const mainSaveWrite = saveGameSource.indexOf('guard.write(payload)');
   const legacyRemoval = saveGameSource.indexOf('localStorage.removeItem(LEGACY_KART_CAREER_KEY)');
   assert.ok(mainSaveWrite >= 0);
   assert.ok(legacyRemoval > mainSaveWrite);
+  assert.match(saveGameSource, /if \(!result\.saved\) return result/);
   assert.match(saveGameSource, /payload\?\.portalCollection\?\.raceCareer/);
+  const events = [];
+  const localWindow = { localStorage: { removeItem: key => events.push(['remove', key]) } };
+  const saveGame = new Function('window', 'LEGACY_KART_CAREER_KEY', `${saveGameSource}; return saveGame;`)(localWindow, 'legacy-kart');
+  const payload = { portalCollection: { raceCareer: { races: 3 } } };
+  assert.deepEqual(saveGame(payload, { write: () => { events.push(['write']); return { saved: true }; } }), { saved: true });
+  assert.deepEqual(events, [['write'], ['remove', 'legacy-kart']]);
+  events.length = 0;
+  assert.deepEqual(saveGame(payload, { write: () => { events.push(['failed']); return { saved: false, reason: 'save-conflict' }; } }), { saved: false, reason: 'save-conflict' });
+  assert.deepEqual(events, [['failed']], 'a refused save must preserve the recoverable legacy career');
 });
 
 test('seasonal mission narrative consumes its authored intro, outro and defeat fallback', () => {

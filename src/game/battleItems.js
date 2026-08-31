@@ -2,6 +2,7 @@ import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from './heroes';
 import { LORE_DB } from './lore';
 import { FEATURED_BATTLE_ITEM_OVERRIDES } from './featuredUniversePacks';
 import { ORIGINAL_UNIVERSE_DEFINITIONS } from './originalUniverseWave.js';
+import { findBattlePickupSource, normalizeBattlePickupDefinition, resolveBattlePickupSemantics, withBattlePickupEffectNotice } from './battlePickupSemantics.js';
 
 const slugify = (value) => value
   .toLowerCase()
@@ -177,15 +178,14 @@ const BATTLE_ITEM_OVERRIDES = {
 
 Object.assign(BATTLE_ITEM_OVERRIDES, FEATURED_BATTLE_ITEM_OVERRIDES);
 
-const makeLoreBackedItem = (universe, index, color) => {
+const makeLoreBackedItem = (universe, templateRole, color, loreItem = null) => {
   const slug = slugify(universe);
   const lore = LORE_DB[universe];
   const mediaType = lore?.mediaType || 'game';
   const flavor = mediaItemFlavor[mediaType] || mediaItemFlavor.game;
   const title = lore?.title || { fr: universe, en: universe };
-  const loreItem = EQUIP_ITEMS_DB.filter(item => item.universe === universe)[index];
-  const templates = [
-    {
+  const templates = {
+    offense: {
       id: `${slug}_field_relic`,
       role: 'offense',
       name: { fr: `Relique d impact ${title.fr}`, en: `${title.en} Impact Relic` },
@@ -195,7 +195,7 @@ const makeLoreBackedItem = (universe, index, color) => {
       },
       effect: { damage: 26, charge: 8 }
     },
-    {
+    defense: {
       id: `${slug}_survival_cache`,
       role: 'defense',
       name: { fr: `Cache d ancrage ${title.fr}`, en: `${title.en} Anchor Cache` },
@@ -205,7 +205,7 @@ const makeLoreBackedItem = (universe, index, color) => {
       },
       effect: { heal: 42, shield: 12 }
     },
-    {
+    tempo: {
       id: `${slug}_tempo_core`,
       role: 'tempo',
       name: { fr: `Noyau de cadence ${title.fr}`, en: `${title.en} Cadence Core` },
@@ -215,10 +215,15 @@ const makeLoreBackedItem = (universe, index, color) => {
       },
       effect: { charge: 28, heal: 18 }
     }
-  ];
-  const template = templates[index];
+  };
+  const template = templates[templateRole];
   const loreName = loreItem?.name;
   const loreDesc = loreItem?.desc;
+  const description = loreName ? (loreDesc || {
+    fr: `${loreName.fr || loreName.en} est un objet physique issu de ${title.fr}; son effet de combat conserve son usage reconnaissable.`,
+    en: `${loreName.en || loreName.fr} is a physical ${title.en} prop whose combat effect preserves its recognizable use.`
+  }) : template.desc;
+  const semantics = resolveBattlePickupSemantics({ ...(loreName ? loreItem : template), universe });
   return {
     ...template,
     ...(loreName ? {
@@ -234,6 +239,8 @@ const makeLoreBackedItem = (universe, index, color) => {
       visualAnchor: loreItem.visualAnchor,
       audit: loreItem.audit
     } : {}),
+    ...semantics,
+    desc: withBattlePickupEffectNotice(description, semantics.effectNotice),
     universe,
     tier: 'pickup',
     color,
@@ -259,23 +266,20 @@ const makeItemsForUniverse = (universe) => {
   const loreItems = EQUIP_ITEMS_DB.filter(item => item.universe === universe);
   const eventItem = EVENT_ITEMS_DB[universe];
   const pickups = override
-    ? override.pickups.map(([fr, en, effectText], index) => {
-      const loreItem = loreItems[index];
+    ? override.pickups.map((definition, index) => {
+      const authored = normalizeBattlePickupDefinition(definition);
+      const loreItem = findBattlePickupSource(authored, loreItems);
+      const semantics = resolveBattlePickupSemantics({ ...loreItem, ...authored, universe });
       return {
         id: `${slug}_pickup_${index + 1}`,
         universe,
         tier: 'pickup',
-        role: ['offense', 'defense', 'tempo'][index % 3],
-        name: loreItem?.name || { fr, en },
-        desc: loreItem?.desc || { fr: effectText, en: effectText },
+        ...semantics,
+        name: authored.name,
+        desc: withBattlePickupEffectNotice(authored.desc, semantics.effectNotice),
         melee: { fr: 'Ramassable en melee: declenche son effet des que le heros le securise.', en: 'Melee pickup: triggers as soon as the hero secures it.' },
         rpg: { fr: 'Commande RPG: utilise la jauge ATB du heros actif pour convertir cet artefact en action de soutien.', en: 'RPG command: spends the active hero ATB to convert this artifact into a support action.' },
         tactics: { fr: 'En tactique: peut devenir une case bonus ou une ressource posee sur la carte.', en: 'In tactics: can become a bonus tile or placed map resource.' },
-        effect: [
-          { damage: 34, charge: 10 },
-          { heal: 46, shield: 14 },
-          { charge: 32, damage: 16 }
-        ][index % 3],
         color,
         ...(loreItem ? {
           sourceItemId: loreItem.id,
@@ -287,7 +291,7 @@ const makeItemsForUniverse = (universe) => {
         } : {})
       };
     })
-    : [0, 1, 2].map(index => makeLoreBackedItem(universe, index, color));
+    : ['offense', 'defense', 'tempo'].map((templateRole, index) => makeLoreBackedItem(universe, templateRole, color, loreItems[index]));
 
   const summon = {
     id: `${slug}_summon`,
@@ -386,5 +390,9 @@ export const getBattleItemPoolForStage = (stage) => {
     ...(stage?.sourceUniverses || []),
     stage?.universe
   ].filter(Boolean)));
-  return universes.flatMap(universe => getBattleItemsForUniverse(universe));
+  // Narrative-only props remain searchable in the catalogue, not consumable in combat.
+  return universes.flatMap(universe => getBattleItemsForUniverse(universe)).filter(item => (
+    ['damage', 'summonDamage', 'ultimateDamage', 'heal', 'shield', 'charge']
+      .some(key => Number(item.effect?.[key]) > 0)
+  ));
 };

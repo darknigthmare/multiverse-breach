@@ -191,7 +191,7 @@ test('Mosaic City freezes its loop and only leaves through controlled transition
   );
 
   assert.match(mosaicCitySource, /sessionPausedRef = useRef\(sessionPaused\)/);
-  assert.match(mosaicCitySource, /if \(sessionPausedRef\.current\) \{\s*rafId = window\.requestAnimationFrame\(loop\)/);
+  assert.match(mosaicCitySource, /if \(sessionPausedRef\.current \|\| document\.hidden\) \{\s*lastFrame = null;\s*rafId = window\.requestAnimationFrame\(loop\)/);
   assert.match(mosaicCitySource, /if \(sessionPausedRef\.current\) return;\s*const state = stateRef\.current/);
   assert.match(mosaicCitySource, /onSessionEnd\?\.\(\{ reason: 'abandoned' \}\)/);
   assert.match(hubScreenSource, /finishNexusSession\(\{ reason: 'transition' \}\);\s*setActiveTab\('missions'\)/);
@@ -200,12 +200,12 @@ test('Mosaic City freezes its loop and only leaves through controlled transition
 
 test('dedicated custom runtime freezes input and hides its direct setup exit', () => {
   assert.match(gameCanvasSource, /sessionPausedRef = useRef\(sessionPaused\)/);
-  assert.match(gameCanvasSource, /engineRef\.current\?\.setPaused\?\.\(sessionPaused\)/);
-  assert.match(gameCanvasSource, /if \(sessionPausedRef\.current\) \{\s*frameId = requestAnimationFrame\(tick\)/);
+  assert.match(gameCanvasSource, /engineRef\.current\?\.setPaused\?\.\(sessionPaused \|\| document\.hidden\)/);
+  assert.match(gameCanvasSource, /if \(sessionPausedRef\.current \|\| document\.hidden\) \{\s*frameId = requestAnimationFrame\(tick\)/);
   assert.match(gameCanvasSource, /\{!dedicatedSession && \(\s*<button\s*onClick=\{\(\) => onBattleEnd\('quit'\)\}/);
   assert.match(customBattleModeSource, /sessionPaused=\{sessionPaused\}/);
   assert.match(customBattleModeSource, /dedicatedSession=\{dedicatedSession\}/);
-  assert.match(engineRpgSource, /if \(this\.paused\) \{[\s\S]*runWhenResumed\(\)/);
+  assert.match(engineRpgSource, /if \(this\.paused \|\| this\.isTargetingPaused\?\.\(\)\) \{[\s\S]*runWhenResumed\(\)/);
   assert.match(engineTacticsSource, /if \(this\.paused\) \{[\s\S]*runWhenResumed\(\)/);
   assert.match(indexCssSource, /@media \(max-width: 900px\) \{[\s\S]*\.hub-screen\.is-dedicated-game \.mosaic-rpg-panel \{[\s\S]*grid-template-columns: 1fr/);
 });
@@ -1317,6 +1317,48 @@ test('Tactics mirrors P2 pickups and keeps unknown effects neutral', () => {
     engine.dispose();
     assert.equal(engine.timers.size, 0);
   }
+});
+
+test('Tactics shield-only and charge-only pickups never add implicit healing or enemy damage', () => {
+  const engine = new tacticsModule.EngineTactics(760, 420, [makeHero()], makeEnemyData([makeThreat()]), particles, noop, noop, makeStage('Tactics'));
+  try {
+    const hero = engine.heroes[0];
+    const enemy = engine.enemies[0];
+    hero.currentHp = 50;
+    hero.specialCharge = 0;
+    enemy.gridX = hero.gridX + 1;
+    enemy.gridY = hero.gridY;
+    const enemyHp = enemy.currentHp;
+    const pickup = { tier: 'pickup', gridX: hero.gridX, gridY: hero.gridY, color: '#abc' };
+    engine.applyTacticalBattleItem({ ...pickup, effect: { shield: 40 } }, 'test', 'hero');
+    assert.equal(hero.currentHp, 50);
+    assert.equal(hero.battleItemShield, 40);
+    assert.equal(hero.specialCharge, 0);
+    assert.equal(enemy.currentHp, enemyHp);
+    engine.applyTacticalBattleItem({ ...pickup, effect: { charge: 25 } }, 'test', 'hero');
+    assert.equal(hero.currentHp, 50);
+    assert.equal(hero.specialCharge, 25);
+    assert.equal(enemy.currentHp, enemyHp);
+  } finally { engine.dispose(); }
+});
+
+test('RPG, Tactics and Smash direct hits spend pickup shields before HP', () => {
+  const random = Math.random;
+  Math.random = () => 0.5;
+  try {
+    for (const [mode, Engine] of [['RPG', rpgModule.EngineRpg], ['Tactics', tacticsModule.EngineTactics], ['Smash', smashModule.EngineSmash]]) {
+      const engine = new Engine(760, 420, [makeHero()], makeEnemyData([makeThreat()]), particles, noop, noop, makeStage(mode));
+      try {
+        const hero = engine.heroes[0];
+        const enemy = engine.enemies[0];
+        enemy.battleItemShield = 100;
+        const hp = enemy.currentHp;
+        engine.applyDamage(hero, enemy, 20);
+        assert.equal(enemy.currentHp, hp, mode);
+        assert.ok(enemy.battleItemShield < 100 && enemy.battleItemShield > 0, mode);
+      } finally { engine.dispose?.(); }
+    }
+  } finally { Math.random = random; }
 });
 
 test('Smash P2 moves and lands a manual opponent attack', () => {

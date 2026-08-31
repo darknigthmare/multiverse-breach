@@ -1,0 +1,16 @@
+.squad-proposal { margin: 16px 0; padding: 16px; border: 1px solid #39c5bb; border-radius: 6px; background: #101d25; color: #dcecef; }
+.squad-proposal h4 { margin: 0 0 8px; color: #6be3d9; }
+.squad-proposal p { font-size: 12px; line-height: 1.5; }
+.squad-proposal-score, .squad-proposal-stats, .squad-proposal-actions, .squad-proposal-teams { display: flex; flex-wrap: wrap; gap: 14px; }
+.squad-proposal-table { overflow-x: auto; }
+.squad-proposal table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.squad-proposal th, .squad-proposal td { border-bottom: 1px solid #375059; padding: 9px; text-align: left; }
+.squad-proposal-stats { margin-top: 12px; font-size: 12px; }
+.squad-proposal-actions { margin-top: 14px; }
+.squad-proposal-actions button { min-height: 40px; }
+.squad-proposal-actions button:focus-visible { outline: 2px solid #ffea00; outline-offset: 3px; }
+.squad-proposal-teams > div { flex: 1 1 220px; }
+.squad-composition-controls { display: flex; align-items: end; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.squad-composition-controls label { display: grid; gap: 4px; font-size: 11px; }
+.squad-composition-controls select { max-width: min(320px, 100%); min-height: 36px; padding: 6px; background: #0c1720; color: #dcecef; border: 1px solid #55717c; }
+.squad-composition-controls button { min-height: 36px; }

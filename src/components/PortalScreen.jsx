@@ -1,16 +1,19 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { EQUIP_ITEMS_DB, EVENT_ITEMS_DB, HEROES_DB } from '../game/heroes';
 import sound from '../game/soundEngine';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import { getTranslation } from '../game/translation';
 import { LORE_DB } from '../game/lore';
+import { OC_DLC_UNIVERSE_KEYS } from '../game/ocDlcPacks';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import {
   BOOSTER_CARD_COUNT,
-  createBoosterRewards,
-  getBoosterFreeDrawRates
+  createBoosterRewards
 } from '../game/portalBoosterEngine';
 import { capDuplicateRefunds, getBoosterPrice } from '../game/portalBoosterEconomy';
+import { buildBoosterCatalogGroups } from '../game/portalCatalogView';
+import { getPersonalPortalRotation, ROTATION_REROLL_GOLD_COST } from '../game/portalRotationReroll';
+import PortalBoosterDossier from './PortalBoosterDossier';
 import { getOcBoosterContentUpdate } from '../game/ocBoosterContentUpdates';
 import { resolvePortalBoosterEditorialWave } from '../game/portalBoosterEditorialWaves';
 import { getUniverseUnlockables, getUnlockableById } from '../game/universeUnlockables';
@@ -21,12 +24,12 @@ import {
 } from '../game/cosmeticVisualAssets';
 import {
   BOOSTER_ROTATION_WINDOW_MS,
+  BOOSTER_ROTATION_SIZE,
   DEFAULT_OC_BOOSTER_ID,
   ORIGINAL_WORLD_BOOSTERS,
   PERMANENT_OC_BOOSTERS,
   getPortalBoosterArt,
-  getPortalBoosterPackArt,
-  getPortalBoosterRotation
+  getPortalBoosterPackArt
 } from '../game/portalBoosterCatalog';
 import { createCardCatalogFromPortalCandidates } from '../game/cards/cardCatalog';
 import { createCardSetCatalog } from '../game/cards/cardSetCatalog';
@@ -166,7 +169,10 @@ const CUSTOM_COSMETIC_KINDS = [
   'profileBanner',
   'profileTitle'
 ];
-const REWARD_MANIFEST_LIMIT = 12;
+const ORIGINAL_BOOSTER_UNIVERSES = new Set([
+  ...ORIGINAL_WORLD_BOOSTERS.map(pack => pack.universe),
+  ...OC_DLC_UNIVERSE_KEYS
+]);
 const getUniverseHudFrame = (universe) => (
   getUniverseCosmeticVisuals(universe)?.hudTheme?.image || null
 );
@@ -255,18 +261,6 @@ const formatRotationCountdown = (remainingMs, lang) => {
   const seconds = totalSeconds % 60;
   const unit = lang === 'fr' ? 'rotation' : 'rotation';
   return `${unit} ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
-};
-
-const formatFreeDrawRate = (rate, lang) => {
-  const percentage = Math.max(0, Number(rate) || 0) * 100;
-  const formatted = percentage >= 10
-    ? percentage.toFixed(1)
-    : percentage >= 1
-      ? percentage.toFixed(2)
-      : percentage >= 0.1
-        ? percentage.toFixed(3)
-        : percentage.toFixed(4);
-  return `${formatted}% ${lang === 'fr' ? 'par tirage libre' : 'per free draw'}`;
 };
 
 const formatContentUpdateDate = (releasedAt, lang) => {
@@ -743,6 +737,8 @@ function BoosterRewardCard({ reward, lang, revealed, onReveal }) {
 
 export default function PortalScreen({
   lang,
+  gold = 0,
+  onRerollRotation = null,
   breachShards,
   setBreachShards,
   portalStats,
@@ -757,11 +753,18 @@ export default function PortalScreen({
   disabledAssets = {},
   completedStages = [],
   collectionOnly = false,
+  onOpenAnchorProfile,
   onBack
 }) {
   const [activeBanner, setActiveBanner] = useState(DEFAULT_OC_BOOSTER_ID);
   const [packQuery, setPackQuery] = useState('');
   const [showAllPacks, setShowAllPacks] = useState(false);
+  const [openPackGroups, setOpenPackGroups] = useState({ original: true, franchise: false });
+  const [dossierBannerId, setDossierBannerId] = useState(null);
+  const [rotationConfirmation, setRotationConfirmation] = useState(null);
+  const [rotationPending, setRotationPending] = useState(false);
+  const [rotationMessage, setRotationMessage] = useState(null);
+  const rotationPendingRef = useRef(false);
   const [artPreviewOpen, setArtPreviewOpen] = useState(false);
   const [openingPhase, setOpeningPhase] = useState('sealed');
   const [boosterRewards, setBoosterRewards] = useState([]);
@@ -1061,12 +1064,14 @@ export default function PortalScreen({
     [illustratedPortalBanners]
   );
   const rotationCycle = Math.floor(rotationNow / BOOSTER_ROTATION_WINDOW_MS);
+  const personalRotation = portalStats?.personalRotation;
   const rotationSchedule = useMemo(
-    () => getPortalBoosterRotation(
+    () => getPersonalPortalRotation(
       rotationUniverseNames,
-      rotationCycle * BOOSTER_ROTATION_WINDOW_MS
+      rotationCycle * BOOSTER_ROTATION_WINDOW_MS,
+      { personalRotation }
     ),
-    [rotationCycle, rotationUniverseNames]
+    [rotationCycle, rotationUniverseNames, personalRotation]
   );
   const rotationUniverseSet = useMemo(
     () => new Set(rotationSchedule.universes),
@@ -1137,12 +1142,20 @@ export default function PortalScreen({
   const browsedPortalBanners = showAllPacks || normalizedPackQuery
     ? catalogPortalBanners
     : availablePortalBanners;
-  const filteredPortalBanners = browsedPortalBanners.filter(banner => (
-    !normalizedPackQuery
-    || normalizePackSearch(`${banner.label[lang]} ${banner.desc[lang]} ${banner.searchText || ''}`)
-      .includes(normalizedPackQuery)
-  ));
-  const displayedPortalBanners = filteredPortalBanners;
+  const catalogGroups = useMemo(() => buildBoosterCatalogGroups({
+    banners: browsedPortalBanners,
+    heroes: visibleHeroes,
+    originalUniverses: ORIGINAL_BOOSTER_UNIVERSES,
+    query: packQuery
+  }), [browsedPortalBanners, packQuery, visibleHeroes]);
+  const filteredPortalBanners = catalogGroups.flatMap(group => group.banners);
+  const dossierBanner = useMemo(() => catalogPortalBanners.find(banner => banner.id === dossierBannerId) || null, [catalogPortalBanners, dossierBannerId]);
+  const dossierCandidates = useMemo(() => dossierBanner ? makeBoosterCandidates({
+    banner: dossierBanner,
+    visibleHeroes,
+    disabledGearIds: disabledGearSet
+  }) : [], [dossierBanner, visibleHeroes, disabledGearSet]);
+  const closeDossier = useCallback(() => setDossierBannerId(null), []);
   const rotationCountdown = formatRotationCountdown(
     rotationSchedule.nextRotationAt - rotationNow,
     lang
@@ -1164,34 +1177,10 @@ export default function PortalScreen({
     }),
     [activeBannerData.id, activeBannerData.universe, activeRewardCandidates]
   );
-  const activeContentUpdateCardIds = useMemo(
-    () => new Set(
-      activeContentUpdate?.featuredCardIds
-      || activeContentUpdate?.newCardIds
-      || []
-    ),
-    [activeContentUpdate]
-  );
-  const freeDrawRates = useMemo(
-    () => getBoosterFreeDrawRates(activeRewardCandidates),
-    [activeRewardCandidates]
-  );
   const rewardKindCounts = activeRewardCandidates.reduce((counts, reward) => ({
     ...counts,
     [reward.kind]: (counts[reward.kind] || 0) + 1
   }), {});
-  const rewardManifestGroups = useMemo(
-    () => REWARD_KIND_ORDER.map(kind => ({
-      kind,
-      rewards: activeRewardCandidates
-        .filter(reward => reward.kind === kind)
-        .sort((rewardA, rewardB) => (
-          Number(activeContentUpdateCardIds.has(rewardB.id))
-          - Number(activeContentUpdateCardIds.has(rewardA.id))
-        ))
-    })),
-    [activeContentUpdateCardIds, activeRewardCandidates]
-  );
   const openingLocked = ['charging', 'cutting', 'opening'].includes(openingPhase);
   const cardsVisible = ['revealing', 'complete'].includes(openingPhase);
   const canOpenBooster = openingPhase === 'sealed'
@@ -1498,25 +1487,52 @@ export default function PortalScreen({
     sound.playSfx('click');
   };
 
-  const activateHudTheme = (themeId) => {
-    setPortalCollection(previous => ({
-      ...previous,
-      activeHudTheme: themeId
-    }));
-    sound.playSfx('click');
+  const canRerollRotation = typeof onRerollRotation === 'function'
+    && rotationUniverseNames.length > BOOSTER_ROTATION_SIZE
+    && gold >= ROTATION_REROLL_GOLD_COST
+    && openingPhase === 'sealed'
+    && !rotationPending;
+
+  const requestRotationReroll = () => {
+    if (!canRerollRotation || rotationPendingRef.current) return;
+    setRotationMessage(null);
+    setRotationConfirmation({
+      requestId: crypto.randomUUID(),
+      universes: [...rotationUniverseNames],
+      expectedCycle: rotationSchedule.cycle
+    });
   };
 
-  const customCosmeticOptions = Object.fromEntries(
-    CUSTOM_COSMETIC_KINDS.map(kind => {
-      const collectionKey = PORTAL_COLLECTION_ID_KEYS[kind];
-      return [
-        kind,
-        (portalCollection[collectionKey] || [])
-          .map(id => getUnlockableById(kind, id))
-          .filter(Boolean)
-      ];
-    })
-  );
+  const confirmRotationReroll = async () => {
+    if (!rotationConfirmation || !canRerollRotation || rotationPendingRef.current) return;
+    rotationPendingRef.current = true;
+    setRotationPending(true);
+    try {
+      // The parent persists the idempotent transaction before confirming debit.
+      // Keep this request ID on failure so retrying cannot charge a second time.
+      const result = await onRerollRotation(rotationConfirmation);
+      setRotationMessage(result?.applied ? 'applied' : result?.reason || 'persistence-failed');
+      if (result?.applied || result?.reason === 'already-applied') setRotationConfirmation(null);
+    } catch {
+      setRotationMessage('persistence-failed');
+    } finally {
+      rotationPendingRef.current = false;
+      setRotationPending(false);
+    }
+  };
+
+  const rotationMessages = {
+    applied: { fr: 'Rotation renouvelée et sauvegardée. Les permanents restent inchangés.', en: 'Rotation refreshed and saved. Permanent boosters are unchanged.' },
+    'already-applied': { fr: 'Ce renouvellement est déjà enregistré. Aucun second débit.', en: 'This refresh is already recorded. No second charge.' },
+    'invalid-request': { fr: 'Demande invalide. Annule puis ouvre une nouvelle confirmation.', en: 'Invalid request. Cancel and open another confirmation.' },
+    'insufficient-gold': { fr: 'Or insuffisant. Aucun renouvellement appliqué.', en: 'Not enough gold. No refresh applied.' },
+    'not-enough-universes': { fr: 'Pas assez de Trames disponibles pour une autre sélection.', en: 'Not enough available Threads for another selection.' },
+    'stale-cycle': { fr: 'La rotation a changé. Annule puis demande une nouvelle confirmation.', en: 'The rotation changed. Cancel and request a new confirmation.' },
+    busy: { fr: 'Une transaction est déjà en cours. Attends sa confirmation.', en: 'A transaction is already in progress. Wait for confirmation.' },
+    'save-conflict': { fr: 'La sauvegarde a changé ailleurs. Annule puis synchronise ton archive avant une nouvelle confirmation.', en: 'The save changed elsewhere. Cancel and sync your archive before another confirmation.' },
+    'persistence-failed': { fr: 'Sauvegarde non confirmée. Réessaie cette confirmation sans créer une nouvelle demande.', en: 'Save not confirmed. Retry this confirmation without creating another request.' }
+  };
+
   const equippedCustomCosmetics = Object.fromEntries(
     CUSTOM_COSMETIC_KINDS.map(kind => [
       kind,
@@ -1529,25 +1545,6 @@ export default function PortalScreen({
     0,
     Math.min(equippedPortalRows - 1, Number(equippedPortalAtlas?.row) || 0)
   );
-  const equippedProfileBackdrop = equippedCustomCosmetics.profileBanner
-    ? (
-        getOpenAiBackdropSrc(equippedCustomCosmetics.profileBanner.universe, 'Combat')
-        || '/images/missions/fusion-rifts.webp'
-      )
-    : null;
-  const equipCustomCosmetic = (kind, id) => {
-    const collectionKey = PORTAL_COLLECTION_ID_KEYS[kind];
-    const ownedIds = portalCollection[collectionKey] || [];
-    const safeId = ownedIds.includes(id) ? id : null;
-    setPortalCollection(previous => ({
-      ...(previous || {}),
-      customLoadout: {
-        ...(previous?.customLoadout || {}),
-        [kind]: safeId
-      }
-    }));
-    sound.playSfx('click');
-  };
 
   const closeArtPreview = () => {
     setArtPreviewOpen(false);
@@ -1688,6 +1685,7 @@ export default function PortalScreen({
   return (
     <div
       className="portal-container booster-portal"
+      inert={Boolean(dossierBanner)}
       data-pack-id={activeBannerData.id}
       data-booster-phase={openingPhase}
       data-portal-effect={equippedCustomCosmetics.portalEffect?.style || 'standard'}
@@ -1811,8 +1809,47 @@ export default function PortalScreen({
           <em>{lang === 'fr' ? 'BOOSTERS PERMANENTS' : 'PERMANENT BOOSTERS'}: {permanentPortalBanners.length}</em>
         </div>
 
-        <div className="booster-catalog-grid">
-          {displayedPortalBanners.map(banner => {
+        {typeof onRerollRotation === 'function' && (
+          <div data-personal-rotation-controls="true" aria-busy={rotationPending} style={{ marginTop: 12, padding: 12, border: '1px solid #67582f', borderRadius: 6 }}>
+            <p style={{ margin: '0 0 10px' }}>{lang === 'fr'
+              ? `Renouveler uniquement les offres temporaires : ${ROTATION_REROLL_GOLD_COST} Or. Disponible : ${gold} Or. Les boosters permanents, garanties et tirages obtenus ne changent pas.`
+              : `Refresh temporary offers only: ${ROTATION_REROLL_GOLD_COST} Gold. Available: ${gold} Gold. Permanent boosters, guarantees and obtained pulls do not change.`}</p>
+            {rotationConfirmation ? (
+              <div role="group" aria-label={lang === 'fr' ? 'Confirmer le renouvellement payant' : 'Confirm paid rotation refresh'} style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                <button type="button" className="btn-retro" disabled={!canRerollRotation} onClick={confirmRotationReroll}>
+                  {rotationPending ? (lang === 'fr' ? 'SAUVEGARDE EN COURS…' : 'SAVING…') : (lang === 'fr' ? `CONFIRMER · ${ROTATION_REROLL_GOLD_COST} OR` : `CONFIRM · ${ROTATION_REROLL_GOLD_COST} GOLD`)}
+                </button>
+                <button type="button" className="btn-retro" disabled={rotationPending} onClick={() => { setRotationConfirmation(null); setRotationMessage(null); }}>
+                  {lang === 'fr' ? 'ANNULER SANS FRAIS' : 'CANCEL AT NO COST'}
+                </button>
+              </div>
+            ) : (
+              <button type="button" className="btn-retro" disabled={!canRerollRotation} onClick={requestRotationReroll}>
+                {lang === 'fr' ? 'RENOUVELER LA ROTATION…' : 'REFRESH ROTATION…'}
+              </button>
+            )}
+            {rotationUniverseNames.length <= BOOSTER_ROTATION_SIZE && <p>{lang === 'fr' ? `Renouvellement indisponible : active plus de ${BOOSTER_ROTATION_SIZE} Trames illustrées.` : `Refresh unavailable: activate more than ${BOOSTER_ROTATION_SIZE} illustrated Threads.`}</p>}
+            {rotationMessage && <p role="status">{getLocalizedText(rotationMessages[rotationMessage] || rotationMessages['persistence-failed'], lang)}</p>}
+          </div>
+        )}
+
+        {catalogGroups.map(group => (
+          <details
+            key={group.id}
+            data-booster-group={group.id}
+            open={Boolean(normalizedPackQuery) || openPackGroups[group.id]}
+            onToggle={event => {
+              if (normalizedPackQuery) return;
+              const open = event.currentTarget.open;
+              setOpenPackGroups(previous => previous[group.id] === open ? previous : { ...previous, [group.id]: open });
+            }}
+            style={{ marginTop: 14, border: '1px solid #284047', borderRadius: 6, padding: 12 }}
+          >
+            <summary onClick={event => { if (normalizedPackQuery) event.preventDefault(); }} style={{ cursor: 'pointer', fontWeight: 700, padding: '6px 0' }}>
+              {group.id === 'original' ? (lang === 'fr' ? 'OC / NEXUS' : 'ORIGINAL / NEXUS') : (lang === 'fr' ? 'UNIVERS DE FRANCHISE' : 'FRANCHISE UNIVERSES')} · {group.banners.length}
+            </summary>
+            <div className="booster-catalog-grid">
+          {group.banners.map(banner => {
             const bannerHeroes = visibleHeroes.filter(hero => banner.match(hero));
             const owned = bannerHeroes.filter(hero => unlockedHeroes.includes(hero.id)).length;
             const isActive = activeBannerData.id === banner.id;
@@ -1834,15 +1871,17 @@ export default function PortalScreen({
               <button
                 key={banner.id}
                 type="button"
-                onClick={() => handleSelectBanner(banner.id)}
-                disabled={openingLocked || !isAvailable}
+                onClick={() => setDossierBannerId(banner.id)}
+                disabled={openingLocked}
                 className={`portal-booster ${packArt ? 'has-pack-art' : 'generated-pack-art'} ${isActive ? 'selected' : ''} ${!isAvailable ? 'unavailable' : ''}`}
                 aria-pressed={isActive}
+                aria-haspopup="dialog"
                 title={!isAvailable
                   ? (lang === 'fr' ? 'Apercu uniquement: hors rotation actuelle.' : 'Preview only: outside the current rotation.')
                   : undefined}
                 style={{
                   '--pack-color': banner.color,
+                  cursor: openingLocked ? 'wait' : 'pointer',
                   backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.93)), url(${packImage})`
                 }}
               >
@@ -1866,7 +1905,10 @@ export default function PortalScreen({
               </button>
             );
           })}
-        </div>
+            </div>
+            {group.banners.length === 0 && <p>{lang === 'fr' ? 'Aucun booster dans cette sélection.' : 'No boosters in this selection.'}</p>}
+          </details>
+        ))}
 
         {filteredPortalBanners.length === 0 && (
           <div className="booster-empty-state">
@@ -1937,55 +1979,15 @@ export default function PortalScreen({
               </span>
             ))}
           </div>
-          <details className="booster-reward-manifest">
-            <summary>
-              {lang === 'fr' ? 'VOIR LE CONTENU POSSIBLE' : 'VIEW POSSIBLE CONTENT'}
-            </summary>
-            <p className="booster-drop-rate-note">
-              {lang === 'fr'
-                ? 'Taux de base d un slot non garanti, avant retrait des cartes deja tirees. A rarete et poids identiques, les cartes se partagent le palier equitablement. Les garanties et le Compas Nexus augmentent certaines chances.'
-                : 'Base rate for one non-guaranteed slot, before removing cards already drawn. Cards with the same rarity and weight share their tier fairly. Guarantees and the Nexus Compass increase selected odds.'}
-            </p>
-            <div className="booster-reward-manifest-grid">
-              {rewardManifestGroups.map(({ kind, rewards }) => {
-                const remainingCount = Math.max(0, rewards.length - REWARD_MANIFEST_LIMIT);
-                return (
-                  <section className="booster-reward-manifest-group" key={kind}>
-                    <h3>
-                      <span>{REWARD_KIND_LABELS[kind]?.[lang] || kind}</span>
-                      <strong>{rewards.length}</strong>
-                    </h3>
-                    {rewards.length > 0 ? (
-                      <ul>
-                        {rewards.slice(0, REWARD_MANIFEST_LIMIT).map(reward => (
-                          <li key={reward.id} title={getLocalizedText(reward.name, lang)}>
-                            <span>
-                              {activeContentUpdateCardIds.has(reward.id) && (
-                                <strong style={{ color: activeBannerData.color }}>
-                                  {activeContentUpdate.type === 'editorial-wave'
-                                    ? (lang === 'fr' ? 'SÉLECTION' : 'FEATURED')
-                                    : (lang === 'fr' ? 'AJOUT' : 'NEW')} V{activeContentUpdate.version} ·{' '}
-                                </strong>
-                              )}
-                              {getLocalizedText(reward.name, lang)}
-                            </span>
-                            <small>{formatFreeDrawRate(freeDrawRates.get(reward.id), lang)}</small>
-                          </li>
-                        ))}
-                        {remainingCount > 0 && (
-                          <li className="booster-reward-manifest-more">
-                            +{remainingCount} {lang === 'fr' ? 'autres' : 'others'}
-                          </li>
-                        )}
-                      </ul>
-                    ) : (
-                      <p>{lang === 'fr' ? 'Aucun contenu' : 'No content'}</p>
-                    )}
-                  </section>
-                );
-              })}
-            </div>
-          </details>
+          <button
+            type="button"
+            className="btn-retro booster-reward-manifest"
+            disabled={openingLocked}
+            aria-haspopup="dialog"
+            onClick={() => setDossierBannerId(activeBannerData.id)}
+          >
+            {lang === 'fr' ? 'DOSSIER ET CATALOGUE COMPLETS' : 'COMPLETE DOSSIER AND CATALOG'} · {activeRewardCandidates.length}
+          </button>
           <div className="portal-rate-grid">
             {Object.values(PORTAL_RARITIES).map(rarity => (
               <span key={rarity.id} style={{ '--rarity-color': rarity.color }}>
@@ -2040,11 +2042,12 @@ export default function PortalScreen({
             <button
               type="button"
               className={`breach-booster-pack ${activeBoosterArt ? 'uses-real-art' : 'uses-generated-art'}`}
-              onClick={handleOpenBooster}
-              disabled={!canOpenBooster}
+              onClick={() => setDossierBannerId(activeBannerData.id)}
+              disabled={openingLocked}
+              aria-haspopup="dialog"
               aria-label={lang === 'fr'
-                ? `Ouvrir ${activeBannerData.label.fr}, cinq cartes pour ${activeBoosterPrice} Fragments`
-                : `Open ${activeBannerData.label.en}, five cards for ${activeBoosterPrice} Shards`}
+                ? `Consulter ${activeBannerData.label.fr} sans acheter`
+                : `Preview ${activeBannerData.label.en} without buying`}
             >
               <span
                 className="breach-booster-body"
@@ -2143,147 +2146,17 @@ export default function PortalScreen({
         )}
       </div>
 
-      {portalCollectionTotal > 0 && (
-        <section className="booster-collection-panel" aria-labelledby="portal-collection-title">
-          <div className="booster-collection-header">
-            <div>
-              <div id="portal-collection-title" className="booster-section-kicker">
-                {lang === 'fr' ? 'COLLECTION DE TRAME' : 'THREAD COLLECTION'}
-              </div>
-              <p>
-                {portalCollectionTotal} {lang === 'fr' ? 'deblocage(s) sauvegarde(s)' : 'saved unlock(s)'}
-              </p>
-              <div className="booster-pool-types">
-                {portalCollectionCounts.map(({ kind, count }) => (
-                  <span key={kind}>
-                    {REWARD_KIND_LABELS[kind]?.[lang] || kind} <strong>{count}</strong>
-                  </span>
-                ))}
-              </div>
-            </div>
-            <button
-              type="button"
-              className={`btn-retro ${!portalCollection.activeHudTheme ? 'selected' : ''}`}
-              onClick={() => activateHudTheme(null)}
-            >
-              {lang === 'fr' ? 'HUD NEXUS' : 'NEXUS HUD'}
-            </button>
-          </div>
-
-          {(portalCollection.hudThemes || []).length > 0 && (
-            <div className="booster-theme-grid">
-              {(portalCollection.hudThemes || []).map(theme => (
-                <button
-                  key={theme.id}
-                  type="button"
-                  className={portalCollection.activeHudTheme === theme.id ? 'selected' : ''}
-                  onClick={() => activateHudTheme(theme.id)}
-                  style={{
-                    '--theme-color': theme.color,
-                    backgroundImage: `url(${getUniverseHudFrame(theme.universe) || theme.frame || OPENAI_COSMETIC_VISUALS.hudTheme.image}), linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.88)), url(${theme.image})`,
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: '100% 100%, cover, cover'
-                  }}
-                  aria-pressed={portalCollection.activeHudTheme === theme.id}
-                >
-                  <span>{lang === 'fr' ? 'THEME HUD' : 'HUD THEME'}</span>
-                  <strong>{theme.universe}</strong>
-                </button>
-              ))}
-            </div>
-          )}
-
-          {CUSTOM_COSMETIC_KINDS.some(kind => customCosmeticOptions[kind].length > 0) && (
-            <section
-              aria-labelledby="booster-cosmetic-loadout-title"
-              style={{
-                marginTop: 14,
-                padding: 14,
-                border: `1px solid ${equippedCustomCosmetics.profileBanner?.color || 'rgba(57,197,187,0.3)'}`,
-                borderRadius: 6,
-                background: equippedCustomCosmetics.profileBanner
-                  ? `url(${equippedCustomCosmetics.profileBanner.visual?.image || OPENAI_COSMETIC_VISUALS.profileBanner.image}) center / 100% 100% no-repeat, radial-gradient(circle at 18% 0%, ${equippedCustomCosmetics.profileBanner.color}44, transparent 42%), linear-gradient(135deg, rgba(7,9,18,.82), rgba(0,0,0,.72)), url(${equippedProfileBackdrop}) center / cover no-repeat`
-                  : 'rgba(0,0,0,.32)'
-              }}
-            >
-              <div id="booster-cosmetic-loadout-title" className="booster-section-kicker">
-                {lang === 'fr' ? 'EQUIPEMENT COSMETIQUE CUSTOM' : 'CUSTOM COSMETIC LOADOUT'}
-              </div>
-              <p style={{ margin: '5px 0 12px', color: '#aebfc3', fontSize: 10 }}>
-                {lang === 'fr'
-                  ? 'Ces choix habillent les combats custom et le Dossier d Ancre. Aucun mode ni mission ne peut tomber dans un booster.'
-                  : 'These choices style custom battles and the Anchor record. Modes and missions can never drop from boosters.'}
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(205px, 1fr))', gap: 10 }}>
-                {CUSTOM_COSMETIC_KINDS.map(kind => {
-                  const options = customCosmeticOptions[kind];
-                  const active = equippedCustomCosmetics[kind];
-                  return (
-                    <label key={kind} style={{ display: 'grid', gap: 5, minWidth: 0 }}>
-                      <span style={{ color: active?.color || '#8fa8ad', fontSize: 9, fontWeight: 700 }}>
-                        {REWARD_KIND_LABELS[kind]?.[lang] || kind}
-                      </span>
-                      <select
-                        value={active?.id || ''}
-                        disabled={options.length === 0}
-                        onChange={event => equipCustomCosmetic(kind, event.target.value)}
-                        style={{
-                          minHeight: 38,
-                          width: '100%',
-                          border: `1px solid ${active?.color || 'rgba(255,255,255,.18)'}`,
-                          borderRadius: 4,
-                          background: 'rgba(0,0,0,.72)',
-                          color: '#efffff',
-                          padding: '7px 9px',
-                          font: "10px 'Share Tech Mono', monospace"
-                        }}
-                      >
-                        <option value="">{lang === 'fr' ? 'AUCUN / STANDARD' : 'NONE / STANDARD'}</option>
-                        {options.map(option => (
-                          <option key={option.id} value={option.id}>
-                            {getLocalizedText(option.name, lang)}
-                          </option>
-                        ))}
-                      </select>
-                      <small style={{ minHeight: 24, color: '#7f969b', fontSize: 8, lineHeight: 1.35 }}>
-                        {active
-                          ? getLocalizedText(active.desc, lang)
-                          : options.length
-                            ? `${options.length} ${lang === 'fr' ? 'choix obtenus' : 'owned choices'}`
-                            : (lang === 'fr' ? 'A obtenir dans un booster.' : 'Find in a booster.')}
-                      </small>
-                    </label>
-                  );
-                })}
-              </div>
-            </section>
-          )}
-
-          {(portalCollection.archives || []).length > 0 && (
-            <div className="booster-archive-grid">
-              {(portalCollection.archives || []).slice(-12).reverse().map(archive => (
-                <article
-                  key={archive.id}
-                  style={{
-                    '--archive-color': archive.color,
-                    backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.9)), url(${archive.image})`
-                  }}
-                >
-                  <span>{archive.mode}</span>
-                  <strong>{archive.universe}</strong>
-                </article>
-              ))}
-            </div>
-          )}
-        </section>
-      )}
+      <section className="booster-collection-panel" aria-label={lang === 'fr' ? 'Collection et personnalisation' : 'Collection and customization'}>
+        <p>{portalCollectionTotal} {lang === 'fr' ? 'déblocages conservés. Consulte les cartes dans l’Album ; personnalise le HUD et ton profil dans le Dossier d’Ancre.' : 'preserved unlocks. Browse cards in the Album; customize your HUD and profile in the Anchor record.'}</p>
+        <button type="button" className="btn-retro" onClick={() => setCollectionOpen(true)}>{lang === 'fr' ? 'Ouvrir l’Album' : 'Open Album'}</button>
+        {onOpenAnchorProfile && <button type="button" className="btn-retro" onClick={onOpenAnchorProfile}>{lang === 'fr' ? 'Personnaliser l’Ancre' : 'Customize Anchor'}</button>}
+      </section>
 
       {(portalStats?.history || []).length > 0 && (
-        <section className="booster-history-panel" aria-labelledby="booster-history-title">
-          <div id="booster-history-title" className="booster-section-kicker">
+        <details className="booster-history-panel" aria-labelledby="booster-history-title">
+          <summary id="booster-history-title" className="booster-section-kicker" style={{ cursor: 'pointer' }}>
             {lang === 'fr' ? 'HISTORIQUE DE FAILLE' : 'RIFT HISTORY'} / {portalStats?.packsOpened || 0} {lang === 'fr' ? 'boosters' : 'boosters'}
-          </div>
+          </summary>
           <div className="booster-history-grid">
             {(portalStats?.history || []).slice(0, 10).map((entry, index) => (
               <article key={`${entry.rewardId || entry.heroId}-${entry.at}-${index}`}>
@@ -2300,7 +2173,31 @@ export default function PortalScreen({
               </article>
             ))}
           </div>
-        </section>
+        </details>
+      )}
+
+      {dossierBanner && (
+        <PortalBoosterDossier
+          key={dossierBanner.id}
+          banner={dossierBanner}
+          candidates={dossierCandidates}
+          lang={lang}
+          available={availableBannerIds.has(dossierBanner.id) && !openingLocked}
+          selected={activeBannerData.id === dossierBanner.id}
+          duplicateStreak={duplicateStreak}
+          pityLimit={PITY_LIMIT}
+          isCandidateOwned={isCandidateOwned}
+          onClose={closeDossier}
+          onSelect={bannerId => {
+            handleSelectBanner(bannerId);
+            closeDossier();
+          }}
+          kindLabels={REWARD_KIND_LABELS}
+          kindOrder={REWARD_KIND_ORDER}
+          rarities={PORTAL_RARITIES}
+          Artwork={RewardArtwork}
+          getRewardDetail={getRewardDetail}
+        />
       )}
 
       {collectionOpen ? (

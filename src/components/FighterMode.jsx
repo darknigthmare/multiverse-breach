@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineFighter, resolveFighterCosmetics } from '../game/engineFighter';
+import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { ParticleSystem, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
 import { getHeroSpriteSheetSrc, getSpriteSheetLayout } from '../game/spriteAssets';
@@ -273,6 +274,7 @@ export default function FighterMode({
   const onMatchCompleteRef = useRef(onMatchComplete);
   const onSessionEndRef = useRef(onSessionEnd);
   const sessionPausedRef = useRef(sessionPaused);
+  const simulationClockRef = useRef(null);
   const sessionExitRequestRef = useRef(sessionExitRequest);
   const [difficulty, setDifficulty] = useState('standard');
   const [opponentSeed, setOpponentSeed] = useState(1);
@@ -302,6 +304,7 @@ export default function FighterMode({
   // Le shell du hub pilote la pause sans reconstruire le moteur du duel.
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
+    simulationClockRef.current?.reset();
     if (sessionPaused) inputRef.current = { player: {}, cpu: {} };
   }, [sessionPaused]);
 
@@ -530,19 +533,22 @@ export default function FighterMode({
     sound.playStageBgm(battleMusicStage, activeBattleMusic?.state || 'battle');
 
     let animationId = 0;
-    let last = performance.now();
+    const simulationClock = createFixedStepClock();
+    simulationClockRef.current = simulationClock;
     let snapshotClock = 0;
     const loop = now => {
-      const dt = Math.min(0.034, Math.max(0, (now - last) / 1000));
-      last = now;
-      if (sessionPausedRef.current) {
+      const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
+      const dt = steps * COMBAT_STEP_MS / 1000;
+      if (sessionPausedRef.current || document.hidden) {
         animationId = requestAnimationFrame(loop);
         return;
       }
       engine.setSideInput('player', inputRef.current.player);
       engine.setSideInput('cpu', inputRef.current.cpu);
-      engine.update(dt);
-      particles.update();
+      for (let step = 0; step < steps; step += 1) {
+        engine.update(COMBAT_STEP_MS / 1000);
+        particles.update();
+      }
       const ctx = canvas.getContext('2d');
       if (ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -566,9 +572,10 @@ export default function FighterMode({
       inputRef.current[side][control] = active;
     };
     const onKeyDown = event => {
+      if (event.repeat || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable) return;
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
-      if (sessionPausedRef.current) return;
+      if (sessionPausedRef.current || document.hidden) return;
       const key = event.key.toLowerCase();
 
       if (key === 'q') setHeldInputForSide('player', 'left', true);
@@ -640,6 +647,7 @@ export default function FighterMode({
       }
     };
     const onVisibilityChange = () => {
+      simulationClockRef.current?.reset();
       if (document.hidden) clearInputs();
     };
     window.addEventListener('keydown', onKeyDown, { passive: false });
@@ -648,6 +656,7 @@ export default function FighterMode({
     document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
       cancelAnimationFrame(animationId);
+      if (simulationClockRef.current === simulationClock) simulationClockRef.current = null;
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
       window.removeEventListener('blur', clearInputs);

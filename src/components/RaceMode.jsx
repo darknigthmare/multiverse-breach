@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { EngineRace, KART_GARAGE_UPGRADES, RACE_ASSETS, RACE_TRACKS } from '../game/engineRace';
+import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { applyRaceResult, normalizeKartCareer } from '../game/kartCareer';
 import sound from '../game/soundEngine';
 import { getUnlockableById } from '../game/universeUnlockables';
@@ -68,6 +69,7 @@ export default function RaceMode({
   const raceMusicStateRef = useRef('grid');
   const onSessionEndRef = useRef(onSessionEnd);
   const sessionPausedRef = useRef(sessionPaused);
+  const simulationClockRef = useRef(null);
   const sessionExitRequestRef = useRef(sessionExitRequest);
   const [trackId, setTrackId] = useState(null);
   const [pilotId, setPilotId] = useState(null);
@@ -169,6 +171,7 @@ export default function RaceMode({
   // La pause du shell dedie gele la course et vide les commandes maintenues.
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
+    simulationClockRef.current?.reset();
     if (sessionPaused) {
       keysRef.current = {};
       keyPulseRef.current = {};
@@ -214,13 +217,14 @@ export default function RaceMode({
     raceMusicStateRef.current = 'grid';
     sound.playStageBgm(raceMusicStage, 'grid');
     let animationId = 0;
-    let last = performance.now();
+    const simulationClock = createFixedStepClock();
+    simulationClockRef.current = simulationClock;
     let snapshotTimer = 0;
 
     const loop = (now) => {
-      const dt = (now - last) / 1000;
-      last = now;
-      if (sessionPausedRef.current) {
+      const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
+      const dt = steps * COMBAT_STEP_MS / 1000;
+      if (sessionPausedRef.current || document.hidden) {
         animationId = requestAnimationFrame(loop);
         return;
       }
@@ -233,7 +237,7 @@ export default function RaceMode({
         autoAccel: autoAccelerateRef.current,
         manualAccel: Boolean(mergedInputs.up || mergedInputs.w)
       });
-      engine.update(dt);
+      for (let step = 0; step < steps; step += 1) engine.update(COMBAT_STEP_MS / 1000);
       const ctx = canvas.getContext('2d');
       engine.draw(ctx);
       snapshotTimer += dt;
@@ -274,9 +278,10 @@ export default function RaceMode({
     animationId = requestAnimationFrame(loop);
 
     const onKeyDown = (event) => {
+      if (event.repeat || ['INPUT', 'TEXTAREA', 'SELECT'].includes(event.target?.tagName) || event.target?.isContentEditable) return;
       if (!CONTROL_KEYS.has(event.key)) return;
       event.preventDefault();
-      if (sessionPausedRef.current) return;
+      if (sessionPausedRef.current || document.hidden) return;
       const key = normalizeKey(event.key);
       if (key === 'e') {
         engine.useItem();
@@ -298,6 +303,7 @@ export default function RaceMode({
       keyPulseRef.current = {};
     };
     const onVisibilityChange = () => {
+      simulationClockRef.current?.reset();
       if (document.hidden) clearInputs();
     };
     window.addEventListener('keydown', onKeyDown, { passive: false });
@@ -306,6 +312,7 @@ export default function RaceMode({
     document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
       cancelAnimationFrame(animationId);
+      if (simulationClockRef.current === simulationClock) simulationClockRef.current = null;
       window.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('keyup', onKeyUp);
       window.removeEventListener('blur', clearInputs);
