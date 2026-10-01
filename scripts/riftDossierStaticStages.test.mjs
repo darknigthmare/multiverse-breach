@@ -58,7 +58,9 @@ test('changed dossiers retain historical generation proof and cannot certify sta
   for (const affected of remediation.affectedStages) {
     const current = catalog.entrees.find(entry => entry.id === affected.stageId);
     const asset = registry.entries.find(entry => entry.stageId === affected.stageId);
-    assert.equal(hash(affected.historicalPrompt), affected.previousPromptSha256);
+    assert.match(affected.previousPromptSha256, /^[a-f0-9]{64}$/);
+    assert.equal(Object.hasOwn(affected, 'historicalPrompt'), false);
+    assert.equal(Object.hasOwn(affected, 'historicalGenerationId'), false);
     assert.equal(hash(current.promptOpenAI), affected.currentPromptSha256);
     assert.notEqual(affected.previousPromptSha256, affected.currentPromptSha256);
     assert.equal(asset.assetPath, current.cheminCibleDedie);
@@ -70,12 +72,23 @@ test('changed dossiers retain historical generation proof and cannot certify sta
       && currentImageHash !== null
       && proof[0].image?.sha256 === currentImageHash;
     assert.equal(asset.status, matchesCurrentGeneration ? 'available' : 'pending');
-    if (!affected.historicalGenerationId) continue;
-    const historical = ledger.find(row => row.generation?.generationId === affected.historicalGenerationId);
-    assert.ok(historical, `Missing historical generation ${affected.stageId}`);
+    const historicalProofs = ledger.filter(row => row.output === affected.previousAssetPath);
+    const historicalFile = new URL(`../public${affected.previousAssetPath}`, import.meta.url);
+    if (affected.historicalImageSha256 === null) {
+      assert.equal(affected.historicalLedgerPromptSha256, null);
+      assert.equal(historicalProofs.length, 0, `Unexpected historical generation ${affected.stageId}`);
+      assert.equal(existsSync(historicalFile), false, `Unrecorded historical bitmap ${affected.stageId}`);
+      continue;
+    }
+    assert.match(affected.historicalImageSha256, /^[a-f0-9]{64}$/);
+    assert.match(affected.historicalLedgerPromptSha256, /^[a-f0-9]{64}$/);
+    assert.equal(historicalProofs.length, 1, `Expected one historical generation ${affected.stageId}`);
+    const [historical] = historicalProofs;
     assert.equal(historical.output, affected.previousAssetPath);
     assert.equal(historical.generation.promptSha256, affected.historicalLedgerPromptSha256);
     assert.equal(historical.image.sha256, affected.historicalImageSha256);
-    assert.equal(hash(readFileSync(new URL(`../public${affected.previousAssetPath}`, import.meta.url))), affected.historicalImageSha256);
+    assert.equal(affected.historicalLedgerPromptSha256, affected.previousPromptSha256);
+    if (typeof historical.prompt === 'string') assert.equal(hash(historical.prompt), affected.historicalLedgerPromptSha256);
+    assert.equal(hash(readFileSync(historicalFile)), affected.historicalImageSha256);
   }
 });

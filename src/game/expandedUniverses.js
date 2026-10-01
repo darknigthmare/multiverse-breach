@@ -226,6 +226,7 @@ function defineCanonicalUniverse({
   breach,
   motif,
   colors,
+  stageMeta,
   stageVariants = []
 }) {
   const boosts = [
@@ -264,6 +265,7 @@ function defineCanonicalUniverse({
     theme: `${origin[0]} ${breach[0]}`,
     motif,
     colors,
+    ...(stageMeta ? { stageMeta } : {}),
     stageVariants
   };
 }
@@ -367,16 +369,65 @@ const CANONICAL_REQUESTED_UNIVERSE_WAVE = [
     mode: 'RPG',
     difficulty: 'Hard',
     titleFr: 'Pirates des Caraibes',
-    stage: 'Isla de Muerta Maelstrom',
-    boss: 'Davy Jones Flying Dutchman',
+    stage: 'Isla de Muerta / Barbossa Duel',
+    boss: 'Hector Barbossa',
     worldBoss: 'Calypso Maelstrom',
+    stageMeta: {
+      sourceLock: {
+        incarnation: 'Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Isla de Muerta',
+        canonicalBossName: 'Hector Barbossa',
+        referenceUrl: 'https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/',
+        referenceUrls: ['https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/', 'https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_The_Curse_of_the_Black_Pearl'],
+        enemyRoster: ['Cursed Aztec Pirate', 'Hector Barbossa'],
+        enemyRosterExclusive: true,
+        visualAnchor: 'Isla de Muerta treasure cavern from The Curse of the Black Pearl (2003): rock walls, shallow water, scattered gold and the stone chest of stolen Aztec medallions. Jack duels Hector Barbossa with pirate swords and a flintlock pistol; moonlight reveals cursed skeletal bodies. No Flying Dutchman, Davy Jones tentacles, Calypso or maelstrom from the later films.',
+        visualReviewStatus: 'pending',
+        gameplayAdaptation: 'RPG waves condense the treasure-cavern duel. The film breaks the Aztec curse by returning the stolen medallions with blood before Barbossa can die; that curse-breaking condition is not simulated by the HP objective.',
+        sourceSceneLore: {
+          fr: 'Dans la caverne au trésor d’Isla de Muerta, Jack Sparrow affronte Hector Barbossa. Le trésor aztèque volé rend Barbossa et ses pirates immortels ; la lumière de la lune révèle leurs corps squelettiques. Will Turner restitue les pièces et le sang nécessaire pour lever la malédiction au moment où Jack tire sur Barbossa.',
+          en: 'In Isla de Muerta’s treasure cavern, Jack Sparrow confronts Hector Barbossa. The stolen Aztec treasure makes Barbossa and his pirates immortal; moonlight reveals their skeletal bodies. Will Turner returns the coins and the blood needed to lift the curse as Jack shoots Barbossa.'
+        },
+        sourceSceneAdaptation: {
+          fr: 'Les vagues RPG et les PV condensent le duel ; la restitution des pièces et du sang pour lever la malédiction n’est pas encore une condition de victoire du moteur.',
+          en: 'RPG waves and HP condense the duel; returning the coins and blood to lift the curse is not yet an engine victory condition.'
+        }
+      }
+    },
     cast: [
       ['jack_sparrow_potc', 'Jack Sparrow', 'hacker'],
       ['elizabeth_swann_potc', 'Elizabeth Swann', 'tactical'],
       ['will_turner_potc', 'Will Turner', 'slayer']
     ],
-    enemies: ['Cursed Aztec Pirate', 'Flying Dutchman Crew', 'East India Company Marine'],
-    bosses: ['Hector Barbossa', 'Davy Jones'],
+    enemies: [{
+      name: 'Cursed Aztec Pirate', weapon: 'sword',
+      simple: { name: 'Pirate Sword Slash', type: 'melee', dmg: 1, rpgProfile: { shape: 'single', delivery: 'melee' } },
+      secondary: { name: 'Pirate Sword Thrust', type: 'melee', dmg: 1.45, cd: 3, rpgProfile: { shape: 'single', delivery: 'melee' } },
+      special: { name: 'Pirate Sword Duel', type: 'melee', dmg: 1.15, rpgProfile: { shape: 'single', delivery: 'melee' } },
+      incarnation: 'Pirates of the Caribbean: The Curse of the Black Pearl (2003)',
+      equipment: ['Pirate sword'],
+      referenceUrl: 'https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/',
+      sourceLore: {
+        fr: 'Pirate de l’équipage maudit de Barbossa dans La Malédiction du Black Pearl, en 2003. Le trésor aztèque volé le rend immortel et la lumière de la lune révèle son corps squelettique. Il manie une épée de pirate ; cet ennemi ne vient pas de l’équipage du Hollandais volant.',
+        en: 'A pirate from Barbossa’s cursed crew in The Curse of the Black Pearl (2003). The stolen Aztec treasure makes him immortal and moonlight reveals his skeletal body. He carries a pirate sword; this enemy is not a Flying Dutchman crew member.'
+      },
+      visualReviewStatus: 'pending'
+    }, 'Flying Dutchman Crew', 'East India Company Marine'],
+    bosses: [{
+      name: 'Hector Barbossa', canonicalName: 'Hector Barbossa', weapon: 'sword',
+      simple: { name: 'Barbossa Sword Slash', type: 'melee', dmg: 1, rpgProfile: { shape: 'single', delivery: 'melee' } },
+      secondary: { name: 'Barbossa Sword Thrust', type: 'melee', dmg: 1.45, cd: 3, rpgProfile: { shape: 'single', delivery: 'melee' } },
+      special: { name: 'Pirate Sword Duel', type: 'melee', dmg: 1, rpgProfile: { shape: 'single', delivery: 'melee' } },
+      incarnation: 'Pirates of the Caribbean: The Curse of the Black Pearl (2003)',
+      equipment: ['Pirate sword', 'Flintlock pistol'],
+      referenceUrl: 'https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/',
+      visualAnchor: 'Hector Barbossa from The Curse of the Black Pearl (2003), long dark pirate coat, broad black hat, beard, pirate sword and flintlock pistol; cursed skeletal form only under moonlight. No Davy Jones tentacles or crab anatomy.',
+      sourceLore: {
+        fr: 'Hector Barbossa a pris le Black Pearl à Jack Sparrow et dirige l’équipage maudit par le trésor aztèque. Dans la caverne d’Isla de Muerta, il affronte Jack à l’épée. La malédiction doit être levée avant que le tir de Jack puisse le tuer ; les PV du duel RPG ne reproduisent pas cette condition.',
+        en: 'Hector Barbossa took the Black Pearl from Jack Sparrow and commands the crew cursed by the Aztec treasure. In Isla de Muerta’s cavern he duels Jack with a sword. The curse must be lifted before Jack’s shot can kill him; the RPG duel’s HP does not reproduce this condition.'
+      },
+      canonStatus: 'Source identity locked; the RPG HP duel does not simulate lifting the Aztec curse.',
+      visualReviewStatus: 'pending'
+    }, 'Davy Jones'],
     gear: [
       ['compass', 'Jack s Compass', 'Boussole de Jack'],
       ['aztec_coin', 'Cursed Aztec Coin', 'Piece azteque maudite'],
@@ -1106,8 +1157,8 @@ const CANONICAL_REQUESTED_UNIVERSE_WAVE = [
         visualReviewStatus: 'pending',
         icon: '/sprites/generated/items/minions/minions-fart-gun.png',
         desc: {
-          en: 'Young Gru uses the Freeze Ray to freeze Scarlet and Herb at the end of Minions (2015). In this game, equipping the item grants passive attack and speed bonuses; it does not trigger freezing. The old saved ID is retained for compatibility.',
-          fr: 'Le jeune Gru utilise ce rayon pour geler Scarlet et Herb dans la finale de Minions (2015). Dans le jeu, cet equipement donne des bonus passifs d attaque et de vitesse, sans declencher de gel. L ancien identifiant de sauvegarde est conserve pour compatibilite.'
+          en: 'Young Gru uses the Freeze Ray to freeze Scarlet and Herb at the end of Minions (2015). In this game, equipping the item grants passive attack and speed bonuses; it does not trigger freezing.',
+          fr: 'Le jeune Gru utilise ce rayon pour geler Scarlet et Herb dans la finale de Minions (2015). Dans le jeu, cet equipement donne des bonus passifs d attaque et de vitesse, sans declencher de gel.'
         },
         gameplayPolicy: {
           kind: 'passive-equipment',
@@ -1952,7 +2003,22 @@ export const EXPANDED_UNIVERSES = [
     bosses: ['Dollmaker Surgeon', 'Endgame Toxin Host'],
     worldBoss: 'Endgame Joker',
     gear: [
-      ['joker_face_mask', 'Stapled Face Mask', 'Masque au visage agrafe', { atk: 10, def: 3 }],
+      ['joker_face_mask', 'Joker Reattached Face - Death of the Family', 'Visage rattaché du Joker - Death of the Family', { atk: 10, def: 3 }, {
+        canonicalItemId: 'joker_reattached_face_death_of_the_family',
+        canonicalName: 'Joker reattached face (Death of the Family)',
+        incarnation: 'Batman: Death of the Family (The New 52, Batman #13-17, 2012-2013)',
+        sourceOwner: 'The Joker',
+        referenceUrl: 'https://en.wikipedia.org/wiki/Batman:_Death_of_the_Family',
+        referenceUrls: ['https://www.dc.com/graphic-novels/batman-2011/batman-vol-3-death-of-the-family', 'https://en.wikipedia.org/wiki/Batman:_Death_of_the_Family'],
+        defaultKitPolicy: 'not-part-of-endgame-joker',
+        gameplayPolicy: { runtimeEffect: 'stat-boost-only', crossArcEquipment: 'Multiverse Breach adaptation' },
+        canonStatus: 'Death of the Family accessory; optional cross-arc relic, not part of the Endgame Joker default kit.',
+        visualReviewStatus: 'pending',
+        desc: {
+          fr: 'Le visage détaché puis rattaché du Joker appartient à Death of the Family, Batman #13-17 des New 52. Il ne constitue pas le visage ni l’équipement par défaut du Joker d’Endgame. Cet objet historique reste une relique optionnelle entre arcs ; ses bonus sont une adaptation de Multiverse Breach.',
+          en: 'The Joker’s detached and reattached face belongs to New 52 Death of the Family, Batman #13-17. It is not the face or default equipment of the Endgame Joker. This historical item remains an optional cross-arc relic; its stat boosts are a Multiverse Breach adaptation.'
+        }
+      }],
       ['joker_toxin_vial', 'Joker Toxin Vial', 'Fiole de toxine Joker', { spd: 2, atk: 6 }],
       ['joker_carnival_card', 'Carnival Death Card', 'Carte de carnaval mortel', { hp: 45, atk: 7 }]
     ],
@@ -4747,6 +4813,19 @@ function getExpandedStageRuntimeMetadata(source) {
       .filter(key => Object.hasOwn(source, key))
       .map(key => [key, source[key]])
   );
+
+  // Source locks are explicitly authored per scene. Do not silently copy the
+  // broader franchise metadata onto all historical stages of that universe.
+  const sourceLock = source.stageMeta?.sourceLock;
+  if (sourceLock) {
+    for (const key of [
+      'incarnation', 'canonicalBossName', 'referenceUrl', 'referenceUrls',
+      'enemyRoster', 'enemyRosterExclusive', 'visualAnchor', 'visualReviewStatus',
+      'gameplayAdaptation', 'sourceSceneLore', 'sourceSceneAdaptation'
+    ]) {
+      if (Object.hasOwn(sourceLock, key)) metadata[key] = sourceLock[key];
+    }
+  }
 
   if (source.ocDlc && !Object.hasOwn(metadata, 'dlcStage')) {
     metadata.dlcStage = true;

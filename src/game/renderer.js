@@ -5,6 +5,7 @@ import { FEATURED_BACKDROPS } from './featuredUniversePacks';
 import { getGeneratedStageBackdropSrc } from './generatedStageAssets';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
+import { drawP0CanonParticle } from './canonP0ParticleRenderer.js';
 import {
   getEnemySpriteSheetSrc,
   getHeroMeleeAnimationFrame,
@@ -405,6 +406,7 @@ export class ParticleSystem {
     ctx.save();
     this.particles.forEach(p => {
       ctx.globalAlpha = p.alpha;
+      if (drawP0CanonParticle(ctx, p)) return;
       if (p.type === 'text') {
         ctx.font = 'bold 12px "Share Tech Mono", monospace';
         ctx.fillStyle = p.color;

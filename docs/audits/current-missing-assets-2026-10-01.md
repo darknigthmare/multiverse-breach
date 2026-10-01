@@ -21,12 +21,12 @@ Les décors ont aussi **894 textures compagnons déclarées**, dont 228 présent
 
 ## Dossiers de mission
 
-Sur **3 199 dossiers**, le registre compte **1 022 disponibles** et **2 177 en attente**. Aucune sortie déclarée disponible n'est absente.
+Sur **3 199 dossiers**, le registre compte **1 021 disponibles** et **2 178 en attente**. Aucune sortie déclarée disponible n'est absente.
 
-- **2 160** dossiers en attente n'ont pas de fichier à leur chemin dédié.
+- **2 161** dossiers en attente n'ont pas de fichier à leur chemin dédié.
 - **17** ont déjà une image, mais leur preuve de production ne correspond pas au prompt actuel. Il faut conserver leur état en attente et examiner ou régénérer l'image ; changer seulement le statut ne valide pas la fidélité.
 
-Les 17 cas sont détaillés dans le JSON. Ils comprennent Freeman, Ripley et Predator corrigés, puis 14 autres arcs historiques. Les anciennes images des stages 1, 2, 3 et 10 ont été conservées ; leurs nouveaux chemins et prompts spécifiques ne disposent pas encore d'une génération. Ces quatre cas expliquent le passage de 1 026 à 1 022 disponibles et de 2 156 à 2 160 chemins absents. Les missions REX et Lanius restent également en attente à leur chemin corrigé.
+Les 17 cas sont détaillés dans le JSON. Ils comprennent Freeman, Ripley et Predator corrigés, puis 14 autres arcs historiques. Les anciennes images des stages 1, 2, 3 et 10 ont été conservées ; leurs nouveaux chemins et prompts spécifiques ne disposent pas encore d'une génération. Ces quatre scènes, puis Isla de Muerta/Barbossa au stage 269, expliquent le passage de 1 026 à 1 021 disponibles et de 2 156 à 2 161 chemins absents. Les anciennes images restent conservées ; le nouveau chemin Pirates demeure en attente. Les missions REX et Lanius restent également en attente à leur chemin corrigé.
 
 ## Icônes utilisées par le runtime mais hors du catalogue publié
 
@@ -51,7 +51,7 @@ Le premier manifeste ne déclarait que 1 181 preuves vérifiées ; la réconcili
 
 ## Verrous de source propagés aux dossiers
 
-Le catalogue et le [rapport de remédiation](../rift-dossiers/canon-remediation-2026-10-01.json) documentent **16 impacts**, dont 15 entrées modifiées depuis le lot précédent. Le stage REX était déjà aligné et demeure dans le suivi. Les dix héros transmettent leur incarnation, équipement, ancre visuelle et références propres ; leurs anciens sprites pendants restent des candidats audités et ne sont plus fournis comme identité approuvée. Les six stages transmettent aussi les limites explicites de leur adaptation de gameplay. Aucun prompt ou hash de génération historique n'est réécrit.
+Le premier [rapport de remédiation](../rift-dossiers/canon-remediation-2026-10-01.json) documente **16 impacts**, dont 15 entrées modifiées depuis le lot précédent. Le [rapport P0 complémentaire](../rift-dossiers/canon-p0-source-remediation-2026-10-01.json) ajoute 19 héros ; le [rapport scène et objets](adjacent-canon-scene-items-2026-10-01.md) ajoute le stage Pirates 269. Le suivi consolidé compte donc **36 dossiers** : 29 arcs de personnage et sept scènes. Le stage REX était déjà aligné et demeure dans le suivi. Les dix héros transmettent leur incarnation, équipement, ancre visuelle et références propres ; leurs anciens sprites pendants restent des candidats audités et ne sont plus fournis comme identité approuvée. Les six stages transmettent aussi les limites explicites de leur adaptation de gameplay. Aucun prompt ou hash de génération historique n'est réécrit.
 
 | Dossier | Sujet et incarnation retenus | Source de référence |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ Le catalogue et le [rapport de remédiation](../rift-dossiers/canon-remediation-
 | 10484 | Stuart, un œil et guitare rouge, *Minions* 2015 | Film et images officiels Illumination |
 | 10485 | Bob, petit corps chauve et Tim, *Minions* 2015 | Film et images officiels Illumination |
 
-Les URLs exactes, équipements, prompts courants et preuves antérieures figurent dans le JSON. Le recours à une wiki est distingué d'une page officielle. Les scènes originales d'arc et leurs adversaires de projet ne deviennent pas des événements canoniques du film ou du jeu cité. La validation `rift:audit`, les **80 tests ciblés** et le lint ont réussi après cette propagation ; aucune nouvelle génération de dossier n'est annoncée.
+Les URLs exactes, équipements et empreintes des prompts et preuves figurent dans les rapports publics. Les prompts détaillés et identifiants des essais locaux sont conservés hors de la branche publique. Le recours à une wiki est distingué d'une page officielle. Les scènes originales d'arc et leurs adversaires de projet ne deviennent pas des événements canoniques du film ou du jeu cité. Les audits `rift:audit`, les tests ciblés et le lint contrôlent cette propagation ; aucune nouvelle génération de dossier n'est annoncée.
 
 ## Prochaines cibles
 
@@ -80,7 +80,7 @@ Le JSON fournit 15 boss réellement absents, leurs chemins stables et les réfé
 
 **Les données de Crustaceous Rex sont également corrigées dans le runtime** : la recherche de cette reprise a trouvé un modèle Sony Pictures publié par [SciFi Japan](https://www.scifijapan.com/anime-animation/godzilla-the-series). Le monstre possède de longs membres antérieurs à doigts griffés, de minuscules membres postérieurs, une bouche rouge en forme de fleur et de nombreux tentacules autour d'une carapace olive épineuse. L'ancre historique « crabe rouge-brun avec énormes pinces » du catalogue sprite reste conservée comme trace de production, sans être une preuve fidèle. `loreBossOverrides.js` utilise maintenant le modèle Sony, une référence explicite et un statut visuel en attente ; ses actions restent qualifiées d'adaptation. Les essais visuels n'ont pas fourni d'asset accepté pour le jeu. Une prochaine production doit suivre cette ancre sans réécrire les preuves historiques.
 
-L'union des sources explicites auditées couvre **13 447 chemins publics uniques**, dont **6 600 absents** : 2 593 sorties du catalogue, 666 compagnons de décor, 2 160 dossiers et 1 181 icônes runtime supplémentaires. Le premier instantané comptait 6 596 : la hausse de quatre correspond aux chemins des quatre scènes désormais correctement nommées, tandis que leurs images historiques restent conservées. Ce total décrit le périmètre audité ; il ne prétend ni couvrir tout contenu possible du projet ni quantifier toutes les corrections de fidélité.
+L'union des sources explicites auditées couvre **13 447 chemins publics uniques**, dont **6 601 absents** : 2 593 sorties du catalogue, 666 compagnons de décor, 2 161 dossiers et 1 181 icônes runtime supplémentaires. Le premier instantané comptait 6 596 : la hausse de cinq correspond aux chemins des quatre scènes statiques et du stage Pirates désormais correctement nommés, tandis que leurs images historiques restent conservées. Ce total décrit le périmètre audité ; il ne prétend ni couvrir tout contenu possible du projet ni quantifier toutes les corrections de fidélité.
 
 ## Méthode reproductible
 

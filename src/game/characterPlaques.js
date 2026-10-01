@@ -2,6 +2,7 @@ import { LORE_DB } from './lore';
 import { getUniverseSignature } from './loreDescriptions';
 import { FEATURED_CHARACTER_PLAQUES } from './featuredUniversePacks';
 import { SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES } from './solarOppositesSirenStarWarsPack.js';
+import { getCanonP0SourcePlaque } from './canonP0SourceKits.js';
 
 export const CHARACTER_PLAQUES = {
   player_anchor: {
@@ -1119,6 +1120,15 @@ const enrichPlaque = (hero, plaque) => {
 };
 
 export const getCharacterPlaque = (hero) => {
+  const sourcePlaque = getCanonP0SourcePlaque(hero);
+  if (sourcePlaque) {
+    const category = roleByCategory[hero.category] || roleByCategory.tactical;
+    return enrichPlaque(hero, {
+      clearance: buildClearance(hero), rank: category.rank, role: category.role,
+      callSign: hero.name, tags: [hero.universe, hero.category, hero.weaponType || 'combat'],
+      ...CHARACTER_PLAQUES[hero.id], ...sourcePlaque
+    });
+  }
   if (CHARACTER_PLAQUES[hero.id]) return enrichPlaque(hero, CHARACTER_PLAQUES[hero.id]);
   const category = roleByCategory[hero.category] || roleByCategory.tactical;
   const doctrine = hero.special?.name || hero.weaponType || 'signature inconnue';

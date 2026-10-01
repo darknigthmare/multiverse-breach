@@ -1,12 +1,15 @@
 // Presentation for the six source-locked kits. These small combat effects are
 // game abstractions, not approval of any character sprite or film choreography.
+import { emitP0CanonAttackEffect, getP0HeroSourceId, resolveP0CanonAttackEffect } from './canonP0AttackEffects.js';
 const SOURCE_KITS = new Set([
   'han_solo', 'luke', 'vader', 'bob_minions', 'kevin_minions', 'stuart_minions'
 ]);
 
-export const getCanonHeroSourceId = actor => String(actor?.sourceId || actor?.id || '').replace(/^p2:/, '');
+export const getCanonHeroSourceId = getP0HeroSourceId;
 
 export function resolveCanonHeroAttackEffect(actor, actionOrType) {
+  const p0Effect = resolveP0CanonAttackEffect(actor, actionOrType);
+  if (p0Effect) return p0Effect;
   const sourceId = getCanonHeroSourceId(actor);
   const action = typeof actionOrType === 'string' ? actor?.[actionOrType] : actionOrType;
   if (!SOURCE_KITS.has(sourceId) || !action) return null;
@@ -29,6 +32,8 @@ export function resolveCanonHeroAttackEffect(actor, actionOrType) {
 }
 
 export function emitCanonHeroAttackEffect(particles, actor, target, actionOrType) {
+  const p0Effect = resolveP0CanonAttackEffect(actor, actionOrType);
+  if (p0Effect) return emitP0CanonAttackEffect(particles, actor, target, p0Effect);
   const effect = resolveCanonHeroAttackEffect(actor, actionOrType);
   if (!effect || !particles?.add) return false;
   const destination = target || { x: actor.x + (actor.facing || 1) * 60, y: actor.y };

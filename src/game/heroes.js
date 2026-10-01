@@ -3,6 +3,7 @@
 import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from './expandedUniverses.js';
 import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './loreAccuratePacks.js';
 import { CANON_ROSTER_WAVE } from './canonRosterWave.js';
+import { applyCanonP0SourceKit } from './canonP0SourceKits.js';
 import {
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS,
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES
@@ -1122,7 +1123,7 @@ export const EQUIP_ITEMS_DB = [
   { id: 'invisibility_cloak', universe: 'Harry Potter', name: { en: 'Invisibility Cloak', fr: 'Cape d\'Invisibilité' }, boost: { def: 8, spd: 2 }, cost: 120 },
   { id: 'marauder_map', universe: 'Harry Potter', name: { en: 'Marauder\'s Map', fr: 'Carte du Maraudeur' }, boost: { spd: 3 }, cost: 80 },
   // Star Wars
-  { id: 'blue_saber', universe: 'Star Wars', name: { en: 'Luke\'s Lightsaber', fr: 'Sabre Laser de Luke' }, boost: { atk: 15 }, cost: 150 },
+  { id: 'blue_saber', universe: 'Star Wars', name: { en: 'Luke\'s Inherited Blue Lightsaber (ANH / ESB)', fr: 'Sabre bleu hérité de Luke (ANH / ESB)' }, canonicalName: 'Skywalker lightsaber (blue blade)', incarnation: 'Star Wars: A New Hope (1977) / The Empire Strikes Back (1980) - Luke\'s inherited blue blade', sourceOwner: 'Luke Skywalker, inherited from Anakin Skywalker', referenceUrl: 'https://www.starwars.com/databank/luke-skywalker', referenceUrls: ['https://www.starwars.com/databank/luke-skywalker', 'https://www.starwars.com/databank/luke-skywalkers-lightsaber'], visualReviewStatus: 'pending', gameplayPolicy: { runtimeEffect: 'stat-boost-only', replacesHeroWeapon: false }, desc: { en: 'The blue-bladed weapon inherited from Anakin and carried by Luke in A New Hope and The Empire Strikes Back, then lost on Cloud City. It is distinct from Luke\'s green replacement in Return of the Jedi. This relic supplies passive stats and does not recolor the playable ROTJ kit.', fr: 'Le sabre à lame bleue hérité d’Anakin, porté par Luke dans Un nouvel espoir et L’Empire contre-attaque, puis perdu sur Bespin. Il est distinct du sabre vert construit pour Le Retour du Jedi. Cette relique fournit des bonus passifs et ne recolore pas le kit ROTJ jouable.' }, boost: { atk: 15 }, cost: 150 },
   { id: 'jedi_holocron', universe: 'Star Wars', name: { en: 'Jedi Holocron', fr: 'Holocron Jedi' }, boost: { hp: 60, def: 5 }, cost: 100 },
   { id: 'jedi_robes', universe: 'Star Wars', name: { en: 'Jedi Robes', fr: 'Bures de Jedi' }, boost: { spd: 3 }, cost: 90 },
   // Le Cinquième Element
@@ -2508,6 +2509,11 @@ Object.assign(heroOverrides, {
 Object.entries(heroOverrides).forEach(([id, override]) => {
   const hero = HEROES_DB.find(item => item.id === id);
   if (hero) Object.assign(hero, override);
+});
+
+HEROES_DB.forEach(hero => {
+  const corrected = applyCanonP0SourceKit(hero);
+  if (corrected !== hero) Object.assign(hero, corrected);
 });
 
 export const getHeroById = (id) => HEROES_DB.find(h => h.id === id);

@@ -5066,7 +5066,7 @@ function RiftBriefingPanel({
                 ? (lang === 'fr' ? 'OBJECTIF' : 'OBJECTIVE')
                 : (lang === 'fr' ? 'MENACE PRINCIPALE' : 'PRIMARY THREAT')}</span>
               <strong>{nonCombatDetails?.title || bossIntel?.name || stage.bossName}</strong>
-              <p>{nonCombatDetails?.objective || bossIntel?.special || (lang === 'fr' ? 'Anomalie non cataloguee.' : 'Uncatalogued anomaly.')}</p>
+              <p>{nonCombatDetails?.objective || getLocalizedText(bossIntel?.special?.name ?? bossIntel?.special, lang) || (lang === 'fr' ? 'Anomalie non cataloguee.' : 'Uncatalogued anomaly.')}</p>
             </section>
             <section>
               <span>{lang === 'fr' ? 'REGLE DE FAILLE' : 'RIFT RULE'}</span>
@@ -12630,7 +12630,7 @@ export default function HubScreen({
                               </div>
                               {enemy.special && (
                                 <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '3px' }}>
-                                  {getLocalizedText(enemy.special, lang, enemy.name)}
+                                  {getLocalizedText(enemy.special?.name ?? enemy.special, lang, enemy.name)}
                                 </div>
                               )}
                               <div style={{ color: '#d0b7b7', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>

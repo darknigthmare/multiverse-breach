@@ -33,13 +33,13 @@
     },
     {
       "path": "src/game/riftDossierAssets.json",
-      "bytes": 552107,
-      "sha256": "04c3521ac4dff2d952bd390fbcee678ab453cff9f43ad4bcb156ee3fd7d767ad"
+      "bytes": 552109,
+      "sha256": "fa4ca5641a2e9f1bced7430346e63a9f4ddded2a5d03b24a1d90e58c1933513b"
     },
     {
       "path": "docs/rift-dossiers/catalog.json",
-      "bytes": 10844578,
-      "sha256": "d6934ff9673375c40146054721fc64806aa077bc7bed0b6b01a65179edab0050"
+      "bytes": 10876910,
+      "sha256": "c61edda2f1ed05c9459ff090f95b37442e6f6be442b303c5e998ec6f667ed671"
     },
     {
       "path": "public/images/rift-dossiers/openai/openai-prompts.jsonl",
@@ -48,8 +48,8 @@
     },
     {
       "path": "src/game/heroes.js",
-      "bytes": 139190,
-      "sha256": "61182f7f69da90f9a08585bd58a3a87d0762b90172c6eb3528d83ab569da4432"
+      "bytes": 140560,
+      "sha256": "79f7bb1eb58001cb064bd4a2c2d2088066decf360ba6c8e0109aec546c434464"
     },
     {
       "path": "src/game/enemies.js",
@@ -83,8 +83,8 @@
     },
     {
       "path": "src/game/expandedUniverses.js",
-      "bytes": 379896,
-      "sha256": "2fc037af76522fc2669f7b096cf20627e5b1469fb6863e33d32cd59136e3408a"
+      "bytes": 387272,
+      "sha256": "04a81a4ed923be9a7a0aff7ad380647e0b663bfa6149cb6df4db0bba4dbb7178"
     },
     {
       "path": "src/game/canonPriorityStages.js",
@@ -93,8 +93,8 @@
     },
     {
       "path": "src/components/HubScreen.jsx",
-      "bytes": 730117,
-      "sha256": "5e112ad1fd27a7a0ad2e2a90ab3ab277aef986629bf81a12b89a08e41f757232"
+      "bytes": 730192,
+      "sha256": "dfc4cb74f5e98cdc8d1d944578c7c16ac545939efd807b62610006367493982f"
     },
     {
       "path": "scripts/buildRiftDossierCatalog.mjs",
@@ -110,6 +110,21 @@
       "path": "src/game/loreBossOverrides.js",
       "bytes": 157925,
       "sha256": "a53340e9d7dc6021b2d0b477fd001d2ac1ada6d1381e1b2a44d7cdba432622fb"
+    },
+    {
+      "path": "docs/rift-dossiers/canon-p0-source-remediation-2026-10-01.json",
+      "bytes": 32367,
+      "sha256": "94119a3759f4b77a34fe1fc1767e5568a52de54d015877523a90f148c575ac3a"
+    },
+    {
+      "path": "docs/audits/adjacent-canon-scene-items-2026-10-01.json",
+      "bytes": 6532,
+      "sha256": "2a92d1b5ebc7da2743b3a94be9ace57dc647253d114115af93d870b946c4449c"
+    },
+    {
+      "path": "src/game/canonP0SourceKits.js",
+      "bytes": 39652,
+      "sha256": "21b3ecb249d8b5fa0c57eb80076f80f7029a00b7839e5c51e8651e76e7f7192f"
     }
   ],
   "catalog": {
@@ -865,9 +880,9 @@
   },
   "dossiers": {
     "declared": 3199,
-    "available": 1022,
-    "pending": 2177,
-    "pendingMissingFile": 2160,
+    "available": 1021,
+    "pending": 2178,
+    "pendingMissingFile": 2161,
     "pendingMaterialized": 17,
     "availableMissingFile": 0,
     "materializedPendingEntries": [
@@ -1117,7 +1132,7 @@
   },
   "allExplicitSources": {
     "uniqueDeclaredPublicPaths": 13447,
-    "missingDistinctPublicPaths": 6600,
+    "missingDistinctPublicPaths": 6601,
     "doNotInterpretAsFidelityApproval": true
   },
   "confirmedWave4FidelityP0": 25,
@@ -1153,6 +1168,19 @@
       "status": "requires-visual-review-not-certified-1:1"
     },
     {
+      "id": "harry",
+      "name": "Harry Potter",
+      "universe": "Harry Potter",
+      "incarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "referenceUrl": "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+        "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Order_of_the_Phoenix_(film)"
+      ],
+      "visualAnchor": "Harry in the 2007 Order of the Phoenix film: teenage Harry, untidy dark hair, round glasses and lightning scar, Hogwarts Gryffindor school clothing, original holly wand with phoenix-feather core. No Elder Wand, adult epilogue version or green Killing Curse. A corporeal Patronus is a stag, not a generic blast.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
       "id": "luke",
       "name": "Luke Skywalker",
       "universe": "Star Wars",
@@ -1163,6 +1191,19 @@
         "https://www.starwars.com/databank/luke-skywalkers-lightsaber"
       ],
       "visualAnchor": "Luke Skywalker in Return of the Jedi: young adult, short brown hair, black Jedi tunic and trousers, black boots, black glove on the mechanical right hand, single silver-and-black hilt with one green lightsaber blade. Death Star II duel outfit; no blue inherited saber, old hermit beard, white farm tunic or electrical mind beam.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "hermione",
+      "name": "Hermione Granger",
+      "universe": "Harry Potter",
+      "incarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "referenceUrl": "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+        "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Order_of_the_Phoenix_(film)"
+      ],
+      "visualAnchor": "Hermione in the 2007 Order of the Phoenix film: teenage Hermione with brown hair, Hogwarts Gryffindor school clothing and her vine wand with dragon-heartstring core. Fifth-year incarnation; no permanent third-year Time-Turner pendant, Elder Wand or Deathly Hallows forest outfit. Final film-costume review remains pending.",
       "status": "requires-visual-review-not-certified-1:1"
     },
     {
@@ -1193,6 +1234,56 @@
       "status": "requires-visual-review-not-certified-1:1"
     },
     {
+      "id": "joker_n52",
+      "name": "Joker New 52",
+      "universe": "Joker New 52",
+      "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - the Joker",
+      "referenceUrl": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+        "https://www.dc.com/characters/the-joker"
+      ],
+      "visualAnchor": "The Joker in New 52 Endgame, Batman #35-40: chalk-white face, green hair and wide red grin, sinister purple-associated civilian clothing. His restored face is not the detached strapped-on face of Death of the Family. Exact issue panels must drive the final costume review; no movie Joker tattoos, Glasgow smile or Batman Who Laughs visor.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "harley_n52",
+      "name": "Harley Quinn New 52",
+      "universe": "Joker New 52",
+      "incarnation": "Suicide Squad (The New 52, volume 4 #1, 2011) - Harley Quinn",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Harley_Quinn",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Harley_Quinn"
+      ],
+      "visualAnchor": "Harley Quinn s early New 52 Suicide Squad design, volume 4 #1 (2011): pale skin, hair divided blue and red, red-and-blue corset and shorts with matching boots and gloves, oversized mallet. Fully clothed source costume. Not the animated jester suit, Rebirth pink-and-blue hair tips, or Margot Robbie s 2016 film wardrobe. Source-panel visual review remains pending.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "batman_n52",
+      "name": "Batman New 52",
+      "universe": "Joker New 52",
+      "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - Bruce Wayne",
+      "referenceUrl": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+        "https://www.dc.com/characters/batman"
+      ],
+      "visualAnchor": "Bruce Wayne in the New 52 Endgame arc, Batman #35-40: gray armored suit, black cowl with white comic eye lenses, black bat emblem, black cape, gauntlets and boots, yellow-gold utility belt. Ordinary Batsuit form; Justice Buster is a separate armor form. No Grim Knight firearms or movie-specific Nolan costume.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "grim_knight",
+      "name": "The Grim Knight",
+      "universe": "The Batman Who Laughs",
+      "incarnation": "The Batman Who Laughs: The Grim Knight #1 (2019) - armed Dark Multiverse Bruce Wayne",
+      "referenceUrl": "https://en.wikipedia.org/wiki/The_Batman_Who_Laughs",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/The_Batman_Who_Laughs"
+      ],
+      "visualAnchor": "The Grim Knight is the firearm-using Dark Multiverse Bruce Wayne: dark tactical bat armor, cowl and cape, multiple weapon mounts and ammunition. Exact 2019 issue panels must determine weapon models and armor details before visual approval. Not Nolan Batman, ordinary New 52 Batman, or Batman Who Laughs with a spiked visor.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
       "id": "ripley_aliens",
       "name": "Ellen Ripley Aliens",
       "universe": "Aliens",
@@ -1200,6 +1291,103 @@
       "referenceUrl": "https://www.20thcenturystudios.com/movies/aliens",
       "referenceUrls": [],
       "visualAnchor": "Ellen Ripley as played by Sigourney Weaver in Aliens (1986): short curly hair, blue-gray work shirt, M41A pulse rifle taped to an M240 incinerator; the yellow Caterpillar P-5000 power loader is situational equipment. No Nostromo 1979 flight suit.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "mj_performer",
+      "name": "King of Pop Avatar",
+      "universe": "Michael Jackson",
+      "incarnation": "Multiverse Breach original tribute persona - King of Pop Avatar",
+      "referenceUrl": "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754",
+      "referenceUrls": [
+        "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754"
+      ],
+      "visualAnchor": "Keep the project s original fully clothed adult stage avatar distinct from a documentary likeness or any specific Michael Jackson film/game costume. Final visual review is pending. Do not silently label this substitute as Thriller, Moonwalker or historical Michael Jackson.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "rhythm_guard_mj",
+      "name": "Rhythm Guard",
+      "universe": "Michael Jackson",
+      "incarnation": "Multiverse Breach original companion - Rhythm Guard",
+      "referenceUrl": "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754",
+      "referenceUrls": [
+        "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754"
+      ],
+      "visualAnchor": "The project s original fully clothed adult Rhythm Guard companion, with stage clothing and microphone. Not a claimed historical Michael Jackson associate or official Moonwalker cast member. No firearm derived only from the tactical class; existing substitute artwork remains pending review.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "roger_rabbit",
+      "name": "Roger Rabbit",
+      "universe": "Roger Rabbit",
+      "incarnation": "Who Framed Roger Rabbit (1988) - Roger, Maroon Cartoon Studio toon",
+      "referenceUrl": "https://d23.com/a-to-z/who-framed-roger-rabbit-film/",
+      "referenceUrls": [
+        "https://d23.com/a-to-z/who-framed-roger-rabbit-film/"
+      ],
+      "visualAnchor": "Roger Rabbit in the 1988 film: white cartoon rabbit with tall ears, orange hair tuft, pink nose, red overalls with yellow buttons, blue bow tie with yellow polka dots and yellow gloves. Cartoon elastic anatomy, not a humanoid armored rabbit or laser-wielding substitute. Dip is a lethal threat to toons.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "cyber_spider_kelly",
+      "name": "Cybernetic Spider (Dr. Michael Kelly)",
+      "universe": "Spider: The Video Game",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "visualAnchor": "The small cybernetic spider carrying Dr. Michael Kelly s mind in Spider: The Video Game (1997), insect-scale laboratory setting and interchangeable weapon legs. This base slot uses the default slasher attachment. No humanoid exosuit, Spider-Man costume or claim that an original substitute sprite already matches the source model.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "cyber_spider_flamethrower",
+      "name": "Cybernetic Spider - Flamethrower Loadout",
+      "universe": "Spider: The Video Game",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "visualAnchor": "Same Kelly cybernetic-spider protagonist, with the source pack s Flamethrower Cyber-Leg loadout. Small multi-legged spider, flame emission associated with a mechanical leg, not a humanoid blade warrior. Exact 1997 weapon attachment appearance awaits original gameplay review; the existing substitute sprite is not approved.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "cyber_spider_electro_beam",
+      "name": "Cybernetic Spider - Electro-Beam Loadout",
+      "universe": "Spider: The Video Game",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "referenceUrl": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "visualAnchor": "Same Kelly cybernetic-spider protagonist, with the source pack s Electro-Beam attachment loadout. Small multi-legged cybernetic spider; the electrical beam belongs to a weapon leg, not a human gun. Exact 1997 weapon model and beam presentation await original gameplay review; the existing original substitute sprite is not approved.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "jack_sparrow_potc",
+      "name": "Jack Sparrow",
+      "universe": "Pirates of the Caribbean",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Captain Jack Sparrow",
+      "referenceUrl": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "referenceUrls": [
+        "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/"
+      ],
+      "visualAnchor": "Jack Sparrow in The Curse of the Black Pearl: red bandanna beneath a brown tricorn, dark beaded braided hair, moustache and braided beard, loose cream shirt, dark waistcoat, worn brown coat, sash and belts, pirate sword and flintlock pistol. No laser, lightsaber, Davy Jones tentacle anatomy or automatic rifle.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "batman_tdk",
+      "name": "Batman",
+      "universe": "The Dark Knight",
+      "incarnation": "The Dark Knight (2008) - Nolan s Bruce Wayne, segmented Batsuit",
+      "referenceUrl": "https://en.wikipedia.org/wiki/The_Dark_Knight",
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/The_Dark_Knight",
+        "https://www.dc.com/characters/batman"
+      ],
+      "visualAnchor": "Batman in The Dark Knight (2008): Christian Bale s Bruce Wayne in the black segmented armored Batsuit, narrow pointed ears, exposed mouth and jaw, black cape and gold utility belt. Batarangs and grapnel equipment; no ordinary pistol, Grim Knight rifle, Justice Buster, blue-gray animated suit or The Batman 2022 costume.",
       "status": "requires-visual-review-not-certified-1:1"
     },
     {
@@ -1239,6 +1427,68 @@
         "https://www.illumination.com/wp-content/uploads/2019/11/Minions_KingBob.png"
       ],
       "visualAnchor": "Bob from Minions (2015): very short round bald yellow Minion, two eyes with different green and brown irises, silver double-lens goggles and black strap, blue denim bib overalls, black gloves and boots. Sweet naive personality and Tim teddy bear. Normal adventure outfit; no laser, human anatomy, hair tuft, single eye or permanent king costume.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "stitch_626",
+      "name": "Stitch",
+      "universe": "Lilo & Stitch",
+      "incarnation": "Lilo & Stitch (2002 animated film) - Experiment 626, Earth dog-disguise form",
+      "referenceUrl": "https://d23.com/a-to-z/lilo-stitch-film/",
+      "referenceUrls": [
+        "https://d23.com/a-to-z/lilo-stitch-film/"
+      ],
+      "visualAnchor": "Stitch in the 2002 animated film, Earth dog disguise: short stocky blue alien, large lateral ears with pink interiors and characteristic notches, dark nose and eyes, pale-blue belly, two visible arms. Alien four-arm form is a separate presentation, not extra permanent Earth-form arms. No humanoid warrior costume or innate laser gun.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "lilo_pelekai",
+      "name": "Lilo Pelekai",
+      "universe": "Lilo & Stitch",
+      "incarnation": "Lilo & Stitch (2002 animated film) - Lilo Pelekai on Kauai",
+      "referenceUrl": "https://d23.com/a-to-z/lilo-stitch-film/",
+      "referenceUrls": [
+        "https://d23.com/a-to-z/lilo-stitch-film/"
+      ],
+      "visualAnchor": "Lilo in the 2002 animated film: Hawaiian little girl, long straight black hair, red dress with large white leaf shapes and sandals. Camera and Scrump are personal props, not alien weapons. No adult substitute, laser rifle, magic beam or live-action redesign.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "saturnin_duck",
+      "name": "Saturnin the Duck",
+      "universe": "Les Aventures de Saturnin",
+      "incarnation": "Les Aventures de Saturnin (ORTF, 1965-1970) - real duckling in a miniature animal village",
+      "referenceUrl": "https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin",
+      "referenceUrls": [
+        "https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin"
+      ],
+      "visualAnchor": "Saturnin is Jean Tourane s real yellow duckling in live-action miniature village sets: yellow down, orange bill and webbed feet, natural duck anatomy. No human arms, firearm, laser or human-sized uniform. Props and companions must match the selected episode.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "raven_tt",
+      "name": "Raven",
+      "universe": "Teen Titans",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "referenceUrl": "https://www.dc.com/characters/raven",
+      "referenceUrls": [
+        "https://www.dc.com/characters/raven",
+        "https://en.wikipedia.org/wiki/Teen_Titans_(TV_series)"
+      ],
+      "visualAnchor": "Raven in the original 2003 Teen Titans animated series: gray skin, short violet hair, red forehead gem, dark outfit beneath a hooded blue-violet cloak with red clasp, blue-violet boots. Mystical dark-energy and telekinetic presentation, no mechanical laser rifle, Teen Titans Go proportions or live-action Titans wardrobe.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": "starfire_tt",
+      "name": "Starfire",
+      "universe": "Teen Titans",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "referenceUrl": "https://www.dc.com/characters/starfire",
+      "referenceUrls": [
+        "https://www.dc.com/characters/starfire",
+        "https://en.wikipedia.org/wiki/Teen_Titans_(TV_series)"
+      ],
+      "visualAnchor": "Starfire in the original 2003 Teen Titans animated series: orange skin, long red hair, large green eyes, purple top and skirt, purple boots, silver neck piece and bracers with green gems. Green starbolts from her hands, not orange weapon fire, a rifle, New 52 comic costume or live-action Titans wardrobe.",
       "status": "requires-visual-review-not-certified-1:1"
     },
     {
@@ -1317,6 +1567,25 @@
       "referenceUrl": "https://www.scifijapan.com/anime-animation/godzilla-the-series",
       "referenceUrls": [],
       "visualAnchor": "Crustaceous Rex from Godzilla: The Series (1998), following the Sony Pictures/Adelaide Productions model sheet: dark olive-brown ridged carapace with small cream spikes, ochre segmented underside, extremely elongated segmented forelimbs ending in broad claw-fingered walking hands, small hind limbs, a narrow beak-shaped head opening into a red flower-like mouth, and numerous flexible head tentacles. Preserve this hunched long-armed silhouette rather than ordinary crab pincers or a lobster tail; no invented shell-breaking transformation.",
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": null,
+      "name": "Cursed Aztec Pirate",
+      "universe": "Pirates of the Caribbean",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)",
+      "referenceUrl": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "referenceUrls": [],
+      "status": "requires-visual-review-not-certified-1:1"
+    },
+    {
+      "id": null,
+      "name": "Hector Barbossa",
+      "universe": "Pirates of the Caribbean",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)",
+      "referenceUrl": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "referenceUrls": [],
+      "visualAnchor": "Hector Barbossa from The Curse of the Black Pearl (2003), long dark pirate coat, broad black hat, beard, pirate sword and flintlock pistol; cursed skeletal form only under moonlight. No Davy Jones tentacles or crab anatomy.",
       "status": "requires-visual-review-not-certified-1:1"
     }
   ],
@@ -36605,12 +36874,12 @@
           "family": "equipment",
           "id": "blue_saber",
           "name": {
-            "en": "Luke's Lightsaber",
-            "fr": "Sabre Laser de Luke"
+            "en": "Luke's Inherited Blue Lightsaber (ANH / ESB)",
+            "fr": "Sabre bleu hérité de Luke (ANH / ESB)"
           },
           "universe": "Star Wars",
           "sourceItemId": null,
-          "referenceUrl": null,
+          "referenceUrl": "https://www.starwars.com/databank/luke-skywalker",
           "canonStatus": null,
           "tier": null,
           "effectSource": null
@@ -36619,12 +36888,12 @@
           "family": "battlePickup",
           "id": "star_wars_field_relic",
           "name": {
-            "en": "Luke's Lightsaber",
-            "fr": "Sabre Laser de Luke"
+            "en": "Luke's Inherited Blue Lightsaber (ANH / ESB)",
+            "fr": "Sabre bleu hérité de Luke (ANH / ESB)"
           },
           "universe": "Star Wars",
           "sourceItemId": "blue_saber",
-          "referenceUrl": null,
+          "referenceUrl": "https://www.starwars.com/databank/luke-skywalker",
           "canonStatus": null,
           "tier": "pickup",
           "effectSource": "unresolved"
@@ -37892,13 +38161,13 @@
           "family": "equipment",
           "id": "joker_face_mask",
           "name": {
-            "en": "Stapled Face Mask",
-            "fr": "Masque au visage agrafe"
+            "en": "Joker Reattached Face - Death of the Family",
+            "fr": "Visage rattaché du Joker - Death of the Family"
           },
           "universe": "Joker New 52",
           "sourceItemId": null,
-          "referenceUrl": null,
-          "canonStatus": null,
+          "referenceUrl": "https://en.wikipedia.org/wiki/Batman:_Death_of_the_Family",
+          "canonStatus": "Death of the Family accessory; optional cross-arc relic, not part of the Endgame Joker default kit.",
           "tier": null,
           "effectSource": null
         },
@@ -37906,12 +38175,12 @@
           "family": "battlePickup",
           "id": "joker_new_52_field_relic",
           "name": {
-            "en": "Stapled Face Mask",
-            "fr": "Masque au visage agrafe"
+            "en": "Joker Reattached Face - Death of the Family",
+            "fr": "Visage rattaché du Joker - Death of the Family"
           },
           "universe": "Joker New 52",
           "sourceItemId": "joker_face_mask",
-          "referenceUrl": null,
+          "referenceUrl": "https://en.wikipedia.org/wiki/Batman:_Death_of_the_Family",
           "canonStatus": null,
           "tier": "pickup",
           "effectSource": "unresolved"
@@ -66169,7 +66438,27 @@
       9648,
       10483,
       10484,
-      10485
+      10485,
+      10654,
+      10487,
+      10486,
+      10408,
+      10049,
+      10438,
+      9633,
+      9631,
+      9632,
+      9635,
+      10662,
+      10663,
+      9324,
+      9520,
+      10082,
+      10083,
+      10084,
+      9968,
+      9969,
+      269
     ],
     "changedSincePreviousCorrection": [
       1,
@@ -66186,20 +66475,44 @@
       9648,
       10483,
       10484,
-      10485
+      10485,
+      10654,
+      10487,
+      10486,
+      10408,
+      10049,
+      10438,
+      9633,
+      9631,
+      9632,
+      9635,
+      10662,
+      10663,
+      9324,
+      9520,
+      10082,
+      10083,
+      10084,
+      9968,
+      9969,
+      269
     ],
     "previousAvailable": 1026,
-    "currentAvailable": 1022,
-    "currentPending": 2177,
+    "currentAvailable": 1021,
+    "currentPending": 2178,
     "availableBecamePending": [
       1,
       2,
       3,
-      10
+      10,
+      269
     ],
-    "sourceLockedCharacters": 10,
+    "sourceLockedCharacters": 29,
     "sourceLockedStaticStages": 6,
-    "historicalLedgerSha256Unchanged": "770a083a8853d19877ada8981957fb246f1fa4029630414df85ffdda84bd5a0f"
+    "historicalLedgerSha256Unchanged": "770a083a8853d19877ada8981957fb246f1fa4029630414df85ffdda84bd5a0f",
+    "sourceLockedExpandedStages": 1,
+    "additionalP0Dossiers": 19,
+    "additionalExpandedScene": 269
   },
   "sourceCorrectedDossiers": [
     {
@@ -66507,6 +66820,358 @@
       "registryStatus": "pending",
       "visualReviewStatus": "pending",
       "historicalImageSha256": null
+    },
+    {
+      "stageId": 10654,
+      "heroId": "saturnin_duck",
+      "family": "arc-personnage",
+      "incarnation": "Les Aventures de Saturnin (ORTF, 1965-1970) - real duckling in a miniature animal village",
+      "equipment": [
+        "Yellow Duckling Anatomy",
+        "Miniature Animal Village Props"
+      ],
+      "referenceUrls": [
+        "https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin"
+      ],
+      "currentPromptSha256": "dc968095ad709be457b9b216ec682c04db32c510fb4e0e7890ee42d1921e6fc8",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10487,
+      "heroId": "lilo_pelekai",
+      "family": "arc-personnage",
+      "incarnation": "Lilo & Stitch (2002 animated film) - Lilo Pelekai on Kauai",
+      "equipment": [
+        "Camera",
+        "Scrump Doll",
+        "Red White-Leaf Dress"
+      ],
+      "referenceUrls": [
+        "https://d23.com/a-to-z/lilo-stitch-film/"
+      ],
+      "currentPromptSha256": "448ee638c7884dd8316472e04ad159a31cc20eba8a9b698f9f65ef636a0670f1",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10486,
+      "heroId": "stitch_626",
+      "family": "arc-personnage",
+      "incarnation": "Lilo & Stitch (2002 animated film) - Experiment 626, Earth dog-disguise form",
+      "equipment": [
+        "Retractable Claws",
+        "Experiment 626 Anatomy"
+      ],
+      "referenceUrls": [
+        "https://d23.com/a-to-z/lilo-stitch-film/"
+      ],
+      "currentPromptSha256": "c5e457a846e4dbe28e2f7f0384e929b3db14173d874be53fc8706b536981844c",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10408,
+      "heroId": "jack_sparrow_potc",
+      "family": "arc-personnage",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Captain Jack Sparrow",
+      "equipment": [
+        "Pirate Sword",
+        "Flintlock Pistol",
+        "Jack s Compass"
+      ],
+      "referenceUrls": [
+        "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/"
+      ],
+      "currentPromptSha256": "7dffcaf9823a3854f9979dacc364d79a84fda0134c89ea999983bbc01986ff23",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10049,
+      "heroId": "roger_rabbit",
+      "family": "arc-personnage",
+      "incarnation": "Who Framed Roger Rabbit (1988) - Roger, Maroon Cartoon Studio toon",
+      "equipment": [
+        "Toon Body",
+        "Red Overalls",
+        "Blue Polka-Dot Bow Tie"
+      ],
+      "referenceUrls": [
+        "https://d23.com/a-to-z/who-framed-roger-rabbit-film/"
+      ],
+      "currentPromptSha256": "87f6bde1e6f65907c61fb4d9ef5df03962ac3e76ca7af3cc0b7580628823e63e",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10438,
+      "heroId": "batman_tdk",
+      "family": "arc-personnage",
+      "incarnation": "The Dark Knight (2008) - Nolan s Bruce Wayne, segmented Batsuit",
+      "equipment": [
+        "Segmented Batsuit",
+        "Batarangs",
+        "Grapnel Gun",
+        "Utility Belt"
+      ],
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/The_Dark_Knight",
+        "https://www.dc.com/characters/batman"
+      ],
+      "currentPromptSha256": "03930b5c282aba7d131af9a9cdb3be0328a741ea6cb217bf64ffa2c8b975795b",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 9633,
+      "heroId": "batman_n52",
+      "family": "arc-personnage",
+      "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - Bruce Wayne",
+      "equipment": [
+        "New 52 Batsuit",
+        "Batarangs",
+        "Utility Belt"
+      ],
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+        "https://www.dc.com/characters/batman"
+      ],
+      "currentPromptSha256": "97a9c1897a007cfcf85b731b2333249e996f380b29db5e12798355a1497082b1",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 9631,
+      "heroId": "joker_n52",
+      "family": "arc-personnage",
+      "incarnation": "Batman: Endgame (The New 52, Batman #35-40, 2014-2015) - the Joker",
+      "equipment": [
+        "Joker Toxin",
+        "Knife"
+      ],
+      "referenceUrls": [
+        "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+        "https://www.dc.com/characters/the-joker"
+      ],
+      "currentPromptSha256": "a33c09e23f58e272112ae93b74b69cc9c31d1fd52591566b1597b4a7b7f848cf",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 9632,
+      "heroId": "harley_n52",
+      "family": "arc-personnage",
+      "incarnation": "Suicide Squad (The New 52, volume 4 #1, 2011) - Harley Quinn",
+      "equipment": [
+        "Oversized Mallet",
+        "New 52 Squad Costume"
+      ],
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Harley_Quinn"
+      ],
+      "currentPromptSha256": "2ed99c7cb136e706d7e3298e8e2cac5d6fa5bdb15297929b98e99fdc33573804",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 9635,
+      "heroId": "grim_knight",
+      "family": "arc-personnage",
+      "incarnation": "The Batman Who Laughs: The Grim Knight #1 (2019) - armed Dark Multiverse Bruce Wayne",
+      "equipment": [
+        "Firearms Arsenal",
+        "Tactical Bat Armor"
+      ],
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/The_Batman_Who_Laughs"
+      ],
+      "currentPromptSha256": "8245fd24f9c081d984889292336ca3d88f4825d0dcf39680214582f78c73013d",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10662,
+      "heroId": "raven_tt",
+      "family": "arc-personnage",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "equipment": [
+        "Mystical Powers",
+        "Hooded Purple Cloak"
+      ],
+      "referenceUrls": [
+        "https://www.dc.com/characters/raven",
+        "https://en.wikipedia.org/wiki/Teen_Titans_(TV_series)"
+      ],
+      "currentPromptSha256": "323e84343550a0e68a81e1c1af2decfb549dbed7c43f3e0de04c4aab970d328f",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10663,
+      "heroId": "starfire_tt",
+      "family": "arc-personnage",
+      "incarnation": "Teen Titans (2003-2006 animated series) - original Jump City team",
+      "equipment": [
+        "Tamaranean Starbolts",
+        "Purple Animated-Series Costume"
+      ],
+      "referenceUrls": [
+        "https://www.dc.com/characters/starfire",
+        "https://en.wikipedia.org/wiki/Teen_Titans_(TV_series)"
+      ],
+      "currentPromptSha256": "8fcc66993ccbabb0e046318984224a2c605512a9dd4f76d1ff77617db076b02f",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 9324,
+      "heroId": "harry",
+      "family": "arc-personnage",
+      "incarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "equipment": [
+        "Holly Wand with Phoenix-Feather Core",
+        "Gryffindor School Uniform",
+        "Round Glasses"
+      ],
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+        "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Order_of_the_Phoenix_(film)"
+      ],
+      "currentPromptSha256": "c73d5cb6a9422f99dcebeb33a09eda8d80cc984fca346be2325cc966edaef969",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 9520,
+      "heroId": "hermione",
+      "family": "arc-personnage",
+      "incarnation": "Harry Potter and the Order of the Phoenix (2007 film) - fifth-year Dumbledore s Army",
+      "equipment": [
+        "Vine Wand with Dragon-Heartstring Core",
+        "Gryffindor School Uniform"
+      ],
+      "referenceUrls": [
+        "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+        "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Order_of_the_Phoenix_(film)"
+      ],
+      "currentPromptSha256": "902c78a2fc5b5c720e4bff423095f0eb6b1cd39245596314c67924a991e3dea0",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10082,
+      "heroId": "cyber_spider_kelly",
+      "family": "arc-personnage",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "equipment": [
+        "Cybernetic Spider Body",
+        "Default Slasher Attachment"
+      ],
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "currentPromptSha256": "8ae848a67cf1d570b0d4427953f1c724b503d193b9e59f8f49a2414fda039d64",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10083,
+      "heroId": "cyber_spider_flamethrower",
+      "family": "arc-personnage",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "equipment": [
+        "Cybernetic Spider Body",
+        "Flamethrower Cyber-Leg"
+      ],
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "currentPromptSha256": "594837cf725d5708989c08e886e983eb7c5cbe8adf9a167eb2be96aaf46d3c1a",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 10084,
+      "heroId": "cyber_spider_electro_beam",
+      "family": "arc-personnage",
+      "incarnation": "Spider: The Video Game (PlayStation, 1997) - Dr. Michael Kelly cybernetic-spider loadout",
+      "equipment": [
+        "Cybernetic Spider Body",
+        "Electro-Beam Cyber-Leg"
+      ],
+      "referenceUrls": [
+        "https://en.wikipedia.org/wiki/Spider:_The_Video_Game"
+      ],
+      "currentPromptSha256": "41ca3d92d1197ff85b1988ac570dabaff7b8678a98bdbeda15d7e40b687d23e3",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 9968,
+      "heroId": "mj_performer",
+      "family": "arc-personnage",
+      "incarnation": "Multiverse Breach original tribute persona - King of Pop Avatar",
+      "equipment": [
+        "Original Stage Costume",
+        "Dance Shoes"
+      ],
+      "referenceUrls": [
+        "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754"
+      ],
+      "currentPromptSha256": "7df389bfa32fed04b4ec6890bc74522c575db98d8a9a79e1c32a71f575239448",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 9969,
+      "heroId": "rhythm_guard_mj",
+      "family": "arc-personnage",
+      "incarnation": "Multiverse Breach original companion - Rhythm Guard",
+      "equipment": [
+        "Original Stage Costume",
+        "Microphone"
+      ],
+      "referenceUrls": [
+        "https://chatgpt.com/share/6abdc1d1-1a7c-83eb-9a7a-d979173f3754"
+      ],
+      "currentPromptSha256": "d5207641a626c6828a5c2d7c9d27ad7ae90816c53b61d8c48183c2705e5fef54",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
+    },
+    {
+      "stageId": 269,
+      "family": "expanded",
+      "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Isla de Muerta",
+      "canonicalBoss": "Hector Barbossa",
+      "referenceUrls": [
+        "https://movies.disney.com/pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+        "https://pirates.disney.com/",
+        "https://movies.disney.com/pirates-of-the-caribbean-dead-mans-chest"
+      ],
+      "currentPromptSha256": "c4d22f0239fcdcf49ebd4547b92a827a7b5e6b60036eb4bc930ac88cea844d89",
+      "registryStatus": "pending",
+      "visualReviewStatus": "pending",
+      "visualFidelityApproved": false
     }
   ]
 }

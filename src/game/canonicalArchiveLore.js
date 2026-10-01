@@ -118,6 +118,12 @@ export const CANONICAL_ARCHIVE_ENEMY_LORE = Object.freeze({
 });
 
 export const getCanonicalArchiveEnemyLore = (universe, enemy) => {
+  if (
+    enemy?.incarnation && enemy.referenceUrl?.startsWith('https://')
+    && enemy.sourceLore?.fr && enemy.sourceLore?.en
+  ) {
+    return notice(enemy.canonicalName || enemy.name, enemy.incarnation, enemy.referenceUrl, enemy.sourceLore.fr, enemy.sourceLore.en);
+  }
   if (!Object.hasOwn(CANONICAL_ARCHIVE_ENEMY_LORE, universe)) return null;
   const entries = CANONICAL_ARCHIVE_ENEMY_LORE[universe];
   if (!Object.hasOwn(entries, enemy?.name)) return null;
@@ -178,14 +184,22 @@ export const CANONICAL_STAGE_ARCHIVE_LORE = Object.freeze([
   )
 ]);
 
-export const getCanonicalArchiveStageLore = stage => (
-  CANONICAL_STAGE_ARCHIVE_LORE.find(entry => (
+export const getCanonicalArchiveStageLore = stage => {
+  if (
+    stage?.incarnation && stage.referenceUrl?.startsWith('https://')
+    && stage.sourceSceneLore?.fr && stage.sourceSceneLore?.en
+    && stage.sourceSceneAdaptation?.fr && stage.sourceSceneAdaptation?.en
+    && !stage.characterArc && !stage.fusionMission && !stage.originalContent
+  ) {
+    return { source: stage, lore: stage.sourceSceneLore, adaptation: stage.sourceSceneAdaptation };
+  }
+  return CANONICAL_STAGE_ARCHIVE_LORE.find(entry => (
     stage?.id === entry.source.id
     && stage.universe === entry.source.universe
     && stage.incarnation === entry.source.incarnation
     && !stage.characterArc && !stage.fusionMission && !stage.originalContent
-  )) || null
-);
+  )) || null;
+};
 
 // Explicit names are authoritative. Never substitute a different world boss
 // when a mission asks for a local opponent, including a disabled/missing one.
