@@ -39,15 +39,15 @@ test('future runtime prompts separate adapted moves from canonical appearance an
   assert.equal(LORE_BOSS_OVERRIDES[universe][0].visualReviewStatus, undefined, 'an existing Cyber-Godzilla bitmap gains no unearned review status');
 });
 
-test('the archived real generation evidence cannot be mistaken for an installed or approved sprite', async () => {
-  const report = JSON.parse(await readFile(new URL('../docs/openai-generation-prompts-2026-10-01/missing-boss-crustaceous-rex-attempts.json', import.meta.url), 'utf8'));
-  assert.equal(report.id, 'godzilla-the-animated-series-crustaceous-rex');
-  assert.equal(report.installed, false);
-  assert.equal(report.status, 'generated-quality-blocked');
-  assert.equal(report.attempts.length, 2);
-  for (const attempt of report.attempts) {
-    assert.equal(attempt.technicalReview.productionContractPassed, false);
-    assert.match(attempt.technicalReview.sha256, /^[a-f0-9]{64}$/);
-    assert.notEqual(attempt.technicalReview.width, 1024);
-  }
+test('the runtime sprite is genuinely missing and the public manifest grants no installation or visual approval', async () => {
+  const manifest = JSON.parse(await readFile(new URL('../public/sprites/generated/sprite-manifest.json', import.meta.url), 'utf8'));
+  const entry = manifest.entries.find(entry => entry.kind === 'boss' && entry.output === output);
+  assert.ok(entry, 'the missing canonical boss must remain in the production inventory');
+  assert.equal(entry.available, false);
+  assert.notEqual(entry.visualReviewStatus, 'approved');
+  assert.equal(runtime.visualReviewStatus, 'pending');
+  await assert.rejects(readFile(new URL(`../public${output}`, import.meta.url)), { code: 'ENOENT' });
+  const ledger = (await readFile(new URL('../public/sprites/generated/openai-asset-ledger.jsonl', import.meta.url), 'utf8'))
+    .trim().split('\n').map(line => JSON.parse(line));
+  assert.equal(ledger.some(record => record.output === output), false, 'uninstalled review candidates cannot become production evidence');
 });
