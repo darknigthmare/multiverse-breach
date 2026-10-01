@@ -12604,25 +12604,31 @@ export default function HubScreen({
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.allEnemies.map((enemy, index) => {
                         const portraitSrc = enemy.portrait || null;
-                        const spriteSrc = portraitSrc || getEnemySpriteSheetSrc(enemy, selectedUniverseArchive.universe);
+                        const spriteInfo = getEnemySpriteInfo(enemy, selectedUniverseArchive.universe);
+                        const spriteSrc = portraitSrc || spriteInfo.src;
+                        const illustrationReady = Boolean(portraitSrc) || spriteInfo.ready;
                         const spriteLayout = getSpriteSheetLayout(spriteSrc);
                         return (
                           <div key={`${enemy.name}-${index}`} style={{ display: 'grid', gridTemplateColumns: '72px minmax(0, 1fr)', gap: '8px', padding: '7px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
                             <div
-                              role="img"
-                              aria-label={`${enemy.name} sprite`}
+                              role={illustrationReady ? 'img' : undefined}
+                              aria-label={illustrationReady ? `${enemy.name} sprite` : undefined}
                               style={{
                                 width: '72px',
                                 height: '72px',
                                 border: '1px solid rgba(231,76,60,0.3)',
                                 backgroundColor: '#050509',
-                                backgroundImage: `url("${spriteSrc}")`,
+                                backgroundImage: illustrationReady ? `url("${spriteSrc}")` : undefined,
                                 backgroundRepeat: 'no-repeat',
                                 backgroundSize: portraitSrc ? 'cover' : `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
                                 backgroundPosition: portraitSrc ? 'center 22%' : '0 0',
                                 imageRendering: 'pixelated'
                               }}
-                            />
+                            >
+                              {!illustrationReady && <span style={{ display: 'block', padding: '8px', color: '#aaa', fontSize: '9px' }}>
+                                {lang === 'fr' ? 'Illustration à venir' : 'Illustration pending'}
+                              </span>}
+                            </div>
                             <div style={{ minWidth: 0 }}>
                               <div style={{ color: enemy.color || '#e74c3c', fontSize: '10px', fontWeight: 'bold' }}>{enemy.name}</div>
                               <div style={{ color: '#aaa', fontSize: '9px', marginTop: '3px' }}>
