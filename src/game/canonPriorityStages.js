@@ -16,8 +16,9 @@ export const CANON_PRIORITY_STAGES = Object.freeze({
     enemyRosterExclusive: true,
     incarnation: 'Gears of War (2006) - Lightmass Bomb train finale',
     referenceUrl: 'https://en.wikipedia.org/wiki/Gears_of_War_(video_game)',
+    referenceUrls: Object.freeze(['https://en.wikipedia.org/wiki/Gears_of_War_(video_game)', 'https://www.supercheats.com/xbox360/walkthroughs/gearsofwar-walkthrough01.txt', 'https://www.supercheats.com/xbox360/walkthroughs/gearsofwar-walkthrough03.txt']),
     visualAnchor: 'The moving Lightmass Bomb train at night, linked industrial freight cars with low cover and exposed walkways. General RAAM is a huge pale Locust in dark armored plates, carrying his Troika and surrounded by Kryll. No Pendulum Wars Aspho Fields, Skorge, Kantus, Tickers or Brumak in this encounter.',
-    gameplayAdaptation: 'RPG waves condense the train assault and RAAM duel. Kryll immunity, lighting and the original cover-shooter camera are not reproduced by the current runtime.',
+    gameplayAdaptation: 'RPG waves condense the train assault and RAAM duel. Kryll shield blocks ordinary damage; frag grenades disperse it, swarm departures expose RAAM, and lit cover protects from the swarm. ATB commands, the shared grenade supply, durations and cover positions adapt the original real-time cover shooter.',
     visualReviewStatus: 'pending'
   }),
   metropolisScarab: Object.freeze({
@@ -35,8 +36,9 @@ export const CANON_PRIORITY_STAGES = Object.freeze({
     enemyRosterExclusive: true,
     incarnation: 'Halo 2 (2004) - Metropolis, New Mombasa',
     referenceUrl: 'https://www.halopedia.org/Metropolis',
+    referenceUrls: Object.freeze(['https://www.halopedia.org/Metropolis', 'https://www.halopedia.org/Protos-pattern_Scarab']),
     visualAnchor: 'New Mombasa streets, concrete canals and elevated building catwalks around the Halo 2 Protos-pattern Scarab. Huge four-legged purple-gray Covenant walker, flat upper deck, arched gangway, passenger cabin and forward ultra-heavy focus cannon. No Halo ring, Halo 3 Deutoros exposed rear core, Prometheans, Flood or hostile Guilty Spark.',
-    gameplayAdaptation: 'Defeating the Scarab commander represents neutralizing the boarded vehicle and its crew. The tactical HP target abstracts Halo 2 boarding; it does not claim to reproduce the Halo 3 core-destruction mechanic.',
+    gameplayAdaptation: 'Board the Halo 2 Scarab through the catwalk and neutralize its Grunt and Elite crew. The Protos hull is invulnerable; its HP and the approach sniper are not victory targets. The turn-based grid, fixed walker, route and crew count adapt Metropolis; no Halo 3 rear core is used.',
     visualReviewStatus: 'pending'
   }),
   hadleysQueen: Object.freeze({
@@ -75,8 +77,9 @@ export const CANON_PRIORITY_STAGES = Object.freeze({
     enemyRosterExclusive: true,
     incarnation: 'Half-Life (1998) - Xen, Nihilanth finale',
     referenceUrl: 'https://combineoverwiki.net/wiki/Nihilanth',
+    referenceUrls: Object.freeze(['https://combineoverwiki.net/wiki/Nihilanth', 'https://github.com/ValveSoftware/halflife/blob/0fc8913c542d6ba129ca8bede1505e7d2e8b4b4b/dlls/nihilanth.cpp']),
     visualAnchor: 'Nihilanth\'s vast organic rock cavern on Xen, with suspended ledges and three healing crystals. A massive levitating creature with a huge head, undersized legs, two main arms and a vestigial third chest arm; orange energy spheres orbit its head, purple projectiles and green teleport spheres. Its crown opens to reveal the brain weak point. Enslaved Vortigaunts wear shackles. No Black Mesa test chamber, Strider, Combine soldier, Advisor, Antlion or Race X.',
-    gameplayAdaptation: 'Smash waves retain the source boss and enslaved Vortigaunts. The current HP duel does not yet simulate destroying three healing crystals, teleport rooms or the exposed-brain vulnerability phase.',
+    gameplayAdaptation: 'Destroy three healing crystals, weaken the boss and its replenishable reserve of twenty orange spheres, and hit the brain after the head opens. Body hits cannot kill Nihilanth. Platforms, crystal HP, healing intervals and purple projectile timing adapt the source encounter to Smash; green teleport spheres, teleport rooms and summoned reinforcements remain unimplemented.',
     visualReviewStatus: 'pending'
   }),
   shadowMoses: Object.freeze({

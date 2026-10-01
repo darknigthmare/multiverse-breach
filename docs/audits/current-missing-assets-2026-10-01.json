@@ -38,8 +38,8 @@
     },
     {
       "path": "docs/rift-dossiers/catalog.json",
-      "bytes": 10876910,
-      "sha256": "c61edda2f1ed05c9459ff090f95b37442e6f6be442b303c5e998ec6f667ed671"
+      "bytes": 10878398,
+      "sha256": "593a10e8b0496f9db795fca5bd6e4d15182accf4ddeb3aa59f14cd5c4aa3ff29"
     },
     {
       "path": "public/images/rift-dossiers/openai/openai-prompts.jsonl",
@@ -88,13 +88,13 @@
     },
     {
       "path": "src/game/canonPriorityStages.js",
-      "bytes": 7123,
-      "sha256": "110679e23e8b22e3eebe61a144d9b13ab3e1abf832133a85c63ced29855f6f9e"
+      "bytes": 8088,
+      "sha256": "a5c75ddf1cbfe873d0d1cc244a21f2d7c4d56864b3aaafafce049b0b63a168a8"
     },
     {
       "path": "src/components/HubScreen.jsx",
-      "bytes": 730746,
-      "sha256": "c65ae99a1fd49b9af2cf9d5f57e98f664dbe21b924be366b19010c8940bd63e3"
+      "bytes": 733086,
+      "sha256": "9ce7801136e8a8f169ef578308d8409cbbf835190bf12a744c1ced73077de01c"
     },
     {
       "path": "scripts/buildRiftDossierCatalog.mjs",
@@ -103,8 +103,8 @@
     },
     {
       "path": "docs/rift-dossiers/canon-remediation-2026-10-01.json",
-      "bytes": 31025,
-      "sha256": "2060b2d47c0af124c7b387b9794f18a219a1dce12ea45fc81a3fad0bdfdee05e"
+      "bytes": 31769,
+      "sha256": "1427c4ff9715b75b3970da718eda69a203a87c62e6cf27a1bbb50129efd11f99"
     },
     {
       "path": "src/game/loreBossOverrides.js",
@@ -125,6 +125,36 @@
       "path": "src/game/canonP0SourceKits.js",
       "bytes": 39652,
       "sha256": "21b3ecb249d8b5fa0c57eb80076f80f7029a00b7839e5c51e8651e76e7f7192f"
+    },
+    {
+      "path": "src/game/canonRaamEncounter.js",
+      "bytes": 4387,
+      "sha256": "13a7c769d39cff59a07ce99f238b85a950e944ac51975931156bce11b23f76a9"
+    },
+    {
+      "path": "src/game/canonScarabEncounter.js",
+      "bytes": 3007,
+      "sha256": "d9d55334ae8096022253b5c0f313b957b6601c7bc34c7244f9f5f527d2940978"
+    },
+    {
+      "path": "src/game/canonNihilanthEncounter.js",
+      "bytes": 8069,
+      "sha256": "b370830fce55cffd0e490bfda2adce1f3915a0011493e96e69a789be9f865e34"
+    },
+    {
+      "path": "src/game/encounterDamage.js",
+      "bytes": 914,
+      "sha256": "18bc5f7e1210ac5b8074250402b717792090dc36964077046eeac3b213716623"
+    },
+    {
+      "path": "src/game/missions/universeMissionCategory.js",
+      "bytes": 670,
+      "sha256": "5898b1b1e850ecd787706d5c033fc52b49419b25c1feed0dd49f212f1dbbae31"
+    },
+    {
+      "path": "src/game/canonEncounterBriefing.js",
+      "bytes": 3088,
+      "sha256": "ece54486b4c135c94d38726227241046dc97da17919b496c32df57d426667354"
     }
   ],
   "catalog": {
@@ -66523,10 +66553,12 @@
       "equipment": [],
       "canonicalBoss": "General RAAM",
       "referenceUrls": [
-        "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)"
+        "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "https://www.supercheats.com/xbox360/walkthroughs/gearsofwar-walkthrough01.txt",
+        "https://www.supercheats.com/xbox360/walkthroughs/gearsofwar-walkthrough03.txt"
       ],
       "currentAssetPath": "/images/rift-dossiers/openai/statique/stage-1-lightmass-bomb-train-raam-v1.webp",
-      "currentPromptSha256": "09a17f2310c0aef34c608f13fe38f648d5484a4a833c5d392a8cf6215ce17692",
+      "currentPromptSha256": "8bcdc9ff13a644eb364b1f0426236f9d96e86dc83d295b6c539ac65838ec74f3",
       "registryStatus": "pending",
       "visualReviewStatus": "pending",
       "historicalImageSha256": "8b469dd367d06ff47af3262c89292b422f70049f8bce0954c902642041cfe691"
@@ -66539,10 +66571,11 @@
       "equipment": [],
       "canonicalBoss": "Protos-pattern Scarab",
       "referenceUrls": [
-        "https://www.halopedia.org/Metropolis"
+        "https://www.halopedia.org/Metropolis",
+        "https://www.halopedia.org/Protos-pattern_Scarab"
       ],
       "currentAssetPath": "/images/rift-dossiers/openai/statique/stage-2-metropolis-scarab-boarding-v1.webp",
-      "currentPromptSha256": "5a6bbdcf50b28362951954a2c229e6d7a3d3bb61810024ffd8037f5b9c520fa5",
+      "currentPromptSha256": "84922ce9241efd85b4ff5bbdee50f4494c70d437214dbf4fee2d87cd0a3bf126",
       "registryStatus": "pending",
       "visualReviewStatus": "pending",
       "historicalImageSha256": "4f426bd748b79f7bb9b6afef38f3aa7808c1ad4802060893831877835544af80"
@@ -66572,10 +66605,11 @@
       "equipment": [],
       "canonicalBoss": "Nihilanth",
       "referenceUrls": [
-        "https://combineoverwiki.net/wiki/Nihilanth"
+        "https://combineoverwiki.net/wiki/Nihilanth",
+        "https://github.com/ValveSoftware/halflife/blob/0fc8913c542d6ba129ca8bede1505e7d2e8b4b4b/dlls/nihilanth.cpp"
       ],
       "currentAssetPath": "/images/rift-dossiers/openai/statique/stage-10-xen-nihilanth-chamber-v1.webp",
-      "currentPromptSha256": "eefdc07ee5d8bfd382c62a626eae8078ae8fb852a47d5298d6108c424dc1150d",
+      "currentPromptSha256": "f8743a333d44054049b8077f8d003e9173efd27052aee7812c311d14bec38ea4",
       "registryStatus": "pending",
       "visualReviewStatus": "pending",
       "historicalImageSha256": "40f1bdc78edcc5071aae2c313bb0fd6c8ddb6aa553212bd976839681ba96dd5e"

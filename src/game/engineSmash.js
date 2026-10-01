@@ -11,6 +11,16 @@ import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from 
 import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
 import {
+  attachNihilanthBoss,
+  createNihilanthEncounter,
+  getNihilanthEncounterSummary,
+  getNihilanthObjectiveText,
+  getNihilanthTargets,
+  resolveNihilanthDamage,
+  tickNihilanthEncounter
+} from './canonNihilanthEncounter.js';
+import { drawNihilanthEncounter } from './canonNihilanthEncounterPresentation.js';
+import {
   absorbMeleeGuardHit,
   applyMeleeHitStun,
   beginMeleeAction,
@@ -170,6 +180,7 @@ export class EngineSmash {
     this.singleRoster = Boolean(stage.customBattle?.singleRoster);
     this.isFixedCustomRoster = this.isLocalP2 || this.singleRoster;
     this.arena = createSmashArena(stage, width, height);
+    this.nihilanthEncounter = createNihilanthEncounter(stage, this.arena);
     this.stageTopologyProfile = this.arena.topologyProfile;
     this.hazardsDisabled = this.hazardsDisabled
       || this.stageTopologyProfile.eventIntensity === STAGE_EVENT_INTENSITIES.off;
@@ -527,7 +538,7 @@ export class EngineSmash {
 
   resolveMeleeActionHit(attacker, action) {
     const attackerIsHero = this.heroes.includes(attacker);
-    const candidates = (attackerIsHero ? this.enemies : this.heroes)
+    const candidates = (attackerIsHero ? this.getEncounterTargets() : this.heroes)
       .filter(target => target.currentHp > 0);
     const abilityType = action.id === 'special' ? 'special' : 'simple';
     const profile = getSmashAbilityProfile(attacker, abilityType);
@@ -746,6 +757,7 @@ export class EngineSmash {
       cooldown: behavior.cooldown,
       statusEffects: { infected: 0, glitched: 0, radiated: 0 }
     }));
+    attachNihilanthBoss(this.nihilanthEncounter, this.enemies.at(-1), this.width, this.height);
 
     this.playSfx('portal');
     this.particles.add(spawnX, spawnY - 10, 0, 0, '#9b59b6', 15, 45, 'portal');
@@ -755,7 +767,7 @@ export class EngineSmash {
   triggerAbility(hero, abilityType) {
     if (hero.currentHp <= 0 || hero.state === 'dead' || isMeleeHitLocked(hero) || this.gameOver || this.isMatchInputLocked()) return;
     if (getSmashAbilityProfile(hero, abilityType)) {
-      return this.triggerProfiledAbility(hero, abilityType, this.enemies);
+      return this.triggerProfiledAbility(hero, abilityType, this.getEncounterTargets());
     }
 
     if (abilityType === 'simple') {
@@ -766,7 +778,7 @@ export class EngineSmash {
       const range = 70;
       const reachX = hero.x + hero.facing * range;
       
-      this.enemies.forEach(e => {
+      this.getEncounterTargets().forEach(e => {
         if (e.currentHp > 0 && Math.abs(e.y - hero.y) < 30 && ((hero.facing === 1 && e.x > hero.x && e.x < reachX) || (hero.facing === -1 && e.x < hero.x && e.x > reachX))) {
           let status = null;
           if (hero.id === 'leon') status = 'infected';
@@ -789,7 +801,7 @@ export class EngineSmash {
       this.particles.add(projX, projY, projVx, 0, hero.secondaryColor || '#fff', 6, 60, 'laser_line');
 
       let hitSomething = false;
-      this.enemies.forEach(e => {
+      this.getEncounterTargets().forEach(e => {
         if (e.currentHp > 0 && Math.abs(e.y - hero.y) < 35 && ((hero.facing === 1 && e.x > hero.x) || (hero.facing === -1 && e.x < hero.x))) {
           const dist = Math.abs(e.x - hero.x);
           if (dist < 300 && !hitSomething) {
@@ -816,7 +828,7 @@ export class EngineSmash {
       this.particles.add(this.width/2, this.height/2, 0, 0, hero.primaryColor, 300, 30, 'glitch');
       this.particles.add(hero.x - 30, hero.y - 50, 0, -0.5, '#f1c40f', 16, 80, 'text', `!!! ${hero.special.name.toUpperCase()} !!!`);
 
-      this.enemies.forEach(e => {
+      this.getEncounterTargets().forEach(e => {
         if (e.currentHp > 0) {
           let status = null;
           if (hero.id === 'neo') status = 'glitched';
@@ -998,6 +1010,17 @@ export class EngineSmash {
 
   applyDamage(attacker, defender, baseDmg, knockbackForce = 10, statusEffect = null, guardDamage = 8) {
     baseDmg *= getCombatEventDamageMultiplier(attacker);
+    const encounterDamage = resolveNihilanthDamage(this.nihilanthEncounter, defender, baseDmg);
+    if (encounterDamage?.kind === 'blocked') return 0;
+    if (encounterDamage?.kind === 'crystal') {
+      this.damageDealt += encounterDamage.damage;
+      this.playSfx(encounterDamage.target.currentHp <= 0 ? 'defeat' : 'hit');
+      this.particles.add(defender.x, defender.y - 20, 0, -1, '#d8bcff', 12, 40,
+        'text', `${encounterDamage.damage}`);
+      if (encounterDamage.target.currentHp <= 0) this.objectivePulse = 'CRISTAL DE SOIN DETRUIT';
+      return encounterDamage.damage;
+    }
+    if (encounterDamage?.defender) defender = encounterDamage.defender;
     const guardResult = absorbMeleeGuardHit(defender, {
       damage: baseDmg,
       guardDamage
@@ -1026,7 +1049,10 @@ export class EngineSmash {
     }
     const variance = (Math.random() * 0.2) + 0.9;
     const defenseFactor = Math.max(0.72, 1 - getEffectiveCombatDefense(defender, attacker) * 0.01);
-    const finalDmg = absorbBattleItemDamage(defender, Math.round(baseDmg * variance * defenseFactor));
+    let finalDmg = absorbBattleItemDamage(defender, Math.round(baseDmg * variance * defenseFactor));
+    if (encounterDamage) {
+      finalDmg = Math.min(finalDmg, Math.max(0, defender.currentHp - (encounterDamage.allowLethal ? 0 : 1)));
+    }
     if (this.heroes.includes(attacker) && this.enemies.includes(defender)) {
       this.damageDealt += finalDmg;
     } else if (this.enemies.includes(attacker) && this.heroes.includes(defender)) {
@@ -1070,6 +1096,58 @@ export class EngineSmash {
     } else {
       this.playSfx('hit');
     }
+    if (encounterDamage) getNihilanthTargets(this.nihilanthEncounter);
+    return finalDmg;
+  }
+
+  // External battle items and custom super attacks must use the same head
+  // requirement as ordinary attacks. Other encounters retain their own path.
+  applyEncounterDamage(target, amount, context = {}) {
+    const encounter = this.nihilanthEncounter;
+    if (!encounter?.boss || (target !== encounter.boss && target !== encounter.brain
+      && !encounter.crystals.includes(target))) return false;
+    if (encounter.boss.currentHp <= 0 || this.gameOver || this.isMatchInputLocked()) return true;
+    if (target === encounter.brain && !encounter.headOpen) return true;
+    if (target.currentHp <= 0) return true;
+    if (context.directDamage === true) {
+      const requested = Number(amount);
+      if (!Number.isFinite(requested) || requested <= 0) return true;
+      const defender = target === encounter.brain ? encounter.boss : target;
+      const floor = context.nonlethal || target === encounter.boss ? 1 : 0;
+      // Immunity/head gating precedes absorption. External effects already
+      // provide fixed HP loss, so do not apply combat variance, armor or buffs.
+      const shielded = context.absorbBattleItemShield === true
+        ? absorbBattleItemDamage(defender, requested) : requested;
+      const fixedDamage = Math.min(shielded, Math.max(0, defender.currentHp - floor));
+      const hit = resolveNihilanthDamage(encounter, target, fixedDamage);
+      if (hit?.kind === 'blocked') return true;
+      if (hit?.kind !== 'crystal') defender.currentHp -= fixedDamage;
+      const dealt = hit?.kind === 'crystal' ? hit.damage : fixedDamage;
+      this.damageDealt += dealt;
+      if (defender.currentHp <= 0 && hit?.kind !== 'crystal') {
+        transitionMeleeState(defender, 'dead', { force: true, restart: true });
+        defender.stateTimer = 60;
+        if (!defender.wasCountedDefeated) {
+          defender.wasCountedDefeated = true;
+          this.defeatedEnemies++;
+        }
+      }
+      if (!context.silent && dealt > 0) {
+        this.playSfx(defender.currentHp <= 0 ? 'defeat' : 'hit');
+        this.particles.add(target.x, target.y - 20, 0, -1,
+          hit?.kind === 'crystal' ? '#d8bcff' : '#e6a551', 12, 40, 'text', `${dealt}`);
+      }
+      if (hit?.kind === 'crystal' && defender.currentHp <= 0) this.objectivePulse = 'CRISTAL DE SOIN DETRUIT';
+      getNihilanthTargets(encounter);
+      return true;
+    }
+    const attacker = context.attacker || this.getActiveHero() || { x: target.x - 1 };
+    this.applyDamage(attacker, target, amount, 0);
+    return true;
+  }
+
+  getEncounterTargets() {
+    return [...this.enemies, ...getNihilanthTargets(this.nihilanthEncounter)];
   }
 
   ensureLocalVersusLeaders() {
@@ -1511,6 +1589,7 @@ export class EngineSmash {
         return;
       }
     }
+    tickNihilanthEncounter(this.nihilanthEncounter, this);
 
     let activeHero = this.getActiveHero();
     if (activeHero && activeHero.currentHp <= 0 && !this.gameOver) {
@@ -1613,6 +1692,14 @@ export class EngineSmash {
         e.vx = 0;
         e.vy += this.gravity;
         this.applyPhysics(e);
+        return;
+      }
+
+      // Nihilanth levitates and uses energy projectiles, not the generic
+      // ground chase / melee loop. Dead animation and wave flow stay shared.
+      if (this.nihilanthEncounter?.boss === e) {
+        if (e.stateTimer > 0) e.stateTimer--;
+        if (e.stateTimer === 0) transitionMeleeState(e, 'idle', { force: true });
         return;
       }
 
@@ -1752,6 +1839,13 @@ export class EngineSmash {
   }
 
   applyPhysics(char) {
+    if (this.nihilanthEncounter?.boss === char && char.currentHp > 0) {
+      char.x = this.nihilanthEncounter.anchor.x;
+      char.y = this.nihilanthEncounter.anchor.y;
+      char.vx = 0;
+      char.vy = 0;
+      return;
+    }
     if (char.ledge) {
       char.vx = 0;
       char.vy = 0;
@@ -2090,7 +2184,7 @@ export class EngineSmash {
   getNearestEnemy(hero) {
     let closest = null;
     let minDist = 99999;
-    this.enemies.forEach(e => {
+    this.getEncounterTargets().forEach(e => {
       if (e.currentHp > 0) {
         const dist = Math.abs(e.x - hero.x) + Math.abs(e.y - hero.y) * 0.55 - (e.isBoss ? 18 : 0);
         if (dist < minDist) {
@@ -2145,6 +2239,7 @@ export class EngineSmash {
         }
       }
     });
+    drawNihilanthEncounter(ctx, this.nihilanthEncounter, animTime, this.width, this.height, lang);
 
     this.heroes.forEach(h => {
       drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing, 72, 'melee');
@@ -2478,7 +2573,7 @@ export class EngineSmash {
   }
 
   getObjectiveText(lang = 'fr') {
-    return getSmashObjectiveText(this.arena, lang);
+    return getNihilanthObjectiveText(this.nihilanthEncounter, lang) || getSmashObjectiveText(this.arena, lang);
   }
 
   getCombatSummary(result = null) {
@@ -2535,6 +2630,9 @@ export class EngineSmash {
       objectiveNodes: this.objectiveNodes.map(node => ({ id: node.id, type: node.type, progress: node.progress || 0, collected: !!node.collected, sealed: !!node.sealed })),
       aliveHeroes: aliveHeroes.length,
       averageHpPct: hpPct,
+      ...(this.nihilanthEncounter?.boss
+        ? { canonicalEncounter: { id: 'nihilanth-1998', ...getNihilanthEncounterSummary(this.nihilanthEncounter) } }
+        : {}),
       ...(this.isLocalP2
         ? {
             opponentControl: LOCAL_P2_CONTROL,

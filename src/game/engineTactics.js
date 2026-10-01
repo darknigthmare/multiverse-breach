@@ -11,6 +11,7 @@ import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { faceGridUnitToward as faceUnitToward, getGridFacingVector, getGridFacingBonus } from './tacticalFacing.js';
 import { resolveTacticsEscort, getTacticsEscortPose } from './tacticsEscort.js';
 import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
+import { createScarabBoardingEncounter, advanceScarabBoardingEncounter, getScarabEncounterSummary } from './canonScarabEncounter.js';
 
 const COMPASS_DIRECTIONS = [
   { x: 1, y: 0 },
@@ -163,6 +164,18 @@ export class EngineTactics {
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
+    this.scarabEncounter = createScarabBoardingEncounter(stage, this.battlefield, this.enemies);
+    if (this.scarabEncounter) {
+      this.objective = 'scarab_boarding';
+      this.objectiveTarget = 1 + this.scarabEncounter.crew.length;
+      // The catwalk joins the upper deck through one visible boarding cell.
+      // Copy shared battlefield tiles so other stages and later battles stay intact.
+      this.tiles = [...this.tiles, ...Array.from({ length: this.rows }, (_, y) => ({
+        x: this.scarabEncounter.boardingCell.x, y, type: 'blocked'
+      })).filter(tile => tile.y !== this.scarabEncounter.boardingCell.y)];
+      this.battlefield = { ...this.battlefield, objective: this.objective,
+        objectiveTarget: this.objectiveTarget, tiles: this.tiles };
+    }
     // Templates and generated sheets can carry their own defaults; runtime
     // facing always follows the actual opposing squad instead.
     this.heroes.forEach(hero => this.faceNearestOpponent(hero, this.enemies));
@@ -450,6 +463,7 @@ export class EngineTactics {
   }
 
   getReachableCells(unit, range) {
+    if (this.scarabEncounter && unit.scarabHull) return [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
     const visited = new Set([`${unit.gridX},${unit.gridY}`]);
     const queue = [{ x: unit.gridX, y: unit.gridY, dist: 0 }];
     const cells = [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
@@ -467,6 +481,7 @@ export class EngineTactics {
       ].forEach(next => {
         const key = `${next.x},${next.y}`;
         if (visited.has(key) || !this.isInsideGrid(next.x, next.y)) return;
+        if (this.scarabEncounter && unit.scarabCrew && next.x < 5) return;
         if (this.isCellOccupied(next.x, next.y, unit)) return;
 
         const moveCost = this.getTileMoveCost(next.x, next.y, unit);
@@ -925,11 +940,14 @@ export class EngineTactics {
 
   applyStartTileEffect(unit) {
     if (!unit || unit.currentHp <= 0) return;
+    if (this.scarabEncounter && this.heroes.includes(unit)) this.updateTacticsObjective();
     const tile = this.getTileAt(unit.gridX, unit.gridY);
     if (!tile) return;
     const { x: px, y: py } = this.gridToScreen(unit.gridX, unit.gridY);
     if (tile.type === 'hazard' && !this.hazardsDisabled) {
-      unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
+      if (!this.applyEncounterDamage(unit, 6, { kind: 'tile-hazard', silent: true })) {
+        unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
+      }
       this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 40, 'text', 'DANGER');
     }
     if (tile.type === 'heal' && this.heroes.includes(unit)) {
@@ -957,6 +975,9 @@ export class EngineTactics {
   }
 
   getDamagePreview(attacker, defender, actionType = 'simple') {
+    if (this.scarabEncounter && defender === this.scarabEncounter.hull) {
+      return { damage: 0, cover: 0, defense: 0, invulnerable: true };
+    }
     let damage = this.getActionBaseDamage(attacker, actionType);
     if (!damage) return { damage: 0, cover: 0, defense: 0 };
     if (defender?.state === 'defense' && defender.defense) {
@@ -1225,6 +1246,7 @@ export class EngineTactics {
   }
 
   pushUnitHorizontally(unit, distance) {
+    if (this.scarabEncounter && unit.scarabHull) return;
     const direction = Math.sign(distance);
     // Forced movement preserves heading and stops at the first obstruction,
     // including every occupied cell of a large boss footprint.
@@ -1638,6 +1660,18 @@ export class EngineTactics {
       return;
     }
 
+    if (this.objective === 'scarab_boarding' && this.scarabEncounter) {
+      const encounter = advanceScarabBoardingEncounter(this.scarabEncounter, aliveHeroes);
+      this.objectiveProgress = encounter.progress;
+      if (encounter.justBoarded) {
+        this.objectiveEvents++;
+        const point = this.gridToScreen(this.scarabEncounter.boardingCell.x, this.scarabEncounter.boardingCell.y);
+        this.particles.add(point.x, point.y - 24, 0, -1, '#39c5bb', 10, 48, 'text', 'ABORDAGE');
+      }
+      if (encounter.complete) this.completeBattle('victory');
+      return;
+    }
+
     if (this.objective === 'protect') {
       if (!this.protectedArtifact || this.protectedArtifact.hp <= 0) {
         this.completeBattle('defeat');
@@ -1853,7 +1887,9 @@ export class EngineTactics {
       units.forEach(unit => {
         const dist = Math.abs(unit.gridX - tile.x) + Math.abs(unit.gridY - tile.y);
         if (dist <= radius) {
-          unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - (8 + this.missionProfile.pressure * 2));
+          const damage = 8 + this.missionProfile.pressure * 2;
+          if (this.applyEncounterDamage(unit, damage, { kind: 'hazard-pulse', silent: true })) return;
+          unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - damage);
           const { x: ux, y: uy } = this.getUnitScreenPosition(unit.gridX, unit.gridY);
           this.particles.add(ux, uy - 28, 0, -1, '#ff5b5b', 10, 38, 'text', 'PULSE');
         }
@@ -1965,6 +2001,11 @@ export class EngineTactics {
   }
 
   getObjectiveFocusCells(unitType = 'hero') {
+    if (this.objective === 'scarab_boarding' && this.scarabEncounter && unitType === 'hero') {
+      if (!this.scarabEncounter.boarded) return [{ ...this.scarabEncounter.boardingCell }];
+      return this.scarabEncounter.crew.filter(enemy => enemy.currentHp > 0)
+        .map(enemy => ({ x: enemy.gridX, y: enemy.gridY, unit: enemy }));
+    }
     if (this.objective === 'extract') return this.battlefield.extractionZone || [];
     if (this.objective === 'control') return this.tiles.filter(tile => tile.type === 'objective').map(tile => ({ x: tile.x, y: tile.y }));
     if (this.objective === 'protect') {
@@ -2010,7 +2051,7 @@ export class EngineTactics {
 
   getObjectiveRouteMove(hero, actionType = 'simple') {
     let goals = this.getObjectiveFocusCells('hero');
-    if (this.objective === 'disable') {
+    if (this.objective === 'disable' || (this.scarabEncounter && this.scarabEncounter.boarded)) {
       const devices = goals.map(goal => goal.unit).filter(Boolean);
       goals = [];
       for (let y = 0; y < this.rows; y++) {
@@ -2244,7 +2285,7 @@ export class EngineTactics {
     let closestEnemy = null;
     let minDist = 999;
     this.enemies.forEach(e => {
-      if (e.currentHp > 0) {
+      if (e.currentHp > 0 && !(this.scarabEncounter && e.scarabHull)) {
         const d = Math.abs(e.gridX - hero.gridX) + Math.abs(e.gridY - hero.gridY);
         if (d < minDist) {
           minDist = d;
@@ -2328,6 +2369,9 @@ export class EngineTactics {
     if (enemiesCleared && this.objective === 'disable') {
       bestMoveCell = this.getObjectiveRouteMove(hero, chosenAction) || bestMoveCell;
     }
+    if (this.scarabEncounter) {
+      bestMoveCell = this.getObjectiveRouteMove(hero, chosenAction) || bestMoveCell;
+    }
 
     // Move there
     faceUnitToward(hero, bestMoveCell);
@@ -2372,9 +2416,11 @@ export class EngineTactics {
     });
     const preferredEnemies = this.objective === 'commander'
       ? this.enemies.filter(e => e.isBoss)
-      : this.enemies;
+      : this.scarabEncounter
+        ? (this.scarabEncounter.boarded ? this.scarabEncounter.crew : this.enemies.filter(e => !e.scarabHull))
+        : this.enemies;
     findTargetIn(preferredEnemies);
-    if (!target && preferredEnemies !== this.enemies) findTargetIn(this.enemies);
+    if (!target && preferredEnemies !== this.enemies && !this.scarabEncounter) findTargetIn(this.enemies);
 
     // Check obstacles if no enemies in range
     if (!target) {
@@ -2416,7 +2462,18 @@ export class EngineTactics {
     }, 500);
   }
 
+  applyEncounterDamage(defender, _amount, context = {}) {
+    if (this.scarabEncounter && defender === this.scarabEncounter.hull) {
+      const point = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+      if (!context.silent) this.particles.add(point.x, point.y - 28, 0, -1, '#b5a4dc', 10, 42, 'text', 'COQUE IMMUNE');
+      if (defender.state === 'hit') { defender.state = 'idle'; defender.stateTimer = 0; }
+      return true;
+    }
+    return false;
+  }
+
   applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
+    if (this.applyEncounterDamage(defender, baseDmg, { kind: 'attack', attacker })) return;
     baseDmg *= getCombatEventDamageMultiplier(attacker);
     if (defender === this.protectedArtifact) {
       const wasAlive = defender.hp > 0;
@@ -2808,6 +2865,12 @@ export class EngineTactics {
         if (e.stateTimer === 0 && e.state !== 'dead') e.state = 'idle';
       }
 
+      if (this.scarabEncounter && e.scarabHull) {
+        if (e.state === 'hit') { e.state = 'idle'; e.stateTimer = 0; }
+        e.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+        return;
+      }
+
       if (e.statusEffects?.infected > 0) {
         e.statusEffects.infected--;
         if (e.statusEffects.infected % 60 === 0) {
@@ -3006,7 +3069,7 @@ export class EngineTactics {
           const center = this.gridToScreen(cell.x, cell.y);
           ctx.fillStyle = '#ffffff';
           ctx.font = '9px "Press Start 2P"';
-          ctx.fillText(`-${preview.damage}`, center.x - 18, bounds.bottom - 10);
+          ctx.fillText(preview.invulnerable ? 'IMMUNE' : `-${preview.damage}`, center.x - 18, bounds.bottom - 10);
           if (preview.cover > 0) {
             ctx.fillStyle = '#4fc3f7';
             ctx.font = '7px "Press Start 2P"';
@@ -3092,7 +3155,7 @@ export class EngineTactics {
       ctx.fill();
     }
 
-    if (unit.currentHp > 0) {
+    if (unit.currentHp > 0 && !(this.scarabEncounter && unit.scarabHull)) {
       const barWidth = 30 * renderScale;
       const barHeight = Math.max(2, 3 * renderScale);
       const barY = unit.y - 32 * renderScale;
@@ -3101,6 +3164,11 @@ export class EngineTactics {
       const hpPct = unit.currentHp / unit.maxHp;
       ctx.fillStyle = entry.type === 'escort' ? '#39c5bb' : entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
       ctx.fillRect(unit.x - barWidth / 2, barY, barWidth * hpPct, barHeight);
+    }
+    if (this.scarabEncounter && unit.scarabHull && unit.currentHp > 0) {
+      ctx.fillStyle = '#b5a4dc';
+      ctx.font = '7px "Press Start 2P"';
+      ctx.fillText('COQUE IMMUNE', unit.x - 38 * renderScale, unit.y - 32 * renderScale);
     }
 
     if (entry.type === 'escort' && unit.currentHp > 0) {
@@ -3145,6 +3213,14 @@ export class EngineTactics {
 
     if (this.objective === 'extract') {
       (this.battlefield.extractionZone || []).forEach(cell => drawCellMarker(cell, 'rgba(57,197,187,ALPHA)', 'EXT'));
+    }
+    if (this.objective === 'scarab_boarding' && this.scarabEncounter) {
+      if (!this.scarabEncounter.boarded) {
+        drawCellMarker(this.scarabEncounter.boardingCell, 'rgba(57,197,187,ALPHA)', 'BOARD');
+      } else {
+        this.scarabEncounter.crew.filter(enemy => enemy.currentHp > 0)
+          .forEach(enemy => drawCellMarker({ x: enemy.gridX, y: enemy.gridY }, 'rgba(255,235,59,ALPHA)', 'CREW'));
+      }
     }
     if (this.objective === 'escort') {
       (this.battlefield.extractionZone || []).forEach(cell => drawCellMarker(cell, 'rgba(57,197,187,ALPHA)', 'SAFE'));
@@ -3287,6 +3363,12 @@ export class EngineTactics {
   }
 
   getObjectiveText(lang = 'fr') {
+    if (this.objective === 'scarab_boarding' && this.scarabEncounter) {
+      const remaining = this.scarabEncounter.crew.filter(enemy => enemy.currentHp > 0).length;
+      return this.scarabEncounter.boarded
+        ? (lang === 'en' ? `Directive: clear Scarab crew (${remaining})` : `Directive: eliminer l equipage (${remaining})`)
+        : (lang === 'en' ? 'Directive: board Scarab at BOARD' : 'Directive: aborder le Scarab sur BOARD');
+    }
     const lines = {
       rout: {
         fr: 'Directive: neutraliser la cellule hostile',
@@ -3361,6 +3443,7 @@ export class EngineTactics {
       objectivePct,
       objectiveProgress: this.objectiveProgress,
       objectiveTarget: this.objectiveTarget,
+      sourceEncounter: getScarabEncounterSummary(this.scarabEncounter),
       missionProfile: this.missionProfile,
       reinforcementsCalled: this.reinforcementsCalled,
       hazardPulses: this.hazardPulses,

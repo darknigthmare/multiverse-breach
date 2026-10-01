@@ -12,7 +12,8 @@ import { EngineRpg } from '../game/engineRpg';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { rpgUnitId } from '../game/rpgTargeting';
 import { drawRpgTargeting, pickRpgTarget } from '../game/rpgTargetingPresentation';
-import { absorbBattleItemDamage, grantBattleItemShield } from '../game/battleItemShield';
+import { grantBattleItemShield } from '../game/battleItemShield';
+import { applyEncounterOrDirectDamage } from '../game/encounterDamage';
 import { EngineTactics } from '../game/engineTactics';
 import { getTacticsEscortBriefing } from '../game/tacticsEscort';
 import { EngineNonCombatTrial } from '../game/nonCombatTrial';
@@ -40,6 +41,7 @@ import { getSpecialEventRewardById } from '../game/specialEvents';
 import GameHudThemeLayer from './GameHudThemeLayer';
 import MeleeControlsPanel from './MeleeControlsPanel';
 import RpgTargetingPanel from './RpgTargetingPanel';
+import RaamEncounterPanel from './RaamEncounterPanel';
 import {
   MELEE_ACTIONS,
   createDefaultMeleeInputMaps,
@@ -730,8 +732,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     actors.forEach(actor => {
       if (actor.currentHp > 0) {
         const bossFactor = actor.isBoss ? 1.25 : 1;
-        actor.currentHp = Math.max(0, actor.currentHp - absorbBattleItemDamage(actor, Math.round(Number(amount) * bossFactor)));
-        if (actor.currentHp <= 0) actor.state = 'dead';
+        applyEncounterOrDirectDamage(engine, actor, Math.round(Number(amount) * bossFactor), { kind: 'battle-item', absorbBattleItemShield: true });
         engine.particles?.add(actor.x || 360, (actor.y || 160) - 14, 0, -1, color, 6, 32, 'spark');
       }
     });
@@ -983,8 +984,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     });
     targetActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
-      actor.currentHp = Math.max(0, actor.currentHp - Math.round(effect.damage || 36));
-      if (actor.currentHp <= 0) actor.state = 'dead';
+      applyEncounterOrDirectDamage(engine, actor, Math.round(effect.damage || 36), { kind: 'field-super' });
       engine.particles?.add(actor.x || engine.width / 2, (actor.y || engine.height / 2) - 18, 0, -1, color, 8, 36, 'spark');
     });
     engine.particles?.add(
@@ -1533,7 +1533,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             } else if (anomaly.id === 'rift_burn') {
               const boss = engine.enemies.find(enemy => enemy.isBoss && enemy.currentHp > 0) || engine.enemies.find(enemy => enemy.currentHp > 0);
               if (boss) {
-                boss.currentHp = Math.max(1, boss.currentHp - Math.max(20, Math.round((boss.maxHp || boss.currentHp) * 0.04)));
+                applyEncounterOrDirectDamage(engine, boss, Math.max(20, Math.round((boss.maxHp || boss.currentHp) * 0.04)), { kind: 'anomaly', nonlethal: true });
                 particles.add(width * 0.5, height * 0.26, 0, -1, '#ff4500', 3, 55, 'text', 'RIFT BURN');
               }
             } else if (anomaly.id === 'signal') {
@@ -1808,6 +1808,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
         engineRef.current.selectEnemy?.(id);
       } else {
         engineRef.current.selectHero(id);
+        setActiveHeroId(engineRef.current.getSelectedHero()?.id || id);
       }
     }
   };
@@ -1822,6 +1823,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const activeHeroObj = rpgTargeting
     ? [...teamState, ...opponentState].find(unit => rpgUnitId(unit) === rpgTargeting.actorId)
     : opponentHasCommand ? activeOpponentObj : teamState.find(h => h.id === activeHeroId) || teamState[0];
+  const raamEncounter = stage.mode === 'RPG' ? engineRef.current?.getRaamEncounterState?.() : null;
+  const handleRaamCommand = command => {
+    if (sessionPausedRef.current || battleCompleted || opponentHasCommand || rpgTargeting) return;
+    const engine = engineRef.current;
+    if (engine?.triggerRaamEncounterAction?.(command, engine.getSelectedHero())) {
+      setTeamState([...engine.heroes]);
+      setRpgTargeting(engine.getTargetingState?.() || null);
+      sound.playSfx(command === 'frag' ? 'special' : 'shield');
+    }
+  };
   const getCombatantMove = (combatant, type) => {
     if (combatant?.[type]) return combatant[type];
     const baseDamage = Math.max(1, Number(combatant?.atk) || 8);
@@ -2704,6 +2715,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             onSelect={id => { engineRef.current?.selectTarget(id); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
             onConfirm={() => { if (sessionPausedRef.current) return; engineRef.current?.confirmTargeting(); setRpgTargeting(engineRef.current?.getTargetingState() || null); }}
             onCancel={() => { if (sessionPausedRef.current) return; engineRef.current?.cancelTargeting(); setRpgTargeting(null); }}
+          />}
+          {stage.mode === 'RPG' && !opponentHasCommand && <RaamEncounterPanel
+            encounter={raamEncounter} hero={activeHeroObj} lang={lang}
+            paused={sessionPaused || battleCompleted} targeting={Boolean(rpgTargeting)}
+            onCommand={handleRaamCommand}
           />}
           {activeHeroObj ? (
             <>

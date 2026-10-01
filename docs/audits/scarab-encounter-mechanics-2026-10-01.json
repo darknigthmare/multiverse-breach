@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-01",
+  "stageId": 2,
+  "sourceIncarnation": "Halo 2 (2004) - Metropolis, Protos-pattern Scarab",
+  "referenceUrls": [
+    "https://www.halopedia.org/Metropolis",
+    "https://www.halopedia.org/Protos-pattern_Scarab"
+  ],
+  "mechanicalStatus": "boarding-and-crew-clear-implemented",
+  "objective": "scarab_boarding",
+  "boardingCell": { "x": 4, "y": 1 },
+  "crew": ["Covenant Grunt", "Elite Minor"],
+  "approachGuard": "Jackal Sniper",
+  "victoryRequires": ["living-hero-boards", "all-encounter-crew-neutralized"],
+  "hullDamageable": false,
+  "rearReactorAdded": false,
+  "preserved": ["stage-id", "rewards", "source-enemy-template-stats", "sprite-routes", "other-stage-objectives", "custom-matches"],
+  "visualReviewStatus": "pending",
+  "faithfulnessLimitations": [
+    "Tactical grid and two-actor crew condense the source encounter.",
+    "A single boarding gate replaces the original 3D upper-deck access.",
+    "Scripted movement, full cabin geometry, detachable turrets and ending cinematic are not implemented.",
+    "The historical Scarab bitmap remains unreviewed; mechanics do not certify it as 1:1."
+  ],
+  "verification": {
+    "testFile": "scripts/scarabEncounterMechanics.test.mjs",
+    "passed": 17,
+    "failed": 0,
+    "actualEngine": "EngineTactics",
+    "playerCellInput": true,
+    "canvasObjectiveMarkers": true,
+    "completeHeroAndEnemyAI": true,
+    "originalStatMasterChiefAIVictory": true,
+    "damageHook": "applyEncounterDamage(target, amount, context)",
+    "targetedLint": "passed",
+    "diffWhitespace": "passed"
+  }
+}

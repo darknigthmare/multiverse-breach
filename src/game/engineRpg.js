@@ -8,6 +8,7 @@ import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultipl
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { calculateRpgDamage, getRpgActionProfile, getRpgEligibleTargets, resolveRpgTargets, rpgUnitId } from './rpgTargeting';
 import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
+import { RAAM_ENCOUNTER_RULES, createRaamEncounter, getRaamBoss, getRaamLightPosition, isHeroInRaamLight, isRaamShieldActive, getRaamEnemyAction, startRaamKryll, tickRaamEncounter, getRaamEncounterSnapshot } from './canonRaamEncounter.js';
 
 const RPG_FLOOR_LANES = Object.freeze({
   heroes: Object.freeze([
@@ -37,6 +38,7 @@ export class EngineRpg {
     this.playSfx = playSfx;
     this.onComplete = onComplete;
     this.stage = stage;
+    this.raamEncounter = createRaamEncounter(stage);
     this.levelProfile = getRecentUniverseLevelProfile(stage.universe);
     this.opponentControl = stage.customBattle?.opponentControl === 'p2' ? 'p2' : 'cpu';
     this.singleRoster = stage.customBattle?.singleRoster === true
@@ -77,6 +79,11 @@ export class EngineRpg {
       };
     });
     this.heroes.forEach(hero => this.fitCombatantToArena(hero));
+    if (this.raamEncounter) this.heroes.forEach(hero => {
+      hero.raamInitialHomeX = hero.homeX;
+      hero.raamInitialHomeY = hero.homeY;
+      hero.raamLightCover = false;
+    });
 
     // Calculate Synergy Sets
     const categoriesCount = this.heroes.reduce((acc, h) => {
@@ -452,7 +459,9 @@ export class EngineRpg {
   getActionContext(actor, abilityType, side = 'player') {
     const allies = side === 'enemy' ? this.enemies : this.heroes;
     const opponents = side === 'enemy' ? this.heroes : this.enemies;
-    const profile = getRpgActionProfile(actor, abilityType, side, this);
+    const encounterAction = side === 'enemy' && actor === getRaamBoss(this.raamEncounter, this.enemies)
+      ? getRaamEnemyAction(abilityType) : null;
+    const profile = getRpgActionProfile(encounterAction ? { ...actor, [abilityType]: encounterAction } : actor, abilityType, side, this);
     const eligibleTargets = getRpgEligibleTargets({ actor, profile, allies, opponents });
     return { actor, abilityType, side, profile, eligibleTargets };
   }
@@ -502,14 +511,21 @@ export class EngineRpg {
     const amount = (actor.stats?.atk ?? actor.atk ?? 8) * profile.multiplier;
     const damageMultiplier = (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1) * getCombatEventDamageMultiplier(actor);
     const estimates = resolved.targets.map(unit => {
+      const raam = getRaamBoss(this.raamEncounter, this.enemies);
+      if (profile.effect === 'damage' && unit === raam && isRaamShieldActive(this.raamEncounter, raam)) {
+        return { id: rpgUnitId(unit), effect: profile.effect, amount: 0, min: 0, max: 0, blockedByKryll: true };
+      }
       let value = amount;
-      if (profile.effect === 'damage') value = calculateRpgDamage(unit, amount * damageMultiplier, 1, true, actor);
+      const coverMultiplier = actor === raam && profile.action.encounterKind === 'troika' && isHeroInRaamLight(unit, this.width)
+        ? RAAM_ENCOUNTER_RULES.troikaCoverMultiplier : 1;
+      const previewDamage = amount * damageMultiplier * coverMultiplier;
+      if (profile.effect === 'damage') value = calculateRpgDamage(unit, previewDamage, 1, true, actor);
       else if (profile.effect === 'heal') {
         const cap = unit.statusEffects?.radiated > 0 ? unit.maxHp * 0.5 : unit.maxHp;
         value = Math.max(0, Math.min(cap - unit.currentHp, profile.healRatio ? unit.maxHp * profile.healRatio : amount));
       } else if (profile.effect === 'revive') value = unit.maxHp * profile.reviveRatio;
       else value = 0;
-      return { id: rpgUnitId(unit), effect: profile.effect, amount: Math.round(value), min: profile.effect === 'damage' ? calculateRpgDamage(unit, amount * damageMultiplier, 0.9, true, actor) : Math.round(value), max: profile.effect === 'damage' ? calculateRpgDamage(unit, amount * damageMultiplier, 1.1, true, actor) : Math.round(value) };
+      return { id: rpgUnitId(unit), effect: profile.effect, amount: Math.round(value), min: profile.effect === 'damage' ? calculateRpgDamage(unit, previewDamage, 0.9, true, actor) : Math.round(value), max: profile.effect === 'damage' ? calculateRpgDamage(unit, previewDamage, 1.1, true, actor) : Math.round(value) };
     });
     return {
       side, actorId: rpgUnitId(actor), actorName: actor.name, abilityType,
@@ -607,6 +623,80 @@ export class EngineRpg {
     return gained;
   }
 
+  canUseRaamEncounterAction(hero = this.getSelectedHero()) {
+    return !!getRaamBoss(this.raamEncounter, this.enemies) && this.heroes.includes(hero)
+      && !this.disposed && !this.paused && !this.gameOver && !this.targeting
+      && hero.currentHp > 0 && hero.state === 'idle' && !hero.actionPending && hero.atb >= 100;
+  }
+
+  getRaamEncounterState() {
+    return getRaamEncounterSnapshot(this.raamEncounter, getRaamBoss(this.raamEncounter, this.enemies),
+      this.heroes, this.width, this.canUseRaamEncounterAction());
+  }
+
+  triggerRaamEncounterAction(command, heroOrId = this.getSelectedHero()) {
+    const hero = this.resolveActor(heroOrId, 'player');
+    if (!this.canUseRaamEncounterAction(hero)) return false;
+    const boss = getRaamBoss(this.raamEncounter, this.enemies);
+    if (command === 'frag') {
+      if (this.raamEncounter.grenadesRemaining <= 0) return false;
+      this.raamEncounter.grenadesRemaining--;
+      hero.atb = 0;
+      hero.state = 'attack';
+      hero.stateTimer = 30;
+      hero.actionPending = true;
+      this.faceTarget(hero, boss);
+      this.particles.add(hero.x, hero.y - 25, (boss.x - hero.x) / 18, (boss.y - hero.y) / 18, '#6d7b45', 7, 18, 'spark');
+      this.scheduleAction(() => {
+        if (!this.gameOver && hero.currentHp > 0 && this.enemies.includes(boss) && boss.currentHp > 0) {
+          this.raamEncounter.exposureTicks = RAAM_ENCOUNTER_RULES.grenadeExposureTicks;
+          this.applyDamage(hero, boss, RAAM_ENCOUNTER_RULES.grenadeDamage, null, { kind: 'frag' });
+          this.particles.add(boss.x, boss.y - 38, 0, -0.5, '#ffcc66', 12, 65, 'text', 'KRYLL DISPERSED');
+          this.playSfx('explosion');
+        }
+        hero.actionPending = false;
+        this.returnToFormation(hero, boss);
+      }, 300);
+      return true;
+    }
+    if (!['take-light-cover', 'leave-light-cover'].includes(command)) return false;
+    const useLight = command === 'take-light-cover';
+    if (hero.raamLightCover === useLight) return false;
+    hero.raamLightCover = useLight;
+    const position = useLight ? getRaamLightPosition(hero, this.width)
+      : { x: hero.raamInitialHomeX, y: hero.raamInitialHomeY };
+    hero.x = position.x;
+    hero.y = position.y;
+    this.fitCombatantToArena(hero);
+    hero.atb = 0;
+    hero.state = 'defense';
+    hero.stateTimer = 20;
+    this.particles.add(hero.x, hero.y - 30, 0, -0.5, useLight ? '#ffe493' : '#b1b9c4', 10, 45, 'text', useLight ? 'LIT COVER' : 'OPEN');
+    return true;
+  }
+
+  // GameCanvas pickups/events must route through this gate instead of directly
+  // subtracting HP: a crossover explosion does not count as a source frag.
+  applyEncounterDamage(target, amount, context = {}) {
+    if (!this.raamEncounter || !target || !this.enemies.includes(target) || !target.isBoss
+      || (target.canonicalName || target.name) !== 'General RAAM') return false;
+    if (this.disposed || this.paused || this.gameOver || target.currentHp <= 0 || !Number.isFinite(amount) || amount <= 0) return true;
+    if (!context.directDamage) this.applyDamage(context.attacker || null, target, amount, null, context);
+    else if (isRaamShieldActive(this.raamEncounter, target)) {
+      this.particles.add(target.x, target.y - 55, 0, -0.5, '#bcc6d0', 10, 35, 'text', 'KRYLL SHIELD');
+    } else {
+      let damage = context.absorbBattleItemShield ? absorbBattleItemDamage(target, amount) : amount;
+      if (context.nonlethal) damage = Math.min(damage, Math.max(0, target.currentHp - 1));
+      target.currentHp = Math.max(0, target.currentHp - damage);
+      if (target.currentHp <= 0) {
+        target.state = 'dead';
+        target.stateTimer = 999;
+        this.playSfx('defeat');
+      }
+    }
+    return true;
+  }
+
   executeRpgAction(context, selectedTargetIds) {
     const { actor, abilityType, side, profile } = context;
     if (!this.canUseAction(actor, abilityType, side)) return false;
@@ -616,6 +706,11 @@ export class EngineRpg {
     // An impact never acquires a new target if one of these actors dies.
     const targets = [...resolved.targets];
     const anchor = resolved.anchor;
+    const encounterKind = profile.action.encounterKind;
+    if (encounterKind) {
+      this.raamEncounter.attackCount++;
+      if (encounterKind === 'kryll') startRaamKryll(this.raamEncounter, anchor);
+    }
     if (profile.effect === 'damage') actor.focusTargetId = rpgUnitId(anchor);
     actor.atb = 0;
     if (side === 'enemy') this.selectedEnemyId = rpgUnitId(actor);
@@ -639,7 +734,13 @@ export class EngineRpg {
     this.faceTarget(actor, anchor);
     const color = profile.action.color || actor.secondaryColor || actor.color || '#ff9900';
     const canonEffect = profile.effect === 'damage' ? resolveCanonHeroAttackEffect(actor, profile.action) : null;
-    if (profile.delivery === 'melee' && profile.effect === 'damage') {
+    if (encounterKind === 'kryll') {
+      this.playSfx('slash');
+      for (let index = 0; index < 8; index++) {
+        this.particles.add(actor.x, actor.y - 35, (anchor.x - actor.x) / 50, (anchor.y - actor.y) / 50 + (index - 4) * 0.1, '#50545c', 5, 60, 'spark');
+      }
+      this.particles.add(actor.x, actor.y - 65, 0, -0.5, '#ffd77e', 12, 65, 'text', 'KRYLL AWAY');
+    } else if (profile.delivery === 'melee' && profile.effect === 'damage') {
       this.positionForMelee(actor, anchor);
       this.playSfx(canonEffect?.sfx || 'slash');
       if (canonEffect) targets.forEach(target => emitCanonHeroAttackEffect(this.particles, actor, target, profile.action));
@@ -684,7 +785,7 @@ export class EngineRpg {
             if (actor.id === 'leon' || actor.name?.includes('Nemesis')) status = 'infected';
             if ((actor.id === 'neo' && abilityType === 'special') || actor.name?.includes('Smith')) status = 'glitched';
             if (/Deathclaw|Cyberdemon/.test(actor.name || '')) status = 'radiated';
-            this.applyDamage(actor, target, amount, status);
+            if (encounterKind !== 'kryll') this.applyDamage(actor, target, amount, status, { kind: encounterKind });
           }
           if (profile.cleanses && target.currentHp > 0) target.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
         }
@@ -847,8 +948,17 @@ export class EngineRpg {
       }
     }
   }
-  applyDamage(attacker, defender, baseDmg, statusEffect = null) {
+  applyDamage(attacker, defender, baseDmg, statusEffect = null, attackContext = {}) {
     if (!defender || defender.currentHp <= 0 || !Number.isFinite(baseDmg)) return 0;
+    const raam = getRaamBoss(this.raamEncounter, this.enemies);
+    if (defender === raam && isRaamShieldActive(this.raamEncounter, raam)) {
+      this.particles.add(defender.x, defender.y - 55, 0, -0.5, '#bcc6d0', 10, 35, 'text', 'KRYLL SHIELD');
+      return 0;
+    }
+    if (raam && attacker === raam && isHeroInRaamLight(defender, this.width)) {
+      if (attackContext.kind === 'kryll') return 0;
+      if (attackContext.kind === 'troika') baseDmg *= RAAM_ENCOUNTER_RULES.troikaCoverMultiplier;
+    }
     
     // Apply attacker talent modifications
     if (attacker && attacker.talent) {
@@ -867,7 +977,8 @@ export class EngineRpg {
 
     const variance = (Math.random() * 0.2) + 0.9;
     const buff = (attacker?.rpgBuffTicks > 0 ? attacker.rpgBuffMultiplier : 1) * getCombatEventDamageMultiplier(attacker);
-    const finalDmg = absorbBattleItemDamage(defender, calculateRpgDamage(defender, baseDmg * buff, variance, false, attacker));
+    const mitigatedDmg = absorbBattleItemDamage(defender, calculateRpgDamage(defender, baseDmg * buff, variance, false, attacker));
+    const finalDmg = attackContext.nonlethal ? Math.min(mitigatedDmg, Math.max(0, defender.currentHp - 1)) : mitigatedDmg;
     const dealtDamage = Math.min(defender.currentHp, finalDmg);
 
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
@@ -931,6 +1042,11 @@ export class EngineRpg {
 
     this.advanceActions();
     [...this.heroes, ...this.enemies].forEach(tickCombatEventBuffs);
+    const raam = getRaamBoss(this.raamEncounter, this.enemies);
+    if (raam) {
+      const swarmTarget = tickRaamEncounter(this.raamEncounter, this.heroes);
+      if (swarmTarget) this.applyDamage(raam, swarmTarget, raam.atk * RAAM_ENCOUNTER_RULES.swarmDamageMultiplier, null, { kind: 'kryll' });
+    }
 
     if (this.isFinalBoss) {
       this.finalBossChaosTimer++;
@@ -1012,7 +1128,11 @@ export class EngineRpg {
           h.atb = Math.min(100, h.atb + atbRate);
         }
         if (this.autoBattle && h.atb >= 100 && !h.actionPending) {
-          ['special', 'secondary', 'simple'].some(type => this.triggerAbility(h, type));
+          if (raam && !h.raamLightCover) this.triggerRaamEncounterAction('take-light-cover', h);
+          else if (raam && isRaamShieldActive(this.raamEncounter, raam)) {
+            if (this.raamEncounter.grenadesRemaining > 0) this.triggerRaamEncounterAction('frag', h);
+            // Hold ATB for the next actual swarm attack if ammunition is empty.
+          } else ['special', 'secondary', 'simple'].some(type => this.triggerAbility(h, type));
         }
         if (!h.actionPending) this.faceTarget(h, this.getFacingTarget(h));
       }
@@ -1043,7 +1163,7 @@ export class EngineRpg {
       if (e.statusEffects?.infected > 0) {
         e.statusEffects.infected--;
         if (e.statusEffects.infected % 60 === 0) {
-          e.currentHp = Math.max(1, e.currentHp - 3);
+          if (e !== raam || !isRaamShieldActive(this.raamEncounter, raam)) e.currentHp = Math.max(1, e.currentHp - 3);
           this.particles.add(e.x, e.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');
         }
       }
@@ -1068,7 +1188,10 @@ export class EngineRpg {
 
       if (e.state === 'idle' && !e.actionPending) this.faceTarget(e, this.getFacingTarget(e));
       if (this.opponentControl === 'cpu' && !this.enemyActionLock && this.enemyGlobalRecovery <= 0 && e.atb >= 100 && e.state === 'idle') {
-        for (const abilityType of ['special', 'secondary', 'simple']) {
+        const abilityTypes = e === raam
+          ? [this.raamEncounter.attackCount % 2 === 1 && this.raamEncounter.swarmTicks <= 0 ? 'secondary' : 'simple']
+          : ['special', 'secondary', 'simple'];
+        for (const abilityType of abilityTypes) {
           if (!this.canUseAction(e, abilityType, 'enemy')) continue;
           const context = this.getActionContext(e, abilityType, 'enemy');
           if (this.executeRpgAction(context, this.chooseDefaultTargets(context))) break;
@@ -1131,6 +1254,28 @@ export class EngineRpg {
     }
 
     if (e.currentHp > 0) {
+      if (e === getRaamBoss(this.raamEncounter, this.enemies)) {
+        ctx.save();
+        const shielded = isRaamShieldActive(this.raamEncounter, e);
+        if (shielded) {
+          ctx.fillStyle = '#404651';
+          for (let index = 0; index < 12; index++) {
+            const angle = animTime * 0.04 + index * Math.PI / 6;
+            const x = e.x + Math.cos(angle) * 44;
+            const y = e.y - 52 + Math.sin(angle) * 37;
+            ctx.beginPath();
+            ctx.moveTo(x - 6, y - 3);
+            ctx.lineTo(x, y + 3);
+            ctx.lineTo(x + 6, y - 3);
+            ctx.fill();
+          }
+        }
+        ctx.fillStyle = shielded ? '#d0d6df' : '#ffdc83';
+        ctx.font = '9px "Press Start 2P"';
+        ctx.textAlign = 'center';
+        ctx.fillText(shielded ? 'KRYLL SHIELD' : 'EXPOSED', e.x, e.y - e.renderHeight - 15);
+        ctx.restore();
+      }
       const width = (e.isBoss ? 70 : 36) * scale;
       const xOffset = -width / 2;
       const yOffset = (e.isBoss ? 40 : 18) * scale;
@@ -1150,6 +1295,20 @@ export class EngineRpg {
   }
 
   draw(ctx, animTime) {
+    if (getRaamBoss(this.raamEncounter, this.enemies)) {
+      ctx.save();
+      this.heroes.filter(hero => hero.currentHp > 0).forEach(hero => {
+        const light = getRaamLightPosition(hero, this.width);
+        ctx.fillStyle = 'rgba(255,226,130,0.22)';
+        ctx.strokeStyle = '#ffe08a';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.ellipse(light.x, light.y - 4, Math.max(18, this.width * 0.055), 20, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+      });
+      ctx.restore();
+    }
     // A shared depth pass prevents a far enemy from painting over a combatant
     // whose feet are lower on the perspective floor.
     [

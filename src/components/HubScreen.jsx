@@ -6,6 +6,8 @@ import sound from '../game/soundEngine';
 import { CORE_CODEX_ENTRIES, LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { CANON_PRIORITY_STAGES } from '../game/canonPriorityStages.js';
+import { isUniverseCombatMission } from '../game/missions/universeMissionCategory.js';
+import { getCanonicalEncounterBriefing } from '../game/canonEncounterBriefing.js';
 import { resolveStageArchiveBoss } from '../game/canonicalArchiveLore.js';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages, getResolvedLoreWorldBossPolicy } from '../game/expandedUniverses';
 import { inferNonCombatTrial } from '../game/nonCombatTrial';
@@ -4888,7 +4890,7 @@ function MissionDeploymentPanel({
   );
 }
 
-function RiftBriefingPanel({
+export function RiftBriefingPanel({
   lang,
   stage,
   isUnlocked,
@@ -4950,6 +4952,7 @@ function RiftBriefingPanel({
     ? (deployment.message?.[lang] || deployment.message?.fr || deployment.message?.en || (getLockedReason ? getLockedReason(stage) : ''))
     : '';
   const richBrief = getRichBreachBrief(stage) || '';
+  const encounterBriefing = getCanonicalEncounterBriefing(stage, lang);
   const richBriefSentences = richBrief
     .split(/(?<=[.!?])\s+(?=[A-ZÀ-ÖØ-Þ0-9])/u)
     .map((line) => line.trim())
@@ -4968,8 +4971,9 @@ function RiftBriefingPanel({
     },
     {
       label: lang === 'fr' ? 'DIRECTIVE' : 'DIRECTIVE',
-      value: directiveLine || launchBrief[1]
+      value: encounterBriefing?.objective || directiveLine || launchBrief[1]
     },
+    ...(encounterBriefing ? [{ label: lang === 'fr' ? 'ADAPTATION DU COMBAT' : 'COMBAT ADAPTATION', value: encounterBriefing.adaptation }] : []),
     {
       label: lang === 'fr' ? 'ANOMALIE' : 'ANOMALY',
       value: anomalyLine || launchBrief[2] || modifier.desc[lang]
@@ -8526,6 +8530,7 @@ export default function HubScreen({
     return Boolean(stage.trioArc && isStageUnlocked(stage));
   };
   const missionCategoryFilter = (stage) => {
+    if (missionScreen === 'universeMissions') return isUniverseCombatMission(stage, { isMainCampaign: isOcStoryStage(stage) });
     if (missionScreen === 'ocDlc') return Boolean(stage.ocDlc);
     if (missionScreen === 'trials') return Boolean(stage.nonCombatTrial || stage.nonCombat || stage.nC);
     if (missionScreen === 'originalWorlds') {
@@ -8551,6 +8556,13 @@ export default function HubScreen({
   ).length;
   const factionArcCount = arcProgress.length;
   const missionScreenMeta = {
+    universeMissions: {
+      label: { fr: 'Missions des univers', en: 'Universe missions' },
+      desc: { fr: 'Confrontations indépendantes dans les lieux de chaque univers. Consulte le briefing et prépare ton équipe avant de partir.', en: 'Independent encounters in each universe. Read the briefing and prepare your squad before deploying.' },
+      count: visibleStages.filter(stage => isUniverseCombatMission(stage, { isMainCampaign: isOcStoryStage(stage) })).length,
+      color: '#d9b86b',
+      image: '/images/missions/universe-arcs.webp'
+    },
     story: {
       label: { fr: 'Campagne OC', en: 'OC campaign' },
       desc: { fr: 'Campagne principale du Nexus: uniquement stages OC, chapitre actif et seuil du Sans-Auteur.', en: 'Main Nexus campaign: OC stages only, active chapter, and Authorless threshold.' },
@@ -8729,6 +8741,8 @@ export default function HubScreen({
         ? 'campaign'
         : missionScreen === 'ocDlc'
           ? 'library'
+          : missionScreen === 'universeMissions'
+            ? 'missions'
           : 'map'
     );
     setMissionModeFilter('all');
@@ -8848,7 +8862,7 @@ export default function HubScreen({
     .filter(mission => completedStageIdSet.has(String(mission.id)))
     .length;
   const isArcMissionScreen = Boolean(narrativeArcScreenType);
-  const showModeFilters = ['story', 'ocDlc', 'fusionMissions', 'trials'].includes(missionScreen)
+  const showModeFilters = ['story', 'ocDlc', 'universeMissions', 'fusionMissions', 'trials'].includes(missionScreen)
     && ['map', 'missions'].includes(missionWorkspaceView);
   const missionWorkspaceItems = missionScreen === 'story'
     ? [
@@ -8898,6 +8912,13 @@ export default function HubScreen({
           tooltip: { fr: 'Affiche les missions des actes annexes actuellement actifs.', en: 'Show missions from currently active standalone acts.' }
         }
       ]
+      : missionScreen === 'universeMissions'
+        ? [
+          { id: 'map', label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' }, count: missionPool.length,
+            tooltip: { fr: 'Localise les confrontations des univers.', en: 'Locate universe encounters.' } },
+          { id: 'missions', label: { fr: 'MISSIONS', en: 'MISSIONS' }, count: missionPool.length,
+            tooltip: { fr: 'Recherche une mission et consulte ses conditions de départ.', en: 'Find a mission and review its deployment conditions.' } }
+        ]
       : missionScreen === 'trials'
         ? [
           {
@@ -8969,6 +8990,12 @@ export default function HubScreen({
             ? 'Les routes marquent les cellules ou trois signatures doivent agir ensemble. Chaque arc ouvre ses chapitres de synergie.'
             : 'Routes mark cells where three signatures must act together. Each arc opens its synergy chapters.'
         }
+        : missionScreen === 'universeMissions'
+          ? {
+            kicker: lang === 'fr' ? 'CARTE DES FAILLES / UNIVERS' : 'RIFT MAP / UNIVERSES',
+            title: lang === 'fr' ? 'Confrontations des univers' : 'Universe encounters',
+            desc: lang === 'fr' ? 'Ouvre une faille pour consulter son lieu, ses adversaires et les conditions de départ.' : 'Open a rift to review its location, opponents and deployment conditions.'
+          }
         : missionScreen === 'ocDlc'
           ? {
             kicker: lang === 'fr' ? 'CARTE DES FAILLES / ACTES ANNEXES OC' : 'RIFT MAP / OC STANDALONE ACTS',
@@ -9421,8 +9448,8 @@ export default function HubScreen({
                   borderRadius: '4px'
                 }}>
                   {lang === 'fr'
-                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : campagne principale, univers OC, actes annexes, arcs narratifs, failles fusionnées ou épreuves sans combat.'
-                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, OC universes, standalone acts, narrative arcs, fused rifts, or non-combat trials.'}
+                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : missions des univers, campagne principale, univers OC, actes annexes, arcs narratifs, failles fusionnées ou épreuves sans combat.'
+                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: universe missions, main campaign, OC universes, standalone acts, narrative arcs, fused rifts, or non-combat trials.'}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
                   {Object.entries(missionScreenMeta).map(([key, entry]) => (
@@ -9729,6 +9756,8 @@ export default function HubScreen({
                         selectedStageId={briefingStageId}
                         viewType={missionScreen === 'fusionMissions'
                           ? 'fusion'
+                          : missionScreen === 'universeMissions'
+                            ? 'universe'
                           : missionScreen === 'ocDlc'
                             ? 'ocDlc'
                             : 'story'}

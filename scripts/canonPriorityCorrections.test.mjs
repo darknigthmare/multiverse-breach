@@ -76,7 +76,8 @@ test('Metropolis locks the Halo 2 Scarab and excludes Halo CE/Halo 3 and unrelat
   assert.deepEqual(selected.bosses, []);
   assert.equal(selected.worldBoss.name, 'Covenant Scarab Mech');
   assert.equal(selected.worldBoss.canonicalName, 'Protos-pattern Scarab');
-  assert.match(stage.gameplayAdaptation, /crew.*abstracts Halo 2 boarding/);
+  assert.match(stage.gameplayAdaptation, /Board.*catwalk.*crew/);
+  assert.match(stage.gameplayAdaptation, /hull is invulnerable/);
   assert.equal(getEnemySpriteSheetSrc({ ...selected.worldBoss, universe: stage.universe }), '/sprites/generated/bosses/halo/covenant-scarab-mech.png');
 });
 
@@ -103,7 +104,8 @@ test('the original Half-Life finale selects Nihilanth and enslaved Vortigaunts i
   assert.equal(selected.bosses[0].canonicalName, 'Nihilanth');
   assert.equal(selected.bosses[0].special, 'Teleportation Orb');
   assert.equal(selected.worldBoss, null);
-  assert.match(stage.gameplayAdaptation, /does not yet simulate.*healing crystals/);
+  assert.match(stage.gameplayAdaptation, /Destroy three healing crystals.*brain/);
+  assert.match(stage.gameplayAdaptation, /teleport rooms.*remain unimplemented/);
   assert.equal(getEnemySpriteSheetSrc({ ...selected.bosses[0], universe: stage.universe }), '/sprites/generated/bosses/half-life/alien-nihilanth-core.png');
 });
 
@@ -156,14 +158,21 @@ test('the actual RPG and Tactics engines require RAAM and the boarded Scarab to 
     const tactics = new EngineTactics(960, 540, [hero], resolve(scarabStage), particles, noop, noop, scarabStage);
     engines.push(tactics);
     assert.equal(tactics.battlefield.id, 'metropolis_scarab_deck');
-    assert.equal(tactics.objective, 'commander');
-    assert.equal(tactics.objectiveTarget, 1);
+    assert.equal(tactics.objective, 'scarab_boarding');
+    assert.equal(tactics.objectiveTarget, 3);
     assert.deepEqual(tactics.enemies.filter(enemy => enemy.isBoss).map(enemy => enemy.name), ['Covenant Scarab Mech']);
     tactics.enemies.filter(enemy => !enemy.isBoss).forEach(enemy => { enemy.currentHp = 0; });
     tactics.turnsElapsed = 100;
     tactics.updateTacticsObjective(true);
-    assert.equal(tactics.gameOver, false, 'neither soldiers nor waiting can bypass the Scarab');
-    tactics.enemies.find(enemy => enemy.isBoss).currentHp = 0;
+    assert.equal(tactics.gameOver, false, 'crew defeat and waiting cannot bypass boarding');
+    const hull = tactics.scarabEncounter.hull;
+    tactics.applyDamage(tactics.heroes[0], hull, 999999);
+    assert.equal(hull.currentHp, hull.maxHp, 'the Halo 2 hull is invulnerable');
+    // The dedicated mechanics suite covers traversal by normal cell input.
+    Object.assign(tactics.heroes[0], {
+      gridX: tactics.scarabEncounter.boardingCell.x,
+      gridY: tactics.scarabEncounter.boardingCell.y
+    });
     tactics.updateTacticsObjective(true);
     assert.equal(tactics.gameOver, true);
     assert.equal(tactics.battleResult, 'victory');
@@ -198,9 +207,21 @@ test('the actual Smash wave flow reaches the Queen and Nihilanth and requires th
       engine.updateArenaObjective();
       engine.updateObjectiveBattleState();
       assert.equal(engine.gameOver, false, `time cannot win stage ${stage.id} while its boss lives`);
-      engine.enemies[0].currentHp = 0;
-      engine.enemies[0].stateTimer = 0;
-      engine.enemies[0].state = 'dead';
+      if (stage.id === 10) {
+        const encounter = engine.nihilanthEncounter;
+        for (const crystal of encounter.crystals) engine.applyEncounterDamage(crystal, 10000);
+        engine.applyDamage(engine.heroes[0], encounter.boss, 100000, 0);
+        assert.equal(encounter.boss.currentHp, 1, 'body hits cannot deliver the lethal blow');
+        for (let tick = 0; tick < 240; tick++) engine.update();
+        assert.equal(encounter.headOpen, true);
+        engine.applyDamage(engine.heroes[0], encounter.brain, 100000, 0);
+        assert.equal(encounter.weakpointHits, 1);
+        for (let tick = 0; tick < 61; tick++) engine.update();
+      } else {
+        engine.enemies[0].currentHp = 0;
+        engine.enemies[0].stateTimer = 0;
+        engine.enemies[0].state = 'dead';
+      }
       engine.update();
       assert.equal(engine.gameOver, true);
       assert.equal(engine.meleeOutcomeResult, 'victory');

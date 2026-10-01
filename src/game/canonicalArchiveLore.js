@@ -144,15 +144,15 @@ export const CANONICAL_STAGE_ARCHIVE_LORE = Object.freeze([
     CANON_PRIORITY_STAGES.lightmassTrain,
     'Le train transporte la bombe Lightmass dans les profondeurs de Sera. Marcus Fenix et Dominic Santiago progressent de wagon en wagon, puis affrontent General RAAM, sa Troika et sa protection de Kryll.',
     'The train carries the Lightmass Bomb into Sera’s depths. Marcus Fenix and Dominic Santiago advance through its cars before confronting General RAAM, his Troika and his Kryll protection.',
-    'Les vagues RPG représentent l’assaut du train et le duel final de RAAM.',
-    'RPG waves represent the train assault and the final RAAM duel.'
+    'Les Kryll bloquent les dégâts ordinaires. Les grenades frag et les départs de l’essaim exposent RAAM ; la lumière protège de l’essaim. Les commandes ATB, la réserve partagée de grenades et les durées adaptent le combat original.',
+    'Kryll block ordinary damage. Frag grenades and swarm departures expose RAAM; light protects from the swarm. ATB commands, shared grenade supply and timings adapt the original fight.'
   ),
   stageNotice(
     CANON_PRIORITY_STAGES.metropolisScarab,
     'À Metropolis, Master Chief traverse les rues et canaux de New Mombasa envahis par le Covenant. Il rejoint les passerelles au-dessus du Scarab Protos, l’aborde et neutralise son équipage.',
     'In Metropolis, Master Chief crosses Covenant-occupied New Mombasa streets and canals. He reaches the walkways above the Protos Scarab, boards it and neutralizes its crew.',
-    'L’objectif de commandant du mode Tactics représente cet abordage ; le duel contre les PV du véhicule condense la neutralisation de l’équipage de Halo 2.',
-    'The Tactics commander objective represents this boarding; the vehicle HP duel condenses the neutralization of the Halo 2 crew.'
+    'Rejoignez la passerelle d’abordage puis neutralisez le Grunt et l’Élite de l’équipage. La coque du Scarab est invulnérable. La grille, le véhicule immobile et le nombre d’occupants adaptent Metropolis ; aucun cœur arrière de Halo 3 n’est ajouté.',
+    'Reach the boarding catwalk, then neutralize the Grunt and Elite crew. The Scarab hull is invulnerable. The grid, stationary walker and crew count adapt Metropolis; no Halo 3 rear core is added.'
   ),
   stageNotice(
     CANON_PRIORITY_STAGES.hadleysQueen,
@@ -165,8 +165,8 @@ export const CANONICAL_STAGE_ARCHIVE_LORE = Object.freeze([
     CANON_PRIORITY_STAGES.xenNihilanth,
     'Dans la dernière chambre de Xen, Gordon Freeman affronte Nihilanth, une créature en lévitation alimentée par des cristaux. Ses sphères de téléportation peuvent envoyer Freeman dans d’autres salles ; sa tête ouverte révèle son point faible cérébral.',
     'In Xen’s final chamber, Gordon Freeman confronts Nihilanth, a levitating creature sustained by crystals. Its teleportation spheres can send Freeman into other rooms; its opened head exposes its brain weak point.',
-    'L’arène Smash et ses vagues représentent le combat du premier Half-Life.',
-    'The Smash arena and its waves represent the original Half-Life encounter.'
+    'Détruisez les trois cristaux, affaiblissez le boss et sa réserve de sphères de soin, puis visez le cerveau lorsque la tête s’ouvre. Le corps ne peut pas recevoir le coup fatal. Les plateformes et durées sont adaptées au mode Smash ; les salles de téléportation et les renforts invoqués restent à réaliser.',
+    'Destroy the three crystals, weaken the boss and its healing-sphere reserve, then aim at the brain when the head opens. Body hits cannot deliver the lethal blow. Platforms and timings adapt the fight to Smash; teleport rooms and summoned reinforcements remain to be implemented.'
   ),
   stageNotice(
     CANON_PRIORITY_STAGES.shadowMoses,
