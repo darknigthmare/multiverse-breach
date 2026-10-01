@@ -61,7 +61,9 @@ test('Pirates preserves its saved mode, rewards, stats and image identities whil
   assert.equal(getEnemySpriteSheetSrc({ ...barbossa, universe }), '/sprites/generated/bosses/pirates-of-the-caribbean/hector-barbossa.png');
   assert.equal(pool.worldBoss.name, 'Calypso Maelstrom', 'the historical asset identity is not reassigned');
   assert.equal(pool.bosses.find(enemy => enemy.name === 'Davy Jones').hp, 555);
-  assert.match(stage.gameplayAdaptation, /curse.*not simulated/);
+  assert.match(stage.gameplayAdaptation, /882/);
+  assert.match(stage.gameplayAdaptation, /Will.*Jack/s);
+  assert.doesNotMatch(stage.gameplayAdaptation, /curse.*not simulated/);
 });
 
 test('Pirates mission and combatants use the 2003 source in both archive languages instead of a maelstrom narrative', () => {
@@ -172,11 +174,10 @@ for (const name of ['Cursed Aztec Pirate', 'Hector Barbossa']) {
       engines.push(engine);
       engine.opponentControl = 'p2';
       engine.enemyGlobalRecovery = 0;
-      if (name === 'Hector Barbossa') {
-        engine.enemies.forEach(enemy => { enemy.currentHp = 0; });
-        engine.update();
-        assert.equal(engine.wave, 2, 'the real RPG stage reaches its Barbossa wave');
-      }
+      assert.equal(engine.wave, 1, 'the source curse ritual and duel share one encounter');
+      assert.equal(engine.maxWaves, 1);
+      assert.deepEqual(engine.enemies.map(enemy => enemy.name), ['Cursed Aztec Pirate', 'Cursed Aztec Pirate', 'Hector Barbossa']);
+      assert.equal(engine.getPiratesCurseEncounterState().curseActive, true);
       const actor = engine.enemies.find(enemy => enemy.name === name);
       assert.ok(actor);
       actor.atb = 100;

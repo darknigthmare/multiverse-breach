@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-01",
+  "scope": "Actual saved campaign stage 269, The Curse of the Black Pearl (2003), Isla de Muerta; no image identity, pixel data, hero combat statistics or enemy combat statistics changed.",
+  "sourceEvidence": [
+    {
+      "url": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "type": "primary-publisher-synopsis",
+      "httpStatus": 200,
+      "sha256": "f79a9be61015f575518cec6e87391494a77ea376559ad8652d8d1df629ded7fc",
+      "consulted": true,
+      "facts": [
+        "Barbossa and his men are undead and immortal under the Aztec curse.",
+        "Moonlight reveals their skeletal bodies.",
+        "The plundered treasure must be restored with a blood payment to break the curse."
+      ],
+      "limits": "The official synopsis does not identify every donor, the number of medallions or the exact final-shot timing."
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_The_Curse_of_the_Black_Pearl",
+      "type": "secondary-film-synopsis",
+      "httpStatus": 200,
+      "sha256": "4406fbc39e10b5200df8241600e7921ff8991f99b4206bf4463cdbc42a91f806",
+      "consulted": true,
+      "facts": [
+        "The cursed chest contains 882 gold pieces.",
+        "Bootstrap Bill Turner’s missing payment can be completed by his son Will; Elizabeth’s attempted substitution fails.",
+        "Jack takes a medallion during the final duel.",
+        "Jack shoots Barbossa as Will returns Will’s and Jack’s medallions, paid with their blood.",
+        "Barbossa dies when the curse is broken; the remaining pirates are defeated by the Navy."
+      ],
+      "limits": "Secondary synopsis supports the finished-film order; it is not publisher certification or frame-by-frame footage analysis."
+    },
+    {
+      "url": "https://imsdb.com/scripts/Pirates-of-the-Caribbean.html",
+      "type": "secondary-hosted-screenplay-draft",
+      "httpStatus": 200,
+      "sha256": "89a71d9a3996b5c96ffbe0b0f77036903df5d341bf55020f7d7d57ce7a928209",
+      "consulted": true,
+      "usedForFinalTiming": false,
+      "limits": "This script has a different ending order: Jack returns his own coin after Barbossa dies. It is a draft reference, not evidence for the released film’s exact final sequence."
+    }
+  ],
+  "implemented": {
+    "savedStageId": 269,
+    "sourceIncarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Isla de Muerta",
+    "enemyRoster": [
+      "Cursed Aztec Pirate",
+      "Cursed Aztec Pirate",
+      "Hector Barbossa"
+    ],
+    "composition": "One simultaneous ATB encounter, replacing the impossible immortal HP-gated preliminary wave.",
+    "curseProtection": "All three source cursed combatants reject internal attacks, status damage, item damage, field supers and nonlethal anomalies until the paid medallions are restored. Optional pickup shields are not consumed by a blocked hit.",
+    "commands": [
+      "collect-final-coins",
+      "coordinate-will",
+      "restore-chest"
+    ],
+    "payments": "Source Will Turner, son of Bootstrap Bill Turner, completes the missing Turner payment. Source Jack Sparrow pays for his own taken medallion. A crossover hero coordinates these assistants and cannot substitute its own, Elizabeth’s or Jack-only blood for Will.",
+    "ritual": "The condensed late-film chest starts at 880/882 while Will’s and Jack’s final medallions are outside it. Collection and preparation are separate from actual restitution.",
+    "finale": "Will restores the two paid source medallions on the third command’s impact, the curse lifts, and the scripted source Jack shot resolves on the next simulation tick. Barbossa’s resulting death completes the duel with the remaining two pirates alive and mortal.",
+    "victoryGate": [
+      "curse lifted",
+      "882/882 returned",
+      "Will payment ready",
+      "Jack payment ready",
+      "source shot resolved",
+      "Barbossa dead"
+    ],
+    "actionLocks": "Living idle squad hero, ATB at least 100, no pending ritual action, no pause, no manual targeting, no game-over or disposal. Each valid command spends one ready turn and lands after 18 simulation ticks. Failed or unknown commands spend no turn.",
+    "customIsolation": "Requires saved ID, RPG mode, exact universe and exact 2003 Isla de Muerta incarnation plus exclusive Barbossa roster; excludes customBattle, isCustomBattle and isCustom.",
+    "api": [
+      "getPiratesCurseEncounterState()",
+      "triggerPiratesCurseAction(command, heroOrId)",
+      "applyEncounterDamage(target, amount, context)"
+    ],
+    "finaleLock": "Restitution and the source shot form one cinematic transaction. The curse is inactive after restitution, but ordinary attacks, pre-existing DoT and external damage remain blocked from sourceShotFired through the end of the duel, including queued callbacks after sourceShotResolved but before victory checks. The scripted Jack shot is the explicit exception for Barbossa. Optional pickup shields and crew HP remain intact."
+  },
+  "adaptationsAndOpenLimits": [
+    "Three ATB squad commands, 18-tick impacts and a one-tick separation between curse restitution and lethal shot are game-system timing, not the film’s original frame timing.",
+    "Two generic cursed pirate combatants condense the simultaneous encounter; this is not a census of the original crew.",
+    "Will and Jack are scripted source assistants available independently of the selected crossover squad. No injury input or player HP payment is required.",
+    "The final two-coin state assumes the earlier returned treasure and crew payments; gathering all 882 coins across the story is not reproduced.",
+    "The encounter ends the treasure-cavern duel. The film’s later Navy defeat and surrender aboard the Dauntless are outside this mission; surviving pirates are not falsely marked dead or claimed to surrender inside the cavern.",
+    "The chest is a labelled objective marker. Existing character, skeleton, cave and chest art remain visually unapproved; no 1:1 visual certification is made.",
+    "No Flying Dutchman, Davy Jones, Calypso, maelstrom or later-film mechanism is added.",
+    "The film’s Jack briefly becomes immortal by taking a medallion. This source Jack is a scripted assistant without HP; a playable crossover Jack retains the ordinary squad HP rules. The scripted assistant and playable combatant are an explicit adaptation, not a claim to reproduce Jack’s temporary on-screen immortality as a hero mechanic.",
+    "The source final-shot transaction protects biologically mortal crew against unrelated hits during its one-tick resolution. It remains locked after shot resolution until the scene ends so callback ordering cannot kill the surviving crew. Mortal damage arithmetic is tested separately in explicitly reopened post-victory engine fixtures, not a player-visible continuation."
+  ],
+  "unchanged": {
+    "stageMode": "RPG",
+    "difficulty": "Hard",
+    "goldPrize": 143,
+    "shardPrize": 44,
+    "crewStats": {
+      "hp": 103,
+      "atk": 13,
+      "spd": 4
+    },
+    "barbossaStats": {
+      "hp": 490,
+      "atk": 22,
+      "spd": 4
+    },
+    "historicalImageIdentity": "unchanged"
+  },
+  "validation": {
+    "newPiratesRuntimeTests": 38,
+    "newPiratesRuntimePassed": 38,
+    "priorRaamRuntimeTests": 29,
+    "priorRaamRuntimePassed": 29,
+    "combinedNodeTests": 67,
+    "combinedNodePassed": 67,
+    "targetedLint": "passed",
+    "diffCheck": "passed",
+    "actualFullAutomaticMissions": [
+      "Original Jack/Will/Elizabeth trio from constructor ATB, enemy CPU active, original stats, all heroes survive.",
+      "Solo crossover Marcus from constructor ATB, enemy CPU active, original stats; source Will and Jack remain distinct assistants."
+    ],
+    "coverage": [
+      "Immortality for boss and crew",
+      "External item/super/anomaly protection",
+      "No shield/lifesteal/status side effects",
+      "Source donor identity and wrong-donor rejection",
+      "Ordered commands and turn spending",
+      "Pause, targeting, action locks, coordinator death and disposal",
+      "Source shot before/after ritual timing",
+      "Victory with crew alive",
+      "Partial ritual cannot win through generic HP kills",
+      "Exact direct damage and nonlethal rules after curse removal",
+      "Custom and unrelated stage isolation",
+      "RAAM regressions",
+      "Actual BFG and restitution actions queued in both same-turn orders",
+      "Actual BFG impact on the same tick as Jack’s source shot",
+      "Pre-existing infection during the restitution transaction",
+      "Mortal arithmetic in an isolated fixture reopened only after proven source victory"
+    ],
+    "independentLegacyIntegration": {
+      "tests": 109,
+      "passed": 109,
+      "newFinaleRaceCases": 7,
+      "coverage": "Three external effect types against boss and crew at restitution; queued battle-item and field-super effects after source-shot resolution before gameOver; pickup shields and crew HP remain intact."
+    },
+    "independentReadOnlyReview": {
+      "checks": 11,
+      "passed": 11,
+      "resolvedFinding": "Queued BFG impact between restitution and the source shot could kill surviving crew; final cinematic lock now prevents it.",
+      "raceReproductions": [
+        "Restitution before actual BFG in the same tick",
+        "Actual BFG before restitution in the same tick",
+        "Source shot callback before actual BFG callback at the same due boundary"
+      ],
+      "survivingCrewHp": [
+        103,
+        103
+      ]
+    }
+  },
+  "inputSha256": {
+    "src/game/engineRpg.js": "bf3850197251993705775947d1be7c7b56b95b6d2f560a5e67cdafb6c4d23991",
+    "src/game/canonPiratesCurseEncounter.js": "488849da83f6ebb740c274242f0d872e8da5f06a82d5de386ef806446cb3d5c3",
+    "scripts/canonPiratesCurseEncounter.test.mjs": "7bb8b181b96f77a7fb9ffcb36d3309bd5abf0a12e2481f7299c42056e1377b6a"
+  }
+}

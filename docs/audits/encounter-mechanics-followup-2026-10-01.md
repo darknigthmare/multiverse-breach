@@ -14,7 +14,7 @@ Les dégâts d’objets, de supers et d’anomalies passent par les mêmes prote
 
 Aucun bitmap n’est installé ni certifié 1:1 par ce lot. La génération du sprite Batman TDK a été refusée. Une candidate de décor du train Gears a été comparée aux captures Xbox 360 : ses motifs sont pertinents, mais sa caméra et sa géométrie sont adaptées, et son PNG natif ne respecte pas le contrat WebP. Elle reste locale.
 
-Les **25 corrections visuelles P0** et **6 601 chemins d’assets absents** restent ouverts. Restent aussi le sauvetage et la fuite de Newt/Queen, les téléportations et invocations de Nihilanth, la caméra et la couverture originales de RAAM, le parcours urbain complet et les animations du Scarab, ainsi que la résolution de la malédiction dans la scène Pirates. Les incarnations précises et adaptations doivent continuer à être distinguées dans les données et dans les briefs.
+Les **25 corrections visuelles P0** et **6 601 chemins d’assets absents** restent ouverts. Le sauvetage de Newt et l’évacuation, ainsi que la résolution de la malédiction de Pirates, sont réalisés dans le [lot suivant](rescue-mechanics-followup-2026-10-01.md). Restent les téléportations et invocations de Nihilanth, la caméra et la couverture originales de RAAM, le parcours urbain complet et les animations du Scarab, ainsi que le duel ultérieur de la Reine à bord du Sulaco. Les incarnations précises et adaptations doivent continuer à être distinguées dans les données et dans les briefs.
 
 ## Vérification
 

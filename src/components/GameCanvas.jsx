@@ -42,6 +42,8 @@ import GameHudThemeLayer from './GameHudThemeLayer';
 import MeleeControlsPanel from './MeleeControlsPanel';
 import RpgTargetingPanel from './RpgTargetingPanel';
 import RaamEncounterPanel from './RaamEncounterPanel';
+import AliensRescuePanel from './AliensRescuePanel';
+import PiratesCursePanel from './PiratesCursePanel';
 import {
   MELEE_ACTIONS,
   createDefaultMeleeInputMaps,
@@ -1824,6 +1826,25 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     ? [...teamState, ...opponentState].find(unit => rpgUnitId(unit) === rpgTargeting.actorId)
     : opponentHasCommand ? activeOpponentObj : teamState.find(h => h.id === activeHeroId) || teamState[0];
   const raamEncounter = stage.mode === 'RPG' ? engineRef.current?.getRaamEncounterState?.() : null;
+  const aliensRescueEncounter = stage.mode === 'Smash' ? engineRef.current?.getAliensRescueEncounterState?.() : null;
+  const piratesCurseEncounter = stage.mode === 'RPG' ? engineRef.current?.getPiratesCurseEncounterState?.() : null;
+  const handleAliensRescueCommand = command => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked) return;
+    const engine = engineRef.current;
+    if (engine?.triggerAliensRescueAction?.(command, engine.getActiveHero())) {
+      setTeamState([...engine.heroes]);
+      sound.playSfx('shield');
+    }
+  };
+  const handlePiratesCurseCommand = command => {
+    if (sessionPausedRef.current || battleCompleted || opponentHasCommand || rpgTargeting) return;
+    const engine = engineRef.current;
+    if (engine?.triggerPiratesCurseAction?.(command, engine.getSelectedHero())) {
+      setTeamState([...engine.heroes]);
+      setRpgTargeting(engine.getTargetingState?.() || null);
+      sound.playSfx('shield');
+    }
+  };
   const handleRaamCommand = command => {
     if (sessionPausedRef.current || battleCompleted || opponentHasCommand || rpgTargeting) return;
     const engine = engineRef.current;
@@ -2720,6 +2741,16 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             encounter={raamEncounter} hero={activeHeroObj} lang={lang}
             paused={sessionPaused || battleCompleted} targeting={Boolean(rpgTargeting)}
             onCommand={handleRaamCommand}
+          />}
+          {stage.mode === 'RPG' && !opponentHasCommand && <PiratesCursePanel
+            encounter={piratesCurseEncounter} hero={activeHeroObj} lang={lang}
+            paused={sessionPaused || battleCompleted} targeting={Boolean(rpgTargeting)}
+            onCommand={handlePiratesCurseCommand}
+          />}
+          {stage.mode === 'Smash' && <AliensRescuePanel
+            encounter={aliensRescueEncounter} hero={engineRef.current?.getActiveHero?.() || activeHeroObj} lang={lang}
+            paused={sessionPaused || battleCompleted} inputLocked={preMatchLocked}
+            onCommand={handleAliensRescueCommand}
           />}
           {activeHeroObj ? (
             <>

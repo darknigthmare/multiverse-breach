@@ -382,14 +382,14 @@ const CANONICAL_REQUESTED_UNIVERSE_WAVE = [
         enemyRosterExclusive: true,
         visualAnchor: 'Isla de Muerta treasure cavern from The Curse of the Black Pearl (2003): rock walls, shallow water, scattered gold and the stone chest of stolen Aztec medallions. Jack duels Hector Barbossa with pirate swords and a flintlock pistol; moonlight reveals cursed skeletal bodies. No Flying Dutchman, Davy Jones tentacles, Calypso or maelstrom from the later films.',
         visualReviewStatus: 'pending',
-        gameplayAdaptation: 'RPG waves condense the treasure-cavern duel. The film breaks the Aztec curse by returning the stolen medallions with blood before Barbossa can die; that curse-breaking condition is not simulated by the HP objective.',
+        gameplayAdaptation: 'One ATB encounter combines Barbossa and two cursed pirates. Three squad commands recover the final two medallions, coordinate the established offerings from Will Turner (Bootstrap Bill lineage) and Jack Sparrow, and let Will restore all 882 pieces. The curse blocks lethal damage until restoration; Jack’s scripted pistol shot then ends the duel. Source Will and Jack assist the crossover squad separately from playable versions, which retain ordinary hero HP. Other pirates remain alive and mortal; their later surrender aboard the Dauntless is outside this scene. Commands and shot timing are game adaptations.',
         sourceSceneLore: {
           fr: 'Dans la caverne au trésor d’Isla de Muerta, Jack Sparrow affronte Hector Barbossa. Le trésor aztèque volé rend Barbossa et ses pirates immortels ; la lumière de la lune révèle leurs corps squelettiques. Will Turner restitue les pièces et le sang nécessaire pour lever la malédiction au moment où Jack tire sur Barbossa.',
           en: 'In Isla de Muerta’s treasure cavern, Jack Sparrow confronts Hector Barbossa. The stolen Aztec treasure makes Barbossa and his pirates immortal; moonlight reveals their skeletal bodies. Will Turner returns the coins and the blood needed to lift the curse as Jack shoots Barbossa.'
         },
         sourceSceneAdaptation: {
-          fr: 'Les vagues RPG et les PV condensent le duel ; la restitution des pièces et du sang pour lever la malédiction n’est pas encore une condition de victoire du moteur.',
-          en: 'RPG waves and HP condense the duel; returning the coins and blood to lift the curse is not yet an engine victory condition.'
+          fr: 'Un combat ATB réunit Barbossa et deux pirates maudits. Récupérez les deux dernières pièces, coordonnez les offrandes de Will Turner, fils de Bootstrap Bill, et de Jack, puis faites restituer les 882 pièces par Will. La malédiction empêche leur mort avant la restitution ; le tir de Jack termine ensuite le duel. Will et Jack assistent l’équipe crossover, séparément des versions jouables qui gardent leurs PV ordinaires. Les autres pirates restent vivants et mortels ; leur reddition ultérieure sur le Dauntless reste hors scène. Les commandes et leur durée sont adaptées au jeu.',
+          en: 'One ATB encounter combines Barbossa and two cursed pirates. Recover the final two coins, coordinate the offerings from Will Turner, Bootstrap Bill’s son, and Jack, then have Will restore all 882 pieces. The curse prevents their death before restoration; Jack’s shot then ends the duel. Will and Jack assist the crossover squad separately from playable versions, which retain ordinary hero HP. Other pirates remain alive and mortal; their later surrender aboard the Dauntless is outside this scene. Commands and timings adapt the film.'
         }
       }
     },
@@ -422,10 +422,10 @@ const CANONICAL_REQUESTED_UNIVERSE_WAVE = [
       referenceUrl: 'https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/',
       visualAnchor: 'Hector Barbossa from The Curse of the Black Pearl (2003), long dark pirate coat, broad black hat, beard, pirate sword and flintlock pistol; cursed skeletal form only under moonlight. No Davy Jones tentacles or crab anatomy.',
       sourceLore: {
-        fr: 'Hector Barbossa a pris le Black Pearl à Jack Sparrow et dirige l’équipage maudit par le trésor aztèque. Dans la caverne d’Isla de Muerta, il affronte Jack à l’épée. La malédiction doit être levée avant que le tir de Jack puisse le tuer ; les PV du duel RPG ne reproduisent pas cette condition.',
-        en: 'Hector Barbossa took the Black Pearl from Jack Sparrow and commands the crew cursed by the Aztec treasure. In Isla de Muerta’s cavern he duels Jack with a sword. The curse must be lifted before Jack’s shot can kill him; the RPG duel’s HP does not reproduce this condition.'
+        fr: 'Hector Barbossa a pris le Black Pearl à Jack Sparrow et dirige l’équipage maudit par le trésor aztèque. Dans la caverne d’Isla de Muerta, il affronte Jack à l’épée. Will restitue les dernières pièces avec les offrandes nécessaires de sa lignée et de Jack ; la malédiction levée permet au tir de Jack de tuer Barbossa.',
+        en: 'Hector Barbossa took the Black Pearl from Jack Sparrow and commands the crew cursed by the Aztec treasure. In Isla de Muerta’s cavern he duels Jack with a sword. Will restores the final coins with the necessary offerings from his lineage and Jack; lifting the curse lets Jack’s shot kill Barbossa.'
       },
-      canonStatus: 'Source identity locked; the RPG HP duel does not simulate lifting the Aztec curse.',
+      canonStatus: 'Source identity locked; the RPG encounter requires the final coins and source Will/Jack offerings before Jack’s scripted fatal shot. ATB commands and timing are adaptations.',
       visualReviewStatus: 'pending'
     }, 'Davy Jones'],
     gear: [

@@ -5,6 +5,7 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import { createServer } from 'vite';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
 import { getCanonicalEncounterBriefing } from '../src/game/canonEncounterBriefing.js';
+import { getExpandedStages } from '../src/game/expandedUniverses.js';
 
 let vite;
 let RiftBriefingPanel;
@@ -22,7 +23,9 @@ const render = (stage, lang) => renderToStaticMarkup(React.createElement(RiftBri
   getMissionLaunchBrief: () => ['Contexte générique.', 'Directive A.R.C.A.: neutraliser le boss.'],
   onLaunch() {}, onClose() {}
 }));
-for (const stage of [CANON_PRIORITY_STAGES.lightmassTrain, CANON_PRIORITY_STAGES.metropolisScarab, CANON_PRIORITY_STAGES.xenNihilanth]) {
+const piratesStage = getExpandedStages().find(stage => stage.id === 269);
+for (const stage of [CANON_PRIORITY_STAGES.lightmassTrain, CANON_PRIORITY_STAGES.metropolisScarab,
+  CANON_PRIORITY_STAGES.hadleysQueen, CANON_PRIORITY_STAGES.xenNihilanth, piratesStage]) {
   for (const lang of ['fr', 'en']) {
     test(`the real stage ${stage.id} briefing exposes its playable objective and adaptation in ${lang}, even while locked`, () => {
       const html = render(stage, lang);
@@ -34,15 +37,23 @@ for (const stage of [CANON_PRIORITY_STAGES.lightmassTrain, CANON_PRIORITY_STAGES
       if (stage.id === 1) assert.match(html, /Kryll.*frag.*Troika/s);
       if (stage.id === 2) assert.match(html, lang === 'fr' ? /abordage.*Grunt.*Élite.*invulnérable/s : /boarding.*Grunt.*Elite.*invulnerable/s);
       if (stage.id === 10) assert.match(html, lang === 'fr' ? /trois cristaux.*cerveau.*corps/s : /three healing crystals.*brain.*Body/s);
+      if (stage.id === 3) assert.match(html, lang === 'fr' ? /NEWT.*porteur vivant.*Reine/s : /NEWT.*living carrier.*Queen/s);
+      if (stage.id === 269) assert.match(html, /Will Turner.*Bootstrap Bill.*Jack Sparrow.*882/s);
     });
   }
 }
 test('source rules do not replace unrelated incarnations, custom battles or other stage objectives', () => {
   const stage = CANON_PRIORITY_STAGES.lightmassTrain;
-  for (const other of [null, {}, { ...stage, customBattle: true }, { ...stage, isCustomBattle: true },
+  for (const other of [null, {}, { ...stage, customBattle: true }, { ...stage, isCustomBattle: true }, { ...stage, isCustom: true },
     { ...stage, incarnation: 'Gears 3' }, { ...stage, universe: 'Halo' }, { ...stage, mode: 'Smash' },
-    CANON_PRIORITY_STAGES.hadleysQueen, CANON_PRIORITY_STAGES.shadowMoses]) {
+    CANON_PRIORITY_STAGES.shadowMoses]) {
     assert.equal(getCanonicalEncounterBriefing(other, 'fr'), null);
   }
-  assert.match(render(CANON_PRIORITY_STAGES.hadleysQueen, 'fr'), /Directive A.R.C.A.: neutraliser le boss/);
+  assert.match(render(CANON_PRIORITY_STAGES.shadowMoses, 'fr'), /Directive A.R.C.A.: neutraliser le boss/);
+  for (const other of [{ ...piratesStage, customBattle: true }, { ...piratesStage, isCustomBattle: true }, { ...piratesStage, isCustom: true },
+    { ...piratesStage, incarnation: 'Dead Man’s Chest' }, { ...piratesStage, mode: 'Smash' },
+    { ...piratesStage, enemyRosterExclusive: false }, { ...piratesStage, canonicalBossName: 'Davy Jones' }]) {
+    assert.equal(getCanonicalEncounterBriefing(other, 'en'), null);
+  }
+  assert.equal(getCanonicalEncounterBriefing({ ...CANON_PRIORITY_STAGES.hadleysQueen, isCustom: true }), null);
 });

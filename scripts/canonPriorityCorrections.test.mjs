@@ -91,7 +91,9 @@ test('LV-426 selects the 1986 Queen and warriors, without a Predalien or later f
   assert.equal(selected.worldBoss, null);
   assert.equal(selected.bosses[0].special, 'Inner Jaw Lunge');
   assert.doesNotMatch(selected.bosses[0].equipment.join(' '), /spit|acid/i);
-  assert.match(stage.gameplayAdaptation, /escapes the processor.*Sulaco/);
+  assert.match(stage.gameplayAdaptation, /Rescue Newt.*evacuation.*living carrier/);
+  assert.match(stage.gameplayAdaptation, /Queen damage is nonlethal/);
+  assert.match(stage.gameplayAdaptation, /Sulaco.*separate and unimplemented/);
   assert.equal(getEnemySpriteSheetSrc({ ...selected.bosses[0], universe: stage.universe }), '/sprites/generated/bosses/alien/alien-queen.png');
 });
 
@@ -182,10 +184,11 @@ test('the actual RPG and Tactics engines require RAAM and the boarded Scarab to 
   }
 });
 
-test('the actual Smash wave flow reaches the Queen and Nihilanth and requires their defeat', async () => {
+test('the actual Smash wave flow requires Newt evacuation in the hive and the exposed brain in Xen', async () => {
   const vite = await createServer({
     appType: 'custom', logLevel: 'silent', server: { middlewareMode: true }
   });
+  const engines = [];
   try {
     const { EngineSmash } = await vite.ssrLoadModule('/src/game/engineSmash.js?canon-mission-followup');
     const hero = getHeroById('arca_mirelle');
@@ -193,8 +196,12 @@ test('the actual Smash wave flow reaches the Queen and Nihilanth and requires th
     const noop = () => {};
     for (const stage of [CANON_PRIORITY_STAGES.hadleysQueen, CANON_PRIORITY_STAGES.xenNihilanth]) {
       const engine = new EngineSmash(960, 540, [hero], resolve(stage), particles, noop, noop, stage);
+      engines.push(engine);
+      engine.syncPreMatchFromServer(3000);
+      engine.completeMeleeIntros();
+      Object.assign(engine.heroes[0], { maxHp: 50000, currentHp: 50000 });
       assert.equal(engine.arena.id, stage.smashArenaId);
-      assert.equal(engine.arena.objective, 'boss');
+      assert.equal(engine.arena.objective, stage.id === 3 ? 'rescue_escape' : 'boss');
       while (engine.wave < engine.maxWaves) {
         engine.enemies.forEach(enemy => { enemy.currentHp = 0; enemy.stateTimer = 0; enemy.state = 'dead'; });
         engine.update();
@@ -218,15 +225,27 @@ test('the actual Smash wave flow reaches the Queen and Nihilanth and requires th
         assert.equal(encounter.weakpointHits, 1);
         for (let tick = 0; tick < 61; tick++) engine.update();
       } else {
-        engine.enemies[0].currentHp = 0;
-        engine.enemies[0].stateTimer = 0;
-        engine.enemies[0].state = 'dead';
+        const encounter = engine.aliensRescueEncounter;
+        assert.equal(engine.applyEncounterDamage(encounter.queen, 100000, { directDamage: true }), true);
+        assert.equal(encounter.queen.currentHp, 1, 'hive damage cannot kill the Queen');
+        engine.update();
+        assert.equal(engine.gameOver, false, 'repelling the Queen does not rescue Newt');
+        assert.equal(engine.objectiveProgress, 0);
+        // Dedicated rescue tests cover traversal through normal movement input.
+        Object.assign(engine.heroes[0], { x: encounter.rescuePoint.x, y: encounter.rescuePoint.y, state: 'idle' });
+        assert.equal(engine.triggerAliensRescueAction('rescue-newt', engine.heroes[0]), true);
+        assert.equal(engine.objectiveProgress, 1);
+        assert.equal(engine.gameOver, false, 'freeing Newt still requires evacuation');
+        Object.assign(engine.heroes[0], { x: encounter.exitPoint.x, y: encounter.exitPoint.y, state: 'idle' });
+        assert.equal(engine.triggerAliensRescueAction('evacuate', engine.heroes[0]), true);
+        assert.equal(encounter.queen.currentHp, 1, 'the source mission ends with the Queen alive');
       }
       engine.update();
       assert.equal(engine.gameOver, true);
       assert.equal(engine.meleeOutcomeResult, 'victory');
     }
   } finally {
+    engines.forEach(engine => engine.dispose?.());
     await vite.close();
   }
 });

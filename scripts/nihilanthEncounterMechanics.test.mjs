@@ -250,9 +250,10 @@ test('purple energy projectiles travel through the arena and damage the hero rat
   assert.ok(engine.testEvidence.cues.includes('shoot'));
 });
 
-test('the source Queen stage retains its existing generic damage and ringout rules', () => {
-  const engine = makeEngine({ stage: CANON_PRIORITY_STAGES.hadleysQueen });
+test('a noncanonical Alien stage retains generic damage without acquiring either source encounter', () => {
+  const engine = makeEngine({ stage: { ...CANON_PRIORITY_STAGES.hadleysQueen, id: 303 } });
   assert.equal(engine.nihilanthEncounter, null);
+  assert.equal(engine.aliensRescueEncounter, null);
   const queen = engine.enemies[0];
   assert.equal(engine.applyEncounterDamage(queen, 100000), false);
   engine.applyDamage(engine.heroes[0], queen, 100000, 0);

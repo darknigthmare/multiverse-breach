@@ -9,6 +9,7 @@ import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { calculateRpgDamage, getRpgActionProfile, getRpgEligibleTargets, resolveRpgTargets, rpgUnitId } from './rpgTargeting';
 import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 import { RAAM_ENCOUNTER_RULES, createRaamEncounter, getRaamBoss, getRaamLightPosition, isHeroInRaamLight, isRaamShieldActive, getRaamEnemyAction, startRaamKryll, tickRaamEncounter, getRaamEncounterSnapshot } from './canonRaamEncounter.js';
+import { PIRATES_CURSE_RULES, createPiratesCurseEncounter, getPiratesBarbossa, getPiratesCurseNextCommand, getPiratesCurseEncounterSnapshot, isPiratesCursedCombatant, isPiratesCurseProtected } from './canonPiratesCurseEncounter.js';
 
 const RPG_FLOOR_LANES = Object.freeze({
   heroes: Object.freeze([
@@ -39,6 +40,7 @@ export class EngineRpg {
     this.onComplete = onComplete;
     this.stage = stage;
     this.raamEncounter = createRaamEncounter(stage);
+    this.piratesCurseEncounter = createPiratesCurseEncounter(stage);
     this.levelProfile = getRecentUniverseLevelProfile(stage.universe);
     this.opponentControl = stage.customBattle?.opponentControl === 'p2' ? 'p2' : 'cpu';
     this.singleRoster = stage.customBattle?.singleRoster === true
@@ -103,7 +105,7 @@ export class EngineRpg {
     this.finalePolicy = enemiesData.finalePolicy || null;
     this.enemies = [];
     this.wave = 1;
-    this.maxWaves = this.singleRoster ? 1 : enemiesData.worldBoss ? 3 : 2;
+    this.maxWaves = this.singleRoster || this.piratesCurseEncounter ? 1 : enemiesData.worldBoss ? 3 : 2;
     this.isBossStage = this.singleRoster
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
@@ -258,7 +260,32 @@ export class EngineRpg {
     this.enemies = [];
     const w = this.wave;
 
-    if (this.singleRoster) {
+    if (this.piratesCurseEncounter) {
+      // An immortal crew cannot be an HP-gated preliminary wave. The actual
+      // curse ritual and Barbossa duel share one condensed cavern encounter.
+      const pirate = this.enemiesData.monsters.find(enemy => enemy.name === 'Cursed Aztec Pirate');
+      const barbossa = this.enemiesData.bosses.find(enemy => (enemy.canonicalName || enemy.name) === 'Hector Barbossa');
+      [pirate, pirate, barbossa].filter(Boolean).forEach((template, index) => {
+        const isBoss = template === barbossa;
+        const position = this.resolveFloorPosition(
+          isBoss ? this.levelProfile?.rpg?.bossLanes?.[0] : this.levelProfile?.rpg?.enemyLanes?.[index],
+          isBoss ? { x: 0.86, y: 0.87 } : RPG_FLOOR_LANES.enemies[index],
+          template.anchor
+        );
+        const id = `enemy:pirates:${index}:${template.id || template.name}`;
+        this.enemies.push({
+          ...template, battleId: id, runtimeId: id,
+          x: position.x, y: position.y, homeX: position.x, homeY: position.y,
+          state: 'idle', stateTimer: 0, atb: Math.random() * 15,
+          cooldown: 0, specialCharge: 0,
+          defense: template.defense || { reduce: 0.42, dur: 1.2 },
+          maxHp: template.hp, currentHp: template.hp,
+          facing: -1, isBoss,
+          statusEffects: { infected: 0, glitched: 0, radiated: 0 }
+        });
+      });
+      if (barbossa) this.playSfx('portal');
+    } else if (this.singleRoster) {
       this.enemies = this.enemiesData.customRoster.slice(0, 3).map((template, index) => {
         const isWorldBoss = template.isWorldBoss === true;
         const isBoss = template.isBoss === true || isWorldBoss;
@@ -512,6 +539,11 @@ export class EngineRpg {
     const damageMultiplier = (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1) * getCombatEventDamageMultiplier(actor);
     const estimates = resolved.targets.map(unit => {
       const raam = getRaamBoss(this.raamEncounter, this.enemies);
+      if (profile.effect === 'damage' && isPiratesCurseProtected(this.piratesCurseEncounter, unit, this.enemies)) {
+        return { id: rpgUnitId(unit), effect: profile.effect, amount: 0, min: 0, max: 0,
+          blockedByAztecCurse: this.piratesCurseEncounter.curseActive,
+          blockedBySourceFinale: this.piratesCurseEncounter.sourceShotFired };
+      }
       if (profile.effect === 'damage' && unit === raam && isRaamShieldActive(this.raamEncounter, raam)) {
         return { id: rpgUnitId(unit), effect: profile.effect, amount: 0, min: 0, max: 0, blockedByKryll: true };
       }
@@ -623,6 +655,65 @@ export class EngineRpg {
     return gained;
   }
 
+  canUsePiratesCurseAction(hero = this.getSelectedHero()) {
+    return !!getPiratesBarbossa(this.piratesCurseEncounter, this.enemies)
+      && !!getPiratesCurseNextCommand(this.piratesCurseEncounter)
+      && this.heroes.includes(hero) && !this.disposed && !this.paused && !this.gameOver && !this.targeting
+      && hero.currentHp > 0 && hero.state === 'idle' && !hero.actionPending && hero.atb >= 100;
+  }
+
+  getPiratesCurseEncounterState() {
+    return getPiratesCurseEncounterSnapshot(this.piratesCurseEncounter, this.enemies, this.canUsePiratesCurseAction());
+  }
+
+  triggerPiratesCurseAction(command, heroOrId = this.getSelectedHero()) {
+    const hero = this.resolveActor(heroOrId, 'player');
+    const encounter = this.piratesCurseEncounter;
+    if (!this.canUsePiratesCurseAction(hero) || command !== getPiratesCurseNextCommand(encounter)) return false;
+    encounter.commandPending = command;
+    encounter.ritualPending = command === 'restore-chest';
+    hero.atb = 0;
+    hero.state = 'special';
+    hero.stateTimer = 30;
+    hero.actionPending = true;
+    this.playSfx('confirm');
+    this.scheduleAction(() => {
+      if (!this.gameOver && hero.currentHp > 0) {
+        if (command === 'collect-final-coins') encounter.finalCoinsCollected = true;
+        else if (command === 'coordinate-will') {
+          // These are the source NPCs' payments; the selected hero is only
+          // coordinating them. Elizabeth or an arbitrary donor cannot replace Will.
+          encounter.willBloodReady = true;
+          encounter.jackBloodReady = true;
+        } else if (command === 'restore-chest') {
+          const boss = getPiratesBarbossa(encounter, this.enemies);
+          encounter.sourceShotFired = true;
+          this.playSfx('shoot');
+          encounter.returnedPieces = PIRATES_CURSE_RULES.totalPieces;
+          encounter.curseActive = false;
+          // Will drops the paid medallions as Jack fires. No prior crossover
+          // hit is stored or retrospectively credited as the final source shot.
+          this.scheduleAction(() => {
+            if (!this.gameOver && !encounter.curseActive && encounter.returnedPieces === PIRATES_CURSE_RULES.totalPieces
+              && boss?.currentHp > 0 && this.enemies.includes(boss)) {
+              boss.currentHp = 0;
+              boss.state = 'dead';
+              boss.stateTimer = 999;
+              encounter.sourceShotResolved = true;
+              this.playSfx('defeat');
+            } else if (!encounter.curseActive && boss?.currentHp === 0) encounter.sourceShotResolved = true;
+          }, 16);
+          this.particles.add(this.width * 0.45, this.height * 0.51, 0, -0.5, '#efcc76', 12, 80, 'text', 'CURSE LIFTED');
+        }
+      }
+      encounter.commandPending = null;
+      encounter.ritualPending = false;
+      hero.actionPending = false;
+      this.returnToFormation(hero);
+    }, PIRATES_CURSE_RULES.commandImpactTicks * 1000 / 60);
+    return true;
+  }
+
   canUseRaamEncounterAction(hero = this.getSelectedHero()) {
     return !!getRaamBoss(this.raamEncounter, this.enemies) && this.heroes.includes(hero)
       && !this.disposed && !this.paused && !this.gameOver && !this.targeting
@@ -678,6 +769,23 @@ export class EngineRpg {
   // GameCanvas pickups/events must route through this gate instead of directly
   // subtracting HP: a crossover explosion does not count as a source frag.
   applyEncounterDamage(target, amount, context = {}) {
+    if (isPiratesCursedCombatant(this.piratesCurseEncounter, target, this.enemies)) {
+      if (this.disposed || this.paused || this.gameOver || target.currentHp <= 0 || !Number.isFinite(amount) || amount <= 0) return true;
+      if (isPiratesCurseProtected(this.piratesCurseEncounter, target, this.enemies)) {
+        this.particles.add(target.x, target.y - 55, 0, -0.5, '#efcc76', 10, 35, 'text', this.piratesCurseEncounter.curseActive ? 'AZTEC CURSE' : 'FINAL SHOT');
+      } else if (!context.directDamage) this.applyDamage(context.attacker || null, target, amount, null, context);
+      else {
+        let damage = context.absorbBattleItemShield ? absorbBattleItemDamage(target, amount) : amount;
+        if (context.nonlethal) damage = Math.min(damage, Math.max(0, target.currentHp - 1));
+        target.currentHp = Math.max(0, target.currentHp - damage);
+        if (target.currentHp <= 0) {
+          target.state = 'dead';
+          target.stateTimer = 999;
+          this.playSfx('defeat');
+        }
+      }
+      return true;
+    }
     if (!this.raamEncounter || !target || !this.enemies.includes(target) || !target.isBoss
       || (target.canonicalName || target.name) !== 'General RAAM') return false;
     if (this.disposed || this.paused || this.gameOver || target.currentHp <= 0 || !Number.isFinite(amount) || amount <= 0) return true;
@@ -950,6 +1058,10 @@ export class EngineRpg {
   }
   applyDamage(attacker, defender, baseDmg, statusEffect = null, attackContext = {}) {
     if (!defender || defender.currentHp <= 0 || !Number.isFinite(baseDmg)) return 0;
+    if (isPiratesCurseProtected(this.piratesCurseEncounter, defender, this.enemies)) {
+      this.particles.add(defender.x, defender.y - 55, 0, -0.5, '#efcc76', 10, 35, 'text', this.piratesCurseEncounter.curseActive ? 'AZTEC CURSE' : 'FINAL SHOT');
+      return 0;
+    }
     const raam = getRaamBoss(this.raamEncounter, this.enemies);
     if (defender === raam && isRaamShieldActive(this.raamEncounter, raam)) {
       this.particles.add(defender.x, defender.y - 55, 0, -0.5, '#bcc6d0', 10, 35, 'text', 'KRYLL SHIELD');
@@ -1042,6 +1154,20 @@ export class EngineRpg {
 
     this.advanceActions();
     [...this.heroes, ...this.enemies].forEach(tickCombatEventBuffs);
+    // Repair legacy/event HP writes before wave/victory checks. A body falling
+    // during the curse or the source finale is not a mortal crew death. The
+    // one resolved source shot is the explicit exception for Barbossa.
+    if (this.piratesCurseEncounter?.curseActive || this.piratesCurseEncounter?.sourceShotFired) {
+      const sourceBoss = getPiratesBarbossa(this.piratesCurseEncounter, this.enemies);
+      this.enemies.forEach(enemy => {
+        if (isPiratesCursedCombatant(this.piratesCurseEncounter, enemy, this.enemies) && enemy.currentHp <= 0
+          && !(enemy === sourceBoss && this.piratesCurseEncounter.sourceShotResolved)) {
+          enemy.currentHp = enemy.maxHp;
+          enemy.state = 'idle';
+          enemy.stateTimer = 0;
+        }
+      });
+    }
     const raam = getRaamBoss(this.raamEncounter, this.enemies);
     if (raam) {
       const swarmTarget = tickRaamEncounter(this.raamEncounter, this.heroes);
@@ -1057,7 +1183,14 @@ export class EngineRpg {
     }
 
     const heroesAlive = this.heroes.some(h => h.currentHp > 0);
-    const enemiesAlive = this.enemies.some(e => e.currentHp > 0);
+    const piratesBoss = getPiratesBarbossa(this.piratesCurseEncounter, this.enemies);
+    const piratesDuelComplete = !!this.piratesCurseEncounter && !this.piratesCurseEncounter.curseActive
+      && this.piratesCurseEncounter.returnedPieces === PIRATES_CURSE_RULES.totalPieces
+      && this.piratesCurseEncounter.willBloodReady && this.piratesCurseEncounter.jackBloodReady
+      && this.piratesCurseEncounter.sourceShotResolved && piratesBoss?.currentHp === 0;
+    // The source duel ends with Barbossa's death. The remaining crew become
+    // mortal; they are not an additional kill quota or falsely killed here.
+    const enemiesAlive = this.piratesCurseEncounter ? !piratesDuelComplete : this.enemies.some(e => e.currentHp > 0);
 
     if (!heroesAlive) {
       this.gameOver = true;
@@ -1128,7 +1261,11 @@ export class EngineRpg {
           h.atb = Math.min(100, h.atb + atbRate);
         }
         if (this.autoBattle && h.atb >= 100 && !h.actionPending) {
-          if (raam && !h.raamLightCover) this.triggerRaamEncounterAction('take-light-cover', h);
+          if (this.piratesCurseEncounter?.curseActive) {
+            const command = getPiratesCurseNextCommand(this.piratesCurseEncounter);
+            if (command) this.triggerPiratesCurseAction(command, h);
+            // Hold a ready turn until the current source-assistant step lands.
+          } else if (raam && !h.raamLightCover) this.triggerRaamEncounterAction('take-light-cover', h);
           else if (raam && isRaamShieldActive(this.raamEncounter, raam)) {
             if (this.raamEncounter.grenadesRemaining > 0) this.triggerRaamEncounterAction('frag', h);
             // Hold ATB for the next actual swarm attack if ammunition is empty.
@@ -1163,7 +1300,8 @@ export class EngineRpg {
       if (e.statusEffects?.infected > 0) {
         e.statusEffects.infected--;
         if (e.statusEffects.infected % 60 === 0) {
-          if (e !== raam || !isRaamShieldActive(this.raamEncounter, raam)) e.currentHp = Math.max(1, e.currentHp - 3);
+          if ((e !== raam || !isRaamShieldActive(this.raamEncounter, raam))
+            && !isPiratesCurseProtected(this.piratesCurseEncounter, e, this.enemies)) e.currentHp = Math.max(1, e.currentHp - 3);
           this.particles.add(e.x, e.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');
         }
       }
@@ -1254,6 +1392,14 @@ export class EngineRpg {
     }
 
     if (e.currentHp > 0) {
+      if (isPiratesCurseProtected(this.piratesCurseEncounter, e, this.enemies)) {
+        ctx.save();
+        ctx.fillStyle = '#efcc76';
+        ctx.font = '8px "Press Start 2P"';
+        ctx.textAlign = 'center';
+        ctx.fillText(this.piratesCurseEncounter.curseActive ? 'CURSED' : 'FINAL SHOT', e.x, e.y - this.getCombatantBounds(e).height - 15);
+        ctx.restore();
+      }
       if (e === getRaamBoss(this.raamEncounter, this.enemies)) {
         ctx.save();
         const shielded = isRaamShieldActive(this.raamEncounter, e);
@@ -1295,6 +1441,21 @@ export class EngineRpg {
   }
 
   draw(ctx, animTime) {
+    if (this.piratesCurseEncounter) {
+      // This is an objective marker, not a source-faithful rendered prop.
+      const x = this.width * 0.45;
+      const y = this.height * 0.51;
+      ctx.save();
+      ctx.fillStyle = '#685542';
+      ctx.fillRect(x - 18, y - 10, 36, 19);
+      ctx.strokeStyle = '#efcc76';
+      ctx.strokeRect(x - 18, y - 10, 36, 19);
+      ctx.fillStyle = '#efcc76';
+      ctx.font = '8px "Press Start 2P"';
+      ctx.textAlign = 'center';
+      ctx.fillText(`AZTEC ${this.piratesCurseEncounter.returnedPieces}/${PIRATES_CURSE_RULES.totalPieces}`, x, y - 18);
+      ctx.restore();
+    }
     if (getRaamBoss(this.raamEncounter, this.enemies)) {
       ctx.save();
       this.heroes.filter(hero => hero.currentHp > 0).forEach(hero => {

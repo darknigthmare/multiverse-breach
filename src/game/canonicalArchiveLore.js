@@ -158,8 +158,8 @@ export const CANONICAL_STAGE_ARCHIVE_LORE = Object.freeze([
     CANON_PRIORITY_STAGES.hadleysQueen,
     'Ripley entre dans la ruche du processeur atmosphérique de Hadley’s Hope, sur LV-426, pour sauver Newt. Elle découvre les œufs et la Reine, puis quitte le processeur avant son explosion. Le duel au power loader se déroule ensuite à bord du Sulaco.',
     'Ripley enters Hadley’s Hope’s atmosphere processor hive on LV-426 to rescue Newt. She discovers the eggs and the Queen, then leaves the processor before it explodes. The power-loader duel takes place afterward aboard the Sulaco.',
-    'Le combat Smash condense la rencontre de la ruche en un objectif de boss ; il ne situe pas la victoire cinématographique au processeur.',
-    'The Smash battle condenses the hive encounter into a boss objective; it does not place the film’s final victory inside the processor.'
+    'Libérez Newt au repère du nid, puis atteignez la sortie avec son porteur vivant. Les coups repoussent la Reine sans la tuer ; sa défaite ne remplace pas le sauvetage. Les vagues, la route 2D, les repères et l’échec si le porteur tombe adaptent la scène. Le duel ultérieur au power loader reste à réaliser séparément à bord du Sulaco.',
+    'Free Newt at the nest marker, then reach the exit with her living carrier. Hits repel the Queen without killing her; defeating her cannot replace the rescue. Waves, the 2D route, markers and failure if the carrier falls adapt the scene. The later power-loader duel remains to be implemented separately aboard the Sulaco.'
   ),
   stageNotice(
     CANON_PRIORITY_STAGES.xenNihilanth,

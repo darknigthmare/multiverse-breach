@@ -21,6 +21,16 @@ import {
 } from './canonNihilanthEncounter.js';
 import { drawNihilanthEncounter } from './canonNihilanthEncounterPresentation.js';
 import {
+  aliensRescueHeroId,
+  attachAliensRescueQueen,
+  createAliensRescueEncounter,
+  getAliensHiveHeroLoadout,
+  getAliensRescueEncounterSummary,
+  getAliensRescueObjectiveText,
+  isAtAliensRescuePoint
+} from './canonAliensRescueEncounter.js';
+import { drawAliensRescueEncounter, emitAliensHiveAttackEffect } from './canonAliensRescueEncounterPresentation.js';
+import {
   absorbMeleeGuardHit,
   applyMeleeHitStun,
   beginMeleeAction,
@@ -181,6 +191,12 @@ export class EngineSmash {
     this.isFixedCustomRoster = this.isLocalP2 || this.singleRoster;
     this.arena = createSmashArena(stage, width, height);
     this.nihilanthEncounter = createNihilanthEncounter(stage, this.arena);
+    this.aliensRescueEncounter = createAliensRescueEncounter(stage, this.arena, width, height);
+    if (this.aliensRescueEncounter) {
+      this.arena.objective = 'rescue_escape';
+      this.arena.objectiveTarget = 2;
+    }
+    this.paused = false;
     this.stageTopologyProfile = this.arena.topologyProfile;
     this.hazardsDisabled = this.hazardsDisabled
       || this.stageTopologyProfile.eventIntensity === STAGE_EVENT_INTENSITIES.off;
@@ -218,7 +234,7 @@ export class EngineSmash {
     
     // Map base heroes
     this.heroes = heroes.map((h, index) => initializeMeleeActorRuntime({
-      ...h,
+      ...getAliensHiveHeroLoadout(this.aliensRescueEncounter, h),
       x: this.arena.spawns.heroes[index]?.x || (100 + index * 30),
       y: this.arena.spawns.heroes[index]?.y || this.arena.groundY,
       vx: 0,
@@ -565,7 +581,9 @@ export class EngineSmash {
         null,
         action.guardDamage * powerScale
       );
-      if (profile) emitCanonHeroAttackEffect(this.particles, attacker, target, abilityType);
+      if (profile && !emitAliensHiveAttackEffect(this.particles, attacker, target, abilityType)) {
+        emitCanonHeroAttackEffect(this.particles, attacker, target, abilityType);
+      }
       hitCount += 1;
     });
 
@@ -758,6 +776,7 @@ export class EngineSmash {
       statusEffects: { infected: 0, glitched: 0, radiated: 0 }
     }));
     attachNihilanthBoss(this.nihilanthEncounter, this.enemies.at(-1), this.width, this.height);
+    attachAliensRescueQueen(this.aliensRescueEncounter, this.enemies.at(-1));
 
     this.playSfx('portal');
     this.particles.add(spawnX, spawnY - 10, 0, 0, '#9b59b6', 15, 45, 'portal');
@@ -854,7 +873,9 @@ export class EngineSmash {
     const effect = resolveCanonHeroAttackEffect(actor, action);
     this.playSfx(effect?.sfx || (profile.delivery === 'melee' ? 'slash' : 'shoot'));
     const targets = getSmashAbilityTargets(actor, candidates, profile);
-    if (!targets.length) emitCanonHeroAttackEffect(this.particles, actor, null, action);
+    if (!targets.length && !emitAliensHiveAttackEffect(this.particles, actor, null, action)) {
+      emitCanonHeroAttackEffect(this.particles, actor, null, action);
+    }
     if (abilityType === 'special') {
       this.particles.add(actor.x - 30, actor.y - 50, 0, -0.5, '#f1c40f', 16, 80, 'text', `!!! ${String(action.name || abilityType).toUpperCase()} !!!`);
     }
@@ -862,7 +883,9 @@ export class EngineSmash {
     const multiplier = Number.isFinite(Number(action.dmg)) ? Number(action.dmg) : 1;
     const knockback = profile.knockback ?? (abilityType === 'special' ? 45 : abilityType === 'secondary' ? 20 : 10);
     targets.forEach(target => {
-      emitCanonHeroAttackEffect(this.particles, actor, target, action);
+      if (!emitAliensHiveAttackEffect(this.particles, actor, target, action)) {
+        emitCanonHeroAttackEffect(this.particles, actor, target, action);
+      }
       const sourceId = actor.sourceId || actor.id;
       const status = sourceId === 'neo' && abilityType === 'special' ? 'glitched'
         : sourceId === 'leon' && abilityType === 'simple' ? 'infected' : null;
@@ -1053,6 +1076,9 @@ export class EngineSmash {
     if (encounterDamage) {
       finalDmg = Math.min(finalDmg, Math.max(0, defender.currentHp - (encounterDamage.allowLethal ? 0 : 1)));
     }
+    if (this.aliensRescueEncounter?.queen === defender) {
+      finalDmg = Math.min(finalDmg, Math.max(0, defender.currentHp - 1));
+    }
     if (this.heroes.includes(attacker) && this.enemies.includes(defender)) {
       this.damageDealt += finalDmg;
     } else if (this.enemies.includes(attacker) && this.heroes.includes(defender)) {
@@ -1103,6 +1129,26 @@ export class EngineSmash {
   // External battle items and custom super attacks must use the same head
   // requirement as ordinary attacks. Other encounters retain their own path.
   applyEncounterDamage(target, amount, context = {}) {
+    if (this.aliensRescueEncounter?.queen === target) {
+      if (this.gameOver || this.paused || this.isMatchInputLocked() || target.currentHp <= 0) return true;
+      if (context.directDamage === true) {
+        const requested = Number(amount);
+        if (!Number.isFinite(requested) || requested <= 0) return true;
+        const shielded = context.absorbBattleItemShield === true
+          ? absorbBattleItemDamage(target, requested) : requested;
+        const dealt = Math.min(shielded, Math.max(0, target.currentHp - 1));
+        target.currentHp -= dealt;
+        this.damageDealt += dealt;
+        if (!context.silent && dealt > 0) {
+          this.playSfx('hit');
+          this.particles.add(target.x, target.y - 20, 0, -1, '#e6a551', 12, 40, 'text', `${dealt}`);
+        }
+      } else {
+        const attacker = context.attacker || this.getActiveHero() || { x: target.x - 1 };
+        this.applyDamage(attacker, target, amount, 0);
+      }
+      return true;
+    }
     const encounter = this.nihilanthEncounter;
     if (!encounter?.boss || (target !== encounter.boss && target !== encounter.brain
       && !encounter.crystals.includes(target))) return false;
@@ -1148,6 +1194,77 @@ export class EngineSmash {
 
   getEncounterTargets() {
     return [...this.enemies, ...getNihilanthTargets(this.nihilanthEncounter)];
+  }
+
+  setPaused(paused) {
+    this.paused = Boolean(paused);
+  }
+
+  getAliensRescueEncounterState() {
+    const hero = this.getActiveHero();
+    const summary = getAliensRescueEncounterSummary(this.aliensRescueEncounter, this.heroes, hero);
+    if (summary && !this.canUseAliensRescueInteraction(hero)) {
+      summary.commands.rescueNewt = false;
+      summary.commands.evacuate = false;
+    }
+    return summary;
+  }
+
+  canUseAliensRescueInteraction(hero) {
+    return Boolean(this.aliensRescueEncounter && this.heroes.includes(hero) && hero.currentHp > 0
+      && !this.gameOver && !this.paused && !this.isMatchInputLocked()
+      && !isMeleeHitLocked(hero) && !isMeleeMovementLocked(hero)
+      && !['attack', 'defense', 'dead', 'intro'].includes(hero.state));
+  }
+
+  triggerAliensRescueAction(command, heroOrId = this.getActiveHero()) {
+    const runtime = this.aliensRescueEncounter;
+    const hero = typeof heroOrId === 'string'
+      ? this.heroes.find(candidate => aliensRescueHeroId(candidate) === heroOrId)
+      : heroOrId;
+    if (!runtime || !this.canUseAliensRescueInteraction(hero)) return false;
+    if (command === 'rescue-newt' && runtime.phase === 'rescue'
+      && isAtAliensRescuePoint(hero, runtime.rescuePoint)) {
+      runtime.rescued = true;
+      runtime.carrierId = aliensRescueHeroId(hero);
+      runtime.phase = 'escape';
+      this.objectiveProgress = 1;
+      this.objectivePulse = 'NEWT LIBEREE : REJOIGNEZ LA SORTIE';
+      this.playSfx('confirm');
+      return true;
+    }
+    if (command === 'evacuate' && runtime.phase === 'escape'
+      && aliensRescueHeroId(hero) === runtime.carrierId
+      && isAtAliensRescuePoint(hero, runtime.exitPoint)) {
+      runtime.complete = true;
+      runtime.phase = 'complete';
+      this.objectiveProgress = 2;
+      this.objectivePulse = 'NEWT SAUVEE : EVACUATION REUSSIE';
+      this.updateObjectiveBattleState();
+      return true;
+    }
+    return false;
+  }
+
+  updateAliensRescueAutoBattle(hero, keysPressed) {
+    const runtime = this.aliensRescueEncounter;
+    if (!runtime || !this.autoBattle || !hero || hero.currentHp <= 0) return keysPressed;
+    const point = runtime.phase === 'escape' ? runtime.exitPoint
+      : runtime.phase === 'rescue' ? runtime.rescuePoint : this.getNearestEnemy(hero);
+    if (!point) return keysPressed;
+    const command = runtime.phase === 'escape' ? 'evacuate' : 'rescue-newt';
+    if (runtime.queen && this.triggerAliensRescueAction(command, hero)) return {};
+    const deltaX = point.x - hero.x;
+    const deltaY = point.y - hero.y;
+    // The authored rescue route shares the continuous main platform. Combat
+    // waves can still need jumps to reach their existing upper-platform spawn.
+    const movement = { left: deltaX < -18, right: deltaX > 18,
+      jump: runtime.phase === 'search' && deltaY < -30 && Boolean(this.isOnGround(hero)) };
+    if (runtime.phase === 'search' && Math.abs(deltaX) < 115 && Math.abs(deltaY) < 38) {
+      hero.facing = deltaX >= 0 ? 1 : -1;
+      this.triggerAbility(hero, 'simple');
+    }
+    return movement;
   }
 
   ensureLocalVersusLeaders() {
@@ -1532,6 +1649,7 @@ export class EngineSmash {
   }
 
   update(keysPressed = {}, keysP2 = {}, timing = {}) {
+    if (this.paused) return;
     if (this.isLocalP2) {
       this.updateLocalVersus(keysPressed, keysP2, timing);
       return;
@@ -1571,7 +1689,7 @@ export class EngineSmash {
       if (this.gameOver) return;
     }
 
-    if (!enemiesAlive && !this.gameOver) {
+    if (!enemiesAlive && !this.gameOver && !this.aliensRescueEncounter?.queen) {
       if (this.wave < this.maxWaves) {
         this.wave++;
         this.enemies = [];
@@ -1591,6 +1709,10 @@ export class EngineSmash {
     }
     tickNihilanthEncounter(this.nihilanthEncounter, this);
 
+    if (this.autoBattle && this.aliensRescueEncounter?.phase === 'escape') {
+      const carrier = this.heroes.find(hero => aliensRescueHeroId(hero) === this.aliensRescueEncounter.carrierId);
+      if (carrier && carrier.id !== this.activeHeroId) this.setActiveHero(carrier.id);
+    }
     let activeHero = this.getActiveHero();
     if (activeHero && activeHero.currentHp <= 0 && !this.gameOver) {
       const nextAlive = this.heroes.find(h => h.currentHp > 0);
@@ -1603,7 +1725,9 @@ export class EngineSmash {
     }
 
     if (activeHero && activeHero.currentHp > 0 && !this.gameOver) {
-      this.updateLocalVersusMovement(activeHero, this.getNearestEnemy(activeHero), keysPressed, 'p1');
+      const movementKeys = this.updateAliensRescueAutoBattle(activeHero, keysPressed);
+      if (this.gameOver) return;
+      this.updateLocalVersusMovement(activeHero, this.getNearestEnemy(activeHero), movementKeys, 'p1');
     }
 
     this.heroes.forEach(h => {
@@ -1792,6 +1916,20 @@ export class EngineSmash {
 
   updateObjectiveBattleState() {
     if (this.gameOver) return;
+    if (this.aliensRescueEncounter) {
+      const runtime = this.aliensRescueEncounter;
+      const carrier = this.heroes.find(hero => aliensRescueHeroId(hero) === runtime.carrierId);
+      const alive = this.heroes.some(hero => hero.currentHp > 0);
+      const result = !alive || (runtime.rescued && (!carrier || carrier.currentHp <= 0))
+        ? 'defeat' : runtime.complete ? 'victory' : null;
+      if (result) {
+        this.setMeleeOutcomeStates(result);
+        this.gameOver = true;
+        this.victoryTimer = 0;
+        this.playSfx(result);
+      }
+      return;
+    }
     const objective = this.arena.objective || 'waves';
     // A destroyed protected artifact is an immediate loss, including on the
     // exact frame where the survival timer reaches its target.
@@ -1897,6 +2035,16 @@ export class EngineSmash {
     }
     
     if (char.y > this.height + 72) {
+      if (this.aliensRescueEncounter?.queen === char) {
+        // A Smash ringout is not the film's later Sulaco airlock finale.
+        char.x = this.aliensRescueEncounter.queenAnchor.x;
+        char.y = this.aliensRescueEncounter.queenAnchor.y;
+        char.vx = 0;
+        char.vy = 0;
+        char.ledge = null;
+        transitionMeleeState(char, 'idle', { force: true, restart: true });
+        return;
+      }
       char.currentHp = 0;
       char.state = 'dead';
       char.stateTimer = 0;
@@ -1981,6 +2129,12 @@ export class EngineSmash {
     const objective = this.arena.objective || 'waves';
     const aliveHeroes = this.heroes.filter(hero => hero.currentHp > 0);
     const aliveEnemies = this.enemies.filter(enemy => enemy.currentHp > 0);
+
+    if (this.aliensRescueEncounter) {
+      this.objectiveProgress = this.aliensRescueEncounter.complete ? 2
+        : this.aliensRescueEncounter.rescued ? 1 : 0;
+      return;
+    }
 
     if (objective === 'waves') {
       this.objectiveProgress = Math.min(this.objectiveTarget, this.wave);
@@ -2240,6 +2394,7 @@ export class EngineSmash {
       }
     });
     drawNihilanthEncounter(ctx, this.nihilanthEncounter, animTime, this.width, this.height, lang);
+    drawAliensRescueEncounter(ctx, this.aliensRescueEncounter, this.heroes, animTime, this.width, this.height, lang);
 
     this.heroes.forEach(h => {
       drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing, 72, 'melee');
@@ -2296,7 +2451,10 @@ export class EngineSmash {
     ctx.strokeRect(x, y, 190, 34);
     ctx.fillStyle = this.arena.theme.accent;
     ctx.font = '8px "Press Start 2P"';
-    ctx.fillText(getSmashObjectiveLabel(this.arena, lang).toUpperCase(), x + 8, y + 13);
+    const objectiveLabel = this.aliensRescueEncounter
+      ? (lang === 'fr' ? 'Sauver Newt et fuir' : 'Rescue Newt and escape')
+      : getSmashObjectiveLabel(this.arena, lang);
+    ctx.fillText(objectiveLabel.toUpperCase(), x + 8, y + 13);
     ctx.fillStyle = 'rgba(255,255,255,0.14)';
     ctx.fillRect(x + 8, y + 20, 174, 6);
     ctx.fillStyle = this.arena.theme.secondary;
@@ -2573,7 +2731,8 @@ export class EngineSmash {
   }
 
   getObjectiveText(lang = 'fr') {
-    return getNihilanthObjectiveText(this.nihilanthEncounter, lang) || getSmashObjectiveText(this.arena, lang);
+    return getAliensRescueObjectiveText(this.aliensRescueEncounter, lang)
+      || getNihilanthObjectiveText(this.nihilanthEncounter, lang) || getSmashObjectiveText(this.arena, lang);
   }
 
   getCombatSummary(result = null) {
@@ -2632,6 +2791,9 @@ export class EngineSmash {
       averageHpPct: hpPct,
       ...(this.nihilanthEncounter?.boss
         ? { canonicalEncounter: { id: 'nihilanth-1998', ...getNihilanthEncounterSummary(this.nihilanthEncounter) } }
+        : {}),
+      ...(this.aliensRescueEncounter
+        ? { canonicalEncounter: getAliensRescueEncounterSummary(this.aliensRescueEncounter, this.heroes, this.getActiveHero()) }
         : {}),
       ...(this.isLocalP2
         ? {
