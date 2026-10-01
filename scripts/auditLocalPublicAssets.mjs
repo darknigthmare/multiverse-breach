@@ -1,5 +1,5 @@
-import { execFileSync } from 'node:child_process';
-import { closeSync, existsSync, lstatSync, openSync, readSync, readdirSync } from 'node:fs';
+import { execFileSync, spawnSync } from 'node:child_process';
+import { closeSync, existsSync, lstatSync, openSync, readSync, readdirSync, realpathSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -31,6 +31,16 @@ export function listGitTrackedPublicPaths(root = process.cwd()) {
   return execFileSync('git', ['ls-files', '-z', '--', 'public'], {
     cwd: root, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe']
   }).split('\0').filter(Boolean);
+}
+
+function hasUsableGitMetadata(root) {
+  if (!existsSync(resolve(root, '.git'))) return false;
+  const probe = spawnSync('git', ['rev-parse', '--show-toplevel'], {
+    cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore']
+  });
+  // Vercel can retain an empty .git directory after removing its contents.
+  // Require this checkout's metadata; a parent repository is not coverage proof.
+  return probe.status === 0 && resolve(probe.stdout.trim()) === realpathSync(root);
 }
 
 /** Vercel direct uploads omit .git. This scan verifies contents, not Git coverage. */
@@ -120,12 +130,12 @@ function main() {
     throw new Error('Usage: node scripts/auditLocalPublicAssets.mjs [--build]');
   }
   const root = process.cwd();
-  const treeOnly = args[0] === '--build' && !existsSync(resolve(root, '.git'));
+  const treeOnly = args[0] === '--build' && !hasUsableGitMetadata(root);
   const paths = treeOnly ? listPublicTreePaths(root) : listGitTrackedPublicPaths(root);
   const result = auditLocalPublicAssets({ root, trackedPublicPaths: paths });
   process.stdout.write(`Local public assets audit passed: ${result.publicFileCount} ${treeOnly ? 'public-tree' : 'Git-tracked public'} regular files, no LFS pointers.\n`);
   if (treeOnly) {
-    process.stdout.write('Git metadata is absent: upload coverage must be checked locally before deployment with auditVercelUploadManifest.mjs.\n');
+    process.stdout.write('Usable Git metadata is absent: upload coverage must be checked locally before deployment with auditVercelUploadManifest.mjs.\n');
   }
 }
 

@@ -1,0 +1,349 @@
+{
+  "date": "2026-10-01",
+  "baseLocalCommit": "e887319",
+  "scope": "Four historical static missions: source era, encounter, roster, boss metadata and victory requirements",
+  "changedStages": [
+    {
+      "stageId": 1,
+      "previous": {
+        "name": "Aspho Fields Locust Outpost",
+        "bossName": "Brumak",
+        "mismatch": "Pendulum Wars location mixed with Locust War opponents"
+      },
+      "current": {
+        "id": 1,
+        "name": "Lightmass Bomb Train / RAAM",
+        "universe": "Gears of War",
+        "mode": "RPG",
+        "difficulty": "Easy",
+        "goldPrize": 40,
+        "shardPrize": 15,
+        "bossName": "General RAAM",
+        "canonicalBossName": "General RAAM",
+        "enemyRoster": [
+          "Locust Drone",
+          "Theron Guard",
+          "General RAAM"
+        ],
+        "enemyRosterExclusive": true,
+        "incarnation": "Gears of War (2006) - Lightmass Bomb train finale",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "visualAnchor": "The moving Lightmass Bomb train at night, linked industrial freight cars with low cover and exposed walkways. General RAAM is a huge pale Locust in dark armored plates, carrying his Troika and surrounded by Kryll. No Pendulum Wars Aspho Fields, Skorge, Kantus, Tickers or Brumak in this encounter.",
+        "gameplayAdaptation": "RPG waves condense the train assault and RAAM duel. Kryll immunity, lighting and the original cover-shooter camera are not reproduced by the current runtime.",
+        "visualReviewStatus": "pending"
+      },
+      "resolvedRoster": {
+        "monsters": [
+          "Locust Drone",
+          "Theron Guard"
+        ],
+        "bosses": [
+          "General RAAM"
+        ],
+        "worldBoss": null
+      },
+      "bossMetadata": {
+        "historicalTemplateName": "General RAAM",
+        "canonicalName": "General RAAM",
+        "incarnation": "Gears of War (2006) - Lightmass Bomb train",
+        "equipment": [
+          "Troika heavy machine gun",
+          "Kryll swarm"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+        "visualAnchor": "Huge pale Locust general, dark heavy armor, Troika heavy machine gun and protective Kryll swarm on the moving Lightmass Bomb train. No Skorge chainsaw staff or Brumak vehicle.",
+        "visualReviewStatus": "pending"
+      },
+      "compatibility": {
+        "stageIdPreserved": true,
+        "universeKeyPreserved": true,
+        "modePreserved": true,
+        "difficultyPreserved": true,
+        "rewardsPreserved": true,
+        "enemyTemplateNamesAndSpritePathsPreserved": true
+      },
+      "fidelityStatus": "source-and-roster-corrected; visual-and-original-mechanics-pending"
+    },
+    {
+      "stageId": 2,
+      "previous": {
+        "name": "Installation 04 Ring",
+        "bossName": "Scarab Mech",
+        "mismatch": "Halo CE Installation 04 mixed with a later-game Scarab"
+      },
+      "current": {
+        "id": 2,
+        "name": "Metropolis / Scarab Boarding",
+        "universe": "Halo",
+        "mode": "Tactics",
+        "tacticsBattlefieldId": "metropolis_scarab_deck",
+        "difficulty": "Easy",
+        "goldPrize": 40,
+        "shardPrize": 15,
+        "bossName": "Covenant Scarab Mech",
+        "canonicalBossName": "Protos-pattern Scarab",
+        "enemyRoster": [
+          "Covenant Grunt",
+          "Jackal Sniper",
+          "Elite Minor",
+          "Covenant Scarab Mech"
+        ],
+        "enemyRosterExclusive": true,
+        "incarnation": "Halo 2 (2004) - Metropolis, New Mombasa",
+        "referenceUrl": "https://www.halopedia.org/Metropolis",
+        "visualAnchor": "New Mombasa streets, concrete canals and elevated building catwalks around the Halo 2 Protos-pattern Scarab. Huge four-legged purple-gray Covenant walker, flat upper deck, arched gangway, passenger cabin and forward ultra-heavy focus cannon. No Halo ring, Halo 3 Deutoros exposed rear core, Prometheans, Flood or hostile Guilty Spark.",
+        "gameplayAdaptation": "Defeating the Scarab commander represents neutralizing the boarded vehicle and its crew. The tactical HP target abstracts Halo 2 boarding; it does not claim to reproduce the Halo 3 core-destruction mechanic.",
+        "visualReviewStatus": "pending"
+      },
+      "resolvedRoster": {
+        "monsters": [
+          "Covenant Grunt",
+          "Jackal Sniper",
+          "Elite Minor"
+        ],
+        "bosses": [],
+        "worldBoss": "Covenant Scarab Mech"
+      },
+      "bossMetadata": {
+        "historicalTemplateName": "Covenant Scarab Mech",
+        "canonicalName": "Protos-pattern Scarab",
+        "incarnation": "Halo 2 (2004) - Metropolis",
+        "equipment": [
+          "Ultra-heavy focus cannon",
+          "Heavy plasma repeaters"
+        ],
+        "referenceUrl": "https://www.halopedia.org/Protos-pattern_Scarab",
+        "visualAnchor": "Halo 2 Protos-pattern Scarab: four legs, high purple-gray hull, broad flat deck, arched gangway and passenger cabin. No Halo 3 Deutoros exposed rear reactor.",
+        "visualReviewStatus": "pending"
+      },
+      "compatibility": {
+        "stageIdPreserved": true,
+        "universeKeyPreserved": true,
+        "modePreserved": true,
+        "difficultyPreserved": true,
+        "rewardsPreserved": true,
+        "enemyTemplateNamesAndSpritePathsPreserved": true
+      },
+      "fidelityStatus": "source-and-roster-corrected; visual-and-original-mechanics-pending"
+    },
+    {
+      "stageId": 3,
+      "previous": {
+        "name": "LV-426 Colony Hive",
+        "bossName": "Predalien",
+        "mismatch": "Aliens 1986 hive mixed with Aliens vs Predator: Requiem 2007 creature"
+      },
+      "current": {
+        "id": 3,
+        "name": "Hadley's Hope / Atmosphere Processor Hive",
+        "universe": "Alien",
+        "mode": "Smash",
+        "smashArenaId": "hadleys_processor_hive",
+        "difficulty": "Easy",
+        "goldPrize": 45,
+        "shardPrize": 15,
+        "bossName": "Alien Queen",
+        "canonicalBossName": "Alien Queen",
+        "enemyRoster": [
+          "Warrior Xenomorph",
+          "Skittering Facehugger",
+          "Egg Chamber Sac",
+          "Alien Queen"
+        ],
+        "enemyRosterExclusive": true,
+        "incarnation": "Aliens (1986) - Hadley's Hope atmosphere processor, LV-426",
+        "referenceUrl": "https://en.wikipedia.org/wiki/Aliens_(film)",
+        "visualAnchor": "The LV-426 atmosphere processor near Hadley's Hope: industrial grated walkways overtaken by dark biomechanical resin, eggs and the Queen's nest. The Queen has a broad crown-like cranial crest, two large arms and two small chest arms, digitigrade legs and a long tail. Warrior Xenomorphs have ridged heads. No Predalien, dog Runner, Ash, Praetorian or Sulaco power-loader bay in this location.",
+        "gameplayAdaptation": "A boss-defeat wave represents the hive confrontation; the film rescues Newt and escapes the processor, then defeats the Queen aboard the Sulaco. That rescue, evacuation and later power-loader duel remain separate unimplemented mechanics.",
+        "visualReviewStatus": "pending",
+        "referenceUrls": [
+          "https://en.wikipedia.org/wiki/Aliens_(film)",
+          "https://imsdb.com/scripts/Aliens.html"
+        ]
+      },
+      "resolvedRoster": {
+        "monsters": [
+          "Warrior Xenomorph",
+          "Skittering Facehugger",
+          "Egg Chamber Sac"
+        ],
+        "bosses": [
+          "Alien Queen"
+        ],
+        "worldBoss": null
+      },
+      "bossMetadata": {
+        "historicalTemplateName": "Alien Queen",
+        "canonicalName": "Alien Queen",
+        "incarnation": "Aliens (1986)",
+        "equipment": [
+          "Inner jaw",
+          "Clawed main arms",
+          "Long bladed tail"
+        ],
+        "referenceUrl": "https://en.wikipedia.org/wiki/Aliens_(film)",
+        "visualAnchor": "Black biomechanical Queen with broad crown-shaped head crest, two long main arms and two small chest arms, digitigrade legs and a long tail. No Predalien mandibles or acid-spitting attack absent from the 1986 film.",
+        "visualReviewStatus": "pending"
+      },
+      "compatibility": {
+        "stageIdPreserved": true,
+        "universeKeyPreserved": true,
+        "modePreserved": true,
+        "difficultyPreserved": true,
+        "rewardsPreserved": true,
+        "enemyTemplateNamesAndSpritePathsPreserved": true
+      },
+      "fidelityStatus": "source-and-roster-corrected; visual-and-original-mechanics-pending"
+    },
+    {
+      "stageId": 10,
+      "previous": {
+        "name": "Anomalous Materials Lab",
+        "bossName": "Combine Strider",
+        "mismatch": "Half-Life 1998 laboratory mixed with a Half-Life 2 Combine walker"
+      },
+      "current": {
+        "id": 10,
+        "name": "Xen / Nihilanth Chamber",
+        "universe": "Half-Life",
+        "mode": "Smash",
+        "smashArenaId": "xen_nihilanth_chamber",
+        "difficulty": "Medium",
+        "goldPrize": 75,
+        "shardPrize": 25,
+        "bossName": "Alien Nihilanth Core",
+        "canonicalBossName": "Nihilanth",
+        "enemyRoster": [
+          "Vortigaunt Shock Trooper",
+          "Alien Nihilanth Core"
+        ],
+        "enemyRosterExclusive": true,
+        "incarnation": "Half-Life (1998) - Xen, Nihilanth finale",
+        "referenceUrl": "https://combineoverwiki.net/wiki/Nihilanth",
+        "visualAnchor": "Nihilanth's vast organic rock cavern on Xen, with suspended ledges and three healing crystals. A massive levitating creature with a huge head, undersized legs, two main arms and a vestigial third chest arm; orange energy spheres orbit its head, purple projectiles and green teleport spheres. Its crown opens to reveal the brain weak point. Enslaved Vortigaunts wear shackles. No Black Mesa test chamber, Strider, Combine soldier, Advisor, Antlion or Race X.",
+        "gameplayAdaptation": "Smash waves retain the source boss and enslaved Vortigaunts. The current HP duel does not yet simulate destroying three healing crystals, teleport rooms or the exposed-brain vulnerability phase.",
+        "visualReviewStatus": "pending"
+      },
+      "resolvedRoster": {
+        "monsters": [
+          "Vortigaunt Shock Trooper"
+        ],
+        "bosses": [
+          "Alien Nihilanth Core"
+        ],
+        "worldBoss": null
+      },
+      "bossMetadata": {
+        "historicalTemplateName": "Alien Nihilanth Core",
+        "canonicalName": "Nihilanth",
+        "incarnation": "Half-Life (1998) - Xen finale",
+        "equipment": [
+          "Energy projectiles",
+          "Teleportation orbs",
+          "Orbiting energy spheres"
+        ],
+        "referenceUrl": "https://combineoverwiki.net/wiki/Nihilanth",
+        "visualAnchor": "Massive floating Nihilanth with an oversized head, small legs and vestigial chest arm, shackles, orange orbiting spheres and a head that opens over its brain. Organic Xen crystal cavern, never a Combine core or a Strider.",
+        "visualReviewStatus": "pending"
+      },
+      "compatibility": {
+        "stageIdPreserved": true,
+        "universeKeyPreserved": true,
+        "modePreserved": true,
+        "difficultyPreserved": true,
+        "rewardsPreserved": true,
+        "enemyTemplateNamesAndSpritePathsPreserved": true
+      },
+      "fidelityStatus": "source-and-roster-corrected; visual-and-original-mechanics-pending"
+    }
+  ],
+  "validation": {
+    "command": "node --test scripts/canonPriorityCorrections.test.mjs",
+    "tests": 14,
+    "pass": 14,
+    "fail": 0,
+    "newTestsForThisFollowup": 7,
+    "engineIntegration": [
+      "EngineRpg RAAM wave and victory",
+      "EngineTactics Protos Scarab commander victory",
+      "EngineSmash Queen and Nihilanth wave flow and boss victory"
+    ],
+    "staticStageCount": 39,
+    "targetedLint": "passed",
+    "diffWhitespaceCheck": "passed"
+  },
+  "verifiedSources": [
+    {
+      "url": "https://www.halowaypoint.com/halo-the-master-chief-collection",
+      "httpStatus": 200,
+      "textSha256": "2f6b47b96dbff8d544f832cc20b13e6daad4e3bcfb888aae657507e4d90a1a6e",
+      "sourceType": "official-title-reference"
+    },
+    {
+      "url": "https://www.halopedia.org/Metropolis",
+      "httpStatus": 200,
+      "textSha256": "6319e661ab1861cf70c586c11111345961d8b61794a5db6691a6979d77a423c3",
+      "sourceType": "secondary-scene-reference"
+    },
+    {
+      "url": "https://www.20thcenturystudios.com/movies/aliens",
+      "httpStatus": 200,
+      "textSha256": "ae39a500bd2fc937d0f45cf4eb549d675551000f55e2886ba264eddd46413039",
+      "sourceType": "official-title-reference"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Aliens_(film)",
+      "httpStatus": 200,
+      "textSha256": "18587c6c14ce86a9ac1ab84b5fbd4fb47cdbbb126c859e192f10f259af4c6314",
+      "sourceType": "secondary-scene-reference"
+    },
+    {
+      "url": "https://store.steampowered.com/app/70/HalfLife/",
+      "httpStatus": 200,
+      "textSha256": "d000e3a7a2fb8fc82ce8ca744772619b37ea506ec30fb527857e2e65b828181c",
+      "sourceType": "official-title-reference"
+    },
+    {
+      "url": "https://combineoverwiki.net/wiki/Nihilanth",
+      "httpStatus": 200,
+      "textSha256": "3dffb2b121a630abd00303f9c047feba2abb4e20561ba4cc889ab9e844ef7adf",
+      "sourceType": "secondary-scene-reference"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Gears_of_War_(video_game)",
+      "httpStatus": 200,
+      "textSha256": "3ef13a5f87043e8c5f71b8cad2f71a497dad24eaf26e02271f03c163f5c1e30a",
+      "sourceType": "secondary-scene-reference"
+    },
+    {
+      "url": "https://combineoverwiki.net/wiki/Nihilanth_(chapter)",
+      "httpStatus": 200,
+      "textSha256": "918a72ac0cb236b71583c1aa1c35303b3e250f554b9e7af72c9adf0237f6764b",
+      "sourceType": "secondary-scene-reference"
+    },
+    {
+      "url": "https://www.halopedia.org/Protos-pattern_Scarab",
+      "httpStatus": 200,
+      "textSha256": "b4bb58148e8e548855d4de712b467d30e827cdc76644bb9b08900eaca8047e37",
+      "sourceType": "secondary-scene-reference"
+    },
+    {
+      "url": "https://www.gearsofwar.com/en-us/games/gears-reloaded/",
+      "httpStatus": 200,
+      "textSha256": "794fd30c4508217578b5ec8f6d2686cc2a9725df403b5ac2eda52a7d16b2a134",
+      "sourceType": "official-title-reference"
+    },
+    {
+      "url": "https://imsdb.com/scripts/Aliens.html",
+      "httpStatus": 200,
+      "textSha256": "2dff07b6604d713d23506e1089be8fbea577e91748662e96ac47cbee8c8469fb",
+      "sourceType": "republished-primary-screenplay",
+      "sceneEvidence": "Scene139 shows the processing station from the colony landing platform; scene75 places the colonists beneath the south tower of the station. The station is near the colony, not underneath it."
+    }
+  ],
+  "limitations": [
+    "Current sprites and historical dossier images are not certified by these data changes.",
+    "Exact original cover, boarding, film-rescue and Nihilanth weak-point mechanics remain documented gameplay adaptations.",
+    "No generated bitmap, historical generation ledger or asset-registry status was changed by this subtask."
+  ]
+}

@@ -8,6 +8,7 @@ import { ENEMIES_DB } from '../src/game/enemies.js';
 import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
 import { resolveStageEnemyData } from '../src/game/stageEnemyResolver.js';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc } from '../src/game/spriteAssets.js';
+import { readStaticStages } from './riftDossierStaticStages.mjs';
 
 const heroKit = hero => JSON.stringify([
   hero.equipment, hero.simple, hero.secondary, hero.defense, hero.special
@@ -53,6 +54,160 @@ test('the final Freeman runtime override stays in Half-Life 2 instead of restori
 const resolve = stage => resolveStageEnemyData({
   stage,
   ...ENEMIES_DB[stage.universe]
+});
+
+test('the Gears train finale selects RAAM and only original-game Locust, without mixing the Pendulum Wars', () => {
+  const stage = CANON_PRIORITY_STAGES.lightmassTrain;
+  const selected = resolve(stage);
+  assert.match(stage.incarnation, /Gears of War \(2006\).*train/);
+  assert.deepEqual(selected.monsters.map(enemy => enemy.name), ['Locust Drone', 'Theron Guard']);
+  assert.deepEqual(selected.bosses.map(enemy => enemy.name), ['General RAAM']);
+  assert.equal(selected.worldBoss, null);
+  assert.equal(selected.bosses[0].weapon, 'gun');
+  assert.match(selected.bosses[0].equipment.join(' '), /Troika.*Kryll/);
+  assert.equal(getEnemySpriteSheetSrc({ ...selected.bosses[0], universe: stage.universe }), '/sprites/generated/bosses/gears-of-war/general-raam.png');
+});
+
+test('Metropolis locks the Halo 2 Scarab and excludes Halo CE/Halo 3 and unrelated hostile factions', () => {
+  const stage = CANON_PRIORITY_STAGES.metropolisScarab;
+  const selected = resolve(stage);
+  assert.match(stage.incarnation, /Halo 2 \(2004\).*Metropolis/);
+  assert.deepEqual(selected.monsters.map(enemy => enemy.name), ['Covenant Grunt', 'Jackal Sniper', 'Elite Minor']);
+  assert.deepEqual(selected.bosses, []);
+  assert.equal(selected.worldBoss.name, 'Covenant Scarab Mech');
+  assert.equal(selected.worldBoss.canonicalName, 'Protos-pattern Scarab');
+  assert.match(stage.gameplayAdaptation, /crew.*abstracts Halo 2 boarding/);
+  assert.equal(getEnemySpriteSheetSrc({ ...selected.worldBoss, universe: stage.universe }), '/sprites/generated/bosses/halo/covenant-scarab-mech.png');
+});
+
+test('LV-426 selects the 1986 Queen and warriors, without a Predalien or later franchise enemies', () => {
+  const stage = CANON_PRIORITY_STAGES.hadleysQueen;
+  const selected = resolve(stage);
+  assert.equal(stage.universe, 'Alien', 'the historical save and sprite universe key remains stable');
+  assert.match(stage.incarnation, /Aliens \(1986\).*LV-426/);
+  assert.deepEqual(selected.monsters.map(enemy => enemy.name), ['Warrior Xenomorph', 'Skittering Facehugger', 'Egg Chamber Sac']);
+  assert.deepEqual(selected.bosses.map(enemy => enemy.name), ['Alien Queen']);
+  assert.equal(selected.worldBoss, null);
+  assert.equal(selected.bosses[0].special, 'Inner Jaw Lunge');
+  assert.doesNotMatch(selected.bosses[0].equipment.join(' '), /spit|acid/i);
+  assert.match(stage.gameplayAdaptation, /escapes the processor.*Sulaco/);
+  assert.equal(getEnemySpriteSheetSrc({ ...selected.bosses[0], universe: stage.universe }), '/sprites/generated/bosses/alien/alien-queen.png');
+});
+
+test('the original Half-Life finale selects Nihilanth and enslaved Vortigaunts instead of Combine or Race X', () => {
+  const stage = CANON_PRIORITY_STAGES.xenNihilanth;
+  const selected = resolve(stage);
+  assert.match(stage.incarnation, /Half-Life \(1998\).*Nihilanth/);
+  assert.deepEqual(selected.monsters.map(enemy => enemy.name), ['Vortigaunt Shock Trooper']);
+  assert.deepEqual(selected.bosses.map(enemy => enemy.name), ['Alien Nihilanth Core']);
+  assert.equal(selected.bosses[0].canonicalName, 'Nihilanth');
+  assert.equal(selected.bosses[0].special, 'Teleportation Orb');
+  assert.equal(selected.worldBoss, null);
+  assert.match(stage.gameplayAdaptation, /does not yet simulate.*healing crystals/);
+  assert.equal(getEnemySpriteSheetSrc({ ...selected.bosses[0], universe: stage.universe }), '/sprites/generated/bosses/half-life/alien-nihilanth-core.png');
+});
+
+test('the four repaired static missions preserve saved IDs, modes, rewards and the complete registry', async () => {
+  const contracts = [
+    [CANON_PRIORITY_STAGES.lightmassTrain, 1, 'RPG', 40, 15],
+    [CANON_PRIORITY_STAGES.metropolisScarab, 2, 'Tactics', 40, 15],
+    [CANON_PRIORITY_STAGES.hadleysQueen, 3, 'Smash', 45, 15],
+    [CANON_PRIORITY_STAGES.xenNihilanth, 10, 'Smash', 75, 25]
+  ];
+  const source = await readFile(new URL('../src/components/HubScreen.jsx', import.meta.url), 'utf8');
+  const stages = readStaticStages(source);
+  for (const [stage, id, mode, gold, shards] of contracts) {
+    assert.equal(stage.id, id);
+    assert.equal(stage.mode, mode);
+    assert.equal(stage.goldPrize, gold);
+    assert.equal(stage.shardPrize, shards);
+    assert.deepEqual(stages.find(entry => entry.id === id), stage);
+    assert.equal(stage.visualReviewStatus, 'pending');
+  }
+  assert.equal(stages.length, 39);
+});
+
+test('the actual RPG and Tactics engines require RAAM and the boarded Scarab to be defeated', async () => {
+  const vite = await createServer({
+    appType: 'custom', logLevel: 'silent', server: { middlewareMode: true }
+  });
+  const engines = [];
+  try {
+    const { EngineRpg } = await vite.ssrLoadModule('/src/game/engineRpg.js?canon-mission-followup');
+    const { EngineTactics } = await vite.ssrLoadModule('/src/game/engineTactics.js?canon-mission-followup');
+    const hero = getHeroById('arca_mirelle');
+    const particles = { add() {} };
+    const noop = () => {};
+    const trainStage = CANON_PRIORITY_STAGES.lightmassTrain;
+    const rpg = new EngineRpg(960, 540, [hero], resolve(trainStage), particles, noop, noop, trainStage);
+    engines.push(rpg);
+    rpg.enemies.forEach(enemy => { enemy.currentHp = 0; });
+    rpg.update();
+    assert.equal(rpg.wave, 2);
+    assert.deepEqual(rpg.enemies.map(enemy => enemy.name), ['General RAAM']);
+    assert.equal(rpg.gameOver, false, 'clearing Locust cannot skip RAAM');
+    rpg.update();
+    assert.equal(rpg.gameOver, false, 'a living RAAM prevents victory');
+    rpg.enemies[0].currentHp = 0;
+    rpg.update();
+    assert.equal(rpg.gameOver, true);
+
+    const scarabStage = CANON_PRIORITY_STAGES.metropolisScarab;
+    const tactics = new EngineTactics(960, 540, [hero], resolve(scarabStage), particles, noop, noop, scarabStage);
+    engines.push(tactics);
+    assert.equal(tactics.battlefield.id, 'metropolis_scarab_deck');
+    assert.equal(tactics.objective, 'commander');
+    assert.equal(tactics.objectiveTarget, 1);
+    assert.deepEqual(tactics.enemies.filter(enemy => enemy.isBoss).map(enemy => enemy.name), ['Covenant Scarab Mech']);
+    tactics.enemies.filter(enemy => !enemy.isBoss).forEach(enemy => { enemy.currentHp = 0; });
+    tactics.turnsElapsed = 100;
+    tactics.updateTacticsObjective(true);
+    assert.equal(tactics.gameOver, false, 'neither soldiers nor waiting can bypass the Scarab');
+    tactics.enemies.find(enemy => enemy.isBoss).currentHp = 0;
+    tactics.updateTacticsObjective(true);
+    assert.equal(tactics.gameOver, true);
+    assert.equal(tactics.battleResult, 'victory');
+  } finally {
+    for (const engine of engines) engine.dispose?.();
+    await vite.close();
+  }
+});
+
+test('the actual Smash wave flow reaches the Queen and Nihilanth and requires their defeat', async () => {
+  const vite = await createServer({
+    appType: 'custom', logLevel: 'silent', server: { middlewareMode: true }
+  });
+  try {
+    const { EngineSmash } = await vite.ssrLoadModule('/src/game/engineSmash.js?canon-mission-followup');
+    const hero = getHeroById('arca_mirelle');
+    const particles = { add() {} };
+    const noop = () => {};
+    for (const stage of [CANON_PRIORITY_STAGES.hadleysQueen, CANON_PRIORITY_STAGES.xenNihilanth]) {
+      const engine = new EngineSmash(960, 540, [hero], resolve(stage), particles, noop, noop, stage);
+      assert.equal(engine.arena.id, stage.smashArenaId);
+      assert.equal(engine.arena.objective, 'boss');
+      while (engine.wave < engine.maxWaves) {
+        engine.enemies.forEach(enemy => { enemy.currentHp = 0; enemy.stateTimer = 0; enemy.state = 'dead'; });
+        engine.update();
+        assert.equal(engine.gameOver, false, `regular waves cannot win stage ${stage.id}`);
+      }
+      assert.deepEqual(engine.enemies.map(enemy => enemy.name), [stage.bossName]);
+      assert.equal(engine.enemies[0].isBoss, true);
+      assert.equal(engine.arena.theme.material, stage.id === 3 ? 'hive' : 'arcane');
+      engine.objectiveTick = 100000;
+      engine.updateArenaObjective();
+      engine.updateObjectiveBattleState();
+      assert.equal(engine.gameOver, false, `time cannot win stage ${stage.id} while its boss lives`);
+      engine.enemies[0].currentHp = 0;
+      engine.enemies[0].stateTimer = 0;
+      engine.enemies[0].state = 'dead';
+      engine.update();
+      assert.equal(engine.gameOver, true);
+      assert.equal(engine.meleeOutcomeResult, 'victory');
+    }
+  } finally {
+    await vite.close();
+  }
 });
 
 test('Shadow Moses selects the existing REX boss and Genome Soldiers and suppresses MGS2/MGS4 threats', () => {

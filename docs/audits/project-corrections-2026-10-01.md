@@ -1,5 +1,7 @@
 # Multiverse Breach : reprise des priorités, 1 octobre 2026
 
+Ce document conserve le bilan du premier lot vérifié. La [reprise de fidélité](fidelity-followup-2026-10-01.md) et l'[inventaire matériel actuel](current-missing-assets-2026-10-01.md) décrivent les corrections et compteurs suivants ; les chiffres de validation et de dossiers ci-dessous correspondent au premier lot.
+
 ## Sources et version
 
 - GitHub `master` : `6fd4fd24d690e84f6dfbfc022cd844d0def116ec`, dernier commit du 31 août 2026.
@@ -54,6 +56,6 @@ Le quota LFS bloquait le déploiement Git automatique d'août. Aujourd'hui, `git
 
 ## Livraison
 
-Le correctif est préparé dans la branche locale `codex/multiverse-corrections-2026-10-01`. L'écriture GitHub est bloquée par une erreur 403 « Resource not accessible by integration ». Le contrôle automatique a refusé l'appel de déploiement Vercel parce que sa cible et sa portée n'étaient pas précisées, notamment pour la production. Aucune publication externe de ce lot n'a réussi.
+Au premier export, l'écriture GitHub était bloquée par une erreur 403 « Resource not accessible by integration ». Le contrôle automatique avait également refusé un appel de déploiement Vercel dont la cible et la portée n'étaient pas précisées. Ces faits décrivent cet export initial, pas l'état actuel de publication.
 
-Un patch et un bundle exportables sont préparés avec le bilan et les preuves de vérification. L'accès GitHub en écriture et une autorisation explicite du déploiement ciblé restent nécessaires pour la publication.
+L'accès GitHub a depuis été rétabli : le premier lot est publié dans la branche `codex/multiverse-corrections-2026-10-01`, dans la [PR nº 1](https://github.com/darknigthmare/multiverse-breach/pull/1), commit distant `377a420a1ee1f473df5ae7cdb4e702d901a923af`. Son arbre Git est identique au commit local `e88731978ea4ba1c5033c68368a6768f5c09ebd9`. L'utilisateur a autorisé un aperçu Vercel et validé la connexion CLI ; aucun passage en production n'est inclus. L'aperçu Git de ce premier lot a échoué parce que Vercel retire les métadonnées `.git` tout en conservant leur dossier ; le correctif de cette détection figure dans la reprise suivante.

@@ -192,3 +192,31 @@ test('build mode keeps Git coverage checks when repository metadata is present',
   assert.equal(result.status, 1);
   assert.match(result.stderr, /Missing public files/);
 });
+
+test('build audit handles .git directories stripped by Vercel while still rejecting LFS pointers', t => {
+  const root = fixture(t, { 'public/image.webp': Buffer.from([137, 80, 78, 71]) });
+  mkdirSync(join(root, '.git'));
+  const passed = spawnSync(process.execPath, [localAuditCli, '--build'], { cwd: root, encoding: 'utf8' });
+  assert.equal(passed.status, 0, passed.stderr);
+  assert.match(passed.stdout, /1 public-tree regular files/);
+  assert.match(passed.stdout, /upload coverage must be checked locally/);
+  assert.equal(passed.stderr, '');
+  const strict = spawnSync(process.execPath, [localAuditCli], { cwd: root, encoding: 'utf8' });
+  assert.equal(strict.status, 1);
+  assert.match(strict.stderr, /not a git repository/);
+  writeFileSync(join(root, 'public/image.webp'), pointer);
+  const rejected = spawnSync(process.execPath, [localAuditCli, '--build'], { cwd: root, encoding: 'utf8' });
+  assert.equal(rejected.status, 1);
+  assert.match(rejected.stderr, /Unresolved Git LFS pointers/);
+});
+
+test('build audit handles .git links whose metadata was not included in the upload', t => {
+  const root = fixture(t, {
+    'public/image.webp': Buffer.from([137, 80, 78, 71]),
+    '.git': 'gitdir: missing-worktree-metadata\n'
+  });
+  const passed = spawnSync(process.execPath, [localAuditCli, '--build'], { cwd: root, encoding: 'utf8' });
+  assert.equal(passed.status, 0, passed.stderr);
+  assert.match(passed.stdout, /1 public-tree regular files/);
+  assert.equal(passed.stderr, '');
+});

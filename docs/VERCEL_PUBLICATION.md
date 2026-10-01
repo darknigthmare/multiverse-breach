@@ -43,9 +43,16 @@ le processus de publication du projet, depuis cette même copie complète.
 ## Vérification pendant le build
 
 `node scripts/auditLocalPublicAssets.mjs --build` utilise les chemins suivis
-par Git lorsque `.git` est présent. Dans un build distant provenant d'un envoi
-direct, Vercel omet généralement `.git` : ce mode inspecte alors tous les
+par Git lorsque les métadonnées du checkout sont utilisables. Vercel peut
+omettre `.git` lors d'un envoi direct ou conserver un dossier vide après
+application de `.vercelignore` lors d'un build Git. Ce mode inspecte alors tous les
 fichiers effectivement présents dans `public/`, sans suivre les symlinks.
 Il refuse toujours les pointeurs LFS. Il indique explicitement que ce scan ne
 prouve pas la couverture des fichiers Git absents ; l'audit du manifeste local
 reste nécessaire avant l'envoi.
+
+Le premier aperçu Git du 1 octobre, commit `377a420`, a échoué sur cette
+distinction entre dossier présent et métadonnées utilisables. La détection
+sonde maintenant silencieusement le checkout réel ; deux tests couvrent le
+dossier Git vidé et le lien de worktree dont les métadonnées sont absentes.
+Sans `--build`, l'audit reste strictement fondé sur les chemins suivis par Git.

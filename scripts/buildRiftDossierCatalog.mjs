@@ -557,6 +557,7 @@ const makeEntry = ({
   localReferenceCandidatePaths = [],
   characterName = null,
   characterDescriptors = [],
+  characterSourceLock = null,
   referencePolicy = 'authoritative-public'
 }) => {
   const normalizedName = normalizeLocalizedName(nom);
@@ -635,6 +636,7 @@ const makeEntry = ({
     ...(famille === 'arc-personnage'
       ? { candidatsReferencesLocalesAudit: normalizedLocalReferenceCandidatePaths }
       : {}),
+    ...(characterSourceLock ? { verrouSourcePersonnage: characterSourceLock } : {}),
     cheminCibleDedie: buildTargetPath({
       id,
       famille,
@@ -773,13 +775,45 @@ const loadCharacterReferenceQuality = ({ allowStale = false } = {}) => {
   return { report, classificationByPath, entryById };
 };
 
-const buildCharacterDescriptors = ({ hero, arc, heroUniverse }) => {
+const getCharacterSourceLock = (hero) => {
+  const referenceUrls = uniqueStrings([
+    hero?.referenceUrl,
+    ...(Array.isArray(hero?.referenceUrls) ? hero.referenceUrls : [])
+  ]);
+  if (!hero?.incarnation || !hero?.visualAnchor || referenceUrls.length === 0) return null;
+  return {
+    incarnation: hero.incarnation,
+    visualAnchor: hero.visualAnchor,
+    equipment: uniqueStrings(Array.isArray(hero.equipment) ? hero.equipment : []),
+    referenceUrls,
+    canonStatus: hero.canonStatus || null,
+    visualReviewStatus: hero.visualReviewStatus || null
+  };
+};
+
+const buildCharacterDescriptors = ({ hero, arc, heroUniverse, sourceLock }) => {
   const signatureTechniques = uniqueStrings([
     hero?.simple?.name,
     hero?.secondary?.name,
     hero?.defense?.name,
     hero?.special?.name
   ]);
+  if (sourceLock) {
+    return uniqueStrings([
+      `named identity: ${hero.name}`,
+      `canonical home universe: ${heroUniverse}`,
+      `selected source incarnation: ${sourceLock.incarnation}`,
+      `source-locked visual identity: ${sourceLock.visualAnchor}`,
+      sourceLock.equipment.length > 0
+        ? `source-locked equipment: ${sourceLock.equipment.join(', ')}`
+        : null,
+      sourceLock.canonStatus ? `gameplay interpretation: ${sourceLock.canonStatus}` : null,
+      signatureTechniques.length > 0
+        ? `project gameplay techniques or posture cues: ${signatureTechniques.join(', ')}`
+        : null,
+      'Identity authority: this incarnation, silhouette, outfit and equipment take precedence over synthetic class labels, generated palettes and other adaptations; omit uncertain accessories'
+    ]);
+  }
   return uniqueStrings([
     `named identity: ${hero?.name || arc.title?.en || arc.heroId}`,
     `canonical home universe: ${heroUniverse}`,
@@ -961,9 +995,20 @@ const buildCatalog = async () => {
 
     statique: staticStages
       .map(stage => {
-        const hasCanonStageLock = Boolean(stage.incarnation && stage.visualAnchor && stage.referenceUrl);
+        const sourceReferenceUrls = uniqueStrings([
+          stage.referenceUrl,
+          ...(Array.isArray(stage.referenceUrls) ? stage.referenceUrls : [])
+        ]);
+        const hasCanonStageLock = Boolean(stage.incarnation && stage.visualAnchor && sourceReferenceUrls.length > 0);
         const visualReferences = hasCanonStageLock
-          ? { visualAnchors: [stage.incarnation, stage.visualAnchor], referenceUrls: [stage.referenceUrl] }
+          ? {
+              visualAnchors: uniqueStrings([
+                stage.incarnation,
+                stage.visualAnchor,
+                stage.gameplayAdaptation ? `Project gameplay adaptation: ${stage.gameplayAdaptation}` : null
+              ]),
+              referenceUrls: sourceReferenceUrls
+            }
           : getVisualReferences({ universes: [stage.universe] });
         const subjectReference = subjectReferenceByDossier.get(`statique:${stage.id}`);
         return makeEntry({
@@ -975,7 +1020,7 @@ const buildCatalog = async () => {
           boss: stage.canonicalBossName || stage.bossName,
           promptOverride: stage.id === 90000 ? TUTORIAL_90000_PROMPT : null,
           bossVisualAnchor: hasCanonStageLock ? stage.visualAnchor : subjectReference?.bossVisualAnchor,
-          bossReferenceUrls: hasCanonStageLock ? [stage.referenceUrl] : subjectReference?.bossReferenceUrls,
+          bossReferenceUrls: hasCanonStageLock ? sourceReferenceUrls : subjectReference?.bossReferenceUrls,
           ...visualReferences
         });
       }),
@@ -1056,7 +1101,9 @@ const buildCatalog = async () => {
             `Character arc ${arc.stageId} local-reference candidates drifted; refresh the quality audit`
           );
         }
+        const characterSourceLock = getCharacterSourceLock(hero);
         const approvedLocalReferencePaths = refreshCharacterReferenceAudit
+          || (characterSourceLock && hero.visualReviewStatus === 'pending')
           ? []
           : localReferenceCandidatePaths.filter(referencePath => {
             const classification = characterReferenceQuality.classificationByPath.get(referencePath);
@@ -1072,12 +1119,19 @@ const buildCatalog = async () => {
           && subjectReference.visualAnchors.length > 0
           ? subjectReference.visualAnchors
           : visualReferences.visualAnchors;
-        const characterDescriptors = buildCharacterDescriptors({ hero, arc, heroUniverse });
-        const referencePolicy = visualReferences.referenceUrls.length > 0
+        const characterDescriptors = buildCharacterDescriptors({ hero, arc, heroUniverse, sourceLock: characterSourceLock });
+        const characterReferenceUrls = characterSourceLock?.referenceUrls || visualReferences.referenceUrls;
+        const referencePolicy = characterReferenceUrls.length > 0
           || (subjectReference?.bossReferenceUrls || []).length > 0
           ? 'authoritative-public'
           : 'project-runtime-lore';
-        const resolvedVisualAnchors = subjectVisualAnchors.length > 0
+        const resolvedVisualAnchors = characterSourceLock
+          ? uniqueStrings([
+              characterSourceLock.incarnation,
+              characterSourceLock.visualAnchor,
+              ...(subjectReference?.visualAnchors || [])
+            ])
+          : subjectVisualAnchors.length > 0
           ? subjectVisualAnchors
           : characterDescriptors;
         const finalePolicy = arc.finalePolicy || null;
@@ -1097,12 +1151,13 @@ const buildCatalog = async () => {
           nonCombatObjective: finalePolicy?.objective,
           characterName: hero?.name || arc.title?.en || arc.heroId,
           characterDescriptors,
+          characterSourceLock,
           bossVisualAnchor: subjectReference?.bossVisualAnchor,
           bossReferenceUrls: subjectReference?.bossReferenceUrls,
           localReferencePaths: approvedLocalReferencePaths,
           localReferenceCandidatePaths,
           visualAnchors: resolvedVisualAnchors,
-          referenceUrls: visualReferences.referenceUrls,
+          referenceUrls: characterReferenceUrls,
           referencePolicy
         });
       })
@@ -1299,7 +1354,15 @@ const validateCatalog = catalog => {
     if (entry.famille === 'arc-personnage') {
       const approvedReferences = entry.referencesLocalesOpenAI || [];
       const candidateReferences = entry.candidatsReferencesLocalesAudit || [];
+      if (entry.verrouSourcePersonnage) {
+        assert.ok(entry.verrouSourcePersonnage.incarnation, `${entry.id}: character source lock omits incarnation`);
+        assert.ok(entry.verrouSourcePersonnage.visualAnchor, `${entry.id}: character source lock omits visual anchor`);
+        assert.ok(entry.verrouSourcePersonnage.referenceUrls.length > 0, `${entry.id}: character source lock omits references`);
+        assert.ok(entry.promptOpenAI.includes(entry.verrouSourcePersonnage.incarnation), `${entry.id}: prompt omits character source incarnation`);
+        assert.ok(entry.promptOpenAI.includes(entry.verrouSourcePersonnage.visualAnchor), `${entry.id}: prompt omits character source visual anchor`);
+      }
       const expectedApprovedReferences = refreshCharacterReferenceAudit
+        || entry.verrouSourcePersonnage?.visualReviewStatus === 'pending'
         ? []
         : candidateReferences.filter(referencePath => (
           characterReferenceQuality.classificationByPath.get(referencePath) === 'approved'

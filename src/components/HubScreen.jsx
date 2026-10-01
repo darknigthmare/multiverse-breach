@@ -6,6 +6,7 @@ import sound from '../game/soundEngine';
 import { CORE_CODEX_ENTRIES, LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { CANON_PRIORITY_STAGES } from '../game/canonPriorityStages.js';
+import { resolveStageArchiveBoss } from '../game/canonicalArchiveLore.js';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages, getResolvedLoreWorldBossPolicy } from '../game/expandedUniverses';
 import { inferNonCombatTrial } from '../game/nonCombatTrial';
 import { getCharacterPlaque } from '../game/characterPlaques';
@@ -5535,16 +5536,16 @@ export default function HubScreen({
       bossName: 'Echo de la Marge Blanche',
       tutorial: true
     },
-    { id: 1, name: 'Aspho Fields Locust Outpost', universe: 'Gears of War', mode: 'RPG', difficulty: 'Easy', goldPrize: 40, shardPrize: 15, bossName: 'Brumak' },
-    { id: 2, name: 'Installation 04 Ring', universe: 'Halo', mode: 'Tactics', difficulty: 'Easy', goldPrize: 40, shardPrize: 15, bossName: 'Scarab Mech' },
-    { id: 3, name: 'LV-426 Colony Hive', universe: 'Alien', mode: 'Smash', difficulty: 'Easy', goldPrize: 45, shardPrize: 15, bossName: 'Predalien' },
+    CANON_PRIORITY_STAGES.lightmassTrain,
+    CANON_PRIORITY_STAGES.metropolisScarab,
+    CANON_PRIORITY_STAGES.hadleysQueen,
     { id: 4, name: 'Val Verde Jungle Temple', universe: 'Predator', mode: 'RPG', difficulty: 'Easy', goldPrize: 50, shardPrize: 20, bossName: 'Bad Blood Alpha' },
     { id: 5, name: 'Raccoon City Police Dept', universe: 'Resident Evil', mode: 'Tactics', difficulty: 'Easy', goldPrize: 50, shardPrize: 20, bossName: 'Super Tyrant' },
     { id: 6, name: 'Toluca Lake Fog Sector', universe: 'Silent Hill', mode: 'RPG', difficulty: 'Medium', goldPrize: 60, shardPrize: 20, bossName: 'The God' },
     { id: 7, name: 'Edward City Missile Silo', universe: 'Dino Crisis', mode: 'Smash', difficulty: 'Medium', goldPrize: 65, shardPrize: 25, bossName: 'Giganotosaurus' },
     { id: 8, name: 'Zion Digital Pipeline', universe: 'The Matrix', mode: 'Tactics', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Deus Ex Machina' },
     { id: 9, name: 'Abydos Pyramids Breach', universe: 'Stargate', mode: 'RPG', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Anubis Flagship Nexus' },
-    { id: 10, name: 'Anomalous Materials Lab', universe: 'Half-Life', mode: 'Smash', difficulty: 'Medium', goldPrize: 75, shardPrize: 25, bossName: 'Combine Strider' },
+    CANON_PRIORITY_STAGES.xenNihilanth,
     { id: 11, name: 'Aperture Enrichment Center', universe: 'Portal', mode: 'RPG', difficulty: 'Medium', goldPrize: 80, shardPrize: 30, bossName: 'Central AI' },
     CANON_PRIORITY_STAGES.shadowMoses,
     { id: 13, name: 'First World Bank Vault', universe: 'Payday', mode: 'Smash', difficulty: 'Hard', goldPrize: 95, shardPrize: 30, bossName: 'SWAT Turret Van' },
@@ -8317,16 +8318,7 @@ export default function HubScreen({
     if (getNonCombatStageDetails(stage, lang)) return null;
     if (stage.finalGameBoss) return getFinalGameBoss();
     const universeEnemies = ENEMIES_DB[stage.universe] || {};
-    if (stage.ocDlc && stage.bossName) {
-      const exactBoss = [
-        ...(universeEnemies.bosses || []),
-        universeEnemies.worldBoss
-      ]
-        .filter(Boolean)
-        .find(enemy => enemy.name === stage.bossName);
-      if (exactBoss) return exactBoss;
-    }
-    return universeEnemies.worldBoss || universeEnemies.bosses?.[0];
+    return resolveStageArchiveBoss(stage, universeEnemies);
   };
   const visibleCollectionUniverses = Object.keys(LORE_DB)
     .filter(isUniverseArchiveAvailable);
@@ -13108,4 +13100,3 @@ export default function HubScreen({
     </div>
   );
 }
-

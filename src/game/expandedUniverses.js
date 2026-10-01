@@ -249,11 +249,12 @@ function defineCanonicalUniverse({
     allies: cast.slice(1),
     monsters: enemies,
     bosses,
-    gear: gear.map(([itemKey, enName, frName], index) => ([
+    gear: gear.map(([itemKey, enName, frName, metadata], index) => ([
       `${key}_${itemKey}`,
       enName,
       frName,
-      boosts[index % boosts.length]
+      boosts[index % boosts.length],
+      ...(metadata ? [metadata] : [])
     ])),
     event: [`evt_${key}_${event[0]}`, ...event.slice(1)],
     desc: {
@@ -1089,7 +1090,32 @@ const CANONICAL_REQUESTED_UNIVERSE_WAVE = [
     enemies: ['Villain-Con Guard', 'Crown Vault Bot', 'Overkill Henchman'],
     bosses: ['Herb Overkill', 'Scarlet Overkill'],
     gear: [
-      ['fart_gun', 'Freeze Ray Fart Gun', 'Pistolet a pet gelant'],
+      // The historical ID/path remain a save alias; the target is the Freeze
+      // Ray used by young Gru in this film, not Nefario s separate Fart Gun.
+      ['fart_gun', 'Gru s Freeze Ray', 'Rayon gelant de Gru', {
+        canonicalName: 'Freeze Ray',
+        canonicalItemId: 'gru_freeze_ray_minions_2015',
+        incarnation: 'Minions (2015) - young Gru / London finale',
+        sourceOwner: 'Young Gru',
+        legacyIdReason: 'minions_fart_gun preserves saved equipment references and the existing sprite path; it does not identify a Fart Gun.',
+        referenceUrl: 'https://en.wikipedia.org/wiki/Minions_(film)',
+        referenceUrls: ['https://www.illumination.com/movie/minions/', 'https://en.wikipedia.org/wiki/Minions_(film)'],
+        referenceStatus: 'source identity documented; physical prop reference pending',
+        visualAnchor: 'Freeze Ray used by young Gru in the final London scene of Minions (2015), freezing Scarlet and Herb Overkill. This is the ice-ray gadget, distinct from Dr. Nefario s Fart Gun. Verify the physical silhouette, colors and materials against that exact film scene before rendering; do not combine gas clouds, designs from other films or invented hidden geometry.',
+        canonStatus: 'source identity locked; passive stat boosts are a game adaptation',
+        visualReviewStatus: 'pending',
+        icon: '/sprites/generated/items/minions/minions-fart-gun.png',
+        desc: {
+          en: 'Young Gru uses the Freeze Ray to freeze Scarlet and Herb at the end of Minions (2015). In this game, equipping the item grants passive attack and speed bonuses; it does not trigger freezing. The old saved ID is retained for compatibility.',
+          fr: 'Le jeune Gru utilise ce rayon pour geler Scarlet et Herb dans la finale de Minions (2015). Dans le jeu, cet equipement donne des bonus passifs d attaque et de vitesse, sans declencher de gel. L ancien identifiant de sauvegarde est conserve pour compatibilite.'
+        },
+        gameplayPolicy: {
+          kind: 'passive-equipment',
+          canonicalEffect: 'freezing ray',
+          runtimeEffect: 'stat-boost-only',
+          hasRuntimeFreeze: false
+        }
+      }],
       ['crown', 'Stolen Royal Crown', 'Couronne royale volee'],
       ['banana', 'Emergency Banana', 'Banane d urgence']
     ],

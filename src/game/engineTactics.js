@@ -10,6 +10,7 @@ import { drawGeneratedStageTextureCover, getGeneratedStageTexturePattern } from 
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { faceGridUnitToward as faceUnitToward, getGridFacingVector, getGridFacingBonus } from './tacticalFacing.js';
 import { resolveTacticsEscort, getTacticsEscortPose } from './tacticsEscort.js';
+import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 
 const COMPASS_DIRECTIONS = [
   { x: 1, y: 0 },
@@ -1293,7 +1294,16 @@ export class EngineTactics {
       }
     };
 
-    if (profile.shape === 'area') {
+    if (profile.shape === 'multi') {
+      // A volley consists of distinct legal shots, not a cone or an explosion.
+      // Each candidate must satisfy the same range and sight rules as its
+      // clicked anchor; the target budget is applied by the shared resolver.
+      for (let y = 0; y < this.rows; y++) {
+        for (let x = 0; x < this.cols; x++) {
+          if (this.canAttackCell(attacker, { gridX: x, gridY: y }, profile)) append(x, y);
+        }
+      }
+    } else if (profile.shape === 'area') {
       for (let y = targetY - profile.areaRadius; y <= targetY + profile.areaRadius; y++) {
         for (let x = targetX - profile.areaRadius; x <= targetX + profile.areaRadius; x++) append(x, y);
       }
@@ -1444,7 +1454,18 @@ export class EngineTactics {
 
   applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType) {
     const targets = this.getAttackTargets(attacker, target, actionType, attackerType);
+    const action = this.getActionDefinition(attacker, actionType);
+    const canonEffect = resolveCanonHeroAttackEffect(attacker, action);
+    if (canonEffect) this.playSfx(canonEffect.sfx);
     targets.forEach(entry => {
+      if (canonEffect) {
+        emitCanonHeroAttackEffect(
+          this.particles,
+          { ...attacker, ...this.getUnitScreenPosition(attacker.gridX, attacker.gridY) },
+          this.getUnitScreenPosition(entry.unit.gridX, entry.unit.gridY),
+          action
+        );
+      }
       this.applyDamage(attacker, entry.unit, baseDamage, statusEffect, { actionType });
     });
     return targets;
@@ -1524,7 +1545,7 @@ export class EngineTactics {
             attacker.state = 'attack';
             attacker.stateTimer = 25;
             const weapon = attacker.weaponType || attacker.weapon;
-            this.playSfx(weapon === 'gun' || weapon === 'laser' ? 'shoot' : 'slash');
+            if (!resolveCanonHeroAttackEffect(attacker, attacker.simple)) this.playSfx(weapon === 'gun' || weapon === 'laser' ? 'shoot' : 'slash');
             
             let status = null;
             if (attacker.id === 'leon' || attacker.name?.includes('Nemesis')) status = 'infected';
@@ -1548,7 +1569,7 @@ export class EngineTactics {
             attacker.state = 'attack';
             attacker.stateTimer = 25;
             attacker.cooldown = (attacker.secondary?.cd || 3) * 60;
-            this.playSfx('shoot');
+            if (!resolveCanonHeroAttackEffect(attacker, attacker.secondary)) this.playSfx('shoot');
             
             this.applyProfiledAttack(
               attacker,
@@ -1567,10 +1588,11 @@ export class EngineTactics {
             attacker.specialCharge = 0;
             attacker.state = 'special';
             attacker.stateTimer = 35;
-            this.playSfx('special');
+            const canonEffect = resolveCanonHeroAttackEffect(attacker, attacker.special);
+            if (!canonEffect) this.playSfx('special');
 
             const specialScreen = this.gridToScreen(c, r);
-            this.particles.add(
+            if (!canonEffect) this.particles.add(
               specialScreen.x,
               specialScreen.y,
               0, 0, attacker.primaryColor || attacker.color || '#e74c3c', 120, 30, 'glitch'
@@ -2376,17 +2398,17 @@ export class EngineTactics {
         if (hero.id === 'neo') status = 'glitched';
 
         if (chosenAction === 'simple') {
-          this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
+          if (!resolveCanonHeroAttackEffect(hero, hero.simple)) this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
           this.applyProfiledAttack(hero, attackAnchor, 'simple', hero.stats.atk * hero.simple.dmg, status, 'hero');
           hero.specialCharge = Math.min(100, hero.specialCharge + 15);
         } else if (chosenAction === 'secondary') {
           hero.cooldown = hero.secondary.cd * 60;
-          this.playSfx('shoot');
+          if (!resolveCanonHeroAttackEffect(hero, hero.secondary)) this.playSfx('shoot');
           this.applyProfiledAttack(hero, attackAnchor, 'secondary', hero.stats.atk * hero.secondary.dmg, status, 'hero');
           hero.specialCharge = Math.min(100, hero.specialCharge + 25);
         } else if (chosenAction === 'special') {
           hero.specialCharge = 0;
-          this.playSfx('special');
+          if (!resolveCanonHeroAttackEffect(hero, hero.special)) this.playSfx('special');
           this.applyProfiledAttack(hero, attackAnchor, 'special', hero.stats.atk * hero.special.dmg, status, 'hero');
         }
       }

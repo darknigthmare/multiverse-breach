@@ -5,6 +5,8 @@ import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { applyCombatHealing } from './combatHealing.js';
 import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
+import { getSmashAbilityProfile, getSmashAbilityTargets } from './smashAbilityProfiles.js';
+import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
 import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
@@ -525,30 +527,34 @@ export class EngineSmash {
 
   resolveMeleeActionHit(attacker, action) {
     const attackerIsHero = this.heroes.includes(attacker);
-    const targets = (attackerIsHero ? this.enemies : this.heroes)
+    const candidates = (attackerIsHero ? this.enemies : this.heroes)
       .filter(target => target.currentHp > 0);
+    const abilityType = action.id === 'special' ? 'special' : 'simple';
+    const profile = getSmashAbilityProfile(attacker, abilityType);
+    const targets = profile ? getSmashAbilityTargets(attacker, candidates, profile) : candidates;
     const attackStat = Math.max(1, Number(attacker.stats?.atk ?? attacker.atk) || 1);
     const powerScale = Math.max(0.1, Number(action.powerScale) || 1);
     let hitCount = 0;
 
     targets.forEach(target => {
       const dx = target.x - attacker.x;
-      const inFront = action.range === Infinity || Math.sign(dx || attacker.facing) === attacker.facing;
-      const inRange = action.range === Infinity || Math.abs(dx) <= action.range;
+      const inFront = Boolean(profile) || action.range === Infinity || Math.sign(dx || attacker.facing) === attacker.facing;
+      const inRange = Boolean(profile) || action.range === Infinity || Math.abs(dx) <= action.range;
       const hurtbox = getMeleeHurtbox(target);
       const attackTop = action.id === 'aerialDown' ? attacker.y - 16 : attacker.y - (action.id === 'crouchLight' ? 28 : 62);
       const attackBottom = action.id === 'aerialDown' ? attacker.y + 82 : attacker.y + 4;
       const verticalOverlap = attackBottom >= hurtbox.top && attackTop <= hurtbox.bottom;
-      if (!inFront || !inRange || !verticalOverlap) return;
+      if (!inFront || !inRange || (!profile && !verticalOverlap)) return;
       const damage = attackStat * (action.base / 10) * powerScale;
       this.applyDamage(
         attacker,
         target,
         damage,
-        Math.max(4, action.knockback / 10) * powerScale,
+        (profile?.knockback ?? Math.max(4, action.knockback / 10)) * powerScale,
         null,
         action.guardDamage * powerScale
       );
+      if (profile) emitCanonHeroAttackEffect(this.particles, attacker, target, abilityType);
       hitCount += 1;
     });
 
@@ -572,6 +578,9 @@ export class EngineSmash {
     const attack = opponent.stats?.atk || opponent.atk || 1;
     const targets = this.heroes.filter(hero => hero.currentHp > 0);
     if (!targets.length) return false;
+    if (getSmashAbilityProfile(opponent, abilityType)) {
+      return this.triggerProfiledAbility(opponent, abilityType, targets);
+    }
 
     if (abilityType === 'simple') {
       opponent.state = 'attack';
@@ -745,6 +754,9 @@ export class EngineSmash {
 
   triggerAbility(hero, abilityType) {
     if (hero.currentHp <= 0 || hero.state === 'dead' || isMeleeHitLocked(hero) || this.gameOver || this.isMatchInputLocked()) return;
+    if (getSmashAbilityProfile(hero, abilityType)) {
+      return this.triggerProfiledAbility(hero, abilityType, this.enemies);
+    }
 
     if (abilityType === 'simple') {
       hero.state = 'attack';
@@ -812,6 +824,39 @@ export class EngineSmash {
         }
       });
     }
+  }
+
+  triggerProfiledAbility(actor, abilityType, candidates) {
+    const profile = getSmashAbilityProfile(actor, abilityType);
+    const action = actor[abilityType];
+    if (!profile || !['simple', 'secondary', 'special'].includes(abilityType)) return false;
+    if (abilityType === 'secondary' && actor.cooldown > 0) return false;
+    if (abilityType === 'special' && actor.specialCharge < 100) return false;
+
+    actor.state = 'attack';
+    actor.stateTimer = abilityType === 'special' ? 40 : abilityType === 'secondary' ? 20 : 15;
+    if (abilityType === 'secondary') actor.cooldown = (Number(action.cd) || 4) * 60;
+    if (abilityType === 'special') actor.specialCharge = 0;
+    else actor.specialCharge = Math.min(100, actor.specialCharge + (abilityType === 'secondary' ? 15 : 10));
+
+    const effect = resolveCanonHeroAttackEffect(actor, action);
+    this.playSfx(effect?.sfx || (profile.delivery === 'melee' ? 'slash' : 'shoot'));
+    const targets = getSmashAbilityTargets(actor, candidates, profile);
+    if (!targets.length) emitCanonHeroAttackEffect(this.particles, actor, null, action);
+    if (abilityType === 'special') {
+      this.particles.add(actor.x - 30, actor.y - 50, 0, -0.5, '#f1c40f', 16, 80, 'text', `!!! ${String(action.name || abilityType).toUpperCase()} !!!`);
+    }
+    const attack = Math.max(1, Number(actor.stats?.atk ?? actor.atk) || 1);
+    const multiplier = Number.isFinite(Number(action.dmg)) ? Number(action.dmg) : 1;
+    const knockback = profile.knockback ?? (abilityType === 'special' ? 45 : abilityType === 'secondary' ? 20 : 10);
+    targets.forEach(target => {
+      emitCanonHeroAttackEffect(this.particles, actor, target, action);
+      const sourceId = actor.sourceId || actor.id;
+      const status = sourceId === 'neo' && abilityType === 'special' ? 'glitched'
+        : sourceId === 'leon' && abilityType === 'simple' ? 'infected' : null;
+      this.applyDamage(actor, target, attack * multiplier, knockback, status);
+    });
+    return true;
   }
 
   triggerCombatEvent(effect) {

@@ -7,6 +7,7 @@ import { applyCombatHealing } from './combatHealing.js';
 import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { calculateRpgDamage, getRpgActionProfile, getRpgEligibleTargets, resolveRpgTargets, rpgUnitId } from './rpgTargeting';
+import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 
 const RPG_FLOOR_LANES = Object.freeze({
   heroes: Object.freeze([
@@ -637,15 +638,19 @@ export class EngineRpg {
     actor.stateTimer = abilityType === 'special' ? 45 : 35;
     this.faceTarget(actor, anchor);
     const color = profile.action.color || actor.secondaryColor || actor.color || '#ff9900';
+    const canonEffect = profile.effect === 'damage' ? resolveCanonHeroAttackEffect(actor, profile.action) : null;
     if (profile.delivery === 'melee' && profile.effect === 'damage') {
       this.positionForMelee(actor, anchor);
-      this.playSfx('slash');
+      this.playSfx(canonEffect?.sfx || 'slash');
+      if (canonEffect) targets.forEach(target => emitCanonHeroAttackEffect(this.particles, actor, target, profile.action));
     } else {
-      this.playSfx(profile.effect === 'damage' ? 'shoot' : 'shield');
-      targets.forEach(target => this.emitTargetedProjectile(actor, target, color));
+      this.playSfx(canonEffect?.sfx || (profile.effect === 'damage' ? 'shoot' : 'shield'));
+      targets.forEach(target => {
+        if (!emitCanonHeroAttackEffect(this.particles, actor, target, profile.action)) this.emitTargetedProjectile(actor, target, color);
+      });
     }
     if (abilityType === 'special') {
-      this.playSfx('special');
+      if (!canonEffect) this.playSfx('special');
       this.particles.add(actor.x, actor.y - 40, 0, -0.4, color, 16, 90, 'text', profile.name.toUpperCase() + '!');
     }
 

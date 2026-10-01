@@ -1,0 +1,1217 @@
+{
+  "date": "2026-10-01",
+  "scope": "19 remaining Wave4 P0 heroes; excludes the six Star Wars/Minions source locks already implemented. All 25 inherited visual P0 entries remain open.",
+  "method": "Read-only runtime HEROES_DB snapshot and source-file inspection; consulted official publisher/reference pages and explicitly labelled secondary wikis. No sprites, generation ledger, loadouts, or canonical source fields modified.",
+  "sourceEvidenceLimits": "A consulted general character biography verifies identity but does not validate every incarnation, costume, attack, or gameplay behavior. Blocked/404 pages are recorded as attempts, not consulted evidence.",
+  "sourceFilesSha256": {
+    "src/game/heroes.js": "61182f7f69da90f9a08585bd58a3a87d0762b90172c6eb3528d83ab569da4432",
+    "src/game/loreAccuratePacks.js": "4b2fa5c668a5cf12375257272d179e7d76e0b3f0a81af2db884ba7faed75b1a8",
+    "src/game/expandedUniverses.js": "2fc037af76522fc2669f7b096cf20627e5b1469fb6863e33d32cd59136e3408a",
+    "src/game/requestedUniverseWave.js": "0669fa752e710e5892924579c6ee22c044de16f06081c8a0127bf8d574817a1b"
+  },
+  "sourceEvidence": [
+    {
+      "key": "lilo-stitch",
+      "url": "https://d23.com/a-to-z/lilo-stitch-film/",
+      "resolvedUrl": "https://d23.com/a-to-z/lilo-stitch-film/",
+      "httpStatus": 200,
+      "sha256": "e6d0fb7ca3fd84033c8dfda4e94bbb7f56bf5423f0ebe9eb1e685e7171098c65",
+      "bytes": 64537,
+      "title": [
+        "Lilo &amp; Stitch (film) - D23"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "roger-rabbit",
+      "url": "https://d23.com/a-to-z/who-framed-roger-rabbit-film/",
+      "resolvedUrl": "https://d23.com/a-to-z/who-framed-roger-rabbit-film/",
+      "httpStatus": 200,
+      "sha256": "02e0502da7cb1ad1e78b18ac07cb7f44aa7fc016c57b93475d39f14f260638d4",
+      "bytes": 66261,
+      "title": [
+        "Who Framed Roger Rabbit (film) - D23"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "jack-sparrow",
+      "url": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "resolvedUrl": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "httpStatus": 200,
+      "sha256": "e3de8df82de813e99c247570fd109c8f88ea5f9cf22b69d09273fc609fc19b58",
+      "bytes": 66193,
+      "title": [
+        "Pirates of the Caribbean: The Curse of the Black Pearl (film) - D23"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "batman",
+      "url": "https://www.dc.com/characters/batman",
+      "resolvedUrl": "https://www.dc.com/characters/batman",
+      "httpStatus": 200,
+      "sha256": "a003d76717d584d330fa7cc25cb139104cfe4c67c95ef7db1ff58d91d0a9f98c",
+      "bytes": 404783,
+      "title": [
+        "Batman | Official DC Character"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "raven",
+      "url": "https://www.dc.com/characters/raven",
+      "resolvedUrl": "https://www.dc.com/characters/raven",
+      "httpStatus": 200,
+      "sha256": "d47f331a81eca378adf7b3107479ea9417f68e94c525a92994bcfe47c12c93ce",
+      "bytes": 124433,
+      "title": [
+        "Raven | Official DC Character"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "starfire",
+      "url": "https://www.dc.com/characters/starfire",
+      "resolvedUrl": "https://www.dc.com/characters/starfire",
+      "httpStatus": 200,
+      "sha256": "25023f81d5f2ba40c02b21d4041b9c9114ad6087d03eee8f8bcbfa680df9aab6",
+      "bytes": 160007,
+      "title": [
+        "Starfire | Official DC Character"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "harley-quinn",
+      "url": "https://www.dc.com/characters/harley-quinn",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "joker",
+      "url": "https://www.dc.com/characters/the-joker",
+      "resolvedUrl": "https://www.dc.com/characters/the-joker",
+      "httpStatus": 200,
+      "sha256": "abdeb6e93b5251c9ba02a28852f7e14a28d9ffbf78453192389ebbebc928b480",
+      "bytes": 194452,
+      "title": [
+        "The Joker | Official DC Character"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "grim-knight",
+      "url": "https://www.dc.com/comics/the-batman-who-laughs-the-grim-knight-2019/the-batman-who-laughs-the-grim-knight-1",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "hermione",
+      "url": "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+      "resolvedUrl": "https://www.harrypotter.com/fact-file/characters-and-pets/hermione-granger",
+      "httpStatus": 200,
+      "sha256": "d9211966300b40f32343a7a49dfa321b58663934488395393ec7d153dbc6ad06",
+      "bytes": 162268,
+      "title": [
+        "Hermione Granger | Official Harry Potter Encyclopedia"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "harry",
+      "url": "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+      "resolvedUrl": "https://www.harrypotter.com/fact-file/characters-and-pets/harry-potter",
+      "httpStatus": 200,
+      "sha256": "d5900e73b4aa2c08070a988f7b31c76bf31d0024ffbcea0c2243ce6e6b2f515c",
+      "bytes": 166416,
+      "title": [
+        "Harry Potter | Official Harry Potter Encyclopedia"
+      ],
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "saturnin",
+      "url": "https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin",
+      "resolvedUrl": "https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin",
+      "httpStatus": 200,
+      "bytes": 128947,
+      "sha256": "40235b278584cc785f0f09d4d3f8a689fac181057e6a91b16071db3022e4ba2e",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "spider",
+      "url": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "resolvedUrl": "https://en.wikipedia.org/wiki/Spider:_The_Video_Game",
+      "httpStatus": 200,
+      "bytes": 158384,
+      "sha256": "bb0905ba0ebeff2a92c0b2326f6e8a3d62f6e5dfd2ebfbfb5a021e8188764ab2",
+      "sourceType": "secondary-wiki",
+      "consulted": true
+    },
+    {
+      "key": "grim-knight-issue",
+      "url": "https://www.dc.com/comics/the-batman-who-laughs-2018/the-batman-who-laughs-the-grim-knight-1",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "endgame",
+      "url": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+      "resolvedUrl": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-7-endgame",
+      "httpStatus": 200,
+      "bytes": 629816,
+      "sha256": "420a3e70782308ede54820fcbf341f1e55e1d8f6e4d27e53ec3670a20f27c180",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": true
+    },
+    {
+      "key": "death-of-the-family",
+      "url": "https://www.dc.com/graphic-novels/batman-2011/batman-vol-3-death-of-the-family",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "harley-suicide-squad",
+      "url": "https://www.dc.com/comics/suicide-squad-2011/suicide-squad-1",
+      "error": "HTTP Error 403: Forbidden",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "thriller",
+      "url": "https://www.michaeljackson.com/videos/michael-jackson-thriller-official-video/",
+      "error": "HTTP Error 404: Not Found",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "the-dark-knight",
+      "url": "https://www.warnerbros.com/movies/dark-knight",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    },
+    {
+      "key": "hermione-patronus",
+      "url": "https://www.harrypotter.com/fact-file/spells-charms-and-potions/the-patronus-charm",
+      "error": "HTTP Error 404: Not Found",
+      "sourceType": "official-publisher-or-rightsholder",
+      "consulted": false
+    }
+  ],
+  "entries": [
+    {
+      "heroId": "saturnin_duck",
+      "name": "Saturnin the Duck",
+      "universe": "Les Aventures de Saturnin",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "identity-and-loadout",
+      "observedProblem": "Fusil et balles générés à partir de la classe tactical, incompatibles avec le caneton réel. L’arc personnel possède maintenant une escorte originale, mais le kit sélectionnable reste armé.",
+      "recommendedSourceLock": "Les Aventures de Saturnin (ORTF, 1965–1970), caneton réel dans un village miniature.",
+      "nextAction": "Retirer le fusil et les balles de son kit ; utiliser locomotion/ruse/appel des compagnons et annoncer les actions jouables comme adaptation. Garder l’escorte cohérente et vérifier les noms des animaux à partir des épisodes INA.",
+      "sourceKeys": [
+        "saturnin"
+      ],
+      "implementationLocations": [
+        "src/game/requestedUniverseWave.js:623",
+        "src/game/heroes.js:2398",
+        "src/game/narrativeSystems.js:1384"
+      ],
+      "snapshot": {
+        "weapon": "gun",
+        "weaponType": "gun",
+        "weaponColor": "#ffd83d",
+        "simple": {
+          "name": "Saturnin the Duck Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Saturnin the Duck Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Saturnin the Duck Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Saturnin the Duck Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#ffd83d"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "lilo_pelekai",
+      "name": "Lilo Pelekai",
+      "universe": "Lilo & Stitch",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "identity-and-loadout",
+      "observedProblem": "weaponType laser, simple energy et Origin Burst générique : Lilo reçoit des pouvoirs extraterrestres qui ne sont pas les siens.",
+      "recommendedSourceLock": "Lilo & Stitch, film animé de 2002 ; Lilo humaine, sœur de Nani, photographie, danse, Elvis et ohana.",
+      "nextAction": "Verrouiller le film animé 2002 ; appareil photo/photographie, danse et soutien/ruse plutôt que laser. Ne pas convertir Lilo en guerrière surnaturelle ; les effets numériques de soutien restent une adaptation annoncée.",
+      "sourceKeys": [
+        "lilo-stitch"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:1139",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "laser",
+        "weaponType": "laser",
+        "weaponColor": "#78daff",
+        "simple": {
+          "name": "Lilo Pelekai Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Lilo Pelekai Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Lilo Pelekai Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Lilo Pelekai Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#78daff"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "stitch_626",
+      "name": "Stitch",
+      "universe": "Lilo & Stitch",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "identity-and-loadout",
+      "observedProblem": "Identité Experiment 626 implicite seulement ; slash et Origin Burst génériques sans force, griffes, morsure ni anatomie documentées.",
+      "recommendedSourceLock": "Lilo & Stitch, film animé de 2002, Experiment 626 ; distinguer forme à deux bras sur Terre et forme extraterrestre à quatre bras.",
+      "nextAction": "Choisir et documenter une forme/scène 2002 ; kit force/griffes/morsure/agilité fidèle. Pas de rayon inné inventé ni de vêtements humanoïdes ajoutés sous l’étiquette canonique.",
+      "sourceKeys": [
+        "lilo-stitch"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:1139",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "slash",
+        "weaponType": "slash",
+        "weaponColor": "#55b7e8",
+        "simple": {
+          "name": "Stitch Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Stitch Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Stitch Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Stitch Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#55b7e8"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "jack_sparrow_potc",
+      "name": "Jack Sparrow",
+      "universe": "Pirates of the Caribbean",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "identity-and-loadout",
+      "observedProblem": "Classe hacker transformée en laser et attaque energy ; absence de sabre, pistolet à silex et boussole dans son propre kit.",
+      "recommendedSourceLock": "Pirates of the Caribbean: The Curse of the Black Pearl (2003) est la première incarnation à verrouiller avant de mélanger les suites.",
+      "nextAction": "Sourcer costume et accessoires dans le film ; sabre/pistolet à silex et esquive/ruse. Si le stage reste celui de Davy Jones, choisir explicitement Dead Man’s Chest/At World’s End pour l’ensemble personnage/stage au lieu d’une référence 2003 silencieuse.",
+      "sourceKeys": [
+        "jack-sparrow"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:374",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "laser",
+        "weaponType": "laser",
+        "weaponColor": "#d6a654",
+        "simple": {
+          "name": "Jack Sparrow Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Jack Sparrow Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Jack Sparrow Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Jack Sparrow Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#d6a654"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "roger_rabbit",
+      "name": "Roger Rabbit",
+      "universe": "Roger Rabbit",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "identity-and-loadout",
+      "observedProblem": "Classe hacker -> laser et energy ; attaques génériques incompatibles avec un toon comique du film de 1988.",
+      "recommendedSourceLock": "Who Framed Roger Rabbit (1988), Roger toon, époux de Jessica, Eddie Valiant enquêteur, Dip comme menace mortelle.",
+      "nextAction": "Kit physique toon et gags de mise en scène explicitement adapté ; préserver la vulnérabilité au Dip. Ne pas utiliser la Trempette comme médicament ou arme protectrice de Roger ; ne pas lui attribuer une arme laser.",
+      "sourceKeys": [
+        "roger-rabbit"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:3883",
+        "src/game/loreItemOverrides.js:444",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "laser",
+        "weaponType": "laser",
+        "weaponColor": "#ff6ab7",
+        "simple": {
+          "name": "Roger Rabbit Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Roger Rabbit Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Roger Rabbit Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Roger Rabbit Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#ff6ab7"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "batman_tdk",
+      "name": "Batman",
+      "universe": "The Dark Knight",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "identity-and-loadout",
+      "observedProblem": "weaponType gun + simple bullet + secondary projectile hérités tactical ; aucun gadget spécifique, pas d’incarnation 2008 verrouillée.",
+      "recommendedSourceLock": "The Dark Knight (2008), Bruce Wayne de Nolan ; exclure Batman Returns, The Batman 2022, New 52 et le Grim Knight.",
+      "nextAction": "Remplacer le tir de balle générique par combat martial/batarangs. Distinguer un grapnel gun ou sticky-bomb launcher d’une arme à balles ; consulter directement le film/des références officielles 2008 pour les gadgets et le Batsuit.",
+      "sourceKeys": [
+        "batman",
+        "the-dark-knight"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:677",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "gun",
+        "weaponType": "gun",
+        "weaponColor": "#d3a84a",
+        "simple": {
+          "name": "Batman Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Batman Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Batman Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Batman Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#d3a84a"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "batman_n52",
+      "name": "Batman New 52",
+      "universe": "Joker New 52",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "identity-and-loadout",
+      "observedProblem": "Gun et balles hérités tactical ; le pack New 52 ne désigne pas d’issue/scène précise.",
+      "recommendedSourceLock": "Batman New 52 ; le stage Endgame pointe vers Batman #35–40, source éditoriale officielle DC.",
+      "nextAction": "Choisir Endgame #35–40 ou un autre arc explicitement ; combat martial/batarangs et gadgets documentés. Ne pas transférer l’arsenal létal du Grim Knight ; si Justice Buster est utilisé, le traiter comme forme/équipement distinct et sourcé.",
+      "sourceKeys": [
+        "batman",
+        "endgame"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:1932",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "gun",
+        "weaponType": "gun",
+        "weaponColor": "#1b2631",
+        "simple": {
+          "name": "Batman New 52 Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Batman New 52 Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Batman New 52 Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Batman New 52 Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#1b2631"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "hermione",
+      "name": "Hermione Granger",
+      "universe": "Harry Potter",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "mechanics-and-incarnation",
+      "observedProblem": "Stupefy Precision est melee malgré la baguette. Time-Turner Study Loop produit nexus_aoe offensif et Protego Maxima mélange les scènes/époques sans incarnation.",
+      "recommendedSourceLock": "Hermione doit être verrouillée à un livre/film précis ; la fiche officielle confirme baguette vigne/cœur de dragon et Time-Turner, sans valider un bombardement temporel.",
+      "nextAction": "Corriger Stupefy comme sort à distance et préciser son effet d’étourdissement. Choisir Prisoner of Azkaban pour un kit Time-Turner (support/mission, pas explosion), ou Deathly Hallows pour un kit tardif sans Time-Turner mélangé.",
+      "sourceKeys": [
+        "hermione"
+      ],
+      "implementationLocations": [
+        "src/game/loreAccuratePacks.js:319",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": null,
+        "weaponType": "wand",
+        "weaponColor": "#fdcb6e",
+        "simple": {
+          "name": "Stupefy Precision",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Alohomora Route Hack",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Protego Maxima",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Time-Turner Study Loop",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#fdcb6e"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "starfire_tt",
+      "name": "Starfire",
+      "universe": "Teen Titans",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "mechanics-and-incarnation",
+      "observedProblem": "Starbolt Volley porte type melee ; les starbolts sont traités comme coups au contact. Nova Starburst utilise nexus_aoe, sans règle source explicite.",
+      "recommendedSourceLock": "Teen Titans doit choisir animation 2003, comics ou série live-action ; la fiche DC générale ne certifie aucun de ces modèles visuels particuliers.",
+      "nextAction": "Donner aux starbolts une trajectoire/portée d’énergie fidèle et conserver le coup de pied en secondaire mêlée. Verrouiller l’incarnation et la couleur des pouvoirs à partir d’une référence de cette version.",
+      "sourceKeys": [
+        "starfire"
+      ],
+      "implementationLocations": [
+        "src/game/loreAccuratePacks.js:199",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": null,
+        "weaponType": "starbolts",
+        "weaponColor": "#ff7a24",
+        "simple": {
+          "name": "Starbolt Volley",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Tamaranean Flight Kick",
+          "type": "signature",
+          "cd": 7,
+          "dmg": 1.8
+        },
+        "defense": {
+          "name": "Alien Resilience Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.8
+        },
+        "special": {
+          "name": "Nova Starburst",
+          "type": "nexus_aoe",
+          "dmg": 4.6,
+          "color": "#ff7a24"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "raven_tt",
+      "name": "Raven",
+      "universe": "Teen Titans",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "identity-and-loadout",
+      "observedProblem": "Laser/energy et Origin Burst hérités hacker ; absence de distinction magie/émotions/soul-self, comme si Raven possédait un fusil laser.",
+      "recommendedSourceLock": "Teen Titans : choisir animation 2003 ou comics ; ne pas mélanger avec Teen Titans Go! ou Titans live-action.",
+      "nextAction": "Remplacer l’arme laser générique par magie/telekinésie et protection correspondant à l’incarnation. L’incantation et le soul-self doivent être sourcés dans cette version avant validation.",
+      "sourceKeys": [
+        "raven"
+      ],
+      "implementationLocations": [
+        "src/game/requestedUniverseWave.js:677",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "laser",
+        "weaponType": "laser",
+        "weaponColor": "#5c39dc",
+        "simple": {
+          "name": "Raven Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Raven Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Raven Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Raven Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#5c39dc"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "cyber_spider_flamethrower",
+      "name": "Cybernetic Spider - Flamethrower Loadout",
+      "universe": "Spider: The Video Game",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "mechanics-and-incarnation",
+      "observedProblem": "Loadout nommé Flamethrower mais weapon slash et simple melee ; attaque spécifique non représentée.",
+      "recommendedSourceLock": "Spider: The Video Game (PlayStation, 1997), même araignée cybernétique et patte interchangeable.",
+      "nextAction": "Kit lance-flammes de patte documenté par manuel/gameplay, avec portée et apparence correspondantes. Le nom de variante ne doit pas être traité comme une autre personne.",
+      "sourceKeys": [
+        "spider"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:3895",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "slash",
+        "weaponType": "slash",
+        "weaponColor": "#80ffc1",
+        "simple": {
+          "name": "Cybernetic Spider - Flamethrower Loadout Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Cybernetic Spider - Flamethrower Loadout Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Cybernetic Spider - Flamethrower Loadout Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Cybernetic Spider - Flamethrower Loadout Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#80ffc1"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "cyber_spider_electro_beam",
+      "name": "Cybernetic Spider - Electro-Beam Loadout",
+      "universe": "Spider: The Video Game",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0",
+      "area": "mechanics-and-incarnation",
+      "observedProblem": "Loadout nommé Electro-Beam mais gun/bullet hérités tactical.",
+      "recommendedSourceLock": "Spider: The Video Game (PlayStation, 1997), arme-patte Electro-Beam à confirmer dans manuel/gameplay.",
+      "nextAction": "Distinguer rayon électrique et balle ; préserver la silhouette araignée, les pattes et les contraintes du jeu source. Le wiki consulté vérifie Kelly/pattes interchangeables, pas à lui seul le détail des dix armes.",
+      "sourceKeys": [
+        "spider"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:3895",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "gun",
+        "weaponType": "gun",
+        "weaponColor": "#3adc7b",
+        "simple": {
+          "name": "Cybernetic Spider - Electro-Beam Loadout Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Cybernetic Spider - Electro-Beam Loadout Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Cybernetic Spider - Electro-Beam Loadout Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Cybernetic Spider - Electro-Beam Loadout Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#3adc7b"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "cyber_spider_kelly",
+      "name": "Cybernetic Spider (Dr. Michael Kelly)",
+      "universe": "Spider: The Video Game",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P1",
+      "area": "identity-and-loadout",
+      "observedProblem": "Dr Michael Kelly correctement nommé mais kit hacker laser/energy générique ; incarnation et attachment actifs absents.",
+      "recommendedSourceLock": "Spider: The Video Game (1997), esprit de Kelly transféré dans une araignée cybernétique ; attachment slasher par défaut documenté au wiki.",
+      "nextAction": "Choisir le loadout de base et les attachments canoniques ; escalade plafond/murs et descente par soie restent à vérifier dans le moteur. Sourcer les caractéristiques dans manuel/gameplay avant certification.",
+      "sourceKeys": [
+        "spider"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:3895",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "laser",
+        "weaponType": "laser",
+        "weaponColor": "#5dff9e",
+        "simple": {
+          "name": "Cybernetic Spider (Dr. Michael Kelly) Signature Strike",
+          "type": "energy",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Cybernetic Spider (Dr. Michael Kelly) Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Cybernetic Spider (Dr. Michael Kelly) Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Cybernetic Spider (Dr. Michael Kelly) Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#5dff9e"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "harry",
+      "name": "Harry Potter",
+      "universe": "Harry Potter",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P1",
+      "area": "mechanics-and-incarnation",
+      "observedProblem": "Noms Expelliarmus/Stupefy/Protego/Expecto Patronum canoniques, mais pas d’incarnation ni équipement sourcé ; Expelliarmus zap inflige des dégâts et Patronus magic_aoe sert d’explosion générique.",
+      "recommendedSourceLock": "Harry Potter, sélectionner un livre/film pour baguette, uniforme et âge ; fiche officielle houx/plume de phénix et Patronus cerf.",
+      "nextAction": "Séparer fidélité des noms de fidélité des effets : désarmement, étourdissement, bouclier, Patronus défensif face aux Détraqueurs. Les dégâts contre tout ennemi doivent être explicitement adaptation du jeu.",
+      "sourceKeys": [
+        "harry"
+      ],
+      "implementationLocations": [
+        "src/game/heroes.js:566",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": null,
+        "weaponType": "wand",
+        "weaponColor": "#5c3a21",
+        "simple": {
+          "name": "Expelliarmus",
+          "type": "zap",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Stupefy Spell",
+          "type": "projectile",
+          "cd": 6,
+          "dmg": 1.7
+        },
+        "defense": {
+          "name": "Protego Shield",
+          "type": "shield",
+          "dur": 2.2,
+          "reduce": 0.85
+        },
+        "special": {
+          "name": "Expecto Patronum",
+          "type": "magic_aoe",
+          "dmg": 4.8
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "joker_n52",
+      "name": "Joker New 52",
+      "universe": "Joker New 52",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P1",
+      "area": "incarnation-and-stage-continuity",
+      "observedProblem": "Signature Strike/Breach Technique/Origin Burst génériques ; le stage Endgame et le gear Stapled Face Mask mélangent au moins des arcs New 52 distincts sans source verrouillée.",
+      "recommendedSourceLock": "Endgame #35–40 si l’on conserve le stage actuel ; distinction à vérifier avec Death of the Family pour le visage retiré/rattaché.",
+      "nextAction": "Verrouiller l’arc puis armes/gags toxiques conformes ; vérifier le masque de visage au lieu de transporter ce design vers Endgame. La fiche DC générale confirme le Joker/toxine mais pas l’incarnation New 52.",
+      "sourceKeys": [
+        "joker",
+        "endgame",
+        "death-of-the-family"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:1932",
+        "src/game/expandedUniverses.js:1956",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "slash",
+        "weaponType": "slash",
+        "weaponColor": "#7d3c98",
+        "simple": {
+          "name": "Joker New 52 Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Joker New 52 Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Joker New 52 Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Joker New 52 Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#7d3c98"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "harley_n52",
+      "name": "Harley Quinn New 52",
+      "universe": "Joker New 52",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P1",
+      "area": "identity-and-loadout",
+      "observedProblem": "Slash et kit entièrement générique ; aucun run/numéro ne distingue Suicide Squad 2011, série Harley Quinn 2013 et autres costumes New 52.",
+      "recommendedSourceLock": "Choisir une apparition New 52 documentée, sans ramener le costume animé de 1992 ni celui du film Suicide Squad 2016.",
+      "nextAction": "Sourcer costume, maillet/batte et armes de la version retenue ; employer le bon accessoire au lieu du slash anonyme. Les pages officielles ciblées Harley/Suicide Squad ont été bloquées ici : pas de validation inventée.",
+      "sourceKeys": [
+        "harley-quinn",
+        "harley-suicide-squad"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:1948",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "slash",
+        "weaponType": "slash",
+        "weaponColor": "#e74c3c",
+        "simple": {
+          "name": "Harley Quinn New 52 Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Harley Quinn New 52 Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Harley Quinn New 52 Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Harley Quinn New 52 Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#e74c3c"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "grim_knight",
+      "name": "The Grim Knight",
+      "universe": "The Batman Who Laughs",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P1",
+      "area": "identity-and-loadout",
+      "observedProblem": "Gun cohérent avec cette variante armée de Batman, mais tout le kit restant est générique et aucune incarnation/arme spécifique n’est verrouillée.",
+      "recommendedSourceLock": "The Batman Who Laughs: The Grim Knight #1 (2019) ; source primaire à consulter avant validation, pages officielles ciblées bloquées.",
+      "nextAction": "Préserver sa différence avec les Batman non létaux ; préciser arsenal/armure/techniques réellement montrés dans l’issue. Ne pas remplacer ses armes par les batarangs du Batman principal et ne pas présenter Origin Burst comme pouvoir canonique.",
+      "sourceKeys": [
+        "grim-knight",
+        "grim-knight-issue"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:1977",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "gun",
+        "weaponType": "gun",
+        "weaponColor": "#4b4f56",
+        "simple": {
+          "name": "The Grim Knight Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "The Grim Knight Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "The Grim Knight Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "The Grim Knight Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#4b4f56"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "mj_performer",
+      "name": "King of Pop Avatar",
+      "universe": "Michael Jackson",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0-source-definition",
+      "area": "original-adaptation-not-canonical-person",
+      "observedProblem": "Le roster se nomme King of Pop Avatar, pas Michael Jackson ; slash/Origin Burst génériques. Il s’agit actuellement d’un hommage original, dont aucune fidélité 1:1 à une personne ou un jeu n’est validée.",
+      "recommendedSourceLock": "Choisir précisément Michael Jackson danseur dans Thriller (1983), Moonwalker (film 1988), ou le jeu Sega Moonwalker (1990) avant toute adaptation canonique.",
+      "nextAction": "Étiqueter l’avatar actuel comme original inspiré tant qu’il reste une création distincte ; si l’on ajoute un personnage source, utiliser un slot/documentation séparés, une incarnation précise et une revue réelle. Ne pas convertir simplement le nom et conserver le sprite original sous une fausse approbation.",
+      "sourceKeys": [
+        "thriller"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:3820",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "slash",
+        "weaponType": "slash",
+        "weaponColor": "#f3d35c",
+        "simple": {
+          "name": "King of Pop Avatar Signature Strike",
+          "type": "melee",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "King of Pop Avatar Breach Technique",
+          "type": "signature",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "King of Pop Avatar Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "King of Pop Avatar Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#f3d35c"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    },
+    {
+      "heroId": "rhythm_guard_mj",
+      "name": "Rhythm Guard",
+      "universe": "Michael Jackson",
+      "inheritedVisualPriority": "P0",
+      "dataCorrectionPriority": "P0-source-definition",
+      "area": "original-adaptation-not-canonical-person",
+      "observedProblem": "Rhythm Guard est un personnage inventé avec gun/bullet génériques ; aucune personne canonique identifiée dans l’univers musical.",
+      "recommendedSourceLock": "Compagnon original du projet, non un personnage source confirmé.",
+      "nextAction": "Déclarer le statut original et rédiger son propre lore/équipement ; ne pas lui attribuer une fidélité 1:1 à Michael Jackson. Un accompagnant canonique exigerait une identité distincte et des références nouvelles.",
+      "sourceKeys": [
+        "thriller"
+      ],
+      "implementationLocations": [
+        "src/game/expandedUniverses.js:3820",
+        "src/game/heroes.js:2398"
+      ],
+      "snapshot": {
+        "weapon": "gun",
+        "weaponType": "gun",
+        "weaponColor": "#fff67f",
+        "simple": {
+          "name": "Rhythm Guard Signature Strike",
+          "type": "bullet",
+          "dmg": 1
+        },
+        "secondary": {
+          "name": "Rhythm Guard Breach Technique",
+          "type": "projectile",
+          "cd": 8,
+          "dmg": 2.2
+        },
+        "defense": {
+          "name": "Rhythm Guard Guard",
+          "type": "shield",
+          "dur": 2,
+          "reduce": 0.75
+        },
+        "special": {
+          "name": "Rhythm Guard Origin Burst",
+          "type": "origin_aoe",
+          "dmg": 4.5,
+          "color": "#fff67f"
+        },
+        "incarnation": null,
+        "canonStatus": null,
+        "visualReviewStatus": null
+      },
+      "sourceDataStatus": "not-corrected-by-this-read-only-audit",
+      "visualStatus": "P0-open-existing-sprite-not-certified",
+      "mechanicsStatus": "requires-source-specific-review"
+    }
+  ],
+  "visualReviewsPerformed": 0,
+  "visualFidelityApprovals": 0
+}

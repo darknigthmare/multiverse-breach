@@ -33,19 +33,28 @@ test('corrected static prompts use their exact source instead of legacy MGS2 or 
     const entry = catalog.entrees.find(entry => entry.id === stage.id);
     assert.equal(entry.nom.en, stage.name);
     assert.equal(entry.boss, stage.canonicalBossName);
-    assert.deepEqual(entry.referenceUrls, [stage.referenceUrl]);
-    assert.deepEqual(entry.bossReferenceUrls, [stage.referenceUrl]);
-    assert.deepEqual(entry.ancragesVisuels, [stage.incarnation, stage.visualAnchor]);
+    const sourceReferences = [...new Set([stage.referenceUrl, ...(stage.referenceUrls || [])].filter(Boolean))];
+    assert.deepEqual(entry.referenceUrls, sourceReferences);
+    assert.deepEqual(entry.bossReferenceUrls, sourceReferences);
+    assert.deepEqual(entry.ancragesVisuels, [
+      stage.incarnation,
+      stage.visualAnchor,
+      ...(stage.gameplayAdaptation ? [`Project gameplay adaptation: ${stage.gameplayAdaptation}`] : [])
+    ]);
     assert.equal(entry.bossVisualAnchor, stage.visualAnchor);
     assert.ok(entry.promptOpenAI.includes(stage.canonicalBossName));
     assert.ok(entry.promptOpenAI.includes(stage.incarnation));
+    if (stage.gameplayAdaptation) assert.ok(entry.promptOpenAI.includes(stage.gameplayAdaptation));
   }
   assert.equal(catalog.comptesParFamille.statique, 39);
   assert.equal(catalog.total, 3199);
 });
 
 test('changed dossiers retain historical generation proof and cannot certify stale bitmaps', () => {
-  assert.deepEqual(remediation.affectedStages.map(entry => entry.stageId), [12, 22, 9202, 9204, 9205, 9648]);
+  assert.deepEqual(remediation.affectedStages.map(entry => entry.stageId), [
+    ...Object.values(CANON_PRIORITY_STAGES).map(stage => stage.id),
+    9202, 9204, 9205, 9325, 9530, 9531, 9648, 10483, 10484, 10485
+  ].sort((left, right) => left - right));
   for (const affected of remediation.affectedStages) {
     const current = catalog.entrees.find(entry => entry.id === affected.stageId);
     const asset = registry.entries.find(entry => entry.stageId === affected.stageId);

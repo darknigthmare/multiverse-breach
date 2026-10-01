@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "kind": "canon-star-wars-minions-data-corrections",
+  "createdOn": "2026-10-01",
+  "scope": "Final hero runtime loadouts, playable character plaques and the identified Minions Freeze Ray equipment. No image generation, installation or historical provenance rewrite.",
+  "fidelityClaim": "Source incarnations and identity props locked. Existing sprites are pending visual review; comic/musical combat and numeric rules remain declared game adaptations. This report does not certify visual or animation fidelity 1:1.",
+  "validation": {
+    "command": "node --test scripts/canonStarWarsMinionsCorrections.test.mjs scripts/canonPriorityCorrections.test.mjs",
+    "passed": 14,
+    "failed": 0,
+    "newRegressionTests": 7
+  },
+  "sources": [
+    {
+      "url": "https://www.starwars.com/databank/han-solo",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "b90dbe5718cbfb7049bef526cf607173d4643a4ca1a3433d167144180c223aac",
+      "responseBytes": 1602561,
+      "visibleTextExcerpt": "default Han Solo Na'vi Name: Han Solo rose from an impoverished childhood on the mean streets of Corellia to become one of the heroes of the Rebel Alliance. As captain of the Millennium Falcon, Han and his co-pilot Chewbacca came to believe in the cause of galactic freedom, joining Luke Skywalker and Princess Leia Organa in the fight against the Empire. After the Battle of Endor, Han faced difficult times in a chaotic galaxy, leading to a shattering confrontation with his estranged son Ben. Show More Loading... Appearances Star Wars: A New Hope (Episode IV) Star Wars: The Empire Strikes Back (Episode V) Star Wars: Return of the Jedi (Episode VI) Star Wars: The Force Awakens (Episode VII) Solo: A Star Wars Story Star Wars: The Rise of Skywal"
+    },
+    {
+      "url": "https://www.starwars.com/databank/dl-44-blaster-pistol",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "ce9e21e7f53d1a9588bccc2ffd8fc7cfa9567df0022227dbe398451b0a464fa2",
+      "responseBytes": 305126,
+      "visibleTextExcerpt": "default DL-44 Blaster Pistol DL-44s were accurate, highly reliable, and easily modifiable, which made them a go-to weapon for military personnel, bounty hunters, and smugglers. Perhaps the most infamous user of a modified DL-44 was the smuggler-turned-hero-of-the-Rebellion, Han Solo. DL-44s were capable of firing charges powerful enough to blow through Stormtrooper armor. Show More Loading... Appearances Star Wars: A New Hope (Episode IV) Star Wars: The Empire Strikes Back (Episode V) Star Wars: Return of the Jedi (Episode VI) Star Wars: The Force Awakens (Episode VII) Star Wars: The Clone Wars Affiliations Rebel Alliance More From Star Wars: Instagram Twitter Facebook Youtube SWKids Terms of Use Additional Content Information Privacy Polic"
+    },
+    {
+      "url": "https://www.starwars.com/databank/luke-skywalker",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "2e860b2f778bb35381469802cbe0ef7c73dce18061ec7c79a2978fe65fe3e6c3",
+      "responseBytes": 1228029,
+      "visibleTextExcerpt": "default Luke Skywalker Na'vi Name: Luke Skywalker was a Tatooine farmboy who rose from humble beginnings to become one of the greatest Jedi the galaxy has ever known. Along with his friends Princess Leia and Han Solo, Luke battled the evil Empire, discovered the truth of his parentage, and ended the tyranny of the Sith. A generation later, the location of the famed Jedi master was one of the galaxy’s greatest mysteries. Haunted by Ben Solo’s fall to evil and convinced the Jedi had to end, Luke sought exile on a distant world, ignoring the galaxy’s pleas for help. But his solitude would be interrupted – and Luke Skywalker had one final, momentous role to play in the struggle between good and evil. Show More Loading... Appearances Star Wars: "
+    },
+    {
+      "url": "https://www.starwars.com/databank/luke-skywalkers-lightsaber",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "f7e2bcce242c8f6eee35f1a6de8ee41f3a9c6dc01c2ef34f4c8bc2547085edd5",
+      "responseBytes": 508809,
+      "visibleTextExcerpt": "default Luke Skywalker's Lightsaber (Green Blade) After losing his father’s lightsaber on Cloud City, Luke Skywalker constructed a replacement with a green plasma blade, its hilt similar to that of Obi-Wan Kenobi’s weapon. Luke hid his lightsaber inside R2-D2’s dome during his mission to rescue Han Solo from Jabba the Hutt, and surrendered the weapon to Darth Vader as part of his effort to reawaken the spirit of Anakin Skywalker. Show More Loading... Appearances Star Wars: Return of the Jedi (Episode VI) Affiliations Jedi Order Video 1:01 Battle Over The Sarlacc Battle Over The Sarlacc 1:02 Luke's Surrender Luke's Surrender 1:23 Emperor's Throne Room Emperor's Throne Room More From Star Wars: Instagram Twitter Facebook Youtube SWKids Terms "
+    },
+    {
+      "url": "https://www.starwars.com/databank/darth-vader",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "a4fcf9c07562183850351ca617ee4536753c502c8fc3dbd7a0e654dc915a0c62",
+      "responseBytes": 1004772,
+      "visibleTextExcerpt": "default Darth Vader Na'vi Name: Once the heroic Jedi Knight named Anakin Skywalker, Darth Vader was seduced by the dark side of the Force. Forever scarred by his defeat on Mustafar, Vader was transformed into a cybernetically-enhanced Sith Lord. At the dawn of the Empire, Vader led the Empire’s eradication of the Jedi Order and the search for survivors. He remained in service of the Emperor -- the evil Darth Sidious -- for decades, enforcing his Master’s will and seeking to crush the Rebel Alliance and other detractors. But there was still good in him… Show More Loading... Appearances Star Wars: A New Hope (Episode IV) Star Wars: The Empire Strikes Back (Episode V) Star Wars: Return of the Jedi (Episode VI) Star Wars: Revenge of the Sith (E"
+    },
+    {
+      "url": "https://www.starwars.com/databank/darth-vaders-lightsaber",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "64bfce0fcff015195de5de513d1963493f44004fdbb6a79769dcb37cb20f5528",
+      "responseBytes": 521572,
+      "visibleTextExcerpt": "default Darth Vader's Lightsaber Na'vi Name: After pledging himself to the Sith Lord Darth Sidious, Anakin Skywalker took the name Darth Vader but continued to use the blue-bladed lightsaber he’d fought with during the Clone Wars. He lost this weapon on Mustafar and constructed a replacement with the crimson blade favored by the Sith. Vader used his Sith lightsaber rarely but to deadly effect, as enemies of the Empire discovered. Show More Loading... Appearances Star Wars: A New Hope (Episode IV) Star Wars: The Empire Strikes Back (Episode V) Star Wars: Return of the Jedi (Episode VI) Star Wars: Obi-Wan Kenobi Affiliations Sith Video 1:29 Vader vs. Kenobi Vader vs. Kenobi 2:07 I Am Your Father I Am Your Father 1:22 There is No Conflict Ther"
+    },
+    {
+      "url": "https://www.illumination.com/movie/minions/",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "b24ec9e0397546aad884dcc352e63fb5fddf328a6d62fd60dea091feef502d3a",
+      "responseBytes": 57588,
+      "visibleTextExcerpt": "Evolving from ocean-dwelling organisms at the dawn of time, Minions have been searching for a master for hundreds of years. Without someone to serve the Minions fall into a deep depression. But Kevin, has a plan; accompanied by his pals Stuart and Bob, he sets out to find a new evil boss for his brethren to follow. 2015 Characters KEVIN The protective slightly bossy leader of the team. STUART Rebel without a cause and aspiring rock star. BOB Sweet and naïve, a tiny minion with a giant heart. SCARLETT OVERKILL Super-Villain obsessed with royalty, she sets out to steal the British crown jewels and make herself queen. HERB OVERKILL Scarlet’s mad scientist husband. THE NELSONS Part time mild-mannered family, full time dangerous criminals. 00 00"
+    },
+    {
+      "url": "https://www.starwars.com/databank/admiral-piett",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "784d009ceb6d8c7766a24c32eabc9588790adeb8f50fa74ee817d13bd43fddb3",
+      "responseBytes": 362109,
+      "visibleTextExcerpt": "default Admiral Piett An ambitious Imperial officer, Piett rose through the ranks to captain and was assigned to the Super Star Destroyer Executor, Darth Vader's flagship. There, he chafed at having to serve under the foolish, vainglorious Admiral Ozzel. When Vader strangled Ozzel, Piett was granted a battlefield promotion to admiral -- and given a grisly warning of the penalty for failure. Miraculously, he survived his time as Vader's underling, but died when a Rebel starfighter destroyed the Executor's command bridge. Show More Loading... Appearances Star Wars: The Empire Strikes Back (Episode V) Star Wars: Return of the Jedi (Episode VI) Affiliations Galactic Empire Dimensions Height: 1.65m Vehicles Executor Video video The Destruction o"
+    },
+    {
+      "url": "https://www.illumination.com/wp-content/uploads/2019/11/Minions_Kevin2.png",
+      "kind": "official-character-image-inspected",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "7ce0a0516479b1e658ac111f2592f5b19bd58bae255f5f924f59950a41422ba3",
+      "responseBytes": 1345048,
+      "installedAsGameAsset": false
+    },
+    {
+      "url": "https://www.illumination.com/wp-content/uploads/2019/11/SHM_PRINTS_P1880.png",
+      "kind": "official-character-image-inspected",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "7491532bfcf99a22be19e5fdc7e5214a8b082319d2e2e3b48cd610c67c07dd72",
+      "responseBytes": 2827039,
+      "installedAsGameAsset": false
+    },
+    {
+      "url": "https://www.illumination.com/wp-content/uploads/2019/11/Minions_KingBob.png",
+      "kind": "official-character-image-inspected",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "5e22a35d1e1a8e646773e188671c8b0c2556b35c84cbe0fadf503b7ed8c9975f",
+      "responseBytes": 1149471,
+      "installedAsGameAsset": false
+    },
+    {
+      "url": "https://www.illumination.com/movie/despicable-me/",
+      "kind": "official-public-page",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "e9111d14f195b029947f267b1e545726e92d195d633322ff1d211776e756b9ea",
+      "responseBytes": 57320,
+      "visibleTextExcerpt": "eferences. Cookie Preferences Gru loves to be bad. Armed with his arsenal of shrink rays, freeze rays, and battle-ready vehicles, he’ll crush anyone in his way. Until the day he encounters three little orphaned girls who look at him and see something that no one else has ever seen: a potential Dad. Now the world’s greatest villain has just met his greatest challenge: three adorable little girls named Margo, Edith and Agnes. Next: Hop Yo"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Minions_(film)",
+      "kind": "secondary-film-summary",
+      "retrievedOn": "2026-10-01",
+      "responseSha256": "f07e210cda56090b027a42fb67e7d380c0fe54d56be1768a62c87ce2080e5b53",
+      "responseBytes": 633252,
+      "visibleTextExcerpt": "l alive, steal the crown again, only to be stopped by a young boy named Gru , who fires a freeze ray at them and flees with the crown on a rocket-powered motorcycle. The Minions run after him, deciding he is the boss they were looking for. Voice cast [ edit ] Director Pierre Coffin also voices the Minions . Pierre Coffin as the yellow, small Minions , [ 5 ] including: Kevin, a tall two eyed minion who is the leader of the Minion trio, o"
+    }
+  ],
+  "corrections": [
+    {
+      "heroId": "han_solo",
+      "dossierStageId": 9531,
+      "lockedIncarnation": "A New Hope (1977)",
+      "confirmedRuntimeProblems": [
+        "Carbonite Luck Guard was a protective power despite carbonite being later imprisonment.",
+        "Kessel Run Fire represented piloting as terrestrial area damage."
+      ],
+      "visualPriority": "P0",
+      "currentVisualReviewStatus": "pending",
+      "artInstalledByThisChange": false,
+      "savedIdentityPreserved": true,
+      "historicalSpritePathChanged": false
+    },
+    {
+      "heroId": "luke",
+      "dossierStageId": 9325,
+      "lockedIncarnation": "Return of the Jedi (1983)",
+      "confirmedRuntimeProblems": [
+        "Weapon was classified as greatsword.",
+        "Jedi Mind Strike was a beam_aoe action."
+      ],
+      "visualPriority": "P0",
+      "currentVisualReviewStatus": "pending",
+      "artInstalledByThisChange": false,
+      "savedIdentityPreserved": true,
+      "historicalSpritePathChanged": false
+    },
+    {
+      "heroId": "vader",
+      "dossierStageId": 9530,
+      "lockedIncarnation": "The Empire Strikes Back (1980)",
+      "confirmedRuntimeProblems": [
+        "Lightsaber weapon color was black.",
+        "Imperial March Execution was a musical-theme-derived nexus_aoe action."
+      ],
+      "visualPriority": "P0",
+      "currentVisualReviewStatus": "pending",
+      "artInstalledByThisChange": false,
+      "savedIdentityPreserved": true,
+      "historicalSpritePathChanged": false
+    },
+    {
+      "heroId": "bob_minions",
+      "dossierStageId": 10485,
+      "lockedIncarnation": "Minions (2015)",
+      "confirmedRuntimeProblems": [
+        "The hacker class fallback supplied a laser weapon and energy basic attack.",
+        "All action names came from generic class templates."
+      ],
+      "visualPriority": "P0",
+      "currentVisualReviewStatus": "pending",
+      "artInstalledByThisChange": false,
+      "savedIdentityPreserved": true,
+      "historicalSpritePathChanged": false
+    },
+    {
+      "heroId": "kevin_minions",
+      "dossierStageId": 10483,
+      "lockedIncarnation": "Minions (2015)",
+      "confirmedRuntimeProblems": [
+        "The tactical class fallback supplied a gun and bullet basic attack.",
+        "All action names came from generic class templates."
+      ],
+      "visualPriority": "P0",
+      "currentVisualReviewStatus": "pending",
+      "artInstalledByThisChange": false,
+      "savedIdentityPreserved": true,
+      "historicalSpritePathChanged": false
+    },
+    {
+      "heroId": "stuart_minions",
+      "dossierStageId": 10484,
+      "lockedIncarnation": "Minions (2015)",
+      "confirmedRuntimeProblems": [
+        "The slayer class fallback supplied slash rather than the documented guitar.",
+        "All action names came from generic class templates."
+      ],
+      "visualPriority": "P0",
+      "currentVisualReviewStatus": "pending",
+      "artInstalledByThisChange": false,
+      "savedIdentityPreserved": true,
+      "historicalSpritePathChanged": false
+    }
+  ],
+  "remainingChecks": [
+    "Regenerate future dossier prompts from the corrected source metadata without altering historical evidence.",
+    "Review or regenerate the six existing P0 sprites and every animation state.",
+    "Confirm Force choke timing and presentation across all engines; this change verifies RPG target identity and scope.",
+    "Inspect the actual young-Gru Freeze Ray prop in the Minions (2015) finale before faithful icon generation; do not substitute a different film model or Fart Gun."
+  ],
+  "validationFollowup": {
+    "command": "node --test scripts/minionsEquipmentCanon.test.mjs scripts/canonStarWarsMinionsCorrections.test.mjs scripts/canonPriorityCorrections.test.mjs scripts/universeUnlockables.test.mjs",
+    "passed": 34,
+    "failed": 0,
+    "newEquipmentTests": 3,
+    "targetedLint": "passed",
+    "gitDiffCheck": "passed"
+  },
+  "equipmentCorrection": {
+    "savedId": "minions_fart_gun",
+    "previousName": {
+      "en": "Freeze Ray Fart Gun",
+      "fr": "Pistolet a pet gelant"
+    },
+    "currentName": {
+      "en": "Gru s Freeze Ray",
+      "fr": "Rayon gelant de Gru"
+    },
+    "canonicalName": "Freeze Ray",
+    "canonicalItemId": "gru_freeze_ray_minions_2015",
+    "sourceOwner": "Young Gru",
+    "incarnation": "Minions (2015) - young Gru / London finale",
+    "preservedPrice": 100,
+    "preservedBoost": {
+      "atk": 8,
+      "spd": 1
+    },
+    "preservedSpritePath": "/sprites/generated/items/minions/minions-fart-gun.png",
+    "spriteExistsAtAudit": false,
+    "runtimeEffect": "passive-stat-boost-only",
+    "hasRuntimeFreeze": false,
+    "visualReviewStatus": "pending",
+    "physicalPropReferenceStatus": "pending",
+    "identitySourceStatus": "secondary-film-summary plus official film and franchise pages",
+    "additionalRuntimeFreezeRayEntryFound": false,
+    "historicalPromptsModified": false,
+    "historicalLedgersModified": false
+  }
+}
