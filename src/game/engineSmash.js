@@ -3,11 +3,14 @@ import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { absorbBattleItemDamage } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
+import { applyCombatHealing } from './combatHealing.js';
+import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
 import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
 import {
   absorbMeleeGuardHit,
+  applyMeleeHitStun,
   beginMeleeAction,
   beginMeleeCharge,
   beginMeleeLightCombo,
@@ -15,6 +18,7 @@ import {
   cancelMeleeHeldInputs,
   getMeleeHurtbox,
   initializeMeleeActorRuntime,
+  isMeleeHitLocked,
   isMeleeMovementLocked,
   performMeleeLedgeAction,
   releaseMeleeCharge,
@@ -471,7 +475,7 @@ export class EngineSmash {
   triggerMeleeAction(side, actionName) {
     if (this.gameOver || this.isMatchInputLocked()) return false;
     const actor = this.getMeleeActor(side);
-    if (!actor || actor.currentHp <= 0) return false;
+    if (!actor || actor.currentHp <= 0 || isMeleeHitLocked(actor)) return false;
 
     if (actor.ledge) {
       if (actionName === MELEE_ACTIONS.climb) return performMeleeLedgeAction(actor, 'climb');
@@ -562,6 +566,7 @@ export class EngineSmash {
       || opponent.currentHp <= 0
       || opponent.state === 'dead'
       || opponent.state === 'hit'
+      || isMeleeHitLocked(opponent)
     ) return false;
 
     const attack = opponent.stats?.atk || opponent.atk || 1;
@@ -739,7 +744,7 @@ export class EngineSmash {
   }
 
   triggerAbility(hero, abilityType) {
-    if (hero.currentHp <= 0 || hero.state === 'dead' || this.gameOver || this.isMatchInputLocked()) return;
+    if (hero.currentHp <= 0 || hero.state === 'dead' || isMeleeHitLocked(hero) || this.gameOver || this.isMatchInputLocked()) return;
 
     if (abilityType === 'simple') {
       hero.state = 'attack';
@@ -841,9 +846,8 @@ export class EngineSmash {
           if (e.currentHp > 0) {
             e.vx = 22;
             e.vy = -5;
-            e.state = 'hit';
-            e.stateTimer = 180;
             this.applyDamage({ x: 0, y: e.y, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#3498db' }, e, dmg, 20);
+            applyMeleeHitStun(e, 180);
           }
         });
         break;
@@ -856,9 +860,8 @@ export class EngineSmash {
         const heal = effect === 'divine_light' ? 200 : effect === 'heal_squad' ? 150 : effect === 'vampire_fury' ? 100 : 80;
         this.heroes.forEach(h => {
           if (h.currentHp > 0) {
-            const cap = h.statusEffects?.radiated > 0 ? h.maxHp * 0.5 : h.maxHp;
-            h.currentHp = Math.min(cap, h.currentHp + heal);
-            this.particles.add(h.x, h.y - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${heal}`);
+            const gained = applyCombatHealing(h, heal);
+            if (gained > 0) this.particles.add(h.x, h.y - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${gained}`);
           }
         });
         if (effect === 'meeseeks_swarm' || effect === 'vampire_fury') {
@@ -882,8 +885,7 @@ export class EngineSmash {
         this.enemies.forEach(e => {
           if (e.currentHp > 0) {
             e.vx = 0;
-            e.state = 'hit';
-            e.stateTimer = duration;
+            applyMeleeHitStun(e, duration);
             this.particles.add(e.x, e.y - 15, 0, 0, '#00ff00', 8, 15, 'spark');
             if (effect === 'marker_insanity') {
               this.applyDamage({ x: e.x - 40, y: e.y, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#8e44ad' }, e, 120, 0);
@@ -892,16 +894,21 @@ export class EngineSmash {
         });
         break;
       }
-      case 'iris_invuln':
-      case 'quad_damage':
-      case 'magia_erebea': {
-        const duration = effect === 'quad_damage' || effect === 'magia_erebea' ? 600 : 240;
+      case 'iris_invuln': {
+        const duration = 240;
         this.heroes.forEach(h => {
           if (h.currentHp > 0) {
             h.state = 'defense';
             h.stateTimer = duration;
             this.particles.add(h.x, h.y - 10, 0, 0, '#ffeb3b', 8, 15, 'spark');
           }
+        });
+        break;
+      }
+      case 'quad_damage':
+      case 'magia_erebea': {
+        this.heroes.forEach(hero => {
+          if (grantCombatEventBuff(hero, effect)) this.particles.add(hero.x, hero.y - 10, 0, 0, '#ffeb3b', 8, 15, 'spark');
         });
         break;
       }
@@ -926,10 +933,9 @@ export class EngineSmash {
           }
         });
         if (strongest) {
-          strongest.state = 'hit';
-          strongest.stateTimer = 300;
           const dmg = effect === 'trap_snap' ? 250 : 50;
           this.applyDamage({ x: strongest.x - 30, y: strongest.y, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#00ff00' }, strongest, dmg, 0);
+          applyMeleeHitStun(strongest, 300);
         }
         break;
       }
@@ -946,6 +952,7 @@ export class EngineSmash {
 
 
   applyDamage(attacker, defender, baseDmg, knockbackForce = 10, statusEffect = null, guardDamage = 8) {
+    baseDmg *= getCombatEventDamageMultiplier(attacker);
     const guardResult = absorbMeleeGuardHit(defender, {
       damage: baseDmg,
       guardDamage
@@ -992,12 +999,7 @@ export class EngineSmash {
     defender.recoveryLock = defender.isBoss ? 28 : 18;
     
     if (defender.state !== 'defense' && !guardResult.guarded) {
-      const hitState = defender.id === 'player_anchor' ? 'hitStun' : 'hit';
-      if (!transitionMeleeState(defender, hitState, { force: true, restart: true })) {
-        defender.state = hitState;
-        defender.stateElapsed = 0;
-      }
-      defender.stateTimer = Math.max(12, Math.min(34, Math.round(10 + knockbackForce * 0.55)));
+      applyMeleeHitStun(defender, Math.max(12, Math.min(34, Math.round(10 + knockbackForce * 0.55))));
     }
 
     if (statusEffect && defender.currentHp > 0 && defender.statusEffects) {
@@ -1051,6 +1053,12 @@ export class EngineSmash {
   updateLocalVersusMovement(actor, target, keys = {}, side = 'p1') {
     if (!actor || actor.currentHp <= 0) return;
     initializeMeleeActorRuntime(actor);
+    if (isMeleeHitLocked(actor)) {
+      actor.vx *= 0.82;
+      actor.jumpHeld = false;
+      actor.fastFallHeld = false;
+      return;
+    }
     const guardPressed = isInputPressed(keys, ['guard', 'Shield']);
     if (guardPressed) beginMeleeShield(actor);
     else if (actor.guarding) releaseMeleeShield(actor);
@@ -1080,7 +1088,7 @@ export class EngineSmash {
       : ['jump', 'ArrowUp', 'Space', ' ', 'w', 'W', 'z', 'Z']);
     const speedBase = actor.isBoss ? 3.2 : 4;
     const stageSpeedScale = actor.stageSpeedBoostMs > 0 ? 1.15 : actor.stageSlowMs > 0 ? 0.72 : 1;
-    const speed = (actor.statusEffects?.glitched > 0 ? speedBase * 0.5 : speedBase) * stageSpeedScale;
+    const speed = (actor.statusEffects?.glitched > 0 ? speedBase * 0.5 : speedBase) * stageSpeedScale * getCombatEventSpeedMultiplier(actor);
     const direction = (rightPressed ? 1 : 0) - (leftPressed ? 1 : 0);
 
     actor.vx = actor.crouching ? 0 : direction * speed;
@@ -1198,6 +1206,7 @@ export class EngineSmash {
     this.layoutTransitionMs = Math.max(0, this.layoutTransitionMs - stepMs);
     this.preMatchReleaseCueMs = Math.max(0, this.preMatchReleaseCueMs - stepMs);
     [...this.heroes, ...this.enemies].forEach(actor => {
+      tickCombatEventBuffs(actor);
       actor.stageSpeedBoostMs = Math.max(0, (actor.stageSpeedBoostMs || 0) - stepMs);
       actor.stageSlowMs = Math.max(0, (actor.stageSlowMs || 0) - stepMs);
     });
@@ -1527,7 +1536,7 @@ export class EngineSmash {
       if (!h.isLeader && !['hit', 'hitStun', 'defense', 'attack'].includes(h.state) && !isMeleeMovementLocked(h) && !this.gameOver) {
         const distToLeader = activeHero.x - h.x;
         if (Math.abs(distToLeader) > 80) {
-          h.vx = Math.sign(distToLeader) * 2.5;
+          h.vx = Math.sign(distToLeader) * 2.5 * getCombatEventSpeedMultiplier(h);
           h.facing = Math.sign(distToLeader);
           h.state = 'run';
         } else {
@@ -1610,7 +1619,7 @@ export class EngineSmash {
         }
 
         if (Math.abs(dx) > Math.max(48, behavior.attackRange - 18)) {
-          let speed = behavior.speed * (e.stageSlowMs > 0 ? 0.72 : e.stageSpeedBoostMs > 0 ? 1.15 : 1);
+          let speed = behavior.speed * (e.stageSlowMs > 0 ? 0.72 : e.stageSpeedBoostMs > 0 ? 1.15 : 1) * getCombatEventSpeedMultiplier(e);
           if (e.statusEffects?.glitched > 0) speed *= 0.5; // slow down if glitched
 
           e.vx = Math.sign(dx) * speed;
@@ -1757,7 +1766,7 @@ export class EngineSmash {
   }
 
   recoverFromArenaFall(char, previousY) {
-    if (char.currentHp <= 0 || char.recoveryLock > 0 || char.airJumps <= 0) return;
+    if (char.currentHp <= 0 || isMeleeHitLocked(char) || char.recoveryLock > 0 || char.airJumps <= 0) return;
     const fallingNearBottom = char.y > this.height - 58 && previousY <= char.y;
     const insideHorizontalBounds = char.x > 32 && char.x < this.width - 32;
     if (!fallingNearBottom || !insideHorizontalBounds) return;
@@ -1773,7 +1782,7 @@ export class EngineSmash {
   }
 
   updateStuckTracker(char, previousX) {
-    if (char.currentHp <= 0) return;
+    if (char.currentHp <= 0 || isMeleeHitLocked(char)) return;
     const movingIntent = Math.abs(char.vx) > 0.4;
     const moved = Math.abs(char.x - previousX) > 0.25;
     if (movingIntent && !moved && this.isOnGround(char)) {

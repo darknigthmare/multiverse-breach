@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite';
 import { applyWave6ProductionPromptOverrides } from './riftDossierWave6PromptOverrides.mjs';
 import { resolveCatalogOutputPath, writeCatalogAtomically } from './riftDossierCatalogOutput.mjs';
+import { readStaticStages } from './riftDossierStaticStages.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(scriptDirectory, '..');
@@ -119,10 +120,6 @@ const TUTORIAL_90000_PROMPT = [
   'Lighting/mood: controlled cyan and warm amber instrumentation against a threatening white glow; cautious initiation.',
   'Constraints: entirely original imagery; no text, no letters, no UI, no logos, no watermark; no photorealism; no duplicated triptych composition from the reference.'
 ].join('\n');
-
-const decodeSingleQuotedSourceString = value => (
-  value.replace(/\\(['\\])/g, '$1')
-);
 
 const INTERSTELLAR_34421_REFERENCE = 'https://store.steampowered.com/app/236370/Interstellar_Marines/';
 // Stage-specific art contracts: do not inherit the whole universe's roster or locations.
@@ -648,53 +645,6 @@ const makeEntry = ({
   };
 };
 
-const readStaticStages = () => {
-  const hubSource = readFileSync(hubSourcePath, 'utf8');
-  const registryStart = hubSource.indexOf('const STAGES = [');
-  const registryEnd = hubSource.indexOf('];', registryStart);
-
-  assert.ok(registryStart >= 0 && registryEnd > registryStart, 'Unable to locate the static STAGES registry');
-
-  const registrySource = hubSource.slice(registryStart, registryEnd + 2);
-  const stagePattern = /\{\s*id:\s*(\d+),\s*name:\s*'((?:\\.|[^'\\])*)',\s*universe:\s*'((?:\\.|[^'\\])*)',\s*mode:\s*'((?:\\.|[^'\\])*)',[^\r\n]*?bossName:\s*'((?:\\.|[^'\\])*)'/g;
-  const stages = [];
-
-  for (const match of registrySource.matchAll(stagePattern)) {
-    const id = Number(match[1]);
-    if (id < 1 || id > 38) continue;
-
-    stages.push({
-      id,
-      name: decodeSingleQuotedSourceString(match[2]),
-      universe: decodeSingleQuotedSourceString(match[3]),
-      mode: decodeSingleQuotedSourceString(match[4]),
-      bossName: decodeSingleQuotedSourceString(match[5])
-    });
-  }
-
-  const tutorialMatch = registrySource.match(
-    /\{\s*id:\s*90000,\s*name:\s*'((?:\\.|[^'\\])*)',[\s\S]*?universe:\s*'((?:\\.|[^'\\])*)',\s*mode:\s*'((?:\\.|[^'\\])*)',[\s\S]*?bossName:\s*'((?:\\.|[^'\\])*)'/
-  );
-  assert.ok(tutorialMatch, 'Static tutorial stage 90000 is missing');
-  stages.push({
-    id: 90000,
-    name: decodeSingleQuotedSourceString(tutorialMatch[1]),
-    universe: decodeSingleQuotedSourceString(tutorialMatch[2]),
-    mode: decodeSingleQuotedSourceString(tutorialMatch[3]),
-    bossName: decodeSingleQuotedSourceString(tutorialMatch[4])
-  });
-
-  stages.sort((left, right) => left.id - right.id);
-  assert.equal(stages.length, EXPECTED_COUNTS.statique, 'Static stage count drifted');
-  assert.deepEqual(
-    stages.map(stage => stage.id),
-    [...Array.from({ length: 38 }, (_, index) => index + 1), 90000],
-    'Static stages must cover IDs 1 through 38 and tutorial 90000 exactly once'
-  );
-
-  return stages;
-};
-
 const loadExportedData = async () => {
   const vite = await createServer({
     root: projectRoot,
@@ -845,7 +795,8 @@ const buildCharacterDescriptors = ({ hero, arc, heroUniverse }) => {
 
 const buildCatalog = async () => {
   const source = await loadExportedData();
-  const staticStages = readStaticStages();
+  const staticStages = readStaticStages(readFileSync(hubSourcePath, 'utf8'));
+  assert.equal(staticStages.length, EXPECTED_COUNTS.statique, 'Static stage count drifted');
   const heroById = new Map(source.heroes.map(hero => [hero.id, hero]));
   const spriteManifest = JSON.parse(readFileSync(spriteManifestPath, 'utf8'));
   const heroSpriteById = new Map(
@@ -1010,7 +961,10 @@ const buildCatalog = async () => {
 
     statique: staticStages
       .map(stage => {
-        const visualReferences = getVisualReferences({ universes: [stage.universe] });
+        const hasCanonStageLock = Boolean(stage.incarnation && stage.visualAnchor && stage.referenceUrl);
+        const visualReferences = hasCanonStageLock
+          ? { visualAnchors: [stage.incarnation, stage.visualAnchor], referenceUrls: [stage.referenceUrl] }
+          : getVisualReferences({ universes: [stage.universe] });
         const subjectReference = subjectReferenceByDossier.get(`statique:${stage.id}`);
         return makeEntry({
           id: stage.id,
@@ -1018,10 +972,10 @@ const buildCatalog = async () => {
           nom: stage.name,
           univers: [stage.universe],
           mode: stage.mode,
-          boss: stage.bossName,
+          boss: stage.canonicalBossName || stage.bossName,
           promptOverride: stage.id === 90000 ? TUTORIAL_90000_PROMPT : null,
-          bossVisualAnchor: subjectReference?.bossVisualAnchor,
-          bossReferenceUrls: subjectReference?.bossReferenceUrls,
+          bossVisualAnchor: hasCanonStageLock ? stage.visualAnchor : subjectReference?.bossVisualAnchor,
+          bossReferenceUrls: hasCanonStageLock ? [stage.referenceUrl] : subjectReference?.bossReferenceUrls,
           ...visualReferences
         });
       }),

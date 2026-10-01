@@ -3,6 +3,8 @@ import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { absorbBattleItemDamage } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
 import { resolveArchetypeCombatStats } from './combatStatPreparation';
+import { applyCombatHealing } from './combatHealing.js';
+import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { calculateRpgDamage, getRpgActionProfile, getRpgEligibleTargets, resolveRpgTargets, rpgUnitId } from './rpgTargeting';
 
@@ -497,15 +499,16 @@ export class EngineRpg {
     const resolved = resolveRpgTargets({ ...context, selectedTargetIds });
     const profile = context.profile;
     const amount = (actor.stats?.atk ?? actor.atk ?? 8) * profile.multiplier;
+    const damageMultiplier = (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1) * getCombatEventDamageMultiplier(actor);
     const estimates = resolved.targets.map(unit => {
       let value = amount;
-      if (profile.effect === 'damage') value = calculateRpgDamage(unit, amount * (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1), 1, true, actor);
+      if (profile.effect === 'damage') value = calculateRpgDamage(unit, amount * damageMultiplier, 1, true, actor);
       else if (profile.effect === 'heal') {
         const cap = unit.statusEffects?.radiated > 0 ? unit.maxHp * 0.5 : unit.maxHp;
         value = Math.max(0, Math.min(cap - unit.currentHp, profile.healRatio ? unit.maxHp * profile.healRatio : amount));
       } else if (profile.effect === 'revive') value = unit.maxHp * profile.reviveRatio;
       else value = 0;
-      return { id: rpgUnitId(unit), effect: profile.effect, amount: Math.round(value), min: profile.effect === 'damage' ? calculateRpgDamage(unit, amount * (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1), 0.9, true, actor) : Math.round(value), max: profile.effect === 'damage' ? calculateRpgDamage(unit, amount * (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1), 1.1, true, actor) : Math.round(value) };
+      return { id: rpgUnitId(unit), effect: profile.effect, amount: Math.round(value), min: profile.effect === 'damage' ? calculateRpgDamage(unit, amount * damageMultiplier, 0.9, true, actor) : Math.round(value), max: profile.effect === 'damage' ? calculateRpgDamage(unit, amount * damageMultiplier, 1.1, true, actor) : Math.round(value) };
     });
     return {
       side, actorId: rpgUnitId(actor), actorName: actor.name, abilityType,
@@ -598,10 +601,7 @@ export class EngineRpg {
   }
 
   applyHealing(target, amount) {
-    if (target.currentHp <= 0) return 0;
-    const cap = target.statusEffects?.radiated > 0 ? target.maxHp * 0.5 : target.maxHp;
-    const gained = Math.max(0, Math.min(cap - target.currentHp, Math.round(amount)));
-    target.currentHp += gained;
+    const gained = applyCombatHealing(target, amount);
     if (gained > 0) this.particles.add(target.x, target.y - 20, 0, -1, '#2ecc71', 12, 45, 'text', '+' + gained);
     return gained;
   }
@@ -757,9 +757,7 @@ export class EngineRpg {
         const heal = effect === 'divine_light' ? 200 : effect === 'heal_squad' ? 150 : effect === 'vampire_fury' ? 100 : 80;
         this.heroes.forEach(h => {
           if (h.currentHp > 0) {
-            const cap = h.statusEffects?.radiated > 0 ? h.maxHp * 0.5 : h.maxHp;
-            h.currentHp = Math.min(cap, h.currentHp + heal);
-            this.particles.add(h.x, h.y - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${heal}`);
+            this.applyHealing(h, heal);
           }
         });
         if (effect === 'meeseeks_swarm' || effect === 'vampire_fury') {
@@ -792,16 +790,19 @@ export class EngineRpg {
         });
         break;
       }
-      case 'iris_invuln':
-      case 'quad_damage':
-      case 'magia_erebea': {
-        const duration = effect === 'quad_damage' || effect === 'magia_erebea' ? 600 : 240;
+      case 'iris_invuln': {
+        const duration = 240;
         this.heroes.forEach(h => {
           if (h.currentHp > 0) {
             h.state = 'defense';
             h.stateTimer = duration;
           }
         });
+        break;
+      }
+      case 'quad_damage':
+      case 'magia_erebea': {
+        this.heroes.forEach(hero => grantCombatEventBuff(hero, effect));
         break;
       }
       case 'circus_glitch':
@@ -860,7 +861,7 @@ export class EngineRpg {
     }
 
     const variance = (Math.random() * 0.2) + 0.9;
-    const buff = attacker?.rpgBuffTicks > 0 ? attacker.rpgBuffMultiplier : 1;
+    const buff = (attacker?.rpgBuffTicks > 0 ? attacker.rpgBuffMultiplier : 1) * getCombatEventDamageMultiplier(attacker);
     const finalDmg = absorbBattleItemDamage(defender, calculateRpgDamage(defender, baseDmg * buff, variance, false, attacker));
     const dealtDamage = Math.min(defender.currentHp, finalDmg);
 
@@ -872,8 +873,9 @@ export class EngineRpg {
     }
 
     if (defender.state !== 'defense') {
+      const hitDuration = defender.state === 'hit' ? defender.stateTimer : 0;
       defender.state = 'hit';
-      defender.stateTimer = 15;
+      defender.stateTimer = Math.max(hitDuration || 0, 15);
     }
 
     if (statusEffect && defender.currentHp > 0 && defender.statusEffects) {
@@ -923,6 +925,7 @@ export class EngineRpg {
     }
 
     this.advanceActions();
+    [...this.heroes, ...this.enemies].forEach(tickCombatEventBuffs);
 
     if (this.isFinalBoss) {
       this.finalBossChaosTimer++;
@@ -982,7 +985,7 @@ export class EngineRpg {
       }
 
       // Glitched (ATB charge rate halved)
-      let atbRate = h.stats.spd * 0.05 + 0.15;
+      let atbRate = h.stats.spd * getCombatEventSpeedMultiplier(h) * 0.05 + 0.15;
       if (h.statusEffects?.glitched > 0) {
         h.statusEffects.glitched--;
         atbRate *= 0.5;
@@ -1041,7 +1044,7 @@ export class EngineRpg {
       }
 
       // Glitched (ATB charge rate halved)
-      let atbRate = (e.spd || e.atk || 8) * 0.035 + 0.08;
+      let atbRate = (e.spd || e.atk || 8) * getCombatEventSpeedMultiplier(e) * 0.035 + 0.08;
       if (e.statusEffects?.glitched > 0) {
         e.statusEffects.glitched--;
         atbRate *= 0.5;

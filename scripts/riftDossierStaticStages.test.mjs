@@ -1,0 +1,72 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { existsSync, readFileSync } from 'node:fs';
+import test from 'node:test';
+import { CANON_PRIORITY_STAGES } from '../src/game/canonPriorityStages.js';
+import { readStaticStages } from './riftDossierStaticStages.mjs';
+
+const read = path => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
+const hash = value => createHash('sha256').update(value).digest('hex');
+const hubSource = read('src/components/HubScreen.jsx');
+const catalog = JSON.parse(read('docs/rift-dossiers/catalog.json'));
+const registry = JSON.parse(read('src/game/riftDossierAssets.json'));
+const remediation = JSON.parse(read('docs/rift-dossiers/canon-remediation-2026-10-01.json'));
+const ledger = read('public/images/rift-dossiers/openai/openai-prompts.jsonl').trim().split('\n').map(line => JSON.parse(line));
+
+test('static dossiers resolve shared runtime stages and retain all 39 unique stage IDs', () => {
+  const stages = readStaticStages(hubSource);
+  assert.equal(stages.length, 39);
+  assert.deepEqual(stages.map(stage => stage.id), [...Array.from({ length: 38 }, (_, index) => index + 1), 90000]);
+  assert.deepEqual(stages.find(stage => stage.id === 12), CANON_PRIORITY_STAGES.shadowMoses);
+  assert.deepEqual(stages.find(stage => stage.id === 22), CANON_PRIORITY_STAGES.legatesCamp);
+  assert.equal(stages.find(stage => stage.id === 30).name, "Rick's Garage Laboratory");
+});
+
+test('missing, duplicate or unknown shared stages fail the count and identity contracts', () => {
+  assert.throws(() => readStaticStages(hubSource.replace('CANON_PRIORITY_STAGES.shadowMoses,', '')), /Static stage count drifted/);
+  assert.throws(() => readStaticStages(hubSource.replace('CANON_PRIORITY_STAGES.shadowMoses,', 'CANON_PRIORITY_STAGES.shadowMoses, CANON_PRIORITY_STAGES.shadowMoses,')), /Static stage count drifted/);
+  assert.throws(() => readStaticStages(hubSource.replace('CANON_PRIORITY_STAGES.shadowMoses,', 'CANON_PRIORITY_STAGES.missingStage,')), /Unknown shared static stage missingStage/);
+});
+
+test('corrected static prompts use their exact source instead of legacy MGS2 or Fallout 4 references', () => {
+  for (const stage of Object.values(CANON_PRIORITY_STAGES)) {
+    const entry = catalog.entrees.find(entry => entry.id === stage.id);
+    assert.equal(entry.nom.en, stage.name);
+    assert.equal(entry.boss, stage.canonicalBossName);
+    assert.deepEqual(entry.referenceUrls, [stage.referenceUrl]);
+    assert.deepEqual(entry.bossReferenceUrls, [stage.referenceUrl]);
+    assert.deepEqual(entry.ancragesVisuels, [stage.incarnation, stage.visualAnchor]);
+    assert.equal(entry.bossVisualAnchor, stage.visualAnchor);
+    assert.ok(entry.promptOpenAI.includes(stage.canonicalBossName));
+    assert.ok(entry.promptOpenAI.includes(stage.incarnation));
+  }
+  assert.equal(catalog.comptesParFamille.statique, 39);
+  assert.equal(catalog.total, 3199);
+});
+
+test('changed dossiers retain historical generation proof and cannot certify stale bitmaps', () => {
+  assert.deepEqual(remediation.affectedStages.map(entry => entry.stageId), [12, 22, 9202, 9204, 9205, 9648]);
+  for (const affected of remediation.affectedStages) {
+    const current = catalog.entrees.find(entry => entry.id === affected.stageId);
+    const asset = registry.entries.find(entry => entry.stageId === affected.stageId);
+    assert.equal(hash(affected.historicalPrompt), affected.previousPromptSha256);
+    assert.equal(hash(current.promptOpenAI), affected.currentPromptSha256);
+    assert.notEqual(affected.previousPromptSha256, affected.currentPromptSha256);
+    assert.equal(asset.assetPath, current.cheminCibleDedie);
+    const currentFile = new URL(`../public${asset.assetPath}`, import.meta.url);
+    const currentImageHash = existsSync(currentFile) ? hash(readFileSync(currentFile)) : null;
+    const proof = ledger.filter(row => row.output === asset.assetPath);
+    const matchesCurrentGeneration = proof.length === 1
+      && proof[0].generation?.promptSha256 === affected.currentPromptSha256
+      && currentImageHash !== null
+      && proof[0].image?.sha256 === currentImageHash;
+    assert.equal(asset.status, matchesCurrentGeneration ? 'available' : 'pending');
+    if (!affected.historicalGenerationId) continue;
+    const historical = ledger.find(row => row.generation?.generationId === affected.historicalGenerationId);
+    assert.ok(historical, `Missing historical generation ${affected.stageId}`);
+    assert.equal(historical.output, affected.previousAssetPath);
+    assert.equal(historical.generation.promptSha256, affected.historicalLedgerPromptSha256);
+    assert.equal(historical.image.sha256, affected.historicalImageSha256);
+    assert.equal(hash(readFileSync(new URL(`../public${affected.previousAssetPath}`, import.meta.url))), affected.historicalImageSha256);
+  }
+});

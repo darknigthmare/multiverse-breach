@@ -1,6 +1,6 @@
-import { execFileSync } from 'node:child_process';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { auditLocalPublicAssets, listGitTrackedPublicPaths } from './auditLocalPublicAssets.mjs';
 
 const safeRelativePath = (value, context) => {
   if (typeof value !== 'string' || !value || /[\\:]/.test(value)
@@ -68,8 +68,8 @@ async function main() {
   } catch {
     throw new Error('Expected one JSON manifest on stdin from vercel deploy --dry --json; do not merge stderr into stdout.');
   }
-  const trackedPublicPaths = execFileSync('git', ['ls-files', '-z', '--', 'public'], { encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 })
-    .split('\0').filter(Boolean);
+  const trackedPublicPaths = listGitTrackedPublicPaths();
+  auditLocalPublicAssets({ trackedPublicPaths });
   const result = validateVercelUploadManifest(manifest, trackedPublicPaths);
   process.stdout.write(`Vercel upload audit passed: ${result.matchedPublicFileCount}/${result.trackedPublicFileCount} Git-tracked public files present (${result.manifestFileCount} upload files).\n`);
 }

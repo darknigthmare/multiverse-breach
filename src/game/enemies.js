@@ -558,7 +558,14 @@ export const ENEMIES_DB = {
     ],
     bosses: [
       { name: 'Alpha Deathclaw Beast', hp: 600, atk: 24, spd: 6, color: '#3e2723', weapon: 'claws', special: 'Bone-Shattering Tackle' },
-      { name: 'Legate Lanius General', hp: 550, atk: 21, spd: 5, color: '#cca43b', weapon: 'greatsword', special: 'Blade of the East Slice' }
+      {
+        name: 'Legate Lanius General', canonicalName: 'Legate Lanius',
+        hp: 550, atk: 21, spd: 5, color: '#cca43b', weapon: 'greatsword', special: 'Blade of the East Slice',
+        incarnation: 'Fallout: New Vegas (2010) - Second Battle of Hoover Dam',
+        referenceUrl: 'https://fallout.fandom.com/wiki/Legate_Lanius',
+        visualAnchor: 'Legate Lanius in the steel face mask, helmet, red cloth and heavy Legion armor from Fallout: New Vegas, wielding the Blade of the East at the Legate camp. No Enclave power armor or Liberty Prime parts.',
+        visualReviewStatus: 'pending'
+      }
     ],
     worldBoss: { name: 'Rogue Liberty Prime Mech', hp: 1500, atk: 35, spd: 3, color: '#7f8c8d', weapon: 'laser', special: 'Tactical Nuke Throw Strike' }
   },
@@ -911,7 +918,14 @@ const CANON_ENEMY_EXPANSION = {
     ],
     bosses: [
       { name: 'Psycho Mantis Memory', hp: 520, atk: 18, spd: 7, color: '#6c3483', weapon: 'psychic_control', special: 'Controller Port Read' },
-      { name: 'Metal Gear REX Shadow', hp: 720, atk: 26, spd: 3, color: '#455a64', weapon: 'railgun', special: 'Nuclear Launch Threat' }
+      {
+        name: 'Metal Gear REX Shadow', canonicalName: 'Metal Gear REX',
+        hp: 720, atk: 26, spd: 3, color: '#455a64', weapon: 'railgun', special: 'Radome Break',
+        incarnation: 'Metal Gear Solid (1998) - Shadow Moses',
+        referenceUrl: 'https://www.konami.com/mg/history/us/en/',
+        visualAnchor: 'Metal Gear REX from Metal Gear Solid (1998): gray-black bipedal chassis, railgun, radome, missile pods and exposed cockpit after the radome breaks. Shadow is a historical asset name, not another REX incarnation; no RAY or Gekko parts.',
+        visualReviewStatus: 'pending'
+      }
     ]
   },
   'Mass Effect': {

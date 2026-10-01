@@ -233,29 +233,42 @@ export const CHARACTER_PLAQUES = {
     tags: ['UNSC', 'Spartan-II', 'MJOLNIR', 'Cortana', 'Forerunner', 'Covenant']
   },
   ripley: {
-    clearance: 'WY-426',
-    rank: { fr: 'Survivante certifiee', en: 'Certified Survivor' },
+    clearance: 'WY-NOSTROMO',
+    rank: { fr: 'Lieutenante du Nostromo', en: 'Nostromo warrant officer' },
     role: { fr: 'Survie anti-Xenomorphe', en: 'Anti-Xenomorph survival' },
     callSign: 'Ripley',
-    origin: { fr: 'LV-426 / Nostromo', en: 'LV-426 / Nostromo' },
+    origin: { fr: 'Alien (1979) - Nostromo / Narcissus', en: 'Alien (1979) - Nostromo / Narcissus' },
     dossier: {
-      fr: 'Ripley sait lire une infestation avant qu elle devienne une ruche. Sa plaquette priorise evacuation, feu controle et refus net des protocoles Weyland-Yutani.',
-      en: 'Ripley reads an infestation before it becomes a hive. Her plaque prioritizes extraction, controlled fire, and hard refusal of Weyland-Yutani protocols.'
+      fr: 'Ripley est la survivante du Nostromo dans Alien (1979). Elle utilise le lance-flammes improvise de l equipage, organise sa fuite vers le Narcissus et repousse le Big Chap avec le harpon de la navette.',
+      en: 'Ripley is the Nostromo survivor from Alien (1979). She uses the crew s improvised flamethrower, escapes to the Narcissus and repels the Big Chap with the shuttle harpoon gun.'
     },
-    doctrine: { fr: 'Pulse rifle, lance-flammes, chargeur exosquelette.', en: 'Pulse rifle, flamethrower, power loader.' },
-    tags: ['LV-426', 'Hive', 'Flame', 'Survivor']
+    doctrine: { fr: 'Lance-flammes improvise, evasion du Nostromo, harpon du Narcissus.', en: 'Improvised flamethrower, Nostromo escape, Narcissus harpoon.' },
+    tags: ['Nostromo', 'Narcissus', 'Alien 1979', 'Flame', 'Survivor']
+  },
+  ripley_aliens: {
+    clearance: 'WY-LV426',
+    rank: { fr: 'Survivante de LV-426', en: 'LV-426 Survivor' },
+    role: { fr: 'Secours de Newt et combat de la Reine', en: 'Newt rescue and Queen confrontation' },
+    callSign: 'Ripley',
+    origin: { fr: 'Aliens (1986) - LV-426 / Sulaco', en: 'Aliens (1986) - LV-426 / Sulaco' },
+    dossier: {
+      fr: 'Cette incarnation est celle d Aliens (1986): Ripley apprend le M41A avec Hicks, associe son fusil au M240 pour sauver Newt puis utilise le power loader du Sulaco contre la Reine.',
+      en: 'This is the Aliens (1986) incarnation: Ripley learns the M41A from Hicks, combines it with the M240 to rescue Newt and uses the Sulaco power loader against the Queen.'
+    },
+    doctrine: { fr: 'Fusil M41A, incinerateur M240, power loader P-5000.', en: 'M41A pulse rifle, M240 incinerator, P-5000 power loader.' },
+    tags: ['LV-426', 'Sulaco', 'Aliens 1986', 'Newt', 'Power Loader']
   },
   predator: {
     clearance: 'YAU-01',
-    rank: { fr: 'Chasseur Yautja', en: 'Yautja Hunter' },
+    rank: { fr: 'Jungle Hunter', en: 'Jungle Hunter' },
     role: { fr: 'Traque et duel plasma', en: 'Hunt and plasma duel' },
     callSign: 'Yautja',
-    origin: { fr: 'Clan de chasse interstellaire', en: 'Interstellar hunting clan' },
+    origin: { fr: 'Predator (1987) - jungle d Amerique centrale', en: 'Predator (1987) - Central American jungle' },
     dossier: {
       fr: 'Predateur discipline par le code de chasse. Le Nexus l indexe comme combattant de pression: camouflage, ciblage thermique et execution des menaces dominantes.',
       en: 'Predator bound by the hunt code. The Nexus indexes him as a pressure fighter: cloaking, thermal targeting, and execution of dominant threats.'
     },
-    doctrine: { fr: 'Lames de poignet, plasma caster, disque intelligent.', en: 'Wristblades, plasma caster, smart disc.' },
+    doctrine: { fr: 'Lames de poignet, plasma caster, camouflage optique, duel sans masque.', en: 'Wristblades, plasma caster, optical camouflage, unmasked duel.' },
     tags: ['Yautja', 'Cloak', 'Plasma', 'Hunter']
   },
   leon: {
@@ -600,20 +613,20 @@ export const CHARACTER_PLAQUES = {
   },
   freeman: {
     clearance: 'BM-HEV',
-    rank: { fr: 'Physicien HEV / anomalie Black Mesa', en: 'HEV physicist / Black Mesa anomaly' },
+    rank: { fr: 'Physicien HEV Mark V / Resistance', en: 'HEV Mark V physicist / Resistance' },
     role: { fr: 'Cascade de resonance', en: 'Resonance cascade' },
     callSign: 'Freeman',
-    origin: { fr: 'Univers Half-Life - Black Mesa / Xen / Combine', en: 'Half-Life universe - Black Mesa / Xen / Combine' },
+    origin: { fr: 'Half-Life 2 (2004) - City 17 / Citadelle', en: 'Half-Life 2 (2004) - City 17 / Citadel' },
     dossier: {
-      fr: 'Dans sa Trame d origine, Gordon Freeman est un physicien theoricien de Black Mesa equipe d une combinaison HEV au moment ou l experience de materiaux anormaux provoque la cascade de resonance. L accident ouvre la Terre a Xen, aux headcrabs, vortigaunts, forces militaires HECU, puis a une domination Combine qui transforme l incident scientifique en guerre d occupation. Freeman traverse ce monde sans discours: pied-de-biche, armes improvisees, modules HEV, saut long, gravity gun, silence et refus constant de devenir l instrument du G-Man ou du Combine.',
-      en: 'In his origin Thread, Gordon Freeman is a Black Mesa theoretical physicist wearing an HEV suit when the anomalous materials experiment triggers the resonance cascade. The accident opens Earth to Xen, headcrabs, vortigaunts, HECU forces, then a Combine occupation that turns a research disaster into a war of control. Freeman crosses this world without speeches: crowbar, improvised weapons, HEV modules, long jump, gravity gun, silence, and constant refusal to become a tool of the G-Man or the Combine.'
+      fr: 'Cette incarnation est celle de Half-Life 2 (2004). Apres sa stase, Gordon Freeman rejoint la Resistance de City 17 avec la combinaison HEV Mark V fournie par Kleiner. Il utilise son pied-de-biche et le gravity gun d Alyx; dans la Citadelle, le champ de confiscation suralimente ce dernier.',
+      en: 'This is the Half-Life 2 (2004) incarnation. After stasis, Gordon Freeman joins the City 17 Resistance in the HEV Mark V suit supplied by Kleiner. He uses his crowbar and Alyx s gravity gun; in the Citadel, the confiscation field supercharges the latter.'
     },
     breachLore: {
       fr: 'Quand la Breche touche Black Mesa, A.R.C.A. detecte une anomalie rare: Freeman ne ferme pas les portails par autorite, il les traverse jusqu a ce que leur logique s effondre. Dans Multiverse Breach, son role est de stabiliser les cascades avant qu elles ne deviennent des portes permanentes entre Trames, d isoler Xen du Sans-Auteur, de retourner les technologies Combine contre leurs noeuds de controle et de garder le silence comme une resistance: aucun slogan, seulement une trajectoire que le Nexus peut suivre.',
       en: 'When the Breach hits Black Mesa, A.R.C.A. detects a rare anomaly: Freeman does not close portals through authority, he crosses them until their logic collapses. In Multiverse Breach, his role is to stabilize cascades before they become permanent doors between Threads, isolate Xen from the Authorless, turn Combine technology against its control nodes, and keep silence as resistance: no slogan, only a trajectory the Nexus can follow.'
     },
-    doctrine: { fr: 'Pied-de-biche, combinaison HEV, armes Black Mesa, saut long, gravity gun, rayon gluon.', en: 'Crowbar, HEV suit, Black Mesa weapons, long jump, gravity gun, gluon beam.' },
-    tags: ['Black Mesa', 'HEV', 'Xen', 'Combine', 'Gravity', 'G-Man']
+    doctrine: { fr: 'Pied-de-biche, HEV Mark V, gravity gun, version suralimentee de la Citadelle.', en: 'Crowbar, HEV Mark V, gravity gun, Citadel supercharged version.' },
+    tags: ['Half-Life 2', 'City 17', 'HEV Mark V', 'Combine', 'Gravity', 'G-Man']
   },
   chell: {
     clearance: 'APT-01',

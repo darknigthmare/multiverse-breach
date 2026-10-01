@@ -223,31 +223,43 @@ export const HEROES_DB = [
     id: 'ripley',
     name: 'Ellen Ripley',
     universe: 'Alien',
+    incarnation: 'Alien (1979) - Nostromo / Narcissus',
+    referenceUrl: 'https://www.20thcenturystudios.com/movies/alien',
+    visualAnchor: 'Ellen Ripley as played by Sigourney Weaver in Alien (1979): short curly brown hair, Nostromo flight suit and improvised flamethrower. No M41A pulse rifle, M240 incinerator or power loader from Aliens.',
+    canonStatus: 'source-locked-gameplay-adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Nostromo improvised flamethrower', 'Narcissus harpoon gun'],
     category: 'marine',
     primaryColor: '#8b8589',
     secondaryColor: '#4682b4',
     weaponType: 'gun',
     weaponColor: '#2f4f4f',
     stats: { hp: 130, atk: 14, def: 8, spd: 6 },
-    simple: { name: 'Pulse Rifle', type: 'bullet', dmg: 1.0 },
-    secondary: { name: 'M94 Flamethrower', type: 'fire', cd: 7, dmg: 1.7 },
-    defense: { name: 'Loader Block', type: 'shield', dur: 2.0, reduce: 0.75 },
-    special: { name: 'Power Loader Smash', type: 'melee_aoe', dmg: 4.2 }
+    simple: { name: 'Nostromo Flamethrower', type: 'fire', dmg: 1.0 },
+    secondary: { name: 'Improvised Flame Burst', type: 'fire', cd: 7, dmg: 1.7 },
+    defense: { name: 'Nostromo Escape', type: 'dodge', dur: 2.0, reduce: 0.75 },
+    special: { name: 'Narcissus Harpoon', type: 'projectile', dmg: 4.2 }
   },
   {
     id: 'predator',
-    name: 'Yautja Hunter',
+    name: 'Jungle Hunter',
     universe: 'Predator',
+    incarnation: 'Predator (1987) - Jungle Hunter',
+    referenceUrl: 'https://www.20thcenturystudios.com/movies/predator',
+    visualAnchor: 'The original 1987 Jungle Hunter: silver biomask, mottled skin, dreadlocks, netted body suit, asymmetrical armor, wristblades and shoulder plasma caster. No City Hunter smart disc, combi-stick or later-film equipment.',
+    canonStatus: 'source-locked-gameplay-adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Wristblades', 'Shoulder plasma caster', 'Biomask', 'Cloaking device'],
     category: 'marine',
     primaryColor: '#5c524d',
     secondaryColor: '#00ff00',
     weaponType: 'wristblade',
     weaponColor: '#a9a9a9',
     stats: { hp: 140, atk: 18, def: 9, spd: 6 },
-    simple: { name: 'Combistick Jab', type: 'melee', dmg: 1.2 },
+    simple: { name: 'Wristblade Slash', type: 'melee', dmg: 1.2 },
     secondary: { name: 'Plasma Caster', type: 'plasma', cd: 5, dmg: 1.9 },
     defense: { name: 'Cloaking Device', type: 'dodge', dur: 2.5, reduce: 0.85 },
-    special: { name: 'Smart Disc Carnage', type: 'boomerang', dmg: 4.8 }
+    special: { name: 'Unmasked Jungle Duel', type: 'melee_aoe', dmg: 4.8 }
   },
   {
     id: 'leon',
@@ -328,6 +340,12 @@ export const HEROES_DB = [
     id: 'freeman',
     name: 'Gordon Freeman',
     universe: 'Half-Life',
+    incarnation: 'Half-Life 2 (2004) - HEV Mark V / Citadel',
+    referenceUrl: 'https://www.half-life.com/en/halflife2',
+    visualAnchor: 'Half-Life 2 Gordon Freeman: brown hair, beard, rectangular glasses, orange and gray HEV Mark V suit, crowbar and zero-point energy field manipulator. No HEV Mark IV, long-jump module or gluon gun from Half-Life (1998).',
+    canonStatus: 'source-locked-gameplay-adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Crowbar', 'HEV Mark V suit', 'Gravity Gun'],
     category: 'hacker',
     primaryColor: '#e65c00',
     secondaryColor: '#4f5d73',
@@ -337,7 +355,7 @@ export const HEROES_DB = [
     simple: { name: 'Crowbar Whack', type: 'melee', dmg: 1.1 },
     secondary: { name: 'Gravity Gun Blast', type: 'gravity', cd: 6, dmg: 1.7 },
     defense: { name: 'HEV Shield Charge', type: 'shield', dur: 2.5, reduce: 0.85 },
-    special: { name: 'Gluon Gun Overload', type: 'beam', dmg: 4.7, color: '#33ccff' }
+    special: { name: 'Overcharged Gravity Gun', type: 'beam', dmg: 4.7, color: '#33ccff' }
   },
   {
     id: 'chell',
@@ -1821,7 +1839,19 @@ const CANON_ROSTER_EXPANSION = {
     { id: 'bohort_kaamelott', name: 'Bohort', cat: 'tactical', color: '#f9e79f' }
   ],
   Aliens: [
-    { id: 'ripley_aliens', name: 'Ellen Ripley Aliens', cat: 'marine', color: '#8b8589' },
+    {
+      id: 'ripley_aliens', name: 'Ellen Ripley Aliens', cat: 'marine', color: '#8b8589',
+      incarnation: 'Aliens (1986) - LV-426 / Sulaco',
+      referenceUrl: 'https://www.20thcenturystudios.com/movies/aliens',
+      visualAnchor: 'Ellen Ripley as played by Sigourney Weaver in Aliens (1986): short curly hair, blue-gray work shirt, M41A pulse rifle taped to an M240 incinerator; the yellow Caterpillar P-5000 power loader is situational equipment. No Nostromo 1979 flight suit.',
+      canonStatus: 'source-locked-gameplay-adaptation',
+      visualReviewStatus: 'pending',
+      equipment: ['M41A pulse rifle', 'M240 incinerator', 'Caterpillar P-5000 power loader'],
+      simple: { name: 'M41A Pulse Rifle', type: 'bullet', dmg: 1.0 },
+      secondary: { name: 'M240 Incinerator', type: 'fire', cd: 7, dmg: 1.7 },
+      defense: { name: 'Power Loader Block', type: 'shield', dur: 2.0, reduce: 0.75 },
+      special: { name: 'Power Loader Smash', type: 'melee_aoe', dmg: 4.2 }
+    },
     { id: 'newt_hadley', name: 'Newt', cat: 'hacker', color: '#e0c18c' },
     { id: 'hudson_aliens', name: 'Hudson', cat: 'marine', color: '#6b7767' },
     { id: 'apone_aliens', name: 'Apone', cat: 'tactical', color: '#566573' }
@@ -2106,7 +2136,7 @@ const heroOverrides = {
     simple: { name: 'Crowbar Vector', type: 'melee', dmg: 1.1 },
     secondary: { name: 'Gravity Gun Punt', type: 'gravity', cd: 6, dmg: 1.8 },
     defense: { name: 'HEV Aux Power', type: 'shield', dur: 2.5, reduce: 0.85 },
-    special: { name: 'Gluon Gun Cascade', type: 'beam', dmg: 4.8, color: '#33ccff' }
+    special: { name: 'Overcharged Gravity Gun', type: 'beam', dmg: 4.8, color: '#33ccff' }
   },
   barney: {
     weaponType: 'gun',

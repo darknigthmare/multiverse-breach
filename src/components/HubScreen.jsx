@@ -5,6 +5,7 @@ import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { CORE_CODEX_ENTRIES, LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
+import { CANON_PRIORITY_STAGES } from '../game/canonPriorityStages.js';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages, getResolvedLoreWorldBossPolicy } from '../game/expandedUniverses';
 import { inferNonCombatTrial } from '../game/nonCombatTrial';
 import { getCharacterPlaque } from '../game/characterPlaques';
@@ -57,7 +58,7 @@ import { catalogSearchText, createCatalogView, paginateCatalog, updateCatalogVie
 import { calculateSquadReadiness, proposeRelicAssignment, proposeSquad } from '../game/squadPreparation';
 import SquadProposalPanel from './SquadProposalPanel';
 import AnchorCustomizationPanel from './AnchorCustomizationPanel';
-import { advanceMosaicGuide, advanceMosaicPlayer, clampMosaicPosition, createMosaicGuide, getMosaicDestinationView, getMosaicGuideStep, getMosaicInteractionTargets, getMosaicUniverseCatalog, getMosaicZoneAnchor, MOSAIC_CITY_ART, MOSAIC_WELCOME, resolveMosaicInteraction, transitionMosaicGuide } from '../game/mosaicCityRuntime';
+import { advanceMosaicGuide, advanceMosaicPlayer, clampMosaicPosition, createMosaicGuide, findMosaicWalkablePosition, getMosaicDestinationView, getMosaicDrawDepth, getMosaicGuideStep, getMosaicInteractionTargets, getMosaicScenery, getMosaicSceneObstacles, getMosaicUniverseCatalog, getMosaicZoneAnchor, isMosaicPositionBlocked, isMosaicSegmentClear, MOSAIC_CITY_ART, MOSAIC_WELCOME, resolveMosaicInteraction, transitionMosaicGuide } from '../game/mosaicCityRuntime';
 import { createFixedStepClock } from '../game/fixedStepClock';
 import {
   ARC_UNLOCK_RULES,
@@ -2455,7 +2456,7 @@ function MosaicCityHub({
     }
     if (currentDistrict === 'archives') {
       return [
-        { id: 'codex', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Codex vivant' : 'Living Codex', x: 270, y: 165, w: 460, h: 210, color: '#ffea00', role: lang === 'fr' ? 'archives des mondes' : 'world archives' },
+        { id: 'codex', universe: null, action: 'codex', label: lang === 'fr' ? 'Codex vivant' : 'Living Codex', x: 270, y: 165, w: 460, h: 210, color: '#ffea00', role: lang === 'fr' ? 'archives des mondes' : 'world archives' },
         { id: 'arcs', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Chambre des arcs' : 'Arc Chamber', x: 900, y: 165, w: 460, h: 210, color: '#d9b6ff', role: lang === 'fr' ? 'memoire narrative' : 'narrative memory' },
         { id: 'replay', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Salle des relectures' : 'Signal Replay', x: 585, y: 520, w: 470, h: 170, color: '#39c5bb', role: lang === 'fr' ? 'signaux et briefings' : 'signals and briefings' }
       ];
@@ -2487,6 +2488,9 @@ function MosaicCityHub({
       ...threadRooms
     ];
   }, [currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
+  const scenery = useMemo(() => getMosaicScenery(district), [district]);
+  const sceneObstacles = useMemo(() => getMosaicSceneObstacles(district, zones), [district, zones]);
+  stateRef.current.obstacles = sceneObstacles;
 
   const selectedHero = ownedHeroes.find(hero => hero.id === selectedHeroId) || null;
   const nearHero = ownedHeroes.find(hero => hero.id === nearHeroId) || null;
@@ -2537,12 +2541,16 @@ function MosaicCityHub({
       const zone = zones[index % Math.max(1, zones.length)] || district;
       const compatibleCount = districtHeroes.filter(other => other.id !== hero.id && (other.universe === hero.universe || other.category === hero.category)).length;
       const routine = compatibleCount && index % 4 === 1 ? 'talk' : index % 3 === 0 ? 'walk' : 'idle';
+      const position = findMosaicWalkablePosition({
+        x: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
+        y: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54))
+      }, district, sceneObstacles) || district.spawn;
       return {
         hero,
-        x: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
-        y: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54)),
-        baseX: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
-        baseY: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54)),
+        x: position.x,
+        y: position.y,
+        baseX: position.x,
+        baseY: position.y,
         zoneId: zone.id,
         routine,
         reaction: completedStages.length > 0 && index % 5 === 0,
@@ -2551,7 +2559,7 @@ function MosaicCityHub({
       };
     });
     if (guideHero) stateRef.current.npcs.unshift({ hero: guideHero, x: 910, y: 520, baseX: 910, baseY: 520, zoneId: 'atrium', routine: 'idle', phase: 0, facing: -1, isGuide: true });
-  }, [completedStages.length, currentDistrict, district, ownedHeroes, safeHeroes, zones]);
+  }, [completedStages.length, currentDistrict, district, ownedHeroes, safeHeroes, sceneObstacles, zones]);
 
   const switchDistrict = useCallback((portal) => {
     if (sessionPausedRef.current) return;
@@ -2616,8 +2624,8 @@ function MosaicCityHub({
     }
     if (zone?.action === 'codex') {
       setHubLog(lang === 'fr'
-        ? `Codex local ouvert: ${zone.universe}.`
-        : `Local Codex opened: ${zone.universe}.`);
+        ? (zone.universe ? `Codex local ouvert: ${zone.universe}.` : 'Archives des mondes ouvertes.')
+        : (zone.universe ? `Local Codex opened: ${zone.universe}.` : 'World archives opened.'));
       sound.playSfx('confirm');
       onOpenCodex?.(zone.universe);
       return;
@@ -2743,8 +2751,6 @@ function MosaicCityHub({
       ctx.fillStyle = activeDistrict.color;
       if (place.type === 'city') {
         ctx.fillRect(0, 585, activeDistrict.worldW, 180);
-        ctx.fillStyle = 'rgba(0,0,0,0.54)';
-        for (let i = 0; i < 9; i += 1) ctx.fillRect(120 + i * 185, 250 + (i % 3) * 28, 105, 250 - (i % 2) * 44);
         ctx.fillStyle = '#ffea00';
         ctx.fillRect(720, 360, 170, 28);
         ctx.fillStyle = '#e74c3c';
@@ -2835,7 +2841,7 @@ function MosaicCityHub({
           npc.y = npc.baseY;
         }
         Object.assign(npc, clampMosaicPosition(npc, district));
-        if (Math.hypot(npc.x - state.player.x, npc.y - state.player.y) < 28) { npc.x = previousNpcX; npc.y = previousNpcY; }
+        if (isMosaicPositionBlocked(npc, sceneObstacles) || !isMosaicSegmentClear({ x: previousNpcX, y: previousNpcY }, npc, sceneObstacles) || Math.hypot(npc.x - state.player.x, npc.y - state.player.y) < 28) { npc.x = previousNpcX; npc.y = previousNpcY; }
         const horizontalTravel = npc.x - previousNpcX;
         if (Math.abs(horizontalTravel) > 0.01) npc.facing = horizontalTravel > 0 ? 1 : -1;
         npc.sceneState = Math.hypot(horizontalTravel, npc.y - previousNpcY) > 0.01 ? 'run' : 'idle';
@@ -2949,17 +2955,6 @@ function MosaicCityHub({
         ctx.fillStyle = zone.color;
         ctx.font = '10px "Share Tech Mono"';
         ctx.fillText(zone.role.toUpperCase().slice(0, 24), zone.x + 12, zone.y + 36);
-        if (zone.action && zone.action !== 'talk') {
-          const anchor = getMosaicZoneAnchor(zone);
-          ctx.fillStyle = 'rgba(0,0,0,0.8)';
-          ctx.fillRect(anchor.x - 22, anchor.y - 18, 44, 36);
-          ctx.strokeStyle = zone.color;
-          ctx.lineWidth = 2;
-          ctx.strokeRect(anchor.x - 22, anchor.y - 18, 44, 36);
-          ctx.fillStyle = zone.color;
-          ctx.font = '18px "Share Tech Mono"';
-          ctx.fillText(zone.action === 'mission' ? '!' : zone.action === 'codex' ? '?' : '+', anchor.x - 5, anchor.y + 6);
-        }
         if (zone.action && zone.id === nearZoneRef.current?.id) {
           ctx.fillStyle = '#ffea00';
           ctx.fillText((lang === 'fr' ? 'E: INTERAGIR' : 'E: INTERACT'), zone.x + 12, zone.y + zone.h - 28);
@@ -3019,9 +3014,30 @@ function MosaicCityHub({
       }
       ctx.stroke();
 
-      [...state.npcs, { ...state.player, hero: playerAvatar, isPlayer: true }]
-        .sort((a, b) => a.y - b.y)
+      [...scenery, ...zones.filter(zone => zone.action && zone.action !== 'talk').map(zone => ({ type: 'terminal', zone })), ...state.npcs, { ...state.player, hero: playerAvatar, isPlayer: true }]
+        .sort((a, b) => getMosaicDrawDepth(a) - getMosaicDrawDepth(b))
         .forEach(npc => {
+          if (npc.type === 'building') {
+            ctx.save();
+            ctx.globalAlpha = 0.32 + districtProgress * 0.28;
+            ctx.fillStyle = 'rgba(0,0,0,0.54)';
+            ctx.fillRect(npc.x, npc.y, npc.w, npc.h);
+            ctx.restore();
+            return;
+          }
+          if (npc.type === 'terminal') {
+            const zone = npc.zone;
+            const anchor = getMosaicZoneAnchor(zone);
+            ctx.fillStyle = 'rgba(0,0,0,0.8)';
+            ctx.fillRect(anchor.x - 22, anchor.y - 18, 44, 36);
+            ctx.strokeStyle = zone.color;
+            ctx.lineWidth = 2;
+            ctx.strokeRect(anchor.x - 22, anchor.y - 18, 44, 36);
+            ctx.fillStyle = zone.color;
+            ctx.font = '18px "Share Tech Mono"';
+            ctx.fillText(zone.action === 'mission' ? '!' : zone.action === 'codex' ? '?' : '+', anchor.x - 5, anchor.y + 6);
+            return;
+          }
           if (npc.isPlayer) {
             drawPixelPerson(npc.x, npc.y, '#39c5bb', '#ffea00', npc.facing, playerName.slice(0, 10), true, { ...playerAvatar, state: npc.state });
             return;
@@ -3106,7 +3122,7 @@ function MosaicCityHub({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, unlockedUniverses.length, zones]);
+  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, sceneObstacles, scenery, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
     if (sessionPausedRef.current) return;
@@ -5530,7 +5546,7 @@ export default function HubScreen({
     { id: 9, name: 'Abydos Pyramids Breach', universe: 'Stargate', mode: 'RPG', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Anubis Flagship Nexus' },
     { id: 10, name: 'Anomalous Materials Lab', universe: 'Half-Life', mode: 'Smash', difficulty: 'Medium', goldPrize: 75, shardPrize: 25, bossName: 'Combine Strider' },
     { id: 11, name: 'Aperture Enrichment Center', universe: 'Portal', mode: 'RPG', difficulty: 'Medium', goldPrize: 80, shardPrize: 30, bossName: 'Central AI' },
-    { id: 12, name: 'Shadow Moses Warehouse', universe: 'Metal Gear', mode: 'Tactics', difficulty: 'Hard', goldPrize: 90, shardPrize: 30, bossName: 'Metal Gear RAY' },
+    CANON_PRIORITY_STAGES.shadowMoses,
     { id: 13, name: 'First World Bank Vault', universe: 'Payday', mode: 'Smash', difficulty: 'Hard', goldPrize: 95, shardPrize: 30, bossName: 'SWAT Turret Van' },
     { id: 14, name: 'Neon Shibuya Stage', universe: 'Vocaloid', mode: 'RPG', difficulty: 'Hard', goldPrize: 100, shardPrize: 35, bossName: 'Stage Core' },
     { id: 15, name: 'Dominos Duel Arena', universe: 'Yu-Gi-Oh', mode: 'Tactics', difficulty: 'Hard', goldPrize: 110, shardPrize: 35, bossName: 'Obelisk Tormentor' },
@@ -5540,7 +5556,7 @@ export default function HubScreen({
     { id: 19, name: 'Good Guy Toy Warehouse', universe: 'Chucky', mode: 'Smash', difficulty: 'Hard', goldPrize: 140, shardPrize: 45, bossName: 'Assembly Core' },
     { id: 20, name: 'Labyrinth Cenobite Chamber', universe: 'Hellraiser', mode: 'RPG', difficulty: 'Very Hard', goldPrize: 150, shardPrize: 45, bossName: 'Leviathan God' },
     { id: 21, name: 'Citadel Presidium Hub', universe: 'Mass Effect', mode: 'Tactics', difficulty: 'Very Hard', goldPrize: 160, shardPrize: 50, bossName: 'Human-Reaper Larva' },
-    { id: 22, name: 'New Vegas Strip Breach', universe: 'Fallout', mode: 'Smash', difficulty: 'Very Hard', goldPrize: 170, shardPrize: 50, bossName: 'Liberty Prime' },
+    CANON_PRIORITY_STAGES.legatesCamp,
     { id: 23, name: 'Nekravol Argent Tower', universe: 'Doom', mode: 'RPG', difficulty: 'Expert', goldPrize: 200, shardPrize: 60, bossName: 'Icon of Sin' },
     { id: 24, name: 'Liandri Tournament Grid', universe: 'Unreal', mode: 'Tactics', difficulty: 'Expert', goldPrize: 220, shardPrize: 70, bossName: 'Skaarj Warlord' },
     

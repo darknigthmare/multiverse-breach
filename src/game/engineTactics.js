@@ -3,6 +3,8 @@ import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCombatantBust } from './
 import { absorbBattleItemDamage, grantBattleItemShield } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
+import { applyCombatHealing } from './combatHealing.js';
+import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
 import { drawGeneratedStageTextureCover, getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
@@ -198,10 +200,10 @@ export class EngineTactics {
   }
 
   schedule(callback, delay) {
-    if (this.disposed) return null;
+    if (this.disposed || this.gameOver) return null;
     const runWhenResumed = () => {
-      if (this.disposed) return;
-      if (this.paused) {
+      if (this.disposed || this.gameOver) return;
+      if (this.paused || (this.activeUnit?.currentHp > 0 && this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0)) {
         const retryTimer = setTimeout(() => {
           this.timers.delete(retryTimer);
           runWhenResumed();
@@ -387,13 +389,14 @@ export class EngineTactics {
       ...this.heroes.filter(h => h.currentHp > 0).map(h => ({ unit: h, type: 'hero' })),
       ...this.enemies.filter(e => e.currentHp > 0).map(e => ({ unit: e, type: 'enemy' }))
     ];
-    const getSpeed = (entry) => entry.unit.stats?.spd ?? entry.unit.spd ?? 1;
+    const getSpeed = entry => (entry.unit.stats?.spd ?? entry.unit.spd ?? 1) * getCombatEventSpeedMultiplier(entry.unit);
     units.sort((a, b) => getSpeed(b) - getSpeed(a));
     this.turnQueue = units;
   }
 
   startTurn() {
-    if (this.disposed) return;
+    if (this.disposed || this.gameOver) return;
+    this.turnQueue = this.turnQueue.filter(t => t.unit.currentHp > 0);
     if (this.turnQueue.length === 0) {
       this.rebuildTurnQueue();
       if (this.isFinalBoss) {
@@ -405,7 +408,7 @@ export class EngineTactics {
       }
     }
     this.turnQueue = this.turnQueue.filter(t => t.unit.currentHp > 0);
-    if (this.turnQueue.length === 0) return;
+    if (this.gameOver || this.turnQueue.length === 0) return;
 
     const next = this.turnQueue.shift();
     this.activeUnit = next.unit;
@@ -1456,6 +1459,9 @@ export class EngineTactics {
     ) {
       return { handled: false, reason: 'inactive' };
     }
+    if (this.activeUnit?.state === 'hit' && this.activeUnit.stateTimer > 0) {
+      return { handled: false, reason: 'stunned' };
+    }
 
     if (this.actionPhase === 'move') {
       const selectedCell = this.movementRange.find(cell => cell.x === c && cell.y === r);
@@ -1589,10 +1595,11 @@ export class EngineTactics {
   }
 
   endActiveTurn() {
-    this.turnsElapsed++;
-    this.updateTacticsObjective();
-    this.applyTacticsMissionPressure();
+    if (this.disposed || this.gameOver || this.actionPhase === 'end') return;
     this.actionPhase = 'end';
+    this.turnsElapsed++;
+    this.updateTacticsObjective(true);
+    this.applyTacticsMissionPressure();
     this.selectedAction = null;
     this.selectedActionExplicit = false;
     this.movementRange = [];
@@ -1601,7 +1608,7 @@ export class EngineTactics {
     this.schedule(() => this.startTurn(), 600);
   }
 
-  updateTacticsObjective() {
+  updateTacticsObjective(advanceTurn = false) {
     if (this.gameOver) return;
     const aliveHeroes = this.heroes.filter(h => h.currentHp > 0);
     if (aliveHeroes.length === 0) {
@@ -1663,7 +1670,7 @@ export class EngineTactics {
         const enemyOnTile = this.enemies.some(enemy => enemy.currentHp > 0 && enemy.gridX === tile.x && enemy.gridY === tile.y);
         return heroOnTile && !enemyOnTile;
       });
-      if (heldTiles.length > 0) {
+      if (advanceTurn && heldTiles.length > 0) {
         this.objectiveProgress = Math.min(this.objectiveTarget, this.objectiveProgress + heldTiles.length);
         this.objectiveEvents++;
         this.particles.add(this.width / 2, 42, 0, -1, '#ffeb3b', 11, 38, 'text', 'ANCRAGE');
@@ -1712,6 +1719,8 @@ export class EngineTactics {
     this.gameOver = true;
     this.battleResult = result;
     this.victoryTimer = 0;
+    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.clear();
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
   }
 
@@ -1756,7 +1765,7 @@ export class EngineTactics {
     if (this.gameOver || this.turnsElapsed <= 0) return;
     const { reinforcementEvery, hazardPulseEvery } = this.missionProfile;
     this.advanceEscortUnit();
-    if (this.hazardsDisabled) return;
+    if (this.gameOver || this.hazardsDisabled) return;
     if (reinforcementEvery > 0 && this.turnsElapsed % reinforcementEvery === 0) {
       this.spawnTacticsReinforcement();
     }
@@ -1977,6 +1986,51 @@ export class EngineTactics {
     }, null);
   }
 
+  getObjectiveRouteMove(hero, actionType = 'simple') {
+    let goals = this.getObjectiveFocusCells('hero');
+    if (this.objective === 'disable') {
+      const devices = goals.map(goal => goal.unit).filter(Boolean);
+      goals = [];
+      for (let y = 0; y < this.rows; y++) {
+        for (let x = 0; x < this.cols; x++) {
+          if (this.isCellOccupied(x, y, hero)) continue;
+          const probe = { ...hero, gridX: x, gridY: y, _tacticsSourceUnit: hero };
+          const profile = this.getAttackProfile(probe, actionType);
+          if (devices.some(device => this.canAttackCell(probe, device, profile)
+            && this.getAttackTargets(probe, device, actionType, 'hero').some(entry => entry.unit === device))) {
+            goals.push({ x, y });
+          }
+        }
+      }
+    }
+    if (!goals.length) return null;
+    const budget = Math.max(0, this.movementBudget - this.movementSpent);
+    const origin = { x: hero.gridX, y: hero.gridY, cost: 0 };
+    const queue = [{ ...origin, path: [origin] }];
+    const costs = new Map([[`${origin.x},${origin.y}`, 0]]);
+    // Find a full route before taking this turn's affordable steps. This can
+    // deliberately move away from a beacon to get around a wall or obstacle.
+    while (queue.length) {
+      queue.sort((a, b) => a.cost - b.cost);
+      const cell = queue.shift();
+      if (cell.cost !== costs.get(`${cell.x},${cell.y}`)) continue;
+      if (goals.some(goal => goal.x === cell.x && goal.y === cell.y)) {
+        return cell.path.filter(step => step.cost <= budget).at(-1);
+      }
+      for (const delta of [{ x: 1, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }, { x: -1, y: 0 }]) {
+        const next = { x: cell.x + delta.x, y: cell.y + delta.y };
+        if (!this.isInsideGrid(next.x, next.y) || this.isCellOccupied(next.x, next.y, hero)) continue;
+        const cost = cell.cost + this.getTileMoveCost(next.x, next.y, hero);
+        const key = `${next.x},${next.y}`;
+        if (cost >= (costs.get(key) ?? Infinity)) continue;
+        costs.set(key, cost);
+        const step = { ...next, cost };
+        queue.push({ ...step, path: [...cell.path, step] });
+      }
+    }
+    return null;
+  }
+
   scoreObjectiveMove(unit, cell, objectiveCell, threatMap, unitType = 'hero') {
     const tile = this.getTileAt(cell.x, cell.y);
     const threat = threatMap.get(`${cell.x},${cell.y}`)?.count || 0;
@@ -2030,8 +2084,13 @@ export class EngineTactics {
   }
 
   runEnemyAI() {
-    if (this.gameOver || this.activeUnit.currentHp <= 0) {
+    if (this.disposed || this.gameOver || !this.activeUnit) return;
+    if (this.activeUnit.currentHp <= 0) {
       this.startTurn();
+      return;
+    }
+    if (this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0) {
+      this.schedule(() => this.runEnemyAI(), 50);
       return;
     }
 
@@ -2145,7 +2204,11 @@ export class EngineTactics {
   }
 
   runHeroAI() {
-    if (this.gameOver || this.activeUnit.currentHp <= 0 || this.activeUnitType !== 'hero') return;
+    if (this.disposed || this.gameOver || !this.activeUnit || this.activeUnit.currentHp <= 0 || this.activeUnitType !== 'hero') return;
+    if (this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0) {
+      this.schedule(() => this.runHeroAI(), 50);
+      return;
+    }
 
     const hero = this.activeUnit;
     let chosenAction = 'simple';
@@ -2168,6 +2231,11 @@ export class EngineTactics {
       }
     });
 
+    const enemiesCleared = !closestEnemy;
+    if (enemiesCleared && this.objective === 'disable') {
+      closestEnemy = this.getClosestObjectiveCell(hero, 'hero')?.unit || null;
+    }
+
     if (!closestEnemy) {
       if (this.objective === 'escort' && this.escortUnit?.currentHp > 0) {
         const escort = this.escortUnit;
@@ -2182,6 +2250,14 @@ export class EngineTactics {
             };
             return score(a) - score(b);
           })[0];
+        if (best) {
+          faceUnitToward(hero, best);
+          hero.gridX = best.x;
+          hero.gridY = best.y;
+          this.applyStartTileEffect(hero);
+        }
+      } else {
+        const best = this.getObjectiveRouteMove(hero);
         if (best) {
           faceUnitToward(hero, best);
           hero.gridX = best.x;
@@ -2227,6 +2303,9 @@ export class EngineTactics {
         bestMoveCell = cell;
       }
     });
+    if (enemiesCleared && this.objective === 'disable') {
+      bestMoveCell = this.getObjectiveRouteMove(hero, chosenAction) || bestMoveCell;
+    }
 
     // Move there
     faceUnitToward(hero, bestMoveCell);
@@ -2316,6 +2395,7 @@ export class EngineTactics {
   }
 
   applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
+    baseDmg *= getCombatEventDamageMultiplier(attacker);
     if (defender === this.protectedArtifact) {
       const wasAlive = defender.hp > 0;
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
@@ -2408,8 +2488,9 @@ export class EngineTactics {
     }
 
     if (defender.state !== 'defense') {
+      const hitDuration = defender.state === 'hit' ? defender.stateTimer : 0;
       defender.state = 'hit';
-      defender.stateTimer = 15;
+      defender.stateTimer = Math.max(hitDuration || 0, 15);
     }
 
     // Apply status effect
@@ -2537,11 +2618,10 @@ export class EngineTactics {
         const heal = effect === 'divine_light' ? 200 : effect === 'heal_squad' ? 150 : effect === 'vampire_fury' ? 100 : 80;
         this.heroes.forEach(h => {
           if (h.currentHp > 0) {
-            const cap = h.statusEffects?.radiated > 0 ? h.maxHp * 0.5 : h.maxHp;
-            h.currentHp = Math.min(cap, h.currentHp + heal);
+            const gained = applyCombatHealing(h, heal);
             
             const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(h.gridX, h.gridY);
-            this.particles.add(targetPxX, targetPxY - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${heal}`);
+            if (gained > 0) this.particles.add(targetPxX, targetPxY - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${gained}`);
           }
         });
         if (effect === 'meeseeks_swarm' || effect === 'vampire_fury') {
@@ -2575,16 +2655,19 @@ export class EngineTactics {
         });
         break;
       }
-      case 'iris_invuln':
-      case 'quad_damage':
-      case 'magia_erebea': {
-        const duration = effect === 'quad_damage' || effect === 'magia_erebea' ? 600 : 240;
+      case 'iris_invuln': {
+        const duration = 240;
         this.heroes.forEach(h => {
           if (h.currentHp > 0) {
             h.state = 'defense';
             h.stateTimer = duration;
           }
         });
+        break;
+      }
+      case 'quad_damage':
+      case 'magia_erebea': {
+        this.heroes.forEach(hero => grantCombatEventBuff(hero, effect));
         break;
       }
       case 'circus_glitch':
@@ -2625,7 +2708,7 @@ export class EngineTactics {
     }
   }
   update() {
-    if (this.disposed) return;
+    if (this.disposed || this.paused) return;
     if (this.gameOver) {
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
@@ -2642,11 +2725,14 @@ export class EngineTactics {
       this.completeBattle('defeat');
       return;
     }
-    if (!enemiesAlive && this.objective !== 'escort') {
+    this.updateTacticsObjective();
+    if (this.gameOver) return;
+    if (!enemiesAlive && this.objective === 'rout') {
       this.objectiveProgress = this.objectiveTarget;
       this.completeBattle('victory');
       return;
     }
+    [...this.heroes, ...this.enemies].forEach(tickCombatEventBuffs);
 
     // Process Status Effects & timers for heroes
     this.heroes.forEach(h => {
