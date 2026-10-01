@@ -44,6 +44,11 @@ import RpgTargetingPanel from './RpgTargetingPanel';
 import RaamEncounterPanel from './RaamEncounterPanel';
 import AliensRescuePanel from './AliensRescuePanel';
 import PiratesCursePanel from './PiratesCursePanel';
+import RexEncounterPanel from './RexEncounterPanel';
+import BlackPearlAmmoPanel from './BlackPearlAmmoPanel';
+import { getSmashAbilityProfile, getSmashAbilityTargets } from '../game/smashAbilityProfiles.js';
+import { isMeleeMovementLocked } from '../game/melee/meleeCombatRuntime';
+import { getBlackPearlSourceAmmunition } from '../game/canonBlackPearlSourceKits.js';
 import {
   MELEE_ACTIONS,
   createDefaultMeleeInputMaps,
@@ -1828,6 +1833,32 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const raamEncounter = stage.mode === 'RPG' ? engineRef.current?.getRaamEncounterState?.() : null;
   const aliensRescueEncounter = stage.mode === 'Smash' ? engineRef.current?.getAliensRescueEncounterState?.() : null;
   const piratesCurseEncounter = stage.mode === 'RPG' ? engineRef.current?.getPiratesCurseEncounterState?.() : null;
+  const rexEncounter = stage.mode === 'Tactics' ? engineRef.current?.getRexEncounterState?.() : null;
+  const sourceAmmoHero = stage.mode === 'Smash' ? engineRef.current?.getActiveHero?.() || activeHeroObj : activeHeroObj;
+  const sourceAmmunition = getBlackPearlSourceAmmunition(sourceAmmoHero);
+  const sourceShotHasTarget = stage.mode === 'Smash' && sourceAmmunition
+    ? getSmashAbilityTargets(sourceAmmoHero, engineRef.current?.getEncounterTargets?.() || [], getSmashAbilityProfile(sourceAmmoHero, 'secondary')).length > 0 : false;
+  const sourceAmmoOpponent = stage.mode === 'Smash' && engineRef.current?.isLocalP2
+    ? engineRef.current.getActiveOpponent?.() : null;
+  const opponentShotHasTarget = getBlackPearlSourceAmmunition(sourceAmmoOpponent)
+    ? getSmashAbilityTargets(sourceAmmoOpponent, engineRef.current?.heroes || [], getSmashAbilityProfile(sourceAmmoOpponent, 'secondary')).length > 0 : false;
+  const handleOpponentSourceShot = () => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked) return;
+    const engine = engineRef.current;
+    if (engine?.isLocalP2 && engine.triggerOpponentAbility?.('secondary')) {
+      setOpponentState([...engine.enemies]);
+      setTeamState([...engine.heroes]);
+    }
+  };
+  const handleRexStingerSelection = () => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked || opponentHasCommand) return;
+    const engine = engineRef.current;
+    if (engine?.selectRexStingerTarget?.()) {
+      setSelectedAction(engine.selectedAction);
+      setTeamState([...engine.heroes]);
+      sound.playSfx('click');
+    }
+  };
   const handleAliensRescueCommand = command => {
     if (sessionPausedRef.current || battleCompleted || preMatchLocked) return;
     const engine = engineRef.current;
@@ -2742,6 +2773,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             paused={sessionPaused || battleCompleted} targeting={Boolean(rpgTargeting)}
             onCommand={handleRaamCommand}
           />}
+          {stage.mode === 'Tactics' && !opponentHasCommand && <RexEncounterPanel
+            encounter={rexEncounter} hero={engineRef.current?.activeUnit || activeHeroObj} lang={lang}
+            paused={sessionPaused || battleCompleted || preMatchLocked} selectedAction={selectedAction}
+            onSelectStinger={handleRexStingerSelection}
+          />}
           {stage.mode === 'RPG' && !opponentHasCommand && <PiratesCursePanel
             encounter={piratesCurseEncounter} hero={activeHeroObj} lang={lang}
             paused={sessionPaused || battleCompleted} targeting={Boolean(rpgTargeting)}
@@ -2752,8 +2788,19 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             paused={sessionPaused || battleCompleted} inputLocked={preMatchLocked}
             onCommand={handleAliensRescueCommand}
           />}
+          {stage.mode === 'Smash' && <BlackPearlAmmoPanel hero={sourceAmmoOpponent} mode={stage.mode} lang={lang} side="P2"
+            paused={sessionPaused || battleCompleted} inputLocked={preMatchLocked}
+            busy={sourceAmmoOpponent ? isMeleeMovementLocked(sourceAmmoOpponent) : true}
+            hasTarget={opponentShotHasTarget} onShoot={handleOpponentSourceShot}
+          />}
           {activeHeroObj ? (
             <>
+              <BlackPearlAmmoPanel hero={sourceAmmoHero} mode={stage.mode} lang={lang}
+                paused={sessionPaused || battleCompleted} inputLocked={preMatchLocked}
+                busy={stage.mode === 'Smash' && isMeleeMovementLocked(sourceAmmoHero)}
+                hasTarget={sourceShotHasTarget} curseActive={piratesCurseEncounter?.curseActive === true}
+                onShoot={() => handleActiveHeroAbility('secondary')}
+              />
               <div style={{ display: stage.mode === 'Smash' ? 'none' : 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                 <span style={{ fontWeight: 'bold', color: activeHeroObj.primaryColor || activeHeroObj.color || '#ff8a50' }}>
                   {opponentHasCommand ? 'P2 / ' : ''}{activeHeroObj.name.toUpperCase()} ACTIONS
@@ -2761,7 +2808,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 {stage.mode === 'Tactics' && (
                   <span style={{ fontSize: '9px', color: '#ffb300' }}>
                     {selectedAction
-                      ? `${lang === 'fr' ? 'VISEE' : 'TARGETING'}: ${getCombatantMove(activeHeroObj, selectedAction).name}`
+                      ? `${lang === 'fr' ? 'VISEE' : 'TARGETING'}: ${selectedAction === 'rex_stinger' ? (lang === 'fr' ? 'Stinger de mission' : 'Mission Stinger') : getCombatantMove(activeHeroObj, selectedAction).name}`
                       : (lang === 'fr' ? 'MODE DEPLACEMENT' : 'MOVEMENT MODE')}
                   </span>
                 )}
@@ -2780,7 +2827,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('secondary')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (sourceAmmunition && (activeHeroObj.sourceAmmoRemaining <= 0 || piratesCurseEncounter?.curseActive)) || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >

@@ -20,7 +20,7 @@ export default function PiratesCursePanel({ encounter, hero, lang = 'fr', paused
     : encounter.phase === 'offerings'
       ? (fr ? 'Coordonnez les offrandes de Will et Jack. Un autre membre de l’escouade ne peut pas remplacer leur paiement.' : 'Coordinate Will and Jack’s offerings. Another squad member cannot replace their payment.')
       : encounter.phase === 'restore'
-        ? (fr ? 'Faites remettre les deux pièces au coffre par Will. Jack tire sur Barbossa au moment où la malédiction se lève.' : 'Have Will return both coins to the chest. Jack shoots Barbossa as the curse is lifted.')
+        ? (fr ? 'Jack tire sur Barbossa, puis Will remet les deux pièces au coffre. La levée de la malédiction rend la blessure mortelle.' : 'Jack shoots Barbossa, then Will returns both coins to the chest. Lifting the curse makes the wound fatal.')
         : (fr ? 'Le tir de Jack termine le duel avec Barbossa. Les autres pirates deviennent mortels.' : 'Jack’s shot ends the duel with Barbossa. The other pirates become mortal.');
   const pending = Boolean(encounter.commandPending || encounter.ritualPending);
   const guidance = pending
@@ -37,11 +37,12 @@ export default function PiratesCursePanel({ encounter, hero, lang = 'fr', paused
       <strong>{heading}</strong>
       <p>{instruction}</p>
       <p>{fr
-        ? 'Will Turner, fils de Bootstrap Bill Turner, et Jack Sparrow fournissent leurs offrandes de sang. Votre escouade coordonne ces assistants. Les héros jouables gardent leurs PV, même si une version de Will ou de Jack figure dans l’équipe.'
-        : 'Will Turner, son of Bootstrap Bill Turner, and Jack Sparrow provide their blood offerings. Your squad coordinates these assistants. Playable heroes keep their ordinary HP, even if a version of Will or Jack is in the squad.'}</p>
+        ? 'Will Turner, fils de Bootstrap Bill Turner, et Jack Sparrow fournissent leurs offrandes de sang. Votre escouade coordonne ces assistants. Les offrandes ne retirent pas de PV à votre équipe. Si Jack de 2003 est vivant dans l’escouade, prendre sa pièce le rend immortel jusqu’à la restitution ; Will et les autres héros restent mortels.'
+        : 'Will Turner, son of Bootstrap Bill Turner, and Jack Sparrow provide their blood offerings. Your squad coordinates these assistants. The offerings do not cost squad HP. If playable 2003 Jack is alive in the squad, taking his coin makes him immortal until restitution; Will and other heroes remain mortal.'}</p>
       {cursed && <p>{fr
         ? 'Barbossa et ses pirates maudits survivent aux coups tant que le trésor et les paiements ne sont pas restitués.'
         : 'Barbossa and his cursed pirates survive attacks until the treasure and payments are restored.'}</p>}
+      {encounter.cursedHeroIds?.length > 0 && <p>{fr ? "Jack jouable est maudit : ses PV sont protégés jusqu’à la restitution." : "Playable Jack is cursed: his HP is protected until restitution."}</p>}
       <div className="canon-rescue-panel-status" aria-live="polite">
         {fr ? 'Pièces rendues au coffre' : 'Coins restored to the chest'} : {encounter.returnedPieces ?? 0}/{encounter.totalPieces ?? 882}
         {' · '}{encounter.finalCoinsCollected ? (fr ? 'Deux dernières pièces rassemblées' : 'Final two coins collected') : (fr ? 'Deux dernières pièces manquantes' : 'Final two coins missing')}

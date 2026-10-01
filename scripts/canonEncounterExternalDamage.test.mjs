@@ -243,12 +243,17 @@ test('the direct Tactics crew fallback applies shield absorption once and honors
   assert.notEqual(crew.state, 'dead');
 });
 
-test('REX retains the ordinary fixed direct-loss fallback', () => {
+test('REX body rejects external fixed loss while its ordinary soldiers retain the fallback', () => {
   const engine = makeTactics(CANON_PRIORITY_STAGES.shadowMoses);
   const boss = engine.enemies.find(enemy => enemy.isBoss);
   const hp = boss.currentHp;
-  assert.equal(applyEncounterOrDirectDamage(engine, boss, 40, { kind: 'field-super' }), 40);
-  assert.equal(boss.currentHp, hp - 40);
+  assert.equal(applyEncounterOrDirectDamage(engine, boss, 40, { kind: 'field-super' }), 0);
+  assert.equal(boss.currentHp, hp);
+  assert.equal(engine.rexEncounter.radomeHp, 360);
+  const soldier = engine.enemies.find(enemy => !enemy.isBoss);
+  const soldierHp = soldier.currentHp;
+  assert.equal(applyEncounterOrDirectDamage(engine, soldier, 40, { kind: 'field-super' }), 40);
+  assert.equal(soldier.currentHp, soldierHp - 40);
 });
 
 test('external Nihilanth body damage is fixed but cannot bypass the lethal brain requirement', () => {

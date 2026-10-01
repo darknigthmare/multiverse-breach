@@ -299,8 +299,8 @@ test('pause and wait-mode manual targeting freeze the coin and chest impact time
   assert.equal(engine.getPiratesCurseEncounterState().sourceShotResolved, true);
 });
 
-test('a coordinator who dies before impact does not complete a missing source payment', () => {
-  const engine = makeEngine();
+test('a mortal coordinator who dies before impact does not complete a missing source payment', () => {
+  const engine = makeEngine({ heroes: ['will_turner_potc', 'elizabeth_swann_potc'] });
   command(engine, 'collect-final-coins');
   ready(engine.heroes[0]);
   assert.equal(engine.triggerPiratesCurseAction('coordinate-will', engine.heroes[0]), true);

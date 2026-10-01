@@ -276,7 +276,7 @@ test('the New Vegas finale uses Lanius at the Legate camp without spawning Liber
   assert.equal(getEnemySpriteSheetSrc({ ...selected.bosses[0], universe: stage.universe }), '/sprites/generated/bosses/fallout/legate-lanius-general.png');
 });
 
-test('actual battle engines spawn REX and Lanius and require REX defeat for the Hangar victory', async () => {
+test('actual battle engines spawn REX and Lanius and require source REX targets for the Hangar victory', async () => {
   const vite = await createServer({
     appType: 'custom', logLevel: 'silent', server: { middlewareMode: true }
   });
@@ -290,8 +290,8 @@ test('actual battle engines spawn REX and Lanius and require REX defeat for the 
     const stage = CANON_PRIORITY_STAGES.shadowMoses;
     const tactics = new EngineTactics(960, 540, [hero], resolve(stage), particles, noop, noop, stage);
     engines.push(tactics);
-    assert.equal(tactics.objective, 'commander');
-    assert.equal(tactics.objectiveTarget, 1);
+    assert.equal(tactics.objective, 'rex_weakpoints');
+    assert.equal(tactics.objectiveTarget, 2);
     assert.deepEqual(tactics.enemies.filter(enemy => enemy.isBoss).map(enemy => enemy.name), ['Metal Gear REX Shadow']);
     for (const enemy of tactics.enemies.filter(enemy => !enemy.isBoss)) enemy.currentHp = 0;
     tactics.updateTacticsObjective(true);
@@ -301,8 +301,35 @@ test('actual battle engines spawn REX and Lanius and require REX defeat for the 
     assert.equal(tactics.gameOver, false, 'waiting or controlling the hangar cannot bypass REX');
     tactics.enemies.find(enemy => enemy.isBoss).currentHp = 0;
     tactics.updateTacticsObjective(true);
-    assert.equal(tactics.gameOver, true);
-    assert.equal(tactics.objectiveProgress, 1);
+    assert.equal(tactics.gameOver, false, 'generic body HP cannot bypass either source target');
+    assert.equal(tactics.rexEncounter.body.currentHp, 720);
+    // The dedicated REX suite also runs a complete original-stat squad against
+    // living soldiers. Here the pre-existing soldier-zero fixture isolates the
+    // commander objective; only legal movement and target clicks finish REX.
+    tactics.timers.forEach(timer => clearTimeout(timer)); tactics.timers.clear();
+    tactics.schedule = (callback, delay) => { if ([400, 500].includes(delay)) callback(); return null; };
+    for (let turn = 0; turn < 100 && !tactics.gameOver; turn++) {
+      if (tactics.activeUnitType === 'hero') {
+        const actor = tactics.activeUnit;
+        const rex = tactics.rexEncounter.body;
+        const moves = tactics.getReachableCells(actor, tactics.movementBudget - tactics.movementSpent)
+          .map(cell => {
+            const probe = { ...actor, gridX: cell.x, gridY: cell.y, _tacticsSourceUnit: actor };
+            const shot = tactics.canAttackCell(probe, rex, tactics.getAttackProfile(probe, 'rex_stinger'))
+              && tactics.getAttackTargets(probe, rex, 'rex_stinger', 'hero').some(target => target.unit === rex);
+            return { cell, score: (shot ? 1000 : 0) - Math.abs(rex.gridX - cell.x) - Math.abs(rex.gridY - cell.y) };
+          }).sort((a, b) => b.score - a.score);
+        assert.equal(tactics.handleCellClick(moves[0].cell.x, moves[0].cell.y).handled, true);
+        assert.equal(tactics.selectRexStingerTarget(), true);
+        if (!tactics.handleCellClick(rex.gridX, rex.gridY).handled) tactics.endActiveTurn();
+      } else tactics.runEnemyAI();
+      for (let frame = 0; frame < 36 && !tactics.gameOver; frame++) tactics.update();
+      if (!tactics.gameOver) tactics.startTurn();
+    }
+    assert.equal(tactics.battleResult, 'victory');
+    assert.equal(tactics.objectiveProgress, 2);
+    assert.equal(tactics.rexEncounter.body.currentHp, 720);
+    assert.equal(tactics.getCombatSummary().sourceEncounter.liquidSurvives, true);
 
     const falloutStage = CANON_PRIORITY_STAGES.legatesCamp;
     const smash = new EngineSmash(960, 540, [hero], resolve(falloutStage), particles, noop, noop, falloutStage);

@@ -7,6 +7,7 @@ import { applyCombatHealing } from './combatHealing.js';
 import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { getSmashAbilityProfile, getSmashAbilityTargets } from './smashAbilityProfiles.js';
 import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
+import { getBlackPearlSourceAmmunition } from './canonBlackPearlSourceKits.js';
 import { createSmashArena, getSmashObjectiveLabel, getSmashObjectiveText } from './smashArenas';
 import { getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { getRecentUniverseTexturePattern } from './recentUniverseTextureAssets';
@@ -73,6 +74,13 @@ const platformTextureCanvasCache = new Map();
 const LOCAL_P2_CONTROL = 'p2';
 
 const isInputPressed = (keys = {}, names = []) => names.some(name => Boolean(keys[name]));
+
+// The reserved film shot is restored only when a new game battle creates the
+// actor. Cooldown, waves, switches and sword actions never reload this reserve.
+const createSourceAmmunitionRuntime = actor => {
+  const policy = getBlackPearlSourceAmmunition(actor);
+  return policy ? { sourceAmmoRemaining: policy.maxShots } : {};
+};
 
 const getVersusRoster = (enemiesData = {}) => {
   if (Array.isArray(enemiesData.customRoster)) {
@@ -235,6 +243,7 @@ export class EngineSmash {
     // Map base heroes
     this.heroes = heroes.map((h, index) => initializeMeleeActorRuntime({
       ...getAliensHiveHeroLoadout(this.aliensRescueEncounter, h),
+      ...createSourceAmmunitionRuntime(h),
       x: this.arena.spawns.heroes[index]?.x || (100 + index * 30),
       y: this.arena.spawns.heroes[index]?.y || this.arena.groundY,
       vx: 0,
@@ -365,6 +374,7 @@ export class EngineSmash {
 
       return initializeMeleeActorRuntime({
         ...template,
+        ...createSourceAmmunitionRuntime(template),
         id: `${localP2 ? 'p2' : 'cpu-custom'}:${sourceId}:${index}`,
         sourceId,
         x: spawn.x,
@@ -864,6 +874,18 @@ export class EngineSmash {
     if (abilityType === 'secondary' && actor.cooldown > 0) return false;
     if (abilityType === 'special' && actor.specialCharge < 100) return false;
 
+    const ammunition = getBlackPearlSourceAmmunition(actor, abilityType);
+    const targets = getSmashAbilityTargets(actor, candidates, profile);
+    if (ammunition) {
+      const isBattleActor = this.heroes.includes(actor)
+        || (this.isLocalP2 && this.enemies.includes(actor));
+      if (!isBattleActor || actor.currentHp <= 0 || actor.state === 'dead'
+        || isMeleeMovementLocked(actor)
+        || this.gameOver || this.paused || this.isMatchInputLocked()
+        || !(actor.sourceAmmoRemaining > 0) || !targets.length) return false;
+      actor.sourceAmmoRemaining -= 1;
+    }
+
     actor.state = 'attack';
     actor.stateTimer = abilityType === 'special' ? 40 : abilityType === 'secondary' ? 20 : 15;
     if (abilityType === 'secondary') actor.cooldown = (Number(action.cd) || 4) * 60;
@@ -872,7 +894,6 @@ export class EngineSmash {
 
     const effect = resolveCanonHeroAttackEffect(actor, action);
     this.playSfx(effect?.sfx || (profile.delivery === 'melee' ? 'slash' : 'shoot'));
-    const targets = getSmashAbilityTargets(actor, candidates, profile);
     if (!targets.length && !emitAliensHiveAttackEffect(this.particles, actor, null, action)) {
       emitCanonHeroAttackEffect(this.particles, actor, null, action);
     }

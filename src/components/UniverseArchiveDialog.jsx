@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import './UniverseArchiveDialog.css';
 
 export default function UniverseArchiveDialog({ children, onClose, cleared, universe }) {
   const dialogRef = useRef(null);

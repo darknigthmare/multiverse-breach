@@ -12524,7 +12524,7 @@ export default function HubScreen({
                     {lang === 'fr' ? 'FERMER' : 'CLOSE'}
                   </button>
                 </div>
-                <p style={{ color: '#d8d8d8', fontSize: '11px', lineHeight: 1.45, margin: '12px 0 0' }}>
+                <p className="universe-archive-lore" tabIndex={0} role="region" aria-label={lang === 'fr' ? 'Contexte de l’univers' : 'Universe background'} style={{ color: '#d8d8d8', fontSize: '11px', lineHeight: 1.45, margin: '12px 0 0' }}>
                   {selectedUniverseArchive.loreBrief}
                 </p>
                 <p style={{ color: '#9eb6c6', fontSize: '10px', margin: '7px 0 0' }}>

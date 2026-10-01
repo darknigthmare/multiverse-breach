@@ -1,5 +1,7 @@
 # Isla de Muerta : malédiction et duel de Barbossa
 
+> Instantané du lot précédent. La [suite Black Pearl/REX](rex-black-pearl-followup-2026-10-01.md) ajoute les kits 2003, la balle réservée et la malédiction du Jack jouable ; ses règles actuelles remplacent les mentions d’une mortalité ordinaire permanente de Jack. Les compteurs de validation ci-dessous restent ceux du lot précédent.
+
 Le stage sauvegardé **269**, issu de *The Curse of the Black Pearl* (2003), ne permet plus de tuer des pirates immortels pour accéder au boss. Barbossa et deux pirates maudits partagent maintenant une rencontre ATB. Leurs statistiques d’origine, les récompenses et leurs identités d’images restent inchangées.
 
 Trois commandes jouables remplacent cette impasse : récupérer les deux dernières pièces, coordonner les contributions de **Will Turner** et **Jack Sparrow**, puis faire restituer les pièces au coffre par Will. Le coffre adapté commence à 880/882, les deux pièces finales de Will et de Jack étant hors du coffre. La contribution manquante de Bootstrap Bill revient à son fils Will ; un héros crossover, Elizabeth ou Jack seul ne peut pas remplacer ce donneur. Les personnages source assistent la squad, sans blessure du joueur ni paiement de ses PV.

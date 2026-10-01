@@ -9,7 +9,8 @@ import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { calculateRpgDamage, getRpgActionProfile, getRpgEligibleTargets, resolveRpgTargets, rpgUnitId } from './rpgTargeting';
 import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 import { RAAM_ENCOUNTER_RULES, createRaamEncounter, getRaamBoss, getRaamLightPosition, isHeroInRaamLight, isRaamShieldActive, getRaamEnemyAction, startRaamKryll, tickRaamEncounter, getRaamEncounterSnapshot } from './canonRaamEncounter.js';
-import { PIRATES_CURSE_RULES, createPiratesCurseEncounter, getPiratesBarbossa, getPiratesCurseNextCommand, getPiratesCurseEncounterSnapshot, isPiratesCursedCombatant, isPiratesCurseProtected } from './canonPiratesCurseEncounter.js';
+import { getBlackPearlSourceAmmunition } from './canonBlackPearlSourceKits.js';
+import { PIRATES_CURSE_RULES, createPiratesCurseEncounter, getPiratesBarbossa, getPiratesCurseNextCommand, getPiratesCurseEncounterSnapshot, isPiratesCursedCombatant, isPiratesCurseProtected, bindPiratesJackCurse, isPiratesCursedHero, repairPiratesCursedHeroes } from './canonPiratesCurseEncounter.js';
 
 const RPG_FLOOR_LANES = Object.freeze({
   heroes: Object.freeze([
@@ -80,7 +81,11 @@ export class EngineRpg {
         statusEffects: { infected: 0, glitched: 0, radiated: 0 }
       };
     });
-    this.heroes.forEach(hero => this.fitCombatantToArena(hero));
+    this.heroes.forEach(hero => {
+      this.fitCombatantToArena(hero);
+      const ammunition = getBlackPearlSourceAmmunition(hero);
+      if (ammunition) hero.sourceAmmoRemaining = ammunition.maxShots;
+    });
     if (this.raamEncounter) this.heroes.forEach(hero => {
       hero.raamInitialHomeX = hero.homeX;
       hero.raamInitialHomeY = hero.homeY;
@@ -113,6 +118,10 @@ export class EngineRpg {
     this.finalBossChaosTimer = 0;
     
     this.spawnWave();
+    this.enemies.forEach(actor => {
+      const ammunition = getBlackPearlSourceAmmunition(actor);
+      if (ammunition) actor.sourceAmmoRemaining = ammunition.maxShots;
+    });
 
     this.selectedHeroId = this.heroes[0].id;
     this.selectedEnemyId = this.enemies[0]?.battleId || this.enemies[0]?.id || null;
@@ -244,7 +253,12 @@ export class EngineRpg {
       due.push(action);
       return false;
     });
-    due.forEach(action => action.callback());
+    due.forEach(action => {
+      action.callback();
+      // Each queued callback observes source immortality before the next one.
+      // Restitution disables this repair immediately, unlike the enemy finale lock.
+      repairPiratesCursedHeroes(this.piratesCurseEncounter, this.heroes);
+    });
   }
 
   dispose() {
@@ -498,6 +512,8 @@ export class EngineRpg {
       || actor.state !== 'idle' || actor.actionPending || actor.atb < 100) return false;
     if (side === 'enemy' && this.enemyActionLock) return false;
     if (abilityType === 'secondary' && actor.cooldown > 0) return false;
+    if (getBlackPearlSourceAmmunition(actor, abilityType)
+      && (actor.sourceAmmoRemaining <= 0 || this.piratesCurseEncounter?.curseActive)) return false;
     if (abilityType === 'special' && actor.specialCharge < 100) return false;
     return !!getRpgActionProfile(actor, abilityType, side, this);
   }
@@ -539,7 +555,8 @@ export class EngineRpg {
     const damageMultiplier = (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1) * getCombatEventDamageMultiplier(actor);
     const estimates = resolved.targets.map(unit => {
       const raam = getRaamBoss(this.raamEncounter, this.enemies);
-      if (profile.effect === 'damage' && isPiratesCurseProtected(this.piratesCurseEncounter, unit, this.enemies)) {
+      if (profile.effect === 'damage' && (isPiratesCurseProtected(this.piratesCurseEncounter, unit, this.enemies)
+        || isPiratesCursedHero(this.piratesCurseEncounter, unit, this.heroes))) {
         return { id: rpgUnitId(unit), effect: profile.effect, amount: 0, min: 0, max: 0,
           blockedByAztecCurse: this.piratesCurseEncounter.curseActive,
           blockedBySourceFinale: this.piratesCurseEncounter.sourceShotFired };
@@ -663,7 +680,7 @@ export class EngineRpg {
   }
 
   getPiratesCurseEncounterState() {
-    return getPiratesCurseEncounterSnapshot(this.piratesCurseEncounter, this.enemies, this.canUsePiratesCurseAction());
+    return getPiratesCurseEncounterSnapshot(this.piratesCurseEncounter, this.enemies, this.canUsePiratesCurseAction(), this.heroes);
   }
 
   triggerPiratesCurseAction(command, heroOrId = this.getSelectedHero()) {
@@ -679,7 +696,10 @@ export class EngineRpg {
     this.playSfx('confirm');
     this.scheduleAction(() => {
       if (!this.gameOver && hero.currentHp > 0) {
-        if (command === 'collect-final-coins') encounter.finalCoinsCollected = true;
+        if (command === 'collect-final-coins') {
+          encounter.finalCoinsCollected = true;
+          bindPiratesJackCurse(encounter, this.heroes);
+        }
         else if (command === 'coordinate-will') {
           // These are the source NPCs' payments; the selected hero is only
           // coordinating them. Elizabeth or an arbitrary donor cannot replace Will.
@@ -688,6 +708,9 @@ export class EngineRpg {
         } else if (command === 'restore-chest') {
           const boss = getPiratesBarbossa(encounter, this.enemies);
           encounter.sourceShotFired = true;
+          this.heroes.forEach(actor => {
+            if (isPiratesCursedHero(encounter, actor, this.heroes)) actor.sourceAmmoRemaining = 0;
+          });
           this.playSfx('shoot');
           encounter.returnedPieces = PIRATES_CURSE_RULES.totalPieces;
           encounter.curseActive = false;
@@ -769,6 +792,7 @@ export class EngineRpg {
   // GameCanvas pickups/events must route through this gate instead of directly
   // subtracting HP: a crossover explosion does not count as a source frag.
   applyEncounterDamage(target, amount, context = {}) {
+    if (isPiratesCursedHero(this.piratesCurseEncounter, target, this.heroes)) return true;
     if (isPiratesCursedCombatant(this.piratesCurseEncounter, target, this.enemies)) {
       if (this.disposed || this.paused || this.gameOver || target.currentHp <= 0 || !Number.isFinite(amount) || amount <= 0) return true;
       if (isPiratesCurseProtected(this.piratesCurseEncounter, target, this.enemies)) {
@@ -814,6 +838,7 @@ export class EngineRpg {
     // An impact never acquires a new target if one of these actors dies.
     const targets = [...resolved.targets];
     const anchor = resolved.anchor;
+    if (getBlackPearlSourceAmmunition(actor, abilityType)) actor.sourceAmmoRemaining--;
     const encounterKind = profile.action.encounterKind;
     if (encounterKind) {
       this.raamEncounter.attackCount++;
@@ -1058,7 +1083,8 @@ export class EngineRpg {
   }
   applyDamage(attacker, defender, baseDmg, statusEffect = null, attackContext = {}) {
     if (!defender || defender.currentHp <= 0 || !Number.isFinite(baseDmg)) return 0;
-    if (isPiratesCurseProtected(this.piratesCurseEncounter, defender, this.enemies)) {
+    if (isPiratesCurseProtected(this.piratesCurseEncounter, defender, this.enemies)
+      || isPiratesCursedHero(this.piratesCurseEncounter, defender, this.heroes)) {
       this.particles.add(defender.x, defender.y - 55, 0, -0.5, '#efcc76', 10, 35, 'text', this.piratesCurseEncounter.curseActive ? 'AZTEC CURSE' : 'FINAL SHOT');
       return 0;
     }
@@ -1152,6 +1178,8 @@ export class EngineRpg {
       return;
     }
 
+    // Repair only coin-bound source Jack before delayed callbacks inspect HP.
+    repairPiratesCursedHeroes(this.piratesCurseEncounter, this.heroes);
     this.advanceActions();
     [...this.heroes, ...this.enemies].forEach(tickCombatEventBuffs);
     // Repair legacy/event HP writes before wave/victory checks. A body falling
@@ -1233,7 +1261,7 @@ export class EngineRpg {
       if (h.statusEffects?.infected > 0) {
         h.statusEffects.infected--;
         if (h.statusEffects.infected % 60 === 0) {
-          h.currentHp = Math.max(1, h.currentHp - 3);
+          if (!isPiratesCursedHero(this.piratesCurseEncounter, h, this.heroes)) h.currentHp = Math.max(1, h.currentHp - 3);
           this.particles.add(h.x, h.y - 12, (Math.random()-0.5)*2, -1, '#2ecc71', 4, 20, 'spark');
         }
       }

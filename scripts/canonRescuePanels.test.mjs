@@ -240,9 +240,9 @@ test('English Pirates text keeps Will’s lineage and Jack’s payment separate 
   assert.match(html, /Will Turner, son of Bootstrap Bill Turner/);
   assert.match(html, /Jack Sparrow provide their blood offerings/);
   assert.match(html, /Your squad coordinates these assistants/);
-  assert.match(html, /Playable heroes keep their ordinary HP.*Will or Jack/);
+  assert.match(html, /taking his coin makes him immortal until restitution; Will and other heroes remain mortal/);
   assert.match(html, /Collect the final two coins/);
   assert.match(html, /Coordinate Will and Jack/);
   assert.match(html, /Have Will restore the coins/);
-  assert.match(renderCurse({ lang: 'en', encounter: { ...curse, phase: 'restore' } }), /Jack shoots Barbossa as the curse is lifted/);
+  assert.match(renderCurse({ lang: 'en', encounter: { ...curse, phase: 'restore' } }), /Jack shoots Barbossa, then Will returns both coins/);
 });

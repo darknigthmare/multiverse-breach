@@ -110,7 +110,13 @@ test('Jack keeps the 2003 sword, flintlock and compass rather than a laser or a 
   assert.equal(getRpgActionProfile(corrected, 'secondary').delivery, 'ranged');
   assert.equal(corrected.secondary.canonPresentation.kind, 'flintlock');
   assert.doesNotMatch(kitText(corrected), /laser|energy|maelstrom|tentacle|Davy Jones|origin_aoe/i);
-  assert.match(corrected.loreLocalized.en, /Isla de Muerta.*Barbossa.*Aztec coin.*blood break the curse/);
+  assert.match(corrected.secondary.name, /Reserved Flintlock Pistol Shot/);
+  assert.equal(corrected.sourceAmmunition.maxShots, 1);
+  assert.deepEqual(corrected.sourceAmmunition.actionIds, ['secondary']);
+  assert.equal(corrected.sourceAmmunition.resetPolicy, 'new-battle');
+  assert.match(corrected.loreLocalized.en, /Will returns the final coins with offerings from his lineage and Jack/);
+  assert.match(corrected.loreLocalized.en, /without an attack or automatic enemy tracking/);
+  assert.match(corrected.loreLocalized.en, /one shot per battle/);
 });
 
 test('ordinary Batman kits use martial attacks and Batarangs while the Grim Knight retains source firearms', () => {

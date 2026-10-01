@@ -39,7 +39,8 @@ test('the nineteen playable identities, actual character arcs and public archive
     const plaque = plaques.getCharacterPlaque(hero);
     assert.equal(plaque.origin.en, hero.incarnation, hero.id);
     assert.equal(plaque.dossier.en, hero.loreLocalized.en, hero.id);
-    assert.match(plaque.doctrine.en, /game adaptation.*visual review remains pending/, hero.id);
+    assert.match(plaque.doctrine.en, /(?:game adaptation|adapt the source to combat)/, hero.id);
+    assert.match(plaque.doctrine.en, /visual review remains pending/, hero.id);
   }
 });
 

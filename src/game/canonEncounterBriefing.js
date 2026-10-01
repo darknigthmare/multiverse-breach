@@ -1,5 +1,6 @@
 import { CANON_PRIORITY_STAGES } from './canonPriorityStages.js';
 import { isCanonPiratesCurseStage } from './canonPiratesCurseEncounter.js';
+import { isCanonRexStage } from './canonRexEncounter.js';
 
 const briefings = Object.freeze({
   1: {
@@ -26,17 +27,24 @@ const briefings = Object.freeze({
     en: { objective: 'Destroy the three healing crystals to prevent recharging the twenty spheres. Weaken Nihilanth or its energy reserve, then climb the platforms and hit the brain when its head opens. Body hits cannot kill it.',
       adaptation: 'Platforms, timings and crystal HP adapt the encounter to Smash. Purple projectiles are active; teleportation and summoned reinforcements remain to be implemented.' }
   },
+  12: {
+    fr: { objective: 'Préparez le Stinger de mission, puis cliquez sur la case de REX pour viser son radôme. Après l’aide de Gray Fox, visez le cockpit ouvert jusqu’à désactiver REX. Les attaques ordinaires sur la coque ne permettent pas de gagner.',
+      adaptation: 'La grille, le Stinger partagé avec réapprovisionnement, la portée de 2 à 6 cases et les deux réserves de 360 PV adaptent le duel. Gray Fox intervient hors champ ; les soldats Genome représentent l’approche. Liquid survit et son duel à mains nues reste hors mission.' },
+    en: { objective: 'Prepare the mission Stinger, then click REX’s cell to target its radome. After Gray Fox’s assistance, target the open cockpit until REX is disabled. Ordinary body attacks cannot win the encounter.',
+      adaptation: 'The grid, shared resupplied Stinger, range of 2 to 6 cells and two 360-HP target pools adapt the duel. Gray Fox assists offscreen; Genome soldiers represent the approach. Liquid survives and his fistfight is outside this mission.' }
+  },
   269: {
-    fr: { objective: 'Barbossa et les pirates maudits ne peuvent pas mourir. Récupérez les deux dernières pièces, coordonnez les offrandes de Will Turner, fils de Bootstrap Bill, et de Jack Sparrow, puis faites restituer les 882 pièces par Will. Le tir de Jack termine le duel après la levée de la malédiction.',
-      adaptation: 'Trois commandes ATB font intervenir Will et Jack auprès de l’équipe crossover. Ces assistants sources sont distincts des héros jouables, qui gardent leurs PV. Barbossa et deux pirates partagent une seule rencontre ; les autres pirates restent vivants et mortels. La reddition sur le Dauntless reste hors scène.' },
-    en: { objective: 'Barbossa and the cursed pirates cannot die. Recover the final two coins, coordinate the offerings from Will Turner, Bootstrap Bill’s son, and Jack Sparrow, then have Will restore all 882 pieces. Jack’s shot ends the duel after the curse is lifted.',
-      adaptation: 'Three ATB commands bring source Will and Jack to assist the crossover squad. These source assistants are separate from playable heroes, who keep their ordinary HP. Barbossa and two pirates share one encounter; the other pirates remain alive and mortal. The Dauntless surrender is outside this scene.' }
+    fr: { objective: 'Barbossa et les pirates maudits ne peuvent pas mourir. Récupérez les deux dernières pièces, coordonnez les offrandes de Will Turner, fils de Bootstrap Bill, et de Jack Sparrow, puis faites restituer les 882 pièces par Will. Jack tire avant que Will restitue les pièces : Barbossa meurt lorsque la malédiction se lève.',
+      adaptation: 'Trois commandes ATB font intervenir Will et Jack auprès de l’équipe crossover. Les offrandes ne coûtent pas de PV ; Jack jouable de 2003 devient immortel s’il prend sa pièce vivant et redevient mortel à la restitution. Will et les autres héros restent mortels. Barbossa et deux pirates partagent une seule rencontre ; les autres pirates restent vivants et mortels. La reddition sur le Dauntless reste hors scène.' },
+    en: { objective: 'Barbossa and the cursed pirates cannot die. Recover the final two coins, coordinate the offerings from Will Turner, Bootstrap Bill’s son, and Jack Sparrow, then have Will restore all 882 pieces. Jack fires before Will returns the coins: Barbossa dies when the curse lifts.',
+      adaptation: 'Three ATB commands bring source Will and Jack to assist the crossover squad. The offerings do not cost HP; living playable 2003 Jack becomes immortal when taking his coin and becomes mortal at restitution. Will and other heroes remain mortal. Barbossa and two pirates share one encounter; the other pirates remain alive and mortal. The Dauntless surrender is outside this scene.' }
   }
 });
 
 export function getCanonicalEncounterBriefing(stage, lang = 'fr') {
   if (!stage || stage.customBattle || stage.isCustomBattle || stage.isCustom) return null;
   if (isCanonPiratesCurseStage(stage)) return briefings[269][lang === 'fr' ? 'fr' : 'en'];
+  if (Number(stage.id) === 12) return isCanonRexStage(stage) ? briefings[12][lang === 'fr' ? 'fr' : 'en'] : null;
   const source = Object.values(CANON_PRIORITY_STAGES).find(entry => entry.id === Number(stage.id));
   if (!source || stage.universe !== source.universe || stage.mode !== source.mode
     || stage.incarnation !== source.incarnation) return null;

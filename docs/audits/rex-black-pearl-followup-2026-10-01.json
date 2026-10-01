@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-01",
+  "sourceStages": [
+    12,
+    269
+  ],
+  "scope": "Playable 2003 Black Pearl kits, one reserved flintlock shot, source Jack coin curse and MGS1998 REX radome/cockpit encounter.",
+  "sourceHeroes": [
+    "jack_sparrow_potc",
+    "will_turner_potc",
+    "elizabeth_swann_potc"
+  ],
+  "implementationFiles": [
+    "src/game/canonBlackPearlSourceKits.js",
+    "src/game/canonPiratesCurseEncounter.js",
+    "src/game/canonRexEncounter.js",
+    "src/game/engineRpg.js",
+    "src/game/engineTactics.js",
+    "src/game/engineSmash.js",
+    "src/components/RexEncounterPanel.jsx",
+    "src/components/BlackPearlAmmoPanel.jsx",
+    "src/components/PiratesCursePanel.jsx",
+    "src/components/GameCanvas.jsx",
+    "src/game/canonEncounterBriefing.js",
+    "src/components/HubScreen.jsx",
+    "src/components/UniverseArchiveDialog.jsx",
+    "src/components/UniverseArchiveDialog.css"
+  ],
+  "sourceMechanicRules": [
+    "Will uses a forged sword, physical parry and riposte; Elizabeth uses an improvised table knife in her 2003 captive incarnation, without later Pirate King powers or medallion attacks.",
+    "Jack has one flintlock shot per battle. Invalid targets, canceled targeting, pause and depleted reserve spend no ammunition; cooldowns, hero switches and waves never reload it. Both Smash players have a visible firing control.",
+    "In exact stage269 a living playable 2003 Jack taking his coin gains the curse until restitution. Other heroes remain mortal; an earlier dead Jack is not revived. Protection covers direct/queued damage, external effects, infection, shield and lifedrain.",
+    "Jack fires before the final medallions are returned within the condensed finale; lifting the curse makes the shot fatal to Barbossa. Playable Jack becomes mortal immediately on restitution, while the enemy finale lock prevents extra crew deaths until victory.",
+    "Stinger fire must hit the source REX cell with valid range and line of sight: radome first, then the open cockpit after summarized Gray Fox assistance. Ordinary body attacks, external damage and raw HP writes cannot win.",
+    "Victory disables REX; Liquid survives, and the later fistfight is outside this mission. Genome patrol deaths are not required."
+  ],
+  "sourceReferences": [
+    "https://movies.disney.com/pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+    "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+    "https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_The_Curse_of_the_Black_Pearl",
+    "https://clip.cafe/pirates-of-the-caribbean-the-curse-of-the-black-pearl-2003/he-didnt-waste-it/",
+    "https://www.konami.com/mg/archive/mgs/",
+    "https://archive.org/download/mgs-1-screenplay/MGS1_Screenplay_djvu.txt",
+    "https://www.supercheats.com/playstation/walkthroughs/metalgearsolid-walkthrough05.txt"
+  ],
+  "referenceLimits": [
+    "Konami screenplay/story compendium includes draft-version caveats; radome, Gray Fox laser, Stinger resupply, cockpit and Liquid survival passages agree with the original-game walkthrough.",
+    "IMSDB is a draft script: used only as an additional Elizabeth prop reference, not for final-duel chronology."
+  ],
+  "adaptationLimits": [
+    "Damage, cooldowns, choreography, numerical resource costs and 2D effects are adapted to existing combat.",
+    "The reserved bullet resets only when a new game battle creates the actor; that reset is a crossover gameplay adaptation.",
+    "Three ATB ritual commands condense source donors and restitution. The cinematic lock is an engine adaptation, not persistent biological immortality after restitution.",
+    "REX remains a stationary grid target. Shared resupplied Stinger, two 360-HP target pools, two-to-six-cell range and Gray Fox offscreen assistance are adaptations. Genome soldiers represent the approach rather than the source duel."
+  ],
+  "validation": {
+    "status": "passed-in-documented-scope",
+    "fullBuild": {
+      "command": "npm run build",
+      "passed": true,
+      "testGroups": 15,
+      "tests": 1318,
+      "failures": 0,
+      "cancelled": 0,
+      "sourceScope": "All final combat mechanics, kits and lore; before the subsequent mobile archive layout adjustment."
+    },
+    "afterMobileLayoutChange": {
+      "tests": 36,
+      "failures": 0,
+      "suites": [
+        "universeArchiveView",
+        "canonicalArchiveLore",
+        "canonPiratesArchiveIncarnations"
+      ],
+      "riftAuditPassed": true,
+      "lintPassed": true,
+      "finalViteBuildPassed": true
+    },
+    "independentReview": {
+      "engineAndUiProbes": 29,
+      "passed": 29,
+      "sourceSha256Matches": 18,
+      "openP0OrP1Findings": 0,
+      "scope": "Engine actions and controlled React/SSR integration; browser and artwork checked separately."
+    },
+    "browser": {
+      "scope": "Local immutable final build; normal FR/EN desktop and 390x844 mobile navigation, briefs and source archives. No locked combat or Jack shot claimed in browser.",
+      "cases": 27,
+      "assertions": 190,
+      "failedAssertions": 0,
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "mainBundle": "index-DWsqDY5A.js",
+      "rootBuildComparedFiles": 20,
+      "rootBuildAllFileHashesMatch": true,
+      "readingAreaHeightPx": {
+        "fr": 361.46875,
+        "en": 372.46875
+      },
+      "summaryMaxHeightPx": 180,
+      "keyboardScrollAndFocusRestorationPassed": true
+    },
+    "visualFidelityApproved": false
+  },
+  "sourceLockedCharacterCount": 31,
+  "sourceLockedSceneCount": 7,
+  "installedImages": 0,
+  "visualFidelityApproved": false,
+  "remaining": {
+    "p0VisualCorrections": 25,
+    "distinctMissingAssetPaths": 6601,
+    "sourceSpecificFeatures": [
+      "Exact Black Pearl scene choreography and visual curse transformation",
+      "Full REX weapon pattern, chaff behavior and Gray Fox cinematic",
+      "Liquid post-REX fistfight",
+      "Sulaco Queen power-loader finale",
+      "Nihilanth teleportation rooms and summoned reinforcements",
+      "RAAM source camera, traversal and active reload",
+      "Scarab scripted movement and full Metropolis route",
+      "Davy Jones heart objective and full sequel encounter mechanics"
+    ]
+  },
+  "publicationScope": "draft correction PR and Vercel preview; no production promotion",
+  "targetedVerification": {
+    "playableJackRpgTests": 41,
+    "smashAmmoAndRegressionTests": 130,
+    "sourceKitsAndLegacyTests": 131,
+    "rexAndIntegrationTests": 106,
+    "additionalRealAsyncRexTest": {
+      "passed": true,
+      "elapsedMs": 57734.552,
+      "frameCadenceMs": 16,
+      "engineTimersReplaced": false,
+      "heroStatsModified": false
+    },
+    "rexPanelTests": 21,
+    "ammoPanelTests": 14,
+    "rootPanelBriefingAndJackTests": 69
+  },
+  "globalArchiveFollowup": {
+    "notices": [
+      "Davy Jones",
+      "Flying Dutchman Crew",
+      "East India Company Marine",
+      "Calypso Maelstrom"
+    ],
+    "sourceYears": [
+      2006,
+      2007
+    ],
+    "scope": "Global sequel archive notices no longer inherit Isla de Muerta2003 generic lore; Calypso Maelstrom is explicitly an original Multiverse combat manifestation. The Nexus compass breach is labeled original project fiction.",
+    "newTests": 8,
+    "newAndExistingArchiveTests": 26,
+    "sourceReferences": [
+      "https://d23.com/a-to-z/pirates-of-the-caribbean-dead-mans-chest-film/",
+      "https://d23.com/a-to-z/pirates-of-the-caribbean-at-worlds-end-film/",
+      "https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_Dead_Man%27s_Chest",
+      "https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_At_World%27s_End"
+    ]
+  },
+  "mobileArchiveFollowup": {
+    "problem": "Long Pirates source summary left only about 64px for reading source cards on 390x844 phones.",
+    "change": "Bound the scrollable, keyboard-focusable universe summary to 180px on small or short viewports; let source cards use the remaining space.",
+    "observedReadingAreaHeightPx": {
+      "fr": 361.46875,
+      "en": 372.46875
+    },
+    "sourceCardContentAndKeyboardFocusVerifiedIn": [
+      "fr",
+      "en"
+    ]
+  },
+  "implementationInputs": [
+    {
+      "path": "src/game/canonBlackPearlSourceKits.js",
+      "sha256": "5993fe544c0dd017a11efd87a04308fca68e7ace1fbe20d76d0095c1197e0773"
+    },
+    {
+      "path": "src/game/canonPiratesCurseEncounter.js",
+      "sha256": "3159486c44f5d0a089cc725d67a14bf675e14882f89cf9477e456ac887433f98"
+    },
+    {
+      "path": "src/game/canonRexEncounter.js",
+      "sha256": "8614c32c36d14cef4290d870c81acb160b89ef1498a3a0535b6175e6fa782b1d"
+    },
+    {
+      "path": "src/game/engineRpg.js",
+      "sha256": "df91fe1d7899a9bdc5022a079e63c5f16bce7a09f1dabbe893c9399663a7039b"
+    },
+    {
+      "path": "src/game/engineTactics.js",
+      "sha256": "f0cfbf77f401101e25708c0b1b9e73cde2dd2d62602ab90b63425ee898ef6e7b"
+    },
+    {
+      "path": "src/game/engineSmash.js",
+      "sha256": "e680a5ba5041d884a4f3bee17033c2b4a02e074656a06125fc2099bbfd3347d6"
+    },
+    {
+      "path": "src/components/RexEncounterPanel.jsx",
+      "sha256": "f022a792cdbb6f94486d7a003ef2b20b4ab9ebdad5744bbd19c37bc27a2e3fba"
+    },
+    {
+      "path": "src/components/BlackPearlAmmoPanel.jsx",
+      "sha256": "7931aada492ecde013b3efa78056625f55f8a6b4bbef5b6c87a6cd5fa7df0a5b"
+    },
+    {
+      "path": "src/components/PiratesCursePanel.jsx",
+      "sha256": "06a10346b5e2ed0e2c3428af151690d9acbb6b2fca57d328d1e6320f6b50bee2"
+    },
+    {
+      "path": "src/components/GameCanvas.jsx",
+      "sha256": "9246828ef3c86834369ed33edbb4fc5aa197af026aa17e996b8309fe5a72258e"
+    },
+    {
+      "path": "src/game/canonEncounterBriefing.js",
+      "sha256": "1dc0e2b0c5b9bfce6b9d2e02dcffb3f2b0e32822ed99f404466f70dde5ea30c7"
+    },
+    {
+      "path": "src/components/HubScreen.jsx",
+      "sha256": "39b2cec9b84777edb76f5383ce002bd627c4ad8266799f15608ce9fa6f2e8265"
+    },
+    {
+      "path": "src/components/UniverseArchiveDialog.jsx",
+      "sha256": "e2454dc8c98ed4603e55edd0d5c564d5e4b809fc6c1f7dfd508fa37f36cf7719"
+    },
+    {
+      "path": "src/components/UniverseArchiveDialog.css",
+      "sha256": "43c07f701f399f2f5761374bb3a253d369abb1aa19df54e5cc600777e205b5f8"
+    }
+  ]
+}

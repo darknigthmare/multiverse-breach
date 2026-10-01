@@ -19,6 +19,7 @@ import {
 import { OC_DLC_UNIVERSES } from './ocDlcPacks.js';
 import { getGearShopVisualMetadata } from './gearShopVisualContracts.js';
 import { ORIGINAL_UNIVERSE_WAVE } from './originalUniverseWave.js';
+import { CANON_BLACK_PEARL_SOURCE_KITS } from './canonBlackPearlSourceKits.js';
 import {
   inferNonCombatTrial,
   makeNonCombatPolicyFromThreat
@@ -382,21 +383,21 @@ const CANONICAL_REQUESTED_UNIVERSE_WAVE = [
         enemyRosterExclusive: true,
         visualAnchor: 'Isla de Muerta treasure cavern from The Curse of the Black Pearl (2003): rock walls, shallow water, scattered gold and the stone chest of stolen Aztec medallions. Jack duels Hector Barbossa with pirate swords and a flintlock pistol; moonlight reveals cursed skeletal bodies. No Flying Dutchman, Davy Jones tentacles, Calypso or maelstrom from the later films.',
         visualReviewStatus: 'pending',
-        gameplayAdaptation: 'One ATB encounter combines Barbossa and two cursed pirates. Three squad commands recover the final two medallions, coordinate the established offerings from Will Turner (Bootstrap Bill lineage) and Jack Sparrow, and let Will restore all 882 pieces. The curse blocks lethal damage until restoration; Jack’s scripted pistol shot then ends the duel. Source Will and Jack assist the crossover squad separately from playable versions, which retain ordinary hero HP. Other pirates remain alive and mortal; their later surrender aboard the Dauntless is outside this scene. Commands and shot timing are game adaptations.',
+        gameplayAdaptation: 'One ATB encounter combines Barbossa and two cursed pirates. Three squad commands recover the final two medallions, coordinate the established offerings from Will Turner (Bootstrap Bill lineage) and Jack Sparrow, and let Will restore all 882 pieces. The curse blocks lethal damage until restoration; Jack’s scripted pistol shot then ends the duel. Source Will and Jack coordinate established offerings without squad HP costs. Living playable 2003 Jack becomes curse-protected after taking his coin and becomes mortal at restitution; Will and other heroes remain mortal. Other pirates remain alive and mortal; their later surrender aboard the Dauntless is outside this scene. Commands and shot timing are game adaptations.',
         sourceSceneLore: {
           fr: 'Dans la caverne au trésor d’Isla de Muerta, Jack Sparrow affronte Hector Barbossa. Le trésor aztèque volé rend Barbossa et ses pirates immortels ; la lumière de la lune révèle leurs corps squelettiques. Will Turner restitue les pièces et le sang nécessaire pour lever la malédiction au moment où Jack tire sur Barbossa.',
           en: 'In Isla de Muerta’s treasure cavern, Jack Sparrow confronts Hector Barbossa. The stolen Aztec treasure makes Barbossa and his pirates immortal; moonlight reveals their skeletal bodies. Will Turner returns the coins and the blood needed to lift the curse as Jack shoots Barbossa.'
         },
         sourceSceneAdaptation: {
-          fr: 'Un combat ATB réunit Barbossa et deux pirates maudits. Récupérez les deux dernières pièces, coordonnez les offrandes de Will Turner, fils de Bootstrap Bill, et de Jack, puis faites restituer les 882 pièces par Will. La malédiction empêche leur mort avant la restitution ; le tir de Jack termine ensuite le duel. Will et Jack assistent l’équipe crossover, séparément des versions jouables qui gardent leurs PV ordinaires. Les autres pirates restent vivants et mortels ; leur reddition ultérieure sur le Dauntless reste hors scène. Les commandes et leur durée sont adaptées au jeu.',
-          en: 'One ATB encounter combines Barbossa and two cursed pirates. Recover the final two coins, coordinate the offerings from Will Turner, Bootstrap Bill’s son, and Jack, then have Will restore all 882 pieces. The curse prevents their death before restoration; Jack’s shot then ends the duel. Will and Jack assist the crossover squad separately from playable versions, which retain ordinary hero HP. Other pirates remain alive and mortal; their later surrender aboard the Dauntless is outside this scene. Commands and timings adapt the film.'
+          fr: 'Un combat ATB réunit Barbossa et deux pirates maudits. Récupérez les deux dernières pièces, coordonnez les offrandes de Will Turner, fils de Bootstrap Bill, et de Jack, puis faites restituer les 882 pièces par Will. La malédiction empêche leur mort avant la restitution ; le tir de Jack termine ensuite le duel. Les offrandes de Will et Jack ne coûtent pas de PV à l’équipe. Jack jouable de 2003, vivant lors de la prise de sa pièce, est protégé par la malédiction jusqu’à la restitution ; les autres héros restent mortels. Les autres pirates restent vivants et mortels ; leur reddition ultérieure sur le Dauntless reste hors scène. Les commandes et leur durée sont adaptées au jeu.',
+          en: 'One ATB encounter combines Barbossa and two cursed pirates. Recover the final two coins, coordinate the offerings from Will Turner, Bootstrap Bill’s son, and Jack, then have Will restore all 882 pieces. The curse prevents their death before restoration; Jack’s shot then ends the duel. The established Will and Jack offerings cost no squad HP. Living playable 2003 Jack becomes curse-protected after taking his coin and becomes mortal at restitution; other heroes remain mortal. Other pirates remain alive and mortal; their later surrender aboard the Dauntless is outside this scene. Commands and timings adapt the film.'
         }
       }
     },
     cast: [
-      ['jack_sparrow_potc', 'Jack Sparrow', 'hacker'],
-      ['elizabeth_swann_potc', 'Elizabeth Swann', 'tactical'],
-      ['will_turner_potc', 'Will Turner', 'slayer']
+      ['jack_sparrow_potc', 'Jack Sparrow', 'hacker', CANON_BLACK_PEARL_SOURCE_KITS.jack_sparrow_potc],
+      ['elizabeth_swann_potc', 'Elizabeth Swann', 'tactical', CANON_BLACK_PEARL_SOURCE_KITS.elizabeth_swann_potc],
+      ['will_turner_potc', 'Will Turner', 'slayer', CANON_BLACK_PEARL_SOURCE_KITS.will_turner_potc]
     ],
     enemies: [{
       name: 'Cursed Aztec Pirate', weapon: 'sword',
@@ -435,7 +436,7 @@ const CANONICAL_REQUESTED_UNIVERSE_WAVE = [
     ],
     event: ['kraken', 'Kraken Broadside', 'Bordee du Kraken', 'The Kraken drags the strongest enemy beneath a maelstrom while the Black Pearl opens fire.', 'Le Kraken entraine l ennemi le plus fort sous le maelstrom pendant que le Black Pearl ouvre le feu.'],
     origin: ['The Caribbean seas bind pirates, imperial fleets, Aztec curses, Davy Jones, and bargains whose price always returns.', 'Les mers des Caraibes lient pirates, flottes imperiales, maledictions azteques, Davy Jones et pactes dont le prix revient toujours.'],
-    breach: ['Jack s compass points toward the Nexus Anchor instead of desire, and Calypso s storm begins carrying whole islands between universes.', 'la boussole de Jack pointe vers l Ancre du Nexus plutot que vers le desir, et la tempete de Calypso transporte des iles entieres entre les univers.'],
+    breach: ['an original Multiverse plot has the Nexus interfere with Jack s compass and borrows the image of Calypso s 2007 storm to carry islands between universes. This crossover premise is invented for the project, not a scene or source compass ability from the films.', 'une intrigue originale du projet Multiverse fait interferer le Nexus avec la boussole de Jack et reprend l image de la tempete de Calypso en 2007 pour transporter des iles entre les univers. Ce scenario crossover est invente pour le projet : ce n est ni une scene des films ni une capacite source de la boussole.'],
     motif: 'shipdeck',
     colors: ['#12303a', '#020607', '#d6a654']
   }),

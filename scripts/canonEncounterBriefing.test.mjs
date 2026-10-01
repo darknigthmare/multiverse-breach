@@ -25,7 +25,7 @@ const render = (stage, lang) => renderToStaticMarkup(React.createElement(RiftBri
 }));
 const piratesStage = getExpandedStages().find(stage => stage.id === 269);
 for (const stage of [CANON_PRIORITY_STAGES.lightmassTrain, CANON_PRIORITY_STAGES.metropolisScarab,
-  CANON_PRIORITY_STAGES.hadleysQueen, CANON_PRIORITY_STAGES.xenNihilanth, piratesStage]) {
+  CANON_PRIORITY_STAGES.hadleysQueen, CANON_PRIORITY_STAGES.xenNihilanth, CANON_PRIORITY_STAGES.shadowMoses, piratesStage]) {
   for (const lang of ['fr', 'en']) {
     test(`the real stage ${stage.id} briefing exposes its playable objective and adaptation in ${lang}, even while locked`, () => {
       const html = render(stage, lang);
@@ -46,14 +46,29 @@ test('source rules do not replace unrelated incarnations, custom battles or othe
   const stage = CANON_PRIORITY_STAGES.lightmassTrain;
   for (const other of [null, {}, { ...stage, customBattle: true }, { ...stage, isCustomBattle: true }, { ...stage, isCustom: true },
     { ...stage, incarnation: 'Gears 3' }, { ...stage, universe: 'Halo' }, { ...stage, mode: 'Smash' },
-    CANON_PRIORITY_STAGES.shadowMoses]) {
+    { ...CANON_PRIORITY_STAGES.shadowMoses, incarnation: 'Metal Gear Solid 4' }]) {
     assert.equal(getCanonicalEncounterBriefing(other, 'fr'), null);
   }
-  assert.match(render(CANON_PRIORITY_STAGES.shadowMoses, 'fr'), /Directive A.R.C.A.: neutraliser le boss/);
+  assert.doesNotMatch(render(CANON_PRIORITY_STAGES.shadowMoses, 'fr'), /Directive A.R.C.A.: neutraliser le boss/);
+  assert.match(render(CANON_PRIORITY_STAGES.shadowMoses, 'fr'), /Stinger.*radôme.*cockpit/s);
   for (const other of [{ ...piratesStage, customBattle: true }, { ...piratesStage, isCustomBattle: true }, { ...piratesStage, isCustom: true },
     { ...piratesStage, incarnation: 'Dead Man’s Chest' }, { ...piratesStage, mode: 'Smash' },
     { ...piratesStage, enemyRosterExclusive: false }, { ...piratesStage, canonicalBossName: 'Davy Jones' }]) {
     assert.equal(getCanonicalEncounterBriefing(other, 'en'), null);
   }
   assert.equal(getCanonicalEncounterBriefing({ ...CANON_PRIORITY_STAGES.hadleysQueen, isCustom: true }), null);
+});
+
+test('REX briefing and source runtime share the same roster, boss and custom guards', () => {
+  const source = CANON_PRIORITY_STAGES.shadowMoses;
+  for (const patch of [{ enemyRosterExclusive: false }, { canonicalBossName: 'Metal Gear RAY' },
+    { tacticsBattlefieldId: 'generic' }, { customBattle: {} }, { isCustomBattle: true }, { isCustom: true },
+    { forceBaseArena: true }, { dlcSuppressedArena: true }]) {
+    assert.equal(getCanonicalEncounterBriefing({ ...source, ...patch }, 'fr'), null);
+  }
+});
+
+test('the Pirates briefing preserves the source shot-before-restitution chronology', () => {
+  assert.match(getCanonicalEncounterBriefing(piratesStage, 'fr').objective, /Jack tire avant que Will restitue/);
+  assert.match(getCanonicalEncounterBriefing(piratesStage, 'en').objective, /Jack fires before Will returns/);
 });

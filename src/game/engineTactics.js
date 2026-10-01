@@ -12,6 +12,8 @@ import { faceGridUnitToward as faceUnitToward, getGridFacingVector, getGridFacin
 import { resolveTacticsEscort, getTacticsEscortPose } from './tacticsEscort.js';
 import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
 import { createScarabBoardingEncounter, advanceScarabBoardingEncounter, getScarabEncounterSummary } from './canonScarabEncounter.js';
+import { createRexEncounter, applyRexStingerDamage, getRexEncounterSummary, REX_STINGER_ACTION } from './canonRexEncounter.js';
+import { getBlackPearlSourceAmmunition } from './canonBlackPearlSourceKits.js';
 
 const COMPASS_DIRECTIONS = [
   { x: 1, y: 0 },
@@ -164,6 +166,10 @@ export class EngineTactics {
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
+    [...this.heroes, ...this.enemies].forEach(unit => {
+      const ammunition = getBlackPearlSourceAmmunition(unit);
+      if (ammunition) unit.sourceAmmoRemaining = ammunition.maxShots;
+    });
     this.scarabEncounter = createScarabBoardingEncounter(stage, this.battlefield, this.enemies);
     if (this.scarabEncounter) {
       this.objective = 'scarab_boarding';
@@ -175,6 +181,12 @@ export class EngineTactics {
       })).filter(tile => tile.y !== this.scarabEncounter.boardingCell.y)];
       this.battlefield = { ...this.battlefield, objective: this.objective,
         objectiveTarget: this.objectiveTarget, tiles: this.tiles };
+    }
+    this.rexEncounter = createRexEncounter(stage, this.battlefield, this.enemies);
+    if (this.rexEncounter) {
+      this.objective = 'rex_weakpoints';
+      this.objectiveTarget = 2;
+      this.battlefield = { ...this.battlefield, objective: this.objective, objectiveTarget: 2 };
     }
     // Templates and generated sheets can carry their own defaults; runtime
     // facing always follows the actual opposing squad instead.
@@ -464,6 +476,7 @@ export class EngineTactics {
 
   getReachableCells(unit, range) {
     if (this.scarabEncounter && unit.scarabHull) return [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
+    if (this.rexEncounter && unit === this.rexEncounter.body) return [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
     const visited = new Set([`${unit.gridX},${unit.gridY}`]);
     const queue = [{ x: unit.gridX, y: unit.gridY, dist: 0 }];
     const cells = [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
@@ -540,6 +553,7 @@ export class EngineTactics {
 
   getActionDefinition(unit, actionType) {
     if (!unit || actionType === 'defense') return null;
+    if (this.rexEncounter && actionType === 'rex_stinger' && this.heroes.some(hero => hero === unit || hero === unit._tacticsSourceUnit)) return REX_STINGER_ACTION;
     return actionType === 'enemy' ? unit.simple || null : unit[actionType] || null;
   }
 
@@ -767,6 +781,7 @@ export class EngineTactics {
 
   getActionBaseDamage(attacker, actionType) {
     if (!attacker) return 0;
+    if (this.rexEncounter && actionType === 'rex_stinger') return 140 + (attacker.stats?.atk ?? 0);
     const attack = attacker.stats?.atk ?? attacker.atk ?? 0;
     if (actionType === 'secondary') return attack * (attacker.secondary?.dmg || 1.35);
     if (actionType === 'special') return attack * (attacker.special?.dmg || 1.7);
@@ -774,6 +789,7 @@ export class EngineTactics {
   }
 
   selectAction(actionType) {
+    if (actionType === 'rex_stinger') return this.selectRexStingerTarget();
     const isHumanTurn = this.activeUnitType === 'hero'
       || (this.opponentControl === 'p2' && this.activeUnitType === 'enemy');
     if (this.gameOver || this.disposed || !isHumanTurn) return false;
@@ -803,6 +819,7 @@ export class EngineTactics {
       ? this.normalizeEnemyActions(this.activeUnit)
       : this.activeUnit;
     if (selected === 'secondary' && unit.cooldown > 0) return false;
+    if (getBlackPearlSourceAmmunition(unit, selected) && unit.sourceAmmoRemaining <= 0) return false;
     if (selected === 'special' && unit.specialCharge < 100) return false;
     this.selectedAction = selected;
     this.selectedActionExplicit = true;
@@ -975,6 +992,12 @@ export class EngineTactics {
   }
 
   getDamagePreview(attacker, defender, actionType = 'simple') {
+    if (getBlackPearlSourceAmmunition(attacker, actionType) && attacker.sourceAmmoRemaining <= 0) {
+      return { damage: 0, cover: 0, defense: 0, ammunitionDepleted: true };
+    }
+    if (this.rexEncounter && defender === this.rexEncounter.body && actionType !== 'rex_stinger') {
+      return { damage: 0, cover: 0, defense: 0, invulnerable: true };
+    }
     if (this.scarabEncounter && defender === this.scarabEncounter.hull) {
       return { damage: 0, cover: 0, defense: 0, invulnerable: true };
     }
@@ -1247,6 +1270,7 @@ export class EngineTactics {
 
   pushUnitHorizontally(unit, distance) {
     if (this.scarabEncounter && unit.scarabHull) return;
+    if (this.rexEncounter && unit === this.rexEncounter.body) return;
     const direction = Math.sign(distance);
     // Forced movement preserves heading and stops at the first obstruction,
     // including every occupied cell of a large boss footprint.
@@ -1476,6 +1500,12 @@ export class EngineTactics {
 
   applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType) {
     const targets = this.getAttackTargets(attacker, target, actionType, attackerType);
+    const ammunition = getBlackPearlSourceAmmunition(attacker, actionType);
+    if (ammunition) {
+      if (attacker.sourceAmmoRemaining <= 0 || targets.length === 0
+        || !this.canAttackCell(attacker, target, this.getAttackProfile(attacker, actionType))) return [];
+      attacker.sourceAmmoRemaining = Math.max(0, attacker.sourceAmmoRemaining - 1);
+    }
     const action = this.getActionDefinition(attacker, actionType);
     const canonEffect = resolveCanonHeroAttackEffect(attacker, action);
     if (canonEffect) this.playSfx(canonEffect.sfx);
@@ -1498,6 +1528,7 @@ export class EngineTactics {
     if (
       this.gameOver
       || this.disposed
+      || (this.rexEncounter && this.paused)
       || (this.activeUnitType !== 'hero' && !isP2EnemyTurn)
     ) {
       return { handled: false, reason: 'inactive' };
@@ -1527,6 +1558,7 @@ export class EngineTactics {
       this.calculateAttackRange();
       return { handled: true, type: 'move', unit: this.activeUnit, x: c, y: r };
     } else if (this.actionPhase === 'action') {
+      if (this.selectedAction === 'rex_stinger' && this.rexEncounter) return this.fireRexStingerAtCell(c, r);
       const inRange = this.attackRange.some(cell => cell.x === c && cell.y === r);
       if (!inRange) return { handled: false, reason: 'out-of-range' };
 
@@ -1588,6 +1620,7 @@ export class EngineTactics {
 
           } else if (this.selectedAction === 'secondary') {
             if (attacker.cooldown > 0) return { handled: false, reason: 'cooldown' };
+            if (getBlackPearlSourceAmmunition(attacker, 'secondary') && attacker.sourceAmmoRemaining <= 0) return { handled: false, reason: 'ammunition-depleted' };
             attacker.state = 'attack';
             attacker.stateTimer = 25;
             attacker.cooldown = (attacker.secondary?.cd || 3) * 60;
@@ -1657,6 +1690,15 @@ export class EngineTactics {
     const aliveHeroes = this.heroes.filter(h => h.currentHp > 0);
     if (aliveHeroes.length === 0) {
       this.completeBattle('defeat');
+      return;
+    }
+    if (this.objective === 'rex_weakpoints' && this.rexEncounter) {
+      // Generic HP edits, hazards and special events cannot skip source targets.
+      const rex = this.rexEncounter.body;
+      rex.currentHp = rex.maxHp;
+      if (rex.state === 'dead') { rex.state = 'idle'; rex.stateTimer = 0; }
+      this.objectiveProgress = this.rexEncounter.complete ? 2 : this.rexEncounter.phase === 'cockpit' ? 1 : 0;
+      if (this.rexEncounter.complete) this.completeBattle('victory');
       return;
     }
 
@@ -2272,6 +2314,7 @@ export class EngineTactics {
       this.schedule(() => this.runHeroAI(), 50);
       return;
     }
+    if (this.rexEncounter) { this.runRexHeroAI(); return; }
 
     const hero = this.activeUnit;
     let chosenAction = 'simple';
@@ -2280,6 +2323,7 @@ export class EngineTactics {
     } else if (hero.cooldown <= 0) {
       chosenAction = 'secondary';
     }
+    if (getBlackPearlSourceAmmunition(hero, chosenAction) && hero.sourceAmmoRemaining <= 0) chosenAction = 'simple';
 
     // 1. Find closest enemy
     let closestEnemy = null;
@@ -2463,6 +2507,14 @@ export class EngineTactics {
   }
 
   applyEncounterDamage(defender, _amount, context = {}) {
+    if (this.rexEncounter && defender === this.rexEncounter.body) {
+      defender.currentHp = defender.maxHp;
+      defender.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+      if (defender.state === 'hit') { defender.state = 'idle'; defender.stateTimer = 0; }
+      const point = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+      if (!context.silent) this.particles.add(point.x, point.y - 28, 0, -1, '#b5a4dc', 10, 42, 'text', 'VISER AU STINGER');
+      return true;
+    }
     if (this.scarabEncounter && defender === this.scarabEncounter.hull) {
       const point = this.getUnitScreenPosition(defender.gridX, defender.gridY);
       if (!context.silent) this.particles.add(point.x, point.y - 28, 0, -1, '#b5a4dc', 10, 42, 'text', 'COQUE IMMUNE');
@@ -2470,6 +2522,109 @@ export class EngineTactics {
       return true;
     }
     return false;
+  }
+
+  getRexEncounterState() {
+    const encounter = this.rexEncounter;
+    if (!encounter) return null;
+    const hero = this.activeUnitType === 'hero' ? this.activeUnit : null;
+    const available = Boolean(hero && hero.currentHp > 0 && !this.paused && !this.gameOver && !this.disposed
+      && ['move', 'action'].includes(this.actionPhase) && hero.state !== 'attack' && hero.state !== 'special'
+      && !(hero.state === 'hit' && hero.stateTimer > 0));
+    const profile = this.getAttackProfile(hero, 'rex_stinger');
+    const inRange = Boolean(hero && this.getAttackDistance(hero, encounter.body, profile) >= profile.minRange
+      && this.getAttackDistance(hero, encounter.body, profile) <= profile.range);
+    const lineOfSight = Boolean(hero && this.hasLineOfSight(hero, encounter.body, 'rex_stinger'));
+    return { ...getRexEncounterSummary(encounter), activeHeroId: hero?.battleId || hero?.runtimeId || hero?.id || null,
+      selectedAction: this.selectedAction, stingerProfile: { range: 6, minRange: 2 },
+      inRange, lineOfSight, targetLegal: inRange && lineOfSight,
+      commands: { selectStinger: available && !encounter.complete } };
+  }
+
+  selectRexStingerTarget() {
+    if (!this.getRexEncounterState()?.commands.selectStinger) return false;
+    if (this.actionPhase === 'action' && this.selectedAction === 'rex_stinger' && this.selectedActionExplicit) {
+      return this.cancelSelectedAction();
+    }
+    this.selectedAction = 'rex_stinger';
+    this.selectedActionExplicit = true;
+    this.actionPhase = 'action';
+    this.movementRange = [];
+    this.calculateAttackRange();
+    return true;
+  }
+
+  fireRexStingerAtCell(c, r) {
+    const encounter = this.rexEncounter;
+    const hero = this.activeUnit;
+    if (!encounter || !this.getRexEncounterState()?.commands.selectStinger || this.activeUnitType !== 'hero'
+      || this.actionPhase !== 'action' || this.selectedAction !== 'rex_stinger') return { handled: false, reason: 'inactive' };
+    const body = encounter.body;
+    if (c !== body.gridX || r !== body.gridY) return { handled: false, reason: 'rex-target-required' };
+    const profile = this.getAttackProfile(hero, 'rex_stinger');
+    if (!this.canAttackCell(hero, body, profile)) return { handled: false, reason: 'out-of-range-or-blocked' };
+    const target = this.getAttackTargets(hero, { gridX: c, gridY: r }, 'rex_stinger', 'hero')
+      .find(entry => entry.unit === body);
+    if (!target) return { handled: false, reason: 'blocked' };
+
+    faceUnitToward(hero, body);
+    const phase = encounter.phase;
+    let damage = this.getActionBaseDamage(hero, 'rex_stinger') * getCombatEventDamageMultiplier(hero);
+    damage *= 1 - this.getCoverReduction(hero, body, 'rex_stinger');
+    damage *= 1 - Math.min(0.3, getEffectiveCombatDefense(body, hero) / 100);
+    damage = absorbBattleItemDamage(body, Math.round(damage * (0.9 + Math.random() * 0.2)));
+    const result = damage > 0 ? applyRexStingerDamage(encounter, damage) : null;
+    // A shielded missile still spends its turn. HP loss and lifedrain use actual target loss.
+    if (!result) encounter.missileShots++;
+    const applied = result?.damage || 0;
+    this.damageDealt += applied;
+    if (hero.talent === 'lifedrain' && applied > 0) {
+      hero.currentHp = Math.min(hero.maxHp, hero.currentHp + Math.round(applied * 0.1));
+    }
+    hero.state = 'attack'; hero.stateTimer = 25;
+    hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + 15);
+    this.playSfx('shoot');
+    const point = this.getUnitScreenPosition(c, r);
+    this.particles.add(point.x, point.y - 28, 0, -1, '#ffeb3b', 12, 48, 'text', `${phase === 'radome' ? 'RADOME' : 'COCKPIT'} -${applied}`);
+    if (result?.transition) {
+      this.objectiveEvents++;
+      this.particles.add(point.x, point.y - 48, 0, -1, '#d0e7f4', 10, 65, 'text', 'GRAY FOX : COCKPIT OUVERT');
+    }
+    if (result?.complete) {
+      this.objectiveEvents++;
+      body.rexDisabled = true; body.state = 'disabled'; body.stateTimer = 0;
+      this.particles.add(point.x, point.y - 48, 0, -1, '#39c5bb', 10, 65, 'text', 'REX DESACTIVE ; LIQUID SURVIT');
+    }
+    this.updateTacticsObjective();
+    this.endActiveTurn();
+    return { handled: true, type: 'action', action: 'rex_stinger', target, targets: [target], damage: applied, phase };
+  }
+
+  runRexHeroAI() {
+    const hero = this.activeUnit;
+    const body = this.rexEncounter.body;
+    const profile = this.getAttackProfile(hero, 'rex_stinger');
+    const reachable = this.getReachableCells(hero, Math.max(0, this.movementBudget - this.movementSpent));
+    const scored = reachable.map(cell => {
+      const probe = { ...hero, gridX: cell.x, gridY: cell.y, _tacticsSourceUnit: hero };
+      const shot = this.canAttackCell(probe, body, this.getAttackProfile(probe, 'rex_stinger'))
+        && this.getAttackTargets(probe, body, 'rex_stinger', 'hero').some(entry => entry.unit === body);
+      const distance = this.getAttackDistance(probe, body, profile);
+      const rangeError = Math.max(0, profile.minRange - distance, distance - profile.range);
+      return { cell, shot, score: (shot ? 1000 : 0) - rangeError * 100 - (cell.cost || 0) };
+    }).sort((a, b) => b.score - a.score);
+    const best = scored[0];
+    if (best) {
+      hero.gridX = best.cell.x; hero.gridY = best.cell.y;
+      this.movementSpent += best.cell.cost || 0;
+      this.applyStartTileEffect(hero);
+      this.playSfx('jump');
+    }
+    this.actionPhase = 'action'; this.selectedAction = 'rex_stinger'; this.selectedActionExplicit = false;
+    this.calculateAttackRange();
+    this.schedule(() => {
+      if (!this.fireRexStingerAtCell(body.gridX, body.gridY).handled) this.endActiveTurn();
+    }, 500);
   }
 
   applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
@@ -2870,6 +3025,11 @@ export class EngineTactics {
         e.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
         return;
       }
+      if (this.rexEncounter && e === this.rexEncounter.body) {
+        e.currentHp = e.maxHp;
+        e.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+        return;
+      }
 
       if (e.statusEffects?.infected > 0) {
         e.statusEffects.infected--;
@@ -3222,6 +3382,10 @@ export class EngineTactics {
           .forEach(enemy => drawCellMarker({ x: enemy.gridX, y: enemy.gridY }, 'rgba(255,235,59,ALPHA)', 'CREW'));
       }
     }
+    if (this.objective === 'rex_weakpoints' && this.rexEncounter && !this.rexEncounter.complete) {
+      const rex = this.rexEncounter.body;
+      drawCellMarker({ x: rex.gridX, y: rex.gridY }, 'rgba(255,235,59,ALPHA)', this.rexEncounter.phase === 'radome' ? 'RADOME' : 'COCKPIT');
+    }
     if (this.objective === 'escort') {
       (this.battlefield.extractionZone || []).forEach(cell => drawCellMarker(cell, 'rgba(57,197,187,ALPHA)', 'SAFE'));
     }
@@ -3363,6 +3527,12 @@ export class EngineTactics {
   }
 
   getObjectiveText(lang = 'fr') {
+    if (this.objective === 'rex_weakpoints' && this.rexEncounter) {
+      if (this.rexEncounter.complete) return lang === 'en' ? 'Directive: REX disabled; Liquid survives' : 'Directive: REX désactivé ; Liquid survit';
+      return this.rexEncounter.phase === 'radome'
+        ? (lang === 'en' ? 'Directive: target the radome with a Stinger' : 'Directive: viser le radôme au Stinger')
+        : (lang === 'en' ? 'Directive: target the exposed cockpit with a Stinger' : 'Directive: viser le cockpit exposé au Stinger');
+    }
     if (this.objective === 'scarab_boarding' && this.scarabEncounter) {
       const remaining = this.scarabEncounter.crew.filter(enemy => enemy.currentHp > 0).length;
       return this.scarabEncounter.boarded
@@ -3443,7 +3613,7 @@ export class EngineTactics {
       objectivePct,
       objectiveProgress: this.objectiveProgress,
       objectiveTarget: this.objectiveTarget,
-      sourceEncounter: getScarabEncounterSummary(this.scarabEncounter),
+      sourceEncounter: getRexEncounterSummary(this.rexEncounter) || getScarabEncounterSummary(this.scarabEncounter),
       missionProfile: this.missionProfile,
       reinforcementsCalled: this.reinforcementsCalled,
       hazardPulses: this.hazardPulses,

@@ -1,6 +1,7 @@
 // Source locks for the remaining Wave4 identities. This module deliberately
 // leaves IDs, stats, resource costs and historical sprite/provenance paths alone.
 // Named source props/powers are separate from numerical combat adaptations.
+import { CANON_BLACK_PEARL_SOURCE_KITS } from './canonBlackPearlSourceKits.js';
 
 const REF = Object.freeze({
   saturnin: 'https://fr.wikipedia.org/wiki/Les_Aventures_de_Saturnin',
@@ -116,22 +117,7 @@ export const CANON_P0_SOURCE_KITS = Object.freeze({
       en: 'Stitch is Experiment 626, Jumba s genetic creation pursued after escaping to Earth. The 2002 animated film begins with his destructive behavior and follows his bond with Lilo and ohana. Strength, claws and agility come from his alien body; this kit uses his two-arm Earth disguise and adapts impacts to game combat.'
     }
   }),
-  jack_sparrow_potc: lock({
-    incarnation: 'Pirates of the Caribbean: The Curse of the Black Pearl (2003) - Captain Jack Sparrow',
-    referenceUrls: [REF.jack],
-    equipment: ['Pirate Sword', 'Flintlock Pistol', 'Jack s Compass'],
-    visualAnchor: 'Jack Sparrow in The Curse of the Black Pearl: red bandanna beneath a brown tricorn, dark beaded braided hair, moustache and braided beard, loose cream shirt, dark waistcoat, worn brown coat, sash and belts, pirate sword and flintlock pistol. No laser, lightsaber, Davy Jones tentacle anatomy or automatic rifle.',
-    weapon: 'sword', weaponType: 'sword', weaponColor: '#b8b4a8',
-    primaryColor: '#655044', secondaryColor: '#a43128',
-    simple: melee('Pirate Sword Cut'),
-    secondary: ranged('Flintlock Pistol Shot', 'bullet', '#edc48b'),
-    defense: dodge('Roguish Swordfight Sidestep'),
-    special: melee('Black Pearl Swordfight Feint'),
-    loreLocalized: {
-      fr: 'Ce Jack Sparrow vient de The Curse of the Black Pearl, film de 2003 : il cherche son navire vole par Barbossa et aide Will Turner a sauver Elizabeth Swann. Son epee, son pistolet a silex et sa boussole sont des accessoires de pirate, pas des armes laser. Davy Jones, le coffre du mort et le maelstrom des suites ne sont pas l incarnation de ce kit ; Isla de Muerta oppose Jack et Will a Barbossa et a son equipage maudit ; la piece azteque et le sang de Will permettent de lever la malediction.',
-      en: 'This Jack Sparrow comes from the 2003 film The Curse of the Black Pearl: he seeks the ship stolen by Barbossa and helps Will Turner rescue Elizabeth Swann. His sword, flintlock pistol and compass are pirate props, not laser weapons. Davy Jones, the Dead Man s Chest and the sequels maelstrom are not this kit s incarnation; Isla de Muerta pits Jack and Will against Barbossa and his cursed crew; the Aztec coin and Will s blood break the curse.'
-    }
-  }),
+  jack_sparrow_potc: CANON_BLACK_PEARL_SOURCE_KITS.jack_sparrow_potc,
   roger_rabbit: lock({
     incarnation: 'Who Framed Roger Rabbit (1988) - Roger, Maroon Cartoon Studio toon',
     referenceUrls: [REF.roger],
@@ -403,6 +389,9 @@ export function applyCanonP0SourceKit(hero) {
     loreLocalized: { ...source.loreLocalized }
   };
   if (source.sourceAbilities) result.sourceAbilities = [...source.sourceAbilities];
+  if (source.sourceAmmunition) result.sourceAmmunition = {
+    ...source.sourceAmmunition, actionIds: [...source.sourceAmmunition.actionIds]
+  };
   for (const key of ABILITIES) {
     if (source[key]) {
       const action = { ...hero[key], ...source[key] };

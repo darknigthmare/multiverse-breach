@@ -241,15 +241,16 @@ test('a missing crew cannot certify an empty boarding encounter as victory', () 
   assert.deepEqual(encounter.crew, []);
 });
 
-test('Shadow Moses REX remains an ordinary damageable commander encounter', () => {
+test('Shadow Moses REX uses its source targets independently of Scarab boarding', () => {
   const engine = makeEngine(CANON_PRIORITY_STAGES.shadowMoses);
   assert.equal(engine.scarabEncounter, null);
-  assert.equal(engine.objective, 'commander');
+  assert.equal(engine.objective, 'rex_weakpoints');
   const rex = engine.enemies.find(enemy => enemy.isBoss);
-  assert.equal(engine.applyEncounterDamage(rex, 10), false);
+  assert.equal(engine.applyEncounterDamage(rex, 10), true);
   const hp = rex.currentHp;
   engine.applyDamage(engine.heroes[0], rex, 10);
-  assert.ok(rex.currentHp < hp);
+  assert.equal(rex.currentHp, hp);
+  assert.equal(engine.rexEncounter.radomeHp, 360);
   assert.equal(engine.stage.id, 12);
 });
 

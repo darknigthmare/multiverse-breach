@@ -107,6 +107,32 @@ export const CANONICAL_ARCHIVE_ENEMY_LORE = Object.freeze({
       'The Shadow Moses REX is the bipedal nuclear mech piloted by Liquid Snake. It has a railgun, a radome and missile launchers. Solid Snake damages the radome and then attacks the exposed cockpit; REX is not the Metal Gear RAY of later installments.'
     )
   }),
+  'Pirates of the Caribbean': Object.freeze({
+    'Davy Jones': notice(
+      'Davy Jones', "Pirates of the Caribbean: Dead Man's Chest (2006)",
+      'https://d23.com/a-to-z/pirates-of-the-caribbean-dead-mans-chest-film/',
+      'Davy Jones est le capitaine du Hollandais volant dans Le Secret du coffre maudit (2006). Son visage porte des tentacules et sa main gauche est une pince. Il tient Jack à son pacte de service et garde son cœur séparé de son corps dans le coffre du mort. Il commande son propre équipage marin, distinct des pirates de Barbossa maudits par le trésor aztèque.',
+      'Davy Jones captains the Flying Dutchman in Dead Man’s Chest (2006). His face has tentacles and his left hand is a claw. He holds Jack to his service bargain and keeps his heart separate from his body in the Dead Man’s Chest. He commands his own sea-encrusted crew, distinct from Barbossa’s pirates cursed by the Aztec treasure.'
+    ),
+    'Flying Dutchman Crew': notice(
+      'Flying Dutchman Crew', "Pirates of the Caribbean: Dead Man's Chest (2006)",
+      'https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_Dead_Man%27s_Chest',
+      'L’équipage du Hollandais volant sert Davy Jones dans Le Secret du coffre maudit (2006), puis revient dans Jusqu’au bout du monde (2007). Ses marins ont des corps mêlés à des organismes marins ; Bootstrap Bill Turner en fait partie. Leur servitude auprès de Jones ne vient pas des pièces aztèques de Barbossa. Le libellé regroupe ces marins pour le jeu ; leur nombre et leurs actions de combat sont adaptés.',
+      'The Flying Dutchman crew serves Davy Jones in Dead Man’s Chest (2006) and returns in At World’s End (2007). The sailors’ bodies incorporate marine organisms; Bootstrap Bill Turner is among them. Their service to Jones does not come from Barbossa’s Aztec coins. This label groups those sailors for the game; their number and combat actions are adaptations.'
+    ),
+    'East India Company Marine': notice(
+      'East India Company Marine', "Pirates of the Caribbean: At World's End (2007)",
+      'https://d23.com/a-to-z/pirates-of-the-caribbean-at-worlds-end-film/',
+      'Dans Jusqu’au bout du monde (2007), Lord Cutler Beckett utilise les forces de la Compagnie des Indes orientales pour éliminer les pirates et contrôle Davy Jones par son cœur. East India Company Marine est le libellé de jeu d’un soldat humain de ces forces, équipé d’armes à feu et d’une tenue militaire. Il ne représente ni un marin transformé du Hollandais volant ni un pirate rendu immortel par le trésor aztèque ; son profil de combat est adapté au jeu.',
+      'In At World’s End (2007), Lord Cutler Beckett uses the East India Trading Company’s forces against the pirates and controls Davy Jones through his heart. East India Company Marine is the game label for a human soldier of those forces, carrying firearms and military clothing. It represents neither a transformed Dutchman sailor nor a pirate made immortal by the Aztec treasure; its combat profile is a game adaptation.'
+    ),
+    'Calypso Maelstrom': notice(
+      'Calypso Maelstrom — manifestation originale Multiverse', "Pirates of the Caribbean: At World's End (2007) - Calypso; original Multiverse manifestation",
+      'https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_At_World%27s_End',
+      'Dans Jusqu’au bout du monde (2007), Tia Dalma est la forme humaine de Calypso, déesse de la mer emprisonnée par les seigneurs pirates. Barbossa accomplit le rite qui la libère ; elle se disperse en crabes et provoque la tempête avec son maelström. Calypso Maelstrom désigne ici une manifestation de combat originale du projet Multiverse inspirée de cette tempête. Son nom de boss et ses attaques numériques sont des adaptations ; le film ne présente pas ce duel de boss ni une arme correspondante.',
+      'In At World’s End (2007), Tia Dalma is the human form of Calypso, the sea goddess bound by the pirate lords. Barbossa performs the rite that releases her; she disperses into crabs and causes the storm and its maelstrom. Calypso Maelstrom here names an original Multiverse combat manifestation inspired by that storm. Its boss name and numerical attacks are adaptations; the film depicts no corresponding boss duel or weapon.'
+    )
+  }),
   Fallout: Object.freeze({
     'Legate Lanius General': notice(
       'Legate Lanius', 'Fallout: New Vegas (2010)',
@@ -172,8 +198,8 @@ export const CANONICAL_STAGE_ARCHIVE_LORE = Object.freeze([
     CANON_PRIORITY_STAGES.shadowMoses,
     'Dans le hangar souterrain de Shadow Moses, Solid Snake affronte le Metal Gear REX piloté par Liquid Snake. Le radôme détruit prive REX de ses capteurs, oblige le cockpit à s’ouvrir et expose le pilote à la seconde phase.',
     'In Shadow Moses’s underground hangar, Solid Snake confronts the Metal Gear REX piloted by Liquid Snake. Destroying the radome deprives REX of its sensors, forces the cockpit open and exposes the pilot in the second phase.',
-    'Le terrain Tactics et son objectif de commandant représentent la confrontation contre REX.',
-    'The Tactics battlefield and its commander objective represent the REX confrontation.'
+    'Le Stinger de mission vise le radôme puis le cockpit ouvert ; les dégâts ordinaires sur la coque ne désactivent pas REX. Grille, portée, réapprovisionnement, deux réserves de PV et aide de Gray Fox hors champ sont adaptés au jeu. Les soldats Genome représentent l’approche. Liquid survit : son duel ultérieur reste hors mission.',
+    'The mission Stinger targets the radome, then the open cockpit; ordinary body damage cannot disable REX. Grid, range, resupply, two HP pools and Gray Fox’s offscreen assistance are gameplay adaptations. Genome soldiers represent the approach. Liquid survives: his later fistfight is outside the mission.'
   ),
   stageNotice(
     CANON_PRIORITY_STAGES.legatesCamp,

@@ -1,5 +1,7 @@
 # Sauvetage de Newt et malédiction de Barbossa — 1 octobre 2026
 
+> Instantané du lot précédent. La [suite Black Pearl/REX](rex-black-pearl-followup-2026-10-01.md) ajoute les kits 2003, la balle réservée et la malédiction du Jack jouable ; ses règles actuelles remplacent les mentions d’une mortalité ordinaire permanente de Jack. Les compteurs de validation ci-dessous restent ceux du lot précédent.
+
 Deux objectifs auparavant résolus par une simple défaite de boss suivent désormais les conditions de leur scène source.
 
 - **Aliens (1986), stage 3** : traverser la ruche, libérer Newt à portée du repère puis rejoindre la sortie avec son porteur vivant. Newt est un repère non ciblable. Les dégâts contre la Reine restent non létaux ; elle ne peut pas être vaincue à la place du sauvetage. Ripley Aliens utilise dans ce nid le M41A, le M240, le couvert et la grenade du M41A ; ses actions power loader sont remplacées uniquement pour cette scène. Le trajet 2D, les vagues, les repères, la perte du porteur et les portées/effets des armes sont des adaptations. Le duel ultérieur au power loader du Sulaco demeure distinct et à réaliser. [Sources et contrôles](aliens-rescue-mechanics-2026-10-01.md).

@@ -116,9 +116,9 @@ test('source notices do not leak onto different incarnations, franchises or prot
   assert.equal(getCanonicalArchiveStageLore({ ...CANON_PRIORITY_STAGES.metropolisScarab, id: 99999 }), null);
 });
 
-test('the scope remains sixteen notices across six mission universes without a visual approval field', () => {
+test('the scope contains sixteen mission notices and four Pirates notices without a visual approval field', () => {
   const entries = Object.values(CANONICAL_ARCHIVE_ENEMY_LORE).flatMap(Object.values);
-  assert.equal(entries.length, 16);
-  assert.equal(Object.keys(CANONICAL_ARCHIVE_ENEMY_LORE).length, 6);
+  assert.equal(entries.length, 20);
+  assert.equal(Object.keys(CANONICAL_ARCHIVE_ENEMY_LORE).length, 7);
   assert.ok(entries.every(entry => !Object.hasOwn(entry, 'visualReviewStatus')));
 });

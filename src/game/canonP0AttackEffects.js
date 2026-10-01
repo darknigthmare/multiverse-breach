@@ -2,7 +2,7 @@
 // disclosed game abstractions; they do not approve existing character artwork.
 const SOURCE_IDS = new Set([
   'saturnin_duck', 'lilo_pelekai', 'stitch_626', 'mj_performer', 'rhythm_guard_mj',
-  'jack_sparrow_potc', 'roger_rabbit', 'cyber_spider_electro_beam',
+  'jack_sparrow_potc', 'will_turner_potc', 'elizabeth_swann_potc', 'roger_rabbit', 'cyber_spider_electro_beam',
   'cyber_spider_flamethrower', 'cyber_spider_kelly', 'raven_tt', 'starfire_tt',
   'batman_tdk', 'harry', 'hermione', 'batman_n52', 'harley_n52', 'joker_n52', 'grim_knight'
 ]);
