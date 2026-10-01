@@ -952,7 +952,7 @@ const CANON_ENEMY_EXPANSION = {
       { name: 'Psycho Mantis Memory', hp: 520, atk: 18, spd: 7, color: '#6c3483', weapon: 'psychic_control', special: 'Controller Port Read' },
       {
         name: 'Metal Gear REX Shadow', canonicalName: 'Metal Gear REX',
-        hp: 720, atk: 26, spd: 3, color: '#455a64', weapon: 'railgun', special: 'Radome Break',
+        hp: 720, atk: 26, spd: 3, color: '#455a64', weapon: 'rex_machine_gun', special: 'Radome Break',
         incarnation: 'Metal Gear Solid (1998) - Shadow Moses',
         referenceUrl: 'https://www.konami.com/mg/history/us/en/',
         visualAnchor: 'Metal Gear REX from Metal Gear Solid (1998): gray-black bipedal chassis, railgun, radome, missile pods and exposed cockpit after the radome breaks. Shadow is a historical asset name, not another REX incarnation; no RAY or Gekko parts.',

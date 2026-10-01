@@ -1,11 +1,14 @@
 // MGS (1998): Stinger fire targets the radome, then the exposed cockpit.
 // The tactical pools and shared launcher supply are an explicit game adaptation.
+import { REX_CHAFF_SUPPLY, REX_ATTACK_ADAPTATION, getRexAttackIntent } from './canonRexAttackPatterns.js';
 export const REX_SOURCE_INCARNATION = 'Metal Gear Solid (1998) - Shadow Moses';
 export const REX_SOURCE_URLS = Object.freeze([
   'https://www.konami.com/mg/archive/mgs/',
   'https://archive.org/download/mgs-1-screenplay/MGS1_Screenplay_djvu.txt',
   'https://www.supercheats.com/playstation/walkthroughs/metalgearsolid-walkthrough05.txt',
-  'https://www.supercheats.com/playstation/walkthroughs/metalgearsolid-walkthrough04.txt'
+  'https://www.supercheats.com/playstation/walkthroughs/metalgearsolid-walkthrough04.txt',
+  'https://archive.org/details/metal-gear-solid-official-mission-handbook-1998-kitsunebi',
+  'https://metalgear.konami.net/manual/mc1/mgs1/pc/en/page16.html'
 ]);
 
 export const REX_STINGER_ACTION = Object.freeze({
@@ -36,6 +39,8 @@ export function createRexEncounter(stage, battlefield, enemies) {
     phase: 'radome', radomeHp: radomeMaxHp, radomeMaxHp,
     cockpitHp: cockpitMaxHp, cockpitMaxHp,
     grayFoxAssistance: false, missileShots: 0, complete: false,
+    attackCount: 0, attackIntent: null, lastAttack: null,
+    chaffRemaining: REX_CHAFF_SUPPLY, chaffAttacksRemaining: 0, chaffUsed: 0,
     adaptation: 'The 720 existing boss HP are split between two tactical target pools. Shared mission Stinger supply, a stationary grid target, two-cell minimum range, damage values and turn timing are adaptations. Gray Fox assistance is summarized at the phase transition; his cinematic is not replayed. The mission disables REX and ends before the later fistfight with surviving Liquid Snake.'
   };
 }
@@ -68,6 +73,10 @@ export function getRexEncounterSummary(encounter) {
     missileShots: encounter.missileShots, completed: encounter.complete,
     rexDisabled: encounter.complete, liquidSurvives: true,
     targetCell: { x: encounter.body.gridX, y: encounter.body.gridY },
+    attackIntent: getRexAttackIntent(encounter), attackCount: encounter.attackCount,
+    lastAttack: encounter.lastAttack ? { ...encounter.lastAttack } : null,
+    chaffRemaining: encounter.chaffRemaining, chaffAttacksRemaining: encounter.chaffAttacksRemaining,
+    chaffUsed: encounter.chaffUsed, attackAdaptation: REX_ATTACK_ADAPTATION,
     sourceUrls: [...REX_SOURCE_URLS], adaptation: encounter.adaptation
   };
 }

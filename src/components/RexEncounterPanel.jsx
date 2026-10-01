@@ -1,11 +1,12 @@
 import React from 'react';
 import { rpgUnitId } from '../game/rpgTargeting';
+import { REX_ATTACK_NAMES } from '../game/canonRexAttackPatterns.js';
 import './RexEncounterPanel.css';
 
 const validPool = (hp, maxHp) => Number.isFinite(hp) && Number.isFinite(maxHp)
   && maxHp > 0 && hp >= 0 && hp <= maxHp;
 
-export default function RexEncounterPanel({ encounter, hero, lang = 'fr', paused = false, selectedAction, onSelectStinger }) {
+export default function RexEncounterPanel({ encounter, hero, lang = 'fr', paused = false, selectedAction, onSelectStinger, onChaff }) {
   if (encounter?.id !== 'mgs1998_shadow_moses_rex'
     || !['radome', 'cockpit', 'complete'].includes(encounter.phase)) return null;
   const fr = lang === 'fr';
@@ -23,6 +24,15 @@ export default function RexEncounterPanel({ encounter, hero, lang = 'fr', paused
     && Number.isFinite(hero.currentHp) && hero.currentHp > 0);
   const ready = activeHero && !paused && !complete && validCell && validRange && validRadome && validCockpit
     && encounter.commands?.selectStinger === true;
+  const chaffReady = ready && encounter.phase === 'radome' && encounter.commands?.chaff === true
+    && Number.isInteger(encounter.chaffRemaining) && encounter.chaffRemaining > 0
+    && encounter.chaffAttacksRemaining === 0;
+  const intent = encounter.attackIntent;
+  const attackName = REX_ATTACK_NAMES[intent?.kind]?.[fr ? 'fr' : 'en'];
+  const dangerCells = (Array.isArray(intent?.cells) ? intent.cells : [])
+    .filter(cell => Number.isInteger(cell?.x) && Number.isInteger(cell?.y) && cell.x >= 0 && cell.y >= 0)
+    .sort((a, b) => a.y - b.y || a.x - b.x)
+    .map(cell => `${String.fromCharCode(65 + cell.x)}${cell.y + 1}`).join(', ');
   const heading = complete
     ? (fr ? 'Metal Gear REX désactivé' : 'Metal Gear REX disabled')
     : encounter.phase === 'cockpit'
@@ -62,6 +72,13 @@ export default function RexEncounterPanel({ encounter, hero, lang = 'fr', paused
         {validCell && <span>{fr ? 'Cellule de REX' : 'REX cell'} : {cellLabel}</span>}
         {validRange && <span>{fr ? 'Portée du Stinger' : 'Stinger range'} : {minRange}–{range} {fr ? 'cases · ligne de vue dégagée requise' : 'cells · clear line of sight required'}</span>}
         {encounter.inRange === true && encounter.lineOfSight === true && <span>{fr ? 'Cible à portée et ligne de vue dégagée' : 'Target in range with clear line of sight'}</span>}
+        {attackName && <span>{fr ? 'Prochaine attaque de REX' : 'Next REX attack'} : {attackName}</span>}
+        {dangerCells && <span>{fr ? 'Cases dangereuses · déplacez-vous avant son tour' : 'Danger cells · move before its turn'} : {dangerCells}</span>}
+        {intent?.tracking && <span>{intent.tracking === 'manual'
+          ? (fr ? 'Cockpit : Liquid vise les missiles à vue.' : 'Cockpit: Liquid aims the missiles visually.')
+          : intent.radarDispersed
+            ? (fr ? 'Radar brouillé : salve dispersée, un impact reste dangereux.' : 'Radar jammed: salvo dispersed, one impact remains dangerous.')
+            : (fr ? 'Missiles guidés par le radar.' : 'Radar-guided missiles.')}</span>}
       </div>}
       {encounter.grayFoxAssistance === true && <p className="rex-encounter-panel-lore">{fr
         ? 'Gray Fox aide à exposer le cockpit. Son intervention est résumée pour cette mission tactique.'
@@ -72,6 +89,16 @@ export default function RexEncounterPanel({ encounter, hero, lang = 'fr', paused
           ? (fr ? 'Annuler la visée du Stinger' : 'Cancel Stinger targeting')
           : (fr ? 'Préparer le Stinger' : 'Ready the Stinger')}
       </button>
+      {!complete && Number.isInteger(encounter.chaffRemaining) && <>
+        <p>{fr ? 'Chaff partagé' : 'Shared chaff'} : {encounter.chaffRemaining}/3 · {fr ? 'Brouillage restant' : 'Jamming remaining'} : {encounter.chaffAttacksRemaining} {fr ? 'attaques de REX' : 'REX attacks'}</p>
+        <button type="button" className="rex-encounter-panel-action" disabled={!chaffReady}
+          onClick={() => { if (chaffReady) onChaff?.(); }}>
+          {fr ? 'Lancer une grenade chaff · utilise le tour' : 'Throw a chaff grenade · uses the turn'}
+        </button>
+        <small>{fr
+          ? 'Le chaff disperse les missiles du radar, pas les mitrailleuses, le laser ni les pieds. Liquid vise à vue au cockpit. Réserve, cases et durée de deux attaques sont adaptées au combat tactique.'
+          : 'Chaff disperses radar missiles, not machine guns, laser or feet. Liquid aims visually from the cockpit. Supply, cells and the two-attack duration adapt the tactical fight.'}</small>
+      </>}
       {guidance && <small>{guidance}</small>}
     </section>
   );

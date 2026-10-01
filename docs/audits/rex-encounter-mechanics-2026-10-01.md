@@ -20,3 +20,5 @@ Références consultées :
 106 scénarios ciblés passent, ainsi qu’un contrôle supplémentaire avec les vrais délais moteur 400/500/600 ms et la cadence normale de 16 ms (57,7 s). Le nouveau fichier comprend 22 tests REX et réserve de Jack. Oxlint sur les fichiers modifiés et la vérification des espaces Git passent.
 
 Les empreintes des lectures et fichiers d’implémentation, les limites et le bilan de validation figurent dans le JSON voisin. Les parcours complets manuels et IA utilisent les statistiques authored de Snake, Master Chief et Leon. Les fixtures de géométrie, bouclier ou dépassement sont identifiées comme telles dans les tests et ne servent pas de preuve d’un parcours joueur.
+
+Le bilan de ce lot est historique pour le commit 34e222b. Les nouvelles attaques et le chaff sont suivis dans [le rapport suivant](rex-weapon-patterns-and-chaff-2026-10-01.md). Les compteurs de tests ci-dessus ne sont pas ceux du nouveau lot.

@@ -1859,6 +1859,14 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       sound.playSfx('click');
     }
   };
+  const handleRexChaff = () => {
+    if (sessionPausedRef.current || battleCompleted || preMatchLocked || opponentHasCommand) return;
+    const engine = engineRef.current;
+    if (engine?.triggerRexChaff?.()) {
+      setSelectedAction(engine.selectedAction);
+      setTeamState([...engine.heroes]);
+    }
+  };
   const handleAliensRescueCommand = command => {
     if (sessionPausedRef.current || battleCompleted || preMatchLocked) return;
     const engine = engineRef.current;
@@ -2777,6 +2785,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             encounter={rexEncounter} hero={engineRef.current?.activeUnit || activeHeroObj} lang={lang}
             paused={sessionPaused || battleCompleted || preMatchLocked} selectedAction={selectedAction}
             onSelectStinger={handleRexStingerSelection}
+            onChaff={handleRexChaff}
           />}
           {stage.mode === 'RPG' && !opponentHasCommand && <PiratesCursePanel
             encounter={piratesCurseEncounter} hero={activeHeroObj} lang={lang}

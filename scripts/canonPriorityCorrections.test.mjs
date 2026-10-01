@@ -288,7 +288,8 @@ test('actual battle engines spawn REX and Lanius and require source REX targets 
     const particles = { add() {} };
     const noop = () => {};
     const stage = CANON_PRIORITY_STAGES.shadowMoses;
-    const tactics = new EngineTactics(960, 540, [hero], resolve(stage), particles, noop, noop, stage);
+    const tacticsSquad = ['snake', 'masterchief', 'leon'].map(getHeroById);
+    const tactics = new EngineTactics(960, 540, tacticsSquad, resolve(stage), particles, noop, noop, stage);
     engines.push(tactics);
     assert.equal(tactics.objective, 'rex_weakpoints');
     assert.equal(tactics.objectiveTarget, 2);
@@ -303,9 +304,12 @@ test('actual battle engines spawn REX and Lanius and require source REX targets 
     tactics.updateTacticsObjective(true);
     assert.equal(tactics.gameOver, false, 'generic body HP cannot bypass either source target');
     assert.equal(tactics.rexEncounter.body.currentHp, 720);
-    // The dedicated REX suite also runs a complete original-stat squad against
-    // living soldiers. Here the pre-existing soldier-zero fixture isolates the
-    // commander objective; only legal movement and target clicks finish REX.
+    // The 100-turn value above is a victory-bypass fixture, not the starting
+    // age of this commander-only route. Restore it before actual combat input.
+    tactics.turnsElapsed = 0;
+    // This ordinary-stat squad tests the commander objective with legal cells
+    // and the newly active REX weapons. The soldier-zero fixture above isolates
+    // the victory gate; dedicated REX suites also keep all patrols alive.
     tactics.timers.forEach(timer => clearTimeout(timer)); tactics.timers.clear();
     tactics.schedule = (callback, delay) => { if ([400, 500].includes(delay)) callback(); return null; };
     for (let turn = 0; turn < 100 && !tactics.gameOver; turn++) {
@@ -317,7 +321,8 @@ test('actual battle engines spawn REX and Lanius and require source REX targets 
             const probe = { ...actor, gridX: cell.x, gridY: cell.y, _tacticsSourceUnit: actor };
             const shot = tactics.canAttackCell(probe, rex, tactics.getAttackProfile(probe, 'rex_stinger'))
               && tactics.getAttackTargets(probe, rex, 'rex_stinger', 'hero').some(target => target.unit === rex);
-            return { cell, score: (shot ? 1000 : 0) - Math.abs(rex.gridX - cell.x) - Math.abs(rex.gridY - cell.y) };
+            const danger = tactics.getRexEncounterState().attackIntent?.cells.some(target => target.x === cell.x && target.y === cell.y);
+            return { cell, score: (shot ? 1000 : 0) - (danger ? 1100 : 0) - Math.abs(rex.gridX - cell.x) - Math.abs(rex.gridY - cell.y) };
           }).sort((a, b) => b.score - a.score);
         assert.equal(tactics.handleCellClick(moves[0].cell.x, moves[0].cell.y).handled, true);
         assert.equal(tactics.selectRexStingerTarget(), true);
