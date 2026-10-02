@@ -191,6 +191,52 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 };
 
 export const SPRITE_SHEET_LAYOUTS = {
+  '/sprites/generated/bosses/the-aether-crown/lord-pneuma.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/the-crownless-sea/kraken-sans-couronne.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/valedor-the-shattered-crown/reine-des-ronces.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/valedor-the-shattered-crown/vaelgor-premier-wyrm.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/the-drowned-testament/le-phare-qui-regarde.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png': {
+    // One reviewed full-body image; animations remain pending in its asset manifest.
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
   [BASTION_COMPLETE_SPRITES.universal]: {
     columns: 4,
     rows: 8,

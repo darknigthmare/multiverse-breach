@@ -1,10 +1,15 @@
 {
   "schemaVersion": 1,
   "auditDate": "2026-10-02",
-  "scope": "Nine newly generated referenced character PNG sheets. Availability and exact canonical fidelity are separate.",
+  "scope": "Referenced original-character PNG delivery; availability, rendering and visual fidelity are separate.",
   "delivery": {
-    "installedPngs": 9,
-    "animationFrames": 144,
+    "installedPngs": 179,
+    "animatedSheets": 170,
+    "staticImages": 9,
+    "poseImages": 2729,
+    "distinctVisibleRasterImages": 2729,
+    "animationFrames": 2720,
+    "animationsPending": 9,
     "dimensions": {
       "width": 1024,
       "height": 1024,
@@ -19,15 +24,288 @@
   },
   "availability": {
     "baselineMissingUniqueOutputs": 1705,
-    "resolvedMissingOutputs": 9,
-    "actualMissingUniqueOutputs": 1696,
+    "resolvedMissingOutputs": 179,
+    "actualMissingUniqueOutputs": 1526,
     "missingByKind": {
       "hero": 0,
-      "enemy": 902,
-      "boss": 794
+      "enemy": 810,
+      "boss": 716
     },
-    "missingOriginalUniverseOutputs": 171
+    "missingOriginalUniverseOutputs": 1,
+    "otherMissingWithoutLocallyApprovedReference": 1525,
+    "referenceApprovalScope": "No other local reference approved by this production wave."
   },
+  "remainingOriginalCharacter": {
+    "id": "tawantinsuyu_split_sun:pachakuti_du_soleil_noir",
+    "name": "Pachakuti du Soleil Noir",
+    "reason": "Portrait contains a landscape without identifiable character anatomy; no body invented."
+  },
+  "renderVerification": {
+    "status": "passed",
+    "characters": 179,
+    "viewports": [
+      "desktop",
+      "mobile"
+    ],
+    "sourceFramesPerViewport": 2729,
+    "drawsPerViewport": 5728,
+    "summarySha256": "27310b7646f30d312bdd84675174a70d6accfda3ac688c7c9c5439ac9661cf8a",
+    "checks": [
+      {
+        "viewport": "desktop",
+        "page": 1,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "d4e19d062ac514410bb1cc61259c9ab101a7d2ff843cfe00f13ff9d4153a0871"
+      },
+      {
+        "viewport": "desktop",
+        "page": 2,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "6368fbb522a455898d16472421c2fbd545e055fc3f01c12b9572cf15bf91b401"
+      },
+      {
+        "viewport": "desktop",
+        "page": 3,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "0fe252f8ce0be532439a530314042182b3a459c38c51a2e510000a416e924013"
+      },
+      {
+        "viewport": "desktop",
+        "page": 4,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "a1dd6f2278e893703ad5d95e80ce3685de7f475fb3e1c175ab4d4b292bf64fb3"
+      },
+      {
+        "viewport": "desktop",
+        "page": 5,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "7d90f1eccea5893fb69b0d58197d715cc034fae600b4142a44500f432295cb6f"
+      },
+      {
+        "viewport": "desktop",
+        "page": 6,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "7164e9cc93788dfd8089f75b17423aedda3c83053721f48134ba6822d792a669"
+      },
+      {
+        "viewport": "desktop",
+        "page": 7,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "43408b31598843a9f06f704b5942bf320eba9e28d647ecd23f60b7950c62255d"
+      },
+      {
+        "viewport": "desktop",
+        "page": 8,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "3ac6fc968ed395ca00f024c35b8318d50b5b4289077a61dc2a9bbff1e75caaf8"
+      },
+      {
+        "viewport": "desktop",
+        "page": 9,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "26d0affd48e3063ffdcd04fd6d8638dfa09b8e05bc35b35400beae8caccc3bab"
+      },
+      {
+        "viewport": "desktop",
+        "page": 10,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "75d93343646bc2a322a05193ceb617f0e5e56342e8d040a2e9bb8cf9b4907517"
+      },
+      {
+        "viewport": "desktop",
+        "page": 11,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "ec5dc55d00b0ced3b64ca4cde0b7c69c96005d69ec798c51bcd4626c34642c2a"
+      },
+      {
+        "viewport": "desktop",
+        "page": 12,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "47e229b18c5c77d7591f589e1c744d9a2e63ab8e83b8105863047aecfcf3e7f9"
+      },
+      {
+        "viewport": "desktop",
+        "page": 13,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "c81ccae41ec0c942683836954a690a37ff733fafaa7b98bb858a0244d17de410"
+      },
+      {
+        "viewport": "desktop",
+        "page": 14,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "796c81df566581466e3322251157919ac454eaeb6363aeefaa80dfb6347495f6"
+      },
+      {
+        "viewport": "desktop",
+        "page": 15,
+        "targets": 11,
+        "sourceFrames": 41,
+        "draws": 352,
+        "proofSha256": "82776cb0bf25b2c64b2594d63d2f9a74066269330411200f899743bfbae9495e"
+      },
+      {
+        "viewport": "mobile",
+        "page": 1,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "ef46ccca8a830f5f6506a5d99836331dc5f9ce1b63ef4b08fd112867c7cbdf74"
+      },
+      {
+        "viewport": "mobile",
+        "page": 2,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "bb5d981219227f51fd6c249720452d7e8c2585f4fca5700b6a34fdc882db900f"
+      },
+      {
+        "viewport": "mobile",
+        "page": 3,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "704993f171a5212b5307c03a78d0c9014c4f8e5d843c3a59ac0136d317e570f1"
+      },
+      {
+        "viewport": "mobile",
+        "page": 4,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "ae1fa21c8e47f484efe845966bc80abc8bb0b3eaf5f5649e47d11cd76bcf2b02"
+      },
+      {
+        "viewport": "mobile",
+        "page": 5,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "d3c4ac1f720071fa63685348dd82e0df444202d8a5fec0007b3440dbe085dc32"
+      },
+      {
+        "viewport": "mobile",
+        "page": 6,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "c436e688e795f24f4f6375c23fe207311b5720238e126d6b046133cd4b5efc20"
+      },
+      {
+        "viewport": "mobile",
+        "page": 7,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "8bbacf0757ea755ec4e0b3159ad3687ac4cfc8d49fb6050cbfebab9460cabd94"
+      },
+      {
+        "viewport": "mobile",
+        "page": 8,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "baa15762bb6efdcd51d4c598031f56668c5e27bf85574fb83bce0a510d8b3119"
+      },
+      {
+        "viewport": "mobile",
+        "page": 9,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "3cba1b9fae49128e3ce9157ded2c0f09bff8e8f4a9c7bfdd8a2105165e425a06"
+      },
+      {
+        "viewport": "mobile",
+        "page": 10,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "cd36b7fcece29ff7bcba56f3affe3ad862a85c3881580a60a0110133224bda0b"
+      },
+      {
+        "viewport": "mobile",
+        "page": 11,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "f86f7bfd84af01f42e43c13e3cc2985d4bd32df211cb5008a45b216f530c46e4"
+      },
+      {
+        "viewport": "mobile",
+        "page": 12,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "f14fcb47c43a53d4fb3ecd05e05adac4ac8dce4838476bee0c8e110c2a4c4a28"
+      },
+      {
+        "viewport": "mobile",
+        "page": 13,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "3f4c5a84cb3f6012f58a90d193b43432503a35d9bf248cd1eb3bcaf1c984c860"
+      },
+      {
+        "viewport": "mobile",
+        "page": 14,
+        "targets": 12,
+        "sourceFrames": 192,
+        "draws": 384,
+        "proofSha256": "a9fad5b4e3eb2228125d9eee4ed7358cc7191158a26250857491ef8ea5e30a50"
+      },
+      {
+        "viewport": "mobile",
+        "page": 15,
+        "targets": 11,
+        "sourceFrames": 41,
+        "draws": 352,
+        "proofSha256": "238e2f39d2d79a082f745ba3d58b5dbbbeb7ce590b03ce3997c302af1bd34862"
+      }
+    ],
+    "scope": "Local fixture uses the actual PNG resolver and renderer; visual fidelity reviewed separately."
+  },
+  "buildVerification": {
+    "status": "passed",
+    "tests": 1364,
+    "passed": 1364,
+    "failed": 0,
+    "cancelled": 0,
+    "groups": 16,
+    "viteBuilt": true,
+    "evidenceSha256": "4241ef6301cb04fffcbe302aba4a5e8c3eaf02805bca1007a0ff432b504a1526"
+  },
+  "canonicalFidelityApproved": false,
+  "productionMergePerformed": false,
   "assets": [
     {
       "kind": "enemy",
@@ -40,20 +318,14 @@
       "referenceSha256": "96164e08928a4c7b5984d75bf18afac448bbd0f1e0424080f4c9fe4ef6c182a1",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 15,
-        "sourceVisiblePixels": 522296,
-        "assignedVisiblePixels": 522296,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
@@ -69,20 +341,14 @@
       "referenceSha256": "f5d9ea0f1337026ed7a1c308cccb9f2154a9493e344d2f5f9589c6ebf71812de",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 17,
-        "sourceVisiblePixels": 166358,
-        "assignedVisiblePixels": 166358,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
@@ -98,20 +364,14 @@
       "referenceSha256": "26acfb82711a9bb987342a459d790fd7a01ad2124b806d28f693c75ab5161223",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 17,
-        "sourceVisiblePixels": 146221,
-        "assignedVisiblePixels": 146221,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
@@ -127,20 +387,14 @@
       "referenceSha256": "76dfd9690b81a75789f8ee00fdb00f50b491ac6daa2c6f2d3fdbc8897afad408",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 15,
-        "sourceVisiblePixels": 417837,
-        "assignedVisiblePixels": 417837,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
@@ -156,20 +410,14 @@
       "referenceSha256": "bc7996961c46dd873e09f54c6aa9401b98c890c6a24801412d43557a5585e521",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 15,
-        "sourceVisiblePixels": 405041,
-        "assignedVisiblePixels": 405041,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
@@ -185,20 +433,14 @@
       "referenceSha256": "1754cc0cd6bd658894a47b24285a08be3e8cd01496c77add2ce1747502a7d04f",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 17,
-        "sourceVisiblePixels": 170977,
-        "assignedVisiblePixels": 170977,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
@@ -214,20 +456,14 @@
       "referenceSha256": "2fd05f82883c16b18cb64bba43b09dc9c5a04e7bc8bc71e87fad359d15ac5be6",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 17,
-        "sourceVisiblePixels": 220403,
-        "assignedVisiblePixels": 220403,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
@@ -243,20 +479,14 @@
       "referenceSha256": "66c38b2c0a09bf1d5c83dd7bfa63c2ed010f348a1c197c7c3a688a5cbfe45b19",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 14,
-        "sourceVisiblePixels": 519973,
-        "assignedVisiblePixels": 519973,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
@@ -272,117 +502,3935 @@
       "referenceSha256": "1b9e41638c62b20c6ce4444c91ab3bd13ccacafc940bdee12c952cdafd44718b",
       "layout": {
         "columns": 4,
-        "rows": [
-          "idle",
-          "run",
-          "attack",
-          "hit"
-        ],
-        "frameWidth": 256,
-        "frameHeight": 256
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
       },
+      "animationStatus": "available",
       "geometry": {
         "minimumGuard": 17,
-        "sourceVisiblePixels": 264591,
-        "assignedVisiblePixels": 264591,
-        "footBaselineVariationPixels": 0
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "neon_requiem:neuro_hound",
+      "name": "Neuro-Hound",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/neuro-hound.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/neuro_hound.png",
+      "imageSha256": "53081a32f7cd044e34fdf588a288965e99b26034e73567369faee70246339b4f",
+      "referenceSha256": "80dfe2c959e908170ea80eeb8c267249e00920984d527a76f6f022f32c07623f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 16,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "neon_requiem:ad_skin_assassin",
+      "name": "Ad-Skin Assassin",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/ad-skin-assassin.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/ad_skin_assassin.png",
+      "imageSha256": "7ee7f6fff642698fab075632387442e31234b147808710c7284163996fb59bcc",
+      "referenceSha256": "f0b90946911c17a16d302bd2f066add3869473a21569d68dd5cd027484554f0e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "neon_requiem:memory_husk",
+      "name": "Memory Husk",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/memory-husk.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/memory_husk.png",
+      "imageSha256": "d839c65a00259100f6d1d97671b4dd7f6c4eb0a56cb6bbb678324e18c267facb",
+      "referenceSha256": "e0dad274012916e153ab3b49105b65cde737dd0325fe4bd7c24b44fe0d6c9df0",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 16,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "neon_requiem:director_soren_vey",
+      "name": "Director Soren Vey",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/director-soren-vey.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/director_soren_vey.png",
+      "imageSha256": "27fcfcd7dad4dbc193363f2678faaefde72e4a3805f8223cea827198d634aaec",
+      "referenceSha256": "8ca30285743f72ced4c17d42816c6a140d75de32aa8d2dd0794a74a17fd71b48",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "neon_requiem:choir_of_mirrors",
+      "name": "Choir of Mirrors",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/choir-of-mirrors.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/choir_of_mirrors.png",
+      "imageSha256": "d7174aa92c307adebdb05856a416dfef5bc355ea3f3c7e2423831dff308bcac6",
+      "referenceSha256": "7b583bf8a66d97ada636ebfe2ada0c533a4c32f360b8e05087d081b73d25e26d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "neon_requiem:chrome_saint_k_0",
+      "name": "Chrome Saint K-0",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/chrome-saint-k-0.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/chrome_saint_k_0.png",
+      "imageSha256": "60608a56e17217fc0051602d6779ce0c13b0fca533a139e52b3a18fcbe871043",
+      "referenceSha256": "df466f62e44359b303b5996a268eddf1de7e49412d58ab54ca06486299ccbae7",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "neon_requiem:omnia_citymind_of_nadir_9",
+      "name": "OMNIA, Citymind of Nadir-9",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/omnia-citymind-of-nadir-9.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/omnia_citymind_of_nadir_9.png",
+      "imageSha256": "8ae0dd03d7ac5e7ec75afad433e3742a45792cdb2c33d7a1660934a10422ad59",
+      "referenceSha256": "7498e385d64ed26f6e02f864f2ccbda8c44784953ea6d7662c3890dba724cdce",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aether_crown:coalbound_golem",
+      "name": "Coalbound Golem",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/coalbound-golem.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/coalbound_golem.png",
+      "imageSha256": "f394a0205419a24983d1b4f648c29be9f28d62974ecd4865798be468cac5bbe7",
+      "referenceSha256": "5553e9ef47908d58d7a922b50302aecf26a8b2a021220cd39b9c125ec542f1f7",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aether_crown:sky_corsair_press_gang",
+      "name": "Sky Corsair Press-Gang",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/sky-corsair-press-gang.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/sky_corsair_press_gang.png",
+      "imageSha256": "e4377033fea49312e2e63cfc203e34a88689d12c2a773bb46760e925c3002a02",
+      "referenceSha256": "d8ef6ed7235e8d554cbac5409ee404576273f875477ef2b1d7fe931c8a1aa732",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aether_crown:pressure_wraith",
+      "name": "Pressure Wraith",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/pressure-wraith.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/pressure_wraith.png",
+      "imageSha256": "3f7a5754b9d3d2af35ac41181f2dd3fd112e91aab1849884e8e9bded8f6350a0",
+      "referenceSha256": "4b9ef0e9f173ccecabe7b725d3046f13033596fa66cb8ed4fd2b01f1410dcd1d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aether_crown:duchess_caldera",
+      "name": "Duchess Caldera",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/duchess-caldera.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/duchess_caldera.png",
+      "imageSha256": "256fdf874b4b8f630d23d6e39f71b331fc38e3effb6738b11d297f0a5f89dfb0",
+      "referenceSha256": "a2403c788a72f403320c3a02424332005a9e8a861747b778fd2f44bbf50a5f43",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aether_crown:hms_sovereign_automaton",
+      "name": "HMS Sovereign Automaton",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/hms-sovereign-automaton.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/hms_sovereign_automaton.png",
+      "imageSha256": "52380d0288818165b1a2706b475fe8fe26d22c607d30b7cacd53a9ad23b7b958",
+      "referenceSha256": "a8f3adb8d62d93cb5476a645e260a11aa602a50e6065d825534fe1be97b445fc",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aether_crown:crown_of_storms_leviathan_engine",
+      "name": "Crown of Storms, Leviathan Engine",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/crown-of-storms-leviathan-engine.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/crown_of_storms_leviathan_engine.png",
+      "imageSha256": "f5377ec60c8573628f409929345b7adb1f5b3b4efc2353c59c914fbb836abdbb",
+      "referenceSha256": "03426cfc15e6bd9e4ba1ef5c1787eea2dd6205ea281e991ee72ffa7b6ee300ae",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "meridian_clockwork:escapement_guard",
+      "name": "Escapement Guard",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/escapement-guard.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/escapement_guard.png",
+      "imageSha256": "ed9270e49718dc5875236c6c46a42dcd17e329aa5055e2d9943c46f0c10f951e",
+      "referenceSha256": "fea45a37a82c4fc8fb1dd3c3326cbca442b04bbdf02517bbeee41fd84dbe6904",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "meridian_clockwork:gearwing_falcon",
+      "name": "Gearwing Falcon",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/gearwing-falcon.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/gearwing_falcon.png",
+      "imageSha256": "9df4f28ac78e3d3892a1cf2d5b1435d61b8f07f865f4615015176fb0b07017a6",
+      "referenceSha256": "42369bda5699400921392b3cc239ff8321daccf0c1be527bf5f6a255b5e0a2d1",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "meridian_clockwork:pendulum_penitent",
+      "name": "Pendulum Penitent",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/pendulum-penitent.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/pendulum_penitent.png",
+      "imageSha256": "92b0675dd9c8ee839e768e65fdb666ce9c4c24fc98c0c48955b7fd301665d3e4",
+      "referenceSha256": "d8c01770041a82784404cc85a2636ad390a43416ecd47ab60f012c88a59e33fb",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "meridian_clockwork:hour_thief",
+      "name": "Hour-Thief",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/hour-thief.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/hour_thief.png",
+      "imageSha256": "9c41d2f9be63b6e086211a1ca6a533b739fcd80354e04a359e659b159752e81f",
+      "referenceSha256": "871e59aa8600263605ca47351dbc4679086b6ed5a3b295f602bcdfa320971411",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 14,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "meridian_clockwork:maestro_vellum",
+      "name": "Maestro Vellum",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/maestro-vellum.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/maestro_vellum.png",
+      "imageSha256": "ca70d0605eedad1f6eb24d7f9d8749ad24510046f4b344d216f87e5e95a68c5b",
+      "referenceSha256": "69b459360f6f9a1ae73d3f3b782d4998ade52a23dd804997f0db791d1b2f4368",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "meridian_clockwork:orloj_duelist",
+      "name": "Orloj Duelist",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/orloj-duelist.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/orloj_duelist.png",
+      "imageSha256": "962ba9b6239798935fefa22052aa2e901e351c784abee6797b63ffb6519c1ed8",
+      "referenceSha256": "12b51fcaadecb3705340db0c74ee1e86ad7208b2040ae04580546ef28d6d0cff",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "meridian_clockwork:chronophage_of_the_last_meridian",
+      "name": "Chronophage of the Last Meridian",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/chronophage-of-the-last-meridian.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/chronophage_of_the_last_meridian.png",
+      "imageSha256": "42cd393f6a67a0f66d3051c0964a6c42e1b06709701ef96a5621040d7a8cf285",
+      "referenceSha256": "b191537c1a3ab035fb641ccd0641c4f8a7fa657ec4c3f77791285e5c43e807a6",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "iron_tempest:soot_legionnaire",
+      "name": "Soot Legionnaire",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/soot-legionnaire.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/soot_legionnaire.png",
+      "imageSha256": "94c196e938e7ddbb38297502e66d48813ef908a34770954080adcb79f43b6944",
+      "referenceSha256": "75c238fd5548454df18af281a2df18160c5bf488f89eb80c18330a2abfa2886f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "iron_tempest:gyro_trooper",
+      "name": "Gyro Trooper",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/gyro-trooper.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/gyro_trooper.png",
+      "imageSha256": "9f5865ca9f28d2aee1a92975ffddae9542efc7f79d513596918dc518197fff0d",
+      "referenceSha256": "f60f31c07872d57ee1e2ef345334769550ff7c09d49dad039298e2ba8f7ba569",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "iron_tempest:trench_automaton",
+      "name": "Trench Automaton",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/trench-automaton.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/trench_automaton.png",
+      "imageSha256": "1cc3df2b34a82815e6d3c8ff7e4b489f799f47d8f20b8b381b6d203bd10dbd36",
+      "referenceSha256": "8409b572468102817a0c98700b430d12b369f565e251283e6b5f5e44ea00c535",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "iron_tempest:fuel_hound",
+      "name": "Fuel Hound",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/fuel-hound.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/fuel_hound.png",
+      "imageSha256": "7030606faffeb70a02208468a4f3c106e029dc16a2d37e7ee47a7c886b66f45c",
+      "referenceSha256": "545c3b53ff4b4786e54cb1d691a2c73ee8355bb237b837546bba74ff942625cd",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "iron_tempest:propaganda_drone",
+      "name": "Propaganda Drone",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/propaganda-drone.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/propaganda_drone.png",
+      "imageSha256": "a6d12d004782ed5d8a3458b741ba9332f8bd136f3d11d21b10bde92729f51132",
+      "referenceSha256": "dd44e1f204121fc5535af0de5e3c0dea5896ff552834ad16c035d85afc719c7e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "iron_tempest:marshal_volgra",
+      "name": "Marshal Volgra",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/marshal-volgra.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/marshal_volgra.png",
+      "imageSha256": "40977e3edfdbc99e0febb41616c667b89f3e4b6445cac300a354bdbebb877858",
+      "referenceSha256": "36d7ffb92514142c2976ff51219351ab8fa6cd291e0f1208b140e4815385fd8b",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "iron_tempest:black_zephyr_ace",
+      "name": "Black Zephyr Ace",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/black-zephyr-ace.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/black_zephyr_ace.png",
+      "imageSha256": "8f27d148b37caf3e42be440e1f11a16ff2a7df8e88126f94e92859ae7c9ab4b7",
+      "referenceSha256": "9f59b6abc62f1d974b35eb64637a2d1012fda98c1f91da3f6dfdde51083a6995",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "iron_tempest:rail_cannon_behemoth",
+      "name": "Rail-Cannon Behemoth",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/rail-cannon-behemoth.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/rail_cannon_behemoth.png",
+      "imageSha256": "a930b6f8da245e331b91dfc4315847ad2a2017147c2e06eca1a6f7dd954ad9fe",
+      "referenceSha256": "48654c06665d7a953bdd59fa59140d1749ac85d890bcea4bd7792e05159711ee",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 14,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "iron_tempest:moloch_continental_landship",
+      "name": "Moloch Continental Landship",
+      "universe": "Iron Tempest",
+      "output": "/sprites/generated/bosses/iron-tempest/moloch-continental-landship.png",
+      "reference": "/images/oc-worlds/v2/iron_tempest/threats/moloch_continental_landship.png",
+      "imageSha256": "18ed56ef482c2fa6b15854bb6525560adafc825d92937bcd9542fbb5c36cb7b5",
+      "referenceSha256": "ffd98b36fafb040c8a2c06ac968f2bc8401645db9d959da6c7ce664862449a5e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "helios_56:civil_defense_automaton",
+      "name": "Civil Defense Automaton",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/civil-defense-automaton.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/civil_defense_automaton.png",
+      "imageSha256": "8a6925969f64592eba58ed316ace445db2d835b87c6f6101caaff143acfc627a",
+      "referenceSha256": "e6ee55d3816ef94465547f062d97e23fbb9d420b14c36455a9ef6e6eded5b012",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "helios_56:radglass_mutant",
+      "name": "Radglass Mutant",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/radglass-mutant.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/radglass_mutant.png",
+      "imageSha256": "71fab0e0f7313ac25aaf21d14257afd2f7a2c0f2f89bbe923916e9234b0e677f",
+      "referenceSha256": "51e549ba0ead696230e21dfc268c45eab114509c5397e1414307624fa526c00d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "helios_56:saucer_scout",
+      "name": "Saucer Scout",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/saucer-scout.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/saucer_scout.png",
+      "imageSha256": "dadf1ccc69301bb5f0f348458797c1c6041ff1b4bd3755b6d7cf457c66c903fe",
+      "referenceSha256": "55f8f41082d48ce4d63136fb2d47741667c07f75facf49fc567d81e9f69b0593",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "helios_56:happy_home_servitor",
+      "name": "Happy Home Servitor",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/happy-home-servitor.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/happy_home_servitor.png",
+      "imageSha256": "73043db89b56f3f1ab18e7541bb99de3796800a9eb89d18f926ec1e10b2e02a0",
+      "referenceSha256": "7e0c10cc07ac4b7120466fdc2673157a32a939ddbbcee9067e368465dcf56081",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "helios_56:director_isotope",
+      "name": "Director Isotope",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/director-isotope.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/director_isotope.png",
+      "imageSha256": "8887716bb1f4cf0ca0ee9e86ab03f41eb3dee0850a2457bd8887a684b4a6e6f2",
+      "referenceSha256": "427376cf106c73cedf25c56ec313cd78e5a3ab4e5400c45de1dfa83d4dd47e47",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "helios_56:moonbase_warden",
+      "name": "Moonbase Warden",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/moonbase-warden.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/moonbase_warden.png",
+      "imageSha256": "478b979ead469d805d93c617014f0ef43712ca7de255aed8d39e07a8225c10e1",
+      "referenceSha256": "1db4d5e364d9f90a764fada3e01148126447e2f04790e119cfd046e7d144703c",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "helios_56:the_perfect_family_broadcast",
+      "name": "The Perfect Family Broadcast",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/the-perfect-family-broadcast.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/the_perfect_family_broadcast.png",
+      "imageSha256": "1b7ad9a08114238353191515e7a65b3ca270b1338ca2f1d562b898ea42ea91e1",
+      "referenceSha256": "a578443a3848a642a9a8bffd1e17912743c1f53917ad06849c4d42bbc4c0f50b",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "helios_56:helio_1_smiling_sun_reactor",
+      "name": "HELIO-1, Smiling Sun Reactor",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/helio-1-smiling-sun-reactor.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/helio_1_smiling_sun_reactor.png",
+      "imageSha256": "933dc3eb88ed02b60a52d6b0610ba691e7003aa2ae9645cc7d282f0b32697517",
+      "referenceSha256": "8659a1db15950be842b9b960f4f3263744a748e4e1baf5c9feb3847bed467c0f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "kemet_devoured_sun:shabti_corrompu",
+      "name": "Shabti corrompu",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/shabti-corrompu.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/shabti_corrompu.png",
+      "imageSha256": "99d69c5f3e7619265af1ca5cc822abebc7aec4bb8ce05f1b7ab5367ac1f51b4b",
+      "referenceSha256": "7ab951d07660cada58f34b4f28dcb94809f669e79d7b7ed45c63f6ded8db531c",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "kemet_devoured_sun:ombre_de_ba",
+      "name": "Ombre de Ba",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/ombre-de-ba.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/ombre_de_ba.png",
+      "imageSha256": "88c892b4b9b0a207be92f4da54e7f035536344c8632426d324721f87f2cea4d7",
+      "referenceSha256": "719f84c9c436ec892ee2edfc83aeb6dd038f5fbb562075d0fa9a1aa59f1fa79f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "kemet_devoured_sun:chacal_de_tombe",
+      "name": "Chacal de tombe",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/chacal-de-tombe.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/chacal_de_tombe.png",
+      "imageSha256": "7f3364e1a2fe408717e952a6ddda32593b220ba831716a1a75b29d7fb7593ffc",
+      "referenceSha256": "9c4e6d7438223a5084cc271ffd8c65167b7aef1a4c5ee8c186e40dc014f98dd4",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "kemet_devoured_sun:pretre_d_isfet",
+      "name": "Prêtre d’Isfet",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/pretre-d-isfet.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/pretre_d_isfet.png",
+      "imageSha256": "0c7af9027556bf5e122638bcc6d7d2ec7a5efe7f532f9370da5c06e97dc160af",
+      "referenceSha256": "ed0196c943a3eff53f147a8bf5b51d58652962b0de00532c2cf6705c5d6678c1",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "kemet_devoured_sun:ammit_aux_balances_brisees",
+      "name": "Ammit aux Balances Brisées",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/ammit-aux-balances-brisees.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/ammit_aux_balances_brisees.png",
+      "imageSha256": "84d300bbb3ef559f4e62308961488d856e0931f0d907ec752c75d6574f55905b",
+      "referenceSha256": "35884d3c4d1d2f39a4da882f76ed47e5a5edc5cfa4f55a6028ac479b8f03d378",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "kemet_devoured_sun:tempete_rouge_avatar_d_isfet",
+      "name": "Tempête Rouge, Avatar d’Isfet",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/tempete-rouge-avatar-d-isfet.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/tempete_rouge_avatar_d_isfet.png",
+      "imageSha256": "d43953c61b0e4adf4b1f7ce4d9f34a99334184466d07c0682720b73de1c11639",
+      "referenceSha256": "4cda07deadf910af56bb7877a5a36aeb7da9d29d1efc306816a49014fb3f0739",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "kemet_devoured_sun:pharaon_usurpateur_sans_nom",
+      "name": "Pharaon Usurpateur Sans-Nom",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/pharaon-usurpateur-sans-nom.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/pharaon_usurpateur_sans_nom.png",
+      "imageSha256": "de3725f91a7123781cf8e229934327d2bec93f523bb24af191a9b721f3794e34",
+      "referenceSha256": "6bce2fab0cde082580a8e309f06407db35ba616ecca09a2faf6b11b55af31ce1",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "kemet_devoured_sun:apep_devoreur_de_l_aube",
+      "name": "Apep, Dévoreur de l’Aube",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/apep-devoreur-de-l-aube.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/apep_devoreur_de_l_aube.png",
+      "imageSha256": "a1232ee3fccdf2bf48767a68c7fc2bd823cb3db43644142d54f83e689aa2d5d7",
+      "referenceSha256": "58127bf8835b9ded0bf0cbab6a462209b3bdb182fd5d1edd67c6d77ffd774c31",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "imperium_aeternum:lemure_de_la_maison_vide",
+      "name": "Lémure de la Maison Vide",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/lemure-de-la-maison-vide.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/lemure_de_la_maison_vide.png",
+      "imageSha256": "b85cd5d79e26cf818d250c5a87a2564d6beea22a1d335cdd50b591708f35b89b",
+      "referenceSha256": "7aa681ab10039d505ac823957892e0e881081064826792f519d3f1e506509b1b",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 16,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "imperium_aeternum:legionnaire_au_serment_brise",
+      "name": "Légionnaire au serment brisé",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/legionnaire-au-serment-brise.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/legionnaire_au_serment_brise.png",
+      "imageSha256": "7dd4fb2db2c90ac52e25ebc43e1478959164e87d4903b6adc3b75da95fb562d0",
+      "referenceSha256": "91fc7586ded4440341310549c2e16fd7c267e6650e0de266765f87854ce0ff5f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "imperium_aeternum:louve_de_bronze",
+      "name": "Louve de bronze",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/louve-de-bronze.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/louve_de_bronze.png",
+      "imageSha256": "12f39b29cee3888ea074468ef71ea5c17053509019a31a9bbb062e3c3377d10c",
+      "referenceSha256": "456f39aac18c6bcda54d383aeea727b41902567dec41f73709888afa1c1e4d31",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 14,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "imperium_aeternum:oracle_des_dirae",
+      "name": "Oracle des Dirae",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/oracle-des-dirae.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/oracle_des_dirae.png",
+      "imageSha256": "7009eccbb8cd98327bd80c327344ebb935e9cf98c6d217f8140a6cc03bc47bdf",
+      "referenceSha256": "39715c3541744c40dba0c264979a3923e5a9a2b0fdfcf48c1c9495ab3ff24bd1",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "imperium_aeternum:aquila_mecanique",
+      "name": "Aquila mécanique",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/aquila-mecanique.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/aquila_mecanique.png",
+      "imageSha256": "926399546f4e6ba4e3d422ba0aac7529c2bb17f01cfcc0beab62c3449c809b2d",
+      "referenceSha256": "1c5e9d3fad7f21f779bb5644d71bc05d97e349c7b0e37cc03e225470010cc351",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "imperium_aeternum:centurion_rouge_de_bellone",
+      "name": "Centurion Rouge de Bellone",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/centurion-rouge-de-bellone.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/centurion_rouge_de_bellone.png",
+      "imageSha256": "3dd65e4c666cc427931897613c255b9e973e0620cc4d7c994d0148f40c3504a0",
+      "referenceSha256": "7d0fd43eac47ed657516ebf7112e885441c94c0c870ca3e0d7b72631f72f9686",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "imperium_aeternum:collecteur_d_orcus",
+      "name": "Collecteur d’Orcus",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/collecteur-d-orcus.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/collecteur_d_orcus.png",
+      "imageSha256": "7fc75f0397e4c998159b54b6fe3a114fe8c1b82a206b13e87ef01d265a49b481",
+      "referenceSha256": "7a24307f16beb154c134cffde9fcd9b6d23f4bfa77cb0b00ef8fa4ba80949678",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "imperium_aeternum:dictateur_a_la_couronne_vide",
+      "name": "Dictateur à la Couronne Vide",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/dictateur-a-la-couronne-vide.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/dictateur_a_la_couronne_vide.png",
+      "imageSha256": "df365c7a16ddfa54c34835f3175b8d048eaf7269462d037ee1efd6ba481c5a48",
+      "referenceSha256": "1754e5f0049e8cd7e266725f8e97ccd7cc210bc7f4fde0b33debf44d9ee5b205",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "imperium_aeternum:janus_bifrons_seuil_fracture",
+      "name": "Janus Bifrons, Seuil Fracturé",
+      "universe": "Imperium Aeternum",
+      "output": "/sprites/generated/bosses/imperium-aeternum/janus-bifrons-seuil-fracture.png",
+      "reference": "/images/oc-worlds/v2/imperium_aeternum/threats/janus_bifrons_seuil_fracture.png",
+      "imageSha256": "152220819d63b2b5b1a0c94bb439d964eb6c413e09331320d6260926b4e4e76e",
+      "referenceSha256": "87313f3cc8584014320e81aa4da5baa18dd1468af3157ef70a5eb95759a6ae38",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aegea_moirai:harpie_des_vents_contraires",
+      "name": "Harpie des vents contraires",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/harpie-des-vents-contraires.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/harpie_des_vents_contraires.png",
+      "imageSha256": "80257be94af57878b1f3bf98b89c359d7632e1492c2f33b62acb784dc55ddfd7",
+      "referenceSha256": "10601fc3c5466511a0e6d5d87dbddfc7da96fc37d771a15ed785a6d2bc51de9d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aegea_moirai:sentinelle_gorgone",
+      "name": "Sentinelle gorgone",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/sentinelle-gorgone.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/sentinelle_gorgone.png",
+      "imageSha256": "004662447f06c18f9ec5408a13084a1724d5f0c5c86ea96cb0712e6b9374b226",
+      "referenceSha256": "e0a290eaf093ca01a262fea3a692a27f5209374f23ba5788503e898575228624",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aegea_moirai:fragment_de_talos",
+      "name": "Fragment de Talos",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/fragment-de-talos.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/fragment_de_talos.png",
+      "imageSha256": "2cce808eb5247f60afcdf8a60d64cae25e8e151fae483dfed1034944d93a90b5",
+      "referenceSha256": "118b2fd1c6cb217058d4fac0f59dfb2f3f6ce73eef99f548436744fa79b9de28",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aegea_moirai:bete_du_labyrinthe_mobile",
+      "name": "Bête du Labyrinthe mobile",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/bete-du-labyrinthe-mobile.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/bete_du_labyrinthe_mobile.png",
+      "imageSha256": "09c85f3a69b651cdd38ce55387337623fcdf629679ae93e5f234b0fd06720fcd",
+      "referenceSha256": "36f3dc53015fcb75a87511da09f33febd5b9aeeafc19b6f9abc71205afe5c40d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 16,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aegea_moirai:minotaure_du_labyrinthe_brise",
+      "name": "Minotaure du Labyrinthe Brisé",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/minotaure-du-labyrinthe-brise.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/minotaure_du_labyrinthe_brise.png",
+      "imageSha256": "f6b432ee44572d94658aec952d523d453e9b50c2d0bee16f3226e58f15698f19",
+      "referenceSha256": "0fba6dc36112b2e70d24a1893019bde6f1ea9249dbe0339c303fba09e5eb7fe2",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aegea_moirai:gorgone_au_nom_vole",
+      "name": "Gorgone au Nom Volé",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/gorgone-au-nom-vole.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/gorgone_au_nom_vole.png",
+      "imageSha256": "5053d1531e97f15edcb31668e9f612ce0c2b9ea5f61ac8082b4ebc0dc44d1602",
+      "referenceSha256": "327f11b27ef3d60bf2ec798d2aeab9c18641c23bfaf997a6996e039f67f1d54a",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aegea_moirai:roi_des_faux_oracles",
+      "name": "Roi des Faux Oracles",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/roi-des-faux-oracles.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/roi_des_faux_oracles.png",
+      "imageSha256": "8d8a96d4d794b038fecaf98510eafa9e84310d65812b602823637b06514dc6b0",
+      "referenceSha256": "7bc90433d5bf4ca693b1d3273fc83c3b202a0b49b0ab74aaf8f604230badd49e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aegea_moirai:typhon_tempete_des_cent_voix",
+      "name": "Typhon, Tempête des Cent Voix",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/typhon-tempete-des-cent-voix.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/typhon_tempete_des_cent_voix.png",
+      "imageSha256": "6f26f92c53dca89bf7b28a9dee883e7484554d75c1b38fbb138bd62c96bc94a6",
+      "referenceSha256": "5d7954f305fb6bff326f4a4aadb2c90a9cdb509a5bded2577223cd7b561b6830",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "nine_realms_last_twilight:draugr_du_tertre_ouvert",
+      "name": "Draugr du tertre ouvert",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/draugr-du-tertre-ouvert.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/draugr_du_tertre_ouvert.png",
+      "imageSha256": "35d52ddd1f3e606b8765de15d9c58b7466a6a66c6f940905b8baf0d409fc75fc",
+      "referenceSha256": "0a5690a260e7976afe4eb09f413014e448998f3de158129a14606c5eabf6c512",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "nine_realms_last_twilight:eclaireur_jotunn_de_givre",
+      "name": "Éclaireur jötunn de givre",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/eclaireur-jotunn-de-givre.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/eclaireur_jotunn_de_givre.png",
+      "imageSha256": "d530eb730ba3622ae0a462f7c86a34988fc26a66fa9762491d89b7d7fc7ea045",
+      "referenceSha256": "807a10d766f7cd0bfa255aedc0329a54bfa94f233931ed2eed80377ba5545ed4",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "nine_realms_last_twilight:chien_de_hel",
+      "name": "Chien de Hel",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/chien-de-hel.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/chien_de_hel.png",
+      "imageSha256": "a17fc191680849337be7a2e07ed3e2889feb1566b39ff6fc3467017c33d1677a",
+      "referenceSha256": "fd5ee7b9e1efa4710f88d367a85216b7d1294723f0e8c79fd5edd544ee15681c",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "nine_realms_last_twilight:rejeton_de_ni_hoggr",
+      "name": "Rejeton de Níðhöggr",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/rejeton-de-ni-hoggr.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/rejeton_de_ni_hoggr.png",
+      "imageSha256": "84a6e072daf8e0702eff66b5bd00da14081c0d21de8351808b73e963be942bc3",
+      "referenceSha256": "44822990b43f4f7881ca871882f40ef5d5ea3b7125ae508aebb7191c689a1de6",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "nine_realms_last_twilight:pillard_maudit_par_le_sei_r",
+      "name": "Pillard maudit par le seiðr",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/pillard-maudit-par-le-sei-r.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/pillard_maudit_par_le_sei_r.png",
+      "imageSha256": "7292090b629bf668f4a07b956cdee9049f83468988b41a2b88ac45bcaa1716b1",
+      "referenceSha256": "0df73d295829f4c91318c6758bad2c6e0a6a8a4a3cd465b731236a47f6841a08",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "nine_realms_last_twilight:fenrir_brise_chaines",
+      "name": "Fenrir Brise-Chaînes",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/fenrir-brise-chaines.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/fenrir_brise_chaines.png",
+      "imageSha256": "cae4e8b153412f453699338200d5cc67c02431908a251d61cc63204765bc4b6b",
+      "referenceSha256": "19830856393ac81588da77bdf6821a7bea7b71dc8ed04e35737a8e781b311e6a",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "nine_realms_last_twilight:jarl_des_cendres_de_surtr",
+      "name": "Jarl des Cendres de Surtr",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/jarl-des-cendres-de-surtr.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/jarl_des_cendres_de_surtr.png",
+      "imageSha256": "2dd247e4bd283b1afb0e5512d52ba9dba72a36f32eececf50268d0e9a6b3d71c",
+      "referenceSha256": "025adda2cb3e613df329507f439d9da7895fda4a28158886d7f7a305223fbf7f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "nine_realms_last_twilight:valkyrie_sans_nom",
+      "name": "Valkyrie Sans-Nom",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/valkyrie-sans-nom.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/valkyrie_sans_nom.png",
+      "imageSha256": "31a38069035125f4eb377e88f40306626d80c865737033036fc837fbcf92a0e4",
+      "referenceSha256": "4b5e3ac7cac26722b678d5a636376f64effefbcfdec0ff6a0aa2dd5e66302604",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "nine_realms_last_twilight:jormungandr_anneau_du_dernier_crepuscule",
+      "name": "Jörmungandr, Anneau du Dernier Crépuscule",
+      "universe": "Nine Realms: Last Twilight",
+      "output": "/sprites/generated/bosses/nine-realms-last-twilight/jormungandr-anneau-du-dernier-crepuscule.png",
+      "reference": "/images/oc-worlds/v2/nine_realms_last_twilight/threats/jormungandr_anneau_du_dernier_crepuscule.png",
+      "imageSha256": "77effc7a484e86ad302a4b56eb485c05f3e44df4960749019b6c3ec45689cdd4",
+      "referenceSha256": "a62b72e83bb42984a627318982b4b01b87887e91a4217f6439def8f022b6fc2d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "tawantinsuyu_split_sun:ombre_d_uku_pacha",
+      "name": "Ombre d’Uku Pacha",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "output": "/sprites/generated/bosses/tawantinsuyu-the-split-sun/ombre-d-uku-pacha.png",
+      "reference": "/images/oc-worlds/v2/tawantinsuyu_split_sun/threats/ombre_d_uku_pacha.png",
+      "imageSha256": "7e361defda8ca3f81dac6ad985f1d494fdd477f09d765a9d11237610789b933e",
+      "referenceSha256": "ac63d6f2a1898121382c818c3d74bfc2a20bcb310b2ae0a6f4c30db6a97f0c1e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "tawantinsuyu_split_sun:chasqui_corrompu",
+      "name": "Chasqui corrompu",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "output": "/sprites/generated/bosses/tawantinsuyu-the-split-sun/chasqui-corrompu.png",
+      "reference": "/images/oc-worlds/v2/tawantinsuyu_split_sun/threats/chasqui_corrompu.png",
+      "imageSha256": "398e2cb2b0d60a3ac311c15b2c7ec27dd09faf2a5cdae032fe6d334c589ad74b",
+      "referenceSha256": "6a96722a56a60940e10d1cd35afe5f045e809e85bf876f8ccc13a59d1188f4e0",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "tawantinsuyu_split_sun:gardien_puma_de_pierre",
+      "name": "Gardien puma de pierre",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "output": "/sprites/generated/bosses/tawantinsuyu-the-split-sun/gardien-puma-de-pierre.png",
+      "reference": "/images/oc-worlds/v2/tawantinsuyu_split_sun/threats/gardien_puma_de_pierre.png",
+      "imageSha256": "d1242f17d7b27718b44fa9fd5759400e7434429b6dbd76136ecae175a047702b",
+      "referenceSha256": "b4f4e156f502f398952503bc0d20b51c20762b0a8537789f44ea6b06556fcf7b",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "tawantinsuyu_split_sun:jeune_amaru_de_tempete",
+      "name": "Jeune Amaru de tempête",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "output": "/sprites/generated/bosses/tawantinsuyu-the-split-sun/jeune-amaru-de-tempete.png",
+      "reference": "/images/oc-worlds/v2/tawantinsuyu_split_sun/threats/jeune_amaru_de_tempete.png",
+      "imageSha256": "d3db366a7391f1957b3c8f03a14bf233d33c684f98607a7121ad65b791b42f61",
+      "referenceSha256": "47531e670514f4b632c82a220472bd36b5bfc7b442617d976fce802b96a0c48e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "tawantinsuyu_split_sun:masque_du_monde_renverse",
+      "name": "Masque du monde renversé",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "output": "/sprites/generated/bosses/tawantinsuyu-the-split-sun/masque-du-monde-renverse.png",
+      "reference": "/images/oc-worlds/v2/tawantinsuyu_split_sun/threats/masque_du_monde_renverse.png",
+      "imageSha256": "7134daeab17915ce544f06a2699359fa357aa46b228b9717ebe5f5752d97f9ae",
+      "referenceSha256": "01308d505cbaed5014f25de78d4b5d971fb562163181cccc565eb5d7cd633040",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "tawantinsuyu_split_sun:echo_de_la_montagne_aux_neiges_noires",
+      "name": "Écho de la Montagne aux Neiges Noires",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "output": "/sprites/generated/bosses/tawantinsuyu-the-split-sun/echo-de-la-montagne-aux-neiges-noires.png",
+      "reference": "/images/oc-worlds/v2/tawantinsuyu_split_sun/threats/echo_de_la_montagne_aux_neiges_noires.png",
+      "imageSha256": "d453431e590478847508a8babf2de625cc169694a47fea75f659f6443cfea88d",
+      "referenceSha256": "e420e1e5da83314ba0a5335a6362943a2b30f4bab91921fabf96ac06c70ce175",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "tawantinsuyu_split_sun:amaru_de_la_tempete_fendue",
+      "name": "Amaru de la Tempête Fendue",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "output": "/sprites/generated/bosses/tawantinsuyu-the-split-sun/amaru-de-la-tempete-fendue.png",
+      "reference": "/images/oc-worlds/v2/tawantinsuyu_split_sun/threats/amaru_de_la_tempete_fendue.png",
+      "imageSha256": "064bcb988456610c3e398e4082a9192d2fe496a951228050ae0d431de3971c07",
+      "referenceSha256": "a6fe676402ee6966ba05bed0f5895b6c183631348265fa5d50c34c593111e02a",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "tawantinsuyu_split_sun:gardien_du_khipu_sectionne",
+      "name": "Gardien du Khipu Sectionné",
+      "universe": "Tawantinsuyu: The Split Sun",
+      "output": "/sprites/generated/bosses/tawantinsuyu-the-split-sun/gardien-du-khipu-sectionne.png",
+      "reference": "/images/oc-worlds/v2/tawantinsuyu_split_sun/threats/gardien_du_khipu_sectionne.png",
+      "imageSha256": "d82aa8e4fb54d7f0772d6c56dcd7e408be2c66236819f1bf4c9e62b319503835",
+      "referenceSha256": "10931be270be8cecf1dae85e9c62228d724a3dca063b1d0d05295a7df8f5a075",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "yomi_no_kage:oni_du_peage_rouge",
+      "name": "Oni du péage rouge",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/oni-du-peage-rouge.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/oni_du_peage_rouge.png",
+      "imageSha256": "8a1bc363d4079aad4e6c6f802914fc146eb12c729341a3929a160cab01b3601e",
+      "referenceSha256": "1bb7535a9cce869e349bc631eb58f853e8687d9dd4e7cdd47a401dcc0b7e7a7f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "yomi_no_kage:yurei_sans_tablette",
+      "name": "Yūrei sans tablette",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/yurei-sans-tablette.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/yurei_sans_tablette.png",
+      "imageSha256": "cce1d72d805ec210f0de0c848657fe5ff08c922c975d48b28d5dedb6f4031306",
+      "referenceSha256": "0dfc3a292a3ef395674c402309bccb5748bda5d2075ff7aa585a8c12cbc20002",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "yomi_no_kage:tsukumogami_affole",
+      "name": "Tsukumogami affolé",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/tsukumogami-affole.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/tsukumogami_affole.png",
+      "imageSha256": "1f1ca30c2f0372b97619c2099a0094f9202e2085bec780984214b176d183fc0c",
+      "referenceSha256": "209ac7ecddac2179a00cea9c7196981d8d063c6e7d5f71690999fa46e58c0d05",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "yomi_no_kage:tengu_du_sentier_ferme",
+      "name": "Tengu du sentier fermé",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/tengu-du-sentier-ferme.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/tengu_du_sentier_ferme.png",
+      "imageSha256": "2eccbc6e02be3ae6845cf7a59f7244073455b667813228ab5aec3123bbfe51e6",
+      "referenceSha256": "0dd0358c2963e66d7302db796fdfc5c72aa7d492aeeaca4d0227a52c275e53c7",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "yomi_no_kage:kappa_du_canal_sec",
+      "name": "Kappa du canal sec",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/kappa-du-canal-sec.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/kappa_du_canal_sec.png",
+      "imageSha256": "c2d4158f9a753334da23bf27c2346dde02e41688416657c7a490b49a3f630302",
+      "referenceSha256": "3de6822a60181d942c54669616ecdc63a901434cc16f8c590c7325a00f3b7fc8",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "yomi_no_kage:echo_de_shuten_doji",
+      "name": "Écho de Shuten-dōji",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/echo-de-shuten-doji.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/echo_de_shuten_doji.png",
+      "imageSha256": "64e0d104e0b936e88edb9bacd651e9e0da9bfe06e6a4293755f7a974d9afc305",
+      "referenceSha256": "b9ed0ea293b9d4eede9919f91756691d68f339d1ab7669aec3ef4a6788054caf",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "yomi_no_kage:onryo_au_nom_efface",
+      "name": "Onryō au Nom Effacé",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/onryo-au-nom-efface.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/onryo_au_nom_efface.png",
+      "imageSha256": "56e759a992da910d30ce06c6b3d4d8006cfd5d82648eeca93794a7049b382824",
+      "referenceSha256": "719032d962c243142977aad6ba0491d7d8a8e7e2b9a9c70e8993926243ea0d86",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "yomi_no_kage:porte_de_yomi_aux_mille_ombres",
+      "name": "Porte de Yomi aux Mille Ombres",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/porte-de-yomi-aux-mille-ombres.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/porte_de_yomi_aux_mille_ombres.png",
+      "imageSha256": "3305f3ab33b6a50f16573bfdbb3f30c2b44e29264b93d03ab3487cd154850dd0",
+      "referenceSha256": "b0240604c0ffd9c7b293c77f2b419a89c7a98e8e5659a5bc3f943cd454abafad",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 16,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mandate_nine_heavens:garde_jiangshi_sous_sceau",
+      "name": "Garde jiangshi sous sceau",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/garde-jiangshi-sous-sceau.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/garde_jiangshi_sous_sceau.png",
+      "imageSha256": "691b9962361bdf6673c4cacd6ff8eed8a22336c4471919bb625d453e1eca694d",
+      "referenceSha256": "3089df01d1bab88332734f70256eeead64c8bd2de6bf062a92c498b1daa7a5b9",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mandate_nine_heavens:bete_de_papier_talismanique",
+      "name": "Bête de papier talismanique",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/bete-de-papier-talismanique.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/bete_de_papier_talismanique.png",
+      "imageSha256": "141fd71ca8a6d1c59730cf281175f76f8b6dfa88439adc32b2116eaf62326128",
+      "referenceSha256": "174e7a243d4679031828205a6e1c99448c69624f5eceb484b659022c2133a5e1",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mandate_nine_heavens:yaoguai_renard_aux_faux_decrets",
+      "name": "Yaoguai renard aux faux décrets",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/yaoguai-renard-aux-faux-decrets.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/yaoguai_renard_aux_faux_decrets.png",
+      "imageSha256": "bc7a423a8657ea6ff491f4979f55ef33a83bf0e9ca181e0ff634437786465997",
+      "referenceSha256": "1299d6daf70995199147bdc0484f8327da5a2415fe1cda5012ec2739ab5dc79a",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mandate_nine_heavens:rejeton_de_bronze_taotie",
+      "name": "Rejeton de bronze taotie",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/rejeton-de-bronze-taotie.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/rejeton_de_bronze_taotie.png",
+      "imageSha256": "503b7db14f999b709443e52d9d04b4d4a11c6a66f9a10852e90faecc846b3ed9",
+      "referenceSha256": "18c17f51b18d1d739e668fa5997b8fb26197d850347db58c747b3068478fd0c9",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mandate_nine_heavens:bandit_des_nuages",
+      "name": "Bandit des nuages",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/bandit-des-nuages.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/bandit_des_nuages.png",
+      "imageSha256": "59fcb26c1ee8a554753c57fa13e811951e940d78e87a22185f422620e5f42f6e",
+      "referenceSha256": "e376f702632699da0d9e7a740b2243e33171646b5bf1e047cf18fbe05c9ef383",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "mandate_nine_heavens:juge_des_petitions_vides",
+      "name": "Juge des Pétitions Vides",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/juge-des-petitions-vides.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/juge_des_petitions_vides.png",
+      "imageSha256": "3adbfc2ec9ed8d7851b8eb36f5f83d8124b8e426ebe66fd8c53890dca470a128",
+      "referenceSha256": "afcdcc0bd8c1232f1944e416f7733b1a777286dafacb4e0de9c104f1226ee391",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "mandate_nine_heavens:hundun_tempete_sans_forme",
+      "name": "Hundun, Tempête Sans Forme",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/hundun-tempete-sans-forme.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/hundun_tempete_sans_forme.png",
+      "imageSha256": "94320273c04a1e8172c8012dace9ece860d5e70698491568ab01f97d64e58ac4",
+      "referenceSha256": "ab0741c3982c8e59ca90bd1b01bbae799aa9125245cf707d3b47e19f6c72439b",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "mandate_nine_heavens:dragon_noir_de_la_riviere_brisee",
+      "name": "Dragon Noir de la Rivière Brisée",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/dragon-noir-de-la-riviere-brisee.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/dragon_noir_de_la_riviere_brisee.png",
+      "imageSha256": "62f27eef9d890d6795e3979374323933fc830649778b67ebb32e47b9f8dc336b",
+      "referenceSha256": "0b8d7421e7f735357c5328f5e0f83224d78db0975db3ab9f8ecd5ca37edc507e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "mandate_nine_heavens:usurpateur_du_neuvieme_ciel",
+      "name": "Usurpateur du Neuvième Ciel",
+      "universe": "Mandate of Nine Heavens",
+      "output": "/sprites/generated/bosses/mandate-of-nine-heavens/usurpateur-du-neuvieme-ciel.png",
+      "reference": "/images/oc-worlds/v2/mandate_nine_heavens/threats/usurpateur_du_neuvieme_ciel.png",
+      "imageSha256": "3f5198ec6bf313120d983e0c0b9118becdcb341eb50f49ecb4da58a1957d81cc",
+      "referenceSha256": "e137cb2cd085a3030723df7713b9012ea5d11c3841c7c60d2b3d6a0631cca1d0",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 14,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mythos_primordia:chimere_sans_nom",
+      "name": "Chimère sans nom",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/chimere-sans-nom.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/chimere_sans_nom.png",
+      "imageSha256": "4aa18ff74ea9043e6d2b034cc592d862416b31e6ad76bb709fdcb7a163aa8fb5",
+      "referenceSha256": "2944d9d9b8f592a26f89a72cf5329a684d30155b8ec9ea32f5a349cc5ae78974",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mythos_primordia:colosse_idole",
+      "name": "Colosse-idole",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/colosse-idole.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/colosse_idole.png",
+      "imageSha256": "4832f9193273bef2ae180ff027f34780bfc6b1302c84aa8719492fce8678eaf0",
+      "referenceSha256": "db03c4af5bf83a1d5ccb21df6ac2d9309e0c751cbe4766576cb8c7abbe43f5a1",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mythos_primordia:oracle_d_os",
+      "name": "Oracle d’os",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/oracle-d-os.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/oracle_d_os.png",
+      "imageSha256": "cdb47b9e4d5bbde3928aa91206bc4768e86757f95be27cabdb95af6b70460463",
+      "referenceSha256": "fd1b6f4e097370fefb69cc8a2e35aa8114595fb8e5b4c2bf6788fd8fdb216d71",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mythos_primordia:rejeton_mange_etoile",
+      "name": "Rejeton mange-étoile",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/rejeton-mange-etoile.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/rejeton_mange_etoile.png",
+      "imageSha256": "131a241486a727b158cac92a0e43bfad5d60c08c2789ecdd20335236d8a929eb",
+      "referenceSha256": "15eb344e0ff1eeb6c9a23fe2b17f4d86791efc03d420690e31fda203bc097d71",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "mythos_primordia:titan_au_masque_vierge",
+      "name": "Titan au masque vierge",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/titan-au-masque-vierge.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/titan_au_masque_vierge.png",
+      "imageSha256": "0d1f6b260f5ebdec44c6505b038f353255a53e41ded19edd86b2c28408deabf7",
+      "referenceSha256": "33306438769ce41f322356a0cb1f673a8afbb32b91e723638fb369368bc73e36",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "mythos_primordia:mere_des_masques",
+      "name": "Mère des Masques",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/mere-des-masques.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/mere_des_masques.png",
+      "imageSha256": "594af6fff7db52d9a806e7e4fdc0338127749113c461b4465c1325c36d9b057e",
+      "referenceSha256": "78b358000e2b7a943a49824a5791680e90c94a4a999d66bc574ae382c6e61a8f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "mythos_primordia:traitre_du_premier_feu",
+      "name": "Traître du Premier Feu",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/traitre-du-premier-feu.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/traitre_du_premier_feu.png",
+      "imageSha256": "44aff8e9a4d0b4c522d537bc49dd02f112b81fb2863f8b38b0785198ad0c67f2",
+      "referenceSha256": "f41084c52375edd2d4ed68ee9167d444aaa346e482623cd2a777272dcddb3efa",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "mythos_primordia:mer_sans_rivage",
+      "name": "Mer Sans Rivage",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/mer-sans-rivage.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/mer_sans_rivage.png",
+      "imageSha256": "648c3186edf7af2cf20ed4a687dd062fe420bf1c41172fe9b9df5ab138d865f6",
+      "referenceSha256": "c16563b0a3295928abb4efd093ddece933dda5df7c6bd65fd5b22ebea6f18a2d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "mythos_primordia:le_dieu_d_avant_les_noms",
+      "name": "Le Dieu d’Avant les Noms",
+      "universe": "Mythos Primordia",
+      "output": "/sprites/generated/bosses/mythos-primordia/le-dieu-d-avant-les-noms.png",
+      "reference": "/images/oc-worlds/v2/mythos_primordia/threats/le_dieu_d_avant_les_noms.png",
+      "imageSha256": "8b2d663005af91b27ff5942a1a191ece1d6c0640bb17a75b066c0c5831fee0bb",
+      "referenceSha256": "bab70e3963e5902690e51af21d1761319b1b41b77fec69a6cdf84d718a917902",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "crownless_sea:corsaire_noye",
+      "name": "Corsaire noyé",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/corsaire-noye.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/corsaire_noye.png",
+      "imageSha256": "13e67dfca5e98e6d351d2f81ae8250ff76890e8b09f1cc8b87a9090120c001a2",
+      "referenceSha256": "a4d4d1fa65391538b50d0bce62b140e591df36ca78c5b4ada7ba5392ac761b4b",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "crownless_sea:goule_a_poudre",
+      "name": "Goule à poudre",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/goule-a-poudre.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/goule_a_poudre.png",
+      "imageSha256": "446b31bf9c338be0b5015800e58e018f3c9f555a7ab8c1f43392f8aa53ae9353",
+      "referenceSha256": "bee9094d08e893f5324adab34aa1d2310cd423dd4764b3a375b860348d73af2f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "crownless_sea:sirene_de_recif",
+      "name": "Sirène de récif",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/sirene-de-recif.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/sirene_de_recif.png",
+      "imageSha256": "c1dc895f653bcaf29d679382ce048d92cf5ddca32b5ac5b9aada62da11c7141c",
+      "referenceSha256": "07ef2702853c5f30387d9d5ba0c84b3c89dc57b1c9881e5e88603255e2b2b89d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "crownless_sea:fusilier_de_la_marine_de_la_couronne",
+      "name": "Fusilier de la Marine de la Couronne",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/fusilier-de-la-marine-de-la-couronne.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/fusilier_de_la_marine_de_la_couronne.png",
+      "imageSha256": "8807d9c4bcf94483454e1736e895ccd98ff8d8aaec6c8dd455f0b520982e3791",
+      "referenceSha256": "3e46df4de15b8a8f92980bc94dd3eef5dfb90c884243472076aad6b4f01ae40d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "crownless_sea:coffre_mimetique",
+      "name": "Coffre mimétique",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/coffre-mimetique.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/coffre_mimetique.png",
+      "imageSha256": "9e9a7426f95854f472177a02381d76e41e4a788a28c1f864b61ca4fa3e5e8f37",
+      "referenceSha256": "1451533da30837a735b174355f472395d0d4b0d0ab81db9d5a896f2cc18892ff",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "crownless_sea:amiral_chain",
+      "name": "Amiral Chain",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/amiral-chain.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/amiral_chain.png",
+      "imageSha256": "7b4331e3710e8da0291440a9e64d92f5c32b8a10beac4af8b0edeb849f37e776",
+      "referenceSha256": "e0a79732245705d903edefc5f5259ba2e45ec652e8a683edf243ccb07ac93b13",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "crownless_sea:sorciere_du_calme_mort",
+      "name": "Sorcière du Calme Mort",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/sorciere-du-calme-mort.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/sorciere_du_calme_mort.png",
+      "imageSha256": "c0931d83d9318e6f7a29928ab1fab92ddf382a82aa872d9e8a49a1b0ada2967a",
+      "referenceSha256": "a538064d081f9e89a0b011c78b7f51ace821a64a7a29a46ba72009c81279cc4e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "crownless_sea:pretre_du_leviathan",
+      "name": "Prêtre du Léviathan",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/pretre-du-leviathan.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/pretre_du_leviathan.png",
+      "imageSha256": "d7dde5ce1f60b62047bcfcfe65a2180026345d7549689ba02156e7b160dced03",
+      "referenceSha256": "0a9bb8f227621cb8943c03b894725892e1cfc48a764684a94b9f8ae19764db2a",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aetherion_seven_laws:sort_vivant_echappe",
+      "name": "Sort vivant échappé",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/sort-vivant-echappe.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/sort_vivant_echappe.png",
+      "imageSha256": "89c6607dfda47e9d6a363209ddf7d4462580188c57f8f1f00ed24e64a4933c15",
+      "referenceSha256": "0e8b2c17230b29e7b3017ff3be75de6842c14962dd3ccd7ebd5340bfc52d0a29",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aetherion_seven_laws:sangsue_de_mana",
+      "name": "Sangsue de mana",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/sangsue-de-mana.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/sangsue_de_mana.png",
+      "imageSha256": "576e8057700e553edc03c63b6b55cceea9de161ff4fff3a670f47b5d76a911cc",
+      "referenceSha256": "c8b999a27352d89ccb8a0a5954eda282d95343613247e9c4caba0ad4d745707b",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aetherion_seven_laws:null_knight_loyaliste",
+      "name": "Null-Knight loyaliste",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/null-knight-loyaliste.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/null_knight_loyaliste.png",
+      "imageSha256": "fa40b817c7b85b0dfca56fb29d2c7219b877e43dcc221b016a435403d0162339",
+      "referenceSha256": "efa5c347b80a06191f68444b9315c8eb939c2d262033ecb4eacd0c30b9288b65",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aetherion_seven_laws:gargouille_runique",
+      "name": "Gargouille runique",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/gargouille-runique.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/gargouille_runique.png",
+      "imageSha256": "947e1367711560b86a6abdba07da18bdedf3881bfe45e3a0e1478b69ac0c1938",
+      "referenceSha256": "5c4ee3ea49376bc394b668880838aef98cf8b6d42e0245518047c121e22f4d0a",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aetherion_seven_laws:feu_follet_de_memoire",
+      "name": "Feu follet de mémoire",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/feu-follet-de-memoire.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/feu_follet_de_memoire.png",
+      "imageSha256": "d8756afffb783338c0cad8ac2455e7909b5233c877b4c19856e889de5d0e2e9f",
+      "referenceSha256": "ce58df4076f8f26db1cfd128f7321a2de63da57bbe7b026751b62e8c0c9ae60a",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aetherion_seven_laws:titan_grimoire",
+      "name": "Titan-Grimoire",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/titan-grimoire.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/titan_grimoire.png",
+      "imageSha256": "1cc7deb283fc4c6b17c0c73c8f6df5abd98474b887b92b0892bef567aa373c3e",
+      "referenceSha256": "4d14b8d6a830ab596683a383d522ac481568ebd5475a80f3ac2052cfd54510c7",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aetherion_seven_laws:chancelier_du_septieme_verrou",
+      "name": "Chancelier du Septième Verrou",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/chancelier-du-septieme-verrou.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/chancelier_du_septieme_verrou.png",
+      "imageSha256": "546db69815beef5bfac010fed9b646d093d3978a4379348793635faf44941a12",
+      "referenceSha256": "defa608686b30ba20b88cad126eef0597ddf2a375a0b9968c8e9eee569e6f815",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aetherion_seven_laws:le_sort_non_ecrit",
+      "name": "Le Sort Non Écrit",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/le-sort-non-ecrit.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/le_sort_non_ecrit.png",
+      "imageSha256": "e0a59bc173861ddf669a4b53867e5cb5b0eda7c1fbb001498e53608a759063f6",
+      "referenceSha256": "da1ab01fc946ce3e3e9f09368027c11da1c82d2ad040bb1145d7a5310963b0c0",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "infernum_nine_pits:diablotin_de_cendre",
+      "name": "Diablotin de cendre",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/diablotin-de-cendre.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/diablotin_de_cendre.png",
+      "imageSha256": "1956f597ae275d2c5c1fbacb40ee72c6f7b6ca59fa83535ca13f8aba90a5acce",
+      "referenceSha256": "24c9a8da9fb0db5a9a6abf007f289e64e7103016ce964c6cb49e8346a84334ad",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "infernum_nine_pits:templier_des_chaines",
+      "name": "Templier des chaînes",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/templier-des-chaines.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/templier_des_chaines.png",
+      "imageSha256": "5f477dab715354be8bf65e899834414bf8f250766d1869ade9352662eb6b938e",
+      "referenceSha256": "2504b75205cf66e1b1ac2b780031d0d90bf75556242e445d60cd36711c635cac",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "infernum_nine_pits:fielon_contractuel",
+      "name": "Fiélon contractuel",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/fielon-contractuel.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/fielon_contractuel.png",
+      "imageSha256": "aec9e0f264629b9a35d473d8e4a97b69309cc96fcedeb3d73594b3190df21596",
+      "referenceSha256": "ede9f8d9e65c7918ba8facdd9b7ef4f45ea37fd1674f3564bd810162db1bc6ed",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "infernum_nine_pits:molosse_de_braise",
+      "name": "Molosse de braise",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/molosse-de-braise.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/molosse_de_braise.png",
+      "imageSha256": "70271bdae3ccea09c211e073c73ae67adaf7f42a893cd106e8b9c8570847289e",
+      "referenceSha256": "630817cf33e304083c496748cadc76369570560716c8b49371b4bbf101d39d34",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "infernum_nine_pits:coquille_penitente",
+      "name": "Coquille pénitente",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/coquille-penitente.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/coquille_penitente.png",
+      "imageSha256": "19545b54baa900d74c3f12763ae193be354128c3765c3b62d11ab3c66ffe1051",
+      "referenceSha256": "31aaac2f2886b587049a80a3901dfd7e4e61a3fb50270cff8ef2866bdd7fb961",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "infernum_nine_pits:duc_vharos_des_trois_couronnes",
+      "name": "Duc Vharos des Trois Couronnes",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/duc-vharos-des-trois-couronnes.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/duc_vharos_des_trois_couronnes.png",
+      "imageSha256": "c0c823e995d2da867781c00e858a8e1746cc99820b0f6ef7d8cb2854413fb175",
+      "referenceSha256": "73c723a585f8d18be8c39177ae7c2ce01af18308eba20cf04e2014320c695ac0",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "infernum_nine_pits:mere_des_cendres",
+      "name": "Mère des Cendres",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/mere-des-cendres.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/mere_des_cendres.png",
+      "imageSha256": "b34664b59eff73e80d86d9775384a83f4beb096b58045e4c345847f1c36d942d",
+      "referenceSha256": "65cb509e5a53ca15d78fea14993fb55c829386b8bf95c16d84abbfbae9e00917",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "infernum_nine_pits:auditeur_des_peches",
+      "name": "Auditeur des Péchés",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/auditeur-des-peches.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/auditeur_des_peches.png",
+      "imageSha256": "dbaec8d6368ce94f64601d4666b61a4f54e0c4d7d6eb81249fcd99621d6c44be",
+      "referenceSha256": "d101592f4b11e1c6608064f663552e360b1d279ebd848a25aacc8b7fef0b9a87",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "infernum_nine_pits:trone_rouge_du_premier_peche",
+      "name": "Trône Rouge du Premier Péché",
+      "universe": "Infernum: Nine Pits",
+      "output": "/sprites/generated/bosses/infernum-nine-pits/trone-rouge-du-premier-peche.png",
+      "reference": "/images/oc-worlds/v2/infernum_nine_pits/threats/trone_rouge_du_premier_peche.png",
+      "imageSha256": "7619eaa8027ab610e35fc06b40ff434db599de3dda9698d5bfed1fbefe808ec6",
+      "referenceSha256": "a49234c1f1a3e3fe59eee1ed16daaa8ff86bdff9af972d0815fddfbc91d48d02",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "ilyr_concordat:corsaire_du_vide_velari",
+      "name": "Corsaire du Vide velari",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/corsaire-du-vide-velari.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/corsaire_du_vide_velari.png",
+      "imageSha256": "3775656c0275f3c33783a057a15cdcb8c8c533aa8d9f877ae8578b11026f253e",
+      "referenceSha256": "568f028e92d038371a43a855dc306074d0b403230e9f5ceb75ea2376f9daa0d0",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "ilyr_concordat:aberration_du_culte_genetique",
+      "name": "Aberration du Culte génétique",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/aberration-du-culte-genetique.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/aberration_du_culte_genetique.png",
+      "imageSha256": "9b1a253aca71b54325be79db16184a92b54e8b190173cf7a89643f8016201612",
+      "referenceSha256": "aeb3553e5bc91a545c8e89bed20e3d3c25fd31be75436b3b77ee4eeffe894051",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "ilyr_concordat:drone_nul_paleen",
+      "name": "Drone Nul paléen",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/drone-nul-paleen.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/drone_nul_paleen.png",
+      "imageSha256": "5d78d6e47d926cebf9693dc5f4fb9f43024c00021b834ff2c47fc5320b2bdc67",
+      "referenceSha256": "4eb0b5dc2592358a3084c4a28c3c4cd30ca7e7871faf5f0a18f7194258474868",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "ilyr_concordat:parasite_de_voie_resonante",
+      "name": "Parasite de voie résonante",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/parasite-de-voie-resonante.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/parasite_de_voie_resonante.png",
+      "imageSha256": "e2e336979b5e401aa5ee99569cfae19fecb2614b5cd1273ff57c2825522703fb",
+      "referenceSha256": "3f3c75a00d5282a35ee86d8640801cf8af07e7dcd4df862244a8739cf35e8b11",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "ilyr_concordat:deserteur_du_concordat",
+      "name": "Déserteur du Concordat",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/deserteur-du-concordat.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/deserteur_du_concordat.png",
+      "imageSha256": "e44b810305b93fd085791093c38e8b2f5580654f3b3b7be64748d9cf9ca21072",
+      "referenceSha256": "f827e1b7a22b3433f9f5dccdf90cf2959e6822f8029660ba65f6eccbec03b931",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "ilyr_concordat:archonte_sevrix",
+      "name": "Archonte Sevrix",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/archonte-sevrix.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/archonte_sevrix.png",
+      "imageSha256": "b50a2209e1faa9970b28d049b64f3b7b294f26455292ce22c678f1ab11346cc6",
+      "referenceSha256": "ffb7540753c868f87d59bed51fe48eddc1f619c05a8778e844619c2622d54227",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 14,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "ilyr_concordat:vaisseau_ch_ur_du_schisme_nym",
+      "name": "Vaisseau-Chœur du Schisme Nym",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/vaisseau-ch-ur-du-schisme-nym.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/vaisseau_ch_ur_du_schisme_nym.png",
+      "imageSha256": "bc7bdd24e1ebb00a6f3383e51b4f20f4c2f1b5b7e36ac48603902962595386d5",
+      "referenceSha256": "c56db60bbf9387e664b0ea667485d40de2b61eff9e3dca1ea689611887c0ddf0",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "ilyr_concordat:l_architecte_pale",
+      "name": "L’Architecte Pâle",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/l-architecte-pale.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/l_architecte_pale.png",
+      "imageSha256": "16201a9ec5c3092847e0341b555da44627adb8911725091d99cd14d8c435b808",
+      "referenceSha256": "f767b5860589da3b2f63d19a49c85fa426a075e21f44a6a2ae3edc21ddd8c3d6",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "drowned_testament:cultiste_lie_au_sel",
+      "name": "Cultiste lié au sel",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/cultiste-lie-au-sel.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/cultiste_lie_au_sel.png",
+      "imageSha256": "9642f774d7d8a8e49998d56b2aa8898c56292a6c6259dbc5340bd6483e1b7179",
+      "referenceSha256": "7515277bca1f5e9a76b8756d826c9520b92cb508d3369ed1401522fe3dd4b521",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "drowned_testament:rejeton_du_ch_ur_profond",
+      "name": "Rejeton du Chœur Profond",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/rejeton-du-ch-ur-profond.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/rejeton_du_ch_ur_profond.png",
+      "imageSha256": "a150be230dda4587eaac9170655405d63085504524aa4367143b71474933f9c3",
+      "referenceSha256": "da2be5af3246cea56c451ba59abc4f572531dcba9f0b8e64d1b7bc7583340c85",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "drowned_testament:traqueur_d_angles",
+      "name": "Traqueur d’angles",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/traqueur-d-angles.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/traqueur_d_angles.png",
+      "imageSha256": "407a8842a8463624c244b0e1b681e0a3b0338bacbfe1c22e0ff34c264da3177c",
+      "referenceSha256": "0c0f00ca6555eb742be46cac3ae61a9d953483485748b594ae9659d1af7f4c9c",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "drowned_testament:coquille_couverte_de_balanes",
+      "name": "Coquille couverte de balanes",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/coquille-couverte-de-balanes.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/coquille_couverte_de_balanes.png",
+      "imageSha256": "7a5d8cf660ffe101cab5a181a2979fa31ac71199cd33be2c6c9fbe14c438cf93",
+      "referenceSha256": "d01215b7a7dc82da53e1808df0733f64ac9fbcd359b41fe5de9f0559023ed8d8",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "drowned_testament:le_ch_ur_sous_la_ville",
+      "name": "Le Chœur sous la Ville",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/le-ch-ur-sous-la-ville.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/le_ch_ur_sous_la_ville.png",
+      "imageSha256": "ddd81ff67872ee952c8a498e8d63e4b5d994d5ade3b5674070840092a6a7d0d4",
+      "referenceSha256": "d74384fbcb7abe0d3c7678d32fc055846007b873f517e151a0d632ed26b046a2",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "drowned_testament:cartographe_des_angles_impossibles",
+      "name": "Cartographe des Angles Impossibles",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/cartographe-des-angles-impossibles.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/cartographe_des_angles_impossibles.png",
+      "imageSha256": "7b6f448133dacb00bef8ae636a892a6e8156ffcfc9df00c26ef2d76e6b16db75",
+      "referenceSha256": "1eb7f5010f279ca0905007a511bf7c44e1e33fca12321b8d930f8078792d93e3",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "drowned_testament:le_dormeur_derriere_la_maree",
+      "name": "Le Dormeur derrière la Marée",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/le-dormeur-derriere-la-maree.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/le_dormeur_derriere_la_maree.png",
+      "imageSha256": "46e8c13db070dd20a56589f5c26301b9305d575871fe2edbcf3afa6cd80a17a6",
+      "referenceSha256": "738eb69acc26e19b75b3a21670cbcfee23f89b52ce4dd592a8c4f2dcf05a0974",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "valedor_shattered_crown:sapeur_gobelin_mercenaire",
+      "name": "Sapeur gobelin mercenaire",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/sapeur-gobelin-mercenaire.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/sapeur_gobelin_mercenaire.png",
+      "imageSha256": "48f353e54a6f71a266f36eb081d1e24ccedc313ee42d75096e1b363dc604d604",
+      "referenceSha256": "5cacd1fc21f252c9dcfbf0f8fa694add2e8d0b1156e283386ca03716c5bc4ac1",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "valedor_shattered_crown:chevalier_creux",
+      "name": "Chevalier creux",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/chevalier-creux.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/chevalier_creux.png",
+      "imageSha256": "d6be66570b7307725337e6684ac7de48fbae9609c8058ad5cdbc21ef00814293",
+      "referenceSha256": "60894e632a7bdc3e15bee1ac5b6564724b2c2348ce3a254c2354a5935be145c0",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "valedor_shattered_crown:brute_troll_des_ponts",
+      "name": "Brute troll des ponts",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/brute-troll-des-ponts.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/brute_troll_des_ponts.png",
+      "imageSha256": "c54af0fea3425b49d3f41fd65103edf55181c46713c709de1519380e5a50b141",
+      "referenceSha256": "e6107e0433407abe31f0f8a5ae203f00de71c9092e42b64d18500eae3e364349",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "valedor_shattered_crown:matriarche_araignee_des_ruines",
+      "name": "Matriarche araignée des ruines",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/matriarche-araignee-des-ruines.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/matriarche_araignee_des_ruines.png",
+      "imageSha256": "6feab0fa62211e75aeedc940518bc64fb45602847149975ca2c6071d0ba5ba81",
+      "referenceSha256": "47567fbe33766cf07d26dc1e85c69ffcf6d94814942627ede92eebb9a60035ff",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 14,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "valedor_shattered_crown:archer_spectre_de_l_ancienne_cour",
+      "name": "Archer spectre de l’ancienne cour",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/archer-spectre-de-l-ancienne-cour.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/archer_spectre_de_l_ancienne_cour.png",
+      "imageSha256": "3a544358c805ca4ea32401a8a049332634b0f07c3ba95bf26066a7f7f0d825ef",
+      "referenceSha256": "90d1fed0d1dbc0f6b80f4d46f0428e5ef9a1b195629f6ac17e6e3795a9cd513d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "valedor_shattered_crown:lich_sans_couronne",
+      "name": "Lich Sans Couronne",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/lich-sans-couronne.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/lich_sans_couronne.png",
+      "imageSha256": "ad05de9624b47417de56fcd3982dfc318079deb0be8fce4d968a373e690406d2",
+      "referenceSha256": "1334840141123b928ededc094231c6b2fb4a7fd20fef5c486ec04b50f42a6b51",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "valedor_shattered_crown:dragon_du_pic_creux",
+      "name": "Dragon du Pic Creux",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/dragon-du-pic-creux.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/dragon_du_pic_creux.png",
+      "imageSha256": "03e796afe20fc43d52b51eb309601841def0b0b6c3f5441c9578c17528a6d6ad",
+      "referenceSha256": "bfd2b3e8f3f5b2b7e885dc93683f3f4e21ed1bdadb02fe78fcddb33720777998",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aevum_fracture:constable_de_chronologie",
+      "name": "Constable de chronologie",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/constable-de-chronologie.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/constable_de_chronologie.png",
+      "imageSha256": "509f4ef945c9f515e14005773fc46b33eb448b8f6148db23d10df0d1abd6f123",
+      "referenceSha256": "a7099afe17b481d4e1f3d26713757794969dffbb05c9688ea8b674d5bb5e0358",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aevum_fracture:soldat_anachrone",
+      "name": "Soldat anachrone",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/soldat-anachrone.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/soldat_anachrone.png",
+      "imageSha256": "0f4d0d1316e538b5f345e97cff5962be989e77c312e9d1816062686bbf84f3d3",
+      "referenceSha256": "8f99990dff6c0c7d65f129b8699aa52324d803d5a1a9b76694c7ff33bbff904d",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 14,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aevum_fracture:doppelganger_de_propagande",
+      "name": "Doppelgänger de propagande",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/doppelganger-de-propagande.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/doppelganger_de_propagande.png",
+      "imageSha256": "aaaea52556e79d9f325e10bd4d204ad0362b6f5410f5c08ab530c53ead28c50b",
+      "referenceSha256": "4c95a9eb1f7bf297fb2ba3cb6b290a2b11020b794430facb9cc880eb33a26f3f",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aevum_fracture:molosse_chronal",
+      "name": "Molosse chronal",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/molosse-chronal.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/molosse_chronal.png",
+      "imageSha256": "98f0aa2d1aa3b7abff3d10d7039703ac36f48ca7e009ab4676c5f6302f533213",
+      "referenceSha256": "b2dd799ad073f4089868d1a2b6ff95464b051b25e89e17253a39c2d6ca39ad64",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aevum_fracture:citoyen_efface_automatise",
+      "name": "Citoyen effacé automatisé",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/citoyen-efface-automatise.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/citoyen_efface_automatise.png",
+      "imageSha256": "6fc07ce0a3cfe2a268bf41b715599052e7e3d3ce781f02bf0f49ed5e1f71b597",
+      "referenceSha256": "1d5311c177ebd077d18c08f43aff4c8eed25aa20a6092f7f62a6c2dca39a21aa",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aevum_fracture:empereur_de_la_ligne_victorieuse",
+      "name": "Empereur de la Ligne Victorieuse",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/empereur-de-la-ligne-victorieuse.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/empereur_de_la_ligne_victorieuse.png",
+      "imageSha256": "351287d5847c296a4e748f2105f4f4b2789d20b0e60cfc8840d72c49ea9bfafc",
+      "referenceSha256": "1d135fa78042bfce9d174e901a81d07d2b1a681d59fa03d008875ff5b5928a11",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aevum_fracture:ministre_d_hier",
+      "name": "Ministre d’Hier",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/ministre-d-hier.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/ministre_d_hier.png",
+      "imageSha256": "46219c85b292d1c284556262ee0107d2a8c3568a3f81e1d94e4889d9a4df4346",
+      "referenceSha256": "af24344b1a38fc29d9abd4644ec293d1f0cc4e19fad072c7808fcedf31a77cde",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aevum_fracture:general_qui_n_a_jamais_perdu",
+      "name": "Général Qui-N’a-Jamais-Perdu",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/general-qui-n-a-jamais-perdu.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/general_qui_n_a_jamais_perdu.png",
+      "imageSha256": "f4d094ad79fa09c942064586dd0e25253d621f61320c083e668e3d95b4be49dc",
+      "referenceSha256": "d9b8b9e4d236dc72363674eae906f5ff3ea732030de1b56bb650350a604abb3e",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 16,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aevum_fracture:moteur_de_l_histoire_unique",
+      "name": "Moteur de l’Histoire Unique",
+      "universe": "Aevum Fracture",
+      "output": "/sprites/generated/bosses/aevum-fracture/moteur-de-l-histoire-unique.png",
+      "reference": "/images/oc-worlds/v2/aevum_fracture/threats/moteur_de_l_histoire_unique.png",
+      "imageSha256": "59fe7c03822af886c1be979ea1b8bb57790f7b8a33f4e838fb4d87c7e0187773",
+      "referenceSha256": "33ec8539c180a68fb2cf508348aa1b126052dc634a25d96de06ae20151aba3a7",
+      "layout": {
+        "columns": 4,
+        "rows": 4,
+        "frameCount": 16,
+        "animated": true
+      },
+      "animationStatus": "available",
+      "geometry": {
+        "minimumGuard": 15,
+        "nonemptyFrames": 16
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "yomi_no_kage:amas_des_huit_orochi",
+      "name": "Amas des Huit Orochi",
+      "universe": "Yomi no Kage",
+      "output": "/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png",
+      "reference": "/images/oc-worlds/v2/yomi_no_kage/threats/amas_des_huit_orochi.png",
+      "imageSha256": "e3ab279196e0d168d9256c8bffab2b5280c85ba1dfb2d43d6fdfe850d7dcd5cf",
+      "referenceSha256": "15b163455c1a0c4e32b9598a3a46645ba6f4a3216fdcbcaa9badfb8614a16deb",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 33,
+        "nonemptyFrames": 1
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "drowned_testament:le_phare_qui_regarde",
+      "name": "Le Phare qui Regarde",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/le-phare-qui-regarde.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/le_phare_qui_regarde.png",
+      "imageSha256": "b807f0f9bafde8cdf20c67fbb660eac6e940ee4bb3931e8743a16054947ed88c",
+      "referenceSha256": "5dbdfff93b2b74010f3b7f1f492df743b7a81eaac998d51b2337a6d9dcb6b415",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 34,
+        "nonemptyFrames": 1
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "valedor_shattered_crown:vaelgor_premier_wyrm",
+      "name": "Vaelgor, Premier Wyrm",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/vaelgor-premier-wyrm.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/vaelgor_premier_wyrm.png",
+      "imageSha256": "83dc428eb64f01746eaacf2730b8463860c35007a6aacd30b51d5a5b152832fe",
+      "referenceSha256": "ef92578e7abb1bb599eacc893d19d4dd28473b8d1752125329e7b5ae2c558156",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 43,
+        "nonemptyFrames": 1
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aether_crown:lord_pneuma",
+      "name": "Lord Pneuma",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/lord-pneuma.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/lord_pneuma.png",
+      "imageSha256": "318df8f542c3d45f14874b8d3babb48387d2bcaaec56991856c87b3c4725b4d4",
+      "referenceSha256": "3ef13165181dd5255e773735f553257d2aef731aa6a98441bb6575f8ddba3187",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 55,
+        "nonemptyFrames": 1
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aether_crown:aether_mite_swarm",
+      "name": "Aether Mite Swarm",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/aether_mite_swarm.png",
+      "imageSha256": "fefbb1ef26a4a04742ccad04c8b4dd2d9af352063582094969c09c77e898118f",
+      "referenceSha256": "d24bff93a15014b6f6a88f20c020363fa20f1a64e7a6f583e0d54dc0fcc8cdea",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 58,
+        "nonemptyFrames": 1
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "crownless_sea:kraken_sans_couronne",
+      "name": "Kraken Sans Couronne",
+      "universe": "The Crownless Sea",
+      "output": "/sprites/generated/bosses/the-crownless-sea/kraken-sans-couronne.png",
+      "reference": "/images/oc-worlds/v2/crownless_sea/threats/kraken_sans_couronne.png",
+      "imageSha256": "933fc19f38eee5b72d3aed3c5d25bbee365ed924837562a8ff8625c15caeb946",
+      "referenceSha256": "9d265d22278141f70480c188d78d5f2e964a37a5021c005df497a27d78abf5eb",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 79,
+        "nonemptyFrames": 1
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "valedor_shattered_crown:reine_des_ronces",
+      "name": "Reine des Ronces",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/reine-des-ronces.png",
+      "reference": "/images/oc-worlds/v2/valedor_shattered_crown/threats/reine_des_ronces.png",
+      "imageSha256": "7a795b230657eb182c360ab427cd8d41390d7085f8467020610e9c55b9c07315",
+      "referenceSha256": "119207564c511a7b4c7145883213e4b8d5604bfb4603379798799430204b2257",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 34,
+        "nonemptyFrames": 1
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "ilyr_concordat:cuirasse_nul_oblique",
+      "name": "Cuirassé Nul « Oblique »",
+      "universe": "Ilyr Concordat",
+      "output": "/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png",
+      "reference": "/images/oc-worlds/v2/ilyr_concordat/threats/cuirasse_nul_oblique.png",
+      "imageSha256": "d8fc3b1c20506f0b246f63b0bf48c11d4a33a713d57bc141eb07a6186256f1dd",
+      "referenceSha256": "00c287ec7deee937c3b85a28b11f9666fe0685564719b9d6c77e35d77bf3f339",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 164,
+        "nonemptyFrames": 1
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "meridian_clockwork:the_twelve_bell_judges",
+      "name": "The Twelve Bell Judges",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/the_twelve_bell_judges.png",
+      "imageSha256": "29bc77091a8feeae6cf908dde3768468267fdca3a214d6f063ba46448ee5c6ec",
+      "referenceSha256": "36924d84ff273fa40d333193a89a5a8ad3aad3a26c13eec5874da3e48f7e984a",
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "geometry": {
+        "minimumGuard": 116,
+        "nonemptyFrames": 1
       },
       "visualReviewStatus": "close-to-reference",
       "canonicalFidelityApproved": false
     }
   ],
-  "implementationInputs": [
-    {
-      "path": "package.json",
-      "sha256": "10aed33e44b52dce3f25c1cb8c24cb11d3f913fbd43c6b7d3c9e058012054221"
-    },
-    {
-      "path": "scripts/installReferencedCharacterImages.mjs",
-      "sha256": "00db90db72e5999ebd339c202c1fbc2c1675370c5cc15b1354522fe9f0b0cf02"
-    },
-    {
-      "path": "scripts/installReferencedCharacterImages.test.mjs",
-      "sha256": "79c546b9a50a00733e3cc2bd1cb7a87f58d9fe2e9e52a634bd3ed00373d51a1d"
-    },
-    {
-      "path": "scripts/install-missing-character-images.sh",
-      "sha256": "e41a7c5eda9cd72267e0aee194dfed0eaf0e07bf8d79f69f271af7c724ae6f3f"
-    },
-    {
-      "path": "scripts/missingCharacterImageInventory.mjs",
-      "sha256": "3658feaae209e5a81bbcfabaf693a8b774599507ca1e254ec9df341da1a0b31d"
-    }
-  ],
-  "validation": {
-    "targetedTests": {
-      "passed": true,
-      "tests": 17,
-      "failed": 0
-    },
-    "lintPassed": true,
-    "geometryAudit": {
-      "verifiedAssets": 9,
-      "all16CellsNonempty": true,
-      "minimumTransparentGuardPixels": 12,
-      "sourceVisiblePixelsPreservedBeforeResizing": true
-    },
-    "browserLocal": [
-      {
-        "viewport": {
-          "width": 1600,
-          "height": 1000
-        },
-        "passed": true,
-        "realRendererUsed": true,
-        "decodedPngs": 9,
-        "distinctSourceFrames": 144,
-        "draws": 288,
-        "nonemptyCanvases": 288,
-        "facingDraws": {
-          "left": 144,
-          "right": 144
-        },
-        "javascriptErrors": 0,
-        "referenceImageErrors": 0,
-        "scope": "Private fixture calling the unmodified runtime renderer with actual enemy/boss identities and their resolved PNG paths."
-      },
-      {
-        "viewport": {
-          "width": 390,
-          "height": 844
-        },
-        "passed": true,
-        "realRendererUsed": true,
-        "decodedPngs": 9,
-        "distinctSourceFrames": 144,
-        "draws": 288,
-        "nonemptyCanvases": 288,
-        "facingDraws": {
-          "left": 144,
-          "right": 144
-        },
-        "javascriptErrors": 0,
-        "referenceImageErrors": 0,
-        "scope": "Private fixture calling the unmodified runtime renderer with actual enemy/boss identities and their resolved PNG paths."
-      }
-    ],
-    "fullBuild": {
-      "passed": true,
-      "groups": 16,
-      "tests": 1364,
-      "passedTests": 1364,
-      "failed": 0,
-      "cancelled": 0,
-      "viteBuilt": true,
-      "requiredAuditsPassed": true
-    },
-    "vercelPreview": {
-      "evidence": "Verified separately after the source commit and retained with the delivery artifacts; this pre-deployment source audit does not assert a deployment status."
-    }
-  },
-  "privacy": {
-    "nativeOutputIdentifiersPublished": false,
-    "generationPromptsPublished": false,
-    "privateEvidenceHashesRecorded": true
-  }
+  "publicManifests": [
+    "referenced-character-png-wave-2026-10-02.json",
+    "referenced-original-character-png-wave-2-2026-10-02.json",
+    "referenced-static-character-png-2026-10-02.json",
+    "referenced-static-lighthouse-png-2026-10-02.json",
+    "referenced-static-vaelgor-png-2026-10-02.json",
+    "referenced-static-extra-original-characters-2026-10-02.json"
+  ]
 }

@@ -109,7 +109,7 @@
     "assets:local:audit": "node scripts/auditLocalPublicAssets.mjs",
     "assets:build:audit": "node scripts/auditLocalPublicAssets.mjs --build",
     "test:character-png": "node --test scripts/installReferencedCharacterImages.test.mjs",
-    "sprites:characters:audit": "node scripts/installReferencedCharacterImages.mjs --audit docs/audits/referenced-character-png-wave-2026-10-02.json"
+    "sprites:characters:audit": "node scripts/installReferencedCharacterImages.mjs --audit docs/audits/referenced-character-png-wave-2026-10-02.json && node scripts/installReferencedCharacterImages.mjs --audit docs/audits/referenced-original-character-png-wave-2-2026-10-02.json && node scripts/auditReferencedStaticCharacters.mjs docs/audits/referenced-static-character-png-2026-10-02.json && node scripts/auditReferencedStaticCharacters.mjs docs/audits/referenced-static-lighthouse-png-2026-10-02.json && node scripts/auditReferencedStaticCharacters.mjs docs/audits/referenced-static-vaelgor-png-2026-10-02.json && node scripts/auditReferencedStaticCharacters.mjs docs/audits/referenced-static-extra-original-characters-2026-10-02.json"
   },
   "dependencies": {
     "react": "^19.2.7",
