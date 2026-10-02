@@ -1,0 +1,388 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-10-02",
+  "scope": "Nine newly generated referenced character PNG sheets. Availability and exact canonical fidelity are separate.",
+  "delivery": {
+    "installedPngs": 9,
+    "animationFrames": 144,
+    "dimensions": {
+      "width": 1024,
+      "height": 1024,
+      "format": "PNG",
+      "channels": 4
+    },
+    "provider": "OpenAI",
+    "interface": "built-in image_gen",
+    "canonicalFidelityApproved": false,
+    "historicalGenerationLedgerModified": false,
+    "cssSpriteAssetsIncluded": false
+  },
+  "availability": {
+    "baselineMissingUniqueOutputs": 1705,
+    "resolvedMissingOutputs": 9,
+    "actualMissingUniqueOutputs": 1696,
+    "missingByKind": {
+      "hero": 0,
+      "enemy": 902,
+      "boss": 794
+    },
+    "missingOriginalUniverseOutputs": 171
+  },
+  "assets": [
+    {
+      "kind": "enemy",
+      "id": "neon_requiem:helix_warden",
+      "name": "Helix Warden",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/helix-warden.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/helix_warden.png",
+      "imageSha256": "25398024de7a895904d8161c14ed1b32cc48b227009f36ddc729042fcd7391f4",
+      "referenceSha256": "96164e08928a4c7b5984d75bf18afac448bbd0f1e0424080f4c9fe4ef6c182a1",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 15,
+        "sourceVisiblePixels": 522296,
+        "assignedVisiblePixels": 522296,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "neon_requiem:debt_repossession_drone",
+      "name": "Debt Repossession Drone",
+      "universe": "Neon Requiem",
+      "output": "/sprites/generated/bosses/neon-requiem/debt-repossession-drone.png",
+      "reference": "/images/oc-worlds/v2/neon_requiem/threats/debt_repossession_drone.png",
+      "imageSha256": "71a635167907efc84ad4ae6038ec8b6ad9b8e4b576fcf2a43a992e0accf3705d",
+      "referenceSha256": "f5d9ea0f1337026ed7a1c308cccb9f2154a9493e344d2f5f9589c6ebf71812de",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 17,
+        "sourceVisiblePixels": 166358,
+        "assignedVisiblePixels": 166358,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "meridian_clockwork:springblade_automaton",
+      "name": "Springblade Automaton",
+      "universe": "Meridian Clockwork",
+      "output": "/sprites/generated/bosses/meridian-clockwork/springblade-automaton.png",
+      "reference": "/images/oc-worlds/v2/meridian_clockwork/threats/springblade_automaton.png",
+      "imageSha256": "758fcf59e140d4803b9654ad81fc52405bc6c5b32aafce67ab7963e0a8a83c78",
+      "referenceSha256": "26acfb82711a9bb987342a459d790fd7a01ad2124b806d28f693c75ab5161223",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 17,
+        "sourceVisiblePixels": 146221,
+        "assignedVisiblePixels": 146221,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aether_crown:brass_constable",
+      "name": "Brass Constable",
+      "universe": "The Aether Crown",
+      "output": "/sprites/generated/bosses/the-aether-crown/brass-constable.png",
+      "reference": "/images/oc-worlds/v2/aether_crown/threats/brass_constable.png",
+      "imageSha256": "5a7ae74ab5aef9ebb33d5d19918060329a84c37fb6c83a4806890df586c80276",
+      "referenceSha256": "76dfd9690b81a75789f8ee00fdb00f50b491ac6daa2c6f2d3fdbc8897afad408",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 15,
+        "sourceVisiblePixels": 417837,
+        "assignedVisiblePixels": 417837,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "aegea_moirai:myrmidon_d_ombre",
+      "name": "Myrmidon d’ombre",
+      "universe": "Aegea: War of the Moirai",
+      "output": "/sprites/generated/bosses/aegea-war-of-the-moirai/myrmidon-d-ombre.png",
+      "reference": "/images/oc-worlds/v2/aegea_moirai/threats/myrmidon_d_ombre.png",
+      "imageSha256": "00747e89fd05111eaa7cb0bbfc74786f70673eaf8ba776acfc99c595b569c38d",
+      "referenceSha256": "bc7996961c46dd873e09f54c6aa9401b98c890c6a24801412d43557a5585e521",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 15,
+        "sourceVisiblePixels": 405041,
+        "assignedVisiblePixels": 405041,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "kemet_devoured_sun:serpent_des_dunes",
+      "name": "Serpent des dunes",
+      "universe": "Kemet: The Devoured Sun",
+      "output": "/sprites/generated/bosses/kemet-the-devoured-sun/serpent-des-dunes.png",
+      "reference": "/images/oc-worlds/v2/kemet_devoured_sun/threats/serpent_des_dunes.png",
+      "imageSha256": "aa4d8389716cdca7861c72d821284f5a7dfea41cdd0e983f91f68b1dc6b75dd9",
+      "referenceSha256": "1754cc0cd6bd658894a47b24285a08be3e8cd01496c77add2ce1747502a7d04f",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 17,
+        "sourceVisiblePixels": 170977,
+        "assignedVisiblePixels": 170977,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "drowned_testament:sangsue_de_reve",
+      "name": "Sangsue de rêve",
+      "universe": "The Drowned Testament",
+      "output": "/sprites/generated/bosses/the-drowned-testament/sangsue-de-reve.png",
+      "reference": "/images/oc-worlds/v2/drowned_testament/threats/sangsue_de_reve.png",
+      "imageSha256": "747d17f509772da328dfb9d8b3545a3513e5b13f4ece199e0a175716f21afcb5",
+      "referenceSha256": "2fd05f82883c16b18cb64bba43b09dc9c5a04e7bc8bc71e87fad359d15ac5be6",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 17,
+        "sourceVisiblePixels": 220403,
+        "assignedVisiblePixels": 220403,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "enemy",
+      "id": "helios_56:isotope_mite",
+      "name": "Isotope Mite",
+      "universe": "Helios 56",
+      "output": "/sprites/generated/bosses/helios-56/isotope-mite.png",
+      "reference": "/images/oc-worlds/v2/helios_56/threats/isotope_mite.png",
+      "imageSha256": "45d8de8ed0916f610262440ca4d5550c4503b7824db0ff3d18b0eed322dd8804",
+      "referenceSha256": "66c38b2c0a09bf1d5c83dd7bfa63c2ed010f348a1c197c7c3a688a5cbfe45b19",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 14,
+        "sourceVisiblePixels": 519973,
+        "assignedVisiblePixels": 519973,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    },
+    {
+      "kind": "boss",
+      "id": "aetherion_seven_laws:archimage_zero",
+      "name": "Archimage Zéro",
+      "universe": "Aetherion: Seven Laws of Magic",
+      "output": "/sprites/generated/bosses/aetherion-seven-laws-of-magic/archimage-zero.png",
+      "reference": "/images/oc-worlds/v2/aetherion_seven_laws/threats/archimage_zero.png",
+      "imageSha256": "eaee363ee2bb37f8ff4d0ecf59e455985cbd06a735860b0a3c66cb1cf567c1f9",
+      "referenceSha256": "1b9e41638c62b20c6ce4444c91ab3bd13ccacafc940bdee12c952cdafd44718b",
+      "layout": {
+        "columns": 4,
+        "rows": [
+          "idle",
+          "run",
+          "attack",
+          "hit"
+        ],
+        "frameWidth": 256,
+        "frameHeight": 256
+      },
+      "geometry": {
+        "minimumGuard": 17,
+        "sourceVisiblePixels": 264591,
+        "assignedVisiblePixels": 264591,
+        "footBaselineVariationPixels": 0
+      },
+      "visualReviewStatus": "close-to-reference",
+      "canonicalFidelityApproved": false
+    }
+  ],
+  "implementationInputs": [
+    {
+      "path": "package.json",
+      "sha256": "10aed33e44b52dce3f25c1cb8c24cb11d3f913fbd43c6b7d3c9e058012054221"
+    },
+    {
+      "path": "scripts/installReferencedCharacterImages.mjs",
+      "sha256": "00db90db72e5999ebd339c202c1fbc2c1675370c5cc15b1354522fe9f0b0cf02"
+    },
+    {
+      "path": "scripts/installReferencedCharacterImages.test.mjs",
+      "sha256": "79c546b9a50a00733e3cc2bd1cb7a87f58d9fe2e9e52a634bd3ed00373d51a1d"
+    },
+    {
+      "path": "scripts/install-missing-character-images.sh",
+      "sha256": "e41a7c5eda9cd72267e0aee194dfed0eaf0e07bf8d79f69f271af7c724ae6f3f"
+    },
+    {
+      "path": "scripts/missingCharacterImageInventory.mjs",
+      "sha256": "3658feaae209e5a81bbcfabaf693a8b774599507ca1e254ec9df341da1a0b31d"
+    }
+  ],
+  "validation": {
+    "targetedTests": {
+      "passed": true,
+      "tests": 17,
+      "failed": 0
+    },
+    "lintPassed": true,
+    "geometryAudit": {
+      "verifiedAssets": 9,
+      "all16CellsNonempty": true,
+      "minimumTransparentGuardPixels": 12,
+      "sourceVisiblePixelsPreservedBeforeResizing": true
+    },
+    "browserLocal": [
+      {
+        "viewport": {
+          "width": 1600,
+          "height": 1000
+        },
+        "passed": true,
+        "realRendererUsed": true,
+        "decodedPngs": 9,
+        "distinctSourceFrames": 144,
+        "draws": 288,
+        "nonemptyCanvases": 288,
+        "facingDraws": {
+          "left": 144,
+          "right": 144
+        },
+        "javascriptErrors": 0,
+        "referenceImageErrors": 0,
+        "scope": "Private fixture calling the unmodified runtime renderer with actual enemy/boss identities and their resolved PNG paths."
+      },
+      {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "passed": true,
+        "realRendererUsed": true,
+        "decodedPngs": 9,
+        "distinctSourceFrames": 144,
+        "draws": 288,
+        "nonemptyCanvases": 288,
+        "facingDraws": {
+          "left": 144,
+          "right": 144
+        },
+        "javascriptErrors": 0,
+        "referenceImageErrors": 0,
+        "scope": "Private fixture calling the unmodified runtime renderer with actual enemy/boss identities and their resolved PNG paths."
+      }
+    ],
+    "fullBuild": {
+      "passed": true,
+      "groups": 16,
+      "tests": 1364,
+      "passedTests": 1364,
+      "failed": 0,
+      "cancelled": 0,
+      "viteBuilt": true,
+      "requiredAuditsPassed": true
+    },
+    "vercelPreview": {
+      "evidence": "Verified separately after the source commit and retained with the delivery artifacts; this pre-deployment source audit does not assert a deployment status."
+    }
+  },
+  "privacy": {
+    "nativeOutputIdentifiersPublished": false,
+    "generationPromptsPublished": false,
+    "privateEvidenceHashesRecorded": true
+  }
+}
