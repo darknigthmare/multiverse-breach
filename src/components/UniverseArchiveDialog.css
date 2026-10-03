@@ -1,0 +1,17 @@
+[data-universe-archive] > [data-archive-section] {
+  flex: 1 1 auto;
+  overscroll-behavior: contain;
+}
+.universe-archive-lore:focus-visible {
+  outline: 2px solid #39c5bb;
+  outline-offset: 3px;
+}
+@media (max-width: 640px), (max-height: 640px) {
+  [data-universe-archive] > div:first-child { flex-shrink: 0; }
+  .universe-archive-lore {
+    max-height: min(22vh, 180px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+}

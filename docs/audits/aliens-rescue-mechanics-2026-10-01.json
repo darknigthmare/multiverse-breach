@@ -1,0 +1,102 @@
+{
+  "id": "aliens-1986-newt-rescue",
+  "date": "2026-10-01",
+  "stageId": 3,
+  "universe": "Alien",
+  "incarnation": "Aliens (1986) - Hadley's Hope atmosphere processor, LV-426",
+  "status": "implemented-source-sequence-with-explicit-game-adaptations",
+  "visualFidelity": "pending; existing sprites and scenery not certified as 1:1",
+  "sourceFacts": [
+    "Ripley frees Newt from the hive and escapes the atmosphere processor with her.",
+    "The Queen survives the hive escape and appears aboard the Sulaco later.",
+    "The power-loader confrontation belongs to the Sulaco cargo lock, not the processor hive."
+  ],
+  "implemented": [
+    "Spatial rescue marker becomes usable when the existing Queen wave arrives.",
+    "Living hero must reach Newt within the authored interaction radius and free her.",
+    "Newt accompanies one carrier; she has no HP, enemy entry or damageable combat entity.",
+    "Living carrier must reach the separate exit marker and explicitly evacuate.",
+    "Queen normal and external damage remains nonlethal; fixed external HP loss preserves its amount and optional shield absorption.",
+    "Queen cannot provide generic boss-kill or ringout victory.",
+    "Carrier loss defeats the rescue mission, including with another living hero at the exit.",
+    "AutoBattle crosses the original waves and physically travels between rescue and exit, retaining actor statistics.",
+    "Wrong incarnation/mode/boss/roster, custom flags and different scenes preserve generic combat.",
+    "Only source-hive Ripley Aliens receives a runtime loadout copy: Hive Cover, M41A grenade launcher special, directional pulse-rifle range and a short-range incinerator. Other incarnations/scenes and the source hero database remain unchanged."
+  ],
+  "gameAdaptations": [
+    "Existing three combat waves before the Queen are retained and do not recreate the film editing or chronology.",
+    "2D platforms, marker coordinates, interaction radius, instantaneous rescue action and abbreviated return route are game choices.",
+    "One living carrier and carrier-loss defeat are game rules. The child is neither displayed as a damageable combatant nor subject to an HP gauge.",
+    "Nonlethal Queen HP floor and fall repositioning preserve the source outcome through a game-specific combat model.",
+    "Nest, lifts, stairs and landing platform are compressed into one arena. No exact film geometry, lift timing, egg-sac burn sequence, facehugger rescue choreography or full processor destruction is claimed.",
+    "The Sulaco power-loader finale is still separate and unimplemented. Only the source-hive Ripley Aliens runtime exchanges power-loader actions for hive cover and an M41A grenade. Defensive reduction, damage, ranges, hit limits, local projectile/flame feedback and special charge remain game adaptations, not film measurements or certified prop art."
+  ],
+  "runtime": {
+    "objective": "rescue_escape",
+    "target": 2,
+    "phases": [
+      "search",
+      "rescue",
+      "escape",
+      "complete"
+    ],
+    "rescuePoint": {
+      "xRatio": 0.67,
+      "yRatio": 0.78
+    },
+    "exitPoint": {
+      "xRatio": 0.12,
+      "yRatio": 0.78
+    },
+    "interactionRadius": 42,
+    "api": [
+      "getAliensRescueEncounterState()",
+      "triggerAliensRescueAction(rescue-newt | evacuate, heroOrId)",
+      "applyEncounterDamage(target, amount, context)",
+      "setPaused(paused)"
+    ]
+  },
+  "sources": [
+    {
+      "url": "https://www.20thcenturystudios.com/movies/aliens",
+      "role": "Official distributor; film identity, year, director and cast. Does not substantiate detailed rescue rules.",
+      "sha256": "7d61a7f5e8407f85fdd46288feda2e578de18626f6e644389dbfa8574ba533c9",
+      "retrievedDate": "2026-10-01",
+      "bytes": 1497173
+    },
+    {
+      "url": "https://imsdb.com/scripts/Aliens.html",
+      "role": "James Cameron screenplay hosted by IMSDb, scenes 173–185 and later Sulaco cargo-lock scenes. Draft evidence: details differ from the released film.",
+      "sha256": "4d63cb9e15fe496e3fd37ad3a87be3067cbdba2857fa92205a32c54a2f8ad501",
+      "retrievedDate": "2026-10-01",
+      "bytes": 280246
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Aliens_(film)",
+      "role": "Secondary plot summary corroborating Newt rescue, processor evacuation and separate Sulaco Queen confrontation.",
+      "sha256": "cdfeb23435c6732c2c9d104b4ccb3a93f04eb533f5b7d8b49c412eef0bbb3d67",
+      "retrievedDate": "2026-10-01",
+      "bytes": 1563460
+    }
+  ],
+  "validation": {
+    "newActualEngineTests": 24,
+    "newTestsPassed": 24,
+    "regressionTests": 39,
+    "regressionTestsPassed": 39,
+    "commands": [
+      "node --test scripts/canonAliensRescueEncounter.test.mjs",
+      "node --test scripts/smashObjectiveResolution.test.mjs scripts/smashCanonAbilityProfiles.test.mjs scripts/meleeCombatRuntime.test.mjs scripts/stageEventEngine.test.mjs",
+      "./node_modules/.bin/oxlint src/game/engineSmash.js src/game/canonAliensRescueEncounter.js src/game/canonAliensRescueEncounterPresentation.js scripts/canonAliensRescueEncounter.test.mjs",
+      "git diff --check"
+    ],
+    "lintPassed": true,
+    "diffCheckPassed": true
+  },
+  "inputSha256": {
+    "src/game/engineSmash.js": "44bc7a8bfc59bedafeb3547289a6d30e867797868a6268234bb8ed4b44426f0f",
+    "src/game/canonAliensRescueEncounter.js": "4c0809b0b22b56ba8db2bebf240773c6521779f85f32bd10f98f646fefbba670",
+    "src/game/canonAliensRescueEncounterPresentation.js": "f10cd552c56fcb02247ee24548909186b50ecb7800437c6c13172f11d2fb7cee",
+    "scripts/canonAliensRescueEncounter.test.mjs": "6d3297fb8cb3aa218c49ef5dd9ef81dcbea33fc42141a653f006d234c17cb123"
+  }
+}

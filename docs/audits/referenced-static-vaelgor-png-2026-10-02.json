@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "scope": "One explicitly static original-character PNG; animation remains pending.",
+  "policy": {
+    "canonicalFidelityApproved": false,
+    "privatePromptsAndIdentifiersPublished": false
+  },
+  "entries": [
+    {
+      "kind": "boss",
+      "runtimeKind": "worldBoss",
+      "id": "valedor_shattered_crown:vaelgor_premier_wyrm",
+      "name": "Vaelgor, Premier Wyrm",
+      "universe": "Valedor: The Shattered Crown",
+      "output": "/sprites/generated/bosses/valedor-the-shattered-crown/vaelgor-premier-wyrm.png",
+      "source": {
+        "provider": "OpenAI",
+        "interface": "built-in image_gen",
+        "assertion": "recorded in private generation evidence"
+      },
+      "sourceImage": {
+        "sha256": "f75f30f36185e92283549d514f9cc2cc761294ce5730273e645879087bd29045",
+        "bytes": 2280145,
+        "width": 1254,
+        "height": 1254
+      },
+      "reference": {
+        "output": "/images/oc-worlds/v2/valedor_shattered_crown/threats/vaelgor_premier_wyrm.png",
+        "sha256": "ef92578e7abb1bb599eacc893d19d4dd28473b8d1752125329e7b5ae2c558156"
+      },
+      "image": {
+        "sha256": "83dc428eb64f01746eaacf2730b8463860c35007a6aacd30b51d5a5b152832fe",
+        "bytes": 1623159,
+        "width": 1024,
+        "height": 1024,
+        "format": "png",
+        "channels": 4
+      },
+      "layout": {
+        "columns": 1,
+        "rows": 1,
+        "frameCount": 1,
+        "animated": false
+      },
+      "animationStatus": "pending",
+      "fileAvailable": true,
+      "processing": {
+        "operation": "nearest unpremultiplied RGBA sampling on complete source canvas with transparent padding",
+        "padding": 24,
+        "sourceGuard": 25,
+        "outputGuard": 43,
+        "sourceVisiblePixels": 729528,
+        "visiblePixels": 442007,
+        "artworkSynthesized": false
+      },
+      "privateEvidence": {
+        "sha256": "80c4a8ac2063d8336f195f9ecbae7db686f8b5baa06a638d37de5f726f23e9df",
+        "publiclyAvailable": false
+      },
+      "visualReview": {
+        "status": "close-to-reference",
+        "ringedCrystals": 5,
+        "canonicalFidelityApproved": false
+      },
+      "canonicalFidelityApproved": false
+    }
+  ]
+}

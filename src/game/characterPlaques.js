@@ -2,6 +2,8 @@ import { LORE_DB } from './lore';
 import { getUniverseSignature } from './loreDescriptions';
 import { FEATURED_CHARACTER_PLAQUES } from './featuredUniversePacks';
 import { SOLAR_OPPOSITES_SIREN_STAR_WARS_CHARACTER_PLAQUES } from './solarOppositesSirenStarWarsPack.js';
+import { getCanonP0SourcePlaque } from './canonP0SourceKits.js';
+import { getCanonBlackPearlSourcePlaque } from './canonBlackPearlSourceKits.js';
 
 export const CHARACTER_PLAQUES = {
   player_anchor: {
@@ -232,30 +234,121 @@ export const CHARACTER_PLAQUES = {
     doctrine: { fr: 'Fusil d assaut MA5, magnum M6D, grenade plasma, bouclier MJOLNIR, laser Spartan.', en: 'MA5 assault rifle, M6D magnum, plasma grenade, MJOLNIR shield, Spartan Laser.' },
     tags: ['UNSC', 'Spartan-II', 'MJOLNIR', 'Cortana', 'Forerunner', 'Covenant']
   },
+  han_solo: {
+    clearance: 'SW-ANH-1977',
+    rank: { fr: 'Contrebandier du Faucon', en: 'Falcon smuggler' },
+    role: { fr: 'Tir de couverture et extraction', en: 'Covering fire and extraction' },
+    callSign: 'Solo',
+    origin: { fr: 'Un nouvel espoir (1977) - Mos Eisley / Etoile de la Mort', en: 'A New Hope (1977) - Mos Eisley / Death Star' },
+    dossier: {
+      fr: 'Han est ici le contrebandier d Un nouvel espoir: pilote du Faucon Millenium aux cotes de Chewbacca, il quitte Mos Eisley et aide a sauver Leia. Son arme personnelle est le pistolet blaster DL-44 modifie. La carbonite est une captivite subie dans le film suivant, jamais une armure ou un pouvoir defensif.',
+      en: 'This Han is the A New Hope smuggler: Millennium Falcon pilot alongside Chewbacca, leaving Mos Eisley and helping rescue Leia. His personal weapon is a modified DL-44 blaster pistol. Carbonite is imprisonment suffered in the next film, never armor or a defensive power.'
+    },
+    doctrine: { fr: 'DL-44, tirs de couverture et esquive. Les salves et valeurs de combat adaptent ces gestes aux regles du jeu.', en: 'DL-44, covering shots and evasion. Volleys and combat values adapt these actions to the game rules.' },
+    tags: ['Star Wars 1977', 'DL-44', 'Chewbacca', 'Falcon']
+  },
+  luke: {
+    clearance: 'SW-ROTJ-1983',
+    rank: { fr: 'Chevalier Jedi', en: 'Jedi Knight' },
+    role: { fr: 'Duel au sabre et telekinesie', en: 'Lightsaber duel and telekinesis' },
+    callSign: 'Skywalker',
+    origin: { fr: 'Le Retour du Jedi (1983) - duel de l Etoile de la Mort II', en: 'Return of the Jedi (1983) - Death Star II duel' },
+    dossier: {
+      fr: 'Luke porte la tenue noire et le sabre a lame verte qu il a construit apres la perte du sabre de son pere sur Bespin. Cette incarnation du Retour du Jedi sauve Han puis affronte Vader sans devenir Sith. Son duel, sa parade et la telekinesie de la Force remplacent le rayon mental invente du precedent kit.',
+      en: 'Luke wears the black outfit and green-bladed lightsaber he built after losing his father s saber on Bespin. This Return of the Jedi incarnation rescues Han and faces Vader without becoming a Sith. His duel, parry and Force telekinesis replace the invented mind beam from the previous kit.'
+    },
+    doctrine: { fr: 'Sabre vert unique, main droite mecanique, parade et telekinesie. Les degats et delais sont des regles du jeu.', en: 'Single green saber, mechanical right hand, parry and telekinesis. Damage and cooldowns are game rules.' },
+    tags: ['Star Wars 1983', 'Jedi', 'Green Lightsaber', 'Death Star II']
+  },
+  vader: {
+    clearance: 'SW-ESB-1980',
+    rank: { fr: 'Seigneur Sith', en: 'Sith Lord' },
+    role: { fr: 'Duel, telekinesie et etranglement de Force', en: 'Duel, telekinesis and Force choke' },
+    callSign: 'Vader',
+    origin: { fr: 'L Empire contre-attaque (1980) - Bespin', en: 'The Empire Strikes Back (1980) - Bespin' },
+    dossier: {
+      fr: 'Vader conserve son casque ferme, son armure cybernetique de survie et son sabre a lame rouge. A Bespin, il utilise la Force pour projeter des debris sur Luke. L etranglement de Force est une action dirigee sur une cible; la Marche imperiale est un theme musical du film, pas un pouvoir explosif du personnage.',
+      en: 'Vader retains his closed helmet, cybernetic life-support armor and red-bladed lightsaber. On Bespin he uses the Force to hurl debris at Luke. Force choke is directed at a target; the Imperial March is a film musical theme, not an explosive character power.'
+    },
+    doctrine: { fr: 'Sabre rouge, parade, debris de Bespin et etranglement de Force. Les valeurs de combat restent une adaptation du jeu.', en: 'Red saber, parry, Bespin debris and Force choke. Combat values remain a game adaptation.' },
+    tags: ['Star Wars 1980', 'Sith', 'Red Lightsaber', 'Life Support']
+  },
+  bob_minions: {
+    clearance: 'MIN-BOB-2015',
+    rank: { fr: 'Compagnon de Kevin et Stuart', en: 'Kevin and Stuart s companion' },
+    role: { fr: 'Comedie et diversion', en: 'Comedy and distraction' },
+    callSign: 'Bob',
+    origin: { fr: 'Minions (2015) - aventure de la couronne a Londres', en: 'Minions (2015) - London crown adventure' },
+    dossier: {
+      fr: 'Bob est le plus petit du trio: rond, chauve, avec deux yeux de couleurs differentes, un vert et un brun. Illumination le decrit comme doux et naif. Il garde ses lunettes doubles, sa salopette et son ours Tim; son role de classe ne lui attribue plus de laser. Les bousculades et diversions sont une adaptation comique pour le jeu.',
+      en: 'Bob is the smallest of the trio: round and bald, with two differently colored eyes, one green and one brown. Illumination describes him as sweet and naive. He retains his double goggles, overalls and Tim teddy bear; his game class no longer grants him a laser. Bumps and distractions are a comic game adaptation.'
+    },
+    doctrine: { fr: 'Petit corps rond, yeux heterochromes, lunettes doubles, Tim et gestes comiques; aucun pouvoir laser canonique.', en: 'Small round body, mismatched eyes, double goggles, Tim and comic gestures; no canonical laser power.' },
+    tags: ['Minions 2015', 'Bob', 'Tim', 'Comedy']
+  },
+  kevin_minions: {
+    clearance: 'MIN-KEV-2015',
+    rank: { fr: 'Meneur du trio', en: 'Trio leader' },
+    role: { fr: 'Protection et conduite du groupe', en: 'Protection and team guidance' },
+    callSign: 'Kevin',
+    origin: { fr: 'Minions (2015) - aventure de la couronne a Londres', en: 'Minions (2015) - London crown adventure' },
+    dossier: {
+      fr: 'Kevin est le grand Minion a deux yeux et a touffe de cheveux centrale. Il lance le voyage de Bob et Stuart pour trouver un nouveau chef. Illumination le decrit comme protecteur et un peu autoritaire. Sa classe tactique ne lui donne plus automatiquement un fusil; les bousculades, bananes et charges de groupe sont une adaptation comique du jeu.',
+      en: 'Kevin is the tall two-eyed Minion with a central hair tuft. He starts Bob and Stuart s journey to find a new master. Illumination describes him as protective and slightly bossy. His tactical class no longer automatically grants a rifle; bumps, bananas and team charges are a comic game adaptation.'
+    },
+    doctrine: { fr: 'Grande silhouette, deux yeux bruns, touffe centrale, lunettes doubles et protection du trio.', en: 'Tall silhouette, two brown eyes, central hair tuft, double goggles and protection of the trio.' },
+    tags: ['Minions 2015', 'Kevin', 'Leader', 'Comedy']
+  },
+  stuart_minions: {
+    clearance: 'MIN-STU-2015',
+    rank: { fr: 'Aspirant rockeur', en: 'Aspiring rock star' },
+    role: { fr: 'Comedie musicale', en: 'Musical comedy' },
+    callSign: 'Stuart',
+    origin: { fr: 'Minions (2015) - finale rock a Londres', en: 'Minions (2015) - London rock finale' },
+    dossier: {
+      fr: 'Stuart possede un seul oeil brun, une lunette unique et quelques cheveux noirs separes au milieu. Illumination le decrit comme rebelle et aspirant rockeur; sa guitare electrique rouge figure dans la reference officielle. Les riffs offensifs du jeu adaptent cet accessoire musical, sans pretendre que Stuart possede un pouvoir sonore dans le film.',
+      en: 'Stuart has one brown eye, a single goggle and sparse black hair parted in the middle. Illumination describes him as rebellious and an aspiring rock star; his red electric guitar appears in the official reference. Offensive riffs adapt this musical prop for the game without claiming Stuart has a sound power in the film.'
+    },
+    doctrine: { fr: 'Un oeil, une lunette, guitare electrique rouge et gestes de rockeur; degats sonores adaptes au jeu.', en: 'One eye, one goggle, red electric guitar and rock-star gestures; sound damage adapted for the game.' },
+    tags: ['Minions 2015', 'Stuart', 'Guitar', 'Comedy']
+  },
   ripley: {
-    clearance: 'WY-426',
-    rank: { fr: 'Survivante certifiee', en: 'Certified Survivor' },
+    clearance: 'WY-NOSTROMO',
+    rank: { fr: 'Lieutenante du Nostromo', en: 'Nostromo warrant officer' },
     role: { fr: 'Survie anti-Xenomorphe', en: 'Anti-Xenomorph survival' },
     callSign: 'Ripley',
-    origin: { fr: 'LV-426 / Nostromo', en: 'LV-426 / Nostromo' },
+    origin: { fr: 'Alien (1979) - Nostromo / Narcissus', en: 'Alien (1979) - Nostromo / Narcissus' },
     dossier: {
-      fr: 'Ripley sait lire une infestation avant qu elle devienne une ruche. Sa plaquette priorise evacuation, feu controle et refus net des protocoles Weyland-Yutani.',
-      en: 'Ripley reads an infestation before it becomes a hive. Her plaque prioritizes extraction, controlled fire, and hard refusal of Weyland-Yutani protocols.'
+      fr: 'Ripley est la survivante du Nostromo dans Alien (1979). Elle utilise le lance-flammes improvise de l equipage, organise sa fuite vers le Narcissus et repousse le Big Chap avec le harpon de la navette.',
+      en: 'Ripley is the Nostromo survivor from Alien (1979). She uses the crew s improvised flamethrower, escapes to the Narcissus and repels the Big Chap with the shuttle harpoon gun.'
     },
-    doctrine: { fr: 'Pulse rifle, lance-flammes, chargeur exosquelette.', en: 'Pulse rifle, flamethrower, power loader.' },
-    tags: ['LV-426', 'Hive', 'Flame', 'Survivor']
+    doctrine: { fr: 'Lance-flammes improvise, evasion du Nostromo, harpon du Narcissus.', en: 'Improvised flamethrower, Nostromo escape, Narcissus harpoon.' },
+    tags: ['Nostromo', 'Narcissus', 'Alien 1979', 'Flame', 'Survivor']
+  },
+  ripley_aliens: {
+    clearance: 'WY-LV426',
+    rank: { fr: 'Survivante de LV-426', en: 'LV-426 Survivor' },
+    role: { fr: 'Secours de Newt et combat de la Reine', en: 'Newt rescue and Queen confrontation' },
+    callSign: 'Ripley',
+    origin: { fr: 'Aliens (1986) - LV-426 / Sulaco', en: 'Aliens (1986) - LV-426 / Sulaco' },
+    dossier: {
+      fr: 'Cette incarnation est celle d Aliens (1986): Ripley apprend le M41A avec Hicks, associe son fusil au M240 pour sauver Newt puis utilise le power loader du Sulaco contre la Reine.',
+      en: 'This is the Aliens (1986) incarnation: Ripley learns the M41A from Hicks, combines it with the M240 to rescue Newt and uses the Sulaco power loader against the Queen.'
+    },
+    doctrine: { fr: 'Fusil M41A, incinerateur M240, power loader P-5000.', en: 'M41A pulse rifle, M240 incinerator, P-5000 power loader.' },
+    tags: ['LV-426', 'Sulaco', 'Aliens 1986', 'Newt', 'Power Loader']
   },
   predator: {
     clearance: 'YAU-01',
-    rank: { fr: 'Chasseur Yautja', en: 'Yautja Hunter' },
+    rank: { fr: 'Jungle Hunter', en: 'Jungle Hunter' },
     role: { fr: 'Traque et duel plasma', en: 'Hunt and plasma duel' },
     callSign: 'Yautja',
-    origin: { fr: 'Clan de chasse interstellaire', en: 'Interstellar hunting clan' },
+    origin: { fr: 'Predator (1987) - jungle d Amerique centrale', en: 'Predator (1987) - Central American jungle' },
     dossier: {
       fr: 'Predateur discipline par le code de chasse. Le Nexus l indexe comme combattant de pression: camouflage, ciblage thermique et execution des menaces dominantes.',
       en: 'Predator bound by the hunt code. The Nexus indexes him as a pressure fighter: cloaking, thermal targeting, and execution of dominant threats.'
     },
-    doctrine: { fr: 'Lames de poignet, plasma caster, disque intelligent.', en: 'Wristblades, plasma caster, smart disc.' },
+    doctrine: { fr: 'Lames de poignet, plasma caster, camouflage optique, duel sans masque.', en: 'Wristblades, plasma caster, optical camouflage, unmasked duel.' },
     tags: ['Yautja', 'Cloak', 'Plasma', 'Hunter']
   },
   leon: {
@@ -600,20 +693,20 @@ export const CHARACTER_PLAQUES = {
   },
   freeman: {
     clearance: 'BM-HEV',
-    rank: { fr: 'Physicien HEV / anomalie Black Mesa', en: 'HEV physicist / Black Mesa anomaly' },
+    rank: { fr: 'Physicien HEV Mark V / Resistance', en: 'HEV Mark V physicist / Resistance' },
     role: { fr: 'Cascade de resonance', en: 'Resonance cascade' },
     callSign: 'Freeman',
-    origin: { fr: 'Univers Half-Life - Black Mesa / Xen / Combine', en: 'Half-Life universe - Black Mesa / Xen / Combine' },
+    origin: { fr: 'Half-Life 2 (2004) - City 17 / Citadelle', en: 'Half-Life 2 (2004) - City 17 / Citadel' },
     dossier: {
-      fr: 'Dans sa Trame d origine, Gordon Freeman est un physicien theoricien de Black Mesa equipe d une combinaison HEV au moment ou l experience de materiaux anormaux provoque la cascade de resonance. L accident ouvre la Terre a Xen, aux headcrabs, vortigaunts, forces militaires HECU, puis a une domination Combine qui transforme l incident scientifique en guerre d occupation. Freeman traverse ce monde sans discours: pied-de-biche, armes improvisees, modules HEV, saut long, gravity gun, silence et refus constant de devenir l instrument du G-Man ou du Combine.',
-      en: 'In his origin Thread, Gordon Freeman is a Black Mesa theoretical physicist wearing an HEV suit when the anomalous materials experiment triggers the resonance cascade. The accident opens Earth to Xen, headcrabs, vortigaunts, HECU forces, then a Combine occupation that turns a research disaster into a war of control. Freeman crosses this world without speeches: crowbar, improvised weapons, HEV modules, long jump, gravity gun, silence, and constant refusal to become a tool of the G-Man or the Combine.'
+      fr: 'Cette incarnation est celle de Half-Life 2 (2004). Apres sa stase, Gordon Freeman rejoint la Resistance de City 17 avec la combinaison HEV Mark V fournie par Kleiner. Il utilise son pied-de-biche et le gravity gun d Alyx; dans la Citadelle, le champ de confiscation suralimente ce dernier.',
+      en: 'This is the Half-Life 2 (2004) incarnation. After stasis, Gordon Freeman joins the City 17 Resistance in the HEV Mark V suit supplied by Kleiner. He uses his crowbar and Alyx s gravity gun; in the Citadel, the confiscation field supercharges the latter.'
     },
     breachLore: {
       fr: 'Quand la Breche touche Black Mesa, A.R.C.A. detecte une anomalie rare: Freeman ne ferme pas les portails par autorite, il les traverse jusqu a ce que leur logique s effondre. Dans Multiverse Breach, son role est de stabiliser les cascades avant qu elles ne deviennent des portes permanentes entre Trames, d isoler Xen du Sans-Auteur, de retourner les technologies Combine contre leurs noeuds de controle et de garder le silence comme une resistance: aucun slogan, seulement une trajectoire que le Nexus peut suivre.',
       en: 'When the Breach hits Black Mesa, A.R.C.A. detects a rare anomaly: Freeman does not close portals through authority, he crosses them until their logic collapses. In Multiverse Breach, his role is to stabilize cascades before they become permanent doors between Threads, isolate Xen from the Authorless, turn Combine technology against its control nodes, and keep silence as resistance: no slogan, only a trajectory the Nexus can follow.'
     },
-    doctrine: { fr: 'Pied-de-biche, combinaison HEV, armes Black Mesa, saut long, gravity gun, rayon gluon.', en: 'Crowbar, HEV suit, Black Mesa weapons, long jump, gravity gun, gluon beam.' },
-    tags: ['Black Mesa', 'HEV', 'Xen', 'Combine', 'Gravity', 'G-Man']
+    doctrine: { fr: 'Pied-de-biche, HEV Mark V, gravity gun, version suralimentee de la Citadelle.', en: 'Crowbar, HEV Mark V, gravity gun, Citadel supercharged version.' },
+    tags: ['Half-Life 2', 'City 17', 'HEV Mark V', 'Combine', 'Gravity', 'G-Man']
   },
   chell: {
     clearance: 'APT-01',
@@ -1028,6 +1121,15 @@ const enrichPlaque = (hero, plaque) => {
 };
 
 export const getCharacterPlaque = (hero) => {
+  const sourcePlaque = getCanonBlackPearlSourcePlaque(hero) || getCanonP0SourcePlaque(hero);
+  if (sourcePlaque) {
+    const category = roleByCategory[hero.category] || roleByCategory.tactical;
+    return enrichPlaque(hero, {
+      clearance: buildClearance(hero), rank: category.rank, role: category.role,
+      callSign: hero.name, tags: [hero.universe, hero.category, hero.weaponType || 'combat'],
+      ...CHARACTER_PLAQUES[hero.id], ...sourcePlaque
+    });
+  }
   if (CHARACTER_PLAQUES[hero.id]) return enrichPlaque(hero, CHARACTER_PLAQUES[hero.id]);
   const category = roleByCategory[hero.category] || roleByCategory.tactical;
   const doctrine = hero.special?.name || hero.weaponType || 'signature inconnue';

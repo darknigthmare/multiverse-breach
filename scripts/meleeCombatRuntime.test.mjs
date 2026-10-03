@@ -5,12 +5,15 @@ import { CHARGED_ATTACK_DATA } from '../src/game/melee/meleeStateMachine.js';
 import {
   MELEE_RUNTIME_DEFAULTS,
   absorbMeleeGuardHit,
+  applyMeleeHitStun,
   beginMeleeAction,
   beginMeleeCharge,
   beginMeleeLightCombo,
   beginMeleeShield,
+  cancelMeleeHeldInputs,
   getMeleeHurtbox,
   initializeMeleeActorRuntime,
+  isMeleeHitLocked,
   isMeleeMovementLocked,
   performMeleeLedgeAction,
   releaseMeleeCharge,
@@ -320,4 +323,58 @@ test('taunt and runtime metrics remain finite across tracked actions', () => {
   assert.equal(beginMeleeAction(actor, 'taunt'), true);
   assert.equal(actor.meleeMetrics.taunts, 6);
   Object.values(actor.meleeMetrics).forEach(metric => assert.ok(Number.isFinite(metric)));
+});
+
+test('hit stun cancels committed combat state and the runtime never decrements the engine-owned clock', () => {
+  const actor = makeActor();
+  beginMeleeAction(actor, 'light1');
+  Object.assign(actor, {
+    queuedMeleeAction: 'light2', charging: true, guarding: true, crouching: true,
+    meleeRecoveryTimer: 0.2, shieldBreakTimer: 0.5, ledgeActionTimer: 0.3
+  });
+  assert.equal(applyMeleeHitStun(actor, 300), true);
+  assert.equal(actor.state, 'hitStun');
+  assert.equal(actor.action, null);
+  assert.equal(actor.queuedMeleeAction, null);
+  for (const flag of ['charging', 'guarding', 'crouching']) assert.equal(actor[flag], false);
+  for (const timer of ['meleeRecoveryTimer', 'shieldBreakTimer', 'ledgeActionTimer']) assert.equal(actor[timer], 0);
+  let hits = 0;
+  tickFor(actor, 5, { resolveActionHit() { hits++; } });
+  assert.equal(actor.stateTimer, 300, 'runtime introduced a second stun clock');
+  assert.equal(actor.state, 'hitStun');
+  assert.equal(hits, 0);
+  assert.equal(applyMeleeHitStun(actor, 15), true);
+  assert.equal(actor.stateTimer, 300, 'new hit shortened the stun');
+});
+
+test('legacy and authored hit states block all melee controls, including released inputs and ledges', () => {
+  for (const id of ['player_anchor', 'legacy-enemy']) {
+    const actor = makeActor({ id });
+    applyMeleeHitStun(actor, 300);
+    const state = actor.state;
+    assert.equal(isMeleeHitLocked(actor), true);
+    assert.equal(isMeleeMovementLocked(actor), true);
+    assert.equal(beginMeleeAction(actor, 'taunt'), false);
+    assert.equal(beginMeleeLightCombo(actor), false);
+    assert.equal(beginMeleeCharge(actor), false);
+    assert.equal(beginMeleeShield(actor), false);
+    assert.equal(setMeleeCrouch(actor, true), false);
+    assert.equal(releaseMeleeCharge(actor), false);
+    assert.equal(releaseMeleeShield(actor), false);
+    assert.equal(tryCatchMeleeLedge(actor, [platform]), null);
+    assert.equal(cancelMeleeHeldInputs(actor), true);
+    assert.equal(actor.state, state);
+    assert.equal(actor.stateTimer, 300);
+    actor.stateTimer = 0;
+    actor.state = 'idle';
+    assert.equal(beginMeleeAction(actor, 'light1'), true);
+  }
+});
+
+test('dead actors cannot receive paralysis or be restored by it', () => {
+  const actor = makeActor({ currentHp: 0, state: 'dead', stateTimer: 60 });
+  assert.equal(applyMeleeHitStun(actor, 300), false);
+  assert.equal(isMeleeHitLocked(actor), false);
+  assert.equal(actor.state, 'dead');
+  assert.equal(actor.stateTimer, 60);
 });

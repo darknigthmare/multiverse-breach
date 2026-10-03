@@ -1,4 +1,5 @@
 import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE } from './featuredUniversePacks';
+import { getCanonicalArchiveEnemyLore, getCanonicalArchiveStageLore } from './canonicalArchiveLore.js';
 
 const localizedValue = (value, lang = 'fr', fallback = '') => (
   typeof value === 'string'
@@ -431,6 +432,15 @@ export const getStageLoreDescription = ({
       : `${name} belongs entirely to the original ${stage.universe} Thread. Terrain: ${setting} Arc objective: ${objective} Final threat: ${bossIntel?.name || stage.bossName}. Layout v2: ${tacticalDetails} Reward: ${stage.goldPrize} gold / ${stage.shardPrize} shards.`;
   }
 
+  const canonicalLore = getCanonicalArchiveStageLore(stage);
+  if (canonicalLore) {
+    const sourceLine = lang === 'fr' ? 'Référence' : 'Reference';
+    const rewardLine = lang === 'fr'
+      ? `Récompense de stabilisation : ${stage.goldPrize} or / ${stage.shardPrize} fragments.`
+      : `Stabilization reward: ${stage.goldPrize} gold / ${stage.shardPrize} shards.`;
+    return `${sourceLine} : ${stage.incarnation}. ${localizedValue(canonicalLore.lore, lang)} Adaptation Breach : ${localizedValue(canonicalLore.adaptation, lang)} ${rewardLine}`;
+  }
+
   const media = MEDIA_LINES[lore?.mediaType] || MEDIA_LINES.game;
   const signature = getUniverseSignature(stage.universe, lore);
   const mode = MODE_LINES[stage.mode] || MODE_LINES.RPG;
@@ -496,6 +506,15 @@ export const getBattleItemLoreDescription = ({ item, lang = 'fr', lore }) => {
 
 export const getEnemyLoreDescription = ({ enemy, universe, lang = 'fr', lore, type = 'menace' }) => {
   if (!enemy) return '';
+  const canonicalLore = getCanonicalArchiveEnemyLore(universe, enemy);
+  if (canonicalLore) {
+    const sourceLine = lang === 'fr' ? 'Référence' : 'Reference';
+    const technique = localizedValue(enemy.special, lang);
+    const gameTechnique = technique
+      ? `${lang === 'fr' ? 'Technique en jeu' : 'In-game technique'} : ${technique}.`
+      : '';
+    return `${canonicalLore.name}. ${sourceLine} : ${canonicalLore.incarnation}. ${localizedValue(canonicalLore.lore, lang)} ${gameTechnique}`.trim();
+  }
   const signature = getUniverseSignature(universe, lore);
   const role = type === 'worldBoss'
     ? (lang === 'fr' ? 'noyau final local' : 'local final core')

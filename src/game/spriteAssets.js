@@ -34,6 +34,15 @@ export const HALO_COMPLETE_SPRITE_BASES = {
 
 export const ROI_BURGONDE_BOSS_SPRITE = '/sprites/generated/bosses/kaamelott/roi-burgonde.png';
 
+// Corrected incarnations have their own audited sheets. Historical PNGs remain
+// available for their original provenance records, not for these runtime heroes.
+export const CORRECTED_CANON_HERO_SPRITES = Object.freeze({
+  liquid_snake: '/sprites/generated/heroes/metal-gear/liquid-snake-mgs-1998-final-web.png',
+  mistral_mgr: '/sprites/generated/heroes/metal-gear-rising/mistral-revengeance-2013-web.png',
+  saturnin_duck: '/sprites/generated/heroes/les-aventures-de-saturnin/saturnin-ortf-web.png',
+  true_ogre_tekken: '/sprites/generated/heroes/tekken/true-ogre-tekken-3-web.png'
+});
+
 export const MIRELLE_COMPLETE_SPRITES = {
   rpg: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-rpg.png`,
   tactics: `${MIRELLE_COMPLETE_SPRITE_BASE}/arca-mirelle-tactics.png`,
@@ -191,6 +200,52 @@ export const HALO_COMPLETE_SPRITE_PACKS = {
 };
 
 export const SPRITE_SHEET_LAYOUTS = {
+  '/sprites/generated/bosses/the-aether-crown/lord-pneuma.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/the-aether-crown/aether-mite-swarm.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/the-crownless-sea/kraken-sans-couronne.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/valedor-the-shattered-crown/reine-des-ronces.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/ilyr-concordat/cuirasse-nul-oblique.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/meridian-clockwork/the-twelve-bell-judges.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/valedor-the-shattered-crown/vaelgor-premier-wyrm.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/the-drowned-testament/le-phare-qui-regarde.png': {
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
+  '/sprites/generated/bosses/yomi-no-kage/amas-des-huit-orochi.png': {
+    // One reviewed full-body image; animations remain pending in its asset manifest.
+    columns: 1,
+    rows: 1,
+    rowByState: { idle: 0, run: 0, attack: 0, defense: 0, support: 0, special: 0, hit: 0, dead: 0 }
+  },
   [BASTION_COMPLETE_SPRITES.universal]: {
     columns: 4,
     rows: 8,
@@ -522,6 +577,7 @@ export const getHeroMeleeSpriteSheetSrcs = heroOrId => (
 
 export const getHeroSpriteSheetSrc = (hero, context = 'auto') => {
   if (!hero?.id) return '';
+  if (Object.hasOwn(CORRECTED_CANON_HERO_SPRITES, hero.id)) return CORRECTED_CANON_HERO_SPRITES[hero.id];
   if (context === 'melee') {
     const meleeFrame = getHeroMeleeAnimationFrame(hero);
     if (meleeFrame?.animation?.sheet) return meleeFrame.animation.sheet;

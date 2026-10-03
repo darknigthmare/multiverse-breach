@@ -284,7 +284,15 @@ export const ENEMIES_DB = {
       { name: 'Explosive Ticker', hp: 50, atk: 16, spd: 8, color: '#cca43b', weapon: 'suicide' }
     ],
     bosses: [
-      { name: 'General RAAM', hp: 450, atk: 18, spd: 3, color: '#3c4238', weapon: 'kryll', special: 'Kryll Swarm' },
+      {
+        name: 'General RAAM', hp: 450, atk: 18, spd: 3, color: '#3c4238', weapon: 'gun', special: 'Kryll Swarm',
+        canonicalName: 'General RAAM',
+        incarnation: 'Gears of War (2006) - Lightmass Bomb train',
+        equipment: ['Troika heavy machine gun', 'Kryll swarm'],
+        referenceUrl: 'https://en.wikipedia.org/wiki/Gears_of_War_(video_game)',
+        visualAnchor: 'Huge pale Locust general, dark heavy armor, Troika heavy machine gun and protective Kryll swarm on the moving Lightmass Bomb train. No Skorge chainsaw staff or Brumak vehicle.',
+        visualReviewStatus: 'pending'
+      },
       { name: 'High Priest Skorge', hp: 420, atk: 19, spd: 4, color: '#4a3f35', weapon: 'staff', special: 'Chainsaw Staff Slice' }
     ],
     worldBoss: { name: 'Gargantuan Brumak', hp: 1200, atk: 28, spd: 2, color: '#272d24', weapon: 'rockets', special: 'Back-Mounted Rocket Barrage' }
@@ -293,7 +301,7 @@ export const ENEMIES_DB = {
     monsters: [
       { name: 'Covenant Grunt', hp: 70, atk: 7, spd: 5, color: '#33527a', weapon: 'plasma_pistol' },
       { name: 'Jackal Sniper', hp: 80, atk: 11, spd: 6, color: '#e67e22', weapon: 'beam_rifle' },
-      { name: 'Elite Minor', hp: 110, atk: 10, spd: 5, color: '#2ecc71', weapon: 'plasma_rifle' },
+      { name: 'Elite Minor', hp: 110, atk: 10, spd: 5, color: '#335fa7', weapon: 'plasma_rifle', incarnation: 'Halo 2 (2004) - blue-armored Sangheili Minor', referenceUrl: 'https://www.halopedia.org/Sangheili_Minor', visualReviewStatus: 'pending' },
       { name: 'Forerunner Sentinel', hp: 90, atk: 12, spd: 7, color: '#7fd7ff', weapon: 'sentinel_beam' },
       { name: 'Flood Combat Form', hp: 120, atk: 13, spd: 5, color: '#8d7b46', weapon: 'infected_claws' }
     ],
@@ -302,7 +310,15 @@ export const ENEMIES_DB = {
       { name: 'Prophet of Regret', hp: 440, atk: 17, spd: 5, color: '#cca43b', weapon: 'gravity_throne', special: 'Gravity Throne Laser' },
       { name: '343 Guilty Spark Fragment', hp: 470, atk: 18, spd: 6, color: '#9fdfff', weapon: 'monitor_beam', special: 'Containment Protocol' }
     ],
-    worldBoss: { name: 'Covenant Scarab Mech', hp: 1300, atk: 30, spd: 2, color: '#2c1f30', weapon: 'focus_cannon', special: 'Ultra-Focus Plasma Beam' }
+    worldBoss: {
+      name: 'Covenant Scarab Mech', hp: 1300, atk: 30, spd: 2, color: '#2c1f30', weapon: 'focus_cannon', special: 'Ultra-Focus Plasma Beam',
+      canonicalName: 'Protos-pattern Scarab',
+      incarnation: 'Halo 2 (2004) - Metropolis',
+      equipment: ['Ultra-heavy focus cannon', 'Heavy plasma repeaters'],
+      referenceUrl: 'https://www.halopedia.org/Protos-pattern_Scarab',
+      visualAnchor: 'Halo 2 Protos-pattern Scarab: four legs, high purple-gray hull, broad flat deck, arched gangway and passenger cabin. No Halo 3 Deutoros exposed rear reactor.',
+      visualReviewStatus: 'pending'
+    }
   },
   'Alien': {
     monsters: [
@@ -311,7 +327,15 @@ export const ENEMIES_DB = {
       { name: 'Runner Alien', hp: 75, atk: 10, spd: 7, color: '#2c3539', weapon: 'claws' }
     ],
     bosses: [
-      { name: 'Alien Queen', hp: 600, atk: 22, spd: 5, color: '#090b0e', weapon: 'claws', special: 'Acid Spit Torrent' },
+      {
+        name: 'Alien Queen', hp: 600, atk: 22, spd: 5, color: '#090b0e', weapon: 'claws', special: 'Inner Jaw Lunge',
+        canonicalName: 'Alien Queen',
+        incarnation: 'Aliens (1986)',
+        equipment: ['Inner jaw', 'Clawed main arms', 'Long bladed tail'],
+        referenceUrl: 'https://en.wikipedia.org/wiki/Aliens_(film)',
+        visualAnchor: 'Black biomechanical Queen with broad crown-shaped head crest, two long main arms and two small chest arms, digitigrade legs and a long tail. No Predalien mandibles or acid-spitting attack absent from the 1986 film.',
+        visualReviewStatus: 'pending'
+      },
       { name: 'Xenomorph Praetorian', hp: 500, atk: 19, spd: 4, color: '#111317', weapon: 'tail', special: 'Tail Impale Sweep' }
     ],
     worldBoss: { name: 'Predalien Monstrosity', hp: 1250, atk: 29, spd: 5, color: '#302f26', weapon: 'claws', special: 'Mouth Inner-Jaw Strike' }
@@ -413,7 +437,15 @@ export const ENEMIES_DB = {
     ],
     bosses: [
       { name: 'Combine Gunship', hp: 560, atk: 20, spd: 5, color: '#424949', weapon: 'laser', special: 'Pulse Cannon Barrage' },
-      { name: 'Alien Nihilanth Core', hp: 520, atk: 19, spd: 3, color: '#cca43b', weapon: 'portal_psionics', special: 'Portal Ring Strike' },
+      {
+        name: 'Alien Nihilanth Core', hp: 520, atk: 19, spd: 3, color: '#cca43b', weapon: 'portal_psionics', special: 'Teleportation Orb',
+        canonicalName: 'Nihilanth',
+        incarnation: 'Half-Life (1998) - Xen finale',
+        equipment: ['Energy projectiles', 'Teleportation orbs', 'Orbiting energy spheres'],
+        referenceUrl: 'https://combineoverwiki.net/wiki/Nihilanth',
+        visualAnchor: 'Massive floating Nihilanth with an oversized head, small legs and vestigial chest arm, shackles, orange orbiting spheres and a head that opens over its brain. Organic Xen crystal cavern, never a Combine core or a Strider.',
+        visualReviewStatus: 'pending'
+      },
       { name: 'Gonarch Brood Mother', hp: 540, atk: 21, spd: 4, color: '#d6b36a', weapon: 'headcrab_brood', special: 'Headcrab Swarm Birth' }
     ],
     worldBoss: { name: 'Combine Strider Heavy', hp: 1350, atk: 33, spd: 3, color: '#2c3e50', weapon: 'warp_cannon', special: 'Dark Energy Impale' }
@@ -558,7 +590,14 @@ export const ENEMIES_DB = {
     ],
     bosses: [
       { name: 'Alpha Deathclaw Beast', hp: 600, atk: 24, spd: 6, color: '#3e2723', weapon: 'claws', special: 'Bone-Shattering Tackle' },
-      { name: 'Legate Lanius General', hp: 550, atk: 21, spd: 5, color: '#cca43b', weapon: 'greatsword', special: 'Blade of the East Slice' }
+      {
+        name: 'Legate Lanius General', canonicalName: 'Legate Lanius',
+        hp: 550, atk: 21, spd: 5, color: '#cca43b', weapon: 'greatsword', special: 'Blade of the East Slice',
+        incarnation: 'Fallout: New Vegas (2010) - Second Battle of Hoover Dam',
+        referenceUrl: 'https://fallout.fandom.com/wiki/Legate_Lanius',
+        visualAnchor: 'Legate Lanius in the steel face mask, helmet, red cloth and heavy Legion armor from Fallout: New Vegas, wielding the Blade of the East at the Legate camp. No Enclave power armor or Liberty Prime parts.',
+        visualReviewStatus: 'pending'
+      }
     ],
     worldBoss: { name: 'Rogue Liberty Prime Mech', hp: 1500, atk: 35, spd: 3, color: '#7f8c8d', weapon: 'laser', special: 'Tactical Nuke Throw Strike' }
   },
@@ -911,7 +950,14 @@ const CANON_ENEMY_EXPANSION = {
     ],
     bosses: [
       { name: 'Psycho Mantis Memory', hp: 520, atk: 18, spd: 7, color: '#6c3483', weapon: 'psychic_control', special: 'Controller Port Read' },
-      { name: 'Metal Gear REX Shadow', hp: 720, atk: 26, spd: 3, color: '#455a64', weapon: 'railgun', special: 'Nuclear Launch Threat' }
+      {
+        name: 'Metal Gear REX Shadow', canonicalName: 'Metal Gear REX',
+        hp: 720, atk: 26, spd: 3, color: '#455a64', weapon: 'rex_machine_gun', special: 'Radome Break',
+        incarnation: 'Metal Gear Solid (1998) - Shadow Moses',
+        referenceUrl: 'https://www.konami.com/mg/history/us/en/',
+        visualAnchor: 'Metal Gear REX from Metal Gear Solid (1998): gray-black bipedal chassis, railgun, radome, missile pods and exposed cockpit after the radome breaks. Shadow is a historical asset name, not another REX incarnation; no RAY or Gekko parts.',
+        visualReviewStatus: 'pending'
+      }
     ]
   },
   'Mass Effect': {

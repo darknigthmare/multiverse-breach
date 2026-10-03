@@ -1,0 +1,25 @@
+.raam-encounter-panel {
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #b49a58;
+  border-radius: 4px;
+  background: rgba(47, 36, 20, 0.7);
+  color: #f7eccb;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.raam-encounter-panel p { margin: 6px 0; line-height: 1.4; }
+.raam-encounter-panel-status { font-size: 11px; margin-bottom: 8px; }
+.raam-encounter-panel-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.raam-encounter-panel-actions button {
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #b49a58;
+  border-radius: 3px;
+  color: #fff3cf;
+  background: #302a20;
+  white-space: normal;
+  cursor: pointer;
+}
+.raam-encounter-panel-actions button:disabled { opacity: 0.45; cursor: default; }
+.raam-encounter-panel small { display: block; margin-top: 6px; }

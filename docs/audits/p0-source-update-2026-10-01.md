@@ -1,0 +1,15 @@
+# Mise à jour des données source P0 — 1 octobre 2026
+
+Les 19 kits restants de Wave4 sont maintenant branchés dans les héros jouables et leurs plaques d'archives. Leur incarnation, équipement, ancrage visuel, références publiques et lore sont propagés dans leurs 19 dossiers dédiés. Les six verrous Star Wars/Minions du lot précédent restent conservés.
+
+Les nouveaux kits retirent les lasers et fusils attribués par la classe à des personnages qui n'en possèdent pas ; les sorts et starbolts ont une portée à distance, les coups physiques une portée de contact. Les valeurs numériques et identités sauvegardées sont préservées. Les deux personas musicaux restent des créations originales déclarées ; les variantes Spider restent des loadouts adaptés du même protagoniste.
+
+La comparaison des 19 dossiers avec le commit de référence `f4161d2` confirme 19 prompts modifiés. Après la correction de la scène Pirates, le registre courant compte 1 021 images disponibles et 2 178 en attente ; les 19 dossiers de personnages concernés étaient déjà pending et le restent. L'ancienne image Pirates est conservée, mais le nouveau chemin de scène attend sa propre image et preuve. Le rapport public `docs/rift-dossiers/canon-p0-source-remediation-2026-10-01.json` contient les métadonnées canoniques et des hashes, sans texte des prompts historiques, identifiants de génération ni chemins de références locales. Le journal de génération historique demeure intact.
+
+Validation ciblée : 14 tests de kits, 5 tests d'intégration héros/plaques/dossiers, lint réussi ; 69 tests de présentation et d'intégration des effets passent dans le lot séparé des moteurs. Les nouveaux tests vérifient aussi que les sprites présents restent des candidats à auditer, sans devenir des références visuelles approuvées. Le build complet a réussi avec 922 tests Node dans 15 commandes, tous les audits de prébuild et le lint.
+
+La scène Pirates #269 est maintenant « Isla de Muerta / Barbossa Duel », verrouillée sur The Curse of the Black Pearl (2003), avec Hector Barbossa et les pirates aztèques maudits. La relique `joker_face_mask` est explicitement rattachée à Death of the Family, Batman #13–17 (2012–2013), et ne fait pas partie du kit Endgame du Joker. Le `blue_saber` de Luke est identifié ANH/ESB ; il reste distinct de son sabre vert ROTJ et fournit seulement des bonus passifs.
+
+Les 25 P0 visuels restent en attente : aucune nouvelle image n'est certifiée 1:1. Les costumes à vérifier sur des sources primaires, désarmements/étourdissements, protection du Patronus, infection Endgame et contraintes des armes-pattes Spider restent des travaux distincts. Les dégâts abstraits du jeu sont déclarés comme adaptation et ne prouvent pas ces mécanismes de la source.
+
+Le [rituel de Pirates](pirates-curse-mechanics-2026-10-01.md) et le [sauvetage de Newt](aliens-rescue-mechanics-2026-10-01.md) sont jouables dans le lot suivant, avec adaptation des commandes, du trajet et des durées explicitée.
