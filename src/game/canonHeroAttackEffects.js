@@ -1,6 +1,7 @@
-// Presentation for the six source-locked kits. These small combat effects are
+// Presentation for the initial source-locked kits and separate follow-up fixes.
 // game abstractions, not approval of any character sprite or film choreography.
 import { emitP0CanonAttackEffect, getP0HeroSourceId, resolveP0CanonAttackEffect } from './canonP0AttackEffects.js';
+import { CANON_FOLLOWUP_SOURCE_KITS } from './canonFollowupSourceKits.js';
 const SOURCE_KITS = new Set([
   'han_solo', 'luke', 'vader', 'bob_minions', 'kevin_minions', 'stuart_minions'
 ]);
@@ -12,6 +13,15 @@ export function resolveCanonHeroAttackEffect(actor, actionOrType) {
   if (p0Effect) return p0Effect;
   const sourceId = getCanonHeroSourceId(actor);
   const action = typeof actionOrType === 'string' ? actor?.[actionOrType] : actionOrType;
+  // This separate follow-up selection leaves the frozen P0 identities intact.
+  const followup = Object.hasOwn(CANON_FOLLOWUP_SOURCE_KITS, sourceId)
+    ? CANON_FOLLOWUP_SOURCE_KITS[sourceId] : null;
+  if (followup && actor?.canonCombatPresentation === true
+    && actor.incarnation === followup.incarnation
+    && (!actor.universe || actor.universe === followup.sourceUniverse)
+    && action?.type === 'melee' && action.canonPresentation?.kind === 'melee') {
+    return { kind: 'melee', color: action.canonPresentation.color || actor.weaponColor || '#d7d7d7', sfx: 'hit' };
+  }
   if (!SOURCE_KITS.has(sourceId) || !action) return null;
   if (action.type === 'gravity') {
     return { kind: /choke/i.test(action.name || '') ? 'forceChoke' : 'telekinesis', color: '#aeb4b9', sfx: 'shield' };

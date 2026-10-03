@@ -1,5 +1,33 @@
+import { getHeroById } from './heroes.js';
+
 // Readable interaction overlays, not a certified recreation of the film set.
-// Newt is a rescue marker and accompanies the carrier; she is never a target.
+// The existing Aliens Newt sheet is a provisional portrayal, not approved 1:1
+// art. It is drawn only in this rescue presentation and never joins a roster.
+export const ALIENS_RESCUE_NEWT_SPRITE_HERO_ID = 'newt_hadley';
+
+export function getAliensRescueNewtSpriteView(runtime, heroes = []) {
+  if (runtime?.id !== 'aliens-1986-newt-rescue') return null;
+  const hero = getHeroById(ALIENS_RESCUE_NEWT_SPRITE_HERO_ID);
+  if (!hero || hero.name !== 'Newt' || hero.universe !== 'Aliens') return null;
+  const carrier = runtime.rescued
+    ? heroes.find(actor => (actor.battleId || actor.runtimeId || actor.id) === runtime.carrierId)
+    : null;
+  if (runtime.rescued && (!carrier || carrier.currentHp <= 0)) return null;
+  const facing = carrier?.facing < 0 ? -1 : 1;
+  const state = carrier && !runtime.complete && (carrier.state === 'run' || Math.abs(Number(carrier.vx) || 0) > 0.3)
+    ? 'run' : 'idle';
+  return {
+    hero: { ...hero, state },
+    x: carrier ? carrier.x - facing * 22 : runtime.rescuePoint.x,
+    y: carrier ? carrier.y : runtime.rescuePoint.y,
+    facing,
+    state,
+    targetHeight: 42,
+    incarnation: 'Aliens (1986) - Newt at Hadley’s Hope atmosphere processor',
+    visualReviewStatus: 'existing-image-canonical-source-review-pending',
+    canonicalFidelityApproved: false
+  };
+}
 export function emitAliensHiveAttackEffect(particles, actor, target, actionOrType) {
   if (!actor?.aliensHiveLoadout || !particles?.add) return false;
   const action = typeof actionOrType === 'string' ? actor[actionOrType] : actionOrType;
@@ -34,9 +62,15 @@ export function emitAliensHiveAttackEffect(particles, actor, target, actionOrTyp
   return true;
 }
 
-export function drawAliensRescueEncounter(ctx, runtime, heroes, animTime, width, height, lang = 'fr') {
+export function drawAliensRescueEncounter(ctx, runtime, heroes, animTime, width, height, lang = 'fr', drawCharacter) {
   if (!runtime) return;
   const fr = lang === 'fr';
+  const newt = getAliensRescueNewtSpriteView(runtime, heroes);
+  const drawNewt = () => {
+    if (newt && typeof drawCharacter === 'function') {
+      drawCharacter(ctx, newt.x, newt.y, newt.hero, animTime, newt.facing, newt.targetHeight, 'auto');
+    }
+  };
   ctx.save();
   ctx.lineWidth = 2;
   ctx.font = '11px "Share Tech Mono", monospace';
@@ -49,12 +83,14 @@ export function drawAliensRescueEncounter(ctx, runtime, heroes, animTime, width,
     ctx.arc(point.x, point.y - 12, 16 + Math.sin(animTime * 0.08) * 2, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
+    drawNewt();
     ctx.fillStyle = '#e6be7b';
     ctx.fillText('NEWT', point.x, point.y - 38);
     ctx.fillText(runtime.phase === 'rescue' ? (fr ? 'LIBERER' : 'RESCUE') : (fr ? 'ATTEINDRE LE NID' : 'REACH THE NEST'), point.x, point.y + 20);
   } else {
     const carrier = heroes.find(hero => (hero.battleId || hero.runtimeId || hero.id) === runtime.carrierId);
     if (carrier) {
+      drawNewt();
       ctx.fillStyle = '#e6be7b';
       ctx.fillText(fr ? 'NEWT ACCOMPAGNE' : 'NEWT WITH YOU', carrier.x, carrier.y - 48);
     }

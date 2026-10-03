@@ -5,6 +5,7 @@ import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './l
 import { CANON_ROSTER_WAVE } from './canonRosterWave.js';
 import { applyCanonP0SourceKit } from './canonP0SourceKits.js';
 import { applyCanonBlackPearlSourceKit } from './canonBlackPearlSourceKits.js';
+import { applyCanonFollowupSourceKit } from './canonFollowupSourceKits.js';
 import {
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS,
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES
@@ -2513,7 +2514,7 @@ Object.entries(heroOverrides).forEach(([id, override]) => {
 });
 
 HEROES_DB.forEach(hero => {
-  const corrected = applyCanonBlackPearlSourceKit(applyCanonP0SourceKit(hero));
+  const corrected = applyCanonFollowupSourceKit(applyCanonBlackPearlSourceKit(applyCanonP0SourceKit(hero)));
   if (corrected !== hero) Object.assign(hero, corrected);
 });
 

@@ -2415,7 +2415,7 @@ export class EngineSmash {
       }
     });
     drawNihilanthEncounter(ctx, this.nihilanthEncounter, animTime, this.width, this.height, lang);
-    drawAliensRescueEncounter(ctx, this.aliensRescueEncounter, this.heroes, animTime, this.width, this.height, lang);
+    drawAliensRescueEncounter(ctx, this.aliensRescueEncounter, this.heroes, animTime, this.width, this.height, lang, drawPixelSprite);
 
     this.heroes.forEach(h => {
       drawPixelSprite(ctx, h.x, h.y, h, animTime, h.facing, 72, 'melee');

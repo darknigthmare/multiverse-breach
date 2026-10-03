@@ -34,6 +34,7 @@ import { createPlayerHero } from '../game/playerHero';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import { getBattleItemPoolForStage } from '../game/battleItems';
 import { getEnemySpriteSheetSrc, getHeroSpriteSheetSrc, getItemSpriteSrc } from '../game/spriteAssets';
+import { preserveEnemySpriteIdentity } from '../game/enemySpriteIdentity.js';
 import { getSmashPickupPositions } from '../game/smashArenas';
 import { getTacticsPickupPositions } from '../game/tacticsBattlefields';
 import { resolveStageEnemyData } from '../game/stageEnemyResolver';
@@ -570,7 +571,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const scaleEnemy = (enemy, isBoss = false) => {
       const modifier = stage.modifier || {};
       return {
-        ...enemy,
+        ...preserveEnemySpriteIdentity(enemy, sourceUniverse),
         universe: sourceUniverse,
         hp: Math.round(enemy.hp * (isBoss ? (modifier.bossHp || 1) : 1)),
         atk: Math.round(enemy.atk * (modifier.enemyAtk || 1)),
@@ -609,7 +610,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           ? (disabledEnemySet.has(getEnemyAdminKey(stage.universe, primaryBoss))
               ? scaleEnemy(fallbackEnemy(stage.universe, true), true)
               : scaleEnemy({
-                  ...primaryBoss,
+                  ...preserveEnemySpriteIdentity(primaryBoss, stage.universe),
                   name: stage.bossName || primaryBoss.name,
                   hp: Math.round((primaryBoss.hp || 1000) * 1.18),
                   atk: Math.round((primaryBoss.atk || 20) * 1.12)

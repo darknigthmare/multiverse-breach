@@ -15,6 +15,7 @@ import { createScarabBoardingEncounter, advanceScarabBoardingEncounter, getScara
 import { createRexEncounter, applyRexStingerDamage, getRexEncounterSummary, REX_STINGER_ACTION } from './canonRexEncounter.js';
 import { prepareRexAttack, getRexAttackIntent, activateRexChaff, finishRexAttack } from './canonRexAttackPatterns.js';
 import { getBlackPearlSourceAmmunition } from './canonBlackPearlSourceKits.js';
+import { preserveEnemySpriteIdentity } from './enemySpriteIdentity.js';
 
 const COMPASS_DIRECTIONS = [
   { x: 1, y: 0 },
@@ -1895,7 +1896,7 @@ export class EngineTactics {
     const pressureScale = 0.68 + this.missionProfile.pressure * 0.08;
     const reinforcementScreen = this.getUnitScreenPosition(spawn.x, spawn.y);
     const reinforcement = {
-      ...template,
+      ...preserveEnemySpriteIdentity(template, this.stage.universe),
       name: `${template.name} Echo ${this.reinforcementsCalled + 1}`,
       gridX: spawn.x,
       gridY: spawn.y,
