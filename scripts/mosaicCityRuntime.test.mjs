@@ -3,8 +3,9 @@ import test from 'node:test';
 import { existsSync, readFileSync } from 'node:fs';
 import {
   advanceMosaicGuide, advanceMosaicPlayer, clampMosaicPosition, createMosaicGuide,
-  getMosaicDestinationView, getMosaicGuideStep, getMosaicInteractionTargets, getMosaicUniverseCatalog, getMosaicZoneAnchor,
-  MOSAIC_CITY_ART, MOSAIC_WELCOME, resolveMosaicInteraction, transitionMosaicGuide
+  findMosaicWalkablePosition, getMosaicDestinationView, getMosaicDrawDepth, getMosaicGuideStep, getMosaicInteractionTargets,
+  getMosaicScenery, getMosaicSceneObstacles, getMosaicUniverseCatalog, getMosaicZoneAnchor, isMosaicPositionBlocked, isMosaicSegmentClear,
+  MOSAIC_CITY_ART, MOSAIC_PERSON_FOOT_OFFSET, MOSAIC_WELCOME, planMosaicPath, resolveMosaicInteraction, transitionMosaicGuide
 } from '../src/game/mosaicCityRuntime.js';
 import { createPlayerHero } from '../src/game/playerHero.js';
 
@@ -78,6 +79,138 @@ test('collision slides along an NPC instead of canceling the whole movement', ()
   assert.ok(state.player.y > 100);
 });
 
+test('solid scenery and terminal footprints align with the rendered ground; floor markings remain traversable', () => {
+  const cityDistrict = { ...district, universe: 'Resident Evil', place: { type: 'city' } };
+  const buildings = getMosaicScenery(cityDistrict);
+  const obstacles = getMosaicSceneObstacles(cityDistrict, [{ id: 'memory', action: 'codex', x: 80, y: 80, w: 40, h: 40 }, { id: 'plaza', action: 'talk' }]);
+  assert.equal(buildings.length, 9);
+  assert.equal(obstacles.length, 10);
+  buildings.forEach((building, index) => {
+    assert.equal(obstacles[index].x, building.x);
+    assert.equal(obstacles[index].w, building.w);
+    assert.equal(obstacles[index].y + obstacles[index].h + MOSAIC_PERSON_FOOT_OFFSET, getMosaicDrawDepth(building));
+  });
+  assert.deepEqual(obstacles.at(-1), { id: 'terminal-memory', x: 78, y: 84, w: 44, h: 10 });
+  for (const type of ['fog', 'gate', 'industrial', 'military', 'reactor']) {
+    assert.deepEqual(getMosaicSceneObstacles({ ...cityDistrict, place: { type } }), []);
+  }
+  assert.deepEqual(getMosaicSceneObstacles(district), []);
+});
+
+test('scenery collision prevents fast tunneling, permits sliding and lets an existing overlap escape', () => {
+  const state = makeState({ arrowright: true });
+  state.obstacles = [{ x: 140, y: 80, w: 44, h: 36 }];
+  state.player.speed = 20;
+  advanceMosaicPlayer(state, district, 50);
+  assert.ok(state.player.x <= 126);
+  assert.equal(isMosaicPositionBlocked(state.player, state.obstacles), false);
+  state.player.x = 125;
+  state.keys = { arrowright: true, arrowdown: true };
+  advanceMosaicPlayer(state, district, 1000 / 60);
+  assert.ok(state.player.y > 100, 'blocked horizontal movement still slides vertically');
+  state.player.x = 135;
+  state.player.y = 100;
+  state.keys = { arrowleft: true };
+  advanceMosaicPlayer(state, district);
+  assert.ok(state.player.x < 135, 'an existing footprint overlap can walk back out');
+});
+
+test('people are occluded behind raised scenery and drawn in front after passing its base', () => {
+  const zone = { x: 80, y: 80, w: 40, h: 40 };
+  const terminal = { type: 'terminal', zone };
+  const behind = { y: 70 };
+  const inFront = { y: 120 };
+  const sorted = [inFront, terminal, behind].sort((a, b) => getMosaicDrawDepth(a) - getMosaicDrawDepth(b));
+  assert.deepEqual(sorted, [behind, terminal, inFront]);
+  const building = { type: 'building', y: 250, h: 250 };
+  assert.ok(getMosaicDrawDepth({ y: 450 }) < getMosaicDrawDepth(building));
+  assert.ok(getMosaicDrawDepth({ y: 520 }) > getMosaicDrawDepth(building));
+  assert.match(city, /getMosaicDrawDepth\(a\) - getMosaicDrawDepth\(b\)/);
+  assert.match(city, /isMosaicPositionBlocked\(npc, sceneObstacles\)/);
+});
+
+test('a walking NPC cannot cut through a terminal corner when resuming its routine after a collision', () => {
+  const cityDistrict = { ...district, universe: 'Resident Evil', place: { type: 'city' } };
+  const zone = { id: 'breach', action: 'mission', x: 1245, y: 710, w: 430, h: 205 };
+  const obstacles = getMosaicSceneObstacles(cityDistrict, [zone]);
+  const previous = { x: 1496.3319504673655, y: 786.882143261712 };
+  const next = { x: 1479.1064833089995, y: 782.4411013791156 };
+  assert.equal(isMosaicPositionBlocked(previous, obstacles), false);
+  assert.equal(isMosaicPositionBlocked(next, obstacles), false);
+  assert.equal(isMosaicSegmentClear(previous, next, obstacles), false, 'free endpoints can still cross the solid corner');
+  assert.equal(isMosaicSegmentClear(previous, { x: previous.x + 1, y: previous.y }, obstacles), true);
+  const source = city.slice(city.indexOf('      state.npcs.forEach(npc => {'), city.indexOf('      const nearest = state.npcs'));
+  const npc = { ...previous, baseX: 1525, baseY: 765, phase: 6 * 0.73, routine: 'walk' };
+  const state = { t: 1375, player: { x: 820, y: 760 }, npcs: [npc] };
+  new Function('state', 'district', 'sceneObstacles', 'clampMosaicPosition', 'isMosaicPositionBlocked', 'isMosaicSegmentClear', source)(state, cityDistrict, obstacles, clampMosaicPosition, isMosaicPositionBlocked, isMosaicSegmentClear);
+  assert.equal(npc.x, previous.x);
+  assert.equal(npc.y, previous.y);
+  assert.equal(npc.sceneState, 'idle');
+});
+
+test('tap movement walks around a solid obstacle without cutting its corners', () => {
+  const state = makeState();
+  state.player.y = 120;
+  state.obstacles = [{ x: 180, y: 70, w: 40, h: 100 }];
+  state.destination = { x: 300, y: 120 };
+  const route = planMosaicPath(state.player, state.destination, district, state.obstacles);
+  assert.ok(route.length >= 3, 'a wall between start and destination requires a detour');
+  let traveled = 0;
+  for (let frame = 0; frame < 500 && state.destination; frame++) {
+    traveled += advanceMosaicPlayer(state, district);
+    assert.equal(isMosaicPositionBlocked(state.player, state.obstacles), false);
+  }
+  assert.equal(state.destination, null);
+  assert.ok(Math.hypot(state.player.x - 300, state.player.y - 120) <= 0.5);
+  assert.ok(traveled > 200, 'the player follows the detour instead of teleporting through the wall');
+});
+
+test('tap on a solid terminal reaches a walkable interaction point', () => {
+  const zone = { id: 'codex', action: 'codex', x: 80, y: 80, w: 40, h: 40 };
+  const state = makeState();
+  state.player.x = 50;
+  state.obstacles = getMosaicSceneObstacles(district, [zone]);
+  state.destination = getMosaicZoneAnchor(zone);
+  state.pendingInteraction = { type: 'zone', id: zone.id };
+  const safe = findMosaicWalkablePosition(state.destination, district, state.obstacles);
+  assert.equal(isMosaicPositionBlocked(safe, state.obstacles), false);
+  for (let frame = 0; frame < 200 && state.destination; frame++) {
+    advanceMosaicPlayer(state, district);
+    assert.equal(isMosaicPositionBlocked(state.player, state.obstacles), false);
+  }
+  assert.equal(resolveMosaicInteraction(state.player, { zones: [zone] }, state.pendingInteraction)?.id, 'codex');
+});
+
+test('unreachable click destinations stop safely and clear the pending action', () => {
+  const boundedDistrict = { worldW: 600, worldH: 600 };
+  const state = makeState();
+  state.obstacles = [{ x: 200, y: 0, w: 40, h: 600 }];
+  state.destination = { x: 300, y: 100 };
+  state.pendingInteraction = { type: 'portal', id: 'behind-wall' };
+  assert.deepEqual(planMosaicPath(state.player, state.destination, boundedDistrict, state.obstacles), []);
+  assert.equal(advanceMosaicPlayer(state, boundedDistrict), 0);
+  assert.equal(state.destination, null);
+  assert.equal(state.pendingInteraction, null);
+  assert.equal(state.player.x, 100);
+});
+
+test('clock restart frames preserve click movement; manual input cancels its route', () => {
+  const state = makeState();
+  state.destination = { x: 300, y: 100 };
+  state.pendingInteraction = { type: 'portal', id: 'next' };
+  advanceMosaicPlayer(state, district, 0);
+  assert.deepEqual(state.destination, { x: 300, y: 100 });
+  assert.equal(state.player.x, 100);
+  advanceMosaicPlayer(state, district);
+  assert.ok(state.player.x > 100);
+  state.keys = { arrowdown: true };
+  advanceMosaicPlayer(state, district);
+  assert.equal(state.destination, null);
+  assert.equal(state.destinationRoute, null);
+  assert.equal(state.pendingInteraction, null);
+  assert.ok(state.player.y > 100);
+});
+
 test('idle and delayed frames cannot invent movement or huge catch-up travel', () => {
   const idle = makeState();
   assert.equal(advanceMosaicPlayer(idle, district, 5000), 0);
@@ -111,6 +244,31 @@ test('clicking a distant target never substitutes a nearer unrelated interaction
 test('passive talk scenery is not exposed as a conflicting terminal', () => {
   const targets = getMosaicInteractionTargets({ zones: [{ id: 'rest', action: 'talk' }, { id: 'floor' }] });
   assert.deepEqual(targets, []);
+});
+
+test('the Archives Codex terminal opens the actual global archive only after approach', () => {
+  const zonesSource = city.slice(city.indexOf("if (currentDistrict === 'archives')"), city.indexOf("if (currentDistrict === 'forge')"));
+  const zones = new Function('currentDistrict', 'lang', `${zonesSource}; return [];`)('archives', 'fr');
+  const zone = zones.find(entry => entry.id === 'codex');
+  assert.equal(zone.action, 'codex');
+  assert.equal(zone.universe, null, 'the global archive does not request an invented A.R.C.A. universe');
+  const stateRef = { current: makeState() };
+  const opened = [];
+  const source = city.slice(city.indexOf('const interactWithNearby ='), city.indexOf('  useEffect(() => {\n    const onKeyDown'));
+  const args = {
+    useCallback: callback => callback, sessionPausedRef: { current: false }, stateRef,
+    resolveMosaicInteraction, district: { portals: [] }, zones, lang: 'fr',
+    setHubLog: () => {}, recordGuide: () => {}, switchDistrict: () => {},
+    onOpenCodex: universe => opened.push(universe), onOpenMissions: () => assert.fail('Codex cannot open missions'),
+    playerName: 'Ancre', universeStageStats: {}, sound: { playSfx: () => {} }, setSelectedHeroId: () => {},
+    setWelcomeIndex: () => {}, setWelcomeOpen: () => {}, MOSAIC_WELCOME
+  };
+  const interact = new Function(...Object.keys(args), `${source}; return interactWithNearby;`)(...Object.values(args));
+  interact({ type: 'zone', id: zone.id });
+  assert.deepEqual(opened, []);
+  Object.assign(stateRef.current.player, getMosaicZoneAnchor(zone));
+  interact({ type: 'zone', id: zone.id });
+  assert.deepEqual(opened, [null]);
 });
 
 test('onboarding advances through walking, interaction and freely selected objective', () => {

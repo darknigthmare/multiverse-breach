@@ -1,0 +1,165 @@
+{
+  "auditDate": "2026-10-01",
+  "universe": "Pirates of the Caribbean",
+  "incarnation": "Pirates of the Caribbean: The Curse of the Black Pearl (2003)",
+  "sourceKitModule": "src/game/canonBlackPearlSourceKits.js",
+  "heroes": [
+    {
+      "id": "jack_sparrow_potc",
+      "equipment": [
+        "Pirate Sword",
+        "Flintlock Pistol",
+        "Jack s Compass"
+      ],
+      "baselineStats": {
+        "hp": 100,
+        "atk": 12,
+        "def": 6,
+        "spd": 6
+      },
+      "sourceAmmunition": {
+        "id": "jack-2003-reserved-flintlock-shot",
+        "maxShots": 1,
+        "actionIds": [
+          "secondary"
+        ],
+        "resetPolicy": "new-battle"
+      },
+      "sourceLimits": [
+        "Non-offensive compass",
+        "No automatic enemy tracking",
+        "Exact 2003 identity",
+        "Source final shot belongs to the scene transaction"
+      ],
+      "visualReviewStatus": "pending"
+    },
+    {
+      "id": "will_turner_potc",
+      "equipment": [
+        "Forged Sword",
+        "Blacksmith Work Clothes"
+      ],
+      "baselineStats": {
+        "hp": 105,
+        "atk": 14,
+        "def": 5,
+        "spd": 6
+      },
+      "sourceLimits": [
+        "Human Port Royal blacksmith",
+        "Physical sword actions",
+        "No Flying Dutchman supernatural captain kit"
+      ],
+      "visualReviewStatus": "pending"
+    },
+    {
+      "id": "elizabeth_swann_potc",
+      "equipment": [
+        "Borrowed Table Knife",
+        "2003 Captive Dress"
+      ],
+      "baselineStats": {
+        "hp": 120,
+        "atk": 11,
+        "def": 7,
+        "spd": 4
+      },
+      "sourceLimits": [
+        "Improvised self-defense",
+        "Medallion is an earlier story prop confiscated after capture",
+        "No medallion offensive power",
+        "No later-film Pirate King arsenal"
+      ],
+      "visualReviewStatus": "pending"
+    }
+  ],
+  "runtimeProfiles": {
+    "contactActions": {
+      "shape": "single",
+      "delivery": "melee",
+      "tacticsRange": 1,
+      "smashRange": 70
+    },
+    "jackSecondary": {
+      "shape": "single",
+      "delivery": "ranged",
+      "tacticsRange": 4,
+      "smashRange": 300
+    },
+    "presentation": [
+      "melee impact",
+      "flintlock bullet and smoke"
+    ],
+    "excludedGeneratedEffects": [
+      "origin_aoe",
+      "generic laser",
+      "Nexus area flash"
+    ]
+  },
+  "adaptations": [
+    "Original balance values and action timings are preserved.",
+    "Grid and pixel ranges adapt physical actions to the game.",
+    "Repeated knife escape strikes and special feints are game sequences, not certified source choreography.",
+    "Reserved ammunition resets in a new game battle, not on hero or wave changes."
+  ],
+  "references": [
+    {
+      "url": "https://movies.disney.com/pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+      "scope": "Official publisher synopsis and film identity"
+    },
+    {
+      "url": "https://d23.com/a-to-z/pirates-of-the-caribbean-the-curse-of-the-black-pearl-film/",
+      "scope": "Official Disney film notice, rescue and cursed crew"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean:_The_Curse_of_the_Black_Pearl",
+      "scope": "Final film plot and curse resolution"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Will_Turner",
+      "scope": "2003 blacksmith and swordsmanship"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Elizabeth_Swann",
+      "scope": "Medallion history, parley and separation from later film roles"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Jack_Sparrow",
+      "scope": "2003 sword, pistol and single reserved shot"
+    },
+    {
+      "url": "https://en.wikiquote.org/wiki/Pirates_of_the_Caribbean:_The_Curse_of_the_Black_Pearl",
+      "scope": "Film dialogue: no additional shot or powder, compass does not point north"
+    },
+    {
+      "url": "https://imsdb.com/scripts/Pirates-of-the-Caribbean.html",
+      "scope": "Draft screenplay: improvised dinner knife; not authority for final-film duel chronology"
+    }
+  ],
+  "verification": {
+    "testFile": "scripts/canonBlackPearlSourceKits.test.mjs",
+    "tests": 33,
+    "engineActionCases": 27,
+    "modes": [
+      "RPG",
+      "Tactics",
+      "Smash"
+    ],
+    "checks": [
+      "Historical IDs, stats and sprite paths",
+      "Source metadata and ammunition identity guards",
+      "Single valid damage victim",
+      "Contact distance rejection",
+      "No generic laser or group burst",
+      "FR/EN source plaques"
+    ],
+    "separateRuntimeSuites": "Ammunition and encounter transaction tests are owned by their engine suites."
+  },
+  "remaining": [
+    "Exact costume and choreography review against original film frames",
+    "Native character artwork fidelity approval"
+  ],
+  "newArtworkInstalled": false,
+  "visualFidelityApproved": false,
+  "finalValidationReport": "docs/audits/rex-black-pearl-followup-2026-10-01.json"
+}

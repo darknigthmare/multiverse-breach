@@ -361,6 +361,73 @@ export const SMASH_ARENA_LAYOUTS = {
       { x: width * 0.70, y: height * 0.70 }
     ]
   },
+  hadleys_processor_hive: {
+    id: 'hadleys_processor_hive',
+    label: { fr: 'Nid du processeur de Hadley', en: 'Hadley Atmosphere Processor Nest' },
+    tags: ['bossArena', 'industrial', 'hive', 'aliens1986'],
+    objective: 'boss',
+    objectiveTarget: 4,
+    maxWaves: 4,
+    gravity: 0.24,
+    jump: -7.6,
+    platforms: (width, height) => [
+      scaledPlatform(width, height, 0.05, 0.95, 0.78, 'main', false),
+      scaledPlatform(width, height, 0.12, 0.38, 0.56, 'soft'),
+      scaledPlatform(width, height, 0.61, 0.88, 0.54, 'soft')
+    ],
+    spawns: (width, height) => ({
+      heroes: [
+        { x: width * 0.16, y: height * 0.78 },
+        { x: width * 0.25, y: height * 0.78 },
+        { x: width * 0.34, y: height * 0.78 }
+      ],
+      enemies: [
+        { x: width * 0.82, y: height * 0.78 },
+        { x: width * 0.72, y: height * 0.54 },
+        { x: width * 0.80, y: height * 0.78 }
+      ],
+      boss: { x: width * 0.76, y: height * 0.78 }
+    }),
+    pickups: (width, height) => [
+      { x: width * 0.25, y: height * 0.50 },
+      { x: width * 0.72, y: height * 0.48 },
+      { x: width * 0.48, y: height * 0.71 }
+    ]
+  },
+  xen_nihilanth_chamber: {
+    id: 'xen_nihilanth_chamber',
+    label: { fr: 'Chambre du Nihilanth sur Xen', en: 'Nihilanth Chamber on Xen' },
+    tags: ['bossArena', 'organic', 'vertical', 'halfLife1998'],
+    objective: 'boss',
+    objectiveTarget: 3,
+    maxWaves: 3,
+    gravity: 0.22,
+    jump: -8.0,
+    platforms: (width, height) => [
+      scaledPlatform(width, height, 0.04, 0.96, 0.80, 'main', false),
+      scaledPlatform(width, height, 0.10, 0.36, 0.58, 'soft'),
+      scaledPlatform(width, height, 0.42, 0.59, 0.40, 'soft'),
+      scaledPlatform(width, height, 0.64, 0.91, 0.58, 'soft')
+    ],
+    spawns: (width, height) => ({
+      heroes: [
+        { x: width * 0.16, y: height * 0.80 },
+        { x: width * 0.25, y: height * 0.80 },
+        { x: width * 0.33, y: height * 0.80 }
+      ],
+      enemies: [
+        { x: width * 0.80, y: height * 0.80 },
+        { x: width * 0.77, y: height * 0.58 },
+        { x: width * 0.51, y: height * 0.40 }
+      ],
+      boss: { x: width * 0.76, y: height * 0.58 }
+    }),
+    pickups: (width, height) => [
+      { x: width * 0.24, y: height * 0.52 },
+      { x: width * 0.50, y: height * 0.34 },
+      { x: width * 0.76, y: height * 0.52 }
+    ]
+  },
   hive_corridor: {
     id: 'hive_corridor',
     label: { fr: 'Couloir de ruche acide', en: 'Acid Hive Corridor' },
@@ -843,6 +910,8 @@ export function getSmashPickupPositions(stage, width = 760, height = 360) {
 
 export function getSmashArenaTheme(stage = {}, arena = {}) {
   const universe = stage.universe || '';
+  if (arena.id === 'hadleys_processor_hive') return { material: 'hive', accent: '#869a9f', secondary: '#1e2d30', danger: '#c1a05f' };
+  if (arena.id === 'xen_nihilanth_chamber') return { material: 'arcane', accent: '#b086bf', secondary: '#e6a551', danger: '#73d775' };
   const recentProfile = stage.forceBaseArena || stage.dlcSuppressedArena
     ? null
     : getRecentUniverseLevelProfile(universe);

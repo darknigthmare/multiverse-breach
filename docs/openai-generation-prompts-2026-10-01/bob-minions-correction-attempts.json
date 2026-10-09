@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "correctionId": "bob-minions-fidelity-2026-10-01",
+  "kind": "hero",
+  "id": "bob_minions",
+  "name": "Bob",
+  "universe": "Minions",
+  "priority": "P0",
+  "status": "blocked-generation",
+  "installed": false,
+  "checkedAt": "2026-10-01T02:37:12Z",
+  "requestedOutput": "/sprites/generated/heroes/minions/bob-minions.png",
+  "requiredFrameContract": {
+    "width": 1024,
+    "height": 1024,
+    "format": "png",
+    "channels": 4,
+    "columns": 4,
+    "rows": [
+      "idle",
+      "run",
+      "attack",
+      "hit"
+    ],
+    "cellWidth": 256,
+    "cellHeight": 256,
+    "minimumGuard": 12
+  },
+  "requestedAnimationSemantics": {
+    "idle": "gentle standing/breathing",
+    "run": "playful running strides",
+    "attack": "nonviolent comic gesture",
+    "hit": "startled balance/recovery"
+  },
+  "currentAsset": {
+    "sha256": "d24627706a7d66cc4d3c8f3e90f7580e593e8f31ee9e1362dd5787d6c4288998",
+    "generationId": "exec-dataurl-0612c0d6cddaeb9c0da10acd2e06b9f8",
+    "generationPromptSha256": "56e2c150f4bda97f1011da0966d68eb9b82701b404ce09e8989c8037b52c9fa9",
+    "technicalReview": {
+      "width": 1024,
+      "height": 1024,
+      "channels": 4,
+      "nonemptyCells": 16,
+      "minimumMargin": 12,
+      "guardViolations": 0,
+      "alphaThreshold": 12
+    },
+    "sourcePrompt": "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup/001-hero-bob-minions-original-56e2c150.txt",
+    "identityStatus": "incorrect-original-replacement",
+    "visualReview": {
+      "method": "built-in view_image",
+      "findings": [
+        "Mechanical lemon-yellow orb with cyan sensor windows instead of Bob's bald yellow head, two human-like eyes and silver goggles.",
+        "Teal armor panels and four caster feet instead of blue denim overalls, black gloves and two black boots.",
+        "Neither mismatched green/brown irises nor Bob's recognizable Minion silhouette are present."
+      ]
+    }
+  },
+  "officialReferences": {
+    "page": "https://www.illumination.com/movie/minions/",
+    "pageVerified": true,
+    "characterCard": {
+      "name": "BOB",
+      "description": "Sweet and naïve, a tiny minion with a giant heart."
+    },
+    "images": [
+      {
+        "url": "https://www.illumination.com/wp-content/uploads/2019/11/Minions_KingBob.png",
+        "fileName": "multiverse-official-bob.png",
+        "sha256": "5e22a35d1e1a8e646773e188671c8b0c2556b35c84cbe0fadf503b7ed8c9975f",
+        "inspectedWith": "built-in view_image",
+        "usage": "Identity/face/goggles reference; royal crown and cape explicitly excluded from requested normal outfit."
+      },
+      {
+        "url": "https://www.illumination.com/wp-content/uploads/2019/11/Minions_Gallery.png",
+        "fileName": "multiverse-official-minions-gallery-main.png",
+        "sha256": "267f1116eec7e2edcd805d749882b1b1d92878ce3f92c440d0d01249cf22c722",
+        "inspectedWith": "built-in view_image",
+        "usage": "Bob is the short bald Minion at left with mismatched green/brown eyes; winter costume excluded from requested normal outfit."
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "sequence": 1,
+      "provider": "OpenAI",
+      "interface": "built-in image_gen",
+      "promptFile": "docs/openai-generation-prompts-2026-10-01/bob-minions-faithful.txt",
+      "promptSha256": "b66b1f3bc7f26a8ac091a9e3f6cd316df45e2944173c39e6975ba087c801bb47",
+      "referencedImages": [
+        "multiverse-official-bob.png",
+        "multiverse-official-minions-gallery-main.png"
+      ],
+      "transparentBackground": true,
+      "status": "rejected",
+      "error": {
+        "httpStatus": 400,
+        "code": "moderation_blocked",
+        "stage": "output",
+        "categories": [
+          "other"
+        ],
+        "requestId": "da258425-1d00-449e-8366-db75accd18c8"
+      },
+      "generationId": null,
+      "sourceImage": null
+    }
+  ],
+  "unchangedFiles": [
+    "public/sprites/generated/heroes/minions/bob-minions.png",
+    "public/sprites/generated/openai-asset-ledger.jsonl",
+    "public/sprites/generated/openai-sprite-prompts.jsonl",
+    "docs/openai-generation-prompts-2026-08-25/asset-batch-9-wave-4-corrections-makeup.json",
+    "docs/openai-generation-prompts-2026-08-25/asset-batch-334-wave-4-completed.json"
+  ],
+  "nextAction": "Obtain a faithful Bob Minion sprite source with verifiable provenance; review all sixteen frames and install through installGeneratedBitmapBatch.mjs after archiving the current asset and ledger entry. This correction remains open."
+}

@@ -5,6 +5,7 @@ import { FEATURED_BACKDROPS } from './featuredUniversePacks';
 import { getGeneratedStageBackdropSrc } from './generatedStageAssets';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
+import { drawP0CanonParticle } from './canonP0ParticleRenderer.js';
 import {
   getEnemySpriteSheetSrc,
   getHeroMeleeAnimationFrame,
@@ -405,6 +406,7 @@ export class ParticleSystem {
     ctx.save();
     this.particles.forEach(p => {
       ctx.globalAlpha = p.alpha;
+      if (drawP0CanonParticle(ctx, p)) return;
       if (p.type === 'text') {
         ctx.font = 'bold 12px "Share Tech Mono", monospace';
         ctx.fillStyle = p.color;
@@ -420,6 +422,15 @@ export class ParticleSystem {
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(p.x + p.vx * 10, p.y + p.vy * 10);
         ctx.stroke();
+      } else if (p.type === 'banana') {
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = Math.max(3, p.size / 3);
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(p.x - p.size / 2, p.y - p.size / 3);
+        ctx.quadraticCurveTo(p.x, p.y + p.size / 2, p.x + p.size / 2, p.y - p.size / 3);
+        ctx.stroke();
+        ctx.lineCap = 'butt';
       } else if (p.type === 'music') {
         ctx.fillStyle = p.color;
         ctx.font = `${p.size}px monospace`;

@@ -3,11 +3,19 @@ import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCombatantBust } from './
 import { absorbBattleItemDamage, grantBattleItemShield } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
+import { applyCombatHealing } from './combatHealing.js';
+import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
 import { drawGeneratedStageTextureCover, getGeneratedStageTexturePattern } from './generatedStageAssets';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { faceGridUnitToward as faceUnitToward, getGridFacingVector, getGridFacingBonus } from './tacticalFacing.js';
 import { resolveTacticsEscort, getTacticsEscortPose } from './tacticsEscort.js';
+import { emitCanonHeroAttackEffect, resolveCanonHeroAttackEffect } from './canonHeroAttackEffects.js';
+import { createScarabBoardingEncounter, advanceScarabBoardingEncounter, getScarabEncounterSummary } from './canonScarabEncounter.js';
+import { createRexEncounter, applyRexStingerDamage, getRexEncounterSummary, REX_STINGER_ACTION } from './canonRexEncounter.js';
+import { prepareRexAttack, getRexAttackIntent, activateRexChaff, finishRexAttack } from './canonRexAttackPatterns.js';
+import { getBlackPearlSourceAmmunition } from './canonBlackPearlSourceKits.js';
+import { preserveEnemySpriteIdentity } from './enemySpriteIdentity.js';
 
 const COMPASS_DIRECTIONS = [
   { x: 1, y: 0 },
@@ -160,6 +168,28 @@ export class EngineTactics {
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
+    [...this.heroes, ...this.enemies].forEach(unit => {
+      const ammunition = getBlackPearlSourceAmmunition(unit);
+      if (ammunition) unit.sourceAmmoRemaining = ammunition.maxShots;
+    });
+    this.scarabEncounter = createScarabBoardingEncounter(stage, this.battlefield, this.enemies);
+    if (this.scarabEncounter) {
+      this.objective = 'scarab_boarding';
+      this.objectiveTarget = 1 + this.scarabEncounter.crew.length;
+      // The catwalk joins the upper deck through one visible boarding cell.
+      // Copy shared battlefield tiles so other stages and later battles stay intact.
+      this.tiles = [...this.tiles, ...Array.from({ length: this.rows }, (_, y) => ({
+        x: this.scarabEncounter.boardingCell.x, y, type: 'blocked'
+      })).filter(tile => tile.y !== this.scarabEncounter.boardingCell.y)];
+      this.battlefield = { ...this.battlefield, objective: this.objective,
+        objectiveTarget: this.objectiveTarget, tiles: this.tiles };
+    }
+    this.rexEncounter = createRexEncounter(stage, this.battlefield, this.enemies);
+    if (this.rexEncounter) {
+      this.objective = 'rex_weakpoints';
+      this.objectiveTarget = 2;
+      this.battlefield = { ...this.battlefield, objective: this.objective, objectiveTarget: 2 };
+    }
     // Templates and generated sheets can carry their own defaults; runtime
     // facing always follows the actual opposing squad instead.
     this.heroes.forEach(hero => this.faceNearestOpponent(hero, this.enemies));
@@ -171,6 +201,7 @@ export class EngineTactics {
 
     // Spawning Destructible Obstacles
     this.obstacles = (this.battlefield.obstacles || []).map(item => ({ ...item }));
+    if (this.rexEncounter) this.rexEncounter.attackIntent = prepareRexAttack(this.rexEncounter, this.heroes, this.cols, this.rows);
 
     this.turnQueue = [];
     this.activeUnit = null;
@@ -198,10 +229,10 @@ export class EngineTactics {
   }
 
   schedule(callback, delay) {
-    if (this.disposed) return null;
+    if (this.disposed || this.gameOver) return null;
     const runWhenResumed = () => {
-      if (this.disposed) return;
-      if (this.paused) {
+      if (this.disposed || this.gameOver) return;
+      if (this.paused || (this.activeUnit?.currentHp > 0 && this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0)) {
         const retryTimer = setTimeout(() => {
           this.timers.delete(retryTimer);
           runWhenResumed();
@@ -387,13 +418,14 @@ export class EngineTactics {
       ...this.heroes.filter(h => h.currentHp > 0).map(h => ({ unit: h, type: 'hero' })),
       ...this.enemies.filter(e => e.currentHp > 0).map(e => ({ unit: e, type: 'enemy' }))
     ];
-    const getSpeed = (entry) => entry.unit.stats?.spd ?? entry.unit.spd ?? 1;
+    const getSpeed = entry => (entry.unit.stats?.spd ?? entry.unit.spd ?? 1) * getCombatEventSpeedMultiplier(entry.unit);
     units.sort((a, b) => getSpeed(b) - getSpeed(a));
     this.turnQueue = units;
   }
 
   startTurn() {
-    if (this.disposed) return;
+    if (this.disposed || this.gameOver) return;
+    this.turnQueue = this.turnQueue.filter(t => t.unit.currentHp > 0);
     if (this.turnQueue.length === 0) {
       this.rebuildTurnQueue();
       if (this.isFinalBoss) {
@@ -405,7 +437,7 @@ export class EngineTactics {
       }
     }
     this.turnQueue = this.turnQueue.filter(t => t.unit.currentHp > 0);
-    if (this.turnQueue.length === 0) return;
+    if (this.gameOver || this.turnQueue.length === 0) return;
 
     const next = this.turnQueue.shift();
     this.activeUnit = next.unit;
@@ -446,6 +478,8 @@ export class EngineTactics {
   }
 
   getReachableCells(unit, range) {
+    if (this.scarabEncounter && unit.scarabHull) return [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
+    if (this.rexEncounter && unit === this.rexEncounter.body) return [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
     const visited = new Set([`${unit.gridX},${unit.gridY}`]);
     const queue = [{ x: unit.gridX, y: unit.gridY, dist: 0 }];
     const cells = [{ x: unit.gridX, y: unit.gridY, cost: 0 }];
@@ -463,6 +497,7 @@ export class EngineTactics {
       ].forEach(next => {
         const key = `${next.x},${next.y}`;
         if (visited.has(key) || !this.isInsideGrid(next.x, next.y)) return;
+        if (this.scarabEncounter && unit.scarabCrew && next.x < 5) return;
         if (this.isCellOccupied(next.x, next.y, unit)) return;
 
         const moveCost = this.getTileMoveCost(next.x, next.y, unit);
@@ -521,6 +556,7 @@ export class EngineTactics {
 
   getActionDefinition(unit, actionType) {
     if (!unit || actionType === 'defense') return null;
+    if (this.rexEncounter && actionType === 'rex_stinger' && this.heroes.some(hero => hero === unit || hero === unit._tacticsSourceUnit)) return REX_STINGER_ACTION;
     return actionType === 'enemy' ? unit.simple || null : unit[actionType] || null;
   }
 
@@ -748,6 +784,7 @@ export class EngineTactics {
 
   getActionBaseDamage(attacker, actionType) {
     if (!attacker) return 0;
+    if (this.rexEncounter && actionType === 'rex_stinger') return 140 + (attacker.stats?.atk ?? 0);
     const attack = attacker.stats?.atk ?? attacker.atk ?? 0;
     if (actionType === 'secondary') return attack * (attacker.secondary?.dmg || 1.35);
     if (actionType === 'special') return attack * (attacker.special?.dmg || 1.7);
@@ -755,6 +792,7 @@ export class EngineTactics {
   }
 
   selectAction(actionType) {
+    if (actionType === 'rex_stinger') return this.selectRexStingerTarget();
     const isHumanTurn = this.activeUnitType === 'hero'
       || (this.opponentControl === 'p2' && this.activeUnitType === 'enemy');
     if (this.gameOver || this.disposed || !isHumanTurn) return false;
@@ -784,6 +822,7 @@ export class EngineTactics {
       ? this.normalizeEnemyActions(this.activeUnit)
       : this.activeUnit;
     if (selected === 'secondary' && unit.cooldown > 0) return false;
+    if (getBlackPearlSourceAmmunition(unit, selected) && unit.sourceAmmoRemaining <= 0) return false;
     if (selected === 'special' && unit.specialCharge < 100) return false;
     this.selectedAction = selected;
     this.selectedActionExplicit = true;
@@ -921,11 +960,14 @@ export class EngineTactics {
 
   applyStartTileEffect(unit) {
     if (!unit || unit.currentHp <= 0) return;
+    if (this.scarabEncounter && this.heroes.includes(unit)) this.updateTacticsObjective();
     const tile = this.getTileAt(unit.gridX, unit.gridY);
     if (!tile) return;
     const { x: px, y: py } = this.gridToScreen(unit.gridX, unit.gridY);
     if (tile.type === 'hazard' && !this.hazardsDisabled) {
-      unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
+      if (!this.applyEncounterDamage(unit, 6, { kind: 'tile-hazard', silent: true })) {
+        unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - 6);
+      }
       this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 40, 'text', 'DANGER');
     }
     if (tile.type === 'heal' && this.heroes.includes(unit)) {
@@ -953,6 +995,15 @@ export class EngineTactics {
   }
 
   getDamagePreview(attacker, defender, actionType = 'simple') {
+    if (getBlackPearlSourceAmmunition(attacker, actionType) && attacker.sourceAmmoRemaining <= 0) {
+      return { damage: 0, cover: 0, defense: 0, ammunitionDepleted: true };
+    }
+    if (this.rexEncounter && defender === this.rexEncounter.body && actionType !== 'rex_stinger') {
+      return { damage: 0, cover: 0, defense: 0, invulnerable: true };
+    }
+    if (this.scarabEncounter && defender === this.scarabEncounter.hull) {
+      return { damage: 0, cover: 0, defense: 0, invulnerable: true };
+    }
     let damage = this.getActionBaseDamage(attacker, actionType);
     if (!damage) return { damage: 0, cover: 0, defense: 0 };
     if (defender?.state === 'defense' && defender.defense) {
@@ -976,7 +1027,9 @@ export class EngineTactics {
       if (enemy.currentHp <= 0) return;
       const profile = this.getAttackProfile(enemy, 'enemy');
       const threatenedCells = new Map();
-      for (let r = 0; r < this.rows; r++) {
+      if (this.rexEncounter && enemy === this.rexEncounter.body) {
+        (getRexAttackIntent(this.rexEncounter)?.cells || []).forEach(cell => threatenedCells.set(`${cell.x},${cell.y}`, cell));
+      } else for (let r = 0; r < this.rows; r++) {
         for (let c = 0; c < this.cols; c++) {
           const target = { gridX: c, gridY: r };
           if (!this.canAttackCell(enemy, target, profile)) continue;
@@ -1221,6 +1274,8 @@ export class EngineTactics {
   }
 
   pushUnitHorizontally(unit, distance) {
+    if (this.scarabEncounter && unit.scarabHull) return;
+    if (this.rexEncounter && unit === this.rexEncounter.body) return;
     const direction = Math.sign(distance);
     // Forced movement preserves heading and stops at the first obstruction,
     // including every occupied cell of a large boss footprint.
@@ -1290,7 +1345,16 @@ export class EngineTactics {
       }
     };
 
-    if (profile.shape === 'area') {
+    if (profile.shape === 'multi') {
+      // A volley consists of distinct legal shots, not a cone or an explosion.
+      // Each candidate must satisfy the same range and sight rules as its
+      // clicked anchor; the target budget is applied by the shared resolver.
+      for (let y = 0; y < this.rows; y++) {
+        for (let x = 0; x < this.cols; x++) {
+          if (this.canAttackCell(attacker, { gridX: x, gridY: y }, profile)) append(x, y);
+        }
+      }
+    } else if (profile.shape === 'area') {
       for (let y = targetY - profile.areaRadius; y <= targetY + profile.areaRadius; y++) {
         for (let x = targetX - profile.areaRadius; x <= targetX + profile.areaRadius; x++) append(x, y);
       }
@@ -1441,7 +1505,24 @@ export class EngineTactics {
 
   applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType) {
     const targets = this.getAttackTargets(attacker, target, actionType, attackerType);
+    const ammunition = getBlackPearlSourceAmmunition(attacker, actionType);
+    if (ammunition) {
+      if (attacker.sourceAmmoRemaining <= 0 || targets.length === 0
+        || !this.canAttackCell(attacker, target, this.getAttackProfile(attacker, actionType))) return [];
+      attacker.sourceAmmoRemaining = Math.max(0, attacker.sourceAmmoRemaining - 1);
+    }
+    const action = this.getActionDefinition(attacker, actionType);
+    const canonEffect = resolveCanonHeroAttackEffect(attacker, action);
+    if (canonEffect) this.playSfx(canonEffect.sfx);
     targets.forEach(entry => {
+      if (canonEffect) {
+        emitCanonHeroAttackEffect(
+          this.particles,
+          { ...attacker, ...this.getUnitScreenPosition(attacker.gridX, attacker.gridY) },
+          this.getUnitScreenPosition(entry.unit.gridX, entry.unit.gridY),
+          action
+        );
+      }
       this.applyDamage(attacker, entry.unit, baseDamage, statusEffect, { actionType });
     });
     return targets;
@@ -1452,9 +1533,13 @@ export class EngineTactics {
     if (
       this.gameOver
       || this.disposed
+      || (this.rexEncounter && this.paused)
       || (this.activeUnitType !== 'hero' && !isP2EnemyTurn)
     ) {
       return { handled: false, reason: 'inactive' };
+    }
+    if (this.activeUnit?.state === 'hit' && this.activeUnit.stateTimer > 0) {
+      return { handled: false, reason: 'stunned' };
     }
 
     if (this.actionPhase === 'move') {
@@ -1478,6 +1563,7 @@ export class EngineTactics {
       this.calculateAttackRange();
       return { handled: true, type: 'move', unit: this.activeUnit, x: c, y: r };
     } else if (this.actionPhase === 'action') {
+      if (this.selectedAction === 'rex_stinger' && this.rexEncounter) return this.fireRexStingerAtCell(c, r);
       const inRange = this.attackRange.some(cell => cell.x === c && cell.y === r);
       if (!inRange) return { handled: false, reason: 'out-of-range' };
 
@@ -1518,7 +1604,7 @@ export class EngineTactics {
             attacker.state = 'attack';
             attacker.stateTimer = 25;
             const weapon = attacker.weaponType || attacker.weapon;
-            this.playSfx(weapon === 'gun' || weapon === 'laser' ? 'shoot' : 'slash');
+            if (!resolveCanonHeroAttackEffect(attacker, attacker.simple)) this.playSfx(weapon === 'gun' || weapon === 'laser' ? 'shoot' : 'slash');
             
             let status = null;
             if (attacker.id === 'leon' || attacker.name?.includes('Nemesis')) status = 'infected';
@@ -1539,10 +1625,11 @@ export class EngineTactics {
 
           } else if (this.selectedAction === 'secondary') {
             if (attacker.cooldown > 0) return { handled: false, reason: 'cooldown' };
+            if (getBlackPearlSourceAmmunition(attacker, 'secondary') && attacker.sourceAmmoRemaining <= 0) return { handled: false, reason: 'ammunition-depleted' };
             attacker.state = 'attack';
             attacker.stateTimer = 25;
             attacker.cooldown = (attacker.secondary?.cd || 3) * 60;
-            this.playSfx('shoot');
+            if (!resolveCanonHeroAttackEffect(attacker, attacker.secondary)) this.playSfx('shoot');
             
             this.applyProfiledAttack(
               attacker,
@@ -1561,10 +1648,11 @@ export class EngineTactics {
             attacker.specialCharge = 0;
             attacker.state = 'special';
             attacker.stateTimer = 35;
-            this.playSfx('special');
+            const canonEffect = resolveCanonHeroAttackEffect(attacker, attacker.special);
+            if (!canonEffect) this.playSfx('special');
 
             const specialScreen = this.gridToScreen(c, r);
-            this.particles.add(
+            if (!canonEffect) this.particles.add(
               specialScreen.x,
               specialScreen.y,
               0, 0, attacker.primaryColor || attacker.color || '#e74c3c', 120, 30, 'glitch'
@@ -1589,10 +1677,11 @@ export class EngineTactics {
   }
 
   endActiveTurn() {
-    this.turnsElapsed++;
-    this.updateTacticsObjective();
-    this.applyTacticsMissionPressure();
+    if (this.disposed || this.gameOver || this.actionPhase === 'end') return;
     this.actionPhase = 'end';
+    this.turnsElapsed++;
+    this.updateTacticsObjective(true);
+    this.applyTacticsMissionPressure();
     this.selectedAction = null;
     this.selectedActionExplicit = false;
     this.movementRange = [];
@@ -1601,11 +1690,32 @@ export class EngineTactics {
     this.schedule(() => this.startTurn(), 600);
   }
 
-  updateTacticsObjective() {
+  updateTacticsObjective(advanceTurn = false) {
     if (this.gameOver) return;
     const aliveHeroes = this.heroes.filter(h => h.currentHp > 0);
     if (aliveHeroes.length === 0) {
       this.completeBattle('defeat');
+      return;
+    }
+    if (this.objective === 'rex_weakpoints' && this.rexEncounter) {
+      // Generic HP edits, hazards and special events cannot skip source targets.
+      const rex = this.rexEncounter.body;
+      rex.currentHp = rex.maxHp;
+      if (rex.state === 'dead') { rex.state = 'idle'; rex.stateTimer = 0; }
+      this.objectiveProgress = this.rexEncounter.complete ? 2 : this.rexEncounter.phase === 'cockpit' ? 1 : 0;
+      if (this.rexEncounter.complete) this.completeBattle('victory');
+      return;
+    }
+
+    if (this.objective === 'scarab_boarding' && this.scarabEncounter) {
+      const encounter = advanceScarabBoardingEncounter(this.scarabEncounter, aliveHeroes);
+      this.objectiveProgress = encounter.progress;
+      if (encounter.justBoarded) {
+        this.objectiveEvents++;
+        const point = this.gridToScreen(this.scarabEncounter.boardingCell.x, this.scarabEncounter.boardingCell.y);
+        this.particles.add(point.x, point.y - 24, 0, -1, '#39c5bb', 10, 48, 'text', 'ABORDAGE');
+      }
+      if (encounter.complete) this.completeBattle('victory');
       return;
     }
 
@@ -1663,7 +1773,7 @@ export class EngineTactics {
         const enemyOnTile = this.enemies.some(enemy => enemy.currentHp > 0 && enemy.gridX === tile.x && enemy.gridY === tile.y);
         return heroOnTile && !enemyOnTile;
       });
-      if (heldTiles.length > 0) {
+      if (advanceTurn && heldTiles.length > 0) {
         this.objectiveProgress = Math.min(this.objectiveTarget, this.objectiveProgress + heldTiles.length);
         this.objectiveEvents++;
         this.particles.add(this.width / 2, 42, 0, -1, '#ffeb3b', 11, 38, 'text', 'ANCRAGE');
@@ -1712,6 +1822,8 @@ export class EngineTactics {
     this.gameOver = true;
     this.battleResult = result;
     this.victoryTimer = 0;
+    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.clear();
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
   }
 
@@ -1756,7 +1868,7 @@ export class EngineTactics {
     if (this.gameOver || this.turnsElapsed <= 0) return;
     const { reinforcementEvery, hazardPulseEvery } = this.missionProfile;
     this.advanceEscortUnit();
-    if (this.hazardsDisabled) return;
+    if (this.gameOver || this.hazardsDisabled) return;
     if (reinforcementEvery > 0 && this.turnsElapsed % reinforcementEvery === 0) {
       this.spawnTacticsReinforcement();
     }
@@ -1784,7 +1896,7 @@ export class EngineTactics {
     const pressureScale = 0.68 + this.missionProfile.pressure * 0.08;
     const reinforcementScreen = this.getUnitScreenPosition(spawn.x, spawn.y);
     const reinforcement = {
-      ...template,
+      ...preserveEnemySpriteIdentity(template, this.stage.universe),
       name: `${template.name} Echo ${this.reinforcementsCalled + 1}`,
       gridX: spawn.x,
       gridY: spawn.y,
@@ -1822,7 +1934,9 @@ export class EngineTactics {
       units.forEach(unit => {
         const dist = Math.abs(unit.gridX - tile.x) + Math.abs(unit.gridY - tile.y);
         if (dist <= radius) {
-          unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - (8 + this.missionProfile.pressure * 2));
+          const damage = 8 + this.missionProfile.pressure * 2;
+          if (this.applyEncounterDamage(unit, damage, { kind: 'hazard-pulse', silent: true })) return;
+          unit.currentHp = Math.max(unit.isBoss ? 1 : 0, unit.currentHp - damage);
           const { x: ux, y: uy } = this.getUnitScreenPosition(unit.gridX, unit.gridY);
           this.particles.add(ux, uy - 28, 0, -1, '#ff5b5b', 10, 38, 'text', 'PULSE');
         }
@@ -1934,6 +2048,11 @@ export class EngineTactics {
   }
 
   getObjectiveFocusCells(unitType = 'hero') {
+    if (this.objective === 'scarab_boarding' && this.scarabEncounter && unitType === 'hero') {
+      if (!this.scarabEncounter.boarded) return [{ ...this.scarabEncounter.boardingCell }];
+      return this.scarabEncounter.crew.filter(enemy => enemy.currentHp > 0)
+        .map(enemy => ({ x: enemy.gridX, y: enemy.gridY, unit: enemy }));
+    }
     if (this.objective === 'extract') return this.battlefield.extractionZone || [];
     if (this.objective === 'control') return this.tiles.filter(tile => tile.type === 'objective').map(tile => ({ x: tile.x, y: tile.y }));
     if (this.objective === 'protect') {
@@ -1975,6 +2094,51 @@ export class EngineTactics {
       const dist = Math.abs(unit.gridX - cell.x) + Math.abs(unit.gridY - cell.y);
       return !best || dist < best.dist ? { ...cell, dist } : best;
     }, null);
+  }
+
+  getObjectiveRouteMove(hero, actionType = 'simple') {
+    let goals = this.getObjectiveFocusCells('hero');
+    if (this.objective === 'disable' || (this.scarabEncounter && this.scarabEncounter.boarded)) {
+      const devices = goals.map(goal => goal.unit).filter(Boolean);
+      goals = [];
+      for (let y = 0; y < this.rows; y++) {
+        for (let x = 0; x < this.cols; x++) {
+          if (this.isCellOccupied(x, y, hero)) continue;
+          const probe = { ...hero, gridX: x, gridY: y, _tacticsSourceUnit: hero };
+          const profile = this.getAttackProfile(probe, actionType);
+          if (devices.some(device => this.canAttackCell(probe, device, profile)
+            && this.getAttackTargets(probe, device, actionType, 'hero').some(entry => entry.unit === device))) {
+            goals.push({ x, y });
+          }
+        }
+      }
+    }
+    if (!goals.length) return null;
+    const budget = Math.max(0, this.movementBudget - this.movementSpent);
+    const origin = { x: hero.gridX, y: hero.gridY, cost: 0 };
+    const queue = [{ ...origin, path: [origin] }];
+    const costs = new Map([[`${origin.x},${origin.y}`, 0]]);
+    // Find a full route before taking this turn's affordable steps. This can
+    // deliberately move away from a beacon to get around a wall or obstacle.
+    while (queue.length) {
+      queue.sort((a, b) => a.cost - b.cost);
+      const cell = queue.shift();
+      if (cell.cost !== costs.get(`${cell.x},${cell.y}`)) continue;
+      if (goals.some(goal => goal.x === cell.x && goal.y === cell.y)) {
+        return cell.path.filter(step => step.cost <= budget).at(-1);
+      }
+      for (const delta of [{ x: 1, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }, { x: -1, y: 0 }]) {
+        const next = { x: cell.x + delta.x, y: cell.y + delta.y };
+        if (!this.isInsideGrid(next.x, next.y) || this.isCellOccupied(next.x, next.y, hero)) continue;
+        const cost = cell.cost + this.getTileMoveCost(next.x, next.y, hero);
+        const key = `${next.x},${next.y}`;
+        if (cost >= (costs.get(key) ?? Infinity)) continue;
+        costs.set(key, cost);
+        const step = { ...next, cost };
+        queue.push({ ...step, path: [...cell.path, step] });
+      }
+    }
+    return null;
   }
 
   scoreObjectiveMove(unit, cell, objectiveCell, threatMap, unitType = 'hero') {
@@ -2030,12 +2194,18 @@ export class EngineTactics {
   }
 
   runEnemyAI() {
-    if (this.gameOver || this.activeUnit.currentHp <= 0) {
+    if (this.disposed || this.gameOver || this.paused || !this.activeUnit) return;
+    if (this.activeUnit.currentHp <= 0) {
       this.startTurn();
+      return;
+    }
+    if (this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0) {
+      this.schedule(() => this.runEnemyAI(), 50);
       return;
     }
 
     const enemy = this.activeUnit;
+    if (this.rexEncounter && enemy === this.rexEncounter.body) { this.runRexEnemyAI(); return; }
     const role = this.getEnemyTacticsRole(enemy);
 
     let closestHero = null;
@@ -2145,7 +2315,12 @@ export class EngineTactics {
   }
 
   runHeroAI() {
-    if (this.gameOver || this.activeUnit.currentHp <= 0 || this.activeUnitType !== 'hero') return;
+    if (this.disposed || this.gameOver || !this.activeUnit || this.activeUnit.currentHp <= 0 || this.activeUnitType !== 'hero') return;
+    if (this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0) {
+      this.schedule(() => this.runHeroAI(), 50);
+      return;
+    }
+    if (this.rexEncounter) { this.runRexHeroAI(); return; }
 
     const hero = this.activeUnit;
     let chosenAction = 'simple';
@@ -2154,12 +2329,13 @@ export class EngineTactics {
     } else if (hero.cooldown <= 0) {
       chosenAction = 'secondary';
     }
+    if (getBlackPearlSourceAmmunition(hero, chosenAction) && hero.sourceAmmoRemaining <= 0) chosenAction = 'simple';
 
     // 1. Find closest enemy
     let closestEnemy = null;
     let minDist = 999;
     this.enemies.forEach(e => {
-      if (e.currentHp > 0) {
+      if (e.currentHp > 0 && !(this.scarabEncounter && e.scarabHull)) {
         const d = Math.abs(e.gridX - hero.gridX) + Math.abs(e.gridY - hero.gridY);
         if (d < minDist) {
           minDist = d;
@@ -2167,6 +2343,11 @@ export class EngineTactics {
         }
       }
     });
+
+    const enemiesCleared = !closestEnemy;
+    if (enemiesCleared && this.objective === 'disable') {
+      closestEnemy = this.getClosestObjectiveCell(hero, 'hero')?.unit || null;
+    }
 
     if (!closestEnemy) {
       if (this.objective === 'escort' && this.escortUnit?.currentHp > 0) {
@@ -2182,6 +2363,14 @@ export class EngineTactics {
             };
             return score(a) - score(b);
           })[0];
+        if (best) {
+          faceUnitToward(hero, best);
+          hero.gridX = best.x;
+          hero.gridY = best.y;
+          this.applyStartTileEffect(hero);
+        }
+      } else {
+        const best = this.getObjectiveRouteMove(hero);
         if (best) {
           faceUnitToward(hero, best);
           hero.gridX = best.x;
@@ -2227,6 +2416,12 @@ export class EngineTactics {
         bestMoveCell = cell;
       }
     });
+    if (enemiesCleared && this.objective === 'disable') {
+      bestMoveCell = this.getObjectiveRouteMove(hero, chosenAction) || bestMoveCell;
+    }
+    if (this.scarabEncounter) {
+      bestMoveCell = this.getObjectiveRouteMove(hero, chosenAction) || bestMoveCell;
+    }
 
     // Move there
     faceUnitToward(hero, bestMoveCell);
@@ -2271,9 +2466,11 @@ export class EngineTactics {
     });
     const preferredEnemies = this.objective === 'commander'
       ? this.enemies.filter(e => e.isBoss)
-      : this.enemies;
+      : this.scarabEncounter
+        ? (this.scarabEncounter.boarded ? this.scarabEncounter.crew : this.enemies.filter(e => !e.scarabHull))
+        : this.enemies;
     findTargetIn(preferredEnemies);
-    if (!target && preferredEnemies !== this.enemies) findTargetIn(this.enemies);
+    if (!target && preferredEnemies !== this.enemies && !this.scarabEncounter) findTargetIn(this.enemies);
 
     // Check obstacles if no enemies in range
     if (!target) {
@@ -2297,17 +2494,17 @@ export class EngineTactics {
         if (hero.id === 'neo') status = 'glitched';
 
         if (chosenAction === 'simple') {
-          this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
+          if (!resolveCanonHeroAttackEffect(hero, hero.simple)) this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
           this.applyProfiledAttack(hero, attackAnchor, 'simple', hero.stats.atk * hero.simple.dmg, status, 'hero');
           hero.specialCharge = Math.min(100, hero.specialCharge + 15);
         } else if (chosenAction === 'secondary') {
           hero.cooldown = hero.secondary.cd * 60;
-          this.playSfx('shoot');
+          if (!resolveCanonHeroAttackEffect(hero, hero.secondary)) this.playSfx('shoot');
           this.applyProfiledAttack(hero, attackAnchor, 'secondary', hero.stats.atk * hero.secondary.dmg, status, 'hero');
           hero.specialCharge = Math.min(100, hero.specialCharge + 25);
         } else if (chosenAction === 'special') {
           hero.specialCharge = 0;
-          this.playSfx('special');
+          if (!resolveCanonHeroAttackEffect(hero, hero.special)) this.playSfx('special');
           this.applyProfiledAttack(hero, attackAnchor, 'special', hero.stats.atk * hero.special.dmg, status, 'hero');
         }
       }
@@ -2315,7 +2512,190 @@ export class EngineTactics {
     }, 500);
   }
 
+  applyEncounterDamage(defender, _amount, context = {}) {
+    if (this.rexEncounter && defender === this.rexEncounter.body) {
+      defender.currentHp = defender.maxHp;
+      defender.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+      if (defender.state === 'hit') { defender.state = 'idle'; defender.stateTimer = 0; }
+      const point = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+      if (!context.silent) this.particles.add(point.x, point.y - 28, 0, -1, '#b5a4dc', 10, 42, 'text', 'VISER AU STINGER');
+      return true;
+    }
+    if (this.scarabEncounter && defender === this.scarabEncounter.hull) {
+      const point = this.getUnitScreenPosition(defender.gridX, defender.gridY);
+      if (!context.silent) this.particles.add(point.x, point.y - 28, 0, -1, '#b5a4dc', 10, 42, 'text', 'COQUE IMMUNE');
+      if (defender.state === 'hit') { defender.state = 'idle'; defender.stateTimer = 0; }
+      return true;
+    }
+    return false;
+  }
+
+  getRexEncounterState() {
+    const encounter = this.rexEncounter;
+    if (!encounter) return null;
+    const hero = this.activeUnitType === 'hero' ? this.activeUnit : null;
+    const available = Boolean(hero && this.heroes.includes(hero) && hero.currentHp > 0 && !this.paused && !this.gameOver && !this.disposed
+      && ['move', 'action'].includes(this.actionPhase) && hero.state !== 'attack' && hero.state !== 'special'
+      && !(hero.state === 'hit' && hero.stateTimer > 0));
+    const profile = this.getAttackProfile(hero, 'rex_stinger');
+    const inRange = Boolean(hero && this.getAttackDistance(hero, encounter.body, profile) >= profile.minRange
+      && this.getAttackDistance(hero, encounter.body, profile) <= profile.range);
+    const lineOfSight = Boolean(hero && this.hasLineOfSight(hero, encounter.body, 'rex_stinger'));
+    return { ...getRexEncounterSummary(encounter), activeHeroId: hero?.battleId || hero?.runtimeId || hero?.id || null,
+      selectedAction: this.selectedAction, stingerProfile: { range: 6, minRange: 2 },
+      inRange, lineOfSight, targetLegal: inRange && lineOfSight,
+      commands: { selectStinger: available && !encounter.complete,
+        chaff: available && encounter.phase === 'radome' && encounter.chaffRemaining > 0 && encounter.chaffAttacksRemaining === 0 } };
+  }
+
+  triggerRexChaff() {
+    if (!this.getRexEncounterState()?.commands.chaff || this.activeUnitType !== 'hero') return false;
+    if (!activateRexChaff(this.rexEncounter)) return false;
+    const hero = this.activeUnit;
+    hero.state = 'attack'; hero.stateTimer = 20;
+    this.playSfx('shield');
+    const point = this.getUnitScreenPosition(hero.gridX, hero.gridY);
+    this.particles.add(point.x, point.y - 30, 0, -1, '#bed6df', 10, 45, 'text', 'CHAFF');
+    this.endActiveTurn();
+    return true;
+  }
+
+  runRexEnemyAI() {
+    const encounter = this.rexEncounter;
+    if (!encounter || encounter.complete || this.disposed || this.gameOver || this.paused
+      || this.activeUnitType !== 'enemy' || this.activeUnit !== encounter.body || encounter.body.currentHp <= 0 || this.actionPhase === 'end'
+      || encounter.attackResolving) return false;
+    encounter.attackResolving = true;
+    const body = encounter.body;
+    const pending = getRexAttackIntent(encounter);
+    if (pending) faceUnitToward(body, pending.lockCell);
+    this.schedule(() => {
+      encounter.attackResolving = false;
+      if (encounter.complete || this.activeUnit !== body || this.activeUnitType !== 'enemy' || this.actionPhase === 'end') return;
+      const intent = getRexAttackIntent(encounter);
+      let hitCount = 0;
+      let damage = 0;
+      if (intent) {
+        const multiplier = { machine_guns: 0.75, missiles: 1, belly_laser: 1, stomp: 1.15 }[intent.kind];
+        body.state = 'attack'; body.stateTimer = 20;
+        this.playSfx(intent.kind === 'stomp' ? 'hit' : 'shoot');
+        intent.cells.forEach(cell => {
+          const point = this.getUnitScreenPosition(cell.x, cell.y);
+          this.particles.add(point.x, point.y - 10, 0, -1, intent.kind === 'belly_laser' ? '#ff4136' : '#ffbd69', 5, 24, 'spark');
+        });
+        this.heroes.filter(hero => hero.currentHp > 0 && intent.cells.some(cell => cell.x === hero.gridX && cell.y === hero.gridY))
+          .forEach(hero => {
+            const before = hero.currentHp;
+            this.applyDamage(body, hero, body.atk * multiplier * intent.damageMultiplier, null,
+              { ignoreCover: intent.kind === 'stomp' || intent.kind === 'belly_laser', actionType: 'enemy' });
+            damage += Math.max(0, before - hero.currentHp);
+            hitCount++;
+          });
+        encounter.lastAttack = { kind: intent.kind, tracking: intent.tracking, radarDispersed: intent.radarDispersed, hitCount, damage };
+      }
+      finishRexAttack(encounter);
+      encounter.attackIntent = prepareRexAttack(encounter, this.heroes, this.cols, this.rows);
+      this.endActiveTurn();
+    }, 400);
+    return true;
+  }
+
+  selectRexStingerTarget() {
+    if (!this.getRexEncounterState()?.commands.selectStinger) return false;
+    if (this.actionPhase === 'action' && this.selectedAction === 'rex_stinger' && this.selectedActionExplicit) {
+      return this.cancelSelectedAction();
+    }
+    this.selectedAction = 'rex_stinger';
+    this.selectedActionExplicit = true;
+    this.actionPhase = 'action';
+    this.movementRange = [];
+    this.calculateAttackRange();
+    return true;
+  }
+
+  fireRexStingerAtCell(c, r) {
+    const encounter = this.rexEncounter;
+    const hero = this.activeUnit;
+    if (!encounter || !this.getRexEncounterState()?.commands.selectStinger || this.activeUnitType !== 'hero'
+      || this.actionPhase !== 'action' || this.selectedAction !== 'rex_stinger') return { handled: false, reason: 'inactive' };
+    const body = encounter.body;
+    if (c !== body.gridX || r !== body.gridY) return { handled: false, reason: 'rex-target-required' };
+    const profile = this.getAttackProfile(hero, 'rex_stinger');
+    if (!this.canAttackCell(hero, body, profile)) return { handled: false, reason: 'out-of-range-or-blocked' };
+    const target = this.getAttackTargets(hero, { gridX: c, gridY: r }, 'rex_stinger', 'hero')
+      .find(entry => entry.unit === body);
+    if (!target) return { handled: false, reason: 'blocked' };
+
+    faceUnitToward(hero, body);
+    const phase = encounter.phase;
+    let damage = this.getActionBaseDamage(hero, 'rex_stinger') * getCombatEventDamageMultiplier(hero);
+    damage *= 1 - this.getCoverReduction(hero, body, 'rex_stinger');
+    damage *= 1 - Math.min(0.3, getEffectiveCombatDefense(body, hero) / 100);
+    damage = absorbBattleItemDamage(body, Math.round(damage * (0.9 + Math.random() * 0.2)));
+    const result = damage > 0 ? applyRexStingerDamage(encounter, damage) : null;
+    // A shielded missile still spends its turn. HP loss and lifedrain use actual target loss.
+    if (!result) encounter.missileShots++;
+    const applied = result?.damage || 0;
+    this.damageDealt += applied;
+    if (hero.talent === 'lifedrain' && applied > 0) {
+      hero.currentHp = Math.min(hero.maxHp, hero.currentHp + Math.round(applied * 0.1));
+    }
+    hero.state = 'attack'; hero.stateTimer = 25;
+    hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + 15);
+    this.playSfx('shoot');
+    const point = this.getUnitScreenPosition(c, r);
+    this.particles.add(point.x, point.y - 28, 0, -1, '#ffeb3b', 12, 48, 'text', `${phase === 'radome' ? 'RADOME' : 'COCKPIT'} -${applied}`);
+    if (result?.transition) {
+      this.objectiveEvents++;
+      this.particles.add(point.x, point.y - 48, 0, -1, '#d0e7f4', 10, 65, 'text', 'GRAY FOX : COCKPIT OUVERT');
+    }
+    if (result?.complete) {
+      this.objectiveEvents++;
+      body.rexDisabled = true; body.state = 'disabled'; body.stateTimer = 0;
+      this.particles.add(point.x, point.y - 48, 0, -1, '#39c5bb', 10, 65, 'text', 'REX DESACTIVE ; LIQUID SURVIT');
+    }
+    this.updateTacticsObjective();
+    this.endActiveTurn();
+    return { handled: true, type: 'action', action: 'rex_stinger', target, targets: [target], damage: applied, phase };
+  }
+
+  runRexHeroAI() {
+    const hero = this.activeUnit;
+    const body = this.rexEncounter.body;
+    const profile = this.getAttackProfile(hero, 'rex_stinger');
+    const intent = getRexAttackIntent(this.rexEncounter);
+    const reachable = this.getReachableCells(hero, Math.max(0, this.movementBudget - this.movementSpent));
+    const scored = reachable.map(cell => {
+      const probe = { ...hero, gridX: cell.x, gridY: cell.y, _tacticsSourceUnit: hero };
+      const shot = this.canAttackCell(probe, body, this.getAttackProfile(probe, 'rex_stinger'))
+        && this.getAttackTargets(probe, body, 'rex_stinger', 'hero').some(entry => entry.unit === body);
+      const distance = this.getAttackDistance(probe, body, profile);
+      const rangeError = Math.max(0, profile.minRange - distance, distance - profile.range);
+      const threatened = intent?.cells.some(target => target.x === cell.x && target.y === cell.y);
+      return { cell, shot, score: (shot ? 1000 : 0) - (threatened ? 250 : 0) - rangeError * 100 - (cell.cost || 0) };
+    }).sort((a, b) => b.score - a.score);
+    const best = scored[0];
+    if (best) {
+      hero.gridX = best.cell.x; hero.gridY = best.cell.y;
+      this.movementSpent += best.cell.cost || 0;
+      this.applyStartTileEffect(hero);
+      this.playSfx('jump');
+    }
+    this.actionPhase = 'action'; this.selectedAction = 'rex_stinger'; this.selectedActionExplicit = false;
+    if (intent?.kind === 'missiles' && intent.tracking === 'radar'
+      && intent.cells.some(cell => cell.x === hero.gridX && cell.y === hero.gridY)
+      && this.getRexEncounterState()?.commands.chaff) {
+      this.triggerRexChaff(); return;
+    }
+    this.calculateAttackRange();
+    this.schedule(() => {
+      if (!this.fireRexStingerAtCell(body.gridX, body.gridY).handled) this.endActiveTurn();
+    }, 500);
+  }
+
   applyDamage(attacker, defender, baseDmg, statusEffect = null, options = {}) {
+    if (this.applyEncounterDamage(defender, baseDmg, { kind: 'attack', attacker })) return;
+    baseDmg *= getCombatEventDamageMultiplier(attacker);
     if (defender === this.protectedArtifact) {
       const wasAlive = defender.hp > 0;
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
@@ -2408,8 +2788,9 @@ export class EngineTactics {
     }
 
     if (defender.state !== 'defense') {
+      const hitDuration = defender.state === 'hit' ? defender.stateTimer : 0;
       defender.state = 'hit';
-      defender.stateTimer = 15;
+      defender.stateTimer = Math.max(hitDuration || 0, 15);
     }
 
     // Apply status effect
@@ -2537,11 +2918,10 @@ export class EngineTactics {
         const heal = effect === 'divine_light' ? 200 : effect === 'heal_squad' ? 150 : effect === 'vampire_fury' ? 100 : 80;
         this.heroes.forEach(h => {
           if (h.currentHp > 0) {
-            const cap = h.statusEffects?.radiated > 0 ? h.maxHp * 0.5 : h.maxHp;
-            h.currentHp = Math.min(cap, h.currentHp + heal);
+            const gained = applyCombatHealing(h, heal);
             
             const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(h.gridX, h.gridY);
-            this.particles.add(targetPxX, targetPxY - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${heal}`);
+            if (gained > 0) this.particles.add(targetPxX, targetPxY - 20, 0, -1, '#2ecc71', 12, 45, 'text', `+${gained}`);
           }
         });
         if (effect === 'meeseeks_swarm' || effect === 'vampire_fury') {
@@ -2575,16 +2955,19 @@ export class EngineTactics {
         });
         break;
       }
-      case 'iris_invuln':
-      case 'quad_damage':
-      case 'magia_erebea': {
-        const duration = effect === 'quad_damage' || effect === 'magia_erebea' ? 600 : 240;
+      case 'iris_invuln': {
+        const duration = 240;
         this.heroes.forEach(h => {
           if (h.currentHp > 0) {
             h.state = 'defense';
             h.stateTimer = duration;
           }
         });
+        break;
+      }
+      case 'quad_damage':
+      case 'magia_erebea': {
+        this.heroes.forEach(hero => grantCombatEventBuff(hero, effect));
         break;
       }
       case 'circus_glitch':
@@ -2625,7 +3008,7 @@ export class EngineTactics {
     }
   }
   update() {
-    if (this.disposed) return;
+    if (this.disposed || this.paused) return;
     if (this.gameOver) {
       this.victoryTimer++;
       if (this.victoryTimer > 120 && !this.completionReported) {
@@ -2642,11 +3025,14 @@ export class EngineTactics {
       this.completeBattle('defeat');
       return;
     }
-    if (!enemiesAlive && this.objective !== 'escort') {
+    this.updateTacticsObjective();
+    if (this.gameOver) return;
+    if (!enemiesAlive && this.objective === 'rout') {
       this.objectiveProgress = this.objectiveTarget;
       this.completeBattle('victory');
       return;
     }
+    [...this.heroes, ...this.enemies].forEach(tickCombatEventBuffs);
 
     // Process Status Effects & timers for heroes
     this.heroes.forEach(h => {
@@ -2698,6 +3084,17 @@ export class EngineTactics {
       if (e.stateTimer > 0) {
         e.stateTimer--;
         if (e.stateTimer === 0 && e.state !== 'dead') e.state = 'idle';
+      }
+
+      if (this.scarabEncounter && e.scarabHull) {
+        if (e.state === 'hit') { e.state = 'idle'; e.stateTimer = 0; }
+        e.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+        return;
+      }
+      if (this.rexEncounter && e === this.rexEncounter.body) {
+        e.currentHp = e.maxHp;
+        e.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+        return;
       }
 
       if (e.statusEffects?.infected > 0) {
@@ -2898,7 +3295,7 @@ export class EngineTactics {
           const center = this.gridToScreen(cell.x, cell.y);
           ctx.fillStyle = '#ffffff';
           ctx.font = '9px "Press Start 2P"';
-          ctx.fillText(`-${preview.damage}`, center.x - 18, bounds.bottom - 10);
+          ctx.fillText(preview.invulnerable ? 'IMMUNE' : `-${preview.damage}`, center.x - 18, bounds.bottom - 10);
           if (preview.cover > 0) {
             ctx.fillStyle = '#4fc3f7';
             ctx.font = '7px "Press Start 2P"';
@@ -2984,7 +3381,7 @@ export class EngineTactics {
       ctx.fill();
     }
 
-    if (unit.currentHp > 0) {
+    if (unit.currentHp > 0 && !(this.scarabEncounter && unit.scarabHull)) {
       const barWidth = 30 * renderScale;
       const barHeight = Math.max(2, 3 * renderScale);
       const barY = unit.y - 32 * renderScale;
@@ -2993,6 +3390,11 @@ export class EngineTactics {
       const hpPct = unit.currentHp / unit.maxHp;
       ctx.fillStyle = entry.type === 'escort' ? '#39c5bb' : entry.type === 'hero' ? '#2ecc71' : '#e74c3c';
       ctx.fillRect(unit.x - barWidth / 2, barY, barWidth * hpPct, barHeight);
+    }
+    if (this.scarabEncounter && unit.scarabHull && unit.currentHp > 0) {
+      ctx.fillStyle = '#b5a4dc';
+      ctx.font = '7px "Press Start 2P"';
+      ctx.fillText('COQUE IMMUNE', unit.x - 38 * renderScale, unit.y - 32 * renderScale);
     }
 
     if (entry.type === 'escort' && unit.currentHp > 0) {
@@ -3037,6 +3439,18 @@ export class EngineTactics {
 
     if (this.objective === 'extract') {
       (this.battlefield.extractionZone || []).forEach(cell => drawCellMarker(cell, 'rgba(57,197,187,ALPHA)', 'EXT'));
+    }
+    if (this.objective === 'scarab_boarding' && this.scarabEncounter) {
+      if (!this.scarabEncounter.boarded) {
+        drawCellMarker(this.scarabEncounter.boardingCell, 'rgba(57,197,187,ALPHA)', 'BOARD');
+      } else {
+        this.scarabEncounter.crew.filter(enemy => enemy.currentHp > 0)
+          .forEach(enemy => drawCellMarker({ x: enemy.gridX, y: enemy.gridY }, 'rgba(255,235,59,ALPHA)', 'CREW'));
+      }
+    }
+    if (this.objective === 'rex_weakpoints' && this.rexEncounter && !this.rexEncounter.complete) {
+      const rex = this.rexEncounter.body;
+      drawCellMarker({ x: rex.gridX, y: rex.gridY }, 'rgba(255,235,59,ALPHA)', this.rexEncounter.phase === 'radome' ? 'RADOME' : 'COCKPIT');
     }
     if (this.objective === 'escort') {
       (this.battlefield.extractionZone || []).forEach(cell => drawCellMarker(cell, 'rgba(57,197,187,ALPHA)', 'SAFE'));
@@ -3179,6 +3593,18 @@ export class EngineTactics {
   }
 
   getObjectiveText(lang = 'fr') {
+    if (this.objective === 'rex_weakpoints' && this.rexEncounter) {
+      if (this.rexEncounter.complete) return lang === 'en' ? 'Directive: REX disabled; Liquid survives' : 'Directive: REX désactivé ; Liquid survit';
+      return this.rexEncounter.phase === 'radome'
+        ? (lang === 'en' ? 'Directive: target the radome with a Stinger' : 'Directive: viser le radôme au Stinger')
+        : (lang === 'en' ? 'Directive: target the exposed cockpit with a Stinger' : 'Directive: viser le cockpit exposé au Stinger');
+    }
+    if (this.objective === 'scarab_boarding' && this.scarabEncounter) {
+      const remaining = this.scarabEncounter.crew.filter(enemy => enemy.currentHp > 0).length;
+      return this.scarabEncounter.boarded
+        ? (lang === 'en' ? `Directive: clear Scarab crew (${remaining})` : `Directive: eliminer l equipage (${remaining})`)
+        : (lang === 'en' ? 'Directive: board Scarab at BOARD' : 'Directive: aborder le Scarab sur BOARD');
+    }
     const lines = {
       rout: {
         fr: 'Directive: neutraliser la cellule hostile',
@@ -3253,6 +3679,7 @@ export class EngineTactics {
       objectivePct,
       objectiveProgress: this.objectiveProgress,
       objectiveTarget: this.objectiveTarget,
+      sourceEncounter: getRexEncounterSummary(this.rexEncounter) || getScarabEncounterSummary(this.scarabEncounter),
       missionProfile: this.missionProfile,
       reinforcementsCalled: this.reinforcementsCalled,
       hazardPulses: this.hazardPulses,

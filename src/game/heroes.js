@@ -3,6 +3,9 @@
 import { EXPANDED_EVENT_ITEMS, EXPANDED_EXTRA_HERO_DATA, EXPANDED_GEAR } from './expandedUniverses.js';
 import { LORE_ACCURATE_HERO_EXPANSIONS, LORE_ACCURATE_HERO_OVERRIDES } from './loreAccuratePacks.js';
 import { CANON_ROSTER_WAVE } from './canonRosterWave.js';
+import { applyCanonP0SourceKit } from './canonP0SourceKits.js';
+import { applyCanonBlackPearlSourceKit } from './canonBlackPearlSourceKits.js';
+import { applyCanonFollowupSourceKit } from './canonFollowupSourceKits.js';
 import {
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_EXPANSIONS,
   SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES
@@ -223,31 +226,43 @@ export const HEROES_DB = [
     id: 'ripley',
     name: 'Ellen Ripley',
     universe: 'Alien',
+    incarnation: 'Alien (1979) - Nostromo / Narcissus',
+    referenceUrl: 'https://www.20thcenturystudios.com/movies/alien',
+    visualAnchor: 'Ellen Ripley as played by Sigourney Weaver in Alien (1979): short curly brown hair, Nostromo flight suit and improvised flamethrower. No M41A pulse rifle, M240 incinerator or power loader from Aliens.',
+    canonStatus: 'source-locked-gameplay-adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Nostromo improvised flamethrower', 'Narcissus harpoon gun'],
     category: 'marine',
     primaryColor: '#8b8589',
     secondaryColor: '#4682b4',
     weaponType: 'gun',
     weaponColor: '#2f4f4f',
     stats: { hp: 130, atk: 14, def: 8, spd: 6 },
-    simple: { name: 'Pulse Rifle', type: 'bullet', dmg: 1.0 },
-    secondary: { name: 'M94 Flamethrower', type: 'fire', cd: 7, dmg: 1.7 },
-    defense: { name: 'Loader Block', type: 'shield', dur: 2.0, reduce: 0.75 },
-    special: { name: 'Power Loader Smash', type: 'melee_aoe', dmg: 4.2 }
+    simple: { name: 'Nostromo Flamethrower', type: 'fire', dmg: 1.0 },
+    secondary: { name: 'Improvised Flame Burst', type: 'fire', cd: 7, dmg: 1.7 },
+    defense: { name: 'Nostromo Escape', type: 'dodge', dur: 2.0, reduce: 0.75 },
+    special: { name: 'Narcissus Harpoon', type: 'projectile', dmg: 4.2 }
   },
   {
     id: 'predator',
-    name: 'Yautja Hunter',
+    name: 'Jungle Hunter',
     universe: 'Predator',
+    incarnation: 'Predator (1987) - Jungle Hunter',
+    referenceUrl: 'https://www.20thcenturystudios.com/movies/predator',
+    visualAnchor: 'The original 1987 Jungle Hunter: silver biomask, mottled skin, dreadlocks, netted body suit, asymmetrical armor, wristblades and shoulder plasma caster. No City Hunter smart disc, combi-stick or later-film equipment.',
+    canonStatus: 'source-locked-gameplay-adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Wristblades', 'Shoulder plasma caster', 'Biomask', 'Cloaking device'],
     category: 'marine',
     primaryColor: '#5c524d',
     secondaryColor: '#00ff00',
     weaponType: 'wristblade',
     weaponColor: '#a9a9a9',
     stats: { hp: 140, atk: 18, def: 9, spd: 6 },
-    simple: { name: 'Combistick Jab', type: 'melee', dmg: 1.2 },
+    simple: { name: 'Wristblade Slash', type: 'melee', dmg: 1.2 },
     secondary: { name: 'Plasma Caster', type: 'plasma', cd: 5, dmg: 1.9 },
     defense: { name: 'Cloaking Device', type: 'dodge', dur: 2.5, reduce: 0.85 },
-    special: { name: 'Smart Disc Carnage', type: 'boomerang', dmg: 4.8 }
+    special: { name: 'Unmasked Jungle Duel', type: 'melee_aoe', dmg: 4.8 }
   },
   {
     id: 'leon',
@@ -328,6 +343,12 @@ export const HEROES_DB = [
     id: 'freeman',
     name: 'Gordon Freeman',
     universe: 'Half-Life',
+    incarnation: 'Half-Life 2 (2004) - HEV Mark V / Citadel',
+    referenceUrl: 'https://www.half-life.com/en/halflife2',
+    visualAnchor: 'Half-Life 2 Gordon Freeman: brown hair, beard, rectangular glasses, orange and gray HEV Mark V suit, crowbar and zero-point energy field manipulator. No HEV Mark IV, long-jump module or gluon gun from Half-Life (1998).',
+    canonStatus: 'source-locked-gameplay-adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Crowbar', 'HEV Mark V suit', 'Gravity Gun'],
     category: 'hacker',
     primaryColor: '#e65c00',
     secondaryColor: '#4f5d73',
@@ -337,7 +358,7 @@ export const HEROES_DB = [
     simple: { name: 'Crowbar Whack', type: 'melee', dmg: 1.1 },
     secondary: { name: 'Gravity Gun Blast', type: 'gravity', cd: 6, dmg: 1.7 },
     defense: { name: 'HEV Shield Charge', type: 'shield', dur: 2.5, reduce: 0.85 },
-    special: { name: 'Gluon Gun Overload', type: 'beam', dmg: 4.7, color: '#33ccff' }
+    special: { name: 'Overcharged Gravity Gun', type: 'beam', dmg: 4.7, color: '#33ccff' }
   },
   {
     id: 'chell',
@@ -1104,7 +1125,7 @@ export const EQUIP_ITEMS_DB = [
   { id: 'invisibility_cloak', universe: 'Harry Potter', name: { en: 'Invisibility Cloak', fr: 'Cape d\'Invisibilité' }, boost: { def: 8, spd: 2 }, cost: 120 },
   { id: 'marauder_map', universe: 'Harry Potter', name: { en: 'Marauder\'s Map', fr: 'Carte du Maraudeur' }, boost: { spd: 3 }, cost: 80 },
   // Star Wars
-  { id: 'blue_saber', universe: 'Star Wars', name: { en: 'Luke\'s Lightsaber', fr: 'Sabre Laser de Luke' }, boost: { atk: 15 }, cost: 150 },
+  { id: 'blue_saber', universe: 'Star Wars', name: { en: 'Luke\'s Inherited Blue Lightsaber (ANH / ESB)', fr: 'Sabre bleu hérité de Luke (ANH / ESB)' }, canonicalName: 'Skywalker lightsaber (blue blade)', incarnation: 'Star Wars: A New Hope (1977) / The Empire Strikes Back (1980) - Luke\'s inherited blue blade', sourceOwner: 'Luke Skywalker, inherited from Anakin Skywalker', referenceUrl: 'https://www.starwars.com/databank/luke-skywalker', referenceUrls: ['https://www.starwars.com/databank/luke-skywalker', 'https://www.starwars.com/databank/luke-skywalkers-lightsaber'], visualReviewStatus: 'pending', gameplayPolicy: { runtimeEffect: 'stat-boost-only', replacesHeroWeapon: false }, desc: { en: 'The blue-bladed weapon inherited from Anakin and carried by Luke in A New Hope and The Empire Strikes Back, then lost on Cloud City. It is distinct from Luke\'s green replacement in Return of the Jedi. This relic supplies passive stats and does not recolor the playable ROTJ kit.', fr: 'Le sabre à lame bleue hérité d’Anakin, porté par Luke dans Un nouvel espoir et L’Empire contre-attaque, puis perdu sur Bespin. Il est distinct du sabre vert construit pour Le Retour du Jedi. Cette relique fournit des bonus passifs et ne recolore pas le kit ROTJ jouable.' }, boost: { atk: 15 }, cost: 150 },
   { id: 'jedi_holocron', universe: 'Star Wars', name: { en: 'Jedi Holocron', fr: 'Holocron Jedi' }, boost: { hp: 60, def: 5 }, cost: 100 },
   { id: 'jedi_robes', universe: 'Star Wars', name: { en: 'Jedi Robes', fr: 'Bures de Jedi' }, boost: { spd: 3 }, cost: 90 },
   // Le Cinquième Element
@@ -1821,7 +1842,19 @@ const CANON_ROSTER_EXPANSION = {
     { id: 'bohort_kaamelott', name: 'Bohort', cat: 'tactical', color: '#f9e79f' }
   ],
   Aliens: [
-    { id: 'ripley_aliens', name: 'Ellen Ripley Aliens', cat: 'marine', color: '#8b8589' },
+    {
+      id: 'ripley_aliens', name: 'Ellen Ripley Aliens', cat: 'marine', color: '#8b8589',
+      incarnation: 'Aliens (1986) - LV-426 / Sulaco',
+      referenceUrl: 'https://www.20thcenturystudios.com/movies/aliens',
+      visualAnchor: 'Ellen Ripley as played by Sigourney Weaver in Aliens (1986): short curly hair, blue-gray work shirt, M41A pulse rifle taped to an M240 incinerator; the yellow Caterpillar P-5000 power loader is situational equipment. No Nostromo 1979 flight suit.',
+      canonStatus: 'source-locked-gameplay-adaptation',
+      visualReviewStatus: 'pending',
+      equipment: ['M41A pulse rifle', 'M240 incinerator', 'Caterpillar P-5000 power loader'],
+      simple: { name: 'M41A Pulse Rifle', type: 'bullet', dmg: 1.0 },
+      secondary: { name: 'M240 Incinerator', type: 'fire', cd: 7, dmg: 1.7 },
+      defense: { name: 'Power Loader Block', type: 'shield', dur: 2.0, reduce: 0.75 },
+      special: { name: 'Power Loader Smash', type: 'melee_aoe', dmg: 4.2 }
+    },
     { id: 'newt_hadley', name: 'Newt', cat: 'hacker', color: '#e0c18c' },
     { id: 'hudson_aliens', name: 'Hudson', cat: 'marine', color: '#6b7767' },
     { id: 'apone_aliens', name: 'Apone', cat: 'tactical', color: '#566573' }
@@ -2106,7 +2139,7 @@ const heroOverrides = {
     simple: { name: 'Crowbar Vector', type: 'melee', dmg: 1.1 },
     secondary: { name: 'Gravity Gun Punt', type: 'gravity', cd: 6, dmg: 1.8 },
     defense: { name: 'HEV Aux Power', type: 'shield', dur: 2.5, reduce: 0.85 },
-    special: { name: 'Gluon Gun Cascade', type: 'beam', dmg: 4.8, color: '#33ccff' }
+    special: { name: 'Overcharged Gravity Gun', type: 'beam', dmg: 4.8, color: '#33ccff' }
   },
   barney: {
     weaponType: 'gun',
@@ -2365,9 +2398,124 @@ const heroOverrides = {
 Object.assign(heroOverrides, LORE_ACCURATE_HERO_OVERRIDES);
 Object.assign(heroOverrides, SOLAR_OPPOSITES_SIREN_STAR_WARS_HERO_OVERRIDES);
 
+// Apply these source locks after the historical class-derived loadouts. Numeric
+// damage and cooldowns are game rules; none of these locks approve existing art.
+Object.assign(heroOverrides, {
+  han_solo: {
+    incarnation: 'Star Wars: A New Hope (1977) - Mos Eisley / Death Star escape',
+    referenceUrl: 'https://www.starwars.com/databank/han-solo',
+    referenceUrls: ['https://www.starwars.com/databank/han-solo', 'https://www.starwars.com/databank/dl-44-blaster-pistol'],
+    visualAnchor: 'Han Solo in A New Hope: brown hair, cream open-collar shirt, black sleeveless vest, dark blue trousers with red side stripes, brown belt and right-thigh DL-44 holster, black boots. Modified DL-44 blaster pistol; no Jedi saber, carbonite armor, older sequel beard or winter coat.',
+    canonStatus: 'source incarnation and equipment locked; combat choreography is a game adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Modified DL-44 Blaster Pistol', 'Right-Thigh Blaster Holster', 'Smuggler Utility Belt'],
+    primaryColor: '#1c1c1c',
+    secondaryColor: '#ede3cd',
+    weaponType: 'gun',
+    weaponColor: '#292929',
+    simple: { name: 'DL-44 Quickdraw', type: 'bullet', dmg: 1.0, color: '#ff4136', tacticsProfile: { range: 4 } },
+    secondary: { name: 'DL-44 Covering Fire', type: 'projectile', cd: 7, dmg: 1.8, color: '#ff4136', tacticsProfile: { range: 5 } },
+    defense: { name: 'Smuggler Sidestep', type: 'dodge', dur: 2.0, reduce: 0.8 },
+    special: { name: 'DL-44 Blaster Volley', type: 'bullet', dmg: 4.6, color: '#ff4136', attackProfile: { shape: 'multi', maxTargets: 3, delivery: 'ranged' } }
+  },
+  luke: {
+    incarnation: 'Star Wars: Return of the Jedi (1983) - Death Star II Jedi Knight',
+    referenceUrl: 'https://www.starwars.com/databank/luke-skywalker',
+    referenceUrls: ['https://www.starwars.com/databank/luke-skywalker', 'https://www.starwars.com/databank/luke-skywalkers-lightsaber'],
+    visualAnchor: 'Luke Skywalker in Return of the Jedi: young adult, short brown hair, black Jedi tunic and trousers, black boots, black glove on the mechanical right hand, single silver-and-black hilt with one green lightsaber blade. Death Star II duel outfit; no blue inherited saber, old hermit beard, white farm tunic or electrical mind beam.',
+    canonStatus: 'source incarnation and equipment locked; combat choreography is a game adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Luke s Green Lightsaber', 'Mechanical Right Hand', 'Black Jedi Duel Outfit'],
+    primaryColor: '#202020',
+    secondaryColor: '#2ecc71',
+    weaponType: 'lightsaber',
+    weaponColor: '#00ff00',
+    simple: { name: 'Green Lightsaber Cut', type: 'melee', dmg: 1.2, tacticsProfile: { range: 1 } },
+    secondary: { name: 'Force Telekinesis', type: 'gravity', cd: 5, dmg: 1.8 },
+    defense: { name: 'Lightsaber Deflection', type: 'shield', dur: 2.0, reduce: 0.9 },
+    special: { name: 'Green Lightsaber Duel', type: 'melee', dmg: 5.2, color: '#00ff00', attackProfile: { shape: 'single', delivery: 'melee' }, tacticsProfile: { range: 1 } }
+  },
+  vader: {
+    incarnation: 'Star Wars: The Empire Strikes Back (1980) - Bespin Sith Lord',
+    referenceUrl: 'https://www.starwars.com/databank/darth-vader',
+    referenceUrls: ['https://www.starwars.com/databank/darth-vader', 'https://www.starwars.com/databank/darth-vaders-lightsaber', 'https://www.starwars.com/databank/admiral-piett'],
+    visualAnchor: 'Darth Vader in The Empire Strikes Back: full black domed helmet and triangular respirator mask, glossy black shoulder armor, ribbed black suit, chest life-support control box, black cape, gloves and boots, silver-and-black hilt with one red lightsaber blade. Closed helmet throughout; no hooded human substitute, bare Anakin face, blue blade or Force lightning.',
+    canonStatus: 'source incarnation and equipment locked; combat choreography is a game adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Darth Vader s Red Lightsaber', 'Cybernetic Life-Support Armor', 'Chest Control Box'],
+    primaryColor: '#151515',
+    secondaryColor: '#ff3030',
+    weaponType: 'lightsaber',
+    weaponColor: '#ff3030',
+    simple: { name: 'Red Lightsaber Cut', type: 'melee', dmg: 1.0, tacticsProfile: { range: 1 } },
+    secondary: { name: 'Bespin Debris Telekinesis', type: 'gravity', cd: 7, dmg: 1.8 },
+    defense: { name: 'Lightsaber Parry', type: 'shield', dur: 2.0, reduce: 0.8 },
+    special: { name: 'Force Choke', type: 'gravity', dmg: 4.6, color: '#ff3030', attackProfile: { shape: 'single', delivery: 'ranged' } }
+  },
+  bob_minions: {
+    incarnation: 'Minions (2015) - Bob, London crown-heist adventure',
+    referenceUrl: 'https://www.illumination.com/movie/minions/',
+    referenceUrls: ['https://www.illumination.com/movie/minions/', 'https://www.illumination.com/wp-content/uploads/2019/11/Minions_KingBob.png'],
+    visualAnchor: 'Bob from Minions (2015): very short round bald yellow Minion, two eyes with different green and brown irises, silver double-lens goggles and black strap, blue denim bib overalls, black gloves and boots. Sweet naive personality and Tim teddy bear. Normal adventure outfit; no laser, human anatomy, hair tuft, single eye or permanent king costume.',
+    canonStatus: 'source identity and props locked; comic combat is a game adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Double-Lens Goggles', 'Blue Denim Overalls', 'Tim Teddy Bear'],
+    primaryColor: '#f4d74d',
+    secondaryColor: '#3974ad',
+    weapon: 'fists',
+    weaponType: 'fists',
+    weaponColor: '#242424',
+    simple: { name: 'Clumsy Minion Bump', type: 'melee', dmg: 1.0, tacticsProfile: { range: 1 } },
+    secondary: { name: 'Banana Distraction', type: 'projectile', cd: 8, dmg: 2.2 },
+    defense: { name: 'Startled Sidestep', type: 'dodge', dur: 2.0, reduce: 0.75 },
+    special: { name: 'Bob Comic Tumble', type: 'melee', dmg: 4.5, color: '#f4d74d', attackProfile: { shape: 'single', delivery: 'melee' }, tacticsProfile: { range: 1 } }
+  },
+  kevin_minions: {
+    incarnation: 'Minions (2015) - Kevin, London crown-heist adventure',
+    referenceUrl: 'https://www.illumination.com/movie/minions/',
+    referenceUrls: ['https://www.illumination.com/movie/minions/', 'https://www.illumination.com/wp-content/uploads/2019/11/Minions_Kevin2.png'],
+    visualAnchor: 'Kevin from Minions (2015): tallest member of the trio, elongated yellow capsule body, two brown eyes, silver double-lens goggles with black strap, central upright black hair tuft, blue denim bib overalls, black gloves and boots. Protective team leader; normal size and adventure outfit, distinct from short bald Bob and one-eyed Stuart.',
+    canonStatus: 'source identity and props locked; comic combat is a game adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Double-Lens Goggles', 'Blue Denim Overalls', 'Banana'],
+    primaryColor: '#f4d74d',
+    secondaryColor: '#3974ad',
+    weapon: 'fists',
+    weaponType: 'fists',
+    weaponColor: '#242424',
+    simple: { name: 'Kevin Minion Bump', type: 'melee', dmg: 1.0, tacticsProfile: { range: 1 } },
+    secondary: { name: 'Banana Toss', type: 'projectile', cd: 8, dmg: 2.2 },
+    defense: { name: 'Protective Cover', type: 'shield', dur: 2.0, reduce: 0.75 },
+    special: { name: 'Kevin Team Charge', type: 'melee', dmg: 4.5, color: '#f4d74d', attackProfile: { shape: 'single', delivery: 'melee' }, tacticsProfile: { range: 1 } }
+  },
+  stuart_minions: {
+    incarnation: 'Minions (2015) - Stuart, London rock-star finale',
+    referenceUrl: 'https://www.illumination.com/movie/minions/',
+    referenceUrls: ['https://www.illumination.com/movie/minions/', 'https://www.illumination.com/wp-content/uploads/2019/11/SHM_PRINTS_P1880.png'],
+    visualAnchor: 'Stuart from Minions (2015): medium-height yellow Minion with exactly one brown eye in a single silver goggle, black head strap, sparse center-parted black hair, blue denim bib overalls, black gloves and boots. Aspiring rock star with a red electric guitar and white pickguard; no second eye, sword or tall Kevin silhouette.',
+    canonStatus: 'source identity and props locked; musical combat is a game adaptation',
+    visualReviewStatus: 'pending',
+    equipment: ['Single-Lens Goggle', 'Blue Denim Overalls', 'Red Electric Guitar'],
+    primaryColor: '#f4d74d',
+    secondaryColor: '#3974ad',
+    weapon: 'guitar',
+    weaponType: 'guitar',
+    weaponColor: '#cf2a25',
+    simple: { name: 'Guitar Swing', type: 'melee', dmg: 1.0, tacticsProfile: { range: 1 } },
+    secondary: { name: 'Rock-Star Riff', type: 'sound', cd: 8, dmg: 2.2 },
+    defense: { name: 'Rebellious Sidestep', type: 'dodge', dur: 2.0, reduce: 0.75 },
+    special: { name: 'London Guitar Solo', type: 'music_aoe', dmg: 4.5, color: '#cf2a25' }
+  }
+});
+
 Object.entries(heroOverrides).forEach(([id, override]) => {
   const hero = HEROES_DB.find(item => item.id === id);
   if (hero) Object.assign(hero, override);
+});
+
+HEROES_DB.forEach(hero => {
+  const corrected = applyCanonFollowupSourceKit(applyCanonBlackPearlSourceKit(applyCanonP0SourceKit(hero)));
+  if (corrected !== hero) Object.assign(hero, corrected);
 });
 
 export const getHeroById = (id) => HEROES_DB.find(h => h.id === id);

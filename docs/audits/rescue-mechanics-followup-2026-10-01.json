@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-01",
+  "sourceStages": [
+    3,
+    269
+  ],
+  "scope": "Playable Newt rescue, scene-specific Ripley hive loadout and final coin ritual for Barbossa; existing RAAM, Scarab and Nihilanth rules retained.",
+  "implementationFiles": [
+    "src/game/canonAliensRescueEncounter.js",
+    "src/game/canonAliensRescueEncounterPresentation.js",
+    "src/game/canonPiratesCurseEncounter.js",
+    "src/game/engineSmash.js",
+    "src/game/engineRpg.js",
+    "src/components/AliensRescuePanel.jsx",
+    "src/components/PiratesCursePanel.jsx",
+    "src/components/GameCanvas.jsx",
+    "src/game/canonEncounterBriefing.js"
+  ],
+  "validation": {
+    "fullPrebuild": {
+      "testCommandGroups": 15,
+      "executedNodeTests": 1151,
+      "failedTests": 0,
+      "cancelledTests": 0,
+      "build": "passed"
+    },
+    "independentEngineAndPanelProbes": 11,
+    "independentOpenP0P1": 0,
+    "lint": "passed",
+    "localMainBundle": "index-CSa4OiaR.js",
+    "browserSnapshotMatchesFinalBuild": true,
+    "browserAndRemoteEvidence": "Recorded separately in the local delivery; no remote browser or full film fidelity claim is made."
+  },
+  "sourceMechanicRules": [
+    "Newt must be freed in range and leave with her living carrier; Queen damage is nonlethal and Queen defeat is not a victory condition.",
+    "Ripley Aliens uses M41A, M240, hive cover and M41A grenade in this source hive, without mutating other scenes or the saved hero catalog.",
+    "Source Will Turner and Jack Sparrow coordinate the final two coins and their established offerings; restoration reaches 882 before the source shot resolves Barbossa death.",
+    "The finale locks ordinary and queued damage until the duel ends, including callbacks due after the source shot; other pirates remain alive."
+  ],
+  "adaptationLimits": [
+    "2D routes, marker props, combat waves, weapon ranges and procedural effects are adapted.",
+    "Source ritual assistants remain separate from playable crossover versions, whose ordinary HP is retained.",
+    "ATB commands, finale lock and source-shot timing are game adaptations; later Dauntless surrender and Sulaco power-loader duel are outside these scenes."
+  ],
+  "installedImages": 0,
+  "visualFidelityApproved": false,
+  "remaining": {
+    "p0VisualCorrections": 25,
+    "distinctMissingAssetPaths": 6601,
+    "sourceSpecificFeatures": [
+      "Sulaco Queen power-loader finale",
+      "Nihilanth teleportation rooms and summoned reinforcements",
+      "RAAM source camera, traversal and active reload",
+      "Scarab scripted movement and full Metropolis route",
+      "Source Jack playable curse phase and scene choreography"
+    ]
+  },
+  "publicationScope": "draft correction PR and Vercel preview; no production promotion",
+  "snapshotScope": "Historical rescue/ritual delivery; superseded playable Jack details in rex-black-pearl-followup-2026-10-01.json",
+  "supersededBy": "docs/audits/rex-black-pearl-followup-2026-10-01.json"
+}

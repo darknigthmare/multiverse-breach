@@ -5,6 +5,10 @@ import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
 import { CORE_CODEX_ENTRIES, LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
+import { CANON_PRIORITY_STAGES } from '../game/canonPriorityStages.js';
+import { isUniverseCombatMission } from '../game/missions/universeMissionCategory.js';
+import { getCanonicalEncounterBriefing } from '../game/canonEncounterBriefing.js';
+import { resolveStageArchiveBoss } from '../game/canonicalArchiveLore.js';
 import { EXPANDED_EVENT_SHOP_ITEMS, EXPANDED_FACTION_UNIVERSES, EXPANDED_STAGE_ID_BY_UNIVERSE, getExpandedStages, getResolvedLoreWorldBossPolicy } from '../game/expandedUniverses';
 import { inferNonCombatTrial } from '../game/nonCombatTrial';
 import { getCharacterPlaque } from '../game/characterPlaques';
@@ -57,7 +61,7 @@ import { catalogSearchText, createCatalogView, paginateCatalog, updateCatalogVie
 import { calculateSquadReadiness, proposeRelicAssignment, proposeSquad } from '../game/squadPreparation';
 import SquadProposalPanel from './SquadProposalPanel';
 import AnchorCustomizationPanel from './AnchorCustomizationPanel';
-import { advanceMosaicGuide, advanceMosaicPlayer, clampMosaicPosition, createMosaicGuide, getMosaicDestinationView, getMosaicGuideStep, getMosaicInteractionTargets, getMosaicUniverseCatalog, getMosaicZoneAnchor, MOSAIC_CITY_ART, MOSAIC_WELCOME, resolveMosaicInteraction, transitionMosaicGuide } from '../game/mosaicCityRuntime';
+import { advanceMosaicGuide, advanceMosaicPlayer, clampMosaicPosition, createMosaicGuide, findMosaicWalkablePosition, getMosaicDestinationView, getMosaicDrawDepth, getMosaicGuideStep, getMosaicInteractionTargets, getMosaicScenery, getMosaicSceneObstacles, getMosaicUniverseCatalog, getMosaicZoneAnchor, isMosaicPositionBlocked, isMosaicSegmentClear, MOSAIC_CITY_ART, MOSAIC_WELCOME, resolveMosaicInteraction, transitionMosaicGuide } from '../game/mosaicCityRuntime';
 import { createFixedStepClock } from '../game/fixedStepClock';
 import {
   ARC_UNLOCK_RULES,
@@ -2455,7 +2459,7 @@ function MosaicCityHub({
     }
     if (currentDistrict === 'archives') {
       return [
-        { id: 'codex', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Codex vivant' : 'Living Codex', x: 270, y: 165, w: 460, h: 210, color: '#ffea00', role: lang === 'fr' ? 'archives des mondes' : 'world archives' },
+        { id: 'codex', universe: null, action: 'codex', label: lang === 'fr' ? 'Codex vivant' : 'Living Codex', x: 270, y: 165, w: 460, h: 210, color: '#ffea00', role: lang === 'fr' ? 'archives des mondes' : 'world archives' },
         { id: 'arcs', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Chambre des arcs' : 'Arc Chamber', x: 900, y: 165, w: 460, h: 210, color: '#d9b6ff', role: lang === 'fr' ? 'memoire narrative' : 'narrative memory' },
         { id: 'replay', universe: 'A.R.C.A.', label: lang === 'fr' ? 'Salle des relectures' : 'Signal Replay', x: 585, y: 520, w: 470, h: 170, color: '#39c5bb', role: lang === 'fr' ? 'signaux et briefings' : 'signals and briefings' }
       ];
@@ -2487,6 +2491,9 @@ function MosaicCityHub({
       ...threadRooms
     ];
   }, [currentDistrict, district, lang, universeStageStats, visibleThreadUniverses]);
+  const scenery = useMemo(() => getMosaicScenery(district), [district]);
+  const sceneObstacles = useMemo(() => getMosaicSceneObstacles(district, zones), [district, zones]);
+  stateRef.current.obstacles = sceneObstacles;
 
   const selectedHero = ownedHeroes.find(hero => hero.id === selectedHeroId) || null;
   const nearHero = ownedHeroes.find(hero => hero.id === nearHeroId) || null;
@@ -2537,12 +2544,16 @@ function MosaicCityHub({
       const zone = zones[index % Math.max(1, zones.length)] || district;
       const compatibleCount = districtHeroes.filter(other => other.id !== hero.id && (other.universe === hero.universe || other.category === hero.category)).length;
       const routine = compatibleCount && index % 4 === 1 ? 'talk' : index % 3 === 0 ? 'walk' : 'idle';
+      const position = findMosaicWalkablePosition({
+        x: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
+        y: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54))
+      }, district, sceneObstacles) || district.spawn;
       return {
         hero,
-        x: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
-        y: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54)),
-        baseX: zone.x + 34 + ((index * 41) % Math.max(60, zone.w - 68)),
-        baseY: zone.y + 32 + ((index * 29) % Math.max(38, zone.h - 54)),
+        x: position.x,
+        y: position.y,
+        baseX: position.x,
+        baseY: position.y,
         zoneId: zone.id,
         routine,
         reaction: completedStages.length > 0 && index % 5 === 0,
@@ -2551,7 +2562,7 @@ function MosaicCityHub({
       };
     });
     if (guideHero) stateRef.current.npcs.unshift({ hero: guideHero, x: 910, y: 520, baseX: 910, baseY: 520, zoneId: 'atrium', routine: 'idle', phase: 0, facing: -1, isGuide: true });
-  }, [completedStages.length, currentDistrict, district, ownedHeroes, safeHeroes, zones]);
+  }, [completedStages.length, currentDistrict, district, ownedHeroes, safeHeroes, sceneObstacles, zones]);
 
   const switchDistrict = useCallback((portal) => {
     if (sessionPausedRef.current) return;
@@ -2616,8 +2627,8 @@ function MosaicCityHub({
     }
     if (zone?.action === 'codex') {
       setHubLog(lang === 'fr'
-        ? `Codex local ouvert: ${zone.universe}.`
-        : `Local Codex opened: ${zone.universe}.`);
+        ? (zone.universe ? `Codex local ouvert: ${zone.universe}.` : 'Archives des mondes ouvertes.')
+        : (zone.universe ? `Local Codex opened: ${zone.universe}.` : 'World archives opened.'));
       sound.playSfx('confirm');
       onOpenCodex?.(zone.universe);
       return;
@@ -2743,8 +2754,6 @@ function MosaicCityHub({
       ctx.fillStyle = activeDistrict.color;
       if (place.type === 'city') {
         ctx.fillRect(0, 585, activeDistrict.worldW, 180);
-        ctx.fillStyle = 'rgba(0,0,0,0.54)';
-        for (let i = 0; i < 9; i += 1) ctx.fillRect(120 + i * 185, 250 + (i % 3) * 28, 105, 250 - (i % 2) * 44);
         ctx.fillStyle = '#ffea00';
         ctx.fillRect(720, 360, 170, 28);
         ctx.fillStyle = '#e74c3c';
@@ -2835,7 +2844,7 @@ function MosaicCityHub({
           npc.y = npc.baseY;
         }
         Object.assign(npc, clampMosaicPosition(npc, district));
-        if (Math.hypot(npc.x - state.player.x, npc.y - state.player.y) < 28) { npc.x = previousNpcX; npc.y = previousNpcY; }
+        if (isMosaicPositionBlocked(npc, sceneObstacles) || !isMosaicSegmentClear({ x: previousNpcX, y: previousNpcY }, npc, sceneObstacles) || Math.hypot(npc.x - state.player.x, npc.y - state.player.y) < 28) { npc.x = previousNpcX; npc.y = previousNpcY; }
         const horizontalTravel = npc.x - previousNpcX;
         if (Math.abs(horizontalTravel) > 0.01) npc.facing = horizontalTravel > 0 ? 1 : -1;
         npc.sceneState = Math.hypot(horizontalTravel, npc.y - previousNpcY) > 0.01 ? 'run' : 'idle';
@@ -2949,17 +2958,6 @@ function MosaicCityHub({
         ctx.fillStyle = zone.color;
         ctx.font = '10px "Share Tech Mono"';
         ctx.fillText(zone.role.toUpperCase().slice(0, 24), zone.x + 12, zone.y + 36);
-        if (zone.action && zone.action !== 'talk') {
-          const anchor = getMosaicZoneAnchor(zone);
-          ctx.fillStyle = 'rgba(0,0,0,0.8)';
-          ctx.fillRect(anchor.x - 22, anchor.y - 18, 44, 36);
-          ctx.strokeStyle = zone.color;
-          ctx.lineWidth = 2;
-          ctx.strokeRect(anchor.x - 22, anchor.y - 18, 44, 36);
-          ctx.fillStyle = zone.color;
-          ctx.font = '18px "Share Tech Mono"';
-          ctx.fillText(zone.action === 'mission' ? '!' : zone.action === 'codex' ? '?' : '+', anchor.x - 5, anchor.y + 6);
-        }
         if (zone.action && zone.id === nearZoneRef.current?.id) {
           ctx.fillStyle = '#ffea00';
           ctx.fillText((lang === 'fr' ? 'E: INTERAGIR' : 'E: INTERACT'), zone.x + 12, zone.y + zone.h - 28);
@@ -3019,9 +3017,30 @@ function MosaicCityHub({
       }
       ctx.stroke();
 
-      [...state.npcs, { ...state.player, hero: playerAvatar, isPlayer: true }]
-        .sort((a, b) => a.y - b.y)
+      [...scenery, ...zones.filter(zone => zone.action && zone.action !== 'talk').map(zone => ({ type: 'terminal', zone })), ...state.npcs, { ...state.player, hero: playerAvatar, isPlayer: true }]
+        .sort((a, b) => getMosaicDrawDepth(a) - getMosaicDrawDepth(b))
         .forEach(npc => {
+          if (npc.type === 'building') {
+            ctx.save();
+            ctx.globalAlpha = 0.32 + districtProgress * 0.28;
+            ctx.fillStyle = 'rgba(0,0,0,0.54)';
+            ctx.fillRect(npc.x, npc.y, npc.w, npc.h);
+            ctx.restore();
+            return;
+          }
+          if (npc.type === 'terminal') {
+            const zone = npc.zone;
+            const anchor = getMosaicZoneAnchor(zone);
+            ctx.fillStyle = 'rgba(0,0,0,0.8)';
+            ctx.fillRect(anchor.x - 22, anchor.y - 18, 44, 36);
+            ctx.strokeStyle = zone.color;
+            ctx.lineWidth = 2;
+            ctx.strokeRect(anchor.x - 22, anchor.y - 18, 44, 36);
+            ctx.fillStyle = zone.color;
+            ctx.font = '18px "Share Tech Mono"';
+            ctx.fillText(zone.action === 'mission' ? '!' : zone.action === 'codex' ? '?' : '+', anchor.x - 5, anchor.y + 6);
+            return;
+          }
           if (npc.isPlayer) {
             drawPixelPerson(npc.x, npc.y, '#39c5bb', '#ffea00', npc.facing, playerName.slice(0, 10), true, { ...playerAvatar, state: npc.state });
             return;
@@ -3106,7 +3125,7 @@ function MosaicCityHub({
       window.cancelAnimationFrame(rafId);
       document.removeEventListener('visibilitychange', onClockVisibilityChange);
     };
-  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, unlockedUniverses.length, zones]);
+  }, [completedStages.length, currentDistrict, district, districtProgress, districtStateLabel, interactWithNearby, lang, ownedHeroes.length, playerAvatar, playerName, recordGuide, sceneObstacles, scenery, unlockedUniverses.length, zones]);
 
   const moveToPointer = event => {
     if (sessionPausedRef.current) return;
@@ -4871,7 +4890,7 @@ function MissionDeploymentPanel({
   );
 }
 
-function RiftBriefingPanel({
+export function RiftBriefingPanel({
   lang,
   stage,
   isUnlocked,
@@ -4933,6 +4952,7 @@ function RiftBriefingPanel({
     ? (deployment.message?.[lang] || deployment.message?.fr || deployment.message?.en || (getLockedReason ? getLockedReason(stage) : ''))
     : '';
   const richBrief = getRichBreachBrief(stage) || '';
+  const encounterBriefing = getCanonicalEncounterBriefing(stage, lang);
   const richBriefSentences = richBrief
     .split(/(?<=[.!?])\s+(?=[A-ZÀ-ÖØ-Þ0-9])/u)
     .map((line) => line.trim())
@@ -4951,8 +4971,9 @@ function RiftBriefingPanel({
     },
     {
       label: lang === 'fr' ? 'DIRECTIVE' : 'DIRECTIVE',
-      value: directiveLine || launchBrief[1]
+      value: encounterBriefing?.objective || directiveLine || launchBrief[1]
     },
+    ...(encounterBriefing ? [{ label: lang === 'fr' ? 'ADAPTATION DU COMBAT' : 'COMBAT ADAPTATION', value: encounterBriefing.adaptation }] : []),
     {
       label: lang === 'fr' ? 'ANOMALIE' : 'ANOMALY',
       value: anomalyLine || launchBrief[2] || modifier.desc[lang]
@@ -5049,7 +5070,7 @@ function RiftBriefingPanel({
                 ? (lang === 'fr' ? 'OBJECTIF' : 'OBJECTIVE')
                 : (lang === 'fr' ? 'MENACE PRINCIPALE' : 'PRIMARY THREAT')}</span>
               <strong>{nonCombatDetails?.title || bossIntel?.name || stage.bossName}</strong>
-              <p>{nonCombatDetails?.objective || bossIntel?.special || (lang === 'fr' ? 'Anomalie non cataloguee.' : 'Uncatalogued anomaly.')}</p>
+              <p>{nonCombatDetails?.objective || getLocalizedText(bossIntel?.special?.name ?? bossIntel?.special, lang) || (lang === 'fr' ? 'Anomalie non cataloguee.' : 'Uncatalogued anomaly.')}</p>
             </section>
             <section>
               <span>{lang === 'fr' ? 'REGLE DE FAILLE' : 'RIFT RULE'}</span>
@@ -5519,18 +5540,18 @@ export default function HubScreen({
       bossName: 'Echo de la Marge Blanche',
       tutorial: true
     },
-    { id: 1, name: 'Aspho Fields Locust Outpost', universe: 'Gears of War', mode: 'RPG', difficulty: 'Easy', goldPrize: 40, shardPrize: 15, bossName: 'Brumak' },
-    { id: 2, name: 'Installation 04 Ring', universe: 'Halo', mode: 'Tactics', difficulty: 'Easy', goldPrize: 40, shardPrize: 15, bossName: 'Scarab Mech' },
-    { id: 3, name: 'LV-426 Colony Hive', universe: 'Alien', mode: 'Smash', difficulty: 'Easy', goldPrize: 45, shardPrize: 15, bossName: 'Predalien' },
+    CANON_PRIORITY_STAGES.lightmassTrain,
+    CANON_PRIORITY_STAGES.metropolisScarab,
+    CANON_PRIORITY_STAGES.hadleysQueen,
     { id: 4, name: 'Val Verde Jungle Temple', universe: 'Predator', mode: 'RPG', difficulty: 'Easy', goldPrize: 50, shardPrize: 20, bossName: 'Bad Blood Alpha' },
     { id: 5, name: 'Raccoon City Police Dept', universe: 'Resident Evil', mode: 'Tactics', difficulty: 'Easy', goldPrize: 50, shardPrize: 20, bossName: 'Super Tyrant' },
     { id: 6, name: 'Toluca Lake Fog Sector', universe: 'Silent Hill', mode: 'RPG', difficulty: 'Medium', goldPrize: 60, shardPrize: 20, bossName: 'The God' },
     { id: 7, name: 'Edward City Missile Silo', universe: 'Dino Crisis', mode: 'Smash', difficulty: 'Medium', goldPrize: 65, shardPrize: 25, bossName: 'Giganotosaurus' },
     { id: 8, name: 'Zion Digital Pipeline', universe: 'The Matrix', mode: 'Tactics', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Deus Ex Machina' },
     { id: 9, name: 'Abydos Pyramids Breach', universe: 'Stargate', mode: 'RPG', difficulty: 'Medium', goldPrize: 70, shardPrize: 25, bossName: 'Anubis Flagship Nexus' },
-    { id: 10, name: 'Anomalous Materials Lab', universe: 'Half-Life', mode: 'Smash', difficulty: 'Medium', goldPrize: 75, shardPrize: 25, bossName: 'Combine Strider' },
+    CANON_PRIORITY_STAGES.xenNihilanth,
     { id: 11, name: 'Aperture Enrichment Center', universe: 'Portal', mode: 'RPG', difficulty: 'Medium', goldPrize: 80, shardPrize: 30, bossName: 'Central AI' },
-    { id: 12, name: 'Shadow Moses Warehouse', universe: 'Metal Gear', mode: 'Tactics', difficulty: 'Hard', goldPrize: 90, shardPrize: 30, bossName: 'Metal Gear RAY' },
+    CANON_PRIORITY_STAGES.shadowMoses,
     { id: 13, name: 'First World Bank Vault', universe: 'Payday', mode: 'Smash', difficulty: 'Hard', goldPrize: 95, shardPrize: 30, bossName: 'SWAT Turret Van' },
     { id: 14, name: 'Neon Shibuya Stage', universe: 'Vocaloid', mode: 'RPG', difficulty: 'Hard', goldPrize: 100, shardPrize: 35, bossName: 'Stage Core' },
     { id: 15, name: 'Dominos Duel Arena', universe: 'Yu-Gi-Oh', mode: 'Tactics', difficulty: 'Hard', goldPrize: 110, shardPrize: 35, bossName: 'Obelisk Tormentor' },
@@ -5540,7 +5561,7 @@ export default function HubScreen({
     { id: 19, name: 'Good Guy Toy Warehouse', universe: 'Chucky', mode: 'Smash', difficulty: 'Hard', goldPrize: 140, shardPrize: 45, bossName: 'Assembly Core' },
     { id: 20, name: 'Labyrinth Cenobite Chamber', universe: 'Hellraiser', mode: 'RPG', difficulty: 'Very Hard', goldPrize: 150, shardPrize: 45, bossName: 'Leviathan God' },
     { id: 21, name: 'Citadel Presidium Hub', universe: 'Mass Effect', mode: 'Tactics', difficulty: 'Very Hard', goldPrize: 160, shardPrize: 50, bossName: 'Human-Reaper Larva' },
-    { id: 22, name: 'New Vegas Strip Breach', universe: 'Fallout', mode: 'Smash', difficulty: 'Very Hard', goldPrize: 170, shardPrize: 50, bossName: 'Liberty Prime' },
+    CANON_PRIORITY_STAGES.legatesCamp,
     { id: 23, name: 'Nekravol Argent Tower', universe: 'Doom', mode: 'RPG', difficulty: 'Expert', goldPrize: 200, shardPrize: 60, bossName: 'Icon of Sin' },
     { id: 24, name: 'Liandri Tournament Grid', universe: 'Unreal', mode: 'Tactics', difficulty: 'Expert', goldPrize: 220, shardPrize: 70, bossName: 'Skaarj Warlord' },
     
@@ -8301,16 +8322,7 @@ export default function HubScreen({
     if (getNonCombatStageDetails(stage, lang)) return null;
     if (stage.finalGameBoss) return getFinalGameBoss();
     const universeEnemies = ENEMIES_DB[stage.universe] || {};
-    if (stage.ocDlc && stage.bossName) {
-      const exactBoss = [
-        ...(universeEnemies.bosses || []),
-        universeEnemies.worldBoss
-      ]
-        .filter(Boolean)
-        .find(enemy => enemy.name === stage.bossName);
-      if (exactBoss) return exactBoss;
-    }
-    return universeEnemies.worldBoss || universeEnemies.bosses?.[0];
+    return resolveStageArchiveBoss(stage, universeEnemies);
   };
   const visibleCollectionUniverses = Object.keys(LORE_DB)
     .filter(isUniverseArchiveAvailable);
@@ -8518,6 +8530,7 @@ export default function HubScreen({
     return Boolean(stage.trioArc && isStageUnlocked(stage));
   };
   const missionCategoryFilter = (stage) => {
+    if (missionScreen === 'universeMissions') return isUniverseCombatMission(stage, { isMainCampaign: isOcStoryStage(stage) });
     if (missionScreen === 'ocDlc') return Boolean(stage.ocDlc);
     if (missionScreen === 'trials') return Boolean(stage.nonCombatTrial || stage.nonCombat || stage.nC);
     if (missionScreen === 'originalWorlds') {
@@ -8543,6 +8556,13 @@ export default function HubScreen({
   ).length;
   const factionArcCount = arcProgress.length;
   const missionScreenMeta = {
+    universeMissions: {
+      label: { fr: 'Missions des univers', en: 'Universe missions' },
+      desc: { fr: 'Confrontations indépendantes dans les lieux de chaque univers. Consulte le briefing et prépare ton équipe avant de partir.', en: 'Independent encounters in each universe. Read the briefing and prepare your squad before deploying.' },
+      count: visibleStages.filter(stage => isUniverseCombatMission(stage, { isMainCampaign: isOcStoryStage(stage) })).length,
+      color: '#d9b86b',
+      image: '/images/missions/universe-arcs.webp'
+    },
     story: {
       label: { fr: 'Campagne OC', en: 'OC campaign' },
       desc: { fr: 'Campagne principale du Nexus: uniquement stages OC, chapitre actif et seuil du Sans-Auteur.', en: 'Main Nexus campaign: OC stages only, active chapter, and Authorless threshold.' },
@@ -8721,6 +8741,8 @@ export default function HubScreen({
         ? 'campaign'
         : missionScreen === 'ocDlc'
           ? 'library'
+          : missionScreen === 'universeMissions'
+            ? 'missions'
           : 'map'
     );
     setMissionModeFilter('all');
@@ -8840,7 +8862,7 @@ export default function HubScreen({
     .filter(mission => completedStageIdSet.has(String(mission.id)))
     .length;
   const isArcMissionScreen = Boolean(narrativeArcScreenType);
-  const showModeFilters = ['story', 'ocDlc', 'fusionMissions', 'trials'].includes(missionScreen)
+  const showModeFilters = ['story', 'ocDlc', 'universeMissions', 'fusionMissions', 'trials'].includes(missionScreen)
     && ['map', 'missions'].includes(missionWorkspaceView);
   const missionWorkspaceItems = missionScreen === 'story'
     ? [
@@ -8890,6 +8912,13 @@ export default function HubScreen({
           tooltip: { fr: 'Affiche les missions des actes annexes actuellement actifs.', en: 'Show missions from currently active standalone acts.' }
         }
       ]
+      : missionScreen === 'universeMissions'
+        ? [
+          { id: 'map', label: { fr: 'CARTE DES FAILLES', en: 'RIFT MAP' }, count: missionPool.length,
+            tooltip: { fr: 'Localise les confrontations des univers.', en: 'Locate universe encounters.' } },
+          { id: 'missions', label: { fr: 'MISSIONS', en: 'MISSIONS' }, count: missionPool.length,
+            tooltip: { fr: 'Recherche une mission et consulte ses conditions de départ.', en: 'Find a mission and review its deployment conditions.' } }
+        ]
       : missionScreen === 'trials'
         ? [
           {
@@ -8961,6 +8990,12 @@ export default function HubScreen({
             ? 'Les routes marquent les cellules ou trois signatures doivent agir ensemble. Chaque arc ouvre ses chapitres de synergie.'
             : 'Routes mark cells where three signatures must act together. Each arc opens its synergy chapters.'
         }
+        : missionScreen === 'universeMissions'
+          ? {
+            kicker: lang === 'fr' ? 'CARTE DES FAILLES / UNIVERS' : 'RIFT MAP / UNIVERSES',
+            title: lang === 'fr' ? 'Confrontations des univers' : 'Universe encounters',
+            desc: lang === 'fr' ? 'Ouvre une faille pour consulter son lieu, ses adversaires et les conditions de départ.' : 'Open a rift to review its location, opponents and deployment conditions.'
+          }
         : missionScreen === 'ocDlc'
           ? {
             kicker: lang === 'fr' ? 'CARTE DES FAILLES / ACTES ANNEXES OC' : 'RIFT MAP / OC STANDALONE ACTS',
@@ -9413,8 +9448,8 @@ export default function HubScreen({
                   borderRadius: '4px'
                 }}>
                   {lang === 'fr'
-                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : campagne principale, univers OC, actes annexes, arcs narratifs, failles fusionnées ou épreuves sans combat.'
-                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: main campaign, OC universes, standalone acts, narrative arcs, fused rifts, or non-combat trials.'}
+                    ? 'A.R.C.A. compartimente la carte des missions pour éviter la surcharge de Trame. Choisis un écran : missions des univers, campagne principale, univers OC, actes annexes, arcs narratifs, failles fusionnées ou épreuves sans combat.'
+                    : 'A.R.C.A. compartments the mission map to avoid Thread overload. Choose a screen: universe missions, main campaign, OC universes, standalone acts, narrative arcs, fused rifts, or non-combat trials.'}
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
                   {Object.entries(missionScreenMeta).map(([key, entry]) => (
@@ -9721,6 +9756,8 @@ export default function HubScreen({
                         selectedStageId={briefingStageId}
                         viewType={missionScreen === 'fusionMissions'
                           ? 'fusion'
+                          : missionScreen === 'universeMissions'
+                            ? 'universe'
                           : missionScreen === 'ocDlc'
                             ? 'ocDlc'
                             : 'story'}
@@ -12487,7 +12524,7 @@ export default function HubScreen({
                     {lang === 'fr' ? 'FERMER' : 'CLOSE'}
                   </button>
                 </div>
-                <p style={{ color: '#d8d8d8', fontSize: '11px', lineHeight: 1.45, margin: '12px 0 0' }}>
+                <p className="universe-archive-lore" tabIndex={0} role="region" aria-label={lang === 'fr' ? 'Contexte de l’univers' : 'Universe background'} style={{ color: '#d8d8d8', fontSize: '11px', lineHeight: 1.45, margin: '12px 0 0' }}>
                   {selectedUniverseArchive.loreBrief}
                 </p>
                 <p style={{ color: '#9eb6c6', fontSize: '10px', margin: '7px 0 0' }}>
@@ -12596,25 +12633,31 @@ export default function HubScreen({
                     <div style={{ display: 'grid', gap: '6px', marginTop: '9px' }}>
                       {selectedUniverseArchive.allEnemies.map((enemy, index) => {
                         const portraitSrc = enemy.portrait || null;
-                        const spriteSrc = portraitSrc || getEnemySpriteSheetSrc(enemy, selectedUniverseArchive.universe);
+                        const spriteInfo = getEnemySpriteInfo(enemy, selectedUniverseArchive.universe);
+                        const spriteSrc = portraitSrc || spriteInfo.src;
+                        const illustrationReady = Boolean(portraitSrc) || spriteInfo.ready;
                         const spriteLayout = getSpriteSheetLayout(spriteSrc);
                         return (
                           <div key={`${enemy.name}-${index}`} style={{ display: 'grid', gridTemplateColumns: '72px minmax(0, 1fr)', gap: '8px', padding: '7px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(0,0,0,0.2)', borderRadius: '4px' }}>
                             <div
-                              role="img"
-                              aria-label={`${enemy.name} sprite`}
+                              role={illustrationReady ? 'img' : undefined}
+                              aria-label={illustrationReady ? `${enemy.name} sprite` : undefined}
                               style={{
                                 width: '72px',
                                 height: '72px',
                                 border: '1px solid rgba(231,76,60,0.3)',
                                 backgroundColor: '#050509',
-                                backgroundImage: `url("${spriteSrc}")`,
+                                backgroundImage: illustrationReady ? `url("${spriteSrc}")` : undefined,
                                 backgroundRepeat: 'no-repeat',
                                 backgroundSize: portraitSrc ? 'cover' : `${spriteLayout.columns * 100}% ${spriteLayout.rows * 100}%`,
                                 backgroundPosition: portraitSrc ? 'center 22%' : '0 0',
                                 imageRendering: 'pixelated'
                               }}
-                            />
+                            >
+                              {!illustrationReady && <span style={{ display: 'block', padding: '8px', color: '#aaa', fontSize: '9px' }}>
+                                {lang === 'fr' ? 'Illustration à venir' : 'Illustration pending'}
+                              </span>}
+                            </div>
                             <div style={{ minWidth: 0 }}>
                               <div style={{ color: enemy.color || '#e74c3c', fontSize: '10px', fontWeight: 'bold' }}>{enemy.name}</div>
                               <div style={{ color: '#aaa', fontSize: '9px', marginTop: '3px' }}>
@@ -12622,7 +12665,7 @@ export default function HubScreen({
                               </div>
                               {enemy.special && (
                                 <div style={{ color: '#ffb15c', fontSize: '9px', marginTop: '3px' }}>
-                                  {getLocalizedText(enemy.special, lang, enemy.name)}
+                                  {getLocalizedText(enemy.special?.name ?? enemy.special, lang, enemy.name)}
                                 </div>
                               )}
                               <div style={{ color: '#d0b7b7', fontSize: '9px', lineHeight: 1.35, marginTop: '5px' }}>
@@ -13092,4 +13135,3 @@ export default function HubScreen({
     </div>
   );
 }
-

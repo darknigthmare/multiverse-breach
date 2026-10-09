@@ -206,7 +206,7 @@ test('dedicated custom runtime freezes input and hides its direct setup exit', (
   assert.match(customBattleModeSource, /sessionPaused=\{sessionPaused\}/);
   assert.match(customBattleModeSource, /dedicatedSession=\{dedicatedSession\}/);
   assert.match(engineRpgSource, /if \(this\.paused \|\| this\.isTargetingPaused\?\.\(\)\) \{[\s\S]*runWhenResumed\(\)/);
-  assert.match(engineTacticsSource, /if \(this\.paused\) \{[\s\S]*runWhenResumed\(\)/);
+  assert.match(engineTacticsSource, /if \(this\.paused \|\| \(this\.activeUnit\?\.currentHp > 0 && this\.activeUnit\.state === 'hit' && this\.activeUnit\.stateTimer > 0\)\) \{[\s\S]*runWhenResumed\(\)/);
   assert.match(indexCssSource, /@media \(max-width: 900px\) \{[\s\S]*\.hub-screen\.is-dedicated-game \.mosaic-rpg-panel \{[\s\S]*grid-template-columns: 1fr/);
 });
 
