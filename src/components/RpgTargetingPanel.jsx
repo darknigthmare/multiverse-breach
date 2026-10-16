@@ -1,6 +1,7 @@
 import React from 'react';
 
 const EFFECT_LABELS = { damage: ['Dégâts estimés', 'Estimated damage'], heal: ['Soin', 'Healing'], revive: ['Réanimation', 'Revive'], guard: ['Protection', 'Protection'], buff: ['Renforcement', 'Buff'], cleanse: ['Purification', 'Cleanse'] };
+const STATUS_LABELS = { infected: ['Infection', 'Infection'], glitched: ['Glitch', 'Glitch'], radiated: ['Radiations', 'Radiation'] };
 const SHAPE_LABELS = { single: ['Une cible', 'Single target'], multi: ['Cibles choisies', 'Selected targets'], group: ['Tout le groupe valide', 'All valid group members'], area: ['Zone autour de la cible', 'Area around target'], line: ['Ligne vers la cible', 'Line toward target'], cone: ['Cône vers la cible', 'Cone toward target'] };
 
 export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWaitChange, onSelect, onConfirm, onCancel }) {
@@ -36,6 +37,10 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
                   {affected && estimate && <div style={{ fontSize: 10, marginTop: 4 }}>
                     {EFFECT_LABELS[estimate.effect]?.[locale] || estimate.effect}
                     {estimate.amount > 0 ? ` ${estimate.min === estimate.max ? estimate.amount : `${estimate.min}–${estimate.max}`}` : ''}
+                    {estimate.cleansedStatuses?.length > 0 && <div>
+                      {fr ? 'Purification : ' : 'Cleanse: '}
+                      {estimate.cleansedStatuses.map(status => STATUS_LABELS[status]?.[locale] || status).join(', ')}
+                    </div>}
                   </div>}
                 </button>
               );

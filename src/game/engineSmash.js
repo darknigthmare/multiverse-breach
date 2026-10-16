@@ -916,7 +916,7 @@ export class EngineSmash {
   }
 
   triggerCombatEvent(effect) {
-    if (this.gameOver || this.isMatchInputLocked()) return false;
+    if (this.disposed || this.paused || this.gameOver || typeof effect !== 'string' || !effect.trim() || this.isMatchInputLocked()) return false;
     this.itemTriggers++;
     this.playSfx('special');
     this.particles.add(this.width/2, this.height/2, 0, 0, '#ffffff', 300, 35, 'glitch');

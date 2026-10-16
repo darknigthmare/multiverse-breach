@@ -39,11 +39,12 @@ jobs:
           npm run sprites:availability:check
           npm run test:audit-reliability | tee /tmp/reliability-evidence/reliability.log
           npm run test:audit-followup | tee /tmp/reliability-evidence/followup.log
+          npm run test:audit-combat | tee /tmp/reliability-evidence/combat-regressions.log
           npm run test:polish | tee /tmp/reliability-evidence/polish.log
       - name: Existing combat and save contracts
         run: |
           set -euo pipefail
-          node --test --test-concurrency=1 scripts/combatEffectRegressions.test.mjs scripts/tacticsMissionObjectives.test.mjs scripts/customBattle.test.mjs scripts/canonRexAttackPatterns.test.mjs scripts/localSaveGuard.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/smashCanonAbilityProfiles.test.mjs scripts/smashObjectiveResolution.test.mjs scripts/canonEncounterExternalDamage.test.mjs | tee /tmp/reliability-evidence/existing-contracts.log
+          node --test --test-concurrency=1 scripts/combatEffectRegressions.test.mjs scripts/tacticsMissionObjectives.test.mjs scripts/customBattle.test.mjs scripts/canonRexAttackPatterns.test.mjs scripts/localSaveGuard.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/smashCanonAbilityProfiles.test.mjs scripts/smashObjectiveResolution.test.mjs scripts/canonEncounterExternalDamage.test.mjs scripts/rpgTargeting.test.mjs scripts/rpgTargetingPresentation.test.mjs scripts/canonRaamEncounter.test.mjs scripts/canonPiratesCurseEncounter.test.mjs scripts/canonPiratesPlayableJackCurse.test.mjs scripts/portalBoosterEngine.test.mjs scripts/portalBoosterEconomy.test.mjs | tee /tmp/reliability-evidence/existing-contracts.log
       - name: Lint changed modules and tests
         run: >-
           node node_modules/oxlint/bin/oxlint
@@ -55,6 +56,9 @@ jobs:
           scripts/auditAuthRecovery.test.mjs scripts/auditFollowupRegressions.test.mjs scripts/progressionRuntimeIntegration.test.mjs
           scripts/auditApplicationIntegration.test.mjs scripts/auditCloudReliability.test.mjs
           scripts/auditCombatReliability.test.mjs scripts/auditSaveCalendar.test.mjs scripts/auditSpriteAvailability.test.mjs
+          src/game/engineRpg.js src/game/rpgTargeting.js src/game/rpgSupport.js src/game/combatEventItem.js
+          src/game/portalBoosterEngine.js src/components/PortalScreen.jsx src/components/RpgTargetingPanel.jsx
+          scripts/auditRpgLifecycle.test.mjs scripts/auditEventConsumption.test.mjs scripts/fixtures/rpgLifecycleHarness.jsx
           scripts/buildSpriteAvailability.mjs scripts/canonRexAttackPatterns.test.mjs
           scripts/cloudReconciliationRace.test.mjs scripts/combatEffectRegressions.test.mjs scripts/customBattle.test.mjs
       - name: Compile source snapshot (not full artwork publication)
@@ -73,6 +77,7 @@ jobs:
           trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
           for attempt in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
           /tmp/multiverse-playwright/bin/python scripts/browserAuditFollowup.py --evidence /tmp/reliability-evidence/browser | tee /tmp/reliability-evidence/browser.log
+          /tmp/multiverse-playwright/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/reliability-evidence/rpg-browser | tee /tmp/reliability-evidence/rpg-browser.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

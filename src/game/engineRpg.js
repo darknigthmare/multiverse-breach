@@ -3,7 +3,8 @@ import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { absorbBattleItemDamage } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
 import { resolveArchetypeCombatStats } from './combatStatPreparation';
-import { applyCombatHealing } from './combatHealing.js';
+import { cleanseRpgStatuses, getRpgCleansableStatuses, getRpgReviveHp } from './rpgSupport.js';
+import { applyCombatHealing, getCombatHealingAmount } from './combatHealing.js';
 import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { calculateRpgDamage, getRpgActionProfile, getRpgEligibleTargets, resolveRpgTargets, rpgUnitId } from './rpgTargeting';
@@ -53,6 +54,8 @@ export class EngineRpg {
     this.targeting = null;
     this.targetingWait = true;
     this.actionQueue = [];
+    this.actorActions = new Map();
+    this.enemyActionOwner = null;
 
     const heroPosition = (idx) => {
       const lane = this.levelProfile?.rpg?.heroLanes?.[idx];
@@ -241,8 +244,38 @@ export class EngineRpg {
     this.paused = Boolean(paused);
   }
 
-  scheduleAction(callback, delay) {
-    this.actionQueue.push({ callback, ticks: Math.max(1, Math.ceil(delay * 60 / 1000)) });
+  scheduleAction(callback, delay, actor = null, onCancel = null) {
+    if (this.disposed || this.gameOver || typeof callback !== 'function' || !Number.isFinite(delay) || delay < 0) return null;
+    const action = { callback, ticks: Math.max(1, Math.ceil(delay * 60 / 1000)), actor, onCancel, cancelled: false };
+    this.actionQueue.push(action);
+    if (actor) this.actorActions.set(actor, action);
+    return action;
+  }
+
+  cancelActorActions(actor) {
+    if (!actor) return;
+    const action = this.actorActions.get(actor);
+    if (action) {
+      // The record may already be in this tick's due batch. Mark it as well
+      // as removing it from the queue so a same-tick revive cannot revive a cast.
+      action.cancelled = true;
+      this.actorActions.delete(actor);
+      this.actionQueue = this.actionQueue.filter(queued => queued !== action);
+      action.onCancel?.();
+    }
+    actor.actionPending = false;
+    if (this.enemyActionOwner === actor) {
+      this.enemyActionOwner = null;
+      this.enemyActionLock = false;
+    }
+    this.returnToFormation(actor);
+  }
+
+  clearPendingActions() {
+    for (const actor of this.actorActions.keys()) this.cancelActorActions(actor);
+    this.actionQueue = [];
+    this.enemyActionOwner = null;
+    this.enemyActionLock = false;
   }
 
   advanceActions() {
@@ -254,6 +287,15 @@ export class EngineRpg {
       return false;
     });
     due.forEach(action => {
+      if (action.cancelled || this.disposed || this.gameOver) return;
+      if (action.actor) {
+        if ((!this.heroes.includes(action.actor) && !this.enemies.includes(action.actor))
+          || !Number.isFinite(action.actor.currentHp) || action.actor.currentHp <= 0 || action.actor.state === 'dead') {
+          this.cancelActorActions(action.actor);
+          return;
+        }
+        this.actorActions.delete(action.actor);
+      }
       action.callback();
       // Each queued callback observes source immortality before the next one.
       // Restitution disables this repair immediately, unlike the enemy finale lock.
@@ -267,10 +309,11 @@ export class EngineRpg {
     this.timers.clear();
     this.enemyActionLock = false;
     this.targeting = null;
-    this.actionQueue = [];
+    this.clearPendingActions();
   }
 
   spawnWave() {
+    this.enemies.forEach(enemy => this.cancelActorActions(enemy));
     this.enemies = [];
     const w = this.wave;
 
@@ -508,7 +551,8 @@ export class EngineRpg {
   }
 
   canUseAction(actor, abilityType, side = 'player') {
-    if (!this.resolveActor(actor, side) || this.disposed || this.paused || this.gameOver || actor.currentHp <= 0
+    if (!this.resolveActor(actor, side) || this.disposed || this.paused || this.gameOver
+      || !Number.isFinite(actor.currentHp) || actor.currentHp <= 0 || !Number.isFinite(actor.atb)
       || actor.state !== 'idle' || actor.actionPending || actor.atb < 100) return false;
     if (side === 'enemy' && this.enemyActionLock) return false;
     if (abilityType === 'secondary' && actor.cooldown > 0) return false;
@@ -560,6 +604,10 @@ export class EngineRpg {
     const selectedTargetIds = Array.isArray(targetIds) ? [...targetIds] : [];
     const resolved = resolveRpgTargets({ ...context, selectedTargetIds });
     const profile = context.profile;
+    if (!profile || !this.resolveActor(actor, side)) {
+      this.targeting = null;
+      return null;
+    }
     const amount = (actor.stats?.atk ?? actor.atk ?? 8) * profile.multiplier;
     const damageMultiplier = (actor.rpgBuffTicks > 0 ? actor.rpgBuffMultiplier : 1) * getCombatEventDamageMultiplier(actor);
     const estimates = resolved.targets.map(unit => {
@@ -579,11 +627,10 @@ export class EngineRpg {
       const previewDamage = amount * damageMultiplier * coverMultiplier;
       if (profile.effect === 'damage') value = calculateRpgDamage(unit, previewDamage, 1, true, actor);
       else if (profile.effect === 'heal') {
-        const cap = unit.statusEffects?.radiated > 0 ? unit.maxHp * 0.5 : unit.maxHp;
-        value = Math.max(0, Math.min(cap - unit.currentHp, profile.healRatio ? unit.maxHp * profile.healRatio : amount));
-      } else if (profile.effect === 'revive') value = unit.maxHp * profile.reviveRatio;
+        value = getCombatHealingAmount(unit, profile.healRatio ? unit.maxHp * profile.healRatio : amount);
+      } else if (profile.effect === 'revive') value = getRpgReviveHp(unit, profile.reviveRatio);
       else value = 0;
-      return { id: rpgUnitId(unit), effect: profile.effect, amount: Math.round(value), min: profile.effect === 'damage' ? calculateRpgDamage(unit, previewDamage, 0.9, true, actor) : Math.round(value), max: profile.effect === 'damage' ? calculateRpgDamage(unit, previewDamage, 1.1, true, actor) : Math.round(value) };
+      return { id: rpgUnitId(unit), effect: profile.effect, cleansedStatuses: getRpgCleansableStatuses(unit, profile.cleanses), amount: Math.round(value), min: profile.effect === 'damage' ? calculateRpgDamage(unit, previewDamage, 0.9, true, actor) : Math.round(value), max: profile.effect === 'damage' ? calculateRpgDamage(unit, previewDamage, 1.1, true, actor) : Math.round(value) };
     });
     return {
       side, actorId: rpgUnitId(actor), actorName: actor.name, abilityType,
@@ -742,7 +789,10 @@ export class EngineRpg {
       encounter.ritualPending = false;
       hero.actionPending = false;
       this.returnToFormation(hero);
-    }, PIRATES_CURSE_RULES.commandImpactTicks * 1000 / 60);
+    }, PIRATES_CURSE_RULES.commandImpactTicks * 1000 / 60, hero, () => {
+      encounter.commandPending = null;
+      encounter.ritualPending = false;
+    });
     return true;
   }
 
@@ -779,7 +829,7 @@ export class EngineRpg {
         }
         hero.actionPending = false;
         this.returnToFormation(hero, boss);
-      }, 300);
+      }, 300, hero);
       return true;
     }
     if (!['take-light-cover', 'leave-light-cover'].includes(command)) return false;
@@ -839,8 +889,12 @@ export class EngineRpg {
   }
 
   executeRpgAction(context, selectedTargetIds) {
-    const { actor, abilityType, side, profile } = context;
+    const { actor, abilityType, side } = context || {};
     if (!this.canUseAction(actor, abilityType, side)) return false;
+    // Contexts from AI/previews may outlive another impact. Recompute before
+    // spending resources, while still freezing confirmed identities below.
+    context = this.getActionContext(actor, abilityType, side);
+    const { profile } = context;
     const resolved = resolveRpgTargets({ ...context, selectedTargetIds });
     if (!resolved.valid) return false;
     // Freeze object identities before moving the caster or scheduling impacts.
@@ -870,7 +924,7 @@ export class EngineRpg {
     }
 
     actor.actionPending = true;
-    if (side === 'enemy') this.enemyActionLock = true;
+    if (side === 'enemy') { this.enemyActionLock = true; this.enemyActionOwner = actor; }
     actor.state = abilityType === 'special' ? 'special' : 'attack';
     actor.stateTimer = abilityType === 'special' ? 45 : 35;
     this.faceTarget(actor, anchor);
@@ -904,8 +958,10 @@ export class EngineRpg {
           if (!isStillPresent) continue;
           const amount = (actor.stats?.atk ?? actor.atk ?? 8) * profile.multiplier;
           if (profile.effect === 'revive') {
-            if (target.currentHp > 0) continue;
-            target.currentHp = Math.max(1, Math.round(target.maxHp * profile.reviveRatio));
+            const revivedHp = getRpgReviveHp(target, profile.reviveRatio);
+            if (!revivedHp) continue;
+            this.cancelActorActions(target);
+            target.currentHp = revivedHp;
             target.state = 'idle';
             target.stateTimer = 0;
             target.atb = 0;
@@ -929,18 +985,19 @@ export class EngineRpg {
             if (/Deathclaw|Cyberdemon/.test(actor.name || '')) status = 'radiated';
             if (encounterKind !== 'kryll') this.applyDamage(actor, target, amount, status, { kind: encounterKind });
           }
-          if (profile.cleanses && target.currentHp > 0) target.statusEffects = { infected: 0, glitched: 0, radiated: 0 };
+          if (target.currentHp > 0) cleanseRpgStatuses(target, profile.cleanses);
         }
       }
       this.returnToFormation(actor, anchor);
       actor.actionPending = false;
       if (side === 'enemy') {
         this.enemyActionLock = false;
+        this.enemyActionOwner = null;
         this.enemyGlobalRecovery = actor.isBoss ? 85 : 110;
       }
       const nextReady = this.heroes.find(unit => unit.currentHp > 0 && unit.atb >= 100 && !unit.actionPending);
       if (nextReady) this.selectedHeroId = nextReady.id;
-    }, profile.delivery === 'melee' ? 200 : 300);
+    }, profile.delivery === 'melee' ? 200 : 300, actor);
     return true;
   }
 
@@ -962,7 +1019,7 @@ export class EngineRpg {
   }
 
   triggerCombatEvent(effect) {
-    if (this.gameOver) return;
+    if (this.disposed || this.paused || this.gameOver || typeof effect !== 'string' || !effect.trim()) return false;
     this.playSfx('special');
     this.particles.add(this.width/2, this.height/2, 0, 0, '#ffffff', 300, 30, 'glitch');
 
@@ -1089,9 +1146,10 @@ export class EngineRpg {
         });
       }
     }
+    return true;
   }
   applyDamage(attacker, defender, baseDmg, statusEffect = null, attackContext = {}) {
-    if (!defender || defender.currentHp <= 0 || !Number.isFinite(baseDmg)) return 0;
+    if (!defender || !Number.isFinite(defender.currentHp) || defender.currentHp <= 0 || !Number.isFinite(baseDmg) || baseDmg < 0) return 0;
     if (isPiratesCurseProtected(this.piratesCurseEncounter, defender, this.enemies)
       || isPiratesCursedHero(this.piratesCurseEncounter, defender, this.heroes)) {
       this.particles.add(defender.x, defender.y - 55, 0, -0.5, '#efcc76', 10, 35, 'text', this.piratesCurseEncounter.curseActive ? 'AZTEC CURSE' : 'FINAL SHOT');
@@ -1142,7 +1200,7 @@ export class EngineRpg {
     }
 
     if (statusEffect && defender.currentHp > 0 && defender.statusEffects) {
-      defender.statusEffects[statusEffect] = 300;
+      defender.statusEffects[statusEffect] = Math.max(Number(defender.statusEffects[statusEffect]) || 0, 300);
       const label = statusEffect === 'infected' ? 'INFECTED' : statusEffect === 'glitched' ? 'GLITCHED' : 'RADIATED';
       const color = statusEffect === 'infected' ? '#2ecc71' : statusEffect === 'glitched' ? '#00ff00' : '#e67e22';
       this.particles.add(defender.x, defender.y - 35, 0, -1, color, 12, 60, 'text', label);
@@ -1156,6 +1214,7 @@ export class EngineRpg {
     if (defender.currentHp <= 0) {
       defender.state = 'dead';
       defender.stateTimer = 999;
+      this.cancelActorActions(defender);
       this.playSfx('defeat');
     } else {
       this.playSfx('hit');
@@ -1231,6 +1290,8 @@ export class EngineRpg {
 
     if (!heroesAlive) {
       this.gameOver = true;
+      this.clearPendingActions();
+      this.targeting = null;
       this.victoryTimer = 0;
       this.playSfx('defeat');
       return;
@@ -1248,6 +1309,8 @@ export class EngineRpg {
         this.spawnWave();
       } else {
         this.gameOver = true;
+        this.clearPendingActions();
+        this.targeting = null;
         this.victoryTimer = 0;
         this.playSfx('victory');
       }

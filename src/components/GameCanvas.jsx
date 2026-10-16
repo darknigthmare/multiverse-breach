@@ -1,3 +1,4 @@
+import { resolveEquippedCombatEvent } from '../game/combatEventItem.js';
 import { applyCombatHealing } from '../game/combatHealing.js';
 import { drawCosmeticAtlasFrame } from '../game/renderer';
 import {
@@ -409,6 +410,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   
   // Track if active Event Item has been activated this fight
   const [eventItemUsed, setEventItemUsed] = useState(false);
+  const eventItemUsedRef = useRef(false);
 
   const BATTLE_ANOMALIES = [
     {
@@ -1039,6 +1041,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setTeamState([]);
     setOpponentState([]);
     setActiveOpponentId('');
+    eventItemUsedRef.current = false;
     setEventItemUsed(false);
     keysPressed.current = {};
     lastAnomalyWaveRef.current = -1;
@@ -1777,7 +1780,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const handleActivateEventItem = () => {
     if (engineRef.current?.getTargetingState?.()) return;
     if (sessionPausedRef.current) return;
-    if (!engineRef.current || eventItemUsed || battleCompleted) return;
+    if (!engineRef.current || eventItemUsedRef.current || eventItemUsed || battleCompleted || stage.disableItems) return;
     if (stage.mode === 'Smash' && engineRef.current.isMatchInputLocked?.()) return;
 
     const activeHero = HEROES_DB.find(h => h.id === activeHeroId);
@@ -1786,12 +1789,17 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const eventId = equippedEventItems[activeHero.id];
     if (!eventId) return;
 
-    const eventDetails = EVENT_ITEMS_DB[activeHero.universe];
+    const actor = engineRef.current.heroes.find(hero => hero.id === activeHero.id);
+    if (!actor || actor.currentHp <= 0) return;
+    const eventDetails = resolveEquippedCombatEvent(eventId, EVENT_ITEMS_DB, hiddenUniverseSet, disabledGearSet);
     if (!eventDetails) return;
 
-    // Trigger effect in engine
+    // The synchronous latch also rejects a second click before React commits.
+    eventItemUsedRef.current = true;
     if (engineRef.current.triggerCombatEvent(eventDetails.effect) === true) {
       setEventItemUsed(true);
+    } else {
+      eventItemUsedRef.current = false;
     }
   };
 
@@ -1920,7 +1928,8 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const activeHeroStatic = HEROES_DB.find(h => h.id === activeHeroId);
   const activeHeroUniverseEnabled = activeHeroStatic && !hiddenUniverseSet.has(activeHeroStatic.universe);
   const equippedEventId = activeHeroUniverseEnabled ? equippedEventItems[activeHeroStatic.id] : null;
-  const equippedEvent = activeHeroUniverseEnabled ? EVENT_ITEMS_DB[activeHeroStatic.universe] : null;
+  const equippedEvent = activeHeroUniverseEnabled && !stage.disableItems
+    ? resolveEquippedCombatEvent(equippedEventId, EVENT_ITEMS_DB, hiddenUniverseSet, disabledGearSet) : null;
   const preMatchLocked = stage.mode === 'Smash'
     && !stage.nonCombatTrial
     && preMatchAnnouncement?.locked !== false;
@@ -2655,7 +2664,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           {equippedEventId && equippedEvent && (
             <button
               onClick={handleActivateEventItem}
-              disabled={eventItemUsed || battleCompleted || preMatchLocked}
+              disabled={eventItemUsed || sessionPaused || battleCompleted || preMatchLocked || !activeHeroObj || activeHeroObj.currentHp <= 0}
               className="btn-retro"
               title={preMatchLocked
                 ? (lang === 'fr' ? 'Indisponible pendant le pre-match.' : 'Unavailable during pre-match.')

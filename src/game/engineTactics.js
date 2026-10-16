@@ -2874,7 +2874,7 @@ export class EngineTactics {
 
   // Active Combat Event Item trigger
   triggerCombatEvent(effect) {
-    if (this.gameOver) return;
+    if (this.disposed || this.paused || this.gameOver || typeof effect !== 'string' || !effect.trim()) return false;
     this.playSfx('special');
     this.particles.add(this.width/2, this.height/2, 0, 0, '#ffffff', 300, 30, 'glitch');
 
@@ -3006,6 +3006,7 @@ export class EngineTactics {
         });
       }
     }
+    return true;
   }
   update() {
     if (this.disposed || this.paused) return;

@@ -8,6 +8,7 @@ import { OC_DLC_UNIVERSE_KEYS } from '../game/ocDlcPacks';
 import { SKIN_CATALOG } from '../game/narrativeSystems';
 import {
   BOOSTER_CARD_COUNT,
+  advanceBoosterHeroStreak,
   createBoosterRewards
 } from '../game/portalBoosterEngine';
 import { capDuplicateRefunds, getBoosterPrice } from '../game/portalBoosterEconomy';
@@ -414,7 +415,7 @@ const makeBoosterCandidates = ({
         : null;
       const landscapeData = ['archive', 'hud'].includes(candidate.kind)
         ? {
-            ...(entity.data || {}),
+            ...entity.data,
             image: entity.data?.image || banner.backdrop,
             mode: entity.data?.mode || banner.mode
           }
@@ -435,7 +436,7 @@ const makeBoosterCandidates = ({
           : candidate.kind === 'equipment' || candidate.kind === 'event'
             ? { item }
             : candidate.kind === 'skin'
-              ? { skin: entity, hero: { ...hero, ...(entity.colors || {}) } }
+              ? { skin: entity, hero: { ...hero, ...entity.colors } }
               : landscapeData
                 ? landscapeData
                 : { unlockable }
@@ -505,7 +506,7 @@ const makeBoosterCandidates = ({
       universe: hero.universe,
       color: skin.colors?.primaryColor || hero.primaryColor || banner.color,
       rarity: PORTAL_RARITIES.epic,
-      data: { skin, hero: { ...hero, ...(skin.colors || {}) } }
+      data: { skin, hero: { ...hero, ...skin.colors } }
     });
   });
 
@@ -1308,7 +1309,7 @@ export default function PortalScreen({
     if (newHeroIds.length > 0) setUnlockedHeroes(previous => appendUnique(previous, newHeroIds));
     if (newInventoryIds.length > 0) setInventory(previous => appendUnique(previous, newInventoryIds));
     setPortalCollection(previous => {
-      const freeBoosterCredits = { ...(previous?.freeBoosterCredits || {}) };
+      const freeBoosterCredits = { ...previous?.freeBoosterCredits };
       if (freeCreditSetId) {
         freeBoosterCredits[freeCreditSetId] = Math.max(
           0,
@@ -1358,17 +1359,11 @@ export default function PortalScreen({
       netCost,
       at: obtainedAt
     }));
-    const heroRewards = rewards.filter(reward => reward.kind === 'hero');
-    const hasNewHero = heroRewards.some(reward => !reward.wasDuplicate);
-    const duplicateHeroes = heroRewards.filter(reward => reward.wasDuplicate).length;
-
     setPortalStats(previous => appendOpeningHistory({
-      ...(previous || {}),
+      ...previous,
       pulls: (previous?.pulls || 0) + rewards.length,
       packsOpened: (previous?.packsOpened || 0) + 1,
-      duplicateStreak: hasNewHero
-        ? 0
-        : (previous?.duplicateStreak || 0) + duplicateHeroes,
+      duplicateStreak: advanceBoosterHeroStreak(previous?.duplicateStreak, rewards),
       fragmentsSpent: (previous?.fragmentsSpent || 0) + pricePaid,
       fragmentsRefunded: (previous?.fragmentsRefunded || 0) + totalRefund,
       lastPackEconomy: {
@@ -1580,7 +1575,7 @@ export default function PortalScreen({
       nextCollection = {
         ...nextCollection,
         freeBoosterCredits: {
-          ...(nextCollection.freeBoosterCredits || {}),
+          ...nextCollection.freeBoosterCredits,
           [setDefinition.id]: (Number(nextCollection.freeBoosterCredits?.[setDefinition.id]) || 0)
             + Math.max(1, Number(rewardDescriptor.amount) || 1)
         }

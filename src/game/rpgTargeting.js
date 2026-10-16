@@ -1,5 +1,6 @@
 // RPG targeting is intentionally pure: preview, manual confirmation and AI all
 // resolve the same identities, without spending resources or choosing at random.
+import { getRpgCleansableStatuses, getRpgReviveHp } from './rpgSupport.js';
 import { previewBattleItemDamage } from './battleItemShield.js';
 import { getEffectiveCombatDefense } from './combatStatPreparation.js';
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -13,6 +14,7 @@ export function getRpgActionProfile(actor, abilityType, side = 'player', arena =
     secondary: { name: 'Strong attack', type: 'bullet', dmg: 1.45, cd: 3 },
     special: { name: 'Special', type: 'group', dmg: 1.15, targeting: { shape: 'group' } }
   };
+  if (!['simple', 'secondary', 'special', 'defense'].includes(abilityType)) return null;
   const action = actor?.[abilityType] || (side === 'enemy' ? enemyFallbacks[abilityType] : null);
   if (!action) return null;
   const explicit = Object.assign({},
@@ -85,19 +87,21 @@ export function getRpgEligibleTargets({ actor, profile, allies, opponents }) {
   if (!actor || !profile) return [];
   const candidates = profile.targetSide === 'self' ? [actor] : profile.targetSide === 'ally' ? allies : opponents;
   return candidates.filter(unit => {
-    if (profile.effect === 'revive') return unit.currentHp <= 0;
+    if (!unit || !Number.isFinite(unit.currentHp) || !Number.isFinite(unit.maxHp) || unit.maxHp <= 0) return false;
+    if (profile.effect === 'revive') return getRpgReviveHp(unit, profile.reviveRatio) > 0;
     if (unit.currentHp <= 0 || unit.state === 'dead') return false;
     if (profile.effect === 'heal') {
       const cap = unit.statusEffects?.radiated > 0 ? unit.maxHp * 0.5 : unit.maxHp;
-      if (unit.currentHp >= cap) return false;
+      if (unit.currentHp >= cap && !getRpgCleansableStatuses(unit, profile.cleanses).length) return false;
     }
-    if (profile.effect === 'cleanse' && !Object.values(unit.statusEffects || {}).some(duration => duration > 0)) return false;
+    if (profile.effect === 'cleanse' && !getRpgCleansableStatuses(unit, profile.cleanses).length) return false;
     return true;
   }).filter(unit => Math.hypot(unit.x - actor.x, unit.y - actor.y) <= profile.range + 0.001);
 }
 
 export function resolveRpgTargets({ actor, profile, eligibleTargets, selectedTargetIds = [] }) {
   if (!profile || !actor) return { valid: false, reason: 'unavailable', targets: [] };
+  if (!Array.isArray(selectedTargetIds)) return { valid: false, reason: 'invalid-selection', targets: [] };
   const ids = [...new Set(selectedTargetIds)];
   const selected = ids.map(id => eligibleTargets.find(unit => rpgUnitId(unit) === id));
   if (selected.some(unit => !unit)) return { valid: false, reason: 'ineligible-target', targets: [] };
