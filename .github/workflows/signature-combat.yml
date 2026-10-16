@@ -1,0 +1,57 @@
+name: Signature combat
+on:
+  pull_request:
+  push:
+    branches: [master, codex/audit-corrections-2026-10-16]
+permissions:
+  contents: read
+concurrency:
+  group: signature-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  signatures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            **/*.json
+            **/*.jsonl
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Signature contracts and complete coverage inventory
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/signature-evidence
+          node --test scripts/signatureCombat.test.mjs | tee /tmp/signature-evidence/tests.log
+          node scripts/signatureCoverage.mjs /tmp/signature-evidence/coverage.json | tee /tmp/signature-evidence/coverage.log
+          npx oxlint src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx | tee /tmp/signature-evidence/lint.log
+          npx vite build | tee /tmp/signature-evidence/build.log
+      - name: Chromium fixtures, no real accounts
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/signature-playwright
+          /tmp/signature-playwright/bin/pip install playwright==1.57.0
+          /tmp/signature-playwright/bin/python -m playwright install --with-deps chromium
+          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/signature-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/browser /tmp/signature-playwright/bin/python scripts/browserSignatureCombat.py | tee /tmp/signature-evidence/browser.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: signature-${{ github.sha }}
+          path: /tmp/signature-evidence/
+          retention-days: 7
