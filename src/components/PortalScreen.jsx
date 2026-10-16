@@ -1368,7 +1368,7 @@ export default function PortalScreen({
       packsOpened: (previous?.packsOpened || 0) + 1,
       duplicateStreak: hasNewHero
         ? 0
-        : (previous?.duplicateStreak || 0) + Math.max(1, duplicateHeroes),
+        : (previous?.duplicateStreak || 0) + duplicateHeroes,
       fragmentsSpent: (previous?.fragmentsSpent || 0) + pricePaid,
       fragmentsRefunded: (previous?.fragmentsRefunded || 0) + totalRefund,
       lastPackEconomy: {
