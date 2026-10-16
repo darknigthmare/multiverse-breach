@@ -69,11 +69,12 @@ jobs:
           assert hashlib.sha256(delta).hexdigest()=='5497989477642a9a624ae62af6f9b1a0a5021446abb9971cf8a44d3ff2cfb2cc'
           apply(delta,'reviewed-integration.patch')
           apply(blob('d7ac0747a5f5e378679e4e58966fbbf18403c850'),'reviewed-ap-fixtures.patch')
+          apply(blob('3fe19d596ae78db13fc73aa247bdceb24ec4296a'),'reviewed-render-regression.patch')
           allowed=['.github/workflows/audit-reliability.yml','docs/audits/tactics-integration-2026-10-16.md','docs/audits/tactics-reliability-2026-10-16.md','package.json','scripts/auditTacticsLifecycle.test.mjs','scripts/auditTacticsReliability.test.mjs','scripts/auditTacticsSupport.test.mjs','scripts/browserTacticsReliability.py','scripts/customBattle.test.mjs','scripts/fixtures/rpgLifecycleHarness.jsx','scripts/fixtures/tactics-lifecycle.html','scripts/fixtures/tacticsLifecycleHarness.jsx','src/components/GameCanvas.jsx','src/components/TacticsSupportPanel.jsx','src/game/engineTactics.js','src/game/tacticsSupport.js']
           subprocess.run(['git','add','--',*allowed],check=True)
           assert sorted(subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines())==sorted(allowed)
           files={p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest() for p in allowed}
-          assert hashlib.sha256(json.dumps(files,sort_keys=True).encode()).hexdigest()=='e403f9c788f4b97aa88aa6a2577563bb72e982bdda922f9839937a362dda2379'
+          assert hashlib.sha256(json.dumps(files,sort_keys=True).encode()).hexdigest()=='4a7c50d8228f59cd81d5f8cb6a20fbc32bcd91b8018f0cccfd24d65847d7af4c'
           (evidence/'allowed.json').write_text(json.dumps(allowed));(evidence/'files.json').write_text(json.dumps(files,sort_keys=True))
           print('16 reviewed files match the locally tested source hashes; no branch ref updated.')
           PY
