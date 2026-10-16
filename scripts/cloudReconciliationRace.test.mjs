@@ -3,8 +3,11 @@ import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { createLocalSaveGuard } from '../src/game/localSaveGuard.js';
 import { CLOUD_SAVE_CONFLICT_ACTIONS, resolveCloudSaveConflict } from '../src/game/cloudSaveConflictPolicy.js';
-import { CloudSaveConflictError } from '../src/game/cloudSave.js';
+import { CloudSaveConflictError, isCloudOperationCancelled } from '../src/game/cloudSave.js';
 import { PLAYER_HERO_ID } from '../src/game/playerHero.js';
+
+import { createCloudOperationEpoch } from '../src/game/cloudOperationEpoch.js';
+import { backupLocalSave } from '../src/game/saveRecovery.js';
 
 const appSource = readFileSync(new URL('../src/App.jsx', import.meta.url), 'utf8');
 const extractDeclaration = (name, nextName) => {
@@ -63,6 +66,10 @@ const createHarness = (initialPayload = emptySave(), { confirmation = false } = 
     lang: 'fr',
     PLAYER_HERO_ID,
     DEFAULT_SAVE: emptySave(),
+    SAVE_KEY: saveKey,
+    cloudEpochRef: { current: createCloudOperationEpoch() },
+    isCloudOperationCancelled,
+    backupLocalSave: key => backupLocalSave(key, storage),
     localSaveGuardRef: guardedRef,
     cloudSaveTimerRef: { current: null },
     cloudUpdatedAtRef: { current: null },
@@ -240,4 +247,37 @@ test('missing guard cannot authorize even an explicit application', () => {
   assert.throws(() => harness.applySave(meaningfulSave(), { acceptExternalChange: true }), /persistence-failed/);
   assert.equal(harness.state.setLocalSaveIssue, 'persistence-failed');
   assertNoSaveApplied(harness);
+});
+
+for (const transition of ['new-trace', 'sign-out', 'import', 'other-account']) {
+  test(`a delayed cloud restoration is ignored after ${transition}`, async () => {
+    const harness = createHarness();
+    const pending = harness.reconcileCloudSave({ access_token: 'test-only' });
+    harness.refs.cloudEpochRef.current.invalidate();
+    harness.pendingCloud.resolve(cloudRow(meaningfulSave(999)));
+    const result = await pending;
+    assert.equal(result.status, 'cancelled');
+    assert.equal(harness.calls.confirm, 0);
+    assert.equal(harness.storage.writes, 0);
+    assert.equal(harness.calls.uploads.length, 0);
+    assertNoSaveApplied(harness);
+    assert.notEqual(harness.state.setCloudSyncState, 'ready');
+  });
+}
+
+test('a delayed network error cannot suspend a replacement session', async () => {
+  const harness = createHarness();
+  const pending = harness.reconcileCloudSave({ access_token: 'test-only' });
+  harness.refs.cloudEpochRef.current.invalidate();
+  harness.pendingCloud.reject(new Error('old-session-network-error'));
+  assert.equal((await pending).status, 'cancelled');
+  assert.notEqual(harness.state.setCloudSyncState, 'suspended');
+  assertNoSaveApplied(harness);
+});
+
+test('authorized cloud adoption backs up the exact replaced local save', () => {
+  const harness = createHarness(meaningfulSave(123));
+  const previous = harness.raw();
+  harness.applySave(meaningfulSave(999), { acceptExternalChange: true });
+  assert.equal(harness.storage.getItem(`${saveKey}_backup_v1`), previous);
 });

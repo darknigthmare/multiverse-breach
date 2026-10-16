@@ -11,6 +11,7 @@ export default function AuthPanel({
   onSaveCloud,
   onToggleLanguage,
   onExportSave,
+  onExportBackup,
   onImportSave,
   onResetSave,
   variant = 'floating'
@@ -29,11 +30,11 @@ export default function AuthPanel({
     guest: lang === 'fr' ? 'LOCALE' : 'LOCAL',
     email: 'Email',
     password: lang === 'fr' ? 'Mot de passe' : 'Password',
-    signIn: lang === 'fr' ? 'Ancrer' : 'Anchor',
-    signUp: lang === 'fr' ? 'Creer la signature' : 'Create signature',
-    signOut: lang === 'fr' ? 'Detacher' : 'Detach',
-    load: lang === 'fr' ? 'Lire le cloud' : 'Read cloud',
-    save: lang === 'fr' ? 'Graver le cloud' : 'Engrave cloud'
+    signIn: lang === 'fr' ? 'Se connecter' : 'Sign in',
+    signUp: lang === 'fr' ? 'Creer un compte' : 'Create account',
+    signOut: lang === 'fr' ? 'Se deconnecter' : 'Sign out',
+    load: lang === 'fr' ? 'Charger le cloud' : 'Load cloud',
+    save: lang === 'fr' ? 'Sauvegarder' : 'Save to cloud'
   };
 
   const run = async (fn) => {
@@ -165,10 +166,14 @@ export default function AuthPanel({
             </>
           )}
 
-          {!embedded && (onExportSave || onImportSave || onResetSave) && (
+          {!embedded && (onExportSave || onExportBackup || onImportSave || onResetSave) && (
             <details className="auth-save-tools">
               <summary>{lang === 'fr' ? 'OUTILS DE TRACE LOCALE' : 'LOCAL TRACE TOOLS'}</summary>
               <div className="auth-save-grid">
+                {onExportBackup && <button type="button" onClick={onExportBackup} className="btn-retro"
+                  title={lang === 'fr' ? 'Exporte la copie conservee avant migration, import ou nouvelle partie.' : 'Export the copy preserved before migration, import or starting over.'}>
+                  {lang === 'fr' ? 'COPIE DE SECOURS' : 'BACKUP COPY'}
+                </button>}
                 <button
                   type="button"
                   onClick={onExportSave}

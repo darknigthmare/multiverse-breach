@@ -206,7 +206,8 @@ test('dedicated custom runtime freezes input and hides its direct setup exit', (
   assert.match(customBattleModeSource, /sessionPaused=\{sessionPaused\}/);
   assert.match(customBattleModeSource, /dedicatedSession=\{dedicatedSession\}/);
   assert.match(engineRpgSource, /if \(this\.paused \|\| this\.isTargetingPaused\?\.\(\)\) \{[\s\S]*runWhenResumed\(\)/);
-  assert.match(engineTacticsSource, /if \(this\.paused \|\| \(this\.activeUnit\?\.currentHp > 0 && this\.activeUnit\.state === 'hit' && this\.activeUnit\.stateTimer > 0\)\) \{[\s\S]*runWhenResumed\(\)/);
+  assert.match(engineTacticsSource, /advanceScheduledActions\(\)[\s\S]*this\.disposed \|\| this\.paused \|\| this\.gameOver/);
+  assert.match(engineTacticsSource, /this\.activeUnit\?\.currentHp > 0 && this\.activeUnit\.state === 'hit'/);
   assert.match(indexCssSource, /@media \(max-width: 900px\) \{[\s\S]*\.hub-screen\.is-dedicated-game \.mosaic-rpg-panel \{[\s\S]*grid-template-columns: 1fr/);
 });
 
@@ -225,7 +226,12 @@ test('RPG and Tactics scheduled actions wait until the dedicated pause resumes',
     await new Promise(resolve => setTimeout(resolve, 40));
     assert.equal(callbackRan, false);
 
+    if (EngineClass === tacticsModule.EngineTactics) {
+      EngineClass.prototype.advanceScheduledActions.call(schedulerHost);
+      assert.equal(callbackRan, false, 'simulation callback ran during pause');
+    }
     EngineClass.prototype.setPaused.call(schedulerHost, false);
+    if (EngineClass === tacticsModule.EngineTactics) EngineClass.prototype.advanceScheduledActions.call(schedulerHost);
     await new Promise(resolve => setTimeout(resolve, 80));
     assert.equal(callbackRan, true);
     schedulerHost.timers.forEach(timer => clearTimeout(timer));

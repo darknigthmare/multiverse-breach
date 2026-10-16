@@ -239,7 +239,9 @@ test('real scheduled REX damage waits through pause and cannot resolve twice', a
   await new Promise(resolve => setTimeout(resolve, 460));
   assert.equal(hero.currentHp, before); assert.equal(e.attackCount, 0);
   engine.paused = false;
-  await new Promise(resolve => setTimeout(resolve, 120));
+  for (let tick = 0; tick < 23; tick++) engine.advanceScheduledActions();
+  assert.equal(hero.currentHp, before, 'remaining simulated delay was not preserved');
+  engine.advanceScheduledActions();
   assert.ok(hero.currentHp < before); assert.equal(e.attackCount, 1);
   assert.equal(engine.runRexEnemyAI(), false, 'resolved committed turn is not another attack');
 });

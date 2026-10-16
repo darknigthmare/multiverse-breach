@@ -1,5 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo, Suspense } from 'react';
 import sound from './game/soundEngine';
+import { getProgressKeys, rollProgressCalendar, getNextProgressRolloverDelay } from './game/progressCalendar.js';
+import { sanitizeSaveCore } from './game/saveValidation.js';
+import { getBrowserStorage, readStorageValue, removeStorageValue } from './game/safeStorage.js';
+import { backupLocalSave, readLocalSaveSnapshot, getSaveBackupKey } from './game/saveRecovery.js';
+import { createCloudOperationEpoch } from './game/cloudOperationEpoch.js';
 import AudioControl from './components/AudioControl';
 import NetworkStatusBadge from './components/NetworkStatusBadge';
 import AuthPanel from './components/AuthPanel';
@@ -9,6 +14,10 @@ import { getOpenAiBackdropSrc } from './game/renderer';
 import { resolveActiveHudTheme } from './game/cosmeticVisualAssets';
 import {
   CloudSaveConflictError,
+  invalidateCloudRequests,
+  isCloudOperationCancelled,
+  refreshAccountSession,
+  subscribeSession,
   createCloudSave,
   getStoredSession,
   loadCloudSave,
@@ -74,8 +83,7 @@ import { getTacticsEscortBriefing } from './game/tacticsEscort';
 import {
   buildTitleRotationRoster,
   buildUnlockedAttractCards,
-  buildUnlockedAttractStages,
-  getLocalDayKey
+  buildUnlockedAttractStages
 } from './game/titlePresentation';
 import {
   normalizeStageEventIntensity,
@@ -283,33 +291,25 @@ const DEFAULT_SAVE = {
 };
 
 const loadSave = () => {
-  if (typeof window === 'undefined') return DEFAULT_SAVE;
-  try {
-    const raw = window.localStorage.getItem(SAVE_KEY);
-    const legacyCareerRaw = window.localStorage.getItem(LEGACY_KART_CAREER_KEY);
-    if (!raw && !legacyCareerRaw) return DEFAULT_SAVE;
-    const parsed = raw ? JSON.parse(raw) : {};
-    let legacyCareer = null;
-    if (legacyCareerRaw) {
-      try {
-        legacyCareer = JSON.parse(legacyCareerRaw);
-      } catch {
-        legacyCareer = null;
-      }
-    }
+  const storage = getBrowserStorage();
+  const legacyRaw = readStorageValue(LEGACY_KART_CAREER_KEY, storage);
+  let legacyCareer = null;
+  try { legacyCareer = legacyRaw.value ? JSON.parse(legacyRaw.value) : null; } catch { /* Preserve a corrupt legacy file. */ }
+  const defaults = legacyCareer
+    ? normalizeSavePayload(migrateLegacyKartCareer(DEFAULT_SAVE, legacyCareer))
+    : DEFAULT_SAVE;
+  return readLocalSaveSnapshot(SAVE_KEY, parsed => {
     const migrated = migrateLegacyKartCareer(parsed, legacyCareer);
-    return normalizeSavePayload(migrated, { existing: Boolean(raw) });
-  } catch {
-    return DEFAULT_SAVE;
-  }
+    return normalizeSavePayload(migrated, { existing: true });
+  }, defaults, storage);
 };
 
 const saveGame = (payload, guard) => {
   if (typeof window === 'undefined') return { saved: false, reason: 'persistence-failed' };
   const result = guard.write(payload);
   if (!result.saved) return result;
-  if (payload?.portalCollection?.raceCareer) {
-    try { window.localStorage.removeItem(LEGACY_KART_CAREER_KEY); } catch { /* The full v9 save already contains this career. */ }
+  if (payload?.portalCollection?.raceCareer && backupLocalSave(LEGACY_KART_CAREER_KEY).ok) {
+    removeStorageValue(LEGACY_KART_CAREER_KEY);
   }
   return result;
 };
@@ -374,6 +374,9 @@ const normalizeStoredCustomBattlePreset = (preset = {}) => {
 };
 
 const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
+  save = sanitizeSaveCore(save, {
+    defaults: DEFAULT_SAVE, knownHeroIds: HEROES_DB.map(hero => hero.id), playerHeroId: PLAYER_HERO_ID
+  });
   const fromVersion = Number(save.saveVersion) || 0;
   const merged = { ...DEFAULT_SAVE, ...save };
   const onboarding = save.onboarding
@@ -593,13 +596,6 @@ const normalizeSavePayload = (save = {}, { existing = false } = {}) => {
     withCardCollection,
     fromVersion < 9 ? ARC_REPLAY_DEFINITIONS : []
   );
-};
-
-const getProgressKeys = (date = new Date()) => {
-  const dayKey = date.toISOString().slice(0, 10);
-  const startOfYear = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
-  const weekNumber = Math.ceil((((date - startOfYear) / 86400000) + startOfYear.getUTCDay() + 1) / 7);
-  return { dayKey, weekKey: `${date.getUTCFullYear()}-W${weekNumber}` };
 };
 
 const getNextLoginStreak = (lastSeenDay, dayKey, currentStreak = 0) => {
@@ -1242,19 +1238,28 @@ class HubErrorBoundary extends React.Component {
 }
 
 function App() {
-  const [initialSave] = useState(loadSave);
+  const [initialLoad] = useState(loadSave);
+  const initialSave = initialLoad.payload;
   const localSaveGuardRef = useRef(null);
   if (!localSaveGuardRef.current && typeof window !== 'undefined') {
     let storage;
     try { storage = window.localStorage; } catch { /* The guard reports denied persistence without crashing the screen. */ }
     localSaveGuardRef.current = createLocalSaveGuard(storage, SAVE_KEY);
+    if (['invalid-save', 'backup-failed'].includes(initialLoad.issue)) localSaveGuardRef.current.block(initialLoad.issue);
   }
-  const [localSaveIssue, setLocalSaveIssue] = useState(null);
+  const [localSaveIssue, setLocalSaveIssue] = useState(initialLoad.issue);
   const rotationTransactionRef = useRef(false);
   const getCurrentSaveRef = useRef(null);
   const cloudSaveTimerRef = useRef(null);
   const skipNextCloudSaveRef = useRef(false);
   const cloudUpdatedAtRef = useRef(null);
+  const cloudEpochRef = useRef(createCloudOperationEpoch());
+  const cloudAutosaveInFlightRef = useRef(null);
+  const invalidateCloudOperations = useCallback(() => {
+    cloudEpochRef.current.invalidate();
+    invalidateCloudRequests();
+    window.clearTimeout(cloudSaveTimerRef.current);
+  }, []);
   const [lang, setLang] = useState(initialSave.lang); // FR default as requested, EN toggle
   const [currentScreen, setCurrentScreen] = useState('title');
   const [portalMode, setPortalMode] = useState('store');
@@ -1263,7 +1268,7 @@ function App() {
   const [isOnline, setIsOnline] = useState(() => (
     typeof navigator === 'undefined' ? true : navigator.onLine
   ));
-  const [titleDayKey, setTitleDayKey] = useState(() => getLocalDayKey());
+  const [titleDayKey, setTitleDayKey] = useState(() => getProgressKeys().dayKey);
   const [gold, setGold] = useState(initialSave.gold);
   const [breachShards, setBreachShards] = useState(initialSave.breachShards);
   const [eventTokens, setEventTokens] = useState(initialSave.eventTokens);
@@ -1295,6 +1300,8 @@ function App() {
   // Equipped Event Items (1 slot per hero)
   const [equippedEventItems, setEquippedEventItems] = useState(initialSave.equippedEventItems);
   const [account, setAccount] = useState(() => getStoredSession());
+  const accountRef = useRef(account);
+  accountRef.current = account;
   const [cloudSyncState, setCloudSyncState] = useState(() => (
     getStoredSession() ? 'unreconciled' : 'detached'
   ));
@@ -1459,8 +1466,9 @@ function App() {
 
   useEffect(() => {
     let cancelled = false;
+    const isCurrent = cloudEpochRef.current.capture();
     const persistAndScheduleCloud = () => {
-      if (cancelled) return;
+      if (cancelled || !isCurrent()) return;
       const payload = getCurrentSaveRef.current();
       if (!persistLocalSave(payload).saved) return;
 
@@ -1472,13 +1480,33 @@ function App() {
 
       window.clearTimeout(cloudSaveTimerRef.current);
       cloudSaveTimerRef.current = window.setTimeout(async () => {
+        if (!isCurrent()) return;
+        if (cloudAutosaveInFlightRef.current?.isCurrent()) {
+          cloudAutosaveInFlightRef.current.queued = true;
+          return;
+        }
+        const job = { isCurrent, queued: false };
+        cloudAutosaveInFlightRef.current = job;
         try {
-          const row = await updateCloudSave(account, payload, cloudUpdatedAtRef.current);
-          cloudUpdatedAtRef.current = row.updated_at;
-          setCloudStatus(lang === 'fr' ? 'Trace Nexus synchronisee dans le cloud.' : 'Nexus trace synced to cloud.');
+          do {
+            job.queued = false;
+            const localStatus = localSaveGuardRef.current?.check();
+            if (!localStatus?.ok) {
+              setLocalSaveIssue(localStatus?.reason || 'persistence-failed');
+              return;
+            }
+            const latestPayload = getCurrentSaveRef.current();
+            const row = await updateCloudSave(account, latestPayload, cloudUpdatedAtRef.current);
+            if (!isCurrent()) return;
+            cloudUpdatedAtRef.current = row.updated_at;
+            setCloudStatus(lang === 'fr' ? 'Trace Nexus synchronisee dans le cloud.' : 'Nexus trace synced to cloud.');
+          } while (job.queued && isCurrent());
         } catch (err) {
+          if (!isCurrent() || isCloudOperationCancelled(err)) return;
           setCloudSyncState(err instanceof CloudSaveConflictError ? 'conflict' : 'suspended');
           setCloudStatus(`${lang === 'fr' ? 'Synchronisation Nexus impossible' : 'Nexus sync failed'}: ${err.message}`);
+        } finally {
+          if (cloudAutosaveInFlightRef.current === job) cloudAutosaveInFlightRef.current = null;
         }
       }, 1200);
     };
@@ -1493,15 +1521,54 @@ function App() {
     const checkExternalSave = event => {
       if (event.key !== SAVE_KEY && event.key !== null) return;
       const result = localSaveGuardRef.current.check();
-      if (!result.ok) { setLocalSaveIssue(result.reason); window.clearTimeout(cloudSaveTimerRef.current); }
+      if (!result.ok) {
+        invalidateCloudOperations();
+        setLocalSaveIssue(result.reason);
+        setCloudSyncState('suspended');
+      }
     };
     window.addEventListener('storage', checkExternalSave);
     return () => window.removeEventListener('storage', checkExternalSave);
-  }, []);
+  }, [invalidateCloudOperations]);
 
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  useEffect(() => subscribeSession((session, detail) => {
+    if (detail.reason === 'token-refresh' || detail.reason === 'external-session') {
+      if (accountRef.current?.user?.id !== session?.user?.id) {
+        invalidateCloudOperations();
+        cloudUpdatedAtRef.current = null;
+        setCloudSyncState(session ? 'unreconciled' : 'detached');
+      }
+      setAccount(session);
+    }
+    if (!detail.ok) setCloudStatus(lang === 'fr'
+      ? 'Session conservee en memoire seulement. Reconnexion necessaire apres fermeture.'
+      : 'Session kept in memory only. Sign in again after closing this window.');
+  }), [invalidateCloudOperations, lang]);
+
+  useEffect(() => {
+    if (!account?.access_token || !isOnline) return undefined;
+    let cancelled = false;
+    const isCurrent = cloudEpochRef.current.capture();
+    const renew = async () => {
+      if (cancelled || !isCurrent() || document.hidden) return;
+      try { await refreshAccountSession(account); }
+      catch (error) {
+        if (cancelled || !isCurrent() || isCloudOperationCancelled(error)) return;
+        setCloudSyncState('suspended');
+        setCloudStatus(`${lang === 'fr' ? 'Session cloud suspendue; Trace locale conservee' : 'Cloud session paused; local Trace preserved'}: ${error.message}`);
+      }
+    };
+    void renew();
+    const timer = window.setInterval(renew, 30000);
+    document.addEventListener('visibilitychange', renew);
+    return () => { cancelled = true; window.clearInterval(timer); document.removeEventListener('visibilitychange', renew); };
+  }, [account, isOnline, lang]);
+
+  useEffect(() => () => invalidateCloudOperations(), [invalidateCloudOperations]);
 
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -1523,10 +1590,8 @@ function App() {
     let dayTimer = null;
     const scheduleNextLocalDay = () => {
       const now = new Date();
-      setTitleDayKey(getLocalDayKey(now));
-      const nextDay = new Date(now);
-      nextDay.setHours(24, 0, 1, 0);
-      dayTimer = window.setTimeout(scheduleNextLocalDay, Math.max(1000, nextDay.getTime() - now.getTime()));
+      setTitleDayKey(getProgressKeys(now).dayKey);
+      dayTimer = window.setTimeout(scheduleNextLocalDay, getNextProgressRolloverDelay(now));
     };
     scheduleNextLocalDay();
     return () => window.clearTimeout(dayTimer);
@@ -1553,17 +1618,9 @@ function App() {
         && prev.activeSpecialEventId === scheduledEventId
       ) return prev;
       return {
-        ...prev,
+        ...rollProgressCalendar(prev, { dayKey, weekKey }),
         dayKey,
         weekKey,
-        claimedDaily: prev.dayKey === dayKey ? (prev.claimedDaily || []) : [],
-        claimedWeekly: prev.weekKey === weekKey ? (prev.claimedWeekly || []) : [],
-        itemActivations: prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0,
-        weeklyItemActivations: prev.weekKey === weekKey ? (prev.weeklyItemActivations || 0) : 0,
-        dailyWins: prev.dayKey === dayKey ? (prev.dailyWins || 0) : 0,
-        weeklyWins: prev.weekKey === weekKey ? (prev.weeklyWins || 0) : 0,
-        dailyModeWins: prev.dayKey === dayKey ? (prev.dailyModeWins || {}) : {},
-        weeklyModeWins: prev.weekKey === weekKey ? (prev.weeklyModeWins || {}) : {},
         loginStreak: getNextLoginStreak(prev.lastSeenDay, dayKey, prev.loginStreak),
         lastSeenDay: dayKey,
         activeSpecialEventId: scheduledEventId
@@ -1825,7 +1882,7 @@ function App() {
         + (activeStage.isSurvival ? 15 : 0)
         + (activeStage.finalGameBoss ? 100 : 0);
       setActivityProgress(prev => ({
-        ...prev,
+        ...rollProgressCalendar(prev, { dayKey, weekKey }),
         dayKey,
         weekKey,
         itemActivations: (prev.dayKey === dayKey ? (prev.itemActivations || 0) : 0) + battleItemsUsed,
@@ -1916,7 +1973,7 @@ function App() {
 
       const { dayKey, weekKey } = getProgressKeys();
       setActivityProgress(prev => ({
-        ...prev,
+        ...rollProgressCalendar(prev, { dayKey, weekKey }),
         dayKey,
         weekKey,
         defeatIntel: {
@@ -2042,19 +2099,24 @@ function App() {
     setAudioSettings(sound.getSettings());
   };
 
-  const applySave = (save, { existing = true, navigateTo = 'hub', acceptExternalChange = false } = {}) => {
+  const applySave = (save, { existing = true, navigateTo = 'hub', acceptExternalChange = false, allowVolatile = false } = {}) => {
     const merged = normalizeSavePayload(save, { existing });
+    if (acceptExternalChange && !allowVolatile) {
+      const backup = backupLocalSave(SAVE_KEY);
+      if (!backup.ok) { setLocalSaveIssue('backup-failed'); throw new Error('backup-failed'); }
+    }
     // Automatic cloud restoration must never adopt another tab's newer trace.
     // Only an explicit import, reset or confirmed cloud choice can rebase it.
     const localStatus = acceptExternalChange
       ? localSaveGuardRef.current?.rebase()
       : localSaveGuardRef.current?.check();
-    if (!localStatus?.ok) {
+    if (!localStatus?.ok && !(allowVolatile && localStatus?.reason === 'persistence-failed')) {
       window.clearTimeout(cloudSaveTimerRef.current);
       setLocalSaveIssue(localStatus?.reason || 'persistence-failed');
       throw new Error(localStatus?.reason || 'persistence-failed');
     }
-    setLocalSaveIssue(null);
+    setLocalSaveIssue(localStatus?.ok ? null : 'persistence-failed');
+    getCurrentSaveRef.current = () => merged;
     setLang(merged.lang);
     setGold(merged.gold);
     setBreachShards(merged.breachShards);
@@ -2097,13 +2159,22 @@ function App() {
     }
   };
 
+  const exportPreservedSave = () => {
+    const key = ['invalid-save', 'backup-failed', 'save-conflict'].includes(localSaveIssue) ? SAVE_KEY : getSaveBackupKey(SAVE_KEY);
+    const result = readStorageValue(key);
+    if (result.ok && result.value) window.prompt(lang === 'fr' ? 'Copie de secours conservee :' : 'Preserved backup:', result.value);
+    else window.alert(lang === 'fr' ? 'Aucune copie de secours accessible.' : 'No accessible backup.');
+  };
+
   const importSave = () => {
     const raw = window.prompt(lang === 'fr' ? 'Colle ta trace Nexus exportee :' : 'Paste exported Nexus trace:');
     if (!raw) return;
     try {
-      window.clearTimeout(cloudSaveTimerRef.current);
+      const imported = JSON.parse(raw);
+      normalizeSavePayload(imported, { existing: true });
+      invalidateCloudOperations();
       if (account) setCloudSyncState('conflict');
-      applySave(JSON.parse(raw), { existing: true, navigateTo: 'hub', acceptExternalChange: true });
+      applySave(imported, { existing: true, navigateTo: 'hub', acceptExternalChange: true });
       if (account) {
         setCloudStatus(lang === 'fr'
           ? 'Trace importee localement. Archive cloud preservee jusqu a un choix explicite.'
@@ -2115,14 +2186,27 @@ function App() {
     }
   };
 
+  const prepareLocalReset = () => {
+    for (const key of [SAVE_KEY, LEGACY_KART_CAREER_KEY]) {
+      const previous = readStorageValue(key);
+      if (previous.ok && previous.value !== null && !backupLocalSave(key).ok) {
+        setLocalSaveIssue('backup-failed');
+        return false;
+      }
+    }
+    invalidateCloudOperations();
+    const removed = removeStorageValue(SAVE_KEY);
+    const legacyRemoved = removeStorageValue(LEGACY_KART_CAREER_KEY);
+    if (!removed.ok || !legacyRemoved.ok) setLocalSaveIssue('persistence-failed');
+    return true;
+  };
+
   const resetSave = () => {
     if (!window.confirm(lang === 'fr' ? 'Purger completement la trace Nexus ?' : 'Fully purge Nexus trace?')) return;
-    window.clearTimeout(cloudSaveTimerRef.current);
-    window.localStorage.removeItem(SAVE_KEY);
-    window.localStorage.removeItem(LEGACY_KART_CAREER_KEY);
+    if (!prepareLocalReset()) return;
     setCloudSyncState(account ? 'conflict' : 'detached');
     cloudUpdatedAtRef.current = null;
-    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'title', acceptExternalChange: true });
+    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'title', acceptExternalChange: true, allowVolatile: true });
     setCloudStatus(account
       ? (lang === 'fr' ? 'Trace locale purgee. Archive cloud preservee.' : 'Local trace purged. Cloud archive preserved.')
       : (lang === 'fr' ? 'Trace locale purgee.' : 'Local trace purged.'));
@@ -2130,12 +2214,15 @@ function App() {
   };
 
   const reconcileCloudSave = async session => {
+    const isCurrent = cloudEpochRef.current.capture();
+    const cancelledResult = { status: 'cancelled', merged: null, row: null };
     window.clearTimeout(cloudSaveTimerRef.current);
     setCloudSyncState('reconciling');
     setCloudStatus(lang === 'fr' ? 'Comparaison des Traces locale et cloud...' : 'Comparing local and cloud Traces...');
 
     try {
       const row = await loadCloudSave(session);
+      if (!isCurrent()) return cancelledResult;
       const localStatus = localSaveGuardRef.current?.check();
       if (!localStatus?.ok) {
         setLocalSaveIssue(localStatus?.reason || 'persistence-failed');
@@ -2163,6 +2250,7 @@ function App() {
 
       if (resolution.action === CLOUD_SAVE_CONFLICT_ACTIONS.UPLOAD_LOCAL) {
         const createdRow = await createCloudSave(session, localPayload);
+        if (!isCurrent()) return cancelledResult;
         cloudUpdatedAtRef.current = createdRow.updated_at;
         skipNextCloudSaveRef.current = true;
         setCloudSyncState('ready');
@@ -2197,6 +2285,7 @@ function App() {
       setCloudStatus(lang === 'fr' ? 'Choix confirme: archive cloud chargee.' : 'Choice confirmed: cloud archive loaded.');
       return { status: 'loaded-cloud', merged, row };
     } catch (err) {
+      if (!isCurrent() || isCloudOperationCancelled(err)) return cancelledResult;
       setCloudSyncState(err instanceof CloudSaveConflictError ? 'conflict' : 'suspended');
       setCloudStatus(`${lang === 'fr' ? 'Reconciliation cloud suspendue' : 'Cloud reconciliation suspended'}: ${err.message}`);
       throw err;
@@ -2215,8 +2304,12 @@ function App() {
   };
 
   const handleSignIn = async (email, password) => {
+    invalidateCloudOperations();
+    const isCurrent = cloudEpochRef.current.capture();
     const session = await signInAccount(email, password);
+    if (!isCurrent()) return null;
     const reconciliation = await applyCloudSession(session, true);
+    if (!isCurrent() || reconciliation.status === 'cancelled') return null;
     if (currentScreen === 'profile') {
       const effectiveOnboarding = reconciliation.merged?.onboarding || onboarding;
       if (reconciliation.status === 'no-trace') {
@@ -2224,6 +2317,7 @@ function App() {
         const row = reconciliation.row
           ? await updateCloudSave(session, payload, reconciliation.row.updated_at)
           : await createCloudSave(session, payload);
+        if (!isCurrent()) return null;
         cloudUpdatedAtRef.current = row.updated_at;
         skipNextCloudSaveRef.current = true;
         setCloudSyncState('ready');
@@ -2236,7 +2330,10 @@ function App() {
   };
 
   const handleSignUp = async (email, password) => {
+    invalidateCloudOperations();
+    const isCurrent = cloudEpochRef.current.capture();
     const session = await signUpAccount(email, password);
+    if (!isCurrent()) return null;
     if (!session?.access_token) {
       setCloudStatus(lang === 'fr' ? 'Signature creee. Confirme ton email puis ancre-la.' : 'Signature created. Confirm your email, then anchor it.');
       if (currentScreen === 'profile') startOperation();
@@ -2246,6 +2343,7 @@ function App() {
     await applyCloudSession(session, false);
     const payload = currentScreen === 'profile' ? startOperation() : getCurrentSave();
     const row = await createCloudSave(session, payload);
+    if (!isCurrent()) return null;
     cloudUpdatedAtRef.current = row.updated_at;
     skipNextCloudSaveRef.current = true;
     setCloudSyncState('ready');
@@ -2255,6 +2353,7 @@ function App() {
   };
 
   const handleSignOut = async () => {
+    invalidateCloudOperations();
     const current = account;
     storeSession(null);
     setAccount(null);
@@ -2274,19 +2373,26 @@ function App() {
 
   const handleLoadCloud = async () => {
     if (!account) return;
+    invalidateCloudOperations();
+    const isCurrent = cloudEpochRef.current.capture();
     await reconcileCloudSave(account);
-    sound.playSfx('coin');
+    if (isCurrent()) sound.playSfx('coin');
   };
 
   const handleSaveCloud = async () => {
     if (!account) return;
-    window.clearTimeout(cloudSaveTimerRef.current);
+    invalidateCloudOperations();
+    const isCurrent = cloudEpochRef.current.capture();
     setCloudSyncState('reconciling');
     try {
-      const localPayload = getCurrentSave();
       const row = await loadCloudSave(account);
+      if (!isCurrent()) return;
+      const localStatus = localSaveGuardRef.current?.check();
+      if (!localStatus?.ok) throw new Error(localStatus?.reason || 'persistence-failed');
+      const localPayload = getCurrentSaveRef.current();
       if (!row) {
         const createdRow = await createCloudSave(account, localPayload);
+        if (!isCurrent()) return;
         cloudUpdatedAtRef.current = createdRow.updated_at;
       } else {
         const equivalent = resolveCloudSaveConflict({
@@ -2308,6 +2414,7 @@ function App() {
         const updatedRow = equivalent
           ? row
           : await updateCloudSave(account, localPayload, row.updated_at);
+        if (!isCurrent()) return;
         cloudUpdatedAtRef.current = updatedRow.updated_at;
       }
       skipNextCloudSaveRef.current = true;
@@ -2315,6 +2422,7 @@ function App() {
       setCloudStatus(lang === 'fr' ? 'Trace locale envoyee dans le cloud.' : 'Local Trace uploaded to cloud.');
       sound.playSfx('coin');
     } catch (err) {
+      if (!isCurrent() || isCloudOperationCancelled(err)) return;
       setCloudSyncState(err instanceof CloudSaveConflictError ? 'conflict' : 'suspended');
       setCloudStatus(`${lang === 'fr' ? 'Envoi cloud suspendu' : 'Cloud upload suspended'}: ${err.message}`);
       throw err;
@@ -2322,12 +2430,10 @@ function App() {
   };
 
   const startNewLocalTrace = () => {
-    window.clearTimeout(cloudSaveTimerRef.current);
-    window.localStorage.removeItem(SAVE_KEY);
-    window.localStorage.removeItem(LEGACY_KART_CAREER_KEY);
+    if (!prepareLocalReset()) return;
     setCloudSyncState(account ? 'conflict' : 'detached');
     cloudUpdatedAtRef.current = null;
-    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'profile', acceptExternalChange: true });
+    applySave({ ...DEFAULT_SAVE, lang }, { existing: false, navigateTo: 'profile', acceptExternalChange: true, allowVolatile: true });
     setCloudStatus(account
       ? (lang === 'fr' ? 'Nouvelle Trace locale. Archive cloud preservee, synchronisation suspendue.' : 'New local Trace. Cloud archive preserved, sync suspended.')
       : (lang === 'fr' ? 'Nouvelle Trace locale ouverte.' : 'New local Trace opened.'));
@@ -2335,6 +2441,7 @@ function App() {
   };
 
   const continueTrace = async () => {
+    const isCurrent = cloudEpochRef.current.capture();
     let effectiveOnboarding = onboarding;
     if (account && cloudSyncState === 'unreconciled' && isOnline) {
       try {
@@ -2344,6 +2451,7 @@ function App() {
         // A failed cloud check never blocks access to the preserved local Trace.
       }
     }
+    if (!isCurrent()) return;
     setCurrentScreen(getTraceContinuationScreen(effectiveOnboarding));
     sound.playSfx('levelup');
   };
@@ -2359,10 +2467,13 @@ function App() {
       <AudioControl lang={lang} muted={audioSettings.muted} onToggleMute={toggleMute} />
       <NetworkStatusBadge lang={lang} isOnline={isOnline} />
       {localSaveIssue && <aside role="alert" style={{ position: 'fixed', zIndex: 50000, bottom: 16, left: 16, right: 16, padding: 16, background: '#3b1717', color: '#fff0df', border: '2px solid #ffb478' }}>
-        <p>{localSaveIssue === 'save-conflict'
+        <p>{['invalid-save', 'backup-failed'].includes(localSaveIssue)
+          ? (lang === 'fr' ? 'Trace illisible ou copie de secours impossible. Le fichier original est conserve; sauvegarde automatique bloquee. Exporte la trace conservee avant de choisir un import ou une nouvelle partie.' : 'Unreadable Trace or backup unavailable. Original bytes preserved; automatic saving blocked. Export the preserved Trace before importing or starting over.')
+          : localSaveIssue === 'save-conflict'
           ? (lang === 'fr' ? 'Une autre fenêtre a modifié la Trace. Sauvegarde automatique suspendue pour ne pas écraser sa progression. Exporte tes changements de cette fenêtre avant de recharger.' : 'Another window changed the Trace. Automatic saving is paused to preserve its progress. Export this window’s changes before reloading.')
           : (lang === 'fr' ? 'Sauvegarde locale impossible. Les achats de rotation sont bloqués. Exporte ta Trace avant de quitter ou de recharger.' : 'Local saving failed. Rotation purchases are blocked. Export your Trace before leaving or reloading.')}</p>
         <button type="button" className="btn-retro" onClick={exportSave}>{lang === 'fr' ? 'Exporter cette Trace' : 'Export this Trace'}</button>
+        <button type="button" className="btn-retro" onClick={exportPreservedSave}>{lang === 'fr' ? 'Exporter la trace conservee' : 'Export preserved Trace'}</button>
         <button type="button" className="btn-retro" onClick={() => window.location.reload()}>{lang === 'fr' ? 'Recharger la sauvegarde conservée' : 'Reload preserved save'}</button>
       </aside>}
       {(currentScreen === 'hub' || (currentScreen === 'portal' && portalMode === 'store')) && (
@@ -2377,6 +2488,7 @@ function App() {
           onSaveCloud={handleSaveCloud}
           onToggleLanguage={toggleLanguage}
           onExportSave={exportSave}
+          onExportBackup={exportPreservedSave}
           onImportSave={importSave}
           onResetSave={resetSave}
         />

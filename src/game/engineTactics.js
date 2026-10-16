@@ -228,26 +228,27 @@ export class EngineTactics {
     this.syncActorsToCamera();
   }
 
+  // Callbacks use the same 60 Hz simulation ticks as statuses and movement.
+  // No wall-clock timer can resolve damage while paused, hidden or at x2 speed.
   schedule(callback, delay) {
-    if (this.disposed || this.gameOver) return null;
-    const runWhenResumed = () => {
-      if (this.disposed || this.gameOver) return;
-      if (this.paused || (this.activeUnit?.currentHp > 0 && this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0)) {
-        const retryTimer = setTimeout(() => {
-          this.timers.delete(retryTimer);
-          runWhenResumed();
-        }, 50);
-        this.timers.add(retryTimer);
-        return;
-      }
-      callback();
-    };
-    const timer = setTimeout(() => {
-      this.timers.delete(timer);
-      runWhenResumed();
-    }, delay);
+    if (this.disposed || this.gameOver || typeof callback !== 'function') return null;
+    const timer = { callback, ticks: Math.max(1, Math.ceil((Number(delay) || 0) * 60 / 1000)) };
     this.timers.add(timer);
     return timer;
+  }
+
+  advanceScheduledActions() {
+    if (this.disposed || this.paused || this.gameOver) return;
+    const due = [...this.timers];
+    for (const timer of due) {
+      if (this.disposed || this.paused || this.gameOver) break;
+      if (!this.timers.has(timer)) continue;
+      timer.ticks = Math.max(0, timer.ticks - 1);
+      if (timer.ticks > 0) continue;
+      if (this.activeUnit?.currentHp > 0 && this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0) continue;
+      this.timers.delete(timer);
+      timer.callback();
+    }
   }
 
   setPaused(paused) {
@@ -256,7 +257,6 @@ export class EngineTactics {
 
   dispose() {
     this.disposed = true;
-    this.timers.forEach(timer => clearTimeout(timer));
     this.timers.clear();
     this.turnQueue = [];
     this.activeUnit = null;
@@ -971,8 +971,8 @@ export class EngineTactics {
       this.particles.add(px, py - 18, 0, -1, '#ff5b5b', 10, 40, 'text', 'DANGER');
     }
     if (tile.type === 'heal' && this.heroes.includes(unit)) {
-      unit.currentHp = Math.min(unit.maxHp, unit.currentHp + 8);
-      this.particles.add(px, py - 18, 0, -1, '#2ecc71', 10, 40, 'text', '+HP');
+      const gained = applyCombatHealing(unit, 8);
+      if (gained > 0) this.particles.add(px, py - 18, 0, -1, '#2ecc71', 10, 40, 'text', `+${gained} HP`);
     }
     if (tile.type === 'portalSpawn' && this.heroes.includes(unit)) {
       const key = `${tile.x},${tile.y}`;
@@ -1822,7 +1822,6 @@ export class EngineTactics {
     this.gameOver = true;
     this.battleResult = result;
     this.victoryTimer = 0;
-    this.timers.forEach(timer => clearTimeout(timer));
     this.timers.clear();
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
   }
@@ -2024,13 +2023,12 @@ export class EngineTactics {
       if (ally.currentHp <= 0) return;
       const dist = Math.abs(ally.gridX - triggerX) + Math.abs(ally.gridY - triggerY);
       if (dist <= 2) {
-        const maxHp = ally.maxHp || ally.stats?.hp || ally.hp || ally.currentHp;
-        ally.currentHp = Math.min(maxHp, ally.currentHp + heal);
+        const gained = applyCombatHealing(ally, heal);
         const shield = grantBattleItemShield(ally, effect.shield);
         if (typeof ally.specialCharge === 'number') {
           ally.specialCharge = Math.min(100, ally.specialCharge + charge);
         }
-        this.tacticalItemImpact += heal + shield;
+        this.tacticalItemImpact += gained + shield;
         this.particles.add(ally.x, ally.y - 28, 0, -1, color, 10, 38, 'text', '+TACT');
       }
     });
@@ -2306,7 +2304,7 @@ export class EngineTactics {
       } else if (role === 'support') {
         const ally = this.enemies.filter(e => e.currentHp > 0 && e.currentHp < e.maxHp).sort((a, b) => a.currentHp - b.currentHp)[0];
         if (ally) {
-          ally.currentHp = Math.min(ally.maxHp, ally.currentHp + 18);
+          applyCombatHealing(ally, 18);
           this.particles.add(ally.x, ally.y - 28, 0, -1, '#2ecc71', 10, 38, 'text', 'BUFF');
         }
       }
@@ -2638,7 +2636,7 @@ export class EngineTactics {
     const applied = result?.damage || 0;
     this.damageDealt += applied;
     if (hero.talent === 'lifedrain' && applied > 0) {
-      hero.currentHp = Math.min(hero.maxHp, hero.currentHp + Math.round(applied * 0.1));
+      applyCombatHealing(hero, Math.round(applied * 0.1));
     }
     hero.state = 'attack'; hero.stateTimer = 25;
     hero.specialCharge = Math.min(100, (hero.specialCharge || 0) + 15);
@@ -2775,16 +2773,16 @@ export class EngineTactics {
     const finalDmg = absorbBattleItemDamage(defender, Math.round(baseDmg * variance));
 
     const defenderWasAlive = defender.currentHp > 0;
+    const dealtDamage = Math.min(Math.max(0, defender.currentHp), finalDmg);
     defender.currentHp = Math.max(0, defender.currentHp - finalDmg);
-    if (this.heroes.includes(attacker) && this.enemies.includes(defender)) this.damageDealt += finalDmg;
-    if (this.enemies.includes(attacker) && this.heroes.includes(defender)) this.damageTaken += finalDmg;
+    if (this.heroes.includes(attacker) && this.enemies.includes(defender)) this.damageDealt += dealtDamage;
+    if (this.enemies.includes(attacker) && this.heroes.includes(defender)) this.damageTaken += dealtDamage;
 
     // Nanite lifesteal
     if (attacker && attacker.talent === 'lifedrain' && attacker.currentHp > 0 && attacker.gridX !== undefined) {
-      const heal = Math.round(finalDmg * 0.10);
-      attacker.currentHp = Math.min(attacker.maxHp, attacker.currentHp + heal);
+      const heal = applyCombatHealing(attacker, Math.round(dealtDamage * 0.10));
       const { x: atkPxX, y: atkPxY } = this.getUnitScreenPosition(attacker.gridX, attacker.gridY);
-      this.particles.add(atkPxX, atkPxY - 20, 0, -1, '#2ecc71', 11, 40, 'text', `+${heal} HP`);
+      if (heal > 0) this.particles.add(atkPxX, atkPxY - 20, 0, -1, '#2ecc71', 11, 40, 'text', `+${heal} HP`);
     }
 
     if (defender.state !== 'defense') {
@@ -2823,6 +2821,7 @@ export class EngineTactics {
   }
 
   triggerBarrelExplosion(bgX, bgY) {
+    if (this.disposed || this.gameOver) return;
     const { x: centerPxX, y: centerPxY } = this.gridToScreen(bgX, bgY);
 
     this.particles.add(centerPxX, centerPxY, 0, 0, '#ff4500', 100, 30, 'glitch');
@@ -2835,7 +2834,7 @@ export class EngineTactics {
     ];
 
     adjacent.forEach(unit => {
-      const dist = Math.abs(unit.gridX - bgX) + Math.abs(unit.gridY - bgY);
+      const dist = Math.hypot(unit.gridX - bgX, unit.gridY - bgY);
       if (dist <= 1.5) { // orthog and diagonal
         this.applyDamage({ gridX: bgX, gridY: bgY, stats: { atk: 1 }, simple: { dmg: 1 }, primaryColor: '#00ff00' }, unit, 100, null, { ignoreCover: true });
       }
@@ -2843,8 +2842,8 @@ export class EngineTactics {
 
     // Damage other obstacles in range
     this.obstacles.forEach(o => {
-      if (o.hp > 0 && o.gridX !== bgX && o.gridY !== bgY) {
-        const dist = Math.abs(o.gridX - bgX) + Math.abs(o.gridY - bgY);
+      if (o.hp > 0 && (o.gridX !== bgX || o.gridY !== bgY)) {
+        const dist = Math.hypot(o.gridX - bgX, o.gridY - bgY);
         if (dist <= 1.5) {
           o.hp = Math.max(0, o.hp - 100);
           if (o.hp <= 0 && o.type === 'barrel') {
@@ -2854,6 +2853,7 @@ export class EngineTactics {
         }
       }
     });
+    this.updateTacticsObjective();
   }
   triggerFinalBossRandomEvent() {
     const effects = [
@@ -3131,6 +3131,7 @@ export class EngineTactics {
         }
       }
     }
+    this.advanceScheduledActions();
   }
 
   draw(ctx, animTime) {

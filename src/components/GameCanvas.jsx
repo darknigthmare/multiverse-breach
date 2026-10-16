@@ -1,3 +1,4 @@
+import { applyCombatHealing } from '../game/combatHealing.js';
 import { drawCosmeticAtlasFrame } from '../game/renderer';
 import {
   getGameCanvasCosmeticAtlas,
@@ -224,11 +225,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   meleeInputMapsRef.current = meleeInputMaps;
   
   const [activeSynergies, setActiveSynergies] = useState([]);
-  const applySkin = (hero) => {
+  // HUD updates must not rebuild the entire multi-universe roster each frame.
+  const HEROES_DB = useMemo(() => [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(hero => {
     const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
     return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
-  };
-  const HEROES_DB = [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(applySkin);
+  }), [playerProfile, heroSkins]);
   const disabledHeroSet = new Set(disabledAssets.heroes || []);
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
@@ -751,8 +752,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (!Array.isArray(actors)) return;
     actors.forEach(actor => {
       if (actor.currentHp <= 0) return;
-      const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      if (effect.heal) actor.currentHp = Math.min(maxHp, actor.currentHp + Number(effect.heal));
+      if (effect.heal) applyCombatHealing(actor, Number(effect.heal));
       if (effect.shield) grantBattleItemShield(actor, effect.shield);
       if (effect.charge && typeof actor.specialCharge === 'number') {
         const charge = actor === activeActor ? Number(effect.charge) : Math.ceil(Number(effect.charge) * 0.45);
@@ -928,10 +928,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     alliedActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
       const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      actor.currentHp = Math.min(
-        maxHp,
-        actor.currentHp + Math.max(0, Math.round(maxHp * (effect.healRatio || 0)))
-      );
+      applyCombatHealing(actor, Math.max(0, Math.round(maxHp * (effect.healRatio || 0))));
       engine.particles?.add(actor.x || engine.width * 0.24, (actor.y || engine.height / 2) - 16, 0, -1, color, 5, 28, 'spark');
     });
     targetActors?.forEach(actor => {
@@ -988,7 +985,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     alliedActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
       const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      actor.currentHp = Math.min(maxHp, actor.currentHp + Math.round(maxHp * (effect.healRatio || 0)));
+      applyCombatHealing(actor, Math.round(maxHp * (effect.healRatio || 0)));
     });
     targetActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
@@ -1548,7 +1545,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               engine.heroes.forEach(hero => {
                 if (hero.currentHp > 0) {
                   const maxHp = hero.maxHp || hero.stats.hp;
-                  hero.currentHp = Math.min(maxHp, hero.currentHp + Math.max(8, Math.round(maxHp * 0.05)));
+                  applyCombatHealing(hero, Math.max(8, Math.round(maxHp * 0.05)));
                 }
               });
             }
@@ -2038,7 +2035,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   : `A.R.C.A. adaptation: ${stage.bossName} scanned, +5% team HP.`)}
             </div>
           )}
-          {stage.mode === 'Tactics' && engineRef.current?.escort && <p style={{ maxWidth: 700, fontSize: 11, color: '#a0e9ec' }}>{escortBriefing}</p>}
+          {stage.mode === 'Tactics' && engineRef.current?.escortUnit && <p style={{ maxWidth: 700, fontSize: 11, color: '#a0e9ec' }}>{escortBriefing}</p>}
           {unstableTeamCount > 0 && !stage.nonCombatTrial && (
             <div style={{ fontSize: '10px', color: '#ffeb3b', marginTop: '3px' }}>
               {lang === 'fr'
