@@ -44,13 +44,14 @@ jobs:
           repo = 'darknigthmare/multiverse-breach'
           assert os.environ['GITHUB_REPOSITORY'] == repo
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip() == '2b66d67770d46a8c43cd5be3658a6b0908d6ad4c'
-          chunks = ['45269a2ac76b2b12ee7d9ff9b403d21d6343c013','3b3082ddd24da534ec23daebc1152eaa2adbcbfb','1c75eb65d870feddcff5ed3de27fa151c7909fd7','e7d67aee0e259d6806e9b68968533c5ee5dfa4a9','71ee6bc3f73cf6c72baaed85814241130e0420fe']
-          encoded = b''
-          for sha in chunks:
+          def blob(sha):
               request = urllib.request.Request(f'https://api.github.com/repos/{repo}/git/blobs/{sha}',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
               with urllib.request.urlopen(request,timeout=30) as response: result=json.load(response)
-              encoded += base64.b64decode(result['content'])
-          compressed=base64.b64decode(encoded,validate=True)
+              data=base64.b64decode(result['content'])
+              assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==sha
+              return data
+          chunks = ['45269a2ac76b2b12ee7d9ff9b403d21d6343c013','3b3082ddd24da534ec23daebc1152eaa2adbcbfb','1c75eb65d870feddcff5ed3de27fa151c7909fd7','e7d67aee0e259d6806e9b68968533c5ee5dfa4a9','71ee6bc3f73cf6c72baaed85814241130e0420fe']
+          compressed=base64.b64decode(b''.join(map(blob,chunks)),validate=True)
           assert hashlib.sha256(compressed).hexdigest() == '829ac19150e3a8d98c1914ed37ab9deae9c2484b2178b3b346cd2d63cf9bd653'
           patch=lzma.decompress(compressed)
           assert len(patch) == 90786
@@ -59,15 +60,19 @@ jobs:
           subprocess.run(['git','apply','--index','--unidiff-zero',str(location)],check=True)
           allowed=['.github/workflows/audit-reliability.yml','docs/audits/tactics-reliability-2026-10-16.md','package.json','scripts/auditTacticsReliability.test.mjs','scripts/browserTacticsReliability.py','scripts/customBattle.test.mjs','scripts/fixtures/tactics-lifecycle.html','scripts/fixtures/tacticsLifecycleHarness.jsx','src/components/GameCanvas.jsx','src/components/TacticsSupportPanel.jsx','src/game/engineTactics.js','src/game/tacticsSupport.js']
           assert sorted(subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()) == sorted(allowed)
-          # Reviewed selector correction: rendered skill labels retain mixed case.
           p=pathlib.Path('scripts/browserTacticsReliability.py');text=p.read_text()
           for label in ['HEAL','CLEANSE','REVIVE']:
               old=f"re.compile('QA {label}')";assert text.count(old)==1
               text=text.replace(old,f"re.compile('QA {label}', re.I)")
           p.write_text(text)
           assert hashlib.sha256(p.read_bytes()).hexdigest() == 'df05d3d4337c49a3e1b368ad80a0fbe64d3eaba8668a39fdd3a8080dba60647c'
+          overlay=blob('48d61dea4ff1dacf1403f38945fa1a3cc7d36e97')
+          assert hashlib.sha256(overlay).hexdigest()=='89cbfeec9deac7216cc0b14f7185f772ffc5e952539d7dd80184a6c087423ee7'
+          location=pathlib.Path('/tmp/tactics-evidence/fixture-overlay.patch');location.write_bytes(overlay)
+          subprocess.run(['git','apply','--check',str(location)],check=True)
+          subprocess.run(['git','apply',str(location)],check=True)
           pathlib.Path('/tmp/tactics-evidence/allowed.json').write_text(json.dumps(allowed))
-          print('Reviewed patch and 12-path scope verified; no branch writes.')
+          print('Reviewed source patch and fixture correction verified; no branch writes.')
           PY
       - run: npm ci --no-audit --no-fund
       - name: New and existing regression suites
