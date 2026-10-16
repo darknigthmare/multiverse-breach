@@ -66,13 +66,14 @@ jobs:
               text=text.replace(old,f"re.compile('QA {label}', re.I)")
           p.write_text(text)
           assert hashlib.sha256(p.read_bytes()).hexdigest() == 'df05d3d4337c49a3e1b368ad80a0fbe64d3eaba8668a39fdd3a8080dba60647c'
-          overlay=blob('48d61dea4ff1dacf1403f38945fa1a3cc7d36e97')
-          assert hashlib.sha256(overlay).hexdigest()=='89cbfeec9deac7216cc0b14f7185f772ffc5e952539d7dd80184a6c087423ee7'
-          location=pathlib.Path('/tmp/tactics-evidence/fixture-overlay.patch');location.write_bytes(overlay)
-          subprocess.run(['git','apply','--check',str(location)],check=True)
-          subprocess.run(['git','apply',str(location)],check=True)
+          overlays=[('48d61dea4ff1dacf1403f38945fa1a3cc7d36e97','89cbfeec9deac7216cc0b14f7185f772ffc5e952539d7dd80184a6c087423ee7'),('58fa81fb434e0bb350992128c060a902527dc557','71a1773784e8b6dcbd9dc101427a1450443d29d391490c40a757ea25fac06422')]
+          for index,(sha,expected) in enumerate(overlays):
+              overlay=blob(sha);assert hashlib.sha256(overlay).hexdigest()==expected
+              location=pathlib.Path(f'/tmp/tactics-evidence/fixture-overlay-{index}.patch');location.write_bytes(overlay)
+              subprocess.run(['git','apply','--check',str(location)],check=True)
+              subprocess.run(['git','apply',str(location)],check=True)
           pathlib.Path('/tmp/tactics-evidence/allowed.json').write_text(json.dumps(allowed))
-          print('Reviewed source patch and fixture correction verified; no branch writes.')
+          print('Reviewed source patch and fixture corrections verified; no branch writes.')
           PY
       - run: npm ci --no-audit --no-fund
       - name: New and existing regression suites
