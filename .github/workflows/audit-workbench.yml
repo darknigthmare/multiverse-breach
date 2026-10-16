@@ -24,17 +24,15 @@ jobs:
             **/*.json
             **/*.jsonl
             **/*.md
-      - name: Archive code and manifests only
+      - name: Install exact lockfile dependencies
         run: |
-          git rev-parse HEAD > /tmp/audit-source-commit.txt
-          find src scripts api supabase public docs -type f \( -name '*.js' -o -name '*.jsx' -o -name '*.mjs' -o -name '*.css' -o -name '*.json' -o -name '*.jsonl' -o -name '*.md' -o -name '*.sql' \) -print0 > /tmp/audit-source-files
-          printf '%s\0' package.json package-lock.json vite.config.js index.html >> /tmp/audit-source-files
-          tar --null -T /tmp/audit-source-files -czf /tmp/audit-source.tgz
-          ls -lh /tmp/audit-source.tgz
+          node --version
+          npm ci --no-audit --no-fund
+          tar -czf /tmp/audit-node-modules.tgz node_modules
+      - name: Baseline save regression tests
+        run: node --test scripts/localSaveGuard.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/cloudReconciliationRace.test.mjs
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: audit-source-snapshot
-          path: |
-            /tmp/audit-source.tgz
-            /tmp/audit-source-commit.txt
+          name: audit-locked-node-modules
+          path: /tmp/audit-node-modules.tgz
           retention-days: 3
