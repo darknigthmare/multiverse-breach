@@ -1053,6 +1053,7 @@ export class EngineSmash {
 
 
   applyDamage(attacker, defender, baseDmg, knockbackForce = 10, statusEffect = null, guardDamage = 8) {
+    if (!defender || !Number.isFinite(defender.currentHp) || defender.currentHp <= 0 || !Number.isFinite(baseDmg) || baseDmg <= 0) return 0;
     baseDmg *= getCombatEventDamageMultiplier(attacker);
     const encounterDamage = resolveNihilanthDamage(this.nihilanthEncounter, defender, baseDmg);
     if (encounterDamage?.kind === 'blocked') return 0;
@@ -1100,6 +1101,8 @@ export class EngineSmash {
     if (this.aliensRescueEncounter?.queen === defender) {
       finalDmg = Math.min(finalDmg, Math.max(0, defender.currentHp - 1));
     }
+    // Never award score for damage beyond the target's remaining life.
+    finalDmg = Math.min(finalDmg, defender.currentHp);
     if (this.heroes.includes(attacker) && this.enemies.includes(defender)) {
       this.damageDealt += finalDmg;
     } else if (this.enemies.includes(attacker) && this.heroes.includes(defender)) {
@@ -1135,7 +1138,7 @@ export class EngineSmash {
     if (defender.currentHp <= 0) {
       transitionMeleeState(defender, 'dead', { force: true, restart: true });
       defender.stateTimer = 60;
-      if (!defender.wasCountedDefeated) {
+      if (this.enemies.includes(defender) && !defender.wasCountedDefeated) {
         defender.wasCountedDefeated = true;
         this.defeatedEnemies++;
       }

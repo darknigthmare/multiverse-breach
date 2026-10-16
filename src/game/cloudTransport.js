@@ -23,7 +23,10 @@ export async function readCloudResponse(response) {
     const message = typeof detail === 'string' && detail.trim()
       ? detail.slice(0, 300)
       : plainText.slice(0, 300) || `Service cloud indisponible (HTTP ${response.status}).`;
-    throw new CloudHttpError(message, response.status, data?.error_code || data?.code || 'HTTP_ERROR');
+    const error = new CloudHttpError(message, response.status, data?.error_code || data?.code || 'HTTP_ERROR');
+    const retryAfter = response.headers?.get?.('Retry-After');
+    if (retryAfter && /^\d+$/.test(retryAfter)) error.retryAfterSeconds = Math.min(3600, Number(retryAfter));
+    throw error;
   }
   if (!text.trim()) return null;
   if (!parsed) throw new CloudHttpError('Reponse cloud invalide.', response.status, 'INVALID_JSON');

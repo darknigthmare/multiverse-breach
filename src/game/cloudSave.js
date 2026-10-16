@@ -80,8 +80,9 @@ export function createCloudSaveClient({
     if (!result.ok) return memorySession;
     try {
       const parsed = result.value ? JSON.parse(result.value) : null;
-      return parsed?.access_token && parsed?.user?.id ? normalizeCloudSession(parsed, now()) : null;
-    } catch { return null; }
+      memorySession = parsed?.access_token && parsed?.user?.id ? normalizeCloudSession(parsed, now()) : null;
+      return memorySession;
+    } catch { memorySession = null; return null; }
   };
 
   const persistSession = (session, reason) => {
@@ -101,6 +102,7 @@ export function createCloudSaveClient({
   };
 
   const subscribeSession = listener => {
+    getStoredSession(); // Seed identity before the first cross-tab token rotation.
     listeners.add(listener);
     const handleStorage = event => {
       if (event.key !== SUPABASE_SESSION_KEY && event.key !== null) return;
@@ -142,7 +144,7 @@ export function createCloudSaveClient({
     return json(`${supabaseUrl}${path}`, {
       ...options,
       headers: {
-        ...(options.headers || {}),
+        ...options.headers,
         apikey: supabaseAnonKey,
         Authorization: `Bearer ${accessToken || supabaseAnonKey}`
       }

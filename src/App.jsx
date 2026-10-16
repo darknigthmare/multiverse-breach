@@ -2172,17 +2172,19 @@ function App() {
     try {
       const imported = JSON.parse(raw);
       normalizeSavePayload(imported, { existing: true });
+      applySave(imported, { existing: true, navigateTo: 'hub', acceptExternalChange: true });
       invalidateCloudOperations();
       if (account) setCloudSyncState('conflict');
-      applySave(imported, { existing: true, navigateTo: 'hub', acceptExternalChange: true });
       if (account) {
         setCloudStatus(lang === 'fr'
           ? 'Trace importee localement. Archive cloud preservee jusqu a un choix explicite.'
           : 'Trace imported locally. Cloud archive preserved until an explicit choice.');
       }
       sound.playSfx('levelup');
-    } catch {
-      window.alert(lang === 'fr' ? 'Trace Nexus invalide.' : 'Invalid Nexus trace.');
+    } catch (error) {
+      window.alert(error?.message === 'backup-failed'
+        ? (lang === 'fr' ? 'Copie de secours impossible : import annule, progression actuelle conservee.' : 'Backup failed: import cancelled, current progress preserved.')
+        : (lang === 'fr' ? 'Trace Nexus invalide.' : 'Invalid Nexus trace.'));
     }
   };
 
