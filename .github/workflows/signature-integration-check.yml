@@ -1,0 +1,120 @@
+name: Signature integration validation
+on:
+  push:
+    branches: [codex/audit-corrections-2026-10-16]
+    paths: [.github/workflows/signature-integration-check.yml]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 2f2db5d1c193e0408881d5af99d94da405b7b24e
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            **/*.json
+            **/*.jsonl
+            **/*.md
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - name: Verify and materialize only the twelve authored files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,hashlib,json,os,subprocess,urllib.request
+          from pathlib import Path
+          repo='darknigthmare/multiverse-breach'
+          assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()=='2f2db5d1c193e0408881d5af99d94da405b7b24e'
+          files={
+            'src/game/signatureCatalog.js':'c541c98f5a7923fa4ea46901efdda89245cacbec',
+            'src/game/signatureDirector.js':'556c8d863f1a20123c61e6149c1cf28b6ef5b9ee',
+            'src/game/signaturePresentation.js':'d2e2c2eba9a6ee07718203d355046c899d4a2b10',
+            'src/components/SignatureSequencePanel.jsx':'855a0f699c38f476d31d7429f34967ad4b4a2dc1',
+            'scripts/signatureCombat.test.mjs':'02a9eb3915494ede3846fddea87d3e0e0468531f',
+            'scripts/signatureCoverage.mjs':'8302cd00f7d3b57625af3dfa9e08767bba34ad50',
+            'scripts/browserSignatureCombat.py':'513c75ace4c2825fd00d970ffd88ea096e660d5f',
+            'scripts/fixtures/signature-combat.html':'831edd9a84c8289f4fc03d81b116e7285783dfae',
+            'scripts/fixtures/signatureCombatHarness.jsx':'6afc1b900c3cd496e3f8dee73dcaf8e6ef3a44d1',
+            '.github/workflows/signature-combat.yml':'bef71b9320b8c30339adb11a906db90d90468707',
+            'docs/audits/signature-combat-2026-10-16.md':'0dae7837a7535f62cbe701c3e415460c6e0a4d71'
+          }
+          def gitsha(raw): return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+          def blob(sha):
+              request=urllib.request.Request(f'https://api.github.com/repos/{repo}/git/blobs/{sha}',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+              with urllib.request.urlopen(request,timeout=30) as response: raw=base64.b64decode(json.load(response)['content'])
+              assert gitsha(raw)==sha
+              return raw
+          for name,sha in files.items():
+              path=Path(name);assert not path.exists(),name
+              path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(blob(sha))
+          canvas=Path('src/components/GameCanvas.jsx')
+          assert gitsha(canvas.read_bytes())=='862408919a15d967d44da66f842dba971b3e17cc'
+          patch=blob('5fd14e0c43ee584811300a98ad2cddc68a9886e8')
+          assert hashlib.sha256(patch).hexdigest()=='4638eff9eb4586c958e246dcae2348e03fd0b6ae2ff5b6bfb661cb9f6d09b237'
+          patch_path=Path('/tmp/signature-canvas.patch');patch_path.write_bytes(patch)
+          subprocess.run(['git','apply','--check','--include=src/components/GameCanvas.jsx',str(patch_path)],check=True)
+          subprocess.run(['git','apply','--include=src/components/GameCanvas.jsx',str(patch_path)],check=True)
+          assert gitsha(canvas.read_bytes())=='c1ea528c9a9304f1514ecea2319825024a47517c'
+          files[str(canvas)]='c1ea528c9a9304f1514ecea2319825024a47517c'
+          out=Path('/tmp/signature-evidence');out.mkdir()
+          (out/'source-hashes.json').write_text(json.dumps([{'path':p,'sha':s,'sha256':hashlib.sha256(Path(p).read_bytes()).hexdigest()} for p,s in files.items()],indent=2))
+          PY
+      - run: npm ci --no-audit --no-fund
+      - name: New contracts and existing regression tests
+        run: |
+          set -euo pipefail
+          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/auditRpgLifecycle.test.mjs scripts/auditEventConsumption.test.mjs scripts/auditCloudReliability.test.mjs scripts/auditSaveCalendar.test.mjs scripts/smashCanonAbilityProfiles.test.mjs scripts/canonRaamEncounter.test.mjs scripts/canonPiratesCurseEncounter.test.mjs scripts/canonFollowupSourceKits.test.mjs scripts/canonBlackPearlSmashAmmo.test.mjs | tee /tmp/signature-evidence/regressions.log
+          npm run test:audit-tactics | tee /tmp/signature-evidence/tactics.log
+          node scripts/signatureCoverage.mjs /tmp/signature-evidence/coverage.json | tee /tmp/signature-evidence/coverage.log
+          npx oxlint src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx | tee /tmp/signature-evidence/lint.log
+          npx vite build | tee /tmp/signature-evidence/build.log
+      - name: Real Chromium fixture controls on loopback only
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/signature-playwright
+          /tmp/signature-playwright/bin/pip install playwright==1.57.0
+          /tmp/signature-playwright/bin/python -m playwright install --with-deps chromium
+          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/signature-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/browser /tmp/signature-playwright/bin/python scripts/browserSignatureCombat.py | tee /tmp/signature-evidence/browser.log
+      - name: Store verified GameCanvas blob only, no branch change
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,hashlib,json,os,urllib.request
+          from pathlib import Path
+          manifest=json.loads(Path('/tmp/signature-evidence/source-hashes.json').read_text())
+          for item in manifest:
+              raw=Path(item['path']).read_bytes()
+              assert hashlib.sha256(raw).hexdigest()==item['sha256']
+          raw=Path('src/components/GameCanvas.jsx').read_bytes()
+          sha=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+          assert sha=='c1ea528c9a9304f1514ecea2319825024a47517c'
+          request=urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',method='POST',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'},data=json.dumps({'content':base64.b64encode(raw).decode(),'encoding':'base64'}).encode())
+          with urllib.request.urlopen(request,timeout=30) as response: result=json.load(response)
+          assert result['sha']==sha
+          Path('/tmp/signature-evidence/validated-canvas.json').write_text(json.dumps({'sha':sha}))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: signature-integration-evidence
+          path: /tmp/signature-evidence/
+          retention-days: 7
