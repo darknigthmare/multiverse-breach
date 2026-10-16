@@ -522,7 +522,16 @@ export class EngineRpg {
     const { profile, eligibleTargets } = context;
     if (!profile || !eligibleTargets.length || profile.shape === 'group') return [];
     const sorted = [...eligibleTargets];
-    if (profile.effect === 'heal') sorted.sort((a, b) => a.currentHp / a.maxHp - b.currentHp / b.maxHp);
+    if (profile.effect === 'heal') {
+      // Prioritize allies who can actually receive healing. Radiation limits
+      // recoverable HP to half of max HP until the status is removed.
+      const recoverable = unit => {
+        const maxHp = Number.isFinite(unit.maxHp) ? Math.max(0, unit.maxHp) : 0;
+        const cap = unit.statusEffects?.radiated > 0 ? maxHp * 0.5 : maxHp;
+        return Math.max(0, cap - (Number.isFinite(unit.currentHp) ? unit.currentHp : 0));
+      };
+      sorted.sort((a, b) => recoverable(b) - recoverable(a));
+    }
     return sorted.slice(0, profile.shape === 'multi' ? profile.maxTargets : 1).map(rpgUnitId);
   }
 
