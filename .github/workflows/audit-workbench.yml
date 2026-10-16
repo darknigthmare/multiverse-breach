@@ -1,0 +1,40 @@
+name: Audit workbench
+on:
+  push:
+    branches: [codex/audit-corrections-2026-10-16]
+    paths: [.github/workflows/audit-workbench.yml, scripts/applyAuditReliabilityFixes.mjs]
+permissions:
+  contents: read
+jobs:
+  source-snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /supabase/
+            **/*.json
+            **/*.jsonl
+            **/*.md
+      - name: Archive code and manifests only
+        run: |
+          git rev-parse HEAD > /tmp/audit-source-commit.txt
+          find src scripts api supabase public docs -type f \( -name '*.js' -o -name '*.jsx' -o -name '*.mjs' -o -name '*.css' -o -name '*.json' -o -name '*.jsonl' -o -name '*.md' -o -name '*.sql' \) -print0 > /tmp/audit-source-files
+          printf '%s\0' package.json package-lock.json vite.config.js index.html >> /tmp/audit-source-files
+          tar --null -T /tmp/audit-source-files -czf /tmp/audit-source.tgz
+          ls -lh /tmp/audit-source.tgz
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: audit-source-snapshot
+          path: |
+            /tmp/audit-source.tgz
+            /tmp/audit-source-commit.txt
+          retention-days: 3
