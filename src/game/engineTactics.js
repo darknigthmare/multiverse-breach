@@ -869,6 +869,8 @@ export class EngineTactics {
     };
     const selected = aliases[actionType];
     if (!selected) return false;
+    // A removed skill must not be mistaken for a successful cancel/reselection.
+    if (!this.activeUnit?.[selected]) return false;
     // A second click on the selected action is an explicit cancel while no
     // target has confirmed it.
     if (
@@ -1654,7 +1656,9 @@ export class EngineTactics {
     if (!this.canCommandActiveUnit()) return { handled: false, reason: 'inactive' };
 
     if (this.actionPhase === 'move') {
-      const selectedCell = this.movementRange.find(cell => cell.x === c && cell.y === r);
+      // A visible highlight may be stale after an obstacle or terrain change.
+      const selectedCell = this.getReachableCells(this.activeUnit, Math.max(0, this.movementBudget - this.movementSpent))
+        .find(cell => cell.x === c && cell.y === r);
       const inRange = !!selectedCell;
       const sameCell = this.activeUnit.gridX === c && this.activeUnit.gridY === r;
       if (!inRange || (!sameCell && !this.canOccupyCell(this.activeUnit, c, r))) {
@@ -2083,7 +2087,7 @@ export class EngineTactics {
   }
 
   applyTacticalBattleItem(pickup, _source = 'manual', triggerSide = this.activeUnitType) {
-    if (!pickup || this.gameOver) return false;
+    if (!pickup || this.disposed || this.paused || this.gameOver) return false;
     const tier = pickup.tier || 'pickup';
     const effect = pickup.effect || {};
     const color = pickup.color || '#39c5bb';
@@ -2131,8 +2135,7 @@ export class EngineTactics {
       const damage = Math.max(effect.ultimateDamage || 180, 160);
       targets.forEach(target => {
         if (target.currentHp > 0) {
-          this.applyDamage(itemAttacker, target, damage, null, { ignoreCover: true });
-          this.tacticalItemImpact += damage;
+          this.tacticalItemImpact += this.applyDamage(itemAttacker, target, damage, null, { ignoreCover: true });
         }
       });
       this.particles.add(this.width / 2, this.gridStartY - 14, 0, -1, color, 14, 52, 'text', 'CARTE ULTIME');
@@ -2145,8 +2148,7 @@ export class EngineTactics {
         .sort((a, b) => b.currentHp - a.currentHp)[0];
       if (target) {
         const damage = Math.max(effect.summonDamage || 120, 90);
-        this.applyDamage(itemAttacker, target, damage, 'glitched', { ignoreCover: true });
-        this.tacticalItemImpact += damage;
+        this.tacticalItemImpact += this.applyDamage(itemAttacker, target, damage, 'glitched', { ignoreCover: true });
         this.particles.add(target.x, target.y - 44, 0, -1, color, 12, 44, 'text', 'ASSIST');
       }
       const reinforcementBudget = this.missionProfile.reinforcementEvery > 0 ? -1 : 0;
@@ -2174,8 +2176,7 @@ export class EngineTactics {
       if (target.currentHp <= 0) return;
       const dist = Math.abs(target.gridX - triggerX) + Math.abs(target.gridY - triggerY);
       if (damage > 0 && dist <= 1) {
-        this.applyDamage(itemAttacker, target, damage, null, { ignoreCover: true });
-        this.tacticalItemImpact += damage;
+        this.tacticalItemImpact += this.applyDamage(itemAttacker, target, damage, null, { ignoreCover: true });
       }
     });
     const resourceScreen = this.gridToScreen(triggerX, triggerY);
@@ -2329,6 +2330,56 @@ export class EngineTactics {
     return closestHero;
   }
 
+  trySupportAI() {
+    const actor = this.activeUnit;
+    if (!this.isActiveCombatant(actor) || this.paused || this.disposed || this.gameOver
+      || this.interruptedTurn === this.turnSerial || ['end', 'resolving'].includes(this.actionPhase)) return false;
+    const reachable = this.getReachableCells(actor, Math.max(0, this.movementBudget - this.movementSpent));
+    let best = null;
+    for (const actionType of ['special', 'secondary', 'defense', 'simple']) {
+      if (actionType === 'special' && (!Number.isFinite(actor.specialCharge) || actor.specialCharge < 100)) continue;
+      if (actionType === 'secondary' && (!Number.isFinite(actor.cooldown) || actor.cooldown > 0)) continue;
+      const profile = getTacticsSupportProfile(actor, actionType);
+      if (!profile) continue;
+      for (const cell of reachable) {
+        const probe = { ...actor, gridX: cell.x, gridY: cell.y, _tacticsSourceUnit: actor };
+        for (const target of getTacticsSupportCandidates(this, probe, profile)) {
+          const entries = resolveTacticsSupport(this, probe, actionType, target);
+          const score = entries.reduce((total, entry) => total + entry.amount
+            + entry.cleanses.length * 12 + (['buff', 'guard'].includes(entry.effect) ? 8 : 0), 0) - (cell.cost || 0) * 2;
+          if (score > 0 && (!best || score > best.score)) best = { actionType, cell, target, entries, score };
+        }
+      }
+    }
+    if (!best) return false;
+    const moved = actor.gridX !== best.cell.x || actor.gridY !== best.cell.y;
+    faceUnitToward(actor, best.cell);
+    actor.gridX = best.cell.x; actor.gridY = best.cell.y;
+    this.movementSpent += best.cell.cost || 0;
+    if (moved) this.applyStartTileEffect(actor);
+    if (this.gameOver) return true;
+    if (!this.isActiveCombatant(actor)) { this.endActiveTurn(); return true; }
+    const anchor = { gridX: best.target.gridX, gridY: best.target.gridY };
+    const confirmed = new Set(best.entries.map(entry => entry.unit));
+    this.actionPhase = 'resolving';
+    this.scheduleTurn(() => {
+      const available = best.actionType === 'secondary' ? actor.cooldown <= 0
+        : best.actionType !== 'special' || actor.specialCharge >= 100;
+      const entries = resolveTacticsSupport(this, actor, best.actionType, anchor);
+      // Identity is frozen: moving/replacing the chosen recipient cannot redirect the cast.
+      const valid = available && entries.some(entry => entry.unit === best.target)
+        && entries.every(entry => confirmed.has(entry.unit));
+      if (valid && this.performSupportAction(actor, anchor, best.actionType).length) {
+        actor.state = 'attack'; actor.stateTimer = 25;
+        if (best.actionType === 'secondary') actor.cooldown = Math.round((actor.secondary.cd ?? 3) * 60);
+        if (best.actionType === 'special') actor.specialCharge = 0;
+        else actor.specialCharge = Math.min(100, actor.specialCharge + (best.actionType === 'secondary' ? 20 : 12));
+      }
+      if (!this.gameOver) this.endActiveTurn();
+    }, 500);
+    return true;
+  }
+
   runEnemyAI() {
     if (this.disposed || this.gameOver || this.paused || !this.activeUnit || this.activeUnitType !== 'enemy' || ['end', 'resolving'].includes(this.actionPhase)) return;
     if (this.activeUnit.currentHp <= 0) {
@@ -2336,11 +2387,14 @@ export class EngineTactics {
       return;
     }
     if (this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0) {
-      this.scheduleTurn(() => this.runEnemyAI(), 50);
+      if (![...this.timers].some(timer => timer.actor === this.activeUnit && timer.turnSerial === this.turnSerial)) {
+        this.scheduleTurn(() => this.runEnemyAI(), 50);
+      }
       return;
     }
 
     const enemy = this.activeUnit;
+    if (this.trySupportAI()) return;
     if (this.rexEncounter && enemy === this.rexEncounter.body) { this.runRexEnemyAI(); return; }
     this.actionPhase = 'resolving';
     const role = this.getEnemyTacticsRole(enemy);
@@ -2369,10 +2423,11 @@ export class EngineTactics {
     const pressureTarget = objectiveCell || tacticalTarget || closestHero;
     let bestX = enemy.gridX;
     let bestY = enemy.gridY;
+    let bestCost = 0;
     let bestScore = -999;
 
     // Movement speed halved if glitched
-    const maxMoveRange = enemy.statusEffects?.glitched > 0 ? 1 : 2;
+    const maxMoveRange = Math.max(0, this.movementBudget - this.movementSpent);
     const emptyThreatMap = new Map();
 
     this.getReachableCells(enemy, maxMoveRange).forEach(cell => {
@@ -2402,6 +2457,7 @@ export class EngineTactics {
         bestScore = score;
         bestX = cell.x;
         bestY = cell.y;
+        bestCost = cell.cost || 0;
       }
     });
 
@@ -2409,6 +2465,7 @@ export class EngineTactics {
     faceUnitToward(enemy, { x: bestX, y: bestY });
     enemy.gridX = bestX;
     enemy.gridY = bestY;
+    this.movementSpent += bestCost;
     if (moved) this.applyStartTileEffect(enemy);
     if (this.gameOver) return;
     if (!this.isActiveCombatant(enemy)) { this.endActiveTurn(); return; }
@@ -2460,33 +2517,15 @@ export class EngineTactics {
     if (this.disposed || this.paused || this.gameOver || !this.isActiveCombatant() || this.activeUnitType !== 'hero'
       || !['move', 'action'].includes(this.actionPhase) || this.interruptedTurn === this.turnSerial) return;
     if (this.activeUnit.state === 'hit' && this.activeUnit.stateTimer > 0) {
-      this.scheduleTurn(() => this.runHeroAI(), 50);
+      if (![...this.timers].some(timer => timer.actor === this.activeUnit && timer.turnSerial === this.turnSerial)) {
+        this.scheduleTurn(() => this.runHeroAI(), 50);
+      }
       return;
     }
     if (this.rexEncounter) { this.runRexHeroAI(); return; }
 
     const hero = this.activeUnit;
-    for (const actionType of ['special', 'secondary', 'defense']) {
-      if (actionType === 'special' && hero.specialCharge < 100) continue;
-      if (actionType === 'secondary' && hero.cooldown > 0) continue;
-      const profile = getTacticsSupportProfile(hero, actionType);
-      if (!profile) continue;
-      const room = unit => Math.max(0, unit.maxHp * (unit.statusEffects?.radiated > 0 ? 0.5 : 1) - unit.currentHp);
-      const targets = getTacticsSupportCandidates(this, hero, profile).sort((a, b) =>
-        (profile.effect === 'heal' ? room(b) - room(a) : 0) || a.currentHp / a.maxHp - b.currentHp / b.maxHp);
-      if (!targets.length) continue;
-      this.actionPhase = 'resolving';
-      const target = targets[0];
-      const anchor = { gridX: target.gridX, gridY: target.gridY };
-      this.scheduleTurn(() => {
-        this.actionPhase = 'move';
-        // The prepared support never silently switches to a replacement occupant.
-        const stillTargeted = resolveTacticsSupport(this, hero, actionType, anchor).some(entry => entry.unit === target);
-        if (stillTargeted && this.selectAction(actionType)) this.handleCellClick(anchor.gridX, anchor.gridY);
-        if (!this.gameOver && this.actionPhase !== 'end') this.endActiveTurn();
-      }, 500);
-      return;
-    }
+    if (this.trySupportAI()) return;
     let chosenAction = 'simple';
     if (hero.special && !getTacticsSupportProfile(hero, 'special') && hero.specialCharge >= 100) {
       chosenAction = 'special';
@@ -2533,6 +2572,7 @@ export class EngineTactics {
           faceUnitToward(hero, best);
           hero.gridX = best.x;
           hero.gridY = best.y;
+          this.movementSpent += best.cost || 0;
           if (moved) this.applyStartTileEffect(hero);
         }
       } else {
@@ -2542,6 +2582,7 @@ export class EngineTactics {
           faceUnitToward(hero, best);
           hero.gridX = best.x;
           hero.gridY = best.y;
+          this.movementSpent += best.cost || 0;
           if (moved) this.applyStartTileEffect(hero);
         }
       }
@@ -2555,7 +2596,7 @@ export class EngineTactics {
     const objectiveCell = this.getClosestObjectiveCell(hero, 'hero');
     const threatMap = this.getEnemyThreatMap();
 
-    this.movementRange.forEach(cell => {
+    this.getReachableCells(hero, Math.max(0, this.movementBudget - this.movementSpent)).forEach(cell => {
       const d = Math.abs(closestEnemy.gridX - cell.x) + Math.abs(closestEnemy.gridY - cell.y);
       const simulatedHero = {
         ...hero,
@@ -2595,6 +2636,7 @@ export class EngineTactics {
     faceUnitToward(hero, bestMoveCell);
     hero.gridX = bestMoveCell.x;
     hero.gridY = bestMoveCell.y;
+    this.movementSpent += bestMoveCell.cost || 0;
     if (bestMoveCell.x !== startCell.x || bestMoveCell.y !== startCell.y) this.applyStartTileEffect(hero);
     if (this.gameOver) return;
     if (!this.isActiveCombatant(hero)) { this.endActiveTurn(); return; }
@@ -2873,7 +2915,10 @@ export class EngineTactics {
     if (!defender || !Number.isFinite(baseDmg) || baseDmg < 0 || this.disposed || this.paused || this.gameOver) return 0;
     const hp = defender === this.protectedArtifact || ['barrier', 'barrel', 'objective'].includes(defender.type) ? defender.hp : defender.currentHp;
     if (!Number.isFinite(hp) || hp <= 0) return 0;
-    if (this.applyEncounterDamage(defender, baseDmg, { kind: 'attack', attacker })) return;
+    if (this.applyEncounterDamage(defender, baseDmg, { kind: 'attack', attacker })) {
+      const remaining = Number.isFinite(defender.currentHp) ? defender.currentHp : hp;
+      return Math.max(0, Math.min(hp, hp - remaining));
+    }
     const modifiers = this.getDamageModifiers(attacker, defender, options.actionType || 'simple', options.ignoreCover);
     baseDmg *= modifiers.multiplier;
     if (defender === this.protectedArtifact) {
@@ -2882,7 +2927,7 @@ export class EngineTactics {
       const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
       this.particles.add(targetPxX, targetPxY - 24, 0, -1, '#ffeb3b', 12, 42, 'text', `ARTEFACT -${Math.round(baseDmg)}`);
       if (wasAlive && defender.hp <= 0) this.updateTacticsObjective();
-      return;
+      return hp - defender.hp;
     }
 
     if (defender.type === 'barrier' || defender.type === 'barrel' || defender.type === 'objective') {
@@ -2902,7 +2947,7 @@ export class EngineTactics {
           this.triggerBarrelExplosion(defender.gridX, defender.gridY);
         }
       }
-      return;
+      return hp - defender.hp;
     }
 
     const { cover: coverReduction, facing, terrain } = modifiers;

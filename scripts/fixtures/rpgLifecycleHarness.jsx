@@ -18,7 +18,7 @@ const team = ['player_anchor', 'arca_mirelle', 'arca_bastion'];
 const enemy = { name: 'QA target', id: 'qa-target', hp: 500, atk: 5, def: 0, spd: 1, color: '#888888', universe: 'Nexus de Convergence' };
 const stage = { id: 'qa-rpg-lifecycle', name: 'RPG synthetic fixture', universe: 'Nexus de Convergence', mode: 'RPG', disableItems: !withEvent,
   customBattle: { singleRoster: true, opponentControl: 'p2', enemyData: { customRoster: [enemy], monsters: [enemy], bosses: [], worldBoss: null } } };
-function Harness() {
+export function Harness() {
   const [paused, setPaused] = useState(false);
   const [mounted, setMounted] = useState(true);
   const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'fr';

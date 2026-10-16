@@ -1061,6 +1061,9 @@ test('Tactics hero AI resolves an area target on the attack fringe through a spl
     engine.tiles = [];
     engine.activeUnit = hero;
     engine.activeUnitType = 'hero';
+    // Keep this targeting-only scenario immobile through the real AP contract.
+    engine.movementBudget = 0;
+    engine.movementSpent = 0;
     engine.movementRange = [{ x: hero.gridX, y: hero.gridY, cost: 0 }];
     engine.endActiveTurn = noop;
     const scheduled = [];
@@ -1123,6 +1126,9 @@ test('Tactics hero AI accepts only targets resolved by a cardinal directional pr
     engine.tiles = [];
     engine.activeUnit = hero;
     engine.activeUnitType = 'hero';
+    // Keep this targeting-only scenario immobile through the real AP contract.
+    engine.movementBudget = 0;
+    engine.movementSpent = 0;
     engine.movementRange = [{ x: hero.gridX, y: hero.gridY, cost: 0 }];
     engine.endActiveTurn = noop;
     const scheduled = [];

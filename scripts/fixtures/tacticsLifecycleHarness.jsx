@@ -50,7 +50,7 @@ audit.prepare = kind => {
   e.syncActorsToCamera();
   return { turns: e.turnsElapsed, patient: patient.currentHp, enemies: e.enemies.map(u => u.currentHp) };
 };
-function Harness() {
+export function Harness() {
   const [paused, setPaused] = useState(false);
   const [mounted, setMounted] = useState(true);
   const lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'fr';

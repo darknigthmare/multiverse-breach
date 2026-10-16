@@ -36,8 +36,9 @@ export function getTacticsSupportAmount(actor, target, profile) {
 
 export function getTacticsSupportCandidates(engine, actor, profile) {
   if (!actor || !profile || !Number.isFinite(actor.currentHp) || actor.currentHp <= 0 || actor.state === 'dead') return [];
-  const allies = engine.heroes.includes(actor) ? engine.heroes : engine.enemies.includes(actor) ? engine.enemies : [];
-  const candidates = profile.targetSide === 'self' ? allies.filter(u => u === actor) : allies;
+  const source = actor._tacticsSourceUnit || actor;
+  const allies = engine.heroes.includes(source) ? engine.heroes : engine.enemies.includes(source) ? engine.enemies : [];
+  const candidates = profile.targetSide === 'self' ? allies.filter(u => u === source) : allies;
   return candidates.filter(unit => {
     if (!Number.isFinite(unit.currentHp) || !Number.isFinite(unit.maxHp) || unit.maxHp <= 0
       || !engine.isInsideGrid(unit.gridX, unit.gridY)) return false;
