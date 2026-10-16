@@ -1,0 +1,117 @@
+name: Combat audit workbench
+on:
+  push:
+    branches: [codex/audit-corrections-2026-10-16]
+    paths: [.github/workflows/audit-combat-workbench.yml]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /supabase/
+            /.github/
+            **/*.json
+            **/*.jsonl
+            **/*.md
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - name: Verify exact reviewed patch and allowed paths
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, lzma, os, pathlib, subprocess, urllib.request
+          repo = 'darknigthmare/multiverse-breach'
+          assert os.environ['GITHUB_REPOSITORY'] == repo
+          api = 'https://api.github.com/repos/' + repo
+          headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json'}
+          parts = ['140e95a321f9e2f4418763cf69cafb3587508aef', 'b0ee21f32cf5faff40c3f9bac97c01cdc3b8e830', '2f33bebb092385e514c20aecf29f8ae1ebb0f0af']
+          data = b''
+          for sha in parts:
+              with urllib.request.urlopen(urllib.request.Request(api + '/git/blobs/' + sha, headers=headers), timeout=30) as response:
+                  blob = json.load(response)
+              data += base64.b64decode(blob['content'])
+          assert hashlib.sha256(data).hexdigest() == '8aa3f60d2a747fd6b0f840da717d1510c31ea3a13681a807eb85f534d72b3b3f'
+          patch = lzma.decompress(data)
+          assert hashlib.sha256(patch).hexdigest() == '5073c29b064e2092ddeb9f497d8335359f4a9f5498afd4fb865822fbbcfd72cf'
+          pathlib.Path('/tmp/combat.patch').write_bytes(patch)
+          subprocess.run(['git', 'apply', '--check', '/tmp/combat.patch'], check=True)
+          subprocess.run(['git', 'apply', '--index', '/tmp/combat.patch'], check=True)
+          paths = subprocess.check_output(['git', 'diff', '--cached', '--name-only']).decode().splitlines()
+          allowed = ['.github/workflows/audit-reliability.yml', 'docs/audits/combat-lifecycle-2026-10-16.md', 'package.json', 'scripts/auditEventConsumption.test.mjs', 'scripts/auditRpgLifecycle.test.mjs', 'scripts/browserRpgLifecycle.py', 'scripts/fixtures/rpg-lifecycle.html', 'scripts/fixtures/rpgLifecycleHarness.jsx', 'src/components/GameCanvas.jsx', 'src/components/PortalScreen.jsx', 'src/components/RpgTargetingPanel.jsx', 'src/game/combatEventItem.js', 'src/game/combatHealing.js', 'src/game/engineRpg.js', 'src/game/engineSmash.js', 'src/game/engineTactics.js', 'src/game/portalBoosterEngine.js', 'src/game/rpgSupport.js', 'src/game/rpgTargeting.js']
+          assert sorted(paths) == sorted(allowed), paths
+          expected = {p: hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest() for p in paths}
+          pathlib.Path('/tmp/reviewed-files.json').write_text(json.dumps(expected))
+          pathlib.Path('/tmp/combat-evidence').mkdir(exist_ok=True)
+          print('Verified reviewed patch:', len(paths), 'files; no reference or production update.')
+          PY
+      - run: npm ci --no-audit --no-fund
+      - name: Regression groups and existing contracts
+        run: |
+          set -euo pipefail
+          npm run sprites:availability:check
+          npm run test:audit-combat | tee /tmp/combat-evidence/new-regressions.log
+          npm run test:audit-reliability | tee /tmp/combat-evidence/reliability.log
+          npm run test:audit-followup | tee /tmp/combat-evidence/followup.log
+          npm run test:polish | tee /tmp/combat-evidence/polish.log
+          node --test --test-concurrency=1 scripts/combatEffectRegressions.test.mjs scripts/tacticsMissionObjectives.test.mjs scripts/customBattle.test.mjs scripts/canonRexAttackPatterns.test.mjs scripts/localSaveGuard.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/smashCanonAbilityProfiles.test.mjs scripts/smashObjectiveResolution.test.mjs scripts/canonEncounterExternalDamage.test.mjs scripts/rpgTargeting.test.mjs scripts/rpgTargetingPresentation.test.mjs scripts/canonRaamEncounter.test.mjs scripts/canonPiratesCurseEncounter.test.mjs scripts/canonPiratesPlayableJackCurse.test.mjs scripts/portalBoosterEngine.test.mjs scripts/portalBoosterEconomy.test.mjs | tee /tmp/combat-evidence/existing-contracts.log
+      - name: Lint and compile sources
+        run: |
+          set -euo pipefail
+          node node_modules/oxlint/bin/oxlint src/components/GameCanvas.jsx src/components/PortalScreen.jsx src/components/RpgTargetingPanel.jsx src/game/combatHealing.js src/game/engineRpg.js src/game/engineSmash.js src/game/engineTactics.js src/game/portalBoosterEngine.js src/game/rpgTargeting.js src/game/combatEventItem.js src/game/rpgSupport.js scripts/auditEventConsumption.test.mjs scripts/auditRpgLifecycle.test.mjs scripts/fixtures/rpgLifecycleHarness.jsx | tee /tmp/combat-evidence/lint.log
+          node node_modules/vite/bin/vite.js build | tee /tmp/combat-evidence/source-build.log
+      - name: Chromium real UI on loopback only
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/combat-playwright
+          /tmp/combat-playwright/bin/pip install playwright==1.57.0
+          /tmp/combat-playwright/bin/python -m playwright install --with-deps chromium
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/combat-evidence/browser-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          /tmp/combat-playwright/bin/python scripts/browserAuditFollowup.py --evidence /tmp/combat-evidence/auth-browser | tee /tmp/combat-evidence/auth-browser.log
+          /tmp/combat-playwright/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/combat-evidence/rpg-browser | tee /tmp/combat-evidence/rpg-browser.log
+      - name: Store verified source blobs only (no branch update)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, json, os, pathlib, urllib.request
+          api = 'https://api.github.com/repos/darknigthmare/multiverse-breach'
+          headers = {'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json'}
+          expected = json.loads(pathlib.Path('/tmp/reviewed-files.json').read_text())
+          entries = []
+          for path, digest in expected.items():
+              data = pathlib.Path(path).read_bytes()
+              assert hashlib.sha256(data).hexdigest() == digest, 'File changed during tests: ' + path
+              payload = json.dumps({'encoding': 'base64', 'content': base64.b64encode(data).decode()}).encode()
+              req = urllib.request.Request(api + '/git/blobs', data=payload, headers=headers, method='POST')
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  blob = json.load(response)
+              entries.append({'path': path, 'mode': '100644', 'type': 'blob', 'sha': blob['sha'], 'sha256': digest})
+          pathlib.Path('/tmp/combat-evidence/verified-blobs.json').write_text(json.dumps({'source_sha': os.environ['GITHUB_SHA'], 'entries': entries}, indent=2))
+          print('Stored', len(entries), 'verified source blobs. Branch references have not been changed.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: combat-validation-evidence
+          path: /tmp/combat-evidence/
+          retention-days: 7
