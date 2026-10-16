@@ -1,0 +1,131 @@
+name: Tactics integration validation
+on:
+  push:
+    branches: [codex/audit-corrections-2026-10-16]
+    paths: [.github/workflows/audit-tactics-integration.yml]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 2b66d67770d46a8c43cd5be3658a6b0908d6ad4c
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /supabase/
+            /.github/
+            **/*.json
+            **/*.jsonl
+            **/*.md
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - name: Reconcile exact reviewed patches without touching branch refs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import base64,gzip,hashlib,json,lzma,os,pathlib,subprocess,urllib.request
+          repo='darknigthmare/multiverse-breach'
+          assert os.environ['GITHUB_REPOSITORY']==repo
+          assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()=='2b66d67770d46a8c43cd5be3658a6b0908d6ad4c'
+          evidence=pathlib.Path('/tmp/tactics-integration');evidence.mkdir()
+          def blob(sha):
+              req=urllib.request.Request(f'https://api.github.com/repos/{repo}/git/blobs/{sha}',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+              with urllib.request.urlopen(req,timeout=30) as response: data=base64.b64decode(json.load(response)['content'])
+              assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()==sha
+              return data
+          def apply(data,name):
+              p=evidence/name;p.write_bytes(data)
+              subprocess.run(['git','apply','--check','--unidiff-zero',str(p)],check=True)
+              subprocess.run(['git','apply','--unidiff-zero',str(p)],check=True)
+          source=['45269a2ac76b2b12ee7d9ff9b403d21d6343c013','3b3082ddd24da534ec23daebc1152eaa2adbcbfb','1c75eb65d870feddcff5ed3de27fa151c7909fd7','e7d67aee0e259d6806e9b68968533c5ee5dfa4a9','71ee6bc3f73cf6c72baaed85814241130e0420fe']
+          compressed=base64.b64decode(b''.join(map(blob,source)),validate=True)
+          assert hashlib.sha256(compressed).hexdigest()=='829ac19150e3a8d98c1914ed37ab9deae9c2484b2178b3b346cd2d63cf9bd653'
+          original=lzma.decompress(compressed);assert len(original)==90786
+          apply(original,'reviewed-concurrent.patch')
+          p=pathlib.Path('scripts/browserTacticsReliability.py');text=p.read_text()
+          for label in ['HEAL','CLEANSE','REVIVE']:
+              old=f"re.compile('QA {label}')";assert text.count(old)==1
+              text=text.replace(old,f"re.compile('QA {label}', re.I)")
+          p.write_text(text)
+          overlay=blob('48d61dea4ff1dacf1403f38945fa1a3cc7d36e97')
+          assert hashlib.sha256(overlay).hexdigest()=='89cbfeec9deac7216cc0b14f7185f772ffc5e952539d7dd80184a6c087423ee7'
+          apply(overlay,'reviewed-fixture.patch')
+          chunks=['c5cc2a799e9c896df0baff8b2b415c263460b047','abf555a953803e4fe8582d9ec3f83734466c9e9a','8af045cbe936f9b9410c1c79b7101af30354cf53','ad496382d7432afce7f38f6a93bbf8efad6c71f8','d23178db508e85f6ba423da2dbe70fca67fb57ad','241ad4b5204387c74ad0ead6073ed1026977d717']
+          delta=gzip.decompress(base64.b64decode(b''.join(map(blob,chunks)),validate=True))
+          assert hashlib.sha256(delta).hexdigest()=='5497989477642a9a624ae62af6f9b1a0a5021446abb9971cf8a44d3ff2cfb2cc'
+          apply(delta,'reviewed-integration.patch')
+          allowed=['.github/workflows/audit-reliability.yml','docs/audits/tactics-integration-2026-10-16.md','docs/audits/tactics-reliability-2026-10-16.md','package.json','scripts/auditTacticsLifecycle.test.mjs','scripts/auditTacticsReliability.test.mjs','scripts/auditTacticsSupport.test.mjs','scripts/browserTacticsReliability.py','scripts/customBattle.test.mjs','scripts/fixtures/rpgLifecycleHarness.jsx','scripts/fixtures/tactics-lifecycle.html','scripts/fixtures/tacticsLifecycleHarness.jsx','src/components/GameCanvas.jsx','src/components/TacticsSupportPanel.jsx','src/game/engineTactics.js','src/game/tacticsSupport.js']
+          subprocess.run(['git','add','--',*allowed],check=True)
+          assert sorted(subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines())==sorted(allowed)
+          files={p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest() for p in allowed}
+          assert hashlib.sha256(json.dumps(files,sort_keys=True).encode()).hexdigest()=='b6ec4b08117d4762779e407650fa71a5611080e0925b3ed5514e2261d22cac6a'
+          (evidence/'allowed.json').write_text(json.dumps(allowed));(evidence/'files.json').write_text(json.dumps(files,sort_keys=True))
+          print('16 reviewed files match the locally tested source hashes; no branch ref updated.')
+          PY
+      - run: npm ci --no-audit --no-fund
+      - name: Install isolated browser test tools
+        run: |
+          python3 -m venv /tmp/tactics-tools
+          /tmp/tactics-tools/bin/pip install playwright==1.57.0 pyyaml==6.0.2
+          /tmp/tactics-tools/bin/python -m playwright install --with-deps chromium
+      - name: Run the permanent source checks on the exact reconciled files
+        run: |
+          /tmp/tactics-tools/bin/python - <<'PY'
+          import pathlib,subprocess,yaml
+          root=pathlib.Path('/tmp/tactics-integration')
+          steps=yaml.safe_load(pathlib.Path('.github/workflows/audit-reliability.yml').read_text())['jobs']['reliability']['steps']
+          names=['Derived index contract and reliability tests','Existing combat and save contracts','Lint changed modules and tests','Compile source snapshot (not full artwork publication)']
+          for index,name in enumerate(names):
+              command=next(s['run'] for s in steps if s.get('name')==name).replace('/tmp/reliability-evidence','/tmp/tactics-integration')
+              with (root/f'check-{index}.log').open('w') as log:
+                  p=subprocess.run(['bash','-euo','pipefail','-c',command],stdout=log,stderr=subprocess.STDOUT)
+              print(name,p.returncode,flush=True)
+              if p.returncode: raise SystemExit(p.returncode)
+          PY
+      - name: Real browser controls with synthetic states and no real accounts
+        run: |
+          set -euo pipefail
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/tactics-integration/browser-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for n in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          /tmp/tactics-tools/bin/python scripts/browserTacticsReliability.py --evidence /tmp/tactics-integration/tactics-browser
+          /tmp/tactics-tools/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/tactics-integration/rpg-browser
+          /tmp/tactics-tools/bin/python scripts/browserAuditFollowup.py --evidence /tmp/tactics-integration/auth-browser
+      - name: Store verified source blobs only after all checks succeed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,urllib.request
+          root=pathlib.Path('/tmp/tactics-integration');allowed=json.loads((root/'allowed.json').read_text());expected=json.loads((root/'files.json').read_text());out=[]
+          for p in allowed:
+              data=pathlib.Path(p).read_bytes();assert hashlib.sha256(data).hexdigest()==expected[p]
+              body=json.dumps({'content':data.decode(),'encoding':'utf-8'}).encode()
+              req=urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',data=body,method='POST',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
+              with urllib.request.urlopen(req,timeout=30) as response: sha=json.load(response)['sha']
+              assert sha==hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+              out.append({'path':p,'mode':'100644','type':'blob','sha':sha,'sha256':expected[p]})
+          (root/'verified-blobs.json').write_text(json.dumps(out,indent=2))
+          print('Verified source blobs stored. No branch update, merge, production deployment or account change.')
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: tactics-integration-evidence
+          path: /tmp/tactics-integration/
+          retention-days: 7
