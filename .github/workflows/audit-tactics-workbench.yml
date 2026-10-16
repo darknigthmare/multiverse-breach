@@ -1,17 +1,14 @@
-name: Tactical validation workbench
+name: Tactical source reconciliation
 on:
   push:
     branches: [codex/audit-corrections-2026-10-16]
     paths: [.github/workflows/audit-tactics-workbench.yml]
 permissions:
-  contents: write
-concurrency:
-  group: tactics-workbench-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  contents: read
 jobs:
-  reliability:
+  snapshot:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
@@ -22,8 +19,8 @@ jobs:
             !/*/
             /src/
             /scripts/
-            /api/
-            /supabase/
+            /.github/workflows/
+            /docs/audits/
             /public/sprites/generated/heroes/half-life/freeman.png
             /public/sprites/generated/heroes/portal/chell.png
             /public/sprites/generated/heroes/stargate/sam-carter.png
@@ -32,115 +29,13 @@ jobs:
             /public/sprites/generated/heroes/resident-evil/jill.png
             /public/sprites/generated/heroes/harry-potter/hermione.png
             /public/sprites/generated/heroes/nexus-de-convergence/arca-mirelle-complete/arca-mirelle-tactics.png
-            **/*.json
-            **/*.jsonl
-            **/*.md
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: 22
-          cache: npm
-      - name: Apply checksum-pinned tactical changes
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Archive reviewed source families only
         run: |
-          python3 - <<'PY'
-          import base64,gzip,hashlib,json,os,subprocess,urllib.request
-          from pathlib import Path
-          repo='darknigthmare/multiverse-breach'
-          parts=['3f53b2252f93e06f1d68633f6b1537f8bbd2c59b','aedf1c43f7627a1306d77dee2689423985b11d44','1d835c80a5d0e212e9aa5c4b57ca49d9051c01d4','625665bff2baaac32409ccae2e19aa20194c3b6c']
-          expected=['3f53b2252f93e06f1d68633f6b1537f8bbd2c59b','aedf1c43f7627a1306d77dee2689423985b11d44','1d835c80a5d0e212e9aa5c4b57ca49d9051c01d4','95d05c6f201052b3351e5e935f8e631c3291de89']
-          chunks=[]
-          for i,sha in enumerate(parts):
-              request=urllib.request.Request(f'https://api.github.com/repos/{repo}/git/blobs/{sha}',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
-              with urllib.request.urlopen(request,timeout=30) as response: data=json.load(response)
-              part=base64.b64decode(data['content']).decode('ascii')
-              if i==3: part=part.replace('Hz93cnxxcm3EPL','Hz93cnxxcm3yEPL')
-              raw=part.encode('ascii')
-              assert hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()==expected[i], 'Fragment transport mismatch'
-              chunks.append(part)
-          patch=gzip.decompress(base64.b64decode(''.join(chunks),validate=True))
-          assert hashlib.sha256(patch).hexdigest()=='ecce5d7098b249be7b8f6188313ee371411eec8578b69cd8077c217a759d14d4', 'Reviewed patch checksum mismatch'
-          Path('/tmp/tactics.patch').write_bytes(patch)
-          allowed=['src/game/engineTactics.js', 'src/components/GameCanvas.jsx', 'scripts/customBattle.test.mjs', 'scripts/auditTacticsTurnSafety.test.mjs', 'scripts/fixtures/tacticsTurnHarness.jsx', 'scripts/fixtures/tactics-turns.html', 'scripts/browserTacticsTurns.py', 'package.json', '.github/workflows/audit-reliability.yml', 'docs/audits/tactics-turn-safety-2026-10-16.md']
-          actual=[line.split('\t',2)[2] for line in subprocess.check_output(['git','apply','--numstat','/tmp/tactics.patch'],text=True).splitlines()]
-          assert sorted(actual)==sorted(allowed), 'Patch paths differ from reviewed paths'
-          subprocess.run(['git','apply','--check','/tmp/tactics.patch'],check=True)
-          subprocess.run(['git','apply','/tmp/tactics.patch'],check=True)
-          Path('/tmp/tactics-paths.json').write_text(json.dumps(allowed))
-          print('Reviewed patch and ten explicit paths verified and applied.')
-          PY
-      - run: npm ci --no-audit --no-fund
-      - name: Derived index contract and reliability tests
-        run: |
-          set -euo pipefail
-          mkdir -p /tmp/reliability-evidence
-          npm run sprites:availability:check
-          npm run test:audit-reliability | tee /tmp/reliability-evidence/reliability.log
-          npm run test:audit-followup | tee /tmp/reliability-evidence/followup.log
-          npm run test:audit-tactics | tee /tmp/reliability-evidence/tactics-safety.log
-          npm run test:audit-combat | tee /tmp/reliability-evidence/combat-regressions.log
-          npm run test:polish | tee /tmp/reliability-evidence/polish.log
-      - name: Existing combat and save contracts
-        run: |
-          set -euo pipefail
-          node --test --test-concurrency=1 scripts/combatEffectRegressions.test.mjs scripts/tacticsMissionObjectives.test.mjs scripts/customBattle.test.mjs scripts/canonRexAttackPatterns.test.mjs scripts/localSaveGuard.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/smashCanonAbilityProfiles.test.mjs scripts/smashObjectiveResolution.test.mjs scripts/canonEncounterExternalDamage.test.mjs scripts/rpgTargeting.test.mjs scripts/rpgTargetingPresentation.test.mjs scripts/canonRaamEncounter.test.mjs scripts/canonPiratesCurseEncounter.test.mjs scripts/canonPiratesPlayableJackCurse.test.mjs scripts/portalBoosterEngine.test.mjs scripts/portalBoosterEconomy.test.mjs | tee /tmp/reliability-evidence/existing-contracts.log
-          node --test --test-concurrency=1 scripts/auditCombatReliability.test.mjs scripts/tacticsMissionObjectives.test.mjs scripts/tacticalFighterFacing.test.mjs scripts/tacticsEscort.test.mjs scripts/customBattle.test.mjs scripts/canonRexAttackPatterns.test.mjs scripts/scarabEncounterMechanics.test.mjs scripts/canonRexEncounter.test.mjs scripts/canonEncounterExternalDamage.test.mjs scripts/canonBlackPearlSourceKits.test.mjs scripts/combatEffectRegressions.test.mjs | tee /tmp/reliability-evidence/tactics-existing.log
-      - name: Lint changed modules and tests
-        run: >-
-          node node_modules/oxlint/bin/oxlint
-          scripts/auditTacticsTurnSafety.test.mjs scripts/fixtures/tacticsTurnHarness.jsx
-          src/App.jsx src/components/AuthPanel.jsx src/components/GameCanvas.jsx src/components/HubScreen.jsx
-          src/game/cloudSave.js src/game/cloudTransport.js src/game/cloudOperationEpoch.js
-          src/game/progressCalendar.js src/game/safeStorage.js src/game/saveRecovery.js src/game/saveValidation.js
-          src/game/localSaveGuard.js src/game/engineTactics.js src/game/engineSmash.js src/game/combatHealing.js
-          src/main.jsx src/components/AppBootstrap.jsx src/components/AuthCallbackScreen.jsx src/game/authRecovery.js
-          scripts/auditAuthRecovery.test.mjs scripts/auditFollowupRegressions.test.mjs scripts/progressionRuntimeIntegration.test.mjs
-          scripts/auditApplicationIntegration.test.mjs scripts/auditCloudReliability.test.mjs
-          scripts/auditCombatReliability.test.mjs scripts/auditSaveCalendar.test.mjs scripts/auditSpriteAvailability.test.mjs
-          src/game/engineRpg.js src/game/rpgTargeting.js src/game/rpgSupport.js src/game/combatEventItem.js
-          src/game/portalBoosterEngine.js src/components/PortalScreen.jsx src/components/RpgTargetingPanel.jsx
-          scripts/auditRpgLifecycle.test.mjs scripts/auditEventConsumption.test.mjs scripts/fixtures/rpgLifecycleHarness.jsx
-          scripts/buildSpriteAvailability.mjs scripts/canonRexAttackPatterns.test.mjs
-          scripts/cloudReconciliationRace.test.mjs scripts/combatEffectRegressions.test.mjs scripts/customBattle.test.mjs
-      - name: Compile source snapshot (not full artwork publication)
-        run: |
-          set -euo pipefail
-          node node_modules/vite/bin/vite.js build | tee /tmp/reliability-evidence/source-build.log
-          echo 'This job checks source and JSON manifests. The unchanged full production prebuild remains responsible for artwork/audio validation.' >> "$GITHUB_STEP_SUMMARY"
-      - name: Browser authentication regressions (simulated transport, no accounts)
-        run: |
-          set -euo pipefail
-          python3 -m venv /tmp/multiverse-playwright
-          /tmp/multiverse-playwright/bin/pip install playwright==1.57.0
-          /tmp/multiverse-playwright/bin/python -m playwright install --with-deps chromium
-          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/reliability-evidence/browser-server.log 2>&1 &
-          SERVER_PID=$!
-          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
-          for attempt in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
-          /tmp/multiverse-playwright/bin/python scripts/browserAuditFollowup.py --evidence /tmp/reliability-evidence/browser | tee /tmp/reliability-evidence/browser.log
-          /tmp/multiverse-playwright/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/reliability-evidence/rpg-browser | tee /tmp/reliability-evidence/rpg-browser.log
-          /tmp/multiverse-playwright/bin/python scripts/browserTacticsTurns.py --evidence /tmp/reliability-evidence/tactics-browser | tee /tmp/reliability-evidence/tactics-browser.log
-      - name: Store tested source blobs without moving any branch
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          python3 - <<'PY'
-          import base64,hashlib,json,os,urllib.request
-          from pathlib import Path
-          out=[]
-          for name in json.loads(Path('/tmp/tactics-paths.json').read_text()):
-              raw=Path(name).read_bytes()
-              expected=hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
-              request=urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',data=json.dumps({'content':base64.b64encode(raw).decode(),'encoding':'base64'}).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'},method='POST')
-              with urllib.request.urlopen(request,timeout=30) as response: blob=json.load(response)
-              assert blob['sha']==expected, 'Published blob differs from tested source'
-              out.append({'path':name,'sha':expected,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw)})
-          Path('/tmp/reliability-evidence/blob-map.json').write_text(json.dumps(out,indent=2))
-          print('Ten tested blobs stored; no branch/ref has been updated by this workflow.')
-          PY
+          mkdir -p /tmp/tactical-reconciliation
+          git rev-parse HEAD > /tmp/tactical-reconciliation/commit.txt
+          tar -czf /tmp/tactical-reconciliation/current-source.tgz src scripts .github/workflows docs/audits public/sprites/generated/heroes package.json package-lock.json
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        if: always()
         with:
-          name: tactics-validated-${{ github.run_id }}
-          path: /tmp/reliability-evidence/
-          retention-days: 7
+          name: tactical-current-source-${{ github.run_id }}
+          path: /tmp/tactical-reconciliation/
+          retention-days: 3
