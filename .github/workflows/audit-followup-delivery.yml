@@ -1,0 +1,90 @@
+name: Audit follow-up delivery
+on:
+  push:
+    branches: [codex/audit-corrections-2026-10-16]
+    paths: [.github/workflows/audit-followup-delivery.yml]
+permissions:
+  contents: write
+jobs:
+  deliver:
+    if: github.ref == 'refs/heads/codex/audit-corrections-2026-10-16'
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: codex/audit-corrections-2026-10-16
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/
+            /src/
+            /scripts/
+            /api/
+            /supabase/
+            **/*.json
+            **/*.jsonl
+            **/*.md
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - name: Verify and apply reviewed patch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          mkdir -p /tmp/followup-evidence
+          : > /tmp/followup.b64
+          for blob in 524f0e3bd78176a603a48926fc4738ce11b11275 b7b115e210bd7bad325dd32e8941976ef1649b3f d1a34d11b9fbed2d3c1faec4e69fe45d03dfc8bc 4a089e80ed938e0c10cf771e45c2b1925aeb852b; do
+            gh api "repos/$GITHUB_REPOSITORY/git/blobs/$blob" --jq .content | tr -d '\n' | base64 -d >> /tmp/followup.b64
+          done
+          base64 -d /tmp/followup.b64 > /tmp/followup.patch.gz
+          echo '2d2ca02780b1e8af5845c4601302502421b0b011bc946638a6b1baef10e80454  /tmp/followup.patch.gz' | sha256sum -c -
+          gzip -dc /tmp/followup.patch.gz > /tmp/followup.patch
+          echo '0c98a5c0966d61cca006e67c2dc8988a8e85b2251e77f5abd3e14a5e3b1d1a74  /tmp/followup.patch' | sha256sum -c -
+          git apply --check /tmp/followup.patch
+          git apply /tmp/followup.patch
+      - run: npm ci --no-audit --no-fund
+      - name: New and existing regression groups
+        run: |
+          set -euo pipefail
+          npm run sprites:availability:check
+          npm run test:audit-reliability | tee /tmp/followup-evidence/reliability.log
+          npm run test:audit-followup | tee /tmp/followup-evidence/followup.log
+          npm run test:polish | tee /tmp/followup-evidence/polish.log
+          node --test --test-concurrency=1 scripts/combatEffectRegressions.test.mjs scripts/tacticsMissionObjectives.test.mjs scripts/customBattle.test.mjs scripts/canonRexAttackPatterns.test.mjs scripts/localSaveGuard.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/smashCanonAbilityProfiles.test.mjs scripts/smashObjectiveResolution.test.mjs scripts/canonEncounterExternalDamage.test.mjs | tee /tmp/followup-evidence/combat.log
+      - name: Lint and compile
+        run: |
+          set -euo pipefail
+          node node_modules/oxlint/bin/oxlint src/App.jsx src/components/AuthPanel.jsx src/components/AuthCallbackScreen.jsx src/components/AppBootstrap.jsx src/main.jsx src/game/cloudSave.js src/game/cloudTransport.js src/game/authRecovery.js src/game/combatHealing.js src/game/engineSmash.js scripts/auditAuthRecovery.test.mjs scripts/auditFollowupRegressions.test.mjs scripts/buildSpriteAvailability.mjs scripts/progressionRuntimeIntegration.test.mjs | tee /tmp/followup-evidence/lint.log
+          node node_modules/vite/bin/vite.js build | tee /tmp/followup-evidence/build.log
+      - name: Real Chromium UI with simulated Auth only
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/multiverse-playwright
+          /tmp/multiverse-playwright/bin/pip install playwright==1.57.0
+          /tmp/multiverse-playwright/bin/python -m playwright install --with-deps chromium
+          node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4173 --strictPort > /tmp/followup-evidence/browser-server.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          /tmp/multiverse-playwright/bin/python scripts/browserAuditFollowup.py --evidence /tmp/followup-evidence/browser | tee /tmp/followup-evidence/browser.log
+      - name: Commit only reviewed source paths to the existing PR branch
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/audits/reliability-followup-2026-10-16.md index.html package.json scripts/auditAuthRecovery.test.mjs scripts/auditFollowupRegressions.test.mjs scripts/browserAuditFollowup.py scripts/buildSpriteAvailability.mjs scripts/progressionRuntimeIntegration.test.mjs src/App.jsx src/components/AppBootstrap.jsx src/components/AuthCallbackScreen.css src/components/AuthCallbackScreen.jsx src/components/AuthPanel.jsx src/game/authRecovery.js src/game/cloudSave.js src/game/cloudTransport.js src/game/combatHealing.js src/game/engineSmash.js src/main.jsx
+          git diff --cached --name-only -z | xargs -0 sha256sum > /tmp/followup-evidence/published-files.sha256
+          git diff --cached --stat > /tmp/followup-evidence/diff-stat.txt
+          git commit -m 'fix: complete account recovery, address review and correct Smash scoring'
+          git push origin HEAD:refs/heads/codex/audit-corrections-2026-10-16
+          git rev-parse HEAD > /tmp/followup-evidence/delivered-commit.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: audit-followup-evidence
+          path: /tmp/followup-evidence/
+          retention-days: 7
