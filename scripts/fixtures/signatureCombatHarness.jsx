@@ -17,7 +17,7 @@ prototype.update = function (...args) { audit.engine = this; return update.apply
 const foe = { id: 'signature-fixture-enemy', name: 'QA target', universe, hp: 5000, atk: 1, spd: 1, color: '#888888' };
 const stage = { id: 'qa-signature', name: 'Synthetic signature fixture', universe, mode, disableHazards: true,
   customBattle: { singleRoster: true, opponentControl: 'p2', enemyData: { customRoster: [foe], monsters: [foe], bosses: [], worldBoss: null } } };
-function Harness() {
+export function Harness() {
   const [mounted, setMounted] = useState(true);
   return <><header><p>QA synthetic state; real GameCanvas, controls, renderer and engines.</p><button id="qa-unmount" onClick={() => setMounted(false)}>QA unmount</button></header>
     {mounted && <GameCanvas lang={lang} playerProfile={{ name: 'QA' }} activeTeam={[actorId]} stage={stage}

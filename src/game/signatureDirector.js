@@ -33,9 +33,10 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     sequence = null;
     if (!current) return;
     // Never undo death/hit states or a native action that has already launched.
-    if (current.actor.state === 'signature') {
-      current.actor.state = current.previousState;
+    if (current.lockHeld) {
+      if (current.actor.state === 'signature') current.actor.state = current.previousState;
       current.actor.actionPending = false;
+      current.lockHeld = false;
     }
     current.cancelled = reason || null;
   };
@@ -43,7 +44,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     if (blocked() || sequence || !sideOf(actor) || !eligibleState(actor)) return false;
     sequence = { serial: ++sequenceNumber, definition, actor, targets: [...targets], commit,
       native, action, validate, tick: 0, hit: 0, committed: false, previousState: actor.state,
-      side: sideOf(actor), originalRosters: roster(), actorHp: actor.currentHp };
+      side: sideOf(actor), lockHeld: true };
     actor.state = 'signature';
     actor.actionPending = true;
     engine.playSfx?.('portal');
@@ -53,16 +54,24 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     const state = eventReadiness(event, actor);
     if (!state.ready) return false;
     const d = state.definition;
+    // Keep only positions at which a creature actually attacked. Its final blast
+    // must not vanish simply because that prey died before the last contact.
+    const lastImpactPositions = new Map();
     const started = begin(d, actor, state.targets, hit => {
-      const valid = state.targets.filter(target => roster().includes(target) && alive(target));
+      const currentTargets = d.targetSide === 'ally' ? engine.heroes : enemiesOf(actor);
+      const valid = state.targets.filter(target => currentTargets.includes(target) && alive(target));
       if (d.shield) valid.forEach(target => grantBattleItemShield(target, d.shield));
       else valid.forEach(target => {
+        if (!alive(actor)) return;
+        if (Number.isFinite(target.x) && Number.isFinite(target.y)) {
+          lastImpactPositions.set(target, { x: target.x, y: target.y });
+        }
         // Go through the native damage dispatcher, including all boss locks.
         engine.applyDamage(actor, target, d.totalDamage / d.hits, ...(mode === 'Smash' ? [8] : []));
       });
       if (hit === d.hits && d.friendlyBlastRadius && !engine.gameOver) {
         engine.heroes.filter(alive).forEach(ally => {
-          if (valid.some(target => Math.hypot(target.x - ally.x, target.y - ally.y) <= d.friendlyBlastRadius)) {
+          if ([...lastImpactPositions.values()].some(point => Math.hypot(point.x - ally.x, point.y - ally.y) <= d.friendlyBlastRadius)) {
             engine.applyDamage(actor, ally, d.friendlyBlastDamage, ...(mode === 'Smash' ? [5] : []));
           }
         });
@@ -80,7 +89,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     const original = engine[key];
     engine[key] = (...args) => replacement(original, ...args);
   };
-  const nativeMelee = (original, actor, abilityType, args) => {
+  const nativeMelee = (original, actor, abilityType, args, resolveActiveActor = null) => {
     if (resolving) return original.apply(engine, args);
     if (sequence || blocked()) return false;
     const d = abilityType === 'special' && describeNativeSignature(actor);
@@ -95,15 +104,21 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
       // Original spatial rules, source ammunition and hit dispatcher remain authoritative.
       try { original.apply(engine, args); }
       finally { actor.specialCharge = 0; }
-    }, { native: true, action: actor.special, validate: () => actor.special === d.action
-      && candidates.every(target => enemiesOf(actor).includes(target))
-      && enemiesOf(actor).every(target => candidates.includes(target)) });
+    }, { native: true, action: actor.special, validate: () => {
+      if (actor.special !== d.action || (resolveActiveActor && resolveActiveActor() !== actor)) return false;
+      const currentCandidates = enemiesOf(actor);
+      if (!candidates.every(target => currentCandidates.includes(target))
+        || !currentCandidates.every(target => candidates.includes(target))) return false;
+      const currentProfile = getSmashAbilityProfile(actor, abilityType);
+      const currentTargets = getSmashAbilityTargets(actor, currentCandidates, currentProfile);
+      return targets.length === currentTargets.length && targets.every((target, index) => currentTargets[index] === target);
+    } });
     if (started) actor.specialCharge = 0;
     return started;
   };
   if (mode === 'Smash') {
     wrap('triggerAbility', (original, actor, abilityType) => nativeMelee(original, actor, abilityType, [actor, abilityType]));
-    wrap('triggerOpponentAbility', (original, abilityType) => engine.isLocalP2 ? nativeMelee(original, engine.getActiveOpponent?.(), abilityType, [abilityType]) : false);
+    wrap('triggerOpponentAbility', (original, abilityType) => engine.isLocalP2 ? nativeMelee(original, engine.getActiveOpponent?.(), abilityType, [abilityType], () => engine.getActiveOpponent?.()) : false);
   }
   if (mode === 'RPG') wrap('executeRpgAction', (original, context, selectedTargetIds) => {
     if (resolving) return original.call(engine, context, selectedTargetIds);
@@ -132,7 +147,8 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
   });
   // UI, gamepad, field items and source commands cannot mutate a frozen scene.
   for (const key of ['triggerCombatEvent', 'triggerMeleeAction', 'triggerEnemyAbility', 'beginTargeting',
-    'beginChargedMeleeAttack', 'releaseChargedMeleeAttack', 'triggerPiratesCurseAction', 'triggerRaamEncounterAction']) {
+    'beginChargedMeleeAttack', 'releaseChargedMeleeAttack', 'triggerPiratesCurseAction', 'triggerRaamEncounterAction',
+    'setActiveHero', 'setActiveOpponent', 'selectHero', 'selectEnemy']) {
     wrap(key, (original, ...args) => sequence && !resolving ? false : original.apply(engine, args));
   }
   wrap('cancelActorActions', (original, actor, ...args) => {
@@ -142,13 +158,15 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
   wrap('applyDamage', (original, ...args) => {
     const result = original.apply(engine, args);
     if (sequence && !alive(sequence.actor)) close('caster-ko');
+    else if (sequence?.lockHeld && sequence.actor.state !== 'signature') close('caster-interrupted');
     return result;
   });
   const advance = () => {
     const current = sequence;
     if (!current) return false;
     if (disposed || engine.disposed || engine.gameOver || !alive(current.actor) || sideOf(current.actor) !== current.side
-      || (!current.committed && current.actor.state !== 'signature') || (current.validate && !current.validate())) {
+      || (current.lockHeld && current.actor.state !== 'signature')
+      || (!current.committed && current.validate && !current.validate())) {
       close('interrupted'); return true;
     }
     if (engine.paused || engine.isTargetingPaused?.()) return true;
@@ -161,21 +179,19 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
       // Before the authoritative native executor runs, restore only our own lock.
       current.actor.state = current.previousState;
       current.actor.actionPending = false;
+      current.lockHeld = false;
       resolving = true;
       try { current.commit(current.hit); }
       catch (error) { close('error'); throw error; }
       finally { resolving = false; }
-      if (!current.native && alive(current.actor)) {
-        current.actor.state = 'signature'; current.actor.actionPending = true;
+      if (sequence === current && !current.native && alive(current.actor)) {
+        if (current.actor.state === current.previousState && !current.actor.actionPending) {
+          current.actor.state = 'signature'; current.actor.actionPending = true; current.lockHeld = true;
+        } else close('caster-interrupted');
       }
     }
     const finished = current.tick >= impactAt + (d.hits - 1) * d.hitGapTicks + d.outroTicks;
-    if (finished) {
-      if (!current.native && current.actor.state === 'signature') {
-        current.actor.state = current.previousState; current.actor.actionPending = false;
-      }
-      close();
-    }
+    if (finished && sequence === current) close();
     // Native RPG actions use the existing delayed callback queue after the reveal.
     return !(current.native && current.committed);
   };
@@ -208,10 +224,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
         phase: tick < d.windupTicks ? 'prepare' : tick < d.windupTicks + d.revealTicks ? 'reveal' : hit < d.hits ? 'impact' : 'return',
         color: d.color, icon: d.icon || null, fidelity: d.fidelity };
     },
-    cancel() {
-      if (sequence?.actor.state === 'signature') { sequence.actor.state = sequence.previousState; sequence.actor.actionPending = false; }
-      close('cancelled');
-    }
+    cancel() { close('cancelled'); }
   };
   engine.signatureDirector = director;
   return director;

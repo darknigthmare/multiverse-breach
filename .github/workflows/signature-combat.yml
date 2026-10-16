@@ -30,13 +30,13 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - name: Signature contracts and complete coverage inventory
+      - name: Signature contracts, interruption safety and coverage inventory
         run: |
           set -euo pipefail
           mkdir -p /tmp/signature-evidence
-          node --test scripts/signatureCombat.test.mjs | tee /tmp/signature-evidence/tests.log
+          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/signatureSafety.test.mjs | tee /tmp/signature-evidence/tests.log
           node scripts/signatureCoverage.mjs /tmp/signature-evidence/coverage.json | tee /tmp/signature-evidence/coverage.log
-          npx oxlint src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx | tee /tmp/signature-evidence/lint.log
+          npx oxlint --max-warnings 0 src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx | tee /tmp/signature-evidence/lint.log
           npx vite build | tee /tmp/signature-evidence/build.log
       - name: Chromium fixtures, no real accounts
         run: |
