@@ -1,0 +1,48 @@
+name: Summons source review
+on:
+  push:
+    branches: [feat/source-bound-summons-supers-20261016]
+    paths: [.github/workflows/summons-source-review.yml]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /tests/
+            /api/
+            /public/**/manifest.json
+      - name: Package only tracked code and public manifests
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os, subprocess, tarfile
+          paths = subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          allowed_roots = ('src/', 'scripts/', 'tests/', 'api/')
+          allowed_files = {'package.json','package-lock.json','vite.config.js','vite.config.mjs','eslint.config.js','eslint.config.mjs','index.html','README.md','AGENTS.md','LORE_BASELINE_CHECKLIST.txt'}
+          with tarfile.open('/tmp/summons-source.tar.gz','w:gz') as archive:
+              for path in paths:
+                  if not path or not os.path.isfile(path) or os.path.islink(path): continue
+                  allowed = path in allowed_files or (path.startswith(allowed_roots) and path.endswith(('.js','.jsx','.ts','.tsx','.mjs','.cjs','.json','.css','.html','.md'))) or (path.startswith('public/') and path.endswith('/manifest.json'))
+                  if allowed and '.env' not in path.split('/'):
+                      archive.add(path, arcname=path, recursive=False)
+          PY
+          git rev-parse HEAD > /tmp/summons-source-sha.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: summons-source-review
+          retention-days: 1
+          if-no-files-found: error
+          path: |
+            /tmp/summons-source.tar.gz
+            /tmp/summons-source-sha.txt
