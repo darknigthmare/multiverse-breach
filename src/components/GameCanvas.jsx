@@ -1,3 +1,4 @@
+import TacticsSupportPanel from './TacticsSupportPanel.jsx';
 import { resolveEquippedCombatEvent } from '../game/combatEventItem.js';
 import { applyCombatHealing } from '../game/combatHealing.js';
 import { drawCosmeticAtlasFrame } from '../game/renderer';
@@ -1619,6 +1620,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stage, activeTeam]);
 
+  const activateTacticsCell = (c, r) => {
+    if (sessionPausedRef.current || battleCompleted || stage.mode !== 'Tactics') return;
+    const engine = engineRef.current;
+    if (!engine?.canCommandActiveUnit?.()) return;
+    const result = engine.handleCellClick(c, r);
+    if (result?.type === 'move' && engine.isActiveCombatant?.() && !engine.gameOver) activateTacticalPickupAtCell(c, r);
+    setSelectedAction(engine.selectedAction);
+  };
+
   const handleCanvasClick = (e) => {
     if (sessionPausedRef.current) return;
     if (!['Tactics', 'RPG'].includes(stage.mode) || !engineRef.current) return;
@@ -1648,8 +1658,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const gridR = grid.y;
 
     if (gridC >= 0 && gridC < engine.cols && gridR >= 0 && gridR < engine.rows) {
-      const result = engine.handleCellClick(gridC, gridR);
-      if (result?.type === 'move') activateTacticalPickupAtCell(gridC, gridR);
+      activateTacticsCell(gridC, gridR);
     }
   };
 
@@ -1923,6 +1932,9 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       }
     }
   };
+
+  const tacticsInputLocked = stage.mode === 'Tactics' && (sessionPaused || battleCompleted || !engineRef.current?.canCommandActiveUnit?.());
+  const tacticsSupportState = stage.mode === 'Tactics' ? engineRef.current?.getSupportState?.() : null;
 
   // Check if active hero has an event item equipped
   const activeHeroStatic = HEROES_DB.find(h => h.id === activeHeroId);
@@ -2830,10 +2842,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 )}
               </div>
 
+              <TacticsSupportPanel state={tacticsSupportState} lang={lang} locked={tacticsInputLocked} onTarget={activateTacticsCell} />
               <div style={{ display: stage.mode === 'Smash' ? 'none' : 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 <button
                   onClick={() => handleActiveHeroAbility('simple')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
                 >
@@ -2843,7 +2856,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('secondary')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (sourceAmmunition && (activeHeroObj.sourceAmmoRemaining <= 0 || piratesCurseEncounter?.curseActive)) || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (sourceAmmunition && (activeHeroObj.sourceAmmoRemaining <= 0 || piratesCurseEncounter?.curseActive)) || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
@@ -2855,7 +2868,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('defense')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
                 >
@@ -2865,7 +2878,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('special')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className="btn-special"
                   title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
                   style={{
@@ -2906,12 +2919,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 {stage.mode === 'Tactics' && (
                   <button
                     onClick={() => {
-                      if (engineRef.current) {
-                        engineRef.current.endActiveTurn();
+                      if (!sessionPausedRef.current && engineRef.current?.skipActiveTurn?.()) {
                         sound.playSfx('confirm');
                       }
                     }}
                     className="btn-retro"
+                    disabled={tacticsInputLocked}
                     title={lang === 'fr' ? 'Termine le tour du heros actif sans autre action.' : 'End the active hero turn without another action.'}
                     style={{
                       gridColumn: 'span 2',

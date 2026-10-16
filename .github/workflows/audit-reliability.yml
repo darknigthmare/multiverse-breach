@@ -40,6 +40,7 @@ jobs:
           npm run test:audit-reliability | tee /tmp/reliability-evidence/reliability.log
           npm run test:audit-followup | tee /tmp/reliability-evidence/followup.log
           npm run test:audit-combat | tee /tmp/reliability-evidence/combat-regressions.log
+          npm run test:audit-tactics | tee /tmp/reliability-evidence/tactics-regressions.log
           npm run test:polish | tee /tmp/reliability-evidence/polish.log
       - name: Existing combat and save contracts
         run: |
@@ -56,6 +57,7 @@ jobs:
           scripts/auditAuthRecovery.test.mjs scripts/auditFollowupRegressions.test.mjs scripts/progressionRuntimeIntegration.test.mjs
           scripts/auditApplicationIntegration.test.mjs scripts/auditCloudReliability.test.mjs
           scripts/auditCombatReliability.test.mjs scripts/auditSaveCalendar.test.mjs scripts/auditSpriteAvailability.test.mjs
+          src/game/tacticsSupport.js src/components/TacticsSupportPanel.jsx scripts/auditTacticsReliability.test.mjs scripts/fixtures/tacticsLifecycleHarness.jsx
           src/game/engineRpg.js src/game/rpgTargeting.js src/game/rpgSupport.js src/game/combatEventItem.js
           src/game/portalBoosterEngine.js src/components/PortalScreen.jsx src/components/RpgTargetingPanel.jsx
           scripts/auditRpgLifecycle.test.mjs scripts/auditEventConsumption.test.mjs scripts/fixtures/rpgLifecycleHarness.jsx
@@ -66,7 +68,7 @@ jobs:
           set -euo pipefail
           node node_modules/vite/bin/vite.js build | tee /tmp/reliability-evidence/source-build.log
           echo 'This job checks source and JSON manifests. The unchanged full production prebuild remains responsible for artwork/audio validation.' >> "$GITHUB_STEP_SUMMARY"
-      - name: Browser authentication regressions (simulated transport, no accounts)
+      - name: Browser RPG, Tactics and authentication regressions (isolated fixtures)
         run: |
           set -euo pipefail
           python3 -m venv /tmp/multiverse-playwright
@@ -78,6 +80,7 @@ jobs:
           for attempt in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
           /tmp/multiverse-playwright/bin/python scripts/browserAuditFollowup.py --evidence /tmp/reliability-evidence/browser | tee /tmp/reliability-evidence/browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/reliability-evidence/rpg-browser | tee /tmp/reliability-evidence/rpg-browser.log
+          /tmp/multiverse-playwright/bin/python scripts/browserTacticsReliability.py --evidence /tmp/reliability-evidence/tactics-browser | tee /tmp/reliability-evidence/tactics-browser.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

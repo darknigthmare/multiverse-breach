@@ -1141,6 +1141,7 @@ test('Tactics hero AI accepts only targets resolved by a cardinal directional pr
     engine.activeUnit = hero;
     engine.activeUnitType = 'hero';
     scheduled.length = 0;
+    engine.actionPhase = 'move'; // Begin the second synthetic turn (endActiveTurn is stubbed).
     engine.runHeroAI();
     scheduled.shift()();
     assert.ok(enemy.currentHp < initialHp, 'hero AI skipped the aligned directional target');
@@ -1268,6 +1269,7 @@ test('Tactics enemy threats and AI respect directional attack profiles', () => {
     hero.gridY = 1;
     engine.activeUnit = enemy;
     engine.activeUnitType = 'enemy';
+    engine.actionPhase = 'enemy_ai'; // Begin the second synthetic turn.
     engine.runEnemyAI();
     scheduled.shift()();
     assert.ok(hero.currentHp < initialHp, 'AI did not fire once the target was aligned');
