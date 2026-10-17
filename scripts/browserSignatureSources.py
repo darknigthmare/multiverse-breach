@@ -36,9 +36,10 @@ with sync_playwright() as playwright:
                 page.evaluate('''() => {
                   const a=window.__sourceAudit,e=a.engine;
                   e.syncPreMatchFromServer?.(3000);e.completeMeleeIntros?.();
-                  for(const unit of [...e.heroes,...e.enemies]) Object.assign(unit,{state:'idle',stateTimer:0,action:null,actionPending:false,charging:false,guarding:false,ledge:null,atb:100,specialCharge:100,vx:0,vy:0,y:e.arena?.groundY||260});
+                  for(const unit of [...e.heroes,...e.enemies]) Object.assign(unit,{state:'idle',stateTimer:0,action:null,actionPending:false,charging:false,guarding:false,ledge:null,atb:0,specialCharge:0,vx:0,vy:0,y:e.arena?.groundY||260});
                   e.heroes[0].x=240;e.heroes[0].facing=1;e.enemies[0].x=270;e.enemies[0].facing=-1;
                   const actor=a.side==='player'?e.heroes[0]:e.enemies[0];
+                  Object.assign(actor,{atb:100,specialCharge:100});
                   if(a.definition.effect==='heal') actor.currentHp=Math.max(1,Math.round(actor.maxHp*0.2));
                   a.before={hero:e.heroes[0].currentHp,enemy:e.enemies[0].currentHp};
                   a.contacts=[];const damage=e.applyDamage;e.applyDamage=(...args)=>{a.contacts.push({target:args[1].name,base:args[2]});return damage(...args);};
@@ -46,7 +47,7 @@ with sync_playwright() as playwright:
                 page.wait_for_timeout(200)
                 if mode == 'RPG':
                     name = page.evaluate('window.__sourceAudit.definition.name')
-                    page.locator('button.btn-special').filter(has_text=re.compile(re.escape(name))).click()
+                    page.locator('button.btn-special').filter(has_text=re.compile(re.escape(name), re.IGNORECASE)).click()
                     page.get_by_role('button', name=re.compile('Confirmer les cibles|Confirm targets')).click()
                 else:
                     side = 'opponent' if '::' in source else 'player'
