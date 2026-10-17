@@ -50,7 +50,7 @@ const activate = mode => {
 
 test('wave 3 adds eight checked identities and leaves the original 88 unchanged', () => {
   assert.equal(Object.values(kits).filter(d => d.wave === 3).length, 8);
-  assert.equal(Object.values(kits).filter(d => d.wave !== 3).length, 88);
+  assert.equal(Object.values(kits).filter(d => !d.wave || d.wave === 2).length, 88);
   for (const d of Object.values(kits).filter(d => d.wave === 3)) {
     const original = template(d); assert.ok(original, d.key);
     const actor = { ...original, universe: d.universe }; const raw = JSON.stringify(original);

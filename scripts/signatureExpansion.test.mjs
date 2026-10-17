@@ -79,16 +79,22 @@ test('all registered source kits execute in both engines on each side', async t 
       if (d.effect === 'heal') actor.currentHp = Math.floor(actor.maxHp / 4);
       const targetBefore = target.currentHp;
       const before = d.effect === 'heal' ? actor.currentHp : target.currentHp;
+      const physicalDisc = mode === 'Smash' && d.projectile === 'returning-disc';
+      if (physicalDisc) actor.y = target.y = engine.groundY;
       const contacts = [];const damage = engine.applyDamage;engine.applyDamage = (...args) => { contacts.push(args);return damage(...args); };
       assert.equal(trigger(setup, mode, side), true, 'did not start');assert.equal(actor.specialCharge, 0);
       if (mode === 'RPG') assert.equal(actor.atb, 0);
       assert.equal(trigger(setup, mode, side), false, 'second input accepted');
       ticks(engine, d.windupTicks + d.revealTicks - 1);assert.equal(contacts.length, 0);
       ticks(engine, (d.hits - 1) * d.hitGapTicks + 1);
+      // The new disc is released first, then travels; retain the exact damage
+      // assertions after its short 30-pixel fixture flight, not at release.
+      const travelTicks = physicalDisc ? 5 : 0;
+      if (physicalDisc) ticks(engine, travelTicks);
       if (d.effect === 'heal') { assert.ok(actor.currentHp > before);assert.equal(target.currentHp, targetBefore); }
       else if (d.effect === 'guard') { assert.equal(contacts.length, 0);assert.equal(target.currentHp, targetBefore);assert.equal(engine.signatureDirector.getSupportState().length, 1); }
       else { assert.equal(contacts.length, d.hits);assert.ok(target.currentHp < before); }
-      ticks(engine, d.outroTicks - 1);assert.equal(actor.specialCharge, 0);assert.equal(engine.signatureDirector.busy, true);
+      ticks(engine, d.outroTicks - 1 - travelTicks);assert.equal(actor.specialCharge, 0);assert.equal(engine.signatureDirector.busy, true);
       ticks(engine, 1);assert.equal(engine.signatureDirector.busy, false);assert.equal(actor.actionPending, false);
     });
   }

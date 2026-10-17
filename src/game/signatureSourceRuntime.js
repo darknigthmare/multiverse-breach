@@ -1,3 +1,4 @@
+import { createSignatureReturningDiscs } from './signatureReturningDisc.js';
 import { createSignatureMedicSupport } from './signatureMedicSupport.js';
 import { prepareSourceSignature, resolveSourceSignature } from './signatureSourceKits.js';
 import { getSmashAbilityProfile, getSmashAbilityTargets } from './smashAbilityProfiles.js';
@@ -39,6 +40,8 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     return definition && actor.special?.sourceSignatureKey === definition.key
       && Number.isFinite(actor.special.dmg) && actor.special.dmg >= 0 ? definition : null;
   };
+  const flights = createSignatureReturningDiscs(engine, { sideOf, enemiesOf,
+    validAction: (actor, action, key) => actor.special === action && definitionFor(actor)?.key === key });
   const meleeTargets = actor => {
     const profile = getSmashAbilityProfile(actor, 'special');
     const definition = definitionFor(actor);
@@ -61,7 +64,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const side = sideOf(actor);
     const targets = mode === 'Smash' ? meleeTargets(actor)
       : side ? engine.getActionContext(actor, 'special', side).eligibleTargets : [];
-    const reason = blocked() || busy() ? 'locked' : definition.protection && support.active(actor) ? 'support-active'
+    const reason = blocked() || busy() ? 'locked' : flights.has(actor) ? 'projectile-active' : definition.protection && support.active(actor) ? 'support-active'
       : definition.protection && actor.medigunType && actor.medigunType !== 'stock' ? 'wrong-medigun' : !side || !eligibleState(actor) ? 'actor-unavailable'
       : !Number.isFinite(actor.specialCharge) || actor.specialCharge < 100 ? 'charge'
         : mode === 'RPG' && !engine.canUseAction(actor, 'special', side) ? 'atb'
@@ -85,9 +88,14 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (d.effect === 'damage' && (!Number.isFinite(attack) || attack <= 0 || action.dmg <= 0)) return false;
     const total = d.effect === 'damage' ? attack * action.dmg : 0;
     if (!Number.isFinite(total)) return false;
+    const physicalDisc = mode === 'Smash' && d.projectile === 'returning-disc';
     const descriptor = { ...d, id: d.key, action, name: { fr: d.name, en: d.name },
       color: d.color || action.color || actor.secondaryColor || actor.color || '#39c5bb' };
     const started = begin(descriptor, actor, targets, hit => {
+      if (physicalDisc) {
+        if (meleeTargets(actor).includes(targets[0])) flights.launch(actor, targets[0], d, total);
+        return;
+      }
       const current = d.protection ? targets.filter(target => support.canLink(actor, target, d))
         : mode === 'Smash' ? meleeTargets(actor) : candidates(actor).filter(alive);
       if (d.protection) {
@@ -108,7 +116,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
         }
       }
       engine.playSfx?.(d.effect === 'heal' ? 'shield' : d.delivery === 'melee' ? 'slash' : 'shoot');
-    }, { action, validateThroughSequence: true, validate: () => actor.special === action
+    }, { native: physicalDisc, action, validateThroughSequence: true, validate: () => actor.special === action
       && definitionFor(actor) === d && (!resolveActiveActor || resolveActiveActor() === actor) });
     if (started) {
       actor.specialCharge = 0;
@@ -204,5 +212,5 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (actor && triggerMelee(actor, 'special')) aiRecoveryTicks = SOURCE_ENEMY_RECOVERY_TICKS;
   };
   prepareRoster();
-  return { prepareRoster, definitionFor, readiness, triggerRpg, triggerMelee, previewRpg, tickEnemyAI, support, filterRpgContext };
+  return { prepareRoster, definitionFor, readiness, triggerRpg, triggerMelee, previewRpg, tickEnemyAI, support, filterRpgContext, flights };
 }

@@ -1,9 +1,11 @@
+import { SIGNATURE_WAVE4_REFERENCES, SIGNATURE_WAVE4_ROWS } from './signatureSourceWave4.js';
 import { SIGNATURE_WAVE3_REFERENCES, SIGNATURE_WAVE3_ROWS } from './signatureSourceWave3.js';
 import { SIGNATURE_WAVE2_REFERENCES, SIGNATURE_WAVE2_ROWS } from './signatureSourceWave2.js';
 // Explicit source identities only. No blanket franchise abilities or 1:1 claim.
 // Source URLs document identity/attack-family evidence, not our pixel choreography.
 export const SIGNATURE_SOURCE_REFERENCES = Object.freeze({
   ...SIGNATURE_WAVE2_REFERENCES,
+  ...SIGNATURE_WAVE4_REFERENCES,
   ...SIGNATURE_WAVE3_REFERENCES,
   ff7: 'https://guides.gamercorner.net/ffvii/limit-breaks/',
   ff8: 'https://guides.gamercorner.net/ffviii/limit-breaks/',
@@ -68,6 +70,7 @@ const rows = [
   enemy("Doom", "Cyberdemon Lord", "Tyrant Rocket Storm", "Cyberdemon Rocket Salvo", "barrage", 390, "doom", {"hits": 3, "shape": "multi", "distribution": "cycle"}),
   enemy("Doom", "Spider Mastermind Mother", "Plasma Pulse Ring", "Spider Mastermind Chaingun", "barrage", 380, "doom", {"hits": 3}),
   ...SIGNATURE_WAVE2_ROWS,
+  ...SIGNATURE_WAVE4_ROWS,
   ...SIGNATURE_WAVE3_ROWS
  ].map(row => ({
   hits: 1, shape: 'single', kind: 'personal', distribution: 'all', effect: 'damage', note: NOTE,

@@ -214,19 +214,22 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     const result = original.apply(engine, args);
     source.prepareRoster();
     source.support.advance();
+    source.flights.advance();
     source.tickEnemyAI();
     return result;
   });
   wrap('draw', (original, ...args) => {
     const result = original.apply(engine, args);
     source.support.draw(args[0]);
+    source.flights.draw(args[0]);
     return result;
   });
   if (typeof engine.dispose !== 'function') engine.dispose = () => { engine.disposed = true; };
-  wrap('dispose', (original, ...args) => { close('disposed'); disposed = true; usedEvents.clear(); source.support.dispose(); return original.apply(engine, args); });
+  wrap('dispose', (original, ...args) => { close('disposed'); disposed = true; usedEvents.clear(); source.support.dispose(); source.flights.dispose(); return original.apply(engine, args); });
   const director = {
     eventReadiness, triggerInvocation,
     getSupportState: () => source.support.snapshot(),
+    getProjectileState: () => source.flights.snapshot(),
     superReadiness(actor) {
       if (mode === 'Smash' && source.definitionFor(actor)) return source.readiness(actor);
       const descriptor = mode === 'Smash' && describeNativeSignature(actor);
@@ -246,6 +249,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
         name: localName(d.name, lang), kind: d.kind, tick, hit, hits: d.hits,
         duration: d.windupTicks + d.revealTicks + (d.hits - 1) * d.hitGapTicks + d.outroTicks,
         phase: tick < d.windupTicks ? 'prepare' : tick < d.windupTicks + d.revealTicks ? 'reveal' : hit < d.hits ? 'impact' : 'return',
+        projectile: mode === 'Smash' ? d.projectile || null : null,
         color: d.color, icon: d.icon || null, fidelity: d.fidelity, style: d.style || null, summonName: d.summonName || null, windupTicks: d.windupTicks, revealTicks: d.revealTicks };
     },
     cancel() { close('cancelled'); }
