@@ -15,6 +15,11 @@ cases = [
     ('RPG', 'lightning_ff13', 1280, 'en'), ('Smash', 'goku_dbz', 390, 'fr'),
     ('Smash', 'naruto_uzumaki_young', 1280, 'fr'), ('Smash', 'aerith_ff7', 390, 'en'),
     ('Smash', 'rinoa_ff8', 1280, 'fr'), ('Smash', 'Doom::Cyberdemon Lord', 390, 'en'),
+    ('RPG', 'hexen_parias', 390, 'fr'), ('RPG', 'quake_franchise_ranger', 1280, 'en'),
+    ('RPG', 'leia', 390, 'fr'), ('RPG', 'Star Wars::Count Dooku Sith Lord', 1280, 'en'),
+    ('Smash', 'ahsoka_adult', 390, 'fr'), ('Smash', 'Star Wars::Droideka Shield Droid', 1280, 'en'),
+    ('Smash', 'Hexen::Traductus', 390, 'fr'), ('Smash', 'Quake::Strogg Gladiator', 1280, 'en'),
+    ('Smash', 'team_fortress_2_scout', 390, 'fr'), ('Smash', 'Half-Life::Combine Gunship', 1280, 'en'),
 ]
 results = []
 with sync_playwright() as playwright:
@@ -37,7 +42,7 @@ with sync_playwright() as playwright:
                   const a=window.__sourceAudit,e=a.engine;
                   e.syncPreMatchFromServer?.(3000);e.completeMeleeIntros?.();
                   for(const unit of [...e.heroes,...e.enemies]) Object.assign(unit,{state:'idle',stateTimer:0,action:null,actionPending:false,charging:false,guarding:false,ledge:null,atb:0,specialCharge:0,vx:0,vy:0,y:e.arena?.groundY||260});
-                  e.heroes[0].x=240;e.heroes[0].facing=1;e.enemies[0].x=270;e.enemies[0].facing=-1;
+                  e.heroes[0].x=240;e.heroes[0].facing=1;e.enemies[0].x=240+Math.max(30,(a.definition.minRange||0)+10);e.enemies[0].facing=-1;
                   const actor=a.side==='player'?e.heroes[0]:e.enemies[0];
                   Object.assign(actor,{atb:100,specialCharge:100});
                   if(a.definition.effect==='heal') actor.currentHp=Math.max(1,Math.round(actor.maxHp*0.2));
@@ -48,6 +53,14 @@ with sync_playwright() as playwright:
                 if mode == 'RPG':
                     name = page.evaluate('window.__sourceAudit.definition.name')
                     page.locator('button.btn-special').filter(has_text=re.compile(re.escape(name), re.IGNORECASE)).click()
+                    # The source card is tied to the real prepared action, with
+                    # no cost while inspecting or cancelling a target choice.
+                    card = page.locator('[data-source-profile]')
+                    assert card.count() == 1
+                    card.locator('summary').click()
+                    assert card.get_attribute('data-source-profile') == source
+                    assert card.locator('a').get_attribute('href').startswith('https://')
+                    assert page.evaluate("(() => {const a=window.__sourceAudit,e=a.engine;return (a.side==='player'?e.heroes[0]:e.enemies[0]).specialCharge})()") == 100
                     page.get_by_role('button', name=re.compile('Confirmer les cibles|Confirm targets')).click()
                 else:
                     side = 'opponent' if '::' in source else 'player'

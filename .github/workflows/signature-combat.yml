@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/signature-evidence
-          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/signatureSafety.test.mjs scripts/signatureExpansion.test.mjs | tee /tmp/signature-evidence/tests.log
+          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/signatureSafety.test.mjs scripts/signatureExpansion.test.mjs scripts/signatureWave2.test.mjs | tee /tmp/signature-evidence/tests.log
           node scripts/signatureCoverage.mjs /tmp/signature-evidence/coverage.json | tee /tmp/signature-evidence/coverage.log
           npx oxlint --max-warnings 0 src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/RpgTargetingPanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx scripts/fixtures/signatureSourceHarness.jsx | tee /tmp/signature-evidence/lint.log
           npx vite build | tee /tmp/signature-evidence/build.log

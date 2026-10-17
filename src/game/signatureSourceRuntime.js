@@ -33,7 +33,12 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const profile = getSmashAbilityProfile(actor, 'special');
     const definition = definitionFor(actor);
     if (!profile || !definition || !finitePosition(actor)) return [];
-    return getSmashAbilityTargets(actor, candidates(actor).filter(target => alive(target) && finitePosition(target)), profile)
+    // Filter a weapon's dead zone BEFORE nearest-target sorting and maxTargets.
+    // Otherwise a close invalid target hides a farther valid railgun target.
+    const minRange = Number.isFinite(definition.minRange) ? Math.max(0, definition.minRange) : 0;
+    const eligible = candidates(actor).filter(target => alive(target) && finitePosition(target)
+      && Math.hypot(target.x - actor.x, target.y - actor.y) >= minRange);
+    return getSmashAbilityTargets(actor, eligible, profile)
       .filter(target => definition.effect !== 'heal' || getCombatHealingAmount(target, target.maxHp * definition.healRatio) > 0);
   };
   const readiness = actor => {
@@ -111,7 +116,14 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (!preview || preview.abilityType !== 'special') return preview;
     const actor = [...engine.heroes, ...engine.enemies].find(unit => rpgUnitId(unit) === preview.actorId);
     const d = definitionFor(actor);
-    if (!d || d.effect !== 'damage') return preview;
+    if (!d) return preview;
+    const sourceProfile = { key: d.key, universe: d.universe, kind: d.kind,
+      summonName: d.summonName || null, continuity: d.requiredContinuity || null,
+      referenceUrl: d.referenceUrl, fidelity: d.fidelity };
+    const annotated = { ...preview, sourceProfile, sourceHits: d.hits, sourceDistribution: d.distribution };
+    // Healing previews keep the native cap/rounding; both effects expose the
+    // actual prepared action rather than the stale generic catalog label.
+    if (d.effect !== 'damage') return annotated;
     const targets = candidates(actor).filter(unit => preview.previewTargetIds.includes(rpgUnitId(unit)));
     const estimates = preview.estimates.map(estimate => {
       const index = targets.findIndex(unit => rpgUnitId(unit) === estimate.id);
@@ -137,7 +149,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
       };
       return { ...estimate, amount: damageFor(nominalHits, 1), min: damageFor(minHits, 0.9), max: damageFor(maxHits, 1.1) };
     });
-    return { ...preview, estimates, estimate: estimates, sourceHits: d.hits, sourceDistribution: d.distribution };
+    return { ...annotated, estimates, estimate: estimates };
   };
   const tickEnemyAI = () => {
     if (mode !== 'Smash' || engine.isLocalP2 || engine.paused || engine.gameOver || engine.disposed

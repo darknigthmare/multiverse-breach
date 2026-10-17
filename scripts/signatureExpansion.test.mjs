@@ -33,7 +33,7 @@ const make = (d, mode = 'RPG', side = 'player', cpu = false) => {
   const engine = new (mode === 'RPG' ? EngineRpg : EngineSmash)(760, 420, [leader], { customRoster: [opponent], monsters: [opponent], bosses: [] }, { add() {} }, () => {}, () => {}, stage);
   engine.syncPreMatchFromServer?.(3000);engine.completeMeleeIntros?.();
   for (const actor of [...engine.heroes, ...engine.enemies]) Object.assign(actor, { state: 'idle', stateTimer: 0, action: null, actionPending: false, charging: false, guarding: false, atb: 100, specialCharge: 100, vx: 0, vy: 0, y: 260 });
-  engine.heroes[0].x = 240;engine.heroes[0].facing = 1;engine.enemies[0].x = 270;engine.enemies[0].facing = -1;
+  engine.heroes[0].x = 240;engine.heroes[0].facing = 1;engine.enemies[0].x = 240 + Math.max(30, (d.minRange || 0) + 10);engine.enemies[0].facing = -1;
   install(engine, { mode });active.push(engine);
   const actor = side === 'player' ? engine.heroes[0] : engine.enemies[0];
   const target = side === 'player' ? engine.enemies[0] : engine.heroes[0];
@@ -46,7 +46,8 @@ const trigger = ({ engine, actor }, mode, side = 'player') => mode === 'RPG'
   : side === 'player' ? engine.triggerAbility(actor, 'special') : engine.triggerOpponentAbility('special');
 
 test('every authored identity exists and resolves only within its exact source universe', () => {
-  assert.equal(Object.keys(kits).length, 39);
+  assert.equal(Object.values(kits).filter(kit => kit.wave !== 2).length, 39);
+  assert.ok(Object.keys(kits).length >= 39);
   for (const d of Object.values(kits)) {
     const actor = template(d);const before = JSON.stringify(actor);assert.equal(resolve(actor), d, d.key);
     assert.equal(resolve({ ...actor, universe: 'Wrong universe' }), null, d.key);
@@ -70,7 +71,7 @@ test('unknown names and prototype-like IDs cannot acquire a source action', () =
   for (const id of ['constructor', '__proto__', '', 'unknown']) assert.equal(resolve({ id, name: 'Cloud Strife', universe: 'Final Fantasy VII', special: { name: 'Cloud Strife Origin Burst', dmg: 4 } }), null);
 });
 
-test('all 39 source kits execute in both engines on each side', async t => {
+test('all registered source kits execute in both engines on each side', async t => {
   for (const d of Object.values(kits)) for (const mode of ['RPG', 'Smash']) for (const side of ['player', 'enemy']) {
     await t.test(`${d.key} / ${mode} / ${side}`, () => {
       const setup = make(d, mode, side);const { engine, actor, target } = setup;

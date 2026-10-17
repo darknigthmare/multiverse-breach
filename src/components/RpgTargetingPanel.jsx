@@ -31,6 +31,18 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
               {' · '}{wait ? (fr ? 'Combat en attente' : 'Combat waiting') : (fr ? 'Combat actif' : 'Combat active')}
             </div>
           </div>
+          {targeting.sourceProfile && <details data-source-profile={targeting.sourceProfile.key}
+            style={{ marginBottom: 10, fontSize: 12, lineHeight: 1.5 }}>
+            <summary>{fr ? 'Fiche de la capacité utilisée' : 'Current ability source'}</summary>
+            <div>{targeting.sourceProfile.universe}{targeting.sourceProfile.continuity ? ` · ${targeting.sourceProfile.continuity}` : ''}</div>
+            {targeting.sourceProfile.summonName && <div>{fr ? 'Invocation : ' : 'Summon: '}{targeting.sourceProfile.summonName}</div>}
+            <div>{fr ? 'Coût : une ATB pleine et 100 % de charge spéciale, une seule fois après confirmation.' : 'Cost: full ATB and 100% special charge, once after confirmation.'}</div>
+            <div>{fr ? 'Famille d’attaque documentée ; dégâts, portée, contacts et animation adaptés au Nexus.' : 'Documented attack family; damage, range, contacts and animation adapted for the Nexus.'}</div>
+            {targeting.sourceProfile.referenceUrl?.startsWith('https://') && <a href={targeting.sourceProfile.referenceUrl}
+              target="_blank" rel="noopener noreferrer" style={{ color: '#a2ecff' }}>
+              {fr ? 'Consulter la référence' : 'Read the source reference'}
+            </a>}
+          </details>}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
             {targeting.eligibleTargets.map(target => {
               const affected = targeting.previewTargetIds.includes(target.id);

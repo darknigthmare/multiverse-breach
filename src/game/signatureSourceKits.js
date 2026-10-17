@@ -1,6 +1,8 @@
+import { SIGNATURE_WAVE2_REFERENCES, SIGNATURE_WAVE2_ROWS } from './signatureSourceWave2.js';
 // Explicit source identities only. No blanket franchise abilities or 1:1 claim.
 // Source URLs document identity/attack-family evidence, not our pixel choreography.
 export const SIGNATURE_SOURCE_REFERENCES = Object.freeze({
+  ...SIGNATURE_WAVE2_REFERENCES,
   ff7: 'https://guides.gamercorner.net/ffvii/limit-breaks/',
   ff8: 'https://guides.gamercorner.net/ffviii/limit-breaks/',
   ff13: 'https://guides.gamercorner.net/ffxiii/eidolons/',
@@ -63,6 +65,7 @@ const rows = [
   enemy("Doom", "Mancubus Heavy Demon", null, "Mancubus Fireball Salvo", "barrage", 320, "doom", {"hits": 6, "shape": "multi", "distribution": "cycle"}),
   enemy("Doom", "Cyberdemon Lord", "Tyrant Rocket Storm", "Cyberdemon Rocket Salvo", "barrage", 390, "doom", {"hits": 3, "shape": "multi", "distribution": "cycle"}),
   enemy("Doom", "Spider Mastermind Mother", "Plasma Pulse Ring", "Spider Mastermind Chaingun", "barrage", 380, "doom", {"hits": 3}),
+  ...SIGNATURE_WAVE2_ROWS
  ].map(row => ({
   hits: 1, shape: 'single', kind: 'personal', distribution: 'all', effect: 'damage', note: NOTE,
   delivery: row.style === 'slash' ? 'melee' : 'ranged', directional: row.shape !== 'group', color: COLORS[row.style], ...row
@@ -85,6 +88,8 @@ export function resolveSourceSignature(actor) {
   const hero = heroes.get(sourceId);
   const definition = hero || enemies.get(`${universe}::${actor.canonicalName || actor.name}`);
   if (!definition || universe !== definition.universe) return null;
+  if (definition.enemyId && sourceId !== definition.enemyId) return null;
+  if (definition.requiredContinuity && actor.continuityScope !== definition.requiredContinuity) return null;
   // A different incarnation or an explicitly authored custom kit is not replaced.
   const current = actor.special;
   if (current?.sourceSignatureKey === definition.key) return definition;
