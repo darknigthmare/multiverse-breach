@@ -1,36 +1,50 @@
 import React, { useEffect, useRef } from 'react';
 import CollectibleCard from '../cards/CollectibleCard';
+import { trapDialogTab } from '../../game/dialogFocus.js';
+import { signatureText } from '../../game/signatureCodex.js';
 
-const getText = (value, lang, fallback = '') => {
-  if (typeof value === 'string') return value;
-  return value?.[lang] || value?.fr || value?.en || fallback;
-};
+const CardSignatureDetails = React.lazy(() => import('./CardSignatureDetails.jsx'));
+
+const getText = signatureText;
 
 export default function CardDetailModal({ lang = 'fr', definition, entry, onClose, onUpdateCard }) {
   const closeRef = useRef(null);
+  const dialogRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
+  const visible = Boolean(definition && entry);
 
   useEffect(() => {
-    closeRef.current?.focus();
+    if (!visible) return undefined;
+    const previousFocus = document.activeElement;
+    closeRef.current?.focus({ preventScroll: true });
     const onKeyDown = event => {
-      if (event.key === 'Escape') onClose?.();
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        onCloseRef.current?.();
+      } else trapDialogTab(event, dialogRef.current);
     };
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
-  }, [onClose]);
+    document.addEventListener('keydown', onKeyDown, true);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown, true);
+      if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
+    };
+  }, [visible]);
 
   if (!definition || !entry) return null;
 
   const lore = getText(definition.lore, lang, lang === 'fr'
     ? 'Dossier de lore a valider avant production finale.'
     : 'Lore record awaiting validation before final production.');
-  const provenance = entry.provenance?.at(-1) || entry.provenance || null;
+  const provenance = Array.isArray(entry.provenance) ? entry.provenance.at(-1) : entry.provenance || null;
 
   return (
     <div
       className="tcg-card-detail-overlay"
       onMouseDown={event => event.target === event.currentTarget && onClose?.()}
     >
-      <section className="tcg-card-detail" role="dialog" aria-modal="true" aria-labelledby="tcg-card-detail-title">
+      <section ref={dialogRef} tabIndex={-1} className="tcg-card-detail" role="dialog" aria-modal="true" aria-labelledby="tcg-card-detail-title">
         <button ref={closeRef} type="button" className="tcg-close-button" onClick={onClose}>
           {lang === 'fr' ? 'FERMER' : 'CLOSE'}
         </button>
@@ -45,7 +59,9 @@ export default function CardDetailModal({ lang = 'fr', definition, entry, onClos
               <span>{definition.canonStatus}</span>
               <span>{definition.ageGate}</span>
             </div>
-            <p>{lore}</p>
+            <React.Suspense fallback={<p>{lore}</p>}>
+              <CardSignatureDetails definition={definition} lore={lore} lang={lang} />
+            </React.Suspense>
             <dl>
               <div><dt>{lang === 'fr' ? 'Copies' : 'Copies'}</dt><dd>{entry.copies || 1}</dd></div>
               <div><dt>{lang === 'fr' ? 'Maitrise' : 'Mastery'}</dt><dd>{entry.masteryLevel || 0}/3</dd></div>

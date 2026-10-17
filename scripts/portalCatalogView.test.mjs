@@ -96,7 +96,11 @@ test('dossier traps keyboard focus and restores outer focus/scroll without econo
   const source = await readFile(new URL('../src/components/PortalBoosterDossier.jsx', import.meta.url), 'utf8');
   assert.match(source, /role="dialog" aria-modal="true"/u);
   assert.match(source, /event\.key === 'Escape'/u);
-  assert.match(source, /event\.key !== 'Tab'/u);
+  assert.match(source, /trapDialogTab\(event, dialogRef\.current\)/u);
+  const focusSource = await readFile(new URL('../src/game/dialogFocus.js', import.meta.url), 'utf8');
+  assert.match(focusSource, /event\.key !== 'Tab'/u);
+  assert.match(focusSource, /summary/u);
+  assert.match(focusSource, /getClientRects/u);
   assert.match(source, /previousFocus\.focus\(\{ preventScroll: true \}\)/u);
   assert.match(source, /document\.body\.style\.overflow = previousOverflow/u);
   assert.match(source, /disabled=\{!available\}/u);
