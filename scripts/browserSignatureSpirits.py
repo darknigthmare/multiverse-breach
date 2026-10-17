@@ -52,9 +52,11 @@ with sync_playwright() as pw:
                     page.get_by_role('button', name=re.compile(re.escape(info['name']), re.I)).click()
                     page.get_by_role('button', name='Confirmer les cibles' if lang == 'fr' else 'Confirm targets', exact=True).click()
                 if info['spirit']:
-                    page.wait_for_function('window.__sourceAudit.engine.signatureDirector.getSummonState().length === 4')
+                    page.wait_for_function('(() => { const s=window.__sourceAudit.engine.signatureDirector.getSummonState(); return s.length === 4 && s.every(x => x.age >= 10); })()')
                     before = page.evaluate('''() => {const a=window.__sourceAudit;a.engine.setPaused(true);return {entities:a.engine.signatureDirector.getSummonState(),hp:a.target.currentHp,initialHp:a.hp,charge:a.actor.specialCharge};}''')
                     assert before['hp'] == before['initialHp'] and before['charge'] == 0
+                    assert len({(round(s['x'], 3), round(s['y'], 3)) for s in before['entities']}) == 4
+                    assert all(s['phase'] == 'seeking' for s in before['entities'])
                     page.wait_for_timeout(200)
                     assert page.evaluate('window.__sourceAudit.engine.signatureDirector.getSummonState()') == before['entities']
                     page.screenshot(path=str(out / (label + '-spirits.png')), full_page=True)
