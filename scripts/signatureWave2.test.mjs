@@ -121,3 +121,32 @@ for (const key of ['hexen_parias', 'leia', 'aerith_ff7']) test(`RPG source card 
   assert.equal(a.atb, 100); assert.equal(a.specialCharge, 100);
   assert.equal(preview.sourceProfile.fidelity, 'source-described-adaptation');
 });
+
+test('RPG P2 source enemies materialize only their existing native secondary fallback', async () => {
+  const { getRpgActionProfile } = await vite.ssrLoadModule('/src/game/rpgTargeting.js');
+  for (const d of Object.values(kits).filter(row => row.enemyName)) for (const authored of [false, true]) {
+    const source = { ...structuredClone(template(d)), universe: d.universe };
+    if (authored) source.secondary = { name: 'Custom secondary', type: 'melee', dmg: 2, cd: 7 };
+    const sourceBefore = JSON.stringify(source);
+    const hero = structuredClone(heroes.find(a => a.id === 'cloud_ff7'));
+    const stage = { mode: 'RPG', universe: d.universe, customBattle: { singleRoster: true, opponentControl: 'p2' } };
+    const e = new EngineRpg(760, 420, [hero], { customRoster: [source], monsters: [source], bosses: [] }, { add() {} }, () => {}, () => {}, stage);
+    engines.push(e);
+    const actor = e.enemies[0], existing = actor.secondary;
+    const before = getRpgActionProfile(actor, 'secondary', 'enemy', e);
+    install(e, { mode: 'RPG' });
+    assert.equal(typeof actor.secondary?.name, 'string', d.key);
+    assert.deepEqual(getRpgActionProfile(actor, 'secondary', 'enemy', e), before, d.key);
+    if (existing) assert.equal(actor.secondary, existing, d.key);
+    assert.equal(JSON.stringify(source), sourceBefore, 'catalog fallback was written back');
+  }
+});
+test('missing hero secondary actions are not granted by enemy presentation normalization', () => {
+  const e = make('leia', 'RPG');
+  // A fresh battle-local hero can intentionally lack a secondary. Source
+  // preparation must not give it the enemy-only default command.
+  const actor = { ...structuredClone(heroes.find(a => a.id === 'leia')), secondary: null,
+    id: 'leia', runtimeId: 'new-hero', battleId: 'new-hero', state: 'idle', currentHp: 100, maxHp: 100, atb: 0 };
+  e.heroes.push(actor); e.setPaused(true); ticks(e, 1);
+  assert.equal(actor.secondary, null);
+});

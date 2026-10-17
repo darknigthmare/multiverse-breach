@@ -23,7 +23,7 @@ Les 39 profils précédents, actions personnalisées, non-combattants, verrous d
 
 ## Vérifications
 
-Le lot ajoute 196 sous-tests de profils (49 identités × deux moteurs × deux côtés) et dix tests supplémentaires de contrat/sécurité. La suite d’extension locale compte 373 succès et les tests vague 2 dix succès : **383/383**, sans ignorés. Cette copie locale est partielle et ne certifie pas l’ensemble du dépôt ou de ses bitmaps. Lint local : zéro erreur, zéro avertissement.
+Le lot ajoute 196 sous-tests de profils (49 identités × deux moteurs × deux côtés) et douze tests supplémentaires de contrat/sécurité. La suite d’extension locale compte 373 succès et les tests vague 2 douze succès : **385/385**, sans ignorés. Cette copie locale est partielle et ne certifie pas l’ensemble du dépôt ou de ses bitmaps. Lint local : zéro erreur, zéro avertissement.
 
 La CI permanente conserve les anciens scénarios et exécute les nouveaux tests. Le script navigateur source passe de huit à dix-huit recettes : dix ajouts utilisent de vrais GameCanvas/commandes et états initiaux synthétiques, en 390/1280 pixels, français/anglais. RPG/P2, invocation Hexen, Ahsoka adulte, Droideka, Gladiator, Scout et Gunship sont représentés. Les recettes inspectent aussi la nouvelle fiche avant confirmation. Les résultats du commit publié sont à lire dans ses artefacts GitHub ; ces recettes ne constituent pas un téléphone physique ni une campagne entière.
 
@@ -32,3 +32,9 @@ La CI permanente conserve les anciens scénarios et exécute les nouveaux tests.
 4 936 entrées / 525 univers ; 88 profils source au lieu de 39 ; 118 supers profilés au lieu de 69 ; 26 invocations natives au lieu de 24 ; 31 associations d’artefacts inchangées ; 101 non-combattants préservés. **4 676 entrées sans signature dédiée**, contre 4 725. 159 entrées ont au moins un contrat ; les catégories se recoupent.
 
 Zéro certification 1:1 : aucune nouvelle planche animée ou chorégraphie exacte n’est livrée. Les cases manquantes ne sont pas cachées par une règle générique. Les boss à énigme, transformations, boucliers particuliers et soins non implémentés restent des travaux distincts, pas des dégâts de zone de remplacement.
+
+## Défaut détecté dans la première recette GitHub et corrigé
+
+Le premier commit avait passé 493 tests de signatures et 17/18 recettes source. Dooku en RPG P2 révélait un vrai crash React : le HUD employait l’objet spécial comme libellé de sa commande secondaire absente. La préparation matérialise désormais, uniquement pour les ennemis RPG concernés, **l’action secondaire de secours que le moteur offrait déjà**. Elle est obtenue depuis `getRpgActionProfile`, sans inventer un effet, une portée, un coût ou une recharge. Les secondaires explicitement écrites sont conservées ; aucun défaut ennemi n’est donné à un héros sans secondaire.
+
+Un test négatif a reproduit le défaut avant correction. Le test final compare tous les champs du profil secondaire avant/après pour les 47 ennemis source, avec et sans secondaire personnalisée. Les 18 scénarios navigateur et leurs assertions sont conservés : le correctif porte sur le code du jeu, pas sur le masquage de l’échec.

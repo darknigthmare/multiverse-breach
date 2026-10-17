@@ -1,6 +1,6 @@
 import { prepareSourceSignature, resolveSourceSignature } from './signatureSourceKits.js';
 import { getSmashAbilityProfile, getSmashAbilityTargets } from './smashAbilityProfiles.js';
-import { calculateRpgDamage, resolveRpgTargets, rpgUnitId } from './rpgTargeting.js';
+import { calculateRpgDamage, getRpgActionProfile, resolveRpgTargets, rpgUnitId } from './rpgTargeting.js';
 import { absorbBattleItemDamage } from './battleItemShield.js';
 import { getCombatEventDamageMultiplier } from './combatEventBuffs.js';
 import { applyCombatHealing, getCombatHealingAmount } from './combatHealing.js';
@@ -21,7 +21,15 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
   const prepare = actor => {
     if (!actor || prepared.has(actor)) return;
     prepared.add(actor);
-    prepareSourceSignature(actor);
+    const definition = prepareSourceSignature(actor);
+    // Legacy enemies already have a native secondary fallback. Materialize that
+    // SAME action for P2 presentation when special becomes an object: otherwise
+    // the HUD uses the entire special object as the missing secondary's label.
+    // Query the native profile instead of inventing a new skill/cooldown here.
+    if (definition && mode === 'RPG' && sideOf(actor) === 'enemy' && !actor.secondary) {
+      const fallback = getRpgActionProfile(actor, 'secondary', 'enemy', engine)?.action;
+      if (fallback) actor.secondary = { ...fallback };
+    }
   };
   const prepareRoster = () => [...(engine.heroes || []), ...(engine.enemies || [])].forEach(prepare);
   const definitionFor = actor => {
