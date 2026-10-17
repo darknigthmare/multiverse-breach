@@ -116,7 +116,7 @@ test('Tactics scheduled transitions continue when a previously paralyzed active 
   enemy.currentHp = 0;
   let executed = false;
   engine.schedule(() => { executed = true; }, 1);
-  await new Promise(resolve => setTimeout(resolve, 20));
+  engine.advanceScheduledActions();
   assert.equal(executed, true);
 });
 

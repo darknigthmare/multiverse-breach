@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import React, { lazy, Suspense, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { HEROES_DB as BASE_HEROES_DB, EQUIP_ITEMS_DB, EVENT_ITEMS_DB, SYNERGIES_DB } from '../game/heroes';
 import { getTranslation } from '../game/translation';
 import { drawPixelSprite, getOpenAiBackdropSrc } from '../game/renderer';
 import sound from '../game/soundEngine';
+import { getProgressKeys, rollProgressCalendar } from '../game/progressCalendar.js';
 import { CORE_CODEX_ENTRIES, LORE_DB } from '../game/lore';
 import { ENEMIES_DB, getFinalGameBoss } from '../game/enemies';
 import { CANON_PRIORITY_STAGES } from '../game/canonPriorityStages.js';
@@ -38,13 +39,13 @@ import { getBattleItemsForUniverse } from '../game/battleItems';
 import { getUnlockableById } from '../game/universeUnlockables';
 import { OPENAI_COSMETIC_VISUALS, resolveActiveHudTheme } from '../game/cosmeticVisualAssets';
 import { getBattleItemLoreDescription, getEnemyLoreDescription, getEventLoreDescription, getGearLoreDescription, getStageLoreDescription, getUniverseLoreDescription } from '../game/loreDescriptions';
-import spriteManifest from '../../public/sprites/generated/sprite-manifest.json';
+import spriteAvailability from '../../public/sprites/generated/sprite-availability.json';
 import { DEFAULT_HIDDEN_UNIVERSES, isBaseGameUniverse } from '../game/dlcConfig';
 import { FEATURED_UNIVERSE_ICONS } from '../game/featuredUniversePacks';
 import { OC_DLC_PACKS, getOcDlcPackByUniverse, isOcDlcMissionUnlocked } from '../game/ocDlcPacks';
-import RaceMode from './RaceMode';
-import FighterMode from './FighterMode';
-import CustomBattleMode from './CustomBattleMode';
+const RaceMode = lazy(() => import('./RaceMode'));
+const FighterMode = lazy(() => import('./FighterMode'));
+const CustomBattleMode = lazy(() => import('./CustomBattleMode'));
 import RegulationImagePreview from './RegulationImagePreview';
 import UniverseArchiveDialog from './UniverseArchiveDialog';
 import { getOcCampaignResumeTarget, getOcCampaignUiProgress } from '../game/ocCampaignUiProgress';
@@ -5367,7 +5368,7 @@ export default function HubScreen({
   }, [setDisabledAssets]);
   const spriteOutputMap = useMemo(
     () => {
-      const map = new Map((spriteManifest.entries || []).filter(entry => entry.available).map(entry => [entry.output, entry]));
+      const map = new Map(spriteAvailability.groups.flatMap(group => group.outputs.map(output => [output, { output, available: true, source: group.source }])));
       Object.values(MIRELLE_COMPLETE_SPRITES).forEach(output => {
         map.set(output, { output, available: true, source: 'openai-complete-pack' });
       });
@@ -7794,10 +7795,7 @@ export default function HubScreen({
   };
 
   const todayIndex = Math.floor(Date.now() / 86400000);
-  const todayKey = new Date().toISOString().slice(0, 10);
-  const startOfYear = new Date(Date.UTC(new Date().getUTCFullYear(), 0, 1));
-  const currentWeekNumber = Math.ceil((((new Date() - startOfYear) / 86400000) + startOfYear.getUTCDay() + 1) / 7);
-  const currentWeekKey = `${new Date().getUTCFullYear()}-W${currentWeekNumber}`;
+  const { dayKey: todayKey, weekKey: currentWeekKey } = getProgressKeys();
   const claimedDaily = activityProgress.dayKey === todayKey ? (activityProgress.claimedDaily || []) : [];
   const claimedWeekly = activityProgress.weekKey === currentWeekKey ? (activityProgress.claimedWeekly || []) : [];
   const claimedMilestones = activityProgress.claimedMilestones || [];
@@ -7814,11 +7812,12 @@ export default function HubScreen({
     return (dailyModeWins[contract.mode] || 0) > 0;
   };
   const _claimDailyContract = (contract) => {
+    if (getProgressKeys().dayKey !== todayKey) return;
     if (!setActivityProgress || !isDailyContractDone(contract) || claimedDaily.includes(contract.id)) return;
     setGold(prev => prev + 35);
     setBreachShards(prev => prev + 12);
     setActivityProgress(prev => ({
-      ...prev,
+      ...rollProgressCalendar(prev, { dayKey: todayKey, weekKey: currentWeekKey }),
       dayKey: todayKey,
       claimedDaily: [...(prev.dayKey === todayKey ? (prev.claimedDaily || []) : []), contract.id]
     }));
@@ -7828,6 +7827,8 @@ export default function HubScreen({
 
   const recordFighterMatch = (report) => {
     if (!report || !setActivityProgress) return;
+    // Read at completion, not from the render that started a long match.
+    const { dayKey: todayKey, weekKey: currentWeekKey } = getProgressKeys();
     const victory = report.result === 'victory';
     const rewards = report.rewards || { gold: 0, shards: 0, seasonXp: 0 };
     if (victory) {
@@ -7839,7 +7840,7 @@ export default function HubScreen({
       const sameWeek = prev.weekKey === currentWeekKey;
       const previousCareer = prev.fighterCareer || {};
       return {
-        ...prev,
+        ...rollProgressCalendar(prev, { dayKey: todayKey, weekKey: currentWeekKey }),
         dayKey: todayKey,
         weekKey: currentWeekKey,
         dailyWins: (sameDay ? (prev.dailyWins || 0) : 0) + (victory ? 1 : 0),
@@ -9369,6 +9370,7 @@ export default function HubScreen({
         )}
 
         {activeTab === 'fighter' && (
+          <Suspense fallback={<p role="status">{lang === 'fr' ? 'Chargement du mode...' : 'Loading mode...'}</p>}>
           <FighterMode
             lang={lang}
             heroes={HEROES_DB.filter(hero => isUniverseVisible(hero.universe) && !isAssetDisabled('heroes', hero.id))}
@@ -9386,9 +9388,11 @@ export default function HubScreen({
             sessionExitRequest={sessionExitRequests.fighter}
             dedicatedSession={activeGameMode === 'fighter'}
           />
+          </Suspense>
         )}
 
         {activeTab === 'customBattle' && (
+          <Suspense fallback={<p role="status">{lang === 'fr' ? 'Chargement du mode...' : 'Loading mode...'}</p>}>
           <CustomBattleMode
             lang={lang}
             playerProfile={playerProfile}
@@ -9411,9 +9415,11 @@ export default function HubScreen({
             sessionExitRequest={sessionExitRequests.custom}
             dedicatedSession={activeGameMode === 'custom'}
           />
+          </Suspense>
         )}
 
         {activeTab === 'race' && (
+          <Suspense fallback={<p role="status">{lang === 'fr' ? 'Chargement du mode...' : 'Loading mode...'}</p>}>
           <RaceMode
             lang={lang}
             playerProfile={playerProfile}
@@ -9426,6 +9432,7 @@ export default function HubScreen({
             sessionExitRequest={sessionExitRequests.race}
             dedicatedSession={activeGameMode === 'race'}
           />
+          </Suspense>
         )}
 
         {/* Tab 1: Missions */}
@@ -10216,7 +10223,7 @@ export default function HubScreen({
                 <strong style={{ color: '#d7b5ff', fontSize: '11px', textTransform: 'uppercase' }}>
                   {lang === 'fr' ? 'Cycles hebdomadaires' : 'Weekly cycles'}
                 </strong>
-                <span style={{ color: '#aaa', fontSize: '10px' }}>{currentWeekKey}</span>
+                <span style={{ color: '#aaa', fontSize: '10px' }}>{currentWeekKey} · UTC / ISO</span>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '8px' }}>
                 {weeklyOperations.map(operation => {

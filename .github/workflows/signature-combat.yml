@@ -1,0 +1,61 @@
+name: Signature combat
+on:
+  pull_request:
+  push:
+    branches: [master, codex/audit-corrections-2026-10-16]
+permissions:
+  contents: read
+concurrency:
+  group: signature-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  signatures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            **/*.json
+            **/*.jsonl
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Signature contracts, interruption safety and coverage inventory
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/signature-evidence
+          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/signatureSafety.test.mjs scripts/signatureExpansion.test.mjs scripts/signatureWave2.test.mjs scripts/signatureWave3.test.mjs scripts/signatureWave4.test.mjs scripts/signatureReturningDisc.test.mjs scripts/signatureSpiritSwarm.test.mjs scripts/signatureWave5.test.mjs | tee /tmp/signature-evidence/tests.log
+          node scripts/signatureCoverage.mjs /tmp/signature-evidence/coverage.json | tee /tmp/signature-evidence/coverage.log
+          npx oxlint --max-warnings 0 src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/RpgTargetingPanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx scripts/fixtures/signatureSourceHarness.jsx scripts/fixtures/signatureSupportHarness.jsx | tee /tmp/signature-evidence/lint.log
+          npx vite build | tee /tmp/signature-evidence/build.log
+      - name: Chromium fixtures, no real accounts
+        run: |
+          set -euo pipefail
+          python3 -m venv /tmp/signature-playwright
+          /tmp/signature-playwright/bin/pip install playwright==1.57.0
+          /tmp/signature-playwright/bin/python -m playwright install --with-deps chromium
+          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/signature-evidence/server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/browser /tmp/signature-playwright/bin/python scripts/browserSignatureCombat.py | tee /tmp/signature-evidence/browser.log
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/source-browser /tmp/signature-playwright/bin/python scripts/browserSignatureSources.py | tee /tmp/signature-evidence/source-browser.log
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/support-browser /tmp/signature-playwright/bin/python scripts/browserSignatureSupport.py | tee /tmp/signature-evidence/support-browser.log
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/flight-browser /tmp/signature-playwright/bin/python scripts/browserSignatureFlight.py | tee /tmp/signature-evidence/flight-browser.log
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/spirit-browser /tmp/signature-playwright/bin/python scripts/browserSignatureSpirits.py | tee /tmp/signature-evidence/spirit-browser.log
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: signature-${{ github.sha }}
+          path: /tmp/signature-evidence/
+          retention-days: 7

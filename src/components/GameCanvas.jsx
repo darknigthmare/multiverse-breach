@@ -1,3 +1,9 @@
+import { drawSignatureCinematic } from '../game/signaturePresentation.js';
+import { installSignatureDirector } from '../game/signatureDirector.js';
+import SignatureSequencePanel from './SignatureSequencePanel.jsx';
+import TacticsSupportPanel from './TacticsSupportPanel.jsx';
+import { resolveEquippedCombatEvent } from '../game/combatEventItem.js';
+import { applyCombatHealing } from '../game/combatHealing.js';
 import { drawCosmeticAtlasFrame } from '../game/renderer';
 import {
   getGameCanvasCosmeticAtlas,
@@ -224,11 +230,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   meleeInputMapsRef.current = meleeInputMaps;
   
   const [activeSynergies, setActiveSynergies] = useState([]);
-  const applySkin = (hero) => {
+  // HUD updates must not rebuild the entire multi-universe roster each frame.
+  const HEROES_DB = useMemo(() => [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(hero => {
     const skin = SKIN_CATALOG[heroSkins?.[hero.id]];
     return skin ? { ...hero, ...skin.colors, activeSkin: skin } : hero;
-  };
-  const HEROES_DB = [createPlayerHero(playerProfile), ...BASE_HEROES_DB].map(applySkin);
+  }), [playerProfile, heroSkins]);
   const disabledHeroSet = new Set(disabledAssets.heroes || []);
   const disabledEnemySet = new Set(disabledAssets.enemies || []);
   const disabledGearSet = new Set(disabledAssets.gear || []);
@@ -408,6 +414,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   
   // Track if active Event Item has been activated this fight
   const [eventItemUsed, setEventItemUsed] = useState(false);
+  const eventItemUsedRef = useRef(false);
 
   const BATTLE_ANOMALIES = [
     {
@@ -751,8 +758,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     if (!Array.isArray(actors)) return;
     actors.forEach(actor => {
       if (actor.currentHp <= 0) return;
-      const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      if (effect.heal) actor.currentHp = Math.min(maxHp, actor.currentHp + Number(effect.heal));
+      if (effect.heal) applyCombatHealing(actor, Number(effect.heal));
       if (effect.shield) grantBattleItemShield(actor, effect.shield);
       if (effect.charge && typeof actor.specialCharge === 'number') {
         const charge = actor === activeActor ? Number(effect.charge) : Math.ceil(Number(effect.charge) * 0.45);
@@ -928,10 +934,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     alliedActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
       const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      actor.currentHp = Math.min(
-        maxHp,
-        actor.currentHp + Math.max(0, Math.round(maxHp * (effect.healRatio || 0)))
-      );
+      applyCombatHealing(actor, Math.max(0, Math.round(maxHp * (effect.healRatio || 0))));
       engine.particles?.add(actor.x || engine.width * 0.24, (actor.y || engine.height / 2) - 16, 0, -1, color, 5, 28, 'spark');
     });
     targetActors?.forEach(actor => {
@@ -988,7 +991,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     alliedActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
       const maxHp = actor.maxHp || actor.stats?.hp || actor.hp || actor.currentHp;
-      actor.currentHp = Math.min(maxHp, actor.currentHp + Math.round(maxHp * (effect.healRatio || 0)));
+      applyCombatHealing(actor, Math.round(maxHp * (effect.healRatio || 0)));
     });
     targetActors?.forEach(actor => {
       if (actor.currentHp <= 0) return;
@@ -1042,6 +1045,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     setTeamState([]);
     setOpponentState([]);
     setActiveOpponentId('');
+    eventItemUsedRef.current = false;
     setEventItemUsed(false);
     keysPressed.current = {};
     lastAnomalyWaveRef.current = -1;
@@ -1208,6 +1212,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
       sound.stopBgm();
       return undefined;
     }
+    installSignatureDirector(engineRef.current, { mode: stage.mode, disabled: !!stage.nonCombatTrial });
     engineRef.current.setPaused?.(sessionPausedRef.current || document.hidden);
     engineRef.current.setTargetingWait?.(rpgTargetingWaitRef.current);
     setRpgTargeting(null);
@@ -1447,7 +1452,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             (engine.enemies || []).forEach(actor => actorsObservedDuringUpdate.enemies.add(actor));
           }
           matchInputLocked = stage.mode === 'Smash' && engine.isMatchInputLocked?.();
-          const gameplayAdvancing = updateLoops > 0 && !simulationPaused && !matchInputLocked && !engine.gameOver;
+          const gameplayAdvancing = updateLoops > 0 && !simulationPaused && !matchInputLocked && !engine.gameOver && !engine.signatureDirector?.freezesWorld;
           if (stage.mode === 'Smash') {
             const nextPreMatch = engine.getPreMatchState?.(lang) || null;
             const cueKey = nextPreMatch ? `${nextPreMatch.state}:${nextPreMatch.cueId}` : null;
@@ -1519,6 +1524,13 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             nextBattleItemDropRef.current = combatTime + (stage.mode === 'Smash' ? 540 : 780);
           }
           particles.draw(ctx);
+          const signature = engine.signatureDirector?.snapshot(lang);
+          if (signature) {
+            const actor = [...engine.heroes, ...engine.enemies].find(unit => rpgUnitId(unit) === signature.actorId);
+            drawSignatureCinematic(ctx, signature, actor, drawPixelSprite, {
+              reducedMotion: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches === true
+            });
+          }
           if (stage.mode === 'RPG') drawRpgTargeting(ctx, engine.getTargetingState?.(), [...engine.heroes, ...engine.enemies]);
           drawSynergyOverlay(ctx, activeSynergies, width, height, animTime);
 
@@ -1548,7 +1560,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               engine.heroes.forEach(hero => {
                 if (hero.currentHp > 0) {
                   const maxHp = hero.maxHp || hero.stats.hp;
-                  hero.currentHp = Math.min(maxHp, hero.currentHp + Math.max(8, Math.round(maxHp * 0.05)));
+                  applyCombatHealing(hero, Math.max(8, Math.round(maxHp * 0.05)));
                 }
               });
             }
@@ -1619,6 +1631,15 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stage, activeTeam]);
 
+  const activateTacticsCell = (c, r) => {
+    if (sessionPausedRef.current || battleCompleted || stage.mode !== 'Tactics') return;
+    const engine = engineRef.current;
+    if (!engine?.canCommandActiveUnit?.()) return;
+    const result = engine.handleCellClick(c, r);
+    if (result?.type === 'move' && engine.isActiveCombatant?.() && !engine.gameOver) activateTacticalPickupAtCell(c, r);
+    setSelectedAction(engine.selectedAction);
+  };
+
   const handleCanvasClick = (e) => {
     if (sessionPausedRef.current) return;
     if (!['Tactics', 'RPG'].includes(stage.mode) || !engineRef.current) return;
@@ -1648,8 +1669,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const gridR = grid.y;
 
     if (gridC >= 0 && gridC < engine.cols && gridR >= 0 && gridR < engine.rows) {
-      const result = engine.handleCellClick(gridC, gridR);
-      if (result?.type === 'move') activateTacticalPickupAtCell(gridC, gridR);
+      activateTacticsCell(gridC, gridR);
     }
   };
 
@@ -1780,7 +1800,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
   const handleActivateEventItem = () => {
     if (engineRef.current?.getTargetingState?.()) return;
     if (sessionPausedRef.current) return;
-    if (!engineRef.current || eventItemUsed || battleCompleted) return;
+    if (!engineRef.current || eventItemUsedRef.current || eventItemUsed || battleCompleted || stage.disableItems) return;
     if (stage.mode === 'Smash' && engineRef.current.isMatchInputLocked?.()) return;
 
     const activeHero = HEROES_DB.find(h => h.id === activeHeroId);
@@ -1789,12 +1809,21 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     const eventId = equippedEventItems[activeHero.id];
     if (!eventId) return;
 
-    const eventDetails = EVENT_ITEMS_DB[activeHero.universe];
+    const actor = engineRef.current.heroes.find(hero => hero.id === activeHero.id);
+    if (!actor || actor.currentHp <= 0) return;
+    const eventDetails = resolveEquippedCombatEvent(eventId, EVENT_ITEMS_DB, hiddenUniverseSet, disabledGearSet);
     if (!eventDetails) return;
 
-    // Trigger effect in engine
-    if (engineRef.current.triggerCombatEvent(eventDetails.effect) === true) {
+    // The synchronous latch also rejects a second click before React commits.
+    eventItemUsedRef.current = true;
+    const signature = engineRef.current.signatureDirector?.eventReadiness(eventDetails, actor);
+    const activated = signature?.supported
+      ? engineRef.current.signatureDirector.triggerInvocation(eventDetails, actor)
+      : engineRef.current.triggerCombatEvent(eventDetails.effect);
+    if (activated === true) {
       setEventItemUsed(true);
+    } else {
+      eventItemUsedRef.current = false;
     }
   };
 
@@ -1919,11 +1948,22 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
     }
   };
 
+  const tacticsInputLocked = stage.mode === 'Tactics' && (sessionPaused || battleCompleted || !engineRef.current?.canCommandActiveUnit?.());
+  const tacticsSupportState = stage.mode === 'Tactics' ? engineRef.current?.getSupportState?.() : null;
+
+  const signatureState = engineRef.current?.signatureDirector?.snapshot(lang) || null;
+  const playerSuper = engineRef.current?.signatureDirector?.superReadiness(engineRef.current?.getActiveHero?.());
+  const opponentSuper = engineRef.current?.isLocalP2
+    ? engineRef.current?.signatureDirector?.superReadiness(engineRef.current?.getActiveOpponent?.()) : null;
+
   // Check if active hero has an event item equipped
   const activeHeroStatic = HEROES_DB.find(h => h.id === activeHeroId);
   const activeHeroUniverseEnabled = activeHeroStatic && !hiddenUniverseSet.has(activeHeroStatic.universe);
   const equippedEventId = activeHeroUniverseEnabled ? equippedEventItems[activeHeroStatic.id] : null;
-  const equippedEvent = activeHeroUniverseEnabled ? EVENT_ITEMS_DB[activeHeroStatic.universe] : null;
+  const equippedEvent = activeHeroUniverseEnabled && !stage.disableItems
+    ? resolveEquippedCombatEvent(equippedEventId, EVENT_ITEMS_DB, hiddenUniverseSet, disabledGearSet) : null;
+  const invocationReadiness = equippedEvent && engineRef.current?.signatureDirector?.eventReadiness(
+    equippedEvent, engineRef.current?.heroes?.find(hero => hero.id === activeHeroId));
   const preMatchLocked = stage.mode === 'Smash'
     && !stage.nonCombatTrial
     && preMatchAnnouncement?.locked !== false;
@@ -2038,7 +2078,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                   : `A.R.C.A. adaptation: ${stage.bossName} scanned, +5% team HP.`)}
             </div>
           )}
-          {stage.mode === 'Tactics' && engineRef.current?.escort && <p style={{ maxWidth: 700, fontSize: 11, color: '#a0e9ec' }}>{escortBriefing}</p>}
+          {stage.mode === 'Tactics' && engineRef.current?.escortUnit && <p style={{ maxWidth: 700, fontSize: 11, color: '#a0e9ec' }}>{escortBriefing}</p>}
           {unstableTeamCount > 0 && !stage.nonCombatTrial && (
             <div style={{ fontSize: '10px', color: '#ffeb3b', marginTop: '3px' }}>
               {lang === 'fr'
@@ -2654,11 +2694,23 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             </button>
           )}
 
+          <SignatureSequencePanel state={signatureState} lang={lang} />
+          {stage.mode === 'Smash' && !stage.nonCombatTrial && playerSuper?.supported && <button type="button" className="btn-special" data-signature-super="player"
+            disabled={sessionPaused || battleCompleted || preMatchLocked || !playerSuper.ready}
+            onClick={() => handleActiveHeroAbility('special')} style={{ marginTop: 10, width: '100%' }}>
+            {lang === 'fr' ? 'SUPER PERSONNEL — 100 %' : 'PERSONAL SUPER — 100%'}<br />{playerSuper.name}
+          </button>}
+          {stage.mode === 'Smash' && opponentSuper?.supported && <button type="button" className="btn-special" data-signature-super="opponent"
+            disabled={sessionPaused || battleCompleted || preMatchLocked || !opponentSuper.ready}
+            onClick={() => engineRef.current?.triggerOpponentAbility('special')} style={{ marginTop: 10, width: '100%' }}>
+            P2 SUPER — 100 %<br />{opponentSuper.name}
+          </button>}
           {/* Active Event Item triggering button */}
           {equippedEventId && equippedEvent && (
             <button
               onClick={handleActivateEventItem}
-              disabled={eventItemUsed || battleCompleted || preMatchLocked}
+              data-signature-invocation={equippedEventId}
+              disabled={eventItemUsed || sessionPaused || battleCompleted || preMatchLocked || !!signatureState || (invocationReadiness?.supported && !invocationReadiness.ready) || !activeHeroObj || activeHeroObj.currentHp <= 0}
               className="btn-retro"
               title={preMatchLocked
                 ? (lang === 'fr' ? 'Indisponible pendant le pre-match.' : 'Unavailable during pre-match.')
@@ -2683,6 +2735,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 : eventItemUsed
                   ? getTranslation(lang, 'eventUsed')
                   : equippedEvent.name[lang].toUpperCase()}
+              {invocationReadiness?.supported && stage.mode === 'RPG' && !eventItemUsed && <span style={{ display: 'block' }}>ATB 100 %</span>}
             </button>
           )}
 
@@ -2824,10 +2877,11 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 )}
               </div>
 
+              <TacticsSupportPanel state={tacticsSupportState} lang={lang} locked={tacticsInputLocked} onTarget={activateTacticsCell} />
               <div style={{ display: stage.mode === 'Smash' ? 'none' : 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 <button
                   onClick={() => handleActiveHeroAbility('simple')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'simple' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise l attaque de base du heros actif.' : 'Use the active hero basic attack.'}
                 >
@@ -2837,7 +2891,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('secondary')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (sourceAmmunition && (activeHeroObj.sourceAmmoRemaining <= 0 || piratesCurseEncounter?.curseActive)) || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.cooldown > 0 || (sourceAmmunition && (activeHeroObj.sourceAmmoRemaining <= 0 || piratesCurseEncounter?.curseActive)) || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'secondary' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise la competence secondaire si elle n est pas en recharge.' : 'Use the secondary skill if it is not on cooldown.'}
                 >
@@ -2849,7 +2903,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('defense')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className={`btn-action ${selectedAction === 'defense' && stage.mode === 'Tactics' ? 'selected' : ''}`}
                   title={lang === 'fr' ? 'Utilise une action defensive: reduction de degats, protection ou posture tactique.' : 'Use a defensive action: damage reduction, protection, or tactical stance.'}
                 >
@@ -2859,7 +2913,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
 
                 <button
                   onClick={() => handleActiveHeroAbility('special')}
-                  disabled={!!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
+                  disabled={tacticsInputLocked || !!rpgTargeting || preMatchLocked || activeHeroObj.currentHp <= 0 || activeHeroObj.specialCharge < 100 || (stage.mode === 'RPG' && activeHeroObj.atb < 100)}
                   className="btn-special"
                   title={lang === 'fr' ? 'Utilise l attaque speciale quand la jauge speciale est a 100%.' : 'Use the special attack when the special gauge reaches 100%.'}
                   style={{
@@ -2900,12 +2954,12 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
                 {stage.mode === 'Tactics' && (
                   <button
                     onClick={() => {
-                      if (engineRef.current) {
-                        engineRef.current.endActiveTurn();
+                      if (!sessionPausedRef.current && engineRef.current?.skipActiveTurn?.()) {
                         sound.playSfx('confirm');
                       }
                     }}
                     className="btn-retro"
+                    disabled={tacticsInputLocked}
                     title={lang === 'fr' ? 'Termine le tour du heros actif sans autre action.' : 'End the active hero turn without another action.'}
                     style={{
                       gridColumn: 'span 2',

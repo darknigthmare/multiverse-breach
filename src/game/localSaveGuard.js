@@ -7,12 +7,14 @@
 export const createLocalSaveGuard = (storage, key) => {
   let baseline;
   let hasBaseline = false;
+  let blockedReason = null;
 
   const rebase = () => {
     try {
       const current = storage.getItem(key);
       baseline = current;
       hasBaseline = true;
+      blockedReason = null;
       return { ok: true };
     } catch {
       return { ok: false, reason: 'persistence-failed' };
@@ -20,6 +22,7 @@ export const createLocalSaveGuard = (storage, key) => {
   };
 
   const check = () => {
+    if (blockedReason) return { ok: false, reason: blockedReason };
     if (!hasBaseline) return { ok: false, reason: 'persistence-failed' };
     try {
       return storage.getItem(key) === baseline
@@ -57,6 +60,7 @@ export const createLocalSaveGuard = (storage, key) => {
   return {
     write,
     check,
+    block(reason) { blockedReason = reason; },
     // Only use when explicitly adopting storage after an authorized import or
     // reset. A conflict must never be silently resolved by automatic rebasing.
     rebase

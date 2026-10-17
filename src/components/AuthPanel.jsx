@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { authRecovery, authRecoveryMessage, isValidAuthEmail } from '../game/authRecovery.js';
+import './AuthCallbackScreen.css';
 
 export default function AuthPanel({
   lang,
@@ -11,8 +13,11 @@ export default function AuthPanel({
   onSaveCloud,
   onToggleLanguage,
   onExportSave,
+  onExportBackup,
   onImportSave,
   onResetSave,
+  onPasswordReset = authRecovery.requestPasswordReset,
+  onResendConfirmation = authRecovery.resendConfirmation,
   variant = 'floating'
 }) {
   const [open, setOpen] = useState(false);
@@ -20,6 +25,31 @@ export default function AuthPanel({
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [emailResult, setEmailResult] = useState(false);
+  const [retryAt, setRetryAt] = useState(0);
+  const [clock, setClock] = useState(() => Date.now());
+  const busyRef = useRef(false);
+  useEffect(() => {
+    if (!retryAt) return undefined;
+    const timer = setInterval(() => {
+      const timestamp = Date.now();
+      setClock(timestamp);
+      if (timestamp >= retryAt) clearInterval(timer);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [retryAt]);
+  const remaining = Math.max(0, Math.ceil((retryAt - clock) / 1000));
+  const sendAccountEmail = async fn => {
+    if (busyRef.current || remaining || !isValidAuthEmail(email)) return;
+    busyRef.current = true; setBusy(true); setError(''); setEmailResult(false);
+    try {
+      const result = await fn(email.trim());
+      setEmailResult(true); setRetryAt(result.retryAt); setClock(Date.now());
+    } catch (failure) {
+      setError(authRecoveryMessage(failure, lang));
+      if (failure.retryAt) { setRetryAt(failure.retryAt); setClock(Date.now()); }
+    } finally { busyRef.current = false; setBusy(false); }
+  };
   const embedded = variant === 'embedded';
   const panelOpen = embedded || open;
 
@@ -29,15 +59,16 @@ export default function AuthPanel({
     guest: lang === 'fr' ? 'LOCALE' : 'LOCAL',
     email: 'Email',
     password: lang === 'fr' ? 'Mot de passe' : 'Password',
-    signIn: lang === 'fr' ? 'Ancrer' : 'Anchor',
-    signUp: lang === 'fr' ? 'Creer la signature' : 'Create signature',
-    signOut: lang === 'fr' ? 'Detacher' : 'Detach',
-    load: lang === 'fr' ? 'Lire le cloud' : 'Read cloud',
-    save: lang === 'fr' ? 'Graver le cloud' : 'Engrave cloud'
+    signIn: lang === 'fr' ? 'Se connecter' : 'Sign in',
+    signUp: lang === 'fr' ? 'Creer un compte' : 'Create account',
+    signOut: lang === 'fr' ? 'Se deconnecter' : 'Sign out',
+    load: lang === 'fr' ? 'Charger le cloud' : 'Load cloud',
+    save: lang === 'fr' ? 'Sauvegarder' : 'Save to cloud'
   };
 
   const run = async (fn) => {
-    if (!fn) return;
+    if (!fn || busyRef.current) return;
+    busyRef.current = true;
     setBusy(true);
     setError('');
     try {
@@ -46,6 +77,7 @@ export default function AuthPanel({
     } catch (err) {
       setError(err.message || String(err));
     } finally {
+      busyRef.current = false;
       setBusy(false);
     }
   };
@@ -161,14 +193,24 @@ export default function AuthPanel({
                   {t.signUp}
                 </button>
               </div>
+              <div className="auth-email-tools">
+                <button type="button" className="btn-retro" disabled={busy || remaining > 0 || !isValidAuthEmail(email)} onClick={() => sendAccountEmail(onPasswordReset)}>{lang === 'fr' ? 'Mot de passe oublie' : 'Forgot password'}</button>
+                <button type="button" className="btn-retro" disabled={busy || remaining > 0 || !isValidAuthEmail(email)} onClick={() => sendAccountEmail(onResendConfirmation)}>{lang === 'fr' ? 'Renvoyer la confirmation' : 'Resend confirmation'}</button>
+                {emailResult && <p role="status">{lang === 'fr' ? 'Si cette adresse correspond a un compte eligible, un email a ete demande. Consulte aussi les courriers indesirables.' : 'If this address belongs to an eligible account, an email was requested. Check your spam folder too.'}</p>}
+                {remaining > 0 && <small>{lang === 'fr' ? `Nouvel envoi dans ${remaining} s.` : `Send again in ${remaining} s.`}</small>}
+              </div>
               <div className="auth-cloud-status" role="status" aria-live="polite">{cloudStatus}</div>
             </>
           )}
 
-          {!embedded && (onExportSave || onImportSave || onResetSave) && (
+          {!embedded && (onExportSave || onExportBackup || onImportSave || onResetSave) && (
             <details className="auth-save-tools">
               <summary>{lang === 'fr' ? 'OUTILS DE TRACE LOCALE' : 'LOCAL TRACE TOOLS'}</summary>
               <div className="auth-save-grid">
+                {onExportBackup && <button type="button" onClick={onExportBackup} className="btn-retro"
+                  title={lang === 'fr' ? 'Exporte la copie conservee avant migration, import ou nouvelle partie.' : 'Export the copy preserved before migration, import or starting over.'}>
+                  {lang === 'fr' ? 'COPIE DE SECOURS' : 'BACKUP COPY'}
+                </button>}
                 <button
                   type="button"
                   onClick={onExportSave}
