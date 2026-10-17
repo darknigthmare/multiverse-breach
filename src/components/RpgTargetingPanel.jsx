@@ -20,6 +20,14 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
             <div style={{ fontSize: 12, marginTop: 5 }}>
               {SHAPE_LABELS[targeting.shape]?.[locale]}
               {targeting.shape === 'multi' ? ` (${targeting.selectedTargetIds.length}/${targeting.maxTargets})` : ''}
+              {targeting.sourceHits > 1 && <div>
+                {fr ? `${targeting.sourceHits} contacts` : `${targeting.sourceHits} contacts`}
+                {targeting.sourceDistribution === 'random'
+                  ? (fr ? ' répartis aléatoirement dans le groupe ; la fourchette concerne chaque cible.' : ' randomly distributed across the group; ranges apply per target.')
+                  : targeting.sourceDistribution === 'cycle'
+                    ? (fr ? ' répartis dans le groupe, sans remplacement des cibles perdues.' : ' distributed across the group, without replacing lost targets.')
+                    : (fr ? ' successifs sur les cibles confirmées.' : ' successive contacts on confirmed targets.')}
+              </div>}
               {' · '}{wait ? (fr ? 'Combat en attente' : 'Combat waiting') : (fr ? 'Combat actif' : 'Combat active')}
             </div>
           </div>
@@ -36,7 +44,7 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
                   <div style={{ fontSize: 10, marginTop: 4 }}>{target.dead ? 'KO' : `${Math.round(target.hp)}/${Math.round(target.maxHp)} HP`}</div>
                   {affected && estimate && <div style={{ fontSize: 10, marginTop: 4 }}>
                     {EFFECT_LABELS[estimate.effect]?.[locale] || estimate.effect}
-                    {estimate.amount > 0 ? ` ${estimate.min === estimate.max ? estimate.amount : `${estimate.min}–${estimate.max}`}` : ''}
+                    {estimate.amount > 0 || estimate.max > 0 ? ` ${estimate.min === estimate.max ? estimate.amount : `${estimate.min}–${estimate.max}`}` : ''}
                     {estimate.cleansedStatuses?.length > 0 && <div>
                       {fr ? 'Purification : ' : 'Cleanse: '}
                       {estimate.cleansedStatuses.map(status => STATUS_LABELS[status]?.[locale] || status).join(', ')}

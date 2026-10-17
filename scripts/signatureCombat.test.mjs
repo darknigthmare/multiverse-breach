@@ -176,7 +176,7 @@ test('P2 can use its profiled super without spending the P1 meter', () => {
   const hp=e.heroes[0].currentHp;ticks(e,42);assert.ok(e.heroes[0].currentHp<hp);
 });
 test('unprofiled legacy supers are not reported as source-profiled', () => {
-  const e=make('cloud_ff7','Smash');assert.equal(e.signatureDirector.superReadiness(e.heroes[0]).supported,false);
+  const e=make('vincent_ff7','Smash');assert.equal(e.signatureDirector.superReadiness(e.heroes[0]).supported,false);
 });
 test('repeated updates after disposal cannot advance a melee fight', () => {
   const e=make('liquid_snake','Smash');e.dispose();const before=e.enemies[0].currentHp;ticks(e,200);assert.equal(e.enemies[0].currentHp,before);

@@ -1,3 +1,4 @@
+import { createSourceSignatureRuntime } from './signatureSourceRuntime.js';
 import { describeNativeSignature, isSignatureCombatant, resolveSignatureInvocation } from './signatureCatalog.js';
 import { getSmashAbilityProfile, getSmashAbilityTargets } from './smashAbilityProfiles.js';
 import { resolveRpgTargets, rpgUnitId } from './rpgTargeting.js';
@@ -40,16 +41,17 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     }
     current.cancelled = reason || null;
   };
-  const begin = (definition, actor, targets, commit, { native = false, action = null, validate = null } = {}) => {
+  const begin = (definition, actor, targets, commit, { native = false, action = null, validate = null, validateThroughSequence = false } = {}) => {
     if (blocked() || sequence || !sideOf(actor) || !eligibleState(actor)) return false;
     sequence = { serial: ++sequenceNumber, definition, actor, targets: [...targets], commit,
-      native, action, validate, tick: 0, hit: 0, committed: false, previousState: actor.state,
+      native, action, validate, validateThroughSequence, tick: 0, hit: 0, committed: false, previousState: actor.state,
       side: sideOf(actor), lockHeld: true };
     actor.state = 'signature';
     actor.actionPending = true;
     engine.playSfx?.('portal');
     return true;
   };
+  const source = createSourceSignatureRuntime(engine, { mode, begin, blocked, eligibleState, sideOf, enemiesOf, busy: () => !!sequence });
   const triggerInvocation = (event, actor) => {
     const state = eventReadiness(event, actor);
     if (!state.ready) return false;
@@ -89,9 +91,12 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     const original = engine[key];
     engine[key] = (...args) => replacement(original, ...args);
   };
+  if (mode === 'RPG') wrap('previewTargets', (original, ...args) => source.previewRpg(original.apply(engine, args)));
   const nativeMelee = (original, actor, abilityType, args, resolveActiveActor = null) => {
     if (resolving) return original.apply(engine, args);
     if (sequence || blocked()) return false;
+    const sourceResult = source.triggerMelee(actor, abilityType, resolveActiveActor);
+    if (sourceResult !== null) return sourceResult;
     const d = abilityType === 'special' && describeNativeSignature(actor);
     const profile = d && getSmashAbilityProfile(actor, abilityType);
     // Do not upgrade unprofiled legacy attacks into an invented full-screen super.
@@ -123,9 +128,11 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
   if (mode === 'RPG') wrap('executeRpgAction', (original, context, selectedTargetIds) => {
     if (resolving) return original.call(engine, context, selectedTargetIds);
     if (sequence) return false;
+    const sourceResult = source.triggerRpg(context, selectedTargetIds);
+    if (sourceResult !== null) return sourceResult;
     const { actor, abilityType, side } = context || {};
     const d = describeNativeSignature(actor, abilityType);
-    if (!d || d.action.type !== 'summon') return original.call(engine, context, selectedTargetIds);
+    if (!d || !['summon', 'summon_aoe'].includes(d.action.type)) return original.call(engine, context, selectedTargetIds);
     if (!engine.canUseAction(actor, abilityType, side)) return false;
     const fresh = engine.getActionContext(actor, abilityType, side);
     const resolved = resolveRpgTargets({ ...fresh, selectedTargetIds });
@@ -166,7 +173,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     if (!current) return false;
     if (disposed || engine.disposed || engine.gameOver || !alive(current.actor) || sideOf(current.actor) !== current.side
       || (current.lockHeld && current.actor.state !== 'signature')
-      || (!current.committed && current.validate && !current.validate())) {
+      || ((!current.committed || current.validateThroughSequence) && current.validate && !current.validate())) {
       close('interrupted'); return true;
     }
     if (engine.paused || engine.isTargetingPaused?.()) return true;
@@ -197,14 +204,19 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
   };
   wrap('update', (original, ...args) => {
     if (disposed || engine.disposed) return;
+    source.prepareRoster();
     if (sequence && advance()) return;
-    return original.apply(engine, args);
+    const result = original.apply(engine, args);
+    source.prepareRoster();
+    source.tickEnemyAI();
+    return result;
   });
   if (typeof engine.dispose !== 'function') engine.dispose = () => { engine.disposed = true; };
   wrap('dispose', (original, ...args) => { close('disposed'); disposed = true; usedEvents.clear(); return original.apply(engine, args); });
   const director = {
     eventReadiness, triggerInvocation,
     superReadiness(actor) {
+      if (mode === 'Smash' && source.definitionFor(actor)) return source.readiness(actor);
       const descriptor = mode === 'Smash' && describeNativeSignature(actor);
       const profile = descriptor && getSmashAbilityProfile(actor, 'special');
       if (!descriptor || !profile) return { supported: false, ready: false, reason: 'source-profile-missing' };
@@ -222,7 +234,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
         name: localName(d.name, lang), kind: d.kind, tick, hit, hits: d.hits,
         duration: d.windupTicks + d.revealTicks + (d.hits - 1) * d.hitGapTicks + d.outroTicks,
         phase: tick < d.windupTicks ? 'prepare' : tick < d.windupTicks + d.revealTicks ? 'reveal' : hit < d.hits ? 'impact' : 'return',
-        color: d.color, icon: d.icon || null, fidelity: d.fidelity };
+        color: d.color, icon: d.icon || null, fidelity: d.fidelity, style: d.style || null, summonName: d.summonName || null, windupTicks: d.windupTicks, revealTicks: d.revealTicks };
     },
     cancel() { close('cancelled'); }
   };

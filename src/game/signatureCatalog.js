@@ -1,3 +1,4 @@
+import { resolveSourceSignature } from './signatureSourceKits.js';
 // A presentation/dispatch registry, NOT a certificate of source fidelity.
 // No global name regex grants a spell, a support faction, or a new weapon.
 const freeze = value => {
@@ -57,10 +58,11 @@ export function describeNativeSignature(actor, abilityType = 'special') {
   if (!isSignatureCombatant(actor) || !action || typeof action !== 'object'
     || typeof action.name !== 'string' || !action.name.trim()
     || !Number.isFinite(action.dmg) || action.dmg < 0) return null;
+  const source = abilityType === 'special' && action.sourceSignatureKey ? resolveSourceSignature(actor) : null;
   return { id: `${signatureUniverse(actor)}::${signatureActorId(actor) || actor.canonicalName || actor.name}::${abilityType}`,
     name: { fr: action.name, en: action.name }, universe: signatureUniverse(actor),
-    kind: action.type === 'summon' ? 'summon' : 'personal', action,
-    fidelity: actor.originalContent || actor.contentOrigin === 'project-original' ? 'project-original' : 'inherited-unverified',
+    kind: source?.kind || (['summon', 'summon_aoe'].includes(action.type) ? 'summon' : 'personal'), action,
+    fidelity: source?.fidelity || (actor.originalContent || actor.contentOrigin === 'project-original' ? 'project-original' : 'inherited-unverified'),
     color: action.color || actor.secondaryColor || actor.color || '#39c5bb',
-    windupTicks: 18, revealTicks: 24, hitGapTicks: 1, hits: 1, outroTicks: 26 };
+    windupTicks: source?.windupTicks ?? 18, revealTicks: source?.revealTicks ?? 24, hitGapTicks: source?.hitGapTicks ?? 1, hits: source?.hits ?? 1, outroTicks: source?.outroTicks ?? 26 };
 }
