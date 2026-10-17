@@ -169,6 +169,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     if (Number.isFinite(args[2]) && args[2] > 0) source.support.release(args[0]);
     if (source.support.blockHit(args[0], args[1], args[2], mode === 'Smash' ? args[3] : 0)) return 0;
     const result = original.apply(engine, args);
+    if (!alive(args[1])) source.flights.onKnockout(args[1]);
     if (sequence && !alive(sequence.actor)) close('caster-ko');
     else if (sequence?.lockHeld && sequence.actor.state !== 'signature') close('caster-interrupted');
     return result;

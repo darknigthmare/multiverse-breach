@@ -31,13 +31,17 @@ Le compteur de préparation ne présente plus le lancement du disque comme un co
 
 ## Vérifications
 
-Nouveaux fichiers : `signatureReturningDisc.test.mjs` (27 tests unitaires) et `signatureWave4.test.mjs` (18 tests d'intégration et de rendu). La matrice historique parcourt aussi les 16 nouveaux profils dans deux moteurs et des deux côtés. Le test des 88 profils antérieurs reste exactement borné à leurs vagues, sans exiger que le catalogue cesse de grandir. Les assertions de dégâts et de consommation ne sont pas supprimées : les disques attendent simplement leur court trajet dans le scénario de proximité.
+Nouveaux fichiers : `signatureReturningDisc.test.mjs` (27 tests unitaires) et `signatureWave4.test.mjs` (22 tests d'intégration et de rendu). La matrice historique parcourt aussi les 16 nouveaux profils dans deux moteurs et des deux côtés. Le test des 88 profils antérieurs reste exactement borné à leurs vagues, sans exiger que le catalogue cesse de grandir. Les assertions de dégâts et de consommation ne sont pas supprimées : les disques attendent simplement leur court trajet dans le scénario de proximité.
 
 Quatre recettes Chromium supplémentaires emploient les véritables commandes de GameCanvas sur des états synthétiques : les trois City Hunters, dont P2, et une esquive préparée. Elles vérifient délai sans dégât, pause du vol, collision unique ou absence de collision, retour et démontage. Les recettes historiques restent exécutées. Aucun compte réel, service externe ou nouvelle entrée de debug de production.
 
 Local : 573 tests sélectionnés avant la correction de libellé, puis 18/18 tests de vague 4 comprenant les trois contrôles de rendu supplémentaires ; lint sans erreur/avertissement. La copie locale est partielle et inclut une dépendance de vague 2 reconstruite pour les essais : seule la CI sur la tête publiée vérifie l'arbre réel du dépôt. Aucun succès de navigation locale du jeu complet n'est revendiqué.
 
 Inventaire local indicatif : 112 profils source, 142 supers profilés, 26 invocations natives, 31 associations d'artefacts, trois associations de disque, 101 non-combattants, 4 656 entrées sans signature dédiée. La CI régénère ces comptes depuis le catalogue complet ; catégories recoupées, aucune approbation artistique.
+
+## Correctif de KO immédiat
+
+Après la première CI réussie, deux tests supplémentaires ont reproduit un défaut : sans lecture ni tick intermédiaire, ressusciter le lanceur juste après `applyDamage` conservait son projectile. La suppression intervient désormais dans le retour du répartiteur de dégâts, avant qu’un appelant puisse ressusciter le même objet. Un patient ennemi KO force aussi le disque à revenir : sa résurrection immédiate ne lui réattribue pas le coup. Quatre tests couvrent lanceur/cible avant et après la fermeture de la scène. Les annulations de scénario et dommages bloqués gardent leur comportement.
 
 ## Restant
 

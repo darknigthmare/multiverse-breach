@@ -88,3 +88,22 @@ test('non-projectile sequences retain their existing contact count', () => {
   const html = renderToStaticMarkup(createElement(Panel, {state:{phase:'return',name:'Test',tick:10,duration:20,hit:3,hits:3}, lang:'fr'}));
   assert.ok(html.includes('3/3'));
 });
+
+for (const time of [56, 79]) test(`lethal damage removes the flight before an immediate same-tick revival (${time})`, () => {
+  const s = make();trigger(s);tick(s.e, time);
+  const hp = s.target.currentHp;
+  s.e.applyDamage(s.target, s.actor, 99999);
+  // No intervening snapshot or tick is allowed to clean this up for the test.
+  Object.assign(s.actor, {currentHp:s.actor.maxHp, state:'idle', action:null, actionPending:false});
+  assert.deepEqual(s.e.signatureDirector.getProjectileState(), []);
+  tick(s.e, 100);assert.equal(s.target.currentHp, hp);
+});
+
+for (const time of [56, 79]) test(`a knocked-out target cannot reacquire a disc after same-tick revival (${time})`, () => {
+  const s = make();trigger(s);tick(s.e, time);
+  s.e.applyDamage(s.actor, s.target, 99999);
+  Object.assign(s.target, {currentHp:s.target.maxHp, state:'idle', action:null});
+  const hp = s.target.currentHp;
+  assert.equal(s.e.signatureDirector.getProjectileState()[0].phase, 'return');
+  tick(s.e, 100);assert.equal(s.target.currentHp, hp);
+});

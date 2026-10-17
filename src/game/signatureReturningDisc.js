@@ -41,6 +41,12 @@ export function createSignatureReturningDiscs(engine, { sideOf, enemiesOf, valid
     for (const [owner, p] of flights) if (!ownerValid(p)) flights.delete(owner);
   };
   const has = owner => { prune(); return flights.has(owner); };
+  // Observe KO at the damage boundary, before a caller can revive the same
+  // object during this tick. Neither owner nor target can inherit the old hit.
+  const onKnockout = actor => {
+    flights.delete(actor);
+    for (const p of flights.values()) if (p.target === actor) p.phase = 'return';
+  };
   const launch = (owner, target, definition, damage) => {
     prune();
     if (engine.paused || engine.disposed || engine.gameOver || definition?.projectile !== 'returning-disc'
@@ -113,5 +119,5 @@ export function createSignatureReturningDiscs(engine, { sideOf, enemiesOf, valid
       }
     } finally { ctx.restore(); }
   };
-  return { launch, advance, has, snapshot, draw, release: owner => flights.delete(owner), dispose: () => flights.clear() };
+  return { launch, advance, has, snapshot, draw, onKnockout, release: owner => flights.delete(owner), dispose: () => flights.clear() };
 }
