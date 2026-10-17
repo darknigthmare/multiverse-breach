@@ -23,6 +23,8 @@ jobs:
             /src/
             /scripts/
             /api/
+            /.github/workflows/signature-combat.yml
+            /docs/audits/signature-codex-workbook-2026-10-17.md
             **/*.json
             **/*.jsonl
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
@@ -34,9 +36,11 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/signature-evidence
-          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/signatureSafety.test.mjs scripts/signatureExpansion.test.mjs scripts/signatureWave2.test.mjs scripts/signatureWave3.test.mjs scripts/signatureWave4.test.mjs scripts/signatureReturningDisc.test.mjs scripts/signatureSpiritSwarm.test.mjs scripts/signatureWave5.test.mjs | tee /tmp/signature-evidence/tests.log
+          node --input-type=module -e 'import fs from "node:fs"; import crypto from "node:crypto"; const paths=["src/game/signatureCodex.js","src/game/dialogFocus.js","src/game/loreDescriptions.js","src/components/SignatureCodexPanel.jsx","src/components/collection/CardSignatureDetails.jsx","src/components/collection/CardDetailModal.jsx","src/components/PortalBoosterDossier.jsx","scripts/signatureCodex.test.mjs","scripts/signatureWorkbookData.mjs","scripts/signatureWorkbookData.test.mjs","scripts/dialogFocus.test.mjs","scripts/portalCatalogView.test.mjs","scripts/fixtures/signatureCodexHarness.jsx","scripts/fixtures/signature-codex.html","scripts/browserSignatureCodex.py",".github/workflows/signature-combat.yml","docs/audits/signature-codex-workbook-2026-10-17.md"]; fs.writeFileSync("/tmp/signature-evidence/codex-source-hashes.json", JSON.stringify(paths.map(path => {const raw=fs.readFileSync(path);return {path,sha256:crypto.createHash("sha256").update(raw).digest("hex")};}),null,2));'
+          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/signatureSafety.test.mjs scripts/signatureExpansion.test.mjs scripts/signatureWave2.test.mjs scripts/signatureWave3.test.mjs scripts/signatureWave4.test.mjs scripts/signatureReturningDisc.test.mjs scripts/signatureSpiritSwarm.test.mjs scripts/signatureWave5.test.mjs scripts/signatureCodex.test.mjs scripts/signatureWorkbookData.test.mjs scripts/dialogFocus.test.mjs scripts/portalCatalogView.test.mjs scripts/cardCatalog.test.mjs scripts/canonicalArchiveLore.test.mjs | tee /tmp/signature-evidence/tests.log
           node scripts/signatureCoverage.mjs /tmp/signature-evidence/coverage.json | tee /tmp/signature-evidence/coverage.log
-          npx oxlint --max-warnings 0 src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/RpgTargetingPanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx scripts/fixtures/signatureSourceHarness.jsx scripts/fixtures/signatureSupportHarness.jsx | tee /tmp/signature-evidence/lint.log
+          node scripts/signatureWorkbookData.mjs /tmp/signature-evidence/coverage.json "$(git rev-parse HEAD)" /tmp/signature-evidence/workbook-data | tee /tmp/signature-evidence/workbook-export.log
+          npx oxlint --max-warnings 0 src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/RpgTargetingPanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx scripts/fixtures/signatureSourceHarness.jsx scripts/fixtures/signatureSupportHarness.jsx scripts/fixtures/signatureCodexHarness.jsx src/game/dialogFocus.js src/game/loreDescriptions.js src/components/SignatureCodexPanel.jsx src/components/PortalBoosterDossier.jsx src/components/collection/CardDetailModal.jsx src/components/collection/CardSignatureDetails.jsx | tee /tmp/signature-evidence/lint.log
           npx vite build | tee /tmp/signature-evidence/build.log
       - name: Chromium fixtures, no real accounts
         run: |
@@ -52,6 +56,7 @@ jobs:
           AUDIT_OUTPUT_DIR=/tmp/signature-evidence/source-browser /tmp/signature-playwright/bin/python scripts/browserSignatureSources.py | tee /tmp/signature-evidence/source-browser.log
           AUDIT_OUTPUT_DIR=/tmp/signature-evidence/support-browser /tmp/signature-playwright/bin/python scripts/browserSignatureSupport.py | tee /tmp/signature-evidence/support-browser.log
           AUDIT_OUTPUT_DIR=/tmp/signature-evidence/flight-browser /tmp/signature-playwright/bin/python scripts/browserSignatureFlight.py | tee /tmp/signature-evidence/flight-browser.log
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/codex-browser /tmp/signature-playwright/bin/python scripts/browserSignatureCodex.py | tee /tmp/signature-evidence/codex-browser.log
           AUDIT_OUTPUT_DIR=/tmp/signature-evidence/spirit-browser /tmp/signature-playwright/bin/python scripts/browserSignatureSpirits.py | tee /tmp/signature-evidence/spirit-browser.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()

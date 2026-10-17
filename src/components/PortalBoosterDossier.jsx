@@ -1,3 +1,6 @@
+import { getRewardSignatureCodex, synchronizeSignatureText, withSignatureSearchText } from '../game/signatureCodex.js';
+import { trapDialogTab } from '../game/dialogFocus.js';
+import SignatureCodexPanel from './SignatureCodexPanel.jsx';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { getRewardCatalogPage } from '../game/portalCatalogView';
@@ -13,6 +16,8 @@ const rateLabel = (rate, lang) => `${((Number(rate) || 0) * 100).toLocaleString(
 export default function PortalBoosterDossier({ banner, candidates, lang, available, selected, duplicateStreak, pityLimit, isCandidateOwned, onSelect, onClose, kindLabels, kindOrder, rarities, Artwork, getRewardDetail }) {
   const dialogRef = useRef(null);
   const closeRef = useRef(null);
+  const onCloseRef = useRef(onClose);
+  onCloseRef.current = onClose;
   const [query, setQuery] = useState('');
   const [pageSize, setPageSize] = useState(24);
   const [kind, setKind] = useState('all');
@@ -25,7 +30,7 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
     authoredUpdate: getOcBoosterContentUpdate(banner.id)
   }), [banner.id, banner.universe, candidates]);
   const featuredIds = useMemo(() => new Set(update?.featuredCardIds || update?.newCardIds || []), [update]);
-  const orderedCandidates = useMemo(() => [...candidates].sort((a, b) => (
+  const orderedCandidates = useMemo(() => withSignatureSearchText(candidates).sort((a, b) => (
     Number(featuredIds.has(b.id)) - Number(featuredIds.has(a.id))
   )), [candidates, featuredIds]);
   const rewardPage = useMemo(() => getRewardCatalogPage(orderedCandidates, { query, kind, page, pageSize }), [orderedCandidates, query, kind, page, pageSize]);
@@ -45,19 +50,9 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
       if (event.key === 'Escape') {
         event.preventDefault();
         event.stopPropagation();
-        onClose();
+        onCloseRef.current?.();
       }
-      if (event.key !== 'Tab') return;
-      const controls = [...(dialogRef.current?.querySelectorAll('button:not(:disabled), input, select, a[href], [tabindex="0"]') || [])];
-      const first = controls[0];
-      const last = controls.at(-1);
-      if (event.shiftKey && (document.activeElement === first || !dialogRef.current?.contains(document.activeElement))) {
-        event.preventDefault();
-        last?.focus();
-      } else if (!event.shiftKey && (document.activeElement === last || !dialogRef.current?.contains(document.activeElement))) {
-        event.preventDefault();
-        first?.focus();
-      }
+      trapDialogTab(event, dialogRef.current);
     };
     document.addEventListener('keydown', handleKeyDown, true);
     return () => {
@@ -65,13 +60,13 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
       document.removeEventListener('keydown', handleKeyDown, true);
       if (previousFocus?.isConnected) previousFocus.focus({ preventScroll: true });
     };
-  }, [onClose]);
+  }, []);
 
   return createPortal(
     <div className="booster-art-lightbox" style={{ '--portal-color': banner.color }} onMouseDown={event => {
       if (event.target === event.currentTarget) onClose();
     }}>
-      <section ref={dialogRef} className="booster-art-preview-dialog booster-dossier-dialog" role="dialog" aria-modal="true" aria-labelledby="booster-dossier-title" data-booster-dossier={banner.id} style={{ width: 'min(1120px, calc(100vw - 36px))', display: 'flex', flexDirection: 'column' }}>
+      <section ref={dialogRef} tabIndex={-1} className="booster-art-preview-dialog booster-dossier-dialog" role="dialog" aria-modal="true" aria-labelledby="booster-dossier-title" data-booster-dossier={banner.id} style={{ width: 'min(1120px, calc(100vw - 36px))', display: 'flex', flexDirection: 'column' }}>
         <header>
           <div>
             <span>{lang === 'fr' ? 'DOSSIER COMPLET · CONSULTATION SANS ACHAT' : 'COMPLETE DOSSIER · NO PURCHASE ON PREVIEW'}</span>
@@ -124,7 +119,8 @@ export default function PortalBoosterDossier({ banner, candidates, lang, availab
                 <div style={{ height: 112, overflow: 'hidden', display: 'grid', placeItems: 'center' }}><Artwork reward={reward} lang={lang} /></div>
                 <h4 style={{ margin: '8px 0', overflowWrap: 'anywhere' }}>{localize(reward.name, lang)}</h4>
                 <small>{kindLabels[reward.kind]?.[lang] || reward.kind} · {reward.universe}</small>
-                <p style={{ fontSize: 11 }}>{getRewardDetail(reward, lang)}</p>
+                <p style={{ fontSize: 11 }}>{synchronizeSignatureText(getRewardDetail(reward, lang), getRewardSignatureCodex(reward))}</p>
+                {getRewardSignatureCodex(reward) && <SignatureCodexPanel codex={getRewardSignatureCodex(reward)} lang={lang} />}
                 <p style={{ color: reward.rarity.color, fontSize: 11 }}>{localize(reward.rarity.label, lang)} · {rateLabel(rates.get(reward.id), lang)}</p>
                 <small>{isCandidateOwned(reward) ? (lang === 'fr' ? 'OBTENUE' : 'OWNED') : (lang === 'fr' ? 'À OBTENIR' : 'NOT OWNED')}{featuredIds.has(reward.id) ? (lang === 'fr' ? ' · SÉLECTION' : ' · FEATURED') : ''}</small>
               </article>)}
