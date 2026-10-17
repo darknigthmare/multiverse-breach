@@ -86,6 +86,17 @@ test('all registered source kits execute in both engines on each side', async t 
       if (mode === 'RPG') assert.equal(actor.atb, 0);
       assert.equal(trigger(setup, mode, side), false, 'second input accepted');
       ticks(engine, d.windupTicks + d.revealTicks - 1);assert.equal(contacts.length, 0);
+      if (d.summonAgent) {
+        ticks(engine, 1);
+        assert.equal(contacts.length, 0, 'summon damage was applied at release');
+        assert.equal(engine.signatureDirector.getSummonState().length, d.hits);
+        for (let i = 0; i < 260 && (engine.signatureDirector.busy || engine.signatureDirector.getSummonState().length); i++) ticks(engine, 1);
+        assert.equal(contacts.length, d.hits, 'every spirit should contact the stationary nearby target once');
+        assert.ok(target.currentHp < before);
+        assert.equal(engine.signatureDirector.busy, false); assert.equal(actor.actionPending, false);
+        assert.equal(engine.signatureDirector.getSummonState().length, 0);
+        return;
+      }
       ticks(engine, (d.hits - 1) * d.hitGapTicks + 1);
       // The new disc is released first, then travels; retain the exact damage
       // assertions after its short 30-pixel fixture flight, not at release.

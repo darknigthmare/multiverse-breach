@@ -8,7 +8,10 @@ export default function SignatureSequencePanel({ state, lang = 'fr' }) {
     data-signature-phase={state.phase} style={{ padding: 12, marginBlock: 10, borderColor: state.color, overflowWrap: 'anywhere' }}>
     <strong>{KINDS[state.kind]?.[l] || state.kind} — {state.name}</strong>
     <p style={{ fontSize: 12, marginBlock: 6 }}>{state.actorName} · {state.universe}</p>
-    <span>{state.projectile === 'returning-disc'
+    <span>{state.summonAgent
+      ? (state.hit > 0 ? (l ? 'Four spirits released — damage only on collision' : 'Quatre spectres déployés — dégâts uniquement au contact')
+        : (l ? 'Preparing the four spirits' : 'Préparation des quatre spectres'))
+      : state.projectile === 'returning-disc'
       ? (state.hit > 0 ? (l ? 'Disc released — damage only on collision' : 'Disque lancé — dégâts uniquement au contact')
         : (l ? 'Preparing the throw' : 'Préparation du lancer'))
       : <>{PHASES[state.phase]?.[l]} · {state.hit}/{state.hits}</>}</span>

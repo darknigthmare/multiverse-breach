@@ -169,7 +169,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     if (Number.isFinite(args[2]) && args[2] > 0) source.support.release(args[0]);
     if (source.support.blockHit(args[0], args[1], args[2], mode === 'Smash' ? args[3] : 0)) return 0;
     const result = original.apply(engine, args);
-    if (!alive(args[1])) source.flights.onKnockout(args[1]);
+    if (!alive(args[1])) { source.flights.onKnockout(args[1]); source.spirits.onKnockout(args[1]); }
     if (sequence && !alive(sequence.actor)) close('caster-ko');
     else if (sequence?.lockHeld && sequence.actor.state !== 'signature') close('caster-interrupted');
     return result;
@@ -216,6 +216,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     source.prepareRoster();
     source.support.advance();
     source.flights.advance();
+    source.spirits.advance();
     source.tickEnemyAI();
     return result;
   });
@@ -223,13 +224,16 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     const result = original.apply(engine, args);
     source.support.draw(args[0]);
     source.flights.draw(args[0]);
+    source.spirits.draw(args[0], { reducedMotion: typeof globalThis.matchMedia === 'function'
+      && globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches === true });
     return result;
   });
   if (typeof engine.dispose !== 'function') engine.dispose = () => { engine.disposed = true; };
-  wrap('dispose', (original, ...args) => { close('disposed'); disposed = true; usedEvents.clear(); source.support.dispose(); source.flights.dispose(); return original.apply(engine, args); });
+  wrap('dispose', (original, ...args) => { close('disposed'); disposed = true; usedEvents.clear(); source.support.dispose(); source.flights.dispose(); source.spirits.dispose(); return original.apply(engine, args); });
   const director = {
     eventReadiness, triggerInvocation,
     getSupportState: () => source.support.snapshot(),
+    getSummonState: () => source.spirits.snapshot(),
     getProjectileState: () => source.flights.snapshot(),
     superReadiness(actor) {
       if (mode === 'Smash' && source.definitionFor(actor)) return source.readiness(actor);
@@ -250,6 +254,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
         name: localName(d.name, lang), kind: d.kind, tick, hit, hits: d.hits,
         duration: d.windupTicks + d.revealTicks + (d.hits - 1) * d.hitGapTicks + d.outroTicks,
         phase: tick < d.windupTicks ? 'prepare' : tick < d.windupTicks + d.revealTicks ? 'reveal' : hit < d.hits ? 'impact' : 'return',
+        summonAgent: d.summonAgent || null, summonCount: d.summonCount || null,
         projectile: mode === 'Smash' ? d.projectile || null : null,
         color: d.color, icon: d.icon || null, fidelity: d.fidelity, style: d.style || null, summonName: d.summonName || null, windupTicks: d.windupTicks, revealTicks: d.revealTicks };
     },

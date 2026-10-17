@@ -71,7 +71,7 @@ export function drawSignatureEffect(ctx, state, x, y, radius, reducedMotion = fa
 export function drawSignatureCinematic(ctx, state, actor, drawActor, { reducedMotion = false } = {}) {
   if (!ctx || !state || !ctx.canvas) return;
   // The battlefield now carries the real returning disc, not a cutscene hit.
-  if (state.projectile === 'returning-disc' && state.hit > 0) return;
+  if ((state.projectile === 'returning-disc' || state.summonAgent) && state.hit > 0) return;
   const { width: w, height: h } = ctx.canvas;
   const intro = Math.min(1, state.tick / 12);
   const outro = Math.min(1, (state.duration - state.tick) / 18);

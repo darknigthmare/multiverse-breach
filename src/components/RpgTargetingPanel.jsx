@@ -39,6 +39,9 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
             style={{ marginBottom: 10, fontSize: 12, lineHeight: 1.5 }}>
             <summary>{fr ? 'Fiche de la capacité utilisée' : 'Current ability source'}</summary>
             <div>{targeting.sourceProfile.universe}{targeting.sourceProfile.continuity ? ` · ${targeting.sourceProfile.continuity}` : ''}</div>
+            {targeting.sourceProfile.summonAgent && <div>{fr
+              ? 'Quatre spectres poursuivent les cibles confirmées. Les dégâts exigent un contact ; leur portée de poursuite et leur durée sont limitées. Une cible perdue ne sera pas remplacée.'
+              : 'Four spirits pursue confirmed targets. Damage requires contact; pursuit and lifetime are bounded. Lost targets are not replaced.'}</div>}
             {targeting.sourceProfile.summonName && <div>{fr ? 'Invocation : ' : 'Summon: '}{targeting.sourceProfile.summonName}</div>}
             <div>{fr ? 'Coût : une ATB pleine et 100 % de charge spéciale, une seule fois après confirmation.' : 'Cost: full ATB and 100% special charge, once after confirmation.'}</div>
             <div>{fr ? 'Famille d’attaque documentée ; dégâts, portée, contacts et animation adaptés au Nexus.' : 'Documented attack family; damage, range, contacts and animation adapted for the Nexus.'}</div>

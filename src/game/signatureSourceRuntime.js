@@ -1,3 +1,4 @@
+import { createSignatureSpiritSwarm, SPIRIT_RULES } from './signatureSpiritSwarm.js';
 import { createSignatureReturningDiscs } from './signatureReturningDisc.js';
 import { createSignatureMedicSupport } from './signatureMedicSupport.js';
 import { prepareSourceSignature, resolveSourceSignature } from './signatureSourceKits.js';
@@ -42,6 +43,8 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
   };
   const flights = createSignatureReturningDiscs(engine, { sideOf, enemiesOf,
     validAction: (actor, action, key) => actor.special === action && definitionFor(actor)?.key === key });
+  const spirits = createSignatureSpiritSwarm(engine, { mode, sideOf, enemiesOf,
+    validAction: (actor, action, key) => actor.special === action && definitionFor(actor)?.key === key });
   const meleeTargets = actor => {
     const profile = getSmashAbilityProfile(actor, 'special');
     const definition = definitionFor(actor);
@@ -64,7 +67,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const side = sideOf(actor);
     const targets = mode === 'Smash' ? meleeTargets(actor)
       : side ? engine.getActionContext(actor, 'special', side).eligibleTargets : [];
-    const reason = blocked() || busy() ? 'locked' : flights.has(actor) ? 'projectile-active' : definition.protection && support.active(actor) ? 'support-active'
+    const reason = blocked() || busy() ? 'locked' : definition.summonAgent && !spirits.canLaunch(actor) ? 'summon-active' : flights.has(actor) ? 'projectile-active' : definition.protection && support.active(actor) ? 'support-active'
       : definition.protection && actor.medigunType && actor.medigunType !== 'stock' ? 'wrong-medigun' : !side || !eligibleState(actor) ? 'actor-unavailable'
       : !Number.isFinite(actor.specialCharge) || actor.specialCharge < 100 ? 'charge'
         : mode === 'RPG' && !engine.canUseAction(actor, 'special', side) ? 'atb'
@@ -77,6 +80,8 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const d = ready.definition;
     const action = actor.special;
     if (targets.some(target => !ready.targets.includes(target))) return false;
+    if (d.summonAgent && (!finitePosition(actor) || targets.length > SPIRIT_RULES.maxTargets
+      || new Set(targets).size !== targets.length || targets.some(target => !finitePosition(target)))) return false;
     // Fix the whole multi-hit plan before reserving the charge. A lost target
     // loses its scheduled contact: it is never replaced by a new combatant.
     const plan = Array.from({ length: d.hits }, (_, index) => {
@@ -89,9 +94,16 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const total = d.effect === 'damage' ? attack * action.dmg : 0;
     if (!Number.isFinite(total)) return false;
     const physicalDisc = mode === 'Smash' && d.projectile === 'returning-disc';
-    const descriptor = { ...d, id: d.key, action, name: { fr: d.name, en: d.name },
+    const autonomous = d.summonAgent === 'wraithverge-spirit';
+    const descriptor = { ...d, ...(autonomous ? { hits: 1, summonCount: d.hits } : {}),
+      id: d.key, action, name: { fr: d.name, en: d.name },
       color: d.color || action.color || actor.secondaryColor || actor.color || '#39c5bb' };
     const started = begin(descriptor, actor, targets, hit => {
+      if (autonomous) {
+        // Release all four once; subsequent cinematic markers do not deal damage.
+        if (hit === 1) spirits.launch(actor, targets, d, total);
+        return;
+      }
       if (physicalDisc) {
         if (meleeTargets(actor).includes(targets[0])) flights.launch(actor, targets[0], d, total);
         return;
@@ -116,7 +128,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
         }
       }
       engine.playSfx?.(d.effect === 'heal' ? 'shield' : d.delivery === 'melee' ? 'slash' : 'shoot');
-    }, { native: physicalDisc, action, validateThroughSequence: true, validate: () => actor.special === action
+    }, { native: physicalDisc || autonomous, action, validateThroughSequence: true, validate: () => actor.special === action
       && definitionFor(actor) === d && (!resolveActiveActor || resolveActiveActor() === actor) });
     if (started) {
       actor.specialCharge = 0;
@@ -165,6 +177,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (!d) return preview;
     const sourceProfile = { key: d.key, universe: d.universe, kind: d.kind,
       summonName: d.summonName || null, continuity: d.requiredContinuity || null,
+      summonAgent: d.summonAgent || null,
       referenceUrl: d.referenceUrl, fidelity: d.fidelity, protectionTicks: d.durationTicks || null };
     const annotated = { ...preview, sourceProfile, sourceHits: d.hits, sourceDistribution: d.distribution };
     // Healing previews keep the native cap/rounding; both effects expose the
@@ -193,7 +206,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
         }
         return Math.min(target.currentHp, total);
       };
-      return { ...estimate, amount: damageFor(nominalHits, 1), min: damageFor(minHits, 0.9), max: damageFor(maxHits, 1.1) };
+      return { ...estimate, amount: damageFor(nominalHits, 1), min: d.summonAgent ? 0 : damageFor(minHits, 0.9), max: damageFor(maxHits, 1.1) };
     });
     return { ...annotated, estimates, estimate: estimates };
   };
@@ -212,5 +225,5 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (actor && triggerMelee(actor, 'special')) aiRecoveryTicks = SOURCE_ENEMY_RECOVERY_TICKS;
   };
   prepareRoster();
-  return { prepareRoster, definitionFor, readiness, triggerRpg, triggerMelee, previewRpg, tickEnemyAI, support, filterRpgContext, flights };
+  return { prepareRoster, definitionFor, readiness, triggerRpg, triggerMelee, previewRpg, tickEnemyAI, support, filterRpgContext, flights, spirits };
 }

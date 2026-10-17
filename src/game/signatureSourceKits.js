@@ -1,3 +1,4 @@
+import { SIGNATURE_WAVE5_REFERENCES, SIGNATURE_WAVE5_ROWS, SIGNATURE_WAVE5_UPGRADES } from './signatureSourceWave5.js';
 import { SIGNATURE_WAVE4_REFERENCES, SIGNATURE_WAVE4_ROWS } from './signatureSourceWave4.js';
 import { SIGNATURE_WAVE3_REFERENCES, SIGNATURE_WAVE3_ROWS } from './signatureSourceWave3.js';
 import { SIGNATURE_WAVE2_REFERENCES, SIGNATURE_WAVE2_ROWS } from './signatureSourceWave2.js';
@@ -5,6 +6,7 @@ import { SIGNATURE_WAVE2_REFERENCES, SIGNATURE_WAVE2_ROWS } from './signatureSou
 // Source URLs document identity/attack-family evidence, not our pixel choreography.
 export const SIGNATURE_SOURCE_REFERENCES = Object.freeze({
   ...SIGNATURE_WAVE2_REFERENCES,
+  ...SIGNATURE_WAVE5_REFERENCES,
   ...SIGNATURE_WAVE4_REFERENCES,
   ...SIGNATURE_WAVE3_REFERENCES,
   ff7: 'https://guides.gamercorner.net/ffvii/limit-breaks/',
@@ -70,6 +72,7 @@ const rows = [
   enemy("Doom", "Cyberdemon Lord", "Tyrant Rocket Storm", "Cyberdemon Rocket Salvo", "barrage", 390, "doom", {"hits": 3, "shape": "multi", "distribution": "cycle"}),
   enemy("Doom", "Spider Mastermind Mother", "Plasma Pulse Ring", "Spider Mastermind Chaingun", "barrage", 380, "doom", {"hits": 3}),
   ...SIGNATURE_WAVE2_ROWS,
+  ...SIGNATURE_WAVE5_ROWS,
   ...SIGNATURE_WAVE4_ROWS,
   ...SIGNATURE_WAVE3_ROWS
  ].map(row => ({
@@ -78,8 +81,8 @@ const rows = [
 }));
 const frozen = value => { if (value && typeof value === 'object') { Object.values(value).forEach(frozen); Object.freeze(value); } return value; };
 export const SIGNATURE_SOURCE_KITS = frozen(Object.fromEntries(rows.map(row => [row.key, {
-  ...row, fidelity: 'source-described-adaptation', canonicalFidelityApproved: false,
-  referenceUrl: SIGNATURE_SOURCE_REFERENCES[row.source], visualStatus: 'existing-artwork; source animation missing',
+  ...row, ...SIGNATURE_WAVE5_UPGRADES[row.key], fidelity: 'source-described-adaptation', canonicalFidelityApproved: false,
+  referenceUrl: SIGNATURE_SOURCE_REFERENCES[row.source], visualStatus: SIGNATURE_WAVE5_UPGRADES[row.key]?.visualStatus || 'existing-artwork; source animation missing',
   windupTicks: row.delivery === 'melee' ? 18 : 30, revealTicks: row.kind === 'summon' ? 42 : 24,
   hitGapTicks: row.hits > 1 ? 8 : 1, outroTicks: 24
 }])));
