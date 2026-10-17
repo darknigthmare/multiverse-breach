@@ -73,7 +73,10 @@ export function createSignatureSpiritSwarm(engine, { mode, sideOf, enemiesOf, va
         if (spirit.age <= SPIRIT_RULES.emergence) { spirit.previousTarget = aim; continue; }
         const from = { x: spirit.x, y: spirit.y };
         spirit.heading = turnToward(spirit.heading, Math.atan2(aim.y - from.y, aim.x - from.x));
-        const speed = mode === 'RPG' ? SPIRIT_RULES.rpgSpeed : SPIRIT_RULES.speed;
+        const topSpeed = mode === 'RPG' ? SPIRIT_RULES.rpgSpeed : SPIRIT_RULES.speed;
+        // Slow near the target so the turn radius cannot create a stable orbit
+        // outside the contact circle after a small recoil or vertical movement.
+        const speed = Math.min(topSpeed, Math.max(2, Math.hypot(aim.x - from.x, aim.y - from.y) * SPIRIT_RULES.turn * 0.7));
         const to = { x: from.x + Math.cos(spirit.heading) * speed, y: from.y + Math.sin(spirit.heading) * speed };
         const previous = spirit.previousTarget;
         const contact = discContactTime({ x: from.x - previous.x, y: from.y - previous.y },

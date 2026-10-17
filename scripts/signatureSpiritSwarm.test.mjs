@@ -146,3 +146,12 @@ test('snapshot callers and renderers cannot mutate the simulation clock', () => 
   s.manager.draw(ctx); s.manager.draw(ctx, { reducedMotion: true });
   assert.deepEqual(s.manager.snapshot(), before); assert.ok(calls.some(([key]) => key === 'restore'));
 });
+
+for (const mode of ['RPG', 'Smash']) test(`${mode}: close moving targets cannot trap a spirit in an endless orbit`, () => {
+  const s = setup(mode); s.targets[0].x = 35;
+  const damage = s.e.applyDamage;
+  s.e.applyDamage = (...args) => { damage(...args); s.targets[0].y += 10; };
+  launch(s); tick(s, SPIRIT_RULES.lifetime + 1);
+  assert.equal(s.hits.length, 4, 'finite displacement after contact must remain interceptable');
+  assert.equal(s.manager.snapshot().length, 0);
+});

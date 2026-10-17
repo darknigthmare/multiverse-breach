@@ -37,8 +37,10 @@ Resident Evil : références Capcom de l'encyclopédie des créatures dans `sign
 
 ## Validation et livraison
 
-`node --test scripts/signatureSpiritSwarm.test.mjs` : 48 tests unitaires passent localement. Les tests Vite des vrais moteurs, la matrice des capacités et les huit nouvelles recettes Chromium sont intégrés à la CI permanente en lecture seule, sans retirer les suites précédentes. Les résultats à citer sont ceux du commit final dans les artefacts GitHub, pas une extrapolation du local.
+`node --test scripts/signatureSpiritSwarm.test.mjs` : 50 tests unitaires passent localement. Les tests Vite des vrais moteurs, la matrice des capacités et les huit nouvelles recettes Chromium sont intégrés à la CI permanente en lecture seule, sans retirer les suites précédentes. Les résultats à citer sont ceux du commit final dans les artefacts GitHub, pas une extrapolation du local.
 
 Les recettes emploient la vraie page QA GameCanvas : Parias et Traductus dans les deux modes, Nemesis et Hunter RPG, Licker et Tyrant Smash, FR/EN, 390/1280 pixels. Elles vérifient coût, absence de dégâts à la libération, pause, contacts, nettoyage et commandes réelles. États initiaux synthétiques ; ni campagne entière ni téléphone physique.
 
 L'inventaire v6 ajoute `sourceSummonAgent` et `autonomousSummonBindings`. Deux contrats améliorés ne sont pas recomptés comme deux nouveaux personnages. Le registre complet est recalculé par la CI. La copie locale est partielle ; aucune compilation complète ni navigation locale du jeu n'est revendiquée. Aucun compte réel, paramètre cloud, secret, quota ou production modifié.
+
+La première CI a détecté deux échecs de matrice Wraithverge (trois contacts au lieu de quatre). Deux nouveaux tests unitaires ont reproduit une orbite stable à courte distance après déplacement de la cible. La vitesse décroît maintenant à proximité, sans augmenter la rotation maximale, supprimer la durée limite ou remplacer une cible. Les 50 tests unitaires passent après correction ; les assertions de quatre contacts sont conservées.
