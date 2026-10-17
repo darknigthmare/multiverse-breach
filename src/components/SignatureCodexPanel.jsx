@@ -1,5 +1,11 @@
 import React from 'react';
+import './SignatureCodexPanel.css';
 import { getSignatureCodex, getSignatureSummary } from '../game/signatureCodex.js';
+
+// The compact booster manifest has legacy 8px/nowrap paragraph rules.
+// Override them on the full dossier itself, not on unrelated compact cards.
+const paragraphStyle = { fontSize: 12, lineHeight: 1.6, whiteSpace: 'normal',
+  overflow: 'visible', textOverflow: 'clip', margin: '10px 0' };
 
 export default function SignatureCodexPanel({ actor, lang = 'fr', codex: supplied }) {
   const codex = supplied || getSignatureCodex(actor);
@@ -27,11 +33,11 @@ export default function SignatureCodexPanel({ actor, lang = 'fr', codex: supplie
   return <details data-signature-codex={codex.key} style={{ marginBlock: 10, padding: 10,
     border: '1px solid #365c65', borderRadius: 6, overflowWrap: 'anywhere', fontSize: 12, lineHeight: 1.6 }}>
     <summary>{fr ? 'Capacité réellement intégrée' : 'Integrated combat ability'} — {codex.name}</summary>
-    <p>{getSignatureSummary(codex, lang)}</p>
-    <p>{codex.universe}{codex.continuity ? ` · ${codex.continuity}` : ''}</p>
-    {codex.summonName && <p>{fr ? 'Invocation associée : ' : 'Associated summon: '}{codex.summonName}</p>}
-    <p>{behavior}</p>
-    <p>{fr ? 'Ces informations décrivent le contrat de base, pas un aperçu des dégâts de ton équipement ni un déblocage offert.'
+    <p style={paragraphStyle}>{getSignatureSummary(codex, lang)}</p>
+    <p style={paragraphStyle}>{codex.universe}{codex.continuity ? ` · ${codex.continuity}` : ''}</p>
+    {codex.summonName && <p style={paragraphStyle}>{fr ? 'Invocation associée : ' : 'Associated summon: '}{codex.summonName}</p>}
+    <p style={paragraphStyle}>{behavior}</p>
+    <p style={paragraphStyle}>{fr ? 'Ces informations décrivent le contrat de base, pas un aperçu des dégâts de ton équipement ni un déblocage offert.'
       : 'This is the base contract, not a damage preview for your equipment or a free unlock.'}</p>
     {codex.referenceUrl && <a href={codex.referenceUrl} target="_blank" rel="noopener noreferrer"
       style={{ color: '#a2ecff' }}>{fr ? 'Référence de la capacité' : 'Ability reference'}</a>}

@@ -35,6 +35,8 @@ with sync_playwright() as p:
                     assert source.locator('a').get_attribute('href').startswith('https://')
                     assert 'non certif' in source.inner_text() if lang=='fr' else 'not certified' in source.inner_text()
                     assert 'Origin Burst' not in dialog.inner_text()
+                    paragraphs=source.locator('p').evaluate_all('(els)=>els.map(el=>({font:parseFloat(getComputedStyle(el).fontSize),space:getComputedStyle(el).whiteSpace,overflow:getComputedStyle(el).overflow,client:el.clientWidth,scroll:el.scrollWidth}))')
+                    assert paragraphs and all(p['font'] >= 12 and p['space'] == 'normal' and p['overflow'] != 'hidden' and p['scroll'] <= p['client'] + 1 for p in paragraphs), paragraphs
                 else:
                     page.wait_for_timeout(300)
                     assert dialog.locator('[data-signature-codex]').count()==0

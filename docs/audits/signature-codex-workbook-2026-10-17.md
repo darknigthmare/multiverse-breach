@@ -1,11 +1,12 @@
 # Liaison des fiches de capacites et suivi Excel reconstitue
 
-Base de travail : PR 2, `a6b90e01d54d997ba7421055d29c94ccd25f2f5d`.
+Base de travail : `a46d5c2eb9a8679a860fc4c5e504589f56a77ba3`, fusion de la PR 2.
+La PR 3 recupere le lot interrompu de `70209ca1` apres cette fusion.
 
 ## Origine et perimetre
 
-Le classeur Excel d'origine mentionne par l'utilisateur n'a pas ete identifie
-apres recherches dans les fichiers visibles, la Library, Google Drive et les
+Le nom du classeur d'origine `multiverse_breach_catalog_lore_UPDATED.xlsx` a
+ete retrouve dans un ancien echange, mais son contenu n'a pas ete recupere apres recherches dans les fichiers visibles, la Library, Google Drive et les
 documents du depot. Aucun classeur d'un autre jeu n'a ete utilise. Le suivi livre
 est explicitement RECONSTITUE depuis le registre de couverture de cette PR ; ce
 n'est pas une mise a jour du fichier original, ni une preuve d'integration de ses
@@ -77,3 +78,28 @@ Pas de nouveau moveset, animation, invocation, correction exhaustive de tout le
 codex ni certification 1:1. Les profils non verifies conservent leurs descriptions.
 Pas de modification du classeur original non retrouve, ni de comptes/SQL/secrets,
 ni de fusion de PR ou publication volontaire en production.
+
+## Reprise et verification complementaire
+
+La premiere CI de la PR 3 a reussi : 974 tests Node dans le groupe signatures
+et codex, huit nouvelles recettes navigateur, plus toutes les recettes precedentes.
+Ces resultats historiques ne remplacent pas ceux de la tete finale.
+
+L'inspection de la capture mobile du booster a revele que la regle existante
+`.booster-reward-manifest-group p` impose 8px, nowrap et overflow:hidden. Une
+reproduction locale sur le vrai composant rendu et la vraie feuille CSS a mesure
+954px de texte dans un paragraphe visible de 288px. Ce n'est pas un lancement
+local complet de l'application.
+
+Les paragraphes du dossier utilisent maintenant 12px, retour a la ligne et contenu
+non masque. La description du reward est elle aussi lisible. Trois tests Node et les
+huit parcours Chromium controlent ce contrat, sans modifier les cartes compactes
+ailleurs. Les autres cartes compactes conservent leur presentation initiale.
+
+Le workflow temporaire de capture des sources est retire apres recuperation.
+Les sources et manifests extraits ont ete verifies sur 849 blobs Git ; les
+archives et captures finales sont conservees dans la livraison.
+
+Le classeur Excel fourni est un suivi distinct, reconstitue depuis le JSON
+exporte par la CI. Il ne remplace pas l'original inaccessible et n'en reproduit
+pas arbitrairement les onglets de stages, synergies ou arcs narratifs.
