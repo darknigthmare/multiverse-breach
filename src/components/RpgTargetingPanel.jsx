@@ -31,6 +31,10 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
               {' · '}{wait ? (fr ? 'Combat en attente' : 'Combat waiting') : (fr ? 'Combat actif' : 'Combat active')}
             </div>
           </div>
+          {targeting.sourceProfile?.protectionTicks > 0 && <p data-support-preview="stock-uber" style={{ fontSize: 12, lineHeight: 1.5 }}>
+            {fr ? 'Protège le Medic et une seule cible alliée pendant huit secondes de simulation. Ne soigne pas et ne ressuscite pas. La liaison cesse pour une cible hors de portée ; le recul et les dangers du monde restent actifs.'
+              : 'Protects the Medic and one allied target for eight simulation seconds. Does not heal or revive. An out-of-range target loses the link; knockback and world hazards remain active.'}
+          </p>}
           {targeting.sourceProfile && <details data-source-profile={targeting.sourceProfile.key}
             style={{ marginBottom: 10, fontSize: 12, lineHeight: 1.5 }}>
             <summary>{fr ? 'Fiche de la capacité utilisée' : 'Current ability source'}</summary>
@@ -57,6 +61,7 @@ export default function RpgTargetingPanel({ targeting, lang, paused, wait, onWai
                   {affected && estimate && <div style={{ fontSize: 10, marginTop: 4 }}>
                     {EFFECT_LABELS[estimate.effect]?.[locale] || estimate.effect}
                     {estimate.amount > 0 || estimate.max > 0 ? ` ${estimate.min === estimate.max ? estimate.amount : `${estimate.min}–${estimate.max}`}` : ''}
+                    {estimate.blockedByUber && <div>{fr ? 'ÜberCharge : dégâts bloqués.' : 'ÜberCharge: damage blocked.'}</div>}
                     {estimate.cleansedStatuses?.length > 0 && <div>
                       {fr ? 'Purification : ' : 'Cleanse: '}
                       {estimate.cleansedStatuses.map(status => STATUS_LABELS[status]?.[locale] || status).join(', ')}

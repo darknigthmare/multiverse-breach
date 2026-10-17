@@ -46,7 +46,7 @@ const trigger = ({ engine, actor }, mode, side = 'player') => mode === 'RPG'
   : side === 'player' ? engine.triggerAbility(actor, 'special') : engine.triggerOpponentAbility('special');
 
 test('every authored identity exists and resolves only within its exact source universe', () => {
-  assert.equal(Object.values(kits).filter(kit => kit.wave !== 2).length, 39);
+  assert.equal(Object.values(kits).filter(kit => !kit.wave).length, 39);
   assert.ok(Object.keys(kits).length >= 39);
   for (const d of Object.values(kits)) {
     const actor = template(d);const before = JSON.stringify(actor);assert.equal(resolve(actor), d, d.key);
@@ -86,6 +86,7 @@ test('all registered source kits execute in both engines on each side', async t 
       ticks(engine, d.windupTicks + d.revealTicks - 1);assert.equal(contacts.length, 0);
       ticks(engine, (d.hits - 1) * d.hitGapTicks + 1);
       if (d.effect === 'heal') { assert.ok(actor.currentHp > before);assert.equal(target.currentHp, targetBefore); }
+      else if (d.effect === 'guard') { assert.equal(contacts.length, 0);assert.equal(target.currentHp, targetBefore);assert.equal(engine.signatureDirector.getSupportState().length, 1); }
       else { assert.equal(contacts.length, d.hits);assert.ok(target.currentHp < before); }
       ticks(engine, d.outroTicks - 1);assert.equal(actor.specialCharge, 0);assert.equal(engine.signatureDirector.busy, true);
       ticks(engine, 1);assert.equal(engine.signatureDirector.busy, false);assert.equal(actor.actionPending, false);

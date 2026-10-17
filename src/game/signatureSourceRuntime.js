@@ -1,3 +1,4 @@
+import { createSignatureMedicSupport } from './signatureMedicSupport.js';
 import { prepareSourceSignature, resolveSourceSignature } from './signatureSourceKits.js';
 import { getSmashAbilityProfile, getSmashAbilityTargets } from './smashAbilityProfiles.js';
 import { calculateRpgDamage, getRpgActionProfile, resolveRpgTargets, rpgUnitId } from './rpgTargeting.js';
@@ -14,6 +15,7 @@ export const SOURCE_ENEMY_RECOVERY_TICKS = 180;
  * damage/healing rules. The director owns all pause and interruption semantics. */
 export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eligibleState, sideOf, enemiesOf, busy }) {
   const prepared = new WeakSet();
+  const support = createSignatureMedicSupport(engine, mode);
   let aiRecoveryTicks = 0;
   const candidates = actor => actor.special?.rpgProfile?.targetSide === 'ally'
     ? sideOf(actor) === 'player' ? engine.heroes : engine.enemies
@@ -44,8 +46,12 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     // Filter a weapon's dead zone BEFORE nearest-target sorting and maxTargets.
     // Otherwise a close invalid target hides a farther valid railgun target.
     const minRange = Number.isFinite(definition.minRange) ? Math.max(0, definition.minRange) : 0;
-    const eligible = candidates(actor).filter(target => alive(target) && finitePosition(target)
-      && Math.hypot(target.x - actor.x, target.y - actor.y) >= minRange);
+    let eligible = candidates(actor).filter(target => alive(target) && finitePosition(target)
+      && Math.hypot(target.x - actor.x, target.y - actor.y) >= minRange
+      && (!definition.protection || support.canLink(actor, target, definition)));
+    // Medic may protect himself alone; prefer one nearby teammate when present.
+    // Removing self BEFORE maxTargets avoids self swallowing the patient slot.
+    if (definition.protection && eligible.some(target => target !== actor)) eligible = eligible.filter(target => target !== actor);
     return getSmashAbilityTargets(actor, eligible, profile)
       .filter(target => definition.effect !== 'heal' || getCombatHealingAmount(target, target.maxHp * definition.healRatio) > 0);
   };
@@ -55,7 +61,8 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const side = sideOf(actor);
     const targets = mode === 'Smash' ? meleeTargets(actor)
       : side ? engine.getActionContext(actor, 'special', side).eligibleTargets : [];
-    const reason = blocked() || busy() ? 'locked' : !side || !eligibleState(actor) ? 'actor-unavailable'
+    const reason = blocked() || busy() ? 'locked' : definition.protection && support.active(actor) ? 'support-active'
+      : definition.protection && actor.medigunType && actor.medigunType !== 'stock' ? 'wrong-medigun' : !side || !eligibleState(actor) ? 'actor-unavailable'
       : !Number.isFinite(actor.specialCharge) || actor.specialCharge < 100 ? 'charge'
         : mode === 'RPG' && !engine.canUseAction(actor, 'special', side) ? 'atb'
           : !targets.length ? 'no-target' : null;
@@ -81,7 +88,14 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const descriptor = { ...d, id: d.key, action, name: { fr: d.name, en: d.name },
       color: d.color || action.color || actor.secondaryColor || actor.color || '#39c5bb' };
     const started = begin(descriptor, actor, targets, hit => {
-      const current = mode === 'Smash' ? meleeTargets(actor) : candidates(actor).filter(alive);
+      const current = d.protection ? targets.filter(target => support.canLink(actor, target, d))
+        : mode === 'Smash' ? meleeTargets(actor) : candidates(actor).filter(alive);
+      if (d.protection) {
+        const patient = targets[0];
+        if (current.includes(patient)) support.grant(actor, patient, d);
+        engine.playSfx?.('shield');
+        return;
+      }
       for (const target of plan[hit - 1]) {
         if (!alive(actor) || !current.includes(target)) continue;
         if (d.effect === 'heal') {
@@ -120,14 +134,30 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (abilityType !== 'special' || !definitionFor(actor)) return null;
     return start(actor, meleeTargets(actor), resolveActiveActor);
   };
+  const filterRpgContext = context => {
+    const d = definitionFor(context?.actor);
+    if (context?.abilityType !== 'special' || !d?.protection) return context;
+    return { ...context, eligibleTargets: context.eligibleTargets.filter(target => support.canLink(context.actor, target, d)) };
+  };
   const previewRpg = preview => {
-    if (!preview || preview.abilityType !== 'special') return preview;
-    const actor = [...engine.heroes, ...engine.enemies].find(unit => rpgUnitId(unit) === preview.actorId);
+    if (!preview) return preview;
+    const roster = [...engine.heroes, ...engine.enemies];
+    const actor = roster.find(unit => rpgUnitId(unit) === preview.actorId);
+    if (preview.effect === 'damage') {
+      const estimates = preview.estimates.map(estimate => {
+        const target = roster.find(unit => rpgUnitId(unit) === estimate.id);
+        // A Medic's own damaging attack will release only that Medic's link.
+        return support.protects(target, actor) && sideOf(actor)
+          ? { ...estimate, amount: 0, min: 0, max: 0, blockedByUber: true } : estimate;
+      });
+      preview = { ...preview, estimates, estimate: estimates };
+    }
+    if (preview.abilityType !== 'special') return preview;
     const d = definitionFor(actor);
     if (!d) return preview;
     const sourceProfile = { key: d.key, universe: d.universe, kind: d.kind,
       summonName: d.summonName || null, continuity: d.requiredContinuity || null,
-      referenceUrl: d.referenceUrl, fidelity: d.fidelity };
+      referenceUrl: d.referenceUrl, fidelity: d.fidelity, protectionTicks: d.durationTicks || null };
     const annotated = { ...preview, sourceProfile, sourceHits: d.hits, sourceDistribution: d.distribution };
     // Healing previews keep the native cap/rounding; both effects expose the
     // actual prepared action rather than the stale generic catalog label.
@@ -135,7 +165,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     const targets = candidates(actor).filter(unit => preview.previewTargetIds.includes(rpgUnitId(unit)));
     const estimates = preview.estimates.map(estimate => {
       const index = targets.findIndex(unit => rpgUnitId(unit) === estimate.id);
-      if (index < 0 || estimate.blockedByKryll || estimate.blockedByAztecCurse || estimate.blockedBySourceFinale) return estimate;
+      if (index < 0 || estimate.blockedByUber || estimate.blockedByKryll || estimate.blockedByAztecCurse || estimate.blockedBySourceFinale) return estimate;
       const target = targets[index];
       const cyclicCount = Math.floor(d.hits / targets.length) + (index < d.hits % targets.length ? 1 : 0);
       const maxHits = d.distribution === 'cycle' ? cyclicCount : d.hits;
@@ -165,7 +195,7 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     // No new powers for unidentified foes or scripted encounter controllers.
     // Charge uses simulation ticks, never setTimeout or wall-clock time.
     for (const actor of engine.enemies || []) {
-      if (!definitionFor(actor) || !alive(actor)) continue;
+      if (!definitionFor(actor) || !alive(actor) || support.active(actor)) continue;
       if (!Number.isFinite(actor.specialCharge)) continue;
       actor.specialCharge = Math.min(100, actor.specialCharge + 100 / SOURCE_ENEMY_CHARGE_TICKS);
     }
@@ -174,5 +204,5 @@ export function createSourceSignatureRuntime(engine, { mode, begin, blocked, eli
     if (actor && triggerMelee(actor, 'special')) aiRecoveryTicks = SOURCE_ENEMY_RECOVERY_TICKS;
   };
   prepareRoster();
-  return { prepareRoster, definitionFor, readiness, triggerRpg, triggerMelee, previewRpg, tickEnemyAI };
+  return { prepareRoster, definitionFor, readiness, triggerRpg, triggerMelee, previewRpg, tickEnemyAI, support, filterRpgContext };
 }

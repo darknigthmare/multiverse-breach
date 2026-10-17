@@ -92,6 +92,7 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     engine[key] = (...args) => replacement(original, ...args);
   };
   if (mode === 'RPG') wrap('previewTargets', (original, ...args) => source.previewRpg(original.apply(engine, args)));
+  if (mode === 'RPG') wrap('getActionContext', (original, ...args) => source.filterRpgContext(original.apply(engine, args)));
   const nativeMelee = (original, actor, abilityType, args, resolveActiveActor = null) => {
     if (resolving) return original.apply(engine, args);
     if (sequence || blocked()) return false;
@@ -163,6 +164,10 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     return original.call(engine, actor, ...args);
   });
   wrap('applyDamage', (original, ...args) => {
+    // Shooting instead of maintaining the Medi Gun ends only this caster's
+    // support link. Other Medics' effects remain independently owned.
+    if (Number.isFinite(args[2]) && args[2] > 0) source.support.release(args[0]);
+    if (source.support.blockHit(args[0], args[1], args[2], mode === 'Smash' ? args[3] : 0)) return 0;
     const result = original.apply(engine, args);
     if (sequence && !alive(sequence.actor)) close('caster-ko');
     else if (sequence?.lockHeld && sequence.actor.state !== 'signature') close('caster-interrupted');
@@ -208,13 +213,20 @@ export function installSignatureDirector(engine, { mode, disabled = false } = {}
     if (sequence && advance()) return;
     const result = original.apply(engine, args);
     source.prepareRoster();
+    source.support.advance();
     source.tickEnemyAI();
     return result;
   });
+  wrap('draw', (original, ...args) => {
+    const result = original.apply(engine, args);
+    source.support.draw(args[0]);
+    return result;
+  });
   if (typeof engine.dispose !== 'function') engine.dispose = () => { engine.disposed = true; };
-  wrap('dispose', (original, ...args) => { close('disposed'); disposed = true; usedEvents.clear(); return original.apply(engine, args); });
+  wrap('dispose', (original, ...args) => { close('disposed'); disposed = true; usedEvents.clear(); source.support.dispose(); return original.apply(engine, args); });
   const director = {
     eventReadiness, triggerInvocation,
+    getSupportState: () => source.support.snapshot(),
     superReadiness(actor) {
       if (mode === 'Smash' && source.definitionFor(actor)) return source.readiness(actor);
       const descriptor = mode === 'Smash' && describeNativeSignature(actor);

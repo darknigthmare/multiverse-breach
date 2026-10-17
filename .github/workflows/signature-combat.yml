@@ -34,9 +34,9 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/signature-evidence
-          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/signatureSafety.test.mjs scripts/signatureExpansion.test.mjs scripts/signatureWave2.test.mjs | tee /tmp/signature-evidence/tests.log
+          node --test --test-concurrency=1 scripts/signatureCombat.test.mjs scripts/signatureSafety.test.mjs scripts/signatureExpansion.test.mjs scripts/signatureWave2.test.mjs scripts/signatureWave3.test.mjs | tee /tmp/signature-evidence/tests.log
           node scripts/signatureCoverage.mjs /tmp/signature-evidence/coverage.json | tee /tmp/signature-evidence/coverage.log
-          npx oxlint --max-warnings 0 src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/RpgTargetingPanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx scripts/fixtures/signatureSourceHarness.jsx | tee /tmp/signature-evidence/lint.log
+          npx oxlint --max-warnings 0 src/game/signature*.js src/components/SignatureSequencePanel.jsx src/components/RpgTargetingPanel.jsx src/components/GameCanvas.jsx scripts/signature*.mjs scripts/fixtures/signatureCombatHarness.jsx scripts/fixtures/signatureSourceHarness.jsx scripts/fixtures/signatureSupportHarness.jsx | tee /tmp/signature-evidence/lint.log
           npx vite build | tee /tmp/signature-evidence/build.log
       - name: Chromium fixtures, no real accounts
         run: |
@@ -50,6 +50,7 @@ jobs:
           for n in $(seq 1 40); do curl -fsS http://127.0.0.1:4173/ > /dev/null && break; sleep 1; done
           AUDIT_OUTPUT_DIR=/tmp/signature-evidence/browser /tmp/signature-playwright/bin/python scripts/browserSignatureCombat.py | tee /tmp/signature-evidence/browser.log
           AUDIT_OUTPUT_DIR=/tmp/signature-evidence/source-browser /tmp/signature-playwright/bin/python scripts/browserSignatureSources.py | tee /tmp/signature-evidence/source-browser.log
+          AUDIT_OUTPUT_DIR=/tmp/signature-evidence/support-browser /tmp/signature-playwright/bin/python scripts/browserSignatureSupport.py | tee /tmp/signature-evidence/support-browser.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

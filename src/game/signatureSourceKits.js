@@ -1,8 +1,10 @@
+import { SIGNATURE_WAVE3_REFERENCES, SIGNATURE_WAVE3_ROWS } from './signatureSourceWave3.js';
 import { SIGNATURE_WAVE2_REFERENCES, SIGNATURE_WAVE2_ROWS } from './signatureSourceWave2.js';
 // Explicit source identities only. No blanket franchise abilities or 1:1 claim.
 // Source URLs document identity/attack-family evidence, not our pixel choreography.
 export const SIGNATURE_SOURCE_REFERENCES = Object.freeze({
   ...SIGNATURE_WAVE2_REFERENCES,
+  ...SIGNATURE_WAVE3_REFERENCES,
   ff7: 'https://guides.gamercorner.net/ffvii/limit-breaks/',
   ff8: 'https://guides.gamercorner.net/ffviii/limit-breaks/',
   ff13: 'https://guides.gamercorner.net/ffxiii/eidolons/',
@@ -65,7 +67,8 @@ const rows = [
   enemy("Doom", "Mancubus Heavy Demon", null, "Mancubus Fireball Salvo", "barrage", 320, "doom", {"hits": 6, "shape": "multi", "distribution": "cycle"}),
   enemy("Doom", "Cyberdemon Lord", "Tyrant Rocket Storm", "Cyberdemon Rocket Salvo", "barrage", 390, "doom", {"hits": 3, "shape": "multi", "distribution": "cycle"}),
   enemy("Doom", "Spider Mastermind Mother", "Plasma Pulse Ring", "Spider Mastermind Chaingun", "barrage", 380, "doom", {"hits": 3}),
-  ...SIGNATURE_WAVE2_ROWS
+  ...SIGNATURE_WAVE2_ROWS,
+  ...SIGNATURE_WAVE3_ROWS
  ].map(row => ({
   hits: 1, shape: 'single', kind: 'personal', distribution: 'all', effect: 'damage', note: NOTE,
   delivery: row.style === 'slash' ? 'melee' : 'ranged', directional: row.shape !== 'group', color: COLORS[row.style], ...row
@@ -107,10 +110,10 @@ export function prepareSourceSignature(actor) {
   if (!d || actor.special?.sourceSignatureKey === d.key) return d;
   const old = actor.special;
   const multiplier = Number.isFinite(old?.dmg) ? old.dmg : actor.isBoss || actor.isWorldBoss ? 2.5 : 1.5;
-  const support = d.effect === 'heal';
+  const support = d.effect === 'heal' || d.effect === 'guard';
   actor.special = {
     ...(typeof old === 'object' ? old : {}), name: d.name,
-    type: support ? 'heal' : d.kind === 'summon' ? 'summon' : d.delivery === 'melee' ? 'melee' : 'beam',
+    type: support ? d.effect === 'guard' ? 'shield' : 'heal' : d.kind === 'summon' ? 'summon' : d.delivery === 'melee' ? 'melee' : 'beam',
     dmg: support ? 0 : multiplier, healRatio: d.healRatio || 0, sourceSignatureKey: d.key,
     rpgProfile: { effect: d.effect, targetSide: support ? 'ally' : 'enemy',
       shape: d.shape === 'single' ? 'single' : 'group', healRatio: d.healRatio || 0 },
@@ -118,6 +121,17 @@ export function prepareSourceSignature(actor) {
       verticalRange: d.shape === 'group' ? 180 : 42, maxTargets: d.shape === 'single' ? 1 : 8,
       directional: support ? false : d.directional, knockback: d.hits > 1 ? 0 : d.delivery === 'melee' ? 24 : 12 }
   };
+  // Correct only a documented generic basic action; never rewrite a player's
+  // custom attack or another incarnation while preparing the special.
+  const correction = d.basicCorrection;
+  if (correction && actor.simple?.name === correction.legacyName
+    && !actor.simple.smashProfile && !actor.simple.rpgProfile && !actor.simple.attackProfile
+    && !actor.smashAttacks?.simple && !actor.rpgAttacks?.simple) {
+    actor.simple = { ...actor.simple, name: correction.name, type: correction.type,
+      rpgProfile: { effect: 'damage', targetSide: 'enemy', shape: 'single', delivery: correction.delivery },
+      smashProfile: { delivery: correction.delivery, shape: 'single', range: correction.range, verticalRange: 40 } };
+    actor.weaponType = correction.weaponType;
+  }
   actor.versusSpecialName = d.name;
   actor.sourceSignature = { key: d.key, fidelity: d.fidelity, referenceUrl: d.referenceUrl };
   if (!Number.isFinite(actor.specialCharge)) actor.specialCharge = 0;

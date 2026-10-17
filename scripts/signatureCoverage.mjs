@@ -26,7 +26,8 @@ try {
       authoredSignature: source?.key || null, sourceReference: source?.referenceUrl || null,
       sourceNote: source?.note || null, sourceWave: source ? (source.wave || 1) : null,
       sourceContinuity: source?.requiredContinuity || null, sourceMinRange: source?.minRange || 0,
-      sourceContacts: source?.hits || null, choreographyApproved: false,
+      sourceContacts: source?.hits || null, sourceEffect: source?.effect || null,
+      sourceProtection: source?.protection || null, sourceDurationTicks: source?.durationTicks || null, choreographyApproved: false,
       sourceStatus: !isSignatureCombatant(unit) ? 'non-combat-preserved' : profiledSuper || summon || event ? 'adaptation-source-review-required' : 'missing-authored-signature',
       fidelityApproved: false });
   };
@@ -40,9 +41,10 @@ try {
     heroes: entries.filter(e => e.kind === 'hero').length, enemiesAndBosses: entries.filter(e => e.kind !== 'hero').length,
     nativeSummoners: entries.filter(e => e.nativeSummon).length, equippedInvocationBindings: entries.filter(e => e.equippedInvocation).length,
     authoredSourceBindings: entries.filter(e => e.authoredSignature).length,
+    sustainedSupportBindings: entries.filter(e => e.sourceProtection).length,
     profiledMeleeSupers: entries.filter(e => e.meleeSuper).length, nonCombat: entries.filter(e => e.excludedNonCombat).length,
     missing: entries.filter(e => e.sourceStatus === 'missing-authored-signature').length, fidelityApproved: 0 };
   mkdirSync(path.dirname(output), { recursive: true });
-  writeFileSync(output, JSON.stringify({ version: 3, summary, disclaimer: 'Full inventory, not full implementation or 1:1 approval. No actors are granted new powers by this report.', entries }, null, 2) + '\n');
+  writeFileSync(output, JSON.stringify({ version: 4, summary, disclaimer: 'Full inventory, not full implementation or 1:1 approval. No actors are granted new powers by this report.', entries }, null, 2) + '\n');
   console.log(JSON.stringify(summary));
 } finally { await vite.close(); }

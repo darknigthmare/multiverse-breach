@@ -35,7 +35,7 @@ test('wave 2 adds 49 explicit identities and retains all 39 original definitions
   assert.equal(rows.length, 49);
   assert.equal(rows.filter(d => d.actorId).length, 19);
   assert.equal(rows.filter(d => d.enemyName).length, 30);
-  assert.equal(Object.keys(kits).length, 88);
+  assert.equal(Object.values(kits).filter(d => !d.wave || d.wave === 2).length, 88);
   assert.equal(new Set(rows.map(d => d.key)).size, 49);
   for (const d of rows) {
     assert.ok(template(d), d.key);
@@ -75,7 +75,7 @@ test('wave 2 does not overwrite shared actions, custom source profiles or noncom
 });
 test('boss puzzles and genuine support mechanics are not replaced with damage supers', () => {
   for (const [universe, names] of Object.entries({
-    Quake: ['Chthon', 'Shub-Niggurath', 'Makron'],
+    Quake: ['Chthon', 'Shub-Niggurath'],
     Hexen: ['Korax'], 'Team Fortress 2': ['Sentry Buster', 'Tank Robot']
   })) {
     const pool = enemies[universe];
@@ -83,7 +83,10 @@ test('boss puzzles and genuine support mechanics are not replaced with damage su
       if (names.some(name => actor.name.includes(name))) assert.equal(resolve({ ...actor, universe }), null, actor.name);
     }
   }
-  const medic = heroes.find(a => a.id === 'team_fortress_2_medic'); assert.ok(medic); assert.equal(prepare({ ...medic }), null);
+  const medic = heroes.find(a => a.id === 'team_fortress_2_medic'); assert.ok(medic);
+  const actor = { ...medic };
+  assert.equal(prepare(actor).effect, 'guard'); assert.equal(actor.special.dmg, 0);
+  assert.equal(kits['Quake::Makron — Quake II'].requiredContinuity, 'Quake II (1997)');
 });
 test('Gladiator dead zone refuses a close shot without spending the meter', () => {
   const e = make('Quake::Strogg Gladiator'), a = e.heroes[0];
