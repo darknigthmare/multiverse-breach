@@ -1,0 +1,39 @@
+name: Codex workbook source evidence
+on:
+  pull_request:
+    paths:
+      - .github/workflows/codex-workbook-source.yml
+      - src/game/signatureCodex.js
+      - scripts/signatureWorkbookData.mjs
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /.github/workflows/
+            /docs/audits/
+            /public/**/*.json
+      - name: Archive public source and manifests, no credentials or account data
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/codex-source
+          git rev-parse HEAD > /tmp/codex-source/source-commit.txt
+          git ls-tree -r HEAD > /tmp/codex-source/git-tree.txt
+          tar -czf /tmp/codex-source/source.tgz src scripts .github/workflows docs/audits public package.json package-lock.json vite.config.js .oxlintrc.json index.html
+          sha256sum /tmp/codex-source/source.tgz > /tmp/codex-source/source.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: codex-source-${{ github.sha }}
+          path: /tmp/codex-source/
+          retention-days: 3
