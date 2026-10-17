@@ -1,6 +1,6 @@
 import React from 'react';
 const PHASES = { prepare: ['Préparation', 'Preparing'], reveal: ['Manifestation', 'Manifesting'], impact: ['Impacts', 'Impacts'], return: ['Retour au combat', 'Returning to battle'] };
-const KINDS = { summon: ['Invocation', 'Summon'], personal: ['Super personnel', 'Personal super'], orbital: ['Appui orbital', 'Orbital support'], vehicle: ['Renfort motorisé', 'Vehicle support'], turret: ['Sentinelles', 'Sentries'], creature: ['Déploiement biologique', 'Creature deployment'], barrier: ['Couverture', 'Cover'], archive: ['Protocole A.R.C.A.', 'A.R.C.A. protocol'] };
+const KINDS = { support: ['Soutien', 'Support'], summon: ['Invocation', 'Summon'], personal: ['Super personnel', 'Personal super'], orbital: ['Appui orbital', 'Orbital support'], vehicle: ['Renfort motorisé', 'Vehicle support'], turret: ['Sentinelles', 'Sentries'], creature: ['Déploiement biologique', 'Creature deployment'], barrier: ['Couverture', 'Cover'], archive: ['Protocole A.R.C.A.', 'A.R.C.A. protocol'] };
 export default function SignatureSequencePanel({ state, lang = 'fr' }) {
   if (!state) return null;
   const l = lang === 'fr' ? 0 : 1;
