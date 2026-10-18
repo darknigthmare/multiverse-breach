@@ -1,11 +1,8 @@
+import { getSignatureCodex, getSignatureSummary, signatureText } from './signatureCodex.js';
 import { FEATURED_ENEMY_LORE, FEATURED_GEAR_LORE, FEATURED_STAGE_LORE } from './featuredUniversePacks';
 import { getCanonicalArchiveEnemyLore, getCanonicalArchiveStageLore } from './canonicalArchiveLore.js';
 
-const localizedValue = (value, lang = 'fr', fallback = '') => (
-  typeof value === 'string'
-    ? value
-    : value?.[lang] || value?.fr || value?.en || fallback
-);
+const localizedValue = signatureText;
 
 const MEDIA_LINES = {
   game: {
@@ -504,7 +501,7 @@ export const getBattleItemLoreDescription = ({ item, lang = 'fr', lore }) => {
     : `${item.name.en} is a ${tier} tied to ${item.universe}. ${item.desc?.en || ''} ${universeLexicon(signature, 'en')} Its role echoes ${signature.stageName} and the ${signature.worldBoss || signature.bossName} threat. ${media.en} In melee, ${item.melee?.en || 'its effect triggers on pickup.'} In tactics, ${item.tactics?.en || 'it becomes a tile or card resource.'}`;
 };
 
-export const getEnemyLoreDescription = ({ enemy, universe, lang = 'fr', lore, type = 'menace' }) => {
+const getEnemyBaseLoreDescription = ({ enemy, universe, lang = 'fr', lore, type = 'menace' }) => {
   if (!enemy) return '';
   const canonicalLore = getCanonicalArchiveEnemyLore(universe, enemy);
   if (canonicalLore) {
@@ -530,4 +527,14 @@ export const getEnemyLoreDescription = ({ enemy, universe, lang = 'fr', lore, ty
   return lang === 'fr'
     ? `${enemy.name} est une ${role} de ${universe}. Signature source: ${signature.theme}. A.R.C.A. le classe comme deformation active de ${signature.stageName}: il porte la pression de ${signature.worldBoss || signature.bossName} sans effacer les lois de sa Trame. ${special}`.trim()
     : `${enemy.name} is a ${role} from ${universe}. Source signature: ${signature.theme}. A.R.C.A. classifies it as an active deformation of ${signature.stageName}: it carries pressure from ${signature.worldBoss || signature.bossName} without erasing its Thread laws. ${special}`.trim();
+};
+
+
+export const getEnemyLoreDescription = (options) => {
+  if (!options?.enemy) return '';
+  const actor = { ...options.enemy, universe: options.enemy.universe || options.universe };
+  const codex = getSignatureCodex(actor);
+  const enemy = codex ? { ...options.enemy, special: codex.name } : options.enemy;
+  const lore = getEnemyBaseLoreDescription({ ...options, enemy });
+  return codex ? `${lore} ${getSignatureSummary(codex, options.lang)}` : lore;
 };
