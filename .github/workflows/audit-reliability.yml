@@ -56,7 +56,7 @@ jobs:
       - name: Lint reaudit changes
         run: >-
           node node_modules/oxlint/bin/oxlint --max-warnings 0
-          src/game/tacticsSourceHealing.js scripts/fixtures/tacticsHealingHarness.jsx src/game/stockMedicModes.js src/game/fighterHealing.js src/game/combatActivity.js src/game/rpgActionEconomy.js
+          src/game/tacticsSourceHealing.js scripts/fixtures/tacticsHealingHarness.jsx src/game/stockMedicModes.js src/game/fighterHealing.js src/game/combatActivity.js src/game/rpgActionEconomy.js src/game/rpgActionCommitment.js
           src/game/engineFighter.js src/game/fighterControlOwnership.js src/game/originalUniverseProduction.js src/components/BuildIdentity.jsx
           src/components/FighterMode.jsx scripts/fixtures/fighterLifecycleHarness.jsx
           src/components/TacticsSupportPanel.jsx scripts/reaudit*.test.mjs scripts/tacticsFacingRuntime.test.mjs

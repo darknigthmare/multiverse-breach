@@ -1,4 +1,5 @@
 // Final Fantasy Record Keeper ATB RPG Engine with Synergies & Status Effects
+import { captureRpgActionCommitment } from './rpgActionCommitment.js';
 import { RPG_ACTION_ATB_COST } from './rpgActionEconomy.js';
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { absorbBattleItemDamage } from './battleItemShield';
@@ -56,6 +57,7 @@ export class EngineRpg {
     this.targetingWait = true;
     this.actionQueue = [];
     this.actorActions = new Map();
+    this.actorLifetimes = new WeakMap();
     this.enemyActionOwner = null;
 
     const heroPosition = (idx) => {
@@ -254,7 +256,10 @@ export class EngineRpg {
   }
 
   cancelActorActions(actor) {
-    if (!actor) return;
+    if (!actor || typeof actor !== 'object') return;
+    // Invalidate incoming effects synchronously, even when this actor had no
+    // queued action of its own. A same-tick revival cannot hide the old life.
+    this.actorLifetimes.set(actor, (this.actorLifetimes.get(actor) || 0) + 1);
     const action = this.actorActions.get(actor);
     if (action) {
       // The record may already be in this tick's due batch. Mark it as well
@@ -280,6 +285,7 @@ export class EngineRpg {
   }
 
   advanceActions() {
+    if (this.disposed || this.paused || this.gameOver || this.isTargetingPaused()) return;
     const due = [];
     this.actionQueue = this.actionQueue.filter(action => {
       action.ticks--;
@@ -552,15 +558,18 @@ export class EngineRpg {
   }
 
   canUseAction(actor, abilityType, side = 'player') {
-    if (!this.resolveActor(actor, side) || this.disposed || this.paused || this.gameOver
+    if (!['player', 'enemy'].includes(side) || !this.resolveActor(actor, side) || this.disposed || this.paused || this.gameOver
       || !Number.isFinite(actor.currentHp) || actor.currentHp <= 0 || !Number.isFinite(actor.atb)
       || actor.state !== 'idle' || actor.actionPending || actor.atb < RPG_ACTION_ATB_COST) return false;
     if (side === 'enemy' && this.enemyActionLock) return false;
-    if (abilityType === 'secondary' && actor.cooldown > 0) return false;
+    if (abilityType === 'secondary' && (!Number.isFinite(actor.cooldown) || actor.cooldown > 0)) return false;
     if (getBlackPearlSourceAmmunition(actor, abilityType)
       && (actor.sourceAmmoRemaining <= 0 || this.piratesCurseEncounter?.curseActive)) return false;
-    if (abilityType === 'special' && actor.specialCharge < 100) return false;
-    return !!getRpgActionProfile(actor, abilityType, side, this);
+    if (abilityType === 'special' && (!Number.isFinite(actor.specialCharge) || actor.specialCharge < 100)) return false;
+    const profile = getRpgActionProfile(actor, abilityType, side, this);
+    if (!profile || !Number.isFinite(profile.multiplier)) return false;
+    const cooldown = profile.action.cd ?? 3;
+    return abilityType !== 'secondary' || (Number.isFinite(cooldown) && cooldown >= 0);
   }
 
   chooseDefaultTargets(context) {
@@ -779,6 +788,7 @@ export class EngineRpg {
               boss.currentHp = 0;
               boss.state = 'dead';
               boss.stateTimer = 999;
+              this.cancelActorActions(boss);
               encounter.sourceShotResolved = true;
               this.playSfx('defeat');
             } else if (!encounter.curseActive && boss?.currentHp === 0) encounter.sourceShotResolved = true;
@@ -865,6 +875,7 @@ export class EngineRpg {
         if (target.currentHp <= 0) {
           target.state = 'dead';
           target.stateTimer = 999;
+          this.cancelActorActions(target);
           this.playSfx('defeat');
         }
       }
@@ -883,6 +894,7 @@ export class EngineRpg {
       if (target.currentHp <= 0) {
         target.state = 'dead';
         target.stateTimer = 999;
+        this.cancelActorActions(target);
         this.playSfx('defeat');
       }
     }
@@ -901,6 +913,7 @@ export class EngineRpg {
     // Freeze object identities before moving the caster or scheduling impacts.
     // An impact never acquires a new target if one of these actors dies.
     const targets = [...resolved.targets];
+    const commitment = captureRpgActionCommitment(this, context, targets);
     const anchor = resolved.anchor;
     if (getBlackPearlSourceAmmunition(actor, abilityType)) actor.sourceAmmoRemaining--;
     const encounterKind = profile.action.encounterKind;
@@ -953,10 +966,10 @@ export class EngineRpg {
     }
 
     this.scheduleAction(() => {
-      if (!this.gameOver && actor.currentHp > 0) {
+      if (commitment.casterValid()) {
         for (const target of targets) {
-          const isStillPresent = this.heroes.includes(target) || this.enemies.includes(target);
-          if (!isStillPresent) continue;
+          if (!commitment.casterValid()) break;
+          if (!commitment.accepts(target)) continue;
           const amount = (actor.stats?.atk ?? actor.atk ?? 8) * profile.multiplier;
           if (profile.effect === 'revive') {
             const revivedHp = getRpgReviveHp(target, profile.reviveRatio);
