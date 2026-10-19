@@ -58,8 +58,8 @@ validations natives. Le codex FR/EN précise l'adaptation Fighter de Healing Win
 ## Tests
 
 - 4 échecs reproduits sur la base, puis 4 succès après la correction.
-- 47 nouveaux tests : 35 Healing Wind / 12 contrats de livraison Fighter.
-- `npm run test:reaudit` : 265/265, sans ignoré ni annulé.
+- 49 nouveaux tests : 37 Healing Wind / 12 contrats de livraison Fighter.
+- `npm run test:reaudit` : 267/267, sans ignoré ni annulé.
 - `scripts/signature*.test.mjs` : 940/940, sans ignoré ni annulé.
 - Lint ciblé : zéro erreur/avertissement. Compilation Vite des sources réussie,
   avec l'avertissement préexistant de gros blocs ; aucune optimisation revendiquée.
@@ -84,4 +84,9 @@ attaquer normalement au lieu de sélectionner un soin inutilisable à équipe
 intacte. Un jeton détaché après interruption ne peut plus appliquer un ancien
 soin, même appelé directement : il doit appartenir à l'action encore active.
 Quatre tests supplémentaires, dont trois échouaient avant ce correctif et un
-contrôle positif préservé, couvrent ces conditions. Le total local est 265/265.
+contrôle positif préservé, couvrent ces conditions. Le total local est 267/267.
+
+Inspection des captures : le texte de soin pouvait afficher une longue suite
+de décimales issue de la régénération passive. Le feedback est arrondi à l'unité
+comme les autres nombres de combat, sans modifier les PV réellement rendus.
+Deux tests supplémentaires couvrent cette séparation sur les deux camps.

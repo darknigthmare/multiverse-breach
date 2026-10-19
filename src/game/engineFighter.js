@@ -858,7 +858,7 @@ export class EngineFighter {
           const healed = this.fighterHealing.apply(action.healing);
           if (healed.length) this.playSfx('heal');
           for (const { target: recipient, amount } of healed) {
-            this.particles.add(recipient.x, recipient.y - 85, 0, -1, '#8af0ac', 5, 38, 'text', `+${amount}`);
+            this.particles.add(recipient.x, recipient.y - 85, 0, -1, '#8af0ac', 5, 38, 'text', `+${Math.round(amount)}`);
             if (recipient === this.getActive(side)) this.spawnBurst(recipient.x, recipient.y - 45, '#8af0ac', 12);
           }
         } else if (action.stockUber) {

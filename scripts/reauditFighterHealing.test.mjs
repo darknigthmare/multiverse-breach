@@ -156,3 +156,11 @@ for (const side of ['player', 'cpu']) test(`${side}: a detached token from an in
   assert.deepEqual(e.fighterHealing.apply(token), []);
   assert.equal(patient.currentHp, 10);
 });
+for (const side of ['player', 'cpu']) test(`${side}: fractional recovered HP keeps exact mechanics with rounded combat feedback`, () => {
+  const { e, caster, effects } = fixture(side); caster.currentHp = caster.maxHp - 39.35065;
+  e.tryAction(side, 'super'); e.updateActions(0.46);
+  assert.equal(caster.currentHp, caster.maxHp);
+  const labels = effects.filter(p => p[7] === 'text').map(p => p[8]);
+  assert.ok(labels.includes('+39'));
+  assert.ok(labels.every(value => !String(value).startsWith('+39.350')));
+});
