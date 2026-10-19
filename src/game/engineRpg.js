@@ -1,4 +1,5 @@
 // Final Fantasy Record Keeper ATB RPG Engine with Synergies & Status Effects
+import { RPG_ACTION_ATB_COST } from './rpgActionEconomy.js';
 import { drawPixelSprite, drawPixelEnemy, drawBoss } from './renderer';
 import { absorbBattleItemDamage } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
@@ -553,7 +554,7 @@ export class EngineRpg {
   canUseAction(actor, abilityType, side = 'player') {
     if (!this.resolveActor(actor, side) || this.disposed || this.paused || this.gameOver
       || !Number.isFinite(actor.currentHp) || actor.currentHp <= 0 || !Number.isFinite(actor.atb)
-      || actor.state !== 'idle' || actor.actionPending || actor.atb < 100) return false;
+      || actor.state !== 'idle' || actor.actionPending || actor.atb < RPG_ACTION_ATB_COST) return false;
     if (side === 'enemy' && this.enemyActionLock) return false;
     if (abilityType === 'secondary' && actor.cooldown > 0) return false;
     if (getBlackPearlSourceAmmunition(actor, abilityType)

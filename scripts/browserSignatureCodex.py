@@ -26,6 +26,8 @@ with sync_playwright() as p:
             try:
                 page.goto(base+'/scripts/fixtures/signature-codex.html?'+urlencode({'view':view,'actor':actor,'lang':lang}))
                 page.locator('#qa-open').click();dialog=page.get_by_role('dialog');dialog.wait_for()
+                assert page.evaluate('window.__codexAudit.requestedActor') == actor
+                assert page.evaluate('window.__codexAudit.resolvedActor') == actor
                 expected=page.evaluate('window.__codexAudit.expected')
                 if expected:
                     source=dialog.locator('[data-signature-codex]');source.wait_for()
@@ -68,8 +70,12 @@ with sync_playwright() as p:
                 assert not errors,errors
                 results.append({'case':label,'ok':True})
             except Exception as exc:
-                page.screenshot(path=str(out/(label+'-FAILED.png')),full_page=True)
-                results.append({'case':label,'ok':False,'error':str(exc),'pageErrors':errors})
+                failure={'case':label,'ok':False,'error':str(exc),'pageErrors':errors}
+                results.append(failure)
+                try:
+                    page.screenshot(path=str(out/(label+'-FAILED.png')),full_page=True,timeout=5000)
+                except Exception as screenshot_error:
+                    failure['screenshotError']=str(screenshot_error)
             finally:
                 context.close();(out/'results.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
     finally:browser.close()

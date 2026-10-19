@@ -1,3 +1,4 @@
+import BuildIdentity from './components/BuildIdentity.jsx';
 import React, { useState, useEffect, useRef, useCallback, useMemo, Suspense } from 'react';
 import sound from './game/soundEngine';
 import { getProgressKeys, rollProgressCalendar, getNextProgressRolloverDelay } from './game/progressCalendar.js';
@@ -2497,6 +2498,7 @@ function App() {
       )}
 
       {/* Screen Router */}
+      {currentScreen === 'title' && <BuildIdentity lang={lang} />}
       {['title', 'profile', 'prologue'].includes(currentScreen) && (
         <IntroSequence
           phase={currentScreen}
