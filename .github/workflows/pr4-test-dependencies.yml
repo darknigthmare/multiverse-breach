@@ -1,0 +1,35 @@
+name: PR4 offline test dependencies
+on:
+  push:
+    branches: [codex/pr4-source-check-2026-10-19-0940]
+    paths: [.github/workflows/pr4-test-dependencies.yml]
+permissions:
+  contents: read
+jobs:
+  dependencies:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ddaefe2a7d9ca9d04586fae96b2030b32427d795
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+      - run: npm ci --no-audit --no-fund --ignore-scripts
+      - name: Package only dependencies and their lockfile
+        run: |
+          mkdir -p /tmp/pr4-dependencies
+          tar -czf /tmp/pr4-dependencies/node_modules.tgz node_modules
+          cp package-lock.json /tmp/pr4-dependencies/package-lock.json
+          sha256sum /tmp/pr4-dependencies/node_modules.tgz > /tmp/pr4-dependencies/dependencies.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr4-locked-dependencies
+          path: /tmp/pr4-dependencies/
+          retention-days: 1
