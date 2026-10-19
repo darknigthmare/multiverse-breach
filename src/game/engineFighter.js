@@ -1,3 +1,4 @@
+import { prepareStockMedic, getStockMedicDefinition, createFighterMedicSupport } from './stockMedicModes.js';
 import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
 import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
@@ -134,6 +135,8 @@ export class EngineFighter {
         tagCooldown: 0
       }
     };
+    Object.values(this.teams).forEach(team => team.fighters.forEach(actor => prepareStockMedic(actor, 'Fighter')));
+    this.medicSupport = createFighterMedicSupport(this);
     this.inputs = { player: {}, cpu: {} };
     this.playerInput = this.inputs.player;
     this.projectiles = [];
@@ -419,7 +422,7 @@ export class EngineFighter {
       && !fighter.action
       && fighter.hitstun <= 0
       && fighter.guardBreak <= 0
-      && !this.finished
+      && !this.finished && !this.disposed && !this.paused
       && this.countdown <= 0
     );
   }
@@ -434,6 +437,12 @@ export class EngineFighter {
       special: { duration: 0.64, hitAt: 0.28, base: 23, range: fighter.ranged ? 430 : 132, guardDamage: 24, knockback: 245, meterCost: 30 },
       super: { duration: 0.92, hitAt: 0.45, base: 43, range: this.width, guardDamage: 42, knockback: 330, meterCost: 100 }
     };
+    const stockMedic = type === 'super' ? getStockMedicDefinition(fighter, 'Fighter') : null;
+    if (stockMedic) {
+      if (this.medicSupport.active(fighter) || !this.medicSupport.canLink(fighter, fighter, stockMedic)) return false;
+      specs.super = { ...specs.super, base: 0, range: 0, guardDamage: 0, knockback: 0,
+        stockUber: stockMedic, sourceAction: fighter.special };
+    }
     const spec = specs[type];
     if (!spec || fighter.meter < (spec.meterCost || 0)) return false;
     // Input may arrive between physics frames after the fighters crossed.
@@ -450,6 +459,7 @@ export class EngineFighter {
       fighter.comboWindow = 0;
     }
 
+    if (!stockMedic) this.medicSupport.release(fighter);
     fighter.meter = Math.max(0, fighter.meter - (spec.meterCost || 0));
     fighter.guarding = false;
     fighter.state = 'attack';
@@ -476,6 +486,7 @@ export class EngineFighter {
       || (!forced && (team.tagCooldown > 0 || !this.canAct(active)))
     ) return false;
 
+    this.medicSupport.onKnockout(active);
     active.action = null;
     active.guarding = false;
     if (active.currentHp > 0) active.state = 'idle';
@@ -515,7 +526,7 @@ export class EngineFighter {
 
   update(dt) {
     const step = clamp(dt || 0, 0, 0.034);
-    if (this.completionReported) return;
+    if (this.completionReported || this.disposed || this.paused) return;
     this.elapsed += step;
     this.updateCosmeticTimers(step);
 
@@ -546,6 +557,7 @@ export class EngineFighter {
       return;
     }
 
+    this.medicSupport.advance(step * 60);
     this.timer = Math.max(0, this.timer - step);
     if (this.timer <= 0) {
       this.finishByTime();
@@ -725,7 +737,11 @@ export class EngineFighter {
       const action = fighter.action;
       if (!action.resolved && action.elapsed >= action.hitAt) {
         action.resolved = true;
-        if (action.type === 'special' && fighter.ranged) {
+        if (action.stockUber) {
+          if (fighter.special === action.sourceAction && fighter.state === 'attack') {
+            this.medicSupport.grant(fighter, fighter, action.stockUber);
+          }
+        } else if (action.type === 'special' && fighter.ranged) {
           this.spawnProjectile(fighter, action);
         } else {
           this.attemptHit(fighter, target, action);
@@ -788,7 +804,16 @@ export class EngineFighter {
   }
 
   applyHit(attacker, target, action, projectile = false, impactDirection = null) {
-    if (target.invulnerable > 0 || target.currentHp <= 0) return;
+    if (this.disposed || this.paused || this.finished || !target || !attacker || !action
+      || !Number.isFinite(action.base) || action.base <= 0
+      || target.invulnerable > 0 || target.currentHp <= 0) return;
+    this.medicSupport.release(attacker);
+    if (this.medicSupport.blockHit(attacker, target, action.base)) {
+      // Protection is not knockback immunity, and creates no damage/meter/KO.
+      const direction = impactDirection || Math.sign(target.x - attacker.x) || attacker.facing;
+      target.vx = direction * Math.max(0, Number(action.knockback) || 0);
+      return;
+    }
     // A travelling projectile keeps its own incoming direction even after its
     // owner turns, jumps across the target, or tags out before impact.
     const hitDirection = impactDirection || Math.sign(target.x - attacker.x) || action.facing || attacker.facing;
@@ -878,6 +903,7 @@ export class EngineFighter {
     this.particles.add(target.x - 14, target.y - 100, 0, -1.1, blocked ? '#7df9ff' : '#ffffff', 5, 38, 'text', blocked ? 'GUARD' : `${Math.round(damage)}`);
 
     if (target.currentHp <= 0) {
+      this.medicSupport.onKnockout(target);
       target.state = 'dead';
       target.koDelay = 0.9;
       target.vx = hitDirection * Math.max(action.knockback, 250);
@@ -936,6 +962,7 @@ export class EngineFighter {
   }
 
   finish(result, timeout = false) {
+    this.medicSupport.dispose();
     this.finished = true;
     this.result = result;
     this.winnerSide = result === 'victory' ? 'player' : 'cpu';
@@ -1093,6 +1120,7 @@ export class EngineFighter {
       drawPixelSprite(ctx, fighter.x, fighter.y, fighter, animTime, fighter.facing, 142, 'melee');
       ctx.restore();
     });
+    this.medicSupport.draw(ctx);
     if (this.fieldSuperFlash > 0) {
       ctx.save();
       ctx.globalAlpha = clamp(this.fieldSuperFlash * 0.38, 0, 0.42);

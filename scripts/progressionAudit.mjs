@@ -1,3 +1,5 @@
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { REQUESTED_UNIVERSE_WAVE } from '../src/game/requestedUniverseWave.js';
 import { RECENT_UNIVERSE_LEVELS } from '../src/game/recentUniverseLevels.js';
@@ -990,13 +992,13 @@ assert(tacticsEngineSource.includes('applyStartTileEffect'), 'Tactics engine mus
 assert(tacticsEngineSource.includes('getTileMoveCost'), 'Tactics movement must support terrain movement costs.');
 assert(tacticsEngineSource.includes('getTileFill'), 'Tactics engine must render terrain types distinctly.');
 assert(tacticsEngineSource.includes('getCoverReduction') && tacticsEngineSource.includes('heavyCover'), 'Tactics engine must apply cover from terrain tiles.');
-assert(
-  tacticsEngineSource.includes("from './tacticalFacing.js'")
-    && tacticsEngineSource.includes('return getGridFacingBonus(attacker, defender);')
-    && tacticsEngineSource.includes('baseDmg *= (1 + facing.bonus);')
-    && tacticsEngineSource.includes("'text', facing.label"),
-  'Tactics damage and feedback must use the shared grid-facing bonus, not a disconnected helper.'
-);
+// Exercise the real damage dispatcher and visible facing feedback. Refactoring
+// its algebra must not break publishing, but dropping the bonus must fail it.
+const facingAudit = spawnSync(process.execPath,
+  ['--test', fileURLToPath(new URL('./tacticsFacingRuntime.test.mjs', import.meta.url))],
+  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+assert(!facingAudit.error && facingAudit.status === 0,
+  'Tactics runtime facing damage/feedback regression failed.');
 for (const [x, y] of [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]]) {
   const defender = { gridX: 5, gridY: 5, facingVector: { x, y } };
   const front = getGridFacingBonus({ gridX: 5 + x, gridY: 5 + y }, defender);

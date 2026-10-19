@@ -11,7 +11,9 @@ import '../../src/components/collection/collection.css';
 const query = new URLSearchParams(location.search);
 const lang = query.get('lang') === 'en' ? 'en' : 'fr';
 const view = query.get('view') === 'booster' ? 'booster' : 'card';
-const hero = HEROES_DB.find(h => h.id === query.get('actor')) || HEROES_DB.find(h => h.id === 'cloud_ff7');
+const requestedActor = query.get('actor') ?? 'cloud_ff7';
+const hero = HEROES_DB.find(h => h.id === requestedActor);
+if (!hero) throw new Error(`Unknown codex fixture actor: ${requestedActor}`);
 const codex = getSignatureCodex(hero);
 const candidate = { id: `hero:${hero.id}`, rewardId: hero.id, kind: 'hero', universe: hero.universe,
   rarity: { id: 'rare', weight: 10 }, name: { fr: hero.name, en: hero.name },
@@ -19,7 +21,7 @@ const candidate = { id: `hero:${hero.id}`, rewardId: hero.id, kind: 'hero', univ
 const definition = createCardDefinitionFromPortalCandidate(candidate).definition;
 const saved = JSON.stringify({ fixture: 'codex-qa', currency: 123, inventory: ['unchanged'] });
 localStorage.setItem('codex-qa-only', saved);
-const audit = { changes: [], selections: [], closes: 0, source: JSON.stringify(hero), expected: codex?.name,
+const audit = { requestedActor, resolvedActor: hero.id, changes: [], selections: [], closes: 0, source: JSON.stringify(hero), expected: codex?.name,
   storage: JSON.stringify(Object.entries(localStorage)), hero };
 window.__codexAudit = audit;
 const banner = {id:'qa-codex',universe:hero.universe,label:{fr:'Booster QA',en:'QA booster'},desc:'Synthetic fixture',color:'#39c5bb',price:100};

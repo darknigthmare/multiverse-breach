@@ -1,5 +1,6 @@
 // Tactical support uses the same authored effects as RPG, but grid distances,
 // occupied revival cells and line-of-sight remain tactical rules.
+import { getTacticsMedicDefinition } from './stockMedicModes.js';
 import { getRpgActionProfile } from './rpgTargeting.js';
 import { getCombatHealingAmount, applyCombatHealing } from './combatHealing.js';
 import { getRpgCleansableStatuses, cleanseRpgStatuses, getRpgReviveHp } from './rpgSupport.js';
@@ -11,6 +12,11 @@ const finite = (value, fallback) => Number.isFinite(Number(value)) ? Number(valu
 export function getTacticsSupportProfile(unit, actionType) {
   const action = unit?.[actionType];
   if (!action || typeof action !== 'object') return null;
+  const medic = actionType === 'special' ? getTacticsMedicDefinition(unit) : null;
+  if (medic) return { name: medic.name, action, actionType, effect: 'guard',
+    protection: 'stock-uber', targetSide: 'ally', delivery: 'support', shape: 'single',
+    maxTargets: 1, range: medic.range, minRange: 0, duration: 8, cleanses: [],
+    requiresLineOfSight: true, blocksOnUnits: false, pierceObstacles: false };
   // Classic shield/dodge defence retains the existing self-guard command.
   if (actionType === 'defense' && !/heal|restore|regen|cleanse|purify|reviv|buff|support/.test(action.type || '')) return null;
   const explicit = Object.assign({}, records(unit.tacticsAttacks?.[actionType]), records(action.targeting),
@@ -37,6 +43,8 @@ export function getTacticsSupportAmount(actor, target, profile) {
 export function getTacticsSupportCandidates(engine, actor, profile) {
   if (!actor || !profile || !Number.isFinite(actor.currentHp) || actor.currentHp <= 0 || actor.state === 'dead') return [];
   const source = actor._tacticsSourceUnit || actor;
+  if (profile.protection && (engine.medicSupport?.active(source)
+    || (source.medigunType && source.medigunType !== 'stock'))) return [];
   const allies = engine.heroes.includes(source) ? engine.heroes : engine.enemies.includes(source) ? engine.enemies : [];
   const candidates = profile.targetSide === 'self' ? allies.filter(u => u === source) : allies;
   return candidates.filter(unit => {
@@ -47,6 +55,8 @@ export function getTacticsSupportCandidates(engine, actor, profile) {
     if (profile.effect === 'revive') return getRpgReviveHp(unit, profile.reviveRatio) > 0
       && engine.canOccupyCell(unit, unit.gridX, unit.gridY);
     if (unit.currentHp <= 0 || unit.state === 'dead') return false;
+    if (profile.protection) return unit.nonCombat !== true && unit.combatEnabled !== false
+      && unit.combatEligible !== false && !unit.nonCombatTrial;
     const cleanses = getRpgCleansableStatuses(unit, profile.cleanses).length;
     if (profile.effect === 'heal') return getCombatHealingAmount(unit, getTacticsSupportAmount(actor, unit, profile)) > 0 || cleanses > 0;
     if (profile.effect === 'cleanse') return cleanses > 0;
