@@ -1,0 +1,180 @@
+diff --git a/.github/workflows/audit-reliability.yml b/.github/workflows/audit-reliability.yml
+index 841b19077ee952c3a653d8a94ab15d71b5fb238e..c8f844eaf83533df92d9fbcf8ee8279200eedefa 100644
+--- a/.github/workflows/audit-reliability.yml
++++ b/.github/workflows/audit-reliability.yml
+@@ -56,7 +56,7 @@ jobs:
+       - name: Lint reaudit changes
+         run: >-
+           node node_modules/oxlint/bin/oxlint --max-warnings 0
+-          src/game/stockMedicModes.js src/game/combatActivity.js src/game/rpgActionEconomy.js
++          src/game/stockMedicModes.js src/game/fighterHealing.js src/game/combatActivity.js src/game/rpgActionEconomy.js
+           src/game/engineFighter.js src/game/fighterControlOwnership.js src/game/originalUniverseProduction.js src/components/BuildIdentity.jsx
+           src/components/FighterMode.jsx scripts/fixtures/fighterLifecycleHarness.jsx
+           src/components/TacticsSupportPanel.jsx scripts/reaudit*.test.mjs scripts/tacticsFacingRuntime.test.mjs
+@@ -97,6 +97,7 @@ jobs:
+           /tmp/multiverse-playwright/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/reliability-evidence/rpg-browser | tee /tmp/reliability-evidence/rpg-browser.log
+           /tmp/multiverse-playwright/bin/python scripts/browserTacticsReliability.py --evidence /tmp/reliability-evidence/tactics-browser | tee /tmp/reliability-evidence/tactics-browser.log
+           /tmp/multiverse-playwright/bin/python scripts/browserFighterLifecycle.py --evidence /tmp/reliability-evidence/fighter-browser | tee /tmp/reliability-evidence/fighter-browser.log
++          /tmp/multiverse-playwright/bin/python scripts/browserFighterHealing.py --evidence /tmp/reliability-evidence/fighter-healing-browser | tee /tmp/reliability-evidence/fighter-healing-browser.log
+       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+         if: always()
+         with:
+diff --git a/scripts/fixtures/fighterLifecycleHarness.jsx b/scripts/fixtures/fighterLifecycleHarness.jsx
+index 6fd25fff767be3e351db192299da1ac069b1bbf3..4e053be97d74c83a9c3bc4b586faea43e791b4ae 100644
+--- a/scripts/fixtures/fighterLifecycleHarness.jsx
++++ b/scripts/fixtures/fighterLifecycleHarness.jsx
+@@ -8,7 +8,7 @@ import { HEROES_DB } from '../../src/game/heroes.js';
+ import '../../src/index.css';
+ const q = new URLSearchParams(location.search);
+ const lang = q.get('lang') === 'en' ? 'en' : 'fr';
+-const heroIds = ['team_fortress_2_medic', 'cloud_ff7', 'barret_ff7'];
++const heroIds = [q.get('scenario') === 'healing' ? 'aerith_ff7' : 'team_fortress_2_medic', 'cloud_ff7', 'barret_ff7'];
+ const heroes = heroIds.map(id => {
+   const hero = HEROES_DB.find(actor => actor.id === id);
+   if (!hero) throw new Error(`Unknown Fighter QA identity: ${id}`);
+diff --git a/scripts/progressionAudit.mjs b/scripts/progressionAudit.mjs
+index e4ace5a8e019f7bede54efa7a522ddce0cf7d6bf..b7a61b860a894d0a4a3508fa4d99da9e43ef905a 100644
+--- a/scripts/progressionAudit.mjs
++++ b/scripts/progressionAudit.mjs
+@@ -745,10 +745,14 @@ const fighterTagAudit = spawnSync(process.execPath,
+   { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+ assert(!fighterTagAudit.error && fighterTagAudit.status === 0,
+   'Fighter runtime keyboard/button three-slot replacement regression failed.');
+-assert(fighterEngineSource.includes('fighters: playerHeroes.slice(0, 3)') && fighterEngineSource.includes('activeIndex: 0'), 'Fighter engine must keep one active combatant in a three-signature cell.');
+-assert(fighterEngineSource.includes('requestTag(side, index, forced = false)') && fighterEngineSource.includes("this.requestTag(side, next.index, true)"), 'Fighter engine must support manual and forced K.O. replacements.');
+-assert(fighterEngineSource.includes('guardBreak') && fighterEngineSource.includes('comboWindow') && fighterEngineSource.includes('meterCost: 100'), 'Fighter engine must retain guard break, combos, and rupture meter rules.');
+-assert(fighterEngineSource.includes('spawnProjectile') && fighterEngineSource.includes('crouching') && fighterEngineSource.includes('targetHalfHeight'), 'Fighter engine must retain ranged attacks and crouch evasion.');
++// Verify effects, not the spelling of an internal slot variable or helper.
++const fighterRuntimeAudit = spawnSync(process.execPath,
++  ['--test', '--test-concurrency=1',
++    fileURLToPath(new URL('./reauditFighterRelease.test.mjs', import.meta.url)),
++    fileURLToPath(new URL('./reauditFighterKnockouts.test.mjs', import.meta.url))],
++  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
++assert(!fighterRuntimeAudit.error && fighterRuntimeAudit.status === 0,
++  'Fighter roster, replacements, guard, combo, meter and projectile contracts failed.');
+ assert(hubSource.includes('recordFighterMatch') && hubSource.includes('fighterCareer'), 'Fighter results must feed long-term progression and career records.');
+ assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
+ assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
+diff --git a/src/components/FighterMode.jsx b/src/components/FighterMode.jsx
+index 8ceba7d2631d3b05f734ddf931ef1ef3dd82347e..79c285cd4eee5962bf23bfba180a19631a8830ad 100644
+--- a/src/components/FighterMode.jsx
++++ b/src/components/FighterMode.jsx
+@@ -1246,7 +1246,7 @@ export default function FighterMode({
+           <button type="button" title={lang === 'fr' ? 'Attaque legere [F]' : 'Light attack [F]'} onClick={() => triggerAction('light')}>F</button>
+           <button type="button" title={lang === 'fr' ? 'Attaque lourde [G]' : 'Heavy attack [G]'} onClick={() => triggerAction('heavy')}>G</button>
+           <button type="button" title={lang === 'fr' ? 'Special [H]' : 'Special [H]'} onClick={() => triggerAction('special')}>H</button>
+-          <button type="button" title={lang === 'fr' ? 'Rupture [R]' : 'Rupture [R]'} onClick={() => triggerAction('super')}>R</button>
++          <button type="button" title={`${playerSnapshot.superName || 'Rupture'} [R]`} disabled={sessionPaused || !playerSnapshot.superReady} onClick={() => triggerAction('super')}>R</button>
+           <button type="button" title={lang === 'fr' ? 'Super de terrain [T]' : 'Field super [T]'} disabled={!fieldSuperReady} onClick={() => triggerFieldSuper('player')}>T</button>
+           {playerAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ [Y]' : 'NPC assist [Y]'} disabled={!playerAssistReady} onClick={() => triggerAssist('player')}>Y</button>}
+         </div>
+@@ -1270,7 +1270,7 @@ export default function FighterMode({
+               <button type="button" title={lang === 'fr' ? 'Attaque legere J2 [P]' : 'P2 light attack [P]'} onClick={() => triggerAction('light', 'cpu')}>P</button>
+               <button type="button" title={lang === 'fr' ? 'Attaque lourde J2 [M]' : 'P2 heavy attack [M]'} onClick={() => triggerAction('heavy', 'cpu')}>M</button>
+               <button type="button" title={lang === 'fr' ? 'Special J2 [L]' : 'P2 special [L]'} onClick={() => triggerAction('special', 'cpu')}>L</button>
+-              <button type="button" title={lang === 'fr' ? 'Rupture J2 [O]' : 'P2 rupture [O]'} onClick={() => triggerAction('super', 'cpu')}>O</button>
++              <button type="button" title={`${cpuSnapshot.superName || (lang === 'fr' ? 'Rupture J2' : 'P2 rupture')} [O]`} disabled={sessionPaused || !cpuSnapshot.superReady} onClick={() => triggerAction('super', 'cpu')}>O</button>
+               <button type="button" title={lang === 'fr' ? 'Super de terrain J2 [I]' : 'P2 field super [I]'} disabled={!opponentFieldSuperReady} onClick={() => triggerFieldSuper('cpu')}>I</button>
+               {opponentAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ J2 [K]' : 'P2 NPC assist [K]'} disabled={!opponentAssistReady} onClick={() => triggerAssist('cpu')}>K</button>}
+             </div>
+diff --git a/src/game/engineFighter.js b/src/game/engineFighter.js
+index cf39e3f71460800acb5c39b1a7e33e32888db9bc..878cd029e996dc922676c893298df2ccfe870e18 100644
+--- a/src/game/engineFighter.js
++++ b/src/game/engineFighter.js
+@@ -1,3 +1,4 @@
++import { prepareFighterHealing, getFighterHealingDefinition, createFighterHealing } from './fighterHealing.js';
+ import { prepareStockMedic, getStockMedicDefinition, createFighterMedicSupport } from './stockMedicModes.js';
+ import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
+ import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
+@@ -140,6 +141,8 @@ export class EngineFighter {
+       }
+     };
+     Object.values(this.teams).forEach(team => team.fighters.forEach(actor => prepareStockMedic(actor, 'Fighter')));
++    Object.values(this.teams).forEach(team => team.fighters.forEach(prepareFighterHealing));
++    this.fighterHealing = createFighterHealing(this);
+     this.medicSupport = createFighterMedicSupport(this);
+     this.inputs = { player: {}, cpu: {} };
+     this.playerInput = this.inputs.player;
+@@ -233,6 +236,7 @@ export class EngineFighter {
+     this.clearInputs();
+     this.projectiles.length = 0;
+     this.medicSupport.dispose();
++    this.fighterHealing.dispose();
+     Object.values(this.teams).forEach(team => team.fighters.forEach(fighter => {
+       fighter.action = null;
+       fighter.guarding = false;
+@@ -256,6 +260,7 @@ export class EngineFighter {
+   }
+ 
+   invalidateFighterLife(actor) {
++    this.fighterHealing.onKnockout(actor);
+     this.medicSupport.onKnockout(actor);
+     actor.action = null;
+     // A projectile may outlive a voluntary tag, never its owner's life.
+@@ -501,6 +506,15 @@ export class EngineFighter {
+     );
+   }
+ 
++  canUseSuper(side) {
++    side = resolveSide(side);
++    const fighter = side && this.getActive(side);
++    if (!this.canAct(fighter) || fighter.meter < 100) return false;
++    const medic = getStockMedicDefinition(fighter, 'Fighter');
++    if (medic) return !this.medicSupport.active(fighter) && this.medicSupport.canLink(fighter, fighter, medic);
++    return !getFighterHealingDefinition(fighter) || this.fighterHealing.available(fighter);
++  }
++
+   tryAction(side, type) {
+     side = resolveSide(side);
+     if (!side) return false;
+@@ -513,6 +527,9 @@ export class EngineFighter {
+       special: { duration: 0.64, hitAt: 0.28, base: 23, range: fighter.ranged ? 430 : 132, guardDamage: 24, knockback: 245, meterCost: 30 },
+       super: { duration: 0.92, hitAt: 0.45, base: 43, range: this.width, guardDamage: 42, knockback: 330, meterCost: 100 }
+     };
++    if (type === 'super' && !this.canUseSuper(side)) return false;
++    const healing = type === 'super' && getFighterHealingDefinition(fighter) ? this.fighterHealing.prepare(fighter) : null;
++    if (healing) specs.super = { ...specs.super, base: 0, range: 0, guardDamage: 0, knockback: 0, healing };
+     const stockMedic = type === 'super' ? getStockMedicDefinition(fighter, 'Fighter') : null;
+     if (stockMedic) {
+       if (this.medicSupport.active(fighter) || !this.medicSupport.canLink(fighter, fighter, stockMedic)) return false;
+@@ -837,7 +854,14 @@ export class EngineFighter {
+       const action = fighter.action;
+       if (!action.resolved && action.elapsed >= action.hitAt) {
+         action.resolved = true;
+-        if (action.stockUber) {
++        if (action.healing) {
++          const healed = this.fighterHealing.apply(action.healing);
++          if (healed.length) this.playSfx('heal');
++          for (const { target: recipient, amount } of healed) {
++            this.particles.add(recipient.x, recipient.y - 85, 0, -1, '#8af0ac', 5, 38, 'text', `+${amount}`);
++            if (recipient === this.getActive(side)) this.spawnBurst(recipient.x, recipient.y - 45, '#8af0ac', 12);
++          }
++        } else if (action.stockUber) {
+           if (fighter.special === action.sourceAction && fighter.state === 'attack') {
+             this.medicSupport.grant(fighter, fighter, action.stockUber);
+           }
+@@ -1168,6 +1192,8 @@ export class EngineFighter {
+         activeIndex: team.activeIndex,
+         tagCooldown: team.tagCooldown,
+         commandReady: this.canAct(this.getActive(side)),
++        superReady: this.canUseSuper(side),
++        superName: this.getActive(side)?.special?.name || null,
+         fighters: team.fighters.map((fighter, index) => ({
+           id: fighter.id,
+           name: fighter.name,
+diff --git a/src/game/signatureCodex.js b/src/game/signatureCodex.js
+index 737a7398c0d291208cfe8b29798b86a1cae31164..4d5138b70befa8f5854f77053f1c04955a4fd8cc 100644
+--- a/src/game/signatureCodex.js
++++ b/src/game/signatureCodex.js
+@@ -70,7 +70,10 @@ export function getSignatureSummary(codex, lang = 'fr') {
+     : '100% special meter; full ATB also required in RPG. Tactics keeps its existing kit.';
+   const limit = fr ? 'Adaptation jouable ; animation et fidélité 1:1 non certifiées.'
+     : 'Playable adaptation; animation and 1:1 fidelity are not certified.';
+-  return `${prefix} : ${codex.name}. ${stock ? cost.split(' Tactics')[0] : cost}${adaptation} ${limit}`;
++  const healing = codex.key === 'aerith_ff7' ? (fr
++    ? ' Healing Wind soigne aussi la cellule vivante en Fighter, sans résurrection ni dégâts. Aucun lancement si aucun PV n’est récupérable.'
++    : ' Healing Wind also heals the living Fighter team, without revival or damage. No activation when no HP is recoverable.') : '';
++  return `${prefix} : ${codex.name}. ${stock ? cost.split(' Tactics')[0] : cost}${adaptation}${healing} ${limit}`;
+ }
+ 
+ /** Booster candidates carry their exact underlying hero; names are not keys. */
