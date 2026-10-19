@@ -1,0 +1,41 @@
+name: PR5 source snapshot
+on:
+  push:
+    branches: [codex/pr4-source-check-2026-10-19-0940]
+    paths: [.github/workflows/pr5-source-16f9.yml]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 16f9bd4f7893ecd34772bc59670bd1c5dfa4501c
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /supabase/
+            /.github/workflows/
+            /docs/audits/
+            **/*.json
+            **/*.jsonl
+      - name: Archive allowlisted sources and manifests
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pr5-source
+          git rev-parse HEAD > /tmp/pr5-source/commit.txt
+          git ls-tree -r HEAD > /tmp/pr5-source/git-tree.txt
+          tar -czf /tmp/pr5-source/source.tgz src scripts api supabase .github/workflows docs/audits public package.json package-lock.json vite.config.js .oxlintrc.json index.html .nvmrc
+          sha256sum /tmp/pr5-source/source.tgz > /tmp/pr5-source/source.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr5-source-16f9bd4f
+          path: /tmp/pr5-source/
+          retention-days: 3
