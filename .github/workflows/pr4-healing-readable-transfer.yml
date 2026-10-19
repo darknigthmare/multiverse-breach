@@ -1,0 +1,70 @@
+name: PR4 verified healing tree
+on:
+  push:
+    branches: [codex/pr4-source-check-2026-10-19-0940]
+    paths: [.github/workflows/pr4-healing-readable-transfer.yml]
+permissions:
+  contents: write
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630cea73d27597364c9af683
+        with:
+          persist-credentials: false
+          path: transfer
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.audit-transfer/healing-readable/
+      - uses: actions/checkout@11bd71901bbe5b1630cea73d27597364c9af683
+        with:
+          ref: 630d32765d7379c4875c3e1f1e2ca5772563b722
+          path: source
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /src/
+            /scripts/
+            /docs/audits/
+            /.github/workflows/
+      - name: Apply reviewed source only and verify all file hashes
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, subprocess, shutil
+          root=pathlib.Path('source').resolve()
+          transfer=pathlib.Path('transfer/.audit-transfer/healing-readable').resolve()
+          def git(*args): return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
+          assert git('rev-parse','HEAD')=='630d32765d7379c4875c3e1f1e2ca5772563b722'
+          assert git('rev-parse','HEAD^{tree}')=='73d80427e9e7c1883f8b6052e37e2092693baf20'
+          subprocess.run(['git','apply','--check','--index',str(transfer/'native.patch')],cwd=root,check=True)
+          subprocess.run(['git','apply','--index',str(transfer/'native.patch')],cwd=root,check=True)
+          additions={'fighterHealing.js':'src/game/fighterHealing.js','reauditFighterHealing.test.mjs':'scripts/reauditFighterHealing.test.mjs','reauditFighterRelease.test.mjs':'scripts/reauditFighterRelease.test.mjs','browserFighterHealing.py':'scripts/browserFighterHealing.py','report.md':'docs/audits/pr4-fighter-healing-release-2026-10-19.md'}
+          for source,destination in additions.items():
+            target=root/destination
+            assert not target.exists(),destination
+            target.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(transfer/source,target)
+            subprocess.run(['git','add','--',destination],cwd=root,check=True)
+          expected={'.github/workflows/audit-reliability.yml':'e0cfd15cedeafa3d273916047e1a9e10a9b5fa2dbcd4f870b94d7013d52525ea','docs/audits/pr4-fighter-healing-release-2026-10-19.md':'257f9d2c644d51be62ad6ef29dbc2082052f34261960ae603da98a2cc7f95559','scripts/browserFighterHealing.py':'05d7ebdd02a06a30c649d1472ac01b95ee6aa9e2c6139c08064966579fe96270','scripts/fixtures/fighterLifecycleHarness.jsx':'c19e6367e36eb70975a32f79ccbdaa7542f7cbe8fa39f4223788676f6eff34da','scripts/progressionAudit.mjs':'b564b2f38162aa78926a4840936a7cdc9fa3eea0d28b9af0554967cf5a8bb20a','scripts/reauditFighterHealing.test.mjs':'47f47da2bc96082c5c8be3da206b3fd93837aa057373575e9a567694187d1fdf','scripts/reauditFighterRelease.test.mjs':'edba220f1bab405bcc4796189e7092aa5f41fafa2e394d14875179accd59c43d','src/components/FighterMode.jsx':'2609b326d2d9f116a3e2eb815db181be72f0d8cc02e27800ea46d5a10b1210d8','src/game/engineFighter.js':'ac4c102b9b7827bdd3a4e475d10a834825976ee03512b72eb5494b91307d12e3','src/game/fighterHealing.js':'3b38043d8d29d1a9b4bc619b8a180534bf390d1b9f5cfecaae59b3ac827c204b','src/game/signatureCodex.js':'051e6fe5c3dd51a31c83a22be19a69613032d5063fdab45f6081722c034dc791'}
+          assert set(git('diff','--cached','--name-only').splitlines())==set(expected)
+          for path,digest in expected.items():
+            actual=hashlib.sha256((root/path).read_bytes()).hexdigest()
+            assert actual==digest,(path,actual,digest)
+          patch=subprocess.check_output(['git','diff','--cached','--full-index','--binary'],cwd=root)
+          assert hashlib.sha256(patch).hexdigest()=='0d055b8b38a2e0ca3fb207517bdd27a5be81eadd86fc29dd9c96abf6e6341a2a'
+          payload={'base_tree':'73d80427e9e7c1883f8b6052e37e2092693baf20','tree':[{'path':p,'mode':'100644','type':'blob','content':(root/p).read_text()} for p in expected]}
+          pathlib.Path('/tmp/tree-input.json').write_text(json.dumps(payload))
+          output=pathlib.Path('/tmp/healing-tree');output.mkdir()
+          (output/'files-sha256.json').write_text(json.dumps(expected,indent=2))
+          (output/'patch.sha256').write_text(hashlib.sha256(patch).hexdigest()+'\n')
+          print('Verified 11 files and the complete tested patch; no repository code executed.')
+          PY
+      - name: Create tree object only, do not update any branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST repos/darknigthmare/multiverse-breach/git/trees --input /tmp/tree-input.json --jq .sha > /tmp/healing-tree/tree.txt
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr4-healing-tree
+          path: /tmp/healing-tree/
+          retention-days: 3
