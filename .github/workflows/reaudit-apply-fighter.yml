@@ -1,0 +1,57 @@
+name: Prepare verified Fighter continuation
+on:
+  push:
+    branches: [codex/reaudit-fighter-transfer-a6081c99]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /.github/workflows/
+            /.reaudit-transfer/
+            /docs/audits/
+      - name: Verify and prepare exact patch without running repository code
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fighter-prepared
+          cat .reaudit-transfer/part-*.b64 | base64 --decode | gzip -d > /tmp/fighter.patch
+          echo '47021ae0f9d12a4531a21b6bee564b9d6bc82f4f96d2dc3a756a84ad77eee35c  /tmp/fighter.patch' | sha256sum -c -
+          git switch --detach a6081c997af7fd26821b397fc71e0b5ce76b8497
+          test "$(git rev-parse HEAD)" = a6081c997af7fd26821b397fc71e0b5ce76b8497
+          git apply --check /tmp/fighter.patch
+          git apply --index /tmp/fighter.patch
+          git diff --cached --check
+          tree=$(git write-tree)
+          commit=$(git -c user.name='Multiverse maintenance' -c user.email='noreply@github.com' commit-tree "$tree" -p a6081c997af7fd26821b397fc71e0b5ce76b8497 -m 'fix(fighter): actual damage, safe lifecycle, validated commands and bounded projectiles')
+          printf '%s\n' "$commit" > /tmp/fighter-prepared/commit.txt
+          printf '%s\n' "$tree" > /tmp/fighter-prepared/tree.txt
+          git diff --cached --name-only --diff-filter=ACMRT > /tmp/fighter-prepared/paths.txt
+          while IFS= read -r path; do sha256sum "$path"; done < /tmp/fighter-prepared/paths.txt > /tmp/fighter-prepared/source.sha256
+          git diff --cached --binary > /tmp/fighter-prepared/change.patch
+          test -z "$(git ls-tree -r "$tree" -- .reaudit-transfer .github/workflows/reaudit-apply-fighter.yml .github/workflows/reaudit-source-snapshot.yml)"
+      - name: Publish prepared commit to isolated ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = darknigthmare/multiverse-breach
+          gh auth setup-git
+          commit=$(cat /tmp/fighter-prepared/commit.txt)
+          git push origin "$commit:refs/heads/codex/reaudit-fighter-prepared-a6081c99"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: fighter-prepared
+          path: /tmp/fighter-prepared/
+          retention-days: 3
