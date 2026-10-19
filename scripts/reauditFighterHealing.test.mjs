@@ -139,3 +139,20 @@ test('unknown incarnations, noncombatants and Fighter overrides never gain Heali
     assert.notEqual(caster.special?.sourceSignatureKey, 'aerith_ff7');
   }
 });
+
+for (const wounded of [false, true]) test(`CPU chooses ${wounded ? 'a useful heal' : 'a regular attack instead of an unavailable heal'}`, () => {
+  const { e, caster, patient } = fixture('cpu');
+  if (wounded) patient.currentHp -= 50;
+  e.aiThink = 0; const random = Math.random;
+  try { Math.random = () => 0; e.updateAi(1 / 60); } finally { Math.random = random; }
+  assert.equal(caster.action?.type, wounded ? 'super' : 'light');
+  assert.equal(caster.meter, wounded ? 0 : 100);
+});
+for (const side of ['player', 'cpu']) test(`${side}: a detached token from an interrupted action cannot apply healing`, () => {
+  const { e, caster, patient, foe } = fixture(side); patient.currentHp = 10;
+  e.tryAction(side, 'super'); const token = caster.action.healing;
+  e.applyHit(foe, caster, { type: 'light', base: 5, knockback: 0, guardDamage: 0 });
+  assert.equal(caster.action, null);
+  assert.deepEqual(e.fighterHealing.apply(token), []);
+  assert.equal(patient.currentHp, 10);
+});

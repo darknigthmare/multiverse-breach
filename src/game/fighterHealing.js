@@ -48,7 +48,8 @@ export function createFighterHealing(engine) {
     if (!plan || disposed || engine.disposed || engine.paused || engine.finished || engine.countdown > 0) return [];
     plans.delete(token);
     const { caster, definition: d } = plan;
-    if (!living(caster) || engine.getActive(plan.side) !== caster || caster.side !== plan.side
+    if (caster.action?.healing !== token || caster.state !== 'attack'
+      || !living(caster) || engine.getActive(plan.side) !== caster || caster.side !== plan.side
       || caster.special !== plan.action || generation(caster) !== plan.generation
       || sourceId(caster) !== plan.sourceId || universe(caster) !== plan.universe
       || getFighterHealingDefinition(caster) !== d || caster.special?.type !== 'heal'

@@ -801,7 +801,7 @@ export class EngineFighter {
         this.requestTag('cpu', healthierIndex);
         return;
       }
-      if (fighter.meter >= 100 && Math.random() < this.difficulty.aggression * 0.5) {
+      if (this.canUseSuper('cpu') && Math.random() < this.difficulty.aggression * 0.5) {
         this.tryAction('cpu', 'super');
       } else if (fighter.meter >= 30 && distance > 112 && Math.random() < 0.56) {
         this.tryAction('cpu', 'special');

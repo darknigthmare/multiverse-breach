@@ -58,8 +58,8 @@ validations natives. Le codex FR/EN précise l'adaptation Fighter de Healing Win
 ## Tests
 
 - 4 échecs reproduits sur la base, puis 4 succès après la correction.
-- 43 nouveaux tests : 31 Healing Wind / 12 contrats de livraison Fighter.
-- `npm run test:reaudit` : 261/261, sans ignoré ni annulé.
+- 47 nouveaux tests : 35 Healing Wind / 12 contrats de livraison Fighter.
+- `npm run test:reaudit` : 265/265, sans ignoré ni annulé.
 - `scripts/signature*.test.mjs` : 940/940, sans ignoré ni annulé.
 - Lint ciblé : zéro erreur/avertissement. Compilation Vite des sources réussie,
   avec l'avertissement préexistant de gros blocs ; aucune optimisation revendiquée.
@@ -76,3 +76,12 @@ La livraison doit conserver le base-tree complet. Les fichiers de transport et
 leurs workflows temporaires ne doivent figurer ni dans l'arbre ni dans
 l'ascendance du commit de la PR. Aucun merge, changement administratif ou
 publication volontaire en production.
+
+## Contrôle complémentaire des commandes de soin
+
+L'IA réutilise maintenant `canUseSuper` avant de choisir sa limite : elle peut
+attaquer normalement au lieu de sélectionner un soin inutilisable à équipe
+intacte. Un jeton détaché après interruption ne peut plus appliquer un ancien
+soin, même appelé directement : il doit appartenir à l'action encore active.
+Quatre tests supplémentaires, dont trois échouaient avant ce correctif et un
+contrôle positif préservé, couvrent ces conditions. Le total local est 265/265.
