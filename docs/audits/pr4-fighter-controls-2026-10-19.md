@@ -69,3 +69,17 @@ Pas de nouveau moveset, asset, univers, signature ou certification artistique.
 Le remplacement ne devient ni une annulation de super ni une immunité gratuite.
 Les grandes suites d'assets, campagne, tutoriel, autres moteurs et comptes réels
 restent des chantiers distincts. Aucun merge ni changement administratif.
+
+## Dernier contrôle périmé du prébuild
+
+Après les six recettes Fighter réussies, le build intégral de `1e7cf3bd` a atteint
+`check:progression`, puis échoué sur un second contrôle textuel : il exigeait
+l'ancien alias `triggerPlayerAction('tag')`. La commande utilise désormais le
+répartiteur partagé des deux camps. Le contrôle est remplacé par 16 tests qui
+exécutent les vrais callbacks clavier et bouton extraits de FighterMode avec
+le vrai moteur : les trois emplacements, P1/P2, pause, onglet masqué et gel
+d'impact. Aucune commande du jeu n'a été rendue plus permissive. Les autres
+contrôles de progression et d'assets restent conservés.
+
+Ces tests sont présents dans le groupe rapide (158 tests au total) et sont aussi
+appelés par le prébuild. Le résultat final doit être relu sur la nouvelle tête.

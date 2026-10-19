@@ -738,7 +738,13 @@ assert(hubSource.includes("{ id: 'race'") && hubSource.includes('<RaceMode'), 'H
 assert(hubSource.includes("{ id: 'fighter'") && hubSource.includes('<FighterMode'), 'Hub must expose the standalone A.R.C.A. Fighter tab.');
 assert(hubSource.includes("isUniverseVisible(hero.universe) && !isAssetDisabled('heroes', hero.id)"), 'Fighter roster must respect admin universe and hero visibility.');
 assert(fighterModeSource.includes('new EngineFighter') && fighterModeSource.includes('fighter-touch-controls'), 'Fighter screen must instantiate its engine and expose responsive controls.');
-assert(fighterModeSource.includes("triggerPlayerAction('tag'") && fighterModeSource.includes("['1', '2', '3']"), 'Fighter screen must expose manual three-slot tag controls.');
+// Verify all three slots through the real screen callbacks and engine for both
+// players. The choice of a P1 alias or shared side dispatcher is not gameplay.
+const fighterTagAudit = spawnSync(process.execPath,
+  ['--test', fileURLToPath(new URL('./reauditFighterTagRoutes.test.mjs', import.meta.url))],
+  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+assert(!fighterTagAudit.error && fighterTagAudit.status === 0,
+  'Fighter runtime keyboard/button three-slot replacement regression failed.');
 assert(fighterEngineSource.includes('fighters: playerHeroes.slice(0, 3)') && fighterEngineSource.includes('activeIndex: 0'), 'Fighter engine must keep one active combatant in a three-signature cell.');
 assert(fighterEngineSource.includes('requestTag(side, index, forced = false)') && fighterEngineSource.includes("this.requestTag(side, next.index, true)"), 'Fighter engine must support manual and forced K.O. replacements.');
 assert(fighterEngineSource.includes('guardBreak') && fighterEngineSource.includes('comboWindow') && fighterEngineSource.includes('meterCost: 100'), 'Fighter engine must retain guard break, combos, and rupture meter rules.');
