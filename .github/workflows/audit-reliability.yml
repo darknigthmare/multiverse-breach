@@ -56,6 +56,7 @@ jobs:
           node node_modules/oxlint/bin/oxlint --max-warnings 0
           src/game/stockMedicModes.js src/game/combatActivity.js src/game/rpgActionEconomy.js
           src/game/engineFighter.js src/game/originalUniverseProduction.js src/components/BuildIdentity.jsx
+          src/components/FighterMode.jsx scripts/fixtures/fighterLifecycleHarness.jsx
           src/components/TacticsSupportPanel.jsx scripts/reaudit*.test.mjs scripts/tacticsFacingRuntime.test.mjs
           scripts/buildIdentity.mjs scripts/progressionAudit.mjs vite.config.js
       - name: Lint changed modules and tests
@@ -93,6 +94,7 @@ jobs:
           /tmp/multiverse-playwright/bin/python scripts/browserAuditFollowup.py --evidence /tmp/reliability-evidence/browser | tee /tmp/reliability-evidence/browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/reliability-evidence/rpg-browser | tee /tmp/reliability-evidence/rpg-browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserTacticsReliability.py --evidence /tmp/reliability-evidence/tactics-browser | tee /tmp/reliability-evidence/tactics-browser.log
+          /tmp/multiverse-playwright/bin/python scripts/browserFighterLifecycle.py --evidence /tmp/reliability-evidence/fighter-browser | tee /tmp/reliability-evidence/fighter-browser.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

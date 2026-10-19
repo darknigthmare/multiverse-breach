@@ -5,6 +5,10 @@ import { drawRecentUniverseTextureCover } from './recentUniverseTextureAssets';
 import { resolveFighterTagEntry } from './fighterTagPlacement.js';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+const resolveSide = side => side === 'player' ? 'player' : ['cpu', 'opponent'].includes(side) ? 'cpu' : null;
+const live = actor => !!actor && Number.isFinite(actor.currentHp) && actor.currentHp > 0 && actor.state !== 'dead';
+const positioned = actor => Number.isFinite(actor?.x) && Number.isFinite(actor?.y);
+const MAX_FIGHTER_PROJECTILES = 64;
 const lerp = (from, to, amount) => from + (to - from) * amount;
 const faceOpponent = (fighter, target) => {
   const dx = target?.x - fighter?.x;
@@ -144,6 +148,8 @@ export class EngineFighter {
     this.timer = 99;
     this.countdown = 3.2;
     this.finished = false;
+    this.disposed = false;
+    this.paused = false;
     this.completionReported = false;
     this.completionDelay = 0;
     this.result = null;
@@ -195,27 +201,77 @@ export class EngineFighter {
     };
   }
 
+  clearInputs() {
+    this.inputs = { player: {}, cpu: {} };
+    this.playerInput = this.inputs.player;
+  }
+
+  setPaused(paused) {
+    if (this.disposed) return false;
+    this.paused = paused === true;
+    // Neither a held movement nor a guard may survive a focus/pause transition.
+    this.clearInputs();
+    return true;
+  }
+
+  clearCombatTransientState() {
+    this.clearInputs();
+    this.projectiles.length = 0;
+    this.medicSupport.dispose();
+    Object.values(this.teams).forEach(team => team.fighters.forEach(fighter => {
+      fighter.action = null;
+      fighter.guarding = false;
+      fighter.crouching = false;
+    }));
+  }
+
+  dispose() {
+    if (this.disposed) return;
+    this.disposed = true;
+    this.clearCombatTransientState();
+    this.assistEvent = null;
+    this.koEffectEvent = null;
+    this.victoryPoseEvent = null;
+    this.onComplete = null;
+  }
+
+  isRosterFighter(actor) {
+    return !!actor && ['player', 'cpu'].includes(actor.side)
+      && this.teams[actor.side].fighters.includes(actor);
+  }
+
+  invalidateFighterLife(actor) {
+    this.medicSupport.onKnockout(actor);
+    actor.action = null;
+    // A projectile may outlive a voluntary tag, never its owner's life.
+    this.projectiles = this.projectiles.filter(projectile => projectile.owner !== actor);
+  }
+
   setInput(input = {}) {
     this.setSideInput('player', input);
   }
 
   setSideInput(side, input = {}) {
-    const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
-    this.inputs[resolvedSide] = input || {};
+    const resolvedSide = resolveSide(side);
+    if (!resolvedSide || this.disposed || this.paused || this.finished) return false;
+    this.inputs[resolvedSide] = Object.fromEntries(['left', 'right', 'down', 'guard']
+      .map(key => [key, input?.[key] === true]));
     if (resolvedSide === 'player') this.playerInput = this.inputs.player;
+    return true;
   }
 
   getTeam(side) {
-    return this.teams[side];
+    return this.teams[resolveSide(side)] || null;
   }
 
   getActive(side) {
     const team = this.getTeam(side);
-    return team.fighters[team.activeIndex] || team.fighters[0];
+    return team?.fighters[team.activeIndex] || team?.fighters[0] || null;
   }
 
   getOpponent(side) {
-    return this.getActive(side === 'player' ? 'cpu' : 'player');
+    const resolvedSide = resolveSide(side);
+    return resolvedSide ? this.getActive(resolvedSide === 'player' ? 'cpu' : 'player') : null;
   }
 
   triggerPlayerAction(action, index = null) {
@@ -223,7 +279,8 @@ export class EngineFighter {
   }
 
   triggerSideAction(side, action, index = null) {
-    const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+    const resolvedSide = resolveSide(side);
+    if (!resolvedSide) return false;
     if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
     if (action === 'tag') return this.requestTag(resolvedSide, index);
     if (action === 'jump') return this.tryJump(this.getActive(resolvedSide));
@@ -256,7 +313,8 @@ export class EngineFighter {
   }
 
   triggerFieldSuper(side = 'player') {
-    const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+    const resolvedSide = resolveSide(side);
+    if (!resolvedSide) return false;
     if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
     const state = this.getFieldSuperState(resolvedSide);
     const attacker = this.getActive(resolvedSide);
@@ -264,13 +322,14 @@ export class EngineFighter {
     if (
       !state.super
       || state.used
-      || state.charge < 100
+      || !Number.isFinite(state.charge) || state.charge < 100
       || !this.canAct(attacker)
       || !target
       || target.currentHp <= 0
     ) return false;
 
     const effect = state.super.effect || {};
+    const healRatio = clamp(finiteOr(effect.healRatio, 0), 0, 1);
     faceOpponent(attacker, target);
     this.setFieldSuperState(resolvedSide, { used: true, charge: 0 });
     this.fieldSuperFlash = 1.25;
@@ -287,16 +346,16 @@ export class EngineFighter {
       if (fighter.currentHp <= 0) return;
       fighter.currentHp = Math.min(
         fighter.maxHp,
-        fighter.currentHp + fighter.maxHp * (effect.healRatio || 0)
+        fighter.currentHp + fighter.maxHp * healRatio
       );
       fighter.invulnerable = Math.max(fighter.invulnerable, 0.42);
     });
 
     this.applyHit(attacker, target, {
       type: 'super',
-      base: effect.damage || 36,
-      guardDamage: effect.guardDamage || 70,
-      knockback: effect.knockback || 360
+      base: Math.max(0, finiteOr(effect.damage, 36)),
+      guardDamage: Math.max(0, finiteOr(effect.guardDamage, 70)),
+      knockback: Math.max(0, finiteOr(effect.knockback, 360))
     });
     return true;
   }
@@ -318,19 +377,21 @@ export class EngineFighter {
   }
 
   triggerAssist(side = 'player') {
-    const resolvedSide = side === 'cpu' || side === 'opponent' ? 'cpu' : 'player';
+    const resolvedSide = resolveSide(side);
+    if (!resolvedSide) return false;
     if (resolvedSide === 'cpu' && this.opponentControl !== 'p2') return false;
     return this.activateAssist(resolvedSide);
   }
 
   activateAssist(side) {
+    if (!resolveSide(side)) return false;
     const state = this.getAssistState(side);
     const attacker = this.getActive(side);
     const target = this.getOpponent(side);
     if (
       !state.assist
       || state.used
-      || state.charge < 100
+      || !Number.isFinite(state.charge) || state.charge < 100
       || !this.canAct(attacker)
       || !target
       || target.currentHp <= 0
@@ -417,17 +478,19 @@ export class EngineFighter {
 
   canAct(fighter) {
     return Boolean(
-      fighter
-      && fighter.currentHp > 0
+      this.isRosterFighter(fighter) && live(fighter) && positioned(fighter)
+      && fighter === this.getActive(fighter.side) && Number.isFinite(fighter.meter)
       && !fighter.action
       && fighter.hitstun <= 0
       && fighter.guardBreak <= 0
       && !this.finished && !this.disposed && !this.paused
-      && this.countdown <= 0
+      && this.countdown <= 0 && this.hitStop <= 0
     );
   }
 
   tryAction(side, type) {
+    side = resolveSide(side);
+    if (!side) return false;
     const fighter = this.getActive(side);
     if (!this.canAct(fighter)) return false;
 
@@ -443,7 +506,7 @@ export class EngineFighter {
       specs.super = { ...specs.super, base: 0, range: 0, guardDamage: 0, knockback: 0,
         stockUber: stockMedic, sourceAction: fighter.special };
     }
-    const spec = specs[type];
+    const spec = Object.hasOwn(specs, type) ? specs[type] : null;
     if (!spec || fighter.meter < (spec.meterCost || 0)) return false;
     // Input may arrive between physics frames after the fighters crossed.
     // Aim once on commitment; an ongoing swing never turns to track a dodge.
@@ -474,13 +537,16 @@ export class EngineFighter {
   }
 
   requestTag(side, index, forced = false) {
+    side = resolveSide(side);
+    if (!side || this.disposed || this.paused || this.finished || this.countdown > 0) return false;
+    if ((typeof index !== 'number' && typeof index !== 'string') || String(index).trim() === '') return false;
     const team = this.getTeam(side);
     const active = this.getActive(side);
     const opponent = this.getOpponent(side);
     const nextIndex = Number(index);
     const next = team.fighters[nextIndex];
     if (
-      !next
+      !Number.isInteger(nextIndex) || !next
       || nextIndex === team.activeIndex
       || next.currentHp <= 0
       || (!forced && (team.tagCooldown > 0 || !this.canAct(active)))
@@ -525,8 +591,8 @@ export class EngineFighter {
   }
 
   update(dt) {
-    const step = clamp(dt || 0, 0, 0.034);
-    if (this.completionReported || this.disposed || this.paused) return;
+    if (!Number.isFinite(dt) || dt <= 0 || this.completionReported || this.disposed || this.paused) return;
+    const step = Math.min(dt, 0.034);
     this.elapsed += step;
     this.updateCosmeticTimers(step);
 
@@ -534,7 +600,7 @@ export class EngineFighter {
       this.completionDelay -= step;
       if (this.completionDelay <= 0 && !this.completionReported) {
         this.completionReported = true;
-        this.onComplete(this.result, this.getSummary());
+        this.onComplete?.(this.result, this.getSummary());
       }
       return;
     }
@@ -729,6 +795,7 @@ export class EngineFighter {
   }
 
   updateActions(dt) {
+    if (!Number.isFinite(dt) || dt <= 0 || this.disposed || this.paused || this.finished || this.countdown > 0) return;
     ['player', 'cpu'].forEach(side => {
       const fighter = this.getActive(side);
       const target = this.getOpponent(side);
@@ -755,6 +822,11 @@ export class EngineFighter {
   }
 
   spawnProjectile(fighter, action) {
+    if (this.disposed || this.paused || this.finished || this.countdown > 0
+      || !this.isRosterFighter(fighter) || !live(fighter) || !positioned(fighter)
+      || !action || !Number.isFinite(action.base) || action.base <= 0
+      || ![-1, 1].includes(action.facing ?? fighter.facing)
+      || this.projectiles.length >= MAX_FIGHTER_PROJECTILES) return false;
     const color = fighter.secondaryColor || fighter.weaponColor || '#39c5bb';
     const direction = action.facing ?? fighter.facing;
     this.projectiles.push({
@@ -769,32 +841,43 @@ export class EngineFighter {
       color
     });
     this.particles.add(fighter.x, fighter.y - 62, direction * 5, 0, color, 6, 34, 'laser_line');
+    return true;
   }
 
   updateProjectiles(dt) {
-    for (let index = this.projectiles.length - 1; index >= 0; index--) {
-      const projectile = this.projectiles[index];
-      projectile.x += projectile.vx * dt;
-      projectile.life -= dt;
+    if (!Number.isFinite(dt) || dt <= 0 || this.disposed || this.paused || this.finished || this.countdown > 0) return;
+    // Damage may synchronously invalidate another owner's projectiles on KO.
+    // Iterate identities, not array indices that can shift during applyHit().
+    for (const projectile of [...this.projectiles]) {
+      if (!this.projectiles.includes(projectile)) continue;
+      const remove = () => { this.projectiles = this.projectiles.filter(item => item !== projectile); };
+      if (!this.isRosterFighter(projectile.owner) || !live(projectile.owner)
+        || projectile.owner.side !== projectile.side
+        || ![projectile.x, projectile.y, projectile.vx, projectile.life, projectile.radius].every(Number.isFinite)
+        || projectile.life <= 0 || projectile.radius <= 0) { remove(); continue; }
+      const beforeX = projectile.x;
+      const activeTime = Math.min(dt, projectile.life);
+      projectile.x += projectile.vx * activeTime;
+      projectile.life = Math.max(0, projectile.life - dt);
       const target = this.getOpponent(projectile.side);
       const targetCenterY = target?.y - (target?.crouching ? 32 : 56);
       const targetHalfHeight = target?.crouching ? 28 : 66;
-      if (
-        target
-        && target.currentHp > 0
-        && Math.abs(projectile.x - target.x) < projectile.radius + 32
-        && Math.abs(projectile.y - targetCenterY) < targetHalfHeight
-      ) {
+      const radius = projectile.radius + 32;
+      const intersects = live(target) && positioned(target)
+        && Math.max(beforeX, projectile.x) > target.x - radius
+        && Math.min(beforeX, projectile.x) < target.x + radius
+        && Math.abs(projectile.y - targetCenterY) < targetHalfHeight;
+      if (intersects) {
         this.applyHit(projectile.owner, target, projectile.action, true, Math.sign(projectile.vx));
-        this.projectiles.splice(index, 1);
-      } else if (projectile.life <= 0 || projectile.x < -40 || projectile.x > this.width + 40) {
-        this.projectiles.splice(index, 1);
-      }
+        remove();
+      } else if (projectile.life <= 0 || projectile.x < -40 || projectile.x > this.width + 40) remove();
     }
   }
 
   attemptHit(attacker, target, action) {
-    if (!target || target.currentHp <= 0 || target.invulnerable > 0) return false;
+    if (this.disposed || this.paused || this.finished || !live(attacker) || !live(target)
+      || !positioned(attacker) || !positioned(target) || !action
+      || !Number.isFinite(action.range) || action.range < 0 || target.invulnerable > 0) return false;
     const direction = action.facing ?? attacker.facing;
     const inFront = direction > 0 ? target.x >= attacker.x : target.x <= attacker.x;
     const closeY = Math.abs(target.y - attacker.y) < 92;
@@ -806,13 +889,21 @@ export class EngineFighter {
   applyHit(attacker, target, action, projectile = false, impactDirection = null) {
     if (this.disposed || this.paused || this.finished || !target || !attacker || !action
       || !Number.isFinite(action.base) || action.base <= 0
-      || target.invulnerable > 0 || target.currentHp <= 0) return;
+      || !this.isRosterFighter(attacker) || !this.isRosterFighter(target)
+      || attacker === target || attacker.side === target.side
+      || target !== this.getActive(target.side) || !live(attacker) || !live(target)
+      || !positioned(attacker) || !positioned(target)
+      || ![attacker.attackPower, target.defensePower, attacker.meter, target.meter, target.guard].every(Number.isFinite)
+      || attacker.attackPower <= 0 || target.invulnerable > 0) return 0;
+    const knockback = Number.isFinite(action.knockback) ? Math.max(0, action.knockback) : 0;
+    const guardDamage = Number.isFinite(action.guardDamage) ? Math.max(0, action.guardDamage) : 0;
+    impactDirection = [-1, 1].includes(impactDirection) ? impactDirection : null;
     this.medicSupport.release(attacker);
     if (this.medicSupport.blockHit(attacker, target, action.base)) {
       // Protection is not knockback immunity, and creates no damage/meter/KO.
       const direction = impactDirection || Math.sign(target.x - attacker.x) || attacker.facing;
-      target.vx = direction * Math.max(0, Number(action.knockback) || 0);
-      return;
+      target.vx = direction * knockback;
+      return 0;
     }
     // A travelling projectile keeps its own incoming direction even after its
     // owner turns, jumps across the target, or tags out before impact.
@@ -832,8 +923,8 @@ export class EngineFighter {
 
     if (blocked) {
       damage *= 0.2;
-      target.guard = Math.max(0, target.guard - action.guardDamage);
-      target.vx = hitDirection * action.knockback * 0.26;
+      target.guard = Math.max(0, target.guard - guardDamage);
+      target.vx = hitDirection * knockback * 0.26;
       this.playSfx('shield');
       this.spawnBurst(target.x, target.y - 58, '#7df9ff', 8);
       if (target.guard <= 0) {
@@ -856,14 +947,15 @@ export class EngineFighter {
             ? 0.34
             : 0.24;
       target.state = 'hit';
-      target.vx = hitDirection * action.knockback;
+      target.vx = hitDirection * knockback;
       target.vy = action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
       this.playSfx(projectile ? 'shoot' : 'hit');
       this.spawnBurst(target.x, target.y - 60, attacker.secondaryColor || '#ff5a36', action.type === 'super' ? 26 : 12);
       this.hitStop = action.type === 'super' ? 0.1 : action.type === 'heavy' ? 0.055 : 0.025;
     }
 
-    damage = Math.round(damage * 10) / 10;
+    // Only HP actually removed feeds score, meters and post-match rewards.
+    damage = Math.min(target.currentHp, Math.round(damage * 10) / 10);
     target.currentHp = Math.max(0, target.currentHp - damage);
     attacker.meter = clamp(attacker.meter + damage * (blocked ? 0.42 : 0.82), 0, 100);
     target.meter = clamp(target.meter + damage * 0.55, 0, 100);
@@ -903,10 +995,10 @@ export class EngineFighter {
     this.particles.add(target.x - 14, target.y - 100, 0, -1.1, blocked ? '#7df9ff' : '#ffffff', 5, 38, 'text', blocked ? 'GUARD' : `${Math.round(damage)}`);
 
     if (target.currentHp <= 0) {
-      this.medicSupport.onKnockout(target);
+      this.invalidateFighterLife(target);
       target.state = 'dead';
       target.koDelay = 0.9;
-      target.vx = hitDirection * Math.max(action.knockback, 250);
+      target.vx = hitDirection * Math.max(knockback, 250);
       target.vy = -210;
       this.stats[attacker.side].kos += 1;
       this.announcement = 'K.O.';
@@ -914,6 +1006,7 @@ export class EngineFighter {
       this.playSfx('defeat');
       this.triggerKoCosmetic(attacker.side, target.x, target.y - 58);
     }
+    return damage;
   }
 
   resolveSpacing() {
@@ -962,7 +1055,8 @@ export class EngineFighter {
   }
 
   finish(result, timeout = false) {
-    this.medicSupport.dispose();
+    if (this.disposed || this.finished || this.completionReported || !['victory', 'defeat'].includes(result)) return false;
+    this.clearCombatTransientState();
     this.finished = true;
     this.result = result;
     this.winnerSide = result === 'victory' ? 'player' : 'cpu';
@@ -986,6 +1080,7 @@ export class EngineFighter {
       };
     }
     this.playSfx(result === 'victory' ? 'victory' : 'defeat');
+    return true;
   }
 
   getSummary() {

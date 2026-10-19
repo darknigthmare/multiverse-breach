@@ -281,6 +281,7 @@ export default function FighterMode({
   const [matchNonce, setMatchNonce] = useState(0);
   const [matchStarted, setMatchStarted] = useState(Boolean(customConfig?.autoStart));
   const [summary, setSummary] = useState(null);
+  const [runtimeError, setRuntimeError] = useState(false);
   const [snapshot, setSnapshot] = useState(emptySnapshot);
   const isCustomBattle = Boolean(customConfig);
   const activeHudTheme = resolveActiveHudTheme(portalCollection);
@@ -305,6 +306,7 @@ export default function FighterMode({
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
     simulationClockRef.current?.reset();
+    engineRef.current?.setPaused(sessionPaused || document.hidden);
     if (sessionPaused) inputRef.current = { player: {}, cpu: {} };
   }, [sessionPaused]);
 
@@ -312,6 +314,7 @@ export default function FighterMode({
   useEffect(() => {
     if (sessionExitRequestRef.current === sessionExitRequest) return;
     sessionExitRequestRef.current = sessionExitRequest;
+    engineRef.current?.dispose();
     setMatchStarted(false);
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -495,6 +498,8 @@ export default function FighterMode({
     ]);
 
     const particles = new ParticleSystem();
+    let active = true;
+    setRuntimeError(false);
     const engine = new EngineFighter(
       canvas.width,
       canvas.height,
@@ -503,6 +508,7 @@ export default function FighterMode({
       particles,
       type => sound.playSfx(type),
       (result, report) => {
+        if (!active || engine.disposed) return;
         const resolved = {
           ...report,
           result,
@@ -530,6 +536,7 @@ export default function FighterMode({
       }
     );
     engineRef.current = engine;
+    engine.setPaused(sessionPausedRef.current || document.hidden);
     sound.playStageBgm(battleMusicStage, activeBattleMusic?.state || 'battle');
 
     let animationId = 0;
@@ -537,36 +544,48 @@ export default function FighterMode({
     simulationClockRef.current = simulationClock;
     let snapshotClock = 0;
     const loop = now => {
-      const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
-      const dt = steps * COMBAT_STEP_MS / 1000;
-      if (sessionPausedRef.current || document.hidden) {
+      if (!active || engine.disposed) return;
+      try {
+        const isPaused = sessionPausedRef.current || document.hidden;
+        if (engine.paused !== isPaused) engine.setPaused(isPaused);
+        const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
+        const dt = steps * COMBAT_STEP_MS / 1000;
+        if (sessionPausedRef.current || document.hidden) {
+          animationId = requestAnimationFrame(loop);
+          return;
+        }
+        engine.setSideInput('player', inputRef.current.player);
+        engine.setSideInput('cpu', inputRef.current.cpu);
+        for (let step = 0; step < steps; step += 1) {
+          engine.update(COMBAT_STEP_MS / 1000);
+          particles.update();
+        }
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawUniverseBackground(ctx, arenaUniverse, canvas.width, canvas.height, 'Combat');
+          engine.draw(ctx, now / 16.67);
+          particles.draw(ctx);
+        }
+        snapshotClock += dt;
+        if (snapshotClock >= 0.1) {
+          snapshotClock = 0;
+          setSnapshot(engine.getSnapshot());
+        }
         animationId = requestAnimationFrame(loop);
-        return;
+      } catch (error) {
+        // A stopped renderer must not leave inputs active or award a victory.
+        console.error('Fighter render loop failed', error);
+        engine.dispose();
+        setRuntimeError(true);
+        if (!engine.completionReported) onSessionEndRef.current?.({ reason: 'error' });
       }
-      engine.setSideInput('player', inputRef.current.player);
-      engine.setSideInput('cpu', inputRef.current.cpu);
-      for (let step = 0; step < steps; step += 1) {
-        engine.update(COMBAT_STEP_MS / 1000);
-        particles.update();
-      }
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawUniverseBackground(ctx, arenaUniverse, canvas.width, canvas.height, 'Combat');
-        engine.draw(ctx, now / 16.67);
-        particles.draw(ctx);
-      }
-      snapshotClock += dt;
-      if (snapshotClock >= 0.1) {
-        snapshotClock = 0;
-        setSnapshot(engine.getSnapshot());
-      }
-      animationId = requestAnimationFrame(loop);
     };
     animationId = requestAnimationFrame(loop);
 
     const clearInputs = () => {
       inputRef.current = { player: {}, cpu: {} };
+      engine.clearInputs();
     };
     const setHeldInputForSide = (side, control, active) => {
       inputRef.current[side][control] = active;
@@ -648,6 +667,7 @@ export default function FighterMode({
     };
     const onVisibilityChange = () => {
       simulationClockRef.current?.reset();
+      engine.setPaused(sessionPausedRef.current || document.hidden);
       if (document.hidden) clearInputs();
     };
     window.addEventListener('keydown', onKeyDown, { passive: false });
@@ -655,6 +675,8 @@ export default function FighterMode({
     window.addEventListener('blur', clearInputs);
     document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
+      active = false;
+      engine.dispose();
       cancelAnimationFrame(animationId);
       if (simulationClockRef.current === simulationClock) simulationClockRef.current = null;
       window.removeEventListener('keydown', onKeyDown);
@@ -662,7 +684,7 @@ export default function FighterMode({
       window.removeEventListener('blur', clearInputs);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       sound.stopBgm();
-      engineRef.current = null;
+      if (engineRef.current === engine) engineRef.current = null;
       inputRef.current = { player: {}, cpu: {} };
     };
   }, [
@@ -682,7 +704,9 @@ export default function FighterMode({
   ]);
 
   const startMatch = () => {
-    if (sessionPausedRef.current || !playerHeroes.length || !opponentHeroes.length) return;
+    if (sessionPausedRef.current || document.hidden || !playerHeroes.length || !opponentHeroes.length) return;
+    engineRef.current?.dispose();
+    setRuntimeError(false);
     onSessionStart?.();
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -693,6 +717,8 @@ export default function FighterMode({
 
   const returnToLobby = () => {
     if (sessionPausedRef.current) return;
+    engineRef.current?.dispose();
+    setRuntimeError(false);
     setMatchStarted(false);
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -710,30 +736,31 @@ export default function FighterMode({
   };
 
   const triggerAction = (action, side = 'player') => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || document.hidden) return;
     engineRef.current?.triggerSideAction(side, action);
   };
 
   const triggerFieldSuper = (side = 'player') => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || document.hidden) return;
     engineRef.current?.triggerFieldSuper(side);
   };
 
   const triggerAssist = (side = 'player') => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || document.hidden) return;
     engineRef.current?.triggerAssist(side);
   };
 
   const setHeldInput = (key, active, side = 'player') => {
-    if (sessionPausedRef.current) {
+    if (sessionPausedRef.current || document.hidden) {
       inputRef.current = { player: {}, cpu: {} };
+      engineRef.current?.clearInputs();
       return;
     }
     inputRef.current[side][key] = active;
   };
 
   const triggerTag = (index, side = 'player') => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || document.hidden) return;
     if (side === 'player') {
       engineRef.current?.triggerPlayerAction('tag', index);
       return;
@@ -957,6 +984,17 @@ export default function FighterMode({
         )}
       </header>
 
+      {runtimeError && <div role="alert" data-fighter-runtime-error="true" style={{ padding: 16 }}>
+        <p>{lang === 'fr'
+          ? 'Le combat a été arrêté après une erreur. Aucun résultat supplémentaire ne sera enregistré.'
+          : 'The fight stopped after an error. No additional result will be recorded.'}</p>
+        <button type="button" className="btn-retro" onClick={startMatch}>
+          {lang === 'fr' ? 'RECOMMENCER LE COMBAT' : 'RESTART FIGHT'}
+        </button>
+        <button type="button" className="btn-retro" onClick={returnToLobby}>
+          {lang === 'fr' ? 'RETOUR AU MENU' : 'BACK TO MENU'}
+        </button>
+      </div>}
       <div className="fighter-battle-grid">
         <div className="fighter-canvas-panel">
           <canvas
