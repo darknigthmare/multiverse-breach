@@ -239,3 +239,25 @@ test('Fighter screen binds pause, hidden-tab events, early exit and disposal to 
   assert.match(source, /sessionExitRequestRef\.current = sessionExitRequest;\s*engineRef\.current\?\.dispose\(\)/);
   assert.match(source, /data-fighter-runtime-error/);
 });
+
+test('hit-stop rejects both players’ commands without spending while impact presentation is frozen', () => {
+  const { e, a, b } = fixture();
+  try {
+    e.hitStop = 0.07;
+    e.assists.player.charge = 100; e.assists.cpu.charge = 100;
+    e.fieldSuperCharge = 100; e.opponentFieldSuperCharge = 100;
+    const before = state(e);
+    for (const side of ['player', 'cpu']) {
+      assert.equal(e.triggerSideAction(side, 'super'), false);
+      assert.equal(e.triggerSideAction(side, 'jump'), false);
+      assert.equal(e.triggerAssist(side), false);
+      assert.equal(e.triggerFieldSuper(side), false);
+      assert.equal(e.requestTag(side, 1), false);
+    }
+    assert.equal(state(e), before);
+    for (let frame = 0; e.hitStop > 0 && frame < 60; frame++) e.update(1 / 60);
+    assert.ok(e.hitStop <= 0);
+    assert.equal(e.canAct(a), true); assert.equal(e.canAct(b), true);
+    assert.equal(e.tryAction('player', 'heavy'), true);
+  } finally { e.dispose(); }
+});
