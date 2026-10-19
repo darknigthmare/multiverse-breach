@@ -28,6 +28,7 @@ test('delivery gate runs the npm lifecycle with full checkout, never bypasses pr
   assert.match(w,/contents: read/);assert.match(w,/persist-credentials: false/);
   const pkg=JSON.parse(read('package.json')),lock=JSON.parse(read('package-lock.json'));
   assert.equal(pkg.engines.node,'22.x');assert.equal(lock.packages[''].engines.node,'22.x');
+  assert.match(pkg.scripts["test:reaudit"], /fixedStepClock\.test\.mjs/);
   assert.match(pkg.scripts.prebuild,/test:reaudit/);assert.match(pkg.scripts.prebuild,/check:progression/);
 });
 test('codex QA actor selection fails rather than substituting a different identity',()=>{

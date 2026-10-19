@@ -46,6 +46,8 @@ jobs:
       - name: Reaudit regression contracts
         run: |
           set -euo pipefail
+          git rev-parse HEAD > /tmp/reliability-evidence/tested-commit.txt
+          sha256sum src/game/engineFighter.js src/game/fighterControlOwnership.js src/components/FighterMode.jsx scripts/reauditFighterInputs.test.mjs scripts/fixedStepClock.test.mjs scripts/browserFighterLifecycle.py package.json .github/workflows/audit-reliability.yml docs/audits/pr4-fighter-controls-2026-10-19.md > /tmp/reliability-evidence/fighter-controls.sha256
           npm run test:reaudit | tee /tmp/reliability-evidence/reaudit.log
       - name: Existing combat and save contracts
         run: |
@@ -55,7 +57,7 @@ jobs:
         run: >-
           node node_modules/oxlint/bin/oxlint --max-warnings 0
           src/game/stockMedicModes.js src/game/combatActivity.js src/game/rpgActionEconomy.js
-          src/game/engineFighter.js src/game/originalUniverseProduction.js src/components/BuildIdentity.jsx
+          src/game/engineFighter.js src/game/fighterControlOwnership.js src/game/originalUniverseProduction.js src/components/BuildIdentity.jsx
           src/components/FighterMode.jsx scripts/fixtures/fighterLifecycleHarness.jsx
           src/components/TacticsSupportPanel.jsx scripts/reaudit*.test.mjs scripts/tacticsFacingRuntime.test.mjs
           scripts/buildIdentity.mjs scripts/progressionAudit.mjs vite.config.js

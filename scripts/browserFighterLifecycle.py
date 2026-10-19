@@ -30,7 +30,7 @@ def run():
                 page.on('console', lambda m: errors.append(m.text) if m.type == 'error' and m.text.startswith('Fighter render loop failed') else None)
                 page.route('**/*', lambda route: route.continue_() if urlparse(route.request.url).hostname in ('localhost', '127.0.0.1') else route.abort())
                 name = f'fighter-{width}-{lang}-{side}-' + ('injected-error' if fault else 'lifecycle')
-                record = {'name': name, 'passed': False}
+                record = {'name': name, 'passed': False, 'step': 'load'}
                 try:
                     page.goto(args.base + f'/scripts/fixtures/fighter-lifecycle.html?lang={lang}', wait_until='domcontentloaded')
                     page.wait_for_function('window.__fighterLifecycle?.engine && !window.__fighterLifecycle.engine.disposed')
@@ -51,14 +51,18 @@ def run():
                         page.locator('#qa-unmount').click()
                         page.wait_for_function('window.__fighterLifecycle.engine.disposed')
                     else:
+                        record['step'] = 'manifestation'
                         prepared = page.evaluate('(side)=>window.__fighterLifecycle.prepare(side)', side)
                         assert prepared['source'] == 'team_fortress_2_medic'
                         page.keyboard.press('r' if side == 'player' else 'o')
                         page.wait_for_function('(side)=>{const e=window.__fighterLifecycle.engine;return e.medicSupport.protects(e.getActive(side));}', arg=side)
                         assert page.evaluate('(side)=>window.__fighterLifecycle.engine.getOpponent(side).currentHp', side) == prepared['targetHp']
+                        record['step'] = 'pause-and-visibility'
                         page.locator('#qa-pause').click()
                         page.wait_for_function('window.__fighterLifecycle.engine.paused')
                         paused = page.evaluate('window.__fighterLifecycle.snapshot()')
+                        for button in page.locator('.fighter-lineup button').all():
+                            expect(button).to_be_disabled()
                         page.keyboard.press('g' if side == 'player' else 'm')
                         page.wait_for_timeout(250)
                         assert page.evaluate('window.__fighterLifecycle.snapshot()') == paused
@@ -68,9 +72,21 @@ def run():
                         assert page.evaluate('window.__fighterLifecycle.engine.paused')
                         page.locator('#qa-pause').click()
                         page.wait_for_function('!window.__fighterLifecycle.engine.paused')
+                        record['step'] = 'wait-for-legal-tag'
+                        # Manifestation is not the end of the super's recovery.
+                        # Wait for the real command gate; never reset its action.
+                        page.wait_for_function('(side)=>{const e=window.__fighterLifecycle.engine;return e.canAct(e.getActive(side));}', arg=side)
+                        guard_key = 'e' if side == 'player' else 'u'
+                        page.keyboard.down(guard_key)
+                        page.wait_for_function('(side)=>window.__fighterLifecycle.engine.getActive(side).guarding', arg=side)
+                        record['step'] = 'tag-clears-held-controls'
+                        expect(page.locator('.fighter-lineup-' + side + ' button').nth(1)).to_be_enabled()
                         page.keyboard.press('2' if side == 'player' else '8')
                         page.wait_for_function('(side)=>window.__fighterLifecycle.engine.getTeam(side).activeIndex === 1', arg=side)
                         assert page.evaluate('window.__fighterLifecycle.engine.medicSupport.snapshot().length') == 0
+                        page.wait_for_function('(side)=>{const e=window.__fighterLifecycle.engine,a=e.getActive(side);return !e.inputs[side].guard && !a.guarding && !a.crouching;}', arg=side)
+                        page.keyboard.up(guard_key)
+                        record['step'] = 'effective-damage'
                         prepared = page.evaluate('(side)=>window.__fighterLifecycle.prepare(side,true)', side)
                         page.keyboard.press('g' if side == 'player' else 'm')
                         page.wait_for_function('(side)=>window.__fighterLifecycle.engine.getOpponent(side).currentHp === 0', arg=side)
@@ -92,6 +108,10 @@ def run():
                     print('PASS', name, flush=True)
                 except Exception as exc:
                     record.update({'error': str(exc), 'pageErrors': errors})
+                    try:
+                        record['engineState'] = page.evaluate('(()=>{const e=window.__fighterLifecycle?.engine;return e?{paused:e.paused,disposed:e.disposed,hitStop:e.hitStop,countdown:e.countdown,active:[e.teams.player.activeIndex,e.teams.cpu.activeIndex],actions:[e.getActive("player").action,e.getActive("cpu").action],inputs:e.inputs}:null;})()')
+                    except Exception as diagnostic:
+                        record['diagnosticError'] = str(diagnostic)
                     try:
                         page.screenshot(path=str(out / (name + '-FAILED.png')), full_page=True, timeout=5000)
                     except Exception as capture:

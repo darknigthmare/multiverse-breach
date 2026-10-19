@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineFighter, resolveFighterCosmetics } from '../game/engineFighter';
+import { synchronizeFighterControlOwners } from '../game/fighterControlOwnership.js';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { ParticleSystem, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
@@ -122,7 +123,7 @@ function FighterPortrait({ hero, active = false, ko = false }) {
   );
 }
 
-function Lineup({ lang, heroes, side, snapshot, onTag, interactive = side === 'player' }) {
+function Lineup({ lang, heroes, side, snapshot, onTag, interactive = side === 'player', locked = false }) {
   const stateById = snapshot?.fighters || [];
   return (
     <div className={`fighter-lineup fighter-lineup-${side}`}>
@@ -134,7 +135,7 @@ function Lineup({ lang, heroes, side, snapshot, onTag, interactive = side === 'p
             key={`${side}-${hero.id}-${index}`}
             type="button"
             className={`${state?.active ? 'active' : ''} ${state?.ko ? 'ko' : ''}`}
-            disabled={!interactive || !state || state.ko || state.active || snapshot.tagCooldown > 0}
+            disabled={locked || !interactive || state?.canTag !== true}
             onClick={() => onTag?.(index)}
             title={interactive
               ? (lang === 'fr' ? `Appelle ${hero.name} dans l arene.` : `Tag ${hero.name} into the arena.`)
@@ -271,6 +272,7 @@ export default function FighterMode({
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const inputRef = useRef({ player: {}, cpu: {} });
+  const inputOwnersRef = useRef(null);
   const onMatchCompleteRef = useRef(onMatchComplete);
   const onSessionEndRef = useRef(onSessionEnd);
   const sessionPausedRef = useRef(sessionPaused);
@@ -536,6 +538,7 @@ export default function FighterMode({
       }
     );
     engineRef.current = engine;
+    synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
     engine.setPaused(sessionPausedRef.current || document.hidden);
     sound.playStageBgm(battleMusicStage, activeBattleMusic?.state || 'battle');
 
@@ -554,10 +557,12 @@ export default function FighterMode({
           animationId = requestAnimationFrame(loop);
           return;
         }
+        synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
         engine.setSideInput('player', inputRef.current.player);
         engine.setSideInput('cpu', inputRef.current.cpu);
         for (let step = 0; step < steps; step += 1) {
           engine.update(COMBAT_STEP_MS / 1000);
+          synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
           particles.update();
         }
         const ctx = canvas.getContext('2d');
@@ -588,6 +593,7 @@ export default function FighterMode({
       engine.clearInputs();
     };
     const setHeldInputForSide = (side, control, active) => {
+      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
       inputRef.current[side][control] = active;
     };
     const onKeyDown = event => {
@@ -642,6 +648,7 @@ export default function FighterMode({
         else if (key === 'u') engine.triggerPlayerAction('super');
         else if (key === 'o') engine.triggerFieldSuper();
       }
+      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
     };
     const onKeyUp = event => {
       if (!CONTROL_KEYS.has(event.key)) return;
@@ -756,16 +763,14 @@ export default function FighterMode({
       engineRef.current?.clearInputs();
       return;
     }
+    synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef);
     inputRef.current[side][key] = active;
   };
 
   const triggerTag = (index, side = 'player') => {
     if (sessionPausedRef.current || document.hidden) return;
-    if (side === 'player') {
-      engineRef.current?.triggerPlayerAction('tag', index);
-      return;
-    }
     engineRef.current?.triggerSideAction(side, 'tag', index);
+    synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef);
   };
 
   const playerSnapshot = snapshot.player || emptySnapshot.player;
@@ -786,14 +791,14 @@ export default function FighterMode({
     activeFieldSuper
     && !playerFieldState.used
     && fieldSuperCharge >= 100
-    && snapshot.phase === 'running'
+    && snapshot.phase === 'running' && !sessionPaused && playerSnapshot.commandReady
   );
   const opponentFieldSuperReady = Boolean(
     opponentControl === 'p2'
     && activeFieldSuper
     && !opponentFieldState.used
     && opponentFieldSuperCharge >= 100
-    && snapshot.phase === 'running'
+    && snapshot.phase === 'running' && !sessionPaused && cpuSnapshot.commandReady
   );
   const playerAssist = fighterCosmetics.player.npcAssist;
   const opponentAssist = fighterCosmetics.cpu.npcAssist;
@@ -811,14 +816,14 @@ export default function FighterMode({
     playerAssist
     && !playerAssistState.used
     && Number(playerAssistState.charge) >= 100
-    && snapshot.phase === 'running'
+    && snapshot.phase === 'running' && !sessionPaused && playerSnapshot.commandReady
   );
   const opponentAssistReady = Boolean(
     opponentControl === 'p2'
     && opponentAssist
     && !opponentAssistState.used
     && Number(opponentAssistState.charge) >= 100
-    && snapshot.phase === 'running'
+    && snapshot.phase === 'running' && !sessionPaused && cpuSnapshot.commandReady
   );
 
   if (!matchStarted) {
@@ -1060,9 +1065,11 @@ export default function FighterMode({
           <section>
             <div className="fighter-side-heading">
               <span>{lang === 'fr' ? 'REMPLACANTS' : 'TAG ROSTER'}</span>
-              <b>{playerSnapshot.tagCooldown > 0 ? `${playerSnapshot.tagCooldown.toFixed(1)}s` : 'READY'}</b>
+              <b>{playerSnapshot.tagCooldown > 0 ? `${playerSnapshot.tagCooldown.toFixed(1)}s`
+                : !sessionPaused && playerSnapshot.fighters.some(fighter => fighter.canTag) ? (lang === 'fr' ? 'PRÊT' : 'READY')
+                  : (lang === 'fr' ? 'INDISPONIBLE' : 'UNAVAILABLE')}</b>
             </div>
-            <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} onTag={index => triggerTag(index)} />
+            <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} locked={sessionPaused} onTag={index => triggerTag(index)} />
           </section>
           <section>
             <div className="fighter-side-heading">
@@ -1075,6 +1082,7 @@ export default function FighterMode({
               side="cpu"
               snapshot={cpuSnapshot}
               interactive={opponentControl === 'p2'}
+              locked={sessionPaused}
               onTag={index => triggerTag(index, 'cpu')}
             />
           </section>

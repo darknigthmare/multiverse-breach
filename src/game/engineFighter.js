@@ -201,9 +201,24 @@ export class EngineFighter {
     };
   }
 
+  clearSideInput(side) {
+    side = resolveSide(side);
+    if (!side) return false;
+    this.inputs[side] = {};
+    if (side === 'player') this.playerInput = this.inputs.player;
+    const fighter = this.getActive(side);
+    if (fighter) {
+      fighter.guarding = false;
+      fighter.crouching = false;
+      if (fighter.state === 'defense' && !fighter.action && live(fighter)
+        && fighter.hitstun <= 0 && fighter.guardBreak <= 0) fighter.state = 'idle';
+    }
+    return true;
+  }
+
   clearInputs() {
-    this.inputs = { player: {}, cpu: {} };
-    this.playerInput = this.inputs.player;
+    this.clearSideInput('player');
+    this.clearSideInput('cpu');
   }
 
   setPaused(paused) {
@@ -536,23 +551,34 @@ export class EngineFighter {
     return true;
   }
 
-  requestTag(side, index, forced = false) {
+  canTag(side, index, forced = false) {
     side = resolveSide(side);
-    if (!side || this.disposed || this.paused || this.finished || this.countdown > 0) return false;
+    if (!side || this.disposed || this.paused || this.finished || this.countdown > 0 || this.hitStop > 0) return false;
     if ((typeof index !== 'number' && typeof index !== 'string') || String(index).trim() === '') return false;
     const team = this.getTeam(side);
     const active = this.getActive(side);
-    const opponent = this.getOpponent(side);
     const nextIndex = Number(index);
     const next = team.fighters[nextIndex];
     if (
       !Number.isInteger(nextIndex) || !next
       || nextIndex === team.activeIndex
-      || next.currentHp <= 0
+      || !live(next)
       || (!forced && (team.tagCooldown > 0 || !this.canAct(active)))
     ) return false;
 
+    return true;
+  }
+
+  requestTag(side, index, forced = false) {
+    if (!this.canTag(side, index, forced)) return false;
+    side = resolveSide(side);
+    const team = this.getTeam(side);
+    const active = this.getActive(side);
+    const opponent = this.getOpponent(side);
+    const nextIndex = Number(index);
+    const next = team.fighters[nextIndex];
     this.medicSupport.onKnockout(active);
+    this.clearSideInput(side);
     active.action = null;
     active.guarding = false;
     if (active.currentHp > 0) active.state = 'idle';
@@ -571,6 +597,8 @@ export class EngineFighter {
     next.vy = -90;
     next.facing = tagEntry.facing;
     next.state = 'run';
+    next.guarding = false;
+    next.crouching = false;
     next.invulnerable = forced ? 0.75 : 0.48;
     team.activeIndex = nextIndex;
     team.tagCooldown = forced ? 1.5 : 5.5;
@@ -1130,6 +1158,7 @@ export class EngineFighter {
       return {
         activeIndex: team.activeIndex,
         tagCooldown: team.tagCooldown,
+        commandReady: this.canAct(this.getActive(side)),
         fighters: team.fighters.map(fighter => ({
           id: fighter.id,
           name: fighter.name,
@@ -1138,6 +1167,7 @@ export class EngineFighter {
           meter: fighter.meter,
           guard: fighter.guard,
           active: fighter.index === team.activeIndex,
+          canTag: this.canTag(side, fighter.index),
           ko: fighter.currentHp <= 0
         }))
       };
