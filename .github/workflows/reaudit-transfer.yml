@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-          fetch-depth: 2
+          fetch-depth: 3
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
@@ -31,12 +31,18 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/reaudit-transfer
-          cp audit/reaudit-transfer.patch.gz /tmp/reaudit-transfer/transport.gz
-          test "$(git rev-parse HEAD^)" = c4ea0b8867439bb1e01e2462fb6d36517d0b13f3
+          test "$(git rev-parse HEAD^)" = e28b6393b227fc8bc519fa311336ea9dedf9beda
+          test "$(git rev-parse HEAD^^)" = c4ea0b8867439bb1e01e2462fb6d36517d0b13f3
           python3 - <<'PY'
-          import gzip, hashlib, pathlib, re, subprocess
+          import base64, gzip, hashlib, pathlib, re, subprocess
           raw = pathlib.Path('audit/reaudit-transfer.patch.gz').read_bytes()
+          # Restore the single transport transcription error, verified against
+          # the original local gzip AND decompressed patch checksums below.
+          encoded = base64.b64encode(raw).decode()
+          assert len(encoded) == 24896 and encoded[279] == 'T'
+          raw = base64.b64decode(encoded[:279] + encoded[280:] + 'A', validate=True)
           assert hashlib.sha256(raw).hexdigest() == 'ccd61912dc38b73822494581b6358f1f89929d5813b4dc4f52cf930096ced3ed', 'Transport checksum mismatch; no source applied'
+          pathlib.Path('/tmp/reaudit-transfer/transport.gz').write_bytes(raw)
           patch = gzip.decompress(raw)
           assert hashlib.sha256(patch).hexdigest() == '43afcea64374bc93f4320b90d2e4058412f24eb119b175a9d494c5882af08638'
           path = pathlib.Path('/tmp/reaudit-transfer/verified.patch'); path.write_bytes(patch)
