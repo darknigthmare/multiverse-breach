@@ -1,0 +1,80 @@
+diff --git a/docs/audits/pr4-fighter-healing-release-2026-10-19.md b/docs/audits/pr4-fighter-healing-release-2026-10-19.md
+index ced4f22a72ef099d49f212b2db717e882cc9efb1..5352624bdb6d667fea7f88c90636b051939ff254 100644
+--- a/docs/audits/pr4-fighter-healing-release-2026-10-19.md
++++ b/docs/audits/pr4-fighter-healing-release-2026-10-19.md
+@@ -58,8 +58,8 @@ validations natives. Le codex FR/EN précise l'adaptation Fighter de Healing Win
+ ## Tests
+ 
+ - 4 échecs reproduits sur la base, puis 4 succès après la correction.
+-- 43 nouveaux tests : 31 Healing Wind / 12 contrats de livraison Fighter.
+-- `npm run test:reaudit` : 261/261, sans ignoré ni annulé.
++- 47 nouveaux tests : 35 Healing Wind / 12 contrats de livraison Fighter.
++- `npm run test:reaudit` : 265/265, sans ignoré ni annulé.
+ - `scripts/signature*.test.mjs` : 940/940, sans ignoré ni annulé.
+ - Lint ciblé : zéro erreur/avertissement. Compilation Vite des sources réussie,
+   avec l'avertissement préexistant de gros blocs ; aucune optimisation revendiquée.
+@@ -76,3 +76,12 @@ La livraison doit conserver le base-tree complet. Les fichiers de transport et
+ leurs workflows temporaires ne doivent figurer ni dans l'arbre ni dans
+ l'ascendance du commit de la PR. Aucun merge, changement administratif ou
+ publication volontaire en production.
++
++## Contrôle complémentaire des commandes de soin
++
++L'IA réutilise maintenant `canUseSuper` avant de choisir sa limite : elle peut
++attaquer normalement au lieu de sélectionner un soin inutilisable à équipe
++intacte. Un jeton détaché après interruption ne peut plus appliquer un ancien
++soin, même appelé directement : il doit appartenir à l'action encore active.
++Quatre tests supplémentaires, dont trois échouaient avant ce correctif et un
++contrôle positif préservé, couvrent ces conditions. Le total local est 265/265.
+diff --git a/scripts/reauditFighterHealing.test.mjs b/scripts/reauditFighterHealing.test.mjs
+index 3ce982a47fbd72dd2f8fd44c892a22244c364c49..9ed6c011acc4fe5a57c2ebf7a5ad9668c2b5a38c 100644
+--- a/scripts/reauditFighterHealing.test.mjs
++++ b/scripts/reauditFighterHealing.test.mjs
+@@ -139,3 +139,20 @@ test('unknown incarnations, noncombatants and Fighter overrides never gain Heali
+     assert.notEqual(caster.special?.sourceSignatureKey, 'aerith_ff7');
+   }
+ });
++
++for (const wounded of [false, true]) test(`CPU chooses ${wounded ? 'a useful heal' : 'a regular attack instead of an unavailable heal'}`, () => {
++  const { e, caster, patient } = fixture('cpu');
++  if (wounded) patient.currentHp -= 50;
++  e.aiThink = 0; const random = Math.random;
++  try { Math.random = () => 0; e.updateAi(1 / 60); } finally { Math.random = random; }
++  assert.equal(caster.action?.type, wounded ? 'super' : 'light');
++  assert.equal(caster.meter, wounded ? 0 : 100);
++});
++for (const side of ['player', 'cpu']) test(`${side}: a detached token from an interrupted action cannot apply healing`, () => {
++  const { e, caster, patient, foe } = fixture(side); patient.currentHp = 10;
++  e.tryAction(side, 'super'); const token = caster.action.healing;
++  e.applyHit(foe, caster, { type: 'light', base: 5, knockback: 0, guardDamage: 0 });
++  assert.equal(caster.action, null);
++  assert.deepEqual(e.fighterHealing.apply(token), []);
++  assert.equal(patient.currentHp, 10);
++});
+diff --git a/src/game/engineFighter.js b/src/game/engineFighter.js
+index 878cd029e996dc922676c893298df2ccfe870e18..5f57643b7655b4c84ad65a3210b490b4d0baca37 100644
+--- a/src/game/engineFighter.js
++++ b/src/game/engineFighter.js
+@@ -801,7 +801,7 @@ export class EngineFighter {
+         this.requestTag('cpu', healthierIndex);
+         return;
+       }
+-      if (fighter.meter >= 100 && Math.random() < this.difficulty.aggression * 0.5) {
++      if (this.canUseSuper('cpu') && Math.random() < this.difficulty.aggression * 0.5) {
+         this.tryAction('cpu', 'super');
+       } else if (fighter.meter >= 30 && distance > 112 && Math.random() < 0.56) {
+         this.tryAction('cpu', 'special');
+diff --git a/src/game/fighterHealing.js b/src/game/fighterHealing.js
+index 6be5028e91a771dde5986ce21c68ffdf4bc0cd2f..dfc76ceb5dc4696f15f8d59279ac80714499923f 100644
+--- a/src/game/fighterHealing.js
++++ b/src/game/fighterHealing.js
+@@ -48,7 +48,8 @@ export function createFighterHealing(engine) {
+     if (!plan || disposed || engine.disposed || engine.paused || engine.finished || engine.countdown > 0) return [];
+     plans.delete(token);
+     const { caster, definition: d } = plan;
+-    if (!living(caster) || engine.getActive(plan.side) !== caster || caster.side !== plan.side
++    if (caster.action?.healing !== token || caster.state !== 'attack'
++      || !living(caster) || engine.getActive(plan.side) !== caster || caster.side !== plan.side
+       || caster.special !== plan.action || generation(caster) !== plan.generation
+       || sourceId(caster) !== plan.sourceId || universe(caster) !== plan.universe
+       || getFighterHealingDefinition(caster) !== d || caster.special?.type !== 'heal'
