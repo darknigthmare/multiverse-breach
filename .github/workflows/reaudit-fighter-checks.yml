@@ -1,0 +1,50 @@
+name: Prepare Fighter hit-stop regression checks
+on:
+  push:
+    branches: [codex/reaudit-fighter-checks-ba32203c]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/
+            /.github/workflows/
+      - name: Apply exact tested patch without running repository scripts
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fighter-checks
+          printf '%s' 'H4sIAAAAAAAC/5VUy3LbRhC86yvmZILBgw/TUlKyHNsqu3LIQWX5FuawWAyIlYFdZB+UaJeq8hv5vXxJZrGARFK0qVwI1s707EzvdBeiLCFNV8ICmxiuRWvNhDtjVfOeWVtjZtHYrLkxkP84fiJkgXeQL/gsXyyy7HS+wDIvYDadni4WJ2maHrvhJI7jo7e8fQvpYj5NTiH2n9kC6MRHo9FHsaosauBKGtegoT+mQSs44BqlNcBkAV8QWwNXc2DGCEOHvu0W6UfaUQLRGC7enACAalsl6SyrhDXWSbiA6flOQMi1qyVqltf4EG1rtkF9IBYDTCbwuUJoNa6FcnRz0zJuodSIX6lbS7HbShGgcFhDrgWW9SaDyxqZFnIFdC0QQOmR6csNvQkDUtELgnG5scI6i1AqDaxYM8k91lbMgqmYxgKMaFzNrFASWuYMZr6aJ81CO7+knJXvGeVKSMx6mjLeuox3sW4WOkZtM/Ul6vOolWurWngD0/F2Bv7lWD0kWS1WK9TvuprRiGqOxgmUrDb4fdDTDpKHPgPKjxrVSANabDu64WlX8OJFiL+GU0rwf+N4PCS6tmAWoxlMKDr+8YivL7oZYSCtat8jtYBX8zAYddCvAXda06r81nbZz2fEaofjbQw1sV+S5ti/OIHRw2JDIYpuKQrWMHrQq9mIKhaH5K6RuULYXj6/ixL5hh9W/rHU3gQWM/7zlLMsY3x2Nj17ddgEjhbb9YOj6d4a5i9/SV5C7D/zV0+tgWohSsipTROWPyERFST+1LK894kESHD1BvDO00SeUQjTKsNqsGrrTRpmeRUZ5TSnKhODxLuSHwj0iZ6Yrv2E5XJ4L9qJpwnnS/NT2IPt1OWvyyzciMtoOZ7sLMLepbS0LC3DcKl20ooGU9Ra6Q527zf5JA4c0Pqmxu+vxhvk5Hy5slW/qebfv/+hbW4a5om5FbZSjuTkfdG7x20lyJZ6vyL/MtRmMBBynlKrrygH74Rvj27yDahHlkAO9zR/Ke6s0xgFdVm9CakAj8oiYWXTs/PheFD+sPqDNdE2ncMhY+hjA74UWBfXrkV9uQcdTPzj4YxQIAyRdxLz72e9Q/SW05tOSDGiQFAl/DEKnRIXnZL/HA8j7ot/0P01Id9xz2TkixDO+Gb2XPH/4G9c0z4b3tuOhz4X8sjY82A6rPpntuo7nO1D7sNnBzdwnfT075Dunb7UrMHe6vddPsSCzXf/O58/ZPE7Jr/v7/GBaTiTRHfEHjz6Own5o4nHB7nc9K+2tTEVsvVmtAO8J9FIVpMXkZQGUyABec68tv8DQfrkPL4JAAA=' | base64 -d | gzip -d > /tmp/fighter-checks/change.patch
+          echo '22030d67db1973378d757a23009f5b7c1a3796cd230d3bfebef6e72d13eea02c  /tmp/fighter-checks/change.patch' | sha256sum -c -
+          git switch --detach ba32203c210e435e0247b89693e6025b6b2c0f5c
+          git apply --check /tmp/fighter-checks/change.patch
+          git apply --index /tmp/fighter-checks/change.patch
+          git diff --cached --check
+          test -z "$(git diff --cached --name-only -- .github/workflows)"
+          tree=$(git write-tree)
+          commit=$(git -c user.name='Multiverse maintenance' -c user.email='noreply@github.com' commit-tree "$tree" -p ba32203c210e435e0247b89693e6025b6b2c0f5c -m 'test(fighter): respect shared hit-stop before independent P2 assist')
+          printf '%s\n' "$commit" > /tmp/fighter-checks/commit.txt
+          printf '%s\n' "$tree" > /tmp/fighter-checks/tree.txt
+          sha256sum scripts/customBattle.test.mjs scripts/reauditFighterLifecycle.test.mjs > /tmp/fighter-checks/source.sha256
+      - name: Publish isolated prepared code
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = darknigthmare/multiverse-breach
+          gh auth setup-git
+          commit=$(cat /tmp/fighter-checks/commit.txt)
+          git push origin "$commit:refs/heads/codex/reaudit-fighter-checks-prepared-ba32203c"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: fighter-checks
+          path: /tmp/fighter-checks/
+          retention-days: 3
