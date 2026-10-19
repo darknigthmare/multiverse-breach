@@ -1,0 +1,55 @@
+diff --git a/docs/audits/pr4-fighter-healing-release-2026-10-19.md b/docs/audits/pr4-fighter-healing-release-2026-10-19.md
+index 5352624bdb6d667fea7f88c90636b051939ff254..458a9d9a115963ceec4f9f891ae929bc1a1bcc64 100644
+--- a/docs/audits/pr4-fighter-healing-release-2026-10-19.md
++++ b/docs/audits/pr4-fighter-healing-release-2026-10-19.md
+@@ -58,8 +58,8 @@ validations natives. Le codex FR/EN précise l'adaptation Fighter de Healing Win
+ ## Tests
+ 
+ - 4 échecs reproduits sur la base, puis 4 succès après la correction.
+-- 47 nouveaux tests : 35 Healing Wind / 12 contrats de livraison Fighter.
+-- `npm run test:reaudit` : 265/265, sans ignoré ni annulé.
++- 49 nouveaux tests : 37 Healing Wind / 12 contrats de livraison Fighter.
++- `npm run test:reaudit` : 267/267, sans ignoré ni annulé.
+ - `scripts/signature*.test.mjs` : 940/940, sans ignoré ni annulé.
+ - Lint ciblé : zéro erreur/avertissement. Compilation Vite des sources réussie,
+   avec l'avertissement préexistant de gros blocs ; aucune optimisation revendiquée.
+@@ -84,4 +84,9 @@ attaquer normalement au lieu de sélectionner un soin inutilisable à équipe
+ intacte. Un jeton détaché après interruption ne peut plus appliquer un ancien
+ soin, même appelé directement : il doit appartenir à l'action encore active.
+ Quatre tests supplémentaires, dont trois échouaient avant ce correctif et un
+-contrôle positif préservé, couvrent ces conditions. Le total local est 265/265.
++contrôle positif préservé, couvrent ces conditions. Le total local est 267/267.
++
++Inspection des captures : le texte de soin pouvait afficher une longue suite
++de décimales issue de la régénération passive. Le feedback est arrondi à l'unité
++comme les autres nombres de combat, sans modifier les PV réellement rendus.
++Deux tests supplémentaires couvrent cette séparation sur les deux camps.
+diff --git a/scripts/reauditFighterHealing.test.mjs b/scripts/reauditFighterHealing.test.mjs
+index 9ed6c011acc4fe5a57c2ebf7a5ad9668c2b5a38c..2d06a2d25f250c5d37e1515a04fc75f3de20b9f1 100644
+--- a/scripts/reauditFighterHealing.test.mjs
++++ b/scripts/reauditFighterHealing.test.mjs
+@@ -156,3 +156,11 @@ for (const side of ['player', 'cpu']) test(`${side}: a detached token from an in
+   assert.deepEqual(e.fighterHealing.apply(token), []);
+   assert.equal(patient.currentHp, 10);
+ });
++for (const side of ['player', 'cpu']) test(`${side}: fractional recovered HP keeps exact mechanics with rounded combat feedback`, () => {
++  const { e, caster, effects } = fixture(side); caster.currentHp = caster.maxHp - 39.35065;
++  e.tryAction(side, 'super'); e.updateActions(0.46);
++  assert.equal(caster.currentHp, caster.maxHp);
++  const labels = effects.filter(p => p[7] === 'text').map(p => p[8]);
++  assert.ok(labels.includes('+39'));
++  assert.ok(labels.every(value => !String(value).startsWith('+39.350')));
++});
+diff --git a/src/game/engineFighter.js b/src/game/engineFighter.js
+index 5f57643b7655b4c84ad65a3210b490b4d0baca37..14b8b73b6a33abc36f3ffa59355a29097178317e 100644
+--- a/src/game/engineFighter.js
++++ b/src/game/engineFighter.js
+@@ -858,7 +858,7 @@ export class EngineFighter {
+           const healed = this.fighterHealing.apply(action.healing);
+           if (healed.length) this.playSfx('heal');
+           for (const { target: recipient, amount } of healed) {
+-            this.particles.add(recipient.x, recipient.y - 85, 0, -1, '#8af0ac', 5, 38, 'text', `+${amount}`);
++            this.particles.add(recipient.x, recipient.y - 85, 0, -1, '#8af0ac', 5, 38, 'text', `+${Math.round(amount)}`);
+             if (recipient === this.getActive(side)) this.spawnBurst(recipient.x, recipient.y - 45, '#8af0ac', 12);
+           }
+         } else if (action.stockUber) {
