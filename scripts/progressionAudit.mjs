@@ -745,10 +745,14 @@ const fighterTagAudit = spawnSync(process.execPath,
   { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
 assert(!fighterTagAudit.error && fighterTagAudit.status === 0,
   'Fighter runtime keyboard/button three-slot replacement regression failed.');
-assert(fighterEngineSource.includes('fighters: playerHeroes.slice(0, 3)') && fighterEngineSource.includes('activeIndex: 0'), 'Fighter engine must keep one active combatant in a three-signature cell.');
-assert(fighterEngineSource.includes('requestTag(side, index, forced = false)') && fighterEngineSource.includes("this.requestTag(side, next.index, true)"), 'Fighter engine must support manual and forced K.O. replacements.');
-assert(fighterEngineSource.includes('guardBreak') && fighterEngineSource.includes('comboWindow') && fighterEngineSource.includes('meterCost: 100'), 'Fighter engine must retain guard break, combos, and rupture meter rules.');
-assert(fighterEngineSource.includes('spawnProjectile') && fighterEngineSource.includes('crouching') && fighterEngineSource.includes('targetHalfHeight'), 'Fighter engine must retain ranged attacks and crouch evasion.');
+// Verify effects, not the spelling of an internal slot variable or helper.
+const fighterRuntimeAudit = spawnSync(process.execPath,
+  ['--test', '--test-concurrency=1',
+    fileURLToPath(new URL('./reauditFighterRelease.test.mjs', import.meta.url)),
+    fileURLToPath(new URL('./reauditFighterKnockouts.test.mjs', import.meta.url))],
+  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+assert(!fighterRuntimeAudit.error && fighterRuntimeAudit.status === 0,
+  'Fighter roster, replacements, guard, combo, meter and projectile contracts failed.');
 assert(hubSource.includes('recordFighterMatch') && hubSource.includes('fighterCareer'), 'Fighter results must feed long-term progression and career records.');
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');

@@ -8,7 +8,7 @@ import { HEROES_DB } from '../../src/game/heroes.js';
 import '../../src/index.css';
 const q = new URLSearchParams(location.search);
 const lang = q.get('lang') === 'en' ? 'en' : 'fr';
-const heroIds = ['team_fortress_2_medic', 'cloud_ff7', 'barret_ff7'];
+const heroIds = [q.get('scenario') === 'healing' ? 'aerith_ff7' : 'team_fortress_2_medic', 'cloud_ff7', 'barret_ff7'];
 const heroes = heroIds.map(id => {
   const hero = HEROES_DB.find(actor => actor.id === id);
   if (!hero) throw new Error(`Unknown Fighter QA identity: ${id}`);

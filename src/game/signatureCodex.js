@@ -70,7 +70,10 @@ export function getSignatureSummary(codex, lang = 'fr') {
     : '100% special meter; full ATB also required in RPG. Tactics keeps its existing kit.';
   const limit = fr ? 'Adaptation jouable ; animation et fidélité 1:1 non certifiées.'
     : 'Playable adaptation; animation and 1:1 fidelity are not certified.';
-  return `${prefix} : ${codex.name}. ${stock ? cost.split(' Tactics')[0] : cost}${adaptation} ${limit}`;
+  const healing = codex.key === 'aerith_ff7' ? (fr
+    ? ' Healing Wind soigne aussi la cellule vivante en Fighter, sans résurrection ni dégâts. Aucun lancement si aucun PV n’est récupérable.'
+    : ' Healing Wind also heals the living Fighter team, without revival or damage. No activation when no HP is recoverable.') : '';
+  return `${prefix} : ${codex.name}. ${stock ? cost.split(' Tactics')[0] : cost}${adaptation}${healing} ${limit}`;
 }
 
 /** Booster candidates carry their exact underlying hero; names are not keys. */

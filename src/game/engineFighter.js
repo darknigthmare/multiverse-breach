@@ -1,3 +1,4 @@
+import { prepareFighterHealing, getFighterHealingDefinition, createFighterHealing } from './fighterHealing.js';
 import { prepareStockMedic, getStockMedicDefinition, createFighterMedicSupport } from './stockMedicModes.js';
 import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
 import { getRecentUniverseLevelProfile } from './recentUniverseLevels';
@@ -140,6 +141,8 @@ export class EngineFighter {
       }
     };
     Object.values(this.teams).forEach(team => team.fighters.forEach(actor => prepareStockMedic(actor, 'Fighter')));
+    Object.values(this.teams).forEach(team => team.fighters.forEach(prepareFighterHealing));
+    this.fighterHealing = createFighterHealing(this);
     this.medicSupport = createFighterMedicSupport(this);
     this.inputs = { player: {}, cpu: {} };
     this.playerInput = this.inputs.player;
@@ -233,6 +236,7 @@ export class EngineFighter {
     this.clearInputs();
     this.projectiles.length = 0;
     this.medicSupport.dispose();
+    this.fighterHealing.dispose();
     Object.values(this.teams).forEach(team => team.fighters.forEach(fighter => {
       fighter.action = null;
       fighter.guarding = false;
@@ -256,6 +260,7 @@ export class EngineFighter {
   }
 
   invalidateFighterLife(actor) {
+    this.fighterHealing.onKnockout(actor);
     this.medicSupport.onKnockout(actor);
     actor.action = null;
     // A projectile may outlive a voluntary tag, never its owner's life.
@@ -501,6 +506,15 @@ export class EngineFighter {
     );
   }
 
+  canUseSuper(side) {
+    side = resolveSide(side);
+    const fighter = side && this.getActive(side);
+    if (!this.canAct(fighter) || fighter.meter < 100) return false;
+    const medic = getStockMedicDefinition(fighter, 'Fighter');
+    if (medic) return !this.medicSupport.active(fighter) && this.medicSupport.canLink(fighter, fighter, medic);
+    return !getFighterHealingDefinition(fighter) || this.fighterHealing.available(fighter);
+  }
+
   tryAction(side, type) {
     side = resolveSide(side);
     if (!side) return false;
@@ -513,6 +527,9 @@ export class EngineFighter {
       special: { duration: 0.64, hitAt: 0.28, base: 23, range: fighter.ranged ? 430 : 132, guardDamage: 24, knockback: 245, meterCost: 30 },
       super: { duration: 0.92, hitAt: 0.45, base: 43, range: this.width, guardDamage: 42, knockback: 330, meterCost: 100 }
     };
+    if (type === 'super' && !this.canUseSuper(side)) return false;
+    const healing = type === 'super' && getFighterHealingDefinition(fighter) ? this.fighterHealing.prepare(fighter) : null;
+    if (healing) specs.super = { ...specs.super, base: 0, range: 0, guardDamage: 0, knockback: 0, healing };
     const stockMedic = type === 'super' ? getStockMedicDefinition(fighter, 'Fighter') : null;
     if (stockMedic) {
       if (this.medicSupport.active(fighter) || !this.medicSupport.canLink(fighter, fighter, stockMedic)) return false;
@@ -837,7 +854,14 @@ export class EngineFighter {
       const action = fighter.action;
       if (!action.resolved && action.elapsed >= action.hitAt) {
         action.resolved = true;
-        if (action.stockUber) {
+        if (action.healing) {
+          const healed = this.fighterHealing.apply(action.healing);
+          if (healed.length) this.playSfx('heal');
+          for (const { target: recipient, amount } of healed) {
+            this.particles.add(recipient.x, recipient.y - 85, 0, -1, '#8af0ac', 5, 38, 'text', `+${amount}`);
+            if (recipient === this.getActive(side)) this.spawnBurst(recipient.x, recipient.y - 45, '#8af0ac', 12);
+          }
+        } else if (action.stockUber) {
           if (fighter.special === action.sourceAction && fighter.state === 'attack') {
             this.medicSupport.grant(fighter, fighter, action.stockUber);
           }
@@ -1168,6 +1192,8 @@ export class EngineFighter {
         activeIndex: team.activeIndex,
         tagCooldown: team.tagCooldown,
         commandReady: this.canAct(this.getActive(side)),
+        superReady: this.canUseSuper(side),
+        superName: this.getActive(side)?.special?.name || null,
         fighters: team.fighters.map((fighter, index) => ({
           id: fighter.id,
           name: fighter.name,

@@ -1246,7 +1246,7 @@ export default function FighterMode({
           <button type="button" title={lang === 'fr' ? 'Attaque legere [F]' : 'Light attack [F]'} onClick={() => triggerAction('light')}>F</button>
           <button type="button" title={lang === 'fr' ? 'Attaque lourde [G]' : 'Heavy attack [G]'} onClick={() => triggerAction('heavy')}>G</button>
           <button type="button" title={lang === 'fr' ? 'Special [H]' : 'Special [H]'} onClick={() => triggerAction('special')}>H</button>
-          <button type="button" title={lang === 'fr' ? 'Rupture [R]' : 'Rupture [R]'} onClick={() => triggerAction('super')}>R</button>
+          <button type="button" title={`${playerSnapshot.superName || 'Rupture'} [R]`} disabled={sessionPaused || !playerSnapshot.superReady} onClick={() => triggerAction('super')}>R</button>
           <button type="button" title={lang === 'fr' ? 'Super de terrain [T]' : 'Field super [T]'} disabled={!fieldSuperReady} onClick={() => triggerFieldSuper('player')}>T</button>
           {playerAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ [Y]' : 'NPC assist [Y]'} disabled={!playerAssistReady} onClick={() => triggerAssist('player')}>Y</button>}
         </div>
@@ -1270,7 +1270,7 @@ export default function FighterMode({
               <button type="button" title={lang === 'fr' ? 'Attaque legere J2 [P]' : 'P2 light attack [P]'} onClick={() => triggerAction('light', 'cpu')}>P</button>
               <button type="button" title={lang === 'fr' ? 'Attaque lourde J2 [M]' : 'P2 heavy attack [M]'} onClick={() => triggerAction('heavy', 'cpu')}>M</button>
               <button type="button" title={lang === 'fr' ? 'Special J2 [L]' : 'P2 special [L]'} onClick={() => triggerAction('special', 'cpu')}>L</button>
-              <button type="button" title={lang === 'fr' ? 'Rupture J2 [O]' : 'P2 rupture [O]'} onClick={() => triggerAction('super', 'cpu')}>O</button>
+              <button type="button" title={`${cpuSnapshot.superName || (lang === 'fr' ? 'Rupture J2' : 'P2 rupture')} [O]`} disabled={sessionPaused || !cpuSnapshot.superReady} onClick={() => triggerAction('super', 'cpu')}>O</button>
               <button type="button" title={lang === 'fr' ? 'Super de terrain J2 [I]' : 'P2 field super [I]'} disabled={!opponentFieldSuperReady} onClick={() => triggerFieldSuper('cpu')}>I</button>
               {opponentAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ J2 [K]' : 'P2 NPC assist [K]'} disabled={!opponentAssistReady} onClick={() => triggerAssist('cpu')}>K</button>}
             </div>
