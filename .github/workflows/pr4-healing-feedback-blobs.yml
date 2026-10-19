@@ -1,0 +1,65 @@
+name: PR4 healing feedback verified blobs
+on:
+  push:
+    branches: [codex/pr4-source-check-2026-10-19-0940]
+    paths: [.github/workflows/pr4-healing-feedback-blobs.yml]
+permissions:
+  contents: write
+jobs:
+  blobs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: c32e24c76e2cbdf2f6bda6f1fd366a425850b645
+          path: transfer
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.audit-transfer/healing-feedback.patch
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 87bce31ac7ee6dca6e99ad4af3ea6a3b10bb6d3d
+          path: source
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /src/
+            /scripts/
+            /docs/audits/
+      - name: Verify and apply reviewed patch
+        run: |
+          python3 - <<'PY'
+          import pathlib,subprocess,json,hashlib
+          root=pathlib.Path('source').resolve();patch=pathlib.Path('transfer/.audit-transfer/healing-feedback.patch').resolve()
+          assert hashlib.sha256(patch.read_bytes()).hexdigest()=='fd9d1db800c2c72e9ec7808495438bbcd7ed82c775346bea90414df7658a5872'
+          assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()=='87bce31ac7ee6dca6e99ad4af3ea6a3b10bb6d3d'
+          subprocess.run(['git','apply','--check','--index',str(patch)],cwd=root,check=True)
+          subprocess.run(['git','apply','--index',str(patch)],cwd=root,check=True)
+          expected={'docs/audits/pr4-fighter-healing-release-2026-10-19.md':'f891355ef97750fcc3d046acff1393be20013a4f368fa9b82c7b2405c623a61c','scripts/reauditFighterHealing.test.mjs':'eca5336b6b2b2b7747844205327cbcfd869b962133ebbecfe1dcc514900d482e','src/game/engineFighter.js':'0d025387f576f2b3ff8cdfac24a94ce60d9931fc4f23ce0b892552278886dab3'}
+          assert set(subprocess.check_output(['git','diff','--cached','--name-only'],cwd=root,text=True).splitlines())==set(expected)
+          for path,digest in expected.items():assert hashlib.sha256((root/path).read_bytes()).hexdigest()==digest,path
+          pathlib.Path('/tmp/healing-feedback').mkdir()
+          pathlib.Path('/tmp/healing-feedback/hashes.json').write_text(json.dumps(expected,indent=2))
+          pathlib.Path('/tmp/healing-feedback-payload.json').write_text(json.dumps([{'path':p,'content':(root/p).read_text()} for p in expected]))
+          PY
+      - name: Store exact blobs, no tree or branch writes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import pathlib,subprocess,json,hashlib
+          result=[]
+          for e in json.loads(pathlib.Path('/tmp/healing-feedback-payload.json').read_text()):
+            data=e['content'].encode();expected=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+            raw=subprocess.check_output(['gh','api','--method','POST','repos/darknigthmare/multiverse-breach/git/blobs','--input','-'],input=json.dumps({'content':e['content'],'encoding':'utf-8'}),text=True)
+            sha=json.loads(raw)['sha'];assert sha==expected
+            result.append({'path':e['path'],'mode':'100644','type':'blob','sha':sha})
+          pathlib.Path('/tmp/healing-feedback/blobs.json').write_text(json.dumps(result,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: pr4-healing-feedback-blobs
+          path: /tmp/healing-feedback/
+          retention-days: 3
