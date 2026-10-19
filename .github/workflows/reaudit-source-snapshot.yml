@@ -1,0 +1,42 @@
+name: Reaudit source snapshot
+on:
+  pull_request:
+    paths: [.github/workflows/reaudit-source-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /.github/workflows/
+            /docs/audits/
+            /public/**/*.json
+            /public/**/*.jsonl
+      - name: Archive tracked source only
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/reaudit-source
+          git rev-parse HEAD > /tmp/reaudit-source/commit.txt
+          git ls-tree -r HEAD > /tmp/reaudit-source/git-tree.txt
+          git ls-files -z | while IFS= read -r -d '' path; do
+            if [ -f "$path" ]; then printf '%s\0' "$path"; fi
+          done > /tmp/reaudit-source/files.txt
+          tar --null -T /tmp/reaudit-source/files.txt -czf /tmp/reaudit-source/source.tgz
+          rm /tmp/reaudit-source/files.txt
+          sha256sum /tmp/reaudit-source/source.tgz > /tmp/reaudit-source/source.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: reaudit-source
+          path: /tmp/reaudit-source/
+          retention-days: 3
