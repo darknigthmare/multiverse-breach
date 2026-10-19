@@ -1,0 +1,41 @@
+name: PR4 pinned source readback
+on:
+  push:
+    branches: [codex/pr4-readback-2026-10-19-1145]
+    paths: [.github/workflows/pr4-readback.yml]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: de00b8806f76b996f034f057afcb4642617bd05a
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /supabase/
+            /.github/workflows/
+            /docs/audits/
+            **/*.json
+            **/*.jsonl
+      - name: Allowlisted public source without credentials or account state
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/pr4-source
+          git rev-parse HEAD > /tmp/pr4-source/commit.txt
+          git ls-tree -r HEAD > /tmp/pr4-source/git-tree.txt
+          tar -czf /tmp/pr4-source/source.tgz src scripts api supabase .github/workflows docs/audits public package.json package-lock.json vite.config.js .oxlintrc.json index.html .nvmrc
+          sha256sum /tmp/pr4-source/source.tgz > /tmp/pr4-source/source.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr4-source-de00b880
+          path: /tmp/pr4-source/
+          retention-days: 3
