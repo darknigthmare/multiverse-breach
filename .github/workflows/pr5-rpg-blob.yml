@@ -1,0 +1,50 @@
+name: PR5 verified RPG source blob
+on:
+  push:
+    branches: [codex/pr4-source-check-2026-10-19-0940]
+    paths: [.github/workflows/pr5-rpg-blob.yml]
+permissions:
+  contents: write
+jobs:
+  blob:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          path: transport
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.audit-transfer/pr5-native-rpg.patch
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 16f9bd4f7893ecd34772bc59670bd1c5dfa4501c
+          path: source
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /src/game/engineRpg.js
+      - name: Apply exact reviewed patch without executing repository code
+        run: |
+          python3 - <<'PY'
+          import pathlib, hashlib, subprocess, json
+          root = pathlib.Path('source').resolve()
+          patch = pathlib.Path('transport/.audit-transfer/pr5-native-rpg.patch').resolve()
+          assert hashlib.sha256(patch.read_bytes()).hexdigest() == '7564931a3b2dfe74f4efbaa9276f1a63977b55dff287d9498b72ebb47895afd6'
+          assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip() == '16f9bd4f7893ecd34772bc59670bd1c5dfa4501c'
+          file = root / 'src/game/engineRpg.js'
+          assert hashlib.sha256(file.read_bytes()).hexdigest() == '53475ed80e2375c3e01cfc806cc73879aaadb67f062b9864f278b68601d620b7'
+          subprocess.run(['git','apply','--check','--index',str(patch)],cwd=root,check=True)
+          subprocess.run(['git','apply','--index',str(patch)],cwd=root,check=True)
+          assert subprocess.check_output(['git','diff','--cached','--name-only'],cwd=root,text=True).strip() == 'src/game/engineRpg.js'
+          assert hashlib.sha256(file.read_bytes()).hexdigest() == '3c672239417f8ddb5e771879d28f3b65ee72a48982ceac7781ec9769a262b853'
+          pathlib.Path('/tmp/rpg-blob.json').write_text(json.dumps({'content':file.read_text(),'encoding':'utf-8'}))
+          print('Verified one native source file against the tested SHA-256.')
+          PY
+      - name: Create source blob only; no branch or production update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          sha="$(gh api --method POST repos/darknigthmare/multiverse-breach/git/blobs --input /tmp/rpg-blob.json --jq .sha)"
+          test "$sha" = ad431a5ad62968cdca60e9be9437039f4fe1ea32
+          printf 'VERIFIED_RPG_BLOB=%s\n' "$sha"
