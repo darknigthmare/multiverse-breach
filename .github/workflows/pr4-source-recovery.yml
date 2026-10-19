@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          ref: 8eef2fe0c7fadc15ec6449f432ebb03c4c7d10d8
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
@@ -29,9 +30,8 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p /tmp/pr4-source
-          git rev-parse HEAD > /tmp/pr4-source/snapshot-commit.txt
-          git rev-parse HEAD^ > /tmp/pr4-source/source-commit.txt
-          git ls-tree -r HEAD^ > /tmp/pr4-source/git-tree.txt
+          git rev-parse HEAD > /tmp/pr4-source/source-commit.txt
+          git ls-tree -r HEAD > /tmp/pr4-source/git-tree.txt
           tar -czf /tmp/pr4-source/source.tgz src scripts api supabase .github/workflows docs/audits public package.json package-lock.json vite.config.js .oxlintrc.json .nvmrc index.html .gitattributes .vercelignore
           sha256sum /tmp/pr4-source/source.tgz > /tmp/pr4-source/source.sha256
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
