@@ -1,0 +1,83 @@
+name: PR4 verified source blobs
+on:
+  push:
+    branches: [codex/pr4-source-check-2026-10-19-0940]
+    paths: [.github/workflows/pr4-verified-blobs.yml]
+permissions:
+  contents: read
+jobs:
+  verify-and-store:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ddaefe2a7d9ca9d04586fae96b2030b32427d795
+          path: source
+          persist-credentials: false
+          sparse-checkout: src/game
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: b2627bb1f91017ec1a922ab4e48434a03db25e35
+          path: transport
+          persist-credentials: false
+          sparse-checkout: audit-transport
+      - name: Validate patch and immutable before/after content, no application execution
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, hashlib, json
+          root = Path('source')
+          patch = Path('transport/audit-transport/pr4-engine-fixes.patch').resolve()
+          assert hashlib.sha256(patch.read_bytes()).hexdigest() == 'b355e037411cf974e662a83d4f853e60ce64e807a5939a80df8eb56bc0909dd3'
+          expected = [
+            ('src/game/engineFighter.js','c7df7b353965348ac715a90bb79635bb991a25db','cf39e3f71460800acb5c39b1a7e33e32888db9bc','f33349d42a0c3522bf1b2f5e0dde46cbf2e748556179575657073b9f64bf020b'),
+            ('src/game/engineTactics.js','4e063c58dd2fd119fcf79c22de9aec0e52afa322','6ebdd35accdf61a4f2c3d0ef6cdd95b8ad67a981','68484892735a3c83c9a6a4139f0259e30543f4ec43b72c6c0e7256d713311afa'),
+            ('src/game/tacticsSupport.js','9808f722bdc171fc6e129388fbf8bf2b62ef3ac4','daf428d6387c13f32baf4f12175d05a26038ea8b','2aa608c35a5c6cde034aa4bfc78b407c492f579f2ff5fc766727cae44fc15b28')]
+          def gitsha(raw):
+            return hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest()
+          for name, before, after, sha256 in expected:
+            assert gitsha((root/name).read_bytes()) == before, name
+          subprocess.run(['git','apply','--check',str(patch)],cwd=root,check=True)
+          subprocess.run(['git','apply',str(patch)],cwd=root,check=True)
+          changes = subprocess.check_output(['git','diff','--name-only'],cwd=root,text=True).splitlines()
+          assert set(changes) == {e[0] for e in expected}
+          manifest = []
+          for name, before, after, sha256 in expected:
+            raw = (root/name).read_bytes()
+            assert gitsha(raw) == after and hashlib.sha256(raw).hexdigest() == sha256, name
+            manifest.append({'path':name,'sha':after,'sha256':sha256})
+          out = Path('/tmp/pr4-verified'); out.mkdir()
+          (out/'manifest.json').write_text(json.dumps(manifest,indent=2))
+          print('All three source files exactly match the locally tested patch.')
+          PY
+      - name: Store verified Git blobs only; no commit or ref modification
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import os, json, base64, urllib.request, hashlib
+          assert os.environ['GITHUB_REPOSITORY'] == 'darknigthmare/multiverse-breach'
+          manifest = json.loads(Path('/tmp/pr4-verified/manifest.json').read_text())
+          for item in manifest:
+            raw = (Path('source')/item['path']).read_bytes()
+            assert hashlib.sha256(raw).hexdigest() == item['sha256']
+            request = urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',
+              data=json.dumps({'content':base64.b64encode(raw).decode(),'encoding':'base64'}).encode(),
+              headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'},method='POST')
+            with urllib.request.urlopen(request,timeout=30) as response:
+              result = json.load(response)
+            assert result['sha'] == item['sha']
+            print(item['path'], result['sha'])
+          Path('/tmp/pr4-verified/uploaded-blobs.json').write_text(json.dumps(manifest,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr4-verified-engine-blobs
+          path: /tmp/pr4-verified/
+          retention-days: 3
