@@ -57,7 +57,9 @@ recettes d'erreur volontaire du renderer, le redémarrage et l'abandon sans gain
 restent conservés. Les résultats enregistrent l'étape en échec et un état de
 combat synthétique, pas des données de compte.
 
-Validation locale : `npm run test:reaudit` réussit (142 tests, aucun ignoré).
+Validation locale finale : `npm run test:reaudit` réussit (158 tests, aucun ignoré).
+Cette reprise ajoute 30 tests de commandes et 16 tests de routes de remplacement ;
+les dix tests existants de l’horloge rejoignent également le groupe rapide.
 Le navigateur local ne peut pas naviguer vers localhost (`ERR_BLOCKED_BY_ADMINISTRATOR`)
 ; les résultats Chromium de GitHub font foi. Aucun succès navigateur local,
 prébuild intégral local ou publication de production n'est revendiqué.
