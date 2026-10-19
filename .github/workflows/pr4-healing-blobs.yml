@@ -1,0 +1,65 @@
+name: PR4 verified source blobs
+on:
+  push:
+    branches: [codex/pr4-source-check-2026-10-19-0940]
+    paths: [.github/workflows/pr4-healing-blobs.yml]
+permissions:
+  contents: write
+jobs:
+  blobs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ccd2f8d09497717c3310bee2b1e6b341b6f014c0
+          path: transfer
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.audit-transfer/healing-readable/
+            /.github/workflows/pr4-healing-readable-transfer.yml
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 630d32765d7379c4875c3e1f1e2ca5772563b722
+          path: source
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /src/
+            /scripts/
+            /docs/audits/
+            /.github/workflows/
+      - name: Reuse the pinned and previously successful hash verification, no source modules executed
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from textwrap import dedent
+          text=Path('transfer/.github/workflows/pr4-healing-readable-transfer.yml').read_text()
+          code=text.split("          python3 - <<'PY'\n",1)[1].split('\n          PY\n',1)[0]
+          exec(compile(dedent(code),'verified-transfer-checks','exec'))
+          PY
+      - name: Store content blobs only, never change a tree, commit or branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,pathlib,subprocess
+          entries=json.loads(pathlib.Path('/tmp/tree-input.json').read_text())['tree']
+          result=[]
+          for entry in entries:
+            data=entry['content'].encode()
+            expected=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
+            payload=json.dumps({'content':entry['content'],'encoding':'utf-8'})
+            raw=subprocess.check_output(['gh','api','--method','POST','repos/darknigthmare/multiverse-breach/git/blobs','--input','-'],input=payload,text=True)
+            actual=json.loads(raw)['sha']
+            assert actual==expected,entry['path']
+            result.append({'path':entry['path'],'mode':'100644','type':'blob','sha':actual})
+          pathlib.Path('/tmp/healing-tree/blobs.json').write_text(json.dumps(result,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: pr4-healing-blobs
+          path: /tmp/healing-tree/
+          retention-days: 3
