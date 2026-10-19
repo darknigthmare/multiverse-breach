@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-          fetch-depth: 2
+          fetch-depth: 3
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
@@ -33,15 +33,21 @@ jobs:
           git apply --check /tmp/fighter.patch
           git apply --index /tmp/fighter.patch
           git diff --cached --check
-          tree=$(git write-tree)
-          commit=$(git -c user.name='Multiverse maintenance' -c user.email='noreply@github.com' commit-tree "$tree" -p a6081c997af7fd26821b397fc71e0b5ce76b8497 -m 'fix(fighter): actual damage, safe lifecycle, validated commands and bounded projectiles')
-          printf '%s\n' "$commit" > /tmp/fighter-prepared/commit.txt
-          printf '%s\n' "$tree" > /tmp/fighter-prepared/tree.txt
+          desired_tree=$(git write-tree)
+          printf '%s\n' "$desired_tree" > /tmp/fighter-prepared/desired-tree.txt
           git diff --cached --name-only --diff-filter=ACMRT > /tmp/fighter-prepared/paths.txt
           while IFS= read -r path; do sha256sum "$path"; done < /tmp/fighter-prepared/paths.txt > /tmp/fighter-prepared/source.sha256
           git diff --cached --binary > /tmp/fighter-prepared/change.patch
-          test -z "$(git ls-tree -r "$tree" -- .reaudit-transfer .github/workflows/reaudit-apply-fighter.yml .github/workflows/reaudit-source-snapshot.yml)"
-      - name: Publish prepared commit to isolated ref
+          test -z "$(git ls-tree -r "$desired_tree" -- .reaudit-transfer .github/workflows/reaudit-apply-fighter.yml .github/workflows/reaudit-source-snapshot.yml)"
+          # GITHUB_TOKEN cannot write workflows. Transfer only code and docs;
+          # workflow changes will be submitted separately via the authorized connector.
+          git restore --source=a6081c997af7fd26821b397fc71e0b5ce76b8497 --staged --worktree -- .github/workflows
+          tree=$(git write-tree)
+          test -z "$(git diff --cached --name-only -- .github/workflows)"
+          commit=$(git -c user.name='Multiverse maintenance' -c user.email='noreply@github.com' commit-tree "$tree" -p a6081c997af7fd26821b397fc71e0b5ce76b8497 -m 'fix(fighter): prepare verified lifecycle and damage changes')
+          printf '%s\n' "$commit" > /tmp/fighter-prepared/commit.txt
+          printf '%s\n' "$tree" > /tmp/fighter-prepared/tree.txt
+      - name: Publish prepared code to isolated ref
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -51,6 +57,7 @@ jobs:
           commit=$(cat /tmp/fighter-prepared/commit.txt)
           git push origin "$commit:refs/heads/codex/reaudit-fighter-prepared-a6081c99"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
         with:
           name: fighter-prepared
           path: /tmp/fighter-prepared/
