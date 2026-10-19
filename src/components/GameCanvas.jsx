@@ -1507,7 +1507,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             }
           }
           engine.draw(ctx, animTime, lang);
-          if (stage.mode !== 'RPG' && !matchInputLocked) {
+          if (stage.mode !== 'RPG' && !(stage.mode === 'Smash' && engine.isMatchInputLocked?.())) {
             battlePickupsRef.current.forEach(item => {
               const tacticalScreen = stage.mode === 'Tactics'
                 && Number.isFinite(item.gridX)
