@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630cea73d27597364c9af683
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
           path: transfer
           sparse-checkout-cone-mode: false
           sparse-checkout: /.audit-transfer/healing-readable/
-      - uses: actions/checkout@11bd71901bbe5b1630cea73d27597364c9af683
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           ref: 630d32765d7379c4875c3e1f1e2ca5772563b722
           path: source
