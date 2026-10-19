@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineFighter, resolveFighterCosmetics } from '../game/engineFighter';
+import { synchronizeFighterControlOwners } from '../game/fighterControlOwnership.js';
 import { COMBAT_STEP_MS, createFixedStepClock } from '../game/fixedStepClock';
 import { ParticleSystem, drawUniverseBackground, preloadSpriteSheetSrcs } from '../game/renderer';
 import { getRecentUniverseLevelProfile } from '../game/recentUniverseLevels';
@@ -122,7 +123,7 @@ function FighterPortrait({ hero, active = false, ko = false }) {
   );
 }
 
-function Lineup({ lang, heroes, side, snapshot, onTag, interactive = side === 'player' }) {
+function Lineup({ lang, heroes, side, snapshot, onTag, interactive = side === 'player', locked = false }) {
   const stateById = snapshot?.fighters || [];
   return (
     <div className={`fighter-lineup fighter-lineup-${side}`}>
@@ -134,7 +135,7 @@ function Lineup({ lang, heroes, side, snapshot, onTag, interactive = side === 'p
             key={`${side}-${hero.id}-${index}`}
             type="button"
             className={`${state?.active ? 'active' : ''} ${state?.ko ? 'ko' : ''}`}
-            disabled={!interactive || !state || state.ko || state.active || snapshot.tagCooldown > 0}
+            disabled={locked || !interactive || state?.canTag !== true}
             onClick={() => onTag?.(index)}
             title={interactive
               ? (lang === 'fr' ? `Appelle ${hero.name} dans l arene.` : `Tag ${hero.name} into the arena.`)
@@ -271,6 +272,7 @@ export default function FighterMode({
   const canvasRef = useRef(null);
   const engineRef = useRef(null);
   const inputRef = useRef({ player: {}, cpu: {} });
+  const inputOwnersRef = useRef(null);
   const onMatchCompleteRef = useRef(onMatchComplete);
   const onSessionEndRef = useRef(onSessionEnd);
   const sessionPausedRef = useRef(sessionPaused);
@@ -281,6 +283,7 @@ export default function FighterMode({
   const [matchNonce, setMatchNonce] = useState(0);
   const [matchStarted, setMatchStarted] = useState(Boolean(customConfig?.autoStart));
   const [summary, setSummary] = useState(null);
+  const [runtimeError, setRuntimeError] = useState(false);
   const [snapshot, setSnapshot] = useState(emptySnapshot);
   const isCustomBattle = Boolean(customConfig);
   const activeHudTheme = resolveActiveHudTheme(portalCollection);
@@ -305,6 +308,7 @@ export default function FighterMode({
   useEffect(() => {
     sessionPausedRef.current = sessionPaused;
     simulationClockRef.current?.reset();
+    engineRef.current?.setPaused(sessionPaused || document.hidden);
     if (sessionPaused) inputRef.current = { player: {}, cpu: {} };
   }, [sessionPaused]);
 
@@ -312,6 +316,7 @@ export default function FighterMode({
   useEffect(() => {
     if (sessionExitRequestRef.current === sessionExitRequest) return;
     sessionExitRequestRef.current = sessionExitRequest;
+    engineRef.current?.dispose();
     setMatchStarted(false);
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -495,6 +500,8 @@ export default function FighterMode({
     ]);
 
     const particles = new ParticleSystem();
+    let active = true;
+    setRuntimeError(false);
     const engine = new EngineFighter(
       canvas.width,
       canvas.height,
@@ -503,6 +510,7 @@ export default function FighterMode({
       particles,
       type => sound.playSfx(type),
       (result, report) => {
+        if (!active || engine.disposed) return;
         const resolved = {
           ...report,
           result,
@@ -530,6 +538,8 @@ export default function FighterMode({
       }
     );
     engineRef.current = engine;
+    synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
+    engine.setPaused(sessionPausedRef.current || document.hidden);
     sound.playStageBgm(battleMusicStage, activeBattleMusic?.state || 'battle');
 
     let animationId = 0;
@@ -537,38 +547,53 @@ export default function FighterMode({
     simulationClockRef.current = simulationClock;
     let snapshotClock = 0;
     const loop = now => {
-      const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
-      const dt = steps * COMBAT_STEP_MS / 1000;
-      if (sessionPausedRef.current || document.hidden) {
+      if (!active || engine.disposed) return;
+      try {
+        const isPaused = sessionPausedRef.current || document.hidden;
+        if (engine.paused !== isPaused) engine.setPaused(isPaused);
+        const steps = simulationClock.advance(now, { paused: sessionPausedRef.current || document.hidden });
+        const dt = steps * COMBAT_STEP_MS / 1000;
+        if (sessionPausedRef.current || document.hidden) {
+          animationId = requestAnimationFrame(loop);
+          return;
+        }
+        synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
+        engine.setSideInput('player', inputRef.current.player);
+        engine.setSideInput('cpu', inputRef.current.cpu);
+        for (let step = 0; step < steps; step += 1) {
+          engine.update(COMBAT_STEP_MS / 1000);
+          synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
+          particles.update();
+        }
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawUniverseBackground(ctx, arenaUniverse, canvas.width, canvas.height, 'Combat');
+          engine.draw(ctx, now / 16.67);
+          particles.draw(ctx);
+        }
+        snapshotClock += dt;
+        if (snapshotClock >= 0.1) {
+          snapshotClock = 0;
+          setSnapshot(engine.getSnapshot());
+        }
         animationId = requestAnimationFrame(loop);
-        return;
+      } catch (error) {
+        // A stopped renderer must not leave inputs active or award a victory.
+        console.error('Fighter render loop failed', error);
+        engine.dispose();
+        setRuntimeError(true);
+        if (!engine.completionReported) onSessionEndRef.current?.({ reason: 'error' });
       }
-      engine.setSideInput('player', inputRef.current.player);
-      engine.setSideInput('cpu', inputRef.current.cpu);
-      for (let step = 0; step < steps; step += 1) {
-        engine.update(COMBAT_STEP_MS / 1000);
-        particles.update();
-      }
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawUniverseBackground(ctx, arenaUniverse, canvas.width, canvas.height, 'Combat');
-        engine.draw(ctx, now / 16.67);
-        particles.draw(ctx);
-      }
-      snapshotClock += dt;
-      if (snapshotClock >= 0.1) {
-        snapshotClock = 0;
-        setSnapshot(engine.getSnapshot());
-      }
-      animationId = requestAnimationFrame(loop);
     };
     animationId = requestAnimationFrame(loop);
 
     const clearInputs = () => {
       inputRef.current = { player: {}, cpu: {} };
+      engine.clearInputs();
     };
     const setHeldInputForSide = (side, control, active) => {
+      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
       inputRef.current[side][control] = active;
     };
     const onKeyDown = event => {
@@ -623,6 +648,7 @@ export default function FighterMode({
         else if (key === 'u') engine.triggerPlayerAction('super');
         else if (key === 'o') engine.triggerFieldSuper();
       }
+      synchronizeFighterControlOwners(engine, inputRef, inputOwnersRef);
     };
     const onKeyUp = event => {
       if (!CONTROL_KEYS.has(event.key)) return;
@@ -648,6 +674,7 @@ export default function FighterMode({
     };
     const onVisibilityChange = () => {
       simulationClockRef.current?.reset();
+      engine.setPaused(sessionPausedRef.current || document.hidden);
       if (document.hidden) clearInputs();
     };
     window.addEventListener('keydown', onKeyDown, { passive: false });
@@ -655,6 +682,8 @@ export default function FighterMode({
     window.addEventListener('blur', clearInputs);
     document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
+      active = false;
+      engine.dispose();
       cancelAnimationFrame(animationId);
       if (simulationClockRef.current === simulationClock) simulationClockRef.current = null;
       window.removeEventListener('keydown', onKeyDown);
@@ -662,7 +691,7 @@ export default function FighterMode({
       window.removeEventListener('blur', clearInputs);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       sound.stopBgm();
-      engineRef.current = null;
+      if (engineRef.current === engine) engineRef.current = null;
       inputRef.current = { player: {}, cpu: {} };
     };
   }, [
@@ -682,7 +711,9 @@ export default function FighterMode({
   ]);
 
   const startMatch = () => {
-    if (sessionPausedRef.current || !playerHeroes.length || !opponentHeroes.length) return;
+    if (sessionPausedRef.current || document.hidden || !playerHeroes.length || !opponentHeroes.length) return;
+    engineRef.current?.dispose();
+    setRuntimeError(false);
     onSessionStart?.();
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -693,6 +724,8 @@ export default function FighterMode({
 
   const returnToLobby = () => {
     if (sessionPausedRef.current) return;
+    engineRef.current?.dispose();
+    setRuntimeError(false);
     setMatchStarted(false);
     setSummary(null);
     setSnapshot(emptySnapshot);
@@ -710,35 +743,34 @@ export default function FighterMode({
   };
 
   const triggerAction = (action, side = 'player') => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || document.hidden) return;
     engineRef.current?.triggerSideAction(side, action);
   };
 
   const triggerFieldSuper = (side = 'player') => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || document.hidden) return;
     engineRef.current?.triggerFieldSuper(side);
   };
 
   const triggerAssist = (side = 'player') => {
-    if (sessionPausedRef.current) return;
+    if (sessionPausedRef.current || document.hidden) return;
     engineRef.current?.triggerAssist(side);
   };
 
   const setHeldInput = (key, active, side = 'player') => {
-    if (sessionPausedRef.current) {
+    if (sessionPausedRef.current || document.hidden) {
       inputRef.current = { player: {}, cpu: {} };
+      engineRef.current?.clearInputs();
       return;
     }
+    synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef);
     inputRef.current[side][key] = active;
   };
 
   const triggerTag = (index, side = 'player') => {
-    if (sessionPausedRef.current) return;
-    if (side === 'player') {
-      engineRef.current?.triggerPlayerAction('tag', index);
-      return;
-    }
+    if (sessionPausedRef.current || document.hidden) return;
     engineRef.current?.triggerSideAction(side, 'tag', index);
+    synchronizeFighterControlOwners(engineRef.current, inputRef, inputOwnersRef);
   };
 
   const playerSnapshot = snapshot.player || emptySnapshot.player;
@@ -759,14 +791,14 @@ export default function FighterMode({
     activeFieldSuper
     && !playerFieldState.used
     && fieldSuperCharge >= 100
-    && snapshot.phase === 'running'
+    && snapshot.phase === 'running' && !sessionPaused && playerSnapshot.commandReady
   );
   const opponentFieldSuperReady = Boolean(
     opponentControl === 'p2'
     && activeFieldSuper
     && !opponentFieldState.used
     && opponentFieldSuperCharge >= 100
-    && snapshot.phase === 'running'
+    && snapshot.phase === 'running' && !sessionPaused && cpuSnapshot.commandReady
   );
   const playerAssist = fighterCosmetics.player.npcAssist;
   const opponentAssist = fighterCosmetics.cpu.npcAssist;
@@ -784,14 +816,14 @@ export default function FighterMode({
     playerAssist
     && !playerAssistState.used
     && Number(playerAssistState.charge) >= 100
-    && snapshot.phase === 'running'
+    && snapshot.phase === 'running' && !sessionPaused && playerSnapshot.commandReady
   );
   const opponentAssistReady = Boolean(
     opponentControl === 'p2'
     && opponentAssist
     && !opponentAssistState.used
     && Number(opponentAssistState.charge) >= 100
-    && snapshot.phase === 'running'
+    && snapshot.phase === 'running' && !sessionPaused && cpuSnapshot.commandReady
   );
 
   if (!matchStarted) {
@@ -957,6 +989,17 @@ export default function FighterMode({
         )}
       </header>
 
+      {runtimeError && <div role="alert" data-fighter-runtime-error="true" style={{ padding: 16 }}>
+        <p>{lang === 'fr'
+          ? 'Le combat a été arrêté après une erreur. Aucun résultat supplémentaire ne sera enregistré.'
+          : 'The fight stopped after an error. No additional result will be recorded.'}</p>
+        <button type="button" className="btn-retro" onClick={startMatch}>
+          {lang === 'fr' ? 'RECOMMENCER LE COMBAT' : 'RESTART FIGHT'}
+        </button>
+        <button type="button" className="btn-retro" onClick={returnToLobby}>
+          {lang === 'fr' ? 'RETOUR AU MENU' : 'BACK TO MENU'}
+        </button>
+      </div>}
       <div className="fighter-battle-grid">
         <div className="fighter-canvas-panel">
           <canvas
@@ -1022,9 +1065,11 @@ export default function FighterMode({
           <section>
             <div className="fighter-side-heading">
               <span>{lang === 'fr' ? 'REMPLACANTS' : 'TAG ROSTER'}</span>
-              <b>{playerSnapshot.tagCooldown > 0 ? `${playerSnapshot.tagCooldown.toFixed(1)}s` : 'READY'}</b>
+              <b>{playerSnapshot.tagCooldown > 0 ? `${playerSnapshot.tagCooldown.toFixed(1)}s`
+                : !sessionPaused && playerSnapshot.fighters.some(fighter => fighter.canTag) ? (lang === 'fr' ? 'PRÊT' : 'READY')
+                  : (lang === 'fr' ? 'INDISPONIBLE' : 'UNAVAILABLE')}</b>
             </div>
-            <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} onTag={index => triggerTag(index)} />
+            <Lineup lang={lang} heroes={playerHeroes} side="player" snapshot={playerSnapshot} locked={sessionPaused} onTag={index => triggerTag(index)} />
           </section>
           <section>
             <div className="fighter-side-heading">
@@ -1037,6 +1082,7 @@ export default function FighterMode({
               side="cpu"
               snapshot={cpuSnapshot}
               interactive={opponentControl === 'p2'}
+              locked={sessionPaused}
               onTag={index => triggerTag(index, 'cpu')}
             />
           </section>
@@ -1200,7 +1246,7 @@ export default function FighterMode({
           <button type="button" title={lang === 'fr' ? 'Attaque legere [F]' : 'Light attack [F]'} onClick={() => triggerAction('light')}>F</button>
           <button type="button" title={lang === 'fr' ? 'Attaque lourde [G]' : 'Heavy attack [G]'} onClick={() => triggerAction('heavy')}>G</button>
           <button type="button" title={lang === 'fr' ? 'Special [H]' : 'Special [H]'} onClick={() => triggerAction('special')}>H</button>
-          <button type="button" title={lang === 'fr' ? 'Rupture [R]' : 'Rupture [R]'} onClick={() => triggerAction('super')}>R</button>
+          <button type="button" title={`${playerSnapshot.superName || 'Rupture'} [R]`} disabled={sessionPaused || !playerSnapshot.superReady} onClick={() => triggerAction('super')}>R</button>
           <button type="button" title={lang === 'fr' ? 'Super de terrain [T]' : 'Field super [T]'} disabled={!fieldSuperReady} onClick={() => triggerFieldSuper('player')}>T</button>
           {playerAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ [Y]' : 'NPC assist [Y]'} disabled={!playerAssistReady} onClick={() => triggerAssist('player')}>Y</button>}
         </div>
@@ -1224,7 +1270,7 @@ export default function FighterMode({
               <button type="button" title={lang === 'fr' ? 'Attaque legere J2 [P]' : 'P2 light attack [P]'} onClick={() => triggerAction('light', 'cpu')}>P</button>
               <button type="button" title={lang === 'fr' ? 'Attaque lourde J2 [M]' : 'P2 heavy attack [M]'} onClick={() => triggerAction('heavy', 'cpu')}>M</button>
               <button type="button" title={lang === 'fr' ? 'Special J2 [L]' : 'P2 special [L]'} onClick={() => triggerAction('special', 'cpu')}>L</button>
-              <button type="button" title={lang === 'fr' ? 'Rupture J2 [O]' : 'P2 rupture [O]'} onClick={() => triggerAction('super', 'cpu')}>O</button>
+              <button type="button" title={`${cpuSnapshot.superName || (lang === 'fr' ? 'Rupture J2' : 'P2 rupture')} [O]`} disabled={sessionPaused || !cpuSnapshot.superReady} onClick={() => triggerAction('super', 'cpu')}>O</button>
               <button type="button" title={lang === 'fr' ? 'Super de terrain J2 [I]' : 'P2 field super [I]'} disabled={!opponentFieldSuperReady} onClick={() => triggerFieldSuper('cpu')}>I</button>
               {opponentAssist && <button type="button" title={lang === 'fr' ? 'Assist PNJ J2 [K]' : 'P2 NPC assist [K]'} disabled={!opponentAssistReady} onClick={() => triggerAssist('cpu')}>K</button>}
             </div>

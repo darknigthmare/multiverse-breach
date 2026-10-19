@@ -12,6 +12,7 @@ import {
   getGameCanvasCosmeticFrame,
   supportsGameCanvasCosmeticPresentation
 } from '../game/gameCanvasCosmeticPresentation';
+import { isCombatGameplayAdvancing } from '../game/combatActivity.js';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { EngineSmash } from '../game/engineSmash';
 import { EngineRpg } from '../game/engineRpg';
@@ -1441,18 +1442,20 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             heroes: new Set(engine.heroes || []),
             enemies: new Set(engine.enemies || [])
           };
-          let matchInputLocked = false;
+          let activeCombatSteps = 0;
           for (let l = 0; l < updateLoops; l++) {
+            const advancing = !simulationPaused && isCombatGameplayAdvancing(engine);
             engine.update(meleeHeldP1, meleeHeldP2, {
               preMatchDeltaMs: COMBAT_STEP_MS,
               stageDeltaMs: COMBAT_STEP_MS
             });
+            if (advancing) activeCombatSteps++;
             particles.update();
             (engine.heroes || []).forEach(actor => actorsObservedDuringUpdate.heroes.add(actor));
             (engine.enemies || []).forEach(actor => actorsObservedDuringUpdate.enemies.add(actor));
           }
-          matchInputLocked = stage.mode === 'Smash' && engine.isMatchInputLocked?.();
-          const gameplayAdvancing = updateLoops > 0 && !simulationPaused && !matchInputLocked && !engine.gameOver && !engine.signatureDirector?.freezesWorld;
+          const gameplayAdvancing = activeCombatSteps > 0 && !simulationPaused && isCombatGameplayAdvancing(engine);
+          combatTime += activeCombatSteps;
           if (stage.mode === 'Smash') {
             const nextPreMatch = engine.getPreMatchState?.(lang) || null;
             const cueKey = nextPreMatch ? `${nextPreMatch.state}:${nextPreMatch.cueId}` : null;
@@ -1471,7 +1474,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
               : ['player'];
             chargeSides.forEach(side => {
               const fieldState = customFieldSuperRef.current[side];
-              if (!fieldState.used) fieldState.charge = Math.min(100, fieldState.charge + 0.055 * updateLoops);
+              if (!fieldState.used) fieldState.charge = Math.min(100, fieldState.charge + 0.055 * activeCombatSteps);
             });
             if (animTime % 12 === 0) {
               setCustomFieldSuperState({
@@ -1504,7 +1507,7 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
             }
           }
           engine.draw(ctx, animTime, lang);
-          if (stage.mode !== 'RPG' && !matchInputLocked) {
+          if (stage.mode !== 'RPG' && !(stage.mode === 'Smash' && engine.isMatchInputLocked?.())) {
             battlePickupsRef.current.forEach(item => {
               const tacticalScreen = stage.mode === 'Tactics'
                 && Number.isFinite(item.gridX)
@@ -1595,7 +1598,6 @@ export default function GameCanvas({ lang, playerProfile, activeTeam, stage, her
           }
         }
 
-        if (!simulationPaused && !engineRef.current?.gameOver && !(stage.mode === 'Smash' && engineRef.current?.isMatchInputLocked?.())) combatTime += updateLoops;
         animTime += updateLoops;
         frameId = requestAnimationFrame(tick);
       } catch (error) {

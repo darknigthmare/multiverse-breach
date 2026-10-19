@@ -24,6 +24,7 @@ jobs:
             /scripts/
             /api/
             /supabase/
+            /.github/workflows/
             **/*.json
             **/*.jsonl
             **/*.md
@@ -42,10 +43,24 @@ jobs:
           npm run test:audit-combat | tee /tmp/reliability-evidence/combat-regressions.log
           npm run test:audit-tactics | tee /tmp/reliability-evidence/tactics-regressions.log
           npm run test:polish | tee /tmp/reliability-evidence/polish.log
+      - name: Reaudit regression contracts
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD > /tmp/reliability-evidence/tested-commit.txt
+          sha256sum src/game/engineFighter.js src/game/fighterControlOwnership.js src/components/FighterMode.jsx scripts/reauditFighterInputs.test.mjs scripts/fixedStepClock.test.mjs scripts/browserFighterLifecycle.py package.json .github/workflows/audit-reliability.yml docs/audits/pr4-fighter-controls-2026-10-19.md > /tmp/reliability-evidence/fighter-controls.sha256
+          npm run test:reaudit | tee /tmp/reliability-evidence/reaudit.log
       - name: Existing combat and save contracts
         run: |
           set -euo pipefail
           node --test --test-concurrency=1 scripts/combatEffectRegressions.test.mjs scripts/tacticsMissionObjectives.test.mjs scripts/customBattle.test.mjs scripts/canonRexAttackPatterns.test.mjs scripts/localSaveGuard.test.mjs scripts/cloudSaveConflictPolicy.test.mjs scripts/smashCanonAbilityProfiles.test.mjs scripts/smashObjectiveResolution.test.mjs scripts/canonEncounterExternalDamage.test.mjs scripts/rpgTargeting.test.mjs scripts/rpgTargetingPresentation.test.mjs scripts/canonRaamEncounter.test.mjs scripts/canonPiratesCurseEncounter.test.mjs scripts/canonPiratesPlayableJackCurse.test.mjs scripts/portalBoosterEngine.test.mjs scripts/portalBoosterEconomy.test.mjs | tee /tmp/reliability-evidence/existing-contracts.log
+      - name: Lint reaudit changes
+        run: >-
+          node node_modules/oxlint/bin/oxlint --max-warnings 0
+          src/game/stockMedicModes.js src/game/fighterHealing.js src/game/combatActivity.js src/game/rpgActionEconomy.js
+          src/game/engineFighter.js src/game/fighterControlOwnership.js src/game/originalUniverseProduction.js src/components/BuildIdentity.jsx
+          src/components/FighterMode.jsx scripts/fixtures/fighterLifecycleHarness.jsx
+          src/components/TacticsSupportPanel.jsx scripts/reaudit*.test.mjs scripts/tacticsFacingRuntime.test.mjs
+          scripts/buildIdentity.mjs scripts/progressionAudit.mjs vite.config.js
       - name: Lint changed modules and tests
         run: >-
           node node_modules/oxlint/bin/oxlint
@@ -81,6 +96,8 @@ jobs:
           /tmp/multiverse-playwright/bin/python scripts/browserAuditFollowup.py --evidence /tmp/reliability-evidence/browser | tee /tmp/reliability-evidence/browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserRpgLifecycle.py --evidence /tmp/reliability-evidence/rpg-browser | tee /tmp/reliability-evidence/rpg-browser.log
           /tmp/multiverse-playwright/bin/python scripts/browserTacticsReliability.py --evidence /tmp/reliability-evidence/tactics-browser | tee /tmp/reliability-evidence/tactics-browser.log
+          /tmp/multiverse-playwright/bin/python scripts/browserFighterLifecycle.py --evidence /tmp/reliability-evidence/fighter-browser | tee /tmp/reliability-evidence/fighter-browser.log
+          /tmp/multiverse-playwright/bin/python scripts/browserFighterHealing.py --evidence /tmp/reliability-evidence/fighter-healing-browser | tee /tmp/reliability-evidence/fighter-healing-browser.log
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:

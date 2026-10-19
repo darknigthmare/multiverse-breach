@@ -13,6 +13,7 @@ with sync_playwright() as p:
                 page = browser.new_page(viewport={'width': width, 'height': 920}, reduced_motion='reduce')
                 page.route('**/*', lambda route: route.continue_() if route.request.url.startswith(BASE + '/') else route.abort())
                 errors = []; page.on('pageerror', lambda err: errors.append(str(err)))
+                page.on('console', lambda message: errors.append(message.text) if message.type == 'error' and message.text.startswith('Combat render loop failed') else None)
                 name = f'{mode}-{width}-{lang}'
                 try:
                     page.goto(f'{BASE}/scripts/fixtures/signature-combat.html?mode={mode}&lang={lang}')
@@ -41,8 +42,12 @@ with sync_playwright() as p:
                     assert not errors, errors
                     results.append({'scenario': name, 'passed': True, 'errors': errors})
                 except Exception as error:
-                    page.screenshot(path=str(OUT / f'{name}-FAILED.png'), full_page=True)
-                    results.append({'scenario': name, 'passed': False, 'error': str(error), 'pageErrors': errors})
+                    failure = {'scenario': name, 'passed': False, 'error': str(error), 'pageErrors': errors}
+                    results.append(failure)
+                    try:
+                        page.screenshot(path=str(OUT / f'{name}-FAILED.png'), full_page=True, timeout=5000)
+                    except Exception as capture_error:
+                        failure['captureError'] = str(capture_error)
                 finally: page.close()
     finally: browser.close()
 (OUT / 'results.json').write_text(json.dumps(results, indent=2), encoding='utf-8')

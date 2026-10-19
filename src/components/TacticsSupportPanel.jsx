@@ -16,6 +16,9 @@ export default function TacticsSupportPanel({ state, lang, locked, onTarget }) {
     <p style={{ fontSize: 11, lineHeight: 1.5 }}>
       {locale === 'fr' ? 'Choisis une cible ici ou une case verte sur le terrain. La validation consomme cette action.'
         : 'Choose a target here or a green battlefield cell. Confirming spends this action.'}
+      {state.protection === 'stock-uber' && (locale === 'fr'
+        ? ' Medic et un patient maximum : 8 secondes actives, portée de 3 cases et ligne de vue. Aucun soin. Attaquer interrompt le lien.'
+        : 'Medic and at most one patient: 8 active seconds, 3-cell range and line of sight. No healing. Attacking ends the link.')}
       {state.group && (locale === 'fr' ? ' Effet de groupe sur les alliés admissibles à portée.' : 'Group effect on eligible allies in range.')}
     </p>
     {!state.choices.length && <p role="status">{locale === 'fr' ? 'Aucune cible admissible à portée. Une résurrection exige une case libre.' : 'No eligible target in range. Revival requires a free cell.'}</p>}

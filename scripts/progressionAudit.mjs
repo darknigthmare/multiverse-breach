@@ -1,3 +1,5 @@
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { REQUESTED_UNIVERSE_WAVE } from '../src/game/requestedUniverseWave.js';
 import { RECENT_UNIVERSE_LEVELS } from '../src/game/recentUniverseLevels.js';
@@ -736,11 +738,21 @@ assert(hubSource.includes("{ id: 'race'") && hubSource.includes('<RaceMode'), 'H
 assert(hubSource.includes("{ id: 'fighter'") && hubSource.includes('<FighterMode'), 'Hub must expose the standalone A.R.C.A. Fighter tab.');
 assert(hubSource.includes("isUniverseVisible(hero.universe) && !isAssetDisabled('heroes', hero.id)"), 'Fighter roster must respect admin universe and hero visibility.');
 assert(fighterModeSource.includes('new EngineFighter') && fighterModeSource.includes('fighter-touch-controls'), 'Fighter screen must instantiate its engine and expose responsive controls.');
-assert(fighterModeSource.includes("triggerPlayerAction('tag'") && fighterModeSource.includes("['1', '2', '3']"), 'Fighter screen must expose manual three-slot tag controls.');
-assert(fighterEngineSource.includes('fighters: playerHeroes.slice(0, 3)') && fighterEngineSource.includes('activeIndex: 0'), 'Fighter engine must keep one active combatant in a three-signature cell.');
-assert(fighterEngineSource.includes('requestTag(side, index, forced = false)') && fighterEngineSource.includes("this.requestTag(side, next.index, true)"), 'Fighter engine must support manual and forced K.O. replacements.');
-assert(fighterEngineSource.includes('guardBreak') && fighterEngineSource.includes('comboWindow') && fighterEngineSource.includes('meterCost: 100'), 'Fighter engine must retain guard break, combos, and rupture meter rules.');
-assert(fighterEngineSource.includes('spawnProjectile') && fighterEngineSource.includes('crouching') && fighterEngineSource.includes('targetHalfHeight'), 'Fighter engine must retain ranged attacks and crouch evasion.');
+// Verify all three slots through the real screen callbacks and engine for both
+// players. The choice of a P1 alias or shared side dispatcher is not gameplay.
+const fighterTagAudit = spawnSync(process.execPath,
+  ['--test', fileURLToPath(new URL('./reauditFighterTagRoutes.test.mjs', import.meta.url))],
+  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+assert(!fighterTagAudit.error && fighterTagAudit.status === 0,
+  'Fighter runtime keyboard/button three-slot replacement regression failed.');
+// Verify effects, not the spelling of an internal slot variable or helper.
+const fighterRuntimeAudit = spawnSync(process.execPath,
+  ['--test', '--test-concurrency=1',
+    fileURLToPath(new URL('./reauditFighterRelease.test.mjs', import.meta.url)),
+    fileURLToPath(new URL('./reauditFighterKnockouts.test.mjs', import.meta.url))],
+  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+assert(!fighterRuntimeAudit.error && fighterRuntimeAudit.status === 0,
+  'Fighter roster, replacements, guard, combo, meter and projectile contracts failed.');
 assert(hubSource.includes('recordFighterMatch') && hubSource.includes('fighterCareer'), 'Fighter results must feed long-term progression and career records.');
 assert(raceModeSource.includes('new EngineRace') && raceModeSource.includes('engine.useItem()'), 'Race screen must instantiate the race engine and expose item usage.');
 assert(raceModeSource.includes('race-mode-canvas') && raceModeSource.includes('race-touch-controls'), 'Race screen must render canvas gameplay and virtual controls.');
@@ -990,13 +1002,13 @@ assert(tacticsEngineSource.includes('applyStartTileEffect'), 'Tactics engine mus
 assert(tacticsEngineSource.includes('getTileMoveCost'), 'Tactics movement must support terrain movement costs.');
 assert(tacticsEngineSource.includes('getTileFill'), 'Tactics engine must render terrain types distinctly.');
 assert(tacticsEngineSource.includes('getCoverReduction') && tacticsEngineSource.includes('heavyCover'), 'Tactics engine must apply cover from terrain tiles.');
-assert(
-  tacticsEngineSource.includes("from './tacticalFacing.js'")
-    && tacticsEngineSource.includes('return getGridFacingBonus(attacker, defender);')
-    && tacticsEngineSource.includes('baseDmg *= (1 + facing.bonus);')
-    && tacticsEngineSource.includes("'text', facing.label"),
-  'Tactics damage and feedback must use the shared grid-facing bonus, not a disconnected helper.'
-);
+// Exercise the real damage dispatcher and visible facing feedback. Refactoring
+// its algebra must not break publishing, but dropping the bonus must fail it.
+const facingAudit = spawnSync(process.execPath,
+  ['--test', fileURLToPath(new URL('./tacticsFacingRuntime.test.mjs', import.meta.url))],
+  { cwd: fileURLToPath(new URL('../', import.meta.url)), stdio: 'inherit', timeout: 60_000 });
+assert(!facingAudit.error && facingAudit.status === 0,
+  'Tactics runtime facing damage/feedback regression failed.');
 for (const [x, y] of [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]]) {
   const defender = { gridX: 5, gridY: 5, facingVector: { x, y } };
   const front = getGridFacingBonus({ gridX: 5 + x, gridY: 5 + y }, defender);

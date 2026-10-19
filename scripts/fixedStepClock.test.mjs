@@ -42,13 +42,16 @@ test('invalid time, clock rollback and lag remain bounded', () => {
 
 const componentSource = name => readFileSync(new URL(`../src/components/${name}.jsx`, import.meta.url), 'utf8');
 const runComponentTransition = (body, environment) => new Function(...Object.keys(environment), body)(...Object.values(environment));
-const transitionEnvironment = clock => ({
+const transitionEnvironment = clock => {
+  const engine = { paused: false, calls: [], setPaused(value) { this.paused = value; this.calls.push(value); } };
+  return ({
   simulationClockRef: { current: clock }, sessionPausedRef: { current: false }, sessionPaused: false,
-  document: { hidden: false }, engineRef: { current: { setPaused() {} } },
+  document: { hidden: false }, engine, engineRef: { current: engine },
   inputRef: { current: {} }, keysRef: { current: {} }, keyPulseRef: { current: {} },
   tacticsCameraPointerRef: { current: {} }, suppressTacticsClickRef: { current: false },
   clearMeleeControls() {}, clearMeleeInput() {}, clearInputs() {}
-});
+  });
+};
 
 for (const component of ['GameCanvas', 'FighterMode', 'RaceMode']) {
   test(`${component} visibility transitions discard hidden time even when no RAF runs`, () => {
@@ -65,8 +68,16 @@ for (const component of ['GameCanvas', 'FighterMode', 'RaceMode']) {
       // No advance({paused:true}) occurs: browsers normally suppress hidden RAF.
       environment.document.hidden = true;
       runComponentTransition(handler[1], environment);
+      if (component === 'FighterMode') assert.equal(environment.engine.paused, true);
       environment.document.hidden = false;
       runComponentTransition(handler[1], environment);
+      if (component === 'FighterMode') {
+        assert.equal(environment.engine.paused, false);
+        assert.deepEqual(environment.engine.calls, [true, false]);
+        environment.sessionPausedRef.current = true;
+        runComponentTransition(handler[1], environment);
+        assert.equal(environment.engine.paused, true, 'visibility must not unpause a shell pause');
+      }
       const impactTicksRemaining = 6;
       assert.equal(impactTicksRemaining - clock.advance(520, { speed }), impactTicksRemaining, 'pending hit fired on resume');
       assert.equal(clock.advance(540, { speed }), speed);

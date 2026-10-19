@@ -62,11 +62,18 @@ export function getSignatureSummary(codex, lang = 'fr') {
   if (!codex) return '';
   const fr = lang === 'fr';
   const prefix = fr ? 'Signature disponible en RPG et mêlée' : 'Signature available in RPG and melee';
+  const stock = codex.protection === 'stock-uber';
+  const adaptation = stock ? (fr
+    ? ' ÜberCharge aussi en Fighter (soi uniquement) et Tactics (soi + un patient, 3 cases, ligne de vue), pendant 8 secondes actives. Pas de soin ni de dégâts.'
+    : ' UberCharge also works in Fighter (self only) and Tactics (self + one patient, 3 cells, line of sight) for 8 active seconds. No healing or damage.') : '';
   const cost = fr ? '100 % de jauge spéciale ; ATB pleine aussi en RPG. Tactics conserve son kit existant.'
     : '100% special meter; full ATB also required in RPG. Tactics keeps its existing kit.';
   const limit = fr ? 'Adaptation jouable ; animation et fidélité 1:1 non certifiées.'
     : 'Playable adaptation; animation and 1:1 fidelity are not certified.';
-  return `${prefix} : ${codex.name}. ${cost} ${limit}`;
+  const healing = codex.key === 'aerith_ff7' ? (fr
+    ? ' Healing Wind soigne aussi la cellule vivante en Fighter, sans résurrection ni dégâts. Aucun lancement si aucun PV n’est récupérable.'
+    : ' Healing Wind also heals the living Fighter team, without revival or damage. No activation when no HP is recoverable.') : '';
+  return `${prefix} : ${codex.name}. ${stock ? cost.split(' Tactics')[0] : cost}${adaptation}${healing} ${limit}`;
 }
 
 /** Booster candidates carry their exact underlying hero; names are not keys. */

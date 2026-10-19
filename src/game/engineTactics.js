@@ -1,10 +1,11 @@
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
+import { prepareStockMedic, createTacticsMedicSupport, getTacticsMedicDefinition } from './stockMedicModes.js';
 import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCombatantBust } from './renderer';
 import { absorbBattleItemDamage, grantBattleItemShield } from './battleItemShield';
 import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { applyCombatHealing } from './combatHealing.js';
-import { getTacticsSupportProfile, getTacticsSupportCandidates, resolveTacticsSupport, applyTacticsSupport, tickTacticsSupport, getTacticsSupportDamageMultiplier, getTacticsSupportGuard } from './tacticsSupport.js';
+import { captureTacticsSupportCommitment, getTacticsSupportProfile, getTacticsSupportCandidates, resolveTacticsSupport, applyTacticsSupport, tickTacticsSupport, getTacticsSupportDamageMultiplier, getTacticsSupportGuard } from './tacticsSupport.js';
 import { previewBattleItemDamage } from './battleItemShield.js';
 import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
@@ -173,6 +174,8 @@ export class EngineTactics {
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
+    [...this.heroes, ...this.enemies].forEach(actor => prepareStockMedic(actor, 'Tactics'));
+    this.medicSupport = createTacticsMedicSupport(this);
     [...this.heroes, ...this.enemies].forEach(unit => {
       const ammunition = getBlackPearlSourceAmmunition(unit);
       if (ammunition) unit.sourceAmmoRemaining = ammunition.maxShots;
@@ -257,6 +260,7 @@ export class EngineTactics {
   }
 
   invalidateActorActions(unit) {
+    if (unit?.currentHp <= 0 || unit?.state === 'dead') this.medicSupport?.onKnockout(unit);
     this.actorLifetimes.set(unit, (this.actorLifetimes.get(unit) || 0) + 1);
     for (const timer of this.timers) if (timer.actor === unit) this.timers.delete(timer);
     if (unit === this.activeUnit && this.actionPhase !== 'end') this.interruptedTurn = this.turnSerial;
@@ -300,6 +304,7 @@ export class EngineTactics {
 
   dispose() {
     this.disposed = true;
+    this.medicSupport?.dispose();
     this.timers.clear();
     this.turnQueue = [];
     this.activeUnit = null;
@@ -317,6 +322,7 @@ export class EngineTactics {
     enemy.defense ||= { name: 'Guard', reduce: 0.4, dur: 1.2 };
     enemy.cooldown = Number(enemy.cooldown) || 0;
     enemy.specialCharge = Number(enemy.specialCharge) || 0;
+    prepareStockMedic(enemy, 'Tactics');
     return enemy;
   }
 
@@ -1078,6 +1084,10 @@ export class EngineTactics {
       const entry = resolveTacticsSupport(this, attacker, actionType, defender).find(item => item.unit === defender);
       return { damage: 0, cover: 0, defense: 0, effect: entry?.effect, healing: entry?.amount || 0, cleanses: entry?.cleanses || [] };
     }
+    if (this.medicSupport?.protects(defender, attacker)
+      && [...this.heroes, ...this.enemies].includes(attacker) && attacker !== defender) {
+      return { damage: 0, min: 0, max: 0, cover: 0, defense: 0, invulnerable: true };
+    }
     if (getBlackPearlSourceAmmunition(attacker, actionType) && attacker.sourceAmmoRemaining <= 0) {
       return { damage: 0, cover: 0, defense: 0, ammunitionDepleted: true };
     }
@@ -1624,12 +1634,17 @@ export class EngineTactics {
       const targets = resolveTacticsSupport(this, this.activeUnit, this.selectedAction, unit);
       return { unit, targets };
     }).filter(choice => choice.targets.length);
-    return { effect: profile.effect, name: profile.name, group: profile.shape === 'group', choices };
+    return { effect: profile.effect, name: profile.name, protection: profile.protection, group: profile.shape === 'group', choices };
   }
 
   performSupportAction(actor, anchor, actionType) {
     if (this.disposed || this.paused || this.gameOver || !this.isActiveCombatant(actor)) return [];
     const targets = resolveTacticsSupport(this, actor, actionType, anchor);
+    if (targets[0]?.profile.protection === 'stock-uber') {
+      if (!this.medicSupport.grant(actor, targets[0].unit, getTacticsMedicDefinition(actor))) return [];
+      this.playSfx('shield');
+      return targets;
+    }
     targets.forEach(entry => {
       if (entry.effect === 'revive') this.invalidateActorActions(entry.unit);
       const applied = applyTacticsSupport(actor, entry);
@@ -1956,6 +1971,7 @@ export class EngineTactics {
 
   completeBattle(result) {
     if (this.gameOver) return;
+    this.medicSupport?.dispose();
     this.gameOver = true;
     this.actionPhase = 'end';
     this.selectedAction = null;
@@ -2352,6 +2368,7 @@ export class EngineTactics {
       }
     }
     if (!best) return false;
+    const committedSupport = captureTacticsSupportCommitment(this, actor, best.actionType, best.entries);
     const moved = actor.gridX !== best.cell.x || actor.gridY !== best.cell.y;
     faceUnitToward(actor, best.cell);
     actor.gridX = best.cell.x; actor.gridY = best.cell.y;
@@ -2360,15 +2377,11 @@ export class EngineTactics {
     if (this.gameOver) return true;
     if (!this.isActiveCombatant(actor)) { this.endActiveTurn(); return true; }
     const anchor = { gridX: best.target.gridX, gridY: best.target.gridY };
-    const confirmed = new Set(best.entries.map(entry => entry.unit));
     this.actionPhase = 'resolving';
     this.scheduleTurn(() => {
-      const available = best.actionType === 'secondary' ? actor.cooldown <= 0
-        : best.actionType !== 'special' || actor.specialCharge >= 100;
       const entries = resolveTacticsSupport(this, actor, best.actionType, anchor);
-      // Identity is frozen: moving/replacing the chosen recipient cannot redirect the cast.
-      const valid = available && entries.some(entry => entry.unit === best.target)
-        && entries.every(entry => confirmed.has(entry.unit));
+      // Contract and target lifetimes are frozen; geometry and missing HP are not.
+      const valid = committedSupport(entries) && entries.some(entry => entry.unit === best.target);
       if (valid && this.performSupportAction(actor, anchor, best.actionType).length) {
         actor.state = 'attack'; actor.stateTimer = 25;
         if (best.actionType === 'secondary') actor.cooldown = Math.round((actor.secondary.cd ?? 3) * 60);
@@ -2915,6 +2928,8 @@ export class EngineTactics {
     if (!defender || !Number.isFinite(baseDmg) || baseDmg < 0 || this.disposed || this.paused || this.gameOver) return 0;
     const hp = defender === this.protectedArtifact || ['barrier', 'barrel', 'objective'].includes(defender.type) ? defender.hp : defender.currentHp;
     if (!Number.isFinite(hp) || hp <= 0) return 0;
+    if (baseDmg > 0) this.medicSupport?.release(attacker);
+    if (this.medicSupport?.blockHit(attacker, defender, baseDmg)) return 0;
     if (this.applyEncounterDamage(defender, baseDmg, { kind: 'attack', attacker })) {
       const remaining = Number.isFinite(defender.currentHp) ? defender.currentHp : hp;
       return Math.max(0, Math.min(hp, hp - remaining));
@@ -3245,6 +3260,7 @@ export class EngineTactics {
       this.completeBattle('victory');
       return;
     }
+    this.medicSupport.advance();
     [...this.heroes, ...this.enemies].forEach(unit => { tickCombatEventBuffs(unit); tickTacticsSupport(unit); });
 
     // Process Status Effects & timers for heroes
@@ -3568,6 +3584,7 @@ export class EngineTactics {
     ctx.fillText((this.battlefield.label?.fr || this.battlefield.id).toUpperCase().slice(0, 32), 20, 22);
 
     this.drawTacticsObjectiveHud(ctx);
+    this.medicSupport?.draw(ctx);
   }
 
   getTacticsDrawOrder() {
