@@ -1,3 +1,4 @@
+import { prepareTacticsHealing } from './tacticsSourceHealing.js';
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
 import { prepareStockMedic, createTacticsMedicSupport, getTacticsMedicDefinition } from './stockMedicModes.js';
 import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCombatantBust } from './renderer';
@@ -174,7 +175,10 @@ export class EngineTactics {
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
-    [...this.heroes, ...this.enemies].forEach(actor => prepareStockMedic(actor, 'Tactics'));
+    [...this.heroes, ...this.enemies].forEach(actor => {
+      prepareStockMedic(actor, 'Tactics');
+      prepareTacticsHealing(actor);
+    });
     this.medicSupport = createTacticsMedicSupport(this);
     [...this.heroes, ...this.enemies].forEach(unit => {
       const ammunition = getBlackPearlSourceAmmunition(unit);
@@ -323,6 +327,7 @@ export class EngineTactics {
     enemy.cooldown = Number(enemy.cooldown) || 0;
     enemy.specialCharge = Number(enemy.specialCharge) || 0;
     prepareStockMedic(enemy, 'Tactics');
+    prepareTacticsHealing(enemy);
     return enemy;
   }
 
@@ -1634,7 +1639,9 @@ export class EngineTactics {
       const targets = resolveTacticsSupport(this, this.activeUnit, this.selectedAction, unit);
       return { unit, targets };
     }).filter(choice => choice.targets.length);
-    return { effect: profile.effect, name: profile.name, protection: profile.protection, group: profile.shape === 'group', choices };
+    return { effect: profile.effect, name: profile.name, protection: profile.protection,
+      sourceSignatureKey: profile.sourceSignatureKey, range: profile.range,
+      group: profile.shape === 'group', choices };
   }
 
   performSupportAction(actor, anchor, actionType) {
@@ -1649,10 +1656,10 @@ export class EngineTactics {
       if (entry.effect === 'revive') this.invalidateActorActions(entry.unit);
       const applied = applyTacticsSupport(actor, entry);
       const point = this.getUnitScreenPosition(entry.unit.gridX, entry.unit.gridY);
-      const label = applied.amount > 0 ? `+${applied.amount} HP` : applied.cleansed ? 'CLEANSE' : entry.effect.toUpperCase();
+      const label = applied.amount > 0 ? `+${Math.round(applied.amount)} HP` : applied.cleansed ? 'CLEANSE' : entry.effect.toUpperCase();
       this.particles.add(point.x, point.y - 28, 0, -1, '#2ecc71', 11, 40, 'text', label);
     });
-    if (targets.length) this.playSfx('shield');
+    if (targets.length) this.playSfx(targets[0].effect === 'heal' ? 'heal' : 'shield');
     return targets;
   }
 
@@ -1699,6 +1706,10 @@ export class EngineTactics {
       return { handled: true, type: 'move', unit: this.activeUnit, x: c, y: r };
     } else if (this.actionPhase === 'action') {
       if (this.selectedAction === 'rex_stinger' && this.rexEncounter) return this.fireRexStingerAtCell(c, r);
+      // The support panel resolves live HP/status/geometry. Its highlighted
+      // cells must be refreshed too, otherwise a newly wounded ally is shown
+      // as selectable but refused by a stale range cache. Costs remain below.
+      if (getTacticsSupportProfile(this.activeUnit, this.selectedAction)) this.calculateAttackRange();
       const inRange = this.attackRange.some(cell => cell.x === c && cell.y === r);
       if (!inRange) return { handled: false, reason: 'out-of-range' };
 

@@ -71,9 +71,9 @@ export function getSignatureSummary(codex, lang = 'fr') {
   const limit = fr ? 'Adaptation jouable ; animation et fidélité 1:1 non certifiées.'
     : 'Playable adaptation; animation and 1:1 fidelity are not certified.';
   const healing = codex.key === 'aerith_ff7' ? (fr
-    ? ' Healing Wind soigne aussi la cellule vivante en Fighter, sans résurrection ni dégâts. Aucun lancement si aucun PV n’est récupérable.'
-    : ' Healing Wind also heals the living Fighter team, without revival or damage. No activation when no HP is recoverable.') : '';
-  return `${prefix} : ${codex.name}. ${stock ? cost.split(' Tactics')[0] : cost}${adaptation}${healing} ${limit}`;
+    ? ' Healing Wind soigne aussi la cellule vivante en Fighter et les alliés vivants en Tactics (5 cases, ligne de vue), jusqu’à 50 % de leurs PV maximum et dans la limite des PV récupérables. Ni purification, ni résurrection, ni dégâts. Aucun lancement si aucun PV n’est récupérable.'
+    : ' Healing Wind also heals the living Fighter team and living Tactics allies (5 cells, line of sight), up to 50% of their maximum HP within recoverable HP limits. No cleanse, revival or damage. No activation when no HP is recoverable.') : '';
+  return `${prefix} : ${codex.name}. ${stock || healing ? cost.split(' Tactics')[0] : cost}${adaptation}${healing} ${limit}`;
 }
 
 /** Booster candidates carry their exact underlying hero; names are not keys. */
