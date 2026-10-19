@@ -99,6 +99,45 @@ export function resolveTacticsSupport(engine, actor, actionType, anchor) {
     cleanses: getRpgCleansableStatuses(unit, profile.cleanses) }));
 }
 
+// Freeze the gameplay contract, not HP, buffs, movement or the whole actor.
+// A planned AI cast may re-evaluate range and recoverable HP, but cannot become
+// a newly equipped skill or affect a new life of a previously confirmed unit.
+const COMMITTED_SUPPORT_FIELDS = Object.freeze([
+  'effect', 'targetSide', 'shape', 'maxTargets', 'minTargets', 'range', 'minRange',
+  'areaRadius', 'lineWidth', 'coneAngle', 'multiplier', 'duration', 'buffMultiplier',
+  'healRatio', 'reviveRatio', 'guardReduce', 'requiresLineOfSight', 'blocksOnUnits',
+  'pierceObstacles', 'protection'
+]);
+export function captureTacticsSupportCommitment(engine, actor, actionType, entries) {
+  const action = actor?.[actionType];
+  const profile = getTacticsSupportProfile(actor, actionType);
+  if (!profile || !action || !Array.isArray(entries) || !entries.length) return () => false;
+  const contract = COMMITTED_SUPPORT_FIELDS.map(key => profile[key]);
+  const cleanses = Array.isArray(profile.cleanses) ? [...profile.cleanses] : profile.cleanses;
+  const cooldown = action.cd;
+  const side = engine.heroes.includes(actor) ? 'hero' : engine.enemies.includes(actor) ? 'enemy' : null;
+  const sourceId = actor.sourceId || actor.id;
+  const sourceUniverse = actor.sourceUniverse || actor.universe;
+  const lifetimes = new Map(entries.map(({ unit }) => [unit, engine.actorLifetimes.get(unit) || 0]));
+  return currentEntries => {
+    if (!side || !(side === 'hero' ? engine.heroes : engine.enemies).includes(actor)
+      || actor[actionType] !== action || !Object.is(action.cd, cooldown)
+      || (actor.sourceId || actor.id) !== sourceId
+      || (actor.sourceUniverse || actor.universe) !== sourceUniverse) return false;
+    if (actionType === 'special' && (!Number.isFinite(actor.specialCharge) || actor.specialCharge < 100)) return false;
+    if (actionType === 'secondary' && (!Number.isFinite(actor.cooldown) || actor.cooldown > 0)) return false;
+    const current = getTacticsSupportProfile(actor, actionType);
+    if (!current || !COMMITTED_SUPPORT_FIELDS.every((key, i) => Object.is(current[key], contract[i]))) return false;
+    if (Array.isArray(cleanses)) {
+      if (!Array.isArray(current.cleanses) || cleanses.length !== current.cleanses.length
+        || !cleanses.every((value, i) => Object.is(value, current.cleanses[i]))) return false;
+    } else if (!Object.is(cleanses, current.cleanses)) return false;
+    return Array.isArray(currentEntries) && currentEntries.length > 0
+      && currentEntries.every(({ unit }) => lifetimes.has(unit)
+        && (engine.actorLifetimes.get(unit) || 0) === lifetimes.get(unit));
+  };
+}
+
 export function applyTacticsSupport(actor, entry) {
   const { unit, profile } = entry;
   let amount = 0;

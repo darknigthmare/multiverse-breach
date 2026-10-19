@@ -5,7 +5,7 @@ import { absorbBattleItemDamage, grantBattleItemShield } from './battleItemShiel
 import { SYNERGIES_DB } from './heroes';
 import { getEffectiveCombatDefense, resolveArchetypeCombatStats } from './combatStatPreparation';
 import { applyCombatHealing } from './combatHealing.js';
-import { getTacticsSupportProfile, getTacticsSupportCandidates, resolveTacticsSupport, applyTacticsSupport, tickTacticsSupport, getTacticsSupportDamageMultiplier, getTacticsSupportGuard } from './tacticsSupport.js';
+import { captureTacticsSupportCommitment, getTacticsSupportProfile, getTacticsSupportCandidates, resolveTacticsSupport, applyTacticsSupport, tickTacticsSupport, getTacticsSupportDamageMultiplier, getTacticsSupportGuard } from './tacticsSupport.js';
 import { previewBattleItemDamage } from './battleItemShield.js';
 import { grantCombatEventBuff, tickCombatEventBuffs, getCombatEventDamageMultiplier, getCombatEventSpeedMultiplier } from './combatEventBuffs.js';
 import { getTacticsBattlefield, getTacticsMissionProfile } from './tacticsBattlefields';
@@ -2368,6 +2368,7 @@ export class EngineTactics {
       }
     }
     if (!best) return false;
+    const committedSupport = captureTacticsSupportCommitment(this, actor, best.actionType, best.entries);
     const moved = actor.gridX !== best.cell.x || actor.gridY !== best.cell.y;
     faceUnitToward(actor, best.cell);
     actor.gridX = best.cell.x; actor.gridY = best.cell.y;
@@ -2376,15 +2377,11 @@ export class EngineTactics {
     if (this.gameOver) return true;
     if (!this.isActiveCombatant(actor)) { this.endActiveTurn(); return true; }
     const anchor = { gridX: best.target.gridX, gridY: best.target.gridY };
-    const confirmed = new Set(best.entries.map(entry => entry.unit));
     this.actionPhase = 'resolving';
     this.scheduleTurn(() => {
-      const available = best.actionType === 'secondary' ? actor.cooldown <= 0
-        : best.actionType !== 'special' || actor.specialCharge >= 100;
       const entries = resolveTacticsSupport(this, actor, best.actionType, anchor);
-      // Identity is frozen: moving/replacing the chosen recipient cannot redirect the cast.
-      const valid = available && entries.some(entry => entry.unit === best.target)
-        && entries.every(entry => confirmed.has(entry.unit));
+      // Contract and target lifetimes are frozen; geometry and missing HP are not.
+      const valid = committedSupport(entries) && entries.some(entry => entry.unit === best.target);
       if (valid && this.performSupportAction(actor, anchor, best.actionType).length) {
         actor.state = 'attack'; actor.stateTimer = 25;
         if (best.actionType === 'secondary') actor.cooldown = Math.round((actor.secondary.cd ?? 3) * 60);

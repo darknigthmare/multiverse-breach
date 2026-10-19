@@ -339,8 +339,7 @@ export class EngineFighter {
       || state.used
       || !Number.isFinite(state.charge) || state.charge < 100
       || !this.canAct(attacker)
-      || !target
-      || target.currentHp <= 0
+      || !live(target)
     ) return false;
 
     const effect = state.super.effect || {};
@@ -358,7 +357,7 @@ export class EngineFighter {
     this.spawnBurst(this.width / 2, this.groundY - 90, state.super.color || '#ffea00', 42);
 
     this.getTeam(resolvedSide).fighters.forEach(fighter => {
-      if (fighter.currentHp <= 0) return;
+      if (!live(fighter)) return;
       fighter.currentHp = Math.min(
         fighter.maxHp,
         fighter.currentHp + fighter.maxHp * healRatio
@@ -408,8 +407,7 @@ export class EngineFighter {
       || state.used
       || !Number.isFinite(state.charge) || state.charge < 100
       || !this.canAct(attacker)
-      || !target
-      || target.currentHp <= 0
+      || !live(target)
       || target.invulnerable > 0
     ) return false;
 
@@ -447,7 +445,7 @@ export class EngineFighter {
     this.spawnBurst(target.x, target.y - 58, color, 24);
 
     this.getTeam(side).fighters.forEach(fighter => {
-      if (fighter.currentHp <= 0) return;
+      if (!live(fighter)) return;
       fighter.currentHp = Math.min(
         fighter.maxHp,
         fighter.currentHp + fighter.maxHp * healRatio
@@ -700,6 +698,12 @@ export class EngineFighter {
     Object.entries(this.teams).forEach(([side, team]) => {
       team.tagCooldown = Math.max(0, team.tagCooldown - dt);
       team.fighters.forEach((fighter, index) => {
+        // HP edits alone cannot revive a fighter still marked dead.
+        if (!live(fighter)) {
+          this.invalidateFighterLife(fighter);
+          fighter.state = 'dead'; fighter.guarding = false; fighter.crouching = false;
+          return;
+        }
         fighter.hitstun = Math.max(0, fighter.hitstun - dt);
         fighter.guardBreak = Math.max(0, fighter.guardBreak - dt);
         fighter.invulnerable = Math.max(0, fighter.invulnerable - dt);
@@ -774,9 +778,10 @@ export class EngineFighter {
     if (this.aiThink <= 0 && this.canAct(fighter)) {
       this.aiThink = this.difficulty.reaction * (0.75 + Math.random() * 0.7);
       const team = this.getTeam('cpu');
-      const healthierBench = team.fighters.find(candidate => candidate.index !== team.activeIndex && candidate.currentHp > fighter.currentHp * 1.45);
-      if (fighter.currentHp / fighter.maxHp < 0.3 && healthierBench && team.tagCooldown <= 0 && Math.random() < 0.7) {
-        this.requestTag('cpu', healthierBench.index);
+      const healthierIndex = team.fighters.findIndex((candidate, index) => index !== team.activeIndex
+        && live(candidate) && candidate.currentHp > fighter.currentHp * 1.45);
+      if (fighter.currentHp / fighter.maxHp < 0.3 && healthierIndex >= 0 && team.tagCooldown <= 0 && Math.random() < 0.7) {
+        this.requestTag('cpu', healthierIndex);
         return;
       }
       if (fighter.meter >= 100 && Math.random() < this.difficulty.aggression * 0.5) {
@@ -1054,26 +1059,30 @@ export class EngineFighter {
   }
 
   resolveKnockouts(dt) {
-    ['player', 'cpu'].forEach(side => {
+    if (!Number.isFinite(dt) || dt <= 0 || this.disposed || this.paused || this.finished
+      || this.countdown > 0 || this.hitStop > 0) return;
+    for (const side of ['player', 'cpu']) {
+      if (this.finished) break;
       const fighter = this.getActive(side);
-      if (!fighter || fighter.currentHp > 0 || fighter.koDelay <= 0) return;
-      fighter.koDelay -= dt;
-      this.applyPhysics(fighter, dt);
-      if (fighter.koDelay > 0) return;
-      const team = this.getTeam(side);
-      const next = team.fighters.find(candidate => candidate.currentHp > 0);
-      if (next) {
-        this.requestTag(side, next.index, true);
-      } else if (!this.finished) {
-        this.finish(side === 'cpu' ? 'victory' : 'defeat');
+      if (!fighter || live(fighter)) continue;
+      if (fighter.koDelay > 0) {
+        fighter.koDelay = Math.max(0, fighter.koDelay - dt);
+        this.applyPhysics(fighter, dt);
+        if (fighter.koDelay > 0) continue;
       }
-    });
+      const team = this.getTeam(side);
+      // Same eligibility as canTag: stale HP alone never revives a reserve.
+      // Use the roster slot, not mutable per-actor presentation metadata.
+      const nextIndex = team.fighters.findIndex((candidate, index) => index !== team.activeIndex && live(candidate));
+      if (nextIndex >= 0) this.requestTag(side, nextIndex, true);
+      else this.finish(side === 'cpu' ? 'victory' : 'defeat');
+    }
   }
 
   getTeamHealthRatio(side) {
     const team = this.getTeam(side).fighters;
     const max = team.reduce((total, fighter) => total + fighter.maxHp, 0) || 1;
-    return team.reduce((total, fighter) => total + fighter.currentHp, 0) / max;
+    return team.filter(live).reduce((total, fighter) => total + Math.min(fighter.currentHp, fighter.maxHp), 0) / max;
   }
 
   finishByTime() {
@@ -1145,7 +1154,7 @@ export class EngineFighter {
       victoryPose: this.getCosmetics(
         this.winnerSide || (this.result === 'victory' ? 'player' : 'cpu')
       ).victoryPose,
-      survivingFighters: this.getTeam('player').fighters.filter(fighter => fighter.currentHp > 0).length,
+      survivingFighters: this.getTeam('player').fighters.filter(live).length,
       rewards: this.result === 'victory'
         ? { gold: 45 + playerStats.kos * 12, shards: 15 + ({ S: 12, A: 8, B: 5, C: 2 }[grade] || 0), seasonXp: 28 + playerStats.kos * 5 }
         : { gold: 0, shards: 0, seasonXp: 8 }
@@ -1159,16 +1168,16 @@ export class EngineFighter {
         activeIndex: team.activeIndex,
         tagCooldown: team.tagCooldown,
         commandReady: this.canAct(this.getActive(side)),
-        fighters: team.fighters.map(fighter => ({
+        fighters: team.fighters.map((fighter, index) => ({
           id: fighter.id,
           name: fighter.name,
           currentHp: fighter.currentHp,
           maxHp: fighter.maxHp,
           meter: fighter.meter,
           guard: fighter.guard,
-          active: fighter.index === team.activeIndex,
-          canTag: this.canTag(side, fighter.index),
-          ko: fighter.currentHp <= 0
+          active: index === team.activeIndex,
+          canTag: this.canTag(side, index),
+          ko: !live(fighter)
         }))
       };
     };
@@ -1674,12 +1683,12 @@ export class EngineFighter {
     team.fighters.forEach((fighter, index) => {
       const offset = index * 96 * (reverse ? -1 : 1);
       const x = startX + offset;
-      ctx.fillStyle = fighter.currentHp <= 0 ? '#3a3036' : index === team.activeIndex ? '#ffea00' : '#39c5bb';
+      ctx.fillStyle = !live(fighter) ? '#3a3036' : index === team.activeIndex ? '#ffea00' : '#39c5bb';
       ctx.fillRect(reverse ? x - 88 : x, y, 88, 6);
       ctx.fillStyle = '#b8c9d0';
       ctx.textAlign = reverse ? 'right' : 'left';
       ctx.font = '9px "Share Tech Mono", monospace';
-      ctx.fillText(fighter.currentHp <= 0 ? 'KO' : String(fighter.name || '').slice(0, 12), reverse ? x : x, y + 15);
+      ctx.fillText(!live(fighter) ? 'KO' : String(fighter.name || '').slice(0, 12), reverse ? x : x, y + 15);
     });
   }
 
