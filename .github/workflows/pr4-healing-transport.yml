@@ -20,7 +20,7 @@ jobs:
             /scripts/
             /.github/workflows/
             /docs/audits/
-      - name: Decode and verify the reviewed patch, without executing repository code
+      - name: Verify source changes only; workflow changes require the connected GitHub writer
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -40,16 +40,19 @@ jobs:
           git fetch --no-tags --depth=1 origin de00b8806f76b996f034f057afcb4642617bd05a
           git checkout --detach de00b8806f76b996f034f057afcb4642617bd05a
           git apply --index /tmp/healing.patch
+          git restore --source=HEAD --staged --worktree .github/workflows/audit-reliability.yml
           git diff --cached --check
           python3 - <<'PY'
           import hashlib, json, subprocess
           from pathlib import Path
           m = json.loads(Path('/tmp/healing-manifest.json').read_text())
+          del m['files']['.github/workflows/audit-reliability.yml']
           actual = subprocess.check_output(['git','diff','--cached','--name-only','-z']).decode().strip('\0').split('\0')
-          assert sorted(actual) == sorted(m['files'])
+          assert sorted(actual) == sorted(m['files']) and len(actual) == 10
+          assert all(not p.startswith('.github/') for p in actual)
           for p, expected in m['files'].items():
               assert hashlib.sha256(Path(p).read_bytes()).hexdigest() == expected, p
-          print('All 11 staged files match the locally tested SHA-256 values.')
+          print('All 10 source files match their tested SHA-256 values; workflows unchanged.')
           PY
           git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'fix(tactics): integrate Healing Wind and refresh support targets before commitment'
           test "$(git rev-parse HEAD^)" = de00b8806f76b996f034f057afcb4642617bd05a
