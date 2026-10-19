@@ -1,0 +1,93 @@
+name: PR4 verified controls transfer
+on:
+  push:
+    branches: [codex/pr4-controls-transfer-8eef]
+permissions:
+  contents: write
+jobs:
+  transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /.github/
+            /docs/audits/
+      - name: Apply the reviewed patch to its exact parent and verify every output
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp .github/pr4-controls.patch.gz /tmp/pr4-controls.patch.gz
+          git checkout --detach 8eef2fe0c7fadc15ec6449f432ebb03c4c7d10d8
+          python3 - <<'PY'
+          import gzip, hashlib, json, pathlib, subprocess
+          base = '8eef2fe0c7fadc15ec6449f432ebb03c4c7d10d8'
+          expected = {
+            '.github/workflows/audit-reliability.yml': '8f3746e45dc3ff7268edf7b7fbc2d98655f3b05eca03d7521acc9044b67c4dc6',
+            'docs/audits/pr4-fighter-controls-2026-10-19.md': 'fd0a9a2f88d66eae463d71e1668c09e9eaa92f1409e6fc33eed8208c1c28f299',
+            'package.json': 'af7d292544c95a3a9deb5d30a9764a9501e3537b6cb5a749fe108401ff88bfb3',
+            'scripts/browserFighterLifecycle.py': 'f7763da9af47def60db37f789f1de84512a5fdcbf4fe95e9fc0cf8a214c24962',
+            'scripts/fixedStepClock.test.mjs': 'cd6d2f2b5763eab934ccb7707c971beb48446d474dc64efb08f4151f5e9c813a',
+            'scripts/reauditDelivery.test.mjs': '15d0630aee4aa822d07cd5b693503747d21c4859ca51d8fd6f3a845524b2193f',
+            'scripts/reauditFighterInputs.test.mjs': '934456fdd220bc37a23d925e80282205c4eb7d8b39f8ebd98d99aeb8af1131e0',
+            'src/components/FighterMode.jsx': '9b2212c30c43d90e3b1058d5d7a34d7a15a871d1b66400e0b7405861dd3db0e4',
+            'src/game/engineFighter.js': 'a64c5c0e72e88d9179f575b560003bb5dcc1d54a120f20aed9ebfe8714cebcba',
+            'src/game/fighterControlOwnership.js': 'c53365ecd60fba7b533a9295bfa355530cc66d0cb503f8be6e5e68c752f7735b'
+          }
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True).strip()
+          assert git('rev-parse', 'HEAD') == base
+          patch = gzip.decompress(pathlib.Path('/tmp/pr4-controls.patch.gz').read_bytes())
+          assert hashlib.sha256(patch).hexdigest() == '8baecb8a30ec3534edba841544a95a50143ff2df7dc717fe8ae68d3ef71be1b9'
+          patch_file = pathlib.Path('/tmp/pr4-controls.patch')
+          patch_file.write_bytes(patch)
+          subprocess.run(['git', 'apply', '--unidiff-zero', '--index', '--check', str(patch_file)], check=True)
+          subprocess.run(['git', 'apply', '--unidiff-zero', '--index', str(patch_file)], check=True)
+          changed = set(git('diff', '--cached', '--name-only').splitlines())
+          assert changed == set(expected), (changed, set(expected))
+          for name, digest in expected.items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() == digest, name
+          subprocess.run(['git', 'diff', '--cached', '--check'], check=True)
+          tree = git('write-tree')
+          message = 'fix(fighter): bind controls to the active combatant and repair lifecycle validation'
+          commit = git('-c', 'user.name=Multiverse maintenance', '-c', 'user.email=noreply@github.com', 'commit-tree', tree, '-p', base, '-m', message)
+          assert set(git('diff', '--name-only', base, commit).splitlines()) == set(expected)
+          assert git('rev-parse', commit + '^') == base
+          output = pathlib.Path('/tmp/pr4-verified')
+          output.mkdir()
+          (output / 'candidate.json').write_text(json.dumps({'parent': base, 'commit': commit, 'tree': tree, 'files': expected}, indent=2) + '\n')
+          (output / 'candidate-sha.txt').write_text(commit + '\n')
+          print(json.dumps({'verifiedFiles': len(expected), 'commit': commit, 'tree': tree}))
+          PY
+      - name: Publish verified commit on a temporary result branch only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/pr4-askpass <<'SH'
+          #!/bin/sh
+          case "$1" in
+            *Username*) printf '%s\n' x-access-token ;;
+            *Password*) printf '%s\n' "$GH_TOKEN" ;;
+            *) exit 1 ;;
+          esac
+          SH
+          chmod 700 /tmp/pr4-askpass
+          trap 'rm -f /tmp/pr4-askpass' EXIT
+          export GIT_ASKPASS=/tmp/pr4-askpass GIT_TERMINAL_PROMPT=0
+          candidate=$(cat /tmp/pr4-verified/candidate-sha.txt)
+          git -c credential.helper= push origin "$candidate:refs/heads/codex/pr4-controls-verified-8eef"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr4-controls-verified
+          path: /tmp/pr4-verified/
+          retention-days: 3
