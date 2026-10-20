@@ -11,6 +11,8 @@ const roster = ['qa-target', 'qa-reserve', 'qa-third'].map(id => ({ id, name: id
 const stage = { id: 'qa-tactics-attack', name: 'Deferred tactical attack QA', universe: 'Nexus de Convergence', mode: 'Tactics',
   disableItems: true, disableHazards: true,
   customBattle: { singleRoster: true, opponentControl: 'p2', enemyData: { customRoster: roster, monsters: roster, bosses: [], worldBoss: null } } };
+// Keep roster identity stable when the harness toggles pause.
+const team = ['player_anchor', 'arca_bastion', 'cloud_ff7'];
 const audit = { engine: null, results: [], storage: JSON.stringify(Object.entries(localStorage)), caster: null, target: null };
 window.__tacticsAttackAudit = audit;
 const update = EngineTactics.prototype.update;
@@ -56,7 +58,7 @@ export function Harness() {
   return <><header style={{ padding: 12 }}><span>Prepared QA state — native tactical AI. </span>
     <button id="qa-pause" onClick={() => setPaused(v => !v)}>{paused ? 'Resume QA' : 'Pause QA'}</button>
     <button id="qa-unmount" onClick={() => setMounted(false)}>Unmount QA</button></header>
-    {mounted && <GameCanvas lang={lang} playerProfile={{ name: 'QA' }} activeTeam={['player_anchor', 'arca_bastion', 'cloud_ff7']}
+    {mounted && <GameCanvas lang={lang} playerProfile={{ name: 'QA' }} activeTeam={team}
       stage={stage} heroLevels={{}} equippedGear={{}} equippedEventItems={{}} heroTalents={{}} heroSkins={{}} completedStages={[]}
       sessionPaused={paused} onBattleEnd={(...r) => audit.results.push(r)} onSessionComplete={(...r) => audit.results.push(r)} />}</>;
 }
