@@ -1,0 +1,42 @@
+name: PR5 exact source verification
+on:
+  push:
+    branches: [codex/pr5-verify-2026-10-20]
+    paths: [.github/workflows/pr5-source-verification.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ce225b4e24a5f99820a0eaaecf2854ed52fd1fe9
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /src/
+            /scripts/
+            /api/
+            /supabase/
+            /.github/workflows/
+            /docs/audits/
+            **/*.json
+            **/*.jsonl
+      - name: Archive allowlisted source and verify revision
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = ce225b4e24a5f99820a0eaaecf2854ed52fd1fe9
+          mkdir -p /tmp/pr5-source
+          git rev-parse HEAD > /tmp/pr5-source/commit.txt
+          git ls-tree -r HEAD > /tmp/pr5-source/git-tree.txt
+          tar -czf /tmp/pr5-source/source.tgz src scripts api supabase .github/workflows docs/audits public package.json package-lock.json vite.config.js .oxlintrc.json index.html .nvmrc
+          sha256sum /tmp/pr5-source/source.tgz > /tmp/pr5-source/source.sha256
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr5-source-ce225b4e
+          path: /tmp/pr5-source/
+          retention-days: 3
