@@ -1,0 +1,77 @@
+name: PR5 verified contact source blobs
+on:
+  push:
+    branches: [codex/pr5-verify-2026-10-20]
+    paths: [.github/workflows/pr5-contact-blobs.yml]
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          path: transfer
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.audit-transfer/
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ce225b4e24a5f99820a0eaaecf2854ed52fd1fe9
+          path: source
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /src/
+            /scripts/
+            /docs/audits/
+            /.github/workflows/
+      - name: Verify reviewed patch and every resulting file
+        run: |
+          python3 - <<'PY'
+          import base64, gzip, hashlib, json, pathlib, subprocess
+          root=pathlib.Path('source').resolve()
+          def git(*args): return subprocess.check_output(['git',*args],cwd=root,text=True).strip()
+          assert git('rev-parse','HEAD')=='ce225b4e24a5f99820a0eaaecf2854ed52fd1fe9'
+          assert git('rev-parse','HEAD^{tree}')=='bea06789c7e7f9a687b4714dff56624e5d6d35f8'
+          encoded=''.join(pathlib.Path(f'transfer/.audit-transfer/contact-{i}.b64').read_text().strip() for i in range(3))
+          assert len(encoded)==21384,len(encoded)
+          patch=gzip.decompress(base64.b64decode(encoded,validate=True))
+          assert hashlib.sha256(patch).hexdigest()=='d15e352e0646a43dfc2115ac0128f126dac9e722579f12486f4e2953aef94f1d'
+          patchfile=pathlib.Path('/tmp/contact.patch');patchfile.write_bytes(patch)
+          subprocess.run(['git','apply','--check','--index',str(patchfile)],cwd=root,check=True)
+          subprocess.run(['git','apply','--index',str(patchfile)],cwd=root,check=True)
+          expected={'.github/workflows/audit-reliability.yml':'ee33543f490b7ed450f71ada7257383cff87d66e6ab1d2a837c956869fa3c282','docs/audits/pr5-fighter-contact-signatures-2026-10-20.md':'97c7b2481c92c953afe52f54c7e3d321f30a5494c63a2cc51086b3a16cfd7243','scripts/browserFighterMelee.py':'b5138f6665c3ae9a050acdda8d9248e8eb755ddb081d8bab261035fd2e3cd24c','scripts/fixtures/fighter-melee.html':'144eca4b351906261ee9fb382bf9959479d0f24f35016d0a707431ab51dc840c','scripts/fixtures/fighterMeleeHarness.jsx':'f5ee88e7bf09fd881967be85d9f77f245a92756644817e9bfc83acb57d961727','scripts/reauditFighterMelee.test.mjs':'9ff04ca5ee5194bee712be8412dfcc2dcd3c4dbbcef5bdeca0fcb5db7ed77014','src/game/engineFighter.js':'a7c11cdc60ed72379de71b0b338c2ba305bd5e119e2695d6ab279cd82ae94c0e','src/game/fighterMeleeSignatures.js':'4452060f718b9bd5a3bca11c774b5a840dbe175574ddc7464cdc80138d9f5bdf','src/game/signatureCodex.js':'2b6dbfc20623dfb171d7353b0a54f63e7a2f94ec31ad5a9e07b884935a8042f6'}
+          assert set(git('diff','--cached','--name-only').splitlines())==set(expected)
+          entries=[]
+          for path,digest in expected.items():
+            raw=(root/path).read_bytes()
+            assert hashlib.sha256(raw).hexdigest()==digest,path
+            entries.append({'path':path,'sha256':digest,'gitSha':hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest(),'content':base64.b64encode(raw).decode()})
+          pathlib.Path('/tmp/contact-blobs-input.json').write_text(json.dumps(entries))
+          print('Nine tested files verified. No application code executed, no refs changed.')
+          PY
+      - name: Store verified blob objects only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, urllib.request
+          output=pathlib.Path('/tmp/contact-evidence');output.mkdir()
+          entries=json.loads(pathlib.Path('/tmp/contact-blobs-input.json').read_text())
+          results=[]
+          for entry in entries:
+            payload=json.dumps({'content':entry['content'],'encoding':'base64'}).encode()
+            request=urllib.request.Request('https://api.github.com/repos/darknigthmare/multiverse-breach/git/blobs',data=payload,method='POST',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'})
+            with urllib.request.urlopen(request,timeout=30) as response: result=json.load(response)
+            assert result['sha']==entry['gitSha'],entry['path']
+            results.append({'path':entry['path'],'sha':result['sha'],'sha256':entry['sha256'],'mode':'100644','type':'blob'})
+          (output/'blobs.json').write_text(json.dumps(results,indent=2))
+          print(json.dumps(results,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr5-verified-contact-blobs
+          path: /tmp/contact-evidence/
+          retention-days: 3
