@@ -1,3 +1,4 @@
+import { prepareFighterMelee, getFighterMeleeDefinition, createFighterMeleeSignatures, splitFighterMeleeDamage } from './fighterMeleeSignatures.js';
 import { prepareFighterHealing, getFighterHealingDefinition, createFighterHealing } from './fighterHealing.js';
 import { prepareStockMedic, getStockMedicDefinition, createFighterMedicSupport } from './stockMedicModes.js';
 import { drawCosmeticAtlasFrame, drawPixelSprite } from './renderer';
@@ -142,6 +143,8 @@ export class EngineFighter {
     };
     Object.values(this.teams).forEach(team => team.fighters.forEach(actor => prepareStockMedic(actor, 'Fighter')));
     Object.values(this.teams).forEach(team => team.fighters.forEach(prepareFighterHealing));
+    Object.values(this.teams).forEach(team => team.fighters.forEach(prepareFighterMelee));
+    this.fighterMelee = createFighterMeleeSignatures(this);
     this.fighterHealing = createFighterHealing(this);
     this.medicSupport = createFighterMedicSupport(this);
     this.inputs = { player: {}, cpu: {} };
@@ -237,6 +240,7 @@ export class EngineFighter {
     this.projectiles.length = 0;
     this.medicSupport.dispose();
     this.fighterHealing.dispose();
+    this.fighterMelee.dispose();
     Object.values(this.teams).forEach(team => team.fighters.forEach(fighter => {
       fighter.action = null;
       fighter.guarding = false;
@@ -261,6 +265,7 @@ export class EngineFighter {
 
   invalidateFighterLife(actor) {
     this.fighterHealing.onKnockout(actor);
+    this.fighterMelee.onKnockout(actor);
     this.medicSupport.onKnockout(actor);
     actor.action = null;
     // A projectile may outlive a voluntary tag, never its owner's life.
@@ -512,6 +517,7 @@ export class EngineFighter {
     if (!this.canAct(fighter) || fighter.meter < 100) return false;
     const medic = getStockMedicDefinition(fighter, 'Fighter');
     if (medic) return !this.medicSupport.active(fighter) && this.medicSupport.canLink(fighter, fighter, medic);
+    if (getFighterMeleeDefinition(fighter)) return this.fighterMelee.available(fighter);
     return !getFighterHealingDefinition(fighter) || this.fighterHealing.available(fighter);
   }
 
@@ -528,6 +534,8 @@ export class EngineFighter {
       super: { duration: 0.92, hitAt: 0.45, base: 43, range: this.width, guardDamage: 42, knockback: 330, meterCost: 100 }
     };
     if (type === 'super' && !this.canUseSuper(side)) return false;
+    const melee = type === 'super' && getFighterMeleeDefinition(fighter) ? this.fighterMelee.prepare(fighter) : null;
+    if (melee) specs.super = { ...specs.super, ...melee };
     const healing = type === 'super' && getFighterHealingDefinition(fighter) ? this.fighterHealing.prepare(fighter) : null;
     if (healing) specs.super = { ...specs.super, base: 0, range: 0, guardDamage: 0, knockback: 0, healing };
     const stockMedic = type === 'super' ? getStockMedicDefinition(fighter, 'Fighter') : null;
@@ -557,6 +565,7 @@ export class EngineFighter {
     fighter.guarding = false;
     fighter.state = 'attack';
     fighter.action = { ...spec, type, facing: fighter.facing, elapsed: 0, resolved: false };
+    if (melee) this.fighterMelee.bind(melee.meleeSignature, fighter.action);
     this.playSfx(type === 'light' ? 'slash' : type === 'heavy' ? 'hit' : 'special');
     if (type === 'super') {
       this.announcement = fighter.special?.name || 'RUPTURE ULTIME';
@@ -593,6 +602,7 @@ export class EngineFighter {
     const nextIndex = Number(index);
     const next = team.fighters[nextIndex];
     this.medicSupport.onKnockout(active);
+    this.fighterMelee.onDeparture(active);
     this.clearSideInput(side);
     active.action = null;
     active.guarding = false;
@@ -850,9 +860,11 @@ export class EngineFighter {
       const fighter = this.getActive(side);
       const target = this.getOpponent(side);
       if (!fighter?.action || fighter.currentHp <= 0) return;
+      if (fighter.action.meleeSignature && this.hitStop > 0) return;
       fighter.action.elapsed += dt;
       const action = fighter.action;
-      if (!action.resolved && action.elapsed >= action.hitAt) {
+      if (action.meleeSignature) this.fighterMelee.advance(action.meleeSignature);
+      else if (!action.resolved && action.elapsed >= action.hitAt) {
         action.resolved = true;
         if (action.healing) {
           const healed = this.fighterHealing.apply(action.healing);
@@ -1005,12 +1017,15 @@ export class EngineFighter {
             : 0.24;
       target.state = 'hit';
       target.vx = hitDirection * knockback;
-      target.vy = action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
+      target.vy = action.meleeContact && !action.meleeContact.final ? 0
+        : action.type === 'super' ? -235 : action.type === 'heavy' ? -130 : -60;
       this.playSfx(projectile ? 'shoot' : 'hit');
       this.spawnBurst(target.x, target.y - 60, attacker.secondaryColor || '#ff5a36', action.type === 'super' ? 26 : 12);
       this.hitStop = action.type === 'super' ? 0.1 : action.type === 'heavy' ? 0.055 : 0.025;
     }
 
+    // Divide only after native defences/guard and the full-super minimum.
+    damage = splitFighterMeleeDamage(damage, action.meleeContact);
     // Only HP actually removed feeds score, meters and post-match rewards.
     damage = Math.min(target.currentHp, Math.round(damage * 10) / 10);
     target.currentHp = Math.max(0, target.currentHp - damage);
