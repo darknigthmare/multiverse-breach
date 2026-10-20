@@ -52,7 +52,7 @@ audit.prepare = kind => {
   return audit.snapshot();
 };
 export function Harness() {
-  const [paused, setPaused] = useState(true), [mounted, setMounted] = useState(true);
+  const [paused, setPaused] = useState(false), [mounted, setMounted] = useState(true);
   return <><header style={{ padding: 12 }}><span>Prepared QA state — native tactical AI. </span>
     <button id="qa-pause" onClick={() => setPaused(v => !v)}>{paused ? 'Resume QA' : 'Pause QA'}</button>
     <button id="qa-unmount" onClick={() => setMounted(false)}>Unmount QA</button></header>

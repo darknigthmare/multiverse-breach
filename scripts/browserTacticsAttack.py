@@ -34,7 +34,11 @@ def main():
                 page.on('console', lambda m: errors.append(m.text) if m.type == 'error' and 'Combat render loop failed' in m.text else None)
                 try:
                     page.goto(base + '/scripts/fixtures/tactics-attack.html?' + urlencode({'side': side, 'lang': lang}))
-                    page.wait_for_function('window.__tacticsAttackAudit?.engine?.paused && !window.__tacticsAttackAudit.engine.disposed')
+                    # Let the real component render once before entering pause.
+                    # A session born paused never calls update(), our observation point.
+                    page.wait_for_function('window.__tacticsAttackAudit?.engine && !window.__tacticsAttackAudit.engine.disposed')
+                    page.locator('#qa-pause').click()
+                    page.wait_for_function('window.__tacticsAttackAudit.engine.paused')
                     for kind in ['valid', 'revived', 'skill', 'blocked']:
                         step = kind
                         before = page.evaluate('(kind) => window.__tacticsAttackAudit.prepare(kind)', kind)
@@ -62,6 +66,10 @@ def main():
                 except Exception as error:
                     failure = {'name': name, 'passed': False, 'step': step, 'error': str(error), 'errors': errors, 'checks': checks}
                     results.append(failure)
+                    try:
+                        failure['state'] = page.evaluate('window.__tacticsAttackAudit?.snapshot()')
+                    except Exception as state_error:
+                        failure['stateError'] = str(state_error)
                     try:
                         page.screenshot(path=str(out / f'{name}-FAILED.png'), full_page=True, timeout=5000)
                     except Exception as capture_error:
