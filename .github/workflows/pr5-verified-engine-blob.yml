@@ -1,0 +1,51 @@
+name: PR5 verified tactical engine blob
+on:
+  push:
+    branches: [codex/pr5-audit-snapshot-2026-10-20]
+    paths: [.github/workflows/pr5-verified-engine-blob.yml]
+permissions:
+  contents: write
+jobs:
+  verified-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          path: transfer
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /.audit-transfer/tactics-attack-native.patch
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: 964b355b99c8ddbab07e9a276061c4010eb9e144
+          persist-credentials: false
+          path: source
+          sparse-checkout-cone-mode: false
+          sparse-checkout: /src/game/engineTactics.js
+      - name: Apply only reviewed source patch and check exact tested content
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, pathlib, subprocess
+          root = pathlib.Path('source').resolve()
+          patch = pathlib.Path('transfer/.audit-transfer/tactics-attack-native.patch').resolve()
+          assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip() == '964b355b99c8ddbab07e9a276061c4010eb9e144'
+          subprocess.run(['git','apply','--check','--index',str(patch)],cwd=root,check=True)
+          subprocess.run(['git','apply','--index',str(patch)],cwd=root,check=True)
+          paths = subprocess.check_output(['git','diff','--cached','--name-only'],cwd=root,text=True).splitlines()
+          assert paths == ['src/game/engineTactics.js'], paths
+          data = (root/paths[0]).read_bytes()
+          assert hashlib.sha256(data).hexdigest() == '6cdc2b0ac0d2817c449e8fe7a69a979ed35fb9674aa69661a885243fa2794189'
+          assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest() == '853d8f0603825a3ddaca2f344b51b41da4ba994c'
+          pathlib.Path('/tmp/blob-input.json').write_text(json.dumps({'content':data.decode(),'encoding':'utf-8'}))
+          print('Verified exact tactical engine content; no application code executed.')
+          PY
+      - name: Store verified blob only, no branch update
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          sha=$(gh api --method POST repos/darknigthmare/multiverse-breach/git/blobs --input /tmp/blob-input.json --jq .sha)
+          test "$sha" = '853d8f0603825a3ddaca2f344b51b41da4ba994c'
+          echo "Verified source blob: $sha"
