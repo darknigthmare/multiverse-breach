@@ -1,3 +1,4 @@
+import { FIGHTER_MELEE_SIGNATURE_KEYS } from './fighterMeleeSignatures.js';
 import { prepareSourceSignature } from './signatureSourceKits.js';
 
 /** Read-only view of the exact battle preparation contract. Never changes a
@@ -71,9 +72,12 @@ export function getSignatureSummary(codex, lang = 'fr') {
   const limit = fr ? 'Adaptation jouable ; animation et fidélité 1:1 non certifiées.'
     : 'Playable adaptation; animation and 1:1 fidelity are not certified.';
   const healing = codex.key === 'aerith_ff7' ? (fr
-    ? ' Healing Wind soigne aussi la cellule vivante en Fighter, sans résurrection ni dégâts. Aucun lancement si aucun PV n’est récupérable.'
-    : ' Healing Wind also heals the living Fighter team, without revival or damage. No activation when no HP is recoverable.') : '';
-  return `${prefix} : ${codex.name}. ${stock ? cost.split(' Tactics')[0] : cost}${adaptation}${healing} ${limit}`;
+    ? ' Healing Wind soigne aussi la cellule vivante en Fighter et les alliés vivants en Tactics (5 cases, ligne de vue), jusqu’à 50 % de leurs PV maximum et dans la limite des PV récupérables. Ni purification, ni résurrection, ni dégâts. Aucun lancement si aucun PV n’est récupérable.'
+    : ' Healing Wind also heals the living Fighter team and living Tactics allies (5 cells, line of sight), up to 50% of their maximum HP within recoverable HP limits. No cleanse, revival or damage. No activation when no HP is recoverable.') : '';
+  const fighterMelee = FIGHTER_MELEE_SIGNATURE_KEYS.includes(codex.key) ? (fr
+    ? ` Fighter : ${codex.hits} contact(s) à courte portée sur l’adversaire actif confirmé, sans toucher les réservistes. La puissance totale est répartie entre les contacts ; sortie de portée, esquive et garde restent applicables. Préparation et récupération adaptées à ce mode.`
+    : ` Fighter: ${codex.hits} close-range contact(s) against the confirmed active opponent, never reserves. The total damage budget is split between contacts; moving out of reach, dodging and guarding still apply. Windup and recovery are adapted to this mode.`) : '';
+  return `${prefix} : ${codex.name}. ${stock || healing ? cost.split(' Tactics')[0] : cost}${adaptation}${healing}${fighterMelee} ${limit}`;
 }
 
 /** Booster candidates carry their exact underlying hero; names are not keys. */

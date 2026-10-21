@@ -1,3 +1,5 @@
+import { canUseTacticsAttack, captureTacticsAttackCommitment } from './tacticsAttackCommitment.js';
+import { prepareTacticsHealing } from './tacticsSourceHealing.js';
 // FF Tactics / Metal Slug Tactics Grid Battle Engine with Obstacles & Synergies
 import { prepareStockMedic, createTacticsMedicSupport, getTacticsMedicDefinition } from './stockMedicModes.js';
 import { drawPixelSprite, drawPixelEnemy, drawBoss, drawCombatantBust } from './renderer';
@@ -174,7 +176,10 @@ export class EngineTactics {
       ? enemiesData.customRoster.some(enemy => enemy.isBoss || enemy.isWorldBoss)
       : (enemiesData.bosses?.length || 0) > 0 || !!enemiesData.worldBoss;
     this.initBoard();
-    [...this.heroes, ...this.enemies].forEach(actor => prepareStockMedic(actor, 'Tactics'));
+    [...this.heroes, ...this.enemies].forEach(actor => {
+      prepareStockMedic(actor, 'Tactics');
+      prepareTacticsHealing(actor);
+    });
     this.medicSupport = createTacticsMedicSupport(this);
     [...this.heroes, ...this.enemies].forEach(unit => {
       const ammunition = getBlackPearlSourceAmmunition(unit);
@@ -320,9 +325,12 @@ export class EngineTactics {
       enemy.special = { name: enemy.special, dmg: 1.7 };
     }
     enemy.defense ||= { name: 'Guard', reduce: 0.4, dur: 1.2 };
-    enemy.cooldown = Number(enemy.cooldown) || 0;
-    enemy.specialCharge = Number(enemy.specialCharge) || 0;
+    // Only initialize absent runtime resources. Reopening P2 commands must
+    // not turn malformed values into a ready cooldown or a usable limit.
+    if (enemy.cooldown === undefined) enemy.cooldown = 0;
+    if (enemy.specialCharge === undefined) enemy.specialCharge = 0;
     prepareStockMedic(enemy, 'Tactics');
+    prepareTacticsHealing(enemy);
     return enemy;
   }
 
@@ -890,6 +898,8 @@ export class EngineTactics {
       ? this.normalizeEnemyActions(this.activeUnit)
       : this.activeUnit;
     if (!unit?.[selected]) return false;
+    if (selected !== 'defense' && !getTacticsSupportProfile(unit, selected)
+      && !canUseTacticsAttack(this, unit, selected)) return false;
     if (selected === 'secondary' && (!Number.isFinite(unit.cooldown) || unit.cooldown > 0)) return false;
     if (getBlackPearlSourceAmmunition(unit, selected) && unit.sourceAmmoRemaining <= 0) return false;
     if (selected === 'special' && (!Number.isFinite(unit.specialCharge) || unit.specialCharge < 100)) return false;
@@ -1599,11 +1609,12 @@ export class EngineTactics {
     });
   }
 
-  applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType) {
+  applyProfiledAttack(attacker, target, actionType, baseDamage, statusEffect = null, attackerType = this.activeUnitType, commitment = null) {
     if (!this.isActiveCombatant(attacker) || this.disposed || this.paused || this.gameOver || !this.canAttackCell(attacker, target, actionType)) return [];
     if (getTacticsSupportProfile(attacker, actionType)) return this.performSupportAction(attacker, target, actionType);
     if (!Number.isFinite(baseDamage) || baseDamage < 0) return [];
-    const targets = this.getAttackTargets(attacker, target, actionType, attackerType);
+    const targets = this.getAttackTargets(attacker, target, actionType, attackerType)
+      .filter(entry => !commitment || commitment.accepts(entry.unit));
     const ammunition = getBlackPearlSourceAmmunition(attacker, actionType);
     if (ammunition) {
       if (attacker.sourceAmmoRemaining <= 0 || targets.length === 0
@@ -1614,6 +1625,7 @@ export class EngineTactics {
     const canonEffect = resolveCanonHeroAttackEffect(attacker, action);
     if (canonEffect) this.playSfx(canonEffect.sfx);
     targets.forEach(entry => {
+      if (this.gameOver || this.disposed || (commitment && !commitment.accepts(entry.unit))) return;
       if (canonEffect) {
         emitCanonHeroAttackEffect(
           this.particles,
@@ -1634,7 +1646,9 @@ export class EngineTactics {
       const targets = resolveTacticsSupport(this, this.activeUnit, this.selectedAction, unit);
       return { unit, targets };
     }).filter(choice => choice.targets.length);
-    return { effect: profile.effect, name: profile.name, protection: profile.protection, group: profile.shape === 'group', choices };
+    return { effect: profile.effect, name: profile.name, protection: profile.protection,
+      sourceSignatureKey: profile.sourceSignatureKey, range: profile.range,
+      group: profile.shape === 'group', choices };
   }
 
   performSupportAction(actor, anchor, actionType) {
@@ -1649,10 +1663,10 @@ export class EngineTactics {
       if (entry.effect === 'revive') this.invalidateActorActions(entry.unit);
       const applied = applyTacticsSupport(actor, entry);
       const point = this.getUnitScreenPosition(entry.unit.gridX, entry.unit.gridY);
-      const label = applied.amount > 0 ? `+${applied.amount} HP` : applied.cleansed ? 'CLEANSE' : entry.effect.toUpperCase();
+      const label = applied.amount > 0 ? `+${Math.round(applied.amount)} HP` : applied.cleansed ? 'CLEANSE' : entry.effect.toUpperCase();
       this.particles.add(point.x, point.y - 28, 0, -1, '#2ecc71', 11, 40, 'text', label);
     });
-    if (targets.length) this.playSfx('shield');
+    if (targets.length) this.playSfx(targets[0].effect === 'heal' ? 'heal' : 'shield');
     return targets;
   }
 
@@ -1699,6 +1713,10 @@ export class EngineTactics {
       return { handled: true, type: 'move', unit: this.activeUnit, x: c, y: r };
     } else if (this.actionPhase === 'action') {
       if (this.selectedAction === 'rex_stinger' && this.rexEncounter) return this.fireRexStingerAtCell(c, r);
+      // The support panel resolves live HP/status/geometry. Its highlighted
+      // cells must be refreshed too, otherwise a newly wounded ally is shown
+      // as selectable but refused by a stale range cache. Costs remain below.
+      if (getTacticsSupportProfile(this.activeUnit, this.selectedAction)) this.calculateAttackRange();
       const inRange = this.attackRange.some(cell => cell.x === c && cell.y === r);
       if (!inRange) return { handled: false, reason: 'out-of-range' };
 
@@ -1707,6 +1725,8 @@ export class EngineTactics {
       if (this.selectedAction !== 'rex_stinger' && !unit[this.selectedAction]) return { handled: false, reason: 'unavailable' };
       if (this.selectedAction === 'secondary' && (!Number.isFinite(unit.cooldown) || unit.cooldown > 0)) return { handled: false, reason: 'cooldown' };
       if (this.selectedAction === 'special' && (!Number.isFinite(unit.specialCharge) || unit.specialCharge < 100)) return { handled: false, reason: 'charge' };
+      if (this.selectedAction !== 'defense' && !getTacticsSupportProfile(unit, this.selectedAction)
+        && !canUseTacticsAttack(this, unit, this.selectedAction)) return { handled: false, reason: 'unavailable' };
       if (!this.canAttackCell(unit, { gridX: c, gridY: r }, this.selectedAction)) return { handled: false, reason: 'blocked' };
       if (getTacticsSupportProfile(unit, this.selectedAction)) {
         const actionType = this.selectedAction;
@@ -1780,7 +1800,7 @@ export class EngineTactics {
             if (getBlackPearlSourceAmmunition(attacker, 'secondary') && attacker.sourceAmmoRemaining <= 0) return { handled: false, reason: 'ammunition-depleted' };
             attacker.state = 'attack';
             attacker.stateTimer = 25;
-            attacker.cooldown = (attacker.secondary?.cd || 3) * 60;
+            attacker.cooldown = (attacker.secondary?.cd ?? 3) * 60;
             if (!resolveCanonHeroAttackEffect(attacker, attacker.secondary)) this.playSfx('shoot');
             
             this.applyProfiledAttack(
@@ -2489,25 +2509,25 @@ export class EngineTactics {
     // facing, even when this turn ultimately cannot fire.
     faceUnitToward(enemy, attackTarget || closestHero);
     const attackAnchor = this.getAttackAnchorForTarget(enemy, attackTarget, 'enemy', 'enemy');
+    const committedAttack = captureTacticsAttackCommitment(this, enemy, 'enemy',
+      attackAnchor ? this.getAttackTargets(enemy, attackAnchor, 'enemy', 'enemy') : [], 'enemy');
+    let status = null;
+    if (enemy.name.includes('Nemesis')) status = 'infected';
+    if (enemy.name.includes('Smith')) status = 'glitched';
+    if (enemy.name.includes('Deathclaw') || enemy.name.includes('Cyberdemon')) status = 'radiated';
 
     this.scheduleTurn(() => {
-      const targetHp = attackTarget.hp ?? attackTarget.currentHp;
-      if (attackAnchor && targetHp > 0 && this.canAttackCell(enemy, attackAnchor, 'enemy')
+      if (!committedAttack.canResolve()) { this.endActiveTurn(); return; }
+      if (attackAnchor && committedAttack.accepts(attackTarget) && this.canAttackCell(enemy, attackAnchor, 'enemy')
         && this.getAttackTargets(enemy, attackAnchor, 'enemy', 'enemy').some(entry => entry.unit === attackTarget)) {
         faceUnitToward(enemy, attackAnchor);
         enemy.state = 'attack';
         enemy.stateTimer = 20;
         this.playSfx(enemy.weapon === 'gun' || enemy.weapon === 'laser' ? 'shoot' : 'slash');
 
-        // Chance to inflict status effects by bosses
-        let status = null;
-        if (enemy.name.includes('Nemesis')) status = 'infected';
-        if (enemy.name.includes('Smith')) status = 'glitched';
-        if (enemy.name.includes('Deathclaw') || enemy.name.includes('Cyberdemon')) status = 'radiated';
-
         const roleDamage = role === 'tank' ? enemy.atk * 0.9 : role === 'assassin' ? enemy.atk * 1.15 : enemy.atk;
-        this.applyProfiledAttack(enemy, attackAnchor, 'enemy', roleDamage, status, 'enemy');
-      } else if (['tank', 'bossController'].includes(role)) {
+        this.applyProfiledAttack(enemy, attackAnchor, 'enemy', roleDamage, status, 'enemy', committedAttack);
+      } else if (!attackAnchor && ['tank', 'bossController'].includes(role)) {
         const obstacle = this.obstacles.find(item => item.hp > 0 && Math.abs(item.gridX - enemy.gridX) + Math.abs(item.gridY - enemy.gridY) <= 1);
         if (obstacle) {
           faceUnitToward(enemy, obstacle);
@@ -2515,7 +2535,7 @@ export class EngineTactics {
           enemy.stateTimer = 20;
           this.applyDamage(enemy, obstacle, enemy.isBoss ? enemy.atk * 1.6 : enemy.atk * 1.1, null, { ignoreCover: true });
         }
-      } else if (role === 'support') {
+      } else if (!attackAnchor && role === 'support') {
         const ally = this.enemies.filter(e => e.currentHp > 0 && e.currentHp < e.maxHp).sort((a, b) => a.currentHp - b.currentHp)[0];
         if (ally) {
           applyCombatHealing(ally, 18);
@@ -2540,9 +2560,9 @@ export class EngineTactics {
     const hero = this.activeUnit;
     if (this.trySupportAI()) return;
     let chosenAction = 'simple';
-    if (hero.special && !getTacticsSupportProfile(hero, 'special') && hero.specialCharge >= 100) {
+    if (canUseTacticsAttack(this, hero, 'special')) {
       chosenAction = 'special';
-    } else if (hero.secondary && !getTacticsSupportProfile(hero, 'secondary') && hero.cooldown <= 0) {
+    } else if (canUseTacticsAttack(this, hero, 'secondary')) {
       chosenAction = 'secondary';
     }
     if (getBlackPearlSourceAmmunition(hero, chosenAction) && hero.sourceAmmoRemaining <= 0) chosenAction = 'simple';
@@ -2707,36 +2727,32 @@ export class EngineTactics {
       );
     }
 
+    // Keep the chosen skill and confirmed lives; live geometry still decides hits.
+    const committedAttack = captureTacticsAttackCommitment(this, hero, chosenAction,
+      attackAnchor ? this.getAttackTargets(hero, attackAnchor, chosenAction, 'hero') : [], 'hero');
+    const status = hero.id === 'leon' ? 'infected' : hero.id === 'neo' ? 'glitched' : null;
     // 5. Execute action after a delay
     this.scheduleTurn(() => {
-      if (target && attackAnchor && (target.currentHp ?? target.hp) > 0
-        && hero[chosenAction] && typeof hero[chosenAction] === 'object'
-        && !getTacticsSupportProfile(hero, chosenAction)
-        && (chosenAction !== 'secondary' || hero.cooldown <= 0)
-        && (chosenAction !== 'special' || hero.specialCharge >= 100)
+      if (target && attackAnchor && committedAttack.canResolve() && committedAttack.accepts(target)
         && this.canAttackCell(hero, attackAnchor, chosenAction)
         && this.getAttackTargets(hero, attackAnchor, chosenAction, 'hero').some(entry => entry.unit === target)) {
         faceUnitToward(hero, attackAnchor);
         hero.state = chosenAction === 'special' ? 'special' : 'attack';
         hero.stateTimer = 25;
 
-        let status = null;
-        if (hero.id === 'leon') status = 'infected';
-        if (hero.id === 'neo') status = 'glitched';
-
         if (chosenAction === 'simple') {
           if (!resolveCanonHeroAttackEffect(hero, hero.simple)) this.playSfx(hero.weaponType === 'gun' || hero.weaponType === 'laser' ? 'shoot' : 'slash');
-          this.applyProfiledAttack(hero, attackAnchor, 'simple', hero.stats.atk * hero.simple.dmg, status, 'hero');
+          this.applyProfiledAttack(hero, attackAnchor, 'simple', this.getActionBaseDamage(hero, 'simple'), status, 'hero', committedAttack);
           hero.specialCharge = Math.min(100, hero.specialCharge + 15);
         } else if (chosenAction === 'secondary') {
-          hero.cooldown = hero.secondary.cd * 60;
+          hero.cooldown = (hero.secondary.cd ?? 3) * 60;
           if (!resolveCanonHeroAttackEffect(hero, hero.secondary)) this.playSfx('shoot');
-          this.applyProfiledAttack(hero, attackAnchor, 'secondary', hero.stats.atk * hero.secondary.dmg, status, 'hero');
+          this.applyProfiledAttack(hero, attackAnchor, 'secondary', this.getActionBaseDamage(hero, 'secondary'), status, 'hero', committedAttack);
           hero.specialCharge = Math.min(100, hero.specialCharge + 25);
         } else if (chosenAction === 'special') {
           hero.specialCharge = 0;
           if (!resolveCanonHeroAttackEffect(hero, hero.special)) this.playSfx('special');
-          this.applyProfiledAttack(hero, attackAnchor, 'special', hero.stats.atk * hero.special.dmg, status, 'hero');
+          this.applyProfiledAttack(hero, attackAnchor, 'special', this.getActionBaseDamage(hero, 'special'), status, 'hero', committedAttack);
         }
       }
       this.endActiveTurn();
@@ -2941,7 +2957,10 @@ export class EngineTactics {
       defender.hp = Math.max(0, defender.hp - Math.round(baseDmg));
       const { x: targetPxX, y: targetPxY } = this.getUnitScreenPosition(defender.gridX, defender.gridY);
       this.particles.add(targetPxX, targetPxY - 24, 0, -1, '#ffeb3b', 12, 42, 'text', `ARTEFACT -${Math.round(baseDmg)}`);
-      if (wasAlive && defender.hp <= 0) this.updateTacticsObjective();
+      if (wasAlive && defender.hp <= 0) {
+        this.invalidateActorActions(defender);
+        this.updateTacticsObjective();
+      }
       return hp - defender.hp;
     }
 
@@ -2955,6 +2974,7 @@ export class EngineTactics {
       this.particles.add(targetPxX, targetPxY - 20, 0, -1.5, '#7f8c8d', 12, 35, 'text', `${Math.round(baseDmg)}`);
 
       if (wasAlive && defender.hp <= 0) {
+        this.invalidateActorActions(defender);
         this.playSfx('defeat');
         this.updateTacticsObjective();
         // Trigger Naquadah barrel explosion

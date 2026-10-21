@@ -19,6 +19,9 @@ export default function TacticsSupportPanel({ state, lang, locked, onTarget }) {
       {state.protection === 'stock-uber' && (locale === 'fr'
         ? ' Medic et un patient maximum : 8 secondes actives, portée de 3 cases et ligne de vue. Aucun soin. Attaquer interrompt le lien.'
         : 'Medic and at most one patient: 8 active seconds, 3-cell range and line of sight. No healing. Attacking ends the link.')}
+      {state.sourceSignatureKey === 'aerith_ff7' && (locale === 'fr'
+        ? ' Healing Wind : jusqu’à 50 % des PV maximum de chaque allié vivant, portée de 5 cases et ligne de vue. Respecte les radiations ; ni purification ni résurrection.'
+        : ' Healing Wind: up to 50% of each living ally’s maximum HP, within 5 cells and line of sight. Respects radiation; no cleanse or revival.')}
       {state.group && (locale === 'fr' ? ' Effet de groupe sur les alliés admissibles à portée.' : 'Group effect on eligible allies in range.')}
     </p>
     {!state.choices.length && <p role="status">{locale === 'fr' ? 'Aucune cible admissible à portée. Une résurrection exige une case libre.' : 'No eligible target in range. Revival requires a free cell.'}</p>}
@@ -30,7 +33,7 @@ export default function TacticsSupportPanel({ state, lang, locked, onTarget }) {
           key={unit.runtimeId || unit.id || `${unit.gridX}:${unit.gridY}`}
           onClick={() => onTarget(unit.gridX, unit.gridY)}>
           {unit.name} — {state.group ? `${targets.length} ${locale === 'fr' ? 'alliés' : 'allies'} · ` : ''}
-          {amount > 0 ? `+${amount} ${locale === 'fr' ? 'PV' : 'HP'}` : EFFECTS[state.effect]?.[locale]}
+          {amount > 0 ? `+${Math.round(amount)} ${locale === 'fr' ? 'PV' : 'HP'}` : EFFECTS[state.effect]?.[locale]}
           {cleanses.length > 0 && <span style={{ display: 'block', fontSize: 11 }}>{locale === 'fr' ? 'Retire : ' : 'Removes: '}{cleanses.map(key => STATUSES[key]?.[locale] || key).join(', ')}</span>}
         </button>;
       })}

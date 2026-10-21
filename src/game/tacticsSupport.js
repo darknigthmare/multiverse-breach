@@ -1,3 +1,4 @@
+import { getTacticsHealingProfile } from './tacticsSourceHealing.js';
 // Tactical support uses the same authored effects as RPG, but grid distances,
 // occupied revival cells and line-of-sight remain tactical rules.
 import { getTacticsMedicDefinition } from './stockMedicModes.js';
@@ -12,6 +13,8 @@ const finite = (value, fallback) => Number.isFinite(Number(value)) ? Number(valu
 export function getTacticsSupportProfile(unit, actionType) {
   const action = unit?.[actionType];
   if (!action || typeof action !== 'object') return null;
+  const sourceHealing = getTacticsHealingProfile(unit, actionType);
+  if (sourceHealing) return sourceHealing;
   const medic = actionType === 'special' ? getTacticsMedicDefinition(unit) : null;
   if (medic) return { name: medic.name, action, actionType, effect: 'guard',
     protection: 'stock-uber', targetSide: 'ally', delivery: 'support', shape: 'single',
@@ -55,6 +58,8 @@ export function getTacticsSupportCandidates(engine, actor, profile) {
     if (profile.effect === 'revive') return getRpgReviveHp(unit, profile.reviveRatio) > 0
       && engine.canOccupyCell(unit, unit.gridX, unit.gridY);
     if (unit.currentHp <= 0 || unit.state === 'dead') return false;
+    if (profile.sourceSignatureKey && (unit.nonCombat === true || unit.combatEnabled === false
+      || unit.combatEligible === false || unit.nonCombatTrial)) return false;
     if (profile.protection) return unit.nonCombat !== true && unit.combatEnabled !== false
       && unit.combatEligible !== false && !unit.nonCombatTrial;
     const cleanses = getRpgCleansableStatuses(unit, profile.cleanses).length;
@@ -73,6 +78,9 @@ export function resolveTacticsSupport(engine, actor, actionType, anchor) {
   if (distance > profile.range || !engine.hasLineOfSight(actor, anchor, profile)) return [];
   const candidates = getTacticsSupportCandidates(engine, actor, profile);
   const atAnchor = unit => unit.gridX === anchor.gridX && unit.gridY === anchor.gridY;
+  // A source group heal is confirmed on an eligible ally, never an enemy or
+  // empty/stale cell. Ordinary area skills retain their ground targeting.
+  if (profile.sourceSignatureKey && !candidates.some(atAnchor)) return [];
   let targets;
   if (profile.shape === 'group') targets = candidates;
   else if (profile.shape === 'area') targets = candidates.filter(u => Math.max(Math.abs(u.gridX - anchor.gridX), Math.abs(u.gridY - anchor.gridY)) <= profile.areaRadius);
@@ -106,7 +114,7 @@ const COMMITTED_SUPPORT_FIELDS = Object.freeze([
   'effect', 'targetSide', 'shape', 'maxTargets', 'minTargets', 'range', 'minRange',
   'areaRadius', 'lineWidth', 'coneAngle', 'multiplier', 'duration', 'buffMultiplier',
   'healRatio', 'reviveRatio', 'guardReduce', 'requiresLineOfSight', 'blocksOnUnits',
-  'pierceObstacles', 'protection'
+  'pierceObstacles', 'protection', 'sourceSignatureKey'
 ]);
 export function captureTacticsSupportCommitment(engine, actor, actionType, entries) {
   const action = actor?.[actionType];
